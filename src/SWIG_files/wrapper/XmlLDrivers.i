@@ -224,7 +224,7 @@ opencascade::handle<CDM_Document>
 		virtual opencascade::handle<CDM_Document> CreateDocument();
 
 		/****************** Read ******************/
-		/**** md5 signature: a0e4644be6fe7bbb4ae862adb6817646 ****/
+		/**** md5 signature: 5078c1d74da40eebfc4838e73b8bd5ed ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "No available documentation.
 
@@ -233,12 +233,14 @@ Parameters
 theFileName: TCollection_ExtendedString
 theNewDocument: CDM_Document
 theApplication: CDM_Application
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication);
+		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -287,7 +289,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Write ******************/
-		/**** md5 signature: 6a7ef59f77968568190e502f957cdad3 ****/
+		/**** md5 signature: 3ba5a4920118cfb01ca7cb6e94265c60 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "No available documentation.
 
@@ -295,12 +297,14 @@ Parameters
 ----------
 theDocument: CDM_Document
 theFileName: TCollection_ExtendedString
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, const TCollection_ExtendedString & theFileName);
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, const TCollection_ExtendedString & theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

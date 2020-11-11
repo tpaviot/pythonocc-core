@@ -56,7 +56,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcafcontrol.ht
 #include<XCAFDoc_module.hxx>
 #include<STEPConstruct_module.hxx>
 #include<TDocStd_module.hxx>
-#include<Resource_module.hxx>
+#include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopTools_module.hxx>
@@ -107,7 +107,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcafcontrol.ht
 %import XCAFDoc.i
 %import STEPConstruct.i
 %import TDocStd.i
-%import Resource.i
+%import Message.i
 
 %pythoncode {
 from enum import IntEnum
@@ -1000,7 +1000,7 @@ int
 		Standard_Integer NbRootsForTransfer();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 59b71ea88dcd2b3bd203180711997b7b ****/
+		/**** md5 signature: 7ebce43b9ff377998fb424ae59ad713b ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -1008,15 +1008,17 @@ Parameters
 ----------
 filename: TCollection_AsciiString
 doc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const TCollection_AsciiString & filename, opencascade::handle<TDocStd_Document> & doc);
+		Standard_Boolean Perform(const TCollection_AsciiString & filename, opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
-		/**** md5 signature: 0c7242f646ab395dbb2c841dfb6a918f ****/
+		/**** md5 signature: d9ca38a0abfb5f609c92cc37497a4451 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Translate step file given by filename into the document return true if succeeded, and false in case of fail.
 
@@ -1024,12 +1026,14 @@ Parameters
 ----------
 filename: char *
 doc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const char * filename, opencascade::handle<TDocStd_Document> & doc);
+		Standard_Boolean Perform(const char * filename, opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
 		/**** md5 signature: 0c5675761cd6df0c5f286882695ad872 ****/
@@ -1162,21 +1166,6 @@ None
 ") SetSHUOMode;
 		void SetSHUOMode(const Standard_Boolean shuomode);
 
-		/****************** SetSourceCodePage ******************/
-		/**** md5 signature: aa588b60c23e4bbb2537b739d5a43a57 ****/
-		%feature("compactdefaultargs") SetSourceCodePage;
-		%feature("autodoc", "Return the encoding of step file for converting names into unicode.
-
-Parameters
-----------
-theCode: Resource_FormatType
-
-Returns
--------
-None
-") SetSourceCodePage;
-		void SetSourceCodePage(Resource_FormatType theCode);
-
 		/****************** SetViewMode ******************/
 		/**** md5 signature: 86451933a668d6b4666beb6106f5e28f ****/
 		%feature("compactdefaultargs") SetViewMode;
@@ -1192,34 +1181,25 @@ None
 ") SetViewMode;
 		void SetViewMode(const Standard_Boolean viewmode);
 
-		/****************** SourceCodePage ******************/
-		/**** md5 signature: e194da071972a41e58548e424201cc2c ****/
-		%feature("compactdefaultargs") SourceCodePage;
-		%feature("autodoc", "Return the encoding of step file for converting names into unicode. initialized from 'read.stepcaf.codepage' variable by constructor, which is resource_utf8 by default.
-
-Returns
--------
-Resource_FormatType
-") SourceCodePage;
-		Resource_FormatType SourceCodePage();
-
 		/****************** Transfer ******************/
-		/**** md5 signature: d7f719b3dd92a9fa3fed0a317b68dc8b ****/
+		/**** md5 signature: ff33323c63476d45f7ad89095c5bbe86 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Translates currently loaded step file into the document returns true if succeeded, and false in case of fail provided for use like single-file reader.
 
 Parameters
 ----------
 doc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(opencascade::handle<TDocStd_Document> & doc);
+		Standard_Boolean Transfer(opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferOneRoot ******************/
-		/**** md5 signature: c1c131bc8dbfdac8edd776c9d8a17c2c ****/
+		/**** md5 signature: 1d76b4a667d440519b476d0c7570cbd6 ****/
 		%feature("compactdefaultargs") TransferOneRoot;
 		%feature("autodoc", "Translates currently loaded step file into the document returns true if succeeded, and false in case of fail provided for use like single-file reader.
 
@@ -1227,12 +1207,14 @@ Parameters
 ----------
 num: int
 doc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") TransferOneRoot;
-		Standard_Boolean TransferOneRoot(const Standard_Integer num, opencascade::handle<TDocStd_Document> & doc);
+		Standard_Boolean TransferOneRoot(const Standard_Integer num, opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1425,7 +1407,7 @@ None
 		void Init(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 568905c89cd5500b59795a9f3620e181 ****/
+		/**** md5 signature: 82a9ff51a493dfcaea368ecaef792fdb ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -1433,15 +1415,17 @@ Parameters
 ----------
 doc: TDocStd_Document
 filename: TCollection_AsciiString
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const TCollection_AsciiString & filename);
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const TCollection_AsciiString & filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
-		/**** md5 signature: 9c7d09eb0ac5c8058bfcbfedd53d6de8 ****/
+		/**** md5 signature: 1ef00b1bd520cd3b05cc4f00e91c494d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Transfers a document and writes it to a step file returns true if translation is ok.
 
@@ -1449,12 +1433,14 @@ Parameters
 ----------
 doc: TDocStd_Document
 filename: char *
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const char * filename);
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const char * filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetColorMode ******************/
 		/**** md5 signature: e8d41838c31a9460a1c83d84b1f572a1 ****/
@@ -1562,7 +1548,7 @@ None
 		void SetSHUOMode(const Standard_Boolean shuomode);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 938b13db7f061e7677f1c3954cb8b65e ****/
+		/**** md5 signature: 2616e7e1bc1f8548fb5e464651c0f720 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers a document (or single label) to a step model the mode of translation of shape is asis if multi is not null pointer, it switches to multifile mode (with external refs), and string pointed by <multi> gives prefix for names of extern files (can be empty string) returns true if translation is ok.
 
@@ -1573,15 +1559,17 @@ mode: STEPControl_StepModelType,optional
 	default value is STEPControl_AsIs
 multi: char *,optional
 	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0);
+		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
-		/**** md5 signature: a2dee1edd4b8aa133f9891ecdf1273a8 ****/
+		/**** md5 signature: 3230c3763f234bd8211762a290f20e3d ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Method to transfer part of the document specified by label.
 
@@ -1592,12 +1580,14 @@ mode: STEPControl_StepModelType,optional
 	default value is STEPControl_AsIs
 multi: char *,optional
 	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_Label & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0);
+		Standard_Boolean Transfer(const TDF_Label & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: a2c63443529fcf2508727dc0010cba46 ****/

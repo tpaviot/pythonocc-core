@@ -359,6 +359,10 @@ class BRep_Tool:
 	@overload
 	@staticmethod
 	def IsClosed(E: TopoDS_Edge, T: Poly_Triangulation, L: TopLoc_Location) -> bool: ...
+	@overload
+	@staticmethod
+	def IsGeometric(F: TopoDS_Face) -> bool: ...
+	@overload
 	@staticmethod
 	def IsGeometric(E: TopoDS_Edge) -> bool: ...
 	@staticmethod
@@ -367,6 +371,9 @@ class BRep_Tool:
 	def MaxTolerance(theShape: TopoDS_Shape, theSubShape: TopAbs_ShapeEnum) -> float: ...
 	@staticmethod
 	def NaturalRestriction(F: TopoDS_Face) -> bool: ...
+	@overload
+	@staticmethod
+	def Parameter(theV: TopoDS_Vertex, theE: TopoDS_Edge) -> Tuple[bool, float]: ...
 	@overload
 	@staticmethod
 	def Parameter(V: TopoDS_Vertex, E: TopoDS_Edge) -> float: ...
@@ -639,9 +646,11 @@ BRep_Tool_IsClosed = BRep_Tool.IsClosed
 BRep_Tool_IsClosed = BRep_Tool.IsClosed
 BRep_Tool_IsClosed = BRep_Tool.IsClosed
 BRep_Tool_IsGeometric = BRep_Tool.IsGeometric
+BRep_Tool_IsGeometric = BRep_Tool.IsGeometric
 BRep_Tool_MaxContinuity = BRep_Tool.MaxContinuity
 BRep_Tool_MaxTolerance = BRep_Tool.MaxTolerance
 BRep_Tool_NaturalRestriction = BRep_Tool.NaturalRestriction
+BRep_Tool_Parameter = BRep_Tool.Parameter
 BRep_Tool_Parameter = BRep_Tool.Parameter
 BRep_Tool_Parameter = BRep_Tool.Parameter
 BRep_Tool_Parameter = BRep_Tool.Parameter

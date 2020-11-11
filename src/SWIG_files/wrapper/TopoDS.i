@@ -42,6 +42,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topods.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Message_module.hxx>
+#include<TCollection_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColgp_module.hxx>
@@ -52,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topods.html"
 %import Standard.i
 %import NCollection.i
 %import Message.i
+%import TCollection.i
 %import TopAbs.i
 %import TopLoc.i
 
@@ -348,6 +350,72 @@ TopoDS_Wire
 
 
 %extend TopoDS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************
+* class TopoDS_AlertAttribute *
+******************************/
+class TopoDS_AlertAttribute : public Message_AttributeStream {
+	public:
+		/****************** TopoDS_AlertAttribute ******************/
+		/**** md5 signature: e19fe6951fa45f2892842acdec08d481 ****/
+		%feature("compactdefaultargs") TopoDS_AlertAttribute;
+		%feature("autodoc", "Constructor with shape argument.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theName: TCollection_AsciiString,optional
+	default value is TCollection_AsciiString()
+
+Returns
+-------
+None
+") TopoDS_AlertAttribute;
+		 TopoDS_AlertAttribute(const TopoDS_Shape & theShape, const TCollection_AsciiString & theName = TCollection_AsciiString());
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** GetShape ******************/
+		/**** md5 signature: 7c167c51f2939d15d5bfddc807114b00 ****/
+		%feature("compactdefaultargs") GetShape;
+		%feature("autodoc", "Returns contained shape.
+
+Returns
+-------
+TopoDS_Shape
+") GetShape;
+		const TopoDS_Shape GetShape();
+
+		/****************** Send ******************/
+		/**** md5 signature: f758a2f5fbed2533ad76c7a33e1b30aa ****/
+		%feature("compactdefaultargs") Send;
+		%feature("autodoc", "Push shape information into messenger.
+
+Parameters
+----------
+theMessenger: Message_Messenger
+theShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Send;
+		static void Send(const opencascade::handle<Message_Messenger> & theMessenger, const TopoDS_Shape & theShape);
+
+};
+
+
+%extend TopoDS_AlertAttribute {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

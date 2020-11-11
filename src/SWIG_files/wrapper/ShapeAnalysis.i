@@ -2997,6 +2997,17 @@ float
 ****************************/
 class ShapeAnalysis_Shell {
 	public:
+		/****************** ShapeAnalysis_Shell ******************/
+		/**** md5 signature: 030764f0c6c6127fdde3ea04e3e06130 ****/
+		%feature("compactdefaultargs") ShapeAnalysis_Shell;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") ShapeAnalysis_Shell;
+		 ShapeAnalysis_Shell();
+
 		/****************** BadEdges ******************/
 		/**** md5 signature: 271874605067d1f8e996561e77de6c92 ****/
 		%feature("compactdefaultargs") BadEdges;

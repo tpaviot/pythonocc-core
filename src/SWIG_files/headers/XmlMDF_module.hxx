@@ -24,6 +24,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XmlMDF_ADriverTable.hxx>
 #include<XmlMDF_DataMapIteratorOfMapOfDriver.hxx>
 #include<XmlMDF_DataMapIteratorOfTypeADriverMap.hxx>
+#include<XmlMDF_DerivedDriver.hxx>
 #include<XmlMDF_MapOfDriver.hxx>
 #include<XmlMDF_ReferenceDriver.hxx>
 #include<XmlMDF_TagSourceDriver.hxx>

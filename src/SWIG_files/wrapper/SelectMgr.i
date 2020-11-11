@@ -41,8 +41,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<PrsMgr_module.hxx>
 #include<Graphic3d_module.hxx>
+#include<gp_module.hxx>
+#include<Select3D_module.hxx>
+#include<PrsMgr_module.hxx>
 #include<Aspect_module.hxx>
 #include<Prs3d_module.hxx>
 #include<TopLoc_module.hxx>
@@ -50,9 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 #include<TopAbs_module.hxx>
 #include<BVH_module.hxx>
 #include<SelectBasics_module.hxx>
-#include<gp_module.hxx>
 #include<TColgp_module.hxx>
-#include<Select3D_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
 #include<Message_module.hxx>
@@ -87,8 +87,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import PrsMgr.i
 %import Graphic3d.i
+%import gp.i
+%import Select3D.i
+%import PrsMgr.i
 %import Aspect.i
 %import Prs3d.i
 %import TopLoc.i
@@ -96,9 +98,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 %import TopAbs.i
 %import BVH.i
 %import SelectBasics.i
-%import gp.i
 %import TColgp.i
-%import Select3D.i
 %import Bnd.i
 
 %pythoncode {
@@ -107,6 +107,17 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum SelectMgr_FilterType {
+	SelectMgr_FilterType_AND = 0,
+	SelectMgr_FilterType_OR = 1,
+};
+
+enum SelectMgr_TypeOfDepthTolerance {
+	SelectMgr_TypeOfDepthTolerance_Uniform = 0,
+	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1,
+	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2,
+};
+
 enum SelectMgr_TypeOfUpdate {
 	SelectMgr_TOU_Full = 0,
 	SelectMgr_TOU_Partial = 1,
@@ -137,6 +148,20 @@ enum SelectMgr_PickingStrategy {
 
 /* python proy classes for enums */
 %pythoncode {
+
+class SelectMgr_FilterType(IntEnum):
+	SelectMgr_FilterType_AND = 0
+	SelectMgr_FilterType_OR = 1
+SelectMgr_FilterType_AND = SelectMgr_FilterType.SelectMgr_FilterType_AND
+SelectMgr_FilterType_OR = SelectMgr_FilterType.SelectMgr_FilterType_OR
+
+class SelectMgr_TypeOfDepthTolerance(IntEnum):
+	SelectMgr_TypeOfDepthTolerance_Uniform = 0
+	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1
+	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2
+SelectMgr_TypeOfDepthTolerance_Uniform = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_Uniform
+SelectMgr_TypeOfDepthTolerance_UniformPixels = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_UniformPixels
+SelectMgr_TypeOfDepthTolerance_SensitivityFactor = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_SensitivityFactor
 
 class SelectMgr_TypeOfUpdate(IntEnum):
 	SelectMgr_TOU_Full = 0
@@ -177,14 +202,18 @@ SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_Pick
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(SelectMgr_BVHThreadPool)
 %wrap_handle(SelectMgr_EntityOwner)
 %wrap_handle(SelectMgr_Filter)
 %wrap_handle(SelectMgr_SelectableObject)
 %wrap_handle(SelectMgr_Selection)
+%wrap_handle(SelectMgr_SelectionImageFiller)
 %wrap_handle(SelectMgr_SelectionManager)
 %wrap_handle(SelectMgr_SensitiveEntity)
 %wrap_handle(SelectMgr_CompositionFilter)
+%wrap_handle(SelectMgr_ViewerSelector3d)
 %wrap_handle(SelectMgr_AndFilter)
+%wrap_handle(SelectMgr_AndOrFilter)
 %wrap_handle(SelectMgr_OrFilter)
 /* end handles declaration */
 
@@ -252,13 +281,126 @@ typedef NCollection_List<opencascade::handle<SelectMgr_Filter>>::Iterator Select
 typedef NCollection_List<opencascade::handle<SelectMgr_Filter>> SelectMgr_ListOfFilter;
 typedef NCollection_DataMap<opencascade::handle<SelectMgr_SelectableObject>, opencascade::handle<SelectMgr_SensitiveEntitySet>>::Iterator SelectMgr_MapOfObjectSensitivesIterator;
 typedef NCollection_Mat4<Standard_Real> SelectMgr_Mat4;
-typedef SelectMgr_SelectableObject * SelectMgr_SOPtr;
 typedef NCollection_Sequence<opencascade::handle<SelectMgr_Filter>> SelectMgr_SequenceOfFilter;
 typedef NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> SelectMgr_SequenceOfOwner;
 typedef NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> SelectMgr_SequenceOfSelection;
 typedef NCollection_Vec3<Standard_Real> SelectMgr_Vec3;
 typedef NCollection_Vec4<Standard_Real> SelectMgr_Vec4;
 /* end typedefs declaration */
+
+/******************
+* class SelectMgr *
+******************/
+%rename(selectmgr) SelectMgr;
+class SelectMgr {
+	public:
+		/****************** ComputeSensitivePrs ******************/
+		/**** md5 signature: 83aa1db16781f8f9580185126db70a0c ****/
+		%feature("compactdefaultargs") ComputeSensitivePrs;
+		%feature("autodoc", "Compute debug presentation for sensitive objects.
+
+Parameters
+----------
+theStructure: Graphic3d_Structure
+theSel: SelectMgr_Selection
+theLoc: gp_Trsf
+theTrsfPers: Graphic3d_TransformPers
+
+Returns
+-------
+None
+") ComputeSensitivePrs;
+		static void ComputeSensitivePrs(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theLoc, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
+
+};
+
+
+%extend SelectMgr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class SelectMgr_BVHThreadPool *
+********************************/
+class SelectMgr_BVHThreadPool : public Standard_Transient {
+	public:
+		class BVHThread {};
+		class Sentry {};
+		/****************** SelectMgr_BVHThreadPool ******************/
+		/**** md5 signature: 889952e84af73e98ba9a37fe92adadac ****/
+		%feature("compactdefaultargs") SelectMgr_BVHThreadPool;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theNbThreads: int
+
+Returns
+-------
+None
+") SelectMgr_BVHThreadPool;
+		 SelectMgr_BVHThreadPool(Standard_Integer theNbThreads);
+
+		/****************** AddEntity ******************/
+		/**** md5 signature: 9d91f86811aba2ad0d46968725fccc5d ****/
+		%feature("compactdefaultargs") AddEntity;
+		%feature("autodoc", "Queue a sensitive entity to build its bvh.
+
+Parameters
+----------
+theEntity: Select3D_SensitiveEntity
+
+Returns
+-------
+None
+") AddEntity;
+		void AddEntity(const opencascade::handle<Select3D_SensitiveEntity> & theEntity);
+
+		/****************** StopThreads ******************/
+		/**** md5 signature: b9c1b1dc0d0256795b25abd649056b2c ****/
+		%feature("compactdefaultargs") StopThreads;
+		%feature("autodoc", "Stops threads.
+
+Returns
+-------
+None
+") StopThreads;
+		void StopThreads();
+
+		/****************** Threads ******************/
+		/**** md5 signature: 94f882b6bc1c488f6ee23d7bf072e378 ****/
+		%feature("compactdefaultargs") Threads;
+		%feature("autodoc", "Returns array of threads.
+
+Returns
+-------
+NCollection_Array1<BVHThread>
+") Threads;
+		NCollection_Array1<BVHThread> & Threads();
+
+		/****************** WaitThreads ******************/
+		/**** md5 signature: d1876c753ae5775efae9bbfb9449dc60 ****/
+		%feature("compactdefaultargs") WaitThreads;
+		%feature("autodoc", "Waits for all threads finish their jobs.
+
+Returns
+-------
+None
+") WaitThreads;
+		void WaitThreads();
+
+};
+
+
+%make_alias(SelectMgr_BVHThreadPool)
+
+%extend SelectMgr_BVHThreadPool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 
 /******************************
 * class SelectMgr_BaseFrustum *
@@ -842,17 +984,6 @@ None
 ") ComputeSelection;
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
 
-		/****************** CurrentSelection ******************/
-		/**** md5 signature: f316c76b335213804220e205e017bdaf ****/
-		%feature("compactdefaultargs") CurrentSelection;
-		%feature("autodoc", "Returns the current selection in this framework.
-
-Returns
--------
-opencascade::handle<SelectMgr_Selection>
-") CurrentSelection;
-		const opencascade::handle<SelectMgr_Selection> & CurrentSelection();
-
 
             %feature("autodoc", "1");
             %extend{
@@ -987,17 +1118,6 @@ None
 ") HilightSelected;
 		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const SelectMgr_SequenceOfOwner & theSeq);
 
-		/****************** Init ******************/
-		/**** md5 signature: ca2feb116ce485f3e8278f79ba5f5d53 ****/
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Begins the iteration scanning for sensitive primitives.
-
-Returns
--------
-None
-") Init;
-		void Init();
-
 		/****************** IsAutoHilight ******************/
 		/**** md5 signature: 57ad8a813588ecd393319c64b612a682 ****/
 		%feature("compactdefaultargs") IsAutoHilight;
@@ -1008,28 +1128,6 @@ Returns
 bool
 ") IsAutoHilight;
 		virtual Standard_Boolean IsAutoHilight();
-
-		/****************** More ******************/
-		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Continues the iteration scanning for sensitive primitives.
-
-Returns
--------
-bool
-") More;
-		Standard_Boolean More();
-
-		/****************** Next ******************/
-		/**** md5 signature: 1201a55f750036045cd397a65f07fc7d ****/
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Continues the iteration scanning for sensitive primitives.
-
-Returns
--------
-None
-") Next;
-		void Next();
 
 		/****************** RecomputePrimitives ******************/
 		/**** md5 signature: 7bd2e52f5f2cfac7f6ff872dd5ea905f ****/
@@ -1300,6 +1398,14 @@ bool
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetObjectById ******************/
 		/**** md5 signature: 319a1ac965d889d963a38ef514f73d63 ****/
 		%feature("compactdefaultargs") GetObjectById;
@@ -1421,7 +1527,7 @@ None
 		/****************** AllowOverlapDetection ******************/
 		/**** md5 signature: 835f65572d504a5580a4fc1007d46f5c ****/
 		%feature("compactdefaultargs") AllowOverlapDetection;
-		%feature("autodoc", "Is used for rectangular selection only if theistoallow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
+		%feature("autodoc", "If theistoallow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
 
 Parameters
 ----------
@@ -1520,6 +1626,14 @@ float
 ") DistToGeometryCenter;
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetActiveSelectionType ******************/
 		/**** md5 signature: 6be7281ca743652d206dad6a0c6f5952 ****/
 		%feature("compactdefaultargs") GetActiveSelectionType;
@@ -1857,20 +1971,21 @@ None
 		void SetViewClipRanges(const SelectMgr_ViewClipRange & theRange);
 
 		/****************** SetViewClipping ******************/
-		/**** md5 signature: 948648bc7d149e0bb646586b6b554c78 ****/
+		/**** md5 signature: 2c9fd571f2260a9e201451b7c935a508 ****/
 		%feature("compactdefaultargs") SetViewClipping;
-		%feature("autodoc", "Valid for point selection only! computes depth range for clipping planes. @param theviewplanes global view planes @param theobjplanes object planes.
+		%feature("autodoc", "Valid for point selection only! computes depth range for clipping planes. @param theviewplanes [in] global view planes @param theobjplanes [in] object planes @param theworldselmgr [in] selection volume in world space for computing clipping plane ranges.
 
 Parameters
 ----------
 theViewPlanes: Graphic3d_SequenceOfHClipPlane
 theObjPlanes: Graphic3d_SequenceOfHClipPlane
+theWorldSelMgr: SelectMgr_SelectingVolumeManager *
 
 Returns
 -------
 None
 ") SetViewClipping;
-		void SetViewClipping(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theViewPlanes, const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theObjPlanes);
+		void SetViewClipping(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theViewPlanes, const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theObjPlanes, const SelectMgr_SelectingVolumeManager * theWorldSelMgr);
 
 		/****************** SetViewClipping ******************/
 		/**** md5 signature: 4bbee3b7345b92c8790bf91a52eda8f9 ****/
@@ -2073,6 +2188,14 @@ None
 ") Destroy;
 		void Destroy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Entities ******************/
 		/**** md5 signature: 09e4230714e880893271b506a744f5d3 ****/
 		%feature("compactdefaultargs") Entities;
@@ -2095,17 +2218,6 @@ SelectMgr_StateOfSelection
 ") GetSelectionState;
 		SelectMgr_StateOfSelection GetSelectionState();
 
-		/****************** Init ******************/
-		/**** md5 signature: ca2feb116ce485f3e8278f79ba5f5d53 ****/
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Begins an iteration scanning for sensitive primitives.
-
-Returns
--------
-None
-") Init;
-		void Init();
-
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
@@ -2127,39 +2239,6 @@ Returns
 int
 ") Mode;
 		Standard_Integer Mode();
-
-		/****************** More ******************/
-		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Continues the iteration scanning for sensitive primitives with the mode defined in this framework.
-
-Returns
--------
-bool
-") More;
-		Standard_Boolean More();
-
-		/****************** Next ******************/
-		/**** md5 signature: 1201a55f750036045cd397a65f07fc7d ****/
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Returns the next sensitive primitive found in the iteration. this is a scan for entities with the mode defined in this framework.
-
-Returns
--------
-None
-") Next;
-		void Next();
-
-		/****************** Sensitive ******************/
-		/**** md5 signature: 2434eea769a8cac14257f785690f38e4 ****/
-		%feature("compactdefaultargs") Sensitive;
-		%feature("autodoc", "Returns any sensitive primitive in this framework.
-
-Returns
--------
-opencascade::handle<SelectMgr_SensitiveEntity>
-") Sensitive;
-		const opencascade::handle<SelectMgr_SensitiveEntity> & Sensitive();
 
 		/****************** Sensitivity ******************/
 		/**** md5 signature: 894e656cca525e78bf786c9f7c8e748c ****/
@@ -2251,6 +2330,55 @@ None
 %extend SelectMgr_Selection {
 	%pythoncode {
 	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class SelectMgr_SelectionImageFiller *
+***************************************/
+%nodefaultctor SelectMgr_SelectionImageFiller;
+class SelectMgr_SelectionImageFiller : public Standard_Transient {
+	public:
+		/****************** Fill ******************/
+		/**** md5 signature: ac33eb3f0186edc584f4a3ec924c4232 ****/
+		%feature("compactdefaultargs") Fill;
+		%feature("autodoc", "Fill pixel at specified position.
+
+Parameters
+----------
+theCol: int
+theRow: int
+thePicked: int
+
+Returns
+-------
+None
+") Fill;
+		virtual void Fill(const Standard_Integer theCol, const Standard_Integer theRow, const Standard_Integer thePicked);
+
+		/****************** Flush ******************/
+		/**** md5 signature: 0b647fbdc1be587b83fd253c3c168f73 ****/
+		%feature("compactdefaultargs") Flush;
+		%feature("autodoc", "Flush results into final image.
+
+Returns
+-------
+None
+") Flush;
+		virtual void Flush();
+
+};
+
+
+%make_alias(SelectMgr_SelectionImageFiller)
+
+%extend SelectMgr_SelectionImageFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def CreateFiller(self):
+		pass
 	}
 };
 
@@ -2571,6 +2699,14 @@ None
 ") Clear;
 		void Clear();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsActiveForSelection ******************/
 		/**** md5 signature: 3187ce5cffb320503d698db8ebb12ce6 ****/
 		%feature("compactdefaultargs") IsActiveForSelection;
@@ -2625,13 +2761,13 @@ class SelectMgr_SortCriterion {
 	public:
 		opencascade::handle<Select3D_SensitiveEntity > Entity;
 		gp_Pnt Point;
+		Graphic3d_Vec3 Normal;
 		float Depth;
 		float MinDist;
 		float Tolerance;
 		int Priority;
 		int ZLayerPosition;
 		int NbOwnerMatches;
-		bool ToPreferClosest;
 		/****************** SelectMgr_SortCriterion ******************/
 		/**** md5 signature: 7c43477619c7a9df7500d7db5ac6145a ****/
 		%feature("compactdefaultargs") SelectMgr_SortCriterion;
@@ -2643,10 +2779,10 @@ None
 ") SelectMgr_SortCriterion;
 		 SelectMgr_SortCriterion();
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: 8d16844e2bb3ff1693ac0f263f7862b1 ****/
-		%feature("compactdefaultargs") IsGreater;
-		%feature("autodoc", "Compare with another item.
+		/****************** IsCloserDepth ******************/
+		/**** md5 signature: f54c02ecbb70ec9f3fd99f77b918a45b ****/
+		%feature("compactdefaultargs") IsCloserDepth;
+		%feature("autodoc", "Compare with another item by depth, priority and mindist.
 
 Parameters
 ----------
@@ -2655,13 +2791,13 @@ theOther: SelectMgr_SortCriterion
 Returns
 -------
 bool
-") IsGreater;
-		bool IsGreater(const SelectMgr_SortCriterion & theOther);
+") IsCloserDepth;
+		bool IsCloserDepth(const SelectMgr_SortCriterion & theOther);
 
-		/****************** IsLower ******************/
-		/**** md5 signature: c7311d9bab7ef7a0e8a2028fca0cc401 ****/
-		%feature("compactdefaultargs") IsLower;
-		%feature("autodoc", "Compare with another item.
+		/****************** IsHigherPriority ******************/
+		/**** md5 signature: 7ef827a8f908cd593cb19194e4c3327d ****/
+		%feature("compactdefaultargs") IsHigherPriority;
+		%feature("autodoc", "Compare with another item using old logic (occt version <= 6.3.1) with priority considered preceding depth.
 
 Parameters
 ----------
@@ -2670,8 +2806,8 @@ theOther: SelectMgr_SortCriterion
 Returns
 -------
 bool
-") IsLower;
-		bool IsLower(const SelectMgr_SortCriterion & theOther);
+") IsHigherPriority;
+		bool IsHigherPriority(const SelectMgr_SortCriterion & theOther);
 
 };
 
@@ -2926,6 +3062,146 @@ SelectMgr_ListOfFilter
 /***************************************
 * class SelectMgr_TriangularFrustumSet *
 ***************************************/
+/***********************************
+* class SelectMgr_ViewerSelector3d *
+***********************************/
+class SelectMgr_ViewerSelector3d : public SelectMgr_ViewerSelector {
+	public:
+		/****************** SelectMgr_ViewerSelector3d ******************/
+		/**** md5 signature: 75d5da300b4147660a2cf004f2aa3145 ****/
+		%feature("compactdefaultargs") SelectMgr_ViewerSelector3d;
+		%feature("autodoc", "Constructs an empty 3d selector object.
+
+Returns
+-------
+None
+") SelectMgr_ViewerSelector3d;
+		 SelectMgr_ViewerSelector3d();
+
+		/****************** ClearSensitive ******************/
+		/**** md5 signature: bbfbdb95251072aaccc54e26ea15ada9 ****/
+		%feature("compactdefaultargs") ClearSensitive;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theView: V3d_View
+
+Returns
+-------
+None
+") ClearSensitive;
+		void ClearSensitive(const opencascade::handle<V3d_View> & theView);
+
+		/****************** DisplaySensitive ******************/
+		/**** md5 signature: 8dded899c4a255afc18ddc44c8d7a6f7 ****/
+		%feature("compactdefaultargs") DisplaySensitive;
+		%feature("autodoc", "Displays sensitives in view <theview>.
+
+Parameters
+----------
+theView: V3d_View
+
+Returns
+-------
+None
+") DisplaySensitive;
+		void DisplaySensitive(const opencascade::handle<V3d_View> & theView);
+
+		/****************** DisplaySensitive ******************/
+		/**** md5 signature: b1201290956c96d7a296cb8583c59abe ****/
+		%feature("compactdefaultargs") DisplaySensitive;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSel: SelectMgr_Selection
+theTrsf: gp_Trsf
+theView: V3d_View
+theToClearOthers: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") DisplaySensitive;
+		void DisplaySensitive(const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theTrsf, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToClearOthers = Standard_True);
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** Pick ******************/
+		/**** md5 signature: 2bffaec90f889b1c8a589371f27c765d ****/
+		%feature("compactdefaultargs") Pick;
+		%feature("autodoc", "Picks the sensitive entity at the pixel coordinates of the mouse <thexpix> and <theypix>. the selector looks for touched areas and owners.
+
+Parameters
+----------
+theXPix: int
+theYPix: int
+theView: V3d_View
+
+Returns
+-------
+None
+") Pick;
+		void Pick(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView);
+
+		/****************** Pick ******************/
+		/**** md5 signature: ac91d378236f4cd1507ea2ad52a93f76 ****/
+		%feature("compactdefaultargs") Pick;
+		%feature("autodoc", "Picks the sensitive entity according to the minimum and maximum pixel values <thexpmin>, <theypmin>, <thexpmax> and <theypmax> defining a 2d area for selection in the 3d view aview.
+
+Parameters
+----------
+theXPMin: int
+theYPMin: int
+theXPMax: int
+theYPMax: int
+theView: V3d_View
+
+Returns
+-------
+None
+") Pick;
+		void Pick(const Standard_Integer theXPMin, const Standard_Integer theYPMin, const Standard_Integer theXPMax, const Standard_Integer theYPMax, const opencascade::handle<V3d_View> & theView);
+
+		/****************** Pick ******************/
+		/**** md5 signature: d9dd319057f3def6d1d43685fa1cdf94 ****/
+		%feature("compactdefaultargs") Pick;
+		%feature("autodoc", "Pick action - input pixel values for polyline selection for selection.
+
+Parameters
+----------
+thePolyline: TColgp_Array1OfPnt2d
+theView: V3d_View
+
+Returns
+-------
+None
+") Pick;
+		void Pick(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView);
+
+};
+
+
+%make_alias(SelectMgr_ViewerSelector3d)
+
+%extend SelectMgr_ViewerSelector3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def ToPixMap(self):
+		pass
+	}
+};
+
 /****************************
 * class SelectMgr_AndFilter *
 ****************************/
@@ -2968,6 +3244,93 @@ bool
 	}
 };
 
+/******************************
+* class SelectMgr_AndOrFilter *
+******************************/
+class SelectMgr_AndOrFilter : public SelectMgr_CompositionFilter {
+	public:
+		/****************** SelectMgr_AndOrFilter ******************/
+		/**** md5 signature: 3acfa036201b797ff61ac64dc7fb378b ****/
+		%feature("compactdefaultargs") SelectMgr_AndOrFilter;
+		%feature("autodoc", "Constructs an empty selection filter.
+
+Parameters
+----------
+theFilterType: SelectMgr_FilterType
+
+Returns
+-------
+None
+") SelectMgr_AndOrFilter;
+		 SelectMgr_AndOrFilter(const SelectMgr_FilterType theFilterType);
+
+		/****************** FilterType ******************/
+		/**** md5 signature: e37fce598a0b5e9b676a367504573e6c ****/
+		%feature("compactdefaultargs") FilterType;
+		%feature("autodoc", "Returns a selection filter type (@sa selectmgr_filtertype).
+
+Returns
+-------
+SelectMgr_FilterType
+") FilterType;
+		SelectMgr_FilterType FilterType();
+
+		/****************** IsOk ******************/
+		/**** md5 signature: 463a95f434e18db7234e3535445a2c33 ****/
+		%feature("compactdefaultargs") IsOk;
+		%feature("autodoc", "Indicates that the selected interactive object passes the filter.
+
+Parameters
+----------
+theObj: SelectMgr_EntityOwner
+
+Returns
+-------
+bool
+") IsOk;
+		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & theObj);
+
+		/****************** SetDisabledObjects ******************/
+		/**** md5 signature: cc2c53c8fee7b059ac3f6d19a9d335dc ****/
+		%feature("compactdefaultargs") SetDisabledObjects;
+		%feature("autodoc", "Disable selection of specified objects.
+
+Parameters
+----------
+theObjects: Graphic3d_NMapOfTransient
+
+Returns
+-------
+None
+") SetDisabledObjects;
+		void SetDisabledObjects(const opencascade::handle<Graphic3d_NMapOfTransient> & theObjects);
+
+		/****************** SetFilterType ******************/
+		/**** md5 signature: c4f32b4815b398cc3dcfa30b4c00ebdc ****/
+		%feature("compactdefaultargs") SetFilterType;
+		%feature("autodoc", "Sets a selection filter type. selectmgr_filtertype_or selection filter is used be default. @param thefiltertype the filter type.
+
+Parameters
+----------
+theFilterType: SelectMgr_FilterType
+
+Returns
+-------
+None
+") SetFilterType;
+		void SetFilterType(const SelectMgr_FilterType theFilterType);
+
+};
+
+
+%make_alias(SelectMgr_AndOrFilter)
+
+%extend SelectMgr_AndOrFilter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***************************
 * class SelectMgr_OrFilter *
 ***************************/
@@ -2998,21 +3361,6 @@ Returns
 bool
 ") IsOk;
 		Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
-
-		/****************** SetDisabledObjects ******************/
-		/**** md5 signature: cc2c53c8fee7b059ac3f6d19a9d335dc ****/
-		%feature("compactdefaultargs") SetDisabledObjects;
-		%feature("autodoc", "Disable selection of specified objects.
-
-Parameters
-----------
-theObjects: Graphic3d_NMapOfTransient
-
-Returns
--------
-None
-") SetDisabledObjects;
-		void SetDisabledObjects(const opencascade::handle<Graphic3d_NMapOfTransient> & theObjects);
 
 };
 

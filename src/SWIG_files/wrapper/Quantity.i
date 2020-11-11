@@ -80,7 +80,8 @@ enum Quantity_NameOfColor {
 	Quantity_NOC_BISQUE3 = 19,
 	Quantity_NOC_BISQUE4 = 20,
 	Quantity_NOC_BLANCHEDALMOND = 21,
-	Quantity_NOC_BLUE1 = 22,
+	Quantity_NOC_BLUE = 22,
+	Quantity_NOC_BLUE1 = Quantity_NOC_BLUE,
 	Quantity_NOC_BLUE2 = 23,
 	Quantity_NOC_BLUE3 = 24,
 	Quantity_NOC_BLUE4 = 25,
@@ -101,165 +102,168 @@ enum Quantity_NameOfColor {
 	Quantity_NOC_CADETBLUE3 = 40,
 	Quantity_NOC_CADETBLUE4 = 41,
 	Quantity_NOC_CHARTREUSE = 42,
-	Quantity_NOC_CHARTREUSE1 = 43,
-	Quantity_NOC_CHARTREUSE2 = 44,
-	Quantity_NOC_CHARTREUSE3 = 45,
-	Quantity_NOC_CHARTREUSE4 = 46,
-	Quantity_NOC_CHOCOLATE = 47,
-	Quantity_NOC_CHOCOLATE1 = 48,
-	Quantity_NOC_CHOCOLATE2 = 49,
-	Quantity_NOC_CHOCOLATE3 = 50,
-	Quantity_NOC_CHOCOLATE4 = 51,
-	Quantity_NOC_CORAL = 52,
-	Quantity_NOC_CORAL1 = 53,
-	Quantity_NOC_CORAL2 = 54,
-	Quantity_NOC_CORAL3 = 55,
-	Quantity_NOC_CORAL4 = 56,
-	Quantity_NOC_CORNFLOWERBLUE = 57,
-	Quantity_NOC_CORNSILK1 = 58,
-	Quantity_NOC_CORNSILK2 = 59,
-	Quantity_NOC_CORNSILK3 = 60,
-	Quantity_NOC_CORNSILK4 = 61,
-	Quantity_NOC_CYAN1 = 62,
-	Quantity_NOC_CYAN2 = 63,
-	Quantity_NOC_CYAN3 = 64,
-	Quantity_NOC_CYAN4 = 65,
-	Quantity_NOC_DARKGOLDENROD = 66,
-	Quantity_NOC_DARKGOLDENROD1 = 67,
-	Quantity_NOC_DARKGOLDENROD2 = 68,
-	Quantity_NOC_DARKGOLDENROD3 = 69,
-	Quantity_NOC_DARKGOLDENROD4 = 70,
-	Quantity_NOC_DARKGREEN = 71,
-	Quantity_NOC_DARKKHAKI = 72,
-	Quantity_NOC_DARKOLIVEGREEN = 73,
-	Quantity_NOC_DARKOLIVEGREEN1 = 74,
-	Quantity_NOC_DARKOLIVEGREEN2 = 75,
-	Quantity_NOC_DARKOLIVEGREEN3 = 76,
-	Quantity_NOC_DARKOLIVEGREEN4 = 77,
-	Quantity_NOC_DARKORANGE = 78,
-	Quantity_NOC_DARKORANGE1 = 79,
-	Quantity_NOC_DARKORANGE2 = 80,
-	Quantity_NOC_DARKORANGE3 = 81,
-	Quantity_NOC_DARKORANGE4 = 82,
-	Quantity_NOC_DARKORCHID = 83,
-	Quantity_NOC_DARKORCHID1 = 84,
-	Quantity_NOC_DARKORCHID2 = 85,
-	Quantity_NOC_DARKORCHID3 = 86,
-	Quantity_NOC_DARKORCHID4 = 87,
-	Quantity_NOC_DARKSALMON = 88,
-	Quantity_NOC_DARKSEAGREEN = 89,
-	Quantity_NOC_DARKSEAGREEN1 = 90,
-	Quantity_NOC_DARKSEAGREEN2 = 91,
-	Quantity_NOC_DARKSEAGREEN3 = 92,
-	Quantity_NOC_DARKSEAGREEN4 = 93,
-	Quantity_NOC_DARKSLATEBLUE = 94,
-	Quantity_NOC_DARKSLATEGRAY1 = 95,
-	Quantity_NOC_DARKSLATEGRAY2 = 96,
-	Quantity_NOC_DARKSLATEGRAY3 = 97,
-	Quantity_NOC_DARKSLATEGRAY4 = 98,
-	Quantity_NOC_DARKSLATEGRAY = 99,
-	Quantity_NOC_DARKTURQUOISE = 100,
-	Quantity_NOC_DARKVIOLET = 101,
-	Quantity_NOC_DEEPPINK = 102,
-	Quantity_NOC_DEEPPINK2 = 103,
-	Quantity_NOC_DEEPPINK3 = 104,
-	Quantity_NOC_DEEPPINK4 = 105,
-	Quantity_NOC_DEEPSKYBLUE1 = 106,
-	Quantity_NOC_DEEPSKYBLUE2 = 107,
-	Quantity_NOC_DEEPSKYBLUE3 = 108,
-	Quantity_NOC_DEEPSKYBLUE4 = 109,
-	Quantity_NOC_DODGERBLUE1 = 110,
-	Quantity_NOC_DODGERBLUE2 = 111,
-	Quantity_NOC_DODGERBLUE3 = 112,
-	Quantity_NOC_DODGERBLUE4 = 113,
-	Quantity_NOC_FIREBRICK = 114,
-	Quantity_NOC_FIREBRICK1 = 115,
-	Quantity_NOC_FIREBRICK2 = 116,
-	Quantity_NOC_FIREBRICK3 = 117,
-	Quantity_NOC_FIREBRICK4 = 118,
-	Quantity_NOC_FLORALWHITE = 119,
-	Quantity_NOC_FORESTGREEN = 120,
-	Quantity_NOC_GAINSBORO = 121,
-	Quantity_NOC_GHOSTWHITE = 122,
-	Quantity_NOC_GOLD = 123,
-	Quantity_NOC_GOLD1 = 124,
-	Quantity_NOC_GOLD2 = 125,
-	Quantity_NOC_GOLD3 = 126,
-	Quantity_NOC_GOLD4 = 127,
-	Quantity_NOC_GOLDENROD = 128,
-	Quantity_NOC_GOLDENROD1 = 129,
-	Quantity_NOC_GOLDENROD2 = 130,
-	Quantity_NOC_GOLDENROD3 = 131,
-	Quantity_NOC_GOLDENROD4 = 132,
-	Quantity_NOC_GRAY = 133,
-	Quantity_NOC_GRAY0 = 134,
-	Quantity_NOC_GRAY1 = 135,
-	Quantity_NOC_GRAY10 = 136,
-	Quantity_NOC_GRAY11 = 137,
-	Quantity_NOC_GRAY12 = 138,
-	Quantity_NOC_GRAY13 = 139,
-	Quantity_NOC_GRAY14 = 140,
-	Quantity_NOC_GRAY15 = 141,
-	Quantity_NOC_GRAY16 = 142,
-	Quantity_NOC_GRAY17 = 143,
-	Quantity_NOC_GRAY18 = 144,
-	Quantity_NOC_GRAY19 = 145,
-	Quantity_NOC_GRAY2 = 146,
-	Quantity_NOC_GRAY20 = 147,
-	Quantity_NOC_GRAY21 = 148,
-	Quantity_NOC_GRAY22 = 149,
-	Quantity_NOC_GRAY23 = 150,
-	Quantity_NOC_GRAY24 = 151,
-	Quantity_NOC_GRAY25 = 152,
-	Quantity_NOC_GRAY26 = 153,
-	Quantity_NOC_GRAY27 = 154,
-	Quantity_NOC_GRAY28 = 155,
-	Quantity_NOC_GRAY29 = 156,
-	Quantity_NOC_GRAY3 = 157,
-	Quantity_NOC_GRAY30 = 158,
-	Quantity_NOC_GRAY31 = 159,
-	Quantity_NOC_GRAY32 = 160,
-	Quantity_NOC_GRAY33 = 161,
-	Quantity_NOC_GRAY34 = 162,
-	Quantity_NOC_GRAY35 = 163,
-	Quantity_NOC_GRAY36 = 164,
-	Quantity_NOC_GRAY37 = 165,
-	Quantity_NOC_GRAY38 = 166,
-	Quantity_NOC_GRAY39 = 167,
-	Quantity_NOC_GRAY4 = 168,
-	Quantity_NOC_GRAY40 = 169,
-	Quantity_NOC_GRAY41 = 170,
-	Quantity_NOC_GRAY42 = 171,
-	Quantity_NOC_GRAY43 = 172,
-	Quantity_NOC_GRAY44 = 173,
-	Quantity_NOC_GRAY45 = 174,
-	Quantity_NOC_GRAY46 = 175,
-	Quantity_NOC_GRAY47 = 176,
-	Quantity_NOC_GRAY48 = 177,
-	Quantity_NOC_GRAY49 = 178,
-	Quantity_NOC_GRAY5 = 179,
-	Quantity_NOC_GRAY50 = 180,
-	Quantity_NOC_GRAY51 = 181,
-	Quantity_NOC_GRAY52 = 182,
-	Quantity_NOC_GRAY53 = 183,
-	Quantity_NOC_GRAY54 = 184,
-	Quantity_NOC_GRAY55 = 185,
-	Quantity_NOC_GRAY56 = 186,
-	Quantity_NOC_GRAY57 = 187,
-	Quantity_NOC_GRAY58 = 188,
-	Quantity_NOC_GRAY59 = 189,
-	Quantity_NOC_GRAY6 = 190,
-	Quantity_NOC_GRAY60 = 191,
-	Quantity_NOC_GRAY61 = 192,
-	Quantity_NOC_GRAY62 = 193,
-	Quantity_NOC_GRAY63 = 194,
-	Quantity_NOC_GRAY64 = 195,
-	Quantity_NOC_GRAY65 = 196,
-	Quantity_NOC_GRAY66 = 197,
-	Quantity_NOC_GRAY67 = 198,
-	Quantity_NOC_GRAY68 = 199,
-	Quantity_NOC_GRAY69 = 200,
-	Quantity_NOC_GRAY7 = 201,
+	Quantity_NOC_CHARTREUSE1 = Quantity_NOC_CHARTREUSE,
+	Quantity_NOC_CHARTREUSE2 = 43,
+	Quantity_NOC_CHARTREUSE3 = 44,
+	Quantity_NOC_CHARTREUSE4 = 45,
+	Quantity_NOC_CHOCOLATE = 46,
+	Quantity_NOC_CHOCOLATE1 = 47,
+	Quantity_NOC_CHOCOLATE2 = 48,
+	Quantity_NOC_CHOCOLATE3 = 49,
+	Quantity_NOC_CHOCOLATE4 = 50,
+	Quantity_NOC_CORAL = 51,
+	Quantity_NOC_CORAL1 = 52,
+	Quantity_NOC_CORAL2 = 53,
+	Quantity_NOC_CORAL3 = 54,
+	Quantity_NOC_CORAL4 = 55,
+	Quantity_NOC_CORNFLOWERBLUE = 56,
+	Quantity_NOC_CORNSILK1 = 57,
+	Quantity_NOC_CORNSILK2 = 58,
+	Quantity_NOC_CORNSILK3 = 59,
+	Quantity_NOC_CORNSILK4 = 60,
+	Quantity_NOC_CYAN = 61,
+	Quantity_NOC_CYAN1 = Quantity_NOC_CYAN,
+	Quantity_NOC_CYAN2 = 62,
+	Quantity_NOC_CYAN3 = 63,
+	Quantity_NOC_CYAN4 = 64,
+	Quantity_NOC_DARKGOLDENROD = 65,
+	Quantity_NOC_DARKGOLDENROD1 = 66,
+	Quantity_NOC_DARKGOLDENROD2 = 67,
+	Quantity_NOC_DARKGOLDENROD3 = 68,
+	Quantity_NOC_DARKGOLDENROD4 = 69,
+	Quantity_NOC_DARKGREEN = 70,
+	Quantity_NOC_DARKKHAKI = 71,
+	Quantity_NOC_DARKOLIVEGREEN = 72,
+	Quantity_NOC_DARKOLIVEGREEN1 = 73,
+	Quantity_NOC_DARKOLIVEGREEN2 = 74,
+	Quantity_NOC_DARKOLIVEGREEN3 = 75,
+	Quantity_NOC_DARKOLIVEGREEN4 = 76,
+	Quantity_NOC_DARKORANGE = 77,
+	Quantity_NOC_DARKORANGE1 = 78,
+	Quantity_NOC_DARKORANGE2 = 79,
+	Quantity_NOC_DARKORANGE3 = 80,
+	Quantity_NOC_DARKORANGE4 = 81,
+	Quantity_NOC_DARKORCHID = 82,
+	Quantity_NOC_DARKORCHID1 = 83,
+	Quantity_NOC_DARKORCHID2 = 84,
+	Quantity_NOC_DARKORCHID3 = 85,
+	Quantity_NOC_DARKORCHID4 = 86,
+	Quantity_NOC_DARKSALMON = 87,
+	Quantity_NOC_DARKSEAGREEN = 88,
+	Quantity_NOC_DARKSEAGREEN1 = 89,
+	Quantity_NOC_DARKSEAGREEN2 = 90,
+	Quantity_NOC_DARKSEAGREEN3 = 91,
+	Quantity_NOC_DARKSEAGREEN4 = 92,
+	Quantity_NOC_DARKSLATEBLUE = 93,
+	Quantity_NOC_DARKSLATEGRAY1 = 94,
+	Quantity_NOC_DARKSLATEGRAY2 = 95,
+	Quantity_NOC_DARKSLATEGRAY3 = 96,
+	Quantity_NOC_DARKSLATEGRAY4 = 97,
+	Quantity_NOC_DARKSLATEGRAY = 98,
+	Quantity_NOC_DARKTURQUOISE = 99,
+	Quantity_NOC_DARKVIOLET = 100,
+	Quantity_NOC_DEEPPINK = 101,
+	Quantity_NOC_DEEPPINK2 = 102,
+	Quantity_NOC_DEEPPINK3 = 103,
+	Quantity_NOC_DEEPPINK4 = 104,
+	Quantity_NOC_DEEPSKYBLUE1 = 105,
+	Quantity_NOC_DEEPSKYBLUE2 = 106,
+	Quantity_NOC_DEEPSKYBLUE3 = 107,
+	Quantity_NOC_DEEPSKYBLUE4 = 108,
+	Quantity_NOC_DODGERBLUE1 = 109,
+	Quantity_NOC_DODGERBLUE2 = 110,
+	Quantity_NOC_DODGERBLUE3 = 111,
+	Quantity_NOC_DODGERBLUE4 = 112,
+	Quantity_NOC_FIREBRICK = 113,
+	Quantity_NOC_FIREBRICK1 = 114,
+	Quantity_NOC_FIREBRICK2 = 115,
+	Quantity_NOC_FIREBRICK3 = 116,
+	Quantity_NOC_FIREBRICK4 = 117,
+	Quantity_NOC_FLORALWHITE = 118,
+	Quantity_NOC_FORESTGREEN = 119,
+	Quantity_NOC_GAINSBORO = 120,
+	Quantity_NOC_GHOSTWHITE = 121,
+	Quantity_NOC_GOLD = 122,
+	Quantity_NOC_GOLD1 = Quantity_NOC_GOLD,
+	Quantity_NOC_GOLD2 = 123,
+	Quantity_NOC_GOLD3 = 124,
+	Quantity_NOC_GOLD4 = 125,
+	Quantity_NOC_GOLDENROD = 126,
+	Quantity_NOC_GOLDENROD1 = 127,
+	Quantity_NOC_GOLDENROD2 = 128,
+	Quantity_NOC_GOLDENROD3 = 129,
+	Quantity_NOC_GOLDENROD4 = 130,
+	Quantity_NOC_GRAY = 131,
+	Quantity_NOC_GRAY0 = 132,
+	Quantity_NOC_GRAY1 = 133,
+	Quantity_NOC_GRAY2 = 134,
+	Quantity_NOC_GRAY3 = 135,
+	Quantity_NOC_GRAY4 = 136,
+	Quantity_NOC_GRAY5 = 137,
+	Quantity_NOC_GRAY6 = 138,
+	Quantity_NOC_GRAY7 = 139,
+	Quantity_NOC_GRAY8 = 140,
+	Quantity_NOC_GRAY9 = 141,
+	Quantity_NOC_GRAY10 = 142,
+	Quantity_NOC_GRAY11 = 143,
+	Quantity_NOC_GRAY12 = 144,
+	Quantity_NOC_GRAY13 = 145,
+	Quantity_NOC_GRAY14 = 146,
+	Quantity_NOC_GRAY15 = 147,
+	Quantity_NOC_GRAY16 = 148,
+	Quantity_NOC_GRAY17 = 149,
+	Quantity_NOC_GRAY18 = 150,
+	Quantity_NOC_GRAY19 = 151,
+	Quantity_NOC_GRAY20 = 152,
+	Quantity_NOC_GRAY21 = 153,
+	Quantity_NOC_GRAY22 = 154,
+	Quantity_NOC_GRAY23 = 155,
+	Quantity_NOC_GRAY24 = 156,
+	Quantity_NOC_GRAY25 = 157,
+	Quantity_NOC_GRAY26 = 158,
+	Quantity_NOC_GRAY27 = 159,
+	Quantity_NOC_GRAY28 = 160,
+	Quantity_NOC_GRAY29 = 161,
+	Quantity_NOC_GRAY30 = 162,
+	Quantity_NOC_GRAY31 = 163,
+	Quantity_NOC_GRAY32 = 164,
+	Quantity_NOC_GRAY33 = 165,
+	Quantity_NOC_GRAY34 = 166,
+	Quantity_NOC_GRAY35 = 167,
+	Quantity_NOC_GRAY36 = 168,
+	Quantity_NOC_GRAY37 = 169,
+	Quantity_NOC_GRAY38 = 170,
+	Quantity_NOC_GRAY39 = 171,
+	Quantity_NOC_GRAY40 = 172,
+	Quantity_NOC_GRAY41 = 173,
+	Quantity_NOC_GRAY42 = 174,
+	Quantity_NOC_GRAY43 = 175,
+	Quantity_NOC_GRAY44 = 176,
+	Quantity_NOC_GRAY45 = 177,
+	Quantity_NOC_GRAY46 = 178,
+	Quantity_NOC_GRAY47 = 179,
+	Quantity_NOC_GRAY48 = 180,
+	Quantity_NOC_GRAY49 = 181,
+	Quantity_NOC_GRAY50 = 182,
+	Quantity_NOC_GRAY51 = 183,
+	Quantity_NOC_GRAY52 = 184,
+	Quantity_NOC_GRAY53 = 185,
+	Quantity_NOC_GRAY54 = 186,
+	Quantity_NOC_GRAY55 = 187,
+	Quantity_NOC_GRAY56 = 188,
+	Quantity_NOC_GRAY57 = 189,
+	Quantity_NOC_GRAY58 = 190,
+	Quantity_NOC_GRAY59 = 191,
+	Quantity_NOC_GRAY60 = 192,
+	Quantity_NOC_GRAY61 = 193,
+	Quantity_NOC_GRAY62 = 194,
+	Quantity_NOC_GRAY63 = 195,
+	Quantity_NOC_GRAY64 = 196,
+	Quantity_NOC_GRAY65 = 197,
+	Quantity_NOC_GRAY66 = 198,
+	Quantity_NOC_GRAY67 = 199,
+	Quantity_NOC_GRAY68 = 200,
+	Quantity_NOC_GRAY69 = 201,
 	Quantity_NOC_GRAY70 = 202,
 	Quantity_NOC_GRAY71 = 203,
 	Quantity_NOC_GRAY72 = 204,
@@ -270,316 +274,319 @@ enum Quantity_NameOfColor {
 	Quantity_NOC_GRAY77 = 209,
 	Quantity_NOC_GRAY78 = 210,
 	Quantity_NOC_GRAY79 = 211,
-	Quantity_NOC_GRAY8 = 212,
-	Quantity_NOC_GRAY80 = 213,
-	Quantity_NOC_GRAY81 = 214,
-	Quantity_NOC_GRAY82 = 215,
-	Quantity_NOC_GRAY83 = 216,
-	Quantity_NOC_GRAY85 = 217,
-	Quantity_NOC_GRAY86 = 218,
-	Quantity_NOC_GRAY87 = 219,
-	Quantity_NOC_GRAY88 = 220,
-	Quantity_NOC_GRAY89 = 221,
-	Quantity_NOC_GRAY9 = 222,
-	Quantity_NOC_GRAY90 = 223,
-	Quantity_NOC_GRAY91 = 224,
-	Quantity_NOC_GRAY92 = 225,
-	Quantity_NOC_GRAY93 = 226,
-	Quantity_NOC_GRAY94 = 227,
-	Quantity_NOC_GRAY95 = 228,
-	Quantity_NOC_GREEN = 229,
-	Quantity_NOC_GREEN1 = 230,
+	Quantity_NOC_GRAY80 = 212,
+	Quantity_NOC_GRAY81 = 213,
+	Quantity_NOC_GRAY82 = 214,
+	Quantity_NOC_GRAY83 = 215,
+	Quantity_NOC_GRAY85 = 216,
+	Quantity_NOC_GRAY86 = 217,
+	Quantity_NOC_GRAY87 = 218,
+	Quantity_NOC_GRAY88 = 219,
+	Quantity_NOC_GRAY89 = 220,
+	Quantity_NOC_GRAY90 = 221,
+	Quantity_NOC_GRAY91 = 222,
+	Quantity_NOC_GRAY92 = 223,
+	Quantity_NOC_GRAY93 = 224,
+	Quantity_NOC_GRAY94 = 225,
+	Quantity_NOC_GRAY95 = 226,
+	Quantity_NOC_GRAY97 = 227,
+	Quantity_NOC_GRAY98 = 228,
+	Quantity_NOC_GRAY99 = 229,
+	Quantity_NOC_GREEN = 230,
+	Quantity_NOC_GREEN1 = Quantity_NOC_GREEN,
 	Quantity_NOC_GREEN2 = 231,
 	Quantity_NOC_GREEN3 = 232,
 	Quantity_NOC_GREEN4 = 233,
 	Quantity_NOC_GREENYELLOW = 234,
-	Quantity_NOC_GRAY97 = 235,
-	Quantity_NOC_GRAY98 = 236,
-	Quantity_NOC_GRAY99 = 237,
-	Quantity_NOC_HONEYDEW = 238,
-	Quantity_NOC_HONEYDEW2 = 239,
-	Quantity_NOC_HONEYDEW3 = 240,
-	Quantity_NOC_HONEYDEW4 = 241,
-	Quantity_NOC_HOTPINK = 242,
-	Quantity_NOC_HOTPINK1 = 243,
-	Quantity_NOC_HOTPINK2 = 244,
-	Quantity_NOC_HOTPINK3 = 245,
-	Quantity_NOC_HOTPINK4 = 246,
-	Quantity_NOC_INDIANRED = 247,
-	Quantity_NOC_INDIANRED1 = 248,
-	Quantity_NOC_INDIANRED2 = 249,
-	Quantity_NOC_INDIANRED3 = 250,
-	Quantity_NOC_INDIANRED4 = 251,
-	Quantity_NOC_IVORY = 252,
-	Quantity_NOC_IVORY2 = 253,
-	Quantity_NOC_IVORY3 = 254,
-	Quantity_NOC_IVORY4 = 255,
-	Quantity_NOC_KHAKI = 256,
-	Quantity_NOC_KHAKI1 = 257,
-	Quantity_NOC_KHAKI2 = 258,
-	Quantity_NOC_KHAKI3 = 259,
-	Quantity_NOC_KHAKI4 = 260,
-	Quantity_NOC_LAVENDER = 261,
-	Quantity_NOC_LAVENDERBLUSH1 = 262,
-	Quantity_NOC_LAVENDERBLUSH2 = 263,
-	Quantity_NOC_LAVENDERBLUSH3 = 264,
-	Quantity_NOC_LAVENDERBLUSH4 = 265,
-	Quantity_NOC_LAWNGREEN = 266,
-	Quantity_NOC_LEMONCHIFFON1 = 267,
-	Quantity_NOC_LEMONCHIFFON2 = 268,
-	Quantity_NOC_LEMONCHIFFON3 = 269,
-	Quantity_NOC_LEMONCHIFFON4 = 270,
-	Quantity_NOC_LIGHTBLUE = 271,
-	Quantity_NOC_LIGHTBLUE1 = 272,
-	Quantity_NOC_LIGHTBLUE2 = 273,
-	Quantity_NOC_LIGHTBLUE3 = 274,
-	Quantity_NOC_LIGHTBLUE4 = 275,
-	Quantity_NOC_LIGHTCORAL = 276,
-	Quantity_NOC_LIGHTCYAN1 = 277,
-	Quantity_NOC_LIGHTCYAN2 = 278,
-	Quantity_NOC_LIGHTCYAN3 = 279,
-	Quantity_NOC_LIGHTCYAN4 = 280,
-	Quantity_NOC_LIGHTGOLDENROD = 281,
-	Quantity_NOC_LIGHTGOLDENROD1 = 282,
-	Quantity_NOC_LIGHTGOLDENROD2 = 283,
-	Quantity_NOC_LIGHTGOLDENROD3 = 284,
-	Quantity_NOC_LIGHTGOLDENROD4 = 285,
-	Quantity_NOC_LIGHTGOLDENRODYELLOW = 286,
-	Quantity_NOC_LIGHTGRAY = 287,
-	Quantity_NOC_LIGHTPINK = 288,
-	Quantity_NOC_LIGHTPINK1 = 289,
-	Quantity_NOC_LIGHTPINK2 = 290,
-	Quantity_NOC_LIGHTPINK3 = 291,
-	Quantity_NOC_LIGHTPINK4 = 292,
-	Quantity_NOC_LIGHTSALMON1 = 293,
-	Quantity_NOC_LIGHTSALMON2 = 294,
-	Quantity_NOC_LIGHTSALMON3 = 295,
-	Quantity_NOC_LIGHTSALMON4 = 296,
-	Quantity_NOC_LIGHTSEAGREEN = 297,
-	Quantity_NOC_LIGHTSKYBLUE = 298,
-	Quantity_NOC_LIGHTSKYBLUE1 = 299,
-	Quantity_NOC_LIGHTSKYBLUE2 = 300,
-	Quantity_NOC_LIGHTSKYBLUE3 = 301,
-	Quantity_NOC_LIGHTSKYBLUE4 = 302,
-	Quantity_NOC_LIGHTSLATEBLUE = 303,
-	Quantity_NOC_LIGHTSLATEGRAY = 304,
-	Quantity_NOC_LIGHTSTEELBLUE = 305,
-	Quantity_NOC_LIGHTSTEELBLUE1 = 306,
-	Quantity_NOC_LIGHTSTEELBLUE2 = 307,
-	Quantity_NOC_LIGHTSTEELBLUE3 = 308,
-	Quantity_NOC_LIGHTSTEELBLUE4 = 309,
-	Quantity_NOC_LIGHTYELLOW = 310,
-	Quantity_NOC_LIGHTYELLOW2 = 311,
-	Quantity_NOC_LIGHTYELLOW3 = 312,
-	Quantity_NOC_LIGHTYELLOW4 = 313,
-	Quantity_NOC_LIMEGREEN = 314,
-	Quantity_NOC_LINEN = 315,
-	Quantity_NOC_MAGENTA1 = 316,
-	Quantity_NOC_MAGENTA2 = 317,
-	Quantity_NOC_MAGENTA3 = 318,
-	Quantity_NOC_MAGENTA4 = 319,
-	Quantity_NOC_MAROON = 320,
-	Quantity_NOC_MAROON1 = 321,
-	Quantity_NOC_MAROON2 = 322,
-	Quantity_NOC_MAROON3 = 323,
-	Quantity_NOC_MAROON4 = 324,
-	Quantity_NOC_MEDIUMAQUAMARINE = 325,
-	Quantity_NOC_MEDIUMORCHID = 326,
-	Quantity_NOC_MEDIUMORCHID1 = 327,
-	Quantity_NOC_MEDIUMORCHID2 = 328,
-	Quantity_NOC_MEDIUMORCHID3 = 329,
-	Quantity_NOC_MEDIUMORCHID4 = 330,
-	Quantity_NOC_MEDIUMPURPLE = 331,
-	Quantity_NOC_MEDIUMPURPLE1 = 332,
-	Quantity_NOC_MEDIUMPURPLE2 = 333,
-	Quantity_NOC_MEDIUMPURPLE3 = 334,
-	Quantity_NOC_MEDIUMPURPLE4 = 335,
-	Quantity_NOC_MEDIUMSEAGREEN = 336,
-	Quantity_NOC_MEDIUMSLATEBLUE = 337,
-	Quantity_NOC_MEDIUMSPRINGGREEN = 338,
-	Quantity_NOC_MEDIUMTURQUOISE = 339,
-	Quantity_NOC_MEDIUMVIOLETRED = 340,
-	Quantity_NOC_MIDNIGHTBLUE = 341,
-	Quantity_NOC_MINTCREAM = 342,
-	Quantity_NOC_MISTYROSE = 343,
-	Quantity_NOC_MISTYROSE2 = 344,
-	Quantity_NOC_MISTYROSE3 = 345,
-	Quantity_NOC_MISTYROSE4 = 346,
-	Quantity_NOC_MOCCASIN = 347,
-	Quantity_NOC_NAVAJOWHITE1 = 348,
-	Quantity_NOC_NAVAJOWHITE2 = 349,
-	Quantity_NOC_NAVAJOWHITE3 = 350,
-	Quantity_NOC_NAVAJOWHITE4 = 351,
-	Quantity_NOC_NAVYBLUE = 352,
-	Quantity_NOC_OLDLACE = 353,
-	Quantity_NOC_OLIVEDRAB = 354,
-	Quantity_NOC_OLIVEDRAB1 = 355,
-	Quantity_NOC_OLIVEDRAB2 = 356,
-	Quantity_NOC_OLIVEDRAB3 = 357,
-	Quantity_NOC_OLIVEDRAB4 = 358,
-	Quantity_NOC_ORANGE = 359,
-	Quantity_NOC_ORANGE1 = 360,
-	Quantity_NOC_ORANGE2 = 361,
-	Quantity_NOC_ORANGE3 = 362,
-	Quantity_NOC_ORANGE4 = 363,
-	Quantity_NOC_ORANGERED = 364,
-	Quantity_NOC_ORANGERED1 = 365,
-	Quantity_NOC_ORANGERED2 = 366,
-	Quantity_NOC_ORANGERED3 = 367,
-	Quantity_NOC_ORANGERED4 = 368,
-	Quantity_NOC_ORCHID = 369,
-	Quantity_NOC_ORCHID1 = 370,
-	Quantity_NOC_ORCHID2 = 371,
-	Quantity_NOC_ORCHID3 = 372,
-	Quantity_NOC_ORCHID4 = 373,
-	Quantity_NOC_PALEGOLDENROD = 374,
-	Quantity_NOC_PALEGREEN = 375,
-	Quantity_NOC_PALEGREEN1 = 376,
-	Quantity_NOC_PALEGREEN2 = 377,
-	Quantity_NOC_PALEGREEN3 = 378,
-	Quantity_NOC_PALEGREEN4 = 379,
-	Quantity_NOC_PALETURQUOISE = 380,
-	Quantity_NOC_PALETURQUOISE1 = 381,
-	Quantity_NOC_PALETURQUOISE2 = 382,
-	Quantity_NOC_PALETURQUOISE3 = 383,
-	Quantity_NOC_PALETURQUOISE4 = 384,
-	Quantity_NOC_PALEVIOLETRED = 385,
-	Quantity_NOC_PALEVIOLETRED1 = 386,
-	Quantity_NOC_PALEVIOLETRED2 = 387,
-	Quantity_NOC_PALEVIOLETRED3 = 388,
-	Quantity_NOC_PALEVIOLETRED4 = 389,
-	Quantity_NOC_PAPAYAWHIP = 390,
-	Quantity_NOC_PEACHPUFF = 391,
-	Quantity_NOC_PEACHPUFF2 = 392,
-	Quantity_NOC_PEACHPUFF3 = 393,
-	Quantity_NOC_PEACHPUFF4 = 394,
-	Quantity_NOC_PERU = 395,
-	Quantity_NOC_PINK = 396,
-	Quantity_NOC_PINK1 = 397,
-	Quantity_NOC_PINK2 = 398,
-	Quantity_NOC_PINK3 = 399,
-	Quantity_NOC_PINK4 = 400,
-	Quantity_NOC_PLUM = 401,
-	Quantity_NOC_PLUM1 = 402,
-	Quantity_NOC_PLUM2 = 403,
-	Quantity_NOC_PLUM3 = 404,
-	Quantity_NOC_PLUM4 = 405,
-	Quantity_NOC_POWDERBLUE = 406,
-	Quantity_NOC_PURPLE = 407,
-	Quantity_NOC_PURPLE1 = 408,
-	Quantity_NOC_PURPLE2 = 409,
-	Quantity_NOC_PURPLE3 = 410,
-	Quantity_NOC_PURPLE4 = 411,
-	Quantity_NOC_RED = 412,
-	Quantity_NOC_RED1 = 413,
-	Quantity_NOC_RED2 = 414,
-	Quantity_NOC_RED3 = 415,
-	Quantity_NOC_RED4 = 416,
-	Quantity_NOC_ROSYBROWN = 417,
-	Quantity_NOC_ROSYBROWN1 = 418,
-	Quantity_NOC_ROSYBROWN2 = 419,
-	Quantity_NOC_ROSYBROWN3 = 420,
-	Quantity_NOC_ROSYBROWN4 = 421,
-	Quantity_NOC_ROYALBLUE = 422,
-	Quantity_NOC_ROYALBLUE1 = 423,
-	Quantity_NOC_ROYALBLUE2 = 424,
-	Quantity_NOC_ROYALBLUE3 = 425,
-	Quantity_NOC_ROYALBLUE4 = 426,
-	Quantity_NOC_SADDLEBROWN = 427,
-	Quantity_NOC_SALMON = 428,
-	Quantity_NOC_SALMON1 = 429,
-	Quantity_NOC_SALMON2 = 430,
-	Quantity_NOC_SALMON3 = 431,
-	Quantity_NOC_SALMON4 = 432,
-	Quantity_NOC_SANDYBROWN = 433,
-	Quantity_NOC_SEAGREEN = 434,
-	Quantity_NOC_SEAGREEN1 = 435,
-	Quantity_NOC_SEAGREEN2 = 436,
-	Quantity_NOC_SEAGREEN3 = 437,
-	Quantity_NOC_SEAGREEN4 = 438,
-	Quantity_NOC_SEASHELL = 439,
-	Quantity_NOC_SEASHELL2 = 440,
-	Quantity_NOC_SEASHELL3 = 441,
-	Quantity_NOC_SEASHELL4 = 442,
-	Quantity_NOC_BEET = 443,
-	Quantity_NOC_TEAL = 444,
-	Quantity_NOC_SIENNA = 445,
-	Quantity_NOC_SIENNA1 = 446,
-	Quantity_NOC_SIENNA2 = 447,
-	Quantity_NOC_SIENNA3 = 448,
-	Quantity_NOC_SIENNA4 = 449,
-	Quantity_NOC_SKYBLUE = 450,
-	Quantity_NOC_SKYBLUE1 = 451,
-	Quantity_NOC_SKYBLUE2 = 452,
-	Quantity_NOC_SKYBLUE3 = 453,
-	Quantity_NOC_SKYBLUE4 = 454,
-	Quantity_NOC_SLATEBLUE = 455,
-	Quantity_NOC_SLATEBLUE1 = 456,
-	Quantity_NOC_SLATEBLUE2 = 457,
-	Quantity_NOC_SLATEBLUE3 = 458,
-	Quantity_NOC_SLATEBLUE4 = 459,
-	Quantity_NOC_SLATEGRAY1 = 460,
-	Quantity_NOC_SLATEGRAY2 = 461,
-	Quantity_NOC_SLATEGRAY3 = 462,
-	Quantity_NOC_SLATEGRAY4 = 463,
-	Quantity_NOC_SLATEGRAY = 464,
-	Quantity_NOC_SNOW = 465,
-	Quantity_NOC_SNOW2 = 466,
-	Quantity_NOC_SNOW3 = 467,
-	Quantity_NOC_SNOW4 = 468,
-	Quantity_NOC_SPRINGGREEN = 469,
-	Quantity_NOC_SPRINGGREEN2 = 470,
-	Quantity_NOC_SPRINGGREEN3 = 471,
-	Quantity_NOC_SPRINGGREEN4 = 472,
-	Quantity_NOC_STEELBLUE = 473,
-	Quantity_NOC_STEELBLUE1 = 474,
-	Quantity_NOC_STEELBLUE2 = 475,
-	Quantity_NOC_STEELBLUE3 = 476,
-	Quantity_NOC_STEELBLUE4 = 477,
-	Quantity_NOC_TAN = 478,
-	Quantity_NOC_TAN1 = 479,
-	Quantity_NOC_TAN2 = 480,
-	Quantity_NOC_TAN3 = 481,
-	Quantity_NOC_TAN4 = 482,
-	Quantity_NOC_THISTLE = 483,
-	Quantity_NOC_THISTLE1 = 484,
-	Quantity_NOC_THISTLE2 = 485,
-	Quantity_NOC_THISTLE3 = 486,
-	Quantity_NOC_THISTLE4 = 487,
-	Quantity_NOC_TOMATO = 488,
-	Quantity_NOC_TOMATO1 = 489,
-	Quantity_NOC_TOMATO2 = 490,
-	Quantity_NOC_TOMATO3 = 491,
-	Quantity_NOC_TOMATO4 = 492,
-	Quantity_NOC_TURQUOISE = 493,
-	Quantity_NOC_TURQUOISE1 = 494,
-	Quantity_NOC_TURQUOISE2 = 495,
-	Quantity_NOC_TURQUOISE3 = 496,
-	Quantity_NOC_TURQUOISE4 = 497,
-	Quantity_NOC_VIOLET = 498,
-	Quantity_NOC_VIOLETRED = 499,
-	Quantity_NOC_VIOLETRED1 = 500,
-	Quantity_NOC_VIOLETRED2 = 501,
-	Quantity_NOC_VIOLETRED3 = 502,
-	Quantity_NOC_VIOLETRED4 = 503,
-	Quantity_NOC_WHEAT = 504,
-	Quantity_NOC_WHEAT1 = 505,
-	Quantity_NOC_WHEAT2 = 506,
-	Quantity_NOC_WHEAT3 = 507,
-	Quantity_NOC_WHEAT4 = 508,
-	Quantity_NOC_WHITESMOKE = 509,
-	Quantity_NOC_YELLOW = 510,
-	Quantity_NOC_YELLOW1 = 511,
-	Quantity_NOC_YELLOW2 = 512,
-	Quantity_NOC_YELLOW3 = 513,
-	Quantity_NOC_YELLOW4 = 514,
-	Quantity_NOC_YELLOWGREEN = 515,
-	Quantity_NOC_WHITE = 516,
+	Quantity_NOC_HONEYDEW = 235,
+	Quantity_NOC_HONEYDEW2 = 236,
+	Quantity_NOC_HONEYDEW3 = 237,
+	Quantity_NOC_HONEYDEW4 = 238,
+	Quantity_NOC_HOTPINK = 239,
+	Quantity_NOC_HOTPINK1 = 240,
+	Quantity_NOC_HOTPINK2 = 241,
+	Quantity_NOC_HOTPINK3 = 242,
+	Quantity_NOC_HOTPINK4 = 243,
+	Quantity_NOC_INDIANRED = 244,
+	Quantity_NOC_INDIANRED1 = 245,
+	Quantity_NOC_INDIANRED2 = 246,
+	Quantity_NOC_INDIANRED3 = 247,
+	Quantity_NOC_INDIANRED4 = 248,
+	Quantity_NOC_IVORY = 249,
+	Quantity_NOC_IVORY2 = 250,
+	Quantity_NOC_IVORY3 = 251,
+	Quantity_NOC_IVORY4 = 252,
+	Quantity_NOC_KHAKI = 253,
+	Quantity_NOC_KHAKI1 = 254,
+	Quantity_NOC_KHAKI2 = 255,
+	Quantity_NOC_KHAKI3 = 256,
+	Quantity_NOC_KHAKI4 = 257,
+	Quantity_NOC_LAVENDER = 258,
+	Quantity_NOC_LAVENDERBLUSH1 = 259,
+	Quantity_NOC_LAVENDERBLUSH2 = 260,
+	Quantity_NOC_LAVENDERBLUSH3 = 261,
+	Quantity_NOC_LAVENDERBLUSH4 = 262,
+	Quantity_NOC_LAWNGREEN = 263,
+	Quantity_NOC_LEMONCHIFFON1 = 264,
+	Quantity_NOC_LEMONCHIFFON2 = 265,
+	Quantity_NOC_LEMONCHIFFON3 = 266,
+	Quantity_NOC_LEMONCHIFFON4 = 267,
+	Quantity_NOC_LIGHTBLUE = 268,
+	Quantity_NOC_LIGHTBLUE1 = 269,
+	Quantity_NOC_LIGHTBLUE2 = 270,
+	Quantity_NOC_LIGHTBLUE3 = 271,
+	Quantity_NOC_LIGHTBLUE4 = 272,
+	Quantity_NOC_LIGHTCORAL = 273,
+	Quantity_NOC_LIGHTCYAN = 274,
+	Quantity_NOC_LIGHTCYAN1 = Quantity_NOC_LIGHTCYAN,
+	Quantity_NOC_LIGHTCYAN2 = 275,
+	Quantity_NOC_LIGHTCYAN3 = 276,
+	Quantity_NOC_LIGHTCYAN4 = 277,
+	Quantity_NOC_LIGHTGOLDENROD = 278,
+	Quantity_NOC_LIGHTGOLDENROD1 = 279,
+	Quantity_NOC_LIGHTGOLDENROD2 = 280,
+	Quantity_NOC_LIGHTGOLDENROD3 = 281,
+	Quantity_NOC_LIGHTGOLDENROD4 = 282,
+	Quantity_NOC_LIGHTGOLDENRODYELLOW = 283,
+	Quantity_NOC_LIGHTGRAY = 284,
+	Quantity_NOC_LIGHTPINK = 285,
+	Quantity_NOC_LIGHTPINK1 = 286,
+	Quantity_NOC_LIGHTPINK2 = 287,
+	Quantity_NOC_LIGHTPINK3 = 288,
+	Quantity_NOC_LIGHTPINK4 = 289,
+	Quantity_NOC_LIGHTSALMON1 = 290,
+	Quantity_NOC_LIGHTSALMON2 = 291,
+	Quantity_NOC_LIGHTSALMON3 = 292,
+	Quantity_NOC_LIGHTSALMON4 = 293,
+	Quantity_NOC_LIGHTSEAGREEN = 294,
+	Quantity_NOC_LIGHTSKYBLUE = 295,
+	Quantity_NOC_LIGHTSKYBLUE1 = 296,
+	Quantity_NOC_LIGHTSKYBLUE2 = 297,
+	Quantity_NOC_LIGHTSKYBLUE3 = 298,
+	Quantity_NOC_LIGHTSKYBLUE4 = 299,
+	Quantity_NOC_LIGHTSLATEBLUE = 300,
+	Quantity_NOC_LIGHTSLATEGRAY = 301,
+	Quantity_NOC_LIGHTSTEELBLUE = 302,
+	Quantity_NOC_LIGHTSTEELBLUE1 = 303,
+	Quantity_NOC_LIGHTSTEELBLUE2 = 304,
+	Quantity_NOC_LIGHTSTEELBLUE3 = 305,
+	Quantity_NOC_LIGHTSTEELBLUE4 = 306,
+	Quantity_NOC_LIGHTYELLOW = 307,
+	Quantity_NOC_LIGHTYELLOW2 = 308,
+	Quantity_NOC_LIGHTYELLOW3 = 309,
+	Quantity_NOC_LIGHTYELLOW4 = 310,
+	Quantity_NOC_LIMEGREEN = 311,
+	Quantity_NOC_LINEN = 312,
+	Quantity_NOC_MAGENTA = 313,
+	Quantity_NOC_MAGENTA1 = Quantity_NOC_MAGENTA,
+	Quantity_NOC_MAGENTA2 = 314,
+	Quantity_NOC_MAGENTA3 = 315,
+	Quantity_NOC_MAGENTA4 = 316,
+	Quantity_NOC_MAROON = 317,
+	Quantity_NOC_MAROON1 = 318,
+	Quantity_NOC_MAROON2 = 319,
+	Quantity_NOC_MAROON3 = 320,
+	Quantity_NOC_MAROON4 = 321,
+	Quantity_NOC_MEDIUMAQUAMARINE = 322,
+	Quantity_NOC_MEDIUMORCHID = 323,
+	Quantity_NOC_MEDIUMORCHID1 = 324,
+	Quantity_NOC_MEDIUMORCHID2 = 325,
+	Quantity_NOC_MEDIUMORCHID3 = 326,
+	Quantity_NOC_MEDIUMORCHID4 = 327,
+	Quantity_NOC_MEDIUMPURPLE = 328,
+	Quantity_NOC_MEDIUMPURPLE1 = 329,
+	Quantity_NOC_MEDIUMPURPLE2 = 330,
+	Quantity_NOC_MEDIUMPURPLE3 = 331,
+	Quantity_NOC_MEDIUMPURPLE4 = 332,
+	Quantity_NOC_MEDIUMSEAGREEN = 333,
+	Quantity_NOC_MEDIUMSLATEBLUE = 334,
+	Quantity_NOC_MEDIUMSPRINGGREEN = 335,
+	Quantity_NOC_MEDIUMTURQUOISE = 336,
+	Quantity_NOC_MEDIUMVIOLETRED = 337,
+	Quantity_NOC_MIDNIGHTBLUE = 338,
+	Quantity_NOC_MINTCREAM = 339,
+	Quantity_NOC_MISTYROSE = 340,
+	Quantity_NOC_MISTYROSE2 = 341,
+	Quantity_NOC_MISTYROSE3 = 342,
+	Quantity_NOC_MISTYROSE4 = 343,
+	Quantity_NOC_MOCCASIN = 344,
+	Quantity_NOC_NAVAJOWHITE1 = 345,
+	Quantity_NOC_NAVAJOWHITE2 = 346,
+	Quantity_NOC_NAVAJOWHITE3 = 347,
+	Quantity_NOC_NAVAJOWHITE4 = 348,
+	Quantity_NOC_NAVYBLUE = 349,
+	Quantity_NOC_OLDLACE = 350,
+	Quantity_NOC_OLIVEDRAB = 351,
+	Quantity_NOC_OLIVEDRAB1 = 352,
+	Quantity_NOC_OLIVEDRAB2 = 353,
+	Quantity_NOC_OLIVEDRAB3 = 354,
+	Quantity_NOC_OLIVEDRAB4 = 355,
+	Quantity_NOC_ORANGE = 356,
+	Quantity_NOC_ORANGE1 = Quantity_NOC_ORANGE,
+	Quantity_NOC_ORANGE2 = 357,
+	Quantity_NOC_ORANGE3 = 358,
+	Quantity_NOC_ORANGE4 = 359,
+	Quantity_NOC_ORANGERED = 360,
+	Quantity_NOC_ORANGERED1 = Quantity_NOC_ORANGERED,
+	Quantity_NOC_ORANGERED2 = 361,
+	Quantity_NOC_ORANGERED3 = 362,
+	Quantity_NOC_ORANGERED4 = 363,
+	Quantity_NOC_ORCHID = 364,
+	Quantity_NOC_ORCHID1 = 365,
+	Quantity_NOC_ORCHID2 = 366,
+	Quantity_NOC_ORCHID3 = 367,
+	Quantity_NOC_ORCHID4 = 368,
+	Quantity_NOC_PALEGOLDENROD = 369,
+	Quantity_NOC_PALEGREEN = 370,
+	Quantity_NOC_PALEGREEN1 = 371,
+	Quantity_NOC_PALEGREEN2 = 372,
+	Quantity_NOC_PALEGREEN3 = 373,
+	Quantity_NOC_PALEGREEN4 = 374,
+	Quantity_NOC_PALETURQUOISE = 375,
+	Quantity_NOC_PALETURQUOISE1 = 376,
+	Quantity_NOC_PALETURQUOISE2 = 377,
+	Quantity_NOC_PALETURQUOISE3 = 378,
+	Quantity_NOC_PALETURQUOISE4 = 379,
+	Quantity_NOC_PALEVIOLETRED = 380,
+	Quantity_NOC_PALEVIOLETRED1 = 381,
+	Quantity_NOC_PALEVIOLETRED2 = 382,
+	Quantity_NOC_PALEVIOLETRED3 = 383,
+	Quantity_NOC_PALEVIOLETRED4 = 384,
+	Quantity_NOC_PAPAYAWHIP = 385,
+	Quantity_NOC_PEACHPUFF = 386,
+	Quantity_NOC_PEACHPUFF2 = 387,
+	Quantity_NOC_PEACHPUFF3 = 388,
+	Quantity_NOC_PEACHPUFF4 = 389,
+	Quantity_NOC_PERU = 390,
+	Quantity_NOC_PINK = 391,
+	Quantity_NOC_PINK1 = 392,
+	Quantity_NOC_PINK2 = 393,
+	Quantity_NOC_PINK3 = 394,
+	Quantity_NOC_PINK4 = 395,
+	Quantity_NOC_PLUM = 396,
+	Quantity_NOC_PLUM1 = 397,
+	Quantity_NOC_PLUM2 = 398,
+	Quantity_NOC_PLUM3 = 399,
+	Quantity_NOC_PLUM4 = 400,
+	Quantity_NOC_POWDERBLUE = 401,
+	Quantity_NOC_PURPLE = 402,
+	Quantity_NOC_PURPLE1 = 403,
+	Quantity_NOC_PURPLE2 = 404,
+	Quantity_NOC_PURPLE3 = 405,
+	Quantity_NOC_PURPLE4 = 406,
+	Quantity_NOC_RED = 407,
+	Quantity_NOC_RED1 = Quantity_NOC_RED,
+	Quantity_NOC_RED2 = 408,
+	Quantity_NOC_RED3 = 409,
+	Quantity_NOC_RED4 = 410,
+	Quantity_NOC_ROSYBROWN = 411,
+	Quantity_NOC_ROSYBROWN1 = 412,
+	Quantity_NOC_ROSYBROWN2 = 413,
+	Quantity_NOC_ROSYBROWN3 = 414,
+	Quantity_NOC_ROSYBROWN4 = 415,
+	Quantity_NOC_ROYALBLUE = 416,
+	Quantity_NOC_ROYALBLUE1 = 417,
+	Quantity_NOC_ROYALBLUE2 = 418,
+	Quantity_NOC_ROYALBLUE3 = 419,
+	Quantity_NOC_ROYALBLUE4 = 420,
+	Quantity_NOC_SADDLEBROWN = 421,
+	Quantity_NOC_SALMON = 422,
+	Quantity_NOC_SALMON1 = 423,
+	Quantity_NOC_SALMON2 = 424,
+	Quantity_NOC_SALMON3 = 425,
+	Quantity_NOC_SALMON4 = 426,
+	Quantity_NOC_SANDYBROWN = 427,
+	Quantity_NOC_SEAGREEN = 428,
+	Quantity_NOC_SEAGREEN1 = 429,
+	Quantity_NOC_SEAGREEN2 = 430,
+	Quantity_NOC_SEAGREEN3 = 431,
+	Quantity_NOC_SEAGREEN4 = 432,
+	Quantity_NOC_SEASHELL = 433,
+	Quantity_NOC_SEASHELL2 = 434,
+	Quantity_NOC_SEASHELL3 = 435,
+	Quantity_NOC_SEASHELL4 = 436,
+	Quantity_NOC_BEET = 437,
+	Quantity_NOC_TEAL = 438,
+	Quantity_NOC_SIENNA = 439,
+	Quantity_NOC_SIENNA1 = 440,
+	Quantity_NOC_SIENNA2 = 441,
+	Quantity_NOC_SIENNA3 = 442,
+	Quantity_NOC_SIENNA4 = 443,
+	Quantity_NOC_SKYBLUE = 444,
+	Quantity_NOC_SKYBLUE1 = 445,
+	Quantity_NOC_SKYBLUE2 = 446,
+	Quantity_NOC_SKYBLUE3 = 447,
+	Quantity_NOC_SKYBLUE4 = 448,
+	Quantity_NOC_SLATEBLUE = 449,
+	Quantity_NOC_SLATEBLUE1 = 450,
+	Quantity_NOC_SLATEBLUE2 = 451,
+	Quantity_NOC_SLATEBLUE3 = 452,
+	Quantity_NOC_SLATEBLUE4 = 453,
+	Quantity_NOC_SLATEGRAY1 = 454,
+	Quantity_NOC_SLATEGRAY2 = 455,
+	Quantity_NOC_SLATEGRAY3 = 456,
+	Quantity_NOC_SLATEGRAY4 = 457,
+	Quantity_NOC_SLATEGRAY = 458,
+	Quantity_NOC_SNOW = 459,
+	Quantity_NOC_SNOW2 = 460,
+	Quantity_NOC_SNOW3 = 461,
+	Quantity_NOC_SNOW4 = 462,
+	Quantity_NOC_SPRINGGREEN = 463,
+	Quantity_NOC_SPRINGGREEN2 = 464,
+	Quantity_NOC_SPRINGGREEN3 = 465,
+	Quantity_NOC_SPRINGGREEN4 = 466,
+	Quantity_NOC_STEELBLUE = 467,
+	Quantity_NOC_STEELBLUE1 = 468,
+	Quantity_NOC_STEELBLUE2 = 469,
+	Quantity_NOC_STEELBLUE3 = 470,
+	Quantity_NOC_STEELBLUE4 = 471,
+	Quantity_NOC_TAN = 472,
+	Quantity_NOC_TAN1 = 473,
+	Quantity_NOC_TAN2 = 474,
+	Quantity_NOC_TAN3 = 475,
+	Quantity_NOC_TAN4 = 476,
+	Quantity_NOC_THISTLE = 477,
+	Quantity_NOC_THISTLE1 = 478,
+	Quantity_NOC_THISTLE2 = 479,
+	Quantity_NOC_THISTLE3 = 480,
+	Quantity_NOC_THISTLE4 = 481,
+	Quantity_NOC_TOMATO = 482,
+	Quantity_NOC_TOMATO1 = Quantity_NOC_TOMATO,
+	Quantity_NOC_TOMATO2 = 483,
+	Quantity_NOC_TOMATO3 = 484,
+	Quantity_NOC_TOMATO4 = 485,
+	Quantity_NOC_TURQUOISE = 486,
+	Quantity_NOC_TURQUOISE1 = 487,
+	Quantity_NOC_TURQUOISE2 = 488,
+	Quantity_NOC_TURQUOISE3 = 489,
+	Quantity_NOC_TURQUOISE4 = 490,
+	Quantity_NOC_VIOLET = 491,
+	Quantity_NOC_VIOLETRED = 492,
+	Quantity_NOC_VIOLETRED1 = 493,
+	Quantity_NOC_VIOLETRED2 = 494,
+	Quantity_NOC_VIOLETRED3 = 495,
+	Quantity_NOC_VIOLETRED4 = 496,
+	Quantity_NOC_WHEAT = 497,
+	Quantity_NOC_WHEAT1 = 498,
+	Quantity_NOC_WHEAT2 = 499,
+	Quantity_NOC_WHEAT3 = 500,
+	Quantity_NOC_WHEAT4 = 501,
+	Quantity_NOC_WHITESMOKE = 502,
+	Quantity_NOC_YELLOW = 503,
+	Quantity_NOC_YELLOW1 = Quantity_NOC_YELLOW,
+	Quantity_NOC_YELLOW2 = 504,
+	Quantity_NOC_YELLOW3 = 505,
+	Quantity_NOC_YELLOW4 = 506,
+	Quantity_NOC_YELLOWGREEN = 507,
+	Quantity_NOC_WHITE = 508,
 };
 
 enum Quantity_TypeOfColor {
 	Quantity_TOC_RGB = 0,
-	Quantity_TOC_HLS = 1,
+	Quantity_TOC_sRGB = 1,
+	Quantity_TOC_HLS = 2,
+	Quantity_TOC_CIELab = 3,
+	Quantity_TOC_CIELch = 4,
 };
 
 enum Quantity_PhysicalQuantity {
@@ -681,7 +688,8 @@ class Quantity_NameOfColor(IntEnum):
 	Quantity_NOC_BISQUE3 = 19
 	Quantity_NOC_BISQUE4 = 20
 	Quantity_NOC_BLANCHEDALMOND = 21
-	Quantity_NOC_BLUE1 = 22
+	Quantity_NOC_BLUE = 22
+	Quantity_NOC_BLUE1 = Quantity_NOC_BLUE
 	Quantity_NOC_BLUE2 = 23
 	Quantity_NOC_BLUE3 = 24
 	Quantity_NOC_BLUE4 = 25
@@ -702,165 +710,168 @@ class Quantity_NameOfColor(IntEnum):
 	Quantity_NOC_CADETBLUE3 = 40
 	Quantity_NOC_CADETBLUE4 = 41
 	Quantity_NOC_CHARTREUSE = 42
-	Quantity_NOC_CHARTREUSE1 = 43
-	Quantity_NOC_CHARTREUSE2 = 44
-	Quantity_NOC_CHARTREUSE3 = 45
-	Quantity_NOC_CHARTREUSE4 = 46
-	Quantity_NOC_CHOCOLATE = 47
-	Quantity_NOC_CHOCOLATE1 = 48
-	Quantity_NOC_CHOCOLATE2 = 49
-	Quantity_NOC_CHOCOLATE3 = 50
-	Quantity_NOC_CHOCOLATE4 = 51
-	Quantity_NOC_CORAL = 52
-	Quantity_NOC_CORAL1 = 53
-	Quantity_NOC_CORAL2 = 54
-	Quantity_NOC_CORAL3 = 55
-	Quantity_NOC_CORAL4 = 56
-	Quantity_NOC_CORNFLOWERBLUE = 57
-	Quantity_NOC_CORNSILK1 = 58
-	Quantity_NOC_CORNSILK2 = 59
-	Quantity_NOC_CORNSILK3 = 60
-	Quantity_NOC_CORNSILK4 = 61
-	Quantity_NOC_CYAN1 = 62
-	Quantity_NOC_CYAN2 = 63
-	Quantity_NOC_CYAN3 = 64
-	Quantity_NOC_CYAN4 = 65
-	Quantity_NOC_DARKGOLDENROD = 66
-	Quantity_NOC_DARKGOLDENROD1 = 67
-	Quantity_NOC_DARKGOLDENROD2 = 68
-	Quantity_NOC_DARKGOLDENROD3 = 69
-	Quantity_NOC_DARKGOLDENROD4 = 70
-	Quantity_NOC_DARKGREEN = 71
-	Quantity_NOC_DARKKHAKI = 72
-	Quantity_NOC_DARKOLIVEGREEN = 73
-	Quantity_NOC_DARKOLIVEGREEN1 = 74
-	Quantity_NOC_DARKOLIVEGREEN2 = 75
-	Quantity_NOC_DARKOLIVEGREEN3 = 76
-	Quantity_NOC_DARKOLIVEGREEN4 = 77
-	Quantity_NOC_DARKORANGE = 78
-	Quantity_NOC_DARKORANGE1 = 79
-	Quantity_NOC_DARKORANGE2 = 80
-	Quantity_NOC_DARKORANGE3 = 81
-	Quantity_NOC_DARKORANGE4 = 82
-	Quantity_NOC_DARKORCHID = 83
-	Quantity_NOC_DARKORCHID1 = 84
-	Quantity_NOC_DARKORCHID2 = 85
-	Quantity_NOC_DARKORCHID3 = 86
-	Quantity_NOC_DARKORCHID4 = 87
-	Quantity_NOC_DARKSALMON = 88
-	Quantity_NOC_DARKSEAGREEN = 89
-	Quantity_NOC_DARKSEAGREEN1 = 90
-	Quantity_NOC_DARKSEAGREEN2 = 91
-	Quantity_NOC_DARKSEAGREEN3 = 92
-	Quantity_NOC_DARKSEAGREEN4 = 93
-	Quantity_NOC_DARKSLATEBLUE = 94
-	Quantity_NOC_DARKSLATEGRAY1 = 95
-	Quantity_NOC_DARKSLATEGRAY2 = 96
-	Quantity_NOC_DARKSLATEGRAY3 = 97
-	Quantity_NOC_DARKSLATEGRAY4 = 98
-	Quantity_NOC_DARKSLATEGRAY = 99
-	Quantity_NOC_DARKTURQUOISE = 100
-	Quantity_NOC_DARKVIOLET = 101
-	Quantity_NOC_DEEPPINK = 102
-	Quantity_NOC_DEEPPINK2 = 103
-	Quantity_NOC_DEEPPINK3 = 104
-	Quantity_NOC_DEEPPINK4 = 105
-	Quantity_NOC_DEEPSKYBLUE1 = 106
-	Quantity_NOC_DEEPSKYBLUE2 = 107
-	Quantity_NOC_DEEPSKYBLUE3 = 108
-	Quantity_NOC_DEEPSKYBLUE4 = 109
-	Quantity_NOC_DODGERBLUE1 = 110
-	Quantity_NOC_DODGERBLUE2 = 111
-	Quantity_NOC_DODGERBLUE3 = 112
-	Quantity_NOC_DODGERBLUE4 = 113
-	Quantity_NOC_FIREBRICK = 114
-	Quantity_NOC_FIREBRICK1 = 115
-	Quantity_NOC_FIREBRICK2 = 116
-	Quantity_NOC_FIREBRICK3 = 117
-	Quantity_NOC_FIREBRICK4 = 118
-	Quantity_NOC_FLORALWHITE = 119
-	Quantity_NOC_FORESTGREEN = 120
-	Quantity_NOC_GAINSBORO = 121
-	Quantity_NOC_GHOSTWHITE = 122
-	Quantity_NOC_GOLD = 123
-	Quantity_NOC_GOLD1 = 124
-	Quantity_NOC_GOLD2 = 125
-	Quantity_NOC_GOLD3 = 126
-	Quantity_NOC_GOLD4 = 127
-	Quantity_NOC_GOLDENROD = 128
-	Quantity_NOC_GOLDENROD1 = 129
-	Quantity_NOC_GOLDENROD2 = 130
-	Quantity_NOC_GOLDENROD3 = 131
-	Quantity_NOC_GOLDENROD4 = 132
-	Quantity_NOC_GRAY = 133
-	Quantity_NOC_GRAY0 = 134
-	Quantity_NOC_GRAY1 = 135
-	Quantity_NOC_GRAY10 = 136
-	Quantity_NOC_GRAY11 = 137
-	Quantity_NOC_GRAY12 = 138
-	Quantity_NOC_GRAY13 = 139
-	Quantity_NOC_GRAY14 = 140
-	Quantity_NOC_GRAY15 = 141
-	Quantity_NOC_GRAY16 = 142
-	Quantity_NOC_GRAY17 = 143
-	Quantity_NOC_GRAY18 = 144
-	Quantity_NOC_GRAY19 = 145
-	Quantity_NOC_GRAY2 = 146
-	Quantity_NOC_GRAY20 = 147
-	Quantity_NOC_GRAY21 = 148
-	Quantity_NOC_GRAY22 = 149
-	Quantity_NOC_GRAY23 = 150
-	Quantity_NOC_GRAY24 = 151
-	Quantity_NOC_GRAY25 = 152
-	Quantity_NOC_GRAY26 = 153
-	Quantity_NOC_GRAY27 = 154
-	Quantity_NOC_GRAY28 = 155
-	Quantity_NOC_GRAY29 = 156
-	Quantity_NOC_GRAY3 = 157
-	Quantity_NOC_GRAY30 = 158
-	Quantity_NOC_GRAY31 = 159
-	Quantity_NOC_GRAY32 = 160
-	Quantity_NOC_GRAY33 = 161
-	Quantity_NOC_GRAY34 = 162
-	Quantity_NOC_GRAY35 = 163
-	Quantity_NOC_GRAY36 = 164
-	Quantity_NOC_GRAY37 = 165
-	Quantity_NOC_GRAY38 = 166
-	Quantity_NOC_GRAY39 = 167
-	Quantity_NOC_GRAY4 = 168
-	Quantity_NOC_GRAY40 = 169
-	Quantity_NOC_GRAY41 = 170
-	Quantity_NOC_GRAY42 = 171
-	Quantity_NOC_GRAY43 = 172
-	Quantity_NOC_GRAY44 = 173
-	Quantity_NOC_GRAY45 = 174
-	Quantity_NOC_GRAY46 = 175
-	Quantity_NOC_GRAY47 = 176
-	Quantity_NOC_GRAY48 = 177
-	Quantity_NOC_GRAY49 = 178
-	Quantity_NOC_GRAY5 = 179
-	Quantity_NOC_GRAY50 = 180
-	Quantity_NOC_GRAY51 = 181
-	Quantity_NOC_GRAY52 = 182
-	Quantity_NOC_GRAY53 = 183
-	Quantity_NOC_GRAY54 = 184
-	Quantity_NOC_GRAY55 = 185
-	Quantity_NOC_GRAY56 = 186
-	Quantity_NOC_GRAY57 = 187
-	Quantity_NOC_GRAY58 = 188
-	Quantity_NOC_GRAY59 = 189
-	Quantity_NOC_GRAY6 = 190
-	Quantity_NOC_GRAY60 = 191
-	Quantity_NOC_GRAY61 = 192
-	Quantity_NOC_GRAY62 = 193
-	Quantity_NOC_GRAY63 = 194
-	Quantity_NOC_GRAY64 = 195
-	Quantity_NOC_GRAY65 = 196
-	Quantity_NOC_GRAY66 = 197
-	Quantity_NOC_GRAY67 = 198
-	Quantity_NOC_GRAY68 = 199
-	Quantity_NOC_GRAY69 = 200
-	Quantity_NOC_GRAY7 = 201
+	Quantity_NOC_CHARTREUSE1 = Quantity_NOC_CHARTREUSE
+	Quantity_NOC_CHARTREUSE2 = 43
+	Quantity_NOC_CHARTREUSE3 = 44
+	Quantity_NOC_CHARTREUSE4 = 45
+	Quantity_NOC_CHOCOLATE = 46
+	Quantity_NOC_CHOCOLATE1 = 47
+	Quantity_NOC_CHOCOLATE2 = 48
+	Quantity_NOC_CHOCOLATE3 = 49
+	Quantity_NOC_CHOCOLATE4 = 50
+	Quantity_NOC_CORAL = 51
+	Quantity_NOC_CORAL1 = 52
+	Quantity_NOC_CORAL2 = 53
+	Quantity_NOC_CORAL3 = 54
+	Quantity_NOC_CORAL4 = 55
+	Quantity_NOC_CORNFLOWERBLUE = 56
+	Quantity_NOC_CORNSILK1 = 57
+	Quantity_NOC_CORNSILK2 = 58
+	Quantity_NOC_CORNSILK3 = 59
+	Quantity_NOC_CORNSILK4 = 60
+	Quantity_NOC_CYAN = 61
+	Quantity_NOC_CYAN1 = Quantity_NOC_CYAN
+	Quantity_NOC_CYAN2 = 62
+	Quantity_NOC_CYAN3 = 63
+	Quantity_NOC_CYAN4 = 64
+	Quantity_NOC_DARKGOLDENROD = 65
+	Quantity_NOC_DARKGOLDENROD1 = 66
+	Quantity_NOC_DARKGOLDENROD2 = 67
+	Quantity_NOC_DARKGOLDENROD3 = 68
+	Quantity_NOC_DARKGOLDENROD4 = 69
+	Quantity_NOC_DARKGREEN = 70
+	Quantity_NOC_DARKKHAKI = 71
+	Quantity_NOC_DARKOLIVEGREEN = 72
+	Quantity_NOC_DARKOLIVEGREEN1 = 73
+	Quantity_NOC_DARKOLIVEGREEN2 = 74
+	Quantity_NOC_DARKOLIVEGREEN3 = 75
+	Quantity_NOC_DARKOLIVEGREEN4 = 76
+	Quantity_NOC_DARKORANGE = 77
+	Quantity_NOC_DARKORANGE1 = 78
+	Quantity_NOC_DARKORANGE2 = 79
+	Quantity_NOC_DARKORANGE3 = 80
+	Quantity_NOC_DARKORANGE4 = 81
+	Quantity_NOC_DARKORCHID = 82
+	Quantity_NOC_DARKORCHID1 = 83
+	Quantity_NOC_DARKORCHID2 = 84
+	Quantity_NOC_DARKORCHID3 = 85
+	Quantity_NOC_DARKORCHID4 = 86
+	Quantity_NOC_DARKSALMON = 87
+	Quantity_NOC_DARKSEAGREEN = 88
+	Quantity_NOC_DARKSEAGREEN1 = 89
+	Quantity_NOC_DARKSEAGREEN2 = 90
+	Quantity_NOC_DARKSEAGREEN3 = 91
+	Quantity_NOC_DARKSEAGREEN4 = 92
+	Quantity_NOC_DARKSLATEBLUE = 93
+	Quantity_NOC_DARKSLATEGRAY1 = 94
+	Quantity_NOC_DARKSLATEGRAY2 = 95
+	Quantity_NOC_DARKSLATEGRAY3 = 96
+	Quantity_NOC_DARKSLATEGRAY4 = 97
+	Quantity_NOC_DARKSLATEGRAY = 98
+	Quantity_NOC_DARKTURQUOISE = 99
+	Quantity_NOC_DARKVIOLET = 100
+	Quantity_NOC_DEEPPINK = 101
+	Quantity_NOC_DEEPPINK2 = 102
+	Quantity_NOC_DEEPPINK3 = 103
+	Quantity_NOC_DEEPPINK4 = 104
+	Quantity_NOC_DEEPSKYBLUE1 = 105
+	Quantity_NOC_DEEPSKYBLUE2 = 106
+	Quantity_NOC_DEEPSKYBLUE3 = 107
+	Quantity_NOC_DEEPSKYBLUE4 = 108
+	Quantity_NOC_DODGERBLUE1 = 109
+	Quantity_NOC_DODGERBLUE2 = 110
+	Quantity_NOC_DODGERBLUE3 = 111
+	Quantity_NOC_DODGERBLUE4 = 112
+	Quantity_NOC_FIREBRICK = 113
+	Quantity_NOC_FIREBRICK1 = 114
+	Quantity_NOC_FIREBRICK2 = 115
+	Quantity_NOC_FIREBRICK3 = 116
+	Quantity_NOC_FIREBRICK4 = 117
+	Quantity_NOC_FLORALWHITE = 118
+	Quantity_NOC_FORESTGREEN = 119
+	Quantity_NOC_GAINSBORO = 120
+	Quantity_NOC_GHOSTWHITE = 121
+	Quantity_NOC_GOLD = 122
+	Quantity_NOC_GOLD1 = Quantity_NOC_GOLD
+	Quantity_NOC_GOLD2 = 123
+	Quantity_NOC_GOLD3 = 124
+	Quantity_NOC_GOLD4 = 125
+	Quantity_NOC_GOLDENROD = 126
+	Quantity_NOC_GOLDENROD1 = 127
+	Quantity_NOC_GOLDENROD2 = 128
+	Quantity_NOC_GOLDENROD3 = 129
+	Quantity_NOC_GOLDENROD4 = 130
+	Quantity_NOC_GRAY = 131
+	Quantity_NOC_GRAY0 = 132
+	Quantity_NOC_GRAY1 = 133
+	Quantity_NOC_GRAY2 = 134
+	Quantity_NOC_GRAY3 = 135
+	Quantity_NOC_GRAY4 = 136
+	Quantity_NOC_GRAY5 = 137
+	Quantity_NOC_GRAY6 = 138
+	Quantity_NOC_GRAY7 = 139
+	Quantity_NOC_GRAY8 = 140
+	Quantity_NOC_GRAY9 = 141
+	Quantity_NOC_GRAY10 = 142
+	Quantity_NOC_GRAY11 = 143
+	Quantity_NOC_GRAY12 = 144
+	Quantity_NOC_GRAY13 = 145
+	Quantity_NOC_GRAY14 = 146
+	Quantity_NOC_GRAY15 = 147
+	Quantity_NOC_GRAY16 = 148
+	Quantity_NOC_GRAY17 = 149
+	Quantity_NOC_GRAY18 = 150
+	Quantity_NOC_GRAY19 = 151
+	Quantity_NOC_GRAY20 = 152
+	Quantity_NOC_GRAY21 = 153
+	Quantity_NOC_GRAY22 = 154
+	Quantity_NOC_GRAY23 = 155
+	Quantity_NOC_GRAY24 = 156
+	Quantity_NOC_GRAY25 = 157
+	Quantity_NOC_GRAY26 = 158
+	Quantity_NOC_GRAY27 = 159
+	Quantity_NOC_GRAY28 = 160
+	Quantity_NOC_GRAY29 = 161
+	Quantity_NOC_GRAY30 = 162
+	Quantity_NOC_GRAY31 = 163
+	Quantity_NOC_GRAY32 = 164
+	Quantity_NOC_GRAY33 = 165
+	Quantity_NOC_GRAY34 = 166
+	Quantity_NOC_GRAY35 = 167
+	Quantity_NOC_GRAY36 = 168
+	Quantity_NOC_GRAY37 = 169
+	Quantity_NOC_GRAY38 = 170
+	Quantity_NOC_GRAY39 = 171
+	Quantity_NOC_GRAY40 = 172
+	Quantity_NOC_GRAY41 = 173
+	Quantity_NOC_GRAY42 = 174
+	Quantity_NOC_GRAY43 = 175
+	Quantity_NOC_GRAY44 = 176
+	Quantity_NOC_GRAY45 = 177
+	Quantity_NOC_GRAY46 = 178
+	Quantity_NOC_GRAY47 = 179
+	Quantity_NOC_GRAY48 = 180
+	Quantity_NOC_GRAY49 = 181
+	Quantity_NOC_GRAY50 = 182
+	Quantity_NOC_GRAY51 = 183
+	Quantity_NOC_GRAY52 = 184
+	Quantity_NOC_GRAY53 = 185
+	Quantity_NOC_GRAY54 = 186
+	Quantity_NOC_GRAY55 = 187
+	Quantity_NOC_GRAY56 = 188
+	Quantity_NOC_GRAY57 = 189
+	Quantity_NOC_GRAY58 = 190
+	Quantity_NOC_GRAY59 = 191
+	Quantity_NOC_GRAY60 = 192
+	Quantity_NOC_GRAY61 = 193
+	Quantity_NOC_GRAY62 = 194
+	Quantity_NOC_GRAY63 = 195
+	Quantity_NOC_GRAY64 = 196
+	Quantity_NOC_GRAY65 = 197
+	Quantity_NOC_GRAY66 = 198
+	Quantity_NOC_GRAY67 = 199
+	Quantity_NOC_GRAY68 = 200
+	Quantity_NOC_GRAY69 = 201
 	Quantity_NOC_GRAY70 = 202
 	Quantity_NOC_GRAY71 = 203
 	Quantity_NOC_GRAY72 = 204
@@ -871,311 +882,311 @@ class Quantity_NameOfColor(IntEnum):
 	Quantity_NOC_GRAY77 = 209
 	Quantity_NOC_GRAY78 = 210
 	Quantity_NOC_GRAY79 = 211
-	Quantity_NOC_GRAY8 = 212
-	Quantity_NOC_GRAY80 = 213
-	Quantity_NOC_GRAY81 = 214
-	Quantity_NOC_GRAY82 = 215
-	Quantity_NOC_GRAY83 = 216
-	Quantity_NOC_GRAY85 = 217
-	Quantity_NOC_GRAY86 = 218
-	Quantity_NOC_GRAY87 = 219
-	Quantity_NOC_GRAY88 = 220
-	Quantity_NOC_GRAY89 = 221
-	Quantity_NOC_GRAY9 = 222
-	Quantity_NOC_GRAY90 = 223
-	Quantity_NOC_GRAY91 = 224
-	Quantity_NOC_GRAY92 = 225
-	Quantity_NOC_GRAY93 = 226
-	Quantity_NOC_GRAY94 = 227
-	Quantity_NOC_GRAY95 = 228
-	Quantity_NOC_GREEN = 229
-	Quantity_NOC_GREEN1 = 230
+	Quantity_NOC_GRAY80 = 212
+	Quantity_NOC_GRAY81 = 213
+	Quantity_NOC_GRAY82 = 214
+	Quantity_NOC_GRAY83 = 215
+	Quantity_NOC_GRAY85 = 216
+	Quantity_NOC_GRAY86 = 217
+	Quantity_NOC_GRAY87 = 218
+	Quantity_NOC_GRAY88 = 219
+	Quantity_NOC_GRAY89 = 220
+	Quantity_NOC_GRAY90 = 221
+	Quantity_NOC_GRAY91 = 222
+	Quantity_NOC_GRAY92 = 223
+	Quantity_NOC_GRAY93 = 224
+	Quantity_NOC_GRAY94 = 225
+	Quantity_NOC_GRAY95 = 226
+	Quantity_NOC_GRAY97 = 227
+	Quantity_NOC_GRAY98 = 228
+	Quantity_NOC_GRAY99 = 229
+	Quantity_NOC_GREEN = 230
+	Quantity_NOC_GREEN1 = Quantity_NOC_GREEN
 	Quantity_NOC_GREEN2 = 231
 	Quantity_NOC_GREEN3 = 232
 	Quantity_NOC_GREEN4 = 233
 	Quantity_NOC_GREENYELLOW = 234
-	Quantity_NOC_GRAY97 = 235
-	Quantity_NOC_GRAY98 = 236
-	Quantity_NOC_GRAY99 = 237
-	Quantity_NOC_HONEYDEW = 238
-	Quantity_NOC_HONEYDEW2 = 239
-	Quantity_NOC_HONEYDEW3 = 240
-	Quantity_NOC_HONEYDEW4 = 241
-	Quantity_NOC_HOTPINK = 242
-	Quantity_NOC_HOTPINK1 = 243
-	Quantity_NOC_HOTPINK2 = 244
-	Quantity_NOC_HOTPINK3 = 245
-	Quantity_NOC_HOTPINK4 = 246
-	Quantity_NOC_INDIANRED = 247
-	Quantity_NOC_INDIANRED1 = 248
-	Quantity_NOC_INDIANRED2 = 249
-	Quantity_NOC_INDIANRED3 = 250
-	Quantity_NOC_INDIANRED4 = 251
-	Quantity_NOC_IVORY = 252
-	Quantity_NOC_IVORY2 = 253
-	Quantity_NOC_IVORY3 = 254
-	Quantity_NOC_IVORY4 = 255
-	Quantity_NOC_KHAKI = 256
-	Quantity_NOC_KHAKI1 = 257
-	Quantity_NOC_KHAKI2 = 258
-	Quantity_NOC_KHAKI3 = 259
-	Quantity_NOC_KHAKI4 = 260
-	Quantity_NOC_LAVENDER = 261
-	Quantity_NOC_LAVENDERBLUSH1 = 262
-	Quantity_NOC_LAVENDERBLUSH2 = 263
-	Quantity_NOC_LAVENDERBLUSH3 = 264
-	Quantity_NOC_LAVENDERBLUSH4 = 265
-	Quantity_NOC_LAWNGREEN = 266
-	Quantity_NOC_LEMONCHIFFON1 = 267
-	Quantity_NOC_LEMONCHIFFON2 = 268
-	Quantity_NOC_LEMONCHIFFON3 = 269
-	Quantity_NOC_LEMONCHIFFON4 = 270
-	Quantity_NOC_LIGHTBLUE = 271
-	Quantity_NOC_LIGHTBLUE1 = 272
-	Quantity_NOC_LIGHTBLUE2 = 273
-	Quantity_NOC_LIGHTBLUE3 = 274
-	Quantity_NOC_LIGHTBLUE4 = 275
-	Quantity_NOC_LIGHTCORAL = 276
-	Quantity_NOC_LIGHTCYAN1 = 277
-	Quantity_NOC_LIGHTCYAN2 = 278
-	Quantity_NOC_LIGHTCYAN3 = 279
-	Quantity_NOC_LIGHTCYAN4 = 280
-	Quantity_NOC_LIGHTGOLDENROD = 281
-	Quantity_NOC_LIGHTGOLDENROD1 = 282
-	Quantity_NOC_LIGHTGOLDENROD2 = 283
-	Quantity_NOC_LIGHTGOLDENROD3 = 284
-	Quantity_NOC_LIGHTGOLDENROD4 = 285
-	Quantity_NOC_LIGHTGOLDENRODYELLOW = 286
-	Quantity_NOC_LIGHTGRAY = 287
-	Quantity_NOC_LIGHTPINK = 288
-	Quantity_NOC_LIGHTPINK1 = 289
-	Quantity_NOC_LIGHTPINK2 = 290
-	Quantity_NOC_LIGHTPINK3 = 291
-	Quantity_NOC_LIGHTPINK4 = 292
-	Quantity_NOC_LIGHTSALMON1 = 293
-	Quantity_NOC_LIGHTSALMON2 = 294
-	Quantity_NOC_LIGHTSALMON3 = 295
-	Quantity_NOC_LIGHTSALMON4 = 296
-	Quantity_NOC_LIGHTSEAGREEN = 297
-	Quantity_NOC_LIGHTSKYBLUE = 298
-	Quantity_NOC_LIGHTSKYBLUE1 = 299
-	Quantity_NOC_LIGHTSKYBLUE2 = 300
-	Quantity_NOC_LIGHTSKYBLUE3 = 301
-	Quantity_NOC_LIGHTSKYBLUE4 = 302
-	Quantity_NOC_LIGHTSLATEBLUE = 303
-	Quantity_NOC_LIGHTSLATEGRAY = 304
-	Quantity_NOC_LIGHTSTEELBLUE = 305
-	Quantity_NOC_LIGHTSTEELBLUE1 = 306
-	Quantity_NOC_LIGHTSTEELBLUE2 = 307
-	Quantity_NOC_LIGHTSTEELBLUE3 = 308
-	Quantity_NOC_LIGHTSTEELBLUE4 = 309
-	Quantity_NOC_LIGHTYELLOW = 310
-	Quantity_NOC_LIGHTYELLOW2 = 311
-	Quantity_NOC_LIGHTYELLOW3 = 312
-	Quantity_NOC_LIGHTYELLOW4 = 313
-	Quantity_NOC_LIMEGREEN = 314
-	Quantity_NOC_LINEN = 315
-	Quantity_NOC_MAGENTA1 = 316
-	Quantity_NOC_MAGENTA2 = 317
-	Quantity_NOC_MAGENTA3 = 318
-	Quantity_NOC_MAGENTA4 = 319
-	Quantity_NOC_MAROON = 320
-	Quantity_NOC_MAROON1 = 321
-	Quantity_NOC_MAROON2 = 322
-	Quantity_NOC_MAROON3 = 323
-	Quantity_NOC_MAROON4 = 324
-	Quantity_NOC_MEDIUMAQUAMARINE = 325
-	Quantity_NOC_MEDIUMORCHID = 326
-	Quantity_NOC_MEDIUMORCHID1 = 327
-	Quantity_NOC_MEDIUMORCHID2 = 328
-	Quantity_NOC_MEDIUMORCHID3 = 329
-	Quantity_NOC_MEDIUMORCHID4 = 330
-	Quantity_NOC_MEDIUMPURPLE = 331
-	Quantity_NOC_MEDIUMPURPLE1 = 332
-	Quantity_NOC_MEDIUMPURPLE2 = 333
-	Quantity_NOC_MEDIUMPURPLE3 = 334
-	Quantity_NOC_MEDIUMPURPLE4 = 335
-	Quantity_NOC_MEDIUMSEAGREEN = 336
-	Quantity_NOC_MEDIUMSLATEBLUE = 337
-	Quantity_NOC_MEDIUMSPRINGGREEN = 338
-	Quantity_NOC_MEDIUMTURQUOISE = 339
-	Quantity_NOC_MEDIUMVIOLETRED = 340
-	Quantity_NOC_MIDNIGHTBLUE = 341
-	Quantity_NOC_MINTCREAM = 342
-	Quantity_NOC_MISTYROSE = 343
-	Quantity_NOC_MISTYROSE2 = 344
-	Quantity_NOC_MISTYROSE3 = 345
-	Quantity_NOC_MISTYROSE4 = 346
-	Quantity_NOC_MOCCASIN = 347
-	Quantity_NOC_NAVAJOWHITE1 = 348
-	Quantity_NOC_NAVAJOWHITE2 = 349
-	Quantity_NOC_NAVAJOWHITE3 = 350
-	Quantity_NOC_NAVAJOWHITE4 = 351
-	Quantity_NOC_NAVYBLUE = 352
-	Quantity_NOC_OLDLACE = 353
-	Quantity_NOC_OLIVEDRAB = 354
-	Quantity_NOC_OLIVEDRAB1 = 355
-	Quantity_NOC_OLIVEDRAB2 = 356
-	Quantity_NOC_OLIVEDRAB3 = 357
-	Quantity_NOC_OLIVEDRAB4 = 358
-	Quantity_NOC_ORANGE = 359
-	Quantity_NOC_ORANGE1 = 360
-	Quantity_NOC_ORANGE2 = 361
-	Quantity_NOC_ORANGE3 = 362
-	Quantity_NOC_ORANGE4 = 363
-	Quantity_NOC_ORANGERED = 364
-	Quantity_NOC_ORANGERED1 = 365
-	Quantity_NOC_ORANGERED2 = 366
-	Quantity_NOC_ORANGERED3 = 367
-	Quantity_NOC_ORANGERED4 = 368
-	Quantity_NOC_ORCHID = 369
-	Quantity_NOC_ORCHID1 = 370
-	Quantity_NOC_ORCHID2 = 371
-	Quantity_NOC_ORCHID3 = 372
-	Quantity_NOC_ORCHID4 = 373
-	Quantity_NOC_PALEGOLDENROD = 374
-	Quantity_NOC_PALEGREEN = 375
-	Quantity_NOC_PALEGREEN1 = 376
-	Quantity_NOC_PALEGREEN2 = 377
-	Quantity_NOC_PALEGREEN3 = 378
-	Quantity_NOC_PALEGREEN4 = 379
-	Quantity_NOC_PALETURQUOISE = 380
-	Quantity_NOC_PALETURQUOISE1 = 381
-	Quantity_NOC_PALETURQUOISE2 = 382
-	Quantity_NOC_PALETURQUOISE3 = 383
-	Quantity_NOC_PALETURQUOISE4 = 384
-	Quantity_NOC_PALEVIOLETRED = 385
-	Quantity_NOC_PALEVIOLETRED1 = 386
-	Quantity_NOC_PALEVIOLETRED2 = 387
-	Quantity_NOC_PALEVIOLETRED3 = 388
-	Quantity_NOC_PALEVIOLETRED4 = 389
-	Quantity_NOC_PAPAYAWHIP = 390
-	Quantity_NOC_PEACHPUFF = 391
-	Quantity_NOC_PEACHPUFF2 = 392
-	Quantity_NOC_PEACHPUFF3 = 393
-	Quantity_NOC_PEACHPUFF4 = 394
-	Quantity_NOC_PERU = 395
-	Quantity_NOC_PINK = 396
-	Quantity_NOC_PINK1 = 397
-	Quantity_NOC_PINK2 = 398
-	Quantity_NOC_PINK3 = 399
-	Quantity_NOC_PINK4 = 400
-	Quantity_NOC_PLUM = 401
-	Quantity_NOC_PLUM1 = 402
-	Quantity_NOC_PLUM2 = 403
-	Quantity_NOC_PLUM3 = 404
-	Quantity_NOC_PLUM4 = 405
-	Quantity_NOC_POWDERBLUE = 406
-	Quantity_NOC_PURPLE = 407
-	Quantity_NOC_PURPLE1 = 408
-	Quantity_NOC_PURPLE2 = 409
-	Quantity_NOC_PURPLE3 = 410
-	Quantity_NOC_PURPLE4 = 411
-	Quantity_NOC_RED = 412
-	Quantity_NOC_RED1 = 413
-	Quantity_NOC_RED2 = 414
-	Quantity_NOC_RED3 = 415
-	Quantity_NOC_RED4 = 416
-	Quantity_NOC_ROSYBROWN = 417
-	Quantity_NOC_ROSYBROWN1 = 418
-	Quantity_NOC_ROSYBROWN2 = 419
-	Quantity_NOC_ROSYBROWN3 = 420
-	Quantity_NOC_ROSYBROWN4 = 421
-	Quantity_NOC_ROYALBLUE = 422
-	Quantity_NOC_ROYALBLUE1 = 423
-	Quantity_NOC_ROYALBLUE2 = 424
-	Quantity_NOC_ROYALBLUE3 = 425
-	Quantity_NOC_ROYALBLUE4 = 426
-	Quantity_NOC_SADDLEBROWN = 427
-	Quantity_NOC_SALMON = 428
-	Quantity_NOC_SALMON1 = 429
-	Quantity_NOC_SALMON2 = 430
-	Quantity_NOC_SALMON3 = 431
-	Quantity_NOC_SALMON4 = 432
-	Quantity_NOC_SANDYBROWN = 433
-	Quantity_NOC_SEAGREEN = 434
-	Quantity_NOC_SEAGREEN1 = 435
-	Quantity_NOC_SEAGREEN2 = 436
-	Quantity_NOC_SEAGREEN3 = 437
-	Quantity_NOC_SEAGREEN4 = 438
-	Quantity_NOC_SEASHELL = 439
-	Quantity_NOC_SEASHELL2 = 440
-	Quantity_NOC_SEASHELL3 = 441
-	Quantity_NOC_SEASHELL4 = 442
-	Quantity_NOC_BEET = 443
-	Quantity_NOC_TEAL = 444
-	Quantity_NOC_SIENNA = 445
-	Quantity_NOC_SIENNA1 = 446
-	Quantity_NOC_SIENNA2 = 447
-	Quantity_NOC_SIENNA3 = 448
-	Quantity_NOC_SIENNA4 = 449
-	Quantity_NOC_SKYBLUE = 450
-	Quantity_NOC_SKYBLUE1 = 451
-	Quantity_NOC_SKYBLUE2 = 452
-	Quantity_NOC_SKYBLUE3 = 453
-	Quantity_NOC_SKYBLUE4 = 454
-	Quantity_NOC_SLATEBLUE = 455
-	Quantity_NOC_SLATEBLUE1 = 456
-	Quantity_NOC_SLATEBLUE2 = 457
-	Quantity_NOC_SLATEBLUE3 = 458
-	Quantity_NOC_SLATEBLUE4 = 459
-	Quantity_NOC_SLATEGRAY1 = 460
-	Quantity_NOC_SLATEGRAY2 = 461
-	Quantity_NOC_SLATEGRAY3 = 462
-	Quantity_NOC_SLATEGRAY4 = 463
-	Quantity_NOC_SLATEGRAY = 464
-	Quantity_NOC_SNOW = 465
-	Quantity_NOC_SNOW2 = 466
-	Quantity_NOC_SNOW3 = 467
-	Quantity_NOC_SNOW4 = 468
-	Quantity_NOC_SPRINGGREEN = 469
-	Quantity_NOC_SPRINGGREEN2 = 470
-	Quantity_NOC_SPRINGGREEN3 = 471
-	Quantity_NOC_SPRINGGREEN4 = 472
-	Quantity_NOC_STEELBLUE = 473
-	Quantity_NOC_STEELBLUE1 = 474
-	Quantity_NOC_STEELBLUE2 = 475
-	Quantity_NOC_STEELBLUE3 = 476
-	Quantity_NOC_STEELBLUE4 = 477
-	Quantity_NOC_TAN = 478
-	Quantity_NOC_TAN1 = 479
-	Quantity_NOC_TAN2 = 480
-	Quantity_NOC_TAN3 = 481
-	Quantity_NOC_TAN4 = 482
-	Quantity_NOC_THISTLE = 483
-	Quantity_NOC_THISTLE1 = 484
-	Quantity_NOC_THISTLE2 = 485
-	Quantity_NOC_THISTLE3 = 486
-	Quantity_NOC_THISTLE4 = 487
-	Quantity_NOC_TOMATO = 488
-	Quantity_NOC_TOMATO1 = 489
-	Quantity_NOC_TOMATO2 = 490
-	Quantity_NOC_TOMATO3 = 491
-	Quantity_NOC_TOMATO4 = 492
-	Quantity_NOC_TURQUOISE = 493
-	Quantity_NOC_TURQUOISE1 = 494
-	Quantity_NOC_TURQUOISE2 = 495
-	Quantity_NOC_TURQUOISE3 = 496
-	Quantity_NOC_TURQUOISE4 = 497
-	Quantity_NOC_VIOLET = 498
-	Quantity_NOC_VIOLETRED = 499
-	Quantity_NOC_VIOLETRED1 = 500
-	Quantity_NOC_VIOLETRED2 = 501
-	Quantity_NOC_VIOLETRED3 = 502
-	Quantity_NOC_VIOLETRED4 = 503
-	Quantity_NOC_WHEAT = 504
-	Quantity_NOC_WHEAT1 = 505
-	Quantity_NOC_WHEAT2 = 506
-	Quantity_NOC_WHEAT3 = 507
-	Quantity_NOC_WHEAT4 = 508
-	Quantity_NOC_WHITESMOKE = 509
-	Quantity_NOC_YELLOW = 510
-	Quantity_NOC_YELLOW1 = 511
-	Quantity_NOC_YELLOW2 = 512
-	Quantity_NOC_YELLOW3 = 513
-	Quantity_NOC_YELLOW4 = 514
-	Quantity_NOC_YELLOWGREEN = 515
-	Quantity_NOC_WHITE = 516
+	Quantity_NOC_HONEYDEW = 235
+	Quantity_NOC_HONEYDEW2 = 236
+	Quantity_NOC_HONEYDEW3 = 237
+	Quantity_NOC_HONEYDEW4 = 238
+	Quantity_NOC_HOTPINK = 239
+	Quantity_NOC_HOTPINK1 = 240
+	Quantity_NOC_HOTPINK2 = 241
+	Quantity_NOC_HOTPINK3 = 242
+	Quantity_NOC_HOTPINK4 = 243
+	Quantity_NOC_INDIANRED = 244
+	Quantity_NOC_INDIANRED1 = 245
+	Quantity_NOC_INDIANRED2 = 246
+	Quantity_NOC_INDIANRED3 = 247
+	Quantity_NOC_INDIANRED4 = 248
+	Quantity_NOC_IVORY = 249
+	Quantity_NOC_IVORY2 = 250
+	Quantity_NOC_IVORY3 = 251
+	Quantity_NOC_IVORY4 = 252
+	Quantity_NOC_KHAKI = 253
+	Quantity_NOC_KHAKI1 = 254
+	Quantity_NOC_KHAKI2 = 255
+	Quantity_NOC_KHAKI3 = 256
+	Quantity_NOC_KHAKI4 = 257
+	Quantity_NOC_LAVENDER = 258
+	Quantity_NOC_LAVENDERBLUSH1 = 259
+	Quantity_NOC_LAVENDERBLUSH2 = 260
+	Quantity_NOC_LAVENDERBLUSH3 = 261
+	Quantity_NOC_LAVENDERBLUSH4 = 262
+	Quantity_NOC_LAWNGREEN = 263
+	Quantity_NOC_LEMONCHIFFON1 = 264
+	Quantity_NOC_LEMONCHIFFON2 = 265
+	Quantity_NOC_LEMONCHIFFON3 = 266
+	Quantity_NOC_LEMONCHIFFON4 = 267
+	Quantity_NOC_LIGHTBLUE = 268
+	Quantity_NOC_LIGHTBLUE1 = 269
+	Quantity_NOC_LIGHTBLUE2 = 270
+	Quantity_NOC_LIGHTBLUE3 = 271
+	Quantity_NOC_LIGHTBLUE4 = 272
+	Quantity_NOC_LIGHTCORAL = 273
+	Quantity_NOC_LIGHTCYAN = 274
+	Quantity_NOC_LIGHTCYAN1 = Quantity_NOC_LIGHTCYAN
+	Quantity_NOC_LIGHTCYAN2 = 275
+	Quantity_NOC_LIGHTCYAN3 = 276
+	Quantity_NOC_LIGHTCYAN4 = 277
+	Quantity_NOC_LIGHTGOLDENROD = 278
+	Quantity_NOC_LIGHTGOLDENROD1 = 279
+	Quantity_NOC_LIGHTGOLDENROD2 = 280
+	Quantity_NOC_LIGHTGOLDENROD3 = 281
+	Quantity_NOC_LIGHTGOLDENROD4 = 282
+	Quantity_NOC_LIGHTGOLDENRODYELLOW = 283
+	Quantity_NOC_LIGHTGRAY = 284
+	Quantity_NOC_LIGHTPINK = 285
+	Quantity_NOC_LIGHTPINK1 = 286
+	Quantity_NOC_LIGHTPINK2 = 287
+	Quantity_NOC_LIGHTPINK3 = 288
+	Quantity_NOC_LIGHTPINK4 = 289
+	Quantity_NOC_LIGHTSALMON1 = 290
+	Quantity_NOC_LIGHTSALMON2 = 291
+	Quantity_NOC_LIGHTSALMON3 = 292
+	Quantity_NOC_LIGHTSALMON4 = 293
+	Quantity_NOC_LIGHTSEAGREEN = 294
+	Quantity_NOC_LIGHTSKYBLUE = 295
+	Quantity_NOC_LIGHTSKYBLUE1 = 296
+	Quantity_NOC_LIGHTSKYBLUE2 = 297
+	Quantity_NOC_LIGHTSKYBLUE3 = 298
+	Quantity_NOC_LIGHTSKYBLUE4 = 299
+	Quantity_NOC_LIGHTSLATEBLUE = 300
+	Quantity_NOC_LIGHTSLATEGRAY = 301
+	Quantity_NOC_LIGHTSTEELBLUE = 302
+	Quantity_NOC_LIGHTSTEELBLUE1 = 303
+	Quantity_NOC_LIGHTSTEELBLUE2 = 304
+	Quantity_NOC_LIGHTSTEELBLUE3 = 305
+	Quantity_NOC_LIGHTSTEELBLUE4 = 306
+	Quantity_NOC_LIGHTYELLOW = 307
+	Quantity_NOC_LIGHTYELLOW2 = 308
+	Quantity_NOC_LIGHTYELLOW3 = 309
+	Quantity_NOC_LIGHTYELLOW4 = 310
+	Quantity_NOC_LIMEGREEN = 311
+	Quantity_NOC_LINEN = 312
+	Quantity_NOC_MAGENTA = 313
+	Quantity_NOC_MAGENTA1 = Quantity_NOC_MAGENTA
+	Quantity_NOC_MAGENTA2 = 314
+	Quantity_NOC_MAGENTA3 = 315
+	Quantity_NOC_MAGENTA4 = 316
+	Quantity_NOC_MAROON = 317
+	Quantity_NOC_MAROON1 = 318
+	Quantity_NOC_MAROON2 = 319
+	Quantity_NOC_MAROON3 = 320
+	Quantity_NOC_MAROON4 = 321
+	Quantity_NOC_MEDIUMAQUAMARINE = 322
+	Quantity_NOC_MEDIUMORCHID = 323
+	Quantity_NOC_MEDIUMORCHID1 = 324
+	Quantity_NOC_MEDIUMORCHID2 = 325
+	Quantity_NOC_MEDIUMORCHID3 = 326
+	Quantity_NOC_MEDIUMORCHID4 = 327
+	Quantity_NOC_MEDIUMPURPLE = 328
+	Quantity_NOC_MEDIUMPURPLE1 = 329
+	Quantity_NOC_MEDIUMPURPLE2 = 330
+	Quantity_NOC_MEDIUMPURPLE3 = 331
+	Quantity_NOC_MEDIUMPURPLE4 = 332
+	Quantity_NOC_MEDIUMSEAGREEN = 333
+	Quantity_NOC_MEDIUMSLATEBLUE = 334
+	Quantity_NOC_MEDIUMSPRINGGREEN = 335
+	Quantity_NOC_MEDIUMTURQUOISE = 336
+	Quantity_NOC_MEDIUMVIOLETRED = 337
+	Quantity_NOC_MIDNIGHTBLUE = 338
+	Quantity_NOC_MINTCREAM = 339
+	Quantity_NOC_MISTYROSE = 340
+	Quantity_NOC_MISTYROSE2 = 341
+	Quantity_NOC_MISTYROSE3 = 342
+	Quantity_NOC_MISTYROSE4 = 343
+	Quantity_NOC_MOCCASIN = 344
+	Quantity_NOC_NAVAJOWHITE1 = 345
+	Quantity_NOC_NAVAJOWHITE2 = 346
+	Quantity_NOC_NAVAJOWHITE3 = 347
+	Quantity_NOC_NAVAJOWHITE4 = 348
+	Quantity_NOC_NAVYBLUE = 349
+	Quantity_NOC_OLDLACE = 350
+	Quantity_NOC_OLIVEDRAB = 351
+	Quantity_NOC_OLIVEDRAB1 = 352
+	Quantity_NOC_OLIVEDRAB2 = 353
+	Quantity_NOC_OLIVEDRAB3 = 354
+	Quantity_NOC_OLIVEDRAB4 = 355
+	Quantity_NOC_ORANGE = 356
+	Quantity_NOC_ORANGE1 = Quantity_NOC_ORANGE
+	Quantity_NOC_ORANGE2 = 357
+	Quantity_NOC_ORANGE3 = 358
+	Quantity_NOC_ORANGE4 = 359
+	Quantity_NOC_ORANGERED = 360
+	Quantity_NOC_ORANGERED1 = Quantity_NOC_ORANGERED
+	Quantity_NOC_ORANGERED2 = 361
+	Quantity_NOC_ORANGERED3 = 362
+	Quantity_NOC_ORANGERED4 = 363
+	Quantity_NOC_ORCHID = 364
+	Quantity_NOC_ORCHID1 = 365
+	Quantity_NOC_ORCHID2 = 366
+	Quantity_NOC_ORCHID3 = 367
+	Quantity_NOC_ORCHID4 = 368
+	Quantity_NOC_PALEGOLDENROD = 369
+	Quantity_NOC_PALEGREEN = 370
+	Quantity_NOC_PALEGREEN1 = 371
+	Quantity_NOC_PALEGREEN2 = 372
+	Quantity_NOC_PALEGREEN3 = 373
+	Quantity_NOC_PALEGREEN4 = 374
+	Quantity_NOC_PALETURQUOISE = 375
+	Quantity_NOC_PALETURQUOISE1 = 376
+	Quantity_NOC_PALETURQUOISE2 = 377
+	Quantity_NOC_PALETURQUOISE3 = 378
+	Quantity_NOC_PALETURQUOISE4 = 379
+	Quantity_NOC_PALEVIOLETRED = 380
+	Quantity_NOC_PALEVIOLETRED1 = 381
+	Quantity_NOC_PALEVIOLETRED2 = 382
+	Quantity_NOC_PALEVIOLETRED3 = 383
+	Quantity_NOC_PALEVIOLETRED4 = 384
+	Quantity_NOC_PAPAYAWHIP = 385
+	Quantity_NOC_PEACHPUFF = 386
+	Quantity_NOC_PEACHPUFF2 = 387
+	Quantity_NOC_PEACHPUFF3 = 388
+	Quantity_NOC_PEACHPUFF4 = 389
+	Quantity_NOC_PERU = 390
+	Quantity_NOC_PINK = 391
+	Quantity_NOC_PINK1 = 392
+	Quantity_NOC_PINK2 = 393
+	Quantity_NOC_PINK3 = 394
+	Quantity_NOC_PINK4 = 395
+	Quantity_NOC_PLUM = 396
+	Quantity_NOC_PLUM1 = 397
+	Quantity_NOC_PLUM2 = 398
+	Quantity_NOC_PLUM3 = 399
+	Quantity_NOC_PLUM4 = 400
+	Quantity_NOC_POWDERBLUE = 401
+	Quantity_NOC_PURPLE = 402
+	Quantity_NOC_PURPLE1 = 403
+	Quantity_NOC_PURPLE2 = 404
+	Quantity_NOC_PURPLE3 = 405
+	Quantity_NOC_PURPLE4 = 406
+	Quantity_NOC_RED = 407
+	Quantity_NOC_RED1 = Quantity_NOC_RED
+	Quantity_NOC_RED2 = 408
+	Quantity_NOC_RED3 = 409
+	Quantity_NOC_RED4 = 410
+	Quantity_NOC_ROSYBROWN = 411
+	Quantity_NOC_ROSYBROWN1 = 412
+	Quantity_NOC_ROSYBROWN2 = 413
+	Quantity_NOC_ROSYBROWN3 = 414
+	Quantity_NOC_ROSYBROWN4 = 415
+	Quantity_NOC_ROYALBLUE = 416
+	Quantity_NOC_ROYALBLUE1 = 417
+	Quantity_NOC_ROYALBLUE2 = 418
+	Quantity_NOC_ROYALBLUE3 = 419
+	Quantity_NOC_ROYALBLUE4 = 420
+	Quantity_NOC_SADDLEBROWN = 421
+	Quantity_NOC_SALMON = 422
+	Quantity_NOC_SALMON1 = 423
+	Quantity_NOC_SALMON2 = 424
+	Quantity_NOC_SALMON3 = 425
+	Quantity_NOC_SALMON4 = 426
+	Quantity_NOC_SANDYBROWN = 427
+	Quantity_NOC_SEAGREEN = 428
+	Quantity_NOC_SEAGREEN1 = 429
+	Quantity_NOC_SEAGREEN2 = 430
+	Quantity_NOC_SEAGREEN3 = 431
+	Quantity_NOC_SEAGREEN4 = 432
+	Quantity_NOC_SEASHELL = 433
+	Quantity_NOC_SEASHELL2 = 434
+	Quantity_NOC_SEASHELL3 = 435
+	Quantity_NOC_SEASHELL4 = 436
+	Quantity_NOC_BEET = 437
+	Quantity_NOC_TEAL = 438
+	Quantity_NOC_SIENNA = 439
+	Quantity_NOC_SIENNA1 = 440
+	Quantity_NOC_SIENNA2 = 441
+	Quantity_NOC_SIENNA3 = 442
+	Quantity_NOC_SIENNA4 = 443
+	Quantity_NOC_SKYBLUE = 444
+	Quantity_NOC_SKYBLUE1 = 445
+	Quantity_NOC_SKYBLUE2 = 446
+	Quantity_NOC_SKYBLUE3 = 447
+	Quantity_NOC_SKYBLUE4 = 448
+	Quantity_NOC_SLATEBLUE = 449
+	Quantity_NOC_SLATEBLUE1 = 450
+	Quantity_NOC_SLATEBLUE2 = 451
+	Quantity_NOC_SLATEBLUE3 = 452
+	Quantity_NOC_SLATEBLUE4 = 453
+	Quantity_NOC_SLATEGRAY1 = 454
+	Quantity_NOC_SLATEGRAY2 = 455
+	Quantity_NOC_SLATEGRAY3 = 456
+	Quantity_NOC_SLATEGRAY4 = 457
+	Quantity_NOC_SLATEGRAY = 458
+	Quantity_NOC_SNOW = 459
+	Quantity_NOC_SNOW2 = 460
+	Quantity_NOC_SNOW3 = 461
+	Quantity_NOC_SNOW4 = 462
+	Quantity_NOC_SPRINGGREEN = 463
+	Quantity_NOC_SPRINGGREEN2 = 464
+	Quantity_NOC_SPRINGGREEN3 = 465
+	Quantity_NOC_SPRINGGREEN4 = 466
+	Quantity_NOC_STEELBLUE = 467
+	Quantity_NOC_STEELBLUE1 = 468
+	Quantity_NOC_STEELBLUE2 = 469
+	Quantity_NOC_STEELBLUE3 = 470
+	Quantity_NOC_STEELBLUE4 = 471
+	Quantity_NOC_TAN = 472
+	Quantity_NOC_TAN1 = 473
+	Quantity_NOC_TAN2 = 474
+	Quantity_NOC_TAN3 = 475
+	Quantity_NOC_TAN4 = 476
+	Quantity_NOC_THISTLE = 477
+	Quantity_NOC_THISTLE1 = 478
+	Quantity_NOC_THISTLE2 = 479
+	Quantity_NOC_THISTLE3 = 480
+	Quantity_NOC_THISTLE4 = 481
+	Quantity_NOC_TOMATO = 482
+	Quantity_NOC_TOMATO1 = Quantity_NOC_TOMATO
+	Quantity_NOC_TOMATO2 = 483
+	Quantity_NOC_TOMATO3 = 484
+	Quantity_NOC_TOMATO4 = 485
+	Quantity_NOC_TURQUOISE = 486
+	Quantity_NOC_TURQUOISE1 = 487
+	Quantity_NOC_TURQUOISE2 = 488
+	Quantity_NOC_TURQUOISE3 = 489
+	Quantity_NOC_TURQUOISE4 = 490
+	Quantity_NOC_VIOLET = 491
+	Quantity_NOC_VIOLETRED = 492
+	Quantity_NOC_VIOLETRED1 = 493
+	Quantity_NOC_VIOLETRED2 = 494
+	Quantity_NOC_VIOLETRED3 = 495
+	Quantity_NOC_VIOLETRED4 = 496
+	Quantity_NOC_WHEAT = 497
+	Quantity_NOC_WHEAT1 = 498
+	Quantity_NOC_WHEAT2 = 499
+	Quantity_NOC_WHEAT3 = 500
+	Quantity_NOC_WHEAT4 = 501
+	Quantity_NOC_WHITESMOKE = 502
+	Quantity_NOC_YELLOW = 503
+	Quantity_NOC_YELLOW1 = Quantity_NOC_YELLOW
+	Quantity_NOC_YELLOW2 = 504
+	Quantity_NOC_YELLOW3 = 505
+	Quantity_NOC_YELLOW4 = 506
+	Quantity_NOC_YELLOWGREEN = 507
+	Quantity_NOC_WHITE = 508
 Quantity_NOC_BLACK = Quantity_NameOfColor.Quantity_NOC_BLACK
 Quantity_NOC_MATRABLUE = Quantity_NameOfColor.Quantity_NOC_MATRABLUE
 Quantity_NOC_MATRAGRAY = Quantity_NameOfColor.Quantity_NOC_MATRAGRAY
@@ -1198,6 +1209,7 @@ Quantity_NOC_BISQUE2 = Quantity_NameOfColor.Quantity_NOC_BISQUE2
 Quantity_NOC_BISQUE3 = Quantity_NameOfColor.Quantity_NOC_BISQUE3
 Quantity_NOC_BISQUE4 = Quantity_NameOfColor.Quantity_NOC_BISQUE4
 Quantity_NOC_BLANCHEDALMOND = Quantity_NameOfColor.Quantity_NOC_BLANCHEDALMOND
+Quantity_NOC_BLUE = Quantity_NameOfColor.Quantity_NOC_BLUE
 Quantity_NOC_BLUE1 = Quantity_NameOfColor.Quantity_NOC_BLUE1
 Quantity_NOC_BLUE2 = Quantity_NameOfColor.Quantity_NOC_BLUE2
 Quantity_NOC_BLUE3 = Quantity_NameOfColor.Quantity_NOC_BLUE3
@@ -1238,6 +1250,7 @@ Quantity_NOC_CORNSILK1 = Quantity_NameOfColor.Quantity_NOC_CORNSILK1
 Quantity_NOC_CORNSILK2 = Quantity_NameOfColor.Quantity_NOC_CORNSILK2
 Quantity_NOC_CORNSILK3 = Quantity_NameOfColor.Quantity_NOC_CORNSILK3
 Quantity_NOC_CORNSILK4 = Quantity_NameOfColor.Quantity_NOC_CORNSILK4
+Quantity_NOC_CYAN = Quantity_NameOfColor.Quantity_NOC_CYAN
 Quantity_NOC_CYAN1 = Quantity_NameOfColor.Quantity_NOC_CYAN1
 Quantity_NOC_CYAN2 = Quantity_NameOfColor.Quantity_NOC_CYAN2
 Quantity_NOC_CYAN3 = Quantity_NameOfColor.Quantity_NOC_CYAN3
@@ -1312,6 +1325,14 @@ Quantity_NOC_GOLDENROD4 = Quantity_NameOfColor.Quantity_NOC_GOLDENROD4
 Quantity_NOC_GRAY = Quantity_NameOfColor.Quantity_NOC_GRAY
 Quantity_NOC_GRAY0 = Quantity_NameOfColor.Quantity_NOC_GRAY0
 Quantity_NOC_GRAY1 = Quantity_NameOfColor.Quantity_NOC_GRAY1
+Quantity_NOC_GRAY2 = Quantity_NameOfColor.Quantity_NOC_GRAY2
+Quantity_NOC_GRAY3 = Quantity_NameOfColor.Quantity_NOC_GRAY3
+Quantity_NOC_GRAY4 = Quantity_NameOfColor.Quantity_NOC_GRAY4
+Quantity_NOC_GRAY5 = Quantity_NameOfColor.Quantity_NOC_GRAY5
+Quantity_NOC_GRAY6 = Quantity_NameOfColor.Quantity_NOC_GRAY6
+Quantity_NOC_GRAY7 = Quantity_NameOfColor.Quantity_NOC_GRAY7
+Quantity_NOC_GRAY8 = Quantity_NameOfColor.Quantity_NOC_GRAY8
+Quantity_NOC_GRAY9 = Quantity_NameOfColor.Quantity_NOC_GRAY9
 Quantity_NOC_GRAY10 = Quantity_NameOfColor.Quantity_NOC_GRAY10
 Quantity_NOC_GRAY11 = Quantity_NameOfColor.Quantity_NOC_GRAY11
 Quantity_NOC_GRAY12 = Quantity_NameOfColor.Quantity_NOC_GRAY12
@@ -1322,7 +1343,6 @@ Quantity_NOC_GRAY16 = Quantity_NameOfColor.Quantity_NOC_GRAY16
 Quantity_NOC_GRAY17 = Quantity_NameOfColor.Quantity_NOC_GRAY17
 Quantity_NOC_GRAY18 = Quantity_NameOfColor.Quantity_NOC_GRAY18
 Quantity_NOC_GRAY19 = Quantity_NameOfColor.Quantity_NOC_GRAY19
-Quantity_NOC_GRAY2 = Quantity_NameOfColor.Quantity_NOC_GRAY2
 Quantity_NOC_GRAY20 = Quantity_NameOfColor.Quantity_NOC_GRAY20
 Quantity_NOC_GRAY21 = Quantity_NameOfColor.Quantity_NOC_GRAY21
 Quantity_NOC_GRAY22 = Quantity_NameOfColor.Quantity_NOC_GRAY22
@@ -1333,7 +1353,6 @@ Quantity_NOC_GRAY26 = Quantity_NameOfColor.Quantity_NOC_GRAY26
 Quantity_NOC_GRAY27 = Quantity_NameOfColor.Quantity_NOC_GRAY27
 Quantity_NOC_GRAY28 = Quantity_NameOfColor.Quantity_NOC_GRAY28
 Quantity_NOC_GRAY29 = Quantity_NameOfColor.Quantity_NOC_GRAY29
-Quantity_NOC_GRAY3 = Quantity_NameOfColor.Quantity_NOC_GRAY3
 Quantity_NOC_GRAY30 = Quantity_NameOfColor.Quantity_NOC_GRAY30
 Quantity_NOC_GRAY31 = Quantity_NameOfColor.Quantity_NOC_GRAY31
 Quantity_NOC_GRAY32 = Quantity_NameOfColor.Quantity_NOC_GRAY32
@@ -1344,7 +1363,6 @@ Quantity_NOC_GRAY36 = Quantity_NameOfColor.Quantity_NOC_GRAY36
 Quantity_NOC_GRAY37 = Quantity_NameOfColor.Quantity_NOC_GRAY37
 Quantity_NOC_GRAY38 = Quantity_NameOfColor.Quantity_NOC_GRAY38
 Quantity_NOC_GRAY39 = Quantity_NameOfColor.Quantity_NOC_GRAY39
-Quantity_NOC_GRAY4 = Quantity_NameOfColor.Quantity_NOC_GRAY4
 Quantity_NOC_GRAY40 = Quantity_NameOfColor.Quantity_NOC_GRAY40
 Quantity_NOC_GRAY41 = Quantity_NameOfColor.Quantity_NOC_GRAY41
 Quantity_NOC_GRAY42 = Quantity_NameOfColor.Quantity_NOC_GRAY42
@@ -1355,7 +1373,6 @@ Quantity_NOC_GRAY46 = Quantity_NameOfColor.Quantity_NOC_GRAY46
 Quantity_NOC_GRAY47 = Quantity_NameOfColor.Quantity_NOC_GRAY47
 Quantity_NOC_GRAY48 = Quantity_NameOfColor.Quantity_NOC_GRAY48
 Quantity_NOC_GRAY49 = Quantity_NameOfColor.Quantity_NOC_GRAY49
-Quantity_NOC_GRAY5 = Quantity_NameOfColor.Quantity_NOC_GRAY5
 Quantity_NOC_GRAY50 = Quantity_NameOfColor.Quantity_NOC_GRAY50
 Quantity_NOC_GRAY51 = Quantity_NameOfColor.Quantity_NOC_GRAY51
 Quantity_NOC_GRAY52 = Quantity_NameOfColor.Quantity_NOC_GRAY52
@@ -1366,7 +1383,6 @@ Quantity_NOC_GRAY56 = Quantity_NameOfColor.Quantity_NOC_GRAY56
 Quantity_NOC_GRAY57 = Quantity_NameOfColor.Quantity_NOC_GRAY57
 Quantity_NOC_GRAY58 = Quantity_NameOfColor.Quantity_NOC_GRAY58
 Quantity_NOC_GRAY59 = Quantity_NameOfColor.Quantity_NOC_GRAY59
-Quantity_NOC_GRAY6 = Quantity_NameOfColor.Quantity_NOC_GRAY6
 Quantity_NOC_GRAY60 = Quantity_NameOfColor.Quantity_NOC_GRAY60
 Quantity_NOC_GRAY61 = Quantity_NameOfColor.Quantity_NOC_GRAY61
 Quantity_NOC_GRAY62 = Quantity_NameOfColor.Quantity_NOC_GRAY62
@@ -1377,7 +1393,6 @@ Quantity_NOC_GRAY66 = Quantity_NameOfColor.Quantity_NOC_GRAY66
 Quantity_NOC_GRAY67 = Quantity_NameOfColor.Quantity_NOC_GRAY67
 Quantity_NOC_GRAY68 = Quantity_NameOfColor.Quantity_NOC_GRAY68
 Quantity_NOC_GRAY69 = Quantity_NameOfColor.Quantity_NOC_GRAY69
-Quantity_NOC_GRAY7 = Quantity_NameOfColor.Quantity_NOC_GRAY7
 Quantity_NOC_GRAY70 = Quantity_NameOfColor.Quantity_NOC_GRAY70
 Quantity_NOC_GRAY71 = Quantity_NameOfColor.Quantity_NOC_GRAY71
 Quantity_NOC_GRAY72 = Quantity_NameOfColor.Quantity_NOC_GRAY72
@@ -1388,7 +1403,6 @@ Quantity_NOC_GRAY76 = Quantity_NameOfColor.Quantity_NOC_GRAY76
 Quantity_NOC_GRAY77 = Quantity_NameOfColor.Quantity_NOC_GRAY77
 Quantity_NOC_GRAY78 = Quantity_NameOfColor.Quantity_NOC_GRAY78
 Quantity_NOC_GRAY79 = Quantity_NameOfColor.Quantity_NOC_GRAY79
-Quantity_NOC_GRAY8 = Quantity_NameOfColor.Quantity_NOC_GRAY8
 Quantity_NOC_GRAY80 = Quantity_NameOfColor.Quantity_NOC_GRAY80
 Quantity_NOC_GRAY81 = Quantity_NameOfColor.Quantity_NOC_GRAY81
 Quantity_NOC_GRAY82 = Quantity_NameOfColor.Quantity_NOC_GRAY82
@@ -1398,22 +1412,21 @@ Quantity_NOC_GRAY86 = Quantity_NameOfColor.Quantity_NOC_GRAY86
 Quantity_NOC_GRAY87 = Quantity_NameOfColor.Quantity_NOC_GRAY87
 Quantity_NOC_GRAY88 = Quantity_NameOfColor.Quantity_NOC_GRAY88
 Quantity_NOC_GRAY89 = Quantity_NameOfColor.Quantity_NOC_GRAY89
-Quantity_NOC_GRAY9 = Quantity_NameOfColor.Quantity_NOC_GRAY9
 Quantity_NOC_GRAY90 = Quantity_NameOfColor.Quantity_NOC_GRAY90
 Quantity_NOC_GRAY91 = Quantity_NameOfColor.Quantity_NOC_GRAY91
 Quantity_NOC_GRAY92 = Quantity_NameOfColor.Quantity_NOC_GRAY92
 Quantity_NOC_GRAY93 = Quantity_NameOfColor.Quantity_NOC_GRAY93
 Quantity_NOC_GRAY94 = Quantity_NameOfColor.Quantity_NOC_GRAY94
 Quantity_NOC_GRAY95 = Quantity_NameOfColor.Quantity_NOC_GRAY95
+Quantity_NOC_GRAY97 = Quantity_NameOfColor.Quantity_NOC_GRAY97
+Quantity_NOC_GRAY98 = Quantity_NameOfColor.Quantity_NOC_GRAY98
+Quantity_NOC_GRAY99 = Quantity_NameOfColor.Quantity_NOC_GRAY99
 Quantity_NOC_GREEN = Quantity_NameOfColor.Quantity_NOC_GREEN
 Quantity_NOC_GREEN1 = Quantity_NameOfColor.Quantity_NOC_GREEN1
 Quantity_NOC_GREEN2 = Quantity_NameOfColor.Quantity_NOC_GREEN2
 Quantity_NOC_GREEN3 = Quantity_NameOfColor.Quantity_NOC_GREEN3
 Quantity_NOC_GREEN4 = Quantity_NameOfColor.Quantity_NOC_GREEN4
 Quantity_NOC_GREENYELLOW = Quantity_NameOfColor.Quantity_NOC_GREENYELLOW
-Quantity_NOC_GRAY97 = Quantity_NameOfColor.Quantity_NOC_GRAY97
-Quantity_NOC_GRAY98 = Quantity_NameOfColor.Quantity_NOC_GRAY98
-Quantity_NOC_GRAY99 = Quantity_NameOfColor.Quantity_NOC_GRAY99
 Quantity_NOC_HONEYDEW = Quantity_NameOfColor.Quantity_NOC_HONEYDEW
 Quantity_NOC_HONEYDEW2 = Quantity_NameOfColor.Quantity_NOC_HONEYDEW2
 Quantity_NOC_HONEYDEW3 = Quantity_NameOfColor.Quantity_NOC_HONEYDEW3
@@ -1453,6 +1466,7 @@ Quantity_NOC_LIGHTBLUE2 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE2
 Quantity_NOC_LIGHTBLUE3 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE3
 Quantity_NOC_LIGHTBLUE4 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE4
 Quantity_NOC_LIGHTCORAL = Quantity_NameOfColor.Quantity_NOC_LIGHTCORAL
+Quantity_NOC_LIGHTCYAN = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN
 Quantity_NOC_LIGHTCYAN1 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN1
 Quantity_NOC_LIGHTCYAN2 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN2
 Quantity_NOC_LIGHTCYAN3 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN3
@@ -1492,6 +1506,7 @@ Quantity_NOC_LIGHTYELLOW3 = Quantity_NameOfColor.Quantity_NOC_LIGHTYELLOW3
 Quantity_NOC_LIGHTYELLOW4 = Quantity_NameOfColor.Quantity_NOC_LIGHTYELLOW4
 Quantity_NOC_LIMEGREEN = Quantity_NameOfColor.Quantity_NOC_LIMEGREEN
 Quantity_NOC_LINEN = Quantity_NameOfColor.Quantity_NOC_LINEN
+Quantity_NOC_MAGENTA = Quantity_NameOfColor.Quantity_NOC_MAGENTA
 Quantity_NOC_MAGENTA1 = Quantity_NameOfColor.Quantity_NOC_MAGENTA1
 Quantity_NOC_MAGENTA2 = Quantity_NameOfColor.Quantity_NOC_MAGENTA2
 Quantity_NOC_MAGENTA3 = Quantity_NameOfColor.Quantity_NOC_MAGENTA3
@@ -1696,9 +1711,15 @@ Quantity_NOC_WHITE = Quantity_NameOfColor.Quantity_NOC_WHITE
 
 class Quantity_TypeOfColor(IntEnum):
 	Quantity_TOC_RGB = 0
-	Quantity_TOC_HLS = 1
+	Quantity_TOC_sRGB = 1
+	Quantity_TOC_HLS = 2
+	Quantity_TOC_CIELab = 3
+	Quantity_TOC_CIELch = 4
 Quantity_TOC_RGB = Quantity_TypeOfColor.Quantity_TOC_RGB
+Quantity_TOC_sRGB = Quantity_TypeOfColor.Quantity_TOC_sRGB
 Quantity_TOC_HLS = Quantity_TypeOfColor.Quantity_TOC_HLS
+Quantity_TOC_CIELab = Quantity_TypeOfColor.Quantity_TOC_CIELab
+Quantity_TOC_CIELch = Quantity_TypeOfColor.Quantity_TOC_CIELch
 
 class Quantity_PhysicalQuantity(IntEnum):
 	Quantity_MASS = 0
@@ -1973,9 +1994,9 @@ typedef Standard_Real Quantity_Work;
 class Quantity_Color {
 	public:
 		/****************** Quantity_Color ******************/
-		/**** md5 signature: f5c209f4d44b927ac7bf1775a9844c4f ****/
+		/**** md5 signature: be3aca6a0556dca0b09770f68f4af1d3 ****/
 		%feature("compactdefaultargs") Quantity_Color;
-		%feature("autodoc", "Creates quantity_noc_yellow color.
+		%feature("autodoc", "Creates quantity_noc_yellow color (for historical reasons).
 
 Returns
 -------
@@ -1984,42 +2005,42 @@ None
 		 Quantity_Color();
 
 		/****************** Quantity_Color ******************/
-		/**** md5 signature: 4d0575f62c5a31e3c97c1999086879b2 ****/
+		/**** md5 signature: f0161d09513393232661f2e54de12943 ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Creates the color from enumeration value.
 
 Parameters
 ----------
-AName: Quantity_NameOfColor
+theName: Quantity_NameOfColor
 
 Returns
 -------
 None
 ") Quantity_Color;
-		 Quantity_Color(const Quantity_NameOfColor AName);
+		 Quantity_Color(const Quantity_NameOfColor theName);
 
 		/****************** Quantity_Color ******************/
-		/**** md5 signature: 401f2b53fbd4b1b72f42fdb5e22554a6 ****/
+		/**** md5 signature: b52b69c710a23b11db3991cf916792d5 ****/
 		%feature("compactdefaultargs") Quantity_Color;
-		%feature("autodoc", "Creates a color according to the definition system thetype. quantity_toc_rgb: - ther1 the value of red within range [0.0; 1.0] - ther2 the value of green within range [0.0; 1.0] - ther3 the value of blue within range [0.0; 1.0] //! quantity_toc_hls: - ther1 is the hue (h) angle in degrees within range [0.0; 360.0], 0.0 being red. value -1.0 is a special value reserved for grayscale color (s should be 0.0). - ther2 is the lightness (l) within range [0.0; 1.0] - ther3 is the saturation (s) within range [0.0; 1.0].
+		%feature("autodoc", "Creates a color according to the definition system thetype. throws exception if values are out of range.
 
 Parameters
 ----------
-theR1: float
-theR2: float
-theR3: float
+theC1: float
+theC2: float
+theC3: float
 theType: Quantity_TypeOfColor
 
 Returns
 -------
 None
 ") Quantity_Color;
-		 Quantity_Color(const Standard_Real theR1, const Standard_Real theR2, const Standard_Real theR3, const Quantity_TypeOfColor theType);
+		 Quantity_Color(const Standard_Real theC1, const Standard_Real theC2, const Standard_Real theC3, const Quantity_TypeOfColor theType);
 
 		/****************** Quantity_Color ******************/
 		/**** md5 signature: 835816f393d027a4564b61805ac875a4 ****/
 		%feature("compactdefaultargs") Quantity_Color;
-		%feature("autodoc", "Define color from rgb values.
+		%feature("autodoc", "Define color from linear rgb values.
 
 Parameters
 ----------
@@ -2032,9 +2053,9 @@ None
 		 Quantity_Color(const NCollection_Vec3<float> & theRgb);
 
 		/****************** Argb2color ******************/
-		/**** md5 signature: d611989bc196b9eace2cf55dd7e3b12b ****/
+		/**** md5 signature: f4731fc6b58cdd5f528e6293a48aa3e0 ****/
 		%feature("compactdefaultargs") Argb2color;
-		%feature("autodoc", "Convert integer argb value to color. alpha bits are ignored.
+		%feature("autodoc", "Convert integer argb value to color. alpha bits are ignored. note that this packing does not involve linear -> non-linear srgb conversion, as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
 
 Parameters
 ----------
@@ -2048,7 +2069,7 @@ None
 		static void Argb2color(const Standard_Integer theARGB, Quantity_Color & theColor);
 
 		/****************** Blue ******************/
-		/**** md5 signature: 4771e446272835844a2885353fcdb8a9 ****/
+		/**** md5 signature: 477bd48d9231a3472180bbd1faa4abe4 ****/
 		%feature("compactdefaultargs") Blue;
 		%feature("autodoc", "Returns the blue component (quantity of blue) of the color within range [0.0; 1.0].
 
@@ -2059,39 +2080,39 @@ float
 		Standard_Real Blue();
 
 		/****************** ChangeContrast ******************/
-		/**** md5 signature: 5e22a8be68499bb6494ff16698899d8e ****/
+		/**** md5 signature: 6eaf1243fd5b164b1419d391db8aa360 ****/
 		%feature("compactdefaultargs") ChangeContrast;
-		%feature("autodoc", "Increases or decreases the contrast by <adelta>. <adelta> is a percentage. any value greater than zero will increase the contrast. the variation is expressed as a percentage of the current value. it is a variation of the saturation.
+		%feature("autodoc", "Increases or decreases the contrast (variation of the saturation). the delta is a percentage. any value greater than zero will increase the contrast. the variation is expressed as a percentage of the current value.
 
 Parameters
 ----------
-ADelta: float
+theDelta: float
 
 Returns
 -------
 None
 ") ChangeContrast;
-		void ChangeContrast(const Standard_Real ADelta);
+		void ChangeContrast(const Standard_Real theDelta);
 
 		/****************** ChangeIntensity ******************/
-		/**** md5 signature: 55083a7cc56cf85f230d7f99a0573614 ****/
+		/**** md5 signature: 650d5a8f8db4262459f7c9a485d5b46f ****/
 		%feature("compactdefaultargs") ChangeIntensity;
-		%feature("autodoc", "Increases or decreases the intensity by <adelta>. <adelta> is a percentage. any value greater than zero will increase the intensity. the variation is expressed as a percentage of the current value. it is a variation of the lightness.
+		%feature("autodoc", "Increases or decreases the intensity (variation of the lightness). the delta is a percentage. any value greater than zero will increase the intensity. the variation is expressed as a percentage of the current value.
 
 Parameters
 ----------
-ADelta: float
+theDelta: float
 
 Returns
 -------
 None
 ") ChangeIntensity;
-		void ChangeIntensity(const Standard_Real ADelta);
+		void ChangeIntensity(const Standard_Real theDelta);
 
 		/****************** Color2argb ******************/
-		/**** md5 signature: b5590b8f95cab902628e196486ec17c3 ****/
+		/**** md5 signature: 7b0eb498e9a5ec20236dab7e67b966cb ****/
 		%feature("compactdefaultargs") Color2argb;
-		%feature("autodoc", "Convert the color value to argb integer value. theargb has alpha equal to zero, so the output is formatted as 0x00rrggbb.
+		%feature("autodoc", "Convert the color value to argb integer value, with alpha equals to 0. so the output is formatted as 0x00rrggbb. note that this unpacking does not involve non-linear srgb -> linear rgb conversion, as would be usually expected for rgb color packed into 4 bytes. @param thecolor [in] color to convert @param theargb [out] result color encoded as integer.
 
 Parameters
 ----------
@@ -2106,7 +2127,7 @@ theARGB: int
 		/****************** ColorFromHex ******************/
 		/**** md5 signature: cf1c58e7652e94fdb05ddd8062f56f58 ****/
 		%feature("compactdefaultargs") ColorFromHex;
-		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short rgb color, or '#ffff00' for rgb color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing returns true if parsing was successful, or false otherwise.
+		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short srgb color, or '#ffff00' for srgb color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing returns true if parsing was successful, or false otherwise.
 
 Parameters
 ----------
@@ -2138,7 +2159,7 @@ bool
 		/****************** ColorFromName ******************/
 		/**** md5 signature: 22de797bd27b14fa445f1fc6383d0e84 ****/
 		%feature("compactdefaultargs") ColorFromName;
-		%feature("autodoc", "Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. returns false if name is unknown. @param thecolornamestring the color name @param thecolor a found color returns false if the color name is unknown, or true if the search by color name was successful.
+		%feature("autodoc", "Finds color from predefined names. @param thecolornamestring the color name @param thecolor a found color returns false if the color name is unknown, or true if the search by color name was successful.
 
 Parameters
 ----------
@@ -2168,36 +2189,291 @@ TCollection_AsciiString
 ") ColorToHex;
 		static TCollection_AsciiString ColorToHex(const Quantity_Color & theColor, const bool theToPrefixHash = true);
 
-		/****************** Delta ******************/
-		/**** md5 signature: dc33dc66508989719716ce6762bd0925 ****/
-		%feature("compactdefaultargs") Delta;
-		%feature("autodoc", "Returns the percentage change of contrast and intensity between <self> and <acolor>. <dc> and <di> are percentages, either positive or negative. the calculation is with respect to the current value of <self> if <dc> is positive then <self> is more contrasty. if <di> is positive then <self> is more intense.
+		/****************** Convert_HLS_To_LinearRGB ******************/
+		/**** md5 signature: 104864d1674544f1ac9d187009f5eaa1 ****/
+		%feature("compactdefaultargs") Convert_HLS_To_LinearRGB;
+		%feature("autodoc", "Converts hls components into linear rgb ones.
 
 Parameters
 ----------
-AColor: Quantity_Color
+theHls: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_HLS_To_LinearRGB;
+		static NCollection_Vec3<float > Convert_HLS_To_LinearRGB(const NCollection_Vec3<float> & theHls);
+
+		/****************** Convert_HLS_To_sRGB ******************/
+		/**** md5 signature: 095c9406fed75ba28043396b6c9b6758 ****/
+		%feature("compactdefaultargs") Convert_HLS_To_sRGB;
+		%feature("autodoc", "Converts hls components into rgb ones.
+
+Parameters
+----------
+theHls: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_HLS_To_sRGB;
+		static NCollection_Vec3<float > Convert_HLS_To_sRGB(const NCollection_Vec3<float> & theHls);
+
+		/****************** Convert_Lab_To_Lch ******************/
+		/**** md5 signature: e314508d514e40178da8ccabfdeb089b ****/
+		%feature("compactdefaultargs") Convert_Lab_To_Lch;
+		%feature("autodoc", "Converts cie lab components into cie lch ones.
+
+Parameters
+----------
+theLab: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_Lab_To_Lch;
+		static NCollection_Vec3<float > Convert_Lab_To_Lch(const NCollection_Vec3<float> & theLab);
+
+		/****************** Convert_Lab_To_LinearRGB ******************/
+		/**** md5 signature: 0c6c4ddf5406866b32ec261b1cf94f21 ****/
+		%feature("compactdefaultargs") Convert_Lab_To_LinearRGB;
+		%feature("autodoc", "Converts cie lab components into linear rgb ones. note that the resulting values may be out of the valid range for rgb.
+
+Parameters
+----------
+theLab: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_Lab_To_LinearRGB;
+		static NCollection_Vec3<float > Convert_Lab_To_LinearRGB(const NCollection_Vec3<float> & theLab);
+
+		/****************** Convert_Lch_To_Lab ******************/
+		/**** md5 signature: 93c1edbe958133c9e09bbde022485a6e ****/
+		%feature("compactdefaultargs") Convert_Lch_To_Lab;
+		%feature("autodoc", "Converts cie lch components into cie lab ones.
+
+Parameters
+----------
+theLch: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_Lch_To_Lab;
+		static NCollection_Vec3<float > Convert_Lch_To_Lab(const NCollection_Vec3<float> & theLch);
+
+		/****************** Convert_LinearRGB_To_HLS ******************/
+		/**** md5 signature: 16cdb7ddc80e4228e4c30cc99fd6fa04 ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_HLS;
+		%feature("autodoc", "Converts linear rgb components into hls ones.
+
+Parameters
+----------
+theRgb: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_LinearRGB_To_HLS;
+		static NCollection_Vec3<float > Convert_LinearRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
+
+		/****************** Convert_LinearRGB_To_Lab ******************/
+		/**** md5 signature: 5b247b8dd24d09dc3abd0bc17e08ae67 ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_Lab;
+		%feature("autodoc", "Converts linear rgb components into cie lab ones.
+
+Parameters
+----------
+theRgb: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_LinearRGB_To_Lab;
+		static NCollection_Vec3<float > Convert_LinearRGB_To_Lab(const NCollection_Vec3<float> & theRgb);
+
+		/****************** Convert_LinearRGB_To_sRGB ******************/
+		/**** md5 signature: 8dcd1cbe2cd85f9b32805bba2ca210be ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_sRGB;
+		%feature("autodoc", "Convert linear rgb component into srgb using opengl specs formula (double precision), also known as gamma correction.
+
+Parameters
+----------
+theLinearValue: float
+
+Returns
+-------
+float
+") Convert_LinearRGB_To_sRGB;
+		static Standard_Real Convert_LinearRGB_To_sRGB(Standard_Real theLinearValue);
+
+		/****************** Convert_LinearRGB_To_sRGB ******************/
+		/**** md5 signature: c84ab804d26a71132f08e376851befbe ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_sRGB;
+		%feature("autodoc", "Convert linear rgb component into srgb using opengl specs formula (single precision), also known as gamma correction.
+
+Parameters
+----------
+theLinearValue: float
+
+Returns
+-------
+float
+") Convert_LinearRGB_To_sRGB;
+		static float Convert_LinearRGB_To_sRGB(float theLinearValue);
+
+		/****************** Convert_LinearRGB_To_sRGB_approx22 ******************/
+		/**** md5 signature: e215d83ac454e32420e3a2692c3a6183 ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_sRGB_approx22;
+		%feature("autodoc", "Convert linear rgb component into srgb using approximated uniform gamma coefficient 2.2.
+
+Parameters
+----------
+theLinearValue: float
+
+Returns
+-------
+float
+") Convert_LinearRGB_To_sRGB_approx22;
+		static float Convert_LinearRGB_To_sRGB_approx22(float theLinearValue);
+
+		/****************** Convert_LinearRGB_To_sRGB_approx22 ******************/
+		/**** md5 signature: 5e22425555ffe3b81af526d8cb2283a0 ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_sRGB_approx22;
+		%feature("autodoc", "Convert linear rgb components into srgb using approximated uniform gamma coefficient 2.2.
+
+Parameters
+----------
+theRGB: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_LinearRGB_To_sRGB_approx22;
+		static NCollection_Vec3<float > Convert_LinearRGB_To_sRGB_approx22(const NCollection_Vec3<float> & theRGB);
+
+		/****************** Convert_sRGB_To_HLS ******************/
+		/**** md5 signature: 5cfa409cdac941c7bf488327c5b613f6 ****/
+		%feature("compactdefaultargs") Convert_sRGB_To_HLS;
+		%feature("autodoc", "Converts srgb components into hls ones.
+
+Parameters
+----------
+theRgb: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_sRGB_To_HLS;
+		static NCollection_Vec3<float > Convert_sRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
+
+		/****************** Convert_sRGB_To_LinearRGB ******************/
+		/**** md5 signature: a18f3040739c19cc49070bdc1babfdd2 ****/
+		%feature("compactdefaultargs") Convert_sRGB_To_LinearRGB;
+		%feature("autodoc", "Convert srgb component into linear rgb using opengl specs formula (double precision), also known as gamma correction.
+
+Parameters
+----------
+thesRGBValue: float
+
+Returns
+-------
+float
+") Convert_sRGB_To_LinearRGB;
+		static Standard_Real Convert_sRGB_To_LinearRGB(Standard_Real thesRGBValue);
+
+		/****************** Convert_sRGB_To_LinearRGB ******************/
+		/**** md5 signature: a1faef298c703d44defcab4596889fd2 ****/
+		%feature("compactdefaultargs") Convert_sRGB_To_LinearRGB;
+		%feature("autodoc", "Convert srgb component into linear rgb using opengl specs formula (single precision), also known as gamma correction.
+
+Parameters
+----------
+thesRGBValue: float
+
+Returns
+-------
+float
+") Convert_sRGB_To_LinearRGB;
+		static float Convert_sRGB_To_LinearRGB(float thesRGBValue);
+
+		/****************** Convert_sRGB_To_LinearRGB_approx22 ******************/
+		/**** md5 signature: 3ad7606574cfad447b2d3abe8802ed85 ****/
+		%feature("compactdefaultargs") Convert_sRGB_To_LinearRGB_approx22;
+		%feature("autodoc", "Convert srgb component into linear rgb using approximated uniform gamma coefficient 2.2.
+
+Parameters
+----------
+thesRGBValue: float
+
+Returns
+-------
+float
+") Convert_sRGB_To_LinearRGB_approx22;
+		static float Convert_sRGB_To_LinearRGB_approx22(float thesRGBValue);
+
+		/****************** Convert_sRGB_To_LinearRGB_approx22 ******************/
+		/**** md5 signature: 7cbf28ff59e51522866170f6ef5cf034 ****/
+		%feature("compactdefaultargs") Convert_sRGB_To_LinearRGB_approx22;
+		%feature("autodoc", "Convert srgb components into linear rgb using approximated uniform gamma coefficient 2.2.
+
+Parameters
+----------
+theRGB: NCollection_Vec3<float>
+
+Returns
+-------
+NCollection_Vec3<float >
+") Convert_sRGB_To_LinearRGB_approx22;
+		static NCollection_Vec3<float > Convert_sRGB_To_LinearRGB_approx22(const NCollection_Vec3<float> & theRGB);
+
+		/****************** Delta ******************/
+		/**** md5 signature: 66117996530d1f4401730a3a02cdeaff ****/
+		%feature("compactdefaultargs") Delta;
+		%feature("autodoc", "Returns the percentage change of contrast and intensity between this and another color. <dc> and <di> are percentages, either positive or negative. the calculation is with respect to this color. if <dc> is positive then <self> is more contrasty. if <di> is positive then <self> is more intense.
+
+Parameters
+----------
+theColor: Quantity_Color
 
 Returns
 -------
 DC: float
 DI: float
 ") Delta;
-		void Delta(const Quantity_Color & AColor, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Delta(const Quantity_Color & theColor, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 68385c1ebe94c26d97b2af2a1c48854b ****/
-		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "Returns the distance between two colours. it's a value between 0 and the square root of 3 (the black/white distance).
+		/****************** DeltaE2000 ******************/
+		/**** md5 signature: d9b3e987b9d21950d31f8c76895c3beb ****/
+		%feature("compactdefaultargs") DeltaE2000;
+		%feature("autodoc", "Returns the value of the perceptual difference between this color and @p theother, computed using the ciede2000 formula. the difference is in range [0, 100.], with 1 approximately corresponding to the minimal percievable difference (usually difference 5 or greater is needed for the difference to be recognizable in practice).
 
 Parameters
 ----------
-AColor: Quantity_Color
+theOther: Quantity_Color
+
+Returns
+-------
+float
+") DeltaE2000;
+		Standard_Real DeltaE2000(const Quantity_Color & theOther);
+
+		/****************** Distance ******************/
+		/**** md5 signature: 9e4a4f26d8d6b36fe34dbf811814be84 ****/
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "Returns the distance between two colors. it's a value between 0 and the square root of 3 (the black/white distance).
+
+Parameters
+----------
+theColor: Quantity_Color
 
 Returns
 -------
 float
 ") Distance;
-		Standard_Real Distance(const Quantity_Color & AColor);
+		Standard_Real Distance(const Quantity_Color & theColor);
 
 
             %feature("autodoc", "1");
@@ -2210,7 +2486,7 @@ float
 		/****************** Epsilon ******************/
 		/**** md5 signature: 67863b45c70903f3df8806ec9bb0512a ****/
 		%feature("compactdefaultargs") Epsilon;
-		%feature("autodoc", "Returns the specified value used to compare <self> and an other color in isdifferent and in isequal methods.
+		%feature("autodoc", "Returns the value used to compare two colors for equality; 0.0001 by default.
 
 Returns
 -------
@@ -2219,7 +2495,7 @@ float
 		static Standard_Real Epsilon();
 
 		/****************** Green ******************/
-		/**** md5 signature: 3857670a16bf31e5b3300ec575b3b216 ****/
+		/**** md5 signature: f4dd2bcce36d7a05085c31d4dadd9791 ****/
 		%feature("compactdefaultargs") Green;
 		%feature("autodoc", "Returns the green component (quantity of green) of the color within range [0.0; 1.0].
 
@@ -2230,26 +2506,26 @@ float
 		Standard_Real Green();
 
 		/****************** HlsRgb ******************/
-		/**** md5 signature: 92189fe5c2c27b89f1a448ea8893e8be ****/
+		/**** md5 signature: fdef0f75655a22826ac789006f79c6fe ****/
 		%feature("compactdefaultargs") HlsRgb;
-		%feature("autodoc", "Converts hls components into rgb ones.
+		%feature("autodoc", "Converts hls components into srgb ones.
 
 Parameters
 ----------
-H: float
-L: float
-S: float
+theH: float
+theL: float
+theS: float
 
 Returns
 -------
-R: float
-G: float
-B: float
+theR: float
+theG: float
+theB: float
 ") HlsRgb;
-		static void HlsRgb(const Standard_Real H, const Standard_Real L, const Standard_Real S, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void HlsRgb(const Standard_Real theH, const Standard_Real theL, const Standard_Real theS, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Hue ******************/
-		/**** md5 signature: a02b54936ad6d62636d67739ec91e04f ****/
+		/**** md5 signature: d86f54d3fa8803c8a08feb493bcf752c ****/
 		%feature("compactdefaultargs") Hue;
 		%feature("autodoc", "Returns the hue component (hue angle) of the color in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0).
 
@@ -2259,38 +2535,53 @@ float
 ") Hue;
 		Standard_Real Hue();
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: b99f5c524426499e6ab1d3876aaa32a8 ****/
-		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "Returns standard_true if the distance between <self> and <other> is greater than epsilon ().
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
 
 Parameters
 ----------
-Other: Quantity_Color
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
+		/****************** IsDifferent ******************/
+		/**** md5 signature: 123ad10267aaf1936e39bb0bc28f84ef ****/
+		%feature("compactdefaultargs") IsDifferent;
+		%feature("autodoc", "Returns true if the distance between two colors is greater than epsilon().
+
+Parameters
+----------
+theOther: Quantity_Color
 
 Returns
 -------
 bool
 ") IsDifferent;
-		Standard_Boolean IsDifferent(const Quantity_Color & Other);
+		Standard_Boolean IsDifferent(const Quantity_Color & theOther);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: bd3a4ca19f4acdf78c62adc39d7350e2 ****/
+		/**** md5 signature: 31122289c5e7c05ac9ff4d8b59bfc4f9 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Returns true if the other color is - different from, or - equal to this color. two colors are considered to be equal if their distance is no greater than epsilon(). these methods are aliases of operator != and operator ==.
+		%feature("autodoc", "Returns true if the distance between two colors is no greater than epsilon().
 
 Parameters
 ----------
-Other: Quantity_Color
+theOther: Quantity_Color
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const Quantity_Color & Other);
+		Standard_Boolean IsEqual(const Quantity_Color & theOther);
 
 		/****************** Light ******************/
-		/**** md5 signature: 245b383c2d9d02d69d1375d652800d97 ****/
+		/**** md5 signature: 34ae8e744c539dd41755d7540a0b7f32 ****/
 		%feature("compactdefaultargs") Light;
 		%feature("autodoc", "Returns the light component (value of the lightness) of the color within range [0.0; 1.0].
 
@@ -2303,7 +2594,7 @@ float
 		/****************** Name ******************/
 		/**** md5 signature: d49ea227fff1359b6ccda02d482f1a1c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns the name of the color defined by its quantities of red r, green g and blue b; more precisely this is the nearest color from the quantity_nameofcolor enumeration. exceptions standard_outofrange if r, g or b is less than 0. or greater than 1.
+		%feature("autodoc", "Returns the name of the nearest color from the quantity_nameofcolor enumeration.
 
 Returns
 -------
@@ -2312,24 +2603,24 @@ Quantity_NameOfColor
 		Quantity_NameOfColor Name();
 
 		/****************** Name ******************/
-		/**** md5 signature: bb33171b41501dac337433bfd7a55395 ****/
+		/**** md5 signature: 12aedba4ce5fae76383ea15a618009ba ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns the name of the colour for which the rgb components are nearest to <r>, <g> and <b>.
+		%feature("autodoc", "Returns the color from quantity_nameofcolor enumeration nearest to specified rgb values.
 
 Parameters
 ----------
-R: float
-G: float
-B: float
+theR: float
+theG: float
+theB: float
 
 Returns
 -------
 Quantity_NameOfColor
 ") Name;
-		static Quantity_NameOfColor Name(const Standard_Real R, const Standard_Real G, const Standard_Real B);
+		static Quantity_NameOfColor Name(const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
 		/****************** Red ******************/
-		/**** md5 signature: 0afa693a7d24010fd8ce065be2035322 ****/
+		/**** md5 signature: 2f1a62b5877585d9d835297761567d03 ****/
 		%feature("compactdefaultargs") Red;
 		%feature("autodoc", "Returns the red component (quantity of red) of the color within range [0.0; 1.0].
 
@@ -2339,27 +2630,38 @@ float
 ") Red;
 		Standard_Real Red();
 
-		/****************** RgbHls ******************/
-		/**** md5 signature: 15add06275baea2eca31ebbe5b267721 ****/
-		%feature("compactdefaultargs") RgbHls;
-		%feature("autodoc", "Converts rgb components into hls ones.
-
-Parameters
-----------
-R: float
-G: float
-B: float
+		/****************** Rgb ******************/
+		/**** md5 signature: 202035ead0067741792b3d981c145710 ****/
+		%feature("compactdefaultargs") Rgb;
+		%feature("autodoc", "Return the color as vector of 3 float elements.
 
 Returns
 -------
-H: float
-L: float
-S: float
+NCollection_Vec3<float>
+") Rgb;
+		const NCollection_Vec3<float> & Rgb();
+
+		/****************** RgbHls ******************/
+		/**** md5 signature: 648271ebf2e636fc7cfa632ea545c785 ****/
+		%feature("compactdefaultargs") RgbHls;
+		%feature("autodoc", "Converts srgb components into hls ones.
+
+Parameters
+----------
+theR: float
+theG: float
+theB: float
+
+Returns
+-------
+theH: float
+theL: float
+theS: float
 ") RgbHls;
-		static void RgbHls(const Standard_Real R, const Standard_Real G, const Standard_Real B, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void RgbHls(const Standard_Real theR, const Standard_Real theG, const Standard_Real theB, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Saturation ******************/
-		/**** md5 signature: 747824b2fc2142cfe3c7ee7950129f3d ****/
+		/**** md5 signature: 59dc6d010ad8cba6aaecbcb61c3bc90a ****/
 		%feature("compactdefaultargs") Saturation;
 		%feature("autodoc", "Returns the saturation component (value of the saturation) of the color within range [0.0; 1.0].
 
@@ -2370,98 +2672,87 @@ float
 		Standard_Real Saturation();
 
 		/****************** SetEpsilon ******************/
-		/**** md5 signature: 22c8a4122adae5e07b77464a5cf22523 ****/
+		/**** md5 signature: 701823c3ac4206ae1022565348b196ae ****/
 		%feature("compactdefaultargs") SetEpsilon;
-		%feature("autodoc", "Sets the specified value used to compare <self> and an other color in isdifferent and in isequal methods. warning: the default value is 0.0001.
+		%feature("autodoc", "Set the value used to compare two colors for equality.
 
 Parameters
 ----------
-AnEpsilon: float
+theEpsilon: float
 
 Returns
 -------
 None
 ") SetEpsilon;
-		static void SetEpsilon(const Standard_Real AnEpsilon);
+		static void SetEpsilon(const Standard_Real theEpsilon);
 
 		/****************** SetValues ******************/
-		/**** md5 signature: 476e1fb37d7bef1bf4f57b9156d165e7 ****/
+		/**** md5 signature: 0530272c87b3d0b7ff66540d09c2b0ba ****/
 		%feature("compactdefaultargs") SetValues;
-		%feature("autodoc", "Updates the colour <self> from the definition of the colour <aname>.
+		%feature("autodoc", "Updates the color from specified named color.
 
 Parameters
 ----------
-AName: Quantity_NameOfColor
+theName: Quantity_NameOfColor
 
 Returns
 -------
 None
 ") SetValues;
-		void SetValues(const Quantity_NameOfColor AName);
+		void SetValues(const Quantity_NameOfColor theName);
 
 		/****************** SetValues ******************/
-		/**** md5 signature: 40a5146f92fc1b9e2c94d344d3adcdd4 ****/
+		/**** md5 signature: e968eccd23741e99abdf2f47f5b8d3d9 ****/
 		%feature("compactdefaultargs") SetValues;
-		%feature("autodoc", "Updates a color according to the mode specified by thetype. quantity_toc_rgb: - ther1 the value of red within range [0.0; 1.0] - ther2 the value of green within range [0.0; 1.0] - ther3 the value of blue within range [0.0; 1.0] //! quantity_toc_hls: - ther1 is the hue (h) angle in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0). - ther2 is the lightness (l) within range [0.0; 1.0] - ther3 is the saturation (s) within range [0.0; 1.0].
+		%feature("autodoc", "Updates a color according to the mode specified by thetype. throws exception if values are out of range.
 
 Parameters
 ----------
-theR1: float
-theR2: float
-theR3: float
+theC1: float
+theC2: float
+theC3: float
 theType: Quantity_TypeOfColor
 
 Returns
 -------
 None
 ") SetValues;
-		void SetValues(const Standard_Real theR1, const Standard_Real theR2, const Standard_Real theR3, const Quantity_TypeOfColor theType);
+		void SetValues(const Standard_Real theC1, const Standard_Real theC2, const Standard_Real theC3, const Quantity_TypeOfColor theType);
 
 		/****************** SquareDistance ******************/
-		/**** md5 signature: 98b5f279d4d304157693644e9a73823a ****/
+		/**** md5 signature: c3ae187d239e9664e83a5d952a6a5c5e ****/
 		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Returns the square of distance between two colours.
+		%feature("autodoc", "Returns the square of distance between two colors.
 
 Parameters
 ----------
-AColor: Quantity_Color
+theColor: Quantity_Color
 
 Returns
 -------
 float
 ") SquareDistance;
-		Standard_Real SquareDistance(const Quantity_Color & AColor);
+		Standard_Real SquareDistance(const Quantity_Color & theColor);
 
 		/****************** StringName ******************/
-		/**** md5 signature: 2a518c52a5a4cb1c4f1cc420b4f6d199 ****/
+		/**** md5 signature: 5bb7a48c940fd9d08838420aa20b2711 ****/
 		%feature("compactdefaultargs") StringName;
-		%feature("autodoc", "Returns the name of the color identified by aname in the quantity_nameofcolor enumeration. for example, the name of the color which corresponds to quantity_noc_black is 'black'. exceptions standard_outofrange if aname in not known in the quantity_nameofcolor enumeration.
+		%feature("autodoc", "Returns the name of the color identified by the given quantity_nameofcolor enumeration value.
 
 Parameters
 ----------
-AColor: Quantity_NameOfColor
+theColor: Quantity_NameOfColor
 
 Returns
 -------
 char *
 ") StringName;
-		static const char * StringName(const Quantity_NameOfColor AColor);
-
-		/****************** Test ******************/
-		/**** md5 signature: ae4e459a4b4af36590706ec67f676d7b ****/
-		%feature("compactdefaultargs") Test;
-		%feature("autodoc", "Internal test.
-
-Returns
--------
-None
-") Test;
-		static void Test();
+		static const char * StringName(const Quantity_NameOfColor theColor);
 
 		/****************** Values ******************/
-		/**** md5 signature: edaefe1997c63fed76a7fec2d901c8e5 ****/
+		/**** md5 signature: 3f9d5570eba07c52e9a8fcd90e25871c ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns in ther1, ther2 and ther3 the components of this color according to the color system definition thetype. if thetype is quantity_toc_rgb: - ther1 the value of red between 0.0 and 1.0 - ther2 the value of green between 0.0 and 1.0 - ther3 the value of blue between 0.0 and 1.0 if thetype is quantity_toc_hls: - ther1 is the hue (h) angle in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0). - ther2 is the lightness (l) within range [0.0; 1.0] - ther3 is the saturation (s) within range [0.0; 1.0].
+		%feature("autodoc", "Returns in thec1, thec2 and thec3 the components of this color according to the color system definition thetype.
 
 Parameters
 ----------
@@ -2469,9 +2760,9 @@ theType: Quantity_TypeOfColor
 
 Returns
 -------
-theR1: float
-theR2: float
-theR3: float
+theC1: float
+theC2: float
+theC3: float
 ") Values;
 		void Values(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const Quantity_TypeOfColor theType);
 
@@ -2663,7 +2954,7 @@ Quantity_Color
 		/****************** ColorFromHex ******************/
 		/**** md5 signature: b3634b5c703eedf63647f9e571d57b71 ****/
 		%feature("compactdefaultargs") ColorFromHex;
-		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short rgb color, '#ff0f' for short rgba color, '#ffff00' for rgb color, or '#ffff00ff' for rgba color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing @param thealphacomponentisoff the flag that indicates if a color alpha component is presented in the input string (false) or not (true) returns true if parsing was successful, or false otherwise.
+		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short srgb color, '#ff0f' for short srgba color, '#ffff00' for rgb color, or '#ffff00ff' for rgba color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing @param thealphacomponentisoff the flag that indicates if a color alpha component is presented in the input string (false) or not (true) returns true if parsing was successful, or false otherwise.
 
 Parameters
 ----------
@@ -2681,7 +2972,7 @@ bool
 		/****************** ColorFromName ******************/
 		/**** md5 signature: b7369db5af7825fb8b564a5624fec500 ****/
 		%feature("compactdefaultargs") ColorFromName;
-		%feature("autodoc", "Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. returns false if name is unknown. an alpha component is set to 1.0. @param thecolornamestring the color name @param thecolor a found color returns false if the color name is unknown, or true if the search by color name was successful.
+		%feature("autodoc", "Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. an alpha component is set to 1.0. @param thecolornamestring the color name @param thecolor a found color returns false if the color name is unknown, or true if the search by color name was successful.
 
 Parameters
 ----------
@@ -2711,6 +3002,36 @@ TCollection_AsciiString
 ") ColorToHex;
 		static TCollection_AsciiString ColorToHex(const Quantity_ColorRGBA & theColor, const bool theToPrefixHash = true);
 
+		/****************** Convert_LinearRGB_To_sRGB ******************/
+		/**** md5 signature: 559fb1c74baef052b13df1a2afbc7473 ****/
+		%feature("compactdefaultargs") Convert_LinearRGB_To_sRGB;
+		%feature("autodoc", "Convert linear rgb components into srgb using opengl specs formula.
+
+Parameters
+----------
+theRGB: NCollection_Vec4<float>
+
+Returns
+-------
+NCollection_Vec4<float >
+") Convert_LinearRGB_To_sRGB;
+		static NCollection_Vec4<float > Convert_LinearRGB_To_sRGB(const NCollection_Vec4<float> & theRGB);
+
+		/****************** Convert_sRGB_To_LinearRGB ******************/
+		/**** md5 signature: e316739a87cd6eed8dbd55e011cb4328 ****/
+		%feature("compactdefaultargs") Convert_sRGB_To_LinearRGB;
+		%feature("autodoc", "Convert srgb components into linear rgb using opengl specs formula.
+
+Parameters
+----------
+theRGB: NCollection_Vec4<float>
+
+Returns
+-------
+NCollection_Vec4<float >
+") Convert_sRGB_To_LinearRGB;
+		static NCollection_Vec4<float > Convert_sRGB_To_LinearRGB(const NCollection_Vec4<float> & theRGB);
+
 
             %feature("autodoc", "1");
             %extend{
@@ -2729,6 +3050,21 @@ Returns
 Quantity_Color
 ") GetRGB;
 		const Quantity_Color & GetRGB();
+
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
 
 		/****************** IsDifferent ******************/
 		/**** md5 signature: c920c33d4688df25d56cabe0d9340122 ****/

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<StepVisual_AnnotationCurveOccurrence.hxx>
-#include<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.hxx>
+#include<StepVisual_AnnotationCurveOccurrenceAndGeomReprItem.hxx>
 #include<StepVisual_AnnotationFillArea.hxx>
 #include<StepVisual_AnnotationFillAreaOccurrence.hxx>
 #include<StepVisual_AnnotationOccurrence.hxx>
@@ -42,6 +42,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_Array1OfLayeredItem.hxx>
 #include<StepVisual_Array1OfPresentationStyleAssignment.hxx>
 #include<StepVisual_Array1OfPresentationStyleSelect.hxx>
+#include<StepVisual_Array1OfRenderingPropertiesSelect.hxx>
 #include<StepVisual_Array1OfStyleContextSelect.hxx>
 #include<StepVisual_Array1OfSurfaceStyleElementSelect.hxx>
 #include<StepVisual_Array1OfTextOrCharacter.hxx>
@@ -60,7 +61,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_CameraModelD3MultiClippingUnionSelect.hxx>
 #include<StepVisual_CameraUsage.hxx>
 #include<StepVisual_CentralOrParallel.hxx>
-#include<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.hxx>
+#include<StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel.hxx>
 #include<StepVisual_Colour.hxx>
 #include<StepVisual_ColourRgb.hxx>
 #include<StepVisual_ColourSpecification.hxx>
@@ -98,6 +99,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_HArray1OfLayeredItem.hxx>
 #include<StepVisual_HArray1OfPresentationStyleAssignment.hxx>
 #include<StepVisual_HArray1OfPresentationStyleSelect.hxx>
+#include<StepVisual_HArray1OfRenderingPropertiesSelect.hxx>
 #include<StepVisual_HArray1OfStyleContextSelect.hxx>
 #include<StepVisual_HArray1OfSurfaceStyleElementSelect.hxx>
 #include<StepVisual_HArray1OfTextOrCharacter.hxx>
@@ -134,6 +136,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_PresentationView.hxx>
 #include<StepVisual_PresentedItem.hxx>
 #include<StepVisual_PresentedItemRepresentation.hxx>
+#include<StepVisual_RenderingPropertiesSelect.hxx>
+#include<StepVisual_ShadingSurfaceMethod.hxx>
 #include<StepVisual_StyleContextSelect.hxx>
 #include<StepVisual_StyledItem.hxx>
 #include<StepVisual_StyledItemTarget.hxx>
@@ -144,8 +148,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_SurfaceStyleElementSelect.hxx>
 #include<StepVisual_SurfaceStyleFillArea.hxx>
 #include<StepVisual_SurfaceStyleParameterLine.hxx>
+#include<StepVisual_SurfaceStyleReflectanceAmbient.hxx>
+#include<StepVisual_SurfaceStyleRendering.hxx>
+#include<StepVisual_SurfaceStyleRenderingWithProperties.hxx>
 #include<StepVisual_SurfaceStyleSegmentationCurve.hxx>
 #include<StepVisual_SurfaceStyleSilhouette.hxx>
+#include<StepVisual_SurfaceStyleTransparent.hxx>
 #include<StepVisual_SurfaceStyleUsage.hxx>
 #include<StepVisual_Template.hxx>
 #include<StepVisual_TemplateInstance.hxx>

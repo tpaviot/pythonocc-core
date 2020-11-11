@@ -2467,36 +2467,22 @@ opencascade::handle<Standard_Transient>
 ") ObjectValue;
 		opencascade::handle<Standard_Transient> ObjectValue();
 
-		/****************** Print ******************/
-		/**** md5 signature: e569529855b4b5941e18b6562a1d1754 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Prints definition, specification, and actual status and value.
 
-Parameters
-----------
-S: Message_Messenger
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
 
-Returns
--------
-None
-") Print;
-		virtual void Print(const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintValue ******************/
-		/**** md5 signature: 16d858e8b42369a6f74a41dfb795a25d ****/
-		%feature("compactdefaultargs") PrintValue;
-		%feature("autodoc", "Prints only the value.
-
-Parameters
-----------
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintValue;
-		void PrintValue(const opencascade::handle<Message_Messenger> & S);
-
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintValueToString() {
+            std::stringstream s;
+            self->PrintValue(s);
+            return s.str();}
+        };
 		/****************** RealLimit ******************/
 		/**** md5 signature: 89c72e2e3893a95f4283fcadf76436b4 ****/
 		%feature("compactdefaultargs") RealLimit;

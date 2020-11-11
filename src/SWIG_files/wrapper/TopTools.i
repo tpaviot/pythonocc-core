@@ -43,7 +43,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptools.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopLoc_module.hxx>
-#include<Message_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
@@ -56,7 +55,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptools.html"
 %import NCollection.i
 %import TopoDS.i
 %import TopLoc.i
-%import Message.i
 %import TopAbs.i
 %import TCollection.i
 
@@ -346,17 +344,6 @@ None
             self->Dump(s);
             return s.str();}
         };
-		/****************** GetProgress ******************/
-		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress();
-
 		/****************** Index ******************/
 		/**** md5 signature: fbb01960bb9b443c36d99f6e7b11f6c5 ****/
 		%feature("compactdefaultargs") Index;
@@ -394,21 +381,6 @@ TopLoc_Location
                 std::stringstream s(src);
                 self->Read(s);}
             };
-		/****************** SetProgress ******************/
-		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-PR: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & PR);
-
 
         %feature("autodoc", "1");
         %extend{
@@ -750,17 +722,6 @@ int
 ") FormatNb;
 		Standard_Integer FormatNb();
 
-		/****************** GetProgress ******************/
-		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress();
-
 		/****************** Index ******************/
 		/**** md5 signature: 9e94bb6d7b4221be4165f8639cd27d92 ****/
 		%feature("compactdefaultargs") Index;
@@ -826,21 +787,6 @@ Returns
 None
 ") SetFormatNb;
 		void SetFormatNb(const Standard_Integer theFormatNb);
-
-		/****************** SetProgress ******************/
-		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-PR: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & PR);
 
 		/****************** Shape ******************/
 		/**** md5 signature: 243b850f6d21a0fba84095c942dbd917 ****/

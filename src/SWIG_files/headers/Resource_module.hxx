@@ -20,8 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<Resource_ConvertUnicode.hxx>
-#include<Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString.hxx>
-#include<Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString.hxx>
 #include<Resource_DataMapOfAsciiStringAsciiString.hxx>
 #include<Resource_DataMapOfAsciiStringExtendedString.hxx>
 #include<Resource_FormatType.hxx>

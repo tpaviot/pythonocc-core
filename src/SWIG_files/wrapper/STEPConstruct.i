@@ -66,6 +66,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepconstruct.htm
 #include<StepData_module.hxx>
 #include<StepShape_module.hxx>
 #include<MoniTool_module.hxx>
+#include<Resource_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -2153,6 +2154,21 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** DocFile ******************/
+		/**** md5 signature: 4e5532dc567edd6c5cf39a25cda27d46 ****/
+		%feature("compactdefaultargs") DocFile;
+		%feature("autodoc", "Returns documentfile to which numth extern reference is associated. returns null if cannot be detected.
+
+Parameters
+----------
+num: int
+
+Returns
+-------
+opencascade::handle<StepBasic_DocumentFile>
+") DocFile;
+		opencascade::handle<StepBasic_DocumentFile> DocFile(const Standard_Integer num);
+
 		/****************** FileName ******************/
 		/**** md5 signature: 43c1d3f377c3a1849b8dd53db818414e ****/
 		%feature("compactdefaultargs") FileName;
@@ -2500,7 +2516,7 @@ opencascade::handle<StepVisual_PresentationStyleAssignment>
 		opencascade::handle<StepVisual_PresentationStyleAssignment> GetColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & Col);
 
 		/****************** GetColors ******************/
-		/**** md5 signature: f73a2d38bae33411a706e14054746a5e ****/
+		/**** md5 signature: 471d816c25811a9fc28e360035e56eae ****/
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "Extract color definitions from the style entity for each type of color supported, result can be either null if it is not defined by that style, or last definition (if they are 1 or more).
 
@@ -2510,12 +2526,14 @@ style: StepVisual_StyledItem
 SurfCol: StepVisual_Colour
 BoundCol: StepVisual_Colour
 CurveCol: StepVisual_Colour
+RenderCol: StepVisual_Colour
 
 Returns
 -------
+RenderTransp: float
 IsComponent: bool
 ") GetColors;
-		Standard_Boolean GetColors(const opencascade::handle<StepVisual_StyledItem> & style, opencascade::handle<StepVisual_Colour> & SurfCol, opencascade::handle<StepVisual_Colour> & BoundCol, opencascade::handle<StepVisual_Colour> & CurveCol, Standard_Boolean &OutValue);
+		Standard_Boolean GetColors(const opencascade::handle<StepVisual_StyledItem> & style, opencascade::handle<StepVisual_Colour> & SurfCol, opencascade::handle<StepVisual_Colour> & BoundCol, opencascade::handle<StepVisual_Colour> & CurveCol, opencascade::handle<StepVisual_Colour> & RenderCol, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
 		/****************** Init ******************/
 		/**** md5 signature: a41268d32348bb8b355efce3731d2872 ****/
@@ -2559,7 +2577,7 @@ bool
 		Standard_Boolean LoadStyles();
 
 		/****************** MakeColorPSA ******************/
-		/**** md5 signature: b69db16ea2b6ecdb428e57932349e005 ****/
+		/**** md5 signature: 5617667584c537d5ebe338c07636b9e9 ****/
 		%feature("compactdefaultargs") MakeColorPSA;
 		%feature("autodoc", "Create a presentationstyleassignment entity which defines two colors (for filling surfaces and curves) if isfornauo true then returns presentationstylebycontext.
 
@@ -2568,6 +2586,8 @@ Parameters
 item: StepRepr_RepresentationItem
 SurfCol: StepVisual_Colour
 CurveCol: StepVisual_Colour
+RenderCol: StepVisual_Colour
+RenderTransp: float
 isForNAUO: bool,optional
 	default value is Standard_False
 
@@ -2575,7 +2595,7 @@ Returns
 -------
 opencascade::handle<StepVisual_PresentationStyleAssignment>
 ") MakeColorPSA;
-		opencascade::handle<StepVisual_PresentationStyleAssignment> MakeColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & SurfCol, const opencascade::handle<StepVisual_Colour> & CurveCol, const Standard_Boolean isForNAUO = Standard_False);
+		opencascade::handle<StepVisual_PresentationStyleAssignment> MakeColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & SurfCol, const opencascade::handle<StepVisual_Colour> & CurveCol, const opencascade::handle<StepVisual_Colour> & RenderCol, const Standard_Real RenderTransp, const Standard_Boolean isForNAUO = Standard_False);
 
 		/****************** NbStyles ******************/
 		/**** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ****/

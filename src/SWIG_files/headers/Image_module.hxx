@@ -21,11 +21,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<Image_AlienPixMap.hxx>
 #include<Image_Color.hxx>
+#include<Image_CompressedFormat.hxx>
+#include<Image_CompressedPixMap.hxx>
+#include<Image_DDSParser.hxx>
 #include<Image_Diff.hxx>
 #include<Image_Format.hxx>
 #include<Image_PixMap.hxx>
 #include<Image_PixMapData.hxx>
 #include<Image_PixMapTypedData.hxx>
+#include<Image_SupportedFormats.hxx>
 #include<Image_Texture.hxx>
 #include<Image_VideoRecorder.hxx>
 

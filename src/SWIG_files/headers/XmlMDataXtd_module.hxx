@@ -20,16 +20,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<XmlMDataXtd.hxx>
-#include<XmlMDataXtd_AxisDriver.hxx>
 #include<XmlMDataXtd_ConstraintDriver.hxx>
 #include<XmlMDataXtd_GeometryDriver.hxx>
 #include<XmlMDataXtd_PatternStdDriver.hxx>
-#include<XmlMDataXtd_PlacementDriver.hxx>
-#include<XmlMDataXtd_PlaneDriver.hxx>
-#include<XmlMDataXtd_PointDriver.hxx>
 #include<XmlMDataXtd_PositionDriver.hxx>
 #include<XmlMDataXtd_PresentationDriver.hxx>
-#include<XmlMDataXtd_ShapeDriver.hxx>
 #include<XmlMDataXtd_TriangulationDriver.hxx>
 
 #endif // XMLMDATAXTD_HXX

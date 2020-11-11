@@ -99,6 +99,17 @@ from OCC.Core.Exception import *
 class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepPrimAPI_MakeBox ******************/
+		/**** md5 signature: 62334e89e492e8589da69f5803043255 ****/
+		%feature("compactdefaultargs") BRepPrimAPI_MakeBox;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") BRepPrimAPI_MakeBox;
+		 BRepPrimAPI_MakeBox();
+
+		/****************** BRepPrimAPI_MakeBox ******************/
 		/**** md5 signature: ebf0ba7393f3d2e7a68cf7a20e007a5c ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeBox;
 		%feature("autodoc", "Make a box with a corner at 0,0,0 and the other dx,dy,dz.
@@ -152,7 +163,7 @@ None
 		/****************** BRepPrimAPI_MakeBox ******************/
 		/**** md5 signature: 196c0f2f714dc8f8c28d2f3897f11160 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeBox;
-		%feature("autodoc", "Ax2 is the left corner and the axis. constructs a box such that its sides are parallel to the axes of - the global coordinate system, or - the local coordinate system axis. and - with a corner at (0, 0, 0) and of size (dx, dy, dz), or - with a corner at point p and of size (dx, dy, dz), or - with corners at points p1 and p2. exceptions standard_domainerror if: dx, dy, dz are less than or equal to precision::confusion(), or - the vector joining the points p1 and p2 has a component projected onto the global coordinate system less than or equal to precision::confusion(). in these cases, the box would be flat.
+		%feature("autodoc", "Make a box with ax2 (the left corner and the axis) and size dx, dy, dz.
 
 Parameters
 ----------
@@ -210,6 +221,75 @@ Returns
 TopoDS_Face
 ") FrontFace;
 		const TopoDS_Face FrontFace();
+
+		/****************** Init ******************/
+		/**** md5 signature: e420c8ce658f1c7f9ca51d356e7d4fc6 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Init a box with a corner at 0,0,0 and the other thedx, thedy, thedz.
+
+Parameters
+----------
+theDX: float
+theDY: float
+theDZ: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const Standard_Real theDX, const Standard_Real theDY, const Standard_Real theDZ);
+
+		/****************** Init ******************/
+		/**** md5 signature: 74e58e01212416ad73217dbf68f63605 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Init a box with a corner at thepnt and size thedx, thedy, thedz.
+
+Parameters
+----------
+thePnt: gp_Pnt
+theDX: float
+theDY: float
+theDZ: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Pnt & thePnt, const Standard_Real theDX, const Standard_Real theDY, const Standard_Real theDZ);
+
+		/****************** Init ******************/
+		/**** md5 signature: dce068f12da326b3308072d0862a796d ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Init a box with corners thepnt1, thepnt2.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2);
+
+		/****************** Init ******************/
+		/**** md5 signature: 52e214b23b42180626b135887f3d4285 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Init a box with ax2 (the left corner and the theaxes) and size thedx, thedy, thedz.
+
+Parameters
+----------
+theAxes: gp_Ax2
+theDX: float
+theDY: float
+theDZ: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Ax2 & theAxes, const Standard_Real theDX, const Standard_Real theDY, const Standard_Real theDZ);
 
 		/****************** LeftFace ******************/
 		/**** md5 signature: 3e2b98663df78556362c180d1b973ba2 ****/
@@ -596,7 +676,7 @@ class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 		/****************** BRepPrimAPI_MakeCone ******************/
 		/**** md5 signature: 1512719e2d7e1f0f63aff7bd1c269939 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeCone;
-		%feature("autodoc", "Make a cone of height h radius r1 in the plane z = 0, r2 in the plane z = h. r1 and r2 may be null.
+		%feature("autodoc", "Make a cone. @param r1 [in] cone bottom radius, may be null (z = 0) @param r2 [in] cone top radius, may be null (z = h) @param h [in] cone height.
 
 Parameters
 ----------
@@ -613,7 +693,7 @@ None
 		/****************** BRepPrimAPI_MakeCone ******************/
 		/**** md5 signature: 85895b74d05330efa768b9822d607e5e ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeCone;
-		%feature("autodoc", "Make a cone of height h radius r1 in the plane z = 0, r2 in the plane z = h. r1 and r2 may be null. take a section of <angle>.
+		%feature("autodoc", "Make a cone. @param r1 [in] cone bottom radius, may be null (z = 0) @param r2 [in] cone top radius, may be null (z = h) @param h [in] cone height @param angle [in] angle to create a part cone.
 
 Parameters
 ----------
@@ -631,7 +711,7 @@ None
 		/****************** BRepPrimAPI_MakeCone ******************/
 		/**** md5 signature: 65a934077d02d97ddd9f6dee217c3210 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeCone;
-		%feature("autodoc", "Make a cone of height h radius r1 in the plane z = 0, r2 in the plane z = h. r1 and r2 may be null.
+		%feature("autodoc", "Make a cone. @param axes [in] coordinate system for the construction of the cone @param r1 [in] cone bottom radius, may be null (z = 0) @param r2 [in] cone top radius, may be null (z = h) @param h [in] cone height.
 
 Parameters
 ----------
@@ -704,7 +784,7 @@ class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 		/****************** BRepPrimAPI_MakeCylinder ******************/
 		/**** md5 signature: 122d3374d1b39c79e589ee7952e79fc5 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeCylinder;
-		%feature("autodoc", "Make a cylinder of radius r and length h.
+		%feature("autodoc", "Make a cylinder. @param r [in] cylinder radius @param h [in] cylinder height.
 
 Parameters
 ----------
@@ -720,7 +800,7 @@ None
 		/****************** BRepPrimAPI_MakeCylinder ******************/
 		/**** md5 signature: b712a40631537cc95a210a45d5a83445 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeCylinder;
-		%feature("autodoc", "Make a cylinder of radius r and length h with angle h.
+		%feature("autodoc", "Make a cylinder (part cylinder). @param r [in] cylinder radius @param h [in] cylinder height @param angle [in] defines the missing portion of the cylinder.
 
 Parameters
 ----------
@@ -737,7 +817,7 @@ None
 		/****************** BRepPrimAPI_MakeCylinder ******************/
 		/**** md5 signature: af20dc797536fde28b46750b4d4c4ba7 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeCylinder;
-		%feature("autodoc", "Make a cylinder of radius r and length h.
+		%feature("autodoc", "Make a cylinder of radius r and length h. @param axes [in] coordinate system for the construction of the cylinder @param r [in] cylinder radius @param h [in] cylinder height.
 
 Parameters
 ----------
@@ -1317,7 +1397,7 @@ class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: d4c008b020242eeb2a1cf253e7c05dbb ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere. @param r [in] sphere radius.
 
 Parameters
 ----------
@@ -1332,7 +1412,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: 0a3f72555d6c11472942f1523e001b32 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical wedge). @param r [in] sphere radius @param angle [in] angle between the radii lying within the bounding semidisks.
 
 Parameters
 ----------
@@ -1348,7 +1428,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: e211e8e1d075f75e54850166aa57aa62 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical segment). @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment.
 
 Parameters
 ----------
@@ -1365,7 +1445,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: e61fc0893a9d99a0a414e6e1a78e6be2 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical segment). @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment @param angle3 [in] angle between the radii lying within the bounding semidisks.
 
 Parameters
 ----------
@@ -1383,7 +1463,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: 8a02cb080894b776cb9184f9db9e1ed9 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere. @param center [in] sphere center coordinates @param r [in] sphere radius.
 
 Parameters
 ----------
@@ -1399,7 +1479,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: faf79684811fcbfdff68d313175a9f2d ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical wedge). @param center [in] sphere center coordinates @param r [in] sphere radius @param angle [in] angle between the radii lying within the bounding semidisks.
 
 Parameters
 ----------
@@ -1416,7 +1496,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: 9da11fccdbffbda96873289a3c23018b ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical segment). @param center [in] sphere center coordinates @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment.
 
 Parameters
 ----------
@@ -1434,7 +1514,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: 4926f7918e6569b90190d3e88d475d75 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical segment). @param center [in] sphere center coordinates @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment @param angle3 [in] angle between the radii lying within the bounding semidisks.
 
 Parameters
 ----------
@@ -1453,7 +1533,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: f71f5dd4c2e2ceb29229f80617f7b455 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere. @param axis [in] coordinate system for the construction of the sphere @param r [in] sphere radius.
 
 Parameters
 ----------
@@ -1469,7 +1549,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: b83fc82f55c2def18af66a201b36354c ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical wedge). @param axis [in] coordinate system for the construction of the sphere @param r [in] sphere radius @param angle [in] angle between the radii lying within the bounding semidisks.
 
 Parameters
 ----------
@@ -1486,7 +1566,7 @@ None
 		/****************** BRepPrimAPI_MakeSphere ******************/
 		/**** md5 signature: 74ca9fb560c1485db00b034420161dab ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeSphere;
-		%feature("autodoc", "Make a sphere of radius r.
+		%feature("autodoc", "Make a sphere (spherical segment). @param axis [in] coordinate system for the construction of the sphere @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment.
 
 Parameters
 ----------
@@ -1559,7 +1639,7 @@ class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: 79ec4e5628c83853d33b887d898e0976 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a torus of radii r1 r2.
+		%feature("autodoc", "Make a torus. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe.
 
 Parameters
 ----------
@@ -1575,7 +1655,7 @@ None
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: 630b73fe6c123f9d36bd32f1beaf5fd4 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a section of a torus of radii r1 r2.
+		%feature("autodoc", "Make a section of a torus. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle [in] angle to create a torus pipe segment.
 
 Parameters
 ----------
@@ -1592,7 +1672,7 @@ None
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: 6588729b6703ecb0b0c43e81462643e0 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a torus of radii r2, r2 with angles on the small circle.
+		%feature("autodoc", "Make a torus with angles on the small circle. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle1 [in] first angle to create a torus ring segment @param angle2 [in] second angle to create a torus ring segment.
 
 Parameters
 ----------
@@ -1610,7 +1690,7 @@ None
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: df71dc26e9d9eb3776b1e633078d7613 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a torus of radii r2, r2 with angles on the small circle.
+		%feature("autodoc", "Make a torus with angles on the small circle. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle1 [in] first angle to create a torus ring segment @param angle2 [in] second angle to create a torus ring segment @param angle [in] angle to create a torus pipe segment.
 
 Parameters
 ----------
@@ -1629,7 +1709,7 @@ None
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: 9aa5d83cacd2a9ce2d73751141b464a4 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a torus of radii r1 r2.
+		%feature("autodoc", "Make a torus. @param axes [in] coordinate system for the construction of the sphere @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe.
 
 Parameters
 ----------
@@ -1646,7 +1726,7 @@ None
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: ba7819d589c942773681bb3827926736 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a section of a torus of radii r1 r2.
+		%feature("autodoc", "Make a section of a torus. @param axes [in] coordinate system for the construction of the sphere @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle [in] angle to create a torus pipe segment.
 
 Parameters
 ----------
@@ -1664,7 +1744,7 @@ None
 		/****************** BRepPrimAPI_MakeTorus ******************/
 		/**** md5 signature: 3df636bf3f63fddf3c54f3ce2f5488f5 ****/
 		%feature("compactdefaultargs") BRepPrimAPI_MakeTorus;
-		%feature("autodoc", "Make a torus of radii r1 r2.
+		%feature("autodoc", "Make a torus. @param axes [in] coordinate system for the construction of the sphere @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle1 [in] first angle to create a torus ring segment @param angle2 [in] second angle to create a torus ring segment.
 
 Parameters
 ----------

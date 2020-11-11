@@ -920,45 +920,54 @@ bool
 		Standard_Boolean SyntaxError();
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 67ea450302048d3fc553ce9bb8ed59c7 ****/
+		/**** md5 signature: b7b93a89ea541f8901206078d3c8ab0f ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers an entity given its rank in the model (root or not) returns true if it is recognized as geom-topol. (but it can have failed : see isdone).
 
 Parameters
 ----------
 num: int
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		virtual Standard_Boolean Transfer(const Standard_Integer num);
+		virtual Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferList ******************/
-		/**** md5 signature: 71147395c2cac29dca2d965cdb93c440 ****/
+		/**** md5 signature: 9e2922f2658d44facb646c364ffbbc83 ****/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "Transfers a list of entities (only the ones also in the model) remark : former result is cleared.
 
 Parameters
 ----------
 list: TColStd_HSequenceOfTransient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TransferList;
-		virtual void TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		virtual void TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: d9fa90c4a1041c991bbc3f82979c4c93 ****/
+		/**** md5 signature: b19043600acd2d46b55f29ea05e21678 ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Transfers all root entities which are recognized as geom-topol the result will be a list of shapes. this method calls user redefinable preparetransfer remark : former result is cleared.
+
+Parameters
+----------
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TransferRoots;
-		virtual void TransferRoots();
+		virtual void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transient ******************/
 		/**** md5 signature: f74282777e87422dedb9fd96d2ddb7db ****/

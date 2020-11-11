@@ -20,20 +20,26 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<RWGltf_CafReader.hxx>
+#include<RWGltf_CafWriter.hxx>
 #include<RWGltf_GltfAccessor.hxx>
 #include<RWGltf_GltfAccessorCompType.hxx>
 #include<RWGltf_GltfAccessorLayout.hxx>
+#include<RWGltf_GltfAlphaMode.hxx>
 #include<RWGltf_GltfArrayType.hxx>
 #include<RWGltf_GltfBufferView.hxx>
 #include<RWGltf_GltfBufferViewTarget.hxx>
 #include<RWGltf_GltfFace.hxx>
 #include<RWGltf_GltfLatePrimitiveArray.hxx>
+#include<RWGltf_GltfMaterialMap.hxx>
+#include<RWGltf_GltfOStreamWriter.hxx>
 #include<RWGltf_GltfPrimArrayData.hxx>
 #include<RWGltf_GltfPrimitiveMode.hxx>
 #include<RWGltf_GltfRootElement.hxx>
+#include<RWGltf_GltfSceneNodeMap.hxx>
 #include<RWGltf_MaterialCommon.hxx>
 #include<RWGltf_MaterialMetallicRoughness.hxx>
 #include<RWGltf_PrimitiveArrayReader.hxx>
 #include<RWGltf_TriangulationReader.hxx>
+#include<RWGltf_WriterTrsfFormat.hxx>
 
 #endif // RWGLTF_HXX

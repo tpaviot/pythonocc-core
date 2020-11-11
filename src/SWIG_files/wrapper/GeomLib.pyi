@@ -10,6 +10,7 @@ from OCC.Core.Adaptor3d import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.TColStd import *
 from OCC.Core.Geom2d import *
+from OCC.Core.Adaptor2d import *
 from OCC.Core.math import *
 from OCC.Core.AdvApprox import *
 
@@ -92,6 +93,10 @@ class geomlib:
 	def SameRange(Tolerance: float, Curve2dPtr: Geom2d_Curve, First: float, Last: float, RequestedFirst: float, RequestedLast: float, NewCurve2dPtr: Geom2d_Curve) -> None: ...
 	@staticmethod
 	def To3d(Position: gp_Ax2, Curve2d: Geom2d_Curve) -> Geom_Curve: ...
+	@staticmethod
+	def buildC3dOnIsoLine(theC2D: Adaptor2d_HCurve2d, theSurf: Adaptor3d_HSurface, theFirst: float, theLast: float, theTolerance: float, theIsU: bool, theParam: float, theIsForward: bool) -> Geom_Curve: ...
+	@staticmethod
+	def isIsoLine(theC2D: Adaptor2d_HCurve2d) -> Tuple[bool, bool, float, bool]: ...
 
 class GeomLib_Check2dBSplineCurve:
 	def __init__(self, Curve: Geom2d_BSplineCurve, Tolerance: float, AngularTolerance: float) -> None: ...
@@ -201,6 +206,8 @@ geomlib_NormEstim = geomlib.NormEstim
 geomlib_RemovePointsFromArray = geomlib.RemovePointsFromArray
 geomlib_SameRange = geomlib.SameRange
 geomlib_To3d = geomlib.To3d
+geomlib_buildC3dOnIsoLine = geomlib.buildC3dOnIsoLine
+geomlib_isIsoLine = geomlib.isIsoLine
 GeomLib_Tool_Parameter = GeomLib_Tool.Parameter
 GeomLib_Tool_Parameter = GeomLib_Tool.Parameter
 GeomLib_Tool_Parameters = GeomLib_Tool.Parameters

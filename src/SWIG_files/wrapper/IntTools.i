@@ -642,6 +642,17 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** MinimalSquareDistance ******************/
+		/**** md5 signature: 6aafb3181efcd21f3cf1bd5eea608a1e ****/
+		%feature("compactdefaultargs") MinimalSquareDistance;
+		%feature("autodoc", "Returns the minimal distance found between edge and face.
+
+Returns
+-------
+float
+") MinimalSquareDistance;
+		Standard_Real MinimalSquareDistance();
+
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
@@ -2398,6 +2409,17 @@ Returns
 bool
 ") IsDone;
 		Standard_Boolean IsDone();
+
+		/****************** MinimalDistance ******************/
+		/**** md5 signature: 47310ba90ae5863695bce35b764f5f23 ****/
+		%feature("compactdefaultargs") MinimalDistance;
+		%feature("autodoc", "Returns the minimal distance found between edge and face.
+
+Returns
+-------
+float
+") MinimalDistance;
+		Standard_Real MinimalDistance();
 
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/

@@ -21,24 +21,35 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<Message.hxx>
 #include<Message_Alert.hxx>
+#include<Message_AlertExtended.hxx>
 #include<Message_Algorithm.hxx>
+#include<Message_Attribute.hxx>
+#include<Message_AttributeMeter.hxx>
+#include<Message_AttributeObject.hxx>
+#include<Message_AttributeStream.hxx>
+#include<Message_CompositeAlerts.hxx>
+#include<Message_ConsoleColor.hxx>
 #include<Message_ExecStatus.hxx>
 #include<Message_Gravity.hxx>
 #include<Message_HArrayOfMsg.hxx>
+#include<Message_Level.hxx>
 #include<Message_ListIteratorOfListOfMsg.hxx>
 #include<Message_ListOfAlert.hxx>
 #include<Message_ListOfMsg.hxx>
 #include<Message_Messenger.hxx>
+#include<Message_MetricType.hxx>
 #include<Message_Msg.hxx>
 #include<Message_MsgFile.hxx>
 #include<Message_Printer.hxx>
 #include<Message_PrinterOStream.hxx>
+#include<Message_PrinterSystemLog.hxx>
+#include<Message_PrinterToReport.hxx>
 #include<Message_ProgressIndicator.hxx>
-#include<Message_ProgressScale.hxx>
+#include<Message_ProgressRange.hxx>
+#include<Message_ProgressScope.hxx>
 #include<Message_ProgressSentry.hxx>
 #include<Message_Report.hxx>
 #include<Message_SequenceOfPrinters.hxx>
-#include<Message_SequenceOfProgressScale.hxx>
 #include<Message_Status.hxx>
 #include<Message_StatusType.hxx>
 

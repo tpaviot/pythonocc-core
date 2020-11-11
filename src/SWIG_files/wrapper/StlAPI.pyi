@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
+from OCC.Core.Message import *
 
 
 class stlapi:
@@ -19,7 +20,7 @@ class StlAPI_Writer:
 	def __init__(self) -> None: ...
 	def GetASCIIMode(self) -> bool: ...
 	def SetASCIIMode(self, value: bool) -> None: ...
-	def Write(self, theShape: TopoDS_Shape, theFileName: str) -> bool: ...
+	def Write(self, theShape: TopoDS_Shape, theFileName: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
 
 # harray1 classes
 # harray2 classes

@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
+from OCC.Core.Message import *
 from OCC.Core.Geom2d import *
 from OCC.Core.Geom import *
 from OCC.Core.TopLoc import *
@@ -14,10 +15,10 @@ BinTools_LocationSetPtr = NewType('BinTools_LocationSetPtr', BinTools_LocationSe
 class bintools:
 	@overload
 	@staticmethod
-	def Read(theShape: TopoDS_Shape, theFile: str) -> bool: ...
+	def Read(theShape: TopoDS_Shape, theFile: str, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
 	@overload
 	@staticmethod
-	def Write(theShape: TopoDS_Shape, theFile: str) -> bool: ...
+	def Write(theShape: TopoDS_Shape, theFile: str, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
 
 class BinTools_Curve2dSet:
 	def __init__(self) -> None: ...
@@ -72,10 +73,12 @@ bintools_GetBool = bintools.GetBool
 bintools_GetExtChar = bintools.GetExtChar
 bintools_GetInteger = bintools.GetInteger
 bintools_GetReal = bintools.GetReal
+bintools_GetShortReal = bintools.GetShortReal
 bintools_PutBool = bintools.PutBool
 bintools_PutExtChar = bintools.PutExtChar
 bintools_PutInteger = bintools.PutInteger
 bintools_PutReal = bintools.PutReal
+bintools_PutShortReal = bintools.PutShortReal
 bintools_Read = bintools.Read
 bintools_Read = bintools.Read
 bintools_Write = bintools.Write

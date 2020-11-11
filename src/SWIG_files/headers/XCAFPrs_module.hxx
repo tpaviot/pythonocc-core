@@ -32,5 +32,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XCAFPrs_Driver.hxx>
 #include<XCAFPrs_IndexedDataMapOfShapeStyle.hxx>
 #include<XCAFPrs_Style.hxx>
+#include<XCAFPrs_Texture.hxx>
 
 #endif // XCAFPRS_HXX

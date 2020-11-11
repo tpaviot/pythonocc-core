@@ -463,6 +463,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -491,7 +499,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities in sensitive.
 
@@ -500,6 +508,17 @@ Returns
 int
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -588,6 +607,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -631,7 +658,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities (points or planar convex polygons).
 
@@ -640,6 +667,17 @@ Returns
 int
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -695,6 +733,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -723,7 +769,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities in sensitive.
 
@@ -743,6 +789,17 @@ Returns
 gp_Pnt
 ") Point;
 		const gp_Pnt Point();
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -799,6 +856,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 215af104676c67d500840bc0352e57ff ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -853,7 +918,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of points.
 
@@ -918,6 +983,17 @@ Returns
 None
 ") StartPoint;
 		void StartPoint(const gp_Pnt & thePnt);
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -991,6 +1067,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -1019,7 +1103,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 439de2a2c8730a0ea35a2e05a19dcb72 ****/
+		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of points.
 
@@ -1045,6 +1129,17 @@ Returns
 None
 ") Points3D;
 		void Points3D(gp_Pnt & thePnt0, gp_Pnt & thePnt1, gp_Pnt & thePnt2);
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -1131,6 +1226,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetPoints ******************/
 		/**** md5 signature: 2354af8c2d25c775f74f460a205fdea9 ****/
 		%feature("compactdefaultargs") GetPoints;
@@ -1147,7 +1250,7 @@ None
 		virtual void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of points in set.
 
@@ -1329,6 +1432,14 @@ None
 ") Clear;
 		void Clear();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Entities ******************/
 		/**** md5 signature: 42d351b73d32e041dcc72923d4f98551 ****/
 		%feature("compactdefaultargs") Entities;
@@ -1416,7 +1527,7 @@ bool
 		Standard_Boolean MustMatchAll();
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities.
 
@@ -1607,6 +1718,21 @@ None
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Boolean theIsBVHEnabled, const Standard_Integer theNbPnts = 6);
 
+		/****************** ArrayBounds ******************/
+		/**** md5 signature: ca35524752beb56d2950eda84c029cd5 ****/
+		%feature("compactdefaultargs") ArrayBounds;
+		%feature("autodoc", "Return array bounds.
+
+Parameters
+----------
+
+Returns
+-------
+theLow: int
+theUp: int
+") ArrayBounds;
+		void ArrayBounds(Standard_Integer &OutValue, Standard_Integer &OutValue);
+
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
@@ -1660,8 +1786,31 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** GetPoint3d ******************/
+		/**** md5 signature: 8954ccbf381dbf8b2025244d12bd916a ****/
+		%feature("compactdefaultargs") GetPoint3d;
+		%feature("autodoc", "Return point.
+
+Parameters
+----------
+thePntIdx: int
+
+Returns
+-------
+gp_Pnt
+") GetPoint3d;
+		gp_Pnt GetPoint3d(const Standard_Integer thePntIdx);
+
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of segments in poly.
 
@@ -1808,6 +1957,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -2032,7 +2189,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 439de2a2c8730a0ea35a2e05a19dcb72 ****/
+		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of nodes in triangulation.
 
@@ -2388,6 +2545,14 @@ gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -2422,7 +2587,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		opencascade::handle<Select3D_SensitiveEntity> GetLastDetected();
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities.
 
@@ -2491,14 +2656,14 @@ None
 class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 	public:
 		/****************** Select3D_SensitiveCircle ******************/
-		/**** md5 signature: f8ce34fcbd41ee46af3b0821c5c84aa6 ****/
+		/**** md5 signature: 55c92bdc9794261bfae56743283eb987 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCircle;
 		%feature("autodoc", "Constructs the sensitive circle object defined by the owner theownerid, the circle thecircle, the boolean theisfilled and the number of points thenbpnts.
 
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-theCircle: Geom_Circle
+theCircle: gp_Circ
 theIsFilled: bool,optional
 	default value is Standard_False
 theNbPnts: int,optional
@@ -2508,17 +2673,17 @@ Returns
 -------
 None
 ") Select3D_SensitiveCircle;
-		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<Geom_Circle> & theCircle, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
+		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
 
 		/****************** Select3D_SensitiveCircle ******************/
-		/**** md5 signature: 59173d5a8d0d9dfa7b69e947b73ba140 ****/
+		/**** md5 signature: 060771db8c7161cb25e7fb0e81ee60a5 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCircle;
 		%feature("autodoc", "Constructs the sensitive arc object defined by the owner theownerid, the circle thecircle, the parameters theu1 and theu2, the boolean theisfilled and the number of points thenbpnts. theu1 and theu2 define the first and last points of the arc on thecircle.
 
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-theCircle: Geom_Circle
+theCircle: gp_Circ
 theU1: float
 theU2: float
 theIsFilled: bool,optional
@@ -2530,7 +2695,7 @@ Returns
 -------
 None
 ") Select3D_SensitiveCircle;
-		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<Geom_Circle> & theCircle, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
+		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
 
 		/****************** Select3D_SensitiveCircle ******************/
 		/**** md5 signature: fe86e77eed0e56bb2b592c60290a9f02 ****/
@@ -2568,21 +2733,6 @@ None
 ") Select3D_SensitiveCircle;
 		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePnts3d, const Standard_Boolean theIsFilled = Standard_False);
 
-		/****************** ArrayBounds ******************/
-		/**** md5 signature: fe8e20364b392ddc1eb933fed0f1e7ce ****/
-		%feature("compactdefaultargs") ArrayBounds;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-
-Returns
--------
-theLow: int
-theUp: int
-") ArrayBounds;
-		void ArrayBounds(Standard_Integer &OutValue, Standard_Integer &OutValue);
-
 		/****************** BVH ******************/
 		/**** md5 signature: 9d26e1a47d3d96ad1039d301e2b44c49 ****/
 		%feature("compactdefaultargs") BVH;
@@ -2616,21 +2766,6 @@ opencascade::handle<Select3D_SensitiveEntity>
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
-		/****************** GetPoint3d ******************/
-		/**** md5 signature: 3edc2168b4e4c4d76fb051da4133604a ****/
-		%feature("compactdefaultargs") GetPoint3d;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePntIdx: int
-
-Returns
--------
-gp_Pnt
-") GetPoint3d;
-		gp_Pnt GetPoint3d(const Standard_Integer thePntIdx);
-
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
@@ -2646,6 +2781,17 @@ Returns
 bool
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 1947eabea961b20e546599eeb7fbe28d ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -2664,7 +2810,7 @@ bool
 class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 	public:
 		/****************** Select3D_SensitiveCurve ******************/
-		/**** md5 signature: 6d8bb21ebd2fe38be1e8322ff2e7ef46 ****/
+		/**** md5 signature: c9a40bfe5b28b7b974abc3c2b3e80be9 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
 		%feature("autodoc", "Constructs a sensitive curve object defined by the owner theownerid, the curve thecurve, and the maximum number of points on the curve: thenbpnts.
 

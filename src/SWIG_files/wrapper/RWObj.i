@@ -121,21 +121,21 @@ RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_New
 class RWObj {
 	public:
 		/****************** ReadFile ******************/
-		/**** md5 signature: 7fc90c2b37a779cd61ea8aab67c27303 ****/
+		/**** md5 signature: 9db0a5dcbc0cfb32dbb5943d609412ad ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified obj file and returns its content as triangulation. in case of error, returns null handle.
 
 Parameters
 ----------
 theFile: char *
-aProgInd: Message_ProgressIndicator,optional
-	default value is NULL
+aProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const opencascade::handle<Message_ProgressIndicator> & aProgInd = NULL);
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const Message_ProgressRange & aProgress = Message_ProgressRange());
 
 };
 
@@ -291,36 +291,36 @@ int
 		Standard_Integer NbProbeNodes();
 
 		/****************** Probe ******************/
-		/**** md5 signature: 587b820e8804b376b7eeb1e390fc1f5b ****/
+		/**** md5 signature: 26f3d0cdb02ea1bf9a52b60912c48df8 ****/
 		%feature("compactdefaultargs") Probe;
 		%feature("autodoc", "Probe data from obj file (comments, external references) without actually reading mesh data. although mesh data will not be collected, the full file content will be parsed, due to obj format limitations. @param thefile path to the file @param theprogress progress indicator returns true if success, false on error or user break. @sa filecomments(), externalfiles(), nbprobenodes(), nbprobeelems().
 
 Parameters
 ----------
 theFile: TCollection_AsciiString
-theProgress: Message_ProgressIndicator
+theProgress: Message_ProgressRange
 
 Returns
 -------
 bool
 ") Probe;
-		Standard_Boolean Probe(const TCollection_AsciiString & theFile, const opencascade::handle<Message_ProgressIndicator> & theProgress);
+		Standard_Boolean Probe(const TCollection_AsciiString & theFile, const Message_ProgressRange & theProgress);
 
 		/****************** Read ******************/
-		/**** md5 signature: 48923c847bd1104d6ef6381c9de33937 ****/
+		/**** md5 signature: 22d0a4b3b93a1e3452e7be9b291128a7 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Reads data from obj file. unicode paths can be given in utf-8 encoding. returns true if success, false on error or user break.
 
 Parameters
 ----------
 theFile: TCollection_AsciiString
-theProgress: Message_ProgressIndicator
+theProgress: Message_ProgressRange
 
 Returns
 -------
 bool
 ") Read;
-		Standard_Boolean Read(const TCollection_AsciiString & theFile, const opencascade::handle<Message_ProgressIndicator> & theProgress);
+		Standard_Boolean Read(const TCollection_AsciiString & theFile, const Message_ProgressRange & theProgress);
 
 		/****************** SetMemoryLimit ******************/
 		/**** md5 signature: 6570682bb3b681c7b6ede732333556b3 ****/

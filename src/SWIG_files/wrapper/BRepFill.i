@@ -848,6 +848,21 @@ None
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
+		/****************** SetHangChecking ******************/
+		/**** md5 signature: 082382da7c6c3da9061b500893941826 ****/
+		%feature("compactdefaultargs") SetHangChecking;
+		%feature("autodoc", "Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. by default hang checking is used.
+
+Parameters
+----------
+theHangChecking: bool
+
+Returns
+-------
+None
+") SetHangChecking;
+		void SetHangChecking(const Standard_Boolean theHangChecking);
+
 		/****************** SetInvOrder ******************/
 		/**** md5 signature: 50bac5968816111fd573c6f1be407215 ****/
 		%feature("compactdefaultargs") SetInvOrder;

@@ -278,6 +278,47 @@ None
 ") SetPickedPoint;
 		void SetPickedPoint(const gp_Pnt & theObjPickedPnt);
 
+		/****************** SetSurfaceNormal ******************/
+		/**** md5 signature: 43b093289dee163937e2e1c9a5f571fe ****/
+		%feature("compactdefaultargs") SetSurfaceNormal;
+		%feature("autodoc", "Set surface normal at picked point.
+
+Parameters
+----------
+theNormal: NCollection_Vec3<float>
+
+Returns
+-------
+None
+") SetSurfaceNormal;
+		void SetSurfaceNormal(const NCollection_Vec3<float> & theNormal);
+
+		/****************** SetSurfaceNormal ******************/
+		/**** md5 signature: af0bec65600d14cfebb8a4739418cb17 ****/
+		%feature("compactdefaultargs") SetSurfaceNormal;
+		%feature("autodoc", "Set surface normal at picked point.
+
+Parameters
+----------
+theNormal: gp_Vec
+
+Returns
+-------
+None
+") SetSurfaceNormal;
+		void SetSurfaceNormal(const gp_Vec & theNormal);
+
+		/****************** SurfaceNormal ******************/
+		/**** md5 signature: 2a41a55d2fef560c0c85bc0c696120ab ****/
+		%feature("compactdefaultargs") SurfaceNormal;
+		%feature("autodoc", "Return (unnormalized) surface normal at picked point or zero vector if undefined. warning! normal is defined in local coordinate system and should be translated into world system before usage!.
+
+Returns
+-------
+NCollection_Vec3<float>
+") SurfaceNormal;
+		const NCollection_Vec3<float> & SurfaceNormal();
+
 };
 
 
@@ -348,6 +389,14 @@ float
 ") DistToGeometryCenter;
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetActiveSelectionType ******************/
 		/**** md5 signature: 56d78b21d70ce91662f965e54361b877 ****/
 		%feature("compactdefaultargs") GetActiveSelectionType;

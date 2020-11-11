@@ -43,6 +43,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
 #include<NCollection_module.hxx>
 #include<Quantity_module.hxx>
 #include<TCollection_module.hxx>
+#include<gp_module.hxx>
+#include<Image_module.hxx>
+#include<Graphic3d_module.hxx>
 #include<Bnd_module.hxx>
 #include<Media_module.hxx>
 #include<TColgp_module.hxx>
@@ -54,6 +57,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
 %import NCollection.i
 %import Quantity.i
 %import TCollection.i
+%import gp.i
+%import Image.i
+%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -61,6 +67,11 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Aspect_Eye {
+	Aspect_Eye_Left = 0,
+	Aspect_Eye_Right = 1,
+};
+
 enum Aspect_VKeyBasic {
 	Aspect_VKey_UNKNOWN = 0,
 	Aspect_VKey_A = 1,
@@ -168,31 +179,43 @@ enum Aspect_VKeyBasic {
 	Aspect_VKey_BrowserSearch = 103,
 	Aspect_VKey_BrowserFavorites = 104,
 	Aspect_VKey_BrowserHome = 105,
-	Aspect_VKey_Shift = 106,
-	Aspect_VKey_Control = 107,
-	Aspect_VKey_Alt = 108,
-	Aspect_VKey_Menu = 109,
-	Aspect_VKey_Meta = 110,
-	Aspect_VKey_NavInteract = 111,
-	Aspect_VKey_NavForward = 112,
-	Aspect_VKey_NavBackward = 113,
-	Aspect_VKey_NavSlideLeft = 114,
-	Aspect_VKey_NavSlideRight = 115,
-	Aspect_VKey_NavSlideUp = 116,
-	Aspect_VKey_NavSlideDown = 117,
-	Aspect_VKey_NavRollCCW = 118,
-	Aspect_VKey_NavRollCW = 119,
-	Aspect_VKey_NavLookLeft = 120,
-	Aspect_VKey_NavLookRight = 121,
-	Aspect_VKey_NavLookUp = 122,
-	Aspect_VKey_NavLookDown = 123,
-	Aspect_VKey_NavCrouch = 124,
-	Aspect_VKey_NavJump = 125,
-	Aspect_VKey_NavThrustForward = 126,
-	Aspect_VKey_NavThrustBackward = 127,
-	Aspect_VKey_NavThrustStop = 128,
-	Aspect_VKey_NavSpeedIncrease = 129,
-	Aspect_VKey_NavSpeedDecrease = 130,
+	Aspect_VKey_ViewTop = 106,
+	Aspect_VKey_ViewBottom = 107,
+	Aspect_VKey_ViewLeft = 108,
+	Aspect_VKey_ViewRight = 109,
+	Aspect_VKey_ViewFront = 110,
+	Aspect_VKey_ViewBack = 111,
+	Aspect_VKey_ViewAxoLeftProj = 112,
+	Aspect_VKey_ViewAxoRightProj = 113,
+	Aspect_VKey_ViewFitAll = 114,
+	Aspect_VKey_ViewRoll90CW = 115,
+	Aspect_VKey_ViewRoll90CCW = 116,
+	Aspect_VKey_ViewSwitchRotate = 117,
+	Aspect_VKey_Shift = 118,
+	Aspect_VKey_Control = 119,
+	Aspect_VKey_Alt = 120,
+	Aspect_VKey_Menu = 121,
+	Aspect_VKey_Meta = 122,
+	Aspect_VKey_NavInteract = 123,
+	Aspect_VKey_NavForward = 124,
+	Aspect_VKey_NavBackward = 125,
+	Aspect_VKey_NavSlideLeft = 126,
+	Aspect_VKey_NavSlideRight = 127,
+	Aspect_VKey_NavSlideUp = 128,
+	Aspect_VKey_NavSlideDown = 129,
+	Aspect_VKey_NavRollCCW = 130,
+	Aspect_VKey_NavRollCW = 131,
+	Aspect_VKey_NavLookLeft = 132,
+	Aspect_VKey_NavLookRight = 133,
+	Aspect_VKey_NavLookUp = 134,
+	Aspect_VKey_NavLookDown = 135,
+	Aspect_VKey_NavCrouch = 136,
+	Aspect_VKey_NavJump = 137,
+	Aspect_VKey_NavThrustForward = 138,
+	Aspect_VKey_NavThrustBackward = 139,
+	Aspect_VKey_NavThrustStop = 140,
+	Aspect_VKey_NavSpeedIncrease = 141,
+	Aspect_VKey_NavSpeedDecrease = 142,
 };
 
 enum  {
@@ -230,6 +253,30 @@ enum Aspect_GradientFillMethod {
 	Aspect_GFM_CORNER2 = 6,
 	Aspect_GFM_CORNER3 = 7,
 	Aspect_GFM_CORNER4 = 8,
+};
+
+enum Aspect_XRGenericAction {
+	Aspect_XRGenericAction_IsHeadsetOn = 0,
+	Aspect_XRGenericAction_InputAppMenu = 1,
+	Aspect_XRGenericAction_InputSysMenu = 2,
+	Aspect_XRGenericAction_InputTriggerPull = 3,
+	Aspect_XRGenericAction_InputTriggerClick = 4,
+	Aspect_XRGenericAction_InputGripClick = 5,
+	Aspect_XRGenericAction_InputTrackPadPosition = 6,
+	Aspect_XRGenericAction_InputTrackPadTouch = 7,
+	Aspect_XRGenericAction_InputTrackPadClick = 8,
+	Aspect_XRGenericAction_InputThumbstickPosition = 9,
+	Aspect_XRGenericAction_InputThumbstickTouch = 10,
+	Aspect_XRGenericAction_InputThumbstickClick = 11,
+	Aspect_XRGenericAction_InputPoseBase = 12,
+	Aspect_XRGenericAction_InputPoseFront = 13,
+	Aspect_XRGenericAction_InputPoseHandGrip = 14,
+	Aspect_XRGenericAction_InputPoseFingerTip = 15,
+	Aspect_XRGenericAction_OutputHaptic = 16,
+};
+
+enum  {
+	Aspect_XRGenericAction_NB = Aspect_XRGenericAction_OutputHaptic + 1,
 };
 
 enum Aspect_TypeOfHighlightMethod {
@@ -303,6 +350,11 @@ enum Aspect_FillMethod {
 	Aspect_FM_STRETCH = 3,
 };
 
+enum Aspect_ColorSpace {
+	Aspect_ColorSpace_sRGB = 0,
+	Aspect_ColorSpace_Linear = 1,
+};
+
 enum Aspect_HatchStyle {
 	Aspect_HS_SOLID = 0,
 	Aspect_HS_HORIZONTAL = 7,
@@ -320,6 +372,14 @@ enum Aspect_HatchStyle {
 	Aspect_HS_NB = 13,
 };
 
+enum Aspect_XRActionType {
+	Aspect_XRActionType_InputDigital = 0,
+	Aspect_XRActionType_InputAnalog = 1,
+	Aspect_XRActionType_InputPose = 2,
+	Aspect_XRActionType_InputSkeletal = 3,
+	Aspect_XRActionType_OutputHaptic = 4,
+};
+
 enum Aspect_PolygonOffsetMode {
 	Aspect_POM_Off = 0,
 	Aspect_POM_Fill = 1,
@@ -330,11 +390,27 @@ enum Aspect_PolygonOffsetMode {
 	Aspect_POM_Mask = Aspect_POM_All | Aspect_POM_None,
 };
 
+enum Aspect_XRTrackedDeviceRole {
+	Aspect_XRTrackedDeviceRole_Head = 0,
+	Aspect_XRTrackedDeviceRole_LeftHand = 1,
+	Aspect_XRTrackedDeviceRole_RightHand = 2,
+	Aspect_XRTrackedDeviceRole_Other = 3,
+};
+
+enum  {
+	Aspect_XRTrackedDeviceRole_NB = Aspect_XRTrackedDeviceRole_Other + 1,
+};
+
 enum Aspect_TypeOfColorScalePosition {
 	Aspect_TOCSP_NONE = 0,
 	Aspect_TOCSP_LEFT = 1,
 	Aspect_TOCSP_RIGHT = 2,
 	Aspect_TOCSP_CENTER = 3,
+};
+
+enum Aspect_GraphicsLibrary {
+	Aspect_GraphicsLibrary_OpenGL = 0,
+	Aspect_GraphicsLibrary_OpenGLES = 1,
 };
 
 enum  {
@@ -407,6 +483,12 @@ enum Aspect_InteriorStyle {
 
 /* python proy classes for enums */
 %pythoncode {
+
+class Aspect_Eye(IntEnum):
+	Aspect_Eye_Left = 0
+	Aspect_Eye_Right = 1
+Aspect_Eye_Left = Aspect_Eye.Aspect_Eye_Left
+Aspect_Eye_Right = Aspect_Eye.Aspect_Eye_Right
 
 class Aspect_VKeyBasic(IntEnum):
 	Aspect_VKey_UNKNOWN = 0
@@ -515,31 +597,43 @@ class Aspect_VKeyBasic(IntEnum):
 	Aspect_VKey_BrowserSearch = 103
 	Aspect_VKey_BrowserFavorites = 104
 	Aspect_VKey_BrowserHome = 105
-	Aspect_VKey_Shift = 106
-	Aspect_VKey_Control = 107
-	Aspect_VKey_Alt = 108
-	Aspect_VKey_Menu = 109
-	Aspect_VKey_Meta = 110
-	Aspect_VKey_NavInteract = 111
-	Aspect_VKey_NavForward = 112
-	Aspect_VKey_NavBackward = 113
-	Aspect_VKey_NavSlideLeft = 114
-	Aspect_VKey_NavSlideRight = 115
-	Aspect_VKey_NavSlideUp = 116
-	Aspect_VKey_NavSlideDown = 117
-	Aspect_VKey_NavRollCCW = 118
-	Aspect_VKey_NavRollCW = 119
-	Aspect_VKey_NavLookLeft = 120
-	Aspect_VKey_NavLookRight = 121
-	Aspect_VKey_NavLookUp = 122
-	Aspect_VKey_NavLookDown = 123
-	Aspect_VKey_NavCrouch = 124
-	Aspect_VKey_NavJump = 125
-	Aspect_VKey_NavThrustForward = 126
-	Aspect_VKey_NavThrustBackward = 127
-	Aspect_VKey_NavThrustStop = 128
-	Aspect_VKey_NavSpeedIncrease = 129
-	Aspect_VKey_NavSpeedDecrease = 130
+	Aspect_VKey_ViewTop = 106
+	Aspect_VKey_ViewBottom = 107
+	Aspect_VKey_ViewLeft = 108
+	Aspect_VKey_ViewRight = 109
+	Aspect_VKey_ViewFront = 110
+	Aspect_VKey_ViewBack = 111
+	Aspect_VKey_ViewAxoLeftProj = 112
+	Aspect_VKey_ViewAxoRightProj = 113
+	Aspect_VKey_ViewFitAll = 114
+	Aspect_VKey_ViewRoll90CW = 115
+	Aspect_VKey_ViewRoll90CCW = 116
+	Aspect_VKey_ViewSwitchRotate = 117
+	Aspect_VKey_Shift = 118
+	Aspect_VKey_Control = 119
+	Aspect_VKey_Alt = 120
+	Aspect_VKey_Menu = 121
+	Aspect_VKey_Meta = 122
+	Aspect_VKey_NavInteract = 123
+	Aspect_VKey_NavForward = 124
+	Aspect_VKey_NavBackward = 125
+	Aspect_VKey_NavSlideLeft = 126
+	Aspect_VKey_NavSlideRight = 127
+	Aspect_VKey_NavSlideUp = 128
+	Aspect_VKey_NavSlideDown = 129
+	Aspect_VKey_NavRollCCW = 130
+	Aspect_VKey_NavRollCW = 131
+	Aspect_VKey_NavLookLeft = 132
+	Aspect_VKey_NavLookRight = 133
+	Aspect_VKey_NavLookUp = 134
+	Aspect_VKey_NavLookDown = 135
+	Aspect_VKey_NavCrouch = 136
+	Aspect_VKey_NavJump = 137
+	Aspect_VKey_NavThrustForward = 138
+	Aspect_VKey_NavThrustBackward = 139
+	Aspect_VKey_NavThrustStop = 140
+	Aspect_VKey_NavSpeedIncrease = 141
+	Aspect_VKey_NavSpeedDecrease = 142
 Aspect_VKey_UNKNOWN = Aspect_VKeyBasic.Aspect_VKey_UNKNOWN
 Aspect_VKey_A = Aspect_VKeyBasic.Aspect_VKey_A
 Aspect_VKey_B = Aspect_VKeyBasic.Aspect_VKey_B
@@ -646,6 +740,18 @@ Aspect_VKey_BrowserStop = Aspect_VKeyBasic.Aspect_VKey_BrowserStop
 Aspect_VKey_BrowserSearch = Aspect_VKeyBasic.Aspect_VKey_BrowserSearch
 Aspect_VKey_BrowserFavorites = Aspect_VKeyBasic.Aspect_VKey_BrowserFavorites
 Aspect_VKey_BrowserHome = Aspect_VKeyBasic.Aspect_VKey_BrowserHome
+Aspect_VKey_ViewTop = Aspect_VKeyBasic.Aspect_VKey_ViewTop
+Aspect_VKey_ViewBottom = Aspect_VKeyBasic.Aspect_VKey_ViewBottom
+Aspect_VKey_ViewLeft = Aspect_VKeyBasic.Aspect_VKey_ViewLeft
+Aspect_VKey_ViewRight = Aspect_VKeyBasic.Aspect_VKey_ViewRight
+Aspect_VKey_ViewFront = Aspect_VKeyBasic.Aspect_VKey_ViewFront
+Aspect_VKey_ViewBack = Aspect_VKeyBasic.Aspect_VKey_ViewBack
+Aspect_VKey_ViewAxoLeftProj = Aspect_VKeyBasic.Aspect_VKey_ViewAxoLeftProj
+Aspect_VKey_ViewAxoRightProj = Aspect_VKeyBasic.Aspect_VKey_ViewAxoRightProj
+Aspect_VKey_ViewFitAll = Aspect_VKeyBasic.Aspect_VKey_ViewFitAll
+Aspect_VKey_ViewRoll90CW = Aspect_VKeyBasic.Aspect_VKey_ViewRoll90CW
+Aspect_VKey_ViewRoll90CCW = Aspect_VKeyBasic.Aspect_VKey_ViewRoll90CCW
+Aspect_VKey_ViewSwitchRotate = Aspect_VKeyBasic.Aspect_VKey_ViewSwitchRotate
 Aspect_VKey_Shift = Aspect_VKeyBasic.Aspect_VKey_Shift
 Aspect_VKey_Control = Aspect_VKeyBasic.Aspect_VKey_Control
 Aspect_VKey_Alt = Aspect_VKeyBasic.Aspect_VKey_Alt
@@ -711,6 +817,42 @@ Aspect_GFM_CORNER1 = Aspect_GradientFillMethod.Aspect_GFM_CORNER1
 Aspect_GFM_CORNER2 = Aspect_GradientFillMethod.Aspect_GFM_CORNER2
 Aspect_GFM_CORNER3 = Aspect_GradientFillMethod.Aspect_GFM_CORNER3
 Aspect_GFM_CORNER4 = Aspect_GradientFillMethod.Aspect_GFM_CORNER4
+
+class Aspect_XRGenericAction(IntEnum):
+	Aspect_XRGenericAction_IsHeadsetOn = 0
+	Aspect_XRGenericAction_InputAppMenu = 1
+	Aspect_XRGenericAction_InputSysMenu = 2
+	Aspect_XRGenericAction_InputTriggerPull = 3
+	Aspect_XRGenericAction_InputTriggerClick = 4
+	Aspect_XRGenericAction_InputGripClick = 5
+	Aspect_XRGenericAction_InputTrackPadPosition = 6
+	Aspect_XRGenericAction_InputTrackPadTouch = 7
+	Aspect_XRGenericAction_InputTrackPadClick = 8
+	Aspect_XRGenericAction_InputThumbstickPosition = 9
+	Aspect_XRGenericAction_InputThumbstickTouch = 10
+	Aspect_XRGenericAction_InputThumbstickClick = 11
+	Aspect_XRGenericAction_InputPoseBase = 12
+	Aspect_XRGenericAction_InputPoseFront = 13
+	Aspect_XRGenericAction_InputPoseHandGrip = 14
+	Aspect_XRGenericAction_InputPoseFingerTip = 15
+	Aspect_XRGenericAction_OutputHaptic = 16
+Aspect_XRGenericAction_IsHeadsetOn = Aspect_XRGenericAction.Aspect_XRGenericAction_IsHeadsetOn
+Aspect_XRGenericAction_InputAppMenu = Aspect_XRGenericAction.Aspect_XRGenericAction_InputAppMenu
+Aspect_XRGenericAction_InputSysMenu = Aspect_XRGenericAction.Aspect_XRGenericAction_InputSysMenu
+Aspect_XRGenericAction_InputTriggerPull = Aspect_XRGenericAction.Aspect_XRGenericAction_InputTriggerPull
+Aspect_XRGenericAction_InputTriggerClick = Aspect_XRGenericAction.Aspect_XRGenericAction_InputTriggerClick
+Aspect_XRGenericAction_InputGripClick = Aspect_XRGenericAction.Aspect_XRGenericAction_InputGripClick
+Aspect_XRGenericAction_InputTrackPadPosition = Aspect_XRGenericAction.Aspect_XRGenericAction_InputTrackPadPosition
+Aspect_XRGenericAction_InputTrackPadTouch = Aspect_XRGenericAction.Aspect_XRGenericAction_InputTrackPadTouch
+Aspect_XRGenericAction_InputTrackPadClick = Aspect_XRGenericAction.Aspect_XRGenericAction_InputTrackPadClick
+Aspect_XRGenericAction_InputThumbstickPosition = Aspect_XRGenericAction.Aspect_XRGenericAction_InputThumbstickPosition
+Aspect_XRGenericAction_InputThumbstickTouch = Aspect_XRGenericAction.Aspect_XRGenericAction_InputThumbstickTouch
+Aspect_XRGenericAction_InputThumbstickClick = Aspect_XRGenericAction.Aspect_XRGenericAction_InputThumbstickClick
+Aspect_XRGenericAction_InputPoseBase = Aspect_XRGenericAction.Aspect_XRGenericAction_InputPoseBase
+Aspect_XRGenericAction_InputPoseFront = Aspect_XRGenericAction.Aspect_XRGenericAction_InputPoseFront
+Aspect_XRGenericAction_InputPoseHandGrip = Aspect_XRGenericAction.Aspect_XRGenericAction_InputPoseHandGrip
+Aspect_XRGenericAction_InputPoseFingerTip = Aspect_XRGenericAction.Aspect_XRGenericAction_InputPoseFingerTip
+Aspect_XRGenericAction_OutputHaptic = Aspect_XRGenericAction.Aspect_XRGenericAction_OutputHaptic
 
 class Aspect_TypeOfHighlightMethod(IntEnum):
 	Aspect_TOHM_COLOR = 0
@@ -818,6 +960,12 @@ Aspect_FM_CENTERED = Aspect_FillMethod.Aspect_FM_CENTERED
 Aspect_FM_TILED = Aspect_FillMethod.Aspect_FM_TILED
 Aspect_FM_STRETCH = Aspect_FillMethod.Aspect_FM_STRETCH
 
+class Aspect_ColorSpace(IntEnum):
+	Aspect_ColorSpace_sRGB = 0
+	Aspect_ColorSpace_Linear = 1
+Aspect_ColorSpace_sRGB = Aspect_ColorSpace.Aspect_ColorSpace_sRGB
+Aspect_ColorSpace_Linear = Aspect_ColorSpace.Aspect_ColorSpace_Linear
+
 class Aspect_HatchStyle(IntEnum):
 	Aspect_HS_SOLID = 0
 	Aspect_HS_HORIZONTAL = 7
@@ -848,6 +996,18 @@ Aspect_HS_GRID_DIAGONAL = Aspect_HatchStyle.Aspect_HS_GRID_DIAGONAL
 Aspect_HS_GRID_DIAGONAL_WIDE = Aspect_HatchStyle.Aspect_HS_GRID_DIAGONAL_WIDE
 Aspect_HS_NB = Aspect_HatchStyle.Aspect_HS_NB
 
+class Aspect_XRActionType(IntEnum):
+	Aspect_XRActionType_InputDigital = 0
+	Aspect_XRActionType_InputAnalog = 1
+	Aspect_XRActionType_InputPose = 2
+	Aspect_XRActionType_InputSkeletal = 3
+	Aspect_XRActionType_OutputHaptic = 4
+Aspect_XRActionType_InputDigital = Aspect_XRActionType.Aspect_XRActionType_InputDigital
+Aspect_XRActionType_InputAnalog = Aspect_XRActionType.Aspect_XRActionType_InputAnalog
+Aspect_XRActionType_InputPose = Aspect_XRActionType.Aspect_XRActionType_InputPose
+Aspect_XRActionType_InputSkeletal = Aspect_XRActionType.Aspect_XRActionType_InputSkeletal
+Aspect_XRActionType_OutputHaptic = Aspect_XRActionType.Aspect_XRActionType_OutputHaptic
+
 class Aspect_PolygonOffsetMode(IntEnum):
 	Aspect_POM_Off = 0
 	Aspect_POM_Fill = 1
@@ -864,6 +1024,16 @@ Aspect_POM_All = Aspect_PolygonOffsetMode.Aspect_POM_All
 Aspect_POM_None = Aspect_PolygonOffsetMode.Aspect_POM_None
 Aspect_POM_Mask = Aspect_PolygonOffsetMode.Aspect_POM_Mask
 
+class Aspect_XRTrackedDeviceRole(IntEnum):
+	Aspect_XRTrackedDeviceRole_Head = 0
+	Aspect_XRTrackedDeviceRole_LeftHand = 1
+	Aspect_XRTrackedDeviceRole_RightHand = 2
+	Aspect_XRTrackedDeviceRole_Other = 3
+Aspect_XRTrackedDeviceRole_Head = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_Head
+Aspect_XRTrackedDeviceRole_LeftHand = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_LeftHand
+Aspect_XRTrackedDeviceRole_RightHand = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_RightHand
+Aspect_XRTrackedDeviceRole_Other = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_Other
+
 class Aspect_TypeOfColorScalePosition(IntEnum):
 	Aspect_TOCSP_NONE = 0
 	Aspect_TOCSP_LEFT = 1
@@ -873,6 +1043,12 @@ Aspect_TOCSP_NONE = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_NONE
 Aspect_TOCSP_LEFT = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_LEFT
 Aspect_TOCSP_RIGHT = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_RIGHT
 Aspect_TOCSP_CENTER = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_CENTER
+
+class Aspect_GraphicsLibrary(IntEnum):
+	Aspect_GraphicsLibrary_OpenGL = 0
+	Aspect_GraphicsLibrary_OpenGLES = 1
+Aspect_GraphicsLibrary_OpenGL = Aspect_GraphicsLibrary.Aspect_GraphicsLibrary_OpenGL
+Aspect_GraphicsLibrary_OpenGLES = Aspect_GraphicsLibrary.Aspect_GraphicsLibrary_OpenGLES
 
 class Aspect_XAtom(IntEnum):
 	Aspect_XA_DELETE_WINDOW = 0
@@ -952,6 +1128,10 @@ Aspect_IS_HOLLOW = Aspect_InteriorStyle.Aspect_IS_HOLLOW
 %wrap_handle(Aspect_DisplayConnection)
 %wrap_handle(Aspect_Grid)
 %wrap_handle(Aspect_Window)
+%wrap_handle(Aspect_XRAction)
+%wrap_handle(Aspect_XRActionSet)
+%wrap_handle(Aspect_XRSession)
+%wrap_handle(Aspect_OpenVRSession)
 /* end handles declaration */
 
 /* templates */
@@ -964,6 +1144,43 @@ Aspect_IS_HOLLOW = Aspect_InteriorStyle.Aspect_IS_HOLLOW
     }
 };
 %template(Aspect_TouchMap) NCollection_IndexedDataMap<Standard_Size,Aspect_Touch>;
+%template(Aspect_TrackedDevicePoseArray) NCollection_Array1<Aspect_TrackedDevicePose>;
+
+%extend NCollection_Array1<Aspect_TrackedDevicePose> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(Aspect_XRActionMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<Aspect_XRAction>,TCollection_AsciiString>;
+%template(Aspect_XRActionSetMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<Aspect_XRActionSet>,TCollection_AsciiString>;
 /* end templates declaration */
 
 /* typedefs */
@@ -974,9 +1191,12 @@ typedef unsigned long Aspect_Handle;
 typedef void * Aspect_RenderingContext;
 typedef NCollection_Sequence<Quantity_Color> Aspect_SequenceOfColor;
 typedef NCollection_IndexedDataMap<Standard_Size, Aspect_Touch> Aspect_TouchMap;
+typedef NCollection_Array1<Aspect_TrackedDevicePose> Aspect_TrackedDevicePoseArray;
 typedef unsigned int Aspect_VKey;
 typedef unsigned int Aspect_VKeyFlags;
 typedef unsigned int Aspect_VKeyMouse;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Aspect_XRAction>, TCollection_AsciiString> Aspect_XRActionMap;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Aspect_XRActionSet>, TCollection_AsciiString> Aspect_XRActionSetMap;
 typedef struct __GLXFBConfigRec * GLXFBConfig;
 typedef void * HANDLE;
 /* end typedefs declaration */
@@ -1023,6 +1243,14 @@ Quantity_Color
 ") Color;
 		Quantity_Color Color();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** SetColor ******************/
 		/**** md5 signature: 5aebf70a123538e7dff670112c56db0d ****/
 		%feature("compactdefaultargs") SetColor;
@@ -1087,6 +1315,9 @@ class Aspect_DisplayConnection : public Standard_Transient {
 	}
 };
 
+/***************************
+* class Aspect_FrustumLRBT *
+***************************/
 /*********************
 * class Aspect_GenId *
 *********************/
@@ -1130,6 +1361,14 @@ int
 ") Available;
 		Standard_Integer Available();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Free ******************/
 		/**** md5 signature: adf04b00a0d9dc585c1f31bcdbc395bf ****/
 		%feature("compactdefaultargs") Free;
@@ -1306,6 +1545,14 @@ Aspect_GridDrawMode
 ") DrawMode;
 		Aspect_GridDrawMode DrawMode();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: c55517fe39ff6c9fe42803167b097498 ****/
 		%feature("compactdefaultargs") Erase;
@@ -1672,6 +1919,36 @@ NCollection_Vec2<float >
 	}
 };
 
+/*********************************
+* class Aspect_TrackedDevicePose *
+*********************************/
+class Aspect_TrackedDevicePose {
+	public:
+		gp_Trsf Orientation;
+		gp_Vec Velocity;
+		gp_Vec AngularVelocity;
+		bool IsValidPose;
+		bool IsConnectedDevice;
+		/****************** Aspect_TrackedDevicePose ******************/
+		/**** md5 signature: 02737e00df27ee4bc5574676177782f9 ****/
+		%feature("compactdefaultargs") Aspect_TrackedDevicePose;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_TrackedDevicePose;
+		 Aspect_TrackedDevicePose();
+
+};
+
+
+%extend Aspect_TrackedDevicePose {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**********************
 * class Aspect_Window *
 **********************/
@@ -1712,7 +1989,7 @@ bool
 		virtual Standard_Boolean DoMapping();
 
 		/****************** DoResize ******************/
-		/**** md5 signature: 3bfba56102be8f1f57df3978a84581c9 ****/
+		/**** md5 signature: 53e251c7364926b7f0881bdd95b8bb10 ****/
 		%feature("compactdefaultargs") DoResize;
 		%feature("autodoc", "Apply the resizing to the window <self>.
 
@@ -1722,6 +1999,14 @@ Aspect_TypeOfResize
 ") DoResize;
 		virtual Aspect_TypeOfResize DoResize();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GradientBackground ******************/
 		/**** md5 signature: d48840592ec4f12118e8b8d065c33698 ****/
 		%feature("compactdefaultargs") GradientBackground;
@@ -1957,6 +2242,850 @@ None
 	}
 };
 
+/************************
+* class Aspect_XRAction *
+************************/
+class Aspect_XRAction : public Standard_Transient {
+	public:
+		/****************** Aspect_XRAction ******************/
+		/**** md5 signature: 40a266a780195e2fd6ebc2e8b13a5281 ****/
+		%feature("compactdefaultargs") Aspect_XRAction;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theId: TCollection_AsciiString
+theType: Aspect_XRActionType
+
+Returns
+-------
+None
+") Aspect_XRAction;
+		 Aspect_XRAction(const TCollection_AsciiString & theId, const Aspect_XRActionType theType);
+
+		/****************** Id ******************/
+		/**** md5 signature: 932272b78b9184cc2485436a72cc2df4 ****/
+		%feature("compactdefaultargs") Id;
+		%feature("autodoc", "Return action id.
+
+Returns
+-------
+TCollection_AsciiString
+") Id;
+		const TCollection_AsciiString & Id();
+
+		/****************** IsValid ******************/
+		/**** md5 signature: 735088818cf24ebe0ebc7005a507da69 ****/
+		%feature("compactdefaultargs") IsValid;
+		%feature("autodoc", "Return true if action is defined.
+
+Returns
+-------
+bool
+") IsValid;
+		bool IsValid();
+
+		/****************** RawHandle ******************/
+		/**** md5 signature: 9d20e0a6fff437dc17426cf4e026b189 ****/
+		%feature("compactdefaultargs") RawHandle;
+		%feature("autodoc", "Return action handle.
+
+Returns
+-------
+uint64_t
+") RawHandle;
+		uint64_t RawHandle();
+
+		/****************** SetRawHandle ******************/
+		/**** md5 signature: deb51d9baa50e7628d1bd2ab92c27b11 ****/
+		%feature("compactdefaultargs") SetRawHandle;
+		%feature("autodoc", "Set action handle.
+
+Parameters
+----------
+theHande: uint64_t
+
+Returns
+-------
+None
+") SetRawHandle;
+		void SetRawHandle(uint64_t theHande);
+
+		/****************** Type ******************/
+		/**** md5 signature: 0d72e5323e44404dea40a38f3ba7d11c ****/
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "Return action type.
+
+Returns
+-------
+Aspect_XRActionType
+") Type;
+		Aspect_XRActionType Type();
+
+};
+
+
+%make_alias(Aspect_XRAction)
+
+%extend Aspect_XRAction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************
+* class Aspect_XRActionSet *
+***************************/
+class Aspect_XRActionSet : public Standard_Transient {
+	public:
+		/****************** Aspect_XRActionSet ******************/
+		/**** md5 signature: d45a5ec20e38bdb339eb2ee8d975e996 ****/
+		%feature("compactdefaultargs") Aspect_XRActionSet;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theId: TCollection_AsciiString
+
+Returns
+-------
+None
+") Aspect_XRActionSet;
+		 Aspect_XRActionSet(const TCollection_AsciiString & theId);
+
+		/****************** Actions ******************/
+		/**** md5 signature: 8711ba344778f38c5ecdfeccb1ff6133 ****/
+		%feature("compactdefaultargs") Actions;
+		%feature("autodoc", "Return map of actions.
+
+Returns
+-------
+Aspect_XRActionMap
+") Actions;
+		const Aspect_XRActionMap & Actions();
+
+		/****************** AddAction ******************/
+		/**** md5 signature: 41c9367a03de48c635cea24270f2015a ****/
+		%feature("compactdefaultargs") AddAction;
+		%feature("autodoc", "Add action.
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+None
+") AddAction;
+		void AddAction(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** Id ******************/
+		/**** md5 signature: 932272b78b9184cc2485436a72cc2df4 ****/
+		%feature("compactdefaultargs") Id;
+		%feature("autodoc", "Return action id.
+
+Returns
+-------
+TCollection_AsciiString
+") Id;
+		const TCollection_AsciiString & Id();
+
+		/****************** RawHandle ******************/
+		/**** md5 signature: 9d20e0a6fff437dc17426cf4e026b189 ****/
+		%feature("compactdefaultargs") RawHandle;
+		%feature("autodoc", "Return action handle.
+
+Returns
+-------
+uint64_t
+") RawHandle;
+		uint64_t RawHandle();
+
+		/****************** SetRawHandle ******************/
+		/**** md5 signature: deb51d9baa50e7628d1bd2ab92c27b11 ****/
+		%feature("compactdefaultargs") SetRawHandle;
+		%feature("autodoc", "Set action handle.
+
+Parameters
+----------
+theHande: uint64_t
+
+Returns
+-------
+None
+") SetRawHandle;
+		void SetRawHandle(uint64_t theHande);
+
+};
+
+
+%make_alias(Aspect_XRActionSet)
+
+%extend Aspect_XRActionSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************
+* class Aspect_XRAnalogActionData *
+**********************************/
+class Aspect_XRAnalogActionData {
+	public:
+		uint64_t ActiveOrigin;
+		float UpdateTime;
+		NCollection_Vec3<float > VecXYZ;
+		NCollection_Vec3<float > DeltaXYZ;
+		bool IsActive;
+		/****************** Aspect_XRAnalogActionData ******************/
+		/**** md5 signature: 2f2cb24f7e51cc622f48142c162305a9 ****/
+		%feature("compactdefaultargs") Aspect_XRAnalogActionData;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_XRAnalogActionData;
+		 Aspect_XRAnalogActionData();
+
+		/****************** IsChanged ******************/
+		/**** md5 signature: 6d97ce9bcd3b0740efa5aa99476487a7 ****/
+		%feature("compactdefaultargs") IsChanged;
+		%feature("autodoc", "Return true if delta is non-zero.
+
+Returns
+-------
+bool
+") IsChanged;
+		bool IsChanged();
+
+};
+
+
+%extend Aspect_XRAnalogActionData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class Aspect_XRDigitalActionData *
+***********************************/
+class Aspect_XRDigitalActionData {
+	public:
+		uint64_t ActiveOrigin;
+		float UpdateTime;
+		bool IsActive;
+		bool IsPressed;
+		bool IsChanged;
+		/****************** Aspect_XRDigitalActionData ******************/
+		/**** md5 signature: 11e9cfb288833ee07981b262b013a14e ****/
+		%feature("compactdefaultargs") Aspect_XRDigitalActionData;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_XRDigitalActionData;
+		 Aspect_XRDigitalActionData();
+
+};
+
+
+%extend Aspect_XRDigitalActionData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************
+* class Aspect_XRHapticActionData *
+**********************************/
+class Aspect_XRHapticActionData {
+	public:
+		float Delay;
+		float Duration;
+		float Frequency;
+		float Amplitude;
+		/****************** Aspect_XRHapticActionData ******************/
+		/**** md5 signature: c42f3b26d235df1234aa3b319bd587d7 ****/
+		%feature("compactdefaultargs") Aspect_XRHapticActionData;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_XRHapticActionData;
+		 Aspect_XRHapticActionData();
+
+		/****************** IsValid ******************/
+		/**** md5 signature: 735088818cf24ebe0ebc7005a507da69 ****/
+		%feature("compactdefaultargs") IsValid;
+		%feature("autodoc", "Return true if data is not empty.
+
+Returns
+-------
+bool
+") IsValid;
+		bool IsValid();
+
+};
+
+
+%extend Aspect_XRHapticActionData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class Aspect_XRPoseActionData *
+********************************/
+class Aspect_XRPoseActionData {
+	public:
+		Aspect_TrackedDevicePose Pose;
+		uint64_t ActiveOrigin;
+		bool IsActive;
+		/****************** Aspect_XRPoseActionData ******************/
+		/**** md5 signature: 37cbeeeffeaedd7d742097ec767fe262 ****/
+		%feature("compactdefaultargs") Aspect_XRPoseActionData;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_XRPoseActionData;
+		 Aspect_XRPoseActionData();
+
+};
+
+
+%extend Aspect_XRPoseActionData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************
+* class Aspect_XRSession *
+*************************/
+%nodefaultctor Aspect_XRSession;
+class Aspect_XRSession : public Standard_Transient {
+	public:
+/* public enums */
+enum TrackingUniverseOrigin {
+	TrackingUniverseOrigin_Seated = 0,
+	TrackingUniverseOrigin_Standing = 1,
+};
+
+enum InfoString {
+	InfoString_Vendor = 0,
+	InfoString_Device = 1,
+	InfoString_Tracker = 2,
+	InfoString_SerialNumber = 3,
+};
+
+/* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+
+class TrackingUniverseOrigin(IntEnum):
+	TrackingUniverseOrigin_Seated = 0
+	TrackingUniverseOrigin_Standing = 1
+TrackingUniverseOrigin_Seated = TrackingUniverseOrigin.TrackingUniverseOrigin_Seated
+TrackingUniverseOrigin_Standing = TrackingUniverseOrigin.TrackingUniverseOrigin_Standing
+
+class InfoString(IntEnum):
+	InfoString_Vendor = 0
+	InfoString_Device = 1
+	InfoString_Tracker = 2
+	InfoString_SerialNumber = 3
+InfoString_Vendor = InfoString.InfoString_Vendor
+InfoString_Device = InfoString.InfoString_Device
+InfoString_Tracker = InfoString.InfoString_Tracker
+InfoString_SerialNumber = InfoString.InfoString_SerialNumber
+};
+/* end python proxy for enums */
+
+		/****************** AbortHapticVibrationAction ******************/
+		/**** md5 signature: 2c091ce7d5b95edbd8b37ef2a7d5033f ****/
+		%feature("compactdefaultargs") AbortHapticVibrationAction;
+		%feature("autodoc", "Abort vibration.
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+None
+") AbortHapticVibrationAction;
+		void AbortHapticVibrationAction(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** Aspect ******************/
+		/**** md5 signature: 2e31d5d4e9d98682a1043fbc438ab30a ****/
+		%feature("compactdefaultargs") Aspect;
+		%feature("autodoc", "Return aspect ratio.
+
+Returns
+-------
+float
+") Aspect;
+		Standard_Real Aspect();
+
+		/****************** Close ******************/
+		/**** md5 signature: 1b03fb860325770bc6fb04462ecfd6fe ****/
+		%feature("compactdefaultargs") Close;
+		%feature("autodoc", "Release session.
+
+Returns
+-------
+None
+") Close;
+		virtual void Close();
+
+		/****************** DisplayFrequency ******************/
+		/**** md5 signature: 7bc433f33163de75c917820a29539856 ****/
+		%feature("compactdefaultargs") DisplayFrequency;
+		%feature("autodoc", "Return display frequency or 0 if unknown.
+
+Returns
+-------
+Standard_ShortReal
+") DisplayFrequency;
+		Standard_ShortReal DisplayFrequency();
+
+		/****************** EyeToHeadTransform ******************/
+		/**** md5 signature: f29783bde9cca028ac265ae76bdafba8 ****/
+		%feature("compactdefaultargs") EyeToHeadTransform;
+		%feature("autodoc", "Return transformation from eye to head.
+
+Parameters
+----------
+theEye: Aspect_Eye
+
+Returns
+-------
+NCollection_Mat4<double >
+") EyeToHeadTransform;
+		virtual NCollection_Mat4<double > EyeToHeadTransform(Aspect_Eye theEye);
+
+		/****************** FieldOfView ******************/
+		/**** md5 signature: db3c9855b4bf6bb7c82f4c6a1b35efb3 ****/
+		%feature("compactdefaultargs") FieldOfView;
+		%feature("autodoc", "Return field of view.
+
+Returns
+-------
+float
+") FieldOfView;
+		Standard_Real FieldOfView();
+
+		/****************** GenericAction ******************/
+		/**** md5 signature: 7b32709a9882affc64e34a4979e4522d ****/
+		%feature("compactdefaultargs") GenericAction;
+		%feature("autodoc", "Return generic action for specific hand or null if undefined.
+
+Parameters
+----------
+theDevice: Aspect_XRTrackedDeviceRole
+theAction: Aspect_XRGenericAction
+
+Returns
+-------
+opencascade::handle<Aspect_XRAction>
+") GenericAction;
+		const opencascade::handle<Aspect_XRAction> & GenericAction(Aspect_XRTrackedDeviceRole theDevice, Aspect_XRGenericAction theAction);
+
+		/****************** GetAnalogActionData ******************/
+		/**** md5 signature: 8ba907292e43d1a641030bff3bf5b326 ****/
+		%feature("compactdefaultargs") GetAnalogActionData;
+		%feature("autodoc", "Fetch data for digital input action (like axis). @param theaction [in] action of aspect_xractiontype_inputanalog type.
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+Aspect_XRAnalogActionData
+") GetAnalogActionData;
+		virtual Aspect_XRAnalogActionData GetAnalogActionData(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** GetDigitalActionData ******************/
+		/**** md5 signature: 481010d4545a367f4cd3dfec52bd745b ****/
+		%feature("compactdefaultargs") GetDigitalActionData;
+		%feature("autodoc", "Fetch data for digital input action (like button). @param theaction [in] action of aspect_xractiontype_inputdigital type.
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+Aspect_XRDigitalActionData
+") GetDigitalActionData;
+		virtual Aspect_XRDigitalActionData GetDigitalActionData(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** GetPoseActionDataForNextFrame ******************/
+		/**** md5 signature: 98eeea2ec9abd109afa8aea11fadf00d ****/
+		%feature("compactdefaultargs") GetPoseActionDataForNextFrame;
+		%feature("autodoc", "Fetch data for pose input action (like fingertip position). the returned values will match the values returned by the last call to waitposes(). @param theaction [in] action of aspect_xractiontype_inputpose type.
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+Aspect_XRPoseActionData
+") GetPoseActionDataForNextFrame;
+		virtual Aspect_XRPoseActionData GetPoseActionDataForNextFrame(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** GetString ******************/
+		/**** md5 signature: 995a5d10180a3ba1d11d529669c70c62 ****/
+		%feature("compactdefaultargs") GetString;
+		%feature("autodoc", "Query information.
+
+Parameters
+----------
+theInfo: InfoString
+
+Returns
+-------
+TCollection_AsciiString
+") GetString;
+		virtual TCollection_AsciiString GetString(InfoString theInfo);
+
+		/****************** HasProjectionFrustums ******************/
+		/**** md5 signature: b21c3c98901bb0d2fe751c0f535b874e ****/
+		%feature("compactdefaultargs") HasProjectionFrustums;
+		%feature("autodoc", "Return false if projection frustums are unsupported and general 4x4 projection matrix should be fetched instead.
+
+Returns
+-------
+bool
+") HasProjectionFrustums;
+		virtual bool HasProjectionFrustums();
+
+		/****************** HasTrackedPose ******************/
+		/**** md5 signature: dcd15c00cc4b480b4c1512a9d69b0c35 ****/
+		%feature("compactdefaultargs") HasTrackedPose;
+		%feature("autodoc", "Return true if device orientation is defined.
+
+Parameters
+----------
+theDevice: int
+
+Returns
+-------
+bool
+") HasTrackedPose;
+		bool HasTrackedPose(Standard_Integer theDevice);
+
+		/****************** HeadPose ******************/
+		/**** md5 signature: d492f7441f83aa8c0f430cdab6e86f73 ****/
+		%feature("compactdefaultargs") HeadPose;
+		%feature("autodoc", "Return head orientation in right-handed system: +y is up +x is to the right -z is forward distance unit is meters by default (@sa unitfactor()).
+
+Returns
+-------
+gp_Trsf
+") HeadPose;
+		const gp_Trsf HeadPose();
+
+		/****************** HeadToEyeTransform ******************/
+		/**** md5 signature: eefc127028406cfe34b43880dc164bed ****/
+		%feature("compactdefaultargs") HeadToEyeTransform;
+		%feature("autodoc", "Return transformation from head to eye.
+
+Parameters
+----------
+theEye: Aspect_Eye
+
+Returns
+-------
+NCollection_Mat4<double >
+") HeadToEyeTransform;
+		NCollection_Mat4<double > HeadToEyeTransform(Aspect_Eye theEye);
+
+		/****************** IOD ******************/
+		/**** md5 signature: 0cc7208beeec9544d745fd8edb710bd8 ****/
+		%feature("compactdefaultargs") IOD;
+		%feature("autodoc", "Return intra-ocular distance (iod); also known as interpupillary distance (ipd). defined in meters by default (@sa unitfactor()).
+
+Returns
+-------
+float
+") IOD;
+		Standard_Real IOD();
+
+		/****************** IsOpen ******************/
+		/**** md5 signature: cbb165b1058ff52986668925b81dfa08 ****/
+		%feature("compactdefaultargs") IsOpen;
+		%feature("autodoc", "Return true if session is opened.
+
+Returns
+-------
+bool
+") IsOpen;
+		virtual bool IsOpen();
+
+		/****************** LeftHandPose ******************/
+		/**** md5 signature: ff3b4ff1b6e9278d95fc3d221947728e ****/
+		%feature("compactdefaultargs") LeftHandPose;
+		%feature("autodoc", "Return left hand orientation.
+
+Returns
+-------
+gp_Trsf
+") LeftHandPose;
+		gp_Trsf LeftHandPose();
+
+		/****************** LoadRenderModel ******************/
+		/**** md5 signature: bff61e6a6656e5eb23f9e9b72f8fdb71 ****/
+		%feature("compactdefaultargs") LoadRenderModel;
+		%feature("autodoc", "Load model for displaying device. @param thedevice [in] device index @param thetexture [out] texture source returns model triangulation or null if not found.
+
+Parameters
+----------
+theDevice: int
+theTexture: Image_Texture
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") LoadRenderModel;
+		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(Standard_Integer theDevice, opencascade::handle<Image_Texture> & theTexture);
+
+		/****************** LoadRenderModel ******************/
+		/**** md5 signature: c440d49a8c5ac84455fadd4495c2ab80 ****/
+		%feature("compactdefaultargs") LoadRenderModel;
+		%feature("autodoc", "Load model for displaying device. @param thedevice [in] device index @param thetoapplyunitfactor [in] flag to apply unit scale factor @param thetexture [out] texture source returns model triangulation or null if not found.
+
+Parameters
+----------
+theDevice: int
+theToApplyUnitFactor: bool
+theTexture: Image_Texture
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") LoadRenderModel;
+		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(Standard_Integer theDevice, Standard_Boolean theToApplyUnitFactor, opencascade::handle<Image_Texture> & theTexture);
+
+		/****************** NamedTrackedDevice ******************/
+		/**** md5 signature: 6224d7e8e485715e872fc28cc2afe1f0 ****/
+		%feature("compactdefaultargs") NamedTrackedDevice;
+		%feature("autodoc", "Return index of tracked device of known role, or -1 if undefined.
+
+Parameters
+----------
+theDevice: Aspect_XRTrackedDeviceRole
+
+Returns
+-------
+int
+") NamedTrackedDevice;
+		virtual Standard_Integer NamedTrackedDevice(Aspect_XRTrackedDeviceRole theDevice);
+
+		/****************** Open ******************/
+		/**** md5 signature: d00ec1bf018b5e93ac2a5d97d9dde636 ****/
+		%feature("compactdefaultargs") Open;
+		%feature("autodoc", "Initialize session.
+
+Returns
+-------
+bool
+") Open;
+		virtual bool Open();
+
+		/****************** ProcessEvents ******************/
+		/**** md5 signature: 240ee1d1e4a0e42cba1c56aac9611f29 ****/
+		%feature("compactdefaultargs") ProcessEvents;
+		%feature("autodoc", "Receive xr events.
+
+Returns
+-------
+None
+") ProcessEvents;
+		virtual void ProcessEvents();
+
+		/****************** ProjectionFrustum ******************/
+		/**** md5 signature: 9dc4ecde0b8d7e55944cdeade4e5bbf9 ****/
+		%feature("compactdefaultargs") ProjectionFrustum;
+		%feature("autodoc", "Return projection frustum. @sa hasprojectionfrustums().
+
+Parameters
+----------
+theEye: Aspect_Eye
+
+Returns
+-------
+Aspect_FrustumLRBT<double>
+") ProjectionFrustum;
+		const Aspect_FrustumLRBT<double> & ProjectionFrustum(Aspect_Eye theEye);
+
+		/****************** ProjectionMatrix ******************/
+		/**** md5 signature: 5da23c248f3062bca81dea5a0b78608f ****/
+		%feature("compactdefaultargs") ProjectionMatrix;
+		%feature("autodoc", "Return projection matrix.
+
+Parameters
+----------
+theEye: Aspect_Eye
+theZNear: double
+theZFar: double
+
+Returns
+-------
+NCollection_Mat4<double >
+") ProjectionMatrix;
+		virtual NCollection_Mat4<double > ProjectionMatrix(Aspect_Eye theEye, double theZNear, double theZFar);
+
+		/****************** RecommendedViewport ******************/
+		/**** md5 signature: 1072307c44dc5ac0c775b17e1c89ea5c ****/
+		%feature("compactdefaultargs") RecommendedViewport;
+		%feature("autodoc", "Return recommended viewport width x height for rendering into vr.
+
+Returns
+-------
+NCollection_Vec2<int >
+") RecommendedViewport;
+		virtual NCollection_Vec2<int > RecommendedViewport();
+
+		/****************** RightHandPose ******************/
+		/**** md5 signature: b997db6d22c5309fef58aaa7a85929a9 ****/
+		%feature("compactdefaultargs") RightHandPose;
+		%feature("autodoc", "Return right hand orientation.
+
+Returns
+-------
+gp_Trsf
+") RightHandPose;
+		gp_Trsf RightHandPose();
+
+		/****************** SetTrackingOrigin ******************/
+		/**** md5 signature: c5848a9d52580d64afea846e587f5e68 ****/
+		%feature("compactdefaultargs") SetTrackingOrigin;
+		%feature("autodoc", "Set tracking origin.
+
+Parameters
+----------
+theOrigin: TrackingUniverseOrigin
+
+Returns
+-------
+None
+") SetTrackingOrigin;
+		virtual void SetTrackingOrigin(TrackingUniverseOrigin theOrigin);
+
+		/****************** SetUnitFactor ******************/
+		/**** md5 signature: 7440cb148f828c471e5d9b5248eb7c9b ****/
+		%feature("compactdefaultargs") SetUnitFactor;
+		%feature("autodoc", "Set unit scale factor.
+
+Parameters
+----------
+theFactor: float
+
+Returns
+-------
+None
+") SetUnitFactor;
+		void SetUnitFactor(Standard_Real theFactor);
+
+		/****************** SubmitEye ******************/
+		/**** md5 signature: e715d68400865ca08b80b6b4be7a6117 ****/
+		%feature("compactdefaultargs") SubmitEye;
+		%feature("autodoc", "Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display returns false on error.
+
+Parameters
+----------
+theTexture: void *
+theGraphicsLib: Aspect_GraphicsLibrary
+theColorSpace: Aspect_ColorSpace
+theEye: Aspect_Eye
+
+Returns
+-------
+bool
+") SubmitEye;
+		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
+
+		/****************** TrackedPoses ******************/
+		/**** md5 signature: 1e6c5e707589403f73daf6e2bdd7bf60 ****/
+		%feature("compactdefaultargs") TrackedPoses;
+		%feature("autodoc", "Return number of tracked poses array.
+
+Returns
+-------
+Aspect_TrackedDevicePoseArray
+") TrackedPoses;
+		const Aspect_TrackedDevicePoseArray & TrackedPoses();
+
+		/****************** TrackingOrigin ******************/
+		/**** md5 signature: db35db8c9365604e0d9a180025f9d9da ****/
+		%feature("compactdefaultargs") TrackingOrigin;
+		%feature("autodoc", "Return tracking origin.
+
+Returns
+-------
+Aspect_XRSession::TrackingUniverseOrigin
+") TrackingOrigin;
+		Aspect_XRSession::TrackingUniverseOrigin TrackingOrigin();
+
+		/****************** TriggerHapticVibrationAction ******************/
+		/**** md5 signature: 039fc9219b24c9a39bd343511f01b47b ****/
+		%feature("compactdefaultargs") TriggerHapticVibrationAction;
+		%feature("autodoc", "Trigger vibration.
+
+Parameters
+----------
+theAction: Aspect_XRAction
+theParams: Aspect_XRHapticActionData
+
+Returns
+-------
+None
+") TriggerHapticVibrationAction;
+		void TriggerHapticVibrationAction(const opencascade::handle<Aspect_XRAction> & theAction, const Aspect_XRHapticActionData & theParams);
+
+		/****************** UnitFactor ******************/
+		/**** md5 signature: ef896b413f2d707283340a4407bd979a ****/
+		%feature("compactdefaultargs") UnitFactor;
+		%feature("autodoc", "Return unit scale factor defined as scale factor for m (meters); 1.0 by default.
+
+Returns
+-------
+float
+") UnitFactor;
+		Standard_Real UnitFactor();
+
+		/****************** WaitPoses ******************/
+		/**** md5 signature: 2cd6ece8094e306806174f976e95a323 ****/
+		%feature("compactdefaultargs") WaitPoses;
+		%feature("autodoc", "Fetch actual poses of tracked devices.
+
+Returns
+-------
+bool
+") WaitPoses;
+		virtual bool WaitPoses();
+
+};
+
+
+%make_alias(Aspect_XRSession)
+
+%extend Aspect_XRSession {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /****************************
 * class Aspect_CircularGrid *
 ****************************/
@@ -2021,6 +3150,14 @@ None
 ") Colors;
 		void Colors(Quantity_Color & AColor1, Quantity_Color & AColor2);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** SetColors ******************/
 		/**** md5 signature: e9d1a160fb9ca8b15bcaf9ca8e97b5f0 ****/
 		%feature("compactdefaultargs") SetColors;
@@ -2051,6 +3188,261 @@ None
 /*****************************
 * class Aspect_NeutralWindow *
 *****************************/
+/*****************************
+* class Aspect_OpenVRSession *
+*****************************/
+class Aspect_OpenVRSession : public Aspect_XRSession {
+	public:
+		/****************** Aspect_OpenVRSession ******************/
+		/**** md5 signature: 8b3b2149154ace218f7a658179bb9520 ****/
+		%feature("compactdefaultargs") Aspect_OpenVRSession;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_OpenVRSession;
+		 Aspect_OpenVRSession();
+
+		/****************** Close ******************/
+		/**** md5 signature: af3f9495fd31a183ccb17c90b08cd92c ****/
+		%feature("compactdefaultargs") Close;
+		%feature("autodoc", "Release session.
+
+Returns
+-------
+None
+") Close;
+		virtual void Close();
+
+		/****************** EyeToHeadTransform ******************/
+		/**** md5 signature: 4415cbfdc523c9bc0033cf691701a27a ****/
+		%feature("compactdefaultargs") EyeToHeadTransform;
+		%feature("autodoc", "Return transformation from eye to head. vr::geteyetoheadtransform() wrapper.
+
+Parameters
+----------
+theEye: Aspect_Eye
+
+Returns
+-------
+NCollection_Mat4<double >
+") EyeToHeadTransform;
+		virtual NCollection_Mat4<double > EyeToHeadTransform(Aspect_Eye theEye);
+
+		/****************** GetAnalogActionData ******************/
+		/**** md5 signature: 7774d891f52d1f379e2c6300ddcfa99c ****/
+		%feature("compactdefaultargs") GetAnalogActionData;
+		%feature("autodoc", "Fetch data for analog input action (like axis).
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+Aspect_XRAnalogActionData
+") GetAnalogActionData;
+		virtual Aspect_XRAnalogActionData GetAnalogActionData(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** GetDigitalActionData ******************/
+		/**** md5 signature: 62087c046bab5d0c5cfd257afcb1772b ****/
+		%feature("compactdefaultargs") GetDigitalActionData;
+		%feature("autodoc", "Fetch data for digital input action (like button).
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+Aspect_XRDigitalActionData
+") GetDigitalActionData;
+		virtual Aspect_XRDigitalActionData GetDigitalActionData(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** GetPoseActionDataForNextFrame ******************/
+		/**** md5 signature: 94b2429e28b3df982111ec7a8efde11d ****/
+		%feature("compactdefaultargs") GetPoseActionDataForNextFrame;
+		%feature("autodoc", "Fetch data for pose input action (like fingertip position).
+
+Parameters
+----------
+theAction: Aspect_XRAction
+
+Returns
+-------
+Aspect_XRPoseActionData
+") GetPoseActionDataForNextFrame;
+		virtual Aspect_XRPoseActionData GetPoseActionDataForNextFrame(const opencascade::handle<Aspect_XRAction> & theAction);
+
+		/****************** GetString ******************/
+		/**** md5 signature: 3a5fdf2eb740dfbb9e9ab8002cc6ed4f ****/
+		%feature("compactdefaultargs") GetString;
+		%feature("autodoc", "Query information.
+
+Parameters
+----------
+theInfo: InfoString
+
+Returns
+-------
+TCollection_AsciiString
+") GetString;
+		virtual TCollection_AsciiString GetString(InfoString theInfo);
+
+		/****************** HasProjectionFrustums ******************/
+		/**** md5 signature: b05b67863b5b65463aa7504a39e5d4ea ****/
+		%feature("compactdefaultargs") HasProjectionFrustums;
+		%feature("autodoc", "Return true.
+
+Returns
+-------
+bool
+") HasProjectionFrustums;
+		virtual bool HasProjectionFrustums();
+
+		/****************** IsHmdPresent ******************/
+		/**** md5 signature: 4d92006ecb61453020c0338ef46db688 ****/
+		%feature("compactdefaultargs") IsHmdPresent;
+		%feature("autodoc", "Return true if an hmd may be presented on the system (e.g. to show vr checkbox in application gui). this is fast check, and even if it returns true, opening session may fail.
+
+Returns
+-------
+bool
+") IsHmdPresent;
+		static bool IsHmdPresent();
+
+		/****************** IsOpen ******************/
+		/**** md5 signature: 207917360702df01f95e48cf1c178d3d ****/
+		%feature("compactdefaultargs") IsOpen;
+		%feature("autodoc", "Return true if session is opened.
+
+Returns
+-------
+bool
+") IsOpen;
+		virtual bool IsOpen();
+
+		/****************** NamedTrackedDevice ******************/
+		/**** md5 signature: fd01aebe7b7d48f130828b68b0d31a8b ****/
+		%feature("compactdefaultargs") NamedTrackedDevice;
+		%feature("autodoc", "Return index of tracked device of known role.
+
+Parameters
+----------
+theDevice: Aspect_XRTrackedDeviceRole
+
+Returns
+-------
+int
+") NamedTrackedDevice;
+		virtual Standard_Integer NamedTrackedDevice(Aspect_XRTrackedDeviceRole theDevice);
+
+		/****************** Open ******************/
+		/**** md5 signature: 46feeb1ae37ec453aafb34d187389cb4 ****/
+		%feature("compactdefaultargs") Open;
+		%feature("autodoc", "Initialize session.
+
+Returns
+-------
+bool
+") Open;
+		virtual bool Open();
+
+		/****************** ProcessEvents ******************/
+		/**** md5 signature: 2a27463c633ed52dfa06a85b1bab9a97 ****/
+		%feature("compactdefaultargs") ProcessEvents;
+		%feature("autodoc", "Receive xr events.
+
+Returns
+-------
+None
+") ProcessEvents;
+		virtual void ProcessEvents();
+
+		/****************** ProjectionMatrix ******************/
+		/**** md5 signature: 1e7c67acc983090242ecfc7d738f648b ****/
+		%feature("compactdefaultargs") ProjectionMatrix;
+		%feature("autodoc", "Return projection matrix.
+
+Parameters
+----------
+theEye: Aspect_Eye
+theZNear: double
+theZFar: double
+
+Returns
+-------
+NCollection_Mat4<double >
+") ProjectionMatrix;
+		virtual NCollection_Mat4<double > ProjectionMatrix(Aspect_Eye theEye, double theZNear, double theZFar);
+
+		/****************** RecommendedViewport ******************/
+		/**** md5 signature: 67fa46d4104407c65ef24f06d7830ce5 ****/
+		%feature("compactdefaultargs") RecommendedViewport;
+		%feature("autodoc", "Return recommended viewport width x height for rendering into vr.
+
+Returns
+-------
+NCollection_Vec2<int >
+") RecommendedViewport;
+		virtual NCollection_Vec2<int > RecommendedViewport();
+
+		/****************** SetTrackingOrigin ******************/
+		/**** md5 signature: 76cb2a6b6235da6e0398fa78d9f5cc46 ****/
+		%feature("compactdefaultargs") SetTrackingOrigin;
+		%feature("autodoc", "Set tracking origin.
+
+Parameters
+----------
+theOrigin: TrackingUniverseOrigin
+
+Returns
+-------
+None
+") SetTrackingOrigin;
+		virtual void SetTrackingOrigin(TrackingUniverseOrigin theOrigin);
+
+		/****************** SubmitEye ******************/
+		/**** md5 signature: 7a622ff719a9418d497f3caffcac0d80 ****/
+		%feature("compactdefaultargs") SubmitEye;
+		%feature("autodoc", "Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display returns false on error.
+
+Parameters
+----------
+theTexture: void *
+theGraphicsLib: Aspect_GraphicsLibrary
+theColorSpace: Aspect_ColorSpace
+theEye: Aspect_Eye
+
+Returns
+-------
+bool
+") SubmitEye;
+		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
+
+		/****************** WaitPoses ******************/
+		/**** md5 signature: 5922daa4301bb4074ae95962b4f8d15b ****/
+		%feature("compactdefaultargs") WaitPoses;
+		%feature("autodoc", "Fetch actual poses of tracked devices.
+
+Returns
+-------
+bool
+") WaitPoses;
+		virtual bool WaitPoses();
+
+};
+
+
+%make_alias(Aspect_OpenVRSession)
+
+%extend Aspect_OpenVRSession {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*******************************
 * class Aspect_RectangularGrid *
 *******************************/

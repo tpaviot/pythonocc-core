@@ -22,7 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<CDM_Application.hxx>
 #include<CDM_CanCloseStatus.hxx>
 #include<CDM_DataMapIteratorOfMetaDataLookUpTable.hxx>
-#include<CDM_DataMapIteratorOfPresentationDirectory.hxx>
 #include<CDM_Document.hxx>
 #include<CDM_DocumentHasher.hxx>
 #include<CDM_DocumentPointer.hxx>
@@ -35,7 +34,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<CDM_MetaData.hxx>
 #include<CDM_MetaDataLookUpTable.hxx>
 #include<CDM_NamesDirectory.hxx>
-#include<CDM_PresentationDirectory.hxx>
 #include<CDM_Reference.hxx>
 #include<CDM_ReferenceIterator.hxx>
 

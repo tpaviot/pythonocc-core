@@ -42,9 +42,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_imeshtools.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<IMeshData_module.hxx>
+#include<Message_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<Message_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -61,9 +61,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_imeshtools.html"
 %import Standard.i
 %import NCollection.i
 %import IMeshData.i
+%import Message.i
 %import gp.i
 %import GeomAbs.i
-%import Message.i
 %import TopoDS.i
 
 %pythoncode {
@@ -72,10 +72,24 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum IMeshTools_MeshAlgoType {
+	IMeshTools_MeshAlgoType_DEFAULT = - 1,
+	IMeshTools_MeshAlgoType_Watson = 0,
+	IMeshTools_MeshAlgoType_Delabella = 1,
+};
+
 /* end public enums declaration */
 
 /* python proy classes for enums */
 %pythoncode {
+
+class IMeshTools_MeshAlgoType(IntEnum):
+	IMeshTools_MeshAlgoType_DEFAULT = - 1
+	IMeshTools_MeshAlgoType_Watson = 0
+	IMeshTools_MeshAlgoType_Delabella = 1
+IMeshTools_MeshAlgoType_DEFAULT = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_DEFAULT
+IMeshTools_MeshAlgoType_Watson = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_Watson
+IMeshTools_MeshAlgoType_Delabella = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_Delabella
 };
 /* end python proxy for enums */
 
@@ -123,7 +137,7 @@ bool
 		virtual Standard_Boolean BuildModel();
 
 		/****************** ChangeParameters ******************/
-		/**** md5 signature: d0db46a6e4b91fe455a13b0a0fd6aa27 ****/
+		/**** md5 signature: 7d357d2d707ea7c6e435ce7944cdbaeb ****/
 		%feature("compactdefaultargs") ChangeParameters;
 		%feature("autodoc", "Gets reference to parameters to be used for meshing.
 
@@ -156,18 +170,22 @@ bool
 		virtual Standard_Boolean DiscretizeEdges();
 
 		/****************** DiscretizeFaces ******************/
-		/**** md5 signature: 4a1862610bc668a6835375a28ed89b21 ****/
+		/**** md5 signature: 30410098805ac70055b47926b85743f4 ****/
 		%feature("compactdefaultargs") DiscretizeFaces;
 		%feature("autodoc", "Performs meshing of faces of discrete model using assigned meshing algorithm. returns true on success, false elsewhere.
+
+Parameters
+----------
+theRange: Message_ProgressRange
 
 Returns
 -------
 bool
 ") DiscretizeFaces;
-		virtual Standard_Boolean DiscretizeFaces();
+		virtual Standard_Boolean DiscretizeFaces(const Message_ProgressRange & theRange);
 
 		/****************** GetFaceDiscret ******************/
-		/**** md5 signature: 5c66df71cb625ee4ee9107b9a998c61c ****/
+		/**** md5 signature: ac18004e7beb332d1ceaa528692bb549 ****/
 		%feature("compactdefaultargs") GetFaceDiscret;
 		%feature("autodoc", "Gets instance of meshing algorithm.
 
@@ -178,7 +196,7 @@ opencascade::handle<IMeshTools_ModelAlgo>
 		const opencascade::handle<IMeshTools_ModelAlgo> & GetFaceDiscret();
 
 		/****************** GetModelHealer ******************/
-		/**** md5 signature: 4d97aca8db570856cb37f609266e62e9 ****/
+		/**** md5 signature: b4d4c336d1a6d7891f8c737038e3f01a ****/
 		%feature("compactdefaultargs") GetModelHealer;
 		%feature("autodoc", "Gets instance of a tool to be used to heal discrete model.
 
@@ -189,7 +207,7 @@ opencascade::handle<IMeshTools_ModelAlgo>
 		const opencascade::handle<IMeshTools_ModelAlgo> & GetModelHealer();
 
 		/****************** GetParameters ******************/
-		/**** md5 signature: a44e660650385254e5fa7bb02b20d3a7 ****/
+		/**** md5 signature: 931d70f744696a19117df768eb22fb5f ****/
 		%feature("compactdefaultargs") GetParameters;
 		%feature("autodoc", "Gets parameters to be used for meshing.
 
@@ -200,7 +218,7 @@ IMeshTools_Parameters
 		const IMeshTools_Parameters & GetParameters();
 
 		/****************** GetPostProcessor ******************/
-		/**** md5 signature: cf7a3fac9aff7b29a81878d19efe50e7 ****/
+		/**** md5 signature: 1739748d3e77ef562b0d3f182698dc5e ****/
 		%feature("compactdefaultargs") GetPostProcessor;
 		%feature("autodoc", "Gets instance of post-processing algorithm.
 
@@ -211,7 +229,7 @@ opencascade::handle<IMeshTools_ModelAlgo>
 		const opencascade::handle<IMeshTools_ModelAlgo> & GetPostProcessor();
 
 		/****************** GetPreProcessor ******************/
-		/**** md5 signature: 9dda31958437c31fc2511cf2e23ec18a ****/
+		/**** md5 signature: 56539ea9878f9c1d01f19d0eb2e718d3 ****/
 		%feature("compactdefaultargs") GetPreProcessor;
 		%feature("autodoc", "Gets instance of pre-processing algorithm.
 
@@ -255,7 +273,7 @@ bool
 		virtual Standard_Boolean PreProcessModel();
 
 		/****************** SetEdgeDiscret ******************/
-		/**** md5 signature: c3f81a5300bbd8f9c22147a2352a151a ****/
+		/**** md5 signature: 291d959210d87db25e70ab768c6129d2 ****/
 		%feature("compactdefaultargs") SetEdgeDiscret;
 		%feature("autodoc", "Sets instance of a tool to be used to discretize edges of a model.
 
@@ -270,7 +288,7 @@ None
 		void SetEdgeDiscret(const Handle ( IMeshTools_ModelAlgo ) & theEdgeDiscret);
 
 		/****************** SetFaceDiscret ******************/
-		/**** md5 signature: d46c9a0c045222e956da58a0846ac919 ****/
+		/**** md5 signature: e5f88be0158f99b3a420ac23970c0074 ****/
 		%feature("compactdefaultargs") SetFaceDiscret;
 		%feature("autodoc", "Sets instance of meshing algorithm.
 
@@ -285,7 +303,7 @@ None
 		void SetFaceDiscret(const opencascade::handle<IMeshTools_ModelAlgo> & theFaceDiscret);
 
 		/****************** SetModelBuilder ******************/
-		/**** md5 signature: d8b5052116eca3040ff922ea06292a6d ****/
+		/**** md5 signature: a40dc296e168fb353aa98930e685955e ****/
 		%feature("compactdefaultargs") SetModelBuilder;
 		%feature("autodoc", "Sets instance of a tool to be used to build discrete model.
 
@@ -300,7 +318,7 @@ None
 		void SetModelBuilder(const Handle ( IMeshTools_ModelBuilder ) & theBuilder);
 
 		/****************** SetModelHealer ******************/
-		/**** md5 signature: 763125b5c5779b0cc426712e148675a8 ****/
+		/**** md5 signature: 5abcede778d7925cf655f85c1b509e25 ****/
 		%feature("compactdefaultargs") SetModelHealer;
 		%feature("autodoc", "Sets instance of a tool to be used to heal discrete model.
 
@@ -315,7 +333,7 @@ None
 		void SetModelHealer(const opencascade::handle<IMeshTools_ModelAlgo> & theModelHealer);
 
 		/****************** SetPostProcessor ******************/
-		/**** md5 signature: a0245de91afe4684ef223935bdf1e7e0 ****/
+		/**** md5 signature: ca1f00899134f5a301e82206ee35fe39 ****/
 		%feature("compactdefaultargs") SetPostProcessor;
 		%feature("autodoc", "Sets instance of post-processing algorithm.
 
@@ -330,7 +348,7 @@ None
 		void SetPostProcessor(const opencascade::handle<IMeshTools_ModelAlgo> & thePostProcessor);
 
 		/****************** SetPreProcessor ******************/
-		/**** md5 signature: 3d83f1292b451d0c34c91dab1bb2c2c3 ****/
+		/**** md5 signature: 20d32520a1da3e58d3431c9d7f17809e ****/
 		%feature("compactdefaultargs") SetPreProcessor;
 		%feature("autodoc", "Sets instance of pre-processing algorithm.
 
@@ -406,7 +424,7 @@ theParameter: float
 class IMeshTools_MeshAlgo : public Standard_Transient {
 	public:
 		/****************** Perform ******************/
-		/**** md5 signature: a5e3969be8f0fced8595e9eaf4a080aa ****/
+		/**** md5 signature: aad6a988913ab82ff96ca40fc2df0cbf ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs processing of the given face.
 
@@ -414,12 +432,13 @@ Parameters
 ----------
 theDFace: IMeshData::IFaceHandle
 theParameters: IMeshTools_Parameters
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
+		virtual void Perform(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange);
 
 };
 
@@ -497,18 +516,22 @@ None
 		 IMeshTools_MeshBuilder(const Handle ( IMeshTools_Context ) & theContext);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 3e9d1e255907ed0a16757a409d9ccd90 ****/
+		/**** md5 signature: 3be29591efb89b639a8e87056a3f4905 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs meshing ot the shape using current context.
+
+Parameters
+----------
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange);
 
 		/****************** SetContext ******************/
-		/**** md5 signature: 1a8adece3d9c99ab025216d5d685e860 ****/
+		/**** md5 signature: 8be830571630dd25f35c28c52255700c ****/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "Sets context for algorithm.
 
@@ -538,7 +561,7 @@ None
 class IMeshTools_ModelAlgo : public Standard_Transient {
 	public:
 		/****************** Perform ******************/
-		/**** md5 signature: df1d10f56bbb9d13ad976fad3c992a4a ****/
+		/**** md5 signature: b6028ab33842d8e695a3691d5ce74e92 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Exceptions protected processing of the given model.
 
@@ -546,12 +569,13 @@ Parameters
 ----------
 theModel: Handle ( IMeshData_Model )
 theParameters: IMeshTools_Parameters
+theRange: Message_ProgressRange
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const Handle ( IMeshData_Model ) & theModel, const IMeshTools_Parameters & theParameters);
+		Standard_Boolean Perform(const Handle ( IMeshData_Model ) & theModel, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange);
 
 };
 
@@ -584,6 +608,7 @@ class IMeshTools_ModelBuilder : public Message_Algorithm {
 ******************************/
 class IMeshTools_Parameters {
 	public:
+		IMeshTools_MeshAlgoType MeshAlgo;
 		float Angle;
 		float Deflection;
 		float AngleInterior;
@@ -595,6 +620,8 @@ class IMeshTools_Parameters {
 		bool ControlSurfaceDeflection;
 		bool CleanModel;
 		bool AdjustMinSize;
+		bool ForceFaceDeflection;
+		bool AllowQualityDecrease;
 		/****************** IMeshTools_Parameters ******************/
 		/**** md5 signature: 354732bb8aea0c3d5affb49a91591d02 ****/
 		%feature("compactdefaultargs") IMeshTools_Parameters;

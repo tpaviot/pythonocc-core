@@ -42,8 +42,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_interface.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TColgp_module.hxx>
@@ -54,8 +54,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_interface.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
-%import TColStd.i
 %import Message.i
+%import TColStd.i
 %import MoniTool.i
 
 %pythoncode {
@@ -488,24 +488,6 @@ Returns
 None
 ") Initialize;
 		void Initialize(const Interface_BitMap & other, const Standard_Boolean copied = Standard_False);
-
-		/****************** Internals ******************/
-		/**** md5 signature: dbe69c4e903a7c78d7f33ccc46f395c1 ****/
-		%feature("compactdefaultargs") Internals;
-		%feature("autodoc", "Returns internal values, used for copying flags values start at false.
-
-Parameters
-----------
-flags: TColStd_HArray1OfInteger
-names: TColStd_HSequenceOfAsciiString
-
-Returns
--------
-nbitems: int
-nbwords: int
-nbflags: int
-") Internals;
-		void Internals(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfInteger> & flags, opencascade::handle<TColStd_HSequenceOfAsciiString> & names);
 
 		/****************** Length ******************/
 		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
@@ -1353,24 +1335,6 @@ int
 ") NbWarnings;
 		Standard_Integer NbWarnings();
 
-		/****************** Print ******************/
-		/**** md5 signature: 8db175be305f9fd3502b4144c50ea3d5 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Prints the messages of the check to an messenger <level> = 1 : only fails <level> = 2 : fails and warnings <level> = 3 : all (fails, warnings, info msg) <final> : if positive (d) prints final values of messages if negative, prints originals if null, prints both forms.
-
-Parameters
-----------
-S: Message_Messenger
-level: int
-final: int,optional
-	default value is 1
-
-Returns
--------
-None
-") Print;
-		void Print(const opencascade::handle<Message_Messenger> & S, const Standard_Integer level, const Standard_Integer final = 1);
-
 		/****************** Remove ******************/
 		/**** md5 signature: fbc96bff34dc8f4089235a7befff9769 ****/
 		%feature("compactdefaultargs") Remove;
@@ -1799,43 +1763,6 @@ int
 ") Number;
 		Standard_Integer Number();
 
-		/****************** Print ******************/
-		/**** md5 signature: 3cf2b42a331db194c0b69a57fac893c2 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Prints the list of checks with their attached numbers if <failsonly> is true, prints only fail messages if <failsonly> is false, prints all messages if <final> = 0 (d), prints also original messages if different if <final> < 0, prints only original messages if <final> > 0, prints only final messages it uses the recorded model if it is defined remark : works apart from the iteration methods (no interference).
-
-Parameters
-----------
-S: Message_Messenger
-failsonly: bool
-final: int,optional
-	default value is 0
-
-Returns
--------
-None
-") Print;
-		void Print(const opencascade::handle<Message_Messenger> & S, const Standard_Boolean failsonly, const Standard_Integer final = 0);
-
-		/****************** Print ******************/
-		/**** md5 signature: 304088c4f34ee8e419f2fd7a5ace51b4 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Works as print without a model, but for entities which have no attached number (number not positive), tries to compute this number from <model> and displays 'original' or 'computed'.
-
-Parameters
-----------
-S: Message_Messenger
-model: Interface_InterfaceModel
-failsonly: bool
-final: int,optional
-	default value is 0
-
-Returns
--------
-None
-") Print;
-		void Print(const opencascade::handle<Message_Messenger> & S, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean failsonly, const Standard_Integer final = 0);
-
 		/****************** Remove ******************/
 		/**** md5 signature: 81170abf4e017303192fc5e4bf72fea9 ****/
 		%feature("compactdefaultargs") Remove;
@@ -2071,38 +1998,6 @@ Returns
 None
 ") FillCheck;
 		void FillCheck(const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & sh, opencascade::handle<Interface_Check> & ach);
-
-		/****************** Print ******************/
-		/**** md5 signature: 7013edffb795d32d634ba2402e12f0c4 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Utility method which prints the content of a check.
-
-Parameters
-----------
-ach: Interface_Check
-S: Message_Messenger
-
-Returns
--------
-None
-") Print;
-		void Print(const opencascade::handle<Interface_Check> & ach, const opencascade::handle<Message_Messenger> & S);
-
-		/****************** Print ******************/
-		/**** md5 signature: 186f8db0b93d3be855f7d1c756e7930a ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Simply lists all the checks and the content (messages) and the entity, if there is, of each check (if all checks are ok, nothing is printed).
-
-Parameters
-----------
-list: Interface_CheckIterator
-S: Message_Messenger
-
-Returns
--------
-None
-") Print;
-		void Print(const Interface_CheckIterator & list, const opencascade::handle<Message_Messenger> & S);
 
 		/****************** UnknownEntities ******************/
 		/**** md5 signature: bd331908c549b04b25469271a771e03d ****/
@@ -6124,23 +6019,6 @@ None
             $self->DispatchStatus()=value;
             }
         };
-		/****************** DumpHeader ******************/
-		/**** md5 signature: 8df0907e92ad6d18b111cf1a8a1a66b3 ****/
-		%feature("compactdefaultargs") DumpHeader;
-		%feature("autodoc", "Dumps header in a short, easy to read, form, onto a stream <level> allows to print more or less parts of the header, if necessary. 0 for basic print.
-
-Parameters
-----------
-S: Message_Messenger
-level: int,optional
-	default value is 0
-
-Returns
--------
-None
-") DumpHeader;
-		virtual void DumpHeader(const opencascade::handle<Message_Messenger> & S, const Standard_Integer level = 0);
-
 		/****************** Entities ******************/
 		/**** md5 signature: 5b7a9453b66b65586915cfb6dcb67a37 ****/
 		%feature("compactdefaultargs") Entities;
@@ -6425,56 +6303,6 @@ Returns
 int
 ") Number;
 		Standard_Integer Number(const opencascade::handle<Standard_Transient> & anentity);
-
-		/****************** Print ******************/
-		/**** md5 signature: 25c8209887a6bed474cd6edd79e50a11 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Prints identification of a given entity in <self>, in order to be printed in a list or phrase <mode> < 0 : prints only its number <mode> = 1 : just calls printlabel <mode> = 0 (d) : prints its number plus '/' plus printlabel if <ent> == <self>, simply prints 'global' if <ent> is unknown, prints '/its type'.
-
-Parameters
-----------
-ent: Standard_Transient
-s: Message_Messenger
-mode: int,optional
-	default value is 0
-
-Returns
--------
-None
-") Print;
-		void Print(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Message_Messenger> & s, const Standard_Integer mode = 0);
-
-		/****************** PrintLabel ******************/
-		/**** md5 signature: cc0f3cd689c9caf57b9c93d09b536818 ****/
-		%feature("compactdefaultargs") PrintLabel;
-		%feature("autodoc", "Prints label specific to each norm, for a given entity. must only print label itself, in order to be included in a phrase. can call the result of stringlabel, but not obliged.
-
-Parameters
-----------
-ent: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintLabel;
-		virtual void PrintLabel(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintToLog ******************/
-		/**** md5 signature: e6a6964b1dc069246171a71615d9185c ****/
-		%feature("compactdefaultargs") PrintToLog;
-		%feature("autodoc", "Prints label specific to each norm in log format, for a given entity. by default, just calls printlabel, can be redefined.
-
-Parameters
-----------
-ent: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintToLog;
-		virtual void PrintToLog(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Message_Messenger> & S);
 
 		/****************** Protocol ******************/
 		/**** md5 signature: 2dce80af32cedc07d353d312ab7e2c73 ****/
@@ -9078,22 +8906,6 @@ int
 ") NbTypedSharings;
 		Standard_Integer NbTypedSharings(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Type> & atype);
 
-		/****************** Print ******************/
-		/**** md5 signature: 632787ac6e1c4d45af8c619319f31120 ****/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "Utility method which prints the content of an iterator (by their numbers).
-
-Parameters
-----------
-iter: Interface_EntityIterator
-S: Message_Messenger
-
-Returns
--------
-None
-") Print;
-		void Print(const Interface_EntityIterator & iter, const opencascade::handle<Message_Messenger> & S);
-
 		/****************** RootEntities ******************/
 		/**** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ****/
 		%feature("compactdefaultargs") RootEntities;
@@ -10060,21 +9872,14 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 ") Items;
 		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const Standard_Integer mode = 0, const char * criter = "");
 
-		/****************** PrintStatic ******************/
-		/**** md5 signature: 093031bb6b70a2bb776aaca627f4a55c ****/
-		%feature("compactdefaultargs") PrintStatic;
-		%feature("autodoc", "Writes the properties of a parameter in the diagnostic file. these include: - name - family, - wildcard (if it has one) - current status (empty string if it was updated or if it is the original one) - value.
 
-Parameters
-----------
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintStatic;
-		void PrintStatic(const opencascade::handle<Message_Messenger> & S);
-
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintStaticToString() {
+            std::stringstream s;
+            self->PrintStatic(s);
+            return s.str();}
+        };
 		/****************** RVal ******************/
 		/**** md5 signature: 916bf9a6651fba4b6f0c699767b5c1ed ****/
 		%feature("compactdefaultargs") RVal;

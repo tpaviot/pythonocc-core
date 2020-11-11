@@ -1924,19 +1924,21 @@ None
 		 TCollection_ExtendedString(TCollection_ExtendedString & theOther);
 
 		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: eec7e2cc94b861c92c7909283ff5edd0 ****/
+		/**** md5 signature: 65128c52391eef873746fec9d8584835 ****/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
-		%feature("autodoc", "Creation by converting an ascii string to an extended string. the string is treated as having utf-8 coding. if it is not a utf-8 then each character is copied to extcharacter.
+		%feature("autodoc", "Creation by converting an ascii string to an extended string. the string is treated as having utf-8 coding. if it is not a utf-8 or multi byte then each character is copied to extcharacter.
 
 Parameters
 ----------
 astring: TCollection_AsciiString
+isMultiByte: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 None
 ") TCollection_ExtendedString;
-		 TCollection_ExtendedString(const TCollection_AsciiString & astring);
+		 TCollection_ExtendedString(const TCollection_AsciiString & astring, const Standard_Boolean isMultiByte = Standard_True);
 
 		/****************** AssignCat ******************/
 		/**** md5 signature: 290473b12be80aeece2f43cf57b4b8c9 ****/
@@ -1952,6 +1954,21 @@ Returns
 None
 ") AssignCat;
 		void AssignCat(const TCollection_ExtendedString & other);
+
+		/****************** AssignCat ******************/
+		/**** md5 signature: af9511f20ca65b8d1031666c6ec91c33 ****/
+		%feature("compactdefaultargs") AssignCat;
+		%feature("autodoc", "Appends the utf16 char to this extended string.
+
+Parameters
+----------
+theChar: Standard_Utf16Char
+
+Returns
+-------
+None
+") AssignCat;
+		void AssignCat(const Standard_Utf16Char theChar);
 
 		/****************** Cat ******************/
 		/**** md5 signature: ef439e4a817d99d3aad10416eb41fa81 ****/
@@ -2663,7 +2680,7 @@ None
 		/****************** TCollection_HAsciiString ******************/
 		/**** md5 signature: 4c34b45baf33ce6936cb87edb50c3fad ****/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "Initializes a hasciistring with a hasciistring.
+		%feature("autodoc", "Initializes a hasciistring with a asciistring.
 
 Parameters
 ----------
@@ -2693,7 +2710,7 @@ None
 		/****************** TCollection_HAsciiString ******************/
 		/**** md5 signature: 2d2c9cf505fe6268a2d3ca5bb9f0df5c ****/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "Initializes a hasciistring with a hasciistring. if replacenonascii is non-null charecter, it will be used in place of any non-ascii character found in the source string. otherwise, raises outofrange exception if at least one character in the source string is not in the 'ascii range'.
+		%feature("autodoc", "Initializes a hasciistring with a hextendedstring. if replacenonascii is non-null charecter, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
 
 Parameters
 ----------

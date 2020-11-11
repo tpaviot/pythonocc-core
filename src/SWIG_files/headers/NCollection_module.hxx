@@ -29,7 +29,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_BaseSequence.hxx>
 #include<NCollection_BaseVector.hxx>
 #include<NCollection_Buffer.hxx>
-#include<NCollection_Comparator.hxx>
 #include<NCollection_DataMap.hxx>
 #include<NCollection_DefaultHasher.hxx>
 #include<NCollection_DefineAlloc.hxx>

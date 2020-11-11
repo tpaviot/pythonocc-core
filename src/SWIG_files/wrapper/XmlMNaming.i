@@ -209,34 +209,38 @@ None
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, XmlObjMgt_Persistent & theTarget, XmlObjMgt_SRelocationTable & theRelocTable);
 
 		/****************** ReadShapeSection ******************/
-		/**** md5 signature: bd887c21c2ef6e34d0ed00ee3f6cdf1a ****/
+		/**** md5 signature: f35e8994871ba1e3b692ee0dcaad48d2 ****/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "Input the shapes from dom element.
 
 Parameters
 ----------
 anElement: XmlObjMgt_Element
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") ReadShapeSection;
-		void ReadShapeSection(const XmlObjMgt_Element & anElement);
+		void ReadShapeSection(const XmlObjMgt_Element & anElement, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** WriteShapeSection ******************/
-		/**** md5 signature: aee556aa2c4d33725fc493906f65ddda ****/
+		/**** md5 signature: 369a490310d07df73743dbe50728e246 ****/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "Output the shapes into dom element.
 
 Parameters
 ----------
 anElement: XmlObjMgt_Element
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") WriteShapeSection;
-		void WriteShapeSection(XmlObjMgt_Element & anElement);
+		void WriteShapeSection(XmlObjMgt_Element & anElement, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

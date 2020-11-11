@@ -181,7 +181,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadShapeSection ******************/
-		/**** md5 signature: 6949cfd7e18188434f9061929247af90 ****/
+		/**** md5 signature: e6c8d6b2639a12f4b1c8a6050a5f3163 ****/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "No available documentation.
 
@@ -189,12 +189,14 @@ Parameters
 ----------
 thePDoc: XmlObjMgt_Element
 theMsgDriver: Message_Messenger
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<XmlMDF_ADriver>
 ") ReadShapeSection;
-		virtual opencascade::handle<XmlMDF_ADriver> ReadShapeSection(const XmlObjMgt_Element & thePDoc, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		virtual opencascade::handle<XmlMDF_ADriver> ReadShapeSection(const XmlObjMgt_Element & thePDoc, const opencascade::handle<Message_Messenger> & theMsgDriver, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ShapeSetCleaning ******************/
 		/**** md5 signature: 4932412d0f0136668a4280a7c86030ec ****/
@@ -258,19 +260,21 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** WriteShapeSection ******************/
-		/**** md5 signature: b4ec6d75c8a984688290a7a253ae2c49 ****/
+		/**** md5 signature: d4d59cc92ea3ce420696a7e2b6fd497c ****/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 thePDoc: XmlObjMgt_Element
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") WriteShapeSection;
-		virtual Standard_Boolean WriteShapeSection(XmlObjMgt_Element & thePDoc);
+		virtual Standard_Boolean WriteShapeSection(XmlObjMgt_Element & thePDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

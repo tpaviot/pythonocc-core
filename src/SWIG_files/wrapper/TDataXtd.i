@@ -42,9 +42,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TDF_module.hxx>
+#include<TDataStd_module.hxx>
 #include<gp_module.hxx>
 #include<TNaming_module.hxx>
-#include<TDataStd_module.hxx>
 #include<Quantity_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Poly_module.hxx>
@@ -62,9 +62,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
 %import Standard.i
 %import NCollection.i
 %import TDF.i
+%import TDataStd.i
 %import gp.i
 %import TNaming.i
-%import TDataStd.i
 %import Quantity.i
 %import TopoDS.i
 %import Poly.i
@@ -286,7 +286,7 @@ None
 /**********************
 * class TDataXtd_Axis *
 **********************/
-class TDataXtd_Axis : public TDF_Attribute {
+class TDataXtd_Axis : public TDataStd_GenericEmpty {
 	public:
 		/****************** TDataXtd_Axis ******************/
 		/**** md5 signature: d37822b554190af63ff371da2e2d369d ****/
@@ -328,48 +328,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: a57f6ee26f8dc80f8f292dc25a522351 ****/
@@ -1332,7 +1290,7 @@ Standard_GUID
 /***************************
 * class TDataXtd_Placement *
 ***************************/
-class TDataXtd_Placement : public TDF_Attribute {
+class TDataXtd_Placement : public TDataStd_GenericEmpty {
 	public:
 		/****************** TDataXtd_Placement ******************/
 		/**** md5 signature: 6c8f7f528efec08bb8589703e1543072 ****/
@@ -1375,48 +1333,6 @@ Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
-
 		/****************** Set ******************/
 		/**** md5 signature: 00ad14199476dd8efb4e6fb1cb87dcd7 ****/
 		%feature("compactdefaultargs") Set;
@@ -1446,7 +1362,7 @@ opencascade::handle<TDataXtd_Placement>
 /***********************
 * class TDataXtd_Plane *
 ***********************/
-class TDataXtd_Plane : public TDF_Attribute {
+class TDataXtd_Plane : public TDataStd_GenericEmpty {
 	public:
 		/****************** TDataXtd_Plane ******************/
 		/**** md5 signature: 9f77a08999233941b32c343f160d4529 ****/
@@ -1488,48 +1404,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		/**** md5 signature: 8970a215afd1ef102a4adb9489b2403e ****/
@@ -1576,7 +1450,7 @@ opencascade::handle<TDataXtd_Plane>
 /***********************
 * class TDataXtd_Point *
 ***********************/
-class TDataXtd_Point : public TDF_Attribute {
+class TDataXtd_Point : public TDataStd_GenericEmpty {
 	public:
 		/****************** TDataXtd_Point ******************/
 		/**** md5 signature: 1b0958f86dad9ecd88e14351ed0b3f5d ****/
@@ -1618,48 +1492,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		/**** md5 signature: 636d613604a73ff47bd5beab7e7e6975 ****/
@@ -2364,6 +2196,36 @@ float
 ") Width;
 		Standard_Real Width();
 
+		/****************** getColorNameFromOldEnum ******************/
+		/**** md5 signature: ab68ddac1b40714d4433bd7b78a9cab8 ****/
+		%feature("compactdefaultargs") getColorNameFromOldEnum;
+		%feature("autodoc", "Convert values of old quantity_nameofcolor to new enumeration for reading old documents after #0030969 (coding rules - refactor quantity_color.cxx color table definition).
+
+Parameters
+----------
+theOld: int
+
+Returns
+-------
+Quantity_NameOfColor
+") getColorNameFromOldEnum;
+		static Quantity_NameOfColor getColorNameFromOldEnum(Standard_Integer theOld);
+
+		/****************** getOldColorNameFromNewEnum ******************/
+		/**** md5 signature: 1fedd82c4dd7e3ca0773863813c046d6 ****/
+		%feature("compactdefaultargs") getOldColorNameFromNewEnum;
+		%feature("autodoc", "Convert quantity_nameofcolor to old enumeration value for writing documents in compatible format.
+
+Parameters
+----------
+theNew: Quantity_NameOfColor
+
+Returns
+-------
+int
+") getOldColorNameFromNewEnum;
+		static Standard_Integer getOldColorNameFromNewEnum(Quantity_NameOfColor theNew);
+
 };
 
 
@@ -2378,7 +2240,7 @@ float
 /***********************
 * class TDataXtd_Shape *
 ***********************/
-class TDataXtd_Shape : public TDF_Attribute {
+class TDataXtd_Shape : public TDataStd_GenericEmpty {
 	public:
 		/****************** TDataXtd_Shape ******************/
 		/**** md5 signature: 829556aaab1cefa67a3c7754214d6f9e ****/
@@ -2467,33 +2329,6 @@ opencascade::handle<TDataXtd_Shape>
 ") New;
 		static opencascade::handle<TDataXtd_Shape> New(const TDF_Label & label);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
 		/****************** References ******************/
 		/**** md5 signature: f171ce811dbfb205236d26e3cbf15450 ****/
 		%feature("compactdefaultargs") References;
@@ -2508,21 +2343,6 @@ Returns
 None
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: 5c799b31c146f9513e3b35b06552f58b ****/

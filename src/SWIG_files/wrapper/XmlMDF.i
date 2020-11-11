@@ -74,6 +74,7 @@ from OCC.Core.Exception import *
 /* handles */
 %wrap_handle(XmlMDF_ADriver)
 %wrap_handle(XmlMDF_ADriverTable)
+%wrap_handle(XmlMDF_DerivedDriver)
 %wrap_handle(XmlMDF_ReferenceDriver)
 %wrap_handle(XmlMDF_TagSourceDriver)
 /* end handles declaration */
@@ -113,7 +114,7 @@ None
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** FromTo ******************/
-		/**** md5 signature: f03d56eb25e1bc630f2b83a82bb86e5b ****/
+		/**** md5 signature: a3040a924b785778b3b8d9cd67f304da ****/
 		%feature("compactdefaultargs") FromTo;
 		%feature("autodoc", "Translates a transient <asource> into a persistent <atarget>.
 
@@ -123,15 +124,17 @@ aSource: TDF_Data
 aTarget: XmlObjMgt_Element
 aReloc: XmlObjMgt_SRelocationTable
 aDrivers: XmlMDF_ADriverTable
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") FromTo;
-		static void FromTo(const opencascade::handle<TDF_Data> & aSource, XmlObjMgt_Element & aTarget, XmlObjMgt_SRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers);
+		static void FromTo(const opencascade::handle<TDF_Data> & aSource, XmlObjMgt_Element & aTarget, XmlObjMgt_SRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** FromTo ******************/
-		/**** md5 signature: dd28f435847b34c13a1d4c27db15e113 ****/
+		/**** md5 signature: 43d72ef2a4051857449b6205abaf10a8 ****/
 		%feature("compactdefaultargs") FromTo;
 		%feature("autodoc", "Translates a persistent <asource> into a transient <atarget>. returns true if completed successfully (false on error).
 
@@ -141,12 +144,14 @@ aSource: XmlObjMgt_Element
 aTarget: TDF_Data
 aReloc: XmlObjMgt_RRelocationTable
 aDrivers: XmlMDF_ADriverTable
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") FromTo;
-		static Standard_Boolean FromTo(const XmlObjMgt_Element & aSource, opencascade::handle<TDF_Data> & aTarget, XmlObjMgt_RRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers);
+		static Standard_Boolean FromTo(const XmlObjMgt_Element & aSource, opencascade::handle<TDF_Data> & aTarget, XmlObjMgt_RRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -163,6 +168,28 @@ bool
 %nodefaultctor XmlMDF_ADriver;
 class XmlMDF_ADriver : public Standard_Transient {
 	public:
+		/****************** MessageDriver ******************/
+		/**** md5 signature: a2961f713aaae0ef5d0be03881abc817 ****/
+		%feature("compactdefaultargs") MessageDriver;
+		%feature("autodoc", "Returns the current message driver of this driver.
+
+Returns
+-------
+opencascade::handle<Message_Messenger>
+") MessageDriver;
+		const opencascade::handle<Message_Messenger> & MessageDriver();
+
+		/****************** Namespace ******************/
+		/**** md5 signature: ed4e20f1f838f6275fc120673f93975a ****/
+		%feature("compactdefaultargs") Namespace;
+		%feature("autodoc", "Returns the namespace string.
+
+Returns
+-------
+TCollection_AsciiString
+") Namespace;
+		const TCollection_AsciiString & Namespace();
+
 		/****************** NewEmpty ******************/
 		/**** md5 signature: 537251aec6cd2736ac1f1abe6868dc70 ****/
 		%feature("compactdefaultargs") NewEmpty;
@@ -209,7 +236,7 @@ None
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & aSource, XmlObjMgt_Persistent & aTarget, XmlObjMgt_SRelocationTable & aRelocTable);
 
 		/****************** SourceType ******************/
-		/**** md5 signature: a8d83f9f06c48d1a3057ab3a1b1fa810 ****/
+		/**** md5 signature: 32631522887e31f15896a5cd3347c279 ****/
 		%feature("compactdefaultargs") SourceType;
 		%feature("autodoc", "Returns the type of source object, inheriting from attribute from tdf.
 
@@ -217,7 +244,7 @@ Returns
 -------
 opencascade::handle<Standard_Type>
 ") SourceType;
-		opencascade::handle<Standard_Type> SourceType();
+		virtual opencascade::handle<Standard_Type> SourceType();
 
 		/****************** TypeName ******************/
 		/**** md5 signature: 191a1aa753fb8d39d56bcfd7505ea0e7 ****/
@@ -268,6 +295,36 @@ None
 ") XmlMDF_ADriverTable;
 		 XmlMDF_ADriverTable();
 
+		/****************** AddDerivedDriver ******************/
+		/**** md5 signature: d785bc7c368abacc51e9bcd52083ce5c ****/
+		%feature("compactdefaultargs") AddDerivedDriver;
+		%feature("autodoc", "Adds a translation driver for the derived attribute. the base driver must be already added. @param theinstance is newly created attribute, detached from any label.
+
+Parameters
+----------
+theInstance: TDF_Attribute
+
+Returns
+-------
+None
+") AddDerivedDriver;
+		void AddDerivedDriver(const opencascade::handle<TDF_Attribute> & theInstance);
+
+		/****************** AddDerivedDriver ******************/
+		/**** md5 signature: c08557200bb111bac7324de5048e9e2d ****/
+		%feature("compactdefaultargs") AddDerivedDriver;
+		%feature("autodoc", "Adds a translation driver for the derived attribute. the base driver must be already added. @param thederivedtype is registered attribute type using implement_derived_attribute macro.
+
+Parameters
+----------
+theDerivedType: char *
+
+Returns
+-------
+opencascade::handle<Standard_Type>
+") AddDerivedDriver;
+		const opencascade::handle<Standard_Type> & AddDerivedDriver(const char * theDerivedType);
+
 		/****************** AddDriver ******************/
 		/**** md5 signature: a1862a3b70afac69a2082adfc7eb62a0 ****/
 		%feature("compactdefaultargs") AddDriver;
@@ -283,32 +340,36 @@ None
 ") AddDriver;
 		void AddDriver(const opencascade::handle<XmlMDF_ADriver> & anHDriver);
 
+		/****************** CreateDrvMap ******************/
+		/**** md5 signature: 2f3bf75f266927cb151a797b3ee15dcf ****/
+		%feature("compactdefaultargs") CreateDrvMap;
+		%feature("autodoc", "Fills the map by all registered drivers.
+
+Parameters
+----------
+theDriverMap: XmlMDF_MapOfDriver
+
+Returns
+-------
+None
+") CreateDrvMap;
+		void CreateDrvMap(XmlMDF_MapOfDriver & theDriverMap);
+
 		/****************** GetDriver ******************/
-		/**** md5 signature: 763c6a31ed937de5ac5b90bcf8e9b09c ****/
+		/**** md5 signature: 82134288246a0f36c04a3a279ed39cd1 ****/
 		%feature("compactdefaultargs") GetDriver;
 		%feature("autodoc", "Gets a driver <adriver> according to <atype> //! returns true if a driver is found; false otherwise.
 
 Parameters
 ----------
-aType: Standard_Type
-anHDriver: XmlMDF_ADriver
+theType: Standard_Type
+theDriver: XmlMDF_ADriver
 
 Returns
 -------
 bool
 ") GetDriver;
-		Standard_Boolean GetDriver(const opencascade::handle<Standard_Type> & aType, opencascade::handle<XmlMDF_ADriver> & anHDriver);
-
-		/****************** GetDrivers ******************/
-		/**** md5 signature: 999fa2e5dc9fdc31ba5e7e3e043fdcd9 ****/
-		%feature("compactdefaultargs") GetDrivers;
-		%feature("autodoc", "Gets a map of drivers.
-
-Returns
--------
-XmlMDF_TypeADriverMap
-") GetDrivers;
-		const XmlMDF_TypeADriverMap & GetDrivers();
+		Standard_Boolean GetDriver(const opencascade::handle<Standard_Type> & theType, opencascade::handle<XmlMDF_ADriver> & theDriver);
 
 };
 
@@ -316,6 +377,94 @@ XmlMDF_TypeADriverMap
 %make_alias(XmlMDF_ADriverTable)
 
 %extend XmlMDF_ADriverTable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************
+* class XmlMDF_DerivedDriver *
+*****************************/
+class XmlMDF_DerivedDriver : public XmlMDF_ADriver {
+	public:
+		/****************** XmlMDF_DerivedDriver ******************/
+		/**** md5 signature: 9fd7a0ae1dfaceed6d0fe854211abbae ****/
+		%feature("compactdefaultargs") XmlMDF_DerivedDriver;
+		%feature("autodoc", "Creates a derivative persistence driver for thederivative attribute by reusage of thebasedriver @param thederivative an instance of the attribute, just created, detached from any label @param thebasedriver a driver of the base attribute, called by paste methods.
+
+Parameters
+----------
+theDerivative: TDF_Attribute
+theBaseDriver: XmlMDF_ADriver
+
+Returns
+-------
+None
+") XmlMDF_DerivedDriver;
+		 XmlMDF_DerivedDriver(const opencascade::handle<TDF_Attribute> & theDerivative, const opencascade::handle<XmlMDF_ADriver> & theBaseDriver);
+
+		/****************** NewEmpty ******************/
+		/**** md5 signature: 9fd03ebf4c88d0fd3efd748ca3107174 ****/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "Creates a new instance of the derivative attribute.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		/**** md5 signature: ec1aa8d8f44b52c462ccfb619b2ab8c7 ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "Reuses the base driver to read the base fields.
+
+Parameters
+----------
+theSource: XmlObjMgt_Persistent
+theTarget: TDF_Attribute
+theRelocTable: XmlObjMgt_RRelocationTable
+
+Returns
+-------
+bool
+") Paste;
+		virtual Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
+
+		/****************** Paste ******************/
+		/**** md5 signature: 50bb20461c6c07de84069a8198f95fcd ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "Reuses the base driver to store the base fields.
+
+Parameters
+----------
+theSource: TDF_Attribute
+theTarget: XmlObjMgt_Persistent
+theRelocTable: XmlObjMgt_SRelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, XmlObjMgt_Persistent & theTarget, XmlObjMgt_SRelocationTable & theRelocTable);
+
+		/****************** TypeName ******************/
+		/**** md5 signature: 33bd6dc5f76c10259f99124470e7cb5c ****/
+		%feature("compactdefaultargs") TypeName;
+		%feature("autodoc", "Returns the full xml tag name (including ns prefix).
+
+Returns
+-------
+TCollection_AsciiString
+") TypeName;
+		const TCollection_AsciiString & TypeName();
+
+};
+
+
+%make_alias(XmlMDF_DerivedDriver)
+
+%extend XmlMDF_DerivedDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

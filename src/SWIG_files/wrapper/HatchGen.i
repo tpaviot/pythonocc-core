@@ -568,21 +568,6 @@ None
 		 HatchGen_PointOnElement();
 
 		/****************** HatchGen_PointOnElement ******************/
-		/**** md5 signature: 5f90d0090208df1badc086f95b2cd438 ****/
-		%feature("compactdefaultargs") HatchGen_PointOnElement;
-		%feature("autodoc", "Creates a point from an other.
-
-Parameters
-----------
-Point: HatchGen_PointOnElement
-
-Returns
--------
-None
-") HatchGen_PointOnElement;
-		 HatchGen_PointOnElement(const HatchGen_PointOnElement & Point);
-
-		/****************** HatchGen_PointOnElement ******************/
 		/**** md5 signature: 0b19450c5960b9438bdefe885e950d9c ****/
 		%feature("compactdefaultargs") HatchGen_PointOnElement;
 		%feature("autodoc", "Creates a point from an intersection point.
@@ -695,21 +680,6 @@ Returns
 None
 ") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching();
-
-		/****************** HatchGen_PointOnHatching ******************/
-		/**** md5 signature: 6c7c0ec97a8317703f64880c6023f17c ****/
-		%feature("compactdefaultargs") HatchGen_PointOnHatching;
-		%feature("autodoc", "Creates a point from an other.
-
-Parameters
-----------
-Point: HatchGen_PointOnHatching
-
-Returns
--------
-None
-") HatchGen_PointOnHatching;
-		 HatchGen_PointOnHatching(const HatchGen_PointOnHatching & Point);
 
 		/****************** HatchGen_PointOnHatching ******************/
 		/**** md5 signature: 2d49efd88e5038a0b441348c0349938f ****/

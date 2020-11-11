@@ -141,9 +141,6 @@ typedef size_t Standard_Size;
 /***************************
 * class NCollection_Buffer *
 ***************************/
-/*******************************
-* class NCollection_Comparator *
-*******************************/
 /**********************************
 * class NCollection_DefaultHasher *
 **********************************/
@@ -360,10 +357,6 @@ class NCollection_BaseSequence:
 
 @classnotwrapped
 class NCollection_LocalArray:
-	pass
-
-@classnotwrapped
-class NCollection_Comparator:
 	pass
 
 @classnotwrapped

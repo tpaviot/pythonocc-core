@@ -43,13 +43,14 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<IMeshTools_module.hxx>
+#include<Message_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TopoDS_module.hxx>
+#include<GeomAbs_module.hxx>
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
 #include<BRepAdaptor_module.hxx>
-#include<GeomAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Poly_module.hxx>
 #include<Bnd_module.hxx>
@@ -74,13 +75,14 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
 %import Standard.i
 %import NCollection.i
 %import IMeshTools.i
+%import Message.i
 %import gp.i
 %import TopAbs.i
 %import TopoDS.i
+%import GeomAbs.i
 %import TCollection.i
 %import TColStd.i
 %import BRepAdaptor.i
-%import GeomAbs.i
 %import Adaptor3d.i
 %import Poly.i
 %import Bnd.i
@@ -176,7 +178,7 @@ class BRepMesh_BaseMeshAlgo : public IMeshTools_MeshAlgo {
 	public:
 typedef NCollection_Shared<NCollection_Vector<gp_Pnt>> VectorOfPnt;
 		/****************** Perform ******************/
-		/**** md5 signature: 120f211acc4f0e9e686b3159d66b9edb ****/
+		/**** md5 signature: d685bfcd2d4c1ddec38b4671470322e6 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs processing of the given face.
 
@@ -184,12 +186,14 @@ Parameters
 ----------
 theDFace: IMeshData::IFaceHandle
 theParameters: IMeshTools_Parameters
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
+		virtual void Perform(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -233,7 +237,7 @@ None
 		 BRepMesh_Circle(const gp_XY & theLocation, const Standard_Real theRadius);
 
 		/****************** Location ******************/
-		/**** md5 signature: c3695172839bf375de27c79fcd8b05d2 ****/
+		/**** md5 signature: 2ecc9f07f1d8eda4bb4073a2c1f35c81 ****/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Returns location of a circle.
 
@@ -244,7 +248,7 @@ gp_XY
 		const gp_XY Location();
 
 		/****************** Radius ******************/
-		/**** md5 signature: 28a6c8636dd3574b9cdfb37ec141afa8 ****/
+		/**** md5 signature: a23a06a93bcd6b6bd7a4525b4ccf66ac ****/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Returns radius of a circle.
 
@@ -255,7 +259,7 @@ float
 		const Standard_Real & Radius();
 
 		/****************** SetLocation ******************/
-		/**** md5 signature: 8f5147e7c00fbb84e7fc4f67d4a870a1 ****/
+		/**** md5 signature: 9327d7a19f0eeac7a91ff9bb889d6b3f ****/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "Sets location of a circle. @param thelocation location of a circle.
 
@@ -270,7 +274,7 @@ None
 		void SetLocation(const gp_XY & theLocation);
 
 		/****************** SetRadius ******************/
-		/**** md5 signature: 088308acb04b143d2b529239c413a089 ****/
+		/**** md5 signature: ec1ecbc6b8d5250d29d2812fb870ef3b ****/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "Sets radius of a circle. @param theradius radius of a circle.
 
@@ -317,7 +321,7 @@ None
 		 BRepMesh_CircleInspector(const Standard_Real theTolerance, const Standard_Integer theReservedSize, const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
 		/****************** Bind ******************/
-		/**** md5 signature: 6ae45ba84e57a762427339450e625e8d ****/
+		/**** md5 signature: 7cebd699dfcb51866c850e6e54217a62 ****/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "Adds the circle to vector of circles at the given position. @param theindex position of circle in the vector. @param thecircle circle to be added.
 
@@ -333,7 +337,7 @@ None
 		void Bind(const Standard_Integer theIndex, const BRepMesh_Circle & theCircle);
 
 		/****************** Circle ******************/
-		/**** md5 signature: 9f2dd61a512b7523ff205776d224149a ****/
+		/**** md5 signature: 06e7c3749668870601f344d946e7bede ****/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Returns circle with the given index. @param theindex index of circle. returns circle with the given index.
 
@@ -348,7 +352,7 @@ BRepMesh_Circle
 		BRepMesh_Circle & Circle(const Standard_Integer theIndex);
 
 		/****************** Circles ******************/
-		/**** md5 signature: 065802a65057114e171af94d61d79b5c ****/
+		/**** md5 signature: 5715a9c41d841e4058a32bbf582cd2f3 ****/
 		%feature("compactdefaultargs") Circles;
 		%feature("autodoc", "Resutns vector of registered circles.
 
@@ -359,7 +363,7 @@ IMeshData::VectorOfCircle
 		const IMeshData::VectorOfCircle & Circles();
 
 		/****************** GetShotCircles ******************/
-		/**** md5 signature: 9933e996cf40dd14e160576b903aad07 ****/
+		/**** md5 signature: c1409009f8ad619775420c881c945c8f ****/
 		%feature("compactdefaultargs") GetShotCircles;
 		%feature("autodoc", "Returns list of circles shot by the reference point.
 
@@ -370,7 +374,7 @@ IMeshData::ListOfInteger
 		IMeshData::ListOfInteger & GetShotCircles();
 
 		/****************** Inspect ******************/
-		/**** md5 signature: 0ea4f62f43d3fd5784d0a315812f28ce ****/
+		/**** md5 signature: 36ed0deca30ac42bb917d21f9193ca76 ****/
 		%feature("compactdefaultargs") Inspect;
 		%feature("autodoc", "Performs inspection of a circle with the given index. @param thetargetindex index of a circle to be checked. returns status of the check.
 
@@ -401,7 +405,7 @@ bool
 		static Standard_Boolean IsEqual(const Standard_Integer theIndex, const Standard_Integer theTargetIndex);
 
 		/****************** SetPoint ******************/
-		/**** md5 signature: 0dac3b9fce00d0569a8c6be2e1df6061 ****/
+		/**** md5 signature: b521bfcebdca3f9d4da8c66d87603bc7 ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Set reference point to be checked. @param thepoint bullet point.
 
@@ -510,7 +514,7 @@ None
 		void Delete(const Standard_Integer theIndex);
 
 		/****************** Init ******************/
-		/**** md5 signature: 6768f8c3d5ee0836725d7258878c889f ****/
+		/**** md5 signature: 3dd4080a86e69636d0123b416448c0ee ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initializes the tool. @param thereservedsize size to be reserved for vector of circles.
 
@@ -525,7 +529,7 @@ None
 		void Init(const Standard_Integer);
 
 		/****************** IsEmpty ******************/
-		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
+		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Retruns true if cell filter contains no circle.
 
@@ -584,7 +588,7 @@ IMeshData::ListOfInteger
 		IMeshData::ListOfInteger & Select(const gp_XY & thePoint);
 
 		/****************** SetCellSize ******************/
-		/**** md5 signature: 4c70378415d32bea4e416be19d749a37 ****/
+		/**** md5 signature: 415a8b91be50170d2af0ba27dd19bc6c ****/
 		%feature("compactdefaultargs") SetCellSize;
 		%feature("autodoc", "Sets new size for cell filter. @param thesize cell size to be set for x and y dimensions.
 
@@ -599,7 +603,7 @@ None
 		void SetCellSize(const Standard_Real theSize);
 
 		/****************** SetCellSize ******************/
-		/**** md5 signature: df8f72753a17083c9abbdb14dbe2c404 ****/
+		/**** md5 signature: 28e49b1c038f46447a07e18f6d52b3eb ****/
 		%feature("compactdefaultargs") SetCellSize;
 		%feature("autodoc", "Sets new size for cell filter. @param thesizex cell size to be set for x dimension. @param thesizey cell size to be set for y dimension.
 
@@ -615,7 +619,7 @@ None
 		void SetCellSize(const Standard_Real theSizeX, const Standard_Real theSizeY);
 
 		/****************** SetMinMaxSize ******************/
-		/**** md5 signature: c751790e3721d0ff861c3fb7e916b8ef ****/
+		/**** md5 signature: f153182deac2fb83c6f4bb26b9903fb1 ****/
 		%feature("compactdefaultargs") SetMinMaxSize;
 		%feature("autodoc", "Sets limits of inspection area. @param themin bottom left corner of inspection area. @param themax top right corner of inspection area.
 
@@ -705,15 +709,20 @@ None
 class BRepMesh_Context : public IMeshTools_Context {
 	public:
 		/****************** BRepMesh_Context ******************/
-		/**** md5 signature: 0369b757dc831f0a501b3650103372c3 ****/
+		/**** md5 signature: b9a5ecaf630ba21afab7902c0bd2fa8b ****/
 		%feature("compactdefaultargs") BRepMesh_Context;
 		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theMeshType: IMeshTools_MeshAlgoType,optional
+	default value is IMeshTools_MeshAlgoType_DEFAULT
 
 Returns
 -------
 None
 ") BRepMesh_Context;
-		 BRepMesh_Context();
+		 BRepMesh_Context(IMeshTools_MeshAlgoType theMeshType = IMeshTools_MeshAlgoType_DEFAULT);
 
 };
 
@@ -872,7 +881,7 @@ int
 		Standard_Integer AddNode(const BRepMesh_Vertex & theNode, const Standard_Boolean isForceAdd = Standard_False);
 
 		/****************** Allocator ******************/
-		/**** md5 signature: 4e28fef9a355f8e2f25d143af5e72dd8 ****/
+		/**** md5 signature: f62593783d4573ef5624106d77d9bbd9 ****/
 		%feature("compactdefaultargs") Allocator;
 		%feature("autodoc", "Returns memory allocator used by the structure.
 
@@ -905,7 +914,7 @@ None
 		void ClearDomain();
 
 		/****************** Data ******************/
-		/**** md5 signature: 8a866f86ce3fc246a43fbf5a07fa26e7 ****/
+		/**** md5 signature: 60a87eb41dbe1e7bddca17ebc155ae95 ****/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "Gives the data structure for initialization of cell size and tolerance.
 
@@ -962,7 +971,7 @@ BRepMesh_PairOfIndex
 		const BRepMesh_PairOfIndex & ElementsConnectedTo(const Standard_Integer theLinkIndex);
 
 		/****************** ElementsOfDomain ******************/
-		/**** md5 signature: bb922da60cb5825c37dd68bff3bdf646 ****/
+		/**** md5 signature: 69b3fc4ed234e9f90fe6024d34e76746 ****/
 		%feature("compactdefaultargs") ElementsOfDomain;
 		%feature("autodoc", "Returns map of indices of elements registered in mesh.
 
@@ -1003,7 +1012,7 @@ BRepMesh_Edge
 		const BRepMesh_Edge & GetLink(const Standard_Integer theIndex);
 
 		/****************** GetNode ******************/
-		/**** md5 signature: 194234facd0591d078e4906ef088dd9a ****/
+		/**** md5 signature: 292c7b2f2aea3bfbafc99b3d94fdd1a2 ****/
 		%feature("compactdefaultargs") GetNode;
 		%feature("autodoc", "Get node by the index. @param theindex index of a node. returns node with the given index.
 
@@ -1048,7 +1057,7 @@ int
 		Standard_Integer IndexOf(const BRepMesh_Edge & theLink);
 
 		/****************** LinksConnectedTo ******************/
-		/**** md5 signature: 3fef9028c083cb842632a01ac419134a ****/
+		/**** md5 signature: 9857b8f97159eb2d3ff586fadab236b8 ****/
 		%feature("compactdefaultargs") LinksConnectedTo;
 		%feature("autodoc", "Get list of links attached to the node with the given index. @param theindex index of node whose links should be retrieved. returns list of links attached to the node.
 
@@ -1063,7 +1072,7 @@ IMeshData::ListOfInteger
 		const IMeshData::ListOfInteger & LinksConnectedTo(const Standard_Integer theIndex);
 
 		/****************** LinksOfDomain ******************/
-		/**** md5 signature: dd8b7da42d9d15433cfc938a42d262be ****/
+		/**** md5 signature: 912b45a268b81eb750fcd0b09b5744a5 ****/
 		%feature("compactdefaultargs") LinksOfDomain;
 		%feature("autodoc", "Returns map of indices of links registered in mesh.
 
@@ -1074,7 +1083,7 @@ IMeshData::MapOfInteger
 		const IMeshData::MapOfInteger & LinksOfDomain();
 
 		/****************** NbElements ******************/
-		/**** md5 signature: a2c5844890f023732a846fde2e05ced3 ****/
+		/**** md5 signature: 31ab3b416016e435682ef37235c33db1 ****/
 		%feature("compactdefaultargs") NbElements;
 		%feature("autodoc", "Returns number of links.
 
@@ -1085,7 +1094,7 @@ int
 		Standard_Integer NbElements();
 
 		/****************** NbLinks ******************/
-		/**** md5 signature: 560a7258937e8b51fe2ed92e0346e6e6 ****/
+		/**** md5 signature: 2c9671a2bdbbb6b3c071b4befae3ab9c ****/
 		%feature("compactdefaultargs") NbLinks;
 		%feature("autodoc", "Returns number of links.
 
@@ -1096,7 +1105,7 @@ int
 		Standard_Integer NbLinks();
 
 		/****************** NbNodes ******************/
-		/**** md5 signature: 446b78ba2107afe05845d052f2f2e391 ****/
+		/**** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ****/
 		%feature("compactdefaultargs") NbNodes;
 		%feature("autodoc", "Returns number of nodes.
 
@@ -1293,12 +1302,72 @@ None
 ") ComputeDeflection;
 		static void ComputeDeflection(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
 
+		/****************** IsConsistent ******************/
+		/**** md5 signature: f1f59248e21270aff44097869389da31 ****/
+		%feature("compactdefaultargs") IsConsistent;
+		%feature("autodoc", "Checks if the deflection of current polygonal representation is consistent with the required deflection. @param thecurrent [in] current deflection. @param therequired [in] required deflection. @param theallowdecrease [in] flag controlling the check. if decrease is allowed, to be consistent the current and required deflections should be approximately the same. if not allowed, the current deflection should be less than required. @param theratio [in] the ratio for comparison of the deflections (value from 0 to 1).
+
+Parameters
+----------
+theCurrent: float
+theRequired: float
+theAllowDecrease: bool
+theRatio: float,optional
+	default value is 0.1
+
+Returns
+-------
+bool
+") IsConsistent;
+		static Standard_Boolean IsConsistent(const Standard_Real theCurrent, const Standard_Real theRequired, const Standard_Boolean theAllowDecrease, const Standard_Real theRatio = 0.1);
+
 };
 
 
 %make_alias(BRepMesh_Deflection)
 
 %extend BRepMesh_Deflection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************************
+* class BRepMesh_DelabellaMeshAlgoFactory *
+******************************************/
+class BRepMesh_DelabellaMeshAlgoFactory : public IMeshTools_MeshAlgoFactory {
+	public:
+		/****************** BRepMesh_DelabellaMeshAlgoFactory ******************/
+		/**** md5 signature: 7e764d1ee3a95c966901000e31a5d227 ****/
+		%feature("compactdefaultargs") BRepMesh_DelabellaMeshAlgoFactory;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") BRepMesh_DelabellaMeshAlgoFactory;
+		 BRepMesh_DelabellaMeshAlgoFactory();
+
+		/****************** GetAlgo ******************/
+		/**** md5 signature: b5f3831f9f5db3705d1be887bba92f22 ****/
+		%feature("compactdefaultargs") GetAlgo;
+		%feature("autodoc", "Creates instance of meshing algorithm for the given type of surface.
+
+Parameters
+----------
+theSurfaceType: GeomAbs_SurfaceType
+theParameters: IMeshTools_Parameters
+
+Returns
+-------
+opencascade::handle<IMeshTools_MeshAlgo>
+") GetAlgo;
+		virtual opencascade::handle<IMeshTools_MeshAlgo> GetAlgo(const GeomAbs_SurfaceType theSurfaceType, const IMeshTools_Parameters & theParameters);
+
+};
+
+
+%extend BRepMesh_DelabellaMeshAlgoFactory {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1393,22 +1462,24 @@ None
 		 BRepMesh_Delaun(const Handle ( BRepMesh_DataStructureOfDelaun ) & theOldMesh, IMeshData::VectorOfInteger & theVertexIndices, const Standard_Integer theCellsCountU, const Standard_Integer theCellsCountV);
 
 		/****************** AddVertices ******************/
-		/**** md5 signature: ed2e20db4d16ec4d0aadad207cfa6a77 ****/
+		/**** md5 signature: 113e996513917ce7251d5a839da38bcc ****/
 		%feature("compactdefaultargs") AddVertices;
 		%feature("autodoc", "Adds some vertices into the triangulation.
 
 Parameters
 ----------
 theVerticesIndices: IMeshData::VectorOfInteger
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") AddVertices;
-		void AddVertices(IMeshData::VectorOfInteger & theVerticesIndices);
+		void AddVertices(IMeshData::VectorOfInteger & theVerticesIndices, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Circles ******************/
-		/**** md5 signature: d189a0ba7c83fa1130e8941961803cc9 ****/
+		/**** md5 signature: 33d52e752207c405b226546e9af83859 ****/
 		%feature("compactdefaultargs") Circles;
 		%feature("autodoc", "Returns tool used to build mesh consistent to delaunay criteria.
 
@@ -1436,7 +1507,7 @@ theEdgeOn: int
 		Standard_Boolean Contains(const Standard_Integer theTriangleId, const BRepMesh_Vertex & theVertex, const Standard_Real theSqTolerance, Standard_Integer &OutValue);
 
 		/****************** GetEdge ******************/
-		/**** md5 signature: 20d6e4f93cafef9d5e1c8398cb44332e ****/
+		/**** md5 signature: 9210edd1005034060d95da674efa9dbf ****/
 		%feature("compactdefaultargs") GetEdge;
 		%feature("autodoc", "Gives edge with the given index.
 
@@ -1451,7 +1522,7 @@ BRepMesh_Edge
 		const BRepMesh_Edge & GetEdge(const Standard_Integer theIndex);
 
 		/****************** GetTriangle ******************/
-		/**** md5 signature: 57881eacc8fda0afc14929527752858b ****/
+		/**** md5 signature: 461ad6dfa4bf78d3a59eb076d0a6e2f2 ****/
 		%feature("compactdefaultargs") GetTriangle;
 		%feature("autodoc", "Gives triangle with the given index.
 
@@ -1466,7 +1537,7 @@ BRepMesh_Triangle
 		const BRepMesh_Triangle & GetTriangle(const Standard_Integer theIndex);
 
 		/****************** GetVertex ******************/
-		/**** md5 signature: cebf1dd75079b041cdb614469fe9f637 ****/
+		/**** md5 signature: 79dd510956ad78ac9dc3b4423557d902 ****/
 		%feature("compactdefaultargs") GetVertex;
 		%feature("autodoc", "Gives vertex with the given index.
 
@@ -1511,6 +1582,17 @@ None
 ") InitCirclesTool;
 		void InitCirclesTool(const Standard_Integer theCellsCountU, const Standard_Integer theCellsCountV);
 
+		/****************** RemoveAuxElements ******************/
+		/**** md5 signature: f5c31c7ed6200793d7e443c838782af8 ****/
+		%feature("compactdefaultargs") RemoveAuxElements;
+		%feature("autodoc", "Destruction of auxiliary triangles containing the given vertices. removes auxiliary vertices also. @param theauxvertices auxiliary vertices to be cleaned up.
+
+Returns
+-------
+None
+") RemoveAuxElements;
+		void RemoveAuxElements();
+
 		/****************** RemoveVertex ******************/
 		/**** md5 signature: 45b088f9c013183a935581ea0ea79936 ****/
 		%feature("compactdefaultargs") RemoveVertex;
@@ -1527,7 +1609,7 @@ None
 		void RemoveVertex(const BRepMesh_Vertex & theVertex);
 
 		/****************** Result ******************/
-		/**** md5 signature: 4baee62a1e5b0179f25fdef9807007ad ****/
+		/**** md5 signature: 1244aaba5231d45d599f841b2370df2a ****/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Gives the mesh data structure.
 
@@ -1536,6 +1618,21 @@ Returns
 opencascade::handle<BRepMesh_DataStructureOfDelaun>
 ") Result;
 		const opencascade::handle<BRepMesh_DataStructureOfDelaun> & Result();
+
+		/****************** SetAuxVertices ******************/
+		/**** md5 signature: 49ee655c1fb99403e0e07ccbb417bbae ****/
+		%feature("compactdefaultargs") SetAuxVertices;
+		%feature("autodoc", "Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
+
+Parameters
+----------
+theSupVert: IMeshData::VectorOfInteger
+
+Returns
+-------
+None
+") SetAuxVertices;
+		void SetAuxVertices(const IMeshData::VectorOfInteger & theSupVert);
 
 		/****************** UseEdge ******************/
 		/**** md5 signature: 02fbf448c47cf1029f0cd536b06426d3 ****/
@@ -1585,7 +1682,7 @@ bool
 class BRepMesh_DiscretFactory {
 	public:
 		/****************** DefaultName ******************/
-		/**** md5 signature: a9e87b09805389eaea34b3c39c2ec535 ****/
+		/**** md5 signature: 9098ac4c9fc2d3e09ad2b84fe3c2e228 ****/
 		%feature("compactdefaultargs") DefaultName;
 		%feature("autodoc", "Returns name for current meshing algorithm.
 
@@ -1613,7 +1710,7 @@ opencascade::handle<BRepMesh_DiscretRoot>
 		opencascade::handle<BRepMesh_DiscretRoot> Discret(const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection);
 
 		/****************** ErrorStatus ******************/
-		/**** md5 signature: a178e1fed60c53b0b40cc3291fa9dc6d ****/
+		/**** md5 signature: 4cc2f68be5a9afe2a68332ec12784419 ****/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Returns error status for last meshing algorithm switch.
 
@@ -1624,7 +1721,7 @@ BRepMesh_FactoryError
 		BRepMesh_FactoryError ErrorStatus();
 
 		/****************** FunctionName ******************/
-		/**** md5 signature: ff1497ff99eab8cd2bf0aa6e3e463234 ****/
+		/**** md5 signature: 4584d85a4e0c158104ade1647616436f ****/
 		%feature("compactdefaultargs") FunctionName;
 		%feature("autodoc", "Returns function name that should be exported by plugin.
 
@@ -1646,7 +1743,7 @@ BRepMesh_DiscretFactory
 		static BRepMesh_DiscretFactory & Get();
 
 		/****************** Names ******************/
-		/**** md5 signature: 329a82eeb929e6992f2391be65237dcb ****/
+		/**** md5 signature: 454bedd4396a8ba0ae7740d89904e192 ****/
 		%feature("compactdefaultargs") Names;
 		%feature("autodoc", "Returns the list of registered meshing algorithms.
 
@@ -1719,7 +1816,7 @@ bool
 class BRepMesh_DiscretRoot : public Standard_Transient {
 	public:
 		/****************** IsDone ******************/
-		/**** md5 signature: fbb42ba7dccdaf2fe81e0200c743c59b ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Returns true if triangualtion was performed and has success.
 
@@ -1730,18 +1827,23 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** Perform ******************/
-		/**** md5 signature: e23b98e5ba6fc1b2692a5d6fc76fd990 ****/
+		/**** md5 signature: 398f71859219956837273801c6ed1f07 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Compute triangulation for set shape.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetShape ******************/
-		/**** md5 signature: 2a69c84280e6c3375bf0bb75ca8a528e ****/
+		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "Set the shape to triangulate.
 
@@ -1756,7 +1858,7 @@ None
 		void SetShape(const TopoDS_Shape & theShape);
 
 		/****************** Shape ******************/
-		/**** md5 signature: defd915e92007f4fef1c5d475022bc26 ****/
+		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "No available documentation.
 
@@ -2051,7 +2153,7 @@ None
 		 BRepMesh_GeomTool(const opencascade::handle<BRepAdaptor_HSurface> & theSurface, const GeomAbs_IsoType theIsoType, const Standard_Real theParamIso, const Standard_Real theFirstParam, const Standard_Real theLastParam, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, const Standard_Integer theMinPointsNb = 2, const Standard_Real theMinSize = Precision::Confusion());
 
 		/****************** AddPoint ******************/
-		/**** md5 signature: 512ea4d2a16cc7dfe9fec5752f90f8a5 ****/
+		/**** md5 signature: 23339736f9d509a41c0708ffbbc4a1c0 ****/
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "Adds point to already calculated points (or replaces existing). @param thepoint point to be added. @param theparam parameter on the curve corresponding to the given point. @param theisreplace if true replaces existing point lying within parameteric tolerance of the given point. returns index of new added point or found with parametric tolerance.
 
@@ -2087,7 +2189,7 @@ std::pair<int, int >
 		static std::pair<Standard_Integer, Standard_Integer > CellsCount(const Handle ( Adaptor3d_HSurface ) & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
 
 		/****************** NbPoints ******************/
-		/**** md5 signature: b3f6d46a81951b4563bf85af5ac88506 ****/
+		/**** md5 signature: e92014a2f157c195ed77b7745c7eae3f ****/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Returns number of discretization points.
 
@@ -2234,7 +2336,7 @@ None
 		 BRepMesh_MeshTool(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theStructure);
 
 		/****************** AddAndLegalizeTriangle ******************/
-		/**** md5 signature: 8285c53b805dc4dd99f70078c4833931 ****/
+		/**** md5 signature: 0ac46c0a145add63243db67bd9f3f0bc ****/
 		%feature("compactdefaultargs") AddAndLegalizeTriangle;
 		%feature("autodoc", "Adds new triangle with specified nodes to mesh. legalizes triangle in case if it violates circle criteria.
 
@@ -2251,7 +2353,7 @@ None
 		void AddAndLegalizeTriangle(const Standard_Integer thePoint1, const Standard_Integer thePoint2, const Standard_Integer thePoint3);
 
 		/****************** AddLink ******************/
-		/**** md5 signature: efe970ef74478090e78c6c122e72c04a ****/
+		/**** md5 signature: d24cd13523eaaf65a058f4a062b08f96 ****/
 		%feature("compactdefaultargs") AddLink;
 		%feature("autodoc", "Adds new link to mesh. updates link index and link orientaion parameters.
 
@@ -2268,7 +2370,7 @@ theLinkOri: bool
 		void AddLink(const Standard_Integer theFirstNode, const Standard_Integer theLastNode, Standard_Integer &OutValue, Standard_Boolean &OutValue);
 
 		/****************** AddTriangle ******************/
-		/**** md5 signature: 04166966d201f9aeb142e4ab27411b04 ****/
+		/**** md5 signature: 673ff11382e26742f4b619105414f585 ****/
 		%feature("compactdefaultargs") AddTriangle;
 		%feature("autodoc", "Adds new triangle with specified nodes to mesh.
 
@@ -2354,7 +2456,7 @@ None
 		void EraseTriangle(const Standard_Integer theTriangleIndex, IMeshData::MapOfIntegerInteger & theLoopEdges);
 
 		/****************** GetStructure ******************/
-		/**** md5 signature: 463e08e7e5e9d524152d8d446cf3059b ****/
+		/**** md5 signature: e795ea8cb85d33692d442ec73fdda3d7 ****/
 		%feature("compactdefaultargs") GetStructure;
 		%feature("autodoc", "Returns data structure manipulated by this tool.
 
@@ -2534,7 +2636,7 @@ None
 		 BRepMesh_OrientedEdge(const Standard_Integer theFirstNode, const Standard_Integer theLastNode);
 
 		/****************** FirstNode ******************/
-		/**** md5 signature: 331ca4ee7645b71ec8ad1d955cecd088 ****/
+		/**** md5 signature: 5e5a409216676a4f7e0861e57fd4aebf ****/
 		%feature("compactdefaultargs") FirstNode;
 		%feature("autodoc", "Returns index of first node of the link.
 
@@ -2545,7 +2647,7 @@ int
 		Standard_Integer FirstNode();
 
 		/****************** HashCode ******************/
-		/**** md5 signature: 34d2bd608e1be24dd69b6bc4248dc09f ****/
+		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for this oriented edge, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -2566,7 +2668,7 @@ int
         };
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: f788d0ecb110830ac4fa9aa1b1941edd ****/
+		/**** md5 signature: 1a1e5601f44f2e973a1227eedc8ed008 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Checks this and other edge for equality. @param theother edge to be checked against this one. @retrun true if edges have the same orientation, false if not.
 
@@ -2581,7 +2683,7 @@ bool
 		Standard_Boolean IsEqual(const BRepMesh_OrientedEdge & theOther);
 
 		/****************** LastNode ******************/
-		/**** md5 signature: 3637f3b6f53810f69f385663c8a3ba43 ****/
+		/**** md5 signature: 862c96d90a2f2e5a03235f217e321b6a ****/
 		%feature("compactdefaultargs") LastNode;
 		%feature("autodoc", "Returns index of last node of the link.
 
@@ -2631,7 +2733,7 @@ None
 		 BRepMesh_PairOfIndex();
 
 		/****************** Append ******************/
-		/**** md5 signature: 25e753f039f0b49272d8dab1709f3f7b ****/
+		/**** md5 signature: 6d1b3d282e85f1e28613e9ddd5c1b92a ****/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "Appends index to the pair.
 
@@ -2657,7 +2759,7 @@ None
 		void Clear();
 
 		/****************** Extent ******************/
-		/**** md5 signature: c808611e9f0acbe25f7e01fc4b129456 ****/
+		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Returns number of initialized indeces.
 
@@ -2668,7 +2770,7 @@ int
 		Standard_Integer Extent();
 
 		/****************** FirstIndex ******************/
-		/**** md5 signature: bd57ce82953a7fa8c3842e750aaefa72 ****/
+		/**** md5 signature: dd170f153aee261c6137ad51fb804301 ****/
 		%feature("compactdefaultargs") FirstIndex;
 		%feature("autodoc", "Returns first index of pair.
 
@@ -2679,7 +2781,7 @@ int
 		Standard_Integer FirstIndex();
 
 		/****************** Index ******************/
-		/**** md5 signature: 8cdc137c0ef24412e34ea5f8a7a374e5 ****/
+		/**** md5 signature: be92a83d0312a29299b83fe0df2a8e6a ****/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Returns index corresponding to the given position in the pair. @param thepairpos position of index in the pair (1 or 2).
 
@@ -2694,7 +2796,7 @@ int
 		Standard_Integer Index(const Standard_Integer thePairPos);
 
 		/****************** IsEmpty ******************/
-		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
+		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Returns is pair is empty.
 
@@ -2705,7 +2807,7 @@ bool
 		Standard_Boolean IsEmpty();
 
 		/****************** LastIndex ******************/
-		/**** md5 signature: 10deb3ef45ee8e6bc2fb2ad65488e843 ****/
+		/**** md5 signature: ac91d431c1bc97c7f705173d9a480bea ****/
 		%feature("compactdefaultargs") LastIndex;
 		%feature("autodoc", "Returns last index of pair.
 
@@ -2716,7 +2818,7 @@ int
 		Standard_Integer LastIndex();
 
 		/****************** Prepend ******************/
-		/**** md5 signature: 2477a340de017d24404abd221dda8e91 ****/
+		/**** md5 signature: 6a5240977116a74c5fb3353b10c6424a ****/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "Prepends index to the pair.
 
@@ -2731,7 +2833,7 @@ None
 		void Prepend(const Standard_Integer theIndex);
 
 		/****************** RemoveIndex ******************/
-		/**** md5 signature: b6dbffa1bb750992c275ebf52cd9a7f3 ****/
+		/**** md5 signature: 895ffb3475d21aba5f9bd97bb9d7062f ****/
 		%feature("compactdefaultargs") RemoveIndex;
 		%feature("autodoc", "Remove index from the given position. @param thepairpos position of index in the pair (1 or 2).
 
@@ -2746,7 +2848,7 @@ None
 		void RemoveIndex(const Standard_Integer thePairPos);
 
 		/****************** SetIndex ******************/
-		/**** md5 signature: fbdc21956a9a719a7237d5e4569c5984 ****/
+		/**** md5 signature: 4340ed7d7bec46bb9359a9523e5758d2 ****/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "Sets index corresponding to the given position in the pair. @param thepairpos position of index in the pair (1 or 2). @param theindex index to be stored.
 
@@ -2802,7 +2904,7 @@ None
 		 BRepMesh_SelectorOfDataStructureOfDelaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theMesh);
 
 		/****************** AddNeighbours ******************/
-		/**** md5 signature: c9ed73b1614ef862617a563de080f9e8 ****/
+		/**** md5 signature: 612e38bbb1676e77f251fed4962bc3c0 ****/
 		%feature("compactdefaultargs") AddNeighbours;
 		%feature("autodoc", "Adds a level of neighbours by edge the selector.
 
@@ -2813,7 +2915,7 @@ None
 		void AddNeighbours();
 
 		/****************** Elements ******************/
-		/**** md5 signature: 904aee2618db31a48f8bad70ec47cb6c ****/
+		/**** md5 signature: f292154361efe8cff70b7224e0dd92bc ****/
 		%feature("compactdefaultargs") Elements;
 		%feature("autodoc", "Returns selected elements.
 
@@ -2824,7 +2926,7 @@ IMeshData::MapOfInteger
 		const IMeshData::MapOfInteger & Elements();
 
 		/****************** FrontierLinks ******************/
-		/**** md5 signature: af36447692db673a640b614c54e933e9 ****/
+		/**** md5 signature: e9fc3775f2eaeb5f9f3fb50a11ef1575 ****/
 		%feature("compactdefaultargs") FrontierLinks;
 		%feature("autodoc", "Gives the list of incices of frontier links.
 
@@ -2850,7 +2952,7 @@ None
 		void Initialize(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theMesh);
 
 		/****************** Links ******************/
-		/**** md5 signature: 46ff48853ce0094375c9433237fb7bd6 ****/
+		/**** md5 signature: 444dc2c6e495f4e680bd1e7ea076ff0b ****/
 		%feature("compactdefaultargs") Links;
 		%feature("autodoc", "Returns selected links.
 
@@ -2921,7 +3023,7 @@ None
 		void NeighboursOf(const BRepMesh_Triangle & theElement);
 
 		/****************** NeighboursOf ******************/
-		/**** md5 signature: c4b9f3b86e9ee7f025b213b537887672 ****/
+		/**** md5 signature: eda74ad1f0361cb0f21c76c0370a0cc5 ****/
 		%feature("compactdefaultargs") NeighboursOf;
 		%feature("autodoc", "Adds a level of neighbours by edge to the selector.
 
@@ -2981,7 +3083,7 @@ None
 		void NeighboursOfNode(const Standard_Integer theNodeIndex);
 
 		/****************** Nodes ******************/
-		/**** md5 signature: 01a61fbeb950f5471535e159cfe3dac6 ****/
+		/**** md5 signature: cc6f002fa70de151d7f5a1decc5ae05a ****/
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Returns selected nodes.
 
@@ -3352,7 +3454,7 @@ None
 		 BRepMesh_Triangle(const Standard_Integer ( & theEdges )[3], const Standard_Boolean ( & theOrientations )[3], const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** Edges ******************/
-		/**** md5 signature: 88c5621fd10b07cc4ce3768b15266128 ****/
+		/**** md5 signature: 4d9a1eb522cb4c5f438c181c4cc333a2 ****/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Gets edges with orientations composing the triangle. @param[out] theedges array edges are stored to. @param[out] theorientations array orientations are stored to.
 
@@ -3368,7 +3470,7 @@ None
 		void Edges(Standard_Integer ( & theEdges )[3], Standard_Boolean ( & theOrientations )[3]);
 
 		/****************** HashCode ******************/
-		/**** md5 signature: 34d2bd608e1be24dd69b6bc4248dc09f ****/
+		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for this triangle, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -3389,7 +3491,7 @@ int
         };
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 98f4bdc0ac1c8020a374c3cc03436d08 ****/
+		/**** md5 signature: ee51ba187d1dbaa84273b1e2cd325f9a ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Initializes the triangle by the given parameters. @param theedges array of edges of triangle. @param theorientations array of edge's orientations. @param themovability movability of triangle.
 
@@ -3406,7 +3508,7 @@ None
 		void Initialize(const Standard_Integer ( & theEdges )[3], const Standard_Boolean ( & theOrientations )[3], const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: 4ef0ddc25f8b440f87b78caefc85bf96 ****/
+		/**** md5 signature: 475c8cafbb251ef77ebaff68a5aa0c19 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Checks for equality with another triangle. @param theother triangle to be checked against this one. returns true if equal, false if not.
 
@@ -3421,7 +3523,7 @@ bool
 		Standard_Boolean IsEqual(const BRepMesh_Triangle & theOther);
 
 		/****************** Movability ******************/
-		/**** md5 signature: 0baa5fefb35b0dc84782fa98dfe1bcd0 ****/
+		/**** md5 signature: 6205d0abeb2bc94f438d25da760d9f0b ****/
 		%feature("compactdefaultargs") Movability;
 		%feature("autodoc", "Returns movability of the triangle.
 
@@ -3432,7 +3534,7 @@ BRepMesh_DegreeOfFreedom
 		BRepMesh_DegreeOfFreedom Movability();
 
 		/****************** SetMovability ******************/
-		/**** md5 signature: 498f341ebeb19e38705b7289d9a3dd74 ****/
+		/**** md5 signature: 6a061b38c31857ee1d61d08ac2b621a5 ****/
 		%feature("compactdefaultargs") SetMovability;
 		%feature("autodoc", "Sets movability of the triangle.
 
@@ -3520,7 +3622,7 @@ None
 		 BRepMesh_Vertex(const Standard_Real theU, const Standard_Real theV, const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** ChangeCoord ******************/
-		/**** md5 signature: d5e87ec1c47862c499fe21983e6feb8f ****/
+		/**** md5 signature: f799b091563773cd52b21654e211a935 ****/
 		%feature("compactdefaultargs") ChangeCoord;
 		%feature("autodoc", "Returns position of the vertex in parametric space for modification.
 
@@ -3531,7 +3633,7 @@ gp_XY
 		gp_XY ChangeCoord();
 
 		/****************** Coord ******************/
-		/**** md5 signature: d20f3416b9a4be12a4544353e8c32b83 ****/
+		/**** md5 signature: 55c3583d2b85a3d85724dfd062f17fa4 ****/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "Returns position of the vertex in parametric space.
 
@@ -3542,7 +3644,7 @@ gp_XY
 		const gp_XY Coord();
 
 		/****************** HashCode ******************/
-		/**** md5 signature: 34d2bd608e1be24dd69b6bc4248dc09f ****/
+		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for this vertex, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -3563,7 +3665,7 @@ int
         };
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 588bf0dda6d86b26837710755f06e35d ****/
+		/**** md5 signature: 50c4b34339c1d3c34b891aeeeeec544f ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Initializes vertex associated with point in 3d space. @param theuv position of vertex in parametric space. @param thelocation3d index of 3d point to be associated with vertex. @param themovability movability of the vertex.
 
@@ -3580,7 +3682,7 @@ None
 		void Initialize(const gp_XY & theUV, const Standard_Integer theLocation3d, const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: d000ff0deac7bd85ee6e11945a50e3d9 ****/
+		/**** md5 signature: 6ba7c96c1bc66ed1c4cfb395d24095c8 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Checks for equality with another vertex. @param theother vertex to be checked against this one. returns true if equal, false if not.
 
@@ -3595,7 +3697,7 @@ bool
 		Standard_Boolean IsEqual(const BRepMesh_Vertex & theOther);
 
 		/****************** Location3d ******************/
-		/**** md5 signature: db516df2a63f539e3074a72e3c61c97b ****/
+		/**** md5 signature: 82faaa1833ea67e80110e3e864a252d9 ****/
 		%feature("compactdefaultargs") Location3d;
 		%feature("autodoc", "Returns index of 3d point associated with the vertex.
 
@@ -3606,7 +3708,7 @@ int
 		Standard_Integer Location3d();
 
 		/****************** Movability ******************/
-		/**** md5 signature: 0baa5fefb35b0dc84782fa98dfe1bcd0 ****/
+		/**** md5 signature: 6205d0abeb2bc94f438d25da760d9f0b ****/
 		%feature("compactdefaultargs") Movability;
 		%feature("autodoc", "Returns movability of the vertex.
 
@@ -3617,7 +3719,7 @@ BRepMesh_DegreeOfFreedom
 		BRepMesh_DegreeOfFreedom Movability();
 
 		/****************** SetMovability ******************/
-		/**** md5 signature: 498f341ebeb19e38705b7289d9a3dd74 ****/
+		/**** md5 signature: 6a061b38c31857ee1d61d08ac2b621a5 ****/
 		%feature("compactdefaultargs") SetMovability;
 		%feature("autodoc", "Sets movability of the vertex.
 
@@ -3691,7 +3793,7 @@ int
 		Standard_Integer Add(const BRepMesh_Vertex & theVertex);
 
 		/****************** Clear ******************/
-		/**** md5 signature: a44260fee94b60c9f5953b511b84b0d7 ****/
+		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clear inspector's internal data structures.
 
@@ -3702,7 +3804,7 @@ None
 		void Clear();
 
 		/****************** Delete ******************/
-		/**** md5 signature: 52ab964ddffd977befd1b6321b3d35d1 ****/
+		/**** md5 signature: e64b6eae227c09ac378172a70bde8a50 ****/
 		%feature("compactdefaultargs") Delete;
 		%feature("autodoc", "Deletes vertex with the given index. @param theindex index of vertex to be removed.
 
@@ -3717,7 +3819,7 @@ None
 		void Delete(const Standard_Integer theIndex);
 
 		/****************** GetCoincidentPoint ******************/
-		/**** md5 signature: 3f5766f41bc115b81c00bff670d9169f ****/
+		/**** md5 signature: 9f635bc58f8d3443d64e425e92d1d95a ****/
 		%feature("compactdefaultargs") GetCoincidentPoint;
 		%feature("autodoc", "Returns index of point coinciding with regerence one.
 
@@ -3728,7 +3830,7 @@ int
 		Standard_Integer GetCoincidentPoint();
 
 		/****************** GetListOfDelPoints ******************/
-		/**** md5 signature: 4a99a3019da158c1126c5b1cb5e3a59c ****/
+		/**** md5 signature: 9164fa1026581bd683bb92f8b029f619 ****/
 		%feature("compactdefaultargs") GetListOfDelPoints;
 		%feature("autodoc", "Returns list with indexes of vertices that have movability attribute equal to brepmesh_deleted and can be replaced with another node.
 
@@ -3739,7 +3841,7 @@ IMeshData::ListOfInteger
 		const IMeshData::ListOfInteger & GetListOfDelPoints();
 
 		/****************** GetVertex ******************/
-		/**** md5 signature: 56b3bf7cb5259da03c911a2c1f5b8c19 ****/
+		/**** md5 signature: 1a4c7186869a78a1e0d446255dea8b76 ****/
 		%feature("compactdefaultargs") GetVertex;
 		%feature("autodoc", "Returns vertex with the given index.
 
@@ -3785,7 +3887,7 @@ bool
 		static Standard_Boolean IsEqual(const Standard_Integer theIndex, const Standard_Integer theTargetIndex);
 
 		/****************** NbVertices ******************/
-		/**** md5 signature: 8d6cfba6696d3395e5d55720fb1f80ae ****/
+		/**** md5 signature: fdb7d948cb5ffe9c7da397697d4125c9 ****/
 		%feature("compactdefaultargs") NbVertices;
 		%feature("autodoc", "Returns number of registered vertices.
 
@@ -3796,7 +3898,7 @@ int
 		Standard_Integer NbVertices();
 
 		/****************** SetPoint ******************/
-		/**** md5 signature: 0dac3b9fce00d0569a8c6be2e1df6061 ****/
+		/**** md5 signature: b521bfcebdca3f9d4da8c66d87603bc7 ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Set reference point to be checked.
 
@@ -3811,7 +3913,7 @@ None
 		void SetPoint(const gp_XY & thePoint);
 
 		/****************** SetTolerance ******************/
-		/**** md5 signature: 571f4b37df51271f8fcf3109dc03e9ad ****/
+		/**** md5 signature: 2df6ca87a12fc10518568e45d2ce38db ****/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "Sets the tolerance to be used for identification of coincident vertices equal for both dimensions.
 
@@ -3826,7 +3928,7 @@ None
 		void SetTolerance(const Standard_Real theTolerance);
 
 		/****************** SetTolerance ******************/
-		/**** md5 signature: b1942029eddc15db317eff116168401a ****/
+		/**** md5 signature: a955a7d6f39e831632ff59e80f51118b ****/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "Sets the tolerance to be used for identification of coincident vertices. @param thetolerancex tolerance for x dimension. @param thetolerancey tolerance for y dimension.
 
@@ -3902,7 +4004,7 @@ None
 		void DeleteVertex(const Standard_Integer theIndex);
 
 		/****************** Extent ******************/
-		/**** md5 signature: c808611e9f0acbe25f7e01fc4b129456 ****/
+		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Returns a number of vertices.
 
@@ -3928,7 +4030,7 @@ int
 		Standard_Integer FindIndex(const BRepMesh_Vertex & theVertex);
 
 		/****************** FindKey ******************/
-		/**** md5 signature: d32a3eb883106f2cd4936012f112aef9 ****/
+		/**** md5 signature: 50cfc9a2c0f6d9bdc4c2fccc76309be1 ****/
 		%feature("compactdefaultargs") FindKey;
 		%feature("autodoc", "Returns vertex by the given index.
 
@@ -3943,7 +4045,7 @@ BRepMesh_Vertex
 		const BRepMesh_Vertex & FindKey(const Standard_Integer theIndex);
 
 		/****************** GetListOfDelNodes ******************/
-		/**** md5 signature: 151b57a31020f6cc908f767445a0847e ****/
+		/**** md5 signature: 2052380f0276c30f6b6945ebb21ced96 ****/
 		%feature("compactdefaultargs") GetListOfDelNodes;
 		%feature("autodoc", "Returns the list with indexes of vertices that have movability attribute equal to brepmesh_deleted and can be replaced with another node.
 
@@ -3969,7 +4071,7 @@ theToleranceY: float
 		void GetTolerance(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** IsEmpty ******************/
-		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
+		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Returns true when the map contains no keys. .
 
@@ -3980,7 +4082,7 @@ bool
 		Standard_Boolean IsEmpty();
 
 		/****************** RemoveLast ******************/
-		/**** md5 signature: 2c5378840b4d889ca10f307074b12747 ****/
+		/**** md5 signature: a5b2be74b40472d88621f86eb0fc42c1 ****/
 		%feature("compactdefaultargs") RemoveLast;
 		%feature("autodoc", "Remove last node from the structure.
 
@@ -4090,6 +4192,31 @@ None
 /*****************************************
 * class BRepMesh_ConstrainedBaseMeshAlgo *
 *****************************************/
+/***************************************
+* class BRepMesh_DelabellaBaseMeshAlgo *
+***************************************/
+class BRepMesh_DelabellaBaseMeshAlgo : public BRepMesh_CustomBaseMeshAlgo {
+	public:
+		/****************** BRepMesh_DelabellaBaseMeshAlgo ******************/
+		/**** md5 signature: b41dc635f954c50092b5b7a76bf71647 ****/
+		%feature("compactdefaultargs") BRepMesh_DelabellaBaseMeshAlgo;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") BRepMesh_DelabellaBaseMeshAlgo;
+		 BRepMesh_DelabellaBaseMeshAlgo();
+
+};
+
+
+%extend BRepMesh_DelabellaBaseMeshAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***************************************************
 * class BRepMesh_DelaunayDeflectionControlMeshAlgo *
 ***************************************************/
@@ -4130,7 +4257,7 @@ None
 		 BRepMesh_Edge(const Standard_Integer theFirstNode, const Standard_Integer theLastNode, const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: 11294422c8c3fc50aceab5605f9fd935 ****/
+		/**** md5 signature: 837c7d9cc3c326697db7581cc5f5fb40 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Checks for equality with another edge. @param theother edge to be checked against this one. returns true if equal, false if not.
 
@@ -4145,7 +4272,7 @@ bool
 		Standard_Boolean IsEqual(const BRepMesh_Edge & theOther);
 
 		/****************** IsSameOrientation ******************/
-		/**** md5 signature: 75aa922259baae7936a249ebe9a63767 ****/
+		/**** md5 signature: 89af0bb4a997d047c8d1bc9628fad9dd ****/
 		%feature("compactdefaultargs") IsSameOrientation;
 		%feature("autodoc", "Checks if the given edge and this one have the same orientation. @param theother edge to be checked against this one. etrun true if edges have the same orientation, false if not.
 
@@ -4160,7 +4287,7 @@ bool
 		Standard_Boolean IsSameOrientation(const BRepMesh_Edge & theOther);
 
 		/****************** Movability ******************/
-		/**** md5 signature: 0baa5fefb35b0dc84782fa98dfe1bcd0 ****/
+		/**** md5 signature: 6205d0abeb2bc94f438d25da760d9f0b ****/
 		%feature("compactdefaultargs") Movability;
 		%feature("autodoc", "Returns movability flag of the link.
 
@@ -4171,7 +4298,7 @@ BRepMesh_DegreeOfFreedom
 		BRepMesh_DegreeOfFreedom Movability();
 
 		/****************** SetMovability ******************/
-		/**** md5 signature: 498f341ebeb19e38705b7289d9a3dd74 ****/
+		/**** md5 signature: 6a061b38c31857ee1d61d08ac2b621a5 ****/
 		%feature("compactdefaultargs") SetMovability;
 		%feature("autodoc", "Sets movability flag of the link. @param themovability flag to be set.
 
@@ -4247,7 +4374,7 @@ None
 		 BRepMesh_IncrementalMesh(const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Boolean isRelative = Standard_False, const Standard_Real theAngDeflection = 0.5, const Standard_Boolean isInParallel = Standard_False);
 
 		/****************** BRepMesh_IncrementalMesh ******************/
-		/**** md5 signature: aeec76f721b95b2e42101a2f578e25d3 ****/
+		/**** md5 signature: e5fd880315ea23df47b710ecb652dcf7 ****/
 		%feature("compactdefaultargs") BRepMesh_IncrementalMesh;
 		%feature("autodoc", "Constructor. automatically calls method perform. @param theshape shape to be meshed. @param theparameters - parameters of meshing.
 
@@ -4255,15 +4382,17 @@ Parameters
 ----------
 theShape: TopoDS_Shape
 theParameters: IMeshTools_Parameters
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepMesh_IncrementalMesh;
-		 BRepMesh_IncrementalMesh(const TopoDS_Shape & theShape, const IMeshTools_Parameters & theParameters);
+		 BRepMesh_IncrementalMesh(const TopoDS_Shape & theShape, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ChangeParameters ******************/
-		/**** md5 signature: d0db46a6e4b91fe455a13b0a0fd6aa27 ****/
+		/**** md5 signature: 7d357d2d707ea7c6e435ce7944cdbaeb ****/
 		%feature("compactdefaultargs") ChangeParameters;
 		%feature("autodoc", "Returns modifiable meshing parameters.
 
@@ -4292,7 +4421,7 @@ int
 		static Standard_Integer Discret(const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, BRepMesh_DiscretRoot * & theAlgo);
 
 		/****************** GetStatusFlags ******************/
-		/**** md5 signature: 04377c513cc9ab650c3e1474d6667452 ****/
+		/**** md5 signature: e398513992ccf52274fdd58a2054886e ****/
 		%feature("compactdefaultargs") GetStatusFlags;
 		%feature("autodoc", "Returns accumulated status flags faced during meshing.
 
@@ -4303,7 +4432,7 @@ int
 		Standard_Integer GetStatusFlags();
 
 		/****************** IsModified ******************/
-		/**** md5 signature: 0c77388f5383e7c3d33340819a4c8176 ****/
+		/**** md5 signature: 95dc34039aea53686862c95397ed3e81 ****/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "Returns modified flag.
 
@@ -4325,7 +4454,7 @@ bool
 		static Standard_Boolean IsParallelDefault();
 
 		/****************** Parameters ******************/
-		/**** md5 signature: 5847d0e8a01ce5d6d9b3bc9cd0b0440f ****/
+		/**** md5 signature: 80bd17a03936a7214968019ed0fbca90 ****/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Returns meshing parameters.
 
@@ -4336,30 +4465,37 @@ IMeshTools_Parameters
 		const IMeshTools_Parameters & Parameters();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs meshing ot the shape.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Perform ******************/
-		/**** md5 signature: d1d010208feb4a0d8eea144bd1681779 ****/
+		/**** md5 signature: 80d0d01860d5254f4b440d16b1acdcaf ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs meshing using custom context;.
 
 Parameters
 ----------
 theContext: IMeshTools_Context
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<IMeshTools_Context> & theContext);
+		void Perform(const opencascade::handle<IMeshTools_Context> & theContext, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetParallelDefault ******************/
 		/**** md5 signature: ecfba5f6dedb3ffdd55b2640e270ebdb ****/

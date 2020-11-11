@@ -43,12 +43,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdprs.html"
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
 #include<Prs3d_module.hxx>
-#include<Bnd_module.hxx>
-#include<Graphic3d_module.hxx>
+#include<TCollection_module.hxx>
+#include<TopoDS_module.hxx>
 #include<gp_module.hxx>
+#include<Graphic3d_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TColgp_module.hxx>
-#include<TopoDS_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<TColStd_module.hxx>
@@ -56,6 +56,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdprs.html"
 #include<TopLoc_module.hxx>
 #include<BRep_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -82,12 +84,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdprs.html"
 %import NCollection.i
 %import Geom.i
 %import Prs3d.i
-%import Bnd.i
-%import Graphic3d.i
+%import TCollection.i
+%import TopoDS.i
 %import gp.i
+%import Graphic3d.i
 %import Adaptor3d.i
 %import TColgp.i
-%import TopoDS.i
 %import HLRAlgo.i
 %import BRepAdaptor.i
 %import TColStd.i
@@ -95,6 +97,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdprs.html"
 %import TopLoc.i
 %import BRep.i
 %import GeomAbs.i
+%import Bnd.i
+%import TopTools.i
 %import TopAbs.i
 %import Adaptor2d.i
 
@@ -126,137 +130,401 @@ StdPrs_Volume_Opened = StdPrs_Volume.StdPrs_Volume_Opened
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(StdPrs_BRepFont)
+%wrap_handle(StdPrs_HLRShapeI)
+%wrap_handle(StdPrs_HLRPolyShape)
+%wrap_handle(StdPrs_HLRShape)
 /* end handles declaration */
 
 /* templates */
 /* end templates declaration */
 
 /* typedefs */
+typedef Prs3d_BndBox StdPrs_BndBox;
 typedef Prs3d_Point<opencascade::handle<Geom_Point>, StdPrs_ToolPoint> StdPrs_Point;
 typedef Prs3d_Point<TopoDS_Vertex, StdPrs_ToolVertex> StdPrs_Vertex;
 /* end typedefs declaration */
 
-/**********************
-* class StdPrs_BndBox *
-**********************/
-class StdPrs_BndBox : public Prs3d_Root {
+/************************
+* class StdPrs_BRepFont *
+************************/
+class StdPrs_BRepFont : public Standard_Transient {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: c54a75d50bfd4e7f1fb12cf7497bfbd8 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Computes presentation of a bounding box. @param thepresentation [in] the presentation. @param thebndbox [in] the bounding box. @param thedrawer [in] the drawer.
-
-Parameters
-----------
-thePresentation: Prs3d_Presentation
-theBndBox: Bnd_Box
-theDrawer: Prs3d_Drawer
+		/****************** StdPrs_BRepFont ******************/
+		/**** md5 signature: b34dca788fc27003f74bb1e4b42bbb20 ****/
+		%feature("compactdefaultargs") StdPrs_BRepFont;
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
 None
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const Bnd_Box & theBndBox, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+") StdPrs_BRepFont;
+		 StdPrs_BRepFont();
 
-		/****************** Add ******************/
-		/**** md5 signature: 6b808f8029d0bc7d27373b55eaa80cd4 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Computes presentation of a bounding box. @param thepresentation [in] the presentation. @param thebndbox [in] the bounding box. @param thedrawer [in] the drawer.
+		/****************** StdPrs_BRepFont ******************/
+		/**** md5 signature: be40ea26c61925f1c177bbec908f56a1 ****/
+		%feature("compactdefaultargs") StdPrs_BRepFont;
+		%feature("autodoc", "Constructor with initialization. @param thefontpath full path to the font @param thesize the face size in model units @param thefaceid face id within the file (0 by default).
 
 Parameters
 ----------
-thePresentation: Prs3d_Presentation
-theBndBox: Bnd_OBB
-theDrawer: Prs3d_Drawer
+theFontPath: NCollection_String
+theSize: float
+theFaceId: int,optional
+	default value is 0
 
 Returns
 -------
 None
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const Bnd_OBB & theBndBox, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+") StdPrs_BRepFont;
+		 StdPrs_BRepFont(const NCollection_String & theFontPath, const Standard_Real theSize, const Standard_Integer theFaceId = 0);
 
-		/****************** FillSegments ******************/
-		/**** md5 signature: 5fb83e6b4c177d72797ad20d5dbb573c ****/
-		%feature("compactdefaultargs") FillSegments;
-		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thebox [in] the box to add.
-
-Parameters
-----------
-theBox: Bnd_OBB
-
-Returns
--------
-opencascade::handle<Graphic3d_ArrayOfSegments>
-") FillSegments;
-		static opencascade::handle<Graphic3d_ArrayOfSegments> FillSegments(const Bnd_OBB & theBox);
-
-		/****************** FillSegments ******************/
-		/**** md5 signature: 40a5714e880ddcdb51b116ed7e7d58a3 ****/
-		%feature("compactdefaultargs") FillSegments;
-		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thebox [in] the box to add.
+		/****************** StdPrs_BRepFont ******************/
+		/**** md5 signature: a3ba9975ca459684aea303f32cffc2b9 ****/
+		%feature("compactdefaultargs") StdPrs_BRepFont;
+		%feature("autodoc", "Constructor with initialization. @param thefontname the font name @param thefontaspect the font style @param thesize the face size in model units @param thestrictlevel search strict level for using aliases and fallback.
 
 Parameters
 ----------
-theBox: Bnd_Box
-
-Returns
--------
-opencascade::handle<Graphic3d_ArrayOfSegments>
-") FillSegments;
-		static opencascade::handle<Graphic3d_ArrayOfSegments> FillSegments(const Bnd_Box & theBox);
-
-		/****************** FillSegments ******************/
-		/**** md5 signature: 6c2926015dd63abf7dfca1e5b0f1dee0 ****/
-		%feature("compactdefaultargs") FillSegments;
-		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thesegments [in] [out] primitive array to be filled;  should be at least 8 nodes and 24 edges in size @param thebox [in] the box to add.
-
-Parameters
-----------
-theSegments: Graphic3d_ArrayOfSegments
-theBox: Bnd_OBB
+theFontName: NCollection_String
+theFontAspect: Font_FontAspect
+theSize: float
+theStrictLevel: Font_StrictLevel,optional
+	default value is Font_StrictLevel_Any
 
 Returns
 -------
 None
-") FillSegments;
-		static void FillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const Bnd_OBB & theBox);
+") StdPrs_BRepFont;
+		 StdPrs_BRepFont(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
-		/****************** FillSegments ******************/
-		/**** md5 signature: 1dfe28468b5ba72dd334e07d0ac3116c ****/
-		%feature("compactdefaultargs") FillSegments;
-		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thesegments [in] [out] primitive array to be filled;  should be at least 8 nodes and 24 edges in size @param thebox [in] the box to add.
+		/****************** AdvanceX ******************/
+		/**** md5 signature: 4c75b0edceff5f5f44dcaec3b54bea94 ****/
+		%feature("compactdefaultargs") AdvanceX;
+		%feature("autodoc", "Compute advance to the next character with kerning applied when applicable. assuming text rendered horizontally.
 
 Parameters
 ----------
-theSegments: Graphic3d_ArrayOfSegments
-theBox: Bnd_Box
+theUCharNext: Standard_Utf32Char
+
+Returns
+-------
+float
+") AdvanceX;
+		Standard_Real AdvanceX(const Standard_Utf32Char theUCharNext);
+
+		/****************** AdvanceX ******************/
+		/**** md5 signature: db64718620b242f6bb6fcdbcae8836a5 ****/
+		%feature("compactdefaultargs") AdvanceX;
+		%feature("autodoc", "Compute advance to the next character with kerning applied when applicable. assuming text rendered horizontally.
+
+Parameters
+----------
+theUChar: Standard_Utf32Char
+theUCharNext: Standard_Utf32Char
+
+Returns
+-------
+float
+") AdvanceX;
+		Standard_Real AdvanceX(const Standard_Utf32Char theUChar, const Standard_Utf32Char theUCharNext);
+
+		/****************** AdvanceY ******************/
+		/**** md5 signature: ddeb2265cd2bd26fe363410dd3b7e6e0 ****/
+		%feature("compactdefaultargs") AdvanceY;
+		%feature("autodoc", "Compute advance to the next character with kerning applied when applicable. assuming text rendered vertically.
+
+Parameters
+----------
+theUCharNext: Standard_Utf32Char
+
+Returns
+-------
+float
+") AdvanceY;
+		Standard_Real AdvanceY(const Standard_Utf32Char theUCharNext);
+
+		/****************** AdvanceY ******************/
+		/**** md5 signature: e611b288bad1f8a6d972468a7836ee16 ****/
+		%feature("compactdefaultargs") AdvanceY;
+		%feature("autodoc", "Compute advance to the next character with kerning applied when applicable. assuming text rendered vertically.
+
+Parameters
+----------
+theUChar: Standard_Utf32Char
+theUCharNext: Standard_Utf32Char
+
+Returns
+-------
+float
+") AdvanceY;
+		Standard_Real AdvanceY(const Standard_Utf32Char theUChar, const Standard_Utf32Char theUCharNext);
+
+		/****************** Ascender ******************/
+		/**** md5 signature: 557783a64aa70a912a1e70d3023e6b77 ****/
+		%feature("compactdefaultargs") Ascender;
+		%feature("autodoc", "Returns vertical distance from the horizontal baseline to the highest character coordinate.
+
+Returns
+-------
+float
+") Ascender;
+		Standard_Real Ascender();
+
+		/****************** Descender ******************/
+		/**** md5 signature: 1ac5f46c4e3c54b4ea51e2bc3b666449 ****/
+		%feature("compactdefaultargs") Descender;
+		%feature("autodoc", "Returns vertical distance from the horizontal baseline to the lowest character coordinate.
+
+Returns
+-------
+float
+") Descender;
+		Standard_Real Descender();
+
+		/****************** FTFont ******************/
+		/**** md5 signature: 4d514b718d712295641b4c0cc60834d8 ****/
+		%feature("compactdefaultargs") FTFont;
+		%feature("autodoc", "Return wrapper over freetype font.
+
+Returns
+-------
+opencascade::handle<Font_FTFont>
+") FTFont;
+		const opencascade::handle<Font_FTFont> & FTFont();
+
+		/****************** FindAndCreate ******************/
+		/**** md5 signature: 372fe3fc63150aec0ee289ddf806595a ****/
+		%feature("compactdefaultargs") FindAndCreate;
+		%feature("autodoc", "Find the font initialize the font. @param thefontname the font name @param thefontaspect the font style @param thesize the face size in model units @param thestrictlevel search strict level for using aliases and fallback returns true on success.
+
+Parameters
+----------
+theFontName: TCollection_AsciiString
+theFontAspect: Font_FontAspect
+theSize: float
+theStrictLevel: Font_StrictLevel,optional
+	default value is Font_StrictLevel_Any
+
+Returns
+-------
+opencascade::handle<StdPrs_BRepFont>
+") FindAndCreate;
+		static opencascade::handle<StdPrs_BRepFont> FindAndCreate(const TCollection_AsciiString & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+
+		/****************** FindAndInit ******************/
+		/**** md5 signature: 33bf264db4f7fb13be769117703cf8e4 ****/
+		%feature("compactdefaultargs") FindAndInit;
+		%feature("autodoc", "Find (using font_fontmgr) and initialize the font from the given name. please take into account that size is specified not in typography points (pt.). if you need to specify size in points, value should be converted. formula for pt. -> m conversion: asizemeters = 0.0254 * thesizept / 72.0 @param thefontname the font name @param thefontaspect the font style @param thesize the face size in model units @param thestrictlevel search strict level for using aliases and fallback returns true on success.
+
+Parameters
+----------
+theFontName: TCollection_AsciiString
+theFontAspect: Font_FontAspect
+theSize: float
+theStrictLevel: Font_StrictLevel,optional
+	default value is Font_StrictLevel_Any
+
+Returns
+-------
+bool
+") FindAndInit;
+		bool FindAndInit(const TCollection_AsciiString & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+
+		/****************** Init ******************/
+		/**** md5 signature: 14deab12f664b3e6a0b208965809fe62 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize the font. @param thefontpath full path to the font @param thesize the face size in model units @param thefaceid face id within the file (0 by default) returns true on success.
+
+Parameters
+----------
+theFontPath: NCollection_String
+theSize: float
+theFaceId: int
+
+Returns
+-------
+bool
+") Init;
+		bool Init(const NCollection_String & theFontPath, const Standard_Real theSize, const Standard_Integer theFaceId);
+
+		/****************** Init ******************/
+		/**** md5 signature: 5ed045caef5b4cad065c651482b98255 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Find (using font_fontmgr) and initialize the font from the given name. alias for findandinit() for backward compatibility.
+
+Parameters
+----------
+theFontName: NCollection_String
+theFontAspect: Font_FontAspect
+theSize: float
+
+Returns
+-------
+bool
+") Init;
+		bool Init(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize);
+
+		/****************** LineSpacing ******************/
+		/**** md5 signature: 3f893468c66eb56fd7ce68c882d953c8 ****/
+		%feature("compactdefaultargs") LineSpacing;
+		%feature("autodoc", "Returns default line spacing (the baseline-to-baseline distance).
+
+Returns
+-------
+float
+") LineSpacing;
+		Standard_Real LineSpacing();
+
+		/****************** Mutex ******************/
+		/**** md5 signature: 902e13b2343e132a88f2b4c5433ad6d8 ****/
+		%feature("compactdefaultargs") Mutex;
+		%feature("autodoc", "Returns mutex.
+
+Returns
+-------
+Standard_Mutex
+") Mutex;
+		Standard_Mutex & Mutex();
+
+		/****************** PointSize ******************/
+		/**** md5 signature: a9867d84cde33572abbc3c90ffa97681 ****/
+		%feature("compactdefaultargs") PointSize;
+		%feature("autodoc", "Configured point size.
+
+Returns
+-------
+float
+") PointSize;
+		Standard_Real PointSize();
+
+		/****************** Release ******************/
+		/**** md5 signature: b6fd00166214731bccdaabb58b7e4102 ****/
+		%feature("compactdefaultargs") Release;
+		%feature("autodoc", "Release currently loaded font.
 
 Returns
 -------
 None
-") FillSegments;
-		static void FillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const Bnd_Box & theBox);
+") Release;
+		virtual void Release();
 
-		/****************** fillSegments ******************/
-		/**** md5 signature: c902020df6559486e6ed2711d0bcc3d9 ****/
-		%feature("compactdefaultargs") fillSegments;
-		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thesegments [in] [out] primitive array to be filled;  should be at least 8 nodes and 24 edges in size @param thebox [in] the box to add.
+		/****************** RenderGlyph ******************/
+		/**** md5 signature: 2951ebf93713dc5641da578f21061f63 ****/
+		%feature("compactdefaultargs") RenderGlyph;
+		%feature("autodoc", "Render single glyph as topods_shape. @param thechar glyph identifier returns rendered glyph within cache, might be null shape.
 
 Parameters
 ----------
-theSegments: Graphic3d_ArrayOfSegments
-theBox: gp_Pnt *
+theChar: Standard_Utf32Char
+
+Returns
+-------
+TopoDS_Shape
+") RenderGlyph;
+		TopoDS_Shape RenderGlyph(const Standard_Utf32Char & theChar);
+
+		/****************** Scale ******************/
+		/**** md5 signature: fff8b387c443c3e852a1bfc198a5a373 ****/
+		%feature("compactdefaultargs") Scale;
+		%feature("autodoc", "Returns scaling factor for current font size.
+
+Returns
+-------
+float
+") Scale;
+		Standard_Real Scale();
+
+		/****************** SetCompositeCurveMode ******************/
+		/**** md5 signature: 8ce8079e93dd55c18a3ec2e70ee280d6 ****/
+		%feature("compactdefaultargs") SetCompositeCurveMode;
+		%feature("autodoc", "Setup glyph geometry construction mode. by default algorithm creates independent topods_edge for each original curve in the glyph (line segment or bezie curve). algorithm might optionally create composite bspline curve for each contour which reduces memory footprint but limits curve class to c0. notice that altering this flag clears currently accumulated cache!.
+
+Parameters
+----------
+theToConcatenate: bool
 
 Returns
 -------
 None
-") fillSegments;
-		static void fillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const gp_Pnt * theBox);
+") SetCompositeCurveMode;
+		void SetCompositeCurveMode(const Standard_Boolean theToConcatenate);
+
+		/****************** SetWidthScaling ******************/
+		/**** md5 signature: 04deb132fe6b213fa451e36d262acdbd ****/
+		%feature("compactdefaultargs") SetWidthScaling;
+		%feature("autodoc", "Setup glyph scaling along x-axis. by default glyphs are not scaled (scaling factor = 1.0).
+
+Parameters
+----------
+theScaleFactor: float
+
+Returns
+-------
+None
+") SetWidthScaling;
+		void SetWidthScaling(const float theScaleFactor);
 
 };
 
 
-%extend StdPrs_BndBox {
+%make_alias(StdPrs_BRepFont)
+
+%extend StdPrs_BRepFont {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************
+* class StdPrs_BRepTextBuilder *
+*******************************/
+class StdPrs_BRepTextBuilder {
+	public:
+		/****************** Perform ******************/
+		/**** md5 signature: facc6a1fc84ac3434277cfed9d55f021 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Render text as brep shape. @param theformatter formatter which defines aligned text @param thepenloc start position and orientation on the baseline returns result shape with pen transformation applied as shape location.
+
+Parameters
+----------
+theFont: StdPrs_BRepFont
+theFormatter: Font_TextFormatter
+thePenLoc: gp_Ax3,optional
+	default value is gp_Ax3()
+
+Returns
+-------
+TopoDS_Shape
+") Perform;
+		TopoDS_Shape Perform(StdPrs_BRepFont & theFont, const opencascade::handle<Font_TextFormatter> & theFormatter, const gp_Ax3 & thePenLoc = gp_Ax3());
+
+		/****************** Perform ******************/
+		/**** md5 signature: eac7909f64fbc8be0df2a0aba1c2b658 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Render text as brep shape. @param thestring text in utf-8 encoding @param thepenloc start position and orientation on the baseline @param thehalign horizontal alignment of the text @param thevalign vertical alignment of the text returns result shape with pen transformation applied as shape location.
+
+Parameters
+----------
+theFont: StdPrs_BRepFont
+theString: NCollection_String
+thePenLoc: gp_Ax3,optional
+	default value is gp_Ax3()
+theHAlign: Graphic3d_HorizontalTextAlignment,optional
+	default value is Graphic3d_HTA_LEFT
+theVAlign: Graphic3d_VerticalTextAlignment,optional
+	default value is Graphic3d_VTA_BOTTOM
+
+Returns
+-------
+TopoDS_Shape
+") Perform;
+		TopoDS_Shape Perform(StdPrs_BRepFont & theFont, const NCollection_String & theString, const gp_Ax3 & thePenLoc = gp_Ax3(), const Graphic3d_HorizontalTextAlignment theHAlign = Graphic3d_HTA_LEFT, const Graphic3d_VerticalTextAlignment theVAlign = Graphic3d_VTA_BOTTOM);
+
+};
+
+
+%extend StdPrs_BRepTextBuilder {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -449,65 +717,36 @@ bool
 /*******************************
 * class StdPrs_DeflectionCurve *
 *******************************/
-/****************************
-* class StdPrs_HLRPolyShape *
-****************************/
-class StdPrs_HLRPolyShape : public Prs3d_Root {
+/*************************
+* class StdPrs_HLRShapeI *
+*************************/
+%nodefaultctor StdPrs_HLRShapeI;
+class StdPrs_HLRShapeI : public Standard_Transient {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: 46a730d18eb5867085f0444bb4cd3ff0 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Defines the hidden line removal display of the topology ashape in the projection defined by aprojector. the shape and the projection are added to the display apresentation, and the attributes of the elements present in the apresentation are defined by the attribute manager adrawer.
+		/****************** ComputeHLR ******************/
+		/**** md5 signature: ed8d67b024e7d5529491da79ff84ac31 ****/
+		%feature("compactdefaultargs") ComputeHLR;
+		%feature("autodoc", "Compute presentation for specified shape.
 
 Parameters
 ----------
-aPresentation: Prs3d_Presentation
-aShape: TopoDS_Shape
-aDrawer: Prs3d_Drawer
-aProjector: Prs3d_Projector
-
-Returns
--------
-None
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const TopoDS_Shape & aShape, const opencascade::handle<Prs3d_Drawer> & aDrawer, const opencascade::handle<Prs3d_Projector> & aProjector);
-
-};
-
-
-%extend StdPrs_HLRPolyShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class StdPrs_HLRShape *
-************************/
-class StdPrs_HLRShape : public Prs3d_Root {
-	public:
-		/****************** Add ******************/
-		/**** md5 signature: 63c4c20ee0c2a5d035bdee5d7b03608c ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePresentation: Prs3d_Presentation
+thePrs: Prs3d_Presentation
 theShape: TopoDS_Shape
 theDrawer: Prs3d_Drawer
-theProjector: Prs3d_Projector
+theProjector: Graphic3d_Camera
 
 Returns
 -------
 None
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Prs3d_Projector> & theProjector);
+") ComputeHLR;
+		virtual void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
 
 };
 
 
-%extend StdPrs_HLRShape {
+%make_alias(StdPrs_HLRShapeI)
+
+%extend StdPrs_HLRShapeI {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1163,6 +1402,308 @@ None
 };
 
 /*************************
+* class StdPrs_ShapeTool *
+*************************/
+class StdPrs_ShapeTool {
+	public:
+		/****************** StdPrs_ShapeTool ******************/
+		/**** md5 signature: b1cfe601c9ce69d7ecf53050fd390572 ****/
+		%feature("compactdefaultargs") StdPrs_ShapeTool;
+		%feature("autodoc", "Constructs the tool and initializes it using theshape and theallvertices (optional) arguments. by default, only isolated and internal vertices are considered, however if theallvertices argument is equal to true, all shape's vertices are taken into account.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theAllVertices: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") StdPrs_ShapeTool;
+		 StdPrs_ShapeTool(const TopoDS_Shape & theShape, const Standard_Boolean theAllVertices = Standard_False);
+
+		/****************** CurrentTriangulation ******************/
+		/**** md5 signature: e174edc94303c301ad3d548683d6e8cf ****/
+		%feature("compactdefaultargs") CurrentTriangulation;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+l: TopLoc_Location
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") CurrentTriangulation;
+		opencascade::handle<Poly_Triangulation> CurrentTriangulation(TopLoc_Location & l);
+
+		/****************** CurveBound ******************/
+		/**** md5 signature: 26827d6be3ffbbdaf33493171ed02d7d ****/
+		%feature("compactdefaultargs") CurveBound;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Bnd_Box
+") CurveBound;
+		Bnd_Box CurveBound();
+
+		/****************** FaceBound ******************/
+		/**** md5 signature: f856e3a5aaaa04bd47251b5baf43000b ****/
+		%feature("compactdefaultargs") FaceBound;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Bnd_Box
+") FaceBound;
+		Bnd_Box FaceBound();
+
+		/****************** FacesOfEdge ******************/
+		/**** md5 signature: 89082386bc651a78938e536e5113de7e ****/
+		%feature("compactdefaultargs") FacesOfEdge;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TopTools_HSequenceOfShape>
+") FacesOfEdge;
+		opencascade::handle<TopTools_HSequenceOfShape> FacesOfEdge();
+
+		/****************** GetCurve ******************/
+		/**** md5 signature: ccf034d9f6867e07e3c267d12089ab5c ****/
+		%feature("compactdefaultargs") GetCurve;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Edge
+") GetCurve;
+		const TopoDS_Edge GetCurve();
+
+		/****************** GetFace ******************/
+		/**** md5 signature: 24f906fe04f44088d93eb51a09d709c8 ****/
+		%feature("compactdefaultargs") GetFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Face
+") GetFace;
+		const TopoDS_Face GetFace();
+
+		/****************** GetVertex ******************/
+		/**** md5 signature: e20d7c379b1b760b74a12ac040adc908 ****/
+		%feature("compactdefaultargs") GetVertex;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Vertex
+") GetVertex;
+		const TopoDS_Vertex GetVertex();
+
+		/****************** HasCurve ******************/
+		/**** md5 signature: 24512d68611f1b569c1022347b56d2ba ****/
+		%feature("compactdefaultargs") HasCurve;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasCurve;
+		Standard_Boolean HasCurve();
+
+		/****************** HasSurface ******************/
+		/**** md5 signature: e1636f96e3c29ca0e588fc628f12d790 ****/
+		%feature("compactdefaultargs") HasSurface;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasSurface;
+		Standard_Boolean HasSurface();
+
+		/****************** InitCurve ******************/
+		/**** md5 signature: 623075abc819963427ae812711cc9f03 ****/
+		%feature("compactdefaultargs") InitCurve;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") InitCurve;
+		void InitCurve();
+
+		/****************** InitFace ******************/
+		/**** md5 signature: 431fdd4f7fe99cf2478ea6019e7b815d ****/
+		%feature("compactdefaultargs") InitFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") InitFace;
+		void InitFace();
+
+		/****************** InitVertex ******************/
+		/**** md5 signature: 43387ca117473a5285f9b82f191285d3 ****/
+		%feature("compactdefaultargs") InitVertex;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") InitVertex;
+		void InitVertex();
+
+		/****************** IsPlanarFace ******************/
+		/**** md5 signature: 6b8c88789eed31202251b15ca3358b7f ****/
+		%feature("compactdefaultargs") IsPlanarFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsPlanarFace;
+		Standard_Boolean IsPlanarFace();
+
+		/****************** IsPlanarFace ******************/
+		/**** md5 signature: dbd07f0e3771524116dd33a19d098b26 ****/
+		%feature("compactdefaultargs") IsPlanarFace;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theFace: TopoDS_Face
+
+Returns
+-------
+bool
+") IsPlanarFace;
+		static Standard_Boolean IsPlanarFace(const TopoDS_Face & theFace);
+
+		/****************** MoreCurve ******************/
+		/**** md5 signature: 294b10d8505b397b80557f3ffd3abb0a ****/
+		%feature("compactdefaultargs") MoreCurve;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") MoreCurve;
+		Standard_Boolean MoreCurve();
+
+		/****************** MoreFace ******************/
+		/**** md5 signature: 22c1aefb1ce1d474b93921421f857dc9 ****/
+		%feature("compactdefaultargs") MoreFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") MoreFace;
+		Standard_Boolean MoreFace();
+
+		/****************** MoreVertex ******************/
+		/**** md5 signature: b1415b97c2e4eb4b2c3aafb5017477a3 ****/
+		%feature("compactdefaultargs") MoreVertex;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") MoreVertex;
+		Standard_Boolean MoreVertex();
+
+		/****************** Neighbours ******************/
+		/**** md5 signature: f7632ca6a981fecfee9d23781ab8df33 ****/
+		%feature("compactdefaultargs") Neighbours;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") Neighbours;
+		Standard_Integer Neighbours();
+
+		/****************** NextCurve ******************/
+		/**** md5 signature: c84098e0d5846ddc5c1ef3cd9db559ef ****/
+		%feature("compactdefaultargs") NextCurve;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") NextCurve;
+		void NextCurve();
+
+		/****************** NextFace ******************/
+		/**** md5 signature: 70c1b251ca2c3b6097d728cd3445088e ****/
+		%feature("compactdefaultargs") NextFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") NextFace;
+		void NextFace();
+
+		/****************** NextVertex ******************/
+		/**** md5 signature: ea714e35bf0fb8ca7ba7bf859d121153 ****/
+		%feature("compactdefaultargs") NextVertex;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") NextVertex;
+		void NextVertex();
+
+		/****************** Polygon3D ******************/
+		/**** md5 signature: 3b403e8330a44f3bb52392ce5d5be05c ****/
+		%feature("compactdefaultargs") Polygon3D;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+l: TopLoc_Location
+
+Returns
+-------
+opencascade::handle<Poly_Polygon3D>
+") Polygon3D;
+		opencascade::handle<Poly_Polygon3D> Polygon3D(TopLoc_Location & l);
+
+		/****************** PolygonOnTriangulation ******************/
+		/**** md5 signature: 86ca6ba9c814d8c843f2ef01be368f3b ****/
+		%feature("compactdefaultargs") PolygonOnTriangulation;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Indices: Poly_PolygonOnTriangulation
+T: Poly_Triangulation
+l: TopLoc_Location
+
+Returns
+-------
+None
+") PolygonOnTriangulation;
+		void PolygonOnTriangulation(opencascade::handle<Poly_PolygonOnTriangulation> & Indices, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & l);
+
+};
+
+
+%extend StdPrs_ShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************
 * class StdPrs_ToolPoint *
 *************************/
 class StdPrs_ToolPoint {
@@ -1223,6 +1764,17 @@ Returns
 None
 ") StdPrs_ToolRFace;
 		 StdPrs_ToolRFace(const opencascade::handle<BRepAdaptor_HSurface> & aSurface);
+
+		/****************** Edge ******************/
+		/**** md5 signature: be590cff987799d8b7c28083399d0e9f ****/
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "Return current edge.
+
+Returns
+-------
+TopoDS_Edge
+") Edge;
+		const TopoDS_Edge Edge();
 
 		/****************** Init ******************/
 		/**** md5 signature: ca2feb116ce485f3e8278f79ba5f5d53 ****/
@@ -1364,6 +1916,22 @@ Returns
 None
 ") ComputeNormals;
 		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris, Poly_Connect & thePolyConnect);
+
+		/****************** GetDeflection ******************/
+		/**** md5 signature: 32d565d6bf5769fcd44726cec516a592 ****/
+		%feature("compactdefaultargs") GetDeflection;
+		%feature("autodoc", "Computes the absolute deflection value depending on the type of deflection in thedrawer: <ul> <li><b>aspect_tod_relative</b>: the absolute deflection is computed using the relative deviation coefficient from thedrawer and the shape's bounding box;</li> <li><b>aspect_tod_absolute</b>: the maximal chordial deviation from thedrawer is returned.</li> </ul> in case of the type of deflection in thedrawer computed relative deflection for shape is stored as absolute deflection. it is necessary to use it later on for sub-shapes. this function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theDrawer: Prs3d_Drawer
+
+Returns
+-------
+float
+") GetDeflection;
+		static Standard_Real GetDeflection(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****************** IsClosed ******************/
 		/**** md5 signature: 73cb802be974f5dd2d8d647431bb4edd ****/
@@ -2022,6 +2590,74 @@ None
 	}
 };
 
+/****************************
+* class StdPrs_HLRPolyShape *
+****************************/
+class StdPrs_HLRPolyShape : public StdPrs_HLRShapeI {
+	public:
+		/****************** ComputeHLR ******************/
+		/**** md5 signature: dbee7d283c675e79a09ba59bad299adc ****/
+		%feature("compactdefaultargs") ComputeHLR;
+		%feature("autodoc", "Compute presentation for specified shape.
+
+Parameters
+----------
+thePrs: Prs3d_Presentation
+theShape: TopoDS_Shape
+theDrawer: Prs3d_Drawer
+theProjector: Graphic3d_Camera
+
+Returns
+-------
+None
+") ComputeHLR;
+		virtual void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
+
+};
+
+
+%make_alias(StdPrs_HLRPolyShape)
+
+%extend StdPrs_HLRPolyShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************
+* class StdPrs_HLRShape *
+************************/
+class StdPrs_HLRShape : public StdPrs_HLRShapeI {
+	public:
+		/****************** ComputeHLR ******************/
+		/**** md5 signature: dbee7d283c675e79a09ba59bad299adc ****/
+		%feature("compactdefaultargs") ComputeHLR;
+		%feature("autodoc", "Compute presentation for specified shape.
+
+Parameters
+----------
+thePrs: Prs3d_Presentation
+theShape: TopoDS_Shape
+theDrawer: Prs3d_Drawer
+theProjector: Graphic3d_Camera
+
+Returns
+-------
+None
+") ComputeHLR;
+		virtual void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
+
+};
+
+
+%make_alias(StdPrs_HLRShape)
+
+%extend StdPrs_HLRShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -2035,4 +2671,5 @@ class StdPrs_DeflectionCurve:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+StdPrs_BndBox=OCC.Core.Prs3d.Prs3d_BndBox
 }

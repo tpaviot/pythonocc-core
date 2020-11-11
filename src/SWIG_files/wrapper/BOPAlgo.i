@@ -46,6 +46,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopalgo.html"
 #include<Message_module.hxx>
 #include<IntTools_module.hxx>
 #include<BOPDS_module.hxx>
+#include<Bnd_module.hxx>
+#include<gp_module.hxx>
 #include<BRepTools_module.hxx>
 #include<BOPTools_module.hxx>
 #include<TopAbs_module.hxx>
@@ -78,6 +80,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopalgo.html"
 %import Message.i
 %import IntTools.i
 %import BOPDS.i
+%import Bnd.i
+%import gp.i
 %import BRepTools.i
 %import BOPTools.i
 %import TopAbs.i
@@ -694,19 +698,19 @@ None
 		static void SetParallelMode(const Standard_Boolean theNewMode);
 
 		/****************** SetProgressIndicator ******************/
-		/**** md5 signature: ca613a7b4fe230ca118c290f9c27a4cc ****/
+		/**** md5 signature: 57981193097658933e1f62427ed993d3 ****/
 		%feature("compactdefaultargs") SetProgressIndicator;
 		%feature("autodoc", "Set the progress indicator object.
 
 Parameters
 ----------
-theObj: Message_ProgressIndicator
+theProgress: Message_ProgressScope
 
 Returns
 -------
 None
 ") SetProgressIndicator;
-		void SetProgressIndicator(const opencascade::handle<Message_ProgressIndicator> & theObj);
+		void SetProgressIndicator(const Message_ProgressScope & theProgress);
 
 		/****************** SetRunParallel ******************/
 		/**** md5 signature: bf7fbc3e9b126cd865579ef58026ce14 ****/
@@ -1015,6 +1019,27 @@ Returns
 None
 ") PerformCommonBlocks;
 		static void PerformCommonBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfInteger & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & pDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+
+		/****************** TrsfToPoint ******************/
+		/**** md5 signature: 836e5f67ee22544085d9d2fab2016425 ****/
+		%feature("compactdefaultargs") TrsfToPoint;
+		%feature("autodoc", "Computes the transformation needed to move the objects to the given point to increase the quality of computations. returns true if the objects are located far from the given point (relatively given criteria), false otherwise. @param thebox1 the aabb of the first object @param thebox2 the aabb of the second object @param thetrsf the computed transformation @param thepoint the point to compute transformation to @param thecriteria the criteria to check whether thranformation is required.
+
+Parameters
+----------
+theBox1: Bnd_Box
+theBox2: Bnd_Box
+theTrsf: gp_Trsf
+thePoint: gp_Pnt,optional
+	default value is gp_Pnt(0.0,0.0,0.0)
+theCriteria: float,optional
+	default value is 1e+5
+
+Returns
+-------
+bool
+") TrsfToPoint;
+		static Standard_Boolean TrsfToPoint(const Bnd_Box & theBox1, const Bnd_Box & theBox2, gp_Trsf & theTrsf, const gp_Pnt & thePoint = gp_Pnt(0.0,0.0,0.0), const Standard_Real theCriteria = 1e+5);
 
 		/****************** WiresToFaces ******************/
 		/**** md5 signature: 16dc9996c77bddaa892446101a7cb4b5 ****/
@@ -2501,6 +2526,7 @@ TopoDS_Shape
 ***************************/
 class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 	public:
+		class EdgeRangeDistance {};
 		/****************** BOPAlgo_PaveFiller ******************/
 		/**** md5 signature: 695e98dd6d964c29b51abadeedf2b1c7 ****/
 		%feature("compactdefaultargs") BOPAlgo_PaveFiller;

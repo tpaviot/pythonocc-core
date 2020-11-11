@@ -49,6 +49,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptotopods.html
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Transfer_module.hxx>
+#include<Message_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
@@ -58,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptotopods.html
 #include<StepData_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Resource_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -73,6 +75,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptotopods.html
 %import TopoDS.i
 %import gp.i
 %import Transfer.i
+%import Message.i
 %import Geom2d.i
 
 %pythoncode {
@@ -979,7 +982,7 @@ gp_Trsf
 		const gp_Trsf Transformation();
 
 		/****************** TranslateMappedItem ******************/
-		/**** md5 signature: 1d1508d9a18582e9e3dcf12391aa3ace ****/
+		/**** md5 signature: b030cff14cc504bb8ec7300ef09e20be ****/
 		%feature("compactdefaultargs") TranslateMappedItem;
 		%feature("autodoc", "Translates a mappeditem. more precisely a mappeditem has a mappingsource and a mappingtarget mappingsource has a mappedrepresentation and a mappingorigin mappedrepresentation is the basic item to be instanced mappingorigin is the starting placement mappingtarget is the final placement //! hence, the transformation from mappingorigin and mappingtarget is computed, the mappedrepr. is converted to a shape, then transformed as an instance of this shape.
 
@@ -987,12 +990,14 @@ Parameters
 ----------
 mapit: StepRepr_MappedItem
 TP: Transfer_TransientProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") TranslateMappedItem;
-		TopoDS_Shape TranslateMappedItem(const opencascade::handle<StepRepr_MappedItem> & mapit, const opencascade::handle<Transfer_TransientProcess> & TP);
+		TopoDS_Shape TranslateMappedItem(const opencascade::handle<StepRepr_MappedItem> & mapit, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1574,23 +1579,6 @@ None
 ") StepToTopoDS_TranslateShell;
 		 StepToTopoDS_TranslateShell();
 
-		/****************** StepToTopoDS_TranslateShell ******************/
-		/**** md5 signature: c64dac141f5411feeeabb688e921ba62 ****/
-		%feature("compactdefaultargs") StepToTopoDS_TranslateShell;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-CFS: StepShape_ConnectedFaceSet
-T: StepToTopoDS_Tool
-NMTool: StepToTopoDS_NMTool
-
-Returns
--------
-None
-") StepToTopoDS_TranslateShell;
-		 StepToTopoDS_TranslateShell(const opencascade::handle<StepShape_ConnectedFaceSet> & CFS, StepToTopoDS_Tool & T, StepToTopoDS_NMTool & NMTool);
-
 		/****************** Error ******************/
 		/**** md5 signature: fa654c6e3e1001e67d10206a2c654b17 ****/
 		%feature("compactdefaultargs") Error;
@@ -1603,7 +1591,7 @@ StepToTopoDS_TranslateShellError
 		StepToTopoDS_TranslateShellError Error();
 
 		/****************** Init ******************/
-		/**** md5 signature: 18d2efe1b2856a58c5c16d94e73b7060 ****/
+		/**** md5 signature: ebe2d333784395aa36b77e1e717580c5 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -1612,12 +1600,14 @@ Parameters
 CFS: StepShape_ConnectedFaceSet
 T: StepToTopoDS_Tool
 NMTool: StepToTopoDS_NMTool
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<StepShape_ConnectedFaceSet> & CFS, StepToTopoDS_Tool & T, StepToTopoDS_NMTool & NMTool);
+		void Init(const opencascade::handle<StepShape_ConnectedFaceSet> & CFS, StepToTopoDS_Tool & T, StepToTopoDS_NMTool & NMTool, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/

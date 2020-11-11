@@ -116,6 +116,14 @@ opencascade::handle<Geom2d_Geometry>
 ") Copy;
 		virtual opencascade::handle<Geom2d_Geometry> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Mirror ******************/
 		/**** md5 signature: 5a90a3ec4faf7909390bb0bfb4d9be0f ****/
 		%feature("compactdefaultargs") Mirror;
@@ -1024,6 +1032,14 @@ gp_Vec2d
 ") DN;
 		virtual gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FirstParameter ******************/
 		/**** md5 signature: d1641ead93c23610f9b5155af230348d ****/
 		%feature("compactdefaultargs") FirstParameter;
@@ -1224,6 +1240,14 @@ float
 ") Distance;
 		Standard_Real Distance(const opencascade::handle<Geom2d_Point> & Other);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Pnt2d ******************/
 		/**** md5 signature: 4ad29577d24628012003658d14094751 ****/
 		%feature("compactdefaultargs") Pnt2d;
@@ -1443,6 +1467,14 @@ float
 %nodefaultctor Geom2d_BoundedCurve;
 class Geom2d_BoundedCurve : public Geom2d_Curve {
 	public:
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EndPoint ******************/
 		/**** md5 signature: cabba8ba02807b5bb937fe3e63f56ebe ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -1538,6 +1570,14 @@ opencascade::handle<Geom2d_Geometry>
 ") Copy;
 		opencascade::handle<Geom2d_Geometry> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Pnt2d ******************/
 		/**** md5 signature: e4d9cf03598aebce98bdbe282b90b2bf ****/
 		%feature("compactdefaultargs") Pnt2d;
@@ -1675,6 +1715,14 @@ GeomAbs_Shape
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 41bb637fc6d20616b1d8cd81afbd8bee ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -1702,7 +1750,7 @@ bool
 		Standard_Boolean IsCN(const Standard_Integer N);
 
 		/****************** Location ******************/
-		/**** md5 signature: b6d70f653f0835eef3aab3bab16c5c7c ****/
+		/**** md5 signature: 0e4556028ba61472400043e40317f1e2 ****/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Returns the location point of the conic. for the circle, the ellipse and the hyperbola it is the center of the conic. for the parabola it is the vertex of the parabola.
 
@@ -1710,10 +1758,10 @@ Returns
 -------
 gp_Pnt2d
 ") Location;
-		gp_Pnt2d Location();
+		const gp_Pnt2d Location();
 
 		/****************** Position ******************/
-		/**** md5 signature: 345d379c8378049c9b2912713f5142d1 ****/
+		/**** md5 signature: 8247b1efb09dc461f7d1cce90ebd0c14 ****/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Returns the local coordinates system of the conic.
 
@@ -1750,64 +1798,64 @@ float
 		virtual Standard_Real ReversedParameter(const Standard_Real U);
 
 		/****************** SetAxis ******************/
-		/**** md5 signature: 016f6d0b52d2d85d5711abca672ca103 ****/
+		/**** md5 signature: fba67a5039095eddccca14c1039ad8be ****/
 		%feature("compactdefaultargs") SetAxis;
-		%feature("autodoc", "Modifies this conic, redefining its local coordinate system partially, by assigning p as its origin.
+		%feature("autodoc", "Modifies this conic, redefining its local coordinate system partially, by assigning thea as its axis.
 
 Parameters
 ----------
-A: gp_Ax22d
+theA: gp_Ax22d
 
 Returns
 -------
 None
 ") SetAxis;
-		void SetAxis(const gp_Ax22d & A);
+		void SetAxis(const gp_Ax22d & theA);
 
 		/****************** SetLocation ******************/
-		/**** md5 signature: 368c9b8c039b553e22ee650e75e4d404 ****/
+		/**** md5 signature: fea6486624f66c26e32103313f4d0c00 ****/
 		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "Modifies this conic, redefining its local coordinate system fully, by assigning a as this coordinate system.
+		%feature("autodoc", "Modifies this conic, redefining its local coordinate system partially, by assigning thep as its origin.
 
 Parameters
 ----------
-P: gp_Pnt2d
+theP: gp_Pnt2d
 
 Returns
 -------
 None
 ") SetLocation;
-		void SetLocation(const gp_Pnt2d & P);
+		void SetLocation(const gp_Pnt2d & theP);
 
 		/****************** SetXAxis ******************/
-		/**** md5 signature: ec66b4bfc97a7a2706907f916a07745f ****/
+		/**** md5 signature: a940d42d37d70f1fa54d8c4b631fa857 ****/
 		%feature("compactdefaultargs") SetXAxis;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Assigns the origin and unit vector of axis thea to the origin of the local coordinate system of this conic and x direction. the other unit vector of the local coordinate system of this conic is recomputed normal to thea, without changing the orientation of the local coordinate system (right-handed or left-handed).
 
 Parameters
 ----------
-A: gp_Ax2d
+theAX: gp_Ax2d
 
 Returns
 -------
 None
 ") SetXAxis;
-		void SetXAxis(const gp_Ax2d & A);
+		void SetXAxis(const gp_Ax2d & theAX);
 
 		/****************** SetYAxis ******************/
-		/**** md5 signature: f0f5b973b3cd13921764c845a5c4cc95 ****/
+		/**** md5 signature: e0866d51ed896da56c8b4c40fa15c187 ****/
 		%feature("compactdefaultargs") SetYAxis;
-		%feature("autodoc", "Assigns the origin and unit vector of axis a to the origin of the local coordinate system of this conic and either: - its 'x direction', or - its 'y direction'. the other unit vector of the local coordinate system of this conic is recomputed normal to a, without changing the orientation of the local coordinate system (right-handed or left-handed).
+		%feature("autodoc", "Assigns the origin and unit vector of axis thea to the origin of the local coordinate system of this conic and y direction. the other unit vector of the local coordinate system of this conic is recomputed normal to thea, without changing the orientation of the local coordinate system (right-handed or left-handed).
 
 Parameters
 ----------
-A: gp_Ax2d
+theAY: gp_Ax2d
 
 Returns
 -------
 None
 ") SetYAxis;
-		void SetYAxis(const gp_Ax2d & A);
+		void SetYAxis(const gp_Ax2d & theAY);
 
 		/****************** XAxis ******************/
 		/**** md5 signature: 5bcd651b87069885e2b5ecad2bd89992 ****/
@@ -2209,6 +2257,14 @@ float
 ") Distance;
 		Standard_Real Distance(const gp_Pnt2d & P);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FirstParameter ******************/
 		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
 		%feature("compactdefaultargs") FirstParameter;
@@ -2586,6 +2642,14 @@ gp_Vec2d
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FirstParameter ******************/
 		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
 		%feature("compactdefaultargs") FirstParameter;
@@ -3376,6 +3440,14 @@ int
 ") Degree;
 		Standard_Integer Degree();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 728da2f708cdaeb8d7659531afcee1a8 ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -4472,6 +4544,14 @@ int
 ") Degree;
 		Standard_Integer Degree();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 728da2f708cdaeb8d7659531afcee1a8 ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -5028,6 +5108,14 @@ gp_Vec2d
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -5340,6 +5428,14 @@ gp_Ax2d
 ") Directrix2;
 		gp_Ax2d Directrix2();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -5777,6 +5873,14 @@ gp_Ax2d
 ") Directrix2;
 		gp_Ax2d Directrix2();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -6184,6 +6288,14 @@ gp_Ax2d
 ") Directrix;
 		gp_Ax2d Directrix();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -6530,6 +6642,14 @@ gp_Vec2d
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 728da2f708cdaeb8d7659531afcee1a8 ****/
 		%feature("compactdefaultargs") EndPoint;

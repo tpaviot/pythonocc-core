@@ -42,6 +42,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
+#include<TDataStd_module.hxx>
 #include<TDF_module.hxx>
 #include<TColStd_module.hxx>
 #include<gp_module.hxx>
@@ -53,8 +54,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
 #include<XCAFNoteObjects_module.hxx>
 #include<OSD_module.hxx>
 #include<TopTools_module.hxx>
-#include<TDataStd_module.hxx>
 #include<XCAFView_module.hxx>
+#include<Graphic3d_module.hxx>
 #include<Resource_module.hxx>
 #include<Message_module.hxx>
 #include<CDF_module.hxx>
@@ -72,6 +73,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
+%import TDataStd.i
 %import TDF.i
 %import TColStd.i
 %import gp.i
@@ -83,8 +85,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
 %import XCAFNoteObjects.i
 %import OSD.i
 %import TopTools.i
-%import TDataStd.i
 %import XCAFView.i
+%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -136,6 +138,8 @@ XCAFDoc_ColorCurv = XCAFDoc_ColorType.XCAFDoc_ColorCurv
 %wrap_handle(XCAFDoc_ShapeTool)
 %wrap_handle(XCAFDoc_View)
 %wrap_handle(XCAFDoc_ViewTool)
+%wrap_handle(XCAFDoc_VisMaterial)
+%wrap_handle(XCAFDoc_VisMaterialTool)
 %wrap_handle(XCAFDoc_Volume)
 %wrap_handle(XCAFDoc_NoteBinData)
 %wrap_handle(XCAFDoc_NoteComment)
@@ -424,6 +428,17 @@ Standard_GUID
 ") ViewRefShapeGUID;
 		static const Standard_GUID & ViewRefShapeGUID();
 
+		/****************** VisMaterialRefGUID ******************/
+		/**** md5 signature: 6f2a7fe937e3eae96df1fce1ab75eee4 ****/
+		%feature("compactdefaultargs") VisMaterialRefGUID;
+		%feature("autodoc", "Return guid for treenode representing visualization material.
+
+Returns
+-------
+Standard_GUID
+") VisMaterialRefGUID;
+		static const Standard_GUID & VisMaterialRefGUID();
+
 };
 
 
@@ -436,7 +451,7 @@ Standard_GUID
 /*********************
 * class XCAFDoc_Area *
 *********************/
-class XCAFDoc_Area : public TDF_Attribute {
+class XCAFDoc_Area : public TDataStd_Real {
 	public:
 		/****************** XCAFDoc_Area ******************/
 		/**** md5 signature: 1d1a9e57f6fd1c122bae7660a32edfab ****/
@@ -457,6 +472,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: fc841fb28cb01367762b1d75c09d001e ****/
 		%feature("compactdefaultargs") Get;
@@ -504,48 +527,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		/**** md5 signature: 17ac24e76c81dc3dd9e0c71d510d3f0f ****/
@@ -636,6 +617,14 @@ None
 ") XCAFDoc_AssemblyItemId;
 		 XCAFDoc_AssemblyItemId(const TCollection_AsciiString & theString);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetPath ******************/
 		/**** md5 signature: 48824de01042bbf99d66feadad226b55 ****/
 		%feature("compactdefaultargs") GetPath;
@@ -799,6 +788,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: 3d90b76d3b6cdf628ef6575cb2d33050 ****/
 		%feature("compactdefaultargs") Get;
@@ -1115,6 +1112,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: 6858beb2d2926012952734f9982f4540 ****/
 		%feature("compactdefaultargs") Get;
@@ -1251,7 +1256,7 @@ None
 /**********************************
 * class XCAFDoc_ClippingPlaneTool *
 **********************************/
-class XCAFDoc_ClippingPlaneTool : public TDF_Attribute {
+class XCAFDoc_ClippingPlaneTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_ClippingPlaneTool ******************/
 		/**** md5 signature: 522fcfb25b1352fbc544ea4eca6f8810 ****/
@@ -1457,33 +1462,6 @@ bool
 ") IsClippingPlane;
 		Standard_Boolean IsClippingPlane(const TDF_Label & theLabel);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
 		/****************** RemoveClippingPlane ******************/
 		/**** md5 signature: 26c32e63236d98643988c90349194e52 ****/
 		%feature("compactdefaultargs") RemoveClippingPlane;
@@ -1498,21 +1476,6 @@ Returns
 bool
 ") RemoveClippingPlane;
 		Standard_Boolean RemoveClippingPlane(const TDF_Label & theLabel);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: 14dc48a9915ce467ffda532089e7780c ****/
@@ -1589,6 +1552,14 @@ None
 ") XCAFDoc_Color;
 		 XCAFDoc_Color();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetAlpha ******************/
 		/**** md5 signature: 84565d2001b45d9f108b1fd8295c8240 ****/
 		%feature("compactdefaultargs") GetAlpha;
@@ -1859,7 +1830,7 @@ None
 /**************************
 * class XCAFDoc_ColorTool *
 **************************/
-class XCAFDoc_ColorTool : public TDF_Attribute {
+class XCAFDoc_ColorTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_ColorTool ******************/
 		/**** md5 signature: f6ed5417f3b128e0a824bdc9feaffa0f ****/
@@ -1902,6 +1873,17 @@ TDF_Label
 ") AddColor;
 		TDF_Label AddColor(const Quantity_ColorRGBA & col);
 
+		/****************** AutoNaming ******************/
+		/**** md5 signature: c4c4154491210e47fd199a3970712f25 ****/
+		%feature("compactdefaultargs") AutoNaming;
+		%feature("autodoc", "Returns current auto-naming mode; true by default. if true then for added colors the tdatastd_name attribute will be automatically added. this setting is global.
+
+Returns
+-------
+bool
+") AutoNaming;
+		static Standard_Boolean AutoNaming();
+
 		/****************** BaseLabel ******************/
 		/**** md5 signature: cb499d8135863e96e585085d0b85c75a ****/
 		%feature("compactdefaultargs") BaseLabel;
@@ -1913,6 +1895,14 @@ TDF_Label
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FindColor ******************/
 		/**** md5 signature: 3bbdfc40532c55b34b874ffb30be7192 ****/
 		%feature("compactdefaultargs") FindColor;
@@ -2272,33 +2262,6 @@ bool
 ") IsVisible;
 		Standard_Boolean IsVisible(const TDF_Label & L);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
 		/****************** RemoveColor ******************/
 		/**** md5 signature: 3e1749f5696dd21fe53c3eb3d8e77952 ****/
 		%feature("compactdefaultargs") RemoveColor;
@@ -2313,21 +2276,6 @@ Returns
 None
 ") RemoveColor;
 		void RemoveColor(const TDF_Label & lab);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** ReverseChainsOfTreeNodes ******************/
 		/**** md5 signature: 1dc7658fc9fe4298f3000009cd052717 ****/
@@ -2354,6 +2302,21 @@ Returns
 opencascade::handle<XCAFDoc_ColorTool>
 ") Set;
 		static opencascade::handle<XCAFDoc_ColorTool> Set(const TDF_Label & L);
+
+		/****************** SetAutoNaming ******************/
+		/**** md5 signature: 7fd38a1b0351965674c506a9a2165e36 ****/
+		%feature("compactdefaultargs") SetAutoNaming;
+		%feature("autodoc", "See also autonaming().
+
+Parameters
+----------
+theIsAutoNaming: bool
+
+Returns
+-------
+None
+") SetAutoNaming;
+		static void SetAutoNaming(Standard_Boolean theIsAutoNaming);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 88b8899f758e2e2c777de7c0158faf95 ****/
@@ -2599,6 +2562,14 @@ None
 ") XCAFDoc_Datum;
 		 XCAFDoc_Datum();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDescription ******************/
 		/**** md5 signature: d57bdeefc6af6dad2fd33af139e84636 ****/
 		%feature("compactdefaultargs") GetDescription;
@@ -2799,6 +2770,14 @@ None
 ") XCAFDoc_DimTol;
 		 XCAFDoc_DimTol();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDescription ******************/
 		/**** md5 signature: d57bdeefc6af6dad2fd33af139e84636 ****/
 		%feature("compactdefaultargs") GetDescription;
@@ -2958,7 +2937,7 @@ None
 /***************************
 * class XCAFDoc_DimTolTool *
 ***************************/
-class XCAFDoc_DimTolTool : public TDF_Attribute {
+class XCAFDoc_DimTolTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_DimTolTool ******************/
 		/**** md5 signature: 2c5641f63aaa759ef0aac01b43f9acd2 ****/
@@ -3050,6 +3029,14 @@ TDF_Label
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FindDatum ******************/
 		/**** md5 signature: 762e8c713a9968fc10c6079959aeb55a ****/
 		%feature("compactdefaultargs") FindDatum;
@@ -3441,48 +3428,6 @@ None
 ") Lock;
 		void Lock(const TDF_Label & theViewL);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
-
 		/****************** Set ******************/
 		/**** md5 signature: fb1eaa4ca2f6c7d90fe59b7b29cc9a0b ****/
 		%feature("compactdefaultargs") Set;
@@ -3721,7 +3666,7 @@ None
 /**************************
 * class XCAFDoc_Dimension *
 **************************/
-class XCAFDoc_Dimension : public TDF_Attribute {
+class XCAFDoc_Dimension : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_Dimension ******************/
 		/**** md5 signature: 2f99c63c2afe4a9019d4297ed13fc8e7 ****/
@@ -3748,7 +3693,7 @@ Standard_GUID
 		/****************** GetObject ******************/
 		/**** md5 signature: 4fbe8acda838943eb7ecc2a85c52a164 ****/
 		%feature("compactdefaultargs") GetObject;
-		%feature("autodoc", "Returns dimension object data taken from the paren's label and its sub-labels.
+		%feature("autodoc", "Returns dimension object data taken from the parent's label and its sub-labels.
 
 Returns
 -------
@@ -3766,48 +3711,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		/**** md5 signature: e8759c5f34d978e2ceb6df9a8d290445 ****/
@@ -3853,7 +3756,7 @@ None
 /*****************************
 * class XCAFDoc_DocumentTool *
 *****************************/
-class XCAFDoc_DocumentTool : public TDF_Attribute {
+class XCAFDoc_DocumentTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_DocumentTool ******************/
 		/**** md5 signature: 1abef24785b933429a4a476444f0ca17 ****/
@@ -3865,6 +3768,22 @@ Returns
 None
 ") XCAFDoc_DocumentTool;
 		 XCAFDoc_DocumentTool();
+
+		/****************** AfterRetrieval ******************/
+		/**** md5 signature: 64d86db498a6796b75d057eb0b1ce0d7 ****/
+		%feature("compactdefaultargs") AfterRetrieval;
+		%feature("autodoc", "To init this derived attribute after the attribute restore using the base restore-methods.
+
+Parameters
+----------
+forceIt: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") AfterRetrieval;
+		Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
 
 		/****************** ClippingPlaneTool ******************/
 		/**** md5 signature: 10db4cdb3c6c63d4b8a63936644512e6 ****/
@@ -4079,17 +3998,6 @@ TDF_Label
 ") MaterialsLabel;
 		static TDF_Label MaterialsLabel(const TDF_Label & acces);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
 		/****************** NotesLabel ******************/
 		/**** md5 signature: e008bd46ff239db30ba9453034fc580b ****/
 		%feature("compactdefaultargs") NotesLabel;
@@ -4119,37 +4027,6 @@ Returns
 opencascade::handle<XCAFDoc_NotesTool>
 ") NotesTool;
 		static opencascade::handle<XCAFDoc_NotesTool> NotesTool(const TDF_Label & acces);
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: c5a760c0b9d0ee3da7b5ef3d4911fff3 ****/
@@ -4227,6 +4104,36 @@ Returns
 TDF_Label
 ") ViewsLabel;
 		static TDF_Label ViewsLabel(const TDF_Label & acces);
+
+		/****************** VisMaterialLabel ******************/
+		/**** md5 signature: aa97b0800d16da0cd7711258f1341b2e ****/
+		%feature("compactdefaultargs") VisMaterialLabel;
+		%feature("autodoc", "Returns sub-label of doclabel() with tag 10.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+TDF_Label
+") VisMaterialLabel;
+		static TDF_Label VisMaterialLabel(const TDF_Label & theLabel);
+
+		/****************** VisMaterialTool ******************/
+		/**** md5 signature: b8eef964f42cbc7ca9b1f5ddea81ec3e ****/
+		%feature("compactdefaultargs") VisMaterialTool;
+		%feature("autodoc", "Creates (if it does not exist) xcafdoc_vismaterialtool attribute on vismateriallabel(). should not be confused with materialtool() defining physical/manufacturing materials.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterialTool>
+") VisMaterialTool;
+		static opencascade::handle<XCAFDoc_VisMaterialTool> VisMaterialTool(const TDF_Label & theLabel);
 
 };
 
@@ -4341,6 +4248,14 @@ int
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FatherIndex ******************/
 		/**** md5 signature: 0552d958b58828a573e0ce57383c8892 ****/
 		%feature("compactdefaultargs") FatherIndex;
@@ -4683,7 +4598,7 @@ None
 /**************************
 * class XCAFDoc_LayerTool *
 **************************/
-class XCAFDoc_LayerTool : public TDF_Attribute {
+class XCAFDoc_LayerTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_LayerTool ******************/
 		/**** md5 signature: e54175d79e822b0491336741e09fba62 ****/
@@ -4722,6 +4637,14 @@ TDF_Label
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FindLayer ******************/
 		/**** md5 signature: 0267420ac417e060cacb31e601857357 ****/
 		%feature("compactdefaultargs") FindLayer;
@@ -5010,33 +4933,6 @@ bool
 ") IsVisible;
 		Standard_Boolean IsVisible(const TDF_Label & layerL);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
 		/****************** RemoveLayer ******************/
 		/**** md5 signature: 70b3d064bc3eaaa8774633bc02985d70 ****/
 		%feature("compactdefaultargs") RemoveLayer;
@@ -5051,21 +4947,6 @@ Returns
 None
 ") RemoveLayer;
 		void RemoveLayer(const TDF_Label & lab);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: 9357654ead4b02c2995c604f9b674917 ****/
@@ -5303,6 +5184,14 @@ None
 ") XCAFDoc_Location;
 		 XCAFDoc_Location();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: 359bc64c03f84420a1380939ba1ece6c ****/
 		%feature("compactdefaultargs") Get;
@@ -5436,6 +5325,14 @@ None
 ") XCAFDoc_Material;
 		 XCAFDoc_Material();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDensName ******************/
 		/**** md5 signature: 3b1043acd4ad662679429887111967a0 ****/
 		%feature("compactdefaultargs") GetDensName;
@@ -5608,7 +5505,7 @@ None
 /*****************************
 * class XCAFDoc_MaterialTool *
 *****************************/
-class XCAFDoc_MaterialTool : public TDF_Attribute {
+class XCAFDoc_MaterialTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_MaterialTool ******************/
 		/**** md5 signature: fbb0be87f4f6e7f0c11ef3c770906fb1 ****/
@@ -5651,6 +5548,14 @@ TDF_Label
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDensityForShape ******************/
 		/**** md5 signature: d31bfcf5af78d069e4eaeca8afb83fc2 ****/
 		%feature("compactdefaultargs") GetDensityForShape;
@@ -5736,48 +5641,6 @@ Returns
 bool
 ") IsMaterial;
 		Standard_Boolean IsMaterial(const TDF_Label & lab);
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: 93eb8e9cd550f2295955998cae514434 ****/
@@ -5866,6 +5729,14 @@ class XCAFDoc_Note : public TDF_Attribute {
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: 1ceee7b570e5f239e158c7517ea24a7d ****/
 		%feature("compactdefaultargs") Get;
@@ -6016,7 +5887,7 @@ TCollection_ExtendedString
 /**************************
 * class XCAFDoc_NotesTool *
 **************************/
-class XCAFDoc_NotesTool : public TDF_Attribute {
+class XCAFDoc_NotesTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_NotesTool ******************/
 		/**** md5 signature: c0e77601b7f2e50489392007c2098938 ****/
@@ -6590,33 +6461,6 @@ int
 ") NbOrphanNotes;
 		Standard_Integer NbOrphanNotes();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: f98a67c4f327c9d7cceaa72c60db3f31 ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theAttrInto: TDF_Attribute
-theRT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theAttrInto, const opencascade::handle<TDF_RelocationTable> & theRT);
-
 		/****************** RemoveAllAttrNotes ******************/
 		/**** md5 signature: f87cc4ba4b5336a7a43b4abcd34c0df0 ****/
 		%feature("compactdefaultargs") RemoveAllAttrNotes;
@@ -6817,21 +6661,6 @@ bool
 ") RemoveSubshapeNote;
 		Standard_Boolean RemoveSubshapeNote(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel, Standard_Integer theSubshapeIndex, Standard_Boolean theDelIfOrphan = Standard_False);
 
-		/****************** Restore ******************/
-		/**** md5 signature: 64974bd3177ca3958ca6f642f1c665f5 ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theAttrFrom: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & theAttrFrom);
-
 		/****************** Set ******************/
 		/**** md5 signature: 2ff88c3f33292cb4a299d4e1fc57ff9a ****/
 		%feature("compactdefaultargs") Set;
@@ -6874,6 +6703,14 @@ None
 ") XCAFDoc_ShapeMapTool;
 		 XCAFDoc_ShapeMapTool();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -7008,7 +6845,7 @@ None
 /**************************
 * class XCAFDoc_ShapeTool *
 **************************/
-class XCAFDoc_ShapeTool : public TDF_Attribute {
+class XCAFDoc_ShapeTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_ShapeTool ******************/
 		/**** md5 signature: 5b97c0c77598e644de30c3b8c03cca11 ****/
@@ -7164,6 +7001,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Expand ******************/
 		/**** md5 signature: 303313cc4599e4d88e82e690ea6d0ec6 ****/
 		%feature("compactdefaultargs") Expand;
@@ -7798,17 +7643,6 @@ int
 ") NbComponents;
 		static Standard_Integer NbComponents(const TDF_Label & L, const Standard_Boolean getsubchilds = Standard_False);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
 		/****************** NewShape ******************/
 		/**** md5 signature: be3f917f6ac40df6a84f450b698db353 ****/
 		%feature("compactdefaultargs") NewShape;
@@ -7819,22 +7653,6 @@ Returns
 TDF_Label
 ") NewShape;
 		TDF_Label NewShape();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** RemoveComponent ******************/
 		/**** md5 signature: 231f2b5b04ddc6bf841f8649e4547e79 ****/
@@ -7882,21 +7700,6 @@ Returns
 bool
 ") RemoveShape;
 		Standard_Boolean RemoveShape(const TDF_Label & L, const Standard_Boolean removeCompletely = Standard_True);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Search ******************/
 		/**** md5 signature: a69db72e1ed9e8508704ef54f202920d ****/
@@ -8071,7 +7874,7 @@ None
 /*********************
 * class XCAFDoc_View *
 *********************/
-class XCAFDoc_View : public TDF_Attribute {
+class XCAFDoc_View : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_View ******************/
 		/**** md5 signature: 0245c9b612af8c7f9c5d80a84506c419 ****/
@@ -8117,48 +7920,6 @@ Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
-
 		/****************** Set ******************/
 		/**** md5 signature: 674777373bb851e3052609659f01d247 ****/
 		%feature("compactdefaultargs") Set;
@@ -8203,7 +7964,7 @@ None
 /*************************
 * class XCAFDoc_ViewTool *
 *************************/
-class XCAFDoc_ViewTool : public TDF_Attribute {
+class XCAFDoc_ViewTool : public TDataStd_GenericEmpty {
 	public:
 		/****************** XCAFDoc_ViewTool ******************/
 		/**** md5 signature: 4864083a9c277edf2495cf642a7aeced ****/
@@ -8480,33 +8241,6 @@ None
 ") Lock;
 		void Lock(const TDF_Label & theViewL);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
 		/****************** RemoveView ******************/
 		/**** md5 signature: f1810b43f33eadaf802adda4d65274e8 ****/
 		%feature("compactdefaultargs") RemoveView;
@@ -8521,21 +8255,6 @@ Returns
 None
 ") RemoveView;
 		void RemoveView(const TDF_Label & theViewL);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****************** Set ******************/
 		/**** md5 signature: 36ad683191aa4700d6f2065ed9e0ca01 ****/
@@ -8649,10 +8368,873 @@ None
 	}
 };
 
+/****************************
+* class XCAFDoc_VisMaterial *
+****************************/
+class XCAFDoc_VisMaterial : public TDF_Attribute {
+	public:
+		/****************** XCAFDoc_VisMaterial ******************/
+		/**** md5 signature: de25513c62db54dd98c28fb751e5f3a8 ****/
+		%feature("compactdefaultargs") XCAFDoc_VisMaterial;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") XCAFDoc_VisMaterial;
+		 XCAFDoc_VisMaterial();
+
+		/****************** AlphaCutOff ******************/
+		/**** md5 signature: 24016059420e9e5c6d337d7b29b53858 ****/
+		%feature("compactdefaultargs") AlphaCutOff;
+		%feature("autodoc", "Return alpha cutoff value; 0.5 by default.
+
+Returns
+-------
+Standard_ShortReal
+") AlphaCutOff;
+		Standard_ShortReal AlphaCutOff();
+
+		/****************** AlphaMode ******************/
+		/**** md5 signature: c141b940ccd51adaa91c404b4d4a5d76 ****/
+		%feature("compactdefaultargs") AlphaMode;
+		%feature("autodoc", "Return alpha mode; graphic3d_alphamode_blendauto by default.
+
+Returns
+-------
+Graphic3d_AlphaMode
+") AlphaMode;
+		Graphic3d_AlphaMode AlphaMode();
+
+		/****************** BaseColor ******************/
+		/**** md5 signature: f8585c32bce71447f36243b6bcd6baa9 ****/
+		%feature("compactdefaultargs") BaseColor;
+		%feature("autodoc", "Return base color.
+
+Returns
+-------
+Quantity_ColorRGBA
+") BaseColor;
+		Quantity_ColorRGBA BaseColor();
+
+		/****************** CommonMaterial ******************/
+		/**** md5 signature: 703dc4550b60da27a28ba4b2bb54d11e ****/
+		%feature("compactdefaultargs") CommonMaterial;
+		%feature("autodoc", "Return common material.
+
+Returns
+-------
+XCAFDoc_VisMaterialCommon
+") CommonMaterial;
+		const XCAFDoc_VisMaterialCommon & CommonMaterial();
+
+		/****************** ConvertToCommonMaterial ******************/
+		/**** md5 signature: 251cc72d8a745287cc99962025b28cdc ****/
+		%feature("compactdefaultargs") ConvertToCommonMaterial;
+		%feature("autodoc", "Return common material or convert pbr into common material.
+
+Returns
+-------
+XCAFDoc_VisMaterialCommon
+") ConvertToCommonMaterial;
+		XCAFDoc_VisMaterialCommon ConvertToCommonMaterial();
+
+		/****************** ConvertToPbrMaterial ******************/
+		/**** md5 signature: 9c2a26304acde37d2893e7eed990e88a ****/
+		%feature("compactdefaultargs") ConvertToPbrMaterial;
+		%feature("autodoc", "Return pbr material or convert common into pbr material.
+
+Returns
+-------
+XCAFDoc_VisMaterialPBR
+") ConvertToPbrMaterial;
+		XCAFDoc_VisMaterialPBR ConvertToPbrMaterial();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** FillAspect ******************/
+		/**** md5 signature: f4ca83412976fc99587d66a154a321d7 ****/
+		%feature("compactdefaultargs") FillAspect;
+		%feature("autodoc", "Fill in graphic aspects.
+
+Parameters
+----------
+theAspect: Graphic3d_Aspects
+
+Returns
+-------
+None
+") FillAspect;
+		void FillAspect(const opencascade::handle<Graphic3d_Aspects> & theAspect);
+
+		/****************** FillMaterialAspect ******************/
+		/**** md5 signature: e6d424919dabf73c3259cb308aa680fb ****/
+		%feature("compactdefaultargs") FillMaterialAspect;
+		%feature("autodoc", "Fill in material aspect.
+
+Parameters
+----------
+theAspect: Graphic3d_MaterialAspect
+
+Returns
+-------
+None
+") FillMaterialAspect;
+		void FillMaterialAspect(Graphic3d_MaterialAspect & theAspect);
+
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Return attribute guid.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** HasCommonMaterial ******************/
+		/**** md5 signature: aa206ac5c69652ddd1cd9aa40a51da8f ****/
+		%feature("compactdefaultargs") HasCommonMaterial;
+		%feature("autodoc", "Return true if common material is defined.
+
+Returns
+-------
+bool
+") HasCommonMaterial;
+		Standard_Boolean HasCommonMaterial();
+
+		/****************** HasPbrMaterial ******************/
+		/**** md5 signature: 417eb60e1913f57f432ccf39e10b5468 ****/
+		%feature("compactdefaultargs") HasPbrMaterial;
+		%feature("autodoc", "Return true if metal-roughness pbr material is defined.
+
+Returns
+-------
+bool
+") HasPbrMaterial;
+		Standard_Boolean HasPbrMaterial();
+
+		/****************** ID ******************/
+		/**** md5 signature: 1f78b7b062d92028dbde1d3574326fe0 ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "Return guid of this attribute type.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		virtual const Standard_GUID & ID();
+
+		/****************** IsDoubleSided ******************/
+		/**** md5 signature: 3f3fa1df3b72a87d0575b414de6fd9d7 ****/
+		%feature("compactdefaultargs") IsDoubleSided;
+		%feature("autodoc", "Specifies whether the material is double sided; true by default.
+
+Returns
+-------
+bool
+") IsDoubleSided;
+		Standard_Boolean IsDoubleSided();
+
+		/****************** IsEmpty ******************/
+		/**** md5 signature: 70a41d5fe65955a28167088305fc6991 ****/
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "Return true if material definition is empty.
+
+Returns
+-------
+bool
+") IsEmpty;
+		bool IsEmpty();
+
+		/****************** IsEqual ******************/
+		/**** md5 signature: 476d84fee7480124df14143cefe579cd ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "Compare two materials. performs deep comparison by actual values - e.g. can be useful for merging materials.
+
+Parameters
+----------
+theOther: XCAFDoc_VisMaterial
+
+Returns
+-------
+bool
+") IsEqual;
+		Standard_Boolean IsEqual(const opencascade::handle<XCAFDoc_VisMaterial> & theOther);
+
+		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "Create a new empty attribute.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		/**** md5 signature: bc0917a7664a14cd92df5b6f55c794b3 ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "Paste this attribute into another one. @param theinto [in/out] target attribute to copy this into @param thereltable [in] relocation table.
+
+Parameters
+----------
+theInto: TDF_Attribute
+theRelTable: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRelTable);
+
+		/****************** PbrMaterial ******************/
+		/**** md5 signature: 70e2786d099bf6b93bcc9776e47c8653 ****/
+		%feature("compactdefaultargs") PbrMaterial;
+		%feature("autodoc", "Return metal-roughness pbr material.
+
+Returns
+-------
+XCAFDoc_VisMaterialPBR
+") PbrMaterial;
+		const XCAFDoc_VisMaterialPBR & PbrMaterial();
+
+		/****************** RawName ******************/
+		/**** md5 signature: 7e81df8d60c046b013b0297615523157 ****/
+		%feature("compactdefaultargs") RawName;
+		%feature("autodoc", "Return material name / tag (transient data, not stored in the document).
+
+Returns
+-------
+opencascade::handle<TCollection_HAsciiString>
+") RawName;
+		const opencascade::handle<TCollection_HAsciiString> & RawName();
+
+		/****************** Restore ******************/
+		/**** md5 signature: 5e22af670b4c476a215a562aa4f78470 ****/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "Restore attribute from specified state. @param thewith [in] attribute state to restore (copy into this).
+
+Parameters
+----------
+theWith: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		virtual void Restore(const opencascade::handle<TDF_Attribute> & theWith);
+
+		/****************** SetAlphaMode ******************/
+		/**** md5 signature: c2e8a613e9fab051d49d9fc3b604a42f ****/
+		%feature("compactdefaultargs") SetAlphaMode;
+		%feature("autodoc", "Set alpha mode.
+
+Parameters
+----------
+theMode: Graphic3d_AlphaMode
+theCutOff: Standard_ShortReal,optional
+	default value is 0.5f
+
+Returns
+-------
+None
+") SetAlphaMode;
+		void SetAlphaMode(Graphic3d_AlphaMode theMode, Standard_ShortReal theCutOff = 0.5f);
+
+		/****************** SetCommonMaterial ******************/
+		/**** md5 signature: 1da963f33b57d451b2018898c979446d ****/
+		%feature("compactdefaultargs") SetCommonMaterial;
+		%feature("autodoc", "Setup common material.
+
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterialCommon
+
+Returns
+-------
+None
+") SetCommonMaterial;
+		void SetCommonMaterial(const XCAFDoc_VisMaterialCommon & theMaterial);
+
+		/****************** SetDoubleSided ******************/
+		/**** md5 signature: 359726f70d9e1b04cf2c7b707b4605c8 ****/
+		%feature("compactdefaultargs") SetDoubleSided;
+		%feature("autodoc", "Specifies whether the material is double sided.
+
+Parameters
+----------
+theIsDoubleSided: bool
+
+Returns
+-------
+None
+") SetDoubleSided;
+		void SetDoubleSided(Standard_Boolean theIsDoubleSided);
+
+		/****************** SetPbrMaterial ******************/
+		/**** md5 signature: 246f3302fcf9beda6246ed99bc1b8073 ****/
+		%feature("compactdefaultargs") SetPbrMaterial;
+		%feature("autodoc", "Setup metal-roughness pbr material.
+
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterialPBR
+
+Returns
+-------
+None
+") SetPbrMaterial;
+		void SetPbrMaterial(const XCAFDoc_VisMaterialPBR & theMaterial);
+
+		/****************** SetRawName ******************/
+		/**** md5 signature: 9f88ade149954cac32d3dc435506e2f6 ****/
+		%feature("compactdefaultargs") SetRawName;
+		%feature("autodoc", "Set material name / tag (transient data, not stored in the document).
+
+Parameters
+----------
+theName: TCollection_HAsciiString
+
+Returns
+-------
+None
+") SetRawName;
+		void SetRawName(const opencascade::handle<TCollection_HAsciiString> & theName);
+
+		/****************** UnsetCommonMaterial ******************/
+		/**** md5 signature: a5b693feebb7383a941684ae5470fefc ****/
+		%feature("compactdefaultargs") UnsetCommonMaterial;
+		%feature("autodoc", "Setup undefined common material.
+
+Returns
+-------
+None
+") UnsetCommonMaterial;
+		void UnsetCommonMaterial();
+
+		/****************** UnsetPbrMaterial ******************/
+		/**** md5 signature: 6eacbffbd2403fc7578046deb6faf1ad ****/
+		%feature("compactdefaultargs") UnsetPbrMaterial;
+		%feature("autodoc", "Setup undefined metal-roughness pbr material.
+
+Returns
+-------
+None
+") UnsetPbrMaterial;
+		void UnsetPbrMaterial();
+
+};
+
+
+%make_alias(XCAFDoc_VisMaterial)
+
+%extend XCAFDoc_VisMaterial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************
+* class XCAFDoc_VisMaterialCommon *
+**********************************/
+class XCAFDoc_VisMaterialCommon {
+	public:
+		opencascade::handle<Image_Texture > DiffuseTexture;
+		Quantity_Color AmbientColor;
+		Quantity_Color DiffuseColor;
+		Quantity_Color SpecularColor;
+		Quantity_Color EmissiveColor;
+		Standard_ShortReal Shininess;
+		Standard_ShortReal Transparency;
+		bool IsDefined;
+		/****************** XCAFDoc_VisMaterialCommon ******************/
+		/**** md5 signature: 902673da58471421f95b5ccf0bdee6a3 ****/
+		%feature("compactdefaultargs") XCAFDoc_VisMaterialCommon;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") XCAFDoc_VisMaterialCommon;
+		 XCAFDoc_VisMaterialCommon();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** IsEqual ******************/
+		/**** md5 signature: 748c01dee19e51ab592f1e9f46d94232 ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "Compare two materials.
+
+Parameters
+----------
+theOther: XCAFDoc_VisMaterialCommon
+
+Returns
+-------
+bool
+") IsEqual;
+		Standard_Boolean IsEqual(const XCAFDoc_VisMaterialCommon & theOther);
+
+};
+
+
+%extend XCAFDoc_VisMaterialCommon {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************
+* class XCAFDoc_VisMaterialPBR *
+*******************************/
+class XCAFDoc_VisMaterialPBR {
+	public:
+		opencascade::handle<Image_Texture > BaseColorTexture;
+		opencascade::handle<Image_Texture > MetallicRoughnessTexture;
+		opencascade::handle<Image_Texture > EmissiveTexture;
+		opencascade::handle<Image_Texture > OcclusionTexture;
+		opencascade::handle<Image_Texture > NormalTexture;
+		Quantity_ColorRGBA BaseColor;
+		Graphic3d_Vec3 EmissiveFactor;
+		Standard_ShortReal Metallic;
+		Standard_ShortReal Roughness;
+		Standard_ShortReal RefractionIndex;
+		bool IsDefined;
+		/****************** XCAFDoc_VisMaterialPBR ******************/
+		/**** md5 signature: 11ea295424c444b06892c19d880417c9 ****/
+		%feature("compactdefaultargs") XCAFDoc_VisMaterialPBR;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") XCAFDoc_VisMaterialPBR;
+		 XCAFDoc_VisMaterialPBR();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** IsEqual ******************/
+		/**** md5 signature: 1789e9619decdb51bee4c1896d306145 ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "Compare two materials.
+
+Parameters
+----------
+theOther: XCAFDoc_VisMaterialPBR
+
+Returns
+-------
+bool
+") IsEqual;
+		Standard_Boolean IsEqual(const XCAFDoc_VisMaterialPBR & theOther);
+
+};
+
+
+%extend XCAFDoc_VisMaterialPBR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class XCAFDoc_VisMaterialTool *
+********************************/
+class XCAFDoc_VisMaterialTool : public TDF_Attribute {
+	public:
+		/****************** XCAFDoc_VisMaterialTool ******************/
+		/**** md5 signature: 4164cee54ac875c4d3212c58ff9d1585 ****/
+		%feature("compactdefaultargs") XCAFDoc_VisMaterialTool;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") XCAFDoc_VisMaterialTool;
+		 XCAFDoc_VisMaterialTool();
+
+		/****************** AddMaterial ******************/
+		/**** md5 signature: dcff29fb1f77f5df10ee13363d609e28 ****/
+		%feature("compactdefaultargs") AddMaterial;
+		%feature("autodoc", "Adds material definition to a material table and returns its label.
+
+Parameters
+----------
+theMat: XCAFDoc_VisMaterial
+theName: TCollection_AsciiString
+
+Returns
+-------
+TDF_Label
+") AddMaterial;
+		TDF_Label AddMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMat, const TCollection_AsciiString & theName);
+
+		/****************** AddMaterial ******************/
+		/**** md5 signature: 4f812bc5d327fe3e730676ff3e6dd617 ****/
+		%feature("compactdefaultargs") AddMaterial;
+		%feature("autodoc", "Adds material definition to a material table and returns its label.
+
+Parameters
+----------
+theName: TCollection_AsciiString
+
+Returns
+-------
+TDF_Label
+") AddMaterial;
+		TDF_Label AddMaterial(const TCollection_AsciiString & theName);
+
+		/****************** BaseLabel ******************/
+		/**** md5 signature: 0fb6b1cd40875f3170cd1b9dbe0b46bd ****/
+		%feature("compactdefaultargs") BaseLabel;
+		%feature("autodoc", "Returns the label under which colors are stored.
+
+Returns
+-------
+TDF_Label
+") BaseLabel;
+		TDF_Label BaseLabel();
+
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** GetMaterial ******************/
+		/**** md5 signature: 83194336f7abcf51085de62960d38361 ****/
+		%feature("compactdefaultargs") GetMaterial;
+		%feature("autodoc", "Returns material defined by specified label, or null if the label is not in material table.
+
+Parameters
+----------
+theMatLabel: TDF_Label
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterial>
+") GetMaterial;
+		opencascade::handle<XCAFDoc_VisMaterial> GetMaterial(const TDF_Label & theMatLabel);
+
+		/****************** GetMaterials ******************/
+		/**** md5 signature: a96d68af36051bd063fefc1e10aabb79 ****/
+		%feature("compactdefaultargs") GetMaterials;
+		%feature("autodoc", "Returns a sequence of materials currently stored in the material table.
+
+Parameters
+----------
+Labels: TDF_LabelSequence
+
+Returns
+-------
+None
+") GetMaterials;
+		void GetMaterials(TDF_LabelSequence & Labels);
+
+		/****************** GetShapeMaterial ******************/
+		/**** md5 signature: cc2f1eaf9fd6f6a8b6ca7f4cf5294a4d ****/
+		%feature("compactdefaultargs") GetShapeMaterial;
+		%feature("autodoc", "Returns label with material assigned to shape label. @param theshapelabel [in] shape label @param themateriallabel [out] material label returns false if no material is assigned.
+
+Parameters
+----------
+theShapeLabel: TDF_Label
+theMaterialLabel: TDF_Label
+
+Returns
+-------
+bool
+") GetShapeMaterial;
+		static Standard_Boolean GetShapeMaterial(const TDF_Label & theShapeLabel, TDF_Label & theMaterialLabel);
+
+		/****************** GetShapeMaterial ******************/
+		/**** md5 signature: 86335bfdea98c720bcf3af0fe4fb0fe0 ****/
+		%feature("compactdefaultargs") GetShapeMaterial;
+		%feature("autodoc", "Returns material assigned to the shape label.
+
+Parameters
+----------
+theShapeLabel: TDF_Label
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterial>
+") GetShapeMaterial;
+		opencascade::handle<XCAFDoc_VisMaterial> GetShapeMaterial(const TDF_Label & theShapeLabel);
+
+		/****************** GetShapeMaterial ******************/
+		/**** md5 signature: b4d2560c50c52f8b49c713aa67731929 ****/
+		%feature("compactdefaultargs") GetShapeMaterial;
+		%feature("autodoc", "Returns label with material assigned to shape. @param theshape [in] shape @param themateriallabel [out] material label returns false if no material is assigned.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theMaterialLabel: TDF_Label
+
+Returns
+-------
+bool
+") GetShapeMaterial;
+		Standard_Boolean GetShapeMaterial(const TopoDS_Shape & theShape, TDF_Label & theMaterialLabel);
+
+		/****************** GetShapeMaterial ******************/
+		/**** md5 signature: 7a7f0994125f233b322cc60c2fd40844 ****/
+		%feature("compactdefaultargs") GetShapeMaterial;
+		%feature("autodoc", "Returns material assigned to shape or null if not assigned.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterial>
+") GetShapeMaterial;
+		opencascade::handle<XCAFDoc_VisMaterial> GetShapeMaterial(const TopoDS_Shape & theShape);
+
+		/****************** ID ******************/
+		/**** md5 signature: 1f78b7b062d92028dbde1d3574326fe0 ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "Returns guid of this attribute type.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		virtual const Standard_GUID & ID();
+
+		/****************** IsMaterial ******************/
+		/**** md5 signature: 78f540787bb4888fe4fe9407c8d749b5 ****/
+		%feature("compactdefaultargs") IsMaterial;
+		%feature("autodoc", "Returns true if label belongs to a material table.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+bool
+") IsMaterial;
+		Standard_Boolean IsMaterial(const TDF_Label & theLabel);
+
+		/****************** IsSetShapeMaterial ******************/
+		/**** md5 signature: 7c3c0a1ab4b3b9ce755822e9dfa7a906 ****/
+		%feature("compactdefaultargs") IsSetShapeMaterial;
+		%feature("autodoc", "Returns true if label has a material assignment.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+bool
+") IsSetShapeMaterial;
+		Standard_Boolean IsSetShapeMaterial(const TDF_Label & theLabel);
+
+		/****************** IsSetShapeMaterial ******************/
+		/**** md5 signature: 447e89dbc52b602022fbc66a7496af76 ****/
+		%feature("compactdefaultargs") IsSetShapeMaterial;
+		%feature("autodoc", "Returns true if shape has a material assignment.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+bool
+") IsSetShapeMaterial;
+		Standard_Boolean IsSetShapeMaterial(const TopoDS_Shape & theShape);
+
+		/****************** NewEmpty ******************/
+		/**** md5 signature: 9fd03ebf4c88d0fd3efd748ca3107174 ****/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "Creates new instance of this tool.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		/**** md5 signature: 6b821b16b349fd69b3cc5a104c81cdb0 ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "Does nothing.
+
+Parameters
+----------
+&: TDF_Attribute
+&: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute > &, const opencascade::handle<TDF_RelocationTable > &);
+
+		/****************** RemoveMaterial ******************/
+		/**** md5 signature: 775c769efa33703b71d57b14aad1c668 ****/
+		%feature("compactdefaultargs") RemoveMaterial;
+		%feature("autodoc", "Removes material from the material table.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+None
+") RemoveMaterial;
+		void RemoveMaterial(const TDF_Label & theLabel);
+
+		/****************** Restore ******************/
+		/**** md5 signature: 2caa509340d7b0f9339dec9716f9637c ****/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "Does nothing.
+
+Parameters
+----------
+&: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		virtual void Restore(const opencascade::handle<TDF_Attribute > &);
+
+		/****************** Set ******************/
+		/**** md5 signature: d22b33d6563c5e4e2eb49ebdf3751fdb ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Creates (if not exist) colortool.
+
+Parameters
+----------
+L: TDF_Label
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterialTool>
+") Set;
+		static opencascade::handle<XCAFDoc_VisMaterialTool> Set(const TDF_Label & L);
+
+		/****************** SetShapeMaterial ******************/
+		/**** md5 signature: c02461a59f71e755a5f9e57497ad3b7b ****/
+		%feature("compactdefaultargs") SetShapeMaterial;
+		%feature("autodoc", "Sets new material to the shape.
+
+Parameters
+----------
+theShapeLabel: TDF_Label
+theMaterialLabel: TDF_Label
+
+Returns
+-------
+None
+") SetShapeMaterial;
+		void SetShapeMaterial(const TDF_Label & theShapeLabel, const TDF_Label & theMaterialLabel);
+
+		/****************** SetShapeMaterial ******************/
+		/**** md5 signature: 05e3210e021dcd62b991927ee495997d ****/
+		%feature("compactdefaultargs") SetShapeMaterial;
+		%feature("autodoc", "Sets a link with guid xcafdoc::vismaterialrefguid() from shape label to material label. @param theshape [in] shape @param themateriallabel [in] material label returns false if cannot find a label for shape.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theMaterialLabel: TDF_Label
+
+Returns
+-------
+bool
+") SetShapeMaterial;
+		Standard_Boolean SetShapeMaterial(const TopoDS_Shape & theShape, const TDF_Label & theMaterialLabel);
+
+		/****************** ShapeTool ******************/
+		/**** md5 signature: f3b52ea6763fc2a237d4ce7351722eb2 ****/
+		%feature("compactdefaultargs") ShapeTool;
+		%feature("autodoc", "Returns internal xcafdoc_shapetool tool.
+
+Returns
+-------
+opencascade::handle<XCAFDoc_ShapeTool>
+") ShapeTool;
+		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
+
+		/****************** UnSetShapeMaterial ******************/
+		/**** md5 signature: b6124abd7d901d59c49fc99b537e31d6 ****/
+		%feature("compactdefaultargs") UnSetShapeMaterial;
+		%feature("autodoc", "Removes a link with guid xcafdoc::vismaterialrefguid() from shape label to material.
+
+Parameters
+----------
+theShapeLabel: TDF_Label
+
+Returns
+-------
+None
+") UnSetShapeMaterial;
+		void UnSetShapeMaterial(const TDF_Label & theShapeLabel);
+
+		/****************** UnSetShapeMaterial ******************/
+		/**** md5 signature: 762961cc3d6e7a135be7a3b3a11d73e3 ****/
+		%feature("compactdefaultargs") UnSetShapeMaterial;
+		%feature("autodoc", "Removes a link with guid xcafdoc::vismaterialrefguid() from shape label to material. returns true if such link existed.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+bool
+") UnSetShapeMaterial;
+		Standard_Boolean UnSetShapeMaterial(const TopoDS_Shape & theShape);
+
+};
+
+
+%make_alias(XCAFDoc_VisMaterialTool)
+
+%extend XCAFDoc_VisMaterialTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************
 * class XCAFDoc_Volume *
 ***********************/
-class XCAFDoc_Volume : public TDF_Attribute {
+class XCAFDoc_Volume : public TDataStd_Real {
 	public:
 		/****************** XCAFDoc_Volume ******************/
 		/**** md5 signature: dbf6d7bd9fbecc3f59a747906bf1fbdf ****/
@@ -8673,6 +9255,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: fc841fb28cb01367762b1d75c09d001e ****/
 		%feature("compactdefaultargs") Get;
@@ -8720,48 +9310,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		/**** md5 signature: 17ac24e76c81dc3dd9e0c71d510d3f0f ****/
@@ -9247,17 +9795,6 @@ Returns
 Standard_GUID
 ") ID;
 		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Set ******************/
 		/**** md5 signature: 1a0b4c33374b4e717ff9247e5c3e3a20 ****/

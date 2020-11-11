@@ -80,6 +80,7 @@ enum IMeshData_Status {
 	IMeshData_TooFewPoints = 32,
 	IMeshData_Outdated = 64,
 	IMeshData_Reused = 128,
+	IMeshData_UserBreak = 352,
 };
 
 /* end public enums declaration */
@@ -97,6 +98,7 @@ class IMeshData_Status(IntEnum):
 	IMeshData_TooFewPoints = 32
 	IMeshData_Outdated = 64
 	IMeshData_Reused = 128
+	IMeshData_UserBreak = 352
 IMeshData_NoError = IMeshData_Status.IMeshData_NoError
 IMeshData_OpenWire = IMeshData_Status.IMeshData_OpenWire
 IMeshData_SelfIntersectingWire = IMeshData_Status.IMeshData_SelfIntersectingWire
@@ -106,6 +108,7 @@ IMeshData_UnorientedWire = IMeshData_Status.IMeshData_UnorientedWire
 IMeshData_TooFewPoints = IMeshData_Status.IMeshData_TooFewPoints
 IMeshData_Outdated = IMeshData_Status.IMeshData_Outdated
 IMeshData_Reused = IMeshData_Status.IMeshData_Reused
+IMeshData_UserBreak = IMeshData_Status.IMeshData_UserBreak
 };
 /* end python proxy for enums */
 
@@ -252,7 +255,7 @@ TopoDS_Shape
 		const TopoDS_Shape GetShape();
 
 		/****************** SetShape ******************/
-		/**** md5 signature: 2a69c84280e6c3375bf0bb75ca8a528e ****/
+		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "Assigns shape to discrete shape.
 
@@ -284,7 +287,7 @@ None
 class IMeshData_StatusOwner {
 	public:
 		/****************** GetStatusMask ******************/
-		/**** md5 signature: c4977dbfec9453963b3d81ff2083a221 ****/
+		/**** md5 signature: 7d15643f2c76eca4b62d993d51557874 ****/
 		%feature("compactdefaultargs") GetStatusMask;
 		%feature("autodoc", "Returns complete status mask.
 
@@ -295,7 +298,7 @@ int
 		Standard_Integer GetStatusMask();
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: ba44daf1ac5f74c26fea2c894d5ff2c3 ****/
+		/**** md5 signature: 4fc9c78268da42576064f7448cf95e8d ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true in case if status is strictly equal to the given value.
 
@@ -310,7 +313,7 @@ bool
 		Standard_Boolean IsEqual(const IMeshData_Status theValue);
 
 		/****************** IsSet ******************/
-		/**** md5 signature: bdaf90b65041530365c749afd8c3c12d ****/
+		/**** md5 signature: 6ff5daa51b58e262fe6095b9f0fa977d ****/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "Returns true in case if status is set.
 
@@ -325,7 +328,7 @@ bool
 		Standard_Boolean IsSet(const IMeshData_Status theValue);
 
 		/****************** SetStatus ******************/
-		/**** md5 signature: 41fca4814d020441babc2c613f95c7d3 ****/
+		/**** md5 signature: f4d4d2482716ca06203d8549ddfa7c63 ****/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "Adds status to status flags of a face.
 
@@ -340,7 +343,7 @@ None
 		void SetStatus(const IMeshData_Status theValue);
 
 		/****************** UnsetStatus ******************/
-		/**** md5 signature: 215e2355be36e18a17b88e03bc34c4ec ****/
+		/**** md5 signature: de7b95c089f91b5ad9ddd18ae64896d5 ****/
 		%feature("compactdefaultargs") UnsetStatus;
 		%feature("autodoc", "Adds status to status flags of a face.
 
@@ -579,7 +582,7 @@ None
 		virtual void AddPoint(const gp_Pnt2d & thePoint, const Standard_Real theParamOnPCurve);
 
 		/****************** GetFace ******************/
-		/**** md5 signature: bb2c7fa324a787ac4c68bcf8c0851add ****/
+		/**** md5 signature: 4f1b350bd99a4402f45b2e057307925d ****/
 		%feature("compactdefaultargs") GetFace;
 		%feature("autodoc", "Returns discrete face pcurve is associated to.
 
@@ -605,7 +608,7 @@ int
 		virtual Standard_Integer & GetIndex(const Standard_Integer theIndex);
 
 		/****************** GetOrientation ******************/
-		/**** md5 signature: 961833b95f85a72b83ebd7aa1bb8cf25 ****/
+		/**** md5 signature: 4fe26a5f2998c36ea335a2490f9de399 ****/
 		%feature("compactdefaultargs") GetOrientation;
 		%feature("autodoc", "Returns orientation of the edge associated with current pcurve.
 
@@ -648,7 +651,7 @@ None
 		virtual void InsertPoint(const Standard_Integer thePosition, const gp_Pnt2d & thePoint, const Standard_Real theParamOnPCurve);
 
 		/****************** IsForward ******************/
-		/**** md5 signature: 80eb8816bfddb3944e26289b36c20e29 ****/
+		/**** md5 signature: 5d580a30a155081f38ff462134dd09e9 ****/
 		%feature("compactdefaultargs") IsForward;
 		%feature("autodoc", "Returns forward flag of this pcurve.
 
@@ -659,7 +662,7 @@ bool
 		Standard_Boolean IsForward();
 
 		/****************** IsInternal ******************/
-		/**** md5 signature: 9e76046517a04354e10abaeb53469aa1 ****/
+		/**** md5 signature: 612ac76fb537acb721d879a2c910a7cb ****/
 		%feature("compactdefaultargs") IsInternal;
 		%feature("autodoc", "Returns internal flag of this pcurve.
 
@@ -702,7 +705,7 @@ None
 class IMeshData_TessellatedShape : public IMeshData_Shape {
 	public:
 		/****************** GetDeflection ******************/
-		/**** md5 signature: b51cafe6e0a55014c950dafbde135303 ****/
+		/**** md5 signature: e3b25dade98beae1e2c323b9948cdd89 ****/
 		%feature("compactdefaultargs") GetDeflection;
 		%feature("autodoc", "Gets deflection value for the discrete model.
 
@@ -713,7 +716,7 @@ float
 		Standard_Real GetDeflection();
 
 		/****************** SetDeflection ******************/
-		/**** md5 signature: c6d395a064012fa0e99dc833026a8f12 ****/
+		/**** md5 signature: 03443ca3e2f27d9683e99c126a0738ef ****/
 		%feature("compactdefaultargs") SetDeflection;
 		%feature("autodoc", "Sets deflection value for the discrete model.
 
@@ -761,7 +764,7 @@ IMeshData::IPCurveHandle
 		virtual const IMeshData::IPCurveHandle & AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****************** Clear ******************/
-		/**** md5 signature: 0f21e2f09f2862b9a7f8cf368c383baa ****/
+		/**** md5 signature: ad9c9c46f2d5dcba0434153969fd3853 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clears curve and all pcurves assigned to the edge from discretization.
 
@@ -776,7 +779,7 @@ None
 		void Clear(const Standard_Boolean isKeepEndPoints);
 
 		/****************** GetAngularDeflection ******************/
-		/**** md5 signature: 0e01d81b57973d9d9a8c2712dd72b04a ****/
+		/**** md5 signature: 1a86af905db96ad195d5d29bf17ca179 ****/
 		%feature("compactdefaultargs") GetAngularDeflection;
 		%feature("autodoc", "Gets value of angular deflection for the discrete model.
 
@@ -787,7 +790,7 @@ float
 		Standard_Real GetAngularDeflection();
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: ddff0961bd6bc05a4f5fd91fbcb4e69c ****/
+		/**** md5 signature: f29256664be39cb7e866ae349d49b366 ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "Returns 3d curve associated with current edge.
 
@@ -798,7 +801,7 @@ IMeshData::ICurveHandle
 		const IMeshData::ICurveHandle & GetCurve();
 
 		/****************** GetDegenerated ******************/
-		/**** md5 signature: e197db8bb67f4eb4ca691af8b99a9c0f ****/
+		/**** md5 signature: 6af080d4196d23a38e41ee2a54e037a8 ****/
 		%feature("compactdefaultargs") GetDegenerated;
 		%feature("autodoc", "Returns degenerative flag. by default equals to flag stored in topological shape.
 
@@ -809,7 +812,7 @@ bool
 		Standard_Boolean GetDegenerated();
 
 		/****************** GetEdge ******************/
-		/**** md5 signature: fb726d41e35f359b0bf70345e6e82ba9 ****/
+		/**** md5 signature: 1804f9ef3f569f37fa54e4f95bb45a93 ****/
 		%feature("compactdefaultargs") GetEdge;
 		%feature("autodoc", "Returns topods_edge attached to model.
 
@@ -851,7 +854,7 @@ IMeshData::IPCurveHandle
 		virtual const IMeshData::IPCurveHandle & GetPCurve(const Standard_Integer theIndex);
 
 		/****************** GetSameParam ******************/
-		/**** md5 signature: 8d6a02d81abb70e2cebc0f6455fabc98 ****/
+		/**** md5 signature: 2e33942b755b5337e15e6f47f768a210 ****/
 		%feature("compactdefaultargs") GetSameParam;
 		%feature("autodoc", "Returns same param flag. by default equals to flag stored in topological shape.
 
@@ -862,7 +865,7 @@ bool
 		Standard_Boolean GetSameParam();
 
 		/****************** GetSameRange ******************/
-		/**** md5 signature: b24e73d6fa305ab8318a6ee8790b1934 ****/
+		/**** md5 signature: 694a542d9b91e51b6f957d126811c1f0 ****/
 		%feature("compactdefaultargs") GetSameRange;
 		%feature("autodoc", "Returns same range flag. by default equals to flag stored in topological shape.
 
@@ -873,7 +876,7 @@ bool
 		Standard_Boolean GetSameRange();
 
 		/****************** IsFree ******************/
-		/**** md5 signature: 6a90da6425e592852fce2c5d9afe7edb ****/
+		/**** md5 signature: 030d0329e4c2c099b2b42fcdc09ce7fd ****/
 		%feature("compactdefaultargs") IsFree;
 		%feature("autodoc", "Returns true in case if the edge is free one, i.e. it does not have pcurves.
 
@@ -895,7 +898,7 @@ int
 		virtual Standard_Integer PCurvesNb();
 
 		/****************** SetAngularDeflection ******************/
-		/**** md5 signature: 01a03fd12baf6eb7ffe065fdd565315a ****/
+		/**** md5 signature: 7ce4aa9545ae23ef875a6c78fbed8989 ****/
 		%feature("compactdefaultargs") SetAngularDeflection;
 		%feature("autodoc", "Sets value of angular deflection for the discrete model.
 
@@ -910,7 +913,7 @@ None
 		void SetAngularDeflection(const Standard_Real theValue);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 400744a7e814fa17df3107b20042073a ****/
+		/**** md5 signature: bbcd5010cd121d4e7af4b563560bf665 ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "Sets 3d curve associated with current edge.
 
@@ -925,7 +928,7 @@ None
 		void SetCurve(const IMeshData::ICurveHandle & theCurve);
 
 		/****************** SetDegenerated ******************/
-		/**** md5 signature: 9b4dd8da115cc6be5744023917d9b53c ****/
+		/**** md5 signature: 263b38c4d29a0296d1b3914e06fbd74e ****/
 		%feature("compactdefaultargs") SetDegenerated;
 		%feature("autodoc", "Updates degenerative flag.
 
@@ -940,7 +943,7 @@ None
 		void SetDegenerated(const Standard_Boolean theValue);
 
 		/****************** SetSameParam ******************/
-		/**** md5 signature: 3668ce22a7e9f6ee79121a23245ca3c2 ****/
+		/**** md5 signature: a884f27f253c395064b5fc0614fe33f1 ****/
 		%feature("compactdefaultargs") SetSameParam;
 		%feature("autodoc", "Updates same param flag.
 
@@ -955,7 +958,7 @@ None
 		void SetSameParam(const Standard_Boolean theValue);
 
 		/****************** SetSameRange ******************/
-		/**** md5 signature: 363e4f658433b29b00e3dd36e1c89856 ****/
+		/**** md5 signature: e130fbe492f87fb5da52f6bc509a1a70 ****/
 		%feature("compactdefaultargs") SetSameRange;
 		%feature("autodoc", "Updates same range flag.
 
@@ -1004,7 +1007,7 @@ IMeshData::IWireHandle
 		virtual const IMeshData::IWireHandle & AddWire(const TopoDS_Wire & theWire, const Standard_Integer theEdgeNb = 0);
 
 		/****************** GetFace ******************/
-		/**** md5 signature: 5d4e3f9a2677a18f7e234c41ea693806 ****/
+		/**** md5 signature: 24f906fe04f44088d93eb51a09d709c8 ****/
 		%feature("compactdefaultargs") GetFace;
 		%feature("autodoc", "Returns topods_face attached to model.
 
@@ -1015,7 +1018,7 @@ TopoDS_Face
 		const TopoDS_Face GetFace();
 
 		/****************** GetSurface ******************/
-		/**** md5 signature: 4d408fead1da977e8a78bd6bf401cff2 ****/
+		/**** md5 signature: c1511498460aa0f7fc4d090a4c735561 ****/
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "Returns face's surface.
 
@@ -1041,7 +1044,7 @@ IMeshData::IWireHandle
 		virtual const IMeshData::IWireHandle & GetWire(const Standard_Integer theIndex);
 
 		/****************** IsValid ******************/
-		/**** md5 signature: 6706bca59b1b45e79d5eb65fb5853e39 ****/
+		/**** md5 signature: 7d115ff85bb657b98ab8790006673845 ****/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Returns whether the face discrete model is valid.
 
@@ -1137,7 +1140,7 @@ TopAbs_Orientation
 		virtual TopAbs_Orientation GetEdgeOrientation(const Standard_Integer theIndex);
 
 		/****************** GetWire ******************/
-		/**** md5 signature: fa74520bb7d888f76bd47849fcddc175 ****/
+		/**** md5 signature: 78b8c237eca7dfa575d850efd839e1c4 ****/
 		%feature("compactdefaultargs") GetWire;
 		%feature("autodoc", "Returns topods_face attached to model.
 

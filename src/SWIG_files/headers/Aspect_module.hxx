@@ -24,17 +24,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_AspectMarkerDefinitionError.hxx>
 #include<Aspect_Background.hxx>
 #include<Aspect_CircularGrid.hxx>
+#include<Aspect_ColorSpace.hxx>
 #include<Aspect_Convert.hxx>
 #include<Aspect_Display.hxx>
 #include<Aspect_DisplayConnection.hxx>
 #include<Aspect_DisplayConnectionDefinitionError.hxx>
 #include<Aspect_Drawable.hxx>
+#include<Aspect_Eye.hxx>
 #include<Aspect_FBConfig.hxx>
 #include<Aspect_FillMethod.hxx>
+#include<Aspect_FrustumLRBT.hxx>
 #include<Aspect_GenId.hxx>
 #include<Aspect_GradientBackground.hxx>
 #include<Aspect_GradientFillMethod.hxx>
 #include<Aspect_GraphicDeviceDefinitionError.hxx>
+#include<Aspect_GraphicsLibrary.hxx>
 #include<Aspect_Grid.hxx>
 #include<Aspect_GridDrawMode.hxx>
 #include<Aspect_GridType.hxx>
@@ -43,6 +47,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_IdentDefinitionError.hxx>
 #include<Aspect_InteriorStyle.hxx>
 #include<Aspect_NeutralWindow.hxx>
+#include<Aspect_OpenVRSession.hxx>
 #include<Aspect_PolygonOffsetMode.hxx>
 #include<Aspect_RectangularGrid.hxx>
 #include<Aspect_RenderingContext.hxx>
@@ -50,6 +55,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_SequenceOfColor.hxx>
 #include<Aspect_Touch.hxx>
 #include<Aspect_TouchMap.hxx>
+#include<Aspect_TrackedDevicePose.hxx>
 #include<Aspect_TypeOfColorScaleData.hxx>
 #include<Aspect_TypeOfColorScaleOrientation.hxx>
 #include<Aspect_TypeOfColorScalePosition.hxx>
@@ -70,5 +76,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_WindowDefinitionError.hxx>
 #include<Aspect_WindowError.hxx>
 #include<Aspect_XAtom.hxx>
+#include<Aspect_XRAction.hxx>
+#include<Aspect_XRActionSet.hxx>
+#include<Aspect_XRActionType.hxx>
+#include<Aspect_XRAnalogActionData.hxx>
+#include<Aspect_XRDigitalActionData.hxx>
+#include<Aspect_XRGenericAction.hxx>
+#include<Aspect_XRHapticActionData.hxx>
+#include<Aspect_XRPoseActionData.hxx>
+#include<Aspect_XRSession.hxx>
+#include<Aspect_XRTrackedDeviceRole.hxx>
 
 #endif // ASPECT_HXX

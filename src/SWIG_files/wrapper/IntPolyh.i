@@ -816,21 +816,6 @@ None
 ") Dump;
 		void Dump(const Standard_Integer i);
 
-		/****************** Equal ******************/
-		/**** md5 signature: 2c8a7c7f5154d381a4c26aad79ea1ea7 ****/
-		%feature("compactdefaultargs") Equal;
-		%feature("autodoc", "Assignment operator.
-
-Parameters
-----------
-Pt: IntPolyh_Point
-
-Returns
--------
-None
-") Equal;
-		void Equal(const IntPolyh_Point & Pt);
-
 		/****************** Middle ******************/
 		/**** md5 signature: cc93526ee2db8e570c321c6f93164d0f ****/
 		%feature("compactdefaultargs") Middle;

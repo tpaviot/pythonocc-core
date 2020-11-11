@@ -659,7 +659,7 @@ float
 		virtual Standard_Real GetMaxSize();
 
 		/****************** SetMaxSize ******************/
-		/**** md5 signature: dd9e6c10460f1238dd72ead4b38319e9 ****/
+		/**** md5 signature: bec30c9764ffff8d39bf47869dadae4b ****/
 		%feature("compactdefaultargs") SetMaxSize;
 		%feature("autodoc", "Sets maximum size of shape's bounding box.
 

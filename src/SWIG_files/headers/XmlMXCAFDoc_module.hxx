@@ -20,28 +20,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<XmlMXCAFDoc.hxx>
-#include<XmlMXCAFDoc_AreaDriver.hxx>
 #include<XmlMXCAFDoc_AssemblyItemRefDriver.hxx>
 #include<XmlMXCAFDoc_CentroidDriver.hxx>
-#include<XmlMXCAFDoc_ClippingPlaneToolDriver.hxx>
 #include<XmlMXCAFDoc_ColorDriver.hxx>
-#include<XmlMXCAFDoc_ColorToolDriver.hxx>
 #include<XmlMXCAFDoc_DatumDriver.hxx>
 #include<XmlMXCAFDoc_DimTolDriver.hxx>
-#include<XmlMXCAFDoc_DimTolToolDriver.hxx>
-#include<XmlMXCAFDoc_DocumentToolDriver.hxx>
 #include<XmlMXCAFDoc_GraphNodeDriver.hxx>
-#include<XmlMXCAFDoc_LayerToolDriver.hxx>
 #include<XmlMXCAFDoc_LocationDriver.hxx>
 #include<XmlMXCAFDoc_MaterialDriver.hxx>
-#include<XmlMXCAFDoc_MaterialToolDriver.hxx>
-#include<XmlMXCAFDoc_NoteBalloonDriver.hxx>
 #include<XmlMXCAFDoc_NoteBinDataDriver.hxx>
 #include<XmlMXCAFDoc_NoteCommentDriver.hxx>
 #include<XmlMXCAFDoc_NoteDriver.hxx>
-#include<XmlMXCAFDoc_NotesToolDriver.hxx>
-#include<XmlMXCAFDoc_ShapeToolDriver.hxx>
-#include<XmlMXCAFDoc_ViewToolDriver.hxx>
-#include<XmlMXCAFDoc_VolumeDriver.hxx>
+#include<XmlMXCAFDoc_VisMaterialDriver.hxx>
+#include<XmlMXCAFDoc_VisMaterialToolDriver.hxx>
 
 #endif // XMLMXCAFDOC_HXX

@@ -44,7 +44,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ifselect.html"
 #include<Interface_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
-#include<Message_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
@@ -58,7 +57,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ifselect.html"
 %import Interface.i
 %import TColStd.i
 %import TCollection.i
-%import Message.i
 %import MoniTool.i
 
 %pythoncode {
@@ -2087,40 +2085,14 @@ opencascade::handle<TCollection_HAsciiString>
 ") OriginalValue;
 		opencascade::handle<TCollection_HAsciiString> OriginalValue(const Standard_Integer num);
 
-		/****************** PrintDefs ******************/
-		/**** md5 signature: c9e97bf48cb5fb2492864b083d9bc070 ****/
-		%feature("compactdefaultargs") PrintDefs;
-		%feature("autodoc", "Prints definitions, relative to the editor.
 
-Parameters
-----------
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintDefs;
-		void PrintDefs(const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintValues ******************/
-		/**** md5 signature: 52d8e873617820e07c658562af65fdcd ****/
-		%feature("compactdefaultargs") PrintValues;
-		%feature("autodoc", "Prints values, according to what and alsolist <names> true : prints long names; false : prints short names <what> < 0 : prints original values (+ flag modified) <what> > 0 : prints final values (+flag modified) <what> = 0 : prints modified values (original + edited) <alsolist> false (d) : lists are printed only as their count <alsolist> true : lists are printed for all their items.
-
-Parameters
-----------
-S: Message_Messenger
-what: int
-names: bool
-alsolist: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") PrintValues;
-		void PrintValues(const opencascade::handle<Message_Messenger> & S, const Standard_Integer what, const Standard_Boolean names, const Standard_Boolean alsolist = Standard_False);
-
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintDefsToString() {
+            std::stringstream s;
+            self->PrintDefs(s);
+            return s.str();}
+        };
 		/****************** RankFromNumber ******************/
 		/**** md5 signature: fe822a7d919e60ec0cdab5e6f2363afe ****/
 		%feature("compactdefaultargs") RankFromNumber;
@@ -2453,38 +2425,14 @@ int
 ") NbValues;
 		Standard_Integer NbValues();
 
-		/****************** PrintDefs ******************/
-		/**** md5 signature: 8085b26a9e8de7bac759f882538a1d37 ****/
-		%feature("compactdefaultargs") PrintDefs;
-		%feature("autodoc", "No available documentation.
 
-Parameters
-----------
-S: Message_Messenger
-labels: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") PrintDefs;
-		void PrintDefs(const opencascade::handle<Message_Messenger> & S, const Standard_Boolean labels = Standard_False);
-
-		/****************** PrintNames ******************/
-		/**** md5 signature: bcca5021d4ee1af984a3a418822ee42d ****/
-		%feature("compactdefaultargs") PrintNames;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintNames;
-		void PrintNames(const opencascade::handle<Message_Messenger> & S);
-
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintNamesToString() {
+            std::stringstream s;
+            self->PrintNames(s);
+            return s.str();}
+        };
 		/****************** Recognize ******************/
 		/**** md5 signature: 8378a2193566cc16fc414dbb42c7fa11 ****/
 		%feature("compactdefaultargs") Recognize;
@@ -5580,54 +5528,22 @@ int
 ") NbTimes;
 		Standard_Integer NbTimes(const char * sign);
 
-		/****************** PrintCount ******************/
-		/**** md5 signature: a3a0d0adc20e2a75f0e9f8b27808dfe1 ****/
-		%feature("compactdefaultargs") PrintCount;
-		%feature("autodoc", "Prints the counts of items (not the list).
 
-Parameters
-----------
-S: Message_Messenger
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintCountToString() {
+            std::stringstream s;
+            self->PrintCount(s);
+            return s.str();}
+        };
 
-Returns
--------
-None
-") PrintCount;
-		virtual void PrintCount(const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintList ******************/
-		/**** md5 signature: 283025ffa91de1a1048efb43ab452d67 ****/
-		%feature("compactdefaultargs") PrintList;
-		%feature("autodoc", "Prints the lists of items, if they are present (else, prints a message 'no list available') uses <model> to determine for each entity to be listed, its number, and its specific identifier (by printlabel) <mod> gives a mode for printing : - countbyitem : just count (as printcount) - shortbyitem : minimum i.e. count plus 5 first entity numbers - shortbyitem(d) complete list of entity numbers (0: 'global') - entitiesbyitem : list of (entity number/printlabel from the model) other modes are ignored.
-
-Parameters
-----------
-S: Message_Messenger
-model: Interface_InterfaceModel
-mod: IFSelect_PrintCount,optional
-	default value is IFSelect_ListByItem
-
-Returns
--------
-None
-") PrintList;
-		virtual void PrintList(const opencascade::handle<Message_Messenger> & S, const opencascade::handle<Interface_InterfaceModel> & model, const IFSelect_PrintCount mod = IFSelect_ListByItem);
-
-		/****************** PrintSum ******************/
-		/**** md5 signature: 619eebd96a96de8c41ae18d41ac593b7 ****/
-		%feature("compactdefaultargs") PrintSum;
-		%feature("autodoc", "Prints a summary item which has the greatest count of entities for items which are numeric values : their count, maximum, minimum values, cumul, average.
-
-Parameters
-----------
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintSum;
-		virtual void PrintSum(const opencascade::handle<Message_Messenger> & S);
-
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintSumToString() {
+            std::stringstream s;
+            self->PrintSum(s);
+            return s.str();}
+        };
 		/****************** SetList ******************/
 		/**** md5 signature: b238846d95b165f74a942ebb6e50644f ****/
 		%feature("compactdefaultargs") SetList;
@@ -5770,43 +5686,6 @@ bool
 ") CopyModel;
 		virtual Standard_Boolean CopyModel(const opencascade::handle<Interface_InterfaceModel> & original, const opencascade::handle<Interface_InterfaceModel> & newmodel, const Interface_EntityIterator & list, Interface_CopyTool & TC);
 
-		/****************** DumpEntity ******************/
-		/**** md5 signature: 3c3dd24b0cb981d6d6a01ac2e42ecae6 ****/
-		%feature("compactdefaultargs") DumpEntity;
-		%feature("autodoc", "Gives the way of dumping an entity under a form comprehensive for each norm. <model> helps to identify, number ... entities. <level> is to be interpreted for each norm (because of the formats which can be very different).
-
-Parameters
-----------
-model: Interface_InterfaceModel
-protocol: Interface_Protocol
-entity: Standard_Transient
-S: Message_Messenger
-level: int
-
-Returns
--------
-None
-") DumpEntity;
-		virtual void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, const opencascade::handle<Message_Messenger> & S, const Standard_Integer level);
-
-		/****************** DumpEntity ******************/
-		/**** md5 signature: 1cc4ad1d702b20c405a38e5907440718 ****/
-		%feature("compactdefaultargs") DumpEntity;
-		%feature("autodoc", "Calls deferred dumpentity with the recorded default level.
-
-Parameters
-----------
-model: Interface_InterfaceModel
-protocol: Interface_Protocol
-entity: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") DumpEntity;
-		void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, const opencascade::handle<Message_Messenger> & S);
-
 		/****************** DumpHelp ******************/
 		/**** md5 signature: f61ff69745dfa047c7a47cefecb0fa1c ****/
 		%feature("compactdefaultargs") DumpHelp;
@@ -5853,6 +5732,24 @@ Returns
 int
 ") ReadFile;
 		virtual Standard_Integer ReadFile(const char * name, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
+
+		/****************** ReadStream ******************/
+		/**** md5 signature: 7d642d9553aebd964841d2f9dbcaac5a ****/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "Interface to read a data from the specified stream. @param model is the resulting model, which has to be created by this method. in case of error, model must be returned null return value is a status: 0 - ok, 1 - read failure, -1 - stream failure. default implementation returns 1 (error).
+
+Parameters
+----------
+theName: char *
+theIStream: std::istream
+model: Interface_InterfaceModel
+protocol: Interface_Protocol
+
+Returns
+-------
+int
+") ReadStream;
+		virtual Standard_Integer ReadStream(const char * theName, std::istream & theIStream, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****************** SetDumpHelp ******************/
 		/**** md5 signature: 52f5d8333bece08989ec0f399b1dcc5d ****/
@@ -6257,39 +6154,6 @@ Returns
 int
 ") DispatchRank;
 		Standard_Integer DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
-
-		/****************** DumpEntity ******************/
-		/**** md5 signature: f46a6ad738e65e29460b781f142ffb39 ****/
-		%feature("compactdefaultargs") DumpEntity;
-		%feature("autodoc", "Dumps a starting entity according to the current norm. to do this, it calls dumpentity from worklibrary. <level> is to be interpreted for each norm : see specific classes of worklibrary for it. generally, 0 if for very basic (only type ...), greater values give more and more details.
-
-Parameters
-----------
-ent: Standard_Transient
-level: int
-S: Message_Messenger
-
-Returns
--------
-None
-") DumpEntity;
-		void DumpEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level, const opencascade::handle<Message_Messenger> & S);
-
-		/****************** DumpModel ******************/
-		/**** md5 signature: 4e51ab7456f59f673bf73fba1777b713 ****/
-		%feature("compactdefaultargs") DumpModel;
-		%feature("autodoc", "Lists the content of the input model (if there is one) according level : 0 -> gives only count of entities and roots 1 -> lists also roots; 2 -> lists all entities (by tracetype) 3 -> performs a call to checklist (fails) and lists the result 4 -> as 3 but all checklist (fails + warnings) 5,6,7 : as 3 but resp. count,list,labels by fail 8,9,10 : as 4 but resp. count,list,labels by message.
-
-Parameters
-----------
-level: int
-S: Message_Messenger
-
-Returns
--------
-None
-") DumpModel;
-		void DumpModel(const Standard_Integer level, const opencascade::handle<Message_Messenger> & S);
 
 		/****************** DumpSelection ******************/
 		/**** md5 signature: 678949be99cdcf061da9cb44548ea4f4 ****/
@@ -6881,22 +6745,6 @@ Interface_CheckIterator
 ") LastRunCheckList;
 		Interface_CheckIterator LastRunCheckList();
 
-		/****************** ListEntities ******************/
-		/**** md5 signature: c0923f7b92a81c32ababc47c38571c5f ****/
-		%feature("compactdefaultargs") ListEntities;
-		%feature("autodoc", "Internal method which displays an entityiterator <mode> 0 gives short display (only entity numbers) 1 gives a more complete trace (1 line per entity) (can be used each time a trace has to be output from a list) 2 gives a form suitable for givelist : (n1,n2,n3...).
-
-Parameters
-----------
-iter: Interface_EntityIterator
-mode: int
-
-Returns
--------
-None
-") ListEntities;
-		void ListEntities(const Interface_EntityIterator & iter, const Standard_Integer mode);
-
 		/****************** ListFinalModifiers ******************/
 		/**** md5 signature: b6f48db447f14a56611601af586a67c5 ****/
 		%feature("compactdefaultargs") ListFinalModifiers;
@@ -7258,55 +7106,6 @@ int
 ") NumberFromLabel;
 		Standard_Integer NumberFromLabel(const char * val, const Standard_Integer afternum = 0);
 
-		/****************** PrintCheckList ******************/
-		/**** md5 signature: e6a01696523b59142318515d96b57748 ****/
-		%feature("compactdefaultargs") PrintCheckList;
-		%feature("autodoc", "Prints a checkiterator to the current trace file, controlled with the current model complete or fails only, according to <failsonly> <mode> defines the mode of printing 0 : sequential, according entities; else with a checkcounter 1 : according messages, count of entities 2 : id but with list of entities, designated by their numbers 3 : as 2 but with labels of entities.
-
-Parameters
-----------
-checklist: Interface_CheckIterator
-failsonly: bool
-mode: IFSelect_PrintCount
-
-Returns
--------
-None
-") PrintCheckList;
-		void PrintCheckList(const Interface_CheckIterator & checklist, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
-
-		/****************** PrintEntityStatus ******************/
-		/**** md5 signature: b9ede64606f0b393ddb34206141d9ca7 ****/
-		%feature("compactdefaultargs") PrintEntityStatus;
-		%feature("autodoc", "Prints main informations about an entity : its number, type, validity (and checks if any), category, shareds and sharings.. mutable because it can recompute checks as necessary.
-
-Parameters
-----------
-ent: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintEntityStatus;
-		void PrintEntityStatus(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintSignatureList ******************/
-		/**** md5 signature: 4005f1f8f6f1407149dae8f2596fe08e ****/
-		%feature("compactdefaultargs") PrintSignatureList;
-		%feature("autodoc", "Prints a signaturelist to the current trace file, controlled with the current model <mode> defines the mode of printing (see signaturelist).
-
-Parameters
-----------
-signlist: IFSelect_SignatureList
-mode: IFSelect_PrintCount
-
-Returns
--------
-None
-") PrintSignatureList;
-		void PrintSignatureList(const opencascade::handle<IFSelect_SignatureList> & signlist, const IFSelect_PrintCount mode);
-
 		/****************** Protocol ******************/
 		/**** md5 signature: 1c9ddeeacf191f917e4377fcdad955ea ****/
 		%feature("compactdefaultargs") Protocol;
@@ -7378,6 +7177,22 @@ Returns
 IFSelect_ReturnStatus
 ") ReadFile;
 		IFSelect_ReturnStatus ReadFile(const char * filename);
+
+		/****************** ReadStream ******************/
+		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "Reads a file from stream with the worklibrary (sets model and loadedfile) returns a integer status which can be : retdone if ok, retvoid if no protocol not defined, reterror for file not found, retfail if fail during read.
+
+Parameters
+----------
+theName: char *
+theIStream: std::istream
+
+Returns
+-------
+IFSelect_ReturnStatus
+") ReadStream;
+		IFSelect_ReturnStatus ReadStream(const char * theName, std::istream & theIStream);
 
 		/****************** RemoveItem ******************/
 		/**** md5 signature: 3d21325464cc0ceb3ee75dda2155f717 ****/

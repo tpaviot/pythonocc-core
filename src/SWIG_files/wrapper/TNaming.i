@@ -1443,6 +1443,14 @@ TDF_Label
 ") ContextLabel;
 		const TDF_Label & ContextLabel();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Index ******************/
 		/**** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ****/
 		%feature("compactdefaultargs") Index;
@@ -1772,6 +1780,14 @@ opencascade::handle<TDF_DeltaOnRemoval>
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Evolution ******************/
 		/**** md5 signature: 807db9d74d271aa42843b60e4aab188f ****/
 		%feature("compactdefaultargs") Evolution;
@@ -1956,6 +1972,14 @@ TNaming_Name
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -2520,6 +2544,14 @@ None
 ") TNaming_RefShape;
 		 TNaming_RefShape(const TopoDS_Shape & S);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FirstUse ******************/
 		/**** md5 signature: e46533395323ec138eb9f0788412fd43 ****/
 		%feature("compactdefaultargs") FirstUse;
@@ -3837,6 +3869,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;

@@ -41,10 +41,17 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<Poly_module.hxx>
 #include<TCollection_module.hxx>
+#include<XCAFPrs_module.hxx>
+#include<TDocStd_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
+#include<Message_module.hxx>
+#include<Poly_module.hxx>
 #include<Quantity_module.hxx>
 #include<Bnd_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<Image_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -81,10 +88,17 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import Poly.i
 %import TCollection.i
+%import XCAFPrs.i
+%import TDocStd.i
+%import TDF.i
+%import TColStd.i
+%import Message.i
+%import Poly.i
 %import Quantity.i
 %import Bnd.i
+%import XCAFDoc.i
+%import Image.i
 
 %pythoncode {
 from enum import IntEnum
@@ -155,6 +169,12 @@ enum RWGltf_GltfAccessorCompType {
 	RWGltf_GltfAccessorCompType_Float32 = 5126,
 };
 
+enum RWGltf_GltfAlphaMode {
+	RWGltf_GltfAlphaMode_Opaque = 0,
+	RWGltf_GltfAlphaMode_Mask = 1,
+	RWGltf_GltfAlphaMode_Blend = 2,
+};
+
 enum RWGltf_GltfAccessorLayout {
 	RWGltf_GltfAccessorLayout_UNKNOWN = 0,
 	RWGltf_GltfAccessorLayout_Scalar = 1,
@@ -164,6 +184,17 @@ enum RWGltf_GltfAccessorLayout {
 	RWGltf_GltfAccessorLayout_Mat2 = 5,
 	RWGltf_GltfAccessorLayout_Mat3 = 6,
 	RWGltf_GltfAccessorLayout_Mat4 = 7,
+};
+
+enum RWGltf_WriterTrsfFormat {
+	RWGltf_WriterTrsfFormat_Compact = 0,
+	RWGltf_WriterTrsfFormat_Mat4 = 1,
+	RWGltf_WriterTrsfFormat_TRS = 2,
+};
+
+enum  {
+	RWGltf_WriterTrsfFormat_LOWER = 0,
+	RWGltf_WriterTrsfFormat_UPPER = RWGltf_WriterTrsfFormat_TRS,
 };
 
 /* end public enums declaration */
@@ -277,6 +308,14 @@ RWGltf_GltfAccessorCompType_UInt16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAcce
 RWGltf_GltfAccessorCompType_UInt32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt32
 RWGltf_GltfAccessorCompType_Float32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Float32
 
+class RWGltf_GltfAlphaMode(IntEnum):
+	RWGltf_GltfAlphaMode_Opaque = 0
+	RWGltf_GltfAlphaMode_Mask = 1
+	RWGltf_GltfAlphaMode_Blend = 2
+RWGltf_GltfAlphaMode_Opaque = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Opaque
+RWGltf_GltfAlphaMode_Mask = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Mask
+RWGltf_GltfAlphaMode_Blend = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Blend
+
 class RWGltf_GltfAccessorLayout(IntEnum):
 	RWGltf_GltfAccessorLayout_UNKNOWN = 0
 	RWGltf_GltfAccessorLayout_Scalar = 1
@@ -294,10 +333,19 @@ RWGltf_GltfAccessorLayout_Vec4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLa
 RWGltf_GltfAccessorLayout_Mat2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat2
 RWGltf_GltfAccessorLayout_Mat3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat3
 RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat4
+
+class RWGltf_WriterTrsfFormat(IntEnum):
+	RWGltf_WriterTrsfFormat_Compact = 0
+	RWGltf_WriterTrsfFormat_Mat4 = 1
+	RWGltf_WriterTrsfFormat_TRS = 2
+RWGltf_WriterTrsfFormat_Compact = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Compact
+RWGltf_WriterTrsfFormat_Mat4 = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Mat4
+RWGltf_WriterTrsfFormat_TRS = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_TRS
 };
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(RWGltf_CafWriter)
 %wrap_handle(RWGltf_GltfLatePrimitiveArray)
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
@@ -409,6 +457,200 @@ bool
 
 
 %extend RWGltf_CafReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************
+* class RWGltf_CafWriter *
+*************************/
+class RWGltf_CafWriter : public Standard_Transient {
+	public:
+		/****************** RWGltf_CafWriter ******************/
+		/**** md5 signature: ff99e81d575a475273adc594a6a9069b ****/
+		%feature("compactdefaultargs") RWGltf_CafWriter;
+		%feature("autodoc", "Main constructor. @param thefile [in] path to output gltf file @param theisbinary [in] flag to write into binary gltf format (.glb).
+
+Parameters
+----------
+theFile: TCollection_AsciiString
+theIsBinary: bool
+
+Returns
+-------
+None
+") RWGltf_CafWriter;
+		 RWGltf_CafWriter(const TCollection_AsciiString & theFile, Standard_Boolean theIsBinary);
+
+		/****************** ChangeCoordinateSystemConverter ******************/
+		/**** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ****/
+		%feature("compactdefaultargs") ChangeCoordinateSystemConverter;
+		%feature("autodoc", "Return transformation from occt to gltf coordinate system.
+
+Returns
+-------
+RWMesh_CoordinateSystemConverter
+") ChangeCoordinateSystemConverter;
+		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
+
+		/****************** CoordinateSystemConverter ******************/
+		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
+		%feature("compactdefaultargs") CoordinateSystemConverter;
+		%feature("autodoc", "Return transformation from occt to gltf coordinate system.
+
+Returns
+-------
+RWMesh_CoordinateSystemConverter
+") CoordinateSystemConverter;
+		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
+
+		/****************** DefaultStyle ******************/
+		/**** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ****/
+		%feature("compactdefaultargs") DefaultStyle;
+		%feature("autodoc", "Return default material definition to be used for nodes with only color defined.
+
+Returns
+-------
+XCAFPrs_Style
+") DefaultStyle;
+		const XCAFPrs_Style & DefaultStyle();
+
+		/****************** IsBinary ******************/
+		/**** md5 signature: 9ce3d7357ed748dba6cdb9f4404b8e7d ****/
+		%feature("compactdefaultargs") IsBinary;
+		%feature("autodoc", "Return flag to write into binary gltf format (.glb), specified within class constructor.
+
+Returns
+-------
+bool
+") IsBinary;
+		bool IsBinary();
+
+		/****************** IsForcedUVExport ******************/
+		/**** md5 signature: 80e5400de801ae56f3f4e21529ac07e5 ****/
+		%feature("compactdefaultargs") IsForcedUVExport;
+		%feature("autodoc", "Return true to export uv coordinates even if there are no mapped texture; false by default.
+
+Returns
+-------
+bool
+") IsForcedUVExport;
+		bool IsForcedUVExport();
+
+		/****************** Perform ******************/
+		/**** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Write gltf file and associated binary file. triangulation data should be precomputed within shapes! @param thedocument [in] input document @param therootlabels [in] list of root shapes to export @param thelabelfilter [in] optional filter with document nodes to export,  with keys defined by xcafprs_documentexplorer::definechildid() and filled recursively  (leaves and parent assembly nodes at all levels);  when not null, all nodes not included into the map will be ignored @param thefileinfo [in] map with file metadata to put into gltf header section @param theprogress [in] optional progress indicator returns false on file writing failure.
+
+Parameters
+----------
+theDocument: TDocStd_Document
+theRootLabels: TDF_LabelSequence
+theLabelFilter: TColStd_MapOfAsciiString *
+theFileInfo: TColStd_IndexedDataMapOfStringString
+theProgress: Message_ProgressRange
+
+Returns
+-------
+bool
+") Perform;
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+
+		/****************** Perform ******************/
+		/**** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Write gltf file and associated binary file. triangulation data should be precomputed within shapes! @param thedocument [in] input document @param thefileinfo [in] map with file metadata to put into gltf header section @param theprogress [in] optional progress indicator returns false on file writing failure.
+
+Parameters
+----------
+theDocument: TDocStd_Document
+theFileInfo: TColStd_IndexedDataMapOfStringString
+theProgress: Message_ProgressRange
+
+Returns
+-------
+bool
+") Perform;
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+
+		/****************** SetCoordinateSystemConverter ******************/
+		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
+		%feature("compactdefaultargs") SetCoordinateSystemConverter;
+		%feature("autodoc", "Set transformation from occt to gltf coordinate system.
+
+Parameters
+----------
+theConverter: RWMesh_CoordinateSystemConverter
+
+Returns
+-------
+None
+") SetCoordinateSystemConverter;
+		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
+
+		/****************** SetDefaultStyle ******************/
+		/**** md5 signature: 69b73a5756eee96becb5ddbe7670a837 ****/
+		%feature("compactdefaultargs") SetDefaultStyle;
+		%feature("autodoc", "Set default material definition to be used for nodes with only color defined.
+
+Parameters
+----------
+theStyle: XCAFPrs_Style
+
+Returns
+-------
+None
+") SetDefaultStyle;
+		void SetDefaultStyle(const XCAFPrs_Style & theStyle);
+
+		/****************** SetForcedUVExport ******************/
+		/**** md5 signature: f1b443576e23f97537145ae3cb746348 ****/
+		%feature("compactdefaultargs") SetForcedUVExport;
+		%feature("autodoc", "Set flag to export uv coordinates even if there are no mapped texture; false by default.
+
+Parameters
+----------
+theToForce: bool
+
+Returns
+-------
+None
+") SetForcedUVExport;
+		void SetForcedUVExport(bool theToForce);
+
+		/****************** SetTransformationFormat ******************/
+		/**** md5 signature: 9c5e4763a1df6fe364556ff7a71dcfa0 ****/
+		%feature("compactdefaultargs") SetTransformationFormat;
+		%feature("autodoc", "Set preferred transformation format for writing into gltf file.
+
+Parameters
+----------
+theFormat: RWGltf_WriterTrsfFormat
+
+Returns
+-------
+None
+") SetTransformationFormat;
+		void SetTransformationFormat(RWGltf_WriterTrsfFormat theFormat);
+
+		/****************** TransformationFormat ******************/
+		/**** md5 signature: bbeefb2300588d1a6143500ba5adaede ****/
+		%feature("compactdefaultargs") TransformationFormat;
+		%feature("autodoc", "Return preferred transformation format for writing into gltf file; rwgltf_writertrsfformat_compact by default.
+
+Returns
+-------
+RWGltf_WriterTrsfFormat
+") TransformationFormat;
+		RWGltf_WriterTrsfFormat TransformationFormat();
+
+};
+
+
+%make_alias(RWGltf_CafWriter)
+
+%extend RWGltf_CafWriter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -715,6 +957,150 @@ None
 	}
 };
 
+/*******************************
+* class RWGltf_GltfMaterialMap *
+*******************************/
+class RWGltf_GltfMaterialMap : public RWMesh_MaterialMap {
+	public:
+		/****************** RWGltf_GltfMaterialMap ******************/
+		/**** md5 signature: 72d42c8ae7b75c180626db034ae283e4 ****/
+		%feature("compactdefaultargs") RWGltf_GltfMaterialMap;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theFile: TCollection_AsciiString
+theDefSamplerId: int
+
+Returns
+-------
+None
+") RWGltf_GltfMaterialMap;
+		 RWGltf_GltfMaterialMap(const TCollection_AsciiString & theFile, const Standard_Integer theDefSamplerId);
+
+		/****************** AddImages ******************/
+		/**** md5 signature: 3aa5121db2a6a900aa23f78102a3d9de ****/
+		%feature("compactdefaultargs") AddImages;
+		%feature("autodoc", "Add material images.
+
+Parameters
+----------
+theWriter: RWGltf_GltfOStreamWriter *
+theStyle: XCAFPrs_Style
+
+Returns
+-------
+theIsStarted: bool
+") AddImages;
+		void AddImages(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
+
+		/****************** AddMaterial ******************/
+		/**** md5 signature: f00566a55f97100149cb0a32887c56e2 ****/
+		%feature("compactdefaultargs") AddMaterial;
+		%feature("autodoc", "Add material.
+
+Parameters
+----------
+theWriter: RWGltf_GltfOStreamWriter *
+theStyle: XCAFPrs_Style
+
+Returns
+-------
+theIsStarted: bool
+") AddMaterial;
+		void AddMaterial(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
+
+		/****************** AddTextures ******************/
+		/**** md5 signature: e7f7e21ca77d944a33d6f85cccc4fadf ****/
+		%feature("compactdefaultargs") AddTextures;
+		%feature("autodoc", "Add material textures.
+
+Parameters
+----------
+theWriter: RWGltf_GltfOStreamWriter *
+theStyle: XCAFPrs_Style
+
+Returns
+-------
+theIsStarted: bool
+") AddTextures;
+		void AddTextures(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
+
+		/****************** NbImages ******************/
+		/**** md5 signature: 287f9b24a015fc67da1fac6d39501fc7 ****/
+		%feature("compactdefaultargs") NbImages;
+		%feature("autodoc", "Return extent of images map.
+
+Returns
+-------
+int
+") NbImages;
+		Standard_Integer NbImages();
+
+		/****************** NbTextures ******************/
+		/**** md5 signature: efcc0445631a819a279f5a21b5f29bcb ****/
+		%feature("compactdefaultargs") NbTextures;
+		%feature("autodoc", "Return extent of textures map.
+
+Returns
+-------
+int
+") NbTextures;
+		Standard_Integer NbTextures();
+
+		/****************** baseColorTexture ******************/
+		/**** md5 signature: dfff25579f1db3e6f1635a79761ecf6f ****/
+		%feature("compactdefaultargs") baseColorTexture;
+		%feature("autodoc", "Return base color texture.
+
+Parameters
+----------
+theMat: XCAFDoc_VisMaterial
+
+Returns
+-------
+opencascade::handle<Image_Texture>
+") baseColorTexture;
+		static const opencascade::handle<Image_Texture> & baseColorTexture(const opencascade::handle<XCAFDoc_VisMaterial> & theMat);
+
+};
+
+
+%extend RWGltf_GltfMaterialMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************
+* class RWGltf_GltfOStreamWriter *
+*********************************/
+class RWGltf_GltfOStreamWriter : public rapidjson::Writer<rapidjson::OStreamWrapper> {
+	public:
+		/****************** RWGltf_GltfOStreamWriter ******************/
+		/**** md5 signature: 39e45338506e2d1a7664840241a7b472 ****/
+		%feature("compactdefaultargs") RWGltf_GltfOStreamWriter;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theOStream: rapidjson::OStreamWrapper
+
+Returns
+-------
+None
+") RWGltf_GltfOStreamWriter;
+		 RWGltf_GltfOStreamWriter(rapidjson::OStreamWrapper & theOStream);
+
+};
+
+
+%extend RWGltf_GltfOStreamWriter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************************
 * class RWGltf_GltfPrimArrayData *
 *********************************/
@@ -755,6 +1141,46 @@ None
 
 
 %extend RWGltf_GltfPrimArrayData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class RWGltf_GltfSceneNodeMap *
+********************************/
+class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode,XCAFPrs_DocumentNode> {
+	public:
+		/****************** RWGltf_GltfSceneNodeMap ******************/
+		/**** md5 signature: 7eb6a53ba949dbdb457796ba63fb4a03 ****/
+		%feature("compactdefaultargs") RWGltf_GltfSceneNodeMap;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWGltf_GltfSceneNodeMap;
+		 RWGltf_GltfSceneNodeMap();
+
+		/****************** FindIndex ******************/
+		/**** md5 signature: 47457616668af339aa3d60c8b18b08d5 ****/
+		%feature("compactdefaultargs") FindIndex;
+		%feature("autodoc", "Find index from document node string identifier.
+
+Parameters
+----------
+theNodeId: TCollection_AsciiString
+
+Returns
+-------
+int
+") FindIndex;
+		Standard_Integer FindIndex(const TCollection_AsciiString & theNodeId);
+
+};
+
+
+%extend RWGltf_GltfSceneNodeMap {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -817,6 +1243,9 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 		Graphic3d_Vec3 EmissiveFactor;
 		Standard_ShortReal Metallic;
 		Standard_ShortReal Roughness;
+		Standard_ShortReal AlphaCutOff;
+		RWGltf_GltfAlphaMode AlphaMode;
+		bool IsDoubleSided;
 		/****************** RWGltf_MaterialMetallicRoughness ******************/
 		/**** md5 signature: 3e7e7f6dcac2ab520e773c1e52d06831 ****/
 		%feature("compactdefaultargs") RWGltf_MaterialMetallicRoughness;

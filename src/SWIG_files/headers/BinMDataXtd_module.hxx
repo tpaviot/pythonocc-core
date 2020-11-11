@@ -20,16 +20,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<BinMDataXtd.hxx>
-#include<BinMDataXtd_AxisDriver.hxx>
 #include<BinMDataXtd_ConstraintDriver.hxx>
 #include<BinMDataXtd_GeometryDriver.hxx>
 #include<BinMDataXtd_PatternStdDriver.hxx>
-#include<BinMDataXtd_PlacementDriver.hxx>
-#include<BinMDataXtd_PlaneDriver.hxx>
-#include<BinMDataXtd_PointDriver.hxx>
 #include<BinMDataXtd_PositionDriver.hxx>
 #include<BinMDataXtd_PresentationDriver.hxx>
-#include<BinMDataXtd_ShapeDriver.hxx>
 #include<BinMDataXtd_TriangulationDriver.hxx>
 
 #endif // BINMDATAXTD_HXX

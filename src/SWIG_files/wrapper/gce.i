@@ -1153,7 +1153,7 @@ None
 		/****************** gce_MakeCone ******************/
 		/**** md5 signature: 4efcb63150abec208f95498ff7e9184f ****/
 		%feature("compactdefaultargs") gce_MakeCone;
-		%feature("autodoc", "Makes a cone by its axis <axis> and and two points. the distance between <p1> and the axis is the radius of the section passing through <p1>. the distance between <p2> and the axis is the radius of the section passing through <p2>. if <p1p2> is colinear to <axis> we have the status 'nullangle' if <p3p4> is perpendicular to <axis> we have the status 'nullangle' if <p1> and <p2> are confused we have the status 'confusedpoints'.
+		%feature("autodoc", "Makes a cone by its axis <axis> and two points. the distance between <p1> and the axis is the radius of the section passing through <p1>. the distance between <p2> and the axis is the radius of the section passing through <p2>. if <p1p2> is colinear to <axis> we have the status 'nullangle' if <p3p4> is perpendicular to <axis> we have the status 'nullangle' if <p1> and <p2> are confused we have the status 'confusedpoints'.
 
 Parameters
 ----------
@@ -1170,7 +1170,7 @@ None
 		/****************** gce_MakeCone ******************/
 		/**** md5 signature: 52bd38f3e9183528e21d7586e6d00968 ****/
 		%feature("compactdefaultargs") gce_MakeCone;
-		%feature("autodoc", "Makes a cone by its axis <axis> and and two points. the distance between <p1> and the axis is the radius of the section passing through <p1> the distance between <p2> and the axis is the radius of the section passing through <p2> if <p1p2> is colinear to <axis> we have the status 'nullangle' if <p3p4> is perpendicular to <axis> we have the status 'nullangle' if <p1> and <p2> are confused we have the status 'confusedpoints'.
+		%feature("autodoc", "Makes a cone by its axis <axis> and two points. the distance between <p1> and the axis is the radius of the section passing through <p1> the distance between <p2> and the axis is the radius of the section passing through <p2> if <p1p2> is colinear to <axis> we have the status 'nullangle' if <p3p4> is perpendicular to <axis> we have the status 'nullangle' if <p1> and <p2> are confused we have the status 'confusedpoints'.
 
 Parameters
 ----------

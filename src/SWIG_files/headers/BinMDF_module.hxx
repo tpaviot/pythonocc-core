@@ -23,6 +23,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BinMDF_ADriver.hxx>
 #include<BinMDF_ADriverTable.hxx>
 #include<BinMDF_DataMapIteratorOfTypeADriverMap.hxx>
+#include<BinMDF_DerivedDriver.hxx>
 #include<BinMDF_DoubleMapIteratorOfTypeIdMap.hxx>
 #include<BinMDF_ReferenceDriver.hxx>
 #include<BinMDF_StringIdMap.hxx>

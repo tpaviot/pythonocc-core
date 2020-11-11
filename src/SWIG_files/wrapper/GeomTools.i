@@ -43,7 +43,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomtools.html"
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
-#include<Message_module.hxx>
 #include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColgp_module.hxx>
@@ -55,7 +54,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomtools.html"
 %import NCollection.i
 %import Geom.i
 %import Geom2d.i
-%import Message.i
 
 %pythoncode {
 from enum import IntEnum
@@ -186,17 +184,6 @@ opencascade::handle<Geom2d_Curve>
             self->Dump(s);
             return s.str();}
         };
-		/****************** GetProgress ******************/
-		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress();
-
 		/****************** Index ******************/
 		/**** md5 signature: e1559320ddf80ce0263d324c781a3407 ****/
 		%feature("compactdefaultargs") Index;
@@ -226,21 +213,6 @@ int
                 std::stringstream s(src);
                 self->ReadCurve2d(s);}
             };
-		/****************** SetProgress ******************/
-		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-PR: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & PR);
-
 
         %feature("autodoc", "1");
         %extend{
@@ -323,17 +295,6 @@ opencascade::handle<Geom_Curve>
             self->Dump(s);
             return s.str();}
         };
-		/****************** GetProgress ******************/
-		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress();
-
 		/****************** Index ******************/
 		/**** md5 signature: c53cbf4d0efdfb90843e67e9b32c5252 ****/
 		%feature("compactdefaultargs") Index;
@@ -363,21 +324,6 @@ int
                 std::stringstream s(src);
                 self->ReadCurve(s);}
             };
-		/****************** SetProgress ******************/
-		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-PR: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & PR);
-
 
         %feature("autodoc", "1");
         %extend{
@@ -445,17 +391,6 @@ None
             self->Dump(s);
             return s.str();}
         };
-		/****************** GetProgress ******************/
-		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress();
-
 		/****************** Index ******************/
 		/**** md5 signature: 7fc50802d17ebd7c660284e6560fb7f6 ****/
 		%feature("compactdefaultargs") Index;
@@ -485,21 +420,6 @@ int
                 std::stringstream s(src);
                 self->ReadSurface(s);}
             };
-		/****************** SetProgress ******************/
-		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-PR: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & PR);
-
 		/****************** Surface ******************/
 		/**** md5 signature: f08a9f2a886e0a3933ae15a38f9b8dda ****/
 		%feature("compactdefaultargs") Surface;

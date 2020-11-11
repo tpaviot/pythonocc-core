@@ -2043,6 +2043,21 @@ bool
 ") HasFinitePart;
 		Standard_Boolean HasFinitePart();
 
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
 		/****************** IsOpen ******************/
 		/**** md5 signature: 49b225479601710d1c8888cb2f18ffcf ****/
 		%feature("compactdefaultargs") IsOpen;

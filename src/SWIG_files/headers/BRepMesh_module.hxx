@@ -31,6 +31,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_DataStructureOfDelaun.hxx>
 #include<BRepMesh_Deflection.hxx>
 #include<BRepMesh_DegreeOfFreedom.hxx>
+#include<BRepMesh_DelabellaBaseMeshAlgo.hxx>
+#include<BRepMesh_DelabellaMeshAlgoFactory.hxx>
 #include<BRepMesh_Delaun.hxx>
 #include<BRepMesh_DelaunayBaseMeshAlgo.hxx>
 #include<BRepMesh_DelaunayDeflectionControlMeshAlgo.hxx>

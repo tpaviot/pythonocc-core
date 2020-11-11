@@ -592,21 +592,6 @@ None
 ") Intrv_Intervals;
 		 Intrv_Intervals(const Intrv_Interval & Int);
 
-		/****************** Intrv_Intervals ******************/
-		/**** md5 signature: 4d384c9d768b34a6520cc907b05c5001 ****/
-		%feature("compactdefaultargs") Intrv_Intervals;
-		%feature("autodoc", "Creates by copying an existing sequence of intervals.
-
-Parameters
-----------
-Int: Intrv_Intervals
-
-Returns
--------
-None
-") Intrv_Intervals;
-		 Intrv_Intervals(const Intrv_Intervals & Int);
-
 		/****************** Intersect ******************/
 		/**** md5 signature: e12a005317201bc1bd17d62e86f0673e ****/
 		%feature("compactdefaultargs") Intersect;

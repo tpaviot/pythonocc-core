@@ -168,6 +168,14 @@ bool
 ") CreateNewDocument;
 		virtual Standard_Boolean CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, const TCollection_ExtendedString & theFormat);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** ErrorMessage ******************/
 		/**** md5 signature: a03611f142b478c30985cd3a78a49d6c ****/
 		%feature("compactdefaultargs") ErrorMessage;
@@ -1536,6 +1544,17 @@ Returns
 bool
 ") HasBackReferences;
 		Standard_Boolean HasBackReferences();
+
+		/****************** HasModifications ******************/
+		/**** md5 signature: 7fabc8d5b945eb96e5ea2a0e8f0d4be4 ****/
+		%feature("compactdefaultargs") HasModifications;
+		%feature("autodoc", "/** * public methods to check modifications of the object since last commit */ returns true if object attributes or or his children were modified in the current open transaction.
+
+Returns
+-------
+bool
+") HasModifications;
+		Standard_Boolean HasModifications();
 
 		/****************** HasReference ******************/
 		/**** md5 signature: e8677deafeb1a27e87cdc3d9ba839b8d ****/
@@ -3136,19 +3155,21 @@ None
 		virtual void AfterRetrieval();
 
 		/****************** Create ******************/
-		/**** md5 signature: 526fe795ffbca3a8bd05b239b549c506 ****/
+		/**** md5 signature: 0825e50eb60f2c25400b581c167f8a28 ****/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "Creates a new partition on given label.
 
 Parameters
 ----------
 theLabel: TDF_Label
+theSetName: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 opencascade::handle<TObj_Partition>
 ") Create;
-		static opencascade::handle<TObj_Partition> Create(const TDF_Label & theLabel);
+		static opencascade::handle<TObj_Partition> Create(const TDF_Label & theLabel, const Standard_Boolean theSetName = Standard_True);
 
 		/****************** GetLastIndex ******************/
 		/**** md5 signature: 3b931de29b8e9da98569a06fe0d1725e ****/
@@ -3395,9 +3416,9 @@ int
 class TObj_OcafObjectIterator : public TObj_LabelIterator {
 	public:
 		/****************** TObj_OcafObjectIterator ******************/
-		/**** md5 signature: 4f62f01d8baa0152c9e0bfcf61cb812f ****/
+		/**** md5 signature: b1349528ca90af110980c95a03b85766 ****/
 		%feature("compactdefaultargs") TObj_OcafObjectIterator;
-		%feature("autodoc", "Creates the iterator on objects in the sub labels of thelabel thetype narrows a variety of iterated objects.
+		%feature("autodoc", "Creates the iterator on tobj objects on the sub-labels of thelabel. @param thelabel start label for searching @param thetype type of the found objects, or all types if null @param therecursive search children recursively, not only on sub-labels of thelabel @param theallsubchildren do not stop at the first level of children, but search for sub-children too.
 
 Parameters
 ----------
@@ -3406,12 +3427,14 @@ theType: Standard_Type,optional
 	default value is NULL
 theRecursive: bool,optional
 	default value is Standard_False
+theAllSubChildren: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") TObj_OcafObjectIterator;
-		 TObj_OcafObjectIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = NULL, const Standard_Boolean theRecursive = Standard_False);
+		 TObj_OcafObjectIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = NULL, const Standard_Boolean theRecursive = Standard_False, const Standard_Boolean theAllSubChildren = Standard_False);
 
 };
 

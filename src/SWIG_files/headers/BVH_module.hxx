@@ -41,6 +41,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BVH_QueueBuilder.hxx>
 #include<BVH_QuickSorter.hxx>
 #include<BVH_RadixSorter.hxx>
+#include<BVH_Ray.hxx>
 #include<BVH_Set.hxx>
 #include<BVH_Sorter.hxx>
 #include<BVH_SpatialMedianBuilder.hxx>

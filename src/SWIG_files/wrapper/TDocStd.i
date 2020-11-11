@@ -198,6 +198,14 @@ None
 ") DefineFormat;
 		void DefineFormat(const TCollection_AsciiString & theFormat, const TCollection_AsciiString & theDescription, const TCollection_AsciiString & theExtension, const opencascade::handle<PCDM_RetrievalDriver> & theReader, const opencascade::handle<PCDM_StorageDriver> & theWriter);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDocument ******************/
 		/**** md5 signature: 15b7beb5a9532b9cd3868298ccdb9245 ****/
 		%feature("compactdefaultargs") GetDocument;
@@ -254,17 +262,6 @@ Returns
 int
 ") IsInSession;
 		Standard_Integer IsInSession(const TCollection_ExtendedString & path);
-
-		/****************** MessageDriver ******************/
-		/**** md5 signature: fa694f7a388b17a440d00a2836607d30 ****/
-		%feature("compactdefaultargs") MessageDriver;
-		%feature("autodoc", "Redefines message driver, by default outputs to std::cout.
-
-Returns
--------
-opencascade::handle<Message_Messenger>
-") MessageDriver;
-		virtual opencascade::handle<Message_Messenger> MessageDriver();
 
 		/****************** NbDocuments ******************/
 		/**** md5 signature: 962bf94556b581ec6396ebefd0c99d4c ****/
@@ -339,7 +336,7 @@ None
 		virtual void OnOpenTransaction(const opencascade::handle<TDocStd_Document> & theDoc);
 
 		/****************** Open ******************/
-		/**** md5 signature: c965ed34d16d4461492301781dab43b9 ****/
+		/**** md5 signature: 64daab7c4cd0367cc3097722793092bf ****/
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "Retrieves the document adoc stored under the name aname in the directory directory. in order not to override a version of adoc which is already in memory, this method can be made to depend on the value returned by isinsession.
 
@@ -347,12 +344,14 @@ Parameters
 ----------
 path: TCollection_ExtendedString
 aDoc: TDocStd_Document
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 PCDM_ReaderStatus
 ") Open;
-		PCDM_ReaderStatus Open(const TCollection_ExtendedString & path, opencascade::handle<TDocStd_Document> & aDoc);
+		PCDM_ReaderStatus Open(const TCollection_ExtendedString & path, opencascade::handle<TDocStd_Document> & aDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ReadingFormats ******************/
 		/**** md5 signature: 6dff661583c284b08e2b917089276643 ****/
@@ -392,22 +391,24 @@ char *
 		virtual const char * ResourcesName();
 
 		/****************** Save ******************/
-		/**** md5 signature: e4ff0f9b64e4a2a544bc496d957c16f8 ****/
+		/**** md5 signature: ca404dafa6e21d22d47d3cf8edb52587 ****/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Save adoc active document. exceptions: standard_notimplemented if the document was not retrieved in the applicative session by using open.
 
 Parameters
 ----------
 aDoc: TDocStd_Document
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 PCDM_StoreStatus
 ") Save;
-		PCDM_StoreStatus Save(const opencascade::handle<TDocStd_Document> & aDoc);
+		PCDM_StoreStatus Save(const opencascade::handle<TDocStd_Document> & aDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Save ******************/
-		/**** md5 signature: fc4a3b023a5552d1845fd6dc092f896a ****/
+		/**** md5 signature: 6628e2e8671351cd0089d239d1b481ec ****/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Save the document overwriting the previous file.
 
@@ -415,15 +416,17 @@ Parameters
 ----------
 aDoc: TDocStd_Document
 theStatusMessage: TCollection_ExtendedString
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 PCDM_StoreStatus
 ") Save;
-		PCDM_StoreStatus Save(const opencascade::handle<TDocStd_Document> & aDoc, TCollection_ExtendedString & theStatusMessage);
+		PCDM_StoreStatus Save(const opencascade::handle<TDocStd_Document> & aDoc, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SaveAs ******************/
-		/**** md5 signature: c9b9ca2dda903604001b3608dd30d319 ****/
+		/**** md5 signature: 6864a4cb755dcc951e90f118437ba952 ****/
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "Save the active document in the file <name> in the path <path> ; o verwrites the file if it already exists.
 
@@ -431,15 +434,17 @@ Parameters
 ----------
 aDoc: TDocStd_Document
 path: TCollection_ExtendedString
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 PCDM_StoreStatus
 ") SaveAs;
-		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & aDoc, const TCollection_ExtendedString & path);
+		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & aDoc, const TCollection_ExtendedString & path, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SaveAs ******************/
-		/**** md5 signature: f7c6d751122ccfe78ef23477a560330e ****/
+		/**** md5 signature: ea5cc4a2a65eebccd513d51436a6b366 ****/
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "Save the active document in the file <name> in the path <path> . overwrite the file if it already exist.
 
@@ -448,12 +453,14 @@ Parameters
 aDoc: TDocStd_Document
 path: TCollection_ExtendedString
 theStatusMessage: TCollection_ExtendedString
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 PCDM_StoreStatus
 ") SaveAs;
-		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & aDoc, const TCollection_ExtendedString & path, TCollection_ExtendedString & theStatusMessage);
+		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & aDoc, const TCollection_ExtendedString & path, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** WritingFormats ******************/
 		/**** md5 signature: a5407beb640b0ebe68c0c3306feeeddb ****/
@@ -639,7 +646,7 @@ class TDocStd_Document : public CDM_Document {
 		/****************** TDocStd_Document ******************/
 		/**** md5 signature: 6c9bc471881d34be3dc6a79830b980f0 ****/
 		%feature("compactdefaultargs") TDocStd_Document;
-		%feature("autodoc", "Constructs a document object defined by the string astorageformat.
+		%feature("autodoc", "Constructs a document object defined by the string astorageformat. if a document is created outside of an application using this constructor, it must be managed by a handle. otherwise memory problems could appear: call of tdocstd_owner::getdocument creates a opencascade::handle<tdocstd_document>, so, releasing it will produce a crash.
 
 Parameters
 ----------
@@ -721,6 +728,14 @@ bool
 ") CommitCommand;
 		Standard_Boolean CommitCommand();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EmptyLabelsSavingMode ******************/
 		/**** md5 signature: ebbf4e01e7bb5a968c5adb29c08e5c61 ****/
 		%feature("compactdefaultargs") EmptyLabelsSavingMode;
@@ -1782,6 +1797,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDocument ******************/
 		/**** md5 signature: 79c1f99856b1ab066d94b2ba86b72e8b ****/
 		%feature("compactdefaultargs") GetDocument;
@@ -1889,6 +1912,22 @@ None
 		static void SetDocument(const opencascade::handle<TDF_Data> & indata, const opencascade::handle<TDocStd_Document> & doc);
 
 		/****************** SetDocument ******************/
+		/**** md5 signature: 44a6a77a2fcd055a5ba41b8d9ce53168 ****/
+		%feature("compactdefaultargs") SetDocument;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+indata: TDF_Data
+doc: TDocStd_Document *
+
+Returns
+-------
+None
+") SetDocument;
+		static void SetDocument(const opencascade::handle<TDF_Data> & indata, TDocStd_Document * doc);
+
+		/****************** SetDocument ******************/
 		/**** md5 signature: e3d965df1d5bccf3439b56e69912f637 ****/
 		%feature("compactdefaultargs") SetDocument;
 		%feature("autodoc", "No available documentation.
@@ -1902,6 +1941,21 @@ Returns
 None
 ") SetDocument;
 		void SetDocument(const opencascade::handle<TDocStd_Document> & document);
+
+		/****************** SetDocument ******************/
+		/**** md5 signature: ad3e7172f1fb605a9281cd01ed3a5999 ****/
+		%feature("compactdefaultargs") SetDocument;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+document: TDocStd_Document *
+
+Returns
+-------
+None
+") SetDocument;
+		void SetDocument(TDocStd_Document * document);
 
 };
 

@@ -48,11 +48,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xscontrol.html"
 #include<TColStd_module.hxx>
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
+#include<Message_module.hxx>
 #include<TopTools_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
-#include<Message_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Transfer_module.hxx>
@@ -71,11 +71,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xscontrol.html"
 %import TColStd.i
 %import Interface.i
 %import TCollection.i
+%import Message.i
 %import TopTools.i
 %import Geom.i
 %import Geom2d.i
 %import gp.i
-%import Message.i
 
 %pythoncode {
 from enum import IntEnum
@@ -563,7 +563,7 @@ None
 		void SetNames(const char * theLongName, const char * theShortName);
 
 		/****************** TransferWriteShape ******************/
-		/**** md5 signature: f360bce7fe914b53a68013a5b919b6ae ****/
+		/**** md5 signature: a1087710e2fdfd6eb93794359a254234 ****/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "Takes one shape and transfers it to an interfacemodel (already created, e.g. by newmodel) default uses actorwrite; can be redefined as necessary returned value is a status, as follows : done ok , void : no result , fail : fail (e.g. exception) error : bad conditions , bad model or null model.
 
@@ -574,15 +574,17 @@ FP: Transfer_FinderProcess
 model: Interface_InterfaceModel
 modetrans: int,optional
 	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferWriteShape;
-		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0);
+		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferWriteTransient ******************/
-		/**** md5 signature: f21d954bd84c7081ee24142bda2e7619 ****/
+		/**** md5 signature: efb5bc18dd2c257eaaab9cbc66271108 ****/
 		%feature("compactdefaultargs") TransferWriteTransient;
 		%feature("autodoc", "Takes one transient object and transfers it to an interfacemodel (already created, e.g. by newmodel) (result is recorded in the model by addwithrefs) fp records produced results and checks //! default uses actorwrite; can be redefined as necessary returned value is a status, as follows : 0 ok , 1 no result , 2 fail (e.g. exception raised) -1 bad conditions , -2 bad model or null model for type of object not recognized : should return 1.
 
@@ -593,12 +595,14 @@ FP: Transfer_FinderProcess
 model: Interface_InterfaceModel
 modetrans: int,optional
 	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferWriteTransient;
-		virtual IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Standard_Transient> & obj, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0);
+		virtual IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Standard_Transient> & obj, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** WorkLibrary ******************/
 		/**** md5 signature: 7c195930f9d0e8c986e2cba27b8d6ee4 ****/
@@ -927,6 +931,22 @@ IFSelect_ReturnStatus
 ") ReadFile;
 		IFSelect_ReturnStatus ReadFile(const char * filename);
 
+		/****************** ReadStream ******************/
+		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "Loads a file from stream and returns the read status.
+
+Parameters
+----------
+theName: char *
+theIStream: std::istream
+
+Returns
+-------
+IFSelect_ReturnStatus
+") ReadStream;
+		IFSelect_ReturnStatus ReadStream(const char * theName, std::istream & theIStream);
+
 		/****************** RootForTransfer ******************/
 		/**** md5 signature: c2a76b8d96e252b5e6c8127f08dd357b ****/
 		%feature("compactdefaultargs") RootForTransfer;
@@ -992,52 +1012,58 @@ TopoDS_Shape
 		TopoDS_Shape Shape(const Standard_Integer num = 1);
 
 		/****************** TransferEntity ******************/
-		/**** md5 signature: e9f0d85f2309b756e1138031ffab88d1 ****/
+		/**** md5 signature: a61761ec2b4371c1cd95b155e879a9f5 ****/
 		%feature("compactdefaultargs") TransferEntity;
 		%feature("autodoc", "Translates an iges or step entity in the model. true is returned if a shape is produced; otherwise, false is returned.
 
 Parameters
 ----------
 start: Standard_Transient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") TransferEntity;
-		Standard_Boolean TransferEntity(const opencascade::handle<Standard_Transient> & start);
+		Standard_Boolean TransferEntity(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferList ******************/
-		/**** md5 signature: 009439ae1ae08c1c5405be54219f9bab ****/
+		/**** md5 signature: 2fe30c43488fd370e3a2ea9d29eb8e19 ****/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "Translates a list of entities. returns the number of iges or step entities that were successfully translated. the list can be produced with givelist. warning - this function does not clear the existing output shapes.
 
 Parameters
 ----------
 list: TColStd_HSequenceOfTransient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferList;
-		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferOne ******************/
-		/**** md5 signature: 21dda38a1bee06e16c141392cd7344e7 ****/
+		/**** md5 signature: 5ca21e727f2cec59153b212824d1b2a4 ****/
 		%feature("compactdefaultargs") TransferOne;
 		%feature("autodoc", "Translates an iges or step entity identified by the rank num in the model. false is returned if no shape is produced.
 
 Parameters
 ----------
 num: int
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") TransferOne;
-		Standard_Boolean TransferOne(const Standard_Integer num);
+		Standard_Boolean TransferOne(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferOneRoot ******************/
-		/**** md5 signature: 028bf2cebaff8b802fef19e42bd5c2ed ****/
+		/**** md5 signature: 0762ab3715286d6c83ea56f2614a4210 ****/
 		%feature("compactdefaultargs") TransferOneRoot;
 		%feature("autodoc", "Translates a root identified by the rank num in the model. false is returned if no shape is produced.
 
@@ -1045,23 +1071,30 @@ Parameters
 ----------
 num: int,optional
 	default value is 1
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") TransferOneRoot;
-		Standard_Boolean TransferOneRoot(const Standard_Integer num = 1);
+		Standard_Boolean TransferOneRoot(const Standard_Integer num = 1, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: 4999933d4aa982f0947849f7f858c1c8 ****/
+		/**** md5 signature: 83eb98e38114ddbe608d9e72e46ea3a0 ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Translates all translatable roots and returns the number of successful translations. warning - this function clears existing output shapes first.
+
+Parameters
+----------
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferRoots;
-		Standard_Integer TransferRoots();
+		Standard_Integer TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** WS ******************/
 		/**** md5 signature: 4d866376b023ba3185e62899810cc121 ****/
@@ -1668,23 +1701,6 @@ opencascade::handle<Interface_InterfaceModel>
 ") Model;
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
-		/****************** PrintStats ******************/
-		/**** md5 signature: 8bd41dfecd854fc8ff870fc204b89f8f ****/
-		%feature("compactdefaultargs") PrintStats;
-		%feature("autodoc", "Prints statistics on current trace file, according <what> and <mode>. see printstatsprocess for details.
-
-Parameters
-----------
-theWhat: int
-theMode: int,optional
-	default value is 0
-
-Returns
--------
-None
-") PrintStats;
-		void PrintStats(const Standard_Integer theWhat, const Standard_Integer theMode = 0);
-
 		/****************** PrintStatsOnList ******************/
 		/**** md5 signature: 163b44563c2a8ec32944ebf6b8b54c19 ****/
 		%feature("compactdefaultargs") PrintStatsOnList;
@@ -1947,7 +1963,7 @@ None
 		void TransferClear(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theLevel = 0);
 
 		/****************** TransferList ******************/
-		/**** md5 signature: 299e101b7e278c53f5cfdff497f75ffc ****/
+		/**** md5 signature: 39770c9d3099552c2587ae06811ed0fb ****/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "Commands the transfer on reading for a list of entities to data for imagine, using the selected actor for read returns count of transferred entities, ok or with fails (0/1) if <rec> is true (d), the results are recorded by recordresult.
 
@@ -1956,15 +1972,17 @@ Parameters
 theList: TColStd_HSequenceOfTransient
 theRec: bool,optional
 	default value is Standard_True
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferList;
-		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Boolean theRec = Standard_True);
+		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Boolean theRec = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferOne ******************/
-		/**** md5 signature: dbf85233730492dd05547394d1707d7c ****/
+		/**** md5 signature: c584819dd9b126bcab438697e731b566 ****/
 		%feature("compactdefaultargs") TransferOne;
 		%feature("autodoc", "Commands the transfer on reading for an entity to data for imagine, using the selected actor for read returns count of transferred entities, ok or with fails (0/1) if <rec> is true (d), the result is recorded by recordresult.
 
@@ -1973,27 +1991,31 @@ Parameters
 theEnt: Standard_Transient
 theRec: bool,optional
 	default value is Standard_True
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferOne;
-		Standard_Integer TransferOne(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Boolean theRec = Standard_True);
+		Standard_Integer TransferOne(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Boolean theRec = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: e3351ab566fcd2f275b7bc6ceae25f92 ****/
+		/**** md5 signature: d3c3a844862d45f4410d4148c8434742 ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Transfers the content of the current interface model to data handled by imagine, starting from its roots (determined by the graph <g>), using the selected actor for read returns the count of performed root transfers (i.e. 0 if none) or -1 if no actor is defined.
 
 Parameters
 ----------
 theGraph: Interface_Graph
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferRoots;
-		Standard_Integer TransferRoots(const Interface_Graph & theGraph);
+		Standard_Integer TransferRoots(const Interface_Graph & theGraph, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransientProcess ******************/
 		/**** md5 signature: c581697d9fdd28675207e919d05ae7c9 ****/
@@ -2215,7 +2237,7 @@ int
 		Standard_Integer TransferMode();
 
 		/****************** TransferWriteShape ******************/
-		/**** md5 signature: 8410cf3b63ed1e40f86b046290a2b6bd ****/
+		/**** md5 signature: f8d35c8811b8b7877bd856613dfb9e8e ****/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "Transfers a shape from cascade to a model of current norm, according to the last call to settransfermode works by calling the controller returns status : =0 if ok, >0 if error during transfer, <0 if transfer badly initialised.
 
@@ -2223,15 +2245,17 @@ Parameters
 ----------
 theModel: Interface_InterfaceModel
 theShape: TopoDS_Shape
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferWriteShape;
-		IFSelect_ReturnStatus TransferWriteShape(const opencascade::handle<Interface_InterfaceModel> & theModel, const TopoDS_Shape & theShape);
+		IFSelect_ReturnStatus TransferWriteShape(const opencascade::handle<Interface_InterfaceModel> & theModel, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferWriteTransient ******************/
-		/**** md5 signature: 696df54866f49cdf81d424bb194944a5 ****/
+		/**** md5 signature: ee3ed87832d3e297468d74f969770e97 ****/
 		%feature("compactdefaultargs") TransferWriteTransient;
 		%feature("autodoc", "Transfers a transient object (from an application) to a model of current norm, according to the last call to settransfermode works by calling the controller returns status : =0 if ok, >0 if error during transfer, <0 if transfer badly initialised.
 
@@ -2239,12 +2263,14 @@ Parameters
 ----------
 theModel: Interface_InterfaceModel
 theObj: Standard_Transient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferWriteTransient;
-		IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Interface_InterfaceModel> & theModel, const opencascade::handle<Standard_Transient> & theObj);
+		IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Interface_InterfaceModel> & theModel, const opencascade::handle<Standard_Transient> & theObj, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -3180,23 +3206,6 @@ opencascade::handle<XSControl_Controller>
 ") NormAdaptor;
 		const opencascade::handle<XSControl_Controller> & NormAdaptor();
 
-		/****************** PrintTransferStatus ******************/
-		/**** md5 signature: 13c36401ad4298a7bbce09d0c81e0bc4 ****/
-		%feature("compactdefaultargs") PrintTransferStatus;
-		%feature("autodoc", "Prints the transfer status of a transferred item, as beeing the mapped n0 <num>, from mapwriter if <wri> is true, or from mapreader if <wri> is false returns true when done, false else (i.e. num out of range).
-
-Parameters
-----------
-theNum: int
-theWri: bool
-theS: Message_Messenger
-
-Returns
--------
-bool
-") PrintTransferStatus;
-		Standard_Boolean PrintTransferStatus(const Standard_Integer theNum, const Standard_Boolean theWri, const opencascade::handle<Message_Messenger> & theS);
-
 		/****************** Result ******************/
 		/**** md5 signature: 648bf58b2605b71bf5b4112cce9715c1 ****/
 		%feature("compactdefaultargs") Result;
@@ -3335,30 +3344,37 @@ None
 		void SetVars(const opencascade::handle<XSControl_Vars> & theVars);
 
 		/****************** TransferReadOne ******************/
-		/**** md5 signature: 348bb895e52c2df7dcea3ec9bb89c366 ****/
+		/**** md5 signature: 07136716cbdeb7ed7fabe4e3da6766d6 ****/
 		%feature("compactdefaultargs") TransferReadOne;
 		%feature("autodoc", "Commands the transfer of, either one entity, or a list i.e. calls the transferreader after having analysed <ents> it is cumulated from the last begintransfer <ents> is processed by givelist, hence : - <ents> a selection : its selectionresult - <ents> a hsequenceoftransient : this list - <ents> the model : in this specific case, all the roots, with no cumulation of former transfers (transferreadroots).
 
 Parameters
 ----------
 theEnts: Standard_Transient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferReadOne;
-		Standard_Integer TransferReadOne(const opencascade::handle<Standard_Transient> & theEnts);
+		Standard_Integer TransferReadOne(const opencascade::handle<Standard_Transient> & theEnts, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferReadRoots ******************/
-		/**** md5 signature: 64a5b6ab0521df1c390c9820b4ae0847 ****/
+		/**** md5 signature: ace5b8c734fc21b5202f49b6ce1faff6 ****/
 		%feature("compactdefaultargs") TransferReadRoots;
 		%feature("autodoc", "Commands the transfer of all the root entities of the model i.e. calls transferroot from the transferreader with the graph no cumulation with former calls to transferreadone.
+
+Parameters
+----------
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 int
 ") TransferReadRoots;
-		Standard_Integer TransferReadRoots();
+		Standard_Integer TransferReadRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferReader ******************/
 		/**** md5 signature: fb55bcdc028cfc40da9805fb3d48b6bb ****/
@@ -3383,7 +3399,7 @@ Interface_CheckIterator
 		Interface_CheckIterator TransferWriteCheckList();
 
 		/****************** TransferWriteShape ******************/
-		/**** md5 signature: a5e6345d1c0b1dd32985a1ae54b32478 ****/
+		/**** md5 signature: dea408423004f7d98d47bcc8073284e9 ****/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "Transfers a shape from cascade to a model of current norm, according to the last call to setmodewriteshape returns status :done if ok, fail if error during transfer, error if transfer badly initialised.
 
@@ -3392,12 +3408,14 @@ Parameters
 theShape: TopoDS_Shape
 theCompGraph: bool,optional
 	default value is Standard_True
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferWriteShape;
-		IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & theShape, const Standard_Boolean theCompGraph = Standard_True);
+		IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & theShape, const Standard_Boolean theCompGraph = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferWriter ******************/
 		/**** md5 signature: eb51fa8d64a383d09db0f0e2c51bd32e ****/
@@ -3546,7 +3564,7 @@ None
 		void SetWS(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
 		/****************** TransferShape ******************/
-		/**** md5 signature: f737071f560e66a7d995080ffbdf819a ****/
+		/**** md5 signature: 2fb0e8c5750985b5d30080e0c87152e4 ****/
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", "Transfers a shape according to the mode.
 
@@ -3555,12 +3573,14 @@ Parameters
 sh: TopoDS_Shape
 mode: int,optional
 	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferShape;
-		IFSelect_ReturnStatus TransferShape(const TopoDS_Shape & sh, const Standard_Integer mode = 0);
+		IFSelect_ReturnStatus TransferShape(const TopoDS_Shape & sh, const Standard_Integer mode = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** WS ******************/
 		/**** md5 signature: 4d866376b023ba3185e62899810cc121 ****/

@@ -46,7 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_graphic3d.html"
 #include<gp_module.hxx>
 #include<Aspect_module.hxx>
 #include<TCollection_module.hxx>
-#include<Geom_module.hxx>
+#include<TopLoc_module.hxx>
 #include<Bnd_module.hxx>
 #include<TColStd_module.hxx>
 #include<Image_module.hxx>
@@ -72,7 +72,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_graphic3d.html"
 %import gp.i
 %import Aspect.i
 %import TCollection.i
-%import Geom.i
+%import TopLoc.i
 %import Bnd.i
 %import TColStd.i
 %import Image.i
@@ -103,6 +103,7 @@ enum Graphic3d_BufferType {
 	Graphic3d_BT_RGBA = 1,
 	Graphic3d_BT_Depth = 2,
 	Graphic3d_BT_RGB_RayTraceHdrLeft = 3,
+	Graphic3d_BT_Red = 4,
 };
 
 enum Graphic3d_FrameStatsTimer {
@@ -140,16 +141,18 @@ enum Graphic3d_TypeOfLimit {
 	Graphic3d_TypeOfLimit_MaxViewDumpSizeY = 5,
 	Graphic3d_TypeOfLimit_MaxCombinedTextureUnits = 6,
 	Graphic3d_TypeOfLimit_MaxMsaa = 7,
-	Graphic3d_TypeOfLimit_HasRayTracing = 8,
-	Graphic3d_TypeOfLimit_HasRayTracingTextures = 9,
-	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSampling = 10,
-	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSamplingAtomic = 11,
-	Graphic3d_TypeOfLimit_HasBlendedOit = 12,
-	Graphic3d_TypeOfLimit_HasBlendedOitMsaa = 13,
-	Graphic3d_TypeOfLimit_HasFlatShading = 14,
-	Graphic3d_TypeOfLimit_HasMeshEdges = 15,
-	Graphic3d_TypeOfLimit_IsWorkaroundFBO = 16,
-	Graphic3d_TypeOfLimit_NB = 17,
+	Graphic3d_TypeOfLimit_HasPBR = 8,
+	Graphic3d_TypeOfLimit_HasRayTracing = 9,
+	Graphic3d_TypeOfLimit_HasRayTracingTextures = 10,
+	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSampling = 11,
+	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSamplingAtomic = 12,
+	Graphic3d_TypeOfLimit_HasSRGB = 13,
+	Graphic3d_TypeOfLimit_HasBlendedOit = 14,
+	Graphic3d_TypeOfLimit_HasBlendedOitMsaa = 15,
+	Graphic3d_TypeOfLimit_HasFlatShading = 16,
+	Graphic3d_TypeOfLimit_HasMeshEdges = 17,
+	Graphic3d_TypeOfLimit_IsWorkaroundFBO = 18,
+	Graphic3d_TypeOfLimit_NB = 19,
 };
 
 enum Graphic3d_DiagnosticInfo {
@@ -173,7 +176,8 @@ enum Graphic3d_StereoMode {
 	Graphic3d_StereoMode_SideBySide = 5,
 	Graphic3d_StereoMode_OverUnder = 6,
 	Graphic3d_StereoMode_SoftPageFlip = 7,
-	Graphic3d_StereoMode_NB = 8,
+	Graphic3d_StereoMode_OpenVR = 8,
+	Graphic3d_StereoMode_NB = 9,
 };
 
 enum Graphic3d_AlphaMode {
@@ -213,24 +217,42 @@ enum Graphic3d_RenderingMode {
 
 enum Graphic3d_FrameStatsCounter {
 	Graphic3d_FrameStatsCounter_NbLayers = 0,
-	Graphic3d_FrameStatsCounter_NbLayersNotCulled = 1,
-	Graphic3d_FrameStatsCounter_NbStructs = 2,
-	Graphic3d_FrameStatsCounter_NbStructsNotCulled = 3,
-	Graphic3d_FrameStatsCounter_NbGroupsNotCulled = 4,
-	Graphic3d_FrameStatsCounter_NbElemsNotCulled = 5,
-	Graphic3d_FrameStatsCounter_NbElemsFillNotCulled = 6,
-	Graphic3d_FrameStatsCounter_NbElemsLineNotCulled = 7,
-	Graphic3d_FrameStatsCounter_NbElemsPointNotCulled = 8,
-	Graphic3d_FrameStatsCounter_NbElemsTextNotCulled = 9,
-	Graphic3d_FrameStatsCounter_NbTrianglesNotCulled = 10,
-	Graphic3d_FrameStatsCounter_NbPointsNotCulled = 11,
-	Graphic3d_FrameStatsCounter_EstimatedBytesGeom = 12,
-	Graphic3d_FrameStatsCounter_EstimatedBytesFbos = 13,
-	Graphic3d_FrameStatsCounter_EstimatedBytesTextures = 14,
+	Graphic3d_FrameStatsCounter_NbStructs = 1,
+	Graphic3d_FrameStatsCounter_EstimatedBytesGeom = 2,
+	Graphic3d_FrameStatsCounter_EstimatedBytesFbos = 3,
+	Graphic3d_FrameStatsCounter_EstimatedBytesTextures = 4,
+	Graphic3d_FrameStatsCounter_NbLayersNotCulled = 5,
+	Graphic3d_FrameStatsCounter_NbStructsNotCulled = 6,
+	Graphic3d_FrameStatsCounter_NbGroupsNotCulled = 7,
+	Graphic3d_FrameStatsCounter_NbElemsNotCulled = 8,
+	Graphic3d_FrameStatsCounter_NbElemsFillNotCulled = 9,
+	Graphic3d_FrameStatsCounter_NbElemsLineNotCulled = 10,
+	Graphic3d_FrameStatsCounter_NbElemsPointNotCulled = 11,
+	Graphic3d_FrameStatsCounter_NbElemsTextNotCulled = 12,
+	Graphic3d_FrameStatsCounter_NbTrianglesNotCulled = 13,
+	Graphic3d_FrameStatsCounter_NbLinesNotCulled = 14,
+	Graphic3d_FrameStatsCounter_NbPointsNotCulled = 15,
+	Graphic3d_FrameStatsCounter_NbLayersImmediate = 16,
+	Graphic3d_FrameStatsCounter_NbStructsImmediate = 17,
+	Graphic3d_FrameStatsCounter_NbGroupsImmediate = 18,
+	Graphic3d_FrameStatsCounter_NbElemsImmediate = 19,
+	Graphic3d_FrameStatsCounter_NbElemsFillImmediate = 20,
+	Graphic3d_FrameStatsCounter_NbElemsLineImmediate = 21,
+	Graphic3d_FrameStatsCounter_NbElemsPointImmediate = 22,
+	Graphic3d_FrameStatsCounter_NbElemsTextImmediate = 23,
+	Graphic3d_FrameStatsCounter_NbTrianglesImmediate = 24,
+	Graphic3d_FrameStatsCounter_NbLinesImmediate = 25,
+	Graphic3d_FrameStatsCounter_NbPointsImmediate = 26,
 };
 
 enum  {
-	Graphic3d_FrameStatsCounter_NB = Graphic3d_FrameStatsCounter_EstimatedBytesTextures + 1,
+	Graphic3d_FrameStatsCounter_NB = Graphic3d_FrameStatsCounter_NbPointsImmediate + 1,
+	Graphic3d_FrameStatsCounter_SCENE_LOWER = Graphic3d_FrameStatsCounter_NbLayers,
+	Graphic3d_FrameStatsCounter_SCENE_UPPER = Graphic3d_FrameStatsCounter_EstimatedBytesTextures,
+	Graphic3d_FrameStatsCounter_RENDERED_LOWER = Graphic3d_FrameStatsCounter_NbLayersNotCulled,
+	Graphic3d_FrameStatsCounter_RENDERED_UPPER = Graphic3d_FrameStatsCounter_NbPointsNotCulled,
+	Graphic3d_FrameStatsCounter_IMMEDIATE_LOWER = Graphic3d_FrameStatsCounter_NbLayersImmediate,
+	Graphic3d_FrameStatsCounter_IMMEDIATE_UPPER = Graphic3d_FrameStatsCounter_NbPointsImmediate,
 };
 
 enum Graphic3d_TypeOfBackground {
@@ -296,6 +318,8 @@ enum Graphic3d_TypeOfShadingModel {
 	Graphic3d_TOSM_FACET = 1,
 	Graphic3d_TOSM_VERTEX = 2,
 	Graphic3d_TOSM_FRAGMENT = 3,
+	Graphic3d_TOSM_PBR = 4,
+	Graphic3d_TOSM_PBR_FACET = 5,
 	Graphic3d_TOSM_NONE = Graphic3d_TOSM_UNLIT,
 	V3d_COLOR = Graphic3d_TOSM_NONE,
 	V3d_FLAT = Graphic3d_TOSM_FACET,
@@ -304,7 +328,7 @@ enum Graphic3d_TypeOfShadingModel {
 };
 
 enum  {
-	Graphic3d_TypeOfShadingModel_NB = Graphic3d_TOSM_FRAGMENT + 1,
+	Graphic3d_TypeOfShadingModel_NB = Graphic3d_TOSM_PBR_FACET + 1,
 };
 
 enum Graphic3d_TypeOfPrimitiveArray {
@@ -404,7 +428,15 @@ enum Graphic3d_TextureUnit {
 	Graphic3d_TextureUnit_14 = 14,
 	Graphic3d_TextureUnit_15 = 15,
 	Graphic3d_TextureUnit_BaseColor = Graphic3d_TextureUnit_0,
+	Graphic3d_TextureUnit_Emissive = Graphic3d_TextureUnit_1,
+	Graphic3d_TextureUnit_Occlusion = Graphic3d_TextureUnit_2,
+	Graphic3d_TextureUnit_Normal = Graphic3d_TextureUnit_3,
+	Graphic3d_TextureUnit_MetallicRoughness = Graphic3d_TextureUnit_4,
 	Graphic3d_TextureUnit_EnvMap = Graphic3d_TextureUnit_0,
+	Graphic3d_TextureUnit_PointSprite = Graphic3d_TextureUnit_1,
+	Graphic3d_TextureUnit_PbrEnvironmentLUT = - 3,
+	Graphic3d_TextureUnit_PbrIblDiffuseSH = - 2,
+	Graphic3d_TextureUnit_PbrIblSpecular = - 1,
 };
 
 enum  {
@@ -444,6 +476,15 @@ enum  {
 	Graphic3d_ZLayerId_Topmost = - 3,
 	Graphic3d_ZLayerId_TopOSD = - 4,
 	Graphic3d_ZLayerId_BotOSD = - 5,
+};
+
+enum Graphic3d_TextureSetBits {
+	Graphic3d_TextureSetBits_NONE = 0,
+	Graphic3d_TextureSetBits_BaseColor = Graphic3d_TextureUnit_BaseColor,
+	Graphic3d_TextureSetBits_Emissive = Graphic3d_TextureUnit_Emissive,
+	Graphic3d_TextureSetBits_Occlusion = Graphic3d_TextureUnit_Occlusion,
+	Graphic3d_TextureSetBits_Normal = Graphic3d_TextureUnit_Normal,
+	Graphic3d_TextureSetBits_MetallicRoughness = Graphic3d_TextureUnit_MetallicRoughness,
 };
 
 enum Graphic3d_TypeOfComposition {
@@ -496,32 +537,58 @@ enum Graphic3d_NameOfTexture2D {
 };
 
 enum Graphic3d_NameOfMaterial {
-	Graphic3d_NOM_BRASS = 0,
-	Graphic3d_NOM_BRONZE = 1,
-	Graphic3d_NOM_COPPER = 2,
-	Graphic3d_NOM_GOLD = 3,
-	Graphic3d_NOM_PEWTER = 4,
-	Graphic3d_NOM_PLASTER = 5,
-	Graphic3d_NOM_PLASTIC = 6,
-	Graphic3d_NOM_SILVER = 7,
-	Graphic3d_NOM_STEEL = 8,
-	Graphic3d_NOM_STONE = 9,
-	Graphic3d_NOM_SHINY_PLASTIC = 10,
-	Graphic3d_NOM_SATIN = 11,
-	Graphic3d_NOM_METALIZED = 12,
-	Graphic3d_NOM_NEON_GNC = 13,
-	Graphic3d_NOM_CHROME = 14,
-	Graphic3d_NOM_ALUMINIUM = 15,
-	Graphic3d_NOM_OBSIDIAN = 16,
-	Graphic3d_NOM_NEON_PHC = 17,
-	Graphic3d_NOM_JADE = 18,
-	Graphic3d_NOM_CHARCOAL = 19,
-	Graphic3d_NOM_WATER = 20,
-	Graphic3d_NOM_GLASS = 21,
-	Graphic3d_NOM_DIAMOND = 22,
-	Graphic3d_NOM_TRANSPARENT = 23,
-	Graphic3d_NOM_DEFAULT = 24,
-	Graphic3d_NOM_UserDefined = 25,
+	Graphic3d_NameOfMaterial_Brass = 0,
+	Graphic3d_NameOfMaterial_Bronze = 1,
+	Graphic3d_NameOfMaterial_Copper = 2,
+	Graphic3d_NameOfMaterial_Gold = 3,
+	Graphic3d_NameOfMaterial_Pewter = 4,
+	Graphic3d_NameOfMaterial_Plastered = 5,
+	Graphic3d_NameOfMaterial_Plastified = 6,
+	Graphic3d_NameOfMaterial_Silver = 7,
+	Graphic3d_NameOfMaterial_Steel = 8,
+	Graphic3d_NameOfMaterial_Stone = 9,
+	Graphic3d_NameOfMaterial_ShinyPlastified = 10,
+	Graphic3d_NameOfMaterial_Satin = 11,
+	Graphic3d_NameOfMaterial_Metalized = 12,
+	Graphic3d_NameOfMaterial_Ionized = 13,
+	Graphic3d_NameOfMaterial_Chrome = 14,
+	Graphic3d_NameOfMaterial_Aluminum = 15,
+	Graphic3d_NameOfMaterial_Obsidian = 16,
+	Graphic3d_NameOfMaterial_Neon = 17,
+	Graphic3d_NameOfMaterial_Jade = 18,
+	Graphic3d_NameOfMaterial_Charcoal = 19,
+	Graphic3d_NameOfMaterial_Water = 20,
+	Graphic3d_NameOfMaterial_Glass = 21,
+	Graphic3d_NameOfMaterial_Diamond = 22,
+	Graphic3d_NameOfMaterial_Transparent = 23,
+	Graphic3d_NameOfMaterial_DEFAULT = 24,
+	Graphic3d_NameOfMaterial_UserDefined = 25,
+	Graphic3d_NOM_BRASS = Graphic3d_NameOfMaterial_Brass,
+	Graphic3d_NOM_BRONZE = Graphic3d_NameOfMaterial_Bronze,
+	Graphic3d_NOM_COPPER = Graphic3d_NameOfMaterial_Copper,
+	Graphic3d_NOM_GOLD = Graphic3d_NameOfMaterial_Gold,
+	Graphic3d_NOM_PEWTER = Graphic3d_NameOfMaterial_Pewter,
+	Graphic3d_NOM_PLASTER = Graphic3d_NameOfMaterial_Plastered,
+	Graphic3d_NOM_PLASTIC = Graphic3d_NameOfMaterial_Plastified,
+	Graphic3d_NOM_SILVER = Graphic3d_NameOfMaterial_Silver,
+	Graphic3d_NOM_STEEL = Graphic3d_NameOfMaterial_Steel,
+	Graphic3d_NOM_STONE = Graphic3d_NameOfMaterial_Stone,
+	Graphic3d_NOM_SHINY_PLASTIC = Graphic3d_NameOfMaterial_ShinyPlastified,
+	Graphic3d_NOM_SATIN = Graphic3d_NameOfMaterial_Satin,
+	Graphic3d_NOM_METALIZED = Graphic3d_NameOfMaterial_Metalized,
+	Graphic3d_NOM_NEON_GNC = Graphic3d_NameOfMaterial_Ionized,
+	Graphic3d_NOM_CHROME = Graphic3d_NameOfMaterial_Chrome,
+	Graphic3d_NOM_ALUMINIUM = Graphic3d_NameOfMaterial_Aluminum,
+	Graphic3d_NOM_OBSIDIAN = Graphic3d_NameOfMaterial_Obsidian,
+	Graphic3d_NOM_NEON_PHC = Graphic3d_NameOfMaterial_Neon,
+	Graphic3d_NOM_JADE = Graphic3d_NameOfMaterial_Jade,
+	Graphic3d_NOM_CHARCOAL = Graphic3d_NameOfMaterial_Charcoal,
+	Graphic3d_NOM_WATER = Graphic3d_NameOfMaterial_Water,
+	Graphic3d_NOM_GLASS = Graphic3d_NameOfMaterial_Glass,
+	Graphic3d_NOM_DIAMOND = Graphic3d_NameOfMaterial_Diamond,
+	Graphic3d_NOM_TRANSPARENT = Graphic3d_NameOfMaterial_Transparent,
+	Graphic3d_NOM_DEFAULT = Graphic3d_NameOfMaterial_DEFAULT,
+	Graphic3d_NOM_UserDefined = Graphic3d_NameOfMaterial_UserDefined,
 };
 
 enum Graphic3d_TypeOfTextureFilter {
@@ -580,10 +647,12 @@ class Graphic3d_BufferType(IntEnum):
 	Graphic3d_BT_RGBA = 1
 	Graphic3d_BT_Depth = 2
 	Graphic3d_BT_RGB_RayTraceHdrLeft = 3
+	Graphic3d_BT_Red = 4
 Graphic3d_BT_RGB = Graphic3d_BufferType.Graphic3d_BT_RGB
 Graphic3d_BT_RGBA = Graphic3d_BufferType.Graphic3d_BT_RGBA
 Graphic3d_BT_Depth = Graphic3d_BufferType.Graphic3d_BT_Depth
 Graphic3d_BT_RGB_RayTraceHdrLeft = Graphic3d_BufferType.Graphic3d_BT_RGB_RayTraceHdrLeft
+Graphic3d_BT_Red = Graphic3d_BufferType.Graphic3d_BT_Red
 
 class Graphic3d_FrameStatsTimer(IntEnum):
 	Graphic3d_FrameStatsTimer_ElapsedFrame = 0
@@ -626,16 +695,18 @@ class Graphic3d_TypeOfLimit(IntEnum):
 	Graphic3d_TypeOfLimit_MaxViewDumpSizeY = 5
 	Graphic3d_TypeOfLimit_MaxCombinedTextureUnits = 6
 	Graphic3d_TypeOfLimit_MaxMsaa = 7
-	Graphic3d_TypeOfLimit_HasRayTracing = 8
-	Graphic3d_TypeOfLimit_HasRayTracingTextures = 9
-	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSampling = 10
-	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSamplingAtomic = 11
-	Graphic3d_TypeOfLimit_HasBlendedOit = 12
-	Graphic3d_TypeOfLimit_HasBlendedOitMsaa = 13
-	Graphic3d_TypeOfLimit_HasFlatShading = 14
-	Graphic3d_TypeOfLimit_HasMeshEdges = 15
-	Graphic3d_TypeOfLimit_IsWorkaroundFBO = 16
-	Graphic3d_TypeOfLimit_NB = 17
+	Graphic3d_TypeOfLimit_HasPBR = 8
+	Graphic3d_TypeOfLimit_HasRayTracing = 9
+	Graphic3d_TypeOfLimit_HasRayTracingTextures = 10
+	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSampling = 11
+	Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSamplingAtomic = 12
+	Graphic3d_TypeOfLimit_HasSRGB = 13
+	Graphic3d_TypeOfLimit_HasBlendedOit = 14
+	Graphic3d_TypeOfLimit_HasBlendedOitMsaa = 15
+	Graphic3d_TypeOfLimit_HasFlatShading = 16
+	Graphic3d_TypeOfLimit_HasMeshEdges = 17
+	Graphic3d_TypeOfLimit_IsWorkaroundFBO = 18
+	Graphic3d_TypeOfLimit_NB = 19
 Graphic3d_TypeOfLimit_MaxNbLights = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_MaxNbLights
 Graphic3d_TypeOfLimit_MaxNbClipPlanes = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_MaxNbClipPlanes
 Graphic3d_TypeOfLimit_MaxNbViews = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_MaxNbViews
@@ -644,10 +715,12 @@ Graphic3d_TypeOfLimit_MaxViewDumpSizeX = Graphic3d_TypeOfLimit.Graphic3d_TypeOfL
 Graphic3d_TypeOfLimit_MaxViewDumpSizeY = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_MaxViewDumpSizeY
 Graphic3d_TypeOfLimit_MaxCombinedTextureUnits = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_MaxCombinedTextureUnits
 Graphic3d_TypeOfLimit_MaxMsaa = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_MaxMsaa
+Graphic3d_TypeOfLimit_HasPBR = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasPBR
 Graphic3d_TypeOfLimit_HasRayTracing = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasRayTracing
 Graphic3d_TypeOfLimit_HasRayTracingTextures = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasRayTracingTextures
 Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSampling = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSampling
 Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSamplingAtomic = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasRayTracingAdaptiveSamplingAtomic
+Graphic3d_TypeOfLimit_HasSRGB = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasSRGB
 Graphic3d_TypeOfLimit_HasBlendedOit = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasBlendedOit
 Graphic3d_TypeOfLimit_HasBlendedOitMsaa = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasBlendedOitMsaa
 Graphic3d_TypeOfLimit_HasFlatShading = Graphic3d_TypeOfLimit.Graphic3d_TypeOfLimit_HasFlatShading
@@ -684,7 +757,8 @@ class Graphic3d_StereoMode(IntEnum):
 	Graphic3d_StereoMode_SideBySide = 5
 	Graphic3d_StereoMode_OverUnder = 6
 	Graphic3d_StereoMode_SoftPageFlip = 7
-	Graphic3d_StereoMode_NB = 8
+	Graphic3d_StereoMode_OpenVR = 8
+	Graphic3d_StereoMode_NB = 9
 Graphic3d_StereoMode_QuadBuffer = Graphic3d_StereoMode.Graphic3d_StereoMode_QuadBuffer
 Graphic3d_StereoMode_Anaglyph = Graphic3d_StereoMode.Graphic3d_StereoMode_Anaglyph
 Graphic3d_StereoMode_RowInterlaced = Graphic3d_StereoMode.Graphic3d_StereoMode_RowInterlaced
@@ -693,6 +767,7 @@ Graphic3d_StereoMode_ChessBoard = Graphic3d_StereoMode.Graphic3d_StereoMode_Ches
 Graphic3d_StereoMode_SideBySide = Graphic3d_StereoMode.Graphic3d_StereoMode_SideBySide
 Graphic3d_StereoMode_OverUnder = Graphic3d_StereoMode.Graphic3d_StereoMode_OverUnder
 Graphic3d_StereoMode_SoftPageFlip = Graphic3d_StereoMode.Graphic3d_StereoMode_SoftPageFlip
+Graphic3d_StereoMode_OpenVR = Graphic3d_StereoMode.Graphic3d_StereoMode_OpenVR
 Graphic3d_StereoMode_NB = Graphic3d_StereoMode.Graphic3d_StereoMode_NB
 
 class Graphic3d_AlphaMode(IntEnum):
@@ -739,23 +814,38 @@ Graphic3d_RM_RAYTRACING = Graphic3d_RenderingMode.Graphic3d_RM_RAYTRACING
 
 class Graphic3d_FrameStatsCounter(IntEnum):
 	Graphic3d_FrameStatsCounter_NbLayers = 0
-	Graphic3d_FrameStatsCounter_NbLayersNotCulled = 1
-	Graphic3d_FrameStatsCounter_NbStructs = 2
-	Graphic3d_FrameStatsCounter_NbStructsNotCulled = 3
-	Graphic3d_FrameStatsCounter_NbGroupsNotCulled = 4
-	Graphic3d_FrameStatsCounter_NbElemsNotCulled = 5
-	Graphic3d_FrameStatsCounter_NbElemsFillNotCulled = 6
-	Graphic3d_FrameStatsCounter_NbElemsLineNotCulled = 7
-	Graphic3d_FrameStatsCounter_NbElemsPointNotCulled = 8
-	Graphic3d_FrameStatsCounter_NbElemsTextNotCulled = 9
-	Graphic3d_FrameStatsCounter_NbTrianglesNotCulled = 10
-	Graphic3d_FrameStatsCounter_NbPointsNotCulled = 11
-	Graphic3d_FrameStatsCounter_EstimatedBytesGeom = 12
-	Graphic3d_FrameStatsCounter_EstimatedBytesFbos = 13
-	Graphic3d_FrameStatsCounter_EstimatedBytesTextures = 14
+	Graphic3d_FrameStatsCounter_NbStructs = 1
+	Graphic3d_FrameStatsCounter_EstimatedBytesGeom = 2
+	Graphic3d_FrameStatsCounter_EstimatedBytesFbos = 3
+	Graphic3d_FrameStatsCounter_EstimatedBytesTextures = 4
+	Graphic3d_FrameStatsCounter_NbLayersNotCulled = 5
+	Graphic3d_FrameStatsCounter_NbStructsNotCulled = 6
+	Graphic3d_FrameStatsCounter_NbGroupsNotCulled = 7
+	Graphic3d_FrameStatsCounter_NbElemsNotCulled = 8
+	Graphic3d_FrameStatsCounter_NbElemsFillNotCulled = 9
+	Graphic3d_FrameStatsCounter_NbElemsLineNotCulled = 10
+	Graphic3d_FrameStatsCounter_NbElemsPointNotCulled = 11
+	Graphic3d_FrameStatsCounter_NbElemsTextNotCulled = 12
+	Graphic3d_FrameStatsCounter_NbTrianglesNotCulled = 13
+	Graphic3d_FrameStatsCounter_NbLinesNotCulled = 14
+	Graphic3d_FrameStatsCounter_NbPointsNotCulled = 15
+	Graphic3d_FrameStatsCounter_NbLayersImmediate = 16
+	Graphic3d_FrameStatsCounter_NbStructsImmediate = 17
+	Graphic3d_FrameStatsCounter_NbGroupsImmediate = 18
+	Graphic3d_FrameStatsCounter_NbElemsImmediate = 19
+	Graphic3d_FrameStatsCounter_NbElemsFillImmediate = 20
+	Graphic3d_FrameStatsCounter_NbElemsLineImmediate = 21
+	Graphic3d_FrameStatsCounter_NbElemsPointImmediate = 22
+	Graphic3d_FrameStatsCounter_NbElemsTextImmediate = 23
+	Graphic3d_FrameStatsCounter_NbTrianglesImmediate = 24
+	Graphic3d_FrameStatsCounter_NbLinesImmediate = 25
+	Graphic3d_FrameStatsCounter_NbPointsImmediate = 26
 Graphic3d_FrameStatsCounter_NbLayers = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLayers
-Graphic3d_FrameStatsCounter_NbLayersNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLayersNotCulled
 Graphic3d_FrameStatsCounter_NbStructs = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbStructs
+Graphic3d_FrameStatsCounter_EstimatedBytesGeom = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_EstimatedBytesGeom
+Graphic3d_FrameStatsCounter_EstimatedBytesFbos = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_EstimatedBytesFbos
+Graphic3d_FrameStatsCounter_EstimatedBytesTextures = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_EstimatedBytesTextures
+Graphic3d_FrameStatsCounter_NbLayersNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLayersNotCulled
 Graphic3d_FrameStatsCounter_NbStructsNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbStructsNotCulled
 Graphic3d_FrameStatsCounter_NbGroupsNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbGroupsNotCulled
 Graphic3d_FrameStatsCounter_NbElemsNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsNotCulled
@@ -764,10 +854,19 @@ Graphic3d_FrameStatsCounter_NbElemsLineNotCulled = Graphic3d_FrameStatsCounter.G
 Graphic3d_FrameStatsCounter_NbElemsPointNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsPointNotCulled
 Graphic3d_FrameStatsCounter_NbElemsTextNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsTextNotCulled
 Graphic3d_FrameStatsCounter_NbTrianglesNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbTrianglesNotCulled
+Graphic3d_FrameStatsCounter_NbLinesNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLinesNotCulled
 Graphic3d_FrameStatsCounter_NbPointsNotCulled = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbPointsNotCulled
-Graphic3d_FrameStatsCounter_EstimatedBytesGeom = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_EstimatedBytesGeom
-Graphic3d_FrameStatsCounter_EstimatedBytesFbos = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_EstimatedBytesFbos
-Graphic3d_FrameStatsCounter_EstimatedBytesTextures = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_EstimatedBytesTextures
+Graphic3d_FrameStatsCounter_NbLayersImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLayersImmediate
+Graphic3d_FrameStatsCounter_NbStructsImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbStructsImmediate
+Graphic3d_FrameStatsCounter_NbGroupsImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbGroupsImmediate
+Graphic3d_FrameStatsCounter_NbElemsImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsImmediate
+Graphic3d_FrameStatsCounter_NbElemsFillImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsFillImmediate
+Graphic3d_FrameStatsCounter_NbElemsLineImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsLineImmediate
+Graphic3d_FrameStatsCounter_NbElemsPointImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsPointImmediate
+Graphic3d_FrameStatsCounter_NbElemsTextImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbElemsTextImmediate
+Graphic3d_FrameStatsCounter_NbTrianglesImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbTrianglesImmediate
+Graphic3d_FrameStatsCounter_NbLinesImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLinesImmediate
+Graphic3d_FrameStatsCounter_NbPointsImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbPointsImmediate
 
 class Graphic3d_TypeOfBackground(IntEnum):
 	Graphic3d_TOB_NONE = - 1
@@ -853,6 +952,8 @@ class Graphic3d_TypeOfShadingModel(IntEnum):
 	Graphic3d_TOSM_FACET = 1
 	Graphic3d_TOSM_VERTEX = 2
 	Graphic3d_TOSM_FRAGMENT = 3
+	Graphic3d_TOSM_PBR = 4
+	Graphic3d_TOSM_PBR_FACET = 5
 	Graphic3d_TOSM_NONE = Graphic3d_TOSM_UNLIT
 	V3d_COLOR = Graphic3d_TOSM_NONE
 	V3d_FLAT = Graphic3d_TOSM_FACET
@@ -863,6 +964,8 @@ Graphic3d_TOSM_UNLIT = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_UNLIT
 Graphic3d_TOSM_FACET = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_FACET
 Graphic3d_TOSM_VERTEX = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_VERTEX
 Graphic3d_TOSM_FRAGMENT = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_FRAGMENT
+Graphic3d_TOSM_PBR = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_PBR
+Graphic3d_TOSM_PBR_FACET = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_PBR_FACET
 Graphic3d_TOSM_NONE = Graphic3d_TypeOfShadingModel.Graphic3d_TOSM_NONE
 V3d_COLOR = Graphic3d_TypeOfShadingModel.V3d_COLOR
 V3d_FLAT = Graphic3d_TypeOfShadingModel.V3d_FLAT
@@ -987,7 +1090,15 @@ class Graphic3d_TextureUnit(IntEnum):
 	Graphic3d_TextureUnit_14 = 14
 	Graphic3d_TextureUnit_15 = 15
 	Graphic3d_TextureUnit_BaseColor = Graphic3d_TextureUnit_0
+	Graphic3d_TextureUnit_Emissive = Graphic3d_TextureUnit_1
+	Graphic3d_TextureUnit_Occlusion = Graphic3d_TextureUnit_2
+	Graphic3d_TextureUnit_Normal = Graphic3d_TextureUnit_3
+	Graphic3d_TextureUnit_MetallicRoughness = Graphic3d_TextureUnit_4
 	Graphic3d_TextureUnit_EnvMap = Graphic3d_TextureUnit_0
+	Graphic3d_TextureUnit_PointSprite = Graphic3d_TextureUnit_1
+	Graphic3d_TextureUnit_PbrEnvironmentLUT = - 3
+	Graphic3d_TextureUnit_PbrIblDiffuseSH = - 2
+	Graphic3d_TextureUnit_PbrIblSpecular = - 1
 Graphic3d_TextureUnit_0 = Graphic3d_TextureUnit.Graphic3d_TextureUnit_0
 Graphic3d_TextureUnit_1 = Graphic3d_TextureUnit.Graphic3d_TextureUnit_1
 Graphic3d_TextureUnit_2 = Graphic3d_TextureUnit.Graphic3d_TextureUnit_2
@@ -1005,7 +1116,15 @@ Graphic3d_TextureUnit_13 = Graphic3d_TextureUnit.Graphic3d_TextureUnit_13
 Graphic3d_TextureUnit_14 = Graphic3d_TextureUnit.Graphic3d_TextureUnit_14
 Graphic3d_TextureUnit_15 = Graphic3d_TextureUnit.Graphic3d_TextureUnit_15
 Graphic3d_TextureUnit_BaseColor = Graphic3d_TextureUnit.Graphic3d_TextureUnit_BaseColor
+Graphic3d_TextureUnit_Emissive = Graphic3d_TextureUnit.Graphic3d_TextureUnit_Emissive
+Graphic3d_TextureUnit_Occlusion = Graphic3d_TextureUnit.Graphic3d_TextureUnit_Occlusion
+Graphic3d_TextureUnit_Normal = Graphic3d_TextureUnit.Graphic3d_TextureUnit_Normal
+Graphic3d_TextureUnit_MetallicRoughness = Graphic3d_TextureUnit.Graphic3d_TextureUnit_MetallicRoughness
 Graphic3d_TextureUnit_EnvMap = Graphic3d_TextureUnit.Graphic3d_TextureUnit_EnvMap
+Graphic3d_TextureUnit_PointSprite = Graphic3d_TextureUnit.Graphic3d_TextureUnit_PointSprite
+Graphic3d_TextureUnit_PbrEnvironmentLUT = Graphic3d_TextureUnit.Graphic3d_TextureUnit_PbrEnvironmentLUT
+Graphic3d_TextureUnit_PbrIblDiffuseSH = Graphic3d_TextureUnit.Graphic3d_TextureUnit_PbrIblDiffuseSH
+Graphic3d_TextureUnit_PbrIblSpecular = Graphic3d_TextureUnit.Graphic3d_TextureUnit_PbrIblSpecular
 
 class Graphic3d_TypeOfConnection(IntEnum):
 	Graphic3d_TOC_ANCESTOR = 0
@@ -1042,6 +1161,20 @@ Graphic3d_CMS_POS_Y = Graphic3d_CubeMapSide.Graphic3d_CMS_POS_Y
 Graphic3d_CMS_NEG_Y = Graphic3d_CubeMapSide.Graphic3d_CMS_NEG_Y
 Graphic3d_CMS_POS_Z = Graphic3d_CubeMapSide.Graphic3d_CMS_POS_Z
 Graphic3d_CMS_NEG_Z = Graphic3d_CubeMapSide.Graphic3d_CMS_NEG_Z
+
+class Graphic3d_TextureSetBits(IntEnum):
+	Graphic3d_TextureSetBits_NONE = 0
+	Graphic3d_TextureSetBits_BaseColor = Graphic3d_TextureUnit_BaseColor
+	Graphic3d_TextureSetBits_Emissive = Graphic3d_TextureUnit_Emissive
+	Graphic3d_TextureSetBits_Occlusion = Graphic3d_TextureUnit_Occlusion
+	Graphic3d_TextureSetBits_Normal = Graphic3d_TextureUnit_Normal
+	Graphic3d_TextureSetBits_MetallicRoughness = Graphic3d_TextureUnit_MetallicRoughness
+Graphic3d_TextureSetBits_NONE = Graphic3d_TextureSetBits.Graphic3d_TextureSetBits_NONE
+Graphic3d_TextureSetBits_BaseColor = Graphic3d_TextureSetBits.Graphic3d_TextureSetBits_BaseColor
+Graphic3d_TextureSetBits_Emissive = Graphic3d_TextureSetBits.Graphic3d_TextureSetBits_Emissive
+Graphic3d_TextureSetBits_Occlusion = Graphic3d_TextureSetBits.Graphic3d_TextureSetBits_Occlusion
+Graphic3d_TextureSetBits_Normal = Graphic3d_TextureSetBits.Graphic3d_TextureSetBits_Normal
+Graphic3d_TextureSetBits_MetallicRoughness = Graphic3d_TextureSetBits.Graphic3d_TextureSetBits_MetallicRoughness
 
 class Graphic3d_TypeOfComposition(IntEnum):
 	Graphic3d_TOC_REPLACE = 0
@@ -1126,32 +1259,84 @@ Graphic3d_NOT_2D_CHESS = Graphic3d_NameOfTexture2D.Graphic3d_NOT_2D_CHESS
 Graphic3d_NOT_2D_UNKNOWN = Graphic3d_NameOfTexture2D.Graphic3d_NOT_2D_UNKNOWN
 
 class Graphic3d_NameOfMaterial(IntEnum):
-	Graphic3d_NOM_BRASS = 0
-	Graphic3d_NOM_BRONZE = 1
-	Graphic3d_NOM_COPPER = 2
-	Graphic3d_NOM_GOLD = 3
-	Graphic3d_NOM_PEWTER = 4
-	Graphic3d_NOM_PLASTER = 5
-	Graphic3d_NOM_PLASTIC = 6
-	Graphic3d_NOM_SILVER = 7
-	Graphic3d_NOM_STEEL = 8
-	Graphic3d_NOM_STONE = 9
-	Graphic3d_NOM_SHINY_PLASTIC = 10
-	Graphic3d_NOM_SATIN = 11
-	Graphic3d_NOM_METALIZED = 12
-	Graphic3d_NOM_NEON_GNC = 13
-	Graphic3d_NOM_CHROME = 14
-	Graphic3d_NOM_ALUMINIUM = 15
-	Graphic3d_NOM_OBSIDIAN = 16
-	Graphic3d_NOM_NEON_PHC = 17
-	Graphic3d_NOM_JADE = 18
-	Graphic3d_NOM_CHARCOAL = 19
-	Graphic3d_NOM_WATER = 20
-	Graphic3d_NOM_GLASS = 21
-	Graphic3d_NOM_DIAMOND = 22
-	Graphic3d_NOM_TRANSPARENT = 23
-	Graphic3d_NOM_DEFAULT = 24
-	Graphic3d_NOM_UserDefined = 25
+	Graphic3d_NameOfMaterial_Brass = 0
+	Graphic3d_NameOfMaterial_Bronze = 1
+	Graphic3d_NameOfMaterial_Copper = 2
+	Graphic3d_NameOfMaterial_Gold = 3
+	Graphic3d_NameOfMaterial_Pewter = 4
+	Graphic3d_NameOfMaterial_Plastered = 5
+	Graphic3d_NameOfMaterial_Plastified = 6
+	Graphic3d_NameOfMaterial_Silver = 7
+	Graphic3d_NameOfMaterial_Steel = 8
+	Graphic3d_NameOfMaterial_Stone = 9
+	Graphic3d_NameOfMaterial_ShinyPlastified = 10
+	Graphic3d_NameOfMaterial_Satin = 11
+	Graphic3d_NameOfMaterial_Metalized = 12
+	Graphic3d_NameOfMaterial_Ionized = 13
+	Graphic3d_NameOfMaterial_Chrome = 14
+	Graphic3d_NameOfMaterial_Aluminum = 15
+	Graphic3d_NameOfMaterial_Obsidian = 16
+	Graphic3d_NameOfMaterial_Neon = 17
+	Graphic3d_NameOfMaterial_Jade = 18
+	Graphic3d_NameOfMaterial_Charcoal = 19
+	Graphic3d_NameOfMaterial_Water = 20
+	Graphic3d_NameOfMaterial_Glass = 21
+	Graphic3d_NameOfMaterial_Diamond = 22
+	Graphic3d_NameOfMaterial_Transparent = 23
+	Graphic3d_NameOfMaterial_DEFAULT = 24
+	Graphic3d_NameOfMaterial_UserDefined = 25
+	Graphic3d_NOM_BRASS = Graphic3d_NameOfMaterial_Brass
+	Graphic3d_NOM_BRONZE = Graphic3d_NameOfMaterial_Bronze
+	Graphic3d_NOM_COPPER = Graphic3d_NameOfMaterial_Copper
+	Graphic3d_NOM_GOLD = Graphic3d_NameOfMaterial_Gold
+	Graphic3d_NOM_PEWTER = Graphic3d_NameOfMaterial_Pewter
+	Graphic3d_NOM_PLASTER = Graphic3d_NameOfMaterial_Plastered
+	Graphic3d_NOM_PLASTIC = Graphic3d_NameOfMaterial_Plastified
+	Graphic3d_NOM_SILVER = Graphic3d_NameOfMaterial_Silver
+	Graphic3d_NOM_STEEL = Graphic3d_NameOfMaterial_Steel
+	Graphic3d_NOM_STONE = Graphic3d_NameOfMaterial_Stone
+	Graphic3d_NOM_SHINY_PLASTIC = Graphic3d_NameOfMaterial_ShinyPlastified
+	Graphic3d_NOM_SATIN = Graphic3d_NameOfMaterial_Satin
+	Graphic3d_NOM_METALIZED = Graphic3d_NameOfMaterial_Metalized
+	Graphic3d_NOM_NEON_GNC = Graphic3d_NameOfMaterial_Ionized
+	Graphic3d_NOM_CHROME = Graphic3d_NameOfMaterial_Chrome
+	Graphic3d_NOM_ALUMINIUM = Graphic3d_NameOfMaterial_Aluminum
+	Graphic3d_NOM_OBSIDIAN = Graphic3d_NameOfMaterial_Obsidian
+	Graphic3d_NOM_NEON_PHC = Graphic3d_NameOfMaterial_Neon
+	Graphic3d_NOM_JADE = Graphic3d_NameOfMaterial_Jade
+	Graphic3d_NOM_CHARCOAL = Graphic3d_NameOfMaterial_Charcoal
+	Graphic3d_NOM_WATER = Graphic3d_NameOfMaterial_Water
+	Graphic3d_NOM_GLASS = Graphic3d_NameOfMaterial_Glass
+	Graphic3d_NOM_DIAMOND = Graphic3d_NameOfMaterial_Diamond
+	Graphic3d_NOM_TRANSPARENT = Graphic3d_NameOfMaterial_Transparent
+	Graphic3d_NOM_DEFAULT = Graphic3d_NameOfMaterial_DEFAULT
+	Graphic3d_NOM_UserDefined = Graphic3d_NameOfMaterial_UserDefined
+Graphic3d_NameOfMaterial_Brass = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Brass
+Graphic3d_NameOfMaterial_Bronze = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Bronze
+Graphic3d_NameOfMaterial_Copper = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Copper
+Graphic3d_NameOfMaterial_Gold = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Gold
+Graphic3d_NameOfMaterial_Pewter = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Pewter
+Graphic3d_NameOfMaterial_Plastered = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Plastered
+Graphic3d_NameOfMaterial_Plastified = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Plastified
+Graphic3d_NameOfMaterial_Silver = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Silver
+Graphic3d_NameOfMaterial_Steel = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Steel
+Graphic3d_NameOfMaterial_Stone = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Stone
+Graphic3d_NameOfMaterial_ShinyPlastified = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_ShinyPlastified
+Graphic3d_NameOfMaterial_Satin = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Satin
+Graphic3d_NameOfMaterial_Metalized = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Metalized
+Graphic3d_NameOfMaterial_Ionized = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Ionized
+Graphic3d_NameOfMaterial_Chrome = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Chrome
+Graphic3d_NameOfMaterial_Aluminum = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Aluminum
+Graphic3d_NameOfMaterial_Obsidian = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Obsidian
+Graphic3d_NameOfMaterial_Neon = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Neon
+Graphic3d_NameOfMaterial_Jade = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Jade
+Graphic3d_NameOfMaterial_Charcoal = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Charcoal
+Graphic3d_NameOfMaterial_Water = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Water
+Graphic3d_NameOfMaterial_Glass = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Glass
+Graphic3d_NameOfMaterial_Diamond = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Diamond
+Graphic3d_NameOfMaterial_Transparent = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_Transparent
+Graphic3d_NameOfMaterial_DEFAULT = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_DEFAULT
+Graphic3d_NameOfMaterial_UserDefined = Graphic3d_NameOfMaterial.Graphic3d_NameOfMaterial_UserDefined
 Graphic3d_NOM_BRASS = Graphic3d_NameOfMaterial.Graphic3d_NOM_BRASS
 Graphic3d_NOM_BRONZE = Graphic3d_NameOfMaterial.Graphic3d_NOM_BRONZE
 Graphic3d_NOM_COPPER = Graphic3d_NameOfMaterial.Graphic3d_NOM_COPPER
@@ -2891,6 +3076,36 @@ Quantity_ColorRGBA
 ") ColorSubTitleRGBA;
 		const Quantity_ColorRGBA & ColorSubTitleRGBA();
 
+		/****************** DefaultLinePatternForType ******************/
+		/**** md5 signature: db0377d31ee56d14b26490c9ec64f6aa ****/
+		%feature("compactdefaultargs") DefaultLinePatternForType;
+		%feature("autodoc", "Return stipple line pattern for line type.
+
+Parameters
+----------
+theType: Aspect_TypeOfLine
+
+Returns
+-------
+uint16_t
+") DefaultLinePatternForType;
+		static uint16_t DefaultLinePatternForType(Aspect_TypeOfLine theType);
+
+		/****************** DefaultLineTypeForPattern ******************/
+		/**** md5 signature: 86cfe3bd72966e1639229affebe88fde ****/
+		%feature("compactdefaultargs") DefaultLineTypeForPattern;
+		%feature("autodoc", "Return line type for stipple line pattern.
+
+Parameters
+----------
+thePattern: uint16_t
+
+Returns
+-------
+Aspect_TypeOfLine
+") DefaultLineTypeForPattern;
+		static Aspect_TypeOfLine DefaultLineTypeForPattern(uint16_t thePattern);
+
 		/****************** Distinguish ******************/
 		/**** md5 signature: 0454cac171c21f4684edced692b81ef0 ****/
 		%feature("compactdefaultargs") Distinguish;
@@ -3045,6 +3260,28 @@ Returns
 bool
 ") IsTextZoomable;
 		bool IsTextZoomable();
+
+		/****************** LinePattern ******************/
+		/**** md5 signature: 0f5a2917d18d0384d2bca639fea5b45b ****/
+		%feature("compactdefaultargs") LinePattern;
+		%feature("autodoc", "Return custom stipple line pattern; 0xffff by default.
+
+Returns
+-------
+uint16_t
+") LinePattern;
+		uint16_t LinePattern();
+
+		/****************** LineStippleFactor ******************/
+		/**** md5 signature: e63889618f2bf3b4350144cbc25324dc ****/
+		%feature("compactdefaultargs") LineStippleFactor;
+		%feature("autodoc", "Return a multiplier for each bit in the line stipple pattern within [1, 256] range; 1 by default.
+
+Returns
+-------
+uint16_t
+") LineStippleFactor;
+		uint16_t LineStippleFactor();
 
 		/****************** LineType ******************/
 		/**** md5 signature: 6ae68230b33e9e754a59131adc3dc5c1 ****/
@@ -3473,6 +3710,36 @@ Returns
 None
 ") SetInteriorStyle;
 		void SetInteriorStyle(const Aspect_InteriorStyle theStyle);
+
+		/****************** SetLinePattern ******************/
+		/**** md5 signature: dcb92c889cf404e8110d52ab7ef1878a ****/
+		%feature("compactdefaultargs") SetLinePattern;
+		%feature("autodoc", "Modifies the stipple line pattern, and changes line type to aspect_tol_userdefined for non-standard pattern.
+
+Parameters
+----------
+thePattern: uint16_t
+
+Returns
+-------
+None
+") SetLinePattern;
+		void SetLinePattern(uint16_t thePattern);
+
+		/****************** SetLineStippleFactor ******************/
+		/**** md5 signature: 5a4ce4aa1b2cbf776034be5e022001ab ****/
+		%feature("compactdefaultargs") SetLineStippleFactor;
+		%feature("autodoc", "Set a multiplier for each bit in the line stipple pattern.
+
+Parameters
+----------
+theFactor: uint16_t
+
+Returns
+-------
+None
+") SetLineStippleFactor;
+		void SetLineStippleFactor(uint16_t theFactor);
 
 		/****************** SetLineType ******************/
 		/**** md5 signature: 62e1ffe971a62e7ffb6bed2fec770aa5 ****/
@@ -4411,6 +4678,21 @@ Graphic3d_BSDF
 ") CreateMetallic;
 		static Graphic3d_BSDF CreateMetallic(const Graphic3d_Vec3 & theWeight, const Graphic3d_Fresnel & theFresnel, const Standard_ShortReal theRoughness);
 
+		/****************** CreateMetallicRoughness ******************/
+		/**** md5 signature: 930ca7145736f61c5c901f75de9967f5 ****/
+		%feature("compactdefaultargs") CreateMetallicRoughness;
+		%feature("autodoc", "Creates bsdf from pbr metallic-roughness material.
+
+Parameters
+----------
+thePbr: Graphic3d_PBRMaterial
+
+Returns
+-------
+Graphic3d_BSDF
+") CreateMetallicRoughness;
+		static Graphic3d_BSDF CreateMetallicRoughness(const Graphic3d_PBRMaterial & thePbr);
+
 		/****************** CreateTransparent ******************/
 		/**** md5 signature: 52d78d15959bff96f6cccedb7f40bfd1 ****/
 		%feature("compactdefaultargs") CreateTransparent;
@@ -4428,6 +4710,14 @@ Graphic3d_BSDF
 ") CreateTransparent;
 		static Graphic3d_BSDF CreateTransparent(const Graphic3d_Vec3 & theWeight, const Graphic3d_Vec3 & theAbsorptionColor, const Standard_ShortReal theAbsorptionCoeff);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Normalize ******************/
 		/**** md5 signature: 587346cf1e1c12fdf674aedc915ccd95 ****/
 		%feature("compactdefaultargs") Normalize;
@@ -4486,6 +4776,14 @@ None
 ") Graphic3d_BoundBuffer;
 		 Graphic3d_BoundBuffer(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Init ******************/
 		/**** md5 signature: 694bf4addd159e7bda9f19dbe5cbf854 ****/
 		%feature("compactdefaultargs") Init;
@@ -4820,6 +5118,14 @@ theVz: float
 ") Direction;
 		void Direction(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
@@ -4908,16 +5214,16 @@ Graphic3d_Vec4
 ") PackedColor;
 		const Graphic3d_Vec4 & PackedColor();
 
-		/****************** PackedDirection ******************/
-		/**** md5 signature: 570ea6336cce8d53dc8ec53afc9f24d5 ****/
-		%feature("compactdefaultargs") PackedDirection;
-		%feature("autodoc", "Returns direction of directional/spot light.
+		/****************** PackedDirectionRange ******************/
+		/**** md5 signature: 17165b5921369c255346f4b6e9061750 ****/
+		%feature("compactdefaultargs") PackedDirectionRange;
+		%feature("autodoc", "Returns direction of directional/spot light and range for positional/spot light in alpha channel.
 
 Returns
 -------
 Graphic3d_Vec4
-") PackedDirection;
-		const Graphic3d_Vec4 & PackedDirection();
+") PackedDirectionRange;
+		const Graphic3d_Vec4 & PackedDirectionRange();
 
 		/****************** PackedParams ******************/
 		/**** md5 signature: f2247bd3e1bb49038fe7d24d792f8d76 ****/
@@ -4956,6 +5262,17 @@ theY: float
 theZ: float
 ") Position;
 		void Position(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** Range ******************/
+		/**** md5 signature: 1ea59a087c0e2277a922e47f32156491 ****/
+		%feature("compactdefaultargs") Range;
+		%feature("autodoc", "Returns maximum distance on which point light source affects to objects and is considered during illumination calculations. 0.0 means disabling range considering at all without any distance limits. has sense only for point light sources (positional and spot). .
+
+Returns
+-------
+Standard_ShortReal
+") Range;
+		Standard_ShortReal Range();
 
 		/****************** Revision ******************/
 		/**** md5 signature: dfd4fb672d125a081a8b5a357ac81453 ****/
@@ -5153,6 +5470,21 @@ None
 ") SetPosition;
 		void SetPosition(Standard_Real theX, Standard_Real theY, Standard_Real theZ);
 
+		/****************** SetRange ******************/
+		/**** md5 signature: 5397d27cf61a5e5479e51e18fce6ae0a ****/
+		%feature("compactdefaultargs") SetRange;
+		%feature("autodoc", "Modifies maximum distance on which point light source affects to objects and is considered during illumination calculations. positional and spot lights are only point light sources. 0.0 means disabling range considering at all without any distance limits.
+
+Parameters
+----------
+theValue: Standard_ShortReal
+
+Returns
+-------
+None
+") SetRange;
+		void SetRange(Standard_ShortReal theValue);
+
 		/****************** SetSmoothAngle ******************/
 		/**** md5 signature: 1d78f5070c438d17265af49cce69d5d4 ****/
 		%feature("compactdefaultargs") SetSmoothAngle;
@@ -5323,6 +5655,14 @@ None
 ") Disconnect;
 		virtual void Disconnect(Graphic3d_CStructure & theStructure);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GraphicDriver ******************/
 		/**** md5 signature: 92aa99aef6bae4d6a3fd285cb7eb38ce ****/
 		%feature("compactdefaultargs") GraphicDriver;
@@ -5543,19 +5883,19 @@ None
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** SetTransformation ******************/
-		/**** md5 signature: 913d7cc4eba329bb39e7d4acdf11c0e2 ****/
+		/**** md5 signature: e50f985bc8429fcabc770ae98629b0e4 ****/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", "Assign transformation.
 
 Parameters
 ----------
-theTrsf: Geom_Transformation
+theTrsf: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") SetTransformation;
-		virtual void SetTransformation(const opencascade::handle<Geom_Transformation> & theTrsf);
+		virtual void SetTransformation(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** SetZLayer ******************/
 		/**** md5 signature: ce2e4a880a4e9d0bd19b68aa8a0ed6bd ****/
@@ -5599,15 +5939,15 @@ opencascade::handle<Graphic3d_TransformPers>
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
 		/****************** Transformation ******************/
-		/**** md5 signature: 11ffe13bd65c76d8962d14d3b1eb956a ****/
+		/**** md5 signature: db8c043002ade3619cbf19c2cdc0b508 ****/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Return transformation.
 
 Returns
 -------
-opencascade::handle<Geom_Transformation>
+opencascade::handle<TopLoc_Datum3D>
 ") Transformation;
-		const opencascade::handle<Geom_Transformation> & Transformation();
+		const opencascade::handle<TopLoc_Datum3D> & Transformation();
 
 		/****************** ZLayer ******************/
 		/**** md5 signature: 7420fa5788bb824c02345ee38be45933 ****/
@@ -5923,6 +6263,14 @@ float
 ") Distance;
 		Standard_Real Distance();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eye ******************/
 		/**** md5 signature: 5d89a7e69918722c78431c69f97cda69 ****/
 		%feature("compactdefaultargs") Eye;
@@ -5933,6 +6281,28 @@ Returns
 gp_Pnt
 ") Eye;
 		const gp_Pnt Eye();
+
+		/****************** FOV2d ******************/
+		/**** md5 signature: 364ad7cb412ab28660c499c82aee2d10 ****/
+		%feature("compactdefaultargs") FOV2d;
+		%feature("autodoc", "Get field of view (fov) restriction for 2d on-screen elements; 180 degrees by default. when 2d fov is smaller than fovy or fovx, 2d elements defined within offset from view corner will be extended to fit into specified 2d fov. this can be useful to make 2d elements sharply visible, like in case of hmd normally having extra large fovy.
+
+Returns
+-------
+float
+") FOV2d;
+		Standard_Real FOV2d();
+
+		/****************** FOVx ******************/
+		/**** md5 signature: e830aeb674883f9accab89bdae2edb59 ****/
+		%feature("compactdefaultargs") FOVx;
+		%feature("autodoc", "Get field of view (fov) in x axis. returns the fov value in degrees.
+
+Returns
+-------
+float
+") FOVx;
+		Standard_Real FOVx();
 
 		/****************** FOVy ******************/
 		/**** md5 signature: 2e66b09969f86dd4b5d2b9a3c09837f5 ****/
@@ -5966,19 +6336,21 @@ None
 		void Frustum(gp_Pln & theLeft, gp_Pln & theRight, gp_Pln & theBottom, gp_Pln & theTop, gp_Pln & theNear, gp_Pln & theFar);
 
 		/****************** FrustumPoints ******************/
-		/**** md5 signature: 783289ba13644d7e7ff729bdd470b00e ****/
+		/**** md5 signature: d944a131c8ab93e846cb55932c041f2c ****/
 		%feature("compactdefaultargs") FrustumPoints;
 		%feature("autodoc", "Fill array of current view frustum corners. the size of this array is equal to frustumverticesnb. the order of vertices is as defined in frustumvert_* enumeration.
 
 Parameters
 ----------
 thePoints: NCollection_Array1<Graphic3d_Vec3d>
+theModelWorld: Graphic3d_Mat4d,optional
+	default value is Graphic3d_Mat4d()
 
 Returns
 -------
 None
 ") FrustumPoints;
-		void FrustumPoints(NCollection_Array1<Graphic3d_Vec3d> & thePoints);
+		void FrustumPoints(NCollection_Array1<Graphic3d_Vec3d> & thePoints, const Graphic3d_Mat4d & theModelWorld = Graphic3d_Mat4d());
 
 		/****************** GetIODType ******************/
 		/**** md5 signature: 930a27532abcc8fe5dc7b294192f1acf ****/
@@ -6024,6 +6396,39 @@ None
 ") InvalidateProjection;
 		void InvalidateProjection();
 
+		/****************** IsCustomMonoProjection ******************/
+		/**** md5 signature: f40f82bd48e25f5f239d265ca31a9419 ****/
+		%feature("compactdefaultargs") IsCustomMonoProjection;
+		%feature("autodoc", "Return true if custom projection matrix is set.
+
+Returns
+-------
+bool
+") IsCustomMonoProjection;
+		bool IsCustomMonoProjection();
+
+		/****************** IsCustomStereoFrustum ******************/
+		/**** md5 signature: 79a61811976022584d3a16a0132ac5d5 ****/
+		%feature("compactdefaultargs") IsCustomStereoFrustum;
+		%feature("autodoc", "Return true if custom stereo frustums are set.
+
+Returns
+-------
+bool
+") IsCustomStereoFrustum;
+		bool IsCustomStereoFrustum();
+
+		/****************** IsCustomStereoProjection ******************/
+		/**** md5 signature: f95aa0bf9f02210f97a0b93d8ac62ce5 ****/
+		%feature("compactdefaultargs") IsCustomStereoProjection;
+		%feature("autodoc", "Return true if custom stereo projection matrices are set.
+
+Returns
+-------
+bool
+") IsCustomStereoProjection;
+		bool IsCustomStereoProjection();
+
 		/****************** IsOrthographic ******************/
 		/**** md5 signature: 318f821f87d8d72003d6a5bc300749dd ****/
 		%feature("compactdefaultargs") IsOrthographic;
@@ -6060,6 +6465,28 @@ Returns
 None
 ") MoveEyeTo;
 		void MoveEyeTo(const gp_Pnt & theEye);
+
+		/****************** NDC2dOffsetX ******************/
+		/**** md5 signature: 02b90a20975095bd3d05c44e0ba14c40 ****/
+		%feature("compactdefaultargs") NDC2dOffsetX;
+		%feature("autodoc", "Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovx exceeds fov2d.
+
+Returns
+-------
+float
+") NDC2dOffsetX;
+		Standard_Real NDC2dOffsetX();
+
+		/****************** NDC2dOffsetY ******************/
+		/**** md5 signature: 9daa3c64c4b36c604c8fd2e772f0ea20 ****/
+		%feature("compactdefaultargs") NDC2dOffsetY;
+		%feature("autodoc", "Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovy exceeds fov2d.
+
+Returns
+-------
+float
+") NDC2dOffsetY;
+		Standard_Real NDC2dOffsetY();
 
 		/****************** OrientationMatrix ******************/
 		/**** md5 signature: 88de92cfa5006e361a76bdeda10d31c1 ****/
@@ -6208,6 +6635,17 @@ Graphic3d_Camera::Projection
 ") ProjectionType;
 		Graphic3d_Camera::Projection ProjectionType();
 
+		/****************** ResetCustomProjection ******************/
+		/**** md5 signature: c76eab2fdadc47ea772ac6e33aae3e3e ****/
+		%feature("compactdefaultargs") ResetCustomProjection;
+		%feature("autodoc", "Unset all custom frustums and projection matrices.
+
+Returns
+-------
+None
+") ResetCustomProjection;
+		void ResetCustomProjection();
+
 		/****************** Scale ******************/
 		/**** md5 signature: 4c0fd48707c01e5a42b2a639ca08da30 ****/
 		%feature("compactdefaultargs") Scale;
@@ -6263,6 +6701,55 @@ Returns
 None
 ") SetCenter;
 		void SetCenter(const gp_Pnt & theCenter);
+
+		/****************** SetCustomMonoProjection ******************/
+		/**** md5 signature: a06f0e9f6800264c899ece0a233f9052 ****/
+		%feature("compactdefaultargs") SetCustomMonoProjection;
+		%feature("autodoc", "Set custom projection matrix.
+
+Parameters
+----------
+theProj: Graphic3d_Mat4d
+
+Returns
+-------
+None
+") SetCustomMonoProjection;
+		void SetCustomMonoProjection(const Graphic3d_Mat4d & theProj);
+
+		/****************** SetCustomStereoFrustums ******************/
+		/**** md5 signature: e324df4b1a8197646b676683a9a3fb10 ****/
+		%feature("compactdefaultargs") SetCustomStereoFrustums;
+		%feature("autodoc", "Set custom stereo frustums. these can be retrieved from apis like openvr.
+
+Parameters
+----------
+theFrustumL: Aspect_FrustumLRBT<float>
+theFrustumR: Aspect_FrustumLRBT<float>
+
+Returns
+-------
+None
+") SetCustomStereoFrustums;
+		void SetCustomStereoFrustums(const Aspect_FrustumLRBT<Standard_Real> & theFrustumL, const Aspect_FrustumLRBT<Standard_Real> & theFrustumR);
+
+		/****************** SetCustomStereoProjection ******************/
+		/**** md5 signature: 0d141663aa8aaa10812ad72746bbc873 ****/
+		%feature("compactdefaultargs") SetCustomStereoProjection;
+		%feature("autodoc", "Set custom stereo projection matrices. @param theprojl [in] left eye projection matrix @param theheadtoeyel [in] left head to eye translation matrix @param theprojr [in] right eye projection matrix @param theheadtoeyer [in] right head to eye translation matrix.
+
+Parameters
+----------
+theProjL: Graphic3d_Mat4d
+theHeadToEyeL: Graphic3d_Mat4d
+theProjR: Graphic3d_Mat4d
+theHeadToEyeR: Graphic3d_Mat4d
+
+Returns
+-------
+None
+") SetCustomStereoProjection;
+		void SetCustomStereoProjection(const Graphic3d_Mat4d & theProjL, const Graphic3d_Mat4d & theHeadToEyeL, const Graphic3d_Mat4d & theProjR, const Graphic3d_Mat4d & theHeadToEyeR);
 
 		/****************** SetDirection ******************/
 		/**** md5 signature: cefc66d5cea733e39294753286bacaa0 ****/
@@ -6340,10 +6827,25 @@ None
 ") SetEyeAndCenter;
 		void SetEyeAndCenter(const gp_Pnt & theEye, const gp_Pnt & theCenter);
 
+		/****************** SetFOV2d ******************/
+		/**** md5 signature: 1286ea5aea3a756d3a3d85a68f3345e3 ****/
+		%feature("compactdefaultargs") SetFOV2d;
+		%feature("autodoc", "Set field of view (fov) restriction for 2d on-screen elements.
+
+Parameters
+----------
+theFOV: float
+
+Returns
+-------
+None
+") SetFOV2d;
+		void SetFOV2d(Standard_Real theFOV);
+
 		/****************** SetFOVy ******************/
 		/**** md5 signature: 7e8348c77345d30f965072441cac49c1 ****/
 		%feature("compactdefaultargs") SetFOVy;
-		%feature("autodoc", "Set field of view (fov) in y axis for perspective projection. @param thefovy [in] the fov in degrees.
+		%feature("autodoc", "Set field of view (fov) in y axis for perspective projection. field of view in x axis is automatically scaled from view aspect ratio. @param thefovy [in] the fov in degrees.
 
 Parameters
 ----------
@@ -6462,6 +6964,53 @@ Returns
 None
 ") SetZRange;
 		void SetZRange(const Standard_Real theZNear, const Standard_Real theZFar);
+
+		/****************** SideRight ******************/
+		/**** md5 signature: 376ce920b40e8da4926fcbcf98d049aa ****/
+		%feature("compactdefaultargs") SideRight;
+		%feature("autodoc", "Right side direction.
+
+Returns
+-------
+gp_Dir
+") SideRight;
+		gp_Dir SideRight();
+
+		/****************** StereoProjection ******************/
+		/**** md5 signature: 6bcdb8d5aa0c1c1de01f77ee0b591ae3 ****/
+		%feature("compactdefaultargs") StereoProjection;
+		%feature("autodoc", "Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
+
+Parameters
+----------
+theProjL: Graphic3d_Mat4d
+theHeadToEyeL: Graphic3d_Mat4d
+theProjR: Graphic3d_Mat4d
+theHeadToEyeR: Graphic3d_Mat4d
+
+Returns
+-------
+None
+") StereoProjection;
+		void StereoProjection(Graphic3d_Mat4d & theProjL, Graphic3d_Mat4d & theHeadToEyeL, Graphic3d_Mat4d & theProjR, Graphic3d_Mat4d & theHeadToEyeR);
+
+		/****************** StereoProjectionF ******************/
+		/**** md5 signature: e96cdfa262961efb535855e288a4b864 ****/
+		%feature("compactdefaultargs") StereoProjectionF;
+		%feature("autodoc", "Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
+
+Parameters
+----------
+theProjL: Graphic3d_Mat4
+theHeadToEyeL: Graphic3d_Mat4
+theProjR: Graphic3d_Mat4
+theHeadToEyeR: Graphic3d_Mat4
+
+Returns
+-------
+None
+") StereoProjectionF;
+		void StereoProjectionF(Graphic3d_Mat4 & theProjL, Graphic3d_Mat4 & theHeadToEyeL, Graphic3d_Mat4 & theProjR, Graphic3d_Mat4 & theHeadToEyeR);
 
 		/****************** Tile ******************/
 		/**** md5 signature: 0a39fc9b82eb1069228eaa7fbe821f43 ****/
@@ -6684,6 +7233,14 @@ Graphic3d_CameraTile
 ") Cropped;
 		Graphic3d_CameraTile Cropped();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsValid ******************/
 		/**** md5 signature: 735088818cf24ebe0ebc7005a507da69 ****/
 		%feature("compactdefaultargs") IsValid;
@@ -6738,7 +7295,7 @@ typedef Graphic3d_Vec4d Equation;
 		/****************** Graphic3d_ClipPlane ******************/
 		/**** md5 signature: 3b2ca438d53477ffa620c2e2afb936dd ****/
 		%feature("compactdefaultargs") Graphic3d_ClipPlane;
-		%feature("autodoc", "Default constructor. initializes clip plane container with the following properties: - equation (0.0, 0.0, 1.0, 0) - ison (true), - iscapping (false), - material (graphic3d_nom_default), - texture (null), - hatchstyle (aspect_hs_horizontal), - ishatchon (false).
+		%feature("autodoc", "Default constructor. initializes clip plane container with the following properties: - equation (0.0, 0.0, 1.0, 0) - ison (true), - iscapping (false), - material (graphic3d_nameofmaterial_default), - texture (null), - hatchstyle (aspect_hs_horizontal), - ishatchon (false).
 
 Returns
 -------
@@ -6890,6 +7447,14 @@ opencascade::handle<Graphic3d_ClipPlane>
 ") Clone;
 		virtual opencascade::handle<Graphic3d_ClipPlane> Clone();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetEquation ******************/
 		/**** md5 signature: f90e88f602ccaf023d48ae4419875876 ****/
 		%feature("compactdefaultargs") GetEquation;
@@ -7476,22 +8041,100 @@ opencascade::handle<Graphic3d_Camera>
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
+		/****************** CameraDirection ******************/
+		/**** md5 signature: 7fa7bc6baa9810145092ce9da965e1e1 ****/
+		%feature("compactdefaultargs") CameraDirection;
+		%feature("autodoc", "Returns camera direction.
+
+Returns
+-------
+Graphic3d_Vec3d
+") CameraDirection;
+		const Graphic3d_Vec3d & CameraDirection();
+
+		/****************** CameraEye ******************/
+		/**** md5 signature: fdd35ec282a94b10206ab3827588f91b ****/
+		%feature("compactdefaultargs") CameraEye;
+		%feature("autodoc", "Returns camera eye position.
+
+Returns
+-------
+Graphic3d_Vec3d
+") CameraEye;
+		const Graphic3d_Vec3d & CameraEye();
+
 		/****************** IsCulled ******************/
-		/**** md5 signature: e81e46c36264ee44ad5cae9367165426 ****/
+		/**** md5 signature: 1de085262679894159d0ba7635e539c9 ****/
 		%feature("compactdefaultargs") IsCulled;
-		%feature("autodoc", "Checks whether given aabb should be entirely culled or not. @param thectx [in] culling properties @param theminpt [in] maximum point of aabb @param themaxpt [in] minimum point of aabb returns standard_true, if aabb is in viewing area, standard_false otherwise.
+		%feature("autodoc", "Checks whether given aabb should be entirely culled or not. @param thectx [in] culling properties @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true returns true if aabb is completely outside of view frustum or culled by size/distance; false in case of partial or complete overlap (use theisinside to distinguish).
 
 Parameters
 ----------
 theCtx: CullingContext
-theMinPt: Graphic3d_Vec3d
-theMaxPt: Graphic3d_Vec3d
+theMinPnt: Graphic3d_Vec3d
+theMaxPnt: Graphic3d_Vec3d
+theIsInside: bool *,optional
+	default value is NULL
 
 Returns
 -------
 bool
 ") IsCulled;
-		bool IsCulled(CullingContext theCtx, const Graphic3d_Vec3d & theMinPt, const Graphic3d_Vec3d & theMaxPt);
+		bool IsCulled(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
+
+		/****************** IsOutFrustum ******************/
+		/**** md5 signature: 8308deb96ff5cf2378a5c538662ac121 ****/
+		%feature("compactdefaultargs") IsOutFrustum;
+		%feature("autodoc", "Detects if aabb overlaps view volume using separating axis theorem (sat). @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true returns true if aabb is completely outside of view frustum; false in case of partial or complete overlap (use theisinside to distinguish) @sa selectmgr_frustum::hasoverlap().
+
+Parameters
+----------
+theMinPnt: Graphic3d_Vec3d
+theMaxPnt: Graphic3d_Vec3d
+theIsInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") IsOutFrustum;
+		bool IsOutFrustum(const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
+
+		/****************** IsTooDistant ******************/
+		/**** md5 signature: 7f9321a17f9e3b0dd4d3f95855d943b1 ****/
+		%feature("compactdefaultargs") IsTooDistant;
+		%feature("autodoc", "Returns true if given aabb should be discarded by distance culling criterion. @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true returns true if aabb is completely behind culling distance; false in case of partial or complete overlap (use theisinside to distinguish).
+
+Parameters
+----------
+theCtx: CullingContext
+theMinPnt: Graphic3d_Vec3d
+theMaxPnt: Graphic3d_Vec3d
+theIsInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") IsTooDistant;
+		bool IsTooDistant(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
+
+		/****************** IsTooSmall ******************/
+		/**** md5 signature: 8dd1be1c332a828b50bd50b99ca83f24 ****/
+		%feature("compactdefaultargs") IsTooSmall;
+		%feature("autodoc", "Returns true if given aabb should be discarded by size culling criterion.
+
+Parameters
+----------
+theCtx: CullingContext
+theMinPnt: Graphic3d_Vec3d
+theMaxPnt: Graphic3d_Vec3d
+
+Returns
+-------
+bool
+") IsTooSmall;
+		bool IsTooSmall(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt);
 
 		/****************** ProjectionMatrix ******************/
 		/**** md5 signature: 74099661eed9cbb71b1b28e0d2bc7ed7 ****/
@@ -7537,19 +8180,21 @@ None
 		void SetCullingSize(CullingContext theCtx, Standard_Real theSize);
 
 		/****************** SetViewVolume ******************/
-		/**** md5 signature: 8e02be505f21dd37d1bcc12ba216dcef ****/
+		/**** md5 signature: d764b63bb91ca03cf3925f731886ca22 ****/
 		%feature("compactdefaultargs") SetViewVolume;
-		%feature("autodoc", "Retrieves view volume's planes equations and its vertices from projection and world-view matrices.
+		%feature("autodoc", "Retrieves view volume's planes equations and its vertices from projection and world-view matrices. @param thecamera [in] camera definition @param themodelworld [in] optional object transformation for computing frustum in object local coordinate system.
 
 Parameters
 ----------
 theCamera: Graphic3d_Camera
+theModelWorld: Graphic3d_Mat4d,optional
+	default value is Graphic3d_Mat4d()
 
 Returns
 -------
 None
 ") SetViewVolume;
-		void SetViewVolume(const opencascade::handle<Graphic3d_Camera> & theCamera);
+		void SetViewVolume(const opencascade::handle<Graphic3d_Camera> & theCamera, const Graphic3d_Mat4d & theModelWorld = Graphic3d_Mat4d());
 
 		/****************** SetViewportSize ******************/
 		/**** md5 signature: 0ebb6bfbf02f6ffd9190084c8511593a ****/
@@ -7567,6 +8212,22 @@ Returns
 None
 ") SetViewportSize;
 		void SetViewportSize(Standard_Integer theViewportWidth, Standard_Integer theViewportHeight, Standard_Real theResolutionRatio);
+
+		/****************** SignedPlanePointDistance ******************/
+		/**** md5 signature: 6be6a3052882dbe6b39affcb3eff62e2 ****/
+		%feature("compactdefaultargs") SignedPlanePointDistance;
+		%feature("autodoc", "Calculates signed distance from plane to point. @param thenormal [in] the plane's normal. @param thepnt [in].
+
+Parameters
+----------
+theNormal: Graphic3d_Vec4d
+thePnt: Graphic3d_Vec4d
+
+Returns
+-------
+float
+") SignedPlanePointDistance;
+		Standard_Real SignedPlanePointDistance(const Graphic3d_Vec4d & theNormal, const Graphic3d_Vec4d & thePnt);
 
 		/****************** ViewportHeight ******************/
 		/**** md5 signature: c197043069d1304d1eeb77ca9ae3a846 ****/
@@ -8006,6 +8667,28 @@ float
 ") FrameRateCpu;
 		Standard_Real FrameRateCpu();
 
+		/****************** ImmediateFrameRate ******************/
+		/**** md5 signature: 7d7a73e6546c64c304be750b5b030a96 ****/
+		%feature("compactdefaultargs") ImmediateFrameRate;
+		%feature("autodoc", "Returns fps for immediate redraws.
+
+Returns
+-------
+float
+") ImmediateFrameRate;
+		Standard_Real ImmediateFrameRate();
+
+		/****************** ImmediateFrameRateCpu ******************/
+		/**** md5 signature: 07fc29b568f47dc03d0111758def8aeb ****/
+		%feature("compactdefaultargs") ImmediateFrameRateCpu;
+		%feature("autodoc", "Returns cpu fps for immediate redraws.
+
+Returns
+-------
+float
+") ImmediateFrameRateCpu;
+		Standard_Real ImmediateFrameRateCpu();
+
 		/****************** Reset ******************/
 		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
 		%feature("compactdefaultargs") Reset;
@@ -8134,6 +8817,14 @@ Graphic3d_Fresnel
 ") CreateSchlick;
 		static Graphic3d_Fresnel CreateSchlick(const Graphic3d_Vec3 & theSpecularColor);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FresnelType ******************/
 		/**** md5 signature: 98c0c74d03fd3aa57b6d6ab4409e1720 ****/
 		%feature("compactdefaultargs") FresnelType;
@@ -8631,6 +9322,14 @@ Standard_ShortReal
 ") DefaultTextHeight;
 		virtual Standard_ShortReal DefaultTextHeight();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EnableVBO ******************/
 		/**** md5 signature: 6811071ed08bc9212270309c90e38f22 ****/
 		%feature("compactdefaultargs") EnableVBO;
@@ -9433,6 +10132,14 @@ None
 ") Graphic3d_HatchStyle;
 		 Graphic3d_HatchStyle(const Aspect_HatchStyle theType);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** HatchType ******************/
 		/**** md5 signature: 2c6a35919cbda160bae1aceb31a8d63f ****/
 		%feature("compactdefaultargs") HatchType;
@@ -9557,6 +10264,14 @@ Graphic3d_BvhCStructureSetTrsfPers
 ") CullableTrsfPersStructuresBVH;
 		const Graphic3d_BvhCStructureSetTrsfPers & CullableTrsfPersStructuresBVH();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** InvalidateBVHData ******************/
 		/**** md5 signature: 2fc22393f4d4ca2ae42c7f6212a1152a ****/
 		%feature("compactdefaultargs") InvalidateBVHData;
@@ -10230,6 +10945,14 @@ Quantity_Color
 ") DiffuseColor;
 		const Quantity_Color & DiffuseColor();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EmissiveColor ******************/
 		/**** md5 signature: 8e2c00d43bcbb308aeca1ba33f04a139 ****/
 		%feature("compactdefaultargs") EmissiveColor;
@@ -10305,7 +11028,7 @@ bool
 		/****************** MaterialFromName ******************/
 		/**** md5 signature: 5208b8b1000547cce2f00804c81986c6 ****/
 		%feature("compactdefaultargs") MaterialFromName;
-		%feature("autodoc", "Returns the material for specified name or graphic3d_nom_default if name is unknown.
+		%feature("autodoc", "Returns the material for specified name or graphic3d_nameofmaterial_default if name is unknown.
 
 Parameters
 ----------
@@ -10405,6 +11128,17 @@ Returns
 int
 ") NumberOfMaterials;
 		static Standard_Integer NumberOfMaterials();
+
+		/****************** PBRMaterial ******************/
+		/**** md5 signature: 11b0baa2ee2b4c812546a5f61cfead63 ****/
+		%feature("compactdefaultargs") PBRMaterial;
+		%feature("autodoc", "Returns physically based representation of material.
+
+Returns
+-------
+Graphic3d_PBRMaterial
+") PBRMaterial;
+		const Graphic3d_PBRMaterial & PBRMaterial();
 
 		/****************** ReflectionMode ******************/
 		/**** md5 signature: d37a0fd919e6ea813d6e18de89c04bce ****/
@@ -10574,6 +11308,21 @@ None
 ") SetMaterialType;
 		void SetMaterialType(const Graphic3d_TypeOfMaterial theType);
 
+		/****************** SetPBRMaterial ******************/
+		/**** md5 signature: 57a79c1118f3c400f690d5b27f4be2e1 ****/
+		%feature("compactdefaultargs") SetPBRMaterial;
+		%feature("autodoc", "Modifies the physically based representation of material.
+
+Parameters
+----------
+thePBRMaterial: Graphic3d_PBRMaterial
+
+Returns
+-------
+None
+") SetPBRMaterial;
+		void SetPBRMaterial(const Graphic3d_PBRMaterial & thePBRMaterial);
+
 		/****************** SetReflectionModeOff ******************/
 		/**** md5 signature: 54ab6b720121b4b30907a4a5ec49da13 ****/
 		%feature("compactdefaultargs") SetReflectionModeOff;
@@ -10730,6 +11479,355 @@ Standard_ShortReal
 	}
 };
 
+/******************************
+* class Graphic3d_PBRMaterial *
+******************************/
+class Graphic3d_PBRMaterial {
+	public:
+		/****************** Graphic3d_PBRMaterial ******************/
+		/**** md5 signature: 64dd925225d772eec2f56a6ac286f833 ****/
+		%feature("compactdefaultargs") Graphic3d_PBRMaterial;
+		%feature("autodoc", "Creates new physically based material in metallic-roughness system. 'metallic' parameter is 0 by default. 'roughness' parameter is 1 by default. 'color' parameter is (0, 0, 0) by default. 'alpha' parameter is 1 by default. 'ior' parameter is 1.5 by default. 'emission' parameter is (0, 0, 0) by default.
+
+Returns
+-------
+None
+") Graphic3d_PBRMaterial;
+		 Graphic3d_PBRMaterial();
+
+		/****************** Graphic3d_PBRMaterial ******************/
+		/**** md5 signature: 188dd61673e5afc8f39b43e588caae9a ****/
+		%feature("compactdefaultargs") Graphic3d_PBRMaterial;
+		%feature("autodoc", "Creates new physically based material in metallic-roughness system from graphic3d_bsdf.
+
+Parameters
+----------
+theBSDF: Graphic3d_BSDF
+
+Returns
+-------
+None
+") Graphic3d_PBRMaterial;
+		 Graphic3d_PBRMaterial(const Graphic3d_BSDF & theBSDF);
+
+		/****************** Alpha ******************/
+		/**** md5 signature: 7ca16a70b060b6cea195b679eee9d6a0 ****/
+		%feature("compactdefaultargs") Alpha;
+		%feature("autodoc", "Returns alpha component in range [0, 1].
+
+Returns
+-------
+Standard_ShortReal
+") Alpha;
+		Standard_ShortReal Alpha();
+
+		/****************** Color ******************/
+		/**** md5 signature: 3dcb129093b0c22e4d1f5785248243fd ****/
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", "Returns albedo color with alpha component of material.
+
+Returns
+-------
+Quantity_ColorRGBA
+") Color;
+		const Quantity_ColorRGBA & Color();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** Emission ******************/
+		/**** md5 signature: c655a085501e39074cbb93ac5e382e46 ****/
+		%feature("compactdefaultargs") Emission;
+		%feature("autodoc", "Returns light intensity emitted by material. values are greater or equal 0.
+
+Returns
+-------
+Graphic3d_Vec3
+") Emission;
+		Graphic3d_Vec3 Emission();
+
+		/****************** GenerateEnvLUT ******************/
+		/**** md5 signature: ab6e4772a25884134f897d33a68ddf4d ****/
+		%feature("compactdefaultargs") GenerateEnvLUT;
+		%feature("autodoc", "Generates 2d look up table of scale and bias for fresnell zero coefficient. it is needed for calculation reflectance part of environment lighting. @param [out] thelut table storage (must be image_format_rgf). @param [in] theintegralsamplescount number of importance samples in hemisphere integral calculation for every table item.
+
+Parameters
+----------
+theLUT: Image_PixMap
+theNbIntegralSamples: unsigned int,optional
+	default value is 1024
+
+Returns
+-------
+None
+") GenerateEnvLUT;
+		static void GenerateEnvLUT(const opencascade::handle<Image_PixMap> & theLUT, unsigned int theNbIntegralSamples = 1024);
+
+		/****************** IOR ******************/
+		/**** md5 signature: b1465ee4bbbb7a8f7c299b2a56eb15a8 ****/
+		%feature("compactdefaultargs") IOR;
+		%feature("autodoc", "Returns index of refraction in [1, 3] range.
+
+Returns
+-------
+Standard_ShortReal
+") IOR;
+		Standard_ShortReal IOR();
+
+		/****************** Metallic ******************/
+		/**** md5 signature: 8bd7c53e22cc2a2b21e5c0434e48276c ****/
+		%feature("compactdefaultargs") Metallic;
+		%feature("autodoc", "Returns material's metallic coefficient in [0, 1] range. 1 for metals and 0 for dielectrics. it is preferable to be exactly 0 or 1. average values are needed for textures mixing in shader.
+
+Returns
+-------
+Standard_ShortReal
+") Metallic;
+		Standard_ShortReal Metallic();
+
+		/****************** MetallicFromSpecular ******************/
+		/**** md5 signature: 27c53cec8c0dd276c5b248f63ca14fcf ****/
+		%feature("compactdefaultargs") MetallicFromSpecular;
+		%feature("autodoc", "Compute material metallicity from common material (specular color). @param thespecular [in] specular color returns metallicity within [0..1] range.
+
+Parameters
+----------
+theSpecular: Quantity_Color
+
+Returns
+-------
+Standard_ShortReal
+") MetallicFromSpecular;
+		static Standard_ShortReal MetallicFromSpecular(const Quantity_Color & theSpecular);
+
+		/****************** MinRoughness ******************/
+		/**** md5 signature: 0e84424a47d8034aac6ef0b7a62f783c ****/
+		%feature("compactdefaultargs") MinRoughness;
+		%feature("autodoc", "Roughness cannot be 0 in real calculations, so it returns minimal achievable level of roughness in practice.
+
+Returns
+-------
+Standard_ShortReal
+") MinRoughness;
+		static Standard_ShortReal MinRoughness();
+
+		/****************** NormalizedRoughness ******************/
+		/**** md5 signature: 3529cdcbc7456fdc310d9a6041054ab9 ****/
+		%feature("compactdefaultargs") NormalizedRoughness;
+		%feature("autodoc", "Returns roughness mapping parameter in [0, 1] range. roughness is defined in [0, 1] for handful material settings and is mapped to [minroughness, 1] for calculations.
+
+Returns
+-------
+Standard_ShortReal
+") NormalizedRoughness;
+		Standard_ShortReal NormalizedRoughness();
+
+		/****************** Roughness ******************/
+		/**** md5 signature: 2ca3e4780591f2dbc25fa2386701ec84 ****/
+		%feature("compactdefaultargs") Roughness;
+		%feature("autodoc", "Maps roughness from [0, 1] to [minroughness, 1] for calculations.
+
+Parameters
+----------
+theNormalizedRoughness: Standard_ShortReal
+
+Returns
+-------
+Standard_ShortReal
+") Roughness;
+		static Standard_ShortReal Roughness(Standard_ShortReal theNormalizedRoughness);
+
+		/****************** Roughness ******************/
+		/**** md5 signature: 784711f951bd833d4004d37f7c42b07a ****/
+		%feature("compactdefaultargs") Roughness;
+		%feature("autodoc", "Returns real value of roughness in [minroughness, 1] range for calculations.
+
+Returns
+-------
+Standard_ShortReal
+") Roughness;
+		Standard_ShortReal Roughness();
+
+		/****************** RoughnessFromSpecular ******************/
+		/**** md5 signature: 44dd1364b75d91323ee031503ffee6c6 ****/
+		%feature("compactdefaultargs") RoughnessFromSpecular;
+		%feature("autodoc", "Compute material roughness from common material (specular color + shininess). @param thespecular [in] specular color @param theshiness [in] normalized shininess coefficient within [0..1] range returns roughness within [0..1] range.
+
+Parameters
+----------
+theSpecular: Quantity_Color
+theShiness: float
+
+Returns
+-------
+Standard_ShortReal
+") RoughnessFromSpecular;
+		static Standard_ShortReal RoughnessFromSpecular(const Quantity_Color & theSpecular, const Standard_Real theShiness);
+
+		/****************** SetAlpha ******************/
+		/**** md5 signature: a1e0c52de92b74ec7f421e8de558fe97 ****/
+		%feature("compactdefaultargs") SetAlpha;
+		%feature("autodoc", "Modifies alpha component.
+
+Parameters
+----------
+theAlpha: Standard_ShortReal
+
+Returns
+-------
+None
+") SetAlpha;
+		void SetAlpha(Standard_ShortReal theAlpha);
+
+		/****************** SetBSDF ******************/
+		/**** md5 signature: 02fb8f9f231182513d89209ed4badf55 ****/
+		%feature("compactdefaultargs") SetBSDF;
+		%feature("autodoc", "Generates material in metallic-roughness system from graphic3d_bsdf.
+
+Parameters
+----------
+theBSDF: Graphic3d_BSDF
+
+Returns
+-------
+None
+") SetBSDF;
+		void SetBSDF(const Graphic3d_BSDF & theBSDF);
+
+		/****************** SetColor ******************/
+		/**** md5 signature: f154347034a6e0870fb5d6aa0e2b3b0a ****/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "Modifies albedo color with alpha component.
+
+Parameters
+----------
+theColor: Quantity_ColorRGBA
+
+Returns
+-------
+None
+") SetColor;
+		void SetColor(const Quantity_ColorRGBA & theColor);
+
+		/****************** SetColor ******************/
+		/**** md5 signature: 4493bec663df9e92c429e56b9c76a307 ****/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "Modifies only albedo color.
+
+Parameters
+----------
+theColor: Quantity_Color
+
+Returns
+-------
+None
+") SetColor;
+		void SetColor(const Quantity_Color & theColor);
+
+		/****************** SetEmission ******************/
+		/**** md5 signature: b3f27095cc29e2ca02b2d2951dae7dae ****/
+		%feature("compactdefaultargs") SetEmission;
+		%feature("autodoc", "Modifies light intensity emitted by material.
+
+Parameters
+----------
+theEmission: Graphic3d_Vec3
+
+Returns
+-------
+None
+") SetEmission;
+		void SetEmission(const Graphic3d_Vec3 & theEmission);
+
+		/****************** SetIOR ******************/
+		/**** md5 signature: 92ef3fe5506ccc215535935078b10610 ****/
+		%feature("compactdefaultargs") SetIOR;
+		%feature("autodoc", "Modifies index of refraction in [1, 3] range. in practice affects only on non-metal materials reflection possibilities.
+
+Parameters
+----------
+theIOR: Standard_ShortReal
+
+Returns
+-------
+None
+") SetIOR;
+		void SetIOR(Standard_ShortReal theIOR);
+
+		/****************** SetMetallic ******************/
+		/**** md5 signature: 03795224bca5abdc5266bfae0a7b19a5 ****/
+		%feature("compactdefaultargs") SetMetallic;
+		%feature("autodoc", "Modifies metallic coefficient of material in [0, 1] range.
+
+Parameters
+----------
+theMetallic: Standard_ShortReal
+
+Returns
+-------
+None
+") SetMetallic;
+		void SetMetallic(Standard_ShortReal theMetallic);
+
+		/****************** SetRoughness ******************/
+		/**** md5 signature: 4539668633a96800f657dae5b809af24 ****/
+		%feature("compactdefaultargs") SetRoughness;
+		%feature("autodoc", "Modifies roughness coefficient of material in [0, 1] range.
+
+Parameters
+----------
+theRoughness: Standard_ShortReal
+
+Returns
+-------
+None
+") SetRoughness;
+		void SetRoughness(Standard_ShortReal theRoughness);
+
+		/****************** SpecIBLMapSamplesFactor ******************/
+		/**** md5 signature: 412f2effabf45708ae22fed0ba2dff54 ****/
+		%feature("compactdefaultargs") SpecIBLMapSamplesFactor;
+		%feature("autodoc", "Shows how much times less samples can be used in certain roughness value specular ibl map generation in compare with samples number for map with roughness of 1. specular ibl maps with less roughness values have higher resolution but require less samples for the same quality of baking. so that reducing samples number is good strategy to improve performance of baking. the samples number for specular ibl map with roughness of 1 (the maximum possible samples number) is expected to be defined as baking parameter. samples number for other roughness values can be calculated by multiplication origin samples number by this factor. @param theprobability value from 0 to 1 controlling strength of samples reducing. bigger values result in slower reduction to provide better quality but worse performance. value of 1 doesn't affect at all so that 1 will be returned (it can be used to disable reduction strategy). @param theroughness roughness value of current generated specular ibl map (from 0 to 1). returns factor to calculate number of samples for current specular ibl map baking. be aware! it has no obligation to return 1 in case of roughness of 1. be aware! it produces poor quality with small number of origin samples. in that case it is recommended to be disabled.
+
+Parameters
+----------
+theProbability: Standard_ShortReal
+theRoughness: Standard_ShortReal
+
+Returns
+-------
+Standard_ShortReal
+") SpecIBLMapSamplesFactor;
+		static Standard_ShortReal SpecIBLMapSamplesFactor(Standard_ShortReal theProbability, Standard_ShortReal theRoughness);
+
+
+            %extend{
+                bool __eq_wrapper__(const Graphic3d_PBRMaterial other) {
+                if (*self==other) return true;
+                else return false;
+                }
+            }
+            %pythoncode {
+            def __eq__(self, right):
+                try:
+                    return self.__eq_wrapper__(right)
+                except:
+                    return False
+            }
+};
+
+
+%extend Graphic3d_PBRMaterial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /********************************
 * class Graphic3d_PolygonOffset *
 ********************************/
@@ -10840,6 +11938,14 @@ int
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Method ******************/
 		/**** md5 signature: b302ac4956523d91e861bf2704dd879d ****/
 		%feature("compactdefaultargs") Method;
@@ -10999,12 +12105,13 @@ enum PerfCounters {
 	PerfCounters_GroupArrays = 32,
 	PerfCounters_Triangles = 64,
 	PerfCounters_Points = 128,
-	PerfCounters_EstimMem = 256,
-	PerfCounters_FrameTime = 512,
-	PerfCounters_FrameTimeMax = 1024,
-	PerfCounters_SkipImmediate = 2048,
+	PerfCounters_Lines = 256,
+	PerfCounters_EstimMem = 512,
+	PerfCounters_FrameTime = 1024,
+	PerfCounters_FrameTimeMax = 2048,
+	PerfCounters_SkipImmediate = 4096,
 	PerfCounters_Basic = PerfCounters_FrameRate | PerfCounters_CPU | PerfCounters_Layers | PerfCounters_Structures,
-	PerfCounters_Extended = PerfCounters_Basic | PerfCounters_Groups | PerfCounters_GroupArrays | PerfCounters_Triangles | PerfCounters_Points | PerfCounters_EstimMem,
+	PerfCounters_Extended = PerfCounters_Basic | PerfCounters_Groups | PerfCounters_GroupArrays | PerfCounters_Triangles | PerfCounters_Points | PerfCounters_Lines | PerfCounters_EstimMem,
 	PerfCounters_All = PerfCounters_Extended | PerfCounters_FrameTime | PerfCounters_FrameTimeMax,
 };
 
@@ -11043,12 +12150,13 @@ class PerfCounters(IntEnum):
 	PerfCounters_GroupArrays = 32
 	PerfCounters_Triangles = 64
 	PerfCounters_Points = 128
-	PerfCounters_EstimMem = 256
-	PerfCounters_FrameTime = 512
-	PerfCounters_FrameTimeMax = 1024
-	PerfCounters_SkipImmediate = 2048
+	PerfCounters_Lines = 256
+	PerfCounters_EstimMem = 512
+	PerfCounters_FrameTime = 1024
+	PerfCounters_FrameTimeMax = 2048
+	PerfCounters_SkipImmediate = 4096
 	PerfCounters_Basic = PerfCounters_FrameRate | PerfCounters_CPU | PerfCounters_Layers | PerfCounters_Structures
-	PerfCounters_Extended = PerfCounters_Basic | PerfCounters_Groups | PerfCounters_GroupArrays | PerfCounters_Triangles | PerfCounters_Points | PerfCounters_EstimMem
+	PerfCounters_Extended = PerfCounters_Basic | PerfCounters_Groups | PerfCounters_GroupArrays | PerfCounters_Triangles | PerfCounters_Points | PerfCounters_Lines | PerfCounters_EstimMem
 	PerfCounters_All = PerfCounters_Extended | PerfCounters_FrameTime | PerfCounters_FrameTimeMax
 PerfCounters_NONE = PerfCounters.PerfCounters_NONE
 PerfCounters_FrameRate = PerfCounters.PerfCounters_FrameRate
@@ -11059,6 +12167,7 @@ PerfCounters_Groups = PerfCounters.PerfCounters_Groups
 PerfCounters_GroupArrays = PerfCounters.PerfCounters_GroupArrays
 PerfCounters_Triangles = PerfCounters.PerfCounters_Triangles
 PerfCounters_Points = PerfCounters.PerfCounters_Points
+PerfCounters_Lines = PerfCounters.PerfCounters_Lines
 PerfCounters_EstimMem = PerfCounters.PerfCounters_EstimMem
 PerfCounters_FrameTime = PerfCounters.PerfCounters_FrameTime
 PerfCounters_FrameTimeMax = PerfCounters.PerfCounters_FrameTimeMax
@@ -11080,6 +12189,11 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		Graphic3d_RenderingMode Method;
 		Graphic3d_RenderTransparentMethod TransparencyMethod;
 		Standard_ShortReal LineFeather;
+		int PbrEnvPow2Size;
+		int PbrEnvSpecMapNbLevels;
+		int PbrEnvBakingDiffNbSamples;
+		int PbrEnvBakingSpecNbSamples;
+		Standard_ShortReal PbrEnvBakingProbability;
 		Standard_ShortReal OitDepthFactor;
 		int NbMsaaSamples;
 		Standard_ShortReal RenderResolutionScale;
@@ -11093,6 +12207,7 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		bool IsAntialiasingEnabled;
 		bool IsTransparentShadowEnabled;
 		bool UseEnvironmentMapBackground;
+		bool ToIgnoreNormalMapInRayTracing;
 		bool CoherentPathTracingMode;
 		bool AdaptiveScreenSampling;
 		bool AdaptiveScreenSamplingAtomic;
@@ -11109,10 +12224,12 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		Standard_ShortReal Exposure;
 		Standard_ShortReal WhitePoint;
 		Graphic3d_StereoMode StereoMode;
+		Standard_ShortReal HmdFov2d;
 		Anaglyph AnaglyphFilter;
 		Graphic3d_Mat4 AnaglyphLeft;
 		Graphic3d_Mat4 AnaglyphRight;
 		bool ToReverseStereo;
+		bool ToMirrorComposer;
 		opencascade::handle<Graphic3d_TransformPers > StatsPosition;
 		opencascade::handle<Graphic3d_TransformPers > ChartPosition;
 		Graphic3d_Vec2i ChartSize;
@@ -11135,6 +12252,14 @@ None
 ") Graphic3d_RenderingParams;
 		 Graphic3d_RenderingParams();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** ResolutionRatio ******************/
 		/**** md5 signature: 57d680035ff41120d22ad8575654a631 ****/
 		%feature("compactdefaultargs") ResolutionRatio;
@@ -11198,6 +12323,14 @@ None
 ") Clear;
 		void Clear();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** First ******************/
 		/**** md5 signature: cc797633cf7616f9dd4c3a09257e2742 ****/
 		%feature("compactdefaultargs") First;
@@ -11594,6 +12727,17 @@ bool
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
+		/****************** IsPBR ******************/
+		/**** md5 signature: 326d20b786202fbb81b42cbfa3a0ab63 ****/
+		%feature("compactdefaultargs") IsPBR;
+		%feature("autodoc", "Return true if standard program header should define functions and variables used in pbr pipeline. false by default.
+
+Returns
+-------
+bool
+") IsPBR;
+		Standard_Boolean IsPBR();
+
 		/****************** NbClipPlanesMax ******************/
 		/**** md5 signature: e666dcb5a703f731f3fc4a8bf3e8ce5d ****/
 		%feature("compactdefaultargs") NbClipPlanesMax;
@@ -11860,6 +13004,36 @@ None
 ") SetNbLightsMax;
 		void SetNbLightsMax(Standard_Integer theNbLights);
 
+		/****************** SetPBR ******************/
+		/**** md5 signature: d5ce79ee9840bebe45640f0c5c7692f5 ****/
+		%feature("compactdefaultargs") SetPBR;
+		%feature("autodoc", "Sets whether standard program header should define functions and variables used in pbr pipeline.
+
+Parameters
+----------
+theIsPBR: bool
+
+Returns
+-------
+None
+") SetPBR;
+		void SetPBR(Standard_Boolean theIsPBR);
+
+		/****************** SetTextureSetBits ******************/
+		/**** md5 signature: 4730c4f840866bab8f03b369d0776b1d ****/
+		%feature("compactdefaultargs") SetTextureSetBits;
+		%feature("autodoc", "Set texture units declared within the program.
+
+Parameters
+----------
+theBits: int
+
+Returns
+-------
+None
+") SetTextureSetBits;
+		void SetTextureSetBits(Standard_Integer theBits);
+
 		/****************** SetVertexAttributes ******************/
 		/**** md5 signature: d458b2610c968b561baf99376e731a61 ****/
 		%feature("compactdefaultargs") SetVertexAttributes;
@@ -11911,6 +13085,17 @@ Returns
 TCollection_AsciiString
 ") ShadersFolder;
 		static const TCollection_AsciiString & ShadersFolder();
+
+		/****************** TextureSetBits ******************/
+		/**** md5 signature: 748e5de75393d4ed953f4a49bdb69b11 ****/
+		%feature("compactdefaultargs") TextureSetBits;
+		%feature("autodoc", "Return texture units declared within the program, @sa graphic3d_texturesetbits.
+
+Returns
+-------
+int
+") TextureSetBits;
+		Standard_Integer TextureSetBits();
 
 		/****************** Variables ******************/
 		/**** md5 signature: 855892b48f0dfd5ecdd5470d0adadc38 ****/
@@ -12080,7 +13265,7 @@ None
 		virtual void CalculateBoundBox();
 
 		/****************** Clear ******************/
-		/**** md5 signature: af022295af7eee9ec42ff646aefc128f ****/
+		/**** md5 signature: 454e74f017dda05b166605a85eeb7a19 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "If withdestruction == standard_true then suppress all the groups of primitives in the structure. and it is mandatory to create a new group in <self>. if withdestruction == standard_false then clears all the groups of primitives in the structure. and all the groups are conserved and empty. they will be erased at the next screen update. the structure itself is conserved. the transformation and the attributes of <self> are conserved. the childs of <self> are conserved.
 
@@ -12116,70 +13301,6 @@ Returns
 None
 ") Compute;
 		virtual void Compute();
-
-		/****************** Compute ******************/
-		/**** md5 signature: 74582eb5a20ade27250584d4ee1acbf1 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Returns the new structure defined for the new visualization.
-
-Parameters
-----------
-theProjector: Graphic3d_DataStructureManager
-
-Returns
--------
-opencascade::handle<Graphic3d_Structure>
-") Compute;
-		virtual opencascade::handle<Graphic3d_Structure> Compute(const opencascade::handle<Graphic3d_DataStructureManager> & theProjector);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 526735a43652a3f539a00ce0e74f6bdd ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Returns the new structure defined for the new visualization.
-
-Parameters
-----------
-theProjector: Graphic3d_DataStructureManager
-theTrsf: Geom_Transformation
-
-Returns
--------
-opencascade::handle<Graphic3d_Structure>
-") Compute;
-		virtual opencascade::handle<Graphic3d_Structure> Compute(const opencascade::handle<Graphic3d_DataStructureManager> & theProjector, const opencascade::handle<Geom_Transformation> & theTrsf);
-
-		/****************** Compute ******************/
-		/**** md5 signature: bad00881b3a42ee779bc435edec7182a ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Returns the new structure defined for the new visualization.
-
-Parameters
-----------
-theProjector: Graphic3d_DataStructureManager
-theStructure: Graphic3d_Structure
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Graphic3d_DataStructureManager> & theProjector, opencascade::handle<Graphic3d_Structure> & theStructure);
-
-		/****************** Compute ******************/
-		/**** md5 signature: f2735a31c040cd672dd8b6e31bab7c40 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Returns the new structure defined for the new visualization.
-
-Parameters
-----------
-theProjector: Graphic3d_DataStructureManager
-theTrsf: Geom_Transformation
-theStructure: Graphic3d_Structure
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Graphic3d_DataStructureManager> & theProjector, const opencascade::handle<Geom_Transformation> & theTrsf, opencascade::handle<Graphic3d_Structure> & theStructure);
 
 		/****************** ComputeVisual ******************/
 		/**** md5 signature: 751db0567d7c16c28d68a3f12ecf6a77 ****/
@@ -12314,10 +13435,18 @@ int
 ") DisplayPriority;
 		Standard_Integer DisplayPriority();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
-		/**** md5 signature: 6b8959c3f27bc8bb25573acddfac71b2 ****/
+		/**** md5 signature: 61a58cd527074b370b7b4538af53adc9 ****/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "Erases the structure <self> in all the views of the visualiser.
+		%feature("autodoc", "Erases this structure in all the views of the visualiser.
 
 Returns
 -------
@@ -12382,19 +13511,19 @@ None
 		void GraphicDisconnect(const opencascade::handle<Graphic3d_Structure> & theDaughter);
 
 		/****************** GraphicTransform ******************/
-		/**** md5 signature: 02cc95848ba581f59582e8e022566a0d ****/
+		/**** md5 signature: 9d5e921112bd06c55d92d6ab11115760 ****/
 		%feature("compactdefaultargs") GraphicTransform;
 		%feature("autodoc", "Internal method which sets new transformation without calling graphic manager callbacks.
 
 Parameters
 ----------
-theTrsf: Geom_Transformation
+theTrsf: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") GraphicTransform;
-		void GraphicTransform(const opencascade::handle<Geom_Transformation> & theTrsf);
+		void GraphicTransform(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** Groups ******************/
 		/**** md5 signature: d58f58de9bde8c9bb93737989f881ace ****/
@@ -12853,19 +13982,19 @@ None
 		void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** SetTransformation ******************/
-		/**** md5 signature: 3a8ab22770ca7d38630a59937571160c ****/
+		/**** md5 signature: 5ed349b7755a32982bb5ffa30e287efc ****/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", "Modifies the current local transformation.
 
 Parameters
 ----------
-theTrsf: Geom_Transformation
+theTrsf: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") SetTransformation;
-		void SetTransformation(const opencascade::handle<Geom_Transformation> & theTrsf);
+		void SetTransformation(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** SetVisible ******************/
 		/**** md5 signature: f4dcdbb4f4eb850359a072447385fecf ****/
@@ -12929,19 +14058,19 @@ None
 		void SetZoomLimit(const Standard_Real LimitInf, const Standard_Real LimitSup);
 
 		/****************** Transform ******************/
-		/**** md5 signature: 42e040133aad20d309c47d50a276cded ****/
+		/**** md5 signature: e8a35148a8d8c31e5965e83628e46c93 ****/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theTrsf: Geom_Transformation
+theTrsf: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") Transform;
-		void Transform(const opencascade::handle<Geom_Transformation> & theTrsf);
+		void Transform(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** TransformPersistence ******************/
 		/**** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ****/
@@ -12955,15 +14084,15 @@ opencascade::handle<Graphic3d_TransformPers>
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
 		/****************** Transformation ******************/
-		/**** md5 signature: 11ffe13bd65c76d8962d14d3b1eb956a ****/
+		/**** md5 signature: db8c043002ade3619cbf19c2cdc0b508 ****/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Return local transformation.
 
 Returns
 -------
-opencascade::handle<Geom_Transformation>
+opencascade::handle<TopLoc_Datum3D>
 ") Transformation;
-		const opencascade::handle<Geom_Transformation> & Transformation();
+		const opencascade::handle<TopLoc_Datum3D> & Transformation();
 
 		/****************** Transforms ******************/
 		/**** md5 signature: 41f8190738fa3a976ef45fd1ae2cefe0 ****/
@@ -13006,6 +14135,22 @@ Returns
 Graphic3d_TypeOfStructure
 ") Visual;
 		Graphic3d_TypeOfStructure Visual();
+
+		/****************** computeHLR ******************/
+		/**** md5 signature: 3f519e2f0f12a70d51d7226a8c10f959 ****/
+		%feature("compactdefaultargs") computeHLR;
+		%feature("autodoc", "Returns the new structure defined for the new visualization.
+
+Parameters
+----------
+theProjector: Graphic3d_Camera
+theStructure: Graphic3d_Structure
+
+Returns
+-------
+None
+") computeHLR;
+		virtual void computeHLR(const opencascade::handle<Graphic3d_Camera> & theProjector, opencascade::handle<Graphic3d_Structure> & theStructure);
 
 };
 
@@ -13160,6 +14305,14 @@ None
 ") DisplayedStructures;
 		void DisplayedStructures(Graphic3d_MapOfStructure & SG);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 6b8959c3f27bc8bb25573acddfac71b2 ****/
 		%feature("compactdefaultargs") Erase;
@@ -13389,20 +14542,20 @@ None
 		void SetDeviceLost();
 
 		/****************** SetTransform ******************/
-		/**** md5 signature: 48f618389233acf1e1fdca371ff757f5 ****/
+		/**** md5 signature: 752db10fe087601901e4c13e5c05d40c ****/
 		%feature("compactdefaultargs") SetTransform;
 		%feature("autodoc", "Transforms the structure.
 
 Parameters
 ----------
 theStructure: Graphic3d_Structure
-theTrsf: Geom_Transformation
+theTrsf: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") SetTransform;
-		virtual void SetTransform(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<Geom_Transformation> & theTrsf);
+		virtual void SetTransform(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** UnHighlight ******************/
 		/**** md5 signature: e841c00d90be06504c3125a91194b8d4 ****/
@@ -13704,6 +14857,21 @@ None
 ") SetText;
 		void SetText(const char * theText);
 
+		/****************** SetTextFormatter ******************/
+		/**** md5 signature: 69d92dbd5b2f2ec93859c8dcc0b4f585 ****/
+		%feature("compactdefaultargs") SetTextFormatter;
+		%feature("autodoc", "Setup text default formatter for text within this context.
+
+Parameters
+----------
+theFormatter: Font_TextFormatter
+
+Returns
+-------
+None
+") SetTextFormatter;
+		void SetTextFormatter(const opencascade::handle<Font_TextFormatter> & theFormatter);
+
 		/****************** SetVerticalAlignment ******************/
 		/**** md5 signature: e2cc7b2cf917c58381cfba8c8ed8d4a9 ****/
 		%feature("compactdefaultargs") SetVerticalAlignment;
@@ -13729,6 +14897,17 @@ Returns
 NCollection_String
 ") Text;
 		const NCollection_String & Text();
+
+		/****************** TextFormatter ******************/
+		/**** md5 signature: 8f3bf7d01406c07afa85cad5f2782460 ****/
+		%feature("compactdefaultargs") TextFormatter;
+		%feature("autodoc", "Returns text formatter; null by default, which means standard text formatter will be used.
+
+Returns
+-------
+opencascade::handle<Font_TextFormatter>
+") TextFormatter;
+		const opencascade::handle<Font_TextFormatter> & TextFormatter();
 
 		/****************** VerticalAlignment ******************/
 		/**** md5 signature: dbd4e8c974d13845b9700ce5eef112db ****/
@@ -13778,6 +14957,17 @@ Returns
 Graphic3d_LevelOfTextureAnisotropy
 ") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter();
+
+		/****************** BaseLevel ******************/
+		/**** md5 signature: bd5cd038b03d4843d073ba22cb296fb9 ****/
+		%feature("compactdefaultargs") BaseLevel;
+		%feature("autodoc", "Returns base texture mipmap level; 0 by default.
+
+Returns
+-------
+int
+") BaseLevel;
+		Standard_Integer BaseLevel();
 
 		/****************** Filter ******************/
 		/**** md5 signature: a357879488fd75e79ba560704b544b81 ****/
@@ -13845,10 +15035,21 @@ bool
 ") IsRepeat;
 		Standard_Boolean IsRepeat();
 
+		/****************** MaxLevel ******************/
+		/**** md5 signature: 48bccc243567720be1d38f951400554e ****/
+		%feature("compactdefaultargs") MaxLevel;
+		%feature("autodoc", "Return maximum texture mipmap array level; 1000 by default. real rendering limit will take into account mipmap generation flags and presence of mipmaps in loaded image.
+
+Returns
+-------
+int
+") MaxLevel;
+		Standard_Integer MaxLevel();
+
 		/****************** Rotation ******************/
 		/**** md5 signature: d53c3826c94a0b70b7a80893867da975 ****/
 		%feature("compactdefaultargs") Rotation;
-		%feature("autodoc", "Returns rotation angle in degrees default value is 0.
+		%feature("autodoc", "Return rotation angle in degrees; 0 by default. complete transformation matrix: rotation -> translation -> scale.
 
 Returns
 -------
@@ -13870,7 +15071,7 @@ unsigned int
 		/****************** Scale ******************/
 		/**** md5 signature: 749fcbc9447e25bbdb6b3afe657a7089 ****/
 		%feature("compactdefaultargs") Scale;
-		%feature("autodoc", "Returns scale factor default value is no scaling (1.0; 1.0).
+		%feature("autodoc", "Return scale factor; (1.0; 1.0) by default, which means no scaling. complete transformation matrix: rotation -> translation -> scale.
 
 Returns
 -------
@@ -13924,6 +15125,23 @@ Returns
 None
 ") SetGenMode;
 		void SetGenMode(const Graphic3d_TypeOfTextureMode theMode, const Graphic3d_Vec4 thePlaneS, const Graphic3d_Vec4 thePlaneT);
+
+		/****************** SetLevelsRange ******************/
+		/**** md5 signature: b24d431f7e4dd71b065ec5fa5065a79f ****/
+		%feature("compactdefaultargs") SetLevelsRange;
+		%feature("autodoc", "Setups texture mipmap array levels range. the lowest value will be the base level. the remaining one will be the maximum level.
+
+Parameters
+----------
+theFirstLevel: int
+theSecondLevel: int,optional
+	default value is 0
+
+Returns
+-------
+None
+") SetLevelsRange;
+		void SetLevelsRange(Standard_Integer theFirstLevel, Standard_Integer theSecondLevel = 0);
 
 		/****************** SetModulate ******************/
 		/**** md5 signature: 3c85d900631fe71e18cedc97c620af1a ****/
@@ -14029,7 +15247,7 @@ Graphic3d_TextureUnit
 		/****************** Translation ******************/
 		/**** md5 signature: e0f5ca18e3bbef2c5fd7c5ba80429fdd ****/
 		%feature("compactdefaultargs") Translation;
-		%feature("autodoc", "Returns translation vector default value is no translation (0.0; 0.0).
+		%feature("autodoc", "Return translation vector; (0.0; 0.0), which means no translation. complete transformation matrix: rotation -> translation -> scale.
 
 Returns
 -------
@@ -14054,6 +15272,21 @@ Graphic3d_Vec2
 %nodefaultctor Graphic3d_TextureRoot;
 class Graphic3d_TextureRoot : public Standard_Transient {
 	public:
+		/****************** GetCompressedImage ******************/
+		/**** md5 signature: 322f70ba268453e61044f97de1c28ac0 ****/
+		%feature("compactdefaultargs") GetCompressedImage;
+		%feature("autodoc", "This method will be called by graphic driver each time when texture resource should be created. it is called in front of getimage() for uploading compressed image formats natively supported by gpu. @param thesupported [in] the list of supported compressed texture formats;  returning image in unsupported format will result in texture upload failure returns compressed pixmap or null if image is not in supported compressed format.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
+
+Returns
+-------
+opencascade::handle<Image_CompressedPixMap>
+") GetCompressedImage;
+		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
+
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
@@ -14066,15 +15299,19 @@ TCollection_AsciiString
 		const TCollection_AsciiString & GetId();
 
 		/****************** GetImage ******************/
-		/**** md5 signature: be59520e9114894386728442bc4a59c8 ****/
+		/**** md5 signature: 27fa61f16bc56c895dcc1af9896bbe91 ****/
 		%feature("compactdefaultargs") GetImage;
 		%feature("autodoc", "This method will be called by graphic driver each time when texture resource should be created. default constructors allow defining the texture source as path to texture image or directly as pixmap. if the source is defined as path, then the image will be dynamically loaded when this method is called (and no copy will be preserved in this class instance). inheritors may dynamically generate the image. notice, image data should be in bottom-up order (see image_pixmap::istopdown())! returns the image for texture.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
 
 Returns
 -------
 opencascade::handle<Image_PixMap>
 ") GetImage;
-		virtual opencascade::handle<Image_PixMap> GetImage();
+		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** GetParams ******************/
 		/**** md5 signature: 9bad86532a93a9e68d3d67730d29041c ****/
@@ -14087,6 +15324,17 @@ opencascade::handle<Graphic3d_TextureParams>
 ") GetParams;
 		const opencascade::handle<Graphic3d_TextureParams> & GetParams();
 
+		/****************** IsColorMap ******************/
+		/**** md5 signature: 09bcde660e67336c50f82f601f3d70f3 ****/
+		%feature("compactdefaultargs") IsColorMap;
+		%feature("autodoc", "Return flag indicating color nature of values within the texture; true by default. //! this flag will be used to interpret 8-bit per channel rgb(a) images as srgb(a) textures with implicit linearizion of color components. has no effect on images with floating point values (always considered linearized). //! when set to false, such images will be interpreted as textures will be linear component values, which is useful for rgb(a) textures defining non-color properties (like normalmap/metalness/roughness).
+
+Returns
+-------
+bool
+") IsColorMap;
+		Standard_Boolean IsColorMap();
+
 		/****************** IsDone ******************/
 		/**** md5 signature: 1dfe5875b8bc7f7b11380fb4ab8a9eb0 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -14097,6 +15345,17 @@ Returns
 bool
 ") IsDone;
 		virtual Standard_Boolean IsDone();
+
+		/****************** IsTopDown ******************/
+		/**** md5 signature: c4ef22d04c4fb25721f5f617e14f3343 ****/
+		%feature("compactdefaultargs") IsTopDown;
+		%feature("autodoc", "Returns whether row's memory layout is top-down.
+
+Returns
+-------
+bool
+") IsTopDown;
+		Standard_Boolean IsTopDown();
 
 		/****************** Path ******************/
 		/**** md5 signature: 9d11d277fbcc37203e7dc39c30ea2e54 ****/
@@ -14119,6 +15378,21 @@ Returns
 Standard_Size
 ") Revision;
 		Standard_Size Revision();
+
+		/****************** SetColorMap ******************/
+		/**** md5 signature: 376f64ee4f4eaa7a85553f71d89fe16a ****/
+		%feature("compactdefaultargs") SetColorMap;
+		%feature("autodoc", "Set flag indicating color nature of values within the texture.
+
+Parameters
+----------
+theIsColor: bool
+
+Returns
+-------
+None
+") SetColorMap;
+		void SetColorMap(Standard_Boolean theIsColor);
 
 		/****************** TexturesFolder ******************/
 		/**** md5 signature: d0c7ddde8409f509c5551965f8259175 ****/
@@ -14288,9 +15562,23 @@ class Graphic3d_UniformValueTypeID<Standard_ShortReal> {
 /****************************************
 * class Graphic3d_ValidatedCubeMapOrder *
 ****************************************/
-%nodefaultctor Graphic3d_ValidatedCubeMapOrder;
 class Graphic3d_ValidatedCubeMapOrder {
 	public:
+		/****************** Graphic3d_ValidatedCubeMapOrder ******************/
+		/**** md5 signature: 2fe7fe89c9940ff0544fe6a05ee9410b ****/
+		%feature("compactdefaultargs") Graphic3d_ValidatedCubeMapOrder;
+		%feature("autodoc", "Copy constructor.
+
+Parameters
+----------
+theOther: Graphic3d_ValidatedCubeMapOrder
+
+Returns
+-------
+None
+") Graphic3d_ValidatedCubeMapOrder;
+		 Graphic3d_ValidatedCubeMapOrder(const Graphic3d_ValidatedCubeMapOrder & theOther);
+
 };
 
 
@@ -14346,21 +15634,6 @@ Returns
 None
 ") Graphic3d_Vertex;
 		 Graphic3d_Vertex();
-
-		/****************** Graphic3d_Vertex ******************/
-		/**** md5 signature: 14a03b70fb8d26c3419a33511c412538 ****/
-		%feature("compactdefaultargs") Graphic3d_Vertex;
-		%feature("autodoc", "Creates a point with coordinates identical to thepoint.
-
-Parameters
-----------
-thePoint: Graphic3d_Vertex
-
-Returns
--------
-None
-") Graphic3d_Vertex;
-		 Graphic3d_Vertex(const Graphic3d_Vertex & thePoint);
 
 		/****************** Graphic3d_Vertex ******************/
 		/**** md5 signature: 58adb81acdd9e39f4d304878f2e3a411 ****/
@@ -14444,6 +15717,14 @@ Standard_ShortReal
 ") Distance;
 		Standard_ShortReal Distance(const Graphic3d_Vertex & theOther);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** SetCoord ******************/
 		/**** md5 signature: f784278aa131d15fe22f13b088f67335 ****/
 		%feature("compactdefaultargs") SetCoord;
@@ -14536,6 +15817,14 @@ None
 ") Graphic3d_ViewAffinity;
 		 Graphic3d_ViewAffinity();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsVisible ******************/
 		/**** md5 signature: fde091b526f03186c5a82e89779d5e52 ****/
 		%feature("compactdefaultargs") IsVisible;
@@ -14627,6 +15916,14 @@ None
 ") Graphic3d_WorldViewProjState;
 		 Graphic3d_WorldViewProjState(const Standard_Size theProjectionState, const Standard_Size theWorldViewState, const Standard_Transient * theCamera = NULL);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Initialize ******************/
 		/**** md5 signature: 79ec01c7a66add6844dd4f3e0bf2488b ****/
 		%feature("compactdefaultargs") Initialize;
@@ -14851,6 +16148,14 @@ None
 ") DisableSetting;
 		void DisableSetting(const Graphic3d_ZLayerSetting theSetting);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EnableSetting ******************/
 		/**** md5 signature: f9f19a26f7bc1f0c3f3ea468d840c73b ****/
 		%feature("compactdefaultargs") EnableSetting;
@@ -14959,15 +16264,15 @@ gp_XYZ
 		const gp_XYZ Origin();
 
 		/****************** OriginTransformation ******************/
-		/**** md5 signature: d475c7ebe3629fd18b307b7d586d371c ****/
+		/**** md5 signature: 0f49de7d9e3a42a8f750204a13409c6c ****/
 		%feature("compactdefaultargs") OriginTransformation;
 		%feature("autodoc", "Return the transformation to the origin.
 
 Returns
 -------
-opencascade::handle<Geom_Transformation>
+opencascade::handle<TopLoc_Datum3D>
 ") OriginTransformation;
-		const opencascade::handle<Geom_Transformation> & OriginTransformation();
+		const opencascade::handle<TopLoc_Datum3D> & OriginTransformation();
 
 		/****************** PolygonOffset ******************/
 		/**** md5 signature: 5bc0db1ff0ef7eec07c4eb78b80f6cca ****/
@@ -16214,6 +17519,14 @@ Aspect_TypeOfDisplayText
 ") DisplayType;
 		Aspect_TypeOfDisplayText DisplayType();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Font ******************/
 		/**** md5 signature: 246154ff4659a4acf077229295e5855e ****/
 		%feature("compactdefaultargs") Font;
@@ -16646,15 +17959,15 @@ opencascade::handle<Graphic3d_CubeMap>
 		virtual opencascade::handle<Graphic3d_CubeMap> BackgroundCubeMap();
 
 		/****************** BackgroundImage ******************/
-		/**** md5 signature: f2ebba506d25c0200bc338a1837e8138 ****/
+		/**** md5 signature: 39a71d9d998721db97b59f5a406f7733 ****/
 		%feature("compactdefaultargs") BackgroundImage;
-		%feature("autodoc", "Returns background image texture file path.
+		%feature("autodoc", "Returns background image texture map.
 
 Returns
 -------
-TCollection_AsciiString
+opencascade::handle<Graphic3d_TextureMap>
 ") BackgroundImage;
-		virtual TCollection_AsciiString BackgroundImage();
+		virtual opencascade::handle<Graphic3d_TextureMap> BackgroundImage();
 
 		/****************** BackgroundImageStyle ******************/
 		/**** md5 signature: 9774e4b7f39a9586153cd8d1fad543ea ****/
@@ -16666,6 +17979,17 @@ Returns
 Aspect_FillMethod
 ") BackgroundImageStyle;
 		virtual Aspect_FillMethod BackgroundImageStyle();
+
+		/****************** BaseXRCamera ******************/
+		/**** md5 signature: 569eec9cf9a0c2d6e3c15fcafd8f7e68 ****/
+		%feature("compactdefaultargs") BaseXRCamera;
+		%feature("autodoc", "Returns anchor camera definition (without tracked head orientation).
+
+Returns
+-------
+opencascade::handle<Graphic3d_Camera>
+") BaseXRCamera;
+		const opencascade::handle<Graphic3d_Camera> & BaseXRCamera();
 
 		/****************** BufferDump ******************/
 		/**** md5 signature: 716004d6a0bd1ac5e5aa64dd37c87b9e ****/
@@ -16684,7 +18008,7 @@ bool
 		virtual Standard_Boolean BufferDump(Image_PixMap & theImage, const Graphic3d_BufferType & theBufferType);
 
 		/****************** Camera ******************/
-		/**** md5 signature: 3a44fb060baf8f0e6a9e5b1a88974560 ****/
+		/**** md5 signature: 178e27da6085ece6a945beb076bf42ba ****/
 		%feature("compactdefaultargs") Camera;
 		%feature("autodoc", "Returns camera object of the view.
 
@@ -16716,6 +18040,17 @@ Graphic3d_RenderingParams
 ") ChangeRenderingParams;
 		Graphic3d_RenderingParams & ChangeRenderingParams();
 
+		/****************** ClearPBREnvironment ******************/
+		/**** md5 signature: 7db53c2c0637132ae7125beec8a01ee8 ****/
+		%feature("compactdefaultargs") ClearPBREnvironment;
+		%feature("autodoc", "Fills pbr specular probe and irradiance map with white color. so that environment indirect illumination will be constant and will be fully controlled by ambient light sources. if pbr is unavailable it does nothing.
+
+Returns
+-------
+None
+") ClearPBREnvironment;
+		virtual void ClearPBREnvironment();
+
 		/****************** ClipPlanes ******************/
 		/**** md5 signature: 5b56a7bba4df7465362e074ad237bc00 ****/
 		%feature("compactdefaultargs") ClipPlanes;
@@ -16737,6 +18072,38 @@ Returns
 None
 ") Compute;
 		void Compute();
+
+		/****************** ComputeXRBaseCameraFromPosed ******************/
+		/**** md5 signature: 9f9d9d6588f52bd74d24d69371b17125 ****/
+		%feature("compactdefaultargs") ComputeXRBaseCameraFromPosed;
+		%feature("autodoc", "Update based camera from posed camera by applying reversed transformation.
+
+Parameters
+----------
+theCamPosed: Graphic3d_Camera
+thePoseTrsf: gp_Trsf
+
+Returns
+-------
+None
+") ComputeXRBaseCameraFromPosed;
+		void ComputeXRBaseCameraFromPosed(const Graphic3d_Camera & theCamPosed, const gp_Trsf & thePoseTrsf);
+
+		/****************** ComputeXRPosedCameraFromBase ******************/
+		/**** md5 signature: fa0309bf3b3ea6e737859c88c31d7c83 ****/
+		%feature("compactdefaultargs") ComputeXRPosedCameraFromBase;
+		%feature("autodoc", "Compute camera position based on xr pose.
+
+Parameters
+----------
+theCam: Graphic3d_Camera
+theXRTrsf: gp_Trsf
+
+Returns
+-------
+None
+") ComputeXRPosedCameraFromBase;
+		void ComputeXRPosedCameraFromBase(Graphic3d_Camera & theCam, const gp_Trsf & theXRTrsf);
 
 		/****************** ComputedMode ******************/
 		/**** md5 signature: 47a490ca5aa934708fe6a7c8b60e9268 ****/
@@ -16843,6 +18210,14 @@ None
 ") DisplayedStructures;
 		void DisplayedStructures(Graphic3d_MapOfStructure & theStructures);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FBO ******************/
 		/**** md5 signature: 5e8daf4b78cdbaaa4589b241d71103f7 ****/
 		%feature("compactdefaultargs") FBO;
@@ -16919,6 +18294,17 @@ Returns
 None
 ") FBORelease;
 		virtual void FBORelease(opencascade::handle<Standard_Transient> & theFbo);
+
+		/****************** GeneratePBREnvironment ******************/
+		/**** md5 signature: ee7fa5c7d0610f7d1b75db1b7e59c58f ****/
+		%feature("compactdefaultargs") GeneratePBREnvironment;
+		%feature("autodoc", "Generates pbr specular probe and irradiance map in order to provide environment indirect illumination in pbr shading model (image based lighting). the source of environment data is background cubemap. if pbr is unavailable it does nothing. if pbr is available but there is no cubemap being set to background it clears all ibl maps (see 'clearpbrenvironment').
+
+Returns
+-------
+None
+") GeneratePBREnvironment;
+		virtual void GeneratePBREnvironment();
 
 		/****************** GetGraduatedTrihedron ******************/
 		/**** md5 signature: f68dfc8ae14469bea2db4aa0eff51178 ****/
@@ -17006,6 +18392,17 @@ int
 ") Identification;
 		Standard_Integer Identification();
 
+		/****************** InitXR ******************/
+		/**** md5 signature: f0cfcfb26e15030c0c3215f30584f420 ****/
+		%feature("compactdefaultargs") InitXR;
+		%feature("autodoc", "Initialize xr session.
+
+Returns
+-------
+bool
+") InitXR;
+		virtual bool InitXR();
+
 		/****************** InsertLayerAfter ******************/
 		/**** md5 signature: cd9549addd4543aedd353e8c4428d456 ****/
 		%feature("compactdefaultargs") InsertLayerAfter;
@@ -17091,6 +18488,17 @@ Returns
 bool
 ") IsActive;
 		Standard_Boolean IsActive();
+
+		/****************** IsActiveXR ******************/
+		/**** md5 signature: 28ef08380cd2c5428fe9c695d6a8357a ****/
+		%feature("compactdefaultargs") IsActiveXR;
+		%feature("autodoc", "Return true if there is active xr session.
+
+Returns
+-------
+bool
+") IsActiveXR;
+		bool IsActiveXR();
 
 		/****************** IsComputed ******************/
 		/**** md5 signature: 3a53e61165b8b2a3e53d2934d0813196 ****/
@@ -17222,6 +18630,43 @@ int
 ") NumberOfDisplayedStructures;
 		virtual Standard_Integer NumberOfDisplayedStructures();
 
+		/****************** PoseXRToWorld ******************/
+		/**** md5 signature: cd46f66daada283828955a8fd56f2748 ****/
+		%feature("compactdefaultargs") PoseXRToWorld;
+		%feature("autodoc", "Convert xr pose to world space. @param thetrsfxr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward returns transformation defining orientation of xr pose in world space.
+
+Parameters
+----------
+thePoseXR: gp_Trsf
+
+Returns
+-------
+gp_Trsf
+") PoseXRToWorld;
+		gp_Trsf PoseXRToWorld(const gp_Trsf & thePoseXR);
+
+		/****************** PosedXRCamera ******************/
+		/**** md5 signature: e3ae35712648cbfe2d75aec41667d8f6 ****/
+		%feature("compactdefaultargs") PosedXRCamera;
+		%feature("autodoc", "Returns transient xr camera position with tracked head orientation applied.
+
+Returns
+-------
+opencascade::handle<Graphic3d_Camera>
+") PosedXRCamera;
+		const opencascade::handle<Graphic3d_Camera> & PosedXRCamera();
+
+		/****************** ProcessXRInput ******************/
+		/**** md5 signature: 0a11ab43e728eaafd87463f58bb331be ****/
+		%feature("compactdefaultargs") ProcessXRInput;
+		%feature("autodoc", "Process input.
+
+Returns
+-------
+None
+") ProcessXRInput;
+		virtual void ProcessXRInput();
+
 		/****************** ReCompute ******************/
 		/**** md5 signature: b298f491838ab5574e489a3b63373f8a ****/
 		%feature("compactdefaultargs") ReCompute;
@@ -17258,6 +18703,17 @@ Returns
 None
 ") RedrawImmediate;
 		virtual void RedrawImmediate();
+
+		/****************** ReleaseXR ******************/
+		/**** md5 signature: 1c0ce0247e26ce1f13490859dca30cde ****/
+		%feature("compactdefaultargs") ReleaseXR;
+		%feature("autodoc", "Release xr session.
+
+Returns
+-------
+None
+") ReleaseXR;
+		virtual void ReleaseXR();
 
 		/****************** Remove ******************/
 		/**** md5 signature: 57a23cda69c531e8d176ae30ce8f77c6 ****/
@@ -17337,35 +18793,22 @@ None
 ") SetBackground;
 		virtual void SetBackground(const Aspect_Background & theBackground);
 
-		/****************** SetBackgroundCubeMap ******************/
-		/**** md5 signature: 85b6c06d2268123faae34e205d302ced ****/
-		%feature("compactdefaultargs") SetBackgroundCubeMap;
-		%feature("autodoc", "Sets environment cubemap as background.
-
-Parameters
-----------
-theCubeMap: Graphic3d_CubeMap
-
-Returns
--------
-None
-") SetBackgroundCubeMap;
-		virtual void SetBackgroundCubeMap(const opencascade::handle<Graphic3d_CubeMap> & theCubeMap);
-
 		/****************** SetBackgroundImage ******************/
-		/**** md5 signature: 07d5d97bcd3458d83fd5137aa71d0871 ****/
+		/**** md5 signature: 1c72826e85fea7198f78abbd76aa1207 ****/
 		%feature("compactdefaultargs") SetBackgroundImage;
-		%feature("autodoc", "Sets background image texture file path.
+		%feature("autodoc", "Sets image texture or environment cubemap as backround. @param thetexturemap [in] source to set a background;  should be either graphic3d_texture2d or graphic3d_cubemap @param thetoupdatepbrenv [in] defines whether ibl maps will be generated or not  (see generatepbrenvironment()).
 
 Parameters
 ----------
-theFilePath: TCollection_AsciiString
+theTextureMap: Graphic3d_TextureMap
+theToUpdatePBREnv: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 None
 ") SetBackgroundImage;
-		virtual void SetBackgroundImage(const TCollection_AsciiString & theFilePath);
+		virtual void SetBackgroundImage(const opencascade::handle<Graphic3d_TextureMap> & theTextureMap, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
 		/****************** SetBackgroundImageStyle ******************/
 		/**** md5 signature: 6d6171020c144a8806fd6d5bea661430 ****/
@@ -17381,6 +18824,21 @@ Returns
 None
 ") SetBackgroundImageStyle;
 		virtual void SetBackgroundImageStyle(const Aspect_FillMethod theFillStyle);
+
+		/****************** SetBaseXRCamera ******************/
+		/**** md5 signature: 091dbe28d6cd379e4f8bd1d66388c13d ****/
+		%feature("compactdefaultargs") SetBaseXRCamera;
+		%feature("autodoc", "Sets anchor camera definition.
+
+Parameters
+----------
+theCamera: Graphic3d_Camera
+
+Returns
+-------
+None
+") SetBaseXRCamera;
+		void SetBaseXRCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****************** SetCamera ******************/
 		/**** md5 signature: 257054b2420336cef22ca287c4c2483a ****/
@@ -17487,6 +18945,21 @@ None
 ") SetLights;
 		virtual void SetLights(const opencascade::handle<Graphic3d_LightSet> & theLights);
 
+		/****************** SetPosedXRCamera ******************/
+		/**** md5 signature: 3ebb69930ad9744c104a2fc32ac0f92c ****/
+		%feature("compactdefaultargs") SetPosedXRCamera;
+		%feature("autodoc", "Sets transient xr camera position with tracked head orientation applied.
+
+Parameters
+----------
+theCamera: Graphic3d_Camera
+
+Returns
+-------
+None
+") SetPosedXRCamera;
+		void SetPosedXRCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
+
 		/****************** SetShadingModel ******************/
 		/**** md5 signature: e0128a9924c3f8c7395b0ec1521ffcee ****/
 		%feature("compactdefaultargs") SetShadingModel;
@@ -17516,6 +18989,21 @@ Returns
 None
 ") SetTextureEnv;
 		virtual void SetTextureEnv(const opencascade::handle<Graphic3d_TextureEnv> & theTextureEnv);
+
+		/****************** SetUnitFactor ******************/
+		/**** md5 signature: 0f6b445dcbb608951a49277d2dbdeae6 ****/
+		%feature("compactdefaultargs") SetUnitFactor;
+		%feature("autodoc", "Set unit scale factor.
+
+Parameters
+----------
+theFactor: float
+
+Returns
+-------
+None
+") SetUnitFactor;
+		void SetUnitFactor(Standard_Real theFactor);
 
 		/****************** SetVisualizationType ******************/
 		/**** md5 signature: 74ef6d939c9ef213220425899afe5cea ****/
@@ -17549,6 +19037,21 @@ None
 ") SetWindow;
 		virtual void SetWindow(const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext = NULL);
 
+		/****************** SetXRSession ******************/
+		/**** md5 signature: a15f51b514a0e7938f3cd4b88c551f83 ****/
+		%feature("compactdefaultargs") SetXRSession;
+		%feature("autodoc", "Set xr session.
+
+Parameters
+----------
+theSession: Aspect_XRSession
+
+Returns
+-------
+None
+") SetXRSession;
+		void SetXRSession(const opencascade::handle<Aspect_XRSession> & theSession);
+
 		/****************** SetZLayerSettings ******************/
 		/**** md5 signature: 526c66f52cf13826d826173b0d84d35e ****/
 		%feature("compactdefaultargs") SetZLayerSettings;
@@ -17564,6 +19067,17 @@ Returns
 None
 ") SetZLayerSettings;
 		virtual void SetZLayerSettings(int theLayerId, const Graphic3d_ZLayerSettings & theSettings);
+
+		/****************** SetupXRPosedCamera ******************/
+		/**** md5 signature: 10b421be502d3cbb0c3da0fb35ba9851 ****/
+		%feature("compactdefaultargs") SetupXRPosedCamera;
+		%feature("autodoc", "Compute posedxrcamera() based on current xr head pose and make it active.
+
+Returns
+-------
+None
+") SetupXRPosedCamera;
+		void SetupXRPosedCamera();
 
 		/****************** ShadingModel ******************/
 		/**** md5 signature: abf83d7e5f232094cc54f18d79b6661e ****/
@@ -17613,6 +19127,28 @@ opencascade::handle<Graphic3d_StructureManager>
 ") StructureManager;
 		const opencascade::handle<Graphic3d_StructureManager> & StructureManager();
 
+		/****************** SynchronizeXRBaseToPosedCamera ******************/
+		/**** md5 signature: 871de4dab7795f0e2c4a6d9779b77617 ****/
+		%feature("compactdefaultargs") SynchronizeXRBaseToPosedCamera;
+		%feature("autodoc", "Recomputes posedxrcamera() based on basexrcamera() and head orientation.
+
+Returns
+-------
+None
+") SynchronizeXRBaseToPosedCamera;
+		void SynchronizeXRBaseToPosedCamera();
+
+		/****************** SynchronizeXRPosedToBaseCamera ******************/
+		/**** md5 signature: a6d48b080f5581be36e592a34874b56b ****/
+		%feature("compactdefaultargs") SynchronizeXRPosedToBaseCamera;
+		%feature("autodoc", "Checks if posedxrcamera() has been modified since setupxrposedcamera() and copies these modifications to basexrcamera().
+
+Returns
+-------
+None
+") SynchronizeXRPosedToBaseCamera;
+		void SynchronizeXRPosedToBaseCamera();
+
 		/****************** TextureEnv ******************/
 		/**** md5 signature: 8d9dc36b5a00c0fe991e878de46184bc ****/
 		%feature("compactdefaultargs") TextureEnv;
@@ -17623,6 +19159,43 @@ Returns
 opencascade::handle<Graphic3d_TextureEnv>
 ") TextureEnv;
 		virtual opencascade::handle<Graphic3d_TextureEnv> TextureEnv();
+
+		/****************** TurnViewXRCamera ******************/
+		/**** md5 signature: b541a212e2a9d644acb1e40cadfae6e8 ****/
+		%feature("compactdefaultargs") TurnViewXRCamera;
+		%feature("autodoc", "Turn xr camera direction using current (head) eye position as anchor.
+
+Parameters
+----------
+theTrsfTurn: gp_Trsf
+
+Returns
+-------
+None
+") TurnViewXRCamera;
+		void TurnViewXRCamera(const gp_Trsf & theTrsfTurn);
+
+		/****************** UnitFactor ******************/
+		/**** md5 signature: ef896b413f2d707283340a4407bd979a ****/
+		%feature("compactdefaultargs") UnitFactor;
+		%feature("autodoc", "Return unit scale factor defined as scale factor for m (meters); 1.0 by default. normally, view definition is unitless, however some operations like vr input requires proper units mapping.
+
+Returns
+-------
+float
+") UnitFactor;
+		Standard_Real UnitFactor();
+
+		/****************** UnsetXRPosedCamera ******************/
+		/**** md5 signature: df56638996c669fe022e488f9d17f78a ****/
+		%feature("compactdefaultargs") UnsetXRPosedCamera;
+		%feature("autodoc", "Set current camera back to basexrcamera() and copy temporary modifications of posedxrcamera(). calls synchronizexrposedtobasecamera() beforehand.
+
+Returns
+-------
+None
+") UnsetXRPosedCamera;
+		void UnsetXRPosedCamera();
 
 		/****************** Update ******************/
 		/**** md5 signature: 42afb73ab8b865201bb1288942842c78 ****/
@@ -17661,6 +19234,17 @@ Returns
 opencascade::handle<Aspect_Window>
 ") Window;
 		virtual opencascade::handle<Aspect_Window> Window();
+
+		/****************** XRSession ******************/
+		/**** md5 signature: 6e06f1519d78ccfed4af5ad1424bd1b2 ****/
+		%feature("compactdefaultargs") XRSession;
+		%feature("autodoc", "Return xr session.
+
+Returns
+-------
+opencascade::handle<Aspect_XRSession>
+") XRSession;
+		const opencascade::handle<Aspect_XRSession> & XRSession();
 
 		/****************** ZLayerMax ******************/
 		/**** md5 signature: 67e70575f7909ee70bd13a50f93fcb39 ****/
@@ -17739,6 +19323,32 @@ Standard_Size
         %extend {
             void SetChangeFrameRateCpu(Standard_Real value) {
             $self->ChangeFrameRateCpu()=value;
+            }
+        };
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Real GetChangeImmediateFrameRate() {
+            return (Standard_Real) $self->ChangeImmediateFrameRate();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetChangeImmediateFrameRate(Standard_Real value) {
+            $self->ChangeImmediateFrameRate()=value;
+            }
+        };
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Real GetChangeImmediateFrameRateCpu() {
+            return (Standard_Real) $self->ChangeImmediateFrameRateCpu();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetChangeImmediateFrameRateCpu(Standard_Real value) {
+            $self->ChangeImmediateFrameRateCpu()=value;
             }
         };
 		/****************** ChangeTimer ******************/
@@ -18072,7 +19682,7 @@ class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 		/****************** AnisoFilter ******************/
 		/**** md5 signature: 616e07e87d398d0de8754a2bd09bff5a ****/
 		%feature("compactdefaultargs") AnisoFilter;
-		%feature("autodoc", "Returns level of anisontropy texture filter. default value is graphic3d_lota_off.
+		%feature("autodoc", "Returns level of anisotropy texture filter. default value is graphic3d_lota_off.
 
 Returns
 -------
@@ -18182,7 +19792,7 @@ bool
 		/****************** SetAnisoFilter ******************/
 		/**** md5 signature: 999fe7bc1a26aa6af8d56299c100b537 ****/
 		%feature("compactdefaultargs") SetAnisoFilter;
-		%feature("autodoc", "@param thelevel level of anisontropy texture filter.
+		%feature("autodoc", "@param thelevel level of anisotropy texture filter.
 
 Parameters
 ----------
@@ -18214,6 +19824,21 @@ None
 %nodefaultctor Graphic3d_CubeMap;
 class Graphic3d_CubeMap : public Graphic3d_TextureMap {
 	public:
+		/****************** CompressedValue ******************/
+		/**** md5 signature: bf947852bd98eb2918f411f1fb6ed99a ****/
+		%feature("compactdefaultargs") CompressedValue;
+		%feature("autodoc", "Returns current cubemap side as compressed pixmap. returns null handle if current side is invalid or if image is not in supported compressed format.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
+
+Returns
+-------
+opencascade::handle<Image_CompressedPixMap>
+") CompressedValue;
+		virtual opencascade::handle<Image_CompressedPixMap> CompressedValue(const opencascade::handle<Image_SupportedFormats> & theSupported);
+
 		/****************** CurrentSide ******************/
 		/**** md5 signature: 868f3bc8b7395cad6d44ef8baafa777c ****/
 		%feature("compactdefaultargs") CurrentSide;
@@ -18225,16 +19850,16 @@ Graphic3d_CubeMapSide
 ") CurrentSide;
 		Graphic3d_CubeMapSide CurrentSide();
 
-		/****************** IsTopDown ******************/
-		/**** md5 signature: c4ef22d04c4fb25721f5f617e14f3343 ****/
-		%feature("compactdefaultargs") IsTopDown;
-		%feature("autodoc", "Returns whether row's memory layout is top-down.
+		/****************** HasMipmaps ******************/
+		/**** md5 signature: b3b5fb053a7b49996b2be90fa9333800 ****/
+		%feature("compactdefaultargs") HasMipmaps;
+		%feature("autodoc", "Returns whether mipmaps of cubemap will be generated or not.
 
 Returns
 -------
 bool
-") IsTopDown;
-		Standard_Boolean IsTopDown();
+") HasMipmaps;
+		Standard_Boolean HasMipmaps();
 
 		/****************** More ******************/
 		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
@@ -18269,6 +19894,21 @@ Graphic3d_CubeMap
 ") Reset;
 		Graphic3d_CubeMap & Reset();
 
+		/****************** SetMipmapsGeneration ******************/
+		/**** md5 signature: e14a34fe3ead5b13a7caa5b8e688c68d ****/
+		%feature("compactdefaultargs") SetMipmapsGeneration;
+		%feature("autodoc", "Sets whether to generate mipmaps of cubemap or not.
+
+Parameters
+----------
+theToGenerateMipmaps: bool
+
+Returns
+-------
+None
+") SetMipmapsGeneration;
+		void SetMipmapsGeneration(Standard_Boolean theToGenerateMipmaps);
+
 		/****************** SetZInversion ******************/
 		/**** md5 signature: 6a544fc617109268dc916d0b4f3a3d85 ****/
 		%feature("compactdefaultargs") SetZInversion;
@@ -18285,15 +19925,19 @@ None
 		void SetZInversion(Standard_Boolean theZIsInverted);
 
 		/****************** Value ******************/
-		/**** md5 signature: bb0068dfb7cb7d9e7aa3c52f5450094d ****/
+		/**** md5 signature: 163288e9c0b00e99cbafd39e941416a5 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Returns pixmap containing current side of cubemap. returns null handle if current side is invalid.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
 
 Returns
 -------
 opencascade::handle<Image_PixMap>
 ") Value;
-		virtual opencascade::handle<Image_PixMap> Value();
+		virtual opencascade::handle<Image_PixMap> Value(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** ZIsInverted ******************/
 		/**** md5 signature: ffdf11f19a4a4dfbecf2e4f3e6052001 ****/
@@ -18608,16 +20252,35 @@ None
 ") Graphic3d_CubeMapSeparate;
 		 Graphic3d_CubeMapSeparate(const NCollection_Array1<opencascade::handle<Image_PixMap> > & theImages);
 
+		/****************** CompressedValue ******************/
+		/**** md5 signature: f357dccfdcfbfbec49c26eb1988350c9 ****/
+		%feature("compactdefaultargs") CompressedValue;
+		%feature("autodoc", "Returns current cubemap side as compressed pixmap.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
+
+Returns
+-------
+opencascade::handle<Image_CompressedPixMap>
+") CompressedValue;
+		virtual opencascade::handle<Image_CompressedPixMap> CompressedValue(const opencascade::handle<Image_SupportedFormats> & theSupported);
+
 		/****************** GetImage ******************/
-		/**** md5 signature: 7c0999ad6f0e41d8558f710f24ef4856 ****/
+		/**** md5 signature: 5f0e2d5083b762faecd7d3f85dab9f62 ****/
 		%feature("compactdefaultargs") GetImage;
 		%feature("autodoc", "Returns null.
+
+Parameters
+----------
+&: Image_SupportedFormats
 
 Returns
 -------
 opencascade::handle<Image_PixMap>
 ") GetImage;
-		virtual opencascade::handle<Image_PixMap> GetImage();
+		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats > &);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: c9aa3a454774a145a334d5dad12c1786 ****/
@@ -18631,15 +20294,19 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** Value ******************/
-		/**** md5 signature: d28a17bd5da564c117878e65e1116b4e ****/
+		/**** md5 signature: 973ad687ef3acb09815b3ad7953bfaf5 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Returns current side of cubemap as pixmap. returns null handle if current side or whole cubemap is invalid. all origin images have to have the same sizes, format and quad shapes to form valid cubemap.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
 
 Returns
 -------
 opencascade::handle<Image_PixMap>
 ") Value;
-		opencascade::handle<Image_PixMap> Value();
+		virtual opencascade::handle<Image_PixMap> Value(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 };
 
@@ -18697,15 +20364,19 @@ None
 		void GenerateNewId();
 
 		/****************** GetImage ******************/
-		/**** md5 signature: 6c60aef14922d653f11e87371a7bca2d ****/
+		/**** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ****/
 		%feature("compactdefaultargs") GetImage;
 		%feature("autodoc", "Image reader.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
 
 Returns
 -------
 opencascade::handle<Image_PixMap>
 ") GetImage;
-		virtual opencascade::handle<Image_PixMap> GetImage();
+		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** SetFrame ******************/
 		/**** md5 signature: 0dfb0fadea2ff545daa07a8643107bce ****/

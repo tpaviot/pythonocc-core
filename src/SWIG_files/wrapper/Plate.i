@@ -1390,7 +1390,7 @@ None
 		void SetPolynomialPartOnly(const Standard_Boolean PPOnly = Standard_True);
 
 		/****************** SolveTI ******************/
-		/**** md5 signature: dfc0bdbc1446922de4d569b82c6dbd49 ****/
+		/**** md5 signature: b6f245e5d0ad13246dbcd6e1b4b16e27 ****/
 		%feature("compactdefaultargs") SolveTI;
 		%feature("autodoc", "No available documentation.
 
@@ -1400,14 +1400,14 @@ ord: int,optional
 	default value is 4
 anisotropie: float,optional
 	default value is 1.0
-aProgress: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") SolveTI;
-		void SolveTI(const Standard_Integer ord = 4, const Standard_Real anisotropie = 1.0, const opencascade::handle<Message_ProgressIndicator> & aProgress = opencascade::handle<Message_ProgressIndicator>());
+		void SolveTI(const Standard_Integer ord = 4, const Standard_Real anisotropie = 1.0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** UVBox ******************/
 		/**** md5 signature: 2932a6c5a69aed4f94ed47869da039af ****/

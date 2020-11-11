@@ -41,9 +41,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_transfer.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<TColStd_module.hxx>
-#include<Message_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TColgp_module.hxx>
@@ -53,9 +53,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_transfer.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import Message.i
 %import Interface.i
 %import TColStd.i
-%import Message.i
 
 %pythoncode {
 from enum import IntEnum
@@ -270,7 +270,7 @@ None
 		void SetNext(const opencascade::handle<Transfer_ActorOfProcessForFinder> & next);
 
 		/****************** Transferring ******************/
-		/**** md5 signature: cf9aab8a86c6d141a9f19ab81b3b06be ****/
+		/**** md5 signature: 4f53e5d5a83d9867599cfcf49344ee90 ****/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deffered) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
 
@@ -278,12 +278,14 @@ Parameters
 ----------
 start: Transfer_Finder
 TP: Transfer_ProcessForFinder
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transferring;
-		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransientResult ******************/
 		/**** md5 signature: 3c41d78d1eebeee46ad3f1cb847559e1 ****/
@@ -407,7 +409,7 @@ None
 		void SetNext(const opencascade::handle<Transfer_ActorOfProcessForTransient> & next);
 
 		/****************** Transferring ******************/
-		/**** md5 signature: 79fa82969eaa2f0627703eab90fd64b0 ****/
+		/**** md5 signature: e31455ac7db7ffccb1c6d0fa5dff964e ****/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deffered) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
 
@@ -415,12 +417,14 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_ProcessForTransient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transferring;
-		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_ProcessForTransient> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_ProcessForTransient> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransientResult ******************/
 		/**** md5 signature: 3c41d78d1eebeee46ad3f1cb847559e1 ****/
@@ -1606,17 +1610,6 @@ bool
 ") FindTypedTransient;
 		Standard_Boolean FindTypedTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & val);
 
-		/****************** GetProgress ******************/
-		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
-		%feature("compactdefaultargs") GetProgress;
-		%feature("autodoc", "Gets progress indicator.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") GetProgress;
-		opencascade::handle<Message_ProgressIndicator> GetProgress();
-
 		/****************** GetTypedTransient ******************/
 		/**** md5 signature: 6e9af0349f441e7b5ef9d474e02e3af3 ****/
 		%feature("compactdefaultargs") GetTypedTransient;
@@ -1801,22 +1794,6 @@ Returns
 int
 ") NestingLevel;
 		Standard_Integer NestingLevel();
-
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 524b4b5143f5b7272d2c3f9f207d57e8 ****/
-		%feature("compactdefaultargs") PrintTrace;
-		%feature("autodoc", "Prints a short information on a starting object. by default prints its dynamic type. can be redefined.
-
-Parameters
-----------
-start: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintTrace;
-		virtual void PrintTrace(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Message_Messenger> & S);
 
 		/****************** Rebind ******************/
 		/**** md5 signature: e57d830e06b8d133bb4caf4c620470a2 ****/
@@ -2065,21 +2042,6 @@ None
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
-		/****************** SetProgress ******************/
-		/**** md5 signature: a84d4cba9281e377406d50b9d58fab3b ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "Sets progress indicator.
-
-Parameters
-----------
-theProgress: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & theProgress);
-
 		/****************** SetRoot ******************/
 		/**** md5 signature: 5a99d27cd967ef7f92acd7016203a0df ****/
 		%feature("compactdefaultargs") SetRoot;
@@ -2155,34 +2117,38 @@ int
 		Standard_Integer TraceLevel();
 
 		/****************** Transfer ******************/
-		/**** md5 signature: be7772fb2a360e69deb51b0dc9dbd081 ****/
+		/**** md5 signature: c71bfebbf26d85976302e17529f72ccd ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Same as transferring but does not return the binder. simply returns true in case of success (for user call).
 
 Parameters
 ----------
 start: Standard_Transient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<Standard_Transient> & start);
+		Standard_Boolean Transfer(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transferring ******************/
-		/**** md5 signature: 091592a2b036349ad9128a2ec50f0c34 ****/
+		/**** md5 signature: bf0dd68be3fa1440823e3d01d971993a ****/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "Performs the transfer of a starting object, by calling the method transferproduct (see below). mapping and roots are managed : nothing is done if a result is already bound, an exception is raised in case of error.
 
 Parameters
 ----------
 start: Standard_Transient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transferring;
-		opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start);
+		opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Unbind ******************/
 		/**** md5 signature: 68606943e62848e312bd09ef2c626c47 ****/
@@ -3275,60 +3241,71 @@ opencascade::handle<Interface_InterfaceModel>
 		opencascade::handle<Interface_InterfaceModel> ModelForStatus(const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean normal, const Standard_Boolean roots = Standard_True);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 5c3e45b9b172134c67c23d29b060d914 ****/
+		/**** md5 signature: 8e27747d8b599c3b80f2c1f3d03272cf ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfer checks that all taken entities come from the same model, then calls transfer from transientprocess.
 
 Parameters
 ----------
 obj: Standard_Transient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Transfer;
-		void Transfer(const opencascade::handle<Standard_Transient> & obj);
+		void Transfer(const opencascade::handle<Standard_Transient> & obj, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: 77bd509b40f938a06accaa8217592837 ****/
+		/**** md5 signature: 61600e91fe0ddcbe06f4fcd277fb7c48 ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Runs transfer on the roots of the interface model the roots are computed with a shareflags created from a protocol given as argument.
 
 Parameters
 ----------
 protocol: Interface_Protocol
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TransferRoots;
-		void TransferRoots(const opencascade::handle<Interface_Protocol> & protocol);
+		void TransferRoots(const opencascade::handle<Interface_Protocol> & protocol, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: 416eb9e9ee4af1712fdacd03380b85f5 ****/
+		/**** md5 signature: da9746e970c0a8b791a4f5bb60c98105 ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Runs transfer on the roots defined by a graph of dependences (which detains also a model and its entities) roots are computed with a shareflags created from the graph.
 
 Parameters
 ----------
 G: Interface_Graph
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TransferRoots;
-		void TransferRoots(const Interface_Graph & G);
+		void TransferRoots(const Interface_Graph & G, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: c537398ceffbe2d9af4dd00c2e450750 ****/
+		/**** md5 signature: 25bb247a7fd48e44af92ff0c96ed0a3c ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Runs transfer on the roots of the interface model remark : the roots are computed with a shareflags created from the active protocol.
 
+Parameters
+----------
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
 Returns
 -------
 None
 ") TransferRoots;
-		void TransferRoots();
+		void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransientProcess ******************/
 		/**** md5 signature: cda5aa33365159e82c6213003de44419 ****/
@@ -3380,7 +3357,7 @@ None
             }
         };
 		/****************** Transfer ******************/
-		/**** md5 signature: 00c57224b7a9fe9d4c7ae94242be9c91 ****/
+		/**** md5 signature: 0fe03bef0cb14a70799d9821bdfd7128 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "No available documentation.
 
@@ -3388,15 +3365,17 @@ Parameters
 ----------
 start: Transfer_Finder
 TP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferTransient ******************/
-		/**** md5 signature: 98780a8107744dffbee1647ec3bf0f2d ****/
+		/**** md5 signature: 24fe8825c87ff896a8dc484d04499abd ****/
 		%feature("compactdefaultargs") TransferTransient;
 		%feature("autodoc", "No available documentation.
 
@@ -3404,15 +3383,17 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") TransferTransient;
-		virtual opencascade::handle<Standard_Transient> TransferTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_FinderProcess> & TP);
+		virtual opencascade::handle<Standard_Transient> TransferTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_FinderProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transferring ******************/
-		/**** md5 signature: fabb0dd159d1b6f053d170196209ac73 ****/
+		/**** md5 signature: 3464a419c95c9be779a18d63ebe10db3 ****/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "No available documentation.
 
@@ -3420,12 +3401,14 @@ Parameters
 ----------
 start: Transfer_Finder
 TP: Transfer_ProcessForFinder
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transferring;
-		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -3455,7 +3438,7 @@ None
 		 Transfer_ActorOfTransientProcess();
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 145f7c27a8760cb8431376ebfe242e13 ****/
+		/**** md5 signature: 61d6387dc674010808ec9a991a18e31d ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "No available documentation.
 
@@ -3463,15 +3446,17 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_TransientProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferTransient ******************/
-		/**** md5 signature: 38fac5bbd5dc3b1306a2c19549b08a40 ****/
+		/**** md5 signature: a9ca704c315b56c01b5f312b236d3746 ****/
 		%feature("compactdefaultargs") TransferTransient;
 		%feature("autodoc", "No available documentation.
 
@@ -3479,15 +3464,17 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_TransientProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") TransferTransient;
-		virtual opencascade::handle<Standard_Transient> TransferTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP);
+		virtual opencascade::handle<Standard_Transient> TransferTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transferring ******************/
-		/**** md5 signature: 2dfc17bc3943da73bf6671935fe2df8f ****/
+		/**** md5 signature: 3d349a09aa7dbf438f1e3e4274f68f63 ****/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "No available documentation.
 
@@ -3495,12 +3482,14 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_ProcessForTransient
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transferring;
-		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_ProcessForTransient> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_ProcessForTransient> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -3560,38 +3549,6 @@ Returns
 int
 ") NextMappedWithAttribute;
 		Standard_Integer NextMappedWithAttribute(const char * name, const Standard_Integer num0);
-
-		/****************** PrintStats ******************/
-		/**** md5 signature: b7702c79c8fcaffc51dff783699a80ef ****/
-		%feature("compactdefaultargs") PrintStats;
-		%feature("autodoc", "Prints statistics on a given output, according mode.
-
-Parameters
-----------
-mode: int
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintStats;
-		void PrintStats(const Standard_Integer mode, const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 2dcc13edb110f69423bed09a333790ec ****/
-		%feature("compactdefaultargs") PrintTrace;
-		%feature("autodoc", "Specific printing to trace a finder (by its method valuetype).
-
-Parameters
-----------
-start: Transfer_Finder
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintTrace;
-		virtual void PrintTrace(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Message_Messenger> & S);
 
 		/****************** SetModel ******************/
 		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
@@ -4411,38 +4368,6 @@ opencascade::handle<Interface_InterfaceModel>
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** PrintStats ******************/
-		/**** md5 signature: b7702c79c8fcaffc51dff783699a80ef ****/
-		%feature("compactdefaultargs") PrintStats;
-		%feature("autodoc", "Prints statistics on a given output, according mode.
-
-Parameters
-----------
-mode: int
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintStats;
-		void PrintStats(const Standard_Integer mode, const opencascade::handle<Message_Messenger> & S);
-
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 2a5348ada50b5fc40de0f17e87e8d3f3 ****/
-		%feature("compactdefaultargs") PrintTrace;
-		%feature("autodoc", "Specific printing to trace an entity : prints label and type (if model is set).
-
-Parameters
-----------
-start: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintTrace;
-		virtual void PrintTrace(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Message_Messenger> & S);
-
 		/****************** RootsForTransfer ******************/
 		/**** md5 signature: c79152a32ae4b6ec28313285c230ae8b ****/
 		%feature("compactdefaultargs") RootsForTransfer;
@@ -4644,7 +4569,7 @@ None
 		void AddActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: d3a576f6c6d265b51c604b4f3e7b52c0 ****/
+		/**** md5 signature: e4303fa9409798bd20ec402569b65ae8 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Specific action : it calls the method transfer from copytool i.e. the general service copy, then returns the binder produced by the transientprocess.
 
@@ -4652,12 +4577,14 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_TransientProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferDispatch ******************/
 		/**** md5 signature: d8c37ebfb4344c5658d80d5678e6d3a2 ****/

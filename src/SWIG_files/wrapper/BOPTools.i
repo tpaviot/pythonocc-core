@@ -428,10 +428,21 @@ None
 ") CorrectTolerances;
 		static void CorrectTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
 
+		/****************** DTolerance ******************/
+		/**** md5 signature: 075ca2e9d4910a8f1018c8adbac7e64d ****/
+		%feature("compactdefaultargs") DTolerance;
+		%feature("autodoc", "Additional tolerance (delta tolerance) is used in boolean operations to ensure that the tolerance of new/old entities obtained by intersection of two shapes is slightly bigger than the actual distances to these shapes. it helps to avoid numerical instability which may occur when comparing distances and tolerances.
+
+Returns
+-------
+float
+") DTolerance;
+		static Standard_Real DTolerance();
+
 		/****************** Dimension ******************/
 		/**** md5 signature: 348038e7dc0c04e091d0a280a71bd60d ****/
 		%feature("compactdefaultargs") Dimension;
-		%feature("autodoc", "Retutns dimension of the shape <thes>.
+		%feature("autodoc", "Returns dimension of the shape <thes>. if the shape contains elements of different dimension, -1 is returned.
 
 Parameters
 ----------
@@ -442,6 +453,22 @@ Returns
 int
 ") Dimension;
 		static Standard_Integer Dimension(const TopoDS_Shape & theS);
+
+		/****************** Dimensions ******************/
+		/**** md5 signature: 485029a60f5198c2ef6a429c06efcd81 ****/
+		%feature("compactdefaultargs") Dimensions;
+		%feature("autodoc", "Returns the min and max dimensions of the shape <thes>.
+
+Parameters
+----------
+theS: TopoDS_Shape
+
+Returns
+-------
+theDMin: int
+theDMax: int
+") Dimensions;
+		static void Dimensions(const TopoDS_Shape & theS, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** GetEdgeOff ******************/
 		/**** md5 signature: f9ff0abb00c2f2593eff9881311221cd ****/
@@ -1033,6 +1060,24 @@ int
 ") Sense;
 		static Standard_Integer Sense(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext);
 
+		/****************** TreatCompound ******************/
+		/**** md5 signature: de5d3c86660c5bbcc7b54c5705952878 ****/
+		%feature("compactdefaultargs") TreatCompound;
+		%feature("autodoc", "Collects in the output list recursively all non-compound sub-shapes of the first level of the given shape thes. the optional map themap is used to avoid the duplicates in the output list, so it will also contain all non-compound sub-shapes.
+
+Parameters
+----------
+theS: TopoDS_Shape
+theList: TopTools_ListOfShape
+theMap: TopTools_MapOfShape *,optional
+	default value is NULL
+
+Returns
+-------
+None
+") TreatCompound;
+		static void TreatCompound(const TopoDS_Shape & theS, TopTools_ListOfShape & theList, TopTools_MapOfShape * theMap = NULL);
+
 		/****************** UpdateVertex ******************/
 		/**** md5 signature: 5e037b5f776c89b9ff812aeeecab575f ****/
 		%feature("compactdefaultargs") UpdateVertex;
@@ -1433,20 +1478,37 @@ V: float
 class BOPTools_AlgoTools3D {
 	public:
 		/****************** DoSplitSEAMOnFace ******************/
-		/**** md5 signature: 9843a42231e1075ce65c8912a1a2bf79 ****/
+		/**** md5 signature: 317e2c98140c02945abbec924936c1ea ****/
 		%feature("compactdefaultargs") DoSplitSEAMOnFace;
-		%feature("autodoc", "Make the edge <asp> seam edge for the face <af>.
+		%feature("autodoc", "Makes the edge <theesplit> seam edge for the face <theface> basing on the surface properties (u and v periods).
 
 Parameters
 ----------
-aSp: TopoDS_Edge
-aF: TopoDS_Face
+theESplit: TopoDS_Edge
+theFace: TopoDS_Face
 
 Returns
 -------
-None
+bool
 ") DoSplitSEAMOnFace;
-		static void DoSplitSEAMOnFace(const TopoDS_Edge & aSp, const TopoDS_Face & aF);
+		static Standard_Boolean DoSplitSEAMOnFace(const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
+
+		/****************** DoSplitSEAMOnFace ******************/
+		/**** md5 signature: 9b4cff8cc35f1c3b3a0c4ca69663cf34 ****/
+		%feature("compactdefaultargs") DoSplitSEAMOnFace;
+		%feature("autodoc", "Makes the split edge <theesplit> seam edge for the face <theface> basing on the positions of 2d curves of the original edge <theeorigin>.
+
+Parameters
+----------
+theEOrigin: TopoDS_Edge
+theESplit: TopoDS_Edge
+theFace: TopoDS_Face
+
+Returns
+-------
+bool
+") DoSplitSEAMOnFace;
+		static Standard_Boolean DoSplitSEAMOnFace(const TopoDS_Edge & theEOrigin, const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
 
 		/****************** GetApproxNormalToFaceOnEdge ******************/
 		/**** md5 signature: 662a57a2b13e5b445fecdd7a9db5ba05 ****/
@@ -2003,6 +2065,21 @@ Returns
 None
 ") BOPTools_Set;
 		 BOPTools_Set(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
+
+		/****************** BOPTools_Set ******************/
+		/**** md5 signature: 7348c096189fc94262374b8cbb0ee264 ****/
+		%feature("compactdefaultargs") BOPTools_Set;
+		%feature("autodoc", "Copy constructor.
+
+Parameters
+----------
+theOther: BOPTools_Set
+
+Returns
+-------
+None
+") BOPTools_Set;
+		 BOPTools_Set(const BOPTools_Set & theOther);
 
 		/****************** Add ******************/
 		/**** md5 signature: 1f2b35071de7c8625d2e5b7b7b1a38f7 ****/

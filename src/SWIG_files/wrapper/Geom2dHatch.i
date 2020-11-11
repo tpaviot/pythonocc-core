@@ -266,21 +266,6 @@ None
 		 Geom2dHatch_Element();
 
 		/****************** Geom2dHatch_Element ******************/
-		/**** md5 signature: 6a178bf9c118d0077a18e3bab83cbbcb ****/
-		%feature("compactdefaultargs") Geom2dHatch_Element;
-		%feature("autodoc", "Magic constructor.
-
-Parameters
-----------
-Other: Geom2dHatch_Element
-
-Returns
--------
-None
-") Geom2dHatch_Element;
-		 Geom2dHatch_Element(const Geom2dHatch_Element & Other);
-
-		/****************** Geom2dHatch_Element ******************/
 		/**** md5 signature: db7543fb06b4f62b6f2d9dd9372100b3 ****/
 		%feature("compactdefaultargs") Geom2dHatch_Element;
 		%feature("autodoc", "Creates an element.

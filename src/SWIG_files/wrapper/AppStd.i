@@ -85,6 +85,14 @@ from OCC.Core.Exception import *
 ***************************/
 class AppStd_Application : public TDocStd_Application {
 	public:
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** ResourcesName ******************/
 		/**** md5 signature: 93814b3160304ee63e9655e18518a289 ****/
 		%feature("compactdefaultargs") ResourcesName;

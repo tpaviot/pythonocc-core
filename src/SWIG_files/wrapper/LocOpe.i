@@ -1822,7 +1822,7 @@ TopoDS_Shape
 class LocOpe_PntFace {
 	public:
 		/****************** LocOpe_PntFace ******************/
-		/**** md5 signature: 6ed10e8c70aebcf6d0cf54811b3cb2d8 ****/
+		/**** md5 signature: c684a8bde8adce128427067674a86331 ****/
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "Empty constructor. useful only for the list.
 

@@ -18,17 +18,19 @@ requirements:
     - {{ cdt('libx11-devel') }}         # [linux]
     - {{ cdt('xorg-x11-proto-devel') }} # [linux]
     - {{ cdt('mesa-libgl-devel') }}     # [linux]
+    - {{ cdt('libxi-devel') }}          # [linux]
     - ninja
     - cmake
     - swig >=3.0.11
 
   host:
     - python {{ python }}
-    - opencascade ==7.4.0
+    - occt ==7.5.0
 
   run:
-    - opencascade ==7.4.0
+    - occt ==7.5.0
     - python
+    - six
 
 test:
   imports:
@@ -37,6 +39,7 @@ test:
   requires:
     - pyqt >=5
     - mypy
+    - svgwrite
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
