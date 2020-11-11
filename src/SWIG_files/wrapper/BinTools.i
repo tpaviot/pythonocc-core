@@ -42,6 +42,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bintools.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Message_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<TopLoc_module.hxx>
@@ -56,6 +57,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bintools.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import Message.i
 %import Geom2d.i
 %import Geom.i
 %import TopLoc.i
@@ -91,7 +93,7 @@ typedef BinTools_LocationSet * BinTools_LocationSetPtr;
 class BinTools {
 	public:
 		/****************** Read ******************/
-		/**** md5 signature: f0d3026b2788ff9320fd4df9010bd64b ****/
+		/**** md5 signature: 8f3081f8c29c84c71da9267be3a08fa6 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Reads a shape from <thefile> and returns it in <theshape>.
 
@@ -99,15 +101,17 @@ Parameters
 ----------
 theShape: TopoDS_Shape
 theFile: char *
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & theShape, const char * theFile);
+		static Standard_Boolean Read(TopoDS_Shape & theShape, const char * theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Write ******************/
-		/**** md5 signature: 437b11c00a79e3ca0f54a0ec19eec209 ****/
+		/**** md5 signature: a01ad35e1c55e076f8d5b02e48bdea7c ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Writes <theshape> in <thefile>.
 
@@ -115,12 +119,14 @@ Parameters
 ----------
 theShape: TopoDS_Shape
 theFile: char *
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile);
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

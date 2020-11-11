@@ -43,13 +43,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
 #include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<Graphic3d_module.hxx>
-#include<TopoDS_module.hxx>
+#include<Poly_module.hxx>
 #include<gp_module.hxx>
+#include<Bnd_module.hxx>
 #include<TCollection_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Aspect_module.hxx>
-#include<HLRAlgo_module.hxx>
-#include<Poly_module.hxx>
 #include<Quantity_module.hxx>
 #include<TColStd_module.hxx>
 #include<TShort_module.hxx>
@@ -81,13 +80,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
 %import NCollection.i
 %import TColgp.i
 %import Graphic3d.i
-%import TopoDS.i
+%import Poly.i
 %import gp.i
+%import Bnd.i
 %import TCollection.i
 %import GeomAbs.i
 %import Aspect.i
-%import HLRAlgo.i
-%import Poly.i
 %import Quantity.i
 %import TColStd.i
 
@@ -324,7 +322,6 @@ Prs3d_DAO_Fit = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Fit
 %wrap_handle(Prs3d_BasicAspect)
 %wrap_handle(Prs3d_Drawer)
 %wrap_handle(Prs3d_PresentationShadow)
-%wrap_handle(Prs3d_Projector)
 %wrap_handle(Prs3d_ArrowAspect)
 %wrap_handle(Prs3d_DatumAspect)
 %wrap_handle(Prs3d_DimensionAspect)
@@ -360,6 +357,23 @@ typedef Graphic3d_Structure Prs3d_Presentation;
 %rename(prs3d) Prs3d;
 class Prs3d {
 	public:
+		/****************** AddFreeEdges ******************/
+		/**** md5 signature: 7ac34117f886744be821be34fbd08b8a ****/
+		%feature("compactdefaultargs") AddFreeEdges;
+		%feature("autodoc", "Add triangulation free edges into sequence of line segments. @param thesegments [out] sequence of line segments to fill @param thepolytri [in] triangulation to process @param thelocation [in] transformation to apply.
+
+Parameters
+----------
+theSegments: TColgp_SequenceOfPnt
+thePolyTri: Poly_Triangulation
+theLocation: gp_Trsf
+
+Returns
+-------
+None
+") AddFreeEdges;
+		static void AddFreeEdges(TColgp_SequenceOfPnt & theSegments, const opencascade::handle<Poly_Triangulation> & thePolyTri, const gp_Trsf & theLocation);
+
 		/****************** AddPrimitivesGroup ******************/
 		/**** md5 signature: 54a23ed776ef73d4469f2189e47e27ac ****/
 		%feature("compactdefaultargs") AddPrimitivesGroup;
@@ -378,20 +392,38 @@ None
 		static void AddPrimitivesGroup(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_LineAspect> & theAspect, Prs3d_NListOfSequenceOfPnt & thePolylines);
 
 		/****************** GetDeflection ******************/
-		/**** md5 signature: 32d565d6bf5769fcd44726cec516a592 ****/
+		/**** md5 signature: 80d3db84df62af62fba08c06cb9a8696 ****/
 		%feature("compactdefaultargs") GetDeflection;
-		%feature("autodoc", "Computes the absolute deflection value depending on the type of deflection in thedrawer: <ul> <li><b>aspect_tod_relative</b>: the absolute deflection is computed using the relative deviation coefficient from thedrawer and the shape's bounding box;</li> <li><b>aspect_tod_absolute</b>: the maximal chordial deviation from thedrawer is returned.</li> </ul> in case of the type of deflection in thedrawer computed relative deflection for shape is stored as absolute deflection. it is necessary to use it later on for sub-shapes. this function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
+		%feature("autodoc", "Computes the absolute deflection value based on relative deflection prs3d_drawer::deviationcoefficient(). @param thebndmin [in] bounding box min corner @param thebndmax [in] bounding box max corner @param thedeviationcoefficient [in] relative deflection coefficient from prs3d_drawer::deviationcoefficient() returns absolute deflection coefficient based on bounding box dimensions.
 
 Parameters
 ----------
-theShape: TopoDS_Shape
-theDrawer: Prs3d_Drawer
+theBndMin: Graphic3d_Vec3d
+theBndMax: Graphic3d_Vec3d
+theDeviationCoefficient: float
 
 Returns
 -------
 float
 ") GetDeflection;
-		static Standard_Real GetDeflection(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static Standard_Real GetDeflection(const Graphic3d_Vec3d & theBndMin, const Graphic3d_Vec3d & theBndMax, const Standard_Real theDeviationCoefficient);
+
+		/****************** GetDeflection ******************/
+		/**** md5 signature: b4ff60a90046a3353c924190b95ff7f7 ****/
+		%feature("compactdefaultargs") GetDeflection;
+		%feature("autodoc", "Computes the absolute deflection value based on relative deflection prs3d_drawer::deviationcoefficient(). @param thebndbox [in] bounding box @param thedeviationcoefficient [in] relative deflection coefficient from prs3d_drawer::deviationcoefficient() @param themaximalchordialdeviation [in] absolute deflection coefficient from prs3d_drawer::maximalchordialdeviation() returns absolute deflection coefficient based on bounding box dimensions or themaximalchordialdeviation if bounding box is void or infinite.
+
+Parameters
+----------
+theBndBox: Bnd_Box
+theDeviationCoefficient: float
+theMaximalChordialDeviation: float
+
+Returns
+-------
+float
+") GetDeflection;
+		static Standard_Real GetDeflection(const Bnd_Box & theBndBox, const Standard_Real theDeviationCoefficient, const Standard_Real theMaximalChordialDeviation);
 
 		/****************** MatchSegment ******************/
 		/**** md5 signature: b54f261a95760df4573beed0ad5de6ee ****/
@@ -432,6 +464,97 @@ opencascade::handle<Graphic3d_ArrayOfPrimitives>
 
 
 %extend Prs3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************
+* class Prs3d_Arrow *
+********************/
+class Prs3d_Arrow {
+	public:
+		/****************** Draw ******************/
+		/**** md5 signature: 5fbe6d990a1917c27eed32163631c6db ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Defines the representation of the arrow. note that this method does not assign any presentation aspects to the primitives group! @param thegroup presentation group to add primitives @param thelocation location of the arrow tip @param thedirection direction of the arrow @param theangle angle of opening of the arrow head @param thelength length of the arrow (from the tip).
+
+Parameters
+----------
+theGroup: Graphic3d_Group
+theLocation: gp_Pnt
+theDirection: gp_Dir
+theAngle: float
+theLength: float
+
+Returns
+-------
+None
+") Draw;
+		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
+
+		/****************** Draw ******************/
+		/**** md5 signature: 0d01026ed2217a2665b0a14a5cd75a9e ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Alias to another method draw() for backward compatibility.
+
+Parameters
+----------
+thePrs: Prs3d_Presentation
+theLocation: gp_Pnt
+theDirection: gp_Dir
+theAngle: float
+theLength: float
+
+Returns
+-------
+None
+") Draw;
+		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
+
+		/****************** DrawSegments ******************/
+		/**** md5 signature: 732901be4cc19438764121766619db8b ****/
+		%feature("compactdefaultargs") DrawSegments;
+		%feature("autodoc", "Defines the representation of the arrow as a container of segments. @param thelocation location of the arrow tip @param thedir direction of the arrow @param theangle angle of opening of the arrow head @param thelength length of the arrow (from the tip) @param thenbsegments count of points on polyline where location is connected.
+
+Parameters
+----------
+theLocation: gp_Pnt
+theDir: gp_Dir
+theAngle: float
+theLength: float
+theNbSegments: int
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfSegments>
+") DrawSegments;
+		static opencascade::handle<Graphic3d_ArrayOfSegments> DrawSegments(const gp_Pnt & theLocation, const gp_Dir & theDir, const Standard_Real theAngle, const Standard_Real theLength, const Standard_Integer theNbSegments);
+
+		/****************** DrawShaded ******************/
+		/**** md5 signature: 9fdd956294243401b7cdc39f8158504b ****/
+		%feature("compactdefaultargs") DrawShaded;
+		%feature("autodoc", "Defines the representation of the arrow as shaded triangulation. @param theaxis axis definition (arrow origin and direction) @param thetuberadius tube (cylinder) radius @param theaxislength overall arrow length (cylinder + cone) @param theconeradius cone radius (arrow tip) @param theconelength cone length (arrow tip) @param thenbfacettes tessellation quality for each part.
+
+Parameters
+----------
+theAxis: gp_Ax1
+theTubeRadius: float
+theAxisLength: float
+theConeRadius: float
+theConeLength: float
+theNbFacettes: int
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") DrawShaded;
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> DrawShaded(const gp_Ax1 & theAxis, const Standard_Real theTubeRadius, const Standard_Real theAxisLength, const Standard_Real theConeRadius, const Standard_Real theConeLength, const Standard_Integer theNbFacettes);
+
+};
+
+
+%extend Prs3d_Arrow {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -598,7 +721,7 @@ opencascade::handle<Prs3d_DatumAspect>
 		/****************** DeviationAngle ******************/
 		/**** md5 signature: 003652129c87707eb3add7448baffc41 ****/
 		%feature("compactdefaultargs") DeviationAngle;
-		%feature("autodoc", "Returns the value for deviation angle.
+		%feature("autodoc", "Returns the value for deviation angle in radians, 20 * m_pi / 180 by default.
 
 Returns
 -------
@@ -782,24 +905,13 @@ bool
 		/****************** HLRAngle ******************/
 		/**** md5 signature: 9b3b7971941820e9cc8d8638893d2a9d ****/
 		%feature("compactdefaultargs") HLRAngle;
-		%feature("autodoc", "Returns the real number value of the deviation angle in hidden line removal views. the default value is 20 * m_pi / 180.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 float
 ") HLRAngle;
 		Standard_Real HLRAngle();
-
-		/****************** HLRDeviationCoefficient ******************/
-		/**** md5 signature: 3cc17f154484b7d4cc623b55690d383f ****/
-		%feature("compactdefaultargs") HLRDeviationCoefficient;
-		%feature("autodoc", "Returns the real number value of the hidden line removal deviation coefficient in this framework, if the flag hasownhlrdeviationcoefficient is true or there is no link. else the shape's hlr deviation coefficient is used. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient give the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. to find the hidden lines, hidden line display mode entails recalculation of the view at each different projector perspective. since hidden lines entail calculations of more than usual complexity to decompose them into these triangles, a deviation coefficient allowing greater tolerance is used. this increases efficiency in calculation. the default value is 0.02.
-
-Returns
--------
-float
-") HLRDeviationCoefficient;
-		Standard_Real HLRDeviationCoefficient();
 
 		/****************** HasLink ******************/
 		/**** md5 signature: e68aafea1bcdd6fec6e3f2f0de3f3c9f ****/
@@ -991,24 +1103,13 @@ bool
 		/****************** HasOwnHLRDeviationAngle ******************/
 		/**** md5 signature: 992f156d7f0c52baf625365e1f7ddb89 ****/
 		%feature("compactdefaultargs") HasOwnHLRDeviationAngle;
-		%feature("autodoc", "Returns true if the there is a setting for hlr deviation angle in this framework for a specific interactive object.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 bool
 ") HasOwnHLRDeviationAngle;
 		Standard_Boolean HasOwnHLRDeviationAngle();
-
-		/****************** HasOwnHLRDeviationCoefficient ******************/
-		/**** md5 signature: 64ad0e7ba81c73059d204e6f123f7025 ****/
-		%feature("compactdefaultargs") HasOwnHLRDeviationCoefficient;
-		%feature("autodoc", "Returns true if the there is a setting for hlr deviation coefficient in this framework for a specific interactive object.
-
-Returns
--------
-bool
-") HasOwnHLRDeviationCoefficient;
-		Standard_Boolean HasOwnHLRDeviationCoefficient();
 
 		/****************** HasOwnHiddenLineAspect ******************/
 		/**** md5 signature: adef7b374e68f02486f2d77f549bd4cd ****/
@@ -1435,24 +1536,13 @@ float
 		/****************** PreviousHLRDeviationAngle ******************/
 		/**** md5 signature: 82e7d8a97345e9ce23b5ce94343001fa ****/
 		%feature("compactdefaultargs") PreviousHLRDeviationAngle;
-		%feature("autodoc", "Returns the previous value of the hlr deviation angle.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 float
 ") PreviousHLRDeviationAngle;
 		Standard_Real PreviousHLRDeviationAngle();
-
-		/****************** PreviousHLRDeviationCoefficient ******************/
-		/**** md5 signature: a7e76d6cadf084d7b0d3ca4be0f64f15 ****/
-		%feature("compactdefaultargs") PreviousHLRDeviationCoefficient;
-		%feature("autodoc", "Returns the previous value of the hidden line removal deviation coefficient.
-
-Returns
--------
-float
-") PreviousHLRDeviationCoefficient;
-		Standard_Real PreviousHLRDeviationCoefficient();
 
 		/****************** SectionAspect ******************/
 		/**** md5 signature: ee2222d98a1c7413369ab3d05a165c4d ****/
@@ -1739,9 +1829,9 @@ None
 		void SetFreeBoundaryDraw(const Standard_Boolean theIsEnabled);
 
 		/****************** SetHLRAngle ******************/
-		/**** md5 signature: e8b63f0b08f1d10459cb68d05f08b965 ****/
+		/**** md5 signature: 76fda7a04861224b0871f98ee167394b ****/
 		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "Sets anangle, the angle of maximum chordal deviation for removal of hidden lines created by different viewpoints in different presentations. the default value is 20 * m_pi / 180. also sets the hasownhlrdeviationangle flag to standard_true and myprevioushlrdeviationangle.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -1756,39 +1846,13 @@ None
 		/****************** SetHLRAngle ******************/
 		/**** md5 signature: 2e26deb79c9f12fded05a5d3f3274d8d ****/
 		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "Sets the hasownhlrdeviationangle flag to standard_false.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 None
 ") SetHLRAngle;
 		void SetHLRAngle();
-
-		/****************** SetHLRDeviationCoefficient ******************/
-		/**** md5 signature: 4abbe6d76f3b50574cc0abd00030743f ****/
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "Sets the deviation coefficient acoefficient for removal of hidden lines created by different viewpoints in different presentations. the default value is 0.02. also sets the hasownhlrdeviationcoefficient flag to standard_true and myprevioushlrdeviationcoefficient.
-
-Parameters
-----------
-theCoefficient: float
-
-Returns
--------
-None
-") SetHLRDeviationCoefficient;
-		void SetHLRDeviationCoefficient(const Standard_Real theCoefficient);
-
-		/****************** SetHLRDeviationCoefficient ******************/
-		/**** md5 signature: 58602339a8876820689034e19d01daa7 ****/
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "Sets the hasownhlrdeviationcoefficient flag to standard_false .
-
-Returns
--------
-None
-") SetHLRDeviationCoefficient;
-		void SetHLRDeviationCoefficient();
 
 		/****************** SetHiddenLineAspect ******************/
 		/**** md5 signature: eb2840c9c6e171b09b5638136aca85da ****/
@@ -2268,7 +2332,7 @@ bool
 		/****************** ShadingAspect ******************/
 		/**** md5 signature: 9cc274fb4b9a2f02b2acd17e41400ef1 ****/
 		%feature("compactdefaultargs") ShadingAspect;
-		%feature("autodoc", "Returns settings for shading aspects. these settings can be edited. the default values are: - color: quantity_noc_yellow - material: graphic3d_nom_brass shading aspect is obtained through decomposition of 3d faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
+		%feature("autodoc", "Returns settings for shading aspects. these settings can be edited. the default values are: - color: quantity_noc_yellow - material: graphic3d_nameofmaterial_brass shading aspect is obtained through decomposition of 3d faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
 
 Returns
 -------
@@ -2441,6 +2505,56 @@ bool
 	}
 };
 
+/********************
+* class Prs3d_Point *
+********************/
+class Prs3d_Point {
+	public:
+		/****************** Add ******************/
+		/**** md5 signature: 3b58eed451698bf11ecbe3acc74e2d0b ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePrs: Handle ( Prs3d_Presentation )
+thePoint: AnyPoint
+theDrawer: Handle ( Prs3d_Drawer )
+
+Returns
+-------
+None
+") Add;
+		static void Add(const Handle ( Prs3d_Presentation ) & thePrs, const AnyPoint & thePoint, const Handle ( Prs3d_Drawer ) & theDrawer);
+
+		/****************** Match ******************/
+		/**** md5 signature: 0b99a7d2ff1fac1a4a91e5728b1339c9 ****/
+		%feature("compactdefaultargs") Match;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoint: AnyPoint
+theX: float
+theY: float
+theZ: float
+theDistance: float
+
+Returns
+-------
+bool
+") Match;
+		static Standard_Boolean Match(const AnyPoint & thePoint, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance);
+
+};
+
+
+%extend Prs3d_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************************
 * class Prs3d_PresentationShadow *
 *********************************/
@@ -2473,6 +2587,14 @@ None
 ") CalculateBoundBox;
 		virtual void CalculateBoundBox();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** ParentAffinity ******************/
 		/**** md5 signature: 9b0bdbaca5cd51b4bff82600c75ff027 ****/
 		%feature("compactdefaultargs") ParentAffinity;
@@ -2506,73 +2628,6 @@ int
 	}
 };
 
-/************************
-* class Prs3d_Projector *
-************************/
-class Prs3d_Projector : public Standard_Transient {
-	public:
-		/****************** Prs3d_Projector ******************/
-		/**** md5 signature: 8eb3609d2ac5effcdfa577dcad57f224 ****/
-		%feature("compactdefaultargs") Prs3d_Projector;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Pr: HLRAlgo_Projector
-
-Returns
--------
-None
-") Prs3d_Projector;
-		 Prs3d_Projector(const HLRAlgo_Projector & Pr);
-
-		/****************** Prs3d_Projector ******************/
-		/**** md5 signature: 3318130551ba822059b584bef0ac163a ****/
-		%feature("compactdefaultargs") Prs3d_Projector;
-		%feature("autodoc", "Constructs a projector framework from the following parameters - pers is true if the view is a perspective view and false if it is an axonometric one; - focus is the focal length if a perspective view is defined; - dx, dy and dz are the coordinates of the projection vector; - xat, yat and zat are the coordinates of the view point; - xup, yup and zup are the coordinates of the vertical direction vector.
-
-Parameters
-----------
-Pers: bool
-Focus: float
-DX: float
-DY: float
-DZ: float
-XAt: float
-YAt: float
-ZAt: float
-XUp: float
-YUp: float
-ZUp: float
-
-Returns
--------
-None
-") Prs3d_Projector;
-		 Prs3d_Projector(const Standard_Boolean Pers, const Standard_Real Focus, const Standard_Real DX, const Standard_Real DY, const Standard_Real DZ, const Standard_Real XAt, const Standard_Real YAt, const Standard_Real ZAt, const Standard_Real XUp, const Standard_Real YUp, const Standard_Real ZUp);
-
-		/****************** Projector ******************/
-		/**** md5 signature: 33ff71737cb03f728c05e0d14bb4473a ****/
-		%feature("compactdefaultargs") Projector;
-		%feature("autodoc", "Returns a projector object for use in a hidden line removal algorithm.
-
-Returns
--------
-HLRAlgo_Projector
-") Projector;
-		HLRAlgo_Projector Projector();
-
-};
-
-
-%make_alias(Prs3d_Projector)
-
-%extend Prs3d_Projector {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*******************
 * class Prs3d_Root *
 *******************/
@@ -2581,7 +2636,7 @@ class Prs3d_Root {
 		/****************** CurrentGroup ******************/
 		/**** md5 signature: e95e1e3804731856f1d7faf6d33cb8bd ****/
 		%feature("compactdefaultargs") CurrentGroup;
-		%feature("autodoc", "Returns the current (last created) group of primititves inside graphic objects in the display. a group also contains the attributes whose ranges are limited to the primitives in it.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -2596,7 +2651,7 @@ opencascade::handle<Graphic3d_Group>
 		/****************** NewGroup ******************/
 		/**** md5 signature: 4f25dab2ea6d19aa0b7ebaa3dafab482 ****/
 		%feature("compactdefaultargs") NewGroup;
-		%feature("autodoc", "Returns the new group of primitives inside graphic objects in the display. a group also contains the attributes whose ranges are limited to the primitives in it.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -2617,19 +2672,154 @@ opencascade::handle<Graphic3d_Group>
 	}
 };
 
-/************************
-* class Prs3d_ShapeTool *
-************************/
+/*******************
+* class Prs3d_Text *
+*******************/
+class Prs3d_Text {
+	public:
+		/****************** Draw ******************/
+		/**** md5 signature: e497187cc47a0b4c170caa451c728072 ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Defines the display of the text. @param thegroup group to add primitives @param theaspect presentation attributes @param thetext text to draw @param theattachmentpoint attachment point returns text to draw.
+
+Parameters
+----------
+theGroup: Graphic3d_Group
+theAspect: Prs3d_TextAspect
+theText: TCollection_ExtendedString
+theAttachmentPoint: gp_Pnt
+
+Returns
+-------
+opencascade::handle<Graphic3d_Text>
+") Draw;
+		static opencascade::handle<Graphic3d_Text> Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
+
+		/****************** Draw ******************/
+		/**** md5 signature: bffbe230252ee3e0d660a0f0a3cb5a41 ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Draws the text label. @param thegroup group to add primitives @param theaspect presentation attributes @param thetext text to draw @param theorientation location and orientation specified in the model 3d space @param thehasownanchor returns text to draw.
+
+Parameters
+----------
+theGroup: Graphic3d_Group
+theAspect: Prs3d_TextAspect
+theText: TCollection_ExtendedString
+theOrientation: gp_Ax2
+theHasOwnAnchor: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+opencascade::handle<Graphic3d_Text>
+") Draw;
+		static opencascade::handle<Graphic3d_Text> Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
+
+		/****************** Draw ******************/
+		/**** md5 signature: c81a1d63918e052869c2ea407ed25824 ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Alias to another method draw() for backward compatibility.
+
+Parameters
+----------
+thePrs: Prs3d_Presentation
+theDrawer: Prs3d_Drawer
+theText: TCollection_ExtendedString
+theAttachmentPoint: gp_Pnt
+
+Returns
+-------
+None
+") Draw;
+		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
+
+		/****************** Draw ******************/
+		/**** md5 signature: f2388f36de4bfc3744a462bf82ce37ad ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Alias to another method draw() for backward compatibility.
+
+Parameters
+----------
+thePrs: Prs3d_Presentation
+theAspect: Prs3d_TextAspect
+theText: TCollection_ExtendedString
+theOrientation: gp_Ax2
+theHasOwnAnchor: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") Draw;
+		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
+
+		/****************** Draw ******************/
+		/**** md5 signature: 44971b9f623140f1480964ad0077a232 ****/
+		%feature("compactdefaultargs") Draw;
+		%feature("autodoc", "Alias to another method draw() for backward compatibility.
+
+Parameters
+----------
+thePrs: Prs3d_Presentation
+theAspect: Prs3d_TextAspect
+theText: TCollection_ExtendedString
+theAttachmentPoint: gp_Pnt
+
+Returns
+-------
+None
+") Draw;
+		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
+
+};
+
+
+%extend Prs3d_Text {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**************************
 * class Prs3d_ToolQuadric *
 **************************/
 %nodefaultctor Prs3d_ToolQuadric;
 class Prs3d_ToolQuadric {
 	public:
+		/****************** CreatePolyTriangulation ******************/
+		/**** md5 signature: 969725a9ac628bcecddfe33496740acf ****/
+		%feature("compactdefaultargs") CreatePolyTriangulation;
+		%feature("autodoc", "Generate primitives for 3d quadric surface presentation. @param thetrsf [in] optional transformation to apply returns generated triangulation.
+
+Parameters
+----------
+theTrsf: gp_Trsf
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") CreatePolyTriangulation;
+		opencascade::handle<Poly_Triangulation> CreatePolyTriangulation(const gp_Trsf & theTrsf);
+
+		/****************** CreateTriangulation ******************/
+		/**** md5 signature: 4c6f5fda1d7eda1a0394d83f1c49bd55 ****/
+		%feature("compactdefaultargs") CreateTriangulation;
+		%feature("autodoc", "Generate primitives for 3d quadric surface presentation. @param thetrsf [in] optional transformation to apply returns generated triangulation.
+
+Parameters
+----------
+theTrsf: gp_Trsf
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") CreateTriangulation;
+		opencascade::handle<Graphic3d_ArrayOfTriangles> CreateTriangulation(const gp_Trsf & theTrsf);
+
 		/****************** FillArray ******************/
-		/**** md5 signature: 437bfb6f6e530814efadc0906b389790 ****/
+		/**** md5 signature: 05aa8383885ae4a8861a03330fc93140 ****/
 		%feature("compactdefaultargs") FillArray;
-		%feature("autodoc", "Generate primitives for 3d quadric surface and fill the given array. optional transformation is applied.
+		%feature("autodoc", "Generate primitives for 3d quadric surface and fill the given array. @param thearray [in][out] the array of vertices;  when null, function will create an indexed array;  when not null, triangles will be appended to the end of array  (will raise an exception if reserved array size is not large enough) @param thetrsf [in] optional transformation to apply.
 
 Parameters
 ----------
@@ -2643,9 +2833,9 @@ None
 		void FillArray(opencascade::handle<Graphic3d_ArrayOfTriangles> & theArray, const gp_Trsf & theTrsf);
 
 		/****************** FillArray ******************/
-		/**** md5 signature: 6b2e58914321cf0b50365862f3b122f7 ****/
+		/**** md5 signature: 7147828fbd45e9681ea3a53d5ddbf124 ****/
 		%feature("compactdefaultargs") FillArray;
-		%feature("autodoc", "Generate primitives for 3d quadric surface presentation and fill the given array and poly triangulation structure. optional transformation is applied.
+		%feature("autodoc", "Generate primitives for 3d quadric surface presentation. @param thearray [out] generated array of triangles @param thetriangulation [out] generated triangulation @param thetrsf [in] optional transformation to apply.
 
 Parameters
 ----------
@@ -2662,7 +2852,7 @@ None
 		/****************** TrianglesNb ******************/
 		/**** md5 signature: 8b7c815b2ac2556d491b7b49576cd32d ****/
 		%feature("compactdefaultargs") TrianglesNb;
-		%feature("autodoc", "Number of triangles for presentation with the given params.
+		%feature("autodoc", "Return number of triangles for presentation with the given params.
 
 Parameters
 ----------
@@ -2675,101 +2865,28 @@ int
 ") TrianglesNb;
 		static Standard_Integer TrianglesNb(const Standard_Integer theSlicesNb, const Standard_Integer theStacksNb);
 
+		/****************** VerticesNb ******************/
+		/**** md5 signature: 1326b929d9932628a0c679a5777a5b6c ****/
+		%feature("compactdefaultargs") VerticesNb;
+		%feature("autodoc", "Return number of vertices for presentation with the given params.
+
+Parameters
+----------
+theSlicesNb: int
+theStacksNb: int
+theIsIndexed: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+int
+") VerticesNb;
+		static Standard_Integer VerticesNb(const Standard_Integer theSlicesNb, const Standard_Integer theStacksNb, const Standard_Boolean theIsIndexed = Standard_True);
+
 };
 
 
 %extend Prs3d_ToolQuadric {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************
-* class Prs3d_Arrow *
-********************/
-class Prs3d_Arrow : public Prs3d_Root {
-	public:
-		/****************** Draw ******************/
-		/**** md5 signature: 5fbe6d990a1917c27eed32163631c6db ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Defines the representation of the arrow. note that this method does not assign any presentation aspects to the primitives group! @param thegroup presentation group to add primitives @param thelocation location of the arrow tip @param thedirection direction of the arrow @param theangle angle of opening of the arrow head @param thelength length of the arrow (from the tip).
-
-Parameters
-----------
-theGroup: Graphic3d_Group
-theLocation: gp_Pnt
-theDirection: gp_Dir
-theAngle: float
-theLength: float
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
-
-		/****************** Draw ******************/
-		/**** md5 signature: 0d01026ed2217a2665b0a14a5cd75a9e ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theLocation: gp_Pnt
-theDirection: gp_Dir
-theAngle: float
-theLength: float
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
-
-		/****************** DrawSegments ******************/
-		/**** md5 signature: 732901be4cc19438764121766619db8b ****/
-		%feature("compactdefaultargs") DrawSegments;
-		%feature("autodoc", "Defines the representation of the arrow as a container of segments. @param thelocation location of the arrow tip @param thedir direction of the arrow @param theangle angle of opening of the arrow head @param thelength length of the arrow (from the tip) @param thenbsegments count of points on polyline where location is connected.
-
-Parameters
-----------
-theLocation: gp_Pnt
-theDir: gp_Dir
-theAngle: float
-theLength: float
-theNbSegments: int
-
-Returns
--------
-opencascade::handle<Graphic3d_ArrayOfSegments>
-") DrawSegments;
-		static opencascade::handle<Graphic3d_ArrayOfSegments> DrawSegments(const gp_Pnt & theLocation, const gp_Dir & theDir, const Standard_Real theAngle, const Standard_Real theLength, const Standard_Integer theNbSegments);
-
-		/****************** DrawShaded ******************/
-		/**** md5 signature: 9fdd956294243401b7cdc39f8158504b ****/
-		%feature("compactdefaultargs") DrawShaded;
-		%feature("autodoc", "Defines the representation of the arrow as shaded triangulation. @param theaxis axis definition (arrow origin and direction) @param thetuberadius tube (cylinder) radius @param theaxislength overall arrow length (cylinder + cone) @param theconeradius cone radius (arrow tip) @param theconelength cone length (arrow tip) @param thenbfacettes tessellation quality for each part.
-
-Parameters
-----------
-theAxis: gp_Ax1
-theTubeRadius: float
-theAxisLength: float
-theConeRadius: float
-theConeLength: float
-theNbFacettes: int
-
-Returns
--------
-opencascade::handle<Graphic3d_ArrayOfTriangles>
-") DrawShaded;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> DrawShaded(const gp_Ax1 & theAxis, const Standard_Real theTubeRadius, const Standard_Real theAxisLength, const Standard_Real theConeRadius, const Standard_Real theConeLength, const Standard_Integer theNbFacettes);
-
-};
-
-
-%extend Prs3d_Arrow {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2929,6 +3046,132 @@ None
 %make_alias(Prs3d_ArrowAspect)
 
 %extend Prs3d_ArrowAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************
+* class Prs3d_BndBox *
+*********************/
+class Prs3d_BndBox : public Prs3d_Root {
+	public:
+		/****************** Add ******************/
+		/**** md5 signature: c54a75d50bfd4e7f1fb12cf7497bfbd8 ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "Computes presentation of a bounding box. @param thepresentation [in] the presentation. @param thebndbox [in] the bounding box. @param thedrawer [in] the drawer.
+
+Parameters
+----------
+thePresentation: Prs3d_Presentation
+theBndBox: Bnd_Box
+theDrawer: Prs3d_Drawer
+
+Returns
+-------
+None
+") Add;
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const Bnd_Box & theBndBox, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+
+		/****************** Add ******************/
+		/**** md5 signature: 6b808f8029d0bc7d27373b55eaa80cd4 ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "Computes presentation of a bounding box. @param thepresentation [in] the presentation. @param thebndbox [in] the bounding box. @param thedrawer [in] the drawer.
+
+Parameters
+----------
+thePresentation: Prs3d_Presentation
+theBndBox: Bnd_OBB
+theDrawer: Prs3d_Drawer
+
+Returns
+-------
+None
+") Add;
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const Bnd_OBB & theBndBox, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+
+		/****************** FillSegments ******************/
+		/**** md5 signature: 5fb83e6b4c177d72797ad20d5dbb573c ****/
+		%feature("compactdefaultargs") FillSegments;
+		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thebox [in] the box to add.
+
+Parameters
+----------
+theBox: Bnd_OBB
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfSegments>
+") FillSegments;
+		static opencascade::handle<Graphic3d_ArrayOfSegments> FillSegments(const Bnd_OBB & theBox);
+
+		/****************** FillSegments ******************/
+		/**** md5 signature: 40a5714e880ddcdb51b116ed7e7d58a3 ****/
+		%feature("compactdefaultargs") FillSegments;
+		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thebox [in] the box to add.
+
+Parameters
+----------
+theBox: Bnd_Box
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfSegments>
+") FillSegments;
+		static opencascade::handle<Graphic3d_ArrayOfSegments> FillSegments(const Bnd_Box & theBox);
+
+		/****************** FillSegments ******************/
+		/**** md5 signature: 6c2926015dd63abf7dfca1e5b0f1dee0 ****/
+		%feature("compactdefaultargs") FillSegments;
+		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thesegments [in] [out] primitive array to be filled;  should be at least 8 nodes and 24 edges in size @param thebox [in] the box to add.
+
+Parameters
+----------
+theSegments: Graphic3d_ArrayOfSegments
+theBox: Bnd_OBB
+
+Returns
+-------
+None
+") FillSegments;
+		static void FillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const Bnd_OBB & theBox);
+
+		/****************** FillSegments ******************/
+		/**** md5 signature: 1dfe28468b5ba72dd334e07d0ac3116c ****/
+		%feature("compactdefaultargs") FillSegments;
+		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thesegments [in] [out] primitive array to be filled;  should be at least 8 nodes and 24 edges in size @param thebox [in] the box to add.
+
+Parameters
+----------
+theSegments: Graphic3d_ArrayOfSegments
+theBox: Bnd_Box
+
+Returns
+-------
+None
+") FillSegments;
+		static void FillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const Bnd_Box & theBox);
+
+		/****************** fillSegments ******************/
+		/**** md5 signature: c902020df6559486e6ed2711d0bcc3d9 ****/
+		%feature("compactdefaultargs") fillSegments;
+		%feature("autodoc", "Create primitive array with line segments for displaying a box. @param thesegments [in] [out] primitive array to be filled;  should be at least 8 nodes and 24 edges in size @param thebox [in] the box to add.
+
+Parameters
+----------
+theSegments: Graphic3d_ArrayOfSegments
+theBox: gp_Pnt *
+
+Returns
+-------
+None
+") fillSegments;
+		static void fillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const gp_Pnt * theBox);
+
+};
+
+
+%extend Prs3d_BndBox {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4210,56 +4453,6 @@ None
 	}
 };
 
-/********************
-* class Prs3d_Point *
-********************/
-class Prs3d_Point : private Prs3d_Root {
-	public:
-		/****************** Add ******************/
-		/**** md5 signature: f098a76bd5f794fe58bf9a789f260112 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePresentation: Handle ( Prs3d_Presentation )
-thePoint: AnyPoint
-theDrawer: Handle ( Prs3d_Drawer )
-
-Returns
--------
-None
-") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const AnyPoint & thePoint, const Handle ( Prs3d_Drawer ) & theDrawer);
-
-		/****************** Match ******************/
-		/**** md5 signature: 0b99a7d2ff1fac1a4a91e5728b1339c9 ****/
-		%feature("compactdefaultargs") Match;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePoint: AnyPoint
-theX: float
-theY: float
-theZ: float
-theDistance: float
-
-Returns
--------
-bool
-") Match;
-		static Standard_Boolean Match(const AnyPoint & thePoint, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance);
-
-};
-
-
-%extend Prs3d_Point {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /**************************
 * class Prs3d_PointAspect *
 **************************/
@@ -4606,114 +4799,6 @@ float
 	}
 };
 
-/*******************
-* class Prs3d_Text *
-*******************/
-class Prs3d_Text : public Prs3d_Root {
-	public:
-		/****************** Draw ******************/
-		/**** md5 signature: 9c6b90e7c46d0e844590a1b839e7777a ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Defines the display of the text. @param thegroup group to add primitives @param theaspect presentation attributes @param thetext text to draw @param theattachmentpoint attachment point.
-
-Parameters
-----------
-theGroup: Graphic3d_Group
-theAspect: Prs3d_TextAspect
-theText: TCollection_ExtendedString
-theAttachmentPoint: gp_Pnt
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
-
-		/****************** Draw ******************/
-		/**** md5 signature: dc3a1cf5b20f066096227c995e4a36fb ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Draws the text label. @param thegroup group to add primitives @param theaspect presentation attributes @param thetext text to draw @param theorientation location and orientation specified in the model 3d space @param thehasownanchor .
-
-Parameters
-----------
-theGroup: Graphic3d_Group
-theAspect: Prs3d_TextAspect
-theText: TCollection_ExtendedString
-theOrientation: gp_Ax2
-theHasOwnAnchor: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
-
-		/****************** Draw ******************/
-		/**** md5 signature: c81a1d63918e052869c2ea407ed25824 ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theDrawer: Prs3d_Drawer
-theText: TCollection_ExtendedString
-theAttachmentPoint: gp_Pnt
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
-
-		/****************** Draw ******************/
-		/**** md5 signature: f2388f36de4bfc3744a462bf82ce37ad ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theAspect: Prs3d_TextAspect
-theText: TCollection_ExtendedString
-theOrientation: gp_Ax2
-theHasOwnAnchor: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
-
-		/****************** Draw ******************/
-		/**** md5 signature: 44971b9f623140f1480964ad0077a232 ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theAspect: Prs3d_TextAspect
-theText: TCollection_ExtendedString
-theAttachmentPoint: gp_Pnt
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
-
-};
-
-
-%extend Prs3d_Text {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*************************
 * class Prs3d_TextAspect *
 *************************/
@@ -4958,7 +5043,7 @@ class Prs3d_ToolCylinder : public Prs3d_ToolQuadric {
 		/****************** Prs3d_ToolCylinder ******************/
 		/**** md5 signature: a0078429be42ebfbc0c4d2d7cd2a64c1 ****/
 		%feature("compactdefaultargs") Prs3d_ToolCylinder;
-		%feature("autodoc", "Initializes the algorithm.
+		%feature("autodoc", "Initializes the algorithm creating a cylinder. @param thebottomrad [in] cylinder bottom radius @param thetoprad [in] cylinder top radius @param theheight [in] cylinder height @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
 
 Parameters
 ----------
@@ -4977,7 +5062,7 @@ None
 		/****************** Create ******************/
 		/**** md5 signature: 13768f849e92213eb84bca75772c907d ****/
 		%feature("compactdefaultargs") Create;
-		%feature("autodoc", "Generate primitives for 3d quadric surface and return a filled array.
+		%feature("autodoc", "Generate primitives for 3d quadric surface and return a filled array. @param thebottomrad [in] cylinder bottom radius @param thetoprad [in] cylinder top radius @param theheight [in] cylinder height @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
 
 Parameters
 ----------
@@ -5011,7 +5096,7 @@ class Prs3d_ToolDisk : public Prs3d_ToolQuadric {
 		/****************** Prs3d_ToolDisk ******************/
 		/**** md5 signature: 5106660590090ab9bf0b6e40023ae2c4 ****/
 		%feature("compactdefaultargs") Prs3d_ToolDisk;
-		%feature("autodoc", "Initializes the algorithm.
+		%feature("autodoc", "Initializes the algorithm creating a disk. @param theinnerradius [in] inner disk radius @param theouterradius [in] outer disk radius @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
 
 Parameters
 ----------
@@ -5029,7 +5114,7 @@ None
 		/****************** Create ******************/
 		/**** md5 signature: 5ecf369558d3c3c5b58970d367036258 ****/
 		%feature("compactdefaultargs") Create;
-		%feature("autodoc", "Generate primitives for 3d quadric surface and return a filled array.
+		%feature("autodoc", "Generate primitives for 3d quadric surface. @param theinnerradius [in] inner disc radius @param theouterradius [in] outer disc radius @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
 
 Parameters
 ----------
@@ -5078,7 +5163,7 @@ class Prs3d_ToolSector : public Prs3d_ToolQuadric {
 		/****************** Prs3d_ToolSector ******************/
 		/**** md5 signature: 077e30551d2b7fff0a377a40b6504a0f ****/
 		%feature("compactdefaultargs") Prs3d_ToolSector;
-		%feature("autodoc", "Initializes the algorithm.
+		%feature("autodoc", "Initializes the algorithm creating a sector (quadrant). @param theradius [in] sector radius @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
 
 Parameters
 ----------
@@ -5095,7 +5180,7 @@ None
 		/****************** Create ******************/
 		/**** md5 signature: f383fdd95c4d52d12685500a764da048 ****/
 		%feature("compactdefaultargs") Create;
-		%feature("autodoc", "Generate primitives for 3d quadric surface and return a filled array.
+		%feature("autodoc", "Generate primitives for 3d quadric surface. @param theradius [in] sector radius @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
 
 Parameters
 ----------
@@ -5127,7 +5212,7 @@ class Prs3d_ToolSphere : public Prs3d_ToolQuadric {
 		/****************** Prs3d_ToolSphere ******************/
 		/**** md5 signature: 512c4ee62ddac02d40e1d19c91dfd749 ****/
 		%feature("compactdefaultargs") Prs3d_ToolSphere;
-		%feature("autodoc", "Initializes the algorithm.
+		%feature("autodoc", "Initializes the algorithm creating a sphere. @param theradius [in] sphere radius @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
 
 Parameters
 ----------
@@ -5144,7 +5229,7 @@ None
 		/****************** Create ******************/
 		/**** md5 signature: f383fdd95c4d52d12685500a764da048 ****/
 		%feature("compactdefaultargs") Create;
-		%feature("autodoc", "Generate primitives for 3d quadric surface and return a filled array.
+		%feature("autodoc", "Generate primitives for 3d quadric surface. @param theradius [in] sphere radius @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
 
 Parameters
 ----------
@@ -5163,6 +5248,180 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 
 %extend Prs3d_ToolSphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************
+* class Prs3d_ToolTorus *
+************************/
+class Prs3d_ToolTorus : public Prs3d_ToolQuadric {
+	public:
+		/****************** Prs3d_ToolTorus ******************/
+		/**** md5 signature: 8a652d1c1c7e4d1a50eee4b129851dbc ****/
+		%feature("compactdefaultargs") Prs3d_ToolTorus;
+		%feature("autodoc", "Initializes the algorithm creating a complete torus. @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theNbSlices: int
+theNbStacks: int
+
+Returns
+-------
+None
+") Prs3d_ToolTorus;
+		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+
+		/****************** Prs3d_ToolTorus ******************/
+		/**** md5 signature: 2accee27f8defef2bfbc627df25e1f15 ****/
+		%feature("compactdefaultargs") Prs3d_ToolTorus;
+		%feature("autodoc", "Initializes the algorithm creating a torus pipe segment. @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param theangle [in] angle to create a torus pipe segment @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theAngle: float
+theNbSlices: int
+theNbStacks: int
+
+Returns
+-------
+None
+") Prs3d_ToolTorus;
+		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+
+		/****************** Prs3d_ToolTorus ******************/
+		/**** md5 signature: 7993686707597a46b2d0f4ec645c5d95 ****/
+		%feature("compactdefaultargs") Prs3d_ToolTorus;
+		%feature("autodoc", "Initializes the algorithm creating a torus ring segment. @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param theangle1 [in] first angle to create a torus ring segment @param theangle2 [in] second angle to create a torus ring segment @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theAngle1: float
+theAngle2: float
+theNbSlices: int
+theNbStacks: int
+
+Returns
+-------
+None
+") Prs3d_ToolTorus;
+		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+
+		/****************** Prs3d_ToolTorus ******************/
+		/**** md5 signature: 71ca9f767c504cae9394d92ff59f012b ****/
+		%feature("compactdefaultargs") Prs3d_ToolTorus;
+		%feature("autodoc", "Initializes the algorithm creating a torus ring segment. @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param theangle1 [in] first angle to create a torus ring segment @param theangle2 [in] second angle to create a torus ring segment @param theangle [in] angle to create a torus pipe segment @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theAngle1: float
+theAngle2: float
+theAngle: float
+theNbSlices: int
+theNbStacks: int
+
+Returns
+-------
+None
+") Prs3d_ToolTorus;
+		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+
+		/****************** Create ******************/
+		/**** md5 signature: 07e9f2ec71b87fc6919fefde93de32fa ****/
+		%feature("compactdefaultargs") Create;
+		%feature("autodoc", "Generate primitives for 3d quadric surface (complete torus). @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theNbSlices: int
+theNbStacks: int
+theTrsf: gp_Trsf
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") Create;
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+
+		/****************** Create ******************/
+		/**** md5 signature: 3348019fdf3fab6b27a846084af219b5 ****/
+		%feature("compactdefaultargs") Create;
+		%feature("autodoc", "Generate primitives for 3d quadric surface (torus segment). @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param theangle [in] angle to create a torus pipe segment @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theAngle: float
+theNbSlices: int
+theNbStacks: int
+theTrsf: gp_Trsf
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") Create;
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+
+		/****************** Create ******************/
+		/**** md5 signature: b40020a7ec87651ff79ed79b9036743d ****/
+		%feature("compactdefaultargs") Create;
+		%feature("autodoc", "Generate primitives for 3d quadric surface (torus ring segment). @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param theangle1 [in] first angle to create a torus ring segment @param theangle2 [in] second angle to create a torus ring segment @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theAngle1: float
+theAngle2: float
+theNbSlices: int
+theNbStacks: int
+theTrsf: gp_Trsf
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") Create;
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+
+		/****************** Create ******************/
+		/**** md5 signature: 0197847161c119b751c8a39e51506651 ****/
+		%feature("compactdefaultargs") Create;
+		%feature("autodoc", "Generate primitives for 3d quadric surface (segment of the torus ring segment). @param themajorrad [in] distance from the center of the pipe to the center of the torus @param theminorrad [in] radius of the pipe @param theangle1 [in] first angle to create a torus ring segment @param theangle2 [in] second angle to create a torus ring segment @param theangle [in] angle to create a torus pipe segment @param thenbslices [in] number of slices within u parameter @param thenbstacks [in] number of stacks within v parameter @param thetrsf [in] optional transformation to apply returns generated triangulation.
+
+Parameters
+----------
+theMajorRad: float
+theMinorRad: float
+theAngle1: float
+theAngle2: float
+theAngle: float
+theNbSlices: int
+theNbStacks: int
+theTrsf: gp_Trsf
+
+Returns
+-------
+opencascade::handle<Graphic3d_ArrayOfTriangles>
+") Create;
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+
+};
+
+
+%extend Prs3d_ToolTorus {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

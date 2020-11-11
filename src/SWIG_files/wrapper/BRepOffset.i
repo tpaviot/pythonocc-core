@@ -44,6 +44,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
 #include<Geom_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopTools_module.hxx>
+#include<ChFiDS_module.hxx>
 #include<BRepAlgo_module.hxx>
 #include<TopAbs_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -100,6 +101,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
 %import Geom.i
 %import TopoDS.i
 %import TopTools.i
+%import ChFiDS.i
 %import BRepAlgo.i
 %import TopAbs.i
 %import GeomAbs.i
@@ -122,6 +124,9 @@ enum BRepOffset_Error {
 	BRepOffset_C0Geometry = 3,
 	BRepOffset_NullOffset = 4,
 	BRepOffset_NotConnectedShell = 5,
+	BRepOffset_CannotTrimEdges = 6,
+	BRepOffset_CannotFuseVertices = 7,
+	BRepOffset_CannotExtentEdge = 8,
 };
 
 enum BRepOffsetSimple_Status {
@@ -137,14 +142,6 @@ enum BRepOffset_Mode {
 	BRepOffset_Skin = 0,
 	BRepOffset_Pipe = 1,
 	BRepOffset_RectoVerso = 2,
-};
-
-enum BRepOffset_Type {
-	BRepOffset_Concave = 0,
-	BRepOffset_Convex = 1,
-	BRepOffset_Tangent = 2,
-	BRepOffset_FreeBoundary = 3,
-	BRepOffset_Other = 4,
 };
 
 enum BRepOffset_Status {
@@ -166,12 +163,18 @@ class BRepOffset_Error(IntEnum):
 	BRepOffset_C0Geometry = 3
 	BRepOffset_NullOffset = 4
 	BRepOffset_NotConnectedShell = 5
+	BRepOffset_CannotTrimEdges = 6
+	BRepOffset_CannotFuseVertices = 7
+	BRepOffset_CannotExtentEdge = 8
 BRepOffset_NoError = BRepOffset_Error.BRepOffset_NoError
 BRepOffset_UnknownError = BRepOffset_Error.BRepOffset_UnknownError
 BRepOffset_BadNormalsOnGeometry = BRepOffset_Error.BRepOffset_BadNormalsOnGeometry
 BRepOffset_C0Geometry = BRepOffset_Error.BRepOffset_C0Geometry
 BRepOffset_NullOffset = BRepOffset_Error.BRepOffset_NullOffset
 BRepOffset_NotConnectedShell = BRepOffset_Error.BRepOffset_NotConnectedShell
+BRepOffset_CannotTrimEdges = BRepOffset_Error.BRepOffset_CannotTrimEdges
+BRepOffset_CannotFuseVertices = BRepOffset_Error.BRepOffset_CannotFuseVertices
+BRepOffset_CannotExtentEdge = BRepOffset_Error.BRepOffset_CannotExtentEdge
 
 class BRepOffsetSimple_Status(IntEnum):
 	BRepOffsetSimple_OK = 0
@@ -194,18 +197,6 @@ class BRepOffset_Mode(IntEnum):
 BRepOffset_Skin = BRepOffset_Mode.BRepOffset_Skin
 BRepOffset_Pipe = BRepOffset_Mode.BRepOffset_Pipe
 BRepOffset_RectoVerso = BRepOffset_Mode.BRepOffset_RectoVerso
-
-class BRepOffset_Type(IntEnum):
-	BRepOffset_Concave = 0
-	BRepOffset_Convex = 1
-	BRepOffset_Tangent = 2
-	BRepOffset_FreeBoundary = 3
-	BRepOffset_Other = 4
-BRepOffset_Concave = BRepOffset_Type.BRepOffset_Concave
-BRepOffset_Convex = BRepOffset_Type.BRepOffset_Convex
-BRepOffset_Tangent = BRepOffset_Type.BRepOffset_Tangent
-BRepOffset_FreeBoundary = BRepOffset_Type.BRepOffset_FreeBoundary
-BRepOffset_Other = BRepOffset_Type.BRepOffset_Other
 
 class BRepOffset_Status(IntEnum):
 	BRepOffset_Good = 0
@@ -308,7 +299,7 @@ class BRepOffset_Analyse {
 		/****************** BRepOffset_Analyse ******************/
 		/**** md5 signature: ba0b94f56b61c28244d4736b236bb3b0 ****/
 		%feature("compactdefaultargs") BRepOffset_Analyse;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty c-tor.
 
 Returns
 -------
@@ -317,77 +308,77 @@ None
 		 BRepOffset_Analyse();
 
 		/****************** BRepOffset_Analyse ******************/
-		/**** md5 signature: c8cd33925dc9db4cffdaa41c2c27b493 ****/
+		/**** md5 signature: 32be8a68049b0d08da84dac039a34740 ****/
 		%feature("compactdefaultargs") BRepOffset_Analyse;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "C-tor performing the job inside.
 
 Parameters
 ----------
-S: TopoDS_Shape
-Angle: float
+theS: TopoDS_Shape
+theAngle: float
 
 Returns
 -------
 None
 ") BRepOffset_Analyse;
-		 BRepOffset_Analyse(const TopoDS_Shape & S, const Standard_Real Angle);
+		 BRepOffset_Analyse(const TopoDS_Shape & theS, const Standard_Real theAngle);
 
 		/****************** AddFaces ******************/
-		/**** md5 signature: 1e4670baa576bf5e64f7b26fb4da081c ****/
+		/**** md5 signature: 10bf983ba568690274e73905dc585143 ****/
 		%feature("compactdefaultargs") AddFaces;
 		%feature("autodoc", "Add in <co> the faces of the shell containing <face> where all the connex edges are of type <side>.
 
 Parameters
 ----------
-Face: TopoDS_Face
-Co: TopoDS_Compound
-Map: TopTools_MapOfShape
-Type: BRepOffset_Type
+theFace: TopoDS_Face
+theCo: TopoDS_Compound
+theMap: TopTools_MapOfShape
+theType: ChFiDS_TypeOfConcavity
 
 Returns
 -------
 None
 ") AddFaces;
-		void AddFaces(const TopoDS_Face & Face, TopoDS_Compound & Co, TopTools_MapOfShape & Map, const BRepOffset_Type Type);
+		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType);
 
 		/****************** AddFaces ******************/
-		/**** md5 signature: 6cb812057fa45f5d270cdd4eed92833d ****/
+		/**** md5 signature: 17ecd6e6c902268447968b695dc71930 ****/
 		%feature("compactdefaultargs") AddFaces;
 		%feature("autodoc", "Add in <co> the faces of the shell containing <face> where all the connex edges are of type <side1> or <side2>.
 
 Parameters
 ----------
-Face: TopoDS_Face
-Co: TopoDS_Compound
-Map: TopTools_MapOfShape
-Type1: BRepOffset_Type
-Type2: BRepOffset_Type
+theFace: TopoDS_Face
+theCo: TopoDS_Compound
+theMap: TopTools_MapOfShape
+theType1: ChFiDS_TypeOfConcavity
+theType2: ChFiDS_TypeOfConcavity
 
 Returns
 -------
 None
 ") AddFaces;
-		void AddFaces(const TopoDS_Face & Face, TopoDS_Compound & Co, TopTools_MapOfShape & Map, const BRepOffset_Type Type1, const BRepOffset_Type Type2);
+		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
 		/****************** Ancestors ******************/
-		/**** md5 signature: 84f8a51dff8f953c1f0e766545d09751 ****/
+		/**** md5 signature: 90ed8d8b7e6bec25a8cae6b70fba0fa0 ****/
 		%feature("compactdefaultargs") Ancestors;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns ancestors for the shape.
 
 Parameters
 ----------
-S: TopoDS_Shape
+theS: TopoDS_Shape
 
 Returns
 -------
 TopTools_ListOfShape
 ") Ancestors;
-		const TopTools_ListOfShape & Ancestors(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Ancestors(const TopoDS_Shape & theS);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Clears the content of the algorithm.
 
 Returns
 -------
@@ -395,92 +386,155 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** Descendants ******************/
+		/**** md5 signature: 7a77c04c1efdc14b9851c2f7c2f4a377 ****/
+		%feature("compactdefaultargs") Descendants;
+		%feature("autodoc", "Returns the shape descendants.
+
+Parameters
+----------
+theS: TopoDS_Shape
+theUpdate: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+TopTools_ListOfShape *
+") Descendants;
+		const TopTools_ListOfShape * Descendants(const TopoDS_Shape & theS, const Standard_Boolean theUpdate = Standard_False);
+
+		/****************** EdgeReplacement ******************/
+		/**** md5 signature: 0f27e29432c1193c65637801fb97edd1 ****/
+		%feature("compactdefaultargs") EdgeReplacement;
+		%feature("autodoc", "Returns the replacement of the edge in the face. if no replacement exists, returns the edge.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theEdge: TopoDS_Edge
+
+Returns
+-------
+TopoDS_Edge
+") EdgeReplacement;
+		const TopoDS_Edge EdgeReplacement(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
+
 		/****************** Edges ******************/
-		/**** md5 signature: 78f9ae4aab7f30cf6b34ae4c6a3bb4d0 ****/
+		/**** md5 signature: 2fa98c1f2dc772e02cb177190fc303c3 ****/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Stores in <l> all the edges of type <t> on the vertex <v>.
 
 Parameters
 ----------
-V: TopoDS_Vertex
-T: BRepOffset_Type
-L: TopTools_ListOfShape
+theV: TopoDS_Vertex
+theType: ChFiDS_TypeOfConcavity
+theL: TopTools_ListOfShape
 
 Returns
 -------
 None
 ") Edges;
-		void Edges(const TopoDS_Vertex & V, const BRepOffset_Type T, TopTools_ListOfShape & L);
+		void Edges(const TopoDS_Vertex & theV, const ChFiDS_TypeOfConcavity theType, TopTools_ListOfShape & theL);
 
 		/****************** Edges ******************/
-		/**** md5 signature: c70a65f484414af2377526a800c2eb8b ****/
+		/**** md5 signature: 8d2741a252b9cbab42c2cf270c42d66c ****/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Stores in <l> all the edges of type <t> on the face <f>.
 
 Parameters
 ----------
-F: TopoDS_Face
-T: BRepOffset_Type
-L: TopTools_ListOfShape
+theF: TopoDS_Face
+theType: ChFiDS_TypeOfConcavity
+theL: TopTools_ListOfShape
 
 Returns
 -------
 None
 ") Edges;
-		void Edges(const TopoDS_Face & F, const BRepOffset_Type T, TopTools_ListOfShape & L);
+		void Edges(const TopoDS_Face & theF, const ChFiDS_TypeOfConcavity theType, TopTools_ListOfShape & theL);
 
 		/****************** Explode ******************/
-		/**** md5 signature: d49a95947ab09bc59c2dcdbb8dffafe3 ****/
+		/**** md5 signature: 337e429f1a29abab09c9fdc78da45c49 ****/
 		%feature("compactdefaultargs") Explode;
 		%feature("autodoc", "Explode in compounds of faces where all the connex edges are of type <side>.
 
 Parameters
 ----------
-L: TopTools_ListOfShape
-Type: BRepOffset_Type
+theL: TopTools_ListOfShape
+theType: ChFiDS_TypeOfConcavity
 
 Returns
 -------
 None
 ") Explode;
-		void Explode(TopTools_ListOfShape & L, const BRepOffset_Type Type);
+		void Explode(TopTools_ListOfShape & theL, const ChFiDS_TypeOfConcavity theType);
 
 		/****************** Explode ******************/
-		/**** md5 signature: 49a46e08a924c03461db8cab1290bdaf ****/
+		/**** md5 signature: 5aaa8ac50d0f46e75f1b9dffcaa6d59d ****/
 		%feature("compactdefaultargs") Explode;
 		%feature("autodoc", "Explode in compounds of faces where all the connex edges are of type <side1> or <side2>.
 
 Parameters
 ----------
-L: TopTools_ListOfShape
-Type1: BRepOffset_Type
-Type2: BRepOffset_Type
+theL: TopTools_ListOfShape
+theType1: ChFiDS_TypeOfConcavity
+theType2: ChFiDS_TypeOfConcavity
 
 Returns
 -------
 None
 ") Explode;
-		void Explode(TopTools_ListOfShape & L, const BRepOffset_Type Type1, const BRepOffset_Type Type2);
+		void Explode(TopTools_ListOfShape & theL, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
-		/****************** HasAncestor ******************/
-		/**** md5 signature: e07b25839057552fab22cf780ebe3cfc ****/
-		%feature("compactdefaultargs") HasAncestor;
-		%feature("autodoc", "No available documentation.
+		/****************** Generated ******************/
+		/**** md5 signature: 15ef1939924c301a6d85999ccd64b15d ****/
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "Returns the new face constructed for the edge connecting the two tangent faces having different offset values.
 
 Parameters
 ----------
-S: TopoDS_Shape
+theS: TopoDS_Shape
+
+Returns
+-------
+TopoDS_Shape
+") Generated;
+		TopoDS_Shape Generated(const TopoDS_Shape & theS);
+
+		/****************** HasAncestor ******************/
+		/**** md5 signature: 3c3fc9ffdfc1554e2be2aa053b512d0e ****/
+		%feature("compactdefaultargs") HasAncestor;
+		%feature("autodoc", "Checks if the given shape has ancestors.
+
+Parameters
+----------
+theS: TopoDS_Shape
 
 Returns
 -------
 bool
 ") HasAncestor;
-		Standard_Boolean HasAncestor(const TopoDS_Shape & S);
+		Standard_Boolean HasAncestor(const TopoDS_Shape & theS);
+
+		/****************** HasGenerated ******************/
+		/**** md5 signature: ec80c2122e56b4b50f0af6fcb37612cb ****/
+		%feature("compactdefaultargs") HasGenerated;
+		%feature("autodoc", "Checks if the edge has generated a new face.
+
+Parameters
+----------
+theS: TopoDS_Shape
+
+Returns
+-------
+bool
+") HasGenerated;
+		Standard_Boolean HasGenerated(const TopoDS_Shape & theS);
 
 		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns status of the algorithm.
 
 Returns
 -------
@@ -488,53 +542,94 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** NewFaces ******************/
+		/**** md5 signature: e63300f5b52c82ed31144b2ab659fa2a ****/
+		%feature("compactdefaultargs") NewFaces;
+		%feature("autodoc", "Returns the new faces constructed between tangent faces having different offset values on the shape.
+
+Returns
+-------
+TopTools_ListOfShape
+") NewFaces;
+		const TopTools_ListOfShape & NewFaces();
+
 		/****************** Perform ******************/
-		/**** md5 signature: d5b174ac2675a6e4a58dd65cb1081ad1 ****/
+		/**** md5 signature: c355917b7e1bcc75a618007be133da6b ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Performs the analysis.
 
 Parameters
 ----------
-S: TopoDS_Shape
-Angle: float
+theS: TopoDS_Shape
+theAngle: float
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const TopoDS_Shape & S, const Standard_Real Angle);
+		void Perform(const TopoDS_Shape & theS, const Standard_Real theAngle);
+
+		/****************** SetFaceOffsetMap ******************/
+		/**** md5 signature: c0dee5c14e1fc5e4f89a0d54179182fd ****/
+		%feature("compactdefaultargs") SetFaceOffsetMap;
+		%feature("autodoc", "Sets the face-offset data map to analyze tangential cases.
+
+Parameters
+----------
+theMap: TopTools_DataMapOfShapeReal
+
+Returns
+-------
+None
+") SetFaceOffsetMap;
+		void SetFaceOffsetMap(const TopTools_DataMapOfShapeReal & theMap);
+
+		/****************** SetOffsetValue ******************/
+		/**** md5 signature: d7b3a90c1f17c219c0f8c7b1b52b1a42 ****/
+		%feature("compactdefaultargs") SetOffsetValue;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theOffset: float
+
+Returns
+-------
+None
+") SetOffsetValue;
+		void SetOffsetValue(const Standard_Real theOffset);
 
 		/****************** TangentEdges ******************/
-		/**** md5 signature: ed75ba0042e3a910dbc82a1e27bc43e3 ****/
+		/**** md5 signature: fbdd90a0b988e4c630b58c2a22ee477d ****/
 		%feature("compactdefaultargs") TangentEdges;
 		%feature("autodoc", "Set in <edges> all the edges of <shape> which are tangent to <edge> at the vertex <vertex>.
 
 Parameters
 ----------
-Edge: TopoDS_Edge
-Vertex: TopoDS_Vertex
-Edges: TopTools_ListOfShape
+theEdge: TopoDS_Edge
+theVertex: TopoDS_Vertex
+theEdges: TopTools_ListOfShape
 
 Returns
 -------
 None
 ") TangentEdges;
-		void TangentEdges(const TopoDS_Edge & Edge, const TopoDS_Vertex & Vertex, TopTools_ListOfShape & Edges);
+		void TangentEdges(const TopoDS_Edge & theEdge, const TopoDS_Vertex & theVertex, TopTools_ListOfShape & theEdges);
 
 		/****************** Type ******************/
-		/**** md5 signature: d9e43bb8e63a1398a1076d122efc6b78 ****/
+		/**** md5 signature: 75adf48a4d01680f070dfc5502b046c1 ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the connectivity type of the edge.
 
 Parameters
 ----------
-E: TopoDS_Edge
+theE: TopoDS_Edge
 
 Returns
 -------
 BRepOffset_ListOfInterval
 ") Type;
-		const BRepOffset_ListOfInterval & Type(const TopoDS_Edge & E);
+		const BRepOffset_ListOfInterval & Type(const TopoDS_Edge & theE);
 
 };
 
@@ -570,7 +665,7 @@ None
 		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
 
 		/****************** ConnexIntByInt ******************/
-		/**** md5 signature: 0c7e40e1acb94aa7f8331e91b514805e ****/
+		/**** md5 signature: 1a671b5662dcca5e08cbb12b0f392946 ****/
 		%feature("compactdefaultargs") ConnexIntByInt;
 		%feature("autodoc", "Computes the intersection between the offset edges of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -583,17 +678,18 @@ Build: TopTools_DataMapOfShapeShape
 AsDes2d: BRepAlgo_AsDes
 Offset: float
 Tol: float
+Analyse: BRepOffset_Analyse
 FacesWithVerts: TopTools_IndexedMapOfShape
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 
 Returns
 -------
-None
+bool
 ") ConnexIntByInt;
-		static void ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, TopTools_IndexedMapOfShape & FacesWithVerts, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static Standard_Boolean ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
 
 		/****************** ConnexIntByIntInVert ******************/
-		/**** md5 signature: 7f281947e5659ab310aeb36c2d13f62b ****/
+		/**** md5 signature: ea838c391bea9387e57a224561f2be12 ****/
 		%feature("compactdefaultargs") ConnexIntByIntInVert;
 		%feature("autodoc", "Computes the intersection between the offset edges generated from vertices and stored into asdes as descendants of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -606,16 +702,17 @@ Build: TopTools_DataMapOfShapeShape
 AsDes: BRepAlgo_AsDes
 AsDes2d: BRepAlgo_AsDes
 Tol: float
+Analyse: BRepOffset_Analyse
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 
 Returns
 -------
 None
 ") ConnexIntByIntInVert;
-		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Tol, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
 
 		/****************** ExtentEdge ******************/
-		/**** md5 signature: 816605214f732ebedff1f4aa5a9d80c8 ****/
+		/**** md5 signature: b18af25b66d4abbae97b9437f24da597 ****/
 		%feature("compactdefaultargs") ExtentEdge;
 		%feature("autodoc", "Extents the edge.
 
@@ -627,12 +724,12 @@ theOffset: float
 
 Returns
 -------
-None
+bool
 ") ExtentEdge;
-		static void ExtentEdge(const TopoDS_Edge & E, TopoDS_Edge & NE, const Standard_Real theOffset);
+		static Standard_Boolean ExtentEdge(const TopoDS_Edge & E, TopoDS_Edge & NE, const Standard_Real theOffset);
 
 		/****************** FuseVertices ******************/
-		/**** md5 signature: c0390e09a7663325850f97d7fb74cd0f ****/
+		/**** md5 signature: 039f375f0808091df05360168c765f3c ****/
 		%feature("compactdefaultargs") FuseVertices;
 		%feature("autodoc", "Fuses the chains of vertices in the thedmvv and updates asdes by replacing the old vertices with the new ones.
 
@@ -643,9 +740,9 @@ theAsDes: BRepAlgo_AsDes
 
 Returns
 -------
-None
+bool
 ") FuseVertices;
-		static void FuseVertices(const TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes);
+		static Standard_Boolean FuseVertices(const TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes);
 
 };
 
@@ -899,7 +996,7 @@ None
 		 BRepOffset_Interval();
 
 		/****************** BRepOffset_Interval ******************/
-		/**** md5 signature: 69fbf935176ea30a9e4b288b2523f9b5 ****/
+		/**** md5 signature: dccedca1cdcdc8f366498a03194313c3 ****/
 		%feature("compactdefaultargs") BRepOffset_Interval;
 		%feature("autodoc", "No available documentation.
 
@@ -907,13 +1004,13 @@ Parameters
 ----------
 U1: float
 U2: float
-Type: BRepOffset_Type
+Type: ChFiDS_TypeOfConcavity
 
 Returns
 -------
 None
 ") BRepOffset_Interval;
-		 BRepOffset_Interval(const Standard_Real U1, const Standard_Real U2, const BRepOffset_Type Type);
+		 BRepOffset_Interval(const Standard_Real U1, const Standard_Real U2, const ChFiDS_TypeOfConcavity Type);
 
 		/****************** First ******************/
 		/**** md5 signature: 1099c5bd36f358fe828b1d6d585b9530 ****/
@@ -968,30 +1065,30 @@ float
 		Standard_Real Last();
 
 		/****************** Type ******************/
-		/**** md5 signature: b5392c749f576b39f134fa4bf2afd135 ****/
+		/**** md5 signature: b24169004495551132f32afd9d3903e6 ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-T: BRepOffset_Type
+T: ChFiDS_TypeOfConcavity
 
 Returns
 -------
 None
 ") Type;
-		void Type(const BRepOffset_Type T);
+		void Type(const ChFiDS_TypeOfConcavity T);
 
 		/****************** Type ******************/
-		/**** md5 signature: 65af39d0b03b15b8549e610cc642e819 ****/
+		/**** md5 signature: 4bcc17f191edc1fc69fd29dda8361b02 ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-BRepOffset_Type
+ChFiDS_TypeOfConcavity
 ") Type;
-		BRepOffset_Type Type();
+		ChFiDS_TypeOfConcavity Type();
 
 };
 
@@ -1140,6 +1237,21 @@ None
 ") AddFace;
 		void AddFace(const TopoDS_Face & F);
 
+		/****************** AllowLinearization ******************/
+		/**** md5 signature: fc3aa2ec2d80823e0e6cfd67abb9df4c ****/
+		%feature("compactdefaultargs") AllowLinearization;
+		%feature("autodoc", "Changes the flag allowing the linearization.
+
+Parameters
+----------
+theIsAllowed: bool
+
+Returns
+-------
+None
+") AllowLinearization;
+		void AllowLinearization(const Standard_Boolean theIsAllowed);
+
 		/****************** CheckInputData ******************/
 		/**** md5 signature: 99b88da9ff25acb39451f2ea45c0c7aa ****/
 		%feature("compactdefaultargs") CheckInputData;
@@ -1184,6 +1296,21 @@ BRepOffset_Error
 ") Error;
 		BRepOffset_Error Error();
 
+		/****************** Generated ******************/
+		/**** md5 signature: 902551eb6fcfb35ec8c1137ae3d18685 ****/
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "Returns the list of shapes generated from the shape <s>.
+
+Parameters
+----------
+theS: TopoDS_Shape
+
+Returns
+-------
+TopTools_ListOfShape
+") Generated;
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
+
 		/****************** GetBadShape ******************/
 		/**** md5 signature: ba57b2eb9f7240c2efaee696f343f099 ****/
 		%feature("compactdefaultargs") GetBadShape;
@@ -1205,6 +1332,17 @@ Returns
 GeomAbs_JoinType
 ") GetJoinType;
 		GeomAbs_JoinType GetJoinType();
+
+		/****************** InitShape ******************/
+		/**** md5 signature: 4828a2e04f0d05c4aeddd543fb871f06 ****/
+		%feature("compactdefaultargs") InitShape;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Shape
+") InitShape;
+		const TopoDS_Shape InitShape();
 
 		/****************** Initialize ******************/
 		/**** md5 signature: b189dc4c3027834b3cc5d35d26f288df ****/
@@ -1234,6 +1372,21 @@ Returns
 None
 ") Initialize;
 		void Initialize(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Thickening = Standard_False, const Standard_Boolean RemoveIntEdges = Standard_False);
+
+		/****************** IsDeleted ******************/
+		/**** md5 signature: d29922d0ec4acc76ba876d76a5a2a863 ****/
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "Returns true if the shape s has been deleted.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+bool
+") IsDeleted;
+		Standard_Boolean IsDeleted(const TopoDS_Shape & S);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -1267,6 +1420,21 @@ Returns
 None
 ") MakeThickSolid;
 		void MakeThickSolid();
+
+		/****************** Modified ******************/
+		/**** md5 signature: 5d9ac8e1ec1d1479a40fa0773fd021b0 ****/
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "Returns the list of shapes modified from the shape <s>.
+
+Parameters
+----------
+theS: TopoDS_Shape
+
+Returns
+-------
+TopTools_ListOfShape
+") Modified;
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
 		/****************** OffsetEdgesFromShapes ******************/
 		/**** md5 signature: 68926d492e1e9d71593e4c5da8672674 ****/
@@ -2307,22 +2475,6 @@ Returns
 None
 ") MapVertexEdges;
 		static void MapVertexEdges(const TopoDS_Shape & S, TopTools_DataMapOfShapeListOfShape & MVE);
-
-		/****************** OriEdgeInFace ******************/
-		/**** md5 signature: 95f49dc13a0638efd436e12255315ccc ****/
-		%feature("compactdefaultargs") OriEdgeInFace;
-		%feature("autodoc", "Returns the cumul of the orientation of <edge> and thc containing wire in <face>.
-
-Parameters
-----------
-E: TopoDS_Edge
-F: TopoDS_Face
-
-Returns
--------
-TopAbs_Orientation
-") OriEdgeInFace;
-		static TopAbs_Orientation OriEdgeInFace(const TopoDS_Edge & E, const TopoDS_Face & F);
 
 		/****************** OrientSection ******************/
 		/**** md5 signature: 6fcc8549a4ba547fa845250a54719b66 ****/

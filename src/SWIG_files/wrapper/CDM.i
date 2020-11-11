@@ -119,12 +119,10 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
 };
 %template(CDM_MapOfDocument) NCollection_Map<opencascade::handle<CDM_Document>,CDM_DocumentHasher>;
 %template(CDM_MetaDataLookUpTable) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<CDM_MetaData>,TCollection_ExtendedString>;
-%template(CDM_PresentationDirectory) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<CDM_Document>,TCollection_ExtendedString>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>, TCollection_ExtendedString>::Iterator CDM_DataMapIteratorOfMetaDataLookUpTable;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_Document>, TCollection_ExtendedString>::Iterator CDM_DataMapIteratorOfPresentationDirectory;
 typedef NCollection_DefaultHasher<opencascade::handle<CDM_Document>> CDM_DocumentHasher;
 typedef CDM_Document * CDM_DocumentPointer;
 typedef NCollection_List<opencascade::handle<CDM_Document>>::Iterator CDM_ListIteratorOfListOfDocument;
@@ -135,7 +133,6 @@ typedef NCollection_Map<opencascade::handle<CDM_Document>, CDM_DocumentHasher>::
 typedef NCollection_Map<opencascade::handle<CDM_Document>, CDM_DocumentHasher> CDM_MapOfDocument;
 typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>, TCollection_ExtendedString> CDM_MetaDataLookUpTable;
 typedef TColStd_DataMapOfStringInteger CDM_NamesDirectory;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_Document>, TCollection_ExtendedString> CDM_PresentationDirectory;
 /* end typedefs declaration */
 
 /************************
@@ -159,6 +156,14 @@ None
 ") BeginOfUpdate;
 		virtual void BeginOfUpdate(const opencascade::handle<CDM_Document> & aDocument);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EndOfUpdate ******************/
 		/**** md5 signature: 1300f7eaea13e12939c9e78edc2d7e82 ****/
 		%feature("compactdefaultargs") EndOfUpdate;
@@ -186,6 +191,17 @@ Returns
 opencascade::handle<Message_Messenger>
 ") MessageDriver;
 		virtual opencascade::handle<Message_Messenger> MessageDriver();
+
+		/****************** MetaDataLookUpTable ******************/
+		/**** md5 signature: a73a07c624cf8f3d04f8c1775645863c ****/
+		%feature("compactdefaultargs") MetaDataLookUpTable;
+		%feature("autodoc", "Returns metadata lookuptable.
+
+Returns
+-------
+CDM_MetaDataLookUpTable
+") MetaDataLookUpTable;
+		virtual CDM_MetaDataLookUpTable & MetaDataLookUpTable();
 
 		/****************** Name ******************/
 		/**** md5 signature: 80292bf2fe0db1e304d129c2054da361 ****/
@@ -293,7 +309,7 @@ CDM_CanCloseStatus
 		/****************** CanCloseReference ******************/
 		/**** md5 signature: 1140aead780f6c5f5344930b6e6db09b ****/
 		%feature("compactdefaultargs") CanCloseReference;
-		%feature("autodoc", "A referenced document may indicate through this virtual method that it does not allow the closing of adocument which it references through the reference areferenceidentifier. by default returns standard_true;;.
+		%feature("autodoc", "A referenced document may indicate through this virtual method that it does not allow the closing of adocument which it references through the reference areferenceidentifier. by default returns standard_true.
 
 Parameters
 ----------
@@ -483,6 +499,14 @@ opencascade::handle<CDM_Document>
 ") Document;
 		opencascade::handle<CDM_Document> Document(const Standard_Integer aReferenceIdentifier);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extensions ******************/
 		/**** md5 signature: 562af3bed83550e86f6e9f1cc27905e7 ****/
 		%feature("compactdefaultargs") Extensions;
@@ -530,36 +554,6 @@ Returns
 bool
 ") FindFileExtension;
 		Standard_Boolean FindFileExtension();
-
-		/****************** FindFromPresentation ******************/
-		/**** md5 signature: 855964cff7b32e0ac06c1e369587b759 ****/
-		%feature("compactdefaultargs") FindFromPresentation;
-		%feature("autodoc", "Returns the document having the given alphanumeric presentation.
-
-Parameters
-----------
-aPresentation: TCollection_ExtendedString
-
-Returns
--------
-opencascade::handle<CDM_Document>
-") FindFromPresentation;
-		static opencascade::handle<CDM_Document> FindFromPresentation(const TCollection_ExtendedString & aPresentation);
-
-		/****************** FindPresentation ******************/
-		/**** md5 signature: 47d7d9a2db6d3981061736c77f949445 ****/
-		%feature("compactdefaultargs") FindPresentation;
-		%feature("autodoc", "Indicates whether a document having the given presentation does exist.
-
-Parameters
-----------
-aPresentation: TCollection_ExtendedString
-
-Returns
--------
-bool
-") FindPresentation;
-		static Standard_Boolean FindPresentation(const TCollection_ExtendedString & aPresentation);
 
 		/****************** Folder ******************/
 		/**** md5 signature: 6e4f71ec7a138611fba2655a4d9e2a6c ****/
@@ -813,17 +807,6 @@ Returns
 None
 ") Open;
 		void Open(const opencascade::handle<CDM_Application> & anApplication);
-
-		/****************** Presentation ******************/
-		/**** md5 signature: a4546ef1acf21f1dbec7f60b147ae2f3 ****/
-		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "Returns an alphanumeric string identifying this document in a unique manner in the current process. the presentation may change when the document is stored. tries to get the 'fileformat`.presentation resource this item is used to give a default presentation to the document.
-
-Returns
--------
-Standard_ExtString
-") Presentation;
-		Standard_ExtString Presentation();
 
 
         %feature("autodoc", "1");
@@ -1279,6 +1262,14 @@ opencascade::handle<CDM_Document>
 ") Document;
 		opencascade::handle<CDM_Document> Document();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FileName ******************/
 		/**** md5 signature: 55453540d5ecaade8ddcde5846f5b88f ****/
 		%feature("compactdefaultargs") FileName;
@@ -1335,12 +1326,13 @@ bool
 		Standard_Boolean IsRetrieved();
 
 		/****************** LookUp ******************/
-		/**** md5 signature: acd4ccf23f5580e0aa0c735f63f9ed71 ****/
+		/**** md5 signature: 264e1c1cc539b8fdedbde10237de56db ****/
 		%feature("compactdefaultargs") LookUp;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
+theLookUpTable: CDM_MetaDataLookUpTable
 aFolder: TCollection_ExtendedString
 aName: TCollection_ExtendedString
 aPath: TCollection_ExtendedString
@@ -1351,15 +1343,16 @@ Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aPath, const TCollection_ExtendedString & aFileName, const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aPath, const TCollection_ExtendedString & aFileName, const Standard_Boolean ReadOnly);
 
 		/****************** LookUp ******************/
-		/**** md5 signature: 30d809e75056ca5d0fe5999d7d10ac10 ****/
+		/**** md5 signature: 87e49a80556489bc1976c2417d858c6c ****/
 		%feature("compactdefaultargs") LookUp;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
+theLookUpTable: CDM_MetaDataLookUpTable
 aFolder: TCollection_ExtendedString
 aName: TCollection_ExtendedString
 aPath: TCollection_ExtendedString
@@ -1371,7 +1364,7 @@ Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aPath, const TCollection_ExtendedString & aVersion, const TCollection_ExtendedString & aFileName, const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aPath, const TCollection_ExtendedString & aVersion, const TCollection_ExtendedString & aFileName, const Standard_Boolean ReadOnly);
 
 		/****************** Name ******************/
 		/**** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ****/
@@ -1475,6 +1468,14 @@ int
 ") DocumentVersion;
 		Standard_Integer DocumentVersion();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** FromDocument ******************/
 		/**** md5 signature: 074d50b6a0fbd464042f670a2a5d9430 ****/
 		%feature("compactdefaultargs") FromDocument;

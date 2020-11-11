@@ -694,7 +694,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Number of elements.
 
@@ -1479,7 +1479,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "No available documentation.
 
@@ -1488,6 +1488,17 @@ Returns
 int
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
 
 };
 
@@ -2057,13 +2068,13 @@ None
 class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** MeshVS_MeshEntityOwner ******************/
-		/**** md5 signature: 4ff68da3fa84eee78cd8e30f3caf051e ****/
+		/**** md5 signature: a77712dc21cb3dc01d05e26fbb56395f ****/
 		%feature("compactdefaultargs") MeshVS_MeshEntityOwner;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-SelObj: SelectMgr_SOPtr
+SelObj: SelectMgr_SelectableObject *
 ID: int
 MeshEntity: Standard_Address
 Type: MeshVS_EntityType
@@ -2076,7 +2087,7 @@ Returns
 -------
 None
 ") MeshVS_MeshEntityOwner;
-		 MeshVS_MeshEntityOwner(const SelectMgr_SOPtr & SelObj, const Standard_Integer ID, const Standard_Address MeshEntity, const MeshVS_EntityType & Type, const Standard_Integer Priority = 0, const Standard_Boolean IsGroup = Standard_False);
+		 MeshVS_MeshEntityOwner(const SelectMgr_SelectableObject * SelObj, const Standard_Integer ID, const Standard_Address MeshEntity, const MeshVS_EntityType & Type, const Standard_Integer Priority = 0, const Standard_Boolean IsGroup = Standard_False);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 401ba939842ce70931456eb9d3e1a706 ****/
@@ -2208,13 +2219,13 @@ None
 class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** MeshVS_MeshOwner ******************/
-		/**** md5 signature: 651f9f3d2936c3393298891c4c7d9142 ****/
+		/**** md5 signature: 79bc78bf8bd3c50df42d974f5b190112 ****/
 		%feature("compactdefaultargs") MeshVS_MeshOwner;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theSelObj: SelectMgr_SOPtr
+theSelObj: SelectMgr_SelectableObject *
 theDS: MeshVS_DataSource
 thePriority: int,optional
 	default value is 0
@@ -2223,7 +2234,7 @@ Returns
 -------
 None
 ") MeshVS_MeshOwner;
-		 MeshVS_MeshOwner(const SelectMgr_SOPtr & theSelObj, const opencascade::handle<MeshVS_DataSource> & theDS, const Standard_Integer thePriority = 0);
+		 MeshVS_MeshOwner(const SelectMgr_SelectableObject * theSelObj, const opencascade::handle<MeshVS_DataSource> & theDS, const Standard_Integer thePriority = 0);
 
 		/****************** AddSelectedEntities ******************/
 		/**** md5 signature: 930a2aa4220ee7f25e67119672984a05 ****/
@@ -2719,7 +2730,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of mesh nodes.
 
@@ -2812,7 +2823,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
+		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of nodes of polyhedron.
 
@@ -2923,7 +2934,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
-		/**** md5 signature: 439de2a2c8730a0ea35a2e05a19dcb72 ****/
+		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities in sensitive.
 

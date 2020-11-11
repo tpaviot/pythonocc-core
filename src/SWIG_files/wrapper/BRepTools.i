@@ -46,13 +46,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptools.html"
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TopTools_module.hxx>
+#include<TopAbs_module.hxx>
 #include<BRep_module.hxx>
 #include<Message_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<gp_module.hxx>
 #include<Poly_module.hxx>
-#include<TopAbs_module.hxx>
 #include<TShort_module.hxx>
 #include<Poly_module.hxx>
 #include<TColgp_module.hxx>
@@ -67,13 +67,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptools.html"
 %import Geom.i
 %import Geom2d.i
 %import TopTools.i
+%import TopAbs.i
 %import BRep.i
 %import Message.i
 %import GeomAbs.i
 %import TopLoc.i
 %import gp.i
 %import Poly.i
-%import TopAbs.i
 
 %pythoncode {
 from enum import IntEnum
@@ -165,7 +165,7 @@ None
 		/****************** Clean ******************/
 		/**** md5 signature: 93868d47cb0034686d14e912128f1323 ****/
 		%feature("compactdefaultargs") Clean;
-		%feature("autodoc", "Removes all the triangulations of the faces of <s> and removes all polygons on triangulations of the edges.
+		%feature("autodoc", "Removes all cashed polygonal representation of the shape, i.e. the triangulations of the faces of <s> and polygons on triangulations and polygons 3d of the edges. in case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed.
 
 Parameters
 ----------
@@ -292,6 +292,22 @@ None
 ") Map3DEdges;
 		static void Map3DEdges(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
 
+		/****************** OriEdgeInFace ******************/
+		/**** md5 signature: 87c7eb8c9c51ee951fa03577413800d5 ****/
+		%feature("compactdefaultargs") OriEdgeInFace;
+		%feature("autodoc", "Returns the cumul of the orientation of <edge> and thc containing wire in <face>.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace: TopoDS_Face
+
+Returns
+-------
+TopAbs_Orientation
+") OriEdgeInFace;
+		static TopAbs_Orientation OriEdgeInFace(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
+
 		/****************** OuterWire ******************/
 		/**** md5 signature: 34752d857d2c349cc92d685bc3ac944f ****/
 		%feature("compactdefaultargs") OuterWire;
@@ -308,7 +324,7 @@ TopoDS_Wire
 		static TopoDS_Wire OuterWire(const TopoDS_Face & F);
 
 		/****************** Read ******************/
-		/**** md5 signature: f5745e848dc55fd88f2cea28b78cb440 ****/
+		/**** md5 signature: 5e5d6e702af29b2284954f484072b531 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Reads a shape from <file>, returns it in <sh>. <b> is used to build the shape.
 
@@ -317,14 +333,31 @@ Parameters
 Sh: TopoDS_Shape
 File: char *
 B: BRep_Builder
-PR: Message_ProgressIndicator,optional
-	default value is NULL
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & Sh, const char * File, const BRep_Builder & B, const opencascade::handle<Message_ProgressIndicator> & PR = NULL);
+		static Standard_Boolean Read(TopoDS_Shape & Sh, const char * File, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** RemoveInternals ******************/
+		/**** md5 signature: fb7d53f36648eea1919fdf6c0fb177b1 ****/
+		%feature("compactdefaultargs") RemoveInternals;
+		%feature("autodoc", "Removes internal sub-shapes from the shape. the check on internal status is based on orientation of sub-shapes, classification is not performed. before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. the flag <theforce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
+
+Parameters
+----------
+theS: TopoDS_Shape
+theForce: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") RemoveInternals;
+		static void RemoveInternals(TopoDS_Shape & theS, const Standard_Boolean theForce = Standard_False);
 
 		/****************** RemoveUnusedPCurves ******************/
 		/**** md5 signature: eda361bf0d5c24ff50f23619c0d11b07 ****/
@@ -342,20 +375,22 @@ None
 		static void RemoveUnusedPCurves(const TopoDS_Shape & S);
 
 		/****************** Triangulation ******************/
-		/**** md5 signature: d98125f309899e6a00a6d4890124dafa ****/
+		/**** md5 signature: 972fc5cfded2376997f1670bb657d434 ****/
 		%feature("compactdefaultargs") Triangulation;
-		%feature("autodoc", "Verifies that each face from the shape <s> has got a triangulation with a deflection <= deflec and the edges a discretisation on this triangulation.
+		%feature("autodoc", "Verifies that each face from the shape has got a triangulation with a deflection smaller or equal to specified one and the edges a discretization on this triangulation. @param theshape [in] shape to verify @param thelindefl [in] maximum allowed linear deflection @param thetocheckfreeedges [in] if true, then free edges are required to have 3d polygon returns false if input shape contains faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or edges in shape lack polygons on triangulation or free edges in shape lack 3d polygons.
 
 Parameters
 ----------
-S: TopoDS_Shape
-deflec: float
+theShape: TopoDS_Shape
+theLinDefl: float
+theToCheckFreeEdges: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 bool
 ") Triangulation;
-		static Standard_Boolean Triangulation(const TopoDS_Shape & S, const Standard_Real deflec);
+		static Standard_Boolean Triangulation(const TopoDS_Shape & theShape, const Standard_Real theLinDefl, const Standard_Boolean theToCheckFreeEdges = Standard_False);
 
 		/****************** UVBounds ******************/
 		/**** md5 signature: 0269b57f10dffa44e1c436bbfecc00b6 ****/
@@ -564,7 +599,7 @@ None
 		static void UpdateFaceUVPoints(const TopoDS_Face & theF);
 
 		/****************** Write ******************/
-		/**** md5 signature: a5451fd262d98de54acd1fe68ea87b52 ****/
+		/**** md5 signature: e4cab4cb4ecdb28c66996c1950c02b7b ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Writes <sh> in <file>.
 
@@ -572,14 +607,14 @@ Parameters
 ----------
 Sh: TopoDS_Shape
 File: char *
-PR: Message_ProgressIndicator,optional
-	default value is NULL
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & Sh, const char * File, const opencascade::handle<Message_ProgressIndicator> & PR = NULL);
+		static Standard_Boolean Write(const TopoDS_Shape & Sh, const char * File, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1108,21 +1143,21 @@ TopoDS_Shape
 		const TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 01863d55693c150519985d04810b5e28 ****/
+		/**** md5 signature: b63519215f9ace048cd4db5238b4ba74 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the modifications described by <m>.
 
 Parameters
 ----------
 M: BRepTools_Modification
-aProgress: Message_ProgressIndicator,optional
-	default value is NULL
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<BRepTools_Modification> & M, const opencascade::handle<Message_ProgressIndicator> & aProgress = NULL);
+		void Perform(const opencascade::handle<BRepTools_Modification> & M, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetMutableInput ******************/
 		/**** md5 signature: 6c32097d8325b4484ad8639e59aae59a ****/

@@ -47,9 +47,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafprs.html"
 #include<AIS_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<TDocStd_module.hxx>
+#include<XCAFDoc_module.hxx>
 #include<TCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TPrsStd_module.hxx>
+#include<Image_module.hxx>
 #include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<TShort_module.hxx>
@@ -96,9 +98,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafprs.html"
 %import AIS.i
 %import Graphic3d.i
 %import TDocStd.i
+%import XCAFDoc.i
 %import TCollection.i
 %import TopoDS.i
 %import TPrsStd.i
+%import Image.i
 
 %pythoncode {
 from enum import IntEnum
@@ -122,6 +126,7 @@ enum  {
 /* handles */
 %wrap_handle(XCAFPrs_AISObject)
 %wrap_handle(XCAFPrs_Driver)
+%wrap_handle(XCAFPrs_Texture)
 /* end handles declaration */
 
 /* templates */
@@ -352,6 +357,17 @@ XCAFPrs_DocumentNode
 ") ChangeCurrent;
 		XCAFPrs_DocumentNode & ChangeCurrent();
 
+		/****************** ColorTool ******************/
+		/**** md5 signature: 03b560befa7fe76ec9d38f36c9ee23bd ****/
+		%feature("compactdefaultargs") ColorTool;
+		%feature("autodoc", "Return color tool.
+
+Returns
+-------
+opencascade::handle<XCAFDoc_ColorTool>
+") ColorTool;
+		const opencascade::handle<XCAFDoc_ColorTool> & ColorTool();
+
 		/****************** Current ******************/
 		/**** md5 signature: 222ab8031f0a08f42b668a2b614cea4d ****/
 		%feature("compactdefaultargs") Current;
@@ -516,6 +532,17 @@ None
 ") Next;
 		void Next();
 
+		/****************** VisMaterialTool ******************/
+		/**** md5 signature: c13692c145aabd5f8daebdbee8d72374 ****/
+		%feature("compactdefaultargs") VisMaterialTool;
+		%feature("autodoc", "Return material tool.
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterialTool>
+") VisMaterialTool;
+		const opencascade::handle<XCAFDoc_VisMaterialTool> & VisMaterialTool();
+
 };
 
 
@@ -610,6 +637,38 @@ Returns
 None
 ") XCAFPrs_DocumentNode;
 		 XCAFPrs_DocumentNode();
+
+		/****************** HashCode ******************/
+		/**** md5 signature: 6a62ab8adacc91a2ac899dc50b20f6d3 ****/
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "Return hash code based on node string identifier.
+
+Parameters
+----------
+theNode: XCAFPrs_DocumentNode
+theN: int
+
+Returns
+-------
+int
+") HashCode;
+		static Standard_Integer HashCode(const XCAFPrs_DocumentNode & theNode, const Standard_Integer theN);
+
+		/****************** IsEqual ******************/
+		/**** md5 signature: 16d5b263d370e7f3ed5af768125b2f7b ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "Return true if two document nodes has the same string identifier.
+
+Parameters
+----------
+theNode1: XCAFPrs_DocumentNode
+theNode2: XCAFPrs_DocumentNode
+
+Returns
+-------
+bool
+") IsEqual;
+		static Standard_Boolean IsEqual(const XCAFPrs_DocumentNode & theNode1, const XCAFPrs_DocumentNode & theNode2);
 
 };
 
@@ -736,6 +795,17 @@ int
 ") HashCode;
 		static Standard_Integer HashCode(const XCAFPrs_Style & theStyle, const Standard_Integer theUpperBound);
 
+		/****************** IsEmpty ******************/
+		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "Return true if style is empty - does not override any properties.
+
+Returns
+-------
+bool
+") IsEmpty;
+		Standard_Boolean IsEmpty();
+
 		/****************** IsEqual ******************/
 		/**** md5 signature: bc0bb14527a436f5e61f4f2840f337dd ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -800,6 +870,17 @@ bool
 ") IsVisible;
 		Standard_Boolean IsVisible();
 
+		/****************** Material ******************/
+		/**** md5 signature: 88a9882f137bb7b5c54ec36089272083 ****/
+		%feature("compactdefaultargs") Material;
+		%feature("autodoc", "Return material.
+
+Returns
+-------
+opencascade::handle<XCAFDoc_VisMaterial>
+") Material;
+		const opencascade::handle<XCAFDoc_VisMaterial> & Material();
+
 		/****************** SetColorCurv ******************/
 		/**** md5 signature: 2e698f922d193bf6b1a67515dc2ebc31 ****/
 		%feature("compactdefaultargs") SetColorCurv;
@@ -844,6 +925,21 @@ Returns
 None
 ") SetColorSurf;
 		void SetColorSurf(const Quantity_ColorRGBA & theColor);
+
+		/****************** SetMaterial ******************/
+		/**** md5 signature: 1f981215aea2218b6425fee7eadb5e93 ****/
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "Set material.
+
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterial
+
+Returns
+-------
+None
+") SetMaterial;
+		void SetMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMaterial);
 
 		/****************** SetVisibility ******************/
 		/**** md5 signature: 71f6f1775dc0a92e7f83855c46ebf1b8 ****/
@@ -900,6 +996,79 @@ None
 
 
 %extend XCAFPrs_Style {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************
+* class XCAFPrs_Texture *
+************************/
+class XCAFPrs_Texture : public Graphic3d_Texture2Dmanual {
+	public:
+		/****************** XCAFPrs_Texture ******************/
+		/**** md5 signature: f9dbe9d0fe880b67c047fad8716af896 ****/
+		%feature("compactdefaultargs") XCAFPrs_Texture;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theImageSource: Image_Texture
+theUnit: Graphic3d_TextureUnit
+
+Returns
+-------
+None
+") XCAFPrs_Texture;
+		 XCAFPrs_Texture(const Image_Texture & theImageSource, const Graphic3d_TextureUnit theUnit);
+
+		/****************** GetCompressedImage ******************/
+		/**** md5 signature: bad0c95151f5a884e9dbc72217977538 ****/
+		%feature("compactdefaultargs") GetCompressedImage;
+		%feature("autodoc", "Image reader.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
+
+Returns
+-------
+opencascade::handle<Image_CompressedPixMap>
+") GetCompressedImage;
+		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
+
+		/****************** GetImage ******************/
+		/**** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ****/
+		%feature("compactdefaultargs") GetImage;
+		%feature("autodoc", "Image reader.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
+
+Returns
+-------
+opencascade::handle<Image_PixMap>
+") GetImage;
+		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
+
+		/****************** GetImageSource ******************/
+		/**** md5 signature: 1fa59174d8d0d408df072137f5b3fe0e ****/
+		%feature("compactdefaultargs") GetImageSource;
+		%feature("autodoc", "Return image source.
+
+Returns
+-------
+Image_Texture
+") GetImageSource;
+		const Image_Texture & GetImageSource();
+
+};
+
+
+%make_alias(XCAFPrs_Texture)
+
+%extend XCAFPrs_Texture {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

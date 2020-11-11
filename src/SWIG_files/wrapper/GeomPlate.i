@@ -689,20 +689,20 @@ opencascade::handle<TColStd_HArray1OfInteger>
 		opencascade::handle<TColStd_HArray1OfInteger> Order();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 04f285fbff57c03afe82932956ba2297 ****/
+		/**** md5 signature: d7fed22833997c4a8f7923f6a29bd664 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Calls the algorithm and computes the plate surface using the loaded constraints. if no initial surface is given, the algorithm automatically computes one. exceptions standard_rangeerror if the value of the constraint is null or if plate is not done.
 
 Parameters
 ----------
-aProgress: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Message_ProgressIndicator> & aProgress = opencascade::handle<Message_ProgressIndicator>());
+		void Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** PointConstraint ******************/
 		/**** md5 signature: fb64f566843365d8012cf3a6bac770bd ****/

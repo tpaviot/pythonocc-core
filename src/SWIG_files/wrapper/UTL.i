@@ -280,7 +280,7 @@ TCollection_ExtendedString
 		static TCollection_ExtendedString Name(const OSD_Path & aPath);
 
 		/****************** OpenFile ******************/
-		/**** md5 signature: 03306b9d80b85f4340bd950957d9ef01 ****/
+		/**** md5 signature: f956ac608cfd1a111b88dad1825c2fa1 ****/
 		%feature("compactdefaultargs") OpenFile;
 		%feature("autodoc", "No available documentation.
 
@@ -294,7 +294,7 @@ Returns
 -------
 Storage_Error
 ") OpenFile;
-		static Storage_Error OpenFile(Storage_BaseDriver & aFile, const TCollection_ExtendedString & aName, const Storage_OpenMode aMode);
+		static Storage_Error OpenFile(const opencascade::handle<Storage_BaseDriver> & aFile, const TCollection_ExtendedString & aName, const Storage_OpenMode aMode);
 
 		/****************** Path ******************/
 		/**** md5 signature: 9faecbe5b613cbbbe4a339567e73579e ****/

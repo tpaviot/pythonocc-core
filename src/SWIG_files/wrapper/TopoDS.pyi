@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Message import *
+from OCC.Core.TCollection import *
 from OCC.Core.TopAbs import *
 from OCC.Core.TopLoc import *
 
@@ -47,6 +48,12 @@ class topods:
 	@overload
 	@staticmethod
 	def Wire(S: TopoDS_Shape) -> TopoDS_Wire: ...
+
+class TopoDS_AlertAttribute(Message_AttributeStream):
+	def __init__(self, theShape: TopoDS_Shape, theName: Optional[TCollection_AsciiString] = TCollection_AsciiString()) -> None: ...
+	def GetShape(self) -> TopoDS_Shape: ...
+	@staticmethod
+	def Send(theMessenger: Message_Messenger, theShape: TopoDS_Shape) -> None: ...
 
 class TopoDS_AlertWithShape(Message_Alert):
 	def __init__(self, theShape: TopoDS_Shape) -> None: ...
@@ -271,3 +278,4 @@ topods_Vertex = topods.Vertex
 topods_Vertex = topods.Vertex
 topods_Wire = topods.Wire
 topods_Wire = topods.Wire
+TopoDS_AlertAttribute_Send = TopoDS_AlertAttribute.Send

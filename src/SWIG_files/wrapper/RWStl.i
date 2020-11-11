@@ -85,75 +85,75 @@ from OCC.Core.Exception import *
 class RWStl {
 	public:
 		/****************** ReadAscii ******************/
-		/**** md5 signature: ee11f0bf8131771a8fb08fc5e104edad ****/
+		/**** md5 signature: a4082bfc34c1229bc435c44951da6960 ****/
 		%feature("compactdefaultargs") ReadAscii;
 		%feature("autodoc", "Read triangulation from an ascii stl file in case of error, returns null handle.
 
 Parameters
 ----------
 thePath: OSD_Path
-theProgInd: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadAscii;
-		static opencascade::handle<Poly_Triangulation> ReadAscii(const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
+		static opencascade::handle<Poly_Triangulation> ReadAscii(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadBinary ******************/
-		/**** md5 signature: 866da70f30bdaac89e98426c73d2e6ac ****/
+		/**** md5 signature: 715829aa852a6829b2792b5ff41018e6 ****/
 		%feature("compactdefaultargs") ReadBinary;
 		%feature("autodoc", "Read triangulation from a binary stl file in case of error, returns null handle.
 
 Parameters
 ----------
 thePath: OSD_Path
-theProgInd: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadBinary;
-		static opencascade::handle<Poly_Triangulation> ReadBinary(const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
+		static opencascade::handle<Poly_Triangulation> ReadBinary(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
-		/**** md5 signature: 293310934284db880032507aba06aa6e ****/
+		/**** md5 signature: d43c9b9243be3127708aa8d4c2ce0d80 ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified stl file and returns its content as triangulation. in case of error, returns null handle.
 
 Parameters
 ----------
 theFile: OSD_Path
-aProgInd: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+aProgInd: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const opencascade::handle<Message_ProgressIndicator> & aProgInd = opencascade::handle<Message_ProgressIndicator>());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const Message_ProgressRange & aProgInd = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
-		/**** md5 signature: 15a5b5614d960e1512f0f7cb77b371ef ****/
+		/**** md5 signature: 760c46a9474c487b075bd12bfbd5c2c9 ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified stl file and returns its content as triangulation. in case of error, returns null handle.
 
 Parameters
 ----------
 theFile: char *
-aProgInd: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+aProgInd: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const opencascade::handle<Message_ProgressIndicator> & aProgInd = opencascade::handle<Message_ProgressIndicator>());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const Message_ProgressRange & aProgInd = Message_ProgressRange());
 
 		/****************** WriteAscii ******************/
-		/**** md5 signature: 4e074416d39d5ad0261bcbf2e8663b50 ****/
+		/**** md5 signature: 8cb39ba5b5c9e3b27f4e1ec1bd12de9c ****/
 		%feature("compactdefaultargs") WriteAscii;
 		%feature("autodoc", "Write the meshing in a file following the ascii format of an stl file. returns false if the cannot be opened;.
 
@@ -161,17 +161,17 @@ Parameters
 ----------
 theMesh: Poly_Triangulation
 thePath: OSD_Path
-theProgInd: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") WriteAscii;
-		static Standard_Boolean WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
+		static Standard_Boolean WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** WriteBinary ******************/
-		/**** md5 signature: c16756be3ac5eccd7cb2b9a471cb70ac ****/
+		/**** md5 signature: 3a7e5b47e0a20ed5065a6f3593a90ac4 ****/
 		%feature("compactdefaultargs") WriteBinary;
 		%feature("autodoc", "Write triangulation to binary stl file. binary format of an stl file. returns false if the cannot be opened;.
 
@@ -179,14 +179,14 @@ Parameters
 ----------
 theMesh: Poly_Triangulation
 thePath: OSD_Path
-theProgInd: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") WriteBinary;
-		static Standard_Boolean WriteBinary(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
+		static Standard_Boolean WriteBinary(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

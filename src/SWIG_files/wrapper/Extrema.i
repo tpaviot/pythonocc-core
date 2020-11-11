@@ -8947,6 +8947,129 @@ F: float
 	}
 };
 
+/************************************
+* class Extrema_GlobOptFuncCQuadric *
+************************************/
+class Extrema_GlobOptFuncCQuadric : public math_MultipleVarFunction {
+	public:
+		/****************** Extrema_GlobOptFuncCQuadric ******************/
+		/**** md5 signature: 99114e215beb985216f6c00dc13224d3 ****/
+		%feature("compactdefaultargs") Extrema_GlobOptFuncCQuadric;
+		%feature("autodoc", "Curve and surface should exist during all the lifetime of extrema_globoptfunccquadric.
+
+Parameters
+----------
+C: Adaptor3d_Curve *
+
+Returns
+-------
+None
+") Extrema_GlobOptFuncCQuadric;
+		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C);
+
+		/****************** Extrema_GlobOptFuncCQuadric ******************/
+		/**** md5 signature: d7d61981913d1d4e7a277c4d649fe556 ****/
+		%feature("compactdefaultargs") Extrema_GlobOptFuncCQuadric;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor3d_Curve *
+theTf: float
+theTl: float
+
+Returns
+-------
+None
+") Extrema_GlobOptFuncCQuadric;
+		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C, const Standard_Real theTf, const Standard_Real theTl);
+
+		/****************** Extrema_GlobOptFuncCQuadric ******************/
+		/**** md5 signature: fb48d40e095a7a0601592ff43956384b ****/
+		%feature("compactdefaultargs") Extrema_GlobOptFuncCQuadric;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor3d_Curve *
+S: Adaptor3d_Surface *
+
+Returns
+-------
+None
+") Extrema_GlobOptFuncCQuadric;
+		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C, const Adaptor3d_Surface * S);
+
+		/****************** LoadQuad ******************/
+		/**** md5 signature: b1296108bc605a6d73f7634315ac1035 ****/
+		%feature("compactdefaultargs") LoadQuad;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_Surface *
+theUf: float
+theUl: float
+theVf: float
+theVl: float
+
+Returns
+-------
+None
+") LoadQuad;
+		void LoadQuad(const Adaptor3d_Surface * S, const Standard_Real theUf, const Standard_Real theUl, const Standard_Real theVf, const Standard_Real theVl);
+
+		/****************** NbVariables ******************/
+		/**** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ****/
+		%feature("compactdefaultargs") NbVariables;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbVariables;
+		virtual Standard_Integer NbVariables();
+
+		/****************** QuadricParameters ******************/
+		/**** md5 signature: 0d6d1773b562190c9fe7c329ab0e0c67 ****/
+		%feature("compactdefaultargs") QuadricParameters;
+		%feature("autodoc", "Parameters of quadric for point on curve defined by thect.
+
+Parameters
+----------
+theCT: math_Vector
+theUV: math_Vector
+
+Returns
+-------
+None
+") QuadricParameters;
+		void QuadricParameters(const math_Vector & theCT, math_Vector & theUV);
+
+		/****************** Value ******************/
+		/**** md5 signature: fb3656bc314c1cff1090e6eb65303c3a ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theX: math_Vector
+
+Returns
+-------
+theF: float
+") Value;
+		virtual Standard_Boolean Value(const math_Vector & theX, Standard_Real &OutValue);
+
+};
+
+
+%extend Extrema_GlobOptFuncCQuadric {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /******************************
 * class Extrema_GlobOptFuncCS *
 ******************************/
@@ -9047,6 +9170,128 @@ theF: float
 
 
 %extend Extrema_GlobOptFuncCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************
+* class Extrema_GlobOptFuncConicS *
+**********************************/
+class Extrema_GlobOptFuncConicS : public math_MultipleVarFunction {
+	public:
+		/****************** Extrema_GlobOptFuncConicS ******************/
+		/**** md5 signature: de0973757811ece0501040b69ceb698c ****/
+		%feature("compactdefaultargs") Extrema_GlobOptFuncConicS;
+		%feature("autodoc", "Curve and surface should exist during all the lifetime of extrema_globoptfuncconics.
+
+Parameters
+----------
+C: Adaptor3d_Curve *
+S: Adaptor3d_Surface *
+
+Returns
+-------
+None
+") Extrema_GlobOptFuncConicS;
+		 Extrema_GlobOptFuncConicS(const Adaptor3d_Curve * C, const Adaptor3d_Surface * S);
+
+		/****************** Extrema_GlobOptFuncConicS ******************/
+		/**** md5 signature: 85e49315da7906cf8c9fd935a3e1fbec ****/
+		%feature("compactdefaultargs") Extrema_GlobOptFuncConicS;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_Surface *
+
+Returns
+-------
+None
+") Extrema_GlobOptFuncConicS;
+		 Extrema_GlobOptFuncConicS(const Adaptor3d_Surface * S);
+
+		/****************** Extrema_GlobOptFuncConicS ******************/
+		/**** md5 signature: 2d1010427e12b5b7ddf1b64a90e1b6b8 ****/
+		%feature("compactdefaultargs") Extrema_GlobOptFuncConicS;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_Surface *
+theUf: float
+theUl: float
+theVf: float
+theVl: float
+
+Returns
+-------
+None
+") Extrema_GlobOptFuncConicS;
+		 Extrema_GlobOptFuncConicS(const Adaptor3d_Surface * S, const Standard_Real theUf, const Standard_Real theUl, const Standard_Real theVf, const Standard_Real theVl);
+
+		/****************** ConicParameter ******************/
+		/**** md5 signature: ddde894a92baf5120f0b5896f8ff23d0 ****/
+		%feature("compactdefaultargs") ConicParameter;
+		%feature("autodoc", "Parameter of conic for point on surface defined by theuv.
+
+Parameters
+----------
+theUV: math_Vector
+
+Returns
+-------
+float
+") ConicParameter;
+		Standard_Real ConicParameter(const math_Vector & theUV);
+
+		/****************** LoadConic ******************/
+		/**** md5 signature: 2a020f4c8e584a3dddabb791c247f871 ****/
+		%feature("compactdefaultargs") LoadConic;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_Curve *
+theTf: float
+theTl: float
+
+Returns
+-------
+None
+") LoadConic;
+		void LoadConic(const Adaptor3d_Curve * S, const Standard_Real theTf, const Standard_Real theTl);
+
+		/****************** NbVariables ******************/
+		/**** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ****/
+		%feature("compactdefaultargs") NbVariables;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbVariables;
+		virtual Standard_Integer NbVariables();
+
+		/****************** Value ******************/
+		/**** md5 signature: fb3656bc314c1cff1090e6eb65303c3a ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theX: math_Vector
+
+Returns
+-------
+theF: float
+") Value;
+		virtual Standard_Boolean Value(const math_Vector & theX, Standard_Real &OutValue);
+
+};
+
+
+%extend Extrema_GlobOptFuncConicS {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

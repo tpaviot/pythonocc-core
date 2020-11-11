@@ -557,23 +557,6 @@ None
 ") V3d_AmbientLight;
 		 V3d_AmbientLight(const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
-		/****************** V3d_AmbientLight ******************/
-		/**** md5 signature: e86fec41d80e1af987517155e90ca149 ****/
-		%feature("compactdefaultargs") V3d_AmbientLight;
-		%feature("autodoc", "Constructs an ambient light source in the viewer. the default color of this light source is white.
-
-Parameters
-----------
-theViewer: V3d_Viewer
-theColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-
-Returns
--------
-None
-") V3d_AmbientLight;
-		 V3d_AmbientLight(const opencascade::handle<V3d_Viewer> & theViewer, const Quantity_Color & theColor = Quantity_NOC_WHITE);
-
 };
 
 
@@ -618,6 +601,14 @@ None
 ") Display;
 		void Display();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 683e92afcb4dd44bd3a5c6cd77cd44d8 ****/
 		%feature("compactdefaultargs") Erase;
@@ -902,6 +893,14 @@ None
 ") Display;
 		virtual void Display();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 44e4f7cb90f37153ccbcbc58390450d3 ****/
 		%feature("compactdefaultargs") Erase;
@@ -1015,6 +1014,14 @@ None
 ") Display;
 		void Display(const V3d_View & theView);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 8f2bc4e6df5b146535fbcd580dcae32c ****/
 		%feature("compactdefaultargs") Erase;
@@ -1219,6 +1226,17 @@ V3d_ListOfLightIterator
 ") ActiveLightIterator;
 		V3d_ListOfLightIterator ActiveLightIterator();
 
+		/****************** ActiveLights ******************/
+		/**** md5 signature: 046f4b2a5dbc3ae8d1d2b264382219be ****/
+		%feature("compactdefaultargs") ActiveLights;
+		%feature("autodoc", "Returns a list of active lights.
+
+Returns
+-------
+V3d_ListOfLight
+") ActiveLights;
+		const V3d_ListOfLight & ActiveLights();
+
 		/****************** AddClipPlane ******************/
 		/**** md5 signature: 9f3c54e7cba60e479ad5b0eee5e5228c ****/
 		%feature("compactdefaultargs") AddClipPlane;
@@ -1376,6 +1394,22 @@ Returns
 Graphic3d_RenderingParams
 ") ChangeRenderingParams;
 		Graphic3d_RenderingParams & ChangeRenderingParams();
+
+		/****************** ClearPBREnvironment ******************/
+		/**** md5 signature: 74a6106fb34ade1ffeef0dedb8ca60c4 ****/
+		%feature("compactdefaultargs") ClearPBREnvironment;
+		%feature("autodoc", "Fills pbr specular probe and irradiance map with white color. so that environment indirect illumination will be constant and will be fully controlled by ambient light sources. if pbr is unavailable it does nothing.
+
+Parameters
+----------
+theToUpdate: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") ClearPBREnvironment;
+		void ClearPBREnvironment(Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** ClipPlanes ******************/
 		/**** md5 signature: 4f5f037b2c152f9713991c9904ccf618 ****/
@@ -1641,6 +1675,14 @@ bool
 ") Dump;
 		Standard_Boolean Dump(const char * theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Eye ******************/
 		/**** md5 signature: 214dc5004bc1554dbed9750aa9efa7b8 ****/
 		%feature("compactdefaultargs") Eye;
@@ -1759,6 +1801,22 @@ Returns
 float
 ") Focale;
 		Standard_Real Focale();
+
+		/****************** GeneratePBREnvironment ******************/
+		/**** md5 signature: 985c23f09799e743cfb844b342b6182d ****/
+		%feature("compactdefaultargs") GeneratePBREnvironment;
+		%feature("autodoc", "Generates pbr specular probe and irradiance map in order to provide environment indirect illumination in pbr shading model (image based lighting). the source of environment data is background cubemap. if pbr is unavailable it does nothing. if pbr is available but there is no cubemap being set to background it clears all ibl maps (see 'clearpbrenvironment').
+
+Parameters
+----------
+theToUpdate: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") GeneratePBREnvironment;
+		void GeneratePBREnvironment(Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** GetGraduatedTrihedron ******************/
 		/**** md5 signature: 794e42c6b2c8242dbf3d37d05f637325 ****/
@@ -2532,13 +2590,15 @@ None
 		void SetBackgroundColor(const Quantity_Color & theColor);
 
 		/****************** SetBackgroundCubeMap ******************/
-		/**** md5 signature: f6777560786543b17a38965b81c004cc ****/
+		/**** md5 signature: 2c70bfeaeff2462250acde85f96d119b ****/
 		%feature("compactdefaultargs") SetBackgroundCubeMap;
-		%feature("autodoc", "Sets environment cubemap as interactive background.
+		%feature("autodoc", "Sets environment cubemap as background. @param thecubemap cubemap source to be set as background @param thetoupdatepbrenv defines whether ibl maps will be generated or not (see 'generatepbrenvironment').
 
 Parameters
 ----------
 theCubeMap: Graphic3d_CubeMap
+theToUpdatePBREnv: bool,optional
+	default value is Standard_True
 theToUpdate: bool,optional
 	default value is Standard_False
 
@@ -2546,7 +2606,7 @@ Returns
 -------
 None
 ") SetBackgroundCubeMap;
-		void SetBackgroundCubeMap(const opencascade::handle<Graphic3d_CubeMap> & theCubeMap, Standard_Boolean theToUpdate = Standard_False);
+		void SetBackgroundCubeMap(const opencascade::handle<Graphic3d_CubeMap> & theCubeMap, Standard_Boolean theToUpdatePBREnv = Standard_True, Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetBackgroundImage ******************/
 		/**** md5 signature: 56244ced11a568c705352f7992e3c593 ****/
@@ -2566,6 +2626,25 @@ Returns
 None
 ") SetBackgroundImage;
 		void SetBackgroundImage(const char * theFileName, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
+
+		/****************** SetBackgroundImage ******************/
+		/**** md5 signature: 4082281fe8d9c0c887d121ff7ee0f92c ****/
+		%feature("compactdefaultargs") SetBackgroundImage;
+		%feature("autodoc", "Defines the background texture of the view by supplying the texture and fill method (centered by default).
+
+Parameters
+----------
+theTexture: Graphic3d_Texture2D
+theFillStyle: Aspect_FillMethod,optional
+	default value is Aspect_FM_CENTERED
+theToUpdate: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") SetBackgroundImage;
+		void SetBackgroundImage(const opencascade::handle<Graphic3d_Texture2D> & theTexture, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetBgGradientColors ******************/
 		/**** md5 signature: 70e7f0659696f72c3b6eb6ae9487a67f ****/
@@ -3727,6 +3806,17 @@ V3d_ListOfLightIterator
 ") ActiveLightIterator;
 		V3d_ListOfLightIterator ActiveLightIterator();
 
+		/****************** ActiveLights ******************/
+		/**** md5 signature: 046f4b2a5dbc3ae8d1d2b264382219be ****/
+		%feature("compactdefaultargs") ActiveLights;
+		%feature("autodoc", "Return a list of active lights.
+
+Returns
+-------
+V3d_ListOfLight
+") ActiveLights;
+		const V3d_ListOfLight & ActiveLights();
+
 		/****************** ActiveView ******************/
 		/**** md5 signature: 51c31c5b98d9861184e3beb9dd0957d2 ****/
 		%feature("compactdefaultargs") ActiveView;
@@ -3748,6 +3838,17 @@ Returns
 V3d_ListOfViewIterator
 ") ActiveViewIterator;
 		V3d_ListOfViewIterator ActiveViewIterator();
+
+		/****************** ActiveViews ******************/
+		/**** md5 signature: c981bb535c895fc684f93f3f75e46627 ****/
+		%feature("compactdefaultargs") ActiveViews;
+		%feature("autodoc", "Return a list of active views.
+
+Returns
+-------
+V3d_ListOfView
+") ActiveViews;
+		const V3d_ListOfView & ActiveViews();
 
 		/****************** AddLight ******************/
 		/**** md5 signature: a790b9b06a29d0522e8dcef07a2fd4b7 ****/
@@ -3990,6 +4091,17 @@ V3d_ListOfLightIterator
 ") DefinedLightIterator;
 		V3d_ListOfLightIterator DefinedLightIterator();
 
+		/****************** DefinedLights ******************/
+		/**** md5 signature: 6ff6dff9bd047e02b6d25d4675131815 ****/
+		%feature("compactdefaultargs") DefinedLights;
+		%feature("autodoc", "Return a list of defined lights.
+
+Returns
+-------
+V3d_ListOfLight
+") DefinedLights;
+		const V3d_ListOfLight & DefinedLights();
+
 		/****************** DefinedView ******************/
 		/**** md5 signature: be2c70401aec7849d2bf409cd59dbee2 ****/
 		%feature("compactdefaultargs") DefinedView;
@@ -4011,6 +4123,17 @@ Returns
 V3d_ListOfViewIterator
 ") DefinedViewIterator;
 		V3d_ListOfViewIterator DefinedViewIterator();
+
+		/****************** DefinedViews ******************/
+		/**** md5 signature: 65fda7f60c45c6d453f50537532ac174 ****/
+		%feature("compactdefaultargs") DefinedViews;
+		%feature("autodoc", "Return a list of defined views.
+
+Returns
+-------
+V3d_ListOfView
+") DefinedViews;
+		const V3d_ListOfView & DefinedViews();
 
 		/****************** DelLight ******************/
 		/**** md5 signature: 41c87090c1f691ab05530e33b3599aaa ****/
@@ -4055,6 +4178,14 @@ opencascade::handle<Graphic3d_GraphicDriver>
 ") Driver;
 		const opencascade::handle<Graphic3d_GraphicDriver> & Driver();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 22f17cdf7e7984cb80d1d94de19c3493 ****/
 		%feature("compactdefaultargs") Erase;
@@ -5022,52 +5153,6 @@ None
 ") V3d_DirectionalLight;
 		 V3d_DirectionalLight(const gp_Dir & theDirection, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Boolean theIsHeadlight = Standard_False);
 
-		/****************** V3d_DirectionalLight ******************/
-		/**** md5 signature: c576b894741b8da21a8ce92fda9aac77 ****/
-		%feature("compactdefaultargs") V3d_DirectionalLight;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theViewer: V3d_Viewer
-theDirection: V3d_TypeOfOrientation,optional
-	default value is V3d_XposYposZpos
-theColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-theIsHeadlight: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") V3d_DirectionalLight;
-		 V3d_DirectionalLight(const opencascade::handle<V3d_Viewer> & theViewer, const V3d_TypeOfOrientation theDirection = V3d_XposYposZpos, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Boolean theIsHeadlight = Standard_False);
-
-		/****************** V3d_DirectionalLight ******************/
-		/**** md5 signature: f22fa6c151547559d041daa54095c5db ****/
-		%feature("compactdefaultargs") V3d_DirectionalLight;
-		%feature("autodoc", "Creates a directional light source in the viewer. thext, theyt, thezt : coordinate of light source target. thexp, theyp, thezp : coordinate of light source position. the others parameters describe before.
-
-Parameters
-----------
-theViewer: V3d_Viewer
-theXt: float
-theYt: float
-theZt: float
-theXp: float
-theYp: float
-theZp: float
-theColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-theIsHeadlight: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") V3d_DirectionalLight;
-		 V3d_DirectionalLight(const opencascade::handle<V3d_Viewer> & theViewer, const Standard_Real theXt, const Standard_Real theYt, const Standard_Real theZt, const Standard_Real theXp, const Standard_Real theYp, const Standard_Real theZp, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Boolean theIsHeadlight = Standard_False);
-
 		/****************** SetDirection ******************/
 		/**** md5 signature: 68f1a2f19e61e004b66a3eaf73e51686 ****/
 		%feature("compactdefaultargs") SetDirection;
@@ -5115,30 +5200,6 @@ Returns
 None
 ") V3d_PositionalLight;
 		 V3d_PositionalLight(const gp_Pnt & thePos, const Quantity_Color & theColor = Quantity_NOC_WHITE);
-
-		/****************** V3d_PositionalLight ******************/
-		/**** md5 signature: f3f903689b3f3be882fa68b5819e17db ****/
-		%feature("compactdefaultargs") V3d_PositionalLight;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theViewer: V3d_Viewer
-theX: float
-theY: float
-theZ: float
-theColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-theConstAttenuation: float,optional
-	default value is 1.0
-theLinearAttenuation: float,optional
-	default value is 0.0
-
-Returns
--------
-None
-") V3d_PositionalLight;
-		 V3d_PositionalLight(const opencascade::handle<V3d_Viewer> & theViewer, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Real theConstAttenuation = 1.0, const Standard_Real theLinearAttenuation = 0.0);
 
 };
 
@@ -5192,67 +5253,6 @@ Returns
 None
 ") V3d_SpotLight;
 		 V3d_SpotLight(const gp_Pnt & thePos, const gp_Dir & theDirection, const Quantity_Color & theColor = Quantity_NOC_WHITE);
-
-		/****************** V3d_SpotLight ******************/
-		/**** md5 signature: 282f86aea260cdb925b753db9b900371 ****/
-		%feature("compactdefaultargs") V3d_SpotLight;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theViewer: V3d_Viewer
-theX: float
-theY: float
-theZ: float
-theDirection: V3d_TypeOfOrientation,optional
-	default value is V3d_XnegYnegZpos
-theColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-theConstAttenuation: float,optional
-	default value is 1.0
-theLinearAttenuation: float,optional
-	default value is 0.0
-theConcentration: float,optional
-	default value is 1.0
-theAngle: float,optional
-	default value is 0.523599
-
-Returns
--------
-None
-") V3d_SpotLight;
-		 V3d_SpotLight(const opencascade::handle<V3d_Viewer> & theViewer, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const V3d_TypeOfOrientation theDirection = V3d_XnegYnegZpos, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Real theConstAttenuation = 1.0, const Standard_Real theLinearAttenuation = 0.0, const Standard_Real theConcentration = 1.0, const Standard_Real theAngle = 0.523599);
-
-		/****************** V3d_SpotLight ******************/
-		/**** md5 signature: ecfce74918977e746d8d0cff10e18e1f ****/
-		%feature("compactdefaultargs") V3d_SpotLight;
-		%feature("autodoc", "Thext, theyt, thezt : coordinate of light source target. thexp, theyp, thezp : coordinate of light source position.
-
-Parameters
-----------
-theViewer: V3d_Viewer
-theXt: float
-theYt: float
-theZt: float
-theXp: float
-theYp: float
-theZp: float
-theColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-theConstAttenuation: float,optional
-	default value is 1.0
-theLinearAttenuation: float,optional
-	default value is 0.0
-theConcentration: float,optional
-	default value is 1.0
-theAngle: float,optional
-	default value is 0.523599
-
-Returns
--------
-None
-") V3d_SpotLight;
-		 V3d_SpotLight(const opencascade::handle<V3d_Viewer> & theViewer, const Standard_Real theXt, const Standard_Real theYt, const Standard_Real theZt, const Standard_Real theXp, const Standard_Real theYp, const Standard_Real theZp, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Real theConstAttenuation = 1.0, const Standard_Real theLinearAttenuation = 0.0, const Standard_Real theConcentration = 1.0, const Standard_Real theAngle = 0.523599);
 
 		/****************** SetDirection ******************/
 		/**** md5 signature: ec761b79b1038a9b23500884194f62d9 ****/

@@ -347,7 +347,7 @@ None
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: d3a576f6c6d265b51c604b4f3e7b52c0 ****/
+		/**** md5 signature: e4303fa9409798bd20ec402569b65ae8 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "No available documentation.
 
@@ -355,12 +355,14 @@ Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_TransientProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP);
+		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** UsedTolerance ******************/
 		/**** md5 signature: ff38c5c7287c4c23a2ef8bba63f8adbd ****/
@@ -452,21 +454,6 @@ Returns
 None
 ") IGESToBRep_CurveAndSurface;
 		 IGESToBRep_CurveAndSurface();
-
-		/****************** IGESToBRep_CurveAndSurface ******************/
-		/**** md5 signature: 25a63dcc0d3168d39324604dfdc37c7f ****/
-		%feature("compactdefaultargs") IGESToBRep_CurveAndSurface;
-		%feature("autodoc", "Creates a tool curveandsurface ready to run and sets its fields as cs's.
-
-Parameters
-----------
-CS: IGESToBRep_CurveAndSurface
-
-Returns
--------
-None
-") IGESToBRep_CurveAndSurface;
-		 IGESToBRep_CurveAndSurface(const IGESToBRep_CurveAndSurface & CS);
 
 		/****************** IGESToBRep_CurveAndSurface ******************/
 		/**** md5 signature: 3289f045564ae617fdf61d89466ccf9a ****/
@@ -1001,34 +988,38 @@ opencascade::handle<Geom_Surface>
 		opencascade::handle<Geom_Surface> Surface();
 
 		/****************** TransferCurveAndSurface ******************/
-		/**** md5 signature: 25777c4404f1eeed12c0604f14b70581 ****/
+		/**** md5 signature: 95e42d58982889e5208f8cc5c8824a30 ****/
 		%feature("compactdefaultargs") TransferCurveAndSurface;
 		%feature("autodoc", "Returns the result of the transfert of any iges curve or surface entity. if the transfer has failed, this member return a nullentity.
 
 Parameters
 ----------
 start: IGESData_IGESEntity
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") TransferCurveAndSurface;
-		TopoDS_Shape TransferCurveAndSurface(const opencascade::handle<IGESData_IGESEntity> & start);
+		TopoDS_Shape TransferCurveAndSurface(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferGeometry ******************/
-		/**** md5 signature: 41cb2025439518e73f2b4e8123a5b583 ****/
+		/**** md5 signature: 41b6a8362a731c45d845644139b0e811 ****/
 		%feature("compactdefaultargs") TransferGeometry;
 		%feature("autodoc", "Returns the result of the transfert the geometry of any igesentity. if the transfer has failed, this member return a nullentity.
 
 Parameters
 ----------
 start: IGESData_IGESEntity
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") TransferGeometry;
-		TopoDS_Shape TransferGeometry(const opencascade::handle<IGESData_IGESEntity> & start);
+		TopoDS_Shape TransferGeometry(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** UpdateMinMaxTol ******************/
 		/**** md5 signature: e07c9dafbe1f0852a554a1e076ae56d7 ****/
@@ -1363,22 +1354,24 @@ TopoDS_Shape
 		TopoDS_Shape Shape(const Standard_Integer num = 1);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 6d47b9605ccb70e3833586a3aeea50b5 ****/
+		/**** md5 signature: aa24b2062db698881310d745b17c7dee ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers an entity given its rank in the model (root or not) returns true if it is recognized as geom-topol. (but it can have failed : see isdone).
 
 Parameters
 ----------
 num: int
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const Standard_Integer num);
+		Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferRoots ******************/
-		/**** md5 signature: 990690dc2ffdd58e186d305e110e445b ****/
+		/**** md5 signature: ddc66dd5a50ae3a9ebd0f4a567a2d699 ****/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "Translates root entities in an iges file. standard_true is the default value and means that only visible root entities are translated. standard_false translates all of the roots (visible and invisible).
 
@@ -1386,12 +1379,14 @@ Parameters
 ----------
 onlyvisible: bool,optional
 	default value is Standard_True
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TransferRoots;
-		void TransferRoots(const Standard_Boolean onlyvisible = Standard_True);
+		void TransferRoots(const Standard_Boolean onlyvisible = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransientProcess ******************/
 		/**** md5 signature: cda5aa33365159e82c6213003de44419 ****/
@@ -1514,19 +1509,21 @@ None
 		 IGESToBRep_BRepEntity(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 
 		/****************** TransferBRepEntity ******************/
-		/**** md5 signature: 32c64ac6073af830c90bc5d7cb352a6a ****/
+		/**** md5 signature: eb1d0f38717858581983b0cd33ed2d11 ****/
 		%feature("compactdefaultargs") TransferBRepEntity;
 		%feature("autodoc", "Transfer the brepentity' : face, shell or manifoldsolid.
 
 Parameters
 ----------
 start: IGESData_IGESEntity
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") TransferBRepEntity;
-		TopoDS_Shape TransferBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start);
+		TopoDS_Shape TransferBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferEdge ******************/
 		/**** md5 signature: 3b5e6a2863f17677c7e3f7184aeed45b ****/
@@ -1578,34 +1575,38 @@ TopoDS_Shape
 		TopoDS_Shape TransferLoop(const opencascade::handle<IGESSolid_Loop> & start, const TopoDS_Face & Face, const gp_Trsf2d & trans, const Standard_Real uFact);
 
 		/****************** TransferManifoldSolid ******************/
-		/**** md5 signature: d632752f1963e95849afe0fe178fec9d ****/
+		/**** md5 signature: 67bda0475d406d16e7fe5d11404ad4ce ****/
 		%feature("compactdefaultargs") TransferManifoldSolid;
 		%feature("autodoc", "Transfer the manifoldsolid entity.
 
 Parameters
 ----------
 start: IGESSolid_ManifoldSolid
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") TransferManifoldSolid;
-		TopoDS_Shape TransferManifoldSolid(const opencascade::handle<IGESSolid_ManifoldSolid> & start);
+		TopoDS_Shape TransferManifoldSolid(const opencascade::handle<IGESSolid_ManifoldSolid> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferShell ******************/
-		/**** md5 signature: f86289f89929f0a5a4a5a0d97d2ca06e ****/
+		/**** md5 signature: 0b21173235255fb60de48101b4093bfe ****/
 		%feature("compactdefaultargs") TransferShell;
 		%feature("autodoc", "Transfer the shell entity.
 
 Parameters
 ----------
 start: IGESSolid_Shell
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") TransferShell;
-		TopoDS_Shape TransferShell(const opencascade::handle<IGESSolid_Shell> & start);
+		TopoDS_Shape TransferShell(const opencascade::handle<IGESSolid_Shell> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferVertex ******************/
 		/**** md5 signature: a93d4f312a0873203e823c7b4949940e ****/

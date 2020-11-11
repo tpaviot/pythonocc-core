@@ -114,6 +114,14 @@ enum ChFiDS_ErrorStatus {
 	ChFiDS_TwistedSurface = 4,
 };
 
+enum ChFiDS_TypeOfConcavity {
+	ChFiDS_Concave = 0,
+	ChFiDS_Convex = 1,
+	ChFiDS_Tangential = 2,
+	ChFiDS_FreeBound = 3,
+	ChFiDS_Other = 4,
+};
+
 /* end public enums declaration */
 
 /* python proy classes for enums */
@@ -162,6 +170,18 @@ ChFiDS_Error = ChFiDS_ErrorStatus.ChFiDS_Error
 ChFiDS_WalkingFailure = ChFiDS_ErrorStatus.ChFiDS_WalkingFailure
 ChFiDS_StartsolFailure = ChFiDS_ErrorStatus.ChFiDS_StartsolFailure
 ChFiDS_TwistedSurface = ChFiDS_ErrorStatus.ChFiDS_TwistedSurface
+
+class ChFiDS_TypeOfConcavity(IntEnum):
+	ChFiDS_Concave = 0
+	ChFiDS_Convex = 1
+	ChFiDS_Tangential = 2
+	ChFiDS_FreeBound = 3
+	ChFiDS_Other = 4
+ChFiDS_Concave = ChFiDS_TypeOfConcavity.ChFiDS_Concave
+ChFiDS_Convex = ChFiDS_TypeOfConcavity.ChFiDS_Convex
+ChFiDS_Tangential = ChFiDS_TypeOfConcavity.ChFiDS_Tangential
+ChFiDS_FreeBound = ChFiDS_TypeOfConcavity.ChFiDS_FreeBound
+ChFiDS_Other = ChFiDS_TypeOfConcavity.ChFiDS_Other
 };
 /* end python proxy for enums */
 
@@ -2107,6 +2127,17 @@ GeomAbs_CurveType
 ") GetType;
 		GeomAbs_CurveType GetType();
 
+		/****************** GetTypeOfConcavity ******************/
+		/**** md5 signature: 03c88f7995e55bceb70d1b6aab2e61f4 ****/
+		%feature("compactdefaultargs") GetTypeOfConcavity;
+		%feature("autodoc", "Returns the type of concavity in the connection.
+
+Returns
+-------
+ChFiDS_TypeOfConcavity
+") GetTypeOfConcavity;
+		ChFiDS_TypeOfConcavity GetTypeOfConcavity();
+
 		/****************** HasFirstTgt ******************/
 		/**** md5 signature: 9b196c93880f437114c8ea979581acea ****/
 		%feature("compactdefaultargs") HasFirstTgt;
@@ -2638,6 +2669,21 @@ Returns
 None
 ") SetTangencyExtremity;
 		void SetTangencyExtremity(const Standard_Boolean IsTangency, const Standard_Boolean IsFirst);
+
+		/****************** SetTypeOfConcavity ******************/
+		/**** md5 signature: ee22fc43cd6253adde8756526c94bf06 ****/
+		%feature("compactdefaultargs") SetTypeOfConcavity;
+		%feature("autodoc", "Sets the type of concavity in the connection.
+
+Parameters
+----------
+theType: ChFiDS_TypeOfConcavity
+
+Returns
+-------
+None
+") SetTypeOfConcavity;
+		void SetTypeOfConcavity(const ChFiDS_TypeOfConcavity theType);
 
 		/****************** SplitDone ******************/
 		/**** md5 signature: fe2c9168a5cde6a3136bcf314c46600a ****/

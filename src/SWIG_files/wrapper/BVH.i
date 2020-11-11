@@ -87,7 +87,7 @@ typedef BVH::ArrayType<Standard_Integer, 3>::Type BVH_Array3i;
 typedef BVH::ArrayType<Standard_Real, 4>::Type BVH_Array4d;
 typedef BVH::ArrayType<Standard_ShortReal, 4>::Type BVH_Array4f;
 typedef BVH::ArrayType<Standard_Integer, 4>::Type BVH_Array4i;
-typedef std::pair<Standard_Integer, Standard_Integer> BVH_EncodedLink;
+typedef std::pair<unsigned int, Standard_Integer> BVH_EncodedLink;
 typedef BVH::MatrixType<Standard_Real, 4>::Type BVH_Mat4d;
 typedef BVH::MatrixType<Standard_ShortReal, 4>::Type BVH_Mat4f;
 typedef BVH_PrimitiveSet<Standard_Real, 3> BVH_PrimitiveSet3d;
@@ -141,6 +141,53 @@ int
 	}
 };
 
+/********************
+* class BVH_BaseBox *
+********************/
+/*********************************
+* class BVH_BaseBox<T,3,BVH_Box> *
+*********************************/
+class BVH_BaseBox<T,3,BVH_Box> {
+	public:
+		/****************** Transform ******************/
+		/**** md5 signature: f52fb52638bf0b2d8089837b32d1b6fb ****/
+		%feature("compactdefaultargs") Transform;
+		%feature("autodoc", "Transforms this box with given transformation.
+
+Parameters
+----------
+theTransform: NCollection_Mat4<T>
+
+Returns
+-------
+None
+") Transform;
+		void Transform(const NCollection_Mat4<T> & theTransform);
+
+		/****************** Transformed ******************/
+		/**** md5 signature: 4f3a0339459a68755a160d7708c81f4e ****/
+		%feature("compactdefaultargs") Transformed;
+		%feature("autodoc", "Returns a box which is the result of applying the given transformation to this box.
+
+Parameters
+----------
+theTransform: NCollection_Mat4<T>
+
+Returns
+-------
+BVH_Box<T, 3 >
+") Transformed;
+		BVH_Box<T, 3 > Transformed(const NCollection_Mat4<T> & theTransform);
+
+};
+
+
+%extend BVH_BaseBox<T,3,BVH_Box> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*************************
 * class BVH_BaseTraverse *
 *************************/
@@ -150,9 +197,6 @@ int
 /***********************
 * class BVH_BinaryTree *
 ***********************/
-/****************
-* class BVH_Box *
-****************/
 /***********************
 * class BVH_BuildQueue *
 ***********************/
@@ -177,6 +221,9 @@ int
 /*********************
 * class BVH_QuadTree *
 *********************/
+/****************
+* class BVH_Ray *
+****************/
 /****************
 * class BVH_Set *
 ****************/
@@ -291,6 +338,9 @@ int
 /**************************
 * class BVH_BinnedBuilder *
 **************************/
+/****************
+* class BVH_Box *
+****************/
 /*******************
 * class BVH_BoxSet *
 *******************/
@@ -602,6 +652,10 @@ class BVH_ObjectSet:
 	pass
 
 @classnotwrapped
+class BVH_BaseBox:
+	pass
+
+@classnotwrapped
 class BVH_Box:
 	pass
 
@@ -755,6 +809,10 @@ class BVH_PairTraverse:
 
 @classnotwrapped
 class BVH_BoxSet:
+	pass
+
+@classnotwrapped
+class BVH_Ray:
 	pass
 
 @classnotwrapped

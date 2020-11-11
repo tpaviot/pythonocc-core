@@ -440,6 +440,29 @@ gp_Dir
 ") Direction;
 		const gp_Dir Direction();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
 		/****************** IsCoaxial ******************/
 		/**** md5 signature: 5a0f3aebace8af9610e7543d64eaa8a4 ****/
 		%feature("compactdefaultargs") IsCoaxial;
@@ -909,6 +932,29 @@ gp_Dir
 ") Direction;
 		const gp_Dir Direction();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
 		/****************** IsCoplanar ******************/
 		/**** md5 signature: b5afd6b5d22740e47c1cc2021bf5f05f ****/
 		%feature("compactdefaultargs") IsCoplanar;
@@ -1374,6 +1420,14 @@ None
 ") gp_Ax22d;
 		 gp_Ax22d(const gp_Ax2d & A, const Standard_Boolean Sense = Standard_True);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Location ******************/
 		/**** md5 signature: fbf774a3a1efe16540d680c0476bcbc8 ****/
 		%feature("compactdefaultargs") Location;
@@ -1802,6 +1856,14 @@ gp_Dir2d
 ") Direction;
 		const gp_Dir2d Direction();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsCoaxial ******************/
 		/**** md5 signature: 75e748f680609f8e38c2264eb1a2db73 ****/
 		%feature("compactdefaultargs") IsCoaxial;
@@ -2277,6 +2339,29 @@ Returns
 gp_Dir
 ") Direction;
 		const gp_Dir Direction();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
 
 		/****************** IsCoplanar ******************/
 		/**** md5 signature: 7a81678968149480bd1087dc8a4f6d4a ****/
@@ -4919,6 +5004,29 @@ float
 ") DotCross;
 		Standard_Real DotCross(const gp_Dir & V1, const gp_Dir & V2);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
 		/****************** IsEqual ******************/
 		/**** md5 signature: 9bd10523f960cee618dbe142c29feac0 ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -5466,6 +5574,14 @@ float
 ") Dot;
 		Standard_Real Dot(const gp_Dir2d & Other);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsEqual ******************/
 		/**** md5 signature: c2d8852909e1955d337b5fbac80c68ce ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -6965,6 +7081,14 @@ None
 ") gp_GTrsf;
 		 gp_GTrsf(const gp_Mat & M, const gp_XYZ & V);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Form ******************/
 		/**** md5 signature: 9bfbf058eebcd895fd3b29a4bba4ff05 ****/
 		%feature("compactdefaultargs") Form;
@@ -12368,6 +12492,14 @@ float
 ") Distance;
 		Standard_Real Distance(const gp_Pln & Other);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Location ******************/
 		/**** md5 signature: 42040ad2ed401b7e80bf90e4b6b5f418 ****/
 		%feature("compactdefaultargs") Location;
@@ -12912,6 +13044,29 @@ float
 ") Distance;
 		Standard_Real Distance(const gp_Pnt & Other);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
 		/****************** IsEqual ******************/
 		/**** md5 signature: fac4cb0b0c6a2d6b9d46b54ba1428589 ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -13449,6 +13604,14 @@ float
 ") Distance;
 		Standard_Real Distance(const gp_Pnt2d & Other);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsEqual ******************/
 		/**** md5 signature: c7b908b5b337585cb84e3de55f70564d ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -13848,21 +14011,6 @@ Returns
 None
 ") gp_Quaternion;
 		 gp_Quaternion(const Standard_Real x, const Standard_Real y, const Standard_Real z, const Standard_Real w);
-
-		/****************** gp_Quaternion ******************/
-		/**** md5 signature: 598558a9ff5a5d25aa21a89720f4b597 ****/
-		%feature("compactdefaultargs") gp_Quaternion;
-		%feature("autodoc", "Creates copy of another quaternion.
-
-Parameters
-----------
-theToCopy: gp_Quaternion
-
-Returns
--------
-None
-") gp_Quaternion;
-		 gp_Quaternion(const gp_Quaternion & theToCopy);
 
 		/****************** gp_Quaternion ******************/
 		/**** md5 signature: f435bfacfee67199c3f9552e8bb3cb01 ****/
@@ -15840,6 +15988,21 @@ gp_Mat
 ") HVectorialPart;
 		const gp_Mat HVectorialPart();
 
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
+
 		/****************** Invert ******************/
 		/**** md5 signature: 980f166f600d23a8c77565829af2eeff ****/
 		%feature("compactdefaultargs") Invert;
@@ -16065,6 +16228,21 @@ Returns
 None
 ") SetRotation;
 		void SetRotation(const gp_Quaternion & R);
+
+		/****************** SetRotationPart ******************/
+		/**** md5 signature: ecee33d6b866206c8c2a38ba132d10cc ****/
+		%feature("compactdefaultargs") SetRotationPart;
+		%feature("autodoc", "Replaces the rotation part with specified quaternion.
+
+Parameters
+----------
+R: gp_Quaternion
+
+Returns
+-------
+None
+") SetRotationPart;
+		void SetRotationPart(const gp_Quaternion & R);
 
 		/****************** SetScale ******************/
 		/**** md5 signature: bf33240be4dcb89b9e42c27b642a81bf ****/
@@ -17104,6 +17282,14 @@ float
 ") DotCross;
 		Standard_Real DotCross(const gp_Vec & V1, const gp_Vec & V2);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsEqual ******************/
 		/**** md5 signature: 1eccffb4c9b9c582baf9d99667ad6ef7 ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -19794,6 +19980,21 @@ Returns
 float *
 ") GetData;
 		const Standard_Real * GetData();
+
+		/****************** InitFromJson ******************/
+		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
+		%feature("compactdefaultargs") InitFromJson;
+		%feature("autodoc", "Inits the content of me from the stream.
+
+Parameters
+----------
+theSStream: Standard_SStream
+
+Returns
+-------
+theStreamPos: int
+") InitFromJson;
+		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: d23503bef8a5d867cb3e2f5bae904afb ****/

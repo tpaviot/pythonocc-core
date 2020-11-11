@@ -1410,21 +1410,6 @@ TopTools_ListOfShape
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
-		/****************** GeneratedEdge ******************/
-		/**** md5 signature: f0bfb2d646d07d429ca951574c9bb754 ****/
-		%feature("compactdefaultargs") GeneratedEdge;
-		%feature("autodoc", "Returns the list of edges generated from the shape <s>.
-
-Parameters
-----------
-S: TopoDS_Shape
-
-Returns
--------
-TopTools_ListOfShape
-") GeneratedEdge;
-		const TopTools_ListOfShape & GeneratedEdge(const TopoDS_Shape & S);
-
 		/****************** GetJoinType ******************/
 		/**** md5 signature: 98bbd653674d56f0804dd681f91e2cf5 ****/
 		%feature("compactdefaultargs") GetJoinType;
@@ -1436,6 +1421,21 @@ GeomAbs_JoinType
 ") GetJoinType;
 		GeomAbs_JoinType GetJoinType();
 
+		/****************** IsDeleted ******************/
+		/**** md5 signature: 28be7c17a3b2776f59567554f488bbf5 ****/
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "Returns true if the shape has been removed from the result.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
+
 		/****************** MakeOffset ******************/
 		/**** md5 signature: 3130f0edba2681c2d8feeda712784d5d ****/
 		%feature("compactdefaultargs") MakeOffset;
@@ -1446,6 +1446,21 @@ Returns
 BRepOffset_MakeOffset
 ") MakeOffset;
 		virtual const BRepOffset_MakeOffset & MakeOffset();
+
+		/****************** Modified ******************/
+		/**** md5 signature: 73ccfe97b4ed94547a190332224ffe23 ****/
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "Returns the list of shapes modified from the shape <s>.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****************** PerformByJoin ******************/
 		/**** md5 signature: 6ac254a6e8ed9352884246b2f9d9a1a7 ****/

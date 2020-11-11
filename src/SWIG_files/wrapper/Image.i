@@ -55,6 +55,18 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Image_CompressedFormat {
+	Image_CompressedFormat_UNKNOWN = Image_Format_UNKNOWN,
+	Image_CompressedFormat_RGB_S3TC_DXT1 = Image_Format_NB,
+	Image_CompressedFormat_RGBA_S3TC_DXT1 = 2,
+	Image_CompressedFormat_RGBA_S3TC_DXT3 = 3,
+	Image_CompressedFormat_RGBA_S3TC_DXT5 = 4,
+};
+
+enum  {
+	Image_CompressedFormat_NB = Image_CompressedFormat_RGBA_S3TC_DXT5 + 1,
+};
+
 enum Image_Format {
 	Image_Format_UNKNOWN = 0,
 	Image_Format_Gray = 1,
@@ -67,16 +79,33 @@ enum Image_Format {
 	Image_Format_BGRA = 8,
 	Image_Format_GrayF = 9,
 	Image_Format_AlphaF = 10,
-	Image_Format_RGBF = 11,
-	Image_Format_BGRF = 12,
-	Image_Format_RGBAF = 13,
-	Image_Format_BGRAF = 14,
+	Image_Format_RGF = 11,
+	Image_Format_RGBF = 12,
+	Image_Format_BGRF = 13,
+	Image_Format_RGBAF = 14,
+	Image_Format_BGRAF = 15,
+};
+
+enum  {
+	Image_Format_NB = Image_Format_BGRAF + 1,
 };
 
 /* end public enums declaration */
 
 /* python proy classes for enums */
 %pythoncode {
+
+class Image_CompressedFormat(IntEnum):
+	Image_CompressedFormat_UNKNOWN = Image_Format_UNKNOWN
+	Image_CompressedFormat_RGB_S3TC_DXT1 = Image_Format_NB
+	Image_CompressedFormat_RGBA_S3TC_DXT1 = 2
+	Image_CompressedFormat_RGBA_S3TC_DXT3 = 3
+	Image_CompressedFormat_RGBA_S3TC_DXT5 = 4
+Image_CompressedFormat_UNKNOWN = Image_CompressedFormat.Image_CompressedFormat_UNKNOWN
+Image_CompressedFormat_RGB_S3TC_DXT1 = Image_CompressedFormat.Image_CompressedFormat_RGB_S3TC_DXT1
+Image_CompressedFormat_RGBA_S3TC_DXT1 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT1
+Image_CompressedFormat_RGBA_S3TC_DXT3 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT3
+Image_CompressedFormat_RGBA_S3TC_DXT5 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT5
 
 class Image_Format(IntEnum):
 	Image_Format_UNKNOWN = 0
@@ -90,10 +119,11 @@ class Image_Format(IntEnum):
 	Image_Format_BGRA = 8
 	Image_Format_GrayF = 9
 	Image_Format_AlphaF = 10
-	Image_Format_RGBF = 11
-	Image_Format_BGRF = 12
-	Image_Format_RGBAF = 13
-	Image_Format_BGRAF = 14
+	Image_Format_RGF = 11
+	Image_Format_RGBF = 12
+	Image_Format_BGRF = 13
+	Image_Format_RGBAF = 14
+	Image_Format_BGRAF = 15
 Image_Format_UNKNOWN = Image_Format.Image_Format_UNKNOWN
 Image_Format_Gray = Image_Format.Image_Format_Gray
 Image_Format_Alpha = Image_Format.Image_Format_Alpha
@@ -105,6 +135,7 @@ Image_Format_RGBA = Image_Format.Image_Format_RGBA
 Image_Format_BGRA = Image_Format.Image_Format_BGRA
 Image_Format_GrayF = Image_Format.Image_Format_GrayF
 Image_Format_AlphaF = Image_Format.Image_Format_AlphaF
+Image_Format_RGF = Image_Format.Image_Format_RGF
 Image_Format_RGBF = Image_Format.Image_Format_RGBF
 Image_Format_BGRF = Image_Format.Image_Format_BGRF
 Image_Format_RGBAF = Image_Format.Image_Format_RGBAF
@@ -148,6 +179,15 @@ Image_Format_BGRAF = Image_Format.Image_Format_BGRAF
 /************************
 * class Image_ColorRGBF *
 ************************/
+/***********************
+* class Image_ColorRGF *
+***********************/
+/*******************************
+* class Image_CompressedPixMap *
+*******************************/
+/************************
+* class Image_DDSParser *
+************************/
 /*******************
 * class Image_Diff *
 *******************/
@@ -157,6 +197,9 @@ Image_Format_BGRAF = Image_Format.Image_Format_BGRAF
 /*************************
 * class Image_PixMapData *
 *************************/
+/*******************************
+* class Image_SupportedFormats *
+*******************************/
 /**********************
 * class Image_Texture *
 **********************/
@@ -199,6 +242,10 @@ class Image_ColorBGRA:
 	pass
 
 @classnotwrapped
+class Image_ColorRGF:
+	pass
+
+@classnotwrapped
 class Image_ColorRGBF:
 	pass
 
@@ -223,11 +270,19 @@ class Image_VideoRecorder:
 	pass
 
 @classnotwrapped
+class Image_CompressedPixMap:
+	pass
+
+@classnotwrapped
 class Image_PixMapData:
 	pass
 
 @classnotwrapped
 class Image_PixMapTypedData:
+	pass
+
+@classnotwrapped
+class Image_DDSParser:
 	pass
 
 @classnotwrapped
@@ -244,6 +299,10 @@ class Image_AlienPixMap:
 
 @classnotwrapped
 class Image_Diff:
+	pass
+
+@classnotwrapped
+class Image_SupportedFormats:
 	pass
 
 }

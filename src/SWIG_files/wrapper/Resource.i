@@ -60,10 +60,31 @@ from OCC.Core.Exception import *
 enum Resource_FormatType {
 	Resource_FormatType_SJIS = 0,
 	Resource_FormatType_EUC = 1,
-	Resource_FormatType_ANSI = 2,
+	Resource_FormatType_NoConversion = 2,
 	Resource_FormatType_GB = 3,
 	Resource_FormatType_UTF8 = 4,
 	Resource_FormatType_SystemLocale = 5,
+	Resource_FormatType_CP1250 = 6,
+	Resource_FormatType_CP1251 = 7,
+	Resource_FormatType_CP1252 = 8,
+	Resource_FormatType_CP1253 = 9,
+	Resource_FormatType_CP1254 = 10,
+	Resource_FormatType_CP1255 = 11,
+	Resource_FormatType_CP1256 = 12,
+	Resource_FormatType_CP1257 = 13,
+	Resource_FormatType_CP1258 = 14,
+	Resource_FormatType_iso8859_1 = 15,
+	Resource_FormatType_iso8859_2 = 16,
+	Resource_FormatType_iso8859_3 = 17,
+	Resource_FormatType_iso8859_4 = 18,
+	Resource_FormatType_iso8859_5 = 19,
+	Resource_FormatType_iso8859_6 = 20,
+	Resource_FormatType_iso8859_7 = 21,
+	Resource_FormatType_iso8859_8 = 22,
+	Resource_FormatType_iso8859_9 = 23,
+	Resource_FormatType_GBK = 24,
+	Resource_FormatType_Big5 = 25,
+	Resource_FormatType_ANSI = Resource_FormatType_NoConversion,
 	Resource_SJIS = Resource_FormatType_SJIS,
 	Resource_EUC = Resource_FormatType_EUC,
 	Resource_ANSI = Resource_FormatType_ANSI,
@@ -78,20 +99,62 @@ enum Resource_FormatType {
 class Resource_FormatType(IntEnum):
 	Resource_FormatType_SJIS = 0
 	Resource_FormatType_EUC = 1
-	Resource_FormatType_ANSI = 2
+	Resource_FormatType_NoConversion = 2
 	Resource_FormatType_GB = 3
 	Resource_FormatType_UTF8 = 4
 	Resource_FormatType_SystemLocale = 5
+	Resource_FormatType_CP1250 = 6
+	Resource_FormatType_CP1251 = 7
+	Resource_FormatType_CP1252 = 8
+	Resource_FormatType_CP1253 = 9
+	Resource_FormatType_CP1254 = 10
+	Resource_FormatType_CP1255 = 11
+	Resource_FormatType_CP1256 = 12
+	Resource_FormatType_CP1257 = 13
+	Resource_FormatType_CP1258 = 14
+	Resource_FormatType_iso8859_1 = 15
+	Resource_FormatType_iso8859_2 = 16
+	Resource_FormatType_iso8859_3 = 17
+	Resource_FormatType_iso8859_4 = 18
+	Resource_FormatType_iso8859_5 = 19
+	Resource_FormatType_iso8859_6 = 20
+	Resource_FormatType_iso8859_7 = 21
+	Resource_FormatType_iso8859_8 = 22
+	Resource_FormatType_iso8859_9 = 23
+	Resource_FormatType_GBK = 24
+	Resource_FormatType_Big5 = 25
+	Resource_FormatType_ANSI = Resource_FormatType_NoConversion
 	Resource_SJIS = Resource_FormatType_SJIS
 	Resource_EUC = Resource_FormatType_EUC
 	Resource_ANSI = Resource_FormatType_ANSI
 	Resource_GB = Resource_FormatType_GB
 Resource_FormatType_SJIS = Resource_FormatType.Resource_FormatType_SJIS
 Resource_FormatType_EUC = Resource_FormatType.Resource_FormatType_EUC
-Resource_FormatType_ANSI = Resource_FormatType.Resource_FormatType_ANSI
+Resource_FormatType_NoConversion = Resource_FormatType.Resource_FormatType_NoConversion
 Resource_FormatType_GB = Resource_FormatType.Resource_FormatType_GB
 Resource_FormatType_UTF8 = Resource_FormatType.Resource_FormatType_UTF8
 Resource_FormatType_SystemLocale = Resource_FormatType.Resource_FormatType_SystemLocale
+Resource_FormatType_CP1250 = Resource_FormatType.Resource_FormatType_CP1250
+Resource_FormatType_CP1251 = Resource_FormatType.Resource_FormatType_CP1251
+Resource_FormatType_CP1252 = Resource_FormatType.Resource_FormatType_CP1252
+Resource_FormatType_CP1253 = Resource_FormatType.Resource_FormatType_CP1253
+Resource_FormatType_CP1254 = Resource_FormatType.Resource_FormatType_CP1254
+Resource_FormatType_CP1255 = Resource_FormatType.Resource_FormatType_CP1255
+Resource_FormatType_CP1256 = Resource_FormatType.Resource_FormatType_CP1256
+Resource_FormatType_CP1257 = Resource_FormatType.Resource_FormatType_CP1257
+Resource_FormatType_CP1258 = Resource_FormatType.Resource_FormatType_CP1258
+Resource_FormatType_iso8859_1 = Resource_FormatType.Resource_FormatType_iso8859_1
+Resource_FormatType_iso8859_2 = Resource_FormatType.Resource_FormatType_iso8859_2
+Resource_FormatType_iso8859_3 = Resource_FormatType.Resource_FormatType_iso8859_3
+Resource_FormatType_iso8859_4 = Resource_FormatType.Resource_FormatType_iso8859_4
+Resource_FormatType_iso8859_5 = Resource_FormatType.Resource_FormatType_iso8859_5
+Resource_FormatType_iso8859_6 = Resource_FormatType.Resource_FormatType_iso8859_6
+Resource_FormatType_iso8859_7 = Resource_FormatType.Resource_FormatType_iso8859_7
+Resource_FormatType_iso8859_8 = Resource_FormatType.Resource_FormatType_iso8859_8
+Resource_FormatType_iso8859_9 = Resource_FormatType.Resource_FormatType_iso8859_9
+Resource_FormatType_GBK = Resource_FormatType.Resource_FormatType_GBK
+Resource_FormatType_Big5 = Resource_FormatType.Resource_FormatType_Big5
+Resource_FormatType_ANSI = Resource_FormatType.Resource_FormatType_ANSI
 Resource_SJIS = Resource_FormatType.Resource_SJIS
 Resource_EUC = Resource_FormatType.Resource_EUC
 Resource_ANSI = Resource_FormatType.Resource_ANSI
@@ -179,23 +242,23 @@ None
 		 Resource_Manager(const char * aName, const Standard_Boolean Verbose = Standard_False);
 
 		/****************** Resource_Manager ******************/
-		/**** md5 signature: ce1f4090aa08cbeae77bec1df4191dbe ****/
+		/**** md5 signature: 1f6d540d565637ee2761b199541d8d4f ****/
 		%feature("compactdefaultargs") Resource_Manager;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Create a resource manager. @param thename [in] description file name @param thedefaultsdirectory [in] default folder for looking description file @param theuserdefaultsdirectory [in] user folder for looking description file @param theisverbose [in] print verbose messages.
 
 Parameters
 ----------
-aName: char *
-aDefaultsDirectory: TCollection_AsciiString
-anUserDefaultsDirectory: TCollection_AsciiString
-Verbose: bool,optional
+theName: TCollection_AsciiString
+theDefaultsDirectory: TCollection_AsciiString
+theUserDefaultsDirectory: TCollection_AsciiString
+theIsVerbose: bool,optional
 	default value is Standard_False
 
 Returns
 -------
 None
 ") Resource_Manager;
-		 Resource_Manager(const char * aName, TCollection_AsciiString & aDefaultsDirectory, TCollection_AsciiString & anUserDefaultsDirectory, const Standard_Boolean Verbose = Standard_False);
+		 Resource_Manager(const TCollection_AsciiString & theName, const TCollection_AsciiString & theDefaultsDirectory, const TCollection_AsciiString & theUserDefaultsDirectory, const Standard_Boolean theIsVerbose = Standard_False);
 
 		/****************** ExtValue ******************/
 		/**** md5 signature: eacb0ae55d7f76df617e14be66e1f1b0 ****/
@@ -226,6 +289,22 @@ Returns
 bool
 ") Find;
 		Standard_Boolean Find(const char * aResource);
+
+		/****************** Find ******************/
+		/**** md5 signature: 294981535cdceb04223d5675a243c4c7 ****/
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "Returns true if the resource does exist.
+
+Parameters
+----------
+theResource: TCollection_AsciiString
+theValue: TCollection_AsciiString
+
+Returns
+-------
+bool
+") Find;
+		Standard_Boolean Find(const TCollection_AsciiString & theResource, TCollection_AsciiString & theValue);
 
 		/****************** GetResourcePath ******************/
 		/**** md5 signature: e37f4ebfe1a5c28a696f168d5c81f4e2 ****/
@@ -380,22 +459,6 @@ char *
 *************************/
 class Resource_Unicode {
 	public:
-		/****************** ConvertANSIToUnicode ******************/
-		/**** md5 signature: a675612657f24ea22357a1767c5ea883 ****/
-		%feature("compactdefaultargs") ConvertANSIToUnicode;
-		%feature("autodoc", "Converts non-ascii cstring <fromstr> in ansi format to unicode extendedstring <tostr>.
-
-Parameters
-----------
-fromstr: char *
-tostr: TCollection_ExtendedString
-
-Returns
--------
-None
-") ConvertANSIToUnicode;
-		static void ConvertANSIToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
-
 		/****************** ConvertBig5ToUnicode ******************/
 		/**** md5 signature: 4168524e0213960fd803d4807ed33f90 ****/
 		%feature("compactdefaultargs") ConvertBig5ToUnicode;

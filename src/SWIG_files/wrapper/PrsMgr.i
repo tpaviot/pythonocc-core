@@ -45,7 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsmgr.html"
 #include<Graphic3d_module.hxx>
 #include<Bnd_module.hxx>
 #include<Quantity_module.hxx>
-#include<Geom_module.hxx>
+#include<TopLoc_module.hxx>
 #include<Aspect_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
@@ -86,7 +86,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsmgr.html"
 %import Graphic3d.i
 %import Bnd.i
 %import Quantity.i
-%import Geom.i
+%import TopLoc.i
 %import Aspect.i
 %import gp.i
 %import TColStd.i
@@ -293,15 +293,15 @@ None
 		virtual void Color(Quantity_Color & theColor);
 
 		/****************** CombinedParentTransformation ******************/
-		/**** md5 signature: 823dcaa3271ee1294574692001416d03 ****/
+		/**** md5 signature: 428511825096b7aaf0fc92a9e55ba4b0 ****/
 		%feature("compactdefaultargs") CombinedParentTransformation;
 		%feature("autodoc", "Return combined parent transformation.
 
 Returns
 -------
-opencascade::handle<Geom_Transformation>
+opencascade::handle<TopLoc_Datum3D>
 ") CombinedParentTransformation;
-		const opencascade::handle<Geom_Transformation> & CombinedParentTransformation();
+		const opencascade::handle<TopLoc_Datum3D> & CombinedParentTransformation();
 
 		/****************** CurrentFacingModel ******************/
 		/**** md5 signature: e7b4247f51b5a9a82f059bec0d9c66fa ****/
@@ -543,15 +543,15 @@ gp_Trsf
 		const gp_Trsf LocalTransformation();
 
 		/****************** LocalTransformationGeom ******************/
-		/**** md5 signature: 49f2f633f15a5f08334fd18a611dca73 ****/
+		/**** md5 signature: f5b190921945e48b58f986d6ce8cec5c ****/
 		%feature("compactdefaultargs") LocalTransformationGeom;
 		%feature("autodoc", "Return the local transformation. note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
 
 Returns
 -------
-opencascade::handle<Geom_Transformation>
+opencascade::handle<TopLoc_Datum3D>
 ") LocalTransformationGeom;
-		const opencascade::handle<Geom_Transformation> & LocalTransformationGeom();
+		const opencascade::handle<TopLoc_Datum3D> & LocalTransformationGeom();
 
 		/****************** Material ******************/
 		/**** md5 signature: 016c712e17370767713256cdb90adb24 ****/
@@ -841,19 +841,19 @@ None
 		void SetLocalTransformation(const gp_Trsf & theTrsf);
 
 		/****************** SetLocalTransformation ******************/
-		/**** md5 signature: 3a5d423eca534fb275fc2d61b2ba4344 ****/
+		/**** md5 signature: 2a3805a018e02e598cdf198a3ac716e8 ****/
 		%feature("compactdefaultargs") SetLocalTransformation;
 		%feature("autodoc", "Sets local transformation to thetransformation. note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
 
 Parameters
 ----------
-theTrsf: Geom_Transformation
+theTrsf: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") SetLocalTransformation;
-		void SetLocalTransformation(const opencascade::handle<Geom_Transformation> & theTrsf);
+		void SetLocalTransformation(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** SetMaterial ******************/
 		/**** md5 signature: 92a522cdb58df60ff50ddd69027d631f ****/
@@ -1114,15 +1114,15 @@ gp_Trsf
 		const gp_Trsf Transformation();
 
 		/****************** TransformationGeom ******************/
-		/**** md5 signature: b466680ae50895769bb7cf7c7ed439a5 ****/
+		/**** md5 signature: cf18147ab261a78305fcabf7ec18893d ****/
 		%feature("compactdefaultargs") TransformationGeom;
 		%feature("autodoc", "Return the transformation taking into account transformation of parent object(s). note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
 
 Returns
 -------
-opencascade::handle<Geom_Transformation>
+opencascade::handle<TopLoc_Datum3D>
 ") TransformationGeom;
-		const opencascade::handle<Geom_Transformation> & TransformationGeom();
+		const opencascade::handle<TopLoc_Datum3D> & TransformationGeom();
 
 		/****************** Transparency ******************/
 		/**** md5 signature: 85ff2aaf1e1e55093c79984940af1fec ****/
@@ -1322,6 +1322,14 @@ None
 ") Display;
 		virtual void Display();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 1226ba71f21d492e9a9175cd12d59e28 ****/
 		%feature("compactdefaultargs") Erase;
@@ -1796,14 +1804,14 @@ opencascade::handle<Graphic3d_StructureManager>
 		const opencascade::handle<Graphic3d_StructureManager> & StructureManager();
 
 		/****************** Transform ******************/
-		/**** md5 signature: 3a7237b7f354860ed7b45ff24bc96d24 ****/
+		/**** md5 signature: 344885007b9ccb1456edbdc153381925 ****/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "Sets the transformation thetransformation for the presentable object theprsobject. theprsobject has the display mode themode; this has the default value of 0, that is, the wireframe display mode.
 
 Parameters
 ----------
 thePrsObject: PrsMgr_PresentableObject
-theTransformation: Geom_Transformation
+theTransformation: TopLoc_Datum3D
 theMode: int,optional
 	default value is 0
 
@@ -1811,7 +1819,7 @@ Returns
 -------
 None
 ") Transform;
-		void Transform(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<Geom_Transformation> & theTransformation, const Standard_Integer theMode = 0);
+		void Transform(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<TopLoc_Datum3D> & theTransformation, const Standard_Integer theMode = 0);
 
 		/****************** Unhighlight ******************/
 		/**** md5 signature: 1db3626dfa4fdeb3c345157ebf7f6ad8 ****/

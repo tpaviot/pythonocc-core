@@ -49,11 +49,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdselect.html"
 #include<V3d_module.hxx>
 #include<Select3D_module.hxx>
 #include<TopAbs_module.hxx>
-#include<Graphic3d_module.hxx>
-#include<Geom_module.hxx>
-#include<gp_module.hxx>
-#include<TColgp_module.hxx>
-#include<Image_module.hxx>
 #include<Bnd_module.hxx>
 #include<TShort_module.hxx>
 #include<HLRAlgo_module.hxx>
@@ -88,11 +83,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdselect.html"
 %import V3d.i
 %import Select3D.i
 %import TopAbs.i
-%import Graphic3d.i
-%import Geom.i
-%import gp.i
-%import TColgp.i
-%import Image.i
 
 %pythoncode {
 from enum import IntEnum
@@ -100,16 +90,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum StdSelect_TypeOfResult {
-	StdSelect_TOR_SIMPLE = 0,
-	StdSelect_TOR_MULTIPLE = 1,
-};
-
-enum StdSelect_SensitivityMode {
-	StdSelect_SM_WINDOW = 0,
-	StdSelect_SM_VIEW = 1,
-};
-
 enum StdSelect_TypeOfFace {
 	StdSelect_AnyFace = 0,
 	StdSelect_Plane = 1,
@@ -126,12 +106,6 @@ enum StdSelect_TypeOfEdge {
 	StdSelect_Circle = 2,
 };
 
-enum StdSelect_DisplayMode {
-	StdSelect_DM_Wireframe = 0,
-	StdSelect_DM_Shading = 1,
-	StdSelect_DM_HLR = 2,
-};
-
 enum StdSelect_TypeOfSelectionImage {
 	StdSelect_TypeOfSelectionImage_NormalizedDepth = 0,
 	StdSelect_TypeOfSelectionImage_NormalizedDepthInverted = 1,
@@ -146,18 +120,6 @@ enum StdSelect_TypeOfSelectionImage {
 
 /* python proy classes for enums */
 %pythoncode {
-
-class StdSelect_TypeOfResult(IntEnum):
-	StdSelect_TOR_SIMPLE = 0
-	StdSelect_TOR_MULTIPLE = 1
-StdSelect_TOR_SIMPLE = StdSelect_TypeOfResult.StdSelect_TOR_SIMPLE
-StdSelect_TOR_MULTIPLE = StdSelect_TypeOfResult.StdSelect_TOR_MULTIPLE
-
-class StdSelect_SensitivityMode(IntEnum):
-	StdSelect_SM_WINDOW = 0
-	StdSelect_SM_VIEW = 1
-StdSelect_SM_WINDOW = StdSelect_SensitivityMode.StdSelect_SM_WINDOW
-StdSelect_SM_VIEW = StdSelect_SensitivityMode.StdSelect_SM_VIEW
 
 class StdSelect_TypeOfFace(IntEnum):
 	StdSelect_AnyFace = 0
@@ -183,14 +145,6 @@ StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
 StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
 StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
 
-class StdSelect_DisplayMode(IntEnum):
-	StdSelect_DM_Wireframe = 0
-	StdSelect_DM_Shading = 1
-	StdSelect_DM_HLR = 2
-StdSelect_DM_Wireframe = StdSelect_DisplayMode.StdSelect_DM_Wireframe
-StdSelect_DM_Shading = StdSelect_DisplayMode.StdSelect_DM_Shading
-StdSelect_DM_HLR = StdSelect_DisplayMode.StdSelect_DM_HLR
-
 class StdSelect_TypeOfSelectionImage(IntEnum):
 	StdSelect_TypeOfSelectionImage_NormalizedDepth = 0
 	StdSelect_TypeOfSelectionImage_NormalizedDepthInverted = 1
@@ -213,18 +167,14 @@ StdSelect_TypeOfSelectionImage_ColoredSelectionMode = StdSelect_TypeOfSelectionI
 %wrap_handle(StdSelect_BRepOwner)
 %wrap_handle(StdSelect_EdgeFilter)
 %wrap_handle(StdSelect_FaceFilter)
-%wrap_handle(StdSelect_Prs)
 %wrap_handle(StdSelect_Shape)
 %wrap_handle(StdSelect_ShapeTypeFilter)
-%wrap_handle(StdSelect_ViewerSelector3d)
 /* end handles declaration */
 
 /* templates */
-%template(StdSelect_IndexedDataMapOfOwnerPrs) NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,opencascade::handle<StdSelect_Prs>,TColStd_MapTransientHasher>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<StdSelect_Prs>, TColStd_MapTransientHasher> StdSelect_IndexedDataMapOfOwnerPrs;
 /* end typedefs declaration */
 
 /******************
@@ -334,6 +284,14 @@ None
 ") Clear;
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** HasHilightMode ******************/
 		/**** md5 signature: 35c4cc36b9d1287cbb8be9209c167aef ****/
 		%feature("compactdefaultargs") HasHilightMode;
@@ -843,48 +801,6 @@ StdSelect_TypeOfFace
 	}
 };
 
-/**********************
-* class StdSelect_Prs *
-**********************/
-class StdSelect_Prs : public Prs3d_Presentation {
-	public:
-		/****************** StdSelect_Prs ******************/
-		/**** md5 signature: 8caf3fbfd8fa47bd3fbd5631f225c2cd ****/
-		%feature("compactdefaultargs") StdSelect_Prs;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aStructureManager: Graphic3d_StructureManager
-
-Returns
--------
-None
-") StdSelect_Prs;
-		 StdSelect_Prs(const opencascade::handle<Graphic3d_StructureManager> & aStructureManager);
-
-		/****************** Manager ******************/
-		/**** md5 signature: 0a08a228bc1def91c35e81e77fa11554 ****/
-		%feature("compactdefaultargs") Manager;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Graphic3d_StructureManager>
-") Manager;
-		const opencascade::handle<Graphic3d_StructureManager> & Manager();
-
-};
-
-
-%make_alias(StdSelect_Prs)
-
-%extend StdSelect_Prs {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /************************
 * class StdSelect_Shape *
 ************************/
@@ -925,23 +841,14 @@ None
 ") Compute;
 		void Compute(const opencascade::handle<PrsMgr_PresentationManager3d> & aPresentationManager, const opencascade::handle<Prs3d_Presentation> & aPresentation, const Standard_Integer aMode = 0);
 
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
 
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Shape ******************/
 		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
 		%feature("compactdefaultargs") Shape;
@@ -1030,7 +937,7 @@ bool
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
 		/****************** Type ******************/
-		/**** md5 signature: 3f27a65186b8053d282c2c0d8c4513b8 ****/
+		/**** md5 signature: 9abae9197ed7edaf140269b2fe59aeea ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Returns the type of shape selected by the filter.
 
@@ -1046,179 +953,6 @@ TopAbs_ShapeEnum
 %make_alias(StdSelect_ShapeTypeFilter)
 
 %extend StdSelect_ShapeTypeFilter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***********************************
-* class StdSelect_ViewerSelector3d *
-***********************************/
-class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
-	public:
-		/****************** StdSelect_ViewerSelector3d ******************/
-		/**** md5 signature: a7c4141a6ee789ee2f16677daaa6db68 ****/
-		%feature("compactdefaultargs") StdSelect_ViewerSelector3d;
-		%feature("autodoc", "Constructs an empty 3d selector object.
-
-Returns
--------
-None
-") StdSelect_ViewerSelector3d;
-		 StdSelect_ViewerSelector3d();
-
-		/****************** ClearSensitive ******************/
-		/**** md5 signature: bbfbdb95251072aaccc54e26ea15ada9 ****/
-		%feature("compactdefaultargs") ClearSensitive;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theView: V3d_View
-
-Returns
--------
-None
-") ClearSensitive;
-		void ClearSensitive(const opencascade::handle<V3d_View> & theView);
-
-		/****************** DisplaySensitive ******************/
-		/**** md5 signature: 8dded899c4a255afc18ddc44c8d7a6f7 ****/
-		%feature("compactdefaultargs") DisplaySensitive;
-		%feature("autodoc", "Displays sensitives in view <theview>.
-
-Parameters
-----------
-theView: V3d_View
-
-Returns
--------
-None
-") DisplaySensitive;
-		void DisplaySensitive(const opencascade::handle<V3d_View> & theView);
-
-		/****************** DisplaySensitive ******************/
-		/**** md5 signature: b1201290956c96d7a296cb8583c59abe ****/
-		%feature("compactdefaultargs") DisplaySensitive;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theSel: SelectMgr_Selection
-theTrsf: gp_Trsf
-theView: V3d_View
-theToClearOthers: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") DisplaySensitive;
-		void DisplaySensitive(const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theTrsf, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToClearOthers = Standard_True);
-
-		/****************** Pick ******************/
-		/**** md5 signature: 2bffaec90f889b1c8a589371f27c765d ****/
-		%feature("compactdefaultargs") Pick;
-		%feature("autodoc", "Picks the sensitive entity at the pixel coordinates of the mouse <thexpix> and <theypix>. the selector looks for touched areas and owners.
-
-Parameters
-----------
-theXPix: int
-theYPix: int
-theView: V3d_View
-
-Returns
--------
-None
-") Pick;
-		void Pick(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView);
-
-		/****************** Pick ******************/
-		/**** md5 signature: ac91d378236f4cd1507ea2ad52a93f76 ****/
-		%feature("compactdefaultargs") Pick;
-		%feature("autodoc", "Picks the sensitive entity according to the minimum and maximum pixel values <thexpmin>, <theypmin>, <thexpmax> and <theypmax> defining a 2d area for selection in the 3d view aview.
-
-Parameters
-----------
-theXPMin: int
-theYPMin: int
-theXPMax: int
-theYPMax: int
-theView: V3d_View
-
-Returns
--------
-None
-") Pick;
-		void Pick(const Standard_Integer theXPMin, const Standard_Integer theYPMin, const Standard_Integer theXPMax, const Standard_Integer theYPMax, const opencascade::handle<V3d_View> & theView);
-
-		/****************** Pick ******************/
-		/**** md5 signature: d9dd319057f3def6d1d43685fa1cdf94 ****/
-		%feature("compactdefaultargs") Pick;
-		%feature("autodoc", "Pick action - input pixel values for polyline selection for selection.
-
-Parameters
-----------
-thePolyline: TColgp_Array1OfPnt2d
-theView: V3d_View
-
-Returns
--------
-None
-") Pick;
-		void Pick(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView);
-
-		/****************** PixelTolerance ******************/
-		/**** md5 signature: 5b865b201c1641a73b871f7bcdb1eeb9 ****/
-		%feature("compactdefaultargs") PixelTolerance;
-		%feature("autodoc", "Returns the pixel tolerance.
-
-Returns
--------
-int
-") PixelTolerance;
-		Standard_Integer PixelTolerance();
-
-		/****************** SetPixelTolerance ******************/
-		/**** md5 signature: fda084bdc0d0a8e945d1f4e82a500297 ****/
-		%feature("compactdefaultargs") SetPixelTolerance;
-		%feature("autodoc", "Sets the pixel tolerance <thetolerance>.
-
-Parameters
-----------
-theTolerance: int
-
-Returns
--------
-None
-") SetPixelTolerance;
-		void SetPixelTolerance(const Standard_Integer theTolerance);
-
-		/****************** ToPixMap ******************/
-		/**** md5 signature: c75f681b9842a1a990930b338f100d0b ****/
-		%feature("compactdefaultargs") ToPixMap;
-		%feature("autodoc", "Dump of detection results into image. this method performs axis picking for each pixel in the image and generates a color depending on picking results and selection image type. @param theimage result image, should be initialized @param theview 3d view defining camera position @param thetype type of image to define @param thepickedindex index of picked entity (1 means topmost).
-
-Parameters
-----------
-theImage: Image_PixMap
-theView: V3d_View
-theType: StdSelect_TypeOfSelectionImage
-thePickedIndex: int,optional
-	default value is 1
-
-Returns
--------
-bool
-") ToPixMap;
-		Standard_Boolean ToPixMap(Image_PixMap & theImage, const opencascade::handle<V3d_View> & theView, const StdSelect_TypeOfSelectionImage theType, const Standard_Integer thePickedIndex = 1);
-
-};
-
-
-%make_alias(StdSelect_ViewerSelector3d)
-
-%extend StdSelect_ViewerSelector3d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

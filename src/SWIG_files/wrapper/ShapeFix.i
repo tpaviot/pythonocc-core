@@ -203,7 +203,7 @@ TopoDS_Shape
 		static TopoDS_Shape RemoveSmallEdges(TopoDS_Shape & shape, const Standard_Real Tolerance, opencascade::handle<ShapeBuild_ReShape> & context);
 
 		/****************** SameParameter ******************/
-		/**** md5 signature: d44f3832a64831cc5982dced287455b3 ****/
+		/**** md5 signature: d58e4bd65cc24b6e9bc71ab3092b1d59 ****/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "Runs sameparameter from breplib with these adaptations : <enforce> forces computations, else they are made only on edges with flag sameparameter false <preci>, if not precised, is taken for each edge as its own tolerance returns true when done, false if an exception has been raised in case of exception anyway, as many edges as possible have been processed. the passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 
@@ -213,8 +213,8 @@ shape: TopoDS_Shape
 enforce: bool
 preci: float,optional
 	default value is 0.0
-theProgress: Message_ProgressIndicator,optional
-	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 theMsgReg: ShapeExtend_BasicMsgRegistrator,optional
 	default value is 0
 
@@ -222,7 +222,7 @@ Returns
 -------
 bool
 ") SameParameter;
-		static Standard_Boolean SameParameter(const TopoDS_Shape & shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const opencascade::handle<Message_ProgressIndicator> & theProgress = 0, const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & theMsgReg = 0);
+		static Standard_Boolean SameParameter(const TopoDS_Shape & shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const Message_ProgressRange & theProgress = Message_ProgressRange(), const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & theMsgReg = 0);
 
 };
 
@@ -2826,20 +2826,20 @@ None
 		void Init(const TopoDS_Shape & shape);
 
 		/****************** Perform ******************/
-		/**** md5 signature: b8885f6294710667de5cde025b95e76c ****/
+		/**** md5 signature: 45d98bf17cbfac8e5ff71bed66663bbd ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Iterates on sub- shape and performs fixes.
 
 Parameters
 ----------
-theProgress: Message_ProgressIndicator,optional
-	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<Message_ProgressIndicator> & theProgress = 0);
+		Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetMaxTolerance ******************/
 		/**** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ****/
@@ -3063,20 +3063,20 @@ int
 		Standard_Integer NbShells();
 
 		/****************** Perform ******************/
-		/**** md5 signature: b8885f6294710667de5cde025b95e76c ****/
+		/**** md5 signature: 45d98bf17cbfac8e5ff71bed66663bbd ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Iterates on subshapes and performs fixes (for each face calls shapefix_face::perform and then calls fixfaceorientation). the passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 
 Parameters
 ----------
-theProgress: Message_ProgressIndicator,optional
-	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<Message_ProgressIndicator> & theProgress = 0);
+		Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetMaxTolerance ******************/
 		/**** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ****/
@@ -3298,20 +3298,20 @@ None
 		virtual void Init(const TopoDS_Solid & solid);
 
 		/****************** Perform ******************/
-		/**** md5 signature: a4646c692ade07bdeede9c095b7d593f ****/
+		/**** md5 signature: ff3db1b72ba196f3e152a69220347d68 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Iterates on shells and performs fixes (calls shapefix_shell for each subshell). the passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 
 Parameters
 ----------
-theProgress: Message_ProgressIndicator,optional
-	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		virtual Standard_Boolean Perform(const opencascade::handle<Message_ProgressIndicator> & theProgress = 0);
+		virtual Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetMaxTolerance ******************/
 		/**** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ****/

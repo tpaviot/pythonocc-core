@@ -44,11 +44,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfi3d.html"
 #include<BRepAdaptor_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
+#include<ChFiDS_module.hxx>
+#include<GeomAbs_module.hxx>
 #include<TopOpeBRepBuild_module.hxx>
 #include<Geom_module.hxx>
 #include<TopTools_module.hxx>
-#include<GeomAbs_module.hxx>
-#include<ChFiDS_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<math_module.hxx>
 #include<Law_module.hxx>
@@ -83,11 +83,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfi3d.html"
 %import BRepAdaptor.i
 %import TopoDS.i
 %import TopAbs.i
+%import ChFiDS.i
+%import GeomAbs.i
 %import TopOpeBRepBuild.i
 %import Geom.i
 %import TopTools.i
-%import GeomAbs.i
-%import ChFiDS.i
 %import Adaptor3d.i
 %import math.i
 %import Law.i
@@ -161,6 +161,44 @@ Returns
 int
 ") ConcaveSide;
 		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation & Or1, TopAbs_Orientation & Or2);
+
+		/****************** DefineConnectType ******************/
+		/**** md5 signature: cff62fae1d6d67c4fc161f59e5544eaa ****/
+		%feature("compactdefaultargs") DefineConnectType;
+		%feature("autodoc", "Defines the type of concavity in the edge of connection of two faces.
+
+Parameters
+----------
+E: TopoDS_Edge
+F1: TopoDS_Face
+F2: TopoDS_Face
+SinTol: float
+CorrectPoint: bool
+
+Returns
+-------
+ChFiDS_TypeOfConcavity
+") DefineConnectType;
+		static ChFiDS_TypeOfConcavity DefineConnectType(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const Standard_Real SinTol, const Standard_Boolean CorrectPoint);
+
+		/****************** IsTangentFaces ******************/
+		/**** md5 signature: fdf2d5839a8c81341919b74382cbe60c ****/
+		%feature("compactdefaultargs") IsTangentFaces;
+		%feature("autodoc", "Returns true if theedge between theface1 and theface2 is tangent.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace1: TopoDS_Face
+theFace2: TopoDS_Face
+Order: GeomAbs_Shape,optional
+	default value is GeomAbs_G1
+
+Returns
+-------
+bool
+") IsTangentFaces;
+		static Standard_Boolean IsTangentFaces(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomAbs_Shape Order = GeomAbs_G1);
 
 		/****************** NextSide ******************/
 		/**** md5 signature: 14be854cdfa62a2c6440b8491c5042f8 ****/

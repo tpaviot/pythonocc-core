@@ -87,14 +87,12 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 %wrap_handle(TDataStd_BooleanArray)
 %wrap_handle(TDataStd_BooleanList)
 %wrap_handle(TDataStd_ByteArray)
-%wrap_handle(TDataStd_Comment)
 %wrap_handle(TDataStd_Current)
 %wrap_handle(TDataStd_DeltaOnModificationOfByteArray)
 %wrap_handle(TDataStd_DeltaOnModificationOfExtStringArray)
 %wrap_handle(TDataStd_DeltaOnModificationOfIntArray)
 %wrap_handle(TDataStd_DeltaOnModificationOfIntPackedMap)
 %wrap_handle(TDataStd_DeltaOnModificationOfRealArray)
-%wrap_handle(TDataStd_Directory)
 %wrap_handle(TDataStd_Expression)
 %wrap_handle(TDataStd_ExtStringArray)
 %wrap_handle(TDataStd_ExtStringList)
@@ -108,19 +106,21 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 %wrap_handle(TDataStd_Integer)
 %wrap_handle(TDataStd_IntegerArray)
 %wrap_handle(TDataStd_IntegerList)
-%wrap_handle(TDataStd_Name)
 %wrap_handle(TDataStd_NamedData)
-%wrap_handle(TDataStd_NoteBook)
 %wrap_handle(TDataStd_Real)
 %wrap_handle(TDataStd_RealArray)
 %wrap_handle(TDataStd_RealList)
 %wrap_handle(TDataStd_ReferenceArray)
 %wrap_handle(TDataStd_ReferenceList)
-%wrap_handle(TDataStd_Relation)
-%wrap_handle(TDataStd_Tick)
 %wrap_handle(TDataStd_TreeNode)
 %wrap_handle(TDataStd_UAttribute)
 %wrap_handle(TDataStd_Variable)
+%wrap_handle(TDataStd_Comment)
+%wrap_handle(TDataStd_Directory)
+%wrap_handle(TDataStd_Name)
+%wrap_handle(TDataStd_NoteBook)
+%wrap_handle(TDataStd_Relation)
+%wrap_handle(TDataStd_Tick)
 %wrap_handle(TDataStd_HLabelArray1)
 /* end handles declaration */
 
@@ -258,6 +258,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: 94caccb04996b56934ce7de2990ed44f ****/
 		%feature("compactdefaultargs") Get;
@@ -453,6 +461,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -745,6 +761,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -1050,6 +1074,14 @@ opencascade::handle<TDF_DeltaOnModification>
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -1411,178 +1443,6 @@ opencascade::handle<TDataStd_TreeNode>
 };
 
 /*************************
-* class TDataStd_Comment *
-*************************/
-class TDataStd_Comment : public TDF_Attribute {
-	public:
-		/****************** TDataStd_Comment ******************/
-		/**** md5 signature: 2f2c3741ccbac7a5d1ce3d382dc2c16b ****/
-		%feature("compactdefaultargs") TDataStd_Comment;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") TDataStd_Comment;
-		 TDataStd_Comment();
-
-		/****************** AfterRetrieval ******************/
-		/**** md5 signature: 64d86db498a6796b75d057eb0b1ce0d7 ****/
-		%feature("compactdefaultargs") AfterRetrieval;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-forceIt: bool,optional
-	default value is Standard_False
-
-Returns
--------
-bool
-") AfterRetrieval;
-		Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-		/****************** Get ******************/
-		/**** md5 signature: e1828ec7ac26ddd7d323df220dcd7fed ****/
-		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "Returns the comment attribute.
-
-Returns
--------
-TCollection_ExtendedString
-") Get;
-		const TCollection_ExtendedString & Get();
-
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Class methods ============= returns the guid for comments.
-
-Returns
--------
-Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID();
-
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Standard_GUID
-") ID;
-		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
-
-		/****************** Set ******************/
-		/**** md5 signature: 7aff9273210ae7933d1765a52bf89a49 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Find, or create a comment attribute. the comment attribute is returned.
-
-Parameters
-----------
-label: TDF_Label
-
-Returns
--------
-opencascade::handle<TDataStd_Comment>
-") Set;
-		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label);
-
-		/****************** Set ******************/
-		/**** md5 signature: 503a74ff2909b31d3824ac4b11ac2e74 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Finds, or creates a comment attribute and sets the string. the comment attribute is returned. comment methods ============.
-
-Parameters
-----------
-label: TDF_Label
-string: TCollection_ExtendedString
-
-Returns
--------
-opencascade::handle<TDataStd_Comment>
-") Set;
-		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label, const TCollection_ExtendedString & string);
-
-		/****************** Set ******************/
-		/**** md5 signature: b056e38e35285870dba625ce2752fb25 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-S: TCollection_ExtendedString
-
-Returns
--------
-None
-") Set;
-		void Set(const TCollection_ExtendedString & S);
-
-};
-
-
-%make_alias(TDataStd_Comment)
-
-%extend TDataStd_Comment {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*************************
 * class TDataStd_Current *
 *************************/
 class TDataStd_Current : public TDF_Attribute {
@@ -1606,6 +1466,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: d34c5545c54e0e96d2b5128d71a2e61c ****/
 		%feature("compactdefaultargs") Get;
@@ -1962,181 +1830,6 @@ None
 	}
 };
 
-/***************************
-* class TDataStd_Directory *
-***************************/
-class TDataStd_Directory : public TDF_Attribute {
-	public:
-		/****************** TDataStd_Directory ******************/
-		/**** md5 signature: d3b9d572e9a0f0079e175d56a6a09a8a ****/
-		%feature("compactdefaultargs") TDataStd_Directory;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") TDataStd_Directory;
-		 TDataStd_Directory();
-
-		/****************** AddDirectory ******************/
-		/**** md5 signature: 5c4f99d9e3566f6f2c2df77d03517116 ****/
-		%feature("compactdefaultargs") AddDirectory;
-		%feature("autodoc", "Creates a new sub-label and sets the sub-directory dir on that label.
-
-Parameters
-----------
-dir: TDataStd_Directory
-
-Returns
--------
-opencascade::handle<TDataStd_Directory>
-") AddDirectory;
-		static opencascade::handle<TDataStd_Directory> AddDirectory(const opencascade::handle<TDataStd_Directory> & dir);
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-		/****************** Find ******************/
-		/**** md5 signature: c975c2b1384d4b33c2a54d78edf27d11 ****/
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "Class methods ============= searches for a directory attribute on the label current, or on one of the father labels of current. if a directory attribute is found, true is returned, and the attribute found is set as d.
-
-Parameters
-----------
-current: TDF_Label
-D: TDataStd_Directory
-
-Returns
--------
-bool
-") Find;
-		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_Directory> & D);
-
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Directory methods ===============.
-
-Returns
--------
-Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID();
-
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Standard_GUID
-") ID;
-		const Standard_GUID & ID();
-
-		/****************** MakeObjectLabel ******************/
-		/**** md5 signature: db423c43f233e6e25e616ab0b00559be ****/
-		%feature("compactdefaultargs") MakeObjectLabel;
-		%feature("autodoc", "Makes new label and returns it to insert other object attributes (sketch,part...etc...).
-
-Parameters
-----------
-dir: TDataStd_Directory
-
-Returns
--------
-TDF_Label
-") MakeObjectLabel;
-		static TDF_Label MakeObjectLabel(const opencascade::handle<TDataStd_Directory> & dir);
-
-		/****************** New ******************/
-		/**** md5 signature: 5df5803fde1fbb05cfc38fb2ecf2de6c ****/
-		%feature("compactdefaultargs") New;
-		%feature("autodoc", "Creates an enpty directory attribute, located at <label>. raises if <label> has attribute.
-
-Parameters
-----------
-label: TDF_Label
-
-Returns
--------
-opencascade::handle<TDataStd_Directory>
-") New;
-		static opencascade::handle<TDataStd_Directory> New(const TDF_Label & label);
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** References ******************/
-		/**** md5 signature: f171ce811dbfb205236d26e3cbf15450 ****/
-		%feature("compactdefaultargs") References;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-DS: TDF_DataSet
-
-Returns
--------
-None
-") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
-
-};
-
-
-%make_alias(TDataStd_Directory)
-
-%extend TDataStd_Directory {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /****************************
 * class TDataStd_Expression *
 ****************************/
@@ -2161,6 +1854,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetExpression ******************/
 		/**** md5 signature: fdf0cd52b1c54e1dcbcfca5ccc5ef545 ****/
 		%feature("compactdefaultargs") GetExpression;
@@ -2366,6 +2067,14 @@ opencascade::handle<TDF_DeltaOnModification>
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -2662,6 +2371,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -2958,6 +2675,12 @@ None
 	}
 };
 
+/******************************
+* class TDataStd_GenericEmpty *
+******************************/
+/**********************************
+* class TDataStd_GenericExtString *
+**********************************/
 /**************************************
 * class TDataStd_HDataMapOfStringByte *
 **************************************/
@@ -3482,6 +3205,14 @@ opencascade::handle<TDF_DeltaOnModification>
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extent ******************/
 		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
@@ -3683,6 +3414,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: ace457d697a3a35733c5ac95429cad31 ****/
 		%feature("compactdefaultargs") Get;
@@ -3921,6 +3660,14 @@ opencascade::handle<TDF_DeltaOnModification>
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -4217,6 +3964,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -4513,190 +4268,6 @@ None
 	}
 };
 
-/**********************
-* class TDataStd_Name *
-**********************/
-class TDataStd_Name : public TDF_Attribute {
-	public:
-		/****************** TDataStd_Name ******************/
-		/**** md5 signature: bb0eed56139ed947031c6e938967fa41 ****/
-		%feature("compactdefaultargs") TDataStd_Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") TDataStd_Name;
-		 TDataStd_Name();
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-		/****************** Get ******************/
-		/**** md5 signature: e1828ec7ac26ddd7d323df220dcd7fed ****/
-		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "Returns the name contained in this name attribute.
-
-Returns
--------
-TCollection_ExtendedString
-") Get;
-		const TCollection_ExtendedString & Get();
-
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Class methods working on the name itself ======================================== returns the guid for name attributes.
-
-Returns
--------
-Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID();
-
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Standard_GUID
-") ID;
-		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
-
-		/****************** Set ******************/
-		/**** md5 signature: bfbe265f341d6a99b31e5f340b9002d9 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Creates (if does not exist) and sets the name in the name attribute. from any label <l> search in father labels (l is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== search in the whole tdf_data the name attribute which fit with <fullpath>. returns true if found. search under <currentlabel> a label which fit with <name>. returns true if found. shortcut which avoids building a listofextendedstrin. search in the whole tdf_data the label which fit with name returns true if found. tools methods to translate path <-> pathlist =========================================== move to draw for draw test we may provide this tool method which convert a path in a sequence of string to call after the findlabel methods. example: if it's given 'assembly:part_1:sketch_5' it will return in <pathlist> the list of 3 strings: 'assembly','part_1','sketch_5'. move to draw from <pathlist> build the string path name methods ============.
-
-Parameters
-----------
-label: TDF_Label
-string: TCollection_ExtendedString
-
-Returns
--------
-opencascade::handle<TDataStd_Name>
-") Set;
-		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const TCollection_ExtendedString & string);
-
-		/****************** Set ******************/
-		/**** md5 signature: d6ce2b5adb6750199ce8d7f1e385b58f ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Finds, or creates, a name attribute with explicit user defined <guid> and sets <string>. the name attribute is returned. .
-
-Parameters
-----------
-label: TDF_Label
-guid: Standard_GUID
-string: TCollection_ExtendedString
-
-Returns
--------
-opencascade::handle<TDataStd_Name>
-") Set;
-		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const Standard_GUID & guid, const TCollection_ExtendedString & string);
-
-		/****************** Set ******************/
-		/**** md5 signature: b056e38e35285870dba625ce2752fb25 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets <s> as name. raises if <s> is not a valid name.
-
-Parameters
-----------
-S: TCollection_ExtendedString
-
-Returns
--------
-None
-") Set;
-		void Set(const TCollection_ExtendedString & S);
-
-		/****************** SetID ******************/
-		/**** md5 signature: 7a929ce753effeac220c978ae7330330 ****/
-		%feature("compactdefaultargs") SetID;
-		%feature("autodoc", "Sets the explicit user defined guid to the attribute.
-
-Parameters
-----------
-guid: Standard_GUID
-
-Returns
--------
-None
-") SetID;
-		void SetID(const Standard_GUID & guid);
-
-		/****************** SetID ******************/
-		/**** md5 signature: 244d113ae14add83954353ca15ede66b ****/
-		%feature("compactdefaultargs") SetID;
-		%feature("autodoc", "Sets default guid for the attribute.
-
-Returns
--------
-None
-") SetID;
-		void SetID();
-
-};
-
-
-%make_alias(TDataStd_Name)
-
-%extend TDataStd_Name {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***************************
 * class TDataStd_NamedData *
 ***************************/
@@ -4705,7 +4276,7 @@ class TDataStd_NamedData : public TDF_Attribute {
 		/****************** TDataStd_NamedData ******************/
 		/**** md5 signature: 2d40f04eab0a5d40041eb0d605cfe90e ****/
 		%feature("compactdefaultargs") TDataStd_NamedData;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -4803,6 +4374,17 @@ None
 ") ChangeStrings;
 		void ChangeStrings(const TDataStd_DataMapOfStringString & theStrings);
 
+		/****************** Clear ******************/
+		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Clear data.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -4811,6 +4393,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetArrayOfIntegers ******************/
 		/**** md5 signature: 4a96aa72d1e7e4a27eb2b5a59638120e ****/
 		%feature("compactdefaultargs") GetArrayOfIntegers;
@@ -4892,7 +4482,7 @@ TDataStd_DataMapOfStringByte
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Static methods ============== returns the id of the named data attribute.
+		%feature("autodoc", "Returns the id of the named data attribute.
 
 Returns
 -------
@@ -5009,7 +4599,7 @@ bool
 		Standard_Boolean HasArrayOfReals(const TCollection_ExtendedString & theName);
 
 		/****************** HasArraysOfIntegers ******************/
-		/**** md5 signature: 630276ad2915cc0f5cb7a7fae1577c12 ****/
+		/**** md5 signature: 4eb40476bed752475b28d589eb3557f3 ****/
 		%feature("compactdefaultargs") HasArraysOfIntegers;
 		%feature("autodoc", "Returns true if there are some named arrays of integer values in the attribute.
 
@@ -5020,7 +4610,7 @@ bool
 		Standard_Boolean HasArraysOfIntegers();
 
 		/****************** HasArraysOfReals ******************/
-		/**** md5 signature: 3a700fb256757684d41d9b2cb7dfbe60 ****/
+		/**** md5 signature: b3341be264afdd2f76e521b7b6f32993 ****/
 		%feature("compactdefaultargs") HasArraysOfReals;
 		%feature("autodoc", "Returns true if there are some named arrays of real values in the attribute.
 
@@ -5046,7 +4636,7 @@ bool
 		Standard_Boolean HasByte(const TCollection_ExtendedString & theName);
 
 		/****************** HasBytes ******************/
-		/**** md5 signature: 94a3934cdf294db1b998b35763579703 ****/
+		/**** md5 signature: 0451a850345dbe15a00e9048eab7e808 ****/
 		%feature("compactdefaultargs") HasBytes;
 		%feature("autodoc", "Returns true if there are some named bytes in the attribute.
 
@@ -5055,6 +4645,17 @@ Returns
 bool
 ") HasBytes;
 		Standard_Boolean HasBytes();
+
+		/****************** HasDeferredData ******************/
+		/**** md5 signature: 6d3e21e66856957a5fa945244fecad2c ****/
+		%feature("compactdefaultargs") HasDeferredData;
+		%feature("autodoc", "Returns true if some data is not loaded from deferred storage and can be loaded using loaddeferreddata(). //! late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. this feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return false here. //! late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and undo/redo mechanism will not work until deferred data being loaded. //! usage scenarios: - application displays model in read-only way. late-load elements are loaded temporarily on demand and immediatly unloaded. thenameddata->loaddeferreddata (true); tcollection_asciistring avalue = thenameddata->getstring (thekey); thenameddata->unloaddeferreddata(); - application saves the model into another format. all late-load elements should be loaded (at least temporary during operation). - application modifies the model. late-load element should be loaded with removed link to deferred storage, so that undo()/redo() will work as expected since loading. thenameddata->loaddeferreddata (false); thenameddata->setstring (thekey, thenewvalue);.
+
+Returns
+-------
+bool
+") HasDeferredData;
+		virtual Standard_Boolean HasDeferredData();
 
 		/****************** HasInteger ******************/
 		/**** md5 signature: 2240b54628b28022d39a4cae802f471c ****/
@@ -5072,7 +4673,7 @@ bool
 		Standard_Boolean HasInteger(const TCollection_ExtendedString & theName);
 
 		/****************** HasIntegers ******************/
-		/**** md5 signature: aa7fb571afe1cc8055a6c72701aedd1e ****/
+		/**** md5 signature: ced4a2334acc044b72b0f671617a1019 ****/
 		%feature("compactdefaultargs") HasIntegers;
 		%feature("autodoc", "Returns true if at least one named integer value is kept in the attribute.
 
@@ -5098,7 +4699,7 @@ bool
 		Standard_Boolean HasReal(const TCollection_ExtendedString & theName);
 
 		/****************** HasReals ******************/
-		/**** md5 signature: d08f33ee376c6cd75a9d81cc491b4176 ****/
+		/**** md5 signature: 14759d335b5245924e19e98e05dc851e ****/
 		%feature("compactdefaultargs") HasReals;
 		%feature("autodoc", "Returns true if at least one named real value is kept in the attribute.
 
@@ -5124,7 +4725,7 @@ bool
 		Standard_Boolean HasString(const TCollection_ExtendedString & theName);
 
 		/****************** HasStrings ******************/
-		/**** md5 signature: 91968d2a3a35cf447a545790772a5e0a ****/
+		/**** md5 signature: ff76feca31b86b3fc49e4aa6b2e1aa81 ****/
 		%feature("compactdefaultargs") HasStrings;
 		%feature("autodoc", "Returns true if there are some named strings in the attribute.
 
@@ -5135,7 +4736,7 @@ bool
 		Standard_Boolean HasStrings();
 
 		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/**** md5 signature: 18550bf05502080c8e2a8a16aabb4183 ****/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "No available documentation.
 
@@ -5143,10 +4744,26 @@ Returns
 -------
 Standard_GUID
 ") ID;
-		const Standard_GUID & ID();
+		virtual const Standard_GUID & ID();
+
+		/****************** LoadDeferredData ******************/
+		/**** md5 signature: 4d667dd77669ff93ce36b42acfa15e09 ****/
+		%feature("compactdefaultargs") LoadDeferredData;
+		%feature("autodoc", "Load data from deferred storage, without calling backup(). as result, the content of the object will be overidden by data from deferred storage (which is normally read-only). @param thetokeepdeferred [in] when true, the link to deferred storage will be preserved  so that it will be possible calling unloaddeferreddata() afterwards for releasing memory returns false if deferred storage is unavailable or deferred data has been already loaded.
+
+Parameters
+----------
+theToKeepDeferred: bool,optional
+	default value is false
+
+Returns
+-------
+bool
+") LoadDeferredData;
+		virtual Standard_Boolean LoadDeferredData(Standard_Boolean theToKeepDeferred = false);
 
 		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -5154,10 +4771,10 @@ Returns
 -------
 opencascade::handle<TDF_Attribute>
 ") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
+		/**** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -5170,10 +4787,10 @@ Returns
 -------
 None
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
+		/**** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ****/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "No available documentation.
 
@@ -5185,7 +4802,7 @@ Returns
 -------
 None
 ") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
+		virtual void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		/**** md5 signature: ee0f0e4a73047eda396551b327a75125 ****/
@@ -5203,9 +4820,9 @@ opencascade::handle<TDataStd_NamedData>
 		static opencascade::handle<TDataStd_NamedData> Set(const TDF_Label & label);
 
 		/****************** SetArrayOfIntegers ******************/
-		/**** md5 signature: 4363833f3b7223b8cbf87ce2438e80a5 ****/
+		/**** md5 signature: b617034b38fb8c6f3a9eb39a8befb616 ****/
 		%feature("compactdefaultargs") SetArrayOfIntegers;
-		%feature("autodoc", "Defines a named array of integer values. if the array already exists, it changes its value to <thearrayofintegers>.
+		%feature("autodoc", "Defines a named array of integer values. @param thename [in] key @param thearrayofintegers [in] new value, overrides existing (passed array will be copied by value!).
 
 Parameters
 ----------
@@ -5219,9 +4836,9 @@ None
 		void SetArrayOfIntegers(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
 		/****************** SetArrayOfReals ******************/
-		/**** md5 signature: 26be02bfa2f598e0213856441ddbd2e7 ****/
+		/**** md5 signature: 16f1e7f9567f65375c020bb23d8100af ****/
 		%feature("compactdefaultargs") SetArrayOfReals;
-		%feature("autodoc", "Defines a named array of real values. if the array already exists, it changes its value to <thearrayofreals>.
+		%feature("autodoc", "Defines a named array of real values. @param thename [in] key @param thearrayofintegers [in] new value, overrides existing (passed array will be copied by value!).
 
 Parameters
 ----------
@@ -5298,176 +4915,130 @@ None
 ") SetString;
 		void SetString(const TCollection_ExtendedString & theName, const TCollection_ExtendedString & theString);
 
+		/****************** UnloadDeferredData ******************/
+		/**** md5 signature: 0475147ec5a2f4fc11b633d052584e7a ****/
+		%feature("compactdefaultargs") UnloadDeferredData;
+		%feature("autodoc", "Releases data if object has connected deferred storage, without calling backup(). warning! this operation does not unload modifications to deferred storage (normally it is read-only), so that modifications will be discarded (if any). returns false if object has no deferred data.
+
+Returns
+-------
+bool
+") UnloadDeferredData;
+		virtual Standard_Boolean UnloadDeferredData();
+
+		/****************** clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		%feature("compactdefaultargs") clear;
+		%feature("autodoc", "Clear data without calling backup().
+
+Returns
+-------
+None
+") clear;
+		void clear();
+
+		/****************** setArrayOfIntegers ******************/
+		/**** md5 signature: 4363833f3b7223b8cbf87ce2438e80a5 ****/
+		%feature("compactdefaultargs") setArrayOfIntegers;
+		%feature("autodoc", "Defines a named array of integer values (without calling backup).
+
+Parameters
+----------
+theName: TCollection_ExtendedString
+theArrayOfIntegers: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") setArrayOfIntegers;
+		void setArrayOfIntegers(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
+
+		/****************** setArrayOfReals ******************/
+		/**** md5 signature: 26be02bfa2f598e0213856441ddbd2e7 ****/
+		%feature("compactdefaultargs") setArrayOfReals;
+		%feature("autodoc", "Defines a named array of real values (without calling backup).
+
+Parameters
+----------
+theName: TCollection_ExtendedString
+theArrayOfReals: TColStd_HArray1OfReal
+
+Returns
+-------
+None
+") setArrayOfReals;
+		void setArrayOfReals(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
+
+		/****************** setByte ******************/
+		/**** md5 signature: 4a6e013a0bf3337864e2187c10d95ca1 ****/
+		%feature("compactdefaultargs") setByte;
+		%feature("autodoc", "Defines a named byte (without calling backup).
+
+Parameters
+----------
+theName: TCollection_ExtendedString
+theByte: Standard_Byte
+
+Returns
+-------
+None
+") setByte;
+		void setByte(const TCollection_ExtendedString & theName, const Standard_Byte theByte);
+
+		/****************** setInteger ******************/
+		/**** md5 signature: 4e011fdcaf36e99a883b60954eb74fd6 ****/
+		%feature("compactdefaultargs") setInteger;
+		%feature("autodoc", "Defines a named integer (without calling backup).
+
+Parameters
+----------
+theName: TCollection_ExtendedString
+theInteger: int
+
+Returns
+-------
+None
+") setInteger;
+		void setInteger(const TCollection_ExtendedString & theName, const Standard_Integer theInteger);
+
+		/****************** setReal ******************/
+		/**** md5 signature: 3881e61413b5d53222042466565b51e6 ****/
+		%feature("compactdefaultargs") setReal;
+		%feature("autodoc", "Defines a named real (without calling backup).
+
+Parameters
+----------
+theName: TCollection_ExtendedString
+theReal: float
+
+Returns
+-------
+None
+") setReal;
+		void setReal(const TCollection_ExtendedString & theName, const Standard_Real theReal);
+
+		/****************** setString ******************/
+		/**** md5 signature: a95bad6b9ababf6273e290a39194b37c ****/
+		%feature("compactdefaultargs") setString;
+		%feature("autodoc", "Defines a named string (without calling backup).
+
+Parameters
+----------
+theName: TCollection_ExtendedString
+theString: TCollection_ExtendedString
+
+Returns
+-------
+None
+") setString;
+		void setString(const TCollection_ExtendedString & theName, const TCollection_ExtendedString & theString);
+
 };
 
 
 %make_alias(TDataStd_NamedData)
 
 %extend TDataStd_NamedData {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**************************
-* class TDataStd_NoteBook *
-**************************/
-class TDataStd_NoteBook : public TDF_Attribute {
-	public:
-		/****************** TDataStd_NoteBook ******************/
-		/**** md5 signature: 9d531eae5ef1dd7b80ad3d6be9ce2a48 ****/
-		%feature("compactdefaultargs") TDataStd_NoteBook;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") TDataStd_NoteBook;
-		 TDataStd_NoteBook();
-
-		/****************** Append ******************/
-		/**** md5 signature: e638d87bb80f7e7b3ab388375de60bc6 ****/
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "Tool to create an integer attribute from <value>, insert it in a new son label of <self>. the real attribute is returned.
-
-Parameters
-----------
-value: float
-isExported: bool,optional
-	default value is Standard_False
-
-Returns
--------
-opencascade::handle<TDataStd_Real>
-") Append;
-		opencascade::handle<TDataStd_Real> Append(const Standard_Real value, const Standard_Boolean isExported = Standard_False);
-
-		/****************** Append ******************/
-		/**** md5 signature: 79495fe00184d4d6b78a635aa06c941d ****/
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "Tool to create an real attribute from <value>, insert it in a new son label of <self>. the integer attribute is returned.
-
-Parameters
-----------
-value: int
-isExported: bool,optional
-	default value is Standard_False
-
-Returns
--------
-opencascade::handle<TDataStd_Integer>
-") Append;
-		opencascade::handle<TDataStd_Integer> Append(const Standard_Integer value, const Standard_Boolean isExported = Standard_False);
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-		/****************** Find ******************/
-		/**** md5 signature: 400d5175f4317bb9f7f5240746dcd5c9 ****/
-		%feature("compactdefaultargs") Find;
-		%feature("autodoc", "Class methods ============= try to retrieve a notebook attribute at <current> label or in fathers label of <current>. returns true if found and set <n>.
-
-Parameters
-----------
-current: TDF_Label
-N: TDataStd_NoteBook
-
-Returns
--------
-bool
-") Find;
-		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_NoteBook> & N);
-
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Notebook methods ===============.
-
-Returns
--------
-Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID();
-
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Standard_GUID
-") ID;
-		const Standard_GUID & ID();
-
-		/****************** New ******************/
-		/**** md5 signature: a02ef42106eb0cec4504ab57a99400d3 ****/
-		%feature("compactdefaultargs") New;
-		%feature("autodoc", "Create an enpty notebook attribute, located at <label>. raises if <label> has attribute.
-
-Parameters
-----------
-label: TDF_Label
-
-Returns
--------
-opencascade::handle<TDataStd_NoteBook>
-") New;
-		static opencascade::handle<TDataStd_NoteBook> New(const TDF_Label & label);
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-with: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & with);
-
-};
-
-
-%make_alias(TDataStd_NoteBook)
-
-%extend TDataStd_NoteBook {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5497,6 +5068,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Get ******************/
 		/**** md5 signature: fc841fb28cb01367762b1d75c09d001e ****/
 		%feature("compactdefaultargs") Get;
@@ -5761,6 +5340,14 @@ opencascade::handle<TDF_DeltaOnModification>
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -6057,6 +5644,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -6377,6 +5972,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -6686,6 +6289,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -6998,282 +6609,6 @@ None
 };
 
 /**************************
-* class TDataStd_Relation *
-**************************/
-class TDataStd_Relation : public TDF_Attribute {
-	public:
-		/****************** TDataStd_Relation ******************/
-		/**** md5 signature: e2728d158cd6835bfe4ededc5ccddf26 ****/
-		%feature("compactdefaultargs") TDataStd_Relation;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") TDataStd_Relation;
-		 TDataStd_Relation();
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Class methods =============.
-
-Returns
--------
-Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID();
-
-		/****************** GetRelation ******************/
-		/**** md5 signature: 9a760a60866ee882febabe61f33bef73 ****/
-		%feature("compactdefaultargs") GetRelation;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TCollection_ExtendedString
-") GetRelation;
-		const TCollection_ExtendedString & GetRelation();
-
-		/****************** GetVariables ******************/
-		/**** md5 signature: b15a6b025b25c61503dc4b4deba5bd8b ****/
-		%feature("compactdefaultargs") GetVariables;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TDF_AttributeList
-") GetVariables;
-		TDF_AttributeList & GetVariables();
-
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Standard_GUID
-") ID;
-		const Standard_GUID & ID();
-
-		/****************** Name ******************/
-		/**** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ****/
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Build and return the relation name.
-
-Returns
--------
-TCollection_ExtendedString
-") Name;
-		TCollection_ExtendedString Name();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
-
-		/****************** Set ******************/
-		/**** md5 signature: 2a4cde76807e5d1258840493d4e69032 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Find, or create, an relation attribute. real methods ============.
-
-Parameters
-----------
-label: TDF_Label
-
-Returns
--------
-opencascade::handle<TDataStd_Relation>
-") Set;
-		static opencascade::handle<TDataStd_Relation> Set(const TDF_Label & label);
-
-		/****************** SetRelation ******************/
-		/**** md5 signature: 9b48e0039287e75d85edb77a4c19ad95 ****/
-		%feature("compactdefaultargs") SetRelation;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-E: TCollection_ExtendedString
-
-Returns
--------
-None
-") SetRelation;
-		void SetRelation(const TCollection_ExtendedString & E);
-
-};
-
-
-%make_alias(TDataStd_Relation)
-
-%extend TDataStd_Relation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************
-* class TDataStd_Tick *
-**********************/
-class TDataStd_Tick : public TDF_Attribute {
-	public:
-		/****************** TDataStd_Tick ******************/
-		/**** md5 signature: a26d0e9a1ea99ba56a5b60641b8967ca ****/
-		%feature("compactdefaultargs") TDataStd_Tick;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") TDataStd_Tick;
-		 TDataStd_Tick();
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
-		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Static methods ==============.
-
-Returns
--------
-Standard_GUID
-") GetID;
-		static const Standard_GUID & GetID();
-
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
-		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Standard_GUID
-") ID;
-		const Standard_GUID & ID();
-
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
-		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TDF_Attribute>
-") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty();
-
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
-		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Into: TDF_Attribute
-RT: TDF_RelocationTable
-
-Returns
--------
-None
-") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
-
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
-		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-With: TDF_Attribute
-
-Returns
--------
-None
-") Restore;
-		void Restore(const opencascade::handle<TDF_Attribute> & With);
-
-		/****************** Set ******************/
-		/**** md5 signature: a98facae6bc4fd10dad3a306e6332dfb ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Find, or create, a tick attribute. tick methods ============.
-
-Parameters
-----------
-label: TDF_Label
-
-Returns
--------
-opencascade::handle<TDataStd_Tick>
-") Set;
-		static opencascade::handle<TDataStd_Tick> Set(const TDF_Label & label);
-
-};
-
-
-%make_alias(TDataStd_Tick)
-
-%extend TDataStd_Tick {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**************************
 * class TDataStd_TreeNode *
 **************************/
 class TDataStd_TreeNode : public TDF_Attribute {
@@ -7390,6 +6725,14 @@ int
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Father ******************/
 		/**** md5 signature: fd4e43dbfa571e1a17a926e895f43183 ****/
 		%feature("compactdefaultargs") Father;
@@ -7916,6 +7259,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
@@ -8087,6 +7438,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Expression ******************/
 		/**** md5 signature: 02085d2fcb8779a8d70fbdbc746f552b ****/
 		%feature("compactdefaultargs") Expression;
@@ -8347,6 +7706,662 @@ TCollection_AsciiString
 %make_alias(TDataStd_Variable)
 
 %extend TDataStd_Variable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************
+* class TDataStd_Comment *
+*************************/
+class TDataStd_Comment : public TDataStd_GenericExtString {
+	public:
+		/****************** TDataStd_Comment ******************/
+		/**** md5 signature: 2f2c3741ccbac7a5d1ce3d382dc2c16b ****/
+		%feature("compactdefaultargs") TDataStd_Comment;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TDataStd_Comment;
+		 TDataStd_Comment();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Class methods ============= returns the guid for comments.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** Set ******************/
+		/**** md5 signature: 7aff9273210ae7933d1765a52bf89a49 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Find, or create a comment attribute. the comment attribute is returned.
+
+Parameters
+----------
+label: TDF_Label
+
+Returns
+-------
+opencascade::handle<TDataStd_Comment>
+") Set;
+		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label);
+
+		/****************** Set ******************/
+		/**** md5 signature: 503a74ff2909b31d3824ac4b11ac2e74 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Finds, or creates a comment attribute and sets the string. the comment attribute is returned. comment methods ============.
+
+Parameters
+----------
+label: TDF_Label
+string: TCollection_ExtendedString
+
+Returns
+-------
+opencascade::handle<TDataStd_Comment>
+") Set;
+		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label, const TCollection_ExtendedString & string);
+
+		/****************** Set ******************/
+		/**** md5 signature: b14507b5f83a7ddf2dd74b6112f65c39 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TCollection_ExtendedString
+
+Returns
+-------
+None
+") Set;
+		void Set(const TCollection_ExtendedString & S);
+
+		/****************** SetID ******************/
+		/**** md5 signature: 7a929ce753effeac220c978ae7330330 ****/
+		%feature("compactdefaultargs") SetID;
+		%feature("autodoc", "Sets the explicit user defined guid to the attribute.
+
+Parameters
+----------
+guid: Standard_GUID
+
+Returns
+-------
+None
+") SetID;
+		void SetID(const Standard_GUID & guid);
+
+		/****************** SetID ******************/
+		/**** md5 signature: 244d113ae14add83954353ca15ede66b ****/
+		%feature("compactdefaultargs") SetID;
+		%feature("autodoc", "Sets default guid for the attribute.
+
+Returns
+-------
+None
+") SetID;
+		void SetID();
+
+};
+
+
+%make_alias(TDataStd_Comment)
+
+%extend TDataStd_Comment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************
+* class TDataStd_Directory *
+***************************/
+class TDataStd_Directory : public TDataStd_GenericEmpty {
+	public:
+		/****************** TDataStd_Directory ******************/
+		/**** md5 signature: d3b9d572e9a0f0079e175d56a6a09a8a ****/
+		%feature("compactdefaultargs") TDataStd_Directory;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TDataStd_Directory;
+		 TDataStd_Directory();
+
+		/****************** AddDirectory ******************/
+		/**** md5 signature: 5c4f99d9e3566f6f2c2df77d03517116 ****/
+		%feature("compactdefaultargs") AddDirectory;
+		%feature("autodoc", "Creates a new sub-label and sets the sub-directory dir on that label.
+
+Parameters
+----------
+dir: TDataStd_Directory
+
+Returns
+-------
+opencascade::handle<TDataStd_Directory>
+") AddDirectory;
+		static opencascade::handle<TDataStd_Directory> AddDirectory(const opencascade::handle<TDataStd_Directory> & dir);
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+		/****************** Find ******************/
+		/**** md5 signature: c975c2b1384d4b33c2a54d78edf27d11 ****/
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "Class methods ============= searches for a directory attribute on the label current, or on one of the father labels of current. if a directory attribute is found, true is returned, and the attribute found is set as d.
+
+Parameters
+----------
+current: TDF_Label
+D: TDataStd_Directory
+
+Returns
+-------
+bool
+") Find;
+		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_Directory> & D);
+
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Directory methods ===============.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** ID ******************/
+		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** MakeObjectLabel ******************/
+		/**** md5 signature: db423c43f233e6e25e616ab0b00559be ****/
+		%feature("compactdefaultargs") MakeObjectLabel;
+		%feature("autodoc", "Makes new label and returns it to insert other object attributes (sketch,part...etc...).
+
+Parameters
+----------
+dir: TDataStd_Directory
+
+Returns
+-------
+TDF_Label
+") MakeObjectLabel;
+		static TDF_Label MakeObjectLabel(const opencascade::handle<TDataStd_Directory> & dir);
+
+		/****************** New ******************/
+		/**** md5 signature: 5df5803fde1fbb05cfc38fb2ecf2de6c ****/
+		%feature("compactdefaultargs") New;
+		%feature("autodoc", "Creates an empty directory attribute, located at <label>. raises if <label> has attribute.
+
+Parameters
+----------
+label: TDF_Label
+
+Returns
+-------
+opencascade::handle<TDataStd_Directory>
+") New;
+		static opencascade::handle<TDataStd_Directory> New(const TDF_Label & label);
+
+};
+
+
+%make_alias(TDataStd_Directory)
+
+%extend TDataStd_Directory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************
+* class TDataStd_Name *
+**********************/
+class TDataStd_Name : public TDataStd_GenericExtString {
+	public:
+		/****************** TDataStd_Name ******************/
+		/**** md5 signature: bb0eed56139ed947031c6e938967fa41 ****/
+		%feature("compactdefaultargs") TDataStd_Name;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TDataStd_Name;
+		 TDataStd_Name();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Class methods working on the name itself ======================================== returns the guid for name attributes.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** Set ******************/
+		/**** md5 signature: bfbe265f341d6a99b31e5f340b9002d9 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Creates (if does not exist) and sets the name in the name attribute. from any label <l> search in father labels (l is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== search in the whole tdf_data the name attribute which fit with <fullpath>. returns true if found. search under <currentlabel> a label which fit with <name>. returns true if found. shortcut which avoids building a listofextendedstrin. search in the whole tdf_data the label which fit with name returns true if found. tools methods to translate path <-> pathlist =========================================== move to draw for draw test we may provide this tool method which convert a path in a sequence of string to call after the findlabel methods. example: if it's given 'assembly:part_1:sketch_5' it will return in <pathlist> the list of 3 strings: 'assembly','part_1','sketch_5'. move to draw from <pathlist> build the string path name methods ============.
+
+Parameters
+----------
+label: TDF_Label
+string: TCollection_ExtendedString
+
+Returns
+-------
+opencascade::handle<TDataStd_Name>
+") Set;
+		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const TCollection_ExtendedString & string);
+
+		/****************** Set ******************/
+		/**** md5 signature: d6ce2b5adb6750199ce8d7f1e385b58f ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Finds, or creates, a name attribute with explicit user defined <guid> and sets <string>. the name attribute is returned. .
+
+Parameters
+----------
+label: TDF_Label
+guid: Standard_GUID
+string: TCollection_ExtendedString
+
+Returns
+-------
+opencascade::handle<TDataStd_Name>
+") Set;
+		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const Standard_GUID & guid, const TCollection_ExtendedString & string);
+
+		/****************** Set ******************/
+		/**** md5 signature: b14507b5f83a7ddf2dd74b6112f65c39 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Sets <s> as name. raises if <s> is not a valid name.
+
+Parameters
+----------
+S: TCollection_ExtendedString
+
+Returns
+-------
+None
+") Set;
+		void Set(const TCollection_ExtendedString & S);
+
+		/****************** SetID ******************/
+		/**** md5 signature: 7a929ce753effeac220c978ae7330330 ****/
+		%feature("compactdefaultargs") SetID;
+		%feature("autodoc", "Sets the explicit user defined guid to the attribute.
+
+Parameters
+----------
+guid: Standard_GUID
+
+Returns
+-------
+None
+") SetID;
+		void SetID(const Standard_GUID & guid);
+
+		/****************** SetID ******************/
+		/**** md5 signature: 244d113ae14add83954353ca15ede66b ****/
+		%feature("compactdefaultargs") SetID;
+		%feature("autodoc", "Sets default guid for the attribute.
+
+Returns
+-------
+None
+") SetID;
+		void SetID();
+
+};
+
+
+%make_alias(TDataStd_Name)
+
+%extend TDataStd_Name {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class TDataStd_NoteBook *
+**************************/
+class TDataStd_NoteBook : public TDataStd_GenericEmpty {
+	public:
+		/****************** TDataStd_NoteBook ******************/
+		/**** md5 signature: 9d531eae5ef1dd7b80ad3d6be9ce2a48 ****/
+		%feature("compactdefaultargs") TDataStd_NoteBook;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TDataStd_NoteBook;
+		 TDataStd_NoteBook();
+
+		/****************** Append ******************/
+		/**** md5 signature: e638d87bb80f7e7b3ab388375de60bc6 ****/
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "Tool to create an integer attribute from <value>, insert it in a new son label of <self>. the real attribute is returned.
+
+Parameters
+----------
+value: float
+isExported: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+opencascade::handle<TDataStd_Real>
+") Append;
+		opencascade::handle<TDataStd_Real> Append(const Standard_Real value, const Standard_Boolean isExported = Standard_False);
+
+		/****************** Append ******************/
+		/**** md5 signature: 79495fe00184d4d6b78a635aa06c941d ****/
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "Tool to create an real attribute from <value>, insert it in a new son label of <self>. the integer attribute is returned.
+
+Parameters
+----------
+value: int
+isExported: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+opencascade::handle<TDataStd_Integer>
+") Append;
+		opencascade::handle<TDataStd_Integer> Append(const Standard_Integer value, const Standard_Boolean isExported = Standard_False);
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+		/****************** Find ******************/
+		/**** md5 signature: 400d5175f4317bb9f7f5240746dcd5c9 ****/
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "Class methods ============= try to retrieve a notebook attribute at <current> label or in fathers label of <current>. returns true if found and set <n>.
+
+Parameters
+----------
+current: TDF_Label
+N: TDataStd_NoteBook
+
+Returns
+-------
+bool
+") Find;
+		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_NoteBook> & N);
+
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Notebook methods ===============.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** ID ******************/
+		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** New ******************/
+		/**** md5 signature: a02ef42106eb0cec4504ab57a99400d3 ****/
+		%feature("compactdefaultargs") New;
+		%feature("autodoc", "Create an enpty notebook attribute, located at <label>. raises if <label> has attribute.
+
+Parameters
+----------
+label: TDF_Label
+
+Returns
+-------
+opencascade::handle<TDataStd_NoteBook>
+") New;
+		static opencascade::handle<TDataStd_NoteBook> New(const TDF_Label & label);
+
+};
+
+
+%make_alias(TDataStd_NoteBook)
+
+%extend TDataStd_NoteBook {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class TDataStd_Relation *
+**************************/
+class TDataStd_Relation : public TDataStd_Expression {
+	public:
+		/****************** TDataStd_Relation ******************/
+		/**** md5 signature: e2728d158cd6835bfe4ededc5ccddf26 ****/
+		%feature("compactdefaultargs") TDataStd_Relation;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TDataStd_Relation;
+		 TDataStd_Relation();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Class methods =============.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** GetRelation ******************/
+		/**** md5 signature: 9a760a60866ee882febabe61f33bef73 ****/
+		%feature("compactdefaultargs") GetRelation;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TCollection_ExtendedString
+") GetRelation;
+		const TCollection_ExtendedString & GetRelation();
+
+		/****************** ID ******************/
+		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** Set ******************/
+		/**** md5 signature: 2a4cde76807e5d1258840493d4e69032 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Find, or create, an relation attribute. real methods ============.
+
+Parameters
+----------
+label: TDF_Label
+
+Returns
+-------
+opencascade::handle<TDataStd_Relation>
+") Set;
+		static opencascade::handle<TDataStd_Relation> Set(const TDF_Label & label);
+
+		/****************** SetRelation ******************/
+		/**** md5 signature: 9b48e0039287e75d85edb77a4c19ad95 ****/
+		%feature("compactdefaultargs") SetRelation;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+E: TCollection_ExtendedString
+
+Returns
+-------
+None
+") SetRelation;
+		void SetRelation(const TCollection_ExtendedString & E);
+
+};
+
+
+%make_alias(TDataStd_Relation)
+
+%extend TDataStd_Relation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************
+* class TDataStd_Tick *
+**********************/
+class TDataStd_Tick : public TDataStd_GenericEmpty {
+	public:
+		/****************** TDataStd_Tick ******************/
+		/**** md5 signature: a26d0e9a1ea99ba56a5b60641b8967ca ****/
+		%feature("compactdefaultargs") TDataStd_Tick;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TDataStd_Tick;
+		 TDataStd_Tick();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Static methods ==============.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** ID ******************/
+		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** Set ******************/
+		/**** md5 signature: a98facae6bc4fd10dad3a306e6332dfb ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Find, or create, a tick attribute. tick methods ============.
+
+Parameters
+----------
+label: TDF_Label
+
+Returns
+-------
+opencascade::handle<TDataStd_Tick>
+") Set;
+		static opencascade::handle<TDataStd_Tick> Set(const TDF_Label & label);
+
+};
+
+
+%make_alias(TDataStd_Tick)
+
+%extend TDataStd_Tick {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

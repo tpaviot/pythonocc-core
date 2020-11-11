@@ -391,7 +391,7 @@ class Approx_CurveOnSurface {
 		/****************** Approx_CurveOnSurface ******************/
 		/**** md5 signature: 44953400bcecd6141157e0f3eb58084e ****/
 		%feature("compactdefaultargs") Approx_CurveOnSurface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "This constructor calls perform method. this constructor is deprecated.
 
 Parameters
 ----------
@@ -413,6 +413,25 @@ Returns
 None
 ") Approx_CurveOnSurface;
 		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const opencascade::handle<Adaptor3d_HSurface> & Surf, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments, const Standard_Boolean Only3d = Standard_False, const Standard_Boolean Only2d = Standard_False);
+
+		/****************** Approx_CurveOnSurface ******************/
+		/**** md5 signature: 1870fd9a1e6fea950b25fca64ce963ff ****/
+		%feature("compactdefaultargs") Approx_CurveOnSurface;
+		%feature("autodoc", "This constructor does not call perform method. @param thec2d 2d curve to be approximated in 3d. @param thesurf surface where 2d curve is located. @param thefirst first parameter of resulting curve. @param thefirst last parameter of resulting curve. @param thetol computation tolerance.
+
+Parameters
+----------
+theC2D: Adaptor2d_HCurve2d
+theSurf: Adaptor3d_HSurface
+theFirst: float
+theLast: float
+theTol: float
+
+Returns
+-------
+None
+") Approx_CurveOnSurface;
+		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_HCurve2d> & theC2D, const opencascade::handle<Adaptor3d_HSurface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
 
 		/****************** Curve2d ******************/
 		/**** md5 signature: a68a2dac2ad11e4da3864dc2433ead7f ****/
@@ -490,6 +509,27 @@ Returns
 float
 ") MaxError3d;
 		Standard_Real MaxError3d();
+
+		/****************** Perform ******************/
+		/**** md5 signature: fe8b2a86aab3827740ea72c22a54e926 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Constructs the 3d curve. input parameters are ignored when the input curve is u-isoline or v-isoline. @param themaxsegments maximal number of segments in the resulting spline. @param themaxdegree maximal degree of the result. @param thecontinuity resulting continuity. @param theonly3d determines building only 3d curve. @param theonly2d determines building only 2d curve.
+
+Parameters
+----------
+theMaxSegments: int
+theMaxDegree: int
+theContinuity: GeomAbs_Shape
+theOnly3d: bool,optional
+	default value is Standard_False
+theOnly2d: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const Standard_Integer theMaxSegments, const Standard_Integer theMaxDegree, const GeomAbs_Shape theContinuity, const Standard_Boolean theOnly3d = Standard_False, const Standard_Boolean theOnly2d = Standard_False);
 
 };
 
@@ -1120,6 +1160,21 @@ None
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
+		/****************** SetHangChecking ******************/
+		/**** md5 signature: 082382da7c6c3da9061b500893941826 ****/
+		%feature("compactdefaultargs") SetHangChecking;
+		%feature("autodoc", "Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. by default hang checking is used.
+
+Parameters
+----------
+theHangChecking: bool
+
+Returns
+-------
+None
+") SetHangChecking;
+		void SetHangChecking(const Standard_Boolean theHangChecking);
+
 		/****************** SetInvOrder ******************/
 		/**** md5 signature: 50bac5968816111fd573c6f1be407215 ****/
 		%feature("compactdefaultargs") SetInvOrder;
@@ -1365,6 +1420,21 @@ None
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
+		/****************** SetHangChecking ******************/
+		/**** md5 signature: 082382da7c6c3da9061b500893941826 ****/
+		%feature("compactdefaultargs") SetHangChecking;
+		%feature("autodoc", "Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. by default hang checking is used.
+
+Parameters
+----------
+theHangChecking: bool
+
+Returns
+-------
+None
+") SetHangChecking;
+		void SetHangChecking(const Standard_Boolean theHangChecking);
+
 		/****************** SetInvOrder ******************/
 		/**** md5 signature: 50bac5968816111fd573c6f1be407215 ****/
 		%feature("compactdefaultargs") SetInvOrder;
@@ -1540,6 +1610,7 @@ AppParCurves_MultiBSpCurve
 *****************************/
 class Approx_SameParameter {
 	public:
+		class Approx_SameParameter_Data {};
 		/****************** Approx_SameParameter ******************/
 		/**** md5 signature: 2930666ec596179e1ab77039278ff0c2 ****/
 		%feature("compactdefaultargs") Approx_SameParameter;
@@ -1561,7 +1632,7 @@ None
 		/****************** Approx_SameParameter ******************/
 		/**** md5 signature: bcc24beb554e4ba834ebfad460b28050 ****/
 		%feature("compactdefaultargs") Approx_SameParameter;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Warning: the c3d and c2d must have the same parametric domain.
 
 Parameters
 ----------
@@ -1595,20 +1666,20 @@ None
 		 Approx_SameParameter(const opencascade::handle<Adaptor3d_HCurve> & C3D, const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
 
 		/****************** Curve2d ******************/
-		/**** md5 signature: a68a2dac2ad11e4da3864dc2433ead7f ****/
+		/**** md5 signature: 5fab5e35541cfe36f16f0294e27855ba ****/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "Returns the 2d curve that has the same parameter as the 3d curve once evaluated on the surface up to the specified tolerance.
 
 Returns
 -------
-opencascade::handle<Geom2d_BSplineCurve>
+opencascade::handle<Geom2d_Curve>
 ") Curve2d;
-		opencascade::handle<Geom2d_BSplineCurve> Curve2d();
+		opencascade::handle<Geom2d_Curve> Curve2d();
 
 		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "//!@returns .false. if calculations failed, .true. if calculations succeed.
 
 Returns
 -------
@@ -1617,7 +1688,7 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** IsSameParameter ******************/
-		/**** md5 signature: aee4524a1b3779c820860bcd014293ec ****/
+		/**** md5 signature: cc3eb7385472632cf8547c37090fb098 ****/
 		%feature("compactdefaultargs") IsSameParameter;
 		%feature("autodoc", "Tells whether the original data had already the same parameter up to the tolerance : in that case nothing is done.
 
@@ -1628,9 +1699,9 @@ bool
 		Standard_Boolean IsSameParameter();
 
 		/****************** TolReached ******************/
-		/**** md5 signature: 6afc0155da93ccb66d9c7f09c6a7d0e0 ****/
+		/**** md5 signature: 1f37a98b0772d31c830ed1321616b6c5 ****/
 		%feature("compactdefaultargs") TolReached;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "//!@returns tolerance (maximal distance) between 3d curve and curve on surface, generated by 2d curve and surface. .
 
 Returns
 -------

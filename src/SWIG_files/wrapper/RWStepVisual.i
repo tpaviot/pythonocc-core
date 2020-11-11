@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepvisual.html
 #include<StepElement_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Resource_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -160,24 +161,24 @@ None
 	}
 };
 
-/***************************************************************************************************************
-* class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem *
-***************************************************************************************************************/
-class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem {
+/****************************************************************
+* class RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem *
+****************************************************************/
+class RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem {
 	public:
-		/****************** RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem ******************/
-		/**** md5 signature: 2a33b5cb3d683ca438d7cd37a7ce38c8 ****/
-		%feature("compactdefaultargs") RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
+		/****************** RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem ******************/
+		/**** md5 signature: d20985f0885e12175c3fe024b26c9aac ****/
+		%feature("compactdefaultargs") RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 None
-") RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
-		 RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem();
+") RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem;
+		 RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem();
 
 		/****************** ReadStep ******************/
-		/**** md5 signature: e668f2cad37dc67325c47b797c55fa18 ****/
+		/**** md5 signature: 2c1649c9207663e9588fa8a341626ba1 ****/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "No available documentation.
 
@@ -186,50 +187,50 @@ Parameters
 data: StepData_StepReaderData
 num: int
 ach: Interface_Check
-ent: StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem
+ent: StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
 
 Returns
 -------
 None
 ") ReadStep;
-		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> & ent);
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndGeomReprItem> & ent);
 
 		/****************** Share ******************/
-		/**** md5 signature: 68456b067ccb919f9eef4eb08e314e7d ****/
+		/**** md5 signature: c4334121f1a022112bad1ad3e7ffa51a ****/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-ent: StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem
+ent: StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
 iter: Interface_EntityIterator
 
 Returns
 -------
 None
 ") Share;
-		void Share(const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> & ent, Interface_EntityIterator & iter);
+		void Share(const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndGeomReprItem> & ent, Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
-		/**** md5 signature: af604c05349ea643ce80089e03d9db6b ****/
+		/**** md5 signature: 732eb1e822619330a2ddaf23ca0661ed ****/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 SW: StepData_StepWriter
-ent: StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem
+ent: StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
 
 Returns
 -------
 None
 ") WriteStep;
-		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem> & ent);
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_AnnotationCurveOccurrenceAndGeomReprItem> & ent);
 
 };
 
 
-%extend RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem {
+%extend RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1269,24 +1270,24 @@ None
 	}
 };
 
-/************************************************************************************************************
-* class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation *
-************************************************************************************************************/
-class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation {
+/***************************************************************************
+* class RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel *
+***************************************************************************/
+class RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel {
 	public:
-		/****************** RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation ******************/
-		/**** md5 signature: 071ed10056ca8aea349faed0a4765222 ****/
-		%feature("compactdefaultargs") RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
+		/****************** RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel ******************/
+		/**** md5 signature: d21eb5367f0eb41a85df466af81b6132 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 None
-") RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
-		 RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation();
+") RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel;
+		 RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel();
 
 		/****************** ReadStep ******************/
-		/**** md5 signature: 71b52d3ec457691055fe1cc0578172ae ****/
+		/**** md5 signature: 9cbe6f9f018992516af6789e6c075ac0 ****/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "No available documentation.
 
@@ -1295,50 +1296,50 @@ Parameters
 data: StepData_StepReaderData
 num: int
 ach: Interface_Check
-ent: StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation
+ent: StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel
 
 Returns
 -------
 None
 ") ReadStep;
-		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> & ent);
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel> & ent);
 
 		/****************** Share ******************/
-		/**** md5 signature: 4d67df6480633280b4738c602d121497 ****/
+		/**** md5 signature: 67a9c0044b249cc429d587e60e45e8b8 ****/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-ent: StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation
+ent: StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel
 iter: Interface_EntityIterator
 
 Returns
 -------
 None
 ") Share;
-		void Share(const opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> & ent, Interface_EntityIterator & iter);
+		void Share(const opencascade::handle<StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel> & ent, Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
-		/**** md5 signature: 9f03082b90c21619834a5927c115f536 ****/
+		/**** md5 signature: b74e711f910df04a6acf96c99b2a5bd0 ****/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 SW: StepData_StepWriter
-ent: StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation
+ent: StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel
 
 Returns
 -------
 None
 ") WriteStep;
-		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation> & ent);
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel> & ent);
 
 };
 
 
-%extend RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation {
+%extend RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4452,6 +4453,231 @@ None
 	}
 };
 
+/******************************************************
+* class RWStepVisual_RWSurfaceStyleReflectanceAmbient *
+******************************************************/
+class RWStepVisual_RWSurfaceStyleReflectanceAmbient {
+	public:
+		/****************** RWStepVisual_RWSurfaceStyleReflectanceAmbient ******************/
+		/**** md5 signature: 4f4385be831790bf7970ebc4fe348b2b ****/
+		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleReflectanceAmbient;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWSurfaceStyleReflectanceAmbient;
+		 RWStepVisual_RWSurfaceStyleReflectanceAmbient();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: d614a383e07e52bbd6364380f5b30c57 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+data: StepData_StepReaderData
+num: int
+ach: Interface_Check
+ent: StepVisual_SurfaceStyleReflectanceAmbient
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient> & ent);
+
+		/****************** Share ******************/
+		/**** md5 signature: 50014369e3200612fe7823469da04c99 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+ent: StepVisual_SurfaceStyleReflectanceAmbient
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient> & ent, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: f4ee2c2b91649a827cbacbec8d271399 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SW: StepData_StepWriter
+ent: StepVisual_SurfaceStyleReflectanceAmbient
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient> & ent);
+
+};
+
+
+%extend RWStepVisual_RWSurfaceStyleReflectanceAmbient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************
+* class RWStepVisual_RWSurfaceStyleRendering *
+*********************************************/
+class RWStepVisual_RWSurfaceStyleRendering {
+	public:
+		/****************** RWStepVisual_RWSurfaceStyleRendering ******************/
+		/**** md5 signature: 956ccfba05db304a7af893188ba1ddff ****/
+		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleRendering;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWSurfaceStyleRendering;
+		 RWStepVisual_RWSurfaceStyleRendering();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: a7ce9555f912a68cfd30e5a740b2aeeb ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+data: StepData_StepReaderData
+num: int
+ach: Interface_Check
+ent: StepVisual_SurfaceStyleRendering
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_SurfaceStyleRendering> & ent);
+
+		/****************** Share ******************/
+		/**** md5 signature: e7ac76e4a64852d36aff3429d2b8dc42 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+ent: StepVisual_SurfaceStyleRendering
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_SurfaceStyleRendering> & ent, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 42add9f2aaf14937f5dde03d75be30c7 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SW: StepData_StepWriter
+ent: StepVisual_SurfaceStyleRendering
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_SurfaceStyleRendering> & ent);
+
+};
+
+
+%extend RWStepVisual_RWSurfaceStyleRendering {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************************************
+* class RWStepVisual_RWSurfaceStyleRenderingWithProperties *
+***********************************************************/
+class RWStepVisual_RWSurfaceStyleRenderingWithProperties {
+	public:
+		/****************** RWStepVisual_RWSurfaceStyleRenderingWithProperties ******************/
+		/**** md5 signature: 4fec92eb7cd5621f42ff6d5d2dcfd811 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleRenderingWithProperties;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWSurfaceStyleRenderingWithProperties;
+		 RWStepVisual_RWSurfaceStyleRenderingWithProperties();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 901d2c717fdfb1529358e87b5dfb26d0 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+data: StepData_StepReaderData
+num: int
+ach: Interface_Check
+ent: StepVisual_SurfaceStyleRenderingWithProperties
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> & ent);
+
+		/****************** Share ******************/
+		/**** md5 signature: b2ba184548b499767d62a65268fbeaa7 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+ent: StepVisual_SurfaceStyleRenderingWithProperties
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> & ent, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 9c0f7f2f3f8798c1ce6183b17cf083ad ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SW: StepData_StepWriter
+ent: StepVisual_SurfaceStyleRenderingWithProperties
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> & ent);
+
+};
+
+
+%extend RWStepVisual_RWSurfaceStyleRenderingWithProperties {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************************************************
 * class RWStepVisual_RWSurfaceStyleSegmentationCurve *
 *****************************************************/
@@ -4597,6 +4823,81 @@ None
 
 
 %extend RWStepVisual_RWSurfaceStyleSilhouette {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************************
+* class RWStepVisual_RWSurfaceStyleTransparent *
+***********************************************/
+class RWStepVisual_RWSurfaceStyleTransparent {
+	public:
+		/****************** RWStepVisual_RWSurfaceStyleTransparent ******************/
+		/**** md5 signature: 8ab3ed626cc0ded5664b18bbc7807f05 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWSurfaceStyleTransparent;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWSurfaceStyleTransparent;
+		 RWStepVisual_RWSurfaceStyleTransparent();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: bb2186e1351eda403446ca3afae26ed8 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+data: StepData_StepReaderData
+num: int
+ach: Interface_Check
+ent: StepVisual_SurfaceStyleTransparent
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepVisual_SurfaceStyleTransparent> & ent);
+
+		/****************** Share ******************/
+		/**** md5 signature: 90b54cf94794417a781db703023555c6 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+ent: StepVisual_SurfaceStyleTransparent
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_SurfaceStyleTransparent> & ent, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 88155e50d84ebbfc21d0ca75a4944c1f ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SW: StepData_StepWriter
+ent: StepVisual_SurfaceStyleTransparent
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepVisual_SurfaceStyleTransparent> & ent);
+
+};
+
+
+%extend RWStepVisual_RWSurfaceStyleTransparent {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

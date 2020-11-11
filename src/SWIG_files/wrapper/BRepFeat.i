@@ -1323,6 +1323,17 @@ TopTools_ListOfShape
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
+		/****************** Right ******************/
+		/**** md5 signature: 2734ad1e91a0abfa780551bd587a1449 ****/
+		%feature("compactdefaultargs") Right;
+		%feature("autodoc", "Returns the faces of the 'right' part on the shape.
+
+Returns
+-------
+TopTools_ListOfShape
+") Right;
+		const TopTools_ListOfShape & Right();
+
 		/****************** SetCheckInterior ******************/
 		/**** md5 signature: 2d00b58c59d6af210c84a7fdd261d94b ****/
 		%feature("compactdefaultargs") SetCheckInterior;
@@ -1537,7 +1548,7 @@ None
 		 BRepFeat_MakeDPrism(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
 		/****************** BRepFeat_MakeDPrism ******************/
-		/**** md5 signature: 0ab447d2262f60e1cbeb33c57d85e702 ****/
+		/**** md5 signature: 72552317c20790f89347229a5f21c621 ****/
 		%feature("compactdefaultargs") BRepFeat_MakeDPrism;
 		%feature("autodoc", "No available documentation.
 

@@ -106,7 +106,11 @@ class BOPTools_AlgoTools:
 	@staticmethod
 	def CorrectTolerances(theS: TopoDS_Shape, theMapToAvoid: TopTools_IndexedMapOfShape, theTolMax: Optional[float] = 0.0001, theRunParallel: Optional[bool] = False) -> None: ...
 	@staticmethod
+	def DTolerance() -> float: ...
+	@staticmethod
 	def Dimension(theS: TopoDS_Shape) -> int: ...
+	@staticmethod
+	def Dimensions(theS: TopoDS_Shape) -> Tuple[int, int]: ...
 	@staticmethod
 	def GetEdgeOff(theEdge: TopoDS_Edge, theFace: TopoDS_Face, theEdgeOff: TopoDS_Edge) -> bool: ...
 	@staticmethod
@@ -186,6 +190,8 @@ class BOPTools_AlgoTools:
 	def PointOnEdge(aEdge: TopoDS_Edge, aPrm: float, aP: gp_Pnt) -> None: ...
 	@staticmethod
 	def Sense(theF1: TopoDS_Face, theF2: TopoDS_Face, theContext: IntTools_Context) -> int: ...
+	@staticmethod
+	def TreatCompound(theS: TopoDS_Shape, theList: TopTools_ListOfShape, theMap: Optional[TopTools_MapOfShape] = None) -> None: ...
 	@overload
 	@staticmethod
 	def UpdateVertex(aIC: IntTools_Curve, aT: float, aV: TopoDS_Vertex) -> None: ...
@@ -243,8 +249,12 @@ class BOPTools_AlgoTools2D:
 	def PointOnSurface(aE: TopoDS_Edge, aF: TopoDS_Face, aT: float, theContext: Optional[IntTools_Context] = IntTools_Context()) -> Tuple[float, float]: ...
 
 class BOPTools_AlgoTools3D:
+	@overload
 	@staticmethod
-	def DoSplitSEAMOnFace(aSp: TopoDS_Edge, aF: TopoDS_Face) -> None: ...
+	def DoSplitSEAMOnFace(theESplit: TopoDS_Edge, theFace: TopoDS_Face) -> bool: ...
+	@overload
+	@staticmethod
+	def DoSplitSEAMOnFace(theEOrigin: TopoDS_Edge, theESplit: TopoDS_Edge, theFace: TopoDS_Face) -> bool: ...
 	@overload
 	@staticmethod
 	def GetApproxNormalToFaceOnEdge(aE: TopoDS_Edge, aF: TopoDS_Face, aT: float, aPx: gp_Pnt, aD: gp_Dir, theContext: IntTools_Context) -> bool: ...
@@ -316,6 +326,8 @@ class BOPTools_Set:
 	def __init__(self) -> None: ...
 	@overload
 	def __init__(self, theAllocator: NCollection_BaseAllocator) -> None: ...
+	@overload
+	def __init__(self, theOther: BOPTools_Set) -> None: ...
 	def Add(self, theS: TopoDS_Shape, theType: TopAbs_ShapeEnum) -> None: ...
 	def Assign(self, Other: BOPTools_Set) -> BOPTools_Set: ...
 	def HashCode(self, theUpperBound: int) -> int: ...
@@ -361,7 +373,9 @@ BOPTools_AlgoTools_CorrectRange = BOPTools_AlgoTools.CorrectRange
 BOPTools_AlgoTools_CorrectRange = BOPTools_AlgoTools.CorrectRange
 BOPTools_AlgoTools_CorrectShapeTolerances = BOPTools_AlgoTools.CorrectShapeTolerances
 BOPTools_AlgoTools_CorrectTolerances = BOPTools_AlgoTools.CorrectTolerances
+BOPTools_AlgoTools_DTolerance = BOPTools_AlgoTools.DTolerance
 BOPTools_AlgoTools_Dimension = BOPTools_AlgoTools.Dimension
+BOPTools_AlgoTools_Dimensions = BOPTools_AlgoTools.Dimensions
 BOPTools_AlgoTools_GetEdgeOff = BOPTools_AlgoTools.GetEdgeOff
 BOPTools_AlgoTools_GetEdgeOnFace = BOPTools_AlgoTools.GetEdgeOnFace
 BOPTools_AlgoTools_GetFaceOff = BOPTools_AlgoTools.GetFaceOff
@@ -395,6 +409,7 @@ BOPTools_AlgoTools_OrientEdgesOnWire = BOPTools_AlgoTools.OrientEdgesOnWire
 BOPTools_AlgoTools_OrientFacesOnShell = BOPTools_AlgoTools.OrientFacesOnShell
 BOPTools_AlgoTools_PointOnEdge = BOPTools_AlgoTools.PointOnEdge
 BOPTools_AlgoTools_Sense = BOPTools_AlgoTools.Sense
+BOPTools_AlgoTools_TreatCompound = BOPTools_AlgoTools.TreatCompound
 BOPTools_AlgoTools_UpdateVertex = BOPTools_AlgoTools.UpdateVertex
 BOPTools_AlgoTools_UpdateVertex = BOPTools_AlgoTools.UpdateVertex
 BOPTools_AlgoTools_UpdateVertex = BOPTools_AlgoTools.UpdateVertex
@@ -415,6 +430,7 @@ BOPTools_AlgoTools2D_Make2D = BOPTools_AlgoTools2D.Make2D
 BOPTools_AlgoTools2D_MakePCurveOnFace = BOPTools_AlgoTools2D.MakePCurveOnFace
 BOPTools_AlgoTools2D_MakePCurveOnFace = BOPTools_AlgoTools2D.MakePCurveOnFace
 BOPTools_AlgoTools2D_PointOnSurface = BOPTools_AlgoTools2D.PointOnSurface
+BOPTools_AlgoTools3D_DoSplitSEAMOnFace = BOPTools_AlgoTools3D.DoSplitSEAMOnFace
 BOPTools_AlgoTools3D_DoSplitSEAMOnFace = BOPTools_AlgoTools3D.DoSplitSEAMOnFace
 BOPTools_AlgoTools3D_GetApproxNormalToFaceOnEdge = BOPTools_AlgoTools3D.GetApproxNormalToFaceOnEdge
 BOPTools_AlgoTools3D_GetApproxNormalToFaceOnEdge = BOPTools_AlgoTools3D.GetApproxNormalToFaceOnEdge

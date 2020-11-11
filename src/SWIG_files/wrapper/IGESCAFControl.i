@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescafcontrol.ht
 #include<XSControl_module.hxx>
 #include<TCollection_module.hxx>
 #include<TDocStd_module.hxx>
+#include<Message_module.hxx>
 #include<TDF_module.hxx>
 #include<Geom2d_module.hxx>
 #include<IFSelect_module.hxx>
@@ -78,6 +79,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescafcontrol.ht
 %import XSControl.i
 %import TCollection.i
 %import TDocStd.i
+%import Message.i
 %import TDF.i
 
 %pythoncode {
@@ -214,7 +216,7 @@ bool
 		Standard_Boolean GetNameMode();
 
 		/****************** Perform ******************/
-		/**** md5 signature: e652c0b0d38310751ab441ba20ba5559 ****/
+		/**** md5 signature: 2b587fd46bb7667cfdbb48ad026162b6 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -222,15 +224,17 @@ Parameters
 ----------
 theFileName: TCollection_AsciiString
 theDoc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const TCollection_AsciiString & theFileName, opencascade::handle<TDocStd_Document> & theDoc);
+		Standard_Boolean Perform(const TCollection_AsciiString & theFileName, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
-		/**** md5 signature: f1911b5cd7700c430c137adb78fb01e5 ****/
+		/**** md5 signature: 1c934ffa71a34bfa5948fd12466d0a41 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Translate iges file given by filename into the document return true if succeeded, and false in case of fail.
 
@@ -238,12 +242,14 @@ Parameters
 ----------
 theFileName: char *
 theDoc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const char * theFileName, opencascade::handle<TDocStd_Document> & theDoc);
+		Standard_Boolean Perform(const char * theFileName, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetColorMode ******************/
 		/**** md5 signature: 7026741e7d147d7065572beb98babc6e ****/
@@ -291,19 +297,21 @@ None
 		void SetNameMode(const Standard_Boolean theMode);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: a06080571a225caecfed6f5fe067f54e ****/
+		/**** md5 signature: 3dddd7d6e8e0a5e68ab04439166cf720 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Translates currently loaded iges file into the document returns true if succeeded, and false in case of fail.
 
 Parameters
 ----------
 theDoc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(opencascade::handle<TDocStd_Document> & theDoc);
+		Standard_Boolean Transfer(opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -381,7 +389,7 @@ bool
 		Standard_Boolean GetNameMode();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 568905c89cd5500b59795a9f3620e181 ****/
+		/**** md5 signature: 82a9ff51a493dfcaea368ecaef792fdb ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -389,15 +397,17 @@ Parameters
 ----------
 doc: TDocStd_Document
 filename: TCollection_AsciiString
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const TCollection_AsciiString & filename);
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const TCollection_AsciiString & filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
-		/**** md5 signature: 9c7d09eb0ac5c8058bfcbfedd53d6de8 ****/
+		/**** md5 signature: 1ef00b1bd520cd3b05cc4f00e91c494d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Transfers a document and writes it to a iges file returns true if translation is ok.
 
@@ -405,12 +415,14 @@ Parameters
 ----------
 doc: TDocStd_Document
 filename: char *
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const char * filename);
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const char * filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetColorMode ******************/
 		/**** md5 signature: e8d41838c31a9460a1c83d84b1f572a1 ****/
@@ -458,49 +470,55 @@ None
 		void SetNameMode(const Standard_Boolean namemode);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 260eb88cdd9088aa238875d4d270b0fc ****/
+		/**** md5 signature: 31249612d40a7a08f4519552635fb88d ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers a document to a iges model returns true if translation is ok.
 
 Parameters
 ----------
 doc: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc);
+		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 9ecf8faf2a261a881dd417671de6767b ****/
+		/**** md5 signature: f3e872ca158bc684049cac94dc49b992 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers labels to a iges model returns true if translation is ok.
 
 Parameters
 ----------
 labels: TDF_LabelSequence
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_LabelSequence & labels);
+		Standard_Boolean Transfer(const TDF_LabelSequence & labels, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 903b4ad659f349ae87f519f18a64e6bc ****/
+		/**** md5 signature: 04ca4aafde66fce5eeebd12288b3c0bd ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers label to a iges model returns true if translation is ok.
 
 Parameters
 ----------
 label: TDF_Label
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_Label & label);
+		Standard_Boolean Transfer(const TDF_Label & label, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

@@ -81,6 +81,161 @@ from OCC.Core.Exception import *
 /* typedefs */
 /* end typedefs declaration */
 
+/************************
+* class Geom2dEvaluator *
+************************/
+%rename(geom2devaluator) Geom2dEvaluator;
+class Geom2dEvaluator {
+	public:
+		/****************** CalculateD0 ******************/
+		/**** md5 signature: 63f751ea1921e17ebeec14db722cc24a ****/
+		%feature("compactdefaultargs") CalculateD0;
+		%feature("autodoc", "Recalculate d1 values of base curve into d0 value of offset curve.
+
+Parameters
+----------
+theValue: gp_Pnt2d
+theD1: gp_Vec2d
+theOffset: float
+
+Returns
+-------
+None
+") CalculateD0;
+		static void CalculateD0(gp_Pnt2d & theValue, const gp_Vec2d & theD1, const Standard_Real theOffset);
+
+		/****************** CalculateD1 ******************/
+		/**** md5 signature: a51f97f7d8b02ea6f8296d4e357a3a06 ****/
+		%feature("compactdefaultargs") CalculateD1;
+		%feature("autodoc", "Recalculate d2 values of base curve into d1 values of offset curve.
+
+Parameters
+----------
+theValue: gp_Pnt2d
+theD1: gp_Vec2d
+theD2: gp_Vec2d
+theOffset: float
+
+Returns
+-------
+None
+") CalculateD1;
+		static void CalculateD1(gp_Pnt2d & theValue, gp_Vec2d & theD1, const gp_Vec2d & theD2, const Standard_Real theOffset);
+
+		/****************** CalculateD2 ******************/
+		/**** md5 signature: 8d2505ddf222e59cb962a96f89da9b14 ****/
+		%feature("compactdefaultargs") CalculateD2;
+		%feature("autodoc", "Recalculate d3 values of base curve into d2 values of offset curve.
+
+Parameters
+----------
+theValue: gp_Pnt2d
+theD1: gp_Vec2d
+theD2: gp_Vec2d
+theD3: gp_Vec2d
+theIsDirChange: bool
+theOffset: float
+
+Returns
+-------
+None
+") CalculateD2;
+		static void CalculateD2(gp_Pnt2d & theValue, gp_Vec2d & theD1, gp_Vec2d & theD2, const gp_Vec2d & theD3, const Standard_Boolean theIsDirChange, const Standard_Real theOffset);
+
+		/****************** CalculateD3 ******************/
+		/**** md5 signature: 934e2058ec6d1116e1228678ef71f07b ****/
+		%feature("compactdefaultargs") CalculateD3;
+		%feature("autodoc", "Recalculate d3 values of base curve into d3 values of offset curve.
+
+Parameters
+----------
+theValue: gp_Pnt2d
+theD1: gp_Vec2d
+theD2: gp_Vec2d
+theD3: gp_Vec2d
+theD4: gp_Vec2d
+theIsDirChange: bool
+theOffset: float
+
+Returns
+-------
+None
+") CalculateD3;
+		static void CalculateD3(gp_Pnt2d & theValue, gp_Vec2d & theD1, gp_Vec2d & theD2, gp_Vec2d & theD3, const gp_Vec2d & theD4, const Standard_Boolean theIsDirChange, const Standard_Real theOffset);
+
+};
+
+
+%extend Geom2dEvaluator {
+	%pythoncode {
+	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def A(self):
+		pass
+
+	@methodnotwrapped
+	def d(self):
+		pass
+
+	@methodnotwrapped
+	def j(self):
+		pass
+
+	@methodnotwrapped
+	def u(self):
+		pass
+
+	@methodnotwrapped
+	def s(self):
+		pass
+
+	@methodnotwrapped
+	def t(self):
+		pass
+
+	@methodnotwrapped
+	def D(self):
+		pass
+
+	@methodnotwrapped
+	def e(self):
+		pass
+
+	@methodnotwrapped
+	def r(self):
+		pass
+
+	@methodnotwrapped
+	def i(self):
+		pass
+
+	@methodnotwrapped
+	def v(self):
+		pass
+
+	@methodnotwrapped
+	def a(self):
+		pass
+
+	@methodnotwrapped
+	def t(self):
+		pass
+
+	@methodnotwrapped
+	def i(self):
+		pass
+
+	@methodnotwrapped
+	def v(self):
+		pass
+
+	@methodnotwrapped
+	def e(self):
+		pass
+	}
+};
+
 /******************************
 * class Geom2dEvaluator_Curve *
 ******************************/

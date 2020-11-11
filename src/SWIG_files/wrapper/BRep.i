@@ -1110,6 +1110,14 @@ None
 ") Curve3D;
 		virtual void Curve3D(const opencascade::handle<Geom_Curve> & C);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsCurve3D ******************/
 		/**** md5 signature: 3eb9a6a272d02b06294d6182a9677766 ****/
 		%feature("compactdefaultargs") IsCurve3D;
@@ -1570,6 +1578,14 @@ None
 ") Curve;
 		virtual void Curve(const opencascade::handle<Geom_Curve> & C);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPointOnCurve ******************/
 		/**** md5 signature: 7c324f51cb2ffeabf00df42f8c95d4fa ****/
 		%feature("compactdefaultargs") IsPointOnCurve;
@@ -1857,6 +1873,14 @@ None
 ") Degenerated;
 		void Degenerated(const Standard_Boolean S);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EmptyCopy ******************/
 		/**** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ****/
 		%feature("compactdefaultargs") EmptyCopy;
@@ -1988,6 +2012,14 @@ None
 ") BRep_TFace;
 		 BRep_TFace();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EmptyCopy ******************/
 		/**** md5 signature: 3d9756f12a98e8eef17d86b0c132771f ****/
 		%feature("compactdefaultargs") EmptyCopy;
@@ -2167,6 +2199,14 @@ BRep_ListOfPointRepresentation
 ") ChangePoints;
 		BRep_ListOfPointRepresentation & ChangePoints();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EmptyCopy ******************/
 		/**** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ****/
 		%feature("compactdefaultargs") EmptyCopy;
@@ -2569,6 +2609,21 @@ bool
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
 		/****************** IsGeometric ******************/
+		/**** md5 signature: a3ffa305b3ca35ee4bb109dae046e742 ****/
+		%feature("compactdefaultargs") IsGeometric;
+		%feature("autodoc", "Returns true if <f> has a surface, false otherwise.
+
+Parameters
+----------
+F: TopoDS_Face
+
+Returns
+-------
+bool
+") IsGeometric;
+		static Standard_Boolean IsGeometric(const TopoDS_Face & F);
+
+		/****************** IsGeometric ******************/
 		/**** md5 signature: a117bc77f4eeb666df610e8aa8cf72d3 ****/
 		%feature("compactdefaultargs") IsGeometric;
 		%feature("autodoc", "Returns true if <e> is a 3d curve or a curve on surface.
@@ -2630,9 +2685,25 @@ bool
 		static Standard_Boolean NaturalRestriction(const TopoDS_Face & F);
 
 		/****************** Parameter ******************/
+		/**** md5 signature: c56b7997627b41e5c85381896332b42c ****/
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "Finds the parameter of <thev> on <thee>. @param thev [in] input vertex @param thee [in] input edge @param theparam [out] calculated parameter on the curve returns true if done.
+
+Parameters
+----------
+theV: TopoDS_Vertex
+theE: TopoDS_Edge
+
+Returns
+-------
+theParam: float
+") Parameter;
+		static Standard_Boolean Parameter(const TopoDS_Vertex & theV, const TopoDS_Edge & theE, Standard_Real &OutValue);
+
+		/****************** Parameter ******************/
 		/**** md5 signature: acf610e0d04db95f94cbf8cee69452ec ****/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "Returns the parameter of <v> on <e>.
+		%feature("autodoc", "Returns the parameter of <v> on <e>. throws standard_nosuchobject if no parameter on edge.
 
 Parameters
 ----------
@@ -3184,6 +3255,14 @@ None
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsRegularity ******************/
 		/**** md5 signature: fc2d0c9ac93b7bd44a0b1730043df993 ****/
 		%feature("compactdefaultargs") IsRegularity;
@@ -3279,6 +3358,14 @@ None
 ") D0;
 		virtual void D0(const Standard_Real U, gp_Pnt & P);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** First ******************/
 		/**** md5 signature: 009dd98af15e46b2da286731f40e1839 ****/
 		%feature("compactdefaultargs") First;
@@ -3432,6 +3519,14 @@ None
 ") Curve;
 		virtual void Curve(const opencascade::handle<Geom_Curve> & C);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPointOnCurve ******************/
 		/**** md5 signature: afd14cc038cef12d5da511ac1ad22904 ****/
 		%feature("compactdefaultargs") IsPointOnCurve;
@@ -3476,6 +3571,14 @@ bool
 %nodefaultctor BRep_PointsOnSurface;
 class BRep_PointsOnSurface : public BRep_PointRepresentation {
 	public:
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Surface ******************/
 		/**** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ****/
 		%feature("compactdefaultargs") Surface;
@@ -3545,6 +3648,14 @@ opencascade::handle<BRep_CurveRepresentation>
 ") Copy;
 		opencascade::handle<BRep_CurveRepresentation> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPolygon3D ******************/
 		/**** md5 signature: 9c97e39fb1a5808feb35966ed93c6297 ****/
 		%feature("compactdefaultargs") IsPolygon3D;
@@ -3626,6 +3737,14 @@ opencascade::handle<BRep_CurveRepresentation>
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPolygonOnSurface ******************/
 		/**** md5 signature: 395f6d0696758a9ea0fc539532c7bf1c ****/
 		%feature("compactdefaultargs") IsPolygonOnSurface;
@@ -3734,6 +3853,14 @@ opencascade::handle<BRep_CurveRepresentation>
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPolygonOnTriangulation ******************/
 		/**** md5 signature: bc0acafa3cf68973589be66217bfe604 ****/
 		%feature("compactdefaultargs") IsPolygonOnTriangulation;
@@ -3883,6 +4010,14 @@ None
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsCurve3D ******************/
 		/**** md5 signature: 6f953c114af47442e681e23b67fa28ca ****/
 		%feature("compactdefaultargs") IsCurve3D;
@@ -3954,6 +4089,14 @@ None
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsCurveOnSurface ******************/
 		/**** md5 signature: 210e38c8bb961e7c47fbbde36d037c35 ****/
 		%feature("compactdefaultargs") IsCurveOnSurface;
@@ -4095,6 +4238,14 @@ None
 ") BRep_PointOnCurveOnSurface;
 		 BRep_PointOnCurveOnSurface(const Standard_Real P, const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPointOnCurveOnSurface ******************/
 		/**** md5 signature: 092d698478e6d62f4961b5532d2a7e6a ****/
 		%feature("compactdefaultargs") IsPointOnCurveOnSurface;
@@ -4281,6 +4432,14 @@ opencascade::handle<BRep_CurveRepresentation>
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPolygonOnClosedSurface ******************/
 		/**** md5 signature: 411040a5cb708182d4445a5125b84a85 ****/
 		%feature("compactdefaultargs") IsPolygonOnClosedSurface;
@@ -4363,6 +4522,14 @@ opencascade::handle<BRep_CurveRepresentation>
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsPolygonOnClosedTriangulation ******************/
 		/**** md5 signature: 7402c9a74e47f727da04da14988b5819 ****/
 		%feature("compactdefaultargs") IsPolygonOnClosedTriangulation;
@@ -4472,6 +4639,14 @@ opencascade::handle<BRep_CurveRepresentation>
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** IsCurveOnClosedSurface ******************/
 		/**** md5 signature: bec88248a793536f6c3cf9265d01178c ****/
 		%feature("compactdefaultargs") IsCurveOnClosedSurface;

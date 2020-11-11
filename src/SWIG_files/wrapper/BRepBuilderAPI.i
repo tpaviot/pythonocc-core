@@ -1091,20 +1091,20 @@ bool
 		Standard_Boolean NonManifoldMode();
 
 		/****************** Perform ******************/
-		/**** md5 signature: a21418fb1f637bb5f01a2fe1d0fd7cbe ****/
+		/**** md5 signature: d7fed22833997c4a8f7923f6a29bd664 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Computing thepi - progress indicator of algorithm.
+		%feature("autodoc", "Computing theprogress - progress indicator of algorithm.
 
 Parameters
 ----------
-thePI: Message_ProgressIndicator,optional
-	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Message_ProgressIndicator> & thePI = 0);
+		void Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SameParameterMode ******************/
 		/**** md5 signature: 7e498208ee59dfaf63264199ca1716c8 ****/

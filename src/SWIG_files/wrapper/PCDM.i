@@ -74,6 +74,7 @@ enum PCDM_StoreStatus {
 	PCDM_SS_Doc_IsNull = 4,
 	PCDM_SS_No_Obj = 5,
 	PCDM_SS_Info_Section_Error = 6,
+	PCDM_SS_UserBreak = 7,
 };
 
 enum PCDM_TypeOfFileDriver {
@@ -106,6 +107,7 @@ enum PCDM_ReaderStatus {
 	PCDM_RS_WrongResource = 19,
 	PCDM_RS_ReaderException = 20,
 	PCDM_RS_NoModel = 21,
+	PCDM_RS_UserBreak = 22,
 };
 
 /* end public enums declaration */
@@ -121,6 +123,7 @@ class PCDM_StoreStatus(IntEnum):
 	PCDM_SS_Doc_IsNull = 4
 	PCDM_SS_No_Obj = 5
 	PCDM_SS_Info_Section_Error = 6
+	PCDM_SS_UserBreak = 7
 PCDM_SS_OK = PCDM_StoreStatus.PCDM_SS_OK
 PCDM_SS_DriverFailure = PCDM_StoreStatus.PCDM_SS_DriverFailure
 PCDM_SS_WriteFailure = PCDM_StoreStatus.PCDM_SS_WriteFailure
@@ -128,6 +131,7 @@ PCDM_SS_Failure = PCDM_StoreStatus.PCDM_SS_Failure
 PCDM_SS_Doc_IsNull = PCDM_StoreStatus.PCDM_SS_Doc_IsNull
 PCDM_SS_No_Obj = PCDM_StoreStatus.PCDM_SS_No_Obj
 PCDM_SS_Info_Section_Error = PCDM_StoreStatus.PCDM_SS_Info_Section_Error
+PCDM_SS_UserBreak = PCDM_StoreStatus.PCDM_SS_UserBreak
 
 class PCDM_TypeOfFileDriver(IntEnum):
 	PCDM_TOFD_File = 0
@@ -162,6 +166,7 @@ class PCDM_ReaderStatus(IntEnum):
 	PCDM_RS_WrongResource = 19
 	PCDM_RS_ReaderException = 20
 	PCDM_RS_NoModel = 21
+	PCDM_RS_UserBreak = 22
 PCDM_RS_OK = PCDM_ReaderStatus.PCDM_RS_OK
 PCDM_RS_NoDriver = PCDM_ReaderStatus.PCDM_RS_NoDriver
 PCDM_RS_UnknownFileDriver = PCDM_ReaderStatus.PCDM_RS_UnknownFileDriver
@@ -184,6 +189,7 @@ PCDM_RS_UnknownDocument = PCDM_ReaderStatus.PCDM_RS_UnknownDocument
 PCDM_RS_WrongResource = PCDM_ReaderStatus.PCDM_RS_WrongResource
 PCDM_RS_ReaderException = PCDM_ReaderStatus.PCDM_RS_ReaderException
 PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
+PCDM_RS_UserBreak = PCDM_ReaderStatus.PCDM_RS_UserBreak
 };
 /* end python proxy for enums */
 
@@ -198,6 +204,7 @@ PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
 /* end handles declaration */
 
 /* templates */
+%template(PCDM_BaseDriverPointer) opencascade::handle<Storage_BaseDriver>;
 %template(PCDM_SequenceOfDocument) NCollection_Sequence<opencascade::handle<PCDM_Document>>;
 
 %extend NCollection_Sequence<opencascade::handle<PCDM_Document>> {
@@ -217,7 +224,7 @@ PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
 /* end templates declaration */
 
 /* typedefs */
-typedef Storage_BaseDriver * PCDM_BaseDriverPointer;
+typedef opencascade::handle<Storage_BaseDriver> PCDM_BaseDriverPointer;
 typedef NCollection_Sequence<opencascade::handle<PCDM_Document>> PCDM_SequenceOfDocument;
 typedef NCollection_Sequence<PCDM_Reference> PCDM_SequenceOfReference;
 /* end typedefs declaration */
@@ -229,20 +236,20 @@ typedef NCollection_Sequence<PCDM_Reference> PCDM_SequenceOfReference;
 class PCDM {
 	public:
 		/****************** FileDriverType ******************/
-		/**** md5 signature: addcc38b3196015d27f9942f5ddebae8 ****/
+		/**** md5 signature: 97feffff0539527a32e20dbd56a70780 ****/
 		%feature("compactdefaultargs") FileDriverType;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 aFileName: TCollection_AsciiString
-aBaseDriver: PCDM_BaseDriverPointer
+aBaseDriver: Storage_BaseDriver
 
 Returns
 -------
 PCDM_TypeOfFileDriver
 ") FileDriverType;
-		static PCDM_TypeOfFileDriver FileDriverType(const TCollection_AsciiString & aFileName, PCDM_BaseDriverPointer & aBaseDriver);
+		static PCDM_TypeOfFileDriver FileDriverType(const TCollection_AsciiString & aFileName, opencascade::handle<Storage_BaseDriver> & aBaseDriver);
 
 };
 
@@ -281,7 +288,7 @@ TCollection_ExtendedString
 		static TCollection_ExtendedString FileFormat(const TCollection_ExtendedString & aFileName);
 
 		/****************** Open ******************/
-		/**** md5 signature: 2bce6d13ddc8fb38fe945eb8b065e2d0 ****/
+		/**** md5 signature: a144cbf2785ef2f8f31a70359be3305c ****/
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "No available documentation.
 
@@ -295,7 +302,7 @@ Returns
 -------
 None
 ") Open;
-		static void Open(Storage_BaseDriver & aDriver, const TCollection_ExtendedString & aFileName, const Storage_OpenMode anOpenMode);
+		static void Open(const opencascade::handle<Storage_BaseDriver> & aDriver, const TCollection_ExtendedString & aFileName, const Storage_OpenMode anOpenMode);
 
 		/****************** ReadDocumentVersion ******************/
 		/**** md5 signature: bf1f618098d7343ef9fbe7740b59f3aa ****/
@@ -521,7 +528,7 @@ PCDM_ReaderStatus
 		PCDM_ReaderStatus GetStatus();
 
 		/****************** Read ******************/
-		/**** md5 signature: a7baf220a11f13ece99e614c8d1613b0 ****/
+		/**** md5 signature: 3c01d1985562127592e40cf6cb2e32c2 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Retrieves the content of the file into a new document.
 
@@ -530,12 +537,14 @@ Parameters
 aFileName: TCollection_ExtendedString
 aNewDocument: CDM_Document
 anApplication: CDM_Application
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication);
+		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -694,7 +703,7 @@ None
 class PCDM_Writer : public Standard_Transient {
 	public:
 		/****************** Write ******************/
-		/**** md5 signature: 02447f9eb5129963c0e3f61ace05fbfe ****/
+		/**** md5 signature: 129162c4da19577c25e00185debd1e17 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "No available documentation.
 
@@ -702,12 +711,14 @@ Parameters
 ----------
 aDocument: CDM_Document
 aFileName: TCollection_ExtendedString
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
+		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -1079,7 +1090,7 @@ None
 		void SetStoreStatus(const PCDM_StoreStatus theStoreStatus);
 
 		/****************** Write ******************/
-		/**** md5 signature: b113baff4fa5e386bf838af5dc4fcd6b ****/
+		/**** md5 signature: 530bf2b64cafb9602dd07d7293c739c7 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Warning! raises drivererror if an error occurs during inside the make method. stores the content of the document into a new file. //! by default write will use make method to build a persistent document and the schema method to write the persistent document.
 
@@ -1087,12 +1098,14 @@ Parameters
 ----------
 aDocument: CDM_Document
 aFileName: TCollection_ExtendedString
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
+		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

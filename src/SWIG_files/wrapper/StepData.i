@@ -44,7 +44,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdata.html"
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
-#include<Message_module.hxx>
+#include<Resource_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
@@ -58,7 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdata.html"
 %import Interface.i
 %import TCollection.i
 %import TColStd.i
-%import Message.i
+%import Resource.i
 
 %pythoncode {
 from enum import IntEnum
@@ -3452,40 +3452,6 @@ None
 ") StepData_StepDumper;
 		 StepData_StepDumper(const opencascade::handle<StepData_StepModel> & amodel, const opencascade::handle<StepData_Protocol> & protocol, const Standard_Integer mode = 0);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 0dcf5080fc00cac8d80dd1a30ac74bb6 ****/
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "Dumps a entity on an messenger. returns true if sucess, false, if the entity to dump has not been recognized by the protocol. <level> can have one of these values : - 0 : prints the type only, as known in step files (steptype) if <ent> has not been regognized by the protocol, or if its type is complex, the steptype is replaced by the display of the cdl type. complex type are well processed by level 1. - 1 : dumps the entity, completely (whatever it has simple or complex type) but alone. - 2 : dumps the entity completely, plus the item its refers to at first level (a header message designates the starting entity of the dump) <lists shared and implied> - 3 : dumps the entity and its refered items at any levels //! for levels 1,2,3, the numbers displayed (form #nnn) are the numbers of the corresponding entities in the model.
-
-Parameters
-----------
-S: Message_Messenger
-ent: Standard_Transient
-level: int
-
-Returns
--------
-bool
-") Dump;
-		Standard_Boolean Dump(const opencascade::handle<Message_Messenger> & S, const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level);
-
-		/****************** Dump ******************/
-		/**** md5 signature: a8d696df85a05e5c84c1f11caa20d929 ****/
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "Works as dump with a transient, but directly takes the entity designated by its number in the model returns false, also if <num> is out of range.
-
-Parameters
-----------
-S: Message_Messenger
-num: int
-level: int
-
-Returns
--------
-bool
-") Dump;
-		Standard_Boolean Dump(const opencascade::handle<Message_Messenger> & S, const Standard_Integer num, const Standard_Integer level);
-
 		/****************** StepWriter ******************/
 		/**** md5 signature: 96c8201dd445aa612be97bdda77742fe ****/
 		%feature("compactdefaultargs") StepWriter;
@@ -3558,23 +3524,6 @@ Returns
 None
 ") ClearLabels;
 		void ClearLabels();
-
-		/****************** DumpHeader ******************/
-		/**** md5 signature: 8c26c3bada2e328de3402788b3830cab ****/
-		%feature("compactdefaultargs") DumpHeader;
-		%feature("autodoc", "Dumps the header, with the header protocol of stepdata. if the header protocol is not defined, for each header entity, prints its type. else sends the header under the form of header section of an ascii step file <level> is not used because header is not so big.
-
-Parameters
-----------
-S: Message_Messenger
-level: int,optional
-	default value is 0
-
-Returns
--------
-None
-") DumpHeader;
-		void DumpHeader(const opencascade::handle<Message_Messenger> & S, const Standard_Integer level = 0);
 
 		/****************** Entity ******************/
 		/**** md5 signature: 1676edef20e54d8138d1f2a308537826 ****/
@@ -3673,22 +3622,6 @@ opencascade::handle<Interface_InterfaceModel>
 ") NewEmptyModel;
 		opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
-		/****************** PrintLabel ******************/
-		/**** md5 signature: 4457bad1928cdec47f83e1bb0c2b5633 ****/
-		%feature("compactdefaultargs") PrintLabel;
-		%feature("autodoc", "Prints label specific to step norm for a given entity, i.e. if a labelident has been recorded, its value with '#', else the number in the model with '#' and between ().
-
-Parameters
-----------
-ent: Standard_Transient
-S: Message_Messenger
-
-Returns
--------
-None
-") PrintLabel;
-		void PrintLabel(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Message_Messenger> & S);
-
 		/****************** SetIdentLabel ******************/
 		/**** md5 signature: d8211ff55cd283602d612ccf9779dc4a ****/
 		%feature("compactdefaultargs") SetIdentLabel;
@@ -3704,6 +3637,32 @@ Returns
 None
 ") SetIdentLabel;
 		void SetIdentLabel(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer ident);
+
+		/****************** SetSourceCodePage ******************/
+		/**** md5 signature: aa588b60c23e4bbb2537b739d5a43a57 ****/
+		%feature("compactdefaultargs") SetSourceCodePage;
+		%feature("autodoc", "Return the encoding of step file for converting names into unicode.
+
+Parameters
+----------
+theCode: Resource_FormatType
+
+Returns
+-------
+None
+") SetSourceCodePage;
+		void SetSourceCodePage(Resource_FormatType theCode);
+
+		/****************** SourceCodePage ******************/
+		/**** md5 signature: e194da071972a41e58548e424201cc2c ****/
+		%feature("compactdefaultargs") SourceCodePage;
+		%feature("autodoc", "Return the encoding of step file for converting names into unicode. initialized from 'read.step.codepage' variable by constructor, which is resource_utf8 by default.
+
+Returns
+-------
+Resource_FormatType
+") SourceCodePage;
+		Resource_FormatType SourceCodePage();
 
 		/****************** StringLabel ******************/
 		/**** md5 signature: 8051e56e871a0ca086f3d44adb661ad2 ****/
@@ -3752,7 +3711,7 @@ None
 class StepData_StepReaderData : public Interface_FileReaderData {
 	public:
 		/****************** StepData_StepReaderData ******************/
-		/**** md5 signature: b8ab4ca24b68d8b2128e118e140754b6 ****/
+		/**** md5 signature: db335b50fd725a5628db2d961b3a5133 ****/
 		%feature("compactdefaultargs") StepData_StepReaderData;
 		%feature("autodoc", "Creates stepreaderdata correctly dimensionned (necessary at creation time, because it contains arrays) nbheader is nb of records for header, nbtotal for header+data and nbpar gives the total count of parameters.
 
@@ -3761,12 +3720,14 @@ Parameters
 nbheader: int
 nbtotal: int
 nbpar: int
+theSourceCodePage: Resource_FormatType,optional
+	default value is Resource_FormatType_UTF8
 
 Returns
 -------
 None
 ") StepData_StepReaderData;
-		 StepData_StepReaderData(const Standard_Integer nbheader, const Standard_Integer nbtotal, const Standard_Integer nbpar);
+		 StepData_StepReaderData(const Standard_Integer nbheader, const Standard_Integer nbtotal, const Standard_Integer nbpar, const Resource_FormatType theSourceCodePage = Resource_FormatType_UTF8);
 
 		/****************** AddStepParam ******************/
 		/**** md5 signature: 834d18d38a342df8da62aa7c53fe99a4 ****/

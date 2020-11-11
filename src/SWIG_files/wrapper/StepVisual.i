@@ -53,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepvisual.html"
 #include<Interface_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Resource_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -107,6 +108,13 @@ enum StepVisual_MarkerType {
 	StepVisual_mtTriangle = 6,
 };
 
+enum StepVisual_ShadingSurfaceMethod {
+	StepVisual_ssmConstantShading = 0,
+	StepVisual_ssmColourShading = 1,
+	StepVisual_ssmDotShading = 2,
+	StepVisual_ssmNormalShading = 3,
+};
+
 /* end public enums declaration */
 
 /* python proy classes for enums */
@@ -155,6 +163,16 @@ StepVisual_mtAsterisk = StepVisual_MarkerType.StepVisual_mtAsterisk
 StepVisual_mtRing = StepVisual_MarkerType.StepVisual_mtRing
 StepVisual_mtSquare = StepVisual_MarkerType.StepVisual_mtSquare
 StepVisual_mtTriangle = StepVisual_MarkerType.StepVisual_mtTriangle
+
+class StepVisual_ShadingSurfaceMethod(IntEnum):
+	StepVisual_ssmConstantShading = 0
+	StepVisual_ssmColourShading = 1
+	StepVisual_ssmDotShading = 2
+	StepVisual_ssmNormalShading = 3
+StepVisual_ssmConstantShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmConstantShading
+StepVisual_ssmColourShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmColourShading
+StepVisual_ssmDotShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmDotShading
+StepVisual_ssmNormalShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmNormalShading
 };
 /* end python proxy for enums */
 
@@ -198,8 +216,11 @@ StepVisual_mtTriangle = StepVisual_MarkerType.StepVisual_mtTriangle
 %wrap_handle(StepVisual_SurfaceStyleControlGrid)
 %wrap_handle(StepVisual_SurfaceStyleFillArea)
 %wrap_handle(StepVisual_SurfaceStyleParameterLine)
+%wrap_handle(StepVisual_SurfaceStyleReflectanceAmbient)
+%wrap_handle(StepVisual_SurfaceStyleRendering)
 %wrap_handle(StepVisual_SurfaceStyleSegmentationCurve)
 %wrap_handle(StepVisual_SurfaceStyleSilhouette)
+%wrap_handle(StepVisual_SurfaceStyleTransparent)
 %wrap_handle(StepVisual_SurfaceStyleUsage)
 %wrap_handle(StepVisual_Template)
 %wrap_handle(StepVisual_TemplateInstance)
@@ -214,7 +235,7 @@ StepVisual_mtTriangle = StepVisual_MarkerType.StepVisual_mtTriangle
 %wrap_handle(StepVisual_CameraImage3dWithScale)
 %wrap_handle(StepVisual_CameraModelD2)
 %wrap_handle(StepVisual_CameraModelD3)
-%wrap_handle(StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation)
+%wrap_handle(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel)
 %wrap_handle(StepVisual_ColourSpecification)
 %wrap_handle(StepVisual_CompositeTextWithExtent)
 %wrap_handle(StepVisual_ContextDependentInvisibility)
@@ -228,6 +249,7 @@ StepVisual_mtTriangle = StepVisual_MarkerType.StepVisual_mtTriangle
 %wrap_handle(StepVisual_PresentationArea)
 %wrap_handle(StepVisual_PresentationStyleByContext)
 %wrap_handle(StepVisual_PresentationView)
+%wrap_handle(StepVisual_SurfaceStyleRenderingWithProperties)
 %wrap_handle(StepVisual_TessellatedAnnotationOccurrence)
 %wrap_handle(StepVisual_TessellatedCurveSet)
 %wrap_handle(StepVisual_TessellatedGeometricSet)
@@ -243,13 +265,14 @@ StepVisual_mtTriangle = StepVisual_MarkerType.StepVisual_mtTriangle
 %wrap_handle(StepVisual_DraughtingPreDefinedColour)
 %wrap_handle(StepVisual_DraughtingPreDefinedCurveFont)
 %wrap_handle(StepVisual_MechanicalDesignGeometricPresentationArea)
-%wrap_handle(StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem)
+%wrap_handle(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem)
 %wrap_handle(StepVisual_HArray1OfAnnotationPlaneElement)
 %wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
 %wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
 %wrap_handle(StepVisual_HArray1OfStyleContextSelect)
 %wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
 %wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
+%wrap_handle(StepVisual_HArray1OfRenderingPropertiesSelect)
 %wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
 %wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
 %wrap_handle(StepVisual_HArray1OfFillStyleSelect)
@@ -682,6 +705,41 @@ StepVisual_mtTriangle = StepVisual_MarkerType.StepVisual_mtTriangle
     __next__ = next
     }
 };
+%template(StepVisual_Array1OfRenderingPropertiesSelect) NCollection_Array1<StepVisual_RenderingPropertiesSelect>;
+
+%extend NCollection_Array1<StepVisual_RenderingPropertiesSelect> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
 %template(StepVisual_Array1OfStyleContextSelect) NCollection_Array1<StepVisual_StyleContextSelect>;
 
 %extend NCollection_Array1<StepVisual_StyleContextSelect> {
@@ -838,6 +896,7 @@ typedef NCollection_Array1<StepVisual_InvisibleItem> StepVisual_Array1OfInvisibl
 typedef NCollection_Array1<StepVisual_LayeredItem> StepVisual_Array1OfLayeredItem;
 typedef NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>> StepVisual_Array1OfPresentationStyleAssignment;
 typedef NCollection_Array1<StepVisual_PresentationStyleSelect> StepVisual_Array1OfPresentationStyleSelect;
+typedef NCollection_Array1<StepVisual_RenderingPropertiesSelect> StepVisual_Array1OfRenderingPropertiesSelect;
 typedef NCollection_Array1<StepVisual_StyleContextSelect> StepVisual_Array1OfStyleContextSelect;
 typedef NCollection_Array1<StepVisual_SurfaceStyleElementSelect> StepVisual_Array1OfSurfaceStyleElementSelect;
 typedef NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>> StepVisual_Array1OfTessellatedItem;
@@ -4559,6 +4618,68 @@ None
 	}
 };
 
+/*********************************************
+* class StepVisual_RenderingPropertiesSelect *
+*********************************************/
+class StepVisual_RenderingPropertiesSelect : public StepData_SelectType {
+	public:
+		/****************** StepVisual_RenderingPropertiesSelect ******************/
+		/**** md5 signature: 686e9d5183294b53b632dd910cc670c6 ****/
+		%feature("compactdefaultargs") StepVisual_RenderingPropertiesSelect;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") StepVisual_RenderingPropertiesSelect;
+		 StepVisual_RenderingPropertiesSelect();
+
+		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "Recognizes a kind of renderingpropertiesselect select type -- 1 -> surfacestylereflectanceambient -- 2 -> surfacestyletransparent.
+
+Parameters
+----------
+ent: Standard_Transient
+
+Returns
+-------
+int
+") CaseNum;
+		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** SurfaceStyleReflectanceAmbient ******************/
+		/**** md5 signature: 9bed639fef414c2878d022d2ab14c51d ****/
+		%feature("compactdefaultargs") SurfaceStyleReflectanceAmbient;
+		%feature("autodoc", "Returns value as surfacestylereflectanceambient (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient>
+") SurfaceStyleReflectanceAmbient;
+		opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient> SurfaceStyleReflectanceAmbient();
+
+		/****************** SurfaceStyleTransparent ******************/
+		/**** md5 signature: 68a06be6ae013949c2e639cdc3d6c875 ****/
+		%feature("compactdefaultargs") SurfaceStyleTransparent;
+		%feature("autodoc", "Returns value as surfacestyletransparent (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepVisual_SurfaceStyleTransparent>
+") SurfaceStyleTransparent;
+		opencascade::handle<StepVisual_SurfaceStyleTransparent> SurfaceStyleTransparent();
+
+};
+
+
+%extend StepVisual_RenderingPropertiesSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**************************************
 * class StepVisual_StyleContextSelect *
 **************************************/
@@ -5140,7 +5261,7 @@ None
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a surfacestyleelementselect kind entity that is : 1 -> surfacestylefillarea 2 -> surfacestyleboundary 3 -> surfacestyleparameterline 4 -> surfacestylesilhouette 5 -> surfacestylesegmentationcurve 6 -> surfacestylecontrolgrid 0 else.
+		%feature("autodoc", "Recognizes a surfacestyleelementselect kind entity that is : 1 -> surfacestylefillarea 2 -> surfacestyleboundary 3 -> surfacestyleparameterline 4 -> surfacestylesilhouette 5 -> surfacestylesegmentationcurve 6 -> surfacestylecontrolgrid 7 -> surfacestylerendering 0 else.
 
 Parameters
 ----------
@@ -5184,6 +5305,17 @@ Returns
 opencascade::handle<StepVisual_SurfaceStyleParameterLine>
 ") SurfaceStyleParameterLine;
 		opencascade::handle<StepVisual_SurfaceStyleParameterLine> SurfaceStyleParameterLine();
+
+		/****************** SurfaceStyleRendering ******************/
+		/**** md5 signature: 5f325ec85c1ede8555ecba2f5cbf6f90 ****/
+		%feature("compactdefaultargs") SurfaceStyleRendering;
+		%feature("autodoc", "Returns value as a surfacestylerendering (null if another type).
+
+Returns
+-------
+opencascade::handle<StepVisual_SurfaceStyleRendering>
+") SurfaceStyleRendering;
+		opencascade::handle<StepVisual_SurfaceStyleRendering> SurfaceStyleRendering();
 
 };
 
@@ -5383,6 +5515,169 @@ opencascade::handle<StepVisual_CurveStyle>
 	}
 };
 
+/**************************************************
+* class StepVisual_SurfaceStyleReflectanceAmbient *
+**************************************************/
+class StepVisual_SurfaceStyleReflectanceAmbient : public Standard_Transient {
+	public:
+		/****************** StepVisual_SurfaceStyleReflectanceAmbient ******************/
+		/**** md5 signature: 71934b99e15908b4c798322bbe56e8d7 ****/
+		%feature("compactdefaultargs") StepVisual_SurfaceStyleReflectanceAmbient;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_SurfaceStyleReflectanceAmbient;
+		 StepVisual_SurfaceStyleReflectanceAmbient();
+
+		/****************** AmbientReflectance ******************/
+		/**** md5 signature: 91c71cacd5aaa1e29a74a253278cf822 ****/
+		%feature("compactdefaultargs") AmbientReflectance;
+		%feature("autodoc", "Returns field ambientreflectance.
+
+Returns
+-------
+float
+") AmbientReflectance;
+		Standard_Real AmbientReflectance();
+
+		/****************** Init ******************/
+		/**** md5 signature: ebf8757f098298aaf1e593c46dac0b0b ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theAmbientReflectance: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const Standard_Real theAmbientReflectance);
+
+		/****************** SetAmbientReflectance ******************/
+		/**** md5 signature: f19473c235a6e050fa102bf332502825 ****/
+		%feature("compactdefaultargs") SetAmbientReflectance;
+		%feature("autodoc", "Sets field ambientreflectance.
+
+Parameters
+----------
+theAmbientReflectance: float
+
+Returns
+-------
+None
+") SetAmbientReflectance;
+		void SetAmbientReflectance(const Standard_Real theAmbientReflectance);
+
+};
+
+
+%make_alias(StepVisual_SurfaceStyleReflectanceAmbient)
+
+%extend StepVisual_SurfaceStyleReflectanceAmbient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class StepVisual_SurfaceStyleRendering *
+*****************************************/
+class StepVisual_SurfaceStyleRendering : public Standard_Transient {
+	public:
+		/****************** StepVisual_SurfaceStyleRendering ******************/
+		/**** md5 signature: 1501071707aa881fd43933f71984dc1a ****/
+		%feature("compactdefaultargs") StepVisual_SurfaceStyleRendering;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_SurfaceStyleRendering;
+		 StepVisual_SurfaceStyleRendering();
+
+		/****************** Init ******************/
+		/**** md5 signature: e293b1ce0c8ea41af555cab8fbde959a ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRenderingMethod: StepVisual_ShadingSurfaceMethod
+theSurfaceColour: StepVisual_Colour
+
+Returns
+-------
+None
+") Init;
+		void Init(const StepVisual_ShadingSurfaceMethod theRenderingMethod, const opencascade::handle<StepVisual_Colour> & theSurfaceColour);
+
+		/****************** RenderingMethod ******************/
+		/**** md5 signature: c7b331f67430a0085d411394103847aa ****/
+		%feature("compactdefaultargs") RenderingMethod;
+		%feature("autodoc", "Returns field renderingmethod.
+
+Returns
+-------
+StepVisual_ShadingSurfaceMethod
+") RenderingMethod;
+		StepVisual_ShadingSurfaceMethod RenderingMethod();
+
+		/****************** SetRenderingMethod ******************/
+		/**** md5 signature: eb3fec1e8fa2531906fc0ab938671f88 ****/
+		%feature("compactdefaultargs") SetRenderingMethod;
+		%feature("autodoc", "Sets field renderingmethod.
+
+Parameters
+----------
+theRenderingMethod: StepVisual_ShadingSurfaceMethod
+
+Returns
+-------
+None
+") SetRenderingMethod;
+		void SetRenderingMethod(const StepVisual_ShadingSurfaceMethod theRenderingMethod);
+
+		/****************** SetSurfaceColour ******************/
+		/**** md5 signature: 6a65727e6f437c63c9a4db20080f7dc8 ****/
+		%feature("compactdefaultargs") SetSurfaceColour;
+		%feature("autodoc", "Sets field surfacecolour.
+
+Parameters
+----------
+theSurfaceColour: StepVisual_Colour
+
+Returns
+-------
+None
+") SetSurfaceColour;
+		void SetSurfaceColour(const opencascade::handle<StepVisual_Colour> & theSurfaceColour);
+
+		/****************** SurfaceColour ******************/
+		/**** md5 signature: 48f1dd93065e855f4e371c669e45d364 ****/
+		%feature("compactdefaultargs") SurfaceColour;
+		%feature("autodoc", "Returns field surfacecolour.
+
+Returns
+-------
+opencascade::handle<StepVisual_Colour>
+") SurfaceColour;
+		opencascade::handle<StepVisual_Colour> SurfaceColour();
+
+};
+
+
+%make_alias(StepVisual_SurfaceStyleRendering)
+
+%extend StepVisual_SurfaceStyleRendering {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*************************************************
 * class StepVisual_SurfaceStyleSegmentationCurve *
 *************************************************/
@@ -5514,6 +5809,74 @@ opencascade::handle<StepVisual_CurveStyle>
 %make_alias(StepVisual_SurfaceStyleSilhouette)
 
 %extend StepVisual_SurfaceStyleSilhouette {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************************
+* class StepVisual_SurfaceStyleTransparent *
+*******************************************/
+class StepVisual_SurfaceStyleTransparent : public Standard_Transient {
+	public:
+		/****************** StepVisual_SurfaceStyleTransparent ******************/
+		/**** md5 signature: a25569b5c11593b7b12c7835b3529298 ****/
+		%feature("compactdefaultargs") StepVisual_SurfaceStyleTransparent;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_SurfaceStyleTransparent;
+		 StepVisual_SurfaceStyleTransparent();
+
+		/****************** Init ******************/
+		/**** md5 signature: d0471972d41a7e6008fada7eb54b59eb ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theTransparency: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const Standard_Real theTransparency);
+
+		/****************** SetTransparency ******************/
+		/**** md5 signature: b63ccc026f1e33423da5a4fb3a4c87f6 ****/
+		%feature("compactdefaultargs") SetTransparency;
+		%feature("autodoc", "Sets field transparency.
+
+Parameters
+----------
+theTransparency: float
+
+Returns
+-------
+None
+") SetTransparency;
+		void SetTransparency(const Standard_Real theTransparency);
+
+		/****************** Transparency ******************/
+		/**** md5 signature: 395111f5ce5a38f6b8d6009c7b6b1222 ****/
+		%feature("compactdefaultargs") Transparency;
+		%feature("autodoc", "Returns field transparency.
+
+Returns
+-------
+float
+") Transparency;
+		Standard_Real Transparency();
+
+};
+
+
+%make_alias(StepVisual_SurfaceStyleTransparent)
+
+%extend StepVisual_SurfaceStyleTransparent {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6733,28 +7096,28 @@ opencascade::handle<StepGeom_Axis2Placement3d>
 	}
 };
 
-/********************************************************************************************************
-* class StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation *
-********************************************************************************************************/
-class StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation : public StepVisual_DraughtingModel {
+/***********************************************************************
+* class StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel *
+***********************************************************************/
+class StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel : public StepVisual_DraughtingModel {
 	public:
-		/****************** StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation ******************/
-		/**** md5 signature: 1192a6d4d595dc4f7222e13241e0f3cb ****/
-		%feature("compactdefaultargs") StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
+		/****************** StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel ******************/
+		/**** md5 signature: 34cb562d413a95c3a37b9fcbd2461f78 ****/
+		%feature("compactdefaultargs") StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 None
-") StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
-		 StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation();
+") StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel;
+		 StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel();
 
 };
 
 
-%make_alias(StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation)
+%make_alias(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel)
 
-%extend StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation {
+%extend StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7415,6 +7778,76 @@ None
 %make_alias(StepVisual_PresentationView)
 
 %extend StepVisual_PresentationView {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************************************
+* class StepVisual_SurfaceStyleRenderingWithProperties *
+*******************************************************/
+class StepVisual_SurfaceStyleRenderingWithProperties : public StepVisual_SurfaceStyleRendering {
+	public:
+		/****************** StepVisual_SurfaceStyleRenderingWithProperties ******************/
+		/**** md5 signature: 516dd2417e51a15b895ff90ed669ab7f ****/
+		%feature("compactdefaultargs") StepVisual_SurfaceStyleRenderingWithProperties;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_SurfaceStyleRenderingWithProperties;
+		 StepVisual_SurfaceStyleRenderingWithProperties();
+
+		/****************** Init ******************/
+		/**** md5 signature: 6ccee1bad33817e66b5f255ad860827b ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theSurfaceStyleRendering_RenderingMethod: StepVisual_ShadingSurfaceMethod
+theSurfaceStyleRendering_SurfaceColour: StepVisual_Colour
+theProperties: StepVisual_HArray1OfRenderingPropertiesSelect
+
+Returns
+-------
+None
+") Init;
+		void Init(const StepVisual_ShadingSurfaceMethod theSurfaceStyleRendering_RenderingMethod, const opencascade::handle<StepVisual_Colour> & theSurfaceStyleRendering_SurfaceColour, const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
+
+		/****************** Properties ******************/
+		/**** md5 signature: dcd41794385dc173a5798e6ef5ebdf66 ****/
+		%feature("compactdefaultargs") Properties;
+		%feature("autodoc", "Returns field properties.
+
+Returns
+-------
+opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect>
+") Properties;
+		opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> Properties();
+
+		/****************** SetProperties ******************/
+		/**** md5 signature: 94b0b2d7f95c87b9c8fd1441d384ffa5 ****/
+		%feature("compactdefaultargs") SetProperties;
+		%feature("autodoc", "Sets field properties.
+
+Parameters
+----------
+theProperties: StepVisual_HArray1OfRenderingPropertiesSelect
+
+Returns
+-------
+None
+") SetProperties;
+		void SetProperties(const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
+
+};
+
+
+%make_alias(StepVisual_SurfaceStyleRenderingWithProperties)
+
+%extend StepVisual_SurfaceStyleRenderingWithProperties {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8301,28 +8734,28 @@ None
 	}
 };
 
-/***********************************************************************************************************
-* class StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem *
-***********************************************************************************************************/
-class StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem : public StepVisual_AnnotationCurveOccurrence {
+/************************************************************
+* class StepVisual_AnnotationCurveOccurrenceAndGeomReprItem *
+************************************************************/
+class StepVisual_AnnotationCurveOccurrenceAndGeomReprItem : public StepVisual_AnnotationCurveOccurrence {
 	public:
-		/****************** StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem ******************/
-		/**** md5 signature: 5467b411ded625d626eb435ded7677a9 ****/
-		%feature("compactdefaultargs") StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
+		/****************** StepVisual_AnnotationCurveOccurrenceAndGeomReprItem ******************/
+		/**** md5 signature: 61da7f9ce3b786d730625e38c0f52ef7 ****/
+		%feature("compactdefaultargs") StepVisual_AnnotationCurveOccurrenceAndGeomReprItem;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
 None
-") StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
-		 StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem();
+") StepVisual_AnnotationCurveOccurrenceAndGeomReprItem;
+		 StepVisual_AnnotationCurveOccurrenceAndGeomReprItem();
 
 };
 
 
-%make_alias(StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem)
+%make_alias(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem)
 
-%extend StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem {
+%extend StepVisual_AnnotationCurveOccurrenceAndGeomReprItem {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8394,6 +8827,17 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public StepVisual_Array1OfCurv
     StepVisual_Array1OfCurveStyleFontPattern& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
+
+
+class StepVisual_HArray1OfRenderingPropertiesSelect : public StepVisual_Array1OfRenderingPropertiesSelect, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfRenderingPropertiesSelect::value_type& theValue);
+    StepVisual_HArray1OfRenderingPropertiesSelect(const StepVisual_Array1OfRenderingPropertiesSelect& theOther);
+    const StepVisual_Array1OfRenderingPropertiesSelect& Array1();
+    StepVisual_Array1OfRenderingPropertiesSelect& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfRenderingPropertiesSelect)
 
 
 class StepVisual_HArray1OfBoxCharacteristicSelect : public StepVisual_Array1OfBoxCharacteristicSelect, public Standard_Transient {

@@ -93,18 +93,6 @@ enum GeomAbs_CurveType {
 	GeomAbs_OtherCurve = 8,
 };
 
-enum GeomAbs_SurfaceForm {
-	GeomAbs_PlanarForm = 0,
-	GeomAbs_ConicalForm = 1,
-	GeomAbs_CylindricalForm = 2,
-	GeomAbs_ToroidalForm = 3,
-	GeomAbs_SphericalForm = 4,
-	GeomAbs_RevolutionForm = 5,
-	GeomAbs_RuledForm = 6,
-	GeomAbs_QuadricForm = 7,
-	GeomAbs_OtherSurfaceForm = 8,
-};
-
 enum GeomAbs_Shape {
 	GeomAbs_C0 = 0,
 	GeomAbs_G1 = 1,
@@ -120,22 +108,6 @@ enum GeomAbs_BSplKnotDistribution {
 	GeomAbs_Uniform = 1,
 	GeomAbs_QuasiUniform = 2,
 	GeomAbs_PiecewiseBezier = 3,
-};
-
-enum GeomAbs_CurveForm {
-	GeomAbs_PolylineForm = 0,
-	GeomAbs_CircularForm = 1,
-	GeomAbs_EllipticForm = 2,
-	GeomAbs_HyperbolicForm = 3,
-	GeomAbs_ParabolicForm = 4,
-	GeomAbs_OtherCurveForm = 5,
-};
-
-enum GeomAbs_UVSense {
-	GeomAbs_SameUV = 0,
-	GeomAbs_SameU = 1,
-	GeomAbs_SameV = 2,
-	GeomAbs_OppositeUV = 3,
 };
 
 /* end public enums declaration */
@@ -203,26 +175,6 @@ GeomAbs_BSplineCurve = GeomAbs_CurveType.GeomAbs_BSplineCurve
 GeomAbs_OffsetCurve = GeomAbs_CurveType.GeomAbs_OffsetCurve
 GeomAbs_OtherCurve = GeomAbs_CurveType.GeomAbs_OtherCurve
 
-class GeomAbs_SurfaceForm(IntEnum):
-	GeomAbs_PlanarForm = 0
-	GeomAbs_ConicalForm = 1
-	GeomAbs_CylindricalForm = 2
-	GeomAbs_ToroidalForm = 3
-	GeomAbs_SphericalForm = 4
-	GeomAbs_RevolutionForm = 5
-	GeomAbs_RuledForm = 6
-	GeomAbs_QuadricForm = 7
-	GeomAbs_OtherSurfaceForm = 8
-GeomAbs_PlanarForm = GeomAbs_SurfaceForm.GeomAbs_PlanarForm
-GeomAbs_ConicalForm = GeomAbs_SurfaceForm.GeomAbs_ConicalForm
-GeomAbs_CylindricalForm = GeomAbs_SurfaceForm.GeomAbs_CylindricalForm
-GeomAbs_ToroidalForm = GeomAbs_SurfaceForm.GeomAbs_ToroidalForm
-GeomAbs_SphericalForm = GeomAbs_SurfaceForm.GeomAbs_SphericalForm
-GeomAbs_RevolutionForm = GeomAbs_SurfaceForm.GeomAbs_RevolutionForm
-GeomAbs_RuledForm = GeomAbs_SurfaceForm.GeomAbs_RuledForm
-GeomAbs_QuadricForm = GeomAbs_SurfaceForm.GeomAbs_QuadricForm
-GeomAbs_OtherSurfaceForm = GeomAbs_SurfaceForm.GeomAbs_OtherSurfaceForm
-
 class GeomAbs_Shape(IntEnum):
 	GeomAbs_C0 = 0
 	GeomAbs_G1 = 1
@@ -248,30 +200,6 @@ GeomAbs_NonUniform = GeomAbs_BSplKnotDistribution.GeomAbs_NonUniform
 GeomAbs_Uniform = GeomAbs_BSplKnotDistribution.GeomAbs_Uniform
 GeomAbs_QuasiUniform = GeomAbs_BSplKnotDistribution.GeomAbs_QuasiUniform
 GeomAbs_PiecewiseBezier = GeomAbs_BSplKnotDistribution.GeomAbs_PiecewiseBezier
-
-class GeomAbs_CurveForm(IntEnum):
-	GeomAbs_PolylineForm = 0
-	GeomAbs_CircularForm = 1
-	GeomAbs_EllipticForm = 2
-	GeomAbs_HyperbolicForm = 3
-	GeomAbs_ParabolicForm = 4
-	GeomAbs_OtherCurveForm = 5
-GeomAbs_PolylineForm = GeomAbs_CurveForm.GeomAbs_PolylineForm
-GeomAbs_CircularForm = GeomAbs_CurveForm.GeomAbs_CircularForm
-GeomAbs_EllipticForm = GeomAbs_CurveForm.GeomAbs_EllipticForm
-GeomAbs_HyperbolicForm = GeomAbs_CurveForm.GeomAbs_HyperbolicForm
-GeomAbs_ParabolicForm = GeomAbs_CurveForm.GeomAbs_ParabolicForm
-GeomAbs_OtherCurveForm = GeomAbs_CurveForm.GeomAbs_OtherCurveForm
-
-class GeomAbs_UVSense(IntEnum):
-	GeomAbs_SameUV = 0
-	GeomAbs_SameU = 1
-	GeomAbs_SameV = 2
-	GeomAbs_OppositeUV = 3
-GeomAbs_SameUV = GeomAbs_UVSense.GeomAbs_SameUV
-GeomAbs_SameU = GeomAbs_UVSense.GeomAbs_SameU
-GeomAbs_SameV = GeomAbs_UVSense.GeomAbs_SameV
-GeomAbs_OppositeUV = GeomAbs_UVSense.GeomAbs_OppositeUV
 };
 /* end python proxy for enums */
 

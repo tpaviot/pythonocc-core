@@ -6,11 +6,11 @@ from OCC.Core.NCollection import *
 from OCC.Core.BRepAdaptor import *
 from OCC.Core.TopoDS import *
 from OCC.Core.TopAbs import *
+from OCC.Core.ChFiDS import *
+from OCC.Core.GeomAbs import *
 from OCC.Core.TopOpeBRepBuild import *
 from OCC.Core.Geom import *
 from OCC.Core.TopTools import *
-from OCC.Core.GeomAbs import *
-from OCC.Core.ChFiDS import *
 from OCC.Core.Adaptor3d import *
 from OCC.Core.math import *
 from OCC.Core.Law import *
@@ -36,6 +36,10 @@ ChFi3d_Polynomial = ChFi3d_FilletShape.ChFi3d_Polynomial
 class chfi3d:
 	@staticmethod
 	def ConcaveSide(S1: BRepAdaptor_Surface, S2: BRepAdaptor_Surface, E: TopoDS_Edge, Or1: TopAbs_Orientation, Or2: TopAbs_Orientation) -> int: ...
+	@staticmethod
+	def DefineConnectType(E: TopoDS_Edge, F1: TopoDS_Face, F2: TopoDS_Face, SinTol: float, CorrectPoint: bool) -> ChFiDS_TypeOfConcavity: ...
+	@staticmethod
+	def IsTangentFaces(theEdge: TopoDS_Edge, theFace1: TopoDS_Face, theFace2: TopoDS_Face, Order: Optional[GeomAbs_Shape] = GeomAbs_G1) -> bool: ...
 	@overload
 	@staticmethod
 	def NextSide(Or1: TopAbs_Orientation, Or2: TopAbs_Orientation, OrSave1: TopAbs_Orientation, OrSave2: TopAbs_Orientation, ChoixSauv: int) -> int: ...
@@ -164,6 +168,8 @@ class ChFi3d_FilBuilder(ChFi3d_Builder):
 # hsequence classes
 
 chfi3d_ConcaveSide = chfi3d.ConcaveSide
+chfi3d_DefineConnectType = chfi3d.DefineConnectType
+chfi3d_IsTangentFaces = chfi3d.IsTangentFaces
 chfi3d_NextSide = chfi3d.NextSide
 chfi3d_NextSide = chfi3d.NextSide
 chfi3d_SameSide = chfi3d.SameSide

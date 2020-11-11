@@ -42,6 +42,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescontrol.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Transfer_module.hxx>
+#include<Message_module.hxx>
 #include<IGESToBRep_module.hxx>
 #include<XSControl_module.hxx>
 #include<Interface_module.hxx>
@@ -66,6 +67,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescontrol.html"
 %import Standard.i
 %import NCollection.i
 %import Transfer.i
+%import Message.i
 %import IGESToBRep.i
 %import XSControl.i
 %import Interface.i
@@ -132,7 +134,7 @@ bool
 		virtual Standard_Boolean Recognize(const opencascade::handle<Transfer_Finder> & start);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: 5fe4e9d68ba319d1fc84f9e35c786af2 ****/
+		/**** md5 signature: de55557a60f11851f77e2ae7fac24dbd ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Transfers shape to iges entities //! modetrans may be : 0 -> groups of faces or 1 -> brep.
 
@@ -140,12 +142,14 @@ Parameters
 ----------
 start: Transfer_Finder
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Transfer_Binder>
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & FP);
+		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -259,7 +263,7 @@ opencascade::handle<Interface_InterfaceModel>
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
 		/****************** TransferWriteShape ******************/
-		/**** md5 signature: 02cc18586c9e511b47c6d664ac0d8f94 ****/
+		/**** md5 signature: 51f54ac90a57b06cb5da980be6c88b27 ****/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "Takes one shape and transfers it to the interfacemodel (already created by newmodel for instance) <modetrans> is to be interpreted by each kind of xstepadaptor returns a status : 0 ok 1 no result 2 fail -1 bad modeshape -2 bad model (requires an igesmodel) modeshape : 0 groupe of face (version < 5.1) 1 brep-version 5.1 of iges.
 
@@ -270,12 +274,14 @@ FP: Transfer_FinderProcess
 model: Interface_InterfaceModel
 modetrans: int,optional
 	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") TransferWriteShape;
-		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0);
+		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -573,19 +579,21 @@ bool
 		Standard_Boolean AddGeom(const opencascade::handle<Standard_Transient> & geom);
 
 		/****************** AddShape ******************/
-		/**** md5 signature: 0d4a6bcb7e73aab11aee304232ff4e83 ****/
+		/**** md5 signature: f585f65132ef5381fe2eec5704c1d251 ****/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "Translates a shape to iges entities and adds them to the model returns true if done, false if shape not suitable for iges or null.
 
 Parameters
 ----------
 sh: TopoDS_Shape
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") AddShape;
-		Standard_Boolean AddShape(const TopoDS_Shape & sh);
+		Standard_Boolean AddShape(const TopoDS_Shape & sh, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ComputeModel ******************/
 		/**** md5 signature: f42632b9add7bbc91ef59b252ab06a6f ****/

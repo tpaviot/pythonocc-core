@@ -43,6 +43,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stlapi.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
+#include<Message_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -52,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stlapi.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import Message.i
 
 %pythoncode {
 from enum import IntEnum
@@ -184,7 +186,7 @@ None
             }
         };
 		/****************** Write ******************/
-		/**** md5 signature: 0d7f29b491afa209c52b0b9f23ebebfc ****/
+		/**** md5 signature: 2af1d9f86c5642907de91a1eb03fe67f ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Converts a given shape to stl format and writes it to file with a given filename. eturn the error state.
 
@@ -192,12 +194,14 @@ Parameters
 ----------
 theShape: TopoDS_Shape
 theFileName: char *
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Write;
-		Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFileName);
+		Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

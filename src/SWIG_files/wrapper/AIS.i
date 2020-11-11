@@ -43,24 +43,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 #include<NCollection_module.hxx>
 #include<SelectMgr_module.hxx>
 #include<Media_module.hxx>
-#include<Geom_module.hxx>
-#include<gp_module.hxx>
+#include<TCollection_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopAbs_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Prs3d_module.hxx>
-#include<Quantity_module.hxx>
-#include<Aspect_module.hxx>
-#include<Bnd_module.hxx>
-#include<TCollection_module.hxx>
-#include<TopAbs_module.hxx>
-#include<PrsMgr_module.hxx>
 #include<TColStd_module.hxx>
+#include<Aspect_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<V3d_module.hxx>
+#include<Bnd_module.hxx>
+#include<gp_module.hxx>
 #include<TopLoc_module.hxx>
+#include<PrsMgr_module.hxx>
 #include<StdSelect_module.hxx>
 #include<TColgp_module.hxx>
+#include<Geom_module.hxx>
 #include<Select3D_module.hxx>
-#include<DsgPrs_module.hxx>
 #include<Poly_module.hxx>
 #include<Image_module.hxx>
 #include<TopTools_module.hxx>
@@ -85,24 +84,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %import NCollection.i
 %import SelectMgr.i
 %import Media.i
-%import Geom.i
-%import gp.i
+%import TCollection.i
+%import Quantity.i
+%import TopAbs.i
 %import TopoDS.i
 %import Prs3d.i
-%import Quantity.i
-%import Aspect.i
-%import Bnd.i
-%import TCollection.i
-%import TopAbs.i
-%import PrsMgr.i
 %import TColStd.i
+%import Aspect.i
 %import Graphic3d.i
 %import V3d.i
+%import Bnd.i
+%import gp.i
 %import TopLoc.i
+%import PrsMgr.i
 %import StdSelect.i
 %import TColgp.i
+%import Geom.i
 %import Select3D.i
-%import DsgPrs.i
 %import Poly.i
 %import Image.i
 
@@ -124,9 +122,10 @@ enum AIS_MouseGesture {
 	AIS_MouseGesture_SelectRectangle = 1,
 	AIS_MouseGesture_SelectLasso = 2,
 	AIS_MouseGesture_Zoom = 3,
-	AIS_MouseGesture_Pan = 4,
-	AIS_MouseGesture_RotateOrbit = 5,
-	AIS_MouseGesture_RotateView = 6,
+	AIS_MouseGesture_ZoomWindow = 4,
+	AIS_MouseGesture_Pan = 5,
+	AIS_MouseGesture_RotateOrbit = 6,
+	AIS_MouseGesture_RotateView = 7,
 };
 
 enum AIS_ClearMode {
@@ -156,19 +155,6 @@ enum AIS_TypeOfAttribute {
 	AIS_TOA_ThirdAxis = 15,
 };
 
-enum AIS_TypeOfAngleArrowVisibility {
-	AIS_TOAV_Both = 0,
-	AIS_TOAV_First = 1,
-	AIS_TOAV_Second = 2,
-	AIS_TOAV_None = 3,
-};
-
-enum AIS_DimensionSelectionMode {
-	AIS_DSM_All = 0,
-	AIS_DSM_Line = 1,
-	AIS_DSM_Text = 2,
-};
-
 enum AIS_KindOfInteractive {
 	AIS_KOI_None = 0,
 	AIS_KOI_Datum = 1,
@@ -176,23 +162,6 @@ enum AIS_KindOfInteractive {
 	AIS_KOI_Object = 3,
 	AIS_KOI_Relation = 4,
 	AIS_KOI_Dimension = 5,
-};
-
-enum AIS_KindOfDimension {
-	AIS_KOD_NONE = 0,
-	AIS_KOD_LENGTH = 1,
-	AIS_KOD_PLANEANGLE = 2,
-	AIS_KOD_SOLIDANGLE = 3,
-	AIS_KOD_AREA = 4,
-	AIS_KOD_VOLUME = 5,
-	AIS_KOD_MASS = 6,
-	AIS_KOD_TIME = 7,
-	AIS_KOD_RADIUS = 8,
-	AIS_KOD_DIAMETER = 9,
-	AIS_KOD_CHAMF2D = 10,
-	AIS_KOD_CHAMF3D = 11,
-	AIS_KOD_OFFSET = 12,
-	AIS_KOD_ELLIPSERADIUS = 13,
 };
 
 enum AIS_SelectStatus {
@@ -206,22 +175,6 @@ enum AIS_TypeOfAxis {
 	AIS_TOAX_XAxis = 1,
 	AIS_TOAX_YAxis = 2,
 	AIS_TOAX_ZAxis = 3,
-};
-
-enum AIS_KindOfUnit {
-	AIS_TOU_LENGTH = 0,
-	AIS_TOU_SURFACE = 1,
-	AIS_TOU_VOLUME = 2,
-	AIS_TOU_PLANE_ANGLE = 3,
-	AIS_TOU_SOLID_ANGLE = 4,
-	AIS_TOU_MASS = 5,
-	AIS_TOU_FORCE = 6,
-	AIS_TOU_TIME = 7,
-};
-
-enum AIS_TypeOfAngle {
-	AIS_TOA_Interior = 0,
-	AIS_TOA_Exterior = 1,
 };
 
 enum AIS_ConnectStatus {
@@ -248,6 +201,7 @@ enum AIS_ViewSelectionTool {
 	AIS_ViewSelectionTool_Picking = 0,
 	AIS_ViewSelectionTool_RubberBand = 1,
 	AIS_ViewSelectionTool_Polygon = 2,
+	AIS_ViewSelectionTool_ZoomWindow = 3,
 };
 
 enum AIS_ViewInputBufferType {
@@ -270,20 +224,6 @@ enum AIS_TypeOfIso {
 	AIS_TOI_IsoU = 0,
 	AIS_TOI_IsoV = 1,
 	AIS_TOI_Both = 2,
-};
-
-enum AIS_KindOfRelation {
-	AIS_KOR_NONE = 0,
-	AIS_KOR_CONCENTRIC = 1,
-	AIS_KOR_EQUALDISTANCE = 2,
-	AIS_KOR_EQUALRADIUS = 3,
-	AIS_KOR_FIX = 4,
-	AIS_KOR_IDENTIC = 5,
-	AIS_KOR_OFFSET = 6,
-	AIS_KOR_PARALLEL = 7,
-	AIS_KOR_PERPENDICULAR = 8,
-	AIS_KOR_TANGENT = 9,
-	AIS_KOR_SYMMETRIC = 10,
 };
 
 enum AIS_StatusOfDetection {
@@ -322,28 +262,6 @@ enum AIS_SelectionModesConcurrency {
 	AIS_SelectionModesConcurrency_Multiple = 2,
 };
 
-enum AIS_KindOfSurface {
-	AIS_KOS_Plane = 0,
-	AIS_KOS_Cylinder = 1,
-	AIS_KOS_Cone = 2,
-	AIS_KOS_Sphere = 3,
-	AIS_KOS_Torus = 4,
-	AIS_KOS_Revolution = 5,
-	AIS_KOS_Extrusion = 6,
-	AIS_KOS_OtherSurface = 7,
-};
-
-enum AIS_StandardDatum {
-	AIS_SD_None = 0,
-	AIS_SD_Point = 1,
-	AIS_SD_Axis = 2,
-	AIS_SD_Trihedron = 3,
-	AIS_SD_PlaneTrihedron = 4,
-	AIS_SD_Line = 5,
-	AIS_SD_Circle = 6,
-	AIS_SD_Plane = 7,
-};
-
 enum AIS_DisplayMode {
 	AIS_WireFrame = 0,
 	AIS_Shaded = 1,
@@ -362,18 +280,6 @@ enum AIS_DragAction {
 	AIS_DragAction_Update = 1,
 	AIS_DragAction_Stop = 2,
 	AIS_DragAction_Abort = 3,
-};
-
-enum AIS_DisplaySpecialSymbol {
-	AIS_DSS_No = 0,
-	AIS_DSS_Before = 1,
-	AIS_DSS_After = 2,
-};
-
-enum AIS_TypeOfDist {
-	AIS_TOD_Unknown = 0,
-	AIS_TOD_Horizontal = 1,
-	AIS_TOD_Vertical = 2,
 };
 
 enum AIS_TypeOfPlane {
@@ -409,13 +315,15 @@ class AIS_MouseGesture(IntEnum):
 	AIS_MouseGesture_SelectRectangle = 1
 	AIS_MouseGesture_SelectLasso = 2
 	AIS_MouseGesture_Zoom = 3
-	AIS_MouseGesture_Pan = 4
-	AIS_MouseGesture_RotateOrbit = 5
-	AIS_MouseGesture_RotateView = 6
+	AIS_MouseGesture_ZoomWindow = 4
+	AIS_MouseGesture_Pan = 5
+	AIS_MouseGesture_RotateOrbit = 6
+	AIS_MouseGesture_RotateView = 7
 AIS_MouseGesture_NONE = AIS_MouseGesture.AIS_MouseGesture_NONE
 AIS_MouseGesture_SelectRectangle = AIS_MouseGesture.AIS_MouseGesture_SelectRectangle
 AIS_MouseGesture_SelectLasso = AIS_MouseGesture.AIS_MouseGesture_SelectLasso
 AIS_MouseGesture_Zoom = AIS_MouseGesture.AIS_MouseGesture_Zoom
+AIS_MouseGesture_ZoomWindow = AIS_MouseGesture.AIS_MouseGesture_ZoomWindow
 AIS_MouseGesture_Pan = AIS_MouseGesture.AIS_MouseGesture_Pan
 AIS_MouseGesture_RotateOrbit = AIS_MouseGesture.AIS_MouseGesture_RotateOrbit
 AIS_MouseGesture_RotateView = AIS_MouseGesture.AIS_MouseGesture_RotateView
@@ -466,24 +374,6 @@ AIS_TOA_FirstAxis = AIS_TypeOfAttribute.AIS_TOA_FirstAxis
 AIS_TOA_SecondAxis = AIS_TypeOfAttribute.AIS_TOA_SecondAxis
 AIS_TOA_ThirdAxis = AIS_TypeOfAttribute.AIS_TOA_ThirdAxis
 
-class AIS_TypeOfAngleArrowVisibility(IntEnum):
-	AIS_TOAV_Both = 0
-	AIS_TOAV_First = 1
-	AIS_TOAV_Second = 2
-	AIS_TOAV_None = 3
-AIS_TOAV_Both = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_Both
-AIS_TOAV_First = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_First
-AIS_TOAV_Second = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_Second
-AIS_TOAV_None = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_None
-
-class AIS_DimensionSelectionMode(IntEnum):
-	AIS_DSM_All = 0
-	AIS_DSM_Line = 1
-	AIS_DSM_Text = 2
-AIS_DSM_All = AIS_DimensionSelectionMode.AIS_DSM_All
-AIS_DSM_Line = AIS_DimensionSelectionMode.AIS_DSM_Line
-AIS_DSM_Text = AIS_DimensionSelectionMode.AIS_DSM_Text
-
 class AIS_KindOfInteractive(IntEnum):
 	AIS_KOI_None = 0
 	AIS_KOI_Datum = 1
@@ -497,36 +387,6 @@ AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
 AIS_KOI_Object = AIS_KindOfInteractive.AIS_KOI_Object
 AIS_KOI_Relation = AIS_KindOfInteractive.AIS_KOI_Relation
 AIS_KOI_Dimension = AIS_KindOfInteractive.AIS_KOI_Dimension
-
-class AIS_KindOfDimension(IntEnum):
-	AIS_KOD_NONE = 0
-	AIS_KOD_LENGTH = 1
-	AIS_KOD_PLANEANGLE = 2
-	AIS_KOD_SOLIDANGLE = 3
-	AIS_KOD_AREA = 4
-	AIS_KOD_VOLUME = 5
-	AIS_KOD_MASS = 6
-	AIS_KOD_TIME = 7
-	AIS_KOD_RADIUS = 8
-	AIS_KOD_DIAMETER = 9
-	AIS_KOD_CHAMF2D = 10
-	AIS_KOD_CHAMF3D = 11
-	AIS_KOD_OFFSET = 12
-	AIS_KOD_ELLIPSERADIUS = 13
-AIS_KOD_NONE = AIS_KindOfDimension.AIS_KOD_NONE
-AIS_KOD_LENGTH = AIS_KindOfDimension.AIS_KOD_LENGTH
-AIS_KOD_PLANEANGLE = AIS_KindOfDimension.AIS_KOD_PLANEANGLE
-AIS_KOD_SOLIDANGLE = AIS_KindOfDimension.AIS_KOD_SOLIDANGLE
-AIS_KOD_AREA = AIS_KindOfDimension.AIS_KOD_AREA
-AIS_KOD_VOLUME = AIS_KindOfDimension.AIS_KOD_VOLUME
-AIS_KOD_MASS = AIS_KindOfDimension.AIS_KOD_MASS
-AIS_KOD_TIME = AIS_KindOfDimension.AIS_KOD_TIME
-AIS_KOD_RADIUS = AIS_KindOfDimension.AIS_KOD_RADIUS
-AIS_KOD_DIAMETER = AIS_KindOfDimension.AIS_KOD_DIAMETER
-AIS_KOD_CHAMF2D = AIS_KindOfDimension.AIS_KOD_CHAMF2D
-AIS_KOD_CHAMF3D = AIS_KindOfDimension.AIS_KOD_CHAMF3D
-AIS_KOD_OFFSET = AIS_KindOfDimension.AIS_KOD_OFFSET
-AIS_KOD_ELLIPSERADIUS = AIS_KindOfDimension.AIS_KOD_ELLIPSERADIUS
 
 class AIS_SelectStatus(IntEnum):
 	AIS_SS_Added = 0
@@ -545,30 +405,6 @@ AIS_TOAX_Unknown = AIS_TypeOfAxis.AIS_TOAX_Unknown
 AIS_TOAX_XAxis = AIS_TypeOfAxis.AIS_TOAX_XAxis
 AIS_TOAX_YAxis = AIS_TypeOfAxis.AIS_TOAX_YAxis
 AIS_TOAX_ZAxis = AIS_TypeOfAxis.AIS_TOAX_ZAxis
-
-class AIS_KindOfUnit(IntEnum):
-	AIS_TOU_LENGTH = 0
-	AIS_TOU_SURFACE = 1
-	AIS_TOU_VOLUME = 2
-	AIS_TOU_PLANE_ANGLE = 3
-	AIS_TOU_SOLID_ANGLE = 4
-	AIS_TOU_MASS = 5
-	AIS_TOU_FORCE = 6
-	AIS_TOU_TIME = 7
-AIS_TOU_LENGTH = AIS_KindOfUnit.AIS_TOU_LENGTH
-AIS_TOU_SURFACE = AIS_KindOfUnit.AIS_TOU_SURFACE
-AIS_TOU_VOLUME = AIS_KindOfUnit.AIS_TOU_VOLUME
-AIS_TOU_PLANE_ANGLE = AIS_KindOfUnit.AIS_TOU_PLANE_ANGLE
-AIS_TOU_SOLID_ANGLE = AIS_KindOfUnit.AIS_TOU_SOLID_ANGLE
-AIS_TOU_MASS = AIS_KindOfUnit.AIS_TOU_MASS
-AIS_TOU_FORCE = AIS_KindOfUnit.AIS_TOU_FORCE
-AIS_TOU_TIME = AIS_KindOfUnit.AIS_TOU_TIME
-
-class AIS_TypeOfAngle(IntEnum):
-	AIS_TOA_Interior = 0
-	AIS_TOA_Exterior = 1
-AIS_TOA_Interior = AIS_TypeOfAngle.AIS_TOA_Interior
-AIS_TOA_Exterior = AIS_TypeOfAngle.AIS_TOA_Exterior
 
 class AIS_ConnectStatus(IntEnum):
 	AIS_CS_None = 0
@@ -596,9 +432,11 @@ class AIS_ViewSelectionTool(IntEnum):
 	AIS_ViewSelectionTool_Picking = 0
 	AIS_ViewSelectionTool_RubberBand = 1
 	AIS_ViewSelectionTool_Polygon = 2
+	AIS_ViewSelectionTool_ZoomWindow = 3
 AIS_ViewSelectionTool_Picking = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Picking
 AIS_ViewSelectionTool_RubberBand = AIS_ViewSelectionTool.AIS_ViewSelectionTool_RubberBand
 AIS_ViewSelectionTool_Polygon = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Polygon
+AIS_ViewSelectionTool_ZoomWindow = AIS_ViewSelectionTool.AIS_ViewSelectionTool_ZoomWindow
 
 class AIS_ViewInputBufferType(IntEnum):
 	AIS_ViewInputBufferType_UI = 0
@@ -621,30 +459,6 @@ class AIS_TypeOfIso(IntEnum):
 AIS_TOI_IsoU = AIS_TypeOfIso.AIS_TOI_IsoU
 AIS_TOI_IsoV = AIS_TypeOfIso.AIS_TOI_IsoV
 AIS_TOI_Both = AIS_TypeOfIso.AIS_TOI_Both
-
-class AIS_KindOfRelation(IntEnum):
-	AIS_KOR_NONE = 0
-	AIS_KOR_CONCENTRIC = 1
-	AIS_KOR_EQUALDISTANCE = 2
-	AIS_KOR_EQUALRADIUS = 3
-	AIS_KOR_FIX = 4
-	AIS_KOR_IDENTIC = 5
-	AIS_KOR_OFFSET = 6
-	AIS_KOR_PARALLEL = 7
-	AIS_KOR_PERPENDICULAR = 8
-	AIS_KOR_TANGENT = 9
-	AIS_KOR_SYMMETRIC = 10
-AIS_KOR_NONE = AIS_KindOfRelation.AIS_KOR_NONE
-AIS_KOR_CONCENTRIC = AIS_KindOfRelation.AIS_KOR_CONCENTRIC
-AIS_KOR_EQUALDISTANCE = AIS_KindOfRelation.AIS_KOR_EQUALDISTANCE
-AIS_KOR_EQUALRADIUS = AIS_KindOfRelation.AIS_KOR_EQUALRADIUS
-AIS_KOR_FIX = AIS_KindOfRelation.AIS_KOR_FIX
-AIS_KOR_IDENTIC = AIS_KindOfRelation.AIS_KOR_IDENTIC
-AIS_KOR_OFFSET = AIS_KindOfRelation.AIS_KOR_OFFSET
-AIS_KOR_PARALLEL = AIS_KindOfRelation.AIS_KOR_PARALLEL
-AIS_KOR_PERPENDICULAR = AIS_KindOfRelation.AIS_KOR_PERPENDICULAR
-AIS_KOR_TANGENT = AIS_KindOfRelation.AIS_KOR_TANGENT
-AIS_KOR_SYMMETRIC = AIS_KindOfRelation.AIS_KOR_SYMMETRIC
 
 class AIS_StatusOfDetection(IntEnum):
 	AIS_SOD_Error = 0
@@ -698,42 +512,6 @@ AIS_SelectionModesConcurrency_Single = AIS_SelectionModesConcurrency.AIS_Selecti
 AIS_SelectionModesConcurrency_GlobalOrLocal = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_GlobalOrLocal
 AIS_SelectionModesConcurrency_Multiple = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Multiple
 
-class AIS_KindOfSurface(IntEnum):
-	AIS_KOS_Plane = 0
-	AIS_KOS_Cylinder = 1
-	AIS_KOS_Cone = 2
-	AIS_KOS_Sphere = 3
-	AIS_KOS_Torus = 4
-	AIS_KOS_Revolution = 5
-	AIS_KOS_Extrusion = 6
-	AIS_KOS_OtherSurface = 7
-AIS_KOS_Plane = AIS_KindOfSurface.AIS_KOS_Plane
-AIS_KOS_Cylinder = AIS_KindOfSurface.AIS_KOS_Cylinder
-AIS_KOS_Cone = AIS_KindOfSurface.AIS_KOS_Cone
-AIS_KOS_Sphere = AIS_KindOfSurface.AIS_KOS_Sphere
-AIS_KOS_Torus = AIS_KindOfSurface.AIS_KOS_Torus
-AIS_KOS_Revolution = AIS_KindOfSurface.AIS_KOS_Revolution
-AIS_KOS_Extrusion = AIS_KindOfSurface.AIS_KOS_Extrusion
-AIS_KOS_OtherSurface = AIS_KindOfSurface.AIS_KOS_OtherSurface
-
-class AIS_StandardDatum(IntEnum):
-	AIS_SD_None = 0
-	AIS_SD_Point = 1
-	AIS_SD_Axis = 2
-	AIS_SD_Trihedron = 3
-	AIS_SD_PlaneTrihedron = 4
-	AIS_SD_Line = 5
-	AIS_SD_Circle = 6
-	AIS_SD_Plane = 7
-AIS_SD_None = AIS_StandardDatum.AIS_SD_None
-AIS_SD_Point = AIS_StandardDatum.AIS_SD_Point
-AIS_SD_Axis = AIS_StandardDatum.AIS_SD_Axis
-AIS_SD_Trihedron = AIS_StandardDatum.AIS_SD_Trihedron
-AIS_SD_PlaneTrihedron = AIS_StandardDatum.AIS_SD_PlaneTrihedron
-AIS_SD_Line = AIS_StandardDatum.AIS_SD_Line
-AIS_SD_Circle = AIS_StandardDatum.AIS_SD_Circle
-AIS_SD_Plane = AIS_StandardDatum.AIS_SD_Plane
-
 class AIS_DisplayMode(IntEnum):
 	AIS_WireFrame = 0
 	AIS_Shaded = 1
@@ -762,22 +540,6 @@ AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
 AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
 AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
 
-class AIS_DisplaySpecialSymbol(IntEnum):
-	AIS_DSS_No = 0
-	AIS_DSS_Before = 1
-	AIS_DSS_After = 2
-AIS_DSS_No = AIS_DisplaySpecialSymbol.AIS_DSS_No
-AIS_DSS_Before = AIS_DisplaySpecialSymbol.AIS_DSS_Before
-AIS_DSS_After = AIS_DisplaySpecialSymbol.AIS_DSS_After
-
-class AIS_TypeOfDist(IntEnum):
-	AIS_TOD_Unknown = 0
-	AIS_TOD_Horizontal = 1
-	AIS_TOD_Vertical = 2
-AIS_TOD_Unknown = AIS_TypeOfDist.AIS_TOD_Unknown
-AIS_TOD_Horizontal = AIS_TypeOfDist.AIS_TOD_Horizontal
-AIS_TOD_Vertical = AIS_TypeOfDist.AIS_TOD_Vertical
-
 class AIS_TypeOfPlane(IntEnum):
 	AIS_TOPL_Unknown = 0
 	AIS_TOPL_XYPlane = 1
@@ -804,7 +566,6 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 %wrap_handle(AIS_BadEdgeFilter)
 %wrap_handle(AIS_C0RegularityFilter)
 %wrap_handle(AIS_ColoredDrawer)
-%wrap_handle(AIS_DimensionOwner)
 %wrap_handle(AIS_ExclusionFilter)
 %wrap_handle(AIS_GlobalStatus)
 %wrap_handle(AIS_InteractiveContext)
@@ -819,7 +580,6 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 %wrap_handle(AIS_Circle)
 %wrap_handle(AIS_ColorScale)
 %wrap_handle(AIS_ConnectedInteractive)
-%wrap_handle(AIS_Dimension)
 %wrap_handle(AIS_Line)
 %wrap_handle(AIS_Manipulator)
 %wrap_handle(AIS_MultipleConnectedInteractive)
@@ -827,35 +587,14 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 %wrap_handle(AIS_PlaneTrihedron)
 %wrap_handle(AIS_Point)
 %wrap_handle(AIS_PointCloud)
-%wrap_handle(AIS_Relation)
 %wrap_handle(AIS_RubberBand)
 %wrap_handle(AIS_Shape)
 %wrap_handle(AIS_SignatureFilter)
 %wrap_handle(AIS_TextLabel)
 %wrap_handle(AIS_Triangulation)
 %wrap_handle(AIS_Trihedron)
-%wrap_handle(AIS_AngleDimension)
-%wrap_handle(AIS_Chamf2dDimension)
-%wrap_handle(AIS_Chamf3dDimension)
 %wrap_handle(AIS_ColoredShape)
-%wrap_handle(AIS_ConcentricRelation)
-%wrap_handle(AIS_DiameterDimension)
-%wrap_handle(AIS_EllipseRadiusDimension)
-%wrap_handle(AIS_EqualDistanceRelation)
-%wrap_handle(AIS_EqualRadiusRelation)
-%wrap_handle(AIS_FixRelation)
-%wrap_handle(AIS_IdenticRelation)
-%wrap_handle(AIS_LengthDimension)
-%wrap_handle(AIS_MidPointRelation)
-%wrap_handle(AIS_OffsetDimension)
-%wrap_handle(AIS_ParallelRelation)
-%wrap_handle(AIS_PerpendicularRelation)
-%wrap_handle(AIS_RadiusDimension)
-%wrap_handle(AIS_SymmetricRelation)
-%wrap_handle(AIS_TangentRelation)
 %wrap_handle(AIS_TexturedShape)
-%wrap_handle(AIS_MaxRadiusDimension)
-%wrap_handle(AIS_MinRadiusDimension)
 /* end handles declaration */
 
 /* templates */
@@ -894,14 +633,6 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
         return self.Size()
     }
 };
-%template(AIS_SequenceOfDimension) NCollection_Sequence<opencascade::handle<AIS_Relation>>;
-
-%extend NCollection_Sequence<opencascade::handle<AIS_Relation>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
 %template(AIS_SequenceOfInteractive) NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>;
 
 %extend NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> {
@@ -913,21 +644,43 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 /* end templates declaration */
 
 /* typedefs */
+typedef PrsDim_AngleDimension AIS_AngleDimension;
 typedef Media_Timer AIS_AnimationTimer;
+typedef PrsDim_Chamf2dDimension AIS_Chamf2dDimension;
+typedef PrsDim_Chamf3dDimension AIS_Chamf3dDimension;
+typedef PrsDim_ConcentricRelation AIS_ConcentricRelation;
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
 typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher>::Iterator AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
 typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher> AIS_DataMapofIntegerListOfinteractive;
+typedef PrsDim_DiameterDimension AIS_DiameterDimension;
+typedef PrsDim_Dimension AIS_Dimension;
+typedef PrsDim_DimensionOwner AIS_DimensionOwner;
+typedef PrsDim_EllipseRadiusDimension AIS_EllipseRadiusDimension;
+typedef PrsDim_EqualDistanceRelation AIS_EqualDistanceRelation;
+typedef PrsDim_EqualRadiusRelation AIS_EqualRadiusRelation;
+typedef PrsDim_FixRelation AIS_FixRelation;
+typedef PrsDim_IdenticRelation AIS_IdenticRelation;
 typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<Prs3d_Presentation>, TColStd_MapTransientHasher> AIS_IndexedDataMapOfOwnerPrs;
+typedef PrsDim_LengthDimension AIS_LengthDimension;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>> AIS_ListOfInteractive;
 typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher>::Iterator AIS_MapIteratorOfMapOfInteractive;
 typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher> AIS_MapOfInteractive;
+typedef PrsDim_MaxRadiusDimension AIS_MaxRadiusDimension;
+typedef PrsDim_MidPointRelation AIS_MidPointRelation;
+typedef PrsDim_MinRadiusDimension AIS_MinRadiusDimension;
 typedef NCollection_DataMap<unsigned int, AIS_MouseGesture> AIS_MouseGestureMap;
 typedef NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
-typedef NCollection_Sequence<opencascade::handle<AIS_Relation>> AIS_SequenceOfDimension;
+typedef PrsDim_OffsetDimension AIS_OffsetDimension;
+typedef PrsDim_ParallelRelation AIS_ParallelRelation;
+typedef PrsDim_PerpendicularRelation AIS_PerpendicularRelation;
+typedef PrsDim_RadiusDimension AIS_RadiusDimension;
+typedef PrsDim_Relation AIS_Relation;
 typedef NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> AIS_SequenceOfInteractive;
+typedef PrsDim_SymmetricRelation AIS_SymmetricRelation;
+typedef PrsDim_TangentRelation AIS_TangentRelation;
 /* end typedefs declaration */
 
 /************
@@ -936,496 +689,6 @@ typedef NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> AIS_Seq
 %rename(ais) AIS;
 class AIS {
 	public:
-		/****************** ComputeGeomCurve ******************/
-		/**** md5 signature: 6cb69c4ea337cf6a19ea54e6c660e70a ****/
-		%feature("compactdefaultargs") ComputeGeomCurve;
-		%feature("autodoc", "Checks if acurve belongs to aplane; if not, projects acurve in aplane and returns acurve; return true if ok.
-
-Parameters
-----------
-aCurve: Geom_Curve
-first1: float
-last1: float
-FirstPnt1: gp_Pnt
-LastPnt1: gp_Pnt
-aPlane: Geom_Plane
-
-Returns
--------
-isOnPlane: bool
-") ComputeGeomCurve;
-		static Standard_Boolean ComputeGeomCurve(opencascade::handle<Geom_Curve> & aCurve, const Standard_Real first1, const Standard_Real last1, gp_Pnt & FirstPnt1, gp_Pnt & LastPnt1, const opencascade::handle<Geom_Plane> & aPlane, Standard_Boolean &OutValue);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: e8a575e5403a4ba0093cb9d2b31b2b98 ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "Used by 2d relation only computes the 3d geometry of <anedge> in the current workingplane and the extremities if any return true if ok.
-
-Parameters
-----------
-theEdge: TopoDS_Edge
-theCurve: Geom_Curve
-theFirstPnt: gp_Pnt
-theLastPnt: gp_Pnt
-
-Returns
--------
-bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: efd861838cb718f7744f62f9854ac012 ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "Used by dimensions only. computes the 3d geometry of <anedge>. return true if ok.
-
-Parameters
-----------
-theEdge: TopoDS_Edge
-theCurve: Geom_Curve
-theFirstPnt: gp_Pnt
-theLastPnt: gp_Pnt
-
-Returns
--------
-theIsInfinite: bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt, Standard_Boolean &OutValue);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 8b94e7eacd171a5f348b83aa3344f8e2 ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "Used by 2d relation only computes the 3d geometry of <anedge> in the current workingplane and the extremities if any. if <acurve> is not in the current plane, <extcurve> contains the not projected curve associated to <anedge>. if <anedge> is infinite, <isinfinite> = true and the 2 parameters <firstpnt> and <lastpnt> have no signification. return true if ok.
-
-Parameters
-----------
-theEdge: TopoDS_Edge
-theCurve: Geom_Curve
-theFirstPnt: gp_Pnt
-theLastPnt: gp_Pnt
-theExtCurve: Geom_Curve
-thePlane: Geom_Plane
-
-Returns
--------
-theIsInfinite: bool
-theIsOnPlane: bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt, opencascade::handle<Geom_Curve> & theExtCurve, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<Geom_Plane> & thePlane);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 8df8e467ff61bbb7f23d9cd9468ecad2 ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "Used by 2d relation only computes the 3d geometry of <anedge> in the current workingplane and the extremities if any return true if ok.
-
-Parameters
-----------
-theFirstEdge: TopoDS_Edge
-theSecondEdge: TopoDS_Edge
-theFirstCurve: Geom_Curve
-theSecondCurve: Geom_Curve
-theFirstPnt1: gp_Pnt
-theLastPnt1: gp_Pnt
-theFirstPnt2: gp_Pnt
-theLastPnt2: gp_Pnt
-thePlane: Geom_Plane
-
-Returns
--------
-bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, const opencascade::handle<Geom_Plane> & thePlane);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 0df198d142c4b96a61c095fd4bf2b68b ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "Used by dimensions only.computes the 3d geometry of<anedge1> and <anedge2> and checks if they are infinite.
-
-Parameters
-----------
-theFirstEdge: TopoDS_Edge
-theSecondEdge: TopoDS_Edge
-theFirstCurve: Geom_Curve
-theSecondCurve: Geom_Curve
-theFirstPnt1: gp_Pnt
-theLastPnt1: gp_Pnt
-theFirstPnt2: gp_Pnt
-theLastPnt2: gp_Pnt
-
-Returns
--------
-theIsinfinite1: bool
-theIsinfinite2: bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: b6be325805be1ce5c8ffac49b7ee1d13 ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "Used by 2d relation only computes the 3d geometry of<anedge1> and <anedge2> in the current plane and the extremities if any. return in extcurve the 3d curve (not projected in the plane) of the first edge if <indexext> =1 or of the 2nd edge if <indexext> = 2. if <indexext> = 0, extcurve is null. if there is an edge external to the plane, <isinfinite> is true if this edge is infinite. so, the extremities of it are not significant. return true if ok.
-
-Parameters
-----------
-theFirstEdge: TopoDS_Edge
-theSecondEdge: TopoDS_Edge
-theFirstCurve: Geom_Curve
-theSecondCurve: Geom_Curve
-theFirstPnt1: gp_Pnt
-theLastPnt1: gp_Pnt
-theFirstPnt2: gp_Pnt
-theLastPnt2: gp_Pnt
-theExtCurve: Geom_Curve
-thePlane: Geom_Plane
-
-Returns
--------
-theExtIndex: int
-theIsinfinite1: bool
-theIsinfinite2: bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, Standard_Integer &OutValue, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, opencascade::handle<Geom_Curve> & theExtCurve, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<Geom_Plane> & thePlane);
-
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 1b2f2da9052ca02b5e26e70990845489 ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aVertex: TopoDS_Vertex
-point: gp_Pnt
-aPlane: Geom_Plane
-
-Returns
--------
-isOnPlane: bool
-") ComputeGeometry;
-		static Standard_Boolean ComputeGeometry(const TopoDS_Vertex & aVertex, gp_Pnt & point, const opencascade::handle<Geom_Plane> & aPlane, Standard_Boolean &OutValue);
-
-		/****************** ComputeProjEdgePresentation ******************/
-		/**** md5 signature: 48580268b98d21f047f2b8907f481c25 ****/
-		%feature("compactdefaultargs") ComputeProjEdgePresentation;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aPres: Prs3d_Presentation
-aDrawer: Prs3d_Drawer
-anEdge: TopoDS_Edge
-ProjCurve: Geom_Curve
-FirstP: gp_Pnt
-LastP: gp_Pnt
-aColor: Quantity_NameOfColor,optional
-	default value is Quantity_NOC_PURPLE
-aWidth: float,optional
-	default value is 2
-aProjTOL: Aspect_TypeOfLine,optional
-	default value is Aspect_TOL_DASH
-aCallTOL: Aspect_TypeOfLine,optional
-	default value is Aspect_TOL_DOT
-
-Returns
--------
-None
-") ComputeProjEdgePresentation;
-		static void ComputeProjEdgePresentation(const opencascade::handle<Prs3d_Presentation> & aPres, const opencascade::handle<Prs3d_Drawer> & aDrawer, const TopoDS_Edge & anEdge, const opencascade::handle<Geom_Curve> & ProjCurve, const gp_Pnt & FirstP, const gp_Pnt & LastP, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
-
-		/****************** ComputeProjVertexPresentation ******************/
-		/**** md5 signature: 6a04d97aa212bbd9e4e92a1cd57df632 ****/
-		%feature("compactdefaultargs") ComputeProjVertexPresentation;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aPres: Prs3d_Presentation
-aDrawer: Prs3d_Drawer
-aVertex: TopoDS_Vertex
-ProjPoint: gp_Pnt
-aColor: Quantity_NameOfColor,optional
-	default value is Quantity_NOC_PURPLE
-aWidth: float,optional
-	default value is 2
-aProjTOM: Aspect_TypeOfMarker,optional
-	default value is Aspect_TOM_PLUS
-aCallTOL: Aspect_TypeOfLine,optional
-	default value is Aspect_TOL_DOT
-
-Returns
--------
-None
-") ComputeProjVertexPresentation;
-		static void ComputeProjVertexPresentation(const opencascade::handle<Prs3d_Presentation> & aPres, const opencascade::handle<Prs3d_Drawer> & aDrawer, const TopoDS_Vertex & aVertex, const gp_Pnt & ProjPoint, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
-
-		/****************** DistanceFromApex ******************/
-		/**** md5 signature: 5ca9397fdee6875e346635084e849102 ****/
-		%feature("compactdefaultargs") DistanceFromApex;
-		%feature("autodoc", "Computes length of ellipse arc in parametric units.
-
-Parameters
-----------
-elips: gp_Elips
-Apex: gp_Pnt
-par: float
-
-Returns
--------
-float
-") DistanceFromApex;
-		static Standard_Real DistanceFromApex(const gp_Elips & elips, const gp_Pnt & Apex, const Standard_Real par);
-
-		/****************** Farest ******************/
-		/**** md5 signature: 4711939cbf61dc61e0a31e90c0ba6574 ****/
-		%feature("compactdefaultargs") Farest;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aPoint: gp_Pnt
-
-Returns
--------
-gp_Pnt
-") Farest;
-		static gp_Pnt Farest(const TopoDS_Shape & aShape, const gp_Pnt & aPoint);
-
-		/****************** GetPlaneFromFace ******************/
-		/**** md5 signature: b603086660615f240da7dfc0d7a86012 ****/
-		%feature("compactdefaultargs") GetPlaneFromFace;
-		%feature("autodoc", "Tryes to get plane from face. returns surface of face in asurf. returns standard_true and plane of face in aplane in following cases: face is plane, offset of plane, extrusion of line and offset of extrusion of line returns pure type of surface which can be: plane, cylinder, cone, sphere, torus, surfaceofrevolution, surfaceofextrusion.
-
-Parameters
-----------
-aFace: TopoDS_Face
-aPlane: gp_Pln
-aSurf: Geom_Surface
-aSurfType: AIS_KindOfSurface
-
-Returns
--------
-Offset: float
-") GetPlaneFromFace;
-		static Standard_Boolean GetPlaneFromFace(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurf, AIS_KindOfSurface & aSurfType, Standard_Real &OutValue);
-
-		/****************** InDomain ******************/
-		/**** md5 signature: e1a93aaf6fc6d1a74b142e3804975f9e ****/
-		%feature("compactdefaultargs") InDomain;
-		%feature("autodoc", "Returns true if point with anattachpar is in domain of arc.
-
-Parameters
-----------
-aFirstPar: float
-aLastPar: float
-anAttachPar: float
-
-Returns
--------
-bool
-") InDomain;
-		static Standard_Boolean InDomain(const Standard_Real aFirstPar, const Standard_Real aLastPar, const Standard_Real anAttachPar);
-
-		/****************** InitAngleBetweenCurvilinearFaces ******************/
-		/**** md5 signature: 9861d5690e7b460b57b1696914bd96cb ****/
-		%feature("compactdefaultargs") InitAngleBetweenCurvilinearFaces;
-		%feature("autodoc", "Finds three points for the angle dimension between two curvilinear surfaces.
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-theFirstSurfType: AIS_KindOfSurface
-theSecondSurfType: AIS_KindOfSurface
-theCenter: gp_Pnt
-theFirstAttach: gp_Pnt
-theSecondAttach: gp_Pnt
-theIsFirstPointSet: bool,optional
-	default value is Standard_False
-
-Returns
--------
-bool
-") InitAngleBetweenCurvilinearFaces;
-		static Standard_Boolean InitAngleBetweenCurvilinearFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const AIS_KindOfSurface theFirstSurfType, const AIS_KindOfSurface theSecondSurfType, gp_Pnt & theCenter, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, const Standard_Boolean theIsFirstPointSet = Standard_False);
-
-		/****************** InitAngleBetweenPlanarFaces ******************/
-		/**** md5 signature: f3f9d6eda2bc4626227a0a6044b9294f ****/
-		%feature("compactdefaultargs") InitAngleBetweenPlanarFaces;
-		%feature("autodoc", "Finds three points for the angle dimension between two planes.
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-theCenter: gp_Pnt
-theFirstAttach: gp_Pnt
-theSecondAttach: gp_Pnt
-theIsFirstPointSet: bool,optional
-	default value is Standard_False
-
-Returns
--------
-bool
-") InitAngleBetweenPlanarFaces;
-		static Standard_Boolean InitAngleBetweenPlanarFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, gp_Pnt & theCenter, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, const Standard_Boolean theIsFirstPointSet = Standard_False);
-
-		/****************** InitFaceLength ******************/
-		/**** md5 signature: e74c1c11fe71addadb41dc7491cf7239 ****/
-		%feature("compactdefaultargs") InitFaceLength;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aFace: TopoDS_Face
-aPlane: gp_Pln
-aSurface: Geom_Surface
-aSurfaceType: AIS_KindOfSurface
-
-Returns
--------
-anOffset: float
-") InitFaceLength;
-		static void InitFaceLength(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurface, AIS_KindOfSurface & aSurfaceType, Standard_Real &OutValue);
-
-		/****************** InitLengthBetweenCurvilinearFaces ******************/
-		/**** md5 signature: a415f028d8574f37e0030484cbbc493a ****/
-		%feature("compactdefaultargs") InitLengthBetweenCurvilinearFaces;
-		%feature("autodoc", "Finds attachment points on two curvilinear faces for length dimension. @param theplanedir [in] the direction on the dimension plane to compute the plane automatically. it will not be taken into account if plane is defined by user.
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-theFirstSurf: Geom_Surface
-theSecondSurf: Geom_Surface
-theFirstAttach: gp_Pnt
-theSecondAttach: gp_Pnt
-theDirOnPlane: gp_Dir
-
-Returns
--------
-None
-") InitLengthBetweenCurvilinearFaces;
-		static void InitLengthBetweenCurvilinearFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, opencascade::handle<Geom_Surface> & theFirstSurf, opencascade::handle<Geom_Surface> & theSecondSurf, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, gp_Dir & theDirOnPlane);
-
-		/****************** Nearest ******************/
-		/**** md5 signature: ca941eb9deaee6d9850f4e04eff46172 ****/
-		%feature("compactdefaultargs") Nearest;
-		%feature("autodoc", "Returns the nearest point in a shape. this is used by several classes in calculation of dimensions.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aPoint: gp_Pnt
-
-Returns
--------
-gp_Pnt
-") Nearest;
-		static gp_Pnt Nearest(const TopoDS_Shape & aShape, const gp_Pnt & aPoint);
-
-		/****************** Nearest ******************/
-		/**** md5 signature: ca517f1153f3874290b78263548ad358 ****/
-		%feature("compactdefaultargs") Nearest;
-		%feature("autodoc", "Returns the nearest point on the line.
-
-Parameters
-----------
-theLine: gp_Lin
-thePoint: gp_Pnt
-
-Returns
--------
-gp_Pnt
-") Nearest;
-		static gp_Pnt Nearest(const gp_Lin & theLine, const gp_Pnt & thePoint);
-
-		/****************** Nearest ******************/
-		/**** md5 signature: e025c3fd731e2d20f08a2a452029e645 ****/
-		%feature("compactdefaultargs") Nearest;
-		%feature("autodoc", "For the given point finds nearest point on the curve, returns true if found point is belongs to the curve and false otherwise.
-
-Parameters
-----------
-theCurve: Geom_Curve
-thePoint: gp_Pnt
-theFirstPoint: gp_Pnt
-theLastPoint: gp_Pnt
-theNearestPoint: gp_Pnt
-
-Returns
--------
-bool
-") Nearest;
-		static Standard_Boolean Nearest(const opencascade::handle<Geom_Curve> & theCurve, const gp_Pnt & thePoint, const gp_Pnt & theFirstPoint, const gp_Pnt & theLastPoint, gp_Pnt & theNearestPoint);
-
-		/****************** NearestApex ******************/
-		/**** md5 signature: 6c271d03667151d1766ac1e2b3ae1ee0 ****/
-		%feature("compactdefaultargs") NearestApex;
-		%feature("autodoc", "Computes nearest to ellipse arc apex.
-
-Parameters
-----------
-elips: gp_Elips
-pApex: gp_Pnt
-nApex: gp_Pnt
-fpara: float
-lpara: float
-
-Returns
--------
-IsInDomain: bool
-") NearestApex;
-		static gp_Pnt NearestApex(const gp_Elips & elips, const gp_Pnt & pApex, const gp_Pnt & nApex, const Standard_Real fpara, const Standard_Real lpara, Standard_Boolean &OutValue);
-
-		/****************** ProjectPointOnLine ******************/
-		/**** md5 signature: ccd13eaf330359cd2d1963858612230a ****/
-		%feature("compactdefaultargs") ProjectPointOnLine;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aPoint: gp_Pnt
-aLine: gp_Lin
-
-Returns
--------
-gp_Pnt
-") ProjectPointOnLine;
-		static gp_Pnt ProjectPointOnLine(const gp_Pnt & aPoint, const gp_Lin & aLine);
-
-		/****************** ProjectPointOnPlane ******************/
-		/**** md5 signature: bb162bd011a4b418ec144bcaa3106b38 ****/
-		%feature("compactdefaultargs") ProjectPointOnPlane;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aPoint: gp_Pnt
-aPlane: gp_Pln
-
-Returns
--------
-gp_Pnt
-") ProjectPointOnPlane;
-		static gp_Pnt ProjectPointOnPlane(const gp_Pnt & aPoint, const gp_Pln & aPlane);
-
-		/****************** TranslatePointToBound ******************/
-		/**** md5 signature: 0f51e84cbfc1ab767a85d5ab839116dd ****/
-		%feature("compactdefaultargs") TranslatePointToBound;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aPoint: gp_Pnt
-aDir: gp_Dir
-aBndBox: Bnd_Box
-
-Returns
--------
-gp_Pnt
-") TranslatePointToBound;
-		static gp_Pnt TranslatePointToBound(const gp_Pnt & aPoint, const gp_Dir & aDir, const Bnd_Box & aBndBox);
-
 };
 
 
@@ -2108,6 +1371,7 @@ bool
 class AIS_ColoredDrawer : public Prs3d_Drawer {
 	public:
 		bool myIsHidden;
+		bool myHasOwnMaterial;
 		bool myHasOwnColor;
 		bool myHasOwnTransp;
 		bool myHasOwnWidth;
@@ -2136,6 +1400,17 @@ Returns
 bool
 ") HasOwnColor;
 		bool HasOwnColor();
+
+		/****************** HasOwnMaterial ******************/
+		/**** md5 signature: d79080c087fc3592869db0ed508eafbc ****/
+		%feature("compactdefaultargs") HasOwnMaterial;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasOwnMaterial;
+		bool HasOwnMaterial();
 
 		/****************** HasOwnTransparency ******************/
 		/**** md5 signature: bfa958c2a81028d8551656b0f415f2b7 ****/
@@ -2200,6 +1475,17 @@ None
 ") SetOwnColor;
 		void SetOwnColor(const Quantity_Color &);
 
+		/****************** SetOwnMaterial ******************/
+		/**** md5 signature: a9d55f286f01e4a30605f50143bdaada ****/
+		%feature("compactdefaultargs") SetOwnMaterial;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") SetOwnMaterial;
+		void SetOwnMaterial();
+
 		/****************** SetOwnTransparency ******************/
 		/**** md5 signature: 785e1eb625a3adf8c2d0a175272d25b2 ****/
 		%feature("compactdefaultargs") SetOwnTransparency;
@@ -2241,6 +1527,17 @@ None
 ") UnsetOwnColor;
 		void UnsetOwnColor();
 
+		/****************** UnsetOwnMaterial ******************/
+		/**** md5 signature: 51558ef8e8f82da5e88a74b4204850af ****/
+		%feature("compactdefaultargs") UnsetOwnMaterial;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") UnsetOwnMaterial;
+		void UnsetOwnMaterial();
+
 		/****************** UnsetOwnTransparency ******************/
 		/**** md5 signature: 5d88cb3910be04c91a3ef80818d3b464 ****/
 		%feature("compactdefaultargs") UnsetOwnTransparency;
@@ -2269,103 +1566,6 @@ None
 %make_alias(AIS_ColoredDrawer)
 
 %extend AIS_ColoredDrawer {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***************************
-* class AIS_DimensionOwner *
-***************************/
-class AIS_DimensionOwner : public SelectMgr_EntityOwner {
-	public:
-		/****************** AIS_DimensionOwner ******************/
-		/**** md5 signature: 07b0818ad54c7ede730718fe88b654f0 ****/
-		%feature("compactdefaultargs") AIS_DimensionOwner;
-		%feature("autodoc", "Initializes the dimension owner, theso, and attributes it the priority, thepriority.
-
-Parameters
-----------
-theSelObject: SelectMgr_SelectableObject
-theSelMode: AIS_DimensionSelectionMode
-thePriority: int,optional
-	default value is 0
-
-Returns
--------
-None
-") AIS_DimensionOwner;
-		 AIS_DimensionOwner(const opencascade::handle<SelectMgr_SelectableObject> & theSelObject, const AIS_DimensionSelectionMode theSelMode, const Standard_Integer thePriority = 0);
-
-		/****************** HilightWithColor ******************/
-		/**** md5 signature: 56e556dd0edce796a3c3d12b272af59e ****/
-		%feature("compactdefaultargs") HilightWithColor;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePM: PrsMgr_PresentationManager3d
-theStyle: Prs3d_Drawer
-theMode: int,optional
-	default value is 0
-
-Returns
--------
-None
-") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0);
-
-		/****************** IsHilighted ******************/
-		/**** md5 signature: 47cdfcd94ad9e17a52e4b8d49964f328 ****/
-		%feature("compactdefaultargs") IsHilighted;
-		%feature("autodoc", "Returns true if an object with the selection mode amode is highlighted in the presentation manager apm.
-
-Parameters
-----------
-thePM: PrsMgr_PresentationManager
-theMode: int,optional
-	default value is 0
-
-Returns
--------
-bool
-") IsHilighted;
-		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const Standard_Integer theMode = 0);
-
-		/****************** SelectionMode ******************/
-		/**** md5 signature: 9e03c1a5a01e947ffe15cd8a0092f8ce ****/
-		%feature("compactdefaultargs") SelectionMode;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-AIS_DimensionSelectionMode
-") SelectionMode;
-		AIS_DimensionSelectionMode SelectionMode();
-
-		/****************** Unhilight ******************/
-		/**** md5 signature: cbfa3741ba9c5eeac22e43360132f4ee ****/
-		%feature("compactdefaultargs") Unhilight;
-		%feature("autodoc", "Removes highlighting from the selected part of dimension.
-
-Parameters
-----------
-thePM: PrsMgr_PresentationManager
-theMode: int,optional
-	default value is 0
-
-Returns
--------
-None
-") Unhilight;
-		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const Standard_Integer theMode = 0);
-
-};
-
-
-%make_alias(AIS_DimensionOwner)
-
-%extend AIS_DimensionOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3730,6 +2930,14 @@ bool
 ") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** EnableDrawHiddenLine ******************/
 		/**** md5 signature: 7c98158946b8428a204c851de2124594 ****/
 		%feature("compactdefaultargs") EnableDrawHiddenLine;
@@ -3845,6 +3053,17 @@ None
 ") ErasedObjects;
 		void ErasedObjects(const AIS_KindOfInteractive theWhichKind, const Standard_Integer theWhichSignature, AIS_ListOfInteractive & theListOfIO);
 
+		/****************** FilterType ******************/
+		/**** md5 signature: e37fce598a0b5e9b676a367504573e6c ****/
+		%feature("compactdefaultargs") FilterType;
+		%feature("autodoc", "Returns the context selection filter type.
+
+Returns
+-------
+SelectMgr_FilterType
+") FilterType;
+		SelectMgr_FilterType FilterType();
+
 		/****************** Filters ******************/
 		/**** md5 signature: 3fdc80dd75c17b43e3b22bec55f591f0 ****/
 		%feature("compactdefaultargs") Filters;
@@ -3939,28 +3158,6 @@ Returns
 gp_Pnt
 ") GravityPoint;
 		virtual gp_Pnt GravityPoint(const opencascade::handle<V3d_View> & theView);
-
-		/****************** HLRAngle ******************/
-		/**** md5 signature: 8718623bb4ce2a6c7eec9f2615f1958a ****/
-		%feature("compactdefaultargs") HLRAngle;
-		%feature("autodoc", "Returns the real number value of the deviation angle in hidden line removal views in this interactive context. the default value is 20*pi/180.
-
-Returns
--------
-float
-") HLRAngle;
-		Standard_Real HLRAngle();
-
-		/****************** HLRDeviationCoefficient ******************/
-		/**** md5 signature: 1a0f4440c53293bc4465e0027431f5cf ****/
-		%feature("compactdefaultargs") HLRDeviationCoefficient;
-		%feature("autodoc", "Returns the real number value of the hidden line removal deviation coefficient. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient give the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. to find the hidden lines, hidden line display mode entails recalculation of the view at each different projector perspective. because hidden lines entail calculations of more than usual complexity to decompose them into these triangles, a deviation coefficient allowing greater tolerance is used. this increases efficiency in calculation. the default value is 0.02.
-
-Returns
--------
-float
-") HLRDeviationCoefficient;
-		Standard_Real HLRDeviationCoefficient();
 
 		/****************** HasApplicative ******************/
 		/**** md5 signature: 60d05f5258a04bb60710b49cfc48cf5a ****/
@@ -5205,7 +4402,7 @@ None
 		/****************** SetDeviationAngle ******************/
 		/**** md5 signature: 373845ba63fe87edd7d9720e6aade848 ****/
 		%feature("compactdefaultargs") SetDeviationAngle;
-		%feature("autodoc", "Default 12 degrees.
+		%feature("autodoc", "Default 20 degrees.
 
 Parameters
 ----------
@@ -5298,101 +4495,20 @@ None
 ") SetDisplayPriority;
 		void SetDisplayPriority(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer thePriority);
 
-		/****************** SetHLRAngle ******************/
-		/**** md5 signature: e8b63f0b08f1d10459cb68d05f08b965 ****/
-		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "Sets the hlr angle.
+		/****************** SetFilterType ******************/
+		/**** md5 signature: c4f32b4815b398cc3dcfa30b4c00ebdc ****/
+		%feature("compactdefaultargs") SetFilterType;
+		%feature("autodoc", "Sets the context selection filter type. selectmgr_typefilter_or selection filter is used by default. @param thefiltertype the filter type.
 
 Parameters
 ----------
-theAngle: float
+theFilterType: SelectMgr_FilterType
 
 Returns
 -------
 None
-") SetHLRAngle;
-		void SetHLRAngle(const Standard_Real theAngle);
-
-		/****************** SetHLRAngleAndDeviation ******************/
-		/**** md5 signature: 3f48c97096590983f78d831ddf38df88 ****/
-		%feature("compactdefaultargs") SetHLRAngleAndDeviation;
-		%feature("autodoc", "Computes a hlrangle and a hlrdeviationcoefficient by means of the angle anangle and sets the corresponding methods in the default drawing tool with these values.
-
-Parameters
-----------
-theIObj: AIS_InteractiveObject
-theAngle: float
-theToUpdateViewer: bool
-
-Returns
--------
-None
-") SetHLRAngleAndDeviation;
-		void SetHLRAngleAndDeviation(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theAngle, const Standard_Boolean theToUpdateViewer);
-
-		/****************** SetHLRAngleAndDeviation ******************/
-		/**** md5 signature: ca2f25beeb6dbdc4916d998373109d05 ****/
-		%feature("compactdefaultargs") SetHLRAngleAndDeviation;
-		%feature("autodoc", "Compute with theangle a hlrangle and a hlrdeviationcoefficient and set them in myhlrangle and in myhlrdeviationcoefficient of mydefaultdrawer; theangle is in radian; ( 1 deg < angle in deg < 20 deg).
-
-Parameters
-----------
-theAngle: float
-
-Returns
--------
-None
-") SetHLRAngleAndDeviation;
-		void SetHLRAngleAndDeviation(const Standard_Real theAngle);
-
-		/****************** SetHLRDeviationAngle ******************/
-		/**** md5 signature: ff98fb1256bb7a58716c813f135ae0c4 ****/
-		%feature("compactdefaultargs") SetHLRDeviationAngle;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theIObj: AIS_InteractiveObject
-theAngle: float
-theToUpdateViewer: bool
-
-Returns
--------
-None
-") SetHLRDeviationAngle;
-		void SetHLRDeviationAngle(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theAngle, const Standard_Boolean theToUpdateViewer);
-
-		/****************** SetHLRDeviationCoefficient ******************/
-		/**** md5 signature: d8692fd21d36052079c6ef946b86271e ****/
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "Sets the deviation coefficient acoefficient for removal of hidden lines created by different viewpoints in different presentations. the default value is 0.02.
-
-Parameters
-----------
-theIObj: AIS_InteractiveObject
-theCoefficient: float
-theToUpdateViewer: bool
-
-Returns
--------
-None
-") SetHLRDeviationCoefficient;
-		void SetHLRDeviationCoefficient(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theCoefficient, const Standard_Boolean theToUpdateViewer);
-
-		/****************** SetHLRDeviationCoefficient ******************/
-		/**** md5 signature: d6c6ee6b6094ad583c7591814ab38524 ****/
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "Sets the deviation coefficient acoefficient for removal of hidden lines created by different viewpoints in different presentations. the default value is 0.02.
-
-Parameters
-----------
-aCoefficient: float
-
-Returns
--------
-None
-") SetHLRDeviationCoefficient;
-		void SetHLRDeviationCoefficient(const Standard_Real aCoefficient);
+") SetFilterType;
+		void SetFilterType(const SelectMgr_FilterType theFilterType);
 
 		/****************** SetHiddenLineAspect ******************/
 		/**** md5 signature: 5b46a3500446af2bbd4fd524d0b64376 ****/
@@ -6317,6 +5433,26 @@ opencascade::handle<Prs3d_Presentation>
 ") Presentation;
 		opencascade::handle<Prs3d_Presentation> Presentation();
 
+		/****************** ProcessDragging ******************/
+		/**** md5 signature: f5ecfeedca2ff707ad64495902ea5569 ****/
+		%feature("compactdefaultargs") ProcessDragging;
+		%feature("autodoc", "Drag object in the viewer. @param thectx [in] interactive context @param theview [in] active view @param theowner [in] the owner of detected entity @param thedragfrom [in] drag start point @param thedragto [in] drag end point @param theaction [in] drag action returns false if object rejects dragging action (e.g. ais_dragaction_start).
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+theOwner: SelectMgr_EntityOwner
+theDragFrom: Graphic3d_Vec2i
+theDragTo: Graphic3d_Vec2i
+theAction: AIS_DragAction
+
+Returns
+-------
+bool
+") ProcessDragging;
+		virtual Standard_Boolean ProcessDragging(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Graphic3d_Vec2i & theDragFrom, const Graphic3d_Vec2i & theDragTo, const AIS_DragAction theAction);
+
 		/****************** Redisplay ******************/
 		/**** md5 signature: fca7d8c34b9513257ffbe0b732493e56 ****/
 		%feature("compactdefaultargs") Redisplay;
@@ -6987,6 +6123,28 @@ None
 ") AddTouchPoint;
 		virtual void AddTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt, Standard_Boolean theClearBefore = false);
 
+		/****************** Change3dMouseIsNoRotate ******************/
+		/**** md5 signature: b2ff1af628a01e66606ed582c146ef69 ****/
+		%feature("compactdefaultargs") Change3dMouseIsNoRotate;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Change3dMouseIsNoRotate;
+		NCollection_Vec3<bool> & Change3dMouseIsNoRotate();
+
+		/****************** Change3dMouseToReverse ******************/
+		/**** md5 signature: 74994d53f8199fd2049bc1854acbcdb2 ****/
+		%feature("compactdefaultargs") Change3dMouseToReverse;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Change3dMouseToReverse;
+		NCollection_Vec3<bool> & Change3dMouseToReverse();
+
 		/****************** ChangeInputBuffer ******************/
 		/**** md5 signature: c617c43bf721a07d3495c85c386656be ****/
 		%feature("compactdefaultargs") ChangeInputBuffer;
@@ -7051,6 +6209,22 @@ AIS_WalkDelta
 ") FetchNavigationKeys;
 		AIS_WalkDelta FetchNavigationKeys(Standard_Real theCrouchRatio, Standard_Real theRunRatio);
 
+		/****************** FitAllAuto ******************/
+		/**** md5 signature: e1231c24d57b52a006fd8876a9bd9bb0 ****/
+		%feature("compactdefaultargs") FitAllAuto;
+		%feature("autodoc", "Modify view camera to fit all objects. default implementation fits either all visible and all selected objects (swapped on each call).
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") FitAllAuto;
+		virtual void FitAllAuto(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
 		/****************** FlushViewEvents ******************/
 		/**** md5 signature: a398ee112a4247b63979af70592cb6a0 ****/
 		%feature("compactdefaultargs") FlushViewEvents;
@@ -7068,6 +6242,50 @@ Returns
 None
 ") FlushViewEvents;
 		virtual void FlushViewEvents(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, Standard_Boolean theToHandle = Standard_False);
+
+		/****************** Get3dMouseIsNoRotate ******************/
+		/**** md5 signature: ae14b65261c4d2a6b12679cc1f5c5ed4 ****/
+		%feature("compactdefaultargs") Get3dMouseIsNoRotate;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Get3dMouseIsNoRotate;
+		const NCollection_Vec3<bool> & Get3dMouseIsNoRotate();
+
+		/****************** Get3dMouseRotationScale ******************/
+		/**** md5 signature: 6e7927184907412546b0e3bf5c131f00 ****/
+		%feature("compactdefaultargs") Get3dMouseRotationScale;
+		%feature("autodoc", "Return acceleration ratio for rotation event; 4.0 by default.
+
+Returns
+-------
+float
+") Get3dMouseRotationScale;
+		float Get3dMouseRotationScale();
+
+		/****************** Get3dMouseToReverse ******************/
+		/**** md5 signature: a365f1e9e4397aece1eb44aa7383f6d5 ****/
+		%feature("compactdefaultargs") Get3dMouseToReverse;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Get3dMouseToReverse;
+		const NCollection_Vec3<bool> & Get3dMouseToReverse();
+
+		/****************** Get3dMouseTranslationScale ******************/
+		/**** md5 signature: f426a4558b5227de61530d9d20b93e7e ****/
+		%feature("compactdefaultargs") Get3dMouseTranslationScale;
+		%feature("autodoc", "Return acceleration ratio for translation event; 2.0 by default.
+
+Returns
+-------
+float
+") Get3dMouseTranslationScale;
+		float Get3dMouseTranslationScale();
 
 		/****************** GravityPoint ******************/
 		/**** md5 signature: 8c62140d10f0624c3042ec01021f9c63 ****/
@@ -7483,6 +6701,51 @@ None
 ") SelectInViewer;
 		virtual void SelectInViewer(const NCollection_Sequence<Graphic3d_Vec2i> & thePnts, const bool theIsXOR = false);
 
+		/****************** Set3dMousePreciseInput ******************/
+		/**** md5 signature: 0ff4172c7dce21c124fb3941d21634cd ****/
+		%feature("compactdefaultargs") Set3dMousePreciseInput;
+		%feature("autodoc", "Set quadric acceleration flag.
+
+Parameters
+----------
+theIsQuadric: bool
+
+Returns
+-------
+None
+") Set3dMousePreciseInput;
+		void Set3dMousePreciseInput(bool theIsQuadric);
+
+		/****************** Set3dMouseRotationScale ******************/
+		/**** md5 signature: 26cc1d3413bc1ed0806210cb74503bf8 ****/
+		%feature("compactdefaultargs") Set3dMouseRotationScale;
+		%feature("autodoc", "Set acceleration ratio for rotation event.
+
+Parameters
+----------
+theScale: float
+
+Returns
+-------
+None
+") Set3dMouseRotationScale;
+		void Set3dMouseRotationScale(float theScale);
+
+		/****************** Set3dMouseTranslationScale ******************/
+		/**** md5 signature: d66cf6c87510f4cf28118e77235f6dc1 ****/
+		%feature("compactdefaultargs") Set3dMouseTranslationScale;
+		%feature("autodoc", "Set acceleration ratio for translation event.
+
+Parameters
+----------
+theScale: float
+
+Returns
+-------
+None
+") Set3dMouseTranslationScale;
+		void Set3dMouseTranslationScale(float theScale);
+
 		/****************** SetAllowDragging ******************/
 		/**** md5 signature: df0d4841ca91c4e463f1b9ff172bb5a7 ****/
 		%feature("compactdefaultargs") SetAllowDragging;
@@ -7587,6 +6850,36 @@ Returns
 None
 ") SetAllowZooming;
 		void SetAllowZooming(bool theToEnable);
+
+		/****************** SetDisplayXRAuxDevices ******************/
+		/**** md5 signature: 135d6d3dee9bf55919790adaacc3d566 ****/
+		%feature("compactdefaultargs") SetDisplayXRAuxDevices;
+		%feature("autodoc", "Set if auxiliary tracked xr devices should be displayed.
+
+Parameters
+----------
+theToDisplay: bool
+
+Returns
+-------
+None
+") SetDisplayXRAuxDevices;
+		void SetDisplayXRAuxDevices(bool theToDisplay);
+
+		/****************** SetDisplayXRHands ******************/
+		/**** md5 signature: 825ac296237c4a1dfc7291d638be96fb ****/
+		%feature("compactdefaultargs") SetDisplayXRHands;
+		%feature("autodoc", "Set if tracked xr hand controllers should be displayed.
+
+Parameters
+----------
+theToDisplay: bool
+
+Returns
+-------
+None
+") SetDisplayXRHands;
+		void SetDisplayXRHands(bool theToDisplay);
 
 		/****************** SetInvertPitch ******************/
 		/**** md5 signature: 337a14fda31c3ddd9f94b558761281f5 ****/
@@ -7854,6 +7147,17 @@ float
 ") ThrustSpeed;
 		float ThrustSpeed();
 
+		/****************** To3dMousePreciseInput ******************/
+		/**** md5 signature: e7d1cbbce6f739652fb2dcffebfdc574 ****/
+		%feature("compactdefaultargs") To3dMousePreciseInput;
+		%feature("autodoc", "Return quadric acceleration flag; true by default.
+
+Returns
+-------
+bool
+") To3dMousePreciseInput;
+		bool To3dMousePreciseInput();
+
 		/****************** ToAllowDragging ******************/
 		/**** md5 signature: 8a61183f21fcf283f340eec4ff8531b8 ****/
 		%feature("compactdefaultargs") ToAllowDragging;
@@ -7931,6 +7235,28 @@ bool
 ") ToAllowZooming;
 		bool ToAllowZooming();
 
+		/****************** ToDisplayXRAuxDevices ******************/
+		/**** md5 signature: e137eeb702d3133925ef9a160665f27c ****/
+		%feature("compactdefaultargs") ToDisplayXRAuxDevices;
+		%feature("autodoc", "Return true to display auxiliary tracked xr devices (like tracking stations).
+
+Returns
+-------
+bool
+") ToDisplayXRAuxDevices;
+		bool ToDisplayXRAuxDevices();
+
+		/****************** ToDisplayXRHands ******************/
+		/**** md5 signature: 32934f4d9a3a4c676a42438dfb298124 ****/
+		%feature("compactdefaultargs") ToDisplayXRHands;
+		%feature("autodoc", "Return true to display xr hand controllers.
+
+Returns
+-------
+bool
+") ToDisplayXRHands;
+		bool ToDisplayXRHands();
+
 		/****************** ToInvertPitch ******************/
 		/**** md5 signature: 624a70a882a963f2b6dcf003ebe66984 ****/
 		%feature("compactdefaultargs") ToInvertPitch;
@@ -8007,6 +7333,21 @@ Returns
 float
 ") TouchToleranceScale;
 		float TouchToleranceScale();
+
+		/****************** Update3dMouse ******************/
+		/**** md5 signature: 1814989e207401f76efb8f1dd3375f84 ****/
+		%feature("compactdefaultargs") Update3dMouse;
+		%feature("autodoc", "Process 3d mouse input event (redirects to translation, rotation and keys).
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") Update3dMouse;
+		virtual bool Update3dMouse(const WNT_HIDSpaceMouse & theEvent);
 
 		/****************** UpdateMouseButtons ******************/
 		/**** md5 signature: 9ccfebb398dffcbca649cfaf245931da ****/
@@ -8209,7 +7550,7 @@ float
 		/****************** handleCameraActions ******************/
 		/**** md5 signature: e26067a98b91986866681c1bcad0d809 ****/
 		%feature("compactdefaultargs") handleCameraActions;
-		%feature("autodoc", "Perform camera actions. this method is expected to be called from rendering thread.
+		%feature("autodoc", "Perform immediate camera actions (rotate/zoom/pan) on gesture progress. this method is expected to be called from rendering thread.
 
 Parameters
 ----------
@@ -8238,6 +7579,22 @@ Returns
 None
 ") handleMoveTo;
 		virtual void handleMoveTo(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
+		/****************** handleNavigationKeys ******************/
+		/**** md5 signature: feb7561777c3adef83227bc5f492cd66 ****/
+		%feature("compactdefaultargs") handleNavigationKeys;
+		%feature("autodoc", "Perform navigation (aspect_vkey_navforward and similar keys). this method is expected to be called from rendering thread.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+AIS_WalkDelta
+") handleNavigationKeys;
+		virtual AIS_WalkDelta handleNavigationKeys(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
 		/****************** handleOrbitRotation ******************/
 		/**** md5 signature: fdc3bbd840949a270881f6aa0f2931a7 ****/
@@ -8270,6 +7627,22 @@ Returns
 None
 ") handlePanning;
 		virtual void handlePanning(const opencascade::handle<V3d_View> & theView);
+
+		/****************** handleViewOrientationKeys ******************/
+		/**** md5 signature: fc827e821ed2c2644d0bb5ebfb306f4c ****/
+		%feature("compactdefaultargs") handleViewOrientationKeys;
+		%feature("autodoc", "Handle hot-keys defining new camera orientation (aspect_vkey_viewtop and similar keys). default implementation starts an animated transaction from the current to the target camera orientation, when specific action key was pressed. this method is expected to be called from rendering thread.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") handleViewOrientationKeys;
+		virtual void handleViewOrientationKeys(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
 		/****************** handleViewRedraw ******************/
 		/**** md5 signature: 6fd13d07572584fe70e21b27775870be ****/
@@ -8305,6 +7678,121 @@ Returns
 None
 ") handleViewRotation;
 		virtual void handleViewRotation(const opencascade::handle<V3d_View> & theView, double theYawExtra, double thePitchExtra, double theRoll, bool theToRestartOnIncrement);
+
+		/****************** handleXRHighlight ******************/
+		/**** md5 signature: 8a713c5e7e4c6abab9d9e3fae9bcf71f ****/
+		%feature("compactdefaultargs") handleXRHighlight;
+		%feature("autodoc", "Perform dynamic highlighting for active hand.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") handleXRHighlight;
+		virtual void handleXRHighlight(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
+		/****************** handleXRInput ******************/
+		/**** md5 signature: 1e6d90c7e0207002712ad7ee00652514 ****/
+		%feature("compactdefaultargs") handleXRInput;
+		%feature("autodoc", "Perform xr input. this method is expected to be called from rendering thread.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+theWalk: AIS_WalkDelta
+
+Returns
+-------
+None
+") handleXRInput;
+		virtual void handleXRInput(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const AIS_WalkDelta & theWalk);
+
+		/****************** handleXRMoveTo ******************/
+		/**** md5 signature: 6e29fe2637a7185008931ac4a920d6f4 ****/
+		%feature("compactdefaultargs") handleXRMoveTo;
+		%feature("autodoc", "Perform picking with/without dynamic highlighting for xr pose.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+thePose: gp_Trsf
+theToHighlight: bool
+
+Returns
+-------
+int
+") handleXRMoveTo;
+		virtual Standard_Integer handleXRMoveTo(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const gp_Trsf & thePose, const Standard_Boolean theToHighlight);
+
+		/****************** handleXRPicking ******************/
+		/**** md5 signature: 222444cb5c4cdef1d3a6bfb12966c890 ****/
+		%feature("compactdefaultargs") handleXRPicking;
+		%feature("autodoc", "Handle picking on trigger click.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") handleXRPicking;
+		virtual void handleXRPicking(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
+		/****************** handleXRPresentations ******************/
+		/**** md5 signature: efc9157b2e2753d08637e420750d902a ****/
+		%feature("compactdefaultargs") handleXRPresentations;
+		%feature("autodoc", "Display auxiliary xr presentations.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") handleXRPresentations;
+		virtual void handleXRPresentations(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
+		/****************** handleXRTeleport ******************/
+		/**** md5 signature: b4e260f3ccbacea0758813222d07c62e ****/
+		%feature("compactdefaultargs") handleXRTeleport;
+		%feature("autodoc", "Handle trackpad teleportation action.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") handleXRTeleport;
+		virtual void handleXRTeleport(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
+		/****************** handleXRTurnPad ******************/
+		/**** md5 signature: e830480d597b887ce8a335727dbd86c7 ****/
+		%feature("compactdefaultargs") handleXRTurnPad;
+		%feature("autodoc", "Handle trackpad view turn action.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+
+Returns
+-------
+None
+") handleXRTurnPad;
+		virtual void handleXRTurnPad(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
 		/****************** handleZFocusScroll ******************/
 		/**** md5 signature: 4d7ba821266f7b764f51666a67a2da46 ****/
@@ -8417,6 +7905,51 @@ Returns
 bool
 ") toAskNextFrame;
 		bool toAskNextFrame();
+
+		/****************** update3dMouseKeys ******************/
+		/**** md5 signature: 7068d4e0858b2659de00f111094ecc7f ****/
+		%feature("compactdefaultargs") update3dMouseKeys;
+		%feature("autodoc", "Process 3d mouse input keys event.
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") update3dMouseKeys;
+		virtual bool update3dMouseKeys(const WNT_HIDSpaceMouse & theEvent);
+
+		/****************** update3dMouseRotation ******************/
+		/**** md5 signature: 0e88dd09859b6f02e48c9b73ec73f69b ****/
+		%feature("compactdefaultargs") update3dMouseRotation;
+		%feature("autodoc", "Process 3d mouse input rotation event.
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") update3dMouseRotation;
+		virtual bool update3dMouseRotation(const WNT_HIDSpaceMouse & theEvent);
+
+		/****************** update3dMouseTranslation ******************/
+		/**** md5 signature: c826319c70a567fbe2c3401c0a5c2471 ****/
+		%feature("compactdefaultargs") update3dMouseTranslation;
+		%feature("autodoc", "Process 3d mouse input translation event.
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") update3dMouseTranslation;
+		virtual bool update3dMouseTranslation(const WNT_HIDSpaceMouse & theEvent);
 
 };
 
@@ -8961,23 +8494,6 @@ opencascade::handle<Geom_Line>
 ") Component;
 		const opencascade::handle<Geom_Line> & Component();
 
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
 		/****************** IsXYZAxis ******************/
 		/**** md5 signature: 1d85f51d36d0ae430b9a865d101c9dcf ****/
 		%feature("compactdefaultargs") IsXYZAxis;
@@ -9306,23 +8822,6 @@ Returns
 opencascade::handle<Geom_Circle>
 ") Circle;
 		const opencascade::handle<Geom_Circle> & Circle();
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
 		/****************** IsFilledCircleSens ******************/
 		/**** md5 signature: ddaea116033193620f481ab3c97bd9d0 ****/
@@ -10004,6 +9503,24 @@ TColStd_SequenceOfExtendedString
 ") Labels;
 		const TColStd_SequenceOfExtendedString & Labels();
 
+		/****************** MakeUniformColors ******************/
+		/**** md5 signature: c5509db5ca86935ada0aa1098b2c5016 ****/
+		%feature("compactdefaultargs") MakeUniformColors;
+		%feature("autodoc", "Generates sequence of colors of the same lightness value in cie lch color space (see #quantity_toc_cielch), with hue values in the specified range. the colors are distributed across the range such as to have perceptually same difference between neighbour colors. for each color, maximal chroma value fitting in srgb gamut is used. //! @param thenbcolors - number of colors to generate @param thelightness - lightness to be used (0 is black, 100 is white, 32 is lightness of pure blue) @param thehuefrom - hue value at the start of the scale @param thehueto - hue value defining the end of the scale hue value can be out of the range [0, 360], interpreted as modulo 360. the colors of the scale will be in the order of increasing hue if thehueto > thehuefrom, and decreasing otherwise.
+
+Parameters
+----------
+theNbColors: int
+theLightness: float
+theHueFrom: float
+theHueTo: float
+
+Returns
+-------
+Aspect_SequenceOfColor
+") MakeUniformColors;
+		static Aspect_SequenceOfColor MakeUniformColors(Standard_Integer theNbColors, Standard_Real theLightness, Standard_Real theHueFrom, Standard_Real theHueTo);
+
 		/****************** SetBreadth ******************/
 		/**** md5 signature: b169d0a06d61cdb70c75cd65cf142545 ****/
 		%feature("compactdefaultargs") SetBreadth;
@@ -10386,6 +9903,23 @@ None
 ") SetTitlePosition;
 		void SetTitlePosition(const Aspect_TypeOfColorScalePosition thePos);
 
+		/****************** SetUniformColors ******************/
+		/**** md5 signature: 643a34948e3de542baf241bb7740e782 ****/
+		%feature("compactdefaultargs") SetUniformColors;
+		%feature("autodoc", "Populates colors scale by colors of the same lightness value in cie lch color space, distributed by hue, with perceptually uniform differences between consequent colors. see makeuniformcolors() for description of parameters.
+
+Parameters
+----------
+theLightness: float
+theHueFrom: float
+theHueTo: float
+
+Returns
+-------
+None
+") SetUniformColors;
+		void SetUniformColors(Standard_Real theLightness, Standard_Real theHueFrom, Standard_Real theHueTo);
+
 		/****************** SetXPosition ******************/
 		/**** md5 signature: a0e6df9560ed6e5302a5d7db2ecacdf8 ****/
 		%feature("compactdefaultargs") SetXPosition;
@@ -10569,20 +10103,20 @@ None
 		void Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const gp_Trsf & theLocation);
 
 		/****************** Connect ******************/
-		/**** md5 signature: 643e5665c805730183e65eb188e2aa0c ****/
+		/**** md5 signature: 418505c88f7f147f47107d38894767f1 ****/
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "Establishes the connection between the connected interactive object, anotheriobj, and its reference. locates instance in alocation.
 
 Parameters
 ----------
 theAnotherObj: AIS_InteractiveObject
-theLocation: Geom_Transformation
+theLocation: TopLoc_Datum3D
 
 Returns
 -------
 None
 ") Connect;
-		void Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const opencascade::handle<Geom_Transformation> & theLocation);
+		void Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const opencascade::handle<TopLoc_Datum3D> & theLocation);
 
 		/****************** ConnectedTo ******************/
 		/**** md5 signature: 1541a2cb7b3a6f95f8064287356a8f2c ****/
@@ -10650,439 +10184,6 @@ AIS_KindOfInteractive
 	}
 };
 
-/**********************
-* class AIS_Dimension *
-**********************/
-%nodefaultctor AIS_Dimension;
-class AIS_Dimension : public AIS_InteractiveObject {
-	public:
-		class SelectionGeometry {};
-/* public enums */
-enum ComputeMode {
-	ComputeMode_All = 0,
-	ComputeMode_Line = 1,
-	ComputeMode_Text = 2,
-};
-
-/* end public enums declaration */
-
-/* python proy classes for enums */
-%pythoncode {
-
-class ComputeMode(IntEnum):
-	ComputeMode_All = 0
-	ComputeMode_Line = 1
-	ComputeMode_Text = 2
-ComputeMode_All = ComputeMode.ComputeMode_All
-ComputeMode_Line = ComputeMode.ComputeMode_Line
-ComputeMode_Text = ComputeMode.ComputeMode_Text
-};
-/* end python proxy for enums */
-
-		/****************** AcceptDisplayMode ******************/
-		/**** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ****/
-		%feature("compactdefaultargs") AcceptDisplayMode;
-		%feature("autodoc", "Returns true if the class of objects accepts the display mode themode. the interactive context can have a default mode of representation for the set of interactive objects. this mode may not be accepted by object.
-
-Parameters
-----------
-theMode: int
-
-Returns
--------
-bool
-") AcceptDisplayMode;
-		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
-
-		/****************** DimensionAspect ******************/
-		/**** md5 signature: 2f6e42d6c31db01e2bc6cd4dba206808 ****/
-		%feature("compactdefaultargs") DimensionAspect;
-		%feature("autodoc", "Gets the dimension aspect from ais object drawer. dimension aspect contains aspects of line, text and arrows for dimension presentation.
-
-Returns
--------
-opencascade::handle<Prs3d_DimensionAspect>
-") DimensionAspect;
-		opencascade::handle<Prs3d_DimensionAspect> DimensionAspect();
-
-		/****************** DisplaySpecialSymbol ******************/
-		/**** md5 signature: 7c8dd1fc38f544b9ddae4ac3dde99a54 ****/
-		%feature("compactdefaultargs") DisplaySpecialSymbol;
-		%feature("autodoc", "Returns dimension special symbol display options.
-
-Returns
--------
-AIS_DisplaySpecialSymbol
-") DisplaySpecialSymbol;
-		AIS_DisplaySpecialSymbol DisplaySpecialSymbol();
-
-		/****************** GetCustomValue ******************/
-		/**** md5 signature: 058a2fa09af09ddcd194aa7c58020a83 ****/
-		%feature("compactdefaultargs") GetCustomValue;
-		%feature("autodoc", "Gets user-defined dimension value. returns dimension value string.
-
-Returns
--------
-TCollection_ExtendedString
-") GetCustomValue;
-		const TCollection_ExtendedString & GetCustomValue();
-
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: ddc04b9c02a93ab070d76d081dd932f4 ****/
-		%feature("compactdefaultargs") GetDisplayUnits;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TCollection_AsciiString
-") GetDisplayUnits;
-		virtual const TCollection_AsciiString & GetDisplayUnits();
-
-		/****************** GetFlyout ******************/
-		/**** md5 signature: eda99b4bc6964dc635fe0548f0e74f5c ****/
-		%feature("compactdefaultargs") GetFlyout;
-		%feature("autodoc", "Returns flyout value for dimension.
-
-Returns
--------
-float
-") GetFlyout;
-		Standard_Real GetFlyout();
-
-		/****************** GetGeometryType ******************/
-		/**** md5 signature: 15c47df8128e11cd2512f3eef50b1555 ****/
-		%feature("compactdefaultargs") GetGeometryType;
-		%feature("autodoc", "Geometry type defines type of shapes on which the dimension is to be built. returns type of geometry on which the dimension will be built.
-
-Returns
--------
-int
-") GetGeometryType;
-		Standard_Integer GetGeometryType();
-
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 930ae9f0d86096fd7617e48776d468ed ****/
-		%feature("compactdefaultargs") GetModelUnits;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TCollection_AsciiString
-") GetModelUnits;
-		virtual const TCollection_AsciiString & GetModelUnits();
-
-		/****************** GetPlane ******************/
-		/**** md5 signature: 95477303c6decbabbe95af7270c23fb3 ****/
-		%feature("compactdefaultargs") GetPlane;
-		%feature("autodoc", "Get the dimension plane in which the 2d dimension presentation is computed. by default, if plane is not defined by user, it is computed automatically after dimension geometry is computed. if computed dimension geometry (points) can't be placed on the user-defined plane, dimension geometry was set as invalid (validity flag is set to false) and dimension presentation will not be computed. if user-defined plane allow geometry placement on it, it will be used for computing of the dimension presentation. returns dimension plane used for presentation computing.
-
-Returns
--------
-gp_Pln
-") GetPlane;
-		const gp_Pln GetPlane();
-
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: a2ed058f1d70e12dc0c80a7b532ecf6d ****/
-		%feature("compactdefaultargs") GetTextPosition;
-		%feature("autodoc", "Computes absolute text position from dimension parameters (flyout, plane and text alignment).
-
-Returns
--------
-gp_Pnt
-") GetTextPosition;
-		virtual const gp_Pnt GetTextPosition();
-
-		/****************** GetValue ******************/
-		/**** md5 signature: d602b48d41f0ae37152aeb1633e13fb9 ****/
-		%feature("compactdefaultargs") GetValue;
-		%feature("autodoc", "Gets dimension measurement value. if the value to display is not specified by user, then the dimension object is responsible to compute it on its own in model space coordinates. returns the dimension value (in model units) which is used during display of the presentation.
-
-Returns
--------
-float
-") GetValue;
-		Standard_Real GetValue();
-
-		/****************** IsTextPositionCustom ******************/
-		/**** md5 signature: cb63adca34669ac6b14993304b5cec35 ****/
-		%feature("compactdefaultargs") IsTextPositionCustom;
-		%feature("autodoc", "Returns true if text position is set by user with method settextposition().
-
-Returns
--------
-bool
-") IsTextPositionCustom;
-		Standard_Boolean IsTextPositionCustom();
-
-		/****************** IsValid ******************/
-		/**** md5 signature: 13a0f49072e992d80b7990c04d5ad580 ****/
-		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Check that the input geometry for dimension is valid and the presentation can be successfully computed. returns true if dimension geometry is ok.
-
-Returns
--------
-bool
-") IsValid;
-		virtual Standard_Boolean IsValid();
-
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 000f5095607efa7b66f30b41d7fadeed ****/
-		%feature("compactdefaultargs") KindOfDimension;
-		%feature("autodoc", "Returns the kind of dimension.
-
-Returns
--------
-AIS_KindOfDimension
-") KindOfDimension;
-		AIS_KindOfDimension KindOfDimension();
-
-		/****************** SelToleranceForText2d ******************/
-		/**** md5 signature: 5e1f7b036e9e0c1b485c5d8da6b6286a ****/
-		%feature("compactdefaultargs") SelToleranceForText2d;
-		%feature("autodoc", "Returns selection tolerance for text2d: for 2d text selection detection sensitive point with tolerance is used important! only for 2d text.
-
-Returns
--------
-float
-") SelToleranceForText2d;
-		Standard_Real SelToleranceForText2d();
-
-		/****************** SetComputedValue ******************/
-		/**** md5 signature: 74883cf4b8a353dfbc969645f6db6362 ****/
-		%feature("compactdefaultargs") SetComputedValue;
-		%feature("autodoc", "Sets computed dimension value. resets custom value mode if it was set.
-
-Returns
--------
-None
-") SetComputedValue;
-		void SetComputedValue();
-
-		/****************** SetCustomPlane ******************/
-		/**** md5 signature: a371fba2e87123f75db102d389dc8aeb ****/
-		%feature("compactdefaultargs") SetCustomPlane;
-		%feature("autodoc", "Sets user-defined plane where the 2d dimension presentation will be placed. checks validity of this plane if geometry has been set already. validity of the plane is checked according to the geometry set and has different criteria for different kinds of dimensions.
-
-Parameters
-----------
-thePlane: gp_Pln
-
-Returns
--------
-None
-") SetCustomPlane;
-		virtual void SetCustomPlane(const gp_Pln & thePlane);
-
-		/****************** SetCustomValue ******************/
-		/**** md5 signature: e4767ba55ab2e4ffbdd6196bdb4a2e75 ****/
-		%feature("compactdefaultargs") SetCustomValue;
-		%feature("autodoc", "Sets user-defined dimension value. the user-defined dimension value is specified in model space, and affect by unit conversion during the display. @param thevalue [in] the user-defined value to display.
-
-Parameters
-----------
-theValue: float
-
-Returns
--------
-None
-") SetCustomValue;
-		void SetCustomValue(const Standard_Real theValue);
-
-		/****************** SetCustomValue ******************/
-		/**** md5 signature: aa638ede9bd0fe424934618474a9c131 ****/
-		%feature("compactdefaultargs") SetCustomValue;
-		%feature("autodoc", "Sets user-defined dimension value. unit conversion during the display is not applyed. @param thevalue [in] the user-defined value to display.
-
-Parameters
-----------
-theValue: TCollection_ExtendedString
-
-Returns
--------
-None
-") SetCustomValue;
-		void SetCustomValue(const TCollection_ExtendedString & theValue);
-
-		/****************** SetDimensionAspect ******************/
-		/**** md5 signature: 653cffb5413acf12c0dc78f7606b5fb6 ****/
-		%feature("compactdefaultargs") SetDimensionAspect;
-		%feature("autodoc", "Sets new dimension aspect for the interactive object drawer. the dimension aspect provides dynamic properties which are generally used during computation of dimension presentations.
-
-Parameters
-----------
-theDimensionAspect: Prs3d_DimensionAspect
-
-Returns
--------
-None
-") SetDimensionAspect;
-		void SetDimensionAspect(const opencascade::handle<Prs3d_DimensionAspect> & theDimensionAspect);
-
-		/****************** SetDisplaySpecialSymbol ******************/
-		/**** md5 signature: d6c4a985d2826ddc0f2d295e9f047067 ****/
-		%feature("compactdefaultargs") SetDisplaySpecialSymbol;
-		%feature("autodoc", "Specifies whether to display special symbol or not.
-
-Parameters
-----------
-theDisplaySpecSymbol: AIS_DisplaySpecialSymbol
-
-Returns
--------
-None
-") SetDisplaySpecialSymbol;
-		void SetDisplaySpecialSymbol(const AIS_DisplaySpecialSymbol theDisplaySpecSymbol);
-
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: 7c4ef2629b83770e3b1f5cd4e63cfe14 ****/
-		%feature("compactdefaultargs") SetDisplayUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-&: TCollection_AsciiString
-
-Returns
--------
-None
-") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString &);
-
-		/****************** SetFlyout ******************/
-		/**** md5 signature: 4a01b6b05617128166d05bb9d7623eae ****/
-		%feature("compactdefaultargs") SetFlyout;
-		%feature("autodoc", "Sets flyout value for dimension.
-
-Parameters
-----------
-theFlyout: float
-
-Returns
--------
-None
-") SetFlyout;
-		void SetFlyout(const Standard_Real theFlyout);
-
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: ff93ccdd85e84f0afae8a4d40959d10a ****/
-		%feature("compactdefaultargs") SetModelUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-&: TCollection_AsciiString
-
-Returns
--------
-None
-") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString &);
-
-		/****************** SetSelToleranceForText2d ******************/
-		/**** md5 signature: 537173bd79d28c6fa1429de304305501 ****/
-		%feature("compactdefaultargs") SetSelToleranceForText2d;
-		%feature("autodoc", "Sets selection tolerance for text2d: for 2d text selection detection sensitive point with tolerance is used to change this tolerance use this method important! only for 2d text.
-
-Parameters
-----------
-theTol: float
-
-Returns
--------
-None
-") SetSelToleranceForText2d;
-		void SetSelToleranceForText2d(const Standard_Real theTol);
-
-		/****************** SetSpecialSymbol ******************/
-		/**** md5 signature: 9f205d745c9301fbbd3129b43fd8deb5 ****/
-		%feature("compactdefaultargs") SetSpecialSymbol;
-		%feature("autodoc", "Specifies special symbol.
-
-Parameters
-----------
-theSpecialSymbol: Standard_ExtCharacter
-
-Returns
--------
-None
-") SetSpecialSymbol;
-		void SetSpecialSymbol(const Standard_ExtCharacter theSpecialSymbol);
-
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: a461f493832c6de5dbec73ad9e2da9a0 ****/
-		%feature("compactdefaultargs") SetTextPosition;
-		%feature("autodoc", "Fixes the absolute text position and adjusts flyout, plane and text alignment according to it. updates presentation if the text position is valid. attention! it does not change vertical text alignment. @param thetextpos [in] the point of text position.
-
-Parameters
-----------
-&: gp_Pnt
-
-Returns
--------
-None
-") SetTextPosition;
-		virtual void SetTextPosition(const gp_Pnt &);
-
-		/****************** SpecialSymbol ******************/
-		/**** md5 signature: 29a0ed47fd42ba819648af4ecd1c15a4 ****/
-		%feature("compactdefaultargs") SpecialSymbol;
-		%feature("autodoc", "Returns special symbol.
-
-Returns
--------
-Standard_ExtCharacter
-") SpecialSymbol;
-		Standard_ExtCharacter SpecialSymbol();
-
-		/****************** Type ******************/
-		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns the kind of interactive.
-
-Returns
--------
-AIS_KindOfInteractive
-") Type;
-		virtual AIS_KindOfInteractive Type();
-
-		/****************** UnsetCustomPlane ******************/
-		/**** md5 signature: 0545e29e8f1f4729d3901ed8c8f7965d ****/
-		%feature("compactdefaultargs") UnsetCustomPlane;
-		%feature("autodoc", "Unsets user-defined plane. therefore the plane for dimension will be computed automatically.
-
-Returns
--------
-None
-") UnsetCustomPlane;
-		void UnsetCustomPlane();
-
-		/****************** UnsetFixedTextPosition ******************/
-		/**** md5 signature: d8406cc4e1101ee7ff26d8abf793d532 ****/
-		%feature("compactdefaultargs") UnsetFixedTextPosition;
-		%feature("autodoc", "Unsets user defined text positioning and enables text positioning by other parameters: text alignment, extension size, flyout and custom plane.
-
-Returns
--------
-None
-") UnsetFixedTextPosition;
-		void UnsetFixedTextPosition();
-
-};
-
-
-%make_alias(AIS_Dimension)
-
-%extend AIS_Dimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def AIS_Dimension(self):
-		pass
-	}
-};
-
 /*****************
 * class AIS_Line *
 *****************/
@@ -11118,23 +10219,6 @@ Returns
 None
 ") AIS_Line;
 		 AIS_Line(const opencascade::handle<Geom_Point> & aStartPoint, const opencascade::handle<Geom_Point> & aEndPoint);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
 		/****************** Line ******************/
 		/**** md5 signature: 3abeaae7f4e4373ddc51d06b177bee17 ****/
@@ -11317,6 +10401,17 @@ Returns
 None
 ") AIS_Manipulator;
 		 AIS_Manipulator(const gp_Ax2 & thePosition);
+
+		/****************** ActiveAxisIndex ******************/
+		/**** md5 signature: 5ed7eebd650705cec16cd7895f75e029 ****/
+		%feature("compactdefaultargs") ActiveAxisIndex;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") ActiveAxisIndex;
+		Standard_Integer ActiveAxisIndex();
 
 		/****************** ActiveMode ******************/
 		/**** md5 signature: 518316bdc464c63b5a1ab2fd9b9e2cb2 ****/
@@ -11598,6 +10693,26 @@ Returns
 gp_Ax2
 ") Position;
 		const gp_Ax2 Position();
+
+		/****************** ProcessDragging ******************/
+		/**** md5 signature: b945957f65b997bcf6b4a92cefdcd430 ****/
+		%feature("compactdefaultargs") ProcessDragging;
+		%feature("autodoc", "Drag object in the viewer. @param thectx [in] interactive context @param theview [in] active view @param theowner [in] the owner of detected entity @param thedragfrom [in] drag start point @param thedragto [in] drag end point @param theaction [in] drag action returns false if object rejects dragging action (e.g. ais_dragaction_start).
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+theOwner: SelectMgr_EntityOwner
+theDragFrom: Graphic3d_Vec2i
+theDragTo: Graphic3d_Vec2i
+theAction: AIS_DragAction
+
+Returns
+-------
+bool
+") ProcessDragging;
+		virtual Standard_Boolean ProcessDragging(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Graphic3d_Vec2i & theDragFrom, const Graphic3d_Vec2i & theDragTo, const AIS_DragAction theAction);
 
 		/****************** SetGap ******************/
 		/**** md5 signature: 93bbf4c4c799016d4246a94510cb49b4 ****/
@@ -12002,55 +11117,22 @@ bool
 ") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition();
 
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** Compute ******************/
-		/**** md5 signature: a7522d245885b593fa6b856c13c5987f ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
 		/****************** Connect ******************/
-		/**** md5 signature: 617859b10fb322097970436d4b00035d ****/
+		/**** md5 signature: 9456f753f89ea1d3d12e6c7e4b293e0f ****/
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "Establishes the connection between the connected interactive object, theinteractive, and its reference. locates instance in thelocation and applies specified transformation persistence mode. returns created instance object (ais_connectedinteractive or ais_multipleconnectedinteractive).
 
 Parameters
 ----------
 theAnotherObj: AIS_InteractiveObject
-theLocation: Geom_Transformation
+theLocation: TopLoc_Datum3D
 theTrsfPers: Graphic3d_TransformPers
 
 Returns
 -------
 opencascade::handle<AIS_InteractiveObject>
 ") Connect;
-		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const opencascade::handle<Geom_Transformation> & theLocation, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
+		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const opencascade::handle<TopLoc_Datum3D> & theLocation, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** Connect ******************/
 		/**** md5 signature: d10a69c61a6c9d8b102edd8739b7f2b4 ****/
@@ -12350,23 +11432,6 @@ Returns
 opencascade::handle<Geom_Plane>
 ") Component;
 		const opencascade::handle<Geom_Plane> & Component();
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
 		/****************** ComputeSelection ******************/
 		/**** md5 signature: 0ee36b1ad2a8a3c1bbb813dfdb1d40ae ****/
@@ -12728,23 +11793,6 @@ opencascade::handle<Geom_Plane>
 ") Component;
 		opencascade::handle<Geom_Plane> Component();
 
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
 		/****************** GetLength ******************/
 		/**** md5 signature: 9390a920d888683f8b474026b2d95a49 ****/
 		%feature("compactdefaultargs") GetLength;
@@ -12942,23 +11990,6 @@ Returns
 opencascade::handle<Geom_Point>
 ") Component;
 		opencascade::handle<Geom_Point> Component();
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
 		/****************** HasMarker ******************/
 		/**** md5 signature: 7622325081b114c983e5a28bc511c5cc ****/
@@ -13245,388 +12276,6 @@ None
 %make_alias(AIS_PointCloud)
 
 %extend AIS_PointCloud {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************
-* class AIS_Relation *
-*********************/
-%nodefaultctor AIS_Relation;
-class AIS_Relation : public AIS_InteractiveObject {
-	public:
-		/****************** AcceptDisplayMode ******************/
-		/**** md5 signature: 16fc40475e94b16a496778d86dfb4fec ****/
-		%feature("compactdefaultargs") AcceptDisplayMode;
-		%feature("autodoc", "Returns true if the display mode amode is accepted for the interactive objects in the relation. computeprojpresentation(me; apres : presentation from prs3d; curve1 : curve from geom; curve2 : curve from geom; firstp1 : pnt from gp; lastp1 : pnt from gp; firstp2 : pnt from gp; lastp2 : pnt from gp; acolor : nameofcolor from quantity = quantity_noc_purple; awidth : real  from standard = 2; aprojtol : typeofline  from aspect = aspect_tol_dash; acalltol : typeofline  from aspect = aspect_tol_dot).
-
-Parameters
-----------
-aMode: int
-
-Returns
--------
-bool
-") AcceptDisplayMode;
-		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode);
-
-		/****************** ArrowSize ******************/
-		/**** md5 signature: 1c64631a05987281258edff790436577 ****/
-		%feature("compactdefaultargs") ArrowSize;
-		%feature("autodoc", "Returns the value for the size of the arrow identifying the relation between the two shapes.
-
-Returns
--------
-float
-") ArrowSize;
-		Standard_Real ArrowSize();
-
-		/****************** AutomaticPosition ******************/
-		/**** md5 signature: 4069aa0ccd84519a8254a311ab36e427 ****/
-		%feature("compactdefaultargs") AutomaticPosition;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") AutomaticPosition;
-		Standard_Boolean AutomaticPosition();
-
-		/****************** ExtShape ******************/
-		/**** md5 signature: ba3f30014ebd951754e2319eb6678935 ****/
-		%feature("compactdefaultargs") ExtShape;
-		%feature("autodoc", "Returns the status index of the extension shape.
-
-Returns
--------
-int
-") ExtShape;
-		Standard_Integer ExtShape();
-
-		/****************** FirstShape ******************/
-		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
-		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TopoDS_Shape
-") FirstShape;
-		const TopoDS_Shape FirstShape();
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: 9f41b36fced50df9775679c8c7b28f09 ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the interactive object is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 5fbd88227fb3451f8553f8a12b933712 ****/
-		%feature("compactdefaultargs") KindOfDimension;
-		%feature("autodoc", "Indicates that the type of dimension is unknown.
-
-Returns
--------
-AIS_KindOfDimension
-") KindOfDimension;
-		virtual AIS_KindOfDimension KindOfDimension();
-
-		/****************** Plane ******************/
-		/**** md5 signature: 94aa2880e5105df8ee475ace1dfe0bd2 ****/
-		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "Returns the plane.
-
-Returns
--------
-opencascade::handle<Geom_Plane>
-") Plane;
-		const opencascade::handle<Geom_Plane> & Plane();
-
-		/****************** Position ******************/
-		/**** md5 signature: 0ab08d371c89be0cb1eecbddf304bb77 ****/
-		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "Returns the position set using setposition.
-
-Returns
--------
-gp_Pnt
-") Position;
-		const gp_Pnt Position();
-
-		/****************** SecondShape ******************/
-		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
-		%feature("compactdefaultargs") SecondShape;
-		%feature("autodoc", "Returns the second shape.
-
-Returns
--------
-TopoDS_Shape
-") SecondShape;
-		const TopoDS_Shape SecondShape();
-
-		/****************** SetArrowSize ******************/
-		/**** md5 signature: 7f29c9d69ed4995251718b45132ef44a ****/
-		%feature("compactdefaultargs") SetArrowSize;
-		%feature("autodoc", "Allows you to provide settings for the size of the arrow thearrowsize identifying the relation between the two shapes.
-
-Parameters
-----------
-theArrowSize: float
-
-Returns
--------
-None
-") SetArrowSize;
-		void SetArrowSize(const Standard_Real theArrowSize);
-
-		/****************** SetAutomaticPosition ******************/
-		/**** md5 signature: eb2707fc0c7ac0140ed8fd4c80f28b34 ****/
-		%feature("compactdefaultargs") SetAutomaticPosition;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theStatus: bool
-
-Returns
--------
-None
-") SetAutomaticPosition;
-		void SetAutomaticPosition(const Standard_Boolean theStatus);
-
-		/****************** SetBndBox ******************/
-		/**** md5 signature: 7c3556dffd56ab1f14ecdaaf0953820a ****/
-		%feature("compactdefaultargs") SetBndBox;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theXmin: float
-theYmin: float
-theZmin: float
-theXmax: float
-theYmax: float
-theZmax: float
-
-Returns
--------
-None
-") SetBndBox;
-		void SetBndBox(const Standard_Real theXmin, const Standard_Real theYmin, const Standard_Real theZmin, const Standard_Real theXmax, const Standard_Real theYmax, const Standard_Real theZmax);
-
-		/****************** SetColor ******************/
-		/**** md5 signature: 7e02f3e04e30cfab690f414e5d7614ca ****/
-		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Allows you to provide settings for the color thecolor of the lines representing the relation between the two shapes.
-
-Parameters
-----------
-theColor: Quantity_Color
-
-Returns
--------
-None
-") SetColor;
-		void SetColor(const Quantity_Color & theColor);
-
-		/****************** SetExtShape ******************/
-		/**** md5 signature: 86fc35735d1c517597a5d532e3f8521a ****/
-		%feature("compactdefaultargs") SetExtShape;
-		%feature("autodoc", "Allows you to set the status of the extension shape by the index aindex. the status will be one of the following: - 0 - there is no connection to a shape; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape.
-
-Parameters
-----------
-theIndex: int
-
-Returns
--------
-None
-") SetExtShape;
-		void SetExtShape(const Standard_Integer theIndex);
-
-		/****************** SetFirstShape ******************/
-		/**** md5 signature: 264d1d215505df4496dcf2e3266265a8 ****/
-		%feature("compactdefaultargs") SetFirstShape;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetFirstShape;
-		virtual void SetFirstShape(const TopoDS_Shape & aFShape);
-
-		/****************** SetPlane ******************/
-		/**** md5 signature: 950afcbb12a962d6ac501f5bcd6b2945 ****/
-		%feature("compactdefaultargs") SetPlane;
-		%feature("autodoc", "Allows you to set the plane theplane. this is used to define relations and dimensions in several daughter classes.
-
-Parameters
-----------
-thePlane: Geom_Plane
-
-Returns
--------
-None
-") SetPlane;
-		void SetPlane(const opencascade::handle<Geom_Plane> & thePlane);
-
-		/****************** SetPosition ******************/
-		/**** md5 signature: 2f8cb3df196eb538026858474c42a042 ****/
-		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "Allows you to provide the objects in the relation with settings for a non-default position.
-
-Parameters
-----------
-thePosition: gp_Pnt
-
-Returns
--------
-None
-") SetPosition;
-		void SetPosition(const gp_Pnt & thePosition);
-
-		/****************** SetSecondShape ******************/
-		/**** md5 signature: 2dd80771be171a80800223d09f3be002 ****/
-		%feature("compactdefaultargs") SetSecondShape;
-		%feature("autodoc", "Allows you to identify the second shape asshape relative to the first.
-
-Parameters
-----------
-aSShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetSecondShape;
-		virtual void SetSecondShape(const TopoDS_Shape & aSShape);
-
-		/****************** SetSymbolPrs ******************/
-		/**** md5 signature: 703c256ba420e65c94dac6b87e3d6047 ****/
-		%feature("compactdefaultargs") SetSymbolPrs;
-		%feature("autodoc", "Allows you to provide settings for the symbol presentation.
-
-Parameters
-----------
-theSymbolPrs: DsgPrs_ArrowSide
-
-Returns
--------
-None
-") SetSymbolPrs;
-		void SetSymbolPrs(const DsgPrs_ArrowSide theSymbolPrs);
-
-		/****************** SetText ******************/
-		/**** md5 signature: b6056cb56568f8909dbeaac438ef83aa ****/
-		%feature("compactdefaultargs") SetText;
-		%feature("autodoc", "Allows you to provide the settings thetext for text aspect.
-
-Parameters
-----------
-theText: TCollection_ExtendedString
-
-Returns
--------
-None
-") SetText;
-		void SetText(const TCollection_ExtendedString & theText);
-
-		/****************** SetValue ******************/
-		/**** md5 signature: 5be0c2680e760a4f92ac7b7d3ae78786 ****/
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Allows you to provide settings for the value theval for each object in the relation.
-
-Parameters
-----------
-theVal: float
-
-Returns
--------
-None
-") SetValue;
-		void SetValue(const Standard_Real theVal);
-
-		/****************** SymbolPrs ******************/
-		/**** md5 signature: 7b81240b7c5c019dedce9d08539b00f1 ****/
-		%feature("compactdefaultargs") SymbolPrs;
-		%feature("autodoc", "Returns the value of the symbol presentation. this will be one of: - as_none - none - as_firstar - first arrow - as_lastar - last arrow - as_bothar - both arrows - as_firstpt - first point - as_lastpt - last point - as_bothpt - both points - as_firstar_lastpt - first arrow, last point - as_firstpt_lastar - first point, last arrow.
-
-Returns
--------
-DsgPrs_ArrowSide
-") SymbolPrs;
-		DsgPrs_ArrowSide SymbolPrs();
-
-		/****************** Text ******************/
-		/**** md5 signature: 72bf6306b0638727f5e5c6cb054bb79f ****/
-		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Returns settings for text aspect.
-
-Returns
--------
-TCollection_ExtendedString
-") Text;
-		const TCollection_ExtendedString & Text();
-
-		/****************** Type ******************/
-		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-AIS_KindOfInteractive
-") Type;
-		virtual AIS_KindOfInteractive Type();
-
-		/****************** UnsetBndBox ******************/
-		/**** md5 signature: c3c34a2be55a0808b9eae7a500b23e3b ****/
-		%feature("compactdefaultargs") UnsetBndBox;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") UnsetBndBox;
-		void UnsetBndBox();
-
-		/****************** UnsetColor ******************/
-		/**** md5 signature: 305de4c541ce8067f3ff456f9ec26b55 ****/
-		%feature("compactdefaultargs") UnsetColor;
-		%feature("autodoc", "Allows you to remove settings for the color of the lines representing the relation between the two shapes.
-
-Returns
--------
-None
-") UnsetColor;
-		void UnsetColor();
-
-		/****************** Value ******************/
-		/**** md5 signature: 246826be964a300c707aadb5d0b62468 ****/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns the value of each object in the relation.
-
-Returns
--------
-float
-") Value;
-		Standard_Real Value();
-
-};
-
-
-%make_alias(AIS_Relation)
-
-%extend AIS_Relation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -14038,6 +12687,14 @@ None
 ") Color;
 		virtual void Color(Quantity_Color & aColor);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Material ******************/
 		/**** md5 signature: bd49ae260cc3f6209d9618dfc722ced2 ****/
 		%feature("compactdefaultargs") Material;
@@ -14078,36 +12735,6 @@ aCoefficient: float
 aPreviousCoefficient: float
 ") OwnDeviationCoefficient;
 		Standard_Boolean OwnDeviationCoefficient(Standard_Real &OutValue, Standard_Real &OutValue);
-
-		/****************** OwnHLRDeviationAngle ******************/
-		/**** md5 signature: 38d3ddc4bfa9baad4ece431087592030 ****/
-		%feature("compactdefaultargs") OwnHLRDeviationAngle;
-		%feature("autodoc", "Returns true and the values of the hlr deviation angle anangle and of the previous hlr deviation angle apreviousangle. if these values are not already set, false is returned.
-
-Parameters
-----------
-
-Returns
--------
-anAngle: float
-aPreviousAngle: float
-") OwnHLRDeviationAngle;
-		Standard_Boolean OwnHLRDeviationAngle(Standard_Real &OutValue, Standard_Real &OutValue);
-
-		/****************** OwnHLRDeviationCoefficient ******************/
-		/**** md5 signature: 2f0005f52d24b0972257fbdc1547cafd ****/
-		%feature("compactdefaultargs") OwnHLRDeviationCoefficient;
-		%feature("autodoc", "Returns true and the values of the hlr deviation coefficient acoefficient and the previous hlr deviation coefficient apreviouscoefficient. if these values are not already set, false is returned.
-
-Parameters
-----------
-
-Returns
--------
-aCoefficient: float
-aPreviousCoefficient: float
-") OwnHLRDeviationCoefficient;
-		Standard_Boolean OwnHLRDeviationCoefficient(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** SelectionMode ******************/
 		/**** md5 signature: 4a947460fc181fe83e633a9f49d508dd ****/
@@ -14184,21 +12811,6 @@ None
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
-		/****************** SetHLRAngleAndDeviation ******************/
-		/**** md5 signature: d20685cf4dbc812009da397e4f7b3ed6 ****/
-		%feature("compactdefaultargs") SetHLRAngleAndDeviation;
-		%feature("autodoc", "This compute a new angle and deviation from the value anangle for hlr and set the values stored in mydrawer for with these that become local to the shape.
-
-Parameters
-----------
-anAngle: float
-
-Returns
--------
-None
-") SetHLRAngleAndDeviation;
-		void SetHLRAngleAndDeviation(const Standard_Real anAngle);
-
 		/****************** SetMaterial ******************/
 		/**** md5 signature: cc1b64cc41c0ecb4b453d96f4996d469 ****/
 		%feature("compactdefaultargs") SetMaterial;
@@ -14265,58 +12877,6 @@ Returns
 None
 ") SetOwnDeviationCoefficient;
 		void SetOwnDeviationCoefficient(const Standard_Real aCoefficient);
-
-		/****************** SetOwnHLRDeviationAngle ******************/
-		/**** md5 signature: 928ff97a4af55e5736105254a0a88d52 ****/
-		%feature("compactdefaultargs") SetOwnHLRDeviationAngle;
-		%feature("autodoc", "Sets a local value for hlr deviation angle for this specific shape.
-
-Returns
--------
-bool
-") SetOwnHLRDeviationAngle;
-		Standard_Boolean SetOwnHLRDeviationAngle();
-
-		/****************** SetOwnHLRDeviationAngle ******************/
-		/**** md5 signature: abf5ef44850d12f98d50c2c5d396815b ****/
-		%feature("compactdefaultargs") SetOwnHLRDeviationAngle;
-		%feature("autodoc", "Sets myownhlrdeviationangle field in prs3d_drawer & recomputes presentation.
-
-Parameters
-----------
-anAngle: float
-
-Returns
--------
-None
-") SetOwnHLRDeviationAngle;
-		void SetOwnHLRDeviationAngle(const Standard_Real anAngle);
-
-		/****************** SetOwnHLRDeviationCoefficient ******************/
-		/**** md5 signature: d9d1197bc5a079287007f7854ea99943 ****/
-		%feature("compactdefaultargs") SetOwnHLRDeviationCoefficient;
-		%feature("autodoc", "Sets a local value for hlr deviation coefficient for this specific shape.
-
-Returns
--------
-bool
-") SetOwnHLRDeviationCoefficient;
-		Standard_Boolean SetOwnHLRDeviationCoefficient();
-
-		/****************** SetOwnHLRDeviationCoefficient ******************/
-		/**** md5 signature: 92afcee69d06f8518bb85c0985669ba0 ****/
-		%feature("compactdefaultargs") SetOwnHLRDeviationCoefficient;
-		%feature("autodoc", "Sets myownhlrdeviationcoefficient field in prs3d_drawer & recomputes presentation.
-
-Parameters
-----------
-aCoefficient: float
-
-Returns
--------
-None
-") SetOwnHLRDeviationCoefficient;
-		void SetOwnHLRDeviationCoefficient(const Standard_Real aCoefficient);
 
 		/****************** SetShape ******************/
 		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
@@ -14568,13 +13128,13 @@ float
 		Standard_Real UserAngle();
 
 		/****************** computeHlrPresentation ******************/
-		/**** md5 signature: 178fb24d422a7d8711227c75df76a2ed ****/
+		/**** md5 signature: 2c89e1d02192d3494845e204cf0b751c ****/
 		%feature("compactdefaultargs") computeHlrPresentation;
 		%feature("autodoc", "Compute hlr presentation for specified shape.
 
 Parameters
 ----------
-theProjector: Prs3d_Projector
+theProjector: Graphic3d_Camera
 thePrs: Prs3d_Presentation
 theShape: TopoDS_Shape
 theDrawer: Prs3d_Drawer
@@ -14583,7 +13143,7 @@ Returns
 -------
 None
 ") computeHlrPresentation;
-		static void computeHlrPresentation(const opencascade::handle<Prs3d_Projector> & theProjector, const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static void computeHlrPresentation(const opencascade::handle<Graphic3d_Camera> & theProjector, const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 };
 
@@ -14659,6 +13219,43 @@ None
 ") AIS_TextLabel;
 		 AIS_TextLabel();
 
+		/****************** AcceptDisplayMode ******************/
+		/**** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ****/
+		%feature("compactdefaultargs") AcceptDisplayMode;
+		%feature("autodoc", "Return true for supported display mode.
+
+Parameters
+----------
+theMode: int
+
+Returns
+-------
+bool
+") AcceptDisplayMode;
+		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
+
+		/****************** FontAspect ******************/
+		/**** md5 signature: 6949367e7841153f9bf40dc3c8ceebde ****/
+		%feature("compactdefaultargs") FontAspect;
+		%feature("autodoc", "Returns the font aspect of the label text.
+
+Returns
+-------
+Font_FontAspect
+") FontAspect;
+		Font_FontAspect FontAspect();
+
+		/****************** FontName ******************/
+		/**** md5 signature: 2c67f4ccf190033bd2df359b02c80019 ****/
+		%feature("compactdefaultargs") FontName;
+		%feature("autodoc", "Returns the font of the label text.
+
+Returns
+-------
+TCollection_AsciiString
+") FontName;
+		const TCollection_AsciiString & FontName();
+
 		/****************** HasFlipping ******************/
 		/**** md5 signature: e5aa6181c813315a6f4edf94cdb0e9ac ****/
 		%feature("compactdefaultargs") HasFlipping;
@@ -14680,6 +13277,17 @@ Returns
 bool
 ") HasOrientation3D;
 		Standard_Boolean HasOrientation3D();
+
+		/****************** HasOwnAnchorPoint ******************/
+		/**** md5 signature: e37194a0a04c6cfedb999cfbbcc9f46f ****/
+		%feature("compactdefaultargs") HasOwnAnchorPoint;
+		%feature("autodoc", "Returns flag if text uses position as point of attach.
+
+Returns
+-------
+bool
+") HasOwnAnchorPoint;
+		Standard_Boolean HasOwnAnchorPoint();
 
 		/****************** Orientation3D ******************/
 		/**** md5 signature: 59c12b43a793dfc418565149b93d1848 ****/
@@ -14868,6 +13476,21 @@ None
 ") SetOrientation3D;
 		void SetOrientation3D(const gp_Ax2 & theOrientation);
 
+		/****************** SetOwnAnchorPoint ******************/
+		/**** md5 signature: 4420b2820f2b347d958d5ff71cef8f14 ****/
+		%feature("compactdefaultargs") SetOwnAnchorPoint;
+		%feature("autodoc", "Set flag if text uses position as point of attach.
+
+Parameters
+----------
+theOwnAnchorPoint: bool
+
+Returns
+-------
+None
+") SetOwnAnchorPoint;
+		void SetOwnAnchorPoint(const Standard_Boolean theOwnAnchorPoint);
+
 		/****************** SetPosition ******************/
 		/**** md5 signature: 6cd7cdcecb59ee7f74eb9c342f464f4d ****/
 		%feature("compactdefaultargs") SetPosition;
@@ -14897,6 +13520,21 @@ Returns
 None
 ") SetText;
 		void SetText(const TCollection_ExtendedString & theText);
+
+		/****************** SetTextFormatter ******************/
+		/**** md5 signature: 69d92dbd5b2f2ec93859c8dcc0b4f585 ****/
+		%feature("compactdefaultargs") SetTextFormatter;
+		%feature("autodoc", "Setup text formatter for presentation. it's empty by default.
+
+Parameters
+----------
+theFormatter: Font_TextFormatter
+
+Returns
+-------
+None
+") SetTextFormatter;
+		void SetTextFormatter(const opencascade::handle<Font_TextFormatter> & theFormatter);
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: ba76d0fd3455858ee750a8806e400e81 ****/
@@ -14942,6 +13580,28 @@ Returns
 None
 ") SetZoomable;
 		void SetZoomable(const Standard_Boolean theIsZoomable);
+
+		/****************** Text ******************/
+		/**** md5 signature: 72bf6306b0638727f5e5c6cb054bb79f ****/
+		%feature("compactdefaultargs") Text;
+		%feature("autodoc", "Returns the label text.
+
+Returns
+-------
+TCollection_ExtendedString
+") Text;
+		const TCollection_ExtendedString & Text();
+
+		/****************** TextFormatter ******************/
+		/**** md5 signature: 8f3bf7d01406c07afa85cad5f2782460 ****/
+		%feature("compactdefaultargs") TextFormatter;
+		%feature("autodoc", "Returns text presentation formatter; null by default, which means standard text formatter will be used.
+
+Returns
+-------
+opencascade::handle<Font_TextFormatter>
+") TextFormatter;
+		const opencascade::handle<Font_TextFormatter> & TextFormatter();
 
 		/****************** UnsetOrientation3D ******************/
 		/**** md5 signature: 493fe411e83a69dc26417de323100db9 ****/
@@ -15256,17 +13916,6 @@ Returns
 None
 ") HilightSelected;
 		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const SelectMgr_SequenceOfOwner & theOwners);
-
-		/****************** IsAutoHilight ******************/
-		/**** md5 signature: d08251e65bb2038174f4c2dab73d34c9 ****/
-		%feature("compactdefaultargs") IsAutoHilight;
-		%feature("autodoc", "Disables auto highlighting to use hilightselected() and hilightownerwithcolor() overridden methods.
-
-Returns
--------
-bool
-") IsAutoHilight;
-		virtual Standard_Boolean IsAutoHilight();
 
 		/****************** Label ******************/
 		/**** md5 signature: cd3b87f754f01f91f4db0b402e5a6620 ****/
@@ -15631,6 +14280,17 @@ bool
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
+		/****************** AxesConeRadius ******************/
+		/**** md5 signature: 23e3bc06f9ef74bf1f32dddb0a5141c6 ****/
+		%feature("compactdefaultargs") AxesConeRadius;
+		%feature("autodoc", "Returns radius of cone of axes of the trihedron; 3.0 by default.
+
+Returns
+-------
+float
+") AxesConeRadius;
+		Standard_Real AxesConeRadius();
+
 		/****************** AxesPadding ******************/
 		/**** md5 signature: c7cf9c49ac3b2ff7007839a7a4e35f25 ****/
 		%feature("compactdefaultargs") AxesPadding;
@@ -15641,6 +14301,28 @@ Returns
 float
 ") AxesPadding;
 		Standard_Real AxesPadding();
+
+		/****************** AxesRadius ******************/
+		/**** md5 signature: e0e9b4d6d2ce901288b78fae1c0e1957 ****/
+		%feature("compactdefaultargs") AxesRadius;
+		%feature("autodoc", "Returns radius of axes of the trihedron; 1.0 by default.
+
+Returns
+-------
+float
+") AxesRadius;
+		Standard_Real AxesRadius();
+
+		/****************** AxesSphereRadius ******************/
+		/**** md5 signature: b34ec1288e6549c6a7cc3dbf4283a8c3 ****/
+		%feature("compactdefaultargs") AxesSphereRadius;
+		%feature("autodoc", "Returns radius of sphere (central point) of the trihedron; 4.0 by default.
+
+Returns
+-------
+float
+") AxesSphereRadius;
+		Standard_Real AxesSphereRadius();
 
 		/****************** AxisLabel ******************/
 		/**** md5 signature: 5de552dbd8b43895a1c56ff8429a7ff8 ****/
@@ -15817,7 +14499,7 @@ None
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
 
 		/****************** Duration ******************/
-		/**** md5 signature: 06189957f640ef2ea84a8c20c3be6eb2 ****/
+		/**** md5 signature: cd23e793a0fab00473e0b8c81979e62b ****/
 		%feature("compactdefaultargs") Duration;
 		%feature("autodoc", "Return duration of animation in seconds; 0.5 sec by default.
 
@@ -16045,6 +14727,21 @@ None
 ") SetAutoStartAnimation;
 		void SetAutoStartAnimation(bool theToEnable);
 
+		/****************** SetAxesConeRadius ******************/
+		/**** md5 signature: 5b9982593302c2edb4cbf267b741048d ****/
+		%feature("compactdefaultargs") SetAxesConeRadius;
+		%feature("autodoc", "Sets radius of cone of axes of the trihedron.
+
+Parameters
+----------
+theRadius: float
+
+Returns
+-------
+None
+") SetAxesConeRadius;
+		void SetAxesConeRadius(Standard_Real theRadius);
+
 		/****************** SetAxesLabels ******************/
 		/**** md5 signature: e0b70137acafbab1dfb0049c9b2302e4 ****/
 		%feature("compactdefaultargs") SetAxesLabels;
@@ -16076,6 +14773,36 @@ Returns
 None
 ") SetAxesPadding;
 		void SetAxesPadding(Standard_Real theValue);
+
+		/****************** SetAxesRadius ******************/
+		/**** md5 signature: aab4f5bcdcec373e5a8868efe5c50aaa ****/
+		%feature("compactdefaultargs") SetAxesRadius;
+		%feature("autodoc", "Sets radius of axes of the trihedron.
+
+Parameters
+----------
+theRadius: float
+
+Returns
+-------
+None
+") SetAxesRadius;
+		void SetAxesRadius(const Standard_Real theRadius);
+
+		/****************** SetAxesSphereRadius ******************/
+		/**** md5 signature: 7180a507b86f2297dbefdcf2ccccf86e ****/
+		%feature("compactdefaultargs") SetAxesSphereRadius;
+		%feature("autodoc", "Sets radius of sphere (central point) of the trihedron.
+
+Parameters
+----------
+theRadius: float
+
+Returns
+-------
+None
+") SetAxesSphereRadius;
+		void SetAxesSphereRadius(Standard_Real theRadius);
 
 		/****************** SetBoxColor ******************/
 		/**** md5 signature: 88db23bbfdea3bc42a298167dbc484b3 ****/
@@ -16244,7 +14971,7 @@ None
 		void SetDrawVertices(Standard_Boolean theValue);
 
 		/****************** SetDuration ******************/
-		/**** md5 signature: 5d997ec35c7b56e30bc519baa447e206 ****/
+		/**** md5 signature: 77de8062b463afd09fa32f19d1f28c85 ****/
 		%feature("compactdefaultargs") SetDuration;
 		%feature("autodoc", "Set duration of animation. @param thevalue [in] input value of duration in seconds.
 
@@ -16650,597 +15377,146 @@ opencascade::handle<AIS_AnimationCamera>
 	}
 };
 
-/***************************
-* class AIS_AngleDimension *
-***************************/
-class AIS_AngleDimension : public AIS_Dimension {
+/****************************
+* class AIS_XRTrackedDevice *
+****************************/
+class AIS_XRTrackedDevice : public AIS_InteractiveObject {
 	public:
-		/****************** AIS_AngleDimension ******************/
-		/**** md5 signature: 10dfb47313700070eb9ffece6759f9b9 ****/
-		%feature("compactdefaultargs") AIS_AngleDimension;
-		%feature("autodoc", "Constructs minimum angle dimension between two linear edges (where possible). these two edges should be intersected by each other. otherwise the geometry is not valid. @param thefirstedge [in] the first edge. @param thesecondedge [in] the second edge.
+		/****************** AIS_XRTrackedDevice ******************/
+		/**** md5 signature: 73db88b212ab4ea311f2c54259f77263 ****/
+		%feature("compactdefaultargs") AIS_XRTrackedDevice;
+		%feature("autodoc", "Main constructor.
 
 Parameters
 ----------
-theFirstEdge: TopoDS_Edge
-theSecondEdge: TopoDS_Edge
+theTris: Graphic3d_ArrayOfTriangles
+theTexture: Image_Texture
 
 Returns
 -------
 None
-") AIS_AngleDimension;
-		 AIS_AngleDimension(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge);
+") AIS_XRTrackedDevice;
+		 AIS_XRTrackedDevice(const opencascade::handle<Graphic3d_ArrayOfTriangles> & theTris, const opencascade::handle<Image_Texture> & theTexture);
 
-		/****************** AIS_AngleDimension ******************/
-		/**** md5 signature: 110311f51945857cc0cfdebe6e679cd2 ****/
-		%feature("compactdefaultargs") AIS_AngleDimension;
-		%feature("autodoc", "Constructs the angle display object defined by three points. @param thefirstpoint [in] the first point (point on first angle flyout). @param thesecondpoint [in] the center point of angle dimension. @param thethirdpoint [in] the second point (point on second angle flyout).
-
-Parameters
-----------
-theFirstPoint: gp_Pnt
-theSecondPoint: gp_Pnt
-theThirdPoint: gp_Pnt
+		/****************** AIS_XRTrackedDevice ******************/
+		/**** md5 signature: 81dc9375bb8ceba5f8e13cdae8ed699d ****/
+		%feature("compactdefaultargs") AIS_XRTrackedDevice;
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
 None
-") AIS_AngleDimension;
-		 AIS_AngleDimension(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pnt & theThirdPoint);
+") AIS_XRTrackedDevice;
+		 AIS_XRTrackedDevice();
 
-		/****************** AIS_AngleDimension ******************/
-		/**** md5 signature: 5832942a4c48886862c77c462bb66fd8 ****/
-		%feature("compactdefaultargs") AIS_AngleDimension;
-		%feature("autodoc", "Constructs the angle display object defined by three vertices. @param thefirstvertex [in] the first vertex (vertex for first angle flyout). @param thesecondvertex [in] the center vertex of angle dimension. @param thethirdpoint [in] the second vertex (vertex for second angle flyout).
+		/****************** LaserColor ******************/
+		/**** md5 signature: 3764f0787105c7ac66e6b31a8f2890b8 ****/
+		%feature("compactdefaultargs") LaserColor;
+		%feature("autodoc", "Return laser color.
+
+Returns
+-------
+Quantity_Color
+") LaserColor;
+		const Quantity_Color & LaserColor();
+
+		/****************** LaserLength ******************/
+		/**** md5 signature: a1c42ebb70645a086f015598d7a3f880 ****/
+		%feature("compactdefaultargs") LaserLength;
+		%feature("autodoc", "Return laser length.
+
+Returns
+-------
+Standard_ShortReal
+") LaserLength;
+		Standard_ShortReal LaserLength();
+
+		/****************** Role ******************/
+		/**** md5 signature: 9ca69fc1cf78226378dfe201ccd20d67 ****/
+		%feature("compactdefaultargs") Role;
+		%feature("autodoc", "Return device role.
+
+Returns
+-------
+Aspect_XRTrackedDeviceRole
+") Role;
+		Aspect_XRTrackedDeviceRole Role();
+
+		/****************** SetLaserColor ******************/
+		/**** md5 signature: 6c097047fce7892b381ebd56a66e83cc ****/
+		%feature("compactdefaultargs") SetLaserColor;
+		%feature("autodoc", "Set laser color.
 
 Parameters
 ----------
-theFirstVertex: TopoDS_Vertex
-theSecondVertex: TopoDS_Vertex
-theThirdVertex: TopoDS_Vertex
+theColor: Quantity_Color
 
 Returns
 -------
 None
-") AIS_AngleDimension;
-		 AIS_AngleDimension(const TopoDS_Vertex & theFirstVertex, const TopoDS_Vertex & theSecondVertex, const TopoDS_Vertex & theThirdVertex);
+") SetLaserColor;
+		void SetLaserColor(const Quantity_Color & theColor);
 
-		/****************** AIS_AngleDimension ******************/
-		/**** md5 signature: 6d9de1f6611d948a35b9861366f60b5d ****/
-		%feature("compactdefaultargs") AIS_AngleDimension;
-		%feature("autodoc", "Constructs angle dimension for the cone face. @param thecone [in] the conical face.
+		/****************** SetLaserLength ******************/
+		/**** md5 signature: 43d0febcaf31d7623acf48aa12a5ca5b ****/
+		%feature("compactdefaultargs") SetLaserLength;
+		%feature("autodoc", "Set laser length.
 
 Parameters
 ----------
-theCone: TopoDS_Face
+theLength: Standard_ShortReal
 
 Returns
 -------
 None
-") AIS_AngleDimension;
-		 AIS_AngleDimension(const TopoDS_Face & theCone);
+") SetLaserLength;
+		void SetLaserLength(Standard_ShortReal theLength);
 
-		/****************** AIS_AngleDimension ******************/
-		/**** md5 signature: dfc407454ea77e7991cbf328e192032f ****/
-		%feature("compactdefaultargs") AIS_AngleDimension;
-		%feature("autodoc", "Constructs angle dimension between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face.
+		/****************** SetRole ******************/
+		/**** md5 signature: 327a00be1fb4288d5cf8731991db2478 ****/
+		%feature("compactdefaultargs") SetRole;
+		%feature("autodoc", "Set device role.
 
 Parameters
 ----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
+theRole: Aspect_XRTrackedDeviceRole
 
 Returns
 -------
 None
-") AIS_AngleDimension;
-		 AIS_AngleDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
+") SetRole;
+		void SetRole(Aspect_XRTrackedDeviceRole theRole);
 
-		/****************** AIS_AngleDimension ******************/
-		/**** md5 signature: 12a0fe401f05d4996e9a59d00704f375 ****/
-		%feature("compactdefaultargs") AIS_AngleDimension;
-		%feature("autodoc", "Constructs angle dimension between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face. @param thepoint [in] the point which the dimension plane should pass through. this point can lay on the one of the faces or not.
+		/****************** SetUnitFactor ******************/
+		/**** md5 signature: 8af5f076041e3e6f73d217280b2545fb ****/
+		%feature("compactdefaultargs") SetUnitFactor;
+		%feature("autodoc", "Set unit scale factor.
 
 Parameters
 ----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-thePoint: gp_Pnt
+theFactor: Standard_ShortReal
 
 Returns
 -------
 None
-") AIS_AngleDimension;
-		 AIS_AngleDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const gp_Pnt & thePoint);
+") SetUnitFactor;
+		void SetUnitFactor(Standard_ShortReal theFactor);
 
-		/****************** CenterPoint ******************/
-		/**** md5 signature: 376d48ef89b723bce96dea4dcf286eaf ****/
-		%feature("compactdefaultargs") CenterPoint;
-		%feature("autodoc", "Returns center point forming the angle.
-
-Returns
--------
-gp_Pnt
-") CenterPoint;
-		const gp_Pnt CenterPoint();
-
-		/****************** FirstPoint ******************/
-		/**** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ****/
-		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "Returns first point forming the angle.
+		/****************** UnitFactor ******************/
+		/**** md5 signature: 86bfa16b9e53c2b7bd0c03986ad464d6 ****/
+		%feature("compactdefaultargs") UnitFactor;
+		%feature("autodoc", "Return unit scale factor.
 
 Returns
 -------
-gp_Pnt
-") FirstPoint;
-		const gp_Pnt FirstPoint();
-
-		/****************** FirstShape ******************/
-		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
-		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "Returns first argument shape.
-
-Returns
--------
-TopoDS_Shape
-") FirstShape;
-		const TopoDS_Shape FirstShape();
-
-		/****************** GetArrowsVisibility ******************/
-		/**** md5 signature: 80864e002950ec6283289e3d5f43c3ae ****/
-		%feature("compactdefaultargs") GetArrowsVisibility;
-		%feature("autodoc", "Returns the type of visibility of arrows.
-
-Returns
--------
-AIS_TypeOfAngleArrowVisibility
-") GetArrowsVisibility;
-		AIS_TypeOfAngleArrowVisibility GetArrowsVisibility();
-
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
-		%feature("compactdefaultargs") GetDisplayUnits;
-		%feature("autodoc", "Returns the display units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetDisplayUnits;
-		virtual const TCollection_AsciiString & GetDisplayUnits();
-
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
-		%feature("compactdefaultargs") GetModelUnits;
-		%feature("autodoc", "Returns the model units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetModelUnits;
-		virtual const TCollection_AsciiString & GetModelUnits();
-
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 8c2fd05c2d7874fe62f7d2730b192774 ****/
-		%feature("compactdefaultargs") GetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-gp_Pnt
-") GetTextPosition;
-		virtual const gp_Pnt GetTextPosition();
-
-		/****************** GetType ******************/
-		/**** md5 signature: 44149ecb59501940a4e737eec66ade20 ****/
-		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "Returns the current angle type.
-
-Returns
--------
-AIS_TypeOfAngle
-") GetType;
-		AIS_TypeOfAngle GetType();
-
-		/****************** SecondPoint ******************/
-		/**** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ****/
-		%feature("compactdefaultargs") SecondPoint;
-		%feature("autodoc", "Returns second point forming the angle.
-
-Returns
--------
-gp_Pnt
-") SecondPoint;
-		const gp_Pnt SecondPoint();
-
-		/****************** SecondShape ******************/
-		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
-		%feature("compactdefaultargs") SecondShape;
-		%feature("autodoc", "Returns second argument shape.
-
-Returns
--------
-TopoDS_Shape
-") SecondShape;
-		const TopoDS_Shape SecondShape();
-
-		/****************** SetArrowsVisibility ******************/
-		/**** md5 signature: d4f7ca2ce5ec4942135497a46f9443d3 ****/
-		%feature("compactdefaultargs") SetArrowsVisibility;
-		%feature("autodoc", "Sets visible arrows type @param thetype [in] the type of visibility of arrows.
-
-Parameters
-----------
-theType: AIS_TypeOfAngleArrowVisibility
-
-Returns
--------
-None
-") SetArrowsVisibility;
-		void SetArrowsVisibility(const AIS_TypeOfAngleArrowVisibility & theType);
-
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
-		%feature("compactdefaultargs") SetDisplayUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: bd2a1958aebc184ac052f65310544456 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measures minimum angle dimension between two linear edges. these two edges should be intersected by each other. otherwise the geometry is not valid. @param thefirstedge [in] the first edge. @param thesecondedge [in] the second edge.
-
-Parameters
-----------
-theFirstEdge: TopoDS_Edge
-theSecondEdge: TopoDS_Edge
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 8370d49fd8b758a25710cc639a9511cd ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measures angle defined by three points. @param thefirstpoint [in] the first point (point on first angle flyout). @param thesecondpoint [in] the center point of angle dimension. @param thethirdpoint [in] the second point (point on second angle flyout).
-
-Parameters
-----------
-theFirstPoint: gp_Pnt
-theSecondPoint: gp_Pnt
-theThridPoint: gp_Pnt
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pnt & theThridPoint);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 250b7a4fbb3059f28c11f7363968850b ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measures angle defined by three vertices. @param thefirstvertex [in] the first vertex (vertex for first angle flyout). @param thesecondvertex [in] the center vertex of angle dimension. @param thethirdpoint [in] the second vertex (vertex for second angle flyout).
-
-Parameters
-----------
-theFirstVertex: TopoDS_Vertex
-theSecondVertex: TopoDS_Vertex
-theThirdVertex: TopoDS_Vertex
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Vertex & theFirstVertex, const TopoDS_Vertex & theSecondVertex, const TopoDS_Vertex & theThirdVertex);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 05157dc0a85dc9fbcd1befa60e9f98ee ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measures angle of conical face. @param thecone [in] the shape to measure.
-
-Parameters
-----------
-theCone: TopoDS_Face
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Face & theCone);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: bfe5f7ff6a46076a22cbf50a395e204f ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measures angle between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face..
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 1ba045d48067d962f09980869f2f63bf ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measures angle between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face. @param thepoint [in] the point which the dimension plane should pass through. this point can lay on the one of the faces or not.
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-thePoint: gp_Pnt
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const gp_Pnt & thePoint);
-
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
-		%feature("compactdefaultargs") SetModelUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
-		%feature("compactdefaultargs") SetTextPosition;
-		%feature("autodoc", "Principle of horizontal text alignment settings: - divide circle into two halves according to attachment points - if atextpos is between attach points -> center + positive flyout - if atextpos is not between attach points but in this half -> left or right + positive flyout - if atextpos is between reflections of attach points -> center + negative flyout - if atextpos is not between reflections of attach points -> left or right + negative flyout.
-
-Parameters
-----------
-theTextPos: gp_Pnt
-
-Returns
--------
-None
-") SetTextPosition;
-		virtual void SetTextPosition(const gp_Pnt & theTextPos);
-
-		/****************** SetType ******************/
-		/**** md5 signature: 2e29fa670315e9b1bbf288653f6eb2ef ****/
-		%feature("compactdefaultargs") SetType;
-		%feature("autodoc", "Sets angle type. @param thetype [in] the type value.
-
-Parameters
-----------
-theType: AIS_TypeOfAngle
-
-Returns
--------
-None
-") SetType;
-		void SetType(const AIS_TypeOfAngle theType);
-
-		/****************** ThirdShape ******************/
-		/**** md5 signature: bdef6863310cc2c387933980e76c0b33 ****/
-		%feature("compactdefaultargs") ThirdShape;
-		%feature("autodoc", "Returns third argument shape.
-
-Returns
--------
-TopoDS_Shape
-") ThirdShape;
-		const TopoDS_Shape ThirdShape();
+Standard_ShortReal
+") UnitFactor;
+		Standard_ShortReal UnitFactor();
 
 };
 
 
-%make_alias(AIS_AngleDimension)
-
-%extend AIS_AngleDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class AIS_Chamf2dDimension *
-*****************************/
-class AIS_Chamf2dDimension : public AIS_Relation {
-	public:
-		/****************** AIS_Chamf2dDimension ******************/
-		/**** md5 signature: 8f53a6daba91ef88879c3dc2e3b39aa6 ****/
-		%feature("compactdefaultargs") AIS_Chamf2dDimension;
-		%feature("autodoc", "Constructs the display object for 2d chamfers. this object is defined by the face afshape, the dimension aval, the plane aplane and the text atext.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aPlane: Geom_Plane
-aVal: float
-aText: TCollection_ExtendedString
-
-Returns
--------
-None
-") AIS_Chamf2dDimension;
-		 AIS_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, const TCollection_ExtendedString & aText);
-
-		/****************** AIS_Chamf2dDimension ******************/
-		/**** md5 signature: da279a5682cbfe9c14cfd09c87354538 ****/
-		%feature("compactdefaultargs") AIS_Chamf2dDimension;
-		%feature("autodoc", "Constructs the display object for 2d chamfers. this object is defined by the face afshape, the plane aplane, the dimension aval, the position aposition, the type of arrow asymbolprs with the size anarrowsize, and the text atext.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aPlane: Geom_Plane
-aVal: float
-aText: TCollection_ExtendedString
-aPosition: gp_Pnt
-aSymbolPrs: DsgPrs_ArrowSide
-anArrowSize: float,optional
-	default value is 0.0
-
-Returns
--------
-None
-") AIS_Chamf2dDimension;
-		 AIS_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the 2d chamfer dimension is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 5346b8aa31fa1e8edfb8a13dfcfc1be1 ****/
-		%feature("compactdefaultargs") KindOfDimension;
-		%feature("autodoc", "Indicates that we are concerned with a 2d length.
-
-Returns
--------
-AIS_KindOfDimension
-") KindOfDimension;
-		virtual AIS_KindOfDimension KindOfDimension();
-
-};
-
-
-%make_alias(AIS_Chamf2dDimension)
-
-%extend AIS_Chamf2dDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class AIS_Chamf3dDimension *
-*****************************/
-class AIS_Chamf3dDimension : public AIS_Relation {
-	public:
-		/****************** AIS_Chamf3dDimension ******************/
-		/**** md5 signature: 51b533b75906bd68b170567c1761481d ****/
-		%feature("compactdefaultargs") AIS_Chamf3dDimension;
-		%feature("autodoc", "Constructs a display object for 3d chamfers. this object is defined by the shape afshape, the dimension aval and the text atext.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-
-Returns
--------
-None
-") AIS_Chamf3dDimension;
-		 AIS_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
-
-		/****************** AIS_Chamf3dDimension ******************/
-		/**** md5 signature: 7519e534821286fa14c5c9b32f38a796 ****/
-		%feature("compactdefaultargs") AIS_Chamf3dDimension;
-		%feature("autodoc", "Constructs a display object for 3d chamfers. this object is defined by the shape afshape, the dimension aval, the text atext, the point of origin of the chamfer aposition, the type of arrow asymbolprs with the size anarrowsize.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-aPosition: gp_Pnt
-aSymbolPrs: DsgPrs_ArrowSide
-anArrowSize: float,optional
-	default value is 0.0
-
-Returns
--------
-None
-") AIS_Chamf3dDimension;
-		 AIS_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the 3d chamfer dimension is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 5346b8aa31fa1e8edfb8a13dfcfc1be1 ****/
-		%feature("compactdefaultargs") KindOfDimension;
-		%feature("autodoc", "Indicates that we are concerned with a 3d length.
-
-Returns
--------
-AIS_KindOfDimension
-") KindOfDimension;
-		virtual AIS_KindOfDimension KindOfDimension();
-
-};
-
-
-%make_alias(AIS_Chamf3dDimension)
-
-%extend AIS_Chamf3dDimension {
+%extend AIS_XRTrackedDevice {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -17482,1865 +15758,6 @@ None
 %make_alias(AIS_ColoredShape)
 
 %extend AIS_ColoredShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*******************************
-* class AIS_ConcentricRelation *
-*******************************/
-class AIS_ConcentricRelation : public AIS_Relation {
-	public:
-		/****************** AIS_ConcentricRelation ******************/
-		/**** md5 signature: cfd26e2ef042af4fd4c3346ee5476b34 ****/
-		%feature("compactdefaultargs") AIS_ConcentricRelation;
-		%feature("autodoc", "Constructs the display object for concentric relations between shapes. this object is defined by the two shapes, afshape and asshape and the plane aplane. aplane is provided to create an axis along which the relation of concentricity can be extended.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aSShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_ConcentricRelation;
-		 AIS_ConcentricRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-};
-
-
-%make_alias(AIS_ConcentricRelation)
-
-%extend AIS_ConcentricRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class AIS_DiameterDimension *
-******************************/
-class AIS_DiameterDimension : public AIS_Dimension {
-	public:
-		/****************** AIS_DiameterDimension ******************/
-		/**** md5 signature: 803814984eec22210488681ee880c4a0 ****/
-		%feature("compactdefaultargs") AIS_DiameterDimension;
-		%feature("autodoc", "Construct diameter dimension for the circle. @param thecircle [in] the circle to measure.
-
-Parameters
-----------
-theCircle: gp_Circ
-
-Returns
--------
-None
-") AIS_DiameterDimension;
-		 AIS_DiameterDimension(const gp_Circ & theCircle);
-
-		/****************** AIS_DiameterDimension ******************/
-		/**** md5 signature: fc3f5fd398839282841b8d5548fbd6fd ****/
-		%feature("compactdefaultargs") AIS_DiameterDimension;
-		%feature("autodoc", "Construct diameter dimension for the circle and orient it correspondingly to the passed plane. @param thecircle [in] the circle to measure. @param theplane [in] the plane defining preferred orientation for dimension.
-
-Parameters
-----------
-theCircle: gp_Circ
-thePlane: gp_Pln
-
-Returns
--------
-None
-") AIS_DiameterDimension;
-		 AIS_DiameterDimension(const gp_Circ & theCircle, const gp_Pln & thePlane);
-
-		/****************** AIS_DiameterDimension ******************/
-		/**** md5 signature: 858a80e04023c906f5ee173cc68fa734 ****/
-		%feature("compactdefaultargs") AIS_DiameterDimension;
-		%feature("autodoc", "Construct diameter on the passed shape, if applicable. @param theshape [in] the shape to measure.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-
-Returns
--------
-None
-") AIS_DiameterDimension;
-		 AIS_DiameterDimension(const TopoDS_Shape & theShape);
-
-		/****************** AIS_DiameterDimension ******************/
-		/**** md5 signature: 396d0a7025ad3ead7bcf0f9ded73b6e8 ****/
-		%feature("compactdefaultargs") AIS_DiameterDimension;
-		%feature("autodoc", "Construct diameter on the passed shape, if applicable - and define the preferred plane to orient the dimension. @param theshape [in] the shape to measure. @param theplane [in] the plane defining preferred orientation for dimension.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-thePlane: gp_Pln
-
-Returns
--------
-None
-") AIS_DiameterDimension;
-		 AIS_DiameterDimension(const TopoDS_Shape & theShape, const gp_Pln & thePlane);
-
-		/****************** AnchorPoint ******************/
-		/**** md5 signature: 92adc8b9baf75c6634009a53820f63a3 ****/
-		%feature("compactdefaultargs") AnchorPoint;
-		%feature("autodoc", "Returns anchor point on circle for diameter dimension.
-
-Returns
--------
-gp_Pnt
-") AnchorPoint;
-		gp_Pnt AnchorPoint();
-
-		/****************** Circle ******************/
-		/**** md5 signature: 1eaea6bdc97e0fc2fac6cefd24825e1a ****/
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "Returns measured geometry circle.
-
-Returns
--------
-gp_Circ
-") Circle;
-		const gp_Circ Circle();
-
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
-		%feature("compactdefaultargs") GetDisplayUnits;
-		%feature("autodoc", "Returns the display units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetDisplayUnits;
-		virtual const TCollection_AsciiString & GetDisplayUnits();
-
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
-		%feature("compactdefaultargs") GetModelUnits;
-		%feature("autodoc", "Returns the model units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetModelUnits;
-		virtual const TCollection_AsciiString & GetModelUnits();
-
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 8c2fd05c2d7874fe62f7d2730b192774 ****/
-		%feature("compactdefaultargs") GetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-gp_Pnt
-") GetTextPosition;
-		virtual const gp_Pnt GetTextPosition();
-
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
-		%feature("compactdefaultargs") SetDisplayUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: c1b9a4fe27f3e19a1218bcbc41264af8 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure diameter of the circle. the actual dimension plane is used for determining anchor points on the circle to attach the dimension lines to. the dimension will become invalid if the diameter of the circle is less than precision::confusion(). @param thecircle [in] the circle to measure.
-
-Parameters
-----------
-theCircle: gp_Circ
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const gp_Circ & theCircle);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 38eeeac1c934d2bc9090d5e208e54b6e ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure diameter on the passed shape, if applicable. the dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than precision::confusion(). @param theshape [in] the shape to measure.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Shape & theShape);
-
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
-		%feature("compactdefaultargs") SetModelUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
-		%feature("compactdefaultargs") SetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theTextPos: gp_Pnt
-
-Returns
--------
-None
-") SetTextPosition;
-		virtual void SetTextPosition(const gp_Pnt & theTextPos);
-
-		/****************** Shape ******************/
-		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the measured shape.
-
-Returns
--------
-TopoDS_Shape
-") Shape;
-		const TopoDS_Shape Shape();
-
-};
-
-
-%make_alias(AIS_DiameterDimension)
-
-%extend AIS_DiameterDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***********************************
-* class AIS_EllipseRadiusDimension *
-***********************************/
-%nodefaultctor AIS_EllipseRadiusDimension;
-class AIS_EllipseRadiusDimension : public AIS_Relation {
-	public:
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 690247bb657a85c155cdc17b6745df6a ****/
-		%feature("compactdefaultargs") ComputeGeometry;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") ComputeGeometry;
-		void ComputeGeometry();
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 5346b8aa31fa1e8edfb8a13dfcfc1be1 ****/
-		%feature("compactdefaultargs") KindOfDimension;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-AIS_KindOfDimension
-") KindOfDimension;
-		virtual AIS_KindOfDimension KindOfDimension();
-
-};
-
-
-%make_alias(AIS_EllipseRadiusDimension)
-
-%extend AIS_EllipseRadiusDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************
-* class AIS_EqualDistanceRelation *
-**********************************/
-class AIS_EqualDistanceRelation : public AIS_Relation {
-	public:
-		/****************** AIS_EqualDistanceRelation ******************/
-		/**** md5 signature: 40dc0dd77a41ee3be4d8dec5ca2ee9ef ****/
-		%feature("compactdefaultargs") AIS_EqualDistanceRelation;
-		%feature("autodoc", "Constructs a framework to display equivalent distances between the shapes ashape1, ashape2, ashape3, ashape4 and the plane aplane. the distance is the length of a projection from the shape to the plane.
-
-Parameters
-----------
-aShape1: TopoDS_Shape
-aShape2: TopoDS_Shape
-aShape3: TopoDS_Shape
-aShape4: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_EqualDistanceRelation;
-		 AIS_EqualDistanceRelation(const TopoDS_Shape & aShape1, const TopoDS_Shape & aShape2, const TopoDS_Shape & aShape3, const TopoDS_Shape & aShape4, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** ComputeOneEdgeOneVertexLength ******************/
-		/**** md5 signature: c8433bd8e1b8b43c506c26453cfea334 ****/
-		%feature("compactdefaultargs") ComputeOneEdgeOneVertexLength;
-		%feature("autodoc", "Compute the interval location between a vertex and an edge. edge may be a line or a circle.
-
-Parameters
-----------
-aPresentation: Prs3d_Presentation
-aDrawer: Prs3d_Drawer
-ArrowSize: float
-FirstShape: TopoDS_Shape
-SecondShape: TopoDS_Shape
-Plane: Geom_Plane
-AutomaticPos: bool
-IsSetBndBox: bool
-BndBox: Bnd_Box
-Position: gp_Pnt
-FirstAttach: gp_Pnt
-SecondAttach: gp_Pnt
-FirstExtreme: gp_Pnt
-SecondExtreme: gp_Pnt
-SymbolPrs: DsgPrs_ArrowSide
-
-Returns
--------
-None
-") ComputeOneEdgeOneVertexLength;
-		static void ComputeOneEdgeOneVertexLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide & SymbolPrs);
-
-		/****************** ComputeTwoEdgesLength ******************/
-		/**** md5 signature: 8f004ba6dc5773a9742094e3b3f3f885 ****/
-		%feature("compactdefaultargs") ComputeTwoEdgesLength;
-		%feature("autodoc", "Computes the location of an intreval between between two edges. firstattach , secondattach are the returned extreme points of the interval.
-
-Parameters
-----------
-aPresentation: Prs3d_Presentation
-aDrawer: Prs3d_Drawer
-ArrowSize: float
-FirstEdge: TopoDS_Edge
-SecondEdge: TopoDS_Edge
-Plane: Geom_Plane
-AutomaticPos: bool
-IsSetBndBox: bool
-BndBox: Bnd_Box
-Position: gp_Pnt
-FirstAttach: gp_Pnt
-SecondAttach: gp_Pnt
-FirstExtreme: gp_Pnt
-SecondExtreme: gp_Pnt
-SymbolPrs: DsgPrs_ArrowSide
-
-Returns
--------
-None
-") ComputeTwoEdgesLength;
-		static void ComputeTwoEdgesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge & FirstEdge, const TopoDS_Edge & SecondEdge, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide & SymbolPrs);
-
-		/****************** ComputeTwoVerticesLength ******************/
-		/**** md5 signature: 34c727d32d0519a0a17053a3a544211e ****/
-		%feature("compactdefaultargs") ComputeTwoVerticesLength;
-		%feature("autodoc", "Computes the interval position between two vertexs. firstattach, secondattach are the returned extreme points of the interval.
-
-Parameters
-----------
-aPresentation: Prs3d_Presentation
-aDrawer: Prs3d_Drawer
-ArrowSize: float
-FirstVertex: TopoDS_Vertex
-SecondVertex: TopoDS_Vertex
-Plane: Geom_Plane
-AutomaticPos: bool
-IsSetBndBox: bool
-BndBox: Bnd_Box
-TypeDist: AIS_TypeOfDist
-Position: gp_Pnt
-FirstAttach: gp_Pnt
-SecondAttach: gp_Pnt
-FirstExtreme: gp_Pnt
-SecondExtreme: gp_Pnt
-SymbolPrs: DsgPrs_ArrowSide
-
-Returns
--------
-None
-") ComputeTwoVerticesLength;
-		static void ComputeTwoVerticesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex & FirstVertex, const TopoDS_Vertex & SecondVertex, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, const AIS_TypeOfDist TypeDist, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide & SymbolPrs);
-
-		/****************** SetShape3 ******************/
-		/**** md5 signature: 4bcf8db6e5b4b1f88cadcdf31664d60c ****/
-		%feature("compactdefaultargs") SetShape3;
-		%feature("autodoc", "Sets the shape ashape to be used as the shape ashape3 in the framework created at construction time.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetShape3;
-		void SetShape3(const TopoDS_Shape & aShape);
-
-		/****************** SetShape4 ******************/
-		/**** md5 signature: 4fda39696a169c1772b9abb5c6479c62 ****/
-		%feature("compactdefaultargs") SetShape4;
-		%feature("autodoc", "Sets the shape ashape to be used as the shape ashape4 in the framework created at construction time.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetShape4;
-		void SetShape4(const TopoDS_Shape & aShape);
-
-		/****************** Shape3 ******************/
-		/**** md5 signature: f8d37d7bea0d495162c6ada46f516593 ****/
-		%feature("compactdefaultargs") Shape3;
-		%feature("autodoc", "Returns the shape ashape3 from the framework created at construction time.
-
-Returns
--------
-TopoDS_Shape
-") Shape3;
-		const TopoDS_Shape Shape3();
-
-		/****************** Shape4 ******************/
-		/**** md5 signature: 554c0aac391cd7e4d6a501c1d3b9abfb ****/
-		%feature("compactdefaultargs") Shape4;
-		%feature("autodoc", "Returns the shape ashape4 from the framework created at construction time.
-
-Returns
--------
-TopoDS_Shape
-") Shape4;
-		const TopoDS_Shape Shape4();
-
-};
-
-
-%make_alias(AIS_EqualDistanceRelation)
-
-%extend AIS_EqualDistanceRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************
-* class AIS_EqualRadiusRelation *
-********************************/
-class AIS_EqualRadiusRelation : public AIS_Relation {
-	public:
-		/****************** AIS_EqualRadiusRelation ******************/
-		/**** md5 signature: 24aa3e0a42c25fe1f6a33ebb4db63cb2 ****/
-		%feature("compactdefaultargs") AIS_EqualRadiusRelation;
-		%feature("autodoc", "Creates equal relation of two arc's radiuses. if one of edges is not in the given plane, the presentation method projects it onto the plane.
-
-Parameters
-----------
-aFirstEdge: TopoDS_Edge
-aSecondEdge: TopoDS_Edge
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_EqualRadiusRelation;
-		 AIS_EqualRadiusRelation(const TopoDS_Edge & aFirstEdge, const TopoDS_Edge & aSecondEdge, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-};
-
-
-%make_alias(AIS_EqualRadiusRelation)
-
-%extend AIS_EqualRadiusRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class AIS_FixRelation *
-************************/
-class AIS_FixRelation : public AIS_Relation {
-	public:
-		/****************** AIS_FixRelation ******************/
-		/**** md5 signature: 33a80d9464394ca03762450102960065 ****/
-		%feature("compactdefaultargs") AIS_FixRelation;
-		%feature("autodoc", "Initializes the vertex ashape, the plane aplane and the wire awire, which connects the two vertices in a fixed relation.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aPlane: Geom_Plane
-aWire: TopoDS_Wire
-
-Returns
--------
-None
-") AIS_FixRelation;
-		 AIS_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const TopoDS_Wire & aWire);
-
-		/****************** AIS_FixRelation ******************/
-		/**** md5 signature: 3c5879380f9fabcfca9a6e9d088df3ad ****/
-		%feature("compactdefaultargs") AIS_FixRelation;
-		%feature("autodoc", "Initializes the vertex ashape, the plane aplane and the wire awire, the position aposition, the arrow size anarrowsize and the wire awire, which connects the two vertices in a fixed relation.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aPlane: Geom_Plane
-aWire: TopoDS_Wire
-aPosition: gp_Pnt
-anArrowSize: float,optional
-	default value is 0.01
-
-Returns
--------
-None
-") AIS_FixRelation;
-		 AIS_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const TopoDS_Wire & aWire, const gp_Pnt & aPosition, const Standard_Real anArrowSize = 0.01);
-
-		/****************** AIS_FixRelation ******************/
-		/**** md5 signature: 0c266f14e57938cbeab3460d3fb53a6c ****/
-		%feature("compactdefaultargs") AIS_FixRelation;
-		%feature("autodoc", "Initializes the edge ashape and the plane aplane.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_FixRelation;
-		 AIS_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** AIS_FixRelation ******************/
-		/**** md5 signature: 730b240179796d094a1f6fce8bee3a46 ****/
-		%feature("compactdefaultargs") AIS_FixRelation;
-		%feature("autodoc", "Initializes the edge ashape, the plane aplane, the position aposition and the arrow size anarrowsize.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aPlane: Geom_Plane
-aPosition: gp_Pnt
-anArrowSize: float,optional
-	default value is 0.01
-
-Returns
--------
-None
-") AIS_FixRelation;
-		 AIS_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const gp_Pnt & aPosition, const Standard_Real anArrowSize = 0.01);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the interactive objects in the relation are movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** SetWire ******************/
-		/**** md5 signature: 02e50a2e0849e0c95235baf7c1fd9f23 ****/
-		%feature("compactdefaultargs") SetWire;
-		%feature("autodoc", "Constructs the wire awire. this connects vertices which are in a fixed relation.
-
-Parameters
-----------
-aWire: TopoDS_Wire
-
-Returns
--------
-None
-") SetWire;
-		void SetWire(const TopoDS_Wire & aWire);
-
-		/****************** Wire ******************/
-		/**** md5 signature: 8377380f40be065c1e388c12f5ebdb73 ****/
-		%feature("compactdefaultargs") Wire;
-		%feature("autodoc", "Returns the wire which connects vertices in a fixed relation.
-
-Returns
--------
-TopoDS_Wire
-") Wire;
-		TopoDS_Wire Wire();
-
-};
-
-
-%make_alias(AIS_FixRelation)
-
-%extend AIS_FixRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class AIS_IdenticRelation *
-****************************/
-class AIS_IdenticRelation : public AIS_Relation {
-	public:
-		/****************** AIS_IdenticRelation ******************/
-		/**** md5 signature: fd0fbfac9d3fef6872f5a65bb55f4cb7 ****/
-		%feature("compactdefaultargs") AIS_IdenticRelation;
-		%feature("autodoc", "Initializes the relation of identity between the two entities, firstshape and secondshape. the plane aplane is initialized in case a visual reference is needed to show identity.
-
-Parameters
-----------
-FirstShape: TopoDS_Shape
-SecondShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_IdenticRelation;
-		 AIS_IdenticRelation(const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** AddUser ******************/
-		/**** md5 signature: 96e81e223c191f89f7f54782a86a0e55 ****/
-		%feature("compactdefaultargs") AddUser;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUser: Standard_Transient
-
-Returns
--------
-None
-") AddUser;
-		void AddUser(const opencascade::handle<Standard_Transient> & theUser);
-
-		/****************** ClearUsers ******************/
-		/**** md5 signature: f911b16400daf995643262aaebb56bf9 ****/
-		%feature("compactdefaultargs") ClearUsers;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") ClearUsers;
-		void ClearUsers();
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** HasUsers ******************/
-		/**** md5 signature: aedf7f0293a5ad9e45c4f97ca68483fb ****/
-		%feature("compactdefaultargs") HasUsers;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") HasUsers;
-		Standard_Boolean HasUsers();
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the interactive object is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** Users ******************/
-		/**** md5 signature: 65858c69a6e24c72829560eee6991487 ****/
-		%feature("compactdefaultargs") Users;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TColStd_ListOfTransient
-") Users;
-		const TColStd_ListOfTransient & Users();
-
-};
-
-
-%make_alias(AIS_IdenticRelation)
-
-%extend AIS_IdenticRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class AIS_LengthDimension *
-****************************/
-class AIS_LengthDimension : public AIS_Dimension {
-	public:
-		/****************** AIS_LengthDimension ******************/
-		/**** md5 signature: ccfee9c16308aae00afca8cfcfbac5ed ****/
-		%feature("compactdefaultargs") AIS_LengthDimension;
-		%feature("autodoc", "Construct length dimension between face and edge. here dimension can be built without user-defined plane. @param theface [in] the face (first shape). @param theedge [in] the edge (second shape).
-
-Parameters
-----------
-theFace: TopoDS_Face
-theEdge: TopoDS_Edge
-
-Returns
--------
-None
-") AIS_LengthDimension;
-		 AIS_LengthDimension(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
-
-		/****************** AIS_LengthDimension ******************/
-		/**** md5 signature: e46de5218b2ee4a3c7ddcb98adae2d98 ****/
-		%feature("compactdefaultargs") AIS_LengthDimension;
-		%feature("autodoc", "Construct length dimension between two faces. @param thefirstface [in] the first face (first shape). @param thesecondface [in] the second face (second shape).
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-
-Returns
--------
-None
-") AIS_LengthDimension;
-		 AIS_LengthDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
-
-		/****************** AIS_LengthDimension ******************/
-		/**** md5 signature: 3dbae5f23683880487b151e66c1b6459 ****/
-		%feature("compactdefaultargs") AIS_LengthDimension;
-		%feature("autodoc", "Construct length dimension between two points in the specified plane. @param thefirstpoint [in] the first point. @param thesecondpoint [in] the second point. @param theplane [in] the plane to orient dimension.
-
-Parameters
-----------
-theFirstPoint: gp_Pnt
-theSecondPoint: gp_Pnt
-thePlane: gp_Pln
-
-Returns
--------
-None
-") AIS_LengthDimension;
-		 AIS_LengthDimension(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pln & thePlane);
-
-		/****************** AIS_LengthDimension ******************/
-		/**** md5 signature: 389763e784ff86f06e1c997097f8285f ****/
-		%feature("compactdefaultargs") AIS_LengthDimension;
-		%feature("autodoc", "Construct length dimension between two arbitrary shapes in the specified plane. @param thefirstshape [in] the first shape. @param thesecondshape [in] the second shape. @param theplane [in] the plane to orient dimension.
-
-Parameters
-----------
-theFirstShape: TopoDS_Shape
-theSecondShape: TopoDS_Shape
-thePlane: gp_Pln
-
-Returns
--------
-None
-") AIS_LengthDimension;
-		 AIS_LengthDimension(const TopoDS_Shape & theFirstShape, const TopoDS_Shape & theSecondShape, const gp_Pln & thePlane);
-
-		/****************** AIS_LengthDimension ******************/
-		/**** md5 signature: 3a70ac5ca88b31117de45c4ee970ff1d ****/
-		%feature("compactdefaultargs") AIS_LengthDimension;
-		%feature("autodoc", "Construct length dimension of linear edge. @param theedge [in] the edge to measure. @param theplane [in] the plane to orient dimension.
-
-Parameters
-----------
-theEdge: TopoDS_Edge
-thePlane: gp_Pln
-
-Returns
--------
-None
-") AIS_LengthDimension;
-		 AIS_LengthDimension(const TopoDS_Edge & theEdge, const gp_Pln & thePlane);
-
-		/****************** FirstPoint ******************/
-		/**** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ****/
-		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "Returns first attachement point.
-
-Returns
--------
-gp_Pnt
-") FirstPoint;
-		const gp_Pnt FirstPoint();
-
-		/****************** FirstShape ******************/
-		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
-		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "Returns first attachement shape.
-
-Returns
--------
-TopoDS_Shape
-") FirstShape;
-		const TopoDS_Shape FirstShape();
-
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
-		%feature("compactdefaultargs") GetDisplayUnits;
-		%feature("autodoc", "Returns the display units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetDisplayUnits;
-		virtual const TCollection_AsciiString & GetDisplayUnits();
-
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
-		%feature("compactdefaultargs") GetModelUnits;
-		%feature("autodoc", "Returns the model units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetModelUnits;
-		virtual const TCollection_AsciiString & GetModelUnits();
-
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 8c2fd05c2d7874fe62f7d2730b192774 ****/
-		%feature("compactdefaultargs") GetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-gp_Pnt
-") GetTextPosition;
-		virtual const gp_Pnt GetTextPosition();
-
-		/****************** SecondPoint ******************/
-		/**** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ****/
-		%feature("compactdefaultargs") SecondPoint;
-		%feature("autodoc", "Returns second attachement point.
-
-Returns
--------
-gp_Pnt
-") SecondPoint;
-		const gp_Pnt SecondPoint();
-
-		/****************** SecondShape ******************/
-		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
-		%feature("compactdefaultargs") SecondShape;
-		%feature("autodoc", "Returns second attachement shape.
-
-Returns
--------
-TopoDS_Shape
-") SecondShape;
-		const TopoDS_Shape SecondShape();
-
-		/****************** SetDirection ******************/
-		/**** md5 signature: fdd4b1217edc47b9493c5cf7f462b2e9 ****/
-		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "Set custom direction for dimension. if it is not set, the direction is obtained from the measured geometry (e.g. line between points of dimension) the direction does not change flyout direction of dimension. @param thedirection [in] the dimension direction. @param theusedirection [in] boolean value if custom direction should be used.
-
-Parameters
-----------
-theDirection: gp_Dir
-theUseDirection: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") SetDirection;
-		void SetDirection(const gp_Dir & theDirection, const Standard_Boolean theUseDirection = Standard_True);
-
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
-		%feature("compactdefaultargs") SetDisplayUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: cef07b2afa7411d338e4348d1fb09cb3 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure distance between two points. the dimension will become invalid if the new distance between attachement points is less than precision::confusion(). @param thefirstpoint [in] the first point. @param thesecondpoint [in] the second point. @param theplane [in] the user-defined plane.
-
-Parameters
-----------
-theFirstPoint: gp_Pnt
-theSecondPoint: gp_Pnt
-thePlane: gp_Pln
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pln & thePlane);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: ab814d79ff07f7269fe3cb037f48b9a8 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure length of edge. the dimension will become invalid if the new length of edge is less than precision::confusion(). @param theedge [in] the edge to measure. @param theplane [in] the user-defined plane.
-
-Parameters
-----------
-theEdge: TopoDS_Edge
-thePlane: gp_Pln
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Edge & theEdge, const gp_Pln & thePlane);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: bfe5f7ff6a46076a22cbf50a395e204f ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure distance between two faces. the dimension will become invalid if the distance can not be measured or it is less than precision::confusion(). @param thefirstface [in] the first face (first shape). @param thesecondface [in] the second face (second shape).
-
-Parameters
-----------
-theFirstFace: TopoDS_Face
-theSecondFace: TopoDS_Face
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 7c671ce46d9bfe5c6d511144762d0662 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure distance between face and edge. the dimension will become invalid if the distance can not be measured or it is less than precision::confusion(). @param theface [in] the face (first shape). @param theedge [in] the edge (second shape).
-
-Parameters
-----------
-theFace: TopoDS_Face
-theEdge: TopoDS_Edge
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
-
-		/****************** SetMeasuredShapes ******************/
-		/**** md5 signature: 27e960b24f38031999030c9d7d2242ae ****/
-		%feature("compactdefaultargs") SetMeasuredShapes;
-		%feature("autodoc", "Measure distance between generic pair of shapes (edges, vertices, length), where measuring is applicable. @param thefirstshape [in] the first shape. @param thesecondshape [in] the second shape.
-
-Parameters
-----------
-theFirstShape: TopoDS_Shape
-theSecondShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetMeasuredShapes;
-		void SetMeasuredShapes(const TopoDS_Shape & theFirstShape, const TopoDS_Shape & theSecondShape);
-
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
-		%feature("compactdefaultargs") SetModelUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
-		%feature("compactdefaultargs") SetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theTextPos: gp_Pnt
-
-Returns
--------
-None
-") SetTextPosition;
-		virtual void SetTextPosition(const gp_Pnt & theTextPos);
-
-};
-
-
-%make_alias(AIS_LengthDimension)
-
-%extend AIS_LengthDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class AIS_MidPointRelation *
-*****************************/
-class AIS_MidPointRelation : public AIS_Relation {
-	public:
-		/****************** AIS_MidPointRelation ******************/
-		/**** md5 signature: c298dec9fc726b54772799ca618e3d85 ****/
-		%feature("compactdefaultargs") AIS_MidPointRelation;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aSymmTool: TopoDS_Shape
-FirstShape: TopoDS_Shape
-SecondShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_MidPointRelation;
-		 AIS_MidPointRelation(const TopoDS_Shape & aSymmTool, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** GetTool ******************/
-		/**** md5 signature: face5c8735961d0bbaff1f7f56abdc4c ****/
-		%feature("compactdefaultargs") GetTool;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TopoDS_Shape
-") GetTool;
-		const TopoDS_Shape GetTool();
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** SetTool ******************/
-		/**** md5 signature: 66ac0c699e889ec55abd030633c80442 ****/
-		%feature("compactdefaultargs") SetTool;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aMidPointTool: TopoDS_Shape
-
-Returns
--------
-None
-") SetTool;
-		void SetTool(const TopoDS_Shape & aMidPointTool);
-
-};
-
-
-%make_alias(AIS_MidPointRelation)
-
-%extend AIS_MidPointRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class AIS_OffsetDimension *
-****************************/
-class AIS_OffsetDimension : public AIS_Relation {
-	public:
-		/****************** AIS_OffsetDimension ******************/
-		/**** md5 signature: 924f094bd5764b832b892035027b2138 ****/
-		%feature("compactdefaultargs") AIS_OffsetDimension;
-		%feature("autodoc", "Constructs the offset display object defined by the first shape afshape, the second shape asshape, the dimension aval, and the text atext.
-
-Parameters
-----------
-FistShape: TopoDS_Shape
-SecondShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-
-Returns
--------
-None
-") AIS_OffsetDimension;
-		 AIS_OffsetDimension(const TopoDS_Shape & FistShape, const TopoDS_Shape & SecondShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the offset datum is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 5346b8aa31fa1e8edfb8a13dfcfc1be1 ****/
-		%feature("compactdefaultargs") KindOfDimension;
-		%feature("autodoc", "Indicates that the dimension we are concerned with is an offset.
-
-Returns
--------
-AIS_KindOfDimension
-") KindOfDimension;
-		virtual AIS_KindOfDimension KindOfDimension();
-
-		/****************** SetRelativePos ******************/
-		/**** md5 signature: d3f2619e0cfb252fb2c93faba92de061 ****/
-		%feature("compactdefaultargs") SetRelativePos;
-		%feature("autodoc", "Sets a transformation atrsf for presentation and selection to a relative position.
-
-Parameters
-----------
-aTrsf: gp_Trsf
-
-Returns
--------
-None
-") SetRelativePos;
-		void SetRelativePos(const gp_Trsf & aTrsf);
-
-};
-
-
-%make_alias(AIS_OffsetDimension)
-
-%extend AIS_OffsetDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class AIS_ParallelRelation *
-*****************************/
-class AIS_ParallelRelation : public AIS_Relation {
-	public:
-		/****************** AIS_ParallelRelation ******************/
-		/**** md5 signature: bf531989c6c44efc9baebcd4097065ab ****/
-		%feature("compactdefaultargs") AIS_ParallelRelation;
-		%feature("autodoc", "Constructs an object to display parallel constraints. this object is defined by the first shape afshape and the second shape asshape and the plane aplane.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aSShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_ParallelRelation;
-		 AIS_ParallelRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** AIS_ParallelRelation ******************/
-		/**** md5 signature: 5421605781b0c35d0c6d6b87f91fea61 ****/
-		%feature("compactdefaultargs") AIS_ParallelRelation;
-		%feature("autodoc", "Constructs an object to display parallel constraints. this object is defined by the first shape afshape and the second shape asshape the plane aplane, the position aposition, the type of arrow, asymbolprs and its size anarrowsize.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aSShape: TopoDS_Shape
-aPlane: Geom_Plane
-aPosition: gp_Pnt
-aSymbolPrs: DsgPrs_ArrowSide
-anArrowSize: float,optional
-	default value is 0.01
-
-Returns
--------
-None
-") AIS_ParallelRelation;
-		 AIS_ParallelRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.01);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the parallelism is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-};
-
-
-%make_alias(AIS_ParallelRelation)
-
-%extend AIS_ParallelRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************
-* class AIS_PerpendicularRelation *
-**********************************/
-class AIS_PerpendicularRelation : public AIS_Relation {
-	public:
-		/****************** AIS_PerpendicularRelation ******************/
-		/**** md5 signature: 78f59fbf6e8f7129fc09fe828a0778ec ****/
-		%feature("compactdefaultargs") AIS_PerpendicularRelation;
-		%feature("autodoc", "Constructs an object to display constraints of perpendicularity on shapes. this object is defined by a first shape afshape, a second shape asshape, and a plane aplane. aplane is the plane of reference to show and test the perpendicular relation between two shapes, at least one of which has a revolved surface.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aSShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_PerpendicularRelation;
-		 AIS_PerpendicularRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** AIS_PerpendicularRelation ******************/
-		/**** md5 signature: 4fc5b795ae7dc2504ddb4c2dd8a3abee ****/
-		%feature("compactdefaultargs") AIS_PerpendicularRelation;
-		%feature("autodoc", "Constructs an object to display constraints of perpendicularity on shapes. this object is defined by a first shape afshape and a second shape asshape.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aSShape: TopoDS_Shape
-
-Returns
--------
-None
-") AIS_PerpendicularRelation;
-		 AIS_PerpendicularRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-};
-
-
-%make_alias(AIS_PerpendicularRelation)
-
-%extend AIS_PerpendicularRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class AIS_RadiusDimension *
-****************************/
-class AIS_RadiusDimension : public AIS_Dimension {
-	public:
-		/****************** AIS_RadiusDimension ******************/
-		/**** md5 signature: 4d963f1a1bf3147cfcf965833ad616a4 ****/
-		%feature("compactdefaultargs") AIS_RadiusDimension;
-		%feature("autodoc", "Create radius dimension for the circle geometry. @param thecircle [in] the circle to measure.
-
-Parameters
-----------
-theCircle: gp_Circ
-
-Returns
--------
-None
-") AIS_RadiusDimension;
-		 AIS_RadiusDimension(const gp_Circ & theCircle);
-
-		/****************** AIS_RadiusDimension ******************/
-		/**** md5 signature: 309b68f0ff8b1887df8d973238a5e8e7 ****/
-		%feature("compactdefaultargs") AIS_RadiusDimension;
-		%feature("autodoc", "Create radius dimension for the circle geometry and define its orientation by location of the first point on that circle. @param thecircle [in] the circle to measure. @param theanchorpoint [in] the point to define the position of the dimension attachment on the circle.
-
-Parameters
-----------
-theCircle: gp_Circ
-theAnchorPoint: gp_Pnt
-
-Returns
--------
-None
-") AIS_RadiusDimension;
-		 AIS_RadiusDimension(const gp_Circ & theCircle, const gp_Pnt & theAnchorPoint);
-
-		/****************** AIS_RadiusDimension ******************/
-		/**** md5 signature: b44a32e357dbed328c93f7c94ed555b3 ****/
-		%feature("compactdefaultargs") AIS_RadiusDimension;
-		%feature("autodoc", "Create radius dimension for the arbitrary shape (if possible). @param theshape [in] the shape to measure.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-
-Returns
--------
-None
-") AIS_RadiusDimension;
-		 AIS_RadiusDimension(const TopoDS_Shape & theShape);
-
-		/****************** AnchorPoint ******************/
-		/**** md5 signature: e00b76aa30ec48768c82c1a07e620981 ****/
-		%feature("compactdefaultargs") AnchorPoint;
-		%feature("autodoc", "Returns anchor point on circle for radius dimension.
-
-Returns
--------
-gp_Pnt
-") AnchorPoint;
-		const gp_Pnt AnchorPoint();
-
-		/****************** Circle ******************/
-		/**** md5 signature: 1eaea6bdc97e0fc2fac6cefd24825e1a ****/
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "Returns measured geometry circle.
-
-Returns
--------
-gp_Circ
-") Circle;
-		const gp_Circ Circle();
-
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
-		%feature("compactdefaultargs") GetDisplayUnits;
-		%feature("autodoc", "Returns the display units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetDisplayUnits;
-		virtual const TCollection_AsciiString & GetDisplayUnits();
-
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
-		%feature("compactdefaultargs") GetModelUnits;
-		%feature("autodoc", "Returns the model units string.
-
-Returns
--------
-TCollection_AsciiString
-") GetModelUnits;
-		virtual const TCollection_AsciiString & GetModelUnits();
-
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 8c2fd05c2d7874fe62f7d2730b192774 ****/
-		%feature("compactdefaultargs") GetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-gp_Pnt
-") GetTextPosition;
-		virtual const gp_Pnt GetTextPosition();
-
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
-		%feature("compactdefaultargs") SetDisplayUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 20f5d2af27af2754cd354025e857b6b0 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure radius of the circle. the dimension will become invalid if the radius of the circle is less than precision::confusion(). @param thecircle [in] the circle to measure.
-
-Parameters
-----------
-theCircle: gp_Circ
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const gp_Circ & theCircle);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: c108135e71c04f939442708481e8be34 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure radius of the circle and orient the dimension so the dimension lines attaches to anchor point on the circle. the dimension will become invalid if the radius of the circle is less than precision::confusion(). @param thecircle [in] the circle to measure. @param theanchorpoint [in] the point to attach the dimension lines, should be on the circle @param thehasanchor [in] should be set true if theanchorpoint should be used.
-
-Parameters
-----------
-theCircle: gp_Circ
-theAnchorPoint: gp_Pnt
-theHasAnchor: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const gp_Circ & theCircle, const gp_Pnt & theAnchorPoint, const Standard_Boolean theHasAnchor = Standard_True);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: ad36f6541ba8fd4bb2abf0ec1ff6c97e ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure radius on the passed shape, if applicable. the dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than precision::confusion(). @param theshape [in] the shape to measure.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Shape & theShape);
-
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 47558a720aeeb8c5e6f999e8e591bac0 ****/
-		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure radius on the passed shape, if applicable. the dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than precision::confusion(). @param theshape [in] the shape to measure. @param theanchorpoint [in] the point to attach the dimension lines, should be on the circle @param thehasanchor [in] should be set true if theanchorpoint should be used.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-theAnchorPoint: gp_Pnt
-theHasAnchor: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") SetMeasuredGeometry;
-		void SetMeasuredGeometry(const TopoDS_Shape & theShape, const gp_Pnt & theAnchorPoint, const Standard_Boolean theHasAnchor = Standard_True);
-
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
-		%feature("compactdefaultargs") SetModelUnits;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theUnits: TCollection_AsciiString
-
-Returns
--------
-None
-") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
-
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
-		%feature("compactdefaultargs") SetTextPosition;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theTextPos: gp_Pnt
-
-Returns
--------
-None
-") SetTextPosition;
-		virtual void SetTextPosition(const gp_Pnt & theTextPos);
-
-		/****************** Shape ******************/
-		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
-		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the measured shape.
-
-Returns
--------
-TopoDS_Shape
-") Shape;
-		const TopoDS_Shape Shape();
-
-};
-
-
-%make_alias(AIS_RadiusDimension)
-
-%extend AIS_RadiusDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class AIS_SymmetricRelation *
-******************************/
-class AIS_SymmetricRelation : public AIS_Relation {
-	public:
-		/****************** AIS_SymmetricRelation ******************/
-		/**** md5 signature: 8954d871456fd32cde121f64cfc708c8 ****/
-		%feature("compactdefaultargs") AIS_SymmetricRelation;
-		%feature("autodoc", "Constructs an object to display constraints of symmetricity. this object is defined by a tool asymmtool, a first shape firstshape, a second shape secondshape, and a plane aplane. aplane serves as the axis of symmetry. asymmtool is the shape composed of firstshape secondshape and aplane. it may be queried and edited using the functions gettool and settool. the two shapes are typically two edges, two vertices or two points.
-
-Parameters
-----------
-aSymmTool: TopoDS_Shape
-FirstShape: TopoDS_Shape
-SecondShape: TopoDS_Shape
-aPlane: Geom_Plane
-
-Returns
--------
-None
-") AIS_SymmetricRelation;
-		 AIS_SymmetricRelation(const TopoDS_Shape & aSymmTool, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** GetTool ******************/
-		/**** md5 signature: face5c8735961d0bbaff1f7f56abdc4c ****/
-		%feature("compactdefaultargs") GetTool;
-		%feature("autodoc", "Returns the tool composed of a first shape, a second shape, and a plane. this tool is created at construction time.
-
-Returns
--------
-TopoDS_Shape
-") GetTool;
-		const TopoDS_Shape GetTool();
-
-		/****************** IsMovable ******************/
-		/**** md5 signature: efb300c047e87ac82d826b80cdd545da ****/
-		%feature("compactdefaultargs") IsMovable;
-		%feature("autodoc", "Returns true if the symmetric constraint display is movable.
-
-Returns
--------
-bool
-") IsMovable;
-		virtual Standard_Boolean IsMovable();
-
-		/****************** SetTool ******************/
-		/**** md5 signature: 51e7416548336ac785d9dc24f9d81809 ****/
-		%feature("compactdefaultargs") SetTool;
-		%feature("autodoc", "Sets the tool asymmetrictool composed of a first shape, a second shape, and a plane. this tool is initially created at construction time.
-
-Parameters
-----------
-aSymmetricTool: TopoDS_Shape
-
-Returns
--------
-None
-") SetTool;
-		void SetTool(const TopoDS_Shape & aSymmetricTool);
-
-};
-
-
-%make_alias(AIS_SymmetricRelation)
-
-%extend AIS_SymmetricRelation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class AIS_TangentRelation *
-****************************/
-class AIS_TangentRelation : public AIS_Relation {
-	public:
-		/****************** AIS_TangentRelation ******************/
-		/**** md5 signature: b7bc04bd5d10e595a17b9fbc1f8201f8 ****/
-		%feature("compactdefaultargs") AIS_TangentRelation;
-		%feature("autodoc", "Twofacestangent or twoedgestangent relation constructs an object to display tangency constraints. this object is defined by the first shape afshape, the second shape asshape, the plane aplane and the index anexternref. aplane serves as an optional axis. anexternref set to 0 indicates that there is no relation.
-
-Parameters
-----------
-aFShape: TopoDS_Shape
-aSShape: TopoDS_Shape
-aPlane: Geom_Plane
-anExternRef: int,optional
-	default value is 0
-
-Returns
--------
-None
-") AIS_TangentRelation;
-		 AIS_TangentRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Integer anExternRef = 0);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-		/****************** ExternRef ******************/
-		/**** md5 signature: 14d6f16498ea53b13fd8ad81f1ebe2a5 ****/
-		%feature("compactdefaultargs") ExternRef;
-		%feature("autodoc", "Returns the external reference for tangency. the values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. this reference is defined at construction time.
-
-Returns
--------
-int
-") ExternRef;
-		Standard_Integer ExternRef();
-
-		/****************** SetExternRef ******************/
-		/**** md5 signature: 55924e68423e3bd90b4be27d79b7bf55 ****/
-		%feature("compactdefaultargs") SetExternRef;
-		%feature("autodoc", "Sets the external reference for tangency, aref. the values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. this reference is initially defined at construction time.
-
-Parameters
-----------
-aRef: int
-
-Returns
--------
-None
-") SetExternRef;
-		void SetExternRef(const Standard_Integer aRef);
-
-};
-
-
-%make_alias(AIS_TangentRelation)
-
-%extend AIS_TangentRelation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -19730,148 +16147,6 @@ float
 	@methodnotwrapped
 	def ShowTriangles(self):
 		pass
-	}
-};
-
-/*******************************
-* class AIS_MaxRadiusDimension *
-*******************************/
-class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
-	public:
-		/****************** AIS_MaxRadiusDimension ******************/
-		/**** md5 signature: 5fe225a4d922a7537e22888c8649779a ****/
-		%feature("compactdefaultargs") AIS_MaxRadiusDimension;
-		%feature("autodoc", "Max ellipse radius dimension shape can be edge , planar face or cylindrical face.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-
-Returns
--------
-None
-") AIS_MaxRadiusDimension;
-		 AIS_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
-
-		/****************** AIS_MaxRadiusDimension ******************/
-		/**** md5 signature: a59c65e3dd617139bbe9ba3863d815b6 ****/
-		%feature("compactdefaultargs") AIS_MaxRadiusDimension;
-		%feature("autodoc", "Max ellipse radius dimension with position shape can be edge , planar face or cylindrical face.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-aPosition: gp_Pnt
-aSymbolPrs: DsgPrs_ArrowSide
-anArrowSize: float,optional
-	default value is 0.0
-
-Returns
--------
-None
-") AIS_MaxRadiusDimension;
-		 AIS_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-};
-
-
-%make_alias(AIS_MaxRadiusDimension)
-
-%extend AIS_MaxRadiusDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*******************************
-* class AIS_MinRadiusDimension *
-*******************************/
-class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
-	public:
-		/****************** AIS_MinRadiusDimension ******************/
-		/**** md5 signature: 6b0a98d440f395371371192968f3305a ****/
-		%feature("compactdefaultargs") AIS_MinRadiusDimension;
-		%feature("autodoc", "Max ellipse radius dimension shape can be edge , planar face or cylindrical face.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-
-Returns
--------
-None
-") AIS_MinRadiusDimension;
-		 AIS_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
-
-		/****************** AIS_MinRadiusDimension ******************/
-		/**** md5 signature: 3f38ab5ba912fdea238dad3a1ddf28db ****/
-		%feature("compactdefaultargs") AIS_MinRadiusDimension;
-		%feature("autodoc", "Max ellipse radius dimension with position shape can be edge , planar face or cylindrical face.
-
-Parameters
-----------
-aShape: TopoDS_Shape
-aVal: float
-aText: TCollection_ExtendedString
-aPosition: gp_Pnt
-aSymbolPrs: DsgPrs_ArrowSide
-anArrowSize: float,optional
-	default value is 0.0
-
-Returns
--------
-None
-") AIS_MinRadiusDimension;
-		 AIS_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
-
-		/****************** Compute ******************/
-		/**** md5 signature: 09436ef6513347d4c96315939d8b75d5 ****/
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
-
-Parameters
-----------
-aProjector: Prs3d_Projector
-aTrsf: Geom_Transformation
-aPresentation: Prs3d_Presentation
-
-Returns
--------
-None
-") Compute;
-		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
-
-};
-
-
-%make_alias(AIS_MinRadiusDimension)
-
-%extend AIS_MinRadiusDimension {
-	%pythoncode {
-	__repr__ = _dumps_object
 	}
 };
 

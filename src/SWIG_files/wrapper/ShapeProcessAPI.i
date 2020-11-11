@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeprocessapi.h
 #include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
+#include<Message_module.hxx>
 #include<BRep_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<Geom_module.hxx>
@@ -70,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeprocessapi.h
 %import TopTools.i
 %import TopoDS.i
 %import TopAbs.i
+%import Message.i
 
 %pythoncode {
 from enum import IntEnum
@@ -149,7 +151,7 @@ TopTools_DataMapOfShapeShape
 		const TopTools_DataMapOfShapeShape & Map();
 
 		/****************** PrepareShape ******************/
-		/**** md5 signature: 43c81d82dc68892e9bbcada26c22f9de ****/
+		/**** md5 signature: 27d62345063f43da2206e8a57a3eb6ef ****/
 		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "Performs sequence of operators stored in myrsc. if <fillmap> is true adds history 'shape-shape' into mymap for shape and its subshapes until level <until> (included). if <until> is topabs_shape, all the subshapes are considered.
 
@@ -160,12 +162,14 @@ fillmap: bool,optional
 	default value is Standard_False
 until: TopAbs_ShapeEnum,optional
 	default value is TopAbs_SHAPE
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 TopoDS_Shape
 ") PrepareShape;
-		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** PrintPreparationResult ******************/
 		/**** md5 signature: 9f69281710e5ed4ccee63017708a3d97 ****/

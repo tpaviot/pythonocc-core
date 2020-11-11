@@ -642,6 +642,17 @@ TopoDS_Vertex
 class BRepPrim_GWedge {
 	public:
 		/****************** BRepPrim_GWedge ******************/
+		/**** md5 signature: 5479b17d06f6204f33739da970ed3024 ****/
+		%feature("compactdefaultargs") BRepPrim_GWedge;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") BRepPrim_GWedge;
+		 BRepPrim_GWedge();
+
+		/****************** BRepPrim_GWedge ******************/
 		/**** md5 signature: e294f9bebd8cc9ff98c19af2e7410e35 ****/
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "Creates a gwedge algorithm. <axes> is the axis system for the primitive. //! xmin, ymin, zmin are set to 0 xmax, ymax, zmax are set to dx, dy, dz z2min = zmin z2max = zmax x2min = xmin x2max = xmax the result is a box dx,dy,dz should be positive.
@@ -935,6 +946,17 @@ Returns
 bool
 ") HasWire;
 		Standard_Boolean HasWire(const BRepPrim_Direction d1);
+
+		/****************** IsDegeneratedShape ******************/
+		/**** md5 signature: bedacae663032f1f3a7887e26e731a50 ****/
+		%feature("compactdefaultargs") IsDegeneratedShape;
+		%feature("autodoc", "Checkes a shape on degeneracy returns true if a shape is degenerated.
+
+Returns
+-------
+bool
+") IsDegeneratedShape;
+		Standard_Boolean IsDegeneratedShape();
 
 		/****************** IsInfinite ******************/
 		/**** md5 signature: 84e23051e341ae0e7b22f457a416c2bd ****/
@@ -1764,6 +1786,17 @@ None
 ***********************/
 class BRepPrim_Wedge : public BRepPrim_GWedge {
 	public:
+		/****************** BRepPrim_Wedge ******************/
+		/**** md5 signature: 273f01b42e689ba5af5064dc48d05f84 ****/
+		%feature("compactdefaultargs") BRepPrim_Wedge;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") BRepPrim_Wedge;
+		 BRepPrim_Wedge();
+
 		/****************** BRepPrim_Wedge ******************/
 		/**** md5 signature: 271e307dbdf1baea793184df8b5a17db ****/
 		%feature("compactdefaultargs") BRepPrim_Wedge;

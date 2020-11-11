@@ -102,20 +102,22 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(AdvApp2Var_Node)
+%wrap_handle(AdvApp2Var_Patch)
 /* end handles declaration */
 
 /* templates */
-%template(AdvApp2Var_SequenceOfNode) NCollection_Sequence<AdvApp2Var_Node>;
+%template(AdvApp2Var_SequenceOfNode) NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>>;
 
-%extend NCollection_Sequence<AdvApp2Var_Node> {
+%extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> {
     %pythoncode {
     def __len__(self):
         return self.Size()
     }
 };
-%template(AdvApp2Var_SequenceOfPatch) NCollection_Sequence<AdvApp2Var_Patch>;
+%template(AdvApp2Var_SequenceOfPatch) NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>>;
 
-%extend NCollection_Sequence<AdvApp2Var_Patch> {
+%extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> {
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -129,9 +131,9 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
         return self.Size()
     }
 };
-%template(AdvApp2Var_Strip) NCollection_Sequence<AdvApp2Var_Iso>;
+%template(AdvApp2Var_Strip) NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>>;
 
-%extend NCollection_Sequence<AdvApp2Var_Iso> {
+%extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> {
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -140,10 +142,10 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<AdvApp2Var_Node> AdvApp2Var_SequenceOfNode;
-typedef NCollection_Sequence<AdvApp2Var_Patch> AdvApp2Var_SequenceOfPatch;
+typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> AdvApp2Var_SequenceOfNode;
+typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> AdvApp2Var_SequenceOfPatch;
 typedef NCollection_Sequence<AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
-typedef NCollection_Sequence<AdvApp2Var_Iso> AdvApp2Var_Strip;
+typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> AdvApp2Var_Strip;
 /* end typedefs declaration */
 
 /***********************************
@@ -1323,7 +1325,7 @@ None
 		 AdvApp2Var_Framework(const AdvApp2Var_SequenceOfNode & Frame, const AdvApp2Var_SequenceOfStrip & UFrontier, const AdvApp2Var_SequenceOfStrip & VFrontier);
 
 		/****************** ChangeIso ******************/
-		/**** md5 signature: 0ff887cc84d0842b97772f4b8c5ce214 ****/
+		/**** md5 signature: 3fec201f44a8293dfa569255b6814bbb ****/
 		%feature("compactdefaultargs") ChangeIso;
 		%feature("autodoc", "No available documentation.
 
@@ -1337,22 +1339,7 @@ Returns
 -------
 None
 ") ChangeIso;
-		void ChangeIso(const Standard_Integer IndexIso, const Standard_Integer IndexStrip, const AdvApp2Var_Iso & anIso);
-
-		/****************** ChangeNode ******************/
-		/**** md5 signature: 45c4ceb2eca4cf141afcac3f8044c892 ****/
-		%feature("compactdefaultargs") ChangeNode;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-IndexNode: int
-
-Returns
--------
-AdvApp2Var_Node
-") ChangeNode;
-		AdvApp2Var_Node & ChangeNode(const Standard_Integer IndexNode);
+		void ChangeIso(const Standard_Integer IndexIso, const Standard_Integer IndexStrip, const opencascade::handle<AdvApp2Var_Iso> & anIso);
 
 		/****************** FirstNode ******************/
 		/**** md5 signature: 7e2537d33d03d4ae88afbab57eff7727 ****/
@@ -1372,20 +1359,19 @@ int
 		Standard_Integer FirstNode(const GeomAbs_IsoType Type, const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
 
 		/****************** FirstNotApprox ******************/
-		/**** md5 signature: 7f446684d0cea79d172f56c0636129dc ****/
+		/**** md5 signature: 227783178d7bb021aee9bed3eb70dd7f ****/
 		%feature("compactdefaultargs") FirstNotApprox;
-		%feature("autodoc", "Search the index of the first iso not approximated, if all isos are approximated standard_false is returned.
+		%feature("autodoc", "Search the index of the first iso not approximated, if all isos are approximated null is returned.
 
 Parameters
 ----------
-anIso: AdvApp2Var_Iso
 
 Returns
 -------
 IndexIso: int
 IndexStrip: int
 ") FirstNotApprox;
-		Standard_Boolean FirstNotApprox(Standard_Integer &OutValue, Standard_Integer &OutValue, AdvApp2Var_Iso & anIso);
+		opencascade::handle<AdvApp2Var_Iso> FirstNotApprox(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** IsoU ******************/
 		/**** md5 signature: e9d88953cce2797fb11a4e1b24499c34 ****/
@@ -1439,7 +1425,7 @@ int
 		Standard_Integer LastNode(const GeomAbs_IsoType Type, const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
 
 		/****************** Node ******************/
-		/**** md5 signature: 3b3eea2f78aa12b05cf9e628b8ed4152 ****/
+		/**** md5 signature: 1d29de45887544e302e72092c1d86599 ****/
 		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "No available documentation.
 
@@ -1449,12 +1435,12 @@ IndexNode: int
 
 Returns
 -------
-AdvApp2Var_Node
+opencascade::handle<AdvApp2Var_Node>
 ") Node;
-		const AdvApp2Var_Node & Node(const Standard_Integer IndexNode);
+		const opencascade::handle<AdvApp2Var_Node> & Node(const Standard_Integer IndexNode);
 
 		/****************** Node ******************/
-		/**** md5 signature: eaa527c5431aed735170128d4123da4c ****/
+		/**** md5 signature: c9d756687d8ab078da4b83b35aee2845 ****/
 		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "No available documentation.
 
@@ -1465,9 +1451,9 @@ V: float
 
 Returns
 -------
-AdvApp2Var_Node
+opencascade::handle<AdvApp2Var_Node>
 ") Node;
-		const AdvApp2Var_Node & Node(const Standard_Real U, const Standard_Real V);
+		const opencascade::handle<AdvApp2Var_Node> & Node(const Standard_Real U, const Standard_Real V);
 
 		/****************** UEquation ******************/
 		/**** md5 signature: eae095443123601e82f5e427f107c558 ****/
@@ -2364,7 +2350,7 @@ None
 		 AdvApp2Var_Network(const AdvApp2Var_SequenceOfPatch & Net, const TColStd_SequenceOfReal & TheU, const TColStd_SequenceOfReal & TheV);
 
 		/****************** ChangePatch ******************/
-		/**** md5 signature: a15f81a970c2b3d0bff85da1732019c4 ****/
+		/**** md5 signature: 49bf90b6471d1093efa33d9d67b1d5ff ****/
 		%feature("compactdefaultargs") ChangePatch;
 		%feature("autodoc", "No available documentation.
 
@@ -2426,7 +2412,7 @@ int
 		Standard_Integer NbPatchInV();
 
 		/****************** Patch ******************/
-		/**** md5 signature: 1b17fe2ea4c46a2234238847bb3d16a2 ****/
+		/**** md5 signature: d7ebd409a545712c8a1fd621e1074507 ****/
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "No available documentation.
 
@@ -2530,7 +2516,7 @@ float
 /************************
 * class AdvApp2Var_Node *
 ************************/
-class AdvApp2Var_Node {
+class AdvApp2Var_Node : public Standard_Transient {
 	public:
 		/****************** AdvApp2Var_Node ******************/
 		/**** md5 signature: 757375f90af24c95af5d449c30bcf4b6 ****/
@@ -2577,20 +2563,20 @@ None
 		 AdvApp2Var_Node(const gp_XY & UV, const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** Coord ******************/
-		/**** md5 signature: 27ed9c0f0c0b0a05a292954f0e886ef8 ****/
+		/**** md5 signature: 55c3583d2b85a3d85724dfd062f17fa4 ****/
 		%feature("compactdefaultargs") Coord;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the coordinates (u,v) of the node.
 
 Returns
 -------
 gp_XY
 ") Coord;
-		gp_XY Coord();
+		const gp_XY Coord();
 
 		/****************** Error ******************/
-		/**** md5 signature: 6fe2dd8bc0797287b91665293fb827c8 ****/
+		/**** md5 signature: 4813a340da2d4e85dbd4db1c55725856 ****/
 		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the error between f(u,v) and its approximation.
 
 Parameters
 ----------
@@ -2604,9 +2590,9 @@ float
 		Standard_Real Error(const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** Point ******************/
-		/**** md5 signature: 93ffc77789713df75048f8eab8f2f157 ****/
+		/**** md5 signature: 749335184bea0e3e4adcaec95037b5c4 ****/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the value f(u,v) or its derivates on the node (u,v).
 
 Parameters
 ----------
@@ -2617,12 +2603,12 @@ Returns
 -------
 gp_Pnt
 ") Point;
-		gp_Pnt Point(const Standard_Integer iu, const Standard_Integer iv);
+		const gp_Pnt Point(const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** SetCoord ******************/
-		/**** md5 signature: 9e86c72ca511d80323361a05f0b2976f ****/
+		/**** md5 signature: 4e5a25b156489466ba1a9a9f348b2305 ****/
 		%feature("compactdefaultargs") SetCoord;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Changes the coordinates (u,v) to (x1,x2).
 
 Parameters
 ----------
@@ -2636,9 +2622,9 @@ None
 		void SetCoord(const Standard_Real x1, const Standard_Real x2);
 
 		/****************** SetError ******************/
-		/**** md5 signature: c923bddfb684bdaec8dd9ef6a9072d1a ****/
+		/**** md5 signature: bdc80934791ff9f2bae407029b05b646 ****/
 		%feature("compactdefaultargs") SetError;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Affects the error between f(u,v) and its approximation.
 
 Parameters
 ----------
@@ -2653,26 +2639,26 @@ None
 		void SetError(const Standard_Integer iu, const Standard_Integer iv, const Standard_Real error);
 
 		/****************** SetPoint ******************/
-		/**** md5 signature: 3373951466e08e6f834d158efd12ad35 ****/
+		/**** md5 signature: 76994ba669d4525ebd26c6236bb72440 ****/
 		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Affects the value f(u,v) or its derivates on the node (u,v).
 
 Parameters
 ----------
 iu: int
 iv: int
-Cte: gp_Pnt
+Pt: gp_Pnt
 
 Returns
 -------
 None
 ") SetPoint;
-		void SetPoint(const Standard_Integer iu, const Standard_Integer iv, const gp_Pnt & Cte);
+		void SetPoint(const Standard_Integer iu, const Standard_Integer iv, const gp_Pnt & Pt);
 
 		/****************** UOrder ******************/
-		/**** md5 signature: 3bb505464047fef2900b8b2c2896c41e ****/
+		/**** md5 signature: 240f145a108dc3ebbbcea6f9c3c264fc ****/
 		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the continuity order in u of the node.
 
 Returns
 -------
@@ -2681,9 +2667,9 @@ int
 		Standard_Integer UOrder();
 
 		/****************** VOrder ******************/
-		/**** md5 signature: 704529177e651451c5029c517db99652 ****/
+		/**** md5 signature: bacd1acb31115deb5ae2d0800c99aadf ****/
 		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the continuity order in v of the node.
 
 Returns
 -------
@@ -2694,6 +2680,8 @@ int
 };
 
 
+%make_alias(AdvApp2Var_Node)
+
 %extend AdvApp2Var_Node {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2703,7 +2691,7 @@ int
 /*************************
 * class AdvApp2Var_Patch *
 *************************/
-class AdvApp2Var_Patch {
+class AdvApp2Var_Patch : public Standard_Transient {
 	public:
 		/****************** AdvApp2Var_Patch ******************/
 		/**** md5 signature: d33d6d4645686ec8d5b284576c0f601e ****/
@@ -3098,6 +3086,8 @@ int
 
 };
 
+
+%make_alias(AdvApp2Var_Patch)
 
 %extend AdvApp2Var_Patch {
 	%pythoncode {

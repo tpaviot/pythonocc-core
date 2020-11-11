@@ -7837,34 +7837,8 @@ opencascade::handle<HLRAlgo_PolyAlgo>
 ") Algo;
 		opencascade::handle<HLRAlgo_PolyAlgo> Algo();
 
-		/****************** Angle ******************/
-		/**** md5 signature: dce50192c350c43b54f2e88e94e5372a ****/
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-float
-") Angle;
-		Standard_Real Angle();
-
-		/****************** Angle ******************/
-		/**** md5 signature: 74500f49536b4f5912c02c18aac12bd7 ****/
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Ang: float
-
-Returns
--------
-None
-") Angle;
-		void Angle(const Standard_Real Ang);
-
 		/****************** Debug ******************/
-		/**** md5 signature: c5ed4da64ffa88071867c0cccf683e9a ****/
+		/**** md5 signature: 69dc7ba9221c00c4012a027efb557742 ****/
 		%feature("compactdefaultargs") Debug;
 		%feature("autodoc", "No available documentation.
 
@@ -7875,19 +7849,19 @@ bool
 		Standard_Boolean Debug();
 
 		/****************** Debug ******************/
-		/**** md5 signature: 6b2ebbcb8f7924379067b3cf4c979192 ****/
+		/**** md5 signature: 5a84295d1fdccd631752aed041f3c397 ****/
 		%feature("compactdefaultargs") Debug;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-B: bool
+theDebug: bool
 
 Returns
 -------
 None
 ") Debug;
-		void Debug(const Standard_Boolean B);
+		void Debug(const Standard_Boolean theDebug);
 
 		/****************** Hide ******************/
 		/**** md5 signature: 6909c92a5658f468316390940e7bea34 ****/
@@ -7924,7 +7898,7 @@ int
 		Standard_Integer Index(const TopoDS_Shape & S);
 
 		/****************** InitHide ******************/
-		/**** md5 signature: 32bd2983c565ec4e2841cbdfc31fdf26 ****/
+		/**** md5 signature: 6d3a01e37a94e3705475c3d6870e3eb9 ****/
 		%feature("compactdefaultargs") InitHide;
 		%feature("autodoc", "No available documentation.
 
@@ -7935,7 +7909,7 @@ None
 		void InitHide();
 
 		/****************** InitShow ******************/
-		/**** md5 signature: ea1a67c1f45ef7c44c521925fd0378a1 ****/
+		/**** md5 signature: 0c19b9d9bad511b1134c595c7ff3584f ****/
 		%feature("compactdefaultargs") InitShow;
 		%feature("autodoc", "No available documentation.
 
@@ -7946,22 +7920,22 @@ None
 		void InitShow();
 
 		/****************** Load ******************/
-		/**** md5 signature: e8cac8ea20706569fcef43af3e2c23ea ****/
+		/**** md5 signature: 56097b0038014c5783d770f95d4d1211 ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Loads the shape s into this framework. warning s must have already been triangulated.
 
 Parameters
 ----------
-S: TopoDS_Shape
+theShape: TopoDS_Shape
 
 Returns
 -------
 None
 ") Load;
-		void Load(const TopoDS_Shape & S);
+		void Load(const TopoDS_Shape & theShape);
 
 		/****************** MoreHide ******************/
-		/**** md5 signature: d38676512d86f43f63f7be299a6fac64 ****/
+		/**** md5 signature: ee934ca6bfa0a4423c581ec95be0690b ****/
 		%feature("compactdefaultargs") MoreHide;
 		%feature("autodoc", "No available documentation.
 
@@ -7972,7 +7946,7 @@ bool
 		Standard_Boolean MoreHide();
 
 		/****************** MoreShow ******************/
-		/**** md5 signature: 1f2b98cd697654109ddadc761c52bff2 ****/
+		/**** md5 signature: 676e76c7f6a46e8688a744d734543b5e ****/
 		%feature("compactdefaultargs") MoreShow;
 		%feature("autodoc", "No available documentation.
 
@@ -7983,7 +7957,7 @@ bool
 		Standard_Boolean MoreShow();
 
 		/****************** NbShapes ******************/
-		/**** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ****/
+		/**** md5 signature: c49f25449a07f6fd2b7c8d09e76ddf1b ****/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "No available documentation.
 
@@ -7994,7 +7968,7 @@ int
 		Standard_Integer NbShapes();
 
 		/****************** NextHide ******************/
-		/**** md5 signature: 22f8ebe157186c9b9096225d279bf0df ****/
+		/**** md5 signature: dcb66ac8288020d4ad437ebf60391a66 ****/
 		%feature("compactdefaultargs") NextHide;
 		%feature("autodoc", "No available documentation.
 
@@ -8005,7 +7979,7 @@ None
 		void NextHide();
 
 		/****************** NextShow ******************/
-		/**** md5 signature: e69996302b094708790ccdf13c4fece3 ****/
+		/**** md5 signature: 3588c30af16811e553b4bc86d4db1d70 ****/
 		%feature("compactdefaultargs") NextShow;
 		%feature("autodoc", "No available documentation.
 
@@ -8031,7 +8005,7 @@ TopoDS_Shape
 		TopoDS_Shape OutLinedShape(const TopoDS_Shape & S);
 
 		/****************** Projector ******************/
-		/**** md5 signature: 23a6a7deb95f5da3cbce2596dee28e05 ****/
+		/**** md5 signature: bc8b1b600cbb38fc2f006052292ba737 ****/
 		%feature("compactdefaultargs") Projector;
 		%feature("autodoc", "Sets the parameters of the view for this framework. these parameters are defined by an hlralgo_projector object, which is returned by the projector function on a prs3d_projector object.
 
@@ -8042,19 +8016,19 @@ HLRAlgo_Projector
 		const HLRAlgo_Projector & Projector();
 
 		/****************** Projector ******************/
-		/**** md5 signature: 1b358691806af1ecbf38ab72a35ea356 ****/
+		/**** md5 signature: 991509663f3e24eb2c11be56f8c3a92f ****/
 		%feature("compactdefaultargs") Projector;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-P: HLRAlgo_Projector
+theProj: HLRAlgo_Projector
 
 Returns
 -------
 None
 ") Projector;
-		void Projector(const HLRAlgo_Projector & P);
+		void Projector(const HLRAlgo_Projector & theProj);
 
 		/****************** Remove ******************/
 		/**** md5 signature: e9cf861e645127938dcff0ea13bfa8c2 ****/
@@ -8105,7 +8079,7 @@ intl: bool
 		HLRAlgo_BiPoint::PointsT & Show(TopoDS_Shape & S, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** TolAngular ******************/
-		/**** md5 signature: b72a2b3894db353785f7ca3e1bf2fd62 ****/
+		/**** md5 signature: a0cac09d05df8a373bc57341a3bdbdac ****/
 		%feature("compactdefaultargs") TolAngular;
 		%feature("autodoc", "No available documentation.
 
@@ -8116,22 +8090,22 @@ float
 		Standard_Real TolAngular();
 
 		/****************** TolAngular ******************/
-		/**** md5 signature: 78d0136cd0be1cc61193f4c373c2b0b0 ****/
+		/**** md5 signature: 4094ebd98e1eba0acbcd66ec1aaadfeb ****/
 		%feature("compactdefaultargs") TolAngular;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Tol: float
+theTol: float
 
 Returns
 -------
 None
 ") TolAngular;
-		void TolAngular(const Standard_Real Tol);
+		void TolAngular(const Standard_Real theTol);
 
 		/****************** TolCoef ******************/
-		/**** md5 signature: 06f50361cd7fd1d11de29921eb8c7f4b ****/
+		/**** md5 signature: d2fea73ed2426c0333fec48a4b3e7f07 ****/
 		%feature("compactdefaultargs") TolCoef;
 		%feature("autodoc", "No available documentation.
 
@@ -8142,19 +8116,19 @@ float
 		Standard_Real TolCoef();
 
 		/****************** TolCoef ******************/
-		/**** md5 signature: 993b617f7d9ad9fae826ed31a16d56b4 ****/
+		/**** md5 signature: 481c30d8f4ead55eb016cae2e0c01d3c ****/
 		%feature("compactdefaultargs") TolCoef;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Tol: float
+theTol: float
 
 Returns
 -------
 None
 ") TolCoef;
-		void TolCoef(const Standard_Real Tol);
+		void TolCoef(const Standard_Real theTol);
 
 		/****************** Update ******************/
 		/**** md5 signature: 997c8dd85f474bf26af99d1a07d6fa3f ****/

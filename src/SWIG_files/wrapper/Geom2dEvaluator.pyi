@@ -8,6 +8,16 @@ from OCC.Core.Geom2d import *
 from OCC.Core.Geom2dAdaptor import *
 
 
+class geom2devaluator:
+	@staticmethod
+	def CalculateD0(theValue: gp_Pnt2d, theD1: gp_Vec2d, theOffset: float) -> None: ...
+	@staticmethod
+	def CalculateD1(theValue: gp_Pnt2d, theD1: gp_Vec2d, theD2: gp_Vec2d, theOffset: float) -> None: ...
+	@staticmethod
+	def CalculateD2(theValue: gp_Pnt2d, theD1: gp_Vec2d, theD2: gp_Vec2d, theD3: gp_Vec2d, theIsDirChange: bool, theOffset: float) -> None: ...
+	@staticmethod
+	def CalculateD3(theValue: gp_Pnt2d, theD1: gp_Vec2d, theD2: gp_Vec2d, theD3: gp_Vec2d, theD4: gp_Vec2d, theIsDirChange: bool, theOffset: float) -> None: ...
+
 class Geom2dEvaluator_Curve(Standard_Transient):
 	def D0(self, theU: float, theValue: gp_Pnt2d) -> None: ...
 	def D1(self, theU: float, theValue: gp_Pnt2d, theD1: gp_Vec2d) -> None: ...
@@ -31,3 +41,7 @@ class Geom2dEvaluator_OffsetCurve(Geom2dEvaluator_Curve):
 # harray2 classes
 # hsequence classes
 
+geom2devaluator_CalculateD0 = geom2devaluator.CalculateD0
+geom2devaluator_CalculateD1 = geom2devaluator.CalculateD1
+geom2devaluator_CalculateD2 = geom2devaluator.CalculateD2
+geom2devaluator_CalculateD3 = geom2devaluator.CalculateD3

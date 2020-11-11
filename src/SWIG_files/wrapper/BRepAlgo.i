@@ -850,6 +850,37 @@ None
 ") Remove;
 		void Remove(const TopoDS_Shape & S);
 
+		/****************** RemoveRoot ******************/
+		/**** md5 signature: 690c4fd21a18576f149a066c30568867 ****/
+		%feature("compactdefaultargs") RemoveRoot;
+		%feature("autodoc", "Removes the root <theroot> from the list of roots and up and down maps.
+
+Parameters
+----------
+Root: TopoDS_Shape
+
+Returns
+-------
+None
+") RemoveRoot;
+		void RemoveRoot(const TopoDS_Shape & Root);
+
+		/****************** ReplaceRoot ******************/
+		/**** md5 signature: 285b3a580e43af49c3fb24e085a66aef ****/
+		%feature("compactdefaultargs") ReplaceRoot;
+		%feature("autodoc", "Replaces the <oldroot> with the <newroot>, so all images of the <oldroot> become the images of the <newroot>. the <oldroot> is removed.
+
+Parameters
+----------
+OldRoot: TopoDS_Shape
+NewRoot: TopoDS_Shape
+
+Returns
+-------
+None
+") ReplaceRoot;
+		void ReplaceRoot(const TopoDS_Shape & OldRoot, const TopoDS_Shape & NewRoot);
+
 		/****************** Root ******************/
 		/**** md5 signature: b928b7ce7a4d68875a739516be55eb7c ****/
 		%feature("compactdefaultargs") Root;

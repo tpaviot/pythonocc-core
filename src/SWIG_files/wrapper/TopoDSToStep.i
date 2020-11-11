@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topodstostep.html
 #include<TCollection_module.hxx>
 #include<MoniTool_module.hxx>
 #include<StepShape_module.hxx>
+#include<Message_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
@@ -55,6 +56,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topodstostep.html
 #include<TopLoc_module.hxx>
 #include<Transfer_module.hxx>
 #include<StepData_module.hxx>
+#include<Resource_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -67,6 +69,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topodstostep.html
 %import TCollection.i
 %import MoniTool.i
 %import StepShape.i
+%import Message.i
 %import TColStd.i
 
 %pythoncode {
@@ -689,7 +692,7 @@ None
 		 TopoDSToStep_Builder();
 
 		/****************** TopoDSToStep_Builder ******************/
-		/**** md5 signature: d05d11fac36f48b5b946d43b732f8a1a ****/
+		/**** md5 signature: 0fa038e8a4fa5b38f1047d69f3e8ea54 ****/
 		%feature("compactdefaultargs") TopoDSToStep_Builder;
 		%feature("autodoc", "No available documentation.
 
@@ -698,12 +701,14 @@ Parameters
 S: TopoDS_Shape
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_Builder;
-		 TopoDSToStep_Builder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_Builder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Error ******************/
 		/**** md5 signature: 4bfee53f7138b72d517fea79437aa1f7 ****/
@@ -717,7 +722,7 @@ TopoDSToStep_BuilderError
 		TopoDSToStep_BuilderError Error();
 
 		/****************** Init ******************/
-		/**** md5 signature: 236fa74366610b421d1df65d77c015d6 ****/
+		/**** md5 signature: 4b93d07c681be44bd5e1849c4ec08b8c ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -726,12 +731,14 @@ Parameters
 S: TopoDS_Shape
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Init;
-		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP);
+		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: 93f870518e0f3e5d539f05051ca83055 ****/
@@ -759,7 +766,7 @@ opencascade::handle<StepShape_TopologicalRepresentationItem>
 class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeBrepWithVoids ******************/
-		/**** md5 signature: b3cd070693cf67a1d2b650ddcf9eb519 ****/
+		/**** md5 signature: 4c5d1027b6960b7ebbdf073d956cc9d7 ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeBrepWithVoids;
 		%feature("autodoc", "No available documentation.
 
@@ -767,12 +774,14 @@ Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeBrepWithVoids;
-		 TopoDSToStep_MakeBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: d72647c7f4bca2f2e71c4a091a4acc6e ****/
@@ -800,7 +809,7 @@ opencascade::handle<StepShape_BrepWithVoids>
 class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeFacetedBrep ******************/
-		/**** md5 signature: 2d6a1813aa77128caf81b1e973aa9784 ****/
+		/**** md5 signature: b4fce2ad17fe07e0290b453946de29de ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrep;
 		%feature("autodoc", "No available documentation.
 
@@ -808,15 +817,17 @@ Parameters
 ----------
 S: TopoDS_Shell
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeFacetedBrep;
-		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TopoDSToStep_MakeFacetedBrep ******************/
-		/**** md5 signature: 3184bf8d538101e0eca718fa1684ae0a ****/
+		/**** md5 signature: c4907b72fa188dde0f31d0479a8e25f2 ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrep;
 		%feature("autodoc", "No available documentation.
 
@@ -824,12 +835,14 @@ Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeFacetedBrep;
-		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: b742cde4076883160493264b81367cb7 ****/
@@ -857,7 +870,7 @@ opencascade::handle<StepShape_FacetedBrep>
 class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeFacetedBrepAndBrepWithVoids ******************/
-		/**** md5 signature: 75bbab5f5ba9fbb6a47459df6f3b6de9 ****/
+		/**** md5 signature: 28f4119854f74a1eb9e9984617d84cfc ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 		%feature("autodoc", "No available documentation.
 
@@ -865,12 +878,14 @@ Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
-		 TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: 3c4cb0ca6dbe9c2df0807e20ce2593d1 ****/
@@ -939,7 +954,7 @@ opencascade::handle<StepShape_GeometricCurveSet>
 class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeManifoldSolidBrep ******************/
-		/**** md5 signature: 92dbabf1a9e929fe8f1e2b201627e1c8 ****/
+		/**** md5 signature: 8a8615a41005036402e2fb7c757937c1 ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeManifoldSolidBrep;
 		%feature("autodoc", "No available documentation.
 
@@ -947,15 +962,17 @@ Parameters
 ----------
 S: TopoDS_Shell
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeManifoldSolidBrep;
-		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TopoDSToStep_MakeManifoldSolidBrep ******************/
-		/**** md5 signature: ab98b00daacf8ff6c2c459044143a87d ****/
+		/**** md5 signature: 2a02e062cf4ac637975d009711a0e00c ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeManifoldSolidBrep;
 		%feature("autodoc", "No available documentation.
 
@@ -963,12 +980,14 @@ Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeManifoldSolidBrep;
-		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: 523ad3a36206eb6d9f186b9735aa69ce ****/
@@ -996,7 +1015,7 @@ opencascade::handle<StepShape_ManifoldSolidBrep>
 class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
-		/**** md5 signature: 8be51a4f59ec968537eadb6157b9906f ****/
+		/**** md5 signature: ce2d2d4222dbad5f5142d973cdfe0c25 ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", "No available documentation.
 
@@ -1004,15 +1023,17 @@ Parameters
 ----------
 F: TopoDS_Face
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
-		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Face & F, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Face & F, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
-		/**** md5 signature: 3b82d457a08021b5724d7a41f56e10d0 ****/
+		/**** md5 signature: 0c9ce804a1663e30fac54273f47886b0 ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", "No available documentation.
 
@@ -1020,15 +1041,17 @@ Parameters
 ----------
 S: TopoDS_Shell
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
-		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
-		/**** md5 signature: cfa464aa43890ce6b1bbb3c17342b14b ****/
+		/**** md5 signature: bdbb6118eafff25f9b3901efe005e2d0 ****/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", "No available documentation.
 
@@ -1036,12 +1059,14 @@ Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
-		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP);
+		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Value ******************/
 		/**** md5 signature: 6c59d3f4bc485bc5dec9fe78343c6060 ****/

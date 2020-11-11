@@ -970,21 +970,6 @@ None
 ") Intf_TangentZone;
 		 Intf_TangentZone();
 
-		/****************** Intf_TangentZone ******************/
-		/**** md5 signature: d2c82ce938386dafdb59addd61a22ecf ****/
-		%feature("compactdefaultargs") Intf_TangentZone;
-		%feature("autodoc", "Copies a tangent zone.
-
-Parameters
-----------
-Other: Intf_TangentZone
-
-Returns
--------
-None
-") Intf_TangentZone;
-		 Intf_TangentZone(const Intf_TangentZone & Other);
-
 		/****************** Append ******************/
 		/**** md5 signature: ed6ae53170fb7759df7d4a47f4079341 ****/
 		%feature("compactdefaultargs") Append;

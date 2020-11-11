@@ -121,6 +121,17 @@ None
                 self->DumpJson(s, depth);
                 return s.str();}
             };
+		/****************** Form ******************/
+		/**** md5 signature: f29bb1eb1523b456c279366338ab9947 ****/
+		%feature("compactdefaultargs") Form;
+		%feature("autodoc", "Return transformation form.
+
+Returns
+-------
+gp_TrsfForm
+") Form;
+		gp_TrsfForm Form();
+
 
         %feature("autodoc", "1");
         %extend{
@@ -130,7 +141,7 @@ None
             return s.str();}
         };
 		/****************** Transformation ******************/
-		/**** md5 signature: 567e6ee373139970f4679dbb49e28e7c ****/
+		/**** md5 signature: 4340f0c35d6856faf6f9daeca03f9595 ****/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Returns a gp_trsf which, when applied to this datum, produces the default datum.
 
@@ -139,6 +150,17 @@ Returns
 gp_Trsf
 ") Transformation;
 		const gp_Trsf Transformation();
+
+		/****************** Trsf ******************/
+		/**** md5 signature: 994369af5cf027a69090540425b26b58 ****/
+		%feature("compactdefaultargs") Trsf;
+		%feature("autodoc", "Returns a gp_trsf which, when applied to this datum, produces the default datum.
+
+Returns
+-------
+gp_Trsf
+") Trsf;
+		const gp_Trsf Trsf();
 
 };
 

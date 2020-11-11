@@ -41,9 +41,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeprocess.html
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<Message_module.hxx>
 #include<TCollection_module.hxx>
 #include<Resource_module.hxx>
-#include<Message_module.hxx>
 #include<TopoDS_module.hxx>
 #include<BRepTools_module.hxx>
 #include<TopTools_module.hxx>
@@ -68,9 +68,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeprocess.html
 %};
 %import Standard.i
 %import NCollection.i
+%import Message.i
 %import TCollection.i
 %import Resource.i
-%import Message.i
 %import TopoDS.i
 %import BRepTools.i
 %import TopTools.i
@@ -103,7 +103,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle<ShapeProcess_Context>& context );
+typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle<ShapeProcess_Context>& context, const Message_ProgressRange & theProgress );
 /* end typedefs declaration */
 
 /*********************
@@ -129,7 +129,7 @@ bool
 		static Standard_Boolean FindOperator(const char * name, opencascade::handle<ShapeProcess_Operator> & op);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 7533e984efb09869bf1f3c4940c1ce68 ****/
+		/**** md5 signature: b09a663248f0a938268494641ee9386a ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs a specified sequence of operators on context resource file and other data should be already loaded to context (including description of sequence seq).
 
@@ -137,12 +137,14 @@ Parameters
 ----------
 context: ShapeProcess_Context
 seq: char *
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const char * seq);
+		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const char * seq, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** RegisterOperator ******************/
 		/**** md5 signature: f3fc4533ca3193906e102f361e526b9e ****/
@@ -353,17 +355,6 @@ opencascade::handle<Message_Messenger>
 ") Messenger;
 		opencascade::handle<Message_Messenger> Messenger();
 
-		/****************** Progress ******************/
-		/**** md5 signature: b1f33c3390e3bf1c3442fbce55e6f143 ****/
-		%feature("compactdefaultargs") Progress;
-		%feature("autodoc", "Returns progress indicator.
-
-Returns
--------
-opencascade::handle<Message_ProgressIndicator>
-") Progress;
-		opencascade::handle<Message_ProgressIndicator> Progress();
-
 		/****************** RealVal ******************/
 		/**** md5 signature: b3e5c67f2dd7912ff4b94cd089eeda0a ****/
 		%feature("compactdefaultargs") RealVal;
@@ -405,21 +396,6 @@ Returns
 None
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
-
-		/****************** SetProgress ******************/
-		/**** md5 signature: a84d4cba9281e377406d50b9d58fab3b ****/
-		%feature("compactdefaultargs") SetProgress;
-		%feature("autodoc", "Sets progress indicator.
-
-Parameters
-----------
-theProgress: Message_ProgressIndicator
-
-Returns
--------
-None
-") SetProgress;
-		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & theProgress);
 
 		/****************** SetScope ******************/
 		/**** md5 signature: 8ee5ae53e9b457435d5d63fa00ffc340 ****/
@@ -554,19 +530,21 @@ None
 class ShapeProcess_Operator : public Standard_Transient {
 	public:
 		/****************** Perform ******************/
-		/**** md5 signature: ad410a2bfb887550687dbf0d439b0f68 ****/
+		/**** md5 signature: b2410fe629ca4604fd2f4736b7846dc2 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs operation and eventually records changes in the context.
 
 Parameters
 ----------
 context: ShapeProcess_Context
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		virtual Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context);
+		virtual Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -915,19 +893,21 @@ None
 		 ShapeProcess_UOperator(const ShapeProcess_OperFunc func);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 44b9939b59beba716399814ccdea1c5c ****/
+		/**** md5 signature: 24c3bd22390455c26b649fc0127bc193 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs operation and records changes in the context.
 
 Parameters
 ----------
 context: ShapeProcess_Context
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		virtual Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context);
+		virtual Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

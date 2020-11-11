@@ -2572,7 +2572,7 @@ int
 class math_Gauss {
 	public:
 		/****************** math_Gauss ******************/
-		/**** md5 signature: 6a94db55724cec84e15299a05d1b3a6f ****/
+		/**** md5 signature: 73ea5f1f86c396552a8862c45d31d1e4 ****/
 		%feature("compactdefaultargs") math_Gauss;
 		%feature("autodoc", "Given an input n x n matrix a this constructor performs its lu decomposition with partial pivoting (interchange of rows). this lu decomposition is stored internally and may be used to do subsequent calculation. if the largest pivot found is less than minpivot the matrix a is considered as singular. exception notsquare is raised if a is not a square matrix.
 
@@ -2581,14 +2581,14 @@ Parameters
 A: math_Matrix
 MinPivot: float,optional
 	default value is 1.0e-20
-aProgress: Message_ProgressIndicator,optional
-	default value is opencascade::handle<Message_ProgressIndicator>()
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") math_Gauss;
-		 math_Gauss(const math_Matrix & A, const Standard_Real MinPivot = 1.0e-20, const opencascade::handle<Message_ProgressIndicator> & aProgress = opencascade::handle<Message_ProgressIndicator>());
+		 math_Gauss(const math_Matrix & A, const Standard_Real MinPivot = 1.0e-20, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Determinant ******************/
 		/**** md5 signature: 5ac8cd01bd8c7b44a3e7395b4e2f6518 ****/
