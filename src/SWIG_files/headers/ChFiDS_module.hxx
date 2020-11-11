@@ -49,5 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ChFiDS_StripeArray1.hxx>
 #include<ChFiDS_StripeMap.hxx>
 #include<ChFiDS_SurfData.hxx>
+#include<ChFiDS_TypeOfConcavity.hxx>
 
 #endif // CHFIDS_HXX

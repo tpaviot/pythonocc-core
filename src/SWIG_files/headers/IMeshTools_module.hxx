@@ -23,6 +23,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IMeshTools_CurveTessellator.hxx>
 #include<IMeshTools_MeshAlgo.hxx>
 #include<IMeshTools_MeshAlgoFactory.hxx>
+#include<IMeshTools_MeshAlgoType.hxx>
 #include<IMeshTools_MeshBuilder.hxx>
 #include<IMeshTools_ModelAlgo.hxx>
 #include<IMeshTools_ModelBuilder.hxx>

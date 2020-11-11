@@ -98,6 +98,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_NameOfTexture2D.hxx>
 #include<Graphic3d_NameOfTextureEnv.hxx>
 #include<Graphic3d_NameOfTexturePlane.hxx>
+#include<Graphic3d_PBRMaterial.hxx>
 #include<Graphic3d_PolygonOffset.hxx>
 #include<Graphic3d_PresentationAttributes.hxx>
 #include<Graphic3d_PriorityDefinitionError.hxx>
@@ -128,6 +129,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_TextureParams.hxx>
 #include<Graphic3d_TextureRoot.hxx>
 #include<Graphic3d_TextureSet.hxx>
+#include<Graphic3d_TextureSetBits.hxx>
 #include<Graphic3d_TextureUnit.hxx>
 #include<Graphic3d_ToneMappingMethod.hxx>
 #include<Graphic3d_TransModeFlags.hxx>

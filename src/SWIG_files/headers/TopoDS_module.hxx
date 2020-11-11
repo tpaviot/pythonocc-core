@@ -20,6 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<TopoDS.hxx>
+#include<TopoDS_AlertAttribute.hxx>
 #include<TopoDS_AlertWithShape.hxx>
 #include<TopoDS_Builder.hxx>
 #include<TopoDS_CompSolid.hxx>

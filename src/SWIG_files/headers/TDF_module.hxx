@@ -52,6 +52,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_DeltaOnModification.hxx>
 #include<TDF_DeltaOnRemoval.hxx>
 #include<TDF_DeltaOnResume.hxx>
+#include<TDF_DerivedAttribute.hxx>
 #include<TDF_DoubleMapIteratorOfAttributeDoubleMap.hxx>
 #include<TDF_DoubleMapIteratorOfGUIDProgIDMap.hxx>
 #include<TDF_DoubleMapIteratorOfLabelDoubleMap.hxx>

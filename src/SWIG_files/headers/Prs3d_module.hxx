@@ -23,6 +23,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Prs3d_Arrow.hxx>
 #include<Prs3d_ArrowAspect.hxx>
 #include<Prs3d_BasicAspect.hxx>
+#include<Prs3d_BndBox.hxx>
 #include<Prs3d_DatumAspect.hxx>
 #include<Prs3d_DatumAttribute.hxx>
 #include<Prs3d_DatumAxes.hxx>
@@ -44,7 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Prs3d_PointAspect.hxx>
 #include<Prs3d_Presentation.hxx>
 #include<Prs3d_PresentationShadow.hxx>
-#include<Prs3d_Projector.hxx>
 #include<Prs3d_Root.hxx>
 #include<Prs3d_ShadingAspect.hxx>
 #include<Prs3d_ShapeTool.hxx>
@@ -55,6 +55,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Prs3d_ToolQuadric.hxx>
 #include<Prs3d_ToolSector.hxx>
 #include<Prs3d_ToolSphere.hxx>
+#include<Prs3d_ToolTorus.hxx>
 #include<Prs3d_TypeOfHLR.hxx>
 #include<Prs3d_TypeOfHighlight.hxx>
 #include<Prs3d_TypeOfLinePicking.hxx>

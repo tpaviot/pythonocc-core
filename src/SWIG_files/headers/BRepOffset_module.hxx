@@ -41,6 +41,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepOffset_SimpleOffset.hxx>
 #include<BRepOffset_Status.hxx>
 #include<BRepOffset_Tool.hxx>
-#include<BRepOffset_Type.hxx>
 
 #endif // BREPOFFSET_HXX

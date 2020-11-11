@@ -22,17 +22,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StdSelect.hxx>
 #include<StdSelect_BRepOwner.hxx>
 #include<StdSelect_BRepSelectionTool.hxx>
-#include<StdSelect_DisplayMode.hxx>
 #include<StdSelect_EdgeFilter.hxx>
 #include<StdSelect_FaceFilter.hxx>
-#include<StdSelect_IndexedDataMapOfOwnerPrs.hxx>
-#include<StdSelect_Prs.hxx>
-#include<StdSelect_SensitivityMode.hxx>
 #include<StdSelect_Shape.hxx>
 #include<StdSelect_ShapeTypeFilter.hxx>
 #include<StdSelect_TypeOfEdge.hxx>
 #include<StdSelect_TypeOfFace.hxx>
-#include<StdSelect_TypeOfResult.hxx>
 #include<StdSelect_TypeOfSelectionImage.hxx>
 #include<StdSelect_ViewerSelector3d.hxx>
 

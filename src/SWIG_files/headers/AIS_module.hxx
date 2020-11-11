@@ -48,9 +48,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_DiameterDimension.hxx>
 #include<AIS_Dimension.hxx>
 #include<AIS_DimensionOwner.hxx>
-#include<AIS_DimensionSelectionMode.hxx>
 #include<AIS_DisplayMode.hxx>
-#include<AIS_DisplaySpecialSymbol.hxx>
 #include<AIS_DisplayStatus.hxx>
 #include<AIS_DragAction.hxx>
 #include<AIS_EllipseRadiusDimension.hxx>
@@ -64,11 +62,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_IndexedDataMapOfOwnerPrs.hxx>
 #include<AIS_InteractiveContext.hxx>
 #include<AIS_InteractiveObject.hxx>
-#include<AIS_KindOfDimension.hxx>
 #include<AIS_KindOfInteractive.hxx>
-#include<AIS_KindOfRelation.hxx>
-#include<AIS_KindOfSurface.hxx>
-#include<AIS_KindOfUnit.hxx>
 #include<AIS_LengthDimension.hxx>
 #include<AIS_Line.hxx>
 #include<AIS_ListIteratorOfListOfInteractive.hxx>
@@ -100,11 +94,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_SelectStatus.hxx>
 #include<AIS_Selection.hxx>
 #include<AIS_SelectionModesConcurrency.hxx>
-#include<AIS_SequenceOfDimension.hxx>
 #include<AIS_SequenceOfInteractive.hxx>
 #include<AIS_Shape.hxx>
 #include<AIS_SignatureFilter.hxx>
-#include<AIS_StandardDatum.hxx>
 #include<AIS_StatusOfDetection.hxx>
 #include<AIS_StatusOfPick.hxx>
 #include<AIS_SymmetricRelation.hxx>
@@ -116,16 +108,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_TrihedronOwner.hxx>
 #include<AIS_TrihedronSelectionMode.hxx>
 #include<AIS_TypeFilter.hxx>
-#include<AIS_TypeOfAngle.hxx>
-#include<AIS_TypeOfAngleArrowVisibility.hxx>
 #include<AIS_TypeOfAttribute.hxx>
 #include<AIS_TypeOfAxis.hxx>
-#include<AIS_TypeOfDist.hxx>
 #include<AIS_TypeOfIso.hxx>
 #include<AIS_TypeOfPlane.hxx>
 #include<AIS_ViewController.hxx>
 #include<AIS_ViewCube.hxx>
 #include<AIS_ViewInputBuffer.hxx>
 #include<AIS_WalkDelta.hxx>
+#include<AIS_XRTrackedDevice.hxx>
 
 #endif // AIS_HXX

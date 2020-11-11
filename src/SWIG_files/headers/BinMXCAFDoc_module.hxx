@@ -20,31 +20,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<BinMXCAFDoc.hxx>
-#include<BinMXCAFDoc_AreaDriver.hxx>
 #include<BinMXCAFDoc_AssemblyItemRefDriver.hxx>
 #include<BinMXCAFDoc_CentroidDriver.hxx>
-#include<BinMXCAFDoc_ClippingPlaneToolDriver.hxx>
 #include<BinMXCAFDoc_ColorDriver.hxx>
-#include<BinMXCAFDoc_ColorToolDriver.hxx>
 #include<BinMXCAFDoc_DatumDriver.hxx>
 #include<BinMXCAFDoc_DimTolDriver.hxx>
-#include<BinMXCAFDoc_DimTolToolDriver.hxx>
-#include<BinMXCAFDoc_DimensionDriver.hxx>
-#include<BinMXCAFDoc_DocumentToolDriver.hxx>
-#include<BinMXCAFDoc_GeomToleranceDriver.hxx>
 #include<BinMXCAFDoc_GraphNodeDriver.hxx>
-#include<BinMXCAFDoc_LayerToolDriver.hxx>
 #include<BinMXCAFDoc_LocationDriver.hxx>
 #include<BinMXCAFDoc_MaterialDriver.hxx>
-#include<BinMXCAFDoc_MaterialToolDriver.hxx>
-#include<BinMXCAFDoc_NoteBalloonDriver.hxx>
 #include<BinMXCAFDoc_NoteBinDataDriver.hxx>
 #include<BinMXCAFDoc_NoteCommentDriver.hxx>
 #include<BinMXCAFDoc_NoteDriver.hxx>
-#include<BinMXCAFDoc_NotesToolDriver.hxx>
-#include<BinMXCAFDoc_ShapeToolDriver.hxx>
-#include<BinMXCAFDoc_ViewDriver.hxx>
-#include<BinMXCAFDoc_ViewToolDriver.hxx>
-#include<BinMXCAFDoc_VolumeDriver.hxx>
+#include<BinMXCAFDoc_VisMaterialDriver.hxx>
+#include<BinMXCAFDoc_VisMaterialToolDriver.hxx>
 
 #endif // BINMXCAFDOC_HXX

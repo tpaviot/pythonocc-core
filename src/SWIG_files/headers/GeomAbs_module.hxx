@@ -20,13 +20,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<GeomAbs_BSplKnotDistribution.hxx>
-#include<GeomAbs_CurveForm.hxx>
 #include<GeomAbs_CurveType.hxx>
 #include<GeomAbs_IsoType.hxx>
 #include<GeomAbs_JoinType.hxx>
 #include<GeomAbs_Shape.hxx>
-#include<GeomAbs_SurfaceForm.hxx>
 #include<GeomAbs_SurfaceType.hxx>
-#include<GeomAbs_UVSense.hxx>
 
 #endif // GEOMABS_HXX

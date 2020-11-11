@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<RWStepVisual_RWAnnotationCurveOccurrence.hxx>
-#include<RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.hxx>
+#include<RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem.hxx>
 #include<RWStepVisual_RWAnnotationFillArea.hxx>
 #include<RWStepVisual_RWAnnotationFillAreaOccurrence.hxx>
 #include<RWStepVisual_RWAnnotationOccurrence.hxx>
@@ -35,7 +35,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepVisual_RWCameraModelD3MultiClippingIntersection.hxx>
 #include<RWStepVisual_RWCameraModelD3MultiClippingUnion.hxx>
 #include<RWStepVisual_RWCameraUsage.hxx>
-#include<RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.hxx>
+#include<RWStepVisual_RWCharacterizedObjAndRepresentationAndDraughtingModel.hxx>
 #include<RWStepVisual_RWColour.hxx>
 #include<RWStepVisual_RWColourRgb.hxx>
 #include<RWStepVisual_RWColourSpecification.hxx>
@@ -80,8 +80,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepVisual_RWSurfaceStyleControlGrid.hxx>
 #include<RWStepVisual_RWSurfaceStyleFillArea.hxx>
 #include<RWStepVisual_RWSurfaceStyleParameterLine.hxx>
+#include<RWStepVisual_RWSurfaceStyleReflectanceAmbient.hxx>
+#include<RWStepVisual_RWSurfaceStyleRendering.hxx>
+#include<RWStepVisual_RWSurfaceStyleRenderingWithProperties.hxx>
 #include<RWStepVisual_RWSurfaceStyleSegmentationCurve.hxx>
 #include<RWStepVisual_RWSurfaceStyleSilhouette.hxx>
+#include<RWStepVisual_RWSurfaceStyleTransparent.hxx>
 #include<RWStepVisual_RWSurfaceStyleUsage.hxx>
 #include<RWStepVisual_RWTemplate.hxx>
 #include<RWStepVisual_RWTemplateInstance.hxx>
