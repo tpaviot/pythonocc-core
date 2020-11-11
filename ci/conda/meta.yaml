@@ -24,10 +24,10 @@ requirements:
 
   host:
     - python {{ python }}
-    - opencascade ==7.4.0
+    - occt ==7.5.0
 
   run:
-    - opencascade ==7.4.0
+    - occt ==7.5.0
     - python
 
 test:
