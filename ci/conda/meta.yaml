@@ -39,6 +39,7 @@ test:
   requires:
     - pyqt >=5
     - mypy
+    - svgwrite
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
