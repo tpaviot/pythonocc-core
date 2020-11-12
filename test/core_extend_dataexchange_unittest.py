@@ -154,15 +154,15 @@ class TestExtendDataExchange(unittest.TestCase):
         doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
         document = doc_exp.get_doc()
         scenegraph = SceneGraphFromDoc(document)
-        x3dXML = X3DFromSceneGraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries(), log=True)
+        x3dXML = X3DFromSceneGraph(scenegraph.get_scene(), scenegraph.get_internal_face_entries(), log=True)
         x3dXML.to_xml()
         x3dXML.to_x3dom_html()
 
 
     def test_x3d_scene(self):
         x3d_scene = X3DSceneExporter()
-        x3d_scene.add_shape(A_TOPODS_SHAPE, color=(0.5, 0.5, 0.5), emissive=True)
-        x3d_scene.to_x3domHTML()
+        x3d_scene.add_shape(A_TOPODS_SHAPE, shape_color=(0.5, 0.5, 0.5), emissive=True)
+        x3d_scene.to_x3dom_html()
 
 
 def suite():
