@@ -665,7 +665,7 @@ class ShapeTesselator(Tesselator):
     def tesselate(self):
         """ tesselate the shape
         """
-        print("Tesselate shape ... ", end="")
+        #print("Tesselate shape ... ", end="")
         self.compute_deviation()
         # clean shape to remove any previous tringulation
         breptools_Clean(self._shape)
@@ -717,7 +717,7 @@ class ShapeTesselator(Tesselator):
         # compute edges, if need
         if self._compute_edges:
             self.compute_edges()
-        print("done.")
+        #print("done.")
 
 
 if __name__ == "__main__":
