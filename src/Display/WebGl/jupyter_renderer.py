@@ -25,6 +25,7 @@ import sys
 
 # pythreejs
 try:
+<<<<<<< HEAD
     from pythreejs import (
         CombinedCamera,
         BufferAttribute,
@@ -50,6 +51,16 @@ try:
         make_text,
     )
     from IPython.display import display, SVG
+=======
+    from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry,
+                           Mesh, LineSegmentsGeometry, LineMaterial,
+                           LineSegments2, AmbientLight,
+                           DirectionalLight, Scene, OrbitControls, Renderer,
+                           Picker, Group, GridHelper, Line,
+                           ShaderMaterial, ShaderLib, LineBasicMaterial,
+                           PointsMaterial, Points, make_text)
+    from IPython.display import display, SVG, clear_output
+>>>>>>> added a progress indicator in Jupyter renderer
     from ipywidgets import (HTML, HBox, VBox, Checkbox, Button,
                             Layout, Dropdown, embed)
     import numpy as np
@@ -87,6 +98,23 @@ def create_download_link(a_str, filename):
     html = '<a download="{filename}" href="data:text/x3d;base64,{payload}" target="_blank">{title}</a>'
     html = html.format(payload=payload, title="Download " + filename, filename=filename)
     return HTML(html)
+
+def progress_indicator(progress, prompt="Progress"):
+    bar_length = 20
+    if isinstance(progress, int):
+        progress = float(progress)
+    if not isinstance(progress, float):
+        progress = 0
+    if progress < 0:
+        progress = 0
+    if progress >= 1:
+        progress = 1
+
+    block = int(round(bar_length * progress))
+
+    clear_output(wait = True)
+    text = prompt + ": [{0}] {1:.1f}%".format("#" * block + "-" * (bar_length - block), progress * 100)
+    print(text)
 
 #
 # Util mathematical functions
