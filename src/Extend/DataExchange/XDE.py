@@ -104,7 +104,7 @@ class SceneGraphFromDoc:
                     # it's an occt object
                     return obj.DumpJsonToString()
                 elif isinstance(obj, TDF_Label):
-                    return "TDF_Label"
+                    return "is null: %s" % obj.IsNull()
                 else:
                     return json.JSONEncoder.default(self, obj)
 
