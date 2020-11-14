@@ -68,6 +68,11 @@ class TestExtendDataExchange(unittest.TestCase):
         read_step_file(STEP_AP203_SAMPLE_FILE)
         read_step_file(STEP_AP214_SAMPLE_FILE)
 
+    def test_deprecation_warning(self):
+        from OCC.Extend.DataExchange import read_step_file
+        with self.assertWarns(DeprecationWarning):
+            read_step_file(STEP_AP203_SAMPLE_FILE)
+
     def test_read_step_file_multiple_shape_as_root(self):
         t = read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
         self.assertTrue(isinstance(t, TopoDS_Compound))
@@ -132,15 +137,30 @@ class TestExtendDataExchange(unittest.TestCase):
 
 
     def test_doc_from_step(self):
+        json_out = get_test_fullname("sc.json")
         doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
         document = doc_exp.get_doc()
-        SceneGraphFromDoc(document, log=True)
+        sg = SceneGraphFromDoc(document, log=True)
+        sg.save_as_json(json_out)
+        self.assertTrue(os.path.isfile(json_out))
 
 
     def test_x3d_shape_exporter(self):
         x3d_shp_exporter_1 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=False, compute_edges=False)
+        x3d_shp_exporter_1.to_x3d_graph()
         x3d_shp_exporter_2 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=False, compute_edges=True)
+        x3d_shp_exporter_2.to_x3d_graph()
         x3d_shp_exporter_3 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=True, compute_edges=True)
+        x3d_shp_exporter_3.to_x3d_graph()
+
+
+    def test_step_to_x3d(self):
+        doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
+        document = doc_exp.get_doc()
+        scenegraph = SceneGraphFromDoc(document)
+        x3d_xml = X3DFromSceneGraph(scenegraph.get_scene(), scenegraph.get_internal_face_entries(), log=True)
+        x3d_xml.to_xml()
+        x3d_xml.to_x3dom_html()
 
 
     def test_x3d_curve_exporter(self):
@@ -148,15 +168,6 @@ class TestExtendDataExchange(unittest.TestCase):
             X3DCurveExporter(e)
         for w in TopologyExplorer(A_TOPODS_SHAPE).wires():
             X3DCurveExporter(w)
-
-
-    def test_step_to_x3d(self):
-        doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
-        document = doc_exp.get_doc()
-        scenegraph = SceneGraphFromDoc(document)
-        x3dXML = X3DFromSceneGraph(scenegraph.get_scene(), scenegraph.get_internal_face_entries(), log=True)
-        x3dXML.to_xml()
-        x3dXML.to_x3dom_html()
 
 
     def test_x3d_scene(self):
