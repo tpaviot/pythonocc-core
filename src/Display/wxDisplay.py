@@ -140,8 +140,9 @@ class wxViewer3d(wxBaseViewer):
         self.dragStartPos = None
 
     def InitDriver(self):
-        self._display = OCCViewer.Viewer3d(self.GetWinId())
-        self._display.Create()
+        self._display = OCCViewer.Viewer3d()
+        self._display.Create(window_handle=self.GetWinId(), parent=self)
+        
         self._display.SetModeShaded()
         self._inited = True
 
