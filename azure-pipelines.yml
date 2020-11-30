@@ -15,43 +15,6 @@ schedules:
 jobs:
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_18_04_python36
-    vmImage: 'ubuntu-18.04'
-    py_maj: 3
-    py_min: 6
-
-- template: conda-build.yml
-  parameters:
-    name: Ubuntu_20_04_python36
-    vmImage: 'ubuntu-20.04'
-    py_maj: 3
-    py_min: 6
-
-- template:  conda-build.yml
-  parameters:
-    name: macOS_10_14_python36
-    vmImage: 'macOS-10.14'
-    py_maj: 3
-    py_min: 6
-
-- template:  conda-build.yml
-  parameters:
-    name: Windows_VS2019_python36
-    vmImage: 'windows-2019'
-    py_maj: 3
-    py_min: 6
-    conda_bld: 3.17
-
-# - template:  conda-build.yml
-#   parameters:
-#     name: Windows_VS2019_python36_32
-#     vmImage: 'windows-2019'
-#     py_maj: 3
-#     py_min: 6
-#     conda_bld: 3.17
-
-- template: conda-build.yml
-  parameters:
     name: Ubuntu_18_04_python37
     vmImage: 'ubuntu-18.04'
     py_maj: 3
@@ -79,10 +42,34 @@ jobs:
     py_min: 7
     conda_bld: 3.17
 
-# - template:  conda-build.yml
-#   parameters:
-#     name: Windows_VS2019_python37_32
-#     vmImage: 'windows-2019'
-#     py_maj: 3
-#     py_min: 7
-#     conda_bld: 3.17
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_18_04_python38
+    vmImage: 'ubuntu-18.04'
+    py_maj: 3
+    py_min: 8
+    conda_bld: 3.19.2
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_20_04_python38
+    vmImage: 'ubuntu-20.04'
+    py_maj: 3
+    py_min: 8
+    conda_bld: 3.19.2
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_10_14_python38
+    vmImage: 'macOS-10.14'
+    py_maj: 3
+    py_min: 8
+    conda_bld: 3.19.2
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2019_python38
+    vmImage: 'windows-2019'
+    py_maj: 3
+    py_min: 8
+    conda_bld: 3.19.2
