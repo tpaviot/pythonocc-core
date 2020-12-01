@@ -17,19 +17,19 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
 import sys
 
-from OCC.Display.backend import load_pyqt4
+from OCC.Display.backend import load_pyside2
 from OCC.Display.SimpleGui import init_display
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
-# check for pyqt4
-if not load_pyqt4():
-    print("pyqt4 required to run this test")
+# check for pyside
+if not load_pyside2():
+    print("pyside2 required to run this test")
     sys.exit()
 
-print('pyqt4 test')
-pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyqt4')
-my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-pyqt4_display.DisplayShape(my_box_1, update=True)
+print('pyside2 test running ...')
+pyside2_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyside2')
+my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+pyside2_display.DisplayShape(my_box, update=True)
+print('pyside2 test ok.')

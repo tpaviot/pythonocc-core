@@ -17,7 +17,6 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
 import sys
 
 from OCC.Display.backend import load_pyqt5
@@ -29,7 +28,8 @@ if not load_pyqt5():
     print("pyqt5 required to run this test")
     sys.exit()
 
-print('pyqt5 test')
+print('pyqt5 test running ...')
 pyqt5_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyqt5')
-my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-pyqt5_display.DisplayShape(my_box_1, update=True)
+my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+pyqt5_display.DisplayShape(my_box, update=True)
+print('pyqt5 test ok.')
