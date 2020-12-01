@@ -224,6 +224,7 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
 	StdPrs
 	StdSelect
 	V3d
+	PrsDim
 # TKMeshVS
 	MeshVS
 )
