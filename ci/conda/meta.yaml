@@ -40,6 +40,8 @@ test:
     - pyqt >=5
     - mypy
     - svgwrite
+    - wxpython >=4
+    - pyside2 >=5
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
