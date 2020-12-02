@@ -212,10 +212,10 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
 	InterfaceGraphic
 	Media
 	TColQuantity
+	Graphic3d
 # TKV3d
 	AIS
 	DsgPrs
-	Graphic3d
 	Prs3d
 	PrsMgr
 	Select3D
@@ -241,6 +241,7 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 # TKRWMesh
 	RWGltf
 	RWObj
+	RWMesh
 # TKSTEP
 	StepAP214
 	RWStepAP214
