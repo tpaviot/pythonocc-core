@@ -531,8 +531,6 @@ class Viewer3d(Display3d):
         self.SetNbMsaaSample(0)
 
     def EraseAll(self):
-        # nessecary to remove text added by DisplayMessage
-        self.Context.PurgeDisplay()
         self.Context.EraseAll(True)
 
     def Tumble(self, num_images, animation=True):
