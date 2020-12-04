@@ -55,27 +55,6 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
 
         self.setAutoFillBackground(False)
 
-    def GetHandle(self):
-        ''' returns an the identifier of the GUI widget.
-        It must be an integer
-        '''
-        win_id = self.winId()  # this returns either an int or voitptr
-        if "%s" % type(win_id) == "<type 'PyCObject'>":  # PySide
-            ### with PySide, self.winId() does not return an integer
-            if sys.platform == "win32":
-                ## Be careful, this hack is py27 specific
-                ## does not work with python31 or higher
-                ## since the PyCObject api was changed
-                ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
-                ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
-                win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
-        elif not isinstance(win_id, int):  # PyQt4 or 5
-            ## below integer cast may be required because self.winId() can
-            ## returns a sip.voitptr according to the PyQt version used
-            ## as well as the python version
-            win_id = int(win_id)
-        return win_id
-
     def resizeEvent(self, event):
         super(qtBaseViewer, self).resizeEvent(event)
         self._display.View.MustBeResized()
@@ -120,7 +99,7 @@ class qtViewer3d(qtBaseViewer):
         self._qApp = value
 
     def InitDriver(self):
-        self._display.Create(window_handle=self.GetHandle(), parent=self)
+        self._display.Create(window_handle=int(self.winId()), parent=self)
         # background gradient
         self._display.SetModeShaded()
         self._inited = True
@@ -183,10 +162,7 @@ class qtViewer3d(qtBaseViewer):
             painter.drawRect(rect)
 
     def wheelEvent(self, event):
-        try:  # PyQt4/PySide
-            delta = event.delta()
-        except:  # PyQt5
-            delta = event.angleDelta().y()
+        delta = event.angleDelta().y()
         if delta > 0:
             zoom_factor = 2.
         else:
