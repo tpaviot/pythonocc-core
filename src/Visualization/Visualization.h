@@ -70,6 +70,7 @@ public:
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
 	Standard_EXPORT void Test();
+  Standard_EXPORT void GlInfo();
 
   Standard_EXPORT bool IsOffscreen();
   Standard_EXPORT bool InitOffscreen(int size_x, int size_y);

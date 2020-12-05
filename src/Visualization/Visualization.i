@@ -68,6 +68,8 @@ class Display3d {
     %feature("autodoc", "1");
     void Test();
     %feature("autodoc", "1");
+    void GlInfo();
+    %feature("autodoc", "1");
     bool InitOffscreen(int size_x, int size_y);
     %feature("autodoc", "1");
     bool SetSize(int size_x, int size_y);
