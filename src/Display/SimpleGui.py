@@ -79,11 +79,11 @@ def init_display(backend_str: Optional[str]=None,
         # returns empty classes and functions
         return offscreen_renderer, do_nothing, do_nothing, call_function
     used_backend = load_backend(backend_str)
-    log.info("GUI backend set to: %s", used_backend)
     # wxPython based simple GUI
     if used_backend == 'wx':
         import wx
         from OCC.Display.wxDisplay import wxViewer3d
+        print("wxPython backend - ", wx.version())
 
         class AppFrame(wx.Frame):
 
@@ -133,7 +133,13 @@ def init_display(backend_str: Optional[str]=None,
     elif 'qt' in used_backend:
         from OCC.Display.qtDisplay import qtViewer3d
         QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
-
+        # check Qt version
+        qt_version = None
+        if hasattr(QtCore, 'QT_VERSION_STR'):  # PyQt5
+            qt_version = QtCore.QT_VERSION_STR
+        elif hasattr(QtCore, '__version__'):  # PySide2
+            qt_version = QtCore.__version__
+        print("%s backend - Qt version %s" % (used_backend, qt_version))
         class MainWindow(QtWidgets.QMainWindow):
 
             def __init__(self, *args: Any) -> None:
