@@ -127,7 +127,6 @@ class Viewer3d(Display3d):
         self.Viewer = self.GetViewer()
         self.View = self.GetView()
 
-        self.OverLayer = None
         self.default_drawer = None
         self._struc_mgr = None
         self._is_offscreen = None
@@ -143,11 +142,6 @@ class Viewer3d(Display3d):
         self._overlay_items.append(overlay_item)
         self.View.MustBeResized()
         self.View.Redraw()
-
-    def GetOverLayer(self):
-        """ returns an handle to the current overlayer
-        """
-        return self.OverLayer
 
     def register_select_callback(self, callback):
         """ Adds a callback that will be called each time a shape s selected
@@ -170,7 +164,8 @@ class Viewer3d(Display3d):
         self.View.ZFitAll()
         self.View.FitAll()
 
-    def Create(self, window_handle=None, parent=None, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
+    def Create(self, window_handle=None, parent=None, create_default_lights=True,
+               draw_face_boundaries=True, phong_shading=True, display_glinfo=True):
         self._window_handle = window_handle
         self._parent = parent
 
@@ -180,6 +175,10 @@ class Viewer3d(Display3d):
         else:
             self.Init(self._window_handle)
             self._is_offscreen = False
+
+        # display OpenGl Information
+        if display_glinfo:
+            self.GlInfo()
 
         if create_default_lights:
             self.Viewer.SetDefaultLights()
@@ -199,9 +198,6 @@ class Viewer3d(Display3d):
         if phong_shading:
             # gouraud shading by default, prefer phong instead
             self.View.SetShadingModel(Graphic3d_TOSM_FRAGMENT)
-
-        # the selected elements gray by default, better to use orange...
-        # self.Context.SelectionColor(Quantity_NOC_ORANGE)
 
         # necessary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().StructureManager()
