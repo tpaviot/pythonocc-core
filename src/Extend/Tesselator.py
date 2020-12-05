@@ -37,12 +37,12 @@ from OCC.Core.TColStd import TColStd_Array1OfReal
 from OCC.Core.GCPnts import GCPnts_TangentialDeflection
 from OCC.Core.Precision import precision_Confusion
 
-from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer, check_shape
+from OCC.Extend.TopologyUtils import WireExplorer, check_shape
 
 try:
     import vtk
     HAVE_VTK = True
-except:
+except ModuleNotFoundError:
     HAVE_VTK = False
 
 
@@ -53,7 +53,8 @@ def _flatten(lst):
 
 
 def _test_flatten():
-    assert _flatten([[1, 2, 3], [4, 5, 6]]) == [1, 2, 3, 4, 5, 6]
+    if not _flatten([[1, 2, 3], [4, 5, 6]]) == [1, 2, 3, 4, 5, 6]:
+        raise AssertionError("flatten test failed.")
 
 
 class WireDiscretizer:
@@ -412,7 +413,6 @@ class Tesselator:
         points = polydata_input.GetPoints()
         dataArray = points.GetData()
         numberOfFaces = polydata_input.GetNumberOfCells()
-        size = dataArray.GetSize()
         # coords
         coords = []
         number_of_coords = dataArray.GetSize()
@@ -475,7 +475,7 @@ class Tesselator:
         normals.SplittingOn()
         normals.AutoOrientNormalsOn()  # important, reorder vertices
         normals.Update()
-        
+
         # the result of the vtkPolyDataNormals filter is
         # a non indexed triangle set. Thus the number of triangles is much
         # lower, but the number of points drastically increases. The vtkCleanPolyData
@@ -496,7 +496,6 @@ class Tesselator:
               "There are " + str(decimatedPoly.GetNumberOfPolys()) + "polygons.\n")
         # convert back the vtkpolydata to an indexed triangle set
         coords, indices = self.vtkpolydata_to_mesh(decimatedPoly)
-
 
         self._lod[decimation_ratio] = (coords, indices, [])
 
@@ -553,8 +552,6 @@ class FaceTesselator(Tesselator):
         if self._compute_normals and myT.HasUVNodes():
             prop = BRepGProp_Face(self._shape)
             uvnodes = myT.UVNodes()
-            ilower = uvnodes.Lower()
-            iBufferSize = uvnodes.Upper() - uvnodes.Lower() + 1
 
             for i in range(uvnodes.Lower(), uvnodes.Upper() + 1):
                 uv_pnt = uvnodes(i)
@@ -724,13 +721,12 @@ if __name__ == "__main__":
     _test_flatten()
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Extend.ShapeFactory import translate_shp
-    from OCC.Core.gp import gp_Vec
 
     box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     box = BRepPrimAPI_MakeTorus(30, 10).Shape()
     bo_t = translate_shp(box, gp_Vec(0, 0, 10), copy=False)
     #t = BRepPrimAPI_MakeBox(100, 20, 30).Shape()
-    import time
+
     init_time = time.perf_counter()
     tess = ShapeTesselator(bo_t, compute_normals=True, compute_edges=True, mesh_quality=0.1)
     #print(tess.get_vertex_indices())
@@ -778,10 +774,9 @@ if __name__ == "__main__":
     print("helix curve build ok")
     a_curve_discretizer = EdgeDiscretizer(helix_edge)
 
-    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
     torus = BRepPrimAPI_MakeTorus(30., 10).Shape()
     box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    import sys
     # loads brep shape
     # create a rendering window and renderer
     ren = vtk.vtkRenderer()
