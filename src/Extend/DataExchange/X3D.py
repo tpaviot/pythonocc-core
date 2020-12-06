@@ -17,7 +17,6 @@
 
 __doc__ = "BRep/STEP to X3D exporter """
 
-import os
 import uuid
 import xml.etree.ElementTree as ET
 
@@ -27,7 +26,6 @@ from OCC.Core.TopAbs import TopAbs_ShapeEnum
 
 # OCC extensions
 from OCC.Extend.TopologyUtils import is_edge, is_wire
-from OCC.Extend.DataExchange.XDE import SceneGraphFromDoc, DocFromSTEP
 from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscretizer
 
 # official x3d package
@@ -37,26 +35,27 @@ import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
 _X3DOM_HEADER = '''<script type='text/javascript' src='https://www.x3dom.org/download/dev/x3dom-full.debug.js'> </script>
 <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>
 '''
+
 def _flatten(lst):
     """ take nested lists and return flattened values
     """
     return [item for sublist in lst for item in sublist]
 
 def _sanitize_DEF(name):
-        # IdFirstChar ::=
-        # Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
-        # 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
-        # first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
-        # IdRestChars ::=
-        # Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
-        # 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
-        # rest no space,",#,',comma,.,:,[,\,],{,}
-        replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
-                        ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
-                        "}": ")", "\\": "/"}
-        for k, v in replace_dict.items():
-            name = name.replace(k, v)
-        return 'L-' + name
+    # IdFirstChar ::=
+    # Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
+    # 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+    # first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
+    # IdRestChars ::=
+    # Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
+    # 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+    # rest no space,",#,',comma,.,:,[,\,],{,}
+    replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
+                    ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
+                    "}": ")", "\\": "/"}
+    for key, value in replace_dict.items():
+        name = name.replace(key, value)
+    return 'L-' + name
 
 class X3DCurveExporter:
     """ A class for exporting 1d topology such as TopoDS_Wire or TopoDS_Edge
@@ -104,8 +103,8 @@ class X3DLODShapeExporter:
         # LOD levels is a dict with keys: distance from point of view, and
         # the value is the decimation ratio
         # disance is from near to far
-        lod_Node = XX3D.LOD()
-        lod_Node.range = list(lod_levels.keys())
+        lod_node = XX3D.LOD()
+        lod_node.range = list(lod_levels.keys())
         # first level
         shp_exporter = X3DShapeExporter(shape, compute_normals, compute_edges, uid)
         shp_exporter.compute()
@@ -126,7 +125,7 @@ class X3DLODShapeExporter:
             shp_exporter.to_x3d_graph()
 
             group = XX3D.Group()
-           
+
             # the transform to be used by any of the shapes
             transform_node = XX3D.Transform()
             transform_node.rotation = tuple(shp_exporter._rotation_vector + [shp_exporter._rotation_angle])
@@ -135,7 +134,7 @@ class X3DLODShapeExporter:
             transform_node.scale = (sf, sf, sf)
 
             mesh_shp = shp_exporter.get_X3DShape_mesh()
-            
+
             mesh_shp.appearance = XX3D.Appearance(material=mesh_material)
 
             # if the decimation ratio is high, no need to export
@@ -149,16 +148,16 @@ class X3DLODShapeExporter:
 
             group.children.append(transform_node)
 
-            lod_Node.children.append(group)
+            lod_node.children.append(group)
         # add the end, add an empty group, as suggested at
         # https://doc.x3dom.org/author/Navigation/LOD.html
         # Camera-to-object distance transitions for each child level,
         # where range values go from near to far. For n range values,
         # you must have n+1 child levels! Hint: can add an empty Group
         # node as nonrendering final child.
-        lod_Node.children.append(XX3D.Group())
+        lod_node.children.append(XX3D.Group())
 
-        self._lod_Node = lod_Node
+        self._lod_Node = lod_node
 
 
 class X3DShapeExporter:
@@ -220,7 +219,7 @@ class X3DShapeExporter:
     def get_X3DShape_edges(self):
         return self._x3d_Shape_edges
 
-    
+
     def get_geo(self):
         return self._x3d_2d_mesh_geometry
 
@@ -311,8 +310,7 @@ class X3DShapeExporter:
         transform_node = XX3D.Transform(children=child_nodes)
         transform_node.rotation = tuple(self._rotation_vector + [self._rotation_angle])
         transform_node.translation = tuple(self._translation)
-        sf = self._scale_factor
-        transform_node.scale = (sf, sf, sf)
+        transform_node.scale = (self._scale_factor, self._scale_factor, self._scale_factor)
         self._x3d_Transform = transform_node
 
 
@@ -334,15 +332,6 @@ class X3DSceneExporter:
 
     def get_doc(self):
         return self._x3ddoc
-
-
-    def add_group(self, group_def_name, DEF=None, USE=None):
-        group = XX3D.Group()
-        if DEF:
-            group.DEF = DEF
-        elif USE:
-            group.USE = USE
-        self._x3dscene.children()
 
 
     def add_shape(self, shape, shape_DEF_name=None, shape_color=(0.4, 0.4, 0.4),
@@ -407,7 +396,6 @@ class X3DSceneExporter:
                 to_existing_node.children[0].geometry.index = index0 + [l + decl for l in index_to_add]
                 return to_existing_node
         return x3d_exporter.get_X3DTransform()
-        
 
 
     def to_xml(self):
@@ -428,10 +416,10 @@ class X3DSceneExporter:
         # but not part of the X3D standard
         for idx_ts in x3d_element.iter('IndexedTriangleSet'):
             idx_ts.set('creaseAngle', '0.2')
-        
-        x3dHTML = ET.tostring(x3d_element, encoding="unicode", short_empty_elements=False)
-        x3dHTML = x3dHTML.replace("visible=", 'render=')
-        return _X3DOM_HEADER + x3dHTML
+
+        x3d_html = ET.tostring(x3d_element, encoding="unicode", short_empty_elements=False)
+        x3d_html = x3d_html.replace("visible=", 'render=')
+        return _X3DOM_HEADER + x3d_html
 
 
     def write_to_file(self, filename):
@@ -489,17 +477,19 @@ class X3DFromSceneGraph:
             print(message)
 
 
-    def x3d_apply_location(self, x3dtransformnode, location):
+    def x3d_apply_location(self, x3d_transform_node, location):
         # get translation and rotation from location
         transformation = location.Transformation()
         rot_axis = gp_XYZ()
 
-        success, rot_angle = transformation.GetRotation(rot_axis)
+        non_zero_rotation, rot_angle = transformation.GetRotation(rot_axis)
         translation = transformation.TranslationPart()
         scale_factor = transformation.ScaleFactor()
-        x3dtransformnode.rotation = (rot_axis.X(), rot_axis.Y(), rot_axis.Z(), rot_angle)
-        x3dtransformnode.translation = (translation.X(), translation.Y(), translation.Z())
-        x3dtransformnode.scale = (scale_factor, scale_factor, scale_factor)
+
+        if non_zero_rotation:
+            x3d_transform_node.rotation = (rot_axis.X(), rot_axis.Y(), rot_axis.Z(), rot_angle)
+        x3d_transform_node.translation = (translation.X(), translation.Y(), translation.Z())
+        x3d_transform_node.scale = (scale_factor, scale_factor, scale_factor)
 
 
     def x3d_geometry_from_TShape(self, shape):
@@ -511,19 +501,18 @@ class X3DFromSceneGraph:
         return {'x3dgeo': x3d_exporter.get_geo(), 'x3dedges': x3d_exporter.get_edges()}
 
 
-    def x3d_appearance_from_color(self, color, DEFname, emissive):
+    def x3d_appearance_from_color(self, color, DEF_name, emissive):
         if emissive:
-            DEFname = DEFname + "-emissive"
-        if DEFname in self._app_def_set:
-            return XX3D.Appearance(USE=DEFname)
+            DEF_name = DEF_name + "-emissive"
+        if DEF_name in self._app_def_set:
+            return XX3D.Appearance(USE=DEF_name)
+        self._app_def_set.add(DEF_name)
+        if emissive:
+            x3dmat = XX3D.Material(emissiveColor=color)
         else:
-            self._app_def_set.add(DEFname)
-            if emissive:
-                x3dmat = XX3D.Material(emissiveColor=color)
-            else:
-                x3dmat = XX3D.Material(diffuseColor=color, specularColor=(0.9, 0.9, 0.9),
-                                       shininess=1, ambientIntensity=0.1)
-            return XX3D.Appearance(DEF=DEFname, material=x3dmat)
+            x3dmat = XX3D.Material(diffuseColor=color, specularColor=(0.9, 0.9, 0.9),
+                                   shininess=1, ambientIntensity=0.1)
+        return XX3D.Appearance(DEF=DEF_name, material=x3dmat)
 
 
     def apply_DEF_or_USE(self, node, x3dnode):
@@ -549,11 +538,6 @@ class X3DFromSceneGraph:
         if 'DEF' in node:
             if node['DEF'] in self._faces_in_solids:
                 return False, None
-
-        if 'is_assembly' in node:
-            node_is_assembly = node['is_assembly']
-        else:
-            node_is_assembly = False
 
         ntype = node['node']
 
@@ -601,33 +585,3 @@ class X3DFromSceneGraph:
             x3dnodelist.append(edge_node)
 
         return True, x3dnodelist
-
-
-if __name__ == "__main__":
-    # test with the as1_pe.stp file
-    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-    
-
-    #scene_exp = X3DSceneExporter()
-    #scene_exp.add_shape(shp, shape_color=(0.5, 0.6, 0.7), emissive=False)
-
-    #scene_exp.write_to_file('ess.x3d')
-    step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
-    doc_exp = DocFromSTEP(step_file)
-    document = doc_exp.get_doc()
-    scenegraph = SceneGraphFromDoc(document)
-    x3dXML = X3DFromSceneGraph(scene=scenegraph.get_scene(),
-                               faces_in_solids=scenegraph.get_internal_face_entries(),
-                               log=True)
-    with open('out.x3d', 'w') as f:
-        f.write(x3dXML.to_xml())
-    x3dXML.to_x3dom_html()
-
-    print("LOD test")
-    box_shp = BRepPrimAPI_MakeTorus(40, 10).Shape()
-    rff = X3DLODShapeExporter(box_shp, lod_levels={200:0.4, 500:0.9, 1000:0.99})
-    x3dscene = XX3D.Scene(children=[])
-    x3ddoc = XX3D.X3D(Scene=x3dscene)
-    x3dscene.children.append(rff._lod_Node)
-    with open('out_LOD.x3d', 'w') as f:
-        f.write(x3ddoc.XML())
