@@ -1,4 +1,4 @@
-##Copyright (c) 2011-2018 Thomas Paviot (tpaviot@gmail.com)
+##Copyright (c) 2011-2020 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -16,12 +16,18 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.12)
+
+if (POLICY CMP0072)
+    cmake_policy(SET CMP0072 OLD)
+endif(POLICY CMP0072)
+
 project(PYTHONOCC)
 
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 7)
 set(PYTHONOCC_VERSION_MINOR 5)
 set(PYTHONOCC_VERSION_PATCH 0)
+
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL -dev)
 
@@ -133,11 +139,11 @@ if(DEFINED OCE_INCLUDE_PATH)
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
   find_package(OpenCASCADE 7.5.0 REQUIRED)
-  
-  include_directories(${OpenCASCADE_INCLUDE_DIR})
   if(OpenCASCADE_FOUND)
-    message(STATUS "OpenCASCADE found.")
-    include_directories(${OCE_INCLUDE_DIRS})
+    message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
+    message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
+    message(STATUS "OpenCASCADE binary directory: " ${OpenCASCADE_BINARY_DIR})
+    include_directories(${OpenCASCADE_INCLUDE_DIR})
   else(OpenCASCADE_FOUND)  # set default paths
     set(OCE_INCLUDE_PATH /usr/local/include/oce CACHE PATH "OCE include path")
     set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path")
@@ -145,6 +151,12 @@ else(OCE_INCLUDE_PATH)
     link_directories(${OCE_LIB_PATH})
   endif(OpenCASCADE_FOUND)
 endif(DEFINED OCE_INCLUDE_PATH)
+
+# After the OCC paths are properly set up,
+find_file(GP_PNT_HEADER_LOCATION "gp_Pnt.hxx" PATHS ${OpenCASCADE_INCLUDE_DIR} ${OCE_INCLUDE_PATH})
+if(${GP_PNT_HEADER_LOCATION} STREQUAL "GP_PNT_HEADER_LOCATION-NOTFOUND")
+    message(FATAL_ERROR "gp_Pnt.hxx can not be found.")
+endif()
 
 ##############################################
 # Installation directory                     #
@@ -155,12 +167,12 @@ if(DEFINED ENV{SP_DIR} AND WIN32)
   # prevent cmake to find correct paths of python3 on windows
   # this should be removed as soon as possible
   message(STATUS "conda-build running, using $ENV{SP_DIR} as install dir")
-  set(PYTHONOCC_INSTALL_DIRECTORY $ENV{SP_DIR}/OCC CACHE PATH "pythonOCC install directory")
+  set(PYTHONOCC_INSTALL_DIRECTORY $ENV{SP_DIR}/OCC CACHE PATH "pythonocc install directory")
 else(DEFINED ENV{SP_DIR} AND WIN32)
   execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
-  set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory")
+  set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonocc install directory")
 endif(DEFINED ENV{SP_DIR} AND WIN32)
-message(STATUS "pythonOCC modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
+message(STATUS "pythonocc modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
 
 #############################################
 # List of OCE shared libraries to link with #
