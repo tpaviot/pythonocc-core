@@ -34,21 +34,21 @@ from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
 from OCC.Extend.TopologyUtils import TopologyExplorer, get_type_as_string
 
 
-def _toUnicode(match):
+def _to_unicode(match):
     return chr(int(match.group(1), 16))
 
 
-def _unescapeStep(name):
+def _unescape_STEP(name):
     # remove trailing whitespaces
     new_name = name.strip()
     # https://stackoverflow.com/questions/730133/what-are-invalid-characters-in-xml
     replace_dict = {"&": "&amp;", ">": "&gt;", "<": "&lt;", "'": "&apos;", '"': '&quot;'}
-    for k, v in replace_dict.items():
-        new_name = new_name.replace(k, v)
+    for key, value in replace_dict.items():
+        new_name = new_name.replace(key, value)
     reg1 = re.compile(r'\\X\\(..)')
     reg2 = re.compile(r'\\X2\\(....)\\X0\\')
     reg3 = re.compile(r'\\X4\\(........)\\X0\\')
-    new_name = reg3.sub(_toUnicode, reg2.sub(_toUnicode, reg1.sub(_toUnicode, new_name)))
+    new_name = reg3.sub(_to_unicode, reg2.sub(_to_unicode, reg1.sub(_to_unicode, new_name)))
 
     return new_name
 
@@ -85,7 +85,7 @@ class SceneGraphFromDoc:
         self._scene = []
         self._visited = {}
         self._uid_set = set()
-        self._facesInSubshapes = set()
+        self._faces_in_subshapes = set()
 
         self._shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
         self._color_tool = XCAFDoc_DocumentTool_ColorTool(doc.Main())
@@ -99,14 +99,13 @@ class SceneGraphFromDoc:
         # this requires a specific encoder because some
         # occt objects are not seriazables
         class SceneGraphJSONEncoder(json.JSONEncoder):
-            def default(self, obj):
-                if hasattr(obj, 'DumpJsonToString'):
+            def default(self, o):
+                if hasattr(o, 'DumpJsonToString'):
                     # it's an occt object
-                    return obj.DumpJsonToString()
-                elif isinstance(obj, TDF_Label):
-                    return "is null: %s" % obj.IsNull()
-                else:
-                    return json.JSONEncoder.default(self, obj)
+                    return o.DumpJsonToString()
+                elif isinstance(o, TDF_Label):
+                    return "is null: %s" % o.IsNull()
+                return super().default(self, o)
 
         return json.dumps(self._scene, indent=4, sort_keys=True, cls=SceneGraphJSONEncoder)
 
@@ -118,7 +117,7 @@ class SceneGraphFromDoc:
         return self._scene
 
     def get_internal_face_entries(self):
-        return self._facesInSubshapes
+        return self._faces_in_subshapes
 
     def _print_log(self, message):  # TODO: replace with the logging module functions
         if self._log:
@@ -141,7 +140,7 @@ class SceneGraphFromDoc:
             return
 
         self._visited[labelString] = lab
-        name = _unescapeStep(lab.GetLabelName())
+        name = _unescape_STEP(lab.GetLabelName())
 
         if self._shape_tool.IsAssembly(lab):
             node = {'node' : 'Group',
@@ -157,12 +156,12 @@ class SceneGraphFromDoc:
                 label = l_c.Value(i + 1)
                 #print("Group Name DEF :", name, labelString)
                 if self._shape_tool.IsReference(label):
-                    self._print_log("########  component label :" + _unescapeStep(label.GetLabelName()))
+                    self._print_log("########  component label :" + _unescape_STEP(label.GetLabelName()))
                     loc = self._shape_tool.GetLocation(label)
                     #print(" Transform  loc DEF          :", loc.HashCode(100))
                     label_reference = TDF_Label()
                     self._shape_tool.GetReferredShape(label, label_reference)
-                    reference_name = _unescapeStep(label_reference.GetLabelName())
+                    reference_name = _unescape_STEP(label_reference.GetLabelName())
                     self._print_log("########  Transform USE to DEF ==> referenced label : "+ reference_name)
                     trafo = {'node' : 'Transform',
                              'DEF' : label.EntryDumpToString(),
@@ -246,7 +245,7 @@ class SceneGraphFromDoc:
                 clabelString = clabel.EntryDumpToString()
                 #n = c.Name(c.Red(), c.Green(), c.Blue())
                 #print('    solidshape color RGB: ', c.Red(), c.Green(), c.Blue(), n)
-                node_name = _unescapeStep(lab_subs.GetLabelName())
+                node_name = _unescape_STEP(lab_subs.GetLabelName())
                 def_name = lab_subs.EntryDumpToString()
                 subloc = self._shape_tool.GetLocation(lab_subs) # assume identity, otherwise we need another wrapper
                 #print("    subshape Transform: ", subloc.HashCode(100))
@@ -274,7 +273,7 @@ class SceneGraphFromDoc:
                     for solidface in solidfaces:
                         found = self._shape_tool.FindSubShape(lab, solidface, facelabel)
                         if found:
-                            self._facesInSubshapes.add(facelabel.EntryDumpToString())
+                            self._faces_in_subshapes.add(facelabel.EntryDumpToString())
                             c = self._set_color(facelabel, solidface)
                             clabel = self._color_tool.FindColor(c)
                             clabelString = clabel.EntryDumpToString()
@@ -339,32 +338,24 @@ class SceneGraphFromDoc:
     def _set_color(self, lab, shape):
         #rint('is visible: ',color_tool.IsVisible(lab))
         c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
-        colorSet = False
+        color_set = False
+
         if (self._color_tool.GetInstanceColor(shape, 0, c) or
                 self._color_tool.GetInstanceColor(shape, 1, c) or
                 self._color_tool.GetInstanceColor(shape, 2, c)):
 
-            colorSet = True
+            color_set = True
 
-        if not colorSet:
+        if not color_set:
             if (self._color_tool.GetColor(lab, 0, c) or
                     self._color_tool.GetColor(lab, 2, c) or
                     self._color_tool.GetColor(lab, 1, c)):
 
-                colorSet = True
+                color_set = True
 
-        if colorSet:
+        if color_set:
             self._color_tool.SetInstanceColor(shape, 0, c)
             self._color_tool.SetInstanceColor(shape, 1, c)
             self._color_tool.SetInstanceColor(shape, 2, c)
 
         return c
-
-
-if __name__ == "__main__":
-    # test with the as1_pe.stp file
-    step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
-    doc_exp = DocFromSTEP(step_file)
-    document = doc_exp.get_doc()
-    c = SceneGraphFromDoc(document, log=True)
-    c.save_as_json("sc.json")
