@@ -812,7 +812,7 @@ class TestWrapperFeatures(unittest.TestCase):
         pythonocc_core_path = OCC.Core.__path__[0]
         available_core_modules = glob.glob(os.path.join(pythonocc_core_path, "*.py"))
         nb_available_modules = len(available_core_modules)
-        self.assertEqual(nb_available_modules, 302)
+        self.assertEqual(nb_available_modules, 304)
 
         # try to import the module
         for core_module in available_core_modules:
