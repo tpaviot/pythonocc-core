@@ -1,0 +1,46 @@
+Source: pythonocc-core
+Section: unknown
+Priority: optional
+Maintainer: Christophe Trophime <christophe.trophime@lncmi.cnrs.fr>
+Build-Depends: debhelper-compat (= 13),
+ dh-python,
+ cmake,
+ python3-setuptools,
+ python3-all-dev,
+ occt-misc,
+ libocct-foundation-dev,
+ libocct-modeling-algorithms-dev,
+ libocct-modeling-data-dev,
+ libocct-ocaf-dev,
+ libocct-visualization-dev,
+ libocct-data-exchange-dev,
+ libocct-draw-dev,
+ swig,
+ libtbb-dev, libxi-dev,
+ python3-six
+Standards-Version: 4.5.0
+Homepage: https://github.com/tpaviot/pythonocc-core
+#Vcs-Browser: https://salsa.debian.org/debian/pythonocc-core
+#Vcs-Git: https://salsa.debian.org/debian/pythonocc-core.git
+#Testsuite: autopkgtest-pkg-python
+Rules-Requires-Root: no
+
+Package: python3-pythonocc-core
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Suggests: python-pythonocc-core-doc
+Description: Python bindings to OpenCascade (Python 3)
+ pythonocc is a python package whose purpose is to provide 3D modeling features.
+ It is intended to CAD/PDM/PLM and BIM related development.
+ .
+ This package installs the library for Python 3.
+
+Package: python-pythonocc-core-doc
+Architecture: all
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Description: Python bindings to OpenCascade (common documentation)
+ pythonocc is a python package whose purpose is to provide 3D modeling features.
+ It is intended to CAD/PDM/PLM and BIM related development.
+ .
+ This is the common documentation package.

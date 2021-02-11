@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+export PYBUILD_NAME=pythonocc-core
+
+%:
+	dh $@ --with python3 --buildsystem=cmake
+
+
+# If you need to rebuild the Sphinx documentation
+# Add sphinxdoc to the dh --with line
+#
+# And uncomment the following lines
+#override_dh_auto_build: export http_proxy=127.0.0.1:9
+#override_dh_auto_build: export https_proxy=127.0.0.1:9
+#override_dh_auto_build:
+#	dh_auto_build
+#	PYTHONPATH=. python3 -m sphinx -N -bhtml \
+#	docs/ build/html # HTML generator
+#	PYTHONPATH=. python3 -m sphinx -N -bman \
+#	docs/ build/man # Manpage generator
+
+# test segfaut in pdebuild but run smoothly when launch from shell??
+# override_dh_auto_test:
+# 	dh_auto_install
+# 	cd test && PYTHONPATH=../debian/tmp/usr/lib/python3/dist-packages python3 run_tests.py
