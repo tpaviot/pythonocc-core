@@ -1,0 +1,14 @@
+usr/lib/python*/dist-packages/OCC/LICENSE
+usr/lib/python*/dist-packages/OCC/AUTHORS
+usr/lib/python*/dist-packages/OCC/*.py
+
+usr/lib/python*/dist-packages/OCC/Core/_*.so
+usr/lib/python*/dist-packages/OCC/Core/*.py
+
+usr/lib/python*/dist-packages/OCC/Display/*.py
+usr/lib/python*/dist-packages/OCC/Display/WebGl/*.py
+usr/lib/python*/dist-packages/OCC/Display/icons/*.png
+
+usr/lib/python*/dist-packages/OCC/Extend/*.py
+
+usr/lib/python*/dist-packages/OCC/Wrapper/*.py
