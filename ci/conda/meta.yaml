@@ -1,4 +1,4 @@
-{% set version = "7.5.0" %}
+{% set version = "7.5.0rc1" %}
 
 package:
   name: pythonocc-core

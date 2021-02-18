@@ -1,3 +1,18 @@
+Version 7.5.0rc1 - February 2021
+================================
+
+This release requires opencascade-7.5.0
+
+* wrapper: Port to opencascade-7.5.0
+
+* display: fix wxDisplay
+
+* display: fix wrong Viewer3d initialization in OffscreenRenderer
+
+* display: drop support for PyQt4 and PySide
+
+* display: display OpenGl information by default in OCCViewer
+
 ==========================
 Version 7.4.1 - November 2020
 
@@ -5,66 +20,66 @@ This release requires opencascade 7.4.0 or 7.4.0p1
 
 * display: fix antialiasing in SimpleGui
 
-* wrapper : refactored exception catcher reduce code duplication
+* wrapper: refactored exception catcher reduce code duplication
 
-* webgl : added a flask web server for ThreeJs
+* webgl: added a flask web server for ThreeJs
 
-* wrapper : added stub .pyi files for type hints (e.g. mypy, PyCharm etc.)
+* wrapper: added stub .pyi files for type hints (e.g. mypy, PyCharm etc.)
 
-* wrapper : small optimizations in Tesselator
+* wrapper: small optimizations in Tesselator
 
-* wrapper : added missing classes XCAFDoc_DimTolTool, BRepClass_FaceClassifier, Standard_Type,
+* wrapper: added missing classes XCAFDoc_DimTolTool, BRepClass_FaceClassifier, Standard_Type,
 Standard_Failure, Prs3d_Point, Units_Quantity_, Units_Dimension
 
-* wrapper : added support for class aliases defined as typedefs (e.g. BRepOffsetAPI_Sewing)
+* wrapper: added support for class aliases defined as typedefs (e.g. BRepOffsetAPI_Sewing)
 
-* wrapper : fix support for occt7.4.0p1
+* wrapper: fix support for occt7.4.0p1
 
-* wrapper : changed GetImageData to take width and height parameters
+* wrapper: changed GetImageData to take width and height parameters
 
 * misc cleanup, typos, small fixes all over the code base
 
-==========================
+=============================
 Version 7.4.0 - February 2020
 
 This release requires opencascade 7.4.0
 
-* jupyter : improved webgl display, added utility functions (abb, oobb, mass computation etc.), fixed edges display wrong line type (dash)
+* jupyter: improved webgl display, added utility functions (abb, oobb, mass computation etc.), fixed edges display wrong line type (dash)
 
-* display : added PySide2 to the backend list
+* display: added PySide2 to the backend list
 
-* DataExchange : fixes step loader when more than one root
+* DataExchange: fixes step loader when more than one root
 
-* DataExchange : added SVG exporter (possibility to render svg in jupyter)
+* DataExchange: added SVG exporter (possibility to render svg in jupyter)
 
-* wrapper : fixed for Standard_Integer parameters returned by reference
+* wrapper: fixed for Standard_Integer parameters returned by reference
 
-* wrapper : improved wrapper for NCollection_DataMap
+* wrapper: improved wrapper for NCollection_DataMap
 
-* wrapper : removed unnecessary %nodefaultctor swig directive, that prevent using default constructor for many classes
+* wrapper: removed unnecessary %nodefaultctor swig directive, that prevent using default constructor for many classes
 
-* demos : many fixes, improvements, and new examples
+* demos: many fixes, improvements, and new examples
 
 * lgtm and codacy quality fixes
 
-==========================
+================================
 Version 7.4.0rc1 - December 2019
 
 This release requires opencascade 7.4.0
 
-* wrapper : small fix in __repr__ method overload
+* wrapper: small fix in __repr__ method overload
 
-* wrapper : ported the old Addon subpackage to benefit from 3d fonts
+* wrapper: ported the old Addon subpackage to benefit from 3d fonts
 
-* wrapper : added GetLabelName method to TDF_Label class to fix step part names
+* wrapper: added GetLabelName method to TDF_Label class to fix step part names
 
-* display : tessellator computes mesh if not already done
+* display: tessellator computes mesh if not already done
 
-* webgl : html and js fixes in x3dom and threejs renderers, simple_server uses flask if available
+* webgl: html and js fixes in x3dom and threejs renderers, simple_server uses flask if available
 
 * minor lgtm fixes
 
-==========================
+==================================
 Version 7.4.0beta2 - December 2019
 
 This release requires opencascade 7.4.0
@@ -79,7 +94,7 @@ This release requires opencascade 7.4.0
 
 * code clean-up
 
-==========================
+=================================
 Version 7.4.0beta - December 2019
 
 This release requires opencascade 7.4.0
@@ -88,81 +103,81 @@ This release requires opencascade 7.4.0
 
 * Dropped SMESH support.
 
-==========================
+==============================
 Version 0.18.2 - December 2019
 
 This release requires oce-0.18 or higher
 
-* wrapper : fixes
+* wrapper: fixes
 
 * jupyter renderer
 
 THIS RELEASE IS THE LAST ONE DEPENDING ON OCE 0.18x
 
-==========================
+==============================
 Version 0.18.1 - December 2017
 
 This release requires oce-0.18 or oce-0.18.1.
 
-* wrapper : adds a docstring for each module, fixed Addon documentation,
+* wrapper: adds a docstring for each module, fixed Addon documentation,
 
-* wrapper : new OffscreenRenderer class, to export to image without any GUI
+* wrapper: new OffscreenRenderer class, to export to image without any GUI
 manager installed
 
-* wrapper : new TextureItem, LineItem and ImageItem classes for overlayered
+* wrapper: new TextureItem, LineItem and ImageItem classes for overlayered
 items
 
-* wrapper : Add missing DrawText method from Visual3d_Layer module
+* wrapper: Add missing DrawText method from Visual3d_Layer module
 
-* wrapper : support for smesh 6.7.5
+* wrapper: support for smesh 6.7.5
 
-* new examples : heithgmap, face recognition, 3d to 2d screen coordinates,
+* new examples: heithgmap, face recognition, 3d to 2d screen coordinates,
 overlayered lines-text-images, raytracing, camera projection, import
 STEP file with colors,
 
-* examples : example to rst script, in order to provide a description for
+* examples: example to rst script, in order to provide a description for
 each example, in rst format
 
-* webgl : x3dom and threejs minors fixes/enhancement, simple_server fixes
+* webgl: x3dom and threejs minors fixes/enhancement, simple_server fixes
 
-* gui : fix SimpleGui position at startup, wx fixes
+* gui: fix SimpleGui position at startup, wx fixes
 
-* ci/cd : upload each successful travis or appveyor built to anaconda cloud,
+* ci/cd: upload each successful travis or appveyor built to anaconda cloud,
 tagged using the branch name
 
-==========================
+========================
 Version 0.18 - June 2017
 
 This release requires oce-0.18 or oce-0.18.1.
 
-* wrapper : support oce-0.18 (upstream occt 6.9.1)
+* wrapper: support oce-0.18 (upstream occt 6.9.1)
 
-* wrapper : support smesh 6.7.4
+* wrapper: support smesh 6.7.4
 
-* wrapper : support for packages Voxel, NIS, DataExchange related
+* wrapper: support for packages Voxel, NIS, DataExchange related
 
-* new examples : background image, emmenthaler, ais_shape downcast,
+* new examples: background image, emmenthaler, ais_shape downcast,
   core_display_z_transparency, clipping plane, bounding box computation
   using mesh, STEP compound loading, surfacic mesh, volumic mesh, mesh traverse,
   added a fast loading STL example
 
 * many minor bugfixes
 
-=============================
+===========================
 Version 0.17.3 - March 2017
 
 This release requires oce-0.17.0, oce-0.17.1, oce-0.17.2 or
 oce-0.17.3. Prefer the latter.
 
-* wrapper : new GEAOMAlgo_Splitter, and related example, from Salome 8.2
+* wrapper: new GEAOMAlgo_Splitter, and related example, from Salome 8.2
 
-* examples : core_geometry_line_properties, 
+* examples: core_geometry_line_properties, 
 
-* webgl : toggle visibility feature for 3js renderer, teselator clean up,
+* webgl: toggle visibility feature for 3js renderer, teselator clean up,
 increased default deviation (i.e. decreased default quality), set precision to 4 digits,
 speed up generation for json and xml exporters
 
-* ci/cd : many conda and appveyor fixes/improvements
+* ci/cd: many conda and appveyor fixes/improvements
 
 =============================
 Version 0.17.2 - January 2017
@@ -184,7 +199,7 @@ This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
 * ci/cd: travis upoads nightly builds to http://anaconda.com/tpaviot, conda packages
 on appveyor are available for download as artifacts
 
-=============================
+==============================
 Version 0.17.1 - December 2016
 
 This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
@@ -236,7 +251,7 @@ This release requires oce-0.16.0 or oce-0.16.1
 
 * OCCViewer fixes (py3k, DisplayVector)
 
-* New examples : minimal distance, boolean operations,
+* New examples: minimal distance, boolean operations,
 fillet operations, splinecage, topology_traverse
 
 * New modules made available from TKCAF, TKSTEP and TKSTEPBase
@@ -246,7 +261,7 @@ Version 0.16.4 - April 2016
 
 This release requires oce-0.16.0 or oce-0.16.1
 
-* New memeory management system : previous pythonocc released
+* New memeory management system: previous pythonocc released
 suffered from memory issues (leaks). The release introduces a
 much better way to deal with the OCE handles
 
@@ -275,7 +290,7 @@ Version 0.16.2 - July 2015
 
 This release requires oce-0.16.0 or oce-0.16.1
 
-* New examples : display_quality, surface_from_curve, export_to_image,
+* New examples: display_quality, surface_from_curve, export_to_image,
 shape_pickling, display_linewidth, prs3d_customization, textured_shape,
 faircurve, topology_prism, topology_pipe, evolved_shape, draft_angle,
 through_section, topology_face, topology_edge, vertex_filleting,
@@ -306,7 +321,7 @@ This release requires oce-0.16.0 or oce-0.16.1
 
 * minor cmake fixes/improvements
 
-* new wrapper for : MeshVS, OCAF STEP and IGES 
+* new wrapper for: MeshVS, OCAF STEP and IGES 
 
 ==============================
 Version 0.16.0 - November 2014
