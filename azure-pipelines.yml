@@ -15,13 +15,6 @@ schedules:
 jobs:
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_18_04_python37
-    vmImage: 'ubuntu-18.04'
-    py_maj: 3
-    py_min: 7
-
-- template: conda-build.yml
-  parameters:
     name: Ubuntu_20_04_python37
     vmImage: 'ubuntu-20.04'
     py_maj: 3
@@ -41,14 +34,6 @@ jobs:
     py_maj: 3
     py_min: 7
     conda_bld: 3.17
-
-- template: conda-build.yml
-  parameters:
-    name: Ubuntu_18_04_python38
-    vmImage: 'ubuntu-18.04'
-    py_maj: 3
-    py_min: 8
-    conda_bld: 3.19.2
 
 - template: conda-build.yml
   parameters:
