@@ -17,10 +17,6 @@
 
 cmake_minimum_required(VERSION 3.12)
 
-if (POLICY CMP0072)
-    cmake_policy(SET CMP0072 OLD)
-endif(POLICY CMP0072)
-
 project(PYTHONOCC)
 
 # set pythonOCC version
@@ -33,21 +29,27 @@ set(PYTHONOCC_VERSION_DEVEL -rc1)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
-# for cmake 3.13 and newer, still use old swig style targets
-cmake_policy(SET CMP0078 OLD)
-cmake_policy(SET CMP0086 OLD)
-
 ## cmake policies
-if (NOT CMAKE_VERSION VERSION_LESS "3.13")
-    # CMP0077: option() honors normal variables
-    # https://cmake.org/cmake/help/latest/policy/CMP0077.html
+
+if (POLICY CMP0072)
+    cmake_policy(SET CMP0072 OLD)
+endif(POLICY CMP0072)
+
+# CMP0077: option() honors normal variables
+# https://cmake.org/cmake/help/latest/policy/CMP0077.html
+ if (POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
-    # CMP0078: UseSWIG generates standard target names.
-    # https://cmake.org/cmake/help/latest/policy/CMP0078.html
+endif(POLICY CMP0077)
+
+# CMP0078: UseSWIG generates standard target names.
+if (POLICY CMP0078)
     cmake_policy(SET CMP0078 OLD)
-    # CMP0086: UseSWIG honors SWIG_MODULE_NAME via -module
+endif(POLICY CMP0078)
+
+# CMP0086: UseSWIG honors SWIG_MODULE_NAME via -module
+if (POLICY CMP0086)
     cmake_policy(SET CMP0086 OLD)
-endif()
+endif(POLICY CMP0086)
 
 # Force C++ 11
 set(CMAKE_CXX_STANDARD 11)
