@@ -140,7 +140,7 @@ if(DEFINED OCE_INCLUDE_PATH)
 # if OCE_INCLUDE_PATH is not passed at command line,
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
-  find_package(OpenCASCADE 7.5.0 REQUIRED)
+  find_package(OpenCASCADE 7.5.1 EXACT REQUIRED)
   if(OpenCASCADE_FOUND)
     message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
     message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
