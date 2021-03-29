@@ -41,6 +41,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<RWMesh_module.hxx>
 #include<TCollection_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
@@ -88,6 +89,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import RWMesh.i
 %import TCollection.i
 %import XCAFPrs.i
 %import TDocStd.i

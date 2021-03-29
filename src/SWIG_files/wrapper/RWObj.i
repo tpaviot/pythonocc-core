@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 #include<Poly_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TCollection_module.hxx>
+#include<RWMesh_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<gp_module.hxx>
 #include<CDF_module.hxx>
@@ -59,6 +60,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 #include<Quantity_module.hxx>
 #include<Message_module.hxx>
 #include<Media_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<AIS_module.hxx>
+#include<TPrsStd_module.hxx>
+#include<XCAFPrs_module.hxx>
+#include<TDataStd_module.hxx>
+#include<Prs3d_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<Select3D_module.hxx>
+#include<StdSelect_module.hxx>
+#include<TopTools_module.hxx>
+#include<V3d_module.hxx>
+#include<TDataXtd_module.hxx>
+#include<TNaming_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -70,6 +84,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 %import Poly.i
 %import TopoDS.i
 %import TCollection.i
+%import RWMesh.i
 %import Graphic3d.i
 %import gp.i
 

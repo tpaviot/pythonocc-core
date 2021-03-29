@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.SelectMgr import *
+from OCC.Core.PrsDim import *
 from OCC.Core.Media import *
 from OCC.Core.TCollection import *
 from OCC.Core.Quantity import *

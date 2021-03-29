@@ -42,6 +42,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<SelectMgr_module.hxx>
+#include<PrsDim_module.hxx>
 #include<Media_module.hxx>
 #include<TCollection_module.hxx>
 #include<Quantity_module.hxx>
@@ -83,6 +84,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %import Standard.i
 %import NCollection.i
 %import SelectMgr.i
+%import PrsDim.i
 %import Media.i
 %import TCollection.i
 %import Quantity.i
@@ -16155,5 +16157,28 @@ float
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+AIS_AngleDimension=OCC.Core.PrsDim.PrsDim_AngleDimension
 AIS_AnimationTimer=OCC.Core.Media.Media_Timer
+AIS_Chamf2dDimension=OCC.Core.PrsDim.PrsDim_Chamf2dDimension
+AIS_Chamf3dDimension=OCC.Core.PrsDim.PrsDim_Chamf3dDimension
+AIS_ConcentricRelation=OCC.Core.PrsDim.PrsDim_ConcentricRelation
+AIS_DiameterDimension=OCC.Core.PrsDim.PrsDim_DiameterDimension
+AIS_Dimension=OCC.Core.PrsDim.PrsDim_Dimension
+AIS_DimensionOwner=OCC.Core.PrsDim.PrsDim_DimensionOwner
+AIS_EllipseRadiusDimension=OCC.Core.PrsDim.PrsDim_EllipseRadiusDimension
+AIS_EqualDistanceRelation=OCC.Core.PrsDim.PrsDim_EqualDistanceRelation
+AIS_EqualRadiusRelation=OCC.Core.PrsDim.PrsDim_EqualRadiusRelation
+AIS_FixRelation=OCC.Core.PrsDim.PrsDim_FixRelation
+AIS_IdenticRelation=OCC.Core.PrsDim.PrsDim_IdenticRelation
+AIS_LengthDimension=OCC.Core.PrsDim.PrsDim_LengthDimension
+AIS_MaxRadiusDimension=OCC.Core.PrsDim.PrsDim_MaxRadiusDimension
+AIS_MidPointRelation=OCC.Core.PrsDim.PrsDim_MidPointRelation
+AIS_MinRadiusDimension=OCC.Core.PrsDim.PrsDim_MinRadiusDimension
+AIS_OffsetDimension=OCC.Core.PrsDim.PrsDim_OffsetDimension
+AIS_ParallelRelation=OCC.Core.PrsDim.PrsDim_ParallelRelation
+AIS_PerpendicularRelation=OCC.Core.PrsDim.PrsDim_PerpendicularRelation
+AIS_RadiusDimension=OCC.Core.PrsDim.PrsDim_RadiusDimension
+AIS_Relation=OCC.Core.PrsDim.PrsDim_Relation
+AIS_SymmetricRelation=OCC.Core.PrsDim.PrsDim_SymmetricRelation
+AIS_TangentRelation=OCC.Core.PrsDim.PrsDim_TangentRelation
 }

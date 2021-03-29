@@ -1088,6 +1088,36 @@ None
 ") Perform;
 		void Perform();
 
+		/****************** SetImageVV ******************/
+		/**** md5 signature: e4e1ed7e9cd079a003f1ab409e87973e ****/
+		%feature("compactdefaultargs") SetImageVV;
+		%feature("autodoc", "Sets the image vertex - vertex.
+
+Parameters
+----------
+theImageVV: BRepAlgo_Image
+
+Returns
+-------
+None
+") SetImageVV;
+		void SetImageVV(const BRepAlgo_Image & theImageVV);
+
+		/****************** UpdateVEmap ******************/
+		/**** md5 signature: 491681c63af221fbd7247e01d389bbc0 ****/
+		%feature("compactdefaultargs") UpdateVEmap;
+		%feature("autodoc", "Update ve map according to image vertex - vertex.
+
+Parameters
+----------
+theVEmap: TopTools_IndexedDataMapOfShapeListOfShape
+
+Returns
+-------
+None
+") UpdateVEmap;
+		void UpdateVEmap(TopTools_IndexedDataMapOfShapeListOfShape & theVEmap);
+
 		/****************** VerticesForSubstitute ******************/
 		/**** md5 signature: b26ff2366762048c84c096651ba2d80c ****/
 		%feature("compactdefaultargs") VerticesForSubstitute;
