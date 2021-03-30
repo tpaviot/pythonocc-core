@@ -1,3 +1,18 @@
+Version 7.5.1 - March 2021
+==========================
+
+This release requires opencascade-7.5.1
+
+* wrapper: Port to opencascade-7.5.1
+
+* build: fix compilation for old versions of cmake
+
+* display: fix graduated trihedron rendering
+
+* display: disable default antialiasing in SimpleGui
+
+* webgl: upgrade to threejs r126
+
 Version 7.5.0rc1 - February 2021
 ================================
 

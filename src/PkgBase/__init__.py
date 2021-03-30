@@ -3,7 +3,7 @@ PYTHONOCC_VERSION_MINOR = 5
 PYTHONOCC_VERSION_PATCH = 1
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-PYTHONOCC_VERSION_DEVEL = '-dev'
+PYTHONOCC_VERSION_DEVEL = ''
 
 VERSION = "%s.%s.%s%s" % (PYTHONOCC_VERSION_MAJOR, PYTHONOCC_VERSION_MINOR,
                           PYTHONOCC_VERSION_PATCH, PYTHONOCC_VERSION_DEVEL)
