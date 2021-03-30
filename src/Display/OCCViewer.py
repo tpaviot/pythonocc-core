@@ -202,9 +202,6 @@ class Viewer3d(Display3d):
         # necessary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().StructureManager()
 
-        # by default, enable antialisaing
-        self.EnableAntiAliasing()
-
         # turn self._inited flag to True
         self._inited = True
 
