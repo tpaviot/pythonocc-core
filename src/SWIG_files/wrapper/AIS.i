@@ -644,43 +644,20 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 /* end templates declaration */
 
 /* typedefs */
-typedef PrsDim_AngleDimension AIS_AngleDimension;
 typedef Media_Timer AIS_AnimationTimer;
-typedef PrsDim_Chamf2dDimension AIS_Chamf2dDimension;
-typedef PrsDim_Chamf3dDimension AIS_Chamf3dDimension;
-typedef PrsDim_ConcentricRelation AIS_ConcentricRelation;
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
 typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher>::Iterator AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
 typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher> AIS_DataMapofIntegerListOfinteractive;
-typedef PrsDim_DiameterDimension AIS_DiameterDimension;
-typedef PrsDim_Dimension AIS_Dimension;
-typedef PrsDim_DimensionOwner AIS_DimensionOwner;
-typedef PrsDim_EllipseRadiusDimension AIS_EllipseRadiusDimension;
-typedef PrsDim_EqualDistanceRelation AIS_EqualDistanceRelation;
-typedef PrsDim_EqualRadiusRelation AIS_EqualRadiusRelation;
-typedef PrsDim_FixRelation AIS_FixRelation;
-typedef PrsDim_IdenticRelation AIS_IdenticRelation;
 typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<Prs3d_Presentation>, TColStd_MapTransientHasher> AIS_IndexedDataMapOfOwnerPrs;
-typedef PrsDim_LengthDimension AIS_LengthDimension;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>> AIS_ListOfInteractive;
 typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher>::Iterator AIS_MapIteratorOfMapOfInteractive;
 typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher> AIS_MapOfInteractive;
-typedef PrsDim_MaxRadiusDimension AIS_MaxRadiusDimension;
-typedef PrsDim_MidPointRelation AIS_MidPointRelation;
-typedef PrsDim_MinRadiusDimension AIS_MinRadiusDimension;
 typedef NCollection_DataMap<unsigned int, AIS_MouseGesture> AIS_MouseGestureMap;
 typedef NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
-typedef PrsDim_OffsetDimension AIS_OffsetDimension;
-typedef PrsDim_ParallelRelation AIS_ParallelRelation;
-typedef PrsDim_PerpendicularRelation AIS_PerpendicularRelation;
-typedef PrsDim_RadiusDimension AIS_RadiusDimension;
-typedef PrsDim_Relation AIS_Relation;
 typedef NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> AIS_SequenceOfInteractive;
-typedef PrsDim_SymmetricRelation AIS_SymmetricRelation;
-typedef PrsDim_TangentRelation AIS_TangentRelation;
 /* end typedefs declaration */
 
 /************

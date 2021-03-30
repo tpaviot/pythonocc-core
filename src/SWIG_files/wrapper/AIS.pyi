@@ -25,36 +25,13 @@ from OCC.Core.Select3D import *
 from OCC.Core.Poly import *
 from OCC.Core.Image import *
 
-AIS_AngleDimension = NewType('AIS_AngleDimension', PrsDim_AngleDimension)
 AIS_AnimationTimer = NewType('AIS_AnimationTimer', Media_Timer)
-AIS_Chamf2dDimension = NewType('AIS_Chamf2dDimension', PrsDim_Chamf2dDimension)
-AIS_Chamf3dDimension = NewType('AIS_Chamf3dDimension', PrsDim_Chamf3dDimension)
-AIS_ConcentricRelation = NewType('AIS_ConcentricRelation', PrsDim_ConcentricRelation)
-AIS_DiameterDimension = NewType('AIS_DiameterDimension', PrsDim_DiameterDimension)
-AIS_Dimension = NewType('AIS_Dimension', PrsDim_Dimension)
-AIS_DimensionOwner = NewType('AIS_DimensionOwner', PrsDim_DimensionOwner)
-AIS_EllipseRadiusDimension = NewType('AIS_EllipseRadiusDimension', PrsDim_EllipseRadiusDimension)
-AIS_EqualDistanceRelation = NewType('AIS_EqualDistanceRelation', PrsDim_EqualDistanceRelation)
-AIS_EqualRadiusRelation = NewType('AIS_EqualRadiusRelation', PrsDim_EqualRadiusRelation)
-AIS_FixRelation = NewType('AIS_FixRelation', PrsDim_FixRelation)
-AIS_IdenticRelation = NewType('AIS_IdenticRelation', PrsDim_IdenticRelation)
 #the following typedef cannot be wrapped as is
 AIS_IndexedDataMapOfOwnerPrs = NewType('AIS_IndexedDataMapOfOwnerPrs', Any)
-AIS_LengthDimension = NewType('AIS_LengthDimension', PrsDim_LengthDimension)
 #the following typedef cannot be wrapped as is
 AIS_MapIteratorOfMapOfInteractive = NewType('AIS_MapIteratorOfMapOfInteractive', Any)
 #the following typedef cannot be wrapped as is
 AIS_MapOfInteractive = NewType('AIS_MapOfInteractive', Any)
-AIS_MaxRadiusDimension = NewType('AIS_MaxRadiusDimension', PrsDim_MaxRadiusDimension)
-AIS_MidPointRelation = NewType('AIS_MidPointRelation', PrsDim_MidPointRelation)
-AIS_MinRadiusDimension = NewType('AIS_MinRadiusDimension', PrsDim_MinRadiusDimension)
-AIS_OffsetDimension = NewType('AIS_OffsetDimension', PrsDim_OffsetDimension)
-AIS_ParallelRelation = NewType('AIS_ParallelRelation', PrsDim_ParallelRelation)
-AIS_PerpendicularRelation = NewType('AIS_PerpendicularRelation', PrsDim_PerpendicularRelation)
-AIS_RadiusDimension = NewType('AIS_RadiusDimension', PrsDim_RadiusDimension)
-AIS_Relation = NewType('AIS_Relation', PrsDim_Relation)
-AIS_SymmetricRelation = NewType('AIS_SymmetricRelation', PrsDim_SymmetricRelation)
-AIS_TangentRelation = NewType('AIS_TangentRelation', PrsDim_TangentRelation)
 
 class AIS_ListOfInteractive:
     def __init__(self) -> None: ...

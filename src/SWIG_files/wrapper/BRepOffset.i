@@ -646,7 +646,7 @@ BRepOffset_ListOfInterval
 class BRepOffset_Inter2d {
 	public:
 		/****************** Compute ******************/
-		/**** md5 signature: 979a13b397be41e90b8e3ab967e4f53f ****/
+		/**** md5 signature: bde03ec66a797cb4685832503e894f02 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Computes the intersections between the edges stored is asdes as descendants of <f> . intersections is computed between two edges if one of them is bound in newedges. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -656,16 +656,17 @@ AsDes: BRepAlgo_AsDes
 F: TopoDS_Face
 NewEdges: TopTools_IndexedMapOfShape
 Tol: float
+theEdgeIntEdges: TopTools_DataMapOfShapeListOfShape
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 
 Returns
 -------
 None
 ") Compute;
-		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, const TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
 
 		/****************** ConnexIntByInt ******************/
-		/**** md5 signature: 1a671b5662dcca5e08cbb12b0f392946 ****/
+		/**** md5 signature: 9542f85ef2c6d8783402b4d5f6bb0b58 ****/
 		%feature("compactdefaultargs") ConnexIntByInt;
 		%feature("autodoc", "Computes the intersection between the offset edges of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -675,18 +676,21 @@ FI: TopoDS_Face
 OFI: BRepOffset_Offset
 MES: TopTools_DataMapOfShapeShape
 Build: TopTools_DataMapOfShapeShape
+theAsDes: BRepAlgo_AsDes
 AsDes2d: BRepAlgo_AsDes
 Offset: float
 Tol: float
 Analyse: BRepOffset_Analyse
 FacesWithVerts: TopTools_IndexedMapOfShape
+theImageVV: BRepAlgo_Image
+theEdgeIntEdges: TopTools_DataMapOfShapeListOfShape
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 
 Returns
 -------
 bool
 ") ConnexIntByInt;
-		static Standard_Boolean ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static Standard_Boolean ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, BRepAlgo_Image & theImageVV, TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
 
 		/****************** ConnexIntByIntInVert ******************/
 		/**** md5 signature: ea838c391bea9387e57a224561f2be12 ****/
@@ -729,7 +733,7 @@ bool
 		static Standard_Boolean ExtentEdge(const TopoDS_Edge & E, TopoDS_Edge & NE, const Standard_Real theOffset);
 
 		/****************** FuseVertices ******************/
-		/**** md5 signature: 039f375f0808091df05360168c765f3c ****/
+		/**** md5 signature: 13e662b268b3ad2a3fc5abb84641c05a ****/
 		%feature("compactdefaultargs") FuseVertices;
 		%feature("autodoc", "Fuses the chains of vertices in the thedmvv and updates asdes by replacing the old vertices with the new ones.
 
@@ -737,12 +741,13 @@ Parameters
 ----------
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 theAsDes: BRepAlgo_AsDes
+theImageVV: BRepAlgo_Image
 
 Returns
 -------
 bool
 ") FuseVertices;
-		static Standard_Boolean FuseVertices(const TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes);
+		static Standard_Boolean FuseVertices(const TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, BRepAlgo_Image & theImageVV);
 
 };
 
@@ -1116,7 +1121,7 @@ None
 		 BRepOffset_MakeLoops();
 
 		/****************** Build ******************/
-		/**** md5 signature: 6659e42a50d0c1c2250f0e1e0ec1b1eb ****/
+		/**** md5 signature: fa75ced0f1b13af9db45939bc0b3ea40 ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "No available documentation.
 
@@ -1125,12 +1130,13 @@ Parameters
 LF: TopTools_ListOfShape
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
+theImageVV: BRepAlgo_Image
 
 Returns
 -------
 None
 ") Build;
-		void Build(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image);
+		void Build(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, BRepAlgo_Image & theImageVV);
 
 		/****************** BuildFaces ******************/
 		/**** md5 signature: c3db0e3d2792b138a1249d8591b7cf76 ****/
@@ -2420,7 +2426,7 @@ None
 		static void Inter2d(const TopoDS_Face & F, const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopTools_ListOfShape & LV, const Standard_Real Tol);
 
 		/****************** Inter3D ******************/
-		/**** md5 signature: 411d6729c1367e207c90ad10f6b9f34e ****/
+		/**** md5 signature: 14c7b38326d9f6a6878482c940a4d0b3 ****/
 		%feature("compactdefaultargs") Inter3D;
 		%feature("autodoc", "Computes the section betwwen <f1> and <f2> the edges solution are stored in <lint1> with the orientation on <f1>, the sames edges are stored in <lint2> with the orientation on <f2>.
 
@@ -2432,14 +2438,14 @@ LInt1: TopTools_ListOfShape
 LInt2: TopTools_ListOfShape
 Side: TopAbs_State
 RefEdge: TopoDS_Edge
-IsRefEdgeDefined: bool,optional
-	default value is Standard_False
+RefFace1: TopoDS_Face
+RefFace2: TopoDS_Face
 
 Returns
 -------
 None
 ") Inter3D;
-		static void Inter3D(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const TopoDS_Edge & RefEdge, const Standard_Boolean IsRefEdgeDefined = Standard_False);
+		static void Inter3D(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const TopoDS_Edge & RefEdge, const TopoDS_Face & RefFace1, const TopoDS_Face & RefFace2);
 
 		/****************** InterOrExtent ******************/
 		/**** md5 signature: b59609d22996a8309b9d7db1980b24a8 ****/

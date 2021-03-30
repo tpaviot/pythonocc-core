@@ -25,10 +25,10 @@ requirements:
 
   host:
     - python {{ python }}
-    - occt ==7.5.0
+    - occt ==7.5.1
 
   run:
-    - occt ==7.5.0
+    - occt ==7.5.1
     - python
     - six
 
