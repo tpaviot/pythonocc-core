@@ -28,7 +28,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r113"
+THREEJS_RELEASE = "r126"
 
 def spinning_cursor():
     while True:
@@ -89,7 +89,7 @@ HEADER = """
             position: absolute;
             left: 1%;
             bottom: 2%;
-            height: 38px;
+            height: 19px;
             width: 280px;
             border-radius: 5px;
             border: 2px solid #f7941e;
@@ -131,8 +131,6 @@ BODY_PART0 = """
     <div id="container"></div>
     <div id="pythonocc_rocks">
         pythonocc-@VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js %s</a> renderer
-        <br>Check our blog at
-        <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
