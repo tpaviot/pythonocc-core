@@ -35,7 +35,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 
-class qtBaseViewer(QtOpenGL.QGLWidget):
+class qtBaseViewer(QtWidgets.QWidget):
     ''' The base Qt Widget for an OCC viewer
     '''
     def __init__(self, parent=None):
