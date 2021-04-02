@@ -55,32 +55,32 @@ class TestOCAF(unittest.TestCase):
         doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
         self.assertFalse(doc is None)
 
-    # def test_write_step_file(self)-> None:
-    #     ''' Exports a colored box into a STEP file '''
-    #     ### initialisation
-    #     doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
-    #     self.assertTrue(doc is not None)
+    def test_write_step_file(self)-> None:
+        ''' Exports a colored box into a STEP file '''
+        ### initialisation
+        doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
+        self.assertTrue(doc is not None)
 
-    #     # Get root assembly
-    #     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
-    #     colors = XCAFDoc_DocumentTool.ColorTool(doc.Main())
-    #     ### create the shape to export
-    #     test_shape = BRepPrimAPI_MakeBox(100., 100., 100.).Shape()
+        # Get root assembly
+        shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+        colors = XCAFDoc_DocumentTool.ColorTool(doc.Main())
+        ### create the shape to export
+        test_shape = BRepPrimAPI_MakeBox(100., 100., 100.).Shape()
 
-    #     ### add shape
-    #     shp_label = shape_tool.AddShape(test_shape)
-    #     ### set a color for this shape
-    #     r = 1.
-    #     g = b = 0.5
-    #     red_color = Quantity_Color(r, g, b, Quantity_TypeOfColor.Quantity_TOC_RGB)
-    #     colors.SetColor(shp_label, red_color, XCAFDoc_ColorGen)
-    #     # write file
-    #     WS = XSControl_WorkSession()
-    #     writer = STEPCAFControl_Writer(WS, False)
-    #     writer.Transfer(doc, STEPControl_AsIs)
-    #     status = writer.Write("./test_io/test_ocaf_generated.stp")
-    #     self.assertTrue(status)
-    #     self.assertTrue(os.path.isfile("./test_io/test_ocaf_generated.stp"))
+        ### add shape
+        shp_label = shape_tool.AddShape(test_shape)
+        ### set a color for this shape
+        r = 1.
+        g = b = 0.5
+        red_color = Quantity_Color(r, g, b, Quantity_TypeOfColor.Quantity_TOC_RGB)
+        colors.SetColor(shp_label, red_color, XCAFDoc_ColorGen)
+        # write file
+        WS = XSControl_WorkSession()
+        writer = STEPCAFControl_Writer(WS, False)
+        writer.Transfer(doc, STEPControl_AsIs)
+        status = writer.Write("./test_io/test_ocaf_generated.stp")
+        self.assertTrue(status)
+        self.assertTrue(os.path.isfile("./test_io/test_ocaf_generated.stp"))
 
     def test_read_step_file(self)-> None:
         ''' Reads the previous step file '''
