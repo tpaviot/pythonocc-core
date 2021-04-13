@@ -29,6 +29,36 @@
 %include "std_vector.i"
 %include "typemaps.i"
 
+
+%{
+#include<Standard_module.hxx>
+#include<NCollection_module.hxx>
+#include<MeshVS_module.hxx>
+#include<Geom_module.hxx>
+#include<Bnd_module.hxx>
+#include<AIS_module.hxx>
+#include<V3d_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Message_module.hxx>
+#include<Aspect_module.hxx>
+#include<TopoDS_module.hxx>
+#include<Poly_module.hxx>
+#include<StdSelect_module.hxx>
+#include<TShort_module.hxx>
+#include<Media_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<TCollection_module.hxx>
+#include<Prs3d_module.hxx>
+#include<Select3D_module.hxx>
+%};
+
+%import Standard.i
+%import MeshVS.i
+%import Poly.i
+%import TColStd.i
+
 %template(vector_float) std::vector<float>;
 %template(vector_gp_Pnt) std::vector<gp_Pnt>;
 %template(vector_int) std::vector<int>;
@@ -39,7 +69,7 @@
 
 %wrap_handle(Mesh_DataSource)
 
-class Mesh_DataSource {
+class Mesh_DataSource : public MeshVS_DataSource {
     public:
         Mesh_DataSource(std::vector<gp_Pnt> CoordData, std::vector<std::vector<int>> Ele2NodeData);
         void SetElemNormals(std::vector<gp_Vec> ElemNormalsData);

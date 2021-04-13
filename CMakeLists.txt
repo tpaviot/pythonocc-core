@@ -319,10 +319,11 @@ if(PYTHONOCC_WRAP_VISU)
   # MeshDataSource addition #
   ###########################
   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/MeshDataSource)
-  set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.i PROPERTIES CPLUSPLUS ON)
+  set(FILE ${SWIG_FILES_PATH}/MeshDataSource.i)
+  set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource)
   set(MESHDATASOURCE_SOURCE_FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.i
+  ${FILE}
   ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.cpp)
 
   swig_add_library(MeshDataSource LANGUAGE python SOURCES ${MESHDATASOURCE_SOURCE_FILES} TYPE MODULE)
