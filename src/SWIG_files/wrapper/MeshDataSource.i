@@ -72,8 +72,12 @@
 class Mesh_DataSource : public MeshVS_DataSource {
     public:
         Mesh_DataSource(std::vector<gp_Pnt> CoordData, std::vector<std::vector<int>> Ele2NodeData);
+        Mesh_DataSource(const opencascade::handle<Poly_Triangulation> & polyTri);
         void SetElemNormals(std::vector<gp_Vec> ElemNormalsData);
         void SetNodeNormals(std::vector<std::vector<gp_Vec>> NodeNormalsData);
+        Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes, MeshVS_EntityType& Type);
+     	Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType& Type);
+		Standard_Address GetAddr(const Standard_Integer ID, const Standard_Boolean IsElement);
         const TColStd_PackedMapOfInteger& GetAllNodes();
         const TColStd_PackedMapOfInteger& GetAllElements();
 };
