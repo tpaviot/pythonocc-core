@@ -315,6 +315,19 @@ if(PYTHONOCC_WRAP_VISU)
     swig_link_libraries(Visualization /System/Library/Frameworks/Cocoa.framework)
   endif(APPLE)
 
+  ###########################
+  # MeshDataSource addition #
+  ###########################
+  execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/MeshDataSource)
+  set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.i PROPERTIES CPLUSPLUS ON)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource)
+  set(MESHDATASOURCE_SOURCE_FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.i
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.cpp)
+
+  swig_add_library(MeshDataSource LANGUAGE python SOURCES ${MESHDATASOURCE_SOURCE_FILES} TYPE MODULE)
+  swig_link_libraries(MeshDataSource ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+
 endif(PYTHONOCC_WRAP_VISU)
 
 ################
@@ -388,31 +401,35 @@ install(FILES ${BUILD_DIR}/Tesselator.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTO
 install(TARGETS _Tesselator DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 
 if(PYTHONOCC_WRAP_VISU)
-foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
-    ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-endforeach(OCE_MODULE)
+    foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
+        install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+        ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    endforeach(OCE_MODULE)
+
+    # install MeshDataSource
+    install(FILES ${BUILD_DIR}/MeshDataSource.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS _MeshDataSource DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endif(PYTHONOCC_WRAP_VISU)
 
 if(PYTHONOCC_WRAP_DATAEXCHANGE)
-foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
-    ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-endforeach(OCE_MODULE)
+    foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
+        install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+        ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
 if(PYTHONOCC_WRAP_OCAF)
-foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
-    # install the python interface file (python module)
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
-    ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-endforeach(OCE_MODULE)
+    foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
+        # install the python interface file (python module)
+        install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+        ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
 # install third part modules
