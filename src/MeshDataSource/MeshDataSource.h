@@ -1,4 +1,8 @@
-#pragma once
+#if !defined __MeshDataSource__
+#define __MeshDataSource__
+
+
+#include <algorithm>
 
 #include <Standard.hxx>
 #include <Standard_Type.hxx>
@@ -86,3 +90,5 @@ private:
 	Handle(TColStd_HArray2OfReal) myNodeNormals;
 	void InitializeFromData(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData);
 };
+
+#endif
