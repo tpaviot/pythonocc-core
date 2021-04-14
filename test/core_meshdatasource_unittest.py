@@ -15,10 +15,11 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import unittest
+from math import sqrt
 import os
+import unittest
 
-from OCC.Core.gp import gp_Pnt
+from OCC.Core.gp import gp_Pnt, gp_Vec
 from OCC.Core.MeshDataSource import Mesh_DataSource
 from OCC.Core.RWStl import rwstl_ReadFile
 from OCC.Core.TColStd import TColStd_Array1OfInteger
@@ -35,14 +36,63 @@ class TestMeshDataSource(unittest.TestCase):
         a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
         Mesh_DataSource(a_stl_mesh)
 
-    # def test_get_nodes_by_element(self):
-    #     a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
-    #     a_data_source = Mesh_DataSource(a_stl_mesh)
-    #     array_of_integer = TColStd_Array1OfInteger()
-    #     self.assertEqual(array_of_integer.Length(), 0)
-    #     nb_nodes, result = a_data_source.GetNodesByElement(10, array_of_integer)
-    #     self.assertTrue(result)
-    #     self.assertEqual(array_of_integer.Length(), 0)
+    def test_create_mesh_datasource(self):
+        """ Create a simple mesh data source
+        """
+        # create data
+        coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
+        ele2_node_data = [[0, 1,4 , 3], [1, 2, 4]]
+        NodeNormalsData = [[gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)],
+                           [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)]]
+        elem_normals_data = [gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]
+        # create data source
+        a_data_source = Mesh_DataSource(coord_data,ele2_node_data)
+        # check node ids and number of elements
+        node_ids = TColStd_Array1OfInteger(1, 4)
+        is_ok, nb_nodes = a_data_source.GetNodesByElement(1,node_ids)
+        self.assertTrue(is_ok)
+        self.assertEqual(nb_nodes, 4)
+        self.assertEqual(node_ids.Value(1), 1)
+        self.assertEqual(node_ids.Value(2), 2)
+        self.assertEqual(node_ids.Value(3), 5)
+        self.assertEqual(node_ids.Value(4), 4)
+        is_ok, nb_nodes = a_data_source.GetNodesByElement(2, node_ids)
+        self.assertTrue(is_ok)
+        self.assertEqual(nb_nodes, 3)
+        self.assertEqual(node_ids.Value(1), 2)
+        self.assertEqual(node_ids.Value(2), 3)
+        self.assertEqual(node_ids.Value(3), 5)
+        # check normal of elements
+        is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
+        self.assertEqual(nx, 0.)
+        self.assertEqual(ny, 0.)
+        self.assertEqual(nz, -1.)
+        is_ok, nx, ny, nz = a_data_source.GetNormal(2, 3)
+        self.assertEqual(nx, 0.)
+        self.assertEqual(ny, -1.)
+        self.assertEqual(nz, 0.)
+        # check normal of nodes
+        is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 1)
+        self.assertEqual(nx, 0.)
+        self.assertEqual(ny, 0.)
+        self.assertEqual(nz, -1.)
+        is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
+        self.assertEqual(nx, 0.)
+        # floating point number comparison, rounded to 12 decimals
+        self.assertEqual(round(ny, 12), - round(sqrt(2) / 2, 12))
+        self.assertEqual(round(nz, 12), - round(sqrt(2) / 2, 12))
+        # set and check normal of elements
+        a_data_source.SetElemNormals(elem_normals_data)
+        is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
+        self.assertEqual(nx, 0.)
+        self.assertEqual(ny, 0.)
+        self.assertEqual(nz, 1.)
+        # set and check normal of nodes
+        a_data_source.SetNodeNormals(NodeNormalsData)
+        is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
+        self.assertEqual(nx, 0.)
+        self.assertEqual(ny, 0.)
+        self.assertEqual(nz, -1.)
 
 
 def suite():
