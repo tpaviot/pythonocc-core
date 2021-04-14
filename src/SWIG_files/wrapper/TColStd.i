@@ -721,6 +721,395 @@ TColStd_PackedMapOfInteger
 	}
 };
 
+/***********************************
+* class TColStd_PackedMapOfInteger *
+***********************************/
+class TColStd_PackedMapOfInteger : private TCollection_BasicMap {
+	public:
+		class Iterator {};
+		/****************** TColStd_PackedMapOfInteger ******************/
+		/**** md5 signature: 619d2daca0e8dea9773a1b97a582c2c1 ****/
+		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
+		%feature("autodoc", "/// constructor.
+
+Parameters
+----------
+NbBuckets: int,optional
+	default value is 1
+
+Returns
+-------
+None
+") TColStd_PackedMapOfInteger;
+		 TColStd_PackedMapOfInteger(const Standard_Integer NbBuckets = 1);
+
+		/****************** TColStd_PackedMapOfInteger ******************/
+		/**** md5 signature: df5363196f2bc30ad246fd02e747d5dd ****/
+		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
+		%feature("autodoc", "/// copy constructor.
+
+Parameters
+----------
+theOther: TColStd_PackedMapOfInteger
+
+Returns
+-------
+None
+") TColStd_PackedMapOfInteger;
+		 TColStd_PackedMapOfInteger(const TColStd_PackedMapOfInteger & theOther);
+
+		/****************** Add ******************/
+		/**** md5 signature: fefd53232cb6b225fee21a01797a4953 ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aKey: int
+
+Returns
+-------
+bool
+") Add;
+		Standard_Boolean Add(const Standard_Integer aKey);
+
+		/****************** Assign ******************/
+		/**** md5 signature: b123b23cfd6a21df1cc646056934f119 ****/
+		%feature("compactdefaultargs") Assign;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+TColStd_PackedMapOfInteger
+") Assign;
+		TColStd_PackedMapOfInteger & Assign(const TColStd_PackedMapOfInteger &);
+
+		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
+
+		/****************** Contains ******************/
+		/**** md5 signature: 8de2585592fed12a6d282488cd796177 ****/
+		%feature("compactdefaultargs") Contains;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aKey: int
+
+Returns
+-------
+bool
+") Contains;
+		Standard_Boolean Contains(const Standard_Integer aKey);
+
+		/****************** Differ ******************/
+		/**** md5 signature: a33b35e060f7a592a4272060e7dca3b9 ****/
+		%feature("compactdefaultargs") Differ;
+		%feature("autodoc", "/** * apply to this map the symmetric difference (aka exclusive disjunction, boolean xor) operation with another (given) map. * the result contains the values that are contained only in this or the operand map, but not in both. * this algorithm is similar to method difference(). * returns true if contents of this map is changed */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") Differ;
+		Standard_Boolean Differ(const TColStd_PackedMapOfInteger &);
+
+		/****************** Difference ******************/
+		/**** md5 signature: 8fbd60922dcd49c1c7cf9132a621a893 ****/
+		%feature("compactdefaultargs") Difference;
+		%feature("autodoc", "/** * sets this map to be the result of symmetric difference (aka exclusive disjunction, boolean xor) operation between two given maps. * the new map contains the values that are contained only in the first or the second operand maps but not in both. * all previous contents of this map is cleared. * this map (result of the boolean operation) can also be used as one of operands. */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+None
+") Difference;
+		void Difference(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
+
+		/****************** Extent ******************/
+		/**** md5 signature: c808611e9f0acbe25f7e01fc4b129456 ****/
+		%feature("compactdefaultargs") Extent;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") Extent;
+		Standard_Integer Extent();
+
+		/****************** GetMaximalMapped ******************/
+		/**** md5 signature: 004e3c72ef4f9650f1f96fed23a5912b ****/
+		%feature("compactdefaultargs") GetMaximalMapped;
+		%feature("autodoc", "/** * query the maximal contained key value. */.
+
+Returns
+-------
+int
+") GetMaximalMapped;
+		Standard_Integer GetMaximalMapped();
+
+		/****************** GetMinimalMapped ******************/
+		/**** md5 signature: d7c068ee4ed7ed98b9da7452d3e6c9df ****/
+		%feature("compactdefaultargs") GetMinimalMapped;
+		%feature("autodoc", "/** * query the minimal contained key value. */.
+
+Returns
+-------
+int
+") GetMinimalMapped;
+		Standard_Integer GetMinimalMapped();
+
+		/****************** HasIntersection ******************/
+		/**** md5 signature: 64fc09010ab8b8e130b1e83e91bb6c58 ****/
+		%feature("compactdefaultargs") HasIntersection;
+		%feature("autodoc", "/** * returns true if this map has common items with the given one. */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") HasIntersection;
+		Standard_Boolean HasIntersection(const TColStd_PackedMapOfInteger &);
+
+		/****************** Intersect ******************/
+		/**** md5 signature: 8b232eb91c98828fe7f2311ddbd9531f ****/
+		%feature("compactdefaultargs") Intersect;
+		%feature("autodoc", "/** * apply to this map the intersection operation (aka multiplication, common, boolean and) with another (given) map. * the result contains only the values that are contained in both this and the given maps. * this algorithm is similar to method intersection(). * returns true if content of this map is changed */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") Intersect;
+		Standard_Boolean Intersect(const TColStd_PackedMapOfInteger &);
+
+		/****************** Intersection ******************/
+		/**** md5 signature: 2de63b754fe10319368ec017c5241e47 ****/
+		%feature("compactdefaultargs") Intersection;
+		%feature("autodoc", "/** * sets this map to be the result of intersection (aka multiplication, common, boolean and) operation between two given maps. * the new map contains only the values that are contained in both map operands. * all previous contents of this map is cleared. this same map (result of the boolean operation) can also be used as one of operands. * the order of operands makes no difference; the method minimizes internally the number of iterations using the smallest map for the loop. */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+None
+") Intersection;
+		void Intersection(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
+
+		/****************** IsEmpty ******************/
+		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsEmpty;
+		Standard_Boolean IsEmpty();
+
+		/****************** IsEqual ******************/
+		/**** md5 signature: f7a42088df0b62e4976b7a22e42a3394 ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "/** * returns true if this map is equal to the given one, i.e. they contain the * same sets of elements */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") IsEqual;
+		Standard_Boolean IsEqual(const TColStd_PackedMapOfInteger &);
+
+		/****************** IsSubset ******************/
+		/**** md5 signature: 6c5891cc01883b0709bbc235795cf9f7 ****/
+		%feature("compactdefaultargs") IsSubset;
+		%feature("autodoc", "/** * returns true if this map is subset of the given one, i.e. all elements * contained in this map is contained also in the operand map. * if this map is empty that this method returns true for any operand map. */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") IsSubset;
+		Standard_Boolean IsSubset(const TColStd_PackedMapOfInteger &);
+
+		/****************** NbBuckets ******************/
+		/**** md5 signature: b26adb1645e0f77d77c223d25f073de1 ****/
+		%feature("compactdefaultargs") NbBuckets;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbBuckets;
+		Standard_Integer NbBuckets();
+
+		/****************** ReSize ******************/
+		/**** md5 signature: 83b3b18bad9fa1d11d0b4c070b80b62a ****/
+		%feature("compactdefaultargs") ReSize;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+NbBuckets: int
+
+Returns
+-------
+None
+") ReSize;
+		void ReSize(const Standard_Integer NbBuckets);
+
+		/****************** Remove ******************/
+		/**** md5 signature: 92cf6145ca798b68010b8a9250e5f468 ****/
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aKey: int
+
+Returns
+-------
+bool
+") Remove;
+		Standard_Boolean Remove(const Standard_Integer aKey);
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string StatisticsToString() {
+            std::stringstream s;
+            self->Statistics(s);
+            return s.str();}
+        };
+		/****************** Subtract ******************/
+		/**** md5 signature: 190f8077cde18ce8900964ed206c3e98 ****/
+		%feature("compactdefaultargs") Subtract;
+		%feature("autodoc", "/** * apply to this map the subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean not) operation with another (given) map. * the result contains only the values that were previously contained in this map and not contained in this map. * this algorithm is similar to method subtract() with two operands. * returns true if contents of this map is changed */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") Subtract;
+		Standard_Boolean Subtract(const TColStd_PackedMapOfInteger &);
+
+		/****************** Subtraction ******************/
+		/**** md5 signature: d8b4eb899ecf48824b5e31cb4403d16c ****/
+		%feature("compactdefaultargs") Subtraction;
+		%feature("autodoc", "/** * sets this map to be the result of subtraction * (aka set-theoretic difference, relative complement, exclude, cut, boolean not) operation between two given maps. * the new map contains only the values that are contained in the first map operands and not contained in the second one. * all previous contents of this map is cleared. * this map (result of the boolean operation) can also be used as the first operand. */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+None
+") Subtraction;
+		void Subtraction(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
+
+		/****************** Union ******************/
+		/**** md5 signature: 63b0f7f4fb443df4653a7795cd699dd0 ****/
+		%feature("compactdefaultargs") Union;
+		%feature("autodoc", "/** * sets this map to be the result of union (aka addition, fuse, merge, boolean or) operation between two given maps. * the new map contains the values that are contained either in the first map or in the second map or in both. * all previous contents of this map is cleared. this map (result of the boolean operation) can also be passed as one of operands. */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+None
+") Union;
+		void Union(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
+
+		/****************** Unite ******************/
+		/**** md5 signature: e8a74d3f43058c4eae7ea1e860c6585c ****/
+		%feature("compactdefaultargs") Unite;
+		%feature("autodoc", "/** * apply to this map the boolean operation union (aka addition, fuse, merge, boolean or) with another (given) map. * the result contains the values that were previously contained in this map or contained in the given (operand) map. * this algorithm is similar to method union(). * returns true if content of this map is changed */.
+
+Parameters
+----------
+&: TColStd_PackedMapOfInteger
+
+Returns
+-------
+bool
+") Unite;
+		Standard_Boolean Unite(const TColStd_PackedMapOfInteger &);
+
+
+            %extend{
+                void __isub_wrapper__(const TColStd_PackedMapOfInteger other) {
+                *self -= other;
+                }
+            }
+            %pythoncode {
+            def __isub__(self, right):
+                self.__isub_wrapper__(right)
+                return self
+            }
+
+            %extend{
+                bool __eq_wrapper__(const TColStd_PackedMapOfInteger other) {
+                if (*self==other) return true;
+                else return false;
+                }
+            }
+            %pythoncode {
+            def __eq__(self, right):
+                try:
+                    return self.__eq_wrapper__(right)
+                except:
+                    return False
+            }
+};
+
+
+%extend TColStd_PackedMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* harray1 classes */
 
 class TColStd_HArray1OfExtendedString : public TColStd_Array1OfExtendedString, public Standard_Transient {
