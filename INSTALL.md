@@ -26,6 +26,11 @@ is officially dropped since the release 7.5.0.
 
 *   SWIG 3.0.11 or higher (<http://www.swig.org>),
 
+Optional
+--------
+
+If you want to benefit from a 3D graphical rendering, you will need a GUI manager, e.g. PyQt, PySide or wxPython.
+
 Create a local copy of the repository
 -------------------------------------
 
