@@ -1,5 +1,5 @@
 /*
-##Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2021 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -24,22 +24,17 @@
 #endif
 %}
 
-%{
-#include <MeshDataSource.h>
-#include <Standard.hxx>
-%}
-
 %include ../SWIG_files/common/CommonIncludes.i
 %include ../SWIG_files/common/ExceptionCatcher.i
 %include ../SWIG_files/common/FunctionTransformers.i
 %include ../SWIG_files/common/Operators.i
 %include ../SWIG_files/common/OccHandle.i
 
-%include "python/std_string.i"
 %include "std_vector.i"
 %include "typemaps.i"
 
 %{
+#include <MeshDataSource.h>
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<MeshVS_module.hxx>
@@ -68,6 +63,11 @@
 %import Poly.i
 %import TColStd.i
 
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 %template(vector_float) std::vector<float>;
 %template(vector_gp_Pnt) std::vector<gp_Pnt>;
 %template(vector_int) std::vector<int>;
@@ -84,7 +84,7 @@ class Mesh_DataSource : public MeshVS_DataSource {
         Mesh_DataSource(const opencascade::handle<Poly_Triangulation> & polyTri);
         void SetElemNormals(std::vector<gp_Vec> ElemNormalsData);
         void SetNodeNormals(std::vector<std::vector<gp_Vec>> NodeNormalsData);
-        Standard_Boolean GetGeom(Standard_Integer ID, Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes, MeshVS_EntityType& Type);
+        Standard_Boolean GetGeom(Standard_Integer ID, Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer &OutValue, MeshVS_EntityType& Type);
      	Standard_Boolean GetGeomType(Standard_Integer ID, Standard_Boolean IsElement, MeshVS_EntityType& Type);
 		Standard_Address GetAddr(Standard_Integer ID, Standard_Boolean IsElement);
 		Standard_Boolean GetNodesByElement(Standard_Integer ID, TColStd_Array1OfInteger& NodeIDs, Standard_Integer &OutValue);
@@ -95,3 +95,9 @@ class Mesh_DataSource : public MeshVS_DataSource {
 };
 
 %make_alias(Mesh_DataSource)
+
+%extend Mesh_DataSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
