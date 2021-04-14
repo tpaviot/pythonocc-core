@@ -27,29 +27,19 @@ from OCC.Core.TColStd import TColStd_Array1OfInteger
 STL_BOTTLE_FILENAME = os.path.join('.', 'test_io', 'bottle_ascii.stl')
 
 class TestMeshDataSource(unittest.TestCase):
-    def test_instantiate_from_point_and_matrix(self):
-        point_list = [gp_Pnt(i, i, i) for i in range(100)]
-        int_matrix = [[i for i in range(10)] for j in range(10)]
-        Mesh_DataSource(point_list, [[0, 0], [1, 1]])
-
     def test_instantiate_from_stl_file(self):
         a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
         Mesh_DataSource(a_stl_mesh)
 
     def test_create_mesh_datasource(self):
-        """ Create a simple mesh data source
-        """
         # create data
         coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
-        ele2_node_data = [[0, 1,4 , 3], [1, 2, 4]]
-        NodeNormalsData = [[gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)],
-                           [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)]]
-        elem_normals_data = [gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]
+        ele2_node_data = [[0, 1, 4 , 3], [1, 2, 4]]
         # create data source
-        a_data_source = Mesh_DataSource(coord_data,ele2_node_data)
+        a_data_source = Mesh_DataSource(coord_data, ele2_node_data)
         # check node ids and number of elements
         node_ids = TColStd_Array1OfInteger(1, 4)
-        is_ok, nb_nodes = a_data_source.GetNodesByElement(1,node_ids)
+        is_ok, nb_nodes = a_data_source.GetNodesByElement(1, node_ids)
         self.assertTrue(is_ok)
         self.assertEqual(nb_nodes, 4)
         self.assertEqual(node_ids.Value(1), 1)
@@ -81,6 +71,17 @@ class TestMeshDataSource(unittest.TestCase):
         # floating point number comparison, rounded to 12 decimals
         self.assertEqual(round(ny, 12), - round(sqrt(2) / 2, 12))
         self.assertEqual(round(nz, 12), - round(sqrt(2) / 2, 12))
+
+    def testset_check_normals(self):
+        # create data
+        coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
+        ele2_node_data = [[0, 1, 4 , 3], [1, 2, 4]]
+        node_normals_data = [[gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)],
+                             [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)]]
+        elem_normals_data = [gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]
+        # create data source
+        a_data_source = Mesh_DataSource(coord_data, ele2_node_data)
+        # check node ids and number of elements
         # set and check normal of elements
         a_data_source.SetElemNormals(elem_normals_data)
         is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
@@ -88,11 +89,19 @@ class TestMeshDataSource(unittest.TestCase):
         self.assertEqual(ny, 0.)
         self.assertEqual(nz, 1.)
         # set and check normal of nodes
-        a_data_source.SetNodeNormals(NodeNormalsData)
+        a_data_source.SetNodeNormals(node_normals_data)
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
         self.assertEqual(nx, 0.)
         self.assertEqual(ny, 0.)
         self.assertEqual(nz, -1.)
+        # get all nodes
+        all_nodes = a_data_source.GetAllNodes()
+        self.assertEqual(all_nodes.NbBuckets(), 101)
+        all_nodes.StatisticsToString()
+        # get all GetAllElements
+        all_elements = a_data_source.GetAllElements()
+        all_elements.StatisticsToString()
+        self.assertEqual(all_elements.NbBuckets(), 101)
 
 
 def suite():
