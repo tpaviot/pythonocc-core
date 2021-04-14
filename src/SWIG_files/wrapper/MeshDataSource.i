@@ -19,16 +19,25 @@
 %module MeshDataSource;
 
 %{
+#ifdef WNT
+#pragma warning(disable : 4716)
+#endif
+%}
+
+%{
 #include <MeshDataSource.h>
 #include <Standard.hxx>
 %}
 
+%include ../SWIG_files/common/CommonIncludes.i
 %include ../SWIG_files/common/ExceptionCatcher.i
+%include ../SWIG_files/common/FunctionTransformers.i
+%include ../SWIG_files/common/Operators.i
 %include ../SWIG_files/common/OccHandle.i
+
 %include "python/std_string.i"
 %include "std_vector.i"
 %include "typemaps.i"
-
 
 %{
 #include<Standard_module.hxx>
@@ -75,11 +84,14 @@ class Mesh_DataSource : public MeshVS_DataSource {
         Mesh_DataSource(const opencascade::handle<Poly_Triangulation> & polyTri);
         void SetElemNormals(std::vector<gp_Vec> ElemNormalsData);
         void SetNodeNormals(std::vector<std::vector<gp_Vec>> NodeNormalsData);
-        Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes, MeshVS_EntityType& Type);
-     	Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType& Type);
-		Standard_Address GetAddr(const Standard_Integer ID, const Standard_Boolean IsElement);
+        Standard_Boolean GetGeom(Standard_Integer ID, Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes, MeshVS_EntityType& Type);
+     	Standard_Boolean GetGeomType(Standard_Integer ID, Standard_Boolean IsElement, MeshVS_EntityType& Type);
+		Standard_Address GetAddr(Standard_Integer ID, Standard_Boolean IsElement);
+		Standard_Boolean GetNodesByElement(Standard_Integer ID, TColStd_Array1OfInteger& NodeIDs, Standard_Integer &OutValue);
         const TColStd_PackedMapOfInteger& GetAllNodes();
         const TColStd_PackedMapOfInteger& GetAllElements();
+        Standard_Boolean GetNormal(Standard_Integer Id, const Standard_Integer Max, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		Standard_Boolean GetNodeNormal(Standard_Integer rankNode, Standard_Integer ElementId, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 };
 
 %make_alias(Mesh_DataSource)
