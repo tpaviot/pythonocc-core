@@ -31,6 +31,12 @@ class TestMeshDataSource(unittest.TestCase):
         a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
         Mesh_DataSource(a_stl_mesh)
 
+    def test_stl_file_check_bounding_box(self):
+        a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
+        a_ds = Mesh_DataSource(a_stl_mesh)
+        bb = a_ds.GetBoundingBox().Get()
+        self.assertEqual(bb, (-26.5748, 4.426, -13.6694, 26.5269, 90.2, 13.5885))
+
     def test_create_mesh_datasource(self):
         # create data
         coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
