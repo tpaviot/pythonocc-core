@@ -8,14 +8,14 @@
 #include <TColStd_DataMapOfIntegerInteger.hxx>
 #include <TColStd_DataMapOfIntegerReal.hxx>
 
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_DataSource, MeshVS_DataSource)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)
 
-Mesh_DataSource::Mesh_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData)
+MeshDS_DataSource::MeshDS_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData)
 {
 	InitializeFromData(CoordData, Ele2NodeData);
 }
 
-Mesh_DataSource::Mesh_DataSource(const Handle(Poly_Triangulation)& polyTri)
+MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 {
 	// initialize arrays
 	std::vector<gp_Pnt> CoordData;
@@ -40,7 +40,7 @@ Mesh_DataSource::Mesh_DataSource(const Handle(Poly_Triangulation)& polyTri)
 // Function : SetElemNormals
 // Purpose  :
 //================================================================
-void Mesh_DataSource::SetElemNormals
+void MeshDS_DataSource::SetElemNormals
 (std::vector<gp_Vec>& ElemNormalsData)
 {
 	for (size_t ElementId = 1; ElementId <= ElemNormalsData.size(); ElementId++)
@@ -55,7 +55,7 @@ void Mesh_DataSource::SetElemNormals
 // Function : SetNodeNormals
 // Purpose  :
 //================================================================
-void Mesh_DataSource::SetNodeNormals
+void MeshDS_DataSource::SetNodeNormals
 (std::vector<std::vector<gp_Vec>>& NodeNormalsData)
 {
 	for (size_t ElementId = 1; ElementId <= myElemNodes->NbRows(); ElementId++)
@@ -72,7 +72,7 @@ void Mesh_DataSource::SetNodeNormals
 // Function : GetGeom
 // Purpose  :
 //================================================================
-Standard_Boolean Mesh_DataSource::GetGeom
+Standard_Boolean MeshDS_DataSource::GetGeom
 (const Standard_Integer ID, const Standard_Boolean IsElement,
 	TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes,
 	MeshVS_EntityType& Type) const
@@ -112,7 +112,7 @@ Standard_Boolean Mesh_DataSource::GetGeom
 // Function : GetGeomType
 // Purpose  :
 //================================================================
-Standard_Boolean Mesh_DataSource::GetGeomType
+Standard_Boolean MeshDS_DataSource::GetGeomType
 (const Standard_Integer,
 	const Standard_Boolean IsElement,
 	MeshVS_EntityType& Type) const
@@ -133,7 +133,7 @@ Standard_Boolean Mesh_DataSource::GetGeomType
 // Function : GetAddr
 // Purpose  :
 //================================================================
-Standard_Address Mesh_DataSource::GetAddr
+Standard_Address MeshDS_DataSource::GetAddr
 (const Standard_Integer, const Standard_Boolean) const
 {
 	return NULL;
@@ -143,7 +143,7 @@ Standard_Address Mesh_DataSource::GetAddr
 // Function : GetNodesByElement
 // Purpose  :
 //================================================================
-Standard_Boolean Mesh_DataSource::GetNodesByElement
+Standard_Boolean MeshDS_DataSource::GetNodesByElement
 (const Standard_Integer ID,
 	TColStd_Array1OfInteger& theNodeIDs,
 	Standard_Integer& theNbNodes) const
@@ -165,7 +165,7 @@ Standard_Boolean Mesh_DataSource::GetNodesByElement
 // Function : GetAllNodes
 // Purpose  :
 //================================================================
-const TColStd_PackedMapOfInteger& Mesh_DataSource::GetAllNodes() const
+const TColStd_PackedMapOfInteger& MeshDS_DataSource::GetAllNodes() const
 {
 	return myNodes;
 }
@@ -174,7 +174,7 @@ const TColStd_PackedMapOfInteger& Mesh_DataSource::GetAllNodes() const
 // Function : GetAllElements
 // Purpose  :
 //================================================================
-const TColStd_PackedMapOfInteger& Mesh_DataSource::GetAllElements() const
+const TColStd_PackedMapOfInteger& MeshDS_DataSource::GetAllElements() const
 {
 	return myElements;
 }
@@ -183,7 +183,7 @@ const TColStd_PackedMapOfInteger& Mesh_DataSource::GetAllElements() const
 // Function : GetNormal
 // Purpose  :
 //================================================================
-Standard_Boolean Mesh_DataSource::GetNormal
+Standard_Boolean MeshDS_DataSource::GetNormal
 (const Standard_Integer Id, const Standard_Integer Max,
 	Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const
 {
@@ -202,7 +202,7 @@ Standard_Boolean Mesh_DataSource::GetNormal
 // Function : GetNodeNormal
 // Purpose  :
 //================================================================
-Standard_Boolean Mesh_DataSource::GetNodeNormal
+Standard_Boolean MeshDS_DataSource::GetNodeNormal
 (const Standard_Integer rankNode, const Standard_Integer ElementId,
 	Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const
 {
@@ -221,7 +221,7 @@ Standard_Boolean Mesh_DataSource::GetNodeNormal
 // Function : InitializeFromData
 // Purpose  :
 //================================================================
-void Mesh_DataSource::InitializeFromData
+void MeshDS_DataSource::InitializeFromData
 (std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData)
 {
 	//initialize arrays

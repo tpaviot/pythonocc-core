@@ -1,5 +1,5 @@
-#if !defined __MeshDataSource__
-#define __MeshDataSource__
+#if !defined __MeshDS_DataSource__
+#define __MeshDS_DataSource__
 
 
 #include <algorithm>
@@ -23,22 +23,22 @@
 #include <gp_Pnt.hxx>
 #include <gp_Vec.hxx>
 
-class Mesh_DataSource;
-DEFINE_STANDARD_HANDLE(Mesh_DataSource, MeshVS_DataSource)
+class MeshDS_DataSource;
+DEFINE_STANDARD_HANDLE(MeshDS_DataSource, MeshVS_DataSource)
 
-class Mesh_DataSource : public MeshVS_DataSource
+class MeshDS_DataSource : public MeshVS_DataSource
 {
 public:
 
 	//! Initialize data source with vector of nodes and vector of elements (triangles or quadrangles) 
 	//! Face normals are calculated using the three first nodes of each element
 	//! Node normals are calculated averaging the normals of the neighboring elements
-	Mesh_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData);
+	MeshDS_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData);
 
 	//! Initialize data source from STL triangulation
 	//! Face normals are calculated using the three nodes of each element
 	//! Node normals are calculated averaging the normals of the neighboring elements 
-	Mesh_DataSource(const Handle(Poly_Triangulation)& polyTri);
+	MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri);
 
 	//! This method define the normal of the face for each element
 	void SetElemNormals(std::vector<gp_Vec>& ElemNormalsData);
@@ -76,7 +76,7 @@ public:
 	//! Returns false if normal isn't defined.
 	virtual Standard_Boolean GetNodeNormal(const Standard_Integer rankNode, const Standard_Integer ElementId, Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const Standard_OVERRIDE;
 
-	DEFINE_STANDARD_RTTIEXT(Mesh_DataSource, MeshVS_DataSource)
+	DEFINE_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)
 
 protected:
 

@@ -315,19 +315,19 @@ if(PYTHONOCC_WRAP_VISU)
     swig_link_libraries(Visualization /System/Library/Frameworks/Cocoa.framework)
   endif(APPLE)
 
-  ###########################
-  # MeshDataSource addition #
-  ###########################
+  ##########################
+  # MeshDS module addition #
+  ##########################
   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/MeshDataSource)
-  set(FILE ${SWIG_FILES_PATH}/MeshDataSource.i)
+  set(FILE ${SWIG_FILES_PATH}/MeshDS.i)
   set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource)
   set(MESHDATASOURCE_SOURCE_FILES
   ${FILE}
   ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.cpp)
 
-  swig_add_library(MeshDataSource LANGUAGE python SOURCES ${MESHDATASOURCE_SOURCE_FILES} TYPE MODULE)
-  swig_link_libraries(MeshDataSource ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+  swig_add_library(MeshDS LANGUAGE python SOURCES ${MESHDATASOURCE_SOURCE_FILES} TYPE MODULE)
+  swig_link_libraries(MeshDS ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
 
 endif(PYTHONOCC_WRAP_VISU)
 
@@ -410,8 +410,8 @@ if(PYTHONOCC_WRAP_VISU)
     endforeach(OCE_MODULE)
 
     # install MeshDataSource
-    install(FILES ${BUILD_DIR}/MeshDataSource.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(TARGETS _MeshDataSource DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(FILES ${BUILD_DIR}/MeshDS.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS _MeshDS DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endif(PYTHONOCC_WRAP_VISU)
 
 if(PYTHONOCC_WRAP_DATAEXCHANGE)

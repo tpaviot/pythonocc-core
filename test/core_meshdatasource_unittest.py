@@ -20,7 +20,7 @@ import os
 import unittest
 
 from OCC.Core.gp import gp_Pnt, gp_Vec
-from OCC.Core.MeshDataSource import Mesh_DataSource
+from OCC.Core.MeshDS import MeshDS_DataSource
 from OCC.Core.RWStl import rwstl_ReadFile
 from OCC.Core.TColStd import TColStd_Array1OfInteger
 
@@ -29,11 +29,11 @@ STL_BOTTLE_FILENAME = os.path.join('.', 'test_io', 'bottle_ascii.stl')
 class TestMeshDataSource(unittest.TestCase):
     def test_instantiate_from_stl_file(self):
         a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
-        Mesh_DataSource(a_stl_mesh)
+        MeshDS_DataSource(a_stl_mesh)
 
     def test_stl_file_check_bounding_box(self):
         a_stl_mesh = rwstl_ReadFile(STL_BOTTLE_FILENAME)
-        a_ds = Mesh_DataSource(a_stl_mesh)
+        a_ds = MeshDS_DataSource(a_stl_mesh)
         bb = a_ds.GetBoundingBox().Get()
         self.assertEqual(bb, (-26.5748, 4.426, -13.6694, 26.5269, 90.2, 13.5885))
 
@@ -42,7 +42,7 @@ class TestMeshDataSource(unittest.TestCase):
         coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
         ele2_node_data = [[0, 1, 4 , 3], [1, 2, 4]]
         # create data source
-        a_data_source = Mesh_DataSource(coord_data, ele2_node_data)
+        a_data_source = MeshDS_DataSource(coord_data, ele2_node_data)
         # check node ids and number of elements
         node_ids = TColStd_Array1OfInteger(1, 4)
         is_ok, nb_nodes = a_data_source.GetNodesByElement(1, node_ids)
@@ -86,7 +86,7 @@ class TestMeshDataSource(unittest.TestCase):
                              [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)]]
         elem_normals_data = [gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]
         # create data source
-        a_data_source = Mesh_DataSource(coord_data, ele2_node_data)
+        a_data_source = MeshDS_DataSource(coord_data, ele2_node_data)
         # check node ids and number of elements
         # set and check normal of elements
         a_data_source.SetElemNormals(elem_normals_data)
