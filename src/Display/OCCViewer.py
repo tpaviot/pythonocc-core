@@ -53,7 +53,8 @@ from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS
                                 Graphic3d_MaterialAspect,
                                 Graphic3d_TOSM_FRAGMENT,
                                 Graphic3d_Structure,
-                                Graphic3d_GraduatedTrihedron)
+                                Graphic3d_GraduatedTrihedron,
+                                Graphic3d_NameOfMaterial)
 from OCC.Core.Aspect import (Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH,
                              Aspect_FM_NONE)
 
@@ -456,7 +457,10 @@ class Viewer3d(Display3d):
                     shape_to_display.SetDisplayMode(3)
                 elif material:
                     shape_to_display = AIS_Shape(shape)
-                    shape_to_display.SetMaterial(Graphic3d_MaterialAspect(material))
+                    if isinstance(material, Graphic3d_NameOfMaterial):
+                        shape_to_display.SetMaterial(Graphic3d_MaterialAspect(material))
+                    else:
+                        shape_to_display.SetMaterial(material)
             else:
                 # TODO: can we use .Set to attach all TopoDS_Shapes
                 # to this AIS_Shape instance?
