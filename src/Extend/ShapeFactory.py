@@ -41,6 +41,7 @@ from OCC.Core.TColgp import TColgp_Array1OfPnt
 from OCC.Core.TopoDS import TopoDS_Face
 from OCC.Core.gp import (gp_Vec, gp_Pnt, gp_Trsf, gp_OX, gp_OY,
                          gp_OZ, gp_XYZ, gp_Ax2, gp_Dir, gp_GTrsf, gp_Mat)
+from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 
 from OCC.Extend.TopologyUtils import is_edge, is_face
 
@@ -267,6 +268,31 @@ def center_boundingbox(shape):
     xmin, ymin, zmin, xmax, ymax, zmax = get_boundingbox(shape, 1e-6)
     return midpoint(gp_Pnt(xmin, ymin, zmin), gp_Pnt(xmax, ymax, zmax))
 
+def get_boundingbox(shape, tol=1e-6, use_mesh=True):
+    """ return the bounding box of the TopoDS_Shape `shape`
+    Parameters
+    ----------
+    shape : TopoDS_Shape or a subclass such as TopoDS_Face
+        the shape to compute the bounding box from
+    tol: float
+        tolerance of the computed boundingbox
+    use_mesh : bool
+        a flag that tells whether or not the shape has first to be meshed before the bbox
+        computation. This produces more accurate results
+    """
+    bbox = Bnd_Box()
+    bbox.SetGap(tol)
+    if use_mesh:
+        mesh = BRepMesh_IncrementalMesh()
+        mesh.SetParallelDefault(True)
+        mesh.SetShape(shape)
+        mesh.Perform()
+        if not mesh.IsDone():
+            raise AssertionError("Mesh not done.")
+    brepbndlib_Add(shape, bbox, use_mesh)
+
+    xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
+    return xmin, ymin, zmin, xmax, ymax, zmax
 
 def translate_shp(shp, vec, copy=False):
     trns = gp_Trsf()
