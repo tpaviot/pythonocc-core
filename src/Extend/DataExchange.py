@@ -18,6 +18,7 @@
 import os
 
 from OCC.Core.TopoDS import TopoDS_Shape
+from OCC.Core.TopAbs import TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.StlAPI import stlapi_Read, StlAPI_Writer
 from OCC.Core.BRep import BRep_Builder
@@ -424,17 +425,15 @@ def read_stl_file(filename):
 ######################
 # IGES import/export #
 ######################
-def read_iges_file(
-    filename, return_as_shapes=False, verbosity=False, visible_only=False
-):
-    """read the IGES file and returns a compound
+def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_only=False):
+    """ read the IGES file and returns a compound
     filename: the file path
     return_as_shapes: optional, False by default. If True returns a list of shapes,
                       else returns a single compound
     verbosity: optionl, False by default.
     """
     if not os.path.isfile(filename):
-        raise FileNotFoundError(f"{filename} not found.")
+        raise FileNotFoundError("%s not found." % filename)
 
     iges_reader = IGESControl_Reader()
     iges_reader.SetReadVisible(visible_only)
@@ -442,39 +441,41 @@ def read_iges_file(
 
     _shapes = []
 
+    builder = BRep_Builder()
+    compound = TopoDS_Compound()
+    builder.MakeCompound(compound)
+    empty_compound = True
+
     if status == IFSelect_RetDone:  # check status
         if verbosity:
             failsonly = False
             iges_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
             iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
+        iges_reader.ClearShapes()
         iges_reader.TransferRoots()
-        nbr = iges_reader.NbRootsForTransfer()
-        for _ in range(1, nbr + 1):
-            nbs = iges_reader.NbShapes()
-            if nbs == 0:
-                print("At least one shape in IGES cannot be transferred")
-            elif nbr == 1 and nbs == 1:
-                a_res_shape = iges_reader.Shape(1)
-                if a_res_shape.IsNull():
-                    print("At least one shape in IGES cannot be transferred")
-                else:
-                    _shapes.append(a_res_shape)
-            else:
-                for i in range(1, nbs + 1):
-                    a_shape = iges_reader.Shape(i)
-                    if a_shape.IsNull():
-                        print("At least one shape in STEP cannot be transferred")
-                    else:
-                        _shapes.append(a_shape)
-    # if not return as shapes
+        nbr = iges_reader.NbShapes()
+        for i in range(1, nbr+1):
+            a_shp = iges_reader.Shape(i)
+            if a_shp.ShapeType in [TopAbs_SOLID,
+                                   TopAbs_SHELL,
+                                   TopAbs_COMPOUND]:
+                _shapes.append(a_shp)
+            else:  # other shape types are merged into a compound
+                builder.Add(compound, a_shp)
+                empty_compound = False
+
+    if not empty_compound:
+        _shapes.append(compound)
+
     # create a compound and store all shapes
     if not return_as_shapes:
-        builder = BRep_Builder()
-        compound = TopoDS_Compound()
-        builder.MakeCompound(compound)
+        builder_2 = BRep_Builder()
+        compound_2 = TopoDS_Compound()
+        builder_2.MakeCompound(compound_2)
         for s in _shapes:
-            builder.Add(compound, s)
-        _shapes = compound
+            builder_2.Add(compound_2, s)
+        _shapes = compound_2
+
     return _shapes
 
 
