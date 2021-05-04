@@ -53,10 +53,11 @@ from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS
                                 Graphic3d_MaterialAspect,
                                 Graphic3d_TOSM_FRAGMENT,
                                 Graphic3d_Structure,
-                                Graphic3d_GraduatedTrihedron,
-                                Graphic3d_NameOfMaterial)
+                                Graphic3d_GraduatedTrihedron)
 from OCC.Core.Aspect import (Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH,
                              Aspect_FM_NONE)
+
+import zipp
 
 # Shaders and Units definition must be found by occ
 # the fastest way to get done is to set the CASROOT env variable
@@ -135,6 +136,9 @@ class Viewer3d(Display3d):
         self.selected_shapes = []
         self._select_callbacks = []
         self._overlay_items = []
+
+        self.ShapeMap = {}
+
 
     def get_parent(self):
         return self._parent
@@ -420,6 +424,7 @@ class Viewer3d(Display3d):
         """
         ais_shapes = []  # the list of all displayed shapes
 
+
         if issubclass(shapes.__class__, gp_Pnt):
             # if a gp_Pnt is passed, first convert to vertex
             vertex = BRepBuilderAPI_MakeVertex(shapes)
@@ -457,16 +462,14 @@ class Viewer3d(Display3d):
                     shape_to_display.SetDisplayMode(3)
                 elif material:
                     shape_to_display = AIS_Shape(shape)
-                    if isinstance(material, Graphic3d_NameOfMaterial):
-                        shape_to_display.SetMaterial(Graphic3d_MaterialAspect(material))
-                    else:
-                        shape_to_display.SetMaterial(material)
+                    shape_to_display.SetMaterial(Graphic3d_MaterialAspect(material))
             else:
                 # TODO: can we use .Set to attach all TopoDS_Shapes
                 # to this AIS_Shape instance?
                 shape_to_display = AIS_Shape(shape)
 
             ais_shapes.append(shape_to_display)
+
 
         # if not SOLO:
         #     # computing graphic properties is expensive
@@ -497,6 +500,7 @@ class Viewer3d(Display3d):
         # display the shapes
         for shape_to_display in ais_shapes:
             self.Context.Display(shape_to_display, False)
+
         if update:
             # especially this call takes up a lot of time...
             self.FitAll()
@@ -504,6 +508,15 @@ class Viewer3d(Display3d):
 
         return ais_shapes
 
+    def DisplayShape2(self, shapes, **kwargs):
+        if isinstance(shapes, (list, tuple)):
+            ais_shapes = self.DisplayShape(self, shapes, **kwargs)
+            for s, ais in zipp(shapes, ais_shapes):
+                self.ShapeMap[s] = ais
+        else:
+            ais = self.DisplayShape(self, shapes, **kwargs)
+            self.ShapeMap[shapes] = ais
+            
     def DisplayColoredShape(self, shapes, color='YELLOW', update=False, ):
         if isinstance(color, str):
             dict_color = {'WHITE': Quantity_NOC_WHITE,
@@ -527,6 +540,14 @@ class Viewer3d(Display3d):
 
     def DisableAntiAliasing(self):
         self.SetNbMsaaSample(0)
+
+
+    def EraseShape(self, shape):
+        if shape not in self.ShapeMap:
+             raise Exception("shape not in shapemap")
+
+        self.Context.Erase(self.ShapeMap[shape])
+        del self.ShapeMap[shape]
 
     def EraseAll(self):
         self.Context.EraseAll(True)
@@ -567,7 +588,7 @@ class Viewer3d(Display3d):
         """
         Returns the current selected shape
         """
-        return self.selected_shape
+        return self.selected_shapes[0]
 
     def SelectArea(self, Xmin, Ymin, Xmax, Ymax):
         self.Context.Select(Xmin, Ymin, Xmax, Ymax, self.View, True)
