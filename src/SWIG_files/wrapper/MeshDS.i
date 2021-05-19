@@ -24,14 +24,20 @@
 #endif
 %}
 
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+
 %include ../SWIG_files/common/CommonIncludes.i
 %include ../SWIG_files/common/ExceptionCatcher.i
 %include ../SWIG_files/common/FunctionTransformers.i
 %include ../SWIG_files/common/Operators.i
 %include ../SWIG_files/common/OccHandle.i
+%include ../SWIG_files/common/numpy.i
 
 %include "std_vector.i"
 %include "typemaps.i"
+
 
 %{
 #include <MeshDataSource.h>
@@ -68,19 +74,28 @@ from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
+%init %{
+   import_array();
+%}
+
 %template(vector_float) std::vector<float>;
 %template(vector_gp_Pnt) std::vector<gp_Pnt>;
 %template(vector_int) std::vector<int>;
 %template(vector_vector_int) std::vector< std::vector<int> >;
 %template(vector_vec) std::vector<gp_Vec>;
 %template(vector_vector_vec) std::vector<std::vector<gp_Vec> >;
-
+##%apply (double IN_ARRAY2[][3]) { (double Vertices[][3]) };
+##%apply (int IN_ARRAY2[][3]) { (int Faces[][3]) };
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* Vertices, int nVerts1, int nVerts2) };
+%apply (int* IN_ARRAY2, int DIM1, int DIM2) { (int* Faces, int nFaces1, int nFaces2) };
 
 %wrap_handle(MeshDS_DataSource)
 
 class MeshDS_DataSource : public MeshVS_DataSource {
     public:
         MeshDS_DataSource(std::vector<gp_Pnt> CoordData, std::vector<std::vector<int>> Ele2NodeData);
+        ##MeshDS_DataSource(double Vertices[][3], int Faces[][3]);
+        MeshDS_DataSource(double* Vertices, int nVerts1, int nVerts2, int* Faces, int nFaces1, int nFaces2);
         MeshDS_DataSource(const opencascade::handle<Poly_Triangulation> & polyTri);
         void SetElemNormals(std::vector<gp_Vec> ElemNormalsData);
         void SetNodeNormals(std::vector<std::vector<gp_Vec>> NodeNormalsData);
