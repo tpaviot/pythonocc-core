@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 88c4975
+git revision : 89de138
 
-operating system : Linux 64bit 5.4.0-70-generic
+operating system : Linux 64bit 5.4.0-73-generic
 
-occt version targeted : 7.5.1
+occt version targeted : 7.5.2
 
-date : 2021-03-29 12:54:04.087652
+date : 2021-05-27 06:25:50.051164
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -8177,6 +8177,9 @@ date : 2021-03-29 12:54:04.087652
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  TColStd_HPackedMapOfInteger
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  TColStd_PackedMapOfInteger
+[INFO ]      Wrap nested class TColStd_PackedMapOfInteger::Iterator
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module TCollection
 [INFO ]  TCollection
 [INFO ]  TCollection_AsciiString
@@ -8233,8 +8236,8 @@ date : 2021-03-29 12:54:04.087652
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 27.85s
+SWIG interface file generation completed in 25.84s
 #################################################
 
-[INFO ]  Number of classes: 4488
-[INFO ]  Number of methods: 45219
+[INFO ]  Number of classes: 4489
+[INFO ]  Number of methods: 45247

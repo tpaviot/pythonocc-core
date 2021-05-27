@@ -7159,6 +7159,28 @@ Extrema_POnSurf
 ") PointOnSurface;
 		const Extrema_POnSurf & PointOnSurface(const Standard_Integer N);
 
+		/****************** PointsOnCurve ******************/
+		/**** md5 signature: 602d5782674888b934bd4e2fd7fa5cdc ****/
+		%feature("compactdefaultargs") PointsOnCurve;
+		%feature("autodoc", "Change sequence of pointoncurv.
+
+Returns
+-------
+Extrema_SequenceOfPOnCurv
+") PointsOnCurve;
+		Extrema_SequenceOfPOnCurv & PointsOnCurve();
+
+		/****************** PointsOnSurf ******************/
+		/**** md5 signature: 3b5271d65309cd09fd6821dbda16b4be ****/
+		%feature("compactdefaultargs") PointsOnSurf;
+		%feature("autodoc", "Change sequence of pointonsurf.
+
+Returns
+-------
+Extrema_SequenceOfPOnSurf
+") PointsOnSurf;
+		Extrema_SequenceOfPOnSurf & PointsOnSurf();
+
 		/****************** SquareDistance ******************/
 		/**** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ****/
 		%feature("compactdefaultargs") SquareDistance;
@@ -7173,6 +7195,17 @@ Returns
 float
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
+
+		/****************** SquareDistances ******************/
+		/**** md5 signature: 87170c9dd06e828cc97a07a8cfa0edbb ****/
+		%feature("compactdefaultargs") SquareDistances;
+		%feature("autodoc", "Change sequence of squaredistance.
+
+Returns
+-------
+TColStd_SequenceOfReal
+") SquareDistances;
+		TColStd_SequenceOfReal & SquareDistances();
 
 		/****************** Value ******************/
 		/**** md5 signature: 4409f39f6024165e606b9b8f7db3892e ****/
