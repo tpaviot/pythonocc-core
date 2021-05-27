@@ -120,6 +120,7 @@ RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_New
 
 /* handles */
 %wrap_handle(RWObj_Reader)
+%wrap_handle(RWObj_CafReader)
 %wrap_handle(RWObj_TriangulationReader)
 /* end handles declaration */
 
@@ -466,6 +467,8 @@ None
 
 };
 
+
+%make_alias(RWObj_CafReader)
 
 %extend RWObj_CafReader {
 	%pythoncode {
