@@ -37,6 +37,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeupgrade.html
 
 %{
 #include<Precision.hxx>
+#include<TopoDS_Edge.hxx>
 #include<ShapeUpgrade_UnifySameDomain.hxx>
 #include<ShapeUpgrade_module.hxx>
 
