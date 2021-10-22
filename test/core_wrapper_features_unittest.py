@@ -32,6 +32,7 @@ import OCC.Core
 from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.TopAbs import TopAbs_REVERSED
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
 from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib_Add
@@ -368,7 +369,11 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         # Create the shape
         box_shape = BRepPrimAPI_MakeBox(100, 200, 300).Shape()
-        shp_dump = pickle.dumps(box_shape)
+        # We reverse the orientation to check whether the orientation
+        # is conserved. Up until 2021-10-21 this was not the case!
+        box_shape.Reverse()
+        self.assertEqual(box_shape.Orientation(), TopAbs_REVERSED)
+        shp_dump = pickle.dumps(box_shape)        
         # file to dump to/from
         filename = os.path.join('.', 'test_io', 'box_shape_generated.brep')
         # write to file
@@ -377,7 +382,8 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(os.path.isfile(filename))
         # load from file
         with open(filename, "rb") as dump_from_file:
-            pickled_shape = pickle.load(dump_from_file)
+            pickled_shape = pickle.load(dump_from_file)        
+        self.assertEqual(pickled_shape.Orientation(), TopAbs_REVERSED)
         self.assertFalse(pickled_shape.IsNull())
 
     def test_sub_class(self) -> None:
