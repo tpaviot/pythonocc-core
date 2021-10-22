@@ -99,6 +99,10 @@ class breptools:
 	@overload
 	@staticmethod
 	def Write(Sh: TopoDS_Shape, File: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+	@staticmethod
+	def WriteToString(Sh: TopoDS_Shape) -> str: ...
+	@staticmethod
+	def ReadFromString(s: str) -> TopoDS_Shape: ...
 
 class BRepTools_History(Standard_Transient):
 	def AddGenerated(self, theInitial: TopoDS_Shape, theGenerated: TopoDS_Shape) -> None: ...
@@ -275,4 +279,6 @@ breptools_Update = breptools.Update
 breptools_UpdateFaceUVPoints = breptools.UpdateFaceUVPoints
 breptools_Write = breptools.Write
 breptools_Write = breptools.Write
+breptools_WriteToString = breptools.WriteToString
+breptools_ReadFromString = breptools.ReadFromString
 BRepTools_History_IsSupportedType = BRepTools_History.IsSupportedType
