@@ -41,8 +41,10 @@ from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge,
                                      BRepBuilderAPI_Sewing)
-from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
-                         gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
+from OCC.Core.BRepTools import breptools_WriteToString
+from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax1, gp_Ax2,
+                         gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat, gp_Trsf)
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
@@ -373,7 +375,21 @@ class TestWrapperFeatures(unittest.TestCase):
         # is conserved. Up until 2021-10-21 this was not the case!
         box_shape.Reverse()
         self.assertEqual(box_shape.Orientation(), TopAbs_REVERSED)
-        shp_dump = pickle.dumps(box_shape)        
+        # we rotate the shape to have geometric properties with many
+        # digits so we can check for conservation of precision during
+        # pickling+unpickling. Up until 2021/10/22 pickling+unpickling
+        # deminished the precision of the shape's state
+        trns = gp_Trsf()
+        trns.SetRotation(gp_Ax1(gp_Pnt(0.32352626, 0.25136247235, 0.357357324625), gp_Dir(1/sqrt(3), 1/sqrt(3), 1/sqrt(3))), 
+                         0.63572456358579834535746)
+        rotator = BRepBuilderAPI_Transform(trns)
+        rotator.Perform(box_shape)
+        box_shape = rotator.Shape()
+        # readout one value with many digits before pickling
+        state_before_pickling = box_shape.Location().Transformation().VectorialPart().Value(1, 3)
+
+        shp_dump = pickle.dumps(box_shape)
+
         # file to dump to/from
         filename = os.path.join('.', 'test_io', 'box_shape_generated.brep')
         # write to file
@@ -385,6 +401,11 @@ class TestWrapperFeatures(unittest.TestCase):
             pickled_shape = pickle.load(dump_from_file)        
         self.assertEqual(pickled_shape.Orientation(), TopAbs_REVERSED)
         self.assertFalse(pickled_shape.IsNull())
+        
+        # compare value after unpickling with value before pickling. If no rounding
+        # occured, this should work!
+        state_after_pickling = pickled_shape.Location().Transformation().VectorialPart().Value(1, 3)
+        self.assertEqual(state_before_pickling, state_after_pickling)
 
     def test_sub_class(self) -> None:
         """ Test: subclass """

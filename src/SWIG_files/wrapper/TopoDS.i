@@ -1426,7 +1426,7 @@ None
 %pythoncode {
 	def __getstate__(self):
 		from .BRepTools import breptools_WriteToString
-		str_shape = breptools_WriteToString(self)
+		str_shape = breptools_WriteToString(self, True)
 		return str_shape
 	def __setstate__(self, state):
 		from .BRepTools import breptools_ReadFromString
