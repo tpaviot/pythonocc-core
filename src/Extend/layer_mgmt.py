@@ -53,10 +53,10 @@ class Layer:
         for shape in self.list_to_display:
             self.display.Context.Erase(shape, False)
 
-    def join(self, layer, clear=False):
+    def merge(self, layer, clear=False):
         """
-        :param layer: name of the layer to join
-        :param clear: bool to clear the layer to join
+        :param layer: name of the layer to merge to the main one
+        :param clear: bool to clear the layer 
         :return: None
         """
         for shape in layer.get_shapes():
