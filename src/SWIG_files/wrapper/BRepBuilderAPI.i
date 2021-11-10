@@ -3444,7 +3444,7 @@ None
 		/****************** BRepBuilderAPI_MakeFace ******************/
 		/**** md5 signature: a23085932fa89afc65030dc882efe010 ****/
 		%feature("compactdefaultargs") BRepBuilderAPI_MakeFace;
-		%feature("autodoc", "Make a face from a surface and a wire.
+		%feature("autodoc", "Make a face from a surface and a wire. if the surface s is not plane, it must contain pcurves for all edges in w, otherwise the wrong shape will be created.
 
 Parameters
 ----------
