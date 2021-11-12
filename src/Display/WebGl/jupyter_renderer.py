@@ -763,6 +763,7 @@ class JupyterRenderer:
         material.polygonOffsetUnits = 1
         material.transparent = transparent
         material.opacity = opacity
+        material.alpha = opacity
         material.update("metalness", 0.3)
         material.update("roughness", 0.8)
         return material
