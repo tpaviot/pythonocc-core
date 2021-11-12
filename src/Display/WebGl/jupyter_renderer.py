@@ -575,7 +575,7 @@ class JupyterRenderer:
                       mesh will be less precise, i.e. lower numer of triangles.
         transparency: optional, False by default (opaque).
         opacity: optional, float, by default to 1 (opaque). if transparency is set to True,
-                 0. is fully opaque, 1. is fully transparent.
+                 1. is fully opaque, 0. is fully transparent.
         topo_level: "default" by default. The value should be either "compound", "shape", "vertex".
         update: optional, False by default. If True, render all the shapes.
         selectable: if True, can be doubleclicked from the 3d window
