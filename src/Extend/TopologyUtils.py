@@ -139,6 +139,7 @@ class TopologyExplorer:
         for face in srf.faces:
             processFace(face)
         '''
+        MAX_INT = 2**31 - 1
         topoTypes = {TopAbs_VERTEX: TopoDS_Vertex,
                      TopAbs_EDGE: TopoDS_Edge,
                      TopAbs_FACE: TopoDS_Face,
@@ -168,19 +169,28 @@ class TopologyExplorer:
             seq.append(topo_to_add)
             topExp.Next()
 
+
         if self.ignore_orientation:
             # filter out those entities that share the same TShape
             # but do *not* share the same orientation
             #filter_orientation_seq = []
             filter_orientation_seq: List = []
+            filter_orientation_hash_codes = {}
             for i in seq:
-                _present = False
-                for j in filter_orientation_seq:
-                    if i.IsSame(j):
-                        _present = True
-                        break
-                if _present is False:
+                i_hash_code = i.HashCode(MAX_INT)
+                if not i_hash_code in filter_orientation_hash_codes:
                     filter_orientation_seq.append(i)
+                    filter_orientation_hash_codes[i_hash_code] = [len(filter_orientation_seq) - 1]
+                else:
+                    index_list = filter_orientation_hash_codes[i_hash_code]
+                    unique = True
+                    for j in index_list:
+                        if i.IsSame(filter_orientation_seq[j]):
+                            unique = False
+                            break
+                    if unique:
+                        filter_orientation_seq.append(i)
+                        index_list.append(len(filter_orientation_seq) - 1)
             return iter(filter_orientation_seq)
         else:
             return iter(seq)
@@ -290,7 +300,9 @@ class TopologyExplorer:
         @param topoTypeB:
         @param topologicalEntity:
         '''
+        MAX_INT = 2**31 - 1
         topo_set = set()
+        topo_set_hash_codes = {}
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
         topexp_MapShapesAndAncestors(self.myShape, topoTypeA, topoTypeB, _map)
         results = _map.FindFromKey(topologicalEntity)
@@ -300,18 +312,23 @@ class TopologyExplorer:
         topology_iterator = TopTools_ListIteratorOfListOfShape(results)
         while topology_iterator.More():
             topo_entity = self.topoFactory[topoTypeB](topology_iterator.Value())
-
+            topo_entity_hash_code = topo_entity.HashCode(MAX_INT)
             # return the entity if not in set
             # to assure we're not returning entities several times
             if not topo_entity in topo_set:
                 if self.ignore_orientation:
-                    unique = True
-                    for i in topo_set:
-                        if i.IsSame(topo_entity):
-                            unique = False
-                            break
-                    if unique:
+                    if not topo_entity_hash_code in topo_set_hash_codes:
+                        topo_set_hash_codes[topo_entity_hash_code] = [topo_entity]
                         yield topo_entity
+                    else:
+                        unique = True
+                        for i in topo_set_hash_codes[topo_entity_hash_code]:
+                            if i.IsSame(topo_entity):
+                                unique = False
+                                break
+                        if unique:
+                            topo_set_hash_codes[topo_entity_hash_code].append(topo_entity)
+                            yield topo_entity
                 else:
                     yield topo_entity
 
