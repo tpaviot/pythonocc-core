@@ -40,7 +40,7 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 # first create an environment
 conda create --name=pyoccenv python=3.7
 source activate pyoccenv
-conda install -c conda-forge pythonocc-core=7.5.1
+conda install -c conda-forge pythonocc-core=7.5.1 occt=7.5.1
 ```
 
 Other channels provide pythonocc-core packages, check https://anaconda.org/search?q=pythonocc-core.
