@@ -17,6 +17,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import sys
 import unittest
 
 from OCC.Core.gp import (gp_Pnt, gp_Pnt2d, gp_Ax3, gp_Vec, gp_Pln,
@@ -53,6 +54,9 @@ from OCC.Core.GeomFill import (GeomFill_Pipe, GeomFill_BSplineCurves, GeomFill_C
                                GeomFill_IsGuideAC, GeomFill_IsGuideACWithContact,
                                GeomFill_IsGuidePlanWithContact)
 from OCC.Core.Convert import Convert_TgtThetaOver2
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
+from OCC.Core.GeomAdaptor import GeomAdaptor_Curve
+from OCC.Core.Geom import Geom_Curve
 #
 # Utility functions
 #
@@ -654,6 +658,22 @@ class TestGeometry(unittest.TestCase):
             ESS.Points(k, P3, P4)
             aCurve = GC_MakeSegment(P3, P4).Value()
             self.assertFalse(aCurve is None)
+
+    def test_curve_adaptor(self):
+        # related to issue #1057 https://github.com/tpaviot/pythonocc-core/issues/1057
+        p1 = gp_Pnt(5, -5, 0)
+        p2 = gp_Pnt(5, 5, 0)
+        ed1 = BRepBuilderAPI_MakeEdge(p2, p1).Edge()
+        c1 = BRepAdaptor_Curve(ed1)
+        self.assertTrue(isinstance(c1.Curve(), GeomAdaptor_Curve))
+        # should pass on all platforms
+        self.assertTrue(isinstance(c1.Curve().Curve(), Geom_Curve))
+        # but the following only works on linux
+        # on windows, the instance returned is None
+        c2 = BRepAdaptor_Curve(ed1).Curve()
+        if sys.platform != "win32":
+            self.assertTrue(isinstance(c2.Curve(), Geom_Curve))
+            self.assertTrue(isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve))
 
 
 def suite():
