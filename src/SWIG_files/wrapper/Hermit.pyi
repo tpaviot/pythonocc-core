@@ -8,14 +8,14 @@ from OCC.Core.Geom2d import *
 
 
 class hermit:
-	@overload
-	@staticmethod
-	def Solution(BS: Geom_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Geom2d_BSplineCurve: ...
-	@overload
-	@staticmethod
-	def Solution(BS: Geom2d_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Geom2d_BSplineCurve: ...
-	@staticmethod
-	def Solutionbis(BS: Geom_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Tuple[float, float]: ...
+    @overload
+    @staticmethod
+    def Solution(BS: Geom_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Geom2d_BSplineCurve: ...
+    @overload
+    @staticmethod
+    def Solution(BS: Geom2d_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Geom2d_BSplineCurve: ...
+    @staticmethod
+    def Solutionbis(BS: Geom_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Tuple[float, float]: ...
 
 # harray1 classes
 # harray2 classes
