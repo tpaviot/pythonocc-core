@@ -428,7 +428,7 @@ typedef VrmlData_ListOfNode ::Iterator Iterator;
 Parameters
 ----------
 &: NCollection_IncAllocator,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -481,7 +481,7 @@ Parameters
 ----------
 theName: char *
 theType: Standard_Type,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -769,7 +769,7 @@ Parameters
 ----------
 theLine0: char *
 theLine1: char *,optional
-	default value is 0L
+	default value is 0
 theIndent: int,optional
 	default value is 0
 
@@ -805,7 +805,7 @@ Parameters
 theXYZ: gp_XYZ
 isScale: bool
 thePostfix: char *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -854,7 +854,7 @@ Parameters
 ----------
 theShape: TopoDS_Shape
 theName: char *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -1789,7 +1789,7 @@ theName: char *
 nPoints: size_t,optional
 	default value is 0
 arrPoints: gp_XY *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -1919,9 +1919,9 @@ Parameters
 ----------
 theScene: VrmlData_Scene
 theName: char *,optional
-	default value is 0L
+	default value is 0
 theTitle: char *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -2002,9 +2002,9 @@ Parameters
 ----------
 theScene: VrmlData_Scene
 theName: char *,optional
-	default value is 0L
+	default value is 0
 theTitle: char *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -2290,7 +2290,7 @@ theName: char *
 nColors: size_t,optional
 	default value is 0
 arrColors: gp_XYZ *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -2606,7 +2606,7 @@ theName: char *
 nPoints: size_t,optional
 	default value is 0
 arrPoints: gp_XYZ *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------
@@ -2919,7 +2919,7 @@ Parameters
 theScene: VrmlData_Scene
 theName: char *
 theURL: char *,optional
-	default value is 0L
+	default value is 0
 theRepS: bool,optional
 	default value is Standard_False
 theRepT: bool,optional
@@ -3299,7 +3299,7 @@ theName: char *
 nVec: size_t,optional
 	default value is 0
 arrVec: gp_XYZ *,optional
-	default value is 0L
+	default value is 0
 
 Returns
 -------

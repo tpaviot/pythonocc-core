@@ -8,8 +8,8 @@ from OCC.Core.BRepMesh import *
 
 
 class xbrepmesh:
-	@staticmethod
-	def Discret(theShape: TopoDS_Shape, theDeflection: float, theAngle: float, theAlgo: BRepMesh_DiscretRoot) -> int: ...
+    @staticmethod
+    def Discret(theShape: TopoDS_Shape, theDeflection: float, theAngle: float, theAlgo: BRepMesh_DiscretRoot) -> int: ...
 
 # harray1 classes
 # harray2 classes

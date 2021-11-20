@@ -326,9 +326,9 @@ None
 		static void ExtendSurfByLength(opencascade::handle<Geom_BoundedSurface> & Surf, const Standard_Real Length, const Standard_Integer Cont, const Standard_Boolean InU, const Standard_Boolean After);
 
 		/****************** FuseIntervals ******************/
-		/**** md5 signature: 0d91d2f1d60affb87ae86c35953c3655 ****/
+		/**** md5 signature: efc42f578764e9ffd35ac0aa960924c5 ****/
 		%feature("compactdefaultargs") FuseIntervals;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "This method fuse intervals interval1 and interval2 with specified confusion @param interval1 [in] first interval to fuse @param interval2 [in] second interval to fuse @param confision [in] tolerance to compare intervals @param isadjusttofirstinterval [in] flag to set method of fusion, if intervals are close  if false, intervals are fusing by half-division methdod  if true, intervals are fusing by selecting value from interval1 @param fusion [out] output interval .
 
 Parameters
 ----------
@@ -337,12 +337,14 @@ Interval2: TColStd_Array1OfReal
 Fusion: TColStd_SequenceOfReal
 Confusion: float,optional
 	default value is 1.0e-9
+IsAdjustToFirstInterval: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") FuseIntervals;
-		static void FuseIntervals(const TColStd_Array1OfReal & Interval1, const TColStd_Array1OfReal & Interval2, TColStd_SequenceOfReal & Fusion, const Standard_Real Confusion = 1.0e-9);
+		static void FuseIntervals(const TColStd_Array1OfReal & Interval1, const TColStd_Array1OfReal & Interval2, TColStd_SequenceOfReal & Fusion, const Standard_Real Confusion = 1.0e-9, const Standard_Boolean IsAdjustToFirstInterval = Standard_False);
 
 		/****************** GTransform ******************/
 		/**** md5 signature: 8e793303845ac7edd4a76bb5abc12d5f ****/
