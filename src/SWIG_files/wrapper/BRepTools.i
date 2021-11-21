@@ -616,7 +616,28 @@ bool
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & Sh, const char * File, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-};
+
+                    %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
+                    %extend{
+                        static std::string WriteToString(const TopoDS_Shape & shape, bool full_precision = true) {
+                        std::stringstream s;
+                        if(full_precision) {
+                            s.precision(17);
+                            s.setf(std::ios::scientific);
+                        }
+                        BRepTools::Write(shape, s);
+                        return s.str();}
+                    };
+                    %feature("autodoc", "Deserializes TopoDS_Shape from string") ReadFromString;
+                    %extend{
+                        static TopoDS_Shape ReadFromString(const std::string & src) {
+                        std::stringstream s(src);
+                        TopoDS_Shape shape;
+                        BRep_Builder b;
+                        BRepTools::Read(shape, s, b);
+                        return shape;}
+                    };
+            };
 
 
 %extend BRepTools {

@@ -1425,20 +1425,12 @@ None
 %extend TopoDS_Shape {
 %pythoncode {
 	def __getstate__(self):
-		from .BRepTools import BRepTools_ShapeSet
-		ss = BRepTools_ShapeSet()
-		ss.Add(self)
-		str_shape = ss.WriteToString()
-		indx = ss.Locations().Index(self.Location())
-		return str_shape, indx
+		from .BRepTools import breptools_WriteToString
+		str_shape = breptools_WriteToString(self, True)
+		return str_shape
 	def __setstate__(self, state):
-		from .BRepTools import BRepTools_ShapeSet
-		topods_str, indx = state
-		ss = BRepTools_ShapeSet()
-		ss.ReadFromString(topods_str)
-		the_shape = ss.Shape(ss.NbShapes())
-		location = ss.Locations().Location(indx)
-		the_shape.Location(location)
+		from .BRepTools import breptools_ReadFromString
+		the_shape = breptools_ReadFromString(state)
 		self.this = the_shape.this
 	}
 };
