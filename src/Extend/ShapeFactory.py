@@ -168,7 +168,7 @@ def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
     bbox = Bnd_Box()
     bbox.SetGap(tol)
 
-    # note: useTriangulation is True by default, we set it explicitely, but t's not necessary
+    # note: useTriangulation is True by default, we set it explicitly, but t's not necessary
     if optimal_BB:
         use_triangulation = True
         use_shapetolerance = True
@@ -366,7 +366,7 @@ def scale_shape(shape, fx, fy, fz):
 
 def make_extrusion(face, length, vector=gp_Vec(0., 0., 1.)):
     ''' creates a extrusion from a face, along the vector vector.
-    with a distance legnth. Note that the normal vector does not
+    with a distance length. Note that the normal vector does not
     necessary be normalized.
     By default, the extrusion is along the z axis.
     '''

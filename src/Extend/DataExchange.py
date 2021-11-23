@@ -322,7 +322,7 @@ def read_step_file_with_names_colors(filename):
 #########################
 def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angular_deflection=0.5):
     """ export the shape to a STL file
-    Be careful, the shape first need to be explicitely meshed using BRepMesh_IncrementalMesh
+    Be careful, the shape first need to be explicitly meshed using BRepMesh_IncrementalMesh
     a_shape: the topods_shape to export
     filename: the filename
     mode: optional, "ascii" by default. Can either be "binary"
@@ -396,7 +396,7 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_on
         for _ in range(1, nbr+1):
             nbs = iges_reader.NbShapes()
             if nbs == 0:
-                print("At least one shape in IGES cannot be transfered")
+                print("At least one shape in IGES cannot be transferred")
             elif nbr == 1 and nbs == 1:
                 a_res_shape = iges_reader.Shape(1)
                 if a_res_shape.IsNull():

@@ -666,7 +666,7 @@ def get_sorted_hlr_edges(topods_shape: TopoDS_Shape,
 
 def list_of_shapes_to_compound(list_of_shapes: List[TopoDS_Shape]) -> Tuple[TopoDS_Compound, bool]:
     """ takes a list of shape in input, gather all shapes into one compound
-    returns the compund and a boolean, True if all shapes were added to the compund,
+    returns the compound and a boolean, True if all shapes were added to the compund,
     False otherwise
     """
     all_shapes_converted = True
