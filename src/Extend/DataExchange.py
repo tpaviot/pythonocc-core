@@ -68,7 +68,7 @@ def read_step_file(filename, as_compound=True, verbosity=True):
     gather all shapes into one compound. Otherwise returns a list of shapes.
     """
     if not os.path.isfile(filename):
-        raise FileNotFoundError("%s not found." % filename)
+        raise FileNotFoundError(f"{filename} not found.")
 
     step_reader = STEPControl_Reader()
     status = step_reader.ReadFile(filename)
@@ -115,14 +115,13 @@ def write_step_file(a_shape, filename, application_protocol="AP203"):
     """
     # a few checks
     if a_shape.IsNull():
-        raise AssertionError("Shape %s is null." % a_shape)
+        raise AssertionError(f"Shape {a_shape} is null.")
     if application_protocol not in ["AP203", "AP214IS", "AP242DIS"]:
         raise AssertionError(
-            "application_protocol must be either AP203 or AP214IS. You passed %s."
-            % application_protocol
+            f"application_protocol must be either AP203 or AP214IS. You passed {application_protocol}."
         )
     if os.path.isfile(filename):
-        print("Warning: %s file already exists and will be replaced" % filename)
+        print(f"Warning: {filename} file already exists and will be replaced")
     # creates and initialise the step exporter
     step_writer = STEPControl_Writer()
     Interface_Static_SetCVal("write.step.schema", application_protocol)
@@ -134,7 +133,7 @@ def write_step_file(a_shape, filename, application_protocol="AP203"):
     if not status == IFSelect_RetDone:
         raise IOError("Error while writing shape to STEP file.")
     if not os.path.isfile(filename):
-        raise IOError("File %s was not saved to filesystem." % filename)
+        raise IOError(f"{filename} not saved to filesystem.")
 
 
 def read_step_file_with_names_colors(filename):
@@ -142,7 +141,7 @@ def read_step_file_with_names_colors(filename):
     Use OCAF.
     """
     if not os.path.isfile(filename):
-        raise FileNotFoundError("%s not found." % filename)
+        raise FileNotFoundError(f"{filename} not found.")
     # the list:
     output_shapes = {}
 
@@ -255,7 +254,7 @@ def read_step_file_with_names_colors(filename):
             # print("    Y            :", tran.Y())
             # print("    Z            :", tran.Z())
             c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
-            colorSet = False
+            color_set = False
             if (
                 color_tool.GetInstanceColor(shape, 0, c)
                 or color_tool.GetInstanceColor(shape, 1, c)
@@ -264,7 +263,7 @@ def read_step_file_with_names_colors(filename):
                 color_tool.SetInstanceColor(shape, 0, c)
                 color_tool.SetInstanceColor(shape, 1, c)
                 color_tool.SetInstanceColor(shape, 2, c)
-                colorSet = True
+                color_set = True
                 n = c.Name(c.Red(), c.Green(), c.Blue())
                 print(
                     "    instance color Name & RGB: ",
@@ -275,7 +274,7 @@ def read_step_file_with_names_colors(filename):
                     c.Blue(),
                 )
 
-            if not colorSet:
+            if not color_set:
                 if (
                     color_tool.GetColor(lab, 0, c)
                     or color_tool.GetColor(lab, 1, c)
@@ -305,7 +304,7 @@ def read_step_file_with_names_colors(filename):
                 shape_sub = shape_tool.GetShape(lab_subs)
 
                 c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
-                colorSet = False
+                color_set = False
                 if (
                     color_tool.GetInstanceColor(shape_sub, 0, c)
                     or color_tool.GetInstanceColor(shape_sub, 1, c)
@@ -314,7 +313,7 @@ def read_step_file_with_names_colors(filename):
                     color_tool.SetInstanceColor(shape_sub, 0, c)
                     color_tool.SetInstanceColor(shape_sub, 1, c)
                     color_tool.SetInstanceColor(shape_sub, 2, c)
-                    colorSet = True
+                    color_set = True
                     n = c.Name(c.Red(), c.Green(), c.Blue())
                     print(
                         "    instance color Name & RGB: ",
@@ -325,7 +324,7 @@ def read_step_file_with_names_colors(filename):
                         c.Blue(),
                     )
 
-                if not colorSet:
+                if not color_set:
                     if (
                         color_tool.GetColor(lab_subs, 0, c)
                         or color_tool.GetColor(lab_subs, 1, c)
@@ -387,7 +386,7 @@ def write_stl_file(
     if mode not in ["ascii", "binary"]:
         raise AssertionError("mode should be either ascii or binary")
     if os.path.isfile(filename):
-        print("Warning: %s file already exists and will be replaced" % filename)
+        print(f"Warning: {filename} already exists and will be replaced")
     # first mesh the shape
     mesh = BRepMesh_IncrementalMesh(
         a_shape, linear_deflection, False, angular_deflection, True
@@ -411,7 +410,7 @@ def write_stl_file(
 def read_stl_file(filename):
     """opens a stl file, reads the content, and returns a BRep topods_shape object"""
     if not os.path.isfile(filename):
-        raise FileNotFoundError("%s not found." % filename)
+        raise FileNotFoundError(f"{filename} not found.")
 
     the_shape = TopoDS_Shape()
     stlapi_Read(the_shape, filename)
@@ -435,7 +434,7 @@ def read_iges_file(
     verbosity: optionl, False by default.
     """
     if not os.path.isfile(filename):
-        raise FileNotFoundError("%s not found." % filename)
+        raise FileNotFoundError(f"{filename} not found.")
 
     iges_reader = IGESControl_Reader()
     iges_reader.SetReadVisible(visible_only)
@@ -489,7 +488,7 @@ def write_iges_file(a_shape, filename):
     if a_shape.IsNull():
         raise AssertionError("Shape is null.")
     if os.path.isfile(filename):
-        print("Warning: %s file already exists and will be replaced" % filename)
+        print(f"Warning: {filename} already exists and will be replaced")
     # creates and initialise the step exporter
     iges_writer = IGESControl_Writer()
     iges_writer.AddShape(a_shape)
@@ -621,6 +620,6 @@ def export_shape_to_svg(
         dwg.save()
         if not os.path.isfile(filename):
             raise AssertionError("svg export failed")
-        print("Shape successfully exported to %s" % filename)
+        print(f"Shape successfully exported to {filename}")
         return True
     return dwg.tostring()
