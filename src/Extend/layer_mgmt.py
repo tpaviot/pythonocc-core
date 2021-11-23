@@ -15,8 +15,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-class Layer:
 
+class Layer:
     def __init__(self, from_display, shape=None, color=0):
         """
         :param from_display: the display from the main code
@@ -56,7 +56,7 @@ class Layer:
     def merge(self, layer, clear=False):
         """
         :param layer: name of the layer to merge to the main one
-        :param clear: bool to clear the layer 
+        :param clear: bool to clear the layer
         :return: None
         """
         for shape in layer.get_shapes():

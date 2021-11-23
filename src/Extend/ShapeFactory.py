@@ -19,28 +19,54 @@ from math import radians
 
 from OCC.Core.BRepBndLib import brepbndlib_Add, brepbndlib_AddOptimal, brepbndlib_AddOBB
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
-from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
-                                     BRepBuilderAPI_MakeVertex,
-                                     BRepBuilderAPI_MakeWire,
-                                     BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d,
-                                     BRepBuilderAPI_Transform)
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeVertex,
+    BRepBuilderAPI_MakeWire,
+    BRepBuilderAPI_MakeFace,
+    BRepBuilderAPI_MakeEdge2d,
+    BRepBuilderAPI_Transform,
+)
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_GTransform
 from OCC.Core.BRepFill import BRepFill_Filling
 from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
-from OCC.Core.GeomAbs import (GeomAbs_C0, GeomAbs_Plane, GeomAbs_Cylinder, GeomAbs_Cone,
-                              GeomAbs_Sphere, GeomAbs_Torus, GeomAbs_BezierSurface, GeomAbs_BSplineSurface,
-                              GeomAbs_SurfaceOfRevolution, GeomAbs_SurfaceOfExtrusion, GeomAbs_OffsetSurface,
-                              GeomAbs_OtherSurface)
+from OCC.Core.GeomAbs import (
+    GeomAbs_C0,
+    GeomAbs_Plane,
+    GeomAbs_Cylinder,
+    GeomAbs_Cone,
+    GeomAbs_Sphere,
+    GeomAbs_Torus,
+    GeomAbs_BezierSurface,
+    GeomAbs_BSplineSurface,
+    GeomAbs_SurfaceOfRevolution,
+    GeomAbs_SurfaceOfExtrusion,
+    GeomAbs_OffsetSurface,
+    GeomAbs_OtherSurface,
+)
 from OCC.Core.BRepAdaptor import BRepAdaptor_Surface, BRepAdaptor_Curve
 from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.Core.GProp import GProp_GProps
-from OCC.Core.BRepGProp import (brepgprop_LinearProperties,
-                                brepgprop_SurfaceProperties,
-                                brepgprop_VolumeProperties)
+from OCC.Core.BRepGProp import (
+    brepgprop_LinearProperties,
+    brepgprop_SurfaceProperties,
+    brepgprop_VolumeProperties,
+)
 from OCC.Core.TColgp import TColgp_Array1OfPnt
 from OCC.Core.TopoDS import TopoDS_Face
-from OCC.Core.gp import (gp_Vec, gp_Pnt, gp_Trsf, gp_OX, gp_OY,
-                         gp_OZ, gp_XYZ, gp_Ax2, gp_Dir, gp_GTrsf, gp_Mat)
+from OCC.Core.gp import (
+    gp_Vec,
+    gp_Pnt,
+    gp_Trsf,
+    gp_OX,
+    gp_OY,
+    gp_OZ,
+    gp_XYZ,
+    gp_Ax2,
+    gp_Dir,
+    gp_GTrsf,
+    gp_Mat,
+)
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 
 from OCC.Extend.TopologyUtils import is_edge, is_face
@@ -64,27 +90,29 @@ def point_list_to_TColgp_Array1OfPnt(li):
         pts.SetValue(n, i)
     return pts
 
+
 #
 # 0D
 def make_vertex(*args):
     vert = BRepBuilderAPI_MakeVertex(*args)
-    assert_isdone(vert, 'failed to produce edge')
+    assert_isdone(vert, "failed to produce edge")
     result = vert.Vertex()
     return result
+
 
 #
 # 1D
 #
 def make_edge(*args):
     edge = BRepBuilderAPI_MakeEdge(*args)
-    assert_isdone(edge, 'failed to produce edge')
+    assert_isdone(edge, "failed to produce edge")
     result = edge.Edge()
     return result
 
 
 def make_edge2d(*args):
     edge = BRepBuilderAPI_MakeEdge2d(*args)
-    assert_isdone(edge, 'failed to produce edge')
+    assert_isdone(edge, "failed to produce edge")
     result = edge.Edge()
     return result
 
@@ -98,7 +126,7 @@ def make_wire(*args):
         wire.Build()
         return wire.Wire()
     wire = BRepBuilderAPI_MakeWire(*args)
-    assert_isdone(wire, 'failed to produce wire')
+    assert_isdone(wire, "failed to produce wire")
     return wire.Wire()
 
 
@@ -111,7 +139,7 @@ def points_to_bspline(pnts):
 
 
 def edge_to_bezier(topods_edge):
-    """ take an edge and returns:
+    """take an edge and returns:
     * a bool is_bezier
     * the bezier curve
     * degrees
@@ -122,6 +150,8 @@ def edge_to_bezier(topods_edge):
         return True, ad.Bezier(), ad.Degree()
     else:
         return False, None, None
+
+
 #
 # 2D
 #
@@ -130,20 +160,20 @@ def make_n_sided(edges, continuity=GeomAbs_C0):
     for edg in edges:
         n_sided.Add(edg, continuity)
     n_sided.Build()
-    assert_isdone(n_sided, 'failed to produce n_sided')
+    assert_isdone(n_sided, "failed to produce n_sided")
     face = n_sided.Face()
     return face
 
 
 def make_face(*args):
     face = BRepBuilderAPI_MakeFace(*args)
-    assert_isdone(face, 'failed to produce face')
+    assert_isdone(face, "failed to produce face")
     result = face.Face()
     return result
 
 
 def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
-    """ return the bounding box of the TopoDS_Shape `shape`
+    """return the bounding box of the TopoDS_Shape `shape`
 
     Parameters
     ----------
@@ -187,7 +217,7 @@ def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
 
 
 def get_oriented_boundingbox(shape, optimal_OBB=True):
-    """ return the oriented bounding box of the TopoDS_Shape `shape`
+    """return the oriented bounding box of the TopoDS_Shape `shape`
 
     Parameters
     ----------
@@ -208,7 +238,9 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
         is_triangulationUsed = True
         is_optimal = True
         is_shapeToleranceUsed = False
-        brepbndlib_AddOBB(shape, obb, is_triangulationUsed, is_optimal, is_shapeToleranceUsed)
+        brepbndlib_AddOBB(
+            shape, obb, is_triangulationUsed, is_optimal, is_shapeToleranceUsed
+        )
     else:
         brepbndlib_AddOBB(shape, obb)
 
@@ -226,13 +258,13 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
     az = gp_XYZ(aZDir.X(), aZDir.Y(), aZDir.Z())
     p = gp_Pnt(aBaryCenter.X(), aBaryCenter.Y(), aBaryCenter.Z())
     anAxes = gp_Ax2(p, gp_Dir(aZDir), gp_Dir(aXDir))
-    anAxes.SetLocation(gp_Pnt(p.XYZ() - ax*aHalfX - ay*aHalfY - az*aHalfZ))
-    aBox = BRepPrimAPI_MakeBox(anAxes, 2.0*aHalfX, 2.0*aHalfY, 2.0*aHalfZ).Shape()
+    anAxes.SetLocation(gp_Pnt(p.XYZ() - ax * aHalfX - ay * aHalfY - az * aHalfZ))
+    aBox = BRepPrimAPI_MakeBox(anAxes, 2.0 * aHalfX, 2.0 * aHalfY, 2.0 * aHalfZ).Shape()
     return aBaryCenter, [aHalfX, aHalfY, aHalfZ], aBox
 
 
 def midpoint(pntA, pntB):
-    """ computes the point that lies in the middle between pntA and pntB
+    """computes the point that lies in the middle between pntA and pntB
 
     Parameters
     ----------
@@ -252,7 +284,7 @@ def midpoint(pntA, pntB):
 
 
 def center_boundingbox(shape):
-    """ compute the center point of a TopoDS_Shape, based on its bounding box
+    """compute the center point of a TopoDS_Shape, based on its bounding box
 
     Parameters
     ----------
@@ -268,8 +300,9 @@ def center_boundingbox(shape):
     xmin, ymin, zmin, xmax, ymax, zmax = get_boundingbox(shape, 1e-6)
     return midpoint(gp_Pnt(xmin, ymin, zmin), gp_Pnt(xmax, ymax, zmax))
 
+
 def get_boundingbox(shape, tol=1e-6, use_mesh=True):
-    """ return the bounding box of the TopoDS_Shape `shape`
+    """return the bounding box of the TopoDS_Shape `shape`
     Parameters
     ----------
     shape : TopoDS_Shape or a subclass such as TopoDS_Face
@@ -294,6 +327,7 @@ def get_boundingbox(shape, tol=1e-6, use_mesh=True):
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
     return xmin, ymin, zmin, xmax, ymax, zmax
 
+
 def translate_shp(shp, vec, copy=False):
     trns = gp_Trsf()
     trns.SetTranslation(vec)
@@ -303,7 +337,7 @@ def translate_shp(shp, vec, copy=False):
 
 
 def rotate_shape(shape, axis, angle, unite="deg"):
-    """ Rotate a shape around an axis, with a given angle.
+    """Rotate a shape around an axis, with a given angle.
 
     @param shape : the shape to rotate
     @point : the origin of the axis
@@ -324,7 +358,7 @@ def rotate_shape(shape, axis, angle, unite="deg"):
 
 
 def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
-    """ Rotate a shape around (O,x), (O,y) and (O,z).
+    """Rotate a shape around (O,x), (O,y) and (O,z).
 
     @param rx_degree : rotation around (O,x)
     @param ry_degree : rotation around (O,y)
@@ -343,13 +377,13 @@ def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
     beta.SetRotation(gp_OY(), ry)
     gamma = gp_Trsf()
     gamma.SetRotation(gp_OZ(), rz)
-    brep_trns = BRepBuilderAPI_Transform(shape, alpha*beta*gamma, False)
+    brep_trns = BRepBuilderAPI_Transform(shape, alpha * beta * gamma, False)
     shp = brep_trns.Shape()
     return shp
 
 
 def scale_shape(shape, fx, fy, fz):
-    """ Scale a shape along the 3 directions
+    """Scale a shape along the 3 directions
     @param fx : scale factor in the x direction
     @param fy : scale factor in the y direction
     @param fz : scale factor in the z direction
@@ -358,33 +392,33 @@ def scale_shape(shape, fx, fy, fz):
     """
     assert_shape_not_null(shape)
     scale_trsf = gp_GTrsf()
-    rot = gp_Mat(fx, 0., 0., 0., fy, 0., 0., 0., fz)
+    rot = gp_Mat(fx, 0.0, 0.0, 0.0, fy, 0.0, 0.0, 0.0, fz)
     scale_trsf.SetVectorialPart(rot)
     shp = BRepBuilderAPI_GTransform(shape, scale_trsf).Shape()
     return shp
 
 
-def make_extrusion(face, length, vector=gp_Vec(0., 0., 1.)):
-    ''' creates a extrusion from a face, along the vector vector.
+def make_extrusion(face, length, vector=gp_Vec(0.0, 0.0, 1.0)):
+    """creates a extrusion from a face, along the vector vector.
     with a distance length. Note that the normal vector does not
     necessary be normalized.
     By default, the extrusion is along the z axis.
-    '''
+    """
     vector.Normalize()
     vector.Scale(length)
     return BRepPrimAPI_MakePrism(face, vector).Shape()
+
 
 ##################################
 # Recognize functions
 ##################################
 def recognize_face(topods_face):
-    """ returns True if the TopoDS_Face is a planar surface
-    """
+    """returns True if the TopoDS_Face is a planar surface"""
     if not isinstance(topods_face, TopoDS_Face):
         return "Not a face", None, None
     surf = BRepAdaptor_Surface(topods_face, True)
     surf_type = surf.GetType()
-    if  surf_type == GeomAbs_Plane:
+    if surf_type == GeomAbs_Plane:
         kind = "Plane"
         # look for the properties of the plane
         # first get the related gp_Pln
@@ -431,11 +465,12 @@ def recognize_face(topods_face):
     # nothing found
     return "Unknown", None, None
 
+
 ##############################################################################
 # Measure functions
 ##############################################################################
 def measure_shape_volume(shape):
-    """ Returns shape volume """
+    """Returns shape volume"""
     inertia_props = GProp_GProps()
     brepgprop_VolumeProperties(shape, inertia_props)
     mass = inertia_props.Mass()
@@ -443,7 +478,7 @@ def measure_shape_volume(shape):
 
 
 def measure_shape_mass_center_of_gravity(shape):
-    """ Returns the shape center of gravity
+    """Returns the shape center of gravity
     Returns a gp_Pnt if requested (set as_Pnt to True)
     or a list of 3 coordinates, by default."""
     inertia_props = GProp_GProps()
