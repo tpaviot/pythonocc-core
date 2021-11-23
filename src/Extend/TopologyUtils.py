@@ -82,7 +82,7 @@ class WireExplorer:
     def _loop_topo(self, edges: Optional[bool] = True) -> Iterator[Any]:
         if self.done:
             self._reinitialize()
-        topologyType = topods_Edge if edges else topods_Vertex
+        topology_type = topods_Edge if edges else topods_Vertex
         seq = []
 
         while self.wire_explorer.More():
@@ -92,7 +92,7 @@ class WireExplorer:
             # loop vertices
             else:
                 current_item = self.wire_explorer.CurrentVertex()
-            seq.append(topologyType(current_item))
+            seq.append(topology_type(current_item))
             self.wire_explorer.Next()
 
         self.done = True
@@ -111,7 +111,7 @@ class TopologyExplorer:
     """
 
     def __init__(
-        self, myShape: TopoDS_Shape, ignore_orientation: Optional[bool] = True
+        self, my_shape: TopoDS_Shape, ignore_orientation: Optional[bool] = True
     ) -> None:
         """
         implements topology traversal from any TopoDS_Shape
@@ -122,7 +122,7 @@ class TopologyExplorer:
         *note* when traversing TopoDS_Wire entities, its advised to use the specialized
         ``WireExplorer`` class, which will return the vertices / edges in the expected order
 
-        :param myShape: the shape which topology will be traversed
+        :param my_shape: the shape which topology will be traversed
 
         :param ignore_orientation: filter out TopoDS_* entities of similar TShape but different Orientation
 
@@ -139,12 +139,12 @@ class TopologyExplorer:
         for further reference see TopoDS_Shape IsEqual / IsSame methods
 
         """
-        self.myShape = myShape
+        self.my_shape = my_shape
         self.ignore_orientation = ignore_orientation
 
-        # the topoFactory dicts maps topology types and functions that can
+        # the topology_factory dicts maps topology types and functions that can
         # create this topology
-        self.topoFactory = {
+        self.topology_factory = {
             TopAbs_VERTEX: topods.Vertex,
             TopAbs_EDGE: topods.Edge,
             TopAbs_FACE: topods.Face,
@@ -157,9 +157,9 @@ class TopologyExplorer:
 
     def _loop_topo(
         self,
-        topologyType: TopAbs_ShapeEnum,
-        topologicalEntity=None,
-        topologyTypeToAvoid=None,
+        topology_type: TopAbs_ShapeEnum,
+        topological_entity=None,
+        topology_type_to_avoid=None,
     ) -> Iterator[Any]:
         """
         this could be a faces generator for a python TopoShape class
@@ -167,7 +167,8 @@ class TopologyExplorer:
         for face in srf.faces:
             processFace(face)
         """
-        MAX_INT = 2 ** 31 - 1
+        max_int = 2 ** 31 - 1
+
         topoTypes = {
             TopAbs_VERTEX: TopoDS_Vertex,
             TopAbs_EDGE: TopoDS_Edge,
@@ -178,33 +179,34 @@ class TopologyExplorer:
             TopAbs_COMPOUND: TopoDS_Compound,
             TopAbs_COMPSOLID: TopoDS_CompSolid,
         }
-        topExp = TopExp_Explorer()
-        if topologyType not in topoTypes.keys():
-            raise AssertionError("%s not one of %s" % (topologyType, topoTypes.keys()))
-        # use self.myShape if nothing is specified
-        if topologicalEntity is None and topologyTypeToAvoid is None:
-            topExp.Init(self.myShape, topologyType)
-        elif topologicalEntity is None and topologyTypeToAvoid is not None:
-            topExp.Init(self.myShape, topologyType, topologyTypeToAvoid)
-        elif topologyTypeToAvoid is None:
-            topExp.Init(topologicalEntity, topologyType)
-        elif topologyTypeToAvoid:
-            topExp.Init(topologicalEntity, topologyType, topologyTypeToAvoid)
+        topology_explorer = TopExp_Explorer()
+        if topology_type not in topoTypes.keys():
+            raise AssertionError("%s not one of %s" % (topology_type, topoTypes.keys()))
+        # use self.my_shape if nothing is specified
+        if topological_entity is None and topology_type_to_avoid is None:
+            topology_explorer.Init(self.my_shape, topology_type)
+        elif topological_entity is None and topology_type_to_avoid is not None:
+            topology_explorer.Init(self.my_shape, topology_type, topology_type_to_avoid)
+        elif topology_type_to_avoid is None:
+            topology_explorer.Init(topological_entity, topology_type)
+        elif topology_type_to_avoid:
+            topology_explorer.Init(
+                topological_entity, topology_type, topology_type_to_avoid
+            )
         seq = []
-        while topExp.More():
-            current_item = topExp.Current()
-            topo_to_add = self.topoFactory[topologyType](current_item)
+        while topology_explorer.More():
+            current_item = topology_explorer.Current()
+            topo_to_add = self.topology_factory[topology_type](current_item)
             seq.append(topo_to_add)
-            topExp.Next()
+            topology_explorer.Next()
 
         if self.ignore_orientation:
             # filter out those entities that share the same TShape
             # but do *not* share the same orientation
-            # filter_orientation_seq = []
             filter_orientation_seq: List = []
             filter_orientation_hash_codes = {}
             for i in seq:
-                i_hash_code = i.HashCode(MAX_INT)
+                i_hash_code = i.HashCode(max_int)
                 if not i_hash_code in filter_orientation_hash_codes:
                     filter_orientation_seq.append(i)
                     filter_orientation_hash_codes[i_hash_code] = [
@@ -221,8 +223,8 @@ class TopologyExplorer:
                         filter_orientation_seq.append(i)
                         index_list.append(len(filter_orientation_seq) - 1)
             return iter(filter_orientation_seq)
-        else:
-            return iter(seq)
+
+        return iter(seq)
 
     def faces(self) -> Iterator[TopoDS_Face]:
         """
@@ -322,25 +324,31 @@ class TopologyExplorer:
     def number_of_ordered_edges_from_wire(self, wire: TopoDS_Wire) -> int:
         return self._number_of_topo(self.ordered_edges_from_wire(wire))
 
-    def _map_shapes_and_ancestors(self, topoTypeA, topoTypeB, topologicalEntity):
+    def _map_shapes_and_ancestors(
+        self, topology_type_1, topology_type_2, topological_entity
+    ):
         """
         using the same method
         @param topoTypeA:
         @param topoTypeB:
-        @param topologicalEntity:
+        @param topological_entity:
         """
         MAX_INT = 2 ** 31 - 1
         topo_set = set()
         topo_set_hash_codes = {}
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
-        topexp_MapShapesAndAncestors(self.myShape, topoTypeA, topoTypeB, _map)
-        results = _map.FindFromKey(topologicalEntity)
+        topexp_MapShapesAndAncestors(
+            self.my_shape, topology_type_1, topology_type_2, _map
+        )
+        results = _map.FindFromKey(topological_entity)
         if results.Size() == 0:
             yield None
 
         topology_iterator = TopTools_ListIteratorOfListOfShape(results)
         while topology_iterator.More():
-            topo_entity = self.topoFactory[topoTypeB](topology_iterator.Value())
+            topo_entity = self.topology_factory[topology_type_2](
+                topology_iterator.Value()
+            )
             topo_entity_hash_code = topo_entity.HashCode(MAX_INT)
             # return the entity if not in set
             # to assure we're not returning entities several times
@@ -366,19 +374,23 @@ class TopologyExplorer:
             topo_set.add(topo_entity)
             topology_iterator.Next()
 
-    def _number_shapes_ancestors(self, topoTypeA, topoTypeB, topologicalEntity):
+    def _number_shapes_ancestors(
+        self, topology_type_1, topology_type_2, topological_entity
+    ):
         """returns the number of shape ancestors
         If you want to know how many edges a faces has:
         _number_shapes_ancestors(self, TopAbs_EDGE, TopAbs_FACE, edg)
         will return the number of edges a faces has
         @param topoTypeA:
         @param topoTypeB:
-        @param topologicalEntity:
+        @param topological_entity:
         """
         topo_set = set()
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
-        topexp_MapShapesAndAncestors(self.myShape, topoTypeA, topoTypeB, _map)
-        results = _map.FindFromKey(topologicalEntity)
+        topexp_MapShapesAndAncestors(
+            self.my_shape, topology_type_1, topology_type_2, _map
+        )
+        results = _map.FindFromKey(topological_entity)
         if results.Size() == 0:
             return None
         topology_iterator = TopTools_ListIteratorOfListOfShape(results)
@@ -733,6 +745,5 @@ def list_of_shapes_to_compound(
         if shp.IsNull():
             all_shapes_converted = False
             continue
-        else:
-            the_builder.Add(the_compound, shp)
+        the_builder.Add(the_compound, shp)
     return the_compound, all_shapes_converted
