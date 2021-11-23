@@ -148,8 +148,7 @@ def edge_to_bezier(topods_edge):
     ad = BRepAdaptor_Curve(topods_edge)
     if ad.IsRational():
         return True, ad.Bezier(), ad.Degree()
-    else:
-        return False, None, None
+    return False, None, None
 
 
 #
@@ -235,35 +234,37 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
     """
     obb = Bnd_OBB()
     if optimal_OBB:
-        is_triangulationUsed = True
+        is_triangulation_used = True
         is_optimal = True
-        is_shapeToleranceUsed = False
+        is_shape_tolerance_used = False
         brepbndlib_AddOBB(
-            shape, obb, is_triangulationUsed, is_optimal, is_shapeToleranceUsed
+            shape, obb, is_triangulation_used, is_optimal, is_shape_tolerance_used
         )
     else:
         brepbndlib_AddOBB(shape, obb)
 
     # converts the bounding box to a shape
-    aBaryCenter = obb.Center()
-    aXDir = obb.XDirection()
-    aYDir = obb.YDirection()
-    aZDir = obb.ZDirection()
-    aHalfX = obb.XHSize()
-    aHalfY = obb.YHSize()
-    aHalfZ = obb.ZHSize()
+    bary_center = obb.Center()
+    x_direction = obb.XDirection()
+    y_direction = obb.YDirection()
+    z_direction = obb.ZDirection()
+    a_half_x = obb.XHSize()
+    a_half_y = obb.YHSize()
+    a_half_z = obb.ZHSize()
 
-    ax = gp_XYZ(aXDir.X(), aXDir.Y(), aXDir.Z())
-    ay = gp_XYZ(aYDir.X(), aYDir.Y(), aYDir.Z())
-    az = gp_XYZ(aZDir.X(), aZDir.Y(), aZDir.Z())
-    p = gp_Pnt(aBaryCenter.X(), aBaryCenter.Y(), aBaryCenter.Z())
-    anAxes = gp_Ax2(p, gp_Dir(aZDir), gp_Dir(aXDir))
-    anAxes.SetLocation(gp_Pnt(p.XYZ() - ax * aHalfX - ay * aHalfY - az * aHalfZ))
-    aBox = BRepPrimAPI_MakeBox(anAxes, 2.0 * aHalfX, 2.0 * aHalfY, 2.0 * aHalfZ).Shape()
-    return aBaryCenter, [aHalfX, aHalfY, aHalfZ], aBox
+    ax = gp_XYZ(x_direction.X(), x_direction.Y(), x_direction.Z())
+    ay = gp_XYZ(y_direction.X(), y_direction.Y(), y_direction.Z())
+    az = gp_XYZ(z_direction.X(), z_direction.Y(), z_direction.Z())
+    p = gp_Pnt(bary_center.X(), bary_center.Y(), bary_center.Z())
+    an_axe = gp_Ax2(p, gp_Dir(z_direction), gp_Dir(x_direction))
+    an_axe.SetLocation(gp_Pnt(p.XYZ() - ax * a_half_x - ay * a_half_y - az * a_half_z))
+    a_box = BRepPrimAPI_MakeBox(
+        an_axe, 2.0 * a_half_x, 2.0 * a_half_y, 2.0 * a_half_z
+    ).Shape()
+    return bary_center, [a_half_x, a_half_y, a_half_z], a_box
 
 
-def midpoint(pntA, pntB):
+def midpoint(point_A, point_B):
     """computes the point that lies in the middle between pntA and pntB
 
     Parameters
@@ -277,10 +278,10 @@ def midpoint(pntA, pntB):
     gp_Pnt
 
     """
-    vec1 = gp_Vec(pntA.XYZ())
-    vec2 = gp_Vec(pntB.XYZ())
-    veccie = (vec1 + vec2) * 0.5
-    return gp_Pnt(veccie.XYZ())
+    vec_1 = gp_Vec(point_A.XYZ())
+    vec_2 = gp_Vec(point_B.XYZ())
+    mid = (vec_1 + vec_2) * 0.5
+    return gp_Pnt(mid.XYZ())
 
 
 def center_boundingbox(shape):
@@ -425,7 +426,7 @@ def recognize_face(topods_face):
         gp_pln = surf.Plane()
         location = gp_pln.Location()  # a point of the plane
         normal = gp_pln.Axis().Direction()  # the plane normal
-        return kind, location, normal
+        tuple_to_return = (kind, location, normal)
     elif surf_type == GeomAbs_Cylinder:
         kind = "Cylinder"
         # look for the properties of the cylinder
@@ -434,36 +435,38 @@ def recognize_face(topods_face):
         location = gp_cyl.Location()  # a point of the axis
         axis = gp_cyl.Axis().Direction()  # the cylinder axis
         # then export location and normal to the console output
-        return kind, location, axis
+        tuple_to_return = (kind, location, axis)
     elif surf_type == GeomAbs_Cone:
         kind = "Cone"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_Sphere:
         kind = "Sphere"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_Torus:
         kind = "Torus"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_BezierSurface:
         kind = "Bezier"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_BSplineSurface:
         kind = "BSpline"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_SurfaceOfRevolution:
         kind = "Revolution"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_SurfaceOfExtrusion:
         kind = "Extrusion"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_OffsetSurface:
         kind = "Offset"
-        return kind, None, None
+        tuple_to_return = (kind, None, None)
     elif surf_type == GeomAbs_OtherSurface:
         kind = "Other"
-        return kind, None, None
-    # nothing found
-    return "Unknown", None, None
+        tuple_to_return = (kind, None, None)
+    else:
+        tuple_to_return = ("Unknwon", None, None)
+
+    return tuple_to_return
 
 
 ##############################################################################
