@@ -41,7 +41,7 @@ jobs:
     vmImage: 'ubuntu-20.04'
     py_maj: 3
     py_min: 8
-    conda_bld: 3.19.2
+    conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
@@ -49,7 +49,7 @@ jobs:
     vmImage: 'macOS-10.15'
     py_maj: 3
     py_min: 8
-    conda_bld: 3.19.2
+    conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
@@ -57,7 +57,7 @@ jobs:
     vmImage: 'windows-2019'
     py_maj: 3
     py_min: 8
-    conda_bld: 3.19.2
+    conda_bld: 3.21
 
 - template: conda-build.yml
   parameters:
@@ -65,7 +65,7 @@ jobs:
     vmImage: 'ubuntu-20.04'
     py_maj: 3
     py_min: 9
-    conda_bld: 3.21.4
+    conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
@@ -73,7 +73,7 @@ jobs:
     vmImage: 'macOS-10.15'
     py_maj: 3
     py_min: 9
-    conda_bld: 3.21.4
+    conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
@@ -81,4 +81,4 @@ jobs:
     vmImage: 'windows-2019'
     py_maj: 3
     py_min: 9
-    conda_bld: 3.21.4
+    conda_bld: 3.21
