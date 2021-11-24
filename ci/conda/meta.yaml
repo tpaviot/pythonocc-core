@@ -26,11 +26,13 @@ requirements:
   host:
     - python {{ python }}
     - occt ==7.5.3
+    - numpy
 
   run:
     - occt ==7.5.3
     - python
     - six
+    - numpy
 
 test:
   imports:
