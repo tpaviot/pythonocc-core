@@ -100,13 +100,21 @@ option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" O
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
 option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
 option_with_default(OCE_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
+option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays." OFF)
 
 ############
 # Python 3 #
 ############
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+if(PYTHONOCC_MESHDS_NUMPY)
+    find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
+    include_directories(${Python3_NumPy_INCLUDE_DIRS})
+    message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
+    set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DBUILD_MESHDS_NUMPY)
+else(PYTHONOCC_MESHDS_NUMPY)
+    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+endif(PYTHONOCC_MESHDS_NUMPY)
 message(STATUS "Python3 interpreter:" ${Python3_EXECUTABLE})
-message(STATUS "Python include directory: ${Python3_INCLUDE_DIR}")
+message(STATUS "Python include directory: ${Python3_INCLUDE_DIRS}")
 message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 
 ########
@@ -120,7 +128,7 @@ if(SWIG_HIDE_WARNINGS)
   message(STATUS "Disabled SWIG warnings")
   set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
 endif()
-    
+
 ################################
 # OCE include and lib location #
 ################################
