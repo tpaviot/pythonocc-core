@@ -24,6 +24,8 @@ from OCC.Core.MeshDS import MeshDS_DataSource
 from OCC.Core.RWStl import rwstl_ReadFile
 from OCC.Core.TColStd import TColStd_Array1OfInteger
 
+import numpy as np
+os
 STL_BOTTLE_FILENAME = os.path.join('.', 'test_io', 'bottle_ascii.stl')
 
 class TestMeshDataSource(unittest.TestCase):
@@ -109,6 +111,35 @@ class TestMeshDataSource(unittest.TestCase):
         all_elements.StatisticsToString()
         self.assertEqual(all_elements.NbBuckets(), 101)
 
+    def test_create_mesh_datasource_from_numpy_ndarray(self):
+        # 8 cube vertices
+        v1 =[0,0,0]
+        v2 =[0,1,0]
+        v3 =[1,1,0]
+        v4=[1,0,0]
+        v5 =[0,0,1]
+        v6 =[0,1,1]
+        v7=[1,1,1]
+        v8=[1,0,1]
+
+        # 12 cube faces
+        f1=[7, 3,0]
+        f2=[0,4,7]
+        f3=[0, 1, 2]
+        f4=[0,2,3]
+        f5=[4,5,6]
+        f6=[4,6,7]
+        f7=[6,5,1]
+        f8=[6,2,1]
+        f9=[4,0,5]
+        f10=[0,1,5]
+        f11=[3,6,7]
+        f12=[2,3, 6]
+        vertices = np.array([v1, v2, v3, v4, v5, v6, v7, v8], dtype=np.float32)
+        faces = np.array([f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12], dtype=np.int32)
+
+        # create data source
+        a_data_source = MeshDS_DataSource(vertices, faces)
 
 def suite():
     """ builds the test suite """
