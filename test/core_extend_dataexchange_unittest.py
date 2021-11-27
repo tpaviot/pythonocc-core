@@ -43,6 +43,7 @@ STEP_AP203_SAMPLE_FILE = get_test_fullname('as1_pe_203.stp')
 STEP_AP214_SAMPLE_FILE = get_test_fullname('as1-oc-214.stp')
 STEP_MULTIPLE_ROOT = get_test_fullname('stp_multiple_shp_at_root.stp')
 IGES_SAMPLE_FILE = get_test_fullname('sunglasses_lens.igs')
+IGES_45_SHAPES = get_test_fullname('example_45_shapes.iges')
 STL_ASCII_SAMPLE_FILE = get_test_fullname('bottle_ascii.stl')
 STL_BINARY_SAMPLE_FILE = get_test_fullname('cube_binary.stl')
 
@@ -71,6 +72,11 @@ class TestExtendDataExchange(unittest.TestCase):
 
     def test_read_iges_file(self):
         read_iges_file(IGES_SAMPLE_FILE)
+
+
+    def test_read_iges_45_shapes(self):
+        all_shapes = read_iges_file(IGES_45_SHAPES, return_as_shapes=True, verbosity=True)
+        self.assertEqual(len(all_shapes), 45)
 
 
     def test_read_stl_file(self):
