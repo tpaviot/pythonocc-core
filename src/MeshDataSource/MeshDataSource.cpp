@@ -15,6 +15,63 @@ MeshDS_DataSource::MeshDS_DataSource(std::vector<gp_Pnt>& CoordData, std::vector
 	InitializeFromData(CoordData, Ele2NodeData);
 }
 
+
+MeshDS_DataSource::MeshDS_DataSource(double* Vertices, const int nVerts1, const int nVerts2, int* Faces, const int nFaces1, const int nFaces2)
+{
+	/*
+	if (nVerts2 != 3 || nFaces2 != 3) {
+		throw std::invalid_argument("Nx3 array must be provided");
+	}
+
+	std::vector<gp_Pnt> CoordData;
+	CoordData.resize(nVerts1);
+	size_t vertIDX = 0;
+
+	for (size_t vertID = 0; vertID < nVerts1; vertID++)
+	{
+		CoordData[vertID] = gp_Pnt(Vertices[vertIDX], Vertices[vertIDX + 1], Vertices[vertIDX + 2]);
+		vertIDX += 3;
+	}
+
+	std::vector<std::vector<int>> FVec;
+	FVec.resize(nFaces1);
+	size_t faceIDX = 0;
+
+	for (size_t faceID = 0; faceID < nFaces1; faceID++)
+	{
+		FVec[faceID] = std::vector<int>{ Faces[faceIDX], Faces[faceIDX + 1] ,Faces[faceIDX + 2] };
+		faceIDX += 3;
+	}
+
+	InitializeFromData(CoordData, FVec);
+	*/
+
+	InitializeFromData(Vertices, nVerts1, nVerts2, Faces, nFaces1, nFaces2);
+}
+
+
+MeshDS_DataSource::MeshDS_DataSource(double Vertices[][3], int Faces[][3])
+{
+	//size_t nVerts = Vertices.size();
+	const size_t nVerts = sizeof Vertices / 3;
+	std::vector<gp_Pnt> CoordData;
+	CoordData.resize(nVerts);
+
+	for (size_t vertID = 0; vertID < nVerts; vertID++)
+	{
+		CoordData[vertID] = gp_Pnt(Vertices[vertID][0], Vertices[vertID][1], Vertices[vertID][2]);
+	}
+
+	std::vector<std::vector<int>> FVec =
+	{
+		std::vector<int>(std::begin(Faces[0]), std::end(Faces[0])),
+		std::vector<int>(std::begin(Faces[1]), std::end(Faces[1])),
+		std::vector<int>(std::begin(Faces[2]), std::end(Faces[2])),
+	};
+
+	InitializeFromData(CoordData, FVec);
+}
+
 MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 {
 	// initialize arrays
@@ -22,7 +79,6 @@ MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 	std::vector<std::vector<int>> Ele2NodeData;
 	CoordData.resize(polyTri->NbNodes());
 	Ele2NodeData.resize(polyTri->NbTriangles());
-	//convert node data
 	const TColgp_Array1OfPnt& nodes = polyTri->Nodes();
 	for (Standard_Integer nodeId = nodes.Lower(); nodeId <= nodes.Upper(); nodeId++) {
 		const gp_Pnt& node = nodes.Value(nodeId);
@@ -229,7 +285,7 @@ void MeshDS_DataSource::InitializeFromData
 	myElemNodes = new TColStd_HArray2OfInteger(1, Ele2NodeData.size(), 1, 4);
 	myElemNumberNodes = new TColStd_HArray1OfInteger(1, Ele2NodeData.size());
 	myElemNormals = new TColStd_HArray2OfReal(1, Ele2NodeData.size(), 1, 3);
-	myNodeNormals = new TColStd_HArray2OfReal(1, Ele2NodeData.size(), 1, 12);	
+	myNodeNormals = new TColStd_HArray2OfReal(1, Ele2NodeData.size(), 1, 12);
 	// fill node ids and coordinates
 	for (size_t nodeId = 1; nodeId <= CoordData.size(); nodeId++)
 	{
@@ -291,6 +347,96 @@ void MeshDS_DataSource::InitializeFromData
 		for (size_t rankNode = 0; rankNode < Ele2NodeData[ElementId].size(); rankNode++)
 		{
 			int nodeId = Ele2NodeData[ElementId][rankNode];
+			gp_Vec aN = nodeNormals[nodeId];
+			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 1, aN.X());
+			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 2, aN.Y());
+			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 3, aN.Z());
+		}
+	}
+}
+
+//================================================================
+// Function : InitializeFromData
+// Purpose  : Initialize from 2D Pointer Arrays, for numpy compatibility
+//================================================================
+void MeshDS_DataSource::InitializeFromData
+(double* Vertices, const int nVerts1, const int nVerts2, int* Faces, const int nFaces1, const int nFaces2)
+{
+	//initialize arrays
+	myNodeCoords = new TColStd_HArray2OfReal(1, nVerts1, 1, 3);
+	myElemNodes = new TColStd_HArray2OfInteger(1, nFaces1, 1, 4);
+	myElemNumberNodes = new TColStd_HArray1OfInteger(1, nFaces1);
+	myElemNormals = new TColStd_HArray2OfReal(1, nFaces1, 1, 3);
+	myNodeNormals = new TColStd_HArray2OfReal(1, nFaces1, 1, 12);
+
+	// fill node ids and coordinates
+	for (size_t nodeId = 1; nodeId <= nVerts1; nodeId++)
+	{
+		size_t vertIdx = (nodeId-1) * 3;
+		myNodes.Add(nodeId);
+		myNodeCoords->SetValue(nodeId, 1, Vertices[vertIdx + 0]);
+		myNodeCoords->SetValue(nodeId, 2, Vertices[vertIdx + 1]);
+		myNodeCoords->SetValue(nodeId, 3, Vertices[vertIdx + 2]);
+	}
+
+	// fill element ids, number of nodes, associated node ids and normals
+	for (size_t ElementId = 1; ElementId <= nFaces1; ElementId++)
+	{
+		size_t faceIdx = (ElementId-1) * 3;
+		int nNodes = std::min(4, nFaces2);
+		myElements.Add(ElementId);
+		myElemNumberNodes->SetValue(ElementId, nNodes);
+		for (Standard_Integer rankNode = 1; rankNode <= nNodes; rankNode++)
+		{
+			Standard_Integer nodeId = Faces[faceIdx + rankNode - 1] + 1;
+			myElemNodes->SetValue(ElementId, rankNode, nodeId);
+		}
+		// compute face normal
+		size_t p1Idx = Faces[faceIdx + 0] * 3;
+		size_t p2Idx = Faces[faceIdx + 1] * 3;
+		size_t p3Idx = Faces[faceIdx + 2] * 3;
+		const gp_Pnt aP1 = gp_Pnt(Vertices[p1Idx], Vertices[p1Idx + 1], Vertices[p1Idx + 2]);
+		const gp_Pnt aP2 = gp_Pnt(Vertices[p2Idx], Vertices[p2Idx + 1], Vertices[p2Idx + 2]);
+		const gp_Pnt aP3 = gp_Pnt(Vertices[p3Idx], Vertices[p3Idx + 1], Vertices[p3Idx + 2]);
+		gp_Vec aV1(aP1, aP2);
+		gp_Vec aV2(aP2, aP3);
+		gp_Vec aN = aV1.Crossed(aV2);
+		if (aN.SquareMagnitude() > Precision::SquareConfusion())
+			aN.Normalize();
+		else
+			aN.SetCoord(0.0, 0.0, 0.0);
+		myElemNormals->SetValue(ElementId, 1, aN.X());
+		myElemNormals->SetValue(ElementId, 2, aN.Y());
+		myElemNormals->SetValue(ElementId, 3, aN.Z());
+	}
+	// compute node normal
+	std::vector<std::vector<int>> Node2EleData;
+	Node2EleData.resize(nVerts1);
+	for (size_t ElementId = 0; ElementId < nFaces1; ElementId++) {
+		for (size_t rankNode = 0; rankNode < nFaces2; rankNode++) {
+			int nodeId = Faces[ElementId * 3 + rankNode];
+			Node2EleData[nodeId].push_back(ElementId);
+		}
+	}
+	std::vector<gp_Vec> nodeNormals;
+	nodeNormals.resize(nVerts1);
+	for (size_t nodeId = 0; nodeId < Node2EleData.size(); nodeId++) {
+		gp_Vec aN = gp_Vec(0, 0, 0);
+		for (size_t rankEle = 0; rankEle < Node2EleData[nodeId].size(); rankEle++) {
+			int ElementId = Node2EleData[nodeId][rankEle] + 1;
+			aN += gp_Vec(myElemNormals->Value(ElementId, 1), myElemNormals->Value(ElementId, 2), myElemNormals->Value(ElementId, 3));
+		}
+		if (aN.SquareMagnitude() > Precision::SquareConfusion())
+			aN.Normalize();
+		else
+			aN.SetCoord(0.0, 0.0, 0.0);
+		nodeNormals[nodeId] = aN;
+	}
+	for (size_t ElementId = 0; ElementId < nFaces1; ElementId++)
+	{
+		for (size_t rankNode = 0; rankNode < nFaces2; rankNode++)
+		{
+			int nodeId = Faces[ElementId * 3 + rankNode];
 			gp_Vec aN = nodeNormals[nodeId];
 			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 1, aN.X());
 			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 2, aN.Y());
