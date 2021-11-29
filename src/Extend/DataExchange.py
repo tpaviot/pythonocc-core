@@ -425,8 +425,10 @@ def read_stl_file(filename):
 ######################
 # IGES import/export #
 ######################
-def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_only=False):
-    """ read the IGES file and returns a compound
+def read_iges_file(
+    filename, return_as_shapes=False, verbosity=False, visible_only=False
+):
+    """read the IGES file and returns a compound
     filename: the file path
     return_as_shapes: optional, False by default. If True returns a list of shapes,
                       else returns a single compound
@@ -454,11 +456,9 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_on
         iges_reader.ClearShapes()
         iges_reader.TransferRoots()
         nbr = iges_reader.NbShapes()
-        for i in range(1, nbr+1):
+        for i in range(1, nbr + 1):
             a_shp = iges_reader.Shape(i)
-            if a_shp.ShapeType in [TopAbs_SOLID,
-                                   TopAbs_SHELL,
-                                   TopAbs_COMPOUND]:
+            if a_shp.ShapeType() in [TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND]:
                 _shapes.append(a_shp)
             else:  # other shape types are merged into a compound
                 builder.Add(compound, a_shp)
