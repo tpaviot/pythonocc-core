@@ -47,4 +47,7 @@ tests = [suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8,
 suite.addTests(tests)
 
 # Run test suite
-unittest.TextTestRunner(verbosity=2).run(suite)
+result = unittest.TextTestRunner(verbosity=2).run(suite)
+# explicitly raise an assertion to stop Azure build
+if not result.wasSuccessful():
+    raise AssertionError("Test failed")
