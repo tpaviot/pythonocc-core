@@ -18,13 +18,18 @@
 import os
 
 from OCC.Core.TopoDS import TopoDS_Shape
+from OCC.Core.TopAbs import TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.StlAPI import stlapi_Read, StlAPI_Writer
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.gp import gp_Pnt, gp_Dir, gp_Pnt2d
 from OCC.Core.Bnd import Bnd_Box2d
 from OCC.Core.TopoDS import TopoDS_Compound
-from OCC.Core.IGESControl import IGESControl_Reader, IGESControl_Writer
+from OCC.Core.IGESControl import (
+    IGESControl_Controller,
+    IGESControl_Reader,
+    IGESControl_Writer,
+)
 from OCC.Core.STEPControl import (
     STEPControl_Reader,
     STEPControl_Writer,
@@ -84,9 +89,9 @@ def read_step_file(filename, as_compound=True, verbosity=True):
         _nbs = step_reader.NbShapes()
         if _nbs == 0:
             raise AssertionError("No shape to transfer.")
-        elif _nbs == 1:  # most cases
+        if _nbs == 1:  # most cases
             return step_reader.Shape(1)
-        elif _nbs > 1:
+        if _nbs > 1:
             print("Number of shapes:", _nbs)
             shps = []
             # loop over root shapes
@@ -99,9 +104,8 @@ def read_step_file(filename, as_compound=True, verbosity=True):
                 if not result:
                     print("Warning: all shapes were not added to the compound")
                 return compound
-            else:
-                print("Warning, returns a list of shapes.")
-                return shps
+            print("Warning, returns a list of shapes.")
+            return shps
     else:
         raise AssertionError("Error: can't read file.")
     return None
@@ -436,45 +440,51 @@ def read_iges_file(
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
+    IGESControl_Controller.Init()
+
     iges_reader = IGESControl_Reader()
     iges_reader.SetReadVisible(visible_only)
     status = iges_reader.ReadFile(filename)
 
     _shapes = []
 
-    if status == IFSelect_RetDone:  # check status
-        if verbosity:
-            failsonly = False
-            iges_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
-            iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
-        iges_reader.TransferRoots()
-        nbr = iges_reader.NbRootsForTransfer()
-        for _ in range(1, nbr + 1):
-            nbs = iges_reader.NbShapes()
-            if nbs == 0:
-                print("At least one shape in IGES cannot be transferred")
-            elif nbr == 1 and nbs == 1:
-                a_res_shape = iges_reader.Shape(1)
-                if a_res_shape.IsNull():
-                    print("At least one shape in IGES cannot be transferred")
-                else:
-                    _shapes.append(a_res_shape)
-            else:
-                for i in range(1, nbs + 1):
-                    a_shape = iges_reader.Shape(i)
-                    if a_shape.IsNull():
-                        print("At least one shape in STEP cannot be transferred")
-                    else:
-                        _shapes.append(a_shape)
-    # if not return as shapes
+    builder = BRep_Builder()
+    compound = TopoDS_Compound()
+    builder.MakeCompound(compound)
+    empty_compound = True
+
+    if status != IFSelect_RetDone:  # check status
+        raise IOError("Cannot read IGES file")
+
+    if verbosity:
+        failsonly = False
+        iges_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
+        iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
+    iges_reader.ClearShapes()
+    iges_reader.TransferRoots()
+    nbr = iges_reader.NbShapes()
+
+    for i in range(1, nbr + 1):
+        a_shp = iges_reader.Shape(i)
+        if not a_shp.IsNull():
+            if a_shp.ShapeType() in [TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND]:
+                _shapes.append(a_shp)
+            else:  # other shape types are merged into a compound
+                builder.Add(compound, a_shp)
+                empty_compound = False
+
+    if not empty_compound:
+        _shapes.append(compound)
+
     # create a compound and store all shapes
     if not return_as_shapes:
-        builder = BRep_Builder()
-        compound = TopoDS_Compound()
-        builder.MakeCompound(compound)
+        builder_2 = BRep_Builder()
+        compound_2 = TopoDS_Compound()
+        builder_2.MakeCompound(compound_2)
         for s in _shapes:
-            builder.Add(compound, s)
-        _shapes = compound
+            builder_2.Add(compound_2, s)
+        _shapes = compound_2
+
     return _shapes
 
 
