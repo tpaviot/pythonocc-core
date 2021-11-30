@@ -668,12 +668,11 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(isinstance(c1.Curve(), GeomAdaptor_Curve))
         # should pass on all platforms
         self.assertTrue(isinstance(c1.Curve().Curve(), Geom_Curve))
-        # but the following only works on linux
-        # on windows, the instance returned is None
         c2 = BRepAdaptor_Curve(ed1).Curve()
-        if sys.platform != "win32":
+        # only works on linux
+        if sys.platform == "linux":
             self.assertTrue(isinstance(c2.Curve(), Geom_Curve))
-            self.assertTrue(isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve))
+            self.assertTrue(isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve))            
 
 
 def suite():
