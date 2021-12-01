@@ -19,22 +19,30 @@
 
 import unittest
 
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
+from OCC.Core.BRepPrimAPI import (
+    BRepPrimAPI_MakeTorus,
+    BRepPrimAPI_MakeBox,
+    BRepPrimAPI_MakeSphere,
+)
 from OCC.Extend.TopologyUtils import (
     TopologyExplorer,
     WireExplorer,
     discretize_edge,
     discretize_wire,
+    dump_topology_to_string,
+    get_type_as_string,
+    get_sorted_hlr_edges,
+    list_of_shapes_to_compound,
 )
 from OCC.Core.TopoDS import TopoDS_Face, TopoDS_Edge
 
 
-def get_test_box_shape():
-    return BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+def get_test_box_shape(len_x=10.0, len_y=20.0, len_z=30.0):
+    return BRepPrimAPI_MakeBox(len_x, len_y, len_z).Shape()
 
 
-def get_test_sphere_shape():
-    return BRepPrimAPI_MakeSphere(10.0).Shape()
+def get_test_sphere_shape(radius=10.0):
+    return BRepPrimAPI_MakeSphere(radius).Shape()
 
 
 topo = TopologyExplorer(get_test_box_shape())
@@ -163,6 +171,25 @@ class TestExtendTopology(unittest.TestCase):
             _vertices.append(vert)
         for v in _vertices:
             self.assertFalse(v.IsNull())
+
+    def test_dump_topology_to_string(self):
+        box_shp = get_test_box_shape()
+        dump_topology_to_string(box_shp)
+
+    def test_get_type_as_string(self):
+        box_shp = get_test_box_shape()
+        self.assertEqual(get_type_as_string(box_shp), "Solid")
+
+    def test_get_sorted_hlr_edges(self):
+        box_shp = get_test_box_shape()
+        get_sorted_hlr_edges(box_shp)
+
+    def test_list_of_shapes_to_compound(self):
+        box_shp = get_test_box_shape()
+        sph_shp = get_test_sphere_shape(20.0)
+        result, all_shape_converted = list_of_shapes_to_compound([box_shp, sph_shp])
+        self.assertTrue(all_shape_converted)
+        self.assertEqual(get_type_as_string(result), "Compound")
 
 
 def suite():
