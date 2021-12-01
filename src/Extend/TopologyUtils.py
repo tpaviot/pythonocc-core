@@ -62,6 +62,8 @@ from OCC.Core.GCPnts import (
 )
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
+MAX_32_BIT_INT = 2 ** 31 - 1
+
 
 class WireExplorer:
     """
@@ -167,9 +169,7 @@ class TopologyExplorer:
         for face in srf.faces:
             processFace(face)
         """
-        max_int = 2 ** 31 - 1
-
-        topoTypes = {
+        topo_types = {
             TopAbs_VERTEX: TopoDS_Vertex,
             TopAbs_EDGE: TopoDS_Edge,
             TopAbs_FACE: TopoDS_Face,
@@ -180,8 +180,8 @@ class TopologyExplorer:
             TopAbs_COMPSOLID: TopoDS_CompSolid,
         }
         topology_explorer = TopExp_Explorer()
-        if topology_type not in topoTypes.keys():
-            raise AssertionError("%s not one of %s" % (topology_type, topoTypes.keys()))
+        if topology_type not in topo_types.keys():
+            raise AssertionError(f"{topology_type} not one of {topo_types.keys()}")
         # use self.my_shape if nothing is specified
         if topological_entity is None and topology_type_to_avoid is None:
             topology_explorer.Init(self.my_shape, topology_type)
@@ -206,7 +206,7 @@ class TopologyExplorer:
             filter_orientation_seq: List = []
             filter_orientation_hash_codes = {}
             for i in seq:
-                i_hash_code = i.HashCode(max_int)
+                i_hash_code = i.HashCode(MAX_32_BIT_INT)
                 if not i_hash_code in filter_orientation_hash_codes:
                     filter_orientation_seq.append(i)
                     filter_orientation_hash_codes[i_hash_code] = [
@@ -233,10 +233,10 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_FACE)
 
     def _number_of_topo(self, iterable: Iterable) -> int:
-        n = 0
+        nbr_topo = 0
         for _ in iterable:
-            n += 1
-        return n
+            nbr_topo += 1
+        return nbr_topo
 
     def number_of_faces(self) -> int:
         return self._number_of_topo(self.faces())
@@ -308,8 +308,8 @@ class TopologyExplorer:
         """
         @param wire: TopoDS_Wire
         """
-        we = WireExplorer(wire)
-        return we.ordered_vertices()
+        wire_exp = WireExplorer(wire)
+        return wire_exp.ordered_vertices()
 
     def number_of_ordered_vertices_from_wire(self, wire: TopoDS_Wire) -> int:
         return self._number_of_topo(self.ordered_vertices_from_wire(wire))
@@ -318,8 +318,8 @@ class TopologyExplorer:
         """
         @param wire: TopoDS_Wire
         """
-        we = WireExplorer(wire)
-        return we.ordered_edges()
+        wire_exp = WireExplorer(wire)
+        return wire_exp.ordered_edges()
 
     def number_of_ordered_edges_from_wire(self, wire: TopoDS_Wire) -> int:
         return self._number_of_topo(self.ordered_edges_from_wire(wire))
@@ -333,7 +333,6 @@ class TopologyExplorer:
         @param topoTypeB:
         @param topological_entity:
         """
-        MAX_INT = 2 ** 31 - 1
         topo_set = set()
         topo_set_hash_codes = {}
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
@@ -349,7 +348,7 @@ class TopologyExplorer:
             topo_entity = self.topology_factory[topology_type_2](
                 topology_iterator.Value()
             )
-            topo_entity_hash_code = topo_entity.HashCode(MAX_INT)
+            topo_entity_hash_code = topo_entity.HashCode(MAX_32_BIT_INT)
             # return the entity if not in set
             # to assure we're not returning entities several times
             if not topo_entity in topo_set:
@@ -536,10 +535,7 @@ def dump_topology_to_string(
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
         pnt = brt.Pnt(topods_Vertex(shape))
-        print(
-            ".." * level
-            + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z())
-        )
+        print(".." * level + f"<Vertex {hash(shape)}: {pnt.X()} {pnt.Y()} {pnt.Z()}>\n")
     else:
         print(".." * level, end="")
         print(shape)
