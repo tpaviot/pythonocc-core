@@ -25,8 +25,10 @@ from OCC.Core.RWStl import rwstl_ReadFile
 from OCC.Core.TColStd import TColStd_Array1OfInteger
 
 import numpy as np
+
 os
-STL_BOTTLE_FILENAME = os.path.join('.', 'test_io', 'bottle_ascii.stl')
+STL_BOTTLE_FILENAME = os.path.join(".", "test_io", "bottle_ascii.stl")
+
 
 class TestMeshDataSource(unittest.TestCase):
     def test_instantiate_from_stl_file(self):
@@ -41,8 +43,14 @@ class TestMeshDataSource(unittest.TestCase):
 
     def test_create_mesh_datasource(self):
         # create data
-        coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
-        ele2_node_data = [[0, 1, 4 , 3], [1, 2, 4]]
+        coord_data = [
+            gp_Pnt(0, 0, 0),
+            gp_Pnt(0, 1, 0),
+            gp_Pnt(0, 1, -1),
+            gp_Pnt(1, 0, 0),
+            gp_Pnt(1, 1, 0),
+        ]
+        ele2_node_data = [[0, 1, 4, 3], [1, 2, 4]]
         # create data source
         a_data_source = MeshDS_DataSource(coord_data, ele2_node_data)
         # check node ids and number of elements
@@ -62,30 +70,38 @@ class TestMeshDataSource(unittest.TestCase):
         self.assertEqual(node_ids.Value(3), 5)
         # check normal of elements
         is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
-        self.assertEqual(nx, 0.)
-        self.assertEqual(ny, 0.)
-        self.assertEqual(nz, -1.)
+        self.assertEqual(nx, 0.0)
+        self.assertEqual(ny, 0.0)
+        self.assertEqual(nz, -1.0)
         is_ok, nx, ny, nz = a_data_source.GetNormal(2, 3)
-        self.assertEqual(nx, 0.)
-        self.assertEqual(ny, -1.)
-        self.assertEqual(nz, 0.)
+        self.assertEqual(nx, 0.0)
+        self.assertEqual(ny, -1.0)
+        self.assertEqual(nz, 0.0)
         # check normal of nodes
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 1)
-        self.assertEqual(nx, 0.)
-        self.assertEqual(ny, 0.)
-        self.assertEqual(nz, -1.)
+        self.assertEqual(nx, 0.0)
+        self.assertEqual(ny, 0.0)
+        self.assertEqual(nz, -1.0)
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
-        self.assertEqual(nx, 0.)
+        self.assertEqual(nx, 0.0)
         # floating point number comparison, rounded to 12 decimals
-        self.assertEqual(round(ny, 12), - round(sqrt(2) / 2, 12))
-        self.assertEqual(round(nz, 12), - round(sqrt(2) / 2, 12))
+        self.assertEqual(round(ny, 12), -round(sqrt(2) / 2, 12))
+        self.assertEqual(round(nz, 12), -round(sqrt(2) / 2, 12))
 
     def testset_check_normals(self):
         # create data
-        coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(0, 1, 0), gp_Pnt(0, 1, -1), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
-        ele2_node_data = [[0, 1, 4 , 3], [1, 2, 4]]
-        node_normals_data = [[gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)],
-                             [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)]]
+        coord_data = [
+            gp_Pnt(0, 0, 0),
+            gp_Pnt(0, 1, 0),
+            gp_Pnt(0, 1, -1),
+            gp_Pnt(1, 0, 0),
+            gp_Pnt(1, 1, 0),
+        ]
+        ele2_node_data = [[0, 1, 4, 3], [1, 2, 4]]
+        node_normals_data = [
+            [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)],
+            [gp_Vec(0, 0, -1), gp_Vec(0, 0, -1), gp_Vec(0, 0, -1)],
+        ]
         elem_normals_data = [gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]
         # create data source
         a_data_source = MeshDS_DataSource(coord_data, ele2_node_data)
@@ -93,15 +109,15 @@ class TestMeshDataSource(unittest.TestCase):
         # set and check normal of elements
         a_data_source.SetElemNormals(elem_normals_data)
         is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
-        self.assertEqual(nx, 0.)
-        self.assertEqual(ny, 0.)
-        self.assertEqual(nz, 1.)
+        self.assertEqual(nx, 0.0)
+        self.assertEqual(ny, 0.0)
+        self.assertEqual(nz, 1.0)
         # set and check normal of nodes
         a_data_source.SetNodeNormals(node_normals_data)
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
-        self.assertEqual(nx, 0.)
-        self.assertEqual(ny, 0.)
-        self.assertEqual(nz, -1.)
+        self.assertEqual(nx, 0.0)
+        self.assertEqual(ny, 0.0)
+        self.assertEqual(nz, -1.0)
         # get all nodes
         all_nodes = a_data_source.GetAllNodes()
         self.assertEqual(all_nodes.NbBuckets(), 101)
@@ -113,40 +129,43 @@ class TestMeshDataSource(unittest.TestCase):
 
     def test_create_mesh_datasource_from_numpy_ndarray(self):
         # 8 cube vertices
-        v1 =[0,0,0]
-        v2 =[0,1,0]
-        v3 =[1,1,0]
-        v4=[1,0,0]
-        v5 =[0,0,1]
-        v6 =[0,1,1]
-        v7=[1,1,1]
-        v8=[1,0,1]
+        v1 = [0, 0, 0]
+        v2 = [0, 1, 0]
+        v3 = [1, 1, 0]
+        v4 = [1, 0, 0]
+        v5 = [0, 0, 1]
+        v6 = [0, 1, 1]
+        v7 = [1, 1, 1]
+        v8 = [1, 0, 1]
 
         # 12 cube faces
-        f1=[7, 3,0]
-        f2=[0,4,7]
-        f3=[0, 1, 2]
-        f4=[0,2,3]
-        f5=[4,5,6]
-        f6=[4,6,7]
-        f7=[6,5,1]
-        f8=[6,2,1]
-        f9=[4,0,5]
-        f10=[0,1,5]
-        f11=[3,6,7]
-        f12=[2,3, 6]
+        f1 = [7, 3, 0]
+        f2 = [0, 4, 7]
+        f3 = [0, 1, 2]
+        f4 = [0, 2, 3]
+        f5 = [4, 5, 6]
+        f6 = [4, 6, 7]
+        f7 = [6, 5, 1]
+        f8 = [6, 2, 1]
+        f9 = [4, 0, 5]
+        f10 = [0, 1, 5]
+        f11 = [3, 6, 7]
+        f12 = [2, 3, 6]
         vertices = np.array([v1, v2, v3, v4, v5, v6, v7, v8], dtype=np.float32)
-        faces = np.array([f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12], dtype=np.int32)
+        faces = np.array(
+            [f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12], dtype=np.int32
+        )
 
         # create data source
         a_data_source = MeshDS_DataSource(vertices, faces)
 
+
 def suite():
-    """ builds the test suite """
+    """builds the test suite"""
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestMeshDataSource))
     return test_suite
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -20,30 +20,35 @@
 import math
 import unittest
 
-from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere,
-                                  BRepPrimAPI_MakeTorus)
+from OCC.Core.BRepPrimAPI import (
+    BRepPrimAPI_MakeBox,
+    BRepPrimAPI_MakeSphere,
+    BRepPrimAPI_MakeTorus,
+)
 from OCC.Core.gp import gp_Pnt, gp_Vec
 
-from OCC.Extend.ShapeFactory import (midpoint, scale_shape, measure_shape_volume,
-                                     translate_shp, measure_shape_mass_center_of_gravity,
-                                     edge_to_bezier)
+from OCC.Extend.ShapeFactory import (
+    midpoint,
+    scale_shape,
+    measure_shape_volume,
+    translate_shp,
+    measure_shape_mass_center_of_gravity,
+    edge_to_bezier,
+)
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
 
 class TestExtendShapeFactory(unittest.TestCase):
-
-
     def test_midpoint(self):
         p1 = gp_Pnt(0, 0, 0)
         p2 = gp_Pnt(4, 5, 6)
         p3 = midpoint(p1, p2)
-        self.assertEqual([p3.X(), p3.Y(), p3.Z()], [2, 2.5, 3.])
-
+        self.assertEqual([p3.X(), p3.Y(), p3.Z()], [2, 2.5, 3.0])
 
     def test_measure_shape_volume(self):
         # first the colume of a box a,b,c should be a*b*c
-        a = 10.
-        b = 23.
+        a = 10.0
+        b = 23.0
         c = 98.1
         box = BRepPrimAPI_MakeBox(a, b, c).Shape()
         box_volume = measure_shape_volume(box)
@@ -52,22 +57,20 @@ class TestExtendShapeFactory(unittest.TestCase):
         r = 9.8775  # a random radius
         sph = BRepPrimAPI_MakeSphere(r).Shape()
         sph_volume = measure_shape_volume(sph)
-        self.assertAlmostEqual(sph_volume, 4./3. * math.pi * r ** 3, places=6)
-
+        self.assertAlmostEqual(sph_volume, 4.0 / 3.0 * math.pi * r ** 3, places=6)
 
     def test_scale_shape(self):
-        box = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
+        box = BRepPrimAPI_MakeBox(10.0, 10.0, 10.0).Shape()
         box2 = scale_shape(box, 2.0, 1.0, 1.0)
         # volume should be double
         box2_volume = measure_shape_volume(box2)
-        self.assertAlmostEqual(box2_volume, 2000., places=6)
-
+        self.assertAlmostEqual(box2_volume, 2000.0, places=6)
 
     def test_measure_shape_center_of_gravity(self):
         # we compute the cog of a sphere centered at a point P
         # then the cog must be P
-        x, y, z = 10., 3., -2.44  # random values for point P
-        radius = 20.
+        x, y, z = 10.0, 3.0, -2.44  # random values for point P
+        radius = 20.0
         vector = gp_Vec(x, y, z)
         sph = translate_shp(BRepPrimAPI_MakeSphere(radius).Shape(), vector)
         cog, mass, mass_property = measure_shape_mass_center_of_gravity(sph)
@@ -76,7 +79,6 @@ class TestExtendShapeFactory(unittest.TestCase):
         self.assertAlmostEqual(cog.Z(), z, places=6)
         self.assertAlmostEqual(mass, 4 / 3 * math.pi * radius ** 3, places=6)
         self.assertEqual(mass_property, "Volume")
-
 
     def test_edge_to_bezier(self):
         b = BRepPrimAPI_MakeTorus(30, 10).Shape()
@@ -90,10 +92,12 @@ class TestExtendShapeFactory(unittest.TestCase):
             else:
                 self.assertTrue(isinstance(degree, int))
 
+
 def suite():
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestExtendShapeFactory))
     return test_suite
+
 
 if __name__ == "__main__":
     unittest.main()

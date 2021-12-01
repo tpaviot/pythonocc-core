@@ -20,19 +20,49 @@
 import sys
 import unittest
 
-from OCC.Core.gp import (gp_Pnt, gp_Pnt2d, gp_Ax3, gp_Vec, gp_Pln,
-                         gp_Elips, gp_OX, gp_XOY, gp_YOZ, gp_OX2d, gp_Dir2d,
-                         gp_Ax22d, gp_Parab2d, gp_Dir)
-from OCC.Core.Geom2d import Geom2d_OffsetCurve, Geom2d_Circle, Geom2d_TrimmedCurve, Geom2d_Parabola
+from OCC.Core.gp import (
+    gp_Pnt,
+    gp_Pnt2d,
+    gp_Ax3,
+    gp_Vec,
+    gp_Pln,
+    gp_Elips,
+    gp_OX,
+    gp_XOY,
+    gp_YOZ,
+    gp_OX2d,
+    gp_Dir2d,
+    gp_Ax22d,
+    gp_Parab2d,
+    gp_Dir,
+)
+from OCC.Core.Geom2d import (
+    Geom2d_OffsetCurve,
+    Geom2d_Circle,
+    Geom2d_TrimmedCurve,
+    Geom2d_Parabola,
+)
 from OCC.Core.Geom2dAdaptor import Geom2dAdaptor_Curve
 from OCC.Core.Geom2dAPI import Geom2dAPI_Interpolate, Geom2dAPI_PointsToBSpline
 from OCC.Core.GCPnts import GCPnts_UniformAbscissa
-from OCC.Core.Geom import (Geom_Circle, Geom_SphericalSurface, Geom_OffsetSurface,
-                           Geom_BezierSurface, Geom_BSplineSurface, Geom_SurfaceOfRevolution,
-                           Geom_RectangularTrimmedSurface, Geom_BSplineCurve, Geom_Ellipse)
-from OCC.Core.GeomAPI import (GeomAPI_PointsToBSpline, GeomAPI_ExtremaSurfaceSurface,
-                              GeomAPI_ProjectPointOnCurve, GeomAPI_ProjectPointOnSurf,
-                              GeomAPI_PointsToBSplineSurface)
+from OCC.Core.Geom import (
+    Geom_Circle,
+    Geom_SphericalSurface,
+    Geom_OffsetSurface,
+    Geom_BezierSurface,
+    Geom_BSplineSurface,
+    Geom_SurfaceOfRevolution,
+    Geom_RectangularTrimmedSurface,
+    Geom_BSplineCurve,
+    Geom_Ellipse,
+)
+from OCC.Core.GeomAPI import (
+    GeomAPI_PointsToBSpline,
+    GeomAPI_ExtremaSurfaceSurface,
+    GeomAPI_ProjectPointOnCurve,
+    GeomAPI_ProjectPointOnSurf,
+    GeomAPI_PointsToBSplineSurface,
+)
 from OCC.Core.Precision import precision_Confusion, precision_Angular
 from OCC.Core.IntAna import IntAna_IntConicQuad
 from OCC.Core.GC import GC_MakeEllipse, GC_MakeSegment, GC_MakePlane
@@ -43,35 +73,53 @@ from OCC.Core.gce import gce_MakeCirc2d
 from OCC.Core.GccAna import GccAna_Lin2d2Tan, GccAna_Circ2d2TanRad
 from OCC.Core.GeomConvert import GeomConvert_CompBezierSurfacesToBSplineSurface
 from OCC.Core.TColGeom import TColGeom_Array2OfBezierSurface
-from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex, BRepBuilderAPI_MakeEdge2d,
-                                     BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeFace)
-from OCC.Core.TColgp import (TColgp_Array1OfPnt, TColgp_Array1OfPnt2d,
-                             TColgp_HArray1OfPnt2d, TColgp_Array2OfPnt)
-from OCC.Core.GeomFill import (GeomFill_Pipe, GeomFill_BSplineCurves, GeomFill_CoonsStyle,
-                               GeomFill_StretchStyle, GeomFill_IsDarboux, GeomFill_IsFrenet,
-                               GeomFill_CurvedStyle, GeomFill_IsConstantNormal,
-                               GeomFill_IsCorrectedFrenet, GeomFill_IsGuidePlan,
-                               GeomFill_IsGuideAC, GeomFill_IsGuideACWithContact,
-                               GeomFill_IsGuidePlanWithContact)
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_MakeVertex,
+    BRepBuilderAPI_MakeEdge2d,
+    BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeFace,
+)
+from OCC.Core.TColgp import (
+    TColgp_Array1OfPnt,
+    TColgp_Array1OfPnt2d,
+    TColgp_HArray1OfPnt2d,
+    TColgp_Array2OfPnt,
+)
+from OCC.Core.GeomFill import (
+    GeomFill_Pipe,
+    GeomFill_BSplineCurves,
+    GeomFill_CoonsStyle,
+    GeomFill_StretchStyle,
+    GeomFill_IsDarboux,
+    GeomFill_IsFrenet,
+    GeomFill_CurvedStyle,
+    GeomFill_IsConstantNormal,
+    GeomFill_IsCorrectedFrenet,
+    GeomFill_IsGuidePlan,
+    GeomFill_IsGuideAC,
+    GeomFill_IsGuideACWithContact,
+    GeomFill_IsGuidePlanWithContact,
+)
 from OCC.Core.Convert import Convert_TgtThetaOver2
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 from OCC.Core.GeomAdaptor import GeomAdaptor_Curve
 from OCC.Core.Geom import Geom_Curve
+
 #
 # Utility functions
 #
 
 
 def _Tcol_dim_1(li, _type):
-    '''function factory for 1-dimensional TCol* types'''
-    pts = _type(0, len(li)-1)
+    """function factory for 1-dimensional TCol* types"""
+    pts = _type(0, len(li) - 1)
     for n, i in enumerate(li):
         pts.SetValue(n, i)
     return pts
 
 
 def point_list_to_TColgp_Array1OfPnt(li):
-    pts = TColgp_Array1OfPnt(0, len(li)-1)
+    pts = TColgp_Array1OfPnt(0, len(li) - 1)
     for n, i in enumerate(li):
         pts.SetValue(n, i)
     return pts
@@ -111,8 +159,8 @@ def make_face(shape):
 
 class TestGeometry(unittest.TestCase):
     def test_point_from_curve(self):
-        '''Test: point from curve'''
-        radius, abscissa = 5., 3.
+        """Test: point from curve"""
+        radius, abscissa = 5.0, 3.0
         C = Geom2d_Circle(gp_OX2d(), radius, True)
         GAC = Geom2dAdaptor_Curve(C)
         UA = GCPnts_UniformAbscissa(GAC, abscissa)
@@ -130,11 +178,10 @@ class TestGeometry(unittest.TestCase):
         Abscissa = UA.Abscissa()
         self.assertEqual(Abscissa, abscissa)
 
-
     def test_project_point_on_curve(self):
-        '''Test: project point on curve'''
-        P = gp_Pnt(1., 2., 3.)
-        radius = 5.
+        """Test: project point on curve"""
+        P = gp_Pnt(1.0, 2.0, 3.0)
+        radius = 5.0
 
         C = Geom_Circle(gp_XOY(), radius)
         PPC = GeomAPI_ProjectPointOnCurve(P, C)
@@ -145,27 +192,27 @@ class TestGeometry(unittest.TestCase):
         self.assertFalse(edg is None)
 
         if NbResults > 0:
-            for i in range(1, NbResults+1):
+            for i in range(1, NbResults + 1):
                 Q = PPC.Point(i)
                 self.assertIsInstance(Q, gp_Pnt)
                 distance = PPC.Distance(i)
                 # in any case, it should be > 1
-                self.assertGreater(distance, 1.)
+                self.assertGreater(distance, 1.0)
 
         pstring = "N : at Distance : " + repr(PPC.LowerDistance())
 
-        for i in range(1, NbResults+1):
+        for i in range(1, NbResults + 1):
             Q = PPC.Point(i)
             self.assertIsInstance(Q, gp_Pnt)
             distance = PPC.Distance(i)
             # in any case, it should be > 1
-            self.assertGreater(distance, 1.)
+            self.assertGreater(distance, 1.0)
             pstring = "Q" + repr(i) + ": at Distance :" + repr(PPC.Distance(i))
             print(pstring)
 
     def test_point_from_projections(self):
-        '''Test: point from projections'''
-        P = gp_Pnt(7., 8., 9.)
+        """Test: point from projections"""
+        P = gp_Pnt(7.0, 8.0, 9.0)
         radius = 5
         SP = Geom_SphericalSurface(gp_Ax3(gp_XOY()), radius)
         PPS = GeomAPI_ProjectPointOnSurf(P, SP)
@@ -173,23 +220,23 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(isinstance(N, gp_Pnt))
         NbResults = PPS.NbPoints()
         if NbResults > 0:
-            for i in range(1, NbResults+1):
+            for i in range(1, NbResults + 1):
                 Q = PPS.Point(i)
                 self.assertTrue(isinstance(Q, gp_Pnt))
                 distance = PPS.Distance(i)
                 # in any case, it should be > 1
-                self.assertGreater(distance, 1.)
+                self.assertGreater(distance, 1.0)
         lower_d = PPS.LowerDistance()
-        self.assertGreater(lower_d, 1.)
+        self.assertGreater(lower_d, 1.0)
         if NbResults > 0:
-            for i in range(1, NbResults+1):
+            for i in range(1, NbResults + 1):
                 Q = PPS.Point(i)
                 distance = PPS.Distance(i)
                 pstring = "Q" + repr(i) + ": at Distance :" + repr(PPS.Distance(i))
                 print(pstring)
 
     def test_points_from_intersection(self):
-        '''Test: points from intersection'''
+        """Test: points from intersection"""
         PL = gp_Pln(gp_Ax3(gp_XOY()))
         MinorRadius, MajorRadius = 5, 8
         EL = gp_Elips(gp_YOZ(), MajorRadius, MinorRadius)
@@ -201,7 +248,9 @@ class TestGeometry(unittest.TestCase):
                     P = ICQ.Point(i)
                     self.assertIsInstance(P, gp_Pnt)
         aPlane = GC_MakePlane(PL).Value()
-        aSurface = Geom_RectangularTrimmedSurface(aPlane, - 8., 8., - 12., 12., True, True)
+        aSurface = Geom_RectangularTrimmedSurface(
+            aPlane, -8.0, 8.0, -12.0, 12.0, True, True
+        )
         self.assertIsNotNone(aSurface)
         self.assertFalse(aSurface is None)
         anEllips = GC_MakeEllipse(EL).Value()
@@ -212,15 +261,15 @@ class TestGeometry(unittest.TestCase):
                 for i in range(1, NbResults + 1):
                     P = ICQ.Point(i)
                     self.assertIsInstance(P, gp_Pnt)
-                    #pstring = "P%i" % i
+                    # pstring = "P%i" % i
 
     def test_parabola(self):
-        '''Test: parabola'''
+        """Test: parabola"""
         # P is the vertex point
         # P and D give the axis of symmetry
         # 6 is the focal length of the parabola
-        P = gp_Pnt2d(2., 3.)
-        D = gp_Dir2d(4., 5.)
+        P = gp_Pnt2d(2.0, 3.0)
+        D = gp_Dir2d(4.0, 5.0)
         A = gp_Ax22d(P, D, True)
         Para = gp_Parab2d(A, 6)
         aParabola = GCE2d_MakeParabola(Para)
@@ -231,7 +280,7 @@ class TestGeometry(unittest.TestCase):
         self.assertFalse(aTrimmedCurve is None)
 
     def test_axis(self):
-        '''Test: axis'''
+        """Test: axis"""
         P1 = gp_Pnt(2, 3, 4)
         D = gp_Dir(4, 5, 6)
         A = gp_Ax3(P1, D)
@@ -253,7 +302,7 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(isinstance(A2YDirection, gp_Dir))
 
     def test_bspline(self):
-        '''Test: bspline'''
+        """Test: bspline"""
         array = []
         array.append(gp_Pnt2d(0, 0))
         array.append(gp_Pnt2d(1, 2))
@@ -290,20 +339,20 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(SPL3 is not None)
         i = 0
         for P in array:
-            i = i+1
+            i = i + 1
             make_vertex(P)
-        for j in range(harray.Lower(), harray.Upper()+1):
-            i = i+1
+        for j in range(harray.Lower(), harray.Upper() + 1):
+            i = i + 1
             P = harray.Value(j)
             make_vertex(P)
 
-        for j in range(harray2.Lower(), harray2.Upper()+1):
-            i = i+1
+        for j in range(harray2.Lower(), harray2.Upper() + 1):
+            i = i + 1
             P = harray2.Value(j)
             make_vertex(P)
 
     def test_curves2d_from_curves(self):
-        '''Test: curves 2d from curves'''
+        """Test: curves 2d from curves"""
         major, minor = 12, 4
         axis = gp_OX2d()
         ell = GCE2d_MakeEllipse(axis, major, minor)
@@ -313,7 +362,7 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(SPL is not None)
 
     def test_curves2d_from_offset(self):
-        '''Test: curves 2d from offset'''
+        """Test: curves 2d from offset"""
         array = []
         array.append(gp_Pnt2d(-4, 0))
         array.append(gp_Pnt2d(-7, 2))
@@ -336,7 +385,7 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(result2)
 
     def test_circles2d_from_curves(self):
-        '''Test: circles2d from curves'''
+        """Test: circles2d from curves"""
         P1 = gp_Pnt2d(9, 6)
         P2 = gp_Pnt2d(10, 4)
         P3 = gp_Pnt2d(6, 7)
@@ -348,46 +397,46 @@ class TestGeometry(unittest.TestCase):
         L = GccAna_Lin2d2Tan(P4, P5, precision_Confusion()).ThisSolution(1)
 
         QL = gccent_Unqualified(L)
-        radius = 2.
+        radius = 2.0
         TR = GccAna_Circ2d2TanRad(QC, QL, radius, precision_Confusion())
 
         if TR.IsDone():
             NbSol = TR.NbSolutions()
-            for k in range(1, NbSol+1):
+            for k in range(1, NbSol + 1):
                 circ = TR.ThisSolution(k)
                 # find the solution circle
                 pnt1 = gp_Pnt2d()
                 parsol, pararg = TR.Tangency1(k, pnt1)
-                self.assertGreater(parsol, 0.)
-                self.assertGreater(pararg, 0.)
+                self.assertGreater(parsol, 0.0)
+                self.assertGreater(pararg, 0.0)
                 # find the first tangent point
                 pnt2 = gp_Pnt2d()
                 parsol, pararg = TR.Tangency2(k, pnt2)
-                self.assertGreater(parsol, 0.)
-                self.assertGreater(pararg, 0.)
+                self.assertGreater(parsol, 0.0)
+                self.assertGreater(pararg, 0.0)
                 # find the second tangent point
 
         aLine = GCE2d_MakeSegment(L, -2, 20).Value()
         self.assertIsInstance(aLine, Geom2d_TrimmedCurve)
         if TR.IsDone():
             NbSol = TR.NbSolutions()
-            for k in range(1, NbSol+1):
+            for k in range(1, NbSol + 1):
                 circ = TR.ThisSolution(k)
                 aCircle = Geom2d_Circle(circ)
                 self.assertIsInstance(aCircle, Geom2d_Circle)
                 # find the solution circle (index, outvalue, outvalue, gp_Pnt2d)
                 pnt3 = gp_Pnt2d()
                 parsol, pararg = TR.Tangency1(k, pnt3)
-                self.assertGreater(parsol, 0.)
-                self.assertGreater(pararg, 0.)
+                self.assertGreater(parsol, 0.0)
+                self.assertGreater(pararg, 0.0)
                 # find the first tangent point
                 pnt4 = gp_Pnt2d()
                 parsol, pararg = TR.Tangency2(k, pnt4)
-                self.assertGreater(parsol, 0.)
-                self.assertGreater(pararg, 0.)
+                self.assertGreater(parsol, 0.0)
+                self.assertGreater(pararg, 0.0)
 
     def test_surface_from_curves(self):
-        '''Test: surfaces from curves'''
+        """Test: surfaces from curves"""
         array = []
         array.append(gp_Pnt(-4, 0, 2))
         array.append(gp_Pnt(-7, 2, 2))
@@ -407,21 +456,15 @@ class TestGeometry(unittest.TestCase):
         bbb = point_list_to_TColgp_Array1OfPnt(a2)
         SPL2 = GeomAPI_PointsToBSpline(bbb).Curve()
 
-        aGeomFill1 = GeomFill_BSplineCurves(SPL1,
-                                            SPL2,
-                                            GeomFill_StretchStyle)
+        aGeomFill1 = GeomFill_BSplineCurves(SPL1, SPL2, GeomFill_StretchStyle)
 
         SPL3 = Geom_BSplineCurve.DownCast(SPL1.Translated(gp_Vec(10, 0, 0)))
         SPL4 = Geom_BSplineCurve.DownCast(SPL2.Translated(gp_Vec(10, 0, 0)))
-        aGeomFill2 = GeomFill_BSplineCurves(SPL3,
-                                            SPL4,
-                                            GeomFill_CoonsStyle)
+        aGeomFill2 = GeomFill_BSplineCurves(SPL3, SPL4, GeomFill_CoonsStyle)
 
         SPL5 = Geom_BSplineCurve.DownCast(SPL1.Translated(gp_Vec(20, 0, 0)))
         SPL6 = Geom_BSplineCurve.DownCast(SPL2.Translated(gp_Vec(20, 0, 0)))
-        aGeomFill3 = GeomFill_BSplineCurves(SPL5,
-                                            SPL6,
-                                            GeomFill_CurvedStyle)
+        aGeomFill3 = GeomFill_BSplineCurves(SPL5, SPL6, GeomFill_CurvedStyle)
 
         aBSplineSurface1 = aGeomFill1.Surface()
         self.assertTrue(aBSplineSurface1 is not None)
@@ -431,7 +474,7 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(aBSplineSurface3 is not None)
 
     def test_pipes(self):
-        '''Test: pipes'''
+        """Test: pipes"""
         a1 = []
         a1.append(gp_Pnt(-4, 0, 2))
         a1.append(gp_Pnt(-5, 1, 0))
@@ -460,14 +503,18 @@ class TestGeometry(unittest.TestCase):
         aSurface3 = aPipe3.Surface()
         aSurface3.Translate(gp_Vec(10, 0, 0))
 
-        for _, mode in enumerate([GeomFill_IsConstantNormal,
-                                  GeomFill_IsCorrectedFrenet,
-                                  GeomFill_IsDarboux,
-                                  GeomFill_IsFrenet,
-                                  GeomFill_IsGuideAC,
-                                  GeomFill_IsGuideACWithContact,
-                                  GeomFill_IsGuidePlan,
-                                  GeomFill_IsGuidePlanWithContact]):
+        for _, mode in enumerate(
+            [
+                GeomFill_IsConstantNormal,
+                GeomFill_IsCorrectedFrenet,
+                GeomFill_IsDarboux,
+                GeomFill_IsFrenet,
+                GeomFill_IsGuideAC,
+                GeomFill_IsGuideACWithContact,
+                GeomFill_IsGuidePlan,
+                GeomFill_IsGuidePlanWithContact,
+            ]
+        ):
             E = GC_MakeEllipse(gp_XOY(), 2, 1).Value()
             aPipe2 = GeomFill_Pipe(SPL1, TC1, TC2, mode)
             aPipe2.Perform(False, False)
@@ -475,7 +522,7 @@ class TestGeometry(unittest.TestCase):
             aSurface2.Translate(gp_Vec(5, 5, 0))
 
     def test_bezier_surfaces(self):
-        '''Test: Bezier surfaces'''
+        """Test: Bezier surfaces"""
         array1 = TColgp_Array2OfPnt(1, 3, 1, 3)
         array2 = TColgp_Array2OfPnt(1, 3, 1, 3)
         array3 = TColgp_Array2OfPnt(1, 3, 1, 3)
@@ -521,8 +568,7 @@ class TestGeometry(unittest.TestCase):
         array4.SetValue(3, 2, gp_Pnt(4, 5, 2))
         array4.SetValue(3, 3, gp_Pnt(5, 5, 1))
 
-        BZ1, BZ2, BZ3, BZ4 = map(Geom_BezierSurface, [array1, array2,
-                                                      array3, array4])
+        BZ1, BZ2, BZ3, BZ4 = map(Geom_BezierSurface, [array1, array2, array3, array4])
         bezierarray = TColGeom_Array2OfBezierSurface(1, 2, 1, 2)
         bezierarray.SetValue(1, 1, BZ1)
         bezierarray.SetValue(1, 2, BZ2)
@@ -539,11 +585,13 @@ class TestGeometry(unittest.TestCase):
         udeg = BB.UDegree()
         vdeg = BB.VDegree()
 
-        BSPLSURF = Geom_BSplineSurface(poles, uknots, vknots, umult, vmult, udeg, vdeg, False, False)
+        BSPLSURF = Geom_BSplineSurface(
+            poles, uknots, vknots, umult, vmult, udeg, vdeg, False, False
+        )
         BSPLSURF.Translate(gp_Vec(0, 0, 2))
 
     def test_surfaces_from_offsets(self):
-        '''Test: surfaces from offsets'''
+        """Test: surfaces from offsets"""
         array1 = []
         array1.append(gp_Pnt(-4, 5, 5))
         array1.append(gp_Pnt(-3, 6, 6))
@@ -580,14 +628,16 @@ class TestGeometry(unittest.TestCase):
         self.assertTrue(face4 is not None)
 
     def test_surfaces_from_revolution(self):
-        '''Test: surfaces from revolution'''
+        """Test: surfaces from revolution"""
         array = []
         array.append(gp_Pnt(0, 0, 1))
         array.append(gp_Pnt(1, 2, 2))
         array.append(gp_Pnt(2, 3, 3))
         array.append(gp_Pnt(4, 3, 4))
         array.append(gp_Pnt(5, 5, 5))
-        aCurve = GeomAPI_PointsToBSpline(point_list_to_TColgp_Array1OfPnt(array)).Curve()
+        aCurve = GeomAPI_PointsToBSpline(
+            point_list_to_TColgp_Array1OfPnt(array)
+        ).Curve()
         SOR = Geom_SurfaceOfRevolution(aCurve, gp_OX())
         edge = make_edge(aCurve)
         self.assertFalse(edge is None)
@@ -595,7 +645,7 @@ class TestGeometry(unittest.TestCase):
         self.assertFalse(face is None)
 
     def test_distances(self):
-        '''Test: distances'''
+        """Test: distances"""
         array1 = []
         array1.append(gp_Pnt(-5, 1, 2))
         array1.append(gp_Pnt(-5, 2, 2))
@@ -672,13 +722,16 @@ class TestGeometry(unittest.TestCase):
         # only works on linux
         if sys.platform == "linux":
             self.assertTrue(isinstance(c2.Curve(), Geom_Curve))
-            self.assertTrue(isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve))            
+            self.assertTrue(
+                isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve)
+            )
 
 
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestGeometry))
     return suite
+
 
 if __name__ == "__main__":
     unittest.main()

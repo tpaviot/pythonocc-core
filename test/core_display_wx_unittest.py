@@ -28,8 +28,8 @@ if not load_wx():
     print("wx required to run this test")
     sys.exit()
 
-print('wx test running ...')
-wx_display, start_display, add_menu, add_function_to_menu = init_display('wx')
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+print("wx test running ...")
+wx_display, start_display, add_menu, add_function_to_menu = init_display("wx")
+my_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
 wx_display.DisplayShape(my_box, update=True)
-print('wx test ok.')
+print("wx test ok.")

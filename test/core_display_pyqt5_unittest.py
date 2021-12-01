@@ -28,8 +28,8 @@ if not load_pyqt5():
     print("pyqt5 required to run this test")
     sys.exit()
 
-print('pyqt5 test running ...')
-pyqt5_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyqt5')
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+print("pyqt5 test running ...")
+pyqt5_display, start_display, add_menu, add_function_to_menu = init_display("qt-pyqt5")
+my_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
 pyqt5_display.DisplayShape(my_box, update=True)
-print('pyqt5 test ok.')
+print("pyqt5 test ok.")

@@ -24,17 +24,21 @@ import os
 import unittest
 from xml.etree import ElementTree as ET
 
-from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakeBox,
-                                  BRepPrimAPI_MakeTorus,
-                                  BRepPrimAPI_MakeSphere)
+from OCC.Core.BRepPrimAPI import (
+    BRepPrimAPI_MakeBox,
+    BRepPrimAPI_MakeTorus,
+    BRepPrimAPI_MakeSphere,
+)
 from OCC.Core.Tesselator import ShapeTesselator
 
 from OCC.Extend.DataExchange import read_step_file
 
+
 class TestTesselator(unittest.TestCase):
-    """ A class for testing tesselation algorithm """
+    """A class for testing tesselation algorithm"""
+
     def test_tesselate_box(self):
-        """ 1st test : tesselation of a box """
+        """1st test : tesselation of a box"""
         a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         tess = ShapeTesselator(a_box)
         tess.Compute()
@@ -42,7 +46,7 @@ class TestTesselator(unittest.TestCase):
         self.assertEqual(tess.ObjGetNormalCount(), 24)
 
     def test_tesselate_torus(self):
-        """ 2st test : tesselation of a torus """
+        """2st test : tesselation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute()
@@ -50,7 +54,7 @@ class TestTesselator(unittest.TestCase):
         self.assertGreater(tess.ObjGetNormalCount(), 100)
 
     def test_tesselate_torus_with_edges(self):
-        """ 2st test : tesselation of a torus """
+        """2st test : tesselation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute(compute_edges=True)
@@ -58,10 +62,10 @@ class TestTesselator(unittest.TestCase):
         self.assertGreater(tess.ObjGetNormalCount(), 100)
 
     def test_tesselate_torus_with_bad_quality(self):
-        """ 2st test : tesselation of a torus """
+        """2st test : tesselation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
-        tess.Compute(mesh_quality=40.)
+        tess.Compute(mesh_quality=40.0)
         # since mesh quality is much lower, we should count less vertices and
         # triangles
         self.assertGreater(tess.ObjGetTriangleCount(), 10)
@@ -70,16 +74,16 @@ class TestTesselator(unittest.TestCase):
         self.assertLess(tess.ObjGetNormalCount(), 100)
 
     def test_export_to_x3d(self):
-        """ 3rd test : export a sphere to X3D file format """
-        a_sphere = BRepPrimAPI_MakeSphere(10.).Shape()
+        """3rd test : export a sphere to X3D file format"""
+        a_sphere = BRepPrimAPI_MakeSphere(10.0).Shape()
         tess = ShapeTesselator(a_sphere)
         tess.Compute()
         tess.ExportShapeToX3D(os.path.join("test_io", "sphere.x3d"))
         self.assertTrue(os.path.exists(os.path.join("test_io", "sphere.x3d")))
 
     def test_export_to_x3d_TriangleSet(self):
-        """ 3rd test : export a sphere to an X3D TriangleSet triangle mesh """
-        a_sphere = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
+        """3rd test : export a sphere to an X3D TriangleSet triangle mesh"""
+        a_sphere = BRepPrimAPI_MakeBox(10.0, 10.0, 10.0).Shape()
         sphere_tess = ShapeTesselator(a_sphere)
         sphere_tess.Compute()
         sphere_triangle_set_string = sphere_tess.ExportShapeToX3DTriangleSet()
@@ -97,10 +101,10 @@ class TestTesselator(unittest.TestCase):
         # i.e. the JSON string is well formed
         dico = json.loads(JSON_str)
         # after that, check that the number of vertices is ok
-        self.assertEqual(len(dico["data"]["attributes"]["position"]["array"]), 36*3)
+        self.assertEqual(len(dico["data"]["attributes"]["position"]["array"]), 36 * 3)
 
     def test_x3d_file_is_valid_xml(self):
-        """ use ElementTree to parse X3D output """
+        """use ElementTree to parse X3D output"""
         another_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         torus_tess = ShapeTesselator(another_torus)
         torus_tess.Compute()
@@ -112,7 +116,7 @@ class TestTesselator(unittest.TestCase):
             ET.fromstring(x3d_content)  # raise an exception if not valid xml
 
     def test_tesselate_STEP_file(self):
-        """ loads a step file, tesselate. The as1_pe_203 contains
+        """loads a step file, tesselate. The as1_pe_203 contains
         free edges"""
         stp_file = os.path.join(os.path.join("test_io", "as1_pe_203.stp"))
         stp_file_shape = read_step_file(stp_file)
@@ -122,8 +126,7 @@ class TestTesselator(unittest.TestCase):
         stp_file_tesselator.Compute(compute_edges=True)
 
     def test_tesselate_twice(self):
-        """ calling Compte() many times should no raise an exception
-        """
+        """calling Compte() many times should no raise an exception"""
         another_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         torus_tess = ShapeTesselator(another_torus)
         torus_tess.Compute()
@@ -131,10 +134,11 @@ class TestTesselator(unittest.TestCase):
 
 
 def suite():
-    """ builds the test suite """
+    """builds the test suite"""
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestTesselator))
     return test_suite
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

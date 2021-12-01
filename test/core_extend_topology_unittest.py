@@ -20,8 +20,12 @@
 import unittest
 
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
-from OCC.Extend.TopologyUtils import (TopologyExplorer, WireExplorer,
-                                      discretize_edge, discretize_wire)
+from OCC.Extend.TopologyUtils import (
+    TopologyExplorer,
+    WireExplorer,
+    discretize_edge,
+    discretize_wire,
+)
 from OCC.Core.TopoDS import TopoDS_Face, TopoDS_Edge
 
 
@@ -30,19 +34,19 @@ def get_test_box_shape():
 
 
 def get_test_sphere_shape():
-    return BRepPrimAPI_MakeSphere(10.).Shape()
+    return BRepPrimAPI_MakeSphere(10.0).Shape()
+
 
 topo = TopologyExplorer(get_test_box_shape())
 
-class TestExtendTopology(unittest.TestCase):
 
+class TestExtendTopology(unittest.TestCase):
     def test_discretize_edge(self):
         tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
         topo = TopologyExplorer(tor)
         for edge in topo.edges():
             pnts = discretize_edge(edge)
             self.assertTrue(pnts)
-
 
     def test_discretize_wire(self):
         tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
@@ -51,7 +55,6 @@ class TestExtendTopology(unittest.TestCase):
             pnts = discretize_wire(wire)
             self.assertTrue(pnts)
 
-
     def test_loop_faces(self):
         i = 0
         for face in topo.faces():
@@ -59,14 +62,12 @@ class TestExtendTopology(unittest.TestCase):
             self.assertTrue(isinstance(face, TopoDS_Face))
         self.assertEqual(i, 6)
 
-
     def test_loop_edges(self):
         i = 0
         for face in topo.edges():
             i += 1
             self.assertTrue(isinstance(face, TopoDS_Edge))
         self.assertEqual(i, 12)
-
 
     def test_number_of_topological_entities(self):
         self.assertEqual(topo.number_of_faces(), 6)
@@ -78,18 +79,16 @@ class TestExtendTopology(unittest.TestCase):
         self.assertEqual(topo.number_of_compounds(), 0)
         self.assertEqual(topo.number_of_comp_solids(), 0)
 
-
     def test_nested_iteration(self):
-        '''check nested looping'''
+        """check nested looping"""
         for f in topo.faces():
             for e in topo.edges():
                 self.assertTrue(isinstance(f, TopoDS_Face))
                 self.assertTrue(isinstance(e, TopoDS_Edge))
 
-
     def test_kept_reference(self):
-        '''did we keep a reference after looping several time through a list
-        of topological entities?'''
+        """did we keep a reference after looping several time through a list
+        of topological entities?"""
         _tmp = []
         _faces = [i for i in topo.faces()]
         for f in _faces:
@@ -97,7 +96,6 @@ class TestExtendTopology(unittest.TestCase):
         for f in _faces:
             _tmp.append(f.IsNull() == 0)
         self.assertTrue(all(_tmp))
-
 
     def test_edge_face(self):
         edg = next(topo.edges())
@@ -107,7 +105,6 @@ class TestExtendTopology(unittest.TestCase):
         edges_from_face = [i for i in topo.edges_from_face(face)]
         self.assertEqual(len(edges_from_face), topo.number_of_edges_from_face(face))
 
-
     def test_edge_wire(self):
         edg = next(topo.edges())
         wire = next(topo.wires())
@@ -116,12 +113,10 @@ class TestExtendTopology(unittest.TestCase):
         edges_from_wire = [i for i in topo.edges_from_wire(wire)]
         self.assertEqual(len(edges_from_wire), topo.number_of_edges_from_wire(wire))
 
-
     def test_vertex_edge(self):
         edge = next(topo.edges())
         verts_from_edge = [i for i in topo.vertices_from_edge(edge)]
         self.assertEqual(len(verts_from_edge), topo.number_of_vertices_from_edge(edge))
-
 
     def test_vertex_face(self):
         vert = next(topo.vertices())
@@ -131,7 +126,6 @@ class TestExtendTopology(unittest.TestCase):
         verts_from_face = [i for i in topo.vertices_from_face(face)]
         self.assertEqual(len(verts_from_face), topo.number_of_vertices_from_face(face))
 
-
     def test_face_solid(self):
         face = next(topo.faces())
         solid = next(topo.solids())
@@ -139,7 +133,6 @@ class TestExtendTopology(unittest.TestCase):
         self.assertEqual(len(faces_from_solid), topo.number_of_faces_from_solids(solid))
         solids_from_face = [i for i in topo.solids_from_face(face)]
         self.assertEqual(len(solids_from_face), topo.number_of_solids_from_face(face))
-
 
     def test_wire_face(self):
         wire = next(topo.wires())
@@ -149,7 +142,6 @@ class TestExtendTopology(unittest.TestCase):
         wires_from_face = [i for i in topo.wires_from_face(face)]
         self.assertEqual(len(wires_from_face), topo.number_of_wires_from_face(face))
 
-
     def test_edges_out_of_scope(self):
         # check pointers going out of scope
         face = next(topo.faces())
@@ -158,7 +150,6 @@ class TestExtendTopology(unittest.TestCase):
             _edges.append(edg)
         for edg in _edges:
             self.assertFalse(edg.IsNull())
-
 
     def test_wires_out_of_scope(self):
         # check pointers going out of scope
@@ -173,10 +164,12 @@ class TestExtendTopology(unittest.TestCase):
         for v in _vertices:
             self.assertFalse(v.IsNull())
 
+
 def suite():
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestExtendTopology))
     return test_suite
+
 
 if __name__ == "__main__":
     unittest.main()
