@@ -24,7 +24,7 @@ import errno
 
 
 def get_available_port(port):
-    """ sometimes, the python webserver is closed but the
+    """sometimes, the python webserver is closed but the
     port is not made available for a further call. So let's find
     any available port to prevent such issue. This function:
     * takes a port number (an integer), above 1024
@@ -51,8 +51,8 @@ def get_available_port(port):
     return port
 
 
-def start_server(addr="127.0.0.1", port=8080, x3d_path='.', open_webbrowser=False):
-    """ starts the server if the PYTHONOCC_SHUNT_WEB_SERVER
+def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=False):
+    """starts the server if the PYTHONOCC_SHUNT_WEB_SERVER
     env var is not set
     * port: the port number to use (if available) ;
     * path: where thehtml files are located
@@ -63,11 +63,13 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path='.', open_webbrowser=Fals
     # prefer using Flask, if installed
     try:
         from flask import Flask, send_from_directory
+
         HAVE_FLASK = True
     except ImportError:
         HAVE_FLASK = False
     if not HAVE_FLASK:  # use simple http server
         from http.server import SimpleHTTPRequestHandler, HTTPServer
+
         os.chdir(x3d_path)
         port = get_available_port(port)
         httpd = HTTPServer((addr, port), SimpleHTTPRequestHandler)
@@ -76,22 +78,24 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path='.', open_webbrowser=Fals
         print("## CTRL-C to shutdown the server")
         # open webbrowser
         if open_webbrowser:
-            webbrowser.open('http://localhost:%i' % port, new=2)
+            webbrowser.open("http://localhost:%i" % port, new=2)
         # starts the web_server
         httpd.serve_forever()
     else:  # use flask
         # set the project root directory as the static folder, you can set others.
         app = Flask(__name__)
 
-        @app.route('/')
+        @app.route("/")
         def root():
-            fp = open(os.path.join(x3d_path, 'index.html'))
+            fp = open(os.path.join(x3d_path, "index.html"))
             html_content = fp.read()
             fp.close()
             return html_content
-        @app.route('/<path:path>')
+
+        @app.route("/<path:path>")
         def send_x3d_content(path):
             return send_from_directory(x3d_path, path)
+
         print("\n## Serving %s \n## using Flask" % x3d_path)
         print("## Open your webbrowser at the URL: http://localhost:%i" % port)
         print("## CTRL-C to shutdown the server")

@@ -30,26 +30,28 @@ from OCC.Display.WebGl.simple_server import start_server
 
 THREEJS_RELEASE = "r126"
 
+
 def spinning_cursor():
     while True:
-        for cursor in '|/-\\':
+        for cursor in "|/-\\":
             yield cursor
 
+
 def color_to_hex(rgb_color):
-    """ Takes a tuple with 3 floats between 0 and 1.
+    """Takes a tuple with 3 floats between 0 and 1.
     Returns a hex. Useful to convert occ colors to web color code
     """
     r, g, b = rgb_color
-    if not (0 <= r <= 1. and 0 <= g <= 1. and 0 <= b <= 1.):
+    if not (0 <= r <= 1.0 and 0 <= g <= 1.0 and 0 <= b <= 1.0):
         raise AssertionError("rgb values must be between 0.0 and 1.0")
-    rh = int(r * 255.)
-    gh = int(g * 255.)
-    bh = int(b * 255.)
+    rh = int(r * 255.0)
+    gh = int(g * 255.0)
+    bh = int(b * 255.0)
     return "0x%.02x%.02x%.02x" % (rh, gh, bh)
 
+
 def export_edgedata_to_json(edge_hash, point_set):
-    """ Export a set of points to a LineSegment buffergeometry
-    """
+    """Export a set of points to a LineSegment buffergeometry"""
     # first build the array of point coordinates
     # edges are built as follows:
     # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
@@ -58,17 +60,24 @@ def export_edgedata_to_json(edge_hash, point_set):
         for coord in point:
             points_coordinates.append(coord)
     # then build the dictionnary exported to json
-    edges_data = {"metadata": {"version": 4.4,
-                               "type": "BufferGeometry",
-                               "generator": "pythonocc"},
-                  "uuid": edge_hash,
-                  "type": "BufferGeometry",
-                  "data": {"attributes": {"position": {"itemSize": 3,
-                                                       "type": "Float32Array",
-                                                       "array": points_coordinates}
-                                         }
-                          }
-                  }
+    edges_data = {
+        "metadata": {
+            "version": 4.4,
+            "type": "BufferGeometry",
+            "generator": "pythonocc",
+        },
+        "uuid": edge_hash,
+        "type": "BufferGeometry",
+        "data": {
+            "attributes": {
+                "position": {
+                    "itemSize": 3,
+                    "type": "Float32Array",
+                    "array": points_coordinates,
+                }
+            }
+        },
+    }
     return json.dumps(edges_data)
 
 
@@ -142,7 +151,12 @@ BODY_PART0 = """
     <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
     <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
 
-""" % (THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE)
+""" % (
+    THREEJS_RELEASE,
+    THREEJS_RELEASE,
+    THREEJS_RELEASE,
+    THREEJS_RELEASE,
+)
 
 BODY_PART1 = """
 
@@ -194,7 +208,7 @@ BODY_PART1 = """
             @Uniforms@
             @ShaderMaterialDefinition@
             """
-            # here comes the shape definition
+# here comes the shape definition
 BODY_PART2 = """
             renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -345,9 +359,13 @@ class HTMLHeader:
         self._bg_gradient_color2 = bg_gradient_color2
 
     def get_str(self):
-        header_str = HEADER.replace('@bg_gradient_color1@', '%s' % self._bg_gradient_color1)
-        header_str = header_str.replace('@bg_gradient_color2@', '%s' % self._bg_gradient_color2)
-        header_str = header_str.replace('@VERSION@', OCC_VERSION)
+        header_str = HEADER.replace(
+            "@bg_gradient_color1@", "%s" % self._bg_gradient_color1
+        )
+        header_str = header_str.replace(
+            "@bg_gradient_color2@", "%s" % self._bg_gradient_color2
+        )
+        header_str = header_str.replace("@VERSION@", OCC_VERSION)
         return header_str
 
 
@@ -360,10 +378,16 @@ class HTMLBody_Part1:
     def get_str(self):
         global BODY_PART2
         # get the location where pythonocc is running from
-        body_str = BODY_PART1.replace('@VERSION@', OCC_VERSION)
+        body_str = BODY_PART1.replace("@VERSION@", OCC_VERSION)
         if (self._fragment_shader is not None) and (self._fragment_shader is not None):
-            vertex_shader_string_definition = '<script type="x-shader/x-vertex" id="vertexShader">%s</script>' % self._vertex_shader
-            fragment_shader_string_definition = '<script type="x-shader/x-fragment" id="fragmentShader">%s</script>' % self._fragment_shader
+            vertex_shader_string_definition = (
+                '<script type="x-shader/x-vertex" id="vertexShader">%s</script>'
+                % self._vertex_shader
+            )
+            fragment_shader_string_definition = (
+                '<script type="x-shader/x-fragment" id="fragmentShader">%s</script>'
+                % self._fragment_shader
+            )
             shader_material_definition = """
             var vertexShader = document.getElementById('vertexShader').textContent;
             var fragmentShader = document.getElementById('fragmentShader').textContent;
@@ -372,25 +396,33 @@ class HTMLBody_Part1:
                                                             fragmentShader: fragmentShader});
             """
             if self._uniforms is None:
-                body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
-                BODY_PART2 = BODY_PART2.replace('@IncrementTime@', '')
+                body_str = body_str.replace("@Uniforms@", "uniforms ={};\n")
+                BODY_PART2 = BODY_PART2.replace("@IncrementTime@", "")
             else:
-                body_str = body_str.replace('@Uniforms@', self._uniforms)
-                if 'time' in self._uniforms:
-                    BODY_PART2 = BODY_PART2.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
+                body_str = body_str.replace("@Uniforms@", self._uniforms)
+                if "time" in self._uniforms:
+                    BODY_PART2 = BODY_PART2.replace(
+                        "@IncrementTime@", "uniforms.time.value += 0.05;"
+                    )
                 else:
-                    BODY_PART2 = BODY_PART2.replace('@IncrementTime@', '')
-            body_str = body_str.replace('@VertexShaderDefinition@', vertex_shader_string_definition)
-            body_str = body_str.replace('@FragmentShaderDefinition@', fragment_shader_string_definition)
-            body_str = body_str.replace('@ShaderMaterialDefinition@', shader_material_definition)
-            body_str = body_str.replace('@ShapeMaterial@', 'shader_material')
+                    BODY_PART2 = BODY_PART2.replace("@IncrementTime@", "")
+            body_str = body_str.replace(
+                "@VertexShaderDefinition@", vertex_shader_string_definition
+            )
+            body_str = body_str.replace(
+                "@FragmentShaderDefinition@", fragment_shader_string_definition
+            )
+            body_str = body_str.replace(
+                "@ShaderMaterialDefinition@", shader_material_definition
+            )
+            body_str = body_str.replace("@ShapeMaterial@", "shader_material")
         else:
-            body_str = body_str.replace('@Uniforms@', '')
-            body_str = body_str.replace('@VertexShaderDefinition@', '')
-            body_str = body_str.replace('@FragmentShaderDefinition@', '')
-            body_str = body_str.replace('@ShaderMaterialDefinition@', '')
-            body_str = body_str.replace('@ShapeMaterial@', 'phong_material')
-            body_str = body_str.replace('@IncrementTime@', '')
+            body_str = body_str.replace("@Uniforms@", "")
+            body_str = body_str.replace("@VertexShaderDefinition@", "")
+            body_str = body_str.replace("@FragmentShaderDefinition@", "")
+            body_str = body_str.replace("@ShaderMaterialDefinition@", "")
+            body_str = body_str.replace("@ShapeMaterial@", "phong_material")
+            body_str = body_str.replace("@IncrementTime@", "")
         return body_str
 
 
@@ -406,23 +438,25 @@ class ThreejsRenderer:
         self.spinning_cursor = spinning_cursor()
         print("## threejs %s webgl renderer" % THREEJS_RELEASE)
 
-    def DisplayShape(self,
-                     shape,
-                     export_edges=False,
-                     color=(0.65, 0.65, 0.7),
-                     specular_color=(0.2, 0.2, 0.2),
-                     shininess=0.9,
-                     transparency=0.,
-                     line_color=(0, 0., 0.),
-                     line_width=1.,
-                     mesh_quality=1.):
+    def DisplayShape(
+        self,
+        shape,
+        export_edges=False,
+        color=(0.65, 0.65, 0.7),
+        specular_color=(0.2, 0.2, 0.2),
+        shininess=0.9,
+        transparency=0.0,
+        line_color=(0, 0.0, 0.0),
+        line_width=1.0,
+        mesh_quality=1.0,
+    ):
         # if the shape is an edge or a wire, use the related functions
         if is_edge(shape):
             print("discretize an edge")
             pnts = discretize_edge(shape)
             edge_hash = "edg%s" % uuid.uuid4().hex
             str_to_write = export_edgedata_to_json(edge_hash, pnts)
-            edge_full_path = os.path.join(self._path, edge_hash + '.json')
+            edge_full_path = os.path.join(self._path, edge_hash + ".json")
             with open(edge_full_path, "w") as edge_file:
                 edge_file.write(str_to_write)
             # store this edge hash
@@ -433,7 +467,7 @@ class ThreejsRenderer:
             pnts = discretize_wire(shape)
             wire_hash = "wir%s" % uuid.uuid4().hex
             str_to_write = export_edgedata_to_json(wire_hash, pnts)
-            wire_full_path = os.path.join(self._path, wire_hash + '.json')
+            wire_full_path = os.path.join(self._path, wire_hash + ".json")
             with open(wire_full_path, "w") as wire_file:
                 wire_file.write(str_to_write)
             # store this edge hash
@@ -443,22 +477,31 @@ class ThreejsRenderer:
         shape_hash = "shp%s" % shape_uuid
         # tesselate
         tess = ShapeTesselator(shape)
-        tess.Compute(compute_edges=export_edges,
-                     mesh_quality=mesh_quality,
-                     parallel=True)
+        tess.Compute(
+            compute_edges=export_edges, mesh_quality=mesh_quality, parallel=True
+        )
         # update spinning cursor
-        sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
-                                                                    shape_hash,
-                                                                    tess.ObjGetTriangleCount()))
+        sys.stdout.write(
+            "\r%s mesh shape %s, %i triangles     "
+            % (next(self.spinning_cursor), shape_hash, tess.ObjGetTriangleCount())
+        )
         sys.stdout.flush()
         # export to 3JS
-        shape_full_path = os.path.join(self._path, shape_hash + '.json')
+        shape_full_path = os.path.join(self._path, shape_hash + ".json")
         # add this shape to the shape dict, sotres everything related to it
-        self._3js_shapes[shape_hash] = [export_edges, color, specular_color, shininess, transparency, line_color, line_width]
+        self._3js_shapes[shape_hash] = [
+            export_edges,
+            color,
+            specular_color,
+            shininess,
+            transparency,
+            line_color,
+            line_width,
+        ]
         # generate the mesh
-        #tess.ExportShapeToThreejs(shape_hash, shape_full_path)
+        # tess.ExportShapeToThreejs(shape_hash, shape_full_path)
         # and also to JSON
-        with open(shape_full_path, 'w') as json_file:
+        with open(shape_full_path, "w") as json_file:
             json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
         # draw edges if necessary
         if export_edges:
@@ -467,7 +510,7 @@ class ThreejsRenderer:
             nbr_edges = tess.ObjGetEdgeCount()
             for i_edge in range(nbr_edges):
                 # after that, the file can be appended
-                str_to_write = ''
+                str_to_write = ""
                 edge_point_set = []
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
                 for i_vert in range(nbr_vertices):
@@ -476,17 +519,15 @@ class ThreejsRenderer:
                 edge_hash = "edg%s" % uuid.uuid4().hex
                 str_to_write += export_edgedata_to_json(edge_hash, edge_point_set)
                 # create the file
-                edge_full_path = os.path.join(self._path, edge_hash + '.json')
+                edge_full_path = os.path.join(self._path, edge_hash + ".json")
                 with open(edge_full_path, "w") as edge_file:
                     edge_file.write(str_to_write)
                 # store this edge hash, with black color
                 self._3js_edges[edge_hash] = [(0, 0, 0), line_width]
         return self._3js_shapes, self._3js_edges
 
-
     def generate_html_file(self):
-        """ Generate the HTML file to be rendered by the web browser
-        """
+        """Generate the HTML file to be rendered by the web browser"""
         global BODY_PART0
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
@@ -496,21 +537,39 @@ class ThreejsRenderer:
         shape_idx = 0
         for shape_hash in self._3js_shapes:
             # get properties for this shape
-            export_edges, color, specular_color, shininess, transparency, line_color, line_width = self._3js_shapes[shape_hash]
+            (
+                export_edges,
+                color,
+                specular_color,
+                shininess,
+                transparency,
+                line_color,
+                line_width,
+            ) = self._3js_shapes[shape_hash]
             # creates a material for the shape
-            shape_string_list.append('\t\t\t%s_phong_material = new THREE.MeshPhongMaterial({' % shape_hash)
-            shape_string_list.append('color:%s,' % color_to_hex(color))
-            shape_string_list.append('specular:%s,' % color_to_hex(specular_color))
-            shape_string_list.append('shininess:%g,' % shininess)
+            shape_string_list.append(
+                "\t\t\t%s_phong_material = new THREE.MeshPhongMaterial({" % shape_hash
+            )
+            shape_string_list.append("color:%s," % color_to_hex(color))
+            shape_string_list.append("specular:%s," % color_to_hex(specular_color))
+            shape_string_list.append("shininess:%g," % shininess)
             # force double side rendering, see issue #645
-            shape_string_list.append('side: THREE.DoubleSide,')
-            if transparency > 0.:
-                shape_string_list.append('transparent: true, premultipliedAlpha: true, opacity:%g,' % transparency)
-            #var line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});
-            shape_string_list.append('});\n')
+            shape_string_list.append("side: THREE.DoubleSide,")
+            if transparency > 0.0:
+                shape_string_list.append(
+                    "transparent: true, premultipliedAlpha: true, opacity:%g,"
+                    % transparency
+                )
+            # var line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});
+            shape_string_list.append("});\n")
             # load json geometry files
-            shape_string_list.append("\t\t\tloader.load('%s.json', function(geometry) {\n" % shape_hash)
-            shape_string_list.append("\t\t\t\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n" % shape_hash)
+            shape_string_list.append(
+                "\t\t\tloader.load('%s.json', function(geometry) {\n" % shape_hash
+            )
+            shape_string_list.append(
+                "\t\t\t\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n"
+                % shape_hash
+            )
             # enable shadows for object
             shape_string_list.append("\t\t\t\tmesh.castShadow = true;\n")
             shape_string_list.append("\t\t\t\tmesh.receiveShadow = true;\n")
@@ -526,10 +585,17 @@ class ThreejsRenderer:
         edge_string_list = []
         for edge_hash in self._3js_edges:
             color, line_width = self._3js_edges[edge_hash]
-            edge_string_list.append("\tloader.load('%s.json', function(geometry) {\n" % edge_hash)
-            edge_string_list.append("\tline_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n" % ((color_to_hex(color), line_width)))
-            edge_string_list.append("\tline = new THREE.Line(geometry, line_material);\n")
-        # add mesh to scene
+            edge_string_list.append(
+                "\tloader.load('%s.json', function(geometry) {\n" % edge_hash
+            )
+            edge_string_list.append(
+                "\tline_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n"
+                % ((color_to_hex(color), line_width))
+            )
+            edge_string_list.append(
+                "\tline = new THREE.Line(geometry, line_material);\n"
+            )
+            # add mesh to scene
             edge_string_list.append("\tscene.add(line);\n")
             edge_string_list.append("\t});\n")
         # write the string for the shape
@@ -539,7 +605,7 @@ class ThreejsRenderer:
             # header
             fp.write(HTMLHeader().get_str())
             # body
-            BODY_PART0 = BODY_PART0.replace('@VERSION@', OCC_VERSION)
+            BODY_PART0 = BODY_PART0.replace("@VERSION@", OCC_VERSION)
             fp.write(BODY_PART0)
             fp.write(HTMLBody_Part1().get_str())
             fp.write("".join(shape_string_list))
@@ -549,26 +615,28 @@ class ThreejsRenderer:
             fp.write("</html>\n")
 
     def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
-        ''' render the scene into the browser.
-        '''
+        """render the scene into the browser."""
         # generate HTML file
         self.generate_html_file()
         # then create a simple web server
         start_server(addr, server_port, self._path, open_webbrowser)
+
 
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
     from OCC.Core.gp import gp_Trsf
     import time
+
     def translate_shp(shp, vec, copy=False):
         trns = gp_Trsf()
         trns.SetTranslation(vec)
         brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)
         brep_trns.Build()
         return brep_trns.Shape()
-    box = BRepPrimAPI_MakeBox(100., 200., 300.).Shape()
-    torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
+
+    box = BRepPrimAPI_MakeBox(100.0, 200.0, 300.0).Shape()
+    torus = BRepPrimAPI_MakeTorus(300.0, 105).Shape()
     t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
     my_ren = ThreejsRenderer()
     init_time = time.time()

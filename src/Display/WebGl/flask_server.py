@@ -3,10 +3,17 @@
 import sys
 import uuid
 
-from OCC.Display.WebGl.threejs_renderer import ThreejsRenderer, OCC_VERSION, \
-        THREEJS_RELEASE, color_to_hex, export_edgedata_to_json, spinning_cursor
+from OCC.Display.WebGl.threejs_renderer import (
+    ThreejsRenderer,
+    OCC_VERSION,
+    THREEJS_RELEASE,
+    color_to_hex,
+    export_edgedata_to_json,
+    spinning_cursor,
+)
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Core.Tesselator import ShapeTesselator
+
 # Import following for building vertex (or point cloud) in WebGL
 from OCC.Core.gp import gp_Pnt
 from OCC.Core.BRep import BRep_Builder
@@ -17,31 +24,36 @@ from flask import Flask, render_template
 
 
 def format_color(r, g, b):
-    return '0x%02x%02x%02x' % (r, g, b)
+    return "0x%02x%02x%02x" % (r, g, b)
 
 
 class RenderWraper(ThreejsRenderer):
-    def __init__(self, path=None,
-            default_shape_color=format_color(166, 166, 166), # light grey
-            default_edge_color=format_color(32, 32, 32), # dark grey
-            default_vertex_color=format_color(8, 8, 8)): # darker gray
+    def __init__(
+        self,
+        path=None,
+        default_shape_color=format_color(166, 166, 166),  # light grey
+        default_edge_color=format_color(32, 32, 32),  # dark grey
+        default_vertex_color=format_color(8, 8, 8),
+    ):  # darker gray
         super().__init__(path)
         self._3js_vertex = {}
         self._default_shape_color = default_shape_color
         self._default_edge_color = default_edge_color
         self._default_vertex_color = default_vertex_color
 
-    def ConvertShape(self,
-                     shape,
-                     export_edges=False,
-                     color=(0.65, 0.65, 0.7),
-                     specular_color=(0.2, 0.2, 0.2),
-                     shininess=0.9,
-                     transparency=0.,
-                     line_color=(0, 0., 0.),
-                     line_width=1.,
-                     point_size=1.,
-                     mesh_quality=1.):
+    def ConvertShape(
+        self,
+        shape,
+        export_edges=False,
+        color=(0.65, 0.65, 0.7),
+        specular_color=(0.2, 0.2, 0.2),
+        shininess=0.9,
+        transparency=0.0,
+        line_color=(0, 0.0, 0.0),
+        line_width=1.0,
+        point_size=1.0,
+        mesh_quality=1.0,
+    ):
         # if the shape is an edge or a wire, use the related functions
         color = color_to_hex(color)
         specular_color = color_to_hex(specular_color)
@@ -83,20 +95,29 @@ class RenderWraper(ThreejsRenderer):
         shape_hash = "shp%s" % shape_uuid
         # tesselate
         tess = ShapeTesselator(shape)
-        tess.Compute(compute_edges=export_edges,
-                     mesh_quality=mesh_quality,
-                     parallel=True)
+        tess.Compute(
+            compute_edges=export_edges, mesh_quality=mesh_quality, parallel=True
+        )
         # update spinning cursor
-        sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
-                                                                    shape_hash,
-                                                                    tess.ObjGetTriangleCount()))
+        sys.stdout.write(
+            "\r%s mesh shape %s, %i triangles     "
+            % (next(self.spinning_cursor), shape_hash, tess.ObjGetTriangleCount())
+        )
         sys.stdout.flush()
         # export to 3JS
         # generate the mesh
         shape_content = tess.ExportShapeToThreejsJSONString(shape_uuid)
         # add this shape to the shape dict, sotres everything related to it
-        self._3js_shapes[shape_hash] = [export_edges, color, specular_color, shininess, transparency,
-                                        line_color, line_width, shape_content]
+        self._3js_shapes[shape_hash] = [
+            export_edges,
+            color,
+            specular_color,
+            shininess,
+            transparency,
+            line_color,
+            line_width,
+            shape_content,
+        ]
         # draw edges if necessary
         if export_edges:
             # export each edge to a single json
@@ -104,7 +125,7 @@ class RenderWraper(ThreejsRenderer):
             nbr_edges = tess.ObjGetEdgeCount()
             for i_edge in range(nbr_edges):
                 # after that, the file can be appended
-                edge_content = ''
+                edge_content = ""
                 edge_point_set = []
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
                 for i_vert in range(nbr_vertices):
@@ -113,13 +134,23 @@ class RenderWraper(ThreejsRenderer):
                 edge_hash = "edg%s" % uuid.uuid4().hex
                 edge_content += export_edgedata_to_json(edge_hash, edge_point_set)
                 # store this edge hash, with black color
-                self._3js_edges[edge_hash] = [color_to_hex((0, 0, 0)), line_width, edge_content]
+                self._3js_edges[edge_hash] = [
+                    color_to_hex((0, 0, 0)),
+                    line_width,
+                    edge_content,
+                ]
         return self._3js_shapes, self._3js_edges, self._3js_vertex
 
 
 class RenderConfig(object):
-    def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080",
-                 vertex_shader=None, fragment_shader=None, uniforms=None):
+    def __init__(
+        self,
+        bg_gradient_color1="#ced7de",
+        bg_gradient_color2="#808080",
+        vertex_shader=None,
+        fragment_shader=None,
+        uniforms=None,
+    ):
         self._occ_version = OCC_VERSION
         self._3js_version = THREEJS_RELEASE
         self._bg_gradient_color1 = bg_gradient_color1
@@ -134,15 +165,16 @@ my_ren = RenderWraper()
 render_cfg = RenderConfig()
 
 
-if __name__ == '__main__':
-    @app.route('/')
-    @app.route('/index')
+if __name__ == "__main__":
+
+    @app.route("/")
+    @app.route("/index")
     def index():
         """PythonOCC Demo Page"""
         # remove shapes from previous (avoid duplicate shape after F5 refresh)
-        my_ren._3js_shapes={}
-        my_ren._3js_edges={}
-        my_ren._3js_vertex={}
+        my_ren._3js_shapes = {}
+        my_ren._3js_edges = {}
+        my_ren._3js_vertex = {}
 
         # import additional modules for building a box and a torus.
         from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
@@ -150,17 +182,16 @@ if __name__ == '__main__':
         from OCC.Core.gp import gp_Trsf
         import time
 
-
         def translate_shp(shp, vec, copy=False):
             trns = gp_Trsf()
             trns.SetTranslation(vec)
             brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)
             brep_trns.Build()
             return brep_trns.Shape()
-        box = BRepPrimAPI_MakeBox(100., 200., 300.).Shape()
-        torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
-        t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
 
+        box = BRepPrimAPI_MakeBox(100.0, 200.0, 300.0).Shape()
+        torus = BRepPrimAPI_MakeTorus(300.0, 105).Shape()
+        t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
 
         init_time = time.time()
         my_ren.ConvertShape(box, export_edges=True)
@@ -168,8 +199,14 @@ if __name__ == '__main__':
         final_time = time.time()
         print("\nTotal meshing time : ", final_time - init_time)
 
-        return render_template('index.html', occ_version=OCC_VERSION, threejs_version=THREEJS_RELEASE,
-                               render_cfg=render_cfg, occ_shapes=my_ren._3js_shapes, occ_edges=my_ren._3js_edges,
-                               occ_vertex=my_ren._3js_vertex)
+        return render_template(
+            "index.html",
+            occ_version=OCC_VERSION,
+            threejs_version=THREEJS_RELEASE,
+            render_cfg=render_cfg,
+            occ_shapes=my_ren._3js_shapes,
+            occ_edges=my_ren._3js_edges,
+            occ_vertex=my_ren._3js_vertex,
+        )
 
-    app.run(host='localhost', port=8080, debug=False)
+    app.run(host="localhost", port=8080, debug=False)
