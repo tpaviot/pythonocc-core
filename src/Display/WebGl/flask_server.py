@@ -15,7 +15,7 @@ from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discreti
 from OCC.Core.Tesselator import ShapeTesselator
 
 # Import following for building vertex (or point cloud) in WebGL
-from OCC.Core.gp import gp_Pnt
+from OCC.Core.gp import gp_Pnt, gp_Vec
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.TopoDS import TopoDS_Compound
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
