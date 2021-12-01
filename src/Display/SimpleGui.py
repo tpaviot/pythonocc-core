@@ -34,12 +34,14 @@ def check_callable(_callable: Callable) -> None:
         raise AssertionError("The function supplied is not callable")
 
 
-def init_display(backend_str: Optional[str]=None,
-                 size: Optional[Tuple[int, int]]=(1024, 768),
-                 display_triedron: Optional[bool]=True,
-                 background_gradient_color1: Optional[List[int]]=[206, 215, 222],
-                 background_gradient_color2: Optional[List[int]]=[128, 128, 128]):
-    """ This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
+def init_display(
+    backend_str: Optional[str] = None,
+    size: Optional[Tuple[int, int]] = (1024, 768),
+    display_triedron: Optional[bool] = True,
+    background_gradient_color1: Optional[List[int]] = [206, 215, 222],
+    background_gradient_color2: Optional[List[int]] = [128, 128, 128],
+):
+    """This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
     If ever the environment variable PYTHONOCC_OFFSCREEN_RENDERER, then the GUI is simply
     ignored and an offscreen renderer is returned.
     init_display returns 4 objects :
@@ -62,13 +64,13 @@ def init_display(backend_str: Optional[str]=None,
         offscreen_renderer = OffscreenRenderer()
 
         def do_nothing(*kargs: Any, **kwargs: Any) -> None:
-            """ takes as many parameters as you want,
+            """takes as many parameters as you want,
             ans does nothing
             """
             pass
 
         def call_function(s, func: Callable) -> None:
-            """ A function that calls another function.
+            """A function that calls another function.
             Helpfull to bypass add_function_to_menu. s should be a string
             """
             check_callable(func)
@@ -80,16 +82,22 @@ def init_display(backend_str: Optional[str]=None,
         return offscreen_renderer, do_nothing, do_nothing, call_function
     used_backend = load_backend(backend_str)
     # wxPython based simple GUI
-    if used_backend == 'wx':
+    if used_backend == "wx":
         import wx
         from OCC.Display.wxDisplay import wxViewer3d
+
         print("wxPython backend - ", wx.version())
 
         class AppFrame(wx.Frame):
-
             def __init__(self, parent):
-                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION,
-                                  style=wx.DEFAULT_FRAME_STYLE, size=size)
+                wx.Frame.__init__(
+                    self,
+                    parent,
+                    -1,
+                    "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION,
+                    style=wx.DEFAULT_FRAME_STYLE,
+                    size=size,
+                )
                 self.canva = wxViewer3d(self)
                 self.menuBar = wx.MenuBar()
                 self._menus = {}
@@ -106,10 +114,11 @@ def init_display(backend_str: Optional[str]=None,
                 _id = wx.NewId()
                 check_callable(_callable)
                 try:
-                    self._menus[menu_name].Append(_id,
-                                                  _callable.__name__.replace('_', ' ').lower())
+                    self._menus[menu_name].Append(
+                        _id, _callable.__name__.replace("_", " ").lower()
+                    )
                 except KeyError:
-                    raise ValueError('the menu item %s does not exist' % menu_name)
+                    raise ValueError("the menu item %s does not exist" % menu_name)
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
 
         app = wx.App(False)
@@ -130,24 +139,27 @@ def init_display(backend_str: Optional[str]=None,
             app.MainLoop()
 
     # Qt based simple GUI
-    elif 'qt' in used_backend:
+    elif "qt" in used_backend:
         from OCC.Display.qtDisplay import qtViewer3d
+
         QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
         # check Qt version
         qt_version = None
-        if hasattr(QtCore, 'QT_VERSION_STR'):  # PyQt5
+        if hasattr(QtCore, "QT_VERSION_STR"):  # PyQt5
             qt_version = QtCore.QT_VERSION_STR
-        elif hasattr(QtCore, '__version__'):  # PySide2
+        elif hasattr(QtCore, "__version__"):  # PySide2
             qt_version = QtCore.__version__
         print("%s backend - Qt version %s" % (used_backend, qt_version))
-        class MainWindow(QtWidgets.QMainWindow):
 
+        class MainWindow(QtWidgets.QMainWindow):
             def __init__(self, *args: Any) -> None:
                 QtWidgets.QMainWindow.__init__(self, *args)
                 self.canva = qtViewer3d(self)
-                self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, used_backend))
+                self.setWindowTitle(
+                    "pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, used_backend)
+                )
                 self.setCentralWidget(self.canva)
-                if sys.platform != 'darwin':
+                if sys.platform != "darwin":
                     self.menu_bar = self.menuBar()
                 else:
                     # create a parentless menubar
@@ -165,7 +177,7 @@ def init_display(backend_str: Optional[str]=None,
                 self.centerOnScreen()
 
             def centerOnScreen(self) -> None:
-                '''Centers the window on the screen.'''
+                """Centers the window on the screen."""
                 resolution = QtWidgets.QApplication.desktop().screenGeometry()
                 x = (resolution.width() - self.frameSize().width()) / 2
                 y = (resolution.height() - self.frameSize().height()) / 2
@@ -178,21 +190,23 @@ def init_display(backend_str: Optional[str]=None,
             def add_function_to_menu(self, menu_name: str, _callable: Callable) -> None:
                 check_callable(_callable)
                 try:
-                    _action = QtWidgets.QAction(_callable.__name__.replace('_', ' ').lower(), self)
+                    _action = QtWidgets.QAction(
+                        _callable.__name__.replace("_", " ").lower(), self
+                    )
                     # if not, the "exit" action is now shown...
                     _action.setMenuRole(QtWidgets.QAction.NoRole)
                     _action.triggered.connect(_callable)
 
                     self._menus[menu_name].addAction(_action)
                 except KeyError:
-                    raise ValueError('the menu item %s does not exist' % menu_name)
+                    raise ValueError("the menu item %s does not exist" % menu_name)
 
         # following couple of lines is a tweak to enable ipython --gui='qt'
         app = QtWidgets.QApplication.instance()  # checks if QApplication already exists
         if not app:  # create QApplication if it doesnt exist
             app = QtWidgets.QApplication(sys.argv)
         win = MainWindow()
-        win.resize(size[0] -1, size[1] -1)
+        win.resize(size[0] - 1, size[1] - 1)
         win.show()
         win.centerOnScreen()
         win.canva.InitDriver()
@@ -214,7 +228,9 @@ def init_display(backend_str: Optional[str]=None,
         display.display_triedron()
 
     if background_gradient_color1 and background_gradient_color2:
-    # background gradient
-        display.set_bg_gradient_color(background_gradient_color1, background_gradient_color2)
+        # background gradient
+        display.set_bg_gradient_color(
+            background_gradient_color1, background_gradient_color2
+        )
 
     return display, start_display, add_menu, add_function_to_menu

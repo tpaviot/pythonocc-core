@@ -29,15 +29,15 @@ QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 
 # check if signal available, not available
 # on PySide
-HAVE_PYQT_SIGNAL = hasattr(QtCore, 'pyqtSignal')
+HAVE_PYQT_SIGNAL = hasattr(QtCore, "pyqtSignal")
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 
 class qtBaseViewer(QtWidgets.QWidget):
-    ''' The base Qt Widget for an OCC viewer
-    '''
+    """The base Qt Widget for an OCC viewer"""
+
     def __init__(self, parent=None):
         super(qtBaseViewer, self).__init__(parent)
         self._display = OCCViewer.Viewer3d()
@@ -104,13 +104,15 @@ class qtViewer3d(qtBaseViewer):
         self._display.SetModeShaded()
         self._inited = True
         # dict mapping keys to functions
-        self._key_map = {ord('W'): self._display.SetModeWireFrame,
-                         ord('S'): self._display.SetModeShaded,
-                         ord('A'): self._display.EnableAntiAliasing,
-                         ord('B'): self._display.DisableAntiAliasing,
-                         ord('H'): self._display.SetModeHLR,
-                         ord('F'): self._display.FitAll,
-                         ord('G'): self._display.SetSelectionMode}
+        self._key_map = {
+            ord("W"): self._display.SetModeWireFrame,
+            ord("S"): self._display.SetModeShaded,
+            ord("A"): self._display.EnableAntiAliasing,
+            ord("B"): self._display.DisableAntiAliasing,
+            ord("H"): self._display.SetModeHLR,
+            ord("F"): self._display.FitAll,
+            ord("G"): self._display.SetSelectionMode,
+        }
         self.createCursors()
 
     def createCursors(self):
@@ -120,7 +122,9 @@ class qtViewer3d(qtBaseViewer):
         _CURSOR_PIX_ROT = QtGui.QPixmap(os.path.join(icon_pth, "cursor-rotate.png"))
         _CURSOR_PIX_PAN = QtGui.QPixmap(os.path.join(icon_pth, "cursor-pan.png"))
         _CURSOR_PIX_ZOOM = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify.png"))
-        _CURSOR_PIX_ZOOM_AREA = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify-area.png"))
+        _CURSOR_PIX_ZOOM_AREA = QtGui.QPixmap(
+            os.path.join(icon_pth, "cursor-magnify-area.png")
+        )
 
         self._available_cursors = {
             "arrow": QtGui.QCursor(QtCore.Qt.ArrowCursor),  # default
@@ -137,9 +141,11 @@ class qtViewer3d(qtBaseViewer):
         if code in self._key_map:
             self._key_map[code]()
         elif code in range(256):
-            log.info('key: "%s"(code %i) not mapped to any function' % (chr(code), code))
+            log.info(
+                'key: "%s"(code %i) not mapped to any function' % (chr(code), code)
+            )
         else:
-            log.info('key: code %i not mapped to any function' % code)
+            log.info("key: code %i not mapped to any function" % code)
 
     def focusInEvent(self, event):
         if self._inited:
@@ -164,7 +170,7 @@ class qtViewer3d(qtBaseViewer):
     def wheelEvent(self, event):
         delta = event.angleDelta().y()
         if delta > 0:
-            zoom_factor = 2.
+            zoom_factor = 2.0
         else:
             zoom_factor = 0.5
         self._display.ZoomFactor(zoom_factor)
@@ -212,7 +218,6 @@ class qtViewer3d(qtBaseViewer):
                     if (self._display.selected_shapes is not None) and HAVE_PYQT_SIGNAL:
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 
-
         elif event.button() == QtCore.Qt.RightButton:
             if self._zoom_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
@@ -230,25 +235,28 @@ class qtViewer3d(qtBaseViewer):
             return
         self._drawbox = [self.dragStartPosX, self.dragStartPosY, dx, dy]
 
-
     def mouseMoveEvent(self, evt):
         pt = evt.pos()
         buttons = int(evt.buttons())
         modifiers = evt.modifiers()
         # ROTATE
-        if (buttons == QtCore.Qt.LeftButton and
-                not modifiers == QtCore.Qt.ShiftModifier):
+        if buttons == QtCore.Qt.LeftButton and not modifiers == QtCore.Qt.ShiftModifier:
             self.cursor = "rotate"
             self._display.Rotation(pt.x(), pt.y())
             self._drawbox = False
         # DYNAMIC ZOOM
-        elif (buttons == QtCore.Qt.RightButton and
-              not modifiers == QtCore.Qt.ShiftModifier):
+        elif (
+            buttons == QtCore.Qt.RightButton
+            and not modifiers == QtCore.Qt.ShiftModifier
+        ):
             self.cursor = "zoom"
             self._display.Repaint()
-            self._display.DynamicZoom(abs(self.dragStartPosX),
-                                      abs(self.dragStartPosY), abs(pt.x()),
-                                      abs(pt.y()))
+            self._display.DynamicZoom(
+                abs(self.dragStartPosX),
+                abs(self.dragStartPosY),
+                abs(pt.x()),
+                abs(pt.y()),
+            )
             self.dragStartPosX = pt.x()
             self.dragStartPosY = pt.y()
             self._drawbox = False
@@ -263,15 +271,13 @@ class qtViewer3d(qtBaseViewer):
             self._drawbox = False
         # DRAW BOX
         # ZOOM WINDOW
-        elif (buttons == QtCore.Qt.RightButton and
-              modifiers == QtCore.Qt.ShiftModifier):
+        elif buttons == QtCore.Qt.RightButton and modifiers == QtCore.Qt.ShiftModifier:
             self._zoom_area = True
             self.cursor = "zoom-area"
             self.DrawBox(evt)
             self.update()
         # SELECT AREA
-        elif (buttons == QtCore.Qt.LeftButton and
-              modifiers == QtCore.Qt.ShiftModifier):
+        elif buttons == QtCore.Qt.LeftButton and modifiers == QtCore.Qt.ShiftModifier:
             self._select_area = True
             self.DrawBox(evt)
             self.update()
