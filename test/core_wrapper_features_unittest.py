@@ -33,6 +33,7 @@ from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
+from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
 from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
@@ -104,6 +105,10 @@ from OCC.Core.Exception import (
     MethodNotWrappedError,
     ClassNotWrappedError,
 )
+from OCC.Core.TopAbs import TopAbs_Orientation
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+
+from OCC.Extend.TopologyUtils import TopologyExplorer
 
 
 @contextmanager
@@ -891,6 +896,40 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(white.Red(), 1.0)
         self.assertEqual(white.Green(), 1.0)
         self.assertEqual(white.Blue(), 1.0)
+
+    def test_topabs_orientation_byref(self):
+        # see Issue https://github.com/tpaviot/pythonocc-core/issues/1038
+        box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        box_face = list(TopologyExplorer(box).faces())[0]
+
+        facetopo = BRepClass_FaceExplorer(box_face)
+        facetopo.InitWires()  # get ready to explore wires/loops of this face
+
+        edge_1 = BRepClass_Edge()
+        edge_2 = BRepClass_Edge()
+        edge_3 = BRepClass_Edge()
+        edge_4 = BRepClass_Edge()
+
+        facetopo.InitEdges()
+        topabs_ori_1 = facetopo.CurrentEdge(
+            edge_1
+        )
+        facetopo.NextEdge()
+        topabs_ori_2 = facetopo.CurrentEdge(
+            edge_2
+        )
+        facetopo.NextEdge()
+        topabs_ori_3 = facetopo.CurrentEdge(
+            edge_3
+        )
+        facetopo.NextEdge()
+        topabs_ori_4 = facetopo.CurrentEdge(
+            edge_4
+        )
+        self.assertEqual(topabs_ori_1, TopAbs_Orientation.TopAbs_REVERSED)
+        self.assertEqual(topabs_ori_2, TopAbs_Orientation.TopAbs_REVERSED)
+        self.assertEqual(topabs_ori_3, TopAbs_Orientation.TopAbs_FORWARD)
+        self.assertEqual(topabs_ori_4, TopAbs_Orientation.TopAbs_FORWARD)
 
 
 def suite() -> unittest.TestSuite:
