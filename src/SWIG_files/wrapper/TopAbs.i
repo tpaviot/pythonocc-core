@@ -212,13 +212,12 @@ TopAbs_Orientation
 Parameters
 ----------
 theOrientationString: char *
-theOrientation: TopAbs_Orientation
 
 Returns
 -------
-bool
+theOrientation: TopAbs_Orientation
 ") ShapeOrientationFromString;
-		static Standard_Boolean ShapeOrientationFromString(const char * theOrientationString, TopAbs_Orientation & theOrientation);
+		static Standard_Boolean ShapeOrientationFromString(const char * theOrientationString, TopAbs_Orientation &OutValue);
 
 		/****************** ShapeOrientationToString ******************/
 		/**** md5 signature: 08fa460365bf4bd2ca48f9d91582fbaa ****/

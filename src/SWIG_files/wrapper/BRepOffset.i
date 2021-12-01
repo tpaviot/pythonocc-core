@@ -2492,14 +2492,13 @@ Parameters
 E: TopoDS_Edge
 F1: TopoDS_Face
 F2: TopoDS_Face
-O1: TopAbs_Orientation
-O2: TopAbs_Orientation
 
 Returns
 -------
-None
+O1: TopAbs_Orientation
+O2: TopAbs_Orientation
 ") OrientSection;
-		static void OrientSection(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, TopAbs_Orientation & O1, TopAbs_Orientation & O2);
+		static void OrientSection(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue);
 
 		/****************** PipeInter ******************/
 		/**** md5 signature: 4a2946fb95668689d418fe298066dda2 ****/

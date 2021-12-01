@@ -456,13 +456,12 @@ bool
 Parameters
 ----------
 E: BRepClass_Edge
-Or: TopAbs_Orientation
 
 Returns
 -------
-None
+Or: TopAbs_Orientation
 ") CurrentEdge;
-		void CurrentEdge(BRepClass_Edge & E, TopAbs_Orientation & Or);
+		void CurrentEdge(BRepClass_Edge & E, TopAbs_Orientation &OutValue);
 
 		/****************** InitEdges ******************/
 		/**** md5 signature: 91bbc4c29d3c5c1c40b8c41a10bba4ae ****/

@@ -435,13 +435,12 @@ None
 Parameters
 ----------
 E: Geom2dAdaptor_Curve
-Or: TopAbs_Orientation
 
 Returns
 -------
-None
+Or: TopAbs_Orientation
 ") CurrentEdge;
-		void CurrentEdge(Geom2dAdaptor_Curve & E, TopAbs_Orientation & Or);
+		void CurrentEdge(Geom2dAdaptor_Curve & E, TopAbs_Orientation &OutValue);
 
 		/****************** Find ******************/
 		/**** md5 signature: 09042a6b22fc21ef573ed77bf386c9b9 ****/
