@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_locope.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -450,14 +451,14 @@ Parameters
 I: int
 From: float
 Tol: float
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** LocalizeAfter ******************/
 		/**** md5 signature: d56de202f543156481760d3d927eea66 ****/
@@ -469,14 +470,14 @@ Parameters
 I: int
 FromInd: int
 Tol: float
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: 5b2b6de66ba5a81aeee8506f68cfc270 ****/
@@ -488,14 +489,14 @@ Parameters
 I: int
 From: float
 Tol: float
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: 89f05e176ad1cd9828188d9a6ada9149 ****/
@@ -507,14 +508,14 @@ Parameters
 I: int
 FromInd: int
 Tol: float
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** NbPoints ******************/
 		/**** md5 signature: 8d71e01fa7b21bd925ab1ef4bd70145e ****/
@@ -700,14 +701,14 @@ bool
 Parameters
 ----------
 From: float
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Real From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Real From, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** LocalizeAfter ******************/
 		/**** md5 signature: dc5b7987079415874eaa183c6149c405 ****/
@@ -717,14 +718,14 @@ IndTo: int
 Parameters
 ----------
 FromInd: int
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Integer FromInd, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: fbf6caaf11561e5474c6e8bcbfa6392a ****/
@@ -734,14 +735,14 @@ IndTo: int
 Parameters
 ----------
 From: float
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Real From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Real From, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: 977b8e8fd7ae8fde8152e2d971922b09 ****/
@@ -751,14 +752,14 @@ IndTo: int
 Parameters
 ----------
 FromInd: int
+Or: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Integer FromInd, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** NbPoints ******************/
 		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/

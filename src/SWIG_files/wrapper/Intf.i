@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intf.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -772,15 +773,15 @@ float
 
 Parameters
 ----------
-Dim: Intf_PIType
 
 Returns
 -------
+Dim: Intf_PIType
 Add1: int
 Add2: int
 Param: float
 ") InfoFirst;
-		void InfoFirst(Intf_PIType & Dim, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
+		void InfoFirst(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****************** InfoFirst ******************/
 		/**** md5 signature: 20ef78affbd1bcd59c9ff0691a63d6e8 ****/
@@ -789,14 +790,14 @@ Param: float
 
 Parameters
 ----------
-Dim: Intf_PIType
 
 Returns
 -------
+Dim: Intf_PIType
 Addr: int
 Param: float
 ") InfoFirst;
-		void InfoFirst(Intf_PIType & Dim, Standard_Integer &OutValue, Standard_Real &OutValue);
+		void InfoFirst(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****************** InfoSecond ******************/
 		/**** md5 signature: 0e6c6ce5ffa684bc9e1fd4cdc0839d91 ****/
@@ -805,15 +806,15 @@ Param: float
 
 Parameters
 ----------
-Dim: Intf_PIType
 
 Returns
 -------
+Dim: Intf_PIType
 Add1: int
 Add2: int
 Param: float
 ") InfoSecond;
-		void InfoSecond(Intf_PIType & Dim, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
+		void InfoSecond(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****************** InfoSecond ******************/
 		/**** md5 signature: 679ab58838015e2dca23bde4c3ef8e13 ****/
@@ -822,14 +823,14 @@ Param: float
 
 Parameters
 ----------
-Dim: Intf_PIType
 
 Returns
 -------
+Dim: Intf_PIType
 Addr: int
 Param: float
 ") InfoSecond;
-		void InfoSecond(Intf_PIType & Dim, Standard_Integer &OutValue, Standard_Real &OutValue);
+		void InfoSecond(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 927719925907a38badbab5fe6cdce988 ****/

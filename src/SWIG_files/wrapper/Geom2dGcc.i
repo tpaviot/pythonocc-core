@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dgcc.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -455,14 +456,13 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -711,14 +711,13 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -1081,14 +1080,13 @@ gp_Circ2d
 
 Parameters
 ----------
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -1297,14 +1295,13 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -1501,14 +1498,13 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -1761,15 +1757,14 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
-Qualif3: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
+Qualif3: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2, GccEnt_Position & Qualif3);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -2100,15 +2095,14 @@ gp_Circ2d
 
 Parameters
 ----------
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
-Qualif3: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
+Qualif3: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(GccEnt_Position & Qualif1, GccEnt_Position & Qualif2, GccEnt_Position & Qualif3);
+		void WhichQualifier(GccEnt_Position &OutValue, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -2218,13 +2212,12 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue);
 
 };
 
@@ -2319,13 +2312,12 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue);
 
 };
 
@@ -2500,13 +2492,12 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue);
 
 };
 
@@ -2723,13 +2714,12 @@ gp_Circ2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue);
 
 };
 
@@ -3737,14 +3727,13 @@ gp_Lin2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -3876,14 +3865,13 @@ gp_Lin2d
 
 Parameters
 ----------
-Qualif1: GccEnt_Position
-Qualif2: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
+Qualif2: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
+		void WhichQualifier(GccEnt_Position &OutValue, GccEnt_Position &OutValue);
 
 };
 
@@ -4015,13 +4003,12 @@ gp_Lin2d
 Parameters
 ----------
 Index: int
-Qualif1: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
+		void WhichQualifier(const Standard_Integer Index, GccEnt_Position &OutValue);
 
 };
 
@@ -4133,13 +4120,12 @@ gp_Lin2d
 
 Parameters
 ----------
-Qualif1: GccEnt_Position
 
 Returns
 -------
-None
+Qualif1: GccEnt_Position
 ") WhichQualifier;
-		void WhichQualifier(GccEnt_Position & Qualif1);
+		void WhichQualifier(GccEnt_Position &OutValue);
 
 };
 

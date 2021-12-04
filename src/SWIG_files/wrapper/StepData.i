@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdata.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -4107,13 +4108,12 @@ num: int
 nump: int
 mess: char *
 ach: Interface_Check
-flag: StepData_Logical
 
 Returns
 -------
-bool
+flag: StepData_Logical
 ") ReadLogical;
-		Standard_Boolean ReadLogical(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, StepData_Logical & flag);
+		Standard_Boolean ReadLogical(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, StepData_Logical &OutValue);
 
 		/****************** ReadReal ******************/
 		/**** md5 signature: ffb5a16c71361b585a01f0d634e7c1d7 ****/

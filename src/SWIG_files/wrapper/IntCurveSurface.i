@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesurface.h
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -342,15 +343,15 @@ float
 Parameters
 ----------
 P: gp_Pnt
-TrCurv: IntCurveSurface_TransitionOnCurve
 
 Returns
 -------
 USurf: float
 VSurf: float
 UCurv: float
+TrCurv: IntCurveSurface_TransitionOnCurve
 ") Values;
-		void Values(gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, IntCurveSurface_TransitionOnCurve & TrCurv);
+		void Values(gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, IntCurveSurface_TransitionOnCurve &OutValue);
 
 		/****************** W ******************/
 		/**** md5 signature: dde24677dd63b48ccacea2fe8006eed7 ****/

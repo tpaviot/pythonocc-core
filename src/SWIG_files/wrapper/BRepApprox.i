@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepapprox.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -3453,13 +3454,12 @@ Parameters
 ----------
 UVap: math_Vector
 Param: TColStd_Array1OfReal
-BestChoix: IntImp_ConstIsoparametric
 
 Returns
 -------
-bool
+BestChoix: IntImp_ConstIsoparametric
 ") IsTangent;
-		Standard_Boolean IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric & BestChoix);
+		Standard_Boolean IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric &OutValue);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: 42be0dc2e32c8e563393e8490171707e ****/

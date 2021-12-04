@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebrepds.html
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -4991,15 +4992,15 @@ TopOpeBRepDS_Transition
 
 Parameters
 ----------
-GK: TopOpeBRepDS_Kind
-SK: TopOpeBRepDS_Kind
 
 Returns
 -------
+GK: TopOpeBRepDS_Kind
 G: int
+SK: TopOpeBRepDS_Kind
 S: int
 ") GKGSKS;
-		void GKGSKS(TopOpeBRepDS_Kind & GK, Standard_Integer &OutValue, TopOpeBRepDS_Kind & SK, Standard_Integer &OutValue);
+		void GKGSKS(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue, TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
 		/****************** Geometry ******************/
 		/**** md5 signature: 37e738c2b410a542f3698c2f6ed890de ****/
@@ -6653,13 +6654,13 @@ TopOpeBRepDS_ListOfInterference
 
 Parameters
 ----------
-K: TopOpeBRepDS_Kind
 
 Returns
 -------
+K: TopOpeBRepDS_Kind
 G: int
 ") ChangeValue;
-		TopOpeBRepDS_ListOfInterference & ChangeValue(TopOpeBRepDS_Kind & K, Standard_Integer &OutValue);
+		TopOpeBRepDS_ListOfInterference & ChangeValue(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -6808,13 +6809,13 @@ None
 
 Parameters
 ----------
-K: TopOpeBRepDS_Kind
 
 Returns
 -------
+K: TopOpeBRepDS_Kind
 G: int
 ") Value;
-		const TopOpeBRepDS_ListOfInterference & Value(TopOpeBRepDS_Kind & K, Standard_Integer &OutValue);
+		const TopOpeBRepDS_ListOfInterference & Value(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
 };
 

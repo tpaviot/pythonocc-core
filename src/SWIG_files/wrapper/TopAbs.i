@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topabs.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -257,13 +258,12 @@ TopAbs_ShapeEnum
 Parameters
 ----------
 theTypeString: char *
-theType: TopAbs_ShapeEnum
 
 Returns
 -------
-bool
+theType: TopAbs_ShapeEnum
 ") ShapeTypeFromString;
-		static Standard_Boolean ShapeTypeFromString(const char * theTypeString, TopAbs_ShapeEnum & theType);
+		static Standard_Boolean ShapeTypeFromString(const char * theTypeString, TopAbs_ShapeEnum &OutValue);
 
 		/****************** ShapeTypeToString ******************/
 		/**** md5 signature: 47d69b9834372b84634fd7993fa38cf6 ****/

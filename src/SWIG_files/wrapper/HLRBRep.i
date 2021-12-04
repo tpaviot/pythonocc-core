@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrbrep.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -3344,14 +3345,13 @@ Parameters
 ----------
 p1: float
 p2: float
-stbef: TopAbs_State
-staf: TopAbs_State
 
 Returns
 -------
-None
+stbef: TopAbs_State
+staf: TopAbs_State
 ") EdgeState;
-		void EdgeState(const Standard_Real p1, const Standard_Real p2, TopAbs_State & stbef, TopAbs_State & staf);
+		void EdgeState(const Standard_Real p1, const Standard_Real p2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****************** FDataArray ******************/
 		/**** md5 signature: 8b996173cc67c06948a23a9f10e25897 ****/

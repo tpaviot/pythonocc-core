@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlralgo.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -834,14 +835,13 @@ None
 
 Parameters
 ----------
-stbef: TopAbs_State
-staft: TopAbs_State
 
 Returns
 -------
-None
+stbef: TopAbs_State
+staft: TopAbs_State
 ") State3D;
-		void State3D(TopAbs_State & stbef, TopAbs_State & staft);
+		void State3D(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****************** Value2D ******************/
 		/**** md5 signature: 586a611fdcd63cd04637ed47ac03c68e ****/

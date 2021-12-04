@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdimtolobjects
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -898,13 +899,13 @@ float
 
 Parameters
 ----------
-theModifier: XCAFDimTolObjects_DatumModifWithValue
 
 Returns
 -------
+theModifier: XCAFDimTolObjects_DatumModifWithValue
 theValue: float
 ") GetModifierWithValue;
-		void GetModifierWithValue(XCAFDimTolObjects_DatumModifWithValue & theModifier, Standard_Real &OutValue);
+		void GetModifierWithValue(XCAFDimTolObjects_DatumModifWithValue &OutValue, Standard_Real &OutValue);
 
 		/****************** GetModifiers ******************/
 		/**** md5 signature: b5adaae02ed3bb65adc417ee83177849 ****/
@@ -1382,14 +1383,14 @@ None
 
 Parameters
 ----------
-theFormVariance: XCAFDimTolObjects_DimensionFormVariance
-theGrade: XCAFDimTolObjects_DimensionGrade
 
 Returns
 -------
 theHole: bool
+theFormVariance: XCAFDimTolObjects_DimensionFormVariance
+theGrade: XCAFDimTolObjects_DimensionGrade
 ") GetClassOfTolerance;
-		Standard_Boolean GetClassOfTolerance(Standard_Boolean &OutValue, XCAFDimTolObjects_DimensionFormVariance & theFormVariance, XCAFDimTolObjects_DimensionGrade & theGrade);
+		Standard_Boolean GetClassOfTolerance(Standard_Boolean &OutValue, XCAFDimTolObjects_DimensionFormVariance &OutValue, XCAFDimTolObjects_DimensionGrade &OutValue);
 
 		/****************** GetDescription ******************/
 		/**** md5 signature: b0dd6b983c7652817465a50088ed69a2 ****/

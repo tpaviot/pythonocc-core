@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeprocess.html
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -639,13 +640,12 @@ GeomAbs_Shape
 Parameters
 ----------
 param: char *
-val: GeomAbs_Shape
 
 Returns
 -------
-bool
+val: GeomAbs_Shape
 ") GetContinuity;
-		Standard_Boolean GetContinuity(const char * param, GeomAbs_Shape & val);
+		Standard_Boolean GetContinuity(const char * param, GeomAbs_Shape &OutValue);
 
 		/****************** GetDetalisation ******************/
 		/**** md5 signature: 39c7fd043c5ef7a11d722274e748b546 ****/
