@@ -23,6 +23,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include <TopoDS.hxx>
 %}
 
+%include <typemaps.i>
+
 /*
 Standard_Real & function transformation
 */
@@ -186,3 +188,31 @@ Standard_Boolean & function transformation
     }
     return resultobj;
 }
+
+
+%define ENUM_OUTPUT_TYPEMAPS(TYPE)
+
+%typemap(in,numinputs=0) TYPE &OutValue(TYPE temp) {
+    $1 = &temp;
+}
+
+%typemap(argout) TYPE &OutValue {
+    PyObject *o, *o2, *o3;
+    o = PyInt_FromLong(*$1);
+    if ((!$result) || ($result == Py_None)) {
+        $result = o;
+    } else {
+        if (!PyTuple_Check($result)) {
+            PyObject *o2 = $result;
+            $result = PyTuple_New(1);
+            PyTuple_SetItem($result,0,o2);
+        }
+        o3 = PyTuple_New(1);
+        PyTuple_SetItem(o3,0,o);
+        o2 = $result;
+        $result = PySequence_Concat(o2,o3);
+        Py_DECREF(o2);
+        Py_DECREF(o3);
+    }
+}
+%enddef 
