@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_quantity.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -2148,13 +2149,12 @@ bool
 Parameters
 ----------
 theName: char *
-theColor: Quantity_NameOfColor
 
 Returns
 -------
-bool
+theColor: Quantity_NameOfColor
 ") ColorFromName;
-		static Standard_Boolean ColorFromName(const char * theName, Quantity_NameOfColor & theColor);
+		static Standard_Boolean ColorFromName(const char * theName, Quantity_NameOfColor &OutValue);
 
 		/****************** ColorFromName ******************/
 		/**** md5 signature: 22de797bd27b14fa445f1fc6383d0e84 ****/

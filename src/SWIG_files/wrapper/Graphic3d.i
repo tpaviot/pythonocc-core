@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_graphic3d.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -11017,13 +11018,12 @@ bool
 Parameters
 ----------
 theName: char *
-theMat: Graphic3d_NameOfMaterial
 
 Returns
 -------
-bool
+theMat: Graphic3d_NameOfMaterial
 ") MaterialFromName;
-		static Standard_Boolean MaterialFromName(const char * theName, Graphic3d_NameOfMaterial & theMat);
+		static Standard_Boolean MaterialFromName(const char * theName, Graphic3d_NameOfMaterial &OutValue);
 
 		/****************** MaterialFromName ******************/
 		/**** md5 signature: 5208b8b1000547cce2f00804c81986c6 ****/

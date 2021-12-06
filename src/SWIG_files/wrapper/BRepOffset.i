@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -272,15 +273,14 @@ Parameters
 ----------
 Surface: Geom_Surface
 Offset: float
-theStatus: BRepOffset_Status
 allowC0: bool,optional
 	default value is Standard_False
 
 Returns
 -------
-opencascade::handle<Geom_Surface>
+theStatus: BRepOffset_Status
 ") Surface;
-		static opencascade::handle<Geom_Surface> Surface(const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Offset, BRepOffset_Status & theStatus, Standard_Boolean allowC0 = Standard_False);
+		static opencascade::handle<Geom_Surface> Surface(const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Offset, BRepOffset_Status &OutValue, Standard_Boolean allowC0 = Standard_False);
 
 };
 

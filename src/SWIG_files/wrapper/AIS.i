@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -2099,13 +2100,13 @@ Parameters
 aDrawer: Prs3d_Drawer
 TheTypeOfAttributes: AIS_TypeOfAttribute
 aCol: Quantity_NameOfColor
-aTyp: Aspect_TypeOfLine
 
 Returns
 -------
 aWidth: float
+aTyp: Aspect_TypeOfLine
 ") GetLineAtt;
-		static void GetLineAtt(const opencascade::handle<Prs3d_Drawer> & aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_NameOfColor & aCol, Standard_Real &OutValue, Aspect_TypeOfLine & aTyp);
+		static void GetLineAtt(const opencascade::handle<Prs3d_Drawer> & aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_NameOfColor & aCol, Standard_Real &OutValue, Aspect_TypeOfLine &OutValue);
 
 		/****************** GetLineColor ******************/
 		/**** md5 signature: eba7d0fb34c3645d05f21c7b3545cd3c ****/

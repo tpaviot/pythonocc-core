@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_v3d.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -504,13 +505,12 @@ V3d_TypeOfOrientation
 Parameters
 ----------
 theTypeString: char *
-theType: V3d_TypeOfOrientation
 
 Returns
 -------
-bool
+theType: V3d_TypeOfOrientation
 ") TypeOfOrientationFromString;
-		static Standard_Boolean TypeOfOrientationFromString(const char * theTypeString, V3d_TypeOfOrientation & theType);
+		static Standard_Boolean TypeOfOrientationFromString(const char * theTypeString, V3d_TypeOfOrientation &OutValue);
 
 		/****************** TypeOfOrientationToString ******************/
 		/**** md5 signature: 73659bdc699005210713bf8f9d6fab86 ****/

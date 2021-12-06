@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_meshvs.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -917,13 +918,13 @@ Parameters
 ID: int
 IsElement: bool
 Coords: TColStd_Array1OfReal
-Type: MeshVS_EntityType
 
 Returns
 -------
 NbNodes: int
+Type: MeshVS_EntityType
 ") GetGeom;
-		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType & Type);
+		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
 
 		/****************** GetGeomType ******************/
 		/**** md5 signature: eb6b64ef92d6a945955b31254bcb6494 ****/
@@ -934,13 +935,12 @@ Parameters
 ----------
 ID: int
 IsElement: bool
-Type: MeshVS_EntityType
 
 Returns
 -------
-bool
+Type: MeshVS_EntityType
 ") GetGeomType;
-		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType & Type);
+		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType &OutValue);
 
 		/****************** GetGroup ******************/
 		/**** md5 signature: 1a3c1478c7f404ba800dbc98c1c57d18 ****/
@@ -950,14 +950,13 @@ bool
 Parameters
 ----------
 Id: int
-Type: MeshVS_EntityType
 Ids: TColStd_PackedMapOfInteger
 
 Returns
 -------
-bool
+Type: MeshVS_EntityType
 ") GetGroup;
-		virtual Standard_Boolean GetGroup(const Standard_Integer Id, MeshVS_EntityType & Type, TColStd_PackedMapOfInteger & Ids);
+		virtual Standard_Boolean GetGroup(const Standard_Integer Id, MeshVS_EntityType &OutValue, TColStd_PackedMapOfInteger & Ids);
 
 		/****************** GetGroupAddr ******************/
 		/**** md5 signature: f59ca8de5242f70e386e2080c54c525e ****/
@@ -3382,13 +3381,13 @@ Parameters
 ID: int
 IsElement: bool
 Coords: TColStd_Array1OfReal
-Type: MeshVS_EntityType
 
 Returns
 -------
 NbNodes: int
+Type: MeshVS_EntityType
 ") GetGeom;
-		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType & Type);
+		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
 
 		/****************** GetGeomType ******************/
 		/**** md5 signature: bb5b618dd799ac6b0b83296054d88ff0 ****/
@@ -3399,13 +3398,12 @@ Parameters
 ----------
 ID: int
 IsElement: bool
-Type: MeshVS_EntityType
 
 Returns
 -------
-bool
+Type: MeshVS_EntityType
 ") GetGeomType;
-		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType & Type);
+		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType &OutValue);
 
 		/****************** GetMagnify ******************/
 		/**** md5 signature: c25f154c290857e0adeac01588dbd60a ****/

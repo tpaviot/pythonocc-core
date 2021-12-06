@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_interface.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -9286,15 +9287,14 @@ int
 Parameters
 ----------
 num: int
-ptype: Interface_ParamType
 ent: Standard_Transient
 val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+ptype: Interface_ParamType
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 761c0b32c3eb0e5da7ddfca321a3322d ****/

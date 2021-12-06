@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsdim.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -581,13 +582,13 @@ Parameters
 aFace: TopoDS_Face
 aPlane: gp_Pln
 aSurf: Geom_Surface
-aSurfType: PrsDim_KindOfSurface
 
 Returns
 -------
+aSurfType: PrsDim_KindOfSurface
 Offset: float
 ") GetPlaneFromFace;
-		static Standard_Boolean GetPlaneFromFace(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurf, PrsDim_KindOfSurface & aSurfType, Standard_Real &OutValue);
+		static Standard_Boolean GetPlaneFromFace(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurf, PrsDim_KindOfSurface &OutValue, Standard_Real &OutValue);
 
 		/****************** InDomain ******************/
 		/**** md5 signature: e1a93aaf6fc6d1a74b142e3804975f9e ****/
@@ -660,13 +661,13 @@ Parameters
 aFace: TopoDS_Face
 aPlane: gp_Pln
 aSurface: Geom_Surface
-aSurfaceType: PrsDim_KindOfSurface
 
 Returns
 -------
+aSurfaceType: PrsDim_KindOfSurface
 anOffset: float
 ") InitFaceLength;
-		static void InitFaceLength(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurface, PrsDim_KindOfSurface & aSurfaceType, Standard_Real &OutValue);
+		static void InitFaceLength(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurface, PrsDim_KindOfSurface &OutValue, Standard_Real &OutValue);
 
 		/****************** InitLengthBetweenCurvilinearFaces ******************/
 		/**** md5 signature: a415f028d8574f37e0030484cbbc493a ****/
@@ -2638,13 +2639,12 @@ FirstAttach: gp_Pnt
 SecondAttach: gp_Pnt
 FirstExtreme: gp_Pnt
 SecondExtreme: gp_Pnt
-SymbolPrs: DsgPrs_ArrowSide
 
 Returns
 -------
-None
+SymbolPrs: DsgPrs_ArrowSide
 ") ComputeOneEdgeOneVertexLength;
-		static void ComputeOneEdgeOneVertexLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide & SymbolPrs);
+		static void ComputeOneEdgeOneVertexLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
 		/****************** ComputeTwoEdgesLength ******************/
 		/**** md5 signature: 8f004ba6dc5773a9742094e3b3f3f885 ****/
@@ -2667,13 +2667,12 @@ FirstAttach: gp_Pnt
 SecondAttach: gp_Pnt
 FirstExtreme: gp_Pnt
 SecondExtreme: gp_Pnt
-SymbolPrs: DsgPrs_ArrowSide
 
 Returns
 -------
-None
+SymbolPrs: DsgPrs_ArrowSide
 ") ComputeTwoEdgesLength;
-		static void ComputeTwoEdgesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge & FirstEdge, const TopoDS_Edge & SecondEdge, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide & SymbolPrs);
+		static void ComputeTwoEdgesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge & FirstEdge, const TopoDS_Edge & SecondEdge, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
 		/****************** ComputeTwoVerticesLength ******************/
 		/**** md5 signature: c2cf26f4f3674622aff9461abba45f4c ****/
@@ -2697,13 +2696,12 @@ FirstAttach: gp_Pnt
 SecondAttach: gp_Pnt
 FirstExtreme: gp_Pnt
 SecondExtreme: gp_Pnt
-SymbolPrs: DsgPrs_ArrowSide
 
 Returns
 -------
-None
+SymbolPrs: DsgPrs_ArrowSide
 ") ComputeTwoVerticesLength;
-		static void ComputeTwoVerticesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex & FirstVertex, const TopoDS_Vertex & SecondVertex, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, const PrsDim_TypeOfDist TypeDist, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide & SymbolPrs);
+		static void ComputeTwoVerticesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex & FirstVertex, const TopoDS_Vertex & SecondVertex, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, const PrsDim_TypeOfDist TypeDist, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
 		/****************** SetShape3 ******************/
 		/**** md5 signature: 0a91376bd67771bc8ca45b6e52a2dec0 ****/

@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcafcontrol.ht
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -514,13 +515,12 @@ opencascade::handle<TCollection_HAsciiString>
 Parameters
 ----------
 theDescription: TCollection_HAsciiString
-theType: XCAFDimTolObjects_DatumTargetType
 
 Returns
 -------
-bool
+theType: XCAFDimTolObjects_DatumTargetType
 ") GetDatumTargetType;
-		static Standard_Boolean GetDatumTargetType(const opencascade::handle<TCollection_HAsciiString> & theDescription, XCAFDimTolObjects_DatumTargetType & theType);
+		static Standard_Boolean GetDatumTargetType(const opencascade::handle<TCollection_HAsciiString> & theDescription, XCAFDimTolObjects_DatumTargetType &OutValue);
 
 		/****************** GetDimClassOfTolerance ******************/
 		/**** md5 signature: ef6490f81a506f3768ac8675b310839a ****/
@@ -530,14 +530,14 @@ bool
 Parameters
 ----------
 theLAF: StepShape_LimitsAndFits
-theFV: XCAFDimTolObjects_DimensionFormVariance
-theG: XCAFDimTolObjects_DimensionGrade
 
 Returns
 -------
 theHolle: bool
+theFV: XCAFDimTolObjects_DimensionFormVariance
+theG: XCAFDimTolObjects_DimensionGrade
 ") GetDimClassOfTolerance;
-		static void GetDimClassOfTolerance(const opencascade::handle<StepShape_LimitsAndFits> & theLAF, Standard_Boolean &OutValue, XCAFDimTolObjects_DimensionFormVariance & theFV, XCAFDimTolObjects_DimensionGrade & theG);
+		static void GetDimClassOfTolerance(const opencascade::handle<StepShape_LimitsAndFits> & theLAF, Standard_Boolean &OutValue, XCAFDimTolObjects_DimensionFormVariance &OutValue, XCAFDimTolObjects_DimensionGrade &OutValue);
 
 		/****************** GetDimModifierName ******************/
 		/**** md5 signature: 7409a4f0a6428922b61125f11f349438 ****/
@@ -593,13 +593,12 @@ opencascade::handle<TCollection_HAsciiString>
 Parameters
 ----------
 theDescription: TCollection_HAsciiString
-theType: XCAFDimTolObjects_DimensionQualifier
 
 Returns
 -------
-bool
+theType: XCAFDimTolObjects_DimensionQualifier
 ") GetDimQualifierType;
-		static Standard_Boolean GetDimQualifierType(const opencascade::handle<TCollection_HAsciiString> & theDescription, XCAFDimTolObjects_DimensionQualifier & theType);
+		static Standard_Boolean GetDimQualifierType(const opencascade::handle<TCollection_HAsciiString> & theDescription, XCAFDimTolObjects_DimensionQualifier &OutValue);
 
 		/****************** GetDimType ******************/
 		/**** md5 signature: 788b6cc24db4fba94bcd10595830a80e ****/
@@ -609,13 +608,12 @@ bool
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theType: XCAFDimTolObjects_DimensionType
 
 Returns
 -------
-bool
+theType: XCAFDimTolObjects_DimensionType
 ") GetDimType;
-		static Standard_Boolean GetDimType(const opencascade::handle<TCollection_HAsciiString> & theName, XCAFDimTolObjects_DimensionType & theType);
+		static Standard_Boolean GetDimType(const opencascade::handle<TCollection_HAsciiString> & theName, XCAFDimTolObjects_DimensionType &OutValue);
 
 		/****************** GetDimTypeName ******************/
 		/**** md5 signature: d0af1b6c0d21c8b4d43ead92ca12a38a ****/
@@ -732,13 +730,12 @@ opencascade::handle<StepVisual_TessellatedGeometricSet>
 Parameters
 ----------
 theDescription: TCollection_HAsciiString
-theType: XCAFDimTolObjects_GeomToleranceTypeValue
 
 Returns
 -------
-bool
+theType: XCAFDimTolObjects_GeomToleranceTypeValue
 ") GetTolValueType;
-		static Standard_Boolean GetTolValueType(const opencascade::handle<TCollection_HAsciiString> & theDescription, XCAFDimTolObjects_GeomToleranceTypeValue & theType);
+		static Standard_Boolean GetTolValueType(const opencascade::handle<TCollection_HAsciiString> & theDescription, XCAFDimTolObjects_GeomToleranceTypeValue &OutValue);
 
 		/****************** GetTolValueType ******************/
 		/**** md5 signature: 1c9751f63b6898c001757a599f0da519 ****/

@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gccent.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -233,13 +234,12 @@ GccEnt_Position
 Parameters
 ----------
 thePositionString: char *
-thePosition: GccEnt_Position
 
 Returns
 -------
-bool
+thePosition: GccEnt_Position
 ") PositionFromString;
-		static Standard_Boolean PositionFromString(const char * thePositionString, GccEnt_Position & thePosition);
+		static Standard_Boolean PositionFromString(const char * thePositionString, GccEnt_Position &OutValue);
 
 		/****************** PositionToString ******************/
 		/**** md5 signature: aa141e44eefa2445ec255edf68a240f8 ****/

@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_vrmldata.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -261,14 +262,13 @@ bool
 
 Parameters
 ----------
-outStat: VrmlData_ErrorStatus
 theStat: VrmlData_ErrorStatus
 
 Returns
 -------
-bool
+outStat: VrmlData_ErrorStatus
 ") OK;
-		static Standard_Boolean OK(VrmlData_ErrorStatus & outStat, const VrmlData_ErrorStatus theStat);
+		static Standard_Boolean OK(VrmlData_ErrorStatus &OutValue, const VrmlData_ErrorStatus theStat);
 
 		/****************** Read ******************/
 		/**** md5 signature: 1ad536bb6f0a141f658023ed487ae5c4 ****/

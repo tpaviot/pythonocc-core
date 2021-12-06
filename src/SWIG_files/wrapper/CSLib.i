@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cslib.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -210,14 +211,13 @@ Parameters
 D1U: gp_Vec
 D1V: gp_Vec
 SinTol: float
-theStatus: CSLib_DerivativeStatus
 Normal: gp_Dir
 
 Returns
 -------
-None
+theStatus: CSLib_DerivativeStatus
 ") Normal;
-		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real SinTol, CSLib_DerivativeStatus & theStatus, gp_Dir & Normal);
+		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real SinTol, CSLib_DerivativeStatus &OutValue, gp_Dir & Normal);
 
 		/****************** Normal ******************/
 		/**** md5 signature: c6f714a72df04467bcde57a861427ba8 ****/
@@ -232,14 +232,14 @@ D2U: gp_Vec
 D2V: gp_Vec
 D2UV: gp_Vec
 SinTol: float
-theStatus: CSLib_NormalStatus
 Normal: gp_Dir
 
 Returns
 -------
 Done: bool
+theStatus: CSLib_NormalStatus
 ") Normal;
-		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const gp_Vec & D2U, const gp_Vec & D2V, const gp_Vec & D2UV, const Standard_Real SinTol, Standard_Boolean &OutValue, CSLib_NormalStatus & theStatus, gp_Dir & Normal);
+		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const gp_Vec & D2U, const gp_Vec & D2V, const gp_Vec & D2UV, const Standard_Real SinTol, Standard_Boolean &OutValue, CSLib_NormalStatus &OutValue, gp_Dir & Normal);
 
 		/****************** Normal ******************/
 		/**** md5 signature: c279b71fb514c274c1c831d9fc8fe04b ****/
@@ -251,14 +251,13 @@ Parameters
 D1U: gp_Vec
 D1V: gp_Vec
 MagTol: float
-theStatus: CSLib_NormalStatus
 Normal: gp_Dir
 
 Returns
 -------
-None
+theStatus: CSLib_NormalStatus
 ") Normal;
-		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real MagTol, CSLib_NormalStatus & theStatus, gp_Dir & Normal);
+		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real MagTol, CSLib_NormalStatus &OutValue, gp_Dir & Normal);
 
 		/****************** Normal ******************/
 		/**** md5 signature: 88a6c5086247b570883b6e6a97c94c26 ****/
@@ -276,15 +275,15 @@ Umin: float
 Umax: float
 Vmin: float
 Vmax: float
-theStatus: CSLib_NormalStatus
 Normal: gp_Dir
 
 Returns
 -------
+theStatus: CSLib_NormalStatus
 OrderU: int
 OrderV: int
 ") Normal;
-		static void Normal(const Standard_Integer MaxOrder, const TColgp_Array2OfVec & DerNUV, const Standard_Real MagTol, const Standard_Real U, const Standard_Real V, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax, CSLib_NormalStatus & theStatus, gp_Dir & Normal, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void Normal(const Standard_Integer MaxOrder, const TColgp_Array2OfVec & DerNUV, const Standard_Real MagTol, const Standard_Real U, const Standard_Real V, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax, CSLib_NormalStatus &OutValue, gp_Dir & Normal, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 };
 

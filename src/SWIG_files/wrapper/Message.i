@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_message.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -683,13 +684,12 @@ TCollection_AsciiString
 Parameters
 ----------
 theString: char *
-theType: Message_MetricType
 
 Returns
 -------
-bool
+theType: Message_MetricType
 ") MetricFromString;
-		static Standard_Boolean MetricFromString(const char * theString, Message_MetricType & theType);
+		static Standard_Boolean MetricFromString(const char * theString, Message_MetricType &OutValue);
 
 		/****************** MetricFromString ******************/
 		/**** md5 signature: 7bcfa45f3a495293ba4a5aaadbb2c36c ****/
@@ -729,13 +729,12 @@ char *
 Parameters
 ----------
 theMemInfo: OSD_MemInfo::Counter
-theMetric: Message_MetricType
 
 Returns
 -------
-bool
+theMetric: Message_MetricType
 ") ToMessageMetric;
-		static Standard_Boolean ToMessageMetric(const OSD_MemInfo::Counter theMemInfo, Message_MetricType & theMetric);
+		static Standard_Boolean ToMessageMetric(const OSD_MemInfo::Counter theMemInfo, Message_MetricType &OutValue);
 
 		/****************** ToOSDMetric ******************/
 		/**** md5 signature: 24e960587fb400b2dc0ce233166ebe2c ****/

@@ -31,6 +31,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfi3d.html"
 %include ../common/CommonIncludes.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
+%include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 
@@ -153,13 +154,14 @@ Parameters
 S1: BRepAdaptor_Surface
 S2: BRepAdaptor_Surface
 E: TopoDS_Edge
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
 
 Returns
 -------
-Or1: TopAbs_Orientation
-Or2: TopAbs_Orientation
+int
 ") ConcaveSide;
-		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue);
+		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation & Or1, TopAbs_Orientation & Or2);
 
 		/****************** DefineConnectType ******************/
 		/**** md5 signature: cff62fae1d6d67c4fc161f59e5544eaa ****/
@@ -206,16 +208,17 @@ bool
 
 Parameters
 ----------
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
 OrSave1: TopAbs_Orientation
 OrSave2: TopAbs_Orientation
 ChoixSauv: int
 
 Returns
 -------
-Or1: TopAbs_Orientation
-Or2: TopAbs_Orientation
+int
 ") NextSide;
-		static Standard_Integer NextSide(TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue, const TopAbs_Orientation OrSave1, const TopAbs_Orientation OrSave2, const Standard_Integer ChoixSauv);
+		static Standard_Integer NextSide(TopAbs_Orientation & Or1, TopAbs_Orientation & Or2, const TopAbs_Orientation OrSave1, const TopAbs_Orientation OrSave2, const Standard_Integer ChoixSauv);
 
 		/****************** NextSide ******************/
 		/**** md5 signature: cdb55087e2f58002d8dd06337ade33f1 ****/
@@ -224,14 +227,15 @@ Or2: TopAbs_Orientation
 
 Parameters
 ----------
+Or: TopAbs_Orientation
 OrSave: TopAbs_Orientation
 OrFace: TopAbs_Orientation
 
 Returns
 -------
-Or: TopAbs_Orientation
+None
 ") NextSide;
-		static void NextSide(TopAbs_Orientation &OutValue, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
+		static void NextSide(TopAbs_Orientation & Or, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
 
 		/****************** SameSide ******************/
 		/**** md5 signature: cb26ae9b069d0a97c5fa9e8f947264b7 ****/
