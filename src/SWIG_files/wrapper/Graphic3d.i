@@ -1446,6 +1446,7 @@ Graphic3d_NOT_ENV_UNKNOWN = Graphic3d_NameOfTextureEnv.Graphic3d_NOT_ENV_UNKNOWN
 %wrap_handle(Graphic3d_Text)
 %wrap_handle(Graphic3d_TextureParams)
 %wrap_handle(Graphic3d_TextureRoot)
+%wrap_handle(Graphic3d_TransformPers)
 %wrap_handle(Graphic3d_ViewAffinity)
 %wrap_handle(Graphic3d_ArrayOfPoints)
 %wrap_handle(Graphic3d_ArrayOfPolygons)
@@ -15444,6 +15445,279 @@ None
 /********************************
 * class Graphic3d_TransformPers *
 ********************************/
+class Graphic3d_TransformPers : public Standard_Transient {
+	public:
+		class PersParams3d {};
+		class PersParams2d {};
+		/****************** Graphic3d_TransformPers ******************/
+		/**** md5 signature: e5399f0d92c32c30dda437b6c88cb861 ****/
+		%feature("compactdefaultargs") Graphic3d_TransformPers;
+		%feature("autodoc", "Set transformation persistence.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+
+Returns
+-------
+None
+") Graphic3d_TransformPers;
+		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode);
+
+		/****************** Graphic3d_TransformPers ******************/
+		/**** md5 signature: a245a37190e9f18adce1d9bb26438568 ****/
+		%feature("compactdefaultargs") Graphic3d_TransformPers;
+		%feature("autodoc", "Set zoom/rotate transformation persistence with an anchor 3d point. anchor point defines the origin of local coordinate system within world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+thePnt: gp_Pnt
+
+Returns
+-------
+None
+") Graphic3d_TransformPers;
+		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePnt);
+
+		/****************** Graphic3d_TransformPers ******************/
+		/**** md5 signature: f98fee54d16912d9416a71ed8ddb5ba7 ****/
+		%feature("compactdefaultargs") Graphic3d_TransformPers;
+		%feature("autodoc", "Set 2d/trihedron transformation persistence with a corner and 2d offset. 2d offset defines the origin of local coordinate system as projection of 2d point on screen plane into world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d. the offset is a positive displacement from the view corner in pixels.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+theCorner: Aspect_TypeOfTriedronPosition
+theOffset: Graphic3d_Vec2i,optional
+	default value is Graphic3d_Vec2i(0,0)
+
+Returns
+-------
+None
+") Graphic3d_TransformPers;
+		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset = Graphic3d_Vec2i(0,0));
+
+		/****************** AnchorPoint ******************/
+		/**** md5 signature: 24c970dd532b9a0543ee0f7fb95708ac ****/
+		%feature("compactdefaultargs") AnchorPoint;
+		%feature("autodoc", "Return the anchor point for zoom/rotate transformation persistence.
+
+Returns
+-------
+gp_Pnt
+") AnchorPoint;
+		gp_Pnt AnchorPoint();
+
+		/****************** Corner2d ******************/
+		/**** md5 signature: 47d0ef849af382ad94cf96ab6591598c ****/
+		%feature("compactdefaultargs") Corner2d;
+		%feature("autodoc", "Return the corner for 2d/trihedron transformation persistence.
+
+Returns
+-------
+Aspect_TypeOfTriedronPosition
+") Corner2d;
+		Aspect_TypeOfTriedronPosition Corner2d();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** Flags ******************/
+		/**** md5 signature: 1ee922393b058833fc0aafbba922310e ****/
+		%feature("compactdefaultargs") Flags;
+		%feature("autodoc", "Transformation persistence mode flags.
+
+Returns
+-------
+Graphic3d_TransModeFlags
+") Flags;
+		Graphic3d_TransModeFlags Flags();
+
+		/****************** FromDeprecatedParams ******************/
+		/**** md5 signature: db13e8b665f426b8203dd06a66527b0b ****/
+		%feature("compactdefaultargs") FromDeprecatedParams;
+		%feature("autodoc", "Create graphic3d_transformpers instance from deprecated parameters set decoding 2d corner + offset parameters from 3d point.
+
+Parameters
+----------
+theFlag: Graphic3d_TransModeFlags
+thePoint: gp_Pnt
+
+Returns
+-------
+opencascade::handle<Graphic3d_TransformPers>
+") FromDeprecatedParams;
+		static opencascade::handle<Graphic3d_TransformPers> FromDeprecatedParams(Graphic3d_TransModeFlags theFlag, const gp_Pnt & thePoint);
+
+		/****************** IsTrihedronOr2d ******************/
+		/**** md5 signature: 6f4a3b2e29bd3584ee33aa1290e6374b ****/
+		%feature("compactdefaultargs") IsTrihedronOr2d;
+		%feature("autodoc", "Return true if specified mode is 2d/trihedron transformation persistence.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+
+Returns
+-------
+bool
+") IsTrihedronOr2d;
+		static Standard_Boolean IsTrihedronOr2d(Graphic3d_TransModeFlags theMode);
+
+		/****************** IsTrihedronOr2d ******************/
+		/**** md5 signature: 1d764a4c8a5f9df1f68e36da91f68ec6 ****/
+		%feature("compactdefaultargs") IsTrihedronOr2d;
+		%feature("autodoc", "Return true for graphic3d_tmf_triedronpers and graphic3d_tmf_2d modes.
+
+Returns
+-------
+bool
+") IsTrihedronOr2d;
+		Standard_Boolean IsTrihedronOr2d();
+
+		/****************** IsZoomOrRotate ******************/
+		/**** md5 signature: ee67f3edf6ab921f54b6730d4e22548f ****/
+		%feature("compactdefaultargs") IsZoomOrRotate;
+		%feature("autodoc", "Return true if specified mode is zoom/rotate transformation persistence.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+
+Returns
+-------
+bool
+") IsZoomOrRotate;
+		static Standard_Boolean IsZoomOrRotate(Graphic3d_TransModeFlags theMode);
+
+		/****************** IsZoomOrRotate ******************/
+		/**** md5 signature: e46098cc01346c0c4f43e28969b89421 ****/
+		%feature("compactdefaultargs") IsZoomOrRotate;
+		%feature("autodoc", "Return true for graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers modes.
+
+Returns
+-------
+bool
+") IsZoomOrRotate;
+		Standard_Boolean IsZoomOrRotate();
+
+		/****************** Mode ******************/
+		/**** md5 signature: fc769168c308516a63fd1a068ba7ec96 ****/
+		%feature("compactdefaultargs") Mode;
+		%feature("autodoc", "Transformation persistence mode flags.
+
+Returns
+-------
+Graphic3d_TransModeFlags
+") Mode;
+		Graphic3d_TransModeFlags Mode();
+
+		/****************** Offset2d ******************/
+		/**** md5 signature: 31558c339ca324947c39e15706cc227b ****/
+		%feature("compactdefaultargs") Offset2d;
+		%feature("autodoc", "Return the offset from the corner for 2d/trihedron transformation persistence.
+
+Returns
+-------
+Graphic3d_Vec2i
+") Offset2d;
+		Graphic3d_Vec2i Offset2d();
+
+		/****************** SetAnchorPoint ******************/
+		/**** md5 signature: 791d6ffdf9f2a9e21b4091951f17aca3 ****/
+		%feature("compactdefaultargs") SetAnchorPoint;
+		%feature("autodoc", "Set the anchor point for zoom/rotate transformation persistence.
+
+Parameters
+----------
+thePnt: gp_Pnt
+
+Returns
+-------
+None
+") SetAnchorPoint;
+		void SetAnchorPoint(const gp_Pnt & thePnt);
+
+		/****************** SetCorner2d ******************/
+		/**** md5 signature: 70376b1b4341ac8d3e2ef2d5291a020c ****/
+		%feature("compactdefaultargs") SetCorner2d;
+		%feature("autodoc", "Set the corner for 2d/trihedron transformation persistence.
+
+Parameters
+----------
+thePos: Aspect_TypeOfTriedronPosition
+
+Returns
+-------
+None
+") SetCorner2d;
+		void SetCorner2d(const Aspect_TypeOfTriedronPosition thePos);
+
+		/****************** SetOffset2d ******************/
+		/**** md5 signature: b9845b0a9d8b8577262ee117bc4e9eb9 ****/
+		%feature("compactdefaultargs") SetOffset2d;
+		%feature("autodoc", "Set the offset from the corner for 2d/trihedron transformation persistence.
+
+Parameters
+----------
+theOffset: Graphic3d_Vec2i
+
+Returns
+-------
+None
+") SetOffset2d;
+		void SetOffset2d(const Graphic3d_Vec2i & theOffset);
+
+		/****************** SetPersistence ******************/
+		/**** md5 signature: 8d6cba5c3f91ef1d2aeb958fcae727e2 ****/
+		%feature("compactdefaultargs") SetPersistence;
+		%feature("autodoc", "Set zoom/rotate transformation persistence with an anchor 3d point. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+thePnt: gp_Pnt
+
+Returns
+-------
+None
+") SetPersistence;
+		void SetPersistence(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePnt);
+
+		/****************** SetPersistence ******************/
+		/**** md5 signature: a0a9f08be007f7ac698b81db815d9f07 ****/
+		%feature("compactdefaultargs") SetPersistence;
+		%feature("autodoc", "Set 2d/trihedron transformation persistence with a corner and 2d offset. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d.
+
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+theCorner: Aspect_TypeOfTriedronPosition
+theOffset: Graphic3d_Vec2i
+
+Returns
+-------
+None
+") SetPersistence;
+		void SetPersistence(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset);
+
+};
+
+
+%make_alias(Graphic3d_TransformPers)
+
+%extend Graphic3d_TransformPers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*************************************
 * class Graphic3d_UniformValueTypeID *
 *************************************/
@@ -20956,10 +21230,6 @@ class Graphic3d_Buffer:
 
 @classnotwrapped
 class Graphic3d_IndexBuffer:
-	pass
-
-@classnotwrapped
-class Graphic3d_TransformPers:
 	pass
 
 @classnotwrapped
