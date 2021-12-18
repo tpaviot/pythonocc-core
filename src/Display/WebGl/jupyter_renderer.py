@@ -355,7 +355,7 @@ class JupyterRenderer:
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
-        # a dictionnary of all the shapes belonging to the renderer
+        # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes = {}
 
@@ -572,7 +572,7 @@ class JupyterRenderer:
         vertex_color: optional
         quality: optional, 1.0 by default. If set to something lower than 1.0,
                       mesh will be more precise. If set to something higher than 1.0,
-                      mesh will be less precise, i.e. lower numer of triangles.
+                      mesh will be less precise, i.e. lower number of triangles.
         transparency: optional, False by default (opaque).
         opacity: optional, float, by default to 1 (opaque). if transparency is set to True,
                  1. is fully opaque, 0. is fully transparent.

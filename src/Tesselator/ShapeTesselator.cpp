@@ -93,7 +93,7 @@ void ShapeTesselator::SetDeviation(Standard_Real aDeviation)
 void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer ExpFace;
-    // clean shape to remove any previous tringulation
+    // clean shape to remove any previous triangulation
     BRepTools::Clean(myShape);
     //Triangulate
     BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);

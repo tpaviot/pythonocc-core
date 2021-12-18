@@ -57,7 +57,7 @@ def export_edgedata_to_json(edge_hash, point_set):
     for point in point_set:
         for coord in point:
             points_coordinates.append(coord)
-    # then build the dictionnary exported to json
+    # then build the dictionary exported to json
     edges_data = {"metadata": {"version": 4.4,
                                "type": "BufferGeometry",
                                "generator": "pythonocc"},

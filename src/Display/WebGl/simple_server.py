@@ -30,7 +30,7 @@ def get_available_port(port):
     * takes a port number (an integer), above 1024
     * check if it is available
     * if not, take another one
-    * returns the port numer
+    * returns the port number
     """
     if not port > 1024:
         raise AssertionError("port number should be > 1024")

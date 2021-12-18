@@ -434,7 +434,7 @@ class X3DomRenderer:
 
     def generate_html_file(self, axes_plane, axes_plane_zoom_factor):
         """ Generate the HTML file to be rendered wy the web browser
-        axes_plane: a boolean, telles wether or not display axes
+        axes_plane: a boolean, telles whether or not display axes
         """
         with open(self._html_filename, "w") as html_file:
             html_file.write("<!DOCTYPE HTML>\n")

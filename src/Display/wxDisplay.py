@@ -67,7 +67,7 @@ class wxBaseViewer(wx.Panel):
         win_id = self.GetHandle()
         init_time = time.time()
         delta_t = 0.  # elapsed time, initialized to 0 before the while loop
-        # if ever win_id is 0, enter the loop untill it gets a value
+        # if ever win_id is 0, enter the loop until it gets a value
         while win_id == 0 and delta_t < timeout:
             time.sleep(0.1)
             wx.SafeYield()
