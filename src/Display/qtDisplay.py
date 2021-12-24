@@ -138,6 +138,7 @@ class qtViewer3d(qtBaseViewer):
         self._current_cursor = "arrow"
 
     def keyPressEvent(self, event):
+        super(qtViewer3d, self).keyPressEvent(event)
         code = event.key()
         if code in self._key_map:
             self._key_map[code]()
