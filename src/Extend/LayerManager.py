@@ -17,7 +17,7 @@
 
 
 class Layer:
-        def __init__(self, from_display, shape=None, color=0, transparency=0.0):
+    def __init__(self, from_display, shape=None, color=0, transparency=0.0):
         """
         :param from_display: the display from the main code
         :param shape: TopoDS_Shape
