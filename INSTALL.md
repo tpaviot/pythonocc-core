@@ -22,7 +22,7 @@ can compile/use it :
 *   the python programming language (<http://www.python.org>). Python 3.x is required. Python 2
 is officially dropped since the release 7.5.0.
 
-*   OpenCascade 7.5.2 (<https://dev.opencascade.org>), direct source download at https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=0dc2c377fc5a2d8cf065f4ec005e356240cb484c;sf=tgz
+*   OpenCascade 7.5.3 (<https://dev.opencascade.org>), direct source download at https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=fecb042498514186bd37fa621cdcf09eb61899a3;sf=tgz
 
     IMPORTANT: OpenCASCADE has to be compiled using flag -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
 
