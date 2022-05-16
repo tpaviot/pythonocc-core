@@ -642,7 +642,7 @@ class Viewer3d(Display3d):
         """
         Returns the current selected shape
         """
-        return self.selected_shape
+        return self.Context.SelectedShape()
 
     def SelectArea(self, Xmin, Ymin, Xmax, Ymax):
         self.Context.Select(Xmin, Ymin, Xmax, Ymax, self.View, True)
