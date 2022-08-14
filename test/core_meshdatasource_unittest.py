@@ -26,7 +26,6 @@ from OCC.Core.TColStd import TColStd_Array1OfInteger
 
 import numpy as np
 
-os
 STL_BOTTLE_FILENAME = os.path.join(".", "test_io", "bottle_ascii.stl")
 
 
@@ -70,20 +69,24 @@ class TestMeshDataSource(unittest.TestCase):
         self.assertEqual(node_ids.Value(3), 5)
         # check normal of elements
         is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
+        self.assertTrue(is_ok)
         self.assertEqual(nx, 0.0)
         self.assertEqual(ny, 0.0)
         self.assertEqual(nz, -1.0)
         is_ok, nx, ny, nz = a_data_source.GetNormal(2, 3)
+        self.assertTrue(is_ok)
         self.assertEqual(nx, 0.0)
         self.assertEqual(ny, -1.0)
         self.assertEqual(nz, 0.0)
         # check normal of nodes
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 1)
+        self.assertTrue(is_ok)
         self.assertEqual(nx, 0.0)
         self.assertEqual(ny, 0.0)
         self.assertEqual(nz, -1.0)
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
         self.assertEqual(nx, 0.0)
+        self.assertTrue(is_ok)
         # floating point number comparison, rounded to 12 decimals
         self.assertEqual(round(ny, 12), -round(sqrt(2) / 2, 12))
         self.assertEqual(round(nz, 12), -round(sqrt(2) / 2, 12))
@@ -109,12 +112,14 @@ class TestMeshDataSource(unittest.TestCase):
         # set and check normal of elements
         a_data_source.SetElemNormals(elem_normals_data)
         is_ok, nx, ny, nz = a_data_source.GetNormal(1, 3)
+        self.assertTrue(is_ok)
         self.assertEqual(nx, 0.0)
         self.assertEqual(ny, 0.0)
         self.assertEqual(nz, 1.0)
         # set and check normal of nodes
         a_data_source.SetNodeNormals(node_normals_data)
         is_ok, nx, ny, nz = a_data_source.GetNodeNormal(1, 2)
+        self.assertTrue(is_ok)
         self.assertEqual(nx, 0.0)
         self.assertEqual(ny, 0.0)
         self.assertEqual(nz, -1.0)
@@ -158,6 +163,7 @@ class TestMeshDataSource(unittest.TestCase):
 
         # create data source
         a_data_source = MeshDS_DataSource(vertices, faces)
+        self.assertTrue(isinstance(a_data_source, MeshDS_DataSource))
 
 
 def suite():
