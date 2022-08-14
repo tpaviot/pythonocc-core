@@ -179,8 +179,8 @@ def init_display(
             def centerOnScreen(self) -> None:
                 """Centers the window on the screen."""
                 resolution = QtWidgets.QApplication.desktop().screenGeometry()
-                x = (resolution.width() - self.frameSize().width()) / 2
-                y = (resolution.height() - self.frameSize().height()) / 2
+                x = (resolution.width() - self.frameSize().width()) // 2
+                y = (resolution.height() - self.frameSize().height()) // 2
                 self.move(x, y)
 
             def add_menu(self, menu_name: str) -> None:
