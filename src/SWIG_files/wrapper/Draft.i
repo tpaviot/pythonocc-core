@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define DRAFTDOCSTRING
 "Draft module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_draft.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_draft.html"
 %enddef
 %module (package="OCC.Core", docstring=DRAFTDOCSTRING) Draft
 
@@ -86,7 +86,7 @@ enum Draft_ErrorStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Draft_ErrorStatus(IntEnum):
@@ -673,7 +673,7 @@ None
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns true if perform has been succesfully called. otherwise more information can be obtained using the methods error() and problematicshape().
+		%feature("autodoc", "Returns true if perform has been successfully called. otherwise more information can be obtained using the methods error() and problematicshape().
 
 Returns
 -------
@@ -712,7 +712,7 @@ Tol: float
 		/****************** NewCurve2d ******************/
 		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
 		%feature("compactdefaultargs") NewCurve2d;
-		%feature("autodoc", "Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be usefull.
+		%feature("autodoc", "Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be useful.
 
 Parameters
 ----------
@@ -794,7 +794,7 @@ None
 		/****************** ProblematicShape ******************/
 		/**** md5 signature: 4b993ee84b1645cd4a03936d51cfc6ec ****/
 		%feature("compactdefaultargs") ProblematicShape;
-		%feature("autodoc", "Returns the shape (face, edge or vertex) on which an error occured.
+		%feature("autodoc", "Returns the shape (face, edge or vertex) on which an error occurred.
 
 Returns
 -------

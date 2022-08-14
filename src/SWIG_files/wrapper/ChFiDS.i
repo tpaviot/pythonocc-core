@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFIDSDOCSTRING
 "ChFiDS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfids.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_chfids.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFIDSDOCSTRING) ChFiDS
 
@@ -125,7 +125,7 @@ enum ChFiDS_TypeOfConcavity {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class ChFiDS_State(IntEnum):
@@ -187,7 +187,7 @@ ChFiDS_Other = ChFiDS_TypeOfConcavity.ChFiDS_Other
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(ChFiDS_HElSpine)
+%wrap_handle(ChFiDS_ElSpine)
 %wrap_handle(ChFiDS_Spine)
 %wrap_handle(ChFiDS_Stripe)
 %wrap_handle(ChFiDS_SurfData)
@@ -199,12 +199,12 @@ ChFiDS_Other = ChFiDS_TypeOfConcavity.ChFiDS_Other
 
 /* templates */
 %template(ChFiDS_IndexedDataMapOfVertexListOfStripe) NCollection_IndexedDataMap<TopoDS_Vertex,ChFiDS_ListOfStripe,TopTools_ShapeMapHasher>;
-%template(ChFiDS_ListIteratorOfListOfHElSpine) NCollection_TListIterator<opencascade::handle<ChFiDS_HElSpine>>;
+%template(ChFiDS_ListIteratorOfListOfHElSpine) NCollection_TListIterator<opencascade::handle<ChFiDS_ElSpine>>;
 %template(ChFiDS_ListIteratorOfListOfStripe) NCollection_TListIterator<opencascade::handle<ChFiDS_Stripe>>;
 %template(ChFiDS_ListIteratorOfRegularities) NCollection_TListIterator<ChFiDS_Regul>;
-%template(ChFiDS_ListOfHElSpine) NCollection_List<opencascade::handle<ChFiDS_HElSpine>>;
+%template(ChFiDS_ListOfHElSpine) NCollection_List<opencascade::handle<ChFiDS_ElSpine>>;
 
-%extend NCollection_List<opencascade::handle<ChFiDS_HElSpine>> {
+%extend NCollection_List<opencascade::handle<ChFiDS_ElSpine>> {
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -316,10 +316,10 @@ ChFiDS_Other = ChFiDS_TypeOfConcavity.ChFiDS_Other
 
 /* typedefs */
 typedef NCollection_IndexedDataMap<TopoDS_Vertex, ChFiDS_ListOfStripe, TopTools_ShapeMapHasher> ChFiDS_IndexedDataMapOfVertexListOfStripe;
-typedef NCollection_List<opencascade::handle<ChFiDS_HElSpine>>::Iterator ChFiDS_ListIteratorOfListOfHElSpine;
+typedef NCollection_List<opencascade::handle<ChFiDS_ElSpine>>::Iterator ChFiDS_ListIteratorOfListOfHElSpine;
 typedef NCollection_List<opencascade::handle<ChFiDS_Stripe>>::Iterator ChFiDS_ListIteratorOfListOfStripe;
 typedef NCollection_List<ChFiDS_Regul>::Iterator ChFiDS_ListIteratorOfRegularities;
-typedef NCollection_List<opencascade::handle<ChFiDS_HElSpine>> ChFiDS_ListOfHElSpine;
+typedef NCollection_List<opencascade::handle<ChFiDS_ElSpine>> ChFiDS_ListOfHElSpine;
 typedef NCollection_List<opencascade::handle<ChFiDS_Stripe>> ChFiDS_ListOfStripe;
 typedef NCollection_List<ChFiDS_Regul> ChFiDS_Regularities;
 typedef NCollection_Array1<ChFiDS_CircSection> ChFiDS_SecArray1;
@@ -482,7 +482,7 @@ bool
 		/****************** Parameter ******************/
 		/**** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ****/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "Returns the parameter the paramter on the spine.
+		%feature("autodoc", "Returns the parameter on the spine.
 
 Returns
 -------
@@ -1198,7 +1198,7 @@ None
 		void SetPeriodic(const Standard_Boolean I);
 
 		/****************** Trim ******************/
-		/**** md5 signature: c735575affdd5b96379885f735055329 ****/
+		/**** md5 signature: 974fe27e2868c6786b8c68ef515f97f8 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion.
 
@@ -1210,9 +1210,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		virtual opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		virtual opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: ba8231e7dc3a72ecafee01b4eb348bbe ****/
@@ -1246,6 +1246,8 @@ gp_Ax1
 
 };
 
+
+%make_alias(ChFiDS_ElSpine)
 
 %extend ChFiDS_ElSpine {
 	%pythoncode {
@@ -1470,96 +1472,6 @@ TopAbs_Orientation
 
 
 %extend ChFiDS_FaceInterference {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class ChFiDS_HElSpine *
-************************/
-class ChFiDS_HElSpine : public Adaptor3d_HCurve {
-	public:
-		/****************** ChFiDS_HElSpine ******************/
-		/**** md5 signature: 14cc5f50ca22e74292b90d37e71bd1d1 ****/
-		%feature("compactdefaultargs") ChFiDS_HElSpine;
-		%feature("autodoc", "Creates an empty genhcurve.
-
-Returns
--------
-None
-") ChFiDS_HElSpine;
-		 ChFiDS_HElSpine();
-
-		/****************** ChFiDS_HElSpine ******************/
-		/**** md5 signature: 881e265c949a20712e30325911070229 ****/
-		%feature("compactdefaultargs") ChFiDS_HElSpine;
-		%feature("autodoc", "Creates a genhcurve from a curve.
-
-Parameters
-----------
-C: ChFiDS_ElSpine
-
-Returns
--------
-None
-") ChFiDS_HElSpine;
-		 ChFiDS_HElSpine(const ChFiDS_ElSpine & C);
-
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: 9c60c84b9c5da383bfcdec014873f6f7 ****/
-		%feature("compactdefaultargs") ChangeCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-ChFiDS_ElSpine
-") ChangeCurve;
-		ChFiDS_ElSpine & ChangeCurve();
-
-		/****************** Curve ******************/
-		/**** md5 signature: a89f0959dbb9c3c030843720c3636148 ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") Curve;
-		const Adaptor3d_Curve & Curve();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: 73b397b3522011e6948956523664e20c ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") GetCurve;
-		Adaptor3d_Curve & GetCurve();
-
-		/****************** Set ******************/
-		/**** md5 signature: 53cc31f3591dcb70faa37e999b7a651c ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve.
-
-Parameters
-----------
-C: ChFiDS_ElSpine
-
-Returns
--------
-None
-") Set;
-		void Set(const ChFiDS_ElSpine & C);
-
-};
-
-
-%make_alias(ChFiDS_HElSpine)
-
-%extend ChFiDS_HElSpine {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1859,34 +1771,34 @@ float
 		Standard_Real Absc(const TopoDS_Vertex & V);
 
 		/****************** AppendElSpine ******************/
-		/**** md5 signature: 56e42dc92b1863fef793a7b893355531 ****/
+		/**** md5 signature: ede48293dc1624531bd53eae90637b01 ****/
 		%feature("compactdefaultargs") AppendElSpine;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Els: ChFiDS_HElSpine
+Els: ChFiDS_ElSpine
 
 Returns
 -------
 None
 ") AppendElSpine;
-		virtual void AppendElSpine(const opencascade::handle<ChFiDS_HElSpine> & Els);
+		virtual void AppendElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****************** AppendOffsetElSpine ******************/
-		/**** md5 signature: a3f67a1f5563c994bda1222e7915f9c8 ****/
+		/**** md5 signature: 95d04dc7c2b33d672976bf39c81489b8 ****/
 		%feature("compactdefaultargs") AppendOffsetElSpine;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Els: ChFiDS_HElSpine
+Els: ChFiDS_ElSpine
 
 Returns
 -------
 None
 ") AppendOffsetElSpine;
-		virtual void AppendOffsetElSpine(const opencascade::handle<ChFiDS_HElSpine> & Els);
+		virtual void AppendOffsetElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****************** ChangeElSpines ******************/
 		/**** md5 signature: da07220d851808a3a9bd3eb7b7c1f436 ****/
@@ -2014,7 +1926,7 @@ TopoDS_Edge
 		const TopoDS_Edge Edges(const Standard_Integer I);
 
 		/****************** ElSpine ******************/
-		/**** md5 signature: 50e1f230b87beebd12561fcb57080d79 ****/
+		/**** md5 signature: 4f2d3b9c01c3241e7da904843452e45a ****/
 		%feature("compactdefaultargs") ElSpine;
 		%feature("autodoc", "No available documentation.
 
@@ -2024,12 +1936,12 @@ IE: int
 
 Returns
 -------
-opencascade::handle<ChFiDS_HElSpine>
+opencascade::handle<ChFiDS_ElSpine>
 ") ElSpine;
-		opencascade::handle<ChFiDS_HElSpine> ElSpine(const Standard_Integer IE);
+		opencascade::handle<ChFiDS_ElSpine> ElSpine(const Standard_Integer IE);
 
 		/****************** ElSpine ******************/
-		/**** md5 signature: 1df8ba6c79f39bb525fe86f8b4dc1f88 ****/
+		/**** md5 signature: ca68c09c1a4fca52b0ec8982006abd2f ****/
 		%feature("compactdefaultargs") ElSpine;
 		%feature("autodoc", "No available documentation.
 
@@ -2039,12 +1951,12 @@ E: TopoDS_Edge
 
 Returns
 -------
-opencascade::handle<ChFiDS_HElSpine>
+opencascade::handle<ChFiDS_ElSpine>
 ") ElSpine;
-		opencascade::handle<ChFiDS_HElSpine> ElSpine(const TopoDS_Edge & E);
+		opencascade::handle<ChFiDS_ElSpine> ElSpine(const TopoDS_Edge & E);
 
 		/****************** ElSpine ******************/
-		/**** md5 signature: aaa496a36bc99cc30000c25f82868d13 ****/
+		/**** md5 signature: dea9d922cd6fd6701ac14ca526f46966 ****/
 		%feature("compactdefaultargs") ElSpine;
 		%feature("autodoc", "No available documentation.
 
@@ -2054,9 +1966,9 @@ W: float
 
 Returns
 -------
-opencascade::handle<ChFiDS_HElSpine>
+opencascade::handle<ChFiDS_ElSpine>
 ") ElSpine;
-		opencascade::handle<ChFiDS_HElSpine> ElSpine(const Standard_Real W);
+		opencascade::handle<ChFiDS_ElSpine> ElSpine(const Standard_Real W);
 
 		/****************** ErrorStatus ******************/
 		/**** md5 signature: 2f7016f891923155aac331ba8260eaa0 ****/
@@ -3705,7 +3617,7 @@ None
 		/****************** ChangeVertex ******************/
 		/**** md5 signature: a8ddf20f93239324ee9ea0b0bd371c2a ****/
 		%feature("compactdefaultargs") ChangeVertex;
-		%feature("autodoc", "Returns one of the four vertices wether first is true or wrong and ons equals 1 or 2.
+		%feature("autodoc", "Returns one of the four vertices whether first is true or wrong and ons equals 1 or 2.
 
 Parameters
 ----------
@@ -4225,7 +4137,7 @@ None
 		/****************** Vertex ******************/
 		/**** md5 signature: 18d5b7a519c656abcce6733eb3f805bc ****/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "Returns one of the four vertices wether first is true or wrong and ons equals 1 or 2.
+		%feature("autodoc", "Returns one of the four vertices whether first is true or wrong and ons equals 1 or 2.
 
 Parameters
 ----------
@@ -4484,19 +4396,19 @@ None
 		 ChFiDS_FilSpine(const Standard_Real Tol);
 
 		/****************** AppendElSpine ******************/
-		/**** md5 signature: a02ef87558175a76a55d808d58de097f ****/
+		/**** md5 signature: 372916a9ea66113bdf5cde8ef4cde52f ****/
 		%feature("compactdefaultargs") AppendElSpine;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Els: ChFiDS_HElSpine
+Els: ChFiDS_ElSpine
 
 Returns
 -------
 None
 ") AppendElSpine;
-		virtual void AppendElSpine(const opencascade::handle<ChFiDS_HElSpine> & Els);
+		virtual void AppendElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****************** ChangeLaw ******************/
 		/**** md5 signature: 8ae71aa7535429ad90f7a710389558b8 ****/
@@ -4540,19 +4452,19 @@ bool
 		Standard_Boolean IsConstant(const Standard_Integer IE);
 
 		/****************** Law ******************/
-		/**** md5 signature: bfc601b38642ba13a3dd383d1a79074b ****/
+		/**** md5 signature: 7cf16ab410922973e30dbb370c179506 ****/
 		%feature("compactdefaultargs") Law;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Els: ChFiDS_HElSpine
+Els: ChFiDS_ElSpine
 
 Returns
 -------
 opencascade::handle<Law_Composite>
 ") Law;
-		opencascade::handle<Law_Composite> Law(const opencascade::handle<ChFiDS_HElSpine> & Els);
+		opencascade::handle<Law_Composite> Law(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****************** MaxRadFromSeqAndLaws ******************/
 		/**** md5 signature: 5d0ba972a5439e16c0aae93c053bd63b ****/

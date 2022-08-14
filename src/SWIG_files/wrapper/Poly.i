@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define POLYDOCSTRING
 "Poly module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_poly.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_poly.html"
 %enddef
 %module (package="OCC.Core", docstring=POLYDOCSTRING) Poly
 
@@ -45,6 +45,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_poly.html"
 #include<gp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
+#include<Bnd_module.hxx>
+#include<OSD_module.hxx>
 #include<TShort_module.hxx>
 #include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,6 +59,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_poly.html"
 %import gp.i
 %import TColgp.i
 %import TColStd.i
+%import Bnd.i
+%import OSD.i
 %import TShort.i
 
 %pythoncode {
@@ -65,18 +69,30 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum  {
+	Poly_MeshPurpose_NONE = 0,
+	Poly_MeshPurpose_Calculation = 1,
+	Poly_MeshPurpose_Presentation = 2,
+	Poly_MeshPurpose_Active = 4,
+	Poly_MeshPurpose_Loaded = 8,
+	Poly_MeshPurpose_AnyFallback = 16,
+	Poly_MeshPurpose_USER = 32,
+};
+
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(Poly_MergeNodesTool)
 %wrap_handle(Poly_Polygon2D)
 %wrap_handle(Poly_Polygon3D)
 %wrap_handle(Poly_PolygonOnTriangulation)
 %wrap_handle(Poly_Triangulation)
+%wrap_handle(Poly_TriangulationParameters)
 %wrap_handle(Poly_HArray1OfTriangle)
 /* end handles declaration */
 
@@ -132,6 +148,7 @@ typedef NCollection_Vector<Poly_CoherentLink>::Iterator Poly_BaseIteratorOfCoher
 typedef NCollection_Vector<Poly_CoherentNode>::Iterator Poly_BaseIteratorOfCoherentNode;
 typedef NCollection_Vector<Poly_CoherentTriangle>::Iterator Poly_BaseIteratorOfCoherentTriangle;
 typedef NCollection_List<opencascade::handle<Poly_Triangulation>> Poly_ListOfTriangulation;
+typedef unsigned int Poly_MeshPurpose;
 /* end typedefs declaration */
 
 /*************
@@ -169,6 +186,43 @@ Returns
 None
 ") ComputeNormals;
 		static void ComputeNormals(const opencascade::handle<Poly_Triangulation> & Tri);
+
+		/****************** Intersect ******************/
+		/**** md5 signature: 71cc08bc38965ffeef03bdfbfe9c34a4 ****/
+		%feature("compactdefaultargs") Intersect;
+		%feature("autodoc", "Computes the intersection between axis and triangulation. @param thetri [in] input triangulation @param theaxis [in] intersecting ray @param theisclosest [in] finds the closest intersection when true, finds the farthest otherwise @param thetriangle [out] intersected triangle @param thedistance [out] distance along ray to intersection point returns true if intersection takes place, false otherwise.
+
+Parameters
+----------
+theTri: Poly_Triangulation
+theAxis: gp_Ax1
+theIsClosest: bool
+theTriangle: Poly_Triangle
+
+Returns
+-------
+theDistance: float
+") Intersect;
+		static Standard_Boolean Intersect(const opencascade::handle<Poly_Triangulation> & theTri, const gp_Ax1 & theAxis, const Standard_Boolean theIsClosest, Poly_Triangle & theTriangle, Standard_Real &OutValue);
+
+		/****************** IntersectTriLine ******************/
+		/**** md5 signature: 3f27e1173b34c9ae04f7086818dc488c ****/
+		%feature("compactdefaultargs") IntersectTriLine;
+		%feature("autodoc", "Computes the intersection between a triangle defined by three vertexes and a line. @param thestart [in] picking ray origin @param thedir [in] picking ray direction @param thev0 [in] first triangle node @param thev1 [in] second triangle node @param thev2 [in] third triangle node @param theparam [out] param on line of the intersection point returns 1 if intersection was found, 0 otherwise.
+
+Parameters
+----------
+theStart: gp_XYZ
+theDir: gp_Dir
+theV0: gp_XYZ
+theV1: gp_XYZ
+theV2: gp_XYZ
+
+Returns
+-------
+theParam: float
+") IntersectTriLine;
+		static Standard_Integer IntersectTriLine(const gp_XYZ & theStart, const gp_Dir & theDir, const gp_XYZ & theV0, const gp_XYZ & theV1, const gp_XYZ & theV2, Standard_Real &OutValue);
 
 		/****************** PointOnTriangle ******************/
 		/**** md5 signature: f16707629e29bded6eb5591e5f49f99e ****/
@@ -220,6 +274,384 @@ float
 	@methodnotwrapped
 	def PolygonProperties(self):
 		pass
+	}
+};
+
+/**************************
+* class Poly_ArrayOfNodes *
+**************************/
+class Poly_ArrayOfNodes : public NCollection_AliasedArray<> {
+	public:
+		/****************** Poly_ArrayOfNodes ******************/
+		/**** md5 signature: a3fbef88d7cea7f227931f473b2f3f7e ****/
+		%feature("compactdefaultargs") Poly_ArrayOfNodes;
+		%feature("autodoc", "Empty constructor of double-precision array.
+
+Returns
+-------
+None
+") Poly_ArrayOfNodes;
+		 Poly_ArrayOfNodes();
+
+		/****************** Poly_ArrayOfNodes ******************/
+		/**** md5 signature: b77f7672fcf3bad012991e517148d0b6 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfNodes;
+		%feature("autodoc", "Constructor of double-precision array.
+
+Parameters
+----------
+theLength: int
+
+Returns
+-------
+None
+") Poly_ArrayOfNodes;
+		 Poly_ArrayOfNodes(Standard_Integer theLength);
+
+		/****************** Poly_ArrayOfNodes ******************/
+		/**** md5 signature: 71c54cc617fa3212fe7f98037904ee67 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfNodes;
+		%feature("autodoc", "Copy constructor .
+
+Parameters
+----------
+theOther: Poly_ArrayOfNodes
+
+Returns
+-------
+None
+") Poly_ArrayOfNodes;
+		 Poly_ArrayOfNodes(const Poly_ArrayOfNodes & theOther);
+
+		/****************** Poly_ArrayOfNodes ******************/
+		/**** md5 signature: 282e112d1d6b3b00cb621fbcc3d69c68 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfNodes;
+		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
+
+Parameters
+----------
+theBegin: gp_Pnt
+theLength: int
+
+Returns
+-------
+None
+") Poly_ArrayOfNodes;
+		 Poly_ArrayOfNodes(const gp_Pnt & theBegin, Standard_Integer theLength);
+
+		/****************** Poly_ArrayOfNodes ******************/
+		/**** md5 signature: f55ffaa17385828819bcc3d1f6ab78f6 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfNodes;
+		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
+
+Parameters
+----------
+theBegin: gp_Vec3f
+theLength: int
+
+Returns
+-------
+None
+") Poly_ArrayOfNodes;
+		 Poly_ArrayOfNodes(const gp_Vec3f & theBegin, Standard_Integer theLength);
+
+		/****************** Poly_ArrayOfNodes ******************/
+		/**** md5 signature: cb45040330e6998f9e997be1b9e9fd56 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfNodes;
+		%feature("autodoc", "Move constructor.
+
+Parameters
+----------
+theOther: Poly_ArrayOfNodes
+
+Returns
+-------
+None
+") Poly_ArrayOfNodes;
+		 Poly_ArrayOfNodes(Poly_ArrayOfNodes & theOther);
+
+		/****************** Assign ******************/
+		/**** md5 signature: 702830dcb95dd43aecf671cba8d7bfdb ****/
+		%feature("compactdefaultargs") Assign;
+		%feature("autodoc", "Copies data of theother array to this. the arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
+
+Parameters
+----------
+theOther: Poly_ArrayOfNodes
+
+Returns
+-------
+Poly_ArrayOfNodes
+") Assign;
+		Poly_ArrayOfNodes & Assign(const Poly_ArrayOfNodes & theOther);
+
+		/****************** IsDoublePrecision ******************/
+		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		%feature("compactdefaultargs") IsDoublePrecision;
+		%feature("autodoc", "Returns true if array defines nodes with double precision.
+
+Returns
+-------
+bool
+") IsDoublePrecision;
+		bool IsDoublePrecision();
+
+		/****************** Move ******************/
+		/**** md5 signature: 20553a602539ccce80fca1871695acaa ****/
+		%feature("compactdefaultargs") Move;
+		%feature("autodoc", "Move assignment.
+
+Parameters
+----------
+theOther: Poly_ArrayOfNodes
+
+Returns
+-------
+Poly_ArrayOfNodes
+") Move;
+		Poly_ArrayOfNodes & Move(Poly_ArrayOfNodes & theOther);
+
+		/****************** SetDoublePrecision ******************/
+		/**** md5 signature: 2fee9d611d346cc1324a9f63e1c71f99 ****/
+		%feature("compactdefaultargs") SetDoublePrecision;
+		%feature("autodoc", "Sets if array should define nodes with double or single precision. raises exception if array was already allocated.
+
+Parameters
+----------
+theIsDouble: bool
+
+Returns
+-------
+None
+") SetDoublePrecision;
+		void SetDoublePrecision(bool theIsDouble);
+
+		/****************** SetValue ******************/
+		/**** md5 signature: 1aac1c7522caf00e0c3f974b2daa072f ****/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "A generalized setter for point.
+
+Parameters
+----------
+theIndex: int
+theValue: gp_Pnt
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(Standard_Integer theIndex, const gp_Pnt & theValue);
+
+		/****************** Value ******************/
+		/**** md5 signature: cbbd0dda18a18774ab964a5d559342fd ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "A generalized accessor to point.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+gp_Pnt
+") Value;
+		gp_Pnt Value(Standard_Integer theIndex);
+
+};
+
+
+%extend Poly_ArrayOfNodes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************
+* class Poly_ArrayOfUVNodes *
+****************************/
+class Poly_ArrayOfUVNodes : public NCollection_AliasedArray<> {
+	public:
+		/****************** Poly_ArrayOfUVNodes ******************/
+		/**** md5 signature: 6a860cf1c687b8dd0af354b672ebd0be ****/
+		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
+		%feature("autodoc", "Empty constructor of double-precision array.
+
+Returns
+-------
+None
+") Poly_ArrayOfUVNodes;
+		 Poly_ArrayOfUVNodes();
+
+		/****************** Poly_ArrayOfUVNodes ******************/
+		/**** md5 signature: 1d8cb6cf40bbc06f334d0a0a080d9f94 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
+		%feature("autodoc", "Constructor of double-precision array.
+
+Parameters
+----------
+theLength: int
+
+Returns
+-------
+None
+") Poly_ArrayOfUVNodes;
+		 Poly_ArrayOfUVNodes(Standard_Integer theLength);
+
+		/****************** Poly_ArrayOfUVNodes ******************/
+		/**** md5 signature: e7970186b41655b1bbfbf070a9a812fa ****/
+		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
+		%feature("autodoc", "Copy constructor .
+
+Parameters
+----------
+theOther: Poly_ArrayOfUVNodes
+
+Returns
+-------
+None
+") Poly_ArrayOfUVNodes;
+		 Poly_ArrayOfUVNodes(const Poly_ArrayOfUVNodes & theOther);
+
+		/****************** Poly_ArrayOfUVNodes ******************/
+		/**** md5 signature: fcc79601f1f551bf654e4b036563851d ****/
+		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
+		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
+
+Parameters
+----------
+theBegin: gp_Pnt2d
+theLength: int
+
+Returns
+-------
+None
+") Poly_ArrayOfUVNodes;
+		 Poly_ArrayOfUVNodes(const gp_Pnt2d & theBegin, Standard_Integer theLength);
+
+		/****************** Poly_ArrayOfUVNodes ******************/
+		/**** md5 signature: 8dc88b2a8e6a1970829bc8d4ae3807c9 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
+		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
+
+Parameters
+----------
+theBegin: gp_Vec2f
+theLength: int
+
+Returns
+-------
+None
+") Poly_ArrayOfUVNodes;
+		 Poly_ArrayOfUVNodes(const gp_Vec2f & theBegin, Standard_Integer theLength);
+
+		/****************** Poly_ArrayOfUVNodes ******************/
+		/**** md5 signature: e3d61b6156099393a7872494033064a3 ****/
+		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
+		%feature("autodoc", "Move constructor.
+
+Parameters
+----------
+theOther: Poly_ArrayOfUVNodes
+
+Returns
+-------
+None
+") Poly_ArrayOfUVNodes;
+		 Poly_ArrayOfUVNodes(Poly_ArrayOfUVNodes & theOther);
+
+		/****************** Assign ******************/
+		/**** md5 signature: 0bd9a842cd074feea2878a80c6c59e05 ****/
+		%feature("compactdefaultargs") Assign;
+		%feature("autodoc", "Copies data of theother array to this. the arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
+
+Parameters
+----------
+theOther: Poly_ArrayOfUVNodes
+
+Returns
+-------
+Poly_ArrayOfUVNodes
+") Assign;
+		Poly_ArrayOfUVNodes & Assign(const Poly_ArrayOfUVNodes & theOther);
+
+		/****************** IsDoublePrecision ******************/
+		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		%feature("compactdefaultargs") IsDoublePrecision;
+		%feature("autodoc", "Returns true if array defines nodes with double precision.
+
+Returns
+-------
+bool
+") IsDoublePrecision;
+		bool IsDoublePrecision();
+
+		/****************** Move ******************/
+		/**** md5 signature: 540403cdd9a8016019da7b6bbf0e77a2 ****/
+		%feature("compactdefaultargs") Move;
+		%feature("autodoc", "Move assignment.
+
+Parameters
+----------
+theOther: Poly_ArrayOfUVNodes
+
+Returns
+-------
+Poly_ArrayOfUVNodes
+") Move;
+		Poly_ArrayOfUVNodes & Move(Poly_ArrayOfUVNodes & theOther);
+
+		/****************** SetDoublePrecision ******************/
+		/**** md5 signature: 2fee9d611d346cc1324a9f63e1c71f99 ****/
+		%feature("compactdefaultargs") SetDoublePrecision;
+		%feature("autodoc", "Sets if array should define nodes with double or single precision. raises exception if array was already allocated.
+
+Parameters
+----------
+theIsDouble: bool
+
+Returns
+-------
+None
+") SetDoublePrecision;
+		void SetDoublePrecision(bool theIsDouble);
+
+		/****************** SetValue ******************/
+		/**** md5 signature: 932309e2e29429a1b56967cc7847fbb2 ****/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "A generalized setter for point.
+
+Parameters
+----------
+theIndex: int
+theValue: gp_Pnt2d
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(Standard_Integer theIndex, const gp_Pnt2d & theValue);
+
+		/****************** Value ******************/
+		/**** md5 signature: 4d7c0ab83170d94e467103748821c3a2 ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "A generalized accessor to point.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+gp_Pnt2d
+") Value;
+		gp_Pnt2d Value(Standard_Integer theIndex);
+
+};
+
+
+%extend Poly_ArrayOfUVNodes {
+	%pythoncode {
+	__repr__ = _dumps_object
 	}
 };
 
@@ -615,7 +1047,7 @@ None
 		/****************** FindConnection ******************/
 		/**** md5 signature: 505623f75ec36da5e1eb5d1c4b345491 ****/
 		%feature("compactdefaultargs") FindConnection;
-		%feature("autodoc", "/** * retuns the index of the connection with the given triangle, or -1 if not * found. */.
+		%feature("autodoc", "/** * returns the index of the connection with the given triangle, or -1 if not found. */.
 
 Parameters
 ----------
@@ -948,6 +1380,420 @@ int
 /***********************
 * class Poly_MakeLoops *
 ***********************/
+/****************************
+* class Poly_MergeNodesTool *
+****************************/
+class Poly_MergeNodesTool : public Standard_Transient {
+	public:
+		class Vec3AndNormal {};
+		class MergedNodesMap {};
+		class MergedElemHasher {};
+		/****************** Poly_MergeNodesTool ******************/
+		/**** md5 signature: 3a7388c9049734e002b68e6950dd289b ****/
+		%feature("compactdefaultargs") Poly_MergeNodesTool;
+		%feature("autodoc", "Constructor @param[in] thesmoothangle smooth angle in radians or 0.0 to disable merging by angle @param[in] themergetolerance node merging maximum distance @param[in] thenbfacets estimated number of facets for map preallocation.
+
+Parameters
+----------
+theSmoothAngle: double
+theMergeTolerance: double,optional
+	default value is 0.0
+theNbFacets: int,optional
+	default value is -1
+
+Returns
+-------
+None
+") Poly_MergeNodesTool;
+		 Poly_MergeNodesTool(const double theSmoothAngle, const double theMergeTolerance = 0.0, const int theNbFacets = -1);
+
+		/****************** AddElement ******************/
+		/**** md5 signature: f54449798b8c250c1939c2e71ad619e9 ****/
+		%feature("compactdefaultargs") AddElement;
+		%feature("autodoc", "Add new triangle or quad. @param[in] theelemnodes element nodes @param[in] thenbnodes number of element nodes, should be 3 or 4.
+
+Parameters
+----------
+theElemNodes: gp_XYZ *
+theNbNodes: int
+
+Returns
+-------
+None
+") AddElement;
+		void AddElement(const gp_XYZ * theElemNodes, int theNbNodes);
+
+		/****************** AddQuad ******************/
+		/**** md5 signature: 466ec42f2ca8a5fa29a362ea7d89be15 ****/
+		%feature("compactdefaultargs") AddQuad;
+		%feature("autodoc", "Add new quad. @param[in] theelemnodes 4 element nodes.
+
+Parameters
+----------
+theElemNodes: gp_XYZ
+
+Returns
+-------
+None
+") AddQuad;
+		void AddQuad(const gp_XYZ theElemNodes[4]);
+
+		/****************** AddTriangle ******************/
+		/**** md5 signature: 3f99f4658880f383d17505464542edaf ****/
+		%feature("compactdefaultargs") AddTriangle;
+		%feature("autodoc", "Add new triangle. @param[in] theelemnodes 3 element nodes.
+
+Parameters
+----------
+theElemNodes: gp_XYZ
+
+Returns
+-------
+None
+") AddTriangle;
+		void AddTriangle(const gp_XYZ theElemNodes[3]);
+
+		/****************** AddTriangulation ******************/
+		/**** md5 signature: bc6056f0ba55a334b398b898dd60cb25 ****/
+		%feature("compactdefaultargs") AddTriangulation;
+		%feature("autodoc", "Add another triangulation to created one. @param[in] thetris triangulation to add @param[in] thetrsf transformation to apply @param[in] thetoreverse reverse triangle nodes order.
+
+Parameters
+----------
+theTris: Poly_Triangulation
+theTrsf: gp_Trsf,optional
+	default value is gp_Trsf()
+theToReverse: bool,optional
+	default value is false
+
+Returns
+-------
+None
+") AddTriangulation;
+		virtual void AddTriangulation(const opencascade::handle<Poly_Triangulation> & theTris, const gp_Trsf & theTrsf = gp_Trsf(), const Standard_Boolean theToReverse = false);
+
+		/****************** ChangeElementNode ******************/
+		/**** md5 signature: cfa2b9d654017414261980230af66908 ****/
+		%feature("compactdefaultargs") ChangeElementNode;
+		%feature("autodoc", "Change node coordinates of element to be pushed. @param[in] theindex node index within current element, in 0..3 range.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+gp_XYZ
+") ChangeElementNode;
+		gp_XYZ ChangeElementNode(int theIndex);
+
+		/****************** ChangeOutput ******************/
+		/**** md5 signature: a9dc71f3c110b2a16acbd54cfd1bfeaa ****/
+		%feature("compactdefaultargs") ChangeOutput;
+		%feature("autodoc", "Setup output triangulation for modifications. when set to null, the tool could be used as a merge map for filling in external mesh structure.
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") ChangeOutput;
+		opencascade::handle<Poly_Triangulation> & ChangeOutput();
+
+		/****************** ElementNodeIndex ******************/
+		/**** md5 signature: b3912f8ed8ba96458bb5fe8222b9db8a ****/
+		%feature("compactdefaultargs") ElementNodeIndex;
+		%feature("autodoc", "Return current element node index defined by pushlastelement().
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+int
+") ElementNodeIndex;
+		Standard_Integer ElementNodeIndex(int theIndex);
+
+		/****************** MergeAngle ******************/
+		/**** md5 signature: 5d00926a7bd3e498cdc5a4c2a8db704c ****/
+		%feature("compactdefaultargs") MergeAngle;
+		%feature("autodoc", "Return merge angle in radians; 0.0 by default (normals with non-exact directions are not merged).
+
+Returns
+-------
+double
+") MergeAngle;
+		double MergeAngle();
+
+		/****************** MergeNodes ******************/
+		/**** md5 signature: 69db4be2948df2cb0f73011b0524e17b ****/
+		%feature("compactdefaultargs") MergeNodes;
+		%feature("autodoc", "Merge nodes of existing mesh and return the new mesh. @param[in] thetris triangulation to add @param[in] thetrsf transformation to apply @param[in] thetoreverse reverse triangle nodes order @param[in] thesmoothangle merge angle in radians @param[in] themergetolerance linear merge tolerance @param[in] thetoforce return merged triangulation even if it's statistics is equal to input one returns merged triangulation or null on no result.
+
+Parameters
+----------
+theTris: Poly_Triangulation
+theTrsf: gp_Trsf
+theToReverse: bool
+theSmoothAngle: double
+theMergeTolerance: double,optional
+	default value is 0.0
+theToForce: bool,optional
+	default value is true
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") MergeNodes;
+		static opencascade::handle<Poly_Triangulation> MergeNodes(const opencascade::handle<Poly_Triangulation> & theTris, const gp_Trsf & theTrsf, const Standard_Boolean theToReverse, const double theSmoothAngle, const double theMergeTolerance = 0.0, const bool theToForce = true);
+
+		/****************** MergeTolerance ******************/
+		/**** md5 signature: fa6eb2c52a4c2b1d74d587a33cf643e6 ****/
+		%feature("compactdefaultargs") MergeTolerance;
+		%feature("autodoc", "Return merge tolerance; 0.0 by default (only 3d points with exactly matching coordinates are merged).
+
+Returns
+-------
+double
+") MergeTolerance;
+		double MergeTolerance();
+
+		/****************** NbDegenerativeElems ******************/
+		/**** md5 signature: f7c1a94fbb555c490c2bfa3343d230dd ****/
+		%feature("compactdefaultargs") NbDegenerativeElems;
+		%feature("autodoc", "Return number of discarded degenerate elements.
+
+Returns
+-------
+int
+") NbDegenerativeElems;
+		int NbDegenerativeElems();
+
+		/****************** NbElements ******************/
+		/**** md5 signature: a3bde70b76cbd01fd87444d7af358185 ****/
+		%feature("compactdefaultargs") NbElements;
+		%feature("autodoc", "Return number of elements.
+
+Returns
+-------
+int
+") NbElements;
+		int NbElements();
+
+		/****************** NbMergedElems ******************/
+		/**** md5 signature: ecd75b52f11a73bd5b6b9dd1889271df ****/
+		%feature("compactdefaultargs") NbMergedElems;
+		%feature("autodoc", "Return number of merged equal elements.
+
+Returns
+-------
+int
+") NbMergedElems;
+		int NbMergedElems();
+
+		/****************** NbNodes ******************/
+		/**** md5 signature: d40157e610feffebe18aa0d56c09a4f4 ****/
+		%feature("compactdefaultargs") NbNodes;
+		%feature("autodoc", "Return number of nodes.
+
+Returns
+-------
+int
+") NbNodes;
+		int NbNodes();
+
+		/****************** PushLastElement ******************/
+		/**** md5 signature: 277d833a2ade233d612ac9bbb60ac6d1 ****/
+		%feature("compactdefaultargs") PushLastElement;
+		%feature("autodoc", "Add new triangle or quad with nodes specified by changeelementnode().
+
+Parameters
+----------
+theNbNodes: int
+
+Returns
+-------
+None
+") PushLastElement;
+		void PushLastElement(int theNbNodes);
+
+		/****************** PushLastQuad ******************/
+		/**** md5 signature: 1cfa8ee32054107dba52c4d795b9c6bb ****/
+		%feature("compactdefaultargs") PushLastQuad;
+		%feature("autodoc", "Add new quad with nodes specified by changeelementnode().
+
+Returns
+-------
+None
+") PushLastQuad;
+		void PushLastQuad();
+
+		/****************** PushLastTriangle ******************/
+		/**** md5 signature: ae8c69e28e2e9bd5ae3ca8a822d92073 ****/
+		%feature("compactdefaultargs") PushLastTriangle;
+		%feature("autodoc", "Add new triangle with nodes specified by changeelementnode().
+
+Returns
+-------
+None
+") PushLastTriangle;
+		void PushLastTriangle();
+
+		/****************** Result ******************/
+		/**** md5 signature: 8f645f11f5d462565ca5df82c5facbc2 ****/
+		%feature("compactdefaultargs") Result;
+		%feature("autodoc", "Prepare and return result triangulation (temporary data will be truncated to result size).
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") Result;
+		opencascade::handle<Poly_Triangulation> Result();
+
+		/****************** SetDropDegenerative ******************/
+		/**** md5 signature: 2afb3f12bc4617f94254843e80b1098c ****/
+		%feature("compactdefaultargs") SetDropDegenerative;
+		%feature("autodoc", "Set if degenerate elements should be discarded.
+
+Parameters
+----------
+theToDrop: bool
+
+Returns
+-------
+None
+") SetDropDegenerative;
+		void SetDropDegenerative(bool theToDrop);
+
+		/****************** SetMergeAngle ******************/
+		/**** md5 signature: 87c2aaa1acaed6770f3402745832717c ****/
+		%feature("compactdefaultargs") SetMergeAngle;
+		%feature("autodoc", "Set merge angle.
+
+Parameters
+----------
+theAngleRad: double
+
+Returns
+-------
+None
+") SetMergeAngle;
+		void SetMergeAngle(double theAngleRad);
+
+		/****************** SetMergeElems ******************/
+		/**** md5 signature: ed329276ee91b65e45badb01dc0e8260 ****/
+		%feature("compactdefaultargs") SetMergeElems;
+		%feature("autodoc", "Set if equal elements should be filtered.
+
+Parameters
+----------
+theToMerge: bool
+
+Returns
+-------
+None
+") SetMergeElems;
+		void SetMergeElems(bool theToMerge);
+
+		/****************** SetMergeOpposite ******************/
+		/**** md5 signature: 4e4c753314be161d9f17adb6eee772b4 ****/
+		%feature("compactdefaultargs") SetMergeOpposite;
+		%feature("autodoc", "Set if nodes with opposite normals should be merged.
+
+Parameters
+----------
+theToMerge: bool
+
+Returns
+-------
+None
+") SetMergeOpposite;
+		void SetMergeOpposite(bool theToMerge);
+
+		/****************** SetMergeTolerance ******************/
+		/**** md5 signature: 68ac77dc68d463a45fe791220c4c1037 ****/
+		%feature("compactdefaultargs") SetMergeTolerance;
+		%feature("autodoc", "Set merge tolerance.
+
+Parameters
+----------
+theTolerance: double
+
+Returns
+-------
+None
+") SetMergeTolerance;
+		void SetMergeTolerance(double theTolerance);
+
+		/****************** SetUnitFactor ******************/
+		/**** md5 signature: f7ae34d46d91996c57038f792982636e ****/
+		%feature("compactdefaultargs") SetUnitFactor;
+		%feature("autodoc", "Setup unit factor.
+
+Parameters
+----------
+theUnitFactor: double
+
+Returns
+-------
+None
+") SetUnitFactor;
+		void SetUnitFactor(double theUnitFactor);
+
+		/****************** ToDropDegenerative ******************/
+		/**** md5 signature: d0d29e78b3ec8be2e3b06c85e4aa3169 ****/
+		%feature("compactdefaultargs") ToDropDegenerative;
+		%feature("autodoc", "Return true if degenerate elements should be discarded; true by default.
+
+Returns
+-------
+bool
+") ToDropDegenerative;
+		bool ToDropDegenerative();
+
+		/****************** ToMergeElems ******************/
+		/**** md5 signature: faab5f7e47b13d1e82a5f43489d865d7 ****/
+		%feature("compactdefaultargs") ToMergeElems;
+		%feature("autodoc", "Return true if equal elements should be filtered; false by default.
+
+Returns
+-------
+bool
+") ToMergeElems;
+		bool ToMergeElems();
+
+		/****************** ToMergeOpposite ******************/
+		/**** md5 signature: 28336470350be6372b143f45e7955794 ****/
+		%feature("compactdefaultargs") ToMergeOpposite;
+		%feature("autodoc", "Return true if nodes with opposite normals should be merged; false by default.
+
+Returns
+-------
+bool
+") ToMergeOpposite;
+		bool ToMergeOpposite();
+
+		/****************** computeTriNormal ******************/
+		/**** md5 signature: 25e09c9ffb0af3cb0363dc699d14ab79 ****/
+		%feature("compactdefaultargs") computeTriNormal;
+		%feature("autodoc", "Compute normal for the mesh element.
+
+Returns
+-------
+NCollection_Vec3<float >
+") computeTriNormal;
+		NCollection_Vec3<float > computeTriNormal();
+
+};
+
+
+%make_alias(Poly_MergeNodesTool)
+
+%extend Poly_MergeNodesTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************
 * class Poly_Polygon2D *
 ***********************/
@@ -1127,7 +1973,7 @@ TColgp_Array1OfPnt
 		/****************** ChangeParameters ******************/
 		/**** md5 signature: 8ed84ac3a67f35b579cc6d28270bac04 ****/
 		%feature("compactdefaultargs") ChangeParameters;
-		%feature("autodoc", "Returns the table of the parameters associated with each node in this polygon. changeparameters function returnes the array as shared. therefore if the table is selected by reference you can, by simply modifying it, directly modify the data structure of this polygon.
+		%feature("autodoc", "Returns the table of the parameters associated with each node in this polygon. changeparameters function returns the array as shared. therefore if the table is selected by reference you can, by simply modifying it, directly modify the data structure of this polygon.
 
 Returns
 -------
@@ -1290,7 +2136,7 @@ None
 		/****************** ChangeNodes ******************/
 		/**** md5 signature: 804d9242adacaa7a4d3f6b5e4c274788 ****/
 		%feature("compactdefaultargs") ChangeNodes;
-		%feature("autodoc", "Returns the table of nodes for this polygon for modification.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
@@ -1301,7 +2147,7 @@ TColStd_Array1OfInteger
 		/****************** ChangeParameters ******************/
 		/**** md5 signature: 40b04bec95a03e3395d29d982eedb28b ****/
 		%feature("compactdefaultargs") ChangeParameters;
-		%feature("autodoc", "Returns the table of the parameters associated with each node in this polygon. warning! hasparameters() should be called beforehand to check if parameters array is allocated.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
@@ -1376,6 +2222,21 @@ int
 ") NbNodes;
 		Standard_Integer NbNodes();
 
+		/****************** Node ******************/
+		/**** md5 signature: 9f232dd20d41f5521d50372a652ec320 ****/
+		%feature("compactdefaultargs") Node;
+		%feature("autodoc", "Returns node at the given index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+int
+") Node;
+		Standard_Integer Node(Standard_Integer theIndex);
+
 		/****************** Nodes ******************/
 		/**** md5 signature: 70cb2993ef664c271d7fd9a8e642d0be ****/
 		%feature("compactdefaultargs") Nodes;
@@ -1387,16 +2248,63 @@ TColStd_Array1OfInteger
 ") Nodes;
 		const TColStd_Array1OfInteger & Nodes();
 
+		/****************** Parameter ******************/
+		/**** md5 signature: 2f5e734c6e42280e9e364952ae484882 ****/
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "Returns parameter at the given index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+float
+") Parameter;
+		Standard_Real Parameter(Standard_Integer theIndex);
+
 		/****************** Parameters ******************/
 		/**** md5 signature: daf943ce276a3f498cf7feb206e7f048 ****/
 		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "Returns the table of the parameters associated with each node in this polygon. warning use the function hasparameters to check if parameters are associated with the nodes in this polygon.
+		%feature("autodoc", "Returns the table of the parameters associated with each node in this polygon. warning! use the function hasparameters to check if parameters are associated with the nodes in this polygon.
 
 Returns
 -------
 opencascade::handle<TColStd_HArray1OfReal>
 ") Parameters;
 		const opencascade::handle<TColStd_HArray1OfReal> & Parameters();
+
+		/****************** SetNode ******************/
+		/**** md5 signature: 6dafb5b35480fc427463237a0f797a89 ****/
+		%feature("compactdefaultargs") SetNode;
+		%feature("autodoc", "Sets node at the given index.
+
+Parameters
+----------
+theIndex: int
+theNode: int
+
+Returns
+-------
+None
+") SetNode;
+		void SetNode(Standard_Integer theIndex, Standard_Integer theNode);
+
+		/****************** SetParameter ******************/
+		/**** md5 signature: 222a24354720b23b67bfff1614cffd76 ****/
+		%feature("compactdefaultargs") SetParameter;
+		%feature("autodoc", "Sets parameter at the given index.
+
+Parameters
+----------
+theIndex: int
+theValue: float
+
+Returns
+-------
+None
+") SetParameter;
+		void SetParameter(Standard_Integer theIndex, Standard_Real theValue);
 
 		/****************** SetParameters ******************/
 		/**** md5 signature: 7e854a225b1c5a73057ee36a637ee884 ****/
@@ -1549,21 +2457,34 @@ int
 class Poly_Triangulation : public Standard_Transient {
 	public:
 		/****************** Poly_Triangulation ******************/
-		/**** md5 signature: 8341ada4161e016e785939dd9244fa45 ****/
+		/**** md5 signature: fb64c7c55a06db0e43a312bf4d247ed4 ****/
 		%feature("compactdefaultargs") Poly_Triangulation;
-		%feature("autodoc", "Constructs a triangulation from a set of triangles. the triangulation is initialized without a triangle or a node, but capable of containing nbnodes nodes, and nbtriangles triangles. here the uvnodes flag indicates whether 2d nodes will be associated with 3d ones, (i.e. to enable a 2d representation).
-
-Parameters
-----------
-nbNodes: int
-nbTriangles: int
-UVNodes: bool
+		%feature("autodoc", "Constructs an empty triangulation.
 
 Returns
 -------
 None
 ") Poly_Triangulation;
-		 Poly_Triangulation(const Standard_Integer nbNodes, const Standard_Integer nbTriangles, const Standard_Boolean UVNodes);
+		 Poly_Triangulation();
+
+		/****************** Poly_Triangulation ******************/
+		/**** md5 signature: cf580e761a0d35d2b1b1bf249127ab07 ****/
+		%feature("compactdefaultargs") Poly_Triangulation;
+		%feature("autodoc", "Constructs a triangulation from a set of triangles. the triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param thenbnodes [in] number of nodes to allocate @param thenbtriangles [in] number of triangles to allocate @param thehasuvnodes [in] indicates whether 2d nodes will be associated with 3d ones,  (i.e. to enable a 2d representation) @param thehasnormals [in] indicates whether normals will be given and associated with nodes.
+
+Parameters
+----------
+theNbNodes: int
+theNbTriangles: int
+theHasUVNodes: bool
+theHasNormals: bool,optional
+	default value is false
+
+Returns
+-------
+None
+") Poly_Triangulation;
+		 Poly_Triangulation(const Standard_Integer theNbNodes, const Standard_Integer theNbTriangles, const Standard_Boolean theHasUVNodes, const Standard_Boolean theHasNormals = false);
 
 		/****************** Poly_Triangulation ******************/
 		/**** md5 signature: 5868e2be354e056689e3361d93e4d1a9 ****/
@@ -1613,47 +2534,43 @@ None
 ") Poly_Triangulation;
 		 Poly_Triangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
-		/****************** ChangeNode ******************/
-		/**** md5 signature: fa4e4a3502f183b462ac1eeeddb886b3 ****/
-		%feature("compactdefaultargs") ChangeNode;
-		%feature("autodoc", "Give access to the node at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
-
-Parameters
-----------
-theIndex: int
+		/****************** AddNormals ******************/
+		/**** md5 signature: 988703ac37188d57b77d5222e786606b ****/
+		%feature("compactdefaultargs") AddNormals;
+		%feature("autodoc", "If an array for normals is not allocated yet, do it now.
 
 Returns
 -------
-gp_Pnt
-") ChangeNode;
-		gp_Pnt ChangeNode(const Standard_Integer theIndex);
+None
+") AddNormals;
+		void AddNormals();
 
-		/****************** ChangeNodes ******************/
-		/**** md5 signature: bc61f369247d26fc843e3e40e222a6e0 ****/
-		%feature("compactdefaultargs") ChangeNodes;
-		%feature("autodoc", "Returns the table of 3d nodes (3d points) for this triangulation. the returned array is shared. therefore if the table is selected by reference, you can, by simply modifying it, directly modify the data structure of this triangulation.
-
-Returns
--------
-TColgp_Array1OfPnt
-") ChangeNodes;
-		TColgp_Array1OfPnt & ChangeNodes();
-
-		/****************** ChangeNormals ******************/
-		/**** md5 signature: 1dfff352fe8190fed215b0cd1a8bfcee ****/
-		%feature("compactdefaultargs") ChangeNormals;
-		%feature("autodoc", "Gives access to the table of node normals.
+		/****************** AddUVNodes ******************/
+		/**** md5 signature: aef4f8f1c7752e806298ac1fdb6f085e ****/
+		%feature("compactdefaultargs") AddUVNodes;
+		%feature("autodoc", "If an array for uv coordinates is not allocated yet, do it now.
 
 Returns
 -------
-TShort_Array1OfShortReal
-") ChangeNormals;
-		TShort_Array1OfShortReal & ChangeNormals();
+None
+") AddUVNodes;
+		void AddUVNodes();
+
+		/****************** CachedMinMax ******************/
+		/**** md5 signature: 860f1473de4c867bdd1263481bff6a31 ****/
+		%feature("compactdefaultargs") CachedMinMax;
+		%feature("autodoc", "Returns cached min - max range of triangulation data, which is void by default (e.g, no cached information).
+
+Returns
+-------
+Bnd_Box
+") CachedMinMax;
+		const Bnd_Box & CachedMinMax();
 
 		/****************** ChangeTriangle ******************/
-		/**** md5 signature: 942d50a55a5601fac4f74bb8616e013c ****/
+		/**** md5 signature: 97503b6bcbbe63dc66901debc4bacfe4 ****/
 		%feature("compactdefaultargs") ChangeTriangle;
-		%feature("autodoc", "Give access to the triangle at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbtriangles.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -1668,7 +2585,7 @@ Poly_Triangle
 		/****************** ChangeTriangles ******************/
 		/**** md5 signature: 93e00889ebc68a48adbbe563da75709d ****/
 		%feature("compactdefaultargs") ChangeTriangles;
-		%feature("autodoc", "Returns the table of triangles for this triangulation. function changeuvnodes shares the returned array. therefore if the table is selected by reference, you can, by simply modifying it, directly modify the data structure of this triangulation.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
@@ -1676,31 +2593,27 @@ Poly_Array1OfTriangle
 ") ChangeTriangles;
 		Poly_Array1OfTriangle & ChangeTriangles();
 
-		/****************** ChangeUVNode ******************/
-		/**** md5 signature: 978695900b7c1d9e9271b954a113b0bd ****/
-		%feature("compactdefaultargs") ChangeUVNode;
-		%feature("autodoc", "Give access to the uvnode at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
-
-Parameters
-----------
-theIndex: int
+		/****************** Clear ******************/
+		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Clears internal arrays of nodes and all attributes.
 
 Returns
 -------
-gp_Pnt2d
-") ChangeUVNode;
-		gp_Pnt2d ChangeUVNode(const Standard_Integer theIndex);
+None
+") Clear;
+		virtual void Clear();
 
-		/****************** ChangeUVNodes ******************/
-		/**** md5 signature: 369d7a8ffd94f297e7de73a825b82e73 ****/
-		%feature("compactdefaultargs") ChangeUVNodes;
-		%feature("autodoc", "Returns the table of 2d nodes (2d points) associated with each 3d node of this triangulation. function changeuvnodes shares the returned array. therefore if the table is selected by reference, you can, by simply modifying it, directly modify the data structure of this triangulation.
+		/****************** ComputeNormals ******************/
+		/**** md5 signature: 110f2870d1645fb6f770425c5390b82b ****/
+		%feature("compactdefaultargs") ComputeNormals;
+		%feature("autodoc", "Compute smooth normals by averaging triangle normals.
 
 Returns
 -------
-TColgp_Array1OfPnt2d
-") ChangeUVNodes;
-		TColgp_Array1OfPnt2d & ChangeUVNodes();
+None
+") ComputeNormals;
+		void ComputeNormals();
 
 		/****************** Copy ******************/
 		/**** md5 signature: eca097a0bd418e6d57a457eb92e7098f ****/
@@ -1725,7 +2638,7 @@ float
 		Standard_Real Deflection();
 
 		/****************** Deflection ******************/
-		/**** md5 signature: e3314129dc278c4d2782072a6d9cb7bb ****/
+		/**** md5 signature: b86bc3614056d639b4f5cd50c01cdd01 ****/
 		%feature("compactdefaultargs") Deflection;
 		%feature("autodoc", "Sets the deflection of this triangulation to thedeflection. see more on deflection in polygon2d.
 
@@ -1739,6 +2652,22 @@ None
 ") Deflection;
 		void Deflection(const Standard_Real theDeflection);
 
+		/****************** DetachedLoadDeferredData ******************/
+		/**** md5 signature: 9af9a4d45f59e107cacdd9ec789b0012 ****/
+		%feature("compactdefaultargs") DetachedLoadDeferredData;
+		%feature("autodoc", "Loads triangulation data into new poly_triangulation object from some deferred storage using specified shared input file system.
+
+Parameters
+----------
+theFileSystem: OSD_FileSystem,optional
+	default value is opencascade::handle<OSD_FileSystem>()
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") DetachedLoadDeferredData;
+		virtual opencascade::handle<Poly_Triangulation> DetachedLoadDeferredData(const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
+
 
             %feature("autodoc", "1");
             %extend{
@@ -1747,8 +2676,41 @@ None
                 self->DumpJson(s, depth);
                 return s.str();}
             };
+		/****************** HasCachedMinMax ******************/
+		/**** md5 signature: f79a105a5bcf422403c5e9f9fd81b27f ****/
+		%feature("compactdefaultargs") HasCachedMinMax;
+		%feature("autodoc", "Returns true if there is some cached min - max range of this triangulation.
+
+Returns
+-------
+bool
+") HasCachedMinMax;
+		Standard_Boolean HasCachedMinMax();
+
+		/****************** HasDeferredData ******************/
+		/**** md5 signature: 6d3e21e66856957a5fa945244fecad2c ****/
+		%feature("compactdefaultargs") HasDeferredData;
+		%feature("autodoc", "Returns true if there is some triangulation data that can be loaded using loaddeferreddata().
+
+Returns
+-------
+bool
+") HasDeferredData;
+		virtual Standard_Boolean HasDeferredData();
+
+		/****************** HasGeometry ******************/
+		/**** md5 signature: a4660e9afa0dc45d915e55b9cc6a1ce8 ****/
+		%feature("compactdefaultargs") HasGeometry;
+		%feature("autodoc", "Returns true if triangulation has some geometry.
+
+Returns
+-------
+bool
+") HasGeometry;
+		virtual Standard_Boolean HasGeometry();
+
 		/****************** HasNormals ******************/
-		/**** md5 signature: 181f2084bd118d7033834a50e616fde5 ****/
+		/**** md5 signature: 07515066bfaef42256152544d89b8a1b ****/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Returns standard_true if nodal normals are defined.
 
@@ -1768,6 +2730,172 @@ Returns
 bool
 ") HasUVNodes;
 		Standard_Boolean HasUVNodes();
+
+		/****************** InternalNodes ******************/
+		/**** md5 signature: 403a5fe5cb6597f76bbee32dd2e0bec6 ****/
+		%feature("compactdefaultargs") InternalNodes;
+		%feature("autodoc", "Returns an internal array of nodes. node()/setnode() should be used instead in portable code.
+
+Returns
+-------
+Poly_ArrayOfNodes
+") InternalNodes;
+		Poly_ArrayOfNodes & InternalNodes();
+
+		/****************** InternalNormals ******************/
+		/**** md5 signature: 93e4192abafb087bf6c239c37a37ebf6 ****/
+		%feature("compactdefaultargs") InternalNormals;
+		%feature("autodoc", "Return an internal array of normals. normal()/setnormal() should be used instead in portable code.
+
+Returns
+-------
+NCollection_Array1<gp_Vec3f>
+") InternalNormals;
+		NCollection_Array1<gp_Vec3f> InternalNormals();
+
+		/****************** InternalTriangles ******************/
+		/**** md5 signature: 1a53bffdd17170444b156e94f8320fdf ****/
+		%feature("compactdefaultargs") InternalTriangles;
+		%feature("autodoc", "Returns an internal array of triangles. triangle()/settriangle() should be used instead in portable code.
+
+Returns
+-------
+Poly_Array1OfTriangle
+") InternalTriangles;
+		Poly_Array1OfTriangle & InternalTriangles();
+
+		/****************** InternalUVNodes ******************/
+		/**** md5 signature: 59cea86b8917085f807b814917ebbb4e ****/
+		%feature("compactdefaultargs") InternalUVNodes;
+		%feature("autodoc", "Returns an internal array of uv nodes. ubnode()/setuvnode() should be used instead in portable code.
+
+Returns
+-------
+Poly_ArrayOfUVNodes
+") InternalUVNodes;
+		Poly_ArrayOfUVNodes & InternalUVNodes();
+
+		/****************** IsDoublePrecision ******************/
+		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		%feature("compactdefaultargs") IsDoublePrecision;
+		%feature("autodoc", "Returns true if node positions are defined with double precision; true by default.
+
+Returns
+-------
+bool
+") IsDoublePrecision;
+		bool IsDoublePrecision();
+
+		/****************** LoadDeferredData ******************/
+		/**** md5 signature: 24c1ab4ecc3f85c797488cce47e81392 ****/
+		%feature("compactdefaultargs") LoadDeferredData;
+		%feature("autodoc", "Loads triangulation data into itself from some deferred storage using specified shared input file system.
+
+Parameters
+----------
+theFileSystem: OSD_FileSystem,optional
+	default value is opencascade::handle<OSD_FileSystem>()
+
+Returns
+-------
+bool
+") LoadDeferredData;
+		virtual Standard_Boolean LoadDeferredData(const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
+
+		/****************** MapNodeArray ******************/
+		/**** md5 signature: 9c275c60798ddd9c1b7e5d68f7c29b6d ****/
+		%feature("compactdefaultargs") MapNodeArray;
+		%feature("autodoc", "Returns the table of 3d points for read-only access or null if nodes array is undefined. poly_triangulation::node() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+
+Returns
+-------
+opencascade::handle<TColgp_HArray1OfPnt>
+") MapNodeArray;
+		opencascade::handle<TColgp_HArray1OfPnt> MapNodeArray();
+
+		/****************** MapNormalArray ******************/
+		/**** md5 signature: 4ff4fd7887eef1b2c85132e2201f9244 ****/
+		%feature("compactdefaultargs") MapNormalArray;
+		%feature("autodoc", "Returns the table of per-vertex normals for read-only access or null if normals array is undefined. poly_triangulation::normal() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+
+Returns
+-------
+opencascade::handle<TShort_HArray1OfShortReal>
+") MapNormalArray;
+		opencascade::handle<TShort_HArray1OfShortReal> MapNormalArray();
+
+		/****************** MapTriangleArray ******************/
+		/**** md5 signature: e5a1f4ced93fc073d52de30aa690a57d ****/
+		%feature("compactdefaultargs") MapTriangleArray;
+		%feature("autodoc", "Returns the triangle array for read-only access or null if triangle array is undefined. poly_triangulation::triangle() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+
+Returns
+-------
+opencascade::handle<Poly_HArray1OfTriangle>
+") MapTriangleArray;
+		opencascade::handle<Poly_HArray1OfTriangle> MapTriangleArray();
+
+		/****************** MapUVNodeArray ******************/
+		/**** md5 signature: 06601b50e73ad7b0e2ea1e0a991dfb6f ****/
+		%feature("compactdefaultargs") MapUVNodeArray;
+		%feature("autodoc", "Returns the table of 2d nodes for read-only access or null if uv nodes array is undefined. poly_triangulation::uvnode() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+
+Returns
+-------
+opencascade::handle<TColgp_HArray1OfPnt2d>
+") MapUVNodeArray;
+		opencascade::handle<TColgp_HArray1OfPnt2d> MapUVNodeArray();
+
+		/****************** MeshPurpose ******************/
+		/**** md5 signature: ba1e18e20d36cd45158708664262234a ****/
+		%feature("compactdefaultargs") MeshPurpose;
+		%feature("autodoc", "Returns mesh purpose bits.
+
+Returns
+-------
+Poly_MeshPurpose
+") MeshPurpose;
+		Poly_MeshPurpose MeshPurpose();
+
+		/****************** MinMax ******************/
+		/**** md5 signature: 6e35e4cffcebf3b16403a57344e99893 ****/
+		%feature("compactdefaultargs") MinMax;
+		%feature("autodoc", "Extends the passed box with bounding box of this triangulation. uses cached min - max range when available and: - input transformation thetrsf has no rotation part; - theisaccurate is set to false; - no triangulation data available (e.g. it is deferred and not loaded). @param thebox [in] [out] bounding box to extend by this triangulation @param thetrsf [in] optional transformation @param theisaccurate [in] when false, allows using a cached min - max range of this triangulation  even for non-identity transformation. returns false if there is no any data to extend the passed box (no both triangulation and cached min - max range).
+
+Parameters
+----------
+theBox: Bnd_Box
+theTrsf: gp_Trsf
+theIsAccurate: bool,optional
+	default value is false
+
+Returns
+-------
+bool
+") MinMax;
+		Standard_Boolean MinMax(Bnd_Box & theBox, const gp_Trsf & theTrsf, const bool theIsAccurate = false);
+
+		/****************** NbDeferredNodes ******************/
+		/**** md5 signature: 181f24753f86afef53db878ca490cb7f ****/
+		%feature("compactdefaultargs") NbDeferredNodes;
+		%feature("autodoc", "Returns number of deferred nodes that can be loaded using loaddeferreddata(). note: this is estimated values, which might be different from actually loaded values. always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+
+Returns
+-------
+int
+") NbDeferredNodes;
+		virtual Standard_Integer NbDeferredNodes();
+
+		/****************** NbDeferredTriangles ******************/
+		/**** md5 signature: 6590098237c07bc2fc7c793b6ca3b413 ****/
+		%feature("compactdefaultargs") NbDeferredTriangles;
+		%feature("autodoc", "Returns number of deferred triangles that can be loaded using loaddeferreddata(). note: this is estimated values, which might be different from actually loaded values always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+
+Returns
+-------
+int
+") NbDeferredTriangles;
+		virtual Standard_Integer NbDeferredTriangles();
 
 		/****************** NbNodes ******************/
 		/**** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ****/
@@ -1792,9 +2920,9 @@ int
 		Standard_Integer NbTriangles();
 
 		/****************** Node ******************/
-		/**** md5 signature: 86df678a3d98d54374f5f531a65a2fc7 ****/
+		/**** md5 signature: 48e932705302aa5c401569deb665fd5b ****/
 		%feature("compactdefaultargs") Node;
-		%feature("autodoc", "Returns node at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
+		%feature("autodoc", "Returns a node at the given index.
 
 Parameters
 ----------
@@ -1804,23 +2932,12 @@ Returns
 -------
 gp_Pnt
 ") Node;
-		const gp_Pnt Node(const Standard_Integer theIndex);
-
-		/****************** Nodes ******************/
-		/**** md5 signature: 63910e43049268bc77cc7eb526dc4294 ****/
-		%feature("compactdefaultargs") Nodes;
-		%feature("autodoc", "Returns the table of 3d nodes (3d points) for this triangulation.
-
-Returns
--------
-TColgp_Array1OfPnt
-") Nodes;
-		const TColgp_Array1OfPnt & Nodes();
+		gp_Pnt Node(Standard_Integer theIndex);
 
 		/****************** Normal ******************/
-		/**** md5 signature: 1f8c1bc50986664ddc2a6444da0aec81 ****/
+		/**** md5 signature: 253664a7e4e8068dfd6a122d8bad4c73 ****/
 		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "Returns normal at the given index. raises standard_outofrange exception.
+		%feature("autodoc", "Returns normal at the given index.
 
 Parameters
 ----------
@@ -1830,23 +2947,65 @@ Returns
 -------
 gp_Dir
 ") Normal;
-		gp_Dir Normal(const Standard_Integer theIndex);
+		gp_Dir Normal(Standard_Integer theIndex);
 
-		/****************** Normals ******************/
-		/**** md5 signature: 5caf9a2706fda608446853b1edfc2b27 ****/
-		%feature("compactdefaultargs") Normals;
-		%feature("autodoc", "Returns the table of node normals.
+		/****************** Normal ******************/
+		/**** md5 signature: 110aa4fbe5c4eb7a7d08446898f30660 ****/
+		%feature("compactdefaultargs") Normal;
+		%feature("autodoc", "Returns normal at the given index.
+
+Parameters
+----------
+theIndex: int
+theVec3: gp_Vec3f
 
 Returns
 -------
-TShort_Array1OfShortReal
-") Normals;
-		const TShort_Array1OfShortReal & Normals();
+None
+") Normal;
+		void Normal(Standard_Integer theIndex, gp_Vec3f & theVec3);
+
+		/****************** Parameters ******************/
+		/**** md5 signature: 6252211024a9c3cb02e54aa22a221883 ****/
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "Returns initial set of parameters used to generate this triangulation.
+
+Returns
+-------
+opencascade::handle<Poly_TriangulationParameters>
+") Parameters;
+		const opencascade::handle<Poly_TriangulationParameters> & Parameters();
+
+		/****************** Parameters ******************/
+		/**** md5 signature: 61d90060156bad034a55aa0c625a7f41 ****/
+		%feature("compactdefaultargs") Parameters;
+		%feature("autodoc", "Updates initial set of parameters used to generate this triangulation.
+
+Parameters
+----------
+theParams: Poly_TriangulationParameters
+
+Returns
+-------
+None
+") Parameters;
+		void Parameters(const opencascade::handle<Poly_TriangulationParameters> & theParams);
+
+		/****************** RemoveNormals ******************/
+		/**** md5 signature: 906873267f0d5cb3a94c9b91f41d3f43 ****/
+		%feature("compactdefaultargs") RemoveNormals;
+		%feature("autodoc", "Deallocates the normals array.
+
+Returns
+-------
+None
+") RemoveNormals;
+		void RemoveNormals();
 
 		/****************** RemoveUVNodes ******************/
 		/**** md5 signature: 40045c3c77e535165bfc8c8523acf1d5 ****/
 		%feature("compactdefaultargs") RemoveUVNodes;
-		%feature("autodoc", "Deallocates the uv nodes.
+		%feature("autodoc", "Deallocates the uv nodes array.
 
 Returns
 -------
@@ -1854,10 +3013,119 @@ None
 ") RemoveUVNodes;
 		void RemoveUVNodes();
 
+		/****************** ResizeNodes ******************/
+		/**** md5 signature: 3b86fbe9b3c9ba30b4ebf0344ad53a7b ****/
+		%feature("compactdefaultargs") ResizeNodes;
+		%feature("autodoc", "Method resizing internal arrays of nodes (synchronously for all attributes). @param thenbnodes [in] new number of nodes @param thetocopyold [in] copy old nodes into the new array.
+
+Parameters
+----------
+theNbNodes: int
+theToCopyOld: bool
+
+Returns
+-------
+None
+") ResizeNodes;
+		void ResizeNodes(Standard_Integer theNbNodes, Standard_Boolean theToCopyOld);
+
+		/****************** ResizeTriangles ******************/
+		/**** md5 signature: adc8606878f0507cdc07dcad06d7a5a2 ****/
+		%feature("compactdefaultargs") ResizeTriangles;
+		%feature("autodoc", "Method resizing an internal array of triangles. @param thenbtriangles [in] new number of triangles @param thetocopyold [in] copy old triangles into the new array.
+
+Parameters
+----------
+theNbTriangles: int
+theToCopyOld: bool
+
+Returns
+-------
+None
+") ResizeTriangles;
+		void ResizeTriangles(Standard_Integer theNbTriangles, Standard_Boolean theToCopyOld);
+
+		/****************** SetCachedMinMax ******************/
+		/**** md5 signature: 19ad72bfcaa33accf71079a046805f6c ****/
+		%feature("compactdefaultargs") SetCachedMinMax;
+		%feature("autodoc", "Sets a cached min - max range of this triangulation. the bounding box should exactly match actual range of triangulation data without a gap or transformation, or otherwise undefined behavior will be observed. passing a void range invalidates the cache.
+
+Parameters
+----------
+theBox: Bnd_Box
+
+Returns
+-------
+None
+") SetCachedMinMax;
+		void SetCachedMinMax(const Bnd_Box & theBox);
+
+		/****************** SetDoublePrecision ******************/
+		/**** md5 signature: 6c35f8efef0e359ce10f5e168a8c2030 ****/
+		%feature("compactdefaultargs") SetDoublePrecision;
+		%feature("autodoc", "Set if node positions should be defined with double or single precision for 3d and uv nodes. raises exception if data was already allocated.
+
+Parameters
+----------
+theIsDouble: bool
+
+Returns
+-------
+None
+") SetDoublePrecision;
+		void SetDoublePrecision(bool theIsDouble);
+
+		/****************** SetMeshPurpose ******************/
+		/**** md5 signature: 196379fb8aefcd5ad64b2c91f7fee649 ****/
+		%feature("compactdefaultargs") SetMeshPurpose;
+		%feature("autodoc", "Sets mesh purpose bits.
+
+Parameters
+----------
+thePurpose: Poly_MeshPurpose
+
+Returns
+-------
+None
+") SetMeshPurpose;
+		void SetMeshPurpose(const Poly_MeshPurpose thePurpose);
+
+		/****************** SetNode ******************/
+		/**** md5 signature: 4c86150f9d355bdf6918f3438a943304 ****/
+		%feature("compactdefaultargs") SetNode;
+		%feature("autodoc", "Sets a node coordinates.
+
+Parameters
+----------
+theIndex: int
+thePnt: gp_Pnt
+
+Returns
+-------
+None
+") SetNode;
+		void SetNode(Standard_Integer theIndex, const gp_Pnt & thePnt);
+
 		/****************** SetNormal ******************/
-		/**** md5 signature: 16090a2b1fc1f76d31b9afd2a0c42cc1 ****/
+		/**** md5 signature: dc19aaf77561dbe449024631f4eeee1b ****/
 		%feature("compactdefaultargs") SetNormal;
-		%feature("autodoc", "Changes normal at the given index. raises standard_outofrange exception.
+		%feature("autodoc", "Changes normal at the given index.
+
+Parameters
+----------
+theIndex: int
+theNormal: gp_Vec3f
+
+Returns
+-------
+None
+") SetNormal;
+		void SetNormal(const Standard_Integer theIndex, const gp_Vec3f & theNormal);
+
+		/****************** SetNormal ******************/
+		/**** md5 signature: 0fdfdf6eef8e01f6f44ef167778a8399 ****/
+		%feature("compactdefaultargs") SetNormal;
+		%feature("autodoc", "Changes normal at the given index.
 
 Parameters
 ----------
@@ -1873,7 +3141,7 @@ None
 		/****************** SetNormals ******************/
 		/**** md5 signature: 7c3a3b618d135482bdaa83f0ced5edb7 ****/
 		%feature("compactdefaultargs") SetNormals;
-		%feature("autodoc", "Sets the table of node normals. raises exception if length of thenormals != 3*nbnodes.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -1885,10 +3153,42 @@ None
 ") SetNormals;
 		void SetNormals(const opencascade::handle<TShort_HArray1OfShortReal> & theNormals);
 
+		/****************** SetTriangle ******************/
+		/**** md5 signature: 95a552e8aa9d409a641c1fe5418519b3 ****/
+		%feature("compactdefaultargs") SetTriangle;
+		%feature("autodoc", "Sets a triangle.
+
+Parameters
+----------
+theIndex: int
+theTriangle: Poly_Triangle
+
+Returns
+-------
+None
+") SetTriangle;
+		void SetTriangle(Standard_Integer theIndex, const Poly_Triangle & theTriangle);
+
+		/****************** SetUVNode ******************/
+		/**** md5 signature: 75f2dd3953e33c453b0caa0b3b20f49f ****/
+		%feature("compactdefaultargs") SetUVNode;
+		%feature("autodoc", "Sets an uv-node coordinates.
+
+Parameters
+----------
+theIndex: int
+thePnt: gp_Pnt2d
+
+Returns
+-------
+None
+") SetUVNode;
+		void SetUVNode(Standard_Integer theIndex, const gp_Pnt2d & thePnt);
+
 		/****************** Triangle ******************/
-		/**** md5 signature: 4b478dad3ef750a602442807b17fca5a ****/
+		/**** md5 signature: 3883dfb3e28eb482bbc2fa1ac9c0a8bd ****/
 		%feature("compactdefaultargs") Triangle;
-		%feature("autodoc", "Returns triangle at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbtriangles.
+		%feature("autodoc", "Returns triangle at the given index.
 
 Parameters
 ----------
@@ -1898,12 +3198,12 @@ Returns
 -------
 Poly_Triangle
 ") Triangle;
-		const Poly_Triangle & Triangle(const Standard_Integer theIndex);
+		const Poly_Triangle & Triangle(Standard_Integer theIndex);
 
 		/****************** Triangles ******************/
 		/**** md5 signature: ba43a8d32c20fbeb1020e37bd97d4aca ****/
 		%feature("compactdefaultargs") Triangles;
-		%feature("autodoc", "Returns the table of triangles for this triangulation.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
@@ -1912,9 +3212,9 @@ Poly_Array1OfTriangle
 		const Poly_Array1OfTriangle & Triangles();
 
 		/****************** UVNode ******************/
-		/**** md5 signature: 45592da925c13e10349c0f573d7d2cd6 ****/
+		/**** md5 signature: 30f3fd5f160869900c18f852f4c89b00 ****/
 		%feature("compactdefaultargs") UVNode;
-		%feature("autodoc", "Returns uvnode at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
+		%feature("autodoc", "Returns uv-node at the given index.
 
 Parameters
 ----------
@@ -1924,18 +3224,29 @@ Returns
 -------
 gp_Pnt2d
 ") UVNode;
-		const gp_Pnt2d UVNode(const Standard_Integer theIndex);
+		gp_Pnt2d UVNode(Standard_Integer theIndex);
 
-		/****************** UVNodes ******************/
-		/**** md5 signature: 49590b14d68f909a1de6ea52cb486d50 ****/
-		%feature("compactdefaultargs") UVNodes;
-		%feature("autodoc", "Returns the table of 2d nodes (2d points) associated with each 3d node of this triangulation. the function hasuvnodes checks if 2d nodes are associated with the 3d nodes of this triangulation. const reference on the 2d nodes values.
+		/****************** UnloadDeferredData ******************/
+		/**** md5 signature: 7d284011e56d3e968d822420287d0f32 ****/
+		%feature("compactdefaultargs") UnloadDeferredData;
+		%feature("autodoc", "Releases triangulation data if it has connected deferred storage.
 
 Returns
 -------
-TColgp_Array1OfPnt2d
-") UVNodes;
-		const TColgp_Array1OfPnt2d & UVNodes();
+bool
+") UnloadDeferredData;
+		virtual Standard_Boolean UnloadDeferredData();
+
+		/****************** UpdateCachedMinMax ******************/
+		/**** md5 signature: 4c361d8b4180a1ed7c2336bf5a7b6550 ****/
+		%feature("compactdefaultargs") UpdateCachedMinMax;
+		%feature("autodoc", "Updates cached min - max range of this triangulation with bounding box of nodal data.
+
+Returns
+-------
+None
+") UpdateCachedMinMax;
+		void UpdateCachedMinMax();
 
 };
 
@@ -1943,6 +3254,108 @@ TColgp_Array1OfPnt2d
 %make_alias(Poly_Triangulation)
 
 %extend Poly_Triangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************
+* class Poly_TriangulationParameters *
+*************************************/
+class Poly_TriangulationParameters : public Standard_Transient {
+	public:
+		/****************** Poly_TriangulationParameters ******************/
+		/**** md5 signature: 2846ec507556dc9aeed354635ae24a71 ****/
+		%feature("compactdefaultargs") Poly_TriangulationParameters;
+		%feature("autodoc", "Constructor. initializes object with the given parameters. @param thedeflection linear deflection @param theangle angular deflection @param theminsize minimum size.
+
+Parameters
+----------
+theDeflection: float,optional
+	default value is -1
+theAngle: float,optional
+	default value is -1
+theMinSize: float,optional
+	default value is -1
+
+Returns
+-------
+None
+") Poly_TriangulationParameters;
+		 Poly_TriangulationParameters(const Standard_Real theDeflection = -1, const Standard_Real theAngle = -1, const Standard_Real theMinSize = -1);
+
+		/****************** Angle ******************/
+		/**** md5 signature: 2e7a91a67b1745bc9ecd36bc3650ed68 ****/
+		%feature("compactdefaultargs") Angle;
+		%feature("autodoc", "Returns angular deflection or -1 if undefined.
+
+Returns
+-------
+float
+") Angle;
+		Standard_Real Angle();
+
+		/****************** Deflection ******************/
+		/**** md5 signature: 6fb4c31e8f4445c1597fc8b70a63cbfb ****/
+		%feature("compactdefaultargs") Deflection;
+		%feature("autodoc", "Returns linear deflection or -1 if undefined.
+
+Returns
+-------
+float
+") Deflection;
+		Standard_Real Deflection();
+
+		/****************** HasAngle ******************/
+		/**** md5 signature: c1223160f2439e874120d1b51f6c461c ****/
+		%feature("compactdefaultargs") HasAngle;
+		%feature("autodoc", "Returns true if angular deflection is defined.
+
+Returns
+-------
+bool
+") HasAngle;
+		Standard_Boolean HasAngle();
+
+		/****************** HasDeflection ******************/
+		/**** md5 signature: 90ac27dcf3a3d8ea534c31817e1d0330 ****/
+		%feature("compactdefaultargs") HasDeflection;
+		%feature("autodoc", "Returns true if linear deflection is defined.
+
+Returns
+-------
+bool
+") HasDeflection;
+		Standard_Boolean HasDeflection();
+
+		/****************** HasMinSize ******************/
+		/**** md5 signature: d918376e08395b3d644d99b6d1b1d4f9 ****/
+		%feature("compactdefaultargs") HasMinSize;
+		%feature("autodoc", "Returns true if minimum size is defined.
+
+Returns
+-------
+bool
+") HasMinSize;
+		Standard_Boolean HasMinSize();
+
+		/****************** MinSize ******************/
+		/**** md5 signature: e59d58f0974e9001490d4ab40193a04b ****/
+		%feature("compactdefaultargs") MinSize;
+		%feature("autodoc", "Returns minimum size or -1 if undefined.
+
+Returns
+-------
+float
+") MinSize;
+		Standard_Real MinSize();
+
+};
+
+
+%make_alias(Poly_TriangulationParameters)
+
+%extend Poly_TriangulationParameters {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

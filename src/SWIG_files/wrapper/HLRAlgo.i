@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRALGODOCSTRING
 "HLRAlgo module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlralgo.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_hlralgo.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRALGODOCSTRING) HLRAlgo
 
@@ -43,7 +43,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlralgo.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<gp_module.hxx>
@@ -55,7 +54,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlralgo.html"
 %import Standard.i
 %import NCollection.i
 %import TopAbs.i
-%import TColStd.i
 %import TColgp.i
 %import gp.i
 
@@ -83,7 +81,7 @@ enum HLRAlgo_PolyMask {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class HLRAlgo_PolyMask(IntEnum):
@@ -1885,6 +1883,17 @@ None
 ") HLRAlgo_PolyAlgo;
 		 HLRAlgo_PolyAlgo();
 
+		/****************** ChangePolyShell ******************/
+		/**** md5 signature: f8b52f4813ca4e760c91710a23a4a32e ****/
+		%feature("compactdefaultargs") ChangePolyShell;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>
+") ChangePolyShell;
+		NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> & ChangePolyShell();
+
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
@@ -1916,22 +1925,22 @@ intl: bool
 		HLRAlgo_BiPoint::PointsT & Hide(HLRAlgo_EdgeStatus & status, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** Init ******************/
-		/**** md5 signature: 2785a952a72256008e2871c5eeaa1776 ****/
+		/**** md5 signature: 4f6558833fa45b2851e3cccaa0030ced ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-HShell: TColStd_HArray1OfTransient
+theNbShells: int
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<TColStd_HArray1OfTransient> & HShell);
+		void Init(const Standard_Integer theNbShells);
 
 		/****************** InitHide ******************/
-		/**** md5 signature: 32bd2983c565ec4e2841cbdfc31fdf26 ****/
+		/**** md5 signature: 6d3a01e37a94e3705475c3d6870e3eb9 ****/
 		%feature("compactdefaultargs") InitHide;
 		%feature("autodoc", "No available documentation.
 
@@ -1942,7 +1951,7 @@ None
 		void InitHide();
 
 		/****************** InitShow ******************/
-		/**** md5 signature: ea1a67c1f45ef7c44c521925fd0378a1 ****/
+		/**** md5 signature: 0c19b9d9bad511b1134c595c7ff3584f ****/
 		%feature("compactdefaultargs") InitShow;
 		%feature("autodoc", "No available documentation.
 
@@ -1953,7 +1962,7 @@ None
 		void InitShow();
 
 		/****************** MoreHide ******************/
-		/**** md5 signature: d38676512d86f43f63f7be299a6fac64 ****/
+		/**** md5 signature: ee934ca6bfa0a4423c581ec95be0690b ****/
 		%feature("compactdefaultargs") MoreHide;
 		%feature("autodoc", "No available documentation.
 
@@ -1964,7 +1973,7 @@ bool
 		Standard_Boolean MoreHide();
 
 		/****************** MoreShow ******************/
-		/**** md5 signature: 1f2b98cd697654109ddadc761c52bff2 ****/
+		/**** md5 signature: 676e76c7f6a46e8688a744d734543b5e ****/
 		%feature("compactdefaultargs") MoreShow;
 		%feature("autodoc", "No available documentation.
 
@@ -1997,15 +2006,15 @@ None
 		void NextShow();
 
 		/****************** PolyShell ******************/
-		/**** md5 signature: e5db1bb176fa214ccb6bd241dec7376d ****/
+		/**** md5 signature: 8fa2b2862bf6f2793a727c50d438f4fc ****/
 		%feature("compactdefaultargs") PolyShell;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-TColStd_Array1OfTransient
+NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>
 ") PolyShell;
-		TColStd_Array1OfTransient & PolyShell();
+		const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> & PolyShell();
 
 		/****************** Show ******************/
 		/**** md5 signature: 91aa0cc1a8ccb2620f595ef894877d22 ****/
@@ -2226,26 +2235,26 @@ None
 		 HLRAlgo_PolyInternalData(const Standard_Integer nbNod, const Standard_Integer nbTri);
 
 		/****************** AddNode ******************/
-		/**** md5 signature: aacd9ed1a53ed4982f991a7ae4deb544 ****/
+		/**** md5 signature: 030edbaa89e0e51ec1ee836bbe028a9a ****/
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Nod1RValues: HLRAlgo_PolyInternalNode::NodeData
-Nod2RValues: HLRAlgo_PolyInternalNode::NodeData
-PINod1: HLRAlgo_Array1OfPINod *
-PINod2: HLRAlgo_Array1OfPINod *
-coef1: float
-X3: float
-Y3: float
-Z3: float
+theNod1RValues: HLRAlgo_PolyInternalNode::NodeData
+theNod2RValues: HLRAlgo_PolyInternalNode::NodeData
+thePINod1: HLRAlgo_Array1OfPINod *
+thePINod2: HLRAlgo_Array1OfPINod *
+theCoef1: float
+theX3: float
+theY3: float
+theZ3: float
 
 Returns
 -------
 int
 ") AddNode;
-		Standard_Integer AddNode(HLRAlgo_PolyInternalNode::NodeData & Nod1RValues, HLRAlgo_PolyInternalNode::NodeData & Nod2RValues, HLRAlgo_Array1OfPINod * & PINod1, HLRAlgo_Array1OfPINod * & PINod2, const Standard_Real coef1, const Standard_Real X3, const Standard_Real Y3, const Standard_Real Z3);
+		Standard_Integer AddNode(HLRAlgo_PolyInternalNode::NodeData & theNod1RValues, HLRAlgo_PolyInternalNode::NodeData & theNod2RValues, HLRAlgo_Array1OfPINod * & thePINod1, HLRAlgo_Array1OfPINod * & thePINod2, const Standard_Real theCoef1, const Standard_Real theX3, const Standard_Real theY3, const Standard_Real theZ3);
 
 		/****************** DecPINod ******************/
 		/**** md5 signature: 23c9a454c260ae9304cb22b337d0f0ff ****/
@@ -2292,20 +2301,20 @@ None
 		void Dump();
 
 		/****************** IncPINod ******************/
-		/**** md5 signature: dccf48c23aa9b2ed419abc8206b2134a ****/
+		/**** md5 signature: e28e8098a494a718c0df7f109cd14590 ****/
 		%feature("compactdefaultargs") IncPINod;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-PINod1: HLRAlgo_Array1OfPINod *
-PINod2: HLRAlgo_Array1OfPINod *
+thePINod1: HLRAlgo_Array1OfPINod *
+thePINod2: HLRAlgo_Array1OfPINod *
 
 Returns
 -------
 None
 ") IncPINod;
-		void IncPINod(HLRAlgo_Array1OfPINod * & PINod1, HLRAlgo_Array1OfPINod * & PINod2);
+		void IncPINod(HLRAlgo_Array1OfPINod * & thePINod1, HLRAlgo_Array1OfPINod * & thePINod2);
 
 		/****************** IncPISeg ******************/
 		/**** md5 signature: bf0b8293a85db37a0ab57e624faff682 ****/
@@ -2458,44 +2467,44 @@ HLRAlgo_Array1OfTData
 		HLRAlgo_Array1OfTData & TData();
 
 		/****************** UpdateLinks ******************/
-		/**** md5 signature: 3c1fead71d12912fde573f86341607c6 ****/
+		/**** md5 signature: 6ecb7e49245bc9a027a02cec4a8ab955 ****/
 		%feature("compactdefaultargs") UpdateLinks;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-TData: HLRAlgo_Array1OfTData *
-PISeg: HLRAlgo_Array1OfPISeg *
-PINod: HLRAlgo_Array1OfPINod *
+theTData: HLRAlgo_Array1OfTData
+thePISeg: HLRAlgo_Array1OfPISeg
+thePINod: HLRAlgo_Array1OfPINod
 
 Returns
 -------
 None
 ") UpdateLinks;
-		void UpdateLinks(HLRAlgo_Array1OfTData * & TData, HLRAlgo_Array1OfPISeg * & PISeg, HLRAlgo_Array1OfPINod * & PINod);
+		void UpdateLinks(HLRAlgo_Array1OfTData & theTData, HLRAlgo_Array1OfPISeg & thePISeg, HLRAlgo_Array1OfPINod & thePINod);
 
 		/****************** UpdateLinks ******************/
-		/**** md5 signature: 298c0b05e50a3e8c84d4fed8bb82f958 ****/
+		/**** md5 signature: 12f0176cf18713f7b8c1d91b9594981c ****/
 		%feature("compactdefaultargs") UpdateLinks;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-ip1: int
-ip2: int
-ip3: int
-TData1: HLRAlgo_Array1OfTData *
-TData2: HLRAlgo_Array1OfTData *
-PISeg1: HLRAlgo_Array1OfPISeg *
-PISeg2: HLRAlgo_Array1OfPISeg *
-PINod1: HLRAlgo_Array1OfPINod *
-PINod2: HLRAlgo_Array1OfPINod *
+theIp1: int
+theIp2: int
+theIp3: int
+theTData1: HLRAlgo_Array1OfTData *
+theTData2: HLRAlgo_Array1OfTData *
+thePISeg1: HLRAlgo_Array1OfPISeg *
+thePISeg2: HLRAlgo_Array1OfPISeg *
+thePINod1: HLRAlgo_Array1OfPINod *
+thePINod2: HLRAlgo_Array1OfPINod *
 
 Returns
 -------
 None
 ") UpdateLinks;
-		void UpdateLinks(const Standard_Integer ip1, const Standard_Integer ip2, const Standard_Integer ip3, HLRAlgo_Array1OfTData * & TData1, HLRAlgo_Array1OfTData * & TData2, HLRAlgo_Array1OfPISeg * & PISeg1, HLRAlgo_Array1OfPISeg * & PISeg2, HLRAlgo_Array1OfPINod * & PINod1, HLRAlgo_Array1OfPINod * & PINod2);
+		void UpdateLinks(const Standard_Integer theIp1, const Standard_Integer theIp2, const Standard_Integer theIp3, HLRAlgo_Array1OfTData * & theTData1, HLRAlgo_Array1OfTData * & theTData2, HLRAlgo_Array1OfPISeg * & thePISeg1, HLRAlgo_Array1OfPISeg * & thePISeg2, HLRAlgo_Array1OfPINod * & thePINod1, HLRAlgo_Array1OfPINod * & thePINod2);
 
 };
 
@@ -2570,7 +2579,7 @@ None
 		 HLRAlgo_PolyShellData(const Standard_Integer nbFace);
 
 		/****************** Edges ******************/
-		/**** md5 signature: 963060a4533d29c56ab88ff07a3bdf4d ****/
+		/**** md5 signature: 3ffe8deadeb0fe47515ab51a09784967 ****/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "No available documentation.
 
@@ -2581,7 +2590,7 @@ HLRAlgo_ListOfBPoint
 		HLRAlgo_ListOfBPoint & Edges();
 
 		/****************** Hiding ******************/
-		/**** md5 signature: bc42207e7cb8f65a46eef744c498e613 ****/
+		/**** md5 signature: 9e063098b7345ab66f670b3b16d882e5 ****/
 		%feature("compactdefaultargs") Hiding;
 		%feature("autodoc", "No available documentation.
 
@@ -2592,26 +2601,26 @@ bool
 		Standard_Boolean Hiding();
 
 		/****************** HidingPolyData ******************/
-		/**** md5 signature: 2545bbd5ef51ad6a6a63e835a53951d5 ****/
+		/**** md5 signature: 1677904005cfe756ecd5ae731539a322 ****/
 		%feature("compactdefaultargs") HidingPolyData;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-TColStd_Array1OfTransient
+NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>
 ") HidingPolyData;
-		TColStd_Array1OfTransient & HidingPolyData();
+		NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>> & HidingPolyData();
 
 		/****************** PolyData ******************/
-		/**** md5 signature: 5ce1161f920c4e36a37e774230d008ad ****/
+		/**** md5 signature: c0ab2919646d9484965293aecdaa1af1 ****/
 		%feature("compactdefaultargs") PolyData;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-TColStd_Array1OfTransient
+NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>
 ") PolyData;
-		TColStd_Array1OfTransient & PolyData();
+		NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>> & PolyData();
 
 		/****************** UpdateGlobalMinMax ******************/
 		/**** md5 signature: 582d6cf1a888375cf933c3643964498a ****/

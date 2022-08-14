@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BNDLIBDOCSTRING
 "BndLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bndlib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bndlib.html"
 %enddef
 %module (package="OCC.Core", docstring=BNDLIBDOCSTRING) BndLib
 
@@ -70,7 +70,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -93,7 +93,7 @@ class BndLib {
 		/****************** Add ******************/
 		/**** md5 signature: 9e863879ef8ae6ec63335c0c92f20f7b ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Bounding box for a surface trimmed or not adds the segment of the line l limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. tol is the tolerance value to enlarge the minimun and maximum dimension p1 and p2 may represent infinite values. exceptions standard_failure if p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+		%feature("autodoc", "Bounding box for a surface trimmed or not adds the segment of the line l limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. tol is the tolerance value to enlarge the minimum and maximum dimension p1 and p2 may represent infinite values. exceptions standard_failure if p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
 
 Parameters
 ----------
@@ -574,7 +574,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: eedfe68de0380d5f37d16bc918c0d037 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds to the bounding box b the part of curve c b is then enlarged by the tolerance value tol. u1, u2 - the parametric range to comute the bounding box; note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, - if not, the points of an approximation of the curve c.
+		%feature("autodoc", "Adds to the bounding box b the part of curve c b is then enlarged by the tolerance value tol. u1, u2 - the parametric range to compute the bounding box; note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, - if not, the points of an approximation of the curve c.
 
 Parameters
 ----------
@@ -593,7 +593,7 @@ None
 		/****************** AddOptimal ******************/
 		/**** md5 signature: bd6bfafd3a4edaae34079bdd6693208f ****/
 		%feature("compactdefaultargs") AddOptimal;
-		%feature("autodoc", "Adds to the bounding box b the part of curve c b is then enlarged by the tolerance value tol. u1, u2 - the parametric range to comute the bounding box; note: depending on the type of curve, one of the following algorithms is used to include it in the bounding box b: - an exact analytical if c is built from a line, a circle or a conic curve, - numerical calculation of bounding box sizes, based on minimization algorithm, for other types of curve if tol = < precision::pconfusion(), precision::pconfusion is used as tolerance for calculation.
+		%feature("autodoc", "Adds to the bounding box b the part of curve c b is then enlarged by the tolerance value tol. u1, u2 - the parametric range to compute the bounding box; note: depending on the type of curve, one of the following algorithms is used to include it in the bounding box b: - an exact analytical if c is built from a line, a circle or a conic curve, - numerical calculation of bounding box sizes, based on minimization algorithm, for other types of curve if tol = < precision::pconfusion(), precision::pconfusion is used as tolerance for calculation.
 
 Parameters
 ----------

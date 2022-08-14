@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFI3DDOCSTRING
 "ChFi3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfi3d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_chfi3d.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFI3DDOCSTRING) ChFi3d
 
@@ -116,7 +116,7 @@ enum ChFi3d_FilletShape {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class ChFi3d_FilletShape(IntEnum):
@@ -605,7 +605,7 @@ None
 		/****************** Reset ******************/
 		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Reset all results of compute and returns the algorythm in the state of the last acquisition to enable modification of contours or areas.
+		%feature("autodoc", "Reset all results of compute and returns the algorithm in the state of the last acquisition to enable modification of contours or areas.
 
 Returns
 -------
@@ -661,7 +661,7 @@ TopoDS_Shape
 		TopoDS_Shape Shape();
 
 		/****************** SplitKPart ******************/
-		/**** md5 signature: b91de28c62e74af7841164e8ad5d1b8a ****/
+		/**** md5 signature: ddaca9d1804baacb3415aca8212a6fa9 ****/
 		%feature("compactdefaultargs") SplitKPart;
 		%feature("autodoc", "Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer).
 
@@ -671,9 +671,9 @@ Data: ChFiDS_SurfData
 SetData: ChFiDS_SequenceOfSurfData
 Spine: ChFiDS_Spine
 Iedge: int
-S1: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
 I1: Adaptor3d_TopolTool
-S2: Adaptor3d_HSurface
+S2: Adaptor3d_Surface
 I2: Adaptor3d_TopolTool
 
 Returns
@@ -681,7 +681,7 @@ Returns
 Intf: bool
 Intl: bool
 ") SplitKPart;
-		Standard_Boolean SplitKPart(const opencascade::handle<ChFiDS_SurfData> & Data, ChFiDS_SequenceOfSurfData & SetData, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Iedge, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		Standard_Boolean SplitKPart(const opencascade::handle<ChFiDS_SurfData> & Data, ChFiDS_SequenceOfSurfData & SetData, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Iedge, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** StripeStatus ******************/
 		/**** md5 signature: 7b8afd101ec5ebd9cd37e2bc2cfd73ff ****/
@@ -976,19 +976,19 @@ int
 		Standard_Integer NbSurf(const Standard_Integer IC);
 
 		/****************** PerformSurf ******************/
-		/**** md5 signature: c9bcf31fa3ccdaf4183db60fab970ed3 ****/
+		/**** md5 signature: 01d67c8421da2eaa3e036d64149614d9 ****/
 		%feature("compactdefaultargs") PerformSurf;
 		%feature("autodoc", "Methode, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer).
 
 Parameters
 ----------
 Data: ChFiDS_SequenceOfSurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
-S2: BRepAdaptor_HSurface
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
 MaxStep: float
 Fleche: float
@@ -1007,25 +1007,25 @@ Last: float
 Intf: int
 Intl: int
 ") PerformSurf;
-		virtual Standard_Boolean PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecOnS1, const Standard_Boolean RecOnS2, const math_Vector & Soldep, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		virtual Standard_Boolean PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecOnS1, const Standard_Boolean RecOnS2, const math_Vector & Soldep, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** PerformSurf ******************/
-		/**** md5 signature: 27aec34757cbc4ab749d221771aadf81 ****/
+		/**** md5 signature: 27fad33178796b889491ae5a65ffaa83 ****/
 		%feature("compactdefaultargs") PerformSurf;
 		%feature("autodoc", "Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.
 
 Parameters
 ----------
 Data: ChFiDS_SequenceOfSurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
-PC1: BRepAdaptor_HCurve2d
-Sref1: BRepAdaptor_HSurface
-PCref1: BRepAdaptor_HCurve2d
-S2: BRepAdaptor_HSurface
+PC1: BRepAdaptor_Curve2d
+Sref1: BRepAdaptor_Surface
+PCref1: BRepAdaptor_Curve2d
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
 Or2: TopAbs_Orientation
 MaxStep: float
@@ -1045,27 +1045,27 @@ Decroch1: bool
 First: float
 Last: float
 ") PerformSurf;
-		virtual void PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_HCurve2d> & PC1, const opencascade::handle<BRepAdaptor_HSurface> & Sref1, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref1, Standard_Boolean &OutValue, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const TopAbs_Orientation Or2, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
+		virtual void PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const TopAbs_Orientation Or2, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
 
 		/****************** PerformSurf ******************/
-		/**** md5 signature: 2ecf40db521deb0a6b81881b4cb5cfc6 ****/
+		/**** md5 signature: b6fc74634dcc7a5b9a1787473dff3cb2 ****/
 		%feature("compactdefaultargs") PerformSurf;
 		%feature("autodoc", "Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.
 
 Parameters
 ----------
 Data: ChFiDS_SequenceOfSurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
 Or1: TopAbs_Orientation
-S2: BRepAdaptor_HSurface
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
-PC2: BRepAdaptor_HCurve2d
-Sref2: BRepAdaptor_HSurface
-PCref2: BRepAdaptor_HCurve2d
+PC2: BRepAdaptor_Curve2d
+Sref2: BRepAdaptor_Surface
+PCref2: BRepAdaptor_Curve2d
 MaxStep: float
 Fleche: float
 TolGuide: float
@@ -1083,30 +1083,30 @@ Decroch2: bool
 First: float
 Last: float
 ") PerformSurf;
-		virtual void PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_HCurve2d> & PC2, const opencascade::handle<BRepAdaptor_HSurface> & Sref2, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref2, Standard_Boolean &OutValue, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
+		virtual void PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
 
 		/****************** PerformSurf ******************/
-		/**** md5 signature: 219121b6b79237b657c5f6672a1d382e ****/
+		/**** md5 signature: 55427c62cfb96c3cbbd5aec277672cd2 ****/
 		%feature("compactdefaultargs") PerformSurf;
 		%feature("autodoc", "Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/edge.
 
 Parameters
 ----------
 Data: ChFiDS_SequenceOfSurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
-PC1: BRepAdaptor_HCurve2d
-Sref1: BRepAdaptor_HSurface
-PCref1: BRepAdaptor_HCurve2d
+PC1: BRepAdaptor_Curve2d
+Sref1: BRepAdaptor_Surface
+PCref1: BRepAdaptor_Curve2d
 Or1: TopAbs_Orientation
-S2: BRepAdaptor_HSurface
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
-PC2: BRepAdaptor_HCurve2d
-Sref2: BRepAdaptor_HSurface
-PCref2: BRepAdaptor_HCurve2d
+PC2: BRepAdaptor_Curve2d
+Sref2: BRepAdaptor_Surface
+PCref2: BRepAdaptor_Curve2d
 Or2: TopAbs_Orientation
 MaxStep: float
 Fleche: float
@@ -1127,7 +1127,7 @@ Decroch2: bool
 First: float
 Last: float
 ") PerformSurf;
-		virtual void PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_HCurve2d> & PC1, const opencascade::handle<BRepAdaptor_HSurface> & Sref1, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref1, Standard_Boolean &OutValue, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_HCurve2d> & PC2, const opencascade::handle<BRepAdaptor_HSurface> & Sref2, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref2, Standard_Boolean &OutValue, const TopAbs_Orientation Or2, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP1, const Standard_Boolean RecRst1, const Standard_Boolean RecP2, const Standard_Boolean RecRst2, const math_Vector & Soldep);
+		virtual void PerformSurf(ChFiDS_SequenceOfSurfData & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const TopAbs_Orientation Or2, const Standard_Real MaxStep, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP1, const Standard_Boolean RecRst1, const Standard_Boolean RecP2, const Standard_Boolean RecRst2, const math_Vector & Soldep);
 
 		/****************** ResetContour ******************/
 		/**** md5 signature: 654a75a6070237897ac136e282153619 ****/
@@ -1229,22 +1229,22 @@ None
 		void SetMode(const ChFiDS_ChamfMode theMode);
 
 		/****************** SimulSurf ******************/
-		/**** md5 signature: 5088d3a9669a5c493d09063dd6706572 ****/
+		/**** md5 signature: 6293666f943c89cae5e253ba901392fd ****/
 		%feature("compactdefaultargs") SimulSurf;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 Data: ChFiDS_SurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
-PC1: BRepAdaptor_HCurve2d
-Sref1: BRepAdaptor_HSurface
-PCref1: BRepAdaptor_HCurve2d
-S2: BRepAdaptor_HSurface
+PC1: BRepAdaptor_Curve2d
+Sref1: BRepAdaptor_Surface
+PCref1: BRepAdaptor_Curve2d
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
 Or2: TopAbs_Orientation
 Fleche: float
@@ -1263,27 +1263,27 @@ Decroch1: bool
 First: float
 Last: float
 ") SimulSurf;
-		virtual void SimulSurf(opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_HCurve2d> & PC1, const opencascade::handle<BRepAdaptor_HSurface> & Sref1, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref1, Standard_Boolean &OutValue, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const TopAbs_Orientation Or2, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
+		virtual void SimulSurf(opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const TopAbs_Orientation Or2, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
 
 		/****************** SimulSurf ******************/
-		/**** md5 signature: 541412c797face5770a5481f0c414c50 ****/
+		/**** md5 signature: 01823619c7721126962ad7cff175c347 ****/
 		%feature("compactdefaultargs") SimulSurf;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 Data: ChFiDS_SurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
 Or1: TopAbs_Orientation
-S2: BRepAdaptor_HSurface
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
-PC2: BRepAdaptor_HCurve2d
-Sref2: BRepAdaptor_HSurface
-PCref2: BRepAdaptor_HCurve2d
+PC2: BRepAdaptor_Curve2d
+Sref2: BRepAdaptor_Surface
+PCref2: BRepAdaptor_Curve2d
 Fleche: float
 TolGuide: float
 Inside: bool
@@ -1300,30 +1300,30 @@ Decroch2: bool
 First: float
 Last: float
 ") SimulSurf;
-		virtual void SimulSurf(opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_HCurve2d> & PC2, const opencascade::handle<BRepAdaptor_HSurface> & Sref2, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref2, Standard_Boolean &OutValue, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
+		virtual void SimulSurf(opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP, const Standard_Boolean RecS, const Standard_Boolean RecRst, const math_Vector & Soldep);
 
 		/****************** SimulSurf ******************/
-		/**** md5 signature: ad1213ffe850aedc13a1d42010383f86 ****/
+		/**** md5 signature: 9ab815476dc2b2cfb5dc838b763cb628 ****/
 		%feature("compactdefaultargs") SimulSurf;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 Data: ChFiDS_SurfData
-Guide: ChFiDS_HElSpine
+Guide: ChFiDS_ElSpine
 Spine: ChFiDS_Spine
 Choix: int
-S1: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
 I1: Adaptor3d_TopolTool
-PC1: BRepAdaptor_HCurve2d
-Sref1: BRepAdaptor_HSurface
-PCref1: BRepAdaptor_HCurve2d
+PC1: BRepAdaptor_Curve2d
+Sref1: BRepAdaptor_Surface
+PCref1: BRepAdaptor_Curve2d
 Or1: TopAbs_Orientation
-S2: BRepAdaptor_HSurface
+S2: BRepAdaptor_Surface
 I2: Adaptor3d_TopolTool
-PC2: BRepAdaptor_HCurve2d
-Sref2: BRepAdaptor_HSurface
-PCref2: BRepAdaptor_HCurve2d
+PC2: BRepAdaptor_Curve2d
+Sref2: BRepAdaptor_Surface
+PCref2: BRepAdaptor_Curve2d
 Or2: TopAbs_Orientation
 Fleche: float
 TolGuide: float
@@ -1343,7 +1343,7 @@ Decroch2: bool
 First: float
 Last: float
 ") SimulSurf;
-		virtual void SimulSurf(opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<ChFiDS_HElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_HCurve2d> & PC1, const opencascade::handle<BRepAdaptor_HSurface> & Sref1, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref1, Standard_Boolean &OutValue, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_HSurface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_HCurve2d> & PC2, const opencascade::handle<BRepAdaptor_HSurface> & Sref2, const opencascade::handle<BRepAdaptor_HCurve2d> & PCref2, Standard_Boolean &OutValue, const TopAbs_Orientation Or2, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP1, const Standard_Boolean RecRst1, const Standard_Boolean RecP2, const Standard_Boolean RecRst2, const math_Vector & Soldep);
+		virtual void SimulSurf(opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const Standard_Integer Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const TopAbs_Orientation Or2, const Standard_Real Fleche, const Standard_Real TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean Inside, const Standard_Boolean Appro, const Standard_Boolean Forward, const Standard_Boolean RecP1, const Standard_Boolean RecRst1, const Standard_Boolean RecP2, const Standard_Boolean RecRst2, const math_Vector & Soldep);
 
 		/****************** Simulate ******************/
 		/**** md5 signature: 2cd119960e597a9f622fcb1f996b7f10 ****/
@@ -1471,7 +1471,7 @@ opencascade::handle<Law_Function>
 		/****************** IsConstant ******************/
 		/**** md5 signature: 524ff18247c3bd6dd3b77ea2fbe631ab ****/
 		%feature("compactdefaultargs") IsConstant;
-		%feature("autodoc", "Returns true the contour is flaged as edge constant.
+		%feature("autodoc", "Returns true the contour is flagged as edge constant.
 
 Parameters
 ----------

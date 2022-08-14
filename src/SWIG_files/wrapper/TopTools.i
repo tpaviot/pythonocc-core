@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPTOOLSDOCSTRING
 "TopTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptools.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_toptools.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPTOOLSDOCSTRING) TopTools
 
@@ -65,10 +65,32 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum TopTools_FormatVersion {
+	TopTools_FormatVersion_VERSION_1 = 1,
+	TopTools_FormatVersion_VERSION_2 = 2,
+	TopTools_FormatVersion_VERSION_3 = 3,
+	TopTools_FormatVersion_CURRENT = TopTools_FormatVersion_VERSION_3,
+};
+
+enum  {
+	TopTools_FormatVersion_LOWER = TopTools_FormatVersion_VERSION_1,
+	TopTools_FormatVersion_UPPER = TopTools_FormatVersion_VERSION_3,
+};
+
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
+
+class TopTools_FormatVersion(IntEnum):
+	TopTools_FormatVersion_VERSION_1 = 1
+	TopTools_FormatVersion_VERSION_2 = 2
+	TopTools_FormatVersion_VERSION_3 = 3
+	TopTools_FormatVersion_CURRENT = TopTools_FormatVersion_VERSION_3
+TopTools_FormatVersion_VERSION_1 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_1
+TopTools_FormatVersion_VERSION_2 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_2
+TopTools_FormatVersion_VERSION_3 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_3
+TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_CURRENT
 };
 /* end python proxy for enums */
 
@@ -715,7 +737,7 @@ None
 		/****************** FormatNb ******************/
 		/**** md5 signature: 4ba7a37f990f272738aa2003a22fc1da ****/
 		%feature("compactdefaultargs") FormatNb;
-		%feature("autodoc", "Two formats available for the moment: first: does not write curveonsurface uv points into the file on reading calls check() method. second: stores curveonsurface uv points. on reading format is recognized from version string.
+		%feature("autodoc", "Returns the toptools_formatversion.
 
 Returns
 -------
@@ -777,7 +799,7 @@ int
 		/****************** SetFormatNb ******************/
 		/**** md5 signature: efa61c5f0aa586c699f53e1139cd95f9 ****/
 		%feature("compactdefaultargs") SetFormatNb;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets the toptools_formatversion.
 
 Parameters
 ----------

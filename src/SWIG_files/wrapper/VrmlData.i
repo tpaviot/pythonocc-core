@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define VRMLDATADOCSTRING
 "VrmlData module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_vrmldata.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmldata.html"
 %enddef
 %module (package="OCC.Core", docstring=VRMLDATADOCSTRING) VrmlData
 
@@ -96,7 +96,7 @@ enum VrmlData_ErrorStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class VrmlData_ErrorStatus(IntEnum):
@@ -865,7 +865,7 @@ None
 		/****************** Convert ******************/
 		/**** md5 signature: f593201deba882e1902592660879f146 ****/
 		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "/** * convert all accumulated shapes and store them in myscene. * the internal data structures are cleared in the end of convertion. * @param theextractfaces * if true, converter extracst faces from the shapes. * @param theextractedges * if true, converter extracts edges from the shapes. * @param thedeflection * deflection for tessellation of geometrical lines/surfaces. existing mesh * is used if its deflection is smaller than the one given by this * parameter. * @param thedeflangle * angular deflection for tessellation of geometrical lines. */.
+		%feature("autodoc", "/** * convert all accumulated shapes and store them in myscene. * the internal data structures are cleared in the end of conversion. * @param theextractfaces * if true, converter extracst faces from the shapes. * @param theextractedges * if true, converter extracts edges from the shapes. * @param thedeflection * deflection for tessellation of geometrical lines/surfaces. existing mesh * is used if its deflection is smaller than the one given by this * parameter. * @param thedeflangle * angular deflection for tessellation of geometrical lines. */.
 
 Parameters
 ----------

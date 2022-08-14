@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDATASTDDOCSTRING
 "TDataStd module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdatastd.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tdatastd.html"
 %enddef
 %module (package="OCC.Core", docstring=TDATASTDDOCSTRING) TDataStd
 
@@ -70,7 +70,7 @@ enum TDataStd_RealEnum {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TDataStd_RealEnum(IntEnum):
@@ -4650,7 +4650,7 @@ bool
 		/****************** HasDeferredData ******************/
 		/**** md5 signature: 6d3e21e66856957a5fa945244fecad2c ****/
 		%feature("compactdefaultargs") HasDeferredData;
-		%feature("autodoc", "Returns true if some data is not loaded from deferred storage and can be loaded using loaddeferreddata(). //! late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. this feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return false here. //! late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and undo/redo mechanism will not work until deferred data being loaded. //! usage scenarios: - application displays model in read-only way. late-load elements are loaded temporarily on demand and immediatly unloaded. thenameddata->loaddeferreddata (true); tcollection_asciistring avalue = thenameddata->getstring (thekey); thenameddata->unloaddeferreddata(); - application saves the model into another format. all late-load elements should be loaded (at least temporary during operation). - application modifies the model. late-load element should be loaded with removed link to deferred storage, so that undo()/redo() will work as expected since loading. thenameddata->loaddeferreddata (false); thenameddata->setstring (thekey, thenewvalue);.
+		%feature("autodoc", "Returns true if some data is not loaded from deferred storage and can be loaded using loaddeferreddata(). //! late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. this feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return false here. //! late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and undo/redo mechanism will not work until deferred data being loaded. //! usage scenarios: - application displays model in read-only way. late-load elements are loaded temporarily on demand and immediately unloaded. thenameddata->loaddeferreddata (true); tcollection_asciistring avalue = thenameddata->getstring (thekey); thenameddata->unloaddeferreddata(); - application saves the model into another format. all late-load elements should be loaded (at least temporary during operation). - application modifies the model. late-load element should be loaded with removed link to deferred storage, so that undo()/redo() will work as expected since loading. thenameddata->loaddeferreddata (false); thenameddata->setstring (thekey, thenewvalue);.
 
 Returns
 -------
@@ -4750,7 +4750,7 @@ Standard_GUID
 		/****************** LoadDeferredData ******************/
 		/**** md5 signature: 4d667dd77669ff93ce36b42acfa15e09 ****/
 		%feature("compactdefaultargs") LoadDeferredData;
-		%feature("autodoc", "Load data from deferred storage, without calling backup(). as result, the content of the object will be overidden by data from deferred storage (which is normally read-only). @param thetokeepdeferred [in] when true, the link to deferred storage will be preserved  so that it will be possible calling unloaddeferreddata() afterwards for releasing memory returns false if deferred storage is unavailable or deferred data has been already loaded.
+		%feature("autodoc", "Load data from deferred storage, without calling backup(). as result, the content of the object will be overridden by data from deferred storage (which is normally read-only). @param thetokeepdeferred [in] when true, the link to deferred storage will be preserved  so that it will be possible calling unloaddeferreddata() afterwards for releasing memory returns false if deferred storage is unavailable or deferred data has been already loaded.
 
 Parameters
 ----------
@@ -6852,7 +6852,7 @@ bool
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "Returns the tree id (default or explicit one depending onthe set method used).
+		%feature("autodoc", "Returns the tree id (default or explicit one depending on the set method used).
 
 Returns
 -------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMADAPTORDOCSTRING
 "GeomAdaptor module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomadaptor.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMADAPTORDOCSTRING) GeomAdaptor
 
@@ -71,18 +71,16 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(GeomAdaptor_GHCurve)
-%wrap_handle(GeomAdaptor_GHSurface)
-%wrap_handle(GeomAdaptor_HSurfaceOfLinearExtrusion)
-%wrap_handle(GeomAdaptor_HSurfaceOfRevolution)
-%wrap_handle(GeomAdaptor_HCurve)
-%wrap_handle(GeomAdaptor_HSurface)
+%wrap_handle(GeomAdaptor_Curve)
+%wrap_handle(GeomAdaptor_Surface)
+%wrap_handle(GeomAdaptor_SurfaceOfLinearExtrusion)
+%wrap_handle(GeomAdaptor_SurfaceOfRevolution)
 /* end handles declaration */
 
 /* templates */
@@ -100,7 +98,7 @@ class GeomAdaptor {
 		/****************** MakeCurve ******************/
 		/**** md5 signature: b2a0867e843655f110e2f5dd5ef19022 ****/
 		%feature("compactdefaultargs") MakeCurve;
-		%feature("autodoc", "Inherited from ghcurve. provides a curve handled by reference. build a geom_curve using the informations from the curve from adaptor3d.
+		%feature("autodoc", "Inherited from ghcurve. provides a curve handled by reference. build a geom_curve using the information from the curve from adaptor3d.
 
 Parameters
 ----------
@@ -115,7 +113,7 @@ opencascade::handle<Geom_Curve>
 		/****************** MakeSurface ******************/
 		/**** md5 signature: e2d97ddab298fadfa35fcf5d3da46eb5 ****/
 		%feature("compactdefaultargs") MakeSurface;
-		%feature("autodoc", "Build a geom_surface using the informations from the surface from adaptor3d @param thes - surface adaptor to convert. @param thetrimflag - true if perform trim surface values by adaptor and false otherwise.
+		%feature("autodoc", "Build a geom_surface using the information from the surface from adaptor3d @param thes - surface adaptor to convert. @param thetrimflag - true if perform trim surface values by adaptor and false otherwise.
 
 Parameters
 ----------
@@ -144,7 +142,7 @@ opencascade::handle<Geom_Surface>
 class GeomAdaptor_Curve : public Adaptor3d_Curve {
 	public:
 		/****************** GeomAdaptor_Curve ******************/
-		/**** md5 signature: 2e3639f153333a8265adcebe4a8aaee3 ****/
+		/**** md5 signature: ccb204f3ef4733cff0b86e86ac3d5f12 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
 		%feature("autodoc", "No available documentation.
 
@@ -155,36 +153,36 @@ None
 		 GeomAdaptor_Curve();
 
 		/****************** GeomAdaptor_Curve ******************/
-		/**** md5 signature: 1cf8518026dc83d09b39472a54f58c4c ****/
+		/**** md5 signature: 649b37dd8045d083fefebcda0e3e12fb ****/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Geom_Curve
+theCurve: Geom_Curve
 
 Returns
 -------
 None
 ") GeomAdaptor_Curve;
-		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & C);
+		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & theCurve);
 
 		/****************** GeomAdaptor_Curve ******************/
-		/**** md5 signature: ecf089bdf6152ef66a45b9ee30f39cb5 ****/
+		/**** md5 signature: 1a10d0efcbd8197e53d90228c15a2809 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast.
+		%feature("autodoc", "Standard_constructionerror is raised if theufirst>theulast.
 
 Parameters
 ----------
-C: Geom_Curve
-UFirst: float
-ULast: float
+theCurve: Geom_Curve
+theUFirst: float
+theULast: float
 
 Returns
 -------
 None
 ") GeomAdaptor_Curve;
-		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & C, const Standard_Real UFirst, const Standard_Real ULast);
+		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
 
 		/****************** BSpline ******************/
 		/**** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ****/
@@ -231,7 +229,7 @@ GeomAbs_Shape
 		GeomAbs_Shape Continuity();
 
 		/****************** Curve ******************/
-		/**** md5 signature: 976a03829ec92d091e0b58dd7f58e869 ****/
+		/**** md5 signature: 62a16889fb975efa1b2de012099c169b ****/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Provides a curve inherited from hcurve from adaptor. this is inherited to provide easy to use constructors.
 
@@ -350,7 +348,7 @@ gp_Elips
 		gp_Elips Ellipse();
 
 		/****************** FirstParameter ******************/
-		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
+		/**** md5 signature: 93c381754667baab23468a195644e410 ****/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -358,10 +356,10 @@ Returns
 -------
 float
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		virtual Standard_Real FirstParameter();
 
 		/****************** GetType ******************/
-		/**** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ****/
+		/**** md5 signature: eaef05bb051ab4b74eda73aca8930d16 ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "No available documentation.
 
@@ -369,7 +367,7 @@ Returns
 -------
 GeomAbs_CurveType
 ") GetType;
-		GeomAbs_CurveType GetType();
+		virtual GeomAbs_CurveType GetType();
 
 		/****************** Hyperbola ******************/
 		/**** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ****/
@@ -385,7 +383,7 @@ gp_Hypr
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -432,7 +430,7 @@ bool
 		Standard_Boolean IsRational();
 
 		/****************** LastParameter ******************/
-		/**** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ****/
+		/**** md5 signature: a2893a92f9c4af09acb0cd59d959d964 ****/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -440,7 +438,7 @@ Returns
 -------
 float
 ") LastParameter;
-		Standard_Real LastParameter();
+		virtual Standard_Real LastParameter();
 
 		/****************** Line ******************/
 		/**** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ****/
@@ -454,36 +452,36 @@ gp_Lin
 		gp_Lin Line();
 
 		/****************** Load ******************/
-		/**** md5 signature: 899eefc9d66620ea5d2dc41c69ab5bc1 ****/
+		/**** md5 signature: e05559f93c046e47a8be3d9ab64ebec8 ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Geom_Curve
+theCurve: Geom_Curve
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Geom_Curve> & C);
+		void Load(const opencascade::handle<Geom_Curve> & theCurve);
 
 		/****************** Load ******************/
-		/**** md5 signature: d8ca48df01d7825d5d8f75cada300511 ****/
+		/**** md5 signature: 870dfd0d647afc03a8ecd96c1d9b3367 ****/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast.
+		%feature("autodoc", "Standard_constructionerror is raised if theufirst>theulast.
 
 Parameters
 ----------
-C: Geom_Curve
-UFirst: float
-ULast: float
+theCurve: Geom_Curve
+theUFirst: float
+theULast: float
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Geom_Curve> & C, const Standard_Real UFirst, const Standard_Real ULast);
+		void Load(const opencascade::handle<Geom_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
 
 		/****************** NbIntervals ******************/
 		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
@@ -582,7 +580,7 @@ float
 		Standard_Real Resolution(const Standard_Real R3d);
 
 		/****************** Trim ******************/
-		/**** md5 signature: 113944489c8ce9efcb5cb2d44fff51d7 ****/
+		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -594,9 +592,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
@@ -616,334 +614,9 @@ gp_Pnt
 };
 
 
+%make_alias(GeomAdaptor_Curve)
+
 %extend GeomAdaptor_Curve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class GeomAdaptor_GHCurve *
-****************************/
-class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
-	public:
-		/****************** GeomAdaptor_GHCurve ******************/
-		/**** md5 signature: 66df95bfdb5af02bb57cff21584ceac1 ****/
-		%feature("compactdefaultargs") GeomAdaptor_GHCurve;
-		%feature("autodoc", "Creates an empty genhcurve.
-
-Returns
--------
-None
-") GeomAdaptor_GHCurve;
-		 GeomAdaptor_GHCurve();
-
-		/****************** GeomAdaptor_GHCurve ******************/
-		/**** md5 signature: a7b31df0246ff5de418101f37544ca21 ****/
-		%feature("compactdefaultargs") GeomAdaptor_GHCurve;
-		%feature("autodoc", "Creates a genhcurve from a curve.
-
-Parameters
-----------
-C: GeomAdaptor_Curve
-
-Returns
--------
-None
-") GeomAdaptor_GHCurve;
-		 GeomAdaptor_GHCurve(const GeomAdaptor_Curve & C);
-
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: 56ba926d853c1f7e3f37e0d13025a6d9 ****/
-		%feature("compactdefaultargs") ChangeCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-GeomAdaptor_Curve
-") ChangeCurve;
-		GeomAdaptor_Curve & ChangeCurve();
-
-		/****************** Curve ******************/
-		/**** md5 signature: a89f0959dbb9c3c030843720c3636148 ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") Curve;
-		const Adaptor3d_Curve & Curve();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: 73b397b3522011e6948956523664e20c ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") GetCurve;
-		Adaptor3d_Curve & GetCurve();
-
-		/****************** Set ******************/
-		/**** md5 signature: 364f648c603a50c8ec85f59fb2e2db78 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve.
-
-Parameters
-----------
-C: GeomAdaptor_Curve
-
-Returns
--------
-None
-") Set;
-		void Set(const GeomAdaptor_Curve & C);
-
-};
-
-
-%make_alias(GeomAdaptor_GHCurve)
-
-%extend GeomAdaptor_GHCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class GeomAdaptor_GHSurface *
-******************************/
-class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
-	public:
-		/****************** GeomAdaptor_GHSurface ******************/
-		/**** md5 signature: 1f20037030cf86b14b3f31a0835aa53d ****/
-		%feature("compactdefaultargs") GeomAdaptor_GHSurface;
-		%feature("autodoc", "Creates an empty genhsurface.
-
-Returns
--------
-None
-") GeomAdaptor_GHSurface;
-		 GeomAdaptor_GHSurface();
-
-		/****************** GeomAdaptor_GHSurface ******************/
-		/**** md5 signature: aaa0ec5b0bd11c34dd24dc2d97071a39 ****/
-		%feature("compactdefaultargs") GeomAdaptor_GHSurface;
-		%feature("autodoc", "Creates a genhsurface from a surface.
-
-Parameters
-----------
-S: GeomAdaptor_Surface
-
-Returns
--------
-None
-") GeomAdaptor_GHSurface;
-		 GeomAdaptor_GHSurface(const GeomAdaptor_Surface & S);
-
-		/****************** ChangeSurface ******************/
-		/**** md5 signature: ead718e69fe53e8fd677c1b9c64ff5a3 ****/
-		%feature("compactdefaultargs") ChangeSurface;
-		%feature("autodoc", "Returns the surface used to create the genhsurface.
-
-Returns
--------
-GeomAdaptor_Surface
-") ChangeSurface;
-		GeomAdaptor_Surface & ChangeSurface();
-
-		/****************** Set ******************/
-		/**** md5 signature: fa7596577a6a4647ffbc512e7051e359 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhsurface.
-
-Parameters
-----------
-S: GeomAdaptor_Surface
-
-Returns
--------
-None
-") Set;
-		void Set(const GeomAdaptor_Surface & S);
-
-		/****************** Surface ******************/
-		/**** md5 signature: 87b43b57a8dc79c19df787e8ef796cad ****/
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns a reference to the surface inside the hsurface. this is redefined from hsurface, cannot be inline.
-
-Returns
--------
-Adaptor3d_Surface
-") Surface;
-		const Adaptor3d_Surface & Surface();
-
-};
-
-
-%make_alias(GeomAdaptor_GHSurface)
-
-%extend GeomAdaptor_GHSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************************
-* class GeomAdaptor_HSurfaceOfLinearExtrusion *
-**********************************************/
-class GeomAdaptor_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
-	public:
-		/****************** GeomAdaptor_HSurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: 29c21f93981f5a9e384e8c2e7e8ccbfd ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurfaceOfLinearExtrusion;
-		%feature("autodoc", "Creates an empty genhsurface.
-
-Returns
--------
-None
-") GeomAdaptor_HSurfaceOfLinearExtrusion;
-		 GeomAdaptor_HSurfaceOfLinearExtrusion();
-
-		/****************** GeomAdaptor_HSurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: 3fc98513baf1a28f33c8f95e1425a7c7 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurfaceOfLinearExtrusion;
-		%feature("autodoc", "Creates a genhsurface from a surface.
-
-Parameters
-----------
-S: GeomAdaptor_SurfaceOfLinearExtrusion
-
-Returns
--------
-None
-") GeomAdaptor_HSurfaceOfLinearExtrusion;
-		 GeomAdaptor_HSurfaceOfLinearExtrusion(const GeomAdaptor_SurfaceOfLinearExtrusion & S);
-
-		/****************** ChangeSurface ******************/
-		/**** md5 signature: 88f6234b60f7b94be962df5f60d9c3bb ****/
-		%feature("compactdefaultargs") ChangeSurface;
-		%feature("autodoc", "Returns the surface used to create the genhsurface.
-
-Returns
--------
-GeomAdaptor_SurfaceOfLinearExtrusion
-") ChangeSurface;
-		GeomAdaptor_SurfaceOfLinearExtrusion & ChangeSurface();
-
-		/****************** Set ******************/
-		/**** md5 signature: a47de1aa7f251202af0223a81a688836 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhsurface.
-
-Parameters
-----------
-S: GeomAdaptor_SurfaceOfLinearExtrusion
-
-Returns
--------
-None
-") Set;
-		void Set(const GeomAdaptor_SurfaceOfLinearExtrusion & S);
-
-		/****************** Surface ******************/
-		/**** md5 signature: 87b43b57a8dc79c19df787e8ef796cad ****/
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns a reference to the surface inside the hsurface. this is redefined from hsurface, cannot be inline.
-
-Returns
--------
-Adaptor3d_Surface
-") Surface;
-		const Adaptor3d_Surface & Surface();
-
-};
-
-
-%make_alias(GeomAdaptor_HSurfaceOfLinearExtrusion)
-
-%extend GeomAdaptor_HSurfaceOfLinearExtrusion {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************************
-* class GeomAdaptor_HSurfaceOfRevolution *
-*****************************************/
-class GeomAdaptor_HSurfaceOfRevolution : public Adaptor3d_HSurface {
-	public:
-		/****************** GeomAdaptor_HSurfaceOfRevolution ******************/
-		/**** md5 signature: 2b25fa58fed2cfb834be68dbae4fd6a9 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurfaceOfRevolution;
-		%feature("autodoc", "Creates an empty genhsurface.
-
-Returns
--------
-None
-") GeomAdaptor_HSurfaceOfRevolution;
-		 GeomAdaptor_HSurfaceOfRevolution();
-
-		/****************** GeomAdaptor_HSurfaceOfRevolution ******************/
-		/**** md5 signature: cf0bba20d36d67f32e6dc52e0a69aa68 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurfaceOfRevolution;
-		%feature("autodoc", "Creates a genhsurface from a surface.
-
-Parameters
-----------
-S: GeomAdaptor_SurfaceOfRevolution
-
-Returns
--------
-None
-") GeomAdaptor_HSurfaceOfRevolution;
-		 GeomAdaptor_HSurfaceOfRevolution(const GeomAdaptor_SurfaceOfRevolution & S);
-
-		/****************** ChangeSurface ******************/
-		/**** md5 signature: e08ac869ef99885c0dc21e7ab1f36098 ****/
-		%feature("compactdefaultargs") ChangeSurface;
-		%feature("autodoc", "Returns the surface used to create the genhsurface.
-
-Returns
--------
-GeomAdaptor_SurfaceOfRevolution
-") ChangeSurface;
-		GeomAdaptor_SurfaceOfRevolution & ChangeSurface();
-
-		/****************** Set ******************/
-		/**** md5 signature: 4b0b3067c9317fc23cf46f719a7594fd ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhsurface.
-
-Parameters
-----------
-S: GeomAdaptor_SurfaceOfRevolution
-
-Returns
--------
-None
-") Set;
-		void Set(const GeomAdaptor_SurfaceOfRevolution & S);
-
-		/****************** Surface ******************/
-		/**** md5 signature: 87b43b57a8dc79c19df787e8ef796cad ****/
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns a reference to the surface inside the hsurface. this is redefined from hsurface, cannot be inline.
-
-Returns
--------
-Adaptor3d_Surface
-") Surface;
-		const Adaptor3d_Surface & Surface();
-
-};
-
-
-%make_alias(GeomAdaptor_HSurfaceOfRevolution)
-
-%extend GeomAdaptor_HSurfaceOfRevolution {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -955,7 +628,7 @@ Adaptor3d_Surface
 class GeomAdaptor_Surface : public Adaptor3d_Surface {
 	public:
 		/****************** GeomAdaptor_Surface ******************/
-		/**** md5 signature: 21ab546b646fdc58756459205ecf38d7 ****/
+		/**** md5 signature: e4d8f69fd067a07f447e80b193ed4e6d ****/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", "No available documentation.
 
@@ -966,42 +639,42 @@ None
 		 GeomAdaptor_Surface();
 
 		/****************** GeomAdaptor_Surface ******************/
-		/**** md5 signature: 60491b015be1a7a3c5e273da96f802bc ****/
+		/**** md5 signature: 10dc0d4a45b263adcecf88a448666f99 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Geom_Surface
+theSurf: Geom_Surface
 
 Returns
 -------
 None
 ") GeomAdaptor_Surface;
-		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & S);
+		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & theSurf);
 
 		/****************** GeomAdaptor_Surface ******************/
-		/**** md5 signature: 4d2cb33c30cf8f5255802589a9e34500 ****/
+		/**** md5 signature: bd6e4cc11ebb04ed69b2ff924099da48 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast or vfirst>vlast.
+		%feature("autodoc", "Standard_constructionerror is raised if ufirst>ulast or vfirst>vlast.
 
 Parameters
 ----------
-S: Geom_Surface
-UFirst: float
-ULast: float
-VFirst: float
-VLast: float
-TolU: float,optional
+theSurf: Geom_Surface
+theUFirst: float
+theULast: float
+theVFirst: float
+theVLast: float
+theTolU: float,optional
 	default value is 0.0
-TolV: float,optional
+theTolV: float,optional
 	default value is 0.0
 
 Returns
 -------
 None
 ") GeomAdaptor_Surface;
-		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, const Standard_Real TolU = 0.0, const Standard_Real TolV = 0.0);
+		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theUFirst, const Standard_Real theULast, const Standard_Real theVFirst, const Standard_Real theVLast, const Standard_Real theTolU = 0.0, const Standard_Real theTolV = 0.0);
 
 		/****************** AxeOfRevolution ******************/
 		/**** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ****/
@@ -1026,26 +699,26 @@ opencascade::handle<Geom_BSplineSurface>
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****************** BasisCurve ******************/
-		/**** md5 signature: 649d212d15fc34b20cfbf05abf61b226 ****/
+		/**** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ****/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") BasisCurve;
-		opencascade::handle<Adaptor3d_HCurve> BasisCurve();
+		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****************** BasisSurface ******************/
-		/**** md5 signature: 421ea038c6d9bcc3b023d9c1239bea84 ****/
+		/**** md5 signature: de63a8a43356a45f5d395e828ec0014c ****/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") BasisSurface;
-		opencascade::handle<Adaptor3d_HSurface> BasisSurface();
+		opencascade::handle<Adaptor3d_Surface> BasisSurface();
 
 		/****************** Bezier ******************/
 		/**** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ****/
@@ -1194,7 +867,7 @@ gp_Dir
 		gp_Dir Direction();
 
 		/****************** FirstUParameter ******************/
-		/**** md5 signature: 62341804d7e1ffc3de87fae2bf43b512 ****/
+		/**** md5 signature: 9f6a318ef39f30d9051cc243f6edc9ac ****/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1202,10 +875,10 @@ Returns
 -------
 float
 ") FirstUParameter;
-		Standard_Real FirstUParameter();
+		virtual Standard_Real FirstUParameter();
 
 		/****************** FirstVParameter ******************/
-		/**** md5 signature: 982af8f353fd309c87f6c3698af95089 ****/
+		/**** md5 signature: 026c8b687e22be56263a275efcb1a191 ****/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1213,10 +886,10 @@ Returns
 -------
 float
 ") FirstVParameter;
-		Standard_Real FirstVParameter();
+		virtual Standard_Real FirstVParameter();
 
 		/****************** GetType ******************/
-		/**** md5 signature: 96aa962fbb94c2c631f870283212b1d3 ****/
+		/**** md5 signature: 936170b269276a5a12605a71a86272c0 ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Returns the type of the surface : plane, cylinder, cone, sphere, torus, beziersurface, bsplinesurface, surfaceofrevolution, surfaceofextrusion, othersurface.
 
@@ -1224,7 +897,7 @@ Returns
 -------
 GeomAbs_SurfaceType
 ") GetType;
-		GeomAbs_SurfaceType GetType();
+		virtual GeomAbs_SurfaceType GetType();
 
 		/****************** IsUClosed ******************/
 		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
@@ -1293,7 +966,7 @@ bool
 		Standard_Boolean IsVRational();
 
 		/****************** LastUParameter ******************/
-		/**** md5 signature: 1d079dee0cfc1756347bcb2471c5c822 ****/
+		/**** md5 signature: 3133997e2ee3ea09c0b46a884e833ca4 ****/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1301,10 +974,10 @@ Returns
 -------
 float
 ") LastUParameter;
-		Standard_Real LastUParameter();
+		virtual Standard_Real LastUParameter();
 
 		/****************** LastVParameter ******************/
-		/**** md5 signature: 2b4acdfbc345aaeedbb1d34eef2873f2 ****/
+		/**** md5 signature: f1f64233932dd0768276d78ffb537717 ****/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1312,45 +985,45 @@ Returns
 -------
 float
 ") LastVParameter;
-		Standard_Real LastVParameter();
+		virtual Standard_Real LastVParameter();
 
 		/****************** Load ******************/
-		/**** md5 signature: d0b9098abc9bc3f25b7f5df94bc1cfa0 ****/
+		/**** md5 signature: 9ae80bb85601d8887024ee162e816c42 ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Geom_Surface
+theSurf: Geom_Surface
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Geom_Surface> & S);
+		void Load(const opencascade::handle<Geom_Surface> & theSurf);
 
 		/****************** Load ******************/
-		/**** md5 signature: 44185344f9f3393fe225f4f93b554724 ****/
+		/**** md5 signature: ad45ae5b785f93959bfca62c6c7fcaca ****/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast or vfirst>vlast.
+		%feature("autodoc", "Standard_constructionerror is raised if theufirst>theulast or thevfirst>thevlast.
 
 Parameters
 ----------
-S: Geom_Surface
-UFirst: float
-ULast: float
-VFirst: float
-VLast: float
-TolU: float,optional
+theSurf: Geom_Surface
+theUFirst: float
+theULast: float
+theVFirst: float
+theVLast: float
+theTolU: float,optional
 	default value is 0.0
-TolV: float,optional
+theTolV: float,optional
 	default value is 0.0
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, const Standard_Real TolU = 0.0, const Standard_Real TolV = 0.0);
+		void Load(const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theUFirst, const Standard_Real theULast, const Standard_Real theVFirst, const Standard_Real theVLast, const Standard_Real theTolU = 0.0, const Standard_Real theTolV = 0.0);
 
 		/****************** NbUIntervals ******************/
 		/**** md5 signature: 36290e0c805f559fce0d4de0d4d51789 ****/
@@ -1460,7 +1133,7 @@ gp_Sphere
 		gp_Sphere Sphere();
 
 		/****************** Surface ******************/
-		/**** md5 signature: a469e18cbceeb351572a461f96ff0f4d ****/
+		/**** md5 signature: 3aa31a6d63da8a25f018cf96599c0928 ****/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "No available documentation.
 
@@ -1546,7 +1219,7 @@ float
 		Standard_Real UResolution(const Standard_Real R3d);
 
 		/****************** UTrim ******************/
-		/**** md5 signature: 2f1effe4b247d770d76c6bb7e909f894 ****/
+		/**** md5 signature: 3604326125cf753b2a6722a946fb54be ****/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "Returns a surface trimmed in the u direction equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -1558,9 +1231,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") UTrim;
-		opencascade::handle<Adaptor3d_HSurface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** VContinuity ******************/
 		/**** md5 signature: 147ea173efc6a600ed241c35c98936ea ****/
@@ -1627,7 +1300,7 @@ float
 		Standard_Real VResolution(const Standard_Real R3d);
 
 		/****************** VTrim ******************/
-		/**** md5 signature: acb52a48cbc4aa80908911477b02f7f4 ****/
+		/**** md5 signature: d094345261a4439c6edc98b200ea4e3d ****/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "Returns a surface trimmed in the v direction between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -1639,9 +1312,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") VTrim;
-		opencascade::handle<Adaptor3d_HSurface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: bc01a119296408176c75cc0dfb0636ae ****/
@@ -1662,161 +1335,9 @@ gp_Pnt
 };
 
 
+%make_alias(GeomAdaptor_Surface)
+
 %extend GeomAdaptor_Surface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***************************
-* class GeomAdaptor_HCurve *
-***************************/
-class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
-	public:
-		/****************** GeomAdaptor_HCurve ******************/
-		/**** md5 signature: dcb8b3078ce766051e9b0d1fd01109c9 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") GeomAdaptor_HCurve;
-		 GeomAdaptor_HCurve();
-
-		/****************** GeomAdaptor_HCurve ******************/
-		/**** md5 signature: 2cc1b5bdee121aaef79597be486db881 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HCurve;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-AS: GeomAdaptor_Curve
-
-Returns
--------
-None
-") GeomAdaptor_HCurve;
-		 GeomAdaptor_HCurve(const GeomAdaptor_Curve & AS);
-
-		/****************** GeomAdaptor_HCurve ******************/
-		/**** md5 signature: 16638445fd6ef9090e72a296a1b36f15 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HCurve;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-S: Geom_Curve
-
-Returns
--------
-None
-") GeomAdaptor_HCurve;
-		 GeomAdaptor_HCurve(const opencascade::handle<Geom_Curve> & S);
-
-		/****************** GeomAdaptor_HCurve ******************/
-		/**** md5 signature: c424d26828bf38d6da26c4e5dc5e5cc5 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HCurve;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast or vfirst>vlast.
-
-Parameters
-----------
-S: Geom_Curve
-UFirst: float
-ULast: float
-
-Returns
--------
-None
-") GeomAdaptor_HCurve;
-		 GeomAdaptor_HCurve(const opencascade::handle<Geom_Curve> & S, const Standard_Real UFirst, const Standard_Real ULast);
-
-};
-
-
-%make_alias(GeomAdaptor_HCurve)
-
-%extend GeomAdaptor_HCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class GeomAdaptor_HSurface *
-*****************************/
-class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
-	public:
-		/****************** GeomAdaptor_HSurface ******************/
-		/**** md5 signature: d0a5881b3295693d6a0cec0575104ca5 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurface;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") GeomAdaptor_HSurface;
-		 GeomAdaptor_HSurface();
-
-		/****************** GeomAdaptor_HSurface ******************/
-		/**** md5 signature: a8d76e380bea089f3cedb726bec0876e ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurface;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-AS: GeomAdaptor_Surface
-
-Returns
--------
-None
-") GeomAdaptor_HSurface;
-		 GeomAdaptor_HSurface(const GeomAdaptor_Surface & AS);
-
-		/****************** GeomAdaptor_HSurface ******************/
-		/**** md5 signature: 8b911ff5dd9b2d885482b29fbc85d279 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurface;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-S: Geom_Surface
-
-Returns
--------
-None
-") GeomAdaptor_HSurface;
-		 GeomAdaptor_HSurface(const opencascade::handle<Geom_Surface> & S);
-
-		/****************** GeomAdaptor_HSurface ******************/
-		/**** md5 signature: 96e2719c9293ae2c2e0f4c80cca57fd1 ****/
-		%feature("compactdefaultargs") GeomAdaptor_HSurface;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast or vfirst>vlast.
-
-Parameters
-----------
-S: Geom_Surface
-UFirst: float
-ULast: float
-VFirst: float
-VLast: float
-TolU: float,optional
-	default value is 0.0
-TolV: float,optional
-	default value is 0.0
-
-Returns
--------
-None
-") GeomAdaptor_HSurface;
-		 GeomAdaptor_HSurface(const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, const Standard_Real TolU = 0.0, const Standard_Real TolV = 0.0);
-
-};
-
-
-%make_alias(GeomAdaptor_HSurface)
-
-%extend GeomAdaptor_HSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1839,35 +1360,35 @@ None
 		 GeomAdaptor_SurfaceOfLinearExtrusion();
 
 		/****************** GeomAdaptor_SurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: 4c65062dd46aedac697341c979041789 ****/
+		/**** md5 signature: 6fc0bf3ff5b9ed8b1c76db7c0d314a74 ****/
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "The curve is loaded.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomAdaptor_SurfaceOfLinearExtrusion;
-		 GeomAdaptor_SurfaceOfLinearExtrusion(const opencascade::handle<Adaptor3d_HCurve> & C);
+		 GeomAdaptor_SurfaceOfLinearExtrusion(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** GeomAdaptor_SurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: 1aeea78225d0ffee9431607880f2bd98 ****/
+		/**** md5 signature: 1314165a9ad1384da79bfc20a35c4df2 ****/
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "Thew curve and the direction are loaded.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 V: gp_Dir
 
 Returns
 -------
 None
 ") GeomAdaptor_SurfaceOfLinearExtrusion;
-		 GeomAdaptor_SurfaceOfLinearExtrusion(const opencascade::handle<Adaptor3d_HCurve> & C, const gp_Dir & V);
+		 GeomAdaptor_SurfaceOfLinearExtrusion(const opencascade::handle<Adaptor3d_Curve> & C, const gp_Dir & V);
 
 		/****************** AxeOfRevolution ******************/
 		/**** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ****/
@@ -1892,15 +1413,15 @@ opencascade::handle<Geom_BSplineSurface>
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****************** BasisCurve ******************/
-		/**** md5 signature: 649d212d15fc34b20cfbf05abf61b226 ****/
+		/**** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ****/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") BasisCurve;
-		opencascade::handle<Adaptor3d_HCurve> BasisCurve();
+		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****************** Bezier ******************/
 		/**** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ****/
@@ -2068,19 +1589,19 @@ float
 		Standard_Real LastVParameter();
 
 		/****************** Load ******************/
-		/**** md5 signature: 7ec2d3d2173b0cd6b7f2097ff67dfa81 ****/
+		/**** md5 signature: 01185c022b32d6c381a2144e2963295b ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Changes the curve.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_HCurve> & C);
+		void Load(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Load ******************/
 		/**** md5 signature: 62bf4c300fca896dad63b0ed0af0b96a ****/
@@ -2236,7 +1757,7 @@ float
 		Standard_Real UResolution(const Standard_Real R3d);
 
 		/****************** UTrim ******************/
-		/**** md5 signature: 2f1effe4b247d770d76c6bb7e909f894 ****/
+		/**** md5 signature: 3604326125cf753b2a6722a946fb54be ****/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "Returns a surface trimmed in the u direction equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2248,9 +1769,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") UTrim;
-		opencascade::handle<Adaptor3d_HSurface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** VContinuity ******************/
 		/**** md5 signature: 147ea173efc6a600ed241c35c98936ea ****/
@@ -2306,7 +1827,7 @@ float
 		Standard_Real VResolution(const Standard_Real R3d);
 
 		/****************** VTrim ******************/
-		/**** md5 signature: acb52a48cbc4aa80908911477b02f7f4 ****/
+		/**** md5 signature: d094345261a4439c6edc98b200ea4e3d ****/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "Returns a surface trimmed in the v direction between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2318,12 +1839,14 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") VTrim;
-		opencascade::handle<Adaptor3d_HSurface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 };
 
+
+%make_alias(GeomAdaptor_SurfaceOfLinearExtrusion)
 
 %extend GeomAdaptor_SurfaceOfLinearExtrusion {
 	%pythoncode {
@@ -2348,35 +1871,35 @@ None
 		 GeomAdaptor_SurfaceOfRevolution();
 
 		/****************** GeomAdaptor_SurfaceOfRevolution ******************/
-		/**** md5 signature: bf5d6561180f2d31f1a5a85f0a6318bf ****/
+		/**** md5 signature: 33135053ae058233a68d69faed20e511 ****/
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfRevolution;
 		%feature("autodoc", "The curve is loaded.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomAdaptor_SurfaceOfRevolution;
-		 GeomAdaptor_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_HCurve> & C);
+		 GeomAdaptor_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** GeomAdaptor_SurfaceOfRevolution ******************/
-		/**** md5 signature: 47a0cec0a7bf1264c273ea0232ea616e ****/
+		/**** md5 signature: 5fe135ade63c133d688341669e4f605a ****/
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfRevolution;
 		%feature("autodoc", "The curve and the direction are loaded.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 V: gp_Ax1
 
 Returns
 -------
 None
 ") GeomAdaptor_SurfaceOfRevolution;
-		 GeomAdaptor_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_HCurve> & C, const gp_Ax1 & V);
+		 GeomAdaptor_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_Curve> & C, const gp_Ax1 & V);
 
 		/****************** AxeOfRevolution ******************/
 		/**** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ****/
@@ -2412,15 +1935,15 @@ opencascade::handle<Geom_BSplineSurface>
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****************** BasisCurve ******************/
-		/**** md5 signature: 649d212d15fc34b20cfbf05abf61b226 ****/
+		/**** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ****/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") BasisCurve;
-		opencascade::handle<Adaptor3d_HCurve> BasisCurve();
+		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****************** Bezier ******************/
 		/**** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ****/
@@ -2577,19 +2100,19 @@ float
 		Standard_Real LastVParameter();
 
 		/****************** Load ******************/
-		/**** md5 signature: 7ec2d3d2173b0cd6b7f2097ff67dfa81 ****/
+		/**** md5 signature: 01185c022b32d6c381a2144e2963295b ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Changes the curve.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_HCurve> & C);
+		void Load(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Load ******************/
 		/**** md5 signature: 4064dc62b92d8ef68aed2949a77022a0 ****/
@@ -2745,7 +2268,7 @@ float
 		Standard_Real UResolution(const Standard_Real R3d);
 
 		/****************** UTrim ******************/
-		/**** md5 signature: 2f1effe4b247d770d76c6bb7e909f894 ****/
+		/**** md5 signature: 3604326125cf753b2a6722a946fb54be ****/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "Returns a surface trimmed in the u direction equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2757,9 +2280,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") UTrim;
-		opencascade::handle<Adaptor3d_HSurface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** VContinuity ******************/
 		/**** md5 signature: 147ea173efc6a600ed241c35c98936ea ****/
@@ -2826,7 +2349,7 @@ float
 		Standard_Real VResolution(const Standard_Real R3d);
 
 		/****************** VTrim ******************/
-		/**** md5 signature: acb52a48cbc4aa80908911477b02f7f4 ****/
+		/**** md5 signature: d094345261a4439c6edc98b200ea4e3d ****/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "Returns a surface trimmed in the v direction between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2838,12 +2361,14 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") VTrim;
-		opencascade::handle<Adaptor3d_HSurface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 };
 
+
+%make_alias(GeomAdaptor_SurfaceOfRevolution)
 
 %extend GeomAdaptor_SurfaceOfRevolution {
 	%pythoncode {

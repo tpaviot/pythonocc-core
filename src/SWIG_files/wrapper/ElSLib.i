@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ELSLIBDOCSTRING
 "ElSLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_elslib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_elslib.html"
 %enddef
 %module (package="OCC.Core", docstring=ELSLIBDOCSTRING) ElSLib
 
@@ -60,7 +60,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -819,7 +819,7 @@ None
 		/****************** D3 ******************/
 		/**** md5 signature: d3305be8886796dce18f1f9e28e27d36 ****/
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "Surface evaluation the following functions compute the point and the derivatives on elementary surfaces defined with their geometric characterisitics. you don't need to create the surface to use these functions. these functions are called by the previous ones. example : a cylinder is defined with its position and its radius.
+		%feature("autodoc", "Surface evaluation the following functions compute the point and the derivatives on elementary surfaces defined with their geometric characteristics. you don't need to create the surface to use these functions. these functions are called by the previous ones. example : a cylinder is defined with its position and its radius.
 
 Parameters
 ----------

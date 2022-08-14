@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPODSDOCSTRING
 "TopoDS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topods.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_topods.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPODSDOCSTRING) TopoDS
 
@@ -66,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -709,7 +709,7 @@ TopoDS_Shape
 class TopoDS_Iterator {
 	public:
 		/****************** TopoDS_Iterator ******************/
-		/**** md5 signature: ac26a9b0545000f39f1f87020b9c6d8f ****/
+		/**** md5 signature: 1916010ea75419e2487f95a4e66d0acd ****/
 		%feature("compactdefaultargs") TopoDS_Iterator;
 		%feature("autodoc", "Creates an empty iterator.
 
@@ -720,7 +720,7 @@ None
 		 TopoDS_Iterator();
 
 		/****************** TopoDS_Iterator ******************/
-		/**** md5 signature: 93466b331bcaf0b64fd63be7d5336b8a ****/
+		/**** md5 signature: 5140035e418f481a1a1b464798561ee9 ****/
 		%feature("compactdefaultargs") TopoDS_Iterator;
 		%feature("autodoc", "Creates an iterator on <s> sub-shapes. note: - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
 
@@ -758,7 +758,7 @@ None
 		void Initialize(const TopoDS_Shape & S, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
 		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Returns true if there is another sub-shape in the shape which this iterator is scanning.
 
@@ -780,7 +780,7 @@ None
 		void Next();
 
 		/****************** Value ******************/
-		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/
+		/**** md5 signature: ebbff234a3094c505e960926e0773ed1 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Returns the current sub-shape in the shape which this iterator is scanning. exceptions standard_nosuchobject if there is no current sub-shape.
 
@@ -1122,19 +1122,21 @@ bool
 		Standard_Boolean IsSame(const TopoDS_Shape & theOther);
 
 		/****************** Located ******************/
-		/**** md5 signature: a25465c897f6848d7c1167dfb7b66062 ****/
+		/**** md5 signature: 3f8cd1598c3eb01b43ca976d06905f6f ****/
 		%feature("compactdefaultargs") Located;
 		%feature("autodoc", "Returns a shape similar to <self> with the local coordinate system set to <loc>.
 
 Parameters
 ----------
 theLoc: TopLoc_Location
+theRaiseExc: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 TopoDS_Shape
 ") Located;
-		TopoDS_Shape Located(const TopLoc_Location & theLoc);
+		TopoDS_Shape Located(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_True);
 
 		/****************** Location ******************/
 		/**** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ****/
@@ -1148,19 +1150,21 @@ TopLoc_Location
 		const TopLoc_Location & Location();
 
 		/****************** Location ******************/
-		/**** md5 signature: 7dad156a2ecc5319358e11a9fba30480 ****/
+		/**** md5 signature: 9dfc75484b9577a6acde91d32790727b ****/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Sets the shape local coordinate system.
 
 Parameters
 ----------
 theLoc: TopLoc_Location
+theRaiseExc: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 None
 ") Location;
-		void Location(const TopLoc_Location & theLoc);
+		void Location(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_True);
 
 		/****************** Locked ******************/
 		/**** md5 signature: a47aa902e0d0df6fdbe782c3c7f2d1b5 ****/
@@ -1215,34 +1219,38 @@ None
 		void Modified(Standard_Boolean theIsModified);
 
 		/****************** Move ******************/
-		/**** md5 signature: 4e6861a9800338674d407bb4a78df69f ****/
+		/**** md5 signature: d7624253a8bf526c57d80a382d92f068 ****/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "Multiplies the shape location by theposition.
 
 Parameters
 ----------
 thePosition: TopLoc_Location
+theRaiseExc: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 None
 ") Move;
-		void Move(const TopLoc_Location & thePosition);
+		void Move(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_True);
 
 		/****************** Moved ******************/
-		/**** md5 signature: 39f007d8497487ec0d169e6006debb60 ****/
+		/**** md5 signature: 2c1c929bc14809beff6d7542a5f68efe ****/
 		%feature("compactdefaultargs") Moved;
 		%feature("autodoc", "Returns a shape similar to <self> with a location multiplied by theposition.
 
 Parameters
 ----------
 thePosition: TopLoc_Location
+theRaiseExc: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 TopoDS_Shape
 ") Moved;
-		TopoDS_Shape Moved(const TopLoc_Location & thePosition);
+		TopoDS_Shape Moved(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_True);
 
 		/****************** NbChildren ******************/
 		/**** md5 signature: 112820d06ee986e20c4479ba5bfe3404 ****/

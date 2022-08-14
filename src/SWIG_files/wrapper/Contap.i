@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CONTAPDOCSTRING
 "Contap module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_contap.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_contap.html"
 %enddef
 %module (package="OCC.Core", docstring=CONTAPDOCSTRING) Contap
 
@@ -37,6 +37,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_contap.html"
 
 
 %{
+#include<Adaptor2d_Curve2d.hxx>
 #include<Contap_module.hxx>
 
 //Dependencies
@@ -93,7 +94,7 @@ enum Contap_TFunction {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Contap_IType(IntEnum):
@@ -250,19 +251,19 @@ IntSurf_Quadric
 		const IntSurf_Quadric & Quadric();
 
 		/****************** Set ******************/
-		/**** md5 signature: c9230f42bb12d45a693a7ae3204732ab ****/
+		/**** md5 signature: fe1f4e54b6d838c88f545f7975616591 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & S);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** Set ******************/
 		/**** md5 signature: 7b60fb3b1252eb4013a37f792be86766 ****/
@@ -327,30 +328,30 @@ None
 		void Set(const gp_Pnt & Eye, const Standard_Real Angle);
 
 		/****************** Set ******************/
-		/**** md5 signature: 39b28571bbfbb9613c66992d83b4c72e ****/
+		/**** md5 signature: 70ab888f546bf04b92c8032f862436af ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		void Set(const opencascade::handle<Adaptor2d_Curve2d> & A);
 
 		/****************** Surface ******************/
-		/**** md5 signature: 81999f08eca68bee259ba395fdac1a30 ****/
+		/**** md5 signature: d36dc8d293d03901e5a1cace2e167115 ****/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Returns mysurf field.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") Surface;
-		const opencascade::handle<Adaptor3d_HSurface> & Surface();
+		const opencascade::handle<Adaptor3d_Surface> & Surface();
 
 		/****************** Valpoint ******************/
 		/**** md5 signature: 3a2ceb97db1e39a13d0a9061e49cb920 ****/
@@ -701,13 +702,13 @@ None
 		 Contap_Contour(const gp_Pnt & Eye);
 
 		/****************** Contap_Contour ******************/
-		/**** md5 signature: 462dfd2cb5699c402de523a07aaed249 ****/
+		/**** md5 signature: 25645dae103420d74f7a669531e03e3a ****/
 		%feature("compactdefaultargs") Contap_Contour;
 		%feature("autodoc", "Creates the contour in a given direction.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 Direction: gp_Vec
 
@@ -715,16 +716,16 @@ Returns
 -------
 None
 ") Contap_Contour;
-		 Contap_Contour(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction);
+		 Contap_Contour(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction);
 
 		/****************** Contap_Contour ******************/
-		/**** md5 signature: c092062c8a84e1b30fd2eedc67ea9acb ****/
+		/**** md5 signature: 477d93fc923faa8291a1a3940a1672cc ****/
 		%feature("compactdefaultargs") Contap_Contour;
 		%feature("autodoc", "Creates the contour in a given direction.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 Direction: gp_Vec
 Angle: float
@@ -733,16 +734,16 @@ Returns
 -------
 None
 ") Contap_Contour;
-		 Contap_Contour(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction, const Standard_Real Angle);
+		 Contap_Contour(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction, const Standard_Real Angle);
 
 		/****************** Contap_Contour ******************/
-		/**** md5 signature: 384cb66f2002a6109dad6e7f52c6a8d5 ****/
+		/**** md5 signature: 56cac3764cf1b3b815e5af09b9b8027c ****/
 		%feature("compactdefaultargs") Contap_Contour;
 		%feature("autodoc", "Creates the contour for a perspective view.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 Eye: gp_Pnt
 
@@ -750,7 +751,7 @@ Returns
 -------
 None
 ") Contap_Contour;
-		 Contap_Contour(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
+		 Contap_Contour(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
 
 		/****************** Init ******************/
 		/**** md5 signature: deab7f18a5b73dea8633b272c74ec953 ****/
@@ -847,29 +848,29 @@ int
 		Standard_Integer NbLines();
 
 		/****************** Perform ******************/
-		/**** md5 signature: e0e4baac189bbfbab85e24274fff310d ****/
+		/**** md5 signature: f325c0d93f36bc064924753d683f809a ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Creates the contour in a given direction.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain);
 
 		/****************** Perform ******************/
-		/**** md5 signature: e0993cf897070750a3cd8de9eb8442c0 ****/
+		/**** md5 signature: 0b4fd3b0fec6772a0904131288cdfdd2 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Creates the contour in a given direction.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 Direction: gp_Vec
 
@@ -877,16 +878,16 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 646d1e133cf129836e04dc7ef360f488 ****/
+		/**** md5 signature: 3262b2a18ac7cca247352dff7df5c35a ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Creates the contour in a given direction.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 Direction: gp_Vec
 Angle: float
@@ -895,16 +896,16 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction, const Standard_Real Angle);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction, const Standard_Real Angle);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 23c9b9e5ded059f020cbc263d2d1b835 ****/
+		/**** md5 signature: 1211ae19df2ef1905fcbbf0375510d47 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Creates the contour for a perspective view.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 Eye: gp_Pnt
 
@@ -912,7 +913,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
 
 		/****************** SurfaceFunction ******************/
 		/**** md5 signature: 4a38b2f929c85d9d66c55cb5e593a36b ****/
@@ -940,152 +941,152 @@ Contap_SurfFunction
 class Contap_HContTool {
 	public:
 		/****************** Bounds ******************/
-		/**** md5 signature: 9d7011a3f7bf9140e97d4cca3a13d459 ****/
+		/**** md5 signature: 14979ddc3175e995d5548477ac5bcd4b ****/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "Returns the parametric limits on the arc c. these limits must be finite : they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 Ufirst: float
 Ulast: float
 ") Bounds;
-		static void Bounds(const opencascade::handle<Adaptor2d_HCurve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Bounds(const opencascade::handle<Adaptor2d_Curve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** HasBeenSeen ******************/
-		/**** md5 signature: c459516f806b782c6912d96e17f167c2 ****/
+		/**** md5 signature: 52a722c5d4a9984d26ad321cf3630b48 ****/
 		%feature("compactdefaultargs") HasBeenSeen;
 		%feature("autodoc", "Returns true if all the intersection point and edges are known on the arc. the intersection point are given as vertices. the intersection edges are given as intervals between two vertices.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 bool
 ") HasBeenSeen;
-		static Standard_Boolean HasBeenSeen(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Boolean HasBeenSeen(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** HasFirstPoint ******************/
-		/**** md5 signature: 21dbd03b2bfe6401a9ae58a73e3b9d1c ****/
+		/**** md5 signature: af276ff6ae83b4e53affd31093f8bfdc ****/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Returns true when the segment of range index is not open at the left side. in that case, indfirst is the range in the list intersection points (see nbpoints) of the one which defines the left bound of the segment. otherwise, the method has to return false, and indfirst has no meaning.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 Index: int
 
 Returns
 -------
 IndFirst: int
 ") HasFirstPoint;
-		static Standard_Boolean HasFirstPoint(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
+		static Standard_Boolean HasFirstPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
 
 		/****************** HasLastPoint ******************/
-		/**** md5 signature: a4dadcf8bd34f0f89f5ae609438fa233 ****/
+		/**** md5 signature: a28a12263a39eecc4acc9708fdf256c7 ****/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Returns true when the segment of range index is not open at the right side. in that case, indlast is the range in the list intersection points (see nbpoints) of the one which defines the right bound of the segment. otherwise, the method has to return false, and indlast has no meaning.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 Index: int
 
 Returns
 -------
 IndLast: int
 ") HasLastPoint;
-		static Standard_Boolean HasLastPoint(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
+		static Standard_Boolean HasLastPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
 
 		/****************** IsAllSolution ******************/
-		/**** md5 signature: 0c6c1768ff2598386bae6ed220465e90 ****/
+		/**** md5 signature: a0e5f5bbe827235fe1ddb52793e5eb42 ****/
 		%feature("compactdefaultargs") IsAllSolution;
 		%feature("autodoc", "Returns true when the whole restriction is solution of the intersection problem.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 bool
 ") IsAllSolution;
-		static Standard_Boolean IsAllSolution(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Boolean IsAllSolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** IsVertex ******************/
-		/**** md5 signature: be51c8dbf9d3585b6d3eab81b6b976ce ****/
+		/**** md5 signature: ffecad0cdf7d56d3c7a670cde7e75bc2 ****/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "Returns true if the intersection point of range index corresponds with a vertex on the arc a.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 Index: int
 
 Returns
 -------
 bool
 ") IsVertex;
-		static Standard_Boolean IsVertex(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index);
+		static Standard_Boolean IsVertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index);
 
 		/****************** NbPoints ******************/
-		/**** md5 signature: 17b706dc3883e4250f166019ea7dae25 ****/
+		/**** md5 signature: 54aec07f3b6dd332421dfbc4dec3568c ****/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Returns the number of intersection points on the arc a.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 int
 ") NbPoints;
-		static Standard_Integer NbPoints(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Integer NbPoints(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** NbSamplePoints ******************/
-		/**** md5 signature: 1d44fd6ad4cd26d8b6fc1c0b944b7c47 ****/
+		/**** md5 signature: f9bf587e348ded4c9e8073b6938de72d ****/
 		%feature("compactdefaultargs") NbSamplePoints;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 int
 ") NbSamplePoints;
-		static Standard_Integer NbSamplePoints(const opencascade::handle<Adaptor3d_HSurface> & S);
+		static Standard_Integer NbSamplePoints(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** NbSamplesOnArc ******************/
-		/**** md5 signature: 5d5251a65ac23da48e83da611222dcfc ****/
+		/**** md5 signature: 99a1330c1c671d353c2bee9fd23c27cc ****/
 		%feature("compactdefaultargs") NbSamplesOnArc;
 		%feature("autodoc", "Returns the number of points which is used to make a sample on the arc. this number is a function of the surface and the curveonsurface complexity.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 
 Returns
 -------
 int
 ") NbSamplesOnArc;
-		static Standard_Integer NbSamplesOnArc(const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		static Standard_Integer NbSamplesOnArc(const opencascade::handle<Adaptor2d_Curve2d> & A);
 
 		/****************** NbSamplesU ******************/
-		/**** md5 signature: 97232a7a843cb20e7362e1978825fb60 ****/
+		/**** md5 signature: 7ffe816252db97bdbf2950cea2ca2037 ****/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 u1: float
 u2: float
 
@@ -1093,16 +1094,16 @@ Returns
 -------
 int
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real u1, const Standard_Real u2);
+		static Standard_Integer NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real u1, const Standard_Real u2);
 
 		/****************** NbSamplesV ******************/
-		/**** md5 signature: 3cd7a5ede88f3424fd1fcf0d55b10994 ****/
+		/**** md5 signature: 183861bdb84cb1597bd3a1324a097e8e ****/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 v1: float
 v2: float
 
@@ -1110,47 +1111,47 @@ Returns
 -------
 int
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real v1, const Standard_Real v2);
+		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real v1, const Standard_Real v2);
 
 		/****************** NbSegments ******************/
-		/**** md5 signature: 0ae6c2f8194d2736e98ab44bdf7746bf ****/
+		/**** md5 signature: 2689aa0fe05c64574e603c4eb512caa4 ****/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Returns the number of part of a solution of the of intersection problem.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 int
 ") NbSegments;
-		static Standard_Integer NbSegments(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Integer NbSegments(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Parameter ******************/
-		/**** md5 signature: 4bd4573724cb995d25117b32c6301dbf ****/
+		/**** md5 signature: f5a937c546746bb35bafec928fdc442d ****/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Returns the parameter of the vertex v on the arc a.
 
 Parameters
 ----------
 V: Adaptor3d_HVertex
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Parameter;
-		static Standard_Real Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Real Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Project ******************/
-		/**** md5 signature: c906bf41c5c252a3dc2813aa763bf1d4 ****/
+		/**** md5 signature: b602a334ba1cfcdefae0bd304b479ee8 ****/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "Projects the point p on the arc c. if the methods returns standard_true, the projection is successful, and paramproj is the parameter on the arc of the projected point, ptproj is the projected point. if the method returns standard_false, param proj and ptproj are not significant.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 P: gp_Pnt2d
 Ptproj: gp_Pnt2d
 
@@ -1158,16 +1159,16 @@ Returns
 -------
 Paramproj: float
 ") Project;
-		static Standard_Boolean Project(const opencascade::handle<Adaptor2d_HCurve2d> & C, const gp_Pnt2d & P, Standard_Real &OutValue, gp_Pnt2d & Ptproj);
+		static Standard_Boolean Project(const opencascade::handle<Adaptor2d_Curve2d> & C, const gp_Pnt2d & P, Standard_Real &OutValue, gp_Pnt2d & Ptproj);
 
 		/****************** SamplePoint ******************/
-		/**** md5 signature: a955c19e2de48e3afe1a124d596ec476 ****/
+		/**** md5 signature: da2e08ebb1b31e85cabbb780a9cea7b5 ****/
 		%feature("compactdefaultargs") SamplePoint;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 Index: int
 
 Returns
@@ -1175,32 +1176,32 @@ Returns
 U: float
 V: float
 ") SamplePoint;
-		static void SamplePoint(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void SamplePoint(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Tolerance ******************/
-		/**** md5 signature: 3a8783bb4f0487b28d64a7cbca026b23 ****/
+		/**** md5 signature: 35f5531e9c358e20c7f5723f26e0a7ba ****/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if abs(parameter(vertex) - parameter(otherpnt))<= tolerance, the points are 'merged'.
 
 Parameters
 ----------
 V: Adaptor3d_HVertex
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Tolerance;
-		static Standard_Real Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Real Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Value ******************/
-		/**** md5 signature: 18b3b6d81fbdc955a12ee74b07f30c25 ****/
+		/**** md5 signature: ba54f1e0e4e6802571668cb2c0638480 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Returns the value (pt), the tolerance (tol), and the parameter (u) on the arc a , of the intersection point of range index.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 Index: int
 Pt: gp_Pnt
 
@@ -1209,16 +1210,16 @@ Returns
 Tol: float
 U: float
 ") Value;
-		static void Value(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, gp_Pnt & Pt, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, gp_Pnt & Pt, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Vertex ******************/
-		/**** md5 signature: 6f27b126d27d77cd929cf0d82a6331b7 ****/
+		/**** md5 signature: f58ee2175cbc1af1161d7220a9c11ff1 ****/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "When isvertex returns true, this method returns the vertex on the arc a.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 Index: int
 V: Adaptor3d_HVertex
 
@@ -1226,7 +1227,7 @@ Returns
 -------
 None
 ") Vertex;
-		static void Vertex(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
+		static void Vertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
 
 };
 
@@ -1243,73 +1244,73 @@ None
 class Contap_HCurve2dTool {
 	public:
 		/****************** BSpline ******************/
-		/**** md5 signature: 51c6af526482fdefe22b195f9e7f642b ****/
+		/**** md5 signature: 1151b84776305bc0a5c8aaee6f50252d ****/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 opencascade::handle<Geom2d_BSplineCurve>
 ") BSpline;
-		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Bezier ******************/
-		/**** md5 signature: f3f25a1b425466642d5538101f636952 ****/
+		/**** md5 signature: 55afc4c0fc79e07de6077214558af461 ****/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 opencascade::handle<Geom2d_BezierCurve>
 ") Bezier;
-		static opencascade::handle<Geom2d_BezierCurve> Bezier(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static opencascade::handle<Geom2d_BezierCurve> Bezier(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Circle ******************/
-		/**** md5 signature: 25cca94b6abda39a58f3572d7e1269e1 ****/
+		/**** md5 signature: 3e4b216e090c5747e712418f4fa66d2c ****/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 gp_Circ2d
 ") Circle;
-		static gp_Circ2d Circle(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static gp_Circ2d Circle(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Continuity ******************/
-		/**** md5 signature: c3f4e05ac1409417c3a49b2ba86768c1 ****/
+		/**** md5 signature: 93cd5f75c1ce867aba7a7f12421275f0 ****/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 GeomAbs_Shape
 ") Continuity;
-		static GeomAbs_Shape Continuity(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static GeomAbs_Shape Continuity(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** D0 ******************/
-		/**** md5 signature: 46487cddba3993af60eac47b2d9fb4ec ****/
+		/**** md5 signature: 54c6bd0c456279db2610c0ff0808eb84 ****/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "Computes the point of parameter u on the curve.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U: float
 P: gp_Pnt2d
 
@@ -1317,16 +1318,16 @@ Returns
 -------
 None
 ") D0;
-		static void D0(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P);
+		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P);
 
 		/****************** D1 ******************/
-		/**** md5 signature: 47f0ee388b0110afd0acc19f4f31143b ****/
+		/**** md5 signature: 918bee38d3c31b02180315ab8bd4beb7 ****/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U: float
 P: gp_Pnt2d
 V: gp_Vec2d
@@ -1335,16 +1336,16 @@ Returns
 -------
 None
 ") D1;
-		static void D1(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****************** D2 ******************/
-		/**** md5 signature: 67bd4dfba43285ed3ba3fa4db342511d ****/
+		/**** md5 signature: d9e326efa98865a213fce49a3626a678 ****/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U: float
 P: gp_Pnt2d
 V1: gp_Vec2d
@@ -1354,16 +1355,16 @@ Returns
 -------
 None
 ") D2;
-		static void D2(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****************** D3 ******************/
-		/**** md5 signature: a12143246ff3c675c374e091b8bb4126 ****/
+		/**** md5 signature: 4951d7379750f8dbc9e426361fa2b365 ****/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U: float
 P: gp_Pnt2d
 V1: gp_Vec2d
@@ -1374,16 +1375,16 @@ Returns
 -------
 None
 ") D3;
-		static void D3(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****************** DN ******************/
-		/**** md5 signature: b51d40fcc387fcff2c771e816a837a26 ****/
+		/**** md5 signature: edb6f0f7cc5bdd7864a248db788f4d84 ****/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U: float
 N: int
 
@@ -1391,76 +1392,76 @@ Returns
 -------
 gp_Vec2d
 ") DN;
-		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, const Standard_Integer N);
 
 		/****************** Ellipse ******************/
-		/**** md5 signature: f3a29109984a1143a6cb5514fa451f90 ****/
+		/**** md5 signature: 9ddecf68838c4598b17a43e7ee186e6e ****/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 gp_Elips2d
 ") Ellipse;
-		static gp_Elips2d Ellipse(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static gp_Elips2d Ellipse(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** FirstParameter ******************/
-		/**** md5 signature: eaf98bddee98d43872dfec9b2cd68150 ****/
+		/**** md5 signature: a4d9a6241f0c3cafc57f60a68d9c9127 ****/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") FirstParameter;
-		static Standard_Real FirstParameter(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Real FirstParameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** GetType ******************/
-		/**** md5 signature: ec77b3306d37c7299568c0a36686922d ****/
+		/**** md5 signature: 29ec5067d7e913f214c553444ec99b6a ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Returns the type of the curve in the current interval : line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 GeomAbs_CurveType
 ") GetType;
-		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Hyperbola ******************/
-		/**** md5 signature: 164051c7a5f0ff11dadb1050a2b5196c ****/
+		/**** md5 signature: d710d90c07a9bd6c6e8e1ba3fc1c92bf ****/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 gp_Hypr2d
 ") Hyperbola;
-		static gp_Hypr2d Hyperbola(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static gp_Hypr2d Hyperbola(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Intervals ******************/
-		/**** md5 signature: 3b05031b8de1688bfd3ab21d174798f0 ****/
+		/**** md5 signature: 7f25b6c48f712ccc9ec416d83eb97ef8 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
@@ -1468,92 +1469,92 @@ Returns
 -------
 None
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor2d_HCurve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** IsClosed ******************/
-		/**** md5 signature: 0e22a421e5652f2d44cc8cf1dd94b7c3 ****/
+		/**** md5 signature: e2e4c5d0ae21ac59c815ef761d7e7eb0 ****/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 bool
 ") IsClosed;
-		static Standard_Boolean IsClosed(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Boolean IsClosed(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** IsPeriodic ******************/
-		/**** md5 signature: 4aba8b2dd73d6a9faa95857fea2fa1c8 ****/
+		/**** md5 signature: 343c2522f84a0271d505fb5a7b6123ee ****/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 bool
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Boolean IsPeriodic(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** LastParameter ******************/
-		/**** md5 signature: c7ee808a0daf7f6c32882e5c11459a8d ****/
+		/**** md5 signature: a84c73d5efee27b935b3bc64eba5e8ab ****/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") LastParameter;
-		static Standard_Real LastParameter(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Real LastParameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Line ******************/
-		/**** md5 signature: 5add7292d5bf7b9e27a7ab736f1e7435 ****/
+		/**** md5 signature: cc50bf5bbcfff1340d1951ad804f481d ****/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 gp_Lin2d
 ") Line;
-		static gp_Lin2d Line(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static gp_Lin2d Line(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** NbIntervals ******************/
-		/**** md5 signature: 042b8a87b181044ce642f6e33059fda9 ****/
+		/**** md5 signature: 296d2d406ae6365ab4187665e47f6beb ****/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 S: GeomAbs_Shape
 
 Returns
 -------
 int
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor2d_HCurve2d> & C, const GeomAbs_Shape S);
+		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor2d_Curve2d> & C, const GeomAbs_Shape S);
 
 		/****************** NbSamples ******************/
-		/**** md5 signature: 9c572bc378ed84a8420fac29109ee0cc ****/
+		/**** md5 signature: 4846c46ec026f7e5cf2080eb1601445a ****/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U0: float
 U1: float
 
@@ -1561,69 +1562,69 @@ Returns
 -------
 int
 ") NbSamples;
-		static Standard_Integer NbSamples(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U0, const Standard_Real U1);
+		static Standard_Integer NbSamples(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U0, const Standard_Real U1);
 
 		/****************** Parabola ******************/
-		/**** md5 signature: aa68878e794db72dae1959cec7bf2f61 ****/
+		/**** md5 signature: 638d7ecde6dd9f67180eadf45347f22e ****/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 gp_Parab2d
 ") Parabola;
-		static gp_Parab2d Parabola(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static gp_Parab2d Parabola(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Period ******************/
-		/**** md5 signature: 7aa66d879cd9e56bcd3f2e6f17863699 ****/
+		/**** md5 signature: 2a78d8fc20cccabaa0fb7d52397ae7ba ****/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Period;
-		static Standard_Real Period(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		static Standard_Real Period(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Resolution ******************/
-		/**** md5 signature: 76c8a3dbf7f89f06f48d44960220ce20 ****/
+		/**** md5 signature: 1567f92dacdcdb24e1f4d21710c525e2 ****/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "Returns the parametric resolution corresponding to the real space resolution <r3d>.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 R3d: float
 
 Returns
 -------
 float
 ") Resolution;
-		static Standard_Real Resolution(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real R3d);
+		static Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real R3d);
 
 		/****************** Value ******************/
-		/**** md5 signature: ca7870ae23348f83eb576a5911436760 ****/
+		/**** md5 signature: f88e121e984f9cbec46065eb86a1e379 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Computes the point of parameter u on the curve.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 U: float
 
 Returns
 -------
 gp_Pnt2d
 ") Value;
-		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U);
+		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U);
 
 };
 
@@ -1681,15 +1682,15 @@ None
 		void Add(const Contap_Point & P);
 
 		/****************** Arc ******************/
-		/**** md5 signature: b2e2a2b000ebbda9cef9186aeead5385 ****/
+		/**** md5 signature: de8e47510fc50811ee5a3e0bc98029e6 ****/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
+		const opencascade::handle<Adaptor2d_Curve2d> & Arc();
 
 		/****************** Circle ******************/
 		/**** md5 signature: cab8b08988d177bd7107adbbccc4ef89 ****/
@@ -1844,19 +1845,19 @@ None
 		void SetValue(const gp_Circ & C);
 
 		/****************** SetValue ******************/
-		/**** md5 signature: 54e9174a5a70b6567ab6ab5b478e8d12 ****/
+		/**** md5 signature: 53ce9238106071febf6db57a0ff8a99c ****/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		void SetValue(const opencascade::handle<Adaptor2d_Curve2d> & A);
 
 		/****************** TransitionOnS ******************/
 		/**** md5 signature: ac2f27afdd16ab93ea1f959cb2bf6e33 ****/
@@ -1938,15 +1939,15 @@ None
 		 Contap_Point(const gp_Pnt & Pt, const Standard_Real U, const Standard_Real V);
 
 		/****************** Arc ******************/
-		/**** md5 signature: b2e2a2b000ebbda9cef9186aeead5385 ****/
+		/**** md5 signature: de8e47510fc50811ee5a3e0bc98029e6 ****/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "Returns the arc of restriction containing the vertex.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
+		const opencascade::handle<Adaptor2d_Curve2d> & Arc();
 
 		/****************** IsInternal ******************/
 		/**** md5 signature: d02f8c187f927a9ba16cc17de3466e18 ****/
@@ -2030,13 +2031,13 @@ V1: float
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** SetArc ******************/
-		/**** md5 signature: ef419e28df8105759150b9a6c4afee00 ****/
+		/**** md5 signature: ceabf78102f113c25de4b4f678682f05 ****/
 		%feature("compactdefaultargs") SetArc;
 		%feature("autodoc", "Sets the value of the arc and of the parameter on this arc of the point.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Param: float
 TLine: IntSurf_Transition
 TArc: IntSurf_Transition
@@ -2045,7 +2046,7 @@ Returns
 -------
 None
 ") SetArc;
-		void SetArc(const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
+		void SetArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
 		/****************** SetInternal ******************/
 		/**** md5 signature: f29227e746cced65920ee7fe48924495 ****/
@@ -2301,15 +2302,15 @@ int
 		Standard_Integer NbVariables();
 
 		/****************** PSurface ******************/
-		/**** md5 signature: 00164b0a6d38c86b9c6a224245b50df3 ****/
+		/**** md5 signature: e04a186cf5fc0c76577d479297dac08c ****/
 		%feature("compactdefaultargs") PSurface;
 		%feature("autodoc", "Method is entered for compatibility with intpatch_thesurffunction.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") PSurface;
-		const opencascade::handle<Adaptor3d_HSurface> & PSurface();
+		const opencascade::handle<Adaptor3d_Surface> & PSurface();
 
 		/****************** Point ******************/
 		/**** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ****/
@@ -2334,19 +2335,19 @@ float
 		Standard_Real Root();
 
 		/****************** Set ******************/
-		/**** md5 signature: c9230f42bb12d45a693a7ae3204732ab ****/
+		/**** md5 signature: fe1f4e54b6d838c88f545f7975616591 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & S);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** Set ******************/
 		/**** md5 signature: 82e61fcbcd023e361c983ac9b10b051a ****/
@@ -2426,15 +2427,15 @@ None
 		void Set(const Standard_Real Tolerance);
 
 		/****************** Surface ******************/
-		/**** md5 signature: 81999f08eca68bee259ba395fdac1a30 ****/
+		/**** md5 signature: d36dc8d293d03901e5a1cace2e167115 ****/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") Surface;
-		const opencascade::handle<Adaptor3d_HSurface> & Surface();
+		const opencascade::handle<Adaptor3d_Surface> & Surface();
 
 		/****************** Tolerance ******************/
 		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
@@ -2495,13 +2496,13 @@ bool
 class Contap_SurfProps {
 	public:
 		/****************** DerivAndNorm ******************/
-		/**** md5 signature: ce7945825ad002666cb45d5aac41cfae ****/
+		/**** md5 signature: 494f3cc4dc053a12120899c5b844eaeb ****/
 		%feature("compactdefaultargs") DerivAndNorm;
 		%feature("autodoc", "Computes the point <p>, and normal vector <n> on <s> at parameters u,v.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 P: gp_Pnt
@@ -2513,16 +2514,16 @@ Returns
 -------
 None
 ") DerivAndNorm;
-		static void DerivAndNorm(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & d1u, gp_Vec & d1v, gp_Vec & N);
+		static void DerivAndNorm(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & d1u, gp_Vec & d1v, gp_Vec & N);
 
 		/****************** NormAndDn ******************/
-		/**** md5 signature: 6f4c431b6958c44491dc2251db446c2a ****/
+		/**** md5 signature: 7ef18f7af52a8716166a07f9a349d010 ****/
 		%feature("compactdefaultargs") NormAndDn;
 		%feature("autodoc", "Computes the point <p>, normal vector <n>, and its derivatives <dnu> and <dnv> on <s> at parameters u,v.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 P: gp_Pnt
@@ -2534,16 +2535,16 @@ Returns
 -------
 None
 ") NormAndDn;
-		static void NormAndDn(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N, gp_Vec & Dnu, gp_Vec & Dnv);
+		static void NormAndDn(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N, gp_Vec & Dnu, gp_Vec & Dnv);
 
 		/****************** Normale ******************/
-		/**** md5 signature: 6395da9af750ad2ef9f9ce0623577f57 ****/
+		/**** md5 signature: b3f97a0775cb34601ed9b104b4252c02 ****/
 		%feature("compactdefaultargs") Normale;
 		%feature("autodoc", "Computes the point <p>, and normal vector <n> on <s> at parameters u,v.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 P: gp_Pnt
@@ -2553,7 +2554,7 @@ Returns
 -------
 None
 ") Normale;
-		static void Normale(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N);
+		static void Normale(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N);
 
 };
 
@@ -3016,7 +3017,7 @@ int
 		Standard_Integer NbSinglePnts();
 
 		/****************** Perform ******************/
-		/**** md5 signature: c661e9774be7f18d3e07e7032c13432f ****/
+		/**** md5 signature: 6ee1d46056a60420bd507e5e36581550 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Searches a set of polylines starting on a point of pnts1 or pnts2. each point on a resulting polyline verifies f(u,v)=0.
 
@@ -3025,7 +3026,7 @@ Parameters
 Pnts1: IntSurf_SequenceOfPathPoint
 Pnts2: IntSurf_SequenceOfInteriorPoint
 Func: Contap_SurfFunction
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 Reversed: bool,optional
 	default value is Standard_False
 
@@ -3033,10 +3034,10 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, const IntSurf_SequenceOfInteriorPoint & Pnts2, Contap_SurfFunction & Func, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Boolean Reversed = Standard_False);
+		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, const IntSurf_SequenceOfInteriorPoint & Pnts2, Contap_SurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Boolean Reversed = Standard_False);
 
 		/****************** Perform ******************/
-		/**** md5 signature: c8a7e4f6eaf4e50e46b4512dea0bd82b ****/
+		/**** md5 signature: 93b19c25eeba3691dea16acebbbf8ef7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Searches a set of polylines starting on a point of pnts1. each point on a resulting polyline verifies f(u,v)=0.
 
@@ -3044,7 +3045,7 @@ Parameters
 ----------
 Pnts1: IntSurf_SequenceOfPathPoint
 Func: Contap_SurfFunction
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 Reversed: bool,optional
 	default value is Standard_False
 
@@ -3052,7 +3053,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, Contap_SurfFunction & Func, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Boolean Reversed = Standard_False);
+		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, Contap_SurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Boolean Reversed = Standard_False);
 
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 081b0efb39976d786ea1e8e9992511b4 ****/
@@ -3127,7 +3128,7 @@ None
 		 Contap_ThePathPointOfTheSearch();
 
 		/****************** Contap_ThePathPointOfTheSearch ******************/
-		/**** md5 signature: eb66ab7a9aabe8796e43a265904c2220 ****/
+		/**** md5 signature: 84947d4a9220cf3839150816fa8ebebf ****/
 		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
 		%feature("autodoc", "No available documentation.
 
@@ -3136,17 +3137,17 @@ Parameters
 P: gp_Pnt
 Tol: float
 V: Adaptor3d_HVertex
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Parameter: float
 
 Returns
 -------
 None
 ") Contap_ThePathPointOfTheSearch;
-		 Contap_ThePathPointOfTheSearch(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
+		 Contap_ThePathPointOfTheSearch(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
 
 		/****************** Contap_ThePathPointOfTheSearch ******************/
-		/**** md5 signature: d5fbd3229296232afbce87b9fb0f46b0 ****/
+		/**** md5 signature: 131c6fd3d17dfa54a07c3c9a5ab67447 ****/
 		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
 		%feature("autodoc", "No available documentation.
 
@@ -3154,25 +3155,25 @@ Parameters
 ----------
 P: gp_Pnt
 Tol: float
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Parameter: float
 
 Returns
 -------
 None
 ") Contap_ThePathPointOfTheSearch;
-		 Contap_ThePathPointOfTheSearch(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
+		 Contap_ThePathPointOfTheSearch(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
 
 		/****************** Arc ******************/
-		/**** md5 signature: b2e2a2b000ebbda9cef9186aeead5385 ****/
+		/**** md5 signature: de8e47510fc50811ee5a3e0bc98029e6 ****/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
+		const opencascade::handle<Adaptor2d_Curve2d> & Arc();
 
 		/****************** IsNew ******************/
 		/**** md5 signature: 3a3a8bc6ebd2fc2c25f224ff9e99af70 ****/
@@ -3197,7 +3198,7 @@ float
 		Standard_Real Parameter();
 
 		/****************** SetValue ******************/
-		/**** md5 signature: afb7aa5124d314f5c392641b53c1d492 ****/
+		/**** md5 signature: 03dce41028774d848e3e96d2ef0ca499 ****/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "No available documentation.
 
@@ -3206,17 +3207,17 @@ Parameters
 P: gp_Pnt
 Tol: float
 V: Adaptor3d_HVertex
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Parameter: float
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
+		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
 
 		/****************** SetValue ******************/
-		/**** md5 signature: 703f4ebe5bc0f77377a3392165fd60e0 ****/
+		/**** md5 signature: a4bb4cd1b8bb6bbe4fb31de340a9931c ****/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "No available documentation.
 
@@ -3224,14 +3225,14 @@ Parameters
 ----------
 P: gp_Pnt
 Tol: float
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Parameter: float
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
+		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
 
 		/****************** Tolerance ******************/
 		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
@@ -3411,14 +3412,14 @@ None
 		 Contap_TheSearchInside();
 
 		/****************** Contap_TheSearchInside ******************/
-		/**** md5 signature: f62620b87119dfd0f74b77ea1d2a87a4 ****/
+		/**** md5 signature: be026f64fb11d6b5faa1920177122e51 ****/
 		%feature("compactdefaultargs") Contap_TheSearchInside;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 F: Contap_SurfFunction
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 T: Adaptor3d_TopolTool
 Epsilon: float
 
@@ -3426,7 +3427,7 @@ Returns
 -------
 None
 ") Contap_TheSearchInside;
-		 Contap_TheSearchInside(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
+		 Contap_TheSearchInside(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -3451,14 +3452,14 @@ int
 		Standard_Integer NbPoints();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 4e74f474e1680e44dda63caeaff12a97 ****/
+		/**** md5 signature: e2775fe4590ca17de96cf8a00b01ec25 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 F: Contap_SurfFunction
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 T: Adaptor3d_TopolTool
 Epsilon: float
 
@@ -3466,17 +3467,17 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
+		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
 
 		/****************** Perform ******************/
-		/**** md5 signature: a7999858c7502854d15de680c166ebf7 ****/
+		/**** md5 signature: 50494323939fb97c348431e61a02fda6 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 F: Contap_SurfFunction
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 UStart: float
 VStart: float
 
@@ -3484,7 +3485,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_HSurface> & Surf, const Standard_Real UStart, const Standard_Real VStart);
+		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real UStart, const Standard_Real VStart);
 
 		/****************** Value ******************/
 		/**** md5 signature: 32b603bd5d3112334230c3e7fbb789a7 ****/
@@ -3527,15 +3528,15 @@ None
 		 Contap_TheSegmentOfTheSearch();
 
 		/****************** Curve ******************/
-		/**** md5 signature: f5519de5cf0d739f28ebd5b0ec724522 ****/
+		/**** md5 signature: 7869036a594a0e406162d60b4f92dc85 ****/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Returns the geometric curve on the surface 's domain which is solution.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Curve;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Curve();
+		const opencascade::handle<Adaptor2d_Curve2d> & Curve();
 
 		/****************** FirstPoint ******************/
 		/**** md5 signature: e40c5283a03725d6ebc8922755a1d1ca ****/
@@ -3598,19 +3599,19 @@ None
 		void SetLimitPoint(const Contap_ThePathPointOfTheSearch & V, const Standard_Boolean First);
 
 		/****************** SetValue ******************/
-		/**** md5 signature: 54e9174a5a70b6567ab6ab5b478e8d12 ****/
+		/**** md5 signature: 53ce9238106071febf6db57a0ff8a99c ****/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "Defines the concerned arc.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		void SetValue(const opencascade::handle<Adaptor2d_Curve2d> & A);
 
 };
 

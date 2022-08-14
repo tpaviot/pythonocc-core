@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPLOCDOCSTRING
 "TopLoc module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toploc.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_toploc.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPLOCDOCSTRING) TopLoc
 
@@ -60,7 +60,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -258,6 +258,17 @@ None
 ") TopLoc_Location;
 		 TopLoc_Location(const opencascade::handle<TopLoc_Datum3D> & D);
 
+		/****************** Clear ******************/
+		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Clear myitems.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
+
 		/****************** Divided ******************/
 		/**** md5 signature: 571315f932ca7f258a4732378a5c6f52 ****/
 		%feature("compactdefaultargs") Divided;
@@ -442,6 +453,17 @@ Returns
 TopLoc_Location
 ") Predivided;
 		TopLoc_Location Predivided(const TopLoc_Location & Other);
+
+		/****************** ScalePrec ******************/
+		/**** md5 signature: dffe6ee0100207e469842f2ea00b57ac ****/
+		%feature("compactdefaultargs") ScalePrec;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") ScalePrec;
+		static Standard_Real ScalePrec();
 
 
         %feature("autodoc", "1");

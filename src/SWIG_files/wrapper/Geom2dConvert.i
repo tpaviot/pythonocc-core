@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DCONVERTDOCSTRING
 "Geom2dConvert module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dconvert.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dconvert.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DCONVERTDOCSTRING) Geom2dConvert
 
@@ -71,7 +71,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -202,7 +202,7 @@ ClosedFlag: bool
 		/****************** CurveToBSplineCurve ******************/
 		/**** md5 signature: 2605e8125c6f357bc9c5d1ed97296078 ****/
 		%feature("compactdefaultargs") CurveToBSplineCurve;
-		%feature("autodoc", "This function converts a non infinite curve from geom into a b-spline curve. c must be an ellipse or a circle or a trimmed conic or a trimmed line or a bezier curve or a trimmed bezier curve or a bspline curve or a trimmed bspline curve or an offset curve or a trimmed offset curve. the returned b-spline is not periodic except if c is a circle or an ellipse. parameterisationtype applies only if the curve is a circle or an ellipse : tgtthetaover2, tgtthetaover2_1, tgtthetaover2_2, tgtthetaover2_3, tgtthetaover2_4, purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with tgtthetaover2 the routine will compute the number of spans using the rule num_spans = [ (ulast - ufirst) / 1.2 ] + 1 with tgtthetaover2_n, n spans will be forced: an error will be raized if (ulast - ufirst) >= pi and n = 1, ulast - ufirst >= 2 pi and n = 2 //! quasiangular, here t is a rational function that approximates theta ----> tan(theta/2). neverthless the composing with above function yields exact functions whose square sum up to 1 rationalc1 ; t is replaced by a polynomial function of u so as to grant c1 contiuity across knots. exceptions standard_domainerror if the curve c is infinite. standard_constructionerror: - if c is a complete circle or ellipse, and if parameterisation is not equal to convert_tgtthetaover2 or to convert_rationalc1, or - if c is a trimmed circle or ellipse and if parameterisation is equal to convert_tgtthetaover2_1 and if u2 - u1 > 0.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if c is a trimmed circle or ellipse and parameterisation is equal to convert_tgtthetaover2_2 and u2 - u1 > 1.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
+		%feature("autodoc", "This function converts a non infinite curve from geom into a b-spline curve. c must be an ellipse or a circle or a trimmed conic or a trimmed line or a bezier curve or a trimmed bezier curve or a bspline curve or a trimmed bspline curve or an offset curve or a trimmed offset curve. the returned b-spline is not periodic except if c is a circle or an ellipse. parameterisationtype applies only if the curve is a circle or an ellipse : tgtthetaover2, tgtthetaover2_1, tgtthetaover2_2, tgtthetaover2_3, tgtthetaover2_4, purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with tgtthetaover2 the routine will compute the number of spans using the rule num_spans = [ (ulast - ufirst) / 1.2 ] + 1 with tgtthetaover2_n, n spans will be forced: an error will be raized if (ulast - ufirst) >= pi and n = 1, ulast - ufirst >= 2 pi and n = 2 //! quasiangular, here t is a rational function that approximates theta ----> tan(theta/2). nevetheless the composing with above function yields exact functions whose square sum up to 1 rationalc1 ; t is replaced by a polynomial function of u so as to grant c1 contiuity across knots. exceptions standard_domainerror if the curve c is infinite. standard_constructionerror: - if c is a complete circle or ellipse, and if parameterisation is not equal to convert_tgtthetaover2 or to convert_rationalc1, or - if c is a trimmed circle or ellipse and if parameterisation is equal to convert_tgtthetaover2_1 and if u2 - u1 > 0.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if c is a trimmed circle or ellipse and parameterisation is equal to convert_tgtthetaover2_2 and u2 - u1 > 1.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
 
 Parameters
 ----------
@@ -289,13 +289,13 @@ None
 		 Geom2dConvert_ApproxCurve(const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
 		/****************** Geom2dConvert_ApproxCurve ******************/
-		/**** md5 signature: e6eca249274f5c886609133bcc1802b6 ****/
+		/**** md5 signature: fef67c6afa73a6f1c88612fc7cbae9d5 ****/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxCurve;
 		%feature("autodoc", "Constructs an approximation framework defined by - the 2d conic curve - the tolerance value tol2d - the degree of continuity order - the maximum number of segments allowed maxsegments - the highest degree maxdegree which the polynomial defining the bspline is allowed to have.
 
 Parameters
 ----------
-Curve: Adaptor2d_HCurve2d
+Curve: Adaptor2d_Curve2d
 Tol2d: float
 Order: GeomAbs_Shape
 MaxSegments: int
@@ -305,7 +305,7 @@ Returns
 -------
 None
 ") Geom2dConvert_ApproxCurve;
-		 Geom2dConvert_ApproxCurve(const opencascade::handle<Adaptor2d_HCurve2d> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+		 Geom2dConvert_ApproxCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
 		/****************** Curve ******************/
 		/**** md5 signature: 1960069de54819d72fccc75ab85806ec ****/
@@ -340,7 +340,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns standard_true if the approximation has been done with within requiered tolerance.
+		%feature("autodoc", "Returns standard_true if the approximation has been done with within required tolerance.
 
 Returns
 -------
@@ -583,7 +583,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 98a5e3fa8e5a538111199b5b805f80b1 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Append a curve in the bspline return false if the curve is not g0 with the bsplinecurve. tolerance is used to check continuity and decrease multiplicty at the common knot after is usefull if basiscurve is a closed curve .
+		%feature("autodoc", "Append a curve in the bspline return false if the curve is not g0 with the bsplinecurve. tolerance is used to check continuity and decrease multiplicty at the common knot after is useful if basiscurve is a closed curve .
 
 Parameters
 ----------

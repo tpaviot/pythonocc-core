@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLMXCAFDOCDOCSTRING
 "XmlMXCAFDoc module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmlmxcafdoc.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xmlmxcafdoc.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMXCAFDOCDOCSTRING) XmlMXCAFDoc
 
@@ -74,7 +74,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -86,6 +86,7 @@ from OCC.Core.Exception import *
 %wrap_handle(XmlMXCAFDoc_DatumDriver)
 %wrap_handle(XmlMXCAFDoc_DimTolDriver)
 %wrap_handle(XmlMXCAFDoc_GraphNodeDriver)
+%wrap_handle(XmlMXCAFDoc_LengthUnitDriver)
 %wrap_handle(XmlMXCAFDoc_LocationDriver)
 %wrap_handle(XmlMXCAFDoc_MaterialDriver)
 %wrap_handle(XmlMXCAFDoc_NoteDriver)
@@ -583,6 +584,82 @@ None
 %make_alias(XmlMXCAFDoc_GraphNodeDriver)
 
 %extend XmlMXCAFDoc_GraphNodeDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************
+* class XmlMXCAFDoc_LengthUnitDriver *
+*************************************/
+class XmlMXCAFDoc_LengthUnitDriver : public XmlMDF_ADriver {
+	public:
+		/****************** XmlMXCAFDoc_LengthUnitDriver ******************/
+		/**** md5 signature: 25c63e7cbf1619cca92a2faae71d9127 ****/
+		%feature("compactdefaultargs") XmlMXCAFDoc_LengthUnitDriver;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+
+Returns
+-------
+None
+") XmlMXCAFDoc_LengthUnitDriver;
+		 XmlMXCAFDoc_LengthUnitDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
+
+		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		/**** md5 signature: 175da9d64d03984ff0a1e9404e96e330 ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSource: XmlObjMgt_Persistent
+theTarget: TDF_Attribute
+theRelocTable: XmlObjMgt_RRelocationTable
+
+Returns
+-------
+bool
+") Paste;
+		virtual Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
+
+		/****************** Paste ******************/
+		/**** md5 signature: 9c9a6281aaafe1c72d86f4bb8a4e351c ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSource: TDF_Attribute
+theTarget: XmlObjMgt_Persistent
+theRelocTable: XmlObjMgt_SRelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, XmlObjMgt_Persistent & theTarget, XmlObjMgt_SRelocationTable & theRelocTable);
+
+};
+
+
+%make_alias(XmlMXCAFDoc_LengthUnitDriver)
+
+%extend XmlMXCAFDoc_LengthUnitDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPROXDOCSTRING
 "Approx module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_approx.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_approx.html"
 %enddef
 %module (package="OCC.Core", docstring=APPROXDOCSTRING) Approx
 
@@ -93,7 +93,7 @@ enum Approx_ParametrizationType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Approx_Status(IntEnum):
@@ -122,9 +122,9 @@ Approx_IsoParametric = Approx_ParametrizationType.Approx_IsoParametric
 /* end handles declaration */
 
 /* templates */
-%template(Approx_Array1OfAdHSurface) NCollection_Array1<opencascade::handle<Adaptor3d_HSurface>>;
+%template(Approx_Array1OfAdHSurface) NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>;
 
-%extend NCollection_Array1<opencascade::handle<Adaptor3d_HSurface>> {
+%extend NCollection_Array1<opencascade::handle<Adaptor3d_Surface>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -203,7 +203,7 @@ Approx_IsoParametric = Approx_ParametrizationType.Approx_IsoParametric
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<Adaptor3d_HSurface>> Approx_Array1OfAdHSurface;
+typedef NCollection_Array1<opencascade::handle<Adaptor3d_Surface>> Approx_Array1OfAdHSurface;
 typedef NCollection_Array1<gp_GTrsf2d> Approx_Array1OfGTrsf2d;
 typedef NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>> Approx_SequenceOfHArray1OfReal;
 /* end typedefs declaration */
@@ -214,13 +214,13 @@ typedef NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>> Approx_
 class Approx_Curve2d {
 	public:
 		/****************** Approx_Curve2d ******************/
-		/**** md5 signature: 3808819d209e1def3c108ec4c293e785 ****/
+		/**** md5 signature: 1cf9afd9ee459ec2a81ee32abee6de50 ****/
 		%feature("compactdefaultargs") Approx_Curve2d;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C2D: Adaptor2d_HCurve2d
+C2D: Adaptor2d_Curve2d
 First: float
 Last: float
 TolU: float
@@ -233,7 +233,7 @@ Returns
 -------
 None
 ") Approx_Curve2d;
-		 Approx_Curve2d(const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const Standard_Real First, const Standard_Real Last, const Standard_Real TolU, const Standard_Real TolV, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
+		 Approx_Curve2d(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const Standard_Real First, const Standard_Real Last, const Standard_Real TolU, const Standard_Real TolV, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
 		/****************** Curve ******************/
 		/**** md5 signature: 1960069de54819d72fccc75ab85806ec ****/
@@ -305,13 +305,13 @@ float
 class Approx_Curve3d {
 	public:
 		/****************** Approx_Curve3d ******************/
-		/**** md5 signature: 65c8fcb0b3c6c7d1df42f0bb0ba09688 ****/
+		/**** md5 signature: 4662771ab9a9bb958e880ba73bec8340 ****/
 		%feature("compactdefaultargs") Approx_Curve3d;
-		%feature("autodoc", "Approximation of a curve with respect of the requiered tolerance tol3d.
+		%feature("autodoc", "Approximation of a curve with respect of the required tolerance tol3d.
 
 Parameters
 ----------
-Curve: Adaptor3d_HCurve
+Curve: Adaptor3d_Curve
 Tol3d: float
 Order: GeomAbs_Shape
 MaxSegments: int
@@ -321,7 +321,7 @@ Returns
 -------
 None
 ") Approx_Curve3d;
-		 Approx_Curve3d(const opencascade::handle<Adaptor3d_HCurve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+		 Approx_Curve3d(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
 		/****************** Curve ******************/
 		/**** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ****/
@@ -356,7 +356,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns standard_true if the approximation has been done within requiered tolerance.
+		%feature("autodoc", "Returns standard_true if the approximation has been done within required tolerance.
 
 Returns
 -------
@@ -390,14 +390,14 @@ float
 class Approx_CurveOnSurface {
 	public:
 		/****************** Approx_CurveOnSurface ******************/
-		/**** md5 signature: 44953400bcecd6141157e0f3eb58084e ****/
+		/**** md5 signature: 8924b9935f0fc05dc273ee96b9ecd51b ****/
 		%feature("compactdefaultargs") Approx_CurveOnSurface;
 		%feature("autodoc", "This constructor calls perform method. this constructor is deprecated.
 
 Parameters
 ----------
-C2D: Adaptor2d_HCurve2d
-Surf: Adaptor3d_HSurface
+C2D: Adaptor2d_Curve2d
+Surf: Adaptor3d_Surface
 First: float
 Last: float
 Tol: float
@@ -413,17 +413,17 @@ Returns
 -------
 None
 ") Approx_CurveOnSurface;
-		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const opencascade::handle<Adaptor3d_HSurface> & Surf, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments, const Standard_Boolean Only3d = Standard_False, const Standard_Boolean Only2d = Standard_False);
+		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments, const Standard_Boolean Only3d = Standard_False, const Standard_Boolean Only2d = Standard_False);
 
 		/****************** Approx_CurveOnSurface ******************/
-		/**** md5 signature: 1870fd9a1e6fea950b25fca64ce963ff ****/
+		/**** md5 signature: 6bf6e1de687ad8553d00cd8a3f1f8344 ****/
 		%feature("compactdefaultargs") Approx_CurveOnSurface;
 		%feature("autodoc", "This constructor does not call perform method. @param thec2d 2d curve to be approximated in 3d. @param thesurf surface where 2d curve is located. @param thefirst first parameter of resulting curve. @param thefirst last parameter of resulting curve. @param thetol computation tolerance.
 
 Parameters
 ----------
-theC2D: Adaptor2d_HCurve2d
-theSurf: Adaptor3d_HSurface
+theC2D: Adaptor2d_Curve2d
+theSurf: Adaptor3d_Surface
 theFirst: float
 theLast: float
 theTol: float
@@ -432,7 +432,7 @@ Returns
 -------
 None
 ") Approx_CurveOnSurface;
-		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_HCurve2d> & theC2D, const opencascade::handle<Adaptor3d_HSurface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
+		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
 
 		/****************** Curve2d ******************/
 		/**** md5 signature: a68a2dac2ad11e4da3864dc2433ead7f ****/
@@ -492,7 +492,7 @@ float
 		/****************** MaxError2dV ******************/
 		/**** md5 signature: 641a3fe3b7d3b163d6a32b23f94b6eec ****/
 		%feature("compactdefaultargs") MaxError2dV;
-		%feature("autodoc", "Returns the maximum errors relativly to the u component or the v component of the 2d curve.
+		%feature("autodoc", "Returns the maximum errors relatively to the u component or the v component of the 2d curve.
 
 Returns
 -------
@@ -547,13 +547,13 @@ None
 class Approx_CurvilinearParameter {
 	public:
 		/****************** Approx_CurvilinearParameter ******************/
-		/**** md5 signature: 87a8d57e93c58fe13b36b4f14487e297 ****/
+		/**** md5 signature: 8d18e8dfacd0a079eb20447b49586c35 ****/
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "Case of a free 3d curve.
 
 Parameters
 ----------
-C3D: Adaptor3d_HCurve
+C3D: Adaptor3d_Curve
 Tol: float
 Order: GeomAbs_Shape
 MaxDegree: int
@@ -563,17 +563,17 @@ Returns
 -------
 None
 ") Approx_CurvilinearParameter;
-		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor3d_HCurve> & C3D, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
+		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
 		/****************** Approx_CurvilinearParameter ******************/
-		/**** md5 signature: 5e6af048127e41f0e55fb4904bc8c476 ****/
+		/**** md5 signature: 55fdfdb6b236c7342a9df38b0c499ba5 ****/
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "Case of a curve on one surface.
 
 Parameters
 ----------
-C2D: Adaptor2d_HCurve2d
-Surf: Adaptor3d_HSurface
+C2D: Adaptor2d_Curve2d
+Surf: Adaptor3d_Surface
 Tol: float
 Order: GeomAbs_Shape
 MaxDegree: int
@@ -583,19 +583,19 @@ Returns
 -------
 None
 ") Approx_CurvilinearParameter;
-		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const opencascade::handle<Adaptor3d_HSurface> & Surf, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
+		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
 		/****************** Approx_CurvilinearParameter ******************/
-		/**** md5 signature: c20ec6318bb423836fdfcdd350ec13c6 ****/
+		/**** md5 signature: c239a7061007faa74c11bd361d60ce57 ****/
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "Case of a curve on two surfaces.
 
 Parameters
 ----------
-C2D1: Adaptor2d_HCurve2d
-Surf1: Adaptor3d_HSurface
-C2D2: Adaptor2d_HCurve2d
-Surf2: Adaptor3d_HSurface
+C2D1: Adaptor2d_Curve2d
+Surf1: Adaptor3d_Surface
+C2D2: Adaptor2d_Curve2d
+Surf2: Adaptor3d_Surface
 Tol: float
 Order: GeomAbs_Shape
 MaxDegree: int
@@ -605,7 +605,7 @@ Returns
 -------
 None
 ") Approx_CurvilinearParameter;
-		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_HCurve2d> & C2D1, const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor2d_HCurve2d> & C2D2, const opencascade::handle<Adaptor3d_HSurface> & Surf2, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
+		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_Curve2d> & C2D1, const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor2d_Curve2d> & C2D2, const opencascade::handle<Adaptor3d_Surface> & Surf2, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
 		/****************** Curve2d1 ******************/
 		/**** md5 signature: 320386716849305473262b1fbe175d01 ****/
@@ -718,56 +718,56 @@ float
 class Approx_CurvlinFunc : public Standard_Transient {
 	public:
 		/****************** Approx_CurvlinFunc ******************/
-		/**** md5 signature: 13612be4e5b55611b7eb0ad987bab15a ****/
+		/**** md5 signature: c91fd83aabe931a1e52d13473ccfd009 ****/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 Tol: float
 
 Returns
 -------
 None
 ") Approx_CurvlinFunc;
-		 Approx_CurvlinFunc(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real Tol);
+		 Approx_CurvlinFunc(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tol);
 
 		/****************** Approx_CurvlinFunc ******************/
-		/**** md5 signature: 07e78bf99be942395ed9cc13ea9bc1cf ****/
+		/**** md5 signature: c69a4fe4cbfe7c5d7648f238e2e8b84a ****/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C2D: Adaptor2d_HCurve2d
-S: Adaptor3d_HSurface
+C2D: Adaptor2d_Curve2d
+S: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") Approx_CurvlinFunc;
-		 Approx_CurvlinFunc(const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
+		 Approx_CurvlinFunc(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
 		/****************** Approx_CurvlinFunc ******************/
-		/**** md5 signature: e575afd63226bf2aaec13682942a488d ****/
+		/**** md5 signature: d04cb6fd18225e82ef40a4e61e7e3bdf ****/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C2D1: Adaptor2d_HCurve2d
-C2D2: Adaptor2d_HCurve2d
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+C2D1: Adaptor2d_Curve2d
+C2D2: Adaptor2d_Curve2d
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") Approx_CurvlinFunc;
-		 Approx_CurvlinFunc(const opencascade::handle<Adaptor2d_HCurve2d> & C2D1, const opencascade::handle<Adaptor2d_HCurve2d> & C2D2, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const Standard_Real Tol);
+		 Approx_CurvlinFunc(const opencascade::handle<Adaptor2d_Curve2d> & C2D1, const opencascade::handle<Adaptor2d_Curve2d> & C2D2, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real Tol);
 
 		/****************** EvalCase1 ******************/
 		/**** md5 signature: d6f977aec2ba6ef7261ad448995f2a1d ****/
@@ -845,7 +845,7 @@ float
 		/****************** GetSParameter ******************/
 		/**** md5 signature: de8883031fb26c06bc41920f0af259b5 ****/
 		%feature("compactdefaultargs") GetSParameter;
-		%feature("autodoc", "Returns original parameter correponding s.
+		%feature("autodoc", "Returns original parameter corresponding s.
 
 Parameters
 ----------
@@ -860,7 +860,7 @@ float
 		/****************** GetUParameter ******************/
 		/**** md5 signature: a288323291b5a7c86e97e5e379347550 ****/
 		%feature("compactdefaultargs") GetUParameter;
-		%feature("autodoc", "Returns original parameter correponding s. if case == 1 computation is performed on myc2d1 and mysurf1, otherwise it is done on myc2d2 and mysurf2.
+		%feature("autodoc", "Returns original parameter corresponding s. if case == 1 computation is performed on myc2d1 and mysurf1, otherwise it is done on myc2d2 and mysurf2.
 
 Parameters
 ----------
@@ -877,7 +877,7 @@ float
 		/****************** Intervals ******************/
 		/**** md5 signature: c7a2f17df7514293a67a56baae0afb68 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1631,40 +1631,40 @@ None
 		 Approx_SameParameter(const opencascade::handle<Geom_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Geom_Surface> & S, const Standard_Real Tol);
 
 		/****************** Approx_SameParameter ******************/
-		/**** md5 signature: bcc24beb554e4ba834ebfad460b28050 ****/
+		/**** md5 signature: c5ca4b0fa91714a7d8dbbb7f74166b6e ****/
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "Warning: the c3d and c2d must have the same parametric domain.
 
 Parameters
 ----------
-C3D: Adaptor3d_HCurve
+C3D: Adaptor3d_Curve
 C2D: Geom2d_Curve
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") Approx_SameParameter;
-		 Approx_SameParameter(const opencascade::handle<Adaptor3d_HCurve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
+		 Approx_SameParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
 		/****************** Approx_SameParameter ******************/
-		/**** md5 signature: b09fa1bc62b4172d25965850dec9f2da ****/
+		/**** md5 signature: fd528457c519a0cdcaefab6e6d47b26f ****/
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "Warning: the c3d and c2d must have the same parametric domain.
 
 Parameters
 ----------
-C3D: Adaptor3d_HCurve
-C2D: Adaptor2d_HCurve2d
-S: Adaptor3d_HSurface
+C3D: Adaptor3d_Curve
+C2D: Adaptor2d_Curve2d
+S: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") Approx_SameParameter;
-		 Approx_SameParameter(const opencascade::handle<Adaptor3d_HCurve> & C3D, const opencascade::handle<Adaptor2d_HCurve2d> & C2D, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
+		 Approx_SameParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
 		/****************** Curve2d ******************/
 		/**** md5 signature: 5fab5e35541cfe36f16f0294e27855ba ****/
@@ -1757,7 +1757,7 @@ float
 		/****************** AverageErrorOnSurf ******************/
 		/**** md5 signature: bac8be79201b06f130f6dd21a4817d03 ****/
 		%feature("compactdefaultargs") AverageErrorOnSurf;
-		%feature("autodoc", "Returns the average error in the suface approximation.
+		%feature("autodoc", "Returns the average error in the surface approximation.
 
 Returns
 -------
@@ -1902,7 +1902,7 @@ float
 		/****************** MaxErrorOnSurf ******************/
 		/**** md5 signature: e42290da593c42adaac24f68c51ecbda ****/
 		%feature("compactdefaultargs") MaxErrorOnSurf;
-		%feature("autodoc", "Returns the maximum error in the suface approximation.
+		%feature("autodoc", "Returns the maximum error in the surface approximation.
 
 Returns
 -------
@@ -1924,7 +1924,7 @@ int
 		/****************** Perform ******************/
 		/**** md5 signature: 306f26941735cb759216a105543fe10a ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Perform the approximation [first, last] : approx_sweepapproximation.cdl tol3d : tolerance to surface approximation tol2d : tolerance used to perform curve approximation normaly the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used. tolangular : tolerance (in radian) to control the angle beetween tangents on the section law and tangent of iso-v on approximed surface continuity : the continuity in v waiting on the surface degmax : the maximum degree in v requiered on the surface segmax : the maximum number of span in v requiered on the surface warning : the continuity ci can be obtained only if ft is ci.
+		%feature("autodoc", "Perform the approximation [first, last] : approx_sweepapproximation.cdl tol3d : tolerance to surface approximation tol2d : tolerance used to perform curve approximation normally the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used. tolangular : tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface continuity : the continuity in v waiting on the surface degmax : the maximum degree in v required on the surface segmax : the maximum number of span in v required on the surface warning : the continuity ci can be obtained only if ft is ci.
 
 Parameters
 ----------
@@ -2107,7 +2107,7 @@ class Approx_SweepFunction : public Standard_Transient {
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: cbc6eaf5619edbfc0f2839466f8de856 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditioned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Returns
 -------
@@ -2138,7 +2138,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 509d473b60471c40fb84a525daccf7b2 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -2161,7 +2161,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: 9688db55fcb73e40afa5da6bce93a93e ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -2187,7 +2187,7 @@ bool
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 6fdd12d5da1669c5217b9449c91c0d9e ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is usefull to control error in rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
 
 Parameters
 ----------
@@ -2220,7 +2220,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2262,7 +2262,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: d9acdf10cc3735a15f259a425c017f62 ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the greater section. this information is usefull to g1's control. warning: with an little value, approximation can be slower.
+		%feature("autodoc", "Returns the length of the greater section. thisinformation is useful to g1's control. warning: with an little value, approximation can be slower.
 
 Returns
 -------
@@ -2363,7 +2363,7 @@ None
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 93e9274684dae026e60334d9dec71409 ****/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "Is usefull, if (me) have to run numerical algorithm to perform d0, d1 or d2.
+		%feature("autodoc", "Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IGESCONTROLDOCSTRING
 "IGESControl module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescontrol.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igescontrol.html"
 %enddef
 %module (package="OCC.Core", docstring=IGESCONTROLDOCSTRING) IGESControl
 
@@ -84,7 +84,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -303,7 +303,7 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 		/****************** IGESControl_IGESBoundary ******************/
 		/**** md5 signature: 6a8249df5e09395b3cfefb271474b8a2 ****/
 		%feature("compactdefaultargs") IGESControl_IGESBoundary;
-		%feature("autodoc", "Creates an object and calls inherited constuctor.
+		%feature("autodoc", "Creates an object and calls inherited constructor.
 
 Returns
 -------
@@ -314,7 +314,7 @@ None
 		/****************** IGESControl_IGESBoundary ******************/
 		/**** md5 signature: 855ac0be51cd07090af44a3efc88b8fa ****/
 		%feature("compactdefaultargs") IGESControl_IGESBoundary;
-		%feature("autodoc", "Creates an object and calls inherited constuctor.
+		%feature("autodoc", "Creates an object and calls inherited constructor.
 
 Parameters
 ----------

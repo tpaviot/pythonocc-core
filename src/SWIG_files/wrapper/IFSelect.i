@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IFSELECTDOCSTRING
 "IFSelect module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ifselect.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_ifselect.html"
 %enddef
 %module (package="OCC.Core", docstring=IFSELECTDOCSTRING) IFSelect
 
@@ -109,7 +109,7 @@ enum IFSelect_PrintCount {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IFSelect_PrintFail(IntEnum):
@@ -684,7 +684,7 @@ class IFSelect_ContextModif {
 		/****************** IFSelect_ContextModif ******************/
 		/**** md5 signature: 13049cffb770bc46a5649297d27f5014 ****/
 		%feature("compactdefaultargs") IFSelect_ContextModif;
-		%feature("autodoc", "Prepares a contextmodif with these informations : - the graph established from original model (target passed directly to modifier) - the copytool which detains the copycontrol, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! such a contextmodif is considered to be applied on all transferred entities (no filter active).
+		%feature("autodoc", "Prepares a contextmodif with these information : - the graph established from original model (target passed directly to modifier) - the copytool which detains the copycontrol, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! such a contextmodif is considered to be applied on all transferred entities (no filter active).
 
 Parameters
 ----------
@@ -702,7 +702,7 @@ None
 		/****************** IFSelect_ContextModif ******************/
 		/**** md5 signature: 39ea63f3302feedaeb379f8e82d5518e ****/
 		%feature("compactdefaultargs") IFSelect_ContextModif;
-		%feature("autodoc", "Prepares a contextmodif with these informations : - the graph established from original model (target passed directly to modifier) - an optional file name (for file output) here, no copycontrol, hence all entities are considered equal as starting and result //! such a contextmodif is considered to be applied on all transferred entities (no filter active).
+		%feature("autodoc", "Prepares a contextmodif with these information : - the graph established from original model (target passed directly to modifier) - an optional file name (for file output) here, no copycontrol, hence all entities are considered equal as starting and result //! such a contextmodif is considered to be applied on all transferred entities (no filter active).
 
 Parameters
 ----------
@@ -1026,7 +1026,7 @@ None
 		/****************** Trace ******************/
 		/**** md5 signature: e5fb36d2d871e060e7060b444733fa32 ****/
 		%feature("compactdefaultargs") Trace;
-		%feature("autodoc", "Traces the modification of the current entity (see above, valueoriginal and valueresult) for default trace level >= 2. to be called on each indivudual entity really modified <mess> is an optionnal additional message.
+		%feature("autodoc", "Traces the modification of the current entity (see above, valueoriginal and valueresult) for default trace level >= 2. to be called on each individual entity really modified <mess> is an optional additional message.
 
 Parameters
 ----------
@@ -1097,7 +1097,7 @@ class IFSelect_ContextWrite {
 		/****************** IFSelect_ContextWrite ******************/
 		/**** md5 signature: c0439c4f98b565fd22612328b32eb20a ****/
 		%feature("compactdefaultargs") IFSelect_ContextWrite;
-		%feature("autodoc", "Prepares a contextwrite with these informations : - the model which is to be written - the protocol to be used - the filename - an object appliedmodifiers to work. it gives a list of filemodifiers to be ran, and for each one it can give a restricted list of entities (in the model), else all the model is considered.
+		%feature("autodoc", "Prepares a contextwrite with these information : - the model which is to be written - the protocol to be used - the filename - an object appliedmodifiers to work. it gives a list of filemodifiers to be ran, and for each one it can give a restricted list of entities (in the model), else all the model is considered.
 
 Parameters
 ----------
@@ -2590,7 +2590,7 @@ opencascade::handle<IFSelect_Dispatch>
 		/****************** GiveEntity ******************/
 		/**** md5 signature: 4e7f30f23e68802f268399dd529bc222 ****/
 		%feature("compactdefaultargs") GiveEntity;
-		%feature("autodoc", "Takes the name of an entity, either as argument, or (if <name> is empty) on keybord, and returns the entity name can be a label or a number (in alphanumeric), it is searched by numberfromlabel from worksession. if <name> doesn't match en entity, a null handle is returned.
+		%feature("autodoc", "Takes the name of an entity, either as argument, or (if <name> is empty) on keyboard, and returns the entity name can be a label or a number (in alphanumeric), it is searched by numberfromlabel from worksession. if <name> doesn't match en entity, a null handle is returned.
 
 Parameters
 ----------
@@ -2695,7 +2695,7 @@ opencascade::handle<IFSelect_Dispatch>
 		/****************** HasSelection ******************/
 		/**** md5 signature: 7bc279c0acb8f59af3371db26a8c8085 ****/
 		%feature("compactdefaultargs") HasSelection;
-		%feature("autodoc", "Returns true if a selection is set as an additionnal criterium.
+		%feature("autodoc", "Returns true if a selection is set as an additional criterium.
 
 Returns
 -------
@@ -3021,7 +3021,7 @@ None
 		/****************** LoadValues ******************/
 		/**** md5 signature: 93fe3ab1628622df819d7bba384b59b8 ****/
 		%feature("compactdefaultargs") LoadValues;
-		%feature("autodoc", "Loads the original values for the list remark : if its length is mor then maxlength, editions remain allowed, except add.
+		%feature("autodoc", "Loads the original values for the list. remark : if its length is more then maxlength, editions remain allowed, except add.
 
 Parameters
 ----------
@@ -3740,7 +3740,7 @@ Interface_EntityIterator
 		/****************** UniqueResult ******************/
 		/**** md5 signature: 47799306ea54dbaad3327e2c3649dc1d ****/
 		%feature("compactdefaultargs") UniqueResult;
-		%feature("autodoc", "Returns the list of selected entities, each of them beeing unique. default definition works from rootresult. according hasuniqueresult, uniqueresult returns directly rootresult, or build a unique result from it with a graph.
+		%feature("autodoc", "Returns the list of selected entities, each of them being unique. default definition works from rootresult. according hasuniqueresult, uniqueresult returns directly rootresult, or build a unique result from it with a graph.
 
 Parameters
 ----------
@@ -3864,7 +3864,7 @@ None
 		/****************** Value ******************/
 		/**** md5 signature: 8930db425d3b9ef0a6b0dfd236407cae ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns the current selction beeing iterated error if count of selection has been passed.
+		%feature("autodoc", "Returns the current selection being iterated error if count of selection has been passed.
 
 Returns
 -------
@@ -4046,7 +4046,7 @@ None
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns true if the last read or write operation has been corectly performed. else returns false.
+		%feature("autodoc", "Returns true if the last read or write operation has been correctly performed. else returns false.
 
 Returns
 -------
@@ -4128,7 +4128,7 @@ int
 		/****************** NbParams ******************/
 		/**** md5 signature: 826f4756fca7f780e6d976c60183d715 ****/
 		%feature("compactdefaultargs") NbParams;
-		%feature("autodoc", "During a read operation, sessionfile processes sequencially the items to read. for each one, it gives access to the list of its parameters : they were defined by calls to sendvoid/sendparam/sendtext during writing the file. nbparams returns the count of parameters for the line currently read.
+		%feature("autodoc", "During a read operation, sessionfile processes sequentially the items to read. for each one, it gives access to the list of its parameters : they were defined by calls to sendvoid/sendparam/sendtext during writing the file. nbparams returns the count of parameters for the line currently read.
 
 Returns
 -------
@@ -4139,7 +4139,7 @@ int
 		/****************** NewItem ******************/
 		/**** md5 signature: 1f79b682e2c5b8350d58ac36b6d7fc26 ****/
 		%feature("compactdefaultargs") NewItem;
-		%feature("autodoc", "At beginning of writing an item, writes its basics : - either its name in the session if it has one - or its relative number of item in the file, else (preceeded by a '_') - then, its dynamic type (in the sense of cdl : pk_class) this basic description can be followed by the parameters which are used in the definition of the item.
+		%feature("autodoc", "At beginning of writing an item, writes its basics : - either its name in the session if it has one - or its relative number of item in the file, else (preceded by a '_') - then, its dynamic type (in the sense of cdl : pk_class) this basic description can be followed by the parameters which are used in the definition of the item.
 
 Parameters
 ----------
@@ -4274,7 +4274,7 @@ None
 		/****************** SendItem ******************/
 		/**** md5 signature: 3286f6ab6fb08433ca37366f2824d397 ****/
 		%feature("compactdefaultargs") SendItem;
-		%feature("autodoc", "During a write action, commands to send the identification of a parameter : if it is null (undefined) it is send as void ($) if it is named in the worksession, its name is sent preceeded by ':', else a relative ident number is sent preceeded by '#' (relative to the present write, i.e. starting at one, without skip, and counted part from named items).
+		%feature("autodoc", "During a write action, commands to send the identification of a parameter : if it is null (undefined) it is send as void ($) if it is named in the worksession, its name is sent preceded by ':', else a relative ident number is sent preceded by '#' (relative to the present write, i.e. starting at one, without skip, and counted part from named items).
 
 Parameters
 ----------
@@ -4330,7 +4330,7 @@ None
 		/****************** SetOwn ******************/
 		/**** md5 signature: aa9ead28af880aa173e8912d97e05dd2 ****/
 		%feature("compactdefaultargs") SetOwn;
-		%feature("autodoc", "Sets parameters to be sent as own if <mode> is true (their name or number or void mark or text value is preceeded by a column sign ':') else they are sent normally hence, the own parameter are clearly identified in the file.
+		%feature("autodoc", "Sets parameters to be sent as own if <mode> is true (their name or number or void mark or text value is preceded by a column sign ':') else they are sent normally hence, the own parameter are clearly identified in the file.
 
 Parameters
 ----------
@@ -4578,7 +4578,7 @@ bool
 		/****************** Clear ******************/
 		/**** md5 signature: f95144dbbc6bd7b9cb03042bd63d7c5a ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Removes in one operation all the dispatches with their idents also clears all informations about names, and all results but naming informations which are : - kept if <onlydisp> is true. - cleared if <onlydisp> is false (complete clearing) if <onlydisp> is true, that's all. else, clears also modifiers.
+		%feature("autodoc", "Removes in one operation all the dispatches with their idents also clears all information about names, and all results but naming information which are : - kept if <onlydisp> is true. - cleared if <onlydisp> is false (complete clearing) if <onlydisp> is true, that's all. else, clears also modifiers.
 
 Parameters
 ----------
@@ -4593,7 +4593,7 @@ None
 		/****************** ClearResult ******************/
 		/**** md5 signature: a5958cba0ec4c360c5bb289f047fd501 ****/
 		%feature("compactdefaultargs") ClearResult;
-		%feature("autodoc", "Clears all data produced (apart from dispatches, etc...) if <alsoname> is true, all is cleared. else, informations about produced names are kept (to maintain unicity of naming across clearings).
+		%feature("autodoc", "Clears all data produced (apart from dispatches, etc...) if <alsoname> is true, all is cleared. else, information about produced names are kept (to maintain unicity of naming across clearings).
 
 Parameters
 ----------
@@ -4649,7 +4649,7 @@ int
 		/****************** Extension ******************/
 		/**** md5 signature: d8451984f53a06cfa1d5728072a48bf8 ****/
 		%feature("compactdefaultargs") Extension;
-		%feature("autodoc", "Returns the general extension. can be empty (not recommanded).
+		%feature("autodoc", "Returns the general extension. can be empty (not recommended).
 
 Returns
 -------
@@ -4893,7 +4893,7 @@ None
 		/****************** SetLastRun ******************/
 		/**** md5 signature: b63ec78f2b01f512d5db876ecd824b91 ****/
 		%feature("compactdefaultargs") SetLastRun;
-		%feature("autodoc", "Records a new alue for the rank of last run item.
+		%feature("autodoc", "Records a new value for the rank of last run item.
 
 Parameters
 ----------
@@ -5140,7 +5140,7 @@ Interface_EntityIterator
 		/****************** Packets ******************/
 		/**** md5 signature: b4205107e1be9e46587677293b78084b ****/
 		%feature("compactdefaultargs") Packets;
-		%feature("autodoc", "Returns the list of recorded packets, under two modes : - <complete> = false, the strict definition of packets, i.e. for each one, the root entities, to be explicitely sent - <complete> = true (default), the completely evaluated list, i.e. which really gives the destination of each entity : this mode allows to evaluate duplications remark that to send packets, iteration remains preferable (file names are managed).
+		%feature("autodoc", "Returns the list of recorded packets, under two modes : - <complete> = false, the strict definition of packets, i.e. for each one, the root entities, to be explicitly sent - <complete> = true (default), the completely evaluated list, i.e. which really gives the destination of each entity : this mode allows to evaluate duplications remark that to send packets, iteration remains preferable (file names are managed).
 
 Parameters
 ----------
@@ -5621,7 +5621,7 @@ TCollection_AsciiString
 		/****************** Perform ******************/
 		/**** md5 signature: 3943f0bcb223a865698c1e1a57574b3f ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs a transformation (defined by each sub-class) : <g> gives the input data (especially the starting model) and can be used for queries (by selections, etc...) <protocol> allows to work with general services as necessary (it applies to input data) if the change corresponds to a conversion to a new protocol, see also the method changeprotocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation : - if it is null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for changeprotocol to be memorized if needed, and to store informations useful for the method updated //! returns true if done, false if an error occured : in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
+		%feature("autodoc", "Performs a transformation (defined by each sub-class) : <g> gives the input data (especially the starting model) and can be used for queries (by selections, etc...) <protocol> allows to work with general services as necessary (it applies to input data) if the change corresponds to a conversion to a new protocol, see also the method changeprotocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation : - if it is null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for changeprotocol to be memorized if needed, and to store information useful for the method updated //! returns true if done, false if an error occurred: in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
 
 Parameters
 ----------
@@ -5787,7 +5787,7 @@ None
 		/****************** WriteFile ******************/
 		/**** md5 signature: 4a5c937c1624a07b50e0018985e1414c ****/
 		%feature("compactdefaultargs") WriteFile;
-		%feature("autodoc", "Gives the way to write a file from a model. <ctx> contains all necessary informations : the model, the protocol, the file name, and the list of file modifiers to be applied, also with restricted list of selected entities for each one, if required. in return, it brings the produced check-list //! the worklibrary has to query <applied> to get then run the contextwrite by looping like this (example) : for (numap = 1; numap <= ctx.nbmodifiers(); numap ++) { ctx.setmodifier (numap); cast ctx.filemodifier() to specific type -> variable filemod if (!filemod.isnull()) filemod->perform (ctx,writer); filemod then works with ctx. it can, either act on the model itself (for instance on its header), or iterate on selected entities (start/next/more/value) it can call addfail or addwarning, as necessary }.
+		%feature("autodoc", "Gives the way to write a file from a model. <ctx> contains all necessary information : the model, the protocol, the file name, and the list of file modifiers to be applied, also with restricted list of selected entities for each one, if required. in return, it brings the produced check-list //! the worklibrary has to query <applied> to get then run the contextwrite by looping like this (example) : for (numap = 1; numap <= ctx.nbmodifiers(); numap ++) { ctx.setmodifier (numap); cast ctx.filemodifier() to specific type -> variable filemod if (!filemod.isnull()) filemod->perform (ctx,writer); filemod then works with ctx. it can, either act on the model itself (for instance on its header), or iterate on selected entities (start/next/more/value) it can call addfail or addwarning, as necessary }.
 
 Parameters
 ----------
@@ -5969,7 +5969,7 @@ None
 		/****************** ClearFile ******************/
 		/**** md5 signature: 00d692695064cbec934992520500d75e ****/
 		%feature("compactdefaultargs") ClearFile;
-		%feature("autodoc", "Erases all stored data from the file evaluation (i.e. all former naming informations are lost).
+		%feature("autodoc", "Erases all stored data from the file evaluation (i.e. all former naming information are lost).
 
 Returns
 -------
@@ -6017,7 +6017,7 @@ None
 		/****************** CombineAdd ******************/
 		/**** md5 signature: 7a13fbb39ab9c92b766fed37dde1f3bb ****/
 		%feature("compactdefaultargs") CombineAdd;
-		%feature("autodoc", "Adds an input selection to a selectcombine (union or inters.). returns new count of inputs for this selectcombine if done or 0 if <sel> is not kind of selectcombine, or if <seladd> or <sel> is not in the worksession by default, adding is done at the end of the list else, it is an insertion to rank <atnum> (usefull for un-redo).
+		%feature("autodoc", "Adds an input selection to a selectcombine (union or inters.). returns new count of inputs for this selectcombine if done or 0 if <sel> is not kind of selectcombine, or if <seladd> or <sel> is not in the worksession by default, adding is done at the end of the list else, it is an insertion to rank <atnum> (useful for un-redo).
 
 Parameters
 ----------
@@ -6051,7 +6051,7 @@ bool
 		/****************** ComputeCheck ******************/
 		/**** md5 signature: fc8877ffd690e8f5f4c80d1a6500349b ****/
 		%feature("compactdefaultargs") ComputeCheck;
-		%feature("autodoc", "Computes the checklist for the model currently loaded it can then be used for displays, querries ... returns true if ok, false else (i.e. no protocol set, or model absent). if <enforce> is false, works only if not already done or if a new model has been loaded from last call. remark : computation is enforced by every call to setmodel or runtransformer.
+		%feature("autodoc", "Computes the checklist for the model currently loaded it can then be used for displays, queries ... returns true if ok, false else (i.e. no protocol set, or model absent). if <enforce> is false, works only if not already done or if a new model has been loaded from last call. remark : computation is enforced by every call to setmodel or runtransformer.
 
 Parameters
 ----------
@@ -6464,7 +6464,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 		/****************** GiveList ******************/
 		/**** md5 signature: 97668f9eec00d5b9865925cdfdd4bca2 ****/
 		%feature("compactdefaultargs") GiveList;
-		%feature("autodoc", "Computes a list of entities from two alphanums, first and second, as follows : if <first> is a number or label of an entity : this entity if <first> is a list of numbers/labels : the list of entities if <first> is the name of a selection in <ws>, and <second> not defined, the standard result of this selection else, let's consider 'first second' : this whole phrase is splitted by blanks, as follows (recursive call) : - the leftest term is the final selection - the other terms define the result of the selection - and so on (the 'leftest minus one' is a selection, of which the input is given by the remaining ...).
+		%feature("autodoc", "Computes a list of entities from two alphanums, first and second, as follows : if <first> is a number or label of an entity : this entity if <first> is a list of numbers/labels : the list of entities if <first> is the name of a selection in <ws>, and <second> not defined, the standard result of this selection else, let's consider 'first second' : this whole phrase is split by blanks, as follows (recursive call) : - the leftest term is the final selection - the other terms define the result of the selection - and so on (the 'leftest minus one' is a selection, of which the input is given by the remaining ...).
 
 Parameters
 ----------
@@ -6498,7 +6498,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 		/****************** GiveListFromList ******************/
 		/**** md5 signature: 45cdbed754a81f3930fc7962c5907e61 ****/
 		%feature("compactdefaultargs") GiveListFromList;
-		%feature("autodoc", "Computes a list of entities from the model as follows <first> beeing a selection or a combination of selections, <ent> beeing an entity or a list of entities (as a hsequenceoftransient) : the standard result of this selection applied to this list if <ent> is null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! remark : selname is processed as <first second> of preceeding givelist.
+		%feature("autodoc", "Computes a list of entities from the model as follows <first> being a selection or a combination of selections, <ent> being an entity or a list of entities (as a hsequenceoftransient) : the standard result of this selection applied to this list if <ent> is null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! remark : selname is processed as <first second> of preceding givelist.
 
 Parameters
 ----------
@@ -6866,7 +6866,7 @@ opencascade::handle<IFSelect_Modifier>
 		/****************** ModifierRank ******************/
 		/**** md5 signature: 1e05c613e9e851b9336b134d58bfe203 ****/
 		%feature("compactdefaultargs") ModifierRank;
-		%feature("autodoc", "Returns the rank of a modifier given its ident. model or file modifier according its type (modelmodifier or not) remember that modifiers are applied sequencially following their rank : first model modifiers then file modifiers rank is given by rank of call to additem and can be changed by changemodifierrank.
+		%feature("autodoc", "Returns the rank of a modifier given its ident. model or file modifier according its type (modelmodifier or not) remember that modifiers are applied sequentially following their rank : first model modifiers then file modifiers rank is given by rank of call to additem and can be changed by changemodifierrank.
 
 Parameters
 ----------
@@ -6926,7 +6926,7 @@ opencascade::handle<Standard_Transient>
 		/****************** NamedItem ******************/
 		/**** md5 signature: bfe651ccce454616f8543444833ecfc7 ****/
 		%feature("compactdefaultargs") NamedItem;
-		%feature("autodoc", "Same as above, but <name> is given through a handle especially usefull with methods selectionnames, etc...
+		%feature("autodoc", "Same as above, but <name> is given through a handle especially useful with methods selectionnames, etc...
 
 Parameters
 ----------
@@ -7306,7 +7306,7 @@ int
 		/****************** RunTransformer ******************/
 		/**** md5 signature: ce58899d242786dd3edb621a934671f1 ****/
 		%feature("compactdefaultargs") RunTransformer;
-		%feature("autodoc", "Runs a transformer on starting model, which can then be edited or replaced by a new one. the protocol can also be changed. fills lastrunchecklist //! returned status is 0 if nothing done (<transf> or model undefined), positive if ok, negative else : 0 : nothing done 1 : ok, edition on the spot with no change to the graph of dependances (purely local) 2 : ok, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3 : ok, new model produced, same protocol 4 : ok, model edited on the spot (graph recomputed), but protocol has changed 5 : ok, new model produced, protocol has changed -1 : error on the spot (slight changes), data may be corrupted (remark : corruption should not be profound) -2 : error on edition the spot, data may be corrupted (checking them is recommanded) -3 : error with a new data set, transformation ignored -4 : ok as 4, but graph of dependances count not be recomputed (the former one is kept) : check the protocol.
+		%feature("autodoc", "Runs a transformer on starting model, which can then be edited or replaced by a new one. the protocol can also be changed. fills lastrunchecklist //! returned status is 0 if nothing done (<transf> or model undefined), positive if ok, negative else : 0 : nothing done 1 : ok, edition on the spot with no change to the graph of dependances (purely local) 2 : ok, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3 : ok, new model produced, same protocol 4 : ok, model edited on the spot (graph recomputed), but protocol has changed 5 : ok, new model produced, protocol has changed -1 : error on the spot (slight changes), data may be corrupted (remark : corruption should not be profound) -2 : error on edition the spot, data may be corrupted (checking them is recommended) -3 : error with a new data set, transformation ignored -4 : ok as 4, but graph of dependances count not be recomputed (the former one is kept) : check the protocol.
 
 Parameters
 ----------
@@ -7367,7 +7367,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 		/****************** SendAll ******************/
 		/**** md5 signature: c2b1e4ce07d1cfced6ef3f58127820b9 ****/
 		%feature("compactdefaultargs") SendAll;
-		%feature("autodoc", "Sends the starting model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the graph to be recomputed before sending : required when a model is filled in several steps //! the model and file modifiers recorded to be applied on sending files are. returns a status of execution : done if ok, void if no data available, error if errors occured (work library is not defined), errors during translation fail if exception during translation is raised stop if no disk space or disk, file is write protected fills lastrunchecklist.
+		%feature("autodoc", "Sends the starting model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the graph to be recomputed before sending : required when a model is filled in several steps //! the model and file modifiers recorded to be applied on sending files are. returns a status of execution : done if ok, void if no data available, error if errors occurred (work library is not defined), errors during translation fail if exception during translation is raised stop if no disk space or disk, file is write protected fills lastrunchecklist.
 
 Parameters
 ----------
@@ -7402,7 +7402,7 @@ IFSelect_ReturnStatus
 		/****************** SendSplit ******************/
 		/**** md5 signature: 6321d8c6881589ddbe6233be55e93e86 ****/
 		%feature("compactdefaultargs") SendSplit;
-		%feature("autodoc", "Performs creation of derived files from the input model takes its data (sub-models and names), from result evaluatefile if active, else by dynamic evaluation (not stored) after sendsplit, result of evaluatefile is cleared fills lastrunchecklist //! works with the worklibrary which acts on specific type of model and can work with file modifiers (managed by the model copier) and a modelcopier, which can work with model modifiers returns false if, either worklibrary has failed on at least one sub-file, or the work session is badly conditionned (no model defined, or filenaming not in phase with shareout).
+		%feature("autodoc", "Performs creation of derived files from the input model takes its data (sub-models and names), from result evaluatefile if active, else by dynamic evaluation (not stored) after sendsplit, result of evaluatefile is cleared fills lastrunchecklist //! works with the worklibrary which acts on specific type of model and can work with file modifiers (managed by the model copier) and a modelcopier, which can work with model modifiers returns false if, either worklibrary has failed on at least one sub-file, or the work session is badly conditioned (no model defined, or filenaming not in phase with shareout).
 
 Returns
 -------
@@ -7644,7 +7644,7 @@ None
 		/****************** SetModeStat ******************/
 		/**** md5 signature: c142785e8c8c940a8a328422512002b1 ****/
 		%feature("compactdefaultargs") SetModeStat;
-		%feature("autodoc", "Set value of mode responsible for precence of selections after loading if mode set to true that different selections will be accessible after loading else selections will be not accessible after loading( for economy memory in applicatios).
+		%feature("autodoc", "Set value of mode responsible for presence of selections after loading if mode set to true that different selections will be accessible after loading else selections will be not accessible after loading( for economy memory in applications).
 
 Parameters
 ----------
@@ -8886,7 +8886,7 @@ class IFSelect_Modifier : public IFSelect_GeneralModifier {
 		/****************** Perform ******************/
 		/**** md5 signature: af66e2b5fd47b40d3287588f1c2eaabd ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "This deferred method defines the action specific to each class of modifier. it is called by a modelcopier, once the model generated and filled. modelcopier has already checked the criteria (dispatch, model rank, selection) before calling it. //! <ctx> detains informations about original data and selection. the result of copying, on which modifications are to be done, is <target>. <tc> allows to run additional copies as required //! in case of error, use methods ccheck from the contextmodif to aknowledge an entity check or a global check with messages.
+		%feature("autodoc", "This deferred method defines the action specific to each class of modifier. it is called by a modelcopier, once the model generated and filled. modelcopier has already checked the criteria (dispatch, model rank, selection) before calling it. //! <ctx> detains information about original data and selection. the result of copying, on which modifications are to be done, is <target>. <tc> allows to run additional copies as required //! in case of error, use methods ccheck from the contextmodif to aknowledge an entity check or a global check with messages.
 
 Parameters
 ----------
@@ -8956,7 +8956,7 @@ None
 		/****************** AddValue ******************/
 		/**** md5 signature: ac3627cf81d5bc516ddff45ba712da52 ****/
 		%feature("compactdefaultargs") AddValue;
-		%feature("autodoc", "Adds a typedvalue by default, its short name equates its complete name, it can be explicited.
+		%feature("autodoc", "Adds a typedvalue by default, its short name equates its complete name, it can be made explicit.
 
 Parameters
 ----------
@@ -9466,7 +9466,7 @@ char *
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the recorded informations (commands, objects).
+		%feature("autodoc", "Clears the recorded information (commands, objects).
 
 Returns
 -------
@@ -9870,7 +9870,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		/****************** IFSelect_SignCounter ******************/
 		/**** md5 signature: ef8188163ad05dffc670c2aa920e76f5 ****/
 		%feature("compactdefaultargs") IFSelect_SignCounter;
-		%feature("autodoc", "Creates a signcounter, without proper signature if <withmap> is true (default), added entities are counted only if they are not yet recorded in the map map control can be set off if the input garantees uniqueness of data <withlist> is transmitted to signaturelist (option to list entities, not only to count them).
+		%feature("autodoc", "Creates a signcounter, without proper signature if <withmap> is true (default), added entities are counted only if they are not yet recorded in the map map control can be set off if the input guarantees uniqueness of data <withlist> is transmitted to signaturelist (option to list entities, not only to count them).
 
 Parameters
 ----------
@@ -10087,7 +10087,7 @@ None
 		/****************** SetSelection ******************/
 		/**** md5 signature: c33ace088a61e8e42ceb139b2bb56198 ****/
 		%feature("compactdefaultargs") SetSelection;
-		%feature("autodoc", "Sets a selection as input : this causes content to be cleared then the selection to be ready to compute (but not immediatly).
+		%feature("autodoc", "Sets a selection as input : this causes content to be cleared then the selection to be ready to compute (but not immediately).
 
 Parameters
 ----------
@@ -10364,7 +10364,7 @@ bool
 		/****************** ApplyModifiers ******************/
 		/**** md5 signature: a5207e41a6732f7b81a83eaf77bf9108 ****/
 		%feature("compactdefaultargs") ApplyModifiers;
-		%feature("autodoc", "Applies the modifiers sequencially. for each one, prepares required data (if a selection is associated as a filter). for the option onthespot, it determines if the graph may be changed and updates <newmod> if required if a modifier causes an error (check 'hasfailed'), applymodifier stops : the following modifiers are ignored.
+		%feature("autodoc", "Applies the modifiers sequentially. for each one, prepares required data (if a selection is associated as a filter). for the option onthespot, it determines if the graph may be changed and updates <newmod> if required if a modifier causes an error (check 'hasfailed'), applymodifier stops : the following modifiers are ignored.
 
 Parameters
 ----------
@@ -10882,7 +10882,7 @@ None
 		/****************** Label ******************/
 		/**** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ****/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", "Returns a text defining the criterium : 'componants of list ' then specific list label, then, following cases : ' from .. until ..' or 'from ..' or 'until ..' or 'rank no ..' specific type is given by deferred method listlabel.
+		%feature("autodoc", "Returns a text defining the criterium : 'components of list ' then specific list label, then, following cases : ' from .. until ..' or 'from ..' or 'until ..' or 'rank no ..' specific type is given by deferred method listlabel.
 
 Returns
 -------
@@ -12173,7 +12173,7 @@ class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
 		/****************** Sort ******************/
 		/**** md5 signature: 88b4690c932193f08237f487d1cf387b ****/
 		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "Returns true for an entity (model->value(num)) which is kind of the choosen type, given by the method typeformatch. criterium is iskind.
+		%feature("autodoc", "Returns true for an entity (model->value(num)) which is kind of the chosen type, given by the method typeformatch. criterium is iskind.
 
 Parameters
 ----------
@@ -12535,7 +12535,7 @@ None
 		/****************** Sort ******************/
 		/**** md5 signature: 88b4690c932193f08237f487d1cf387b ****/
 		%feature("compactdefaultargs") Sort;
-		%feature("autodoc", "Returns true for an entity of which occurence number in the iteration is inside the selected range (considers <rank>).
+		%feature("autodoc", "Returns true for an entity of which occurrence number in the iteration is inside the selected range (considers <rank>).
 
 Parameters
 ----------
@@ -12601,7 +12601,7 @@ None
 		/****************** ExtractLabel ******************/
 		/**** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ****/
 		%feature("compactdefaultargs") ExtractLabel;
-		%feature("autodoc", "Returns a text defining the criterium : 'local root componants'.
+		%feature("autodoc", "Returns a text defining the criterium : 'local root components'.
 
 Returns
 -------
@@ -12612,7 +12612,7 @@ TCollection_AsciiString
 		/****************** RootResult ******************/
 		/**** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ****/
 		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "Returns the list of local root strong componants, by one entity par componant. it is redefined for a purpose of effeciency : calling a sort routine for each entity would cost more ressource than to work in once using a map rootresult takes in account the direct status.
+		%feature("autodoc", "Returns the list of local root strong components, by one entity per component. it is redefined for a purpose of efficiency : calling a sort routine for each entity would cost more resources than to work in once using a map rootresult takes in account the direct status.
 
 Parameters
 ----------
@@ -12682,7 +12682,7 @@ TCollection_AsciiString
 		/****************** RootResult ******************/
 		/**** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ****/
 		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "Returns the list of local roots. it is redefined for a purpose of effeciency : calling a sort routine for each entity would cost more ressource than to work in once using a map rootresult takes in account the direct status.
+		%feature("autodoc", "Returns the list of local roots. it is redefined for a purpose of efficiency: calling a sort routine for each entity would cost more resources than to work in once using a map rootresult takes in account the direct status.
 
 Parameters
 ----------

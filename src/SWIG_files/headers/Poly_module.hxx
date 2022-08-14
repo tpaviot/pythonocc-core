@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -21,6 +21,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<Poly.hxx>
 #include<Poly_Array1OfTriangle.hxx>
+#include<Poly_ArrayOfNodes.hxx>
+#include<Poly_ArrayOfUVNodes.hxx>
 #include<Poly_CoherentLink.hxx>
 #include<Poly_CoherentNode.hxx>
 #include<Poly_CoherentTriPtr.hxx>
@@ -30,10 +32,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Poly_HArray1OfTriangle.hxx>
 #include<Poly_ListOfTriangulation.hxx>
 #include<Poly_MakeLoops.hxx>
+#include<Poly_MergeNodesTool.hxx>
+#include<Poly_MeshPurpose.hxx>
 #include<Poly_Polygon2D.hxx>
 #include<Poly_Polygon3D.hxx>
 #include<Poly_PolygonOnTriangulation.hxx>
 #include<Poly_Triangle.hxx>
 #include<Poly_Triangulation.hxx>
+#include<Poly_TriangulationParameters.hxx>
 
 #endif // POLY_HXX

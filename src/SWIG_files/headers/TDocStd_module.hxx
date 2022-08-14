@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDocStd_Context.hxx>
 #include<TDocStd_DataMapIteratorOfLabelIDMapDataMap.hxx>
 #include<TDocStd_Document.hxx>
+#include<TDocStd_FormatVersion.hxx>
 #include<TDocStd_LabelIDMapDataMap.hxx>
 #include<TDocStd_Modified.hxx>
 #include<TDocStd_MultiTransactionManager.hxx>

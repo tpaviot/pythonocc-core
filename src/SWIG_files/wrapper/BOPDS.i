@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BOPDSDOCSTRING
 "BOPDS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopds.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bopds.html"
 %enddef
 %module (package="OCC.Core", docstring=BOPDSDOCSTRING) BOPDS
 
@@ -98,7 +98,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -261,7 +261,7 @@ class BOPDS_CommonBlock : public Standard_Transient {
 		/****************** BOPDS_CommonBlock ******************/
 		/**** md5 signature: 92a8163598663f388a0cc06d557c3d62 ****/
 		%feature("compactdefaultargs") BOPDS_CommonBlock;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -272,7 +272,7 @@ None
 		/****************** BOPDS_CommonBlock ******************/
 		/**** md5 signature: df854f8c56258e94a4fa5e1297ec0b70 ****/
 		%feature("compactdefaultargs") BOPDS_CommonBlock;
-		%feature("autodoc", "Contructor <theallocator> - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -767,7 +767,7 @@ class BOPDS_Curve {
 		/****************** BOPDS_Curve ******************/
 		/**** md5 signature: b72e3545eb213b0dc6aafa98d0055770 ****/
 		%feature("compactdefaultargs") BOPDS_Curve;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -778,7 +778,7 @@ None
 		/****************** BOPDS_Curve ******************/
 		/**** md5 signature: f93e5d7b27c0f12229424fa02dc011ee ****/
 		%feature("compactdefaultargs") BOPDS_Curve;
-		%feature("autodoc", "Contructor <theallocator> - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -999,7 +999,7 @@ class BOPDS_DS {
 		/****************** BOPDS_DS ******************/
 		/**** md5 signature: f9a3d2b6ab77d6d06736fd633088137f ****/
 		%feature("compactdefaultargs") BOPDS_DS;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -1010,7 +1010,7 @@ None
 		/****************** BOPDS_DS ******************/
 		/**** md5 signature: 7ddac47ec4a184be023ac2ada301162c ****/
 		%feature("compactdefaultargs") BOPDS_DS;
-		%feature("autodoc", "Contructor theallocator - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -2080,7 +2080,7 @@ class BOPDS_FaceInfo {
 		/****************** BOPDS_FaceInfo ******************/
 		/**** md5 signature: dbf881bcf2d92c472cd8524dc1a94d79 ****/
 		%feature("compactdefaultargs") BOPDS_FaceInfo;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -2091,7 +2091,7 @@ None
 		/****************** BOPDS_FaceInfo ******************/
 		/**** md5 signature: 58156401c00b9ebd5196c21ce568756b ****/
 		%feature("compactdefaultargs") BOPDS_FaceInfo;
-		%feature("autodoc", "Contructor theallocator - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -2289,7 +2289,7 @@ class BOPDS_IndexRange {
 		/****************** BOPDS_IndexRange ******************/
 		/**** md5 signature: 99ee5feaa0f5f2e8071f8ec605997513 ****/
 		%feature("compactdefaultargs") BOPDS_IndexRange;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -2426,7 +2426,7 @@ class BOPDS_Iterator {
 		/****************** BOPDS_Iterator ******************/
 		/**** md5 signature: e39e9f80c57e8765bf71893ec4fb5f63 ****/
 		%feature("compactdefaultargs") BOPDS_Iterator;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -2437,7 +2437,7 @@ None
 		/****************** BOPDS_Iterator ******************/
 		/**** md5 signature: bd9e216d5b71b4ba1d9bd6a1bf309cd2 ****/
 		%feature("compactdefaultargs") BOPDS_Iterator;
-		%feature("autodoc", "Contructor theallocator - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -2793,7 +2793,7 @@ class BOPDS_Pave {
 		/****************** BOPDS_Pave ******************/
 		/**** md5 signature: 479b452478ff7c0152e5ce58231932e9 ****/
 		%feature("compactdefaultargs") BOPDS_Pave;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -2940,7 +2940,7 @@ class BOPDS_PaveBlock : public Standard_Transient {
 		/****************** BOPDS_PaveBlock ******************/
 		/**** md5 signature: 23cb6ec47b2be25244db20ee836f5557 ****/
 		%feature("compactdefaultargs") BOPDS_PaveBlock;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -2951,7 +2951,7 @@ None
 		/****************** BOPDS_PaveBlock ******************/
 		/**** md5 signature: 4e7cca86dd9c859a976d2a5e52959273 ****/
 		%feature("compactdefaultargs") BOPDS_PaveBlock;
-		%feature("autodoc", "Contructor <theallocator> - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -3392,7 +3392,7 @@ class BOPDS_Point {
 		/****************** BOPDS_Point ******************/
 		/**** md5 signature: 006772e0c3a6ee0ca4e888773b24cd13 ****/
 		%feature("compactdefaultargs") BOPDS_Point;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -3521,7 +3521,7 @@ class BOPDS_ShapeInfo {
 		/****************** BOPDS_ShapeInfo ******************/
 		/**** md5 signature: 8d0a572bef2463ea9fbdd5e7fd05e081 ****/
 		%feature("compactdefaultargs") BOPDS_ShapeInfo;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -3532,7 +3532,7 @@ None
 		/****************** BOPDS_ShapeInfo ******************/
 		/**** md5 signature: 7dfadbc51e9908962dbc2d4d564f5aee ****/
 		%feature("compactdefaultargs") BOPDS_ShapeInfo;
-		%feature("autodoc", "Contructor theallocator - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------
@@ -3624,7 +3624,7 @@ bool
 		/****************** HasFlag ******************/
 		/**** md5 signature: d05bf372703d8850d2889fd2855f632f ****/
 		%feature("compactdefaultargs") HasFlag;
-		%feature("autodoc", "Query returns true if there is flag. returns the the flag theflag.
+		%feature("autodoc", "Query returns true if there is flag. returns the flag theflag.
 
 Parameters
 ----------
@@ -4651,7 +4651,7 @@ class BOPDS_IteratorSI : public BOPDS_Iterator {
 		/****************** BOPDS_IteratorSI ******************/
 		/**** md5 signature: c5b0dd22646c1e2457a62b94390f85aa ****/
 		%feature("compactdefaultargs") BOPDS_IteratorSI;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -4662,7 +4662,7 @@ None
 		/****************** BOPDS_IteratorSI ******************/
 		/**** md5 signature: 802d1e4e61c51785f102169bd02bad90 ****/
 		%feature("compactdefaultargs") BOPDS_IteratorSI;
-		%feature("autodoc", "Contructor theallocator - the allocator to manage the memory.
+		%feature("autodoc", "Constructor @param theallocator the allocator to manage the memory.
 
 Parameters
 ----------

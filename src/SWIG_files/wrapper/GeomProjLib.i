@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMPROJLIBDOCSTRING
 "GeomProjLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomprojlib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomprojlib.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMPROJLIBDOCSTRING) GeomProjLib
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -201,7 +201,7 @@ Tolerance: float
 		/****************** Project ******************/
 		/**** md5 signature: 6bc2a63694c3bb1ffb84bc5bd6bfc7cc ****/
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "Constructs the 3d-curve from the normal projection of the curve <c> on the surface <s>. warning : if the projection has failes returns a null handle.
+		%feature("autodoc", "Constructs the 3d-curve from the normal projection of the curve <c> on the surface <s>. warning : if the projection has failed, returns a null handle.
 
 Parameters
 ----------
@@ -217,7 +217,7 @@ opencascade::handle<Geom_Curve>
 		/****************** ProjectOnPlane ******************/
 		/**** md5 signature: cbb13e670d730f1fffc13379697518e5 ****/
 		%feature("compactdefaultargs") ProjectOnPlane;
-		%feature("autodoc", "Constructs the 3d-curves from the projection of the curve <curve> on the plane <plane> along the direction <dir>. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it meens: proj(c(u)) = pc(u) for each u. otherwize, the parametrization may change.
+		%feature("autodoc", "Constructs the 3d-curves from the projection of the curve <curve> on the plane <plane> along the direction <dir>. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it means: proj(c(u)) = pc(u) for each u. otherwise, the parametrization may change.
 
 Parameters
 ----------

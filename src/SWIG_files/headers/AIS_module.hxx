@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -64,6 +64,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_InteractiveObject.hxx>
 #include<AIS_KindOfInteractive.hxx>
 #include<AIS_LengthDimension.hxx>
+#include<AIS_LightSource.hxx>
 #include<AIS_Line.hxx>
 #include<AIS_ListIteratorOfListOfInteractive.hxx>
 #include<AIS_ListOfInteractive.hxx>
@@ -78,6 +79,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_MinRadiusDimension.hxx>
 #include<AIS_MouseGesture.hxx>
 #include<AIS_MultipleConnectedInteractive.hxx>
+#include<AIS_NArray1OfEntityOwner.hxx>
 #include<AIS_NListOfEntityOwner.hxx>
 #include<AIS_NavigationMode.hxx>
 #include<AIS_OffsetDimension.hxx>
@@ -94,6 +96,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_SelectStatus.hxx>
 #include<AIS_Selection.hxx>
 #include<AIS_SelectionModesConcurrency.hxx>
+#include<AIS_SelectionScheme.hxx>
 #include<AIS_SequenceOfInteractive.hxx>
 #include<AIS_Shape.hxx>
 #include<AIS_SignatureFilter.hxx>

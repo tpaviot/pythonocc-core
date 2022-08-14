@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWOBJDOCSTRING
 "RWObj module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwobj.html"
 %enddef
 %module (package="OCC.Core", docstring=RWOBJDOCSTRING) RWObj
 
@@ -44,9 +44,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 #include<NCollection_module.hxx>
 #include<Message_module.hxx>
 #include<Poly_module.hxx>
-#include<TopoDS_module.hxx>
 #include<TCollection_module.hxx>
 #include<RWMesh_module.hxx>
+#include<XCAFPrs_module.hxx>
+#include<TDocStd_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
+#include<TopoDS_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<gp_module.hxx>
 #include<CDF_module.hxx>
@@ -83,9 +87,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 %import NCollection.i
 %import Message.i
 %import Poly.i
-%import TopoDS.i
 %import TCollection.i
 %import RWMesh.i
+%import XCAFPrs.i
+%import TDocStd.i
+%import TDF.i
+%import TColStd.i
+%import TopoDS.i
 %import Graphic3d.i
 %import gp.i
 
@@ -104,7 +112,7 @@ enum RWObj_SubMeshReason {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class RWObj_SubMeshReason(IntEnum):
@@ -120,6 +128,8 @@ RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_New
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(RWObj_CafWriter)
+%wrap_handle(RWObj_ObjMaterialMap)
 %wrap_handle(RWObj_Reader)
 %wrap_handle(RWObj_CafReader)
 %wrap_handle(RWObj_TriangulationReader)
@@ -158,6 +168,136 @@ opencascade::handle<Poly_Triangulation>
 
 
 %extend RWObj {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************
+* class RWObj_CafWriter *
+************************/
+class RWObj_CafWriter : public Standard_Transient {
+	public:
+		/****************** RWObj_CafWriter ******************/
+		/**** md5 signature: 9183f2e4f1660ece2639704d8c151644 ****/
+		%feature("compactdefaultargs") RWObj_CafWriter;
+		%feature("autodoc", "Main constructor. @param thefile [in] path to output obj file.
+
+Parameters
+----------
+theFile: TCollection_AsciiString
+
+Returns
+-------
+None
+") RWObj_CafWriter;
+		 RWObj_CafWriter(const TCollection_AsciiString & theFile);
+
+		/****************** ChangeCoordinateSystemConverter ******************/
+		/**** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ****/
+		%feature("compactdefaultargs") ChangeCoordinateSystemConverter;
+		%feature("autodoc", "Return transformation from occt to obj coordinate system.
+
+Returns
+-------
+RWMesh_CoordinateSystemConverter
+") ChangeCoordinateSystemConverter;
+		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
+
+		/****************** CoordinateSystemConverter ******************/
+		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
+		%feature("compactdefaultargs") CoordinateSystemConverter;
+		%feature("autodoc", "Return transformation from occt to obj coordinate system.
+
+Returns
+-------
+RWMesh_CoordinateSystemConverter
+") CoordinateSystemConverter;
+		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
+
+		/****************** DefaultStyle ******************/
+		/**** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ****/
+		%feature("compactdefaultargs") DefaultStyle;
+		%feature("autodoc", "Return default material definition to be used for nodes with only color defined.
+
+Returns
+-------
+XCAFPrs_Style
+") DefaultStyle;
+		const XCAFPrs_Style & DefaultStyle();
+
+		/****************** Perform ******************/
+		/**** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Write obj file and associated mtl material file. triangulation data should be precomputed within shapes! @param thedocument [in] input document @param therootlabels [in] list of root shapes to export @param thelabelfilter [in] optional filter with document nodes to export,  with keys defined by xcafprs_documentexplorer::definechildid() and filled recursively  (leaves and parent assembly nodes at all levels);  when not null, all nodes not included into the map will be ignored @param thefileinfo [in] map with file metadata to put into obj header section @param theprogress [in] optional progress indicator returns false on file writing failure.
+
+Parameters
+----------
+theDocument: TDocStd_Document
+theRootLabels: TDF_LabelSequence
+theLabelFilter: TColStd_MapOfAsciiString *
+theFileInfo: TColStd_IndexedDataMapOfStringString
+theProgress: Message_ProgressRange
+
+Returns
+-------
+bool
+") Perform;
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+
+		/****************** Perform ******************/
+		/**** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Write obj file and associated mtl material file. triangulation data should be precomputed within shapes! @param thedocument [in] input document @param thefileinfo [in] map with file metadata to put into gltf header section @param theprogress [in] optional progress indicator returns false on file writing failure.
+
+Parameters
+----------
+theDocument: TDocStd_Document
+theFileInfo: TColStd_IndexedDataMapOfStringString
+theProgress: Message_ProgressRange
+
+Returns
+-------
+bool
+") Perform;
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+
+		/****************** SetCoordinateSystemConverter ******************/
+		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
+		%feature("compactdefaultargs") SetCoordinateSystemConverter;
+		%feature("autodoc", "Set transformation from occt to obj coordinate system.
+
+Parameters
+----------
+theConverter: RWMesh_CoordinateSystemConverter
+
+Returns
+-------
+None
+") SetCoordinateSystemConverter;
+		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
+
+		/****************** SetDefaultStyle ******************/
+		/**** md5 signature: 69b73a5756eee96becb5ddbe7670a837 ****/
+		%feature("compactdefaultargs") SetDefaultStyle;
+		%feature("autodoc", "Set default material definition to be used for nodes with only color defined.
+
+Parameters
+----------
+theStyle: XCAFPrs_Style
+
+Returns
+-------
+None
+") SetDefaultStyle;
+		void SetDefaultStyle(const XCAFPrs_Style & theStyle);
+
+};
+
+
+%make_alias(RWObj_CafWriter)
+
+%extend RWObj_CafWriter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -233,6 +373,322 @@ None
 /************************
 * class RWObj_MtlReader *
 ************************/
+/*****************************
+* class RWObj_ObjMaterialMap *
+*****************************/
+class RWObj_ObjMaterialMap : public RWMesh_MaterialMap {
+	public:
+		/****************** RWObj_ObjMaterialMap ******************/
+		/**** md5 signature: 43c6a416fb61d11b4dd03cc05283f455 ****/
+		%feature("compactdefaultargs") RWObj_ObjMaterialMap;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theFile: TCollection_AsciiString
+
+Returns
+-------
+None
+") RWObj_ObjMaterialMap;
+		 RWObj_ObjMaterialMap(const TCollection_AsciiString & theFile);
+
+		/****************** AddMaterial ******************/
+		/**** md5 signature: a65de496eac4b0afca748cbe0920fca0 ****/
+		%feature("compactdefaultargs") AddMaterial;
+		%feature("autodoc", "Add material.
+
+Parameters
+----------
+theStyle: XCAFPrs_Style
+
+Returns
+-------
+TCollection_AsciiString
+") AddMaterial;
+		virtual TCollection_AsciiString AddMaterial(const XCAFPrs_Style & theStyle);
+
+		/****************** DefineMaterial ******************/
+		/**** md5 signature: 0d9f2bc2c43292ec61ca304ec31c1fa0 ****/
+		%feature("compactdefaultargs") DefineMaterial;
+		%feature("autodoc", "Virtual method actually defining the material (e.g. export to the file).
+
+Parameters
+----------
+theStyle: XCAFPrs_Style
+theKey: TCollection_AsciiString
+theName: TCollection_AsciiString
+
+Returns
+-------
+None
+") DefineMaterial;
+		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, const TCollection_AsciiString & theKey, const TCollection_AsciiString & theName);
+
+};
+
+
+%make_alias(RWObj_ObjMaterialMap)
+
+%extend RWObj_ObjMaterialMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************
+* class RWObj_ObjWriterContext *
+*******************************/
+class RWObj_ObjWriterContext {
+	public:
+		int NbFaces;
+		/****************** RWObj_ObjWriterContext ******************/
+		/**** md5 signature: 4d2a3a7dd08df290512cc8f3ee97b068 ****/
+		%feature("compactdefaultargs") RWObj_ObjWriterContext;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theName: TCollection_AsciiString
+
+Returns
+-------
+None
+") RWObj_ObjWriterContext;
+		 RWObj_ObjWriterContext(const TCollection_AsciiString & theName);
+
+		/****************** ActiveMaterial ******************/
+		/**** md5 signature: 5863ab1f6ab96ae1abb4503ebc57e2c2 ****/
+		%feature("compactdefaultargs") ActiveMaterial;
+		%feature("autodoc", "Return active material or empty string if not set.
+
+Returns
+-------
+TCollection_AsciiString
+") ActiveMaterial;
+		const TCollection_AsciiString & ActiveMaterial();
+
+		/****************** Close ******************/
+		/**** md5 signature: c16f96eb62ef68503b626b43a99eafc0 ****/
+		%feature("compactdefaultargs") Close;
+		%feature("autodoc", "Correctly close the file.
+
+Returns
+-------
+bool
+") Close;
+		bool Close();
+
+		/****************** FlushFace ******************/
+		/**** md5 signature: 4918a9b4883feed992536e8ba2dbd23f ****/
+		%feature("compactdefaultargs") FlushFace;
+		%feature("autodoc", "Increment indices shift.
+
+Parameters
+----------
+theNbNodes: int
+
+Returns
+-------
+None
+") FlushFace;
+		void FlushFace(Standard_Integer theNbNodes);
+
+		/****************** HasNormals ******************/
+		/**** md5 signature: cebae9ec3e325d610c43710c6d20c302 ****/
+		%feature("compactdefaultargs") HasNormals;
+		%feature("autodoc", "Return true if normals are defined.
+
+Returns
+-------
+bool
+") HasNormals;
+		bool HasNormals();
+
+		/****************** HasTexCoords ******************/
+		/**** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ****/
+		%feature("compactdefaultargs") HasTexCoords;
+		%feature("autodoc", "Return true if normals are defined.
+
+Returns
+-------
+bool
+") HasTexCoords;
+		bool HasTexCoords();
+
+		/****************** IsOpened ******************/
+		/**** md5 signature: d6d5671acf3a396e5229c08ea66ce77f ****/
+		%feature("compactdefaultargs") IsOpened;
+		%feature("autodoc", "Return true if file has been opened.
+
+Returns
+-------
+bool
+") IsOpened;
+		bool IsOpened();
+
+		/****************** SetNormals ******************/
+		/**** md5 signature: c17e8893570a40ab30ed9c9800b14305 ****/
+		%feature("compactdefaultargs") SetNormals;
+		%feature("autodoc", "Set if normals are defined.
+
+Parameters
+----------
+theHasNormals: bool
+
+Returns
+-------
+None
+") SetNormals;
+		void SetNormals(const bool theHasNormals);
+
+		/****************** SetTexCoords ******************/
+		/**** md5 signature: 1ccc8f9785a944bcf850c64e7095429d ****/
+		%feature("compactdefaultargs") SetTexCoords;
+		%feature("autodoc", "Set if normals are defined.
+
+Parameters
+----------
+theHasTexCoords: bool
+
+Returns
+-------
+None
+") SetTexCoords;
+		void SetTexCoords(const bool theHasTexCoords);
+
+		/****************** WriteActiveMaterial ******************/
+		/**** md5 signature: c23019ca84fa7deac83aa86f83157c48 ****/
+		%feature("compactdefaultargs") WriteActiveMaterial;
+		%feature("autodoc", "Set active material.
+
+Parameters
+----------
+theMaterial: TCollection_AsciiString
+
+Returns
+-------
+bool
+") WriteActiveMaterial;
+		bool WriteActiveMaterial(const TCollection_AsciiString & theMaterial);
+
+		/****************** WriteGroup ******************/
+		/**** md5 signature: d33f0a10b0910de5ab5748574f48f32d ****/
+		%feature("compactdefaultargs") WriteGroup;
+		%feature("autodoc", "Writing a group name.
+
+Parameters
+----------
+theValue: TCollection_AsciiString
+
+Returns
+-------
+bool
+") WriteGroup;
+		bool WriteGroup(const TCollection_AsciiString & theValue);
+
+		/****************** WriteHeader ******************/
+		/**** md5 signature: 145306955b9203346c019851d530ffab ****/
+		%feature("compactdefaultargs") WriteHeader;
+		%feature("autodoc", "Write the header.
+
+Parameters
+----------
+theNbNodes: int
+theNbElems: int
+theMatLib: TCollection_AsciiString
+theFileInfo: TColStd_IndexedDataMapOfStringString
+
+Returns
+-------
+bool
+") WriteHeader;
+		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, const TCollection_AsciiString & theMatLib, const TColStd_IndexedDataMapOfStringString & theFileInfo);
+
+		/****************** WriteNormal ******************/
+		/**** md5 signature: e50c1b6f5ea1daef7e39690e78a55c3f ****/
+		%feature("compactdefaultargs") WriteNormal;
+		%feature("autodoc", "Writing a vector.
+
+Parameters
+----------
+theValue: Graphic3d_Vec3
+
+Returns
+-------
+bool
+") WriteNormal;
+		bool WriteNormal(const Graphic3d_Vec3 & theValue);
+
+		/****************** WriteQuad ******************/
+		/**** md5 signature: 6ec1ecdd2b0fdcce6c29fc362c45dad1 ****/
+		%feature("compactdefaultargs") WriteQuad;
+		%feature("autodoc", "Writing a quad.
+
+Parameters
+----------
+theQuad: Graphic3d_Vec4i
+
+Returns
+-------
+bool
+") WriteQuad;
+		bool WriteQuad(const Graphic3d_Vec4i & theQuad);
+
+		/****************** WriteTexCoord ******************/
+		/**** md5 signature: f8fa5dcc72781a1705ad419b00eedb5a ****/
+		%feature("compactdefaultargs") WriteTexCoord;
+		%feature("autodoc", "Writing a vector.
+
+Parameters
+----------
+theValue: Graphic3d_Vec2
+
+Returns
+-------
+bool
+") WriteTexCoord;
+		bool WriteTexCoord(const Graphic3d_Vec2 & theValue);
+
+		/****************** WriteTriangle ******************/
+		/**** md5 signature: 7386d86fd240dee0a67bac21ae95cc21 ****/
+		%feature("compactdefaultargs") WriteTriangle;
+		%feature("autodoc", "Writing a triangle.
+
+Parameters
+----------
+theTri: Graphic3d_Vec3i
+
+Returns
+-------
+bool
+") WriteTriangle;
+		bool WriteTriangle(const Graphic3d_Vec3i & theTri);
+
+		/****************** WriteVertex ******************/
+		/**** md5 signature: a036bc8f2676c9bd108f1b4aaa49033e ****/
+		%feature("compactdefaultargs") WriteVertex;
+		%feature("autodoc", "Writing a vector.
+
+Parameters
+----------
+theValue: Graphic3d_Vec3
+
+Returns
+-------
+bool
+") WriteVertex;
+		bool WriteVertex(const Graphic3d_Vec3 & theValue);
+
+};
+
+
+%extend RWObj_ObjWriterContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************
 * class RWObj_Reader *
 *********************/

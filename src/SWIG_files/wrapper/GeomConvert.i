@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMCONVERTDOCSTRING
 "GeomConvert module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomconvert.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomconvert.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMCONVERTDOCSTRING) GeomConvert
 
@@ -50,6 +50,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomconvert.html"
 #include<Adaptor3d_module.hxx>
 #include<TColgp_module.hxx>
 #include<Geom2d_module.hxx>
+#include<Geom2d_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Message_module.hxx>
@@ -67,6 +68,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomconvert.html"
 %import GeomAbs.i
 %import Adaptor3d.i
 %import TColgp.i
+%import Geom2d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -76,7 +78,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -116,7 +118,7 @@ None
 		/****************** C0BSplineToArrayOfC1BSplineCurve ******************/
 		/**** md5 signature: 642848ca313fd2ca0214d071305bb2e0 ****/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
-		%feature("autodoc", "This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns an array of bspline c1. tolerance is a geometrical tolerance : it allows for the maximum deformation the angular tolerance is in radians and mesures the angle of the tangents on the left and on the right to decide if the curve is c1 or not at a given point.
+		%feature("autodoc", "This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns an array of bspline c1. tolerance is a geometrical tolerance : it allows for the maximum deformation the angular tolerance is in radians and measures the angle of the tangents on the left and on the right to decide if the curve is c1 or not at a given point.
 
 Parameters
 ----------
@@ -134,7 +136,7 @@ None
 		/****************** C0BSplineToC1BSplineCurve ******************/
 		/**** md5 signature: ef882946a5c095f1fb37b97f8bd44ee6 ****/
 		%feature("compactdefaultargs") C0BSplineToC1BSplineCurve;
-		%feature("autodoc", "This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns a new bspline which could still be c0. tolerance is a geometrical tolerance. the angular toleranceis in radians and mesures the angle of the tangents on the left and on the right to decide if the curve is g1 or not at a given point.
+		%feature("autodoc", "This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns a new bspline which could still be c0. tolerance is a geometrical tolerance. the angular toleranceis in radians and measures the angle of the tangents on the left and on the right to decide if the curve is g1 or not at a given point.
 
 Parameters
 ----------
@@ -209,7 +211,7 @@ ClosedFlag: bool
 		/****************** CurveToBSplineCurve ******************/
 		/**** md5 signature: 3e5139193c14a02aa43c1594a7f95e33 ****/
 		%feature("compactdefaultargs") CurveToBSplineCurve;
-		%feature("autodoc", "This function converts a non infinite curve from geom into a b-spline curve. c must be an ellipse or a circle or a trimmed conic or a trimmed line or a bezier curve or a trimmed bezier curve or a bspline curve or a trimmed bspline curve or an offsetcurve. the returned b-spline is not periodic except if c is a circle or an ellipse. if the parameterisation is quasiangular than the returned curve is not periodic in case a periodic geom_circle or geom_ellipse. for tgtthetaover2_1 and tgtthetaover2_2 the method raises an exception in case of a periodic geom_circle or a geom_ellipse parameterisationtype applies only if the curve is a circle or an ellipse : tgtthetaover2, -- tgtthetaover2_1, -- tgtthetaover2_2, -- tgtthetaover2_3, -- tgtthetaover2_4, //! purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with tgtthetaover2 the routine will compute the number of spans using the rule num_spans = [ (ulast - ufirst) / 1.2 ] + 1 with tgtthetaover2_n, n spans will be forced: an error will be raized if (ulast - ufirst) >= pi and n = 1, ulast - ufirst >= 2 pi and n = 2 //! quasiangular, here t is a rational function that approximates theta ----> tan(theta/2). neverthless the composing with above function yields exact functions whose square sum up to 1 rationalc1 ; t is replaced by a polynomial function of u so as to grant c1 contiuity across knots. exceptions standard_domainerror: - if the curve c is infinite, or - if c is a (complete) circle or ellipse, and parameterisation is equal to convert_tgtthetaover2_1 or convert_tgtthetaover2_2. standard_constructionerror: - if c is a (complete) circle or ellipse, and if parameterisation is not equal to convert_tgtthetaover2, convert_rationalc1, convert_quasiangular (the curve is converted in these three cases) or to convert_tgtthetaover2_1 or convert_tgtthetaover2_2 (another exception is raised in these two cases). - if c is a trimmed circle or ellipse, if parameterisation is equal to convert_tgtthetaover2_1 and if u2 - u1 > 0.9999 * pi, where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if c is a trimmed circle or ellipse, if parameterisation is equal to convert_tgtthetaover2_2 and u2 - u1 > 1.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
+		%feature("autodoc", "This function converts a non infinite curve from geom into a b-spline curve. c must be an ellipse or a circle or a trimmed conic or a trimmed line or a bezier curve or a trimmed bezier curve or a bspline curve or a trimmed bspline curve or an offsetcurve. the returned b-spline is not periodic except if c is a circle or an ellipse. if the parameterisation is quasiangular than the returned curve is not periodic in case a periodic geom_circle or geom_ellipse. for tgtthetaover2_1 and tgtthetaover2_2 the method raises an exception in case of a periodic geom_circle or a geom_ellipse parameterisationtype applies only if the curve is a circle or an ellipse : tgtthetaover2, -- tgtthetaover2_1, -- tgtthetaover2_2, -- tgtthetaover2_3, -- tgtthetaover2_4, //! purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with tgtthetaover2 the routine will compute the number of spans using the rule num_spans = [ (ulast - ufirst) / 1.2 ] + 1 with tgtthetaover2_n, n spans will be forced: an error will be raized if (ulast - ufirst) >= pi and n = 1, ulast - ufirst >= 2 pi and n = 2 //! quasiangular, here t is a rational function that approximates theta ----> tan(theta/2). nevetheless the composing with above function yields exact functions whose square sum up to 1 rationalc1 ; t is replaced by a polynomial function of u so as to grant c1 contiuity across knots. exceptions standard_domainerror: - if the curve c is infinite, or - if c is a (complete) circle or ellipse, and parameterisation is equal to convert_tgtthetaover2_1 or convert_tgtthetaover2_2. standard_constructionerror: - if c is a (complete) circle or ellipse, and if parameterisation is not equal to convert_tgtthetaover2, convert_rationalc1, convert_quasiangular (the curve is converted in these three cases) or to convert_tgtthetaover2_1 or convert_tgtthetaover2_2 (another exception is raised in these two cases). - if c is a trimmed circle or ellipse, if parameterisation is equal to convert_tgtthetaover2_1 and if u2 - u1 > 0.9999 * pi, where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if c is a trimmed circle or ellipse, if parameterisation is equal to convert_tgtthetaover2_2 and u2 - u1 > 1.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
 
 Parameters
 ----------
@@ -399,13 +401,13 @@ None
 		 GeomConvert_ApproxCurve(const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
 		/****************** GeomConvert_ApproxCurve ******************/
-		/**** md5 signature: 10547b6f112ca61b9926eaf1d844b331 ****/
+		/**** md5 signature: 07ff5ce50e6da2c21caae83805537027 ****/
 		%feature("compactdefaultargs") GeomConvert_ApproxCurve;
 		%feature("autodoc", "Constructs a curve approximation framework defined by - - the curve, - the tolerance value tol3d, - the degree of continuity order, - the maximum number of segments maxsegments allowed in the resulting bspline curve, and - the highest degree maxdeg which the polynomial defining the bspline curve may have.
 
 Parameters
 ----------
-Curve: Adaptor3d_HCurve
+Curve: Adaptor3d_Curve
 Tol3d: float
 Order: GeomAbs_Shape
 MaxSegments: int
@@ -415,7 +417,7 @@ Returns
 -------
 None
 ") GeomConvert_ApproxCurve;
-		 GeomConvert_ApproxCurve(const opencascade::handle<Adaptor3d_HCurve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+		 GeomConvert_ApproxCurve(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
 		/****************** Curve ******************/
 		/**** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ****/
@@ -450,7 +452,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns standard_true if the approximation has been done within requiered tolerance.
+		%feature("autodoc", "Returns standard_true if the approximation has been done within required tolerance.
 
 Returns
 -------
@@ -506,13 +508,13 @@ None
 		 GeomConvert_ApproxSurface(const opencascade::handle<Geom_Surface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
 
 		/****************** GeomConvert_ApproxSurface ******************/
-		/**** md5 signature: 4b6f372a9d65bd2c2460c1ce1f5e6de9 ****/
+		/**** md5 signature: d94294b366a492bb4f771c6129ee0101 ****/
 		%feature("compactdefaultargs") GeomConvert_ApproxSurface;
 		%feature("autodoc", "Constructs a surface approximation framework defined by - the surf - the tolerance value tol3d - the degree of continuity ucontinuity, vcontinuity in the directions of the u and v parameters - the highest degree maxdegu, maxdegv which the polynomial defining the bspline curve may have in the directions of the u and v parameters - the maximum number of segments maxsegments allowed in the resulting bspline curve - the index of precision preciscode.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 Tol3d: float
 UContinuity: GeomAbs_Shape
 VContinuity: GeomAbs_Shape
@@ -525,7 +527,7 @@ Returns
 -------
 None
 ") GeomConvert_ApproxSurface;
-		 GeomConvert_ApproxSurface(const opencascade::handle<Adaptor3d_HSurface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
+		 GeomConvert_ApproxSurface(const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
 
 
         %feature("autodoc", "1");
@@ -1016,7 +1018,7 @@ None
 		/****************** GeomConvert_CompBezierSurfacesToBSplineSurface ******************/
 		/**** md5 signature: e7dce0cc47287d475aec5981c18bd406 ****/
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
-		%feature("autodoc", "Build an ci uniform (rational) bspline surface the higest continuity ci is imposed, like the maximal deformation is lower than <tolerance>. warning: the continuity c0 is imposed without any check.
+		%feature("autodoc", "Build an ci uniform (rational) bspline surface the highest continuity ci is imposed, like the maximal deformation is lower than <tolerance>. warning: the continuity c0 is imposed without any check.
 
 Parameters
 ----------
@@ -1276,6 +1278,71 @@ opencascade::handle<Geom_BSplineCurve>
 	@methodnotwrapped
 	def Clear(self):
 		pass
+	}
+};
+
+/**************************
+* class GeomConvert_Units *
+**************************/
+class GeomConvert_Units {
+	public:
+		/****************** DegreeToRadian ******************/
+		/**** md5 signature: 69ed7e606bb67cc6d9c8165770462427 ****/
+		%feature("compactdefaultargs") DegreeToRadian;
+		%feature("autodoc", "Convert 2d curve for change angle unit from degree to radian.
+
+Parameters
+----------
+theCurve: Geom2d_Curve
+theSurface: Geom_Surface
+theLengthFactor: float
+theFactorRadianDegree: float
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") DegreeToRadian;
+		static opencascade::handle<Geom2d_Curve> DegreeToRadian(const opencascade::handle<Geom2d_Curve> & theCurve, const opencascade::handle<Geom_Surface> & theSurface, const Standard_Real theLengthFactor, const Standard_Real theFactorRadianDegree);
+
+		/****************** MirrorPCurve ******************/
+		/**** md5 signature: 96315e1e393b6c68ef42cbc8bec665c6 ****/
+		%feature("compactdefaultargs") MirrorPCurve;
+		%feature("autodoc", "Return 2d curve as 'mirror' for given.
+
+Parameters
+----------
+theCurve: Geom2d_Curve
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") MirrorPCurve;
+		static opencascade::handle<Geom2d_Curve> MirrorPCurve(const opencascade::handle<Geom2d_Curve> & theCurve);
+
+		/****************** RadianToDegree ******************/
+		/**** md5 signature: 97864706bc2811ff080d2cdd739d339c ****/
+		%feature("compactdefaultargs") RadianToDegree;
+		%feature("autodoc", "Convert 2d curve for change angle unit from radian to degree .
+
+Parameters
+----------
+theCurve: Geom2d_Curve
+theSurface: Geom_Surface
+theLengthFactor: float
+theFactorRadianDegree: float
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") RadianToDegree;
+		static opencascade::handle<Geom2d_Curve> RadianToDegree(const opencascade::handle<Geom2d_Curve> & theCurve, const opencascade::handle<Geom_Surface> & theSurface, const Standard_Real theLengthFactor, const Standard_Real theFactorRadianDegree);
+
+};
+
+
+%extend GeomConvert_Units {
+	%pythoncode {
+	__repr__ = _dumps_object
 	}
 };
 

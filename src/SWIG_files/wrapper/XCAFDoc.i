@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFDOCDOCSTRING
 "XCAFDoc module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafdoc.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFDOCDOCSTRING) XCAFDoc
 
@@ -43,8 +43,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
-#include<TDataStd_module.hxx>
 #include<TDF_module.hxx>
+#include<TDataStd_module.hxx>
 #include<TColStd_module.hxx>
 #include<gp_module.hxx>
 #include<Quantity_module.hxx>
@@ -74,8 +74,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdoc.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
-%import TDataStd.i
 %import TDF.i
+%import TDataStd.i
 %import TColStd.i
 %import gp.i
 %import Quantity.i
@@ -103,7 +103,7 @@ enum XCAFDoc_ColorType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class XCAFDoc_ColorType(IntEnum):
@@ -130,6 +130,7 @@ XCAFDoc_ColorCurv = XCAFDoc_ColorType.XCAFDoc_ColorCurv
 %wrap_handle(XCAFDoc_DocumentTool)
 %wrap_handle(XCAFDoc_GraphNode)
 %wrap_handle(XCAFDoc_LayerTool)
+%wrap_handle(XCAFDoc_LengthUnit)
 %wrap_handle(XCAFDoc_Location)
 %wrap_handle(XCAFDoc_Material)
 %wrap_handle(XCAFDoc_MaterialTool)
@@ -182,6 +183,21 @@ Returns
 Standard_GUID
 ") AssemblyGUID;
 		static const Standard_GUID & AssemblyGUID();
+
+		/****************** AttributeInfo ******************/
+		/**** md5 signature: 49484a25600c534dd484fee332280355 ****/
+		%feature("compactdefaultargs") AttributeInfo;
+		%feature("autodoc", "Prints attribute information into a string. @param theatt an xde attribute returns the generated info value.
+
+Parameters
+----------
+theAtt: TDF_Attribute
+
+Returns
+-------
+TCollection_AsciiString
+") AttributeInfo;
+		static TCollection_AsciiString AttributeInfo(const opencascade::handle<TDF_Attribute> & theAtt);
 
 		/****************** ColorByLayerGUID ******************/
 		/**** md5 signature: e7c9fa808a6c556c84def8d7ccc2e9e0 ****/
@@ -495,7 +511,7 @@ float
 		/****************** Get ******************/
 		/**** md5 signature: 3316de23e236385a3038e17ac1633259 ****/
 		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "Returns volume of area as argument and succes status returns false if no such attribute at the <label>.
+		%feature("autodoc", "Returns volume of area as argument and success status returns false if no such attribute at the <label>.
 
 Parameters
 ----------
@@ -2982,7 +2998,7 @@ TDF_Label
 		/****************** AddDimTol ******************/
 		/**** md5 signature: 33633f3f5990025d285e6d16619c14d9 ****/
 		%feature("compactdefaultargs") AddDimTol;
-		%feature("autodoc", "Adds a a dimension tolerance definition with the specified kind, value, name and description to the gd&t table and returns its label.
+		%feature("autodoc", "Adds a dimension tolerance definition with the specified kind, value, name and description to the gd&t table and returns its label.
 
 Parameters
 ----------
@@ -3041,7 +3057,7 @@ TDF_Label
 		/****************** FindDatum ******************/
 		/**** md5 signature: 762e8c713a9968fc10c6079959aeb55a ****/
 		%feature("compactdefaultargs") FindDatum;
-		%feature("autodoc", "Finds a datum sutisfying the specified name, description and identification and returns its label if found.
+		%feature("autodoc", "Finds a datum satisfying the specified name, description and identification and returns its label if found.
 
 Parameters
 ----------
@@ -3059,7 +3075,7 @@ bool
 		/****************** FindDimTol ******************/
 		/**** md5 signature: c33247660577a175ffa709d9177abd30 ****/
 		%feature("compactdefaultargs") FindDimTol;
-		%feature("autodoc", "Finds a dimension tolerance definition in the gd&t table sutisfying the specified kind, values, name and description and returns its label if found. returns false if dimension tolerance is not found in dgttable.
+		%feature("autodoc", "Finds a dimension tolerance definition in the gd&t table satisfying the specified kind, values, name and description and returns its label if found. returns false if dimension tolerance is not found in dgttable.
 
 Parameters
 ----------
@@ -3078,7 +3094,7 @@ bool
 		/****************** FindDimTol ******************/
 		/**** md5 signature: 75daa01afc028c46a100f5a8ef4e3e33 ****/
 		%feature("compactdefaultargs") FindDimTol;
-		%feature("autodoc", "Finds a dimension tolerance in the gd&t table sutisfying the specified kind, values, name and description and returns its label if found (or null label else).
+		%feature("autodoc", "Finds a dimension tolerance in the gd&t table satisfying the specified kind, values, name and description and returns its label if found (or null label else).
 
 Parameters
 ----------
@@ -3298,7 +3314,7 @@ bool
 		/****************** GetRefShapeLabel ******************/
 		/**** md5 signature: e25d6989472f0a0e102c1daa5f739a29 ****/
 		%feature("compactdefaultargs") GetRefShapeLabel;
-		%feature("autodoc", "Gets all shape labels reffered by thel label of the gd&t table. returns false if there are no shape labels added to the sequences.
+		%feature("autodoc", "Gets all shape labels referred by thel label of the gd&t table. returns false if there are no shape labels added to the sequences.
 
 Parameters
 ----------
@@ -3680,6 +3696,14 @@ None
 ") XCAFDoc_Dimension;
 		 XCAFDoc_Dimension();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -3785,6 +3809,141 @@ Returns
 bool
 ") AfterRetrieval;
 		Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
+
+		/****************** CheckClippingPlaneTool ******************/
+		/**** md5 signature: 5ac400db795bc76289a32a0abdf334f5 ****/
+		%feature("compactdefaultargs") CheckClippingPlaneTool;
+		%feature("autodoc", "Checks for the clippingplanetool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckClippingPlaneTool;
+		static Standard_Boolean CheckClippingPlaneTool(const TDF_Label & theAcces);
+
+		/****************** CheckColorTool ******************/
+		/**** md5 signature: 660635f7484fab169bc26e9088f3994a ****/
+		%feature("compactdefaultargs") CheckColorTool;
+		%feature("autodoc", "Checks for the colortool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckColorTool;
+		static Standard_Boolean CheckColorTool(const TDF_Label & theAcces);
+
+		/****************** CheckDimTolTool ******************/
+		/**** md5 signature: 0bf5426f0f4ae7da5037784f05bf99b7 ****/
+		%feature("compactdefaultargs") CheckDimTolTool;
+		%feature("autodoc", "Checks for the dimtoltool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckDimTolTool;
+		static Standard_Boolean CheckDimTolTool(const TDF_Label & theAcces);
+
+		/****************** CheckLayerTool ******************/
+		/**** md5 signature: d3d227fbba8fe850226811ce58abb271 ****/
+		%feature("compactdefaultargs") CheckLayerTool;
+		%feature("autodoc", "Checks for the layertool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckLayerTool;
+		static Standard_Boolean CheckLayerTool(const TDF_Label & theAcces);
+
+		/****************** CheckMaterialTool ******************/
+		/**** md5 signature: 03a5fa0271f0560259fc992158faa2f5 ****/
+		%feature("compactdefaultargs") CheckMaterialTool;
+		%feature("autodoc", "Checks for the materialtool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckMaterialTool;
+		static Standard_Boolean CheckMaterialTool(const TDF_Label & theAcces);
+
+		/****************** CheckNotesTool ******************/
+		/**** md5 signature: 1ee3ef9d6e3d459846177d7abd63bdf4 ****/
+		%feature("compactdefaultargs") CheckNotesTool;
+		%feature("autodoc", "Checks for the notestool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckNotesTool;
+		static Standard_Boolean CheckNotesTool(const TDF_Label & theAcces);
+
+		/****************** CheckShapeTool ******************/
+		/**** md5 signature: f136e0c142bde10b026f24cb004968b9 ****/
+		%feature("compactdefaultargs") CheckShapeTool;
+		%feature("autodoc", "Checks for the shapetool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckShapeTool;
+		static Standard_Boolean CheckShapeTool(const TDF_Label & theAcces);
+
+		/****************** CheckViewTool ******************/
+		/**** md5 signature: 93bf0d9b8a865d2506083f67f2f1054f ****/
+		%feature("compactdefaultargs") CheckViewTool;
+		%feature("autodoc", "Checks for the viewtool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckViewTool;
+		static Standard_Boolean CheckViewTool(const TDF_Label & theAcces);
+
+		/****************** CheckVisMaterialTool ******************/
+		/**** md5 signature: 89d82113ddadc435dd5120cce04e9706 ****/
+		%feature("compactdefaultargs") CheckVisMaterialTool;
+		%feature("autodoc", "Checks for the vismaterialtool attribute on the label's document returns true if tool exists, else if it has not been created.
+
+Parameters
+----------
+theAcces: TDF_Label
+
+Returns
+-------
+bool
+") CheckVisMaterialTool;
+		static Standard_Boolean CheckVisMaterialTool(const TDF_Label & theAcces);
 
 		/****************** ClippingPlaneTool ******************/
 		/**** md5 signature: 10db4cdb3c6c63d4b8a63936644512e6 ****/
@@ -3901,6 +4060,37 @@ Returns
 Standard_GUID
 ") GetID;
 		static const Standard_GUID & GetID();
+
+		/****************** GetLengthUnit ******************/
+		/**** md5 signature: a78d3cb40d43e699eaae3d784020542b ****/
+		%feature("compactdefaultargs") GetLengthUnit;
+		%feature("autodoc", "Returns value of current internal unit for the document converted to base unit type.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+theBaseUnit: UnitsMethods_LengthUnit
+
+Returns
+-------
+theResut: float
+") GetLengthUnit;
+		static Standard_Boolean GetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, Standard_Real &OutValue, const UnitsMethods_LengthUnit theBaseUnit);
+
+		/****************** GetLengthUnit ******************/
+		/**** md5 signature: a1cc428a47258c7b442ac5238dc362a5 ****/
+		%feature("compactdefaultargs") GetLengthUnit;
+		%feature("autodoc", "Returns value of current internal unit for the document in meter.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+
+Returns
+-------
+theResut: float
+") GetLengthUnit;
+		static Standard_Boolean GetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, Standard_Real &OutValue);
 
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
@@ -4046,6 +4236,39 @@ opencascade::handle<XCAFDoc_DocumentTool>
 ") Set;
 		static opencascade::handle<XCAFDoc_DocumentTool> Set(const TDF_Label & L, const Standard_Boolean IsAcces = Standard_True);
 
+		/****************** SetLengthUnit ******************/
+		/**** md5 signature: 32c628012b28a6681470c3cdf3ff49de ****/
+		%feature("compactdefaultargs") SetLengthUnit;
+		%feature("autodoc", "Sets value of current internal unit to the document in meter.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+theUnitValue: float
+
+Returns
+-------
+None
+") SetLengthUnit;
+		static void SetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Real theUnitValue);
+
+		/****************** SetLengthUnit ******************/
+		/**** md5 signature: 1a04f9d02d600f3c79dd760366c246bb ****/
+		%feature("compactdefaultargs") SetLengthUnit;
+		%feature("autodoc", "Sets value of current internal unit to the document @param theunitvalue must be represented in the base unit type.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+theUnitValue: float
+theBaseUnit: UnitsMethods_LengthUnit
+
+Returns
+-------
+None
+") SetLengthUnit;
+		static void SetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit);
+
 		/****************** ShapeTool ******************/
 		/**** md5 signature: 8e94f9cf40c103af90fc51fe6aebf09f ****/
 		%feature("compactdefaultargs") ShapeTool;
@@ -4152,40 +4375,121 @@ opencascade::handle<XCAFDoc_VisMaterialTool>
 ***********************/
 class XCAFDoc_Editor {
 	public:
-		/****************** Expand ******************/
-		/**** md5 signature: 6422d5fd1f07e13a3b15185371cd46c6 ****/
-		%feature("compactdefaultargs") Expand;
-		%feature("autodoc", "Convert shape (compound/compsolid/shell/wire) to assembly. only compounds expanded recursively.
+		/****************** CloneMetaData ******************/
+		/**** md5 signature: f14c3cbe68eca94b9d5e52b084993a7e ****/
+		%feature("compactdefaultargs") CloneMetaData;
+		%feature("autodoc", "Copies metadata contains from the source label to the destination label. protected against creating a new label for non-existent tools @param[in] thesrclabel original label to copy from @param[in] thedstlabel destination shape label to set attributes @param[in] thevismatmap relating map of the original vismaterial and created. can be null for the same document @param[in] thetocopycolor copying visible value and shape color (handled all color type) @param[in] thetocopylayer copying layer @param[in] thetocopymaterial copying material @param[in] thetocopyvismaterial copying visual material @param[in] thetocopyattributes copying of other node attributes, for example, a shape's property.
 
 Parameters
 ----------
-Doc: TDF_Label
-Shape: TDF_Label
-recursively: bool,optional
+theSrcLabel: TDF_Label
+theDstLabel: TDF_Label
+theVisMatMap: XCAFDoc_VisMaterial
+theToCopyColor: bool,optional
+	default value is Standard_True
+theToCopyLayer: bool,optional
+	default value is Standard_True
+theToCopyMaterial: bool,optional
+	default value is Standard_True
+theToCopyVisMaterial: bool,optional
+	default value is Standard_True
+theToCopyAttributes: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") CloneMetaData;
+		static void CloneMetaData(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial> > * theVisMatMap, const Standard_Boolean theToCopyColor = Standard_True, const Standard_Boolean theToCopyLayer = Standard_True, const Standard_Boolean theToCopyMaterial = Standard_True, const Standard_Boolean theToCopyVisMaterial = Standard_True, const Standard_Boolean theToCopyAttributes = Standard_True);
+
+		/****************** CloneShapeLabel ******************/
+		/**** md5 signature: fe8d3ddece674e5cfd912302a879c99f ****/
+		%feature("compactdefaultargs") CloneShapeLabel;
+		%feature("autodoc", "Copies shapes label with keeping of shape structure (recursively) @param[in] thesrclabel original label to copy from @param[in] thesrcshapetool shape tool to get @param[in] thedstshapetool shape tool to set @param[out] themap relating map of the original shapes label and labels created from them returns result shape label.
+
+Parameters
+----------
+theSrcLabel: TDF_Label
+theSrcShapeTool: XCAFDoc_ShapeTool
+theDstShapeTool: XCAFDoc_ShapeTool
+theMap: TDF_LabelDataMap
+
+Returns
+-------
+TDF_Label
+") CloneShapeLabel;
+		static TDF_Label CloneShapeLabel(const TDF_Label & theSrcLabel, const opencascade::handle<XCAFDoc_ShapeTool> & theSrcShapeTool, const opencascade::handle<XCAFDoc_ShapeTool> & theDstShapeTool, TDF_LabelDataMap & theMap);
+
+		/****************** Expand ******************/
+		/**** md5 signature: a02579f48f2e6aeceff5c0a438adac69 ****/
+		%feature("compactdefaultargs") Expand;
+		%feature("autodoc", "Converts shape (compound/compsolid/shell/wire) to assembly. @param[in] thedoc input document @param[in] theshape input shape label @param[in] therecursively recursively expand a compound subshape returns true if shape successfully expanded.
+
+Parameters
+----------
+theDoc: TDF_Label
+theShape: TDF_Label
+theRecursively: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 bool
 ") Expand;
-		static Standard_Boolean Expand(const TDF_Label & Doc, const TDF_Label & Shape, const Standard_Boolean recursively = Standard_True);
+		static Standard_Boolean Expand(const TDF_Label & theDoc, const TDF_Label & theShape, const Standard_Boolean theRecursively = Standard_True);
 
 		/****************** Expand ******************/
-		/**** md5 signature: a5a146d4acbebfdbd04a3409dd94ad8c ****/
+		/**** md5 signature: 1cc446d192c84b603f3864408a96c0c5 ****/
 		%feature("compactdefaultargs") Expand;
-		%feature("autodoc", "Convert all compounds in doc to assembly.
+		%feature("autodoc", "Converts all compounds shapes in the document to assembly @param[in] thedoc input document @param[in] theshape input shape label @param[in] therecursively recursively expand a compound subshape returns true if shape successfully expanded.
 
 Parameters
 ----------
-Doc: TDF_Label
-recursively: bool,optional
+theDoc: TDF_Label
+theRecursively: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 bool
 ") Expand;
-		static Standard_Boolean Expand(const TDF_Label & Doc, const Standard_Boolean recursively = Standard_True);
+		static Standard_Boolean Expand(const TDF_Label & theDoc, const Standard_Boolean theRecursively = Standard_True);
+
+		/****************** Extract ******************/
+		/**** md5 signature: 93e9a9f11a6f9bed0b17528a9eb4450c ****/
+		%feature("compactdefaultargs") Extract;
+		%feature("autodoc", "Clones all labels to a new position, keeping the structure with all the attributes @param[in] thesrclabels original labels to copy from @param[in] thedstlabel label to set result as a component of or a main document's label to simply set new shape @param[in] theisnovismat get a vismaterial attributes as is or convert to color returns true if shape successfully extracted.
+
+Parameters
+----------
+theSrcLabels: TDF_LabelSequence
+theDstLabel: TDF_Label
+theIsNoVisMat: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") Extract;
+		static Standard_Boolean Extract(const TDF_LabelSequence & theSrcLabels, const TDF_Label & theDstLabel, const Standard_Boolean theIsNoVisMat = Standard_False);
+
+		/****************** Extract ******************/
+		/**** md5 signature: 531fbb8186e8c5cce7327b10cd4dae8f ****/
+		%feature("compactdefaultargs") Extract;
+		%feature("autodoc", "Clones the label to a new position, keeping the structure with all the attributes @param[in] thesrclabel original label to copy from @param[in] thedstlabel label to set result as a component of or a main document's label to simply set new shape @param[in] theisnovismat get a vismaterial attributes as is or convert to color returns true if shape successfully extracted.
+
+Parameters
+----------
+theSrcLabel: TDF_Label
+theDstLabel: TDF_Label
+theIsNoVisMat: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") Extract;
+		static Standard_Boolean Extract(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, const Standard_Boolean theIsNoVisMat = Standard_False);
 
 };
 
@@ -4332,7 +4636,7 @@ opencascade::handle<XCAFDoc_GraphNode>
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "Returns the graph id (default or explicit one depending onthe set method used).
+		%feature("autodoc", "Returns the graph id (default or explicit one depending on the set method used).
 
 Returns
 -------
@@ -4613,19 +4917,35 @@ None
 		 XCAFDoc_LayerTool();
 
 		/****************** AddLayer ******************/
-		/**** md5 signature: 17fdf5c1df2dc5149915b63d0a1e31de ****/
+		/**** md5 signature: b4e925ccd9f434d36de9de65e71210fd ****/
 		%feature("compactdefaultargs") AddLayer;
 		%feature("autodoc", "Adds a layer definition to a layertable and returns its label (returns existing label if the same layer is already defined).
 
 Parameters
 ----------
-aLayer: TCollection_ExtendedString
+theLayer: TCollection_ExtendedString
 
 Returns
 -------
 TDF_Label
 ") AddLayer;
-		TDF_Label AddLayer(const TCollection_ExtendedString & aLayer);
+		TDF_Label AddLayer(const TCollection_ExtendedString & theLayer);
+
+		/****************** AddLayer ******************/
+		/**** md5 signature: efd3c8f010e5ea0400be0df10efda0ea ****/
+		%feature("compactdefaultargs") AddLayer;
+		%feature("autodoc", "Adds a layer definition to a layertable and returns its label returns existing label (if it is already defined) of visible or invisible layer, according to <thetofindvisible> parameter.
+
+Parameters
+----------
+theLayer: TCollection_ExtendedString
+theToFindVisible: bool
+
+Returns
+-------
+TDF_Label
+") AddLayer;
+		TDF_Label AddLayer(const TCollection_ExtendedString & theLayer, const Standard_Boolean theToFindVisible);
 
 		/****************** BaseLabel ******************/
 		/**** md5 signature: cb499d8135863e96e585085d0b85c75a ****/
@@ -4663,19 +4983,23 @@ bool
 		Standard_Boolean FindLayer(const TCollection_ExtendedString & aLayer, TDF_Label & lab);
 
 		/****************** FindLayer ******************/
-		/**** md5 signature: 9b527444b267433ee609f9b0fa5dedef ****/
+		/**** md5 signature: 0560222f5f3f399e6f4382dab748b597 ****/
 		%feature("compactdefaultargs") FindLayer;
-		%feature("autodoc", "Finds a layer definition in a layertable and returns its label if found (or null label else).
+		%feature("autodoc", "Finds a layer definition in a layertable by name returns first founded label with the same name if <thetofindwithproperty> is false if <thetofindwithproperty> is true returns first label that contains or not contains visible attr, according to the <thetofindvisible> parameter.
 
 Parameters
 ----------
 aLayer: TCollection_ExtendedString
+theToFindWithProperty: bool,optional
+	default value is Standard_False
+theToFindVisible: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 TDF_Label
 ") FindLayer;
-		TDF_Label FindLayer(const TCollection_ExtendedString & aLayer);
+		TDF_Label FindLayer(const TCollection_ExtendedString & aLayer, const Standard_Boolean theToFindWithProperty = Standard_False, const Standard_Boolean theToFindVisible = Standard_True);
 
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
@@ -4722,7 +5046,7 @@ None
 		/****************** GetLayers ******************/
 		/**** md5 signature: 953f9dad8d91ef1a63d45947fa903a86 ****/
 		%feature("compactdefaultargs") GetLayers;
-		%feature("autodoc", "Return sequence of strings <alayers> that assosiated with label <l>.
+		%feature("autodoc", "Return sequence of strings <alayers> that associated with label <l>.
 
 Parameters
 ----------
@@ -4738,7 +5062,7 @@ bool
 		/****************** GetLayers ******************/
 		/**** md5 signature: 9845310e823a8d2fba61ea655007feb4 ****/
 		%feature("compactdefaultargs") GetLayers;
-		%feature("autodoc", "Return sequence of labels <alayersl> that assosiated with label <l>.
+		%feature("autodoc", "Return sequence of labels <alayersl> that associated with label <l>.
 
 Parameters
 ----------
@@ -4754,7 +5078,7 @@ bool
 		/****************** GetLayers ******************/
 		/**** md5 signature: b624ff551305b796a9b6df6db9f43a65 ****/
 		%feature("compactdefaultargs") GetLayers;
-		%feature("autodoc", "Return sequence of strings that assosiated with label <l>.
+		%feature("autodoc", "Return sequence of strings that associated with label <l>.
 
 Parameters
 ----------
@@ -4769,7 +5093,7 @@ opencascade::handle<TColStd_HSequenceOfExtendedString>
 		/****************** GetLayers ******************/
 		/**** md5 signature: eab19fc3c6a58f076ec77ace40e248d6 ****/
 		%feature("compactdefaultargs") GetLayers;
-		%feature("autodoc", "Return sequence of strings <alayers> that assosiated with shape <sh>.
+		%feature("autodoc", "Return sequence of strings <alayers> that associated with shape <sh>.
 
 Parameters
 ----------
@@ -4785,7 +5109,7 @@ bool
 		/****************** GetLayers ******************/
 		/**** md5 signature: 4a3d6fd1f6bfa465766e7e80bd090710 ****/
 		%feature("compactdefaultargs") GetLayers;
-		%feature("autodoc", "Return sequence of labels <alayerls> that assosiated with shape <sh>.
+		%feature("autodoc", "Return sequence of labels <alayerls> that associated with shape <sh>.
 
 Parameters
 ----------
@@ -4801,7 +5125,7 @@ bool
 		/****************** GetLayers ******************/
 		/**** md5 signature: ed0999253a31a118a0a7dc6ff2cef627 ****/
 		%feature("compactdefaultargs") GetLayers;
-		%feature("autodoc", "Return sequence of strings that assosiated with shape <sh>.
+		%feature("autodoc", "Return sequence of strings that associated with shape <sh>.
 
 Parameters
 ----------
@@ -4858,7 +5182,7 @@ bool
 		/****************** IsSet ******************/
 		/**** md5 signature: da1805c49ea79ebc72a8991642ec3092 ****/
 		%feature("compactdefaultargs") IsSet;
-		%feature("autodoc", "Returns true if label <l> has a layer assosiated with the <alayer>.
+		%feature("autodoc", "Returns true if label <l> has a layer associated with the <alayer>.
 
 Parameters
 ----------
@@ -4874,7 +5198,7 @@ bool
 		/****************** IsSet ******************/
 		/**** md5 signature: a752a69f656dba6fbb8ebf3bb48adf18 ****/
 		%feature("compactdefaultargs") IsSet;
-		%feature("autodoc", "Returns true if label <l> has a layer assosiated with the <alayerl> label.
+		%feature("autodoc", "Returns true if label <l> has a layer associated with the <alayerl> label.
 
 Parameters
 ----------
@@ -4890,7 +5214,7 @@ bool
 		/****************** IsSet ******************/
 		/**** md5 signature: 7acfad2b2c93c72dcbcde07c992eace5 ****/
 		%feature("compactdefaultargs") IsSet;
-		%feature("autodoc", "Returns true if shape <sh> has a layer assosiated with the <alayer>.
+		%feature("autodoc", "Returns true if shape <sh> has a layer associated with the <alayer>.
 
 Parameters
 ----------
@@ -4906,7 +5230,7 @@ bool
 		/****************** IsSet ******************/
 		/**** md5 signature: d8ac3a643dcc3086d6694928e97ec0a0 ****/
 		%feature("compactdefaultargs") IsSet;
-		%feature("autodoc", "Returns true if shape <sh> has a layer assosiated with the <alayerl>.
+		%feature("autodoc", "Returns true if shape <sh> has a layer associated with the <alayerl>.
 
 Parameters
 ----------
@@ -4967,7 +5291,7 @@ opencascade::handle<XCAFDoc_LayerTool>
 		/****************** SetLayer ******************/
 		/**** md5 signature: 3422b6047af75235c376d876de3cf28f ****/
 		%feature("compactdefaultargs") SetLayer;
-		%feature("autodoc", "Sets a link from label <l> to layer defined by <layerl> optional parametr <shapeinonelayer> show could shape be in number of layers or only in one.
+		%feature("autodoc", "Sets a link from label <l> to layer defined by <layerl> optional parameter <shapeinonelayer> show could shape be in number of layers or only in one.
 
 Parameters
 ----------
@@ -4985,7 +5309,7 @@ None
 		/****************** SetLayer ******************/
 		/**** md5 signature: 12728541996e6e62a71cd846d014e4e6 ****/
 		%feature("compactdefaultargs") SetLayer;
-		%feature("autodoc", "Sets a link from label <l> to layer <alayer> in the layertable adds a layer as necessary optional parametr <shapeinonelayer> show could shape be in number of layers or only in one.
+		%feature("autodoc", "Sets a link from label <l> to layer <alayer> in the layertable adds a layer as necessary optional parameter <shapeinonelayer> show could shape be in number of layers or only in one.
 
 Parameters
 ----------
@@ -5003,7 +5327,7 @@ None
 		/****************** SetLayer ******************/
 		/**** md5 signature: 387666dea1ccb3d8d0644bd40bb7a443 ****/
 		%feature("compactdefaultargs") SetLayer;
-		%feature("autodoc", "Sets a link from label that containig shape <sh> with layer that situated at label <layerl>. optional parametr <shapeinonelayer> show could shape be in number of layers or only in one. return false if no such shape <sh> or label <layerl>.
+		%feature("autodoc", "Sets a link from label that containing shape <sh> with layer that situated at label <layerl>. optional parameter <shapeinonelayer> show could shape be in number of layers or only in one. return false if no such shape <sh> or label <layerl>.
 
 Parameters
 ----------
@@ -5021,7 +5345,7 @@ bool
 		/****************** SetLayer ******************/
 		/**** md5 signature: 380cc4543ee2bef02f30e321605a9b90 ****/
 		%feature("compactdefaultargs") SetLayer;
-		%feature("autodoc", "Sets a link from label that containig shape <sh> with layer <alayer>. add <alayer> to layertable if nessesery. optional parametr <shapeinonelayer> show could shape be in number of layers or only in one. return false if no such shape <sh>.
+		%feature("autodoc", "Sets a link from label that containing shape <sh> with layer <alayer>. add <alayer> to layertable if nessesery. optional parameter <shapeinonelayer> show could shape be in number of layers or only in one. return false if no such shape <sh>.
 
 Parameters
 ----------
@@ -5164,6 +5488,202 @@ bool
 %make_alias(XCAFDoc_LayerTool)
 
 %extend XCAFDoc_LayerTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************
+* class XCAFDoc_LengthUnit *
+***************************/
+class XCAFDoc_LengthUnit : public TDF_Attribute {
+	public:
+		/****************** XCAFDoc_LengthUnit ******************/
+		/**** md5 signature: 364d9ddfae96196b2b587c84f83339d1 ****/
+		%feature("compactdefaultargs") XCAFDoc_LengthUnit;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") XCAFDoc_LengthUnit;
+		 XCAFDoc_LengthUnit();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Returns the guid of the attribute.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** GetUnitName ******************/
+		/**** md5 signature: 16cdd69f7f38a7fd849d2d4de7b40582 ****/
+		%feature("compactdefaultargs") GetUnitName;
+		%feature("autodoc", "Length unit description (could be arbitrary text).
+
+Returns
+-------
+TCollection_AsciiString
+") GetUnitName;
+		const TCollection_AsciiString & GetUnitName();
+
+		/****************** GetUnitValue ******************/
+		/**** md5 signature: b755ff03d367a17dc1e3fb9b380cb1d6 ****/
+		%feature("compactdefaultargs") GetUnitValue;
+		%feature("autodoc", "Returns length unit scale factor to meter.
+
+Returns
+-------
+float
+") GetUnitValue;
+		Standard_Real GetUnitValue();
+
+		/****************** ID ******************/
+		/**** md5 signature: 18550bf05502080c8e2a8a16aabb4183 ****/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		virtual const Standard_GUID & ID();
+
+		/****************** IsEmpty ******************/
+		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsEmpty;
+		Standard_Boolean IsEmpty();
+
+		/****************** Paste ******************/
+		/**** md5 signature: 1ca8837621f1ccc366be2408ac59ed9a ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theInto: TDF_Attribute
+theRT: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRT);
+
+		/****************** Restore ******************/
+		/**** md5 signature: 5e22af670b4c476a215a562aa4f78470 ****/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theWith: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		virtual void Restore(const opencascade::handle<TDF_Attribute> & theWith);
+
+		/****************** Set ******************/
+		/**** md5 signature: a2ef88def6650db08f955206b2e6b30b ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Finds or creates a lengthunit attribute @param theunitname - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile @param theunitvalue - length scale factor to meter the lengthunit attribute is returned.
+
+Parameters
+----------
+theLabel: TDF_Label
+theUnitName: TCollection_AsciiString
+theUnitValue: float
+
+Returns
+-------
+opencascade::handle<XCAFDoc_LengthUnit>
+") Set;
+		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const TCollection_AsciiString & theUnitName, const Standard_Real theUnitValue);
+
+		/****************** Set ******************/
+		/**** md5 signature: 6574b11e6a0f9e7ddc0ec3a5fa9d4758 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Finds or creates a lengthunit attribute @param theunitvalue - length scale factor to meter the lengthunit attribute is returned.
+
+Parameters
+----------
+theLabel: TDF_Label
+theUnitValue: float
+
+Returns
+-------
+opencascade::handle<XCAFDoc_LengthUnit>
+") Set;
+		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const Standard_Real theUnitValue);
+
+		/****************** Set ******************/
+		/**** md5 signature: 1e2a91a95c285484e745e7fdfa54df85 ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Finds, or creates, a lengthunit attribute with explicit user defined guid @param theunitname - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile @param theunitvalue - length scale factor to meter the lengthunit attribute is returned.
+
+Parameters
+----------
+theLabel: TDF_Label
+theGUID: Standard_GUID
+theUnitName: TCollection_AsciiString
+theUnitValue: float
+
+Returns
+-------
+opencascade::handle<XCAFDoc_LengthUnit>
+") Set;
+		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const Standard_GUID & theGUID, const TCollection_AsciiString & theUnitName, const Standard_Real theUnitValue);
+
+		/****************** Set ******************/
+		/**** md5 signature: 886c0c008a83c600a3fa609bbf9b32eb ****/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Creates a lengthunit attribute @param theunitname - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile @param theunitvalue - length scale factor to meter.
+
+Parameters
+----------
+theUnitName: TCollection_AsciiString
+theUnitValue: float
+
+Returns
+-------
+None
+") Set;
+		void Set(const TCollection_AsciiString & theUnitName, const Standard_Real theUnitValue);
+
+};
+
+
+%make_alias(XCAFDoc_LengthUnit)
+
+%extend XCAFDoc_LengthUnit {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6897,7 +7417,7 @@ TDF_Label
 		/****************** AddShape ******************/
 		/**** md5 signature: ab520f98165c9ecf40f3fee310927942 ****/
 		%feature("compactdefaultargs") AddShape;
-		%feature("autodoc", "Adds a new top-level (creates and returns a new label) if makeassembly is true, treats topabs_compound shapes as assemblies (creates assembly structure). note: <makeprepare> replace components without location in assmebly by located components to avoid some problems. if autonaming() is true then automatically attaches names.
+		%feature("autodoc", "Adds a new top-level (creates and returns a new label) if makeassembly is true, treats topabs_compound shapes as assemblies (creates assembly structure). note: <makeprepare> replace components without location in assembly by located components to avoid some problems. if autonaming() is true then automatically attaches names.
 
 Parameters
 ----------
@@ -7028,7 +7548,7 @@ bool
 		/****************** FindComponent ******************/
 		/**** md5 signature: ebad0b9e90985456173ebcec788ae386 ****/
 		%feature("compactdefaultargs") FindComponent;
-		%feature("autodoc", "Serach the path of labels in the document, that corresponds the component from any assembly try to search the sequence of labels with location that produce this shape as component of any assembly note: clear sequence of labels before filling.
+		%feature("autodoc", "Search the path of labels in the document, that corresponds the component from any assembly try to search the sequence of labels with location that produce this shape as component of any assembly note: clear sequence of labels before filling.
 
 Parameters
 ----------
@@ -7074,7 +7594,7 @@ TDF_Label
 		/****************** FindSHUO ******************/
 		/**** md5 signature: 167ff534b15905bf97c94dc495725fb6 ****/
 		%feature("compactdefaultargs") FindSHUO;
-		%feature("autodoc", "Searchs the shuo by labels of components from upper_usage componet to next_usage returns null attribute if no shuo found.
+		%feature("autodoc", "Searches the shuo by labels of components from upper_usage component to next_usage returns null attribute if no shuo found.
 
 Parameters
 ----------
@@ -7090,7 +7610,7 @@ bool
 		/****************** FindShape ******************/
 		/**** md5 signature: 845098eb24d8c59fb763486c303b3a63 ****/
 		%feature("compactdefaultargs") FindShape;
-		%feature("autodoc", "Returns the label corresponding to shape s (searches among top-level shapes, not including subcomponents of assemblies and subshapes) if findinstance is false (default), seach for the input shape without location if findinstance is true, searches for the input shape as is. return true if <s> is found.
+		%feature("autodoc", "Returns the label corresponding to shape s (searches among top-level shapes, not including subcomponents of assemblies and subshapes) if findinstance is false (default), search for the input shape without location if findinstance is true, searches for the input shape as is. return true if <s> is found.
 
 Parameters
 ----------
@@ -7158,7 +7678,7 @@ bool
 		/****************** GetAllSHUOInstances ******************/
 		/**** md5 signature: 90f2a7b264bde6bb22428574fcce0f01 ****/
 		%feature("compactdefaultargs") GetAllSHUOInstances;
-		%feature("autodoc", "Seaching for component shapes that styled by shuo returns empty sequence of shape if no any shape is found.
+		%feature("autodoc", "Searching for component shapes that styled by shuo returns empty sequence of shape if no any shape is found.
 
 Parameters
 ----------
@@ -8421,7 +8941,7 @@ Quantity_ColorRGBA
 		/****************** CommonMaterial ******************/
 		/**** md5 signature: 703dc4550b60da27a28ba4b2bb54d11e ****/
 		%feature("compactdefaultargs") CommonMaterial;
-		%feature("autodoc", "Return common material.
+		%feature("autodoc", "Return common material. note that default constructor creates an empty material (@sa xcafdoc_vismaterialcommon::isdefined).
 
 Returns
 -------
@@ -8459,6 +8979,17 @@ XCAFDoc_VisMaterialPBR
                 self->DumpJson(s, depth);
                 return s.str();}
             };
+		/****************** FaceCulling ******************/
+		/**** md5 signature: ea5bcfdb7347bbf80f346aa702bd7b90 ****/
+		%feature("compactdefaultargs") FaceCulling;
+		%feature("autodoc", "Returns if the material is double or single sided; graphic3d_typeofbackfacingmodel_auto by default.
+
+Returns
+-------
+Graphic3d_TypeOfBackfacingModel
+") FaceCulling;
+		Graphic3d_TypeOfBackfacingModel FaceCulling();
+
 		/****************** FillAspect ******************/
 		/**** md5 signature: f4ca83412976fc99587d66a154a321d7 ****/
 		%feature("compactdefaultargs") FillAspect;
@@ -8503,7 +9034,7 @@ Standard_GUID
 		/****************** HasCommonMaterial ******************/
 		/**** md5 signature: aa206ac5c69652ddd1cd9aa40a51da8f ****/
 		%feature("compactdefaultargs") HasCommonMaterial;
-		%feature("autodoc", "Return true if common material is defined.
+		%feature("autodoc", "Return true if common material is defined; false by default.
 
 Returns
 -------
@@ -8514,7 +9045,7 @@ bool
 		/****************** HasPbrMaterial ******************/
 		/**** md5 signature: 417eb60e1913f57f432ccf39e10b5468 ****/
 		%feature("compactdefaultargs") HasPbrMaterial;
-		%feature("autodoc", "Return true if metal-roughness pbr material is defined.
+		%feature("autodoc", "Return true if metal-roughness pbr material is defined; false by default.
 
 Returns
 -------
@@ -8536,7 +9067,7 @@ Standard_GUID
 		/****************** IsDoubleSided ******************/
 		/**** md5 signature: 3f3fa1df3b72a87d0575b414de6fd9d7 ****/
 		%feature("compactdefaultargs") IsDoubleSided;
-		%feature("autodoc", "Specifies whether the material is double sided; true by default.
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
@@ -8600,7 +9131,7 @@ None
 		/****************** PbrMaterial ******************/
 		/**** md5 signature: 70e2786d099bf6b93bcc9776e47c8653 ****/
 		%feature("compactdefaultargs") PbrMaterial;
-		%feature("autodoc", "Return metal-roughness pbr material.
+		%feature("autodoc", "Return metal-roughness pbr material. note that default constructor creates an empty material (@sa xcafdoc_vismaterialpbr::isdefined).
 
 Returns
 -------
@@ -8667,9 +9198,9 @@ None
 		void SetCommonMaterial(const XCAFDoc_VisMaterialCommon & theMaterial);
 
 		/****************** SetDoubleSided ******************/
-		/**** md5 signature: 359726f70d9e1b04cf2c7b707b4605c8 ****/
+		/**** md5 signature: 171db484b26d731ec2830f77a9cf4851 ****/
 		%feature("compactdefaultargs") SetDoubleSided;
-		%feature("autodoc", "Specifies whether the material is double sided.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -8680,6 +9211,21 @@ Returns
 None
 ") SetDoubleSided;
 		void SetDoubleSided(Standard_Boolean theIsDoubleSided);
+
+		/****************** SetFaceCulling ******************/
+		/**** md5 signature: cf7dadbbebda38a3c1720b79e3ec6234 ****/
+		%feature("compactdefaultargs") SetFaceCulling;
+		%feature("autodoc", "Specifies whether the material is double or single sided.
+
+Parameters
+----------
+theFaceCulling: Graphic3d_TypeOfBackfacingModel
+
+Returns
+-------
+None
+") SetFaceCulling;
+		void SetFaceCulling(Graphic3d_TypeOfBackfacingModel theFaceCulling);
 
 		/****************** SetPbrMaterial ******************/
 		/**** md5 signature: 246f3302fcf9beda6246ed99bc1b8073 ****/

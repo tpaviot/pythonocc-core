@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECTBASICSDOCSTRING
 "SelectBasics module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectbasics.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_selectbasics.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECTBASICSDOCSTRING) SelectBasics
 
@@ -68,7 +68,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -335,35 +335,10 @@ NCollection_Vec3<float>
 %nodefaultctor SelectBasics_SelectingVolumeManager;
 class SelectBasics_SelectingVolumeManager {
 	public:
-/* public enums */
-enum SelectionType {
-	Point = 0,
-	Box = 1,
-	Polyline = 2,
-	Unknown = 3,
-};
-
-/* end public enums declaration */
-
-/* python proy classes for enums */
-%pythoncode {
-
-class SelectionType(IntEnum):
-	Point = 0
-	Box = 1
-	Polyline = 2
-	Unknown = 3
-Point = SelectionType.Point
-Box = SelectionType.Box
-Polyline = SelectionType.Polyline
-Unknown = SelectionType.Unknown
-};
-/* end python proxy for enums */
-
 		/****************** DetectedPoint ******************/
 		/**** md5 signature: 1cc054e8948b7dd95fff0b23ad64230e ****/
 		%feature("compactdefaultargs") DetectedPoint;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Return 3d point corresponding to specified depth within picking ray.
 
 Parameters
 ----------
@@ -401,7 +376,7 @@ float
 		/****************** GetActiveSelectionType ******************/
 		/**** md5 signature: 56d78b21d70ce91662f965e54361b877 ****/
 		%feature("compactdefaultargs") GetActiveSelectionType;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Return selection type.
 
 Returns
 -------
@@ -423,7 +398,7 @@ gp_Pnt
 		/****************** GetMousePosition ******************/
 		/**** md5 signature: dc663ddc1edfd7aac3a43a6122139863 ****/
 		%feature("compactdefaultargs") GetMousePosition;
-		%feature("autodoc", "Return mouse coordinates for point selection mode.
+		%feature("autodoc", "Returns mouse coordinates for point selection mode. returns infinite point in case of unsupport of mouse position for this active selection volume.
 
 Returns
 -------
@@ -457,10 +432,21 @@ None
 ") GetPlanes;
 		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<Standard_Real> > & thePlaneEquations);
 
+		/****************** GetViewRayDirection ******************/
+		/**** md5 signature: 0c7768eea029564c9cfc1831463172ef ****/
+		%feature("compactdefaultargs") GetViewRayDirection;
+		%feature("autodoc", "Valid only for point and rectangular selection. returns view ray direction.
+
+Returns
+-------
+gp_Dir
+") GetViewRayDirection;
+		virtual gp_Dir GetViewRayDirection();
+
 		/****************** IsOverlapAllowed ******************/
 		/**** md5 signature: f2e1ce20431c82909b70df801eabd2d8 ****/
 		%feature("compactdefaultargs") IsOverlapAllowed;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns flag indicating if partial overlapping of entities is allowed or should be rejected.
 
 Returns
 -------
@@ -468,10 +454,21 @@ bool
 ") IsOverlapAllowed;
 		virtual Standard_Boolean IsOverlapAllowed();
 
+		/****************** IsScalableActiveVolume ******************/
+		/**** md5 signature: c27f91fde12737acec5b9ec7447775f2 ****/
+		%feature("compactdefaultargs") IsScalableActiveVolume;
+		%feature("autodoc", "Checks if it is possible to scale current active selecting volume.
+
+Returns
+-------
+bool
+") IsScalableActiveVolume;
+		virtual Standard_Boolean IsScalableActiveVolume();
+
 		/****************** Overlaps ******************/
-		/**** md5 signature: 72b3b9147f4c25df38e77cb007eab045 ****/
+		/**** md5 signature: d747c1f315399efa5510406d844e66b8 ****/
 		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by box thebox.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -483,12 +480,12 @@ Returns
 -------
 bool
 ") Overlaps;
-		virtual Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
+		Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
-		/**** md5 signature: c4d2989a14a3b6b7b945864761359688 ****/
+		/**** md5 signature: ad02c57aff478dbb9ccd37f6b975d8db ****/
 		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -501,12 +498,12 @@ Returns
 -------
 bool
 ") Overlaps;
-		virtual Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
+		Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
 
 		/****************** Overlaps ******************/
-		/**** md5 signature: 3947ed629721749a6624af1b76a64e6b ****/
+		/**** md5 signature: 3a4578f15989fa698334fa48608734d7 ****/
 		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by point thepnt.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -517,12 +514,12 @@ Returns
 -------
 bool
 ") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
+		Standard_Boolean Overlaps(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
-		/**** md5 signature: 19dbdf40957c9f9c60452134ba0cc798 ****/
+		/**** md5 signature: 2c48ffca243441d5070db20896ed9bb7 ****/
 		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by point thepnt. does not perform depth calculation, so this method is defined as helper function for inclusion test.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -532,12 +529,12 @@ Returns
 -------
 bool
 ") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt);
+		Standard_Boolean Overlaps(const gp_Pnt & thePnt);
 
 		/****************** Overlaps ******************/
-		/**** md5 signature: 7b7a6a3461966a96a25e6b01b456944f ****/
+		/**** md5 signature: 5d261ebac348da6356e9955565f46997 ****/
 		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in thearrayofpts, taking into account sensitivity type thesenstype.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -549,12 +546,12 @@ Returns
 -------
 bool
 ") Overlaps;
-		virtual Standard_Boolean Overlaps(const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+		Standard_Boolean Overlaps(const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
-		/**** md5 signature: 7942e5ce29609ec05b0fae7fdf359421 ****/
+		/**** md5 signature: 11133a04341e3e346c79060e72efe3aa ****/
 		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in thearrayofpts, taking into account sensitivity type thesenstype.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -566,11 +563,169 @@ Returns
 -------
 bool
 ") Overlaps;
-		virtual Standard_Boolean Overlaps(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+		Standard_Boolean Overlaps(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
-		/**** md5 signature: 468be8c1f2bde407985bdc5b908467e6 ****/
+		/**** md5 signature: 36eec5cecf417a156dfa620892dc5290 ****/
 		%feature("compactdefaultargs") Overlaps;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") Overlaps;
+		Standard_Boolean Overlaps(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, SelectBasics_PickResult & thePickResult);
+
+		/****************** Overlaps ******************/
+		/**** md5 signature: 10a5476373eb96d6f98c2e052cb99c4f ****/
+		%feature("compactdefaultargs") Overlaps;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+thePnt3: gp_Pnt
+theSensType: int
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") Overlaps;
+		Standard_Boolean Overlaps(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: cf352690fe6e8f14e29256111299bf78 ****/
+		%feature("compactdefaultargs") OverlapsBox;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by box thebox.
+
+Parameters
+----------
+theBoxMin: NCollection_Vec3<float>
+theBoxMax: NCollection_Vec3<float>
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: 6a9476f5f0056d3a045e2d26d3a0d4c8 ****/
+		%feature("compactdefaultargs") OverlapsBox;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+
+Parameters
+----------
+theBoxMin: NCollection_Vec3<float>
+theBoxMax: NCollection_Vec3<float>
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: c900e6ae11df67bcc70fbb50f6b570dc ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: 5f67d458875f1aefc78c51b6436b3f88 ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: 60fbb482729178a9e23a299d60c9d746 ****/
+		%feature("compactdefaultargs") OverlapsPoint;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by point thepnt.
+
+Parameters
+----------
+thePnt: gp_Pnt
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: 7d294e46b6d94e1ca91f519f8b1d482d ****/
+		%feature("compactdefaultargs") OverlapsPoint;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by point thepnt. does not perform depth calculation, so this method is defined as helper function for inclusion test.
+
+Parameters
+----------
+thePnt: gp_Pnt
+
+Returns
+-------
+bool
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
+
+		/****************** OverlapsPolygon ******************/
+		/**** md5 signature: 3a1e3541e3075520cd2fcde5b9115bf8 ****/
+		%feature("compactdefaultargs") OverlapsPolygon;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in thearrayofpts, taking into account sensitivity type thesenstype.
+
+Parameters
+----------
+theArrayOfPts: TColgp_Array1OfPnt
+theSensType: int
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsPolygon;
+		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSegment ******************/
+		/**** md5 signature: a823340c5214f1edddbd9ffe133acbee ****/
+		%feature("compactdefaultargs") OverlapsSegment;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by line segment with start point at thept1 and end point at thept2.
 
 Parameters
@@ -582,12 +737,47 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePt1, const gp_Pnt & thePt2, SelectBasics_PickResult & thePickResult);
+") OverlapsSegment;
+		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePt1, const gp_Pnt & thePt2, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 6c2231a8cdc0689ab90add91a851ffb8 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: 87e22026b65bcca16d984778fe81e17c ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: 32b443cedf236c938f70d5163436b508 ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsTriangle ******************/
+		/**** md5 signature: 3271f8a7e98caa5cd64a9dcea6559740 ****/
+		%feature("compactdefaultargs") OverlapsTriangle;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by triangle with vertices thept1, thept2 and thept3, taking into account sensitivity type thesenstype.
 
 Parameters
@@ -601,8 +791,8 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePt1, const gp_Pnt & thePt2, const gp_Pnt & thePt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+") OverlapsTriangle;
+		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePt1, const gp_Pnt & thePt2, const gp_Pnt & thePt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
 };
 

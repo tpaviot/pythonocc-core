@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -21,16 +21,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<BRepAlgo.hxx>
 #include<BRepAlgo_AsDes.hxx>
-#include<BRepAlgo_BooleanOperation.hxx>
-#include<BRepAlgo_CheckStatus.hxx>
-#include<BRepAlgo_Common.hxx>
-#include<BRepAlgo_Cut.hxx>
 #include<BRepAlgo_FaceRestrictor.hxx>
-#include<BRepAlgo_Fuse.hxx>
 #include<BRepAlgo_Image.hxx>
 #include<BRepAlgo_Loop.hxx>
 #include<BRepAlgo_NormalProjection.hxx>
-#include<BRepAlgo_Section.hxx>
-#include<BRepAlgo_Tool.hxx>
 
 #endif // BREPALGO_HXX

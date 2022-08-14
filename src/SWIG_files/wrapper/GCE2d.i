@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCE2DDOCSTRING
 "GCE2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gce2d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_gce2d.html"
 %enddef
 %module (package="OCC.Core", docstring=GCE2DDOCSTRING) GCE2d
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -131,7 +131,7 @@ None
 		/****************** GCE2d_MakeMirror ******************/
 		/**** md5 signature: 85ef46a2c1cffef606a4e9650e4feea1 ****/
 		%feature("compactdefaultargs") GCE2d_MakeMirror;
-		%feature("autodoc", "Make a symetry transformation af axis defined by <point> and <direc>.
+		%feature("autodoc", "Make a symmetry transformation af axis defined by <point> and <direc>.
 
 Parameters
 ----------
@@ -1311,7 +1311,7 @@ None
 		/****************** GCE2d_MakeSegment ******************/
 		/**** md5 signature: ff0b4f2ad6a142afbb18a36fe5176f14 ****/
 		%feature("compactdefaultargs") GCE2d_MakeSegment;
-		%feature("autodoc", "Make a segment of line from the line <line> between the two parameters u1 and u2. status is 'sameparamters' if <u1> is equal <u2>.
+		%feature("autodoc", "Make a segment of line from the line <line> between the two parameters u1 and u2. status is 'sameparameters' if <u1> is equal <u2>.
 
 Parameters
 ----------

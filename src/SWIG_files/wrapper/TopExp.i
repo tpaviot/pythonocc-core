@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPEXPDOCSTRING
 "TopExp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topexp.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_topexp.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPEXPDOCSTRING) TopExp
 
@@ -66,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -156,36 +156,44 @@ None
 		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_IndexedMapOfShape & M);
 
 		/****************** MapShapes ******************/
-		/**** md5 signature: 94f7d823ed41941f39e632a563df0e48 ****/
+		/**** md5 signature: 8ad4c7fd7687fc41855cb624a1a10e23 ****/
 		%feature("compactdefaultargs") MapShapes;
-		%feature("autodoc", "Stores in the map <m> all the sub-shapes of <s>.
+		%feature("autodoc", "Stores in the map <m> all the sub-shapes of <s>. - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
 
 Parameters
 ----------
 S: TopoDS_Shape
 M: TopTools_IndexedMapOfShape
+cumOri: bool,optional
+	default value is Standard_True
+cumLoc: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 None
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
+		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
 		/****************** MapShapes ******************/
-		/**** md5 signature: 9dc648d2173c121ef4f4177538e54c8f ****/
+		/**** md5 signature: 59a69a04bbcca596c45fa1794e17b17f ****/
 		%feature("compactdefaultargs") MapShapes;
-		%feature("autodoc", "Stores in the map <m> all the sub-shapes of <s>.
+		%feature("autodoc", "Stores in the map <m> all the sub-shapes of <s>. - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
 
 Parameters
 ----------
 S: TopoDS_Shape
 M: TopTools_MapOfShape
+cumOri: bool,optional
+	default value is Standard_True
+cumLoc: bool,optional
+	default value is Standard_True
 
 Returns
 -------
 None
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M);
+		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
 		/****************** MapShapesAndAncestors ******************/
 		/**** md5 signature: fc7e7494ab1de4025c967815075492e6 ****/
@@ -278,7 +286,7 @@ class TopExp_Explorer {
 		/****************** TopExp_Explorer ******************/
 		/**** md5 signature: 114ebc7b26413ef0fdc8ef82c2742207 ****/
 		%feature("compactdefaultargs") TopExp_Explorer;
-		%feature("autodoc", "Creates an empty explorer, becomes usefull after init.
+		%feature("autodoc", "Creates an empty explorer, becomes useful after init.
 
 Returns
 -------
@@ -327,7 +335,7 @@ TopoDS_Shape
 		const TopoDS_Shape Current();
 
 		/****************** Depth ******************/
-		/**** md5 signature: b6eaa771d2fe709741b9c1e8ce5ec68f ****/
+		/**** md5 signature: c4b1854410c3a66cc10b6255dc50b8fa ****/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Returns the current depth of the exploration. 0 is the shape to explore itself.
 
@@ -337,16 +345,16 @@ int
 ") Depth;
 		Standard_Integer Depth();
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "No available documentation.
+		/****************** ExploredShape ******************/
+		/**** md5 signature: c8a47d07240c1a2b5ff731be2f859ced ****/
+		%feature("compactdefaultargs") ExploredShape;
+		%feature("autodoc", "Return explored shape.
 
 Returns
 -------
-None
-") Destroy;
-		void Destroy();
+TopoDS_Shape
+") ExploredShape;
+		const TopoDS_Shape ExploredShape();
 
 		/****************** Init ******************/
 		/**** md5 signature: 4f638c73ea412faa633dc32890a0e8ef ****/
@@ -367,7 +375,7 @@ None
 		void Init(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
 		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Returns true if there are more shapes in the exploration.
 

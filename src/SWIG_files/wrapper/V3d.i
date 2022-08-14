@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define V3DDOCSTRING
 "V3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_v3d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_v3d.html"
 %enddef
 %module (package="OCC.Core", docstring=V3DDOCSTRING) V3d
 
@@ -46,9 +46,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_v3d.html"
 #include<gp_module.hxx>
 #include<Quantity_module.hxx>
 #include<Aspect_module.hxx>
+#include<Prs3d_module.hxx>
+#include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
-#include<TCollection_module.hxx>
 #include<Image_module.hxx>
 #include<TShort_module.hxx>
 #include<TColQuantity_module.hxx>
@@ -73,9 +74,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_v3d.html"
 %import gp.i
 %import Quantity.i
 %import Aspect.i
+%import Prs3d.i
+%import TCollection.i
 %import TColStd.i
 %import Bnd.i
-%import TCollection.i
 %import Image.i
 
 %pythoncode {
@@ -84,15 +86,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum V3d_TypeOfPickCamera {
-	V3d_POSITIONCAMERA = 0,
-	V3d_SPACECAMERA = 1,
-	V3d_RADIUSTEXTCAMERA = 2,
-	V3d_ExtRADIUSCAMERA = 3,
-	V3d_IntRADIUSCAMERA = 4,
-	V3d_NOTHINGCAMERA = 5,
-};
-
 enum V3d_TypeOfVisualization {
 	V3d_WIREFRAME = 0,
 	V3d_ZBUFFER = 1,
@@ -161,46 +154,10 @@ enum V3d_TypeOfAxe {
 	V3d_Z = 2,
 };
 
-enum V3d_TypeOfRepresentation {
-	V3d_SIMPLE = 0,
-	V3d_COMPLETE = 1,
-	V3d_PARTIAL = 2,
-	V3d_SAMELAST = 3,
-};
-
-enum V3d_TypeOfBackfacingModel {
-	V3d_TOBM_AUTOMATIC = 0,
-	V3d_TOBM_ALWAYS_DISPLAYED = 1,
-	V3d_TOBM_NEVER_DISPLAYED = 2,
-};
-
-enum V3d_TypeOfPickLight {
-	V3d_POSITIONLIGHT = 0,
-	V3d_SPACELIGHT = 1,
-	V3d_RADIUSTEXTLIGHT = 2,
-	V3d_ExtRADIUSLIGHT = 3,
-	V3d_IntRADIUSLIGHT = 4,
-	V3d_NOTHING = 5,
-};
-
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
-
-class V3d_TypeOfPickCamera(IntEnum):
-	V3d_POSITIONCAMERA = 0
-	V3d_SPACECAMERA = 1
-	V3d_RADIUSTEXTCAMERA = 2
-	V3d_ExtRADIUSCAMERA = 3
-	V3d_IntRADIUSCAMERA = 4
-	V3d_NOTHINGCAMERA = 5
-V3d_POSITIONCAMERA = V3d_TypeOfPickCamera.V3d_POSITIONCAMERA
-V3d_SPACECAMERA = V3d_TypeOfPickCamera.V3d_SPACECAMERA
-V3d_RADIUSTEXTCAMERA = V3d_TypeOfPickCamera.V3d_RADIUSTEXTCAMERA
-V3d_ExtRADIUSCAMERA = V3d_TypeOfPickCamera.V3d_ExtRADIUSCAMERA
-V3d_IntRADIUSCAMERA = V3d_TypeOfPickCamera.V3d_IntRADIUSCAMERA
-V3d_NOTHINGCAMERA = V3d_TypeOfPickCamera.V3d_NOTHINGCAMERA
 
 class V3d_TypeOfVisualization(IntEnum):
 	V3d_WIREFRAME = 0
@@ -317,38 +274,6 @@ class V3d_TypeOfAxe(IntEnum):
 V3d_X = V3d_TypeOfAxe.V3d_X
 V3d_Y = V3d_TypeOfAxe.V3d_Y
 V3d_Z = V3d_TypeOfAxe.V3d_Z
-
-class V3d_TypeOfRepresentation(IntEnum):
-	V3d_SIMPLE = 0
-	V3d_COMPLETE = 1
-	V3d_PARTIAL = 2
-	V3d_SAMELAST = 3
-V3d_SIMPLE = V3d_TypeOfRepresentation.V3d_SIMPLE
-V3d_COMPLETE = V3d_TypeOfRepresentation.V3d_COMPLETE
-V3d_PARTIAL = V3d_TypeOfRepresentation.V3d_PARTIAL
-V3d_SAMELAST = V3d_TypeOfRepresentation.V3d_SAMELAST
-
-class V3d_TypeOfBackfacingModel(IntEnum):
-	V3d_TOBM_AUTOMATIC = 0
-	V3d_TOBM_ALWAYS_DISPLAYED = 1
-	V3d_TOBM_NEVER_DISPLAYED = 2
-V3d_TOBM_AUTOMATIC = V3d_TypeOfBackfacingModel.V3d_TOBM_AUTOMATIC
-V3d_TOBM_ALWAYS_DISPLAYED = V3d_TypeOfBackfacingModel.V3d_TOBM_ALWAYS_DISPLAYED
-V3d_TOBM_NEVER_DISPLAYED = V3d_TypeOfBackfacingModel.V3d_TOBM_NEVER_DISPLAYED
-
-class V3d_TypeOfPickLight(IntEnum):
-	V3d_POSITIONLIGHT = 0
-	V3d_SPACELIGHT = 1
-	V3d_RADIUSTEXTLIGHT = 2
-	V3d_ExtRADIUSLIGHT = 3
-	V3d_IntRADIUSLIGHT = 4
-	V3d_NOTHING = 5
-V3d_POSITIONLIGHT = V3d_TypeOfPickLight.V3d_POSITIONLIGHT
-V3d_SPACELIGHT = V3d_TypeOfPickLight.V3d_SPACELIGHT
-V3d_RADIUSTEXTLIGHT = V3d_TypeOfPickLight.V3d_RADIUSTEXTLIGHT
-V3d_ExtRADIUSLIGHT = V3d_TypeOfPickLight.V3d_ExtRADIUSLIGHT
-V3d_IntRADIUSLIGHT = V3d_TypeOfPickLight.V3d_IntRADIUSLIGHT
-V3d_NOTHING = V3d_TypeOfPickLight.V3d_NOTHING
 };
 /* end python proxy for enums */
 
@@ -387,16 +312,14 @@ V3d_NOTHING = V3d_TypeOfPickLight.V3d_NOTHING
 
 /* typedefs */
 typedef Handle_Graphic3d_CLight Handle_V3d_Light;
-typedef Standard_Real V3d_Coordinate;
 typedef Graphic3d_CLight V3d_Light;
 typedef NCollection_List<opencascade::handle<Graphic3d_CLight>> V3d_ListOfLight;
 typedef V3d_ListOfLight::Iterator V3d_ListOfLightIterator;
 typedef NCollection_List<opencascade::handle<V3d_View>> V3d_ListOfView;
 typedef V3d_ListOfView::Iterator V3d_ListOfViewIterator;
-typedef Standard_Real V3d_Parameter;
+typedef Graphic3d_TypeOfBackfacingModel V3d_TypeOfBackfacingModel;
 typedef Graphic3d_TypeOfLightSource V3d_TypeOfLight;
 typedef Graphic3d_TypeOfShadingModel V3d_TypeOfShadingModel;
-typedef V3d_View * V3d_ViewPointer;
 typedef V3d_Viewer * V3d_ViewerPointer;
 /* end typedefs declaration */
 
@@ -761,7 +684,7 @@ opencascade::handle<Graphic3d_ClipPlane>
 		/****************** Display ******************/
 		/**** md5 signature: 4dc525f17f40f087cacdd085902a90ab ****/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "Display the plane representation in the choosen view.
+		%feature("autodoc", "Display the plane representation in the chosen view.
 
 Parameters
 ----------
@@ -999,6 +922,47 @@ None
 ") V3d_Trihedron;
 		 V3d_Trihedron();
 
+		/****************** ArrowAspect ******************/
+		/**** md5 signature: 83baff8406de18ecb598939c082e7c98 ****/
+		%feature("compactdefaultargs") ArrowAspect;
+		%feature("autodoc", "Return shading aspect for specified axis. @param theaxis [in] axis index returns shading aspect.
+
+Parameters
+----------
+theAxis: V3d_TypeOfAxe
+
+Returns
+-------
+opencascade::handle<Prs3d_ShadingAspect>
+") ArrowAspect;
+		const opencascade::handle<Prs3d_ShadingAspect> & ArrowAspect(V3d_TypeOfAxe theAxis);
+
+		/****************** ArrowDiameter ******************/
+		/**** md5 signature: 8cf626b6e8e6be25604ce22c0e17f051 ****/
+		%feature("compactdefaultargs") ArrowDiameter;
+		%feature("autodoc", "Return arrow diameter.
+
+Returns
+-------
+float
+") ArrowDiameter;
+		Standard_Real ArrowDiameter();
+
+		/****************** Display ******************/
+		/**** md5 signature: 42c2ef5e51bf295103c2f258b27a2422 ****/
+		%feature("compactdefaultargs") Display;
+		%feature("autodoc", "Display trihedron.
+
+Parameters
+----------
+theView: V3d_View
+
+Returns
+-------
+None
+") Display;
+		void Display(const opencascade::handle<V3d_View> & theView);
+
 		/****************** Display ******************/
 		/**** md5 signature: 2bae79cabd98629a1614937c039a142a ****/
 		%feature("compactdefaultargs") Display;
@@ -1033,6 +997,80 @@ None
 ") Erase;
 		void Erase();
 
+		/****************** IsWireframe ******************/
+		/**** md5 signature: 80fcc45160f20874f67947be21756c56 ****/
+		%feature("compactdefaultargs") IsWireframe;
+		%feature("autodoc", "Return true if wireframe presentation is set; false by default.
+
+Returns
+-------
+bool
+") IsWireframe;
+		bool IsWireframe();
+
+		/****************** Label ******************/
+		/**** md5 signature: 3839a51c4a82f97b7a3db502d3596fa5 ****/
+		%feature("compactdefaultargs") Label;
+		%feature("autodoc", "Return axis text. @param theaxis [in] axis index returns text of the label.
+
+Parameters
+----------
+theAxis: V3d_TypeOfAxe
+
+Returns
+-------
+TCollection_AsciiString
+") Label;
+		const TCollection_AsciiString & Label(V3d_TypeOfAxe theAxis);
+
+		/****************** LabelAspect ******************/
+		/**** md5 signature: 3cebd0912ae3832d59578142c1820ac3 ****/
+		%feature("compactdefaultargs") LabelAspect;
+		%feature("autodoc", "Return text aspect for specified axis. @param theaxis [in] axis index returns text aspect.
+
+Parameters
+----------
+theAxis: V3d_TypeOfAxe
+
+Returns
+-------
+opencascade::handle<Prs3d_TextAspect>
+") LabelAspect;
+		const opencascade::handle<Prs3d_TextAspect> & LabelAspect(V3d_TypeOfAxe theAxis);
+
+		/****************** NbFacets ******************/
+		/**** md5 signature: f0a78c1b1a92f4693779c9637ca3a493 ****/
+		%feature("compactdefaultargs") NbFacets;
+		%feature("autodoc", "Return number of facets for tessellation.
+
+Returns
+-------
+int
+") NbFacets;
+		Standard_Integer NbFacets();
+
+		/****************** OriginAspect ******************/
+		/**** md5 signature: 81a6eb092b2a0e718e37986026d946c4 ****/
+		%feature("compactdefaultargs") OriginAspect;
+		%feature("autodoc", "Return shading aspect of origin sphere.
+
+Returns
+-------
+opencascade::handle<Prs3d_ShadingAspect>
+") OriginAspect;
+		const opencascade::handle<Prs3d_ShadingAspect> & OriginAspect();
+
+		/****************** Scale ******************/
+		/**** md5 signature: fff8b387c443c3e852a1bfc198a5a373 ****/
+		%feature("compactdefaultargs") Scale;
+		%feature("autodoc", "Return scale factor.
+
+Returns
+-------
+float
+") Scale;
+		Standard_Real Scale();
+
 		/****************** SetArrowDiameter ******************/
 		/**** md5 signature: 4c0619d2a8305d420bc1f36865af3099 ****/
 		%feature("compactdefaultargs") SetArrowDiameter;
@@ -1064,6 +1102,40 @@ Returns
 None
 ") SetArrowsColor;
 		void SetArrowsColor(const Quantity_Color & theXColor, const Quantity_Color & theYColor, const Quantity_Color & theZColor);
+
+		/****************** SetLabels ******************/
+		/**** md5 signature: efe544ec018c24bb6a8f78658c7dddb9 ****/
+		%feature("compactdefaultargs") SetLabels;
+		%feature("autodoc", "Setup per-axis text.
+
+Parameters
+----------
+theX: TCollection_AsciiString
+theY: TCollection_AsciiString
+theZ: TCollection_AsciiString
+
+Returns
+-------
+None
+") SetLabels;
+		void SetLabels(const TCollection_AsciiString & theX, const TCollection_AsciiString & theY, const TCollection_AsciiString & theZ);
+
+		/****************** SetLabelsColor ******************/
+		/**** md5 signature: 2e294d0668cecdbabc01b2838203a9e2 ****/
+		%feature("compactdefaultargs") SetLabelsColor;
+		%feature("autodoc", "Setup per-label color.
+
+Parameters
+----------
+theXColor: Quantity_Color
+theYColor: Quantity_Color
+theZColor: Quantity_Color
+
+Returns
+-------
+None
+") SetLabelsColor;
+		void SetLabelsColor(const Quantity_Color & theXColor, const Quantity_Color & theYColor, const Quantity_Color & theZColor);
 
 		/****************** SetLabelsColor ******************/
 		/**** md5 signature: 006a9f4a6dfc02d7949e81f4ddc4da24 ****/
@@ -1154,6 +1226,28 @@ Returns
 None
 ") SetWireframe;
 		void SetWireframe(const Standard_Boolean theAsWireframe);
+
+		/****************** SizeRatio ******************/
+		/**** md5 signature: ecc16fdaec68cd0580ce5d85ea1f0908 ****/
+		%feature("compactdefaultargs") SizeRatio;
+		%feature("autodoc", "Return size ratio factor.
+
+Returns
+-------
+float
+") SizeRatio;
+		Standard_Real SizeRatio();
+
+		/****************** TransformPersistence ******************/
+		/**** md5 signature: d358c515ebf5e1ead4666e4a5cd605ce ****/
+		%feature("compactdefaultargs") TransformPersistence;
+		%feature("autodoc", "Return trihedron position.
+
+Returns
+-------
+opencascade::handle<Graphic3d_TransformPers>
+") TransformPersistence;
+		const opencascade::handle<Graphic3d_TransformPers> TransformPersistence();
 
 };
 
@@ -1335,15 +1429,15 @@ None
 		void AxialScale(const Standard_Integer Dx, const Standard_Integer Dy, const V3d_TypeOfAxe Axis);
 
 		/****************** BackFacingModel ******************/
-		/**** md5 signature: 1ec7876cad7f7c2370e67cc7b55e118f ****/
+		/**** md5 signature: f3593149121845487191e085f1d8af64 ****/
 		%feature("compactdefaultargs") BackFacingModel;
-		%feature("autodoc", "Returns current state of the back faces display.
+		%feature("autodoc", "Returns current state of the back faces display; graphic3d_typeofbackfacingmodel_auto by default, which means that backface culling is defined by each presentation.
 
 Returns
 -------
-V3d_TypeOfBackfacingModel
+Graphic3d_TypeOfBackfacingModel
 ") BackFacingModel;
-		V3d_TypeOfBackfacingModel BackFacingModel();
+		Graphic3d_TypeOfBackfacingModel BackFacingModel();
 
 		/****************** BackgroundColor ******************/
 		/**** md5 signature: 496c0a03dfb1fb7b8076d2c2846a387c ****/
@@ -1396,9 +1490,9 @@ Graphic3d_RenderingParams
 		Graphic3d_RenderingParams & ChangeRenderingParams();
 
 		/****************** ClearPBREnvironment ******************/
-		/**** md5 signature: 74a6106fb34ade1ffeef0dedb8ca60c4 ****/
+		/**** md5 signature: ceb898c642bc368ae8e055ac8a0fd7bd ****/
 		%feature("compactdefaultargs") ClearPBREnvironment;
-		%feature("autodoc", "Fills pbr specular probe and irradiance map with white color. so that environment indirect illumination will be constant and will be fully controlled by ambient light sources. if pbr is unavailable it does nothing.
+		%feature("autodoc", "Disables ibl from background cubemap; fills pbr specular probe and irradiance map with white color.
 
 Parameters
 ----------
@@ -1803,9 +1897,9 @@ float
 		Standard_Real Focale();
 
 		/****************** GeneratePBREnvironment ******************/
-		/**** md5 signature: 985c23f09799e743cfb844b342b6182d ****/
+		/**** md5 signature: 275e4d88c4784bc5b0db60d561af11c8 ****/
 		%feature("compactdefaultargs") GeneratePBREnvironment;
-		%feature("autodoc", "Generates pbr specular probe and irradiance map in order to provide environment indirect illumination in pbr shading model (image based lighting). the source of environment data is background cubemap. if pbr is unavailable it does nothing. if pbr is available but there is no cubemap being set to background it clears all ibl maps (see 'clearpbrenvironment').
+		%feature("autodoc", "Activates ibl from background cubemap.
 
 Parameters
 ----------
@@ -1984,6 +2078,17 @@ Returns
 bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
+
+		/****************** IsImageBasedLighting ******************/
+		/**** md5 signature: 8dbfce401659fd5ec60c2f81c736a1ca ****/
+		%feature("compactdefaultargs") IsImageBasedLighting;
+		%feature("autodoc", "Returns true if ibl (image based lighting) from background cubemap is enabled.
+
+Returns
+-------
+bool
+") IsImageBasedLighting;
+		Standard_Boolean IsImageBasedLighting();
 
 		/****************** IsInvalidated ******************/
 		/**** md5 signature: ec866d0cff19cca721935f26d32ef8c3 ****/
@@ -2271,7 +2376,7 @@ None
 		virtual void RedrawImmediate();
 
 		/****************** Remove ******************/
-		/**** md5 signature: 68f9a7e257a5149d50e9cf0219513119 ****/
+		/**** md5 signature: 0346504d7ac570fc8960fb72d5ad5f20 ****/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "Destroys the view.
 
@@ -2541,20 +2646,20 @@ None
 		void SetAxis(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real Vx, const Standard_Real Vy, const Standard_Real Vz);
 
 		/****************** SetBackFacingModel ******************/
-		/**** md5 signature: 30c0e59124d52b71521a2d2406c785bc ****/
+		/**** md5 signature: 56ed000419d4071d1041855cec2bbe5f ****/
 		%feature("compactdefaultargs") SetBackFacingModel;
-		%feature("autodoc", "Manages display of the back faces when <amodel> is tobm_automatic the object backfaces are displayed only for surface objects and never displayed for solid objects. this was the previous mode. <amodel> is tobm_always_displayed the object backfaces are always displayed both for surfaces or solids. <amodel> is tobm_never_displayed the object backfaces are never displayed.
+		%feature("autodoc", "Manages display of the back faces.
 
 Parameters
 ----------
-theModel: V3d_TypeOfBackfacingModel,optional
-	default value is V3d_TOBM_AUTOMATIC
+theModel: Graphic3d_TypeOfBackfacingModel,optional
+	default value is Graphic3d_TypeOfBackfacingModel_Auto
 
 Returns
 -------
 None
 ") SetBackFacingModel;
-		void SetBackFacingModel(const V3d_TypeOfBackfacingModel theModel = V3d_TOBM_AUTOMATIC);
+		void SetBackFacingModel(const Graphic3d_TypeOfBackfacingModel theModel = Graphic3d_TypeOfBackfacingModel_Auto);
 
 		/****************** SetBackgroundColor ******************/
 		/**** md5 signature: b5a0d9f80a350764624098a365179a93 ****/
@@ -2647,7 +2752,7 @@ None
 		void SetBackgroundImage(const opencascade::handle<Graphic3d_Texture2D> & theTexture, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetBgGradientColors ******************/
-		/**** md5 signature: 70e7f0659696f72c3b6eb6ae9487a67f ****/
+		/**** md5 signature: 3049343ce59ac7e41a044f16276d9ed3 ****/
 		%feature("compactdefaultargs") SetBgGradientColors;
 		%feature("autodoc", "Defines the gradient background colors of the view by supplying the colors and the fill method (horizontal by default).
 
@@ -2656,7 +2761,7 @@ Parameters
 theColor1: Quantity_Color
 theColor2: Quantity_Color
 theFillStyle: Aspect_GradientFillMethod,optional
-	default value is Aspect_GFM_HOR
+	default value is Aspect_GradientFillMethod_Horizontal
 theToUpdate: bool,optional
 	default value is Standard_False
 
@@ -2664,17 +2769,17 @@ Returns
 -------
 None
 ") SetBgGradientColors;
-		void SetBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GFM_HOR, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GradientFillMethod_Horizontal, const Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetBgGradientStyle ******************/
-		/**** md5 signature: d6e6564ac4fa074ae7a9d23e8d722922 ****/
+		/**** md5 signature: 45ec7afa0094d85e0d4e8c7f3395a8f1 ****/
 		%feature("compactdefaultargs") SetBgGradientStyle;
 		%feature("autodoc", "Defines the gradient background fill method of the view.
 
 Parameters
 ----------
 theMethod: Aspect_GradientFillMethod,optional
-	default value is Aspect_GFM_HOR
+	default value is Aspect_GradientFillMethod_Horizontal
 theToUpdate: bool,optional
 	default value is Standard_False
 
@@ -2682,7 +2787,7 @@ Returns
 -------
 None
 ") SetBgGradientStyle;
-		void SetBgGradientStyle(const Aspect_GradientFillMethod theMethod = Aspect_GFM_HOR, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBgGradientStyle(const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal, const Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetBgImageStyle ******************/
 		/**** md5 signature: b2cd58264970b84f205845e49cfab5e5 ****/
@@ -2746,21 +2851,6 @@ Returns
 None
 ") SetClipPlanes;
 		void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
-
-		/****************** SetClipPlanes ******************/
-		/**** md5 signature: 07b77eb94c54463d3580213e6e88f118 ****/
-		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePlanes: Graphic3d_SequenceOfHClipPlane
-
-Returns
--------
-None
-") SetClipPlanes;
-		void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane & thePlanes);
 
 		/****************** SetComputedMode ******************/
 		/**** md5 signature: 269d3bae92efe31d98d859df0012cf4d ****/
@@ -2880,6 +2970,23 @@ Returns
 None
 ") SetGridActivity;
 		void SetGridActivity(const Standard_Boolean aFlag);
+
+		/****************** SetImageBasedLighting ******************/
+		/**** md5 signature: 560b4eb4d03f5ccdff44b61c15156a72 ****/
+		%feature("compactdefaultargs") SetImageBasedLighting;
+		%feature("autodoc", "Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap @param[in] thetoupdate redraw the view.
+
+Parameters
+----------
+theToEnableIBL: bool
+theToUpdate: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") SetImageBasedLighting;
+		void SetImageBasedLighting(Standard_Boolean theToEnableIBL, Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetImmediateUpdate ******************/
 		/**** md5 signature: b930e6c2cf96f1b5cd3b04092063cb66 ****/
@@ -3020,7 +3127,7 @@ None
 		/****************** SetShadingModel ******************/
 		/**** md5 signature: 126435b0809b0e46e5c779eaa28d91a9 ****/
 		%feature("compactdefaultargs") SetShadingModel;
-		%feature("autodoc", "Defines the shading model for the visualization. various models are available.
+		%feature("autodoc", "Defines the shading model for the visualization.
 
 Parameters
 ----------
@@ -3035,7 +3142,7 @@ None
 		/****************** SetSize ******************/
 		/**** md5 signature: 93bdf33a4c6cf5665958dc490a88ba2b ****/
 		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "Defines the view projection size in its maximum dimension, keeping the inital height/width ratio unchanged.
+		%feature("autodoc", "Defines the view projection size in its maximum dimension, keeping the initial height/width ratio unchanged.
 
 Parameters
 ----------
@@ -3198,7 +3305,7 @@ None
 		/****************** ShadingModel ******************/
 		/**** md5 signature: 79d21cf733a0311d63fb301f9c1a0521 ****/
 		%feature("compactdefaultargs") ShadingModel;
-		%feature("autodoc", "Returns the current shading model.
+		%feature("autodoc", "Returns the current shading model; graphic3d_typeofshadingmodel_phong by default.
 
 Returns
 -------
@@ -3417,6 +3524,22 @@ Returns
 None
 ") TriedronErase;
 		void TriedronErase();
+
+		/****************** Trihedron ******************/
+		/**** md5 signature: d2b86577fb9ee5b149ac9309e6b7a1fb ****/
+		%feature("compactdefaultargs") Trihedron;
+		%feature("autodoc", "Returns trihedron object.
+
+Parameters
+----------
+theToCreate: bool,optional
+	default value is true
+
+Returns
+-------
+opencascade::handle<V3d_Trihedron>
+") Trihedron;
+		const opencascade::handle<V3d_Trihedron> & Trihedron(bool theToCreate = true);
 
 		/****************** Turn ******************/
 		/**** md5 signature: caf9640300c113b68ec729c85a8d5ab2 ****/
@@ -3736,38 +3859,6 @@ None
 ") V3d_Viewer;
 		 V3d_Viewer(const opencascade::handle<Graphic3d_GraphicDriver> & theDriver);
 
-		/****************** V3d_Viewer ******************/
-		/**** md5 signature: 4a8b671d69f357536c855bb0546e7003 ****/
-		%feature("compactdefaultargs") V3d_Viewer;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theDriver: Graphic3d_GraphicDriver
-theName: Standard_ExtString
-theDomain: char *,optional
-	default value is ""
-theViewSize: float,optional
-	default value is 1000.0
-theViewProj: V3d_TypeOfOrientation,optional
-	default value is V3d_XposYnegZpos
-theViewBackground: Quantity_Color,optional
-	default value is Quantity_NOC_GRAY30
-theVisualization: V3d_TypeOfVisualization,optional
-	default value is V3d_ZBUFFER
-theShadingModel: Graphic3d_TypeOfShadingModel,optional
-	default value is Graphic3d_TOSM_VERTEX
-theComputedMode: bool,optional
-	default value is Standard_True
-theDefaultComputedMode: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") V3d_Viewer;
-		 V3d_Viewer(const opencascade::handle<Graphic3d_GraphicDriver> & theDriver, const Standard_ExtString theName, const char * theDomain = "", const Standard_Real theViewSize = 1000.0, const V3d_TypeOfOrientation theViewProj = V3d_XposYnegZpos, const Quantity_Color & theViewBackground = Quantity_NOC_GRAY30, const V3d_TypeOfVisualization theVisualization = V3d_ZBUFFER, const Graphic3d_TypeOfShadingModel theShadingModel = Graphic3d_TOSM_VERTEX, const Standard_Boolean theComputedMode = Standard_True, const Standard_Boolean theDefaultComputedMode = Standard_True);
-
 		/****************** ActivateGrid ******************/
 		/**** md5 signature: 00bc3f4c997ffd5dbf63fdf576318948 ****/
 		%feature("compactdefaultargs") ActivateGrid;
@@ -3883,7 +3974,7 @@ bool
 		Standard_Boolean AddZLayer(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
 
 		/****************** CircularGridGraphicValues ******************/
-		/**** md5 signature: 7c300954e18ef90e055a30c0ceed3cc8 ****/
+		/**** md5 signature: 3a811e27e917fb82e31d5ce9ddafdb6b ****/
 		%feature("compactdefaultargs") CircularGridGraphicValues;
 		%feature("autodoc", "Returns the location and the size of the grid.
 
@@ -3892,13 +3983,13 @@ Parameters
 
 Returns
 -------
-Radius: float
-OffSet: float
+theRadius: float
+theOffSet: float
 ") CircularGridGraphicValues;
 		void CircularGridGraphicValues(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** CircularGridValues ******************/
-		/**** md5 signature: 2164f90264ca7c1420684d06c8f5a231 ****/
+		/**** md5 signature: e3702606faa489726fa3c267357a58a5 ****/
 		%feature("compactdefaultargs") CircularGridValues;
 		%feature("autodoc", "Returns the definition of the circular grid.
 
@@ -3907,11 +3998,11 @@ Parameters
 
 Returns
 -------
-XOrigin: float
-YOrigin: float
-RadiusStep: float
-DivisionNumber: int
-RotationAngle: float
+theXOrigin: float
+theYOrigin: float
+theRadiusStep: float
+theDivisionNumber: int
+theRotationAngle: float
 ") CircularGridValues;
 		void CircularGridValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -3959,23 +4050,6 @@ Quantity_Color
 ") DefaultBackgroundColor;
 		Quantity_Color DefaultBackgroundColor();
 
-		/****************** DefaultBackgroundColor ******************/
-		/**** md5 signature: cabb3b9108f07a8992885f498ac07920 ****/
-		%feature("compactdefaultargs") DefaultBackgroundColor;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theType: Quantity_TypeOfColor
-
-Returns
--------
-theV1: float
-theV2: float
-theV3: float
-") DefaultBackgroundColor;
-		void DefaultBackgroundColor(const Quantity_TypeOfColor theType, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
-
 		/****************** DefaultBgGradientColors ******************/
 		/**** md5 signature: 7bb90d9db11de75077b503e1ad617543 ****/
 		%feature("compactdefaultargs") DefaultBgGradientColors;
@@ -4017,7 +4091,7 @@ Graphic3d_RenderingParams
 		/****************** DefaultShadingModel ******************/
 		/**** md5 signature: bc3bfac8e702deb7740234263f9351ab ****/
 		%feature("compactdefaultargs") DefaultShadingModel;
-		%feature("autodoc", "Returns the default type of shading.
+		%feature("autodoc", "Returns the default type of shading; graphic3d_typeofshadingmodel_phong by default.
 
 Returns
 -------
@@ -4224,18 +4298,40 @@ Aspect_GradientBackground
 		const Aspect_GradientBackground & GetGradientBackground();
 
 		/****************** Grid ******************/
-		/**** md5 signature: 0b328bc7e0dbb5bbec734058a8a9d7ef ****/
+		/**** md5 signature: 122c44dbfe7d925c5324eccbcec035e5 ****/
 		%feature("compactdefaultargs") Grid;
 		%feature("autodoc", "Returns the defined grid in <self>.
+
+Parameters
+----------
+theToCreate: bool,optional
+	default value is true
 
 Returns
 -------
 opencascade::handle<Aspect_Grid>
 ") Grid;
-		opencascade::handle<Aspect_Grid> Grid();
+		opencascade::handle<Aspect_Grid> Grid(bool theToCreate = true);
+
+		/****************** Grid ******************/
+		/**** md5 signature: 6ce936b8de7dac3d84408efde095017d ****/
+		%feature("compactdefaultargs") Grid;
+		%feature("autodoc", "Returns the defined grid in <self>.
+
+Parameters
+----------
+theGridType: Aspect_GridType
+theToCreate: bool,optional
+	default value is true
+
+Returns
+-------
+opencascade::handle<Aspect_Grid>
+") Grid;
+		opencascade::handle<Aspect_Grid> Grid(Aspect_GridType theGridType, bool theToCreate = true);
 
 		/****************** GridDrawMode ******************/
-		/**** md5 signature: 7caebe8f5a319f1a85b12c8cf075c731 ****/
+		/**** md5 signature: bff7a5c472e52220fdbe56a05764b23f ****/
 		%feature("compactdefaultargs") GridDrawMode;
 		%feature("autodoc", "Returns the current grid draw mode defined in <self>.
 
@@ -4383,7 +4479,7 @@ None
 		void Invalidate();
 
 		/****************** IsActive ******************/
-		/**** md5 signature: 476abafc82a8bb87ac904f5a77e179a3 ****/
+		/**** md5 signature: 619177a77eb0e03f8c6370d0e90fb199 ****/
 		%feature("compactdefaultargs") IsActive;
 		%feature("autodoc", "Returns standard_true if a grid is activated in <self>.
 
@@ -4407,6 +4503,17 @@ Returns
 bool
 ") IsGlobalLight;
 		Standard_Boolean IsGlobalLight(const opencascade::handle<V3d_Light> & TheLight);
+
+		/****************** IsGridActive ******************/
+		/**** md5 signature: f6375ecefe9307a6299a7081489055bd ****/
+		%feature("compactdefaultargs") IsGridActive;
+		%feature("autodoc", "Returns standard_true if a grid is activated in <self>.
+
+Returns
+-------
+bool
+") IsGridActive;
+		Standard_Boolean IsGridActive();
 
 		/****************** LastActiveView ******************/
 		/**** md5 signature: be5a39647b88665478a02d7cd3674cb7 ****/
@@ -4519,7 +4626,7 @@ gp_Ax3
 		const gp_Ax3 PrivilegedPlane();
 
 		/****************** RectangularGridGraphicValues ******************/
-		/**** md5 signature: 4e5826fa16eec33df789f200ebe67385 ****/
+		/**** md5 signature: dab8c1c46121d56f7c42d5007eda4bec ****/
 		%feature("compactdefaultargs") RectangularGridGraphicValues;
 		%feature("autodoc", "Returns the location and the size of the grid.
 
@@ -4528,14 +4635,14 @@ Parameters
 
 Returns
 -------
-XSize: float
-YSize: float
-OffSet: float
+theXSize: float
+theYSize: float
+theOffSet: float
 ") RectangularGridGraphicValues;
 		void RectangularGridGraphicValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** RectangularGridValues ******************/
-		/**** md5 signature: 2b1ae335b7ffea8303765d8655a5b47c ****/
+		/**** md5 signature: 4850ce10bfca161d0b0a538c3df788bc ****/
 		%feature("compactdefaultargs") RectangularGridValues;
 		%feature("autodoc", "Returns the definition of the rectangular grid.
 
@@ -4544,11 +4651,11 @@ Parameters
 
 Returns
 -------
-XOrigin: float
-YOrigin: float
-XStep: float
-YStep: float
-RotationAngle: float
+theXOrigin: float
+theYOrigin: float
+theXStep: float
+theYStep: float
+theRotationAngle: float
 ") RectangularGridValues;
 		void RectangularGridValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4665,26 +4772,8 @@ None
 ") SetDefaultBackgroundColor;
 		void SetDefaultBackgroundColor(const Quantity_Color & theColor);
 
-		/****************** SetDefaultBackgroundColor ******************/
-		/**** md5 signature: 3d5447c6691b23a4e614313dff25a68b ****/
-		%feature("compactdefaultargs") SetDefaultBackgroundColor;
-		%feature("autodoc", "Defines the default base colour of views attached to the viewer by supplying the type of colour definition and the three component values.
-
-Parameters
-----------
-theType: Quantity_TypeOfColor
-theV1: float
-theV2: float
-theV3: float
-
-Returns
--------
-None
-") SetDefaultBackgroundColor;
-		void SetDefaultBackgroundColor(const Quantity_TypeOfColor theType, const Standard_Real theV1, const Standard_Real theV2, const Standard_Real theV3);
-
 		/****************** SetDefaultBgGradientColors ******************/
-		/**** md5 signature: 238fa80e1f14e34bed78f1afa04572d6 ****/
+		/**** md5 signature: 4a9049f28b07f43729588e2b1cfd19f7 ****/
 		%feature("compactdefaultargs") SetDefaultBgGradientColors;
 		%feature("autodoc", "Defines the default gradient background colours of views attached to the viewer by supplying the colour objects.
 
@@ -4693,13 +4782,13 @@ Parameters
 theColor1: Quantity_Color
 theColor2: Quantity_Color
 theFillStyle: Aspect_GradientFillMethod,optional
-	default value is Aspect_GFM_HOR
+	default value is Aspect_GradientFillMethod_Horizontal
 
 Returns
 -------
 None
 ") SetDefaultBgGradientColors;
-		void SetDefaultBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GFM_HOR);
+		void SetDefaultBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GradientFillMethod_Horizontal);
 
 		/****************** SetDefaultComputedMode ******************/
 		/**** md5 signature: c46a840bb2514935564839772e61e616 ****/
@@ -5286,6 +5375,7 @@ None
 /* class aliases */
 %pythoncode {
 V3d_Light=OCC.Core.Graphic3d.Graphic3d_CLight
+V3d_TypeOfBackfacingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfBackfacingModel
 V3d_TypeOfLight=OCC.Core.Graphic3d.Graphic3d_TypeOfLightSource
 V3d_TypeOfShadingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfShadingModel
 }

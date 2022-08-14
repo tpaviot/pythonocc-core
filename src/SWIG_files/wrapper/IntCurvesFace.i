@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTCURVESFACEDOCSTRING
 "IntCurvesFace module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesface.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intcurvesface.html"
 %enddef
 %module (package="OCC.Core", docstring=INTCURVESFACEDOCSTRING) IntCurvesFace
 
@@ -78,7 +78,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -100,7 +100,7 @@ class IntCurvesFace_Intersector {
 		/****************** IntCurvesFace_Intersector ******************/
 		/**** md5 signature: a52cfef3564a89d4318791e0ef2ba78a ****/
 		%feature("compactdefaultargs") IntCurvesFace_Intersector;
-		%feature("autodoc", "Load a face. //! the tolerance <tol> is used to determine if the first point of the segment is near the face. in that case, the parameter of the intersection point on the line can be a negative value (greater than -tol). if arestr = true uv bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. if usebtoler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximium between input tolerance(atol) and tolerances of face bounds (edges).
+		%feature("autodoc", "Load a face. //! the tolerance <tol> is used to determine if the first point of the segment is near the face. in that case, the parameter of the intersection point on the line can be a negative value (greater than -tol). if arestr = true uv bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. if usebtoler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximum between input tolerance(atol) and tolerances of face bounds (edges).
 
 Parameters
 ----------
@@ -212,7 +212,7 @@ int
 		/****************** Perform ******************/
 		/**** md5 signature: e18419430124de4e84da27951ae80914 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Perform the intersection between the segment l and the loaded face. //! pinf is the smallest parameter on the line psup is the highest parmaeter on the line //! for an infinite line pinf and psup can be +/- reallast.
+		%feature("autodoc", "Perform the intersection between the segment l and the loaded face. //! pinf is the smallest parameter on the line psup is the highest parameter on the line //! for an infinite line pinf and psup can be +/- reallast.
 
 Parameters
 ----------
@@ -227,13 +227,13 @@ None
 		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 7d7976e9ae0d696e8958c0ec29e3f5bf ****/
+		/**** md5 signature: c8caf88fde1edb2033386b7b626b143d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Same method for a hcurve from adaptor3d. pinf an psup can also be - and + inf.
 
 Parameters
 ----------
-HCu: Adaptor3d_HCurve
+HCu: Adaptor3d_Curve
 PInf: float
 PSup: float
 
@@ -241,7 +241,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HCurve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Pnt ******************/
 		/**** md5 signature: d0440fe82ac13d790faf173438707e9c ****/
@@ -276,7 +276,7 @@ None
 		/****************** State ******************/
 		/**** md5 signature: 3ef584a4c8697b5b43cfa0be6c8072f7 ****/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boudary of the face).
+		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
 
 Parameters
 ----------
@@ -466,13 +466,13 @@ None
 		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 7d7976e9ae0d696e8958c0ec29e3f5bf ****/
+		/**** md5 signature: c8caf88fde1edb2033386b7b626b143d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Same method for a hcurve from adaptor3d. pinf an psup can also be - and + inf.
 
 Parameters
 ----------
-HCu: Adaptor3d_HCurve
+HCu: Adaptor3d_Curve
 PInf: float
 PSup: float
 
@@ -480,7 +480,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HCurve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** PerformNearest ******************/
 		/**** md5 signature: ed809ea9e3a548c6cd15a623c13b9c18 ****/
@@ -528,7 +528,7 @@ None
 		/****************** State ******************/
 		/**** md5 signature: 3ef584a4c8697b5b43cfa0be6c8072f7 ****/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boudary of the face).
+		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
 
 Parameters
 ----------

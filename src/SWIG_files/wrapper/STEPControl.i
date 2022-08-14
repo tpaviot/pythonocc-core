@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPCONTROLDOCSTRING
 "STEPControl module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcontrol.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepcontrol.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPCONTROLDOCSTRING) STEPControl
 
@@ -104,7 +104,7 @@ enum STEPControl_StepModelType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class STEPControl_StepModelType(IntEnum):
@@ -639,6 +639,21 @@ int
 ") NbRootsForTransfer;
 		virtual Standard_Integer NbRootsForTransfer();
 
+		/****************** SetSystemLengthUnit ******************/
+		/**** md5 signature: 510dfa5f705479dabe69cd18ff63f186 ****/
+		%feature("compactdefaultargs") SetSystemLengthUnit;
+		%feature("autodoc", "Sets system length unit used by transfer process.
+
+Parameters
+----------
+theLengthUnit: float
+
+Returns
+-------
+None
+") SetSystemLengthUnit;
+		void SetSystemLengthUnit(const Standard_Real theLengthUnit);
+
 		/****************** StepModel ******************/
 		/**** md5 signature: a19eb8c75fefa8a51a41068202c028ed ****/
 		%feature("compactdefaultargs") StepModel;
@@ -649,6 +664,17 @@ Returns
 opencascade::handle<StepData_StepModel>
 ") StepModel;
 		opencascade::handle<StepData_StepModel> StepModel();
+
+		/****************** SystemLengthUnit ******************/
+		/**** md5 signature: ea9818137c6810f4cc16c93250327aac ****/
+		%feature("compactdefaultargs") SystemLengthUnit;
+		%feature("autodoc", "Returns system length unit used by transfer process.
+
+Returns
+-------
+float
+") SystemLengthUnit;
+		Standard_Real SystemLengthUnit();
 
 		/****************** TransferRoot ******************/
 		/**** md5 signature: 6197e07a7cce187793789d26466ddd30 ****/

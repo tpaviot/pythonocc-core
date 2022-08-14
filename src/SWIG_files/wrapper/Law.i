@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LAWDOCSTRING
 "Law module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_law.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_law.html"
 %enddef
 %module (package="OCC.Core", docstring=LAWDOCSTRING) Law
 
@@ -70,7 +70,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -145,7 +145,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 		/****************** MixTgt ******************/
 		/**** md5 signature: 3c3be1a2329c3b1f6f1e9955082e3637 ****/
 		%feature("compactdefaultargs") MixTgt;
-		%feature("autodoc", "Builds the poles of the 1d bspline that is null on the rigth side of knots(index) (on the left if nulontheright is false) and that is like a t*(1-t)(1-t) curve on the left side of knots(index) (on the rigth if nulontheright is false). the result curve is c1 with a derivative equal to 1. at first parameter (-1 at last parameter if nulontheright is false). warning: mults(index) must greater or equal to degree-1.
+		%feature("autodoc", "Builds the poles of the 1d bspline that is null on the right side of knots(index) (on the left if nulontheright is false) and that is like a t*(1-t)(1-t) curve on the left side of knots(index) (on the right if nulontheright is false). the result curve is c1 with a derivative equal to 1. at first parameter (-1 at last parameter if nulontheright is false). warning: mults(index) must greater or equal to degree-1.
 
 Parameters
 ----------
@@ -801,7 +801,7 @@ int
 		/****************** MovePointAndTangent ******************/
 		/**** md5 signature: 48e98676b5c4d441b6b8923083347851 ****/
 		%feature("compactdefaultargs") MovePointAndTangent;
-		%feature("autodoc", "Changes the value of the law at parameter u to newvalue. and makes its derivative at u be derivative. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enought degree of freedom with the constrain to deform the curve accordingly.
+		%feature("autodoc", "Changes the value of the law at parameter u to newvalue. and makes its derivative at u be derivative. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enough degree of freedom with the constrain to deform the curve accordingly.
 
 Parameters
 ----------
@@ -1328,7 +1328,7 @@ D2: float
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters, i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1623,7 +1623,7 @@ D2: float
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters, i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1728,7 +1728,7 @@ None
 		/****************** Law_Composite ******************/
 		/**** md5 signature: b51d805042e8e834fd1c73c392ffe7bf ****/
 		%feature("compactdefaultargs") Law_Composite;
-		%feature("autodoc", "Construct an empty, trimed law.
+		%feature("autodoc", "Construct an empty, trimmed law.
 
 Parameters
 ----------
@@ -1830,7 +1830,7 @@ D2: float
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters, i.e. t.length() > nbintervals().
 
 Parameters
 ----------

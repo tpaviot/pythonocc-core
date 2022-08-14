@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TPRSSTDDOCSTRING
 "TPrsStd module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tprsstd.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tprsstd.html"
 %enddef
 %module (package="OCC.Core", docstring=TPRSSTDDOCSTRING) TPrsStd
 
@@ -104,7 +104,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -280,6 +280,14 @@ None
 ") Display;
 		void Display(const Standard_Boolean update = Standard_False);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Erase ******************/
 		/**** md5 signature: 78dc6861a924b64ddfaf44a115f8387a ****/
 		%feature("compactdefaultargs") Erase;
@@ -803,6 +811,14 @@ None
 ") TPrsStd_AISViewer;
 		 TPrsStd_AISViewer();
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Find ******************/
 		/**** md5 signature: 2c8b00fbc5f1685461f851faec89f5be ****/
 		%feature("compactdefaultargs") Find;
@@ -1567,7 +1583,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if informations was found and aisobject updated.
+		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
 
 Parameters
 ----------
@@ -1610,7 +1626,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if informations was found and aisobject updated.
+		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
 
 Parameters
 ----------
@@ -1653,7 +1669,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if informations was found and aisobject updated.
+		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
 
 Parameters
 ----------
@@ -1696,7 +1712,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if informations was found and aisobject updated.
+		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
 
 Parameters
 ----------
@@ -1739,7 +1755,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if informations was found and aisobject updated.
+		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
 
 Parameters
 ----------
@@ -1782,7 +1798,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if informations was found and aisobject updated.
+		%feature("autodoc", "Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
 
 Parameters
 ----------

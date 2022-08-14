@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,9 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<Adaptor2d_Curve2d.hxx>
-#include<Adaptor2d_HCurve2d.hxx>
-#include<Adaptor2d_HLine2d.hxx>
-#include<Adaptor2d_HOffsetCurve.hxx>
 #include<Adaptor2d_Line2d.hxx>
 #include<Adaptor2d_OffsetCurve.hxx>
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDATAXTDDOCSTRING
 "TDataXtd module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tdataxtd.html"
 %enddef
 %module (package="OCC.Core", docstring=TDATAXTDDOCSTRING) TDataXtd
 
@@ -49,12 +49,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
 #include<Quantity_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Poly_module.hxx>
-#include<TShort_module.hxx>
 #include<TopTools_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TShort_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -69,7 +69,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
 %import Quantity.i
 %import TopoDS.i
 %import Poly.i
-%import TShort.i
 
 %pythoncode {
 from enum import IntEnum
@@ -119,7 +118,7 @@ enum TDataXtd_GeometryEnum {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TDataXtd_ConstraintEnum(IntEnum):
@@ -826,7 +825,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		/****************** TDataXtd_Geometry ******************/
 		/**** md5 signature: b8974b13707ba244045c3d0306541bbd ****/
 		%feature("compactdefaultargs") TDataXtd_Geometry;
-		%feature("autodoc", "This and the next methods are used to retrieve underlying geometry of the namedshape, even if noone geometry attribute is associated . if not found or not compliant geometry return false.
+		%feature("autodoc", "This and the next methods are used to retrieve underlying geometry of the namedshape, even if no geometry attribute is associated. if not found or not compliant geometry return false.
 
 Returns
 -------
@@ -2511,7 +2510,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Node ******************/
-		/**** md5 signature: 86df678a3d98d54374f5f531a65a2fc7 ****/
+		/**** md5 signature: e94431a8a9e60fd5ee7dc3e879ed9254 ****/
 		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "Returns node at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
 
@@ -2523,10 +2522,10 @@ Returns
 -------
 gp_Pnt
 ") Node;
-		const gp_Pnt Node(const Standard_Integer theIndex);
+		gp_Pnt Node(const Standard_Integer theIndex);
 
 		/****************** Normal ******************/
-		/**** md5 signature: c855feb3fd1089162515e7a137983bb4 ****/
+		/**** md5 signature: 1f8c1bc50986664ddc2a6444da0aec81 ****/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "Returns normal at the given index. raises standard_outofrange exception.
 
@@ -2538,7 +2537,7 @@ Returns
 -------
 gp_Dir
 ") Normal;
-		const gp_Dir Normal(const Standard_Integer theIndex);
+		gp_Dir Normal(const Standard_Integer theIndex);
 
 		/****************** Paste ******************/
 		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
@@ -2660,21 +2659,6 @@ None
 ") SetNormal;
 		void SetNormal(const Standard_Integer theIndex, const gp_Dir & theNormal);
 
-		/****************** SetNormals ******************/
-		/**** md5 signature: 7c3a3b618d135482bdaa83f0ced5edb7 ****/
-		%feature("compactdefaultargs") SetNormals;
-		%feature("autodoc", "Sets the table of node normals. raises exception if length of thenormals != 3 * nbnodes.
-
-Parameters
-----------
-theNormals: TShort_HArray1OfShortReal
-
-Returns
--------
-None
-") SetNormals;
-		void SetNormals(const opencascade::handle<TShort_HArray1OfShortReal> & theNormals);
-
 		/****************** SetTriangle ******************/
 		/**** md5 signature: 4802341912a18dadbd9ddb25cc7c33be ****/
 		%feature("compactdefaultargs") SetTriangle;
@@ -2708,7 +2692,7 @@ None
 		void SetUVNode(const Standard_Integer theIndex, const gp_Pnt2d & theUVNode);
 
 		/****************** Triangle ******************/
-		/**** md5 signature: 4b478dad3ef750a602442807b17fca5a ****/
+		/**** md5 signature: cfec7bae58a426adb2df65595a28d88f ****/
 		%feature("compactdefaultargs") Triangle;
 		%feature("autodoc", "Returns triangle at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbtriangles.
 
@@ -2720,10 +2704,10 @@ Returns
 -------
 Poly_Triangle
 ") Triangle;
-		const Poly_Triangle & Triangle(const Standard_Integer theIndex);
+		Poly_Triangle Triangle(const Standard_Integer theIndex);
 
 		/****************** UVNode ******************/
-		/**** md5 signature: 45592da925c13e10349c0f573d7d2cd6 ****/
+		/**** md5 signature: 8deb1f90810778dff4fdcd7f6ef2228d ****/
 		%feature("compactdefaultargs") UVNode;
 		%feature("autodoc", "Returns uvnode at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
 
@@ -2735,7 +2719,7 @@ Returns
 -------
 gp_Pnt2d
 ") UVNode;
-		const gp_Pnt2d UVNode(const Standard_Integer theIndex);
+		gp_Pnt2d UVNode(const Standard_Integer theIndex);
 
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define EXPRDOCSTRING
 "Expr module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_expr.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_expr.html"
 %enddef
 %module (package="OCC.Core", docstring=EXPRDOCSTRING) Expr
 
@@ -62,7 +62,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -478,7 +478,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: 21a054e81da4e62ac63c7025abefabe3 ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with copies of <with> in <self>. copies of <with> are made with the copy() method. raises invalidoperand if <with> contains <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with copies of <with> in <self>. copies of <with> are made with the copy() method. raises invalidoperand if <with> contains <self>.
 
 Parameters
 ----------
@@ -771,7 +771,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: 21a054e81da4e62ac63c7025abefabe3 ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self>.
 
 Parameters
 ----------
@@ -1086,7 +1086,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self>. raises invalidoperand if <with> contains <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self>. raises invalidoperand if <with> contains <self>.
 
 Parameters
 ----------
@@ -1835,7 +1835,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self>.
 
 Parameters
 ----------
@@ -1994,7 +1994,7 @@ opencascade::handle<Expr_GeneralExpression>
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
 
 Parameters
 ----------
@@ -2128,7 +2128,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self>.
 
 Parameters
 ----------
@@ -2331,7 +2331,7 @@ None
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self>.
 
 Parameters
 ----------
@@ -2460,7 +2460,7 @@ opencascade::handle<Expr_GeneralExpression>
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
 
 Parameters
 ----------
@@ -5156,7 +5156,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self>.
 
 Parameters
 ----------
@@ -5303,7 +5303,7 @@ opencascade::handle<Expr_GeneralExpression>
 		/****************** Deassign ******************/
 		/**** md5 signature: bdd99d62e4917809f78e8082960232c1 ****/
 		%feature("compactdefaultargs") Deassign;
-		%feature("autodoc", "Supresses the assigned expression.
+		%feature("autodoc", "Suppresses the assigned expression.
 
 Returns
 -------
@@ -5378,7 +5378,7 @@ int
 		/****************** Replace ******************/
 		/**** md5 signature: d1980891db2f275bbc6d54eac796d58d ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replaces all occurences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
+		%feature("autodoc", "Replaces all occurrences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
 
 Parameters
 ----------

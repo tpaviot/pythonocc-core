@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define AISDOCSTRING
 "AIS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_ais.html"
 %enddef
 %module (package="OCC.Core", docstring=AISDOCSTRING) AIS
 
@@ -44,6 +44,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 #include<NCollection_module.hxx>
 #include<SelectMgr_module.hxx>
 #include<Media_module.hxx>
+#include<PrsMgr_module.hxx>
 #include<TCollection_module.hxx>
 #include<Quantity_module.hxx>
 #include<TopAbs_module.hxx>
@@ -56,11 +57,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 #include<Bnd_module.hxx>
 #include<gp_module.hxx>
 #include<TopLoc_module.hxx>
-#include<PrsMgr_module.hxx>
 #include<StdSelect_module.hxx>
 #include<TColgp_module.hxx>
-#include<Geom_module.hxx>
 #include<Select3D_module.hxx>
+#include<SelectBasics_module.hxx>
+#include<Geom_module.hxx>
 #include<Poly_module.hxx>
 #include<Image_module.hxx>
 #include<TopTools_module.hxx>
@@ -85,6 +86,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %import NCollection.i
 %import SelectMgr.i
 %import Media.i
+%import PrsMgr.i
 %import TCollection.i
 %import Quantity.i
 %import TopAbs.i
@@ -97,11 +99,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %import Bnd.i
 %import gp.i
 %import TopLoc.i
-%import PrsMgr.i
 %import StdSelect.i
 %import TColgp.i
-%import Geom.i
 %import Select3D.i
+%import SelectBasics.i
+%import Geom.i
 %import Poly.i
 %import Image.i
 
@@ -157,12 +159,19 @@ enum AIS_TypeOfAttribute {
 };
 
 enum AIS_KindOfInteractive {
-	AIS_KOI_None = 0,
-	AIS_KOI_Datum = 1,
-	AIS_KOI_Shape = 2,
-	AIS_KOI_Object = 3,
-	AIS_KOI_Relation = 4,
-	AIS_KOI_Dimension = 5,
+	AIS_KindOfInteractive_None = 0,
+	AIS_KindOfInteractive_Datum = 1,
+	AIS_KindOfInteractive_Shape = 2,
+	AIS_KindOfInteractive_Object = 3,
+	AIS_KindOfInteractive_Relation = 4,
+	AIS_KindOfInteractive_Dimension = 5,
+	AIS_KindOfInteractive_LightSource = 6,
+	AIS_KOI_None = AIS_KindOfInteractive_None,
+	AIS_KOI_Datum = AIS_KindOfInteractive_Datum,
+	AIS_KOI_Shape = AIS_KindOfInteractive_Shape,
+	AIS_KOI_Object = AIS_KindOfInteractive_Object,
+	AIS_KOI_Relation = AIS_KindOfInteractive_Relation,
+	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension,
 };
 
 enum AIS_SelectStatus {
@@ -176,6 +185,16 @@ enum AIS_TypeOfAxis {
 	AIS_TOAX_XAxis = 1,
 	AIS_TOAX_YAxis = 2,
 	AIS_TOAX_ZAxis = 3,
+};
+
+enum AIS_SelectionScheme {
+	AIS_SelectionScheme_UNKNOWN = - 1,
+	AIS_SelectionScheme_Replace = 0,
+	AIS_SelectionScheme_Add = 1,
+	AIS_SelectionScheme_Remove = 2,
+	AIS_SelectionScheme_XOR = 3,
+	AIS_SelectionScheme_Clear = 4,
+	AIS_SelectionScheme_ReplaceExtra = 5,
 };
 
 enum AIS_ConnectStatus {
@@ -290,15 +309,9 @@ enum AIS_TypeOfPlane {
 	AIS_TOPL_YZPlane = 3,
 };
 
-enum AIS_DisplayStatus {
-	AIS_DS_Displayed = 0,
-	AIS_DS_Erased = 1,
-	AIS_DS_None = 2,
-};
-
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class AIS_TrihedronSelectionMode(IntEnum):
@@ -376,12 +389,26 @@ AIS_TOA_SecondAxis = AIS_TypeOfAttribute.AIS_TOA_SecondAxis
 AIS_TOA_ThirdAxis = AIS_TypeOfAttribute.AIS_TOA_ThirdAxis
 
 class AIS_KindOfInteractive(IntEnum):
-	AIS_KOI_None = 0
-	AIS_KOI_Datum = 1
-	AIS_KOI_Shape = 2
-	AIS_KOI_Object = 3
-	AIS_KOI_Relation = 4
-	AIS_KOI_Dimension = 5
+	AIS_KindOfInteractive_None = 0
+	AIS_KindOfInteractive_Datum = 1
+	AIS_KindOfInteractive_Shape = 2
+	AIS_KindOfInteractive_Object = 3
+	AIS_KindOfInteractive_Relation = 4
+	AIS_KindOfInteractive_Dimension = 5
+	AIS_KindOfInteractive_LightSource = 6
+	AIS_KOI_None = AIS_KindOfInteractive_None
+	AIS_KOI_Datum = AIS_KindOfInteractive_Datum
+	AIS_KOI_Shape = AIS_KindOfInteractive_Shape
+	AIS_KOI_Object = AIS_KindOfInteractive_Object
+	AIS_KOI_Relation = AIS_KindOfInteractive_Relation
+	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension
+AIS_KindOfInteractive_None = AIS_KindOfInteractive.AIS_KindOfInteractive_None
+AIS_KindOfInteractive_Datum = AIS_KindOfInteractive.AIS_KindOfInteractive_Datum
+AIS_KindOfInteractive_Shape = AIS_KindOfInteractive.AIS_KindOfInteractive_Shape
+AIS_KindOfInteractive_Object = AIS_KindOfInteractive.AIS_KindOfInteractive_Object
+AIS_KindOfInteractive_Relation = AIS_KindOfInteractive.AIS_KindOfInteractive_Relation
+AIS_KindOfInteractive_Dimension = AIS_KindOfInteractive.AIS_KindOfInteractive_Dimension
+AIS_KindOfInteractive_LightSource = AIS_KindOfInteractive.AIS_KindOfInteractive_LightSource
 AIS_KOI_None = AIS_KindOfInteractive.AIS_KOI_None
 AIS_KOI_Datum = AIS_KindOfInteractive.AIS_KOI_Datum
 AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
@@ -406,6 +433,22 @@ AIS_TOAX_Unknown = AIS_TypeOfAxis.AIS_TOAX_Unknown
 AIS_TOAX_XAxis = AIS_TypeOfAxis.AIS_TOAX_XAxis
 AIS_TOAX_YAxis = AIS_TypeOfAxis.AIS_TOAX_YAxis
 AIS_TOAX_ZAxis = AIS_TypeOfAxis.AIS_TOAX_ZAxis
+
+class AIS_SelectionScheme(IntEnum):
+	AIS_SelectionScheme_UNKNOWN = - 1
+	AIS_SelectionScheme_Replace = 0
+	AIS_SelectionScheme_Add = 1
+	AIS_SelectionScheme_Remove = 2
+	AIS_SelectionScheme_XOR = 3
+	AIS_SelectionScheme_Clear = 4
+	AIS_SelectionScheme_ReplaceExtra = 5
+AIS_SelectionScheme_UNKNOWN = AIS_SelectionScheme.AIS_SelectionScheme_UNKNOWN
+AIS_SelectionScheme_Replace = AIS_SelectionScheme.AIS_SelectionScheme_Replace
+AIS_SelectionScheme_Add = AIS_SelectionScheme.AIS_SelectionScheme_Add
+AIS_SelectionScheme_Remove = AIS_SelectionScheme.AIS_SelectionScheme_Remove
+AIS_SelectionScheme_XOR = AIS_SelectionScheme.AIS_SelectionScheme_XOR
+AIS_SelectionScheme_Clear = AIS_SelectionScheme.AIS_SelectionScheme_Clear
+AIS_SelectionScheme_ReplaceExtra = AIS_SelectionScheme.AIS_SelectionScheme_ReplaceExtra
 
 class AIS_ConnectStatus(IntEnum):
 	AIS_CS_None = 0
@@ -550,14 +593,6 @@ AIS_TOPL_Unknown = AIS_TypeOfPlane.AIS_TOPL_Unknown
 AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
 AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
 AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
-
-class AIS_DisplayStatus(IntEnum):
-	AIS_DS_Displayed = 0
-	AIS_DS_Erased = 1
-	AIS_DS_None = 2
-AIS_DS_Displayed = AIS_DisplayStatus.AIS_DS_Displayed
-AIS_DS_Erased = AIS_DisplayStatus.AIS_DS_Erased
-AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 };
 /* end python proxy for enums */
 
@@ -626,6 +661,42 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 };
 %template(AIS_MapOfInteractive) NCollection_Map<opencascade::handle<AIS_InteractiveObject>,TColStd_MapTransientHasher>;
 %template(AIS_MouseGestureMap) NCollection_DataMap<unsigned int, AIS_MouseGesture>;
+%template(AIS_MouseSelectionSchemeMap) NCollection_DataMap<unsigned int, AIS_SelectionScheme>;
+%template(AIS_NArray1OfEntityOwner) NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>>;
+
+%extend NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
 %template(AIS_NListOfEntityOwner) NCollection_List<opencascade::handle<SelectMgr_EntityOwner>>;
 
 %extend NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> {
@@ -651,12 +722,15 @@ typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_Map
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
 typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher> AIS_DataMapofIntegerListOfinteractive;
+typedef PrsMgr_DisplayStatus AIS_DisplayStatus;
 typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<Prs3d_Presentation>, TColStd_MapTransientHasher> AIS_IndexedDataMapOfOwnerPrs;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>> AIS_ListOfInteractive;
 typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher>::Iterator AIS_MapIteratorOfMapOfInteractive;
 typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher> AIS_MapOfInteractive;
 typedef NCollection_DataMap<unsigned int, AIS_MouseGesture> AIS_MouseGestureMap;
+typedef NCollection_DataMap<unsigned int, AIS_SelectionScheme> AIS_MouseSelectionSchemeMap;
+typedef NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> AIS_NArray1OfEntityOwner;
 typedef NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
 typedef NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> AIS_SequenceOfInteractive;
 /* end typedefs declaration */
@@ -901,6 +975,21 @@ None
 ") SetStartPts;
 		void SetStartPts(const Standard_Real thePtsStart);
 
+		/****************** SetTimer ******************/
+		/**** md5 signature: bc8c37bcd5d705b0ef533ab6789205d2 ****/
+		%feature("compactdefaultargs") SetTimer;
+		%feature("autodoc", "Set playback timer.
+
+Parameters
+----------
+theTimer: Media_Timer
+
+Returns
+-------
+None
+") SetTimer;
+		void SetTimer(const opencascade::handle<Media_Timer> & theTimer);
+
 		/****************** Start ******************/
 		/**** md5 signature: f879b7bb1d28c81e7848195df5536432 ****/
 		%feature("compactdefaultargs") Start;
@@ -956,6 +1045,17 @@ Returns
 None
 ") Stop;
 		virtual void Stop();
+
+		/****************** Timer ******************/
+		/**** md5 signature: 5e95b895bb505401280421403e4d0404 ****/
+		%feature("compactdefaultargs") Timer;
+		%feature("autodoc", "Return playback timer.
+
+Returns
+-------
+opencascade::handle<Media_Timer>
+") Timer;
+		const opencascade::handle<Media_Timer> & Timer();
 
 		/****************** Update ******************/
 		/**** md5 signature: 3cb3b333871faa76cde54e56cbc9a277 ****/
@@ -1080,7 +1180,7 @@ None
 		 AIS_AttributeFilter(const Standard_Real aWidth);
 
 		/****************** HasColor ******************/
-		/**** md5 signature: a769345684f55d228a3a0773ed253c2e ****/
+		/**** md5 signature: f14084fe0c7674324d105b06cc1ff5b4 ****/
 		%feature("compactdefaultargs") HasColor;
 		%feature("autodoc", "Indicates that the interactive object has the color setting specified by the argument acol at construction time.
 
@@ -1091,7 +1191,7 @@ bool
 		Standard_Boolean HasColor();
 
 		/****************** HasWidth ******************/
-		/**** md5 signature: adf8ad0ef06bcc936459a8354657697e ****/
+		/**** md5 signature: 93af72110529b1e94c6797d09cd35e15 ****/
 		%feature("compactdefaultargs") HasWidth;
 		%feature("autodoc", "Indicates that the interactive object has the width setting specified by the argument awidth at construction time.
 
@@ -1117,37 +1217,37 @@ bool
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
 		/****************** SetColor ******************/
-		/**** md5 signature: a5a89259e3fdf177522ec6a45eb6b08d ****/
+		/**** md5 signature: 9860b6e19b23fad901e24b0cb7a0be30 ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Sets the color acol. this must be chosen from the list of colors in quantity_nameofcolor.
+		%feature("autodoc", "Sets the color.
 
 Parameters
 ----------
-aCol: Quantity_NameOfColor
+theCol: Quantity_NameOfColor
 
 Returns
 -------
 None
 ") SetColor;
-		void SetColor(const Quantity_NameOfColor aCol);
+		void SetColor(const Quantity_NameOfColor theCol);
 
 		/****************** SetWidth ******************/
-		/**** md5 signature: 241a01ddb40e85ceaaa56807348390c6 ****/
+		/**** md5 signature: a388bd43f011bc773d8da404945719b5 ****/
 		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "Sets the line width awidth.
+		%feature("autodoc", "Sets the line width.
 
 Parameters
 ----------
-aWidth: float
+theWidth: float
 
 Returns
 -------
 None
 ") SetWidth;
-		void SetWidth(const Standard_Real aWidth);
+		void SetWidth(const Standard_Real theWidth);
 
 		/****************** UnsetColor ******************/
-		/**** md5 signature: 188f0bfeebabf5f6612a608155ee828e ****/
+		/**** md5 signature: 6e328a6dea703ee08923d991dc618e9a ****/
 		%feature("compactdefaultargs") UnsetColor;
 		%feature("autodoc", "Removes the setting for color from the filter.
 
@@ -1158,7 +1258,7 @@ None
 		void UnsetColor();
 
 		/****************** UnsetWidth ******************/
-		/**** md5 signature: 18cdd810cf848c52cf981cc677405046 ****/
+		/**** md5 signature: 4be8fdb1e151f0a55dae0f7e3762ce2f ****/
 		%feature("compactdefaultargs") UnsetWidth;
 		%feature("autodoc", "Removes the setting for width from the filter.
 
@@ -1648,7 +1748,7 @@ None
 		void Clear();
 
 		/****************** IsExclusionFlagOn ******************/
-		/**** md5 signature: 7fe88450ac84eb6aa148073340c9bce3 ****/
+		/**** md5 signature: 8ca18384ba58f8732ba66b57719f07bf ****/
 		%feature("compactdefaultargs") IsExclusionFlagOn;
 		%feature("autodoc", "No available documentation.
 
@@ -1751,19 +1851,19 @@ bool
 		Standard_Boolean Remove(const AIS_KindOfInteractive TypeToExclude, const Standard_Integer SignatureInType);
 
 		/****************** SetExclusionFlag ******************/
-		/**** md5 signature: 776a282b6c6b3f5c2639bb6c16791d22 ****/
+		/**** md5 signature: f2397263f584a343e57fbb29cc64b0e6 ****/
 		%feature("compactdefaultargs") SetExclusionFlag;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Status: bool
+theStatus: bool
 
 Returns
 -------
 None
 ") SetExclusionFlag;
-		void SetExclusionFlag(const Standard_Boolean Status);
+		void SetExclusionFlag(const Standard_Boolean theStatus);
 
 };
 
@@ -1784,7 +1884,7 @@ class AIS_GlobalStatus : public Standard_Transient {
 		/****************** AIS_GlobalStatus ******************/
 		/**** md5 signature: 9c56844364db5c947daf28e63bef42e2 ****/
 		%feature("compactdefaultargs") AIS_GlobalStatus;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Default constructor.
 
 Returns
 -------
@@ -1792,31 +1892,10 @@ None
 ") AIS_GlobalStatus;
 		 AIS_GlobalStatus();
 
-		/****************** AIS_GlobalStatus ******************/
-		/**** md5 signature: 23cd32a350a0cbde82da5192eb9c1991 ****/
-		%feature("compactdefaultargs") AIS_GlobalStatus;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aStat: AIS_DisplayStatus
-aDispMode: int
-aSelMode: int
-ishilighted: bool,optional
-	default value is Standard_False
-aLayerIndex: int,optional
-	default value is 0
-
-Returns
--------
-None
-") AIS_GlobalStatus;
-		 AIS_GlobalStatus(const AIS_DisplayStatus aStat, const Standard_Integer aDispMode, const Standard_Integer aSelMode, const Standard_Boolean ishilighted = Standard_False, const Standard_Integer aLayerIndex = 0);
-
 		/****************** AddSelectionMode ******************/
-		/**** md5 signature: 8d521f67bc72d54c9e4e290d83d68ddc ****/
+		/**** md5 signature: fc8df9157b3ed8a48caafbee5c741526 ****/
 		%feature("compactdefaultargs") AddSelectionMode;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Add selection mode.
 
 Parameters
 ----------
@@ -1824,14 +1903,14 @@ theMode: int
 
 Returns
 -------
-None
+bool
 ") AddSelectionMode;
-		void AddSelectionMode(const Standard_Integer theMode);
+		Standard_Boolean AddSelectionMode(const Standard_Integer theMode);
 
 		/****************** ClearSelectionModes ******************/
-		/**** md5 signature: fd12a734ed1c8100ef06c89abfda31a4 ****/
+		/**** md5 signature: 239a6fa95794aa4d619474ae09fc6c8d ****/
 		%feature("compactdefaultargs") ClearSelectionModes;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Remove all selection modes.
 
 Returns
 -------
@@ -1850,28 +1929,6 @@ int
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
-		/****************** GetLayerIndex ******************/
-		/**** md5 signature: 7b96c91f5523916797eb6286445c0e6e ****/
-		%feature("compactdefaultargs") GetLayerIndex;
-		%feature("autodoc", "Returns layer index.
-
-Returns
--------
-int
-") GetLayerIndex;
-		Standard_Integer GetLayerIndex();
-
-		/****************** GraphicStatus ******************/
-		/**** md5 signature: ff5a84cfe20daa40af44f9889fc706ce ****/
-		%feature("compactdefaultargs") GraphicStatus;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-AIS_DisplayStatus
-") GraphicStatus;
-		AIS_DisplayStatus GraphicStatus();
-
 		/****************** HilightStyle ******************/
 		/**** md5 signature: d17b0472c23cb74e2e63d1233b6a1355 ****/
 		%feature("compactdefaultargs") HilightStyle;
@@ -1886,7 +1943,7 @@ opencascade::handle<Prs3d_Drawer>
 		/****************** IsHilighted ******************/
 		/**** md5 signature: 35d1f91e445f37fcfd3bf419bad32f49 ****/
 		%feature("compactdefaultargs") IsHilighted;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns true if object is highlighted.
 
 Returns
 -------
@@ -1895,19 +1952,19 @@ bool
 		Standard_Boolean IsHilighted();
 
 		/****************** IsSModeIn ******************/
-		/**** md5 signature: ccf0fb36f839d3f90dd25d57ef7c634b ****/
+		/**** md5 signature: a53322586bcace0ddb4fe2232b3482bf ****/
 		%feature("compactdefaultargs") IsSModeIn;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Return true if selection mode was registered.
 
 Parameters
 ----------
-aMode: int
+theMode: int
 
 Returns
 -------
 bool
 ") IsSModeIn;
-		Standard_Boolean IsSModeIn(const Standard_Integer aMode);
+		Standard_Boolean IsSModeIn(Standard_Integer theMode);
 
 		/****************** IsSubIntensityOn ******************/
 		/**** md5 signature: 1df00a9c06ea8c4f5d73e211efb2c1c6 ****/
@@ -1921,24 +1978,24 @@ bool
 		Standard_Boolean IsSubIntensityOn();
 
 		/****************** RemoveSelectionMode ******************/
-		/**** md5 signature: a6d4cc7f4184138d0c1e3aad4be138ba ****/
+		/**** md5 signature: 80e1091c3c87bf86bc5b1fb90ac0860e ****/
 		%feature("compactdefaultargs") RemoveSelectionMode;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Remove selection mode.
 
 Parameters
 ----------
-aMode: int
+theMode: int
 
 Returns
 -------
-None
+bool
 ") RemoveSelectionMode;
-		void RemoveSelectionMode(const Standard_Integer aMode);
+		Standard_Boolean RemoveSelectionMode(const Standard_Integer theMode);
 
 		/****************** SelectionModes ******************/
 		/**** md5 signature: 908d50ed59833e1e3d8eb3eb90d6ad2c ****/
 		%feature("compactdefaultargs") SelectionModes;
-		%feature("autodoc", "Keeps the active selection modes of the object in the main viewer.
+		%feature("autodoc", "Returns active selection modes of the object.
 
 Returns
 -------
@@ -1961,25 +2018,10 @@ None
 ") SetDisplayMode;
 		void SetDisplayMode(const Standard_Integer theMode);
 
-		/****************** SetGraphicStatus ******************/
-		/**** md5 signature: 3f1e04531cd7e5ad848d7dcea1cf9460 ****/
-		%feature("compactdefaultargs") SetGraphicStatus;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theStatus: AIS_DisplayStatus
-
-Returns
--------
-None
-") SetGraphicStatus;
-		void SetGraphicStatus(const AIS_DisplayStatus theStatus);
-
 		/****************** SetHilightStatus ******************/
 		/**** md5 signature: 32df1cc3cd232c4fb69f8546f990eb32 ****/
 		%feature("compactdefaultargs") SetHilightStatus;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets highlighted state.
 
 Parameters
 ----------
@@ -2006,42 +2048,20 @@ None
 ") SetHilightStyle;
 		void SetHilightStyle(const opencascade::handle<Prs3d_Drawer> & theStyle);
 
-		/****************** SetLayerIndex ******************/
-		/**** md5 signature: 6425d3c907faef916eed507feced557a ****/
-		%feature("compactdefaultargs") SetLayerIndex;
+		/****************** SetSubIntensity ******************/
+		/**** md5 signature: 0f4ba431b62fe5e0935797fe9323fda7 ****/
+		%feature("compactdefaultargs") SetSubIntensity;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theIndex: int
+theIsOn: bool
 
 Returns
 -------
 None
-") SetLayerIndex;
-		void SetLayerIndex(const Standard_Integer theIndex);
-
-		/****************** SubIntensityOff ******************/
-		/**** md5 signature: 460a3dc0927cf1132fc4383a9c3f3e8a ****/
-		%feature("compactdefaultargs") SubIntensityOff;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") SubIntensityOff;
-		void SubIntensityOff();
-
-		/****************** SubIntensityOn ******************/
-		/**** md5 signature: 35338134478596b5237bbe62411f8447 ****/
-		%feature("compactdefaultargs") SubIntensityOn;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") SubIntensityOn;
-		void SubIntensityOn();
+") SetSubIntensity;
+		void SetSubIntensity(Standard_Boolean theIsOn);
 
 };
 
@@ -2270,7 +2290,7 @@ None
 		void ActivatedModes(const opencascade::handle<AIS_InteractiveObject> & anIobj, TColStd_ListOfInteger & theList);
 
 		/****************** AddFilter ******************/
-		/**** md5 signature: 8f89ceb3d250cc70530e81ee261a2e71 ****/
+		/**** md5 signature: 8a902c12e6fe5b2f586f4e19c0758623 ****/
 		%feature("compactdefaultargs") AddFilter;
 		%feature("autodoc", "Allows you to add the filter.
 
@@ -2287,7 +2307,7 @@ None
 		/****************** AddOrRemoveCurrentObject ******************/
 		/**** md5 signature: 89eb3aca1b8b6d529be5010ff461f430 ****/
 		%feature("compactdefaultargs") AddOrRemoveCurrentObject;
-		%feature("autodoc", "Allows to add or remove the object given to the list of current and highlight/unhighlight it correspondingly. is valid for global context only; for local context use method addorremoveselected. since this method makes sence only for neutral point selection of a whole object, if 0 selection of the object is empty this method simply does nothing.
+		%feature("autodoc", "Allows to add or remove the object given to the list of current and highlight/unhighlight it correspondingly. is valid for global context only; for local context use method addorremoveselected. since this method makes sense only for neutral point selection of a whole object, if 0 selection of the object is empty this method simply does nothing.
 
 Parameters
 ----------
@@ -2593,7 +2613,7 @@ opencascade::handle<Prs3d_Drawer>
 		/****************** DetectedCurrentObject ******************/
 		/**** md5 signature: db9a21d25f0bb2a34f1d9b68c667faf4 ****/
 		%feature("compactdefaultargs") DetectedCurrentObject;
-		%feature("autodoc", "Returns current mouse-detected interactive object or null object, if there is no currently detected interactives @sa detectedcurrentowner()/initdetected()/moredetected()/nextdetected().
+		%feature("autodoc", "Returns current mouse-detected interactive object or null object, if there is no currently detected interactives @sa detectedcurrentowner(), initdetected(), moredetected(), nextdetected().
 
 Returns
 -------
@@ -2604,7 +2624,7 @@ opencascade::handle<AIS_InteractiveObject>
 		/****************** DetectedCurrentOwner ******************/
 		/**** md5 signature: f92c094b1c7835be9059494de430ed90 ****/
 		%feature("compactdefaultargs") DetectedCurrentOwner;
-		%feature("autodoc", "Returns the owner from detected list pointed by current iterator position. warning! this method is irrelevant to detectedowner() which returns last picked owner regardless of iterator position! @sa initdetected()/moredetected()/nextdetected().
+		%feature("autodoc", "Returns the owner from detected list pointed by current iterator position. warning! this method is irrelevant to detectedowner() which returns last picked owner regardless of iterator position! @sa initdetected(), moredetected(), nextdetected().
 
 Returns
 -------
@@ -2615,7 +2635,7 @@ opencascade::handle<SelectMgr_EntityOwner>
 		/****************** DetectedCurrentShape ******************/
 		/**** md5 signature: 89ce12168c616c9e784d18e7ee93368c ****/
 		%feature("compactdefaultargs") DetectedCurrentShape;
-		%feature("autodoc", "Returns current mouse-detected shape or empty (null) shape, if current interactive object is not a shape (ais_shape) or there is no current mouse-detected interactive object at all. @sa detectedcurrentowner()/initdetected()/moredetected()/nextdetected().
+		%feature("autodoc", "Returns current mouse-detected shape or empty (null) shape, if current interactive object is not a shape (ais_shape) or there is no current mouse-detected interactive object at all. @sa detectedcurrentowner(), initdetected(), moredetected(), nextdetected().
 
 Returns
 -------
@@ -2637,7 +2657,7 @@ opencascade::handle<AIS_InteractiveObject>
 		/****************** DetectedOwner ******************/
 		/**** md5 signature: e2c982281c31eda113b04938de464319 ****/
 		%feature("compactdefaultargs") DetectedOwner;
-		%feature("autodoc", "Returns the owner of the detected sensitive primitive which is currently dynamically highlighted. warning! this method is irrelevant to initdetected()/moredetected()/nextdetected(). @sa hasdetected()/hasnextdetected()/hilightpreviousdetected()/hilightnextdetected().
+		%feature("autodoc", "Returns the owner of the detected sensitive primitive which is currently dynamically highlighted. warning! this method is irrelevant to initdetected()/moredetected()/nextdetected(). @sa hasdetected(), hasnextdetected(), hilightpreviousdetected(), hilightnextdetected().
 
 Returns
 -------
@@ -2657,7 +2677,7 @@ TopoDS_Shape
 		const TopoDS_Shape DetectedShape();
 
 		/****************** DeviationAngle ******************/
-		/**** md5 signature: 508af72f994b69f958301c949bd7776d ****/
+		/**** md5 signature: 003652129c87707eb3add7448baffc41 ****/
 		%feature("compactdefaultargs") DeviationAngle;
 		%feature("autodoc", "No available documentation.
 
@@ -2668,7 +2688,7 @@ float
 		Standard_Real DeviationAngle();
 
 		/****************** DeviationCoefficient ******************/
-		/**** md5 signature: 9c4d7eea432c70a83c2882b4c26bcbec ****/
+		/**** md5 signature: aa403b444ce189be03dbbfdaa044ed4e ****/
 		%feature("compactdefaultargs") DeviationCoefficient;
 		%feature("autodoc", "Returns the deviation coefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through prs3d_drawer::setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
 
@@ -2679,7 +2699,7 @@ float
 		Standard_Real DeviationCoefficient();
 
 		/****************** DisableDrawHiddenLine ******************/
-		/**** md5 signature: 3fc2c3cfd86c41638b1fc12d3405a6bc ****/
+		/**** md5 signature: 6b6aa32f5adca641a6dc6a0b3f24eac5 ****/
 		%feature("compactdefaultargs") DisableDrawHiddenLine;
 		%feature("autodoc", "No available documentation.
 
@@ -2723,7 +2743,7 @@ None
 		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
 		/****************** Display ******************/
-		/**** md5 signature: ef545bdb5680ab97c00d3bcc914c2f94 ****/
+		/**** md5 signature: 4844e1a120d1763a2f1c9c28b42360f1 ****/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "Sets status, display mode and selection mode for specified object if theselectionmode equals -1, theiobj will not be activated: it will be displayed but will not be selectable.
 
@@ -2733,17 +2753,17 @@ theIObj: AIS_InteractiveObject
 theDispMode: int
 theSelectionMode: int
 theToUpdateViewer: bool
-theDispStatus: AIS_DisplayStatus,optional
-	default value is AIS_DS_None
+theDispStatus: PrsMgr_DisplayStatus,optional
+	default value is PrsMgr_DisplayStatus_None
 
 Returns
 -------
 None
 ") Display;
-		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theDispMode, const Standard_Integer theSelectionMode, const Standard_Boolean theToUpdateViewer, const AIS_DisplayStatus theDispStatus = AIS_DS_None);
+		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theDispMode, const Standard_Integer theSelectionMode, const Standard_Boolean theToUpdateViewer, const PrsMgr_DisplayStatus theDispStatus = PrsMgr_DisplayStatus_None);
 
 		/****************** Display ******************/
-		/**** md5 signature: 65b510998a253649cd991f6bf670b1e3 ****/
+		/**** md5 signature: 3bee65d480eafecc8a7bf6cf7e559b20 ****/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "No available documentation.
 
@@ -2754,14 +2774,14 @@ theDispMode: int
 theSelectionMode: int
 theToUpdateViewer: bool
 theToAllowDecomposition: bool
-theDispStatus: AIS_DisplayStatus,optional
-	default value is AIS_DS_None
+theDispStatus: PrsMgr_DisplayStatus,optional
+	default value is PrsMgr_DisplayStatus_None
 
 Returns
 -------
 None
 ") Display;
-		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theDispMode, const Standard_Integer theSelectionMode, const Standard_Boolean theToUpdateViewer, const Standard_Boolean theToAllowDecomposition, const AIS_DisplayStatus theDispStatus = AIS_DS_None);
+		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theDispMode, const Standard_Integer theSelectionMode, const Standard_Boolean theToUpdateViewer, const Standard_Boolean theToAllowDecomposition, const PrsMgr_DisplayStatus theDispStatus = PrsMgr_DisplayStatus_None);
 
 		/****************** DisplayActiveSensitive ******************/
 		/**** md5 signature: 3e2889a461702eed5abdf967dcfcfd6c ****/
@@ -2851,7 +2871,7 @@ None
 		void DisplaySelected(const Standard_Boolean theToUpdateViewer);
 
 		/****************** DisplayStatus ******************/
-		/**** md5 signature: 2c3ee8144ab209b024b7cd0ee5b3e9dc ****/
+		/**** md5 signature: 63fdc6587cc5281c7155ba72cfd784af ****/
 		%feature("compactdefaultargs") DisplayStatus;
 		%feature("autodoc", "Returns the display status of the entity aniobj. this will be one of the following: - ais_ds_displayed displayed in main viewer - ais_ds_erased hidden in main viewer - ais_ds_temporary temporarily displayed - ais_ds_none nowhere displayed.
 
@@ -2861,9 +2881,9 @@ anIobj: AIS_InteractiveObject
 
 Returns
 -------
-AIS_DisplayStatus
+PrsMgr_DisplayStatus
 ") DisplayStatus;
-		AIS_DisplayStatus DisplayStatus(const opencascade::handle<AIS_InteractiveObject> & anIobj);
+		PrsMgr_DisplayStatus DisplayStatus(const opencascade::handle<AIS_InteractiveObject> & anIobj);
 
 		/****************** DisplayedObjects ******************/
 		/**** md5 signature: 2ac371de0991b7c60d0ec9d3cdc39d6c ****/
@@ -2898,7 +2918,7 @@ None
 		void DisplayedObjects(const AIS_KindOfInteractive theWhichKind, const Standard_Integer theWhichSignature, AIS_ListOfInteractive & theListOfIO);
 
 		/****************** DrawHiddenLine ******************/
-		/**** md5 signature: ee867d8bc869aae190f7ad2dd51ea119 ****/
+		/**** md5 signature: 372ddba1ff29bf8cd686ca27ede4bc2a ****/
 		%feature("compactdefaultargs") DrawHiddenLine;
 		%feature("autodoc", "Returns standard_true if the hidden lines are to be drawn. by default the hidden lines are not drawn.
 
@@ -2917,7 +2937,7 @@ bool
                 return s.str();}
             };
 		/****************** EnableDrawHiddenLine ******************/
-		/**** md5 signature: 7c98158946b8428a204c851de2124594 ****/
+		/**** md5 signature: ef1c63d78ea294d9e74f6b66ff4bc5ee ****/
 		%feature("compactdefaultargs") EnableDrawHiddenLine;
 		%feature("autodoc", "No available documentation.
 
@@ -3043,7 +3063,7 @@ SelectMgr_FilterType
 		SelectMgr_FilterType FilterType();
 
 		/****************** Filters ******************/
-		/**** md5 signature: 3fdc80dd75c17b43e3b22bec55f591f0 ****/
+		/**** md5 signature: 93a08b293ea4d8d9b7d3fef18387c381 ****/
 		%feature("compactdefaultargs") Filters;
 		%feature("autodoc", "Returns the list of filters active in a local context.
 
@@ -3122,6 +3142,17 @@ Graphic3d_ZLayerId
 ") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer(const opencascade::handle<AIS_InteractiveObject> & theIObj);
 
+		/****************** GlobalFilter ******************/
+		/**** md5 signature: 06ef473f9ff7dbdffd2e783f736f69a0 ****/
+		%feature("compactdefaultargs") GlobalFilter;
+		%feature("autodoc", "Returns the context selection global context filter.
+
+Returns
+-------
+opencascade::handle<SelectMgr_AndOrFilter>
+") GlobalFilter;
+		const opencascade::handle<SelectMgr_AndOrFilter> & GlobalFilter();
+
 		/****************** GravityPoint ******************/
 		/**** md5 signature: 61432a855a261dfe994f834c87d91d2a ****/
 		%feature("compactdefaultargs") GravityPoint;
@@ -3166,7 +3197,7 @@ bool
 		/****************** HasDetected ******************/
 		/**** md5 signature: 9784833ccfaab525e30c79edfbe72190 ****/
 		%feature("compactdefaultargs") HasDetected;
-		%feature("autodoc", "Returns true if there is a mouse-detected entity in context. @sa detectedowner()/hasnextdetected()/hilightpreviousdetected()/hilightnextdetected().
+		%feature("autodoc", "Returns true if there is a mouse-detected entity in context. @sa detectedowner(), hasnextdetected(), hilightpreviousdetected(), hilightnextdetected().
 
 Returns
 -------
@@ -3177,7 +3208,7 @@ bool
 		/****************** HasDetectedShape ******************/
 		/**** md5 signature: d2fb3a69e46a45ed0edd4bafb59b8257 ****/
 		%feature("compactdefaultargs") HasDetectedShape;
-		%feature("autodoc", "Returns true if there is a detected shape in local context. @sa hasdetected()/detectedshape().
+		%feature("autodoc", "Returns true if there is a detected shape in local context. @sa hasdetected(), detectedshape().
 
 Returns
 -------
@@ -3203,7 +3234,7 @@ bool
 		/****************** HasNextDetected ******************/
 		/**** md5 signature: 7a28caee8124c59c13fd939c4f7e2c47 ****/
 		%feature("compactdefaultargs") HasNextDetected;
-		%feature("autodoc", "Returns true if other entities were detected in the last mouse detection @sa hilightpreviousdetected()/hilightnextdetected().
+		%feature("autodoc", "Returns true if other entities were detected in the last mouse detection @sa hilightpreviousdetected(), hilightnextdetected().
 
 Returns
 -------
@@ -3238,7 +3269,7 @@ bool
 		Standard_Boolean HasSelectedShape();
 
 		/****************** HiddenLineAspect ******************/
-		/**** md5 signature: 2194dc9305a8d04891ff31b2c7d09c8d ****/
+		/**** md5 signature: 94d1c2a65d1f004db7812470264560c4 ****/
 		%feature("compactdefaultargs") HiddenLineAspect;
 		%feature("autodoc", "Initializes hidden line aspect in the default drawing tool, or drawer. the default values are: color: quantity_noc_yellow type of line: aspect_tol_dash width: 1.
 
@@ -3246,12 +3277,12 @@ Returns
 -------
 opencascade::handle<Prs3d_LineAspect>
 ") HiddenLineAspect;
-		opencascade::handle<Prs3d_LineAspect> HiddenLineAspect();
+		const opencascade::handle<Prs3d_LineAspect> & HiddenLineAspect();
 
 		/****************** HighlightStyle ******************/
 		/**** md5 signature: 2cb78034dd0075f5760ff6947175afbf ****/
 		%feature("compactdefaultargs") HighlightStyle;
-		%feature("autodoc", "Returns highlight style settings.
+		%feature("autodoc", "Returns default highlight style settings (could be overridden by prsmgr_presentableobject). //! tip: although highlighting style is defined by prs3d_drawer, only a small set of properties derived from it's base class graphic3d_presentationattributes will be actually used in most cases. //! default highlight style for all types is aspect_tohm_color. other defaults: - prs3d_typeofhighlight_dynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_top, object highlighting is drawn on top of main scene within immediate layers, so that v3d_view::redrawimmediate() will be enough to see update; - prs3d_typeofhighlight_localdynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_topmost, object parts highlighting is drawn on top of main scene within immediate layers with depth cleared (even overlapped geometry will be revealed); - prs3d_typeofhighlight_selected * color: quantity_noc_gray80; * layer: graphic3d_zlayerid_unknown, object highlighting is drawn on top of main scene within the same layer as object itself (e.g. graphic3d_zlayerid_default by default) and increased priority. //! @param[in] thestyletype highlight style to modify returns drawer associated to specified highlight type //! @sa moveto() using prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic types @sa selectdetected() using prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected types @sa prsmgr_presentableobject::dynamichilightattributes() overriding prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic defaults on object level @sa prsmgr_presentableobject::hilightattributes() overriding prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected defaults on object level.
 
 Parameters
 ----------
@@ -3266,7 +3297,7 @@ opencascade::handle<Prs3d_Drawer>
 		/****************** HighlightStyle ******************/
 		/**** md5 signature: a5e55eefe6df1b6a11e0c9a34f35e9be ****/
 		%feature("compactdefaultargs") HighlightStyle;
-		%feature("autodoc", "Returns current dynamic highlight style settings. by default: - the color of dynamic highlight is quantity_noc_cyan1; - the presentation for dynamic highlight is completely opaque; - the type of highlight is aspect_tohm_color.
+		%feature("autodoc", "Returns current dynamic highlight style settings corresponding to prs3d_typeofhighlight_dynamic. this is just a short-cut to highlightstyle(prs3d_typeofhighlight_dynamic).
 
 Returns
 -------
@@ -3340,7 +3371,7 @@ None
 		/****************** HilightNextDetected ******************/
 		/**** md5 signature: 9c05abb0fa3776e9813bee557372d755 ****/
 		%feature("compactdefaultargs") HilightNextDetected;
-		%feature("autodoc", "If more than 1 object is detected by the selector, only the 'best' owner is hilighted at the mouse position. this method allows the user to hilight one after another the other detected entities. if the method select is called, the selected entity will be the hilighted one! warning: loop method. when all the detected entities have been hilighted, the next call will hilight the first one again. returns the rank of hilighted entity @sa hasnextdetected()/hilightpreviousdetected().
+		%feature("autodoc", "If more than 1 object is detected by the selector, only the 'best' owner is hilighted at the mouse position. this method allows the user to hilight one after another the other detected entities. if the method select is called, the selected entity will be the hilighted one! warning: loop method. when all the detected entities have been hilighted, the next call will hilight the first one again. returns the rank of hilighted entity @sa hasnextdetected(), hilightpreviousdetected().
 
 Parameters
 ----------
@@ -3357,7 +3388,7 @@ int
 		/****************** HilightPreviousDetected ******************/
 		/**** md5 signature: 262cae5bc6c5467cc4d7bc8c48f38ba0 ****/
 		%feature("compactdefaultargs") HilightPreviousDetected;
-		%feature("autodoc", "Same as previous methods in reverse direction. @sa hasnextdetected()/hilightnextdetected().
+		%feature("autodoc", "Same as previous methods in reverse direction. @sa hasnextdetected(), hilightnextdetected().
 
 Parameters
 ----------
@@ -3434,7 +3465,7 @@ None
 		/****************** InitDetected ******************/
 		/**** md5 signature: c8e093453ccb47b93fdb3539272d695f ****/
 		%feature("compactdefaultargs") InitDetected;
-		%feature("autodoc", "Initialization for iteration through mouse-detected objects in interactive context or in local context if it is opened. @sa detectedcurrentowner()/moredetected()/nextdetected().
+		%feature("autodoc", "Initialization for iteration through mouse-detected objects in interactive context or in local context if it is opened. @sa detectedcurrentowner(), moredetected(), nextdetected().
 
 Returns
 -------
@@ -3445,7 +3476,7 @@ None
 		/****************** InitSelected ******************/
 		/**** md5 signature: 5a647272f34af26ffd1cb3083091517d ****/
 		%feature("compactdefaultargs") InitSelected;
-		%feature("autodoc", "Initializes a scan of the selected objects. @sa selectedowner()/moreselected()/nextselected().
+		%feature("autodoc", "Initializes a scan of the selected objects. @sa selectedowner(), moreselected(), nextselected().
 
 Returns
 -------
@@ -3587,22 +3618,22 @@ int
 		Standard_Integer IsoNumber(const AIS_TypeOfIso WhichIsos = AIS_TOI_Both);
 
 		/****************** IsoOnPlane ******************/
-		/**** md5 signature: 44f2fd1c20ce3c1811c498bdca672c1e ****/
+		/**** md5 signature: 48280fa3ffd8bf23acfa138c4eadbe98 ****/
 		%feature("compactdefaultargs") IsoOnPlane;
 		%feature("autodoc", "Returns true if drawing isoparameters on planes is enabled.
 
 Parameters
 ----------
-SwitchOn: bool
+theToSwitchOn: bool
 
 Returns
 -------
 None
 ") IsoOnPlane;
-		void IsoOnPlane(const Standard_Boolean SwitchOn);
+		void IsoOnPlane(const Standard_Boolean theToSwitchOn);
 
 		/****************** IsoOnPlane ******************/
-		/**** md5 signature: 2399069013e2297195a97f40a31fdec3 ****/
+		/**** md5 signature: 725ae5fc83d7314e8a35910b73791b5a ****/
 		%feature("compactdefaultargs") IsoOnPlane;
 		%feature("autodoc", "Returns true if drawing isoparameters on planes is enabled. if <foruisos> = false,.
 
@@ -3629,7 +3660,7 @@ None
 		void IsoOnTriangulation(const Standard_Boolean theIsEnabled, const opencascade::handle<AIS_InteractiveObject> & theObject);
 
 		/****************** IsoOnTriangulation ******************/
-		/**** md5 signature: 4ed3479d463d2bbfc2b72917813f3b3b ****/
+		/**** md5 signature: 8e5ad4a63beb9c4793c9d1b96a3b51d2 ****/
 		%feature("compactdefaultargs") IsoOnTriangulation;
 		%feature("autodoc", "Enables or disables on-triangulation build for isolines for default drawer. in case if on-triangulation builder is disabled, default on-plane builder will compute isolines for the object given.
 
@@ -3644,7 +3675,7 @@ None
 		void IsoOnTriangulation(const Standard_Boolean theToSwitchOn);
 
 		/****************** IsoOnTriangulation ******************/
-		/**** md5 signature: 35291a4239d94266e0d7a4a8b135deb7 ****/
+		/**** md5 signature: 86d0a4f726e225c8973eb7c232be52f2 ****/
 		%feature("compactdefaultargs") IsoOnTriangulation;
 		%feature("autodoc", "Returns true if drawing isolines on triangulation algorithm is enabled.
 
@@ -3715,15 +3746,15 @@ TopLoc_Location
 		TopLoc_Location Location(const opencascade::handle<AIS_InteractiveObject> & theObject);
 
 		/****************** MainPrsMgr ******************/
-		/**** md5 signature: ac85fee1d90b00c3d3b7b78afe44671e ****/
+		/**** md5 signature: bdc4498bf12a71cbbfdc608a2521c7ca ****/
 		%feature("compactdefaultargs") MainPrsMgr;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<PrsMgr_PresentationManager3d>
+opencascade::handle<PrsMgr_PresentationManager>
 ") MainPrsMgr;
-		const opencascade::handle<PrsMgr_PresentationManager3d> & MainPrsMgr();
+		const opencascade::handle<PrsMgr_PresentationManager> & MainPrsMgr();
 
 		/****************** MainSelector ******************/
 		/**** md5 signature: 324583e97a6b1f0d3b2bbf32bc96a6ef ****/
@@ -3750,7 +3781,7 @@ bool
 		/****************** MoreDetected ******************/
 		/**** md5 signature: 07e8132e91725af6307db9bfd564c136 ****/
 		%feature("compactdefaultargs") MoreDetected;
-		%feature("autodoc", "Return true if there is more mouse-detected objects after the current one during iteration through mouse-detected interactive objects. @sa detectedcurrentowner()/initdetected()/nextdetected().
+		%feature("autodoc", "Return true if there is more mouse-detected objects after the current one during iteration through mouse-detected interactive objects. @sa detectedcurrentowner(), initdetected(), nextdetected().
 
 Returns
 -------
@@ -3761,7 +3792,7 @@ bool
 		/****************** MoreSelected ******************/
 		/**** md5 signature: 9f460e4981ece0e01fad2077174757e0 ****/
 		%feature("compactdefaultargs") MoreSelected;
-		%feature("autodoc", "Returns true if there is another object found by the scan of the list of selected objects. @sa selectedowner()/initselected()/nextselected().
+		%feature("autodoc", "Returns true if there is another object found by the scan of the list of selected objects. @sa selectedowner(), initselected(), nextselected().
 
 Returns
 -------
@@ -3772,7 +3803,7 @@ bool
 		/****************** MoveTo ******************/
 		/**** md5 signature: 9c6ee0b190031604e2ad3ee603a732e4 ****/
 		%feature("compactdefaultargs") MoveTo;
-		%feature("autodoc", "Relays mouse position in pixels thexpix and theypix to the interactive context selectors. this is done by the view theview passing this position to the main viewer and updating it. if thetoredrawonupdate is set to false, callee should call redrawimmediate() to highlight detected object. @sa pickingstrategy().
+		%feature("autodoc", "Relays mouse position in pixels thexpix and theypix to the interactive context selectors. this is done by the view theview passing this position to the main viewer and updating it. if thetoredrawonupdate is set to false, callee should call redrawimmediate() to highlight detected object. @sa pickingstrategy() @sa highlightstyle() defining default dynamic highlight styles of detected owners  (prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic) @sa prsmgr_presentableobject::dynamichilightattributes() defining per-object dynamic highlight style of detected owners (overrides defaults).
 
 Parameters
 ----------
@@ -3786,6 +3817,23 @@ Returns
 AIS_StatusOfDetection
 ") MoveTo;
 		AIS_StatusOfDetection MoveTo(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToRedrawOnUpdate);
+
+		/****************** MoveTo ******************/
+		/**** md5 signature: 2d4d11946cb3b5d59dc861dff00a7f66 ****/
+		%feature("compactdefaultargs") MoveTo;
+		%feature("autodoc", "Relays axis theaxis to the interactive context selectors. this is done by the view theview passing this axis to the main viewer and updating it. if thetoredrawonupdate is set to false, callee should call redrawimmediate() to highlight detected object. @sa pickingstrategy().
+
+Parameters
+----------
+theAxis: gp_Ax1
+theView: V3d_View
+theToRedrawOnUpdate: bool
+
+Returns
+-------
+AIS_StatusOfDetection
+") MoveTo;
+		AIS_StatusOfDetection MoveTo(const gp_Ax1 & theAxis, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToRedrawOnUpdate);
 
 		/****************** NbCurrents ******************/
 		/**** md5 signature: 2bd21aea6055d1a4ef8d258c5b2a1542 ****/
@@ -3801,7 +3849,7 @@ int
 		/****************** NbSelected ******************/
 		/**** md5 signature: 29cc2a3b075c044d0d4a48fbbe1b0094 ****/
 		%feature("compactdefaultargs") NbSelected;
-		%feature("autodoc", "Count a number of selected entities using initselected()+moreselected()+nextselected() iterator. @sa selectedowner()/initselected()/moreselected()/nextselected().
+		%feature("autodoc", "Count a number of selected entities using initselected()+moreselected()+nextselected() iterator. @sa selectedowner(), initselected(), moreselected(), nextselected().
 
 Returns
 -------
@@ -3823,7 +3871,7 @@ None
 		/****************** NextDetected ******************/
 		/**** md5 signature: 80e9abbe7c307e899704c0aa75085271 ****/
 		%feature("compactdefaultargs") NextDetected;
-		%feature("autodoc", "Gets next current object during iteration through mouse-detected interactive objects. @sa detectedcurrentowner()/initdetected()/moredetected().
+		%feature("autodoc", "Gets next current object during iteration through mouse-detected interactive objects. @sa detectedcurrentowner(), initdetected(), moredetected().
 
 Returns
 -------
@@ -3834,7 +3882,7 @@ None
 		/****************** NextSelected ******************/
 		/**** md5 signature: b0ac689aff47b7f0c7ffd7973ff9538f ****/
 		%feature("compactdefaultargs") NextSelected;
-		%feature("autodoc", "Continues the scan to the next object in the list of selected objects. @sa selectedowner()/initselected()/moreselected().
+		%feature("autodoc", "Continues the scan to the next object in the list of selected objects. @sa selectedowner(), initselected(), moreselected().
 
 Returns
 -------
@@ -3842,24 +3890,35 @@ None
 ") NextSelected;
 		void NextSelected();
 
+		/****************** ObjectIterator ******************/
+		/**** md5 signature: 804b294e0bb2b10425cdac1f18aab7f5 ****/
+		%feature("compactdefaultargs") ObjectIterator;
+		%feature("autodoc", "Create iterator through all objects registered in context.
+
+Returns
+-------
+AIS_DataMapIteratorOfDataMapOfIOStatus
+") ObjectIterator;
+		AIS_DataMapIteratorOfDataMapOfIOStatus ObjectIterator();
+
 		/****************** ObjectsByDisplayStatus ******************/
-		/**** md5 signature: 4bcd63aa892c491a7896eac1ebe4c320 ****/
+		/**** md5 signature: 51d891b3fdbc286ef0af76b239900609 ****/
 		%feature("compactdefaultargs") ObjectsByDisplayStatus;
 		%feature("autodoc", "Returns the list thelistofio of objects with indicated display status particular type whichkind and signature whichsignature. by default, whichsignature equals 1. this means that there is a check on type only.
 
 Parameters
 ----------
-theStatus: AIS_DisplayStatus
+theStatus: PrsMgr_DisplayStatus
 theListOfIO: AIS_ListOfInteractive
 
 Returns
 -------
 None
 ") ObjectsByDisplayStatus;
-		void ObjectsByDisplayStatus(const AIS_DisplayStatus theStatus, AIS_ListOfInteractive & theListOfIO);
+		void ObjectsByDisplayStatus(const PrsMgr_DisplayStatus theStatus, AIS_ListOfInteractive & theListOfIO);
 
 		/****************** ObjectsByDisplayStatus ******************/
-		/**** md5 signature: 2983aa8e8e07ff883ac47f17cda6d066 ****/
+		/**** md5 signature: cd9150453dc815573dc7553749c81a33 ****/
 		%feature("compactdefaultargs") ObjectsByDisplayStatus;
 		%feature("autodoc", "Gives the list of objects with indicated display status type and signature by default, <whichsignature> = -1 means control only on <whichkind>.
 
@@ -3867,17 +3926,17 @@ Parameters
 ----------
 WhichKind: AIS_KindOfInteractive
 WhichSignature: int
-theStatus: AIS_DisplayStatus
+theStatus: PrsMgr_DisplayStatus
 theListOfIO: AIS_ListOfInteractive
 
 Returns
 -------
 None
 ") ObjectsByDisplayStatus;
-		void ObjectsByDisplayStatus(const AIS_KindOfInteractive WhichKind, const Standard_Integer WhichSignature, const AIS_DisplayStatus theStatus, AIS_ListOfInteractive & theListOfIO);
+		void ObjectsByDisplayStatus(const AIS_KindOfInteractive WhichKind, const Standard_Integer WhichSignature, const PrsMgr_DisplayStatus theStatus, AIS_ListOfInteractive & theListOfIO);
 
 		/****************** ObjectsForView ******************/
-		/**** md5 signature: 40843a5ed70af61c5c2068857d2e8f2d ****/
+		/**** md5 signature: 03db815545a73176f5e924de76ca30b2 ****/
 		%feature("compactdefaultargs") ObjectsForView;
 		%feature("autodoc", "Query objects visible or hidden in specified view due to affinity mask.
 
@@ -3886,25 +3945,25 @@ Parameters
 theListOfIO: AIS_ListOfInteractive
 theView: V3d_View
 theIsVisibleInView: bool
-theStatus: AIS_DisplayStatus,optional
-	default value is AIS_DS_None
+theStatus: PrsMgr_DisplayStatus,optional
+	default value is PrsMgr_DisplayStatus_None
 
 Returns
 -------
 None
 ") ObjectsForView;
-		void ObjectsForView(AIS_ListOfInteractive & theListOfIO, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theIsVisibleInView, const AIS_DisplayStatus theStatus = AIS_DS_None);
+		void ObjectsForView(AIS_ListOfInteractive & theListOfIO, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theIsVisibleInView, const PrsMgr_DisplayStatus theStatus = PrsMgr_DisplayStatus_None);
 
 		/****************** ObjectsInside ******************/
-		/**** md5 signature: d09ee8b48f1dd0dc665da27f01e182bd ****/
+		/**** md5 signature: e893957ca156ab9c1aea481eaeae6510 ****/
 		%feature("compactdefaultargs") ObjectsInside;
-		%feature("autodoc", "Fills <alistofio> with objects of a particular type and signature with no consideration of display status. by default, <whichsignature> = -1 means control only on <whichkind>. if <whichkind> = ais_koi_none and <whichsignature> = -1, all the objects are put into the list.
+		%feature("autodoc", "Fills <alistofio> with objects of a particular type and signature with no consideration of display status. by default, <whichsignature> = -1 means control only on <whichkind>. if <whichkind> = ais_kindofinteractive_none and <whichsignature> = -1, all the objects are put into the list.
 
 Parameters
 ----------
 aListOfIO: AIS_ListOfInteractive
 WhichKind: AIS_KindOfInteractive,optional
-	default value is AIS_KOI_None
+	default value is AIS_KindOfInteractive_None
 WhichSignature: int,optional
 	default value is -1
 
@@ -3912,12 +3971,12 @@ Returns
 -------
 None
 ") ObjectsInside;
-		void ObjectsInside(AIS_ListOfInteractive & aListOfIO, const AIS_KindOfInteractive WhichKind = AIS_KOI_None, const Standard_Integer WhichSignature = -1);
+		void ObjectsInside(AIS_ListOfInteractive & aListOfIO, const AIS_KindOfInteractive WhichKind = AIS_KindOfInteractive_None, const Standard_Integer WhichSignature = -1);
 
 		/****************** PickingStrategy ******************/
 		/**** md5 signature: 7ec32744d1635811c168c2b831c6636a ****/
 		%feature("compactdefaultargs") PickingStrategy;
-		%feature("autodoc", "Return picking strategy; selectmgr_pickingstrategy_firstacceptable by default. @sa moveto()/filters().
+		%feature("autodoc", "Return picking strategy; selectmgr_pickingstrategy_firstacceptable by default. @sa moveto(), filters().
 
 Returns
 -------
@@ -3967,17 +4026,6 @@ Returns
 aMode: int
 ") PolygonOffsets;
 		void PolygonOffsets(const opencascade::handle<AIS_InteractiveObject> & anObj, Standard_Integer &OutValue, Standard_ShortReal & aFactor, Standard_ShortReal & aUnits);
-
-		/****************** PurgeDisplay ******************/
-		/**** md5 signature: 98035b1ff513129f455deed9d95ed3f0 ****/
-		%feature("compactdefaultargs") PurgeDisplay;
-		%feature("autodoc", "Clears all the structures which don't belong to objects displayed at neutral point only effective when no local context is opened... returns the number of removed structures from the viewers.
-
-Returns
--------
-int
-") PurgeDisplay;
-		Standard_Integer PurgeDisplay();
 
 		/****************** RebuildSelectionStructs ******************/
 		/**** md5 signature: fc018c2ec4a8be467c479b724e4da811 ****/
@@ -4105,7 +4153,7 @@ None
 		void RemoveAll(const Standard_Boolean theToUpdateViewer);
 
 		/****************** RemoveFilter ******************/
-		/**** md5 signature: 2a3b89c9253eed8d2e19ca8eee689bf0 ****/
+		/**** md5 signature: 694a9fa10d2e0617b4c8daffb2ec97d7 ****/
 		%feature("compactdefaultargs") RemoveFilter;
 		%feature("autodoc", "Removes a filter from context.
 
@@ -4120,7 +4168,7 @@ None
 		void RemoveFilter(const opencascade::handle<SelectMgr_Filter> & theFilter);
 
 		/****************** RemoveFilters ******************/
-		/**** md5 signature: c67437b03a9b7287c85294a22b5cf833 ****/
+		/**** md5 signature: 76b1dac56b76ef3b70fd79415970d062 ****/
 		%feature("compactdefaultargs") RemoveFilters;
 		%feature("autodoc", "Remove all filters from context.
 
@@ -4144,6 +4192,22 @@ Returns
 None
 ") ResetLocation;
 		void ResetLocation(const opencascade::handle<AIS_InteractiveObject> & theObject);
+
+		/****************** Select ******************/
+		/**** md5 signature: c71757aa96bd289bdb9ac82fa6981ef9 ****/
+		%feature("compactdefaultargs") Select;
+		%feature("autodoc", "Sets list of owner selected/deselected using specified selection scheme. @param theowners owners to change selection state @param theselscheme selection scheme returns picking status.
+
+Parameters
+----------
+theOwners: AIS_NArray1OfEntityOwner
+theSelScheme: AIS_SelectionScheme
+
+Returns
+-------
+AIS_StatusOfPick
+") Select;
+		AIS_StatusOfPick Select(const AIS_NArray1OfEntityOwner & theOwners, const AIS_SelectionScheme theSelScheme);
 
 		/****************** Select ******************/
 		/**** md5 signature: 440778a1d119dc9eec978a78067df06f ****/
@@ -4197,6 +4261,77 @@ AIS_StatusOfPick
 ") Select;
 		AIS_StatusOfPick Select(const Standard_Boolean theToUpdateViewer);
 
+		/****************** SelectDetected ******************/
+		/**** md5 signature: 89506ff221e1c7c4fc54b977e288b0b8 ****/
+		%feature("compactdefaultargs") SelectDetected;
+		%feature("autodoc", "Select and hilights the previous detected via ais_interactivecontext::moveto() method; unhilights the previous picked. viewer should be explicitly redrawn after selection. @param theselscheme [in] selection scheme returns picking status //! @sa highlightstyle() defining default highlight styles of selected owners (prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected) @sa prsmgr_presentableobject::hilightattributes() defining per-object highlight style of selected owners (overrides defaults).
+
+Parameters
+----------
+theSelScheme: AIS_SelectionScheme,optional
+	default value is AIS_SelectionScheme_Replace
+
+Returns
+-------
+AIS_StatusOfPick
+") SelectDetected;
+		AIS_StatusOfPick SelectDetected(const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
+
+		/****************** SelectPoint ******************/
+		/**** md5 signature: 4544552d38230d3a0cabb487e3aaef7c ****/
+		%feature("compactdefaultargs") SelectPoint;
+		%feature("autodoc", "Selects the topmost object picked by the point in the view, viewer should be explicitly redrawn after selection. @param thepnt [in] point pixel coordinates within the view @param theview [in] active view where point is defined @param theselscheme [in] selection scheme returns picking status.
+
+Parameters
+----------
+thePnt: Graphic3d_Vec2i
+theView: V3d_View
+theSelScheme: AIS_SelectionScheme,optional
+	default value is AIS_SelectionScheme_Replace
+
+Returns
+-------
+AIS_StatusOfPick
+") SelectPoint;
+		AIS_StatusOfPick SelectPoint(const Graphic3d_Vec2i & thePnt, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
+
+		/****************** SelectPolygon ******************/
+		/**** md5 signature: da0b3aa40aa2485939f28c52c4321bc7 ****/
+		%feature("compactdefaultargs") SelectPolygon;
+		%feature("autodoc", "Select everything found in the polygon defined by bounding polyline. viewer should be explicitly redrawn after selection. @param thepolyline [in] polyline defining polygon bounds (in pixels) @param theview [in] active view where polyline is defined @param theselscheme [in] selection scheme returns picking status.
+
+Parameters
+----------
+thePolyline: TColgp_Array1OfPnt2d
+theView: V3d_View
+theSelScheme: AIS_SelectionScheme,optional
+	default value is AIS_SelectionScheme_Replace
+
+Returns
+-------
+AIS_StatusOfPick
+") SelectPolygon;
+		AIS_StatusOfPick SelectPolygon(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
+
+		/****************** SelectRectangle ******************/
+		/**** md5 signature: 0f5973af0c327ca20210ac5c498ef7c0 ****/
+		%feature("compactdefaultargs") SelectRectangle;
+		%feature("autodoc", "Selects objects within the bounding rectangle. viewer should be explicitly redrawn after selection. @param thepntmin [in] rectangle lower point (in pixels) @param thepntmax [in] rectangle upper point (in pixels) @param theview [in] active view where rectangle is defined @param theselscheme [in] selection scheme returns picking status @sa stdselect_viewerselector3d::allowoverlapdetection().
+
+Parameters
+----------
+thePntMin: Graphic3d_Vec2i
+thePntMax: Graphic3d_Vec2i
+theView: V3d_View
+theSelScheme: AIS_SelectionScheme,optional
+	default value is AIS_SelectionScheme_Replace
+
+Returns
+-------
+AIS_StatusOfPick
+") SelectRectangle;
+		AIS_StatusOfPick SelectRectangle(const Graphic3d_Vec2i & thePntMin, const Graphic3d_Vec2i & thePntMax, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
+
 		/****************** SelectedInteractive ******************/
 		/**** md5 signature: b6273836cee8954a2faee535a7126f4e ****/
 		%feature("compactdefaultargs") SelectedInteractive;
@@ -4211,7 +4346,7 @@ opencascade::handle<AIS_InteractiveObject>
 		/****************** SelectedOwner ******************/
 		/**** md5 signature: 4f367f2cac81145c8b4f46a462bff157 ****/
 		%feature("compactdefaultargs") SelectedOwner;
-		%feature("autodoc", "Returns the owner of the selected entity. @sa initselected()/moreselected()/nextselected().
+		%feature("autodoc", "Returns the owner of the selected entity. @sa initselected(), moreselected(), nextselected().
 
 Returns
 -------
@@ -4222,7 +4357,7 @@ opencascade::handle<SelectMgr_EntityOwner>
 		/****************** SelectedShape ******************/
 		/**** md5 signature: 721d3a216ce98c9b5e5e9d1b15f143f5 ****/
 		%feature("compactdefaultargs") SelectedShape;
-		%feature("autodoc", "Returns the selected shape. basically it is just a shape returned stored by stdselect_brepowner with graphic transformation being applied: @code const opencascade::handle<stdselect_brepowner> abrepowner = opencascade::handle<stdselect_brepowner>::downcast (selectedowner()); topods_shape aselshape = abrepowner->shape(); topods_shape alocatedshape = aselshape.located (abrepowner->location() * aselshape.location()); @endcode @sa selectedowner()/hasselectedshape().
+		%feature("autodoc", "Returns the selected shape. basically it is just a shape returned stored by stdselect_brepowner with graphic transformation being applied: @code const opencascade::handle<stdselect_brepowner> abrepowner = opencascade::handle<stdselect_brepowner>::downcast (selectedowner()); topods_shape aselshape = abrepowner->shape(); topods_shape alocatedshape = aselshape.located (abrepowner->location() * aselshape.location()); @endcode @sa selectedowner(), hasselectedshape().
 
 Returns
 -------
@@ -4255,7 +4390,7 @@ opencascade::handle<SelectMgr_SelectionManager>
 		/****************** SelectionStyle ******************/
 		/**** md5 signature: 3c3ddd0e1d466df6b150cfb790baa61a ****/
 		%feature("compactdefaultargs") SelectionStyle;
-		%feature("autodoc", "Returns current selection style settings. by default: - the color of selection is quantity_noc_gray80; - the presentation for selection is completely opaque; - the type of highlight is aspect_tohm_color.
+		%feature("autodoc", "Returns current selection style settings corrsponding to prs3d_typeofhighlight_selected. this is just a short-cut to highlightstyle(prs3d_typeofhighlight_selected).
 
 Returns
 -------
@@ -4360,6 +4495,21 @@ None
 ") SetCurrentObject;
 		void SetCurrentObject(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
+		/****************** SetDefaultDrawer ******************/
+		/**** md5 signature: fa88c8a7788e5b89033f7deefbc9be1c ****/
+		%feature("compactdefaultargs") SetDefaultDrawer;
+		%feature("autodoc", "Sets the default attribute manager; should be set at context creation time. warning - this setter doesn't update links to the default drawer of already displayed objects!.
+
+Parameters
+----------
+theDrawer: Prs3d_Drawer
+
+Returns
+-------
+None
+") SetDefaultDrawer;
+		void SetDefaultDrawer(const opencascade::handle<Prs3d_Drawer> & theDrawer);
+
 		/****************** SetDeviationAngle ******************/
 		/**** md5 signature: 3fa01c3e51e45d16b88cd62df5c6dba6 ****/
 		%feature("compactdefaultargs") SetDeviationAngle;
@@ -4378,19 +4528,19 @@ None
 		void SetDeviationAngle(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theAngle, const Standard_Boolean theToUpdateViewer);
 
 		/****************** SetDeviationAngle ******************/
-		/**** md5 signature: 373845ba63fe87edd7d9720e6aade848 ****/
+		/**** md5 signature: 57d7d8b2bbfd40492359d917f4b7c203 ****/
 		%feature("compactdefaultargs") SetDeviationAngle;
 		%feature("autodoc", "Default 20 degrees.
 
 Parameters
 ----------
-anAngle: float
+theAngle: float
 
 Returns
 -------
 None
 ") SetDeviationAngle;
-		void SetDeviationAngle(const Standard_Real anAngle);
+		void SetDeviationAngle(const Standard_Real theAngle);
 
 		/****************** SetDeviationCoefficient ******************/
 		/**** md5 signature: a869465c8496bd4f68daf77ec26ec399 ****/
@@ -4410,7 +4560,7 @@ None
 		void SetDeviationCoefficient(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theCoefficient, const Standard_Boolean theToUpdateViewer);
 
 		/****************** SetDeviationCoefficient ******************/
-		/**** md5 signature: c876cabde5740c4ce35b0db72a481d97 ****/
+		/**** md5 signature: b9b6c62150e8986b2bdd5259de3558aa ****/
 		%feature("compactdefaultargs") SetDeviationCoefficient;
 		%feature("autodoc", "Sets the deviation coefficient thecoefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient thecoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through the method: setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
 
@@ -4489,24 +4639,24 @@ None
 		void SetFilterType(const SelectMgr_FilterType theFilterType);
 
 		/****************** SetHiddenLineAspect ******************/
-		/**** md5 signature: 5b46a3500446af2bbd4fd524d0b64376 ****/
+		/**** md5 signature: 82e7745333ec21f019200e5221b9cdcf ****/
 		%feature("compactdefaultargs") SetHiddenLineAspect;
 		%feature("autodoc", "Sets the hidden line aspect anaspect. aspect defines display attributes for hidden lines in hlr projections.
 
 Parameters
 ----------
-anAspect: Prs3d_LineAspect
+theAspect: Prs3d_LineAspect
 
 Returns
 -------
 None
 ") SetHiddenLineAspect;
-		void SetHiddenLineAspect(const opencascade::handle<Prs3d_LineAspect> & anAspect);
+		void SetHiddenLineAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****************** SetHighlightStyle ******************/
 		/**** md5 signature: 514ba754efe6d3cdef1ca1443d525348 ****/
 		%feature("compactdefaultargs") SetHighlightStyle;
-		%feature("autodoc", "Setup highlight style settings. it is preferred modifying existing style returned by method highlightstyle() instead of creating a new drawer. //! if a new highlight style is created, its presentation zlayer should be checked, otherwise highlighting might not work as expected. default values are: - prs3d_typeofhighlight_dynamic: graphic3d_zlayerid_top, object highlighting is drawn on top of main scene within immediate layers, so that v3d_view::redrawimmediate() will be enough to see update; - prs3d_typeofhighlight_localdynamic: graphic3d_zlayerid_topmost, object parts highlighting is drawn on top of main scene within immediate layers with depth cleared (even overlapped geometry will be revealed); - prs3d_typeofhighlight_selected: graphic3d_zlayerid_unknown, object highlighting is drawn on top of main scene within the same layer as object itself (e.g. graphic3d_zlayerid_default by default) and increased priority.
+		%feature("autodoc", "Setup highlight style settings. tip: it is better modifying existing style returned by method highlightstyle() instead of creating a new prs3d_drawer to avoid unexpected results due misconfiguration. //! if a new highlight style is created, its presentation zlayer should be checked, otherwise highlighting might not work as expected.
 
 Parameters
 ----------
@@ -4522,7 +4672,7 @@ None
 		/****************** SetHighlightStyle ******************/
 		/**** md5 signature: 0f582d623d586c315d681407eef8bab2 ****/
 		%feature("compactdefaultargs") SetHighlightStyle;
-		%feature("autodoc", "Setup the style of dynamic highlighting. it is preferred modifying existing style returned by method highlightstyle() instead of creating a new drawer. //! if a new highlight style is created, its presentation zlayer should be checked, otherwise highlighting might not work as expected. default value is graphic3d_zlayerid_top, object highlighting is drawn on top of main scene within immediate layers, so that v3d_view::redrawimmediate() will be enough to see update;.
+		%feature("autodoc", "Setup the style of dynamic highlighting corrsponding to prs3d_typeofhighlight_selected. this is just a short-cut to sethighlightstyle(prs3d_typeofhighlight_dynamic,thestyle).
 
 Parameters
 ----------
@@ -4804,7 +4954,7 @@ None
 		/****************** SetSelectionStyle ******************/
 		/**** md5 signature: 93a6cf42e8daf8b20f671afa0142b5ba ****/
 		%feature("compactdefaultargs") SetSelectionStyle;
-		%feature("autodoc", "Setup the style of selection highlighting.
+		%feature("autodoc", "Setup the style of selection highlighting. this is just a short-cut to sethighlightstyle(prs3d_typeofhighlight_selected,thestyle).
 
 Parameters
 ----------
@@ -4861,24 +5011,6 @@ Returns
 None
 ") SetTransformPersistence;
 		void SetTransformPersistence(const opencascade::handle<AIS_InteractiveObject> & theObject, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
-
-		/****************** SetTransformPersistence ******************/
-		/**** md5 signature: 8227af0069ce6c1db420a1ae7c1520a9 ****/
-		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theObj: AIS_InteractiveObject
-theFlag: Graphic3d_TransModeFlags
-thePoint: gp_Pnt,optional
-	default value is gp_Pnt(0.0,0.0,0.0)
-
-Returns
--------
-None
-") SetTransformPersistence;
-		void SetTransformPersistence(const opencascade::handle<AIS_InteractiveObject> & theObj, const Graphic3d_TransModeFlags & theFlag, const gp_Pnt & thePoint = gp_Pnt(0.0,0.0,0.0));
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: fee820087e4dfddda2498e02179e9112 ****/
@@ -5506,7 +5638,7 @@ int
 		/****************** Type ******************/
 		/**** md5 signature: 7e0280329d789210bd49ed9764da22e3 ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns the kind of interactive object; ais_koi_none by default.
+		%feature("autodoc", "Returns the kind of interactive object; ais_kindofinteractive_none by default.
 
 Returns
 -------
@@ -5520,6 +5652,83 @@ AIS_KindOfInteractive
 %make_alias(AIS_InteractiveObject)
 
 %extend AIS_InteractiveObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************
+* class AIS_LightSourceOwner *
+*****************************/
+class AIS_LightSourceOwner : public SelectMgr_EntityOwner {
+	public:
+		/****************** AIS_LightSourceOwner ******************/
+		/**** md5 signature: 1a76e2e9334a0d57df383ac38fcf4ba6 ****/
+		%feature("compactdefaultargs") AIS_LightSourceOwner;
+		%feature("autodoc", "Main constructor.
+
+Parameters
+----------
+theObject: AIS_LightSource
+thePriority: int,optional
+	default value is 5
+
+Returns
+-------
+None
+") AIS_LightSourceOwner;
+		 AIS_LightSourceOwner(const opencascade::handle<AIS_LightSource> & theObject, Standard_Integer thePriority = 5);
+
+		/****************** HandleMouseClick ******************/
+		/**** md5 signature: a1e0b5a1544f4c34e89ff7054f3e9da6 ****/
+		%feature("compactdefaultargs") HandleMouseClick;
+		%feature("autodoc", "Handle mouse button click event.
+
+Parameters
+----------
+thePoint: Graphic3d_Vec2i
+theButton: Aspect_VKeyMouse
+theModifiers: Aspect_VKeyFlags
+theIsDoubleClick: bool
+
+Returns
+-------
+bool
+") HandleMouseClick;
+		virtual Standard_Boolean HandleMouseClick(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsDoubleClick);
+
+		/****************** HilightWithColor ******************/
+		/**** md5 signature: 93589dd7f7e0570ae831db807b6e606c ****/
+		%feature("compactdefaultargs") HilightWithColor;
+		%feature("autodoc", "Highlights selectable object's presentation with display mode in presentation manager with given highlight style. also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to selectmgr_selectableobject::hilightownerwithcolor method.
+
+Parameters
+----------
+thePrsMgr: PrsMgr_PresentationManager
+theStyle: Prs3d_Drawer
+theMode: int
+
+Returns
+-------
+None
+") HilightWithColor;
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
+
+		/****************** IsForcedHilight ******************/
+		/**** md5 signature: b7e8a39578fc441f958f06f3cf923c7d ****/
+		%feature("compactdefaultargs") IsForcedHilight;
+		%feature("autodoc", "Always update dynamic highlighting.
+
+Returns
+-------
+bool
+") IsForcedHilight;
+		virtual Standard_Boolean IsForcedHilight();
+
+};
+
+
+%extend AIS_LightSourceOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5550,13 +5759,13 @@ None
 		 AIS_ManipulatorOwner(const opencascade::handle<SelectMgr_SelectableObject> & theSelObject, const Standard_Integer theIndex, const AIS_ManipulatorMode theMode, const Standard_Integer thePriority = 0);
 
 		/****************** HilightWithColor ******************/
-		/**** md5 signature: 71c328368ee46e9ee02419c61fa1b191 ****/
+		/**** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
 theMode: int
 
@@ -5564,7 +5773,7 @@ Returns
 -------
 None
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
 		/****************** Index ******************/
 		/**** md5 signature: 0be2d384cf83d16771bb3f9c857c6326 ****/
@@ -5679,13 +5888,13 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & DetectedPoints();
 
 		/****************** HilightWithColor ******************/
-		/**** md5 signature: ac1a5f13927ca247a3c85abe1279df2d ****/
+		/**** md5 signature: 93589dd7f7e0570ae831db807b6e606c ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "Handle dynamic highlighting.
 
 Parameters
 ----------
-thePrsMgr: PrsMgr_PresentationManager3d
+thePrsMgr: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
 theMode: int
 
@@ -5693,7 +5902,7 @@ Returns
 -------
 None
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
 		/****************** IsForcedHilight ******************/
 		/**** md5 signature: b7e8a39578fc441f958f06f3cf923c7d ****/
@@ -5895,6 +6104,24 @@ AIS_SelectStatus
 ") Select;
 		virtual AIS_SelectStatus Select(const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
+		/****************** SelectOwners ******************/
+		/**** md5 signature: ac1b8c76b8f30a86ea808928babe4605 ****/
+		%feature("compactdefaultargs") SelectOwners;
+		%feature("autodoc", "Select or deselect owners depending on the selection scheme. @param theowners [in] elements to change selection state @param theselscheme [in] selection scheme, defines how owner is selected @param thetoallowseloverlap [in] selection flag, if true - overlapped entities are allowed @param thefilter [in] context filter to skip not acceptable owners.
+
+Parameters
+----------
+thePickedOwners: AIS_NArray1OfEntityOwner
+theSelScheme: AIS_SelectionScheme
+theToAllowSelOverlap: bool
+theFilter: SelectMgr_Filter
+
+Returns
+-------
+None
+") SelectOwners;
+		virtual void SelectOwners(const AIS_NArray1OfEntityOwner & thePickedOwners, const AIS_SelectionScheme theSelScheme, const Standard_Boolean theToAllowSelOverlap, const opencascade::handle<SelectMgr_Filter> & theFilter);
+
 		/****************** Value ******************/
 		/**** md5 signature: af0cbe2fba1d118547342f72cf6f251c ****/
 		%feature("compactdefaultargs") Value;
@@ -5951,13 +6178,13 @@ Prs3d_DatumParts
 		Prs3d_DatumParts DatumPart();
 
 		/****************** HilightWithColor ******************/
-		/**** md5 signature: 71c328368ee46e9ee02419c61fa1b191 ****/
+		/**** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "Highlights selectable object's presentation.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
 theMode: int
 
@@ -5965,7 +6192,7 @@ Returns
 -------
 None
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
 		/****************** IsHilighted ******************/
 		/**** md5 signature: 75ad53fe5d3fc51cf2a9dd7e62ee1347 ****/
@@ -6059,7 +6286,7 @@ bool
 /***************************
 * class AIS_ViewController *
 ***************************/
-class AIS_ViewController {
+class AIS_ViewController : public Aspect_WindowInputListener {
 	public:
 		/****************** AIS_ViewController ******************/
 		/**** md5 signature: d17644811ddb999bc83fdf0d339ec312 ****/
@@ -6084,7 +6311,7 @@ None
 		void AbortViewAnimation();
 
 		/****************** AddTouchPoint ******************/
-		/**** md5 signature: 93b82d6d34eb813c208bc4163ef671c4 ****/
+		/**** md5 signature: 3bd9dbdb649487ab2275978d96667a1b ****/
 		%feature("compactdefaultargs") AddTouchPoint;
 		%feature("autodoc", "Add touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates @param theclearbefore if true previously registered touches will be removed.
 
@@ -6101,28 +6328,6 @@ None
 ") AddTouchPoint;
 		virtual void AddTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt, Standard_Boolean theClearBefore = false);
 
-		/****************** Change3dMouseIsNoRotate ******************/
-		/**** md5 signature: b2ff1af628a01e66606ed582c146ef69 ****/
-		%feature("compactdefaultargs") Change3dMouseIsNoRotate;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
-
-Returns
--------
-NCollection_Vec3<bool>
-") Change3dMouseIsNoRotate;
-		NCollection_Vec3<bool> & Change3dMouseIsNoRotate();
-
-		/****************** Change3dMouseToReverse ******************/
-		/**** md5 signature: 74994d53f8199fd2049bc1854acbcdb2 ****/
-		%feature("compactdefaultargs") Change3dMouseToReverse;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
-
-Returns
--------
-NCollection_Vec3<bool>
-") Change3dMouseToReverse;
-		NCollection_Vec3<bool> & Change3dMouseToReverse();
-
 		/****************** ChangeInputBuffer ******************/
 		/**** md5 signature: c617c43bf721a07d3495c85c386656be ****/
 		%feature("compactdefaultargs") ChangeInputBuffer;
@@ -6138,17 +6343,6 @@ AIS_ViewInputBuffer
 ") ChangeInputBuffer;
 		AIS_ViewInputBuffer & ChangeInputBuffer(AIS_ViewInputBufferType theType);
 
-		/****************** ChangeKeys ******************/
-		/**** md5 signature: 5ba331e57bcd00b6539ab5d9145324ac ****/
-		%feature("compactdefaultargs") ChangeKeys;
-		%feature("autodoc", "Return keyboard state.
-
-Returns
--------
-Aspect_VKeySet
-") ChangeKeys;
-		Aspect_VKeySet & ChangeKeys();
-
 		/****************** ChangeMouseGestureMap ******************/
 		/**** md5 signature: f27868853ccb67e85e9cde87d79c302f ****/
 		%feature("compactdefaultargs") ChangeMouseGestureMap;
@@ -6160,16 +6354,16 @@ AIS_MouseGestureMap
 ") ChangeMouseGestureMap;
 		AIS_MouseGestureMap & ChangeMouseGestureMap();
 
-		/****************** EventTime ******************/
-		/**** md5 signature: 6bdc5b17561b5be0e9e4dbdd76a72ace ****/
-		%feature("compactdefaultargs") EventTime;
-		%feature("autodoc", "Return event time (e.g. current time).
+		/****************** ChangeMouseSelectionSchemes ******************/
+		/**** md5 signature: 80ce1bcc2c1e49f99852f20cc18b214d ****/
+		%feature("compactdefaultargs") ChangeMouseSelectionSchemes;
+		%feature("autodoc", "Return map defining mouse gestures.
 
 Returns
 -------
-double
-") EventTime;
-		double EventTime();
+AIS_MouseSelectionSchemeMap
+") ChangeMouseSelectionSchemes;
+		AIS_MouseSelectionSchemeMap & ChangeMouseSelectionSchemes();
 
 		/****************** FetchNavigationKeys ******************/
 		/**** md5 signature: 5b7cb763413888a54d2f8b3826e86cda ****/
@@ -6221,50 +6415,6 @@ None
 ") FlushViewEvents;
 		virtual void FlushViewEvents(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, Standard_Boolean theToHandle = Standard_False);
 
-		/****************** Get3dMouseIsNoRotate ******************/
-		/**** md5 signature: ae14b65261c4d2a6b12679cc1f5c5ed4 ****/
-		%feature("compactdefaultargs") Get3dMouseIsNoRotate;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
-
-Returns
--------
-NCollection_Vec3<bool>
-") Get3dMouseIsNoRotate;
-		const NCollection_Vec3<bool> & Get3dMouseIsNoRotate();
-
-		/****************** Get3dMouseRotationScale ******************/
-		/**** md5 signature: 6e7927184907412546b0e3bf5c131f00 ****/
-		%feature("compactdefaultargs") Get3dMouseRotationScale;
-		%feature("autodoc", "Return acceleration ratio for rotation event; 4.0 by default.
-
-Returns
--------
-float
-") Get3dMouseRotationScale;
-		float Get3dMouseRotationScale();
-
-		/****************** Get3dMouseToReverse ******************/
-		/**** md5 signature: a365f1e9e4397aece1eb44aa7383f6d5 ****/
-		%feature("compactdefaultargs") Get3dMouseToReverse;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
-
-Returns
--------
-NCollection_Vec3<bool>
-") Get3dMouseToReverse;
-		const NCollection_Vec3<bool> & Get3dMouseToReverse();
-
-		/****************** Get3dMouseTranslationScale ******************/
-		/**** md5 signature: f426a4558b5227de61530d9d20b93e7e ****/
-		%feature("compactdefaultargs") Get3dMouseTranslationScale;
-		%feature("autodoc", "Return acceleration ratio for translation event; 2.0 by default.
-
-Returns
--------
-float
-") Get3dMouseTranslationScale;
-		float Get3dMouseTranslationScale();
-
 		/****************** GravityPoint ******************/
 		/**** md5 signature: 8c62140d10f0624c3042ec01021f9c63 ****/
 		%feature("compactdefaultargs") GravityPoint;
@@ -6308,17 +6458,6 @@ bool
 ") HasPreviousMoveTo;
 		bool HasPreviousMoveTo();
 
-		/****************** HasTouchPoints ******************/
-		/**** md5 signature: f6532233e79841283a6d00ea2e7477d5 ****/
-		%feature("compactdefaultargs") HasTouchPoints;
-		%feature("autodoc", "Return true if touches map is not empty.
-
-Returns
--------
-bool
-") HasTouchPoints;
-		bool HasTouchPoints();
-
 		/****************** InputBuffer ******************/
 		/**** md5 signature: 0e66b64ea2254057a38ac6990d92e49f ****/
 		%feature("compactdefaultargs") InputBuffer;
@@ -6334,10 +6473,21 @@ AIS_ViewInputBuffer
 ") InputBuffer;
 		const AIS_ViewInputBuffer & InputBuffer(AIS_ViewInputBufferType theType);
 
+		/****************** IsContinuousRedraw ******************/
+		/**** md5 signature: ebe0ac2e75e8c36daa1c62aa56049396 ****/
+		%feature("compactdefaultargs") IsContinuousRedraw;
+		%feature("autodoc", "Return true if continuous redrawing is enabled; false by default. this option would request a next viewer frame to be completely redrawn right after current frame is finished.
+
+Returns
+-------
+bool
+") IsContinuousRedraw;
+		bool IsContinuousRedraw();
+
 		/****************** KeyDown ******************/
-		/**** md5 signature: e81df4f0db38c260f6d1c40efe826065 ****/
+		/**** md5 signature: 055381051455eb24c6769534a3ac24de ****/
 		%feature("compactdefaultargs") KeyDown;
-		%feature("autodoc", "Press key. @param thekey key pressed @param thetime event timestamp.
+		%feature("autodoc", "Press key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
 
 Parameters
 ----------
@@ -6353,9 +6503,9 @@ None
 		virtual void KeyDown(Aspect_VKey theKey, double theTime, double thePressure = 1.0);
 
 		/****************** KeyFromAxis ******************/
-		/**** md5 signature: a8474160bd508215c794eb4f52308070 ****/
+		/**** md5 signature: 9ef75989fe6dc713757abf2620277306 ****/
 		%feature("compactdefaultargs") KeyFromAxis;
-		%feature("autodoc", "Simulate key up/down events from axis value.
+		%feature("autodoc", "Simulate key up/down events from axis value. default implementation updates internal cache.
 
 Parameters
 ----------
@@ -6371,9 +6521,9 @@ None
 		virtual void KeyFromAxis(Aspect_VKey theNegative, Aspect_VKey thePositive, double theTime, double thePressure);
 
 		/****************** KeyUp ******************/
-		/**** md5 signature: 15846f68bddea480edd14c42e82a328b ****/
+		/**** md5 signature: 62ece3de20f1bd30c606afe8dacaceb1 ****/
 		%feature("compactdefaultargs") KeyUp;
-		%feature("autodoc", "Release key. @param thekey key pressed @param thetime event timestamp.
+		%feature("autodoc", "Release key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
 
 Parameters
 ----------
@@ -6385,39 +6535,6 @@ Returns
 None
 ") KeyUp;
 		virtual void KeyUp(Aspect_VKey theKey, double theTime);
-
-		/****************** Keys ******************/
-		/**** md5 signature: 71088904ae13bced99cf6e1155c58478 ****/
-		%feature("compactdefaultargs") Keys;
-		%feature("autodoc", "Return keyboard state.
-
-Returns
--------
-Aspect_VKeySet
-") Keys;
-		const Aspect_VKeySet & Keys();
-
-		/****************** LastMouseFlags ******************/
-		/**** md5 signature: 891e38e0b645d78e87ef09c802ac2d63 ****/
-		%feature("compactdefaultargs") LastMouseFlags;
-		%feature("autodoc", "Return active key modifiers passed with last mouse event.
-
-Returns
--------
-Aspect_VKeyFlags
-") LastMouseFlags;
-		Aspect_VKeyFlags LastMouseFlags();
-
-		/****************** LastMousePosition ******************/
-		/**** md5 signature: 69040771a57339f922c8a0c6021122bb ****/
-		%feature("compactdefaultargs") LastMousePosition;
-		%feature("autodoc", "Return last mouse position.
-
-Returns
--------
-Graphic3d_Vec2i
-") LastMousePosition;
-		const Graphic3d_Vec2i & LastMousePosition();
 
 		/****************** MinZoomDistance ******************/
 		/**** md5 signature: 5bb7298fe9e97f5e9e5ab0365d634252 ****/
@@ -6463,6 +6580,17 @@ AIS_MouseGestureMap
 ") MouseGestureMap;
 		const AIS_MouseGestureMap & MouseGestureMap();
 
+		/****************** MouseSelectionSchemes ******************/
+		/**** md5 signature: a293a8235f2dad8699b519a19dccdf67 ****/
+		%feature("compactdefaultargs") MouseSelectionSchemes;
+		%feature("autodoc", "Return map defining mouse selection schemes.
+
+Returns
+-------
+AIS_MouseSelectionSchemeMap
+") MouseSelectionSchemes;
+		const AIS_MouseSelectionSchemeMap & MouseSelectionSchemes();
+
 		/****************** NavigationMode ******************/
 		/**** md5 signature: de20fce514777ce3a2a466778f462fc3 ****/
 		%feature("compactdefaultargs") NavigationMode;
@@ -6473,6 +6601,17 @@ Returns
 AIS_NavigationMode
 ") NavigationMode;
 		AIS_NavigationMode NavigationMode();
+
+		/****************** ObjectsAnimation ******************/
+		/**** md5 signature: f84f413869b6320ac0352f35312f7fc9 ****/
+		%feature("compactdefaultargs") ObjectsAnimation;
+		%feature("autodoc", "Return objects animation; empty (but not null) animation by default.
+
+Returns
+-------
+opencascade::handle<AIS_Animation>
+") ObjectsAnimation;
+		const opencascade::handle<AIS_Animation> & ObjectsAnimation();
 
 		/****************** OnObjectDragged ******************/
 		/**** md5 signature: e3d03bd62923f7f609f4ff8690501efc ****/
@@ -6518,6 +6657,24 @@ float
 ") OrbitAcceleration;
 		float OrbitAcceleration();
 
+		/****************** PickAxis ******************/
+		/**** md5 signature: 623ae1227bd809a63fcbddc49732d262 ****/
+		%feature("compactdefaultargs") PickAxis;
+		%feature("autodoc", "Pick closest point by axis. this method is expected to be called from rendering thread. @param thetoppnt [out] result point @param thectx [in] interactive context @param theview [in] active view @param theaxis [in] selection axis returns true if result has been found.
+
+Parameters
+----------
+theTopPnt: gp_Pnt
+theCtx: AIS_InteractiveContext
+theView: V3d_View
+theAxis: gp_Ax1
+
+Returns
+-------
+bool
+") PickAxis;
+		virtual bool PickAxis(gp_Pnt & theTopPnt, const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const gp_Ax1 & theAxis);
+
 		/****************** PickPoint ******************/
 		/**** md5 signature: f34d655153fb91f33134075ddbeb45a4 ****/
 		%feature("compactdefaultargs") PickPoint;
@@ -6537,35 +6694,6 @@ bool
 ") PickPoint;
 		virtual bool PickPoint(gp_Pnt & thePnt, const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const Graphic3d_Vec2i & theCursor, bool theToStickToPickRay);
 
-		/****************** PressMouseButton ******************/
-		/**** md5 signature: 3011ceaa0add6213ae689425180a9aab ****/
-		%feature("compactdefaultargs") PressMouseButton;
-		%feature("autodoc", "Handle mouse button press event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebutton pressed button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if view should be redrawn.
-
-Parameters
-----------
-thePoint: Graphic3d_Vec2i
-theButton: Aspect_VKeyMouse
-theModifiers: Aspect_VKeyFlags
-theIsEmulated: bool
-
-Returns
--------
-bool
-") PressMouseButton;
-		bool PressMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
-
-		/****************** PressedMouseButtons ******************/
-		/**** md5 signature: 28ea733557be0052235dc8a7fe3ed119 ****/
-		%feature("compactdefaultargs") PressedMouseButtons;
-		%feature("autodoc", "Return currently pressed mouse buttons.
-
-Returns
--------
-Aspect_VKeyMouse
-") PressedMouseButtons;
-		Aspect_VKeyMouse PressedMouseButtons();
-
 		/****************** PreviousMoveTo ******************/
 		/**** md5 signature: 0238bfa577ed4f8d2d7e4ac20fe0c928 ****/
 		%feature("compactdefaultargs") PreviousMoveTo;
@@ -6577,26 +6705,71 @@ Graphic3d_Vec2i
 ") PreviousMoveTo;
 		const Graphic3d_Vec2i & PreviousMoveTo();
 
-		/****************** ReleaseMouseButton ******************/
-		/**** md5 signature: a9b43da8768564266828a78fde53802f ****/
-		%feature("compactdefaultargs") ReleaseMouseButton;
-		%feature("autodoc", "Handle mouse button release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebutton released button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if view should be redrawn.
-
-Parameters
-----------
-thePoint: Graphic3d_Vec2i
-theButton: Aspect_VKeyMouse
-theModifiers: Aspect_VKeyFlags
-theIsEmulated: bool
+		/****************** ProcessClose ******************/
+		/**** md5 signature: 3481c3827afdec0c5c5e91dde837b867 ****/
+		%feature("compactdefaultargs") ProcessClose;
+		%feature("autodoc", "Handle window close event. default implementation does nothing.
 
 Returns
 -------
-bool
-") ReleaseMouseButton;
-		bool ReleaseMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
+None
+") ProcessClose;
+		virtual void ProcessClose();
+
+		/****************** ProcessConfigure ******************/
+		/**** md5 signature: fe5a0999d9281947f44acb4734142af6 ****/
+		%feature("compactdefaultargs") ProcessConfigure;
+		%feature("autodoc", "Handle window resize event. default implementation does nothing.
+
+Parameters
+----------
+theIsResized: bool
+
+Returns
+-------
+None
+") ProcessConfigure;
+		virtual void ProcessConfigure(bool theIsResized);
+
+		/****************** ProcessExpose ******************/
+		/**** md5 signature: dc0514da1009d9a5010f9cf835c23893 ****/
+		%feature("compactdefaultargs") ProcessExpose;
+		%feature("autodoc", "Handle expose event (window content has been invalidation and should be redrawn). default implementation does nothing.
+
+Returns
+-------
+None
+") ProcessExpose;
+		virtual void ProcessExpose();
+
+		/****************** ProcessFocus ******************/
+		/**** md5 signature: ff9272136bbf3e658128b3d270a2248c ****/
+		%feature("compactdefaultargs") ProcessFocus;
+		%feature("autodoc", "Handle focus event. default implementation resets cached input state (pressed keys).
+
+Parameters
+----------
+theIsActivated: bool
+
+Returns
+-------
+None
+") ProcessFocus;
+		virtual void ProcessFocus(bool theIsActivated);
+
+		/****************** ProcessInput ******************/
+		/**** md5 signature: 386b349f17fbbc54b1980328bb1461fc ****/
+		%feature("compactdefaultargs") ProcessInput;
+		%feature("autodoc", "Handle window input event immediately. default implementation does nothing - input events are accumulated in internal buffer until explicit flushviewevents() call.
+
+Returns
+-------
+None
+") ProcessInput;
+		virtual void ProcessInput();
 
 		/****************** RemoveTouchPoint ******************/
-		/**** md5 signature: 45c3401339716ca58b815f7e44a3d196 ****/
+		/**** md5 signature: 191b7bc4b1754be7fbea137e67fea68b ****/
 		%feature("compactdefaultargs") RemoveTouchPoint;
 		%feature("autodoc", "Remove touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param theclearselectpnts if true will initiate clearing of selection points returns true if point has been removed.
 
@@ -6646,83 +6819,38 @@ AIS_RotationMode
 		AIS_RotationMode RotationMode();
 
 		/****************** SelectInViewer ******************/
-		/**** md5 signature: fb1ee6ed4cad231a75d704035cc26f17 ****/
+		/**** md5 signature: 455d3e990b5174a5d49957adc7536b62 ****/
 		%feature("compactdefaultargs") SelectInViewer;
-		%feature("autodoc", "Perform selection in 3d viewer. this method is expected to be called from ui thread. @param thepnt picking point @param theisxor xor selection flag.
+		%feature("autodoc", "Perform selection in 3d viewer. this method is expected to be called from ui thread. @param thepnt picking point @param thescheme selection scheme.
 
 Parameters
 ----------
 thePnt: Graphic3d_Vec2i
-theIsXOR: bool,optional
-	default value is false
+theScheme: AIS_SelectionScheme,optional
+	default value is AIS_SelectionScheme_Replace
 
 Returns
 -------
 None
 ") SelectInViewer;
-		virtual void SelectInViewer(const Graphic3d_Vec2i & thePnt, const bool theIsXOR = false);
+		virtual void SelectInViewer(const Graphic3d_Vec2i & thePnt, const AIS_SelectionScheme theScheme = AIS_SelectionScheme_Replace);
 
 		/****************** SelectInViewer ******************/
-		/**** md5 signature: e6d212ca872d2875f33a351bd67cae52 ****/
+		/**** md5 signature: f9f97b8f40af10382e8032daffba1d1b ****/
 		%feature("compactdefaultargs") SelectInViewer;
-		%feature("autodoc", "Perform selection in 3d viewer. this method is expected to be called from ui thread. @param thepnts picking point @param theisxor xor selection flag.
+		%feature("autodoc", "Perform selection in 3d viewer. this method is expected to be called from ui thread. @param thepnts picking point @param thescheme selection scheme.
 
 Parameters
 ----------
 thePnts: NCollection_Sequence<Graphic3d_Vec2i>
-theIsXOR: bool,optional
-	default value is false
+theScheme: AIS_SelectionScheme,optional
+	default value is AIS_SelectionScheme_Replace
 
 Returns
 -------
 None
 ") SelectInViewer;
-		virtual void SelectInViewer(const NCollection_Sequence<Graphic3d_Vec2i> & thePnts, const bool theIsXOR = false);
-
-		/****************** Set3dMousePreciseInput ******************/
-		/**** md5 signature: 0ff4172c7dce21c124fb3941d21634cd ****/
-		%feature("compactdefaultargs") Set3dMousePreciseInput;
-		%feature("autodoc", "Set quadric acceleration flag.
-
-Parameters
-----------
-theIsQuadric: bool
-
-Returns
--------
-None
-") Set3dMousePreciseInput;
-		void Set3dMousePreciseInput(bool theIsQuadric);
-
-		/****************** Set3dMouseRotationScale ******************/
-		/**** md5 signature: 26cc1d3413bc1ed0806210cb74503bf8 ****/
-		%feature("compactdefaultargs") Set3dMouseRotationScale;
-		%feature("autodoc", "Set acceleration ratio for rotation event.
-
-Parameters
-----------
-theScale: float
-
-Returns
--------
-None
-") Set3dMouseRotationScale;
-		void Set3dMouseRotationScale(float theScale);
-
-		/****************** Set3dMouseTranslationScale ******************/
-		/**** md5 signature: d66cf6c87510f4cf28118e77235f6dc1 ****/
-		%feature("compactdefaultargs") Set3dMouseTranslationScale;
-		%feature("autodoc", "Set acceleration ratio for translation event.
-
-Parameters
-----------
-theScale: float
-
-Returns
--------
-None
-") Set3dMouseTranslationScale;
-		void Set3dMouseTranslationScale(float theScale);
+		virtual void SelectInViewer(const NCollection_Sequence<Graphic3d_Vec2i> & thePnts, const AIS_SelectionScheme theScheme = AIS_SelectionScheme_Replace);
 
 		/****************** SetAllowDragging ******************/
 		/**** md5 signature: df0d4841ca91c4e463f1b9ff172bb5a7 ****/
@@ -6828,6 +6956,21 @@ Returns
 None
 ") SetAllowZooming;
 		void SetAllowZooming(bool theToEnable);
+
+		/****************** SetContinuousRedraw ******************/
+		/**** md5 signature: 20b6590274368b0cc65949958df5306b ****/
+		%feature("compactdefaultargs") SetContinuousRedraw;
+		%feature("autodoc", "Enable or disable continuous updates.
+
+Parameters
+----------
+theToEnable: bool
+
+Returns
+-------
+None
+") SetContinuousRedraw;
+		void SetContinuousRedraw(bool theToEnable);
 
 		/****************** SetDisplayXRAuxDevices ******************/
 		/**** md5 signature: 135d6d3dee9bf55919790adaacc3d566 ****/
@@ -6949,6 +7092,21 @@ None
 ") SetNavigationMode;
 		void SetNavigationMode(AIS_NavigationMode theMode);
 
+		/****************** SetObjectsAnimation ******************/
+		/**** md5 signature: 88f1b826298874a96efd29de754191e5 ****/
+		%feature("compactdefaultargs") SetObjectsAnimation;
+		%feature("autodoc", "Set object animation to be handled within handleviewredraw().
+
+Parameters
+----------
+theAnimation: AIS_Animation
+
+Returns
+-------
+None
+") SetObjectsAnimation;
+		void SetObjectsAnimation(const opencascade::handle<AIS_Animation> & theAnimation);
+
 		/****************** SetOrbitAcceleration ******************/
 		/**** md5 signature: d9ccb4db2cbf77b5f312c630bd8dcdd6 ****/
 		%feature("compactdefaultargs") SetOrbitAcceleration;
@@ -6963,6 +7121,21 @@ Returns
 None
 ") SetOrbitAcceleration;
 		void SetOrbitAcceleration(float theRatio);
+
+		/****************** SetPauseObjectsAnimation ******************/
+		/**** md5 signature: 53643e467565b04cd522841842d5380d ****/
+		%feature("compactdefaultargs") SetPauseObjectsAnimation;
+		%feature("autodoc", "Set if object animation should be paused on mouse click.
+
+Parameters
+----------
+theToPause: bool
+
+Returns
+-------
+None
+") SetPauseObjectsAnimation;
+		void SetPauseObjectsAnimation(bool theToPause);
 
 		/****************** SetRotationMode ******************/
 		/**** md5 signature: de089ee21b8924d75e03a45a58b75511 ****/
@@ -7125,17 +7298,6 @@ float
 ") ThrustSpeed;
 		float ThrustSpeed();
 
-		/****************** To3dMousePreciseInput ******************/
-		/**** md5 signature: e7d1cbbce6f739652fb2dcffebfdc574 ****/
-		%feature("compactdefaultargs") To3dMousePreciseInput;
-		%feature("autodoc", "Return quadric acceleration flag; true by default.
-
-Returns
--------
-bool
-") To3dMousePreciseInput;
-		bool To3dMousePreciseInput();
-
 		/****************** ToAllowDragging ******************/
 		/**** md5 signature: 8a61183f21fcf283f340eec4ff8531b8 ****/
 		%feature("compactdefaultargs") ToAllowDragging;
@@ -7257,6 +7419,17 @@ bool
 ") ToLockOrbitZUp;
 		bool ToLockOrbitZUp();
 
+		/****************** ToPauseObjectsAnimation ******************/
+		/**** md5 signature: 9eebb76fd53450abfb9c1f0883f9c02a ****/
+		%feature("compactdefaultargs") ToPauseObjectsAnimation;
+		%feature("autodoc", "Return true if object animation should be paused on mouse click; false by default.
+
+Returns
+-------
+bool
+") ToPauseObjectsAnimation;
+		bool ToPauseObjectsAnimation();
+
 		/****************** ToShowPanAnchorPoint ******************/
 		/**** md5 signature: 20019a5af0a5a60f6ba338d642a2d2b0 ****/
 		%feature("compactdefaultargs") ToShowPanAnchorPoint;
@@ -7313,7 +7486,7 @@ float
 		float TouchToleranceScale();
 
 		/****************** Update3dMouse ******************/
-		/**** md5 signature: 1814989e207401f76efb8f1dd3375f84 ****/
+		/**** md5 signature: 38284aace0b4c5126a95024b97bd63b9 ****/
 		%feature("compactdefaultargs") Update3dMouse;
 		%feature("autodoc", "Process 3d mouse input event (redirects to translation, rotation and keys).
 
@@ -7328,7 +7501,7 @@ bool
 		virtual bool Update3dMouse(const WNT_HIDSpaceMouse & theEvent);
 
 		/****************** UpdateMouseButtons ******************/
-		/**** md5 signature: 9ccfebb398dffcbca649cfaf245931da ****/
+		/**** md5 signature: 81da55faf2bb0988a1f62ddfcbad1a8e ****/
 		%feature("compactdefaultargs") UpdateMouseButtons;
 		%feature("autodoc", "Handle mouse button press/release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if view should be redrawn.
 
@@ -7364,7 +7537,7 @@ bool
 		virtual bool UpdateMouseClick(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsDoubleClick);
 
 		/****************** UpdateMousePosition ******************/
-		/**** md5 signature: 24ca41a825cf87f54a5d2e38aaedf170 ****/
+		/**** md5 signature: 55ab6f867342193c0763bd3dcd7312a7 ****/
 		%feature("compactdefaultargs") UpdateMousePosition;
 		%feature("autodoc", "Handle mouse cursor movement event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if view should be redrawn.
 
@@ -7382,7 +7555,7 @@ bool
 		virtual bool UpdateMousePosition(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
 		/****************** UpdateMouseScroll ******************/
-		/**** md5 signature: 9112a58a31d222aaaaca5bc7dadc5e9d ****/
+		/**** md5 signature: f9e0dee1b2f1434abd34279261af844a ****/
 		%feature("compactdefaultargs") UpdateMouseScroll;
 		%feature("autodoc", "Update mouse scroll event; redirects to updatezoom by default. this method is expected to be called from ui thread. @param thedelta mouse cursor position and delta returns true if new event has been created or false if existing one has been updated.
 
@@ -7413,25 +7586,23 @@ None
 		virtual void UpdatePolySelection(const Graphic3d_Vec2i & thePnt, bool theToAppend);
 
 		/****************** UpdateRubberBand ******************/
-		/**** md5 signature: 669fce723d95f678c15282bbb1bd3c7a ****/
+		/**** md5 signature: 4b67e635d5f36e38ae0f2474b56c3748 ****/
 		%feature("compactdefaultargs") UpdateRubberBand;
-		%feature("autodoc", "Update rectangle selection tool. this method is expected to be called from ui thread. @param thepntfrom rectangle first corner @param thepntto rectangle another corner @param theisxor xor selection flag.
+		%feature("autodoc", "Update rectangle selection tool. this method is expected to be called from ui thread. @param thepntfrom rectangle first corner @param thepntto rectangle another corner.
 
 Parameters
 ----------
 thePntFrom: Graphic3d_Vec2i
 thePntTo: Graphic3d_Vec2i
-theIsXOR: bool,optional
-	default value is false
 
 Returns
 -------
 None
 ") UpdateRubberBand;
-		virtual void UpdateRubberBand(const Graphic3d_Vec2i & thePntFrom, const Graphic3d_Vec2i & thePntTo, const bool theIsXOR = false);
+		virtual void UpdateRubberBand(const Graphic3d_Vec2i & thePntFrom, const Graphic3d_Vec2i & thePntTo);
 
 		/****************** UpdateTouchPoint ******************/
-		/**** md5 signature: 32b5b3a5782487b44b49157cf52c6e04 ****/
+		/**** md5 signature: 208f103531c9da20b09298d16f2dec41 ****/
 		%feature("compactdefaultargs") UpdateTouchPoint;
 		%feature("autodoc", "Update touch point with the given id. if point with specified id was not registered before, it will be added. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates.
 
@@ -7884,51 +8055,6 @@ bool
 ") toAskNextFrame;
 		bool toAskNextFrame();
 
-		/****************** update3dMouseKeys ******************/
-		/**** md5 signature: 7068d4e0858b2659de00f111094ecc7f ****/
-		%feature("compactdefaultargs") update3dMouseKeys;
-		%feature("autodoc", "Process 3d mouse input keys event.
-
-Parameters
-----------
-theEvent: WNT_HIDSpaceMouse
-
-Returns
--------
-bool
-") update3dMouseKeys;
-		virtual bool update3dMouseKeys(const WNT_HIDSpaceMouse & theEvent);
-
-		/****************** update3dMouseRotation ******************/
-		/**** md5 signature: 0e88dd09859b6f02e48c9b73ec73f69b ****/
-		%feature("compactdefaultargs") update3dMouseRotation;
-		%feature("autodoc", "Process 3d mouse input rotation event.
-
-Parameters
-----------
-theEvent: WNT_HIDSpaceMouse
-
-Returns
--------
-bool
-") update3dMouseRotation;
-		virtual bool update3dMouseRotation(const WNT_HIDSpaceMouse & theEvent);
-
-		/****************** update3dMouseTranslation ******************/
-		/**** md5 signature: c826319c70a567fbe2c3401c0a5c2471 ****/
-		%feature("compactdefaultargs") update3dMouseTranslation;
-		%feature("autodoc", "Process 3d mouse input translation event.
-
-Parameters
-----------
-theEvent: WNT_HIDSpaceMouse
-
-Returns
--------
-bool
-") update3dMouseTranslation;
-		virtual bool update3dMouseTranslation(const WNT_HIDSpaceMouse & theEvent);
-
 };
 
 
@@ -8005,6 +8131,52 @@ V3d_TypeOfOrientation
 
 
 %extend AIS_ViewCubeOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************
+* class AIS_ViewCubeSensitive *
+******************************/
+class AIS_ViewCubeSensitive : public Select3D_SensitivePrimitiveArray {
+	public:
+		/****************** AIS_ViewCubeSensitive ******************/
+		/**** md5 signature: e45652d05a411666b6fb202a054d81ef ****/
+		%feature("compactdefaultargs") AIS_ViewCubeSensitive;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theOwner: SelectMgr_EntityOwner
+theTris: Graphic3d_ArrayOfTriangles
+
+Returns
+-------
+None
+") AIS_ViewCubeSensitive;
+		 AIS_ViewCubeSensitive(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<Graphic3d_ArrayOfTriangles> & theTris);
+
+		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
+		%feature("compactdefaultargs") Matches;
+		%feature("autodoc", "Checks whether element overlaps current selecting volume.
+
+Parameters
+----------
+theMgr: SelectBasics_SelectingVolumeManager
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") Matches;
+		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
+
+};
+
+
+%extend AIS_ViewCubeSensitive {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8091,6 +8263,17 @@ bool
 ") IsCrouching;
 		bool IsCrouching();
 
+		/****************** IsDefined ******************/
+		/**** md5 signature: b70d5071bbde3aa553369be83e08074a ****/
+		%feature("compactdefaultargs") IsDefined;
+		%feature("autodoc", "Return true if navigation keys are pressed even if delta from the previous frame is empty.
+
+Returns
+-------
+bool
+") IsDefined;
+		bool IsDefined();
+
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 70a41d5fe65955a28167088305fc6991 ****/
 		%feature("compactdefaultargs") IsEmpty;
@@ -8138,6 +8321,21 @@ Returns
 None
 ") SetCrouching;
 		void SetCrouching(bool theIsCrouching);
+
+		/****************** SetDefined ******************/
+		/**** md5 signature: b71ec8fb76b263547fd8c33a97753c6c ****/
+		%feature("compactdefaultargs") SetDefined;
+		%feature("autodoc", "Set if any navigation key is pressed.
+
+Parameters
+----------
+theIsDefined: bool
+
+Returns
+-------
+None
+") SetDefined;
+		void SetDefined(bool theIsDefined);
 
 		/****************** SetJumping ******************/
 		/**** md5 signature: 3b746ded8c228237e58bdc8b95def62f ****/
@@ -8435,6 +8633,23 @@ None
 ") AIS_Axis;
 		 AIS_Axis(const opencascade::handle<Geom_Axis1Placement> & anAxis);
 
+		/****************** AIS_Axis ******************/
+		/**** md5 signature: c934eb8339507f1bfcee85301548abec ****/
+		%feature("compactdefaultargs") AIS_Axis;
+		%feature("autodoc", "Initializes the ray as axis with start point and direction @param[in] theaxis start point and direction of the ray @param[in] thelength optional length of the ray (ray is infinite by default).
+
+Parameters
+----------
+theAxis: gp_Ax1
+theLength: float,optional
+	default value is -1
+
+Returns
+-------
+None
+") AIS_Axis;
+		 AIS_Axis(const gp_Ax1 & theAxis, const Standard_Real theLength = -1);
+
 		/****************** AcceptDisplayMode ******************/
 		/**** md5 signature: 4b2dbc71bc9796a113d83252030ddc96 ****/
 		%feature("compactdefaultargs") AcceptDisplayMode;
@@ -8543,6 +8758,21 @@ Returns
 None
 ") SetComponent;
 		void SetComponent(const opencascade::handle<Geom_Line> & aComponent);
+
+		/****************** SetDisplayAspect ******************/
+		/**** md5 signature: fbb9dcc512474594bfb63a46987619d6 ****/
+		%feature("compactdefaultargs") SetDisplayAspect;
+		%feature("autodoc", "Set required visualization parameters.
+
+Parameters
+----------
+theNewDatumAspect: Prs3d_LineAspect
+
+Returns
+-------
+None
+") SetDisplayAspect;
+		void SetDisplayAspect(const opencascade::handle<Prs3d_LineAspect> & theNewDatumAspect);
 
 		/****************** SetTypeOfAxis ******************/
 		/**** md5 signature: 020f7cadcbe397a98ebb13acd7bdc321 ****/
@@ -8653,7 +8883,7 @@ enum SelectionMode {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class SelectionMode(IntEnum):
@@ -9020,13 +9250,13 @@ None
 		void ColorRange(Quantity_Color & theMinColor, Quantity_Color & theMaxColor);
 
 		/****************** Compute ******************/
-		/**** md5 signature: b5355a3b64ac692f9073af0b450bf918 ****/
+		/**** md5 signature: 2211827d8c388dd82f20241aba38e7b4 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Compute presentation.
 
 Parameters
 ----------
-thePresentationManager: PrsMgr_PresentationManager3d
+thePrsMgr: PrsMgr_PresentationManager
 thePresentation: Prs3d_Presentation
 theMode: int
 
@@ -9034,7 +9264,7 @@ Returns
 -------
 None
 ") Compute;
-		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager3d> & thePresentationManager, const opencascade::handle<Prs3d_Presentation> & thePresentation, const Standard_Integer theMode);
+		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePresentation, const Standard_Integer theMode);
 
 		/****************** ComputeSelection ******************/
 		/**** md5 signature: cebd8858c299db78edb7052c49348937 ****/
@@ -10162,6 +10392,383 @@ AIS_KindOfInteractive
 	}
 };
 
+/************************
+* class AIS_LightSource *
+************************/
+class AIS_LightSource : public AIS_InteractiveObject {
+	public:
+		/****************** AIS_LightSource ******************/
+		/**** md5 signature: 0052d1e81d2de0d4f85d4355071d4c6e ****/
+		%feature("compactdefaultargs") AIS_LightSource;
+		%feature("autodoc", "Initializes the light source by copying graphic3d_clight settings.
+
+Parameters
+----------
+theLightSource: Graphic3d_CLight
+
+Returns
+-------
+None
+") AIS_LightSource;
+		 AIS_LightSource(const opencascade::handle<Graphic3d_CLight> & theLightSource);
+
+		/****************** ArcSize ******************/
+		/**** md5 signature: 51ce064e7920840d08ae5330358aab35 ****/
+		%feature("compactdefaultargs") ArcSize;
+		%feature("autodoc", "Returns sensitive sphere arc size in pixels; 20 by default.
+
+Returns
+-------
+int
+") ArcSize;
+		Standard_Integer ArcSize();
+
+		/****************** IsZoomable ******************/
+		/**** md5 signature: 0e11552facaac98faf2474f0071c0b9d ****/
+		%feature("compactdefaultargs") IsZoomable;
+		%feature("autodoc", "Returns true if transform-persistence is allowed; true by default for ambient and directional lights and false by default for positional and spot lights.
+
+Returns
+-------
+bool
+") IsZoomable;
+		bool IsZoomable();
+
+		/****************** Light ******************/
+		/**** md5 signature: 214a553f85b1ef4686d7ae852494295b ****/
+		%feature("compactdefaultargs") Light;
+		%feature("autodoc", "Returns the light.
+
+Returns
+-------
+opencascade::handle<Graphic3d_CLight>
+") Light;
+		const opencascade::handle<Graphic3d_CLight> & Light();
+
+		/****************** MarkerImage ******************/
+		/**** md5 signature: 9fa6877c3a5222f7e4f2cd4481cff78c ****/
+		%feature("compactdefaultargs") MarkerImage;
+		%feature("autodoc", "Returns light source icon. @param theisenabled [in] marker index for enabled/disabled light source states.
+
+Parameters
+----------
+theIsEnabled: bool
+
+Returns
+-------
+opencascade::handle<Graphic3d_MarkerImage>
+") MarkerImage;
+		const opencascade::handle<Graphic3d_MarkerImage> & MarkerImage(bool theIsEnabled);
+
+		/****************** MarkerType ******************/
+		/**** md5 signature: 9dc5f63506bba9b44b67e3b05b759d65 ****/
+		%feature("compactdefaultargs") MarkerType;
+		%feature("autodoc", "Returns light source icon. @param theisenabled [in] marker index for enabled/disabled light source states.
+
+Parameters
+----------
+theIsEnabled: bool
+
+Returns
+-------
+Aspect_TypeOfMarker
+") MarkerType;
+		Aspect_TypeOfMarker MarkerType(bool theIsEnabled);
+
+		/****************** NbArrows ******************/
+		/**** md5 signature: 08e533c060d75469cc6a758b3bf99584 ****/
+		%feature("compactdefaultargs") NbArrows;
+		%feature("autodoc", "Returns a number of directional light arrows to display; 5 by default.
+
+Returns
+-------
+int
+") NbArrows;
+		Standard_Integer NbArrows();
+
+		/****************** NbSplitsArrow ******************/
+		/**** md5 signature: 6f408c367866603aaf9e7027b91d3783 ****/
+		%feature("compactdefaultargs") NbSplitsArrow;
+		%feature("autodoc", "Returns tessellation level for arrows; 20 by default.
+
+Returns
+-------
+int
+") NbSplitsArrow;
+		Standard_Integer NbSplitsArrow();
+
+		/****************** NbSplitsQuadric ******************/
+		/**** md5 signature: 3307810c4e75bc09a5065f7d61b55f0d ****/
+		%feature("compactdefaultargs") NbSplitsQuadric;
+		%feature("autodoc", "Returns tessellation level for quadric surfaces; 30 by default.
+
+Returns
+-------
+int
+") NbSplitsQuadric;
+		Standard_Integer NbSplitsQuadric();
+
+		/****************** SetArcSize ******************/
+		/**** md5 signature: 5a3d58d9a58774a120f81b4638e45506 ****/
+		%feature("compactdefaultargs") SetArcSize;
+		%feature("autodoc", "Sets the size of sensitive sphere arc.
+
+Parameters
+----------
+theSize: int
+
+Returns
+-------
+None
+") SetArcSize;
+		void SetArcSize(Standard_Integer theSize);
+
+		/****************** SetDisplayName ******************/
+		/**** md5 signature: 0df1158ac90d9de14d12ea49eb28b523 ****/
+		%feature("compactdefaultargs") SetDisplayName;
+		%feature("autodoc", "Show/hide light source name.
+
+Parameters
+----------
+theToDisplay: bool
+
+Returns
+-------
+None
+") SetDisplayName;
+		void SetDisplayName(Standard_Boolean theToDisplay);
+
+		/****************** SetDisplayRange ******************/
+		/**** md5 signature: 0bd5c9f32b785f6e95c9c58405178361 ****/
+		%feature("compactdefaultargs") SetDisplayRange;
+		%feature("autodoc", "Show/hide light source range shaded presentation.
+
+Parameters
+----------
+theToDisplay: bool
+
+Returns
+-------
+None
+") SetDisplayRange;
+		void SetDisplayRange(Standard_Boolean theToDisplay);
+
+		/****************** SetDraggable ******************/
+		/**** md5 signature: 5d216231b8eb7eb27307d5eb7408eefb ****/
+		%feature("compactdefaultargs") SetDraggable;
+		%feature("autodoc", "Sets if dragging is allowed.
+
+Parameters
+----------
+theIsDraggable: bool
+
+Returns
+-------
+None
+") SetDraggable;
+		void SetDraggable(bool theIsDraggable);
+
+		/****************** SetLight ******************/
+		/**** md5 signature: ce31662804605d4873b310f2a6d763c9 ****/
+		%feature("compactdefaultargs") SetLight;
+		%feature("autodoc", "Set the light.
+
+Parameters
+----------
+theLight: Graphic3d_CLight
+
+Returns
+-------
+None
+") SetLight;
+		void SetLight(const opencascade::handle<Graphic3d_CLight> & theLight);
+
+		/****************** SetMarkerImage ******************/
+		/**** md5 signature: dc256bfcd47e005efd4fe7461270e9e3 ****/
+		%feature("compactdefaultargs") SetMarkerImage;
+		%feature("autodoc", "Sets custom icon to light source.
+
+Parameters
+----------
+theImage: Graphic3d_MarkerImage
+theIsEnabled: bool
+
+Returns
+-------
+None
+") SetMarkerImage;
+		void SetMarkerImage(const opencascade::handle<Graphic3d_MarkerImage> & theImage, bool theIsEnabled);
+
+		/****************** SetMarkerType ******************/
+		/**** md5 signature: 3f31956a7405775b0ff57aeb49f530f4 ****/
+		%feature("compactdefaultargs") SetMarkerType;
+		%feature("autodoc", "Sets standard icon to light source.
+
+Parameters
+----------
+theType: Aspect_TypeOfMarker
+theIsEnabled: bool
+
+Returns
+-------
+None
+") SetMarkerType;
+		void SetMarkerType(Aspect_TypeOfMarker theType, bool theIsEnabled);
+
+		/****************** SetNbArrows ******************/
+		/**** md5 signature: 1241cb37383b0436b58b3aa64c069a40 ****/
+		%feature("compactdefaultargs") SetNbArrows;
+		%feature("autodoc", "Returns a number of directional light arrows to display (supported values: 1, 3, 5, 9).
+
+Parameters
+----------
+theNbArrows: int
+
+Returns
+-------
+None
+") SetNbArrows;
+		void SetNbArrows(Standard_Integer theNbArrows);
+
+		/****************** SetNbSplitsArrow ******************/
+		/**** md5 signature: a3e56a773947a88b8ca4621a18b95941 ****/
+		%feature("compactdefaultargs") SetNbSplitsArrow;
+		%feature("autodoc", "Sets tessellation level for arrows.
+
+Parameters
+----------
+theNbSplits: int
+
+Returns
+-------
+None
+") SetNbSplitsArrow;
+		void SetNbSplitsArrow(Standard_Integer theNbSplits);
+
+		/****************** SetNbSplitsQuadric ******************/
+		/**** md5 signature: b7536ec764c87e16c01603c3fbc174f8 ****/
+		%feature("compactdefaultargs") SetNbSplitsQuadric;
+		%feature("autodoc", "Sets tessellation level for quadric surfaces.
+
+Parameters
+----------
+theNbSplits: int
+
+Returns
+-------
+None
+") SetNbSplitsQuadric;
+		void SetNbSplitsQuadric(Standard_Integer theNbSplits);
+
+		/****************** SetSize ******************/
+		/**** md5 signature: c110f2a475d2740bb05e539d92d74946 ****/
+		%feature("compactdefaultargs") SetSize;
+		%feature("autodoc", "Sets the size of presentation.
+
+Parameters
+----------
+theSize: float
+
+Returns
+-------
+None
+") SetSize;
+		void SetSize(Standard_Real theSize);
+
+		/****************** SetSwitchOnClick ******************/
+		/**** md5 signature: 97b94ff7d25449db3028d59cb20146de ****/
+		%feature("compactdefaultargs") SetSwitchOnClick;
+		%feature("autodoc", "Sets if mouse click should turn light on/off.
+
+Parameters
+----------
+theToHandle: bool
+
+Returns
+-------
+None
+") SetSwitchOnClick;
+		void SetSwitchOnClick(bool theToHandle);
+
+		/****************** SetZoomable ******************/
+		/**** md5 signature: 97ffe04fce7ef540e2fce9a76dd33eaa ****/
+		%feature("compactdefaultargs") SetZoomable;
+		%feature("autodoc", "Sets if transform-persistence is allowed.
+
+Parameters
+----------
+theIsZoomable: bool
+
+Returns
+-------
+None
+") SetZoomable;
+		void SetZoomable(bool theIsZoomable);
+
+		/****************** Size ******************/
+		/**** md5 signature: 0113d47673ecbdcb4822fb85c27ac0c5 ****/
+		%feature("compactdefaultargs") Size;
+		%feature("autodoc", "Returns the size of presentation; 50 by default.
+
+Returns
+-------
+float
+") Size;
+		Standard_Real Size();
+
+		/****************** ToDisplayName ******************/
+		/**** md5 signature: 017d2ca9b70c34687c2520bc2f6310a7 ****/
+		%feature("compactdefaultargs") ToDisplayName;
+		%feature("autodoc", "Returns true if the light source name should be displayed; true by default.
+
+Returns
+-------
+bool
+") ToDisplayName;
+		Standard_Boolean ToDisplayName();
+
+		/****************** ToDisplayRange ******************/
+		/**** md5 signature: d8300aa4d3867fb20b32d03da894e242 ****/
+		%feature("compactdefaultargs") ToDisplayRange;
+		%feature("autodoc", "Returns true to display light source range as sphere (positional light) or cone (spot light); true by default. has no effect for non-zoomable presentation.
+
+Returns
+-------
+bool
+") ToDisplayRange;
+		Standard_Boolean ToDisplayRange();
+
+		/****************** ToSwitchOnClick ******************/
+		/**** md5 signature: ecdef05201eb6d53f5b9f95f9a193655 ****/
+		%feature("compactdefaultargs") ToSwitchOnClick;
+		%feature("autodoc", "Returns true if mouse click will turn light on/off; true by default.
+
+Returns
+-------
+bool
+") ToSwitchOnClick;
+		bool ToSwitchOnClick();
+
+		/****************** Type ******************/
+		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "Returns kind of the object.
+
+Returns
+-------
+AIS_KindOfInteractive
+") Type;
+		virtual AIS_KindOfInteractive Type();
+
+};
+
+
+%extend AIS_LightSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************
 * class AIS_Line *
 *****************/
@@ -10448,13 +11055,13 @@ None
 		virtual void ClearSelected();
 
 		/****************** Compute ******************/
-		/**** md5 signature: 1bb1940ebb02c69fcdc59de667417f7b ****/
+		/**** md5 signature: 5d0087b3c43a18eabfc5a74a27907c07 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Fills presentation. @note manipulator presentation does not use display mode and for all modes has the same presentation.
 
 Parameters
 ----------
-thePrsMgr: PrsMgr_PresentationManager3d
+thePrsMgr: PrsMgr_PresentationManager
 thePrs: Prs3d_Presentation
 theMode: int,optional
 	default value is 0
@@ -10463,7 +11070,7 @@ Returns
 -------
 None
 ") Compute;
-		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager3d> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode = 0);
+		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode = 0);
 
 		/****************** ComputeSelection ******************/
 		/**** md5 signature: 0ee36b1ad2a8a3c1bbb813dfdb1d40ae ****/
@@ -10541,13 +11148,13 @@ bool
 		Standard_Boolean HasActiveTransformation();
 
 		/****************** HilightOwnerWithColor ******************/
-		/**** md5 signature: 59e159c706312ffbc3fbab59d0e52b8c ****/
+		/**** md5 signature: 55b3be7a2ac03a5f834f6d8c95996212 ****/
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "Method which hilight an owner belonging to this selectable object ( for fast presentation draw ).
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
 theOwner: SelectMgr_EntityOwner
 
@@ -10555,23 +11162,23 @@ Returns
 -------
 None
 ") HilightOwnerWithColor;
-		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
+		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****************** HilightSelected ******************/
-		/**** md5 signature: 51adc22064d394c9bf0b2f20ae0065c3 ****/
+		/**** md5 signature: b1fc27c909de3a5e8e70f8fe74bf4101 ****/
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "Method which draws selected owners ( for fast presentation draw ).
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theSeq: SelectMgr_SequenceOfOwner
 
 Returns
 -------
 None
 ") HilightSelected;
-		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const SelectMgr_SequenceOfOwner & theSeq);
+		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const SelectMgr_SequenceOfOwner & theSeq);
 
 		/****************** IsAttached ******************/
 		/**** md5 signature: f05a2e5d0a5e075997cd6dc06d401426 ****/
@@ -10635,7 +11242,7 @@ opencascade::handle<AIS_InteractiveObject>
 		/****************** ObjectTransformation ******************/
 		/**** md5 signature: e6857da7c59a18275835c532be288e72 ****/
 		%feature("compactdefaultargs") ObjectTransformation;
-		%feature("autodoc", "Computes transformation of parent object according to the active mode and input motion vector. you can use this method to get object transformation according to current mode or use own algorithm to implement any other tranformation for modes. returns transformation of parent object.
+		%feature("autodoc", "Computes transformation of parent object according to the active mode and input motion vector. you can use this method to get object transformation according to current mode or use own algorithm to implement any other transformation for modes. returns transformation of parent object.
 
 Parameters
 ----------
@@ -10903,7 +11510,7 @@ None
 		/****************** Transform ******************/
 		/**** md5 signature: 7b80f6f8c56072806fdc079cea756bd9 ****/
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "Apply transformation made from mouse moving from start position (save on the first tranform() call and reset on deactivatecurrentmode() call.) to the in/out mouse position (thex, they).
+		%feature("autodoc", "Apply transformation made from mouse moving from start position (save on the first transform() call and reset on deactivatecurrentmode() call.) to the in/out mouse position (thex, they).
 
 Parameters
 ----------
@@ -11160,24 +11767,6 @@ opencascade::handle<AIS_InteractiveObject>
 ") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const gp_Trsf & theLocation, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
-		/****************** Connect ******************/
-		/**** md5 signature: 2770be8a578431190d56c454749b76eb ****/
-		%feature("compactdefaultargs") Connect;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theInteractive: AIS_InteractiveObject
-theLocation: gp_Trsf
-theTrsfPersFlag: Graphic3d_TransModeFlags
-theTrsfPersPoint: gp_Pnt
-
-Returns
--------
-opencascade::handle<AIS_InteractiveObject>
-") Connect;
-		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theInteractive, const gp_Trsf & theLocation, const Graphic3d_TransModeFlags & theTrsfPersFlag, const gp_Pnt & theTrsfPersPoint);
-
 		/****************** Disconnect ******************/
 		/**** md5 signature: 8baee36d436931ddbde7f0643b9e8f4a ****/
 		%feature("compactdefaultargs") Disconnect;
@@ -11253,7 +11842,7 @@ None
 		virtual void SetContext(const opencascade::handle<AIS_InteractiveContext> & theCtx);
 
 		/****************** Signature ******************/
-		/**** md5 signature: 81eb93a6a9075273e61be0bf8e0d1a46 ****/
+		/**** md5 signature: 4e037e01ba764fd5d5261e3d9ba6557d ****/
 		%feature("compactdefaultargs") Signature;
 		%feature("autodoc", "No available documentation.
 
@@ -11264,7 +11853,7 @@ int
 		virtual Standard_Integer Signature();
 
 		/****************** Type ******************/
-		/**** md5 signature: dd06dc48aefe8f5e4fea271bcf932271 ****/
+		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "No available documentation.
 
@@ -11438,6 +12027,17 @@ bool
 ") CurrentMode;
 		Standard_Boolean CurrentMode();
 
+		/****************** HasMinimumSize ******************/
+		/**** md5 signature: a365edd1b21418e01a2b57e9636bca4f ****/
+		%feature("compactdefaultargs") HasMinimumSize;
+		%feature("autodoc", "Returns true if transform persistence for zoom is set.
+
+Returns
+-------
+bool
+") HasMinimumSize;
+		Standard_Boolean HasMinimumSize();
+
 		/****************** HasOwnSize ******************/
 		/**** md5 signature: e915e28bcd0aa89fd85e56d0cb0fab71 ****/
 		%feature("compactdefaultargs") HasOwnSize;
@@ -11569,6 +12169,21 @@ None
 ") SetCurrentMode;
 		void SetCurrentMode(const Standard_Boolean theCurrentMode);
 
+		/****************** SetMinimumSize ******************/
+		/**** md5 signature: b30f135ff9e397ec4e41d915825ab7d0 ****/
+		%feature("compactdefaultargs") SetMinimumSize;
+		%feature("autodoc", "Sets transform persistence for zoom with value of minimum size.
+
+Parameters
+----------
+theValue: float
+
+Returns
+-------
+None
+") SetMinimumSize;
+		void SetMinimumSize(const Standard_Real theValue);
+
 		/****************** SetPlaneAttributes ******************/
 		/**** md5 signature: fcab47c7809627db9a9877e1b1b1ecfc ****/
 		%feature("compactdefaultargs") SetPlaneAttributes;
@@ -11634,7 +12249,7 @@ None
 		void SetTypeOfSensitivity(Select3D_TypeOfSensitivity theTypeOfSensitivity);
 
 		/****************** Signature ******************/
-		/**** md5 signature: 81eb93a6a9075273e61be0bf8e0d1a46 ****/
+		/**** md5 signature: 4e037e01ba764fd5d5261e3d9ba6557d ****/
 		%feature("compactdefaultargs") Signature;
 		%feature("autodoc", "No available documentation.
 
@@ -11660,7 +12275,7 @@ Y: float
 		Standard_Boolean Size(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Type ******************/
-		/**** md5 signature: dd06dc48aefe8f5e4fea271bcf932271 ****/
+		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "No available documentation.
 
@@ -11702,6 +12317,17 @@ Returns
 None
 ") UnsetColor;
 		void UnsetColor();
+
+		/****************** UnsetMinimumSize ******************/
+		/**** md5 signature: 455188e1c9c74ff00306b83f10dccb0d ****/
+		%feature("compactdefaultargs") UnsetMinimumSize;
+		%feature("autodoc", "Unsets transform persistence zoom.
+
+Returns
+-------
+None
+") UnsetMinimumSize;
+		void UnsetMinimumSize();
 
 		/****************** UnsetSize ******************/
 		/**** md5 signature: 01e2703c873bbcb3ae46d4b247bdacb6 ****/
@@ -12110,7 +12736,7 @@ enum SelectionMode {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class DisplayMode(IntEnum):
@@ -13863,13 +14489,13 @@ bool
 		Standard_Boolean HasTextColor();
 
 		/****************** HilightOwnerWithColor ******************/
-		/**** md5 signature: 59e159c706312ffbc3fbab59d0e52b8c ****/
+		/**** md5 signature: 55b3be7a2ac03a5f834f6d8c95996212 ****/
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "Method which hilight an owner belonging to this selectable object ( for fast presentation draw ).
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
 theOwner: SelectMgr_EntityOwner
 
@@ -13877,23 +14503,23 @@ Returns
 -------
 None
 ") HilightOwnerWithColor;
-		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
+		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****************** HilightSelected ******************/
-		/**** md5 signature: bf8a0c8dc2d6626609da91792dd9d611 ****/
+		/**** md5 signature: 5b1feef80cfa0a6159413c3c4ca13941 ****/
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "Method which draws selected owners ( for fast presentation draw ).
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theOwners: SelectMgr_SequenceOfOwner
 
 Returns
 -------
 None
 ") HilightSelected;
-		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const SelectMgr_SequenceOfOwner & theOwners);
+		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const SelectMgr_SequenceOfOwner & theOwners);
 
 		/****************** Label ******************/
 		/**** md5 signature: cd3b87f754f01f91f4db0b402e5a6620 ****/
@@ -13913,7 +14539,7 @@ TCollection_ExtendedString
 		/****************** SelectionPriority ******************/
 		/**** md5 signature: c7f76247dd6ec404acc1afff52e95917 ****/
 		%feature("compactdefaultargs") SelectionPriority;
-		%feature("autodoc", "Sets priority of selection for owner of the given type.
+		%feature("autodoc", "Returns priority of selection for owner of the given type.
 
 Parameters
 ----------
@@ -13928,7 +14554,7 @@ int
 		/****************** SetArrowColor ******************/
 		/**** md5 signature: b033462aa3dce4543ee90b2ffdc498cd ****/
 		%feature("compactdefaultargs") SetArrowColor;
-		%feature("autodoc", "Sets color of arrow of trihedron axes. used only in wireframe mode.
+		%feature("autodoc", "Sets color of arrow of trihedron axes.
 
 Parameters
 ----------
@@ -13939,6 +14565,22 @@ Returns
 None
 ") SetArrowColor;
 		void SetArrowColor(const Quantity_Color & theColor);
+
+		/****************** SetArrowColor ******************/
+		/**** md5 signature: eed1ac90c97ed266f836f961bb20ebcd ****/
+		%feature("compactdefaultargs") SetArrowColor;
+		%feature("autodoc", "Sets color of arrow of trihedron axes.
+
+Parameters
+----------
+thePart: Prs3d_DatumParts
+theColor: Quantity_Color
+
+Returns
+-------
+None
+") SetArrowColor;
+		void SetArrowColor(const Prs3d_DatumParts thePart, const Quantity_Color & theColor);
 
 		/****************** SetAxisColor ******************/
 		/**** md5 signature: 5414b36e056312b5d2ce5a3255bab6e0 ****/
@@ -13956,7 +14598,7 @@ None
 		void SetAxisColor(const Quantity_Color & theColor);
 
 		/****************** SetColor ******************/
-		/**** md5 signature: 7e02f3e04e30cfab690f414e5d7614ca ****/
+		/**** md5 signature: 259272248bacb2cef242adbc667f0ef9 ****/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "Sets the color thecolor for this trihedron object, it changes color of axes.
 
@@ -13968,7 +14610,7 @@ Returns
 -------
 None
 ") SetColor;
-		void SetColor(const Quantity_Color & theColor);
+		virtual void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetComponent ******************/
 		/**** md5 signature: 0cb02d582043f1733c1764c1c909a674 ****/
@@ -14032,20 +14674,20 @@ None
 		void SetDrawArrows(const Standard_Boolean theToDraw);
 
 		/****************** SetLabel ******************/
-		/**** md5 signature: 849b28153ab6d0762b12767c5f379ce7 ****/
+		/**** md5 signature: f46fc70422e44644cfd6260e70ed55d0 ****/
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "Sets text label for trihedron axis. parameter thepart should be xaxis, yaxis or zaxis.
 
 Parameters
 ----------
 thePart: Prs3d_DatumParts
-thePriority: TCollection_ExtendedString
+theName: TCollection_ExtendedString
 
 Returns
 -------
 None
 ") SetLabel;
-		void SetLabel(const Prs3d_DatumParts thePart, const TCollection_ExtendedString & thePriority);
+		void SetLabel(const Prs3d_DatumParts thePart, const TCollection_ExtendedString & theName);
 
 		/****************** SetOriginColor ******************/
 		/**** md5 signature: 1017d076464e72d0a5e64feb3baf458f ****/
@@ -14081,7 +14723,7 @@ None
 		/****************** SetSize ******************/
 		/**** md5 signature: 4ddd2387ee49354c88a5763d724abf32 ****/
 		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "Sets the size avalue for the trihedron object. the default value is 100 mm.
+		%feature("autodoc", "Sets the size of trihedron object.
 
 Parameters
 ----------
@@ -14107,6 +14749,22 @@ Returns
 None
 ") SetTextColor;
 		void SetTextColor(const Quantity_Color & theColor);
+
+		/****************** SetTextColor ******************/
+		/**** md5 signature: bdaf05bdad9bcc4e0cbdf6a0d46642a3 ****/
+		%feature("compactdefaultargs") SetTextColor;
+		%feature("autodoc", "Sets color of label of trihedron axis.
+
+Parameters
+----------
+thePart: Prs3d_DatumParts
+theColor: Quantity_Color
+
+Returns
+-------
+None
+") SetTextColor;
+		void SetTextColor(const Prs3d_DatumParts thePart, const Quantity_Color & theColor);
 
 		/****************** SetXAxisColor ******************/
 		/**** md5 signature: ed9ab965e65191191a7681d47d2ec159 ****/
@@ -14152,7 +14810,7 @@ int
 		/****************** Size ******************/
 		/**** md5 signature: a8e9905382c3964d697ee929ccdb9562 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the size of trihedron object; 100.0 by default.
 
 Returns
 -------
@@ -14443,13 +15101,13 @@ None
 		virtual void ClearSelected();
 
 		/****************** Compute ******************/
-		/**** md5 signature: 1bb1940ebb02c69fcdc59de667417f7b ****/
+		/**** md5 signature: 5d0087b3c43a18eabfc5a74a27907c07 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Compute 3d part of view cube. @param theprsmgr [in] presentation manager. @param theprs [in] input presentation that is to be filled with flat presentation primitives. @param themode [in] display mode. @warning this object accept only 0 display mode.
 
 Parameters
 ----------
-thePrsMgr: PrsMgr_PresentationManager3d
+thePrsMgr: PrsMgr_PresentationManager
 thePrs: Prs3d_Presentation
 theMode: int,optional
 	default value is 0
@@ -14458,7 +15116,7 @@ Returns
 -------
 None
 ") Compute;
-		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager3d> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode = 0);
+		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode = 0);
 
 		/****************** ComputeSelection ******************/
 		/**** md5 signature: 0ee36b1ad2a8a3c1bbb813dfdb1d40ae ****/
@@ -14547,13 +15205,13 @@ bool
 		Standard_Boolean HasAnimation();
 
 		/****************** HilightOwnerWithColor ******************/
-		/**** md5 signature: 59e159c706312ffbc3fbab59d0e52b8c ****/
+		/**** md5 signature: 55b3be7a2ac03a5f834f6d8c95996212 ****/
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "Method which highlights input owner belonging to this selectable object. @param thepm [in] presentation manager @param thestyle [in] style for dynamic highlighting. @param theowner [in] input entity owner.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
 theOwner: SelectMgr_EntityOwner
 
@@ -14561,23 +15219,23 @@ Returns
 -------
 None
 ") HilightOwnerWithColor;
-		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
+		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****************** HilightSelected ******************/
-		/**** md5 signature: 51adc22064d394c9bf0b2f20ae0065c3 ****/
+		/**** md5 signature: b1fc27c909de3a5e8e70f8fe74bf4101 ****/
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "Method which draws selected owners.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theSeq: SelectMgr_SequenceOfOwner
 
 Returns
 -------
 None
 ") HilightSelected;
-		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const SelectMgr_SequenceOfOwner & theSeq);
+		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const SelectMgr_SequenceOfOwner & theSeq);
 
 		/****************** InnerColor ******************/
 		/**** md5 signature: 14a7d761b72d032118329dab4a717cc8 ****/
@@ -16134,4 +16792,5 @@ float
 /* class aliases */
 %pythoncode {
 AIS_AnimationTimer=OCC.Core.Media.Media_Timer
+AIS_DisplayStatus=OCC.Core.PrsMgr.PrsMgr_DisplayStatus
 }

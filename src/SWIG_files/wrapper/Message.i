@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MESSAGEDOCSTRING
 "Message module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_message.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_message.html"
 %enddef
 %module (package="OCC.Core", docstring=MESSAGEDOCSTRING) Message
 
@@ -220,13 +220,14 @@ enum Message_MetricType {
 	Message_MetricType_ThreadCPUSystemTime = 2,
 	Message_MetricType_ProcessCPUUserTime = 3,
 	Message_MetricType_ProcessCPUSystemTime = 4,
-	Message_MetricType_MemPrivate = 5,
-	Message_MetricType_MemVirtual = 6,
-	Message_MetricType_MemWorkingSet = 7,
-	Message_MetricType_MemWorkingSetPeak = 8,
-	Message_MetricType_MemSwapUsage = 9,
-	Message_MetricType_MemSwapUsagePeak = 10,
-	Message_MetricType_MemHeapUsage = 11,
+	Message_MetricType_WallClock = 5,
+	Message_MetricType_MemPrivate = 6,
+	Message_MetricType_MemVirtual = 7,
+	Message_MetricType_MemWorkingSet = 8,
+	Message_MetricType_MemWorkingSetPeak = 9,
+	Message_MetricType_MemSwapUsage = 10,
+	Message_MetricType_MemSwapUsagePeak = 11,
+	Message_MetricType_MemHeapUsage = 12,
 };
 
 enum Message_StatusType {
@@ -238,7 +239,7 @@ enum Message_StatusType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Message_Status(IntEnum):
@@ -539,18 +540,20 @@ class Message_MetricType(IntEnum):
 	Message_MetricType_ThreadCPUSystemTime = 2
 	Message_MetricType_ProcessCPUUserTime = 3
 	Message_MetricType_ProcessCPUSystemTime = 4
-	Message_MetricType_MemPrivate = 5
-	Message_MetricType_MemVirtual = 6
-	Message_MetricType_MemWorkingSet = 7
-	Message_MetricType_MemWorkingSetPeak = 8
-	Message_MetricType_MemSwapUsage = 9
-	Message_MetricType_MemSwapUsagePeak = 10
-	Message_MetricType_MemHeapUsage = 11
+	Message_MetricType_WallClock = 5
+	Message_MetricType_MemPrivate = 6
+	Message_MetricType_MemVirtual = 7
+	Message_MetricType_MemWorkingSet = 8
+	Message_MetricType_MemWorkingSetPeak = 9
+	Message_MetricType_MemSwapUsage = 10
+	Message_MetricType_MemSwapUsagePeak = 11
+	Message_MetricType_MemHeapUsage = 12
 Message_MetricType_None = Message_MetricType.Message_MetricType_None
 Message_MetricType_ThreadCPUUserTime = Message_MetricType.Message_MetricType_ThreadCPUUserTime
 Message_MetricType_ThreadCPUSystemTime = Message_MetricType.Message_MetricType_ThreadCPUSystemTime
 Message_MetricType_ProcessCPUUserTime = Message_MetricType.Message_MetricType_ProcessCPUUserTime
 Message_MetricType_ProcessCPUSystemTime = Message_MetricType.Message_MetricType_ProcessCPUSystemTime
+Message_MetricType_WallClock = Message_MetricType.Message_MetricType_WallClock
 Message_MetricType_MemPrivate = Message_MetricType.Message_MetricType_MemPrivate
 Message_MetricType_MemVirtual = Message_MetricType.Message_MetricType_MemVirtual
 Message_MetricType_MemWorkingSet = Message_MetricType.Message_MetricType_MemWorkingSet
@@ -1445,7 +1448,7 @@ enum StatusRange {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class StatusRange(IntEnum):
@@ -2357,7 +2360,7 @@ TCollection_ExtendedString
 		/****************** Msg ******************/
 		/**** md5 signature: 8c621fc4cece4752495337f2186770bf ****/
 		%feature("compactdefaultargs") Msg;
-		%feature("autodoc", "Gives the text for the message identified by the keyword <key> if there are no messages with such keyword defined, the error message is returned. in that case reference to static string is returned, it can be chenged with next call(s) to msg(). note: the error message is constructed like 'unknown message: <key>', and can itself be customized by defining message with key message_msg_badkeyword.
+		%feature("autodoc", "Gives the text for the message identified by the keyword <key>. if there are no messages with such keyword defined, the error message is returned. in that case reference to static string is returned, it can be changed with next call(s) to msg(). note: the error message is constructed like 'unknown message: <key>', and can itself be customized by defining message with key message_msg_badkeyword.
 
 Parameters
 ----------
@@ -3187,7 +3190,7 @@ bool
 		/****************** SetAlertMetrics ******************/
 		/**** md5 signature: c66a5c7cae777f915625c21e78f2d68c ****/
 		%feature("compactdefaultargs") SetAlertMetrics;
-		%feature("autodoc", "Sets current values of default report metrics into the alert. processed oly alert with message_attributemeter attribute @param thealert an alert @param thestartvalue flag, if true, the start value is collected otherwise stop.
+		%feature("autodoc", "Sets current values of default report metrics into the alert. processed only alert with message_attributemeter attribute @param thealert an alert @param thestartvalue flag, if true, the start value is collected otherwise stop.
 
 Parameters
 ----------
@@ -3448,6 +3451,9 @@ Standard_SStream
 	}
 };
 
+/**********************************
+* class Message_LazyProgressScope *
+**********************************/
 /*******************************
 * class Message_PrinterOStream *
 *******************************/
@@ -3716,6 +3722,10 @@ None
 %pythoncode {
 @classnotwrapped
 class Message_ProgressScope:
+	pass
+
+@classnotwrapped
+class Message_LazyProgressScope:
 	pass
 
 }

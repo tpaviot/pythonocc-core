@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTANA2DDOCSTRING
 "IntAna2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intana2d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intana2d.html"
 %enddef
 %module (package="OCC.Core", docstring=INTANA2DDOCSTRING) IntAna2d
 
@@ -60,7 +60,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -232,7 +232,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns true if the computation was succesfull.
+		%feature("autodoc", "Returns true if the computation was successful.
 
 Returns
 -------
@@ -508,7 +508,7 @@ None
 		/****************** Coefficients ******************/
 		/**** md5 signature: 2252ad010357f4e043a3c6dac4c3923c ****/
 		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "Returns the coefficients of the polynomial equation wich defines the conic: a.x**2 + b.y**2 + 2.c.x*y + 2.d.x + 2.e.y + f = 0.
+		%feature("autodoc", "Returns the coefficients of the polynomial equation which defines the conic: a.x**2 + b.y**2 + 2.c.x*y + 2.d.x + 2.e.y + f = 0.
 
 Parameters
 ----------

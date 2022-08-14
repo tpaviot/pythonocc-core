@@ -7,13 +7,19 @@ from OCC.Core.StepGeom import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
 from OCC.Core.gp import *
+from OCC.Core.StepRepr import *
+from OCC.Core.TColStd import *
 
 
 class steptogeom:
     @staticmethod
     def MakeAxis1Placement(SA: StepGeom_Axis1Placement) -> Geom_Axis1Placement: ...
+    @overload
     @staticmethod
     def MakeAxis2Placement(SA: StepGeom_Axis2Placement3d) -> Geom_Axis2Placement: ...
+    @overload
+    @staticmethod
+    def MakeAxis2Placement(SP: StepGeom_SuParameters) -> Geom_Axis2Placement: ...
     @staticmethod
     def MakeAxisPlacement(SA: StepGeom_Axis2Placement2d) -> Geom2d_AxisPlacement: ...
     @staticmethod
@@ -109,6 +115,7 @@ class steptogeom:
 
 steptogeom_MakeAxis1Placement = steptogeom.MakeAxis1Placement
 steptogeom_MakeAxis2Placement = steptogeom.MakeAxis2Placement
+steptogeom_MakeAxis2Placement = steptogeom.MakeAxis2Placement
 steptogeom_MakeAxisPlacement = steptogeom.MakeAxisPlacement
 steptogeom_MakeBSplineCurve = steptogeom.MakeBSplineCurve
 steptogeom_MakeBSplineCurve2d = steptogeom.MakeBSplineCurve2d
@@ -153,3 +160,4 @@ steptogeom_MakeTrimmedCurve = steptogeom.MakeTrimmedCurve
 steptogeom_MakeTrimmedCurve2d = steptogeom.MakeTrimmedCurve2d
 steptogeom_MakeVectorWithMagnitude = steptogeom.MakeVectorWithMagnitude
 steptogeom_MakeVectorWithMagnitude2d = steptogeom.MakeVectorWithMagnitude2d
+steptogeom_MakeYprRotation = steptogeom.MakeYprRotation

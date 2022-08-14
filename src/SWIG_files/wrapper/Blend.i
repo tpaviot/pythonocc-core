@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BLENDDOCSTRING
 "Blend module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blend.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_blend.html"
 %enddef
 %module (package="OCC.Core", docstring=BLENDDOCSTRING) Blend
 
@@ -37,6 +37,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blend.html"
 
 
 %{
+#include<Adaptor2d_Curve2d.hxx>
 #include<Blend_module.hxx>
 
 //Dependencies
@@ -50,6 +51,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blend.html"
 #include<Adaptor2d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
+#include<Adaptor2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -90,7 +92,7 @@ enum Blend_DecrochStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Blend_Status(IntEnum):
@@ -182,7 +184,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: cf2ae1edac6b9f39bab29773592817f0 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -271,7 +273,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
 
 Parameters
 ----------
@@ -810,20 +812,20 @@ int
 		Standard_Integer NbVariables();
 
 		/****************** Set ******************/
-		/**** md5 signature: 7983af2dd9b59527838f86afe955ad02 ****/
+		/**** md5 signature: 3e783af1d10cfe5251f5d68b2e1a28b8 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Sets the curveonsurface on which a solution has to be found. if <onfirst> is set to standard_true, the curve will be on the first surface, otherwise the curve is on the second one.
 
 Parameters
 ----------
 OnFirst: bool
-COnSurf: Adaptor2d_HCurve2d
+COnSurf: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
+		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
@@ -1658,19 +1660,19 @@ int
 		Standard_Integer NbVariables();
 
 		/****************** Set ******************/
-		/**** md5 signature: 58aa4b5323f8e6dfedff407fa70a0778 ****/
+		/**** md5 signature: 0289f8e5f7cd6af48b5eae57db73f4e7 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Set the point on which a solution has to be found.
 
 Parameters
 ----------
-Rst: Adaptor2d_HCurve2d
+Rst: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		virtual void Set(const opencascade::handle<Adaptor2d_HCurve2d> & Rst);
+		virtual void Set(const opencascade::handle<Adaptor2d_Curve2d> & Rst);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
@@ -1904,7 +1906,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: b7112b2680da59932f7cc20412f85fda ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -2567,7 +2569,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: e8742e6ed5aa58b10280098f76f7ab1d ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -2656,7 +2658,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -3100,7 +3102,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: e8742e6ed5aa58b10280098f76f7ab1d ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -3189,7 +3191,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------

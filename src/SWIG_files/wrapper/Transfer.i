@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERDOCSTRING
 "Transfer module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_transfer.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_transfer.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERDOCSTRING) Transfer
 
@@ -87,7 +87,7 @@ enum Transfer_StatusResult {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Transfer_StatusExec(IntEnum):
@@ -273,7 +273,7 @@ None
 		/****************** Transferring ******************/
 		/**** md5 signature: 4f53e5d5a83d9867599cfcf49344ee90 ****/
 		%feature("compactdefaultargs") Transferring;
-		%feature("autodoc", "Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deffered) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
+		%feature("autodoc", "Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deferred) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
 
 Parameters
 ----------
@@ -412,7 +412,7 @@ None
 		/****************** Transferring ******************/
 		/**** md5 signature: e31455ac7db7ffccb1c6d0fa5dff964e ****/
 		%feature("compactdefaultargs") Transferring;
-		%feature("autodoc", "Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deffered) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
+		%feature("autodoc", "Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deferred) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
 
 Parameters
 ----------
@@ -462,7 +462,7 @@ class Transfer_Binder : public Standard_Transient {
 		/****************** AddFail ******************/
 		/**** md5 signature: 4da0304d0675e0e43eeeae8a464c5cc0 ****/
 		%feature("compactdefaultargs") AddFail;
-		%feature("autodoc", "Used to declare an individual transfer as beeing erroneous (status is set to void, statusexec is set to error, <errmess> is added to check's list of fails) it is possible to record several messages of error //! it has same effect for transferprocess as raising an exception during the operation of transfer, except the transfer tries to continue (as if errorhandle had been set).
+		%feature("autodoc", "Used to declare an individual transfer as being erroneous (status is set to void, statusexec is set to error, <errmess> is added to check's list of fails) it is possible to record several messages of error //! it has same effect for transferprocess as raising an exception during the operation of transfer, except the transfer tries to continue (as if errorhandle had been set).
 
 Parameters
 ----------
@@ -896,7 +896,7 @@ Interface_ParamType
 		/****************** Equates ******************/
 		/**** md5 signature: c23eeb6738a5a3b9c168de5c90033b61 ****/
 		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "Specific testof equallity : to be defined by each sub-class, must be false if finders have not the same true type, else their contents must be compared.
+		%feature("autodoc", "Specific testof equality : to be defined by each sub-class, must be false if finders have not the same true type, else their contents must be compared.
 
 Parameters
 ----------
@@ -1270,7 +1270,7 @@ None
 		/****************** AbnormalResult ******************/
 		/**** md5 signature: 83a1f95395dc879f57c81c4d201c078d ****/
 		%feature("compactdefaultargs") AbnormalResult;
-		%feature("autodoc", "Returns binders which are neither 'done' nor 'initial', that is error,loop or run (abnormal states at end of transfer) starting objects are given in correspondance in the iterator.
+		%feature("autodoc", "Returns binders which are neither 'done' nor 'initial', that is error,loop or run (abnormal states at end of transfer) starting objects are given in correspondence in the iterator.
 
 Returns
 -------
@@ -1525,7 +1525,7 @@ None
 		/****************** CompleteResult ******************/
 		/**** md5 signature: cdd116bbcf7ed573c06d1f2aa037184b ****/
 		%feature("compactdefaultargs") CompleteResult;
-		%feature("autodoc", "Returns, as an iterator, the entire log of transfer (list of created objects and binders which can bring errors) if withstart is given true, starting objets are also returned.
+		%feature("autodoc", "Returns, as an iterator, the entire log of transfer (list of created objects and binders which can bring errors) if withstart is given true, starting objects are also returned.
 
 Parameters
 ----------
@@ -1937,7 +1937,7 @@ opencascade::handle<Transfer_Binder>
 		/****************** RootResult ******************/
 		/**** md5 signature: 0a0e61f56d5a609830fa57636a74d5b9 ****/
 		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "Returns, as an iterator, the log of root transfer, i.e. the created objects and binders bound to starting roots if withstart is given true, starting objets are also returned.
+		%feature("autodoc", "Returns, as an iterator, the log of root transfer, i.e. the created objects and binders bound to starting roots if withstart is given true, starting objects are also returned.
 
 Parameters
 ----------
@@ -2957,7 +2957,7 @@ bool
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;
-		%feature("autodoc", "Returns true if current item brings a result, transient (handle) or not or multiple. that is to say, if it corresponds to a normally acheived transfer, transient result is read by specific transientresult below. other kind of result must be read specifically from its binder.
+		%feature("autodoc", "Returns true if current item brings a result, transient (handle) or not or multiple. that is to say, if it corresponds to a normally achieved transfer, transient result is read by specific transientresult below. other kind of result must be read specifically from its binder.
 
 Returns
 -------
@@ -3034,7 +3034,7 @@ int
 		/****************** ResultType ******************/
 		/**** md5 signature: 05a6797793486e19cd94de53a53b0ad7 ****/
 		%feature("compactdefaultargs") ResultType;
-		%feature("autodoc", "Returns the type of the result of the current item, if unique. if no unique result (error transfert or multiple result), returns a null handle the type is : the dynamic type for a transient result, the type defined by the binder class else.
+		%feature("autodoc", "Returns the type of the result of the current item, if unique. if no unique result (error transfer or multiple result), returns a null handle the type is : the dynamic type for a transient result, the type defined by the binder class else.
 
 Returns
 -------
@@ -3824,7 +3824,7 @@ None
 		/****************** IsMultiple ******************/
 		/**** md5 signature: 17145d71daab4028b6c7195d5ff772ce ****/
 		%feature("compactdefaultargs") IsMultiple;
-		%feature("autodoc", "Returns true if a starting object is bound with several results : here, returns allways true.
+		%feature("autodoc", "Returns true if a starting object is bound with several results : here, returns always true.
 
 Returns
 -------
@@ -3925,7 +3925,7 @@ class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 		/****************** Transfer_SimpleBinderOfTransient ******************/
 		/**** md5 signature: 83ba599c048412012db5337e7fe1879c ****/
 		%feature("compactdefaultargs") Transfer_SimpleBinderOfTransient;
-		%feature("autodoc", "Creates an empty simplebinderoftransient returns true if a starting object is bound with several results : here, returns allways false see binder itself.
+		%feature("autodoc", "Creates an empty simplebinderoftransient returns true if a starting object is bound with several results : here, returns always false see binder itself.
 
 Returns
 -------
@@ -4175,7 +4175,7 @@ None
 		/****************** Equates ******************/
 		/**** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ****/
 		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "Specific testof equallity : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+		%feature("autodoc", "Specific testof equality : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
 
 Parameters
 ----------
@@ -4414,7 +4414,7 @@ None
 		/****************** SetModel ******************/
 		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
 		%feature("compactdefaultargs") SetModel;
-		%feature("autodoc", "Sets an interfacemodel, used by starttrace, checklist, queries on integrity, to give informations significant for each norm.
+		%feature("autodoc", "Sets an interfacemodel, used by starttrace, checklist, queries on integrity, to give information significant for each norm.
 
 Parameters
 ----------

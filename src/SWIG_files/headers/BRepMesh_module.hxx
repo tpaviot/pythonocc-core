@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -64,6 +64,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_ShapeTool.hxx>
 #include<BRepMesh_ShapeVisitor.hxx>
 #include<BRepMesh_Triangle.hxx>
+#include<BRepMesh_Triangulator.hxx>
 #include<BRepMesh_Vertex.hxx>
 #include<BRepMesh_VertexInspector.hxx>
 #include<BRepMesh_VertexTool.hxx>

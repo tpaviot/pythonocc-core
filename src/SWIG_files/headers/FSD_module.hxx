@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<FSD_BStream.hxx>
-#include<FSD_Base64Decoder.hxx>
+#include<FSD_Base64.hxx>
 #include<FSD_BinaryFile.hxx>
 #include<FSD_CmpFile.hxx>
 #include<FSD_FStream.hxx>

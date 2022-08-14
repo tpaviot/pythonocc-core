@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BITGTEDOCSTRING
 "BiTgte module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bitgte.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bitgte.html"
 %enddef
 %module (package="OCC.Core", docstring=BITGTEDOCSTRING) BiTgte
 
@@ -86,7 +86,7 @@ enum BiTgte_ContactType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BiTgte_ContactType(IntEnum):
@@ -106,8 +106,8 @@ BiTgte_VertexVertex = BiTgte_ContactType.BiTgte_VertexVertex
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(BiTgte_HCurveOnEdge)
-%wrap_handle(BiTgte_HCurveOnVertex)
+%wrap_handle(BiTgte_CurveOnEdge)
+%wrap_handle(BiTgte_CurveOnVertex)
 /* end handles declaration */
 
 /* templates */
@@ -767,7 +767,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -910,7 +910,7 @@ float
 		Standard_Real Resolution(const Standard_Real R3d);
 
 		/****************** Trim ******************/
-		/**** md5 signature: 113944489c8ce9efcb5cb2d44fff51d7 ****/
+		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -922,9 +922,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
@@ -943,6 +943,8 @@ gp_Pnt
 
 };
 
+
+%make_alias(BiTgte_CurveOnEdge)
 
 %extend BiTgte_CurveOnEdge {
 	%pythoncode {
@@ -1186,7 +1188,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1329,7 +1331,7 @@ float
 		Standard_Real Resolution(const Standard_Real R3d);
 
 		/****************** Trim ******************/
-		/**** md5 signature: 113944489c8ce9efcb5cb2d44fff51d7 ****/
+		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -1341,9 +1343,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
@@ -1363,187 +1365,9 @@ gp_Pnt
 };
 
 
+%make_alias(BiTgte_CurveOnVertex)
+
 %extend BiTgte_CurveOnVertex {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class BiTgte_HCurveOnEdge *
-****************************/
-class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
-	public:
-		/****************** BiTgte_HCurveOnEdge ******************/
-		/**** md5 signature: 2ad2aa1b96813bad76de96545a132d40 ****/
-		%feature("compactdefaultargs") BiTgte_HCurveOnEdge;
-		%feature("autodoc", "Creates an empty genhcurve.
-
-Returns
--------
-None
-") BiTgte_HCurveOnEdge;
-		 BiTgte_HCurveOnEdge();
-
-		/****************** BiTgte_HCurveOnEdge ******************/
-		/**** md5 signature: a665c1e8600cec2853f810d5d006e4f2 ****/
-		%feature("compactdefaultargs") BiTgte_HCurveOnEdge;
-		%feature("autodoc", "Creates a genhcurve from a curve.
-
-Parameters
-----------
-C: BiTgte_CurveOnEdge
-
-Returns
--------
-None
-") BiTgte_HCurveOnEdge;
-		 BiTgte_HCurveOnEdge(const BiTgte_CurveOnEdge & C);
-
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: bb25bf47662f7e00c15ecf6d3e802f3e ****/
-		%feature("compactdefaultargs") ChangeCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-BiTgte_CurveOnEdge
-") ChangeCurve;
-		BiTgte_CurveOnEdge & ChangeCurve();
-
-		/****************** Curve ******************/
-		/**** md5 signature: a89f0959dbb9c3c030843720c3636148 ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") Curve;
-		const Adaptor3d_Curve & Curve();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: 73b397b3522011e6948956523664e20c ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") GetCurve;
-		Adaptor3d_Curve & GetCurve();
-
-		/****************** Set ******************/
-		/**** md5 signature: 049171d6b8e70260c1a5f802baca72c2 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve.
-
-Parameters
-----------
-C: BiTgte_CurveOnEdge
-
-Returns
--------
-None
-") Set;
-		void Set(const BiTgte_CurveOnEdge & C);
-
-};
-
-
-%make_alias(BiTgte_HCurveOnEdge)
-
-%extend BiTgte_HCurveOnEdge {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class BiTgte_HCurveOnVertex *
-******************************/
-class BiTgte_HCurveOnVertex : public Adaptor3d_HCurve {
-	public:
-		/****************** BiTgte_HCurveOnVertex ******************/
-		/**** md5 signature: 5320504925b1287b64eb071acb58f650 ****/
-		%feature("compactdefaultargs") BiTgte_HCurveOnVertex;
-		%feature("autodoc", "Creates an empty genhcurve.
-
-Returns
--------
-None
-") BiTgte_HCurveOnVertex;
-		 BiTgte_HCurveOnVertex();
-
-		/****************** BiTgte_HCurveOnVertex ******************/
-		/**** md5 signature: 3f28cb2117e2840f16163c026c166a9f ****/
-		%feature("compactdefaultargs") BiTgte_HCurveOnVertex;
-		%feature("autodoc", "Creates a genhcurve from a curve.
-
-Parameters
-----------
-C: BiTgte_CurveOnVertex
-
-Returns
--------
-None
-") BiTgte_HCurveOnVertex;
-		 BiTgte_HCurveOnVertex(const BiTgte_CurveOnVertex & C);
-
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: 9e664d84e29b5c4dd2f89872b57e39fe ****/
-		%feature("compactdefaultargs") ChangeCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-BiTgte_CurveOnVertex
-") ChangeCurve;
-		BiTgte_CurveOnVertex & ChangeCurve();
-
-		/****************** Curve ******************/
-		/**** md5 signature: a89f0959dbb9c3c030843720c3636148 ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") Curve;
-		const Adaptor3d_Curve & Curve();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: 73b397b3522011e6948956523664e20c ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") GetCurve;
-		Adaptor3d_Curve & GetCurve();
-
-		/****************** Set ******************/
-		/**** md5 signature: 7e8c4ace2fa0b6b2e5f93ff796af50b7 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve.
-
-Parameters
-----------
-C: BiTgte_CurveOnVertex
-
-Returns
--------
-None
-") Set;
-		void Set(const BiTgte_CurveOnVertex & C);
-
-};
-
-
-%make_alias(BiTgte_HCurveOnVertex)
-
-%extend BiTgte_HCurveOnVertex {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

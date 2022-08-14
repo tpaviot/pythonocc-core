@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LOCOPEDOCSTRING
 "LocOpe module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_locope.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_locope.html"
 %enddef
 %module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
@@ -93,7 +93,7 @@ enum LocOpe_Operation {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class LocOpe_Operation(IntEnum):
@@ -444,7 +444,7 @@ bool
 		/****************** LocalizeAfter ******************/
 		/**** md5 signature: 0c047f3521a889ad3beace61675cb16c ****/
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "On the element of range <i>, searches the first intersection point located after the parameter <from>, wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+		%feature("autodoc", "On the element of range <i>, searches the first intersection point located after the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -463,7 +463,7 @@ IndTo: int
 		/****************** LocalizeAfter ******************/
 		/**** md5 signature: d56de202f543156481760d3d927eea66 ****/
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "On the element of range <i>, searches the first intersection point located after the index <fromind> ( >= fromind + 1), wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+		%feature("autodoc", "On the element of range <i>, searches the first intersection point located after the index <fromind> ( >= fromind + 1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -482,7 +482,7 @@ IndTo: int
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: 5b2b6de66ba5a81aeee8506f68cfc270 ****/
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "On the element of range <i>, searches the first intersection point located before the parameter <from>, wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+		%feature("autodoc", "On the element of range <i>, searches the first intersection point located before the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -501,7 +501,7 @@ IndTo: int
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: 89f05e176ad1cd9828188d9a6ada9149 ****/
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "On the element of range <i>, searches the first intersection point located before the index <fromind> ( <= fromind -1), wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+		%feature("autodoc", "On the element of range <i>, searches the first intersection point located before the index <fromind> ( <= fromind -1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -696,7 +696,7 @@ bool
 		/****************** LocalizeAfter ******************/
 		/**** md5 signature: db4c67a77f192de37c747de6a6aed7d3 ****/
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "Searches the first intersection point located after the parameter <from>, wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). //! otherwise, returns <standard_false>.
+		%feature("autodoc", "Searches the first intersection point located after the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -713,7 +713,7 @@ IndTo: int
 		/****************** LocalizeAfter ******************/
 		/**** md5 signature: dc5b7987079415874eaa183c6149c405 ****/
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "Searches the first intersection point located after the index <fromind> ( >= fromind + 1), wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). //! otherwise, returns <standard_false>.
+		%feature("autodoc", "Searches the first intersection point located after the index <fromind> ( >= fromind + 1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -730,7 +730,7 @@ IndTo: int
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: fbf6caaf11561e5474c6e8bcbfa6392a ****/
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "Searches the first intersection point located before the parameter <from>, wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). //! otherwise, returns <standard_false>.
+		%feature("autodoc", "Searches the first intersection point located before the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -747,7 +747,7 @@ IndTo: int
 		/****************** LocalizeBefore ******************/
 		/**** md5 signature: 977b8e8fd7ae8fde8152e2d971922b09 ****/
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "Searches the first intersection point located before the index <fromind> ( <= fromind -1), wich orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). //! otherwise, returns <standard_false>.
+		%feature("autodoc", "Searches the first intersection point located before the index <fromind> ( <= fromind -1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). //! otherwise, returns <standard_false>.
 
 Parameters
 ----------
@@ -2116,7 +2116,7 @@ TopTools_ListOfShape
 class LocOpe_SplitDrafts {
 	public:
 		/****************** LocOpe_SplitDrafts ******************/
-		/**** md5 signature: bd98e2f866e9cd1503bf0bc2c1b93dd1 ****/
+		/**** md5 signature: 2ee8be10ba301fc967707fa630016f82 ****/
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "Empty constructor.
 
@@ -2127,9 +2127,9 @@ None
 		 LocOpe_SplitDrafts();
 
 		/****************** LocOpe_SplitDrafts ******************/
-		/**** md5 signature: c22a80cfddc71e6fda38566dd6e30d6c ****/
+		/**** md5 signature: e2701639f1b17ae18c73bfdf74b775be ****/
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
-		%feature("autodoc", "Creates the algoritm on the shape <s>.
+		%feature("autodoc", "Creates the algorithm on the shape <s>.
 
 Parameters
 ----------
@@ -2144,7 +2144,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initializes the algoritm with the shape <s>.
+		%feature("autodoc", "Initializes the algorithm with the shape <s>.
 
 Parameters
 ----------
@@ -2157,9 +2157,9 @@ None
 		void Init(const TopoDS_Shape & S);
 
 		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns <standard_true> if the modification has been succesfully performed.
+		%feature("autodoc", "Returns <standard_true> if the modification has been successfully performed.
 
 Returns
 -------
@@ -2168,7 +2168,7 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** OriginalShape ******************/
-		/**** md5 signature: 37aa687b33206d2183ad29c927b910b3 ****/
+		/**** md5 signature: 0c1425ae3411e433ee33975a98ab8edc ****/
 		%feature("compactdefaultargs") OriginalShape;
 		%feature("autodoc", "No available documentation.
 
@@ -2582,7 +2582,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: a2f8855eb9d20716f921d30ba939fd6a ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Add splitting edges or wires for whole initial shape withot additional specification edge->face, edge->edge this method puts edge on the corresponding faces from initial shape.
+		%feature("autodoc", "Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge this method puts edge on the corresponding faces from initial shape.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STANDARDDOCSTRING
 "Standard module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_standard.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_standard.html"
 %enddef
 %module (package="OCC.Core", docstring=STANDARDDOCSTRING) Standard
 
@@ -40,11 +40,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_standard.html"
 #include<Standard_module.hxx>
 
 //Dependencies
+#include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
+%import NCollection.i
 
 %pythoncode {
 from enum import IntEnum
@@ -60,7 +62,7 @@ enum Standard_HandlerStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Standard_HandlerStatus(IntEnum):
@@ -93,6 +95,7 @@ typedef char Standard_Character;
 typedef Standard_ErrorHandler::Callback Standard_ErrorHandlerCallback;
 typedef char16_t Standard_ExtCharacter;
 typedef const Standard_ExtCharacter * Standard_ExtString;
+typedef NCollection_Shared<Standard_Mutex> Standard_HMutex;
 typedef std::istream Standard_IStream;
 typedef int Standard_Integer;
 typedef std::ostream Standard_OStream;
@@ -189,6 +192,27 @@ Standard_Address
 ") Reallocate;
 		static Standard_Address Reallocate(const Standard_Address aStorage, const Standard_Size aNewSize);
 
+		/****************** StackTrace ******************/
+		/**** md5 signature: 11cdd0e88a61817ce1133c83a30be60d ****/
+		%feature("compactdefaultargs") StackTrace;
+		%feature("autodoc", "Appends backtrace to a message buffer. stack information might be incomplete in case of stripped binaries. implementation details: - not implemented for android, ios, qnx and uwp platforms. - on non-windows platform, this function is a wrapper to backtrace() system call. - on windows (win32) platform, the function loads dbghelp.dll dynamically, and no stack will be provided if this or companion libraries (symsrv.dll, srcsrv.dll, etc.) will not be found; .pdb symbols should be provided on windows platform to retrieve a meaningful stack; only x86_64 cpu architecture is currently implemented. @param thebuffer [in] [out] message buffer to extend @param thebuffersize [in] message buffer size @param thenbtraces [in] maximum number of stack traces @param thecontext [in] optional platform-dependent frame context; in case of dbghelp (windows) should be a pointer to context @param thenbtopskip [in] number of traces on top of the stack to skip returns true on success.
+
+Parameters
+----------
+theBuffer: char *
+theBufferSize: int
+theNbTraces: int
+theContext: void *,optional
+	default value is NULL
+theNbTopSkip: int,optional
+	default value is 0
+
+Returns
+-------
+bool
+") StackTrace;
+		static Standard_Boolean StackTrace(char * theBuffer, const int theBufferSize, const int theNbTraces, void * theContext = NULL, const int theNbTopSkip = 0);
+
 };
 
 
@@ -214,7 +238,7 @@ class Standard_ArrayStreamBuffer : public std::streambuf {
 		/****************** Standard_ArrayStreamBuffer ******************/
 		/**** md5 signature: 72e8fa1633999e17c4113d48c2d43739 ****/
 		%feature("compactdefaultargs") Standard_ArrayStreamBuffer;
-		%feature("autodoc", "Main constructor. passed pointer is stored as is (memory is not copied nor released with destructor). @param thebegin pointer to the beggining of pre-allocated buffer @param thesize length of pre-allocated buffer.
+		%feature("autodoc", "Main constructor. passed pointer is stored as is (memory is not copied nor released with destructor). @param thebegin pointer to the beginning of pre-allocated buffer @param thesize length of pre-allocated buffer.
 
 Parameters
 ----------
@@ -230,7 +254,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: d18d18891aa5348c727148263a9628cb ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "(re)-initialize the stream. passed pointer is stored as is (memory is not copied nor released with destructor). @param thebegin pointer to the beggining of pre-allocated buffer @param thesize length of pre-allocated buffer.
+		%feature("autodoc", "(re)-initialize the stream. passed pointer is stored as is (memory is not copied nor released with destructor). @param thebegin pointer to the beginning of pre-allocated buffer @param thesize length of pre-allocated buffer.
 
 Parameters
 ----------
@@ -1134,6 +1158,7 @@ char *
 *************************/
 class Standard_Failure : public Standard_Transient {
 	public:
+		class StringRef {};
 		/****************** Standard_Failure ******************/
 		/**** md5 signature: 28eca828ed422c117208722fa40f1b8f ****/
 		%feature("compactdefaultargs") Standard_Failure;
@@ -1161,30 +1186,46 @@ None
 		 Standard_Failure(const Standard_Failure & f);
 
 		/****************** Standard_Failure ******************/
-		/**** md5 signature: 1ca069088790633532f3fc20a7e3084c ****/
+		/**** md5 signature: bfea0bc1601bd488834fb05fabb35682 ****/
 		%feature("compactdefaultargs") Standard_Failure;
-		%feature("autodoc", "Creates a status object of type 'failure'.
+		%feature("autodoc", "Creates a status object of type 'failure'. @param thedesc [in] exception description.
 
 Parameters
 ----------
-aString: char *
+theDesc: char *
 
 Returns
 -------
 None
 ") Standard_Failure;
-		 Standard_Failure(const char * aString);
+		 Standard_Failure(const char * theDesc);
 
-		/****************** Caught ******************/
-		/**** md5 signature: e487ba4f8c916a476ce53b88d6e749b0 ****/
-		%feature("compactdefaultargs") Caught;
-		%feature("autodoc", "Returns the last caught exception. needed when exceptions are emulated by c longjumps, in other cases is also provided for compatibility.
+		/****************** Standard_Failure ******************/
+		/**** md5 signature: 598ccf8efeea31d62c1978fafbb81e3d ****/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "Creates a status object of type 'failure' with stack trace. @param thedesc [in] exception description @param thestacktrace [in] associated stack trace.
+
+Parameters
+----------
+theDesc: char *
+theStackTrace: char *
 
 Returns
 -------
-opencascade::handle<Standard_Failure>
-") Caught;
-		static opencascade::handle<Standard_Failure> Caught();
+None
+") Standard_Failure;
+		 Standard_Failure(const char * theDesc, const char * theStackTrace);
+
+		/****************** DefaultStackTraceLength ******************/
+		/**** md5 signature: 12c493f7dd93e3779bfe7abdb3051a3b ****/
+		%feature("compactdefaultargs") DefaultStackTraceLength;
+		%feature("autodoc", "Returns the default length of stack trace to be captured by standard_failure constructor; 0 by default meaning no stack trace.
+
+Returns
+-------
+int
+") DefaultStackTraceLength;
+		static Standard_Integer DefaultStackTraceLength();
 
 		/****************** GetMessageString ******************/
 		/**** md5 signature: 6cf28bba781d197207e850c1ab1a1376 ****/
@@ -1196,6 +1237,17 @@ Returns
 char *
 ") GetMessageString;
 		virtual const char * GetMessageString();
+
+		/****************** GetStackString ******************/
+		/**** md5 signature: 5581b971f0facf6f7621539967764486 ****/
+		%feature("compactdefaultargs") GetStackString;
+		%feature("autodoc", "Returns the stack trace string.
+
+Returns
+-------
+char *
+") GetStackString;
+		virtual const char * GetStackString();
 
 		/****************** Jump ******************/
 		/**** md5 signature: e33ef5a1dbf8b90ad71d2447437ae607 ****/
@@ -1209,19 +1261,35 @@ None
 		void Jump();
 
 		/****************** NewInstance ******************/
-		/**** md5 signature: 9286e9615414b307ea2d1b0cb0dc3aa6 ****/
+		/**** md5 signature: 8aca08fb5837ba2ac4dd2d68b9488c2c ****/
 		%feature("compactdefaultargs") NewInstance;
-		%feature("autodoc", "Used to construct an instance of the exception object as a handle. shall be used to protect against possible construction of exception object in c stack -- that is dangerous since some of methods require that object was allocated dynamically.
+		%feature("autodoc", "Used to construct an instance of the exception object as a handle. shall be used to protect against possible construction of exception object in c stack, which is dangerous since some of methods require that object was allocated dynamically.
 
 Parameters
 ----------
-aMessage: char *
+theMessage: char *
 
 Returns
 -------
 opencascade::handle<Standard_Failure>
 ") NewInstance;
-		static opencascade::handle<Standard_Failure> NewInstance(const char * aMessage);
+		static opencascade::handle<Standard_Failure> NewInstance(const char * theMessage);
+
+		/****************** NewInstance ******************/
+		/**** md5 signature: 47f811a9539bde6aaf8c4a9a851c69f7 ****/
+		%feature("compactdefaultargs") NewInstance;
+		%feature("autodoc", "Used to construct an instance of the exception object as a handle.
+
+Parameters
+----------
+theMessage: char *
+theStackTrace: char *
+
+Returns
+-------
+opencascade::handle<Standard_Failure>
+") NewInstance;
+		static opencascade::handle<Standard_Failure> NewInstance(const char * theMessage, const char * theStackTrace);
 
 
         %feature("autodoc", "1");
@@ -1303,20 +1371,50 @@ None
 ") Reraise;
 		void Reraise(const Standard_SStream & aReason);
 
+		/****************** SetDefaultStackTraceLength ******************/
+		/**** md5 signature: 0a05375e4fbc3fd48e63e470f065603f ****/
+		%feature("compactdefaultargs") SetDefaultStackTraceLength;
+		%feature("autodoc", "Sets default length of stack trace to be captured by standard_failure constructor.
+
+Parameters
+----------
+theNbStackTraces: int
+
+Returns
+-------
+None
+") SetDefaultStackTraceLength;
+		static void SetDefaultStackTraceLength(Standard_Integer theNbStackTraces);
+
 		/****************** SetMessageString ******************/
-		/**** md5 signature: e114353f153670bda6bb3ce3aa4b0258 ****/
+		/**** md5 signature: b83b6b6b9d7cb98cd6a3d0dfaa1a4c66 ****/
 		%feature("compactdefaultargs") SetMessageString;
 		%feature("autodoc", "Sets error message.
 
 Parameters
 ----------
-aMessage: char *
+theMessage: char *
 
 Returns
 -------
 None
 ") SetMessageString;
-		virtual void SetMessageString(const char * aMessage);
+		virtual void SetMessageString(const char * theMessage);
+
+		/****************** SetStackString ******************/
+		/**** md5 signature: 0ac982cf92368c8ff9d3ab7dc330defa ****/
+		%feature("compactdefaultargs") SetStackString;
+		%feature("autodoc", "Sets the stack trace string.
+
+Parameters
+----------
+theStack: char *
+
+Returns
+-------
+None
+") SetStackString;
+		virtual void SetStackString(const char * theStack);
 
 };
 
@@ -1620,7 +1718,7 @@ char *
 		const char * GetMessageString();
 
 		/****************** NewInstance ******************/
-		/**** md5 signature: e32a31c27ebaac0a085850d6c769c71e ****/
+		/**** md5 signature: c920a2e02bad464ffbe4c7662f3298ea ****/
 		%feature("compactdefaultargs") NewInstance;
 		%feature("autodoc", "Returns global instance of exception.
 
@@ -1634,6 +1732,22 @@ Returns
 opencascade::handle<Standard_OutOfMemory>
 ") NewInstance;
 		static opencascade::handle<Standard_OutOfMemory> NewInstance(const char * theMessage = "");
+
+		/****************** NewInstance ******************/
+		/**** md5 signature: 6c918de0ecdc1c640cd677eed73b0564 ****/
+		%feature("compactdefaultargs") NewInstance;
+		%feature("autodoc", "Returns global instance of exception.
+
+Parameters
+----------
+theMessage: char *
+theStackTrace: char *
+
+Returns
+-------
+opencascade::handle<Standard_OutOfMemory>
+") NewInstance;
+		static opencascade::handle<Standard_OutOfMemory> NewInstance(const char * theMessage, const char * theStackTrace);
 
 		/****************** Raise ******************/
 		/**** md5 signature: 52297b82d875f5f61f56970e75bf80a5 ****/

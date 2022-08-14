@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -22,8 +22,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SelectMgr.hxx>
 #include<SelectMgr_AndFilter.hxx>
 #include<SelectMgr_AndOrFilter.hxx>
+#include<SelectMgr_AxisIntersector.hxx>
 #include<SelectMgr_BVHThreadPool.hxx>
 #include<SelectMgr_BaseFrustum.hxx>
+#include<SelectMgr_BaseIntersector.hxx>
 #include<SelectMgr_CompositionFilter.hxx>
 #include<SelectMgr_EntityOwner.hxx>
 #include<SelectMgr_Filter.hxx>
@@ -43,9 +45,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SelectMgr_Selection.hxx>
 #include<SelectMgr_SelectionImageFiller.hxx>
 #include<SelectMgr_SelectionManager.hxx>
+#include<SelectMgr_SelectionType.hxx>
 #include<SelectMgr_SensitiveEntity.hxx>
 #include<SelectMgr_SensitiveEntitySet.hxx>
-#include<SelectMgr_SequenceOfFilter.hxx>
 #include<SelectMgr_SequenceOfOwner.hxx>
 #include<SelectMgr_SequenceOfSelection.hxx>
 #include<SelectMgr_SortCriterion.hxx>

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPFILLDOCSTRING
 "BRepFill module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfill.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfill.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPFILLDOCSTRING) BRepFill
 
@@ -119,7 +119,7 @@ enum BRepFill_TransitionStyle {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BRepFill_TypeOfContact(IntEnum):
@@ -941,13 +941,13 @@ AppParCurves_MultiCurve
 class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 	public:
 		/****************** BRepFill_CurveConstraint ******************/
-		/**** md5 signature: 41b1e4fc4bc3dc66765ae224c896d95e ****/
+		/**** md5 signature: a983adec650994ee74e57f6aa9893167 ****/
 		%feature("compactdefaultargs") BRepFill_CurveConstraint;
 		%feature("autodoc", "Create a constraint order is the order of the constraint. the possible values for order are -1,0,1,2. order i means constraints gi npt is the number of points associated with the constraint. toldist is the maximum error to satisfy for g0 constraints tolang is the maximum error to satisfy for g1 constraints tolcurv is the maximum error to satisfy for g2 constraints these errors can be replaced by laws of criterion.
 
 Parameters
 ----------
-Boundary: Adaptor3d_HCurveOnSurface
+Boundary: Adaptor3d_CurveOnSurface
 Order: int
 NPt: int,optional
 	default value is 10
@@ -962,16 +962,16 @@ Returns
 -------
 None
 ") BRepFill_CurveConstraint;
-		 BRepFill_CurveConstraint(const opencascade::handle<Adaptor3d_HCurveOnSurface> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
+		 BRepFill_CurveConstraint(const opencascade::handle<Adaptor3d_CurveOnSurface> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
 		/****************** BRepFill_CurveConstraint ******************/
-		/**** md5 signature: f26a009e0334615d92ee293a276af65f ****/
+		/**** md5 signature: ccfa90de10a25cb726928f2c424e790e ****/
 		%feature("compactdefaultargs") BRepFill_CurveConstraint;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Boundary: Adaptor3d_HCurve
+Boundary: Adaptor3d_Curve
 Tang: int
 NPt: int,optional
 	default value is 10
@@ -982,7 +982,7 @@ Returns
 -------
 None
 ") BRepFill_CurveConstraint;
-		 BRepFill_CurveConstraint(const opencascade::handle<Adaptor3d_HCurve> & Boundary, const Standard_Integer Tang, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001);
+		 BRepFill_CurveConstraint(const opencascade::handle<Adaptor3d_Curve> & Boundary, const Standard_Integer Tang, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001);
 
 };
 
@@ -1731,7 +1731,7 @@ None
 		/****************** SetResolParam ******************/
 		/**** md5 signature: 96cad4665171fb74735ecc8d46155136 ****/
 		%feature("compactdefaultargs") SetResolParam;
-		%feature("autodoc", "Sets the parameters used for resolution. the default values of these parameters have been chosen for a good ratio quality/performance. degree: it is the order of energy criterion to minimize for computing the deformation of the surface. the default value is 3 the recommanded value is i+2 where i is the maximum order of the constraints. nbptsoncur: it is the average number of points for discretisation of the edges. nbiter: it is the maximum number of iterations of the process. for each iteration the number of discretisation points is increased. anisotropie:.
+		%feature("autodoc", "Sets the parameters used for resolution. the default values of these parameters have been chosen for a good ratio quality/performance. degree: it is the order of energy criterion to minimize for computing the deformation of the surface. the default value is 3 the recommended value is i+2 where i is the maximum order of the constraints. nbptsoncur: it is the average number of points for discretisation of the edges. nbiter: it is the maximum number of iterations of the process. for each iteration the number of discretisation points is increased. anisotropie:.
 
 Parameters
 ----------
@@ -1887,7 +1887,7 @@ Last: float
 		/****************** D0 ******************/
 		/**** md5 signature: 52c2d023fe81655193d586ee297b1241 ****/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "Apply the law to a shape, for a given curnilinear abscissa.
+		%feature("autodoc", "Apply the law to a shape, for a given curvilinear abscissa.
 
 Parameters
 ----------
@@ -1966,7 +1966,7 @@ bool
 		/****************** IsG1 ******************/
 		/**** md5 signature: 9963a7e0ee81d49de56ba09e373c171d ****/
 		%feature("compactdefaultargs") IsG1;
-		%feature("autodoc", "Compute the law's continuity beetween 2 edges of the path the result can be : -1 : case not connex 0 : it is connex (g0) 1 : it is tangent (g1).
+		%feature("autodoc", "Compute the law's continuity between 2 edges of the path the result can be : -1 : case not connex 0 : it is connex (g0) 1 : it is tangent (g1).
 
 Parameters
 ----------
@@ -2027,7 +2027,7 @@ int
 		/****************** Parameter ******************/
 		/**** md5 signature: fd5a6bab737a1d219166f125eb34b581 ****/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "Find the index law and the parmaeter, for a given curnilinear abscissa.
+		%feature("autodoc", "Find the index law and the parameter, for a given curvilinear abscissa.
 
 Parameters
 ----------
@@ -2078,7 +2078,7 @@ None
 		/****************** TransformInG0Law ******************/
 		/**** md5 signature: 5f05797761b737e39ec06f0e5f8a1a0d ****/
 		%feature("compactdefaultargs") TransformInG0Law;
-		%feature("autodoc", "Apply a linear transformation on each law, to have continuity of the global law beetween the edges.
+		%feature("autodoc", "Apply a linear transformation on each law, to have continuity of the global law between the edges.
 
 Returns
 -------
@@ -2476,7 +2476,7 @@ TopTools_ListOfShape
 		/****************** Init ******************/
 		/**** md5 signature: 04028fd0677eb2fad3b6134f24c0b959 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize the evaluation of offseting.
+		%feature("autodoc", "Initialize the evaluation of offsetting.
 
 Parameters
 ----------
@@ -2801,7 +2801,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		/****************** BRepFill_PipeShell ******************/
 		/**** md5 signature: f13911b618ee59949258d0ea58994931 ****/
 		%feature("compactdefaultargs") BRepFill_PipeShell;
-		%feature("autodoc", "Set an sweep's mode if no mode are setted, the mode use in makepipe is used.
+		%feature("autodoc", "Set an sweep's mode if no mode are set, the mode used in makepipe is used.
 
 Parameters
 ----------
@@ -2816,7 +2816,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 4646415ed2583fb1eb7c020fef17efa7 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Set an section. the corespondance with the spine, will be automaticaly performed.
+		%feature("autodoc", "Set an section. the correspondence with the spine, will be automatically performed.
 
 Parameters
 ----------
@@ -2835,7 +2835,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: ea9d6839d1fe733dcb8684defcce8b79 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Set an section. the corespondance with the spine, is given by <location>.
+		%feature("autodoc", "Set an section. the correspondence with the spine, is given by location.
 
 Parameters
 ----------
@@ -3024,7 +3024,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 3a5512d0c00b3142b199e2c762d5e552 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Set support to the spine to define the binormal at the spine, like the normal the surfaces. warning: to be effective, each edge of the <spine> must have an representaion on one face of<spinesupport>.
+		%feature("autodoc", "Set support to the spine to define the binormal at the spine, like the normal the surfaces. warning: to be effective, each edge of the <spine> must have an representation on one face of<spinesupport>.
 
 Parameters
 ----------
@@ -3069,7 +3069,7 @@ None
 		/****************** SetForceApproxC1 ******************/
 		/**** md5 signature: ef99bf0713e14fbe9531aef549b5c75b ****/
 		%feature("compactdefaultargs") SetForceApproxC1;
-		%feature("autodoc", "Set the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0. give section to sweep. possibilities are : - give one or sevral profile - give one profile and an homotetic law. - automatic compute of correspondance beetween profile, and section on the sweeped shape - correspondance beetween profile, and section on the sweeped shape defined by a vertex of the spine.
+		%feature("autodoc", "Set the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0. give section to sweep. possibilities are : - give one or sevral profile - give one profile and an homotetic law. - automatic compute of correspondence between profile, and section on the sweeped shape - correspondence between profile, and section on the sweeped shape defined by a vertex of the spine.
 
 Parameters
 ----------
@@ -3707,7 +3707,7 @@ None
 		/****************** Build ******************/
 		/**** md5 signature: 8948957dd26d744dcb6a952ff83fd290 ****/
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Build the sweep surface transition define transition strategy approx define approximation strategy - geomfill_section : the composed function location x section is directly approximed. - geomfill_location : the location law is approximed, and the sweepsurface is bulid algebric composition of approximed location law and section law this option is ok, if section.surface() methode is effective. continuity : the continuity in v waiting on the surface degmax : the maximum degree in v requiered on the surface segmax : the maximum number of span in v requiered on the surface.
+		%feature("autodoc", "Build the sweep surface transition define transition strategy approx define approximation strategy - geomfill_section : the composed function location x section is directly approximated. - geomfill_location : the location law is approximated, and the sweepsurface is bulid algebric composition of approximated location law and section law this option is ok, if section.surface() methode is effective. continuity : the continuity in v waiting on the surface degmax : the maximum degree in v required on the surface segmax : the maximum number of span in v required on the surface.
 
 Parameters
 ----------
@@ -3827,7 +3827,7 @@ None
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 0c0c29e014b1ba349cc5155f8793397a ****/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "Set approximation tolerance tol3d : tolerance to surface approximation tol2d : tolerance used to perform curve approximation normaly the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used. tolangular : tolerance (in radian) to control the angle beetween tangents on the section law and tangent of iso-v on approximed surface.
+		%feature("autodoc", "Set approximation tolerance tol3d : tolerance to surface approximation tol2d : tolerance used to perform curve approximation normally the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used. tolangular : tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface.
 
 Parameters
 ----------
@@ -4372,7 +4372,7 @@ None
 		/****************** ConcatenedLaw ******************/
 		/**** md5 signature: 4495106cbf0901c13e169216aea3ff82 ****/
 		%feature("compactdefaultargs") ConcatenedLaw;
-		%feature("autodoc", "Give the law build on a concatened section.
+		%feature("autodoc", "Give the law build on a concatenated section.
 
 Returns
 -------
@@ -4537,7 +4537,7 @@ None
 		/****************** ConcatenedLaw ******************/
 		/**** md5 signature: 4495106cbf0901c13e169216aea3ff82 ****/
 		%feature("compactdefaultargs") ConcatenedLaw;
-		%feature("autodoc", "Give the law build on a concaneted section.
+		%feature("autodoc", "Give the law build on a concatenated section.
 
 Returns
 -------

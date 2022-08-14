@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLSTDDOCSTRING
 "TColStd module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolstd.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tcolstd.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLSTDDOCSTRING) TColStd
 
@@ -60,7 +60,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -725,29 +725,30 @@ TColStd_PackedMapOfInteger
 /***********************************
 * class TColStd_PackedMapOfInteger *
 ***********************************/
-class TColStd_PackedMapOfInteger : private TCollection_BasicMap {
+class TColStd_PackedMapOfInteger {
 	public:
+		class TColStd_intMapNode {};
 		class Iterator {};
 		/****************** TColStd_PackedMapOfInteger ******************/
-		/**** md5 signature: 619d2daca0e8dea9773a1b97a582c2c1 ****/
+		/**** md5 signature: ee60f291faae5f56871e692625f9167d ****/
 		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
-		%feature("autodoc", "/// constructor.
+		%feature("autodoc", "Constructor.
 
 Parameters
 ----------
-NbBuckets: int,optional
+theNbBuckets: int,optional
 	default value is 1
 
 Returns
 -------
 None
 ") TColStd_PackedMapOfInteger;
-		 TColStd_PackedMapOfInteger(const Standard_Integer NbBuckets = 1);
+		 TColStd_PackedMapOfInteger(const Standard_Integer theNbBuckets = 1);
 
 		/****************** TColStd_PackedMapOfInteger ******************/
-		/**** md5 signature: df5363196f2bc30ad246fd02e747d5dd ****/
+		/**** md5 signature: 2cdd258a707cd6ed3411a3db79e6a60a ****/
 		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
-		%feature("autodoc", "/// copy constructor.
+		%feature("autodoc", "Copy constructor.
 
 Parameters
 ----------
@@ -847,9 +848,9 @@ None
 		void Difference(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
 		/****************** Extent ******************/
-		/**** md5 signature: c808611e9f0acbe25f7e01fc4b129456 ****/
+		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns map extent.
 
 Returns
 -------
@@ -926,9 +927,9 @@ None
 		void Intersection(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
 		/****************** IsEmpty ******************/
-		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
+		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns true if map is empty.
 
 Returns
 -------
@@ -967,9 +968,9 @@ bool
 		Standard_Boolean IsSubset(const TColStd_PackedMapOfInteger &);
 
 		/****************** NbBuckets ******************/
-		/**** md5 signature: b26adb1645e0f77d77c223d25f073de1 ****/
+		/**** md5 signature: cc8d74943ffa9a9dd7cf4eff0c6c9739 ****/
 		%feature("compactdefaultargs") NbBuckets;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the number of map buckets (not that since integers are packed in this map, the number is smaller than extent).
 
 Returns
 -------

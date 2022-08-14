@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPBNDLIBDOCSTRING
 "BRepBndLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepbndlib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepbndlib.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPBNDLIBDOCSTRING) BRepBndLib
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -143,7 +143,7 @@ None
 		/****************** AddOptimal ******************/
 		/**** md5 signature: bd6c1029fd07d68da48862cc70fd6a39 ****/
 		%feature("compactdefaultargs") AddOptimal;
-		%feature("autodoc", "Adds the shape s to the bounding box b. this algorith builds precise bounding box, which differs from exact geometry boundaries of shape only on shape entities tolerances algorithm is the same as for method add(..), but uses more precise methods for building boxes for geometry objects. if useshapetolerance = true, bounding box is enlardged by shape tolerances and these tolerances are used for numerical methods of bounding box size calculations, otherwise bounding box is built according to sizes of uderlined geometrical entities, numerical calculation use tolerance precision::confusion().
+		%feature("autodoc", "Adds the shape s to the bounding box b. this algorithm builds precise bounding box, which differs from exact geometry boundaries of shape only on shape entities tolerances algorithm is the same as for method add(..), but uses more precise methods for building boxes for geometry objects. if useshapetolerance = true, bounding box is enlardged by shape tolerances and these tolerances are used for numerical methods of bounding box size calculations, otherwise bounding box is built according to sizes of uderlined geometrical entities, numerical calculation use tolerance precision::confusion().
 
 Parameters
 ----------

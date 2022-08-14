@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPBLENDDOCSTRING
 "BRepBlend module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepblend.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepblend.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPBLENDDOCSTRING) BRepBlend
 
@@ -104,7 +104,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -166,7 +166,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation.
 
 Returns
 -------
@@ -246,7 +246,7 @@ bool
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections. this information is useful to perform well conditioned rational approximation.
 
 Parameters
 ----------
@@ -279,7 +279,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -321,7 +321,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the maximum section. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Returns the length of the maximum section. this information is useful to perform well conditioned rational approximation.
 
 Returns
 -------
@@ -952,7 +952,7 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 		/****************** BRepBlend_AppSurface ******************/
 		/**** md5 signature: 4c9fa38ef52401b9399050fa7e75f465 ****/
 		%feature("compactdefaultargs") BRepBlend_AppSurface;
-		%feature("autodoc", "Approximation of the new surface (and eventually the 2d curves on the support surfaces). normaly the 2d curve are approximated with an tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used.
+		%feature("autodoc", "Approximation of the new surface (and eventually the 2d curves on the support surfaces). normally the 2d curve are approximated with an tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used.
 
 Parameters
 ----------
@@ -1094,7 +1094,7 @@ float
 		/****************** MaxErrorOnSurf ******************/
 		/**** md5 signature: e42290da593c42adaac24f68c51ecbda ****/
 		%feature("compactdefaultargs") MaxErrorOnSurf;
-		%feature("autodoc", "Returns the maximum error in the suface approximation.
+		%feature("autodoc", "Returns the maximum error in the surface approximation.
 
 Returns
 -------
@@ -1274,21 +1274,21 @@ int
 class BRepBlend_CSWalking {
 	public:
 		/****************** BRepBlend_CSWalking ******************/
-		/**** md5 signature: e134d88e0a8d54d9b285cd0fdf218776 ****/
+		/**** md5 signature: a74a5d5cdd7c84c7c5635410477bc4fe ****/
 		%feature("compactdefaultargs") BRepBlend_CSWalking;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Curv: Adaptor3d_HCurve
-Surf: Adaptor3d_HSurface
+Curv: Adaptor3d_Curve
+Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 
 Returns
 -------
 None
 ") BRepBlend_CSWalking;
-		 BRepBlend_CSWalking(const opencascade::handle<Adaptor3d_HCurve> & Curv, const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain);
+		 BRepBlend_CSWalking(const opencascade::handle<Adaptor3d_Curve> & Curv, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain);
 
 		/****************** Complete ******************/
 		/**** md5 signature: 8a1bdd17921ba51464cb2900597d7f15 ****/
@@ -1367,20 +1367,20 @@ None
 class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 	public:
 		/****************** BRepBlend_CurvPointRadInv ******************/
-		/**** md5 signature: e46ba43122269d3ee289beea00e78af7 ****/
+		/**** md5 signature: 07adfa2c83f449c99a58faec4122a065 ****/
 		%feature("compactdefaultargs") BRepBlend_CurvPointRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C1: Adaptor3d_HCurve
-C2: Adaptor3d_HCurve
+C1: Adaptor3d_Curve
+C2: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BRepBlend_CurvPointRadInv;
-		 BRepBlend_CurvPointRadInv(const opencascade::handle<Adaptor3d_HCurve> & C1, const opencascade::handle<Adaptor3d_HCurve> & C2);
+		 BRepBlend_CurvPointRadInv(const opencascade::handle<Adaptor3d_Curve> & C1, const opencascade::handle<Adaptor3d_Curve> & C2);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -1603,13 +1603,13 @@ None
 		 BRepBlend_Extremity(const gp_Pnt & P, const Standard_Real W, const Standard_Real Param, const Standard_Real Tol);
 
 		/****************** AddArc ******************/
-		/**** md5 signature: 76f766390f6d0b768f744948ab0c4ddb ****/
+		/**** md5 signature: 1bd1958509e7b4b472a6df84023e3729 ****/
 		%feature("compactdefaultargs") AddArc;
 		%feature("autodoc", "Sets the values of a point which is on the arc a, at parameter param.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Param: float
 TLine: IntSurf_Transition
 TArc: IntSurf_Transition
@@ -1618,7 +1618,7 @@ Returns
 -------
 None
 ") AddArc;
-		void AddArc(const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
+		void AddArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
 		/****************** HasTangent ******************/
 		/**** md5 signature: 8ce1fe7a81869f6f1baf5bc37a4f78bd ****/
@@ -2128,13 +2128,13 @@ None
 		 BRepBlend_PointOnRst();
 
 		/****************** BRepBlend_PointOnRst ******************/
-		/**** md5 signature: 1f640570b26a68373b999a68490ca37f ****/
+		/**** md5 signature: 8111ef27057565050ebf55e9c0cf6987 ****/
 		%feature("compactdefaultargs") BRepBlend_PointOnRst;
 		%feature("autodoc", "Creates the pointonrst on the arc a, at parameter param, with the transition tline on the walking line, and tarc on the arc a.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Param: float
 TLine: IntSurf_Transition
 TArc: IntSurf_Transition
@@ -2143,18 +2143,18 @@ Returns
 -------
 None
 ") BRepBlend_PointOnRst;
-		 BRepBlend_PointOnRst(const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
+		 BRepBlend_PointOnRst(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
 		/****************** Arc ******************/
-		/**** md5 signature: b2e2a2b000ebbda9cef9186aeead5385 ****/
+		/**** md5 signature: de8e47510fc50811ee5a3e0bc98029e6 ****/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "Returns the arc of restriction containing the vertex.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
+		const opencascade::handle<Adaptor2d_Curve2d> & Arc();
 
 		/****************** ParameterOnArc ******************/
 		/**** md5 signature: 53d2051734836b1f3c7d9edd7c3c1884 ****/
@@ -2168,13 +2168,13 @@ float
 		Standard_Real ParameterOnArc();
 
 		/****************** SetArc ******************/
-		/**** md5 signature: ef419e28df8105759150b9a6c4afee00 ****/
+		/**** md5 signature: ceabf78102f113c25de4b4f678682f05 ****/
 		%feature("compactdefaultargs") SetArc;
 		%feature("autodoc", "Sets the values of a point which is on the arc a, at parameter param.
 
 Parameters
 ----------
-A: Adaptor2d_HCurve2d
+A: Adaptor2d_Curve2d
 Param: float
 TLine: IntSurf_Transition
 TArc: IntSurf_Transition
@@ -2183,7 +2183,7 @@ Returns
 -------
 None
 ") SetArc;
-		void SetArc(const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
+		void SetArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
 		/****************** TransitionOnArc ******************/
 		/**** md5 signature: adc9ee508ec8cbe59ce8b05248cd454a ****/
@@ -2222,23 +2222,23 @@ IntSurf_Transition
 class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	public:
 		/****************** BRepBlend_RstRstConstRad ******************/
-		/**** md5 signature: 1b83fa703abda9bd2fe3a9caa52745e6 ****/
+		/**** md5 signature: 074ead157514803251d86880fa21933a ****/
 		%feature("compactdefaultargs") BRepBlend_RstRstConstRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
-Rst1: Adaptor2d_HCurve2d
-Surf2: Adaptor3d_HSurface
-Rst2: Adaptor2d_HCurve2d
-CGuide: Adaptor3d_HCurve
+Surf1: Adaptor3d_Surface
+Rst1: Adaptor2d_Curve2d
+Surf2: Adaptor3d_Surface
+Rst2: Adaptor2d_Curve2d
+CGuide: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BRepBlend_RstRstConstRad;
-		 BRepBlend_RstRstConstRad(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor2d_HCurve2d> & Rst1, const opencascade::handle<Adaptor3d_HSurface> & Surf2, const opencascade::handle<Adaptor2d_HCurve2d> & Rst2, const opencascade::handle<Adaptor3d_HCurve> & CGuide);
+		 BRepBlend_RstRstConstRad(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor2d_Curve2d> & Rst1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor2d_Curve2d> & Rst2, const opencascade::handle<Adaptor3d_Curve> & CGuide);
 
 		/****************** CenterCircleRst1Rst2 ******************/
 		/**** md5 signature: 78a3b5ae21381e7c60ec45458e50cd49 ****/
@@ -2313,7 +2313,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: b7112b2680da59932f7cc20412f85fda ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -2402,7 +2402,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2686,22 +2686,22 @@ bool
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
-		/**** md5 signature: 8feefe3a830da630caff2fb979f4ebff ****/
+		/**** md5 signature: 1d39a94f99a01338cb8afa4a49c68510 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-SurfRef1: Adaptor3d_HSurface
-RstRef1: Adaptor2d_HCurve2d
-SurfRef2: Adaptor3d_HSurface
-RstRef2: Adaptor2d_HCurve2d
+SurfRef1: Adaptor3d_Surface
+RstRef1: Adaptor2d_Curve2d
+SurfRef2: Adaptor3d_Surface
+RstRef2: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & SurfRef1, const opencascade::handle<Adaptor2d_HCurve2d> & RstRef1, const opencascade::handle<Adaptor3d_HSurface> & SurfRef2, const opencascade::handle<Adaptor2d_HCurve2d> & RstRef2);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & SurfRef1, const opencascade::handle<Adaptor2d_Curve2d> & RstRef1, const opencascade::handle<Adaptor3d_Surface> & SurfRef2, const opencascade::handle<Adaptor2d_Curve2d> & RstRef2);
 
 		/****************** Set ******************/
 		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
@@ -2857,24 +2857,24 @@ bool
 class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	public:
 		/****************** BRepBlend_RstRstEvolRad ******************/
-		/**** md5 signature: 8606df301777879e7316e5ef9599f728 ****/
+		/**** md5 signature: d79d517ef0e965cc32a0fc12487d3855 ****/
 		%feature("compactdefaultargs") BRepBlend_RstRstEvolRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
-Rst1: Adaptor2d_HCurve2d
-Surf2: Adaptor3d_HSurface
-Rst2: Adaptor2d_HCurve2d
-CGuide: Adaptor3d_HCurve
+Surf1: Adaptor3d_Surface
+Rst1: Adaptor2d_Curve2d
+Surf2: Adaptor3d_Surface
+Rst2: Adaptor2d_Curve2d
+CGuide: Adaptor3d_Curve
 Evol: Law_Function
 
 Returns
 -------
 None
 ") BRepBlend_RstRstEvolRad;
-		 BRepBlend_RstRstEvolRad(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor2d_HCurve2d> & Rst1, const opencascade::handle<Adaptor3d_HSurface> & Surf2, const opencascade::handle<Adaptor2d_HCurve2d> & Rst2, const opencascade::handle<Adaptor3d_HCurve> & CGuide, const opencascade::handle<Law_Function> & Evol);
+		 BRepBlend_RstRstEvolRad(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor2d_Curve2d> & Rst1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor2d_Curve2d> & Rst2, const opencascade::handle<Adaptor3d_Curve> & CGuide, const opencascade::handle<Law_Function> & Evol);
 
 		/****************** CenterCircleRst1Rst2 ******************/
 		/**** md5 signature: 78a3b5ae21381e7c60ec45458e50cd49 ****/
@@ -2949,7 +2949,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: b7112b2680da59932f7cc20412f85fda ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -3038,7 +3038,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -3322,22 +3322,22 @@ bool
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
-		/**** md5 signature: 8feefe3a830da630caff2fb979f4ebff ****/
+		/**** md5 signature: 1d39a94f99a01338cb8afa4a49c68510 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-SurfRef1: Adaptor3d_HSurface
-RstRef1: Adaptor2d_HCurve2d
-SurfRef2: Adaptor3d_HSurface
-RstRef2: Adaptor2d_HCurve2d
+SurfRef1: Adaptor3d_Surface
+RstRef1: Adaptor2d_Curve2d
+SurfRef2: Adaptor3d_Surface
+RstRef2: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & SurfRef1, const opencascade::handle<Adaptor2d_HCurve2d> & RstRef1, const opencascade::handle<Adaptor3d_HSurface> & SurfRef2, const opencascade::handle<Adaptor2d_HCurve2d> & RstRef2);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & SurfRef1, const opencascade::handle<Adaptor2d_Curve2d> & RstRef1, const opencascade::handle<Adaptor3d_Surface> & SurfRef2, const opencascade::handle<Adaptor2d_Curve2d> & RstRef2);
 
 		/****************** Set ******************/
 		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
@@ -3492,24 +3492,24 @@ bool
 class BRepBlend_RstRstLineBuilder {
 	public:
 		/****************** BRepBlend_RstRstLineBuilder ******************/
-		/**** md5 signature: 4298cff32af6f187e303261f177d3486 ****/
+		/**** md5 signature: 0fa89a48d67b7f761c8ed2cee361f92f ****/
 		%feature("compactdefaultargs") BRepBlend_RstRstLineBuilder;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
-Rst1: Adaptor2d_HCurve2d
+Surf1: Adaptor3d_Surface
+Rst1: Adaptor2d_Curve2d
 Domain1: Adaptor3d_TopolTool
-Surf2: Adaptor3d_HSurface
-Rst2: Adaptor2d_HCurve2d
+Surf2: Adaptor3d_Surface
+Rst2: Adaptor2d_Curve2d
 Domain2: Adaptor3d_TopolTool
 
 Returns
 -------
 None
 ") BRepBlend_RstRstLineBuilder;
-		 BRepBlend_RstRstLineBuilder(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor2d_HCurve2d> & Rst1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_HSurface> & Surf2, const opencascade::handle<Adaptor2d_HCurve2d> & Rst2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2);
+		 BRepBlend_RstRstLineBuilder(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor2d_Curve2d> & Rst1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor2d_Curve2d> & Rst2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2);
 
 		/****************** Complete ******************/
 		/**** md5 signature: 826dcd81a620ed85f35c4d4dbd7bd8a7 ****/
@@ -3669,21 +3669,21 @@ Psol: float
 class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 	public:
 		/****************** BRepBlend_SurfCurvConstRadInv ******************/
-		/**** md5 signature: dd8173527764ca4c24a4c7f33ba4d87a ****/
+		/**** md5 signature: 413667a5e3be555bb1567d000f5c37ac ****/
 		%feature("compactdefaultargs") BRepBlend_SurfCurvConstRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
-Cg: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
+Cg: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BRepBlend_SurfCurvConstRadInv;
-		 BRepBlend_SurfCurvConstRadInv(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HCurve> & Cg);
+		 BRepBlend_SurfCurvConstRadInv(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & Cg);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -3777,19 +3777,19 @@ None
 		void Set(const Standard_Real R, const Standard_Integer Choix);
 
 		/****************** Set ******************/
-		/**** md5 signature: 7f8b456aa3e7d8d6579c1f7d3144efc8 ****/
+		/**** md5 signature: 1568bac490950a9b21e695223201919a ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Set the restriction on which a solution has to be found.
 
 Parameters
 ----------
-Rst: Adaptor2d_HCurve2d
+Rst: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor2d_HCurve2d> & Rst);
+		void Set(const opencascade::handle<Adaptor2d_Curve2d> & Rst);
 
 		/****************** Value ******************/
 		/**** md5 signature: 31f6ba581b8fae503400d98976418349 ****/
@@ -3839,22 +3839,22 @@ bool
 class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 	public:
 		/****************** BRepBlend_SurfCurvEvolRadInv ******************/
-		/**** md5 signature: cdd2af0c9686051d434c5a2bc65db59b ****/
+		/**** md5 signature: f4c992f2047ba724a04cb63a1497cb15 ****/
 		%feature("compactdefaultargs") BRepBlend_SurfCurvEvolRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
-Cg: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
+Cg: Adaptor3d_Curve
 Evol: Law_Function
 
 Returns
 -------
 None
 ") BRepBlend_SurfCurvEvolRadInv;
-		 BRepBlend_SurfCurvEvolRadInv(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HCurve> & Cg, const opencascade::handle<Law_Function> & Evol);
+		 BRepBlend_SurfCurvEvolRadInv(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & Cg, const opencascade::handle<Law_Function> & Evol);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -3947,19 +3947,19 @@ None
 		void Set(const Standard_Integer Choix);
 
 		/****************** Set ******************/
-		/**** md5 signature: 7f8b456aa3e7d8d6579c1f7d3144efc8 ****/
+		/**** md5 signature: 1568bac490950a9b21e695223201919a ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Set the restriction on which a solution has to be found.
 
 Parameters
 ----------
-Rst: Adaptor2d_HCurve2d
+Rst: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor2d_HCurve2d> & Rst);
+		void Set(const opencascade::handle<Adaptor2d_Curve2d> & Rst);
 
 		/****************** Value ******************/
 		/**** md5 signature: 31f6ba581b8fae503400d98976418349 ****/
@@ -4009,20 +4009,20 @@ bool
 class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 	public:
 		/****************** BRepBlend_SurfPointConstRadInv ******************/
-		/**** md5 signature: a92478616365f23e2ac95b28299eff0e ****/
+		/**** md5 signature: 993f0d82d4c56cde29f6ef73aee3531d ****/
 		%feature("compactdefaultargs") BRepBlend_SurfPointConstRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BRepBlend_SurfPointConstRadInv;
-		 BRepBlend_SurfPointConstRadInv(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BRepBlend_SurfPointConstRadInv(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -4178,21 +4178,21 @@ bool
 class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 	public:
 		/****************** BRepBlend_SurfPointEvolRadInv ******************/
-		/**** md5 signature: e1a872f2bf36c0f7fa4261ef950f62f3 ****/
+		/**** md5 signature: f3eea577ae1852a9a7135e6772c85ac4 ****/
 		%feature("compactdefaultargs") BRepBlend_SurfPointEvolRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 Evol: Law_Function
 
 Returns
 -------
 None
 ") BRepBlend_SurfPointEvolRadInv;
-		 BRepBlend_SurfPointEvolRadInv(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Law_Function> & Evol);
+		 BRepBlend_SurfPointEvolRadInv(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Law_Function> & Evol);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -4347,22 +4347,22 @@ bool
 class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	public:
 		/****************** BRepBlend_SurfRstConstRad ******************/
-		/**** md5 signature: 43cb2559b69d5e498ec597fa336346ec ****/
+		/**** md5 signature: 61178a969de9578c5b02b8a945a3f459 ****/
 		%feature("compactdefaultargs") BRepBlend_SurfRstConstRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
-SurfRst: Adaptor3d_HSurface
-Rst: Adaptor2d_HCurve2d
-CGuide: Adaptor3d_HCurve
+Surf: Adaptor3d_Surface
+SurfRst: Adaptor3d_Surface
+Rst: Adaptor2d_Curve2d
+CGuide: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BRepBlend_SurfRstConstRad;
-		 BRepBlend_SurfRstConstRad(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_HSurface> & SurfRst, const opencascade::handle<Adaptor2d_HCurve2d> & Rst, const opencascade::handle<Adaptor3d_HCurve> & CGuide);
+		 BRepBlend_SurfRstConstRad(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_Surface> & SurfRst, const opencascade::handle<Adaptor2d_Curve2d> & Rst, const opencascade::handle<Adaptor3d_Curve> & CGuide);
 
 		/****************** Decroch ******************/
 		/**** md5 signature: 7b97fab9290fe599257ab8ce84870242 ****/
@@ -4416,7 +4416,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: b7112b2680da59932f7cc20412f85fda ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -4505,7 +4505,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -4779,20 +4779,20 @@ None
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Set ******************/
-		/**** md5 signature: 45827773e540a48ed043070ebdcad334 ****/
+		/**** md5 signature: 51edc1a46f9014e3188bd66241af17c6 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-SurfRef: Adaptor3d_HSurface
-RstRef: Adaptor2d_HCurve2d
+SurfRef: Adaptor3d_Surface
+RstRef: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & SurfRef, const opencascade::handle<Adaptor2d_HCurve2d> & RstRef);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & SurfRef, const opencascade::handle<Adaptor2d_Curve2d> & RstRef);
 
 		/****************** Set ******************/
 		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
@@ -4948,23 +4948,23 @@ bool
 class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	public:
 		/****************** BRepBlend_SurfRstEvolRad ******************/
-		/**** md5 signature: a900f3bd8b402a53ff306bb2d36fda91 ****/
+		/**** md5 signature: 06cb46291f703c140349a3b88ec0c690 ****/
 		%feature("compactdefaultargs") BRepBlend_SurfRstEvolRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
-SurfRst: Adaptor3d_HSurface
-Rst: Adaptor2d_HCurve2d
-CGuide: Adaptor3d_HCurve
+Surf: Adaptor3d_Surface
+SurfRst: Adaptor3d_Surface
+Rst: Adaptor2d_Curve2d
+CGuide: Adaptor3d_Curve
 Evol: Law_Function
 
 Returns
 -------
 None
 ") BRepBlend_SurfRstEvolRad;
-		 BRepBlend_SurfRstEvolRad(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_HSurface> & SurfRst, const opencascade::handle<Adaptor2d_HCurve2d> & Rst, const opencascade::handle<Adaptor3d_HCurve> & CGuide, const opencascade::handle<Law_Function> & Evol);
+		 BRepBlend_SurfRstEvolRad(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_Surface> & SurfRst, const opencascade::handle<Adaptor2d_Curve2d> & Rst, const opencascade::handle<Adaptor3d_Curve> & CGuide, const opencascade::handle<Law_Function> & Evol);
 
 		/****************** Decroch ******************/
 		/**** md5 signature: 7b97fab9290fe599257ab8ce84870242 ****/
@@ -5018,7 +5018,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: b7112b2680da59932f7cc20412f85fda ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -5107,7 +5107,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -5381,20 +5381,20 @@ None
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Set ******************/
-		/**** md5 signature: 45827773e540a48ed043070ebdcad334 ****/
+		/**** md5 signature: 51edc1a46f9014e3188bd66241af17c6 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-SurfRef: Adaptor3d_HSurface
-RstRef: Adaptor2d_HCurve2d
+SurfRef: Adaptor3d_Surface
+RstRef: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & SurfRef, const opencascade::handle<Adaptor2d_HCurve2d> & RstRef);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & SurfRef, const opencascade::handle<Adaptor2d_Curve2d> & RstRef);
 
 		/****************** Set ******************/
 		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
@@ -5549,23 +5549,23 @@ bool
 class BRepBlend_SurfRstLineBuilder {
 	public:
 		/****************** BRepBlend_SurfRstLineBuilder ******************/
-		/**** md5 signature: 98ef58092f384b62e54eded9c9002be2 ****/
+		/**** md5 signature: d6a0ad1ce9ef95abcda88a808971a42f ****/
 		%feature("compactdefaultargs") BRepBlend_SurfRstLineBuilder;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
+Surf1: Adaptor3d_Surface
 Domain1: Adaptor3d_TopolTool
-Surf2: Adaptor3d_HSurface
-Rst: Adaptor2d_HCurve2d
+Surf2: Adaptor3d_Surface
+Rst: Adaptor2d_Curve2d
 Domain2: Adaptor3d_TopolTool
 
 Returns
 -------
 None
 ") BRepBlend_SurfRstLineBuilder;
-		 BRepBlend_SurfRstLineBuilder(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_HSurface> & Surf2, const opencascade::handle<Adaptor2d_HCurve2d> & Rst, const opencascade::handle<Adaptor3d_TopolTool> & Domain2);
+		 BRepBlend_SurfRstLineBuilder(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor2d_Curve2d> & Rst, const opencascade::handle<Adaptor3d_TopolTool> & Domain2);
 
 		/****************** ArcToRecadre ******************/
 		/**** md5 signature: f9d5cffa9a03b0a3c58f32741f4a8c9a ****/
@@ -5717,23 +5717,23 @@ Psol: float
 class BRepBlend_Walking {
 	public:
 		/****************** BRepBlend_Walking ******************/
-		/**** md5 signature: 248726a17ab5bcfae0913cbe25564d9d ****/
+		/**** md5 signature: 3e60e6b4956db8469ccd4414f4eddcf1 ****/
 		%feature("compactdefaultargs") BRepBlend_Walking;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
-Surf2: Adaptor3d_HSurface
+Surf1: Adaptor3d_Surface
+Surf2: Adaptor3d_Surface
 Domain1: Adaptor3d_TopolTool
 Domain2: Adaptor3d_TopolTool
-HGuide: ChFiDS_HElSpine
+HGuide: ChFiDS_ElSpine
 
 Returns
 -------
 None
 ") BRepBlend_Walking;
-		 BRepBlend_Walking(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor3d_HSurface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const opencascade::handle<ChFiDS_HElSpine> & HGuide);
+		 BRepBlend_Walking(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const opencascade::handle<ChFiDS_ElSpine> & HGuide);
 
 		/****************** AddSingularPoint ******************/
 		/**** md5 signature: 0ea0295b6724aa8af8ca3b784b4bc60a ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IGESDATADOCSTRING
 "IGESData module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igesdata.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igesdata.html"
 %enddef
 %module (package="OCC.Core", docstring=IGESDATADOCSTRING) IGESData
 
@@ -102,7 +102,7 @@ enum IGESData_DefType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IGESData_ReadStage(IntEnum):
@@ -1018,7 +1018,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: 18118032f60e0e9839e44d4d6cfb5e08 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Fills dirpart with consistant data read from file.
+		%feature("autodoc", "Fills dirpart with consistent data read from file.
 
 Parameters
 ----------
@@ -1473,7 +1473,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 693db3fdb3fbb08ef1ebc7b22a97916a ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondance.
+		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
 
 Parameters
 ----------
@@ -1549,7 +1549,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: e3394d10b010b643c32b976b7056d700 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondance.
+		%feature("autodoc", "Adds a module bound with a protocol to the list: does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required). once added, stores its attached protocol in correspondence.
 
 Parameters
 ----------
@@ -1644,6 +1644,17 @@ opencascade::handle<TCollection_HAsciiString>
 ") AuthorName;
 		opencascade::handle<TCollection_HAsciiString> AuthorName();
 
+		/****************** CascadeUnit ******************/
+		/**** md5 signature: 0a04d480977f0e8fef0df000d9bf1748 ****/
+		%feature("compactdefaultargs") CascadeUnit;
+		%feature("autodoc", "Returns the system length unit.
+
+Returns
+-------
+float
+") CascadeUnit;
+		Standard_Real CascadeUnit();
+
 		/****************** CompanyName ******************/
 		/**** md5 signature: 0ddc26b82ac89e543b514f876f02f512 ****/
 		%feature("compactdefaultargs") CompanyName;
@@ -1658,7 +1669,7 @@ opencascade::handle<TCollection_HAsciiString>
 		/****************** CopyRefs ******************/
 		/**** md5 signature: 5d079cafa039a9db79df1b570ffb5a05 ****/
 		%feature("compactdefaultargs") CopyRefs;
-		%feature("autodoc", "Copies data referenced by handle (that is, strings) usefull to 'isolate' a globalsection after copy by '=' (from a model to another model for instance).
+		%feature("autodoc", "Copies data referenced by handle (that is, strings) useful to 'isolate' a globalsection after copy by '=' (from a model to another model for instance).
 
 Returns
 -------
@@ -2046,6 +2057,21 @@ None
 ") SetAuthorName;
 		void SetAuthorName(const opencascade::handle<TCollection_HAsciiString> & val);
 
+		/****************** SetCascadeUnit ******************/
+		/**** md5 signature: 9681d8ff7bf315f004a2dba0dc32aacc ****/
+		%feature("compactdefaultargs") SetCascadeUnit;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theUnit: float
+
+Returns
+-------
+None
+") SetCascadeUnit;
+		void SetCascadeUnit(const Standard_Real theUnit);
+
 		/****************** SetCompanyName ******************/
 		/**** md5 signature: 5dc4f10cc8e8c06b69f5aa1316e288f8 ****/
 		%feature("compactdefaultargs") SetCompanyName;
@@ -2432,7 +2458,7 @@ opencascade::handle<TCollection_HAsciiString>
 		/****************** TranslatedFromHollerith ******************/
 		/**** md5 signature: da665df528b6e6e78a48f28441714df9 ****/
 		%feature("compactdefaultargs") TranslatedFromHollerith;
-		%feature("autodoc", "Returns a string withpout its hollerith marks (nnnh ahead). remark : all strings stored in globalsection are expurged from hollerith informations (without nnnh) if <astr> is not hollerith form, it is simply copied.
+		%feature("autodoc", "Returns a string withpout its hollerith marks (nnnh ahead). remark : all strings stored in globalsection are expurged from hollerith information (without nnnh) if <astr> is not hollerith form, it is simply copied.
 
 Parameters
 ----------
@@ -2494,7 +2520,7 @@ class IGESData_IGESDumper {
 		/****************** IGESData_IGESDumper ******************/
 		/**** md5 signature: 4b47b03aa29239a6a9260ae416b48e6c ****/
 		%feature("compactdefaultargs") IGESData_IGESDumper;
-		%feature("autodoc", "Returns an igesdumper ready to work. the igesmodel provides the numbering of entities : as for any interfacemodel, it gives each entity a number; but for igesentities, the 'number of directory entry' according to the definition of iges files, is also usefull.
+		%feature("autodoc", "Returns an igesdumper ready to work. the igesmodel provides the numbering of entities: as for any interfacemodel, it gives each entity a number; but for igesentities, the 'number of directory entry' according to the definition of iges files, is also useful.
 
 Parameters
 ----------
@@ -3396,6 +3422,17 @@ bool
 ") ApplyStatic;
 		Standard_Boolean ApplyStatic(const char * param = "");
 
+		/****************** ChangeGlobalSection ******************/
+		/**** md5 signature: 040968795059a2599255a0b8e187d384 ****/
+		%feature("compactdefaultargs") ChangeGlobalSection;
+		%feature("autodoc", "Returns the global section of the iges file.
+
+Returns
+-------
+IGESData_GlobalSection
+") ChangeGlobalSection;
+		IGESData_GlobalSection & ChangeGlobalSection();
+
 		/****************** ClearHeader ******************/
 		/**** md5 signature: e0fe665687ba246130521f416ab14715 ****/
 		%feature("compactdefaultargs") ClearHeader;
@@ -3475,7 +3512,7 @@ None
 		void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
 		/****************** GlobalSection ******************/
-		/**** md5 signature: 9251755b31e2dbc4bc4c014b68758586 ****/
+		/**** md5 signature: 2d5bb9cb8fa84f49edbd79893e642aa1 ****/
 		%feature("compactdefaultargs") GlobalSection;
 		%feature("autodoc", "Returns the global section of the iges file.
 
@@ -3995,7 +4032,7 @@ None
 		/****************** ReadDir ******************/
 		/**** md5 signature: bf7e78cb043b431597579fee160e3250 ****/
 		%feature("compactdefaultargs") ReadDir;
-		%feature("autodoc", "Reads directory part componants from file; dp is the litteral directory part, ir detains entities referenced by dp.
+		%feature("autodoc", "Reads directory part components from file; dp is the literal directory part, ir detains entities referenced by dp.
 
 Parameters
 ----------
@@ -4131,7 +4168,7 @@ bool
 		/****************** Nullify ******************/
 		/**** md5 signature: 1915d5159e87738b7b9af9d5accf4c6e ****/
 		%feature("compactdefaultargs") Nullify;
-		%feature("autodoc", "Resets fields (usefull when an igestype is stored as mask).
+		%feature("autodoc", "Resets fields (useful when an igestype is stored as mask).
 
 Returns
 -------
@@ -4237,7 +4274,7 @@ None
 		/****************** DirPart ******************/
 		/**** md5 signature: a58406ae76e01f3bbf334f828411f5eb ****/
 		%feature("compactdefaultargs") DirPart;
-		%feature("autodoc", "Translates directory part of an entity into a litteral dirpart some infos are computed after sending parameters error if not in sections dp or stage not 'dir'.
+		%feature("autodoc", "Translates directory part of an entity into a literal dirpart some infos are computed after sending parameters error if not in sections dp or stage not 'dir'.
 
 Parameters
 ----------
@@ -4405,7 +4442,7 @@ None
 		/****************** SendStartLine ******************/
 		/**** md5 signature: a0b8d0b392e66a48753ee0b5a05b64b1 ****/
 		%feature("compactdefaultargs") SendStartLine;
-		%feature("autodoc", "Sends an additionnal starting line : this is the way used to send comments in an iges file (at beginning of the file). if the line is more than 72 char.s long, it is splited into as many lines as required to send it completely.
+		%feature("autodoc", "Sends an additional starting line : this is the way used to send comments in an iges file (at beginning of the file). if the line is more than 72 char.s long, it is splited into as many lines as required to send it completely.
 
 Parameters
 ----------
@@ -4746,7 +4783,7 @@ None
 		/****************** SetTerm ******************/
 		/**** md5 signature: 5451e0f8db70fd6b34e9cabd793d48a1 ****/
 		%feature("compactdefaultargs") SetTerm;
-		%feature("autodoc", "Defines the size of a term to read in the item : this commands paramreader to read 'size' parameters for each item, then skip the remainder of the item to the same term of next item (that is, skip 'item size' - 'term size') //! in addition, offset from beginning of item is managed : after being created, and for the frist call to setterm, the part of item to be read begins exactly as the item begins but after a setterm, the next read will add an offset which is the size of former term. //! autoadv commands advance management. if it is true (default), the last setterm (item size has been covered) calls setadvance if it is false, setadvance must be called directly if necessary //! error if a setterm overpasses the size of the item.
+		%feature("autodoc", "Defines the size of a term to read in the item : this commands paramreader to read 'size' parameters for each item, then skip the remainder of the item to the same term of next item (that is, skip 'item size' - 'term size') //! in addition, offset from beginning of item is managed : after being created, and for the first call to setterm, the part of item to be read begins exactly as the item begins but after a setterm, the next read will add an offset which is the size of former term. //! autoadv commands advance management. if it is true (default), the last setterm (item size has been covered) calls setadvance if it is false, setadvance must be called directly if necessary //! error if a setterm overpasses the size of the item.
 
 Parameters
 ----------
@@ -4980,7 +5017,7 @@ IGESData_ParamCursor
 		/****************** CurrentNumber ******************/
 		/**** md5 signature: cad50b6737e024bb37d77c60a68e5874 ****/
 		%feature("compactdefaultargs") CurrentNumber;
-		%feature("autodoc", "Returns the current parameter number this notion is involved by the organisation of an iges list of parameter : it can be ended by two lists (associativities and properties), which can be empty, or even absent. hence, it is necessary to know, at the end of specific reading, how many parameters have been read : the optionnal lists follow.
+		%feature("autodoc", "Returns the current parameter number this notion is involved by the organisation of an iges list of parameter : it can be ended by two lists (associativities and properties), which can be empty, or even absent. hence, it is necessary to know, at the end of specific reading, how many parameters have been read : the optional lists follow.
 
 Returns
 -------
@@ -5160,7 +5197,7 @@ Interface_ParamType
 		/****************** ParamValue ******************/
 		/**** md5 signature: 5d590bd3843093ee8ddc8ca8dac44112 ****/
 		%feature("compactdefaultargs") ParamValue;
-		%feature("autodoc", "Returns litteral value of a parameter, as it was in file.
+		%feature("autodoc", "Returns literal value of a parameter, as it was in file.
 
 Parameters
 ----------
@@ -5231,7 +5268,7 @@ bool
 		/****************** ReadEntList ******************/
 		/**** md5 signature: 0d9be3239233313112722bdff358270b ****/
 		%feature("compactdefaultargs") ReadEntList;
-		%feature("autodoc", "Reads a list of entities defined by pc same conditions as for readents, for pc the list is given as an entitylist (index has no meaning; the entitylist starts from clear) if 'ord' is given true (default), entities will be added to the list in their original order remark : negative or null pointers are ignored else ('ord' false), order is not garanteed (faster mode) if all params cannot be read as entities, same as above warning give 'ord' to false only if order is not significant.
+		%feature("autodoc", "Reads a list of entities defined by pc same conditions as for readents, for pc the list is given as an entitylist (index has no meaning; the entitylist starts from clear) if 'ord' is given true (default), entities will be added to the list in their original order remark : negative or null pointers are ignored else ('ord' false), order is not guaranteed (faster mode) if all params cannot be read as entities, same as above warning give 'ord' to false only if order is not significant.
 
 Parameters
 ----------
@@ -6157,7 +6194,7 @@ bool
 		/****************** ConvertLocation ******************/
 		/**** md5 signature: d88a9351c35f05028c597b1f49d4a449 ****/
 		%feature("compactdefaultargs") ConvertLocation;
-		%feature("autodoc", "Convertion of a location, from gtrsf form to trsf form works with a precision given as argument. returns true if the conversion is possible, (hence, <result> contains the converted location), false else <unit>, if given, indicates the unit in which <loc> is defined in meters. it concerns the translation part (to be converted. //! as a class method, it can be called separately.
+		%feature("autodoc", "Conversion of a location, from gtrsf form to trsf form works with a precision given as argument. returns true if the conversion is possible, (hence, <result> contains the converted location), false else <unit>, if given, indicates the unit in which <loc> is defined in meters. it concerns the translation part (to be converted. //! as a class method, it can be called separately.
 
 Parameters
 ----------
@@ -6337,7 +6374,7 @@ gp_GTrsf
 		/****************** ResetDependences ******************/
 		/**** md5 signature: 774125d1ea13a5a21a07551198018ad4 ****/
 		%feature("compactdefaultargs") ResetDependences;
-		%feature("autodoc", "Resets all informations about dependences for <child>.
+		%feature("autodoc", "Resets all information about dependences for <child>.
 
 Parameters
 ----------
@@ -7362,7 +7399,7 @@ None
 		/****************** ClearNegativePointers ******************/
 		/**** md5 signature: dd3ad83abfc38f29bcf0cbb8425c8532 ****/
 		%feature("compactdefaultargs") ClearNegativePointers;
-		%feature("autodoc", "Clears all informations about negative pointers, hence every entity kind parameter will be send normally, as positive.
+		%feature("autodoc", "Clears all information about negative pointers, hence every entity kind parameter will be sent normally, as positive.
 
 Returns
 -------
@@ -7473,7 +7510,7 @@ Interface_ParamType
 		/****************** ParamValue ******************/
 		/**** md5 signature: 27f0f605c60e921cd93c878a3119e98b ****/
 		%feature("compactdefaultargs") ParamValue;
-		%feature("autodoc", "Returns litteral value of a parameter, given its rank error if num is out of range, or if parameter is not literal.
+		%feature("autodoc", "Returns literal value of a parameter, given its rank error if num is out of range, or if parameter is not literal.
 
 Parameters
 ----------

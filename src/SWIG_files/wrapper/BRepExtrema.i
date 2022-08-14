@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPEXTREMADOCSTRING
 "BRepExtrema module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepextrema.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepextrema.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPEXTREMADOCSTRING) BRepExtrema
 
@@ -44,6 +44,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepextrema.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Extrema_module.hxx>
+#include<Message_module.hxx>
 #include<gp_module.hxx>
 #include<Bnd_module.hxx>
 #include<BVH_module.hxx>
@@ -63,6 +64,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepextrema.html"
 %import NCollection.i
 %import TopoDS.i
 %import Extrema.i
+%import Message.i
 %import gp.i
 %import Bnd.i
 %import BVH.i
@@ -81,7 +83,7 @@ enum BRepExtrema_SupportType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BRepExtrema_SupportType(IntEnum):
@@ -137,7 +139,7 @@ class BRepExtrema_DistShapeShape {
 		/****************** BRepExtrema_DistShapeShape ******************/
 		/**** md5 signature: 7db35b07b02f16eafa8b496ba9a55793 ****/
 		%feature("compactdefaultargs") BRepExtrema_DistShapeShape;
-		%feature("autodoc", "Create empty tool .
+		%feature("autodoc", "Create empty tool.
 
 Returns
 -------
@@ -146,9 +148,9 @@ None
 		 BRepExtrema_DistShapeShape();
 
 		/****************** BRepExtrema_DistShapeShape ******************/
-		/**** md5 signature: 077a447023b0bc9e038ed147df6b3dd8 ****/
+		/**** md5 signature: fb63ccf57bfd5b8006463aca52b50b43 ****/
 		%feature("compactdefaultargs") BRepExtrema_DistShapeShape;
-		%feature("autodoc", "Computation of the minimum distance (value and pair of points) using default deflection default value is precision::confusion(). .
+		%feature("autodoc", "Create tool and computation of the minimum distance (value and pair of points) using default deflection in single thread mode. default deflection value is precision::confusion(). @param shape1 - the first shape for distance computation @param shape2 - the second shape for distance computation @param f and @param a are not used in computation and are obsolete. @param therange - the progress indicator of algorithm.
 
 Parameters
 ----------
@@ -158,17 +160,19 @@ F: Extrema_ExtFlag,optional
 	default value is Extrema_ExtFlag_MINMAX
 A: Extrema_ExtAlgo,optional
 	default value is Extrema_ExtAlgo_Grad
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepExtrema_DistShapeShape;
-		 BRepExtrema_DistShapeShape(const TopoDS_Shape & Shape1, const TopoDS_Shape & Shape2, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 BRepExtrema_DistShapeShape(const TopoDS_Shape & Shape1, const TopoDS_Shape & Shape2, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** BRepExtrema_DistShapeShape ******************/
-		/**** md5 signature: 4e55c9dd50c0ab7ef0e4ed04d008da6a ****/
+		/**** md5 signature: 23775d8af1aa9dd27bd9eeda417a5eb6 ****/
 		%feature("compactdefaultargs") BRepExtrema_DistShapeShape;
-		%feature("autodoc", "Create tool and load both shapes into it .
+		%feature("autodoc", "Create tool and computation of the minimum distance (value and pair of points) in single thread mode. default deflection value is precision::confusion(). @param shape1 - the first shape for distance computation @param shape2 - the second shape for distance computation @param thedeflection - the presition of distance computation @param f and @param a are not used in computation and are obsolete. @param therange - the progress indicator of algorithm.
 
 Parameters
 ----------
@@ -179,12 +183,14 @@ F: Extrema_ExtFlag,optional
 	default value is Extrema_ExtFlag_MINMAX
 A: Extrema_ExtAlgo,optional
 	default value is Extrema_ExtAlgo_Grad
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepExtrema_DistShapeShape;
-		 BRepExtrema_DistShapeShape(const TopoDS_Shape & Shape1, const TopoDS_Shape & Shape2, const Standard_Real theDeflection, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 BRepExtrema_DistShapeShape(const TopoDS_Shape & Shape1, const TopoDS_Shape & Shape2, const Standard_Real theDeflection, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 
         %feature("autodoc", "1");
@@ -215,6 +221,17 @@ Returns
 bool
 ") IsDone;
 		Standard_Boolean IsDone();
+
+		/****************** IsMultiThread ******************/
+		/**** md5 signature: 08be58fd82e87eae912617f53af96d42 ****/
+		%feature("compactdefaultargs") IsMultiThread;
+		%feature("autodoc", "Returns standard_true then computation will be performed in parallel default value is standard_false.
+
+Returns
+-------
+bool
+") IsMultiThread;
+		Standard_Boolean IsMultiThread();
 
 		/****************** LoadS1 ******************/
 		/**** md5 signature: 7408ca5426be01fa3948ad765f9b1d2b ****/
@@ -260,7 +277,7 @@ int
 		/****************** ParOnEdgeS1 ******************/
 		/**** md5 signature: afb7f68aca62bff04cd6998990b30f1f ****/
 		%feature("compactdefaultargs") ParOnEdgeS1;
-		%feature("autodoc", "Gives the corresponding parameter t if the nth solution is situated on an egde of the first shape .
+		%feature("autodoc", "Gives the corresponding parameter t if the nth solution is situated on an edge of the first shape .
 
 Parameters
 ----------
@@ -275,7 +292,7 @@ t: float
 		/****************** ParOnEdgeS2 ******************/
 		/**** md5 signature: 4d4566624bf7e1ee75387e3cf5ccea3f ****/
 		%feature("compactdefaultargs") ParOnEdgeS2;
-		%feature("autodoc", "Gives the corresponding parameter t if the nth solution is situated on an egde of the first shape .
+		%feature("autodoc", "Gives the corresponding parameter t if the nth solution is situated on an edge of the first shape .
 
 Parameters
 ----------
@@ -320,15 +337,20 @@ v: float
 		void ParOnFaceS2(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Perform ******************/
-		/**** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ****/
+		/**** md5 signature: 5319bf8ef7123f90bd8ce53457a93026 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Computation of the minimum distance (value and  couple of points). parameter thedeflection is used  to specify a maximum deviation of extreme distances  from the minimum one.  returns isdone status. .
+		%feature("autodoc", "Computation of the minimum distance (value and  couple of points). parameter thedeflection is used  to specify a maximum deviation of extreme distances  from the minimum one.  returns isdone status. therange - the progress indicator of algorithm.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform();
+		Standard_Boolean Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** PointOnShape1 ******************/
 		/**** md5 signature: aa31e70d94110b0eb2d311dc4396c549 ****/
@@ -363,7 +385,7 @@ gp_Pnt
 		/****************** SetAlgo ******************/
 		/**** md5 signature: cad6f54c64a4b69da22bb042d2e4fe8a ****/
 		%feature("compactdefaultargs") SetAlgo;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets unused parameter obsolete .
 
 Parameters
 ----------
@@ -378,7 +400,7 @@ None
 		/****************** SetDeflection ******************/
 		/**** md5 signature: ef17e8202a75f8963ebbbf02897eb710 ****/
 		%feature("compactdefaultargs") SetDeflection;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets deflection to computation of the minimum distance .
 
 Parameters
 ----------
@@ -393,7 +415,7 @@ None
 		/****************** SetFlag ******************/
 		/**** md5 signature: 7ce767aa4373b85a8cea83f409a2ebfb ****/
 		%feature("compactdefaultargs") SetFlag;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets unused parameter obsolete .
 
 Parameters
 ----------
@@ -404,6 +426,21 @@ Returns
 None
 ") SetFlag;
 		void SetFlag(const Extrema_ExtFlag F);
+
+		/****************** SetMultiThread ******************/
+		/**** md5 signature: 3237c51f1bfac929cf9e320d71541b3b ****/
+		%feature("compactdefaultargs") SetMultiThread;
+		%feature("autodoc", "If ismultithread == standard_true then computation will be performed in parallel.
+
+Parameters
+----------
+theIsMultiThread: bool
+
+Returns
+-------
+None
+") SetMultiThread;
+		void SetMultiThread(Standard_Boolean theIsMultiThread);
 
 		/****************** SupportOnShape1 ******************/
 		/**** md5 signature: ec03df7c72ee60180aae731839ed29e5 ****/
@@ -634,7 +671,7 @@ enum FilterResult {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class FilterResult(IntEnum):
@@ -2163,7 +2200,7 @@ class BRepExtrema_SelfIntersection : public BRepExtrema_ElementFilter {
 		/****************** BRepExtrema_SelfIntersection ******************/
 		/**** md5 signature: 784f69b5e04a39d4d2d873ee9d2c141b ****/
 		%feature("compactdefaultargs") BRepExtrema_SelfIntersection;
-		%feature("autodoc", "Creates unitialized self-intersection tool.
+		%feature("autodoc", "Creates uninitialized self-intersection tool.
 
 Parameters
 ----------

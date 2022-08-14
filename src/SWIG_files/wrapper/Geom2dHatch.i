@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DHATCHDOCSTRING
 "Geom2dHatch module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dhatch.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dhatch.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DHATCHDOCSTRING) Geom2dHatch
 
@@ -81,7 +81,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -1635,7 +1635,7 @@ float
 		/****************** Intersect ******************/
 		/**** md5 signature: ed6de426a99bea19436b81b6be37110e ****/
 		%feature("compactdefaultargs") Intersect;
-		%feature("autodoc", "Intersects the curves c1 and c2. the results are retreived by the usual methods described in intres2d_intersection. creates an intersector.
+		%feature("autodoc", "Intersects the curves c1 and c2. the results are retrieved by the usual methods described in intres2d_intersection. creates an intersector.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTERFACEDOCSTRING
 "Interface module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_interface.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_interface.html"
 %enddef
 %module (package="OCC.Core", docstring=INTERFACEDOCSTRING) Interface
 
@@ -100,7 +100,7 @@ enum Interface_CheckStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Interface_ParamType(IntEnum):
@@ -1057,7 +1057,7 @@ char *
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears a check, in order to receive informations from transfer (messages and entity).
+		%feature("autodoc", "Clears a check, in order to receive information from transfer (messages and entity).
 
 Returns
 -------
@@ -1836,7 +1836,7 @@ Interface_CheckStatus
 		/****************** Value ******************/
 		/**** md5 signature: f4d2f44a410b3e3cf64e685769098635 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns check currently iterated it brings all other informations (status, messages, ...) the number of the entity in the model is given by number below.
+		%feature("autodoc", "Returns check currently iterated it brings all other information (status, messages, ...) the number of the entity in the model is given by number below.
 
 Returns
 -------
@@ -1922,7 +1922,7 @@ None
 		/****************** AnalyseCheckList ******************/
 		/**** md5 signature: b1a8bd4983e0bb079b0cb8d99027dfab ****/
 		%feature("compactdefaultargs") AnalyseCheckList;
-		%feature("autodoc", "Returns list of errors dectected at analyse time (syntactic) (note that globalcheck is not in this list).
+		%feature("autodoc", "Returns list of errors detected at analyse time (syntactic) (note that globalcheck is not in this list).
 
 Returns
 -------
@@ -1959,7 +1959,7 @@ Interface_CheckIterator
 		/****************** CheckSuccess ******************/
 		/**** md5 signature: 831d2a1e101dcafb9604bb86498b17d9 ****/
 		%feature("compactdefaultargs") CheckSuccess;
-		%feature("autodoc", "Checks if any error has been detected (checklist not empty) returns normally if none, raises exception if some exists. it reuses the last computations from other checking methods, unless the argument <resest> is given true.
+		%feature("autodoc", "Checks if any error has been detected (checklist not empty) returns normally if none, raises exception if some exists. it reuses the last computations from other checking methods, unless the argument <reset> is given true.
 
 Parameters
 ----------
@@ -1975,7 +1975,7 @@ None
 		/****************** CompleteCheckList ******************/
 		/**** md5 signature: dd892cfac1922aa0f3c0767a3cb97241 ****/
 		%feature("compactdefaultargs") CompleteCheckList;
-		%feature("autodoc", "Returns list of all 'remarkable' informations, which include : - globalcheck, if not empty - error checks, for all errors (verify + analyse) - also corrected entities - and unknown entities : for those, each unknown entity is associated to an empty check (it is neither an error nor a correction, but a remarkable information).
+		%feature("autodoc", "Returns list of all 'remarkable' information, which include : - globalcheck, if not empty - error checks, for all errors (verify + analyse) - also corrected entities - and unknown entities : for those, each unknown entity is associated to an empty check (it is neither an error nor a correction, but a remarkable information).
 
 Returns
 -------
@@ -2768,7 +2768,7 @@ class Interface_EntityList {
 		/****************** Interface_EntityList ******************/
 		/**** md5 signature: 627b17e512379a9e8b95fe4155041e80 ****/
 		%feature("compactdefaultargs") Interface_EntityList;
-		%feature("autodoc", "Creates a list as beeing empty.
+		%feature("autodoc", "Creates a list as being empty.
 
 Returns
 -------
@@ -3361,7 +3361,7 @@ opencascade::handle<Standard_Transient>
 		/****************** ParamFirstRank ******************/
 		/**** md5 signature: cf6bb15954cc88ad7b3d34301ce9dd64 ****/
 		%feature("compactdefaultargs") ParamFirstRank;
-		%feature("autodoc", "Returns the absolute rank of the beginning of a record (its lsit is from paramfirstrank+1 to paramfirstrank+nbparams).
+		%feature("autodoc", "Returns the absolute rank of the beginning of a record (its list is from paramfirstrank+1 to paramfirstrank+nbparams).
 
 Parameters
 ----------
@@ -3515,7 +3515,7 @@ None
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clear filelds.
+		%feature("autodoc", "Clear fields.
 
 Returns
 -------
@@ -3812,7 +3812,7 @@ None
 		/****************** Convert ******************/
 		/**** md5 signature: b67fef250ce64c3c0c648b18db37f72c ****/
 		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "This class method converts a real value to a string, given options given as arguments. it can be called independantly. warning : even if declared in, content of <text> will be modified.
+		%feature("autodoc", "This class method converts a real value to a string, given options given as arguments. it can be called independently. warning : even if declared in, content of <text> will be modified.
 
 Parameters
 ----------
@@ -3922,7 +3922,7 @@ None
 		/****************** SetZeroSuppress ******************/
 		/**** md5 signature: 37a02e3338eee7e275b19584090a7212 ****/
 		%feature("compactdefaultargs") SetZeroSuppress;
-		%feature("autodoc", "Sets sending real parameters to suppress trailing zeros and null exponant ('e+00'), if <mode> is given true, resets this mode if <mode> is false (in addition to real forms) a call to setrealfrom resets this mode to false ig <reset> is given true (default from creation is true).
+		%feature("autodoc", "Sets sending real parameters to suppress trailing zeros and null exponent ('e+00'), if <mode> is given true, resets this mode if <mode> is false (in addition to real forms) a call to setrealfrom resets this mode to false ig <reset> is given true (default from creation is true).
 
 Parameters
 ----------
@@ -4556,7 +4556,7 @@ None
 		/****************** WhenDeleteCase ******************/
 		/**** md5 signature: 6b78c36a5656a6d73b50c68135a2b6d4 ****/
 		%feature("compactdefaultargs") WhenDeleteCase;
-		%feature("autodoc", "Prepares an entity to be deleted. what does it mean : basically, any class of entity may define its own destructor by default, it does nothing but calling destructors on fields with the memory manager, it is useless to call destructor, it is done automatically when the handle is nullified(cleared) but this is ineffective in looping structures (whatever these are 'implied' references or not). //! thus : if no loop may appear in definitions, a class which inherits from tshared is correctly managed by automatic way but if there can be loops (or simply back pointers), they must be broken, for instance by clearing fields of one of the nodes the default does nothing, to be redefined if a loop can occur (implied generally requires whendelete, but other cases can occur) //! warning : <dispatched> tells if the entity to be deleted has been produced by dispatch or not. hence whendelete must be in coherence with dispatch dispatch can either copy or not. if it copies the entity, this one should be deleted if it doesnt (i.e. duplicates the handle) nothing to do //! if <dispatch> is false, normal deletion is to be performed.
+		%feature("autodoc", "Prepares an entity to be deleted. what does it mean : basically, any class of entity may define its own destructor by default, it does nothing but calling destructors on fields with the memory manager, it is useless to call destructor, it is done automatically when the handle is nullified(cleared) but this is ineffective in looping structures (whatever these are 'implied' references or not). //! thus : if no loop may appear in definitions, a class which inherits from tshared is correctly managed by automatic way but if there can be loops (or simply back pointers), they must be broken, for instance by clearing fields of one of the nodes the default does nothing, to be redefined if a loop can occur (implied generally requires whendelete, but other cases can occur) //! warning : <dispatched> tells if the entity to be deleted has been produced by dispatch or not. hence whendelete must be in coherence with dispatch dispatch can either copy or not. if it copies the entity, this one should be deleted if it doesn't (i.e. duplicates the handle) nothing to do //! if <dispatch> is false, normal deletion is to be performed.
 
 Parameters
 ----------
@@ -4600,7 +4600,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 52a71ed7b2dcafa006109d66faa88607 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondance.
+		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
 
 Parameters
 ----------
@@ -4676,7 +4676,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 9c33b501cc7aba278ca4c14a3d8c84e0 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondance.
+		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
 
 Parameters
 ----------
@@ -5085,7 +5085,7 @@ bool
 		/****************** ModeStat ******************/
 		/**** md5 signature: d0863ee0605b2f76e4ecd849fb34078d ****/
 		%feature("compactdefaultargs") ModeStat;
-		%feature("autodoc", "Returns mode resposible for computation of statuses;.
+		%feature("autodoc", "Returns mode responsible for computation of statuses;.
 
 Returns
 -------
@@ -5406,7 +5406,7 @@ Interface_Graph
 		/****************** Graph ******************/
 		/**** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ****/
 		%feature("compactdefaultargs") Graph;
-		%feature("autodoc", "Returns the graph contained in <self>, for read only operations remark that it is returns as 'const &' getting it in a new variable instead of a reference would be a pitty, because all the graph's content would be duplicated.
+		%feature("autodoc", "Returns the graph contained in <self>, for read only operations remark that it is returns as 'const &' getting it in a new variable instead of a reference would be a pity, because all the graph's content would be duplicated.
 
 Returns
 -------
@@ -5548,7 +5548,7 @@ nbrefs: int
 		/****************** IsRedefined ******************/
 		/**** md5 signature: 2634d7efe5f57981ef79cc93aa14462d ****/
 		%feature("compactdefaultargs") IsRedefined;
-		%feature("autodoc", "Returns true if the list for a number (default is taken as current) is 'redefined' (usefull for empty list).
+		%feature("autodoc", "Returns true if the list for a number (default is taken as current) is 'redefined' (useful for empty list).
 
 Parameters
 ----------
@@ -5958,7 +5958,7 @@ None
 		/****************** ClearLabels ******************/
 		/**** md5 signature: 25c392ea756509d2f11c0754fb09a6d0 ****/
 		%feature("compactdefaultargs") ClearLabels;
-		%feature("autodoc", "Erases informations about labels, if any : specific to each norm.
+		%feature("autodoc", "Erases information about labels, if any : specific to each norm.
 
 Returns
 -------
@@ -5969,7 +5969,7 @@ None
 		/****************** ClearReportEntity ******************/
 		/**** md5 signature: caece735d9030fe4491e05e5614741b1 ****/
 		%feature("compactdefaultargs") ClearReportEntity;
-		%feature("autodoc", "Removes the reportentity attached to entity <num>. returns true if done, false if no reportentity was attached to <num>. warning : the caller must assume that this clearing is meaningfull.
+		%feature("autodoc", "Removes the reportentity attached to entity <num>. returns true if done, false if no reportentity was attached to <num>. warning : the caller must assume that this clearing is meaningful.
 
 Parameters
 ----------
@@ -6363,7 +6363,7 @@ opencascade::handle<Interface_ReportEntity>
 		/****************** Reports ******************/
 		/**** md5 signature: 7dcbd1cdc4196a34ee9cc60f3720069c ****/
 		%feature("compactdefaultargs") Reports;
-		%feature("autodoc", "Returns the list of all reportentities, i.e. data about entities read with error or warning informations (each item has to be casted to report entity then it can be queried for concerned entity, content, check ...) by default, returns the main reports, is <semantic> is true it returns the list for sematic checks.
+		%feature("autodoc", "Returns the list of all reportentities, i.e. data about entities read with error or warning information (each item has to be casted to report entity then it can be queried for concerned entity, content, check ...) by default, returns the main reports, is <semantic> is true it returns the list for semantic checks.
 
 Parameters
 ----------
@@ -6471,7 +6471,7 @@ None
 		/****************** SetReportEntity ******************/
 		/**** md5 signature: 47b9d0b16e3a849d4ba4e5137695613e ****/
 		%feature("compactdefaultargs") SetReportEntity;
-		%feature("autodoc", "Sets or replaces a reportentity for the entity <num>. returns true if report is replaced, false if it has been replaced warning : the caller must assume that this setting is meaningfull.
+		%feature("autodoc", "Sets or replaces a reportentity for the entity <num>. returns true if report is replaced, false if it has been replaced warning : the caller must assume that this setting is meaningful.
 
 Parameters
 ----------
@@ -7150,7 +7150,7 @@ None
 		/****************** TDate ******************/
 		/**** md5 signature: e8cc703373ff0bd4920d29504dfa08bf ****/
 		%feature("compactdefaultargs") TDate;
-		%feature("autodoc", "Codes a date as a text, from its numeric value (-> seconds) : yyyy-mm-dd:hh-mn-ss fixed format, completed by leading zeros another format can be provided, as follows : c:%d ... c like format, preceeded by c: s:... format to call system (not yet implemented).
+		%feature("autodoc", "Codes a date as a text, from its numeric value (-> seconds) : yyyy-mm-dd:hh-mn-ss fixed format, completed by leading zeros another format can be provided, as follows : c:%d ... c like format, preceded by c: s:... format to call system (not yet implemented).
 
 Parameters
 ----------
@@ -7409,7 +7409,7 @@ class Interface_ParamList : public Standard_Transient {
 		/****************** Interface_ParamList ******************/
 		/**** md5 signature: fa22f878906433dd2e43f0b2deb4af1c ****/
 		%feature("compactdefaultargs") Interface_ParamList;
-		%feature("autodoc", "Creates an vector with size of memmory blok equal to theincrement.
+		%feature("autodoc", "Creates an vector with size of memory block equal to theincrement.
 
 Parameters
 ----------
@@ -7548,7 +7548,7 @@ None
 		/****************** Append ******************/
 		/**** md5 signature: 6df473310f93a04e1bdad84f4c47b22a ****/
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "Adds a parameter defined as its value (cstring and length) and type. optionnal entitynumber (for filereaderdata) can be given allows a better memory management than appending a complete fileparameter if <lnval> < 0, <val> is assumed to be managed elsewhere : its adress is stored as such. else, <val> is copied in a locally (quickly) managed page of characters returns new count of recorded parameters.
+		%feature("autodoc", "Adds a parameter defined as its value (cstring and length) and type. optional entitynumber (for filereaderdata) can be given allows a better memory management than appending a complete fileparameter if <lnval> < 0, <val> is assumed to be managed elsewhere : its address is stored as such. else, <val> is copied in a locally (quickly) managed page of characters returns new count of recorded parameters.
 
 Parameters
 ----------
@@ -7633,7 +7633,7 @@ Interface_FileParameter
 		/****************** Params ******************/
 		/**** md5 signature: e567d6332f33622017ba4bad2eb07dc3 ****/
 		%feature("compactdefaultargs") Params;
-		%feature("autodoc", "Builds and returns the sub-list correspinding to parameters, from 'num' included, with count 'nb' if <num> and <nb> are zero, returns the whole list.
+		%feature("autodoc", "Builds and returns the sub-list corresponding to parameters, from 'num' included, with count 'nb' if <num> and <nb> are zero, returns the whole list.
 
 Parameters
 ----------
@@ -7719,7 +7719,7 @@ None
 		/****************** GlobalCheck ******************/
 		/**** md5 signature: 47cba6309a9fd154d60abc631f398f9c ****/
 		%feature("compactdefaultargs") GlobalCheck;
-		%feature("autodoc", "Evaluates a global check for a model (with its graph) returns true when done, false if data in model do not apply //! very specific of each norm, i.e. of each protocol : the uppest level protocol assumes it, it can call globalcheck of its ressources only if it is necessary //! default does nothing, can be redefined.
+		%feature("autodoc", "Evaluates a global check for a model (with its graph) returns true when done, false if data in model do not apply //! very specific of each norm, i.e. of each protocol : the uppest level protocol assumes it, it can call globalcheck of its resources only if it is necessary //! default does nothing, can be redefined.
 
 Parameters
 ----------
@@ -8402,7 +8402,7 @@ total: float
 		/****************** NextCycle ******************/
 		/**** md5 signature: ca214add52f3821b26accc6fe7f36e0c ****/
 		%feature("compactdefaultargs") NextCycle;
-		%feature("autodoc", "Commands to resume the preceeding cycle and start a new one, with a count of items ignored if count of cycles is already passed then, first step is started (or default one) nextitem can be called for the first step, or nextstep to pass to the next one.
+		%feature("autodoc", "Commands to resume the preceding cycle and start a new one, with a count of items ignored if count of cycles is already passed then, first step is started (or default one) nextitem can be called for the first step, or nextstep to pass to the next one.
 
 Parameters
 ----------
@@ -8433,7 +8433,7 @@ None
 		/****************** NextPhase ******************/
 		/**** md5 signature: 9b523c6521e8002ac47a539ba98e971b ****/
 		%feature("compactdefaultargs") NextPhase;
-		%feature("autodoc", "Commands to resume the preceeding phase and start a new one <items> and <cycles> as for start, but for this new phase ignored if count of phases is already passed if <cycles> is more than one, the first cycle must then be started by nextcycle (nextstep/nextitem are ignored). if it is one, nextitem/nextstep can then be called.
+		%feature("autodoc", "Commands to resume the preceding phase and start a new one <items> and <cycles> as for start, but for this new phase ignored if count of phases is already passed if <cycles> is more than one, the first cycle must then be started by nextcycle (nextstep/nextitem are ignored). if it is one, nextitem/nextstep can then be called.
 
 Parameters
 ----------
@@ -8450,7 +8450,7 @@ None
 		/****************** NextStep ******************/
 		/**** md5 signature: a06b9be16a1cd4fce846a9f6baf11cf8 ****/
 		%feature("compactdefaultargs") NextStep;
-		%feature("autodoc", "Commands to resume the preceeding step of the cycle ignored if count of steps is already passed nextitem can be called for this step, nextstep passes to next.
+		%feature("autodoc", "Commands to resume the preceding step of the cycle ignored if count of steps is already passed nextitem can be called for this step, nextstep passes to next.
 
 Returns
 -------
@@ -8654,7 +8654,7 @@ None
 		/****************** Interface_ShareFlags ******************/
 		/**** md5 signature: fb87355c221a29bfef4a7716e14429e5 ****/
 		%feature("compactdefaultargs") Interface_ShareFlags;
-		%feature("autodoc", "Creates a shareflags by querying informations from a graph (remark that graph also has a method isshared).
+		%feature("autodoc", "Creates a shareflags by querying information from a graph (remark that graph also has a method isshared).
 
 Parameters
 ----------
@@ -9118,7 +9118,7 @@ None
 		/****************** ParamTypeToValueType ******************/
 		/**** md5 signature: aee1d139dcd9a716445f9c7c79e55597 ****/
 		%feature("compactdefaultargs") ParamTypeToValueType;
-		%feature("autodoc", "Correspondance paramtype from interface to valuetype from monitool.
+		%feature("autodoc", "Correspondence paramtype from interface to valuetype from monitool.
 
 Parameters
 ----------
@@ -9133,7 +9133,7 @@ MoniTool_ValueType
 		/****************** Type ******************/
 		/**** md5 signature: 47dd452537804ba27c0351c740f97ef5 ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns the type i.e. calls valuetype then makes correspondance between paramtype from interface (which remains for compatibility reasons) and valuetype from monitool.
+		%feature("autodoc", "Returns the type i.e. calls valuetype then makes correspondence between paramtype from interface (which remains for compatibility reasons) and valuetype from monitool.
 
 Returns
 -------
@@ -9144,7 +9144,7 @@ Interface_ParamType
 		/****************** ValueTypeToParamType ******************/
 		/**** md5 signature: 03fb586ad085bc437a43df1d15b1dda6 ****/
 		%feature("compactdefaultargs") ValueTypeToParamType;
-		%feature("autodoc", "Correspondance paramtype from interface to valuetype from monitool.
+		%feature("autodoc", "Correspondence paramtype from interface to valuetype from monitool.
 
 Parameters
 ----------
@@ -9329,7 +9329,7 @@ Interface_ParamType
 		/****************** ParamValue ******************/
 		/**** md5 signature: 27f0f605c60e921cd93c878a3119e98b ****/
 		%feature("compactdefaultargs") ParamValue;
-		%feature("autodoc", "Returns litteral value of a parameter, given its rank.
+		%feature("autodoc", "Returns literal value of a parameter, given its rank.
 
 Parameters
 ----------
@@ -9637,7 +9637,7 @@ None
 		/****************** Result ******************/
 		/**** md5 signature: 8c4c469fb1e25be9ad684d7b09b36228 ****/
 		%feature("compactdefaultargs") Result;
-		%feature("autodoc", "Returns result under the exact form of an entityiterator : can be used when entityiterator itself is required (as a returned value for instance), whitout way for a sub-class.
+		%feature("autodoc", "Returns result under the exact form of an entityiterator : can be used when entityiterator itself is required (as a returned value for instance), without way for a sub-class.
 
 Returns
 -------
@@ -9662,7 +9662,7 @@ class Interface_Static : public Interface_TypedValue {
 		/****************** Interface_Static ******************/
 		/**** md5 signature: a86af5cdb38073532a5a731958c23daf ****/
 		%feature("compactdefaultargs") Interface_Static;
-		%feature("autodoc", "Creates and records a static, with a family and a name family can report to a name of ressource or to a system or internal definition. the name must be unique. //! type gives the type of the parameter, default is free text also available : integer, real, enum, entity (i.e. object) more precise specifications, titles, can be given to the static once created //! init gives an initial value. if it is not given, the static begin as 'not set', its value is empty.
+		%feature("autodoc", "Creates and records a static, with a family and a name family can report to a name of resource or to a system or internal definition. the name must be unique. //! type gives the type of the parameter, default is free text also available : integer, real, enum, entity (i.e. object) more precise specifications, titles, can be given to the static once created //! init gives an initial value. if it is not given, the static begin as 'not set', its value is empty.
 
 Parameters
 ----------

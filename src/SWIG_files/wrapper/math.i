@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MATHDOCSTRING
 "math module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_math.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_math.html"
 %enddef
 %module (package="OCC.Core", docstring=MATHDOCSTRING) math
 
@@ -74,7 +74,7 @@ enum math_Status {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class math_Status(IntEnum):
@@ -2081,7 +2081,7 @@ class math_FunctionRoots {
 		/****************** math_FunctionRoots ******************/
 		/**** md5 signature: abf707bf72f290b30f6f389c3c53da02 ****/
 		%feature("compactdefaultargs") math_FunctionRoots;
-		%feature("autodoc", "Calculates all the real roots of a function f-k within the range a..b. whithout conditions on a and b a solution x is found when abs(xi - xi-1) <= epsx and abs(f(xi)-k) <= epsf. the function is considered as null between a and b if abs(f-k) <= epsnull within this range.
+		%feature("autodoc", "Calculates all the real roots of a function f-k within the range a..b. without conditions on a and b a solution x is found when abs(xi - xi-1) <= epsx and abs(f(xi)-k) <= epsf. the function is considered as null between a and b if abs(f-k) <= epsnull within this range.
 
 Parameters
 ----------
@@ -2750,7 +2750,7 @@ class math_GaussMultipleIntegration {
 		/****************** math_GaussMultipleIntegration ******************/
 		/**** md5 signature: 70f32a9670faa17902d312aaf809dc84 ****/
 		%feature("compactdefaultargs") math_GaussMultipleIntegration;
-		%feature("autodoc", "The gauss-legendre integration with order = points of integration for each unknow, is done on the function f between the bounds lower and upper.
+		%feature("autodoc", "The gauss-legendre integration with order = points of integration for each unknown, is done on the function f between the bounds lower and upper.
 
 Parameters
 ----------
@@ -2812,7 +2812,7 @@ class math_GaussSetIntegration {
 		/****************** math_GaussSetIntegration ******************/
 		/**** md5 signature: ccc7194f05e1d20cdc9dff8f00019009 ****/
 		%feature("compactdefaultargs") math_GaussSetIntegration;
-		%feature("autodoc", "The gauss-legendre integration with order = points of integration for each unknow, is done on the function f between the bounds lower and upper.
+		%feature("autodoc", "The gauss-legendre integration with order = points of integration for each unknown, is done on the function f between the bounds lower and upper.
 
 Parameters
 ----------
@@ -3336,7 +3336,7 @@ class math_IntegerVector {
 		/****************** math_IntegerVector ******************/
 		/**** md5 signature: dd6f29403a7348f09b915bb39a25605e ****/
 		%feature("compactdefaultargs") math_IntegerVector;
-		%feature("autodoc", "Contructs an integervector in the range [lower..upper].
+		%feature("autodoc", "Constructs an integervector in the range [lower..upper].
 
 Parameters
 ----------
@@ -3352,7 +3352,7 @@ None
 		/****************** math_IntegerVector ******************/
 		/**** md5 signature: 345490133e420bea4f84e5e2707b7e52 ****/
 		%feature("compactdefaultargs") math_IntegerVector;
-		%feature("autodoc", "Contructs an integervector in the range [lower..upper] with all the elements set to theinitialvalue.
+		%feature("autodoc", "Constructs an integervector in the range [lower..upper] with all the elements set to theinitialvalue.
 
 Parameters
 ----------
@@ -4393,7 +4393,7 @@ None
 		/****************** Initialized ******************/
 		/**** md5 signature: aa19c52ca7ffa72391b02d4d20747655 ****/
 		%feature("compactdefaultargs") Initialized;
-		%feature("autodoc", "Matrixes are copied through assignement. an exception is raised if the dimensions are differents.
+		%feature("autodoc", "Matrixes are copied through assignment. an exception is raised if the dimensions are different.
 
 Parameters
 ----------
@@ -5478,7 +5478,7 @@ None
 		/****************** GetStatus ******************/
 		/**** md5 signature: f0121c820ebe3b5d3aba6ff3efc32974 ****/
 		%feature("compactdefaultargs") GetStatus;
-		%feature("autodoc", "Returns the status of computation. the exception notdone is raised if an error has occured.
+		%feature("autodoc", "Returns the status of computation. the exception notdone is raised if an error has occurred.
 
 Returns
 -------
@@ -5489,7 +5489,7 @@ math_Status
 		/****************** Gradient ******************/
 		/**** md5 signature: 6c3691fb2b0bb6085965955bdcce0a12 ****/
 		%feature("compactdefaultargs") Gradient;
-		%feature("autodoc", "Returns the gradient vector at the minimum. exception notdone is raised if an error has occured.the minimum was not found.
+		%feature("autodoc", "Returns the gradient vector at the minimum. exception notdone is raised if an error has occurred. the minimum was not found.
 
 Returns
 -------
@@ -5526,7 +5526,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Tests if an error has occured.
+		%feature("autodoc", "Tests if an error has occurred.
 
 Returns
 -------
@@ -5537,7 +5537,7 @@ bool
 		/****************** Location ******************/
 		/**** md5 signature: 5a88ac2c95c5682bdeb613bd0a6c6d51 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns the location vector of the minimum. exception notdone is raised if an error has occured.
+		%feature("autodoc", "Returns the location vector of the minimum. exception notdone is raised if an error has occurred.
 
 Returns
 -------
@@ -5548,7 +5548,7 @@ math_Vector
 		/****************** Location ******************/
 		/**** md5 signature: c2f6dc7227af27a93b49ddbc87dfbc1a ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Outputs the location vector of the minimum in loc. exception notdone is raised if an error has occured. exception dimensionerror is raised if the range of loc is not equal to the range of the startingpoint.
+		%feature("autodoc", "Outputs the location vector of the minimum in loc. exception notdone is raised if an error has occurred. exception dimensionerror is raised if the range of loc is not equal to the range of the startingpoint.
 
 Parameters
 ----------
@@ -5574,7 +5574,7 @@ float
 		/****************** NbIterations ******************/
 		/**** md5 signature: 05334f1e34f7c858ac022754e906f2bf ****/
 		%feature("compactdefaultargs") NbIterations;
-		%feature("autodoc", "Returns the number of iterations really done in the calculation of the minimum. the exception notdone is raised if an error has occured.
+		%feature("autodoc", "Returns the number of iterations really done in the calculation of the minimum. the exception notdone is raised if an error has occurred.
 
 Returns
 -------
@@ -6119,7 +6119,7 @@ class math_Uzawa {
 		/****************** math_Uzawa ******************/
 		/**** md5 signature: ce8a643cc052d25710c36d089c8860f4 ****/
 		%feature("compactdefaultargs") math_Uzawa;
-		%feature("autodoc", "Given an input matrix cont, two input vectors secont and startingpoint, it solves cont*x = secont (only = equations) with a minimization of norme(x-x0). the maximun iterations number allowed is fixed to nbiterations. the tolerance epslic is fixed for the dual variable convergence. the tolerance epslix is used for the convergence of x. exception constuctionerror is raised if the line number of cont is different from the length of secont.
+		%feature("autodoc", "Given an input matrix cont, two input vectors secont and startingpoint, it solves cont*x = secont (only = equations) with a minimization of norme(x-x0). the maximum iterations number allowed is fixed to nbiterations. the tolerance epslic is fixed for the dual variable convergence. the tolerance epslix is used for the convergence of x. exception constructionerror is raised if the line number of cont is different from the length of secont.
 
 Parameters
 ----------
@@ -6142,7 +6142,7 @@ None
 		/****************** math_Uzawa ******************/
 		/**** md5 signature: fbff15989748ebd19e9916a271b6e5a5 ****/
 		%feature("compactdefaultargs") math_Uzawa;
-		%feature("autodoc", "Given an input matrix cont, two input vectors secont and startingpoint, it solves cont*x = secont (the nce first equations are equal equations and the nci last equations are inequalities <) with a minimization of norme(x-x0). the maximun iterations number allowed is fixed to nbiterations. the tolerance epslic is fixed for the dual variable convergence. the tolerance epslix is used for the convergence of x. there are no conditions on nce and nci. exception constuctionerror is raised if the line number of cont is different from the length of secont and from nce + nci.
+		%feature("autodoc", "Given an input matrix cont, two input vectors secont and startingpoint, it solves cont*x = secont (the nce first equations are equal equations and the nci last equations are inequalities <) with a minimization of norme(x-x0). the maximum iterations number allowed is fixed to nbiterations. the tolerance epslic is fixed for the dual variable convergence. the tolerance epslix is used for the convergence of x. there are no conditions on nce and nci. exception constructionerror is raised if the line number of cont is different from the length of secont and from nce + nci.
 
 Parameters
 ----------
@@ -6333,7 +6333,7 @@ class math_Vector {
 		/****************** math_Vector ******************/
 		/**** md5 signature: 1a74438a487a14d6d15fe510ae695e42 ****/
 		%feature("compactdefaultargs") math_Vector;
-		%feature("autodoc", "Contructs a non-initialized vector in the range [thelower..theupper] 'thelower' and 'theupper' are the indexes of the lower and upper bounds of the constructed vector.
+		%feature("autodoc", "Constructs a non-initialized vector in the range [thelower..theupper] 'thelower' and 'theupper' are the indexes of the lower and upper bounds of the constructed vector.
 
 Parameters
 ----------
@@ -6349,7 +6349,7 @@ None
 		/****************** math_Vector ******************/
 		/**** md5 signature: 0ea591b3860a4e3f376925614a2fe35e ****/
 		%feature("compactdefaultargs") math_Vector;
-		%feature("autodoc", "Contructs a vector in the range [thelower..theupper] whose values are all initialized with the value 'theinitialvalue'.
+		%feature("autodoc", "Constructs a vector in the range [thelower..theupper] whose values are all initialized with the value 'theinitialvalue'.
 
 Parameters
 ----------
@@ -6527,7 +6527,7 @@ None
 		/****************** Initialized ******************/
 		/**** md5 signature: 176526852f04bc77a737d191c0b99e41 ****/
 		%feature("compactdefaultargs") Initialized;
-		%feature("autodoc", "Initialises a vector by copying 'theother'. an exception is raised if the lengths are differents.
+		%feature("autodoc", "Initialises a vector by copying 'theother'. an exception is raised if the lengths are different.
 
 Parameters
 ----------

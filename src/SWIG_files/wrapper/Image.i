@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IMAGEDOCSTRING
 "Image module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_image.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_image.html"
 %enddef
 %module (package="OCC.Core", docstring=IMAGEDOCSTRING) Image
 
@@ -85,15 +85,17 @@ enum Image_Format {
 	Image_Format_BGRF = 13,
 	Image_Format_RGBAF = 14,
 	Image_Format_BGRAF = 15,
+	Image_Format_RGF_half = 16,
+	Image_Format_RGBAF_half = 17,
 };
 
 enum  {
-	Image_Format_NB = Image_Format_BGRAF + 1,
+	Image_Format_NB = Image_Format_RGBAF_half + 1,
 };
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Image_CompressedFormat(IntEnum):
@@ -125,6 +127,8 @@ class Image_Format(IntEnum):
 	Image_Format_BGRF = 13
 	Image_Format_RGBAF = 14
 	Image_Format_BGRAF = 15
+	Image_Format_RGF_half = 16
+	Image_Format_RGBAF_half = 17
 Image_Format_UNKNOWN = Image_Format.Image_Format_UNKNOWN
 Image_Format_Gray = Image_Format.Image_Format_Gray
 Image_Format_Alpha = Image_Format.Image_Format_Alpha
@@ -141,6 +145,8 @@ Image_Format_RGBF = Image_Format.Image_Format_RGBF
 Image_Format_BGRF = Image_Format.Image_Format_BGRF
 Image_Format_RGBAF = Image_Format.Image_Format_RGBAF
 Image_Format_BGRAF = Image_Format.Image_Format_BGRAF
+Image_Format_RGF_half = Image_Format.Image_Format_RGF_half
+Image_Format_RGBAF_half = Image_Format.Image_Format_RGBAF_half
 };
 /* end python proxy for enums */
 

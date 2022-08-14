@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -22,7 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MeshVS_Array1OfSequenceOfInteger.hxx>
 #include<MeshVS_Buffer.hxx>
 #include<MeshVS_BuilderPriority.hxx>
-#include<MeshVS_ColorHasher.hxx>
 #include<MeshVS_CommonSensitiveEntity.hxx>
 #include<MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger.hxx>
 #include<MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger.hxx>

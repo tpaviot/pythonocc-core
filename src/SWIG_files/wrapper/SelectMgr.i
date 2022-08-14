@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECTMGRDOCSTRING
 "SelectMgr module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_selectmgr.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECTMGRDOCSTRING) SelectMgr
 
@@ -45,6 +45,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 #include<Graphic3d_module.hxx>
 #include<gp_module.hxx>
 #include<Select3D_module.hxx>
+#include<SelectBasics_module.hxx>
+#include<TColgp_module.hxx>
 #include<PrsMgr_module.hxx>
 #include<Aspect_module.hxx>
 #include<Prs3d_module.hxx>
@@ -52,8 +54,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 #include<V3d_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BVH_module.hxx>
-#include<SelectBasics_module.hxx>
-#include<TColgp_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
 #include<Message_module.hxx>
@@ -91,6 +91,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 %import Graphic3d.i
 %import gp.i
 %import Select3D.i
+%import SelectBasics.i
+%import TColgp.i
 %import PrsMgr.i
 %import Aspect.i
 %import Prs3d.i
@@ -98,8 +100,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 %import V3d.i
 %import TopAbs.i
 %import BVH.i
-%import SelectBasics.i
-%import TColgp.i
 %import Bnd.i
 
 %pythoncode {
@@ -117,6 +117,13 @@ enum SelectMgr_TypeOfDepthTolerance {
 	SelectMgr_TypeOfDepthTolerance_Uniform = 0,
 	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1,
 	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2,
+};
+
+enum SelectMgr_SelectionType {
+	SelectMgr_SelectionType_Unknown = - 1,
+	SelectMgr_SelectionType_Point = 1,
+	SelectMgr_SelectionType_Box = 2,
+	SelectMgr_SelectionType_Polyline = 3,
 };
 
 enum SelectMgr_TypeOfUpdate {
@@ -147,7 +154,7 @@ enum SelectMgr_PickingStrategy {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class SelectMgr_FilterType(IntEnum):
@@ -163,6 +170,16 @@ class SelectMgr_TypeOfDepthTolerance(IntEnum):
 SelectMgr_TypeOfDepthTolerance_Uniform = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_Uniform
 SelectMgr_TypeOfDepthTolerance_UniformPixels = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_UniformPixels
 SelectMgr_TypeOfDepthTolerance_SensitivityFactor = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_SensitivityFactor
+
+class SelectMgr_SelectionType(IntEnum):
+	SelectMgr_SelectionType_Unknown = - 1
+	SelectMgr_SelectionType_Point = 1
+	SelectMgr_SelectionType_Box = 2
+	SelectMgr_SelectionType_Polyline = 3
+SelectMgr_SelectionType_Unknown = SelectMgr_SelectionType.SelectMgr_SelectionType_Unknown
+SelectMgr_SelectionType_Point = SelectMgr_SelectionType.SelectMgr_SelectionType_Point
+SelectMgr_SelectionType_Box = SelectMgr_SelectionType.SelectMgr_SelectionType_Box
+SelectMgr_SelectionType_Polyline = SelectMgr_SelectionType.SelectMgr_SelectionType_Polyline
 
 class SelectMgr_TypeOfUpdate(IntEnum):
 	SelectMgr_TOU_Full = 0
@@ -204,6 +221,7 @@ SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_Pick
 
 /* handles */
 %wrap_handle(SelectMgr_BVHThreadPool)
+%wrap_handle(SelectMgr_BaseIntersector)
 %wrap_handle(SelectMgr_EntityOwner)
 %wrap_handle(SelectMgr_Filter)
 %wrap_handle(SelectMgr_SelectableObject)
@@ -211,8 +229,8 @@ SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_Pick
 %wrap_handle(SelectMgr_SelectionImageFiller)
 %wrap_handle(SelectMgr_SelectionManager)
 %wrap_handle(SelectMgr_SensitiveEntity)
+%wrap_handle(SelectMgr_AxisIntersector)
 %wrap_handle(SelectMgr_CompositionFilter)
-%wrap_handle(SelectMgr_ViewerSelector3d)
 %wrap_handle(SelectMgr_AndFilter)
 %wrap_handle(SelectMgr_AndOrFilter)
 %wrap_handle(SelectMgr_OrFilter)
@@ -243,15 +261,8 @@ SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_Pick
         return self.Size()
     }
 };
+%template(SelectMgr_MapOfOwners) NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>,Standard_Integer>;
 %template(SelectMgr_Mat4) NCollection_Mat4<Standard_Real>;
-%template(SelectMgr_SequenceOfFilter) NCollection_Sequence<opencascade::handle<SelectMgr_Filter>>;
-
-%extend NCollection_Sequence<opencascade::handle<SelectMgr_Filter>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
 %template(SelectMgr_SequenceOfOwner) NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>>;
 
 %extend NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> {
@@ -281,8 +292,8 @@ typedef NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_
 typedef NCollection_List<opencascade::handle<SelectMgr_Filter>>::Iterator SelectMgr_ListIteratorOfListOfFilter;
 typedef NCollection_List<opencascade::handle<SelectMgr_Filter>> SelectMgr_ListOfFilter;
 typedef NCollection_DataMap<opencascade::handle<SelectMgr_SelectableObject>, opencascade::handle<SelectMgr_SensitiveEntitySet>>::Iterator SelectMgr_MapOfObjectSensitivesIterator;
+typedef NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>, Standard_Integer> SelectMgr_MapOfOwners;
 typedef NCollection_Mat4<Standard_Real> SelectMgr_Mat4;
-typedef NCollection_Sequence<opencascade::handle<SelectMgr_Filter>> SelectMgr_SequenceOfFilter;
 typedef NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> SelectMgr_SequenceOfOwner;
 typedef NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> SelectMgr_SequenceOfSelection;
 typedef NCollection_Vec3<Standard_Real> SelectMgr_Vec3;
@@ -403,9 +414,499 @@ None
 	}
 };
 
-/******************************
-* class SelectMgr_BaseFrustum *
-******************************/
+/**********************************
+* class SelectMgr_BaseIntersector *
+**********************************/
+%nodefaultctor SelectMgr_BaseIntersector;
+class SelectMgr_BaseIntersector : public Standard_Transient {
+	public:
+		/****************** Build ******************/
+		/**** md5 signature: a41bf8256f32ce9506d69a52d250386f ****/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "Builds intersector according to internal parameters.
+
+Returns
+-------
+None
+") Build;
+		virtual void Build();
+
+		/****************** Camera ******************/
+		/**** md5 signature: 9722357b74290d4bf6f13f9113469012 ****/
+		%feature("compactdefaultargs") Camera;
+		%feature("autodoc", "Return camera definition.
+
+Returns
+-------
+opencascade::handle<Graphic3d_Camera>
+") Camera;
+		const opencascade::handle<Graphic3d_Camera> & Camera();
+
+		/****************** DetectedPoint ******************/
+		/**** md5 signature: 6c6688b42e6b7c576329ada82a48bca7 ****/
+		%feature("compactdefaultargs") DetectedPoint;
+		%feature("autodoc", "Calculates the point on a view ray that was detected during the run of selection algo by given depth. it makes sense only for intersectors built on a single point. this method returns infinite point for the base class.
+
+Parameters
+----------
+theDepth: float
+
+Returns
+-------
+gp_Pnt
+") DetectedPoint;
+		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
+
+		/****************** DistToGeometryCenter ******************/
+		/**** md5 signature: d05c069bc0dac1d0061914d9064f5c6b ****/
+		%feature("compactdefaultargs") DistToGeometryCenter;
+		%feature("autodoc", "Measures distance between 3d projection of user-picked screen point and given point thecog. it makes sense only for intersectors built on a single point. this method returns infinite value for the base class.
+
+Parameters
+----------
+theCOG: gp_Pnt
+
+Returns
+-------
+float
+") DistToGeometryCenter;
+		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** GetFarPnt ******************/
+		/**** md5 signature: 3e36f446d09a687c0f4c947199de3fba ****/
+		%feature("compactdefaultargs") GetFarPnt;
+		%feature("autodoc", "Returns far point of intersector. this method returns zero point for the base class.
+
+Returns
+-------
+gp_Pnt
+") GetFarPnt;
+		virtual const gp_Pnt GetFarPnt();
+
+		/****************** GetMousePosition ******************/
+		/**** md5 signature: f0999a81a45c2c3d9eb21b1ee061e7e0 ****/
+		%feature("compactdefaultargs") GetMousePosition;
+		%feature("autodoc", "Returns current mouse coordinates. this method returns infinite point for the base class.
+
+Returns
+-------
+gp_Pnt2d
+") GetMousePosition;
+		virtual const gp_Pnt2d GetMousePosition();
+
+		/****************** GetNearPnt ******************/
+		/**** md5 signature: 17d67816021feab183a1521372f11473 ****/
+		%feature("compactdefaultargs") GetNearPnt;
+		%feature("autodoc", "Returns near point of intersector. this method returns zero point for the base class.
+
+Returns
+-------
+gp_Pnt
+") GetNearPnt;
+		virtual const gp_Pnt GetNearPnt();
+
+		/****************** GetPlanes ******************/
+		/**** md5 signature: b90140b2ac0c4c0502829a7ff8252d2c ****/
+		%feature("compactdefaultargs") GetPlanes;
+		%feature("autodoc", "Stores plane equation coefficients (in the following form: ax + by + cz + d = 0) to the given vector. this method only clears input vector for the base class.
+
+Parameters
+----------
+thePlaneEquations: NCollection_Vector<SelectMgr_Vec4>
+
+Returns
+-------
+None
+") GetPlanes;
+		virtual void GetPlanes(NCollection_Vector<SelectMgr_Vec4> & thePlaneEquations);
+
+		/****************** GetSelectionType ******************/
+		/**** md5 signature: 8a2f723381b539ff3ca96048a6b87ecc ****/
+		%feature("compactdefaultargs") GetSelectionType;
+		%feature("autodoc", "Returns selection type of this intersector.
+
+Returns
+-------
+SelectMgr_SelectionType
+") GetSelectionType;
+		SelectMgr_SelectionType GetSelectionType();
+
+		/****************** GetViewRayDirection ******************/
+		/**** md5 signature: c751cf5028d4253b9ccc63b4a7d68a0c ****/
+		%feature("compactdefaultargs") GetViewRayDirection;
+		%feature("autodoc", "Returns direction ray of intersector. this method returns zero direction for the base class.
+
+Returns
+-------
+gp_Dir
+") GetViewRayDirection;
+		virtual const gp_Dir GetViewRayDirection();
+
+		/****************** IsScalable ******************/
+		/**** md5 signature: 9733a9bb15d124569350ae667909d84c ****/
+		%feature("compactdefaultargs") IsScalable;
+		%feature("autodoc", "Checks if it is possible to scale this intersector.
+
+Returns
+-------
+bool
+") IsScalable;
+		virtual Standard_Boolean IsScalable();
+
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: b3d8e238997ac67fa00f862c71d8fb5e ****/
+		%feature("compactdefaultargs") OverlapsBox;
+		%feature("autodoc", "Sat intersection test between defined volume and given axis-aligned box.
+
+Parameters
+----------
+theBoxMin: SelectMgr_Vec3
+theBoxMax: SelectMgr_Vec3
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: 3333b0eb5ae7761f543fe228c538ee5b ****/
+		%feature("compactdefaultargs") OverlapsBox;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+
+Parameters
+----------
+theBoxMin: SelectMgr_Vec3
+theBoxMax: SelectMgr_Vec3
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: 7cf8e8b6aff6e3075f07bbfcecbc9017 ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: 5f67d458875f1aefc78c51b6436b3f88 ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: ca285b43cc259fcb46ff477678762dba ****/
+		%feature("compactdefaultargs") OverlapsPoint;
+		%feature("autodoc", "Intersection test between defined volume and given point.
+
+Parameters
+----------
+thePnt: gp_Pnt
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: 7d294e46b6d94e1ca91f519f8b1d482d ****/
+		%feature("compactdefaultargs") OverlapsPoint;
+		%feature("autodoc", "Intersection test between defined volume and given point does not perform depth calculation, so this method is defined as helper function for inclusion test. therefore, its implementation makes sense only for rectangular frustum with box selection mode activated.
+
+Parameters
+----------
+thePnt: gp_Pnt
+
+Returns
+-------
+bool
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
+
+		/****************** OverlapsPolygon ******************/
+		/**** md5 signature: ea879fc06a4c6f6d0a789b21bf9e01f2 ****/
+		%feature("compactdefaultargs") OverlapsPolygon;
+		%feature("autodoc", "Sat intersection test between defined volume and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
+
+Parameters
+----------
+theArrayOfPnts: TColgp_Array1OfPnt
+theSensType: Select3D_TypeOfSensitivity
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsPolygon;
+		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSegment ******************/
+		/**** md5 signature: d402778adf591662c5989dc838ac2ca6 ****/
+		%feature("compactdefaultargs") OverlapsSegment;
+		%feature("autodoc", "Checks if line segment overlaps selecting frustum.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsSegment;
+		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: 32b443cedf236c938f70d5163436b508 ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: 37997e5cd3caaa032de4ff44a63381ed ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsTriangle ******************/
+		/**** md5 signature: fc92c4fa04dc601ad98f7ee32291b96f ****/
+		%feature("compactdefaultargs") OverlapsTriangle;
+		%feature("autodoc", "Sat intersection test between defined volume and given triangle. the test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+thePnt3: gp_Pnt
+theSensType: Select3D_TypeOfSensitivity
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsTriangle;
+		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** RayCylinderIntersection ******************/
+		/**** md5 signature: d88a89b28889ef5d671470f6fa53eb2c ****/
+		%feature("compactdefaultargs") RayCylinderIntersection;
+		%feature("autodoc", "Checks whether the ray that starts at the point theloc and directs with the direction theraydir intersects with the cylinder (or cone) with radiuses thebottomrad and thetoprad and height theheights.
+
+Parameters
+----------
+theBottomRadius: float
+theTopRadius: float
+theHeight: float
+theLoc: gp_Pnt
+theRayDir: gp_Dir
+
+Returns
+-------
+theTimeEnter: float
+theTimeLeave: float
+") RayCylinderIntersection;
+		virtual Standard_Boolean RayCylinderIntersection(const Standard_Real theBottomRadius, const Standard_Real theTopRadius, const Standard_Real theHeight, const gp_Pnt & theLoc, const gp_Dir & theRayDir, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** RaySphereIntersection ******************/
+		/**** md5 signature: a447f92c1a753c60f95dacf06134d88f ****/
+		%feature("compactdefaultargs") RaySphereIntersection;
+		%feature("autodoc", "Checks whether the ray that starts at the point theloc and directs with the direction theraydir intersects with the sphere with center at thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theLoc: gp_Pnt
+theRayDir: gp_Dir
+
+Returns
+-------
+theTimeEnter: float
+theTimeLeave: float
+") RaySphereIntersection;
+		virtual Standard_Boolean RaySphereIntersection(const gp_Pnt & theCenter, const Standard_Real theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** ScaleAndTransform ******************/
+		/**** md5 signature: 03f05921987bcd766b276d57220bf861 ****/
+		%feature("compactdefaultargs") ScaleAndTransform;
+		%feature("autodoc", "Note that this method does not perform any checks on type of the frustum. @param thescalefactor [in] scale factor for new intersector or negative value if undefined;  important: scaling makes sense only for scalable ::isscalable() intersectors (built on a single point)! @param thetrsf [in] transformation for new intersector or gp_identity if undefined @param thebuilder [in] an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch; could be null if reconstruction is not expected furthermore returns a copy of the frustum resized according to the scale factor given and transforms it using the matrix given.
+
+Parameters
+----------
+theScaleFactor: int
+theTrsf: gp_GTrsf
+theBuilder: SelectMgr_FrustumBuilder
+
+Returns
+-------
+opencascade::handle<SelectMgr_BaseIntersector>
+") ScaleAndTransform;
+		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+
+		/****************** SetCamera ******************/
+		/**** md5 signature: f2614c926a92a0a375328573f4288898 ****/
+		%feature("compactdefaultargs") SetCamera;
+		%feature("autodoc", "Saves camera definition.
+
+Parameters
+----------
+theCamera: Graphic3d_Camera
+
+Returns
+-------
+None
+") SetCamera;
+		virtual void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
+
+		/****************** SetPixelTolerance ******************/
+		/**** md5 signature: ca5a8a26205f52e8a3a279a36ba509e4 ****/
+		%feature("compactdefaultargs") SetPixelTolerance;
+		%feature("autodoc", "Sets pixel tolerance. it makes sense only for scalable intersectors (built on a single point). this method does nothing for the base class.
+
+Parameters
+----------
+theTol: int
+
+Returns
+-------
+None
+") SetPixelTolerance;
+		virtual void SetPixelTolerance(const Standard_Integer theTol);
+
+		/****************** SetViewport ******************/
+		/**** md5 signature: 35321000dbfc7f82f14ef5defb456d2f ****/
+		%feature("compactdefaultargs") SetViewport;
+		%feature("autodoc", "Sets viewport parameters. this method does nothing for the base class.
+
+Parameters
+----------
+theX: float
+theY: float
+theWidth: float
+theHeight: float
+
+Returns
+-------
+None
+") SetViewport;
+		virtual void SetViewport(const Standard_Real theX, const Standard_Real theY, const Standard_Real theWidth, const Standard_Real theHeight);
+
+		/****************** SetWindowSize ******************/
+		/**** md5 signature: d28d2507e21d13e97ddcec9b2c59cbb2 ****/
+		%feature("compactdefaultargs") SetWindowSize;
+		%feature("autodoc", "Sets current window size. this method does nothing for the base class.
+
+Parameters
+----------
+theWidth: int
+theHeight: int
+
+Returns
+-------
+None
+") SetWindowSize;
+		virtual void SetWindowSize(const Standard_Integer theWidth, const Standard_Integer theHeight);
+
+		/****************** WindowSize ******************/
+		/**** md5 signature: 6027bd72564d44492379be31be79c1f6 ****/
+		%feature("compactdefaultargs") WindowSize;
+		%feature("autodoc", "Returns current window size. this method doesn't set any output values for the base class.
+
+Parameters
+----------
+
+Returns
+-------
+theWidth: int
+theHeight: int
+") WindowSize;
+		virtual void WindowSize(Standard_Integer &OutValue, Standard_Integer &OutValue);
+
+};
+
+
+%make_alias(SelectMgr_BaseIntersector)
+
+%extend SelectMgr_BaseIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /******************************
 * class SelectMgr_EntityOwner *
 ******************************/
@@ -1313,7 +1814,7 @@ enum BVHSubset {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BVHSubset(IntEnum):
@@ -1476,24 +1977,20 @@ bool
 		Standard_Boolean Remove(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****************** UpdateBVH ******************/
-		/**** md5 signature: 7b761a008dcdefa3ae620aa5abc335b0 ****/
+		/**** md5 signature: 8a4c543113d4a23f5fbc275c1d261940 ****/
 		%feature("compactdefaultargs") UpdateBVH;
 		%feature("autodoc", "Updates outdated bvh trees and remembers the last state of the camera view-projection matrices and viewport (window) dimensions.
 
 Parameters
 ----------
-theCamera: Graphic3d_Camera
-theProjectionMat: Graphic3d_Mat4d
-theWorldViewMat: Graphic3d_Mat4d
-theViewState: Graphic3d_WorldViewProjState
-theViewportWidth: int
-theViewportHeight: int
+theCam: Graphic3d_Camera
+theWinSize: Graphic3d_Vec2i
 
 Returns
 -------
 None
 ") UpdateBVH;
-		void UpdateBVH(const opencascade::handle<Graphic3d_Camera> & theCamera, const Graphic3d_Mat4d & theProjectionMat, const Graphic3d_Mat4d & theWorldViewMat, const Graphic3d_WorldViewProjState & theViewState, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
+		void UpdateBVH(const opencascade::handle<Graphic3d_Camera> & theCam, const Graphic3d_Vec2i & theWinSize);
 
 };
 
@@ -1510,20 +2007,15 @@ None
 class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeManager {
 	public:
 		/****************** SelectMgr_SelectingVolumeManager ******************/
-		/**** md5 signature: 88c9baa84730ed8c95f865643313b569 ****/
+		/**** md5 signature: 766e9640f35bf18828817e28109e724c ****/
 		%feature("compactdefaultargs") SelectMgr_SelectingVolumeManager;
 		%feature("autodoc", "Creates instances of all available selecting volume types.
-
-Parameters
-----------
-theToAllocateFrustums: bool,optional
-	default value is Standard_True
 
 Returns
 -------
 None
 ") SelectMgr_SelectingVolumeManager;
-		 SelectMgr_SelectingVolumeManager(Standard_Boolean theToAllocateFrustums = Standard_True);
+		 SelectMgr_SelectingVolumeManager();
 
 		/****************** AllowOverlapDetection ******************/
 		/**** md5 signature: 835f65572d504a5580a4fc1007d46f5c ****/
@@ -1541,9 +2033,20 @@ None
 		virtual void AllowOverlapDetection(const Standard_Boolean theIsToAllow);
 
 		/****************** BuildSelectingVolume ******************/
+		/**** md5 signature: 8d111d8f578ec131aa6dd52ce1a06500 ****/
+		%feature("compactdefaultargs") BuildSelectingVolume;
+		%feature("autodoc", "Builds previously initialized selecting volume.
+
+Returns
+-------
+None
+") BuildSelectingVolume;
+		void BuildSelectingVolume();
+
+		/****************** BuildSelectingVolume ******************/
 		/**** md5 signature: d3870be043d44dc3c4c9021e9328557f ****/
 		%feature("compactdefaultargs") BuildSelectingVolume;
-		%feature("autodoc", "Builds rectangular selecting frustum for point selection.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -1558,7 +2061,7 @@ None
 		/****************** BuildSelectingVolume ******************/
 		/**** md5 signature: 6d5dfec62c478092fcbc8add0168a788 ****/
 		%feature("compactdefaultargs") BuildSelectingVolume;
-		%feature("autodoc", "Builds rectangular selecting frustum for box selection.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -1574,7 +2077,7 @@ None
 		/****************** BuildSelectingVolume ******************/
 		/**** md5 signature: 0b768a2e513c26decf9d0f6a27302911 ****/
 		%feature("compactdefaultargs") BuildSelectingVolume;
-		%feature("autodoc", "Builds set of triangular selecting frustums for polyline selection.
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -1587,7 +2090,7 @@ None
 		void BuildSelectingVolume(const TColgp_Array1OfPnt2d & thePoints);
 
 		/****************** Camera ******************/
-		/**** md5 signature: 9722357b74290d4bf6f13f9113469012 ****/
+		/**** md5 signature: e0e8d00ee700afb9ca88da977e8b5747 ****/
 		%feature("compactdefaultargs") Camera;
 		%feature("autodoc", "Returns current camera definition.
 
@@ -1658,9 +2161,9 @@ gp_Pnt
 		virtual gp_Pnt GetFarPickedPnt();
 
 		/****************** GetMousePosition ******************/
-		/**** md5 signature: 3146c30fdc649573d84878daffdc7e57 ****/
+		/**** md5 signature: dcc0cc032f698db0f9d95560a7ad20f9 ****/
 		%feature("compactdefaultargs") GetMousePosition;
-		%feature("autodoc", "Return mouse coordinates for point selection mode.
+		%feature("autodoc", "Returns mouse coordinates for point selection mode. returns infinite point in case of unsupport of mouse position for this active selection volume.
 
 Returns
 -------
@@ -1680,7 +2183,7 @@ gp_Pnt
 		virtual gp_Pnt GetNearPickedPnt();
 
 		/****************** GetPlanes ******************/
-		/**** md5 signature: c2c102a337ece46bfdb7552bb588b2d8 ****/
+		/**** md5 signature: 6ca80f788783698f67ff4f449d84c80c ****/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "Stores plane equation coefficients (in the following form: ax + by + cz + d = 0) to the given vector.
 
@@ -1705,6 +2208,93 @@ gp_Pnt *
 ") GetVertices;
 		const gp_Pnt * GetVertices();
 
+		/****************** GetViewRayDirection ******************/
+		/**** md5 signature: 21f31209db824731d7acac6bf2abae83 ****/
+		%feature("compactdefaultargs") GetViewRayDirection;
+		%feature("autodoc", "Valid only for point and rectangular selection. returns view ray direction.
+
+Returns
+-------
+gp_Dir
+") GetViewRayDirection;
+		virtual gp_Dir GetViewRayDirection();
+
+		/****************** InitAxisSelectingVolume ******************/
+		/**** md5 signature: 26109159d24d5be10c951c3c439d4af1 ****/
+		%feature("compactdefaultargs") InitAxisSelectingVolume;
+		%feature("autodoc", "Creates and activates axis selector for point selection.
+
+Parameters
+----------
+theAxis: gp_Ax1
+
+Returns
+-------
+None
+") InitAxisSelectingVolume;
+		void InitAxisSelectingVolume(const gp_Ax1 & theAxis);
+
+		/****************** InitBoxSelectingVolume ******************/
+		/**** md5 signature: 85ba60b668422521b374712ef9dc305b ****/
+		%feature("compactdefaultargs") InitBoxSelectingVolume;
+		%feature("autodoc", "Creates, initializes and activates rectangular selecting frustum for box selection.
+
+Parameters
+----------
+theMinPt: gp_Pnt2d
+theMaxPt: gp_Pnt2d
+
+Returns
+-------
+None
+") InitBoxSelectingVolume;
+		void InitBoxSelectingVolume(const gp_Pnt2d & theMinPt, const gp_Pnt2d & theMaxPt);
+
+		/****************** InitPointSelectingVolume ******************/
+		/**** md5 signature: 6fd958c8f193c830449b334386063d1e ****/
+		%feature("compactdefaultargs") InitPointSelectingVolume;
+		%feature("autodoc", "Creates, initializes and activates rectangular selecting frustum for point selection.
+
+Parameters
+----------
+thePoint: gp_Pnt2d
+
+Returns
+-------
+None
+") InitPointSelectingVolume;
+		void InitPointSelectingVolume(const gp_Pnt2d & thePoint);
+
+		/****************** InitPolylineSelectingVolume ******************/
+		/**** md5 signature: 91b0266302c5afb5d62b7b293bb285dc ****/
+		%feature("compactdefaultargs") InitPolylineSelectingVolume;
+		%feature("autodoc", "Creates, initializes and activates set of triangular selecting frustums for polyline selection.
+
+Parameters
+----------
+thePoints: TColgp_Array1OfPnt2d
+
+Returns
+-------
+None
+") InitPolylineSelectingVolume;
+		void InitPolylineSelectingVolume(const TColgp_Array1OfPnt2d & thePoints);
+
+		/****************** InitSelectingVolume ******************/
+		/**** md5 signature: a70f6f4650e5b257e6e7420cd2ae830d ****/
+		%feature("compactdefaultargs") InitSelectingVolume;
+		%feature("autodoc", "Sets as active the custom selecting volume.
+
+Parameters
+----------
+theVolume: SelectMgr_BaseIntersector
+
+Returns
+-------
+None
+") InitSelectingVolume;
+		void InitSelectingVolume(const opencascade::handle<SelectMgr_BaseIntersector> & theVolume);
+
 		/****************** IsOverlapAllowed ******************/
 		/**** md5 signature: 7d8f9be9184a75e442465114e308659f ****/
 		%feature("compactdefaultargs") IsOverlapAllowed;
@@ -1715,6 +2305,17 @@ Returns
 bool
 ") IsOverlapAllowed;
 		virtual Standard_Boolean IsOverlapAllowed();
+
+		/****************** IsScalableActiveVolume ******************/
+		/**** md5 signature: cec63286df013390f8db8e217254c9db ****/
+		%feature("compactdefaultargs") IsScalableActiveVolume;
+		%feature("autodoc", "Checks if it is possible to scale current active selecting volume.
+
+Returns
+-------
+bool
+") IsScalableActiveVolume;
+		virtual Standard_Boolean IsScalableActiveVolume();
 
 		/****************** ObjectClipping ******************/
 		/**** md5 signature: f6c35522166321d4f812458a964f18cf ****/
@@ -1727,9 +2328,9 @@ opencascade::handle<Graphic3d_SequenceOfHClipPlane>
 ") ObjectClipping;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ObjectClipping();
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: e9d23145a7798aafba1bb50a37f94425 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: 4b7c5cc7fac549e880a63ba09353ab83 ****/
+		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "Sat intersection test between defined volume and given axis-aligned box.
 
 Parameters
@@ -1741,12 +2342,12 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, SelectBasics_PickResult & thePickResult);
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 95c6b8b1e7c428ad28d82cfbc1693720 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: 4811ebe00d4b1a89d64ffa793d81cfd8 ****/
+		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
 
 Parameters
@@ -1759,12 +2360,51 @@ theInside: bool *,optional
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 0acf2b0e4ea6a2d5d856c5c32c6cbab7 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: 26557a28e00e8edb55cf53095b7aac25 ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: ebba148002fb6dc8cbbe7979fbf2a67b ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: dc4b85981b0c33d2a566ec628898624d ****/
+		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "Intersection test between defined volume and given point.
 
 Parameters
@@ -1775,12 +2415,12 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 15d41c8f739c0ce842f61077e7fdebb2 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: d7b37b52b3a018e10f4074a808688275 ****/
+		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "Intersection test between defined volume and given point.
 
 Parameters
@@ -1790,29 +2430,12 @@ thePnt: gp_Pnt
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt);
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 1ef89a6f633473ae7690385aaae28b92 ****/
-		%feature("compactdefaultargs") Overlaps;
-		%feature("autodoc", "Sat intersection test between defined volume and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
-
-Parameters
-----------
-theArrayOfPts: TColgp_HArray1OfPnt
-theSensType: int
-thePickResult: SelectBasics_PickResult
-
-Returns
--------
-bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
-
-		/****************** Overlaps ******************/
-		/**** md5 signature: fb7b41afbb828318fc5f75597be730a4 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsPolygon ******************/
+		/**** md5 signature: 191ac64a95f79df4fa49ccb283f0714b ****/
+		%feature("compactdefaultargs") OverlapsPolygon;
 		%feature("autodoc", "Sat intersection test between defined volume and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 
 Parameters
@@ -1824,12 +2447,12 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+") OverlapsPolygon;
+		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 5a4fdd6cf5990d69cb44c2752d9cf429 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsSegment ******************/
+		/**** md5 signature: 9facfbdce7f5efd87b89a4104b49953f ****/
+		%feature("compactdefaultargs") OverlapsSegment;
 		%feature("autodoc", "Checks if line segment overlaps selecting frustum.
 
 Parameters
@@ -1841,12 +2464,47 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, SelectBasics_PickResult & thePickResult);
+") OverlapsSegment;
+		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 9a5e1237922eff21a936edd5cd4e2233 ****/
-		%feature("compactdefaultargs") Overlaps;
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: e847078d05a6a0ce1e7e3f093c489ddb ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Intersection test between defined volume and given sphere.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: 2b7a70713e1032389098753ec8495331 ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Intersection test between defined volume and given sphere.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsTriangle ******************/
+		/**** md5 signature: 638ac865012392274d476eb994ef2dfc ****/
+		%feature("compactdefaultargs") OverlapsTriangle;
 		%feature("autodoc", "Sat intersection test between defined volume and given triangle. the test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 
 Parameters
@@ -1860,22 +2518,11 @@ thePickResult: SelectBasics_PickResult
 Returns
 -------
 bool
-") Overlaps;
-		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
-
-		/****************** ProjectionMatrix ******************/
-		/**** md5 signature: ba648dd7b6de7cfe7eaed2ae24ad2b05 ****/
-		%feature("compactdefaultargs") ProjectionMatrix;
-		%feature("autodoc", "Returns current projection transformation common for all selecting volumes.
-
-Returns
--------
-Graphic3d_Mat4d
-") ProjectionMatrix;
-		const Graphic3d_Mat4d & ProjectionMatrix();
+") OverlapsTriangle;
+		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****************** ScaleAndTransform ******************/
-		/**** md5 signature: 97fa1c93c915db40ef5183e7034a43db ****/
+		/**** md5 signature: 52c642a3c1880fb8abb130dbb36a0aff ****/
 		%feature("compactdefaultargs") ScaleAndTransform;
 		%feature("autodoc", "Important: scaling makes sense only for frustum built on a single point! note that this method does not perform any checks on type of the frustum. //! returns a copy of the frustum resized according to the scale factor given and transforms it using the matrix given. there are no default parameters, but in case if: - transformation only is needed: @thescalefactor must be initialized as any negative value; - scale only is needed: @thetrsf must be set to gp_identity. builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. can be null if reconstruction is not expected furthermore.
 
@@ -1883,34 +2530,18 @@ Parameters
 ----------
 theScaleFactor: int
 theTrsf: gp_GTrsf
-theBuilder: SelectMgr_FrustumBuilder,optional
-	default value is NULL
+theBuilder: SelectMgr_FrustumBuilder
 
 Returns
 -------
 SelectMgr_SelectingVolumeManager
 ") ScaleAndTransform;
-		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder = NULL);
-
-		/****************** SetActiveSelectionType ******************/
-		/**** md5 signature: bb196b52c241933538bbab6aeca4322f ****/
-		%feature("compactdefaultargs") SetActiveSelectionType;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theType: SelectionType
-
-Returns
--------
-None
-") SetActiveSelectionType;
-		void SetActiveSelectionType(const SelectionType & theType);
+		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****************** SetCamera ******************/
 		/**** md5 signature: 11f06b5f3493f65ebc339cf1e1252d99 ****/
 		%feature("compactdefaultargs") SetCamera;
-		%feature("autodoc", "Updates camera projection and orientation matrices in all selecting volumes.
+		%feature("autodoc", "Updates camera projection and orientation matrices in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
 
 Parameters
 ----------
@@ -1922,29 +2553,10 @@ None
 ") SetCamera;
 		void SetCamera(const opencascade::handle<Graphic3d_Camera > theCamera);
 
-		/****************** SetCamera ******************/
-		/**** md5 signature: 9622e55d8fd1b9fc5d3e3394bdbf36b9 ****/
-		%feature("compactdefaultargs") SetCamera;
-		%feature("autodoc", "Updates camera projection and orientation matrices in all selecting volumes.
-
-Parameters
-----------
-theProjection: Graphic3d_Mat4d
-theWorldView: Graphic3d_Mat4d
-theIsOrthographic: bool
-theWVPState: Graphic3d_WorldViewProjState,optional
-	default value is Graphic3d_WorldViewProjState()
-
-Returns
--------
-None
-") SetCamera;
-		void SetCamera(const Graphic3d_Mat4d & theProjection, const Graphic3d_Mat4d & theWorldView, const Standard_Boolean theIsOrthographic, const Graphic3d_WorldViewProjState & theWVPState = Graphic3d_WorldViewProjState());
-
 		/****************** SetPixelTolerance ******************/
 		/**** md5 signature: fda084bdc0d0a8e945d1f4e82a500297 ****/
 		%feature("compactdefaultargs") SetPixelTolerance;
-		%feature("autodoc", "Updates pixel tolerance in all selecting volumes.
+		%feature("autodoc", "Updates pixel tolerance in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
 
 Parameters
 ----------
@@ -2006,7 +2618,7 @@ None
 		/****************** SetViewport ******************/
 		/**** md5 signature: 8a132d12573d3301f6dc1103aa3c5d06 ****/
 		%feature("compactdefaultargs") SetViewport;
-		%feature("autodoc", "Updates viewport in all selecting volumes.
+		%feature("autodoc", "Updates viewport in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
 
 Parameters
 ----------
@@ -2024,7 +2636,7 @@ None
 		/****************** SetWindowSize ******************/
 		/**** md5 signature: 8f5369c74a4835dacda32c89cfdc6f2a ****/
 		%feature("compactdefaultargs") SetWindowSize;
-		%feature("autodoc", "Updates window size in all selecting volumes.
+		%feature("autodoc", "Updates window size in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
 
 Parameters
 ----------
@@ -2062,7 +2674,7 @@ opencascade::handle<Graphic3d_SequenceOfHClipPlane>
 		/****************** WindowSize ******************/
 		/**** md5 signature: b6b9e026658a5426a88d46691f9f9543 ****/
 		%feature("compactdefaultargs") WindowSize;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns window size.
 
 Parameters
 ----------
@@ -2073,28 +2685,6 @@ theWidth: int
 theHeight: int
 ") WindowSize;
 		void WindowSize(Standard_Integer &OutValue, Standard_Integer &OutValue);
-
-		/****************** WorldViewMatrix ******************/
-		/**** md5 signature: 23c687dcb922de6c82abce119f4be06f ****/
-		%feature("compactdefaultargs") WorldViewMatrix;
-		%feature("autodoc", "Returns current world view transformation common for all selecting volumes.
-
-Returns
--------
-Graphic3d_Mat4d
-") WorldViewMatrix;
-		const Graphic3d_Mat4d & WorldViewMatrix();
-
-		/****************** WorldViewProjState ******************/
-		/**** md5 signature: 6eef6074aae24be463d73d71bdf53e19 ****/
-		%feature("compactdefaultargs") WorldViewProjState;
-		%feature("autodoc", "Returns current camera world view projection transformation state common for all selecting volumes.
-
-Returns
--------
-Graphic3d_WorldViewProjState
-") WorldViewProjState;
-		const Graphic3d_WorldViewProjState & WorldViewProjState();
 
 };
 
@@ -2941,6 +3531,375 @@ None
 /*********************************
 * class SelectMgr_ViewerSelector *
 *********************************/
+/**********************************
+* class SelectMgr_AxisIntersector *
+**********************************/
+class SelectMgr_AxisIntersector : public SelectMgr_BaseIntersector {
+	public:
+		/****************** SelectMgr_AxisIntersector ******************/
+		/**** md5 signature: 3732b66199e86d09fe930b2bf8417fa2 ****/
+		%feature("compactdefaultargs") SelectMgr_AxisIntersector;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") SelectMgr_AxisIntersector;
+		 SelectMgr_AxisIntersector();
+
+		/****************** Build ******************/
+		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "Builds axis according to internal parameters. note: it should be called after init() method.
+
+Returns
+-------
+None
+") Build;
+		virtual void Build();
+
+		/****************** DetectedPoint ******************/
+		/**** md5 signature: f5119614d059d473f2e98823f778528f ****/
+		%feature("compactdefaultargs") DetectedPoint;
+		%feature("autodoc", "Calculates the point on a axis ray that was detected during the run of selection algo by given depth.
+
+Parameters
+----------
+theDepth: float
+
+Returns
+-------
+gp_Pnt
+") DetectedPoint;
+		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
+
+		/****************** DistToGeometryCenter ******************/
+		/**** md5 signature: ef4883136b3d59dc96190e78632a000d ****/
+		%feature("compactdefaultargs") DistToGeometryCenter;
+		%feature("autodoc", "Measures distance between start axis point and given point thecog.
+
+Parameters
+----------
+theCOG: gp_Pnt
+
+Returns
+-------
+float
+") DistToGeometryCenter;
+		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** GetFarPnt ******************/
+		/**** md5 signature: 81facda4320b4fbe9ad4747e990428a7 ****/
+		%feature("compactdefaultargs") GetFarPnt;
+		%feature("autodoc", "Returns far point along axis (infinite).
+
+Returns
+-------
+gp_Pnt
+") GetFarPnt;
+		virtual const gp_Pnt GetFarPnt();
+
+		/****************** GetNearPnt ******************/
+		/**** md5 signature: 6547ed3e9b4a5b5d0053afdb73046a99 ****/
+		%feature("compactdefaultargs") GetNearPnt;
+		%feature("autodoc", "Returns near point along axis.
+
+Returns
+-------
+gp_Pnt
+") GetNearPnt;
+		virtual const gp_Pnt GetNearPnt();
+
+		/****************** GetViewRayDirection ******************/
+		/**** md5 signature: 0d6910870801415274f5dddb9b21e975 ****/
+		%feature("compactdefaultargs") GetViewRayDirection;
+		%feature("autodoc", "Returns axis direction.
+
+Returns
+-------
+gp_Dir
+") GetViewRayDirection;
+		virtual const gp_Dir GetViewRayDirection();
+
+		/****************** Init ******************/
+		/**** md5 signature: b07bb18041c7d7fd236c285838ee6fee ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initializes selecting axis according to the input one.
+
+Parameters
+----------
+theAxis: gp_Ax1
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Ax1 & theAxis);
+
+		/****************** IsScalable ******************/
+		/**** md5 signature: bafeca45d952fd05dab481f471cd565b ****/
+		%feature("compactdefaultargs") IsScalable;
+		%feature("autodoc", "Returns false (not applicable to this volume).
+
+Returns
+-------
+bool
+") IsScalable;
+		virtual Standard_Boolean IsScalable();
+
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: eb9dad6b797a0a0ff89c1d09f8cc2446 ****/
+		%feature("compactdefaultargs") OverlapsBox;
+		%feature("autodoc", "Intersection test between defined axis and given axis-aligned box.
+
+Parameters
+----------
+theBoxMin: SelectMgr_Vec3
+theBoxMax: SelectMgr_Vec3
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsBox ******************/
+		/**** md5 signature: b59e9bf72467fe4ca0dfb9992d5bd028 ****/
+		%feature("compactdefaultargs") OverlapsBox;
+		%feature("autodoc", "Returns true if selecting axis intersects axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+
+Parameters
+----------
+theBoxMin: SelectMgr_Vec3
+theBoxMax: SelectMgr_Vec3
+theInside: bool *
+
+Returns
+-------
+bool
+") OverlapsBox;
+		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: 91e36733d419bfa87a94a4fadf66c1f6 ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsCylinder ******************/
+		/**** md5 signature: ebba148002fb6dc8cbbe7979fbf2a67b ****/
+		%feature("compactdefaultargs") OverlapsCylinder;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+
+Parameters
+----------
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsCylinder;
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: f5ec1da88416f5d768fc10e142d3a825 ****/
+		%feature("compactdefaultargs") OverlapsPoint;
+		%feature("autodoc", "Intersection test between defined axis and given point.
+
+Parameters
+----------
+thePnt: gp_Pnt
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsPoint ******************/
+		/**** md5 signature: d7b37b52b3a018e10f4074a808688275 ****/
+		%feature("compactdefaultargs") OverlapsPoint;
+		%feature("autodoc", "Intersection test between defined axis and given point.
+
+Parameters
+----------
+thePnt: gp_Pnt
+
+Returns
+-------
+bool
+") OverlapsPoint;
+		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
+
+		/****************** OverlapsPolygon ******************/
+		/**** md5 signature: db9e490051fa1222da72a0503292bd60 ****/
+		%feature("compactdefaultargs") OverlapsPolygon;
+		%feature("autodoc", "Intersection test between defined axis and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
+
+Parameters
+----------
+theArrayOfPnts: TColgp_Array1OfPnt
+theSensType: Select3D_TypeOfSensitivity
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsPolygon;
+		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSegment ******************/
+		/**** md5 signature: 8ca34a19e289d4f56d25f404f14353a2 ****/
+		%feature("compactdefaultargs") OverlapsSegment;
+		%feature("autodoc", "Checks if selecting axis intersects line segment.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsSegment;
+		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: 2b7a70713e1032389098753ec8495331 ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Intersection test between defined axis and given sphere with center thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+
+		/****************** OverlapsSphere ******************/
+		/**** md5 signature: f08575f5df6e1b77c989dc6c099c2b39 ****/
+		%feature("compactdefaultargs") OverlapsSphere;
+		%feature("autodoc", "Intersection test between defined axis and given sphere with center thecenter and radius theradius.
+
+Parameters
+----------
+theCenter: gp_Pnt
+theRadius: float
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsSphere;
+		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsTriangle ******************/
+		/**** md5 signature: 98197f256a47bdbe43f4622e23bf7cd4 ****/
+		%feature("compactdefaultargs") OverlapsTriangle;
+		%feature("autodoc", "Intersection test between defined axis and given triangle. the test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
+
+Parameters
+----------
+thePnt1: gp_Pnt
+thePnt2: gp_Pnt
+thePnt3: gp_Pnt
+theSensType: Select3D_TypeOfSensitivity
+theClipRange: SelectMgr_ViewClipRange
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsTriangle;
+		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+
+		/****************** ScaleAndTransform ******************/
+		/**** md5 signature: a203fbfb62144f3225129b6829253952 ****/
+		%feature("compactdefaultargs") ScaleAndTransform;
+		%feature("autodoc", "Important: scaling doesn't make sense for this intersector. returns a copy of the intersector transformed using the matrix given. builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. can be null if reconstruction is not expected furthermore.
+
+Parameters
+----------
+theScaleFactor: int
+theTrsf: gp_GTrsf
+theBuilder: SelectMgr_FrustumBuilder
+
+Returns
+-------
+opencascade::handle<SelectMgr_BaseIntersector>
+") ScaleAndTransform;
+		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+
+		/****************** SetCamera ******************/
+		/**** md5 signature: fb69f58b8ac85ce845a8857ed97739d9 ****/
+		%feature("compactdefaultargs") SetCamera;
+		%feature("autodoc", "Saves camera definition. do nothing for axis intersector (not applicable to this volume).
+
+Parameters
+----------
+theCamera: Graphic3d_Camera
+
+Returns
+-------
+None
+") SetCamera;
+		virtual void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
+
+};
+
+
+%make_alias(SelectMgr_AxisIntersector)
+
+%extend SelectMgr_AxisIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************
+* class SelectMgr_BaseFrustum *
+******************************/
 /************************************
 * class SelectMgr_CompositionFilter *
 ************************************/
@@ -3030,7 +3989,7 @@ None
 		void Remove(const opencascade::handle<SelectMgr_Filter> & aFilter);
 
 		/****************** StoredFilters ******************/
-		/**** md5 signature: a04e070cce1cdb1ca6b68764c2c7326f ****/
+		/**** md5 signature: 0ff7be41979ba25dcaba3d785745d646 ****/
 		%feature("compactdefaultargs") StoredFilters;
 		%feature("autodoc", "Returns the list of stored filters from this framework.
 
@@ -3051,158 +4010,12 @@ SelectMgr_ListOfFilter
 	}
 };
 
-/**************************
-* class SelectMgr_Frustum *
-**************************/
 /*************************************
 * class SelectMgr_RectangularFrustum *
 *************************************/
 /************************************
 * class SelectMgr_TriangularFrustum *
 ************************************/
-/***************************************
-* class SelectMgr_TriangularFrustumSet *
-***************************************/
-/***********************************
-* class SelectMgr_ViewerSelector3d *
-***********************************/
-class SelectMgr_ViewerSelector3d : public SelectMgr_ViewerSelector {
-	public:
-		/****************** SelectMgr_ViewerSelector3d ******************/
-		/**** md5 signature: 75d5da300b4147660a2cf004f2aa3145 ****/
-		%feature("compactdefaultargs") SelectMgr_ViewerSelector3d;
-		%feature("autodoc", "Constructs an empty 3d selector object.
-
-Returns
--------
-None
-") SelectMgr_ViewerSelector3d;
-		 SelectMgr_ViewerSelector3d();
-
-		/****************** ClearSensitive ******************/
-		/**** md5 signature: bbfbdb95251072aaccc54e26ea15ada9 ****/
-		%feature("compactdefaultargs") ClearSensitive;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theView: V3d_View
-
-Returns
--------
-None
-") ClearSensitive;
-		void ClearSensitive(const opencascade::handle<V3d_View> & theView);
-
-		/****************** DisplaySensitive ******************/
-		/**** md5 signature: 8dded899c4a255afc18ddc44c8d7a6f7 ****/
-		%feature("compactdefaultargs") DisplaySensitive;
-		%feature("autodoc", "Displays sensitives in view <theview>.
-
-Parameters
-----------
-theView: V3d_View
-
-Returns
--------
-None
-") DisplaySensitive;
-		void DisplaySensitive(const opencascade::handle<V3d_View> & theView);
-
-		/****************** DisplaySensitive ******************/
-		/**** md5 signature: b1201290956c96d7a296cb8583c59abe ****/
-		%feature("compactdefaultargs") DisplaySensitive;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theSel: SelectMgr_Selection
-theTrsf: gp_Trsf
-theView: V3d_View
-theToClearOthers: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") DisplaySensitive;
-		void DisplaySensitive(const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theTrsf, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToClearOthers = Standard_True);
-
-
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
-		/****************** Pick ******************/
-		/**** md5 signature: 2bffaec90f889b1c8a589371f27c765d ****/
-		%feature("compactdefaultargs") Pick;
-		%feature("autodoc", "Picks the sensitive entity at the pixel coordinates of the mouse <thexpix> and <theypix>. the selector looks for touched areas and owners.
-
-Parameters
-----------
-theXPix: int
-theYPix: int
-theView: V3d_View
-
-Returns
--------
-None
-") Pick;
-		void Pick(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView);
-
-		/****************** Pick ******************/
-		/**** md5 signature: ac91d378236f4cd1507ea2ad52a93f76 ****/
-		%feature("compactdefaultargs") Pick;
-		%feature("autodoc", "Picks the sensitive entity according to the minimum and maximum pixel values <thexpmin>, <theypmin>, <thexpmax> and <theypmax> defining a 2d area for selection in the 3d view aview.
-
-Parameters
-----------
-theXPMin: int
-theYPMin: int
-theXPMax: int
-theYPMax: int
-theView: V3d_View
-
-Returns
--------
-None
-") Pick;
-		void Pick(const Standard_Integer theXPMin, const Standard_Integer theYPMin, const Standard_Integer theXPMax, const Standard_Integer theYPMax, const opencascade::handle<V3d_View> & theView);
-
-		/****************** Pick ******************/
-		/**** md5 signature: d9dd319057f3def6d1d43685fa1cdf94 ****/
-		%feature("compactdefaultargs") Pick;
-		%feature("autodoc", "Pick action - input pixel values for polyline selection for selection.
-
-Parameters
-----------
-thePolyline: TColgp_Array1OfPnt2d
-theView: V3d_View
-
-Returns
--------
-None
-") Pick;
-		void Pick(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView);
-
-};
-
-
-%make_alias(SelectMgr_ViewerSelector3d)
-
-%extend SelectMgr_ViewerSelector3d {
-	%pythoncode {
-	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def ToPixMap(self):
-		pass
-	}
-};
-
 /****************************
 * class SelectMgr_AndFilter *
 ****************************/
@@ -3332,6 +4145,9 @@ None
 	}
 };
 
+/**************************
+* class SelectMgr_Frustum *
+**************************/
 /***************************
 * class SelectMgr_OrFilter *
 ***************************/
@@ -3374,6 +4190,9 @@ bool
 	}
 };
 
+/***************************************
+* class SelectMgr_TriangularFrustumSet *
+***************************************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped

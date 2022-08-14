@@ -4,11 +4,11 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Approx import *
+from OCC.Core.math import *
 from OCC.Core.AppParCurves import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
 from OCC.Core.IntSurf import *
-from OCC.Core.math import *
 from OCC.Core.TColStd import *
 from OCC.Core.BRepAdaptor import *
 from OCC.Core.IntImp import *
@@ -21,6 +21,8 @@ class BRepApprox_Approx:
     def __init__(self) -> None: ...
     def IsDone(self) -> bool: ...
     def NbMultiCurves(self) -> int: ...
+    @staticmethod
+    def Parameters(Line: BRepApprox_TheMultiLineOfApprox, firstP: int, lastP: int, Par: Approx_ParametrizationType, TheParameters: math_Vector) -> None: ...
     def SetParameters(self, Tol3d: float, Tol2d: float, DegMin: int, DegMax: int, NbIterMax: int, NbPntMax: Optional[int] = 30, ApproxWithTangency: Optional[bool] = True, Parametrization: Optional[Approx_ParametrizationType] = Approx_ChordLength) -> None: ...
     def TolReached2d(self) -> float: ...
     def TolReached3d(self) -> float: ...
@@ -443,6 +445,7 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox(math_FunctionSetWith
 # harray2 classes
 # hsequence classes
 
+BRepApprox_Approx_Parameters = BRepApprox_Approx.Parameters
 BRepApprox_TheMultiLineToolOfApprox_Curvature = BRepApprox_TheMultiLineToolOfApprox.Curvature
 BRepApprox_TheMultiLineToolOfApprox_Curvature = BRepApprox_TheMultiLineToolOfApprox.Curvature
 BRepApprox_TheMultiLineToolOfApprox_Curvature = BRepApprox_TheMultiLineToolOfApprox.Curvature

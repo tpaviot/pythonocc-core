@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MESHVSDOCSTRING
 "MeshVS module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_meshvs.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_meshvs.html"
 %enddef
 %module (package="OCC.Core", docstring=MESHVSDOCSTRING) MeshVS
 
@@ -44,12 +44,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_meshvs.html"
 #include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<SelectMgr_module.hxx>
-#include<Quantity_module.hxx>
 #include<Select3D_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<TCollection_module.hxx>
+#include<Quantity_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<SelectBasics_module.hxx>
 #include<AIS_module.hxx>
@@ -85,12 +85,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_meshvs.html"
 %import NCollection.i
 %import TColgp.i
 %import SelectMgr.i
-%import Quantity.i
 %import Select3D.i
 %import gp.i
 %import TColStd.i
 %import Bnd.i
 %import TCollection.i
+%import Quantity.i
 %import Graphic3d.i
 %import SelectBasics.i
 %import AIS.i
@@ -207,7 +207,7 @@ enum  {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class MeshVS_EntityType(IntEnum):
@@ -544,7 +544,6 @@ MeshVS_DA_User = MeshVS_DrawerAttribute.MeshVS_DA_User
 /* typedefs */
 typedef NCollection_Array1<TColStd_SequenceOfInteger> MeshVS_Array1OfSequenceOfInteger;
 typedef Standard_Integer MeshVS_BuilderPriority;
-typedef Quantity_ColorHasher MeshVS_ColorHasher;
 typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
 typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
 typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
@@ -852,7 +851,7 @@ DMin: float
 		/****************** GetDetectedEntities ******************/
 		/**** md5 signature: 39ca460111ab817983a833e2f70887f6 ****/
 		%feature("compactdefaultargs") GetDetectedEntities;
-		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse selection with rectangular box (xmin, ymin, xmax, ymax) on the current veiw plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
+		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse selection with rectangular box (xmin, ymin, xmax, ymax) on the current view plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
 
 Parameters
 ----------
@@ -874,7 +873,7 @@ bool
 		/****************** GetDetectedEntities ******************/
 		/**** md5 signature: fece8acd4a4e76d11f294ba9cc6b4863 ****/
 		%feature("compactdefaultargs") GetDetectedEntities;
-		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse selection with the polyline <polyline> on the current veiw plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
+		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse selection with the polyline <polyline> on the current view plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
 
 Parameters
 ----------
@@ -911,7 +910,7 @@ bool
 		/****************** GetGeom ******************/
 		/**** md5 signature: 236738bc464d6c86415c7d5b5ad6b029 ****/
 		%feature("compactdefaultargs") GetGeom;
-		%feature("autodoc", "Returns geometry information about node or element id is the numerical identificator of node or element iselement indicates this id describe node ( if standard_false ) or element ( if standard_true ) coords is an array of co-ordinates of node(s). for node it is only 3 numbers: x, y, z in the strict order for element it is 3*n numbers, where n is number of this element vertices the order is strict also: x1, y1, z1, x2,...., where xi, yi, zi are co-ordinates of vertices nbnodes is number of nodes. it is recommended this parameter to be set to 1 for node. type is type of node or element (from enumeration). it is recommended this parameter to be set to meshvs_et_node for node.
+		%feature("autodoc", "Returns geometry information about node or element id is the numerical identificator of node or element iselement indicates this id describe node ( if standard_false ) or element ( if standard_true ) coords is an array of coordinates of node(s). for node it is only 3 numbers: x, y, z in the strict order for element it is 3*n numbers, where n is number of this element vertices the order is strict also: x1, y1, z1, x2,...., where xi, yi, zi are coordinates of vertices nbnodes is number of nodes. it is recommended this parameter to be set to 1 for node. type is type of node or element (from enumeration). it is recommended this parameter to be set to meshvs_et_node for node.
 
 Parameters
 ----------
@@ -1010,7 +1009,7 @@ NbNodes: int
 		/****************** GetNormal ******************/
 		/**** md5 signature: 500534b89a1e875e9c4d452ed489ad06 ****/
 		%feature("compactdefaultargs") GetNormal;
-		%feature("autodoc", "This method calculates normal of face, which is using for correct reflection presentation. there is default method, for advance reflection this method can be redefined. id is the numerical identificator of only element! max is maximal number of nodes an element can consist of nx, ny, nz are values whose represent co-ordinates of normal (will be returned) in the redefined method you can return normal with length more then 1, but in this case the appearance of element will be more bright than usual. for ordinary brightness you must return normal with length 1.
+		%feature("autodoc", "This method calculates normal of face, which is using for correct reflection presentation. there is default method, for advance reflection this method can be redefined. id is the numerical identificator of only element! max is maximal number of nodes an element can consist of nx, ny, nz are values whose represent coordinates of normal (will be returned) in the redefined method you can return normal with length more then 1, but in this case the appearance of element will be more bright than usual. for ordinary brightness you must return normal with length 1.
 
 Parameters
 ----------
@@ -1575,37 +1574,37 @@ None
 		virtual void ClearSelected();
 
 		/****************** Compute ******************/
-		/**** md5 signature: 843401e4757df99542b92ba39cbdf61f ****/
+		/**** md5 signature: b295279843aabf998f201e59d7c8b091 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Computes presentation using builders added to sequence. each builder computes own part of mesh presentation according to its type.
 
 Parameters
 ----------
-PM: PrsMgr_PresentationManager3d
-Prs: Prs3d_Presentation
-DisplayMode: int
+thePrsMgr: PrsMgr_PresentationManager
+thePrs: Prs3d_Presentation
+theDispMode: int
 
 Returns
 -------
 None
 ") Compute;
-		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager3d> & PM, const opencascade::handle<Prs3d_Presentation> & Prs, const Standard_Integer DisplayMode);
+		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theDispMode);
 
 		/****************** ComputeSelection ******************/
-		/**** md5 signature: 3bf0ee6eb1ecda287a21d6e66e3c34c0 ****/
+		/**** md5 signature: 7321d14f9e1f7bb97bdc8aec5055880a ****/
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "Computes selection according to selectmode.
 
 Parameters
 ----------
-Sel: SelectMgr_Selection
-SelectMode: int
+theSel: SelectMgr_Selection
+theSelMode: int
 
 Returns
 -------
 None
 ") ComputeSelection;
-		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & Sel, const Standard_Integer SelectMode);
+		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSel, const Standard_Integer theSelMode);
 
 		/****************** FindBuilder ******************/
 		/**** md5 signature: bb263b949271eb7f143c55d2bc9b8716 ****/
@@ -1767,13 +1766,13 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetSelectableNodes();
 
 		/****************** HilightOwnerWithColor ******************/
-		/**** md5 signature: 6f4d973046ef824a20ee54ff5ca89e9b ****/
+		/**** md5 signature: b933f8f1e93b95072660d63113069b6b ****/
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "Draw hilighted owner presentation.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theColor: Prs3d_Drawer
 theOwner: SelectMgr_EntityOwner
 
@@ -1781,23 +1780,23 @@ Returns
 -------
 None
 ") HilightOwnerWithColor;
-		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theColor, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
+		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theColor, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****************** HilightSelected ******************/
-		/**** md5 signature: 49a0436e98cdb1d487388b0211b1c14d ****/
+		/**** md5 signature: 02ea231dde8ab5fdb0f76203fa6bc528 ****/
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "Draw selected owners presentation.
 
 Parameters
 ----------
-PM: PrsMgr_PresentationManager3d
-Owners: SelectMgr_SequenceOfOwner
+thePrsMgr: PrsMgr_PresentationManager
+theOwners: SelectMgr_SequenceOfOwner
 
 Returns
 -------
 None
 ") HilightSelected;
-		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager3d> & PM, const SelectMgr_SequenceOfOwner & Owners);
+		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const SelectMgr_SequenceOfOwner & theOwners);
 
 		/****************** IsHiddenElem ******************/
 		/**** md5 signature: 339016e180c5cdd521a10fae084f893c ****/
@@ -2106,22 +2105,21 @@ None
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & PM, const Standard_Integer Mode = 0);
 
 		/****************** HilightWithColor ******************/
-		/**** md5 signature: 56e556dd0edce796a3c3d12b272af59e ****/
+		/**** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "Hilights owner with the certain color.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
-theMode: int,optional
-	default value is 0
+theMode: int
 
 Returns
 -------
 None
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
 		/****************** ID ******************/
 		/**** md5 signature: bad178b94960474569631e20c0ad1e69 ****/
@@ -2318,22 +2316,21 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetSelectedNodes();
 
 		/****************** HilightWithColor ******************/
-		/**** md5 signature: 05860da31473a9974b1ca9e787c9d31e ****/
+		/**** md5 signature: d288227b2265be6943d8ce162a7983ea ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theColor: Prs3d_Drawer
-theMode: int,optional
-	default value is 0
+theMode: int
 
 Returns
 -------
 None
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theColor, const Standard_Integer theMode = 0);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theColor, const Standard_Integer theMode);
 
 		/****************** IsForcedHilight ******************/
 		/**** md5 signature: b7e8a39578fc441f958f06f3cf923c7d ****/
@@ -2494,15 +2491,15 @@ int
 		Standard_Integer GetId();
 
 		/****************** GetPresentationManager ******************/
-		/**** md5 signature: d64c4e3f5d65eee4fe2343ade7564913 ****/
+		/**** md5 signature: 6e40a1f4cb619282f3f5fef0362d30c7 ****/
 		%feature("compactdefaultargs") GetPresentationManager;
 		%feature("autodoc", "Get presentation manager of builder.
 
 Returns
 -------
-opencascade::handle<PrsMgr_PresentationManager3d>
+opencascade::handle<PrsMgr_PresentationManager>
 ") GetPresentationManager;
-		opencascade::handle<PrsMgr_PresentationManager3d> GetPresentationManager();
+		opencascade::handle<PrsMgr_PresentationManager> GetPresentationManager();
 
 		/****************** GetPriority ******************/
 		/**** md5 signature: 14b4b2b155ca725d4cb06c0280e4a399 ****/
@@ -2572,19 +2569,19 @@ None
 		void SetExcluding(const Standard_Boolean state);
 
 		/****************** SetPresentationManager ******************/
-		/**** md5 signature: 938b7d07e72abc561bff70afcf6fe6e8 ****/
+		/**** md5 signature: d173303c18adee38a57fbcdd196f3023 ****/
 		%feature("compactdefaultargs") SetPresentationManager;
 		%feature("autodoc", "Set presentation manager for builder.
 
 Parameters
 ----------
-thePrsMgr: PrsMgr_PresentationManager3d
+thePrsMgr: PrsMgr_PresentationManager
 
 Returns
 -------
 None
 ") SetPresentationManager;
-		void SetPresentationManager(const opencascade::handle<PrsMgr_PresentationManager3d> & thePrsMgr);
+		void SetPresentationManager(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr);
 
 		/****************** TestFlags ******************/
 		/**** md5 signature: 3f81fdd69e6875a0d0713045b35799f3 ****/
@@ -4592,5 +4589,4 @@ class MeshVS_HArray1OfSequenceOfInteger : public MeshVS_Array1OfSequenceOfIntege
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-MeshVS_ColorHasher=OCC.Core.Quantity.Quantity_ColorHasher
 }

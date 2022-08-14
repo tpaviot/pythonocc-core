@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLLDRIVERSDOCSTRING
 "XmlLDrivers module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmlldrivers.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xmlldrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLLDRIVERSDOCSTRING) XmlLDrivers
 
@@ -75,7 +75,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -162,17 +162,6 @@ opencascade::handle<Standard_Transient>
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
-		/****************** StorageVersion ******************/
-		/**** md5 signature: 31bd68873566544a57a9fa9494380ade ****/
-		%feature("compactdefaultargs") StorageVersion;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-int
-") StorageVersion;
-		static int StorageVersion();
-
 };
 
 
@@ -213,19 +202,8 @@ opencascade::handle<XmlMDF_ADriverTable>
 ") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** CreateDocument ******************/
-		/**** md5 signature: d7e352e938b9f62ab597a280f53e96dc ****/
-		%feature("compactdefaultargs") CreateDocument;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<CDM_Document>
-") CreateDocument;
-		virtual opencascade::handle<CDM_Document> CreateDocument();
-
 		/****************** Read ******************/
-		/**** md5 signature: 5078c1d74da40eebfc4838e73b8bd5ed ****/
+		/**** md5 signature: d00a6a8efb84379816422604bd70ebf9 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "No available documentation.
 
@@ -234,6 +212,8 @@ Parameters
 theFileName: TCollection_ExtendedString
 theNewDocument: CDM_Document
 theApplication: CDM_Application
+theFilter: PCDM_ReaderFilter,optional
+	default value is opencascade::handle<PCDM_ReaderFilter>()
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -241,7 +221,7 @@ Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

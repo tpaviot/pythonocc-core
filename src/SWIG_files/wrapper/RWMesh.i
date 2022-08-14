@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWMESHDOCSTRING
 "RWMesh module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwmesh.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwmesh.html"
 %enddef
 %module (package="OCC.Core", docstring=RWMESHDOCSTRING) RWMesh
 
@@ -42,19 +42,20 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwmesh.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TDF_module.hxx>
+#include<TCollection_module.hxx>
 #include<TDocStd_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
-#include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Graphic3d_module.hxx>
-#include<TDF_module.hxx>
 #include<TopLoc_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<Quantity_module.hxx>
 #include<Poly_module.hxx>
 #include<Image_module.hxx>
+#include<OSD_module.hxx>
 #include<Select3D_module.hxx>
 #include<Bnd_module.hxx>
 #include<XCAFDoc_module.hxx>
@@ -81,19 +82,20 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwmesh.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TDF.i
+%import TCollection.i
 %import TDocStd.i
 %import gp.i
 %import TColStd.i
-%import TCollection.i
 %import Message.i
 %import TopoDS.i
 %import Graphic3d.i
-%import TDF.i
 %import TopLoc.i
 %import XCAFPrs.i
 %import Quantity.i
 %import Poly.i
 %import Image.i
+%import OSD.i
 
 %pythoncode {
 from enum import IntEnum
@@ -111,6 +113,16 @@ enum RWMesh_CoordinateSystem {
 	RWMesh_CoordinateSystem_Yup = RWMesh_CoordinateSystem_glTF,
 };
 
+enum RWMesh_NameFormat {
+	RWMesh_NameFormat_Empty = 0,
+	RWMesh_NameFormat_Product = 1,
+	RWMesh_NameFormat_Instance = 2,
+	RWMesh_NameFormat_InstanceOrProduct = 3,
+	RWMesh_NameFormat_ProductOrInstance = 4,
+	RWMesh_NameFormat_ProductAndInstance = 5,
+	RWMesh_NameFormat_ProductAndInstanceAndOcaf = 6,
+};
+
 enum RWMesh_CafReaderStatusEx {
 	RWMesh_CafReaderStatusEx_NONE = 0,
 	RWMesh_CafReaderStatusEx_Partial = 1,
@@ -118,7 +130,7 @@ enum RWMesh_CafReaderStatusEx {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class RWMesh_CoordinateSystem(IntEnum):
@@ -137,6 +149,22 @@ RWMesh_CoordinateSystem_glTF = RWMesh_CoordinateSystem.RWMesh_CoordinateSystem_g
 RWMesh_CoordinateSystem_Zup = RWMesh_CoordinateSystem.RWMesh_CoordinateSystem_Zup
 RWMesh_CoordinateSystem_Yup = RWMesh_CoordinateSystem.RWMesh_CoordinateSystem_Yup
 
+class RWMesh_NameFormat(IntEnum):
+	RWMesh_NameFormat_Empty = 0
+	RWMesh_NameFormat_Product = 1
+	RWMesh_NameFormat_Instance = 2
+	RWMesh_NameFormat_InstanceOrProduct = 3
+	RWMesh_NameFormat_ProductOrInstance = 4
+	RWMesh_NameFormat_ProductAndInstance = 5
+	RWMesh_NameFormat_ProductAndInstanceAndOcaf = 6
+RWMesh_NameFormat_Empty = RWMesh_NameFormat.RWMesh_NameFormat_Empty
+RWMesh_NameFormat_Product = RWMesh_NameFormat.RWMesh_NameFormat_Product
+RWMesh_NameFormat_Instance = RWMesh_NameFormat.RWMesh_NameFormat_Instance
+RWMesh_NameFormat_InstanceOrProduct = RWMesh_NameFormat.RWMesh_NameFormat_InstanceOrProduct
+RWMesh_NameFormat_ProductOrInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductOrInstance
+RWMesh_NameFormat_ProductAndInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstance
+RWMesh_NameFormat_ProductAndInstanceAndOcaf = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstanceAndOcaf
+
 class RWMesh_CafReaderStatusEx(IntEnum):
 	RWMesh_CafReaderStatusEx_NONE = 0
 	RWMesh_CafReaderStatusEx_Partial = 1
@@ -147,6 +175,9 @@ RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStat
 
 /* handles */
 %wrap_handle(RWMesh_CafReader)
+%wrap_handle(RWMesh_MaterialMap)
+%wrap_handle(RWMesh_TriangulationReader)
+%wrap_handle(RWMesh_TriangulationSource)
 /* end handles declaration */
 
 /* templates */
@@ -156,6 +187,53 @@ RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStat
 /* typedefs */
 typedef NCollection_DataMap<TopoDS_Shape, RWMesh_NodeAttributes, TopTools_ShapeMapHasher> RWMesh_NodeAttributeMap;
 /* end typedefs declaration */
+
+/***************
+* class RWMesh *
+***************/
+%rename(rwmesh) RWMesh;
+class RWMesh {
+	public:
+		/****************** FormatName ******************/
+		/**** md5 signature: 8863a8ba0a3c5fdbbac0c46aca3d0e43 ****/
+		%feature("compactdefaultargs") FormatName;
+		%feature("autodoc", "Generate name for specified labels. @param[in] theformat name format to apply @param[in] thelabel instance label @param[in] thereflabel product label.
+
+Parameters
+----------
+theFormat: RWMesh_NameFormat
+theLabel: TDF_Label
+theRefLabel: TDF_Label
+
+Returns
+-------
+TCollection_AsciiString
+") FormatName;
+		static TCollection_AsciiString FormatName(RWMesh_NameFormat theFormat, const TDF_Label & theLabel, const TDF_Label & theRefLabel);
+
+		/****************** ReadNameAttribute ******************/
+		/**** md5 signature: aa66f503550211b8a83be1731945c715 ****/
+		%feature("compactdefaultargs") ReadNameAttribute;
+		%feature("autodoc", "Read name attribute from label.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+TCollection_AsciiString
+") ReadNameAttribute;
+		static TCollection_AsciiString ReadNameAttribute(const TDF_Label & theLabel);
+
+};
+
+
+%extend RWMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 
 /*************************
 * class RWMesh_CafReader *
@@ -334,9 +412,9 @@ None
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
 		/****************** SetDocument ******************/
-		/**** md5 signature: 58f652f27d40d8d626eb93e1d1864a2d ****/
+		/**** md5 signature: fefb63e21ede613b0177b88e9cb03a5f ****/
 		%feature("compactdefaultargs") SetDocument;
-		%feature("autodoc", "Set target document.
+		%feature("autodoc", "Set target document. set system length unit according to the units of the document.
 
 Parameters
 ----------
@@ -833,6 +911,23 @@ None
 ") RWMesh_FaceIterator;
 		 RWMesh_FaceIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const Standard_Boolean theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
+		/****************** RWMesh_FaceIterator ******************/
+		/**** md5 signature: 57b47bb450205e96f4feb877a8606d43 ****/
+		%feature("compactdefaultargs") RWMesh_FaceIterator;
+		%feature("autodoc", "Auxiliary constructor.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theStyle: XCAFPrs_Style,optional
+	default value is XCAFPrs_Style()
+
+Returns
+-------
+None
+") RWMesh_FaceIterator;
+		 RWMesh_FaceIterator(const TopoDS_Shape & theShape, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
+
 		/****************** ElemLower ******************/
 		/**** md5 signature: 75e86e4f7178164b4c841f30991514ec ****/
 		%feature("compactdefaultargs") ElemLower;
@@ -854,6 +949,17 @@ Returns
 int
 ") ElemUpper;
 		Standard_Integer ElemUpper();
+
+		/****************** ExploredShape ******************/
+		/**** md5 signature: c8a47d07240c1a2b5ff731be2f859ced ****/
+		%feature("compactdefaultargs") ExploredShape;
+		%feature("autodoc", "Return explored shape.
+
+Returns
+-------
+TopoDS_Shape
+") ExploredShape;
+		const TopoDS_Shape ExploredShape();
 
 		/****************** Face ******************/
 		/**** md5 signature: 95406b8d0d556c0537e0768c48713f21 ****/
@@ -1029,7 +1135,7 @@ int
 		Standard_Integer NodeUpper();
 
 		/****************** NormalTransformed ******************/
-		/**** md5 signature: 4e5c062e6c5cc2ad0a73e8c3f66ad4a7 ****/
+		/**** md5 signature: 74bb2de6b86a11ea27e4a0cd18412b1e ****/
 		%feature("compactdefaultargs") NormalTransformed;
 		%feature("autodoc", "Return normal at specified node index with face transformation applied and face orientation applied.
 
@@ -1085,7 +1191,7 @@ gp_Pnt
 		gp_Pnt node(const Standard_Integer theNode);
 
 		/****************** normal ******************/
-		/**** md5 signature: 23cb959e15c8427c828bf92d95208d2a ****/
+		/**** md5 signature: 38d3d2a1d856561177d7de28baaf5870 ****/
 		%feature("compactdefaultargs") normal;
 		%feature("autodoc", "Return normal at specified node index without face transformation applied.
 
@@ -1127,7 +1233,7 @@ Poly_Triangle
 * class RWMesh_MaterialMap *
 ***************************/
 %nodefaultctor RWMesh_MaterialMap;
-class RWMesh_MaterialMap {
+class RWMesh_MaterialMap : public Standard_Transient {
 	public:
 		/****************** AddMaterial ******************/
 		/**** md5 signature: 0f9190dda4051c96b8f2a967c00a35dd ****/
@@ -1244,6 +1350,8 @@ None
 };
 
 
+%make_alias(RWMesh_MaterialMap)
+
 %extend RWMesh_MaterialMap {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1263,6 +1371,333 @@ class RWMesh_NodeAttributes {
 
 
 %extend RWMesh_NodeAttributes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class RWMesh_TriangulationReader *
+***********************************/
+%nodefaultctor RWMesh_TriangulationReader;
+class RWMesh_TriangulationReader : public Standard_Transient {
+	public:
+		class LoadingStatistic {};
+		/****************** CoordinateSystemConverter ******************/
+		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
+		%feature("compactdefaultargs") CoordinateSystemConverter;
+		%feature("autodoc", "Returns coordinate system converter using for correct data loading.
+
+Returns
+-------
+RWMesh_CoordinateSystemConverter
+") CoordinateSystemConverter;
+		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
+
+		/****************** FileName ******************/
+		/**** md5 signature: dcea16627fbfa6bf9869d62bc863af8e ****/
+		%feature("compactdefaultargs") FileName;
+		%feature("autodoc", "Returns file name for reporting issues.
+
+Returns
+-------
+TCollection_AsciiString
+") FileName;
+		const TCollection_AsciiString & FileName();
+
+		/****************** IsDoublePrecision ******************/
+		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		%feature("compactdefaultargs") IsDoublePrecision;
+		%feature("autodoc", "Returns flag to fill in triangulation using double or single precision; false by default.
+
+Returns
+-------
+bool
+") IsDoublePrecision;
+		bool IsDoublePrecision();
+
+		/****************** Load ******************/
+		/**** md5 signature: 6ef3f09c92594cbd8fa638ca01586c5d ****/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "Loads primitive array.
+
+Parameters
+----------
+theSourceMesh: RWMesh_TriangulationSource
+theDestMesh: Poly_Triangulation
+theFileSystem: OSD_FileSystem
+
+Returns
+-------
+bool
+") Load;
+		bool Load(const opencascade::handle<RWMesh_TriangulationSource> & theSourceMesh, const opencascade::handle<Poly_Triangulation> & theDestMesh, const opencascade::handle<OSD_FileSystem> & theFileSystem);
+
+		/****************** PrintStatistic ******************/
+		/**** md5 signature: 4491817941f6da0eae292263140d0469 ****/
+		%feature("compactdefaultargs") PrintStatistic;
+		%feature("autodoc", "Prints loading statistic. this method should be used between startstatistic() and stopstatistic() calls for correct results.
+
+Returns
+-------
+None
+") PrintStatistic;
+		void PrintStatistic();
+
+		/****************** SetCoordinateSystemConverter ******************/
+		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
+		%feature("compactdefaultargs") SetCoordinateSystemConverter;
+		%feature("autodoc", "Sets coordinate system converter.
+
+Parameters
+----------
+theConverter: RWMesh_CoordinateSystemConverter
+
+Returns
+-------
+None
+") SetCoordinateSystemConverter;
+		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
+
+		/****************** SetDoublePrecision ******************/
+		/**** md5 signature: 2fee9d611d346cc1324a9f63e1c71f99 ****/
+		%feature("compactdefaultargs") SetDoublePrecision;
+		%feature("autodoc", "Sets flag to fill in triangulation using double or single precision.
+
+Parameters
+----------
+theIsDouble: bool
+
+Returns
+-------
+None
+") SetDoublePrecision;
+		void SetDoublePrecision(bool theIsDouble);
+
+		/****************** SetFileName ******************/
+		/**** md5 signature: 422e5cf48ba6ffc1d4cf82f2fe6d97c2 ****/
+		%feature("compactdefaultargs") SetFileName;
+		%feature("autodoc", "Sets file name for reporting issues.
+
+Parameters
+----------
+theFileName: TCollection_AsciiString
+
+Returns
+-------
+None
+") SetFileName;
+		void SetFileName(const TCollection_AsciiString & theFileName);
+
+		/****************** SetToPrintDebugMessages ******************/
+		/**** md5 signature: dcbcbd79fdeab4f6976a1573fd9e5905 ****/
+		%feature("compactdefaultargs") SetToPrintDebugMessages;
+		%feature("autodoc", "Sets flag to print debug information.
+
+Parameters
+----------
+theToPrint: bool
+
+Returns
+-------
+None
+") SetToPrintDebugMessages;
+		void SetToPrintDebugMessages(const Standard_Boolean theToPrint);
+
+		/****************** SetToSkipDegenerates ******************/
+		/**** md5 signature: 8f2eee3a91d34501a755dd28a3a30824 ****/
+		%feature("compactdefaultargs") SetToSkipDegenerates;
+		%feature("autodoc", "Sets flag to skip degenerated triangles during mesh loading (only indexes will be checked).
+
+Parameters
+----------
+theToSkip: bool
+
+Returns
+-------
+None
+") SetToSkipDegenerates;
+		void SetToSkipDegenerates(const Standard_Boolean theToSkip);
+
+		/****************** StartStatistic ******************/
+		/**** md5 signature: a4bdfbb69ed74092a59b8aa233aedc5d ****/
+		%feature("compactdefaultargs") StartStatistic;
+		%feature("autodoc", "Starts and reset internal object that accumulates nodes/triangles statistic during data reading.
+
+Returns
+-------
+None
+") StartStatistic;
+		void StartStatistic();
+
+		/****************** StopStatistic ******************/
+		/**** md5 signature: e3418ba02f31976af952ec885530e742 ****/
+		%feature("compactdefaultargs") StopStatistic;
+		%feature("autodoc", "Stops and nullify internal object that accumulates nodes/triangles statistic during data reading.
+
+Returns
+-------
+None
+") StopStatistic;
+		void StopStatistic();
+
+		/****************** ToPrintDebugMessages ******************/
+		/**** md5 signature: 1ba8100a86ab6979545a37ba8507ce50 ****/
+		%feature("compactdefaultargs") ToPrintDebugMessages;
+		%feature("autodoc", "Returns true if additional debug information should be print.
+
+Returns
+-------
+bool
+") ToPrintDebugMessages;
+		Standard_Boolean ToPrintDebugMessages();
+
+		/****************** ToSkipDegenerates ******************/
+		/**** md5 signature: 845530fc6fd2f6c43fcb01ed299e2914 ****/
+		%feature("compactdefaultargs") ToSkipDegenerates;
+		%feature("autodoc", "Returns true if degenerated triangles should be skipped during mesh loading (only indexes will be checked).
+
+Returns
+-------
+bool
+") ToSkipDegenerates;
+		Standard_Boolean ToSkipDegenerates();
+
+};
+
+
+%make_alias(RWMesh_TriangulationReader)
+
+%extend RWMesh_TriangulationReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class RWMesh_TriangulationSource *
+***********************************/
+class RWMesh_TriangulationSource : public Poly_Triangulation {
+	public:
+		/****************** RWMesh_TriangulationSource ******************/
+		/**** md5 signature: 4fb10652420e0d188c26defed2334454 ****/
+		%feature("compactdefaultargs") RWMesh_TriangulationSource;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") RWMesh_TriangulationSource;
+		 RWMesh_TriangulationSource();
+
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Integer GetChangeDegeneratedTriNb() {
+            return (Standard_Integer) $self->ChangeDegeneratedTriNb();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetChangeDegeneratedTriNb(Standard_Integer value) {
+            $self->ChangeDegeneratedTriNb()=value;
+            }
+        };
+		/****************** DegeneratedTriNb ******************/
+		/**** md5 signature: 2a1611183102606c75dc3b897f8870c1 ****/
+		%feature("compactdefaultargs") DegeneratedTriNb;
+		%feature("autodoc", "Returns number of degenerated triangles collected during data reading. used for debug statistic purpose.
+
+Returns
+-------
+int
+") DegeneratedTriNb;
+		Standard_Integer DegeneratedTriNb();
+
+		/****************** NbDeferredNodes ******************/
+		/**** md5 signature: d15a5896fc85a8c93365e1d85513fbb0 ****/
+		%feature("compactdefaultargs") NbDeferredNodes;
+		%feature("autodoc", "Returns number of nodes for deferred loading. note: this is estimated values defined in object header, which might be different from actually loaded values (due to broken header or extra mesh processing). always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+
+Returns
+-------
+int
+") NbDeferredNodes;
+		virtual Standard_Integer NbDeferredNodes();
+
+		/****************** NbDeferredTriangles ******************/
+		/**** md5 signature: 8c345ed875feecf632ebb9c62ff9481f ****/
+		%feature("compactdefaultargs") NbDeferredTriangles;
+		%feature("autodoc", "Returns number of triangles for deferred loading. note: this is estimated values defined in object header, which might be different from actually loaded values (due to broken header or extra mesh processing). always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+
+Returns
+-------
+int
+") NbDeferredTriangles;
+		virtual Standard_Integer NbDeferredTriangles();
+
+		/****************** Reader ******************/
+		/**** md5 signature: 6ae7cdc70d1eaea13f56fb1f778f493a ****/
+		%feature("compactdefaultargs") Reader;
+		%feature("autodoc", "Returns reader allowing to read data from the buffer.
+
+Returns
+-------
+opencascade::handle<RWMesh_TriangulationReader>
+") Reader;
+		const opencascade::handle<RWMesh_TriangulationReader> & Reader();
+
+		/****************** SetNbDeferredNodes ******************/
+		/**** md5 signature: 613e9c73fcbbe299958e31da2d3bf9b1 ****/
+		%feature("compactdefaultargs") SetNbDeferredNodes;
+		%feature("autodoc", "Sets number of nodes for deferred loading.
+
+Parameters
+----------
+theNbNodes: int
+
+Returns
+-------
+None
+") SetNbDeferredNodes;
+		void SetNbDeferredNodes(const Standard_Integer theNbNodes);
+
+		/****************** SetNbDeferredTriangles ******************/
+		/**** md5 signature: 4c754aa29da9094529581631690e3ff2 ****/
+		%feature("compactdefaultargs") SetNbDeferredTriangles;
+		%feature("autodoc", "Sets number of triangles for deferred loading.
+
+Parameters
+----------
+theNbTris: int
+
+Returns
+-------
+None
+") SetNbDeferredTriangles;
+		void SetNbDeferredTriangles(const Standard_Integer theNbTris);
+
+		/****************** SetReader ******************/
+		/**** md5 signature: 9528188554fe70d155ea3d7fb58dcd0f ****/
+		%feature("compactdefaultargs") SetReader;
+		%feature("autodoc", "Sets reader allowing to read data from the buffer.
+
+Parameters
+----------
+theReader: RWMesh_TriangulationReader
+
+Returns
+-------
+None
+") SetReader;
+		void SetReader(const opencascade::handle<RWMesh_TriangulationReader> & theReader);
+
+};
+
+
+%make_alias(RWMesh_TriangulationSource)
+
+%extend RWMesh_TriangulationSource {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

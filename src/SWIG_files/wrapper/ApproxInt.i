@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPROXINTDOCSTRING
 "ApproxInt module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_approxint.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_approxint.html"
 %enddef
 %module (package="OCC.Core", docstring=APPROXINTDOCSTRING) ApproxInt
 
@@ -42,8 +42,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_approxint.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColgp_module.hxx>
 #include<math_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<IntPatch_module.hxx>
+#include<Approx_module.hxx>
 #include<gp_module.hxx>
 #include<IntSurf_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -51,6 +54,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_approxint.html"
 #include<Adaptor2d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
+#include<AppParCurves_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -58,8 +63,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_approxint.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColgp.i
 %import math.i
+%import TColStd.i
+%import TColgp.i
+%import IntPatch.i
+%import Approx.i
 %import gp.i
 %import IntSurf.i
 
@@ -71,7 +79,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -90,10 +98,28 @@ from OCC.Core.Exception import *
 ****************************/
 class ApproxInt_KnotTools {
 	public:
+		/****************** BuildCurvature ******************/
+		/**** md5 signature: b62269124f28a23358303630ee8d4ebf ****/
+		%feature("compactdefaultargs") BuildCurvature;
+		%feature("autodoc", "Builds discrete curvature.
+
+Parameters
+----------
+theCoords: NCollection_LocalArray<float>
+theDim: int
+thePars: math_Vector
+theCurv: TColStd_Array1OfReal
+
+Returns
+-------
+theMaxCurv: float
+") BuildCurvature;
+		static void BuildCurvature(const NCollection_LocalArray<Standard_Real> & theCoords, const Standard_Integer theDim, const math_Vector & thePars, TColStd_Array1OfReal & theCurv, Standard_Real &OutValue);
+
 		/****************** BuildKnots ******************/
 		/**** md5 signature: 49c65485e14fc730360039ad6109a047 ****/
 		%feature("compactdefaultargs") BuildKnots;
-		%feature("autodoc", "Main function to build optimal knot sequence. at least one set from (thepntsxyz, thepntsu1v1, thepntsu2v2) should exist. @param thepntsxyz - set of 3d points. @param thepntsu1v1 - set of 2d points. @param thepntsu2v2 - set of 2d points. @param thepars - expected parameters assoiated with set. @param theapproxxyz - flag, existence of 3d set. @param theapproxu1v1 - flag existence of first 2d set. @param theapproxu2v2 - flag existence of second 2d set. @param theminnbpnts - minimal number of points per knot interval. @param theknots - output knots sequence.
+		%feature("autodoc", "Main function to build optimal knot sequence. at least one set from (thepntsxyz, thepntsu1v1, thepntsu2v2) should exist. @param thepntsxyz - set of 3d points. @param thepntsu1v1 - set of 2d points. @param thepntsu2v2 - set of 2d points. @param thepars - expected parameters associated with set. @param theapproxxyz - flag, existence of 3d set. @param theapproxu1v1 - flag existence of first 2d set. @param theapproxu2v2 - flag existence of second 2d set. @param theminnbpnts - minimal number of points per knot interval. @param theknots - output knots sequence.
 
 Parameters
 ----------
@@ -112,6 +138,26 @@ Returns
 None
 ") BuildKnots;
 		static void BuildKnots(const TColgp_Array1OfPnt & thePntsXYZ, const TColgp_Array1OfPnt2d & thePntsU1V1, const TColgp_Array1OfPnt2d & thePntsU2V2, const math_Vector & thePars, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2, const Standard_Integer theMinNbPnts, NCollection_Vector<Standard_Integer> & theKnots);
+
+		/****************** DefineParType ******************/
+		/**** md5 signature: e1d91690eade86173e6384cbb3ec9b53 ****/
+		%feature("compactdefaultargs") DefineParType;
+		%feature("autodoc", "Defines preferable parametrization type for thewl .
+
+Parameters
+----------
+theWL: IntPatch_WLine
+theFpar: int
+theLpar: int
+theApproxXYZ: bool
+theApproxU1V1: bool
+theApproxU2V2: bool
+
+Returns
+-------
+Approx_ParametrizationType
+") DefineParType;
+		static Approx_ParametrizationType DefineParType(const opencascade::handle<IntPatch_WLine> & theWL, const Standard_Integer theFpar, const Standard_Integer theLpar, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2);
 
 };
 
@@ -148,6 +194,17 @@ u2: float
 v2: float
 ") Compute;
 		virtual Standard_Boolean Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
+
+		/****************** GetUseSolver ******************/
+		/**** md5 signature: 0cd3174a4b9b13255f5e86b8e6432347 ****/
+		%feature("compactdefaultargs") GetUseSolver;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") GetUseSolver;
+		virtual Standard_Boolean GetUseSolver();
 
 		/****************** Pnt ******************/
 		/**** md5 signature: 16f6732cc231fab7357ba8adcca3b24d ****/
@@ -186,6 +243,21 @@ Returns
 bool
 ") SeekPoint;
 		virtual Standard_Boolean SeekPoint(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, IntSurf_PntOn2S & Point);
+
+		/****************** SetUseSolver ******************/
+		/**** md5 signature: 60f84821ae19a493df618fb006dc01ad ****/
+		%feature("compactdefaultargs") SetUseSolver;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theUseSol: bool
+
+Returns
+-------
+None
+") SetUseSolver;
+		virtual void SetUseSolver(const Standard_Boolean theUseSol);
 
 		/****************** Tangency ******************/
 		/**** md5 signature: 2d07e542429be7042ab790c78def5d62 ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMEVALUATORDOCSTRING
 "GeomEvaluator module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomevaluator.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomevaluator.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMEVALUATORDOCSTRING) GeomEvaluator
 
@@ -70,7 +70,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -335,13 +335,13 @@ None
 		 GeomEvaluator_OffsetCurve(const opencascade::handle<Geom_Curve> & theBase, const Standard_Real theOffset, const gp_Dir & theDirection);
 
 		/****************** GeomEvaluator_OffsetCurve ******************/
-		/**** md5 signature: 59defa2d450255c06571ebdefa7e2895 ****/
+		/**** md5 signature: 8420eeb2fd48f6a959e9185e74f5fbe5 ****/
 		%feature("compactdefaultargs") GeomEvaluator_OffsetCurve;
 		%feature("autodoc", "Initialize evaluator by curve adaptor.
 
 Parameters
 ----------
-theBase: GeomAdaptor_HCurve
+theBase: GeomAdaptor_Curve
 theOffset: float
 theDirection: gp_Dir
 
@@ -349,7 +349,7 @@ Returns
 -------
 None
 ") GeomEvaluator_OffsetCurve;
-		 GeomEvaluator_OffsetCurve(const opencascade::handle<GeomAdaptor_HCurve> & theBase, const Standard_Real theOffset, const gp_Dir & theDirection);
+		 GeomEvaluator_OffsetCurve(const opencascade::handle<GeomAdaptor_Curve> & theBase, const Standard_Real theOffset, const gp_Dir & theDirection);
 
 		/****************** D0 ******************/
 		/**** md5 signature: 66474176b3d6e773fa82e2e75db9adbb ****/
@@ -502,13 +502,13 @@ None
 		 GeomEvaluator_OffsetSurface(const opencascade::handle<Geom_Surface> & theBase, const Standard_Real theOffset, const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
 
 		/****************** GeomEvaluator_OffsetSurface ******************/
-		/**** md5 signature: 856f854074e0d8dd5a4515eac8f4836e ****/
+		/**** md5 signature: e3bc6f3b2d5210513e3b544eee3ebaa6 ****/
 		%feature("compactdefaultargs") GeomEvaluator_OffsetSurface;
 		%feature("autodoc", "Initialize evaluator by surface adaptor.
 
 Parameters
 ----------
-theBase: GeomAdaptor_HSurface
+theBase: GeomAdaptor_Surface
 theOffset: float
 theOscSurf: Geom_OsculatingSurface,optional
 	default value is opencascade::handle<Geom_OsculatingSurface>()
@@ -517,7 +517,7 @@ Returns
 -------
 None
 ") GeomEvaluator_OffsetSurface;
-		 GeomEvaluator_OffsetSurface(const opencascade::handle<GeomAdaptor_HSurface> & theBase, const Standard_Real theOffset, const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
+		 GeomEvaluator_OffsetSurface(const opencascade::handle<GeomAdaptor_Surface> & theBase, const Standard_Real theOffset, const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
 
 		/****************** D0 ******************/
 		/**** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ****/
@@ -669,20 +669,20 @@ None
 		 GeomEvaluator_SurfaceOfExtrusion(const opencascade::handle<Geom_Curve> & theBase, const gp_Dir & theExtrusionDir);
 
 		/****************** GeomEvaluator_SurfaceOfExtrusion ******************/
-		/**** md5 signature: 9f58f1181fd474e6af39b7510a9797d7 ****/
+		/**** md5 signature: e3cfee6ab38d3d48bacd1ea362d5426a ****/
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfExtrusion;
 		%feature("autodoc", "Initialize evaluator by surface adaptor.
 
 Parameters
 ----------
-theBase: Adaptor3d_HCurve
+theBase: Adaptor3d_Curve
 theExtrusionDir: gp_Dir
 
 Returns
 -------
 None
 ") GeomEvaluator_SurfaceOfExtrusion;
-		 GeomEvaluator_SurfaceOfExtrusion(const opencascade::handle<Adaptor3d_HCurve> & theBase, const gp_Dir & theExtrusionDir);
+		 GeomEvaluator_SurfaceOfExtrusion(const opencascade::handle<Adaptor3d_Curve> & theBase, const gp_Dir & theExtrusionDir);
 
 		/****************** D0 ******************/
 		/**** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ****/
@@ -835,13 +835,13 @@ None
 		 GeomEvaluator_SurfaceOfRevolution(const opencascade::handle<Geom_Curve> & theBase, const gp_Dir & theRevolDir, const gp_Pnt & theRevolLoc);
 
 		/****************** GeomEvaluator_SurfaceOfRevolution ******************/
-		/**** md5 signature: 485936d71c59e278d1d488c847ebe986 ****/
+		/**** md5 signature: c0d248a0845d27bb2b25e4ec8a363cc5 ****/
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfRevolution;
 		%feature("autodoc", "Initialize evaluator by adaptor of the revolved curve, the axis of revolution and the location.
 
 Parameters
 ----------
-theBase: Adaptor3d_HCurve
+theBase: Adaptor3d_Curve
 theRevolDir: gp_Dir
 theRevolLoc: gp_Pnt
 
@@ -849,7 +849,7 @@ Returns
 -------
 None
 ") GeomEvaluator_SurfaceOfRevolution;
-		 GeomEvaluator_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_HCurve> & theBase, const gp_Dir & theRevolDir, const gp_Pnt & theRevolLoc);
+		 GeomEvaluator_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_Curve> & theBase, const gp_Dir & theRevolDir, const gp_Pnt & theRevolLoc);
 
 		/****************** D0 ******************/
 		/**** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMDOCSTRING
 "Geom module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMDOCSTRING) Geom
 
@@ -66,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -340,7 +340,7 @@ opencascade::handle<Geom_Geometry>
 		/****************** Translate ******************/
 		/**** md5 signature: b3667af07c9a238180bc31cc15803f78 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "Translates a geometry. v is the vector of the tanslation.
+		%feature("autodoc", "Translates a geometry. v is the vector of the translation.
 
 Parameters
 ----------
@@ -429,7 +429,7 @@ None
 		/****************** Geom_OsculatingSurface ******************/
 		/**** md5 signature: 6805f264f7a2aca9c843e15662924f3b ****/
 		%feature("compactdefaultargs") Geom_OsculatingSurface;
-		%feature("autodoc", "Detects if the surface has punctual u or v isoparametric curve along on the bounds of the surface relativly to the tolerance tol and builds the corresponding osculating surfaces.
+		%feature("autodoc", "Detects if the surface has punctual u or v isoparametric curve along on the bounds of the surface relatively to the tolerance tol and builds the corresponding osculating surfaces.
 
 Parameters
 ----------
@@ -597,7 +597,7 @@ gp_TrsfForm
 		/****************** Invert ******************/
 		/**** md5 signature: 27ae24404e0570a708e2e3589a9d9074 ****/
 		%feature("compactdefaultargs") Invert;
-		%feature("autodoc", "Raised if the the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
+		%feature("autodoc", "Raised if the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
 
 Returns
 -------
@@ -608,7 +608,7 @@ None
 		/****************** Inverted ******************/
 		/**** md5 signature: a7f4838eb23ef8226ce1998df318c767 ****/
 		%feature("compactdefaultargs") Inverted;
-		%feature("autodoc", "Raised if the the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
+		%feature("autodoc", "Raised if the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
 
 Returns
 -------
@@ -1171,7 +1171,7 @@ bool
 		/****************** IsClosed ******************/
 		/**** md5 signature: be44ba5ab9beeb7f60f33a5068f1446b ****/
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "Returns true if the curve is closed. some curves such as circle are always closed, others such as line are never closed (by definition). some curves such as offsetcurve can be closed or not. these curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the resolution from package gp wich is a fixed criterion independant of the application.
+		%feature("autodoc", "Returns true if the curve is closed. some curves such as circle are always closed, others such as line are never closed (by definition). some curves such as offsetcurve can be closed or not. these curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the resolution from package gp which is a fixed criterion independent of the application.
 
 Returns
 -------
@@ -1634,7 +1634,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 40e23eaf2984de2985d125adc2919a99 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods returns an identity transformation //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns an identity transformation //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
 
 Parameters
 ----------
@@ -1649,7 +1649,7 @@ gp_GTrsf2d
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 0142b5420374870689e386ed7648e08a ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) //! this methods does not change <u> and <v> //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method does not change <u> and <v> //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
 
 Parameters
 ----------
@@ -1713,7 +1713,7 @@ opencascade::handle<Geom_Surface>
 		/****************** UReversedParameter ******************/
 		/**** md5 signature: 7fd7d20296a57b638e5ad7571b2de083 ****/
 		%feature("compactdefaultargs") UReversedParameter;
-		%feature("autodoc", "Returns the parameter on the ureversed surface for the point of parameter u on <self>. //! me->ureversed()->value(me->ureversedparameter(u),v) //! is the same point as //! me->value(u,v).
+		%feature("autodoc", "Returns the parameter on the ureversed surface for the point of parameter u on <self>. @code me->ureversed()->value(me->ureversedparameter(u),v) @endcode is the same point as @code me->value(u,v) @endcode.
 
 Parameters
 ----------
@@ -1776,7 +1776,7 @@ opencascade::handle<Geom_Surface>
 		/****************** VReversedParameter ******************/
 		/**** md5 signature: 1d95298bde777a8594bd52e1249dc41e ****/
 		%feature("compactdefaultargs") VReversedParameter;
-		%feature("autodoc", "Returns the parameter on the vreversed surface for the point of parameter v on <self>. //! me->vreversed()->value(u,me->vreversedparameter(v)) //! is the same point as //! me->value(u,v).
+		%feature("autodoc", "Returns the parameter on the vreversed surface for the point of parameter v on <self>. @code me->vreversed()->value(u,me->vreversedparameter(v)) @endcode is the same point as @code me->value(u,v) @endcode.
 
 Parameters
 ----------
@@ -4104,7 +4104,7 @@ opencascade::handle<Geom_Geometry>
 		/****************** D0 ******************/
 		/**** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ****/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "P (u, v) = pbasis + offset * ndir where ndir = d1ubasis ^ d1vbasis / ||d1ubasis ^ d1vbasis|| is the normal direction of the basis surface. pbasis, d1ubasis, d1vbasis are the point and the first derivatives on the basis surface. if ndir is undefined this method computes an approched normal direction using the following limited development : ndir = n0 + dndir/du + dndir/dv + eps with eps->0 which requires to compute the second derivatives on the basis surface. if the normal direction cannot be approximate for this order of derivation the exception undefinedvalue is raised. //! raised if the continuity of the basis surface is not c1. raised if the order of derivation required to compute the normal direction is greater than the second order.
+		%feature("autodoc", "@code p (u, v) = pbasis + offset * ndir @endcode where @code ndir = d1ubasis ^ d1vbasis / ||d1ubasis ^ d1vbasis|| @endcode is the normal direction of the basis surface. pbasis, d1ubasis, d1vbasis are the point and the first derivatives on the basis surface. if ndir is undefined this method computes an approached normal direction using the following limited development: @code ndir = n0 + dndir/du + dndir/dv + eps @endcode with eps->0 which requires to compute the second derivatives on the basis surface. if the normal direction cannot be approximate for this order of derivation the exception undefinedvalue is raised. //! raised if the continuity of the basis surface is not c1. raised if the order of derivation required to compute the normal direction is greater than the second order.
 
 Parameters
 ----------
@@ -4140,7 +4140,7 @@ None
 		/****************** D2 ******************/
 		/**** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "---purpose ; raised if the continuity of the basis surface is not c3.
+		%feature("autodoc", "Raised if the continuity of the basis surface is not c3.
 
 Parameters
 ----------
@@ -4188,7 +4188,7 @@ None
 		/****************** DN ******************/
 		/**** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ****/
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "Computes the derivative of order nu in the direction u and nv in the direction v. ---purpose ; raised if the continuity of the basis surface is not cnu + 1 in the u direction and cnv + 1 in the v direction. raised if nu + nv < 1 or nu < 0 or nv < 0. //! the following methods compute the value and derivatives on the offset surface and returns the derivatives on the basis surface too. the computation of the value and derivatives on the basis surface are used to evaluate the offset surface. //! warnings : the exception undefinedvalue or undefinedderivative is raised if it is not possible to compute a unique offset direction.
+		%feature("autodoc", "Computes the derivative of order nu in the direction u and nv in the direction v. //! raised if the continuity of the basis surface is not cnu + 1 in the u direction and cnv + 1 in the v direction. raised if nu + nv < 1 or nu < 0 or nv < 0. //! the following methods compute the value and derivatives on the offset surface and returns the derivatives on the basis surface too. the computation of the value and derivatives on the basis surface are used to evaluate the offset surface. //! warnings: the exception undefinedvalue or undefinedderivative is raised if it is not possible to compute a unique offset direction.
 
 Parameters
 ----------
@@ -4321,7 +4321,7 @@ opencascade::handle<Geom_OsculatingSurface>
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods calls the basis surface method.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method calls the basis surface method.
 
 Parameters
 ----------
@@ -4394,7 +4394,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) this methods calls the basis surface method.
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method calls the basis surface method.
 
 Parameters
 ----------
@@ -4479,7 +4479,7 @@ float
 		/****************** VIso ******************/
 		/**** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ****/
 		%feature("compactdefaultargs") VIso;
-		%feature("autodoc", "Computes the v isoparametric curve. //! te followings methods compute value and derivatives. //! warnings an exception is raised if a unique normal vector is not defined on the basis surface for the parametric value (u,v). no check is done at the creation time and we suppose in this package that the offset surface can be defined at any point.
+		%feature("autodoc", "Computes the v isoparametric curve. //! the following methods compute value and derivatives. //! warnings an exception is raised if a unique normal vector is not defined on the basis surface for the parametric value (u,v). no check is done at the creation time and we suppose in this package that the offset surface can be defined at any point.
 
 Parameters
 ----------
@@ -5035,7 +5035,7 @@ None
 		/****************** Geom_BSplineCurve ******************/
 		/**** md5 signature: febe71f9f4b62c4419f66a23769ade54 ****/
 		%feature("compactdefaultargs") Geom_BSplineCurve;
-		%feature("autodoc", "Creates a rational b_spline curve on the basis <knots, multiplicities> of degree <degree>. raises constructionerror subject to the following conditions 0 < degree <= maxdegree. //! weights.length() == poles.length() //! knots.length() == mults.length() >= 2 //! knots(i) < knots(i+1) (knots are increasing) //! 1 <= mults(i) <= degree //! on a non periodic curve the first and last multiplicities may be degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). //! on a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! poles.length() == sum(mults(i)) - degree - 1 >= 2 //! on periodic curves //! poles.length() == sum(mults(i)) except the first or last.
+		%feature("autodoc", "Creates a rational b_spline curve on the basis <knots, multiplicities> of degree <degree>. raises constructionerror subject to the following conditions 0 < degree <= maxdegree. //! weights.length() == poles.length() //! knots.length() == mults.length() >= 2 //! knots(i) < knots(i+1) (knots are increasing) //! 1 <= mults(i) <= degree //! on a non periodic curve the first and last multiplicities may be degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! on a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! poles.length() == sum(mults(i)) - degree - 1 >= 2 //! on periodic curves //! poles.length() == sum(mults(i)) except the first or last.
 
 Parameters
 ----------
@@ -5366,7 +5366,7 @@ bool
 		/****************** IsG1 ******************/
 		/**** md5 signature: 9f6daa5a840326c7c14dda9f95a957d1 ****/
 		%feature("compactdefaultargs") IsG1;
-		%feature("autodoc", "Check if curve has at least g1 continuity in interval [thetf, thetl] returns true if iscn(1) or angle betweem 'left' and 'right' first derivatives at knots with c0 continuity is less then theangtol only knots in interval [thetf, thetl] is checked.
+		%feature("autodoc", "Check if curve has at least g1 continuity in interval [thetf, thetl] returns true if iscn(1) or angle between 'left' and 'right' first derivatives at knots with c0 continuity is less then theangtol only knots in interval [thetf, thetl] is checked.
 
 Parameters
 ----------
@@ -5667,7 +5667,7 @@ LastModifiedPole: int
 		/****************** MovePointAndTangent ******************/
 		/**** md5 signature: 5d9cf04ee9481c575090c788835bb070 ****/
 		%feature("compactdefaultargs") MovePointAndTangent;
-		%feature("autodoc", "Move a point with parameter u to p. and makes it tangent at u be tangent. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enought degree of freedom with the constrain to deform the curve accordingly.
+		%feature("autodoc", "Move a point with parameter u to p. and makes it tangent at u be tangent. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enough degree of freedom with the constrain to deform the curve accordingly.
 
 Parameters
 ----------
@@ -5955,7 +5955,7 @@ None
 		/****************** SetOrigin ******************/
 		/**** md5 signature: 6ec07ce42052ea40f10882071071f1bc ****/
 		%feature("compactdefaultargs") SetOrigin;
-		%feature("autodoc", "Set the origin of a periodic curve at knot u. if u is not a knot of the bspline a new knot is inseted. knotvector and poles are modified. raised if the curve is not periodic.
+		%feature("autodoc", "Set the origin of a periodic curve at knot u. if u is not a knot of the bspline a new knot is inserted. knotvector and poles are modified. raised if the curve is not periodic.
 
 Parameters
 ----------
@@ -6114,7 +6114,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		/****************** Geom_BSplineSurface ******************/
 		/**** md5 signature: d0e79094e818d7c29ef7d04c55973c13 ****/
 		%feature("compactdefaultargs") Geom_BSplineSurface;
-		%feature("autodoc", "Creates a non-rational b-spline surface (weights default value is 1.). the following conditions must be verified. 0 < udegree <= maxdegree. uknots.length() == umults.length() >= 2 uknots(i) < uknots(i+1) (knots are increasing) 1 <= umults(i) <= udegree on a non uperiodic surface the first and last umultiplicities may be udegree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). on a uperiodic surface the first and the last umultiplicities must be the same. on non-uperiodic surfaces poles.collength() == sum(umults(i)) - udegree - 1 >= 2 on uperiodic surfaces poles.collength() == sum(umults(i)) except the first or last the previous conditions for u holds also for v, with the rowlength of the poles.
+		%feature("autodoc", "Creates a non-rational b-spline surface (weights default value is 1.). the following conditions must be verified. 0 < udegree <= maxdegree. uknots.length() == umults.length() >= 2 uknots(i) < uknots(i+1) (knots are increasing) 1 <= umults(i) <= udegree on a non uperiodic surface the first and last umultiplicities may be udegree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). on a uperiodic surface the first and the last umultiplicities must be the same. on non-uperiodic surfaces poles.collength() == sum(umults(i)) - udegree - 1 >= 2 on uperiodic surfaces poles.collength() == sum(umults(i)) except the first or last the previous conditions for u holds also for v, with the rowlength of the poles.
 
 Parameters
 ----------
@@ -6139,7 +6139,7 @@ None
 		/****************** Geom_BSplineSurface ******************/
 		/**** md5 signature: 52fa5de422f3f634c1a7b0a56209d8b5 ****/
 		%feature("compactdefaultargs") Geom_BSplineSurface;
-		%feature("autodoc", "Creates a non-rational b-spline surface (weights default value is 1.). //! the following conditions must be verified. 0 < udegree <= maxdegree. //! uknots.length() == umults.length() >= 2 //! uknots(i) < uknots(i+1) (knots are increasing) 1 <= umults(i) <= udegree //! on a non uperiodic surface the first and last umultiplicities may be udegree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). //! on a uperiodic surface the first and the last umultiplicities must be the same. //! on non-uperiodic surfaces //! poles.collength() == sum(umults(i)) - udegree - 1 >= 2 //! on uperiodic surfaces //! poles.collength() == sum(umults(i)) except the first or last //! the previous conditions for u holds also for v, with the rowlength of the poles.
+		%feature("autodoc", "Creates a non-rational b-spline surface (weights default value is 1.). //! the following conditions must be verified. 0 < udegree <= maxdegree. //! uknots.length() == umults.length() >= 2 //! uknots(i) < uknots(i+1) (knots are increasing) 1 <= umults(i) <= udegree //! on a non uperiodic surface the first and last umultiplicities may be udegree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! on a uperiodic surface the first and the last umultiplicities must be the same. //! on non-uperiodic surfaces //! poles.collength() == sum(umults(i)) - udegree - 1 >= 2 //! on uperiodic surfaces //! poles.collength() == sum(umults(i)) except the first or last //! the previous conditions for u holds also for v, with the rowlength of the poles.
 
 Parameters
 ----------
@@ -6182,7 +6182,7 @@ V2: float
 		/****************** CheckAndSegment ******************/
 		/**** md5 signature: dfc5bea5858729c40332110aa28e7bb8 ****/
 		%feature("compactdefaultargs") CheckAndSegment;
-		%feature("autodoc", "Segments the surface between u1 and u2 in the u-direction. between v1 and v2 in the v-direction. //! same as segment but do nothing if u1 and u2 (resp. v1 and v2) are equal to the bounds in u (resp. in v) of <self>. for example, if <self> is periodic in v, it will be always periodic in v after the segmentation if the bounds in v are unchanged //! parameters theutolerance, thevtolerance define the possible proximity along the correponding direction of the segment boundaries and b-spline knots to treat them as equal. //! warnings : even if <self> is not closed it can become closed after the segmentation for example if u1 or u2 are out of the bounds of the surface <self> or if the surface makes loop. raises if u2 < u1 or v2 < v1. standard_domainerror if u2 - u1 exceeds the uperiod for uperiodic surfaces. i.e. ((u2 - u1) - uperiod) > precision::pconfusion(). standard_domainerror if v2 - v1 exceeds the vperiod for vperiodic surfaces. i.e. ((v2 - v1) - vperiod) > precision::pconfusion()).
+		%feature("autodoc", "Segments the surface between u1 and u2 in the u-direction. between v1 and v2 in the v-direction. //! same as segment but do nothing if u1 and u2 (resp. v1 and v2) are equal to the bounds in u (resp. in v) of <self>. for example, if <self> is periodic in v, it will be always periodic in v after the segmentation if the bounds in v are unchanged //! parameters theutolerance, thevtolerance define the possible proximity along the corresponding direction of the segment boundaries and b-spline knots to treat them as equal. //! warnings : even if <self> is not closed it can become closed after the segmentation for example if u1 or u2 are out of the bounds of the surface <self> or if the surface makes loop. raises if u2 < u1 or v2 < v1. standard_domainerror if u2 - u1 exceeds the uperiod for uperiodic surfaces. i.e. ((u2 - u1) - uperiod) > precision::pconfusion(). standard_domainerror if v2 - v1 exceeds the vperiod for vperiodic surfaces. i.e. ((v2 - v1) - vperiod) > precision::pconfusion()).
 
 Parameters
 ----------
@@ -6204,7 +6204,7 @@ None
 		/****************** Continuity ******************/
 		/**** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ****/
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "Returns the continuity of the surface : c0 : only geometric continuity, c1 : continuity of the first derivative all along the surface, c2 : continuity of the second derivative all along the surface, c3 : continuity of the third derivative all along the surface, cn : the order of continuity is infinite. a b-spline surface is infinitely continuously differentiable for the couple of parameters u, v such thats u != uknots(i) and v != vknots(i). the continuity of the surface at a knot value depends on the multiplicity of this knot. example : if the surface is c1 in the v direction and c2 in the u direction this function returns shape = c1.
+		%feature("autodoc", "Returns the continuity of the surface : c0 : only geometric continuity, c1 : continuity of the first derivative all along the surface, c2 : continuity of the second derivative all along the surface, c3 : continuity of the third derivative all along the surface, cn : the order of continuity is infinite. a b-spline surface is infinitely continuously differentiable for the couple of parameters u, v such that u != uknots(i) and v != vknots(i). the continuity of the surface at a knot value depends on the multiplicity of this knot. example : if the surface is c1 in the v direction and c2 in the u direction this function returns shape = c1.
 
 Returns
 -------
@@ -7047,7 +7047,7 @@ VTolerance: float
 		/****************** Segment ******************/
 		/**** md5 signature: fd76d320a01952f2645e752c81f84bc9 ****/
 		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "Segments the surface between u1 and u2 in the u-direction. between v1 and v2 in the v-direction. the control points are modified, the first and the last point are not the same. //! parameters theutolerance, thevtolerance define the possible proximity along the correponding direction of the segment boundaries and b-spline knots to treat them as equal. //! warnings : even if <self> is not closed it can become closed after the segmentation for example if u1 or u2 are out of the bounds of the surface <self> or if the surface makes loop. raises if u2 < u1 or v2 < v1. standard_domainerror if u2 - u1 exceeds the uperiod for uperiodic surfaces. i.e. ((u2 - u1) - uperiod) > precision::pconfusion(). standard_domainerror if v2 - v1 exceeds the vperiod for vperiodic surfaces. i.e. ((v2 - v1) - vperiod) > precision::pconfusion()).
+		%feature("autodoc", "Segments the surface between u1 and u2 in the u-direction. between v1 and v2 in the v-direction. the control points are modified, the first and the last point are not the same. //! parameters theutolerance, thevtolerance define the possible proximity along the corresponding direction of the segment boundaries and b-spline knots to treat them as equal. //! warnings : even if <self> is not closed it can become closed after the segmentation for example if u1 or u2 are out of the bounds of the surface <self> or if the surface makes loop. raises if u2 < u1 or v2 < v1. standard_domainerror if u2 - u1 exceeds the uperiod for uperiodic surfaces. i.e. ((u2 - u1) - uperiod) > precision::pconfusion(). standard_domainerror if v2 - v1 exceeds the vperiod for vperiodic surfaces. i.e. ((v2 - v1) - vperiod) > precision::pconfusion()).
 
 Parameters
 ----------
@@ -9630,7 +9630,7 @@ None
 		/****************** Geom_ConicalSurface ******************/
 		/**** md5 signature: 517bd27c841c28046143c5aadd886c4a ****/
 		%feature("compactdefaultargs") Geom_ConicalSurface;
-		%feature("autodoc", "Creates a conicalsurface from a non transient cone from package gp.
+		%feature("autodoc", "Creates a conicalsurface from a non transient gp_cone.
 
 Parameters
 ----------
@@ -9673,7 +9673,7 @@ V2: float
 		/****************** Coefficients ******************/
 		/**** md5 signature: 922ffb066c913dfb924eafd175a6358f ****/
 		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : these coefficients are normalized. a1.x**2 + a2.y**2 + a3.z**2 + 2.(b1.x.y + b2.x.z + b3.y.z) + 2.(c1.x + c2.y + c3.z) + d = 0.0.
+		%feature("autodoc", "Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : these coefficients are normalized. @code a1.x**2 + a2.y**2 + a3.z**2 + 2.(b1.x.y + b2.x.z + b3.y.z) + 2.(c1.x + c2.y + c3.z) + d = 0.0 @endcode.
 
 Parameters
 ----------
@@ -9718,7 +9718,7 @@ opencascade::handle<Geom_Geometry>
 		/****************** D0 ******************/
 		/**** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ****/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "Computes the point p (u, v) on the surface. p (u, v) = loc + (refradius + v * sin (semi-angle)) * (cos (u) * xdir + sin (u) * ydir) + v * cos (semi-angle) * zdir where loc is the origin of the placement plane (xaxis, yaxis) xdir is the direction of the xaxis and ydir the direction of the yaxis.
+		%feature("autodoc", "Computes the point p (u, v) on the surface. @code p (u, v) = loc +  (refradius + v * sin (semi-angle)) * (cos (u) * xdir + sin (u) * ydir) +  v * cos (semi-angle) * zdir @endcode where loc is the origin of the placement plane (xaxis, yaxis) xdir is the direction of the xaxis and ydir the direction of the yaxis.
 
 Parameters
 ----------
@@ -9872,7 +9872,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods returns a scale centered on the u axis with t.scalefactor.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns a scale centered on the u axis with t.scalefactor.
 
 Parameters
 ----------
@@ -9969,7 +9969,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) //! this methods multiplies v by t.scalefactor().
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method multiplies v by t.scalefactor().
 
 Parameters
 ----------
@@ -10000,7 +10000,7 @@ opencascade::handle<Geom_Curve>
 		/****************** UReversedParameter ******************/
 		/**** md5 signature: 0071925b176316f0aaaf26f369ac410c ****/
 		%feature("compactdefaultargs") UReversedParameter;
-		%feature("autodoc", "Return 2.pi - u.
+		%feature("autodoc", "Eeturn 2.pi - u.
 
 Parameters
 ----------
@@ -10072,7 +10072,7 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 		/****************** Geom_CylindricalSurface ******************/
 		/**** md5 signature: 1045dba72c04cccaf7e24ea1f8070e1a ****/
 		%feature("compactdefaultargs") Geom_CylindricalSurface;
-		%feature("autodoc", "A3 defines the local coordinate system of the cylindrical surface. the 'zdirection' of a3 defines the direction of the surface's axis of symmetry. at the creation the parametrization of the surface is defined such that the normal vector (n = d1u ^ d1v) is oriented towards the 'outside region' of the surface. warnings : it is not forbidden to create a cylindrical surface with radius = 0.0 raised if radius < 0.0.
+		%feature("autodoc", "A3 defines the local coordinate system of the cylindrical surface. the 'zdirection' of a3 defines the direction of the surface's axis of symmetry. at the creation the parametrization of the surface is defined such that the normal vector (n = d1u ^ d1v) is oriented towards the 'outside region' of the surface. warnings: it is not forbidden to create a cylindrical surface with radius = 0.0 raised if radius < 0.0.
 
 Parameters
 ----------
@@ -10088,7 +10088,7 @@ None
 		/****************** Geom_CylindricalSurface ******************/
 		/**** md5 signature: 6c266d29cc5bbdf322667ddabfeb2ff7 ****/
 		%feature("compactdefaultargs") Geom_CylindricalSurface;
-		%feature("autodoc", "Creates a cylindricalsurface from a non transient cylinder from package gp.
+		%feature("autodoc", "Creates a cylindricalsurface from a non transient gp_cylinder.
 
 Parameters
 ----------
@@ -10120,7 +10120,7 @@ V2: float
 		/****************** Coefficients ******************/
 		/**** md5 signature: 922ffb066c913dfb924eafd175a6358f ****/
 		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : these coefficients are normalized. a1.x**2 + a2.y**2 + a3.z**2 + 2.(b1.x.y + b2.x.z + b3.y.z) + 2.(c1.x + c2.y + c3.z) + d = 0.0.
+		%feature("autodoc", "Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : these coefficients are normalized. @code a1.x**2 + a2.y**2 + a3.z**2 + 2.(b1.x.y + b2.x.z + b3.y.z) + 2.(c1.x + c2.y + c3.z) + d = 0.0 @endcode.
 
 Parameters
 ----------
@@ -10319,7 +10319,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. me->transformed(t)->value(u',v') is the same point as me->value(u,v).transformed(t) where u',v' are obtained by transforming u,v with th 2d transformation returned by me->parametrictransformation(t) this methods returns a scale centered on the u axis with t.scalefactor.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns a scale centered on the u axis with t.scalefactor.
 
 Parameters
 ----------
@@ -10390,7 +10390,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. me->transformed(t)->value(u',v') is the same point as me->value(u,v).transformed(t) where u',v' are the new values of u,v after calling me->tranformparameters(u,v,t) this methods multiplies v by t.scalefactor().
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method multiplies v by t.scalefactor().
 
 Parameters
 ----------
@@ -11067,7 +11067,7 @@ gp_Ax1
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
-		%feature("autodoc", "Returns the excentricity of the hyperbola (e > 1). if f is the distance between the location of the hyperbola and the focus1 then the eccentricity e = f / majorradius. raised if majorradius = 0.0.
+		%feature("autodoc", "Returns the eccentricity of the hyperbola (e > 1). if f is the distance between the location of the hyperbola and the focus1 then the eccentricity e = f / majorradius. raised if majorradius = 0.0.
 
 Returns
 -------
@@ -11716,7 +11716,7 @@ None
 		/****************** Geom_Plane ******************/
 		/**** md5 signature: 06c0ffe19922feef3a5e812341930d38 ****/
 		%feature("compactdefaultargs") Geom_Plane;
-		%feature("autodoc", "Creates a plane from its cartesian equation : ax + by + cz + d = 0.0 //! raised if sqrt (a*a + b*b + c*c) <= resolution from gp.
+		%feature("autodoc", "Creates a plane from its cartesian equation: @code ax + by + cz + d = 0.0 @endcode raised if sqrt (a*a + b*b + c*c) <= resolution from gp.
 
 Parameters
 ----------
@@ -11751,7 +11751,7 @@ V2: float
 		/****************** Coefficients ******************/
 		/**** md5 signature: 5b10aec82a9daa5f313dd60e84b2b00b ****/
 		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "Computes the normalized coefficients of the plane's cartesian equation : ax + by + cz + d = 0.0.
+		%feature("autodoc", "Computes the normalized coefficients of the plane's cartesian equation: @code ax + by + cz + d = 0.0 @endcode.
 
 Parameters
 ----------
@@ -11779,7 +11779,7 @@ opencascade::handle<Geom_Geometry>
 		/****************** D0 ******************/
 		/**** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ****/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "Computes the point p (u, v) on <self>. p = o + u * xdir + v * ydir. where o is the 'location' point of the plane, xdir the 'xdirection' and ydir the 'ydirection' of the plane's local coordinate system.
+		%feature("autodoc", "Computes the point p (u, v) on <self>. @code p = o + u * xdir + v * ydir. @endcode where o is the 'location' point of the plane, xdir the 'xdirection' and ydir the 'ydirection' of the plane's local coordinate system.
 
 Parameters
 ----------
@@ -11933,7 +11933,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. me->transformed(t)->value(u',v') is the same point as me->value(u,v).transformed(t) where u',v' are obtained by transforming u,v with th 2d transformation returned by me->parametrictransformation(t) this methods returns a scale centered on the origin with t.scalefactor.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns a scale centered on the origin with t.scalefactor.
 
 Parameters
 ----------
@@ -11989,7 +11989,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. me->transformed(t)->value(u',v') is the same point as me->value(u,v).transformed(t) where u',v' are the new values of u,v after calling me->tranformparameters(u,v,t) this methods multiplies u and v by t.scalefactor().
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method multiplies u and v by t.scalefactor().
 
 Parameters
 ----------
@@ -12380,7 +12380,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods calls the basis surface method.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method calls the basis surface method.
 
 Parameters
 ----------
@@ -12451,7 +12451,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) //! this methods calls the basis surface method.
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method calls the basis surface method.
 
 Parameters
 ----------
@@ -13216,7 +13216,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods returns a scale u by basiscurve()->parametrictransformation(t) v by t.scalefactor().
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns a scale u by basiscurve()->parametrictransformation(t) v by t.scalefactor().
 
 Parameters
 ----------
@@ -13276,7 +13276,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) //! this methods multiplies : u by basiscurve()->parametrictransformation(t) v by t.scalefactor().
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method multiplies: u by basiscurve()->parametrictransformation(t) v by t.scalefactor().
 
 Parameters
 ----------
@@ -13640,7 +13640,7 @@ gp_Pnt
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods returns a scale centered on the u axis with basiscurve()->parametrictransformation(t).
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns a scale centered on the u axis with basiscurve()->parametrictransformation(t).
 
 Parameters
 ----------
@@ -13741,7 +13741,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) //! this methods multiplies v by basiscurve()->parametrictransformation(t).
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this method multiplies v by basiscurve()->parametrictransformation(t).
 
 Parameters
 ----------

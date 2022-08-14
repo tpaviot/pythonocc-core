@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPECONSTRUCTDOCSTRING
 "ShapeConstruct module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeconstruct.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapeconstruct.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 
@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeconstruct.ht
 #include<TColStd_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
 #include<TColgp_module.hxx>
+#include<Message_module.hxx>
 #include<ShapeAnalysis_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<TCollection_module.hxx>
@@ -88,6 +89,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeconstruct.ht
 %import TColStd.i
 %import BRepBuilderAPI.i
 %import TColgp.i
+%import Message.i
 %import ShapeAnalysis.i
 %import ShapeExtend.i
 
@@ -99,7 +101,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -442,15 +444,20 @@ None
 		 ShapeConstruct_MakeTriangulation(const TopoDS_Wire & wire, const Standard_Real prec = 0.0);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e2af43c18fdd9d21f5f5de9eae7fc9de ****/
@@ -640,7 +647,7 @@ None
 		/****************** Status ******************/
 		/**** md5 signature: 03f2df8a606eef2de1cd56a4ae73f0f0 ****/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "Returns the status of last peform.
+		%feature("autodoc", "Returns the status of last perform.
 
 Parameters
 ----------

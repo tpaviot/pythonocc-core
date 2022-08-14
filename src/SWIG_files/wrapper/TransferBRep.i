@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERBREPDOCSTRING
 "TransferBRep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_transferbrep.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_transferbrep.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERBREPDOCSTRING) TransferBRep
 
@@ -74,7 +74,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -422,7 +422,7 @@ None
 		/****************** TransferBRep_BinderOfShape ******************/
 		/**** md5 signature: 5bbec8d38c7e9144c260dddea617f54e ****/
 		%feature("compactdefaultargs") TransferBRep_BinderOfShape;
-		%feature("autodoc", "Constructor which in the same time defines the result returns true if a starting object is bound with several results : here, returns allways false but it can have next results.
+		%feature("autodoc", "Constructor which in the same time defines the result returns true if a starting object is bound with several results : here, returns always false but it can have next results.
 
 Parameters
 ----------
@@ -527,7 +527,7 @@ None
 		/****************** Equates ******************/
 		/**** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ****/
 		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "Specific testof equallity : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+		%feature("autodoc", "Specific testof equality : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
 
 Parameters
 ----------
@@ -661,7 +661,7 @@ bool
 		/****************** CheckStatusResult ******************/
 		/**** md5 signature: 331854297e3a398f63c12a5f55682ab2 ****/
 		%feature("compactdefaultargs") CheckStatusResult;
-		%feature("autodoc", "Checks the result of last transfer (individual or roots, no cumulation on several transfers). returns true if no fail occured during transfer (queries the transientprocess).
+		%feature("autodoc", "Checks the result of last transfer (individual or roots, no cumulation on several transfers). returns true if no fail occurred during transfer (queries the transientprocess).
 
 Parameters
 ----------
@@ -989,7 +989,7 @@ opencascade::handle<Standard_Transient>
 		/****************** TransientProcess ******************/
 		/**** md5 signature: cda5aa33365159e82c6213003de44419 ****/
 		%feature("compactdefaultargs") TransientProcess;
-		%feature("autodoc", "Returns the transientprocess. it records informations about the very last transfer done. null if no transfer yet done. can be used for queries more accurate than the default ones.
+		%feature("autodoc", "Returns the transientprocess. it records information about the very last transfer done. null if no transfer yet done. can be used for queries more accurate than the default ones.
 
 Returns
 -------
@@ -1362,7 +1362,7 @@ None
 		/****************** Equates ******************/
 		/**** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ****/
 		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "Specific testof equallity : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+		%feature("autodoc", "Specific testof equality : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
 
 Parameters
 ----------

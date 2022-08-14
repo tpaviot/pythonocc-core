@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPTOOLSDOCSTRING
 "BRepTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptools.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_breptools.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPTOOLSDOCSTRING) BRepTools
 
@@ -44,9 +44,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptools.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
-#include<TopTools_module.hxx>
+#include<OSD_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BRep_module.hxx>
 #include<Message_module.hxx>
@@ -65,9 +66,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptools.html"
 %import NCollection.i
 %import TopoDS.i
 %import Bnd.i
+%import TopTools.i
 %import Geom.i
 %import Geom2d.i
-%import TopTools.i
+%import OSD.i
 %import TopAbs.i
 %import BRep.i
 %import Message.i
@@ -84,7 +86,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -113,6 +115,24 @@ typedef NCollection_DataMap<TopoDS_Shape, TColgp_SequenceOfPnt2d, TopTools_Shape
 %rename(breptools) BRepTools;
 class BRepTools {
 	public:
+		/****************** ActivateTriangulation ******************/
+		/**** md5 signature: 39a3be4a36dcd05759204a5ec0fdc5af ****/
+		%feature("compactdefaultargs") ActivateTriangulation;
+		%feature("autodoc", "Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param theshape  [in] shape to activate triangulations @param thetriangulationidx [in] index defining what triangulation should be activated. starts from 0. exception will be thrown in case of invalid negative index @param thetoactivatestrictly [in] flag to activate exactly triangulation with defined thetriangulationidx index. in true case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. else the last available triangulation will be activated. returns true if at least one active triangulation was changed.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theTriangulationIdx: int
+theToActivateStrictly: bool,optional
+	default value is false
+
+Returns
+-------
+bool
+") ActivateTriangulation;
+		static Standard_Boolean ActivateTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx, const Standard_Boolean theToActivateStrictly = false);
+
 		/****************** AddUVBounds ******************/
 		/**** md5 signature: 0f0b092c5bc0e661a6c685d5c94ea9dd ****/
 		%feature("compactdefaultargs") AddUVBounds;
@@ -163,20 +183,38 @@ None
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Bnd_Box2d & B);
 
-		/****************** Clean ******************/
-		/**** md5 signature: 93868d47cb0034686d14e912128f1323 ****/
-		%feature("compactdefaultargs") Clean;
-		%feature("autodoc", "Removes all cashed polygonal representation of the shape, i.e. the triangulations of the faces of <s> and polygons on triangulations and polygons 3d of the edges. in case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed.
+		/****************** CheckLocations ******************/
+		/**** md5 signature: 1df4d13b8eb09af8c12c5590b0f17a8c ****/
+		%feature("compactdefaultargs") CheckLocations;
+		%feature("autodoc", "Check all locations of shape according criterium: atrsf.isnegative() || (abs(abs(atrsf.scalefactor()) - 1.) > toploc_location::scaleprec()) all sub-shapes having such locations are put in list theproblemshapes.
 
 Parameters
 ----------
-S: TopoDS_Shape
+theS: TopoDS_Shape
+theProblemShapes: TopTools_ListOfShape
+
+Returns
+-------
+None
+") CheckLocations;
+		static void CheckLocations(const TopoDS_Shape & theS, TopTools_ListOfShape & theProblemShapes);
+
+		/****************** Clean ******************/
+		/**** md5 signature: e69d53fa65ed6662d92131db242c5024 ****/
+		%feature("compactdefaultargs") Clean;
+		%feature("autodoc", "Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <s> and polygons on triangulations and polygons 3d of the edges. in case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param theshape [in] the shape to clean @param theforce [in] allows removing all polygonal representations from the shape,  including polygons on triangulations irrelevant for the faces of the given shape.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theForce: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") Clean;
-		static void Clean(const TopoDS_Shape & S);
+		static void Clean(const TopoDS_Shape & theShape, const Standard_Boolean theForce = Standard_False);
 
 		/****************** CleanGeometry ******************/
 		/**** md5 signature: ce6b6e89067b44b9c151c1e43c8e50e5 ****/
@@ -276,6 +314,44 @@ Returns
 bool
 ") IsReallyClosed;
 		static Standard_Boolean IsReallyClosed(const TopoDS_Edge & E, const TopoDS_Face & F);
+
+		/****************** LoadAllTriangulations ******************/
+		/**** md5 signature: 1466fd44e74f80d49ab3905c6d611afa ****/
+		%feature("compactdefaultargs") LoadAllTriangulations;
+		%feature("autodoc", "Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param theshape [in] shape to load triangulations @param thefilesystem [in] shared file system returns true if at least one triangulation is loaded.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theFileSystem: OSD_FileSystem,optional
+	default value is opencascade::handle<OSD_FileSystem>()
+
+Returns
+-------
+bool
+") LoadAllTriangulations;
+		static Standard_Boolean LoadAllTriangulations(const TopoDS_Shape & theShape, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
+
+		/****************** LoadTriangulation ******************/
+		/**** md5 signature: 2b46d2fac9cc1acb805e26246d213be8 ****/
+		%feature("compactdefaultargs") LoadTriangulation;
+		%feature("autodoc", "Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param theshape [in] shape to load triangulations @param thetriangulationidx [in] index defining what triangulation should be loaded. starts from 0. -1 is used in specific case to load currently already active triangulation. if some face doesn't contain triangulation with this index, nothing will be loaded for it. exception will be thrown in case of invalid negative index @param thetosetasactive [in] flag to activate triangulation after its loading @param thefilesystem [in] shared file system returns true if at least one triangulation is loaded.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theTriangulationIdx: int,optional
+	default value is -1
+theToSetAsActive: bool,optional
+	default value is Standard_False
+theFileSystem: OSD_FileSystem,optional
+	default value is opencascade::handle<OSD_FileSystem>()
+
+Returns
+-------
+bool
+") LoadTriangulation;
+		static Standard_Boolean LoadTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx = -1, const Standard_Boolean theToSetAsActive = Standard_False, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
 		/****************** Map3DEdges ******************/
 		/**** md5 signature: affe8cc83d005936d51c3385b6fc5c16 ****/
@@ -449,6 +525,38 @@ VMax: float
 ") UVBounds;
 		static void UVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/****************** UnloadAllTriangulations ******************/
+		/**** md5 signature: 8efc2f1bae963a37e143369fac101307 ****/
+		%feature("compactdefaultargs") UnloadAllTriangulations;
+		%feature("autodoc", "Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param theshape [in] shape to unload triangulations returns true if at least one triangulation is unloaded.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+bool
+") UnloadAllTriangulations;
+		static Standard_Boolean UnloadAllTriangulations(const TopoDS_Shape & theShape);
+
+		/****************** UnloadTriangulation ******************/
+		/**** md5 signature: 4cba1ffb2b2a96847b88c3a4736d9bea ****/
+		%feature("compactdefaultargs") UnloadTriangulation;
+		%feature("autodoc", "Releases triangulation data for each face of the shape if there is deferred storage to load it later @param theshape [in] shape to unload triangulations @param thetriangulationidx [in] index defining what triangulation should be unloaded. starts from 0. -1 is used in specific case to unload currently already active triangulation. if some face doesn't contain triangulation with this index, nothing will be unloaded for it. exception will be thrown in case of invalid negative index returns true if at least one triangulation is unloaded.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theTriangulationIdx: int,optional
+	default value is -1
+
+Returns
+-------
+bool
+") UnloadTriangulation;
+		static Standard_Boolean UnloadTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx = -1);
+
 		/****************** Update ******************/
 		/**** md5 signature: 7afb8b0a0ac818d408265e5c3ffb8146 ****/
 		%feature("compactdefaultargs") Update;
@@ -572,7 +680,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: 9df60fcab5eff3782584302cfec917cf ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Update a shape, call the corect update.
+		%feature("autodoc", "Update a shape, call the correct update.
 
 Parameters
 ----------
@@ -600,14 +708,14 @@ None
 		static void UpdateFaceUVPoints(const TopoDS_Face & theF);
 
 		/****************** Write ******************/
-		/**** md5 signature: e4cab4cb4ecdb28c66996c1950c02b7b ****/
+		/**** md5 signature: 2b0742433c64d0c04f4d2d4d98afcfa2 ****/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "Writes <sh> in <file>.
+		%feature("autodoc", "Writes the shape to the file in an ascii format toptools_formatversion_version_1. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param therange the range of progress indicator to fill in.
 
 Parameters
 ----------
-Sh: TopoDS_Shape
-File: char *
+theShape: TopoDS_Shape
+theFile: char *
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -615,7 +723,28 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & Sh, const char * File, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 094fc04abd54fdb9dea8b811e19f6844 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the shape to the file in an ascii format of specified version. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the toptools format version @param therange  the range of progress indicator to fill in.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theFile: char *
+theWithTriangles: bool
+theWithNormals: bool
+theVersion: TopTools_FormatVersion
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 
                     %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
@@ -661,7 +790,7 @@ enum TRelationType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TRelationType(IntEnum):
@@ -1205,6 +1334,72 @@ None
 	}
 };
 
+/*********************************
+* class BRepTools_PurgeLocations *
+*********************************/
+class BRepTools_PurgeLocations {
+	public:
+		/****************** BRepTools_PurgeLocations ******************/
+		/**** md5 signature: 9513db51b5a43ee1b3299e06ca1ed72b ****/
+		%feature("compactdefaultargs") BRepTools_PurgeLocations;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") BRepTools_PurgeLocations;
+		 BRepTools_PurgeLocations();
+
+		/****************** GetResult ******************/
+		/**** md5 signature: 644080adee2e79b6fe88d2909c00da36 ****/
+		%feature("compactdefaultargs") GetResult;
+		%feature("autodoc", "Returns shape with removed locations.
+
+Returns
+-------
+TopoDS_Shape
+") GetResult;
+		const TopoDS_Shape GetResult();
+
+		/****************** IsDone ******************/
+		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
+
+		/****************** Perform ******************/
+		/**** md5 signature: 786dd7c6d1fd4e873da2af6e25b6f283 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Removes all locations correspodingly to criterium from theshape.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+bool
+") Perform;
+		Standard_Boolean Perform(const TopoDS_Shape & theShape);
+
+};
+
+
+%extend BRepTools_PurgeLocations {
+	%pythoncode {
+	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def ModifiedShape(self):
+		pass
+	}
+};
+
 /************************
 * class BRepTools_Quilt *
 ************************/
@@ -1271,7 +1466,7 @@ None
 		/****************** Copy ******************/
 		/**** md5 signature: e9cf9778b56b3dc4375f50a8fb82f016 ****/
 		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "Returns the shape substitued to <s> in the quilt.
+		%feature("autodoc", "Returns the shape substituted to <s> in the quilt.
 
 Parameters
 ----------
@@ -1336,21 +1531,21 @@ None
 		 BRepTools_ReShape();
 
 		/****************** Apply ******************/
-		/**** md5 signature: 1aaa1844c3e3ec3f5f40ee03390fd9df ****/
+		/**** md5 signature: 48965752374805b76b32c4d1ffbb713b ****/
 		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. for subshapes of the type <until> no rebuild and futher exploring are done. //! note: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, topods_edge can be replaced by topods_edge, topods_wire or topods_compound containing topods_edges). if incompatible shape type is encountered, it is ignored and flag fail1 is set in status.
+		%feature("autodoc", "Applies the substitutions requests to a shape. //! theuntil gives the level of type until which requests are taken into account. for subshapes of the type <until> no rebuild and further exploring are done. //! note: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, topods_edge can be replaced by topods_edge, topods_wire or topods_compound containing topods_edges). if incompatible shape type is encountered, it is ignored and flag fail1 is set in status.
 
 Parameters
 ----------
-shape: TopoDS_Shape
-until: TopAbs_ShapeEnum,optional
+theShape: TopoDS_Shape
+theUntil: TopAbs_ShapeEnum,optional
 	default value is TopAbs_SHAPE
 
 Returns
 -------
 TopoDS_Shape
 ") Apply;
-		virtual TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+		virtual TopoDS_Shape Apply(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theUntil = TopAbs_SHAPE);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
@@ -1534,37 +1729,41 @@ TopoDS_Shape
 class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	public:
 		/****************** BRepTools_ShapeSet ******************/
-		/**** md5 signature: 30422c1f83181bdc902119b4425096bb ****/
+		/**** md5 signature: 4d2cf984c56b6805e641ce99645be1bb ****/
 		%feature("compactdefaultargs") BRepTools_ShapeSet;
-		%feature("autodoc", "Builds an empty shapeset. parameter <iswithtriangles> is added for xml persistence.
+		%feature("autodoc", "Builds an empty shapeset. @param thewithtriangles flag to write triangulation data.
 
 Parameters
 ----------
-isWithTriangles: bool,optional
+theWithTriangles: bool,optional
 	default value is Standard_True
+theWithNormals: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") BRepTools_ShapeSet;
-		 BRepTools_ShapeSet(const Standard_Boolean isWithTriangles = Standard_True);
+		 BRepTools_ShapeSet(const Standard_Boolean theWithTriangles = Standard_True, const Standard_Boolean theWithNormals = Standard_False);
 
 		/****************** BRepTools_ShapeSet ******************/
-		/**** md5 signature: cd9851b8513888051c6e304b8a6646ae ****/
+		/**** md5 signature: b9669c92273c65400f84c106bd21ec2f ****/
 		%feature("compactdefaultargs") BRepTools_ShapeSet;
-		%feature("autodoc", "Builds an empty shapeset. parameter <iswithtriangles> is added for xml persistence.
+		%feature("autodoc", "Builds an empty shapeset. @param thewithtriangles flag to write triangulation data.
 
 Parameters
 ----------
-B: BRep_Builder
-isWithTriangles: bool,optional
+theBuilder: BRep_Builder
+theWithTriangles: bool,optional
 	default value is Standard_True
+theWithNormals: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") BRepTools_ShapeSet;
-		 BRepTools_ShapeSet(const BRep_Builder & B, const Standard_Boolean isWithTriangles = Standard_True);
+		 BRepTools_ShapeSet(const BRep_Builder & theBuilder, const Standard_Boolean theWithTriangles = Standard_True, const Standard_Boolean theWithNormals = Standard_False);
 
 		/****************** AddGeometry ******************/
 		/**** md5 signature: 31352593ecfcc12beb7b28447eee7b70 ****/
@@ -1656,6 +1855,28 @@ None
             self->DumpTriangulation(s);
             return s.str();}
         };
+		/****************** IsWithNormals ******************/
+		/**** md5 signature: 49f5baecd893691e08f163fb559d8b06 ****/
+		%feature("compactdefaultargs") IsWithNormals;
+		%feature("autodoc", "Return true if shape should be stored triangulation with normals.
+
+Returns
+-------
+bool
+") IsWithNormals;
+		Standard_Boolean IsWithNormals();
+
+		/****************** IsWithTriangles ******************/
+		/**** md5 signature: 2adacf1f8e5d4c926108b4db84751e9a ****/
+		%feature("compactdefaultargs") IsWithTriangles;
+		%feature("autodoc", "Return true if shape should be stored with triangles.
+
+Returns
+-------
+bool
+") IsWithTriangles;
+		Standard_Boolean IsWithTriangles();
+
 
             %feature("autodoc", "1");
             %extend{
@@ -1684,6 +1905,36 @@ None
                 std::stringstream s(src);
                 self->ReadTriangulation(s);}
             };
+		/****************** SetWithNormals ******************/
+		/**** md5 signature: 9f03f91e56766f46bd17d99a089a0a21 ****/
+		%feature("compactdefaultargs") SetWithNormals;
+		%feature("autodoc", "Define if shape will be stored triangulation with normals. ignored (always written) if face defines only triangulation (no surface).
+
+Parameters
+----------
+theWithNormals: bool
+
+Returns
+-------
+None
+") SetWithNormals;
+		void SetWithNormals(const Standard_Boolean theWithNormals);
+
+		/****************** SetWithTriangles ******************/
+		/**** md5 signature: 7b7f7b1dd0aaac0992d59e75b5df79e1 ****/
+		%feature("compactdefaultargs") SetWithTriangles;
+		%feature("autodoc", "Define if shape will be stored with triangles. ignored (always written) if face defines only triangulation (no surface).
+
+Parameters
+----------
+theWithTriangles: bool
+
+Returns
+-------
+None
+") SetWithTriangles;
+		void SetWithTriangles(const Standard_Boolean theWithTriangles);
+
 
         %feature("autodoc", "1");
         %extend{
@@ -1746,7 +1997,7 @@ None
 		/****************** Copy ******************/
 		/**** md5 signature: 58a8930506a5b25067aaf63bebb04b61 ****/
 		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "Returns the set of shapes substitued to <s> .
+		%feature("autodoc", "Returns the set of shapes substituted to <s>.
 
 Parameters
 ----------

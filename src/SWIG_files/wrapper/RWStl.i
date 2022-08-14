@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTLDOCSTRING
 "RWStl module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstl.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwstl.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTLDOCSTRING) RWStl
 
@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstl.html"
 #include<Message_module.hxx>
 #include<Poly_module.hxx>
 #include<TShort_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -65,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -120,38 +121,56 @@ opencascade::handle<Poly_Triangulation>
 		static opencascade::handle<Poly_Triangulation> ReadBinary(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
-		/**** md5 signature: d43c9b9243be3127708aa8d4c2ce0d80 ****/
+		/**** md5 signature: 64c7a7ea1e7b324b70672cedadb30bca ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified stl file and returns its content as triangulation. in case of error, returns null handle.
 
 Parameters
 ----------
 theFile: OSD_Path
-aProgInd: Message_ProgressRange,optional
+theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const Message_ProgressRange & aProgInd = Message_ProgressRange());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
-		/**** md5 signature: 760c46a9474c487b075bd12bfbd5c2c9 ****/
+		/**** md5 signature: 742addde06afd9d8130198556696e689 ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified stl file and returns its content as triangulation. in case of error, returns null handle.
 
 Parameters
 ----------
 theFile: char *
-aProgInd: Message_ProgressRange,optional
+theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const Message_ProgressRange & aProgInd = Message_ProgressRange());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** ReadFile ******************/
+		/**** md5 signature: 752aa6341824937d3d7f5d58f0ca70e0 ****/
+		%feature("compactdefaultargs") ReadFile;
+		%feature("autodoc", "Read specified stl file and returns its content as triangulation. @param[in] thefile file path to read @param[in] themergeangle maximum angle in radians between triangles to merge equal nodes; m_pi/2 means ignore angle @param[in] theprogress progress indicator returns result triangulation or null in case of error.
+
+Parameters
+----------
+theFile: char *
+theMergeAngle: float
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") ReadFile;
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const Standard_Real theMergeAngle, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** WriteAscii ******************/
 		/**** md5 signature: 8cb39ba5b5c9e3b27f4e1ec1bd12de9c ****/

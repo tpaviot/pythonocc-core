@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IMESHTOOLSDOCSTRING
 "IMeshTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_imeshtools.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_imeshtools.html"
 %enddef
 %module (package="OCC.Core", docstring=IMESHTOOLSDOCSTRING) IMeshTools
 
@@ -81,7 +81,7 @@ enum IMeshTools_MeshAlgoType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IMeshTools_MeshAlgoType(IntEnum):
@@ -129,7 +129,7 @@ None
 		/****************** BuildModel ******************/
 		/**** md5 signature: af00dd5e5c53c0adab36af636bffd87b ****/
 		%feature("compactdefaultargs") BuildModel;
-		%feature("autodoc", "Builds model using assined model builder. returns true on success, false elsewhere.
+		%feature("autodoc", "Builds model using assigned model builder. returns true on success, false elsewhere.
 
 Returns
 -------
@@ -519,7 +519,7 @@ None
 		/****************** Perform ******************/
 		/**** md5 signature: 3be29591efb89b639a8e87056a3f4905 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs meshing ot the shape using current context.
+		%feature("autodoc", "Performs meshing to the shape using current context.
 
 Parameters
 ----------

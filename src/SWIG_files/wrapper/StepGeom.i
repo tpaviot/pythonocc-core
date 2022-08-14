@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPGEOMDOCSTRING
 "StepGeom module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepgeom.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepgeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPGEOMDOCSTRING) StepGeom
 
@@ -125,7 +125,7 @@ enum StepGeom_TransitionCode {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class StepGeom_KnotType(IntEnum):
@@ -219,6 +219,7 @@ StepGeom_tcContSameGradientSameCurvature = StepGeom_TransitionCode.StepGeom_tcCo
 %wrap_handle(StepGeom_Placement)
 %wrap_handle(StepGeom_Point)
 %wrap_handle(StepGeom_ReparametrisedCompositeCurveSegment)
+%wrap_handle(StepGeom_SuParameters)
 %wrap_handle(StepGeom_Surface)
 %wrap_handle(StepGeom_Vector)
 %wrap_handle(StepGeom_Axis1Placement)
@@ -2554,6 +2555,210 @@ None
 %make_alias(StepGeom_ReparametrisedCompositeCurveSegment)
 
 %extend StepGeom_ReparametrisedCompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************
+* class StepGeom_SuParameters *
+******************************/
+class StepGeom_SuParameters : public StepGeom_GeometricRepresentationItem {
+	public:
+		/****************** StepGeom_SuParameters ******************/
+		/**** md5 signature: 85a569687f8fad7c39c37d9d4f26571a ****/
+		%feature("compactdefaultargs") StepGeom_SuParameters;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepGeom_SuParameters;
+		 StepGeom_SuParameters();
+
+		/****************** A ******************/
+		/**** md5 signature: 4e126ab674129c10fe472f1cd454dbe1 ****/
+		%feature("compactdefaultargs") A;
+		%feature("autodoc", "Returns field a.
+
+Returns
+-------
+float
+") A;
+		Standard_Real A();
+
+		/****************** Alpha ******************/
+		/**** md5 signature: d0eb4ad726a40bcb69a07e035d8af277 ****/
+		%feature("compactdefaultargs") Alpha;
+		%feature("autodoc", "Returns field alpha.
+
+Returns
+-------
+float
+") Alpha;
+		Standard_Real Alpha();
+
+		/****************** B ******************/
+		/**** md5 signature: 4885a25669ae505f058aa5976f09cd40 ****/
+		%feature("compactdefaultargs") B;
+		%feature("autodoc", "Returns field b.
+
+Returns
+-------
+float
+") B;
+		Standard_Real B();
+
+		/****************** Beta ******************/
+		/**** md5 signature: 9611cbc17e65fd7d9fe28a9eec917c98 ****/
+		%feature("compactdefaultargs") Beta;
+		%feature("autodoc", "Returns field beta.
+
+Returns
+-------
+float
+") Beta;
+		Standard_Real Beta();
+
+		/****************** C ******************/
+		/**** md5 signature: 11ad00e12cf6f94e3fa3c08335c5a704 ****/
+		%feature("compactdefaultargs") C;
+		%feature("autodoc", "Returns field c.
+
+Returns
+-------
+float
+") C;
+		Standard_Real C();
+
+		/****************** Gamma ******************/
+		/**** md5 signature: ed66dd0e2860030f93e03ba97486a1c2 ****/
+		%feature("compactdefaultargs") Gamma;
+		%feature("autodoc", "Returns field gamma.
+
+Returns
+-------
+float
+") Gamma;
+		Standard_Real Gamma();
+
+		/****************** Init ******************/
+		/**** md5 signature: 8d4447275f2973777519acbfeba91772 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theA: float
+theAlpha: float
+theB: float
+theBeta: float
+theC: float
+theGamma: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const Standard_Real theA, const Standard_Real theAlpha, const Standard_Real theB, const Standard_Real theBeta, const Standard_Real theC, const Standard_Real theGamma);
+
+		/****************** SetA ******************/
+		/**** md5 signature: 1e0ecd7ff33ffeee933a5e368addd9fd ****/
+		%feature("compactdefaultargs") SetA;
+		%feature("autodoc", "Sets field a.
+
+Parameters
+----------
+theA: float
+
+Returns
+-------
+None
+") SetA;
+		void SetA(const Standard_Real theA);
+
+		/****************** SetAlpha ******************/
+		/**** md5 signature: 837be9743542dceb22ff479a64ecba65 ****/
+		%feature("compactdefaultargs") SetAlpha;
+		%feature("autodoc", "Sets field alpha.
+
+Parameters
+----------
+theAlpha: float
+
+Returns
+-------
+None
+") SetAlpha;
+		void SetAlpha(const Standard_Real theAlpha);
+
+		/****************** SetB ******************/
+		/**** md5 signature: b4d6027747eb0316b2f2b6e762e13f55 ****/
+		%feature("compactdefaultargs") SetB;
+		%feature("autodoc", "Sets field b.
+
+Parameters
+----------
+theB: float
+
+Returns
+-------
+None
+") SetB;
+		void SetB(const Standard_Real theB);
+
+		/****************** SetBeta ******************/
+		/**** md5 signature: 51a666586cca65bf67a6110dfff10935 ****/
+		%feature("compactdefaultargs") SetBeta;
+		%feature("autodoc", "Sets field beta.
+
+Parameters
+----------
+theBeta: float
+
+Returns
+-------
+None
+") SetBeta;
+		void SetBeta(const Standard_Real theBeta);
+
+		/****************** SetC ******************/
+		/**** md5 signature: 01189ddb9fccb4ae72b663727cb3a54b ****/
+		%feature("compactdefaultargs") SetC;
+		%feature("autodoc", "Sets field c.
+
+Parameters
+----------
+theC: float
+
+Returns
+-------
+None
+") SetC;
+		void SetC(const Standard_Real theC);
+
+		/****************** SetGamma ******************/
+		/**** md5 signature: 9c84dca979d1f7c1b2a794e39f4f7598 ****/
+		%feature("compactdefaultargs") SetGamma;
+		%feature("autodoc", "Sets field gamma.
+
+Parameters
+----------
+theGamma: float
+
+Returns
+-------
+None
+") SetGamma;
+		void SetGamma(const Standard_Real theGamma);
+
+};
+
+
+%make_alias(StepGeom_SuParameters)
+
+%extend StepGeom_SuParameters {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

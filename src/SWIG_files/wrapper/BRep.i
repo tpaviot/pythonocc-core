@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPDOCSTRING
 "BRep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brep.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brep.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPDOCSTRING) BRep
 
@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brep.html"
 #include<TopAbs_module.hxx>
 #include<TShort_module.hxx>
 #include<Message_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -76,7 +77,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -342,20 +343,38 @@ None
 		void MakeFace(TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
 		/****************** MakeFace ******************/
-		/**** md5 signature: ca5f5e4b1a5061fcce0c1cd034023ef2 ****/
+		/**** md5 signature: 82f593bb6499b901c0087602e0a5b4bc ****/
 		%feature("compactdefaultargs") MakeFace;
-		%feature("autodoc", "Makes a face with a triangulation. the triangulation is in the same reference system than the tface.
+		%feature("autodoc", "Makes a theface with a single triangulation. the triangulation is in the same reference system than the tface.
 
 Parameters
 ----------
-F: TopoDS_Face
-T: Poly_Triangulation
+theFace: TopoDS_Face
+theTriangulation: Poly_Triangulation
 
 Returns
 -------
 None
 ") MakeFace;
-		void MakeFace(TopoDS_Face & F, const opencascade::handle<Poly_Triangulation> & T);
+		void MakeFace(TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTriangulation);
+
+		/****************** MakeFace ******************/
+		/**** md5 signature: ca97f699b84f43b2b5cae440dbda0a60 ****/
+		%feature("compactdefaultargs") MakeFace;
+		%feature("autodoc", "Makes a face with a list of triangulations and active one. use null active triangulation to set the first triangulation in list as active. the triangulations is in the same reference system than the tface.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTriangulations: Poly_ListOfTriangulation
+theActiveTriangulation: Poly_Triangulation,optional
+	default value is opencascade::handle<Poly_Triangulation>()
+
+Returns
+-------
+None
+") MakeFace;
+		void MakeFace(TopoDS_Face & theFace, const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation = opencascade::handle<Poly_Triangulation>());
 
 		/****************** MakeVertex ******************/
 		/**** md5 signature: 31d0795e1ce56b9f1ec86c08a180b99b ****/
@@ -893,20 +912,22 @@ None
 		void UpdateFace(const TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
 		/****************** UpdateFace ******************/
-		/**** md5 signature: bd0733c6677a8df3f4a16beca4f9c3da ****/
+		/**** md5 signature: 46068466603e30f2f620c3de44d08407 ****/
 		%feature("compactdefaultargs") UpdateFace;
-		%feature("autodoc", "Changes a face triangulation. //! a null triangulation removes the triangulation.
+		%feature("autodoc", "Changes a face triangulation. a null thetriangulation removes face triangulations. if thetoreset is true face triangulations will be reset to new list with only one input triangulation that will be active. else if thetriangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to thetriangulation one.
 
 Parameters
 ----------
-F: TopoDS_Face
-T: Poly_Triangulation
+theFace: TopoDS_Face
+theTriangulation: Poly_Triangulation
+theToReset: bool,optional
+	default value is true
 
 Returns
 -------
 None
 ") UpdateFace;
-		void UpdateFace(const TopoDS_Face & F, const opencascade::handle<Poly_Triangulation> & T);
+		void UpdateFace(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTriangulation, const Standard_Boolean theToReset = true);
 
 		/****************** UpdateFace ******************/
 		/**** md5 signature: cfff4752b2b664eb9ba94b81dbc0aea1 ****/
@@ -2013,6 +2034,17 @@ None
 ") BRep_TFace;
 		 BRep_TFace();
 
+		/****************** ActiveTriangulation ******************/
+		/**** md5 signature: 700e23716c69d5b67f3f27b14bf22b4f ****/
+		%feature("compactdefaultargs") ActiveTriangulation;
+		%feature("autodoc", "Returns current active triangulation.
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") ActiveTriangulation;
+		const opencascade::handle<Poly_Triangulation> & ActiveTriangulation();
+
 
             %feature("autodoc", "1");
             %extend{
@@ -2033,9 +2065,9 @@ opencascade::handle<TopoDS_TShape>
 		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
 
 		/****************** Location ******************/
-		/**** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ****/
+		/**** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the face location.
 
 Returns
 -------
@@ -2044,24 +2076,24 @@ TopLoc_Location
 		const TopLoc_Location & Location();
 
 		/****************** Location ******************/
-		/**** md5 signature: a2c9495044664128886ca4ae6644e853 ****/
+		/**** md5 signature: bb857ae8889d5b33371c407b0c54d0cb ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets the location for this face.
 
 Parameters
 ----------
-L: TopLoc_Location
+theLocation: TopLoc_Location
 
 Returns
 -------
 None
 ") Location;
-		void Location(const TopLoc_Location & L);
+		void Location(const TopLoc_Location & theLocation);
 
 		/****************** NaturalRestriction ******************/
-		/**** md5 signature: 6d92e56f229bd8624f08e276baf74517 ****/
+		/**** md5 signature: 73f4cd683852501cbdb851a873e3006e ****/
 		%feature("compactdefaultargs") NaturalRestriction;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns true if the boundary of this face is known to be the parametric space (umin, umax, vmin, vmax).
 
 Returns
 -------
@@ -2070,24 +2102,35 @@ bool
 		Standard_Boolean NaturalRestriction();
 
 		/****************** NaturalRestriction ******************/
-		/**** md5 signature: ea39b91896c5f026665631b9600bda4a ****/
+		/**** md5 signature: 3dc8b4a5fc00fb6b99650b6f24e2c30a ****/
 		%feature("compactdefaultargs") NaturalRestriction;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets the flag that is true if the boundary of this face is known to be the parametric space.
 
 Parameters
 ----------
-N: bool
+theRestriction: bool
 
 Returns
 -------
 None
 ") NaturalRestriction;
-		void NaturalRestriction(const Standard_Boolean N);
+		void NaturalRestriction(const Standard_Boolean theRestriction);
+
+		/****************** NbTriangulations ******************/
+		/**** md5 signature: 19c79cd06fe3039a67f78fa6226f6d24 ****/
+		%feature("compactdefaultargs") NbTriangulations;
+		%feature("autodoc", "Returns number of available face triangulations.
+
+Returns
+-------
+int
+") NbTriangulations;
+		Standard_Integer NbTriangulations();
 
 		/****************** Surface ******************/
-		/**** md5 signature: a469e18cbceeb351572a461f96ff0f4d ****/
+		/**** md5 signature: 3aa31a6d63da8a25f018cf96599c0928 ****/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns face surface.
 
 Returns
 -------
@@ -2096,24 +2139,24 @@ opencascade::handle<Geom_Surface>
 		const opencascade::handle<Geom_Surface> & Surface();
 
 		/****************** Surface ******************/
-		/**** md5 signature: a7f333b193d7e7725a80237426d70c9c ****/
+		/**** md5 signature: 277744bd75ecf30c3537bd170d0e688b ****/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets surface for this face.
 
 Parameters
 ----------
-S: Geom_Surface
+theSurface: Geom_Surface
 
 Returns
 -------
 None
 ") Surface;
-		void Surface(const opencascade::handle<Geom_Surface> & S);
+		void Surface(const opencascade::handle<Geom_Surface> & theSurface);
 
 		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/**** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ****/
 		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the face tolerance.
 
 Returns
 -------
@@ -2122,45 +2165,79 @@ float
 		Standard_Real Tolerance();
 
 		/****************** Tolerance ******************/
-		/**** md5 signature: 36bec8dcfdb7e7f4f4edb2eeca6bf06a ****/
+		/**** md5 signature: 87220829eafedab2b5ef265dd6be1ecf ****/
 		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets the tolerance for this face.
 
 Parameters
 ----------
-T: float
+theTolerance: float
 
 Returns
 -------
 None
 ") Tolerance;
-		void Tolerance(const Standard_Real T);
+		void Tolerance(const Standard_Real theTolerance);
 
 		/****************** Triangulation ******************/
-		/**** md5 signature: a9328d46141e309ce47c8a4aca21186d ****/
+		/**** md5 signature: 031b83aac32b0db8569fa3861a62e31f ****/
 		%feature("compactdefaultargs") Triangulation;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the triangulation of this face according to the mesh purpose. @param themeshpurpose [in] a mesh purpose to find appropriate triangulation (none by default). returns an active triangulation in case of none purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is anyfallback or null handle if there is no any suitable triangulation.
+
+Parameters
+----------
+thePurpose: Poly_MeshPurpose,optional
+	default value is Poly_MeshPurpose_NONE
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") Triangulation;
-		const opencascade::handle<Poly_Triangulation> & Triangulation();
+		const opencascade::handle<Poly_Triangulation> & Triangulation(const Poly_MeshPurpose thePurpose = Poly_MeshPurpose_NONE);
 
 		/****************** Triangulation ******************/
-		/**** md5 signature: bac47dff3e24342527b1de486155ec4f ****/
+		/**** md5 signature: ec7f735385ed0e818ad3a3ad3c13b876 ****/
 		%feature("compactdefaultargs") Triangulation;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Sets input triangulation for this face. @param thetriangulation [in] triangulation to be set @param thetoreset [in] flag to reset triangulations list to new list with only one input triangulation. if thetriangulation is null internal list of triangulations will be cleared and active triangulation will be nullified. if thetoreset is true internal list of triangulations will be reset to new list with only one input triangulation that will be active. else if input triangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to input one.
 
 Parameters
 ----------
-T: Poly_Triangulation
+theTriangulation: Poly_Triangulation
+theToReset: bool,optional
+	default value is true
 
 Returns
 -------
 None
 ") Triangulation;
-		void Triangulation(const opencascade::handle<Poly_Triangulation> & T);
+		void Triangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation, const Standard_Boolean theToReset = true);
+
+		/****************** Triangulations ******************/
+		/**** md5 signature: ff9482874654ec6c8f82dbd05f8b62aa ****/
+		%feature("compactdefaultargs") Triangulations;
+		%feature("autodoc", "Returns the list of available face triangulations.
+
+Returns
+-------
+Poly_ListOfTriangulation
+") Triangulations;
+		const Poly_ListOfTriangulation & Triangulations();
+
+		/****************** Triangulations ******************/
+		/**** md5 signature: 9aea5c4c84dd41a6b79e5dc9a6ea0806 ****/
+		%feature("compactdefaultargs") Triangulations;
+		%feature("autodoc", "Sets input list of triangulations and currently active triangulation for this face. if list is empty internal list of triangulations will be cleared and active triangulation will be nullified. else this list will be saved and the input active triangulation be saved as active. use null active triangulation to set the first triangulation in list as active. note: the method throws exception if there is any null triangulation in input list or if this list doesn't contain input active triangulation.
+
+Parameters
+----------
+theTriangulations: Poly_ListOfTriangulation
+theActiveTriangulation: Poly_Triangulation
+
+Returns
+-------
+None
+") Triangulations;
+		void Triangulations(const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation);
 
 };
 
@@ -3118,20 +3195,38 @@ float
 		static Standard_Real Tolerance(const TopoDS_Vertex & V);
 
 		/****************** Triangulation ******************/
-		/**** md5 signature: a8a3e4132b07c69f1b86da193a9c65d4 ****/
+		/**** md5 signature: d68c07d5a1ca2d4b4e577d7fa4cf54e1 ****/
 		%feature("compactdefaultargs") Triangulation;
-		%feature("autodoc", "Returns the triangulation of the face. it is a null handle if there is no triangulation.
+		%feature("autodoc", "Returns the triangulation of the face according to the mesh purpose. @param theface [in] the input face to find triangulation. @param thelocation [out] the face location. @param themeshpurpose [in] a mesh purpose to find appropriate triangulation (none by default). returns an active triangulation in case of none purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is anyfallback or null handle if there is no any suitable triangulation.
 
 Parameters
 ----------
-F: TopoDS_Face
-L: TopLoc_Location
+theFace: TopoDS_Face
+theLocation: TopLoc_Location
+theMeshPurpose: Poly_MeshPurpose,optional
+	default value is Poly_MeshPurpose_NONE
 
 Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") Triangulation;
-		static const opencascade::handle<Poly_Triangulation> & Triangulation(const TopoDS_Face & F, TopLoc_Location & L);
+		static const opencascade::handle<Poly_Triangulation> & Triangulation(const TopoDS_Face & theFace, TopLoc_Location & theLocation, const Poly_MeshPurpose theMeshPurpose = Poly_MeshPurpose_NONE);
+
+		/****************** Triangulations ******************/
+		/**** md5 signature: ac6d632b25937da86177ac5f5087cf51 ****/
+		%feature("compactdefaultargs") Triangulations;
+		%feature("autodoc", "Returns all triangulations of the face. @param theface [in] the input face. @param thelocation [out] the face location. returns list of all available face triangulations.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theLocation: TopLoc_Location
+
+Returns
+-------
+Poly_ListOfTriangulation
+") Triangulations;
+		static const Poly_ListOfTriangulation & Triangulations(const TopoDS_Face & theFace, TopLoc_Location & theLocation);
 
 		/****************** UVPoints ******************/
 		/**** md5 signature: 739ea64a3ca04f61d1659b66cfc128ff ****/

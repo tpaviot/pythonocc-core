@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TNAMINGDOCSTRING
 "TNaming module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tnaming.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tnaming.html"
 %enddef
 %module (package="OCC.Core", docstring=TNAMINGDOCSTRING) TNaming
 
@@ -98,7 +98,7 @@ enum TNaming_NameType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TNaming_Evolution(IntEnum):
@@ -400,7 +400,7 @@ None
 		/****************** SubstituteSShape ******************/
 		/**** md5 signature: da4f9bfab8e604d3c3824a7968ba3ba0 ****/
 		%feature("compactdefaultargs") SubstituteSShape;
-		%feature("autodoc", "Subtitutes shape in source structure.
+		%feature("autodoc", "Substitutes shape in source structure.
 
 Parameters
 ----------
@@ -3310,7 +3310,7 @@ TopoDS_Shape
 		/****************** FindShape ******************/
 		/**** md5 signature: b8f0c64cfdf6508bb0b1b137412bd585 ****/
 		%feature("compactdefaultargs") FindShape;
-		%feature("autodoc", "Returns the current shape (a wire or a shell) built (in the data framework) from the the shapes of the argument named shape. it is used for identity name type computation.
+		%feature("autodoc", "Returns the current shape (a wire or a shell) built (in the data framework) from the shapes of the argument named shape. it is used for identity name type computation.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEEXTENDDOCSTRING
 "ShapeExtend module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeextend.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapeextend.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEEXTENDDOCSTRING) ShapeExtend
 
@@ -110,7 +110,7 @@ enum ShapeExtend_Parametrisation {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class ShapeExtend_Status(IntEnum):
@@ -1789,7 +1789,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: a9e5faa7293c857497a7c93fe76d0f12 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Loads an already existing wire if <chained> is true (default), edges are added in the sequence as they are explored by topods_iterator else, if <chained> is false, wire is explored by breptools_wireexplorer and it is guaranteed that edges will be sequencially connected. remark : in the latter case it can happen that not all edges will be found (because of limitations of breptools_wireexplorer for disconnected wires and wires with seam edges).
+		%feature("autodoc", "Loads an already existing wire if <chained> is true (default), edges are added in the sequence as they are explored by topods_iterator else, if <chained> is false, wire is explored by breptools_wireexplorer and it is guaranteed that edges will be sequentially connected. remark : in the latter case it can happen that not all edges will be found (because of limitations of breptools_wireexplorer for disconnected wires and wires with seam edges).
 
 Parameters
 ----------

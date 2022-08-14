@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDFDOCSTRING
 "TDF module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdf.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tdf.html"
 %enddef
 %module (package="OCC.Core", docstring=TDFDOCSTRING) TDF
 
@@ -70,7 +70,7 @@ enum  {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -600,7 +600,7 @@ None
 		/****************** ForgetAllAttributes ******************/
 		/**** md5 signature: f0492f70679f693e73f3cd351b602cd9 ****/
 		%feature("compactdefaultargs") ForgetAllAttributes;
-		%feature("autodoc", "Forgets all the attributes attached to the label of <self>. does it on the sub-labels if <clearchildren> is set to true. of course, this method is compatible with transaction & delta mecanisms. be carefull that if <self> will have a null label after this call.
+		%feature("autodoc", "Forgets all the attributes attached to the label of <self>. does it on the sub-labels if <clearchildren> is set to true. of course, this method is compatible with transaction & delta mechanisms. be careful that if <self> will have a null label after this call.
 
 Parameters
 ----------
@@ -616,7 +616,7 @@ None
 		/****************** ForgetAttribute ******************/
 		/**** md5 signature: 52de4f1eac4c1d719dc2240e16600cdd ****/
 		%feature("compactdefaultargs") ForgetAttribute;
-		%feature("autodoc", "Forgets the attribute of guid <aguid> associated to the label of <self>. be carefull that if <self> is the attribute of <guid>, <self> will have a null label after this call. if the attribute doesn't exist returns false. otherwise returns true.
+		%feature("autodoc", "Forgets the attribute of guid <aguid> associated to the label of <self>. be careful that if <self> is the attribute of <guid>, <self> will have a null label after this call. if the attribute doesn't exist returns false. otherwise returns true.
 
 Parameters
 ----------
@@ -1238,7 +1238,7 @@ class TDF_ClosureMode {
 		/****************** TDF_ClosureMode ******************/
 		/**** md5 signature: d0067cf39e729d207d68714afd10e10e ****/
 		%feature("compactdefaultargs") TDF_ClosureMode;
-		%feature("autodoc", "Creates an objet with all modes set to <amode>.
+		%feature("autodoc", "Creates an object with all modes set to <amode>.
 
 Parameters
 ----------
@@ -1745,6 +1745,33 @@ None
                 self->DumpJson(s, depth);
                 return s.str();}
             };
+		/****************** GetLabel ******************/
+		/**** md5 signature: 6acb21919b35dccd58a6c624736c7a64 ****/
+		%feature("compactdefaultargs") GetLabel;
+		%feature("autodoc", "Returns a label by an entry. returns standard_false, if such a label doesn't exist or mechanism for fast access to the label by entry is not initialized.
+
+Parameters
+----------
+anEntry: TCollection_AsciiString
+aLabel: TDF_Label
+
+Returns
+-------
+bool
+") GetLabel;
+		Standard_Boolean GetLabel(const TCollection_AsciiString & anEntry, TDF_Label & aLabel);
+
+		/****************** IsAccessByEntries ******************/
+		/**** md5 signature: e9c87e292dba49522735bc8b2f6391f2 ****/
+		%feature("compactdefaultargs") IsAccessByEntries;
+		%feature("autodoc", "Returns a status of mechanism for fast access to the labels via entries.
+
+Returns
+-------
+bool
+") IsAccessByEntries;
+		Standard_Boolean IsAccessByEntries();
+
 		/****************** IsApplicable ******************/
 		/**** md5 signature: 3bce195eeb54500772a8ae9747fed4f1 ****/
 		%feature("compactdefaultargs") IsApplicable;
@@ -1793,6 +1820,21 @@ bool
 ") NotUndoMode;
 		Standard_Boolean NotUndoMode();
 
+		/****************** RegisterLabel ******************/
+		/**** md5 signature: 338d96516dcaa839075496537c99690a ****/
+		%feature("compactdefaultargs") RegisterLabel;
+		%feature("autodoc", "An internal method. it is used internally on creation of new labels. it adds a new label into internal table for fast access to the labels by entry.
+
+Parameters
+----------
+aLabel: TDF_Label
+
+Returns
+-------
+None
+") RegisterLabel;
+		void RegisterLabel(const TDF_Label & aLabel);
+
 		/****************** Root ******************/
 		/**** md5 signature: 8d91e6b3e48b0dcd1ed6725e1e277a57 ****/
 		%feature("compactdefaultargs") Root;
@@ -1803,6 +1845,21 @@ Returns
 TDF_Label
 ") Root;
 		const TDF_Label Root();
+
+		/****************** SetAccessByEntries ******************/
+		/**** md5 signature: 7db07372e18eb363da4daa94e4ebb296 ****/
+		%feature("compactdefaultargs") SetAccessByEntries;
+		%feature("autodoc", "Initializes a mechanism for fast access to the labels by their entries. the fast access is useful for large documents and often access to the labels via entries. internally, a table of entry - label is created, which allows to obtain a label by its entry in a very fast way. if the mechanism is turned off, the internal table is cleaned. new labels are added to the table, if the mechanism is on (no need to re-initialize the mechanism).
+
+Parameters
+----------
+aSet: bool
+
+Returns
+-------
+None
+") SetAccessByEntries;
+		void SetAccessByEntries(const Standard_Boolean aSet);
 
 		/****************** Time ******************/
 		/**** md5 signature: 29e54f38b67d119a1dd7d985afb308c4 ****/
@@ -1829,7 +1886,7 @@ int
 		/****************** Undo ******************/
 		/**** md5 signature: e381e2729d2baa6e06b5553ecb90f6be ****/
 		%feature("compactdefaultargs") Undo;
-		%feature("autodoc", "Apply <adelta> to undo a set of attribute modifications. //! optionnal <withdelta> set to true indiquates a delta set must be generated. (see above).
+		%feature("autodoc", "Apply <adelta> to undo a set of attribute modifications. //! optional <withdelta> set to true indicates a delta set must be generated. (see above).
 
 Parameters
 ----------
@@ -2540,7 +2597,7 @@ TDF_Label
 		/****************** ForgetAllAttributes ******************/
 		/**** md5 signature: f0492f70679f693e73f3cd351b602cd9 ****/
 		%feature("compactdefaultargs") ForgetAllAttributes;
-		%feature("autodoc", "Forgets all the attributes. does it on also on the sub-labels if <clearchildren> is set to true. of course, this method is compatible with transaction & delta mecanisms.
+		%feature("autodoc", "Forgets all the attributes. does it on also on the sub-labels if <clearchildren> is set to true. of course, this method is compatible with transaction & delta mechanisms.
 
 Parameters
 ----------
@@ -3006,7 +3063,7 @@ TDF_AttributeDataMap
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the relocation dictionnary, but lets the self relocation flag to its current value.
+		%feature("autodoc", "Clears the relocation dictionary, but lets the self relocation flag to its current value.
 
 Returns
 -------
@@ -3405,7 +3462,7 @@ None
 		/****************** OutReferences ******************/
 		/**** md5 signature: 16f5367a11932dbebdc9488dc199de94 ****/
 		%feature("compactdefaultargs") OutReferences;
-		%feature("autodoc", "Returns in <atts> the referenced attributes and kept by <afilterforreferences>. it considers only the referers kept by <afilterforreferers>. caution: <atts> is not cleared before use!.
+		%feature("autodoc", "Returns in <atts> the referenced attributes and kept by <afilterforreferences>. it considers only the referrers kept by <afilterforreferers>. caution: <atts> is not cleared before use!.
 
 Parameters
 ----------
@@ -3457,7 +3514,7 @@ None
 		/****************** RelocateLabel ******************/
 		/**** md5 signature: a790ebba517221dfa8200224bae0d105 ****/
 		%feature("compactdefaultargs") RelocateLabel;
-		%feature("autodoc", "Returns the label having the same sub-entry as <alabel> but located as descendant as <toroot> instead of <fromroot>. //! exemple : //! alabel = 0:3:24:7:2:7 fromroot = 0:3:24 toroot = 0:5 returned label = 0:5:7:2:7.
+		%feature("autodoc", "Returns the label having the same sub-entry as <alabel> but located as descendant as <toroot> instead of <fromroot>. //! example : //! alabel = 0:3:24:7:2:7 fromroot = 0:3:24 toroot = 0:5 returned label = 0:5:7:2:7.
 
 Parameters
 ----------

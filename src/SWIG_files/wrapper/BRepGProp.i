@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPGPROPDOCSTRING
 "BRepGProp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepgprop.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepgprop.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPGPROPDOCSTRING) BRepGProp
 
@@ -84,7 +84,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -147,7 +147,7 @@ None
 		/****************** SurfaceProperties ******************/
 		/**** md5 signature: 98c472661263186b1d30e4379dd9db78 ****/
 		%feature("compactdefaultargs") SurfaceProperties;
-		%feature("autodoc", "Updates <sprops> with the shape <s>, that contains its pricipal properties. the surface properties of all the faces in <s> are computed. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (area) for each face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. method returns estimation of relative error reached for whole shape. warning: if eps > 0.001 algorithm performs non-adaptive integration. skipshared is a special flag, which allows taking in calculation shared topological entities or not for ex., if skipshared = true, faces, shared by two or more shells, are taken into calculation only once.
+		%feature("autodoc", "Updates <sprops> with the shape <s>, that contains its principal properties. the surface properties of all the faces in <s> are computed. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (area) for each face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. method returns estimation of relative error reached for whole shape. warning: if eps > 0.001 algorithm performs non-adaptive integration. skipshared is a special flag, which allows taking in calculation shared topological entities or not for ex., if skipshared = true, faces, shared by two or more shells, are taken into calculation only once.
 
 Parameters
 ----------
@@ -188,7 +188,7 @@ None
 		/****************** VolumeProperties ******************/
 		/**** md5 signature: 04af0768aae13f233016a52d30fcfdbb ****/
 		%feature("compactdefaultargs") VolumeProperties;
-		%feature("autodoc", "Updates <vprops> with the shape <s>, that contains its pricipal properties. the volume properties of all the forward and reversed faces in <s> are computed. if onlyclosed is true then computed faces must belong to closed shells. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for each face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. method returns estimation of relative error reached for whole shape. warning: if eps > 0.001 algorithm performs non-adaptive integration. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once.
+		%feature("autodoc", "Updates <vprops> with the shape <s>, that contains its principal properties. the volume properties of all the forward and reversed faces in <s> are computed. if onlyclosed is true then computed faces must belong to closed shells. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for each face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. method returns estimation of relative error reached for whole shape. warning: if eps > 0.001 algorithm performs non-adaptive integration. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once.
 
 Parameters
 ----------
@@ -209,7 +209,7 @@ float
 		/****************** VolumePropertiesGK ******************/
 		/**** md5 signature: 350eb5f7ad614101e55a9b0c0afcdb22 ****/
 		%feature("compactdefaultargs") VolumePropertiesGK;
-		%feature("autodoc", "Updates <vprops> with the shape <s>, that contains its pricipal properties. the volume properties of all the forward and reversed faces in <s> are computed. if onlyclosed is true then computed faces must belong to closed shells. adaptive 2d gauss integration is used. parameter isusespan says if it is necessary to define spans on a face. this option has an effect only for bspline faces. parameter eps sets maximal relative error of computed property for each face. error is delivered by the adaptive gauss-kronrod method of integral computation that is used for properties computation. method returns estimation of relative error reached for whole shape. returns negative value if the computation is failed. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once.
+		%feature("autodoc", "Updates <vprops> with the shape <s>, that contains its principal properties. the volume properties of all the forward and reversed faces in <s> are computed. if onlyclosed is true then computed faces must belong to closed shells. adaptive 2d gauss integration is used. parameter isusespan says if it is necessary to define spans on a face. this option has an effect only for bspline faces. parameter eps sets maximal relative error of computed property for each face. error is delivered by the adaptive gauss-kronrod method of integral computation that is used for properties computation. method returns estimation of relative error reached for whole shape. returns negative value if the computation is failed. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once.
 
 Parameters
 ----------
@@ -498,7 +498,7 @@ int
 		/****************** Intervals ******************/
 		/**** md5 signature: f429463d75cd548af36c429f480bc438 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -961,7 +961,7 @@ enum BRepGProp_GaussType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BRepGProp_GaussType(IntEnum):
@@ -1263,16 +1263,16 @@ None
 class BRepGProp_TFunction : public math_Function {
 	public:
 		/****************** BRepGProp_TFunction ******************/
-		/**** md5 signature: 6fb8eac28a2b05c26eb62cc235a75bda ****/
+		/**** md5 signature: 660069516fa3db7a124db5fda3b09b0e ****/
 		%feature("compactdefaultargs") BRepGProp_TFunction;
-		%feature("autodoc", "Constructor. initializes the function with the face, the location point, the flag isbypoint, the coefficients thecoeff that have different meaning depending on the value of isbypoint. the last two parameters are theumin - the lower bound of the inner integral. this value is fixed for any integral. and the value of tolerance of inner integral computation. if isbypoint is equal to standard_true, the number of the coefficients is equal to 3 and they represent x, y and z coordinates (thecoeff[0], thecoeff[1] and thecoeff[2] correspondingly) of the shift if the inertia is computed with respect to the point different then the location. if isbypoint is equal to standard_false, the number of the coefficients is 4 and they represent the compbination of plane parameters and shift values.
+		%feature("autodoc", "Constructor. initializes the function with the face, the location point, the flag isbypoint, the coefficients thecoeff that have different meaning depending on the value of isbypoint. the last two parameters are theumin - the lower bound of the inner integral. this value is fixed for any integral. and the value of tolerance of inner integral computation. if isbypoint is equal to standard_true, the number of the coefficients is equal to 3 and they represent x, y and z coordinates (thecoeff[0], thecoeff[1] and thecoeff[2] correspondingly) of the shift if the inertia is computed with respect to the point different then the location. if isbypoint is equal to standard_false, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
 
 Parameters
 ----------
 theSurface: BRepGProp_Face
 theVertex: gp_Pnt
 IsByPoint: bool
-theCoeffs: Standard_Address
+theCoeffs: float *
 theUMin: float
 theTolerance: float
 
@@ -1280,7 +1280,7 @@ Returns
 -------
 None
 ") BRepGProp_TFunction;
-		 BRepGProp_TFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Address theCoeffs, const Standard_Real theUMin, const Standard_Real theTolerance);
+		 BRepGProp_TFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Real * theCoeffs, const Standard_Real theUMin, const Standard_Real theTolerance);
 
 		/****************** AbsolutError ******************/
 		/**** md5 signature: 12eadedd827c6f2cfdee466e4014e7d9 ****/
@@ -1401,7 +1401,7 @@ F: float
 class BRepGProp_UFunction : public math_Function {
 	public:
 		/****************** BRepGProp_UFunction ******************/
-		/**** md5 signature: b338266c4100743d61bda90c43090930 ****/
+		/**** md5 signature: f53c91a3d00c6205c8aeda4203c886d7 ****/
 		%feature("compactdefaultargs") BRepGProp_UFunction;
 		%feature("autodoc", "Constructor. initializes the function with the face, the location point, the flag isbypoint and the coefficients thecoeff that have different meaning depending on the value of isbypoint. if isbypoint is equal to standard_true, the number of the coefficients is equal to 3 and they represent x, y and z coordinates (thecoeff[0], thecoeff[1] and thecoeff[2] correspondingly) of the shift, if the inertia is computed with respect to the point different then the location. if isbypoint is equal to standard_false, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
 
@@ -1410,13 +1410,13 @@ Parameters
 theSurface: BRepGProp_Face
 theVertex: gp_Pnt
 IsByPoint: bool
-theCoeffs: Standard_Address
+theCoeffs: float *
 
 Returns
 -------
 None
 ") BRepGProp_UFunction;
-		 BRepGProp_UFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Address theCoeffs);
+		 BRepGProp_UFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Real * theCoeffs);
 
 		/****************** SetVParam ******************/
 		/**** md5 signature: 65557cc70db507c03b9e102c112375ed ****/
@@ -1491,7 +1491,7 @@ None
 		/****************** BRepGProp_Vinert ******************/
 		/**** md5 signature: 1414a74187b929e713ff870c0e037149 ****/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. errror of the computation is not calculated.
+		%feature("autodoc", "Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
 
 Parameters
 ----------
@@ -1594,7 +1594,7 @@ None
 		/****************** BRepGProp_Vinert ******************/
 		/**** md5 signature: bd59787cdd3504146a2e59074662acc7 ****/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. errror of the computation is not calculated.
+		%feature("autodoc", "Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
 
 Parameters
 ----------

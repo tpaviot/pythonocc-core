@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MAT2DDOCSTRING
 "MAT2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_mat2d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_mat2d.html"
 %enddef
 %module (package="OCC.Core", docstring=MAT2DDOCSTRING) MAT2d
 
@@ -72,7 +72,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -834,7 +834,7 @@ class MAT2d_Mat2d {
 		/****************** MAT2d_Mat2d ******************/
 		/**** md5 signature: f439b4b585960a22c06e7ea738efcbf9 ****/
 		%feature("compactdefaultargs") MAT2d_Mat2d;
-		%feature("autodoc", "Empty construtor.
+		%feature("autodoc", "Empty constructor.
 
 Parameters
 ----------
@@ -861,7 +861,7 @@ opencascade::handle<MAT_Bisector>
 		/****************** CreateMat ******************/
 		/**** md5 signature: 717224e1f2d3269fea646a133206ad70 ****/
 		%feature("compactdefaultargs") CreateMat;
-		%feature("autodoc", "Algoritm of computation of the bisecting locus.
+		%feature("autodoc", "Algorithm of computation of the bisecting locus.
 
 Parameters
 ----------
@@ -876,7 +876,7 @@ None
 		/****************** CreateMatOpen ******************/
 		/**** md5 signature: 79ad82fccb9da722fb02fd80f0334bde ****/
 		%feature("compactdefaultargs") CreateMatOpen;
-		%feature("autodoc", "Algoritm of computation of the bisecting locus for open wire.
+		%feature("autodoc", "Algorithm of computation of the bisecting locus for open wire.
 
 Parameters
 ----------
@@ -1180,7 +1180,7 @@ float
 		/****************** Dump ******************/
 		/**** md5 signature: ed8af339d2cda3e0556fbccf04ebaaea ****/
 		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "Displays informations about the bisector defined by <bisector>.
+		%feature("autodoc", "Displays information about the bisector defined by <bisector>.
 
 Parameters
 ----------

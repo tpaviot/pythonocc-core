@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<NCollection_AccAllocator.hxx>
+#include<NCollection_AliasedArray.hxx>
 #include<NCollection_AlignedAllocator.hxx>
 #include<NCollection_Array1.hxx>
 #include<NCollection_Array2.hxx>
@@ -60,6 +61,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_ListNode.hxx>
 #include<NCollection_LocalArray.hxx>
 #include<NCollection_Map.hxx>
+#include<NCollection_Mat3.hxx>
 #include<NCollection_Mat4.hxx>
 #include<NCollection_Sequence.hxx>
 #include<NCollection_Shared.hxx>

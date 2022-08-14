@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPCLASSDOCSTRING
 "BRepClass module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepclass.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepclass.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCLASSDOCSTRING) BRepClass
 
@@ -43,6 +43,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepclass.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
 #include<IntRes2d_module.hxx>
@@ -64,6 +65,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepclass.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TopTools.i
 %import TopAbs.i
 %import gp.i
 %import IntRes2d.i
@@ -77,7 +79,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -126,7 +128,7 @@ None
 		/****************** Edge ******************/
 		/**** md5 signature: 7927ca64a27bc7479e2b4d4ab87dbb48 ****/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the current edge .
 
 Returns
 -------
@@ -148,7 +150,7 @@ TopoDS_Edge
 		/****************** Face ******************/
 		/**** md5 signature: 6e8f5f8b51d0684fdc076a3f5ea16883 ****/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the face for the current edge.
 
 Returns
 -------
@@ -166,6 +168,84 @@ Returns
 TopoDS_Face
 ") Face;
 		const TopoDS_Face Face();
+
+		/****************** MaxTolerance ******************/
+		/**** md5 signature: 34f00536788c474152c6e8ed59dfb31e ****/
+		%feature("compactdefaultargs") MaxTolerance;
+		%feature("autodoc", "Returns the maximum tolerance.
+
+Returns
+-------
+float
+") MaxTolerance;
+		Standard_Real MaxTolerance();
+
+		/****************** NextEdge ******************/
+		/**** md5 signature: 46e9b5528185041e80eced3cd59f29f3 ****/
+		%feature("compactdefaultargs") NextEdge;
+		%feature("autodoc", "Returns the next edge.
+
+Returns
+-------
+TopoDS_Edge
+") NextEdge;
+		const TopoDS_Edge NextEdge();
+
+		/****************** SetMaxTolerance ******************/
+		/**** md5 signature: d9b5f48764b511c321401dad8b37d561 ****/
+		%feature("compactdefaultargs") SetMaxTolerance;
+		%feature("autodoc", "Sets the maximum tolerance at which to start checking in the intersector.
+
+Parameters
+----------
+theValue: float
+
+Returns
+-------
+None
+") SetMaxTolerance;
+		void SetMaxTolerance(const Standard_Real theValue);
+
+		/****************** SetNextEdge ******************/
+		/**** md5 signature: c50a2707391a16a921afeeeda217e8ca ****/
+		%feature("compactdefaultargs") SetNextEdge;
+		%feature("autodoc", "Finds and sets the next edge for the current.
+
+Parameters
+----------
+theMapVE: TopTools_IndexedDataMapOfShapeListOfShape
+
+Returns
+-------
+None
+") SetNextEdge;
+		void SetNextEdge(const TopTools_IndexedDataMapOfShapeListOfShape & theMapVE);
+
+		/****************** SetUseBndBox ******************/
+		/**** md5 signature: a345a208e442f23a048168731ab1417e ****/
+		%feature("compactdefaultargs") SetUseBndBox;
+		%feature("autodoc", "Sets the status of whether we are using boxes or not.
+
+Parameters
+----------
+theValue: bool
+
+Returns
+-------
+None
+") SetUseBndBox;
+		void SetUseBndBox(const Standard_Boolean theValue);
+
+		/****************** UseBndBox ******************/
+		/**** md5 signature: 02b68d127830fd41ee322e70833ed230 ****/
+		%feature("compactdefaultargs") UseBndBox;
+		%feature("autodoc", "Returns true if we are using boxes in the intersector.
+
+Returns
+-------
+bool
+") UseBndBox;
+		Standard_Boolean UseBndBox();
 
 };
 
@@ -486,6 +566,17 @@ None
 ") InitWires;
 		void InitWires();
 
+		/****************** MaxTolerance ******************/
+		/**** md5 signature: 34f00536788c474152c6e8ed59dfb31e ****/
+		%feature("compactdefaultargs") MaxTolerance;
+		%feature("autodoc", "Returns the maximum tolerance.
+
+Returns
+-------
+float
+") MaxTolerance;
+		Standard_Real MaxTolerance();
+
 		/****************** MoreEdges ******************/
 		/**** md5 signature: ae9c44c48922d7def77564a0d6f2c592 ****/
 		%feature("compactdefaultargs") MoreEdges;
@@ -608,6 +699,47 @@ Returns
 Par: float
 ") Segment;
 		Standard_Boolean Segment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
+
+		/****************** SetMaxTolerance ******************/
+		/**** md5 signature: d9b5f48764b511c321401dad8b37d561 ****/
+		%feature("compactdefaultargs") SetMaxTolerance;
+		%feature("autodoc", "Sets the maximum tolerance at which to start checking in the intersector.
+
+Parameters
+----------
+theValue: float
+
+Returns
+-------
+None
+") SetMaxTolerance;
+		void SetMaxTolerance(const Standard_Real theValue);
+
+		/****************** SetUseBndBox ******************/
+		/**** md5 signature: a345a208e442f23a048168731ab1417e ****/
+		%feature("compactdefaultargs") SetUseBndBox;
+		%feature("autodoc", "Sets the status of whether we are using boxes or not.
+
+Parameters
+----------
+theValue: bool
+
+Returns
+-------
+None
+") SetUseBndBox;
+		void SetUseBndBox(const Standard_Boolean theValue);
+
+		/****************** UseBndBox ******************/
+		/**** md5 signature: 02b68d127830fd41ee322e70833ed230 ****/
+		%feature("compactdefaultargs") UseBndBox;
+		%feature("autodoc", "Returns true if we are using boxes in the intersector.
+
+Returns
+-------
+bool
+") UseBndBox;
+		Standard_Boolean UseBndBox();
 
 };
 
@@ -826,72 +958,88 @@ None
 		 BRepClass_FaceClassifier(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
 		/****************** BRepClass_FaceClassifier ******************/
-		/**** md5 signature: 66903fd3767dd144ed0e3a25b29cb078 ****/
+		/**** md5 signature: ba4f6fe23b613f1af759144923fac8b6 ****/
 		%feature("compactdefaultargs") BRepClass_FaceClassifier;
-		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face <f>.
+		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
 
 Parameters
 ----------
-F: TopoDS_Face
-P: gp_Pnt2d
-Tol: float
+theF: TopoDS_Face
+theP: gp_Pnt2d
+theTol: float
+theUseBndBox: bool,optional
+	default value is Standard_False
+theGapCheckTol: float,optional
+	default value is 0.1
 
 Returns
 -------
 None
 ") BRepClass_FaceClassifier;
-		 BRepClass_FaceClassifier(const TopoDS_Face & F, const gp_Pnt2d & P, const Standard_Real Tol);
+		 BRepClass_FaceClassifier(const TopoDS_Face & theF, const gp_Pnt2d & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
 		/****************** BRepClass_FaceClassifier ******************/
-		/**** md5 signature: ed0c6349f82f0afdf68beb1a375112db ****/
+		/**** md5 signature: 8cd88928fae7d28c32ff4af3cafa3435 ****/
 		%feature("compactdefaultargs") BRepClass_FaceClassifier;
-		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face <f>.
+		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
 
 Parameters
 ----------
-F: TopoDS_Face
-P: gp_Pnt
-Tol: float
+theF: TopoDS_Face
+theP: gp_Pnt
+theTol: float
+theUseBndBox: bool,optional
+	default value is Standard_False
+theGapCheckTol: float,optional
+	default value is 0.1
 
 Returns
 -------
 None
 ") BRepClass_FaceClassifier;
-		 BRepClass_FaceClassifier(const TopoDS_Face & F, const gp_Pnt & P, const Standard_Real Tol);
+		 BRepClass_FaceClassifier(const TopoDS_Face & theF, const gp_Pnt & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 9e3c267a5919cb2c1592840d20d26604 ****/
+		/**** md5 signature: 3ced0bf5a7958aa636c9d28b2159163d ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>.
+		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
 
 Parameters
 ----------
-F: TopoDS_Face
-P: gp_Pnt2d
-Tol: float
+theF: TopoDS_Face
+theP: gp_Pnt2d
+theTol: float
+theUseBndBox: bool,optional
+	default value is Standard_False
+theGapCheckTol: float,optional
+	default value is 0.1
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const TopoDS_Face & F, const gp_Pnt2d & P, const Standard_Real Tol);
+		void Perform(const TopoDS_Face & theF, const gp_Pnt2d & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 76ed91a10bd09a942fede5c41a7caa8b ****/
+		/**** md5 signature: 5d29b2c64e703bbc79782bcb18b7f6fa ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>.
+		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
 
 Parameters
 ----------
-F: TopoDS_Face
-P: gp_Pnt
-Tol: float
+theF: TopoDS_Face
+theP: gp_Pnt
+theTol: float
+theUseBndBox: bool,optional
+	default value is Standard_False
+theGapCheckTol: float,optional
+	default value is 0.1
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const TopoDS_Face & F, const gp_Pnt & P, const Standard_Real Tol);
+		void Perform(const TopoDS_Face & theF, const gp_Pnt & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
 };
 

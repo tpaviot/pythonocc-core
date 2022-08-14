@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RESOURCEDOCSTRING
 "Resource module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_resource.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_resource.html"
 %enddef
 %module (package="OCC.Core", docstring=RESOURCEDOCSTRING) Resource
 
@@ -83,8 +83,9 @@ enum Resource_FormatType {
 	Resource_FormatType_iso8859_7 = 21,
 	Resource_FormatType_iso8859_8 = 22,
 	Resource_FormatType_iso8859_9 = 23,
-	Resource_FormatType_GBK = 24,
-	Resource_FormatType_Big5 = 25,
+	Resource_FormatType_CP850 = 24,
+	Resource_FormatType_GBK = 25,
+	Resource_FormatType_Big5 = 26,
 	Resource_FormatType_ANSI = Resource_FormatType_NoConversion,
 	Resource_SJIS = Resource_FormatType_SJIS,
 	Resource_EUC = Resource_FormatType_EUC,
@@ -94,7 +95,7 @@ enum Resource_FormatType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Resource_FormatType(IntEnum):
@@ -122,8 +123,9 @@ class Resource_FormatType(IntEnum):
 	Resource_FormatType_iso8859_7 = 21
 	Resource_FormatType_iso8859_8 = 22
 	Resource_FormatType_iso8859_9 = 23
-	Resource_FormatType_GBK = 24
-	Resource_FormatType_Big5 = 25
+	Resource_FormatType_CP850 = 24
+	Resource_FormatType_GBK = 25
+	Resource_FormatType_Big5 = 26
 	Resource_FormatType_ANSI = Resource_FormatType_NoConversion
 	Resource_SJIS = Resource_FormatType_SJIS
 	Resource_EUC = Resource_FormatType_EUC
@@ -153,6 +155,7 @@ Resource_FormatType_iso8859_6 = Resource_FormatType.Resource_FormatType_iso8859_
 Resource_FormatType_iso8859_7 = Resource_FormatType.Resource_FormatType_iso8859_7
 Resource_FormatType_iso8859_8 = Resource_FormatType.Resource_FormatType_iso8859_8
 Resource_FormatType_iso8859_9 = Resource_FormatType.Resource_FormatType_iso8859_9
+Resource_FormatType_CP850 = Resource_FormatType.Resource_FormatType_CP850
 Resource_FormatType_GBK = Resource_FormatType.Resource_FormatType_GBK
 Resource_FormatType_Big5 = Resource_FormatType.Resource_FormatType_Big5
 Resource_FormatType_ANSI = Resource_FormatType.Resource_FormatType_ANSI

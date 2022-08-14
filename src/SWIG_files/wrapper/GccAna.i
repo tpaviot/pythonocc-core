@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCCANADOCSTRING
 "GccAna module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gccana.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_gccana.html"
 %enddef
 %module (package="OCC.Core", docstring=GCCANADOCSTRING) GccAna
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -302,7 +302,7 @@ None
 		/****************** CenterOn3 ******************/
 		/**** md5 signature: b84288e9132f5c4ac31073a7171b086e ****/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "Returns the informations about the center (on the curv) of the result number index and the third argument. pararg is the intrinsic parameter of the point pntarg on the third argument. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+		%feature("autodoc", "Returns the information about the center (on the curv) of the result number index and the third argument. pararg is the intrinsic parameter of the point pntarg on the third argument. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
 
 Parameters
 ----------
@@ -370,7 +370,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns the informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution pararg is the intrinsic parameter of the point pntsol on the first argument. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
+		%feature("autodoc", "Returns the information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution pararg is the intrinsic parameter of the point pntsol on the first argument. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
 
 Parameters
 ----------
@@ -387,7 +387,7 @@ ParArg: float
 		/****************** Tangency2 ******************/
 		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
 		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "Returns the informations about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point pntsol on the solution. pararg is the intrinsic parameter of the point pntsol on the second argument. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
+		%feature("autodoc", "Returns the information about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point pntsol on the solution. pararg is the intrinsic parameter of the point pntsol on the second argument. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
 
 Parameters
 ----------
@@ -816,7 +816,7 @@ None
 		/****************** GccAna_Circ2d3Tan ******************/
 		/**** md5 signature: ccacbacc59448541d378a070840f3b7a ****/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
-		%feature("autodoc", "This method implements the algorithms used to create 2d circles tangent to a circle and passing thrue 2 points. constructionerror is raised if there is a problem during the computation.
+		%feature("autodoc", "This method implements the algorithms used to create 2d circles tangent to a circle and passing through 2 points. constructionerror is raised if there is a problem during the computation.
 
 Parameters
 ----------
@@ -834,7 +834,7 @@ None
 		/****************** GccAna_Circ2d3Tan ******************/
 		/**** md5 signature: c4207c6b3d25b5c4cb5841f1daf562df ****/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
-		%feature("autodoc", "This method implements the algorithms used to create 2d circles tangent to a line and passing thrue 2 points. constructionerror is raised if there is a problem during the computation.
+		%feature("autodoc", "This method implements the algorithms used to create 2d circles tangent to a line and passing through 2 points. constructionerror is raised if there is a problem during the computation.
 
 Parameters
 ----------
@@ -852,7 +852,7 @@ None
 		/****************** GccAna_Circ2d3Tan ******************/
 		/**** md5 signature: 4ae692732419aa36f01019d6400237da ****/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
-		%feature("autodoc", "This method implements the algorithms used to create 2d circles passing thrue 3 points. constructionerror is raised if there is a problem during the computation.
+		%feature("autodoc", "This method implements the algorithms used to create 2d circles passing through 3 points. constructionerror is raised if there is a problem during the computation.
 
 Parameters
 ----------
@@ -937,7 +937,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntarg on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntarg on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
 
 Parameters
 ----------
@@ -954,7 +954,7 @@ ParArg: float
 		/****************** Tangency2 ******************/
 		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
 		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
 
 Parameters
 ----------
@@ -971,7 +971,7 @@ ParArg: float
 		/****************** Tangency3 ******************/
 		/**** md5 signature: 0aa5ec0c7341ae28374df63d96d61594 ****/
 		%feature("compactdefaultargs") Tangency3;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
 
 Parameters
 ----------
@@ -1003,7 +1003,7 @@ gp_Circ2d
 		/****************** WhichQualifier ******************/
 		/**** md5 signature: a7c8640b1f68ed172a2307977dbf7e77 ****/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "Returns the informations about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
+		%feature("autodoc", "Returns the information about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 
 Parameters
 ----------
@@ -1135,7 +1135,7 @@ None
 		/****************** GccAna_Circ2dTanCen ******************/
 		/**** md5 signature: e4011363fd322219f6eccfea846244d4 ****/
 		%feature("compactdefaultargs") GccAna_Circ2dTanCen;
-		%feature("autodoc", "This method implements the algorithms used to create 2d circles passing thrue a point and centered on a point. tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. in these algorithms tolerance is only used in very specific cases where the center of the solution is very close to the circle to which it is tangential, and where the solution is therefore a very small circle. exceptions gccent_badqualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
+		%feature("autodoc", "This method implements the algorithms used to create 2d circles passing through a point and centered on a point. tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. in these algorithms tolerance is only used in very specific cases where the center of the solution is very close to the circle to which it is tangential, and where the solution is therefore a very small circle. exceptions gccent_badqualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
 
 Parameters
 ----------
@@ -1188,7 +1188,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntarg on the argument curv. it raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zero.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntarg on the argument curv. it raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zero.
 
 Parameters
 ----------
@@ -1205,7 +1205,7 @@ ParArg: float
 		/****************** ThisSolution ******************/
 		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "Returns the circle, representing the solution number index and raises outofrange exception if index is greater than the number of solutions. be carefull: the index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zer.
+		%feature("autodoc", "Returns the circle, representing the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zer.
 
 Parameters
 ----------
@@ -1358,7 +1358,7 @@ None
 		/****************** CenterOn3 ******************/
 		/**** md5 signature: 713cefd806df05d39f2ba710d8a8d081 ****/
 		%feature("compactdefaultargs") CenterOn3;
-		%feature("autodoc", "Returns informations about the center (on the curv) of the result. pararg is the intrinsic parameter of the point on the argument curv. pntsol is the center point of the solution curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the center (on the curv) of the result. pararg is the intrinsic parameter of the point on the argument curv. pntsol is the center point of the solution curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1411,7 +1411,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. pntsol is the tangency point on the solution curv. pntarg is the tangency point on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. pntsol is the tangency point on the solution curv. pntarg is the tangency point on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1428,7 +1428,7 @@ ParArg: float
 		/****************** ThisSolution ******************/
 		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1624,7 +1624,7 @@ class GccAna_Lin2d2Tan {
 		/****************** GccAna_Lin2d2Tan ******************/
 		/**** md5 signature: d217055dd19c4ad537b6670197044029 ****/
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
-		%feature("autodoc", "This methods implements the algorithms used to create 2d lines passing thrue 2 points. tolerance is used because we can't create a line when the distance between the two points is too small.
+		%feature("autodoc", "This methods implements the algorithms used to create 2d lines passing through 2 points. tolerance is used because we can't create a line when the distance between the two points is too small.
 
 Parameters
 ----------
@@ -1641,7 +1641,7 @@ None
 		/****************** GccAna_Lin2d2Tan ******************/
 		/**** md5 signature: bdc59b7aa8cd6b8f75211b5ebd7a8b08 ****/
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
-		%feature("autodoc", "This methods implements the algorithms used to create 2d lines tangent to one circle and passing thrue a point. exception badqualifier is raised in the case of enclosedcirc tolerance is used because there is no solution when the point is inside the solution according to the tolerance.
+		%feature("autodoc", "This methods implements the algorithms used to create 2d lines tangent to one circle and passing through a point. exception badqualifier is raised in the case of enclosedcirc tolerance is used because there is no solution when the point is inside the solution according to the tolerance.
 
 Parameters
 ----------
@@ -1697,7 +1697,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
 
 Parameters
 ----------
@@ -1714,7 +1714,7 @@ ParArg: float
 		/****************** Tangency2 ******************/
 		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
 		%feature("compactdefaultargs") Tangency2;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point parsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point parsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
 
 Parameters
 ----------
@@ -1731,7 +1731,7 @@ ParArg: float
 		/****************** ThisSolution ******************/
 		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be carefull: the index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+		%feature("autodoc", "Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
 
 Parameters
 ----------
@@ -1793,7 +1793,7 @@ None
 		/****************** Intersection1 ******************/
 		/**** md5 signature: 77db5554380ec88a636c5d923715b5a3 ****/
 		%feature("compactdefaultargs") Intersection1;
-		%feature("autodoc", "Returns informations about the intersection point between the result number index and the first argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the intersection point between the result number index and the first argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1810,7 +1810,7 @@ ParArg: float
 		/****************** Intersection2 ******************/
 		/**** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ****/
 		%feature("compactdefaultargs") Intersection2;
-		%feature("autodoc", "Returns informations about the intersection point between the result number index and the second argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the intersection point between the result number index and the second argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1827,7 +1827,7 @@ ParArg: float
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns true when the algorithm succeded.
+		%feature("autodoc", "Returns true when the algorithm succeeded.
 
 Returns
 -------
@@ -1912,7 +1912,7 @@ None
 		/****************** Intersection2 ******************/
 		/**** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ****/
 		%feature("compactdefaultargs") Intersection2;
-		%feature("autodoc", "Returns informations about the intersection between the result number index and the third argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the intersection between the result number index and the third argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1951,7 +1951,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point parsol on the solution curv. pararg is the intrinsic parameter of the point pararg on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point parsol on the solution curv. pararg is the intrinsic parameter of the point pararg on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -1968,7 +1968,7 @@ ParArg: float
 		/****************** ThisSolution ******************/
 		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "Returns the solution number index. be careful: the index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns the solution number index. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -2067,7 +2067,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: ac6b428c3f88d193815480de09ccbe56 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. pararg is equal 0 when the solution is passing thrue a point. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. pararg is equal 0 when the solution is passing through a point. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -2099,7 +2099,7 @@ gp_Lin2d
 		/****************** WhichQualifier ******************/
 		/**** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ****/
 		%feature("compactdefaultargs") WhichQualifier;
-		%feature("autodoc", "Returns the informations about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computed in case of unqualified). raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns the information about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computed in case of unqualified). raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -2193,7 +2193,7 @@ None
 		/****************** Intersection2 ******************/
 		/**** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ****/
 		%feature("compactdefaultargs") Intersection2;
-		%feature("autodoc", "Returns informations about the intersection between the solution number index and the second argument. it returns the first intersection in a case of lin2dtanper which is perpendicular to a circle . parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the intersection between the solution number index and the second argument. it returns the first intersection in a case of lin2dtanper which is perpendicular to a circle . parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------
@@ -2232,7 +2232,7 @@ int
 		/****************** Tangency1 ******************/
 		/**** md5 signature: ac6b428c3f88d193815480de09ccbe56 ****/
 		%feature("compactdefaultargs") Tangency1;
-		%feature("autodoc", "Returns informations about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. if the first argument is a point pararg is equal zero. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+		%feature("autodoc", "Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. if the first argument is a point pararg is equal zero. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
 
 Parameters
 ----------

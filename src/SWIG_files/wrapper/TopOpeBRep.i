@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPOPEBREPDOCSTRING
 "TopOpeBRep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebrep.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_topopebrep.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPDOCSTRING) TopOpeBRep
 
@@ -125,7 +125,7 @@ enum TopOpeBRep_TypeLineCurve {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TopOpeBRep_P2Dstatus(IntEnum):
@@ -460,7 +460,7 @@ None
 		/****************** CompleteDS ******************/
 		/**** md5 signature: 298ea4b1a23c2b2b60dcc61137773361 ****/
 		%feature("compactdefaultargs") CompleteDS;
-		%feature("autodoc", "Update the data structure with relevant informations deduced from the intersections. //! shells containing an intersected face. wires containing an intersected edge.
+		%feature("autodoc", "Update the data structure with relevant information deduced from the intersections. //! shells containing an intersected face. wires containing an intersected edge.
 
 Parameters
 ----------
@@ -475,7 +475,7 @@ None
 		/****************** CompleteDS2d ******************/
 		/**** md5 signature: 610994e807ee28a545e1f5070174df41 ****/
 		%feature("compactdefaultargs") CompleteDS2d;
-		%feature("autodoc", "Update the data structure with relevant informations deduced from the intersections 2d. //! shells containing an intersected face. wires containing an intersected edge. //! search for interference identity using edge connexity //nyi.
+		%feature("autodoc", "Update the data structure with relevant information deduced from the intersections 2d. //! shells containing an intersected face. wires containing an intersected edge. //! search for interference identity using edge connexity //nyi.
 
 Parameters
 ----------
@@ -2176,7 +2176,7 @@ None
 		/****************** ProcessVPR ******************/
 		/**** md5 signature: 78c845a2afa36d137735133e5b7c3482 ****/
 		%feature("compactdefaultargs") ProcessVPR;
-		%feature("autodoc", "Calling the followings processvpionr and processvponr.
+		%feature("autodoc", "Calling the following processvpionr and processvponr.
 
 Parameters
 ----------
@@ -2986,7 +2986,7 @@ Tol2: float
 		void GetTolerances(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** HSurface ******************/
-		/**** md5 signature: be69eb6e5c513c3b9ee845a84d9411f0 ****/
+		/**** md5 signature: a61fd728296f7a0903ddca58e7b9f655 ****/
 		%feature("compactdefaultargs") HSurface;
 		%feature("autodoc", "No available documentation.
 
@@ -2996,9 +2996,9 @@ I: int
 
 Returns
 -------
-opencascade::handle<BRepAdaptor_HSurface>
+opencascade::handle<BRepAdaptor_Surface>
 ") HSurface;
-		opencascade::handle<BRepAdaptor_HSurface> HSurface(const Standard_Integer I);
+		opencascade::handle<BRepAdaptor_Surface> HSurface(const Standard_Integer I);
 
 		/****************** SetFaces ******************/
 		/**** md5 signature: 46dc023c2aed2e35da6777aafef31609 ****/
@@ -3017,20 +3017,20 @@ None
 		void SetFaces(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
 		/****************** SetHSurfaces ******************/
-		/**** md5 signature: 802ed6d71a195f08d95be0ca2619f6eb ****/
+		/**** md5 signature: e175988e11c8c20afccabc99d977dcec ****/
 		%feature("compactdefaultargs") SetHSurfaces;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: BRepAdaptor_HSurface
-S2: BRepAdaptor_HSurface
+S1: BRepAdaptor_Surface
+S2: BRepAdaptor_Surface
 
 Returns
 -------
 None
 ") SetHSurfaces;
-		void SetHSurfaces(const opencascade::handle<BRepAdaptor_HSurface> & S1, const opencascade::handle<BRepAdaptor_HSurface> & S2);
+		void SetHSurfaces(const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<BRepAdaptor_Surface> & S2);
 
 		/****************** SetTolerances ******************/
 		/**** md5 signature: 6873711acb65a77b1d3cb30885ac1fe9 ****/

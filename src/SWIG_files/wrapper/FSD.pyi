@@ -9,13 +9,13 @@ FSD_BStream = NewType('FSD_BStream', FILE)
 FSD_FStream = NewType('FSD_FStream', Any)
 
 #classnotwrapped
-class FSD_Base64Decoder: ...
-
-#classnotwrapped
 class FSD_File: ...
 
 #classnotwrapped
 class FSD_BinaryFile: ...
+
+#classnotwrapped
+class FSD_Base64: ...
 
 #classnotwrapped
 class FSD_CmpFile: ...

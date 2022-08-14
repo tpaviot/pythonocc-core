@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DLPROPDOCSTRING
 "Geom2dLProp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dlprop.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dlprop.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 
@@ -67,7 +67,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -713,7 +713,7 @@ None
 		/****************** PerformCurExt ******************/
 		/**** md5 signature: 8d4a271f7ea31764c51bc7d5d6517548 ****/
 		%feature("compactdefaultargs") PerformCurExt;
-		%feature("autodoc", "Computes the locals extremas of curvature. in the interval of parmeters [umin,umax].
+		%feature("autodoc", "Computes the locals extremas of curvature. in the interval of parameters [umin,umax].
 
 Parameters
 ----------
@@ -747,7 +747,7 @@ None
 		/****************** PerformInf ******************/
 		/**** md5 signature: 4ccd98235aecb6f55130f7303d06d7cd ****/
 		%feature("compactdefaultargs") PerformInf;
-		%feature("autodoc", "Computes the inflections in the interval of parmeters [umin,umax].
+		%feature("autodoc", "Computes the inflections in the interval of parameters [umin,umax].
 
 Parameters
 ----------

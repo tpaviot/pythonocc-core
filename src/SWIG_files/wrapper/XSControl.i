@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XSCONTROLDOCSTRING
 "XSControl module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xscontrol.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xscontrol.html"
 %enddef
 %module (package="OCC.Core", docstring=XSCONTROLDOCSTRING) XSControl
 
@@ -86,7 +86,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -397,7 +397,7 @@ char *
 		/****************** Name ******************/
 		/**** md5 signature: a614a2a031c0f6de75e5496e2bd2c8da ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns a name, as given when initializing : rsc = false (d) : true name attached to the norm (long name) rsc = true : name of the ressource set (i.e. short name).
+		%feature("autodoc", "Returns a name, as given when initializing : rsc = false (d) : true name attached to the norm (long name) rsc = true : name of the resource set (i.e. short name).
 
 Parameters
 ----------
@@ -811,7 +811,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 		/****************** GiveList ******************/
 		/**** md5 signature: 05fdcf13ca9e417fad4d2b6ab10b4c43 ****/
 		%feature("compactdefaultargs") GiveList;
-		%feature("autodoc", "Computes a list of entities from the model as follows <first> beeing a selection, <ent> beeing an entity or a list of entities (as a hsequenceoftransient) : the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned.
+		%feature("autodoc", "Computes a list of entities from the model as follows <first> being a selection, <ent> being an entity or a list of entities (as a hsequenceoftransient) : the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned.
 
 Parameters
 ----------
@@ -3188,7 +3188,7 @@ opencascade::handle<Transfer_TransientProcess>
 		/****************** NewModel ******************/
 		/**** md5 signature: b195eaf62d9845e618b9fbba30be48e9 ****/
 		%feature("compactdefaultargs") NewModel;
-		%feature("autodoc", "Produces and returns a new model well conditionned it is produced by the norm controller it can be null (if this function is not implemented).
+		%feature("autodoc", "Produces and returns a new model well conditioned it is produced by the norm controller it can be null (if this function is not implemented).
 
 Returns
 -------

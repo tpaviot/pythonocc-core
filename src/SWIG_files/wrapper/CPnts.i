@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CPNTSDOCSTRING
 "CPnts module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cpnts.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_cpnts.html"
 %enddef
 %module (package="OCC.Core", docstring=CPNTSDOCSTRING) CPnts
 
@@ -69,7 +69,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -177,7 +177,7 @@ None
 		/****************** AdvPerform ******************/
 		/**** md5 signature: 951d7d00a89f35f930b917ffe12a10e6 ****/
 		%feature("compactdefaultargs") AdvPerform;
-		%feature("autodoc", "Computes the point at the distance <abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method init with tolerance = resolution, then call advpermorm. u0 is the parameter of the point from which the distance is measured and ui is the starting value for the iterative process (should be close to the final solution).
+		%feature("autodoc", "Computes the point at the distance <abscissa> of the curve; performs more appropriate tolerance management; to use this method in right way it is necessary to call empty constructor. then call method init with tolerance = resolution, then call advpermorm. u0 is the parameter of the point from which the distance is measured and ui is the starting value for the iterative process (should be close to the final solution).
 
 Parameters
 ----------
@@ -809,7 +809,7 @@ None
 		/****************** Initialize ******************/
 		/**** md5 signature: 3e04248745b7abf1ca127fe927a9d03a ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <ustep>, <resolution> and <withcontrol>.
+		%feature("autodoc", "Initialize the algorithms with <c>, <deflection>, <ustep>, <resolution> and <withcontrol>.
 
 Parameters
 ----------
@@ -827,7 +827,7 @@ None
 		/****************** Initialize ******************/
 		/**** md5 signature: fc394fce795394d63421de08f8720ec8 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <ustep>, <resolution> and <withcontrol>.
+		%feature("autodoc", "Initialize the algorithms with <c>, <deflection>, <ustep>, <resolution> and <withcontrol>.
 
 Parameters
 ----------
@@ -845,7 +845,7 @@ None
 		/****************** Initialize ******************/
 		/**** md5 signature: c3c016d21ea4c112d829bfcc114f78d4 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <ustep>, <u1>, <u2> and <withcontrol>.
+		%feature("autodoc", "Initialize the algorithms with <c>, <deflection>, <ustep>, <u1>, <u2> and <withcontrol>.
 
 Parameters
 ----------
@@ -865,7 +865,7 @@ None
 		/****************** Initialize ******************/
 		/**** md5 signature: 6d52d63715b1ed7bea1f720001bbd8d5 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <ustep>, <u1>, <u2> and <withcontrol>.
+		%feature("autodoc", "Initialize the algorithms with <c>, <deflection>, <ustep>, <u1>, <u2> and <withcontrol>.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCDOCSTRING
 "GC module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gc.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_gc.html"
 %enddef
 %module (package="OCC.Core", docstring=GCDOCSTRING) GC
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -131,7 +131,7 @@ None
 		/****************** GC_MakeMirror ******************/
 		/**** md5 signature: 82477fa581c9380b0d7767eaecc42a9e ****/
 		%feature("compactdefaultargs") GC_MakeMirror;
-		%feature("autodoc", "Make a symetry transformation af axis defined by <point> and <direc>.
+		%feature("autodoc", "Make a symmetry transformation af axis defined by <point> and <direc>.
 
 Parameters
 ----------
@@ -147,7 +147,7 @@ None
 		/****************** GC_MakeMirror ******************/
 		/**** md5 signature: 9c37a175b190c4d1aab7333ace288f71 ****/
 		%feature("compactdefaultargs") GC_MakeMirror;
-		%feature("autodoc", "Make a symetry transformation of plane <plane>.
+		%feature("autodoc", "Make a symmetry transformation of plane <plane>.
 
 Parameters
 ----------
@@ -162,7 +162,7 @@ None
 		/****************** GC_MakeMirror ******************/
 		/**** md5 signature: 766d8b90ffc81811b7dc77c2db8faa2a ****/
 		%feature("compactdefaultargs") GC_MakeMirror;
-		%feature("autodoc", "Make a symetry transformation of plane <plane>.
+		%feature("autodoc", "Make a symmetry transformation of plane <plane>.
 
 Parameters
 ----------
@@ -1459,7 +1459,7 @@ None
 		/****************** GC_MakePlane ******************/
 		/**** md5 signature: c2a22654c060500d6d24ceefed764443 ****/
 		%feature("compactdefaultargs") GC_MakePlane;
-		%feature("autodoc", "Make a plane from geom <theplane> parallel to another pln <pln> at the distance <dist> which can be greater or lower than zero. in the first case the result is at the distance <dist> to the plane <pln> in the direction of the normal to <pln>. otherwize it is in the oposite direction.
+		%feature("autodoc", "Make a plane from geom <theplane> parallel to another pln <pln> at the distance <dist> which can be greater or lower than zero. in the first case the result is at the distance <dist> to the plane <pln> in the direction of the normal to <pln>. otherwise it is in the opposite direction.
 
 Parameters
 ----------
@@ -1685,7 +1685,7 @@ class GC_MakeTrimmedCylinder : public GC_Root {
 		/****************** GC_MakeTrimmedCylinder ******************/
 		/**** md5 signature: 4a35a8293ea23e9fd492e2bbf18ea8e6 ****/
 		%feature("compactdefaultargs") GC_MakeTrimmedCylinder;
-		%feature("autodoc", "Make a cylindricalsurface <cyl> from geom its axis is is <p1p2> and its radius is the distance between <p3> and <p1p2>. the height is the distance between p1 and p2.
+		%feature("autodoc", "Make a cylindricalsurface <cyl> from geom its axis is <p1p2> and its radius is the distance between <p3> and <p1p2>. the height is the distance between p1 and p2.
 
 Parameters
 ----------
