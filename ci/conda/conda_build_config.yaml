@@ -1,8 +1,2 @@
 CONDA_BUILD_SYSROOT:
- - /Applications/Xcode_12.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk       # [osx]
-
-c_compiler:
- - vs2015                     # [win]
- 
-cxx_compiler:
- - vs2015                     # [win]
+ - /Applications/Xcode_13.2.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk 
