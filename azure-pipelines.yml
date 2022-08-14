@@ -15,70 +15,72 @@ schedules:
 jobs:
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_20_04_python37
-    vmImage: 'ubuntu-20.04'
-    py_maj: 3
-    py_min: 7
-
-- template:  conda-build.yml
-  parameters:
-    name: macOS_10_15_python37
-    vmImage: 'macOS-10.15'
-    py_maj: 3
-    py_min: 7
-
-- template:  conda-build.yml
-  parameters:
-    name: Windows_VS2019_python37
-    vmImage: 'windows-2019'
-    py_maj: 3
-    py_min: 7
-    conda_bld: 3.17
-
-- template: conda-build.yml
-  parameters:
-    name: Ubuntu_20_04_python38
-    vmImage: 'ubuntu-20.04'
+    name: Ubuntu_22_04_python38
+    vmImage: 'ubuntu-22.04'
     py_maj: 3
     py_min: 8
     conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_10_15_python38
-    vmImage: 'macOS-10.15'
+    name: macOS_11_python38
+    vmImage: 'macOS-11'
     py_maj: 3
     py_min: 8
     conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2019_python38
-    vmImage: 'windows-2019'
+    name: Windows_VS2022_python38
+    vmImage: 'windows-2022'
     py_maj: 3
     py_min: 8
     conda_bld: 3.21
 
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_20_04_python39
-    vmImage: 'ubuntu-20.04'
+    name: Ubuntu_22_04_python39
+    vmImage: 'ubuntu-22.04'
     py_maj: 3
     py_min: 9
     conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_10_15_python39
-    vmImage: 'macOS-10.15'
+    name: macOS_11_python39
+    vmImage: 'macOS-11'
     py_maj: 3
     py_min: 9
     conda_bld: 3.21
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2019_python39
-    vmImage: 'windows-2019'
+    name: Windows_VS2022_python39
+    vmImage: 'windows-2022'
     py_maj: 3
     py_min: 9
+    conda_bld: 3.21
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_22_04_python310
+    vmImage: 'ubuntu-22.04'
+    py_maj: 3
+    py_min: 10
+    conda_bld: 3.21
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_11_python310
+    vmImage: 'macOS-11'
+    py_maj: 3
+    py_min: 10
+    conda_bld: 3.21
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2022_python310
+    vmImage: 'windows-2022'
+    py_maj: 3
+    py_min: 10
     conda_bld: 3.21
