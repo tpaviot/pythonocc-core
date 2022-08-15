@@ -8,8 +8,7 @@ from OCC.Display.WebGl.threejs_renderer import (
     OCC_VERSION,
     THREEJS_RELEASE,
     color_to_hex,
-    export_edgedata_to_json,
-    spinning_cursor,
+    export_edgedata_to_json
 )
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Core.Tesselator import ShapeTesselator
@@ -197,7 +196,7 @@ if __name__ == "__main__":
         my_ren.ConvertShape(box, export_edges=True)
         my_ren.ConvertShape(t_torus, export_edges=True)
         final_time = time.time()
-        print("\nTotal meshing time : ", final_time - init_time)
+        print("\nTotal meshing time : {:.2f}s".format(final_time - init_time))
 
         return render_template(
             "index.html",

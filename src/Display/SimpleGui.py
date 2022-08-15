@@ -67,7 +67,7 @@ def init_display(
             """takes as many parameters as you want,
             ans does nothing
             """
-            pass
+            return None
 
         def call_function(s, func: Callable) -> None:
             """A function that calls another function.

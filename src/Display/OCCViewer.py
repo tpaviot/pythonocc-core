@@ -170,6 +170,9 @@ class Viewer3d(Display3d):
         self._select_callbacks = []
         self._overlay_items = []
 
+        self._window_handle = None
+        self.camera = None
+
     def get_parent(self):
         return self._parent
 
@@ -639,10 +642,7 @@ class Viewer3d(Display3d):
         return self.selected_shapes
 
     def GetSelectedShape(self):
-        """
-        Returns the current selected shape
-        """
-        return self.selected_shape
+        return self.Context.SelectedShape()
 
     def SelectArea(self, Xmin, Ymin, Xmax, Ymax):
         self.Context.Select(Xmin, Ymin, Xmax, Ymax, self.View, True)

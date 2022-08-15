@@ -180,7 +180,7 @@ class TopologyExplorer:
             TopAbs_COMPSOLID: TopoDS_CompSolid,
         }
         topology_explorer = TopExp_Explorer()
-        if topology_type not in topo_types.keys():
+        if topology_type not in topo_types:
             raise AssertionError(f"{topology_type} not one of {topo_types.keys()}")
         # use self.my_shape if nothing is specified
         if topological_entity is None and topology_type_to_avoid is None:
