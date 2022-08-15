@@ -60,7 +60,6 @@ if(NOT DEFINED PYTHONOCC_BUILD_TYPE)
 endif(NOT DEFINED PYTHONOCC_BUILD_TYPE)
 set(CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE)
 
-message(STATUS " ${CMAKE_CXX_FLAGS}") 
 set(BUILD_SHARED_LIBS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -120,7 +119,7 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 ########
 # SWIG #
 ########
-find_package(SWIG 3.0.11 REQUIRED)
+find_package(SWIG 4.0.2 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual -py3)
@@ -382,13 +381,6 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
 
 swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
 swig_link_libraries(Addons ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
-#if (APPLE)
-#  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
-#  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
-#  swig_link_libraries(Addons ${OPENGL_LIBRARIES})
-#else(APPLE)
-#  swig_link_libraries(Addons ${PYTHON_LIBRARIES})
-#endif(APPLE)
 
 ################
 # Installation #

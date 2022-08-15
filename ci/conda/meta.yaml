@@ -14,6 +14,7 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ cdt('libx11-devel') }}         # [linux]
     - {{ cdt('xorg-x11-proto-devel') }} # [linux]
@@ -21,7 +22,7 @@ requirements:
     - {{ cdt('libxi-devel') }}          # [linux]
     - ninja
     - cmake
-    - swig >=3.0.11
+    - swig >=4.0.2
 
   host:
     - python {{ python }}
@@ -38,6 +39,8 @@ test:
   imports:
     - OCC
     - OCC.Core.BRepPrimAPI
+    - OCC.Core.MeshDS
+    - OCC.Core.Tesselator
   requires:
     - pyqt >=5
     - mypy
