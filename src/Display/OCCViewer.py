@@ -234,7 +234,7 @@ class Viewer3d(Display3d):
         if draw_face_boundaries:
             self.default_drawer.SetFaceBoundaryDraw(True)
 
-        # turn up tesselation defaults, which are too conversative...
+        # turn up tessellation defaults, which are too conversative...
         chord_dev = self.default_drawer.MaximalChordialDeviation() / 10.0
         self.default_drawer.SetMaximalChordialDeviation(chord_dev)
 
@@ -678,7 +678,7 @@ class Viewer3d(Display3d):
             if self.Context.HasSelectedShape():
                 self.selected_shapes.append(self.Context.SelectedShape())
             self.Context.NextSelected()
-        # hilight newly selected unhighlight those no longer selected
+        # highlight newly selected unhighlight those no longer selected
         self.Context.UpdateSelected(True)
         # callbacks
         for callback in self._select_callbacks:
@@ -705,7 +705,7 @@ class Viewer3d(Display3d):
 
 class OffscreenRenderer(Viewer3d):
     """The offscreen renderer is inherited from Viewer3d.
-    The DisplayShape method is overriden to export to image
+    The DisplayShape method is overridden to export to image
     each time it is called.
     """
 

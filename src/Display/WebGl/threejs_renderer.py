@@ -59,7 +59,7 @@ def export_edgedata_to_json(edge_hash, point_set):
     for point in point_set:
         for coord in point:
             points_coordinates.append(coord)
-    # then build the dictionnary exported to json
+    # then build the dictionary exported to json
     edges_data = {
         "metadata": {
             "version": 4.4,
@@ -475,7 +475,7 @@ class ThreejsRenderer:
             return self._3js_shapes, self._3js_edges
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
-        # tesselate
+        # tesselatte
         tess = ShapeTesselator(shape)
         tess.Compute(
             compute_edges=export_edges, mesh_quality=mesh_quality, parallel=True

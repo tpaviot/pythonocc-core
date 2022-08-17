@@ -250,7 +250,7 @@ class HTMLBody:
                 self._axis_plane_zoom_factor,
                 self._axis_plane_zoom_factor,
             )
-            # global rotateso that z is aligne properly
+            # global rotateso that z is align properly
         x3dcontent += (
             '<transform id="glbal_scene_rotation_Id" rotation="1 0 0 -1.57079632679">'
         )
@@ -500,7 +500,7 @@ class X3DomRenderer:
 
     def generate_html_file(self, axes_plane, axes_plane_zoom_factor):
         """Generate the HTML file to be rendered wy the web browser
-        axes_plane: a boolean, telles wether or not display axes
+        axes_plane: a boolean, tells whether or not display axes
         """
         with open(self._html_filename, "w") as html_file:
             html_file.write("<!DOCTYPE HTML>\n")

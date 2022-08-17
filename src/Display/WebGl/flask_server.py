@@ -92,7 +92,7 @@ class RenderWraper(ThreejsRenderer):
         # convert as TopoDS_Shape
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
-        # tesselate
+        # tessellate
         tess = ShapeTesselator(shape)
         tess.Compute(
             compute_edges=export_edges, mesh_quality=mesh_quality, parallel=True

@@ -52,7 +52,7 @@ def init_display(
 
     In case an offscreen renderer is returned, start_display and add_menu are ignored, i.e.
     an empty function is returned (named do_nothing). add_function_to_menu just execute the
-    function taken as a paramter.
+    function taken as a parameter.
 
     Note : the offscreen renderer is used on the travis side.
     """
@@ -64,17 +64,16 @@ def init_display(
         offscreen_renderer = OffscreenRenderer()
 
         def do_nothing(*kargs: Any, **kwargs: Any) -> None:
-            """takes as many parameters as you want,
-            ans does nothing
+            """takes as many parameters as you want, and does nothing
             """
             return None
 
         def call_function(s, func: Callable) -> None:
             """A function that calls another function.
-            Helpfull to bypass add_function_to_menu. s should be a string
+            Helpful to bypass add_function_to_menu. s should be a string
             """
             check_callable(func)
-            log.info("Execute %s :: %s menu fonction" % (s, func.__name__))
+            log.info("Execute %s :: %s menu function" % (s, func.__name__))
             func()
             log.info("done")
 
@@ -203,7 +202,7 @@ def init_display(
 
         # following couple of lines is a tweak to enable ipython --gui='qt'
         app = QtWidgets.QApplication.instance()  # checks if QApplication already exists
-        if not app:  # create QApplication if it doesnt exist
+        if not app:  # create QApplication if it doesn't exist
             app = QtWidgets.QApplication(sys.argv)
         win = MainWindow()
         win.resize(size[0] - 1, size[1] - 1)
