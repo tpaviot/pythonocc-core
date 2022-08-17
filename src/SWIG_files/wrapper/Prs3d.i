@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PRS3DDOCSTRING
 "Prs3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_prs3d.html"
 %enddef
 %module (package="OCC.Core", docstring=PRS3DDOCSTRING) Prs3d
 
@@ -126,14 +126,26 @@ enum Prs3d_DatumMode {
 };
 
 enum Prs3d_DatumAttribute {
-	Prs3d_DA_XAxisLength = 0,
-	Prs3d_DA_YAxisLength = 1,
-	Prs3d_DA_ZAxisLength = 2,
-	Prs3d_DP_ShadingTubeRadiusPercent = 3,
-	Prs3d_DP_ShadingConeRadiusPercent = 4,
-	Prs3d_DP_ShadingConeLengthPercent = 5,
-	Prs3d_DP_ShadingOriginRadiusPercent = 6,
-	Prs3d_DP_ShadingNumberOfFacettes = 7,
+	Prs3d_DatumAttribute_XAxisLength = 0,
+	Prs3d_DatumAttribute_YAxisLength = 1,
+	Prs3d_DatumAttribute_ZAxisLength = 2,
+	Prs3d_DatumAttribute_ShadingTubeRadiusPercent = 3,
+	Prs3d_DatumAttribute_ShadingConeRadiusPercent = 4,
+	Prs3d_DatumAttribute_ShadingConeLengthPercent = 5,
+	Prs3d_DatumAttribute_ShadingOriginRadiusPercent = 6,
+	Prs3d_DatumAttribute_ShadingNumberOfFacettes = 7,
+	Prs3d_DA_XAxisLength = Prs3d_DatumAttribute_XAxisLength,
+	Prs3d_DA_YAxisLength = Prs3d_DatumAttribute_YAxisLength,
+	Prs3d_DA_ZAxisLength = Prs3d_DatumAttribute_ZAxisLength,
+	Prs3d_DP_ShadingTubeRadiusPercent = Prs3d_DatumAttribute_ShadingTubeRadiusPercent,
+	Prs3d_DP_ShadingConeRadiusPercent = Prs3d_DatumAttribute_ShadingConeRadiusPercent,
+	Prs3d_DP_ShadingConeLengthPercent = Prs3d_DatumAttribute_ShadingConeLengthPercent,
+	Prs3d_DP_ShadingOriginRadiusPercent = Prs3d_DatumAttribute_ShadingOriginRadiusPercent,
+	Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute_ShadingNumberOfFacettes,
+};
+
+enum  {
+	Prs3d_DatumAttribute_NB = Prs3d_DatumAttribute_ShadingNumberOfFacettes + 1,
 };
 
 enum Prs3d_DimensionTextHorizontalPosition {
@@ -155,27 +167,49 @@ enum Prs3d_TypeOfHLR {
 };
 
 enum Prs3d_DatumAxes {
-	Prs3d_DA_XAxis = 1,
-	Prs3d_DA_YAxis = 2,
-	Prs3d_DA_ZAxis = 4,
-	Prs3d_DA_XYAxis = Prs3d_DA_XAxis | Prs3d_DA_YAxis,
-	Prs3d_DA_YZAxis = Prs3d_DA_YAxis | Prs3d_DA_ZAxis,
-	Prs3d_DA_XZAxis = Prs3d_DA_XAxis | Prs3d_DA_ZAxis,
-	Prs3d_DA_XYZAxis = Prs3d_DA_XAxis | Prs3d_DA_YAxis | Prs3d_DA_ZAxis,
+	Prs3d_DatumAxes_XAxis = 1,
+	Prs3d_DatumAxes_YAxis = 2,
+	Prs3d_DatumAxes_ZAxis = 4,
+	Prs3d_DatumAxes_XYAxes = Prs3d_DatumAxes_XAxis | Prs3d_DatumAxes_YAxis,
+	Prs3d_DatumAxes_YZAxes = Prs3d_DatumAxes_YAxis | Prs3d_DatumAxes_ZAxis,
+	Prs3d_DatumAxes_XZAxes = Prs3d_DatumAxes_XAxis | Prs3d_DatumAxes_ZAxis,
+	Prs3d_DatumAxes_XYZAxes = Prs3d_DatumAxes_XAxis | Prs3d_DatumAxes_YAxis | Prs3d_DatumAxes_ZAxis,
+	Prs3d_DA_XAxis = Prs3d_DatumAxes_XAxis,
+	Prs3d_DA_YAxis = Prs3d_DatumAxes_YAxis,
+	Prs3d_DA_ZAxis = Prs3d_DatumAxes_ZAxis,
+	Prs3d_DA_XYAxis = Prs3d_DatumAxes_XYAxes,
+	Prs3d_DA_YZAxis = Prs3d_DatumAxes_YZAxes,
+	Prs3d_DA_XZAxis = Prs3d_DatumAxes_XZAxes,
+	Prs3d_DA_XYZAxis = Prs3d_DatumAxes_XYZAxes,
 };
 
 enum Prs3d_DatumParts {
-	Prs3d_DP_Origin = 0,
-	Prs3d_DP_XAxis = 1,
-	Prs3d_DP_YAxis = 2,
-	Prs3d_DP_ZAxis = 3,
-	Prs3d_DP_XArrow = 4,
-	Prs3d_DP_YArrow = 5,
-	Prs3d_DP_ZArrow = 6,
-	Prs3d_DP_XOYAxis = 7,
-	Prs3d_DP_YOZAxis = 8,
-	Prs3d_DP_XOZAxis = 9,
-	Prs3d_DP_None = 10,
+	Prs3d_DatumParts_Origin = 0,
+	Prs3d_DatumParts_XAxis = 1,
+	Prs3d_DatumParts_YAxis = 2,
+	Prs3d_DatumParts_ZAxis = 3,
+	Prs3d_DatumParts_XArrow = 4,
+	Prs3d_DatumParts_YArrow = 5,
+	Prs3d_DatumParts_ZArrow = 6,
+	Prs3d_DatumParts_XOYAxis = 7,
+	Prs3d_DatumParts_YOZAxis = 8,
+	Prs3d_DatumParts_XOZAxis = 9,
+	Prs3d_DatumParts_None = 10,
+	Prs3d_DP_Origin = Prs3d_DatumParts_Origin,
+	Prs3d_DP_XAxis = Prs3d_DatumParts_XAxis,
+	Prs3d_DP_YAxis = Prs3d_DatumParts_YAxis,
+	Prs3d_DP_ZAxis = Prs3d_DatumParts_ZAxis,
+	Prs3d_DP_XArrow = Prs3d_DatumParts_XArrow,
+	Prs3d_DP_YArrow = Prs3d_DatumParts_YArrow,
+	Prs3d_DP_ZArrow = Prs3d_DatumParts_ZArrow,
+	Prs3d_DP_XOYAxis = Prs3d_DatumParts_XOYAxis,
+	Prs3d_DP_YOZAxis = Prs3d_DatumParts_YOZAxis,
+	Prs3d_DP_XOZAxis = Prs3d_DatumParts_XOZAxis,
+	Prs3d_DP_None = Prs3d_DatumParts_None,
+};
+
+enum  {
+	Prs3d_DatumParts_NB = Prs3d_DatumParts_None + 1,
 };
 
 enum Prs3d_DimensionArrowOrientation {
@@ -186,7 +220,7 @@ enum Prs3d_DimensionArrowOrientation {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Prs3d_DimensionTextVerticalPosition(IntEnum):
@@ -228,14 +262,30 @@ Prs3d_DM_WireFrame = Prs3d_DatumMode.Prs3d_DM_WireFrame
 Prs3d_DM_Shaded = Prs3d_DatumMode.Prs3d_DM_Shaded
 
 class Prs3d_DatumAttribute(IntEnum):
-	Prs3d_DA_XAxisLength = 0
-	Prs3d_DA_YAxisLength = 1
-	Prs3d_DA_ZAxisLength = 2
-	Prs3d_DP_ShadingTubeRadiusPercent = 3
-	Prs3d_DP_ShadingConeRadiusPercent = 4
-	Prs3d_DP_ShadingConeLengthPercent = 5
-	Prs3d_DP_ShadingOriginRadiusPercent = 6
-	Prs3d_DP_ShadingNumberOfFacettes = 7
+	Prs3d_DatumAttribute_XAxisLength = 0
+	Prs3d_DatumAttribute_YAxisLength = 1
+	Prs3d_DatumAttribute_ZAxisLength = 2
+	Prs3d_DatumAttribute_ShadingTubeRadiusPercent = 3
+	Prs3d_DatumAttribute_ShadingConeRadiusPercent = 4
+	Prs3d_DatumAttribute_ShadingConeLengthPercent = 5
+	Prs3d_DatumAttribute_ShadingOriginRadiusPercent = 6
+	Prs3d_DatumAttribute_ShadingNumberOfFacettes = 7
+	Prs3d_DA_XAxisLength = Prs3d_DatumAttribute_XAxisLength
+	Prs3d_DA_YAxisLength = Prs3d_DatumAttribute_YAxisLength
+	Prs3d_DA_ZAxisLength = Prs3d_DatumAttribute_ZAxisLength
+	Prs3d_DP_ShadingTubeRadiusPercent = Prs3d_DatumAttribute_ShadingTubeRadiusPercent
+	Prs3d_DP_ShadingConeRadiusPercent = Prs3d_DatumAttribute_ShadingConeRadiusPercent
+	Prs3d_DP_ShadingConeLengthPercent = Prs3d_DatumAttribute_ShadingConeLengthPercent
+	Prs3d_DP_ShadingOriginRadiusPercent = Prs3d_DatumAttribute_ShadingOriginRadiusPercent
+	Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute_ShadingNumberOfFacettes
+Prs3d_DatumAttribute_XAxisLength = Prs3d_DatumAttribute.Prs3d_DatumAttribute_XAxisLength
+Prs3d_DatumAttribute_YAxisLength = Prs3d_DatumAttribute.Prs3d_DatumAttribute_YAxisLength
+Prs3d_DatumAttribute_ZAxisLength = Prs3d_DatumAttribute.Prs3d_DatumAttribute_ZAxisLength
+Prs3d_DatumAttribute_ShadingTubeRadiusPercent = Prs3d_DatumAttribute.Prs3d_DatumAttribute_ShadingTubeRadiusPercent
+Prs3d_DatumAttribute_ShadingConeRadiusPercent = Prs3d_DatumAttribute.Prs3d_DatumAttribute_ShadingConeRadiusPercent
+Prs3d_DatumAttribute_ShadingConeLengthPercent = Prs3d_DatumAttribute.Prs3d_DatumAttribute_ShadingConeLengthPercent
+Prs3d_DatumAttribute_ShadingOriginRadiusPercent = Prs3d_DatumAttribute.Prs3d_DatumAttribute_ShadingOriginRadiusPercent
+Prs3d_DatumAttribute_ShadingNumberOfFacettes = Prs3d_DatumAttribute.Prs3d_DatumAttribute_ShadingNumberOfFacettes
 Prs3d_DA_XAxisLength = Prs3d_DatumAttribute.Prs3d_DA_XAxisLength
 Prs3d_DA_YAxisLength = Prs3d_DatumAttribute.Prs3d_DA_YAxisLength
 Prs3d_DA_ZAxisLength = Prs3d_DatumAttribute.Prs3d_DA_ZAxisLength
@@ -270,13 +320,27 @@ Prs3d_TOH_PolyAlgo = Prs3d_TypeOfHLR.Prs3d_TOH_PolyAlgo
 Prs3d_TOH_Algo = Prs3d_TypeOfHLR.Prs3d_TOH_Algo
 
 class Prs3d_DatumAxes(IntEnum):
-	Prs3d_DA_XAxis = 1
-	Prs3d_DA_YAxis = 2
-	Prs3d_DA_ZAxis = 4
-	Prs3d_DA_XYAxis = Prs3d_DA_XAxis | Prs3d_DA_YAxis
-	Prs3d_DA_YZAxis = Prs3d_DA_YAxis | Prs3d_DA_ZAxis
-	Prs3d_DA_XZAxis = Prs3d_DA_XAxis | Prs3d_DA_ZAxis
-	Prs3d_DA_XYZAxis = Prs3d_DA_XAxis | Prs3d_DA_YAxis | Prs3d_DA_ZAxis
+	Prs3d_DatumAxes_XAxis = 1
+	Prs3d_DatumAxes_YAxis = 2
+	Prs3d_DatumAxes_ZAxis = 4
+	Prs3d_DatumAxes_XYAxes = Prs3d_DatumAxes_XAxis | Prs3d_DatumAxes_YAxis
+	Prs3d_DatumAxes_YZAxes = Prs3d_DatumAxes_YAxis | Prs3d_DatumAxes_ZAxis
+	Prs3d_DatumAxes_XZAxes = Prs3d_DatumAxes_XAxis | Prs3d_DatumAxes_ZAxis
+	Prs3d_DatumAxes_XYZAxes = Prs3d_DatumAxes_XAxis | Prs3d_DatumAxes_YAxis | Prs3d_DatumAxes_ZAxis
+	Prs3d_DA_XAxis = Prs3d_DatumAxes_XAxis
+	Prs3d_DA_YAxis = Prs3d_DatumAxes_YAxis
+	Prs3d_DA_ZAxis = Prs3d_DatumAxes_ZAxis
+	Prs3d_DA_XYAxis = Prs3d_DatumAxes_XYAxes
+	Prs3d_DA_YZAxis = Prs3d_DatumAxes_YZAxes
+	Prs3d_DA_XZAxis = Prs3d_DatumAxes_XZAxes
+	Prs3d_DA_XYZAxis = Prs3d_DatumAxes_XYZAxes
+Prs3d_DatumAxes_XAxis = Prs3d_DatumAxes.Prs3d_DatumAxes_XAxis
+Prs3d_DatumAxes_YAxis = Prs3d_DatumAxes.Prs3d_DatumAxes_YAxis
+Prs3d_DatumAxes_ZAxis = Prs3d_DatumAxes.Prs3d_DatumAxes_ZAxis
+Prs3d_DatumAxes_XYAxes = Prs3d_DatumAxes.Prs3d_DatumAxes_XYAxes
+Prs3d_DatumAxes_YZAxes = Prs3d_DatumAxes.Prs3d_DatumAxes_YZAxes
+Prs3d_DatumAxes_XZAxes = Prs3d_DatumAxes.Prs3d_DatumAxes_XZAxes
+Prs3d_DatumAxes_XYZAxes = Prs3d_DatumAxes.Prs3d_DatumAxes_XYZAxes
 Prs3d_DA_XAxis = Prs3d_DatumAxes.Prs3d_DA_XAxis
 Prs3d_DA_YAxis = Prs3d_DatumAxes.Prs3d_DA_YAxis
 Prs3d_DA_ZAxis = Prs3d_DatumAxes.Prs3d_DA_ZAxis
@@ -286,17 +350,39 @@ Prs3d_DA_XZAxis = Prs3d_DatumAxes.Prs3d_DA_XZAxis
 Prs3d_DA_XYZAxis = Prs3d_DatumAxes.Prs3d_DA_XYZAxis
 
 class Prs3d_DatumParts(IntEnum):
-	Prs3d_DP_Origin = 0
-	Prs3d_DP_XAxis = 1
-	Prs3d_DP_YAxis = 2
-	Prs3d_DP_ZAxis = 3
-	Prs3d_DP_XArrow = 4
-	Prs3d_DP_YArrow = 5
-	Prs3d_DP_ZArrow = 6
-	Prs3d_DP_XOYAxis = 7
-	Prs3d_DP_YOZAxis = 8
-	Prs3d_DP_XOZAxis = 9
-	Prs3d_DP_None = 10
+	Prs3d_DatumParts_Origin = 0
+	Prs3d_DatumParts_XAxis = 1
+	Prs3d_DatumParts_YAxis = 2
+	Prs3d_DatumParts_ZAxis = 3
+	Prs3d_DatumParts_XArrow = 4
+	Prs3d_DatumParts_YArrow = 5
+	Prs3d_DatumParts_ZArrow = 6
+	Prs3d_DatumParts_XOYAxis = 7
+	Prs3d_DatumParts_YOZAxis = 8
+	Prs3d_DatumParts_XOZAxis = 9
+	Prs3d_DatumParts_None = 10
+	Prs3d_DP_Origin = Prs3d_DatumParts_Origin
+	Prs3d_DP_XAxis = Prs3d_DatumParts_XAxis
+	Prs3d_DP_YAxis = Prs3d_DatumParts_YAxis
+	Prs3d_DP_ZAxis = Prs3d_DatumParts_ZAxis
+	Prs3d_DP_XArrow = Prs3d_DatumParts_XArrow
+	Prs3d_DP_YArrow = Prs3d_DatumParts_YArrow
+	Prs3d_DP_ZArrow = Prs3d_DatumParts_ZArrow
+	Prs3d_DP_XOYAxis = Prs3d_DatumParts_XOYAxis
+	Prs3d_DP_YOZAxis = Prs3d_DatumParts_YOZAxis
+	Prs3d_DP_XOZAxis = Prs3d_DatumParts_XOZAxis
+	Prs3d_DP_None = Prs3d_DatumParts_None
+Prs3d_DatumParts_Origin = Prs3d_DatumParts.Prs3d_DatumParts_Origin
+Prs3d_DatumParts_XAxis = Prs3d_DatumParts.Prs3d_DatumParts_XAxis
+Prs3d_DatumParts_YAxis = Prs3d_DatumParts.Prs3d_DatumParts_YAxis
+Prs3d_DatumParts_ZAxis = Prs3d_DatumParts.Prs3d_DatumParts_ZAxis
+Prs3d_DatumParts_XArrow = Prs3d_DatumParts.Prs3d_DatumParts_XArrow
+Prs3d_DatumParts_YArrow = Prs3d_DatumParts.Prs3d_DatumParts_YArrow
+Prs3d_DatumParts_ZArrow = Prs3d_DatumParts.Prs3d_DatumParts_ZArrow
+Prs3d_DatumParts_XOYAxis = Prs3d_DatumParts.Prs3d_DatumParts_XOYAxis
+Prs3d_DatumParts_YOZAxis = Prs3d_DatumParts.Prs3d_DatumParts_YOZAxis
+Prs3d_DatumParts_XOZAxis = Prs3d_DatumParts.Prs3d_DatumParts_XOZAxis
+Prs3d_DatumParts_None = Prs3d_DatumParts.Prs3d_DatumParts_None
 Prs3d_DP_Origin = Prs3d_DatumParts.Prs3d_DP_Origin
 Prs3d_DP_XAxis = Prs3d_DatumParts.Prs3d_DP_XAxis
 Prs3d_DP_YAxis = Prs3d_DatumParts.Prs3d_DP_YAxis
@@ -346,7 +432,6 @@ Prs3d_DAO_Fit = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Fit
 /* end templates declaration */
 
 /* typedefs */
-typedef Prs3d_Drawer Graphic3d_HighlightStyle;
 typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
 typedef NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>> Prs3d_NListOfSequenceOfPnt;
 typedef Graphic3d_Structure Prs3d_Presentation;
@@ -493,25 +578,6 @@ Returns
 None
 ") Draw;
 		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
-
-		/****************** Draw ******************/
-		/**** md5 signature: 0d01026ed2217a2665b0a14a5cd75a9e ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theLocation: gp_Pnt
-theDirection: gp_Dir
-theAngle: float
-theLength: float
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
 
 		/****************** DrawSegments ******************/
 		/**** md5 signature: 732901be4cc19438764121766619db8b ****/
@@ -950,7 +1016,7 @@ bool
 		/****************** HasOwnDeviationAngle ******************/
 		/**** md5 signature: 9b350005642d36f5630be22438d1d286 ****/
 		%feature("compactdefaultargs") HasOwnDeviationAngle;
-		%feature("autodoc", "Returns true if the there is a local setting for deviation angle in this framework for a specific interactive object.
+		%feature("autodoc", "Returns true if there is a local setting for deviation angle in this framework for a specific interactive object.
 
 Returns
 -------
@@ -1630,7 +1696,7 @@ None
 		/****************** SetDeviationAngle ******************/
 		/**** md5 signature: 9bdb5f10031ccd09c439fbc45ff4df32 ****/
 		%feature("compactdefaultargs") SetDeviationAngle;
-		%feature("autodoc", "Sets the hasowndeviationangle flag to standard_false.
+		%feature("autodoc", "Resets hasowndeviationangle() flag, e.g. undoes previous setdeviationangle().
 
 Returns
 -------
@@ -1656,7 +1722,7 @@ None
 		/****************** SetDeviationCoefficient ******************/
 		/**** md5 signature: 755d6894d3ae7cb400d463653d96c593 ****/
 		%feature("compactdefaultargs") SetDeviationCoefficient;
-		%feature("autodoc", "Sets the hasowndeviationcoefficient flag to standard_false.
+		%feature("autodoc", "Resets hasowndeviationcoefficient() flag, e.g. undoes previous setdeviationcoefficient().
 
 Returns
 -------
@@ -2418,6 +2484,193 @@ None
 ") UnsetFaceBoundaryUpperContinuity;
 		void UnsetFaceBoundaryUpperContinuity();
 
+		/****************** UnsetOwnDimAngleDisplayUnits ******************/
+		/**** md5 signature: 9dd91da7ca6e7927a05fc6117ef0e294 ****/
+		%feature("compactdefaultargs") UnsetOwnDimAngleDisplayUnits;
+		%feature("autodoc", "Resets hasowndimangledisplayunits() flag, e.g. undoes setdimlengthdisplayunits().
+
+Returns
+-------
+None
+") UnsetOwnDimAngleDisplayUnits;
+		void UnsetOwnDimAngleDisplayUnits();
+
+		/****************** UnsetOwnDimAngleModelUnits ******************/
+		/**** md5 signature: 71d0041e858711a7619e2e03df179c5d ****/
+		%feature("compactdefaultargs") UnsetOwnDimAngleModelUnits;
+		%feature("autodoc", "Resets hasowndimanglemodelunits() flag, e.g. undoes setdimanglemodelunits().
+
+Returns
+-------
+None
+") UnsetOwnDimAngleModelUnits;
+		void UnsetOwnDimAngleModelUnits();
+
+		/****************** UnsetOwnDimLengthDisplayUnits ******************/
+		/**** md5 signature: fdb3e789b66cd1942b0d00bcd6670af3 ****/
+		%feature("compactdefaultargs") UnsetOwnDimLengthDisplayUnits;
+		%feature("autodoc", "Resets hasowndimlengthmodelunits() flag, e.g. undoes setdimlengthdisplayunits().
+
+Returns
+-------
+None
+") UnsetOwnDimLengthDisplayUnits;
+		void UnsetOwnDimLengthDisplayUnits();
+
+		/****************** UnsetOwnDimLengthModelUnits ******************/
+		/**** md5 signature: 1a50bb3283206afa34f9447361719bb1 ****/
+		%feature("compactdefaultargs") UnsetOwnDimLengthModelUnits;
+		%feature("autodoc", "Resets hasowndimlengthmodelunits() flag, e.g. undoes setdimlengthmodelunits().
+
+Returns
+-------
+None
+") UnsetOwnDimLengthModelUnits;
+		void UnsetOwnDimLengthModelUnits();
+
+		/****************** UnsetOwnDiscretisation ******************/
+		/**** md5 signature: 047cfc51bae6ced11e4becb284dbacb3 ****/
+		%feature("compactdefaultargs") UnsetOwnDiscretisation;
+		%feature("autodoc", "Resets hasowndiscretisation() flag, e.g. undoes setdiscretisation().
+
+Returns
+-------
+None
+") UnsetOwnDiscretisation;
+		void UnsetOwnDiscretisation();
+
+		/****************** UnsetOwnDrawHiddenLine ******************/
+		/**** md5 signature: 5572431df9d967dfcbbf53584bd58d8b ****/
+		%feature("compactdefaultargs") UnsetOwnDrawHiddenLine;
+		%feature("autodoc", "Resets hasowndrawhiddenline() flag, e.g. unsets enabledrawhiddenline()/disabledrawhiddenline().
+
+Returns
+-------
+None
+") UnsetOwnDrawHiddenLine;
+		void UnsetOwnDrawHiddenLine();
+
+		/****************** UnsetOwnFaceBoundaryDraw ******************/
+		/**** md5 signature: a7a27bb2f61eb3eaa5c8b06d5f139710 ****/
+		%feature("compactdefaultargs") UnsetOwnFaceBoundaryDraw;
+		%feature("autodoc", "Resets hasownfaceboundarydraw() flag, e.g. undoes setfaceboundarydraw().
+
+Returns
+-------
+None
+") UnsetOwnFaceBoundaryDraw;
+		void UnsetOwnFaceBoundaryDraw();
+
+		/****************** UnsetOwnFreeBoundaryDraw ******************/
+		/**** md5 signature: 94cefbc7316ca879e51afce0a584b793 ****/
+		%feature("compactdefaultargs") UnsetOwnFreeBoundaryDraw;
+		%feature("autodoc", "Resets hasownfreeboundarydraw() flag, e.g. undoes setfreeboundarydraw().
+
+Returns
+-------
+None
+") UnsetOwnFreeBoundaryDraw;
+		void UnsetOwnFreeBoundaryDraw();
+
+		/****************** UnsetOwnIsAutoTriangulation ******************/
+		/**** md5 signature: e03d2d88873eb2223a6ee7b07d14bdc5 ****/
+		%feature("compactdefaultargs") UnsetOwnIsAutoTriangulation;
+		%feature("autodoc", "Resets hasownisautotriangulation() flag, e.g. undoes setautotriangulation().
+
+Returns
+-------
+None
+") UnsetOwnIsAutoTriangulation;
+		void UnsetOwnIsAutoTriangulation();
+
+		/****************** UnsetOwnIsoOnPlane ******************/
+		/**** md5 signature: 41dbe1528d3b195f364a7aca52198133 ****/
+		%feature("compactdefaultargs") UnsetOwnIsoOnPlane;
+		%feature("autodoc", "Resets hasownisoonplane() flag, e.g. undoes setisoonplane().
+
+Returns
+-------
+None
+") UnsetOwnIsoOnPlane;
+		void UnsetOwnIsoOnPlane();
+
+		/****************** UnsetOwnIsoOnTriangulation ******************/
+		/**** md5 signature: a426e9014db1398599f41f21a28db797 ****/
+		%feature("compactdefaultargs") UnsetOwnIsoOnTriangulation;
+		%feature("autodoc", "Resets hasownisoontriangulation() flag, e.g. undoes setisoontriangulation().
+
+Returns
+-------
+None
+") UnsetOwnIsoOnTriangulation;
+		void UnsetOwnIsoOnTriangulation();
+
+		/****************** UnsetOwnLineArrowDraw ******************/
+		/**** md5 signature: 8f51e78cbc30ffc8a248acb5c6b3f77e ****/
+		%feature("compactdefaultargs") UnsetOwnLineArrowDraw;
+		%feature("autodoc", "Reset hasownlinearrowdraw() flag, e.g. undoes setlinearrowdraw().
+
+Returns
+-------
+None
+") UnsetOwnLineArrowDraw;
+		void UnsetOwnLineArrowDraw();
+
+		/****************** UnsetOwnMaximalChordialDeviation ******************/
+		/**** md5 signature: f807868cfb852d7979ae0ccc60dab291 ****/
+		%feature("compactdefaultargs") UnsetOwnMaximalChordialDeviation;
+		%feature("autodoc", "Resets hasownmaximalchordialdeviation() flag, e.g. undoes setmaximalchordialdeviation().
+
+Returns
+-------
+None
+") UnsetOwnMaximalChordialDeviation;
+		void UnsetOwnMaximalChordialDeviation();
+
+		/****************** UnsetOwnMaximalParameterValue ******************/
+		/**** md5 signature: 600e906557feb6c3ae0b212506b7a078 ****/
+		%feature("compactdefaultargs") UnsetOwnMaximalParameterValue;
+		%feature("autodoc", "Resets hasownmaximalparametervalue() flag, e.g. undoes setmaximalparametervalue().
+
+Returns
+-------
+None
+") UnsetOwnMaximalParameterValue;
+		void UnsetOwnMaximalParameterValue();
+
+		/****************** UnsetOwnTypeOfDeflection ******************/
+		/**** md5 signature: 9a6eca2451096ca0cb4e2fd0a5d381fe ****/
+		%feature("compactdefaultargs") UnsetOwnTypeOfDeflection;
+		%feature("autodoc", "Resets hasowntypeofdeflection() flag, e.g. undoes settypeofdeflection().
+
+Returns
+-------
+None
+") UnsetOwnTypeOfDeflection;
+		void UnsetOwnTypeOfDeflection();
+
+		/****************** UnsetOwnUnFreeBoundaryDraw ******************/
+		/**** md5 signature: cb19469a6b5169c30236136f43f1f781 ****/
+		%feature("compactdefaultargs") UnsetOwnUnFreeBoundaryDraw;
+		%feature("autodoc", "Resets hasownunfreeboundarydraw() flag, e.g. undoes setunfreeboundarydraw().
+
+Returns
+-------
+None
+") UnsetOwnUnFreeBoundaryDraw;
+		void UnsetOwnUnFreeBoundaryDraw();
+
+		/****************** UnsetOwnWireDraw ******************/
+		/**** md5 signature: 81d5ff89cf03224619b8f656a62af29d ****/
+		%feature("compactdefaultargs") UnsetOwnWireDraw;
+		%feature("autodoc", "Resets hasownwiredraw() flag, e.g. undoes setwiredraw().
+
+Returns
+-------
+None
+") UnsetOwnWireDraw;
+		void UnsetOwnWireDraw();
+
 		/****************** UpdatePreviousDeviationAngle ******************/
 		/**** md5 signature: 89a7b1ecfa621e3e7fc2f96b8782afff ****/
 		%feature("compactdefaultargs") UpdatePreviousDeviationAngle;
@@ -2716,62 +2969,6 @@ opencascade::handle<Graphic3d_Text>
 ") Draw;
 		static opencascade::handle<Graphic3d_Text> Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
-		/****************** Draw ******************/
-		/**** md5 signature: c81a1d63918e052869c2ea407ed25824 ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theDrawer: Prs3d_Drawer
-theText: TCollection_ExtendedString
-theAttachmentPoint: gp_Pnt
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
-
-		/****************** Draw ******************/
-		/**** md5 signature: f2388f36de4bfc3744a462bf82ce37ad ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theAspect: Prs3d_TextAspect
-theText: TCollection_ExtendedString
-theOrientation: gp_Ax2
-theHasOwnAnchor: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
-
-		/****************** Draw ******************/
-		/**** md5 signature: 44971b9f623140f1480964ad0077a232 ****/
-		%feature("compactdefaultargs") Draw;
-		%feature("autodoc", "Alias to another method draw() for backward compatibility.
-
-Parameters
-----------
-thePrs: Prs3d_Presentation
-theAspect: Prs3d_TextAspect
-theText: TCollection_ExtendedString
-theAttachmentPoint: gp_Pnt
-
-Returns
--------
-None
-") Draw;
-		static void Draw(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_TextAspect> & theAspect, const TCollection_ExtendedString & theText, const gp_Pnt & theAttachmentPoint);
-
 };
 
 
@@ -2866,6 +3063,17 @@ int
 ") TrianglesNb;
 		static Standard_Integer TrianglesNb(const Standard_Integer theSlicesNb, const Standard_Integer theStacksNb);
 
+		/****************** TrianglesNb ******************/
+		/**** md5 signature: 79e9c94384c6f9eca1682b3bd078e884 ****/
+		%feature("compactdefaultargs") TrianglesNb;
+		%feature("autodoc", "Return number of triangles in generated presentation.
+
+Returns
+-------
+int
+") TrianglesNb;
+		Standard_Integer TrianglesNb();
+
 		/****************** VerticesNb ******************/
 		/**** md5 signature: 1326b929d9932628a0c679a5777a5b6c ****/
 		%feature("compactdefaultargs") VerticesNb;
@@ -2883,6 +3091,22 @@ Returns
 int
 ") VerticesNb;
 		static Standard_Integer VerticesNb(const Standard_Integer theSlicesNb, const Standard_Integer theStacksNb, const Standard_Boolean theIsIndexed = Standard_True);
+
+		/****************** VerticesNb ******************/
+		/**** md5 signature: 2f242abab1be940c103aeca916c73e88 ****/
+		%feature("compactdefaultargs") VerticesNb;
+		%feature("autodoc", "Return number of vertices in generated presentation.
+
+Parameters
+----------
+theIsIndexed: bool,optional
+	default value is true
+
+Returns
+-------
+int
+") VerticesNb;
+		Standard_Integer VerticesNb(bool theIsIndexed = true);
 
 };
 
@@ -2970,6 +3194,17 @@ opencascade::handle<Graphic3d_AspectLine3d>
                 self->DumpJson(s, depth);
                 return s.str();}
             };
+		/****************** IsZoomable ******************/
+		/**** md5 signature: 0e11552facaac98faf2474f0071c0b9d ****/
+		%feature("compactdefaultargs") IsZoomable;
+		%feature("autodoc", "Returns true when the arrow zoomable is on; true by default.
+
+Returns
+-------
+bool
+") IsZoomable;
+		bool IsZoomable();
+
 		/****************** Length ******************/
 		/**** md5 signature: 1d863a710d06afea5559458878200357 ****/
 		%feature("compactdefaultargs") Length;
@@ -3040,6 +3275,21 @@ Returns
 None
 ") SetLength;
 		void SetLength(const Standard_Real theLength);
+
+		/****************** SetZoomable ******************/
+		/**** md5 signature: 97ffe04fce7ef540e2fce9a76dd33eaa ****/
+		%feature("compactdefaultargs") SetZoomable;
+		%feature("autodoc", "Turns usage of arrow zoomable on/off.
+
+Parameters
+----------
+theIsZoomable: bool
+
+Returns
+-------
+None
+") SetZoomable;
+		void SetZoomable(bool theIsZoomable);
 
 };
 
@@ -3186,7 +3436,7 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 		/****************** Prs3d_DatumAspect ******************/
 		/**** md5 signature: 71be1d27ce693ac5509c01c1b9013cbd ****/
 		%feature("compactdefaultargs") Prs3d_DatumAspect;
-		%feature("autodoc", "An empty framework to define the display of datums.
+		%feature("autodoc", "An empty constructor.
 
 Returns
 -------
@@ -3206,7 +3456,7 @@ opencascade::handle<Prs3d_ArrowAspect>
 		const opencascade::handle<Prs3d_ArrowAspect> & ArrowAspect();
 
 		/****************** ArrowPartForAxis ******************/
-		/**** md5 signature: ba8be796912002c554edec80fbb71e40 ****/
+		/**** md5 signature: 7a1df2eb76e4e1e3416cc302c58ee37b ****/
 		%feature("compactdefaultargs") ArrowPartForAxis;
 		%feature("autodoc", "Returns type of arrow for a type of axis.
 
@@ -3218,7 +3468,7 @@ Returns
 -------
 Prs3d_DatumParts
 ") ArrowPartForAxis;
-		Prs3d_DatumParts ArrowPartForAxis(Prs3d_DatumParts thePart);
+		static Prs3d_DatumParts ArrowPartForAxis(Prs3d_DatumParts thePart);
 
 		/****************** Attribute ******************/
 		/**** md5 signature: d7ca7bee3d949bb4cd8c2c3c07920d6e ****/
@@ -3250,6 +3500,21 @@ float
 ") AxisLength;
 		Standard_Real AxisLength(Prs3d_DatumParts thePart);
 
+		/****************** CopyAspectsFrom ******************/
+		/**** md5 signature: ec90d65075dc1aad3151ac0b5a24cb1b ****/
+		%feature("compactdefaultargs") CopyAspectsFrom;
+		%feature("autodoc", "Performs deep copy of attributes from another aspect instance.
+
+Parameters
+----------
+theOther: Prs3d_DatumAspect
+
+Returns
+-------
+None
+") CopyAspectsFrom;
+		void CopyAspectsFrom(const opencascade::handle<Prs3d_DatumAspect> & theOther);
+
 		/****************** DatumAxes ******************/
 		/**** md5 signature: 25421ca286b68e0e5619b29932d4e2d2 ****/
 		%feature("compactdefaultargs") DatumAxes;
@@ -3276,28 +3541,6 @@ bool
 ") DrawDatumPart;
 		Standard_Boolean DrawDatumPart(Prs3d_DatumParts thePart);
 
-		/****************** DrawFirstAndSecondAxis ******************/
-		/**** md5 signature: a0e465f1223a2d85d8cf98864563b464 ****/
-		%feature("compactdefaultargs") DrawFirstAndSecondAxis;
-		%feature("autodoc", "Returns true if the first and second axes can be drawn.
-
-Returns
--------
-bool
-") DrawFirstAndSecondAxis;
-		Standard_Boolean DrawFirstAndSecondAxis();
-
-		/****************** DrawThirdAxis ******************/
-		/**** md5 signature: b6b74fb637cb33eed855466956a9dc74 ****/
-		%feature("compactdefaultargs") DrawThirdAxis;
-		%feature("autodoc", "Returns true if the third axis can be drawn.
-
-Returns
--------
-bool
-") DrawThirdAxis;
-		Standard_Boolean DrawThirdAxis();
-
 
             %feature("autodoc", "1");
             %extend{
@@ -3306,32 +3549,10 @@ bool
                 self->DumpJson(s, depth);
                 return s.str();}
             };
-		/****************** FirstAxisAspect ******************/
-		/**** md5 signature: 9aa788101e717f40cfacb0717ed44a7c ****/
-		%feature("compactdefaultargs") FirstAxisAspect;
-		%feature("autodoc", "Returns the attributes for display of the first axis.
-
-Returns
--------
-opencascade::handle<Prs3d_LineAspect>
-") FirstAxisAspect;
-		const opencascade::handle<Prs3d_LineAspect> & FirstAxisAspect();
-
-		/****************** FirstAxisLength ******************/
-		/**** md5 signature: 2fac70fe0195bf6cbaad6b999ffcaafd ****/
-		%feature("compactdefaultargs") FirstAxisLength;
-		%feature("autodoc", "Returns the length of the displayed first axis.
-
-Returns
--------
-float
-") FirstAxisLength;
-		Standard_Real FirstAxisLength();
-
 		/****************** LineAspect ******************/
-		/**** md5 signature: cfa870d45098332f1f2a70014a1e5b5a ****/
+		/**** md5 signature: 9af72ca119f843e15222dd5546dc6dfb ****/
 		%feature("compactdefaultargs") LineAspect;
-		%feature("autodoc", "Returns the right-handed coordinate system set in setcomponent.
+		%feature("autodoc", "Returns line aspect for specified part.
 
 Parameters
 ----------
@@ -3341,7 +3562,7 @@ Returns
 -------
 opencascade::handle<Prs3d_LineAspect>
 ") LineAspect;
-		opencascade::handle<Prs3d_LineAspect> LineAspect(Prs3d_DatumParts thePart);
+		const opencascade::handle<Prs3d_LineAspect> & LineAspect(Prs3d_DatumParts thePart);
 
 		/****************** PointAspect ******************/
 		/**** md5 signature: 50902dc571bbda51cee2855b6ef5ff8d ****/
@@ -3353,28 +3574,6 @@ Returns
 opencascade::handle<Prs3d_PointAspect>
 ") PointAspect;
 		const opencascade::handle<Prs3d_PointAspect> & PointAspect();
-
-		/****************** SecondAxisAspect ******************/
-		/**** md5 signature: ce8734d7d727f75d991aae6a746d3d4b ****/
-		%feature("compactdefaultargs") SecondAxisAspect;
-		%feature("autodoc", "Returns the attributes for display of the second axis.
-
-Returns
--------
-opencascade::handle<Prs3d_LineAspect>
-") SecondAxisAspect;
-		const opencascade::handle<Prs3d_LineAspect> & SecondAxisAspect();
-
-		/****************** SecondAxisLength ******************/
-		/**** md5 signature: 06308dfc93205a8ddcc8ea93da1530d5 ****/
-		%feature("compactdefaultargs") SecondAxisLength;
-		%feature("autodoc", "Returns the length of the displayed second axis.
-
-Returns
--------
-float
-") SecondAxisLength;
-		Standard_Real SecondAxisLength();
 
 		/****************** SetArrowAspect ******************/
 		/**** md5 signature: 0a1adde0b720014d803adbe7c86e169d ****/
@@ -3392,7 +3591,7 @@ None
 		void SetArrowAspect(const opencascade::handle<Prs3d_ArrowAspect> & theAspect);
 
 		/****************** SetAttribute ******************/
-		/**** md5 signature: 08e15b2bbcd3edc89190dceccd3bcc13 ****/
+		/**** md5 signature: addb95d2429f8a93b0aa29cc41d7d7c3 ****/
 		%feature("compactdefaultargs") SetAttribute;
 		%feature("autodoc", "Sets the attribute of the datum type.
 
@@ -3405,7 +3604,7 @@ Returns
 -------
 None
 ") SetAttribute;
-		void SetAttribute(Prs3d_DatumAttribute theType, const Standard_Real & theValue);
+		void SetAttribute(Prs3d_DatumAttribute theType, const Standard_Real theValue);
 
 		/****************** SetAxisLength ******************/
 		/**** md5 signature: 368cf5f58e7c88156ee1613e1838afa1 ****/
@@ -3454,21 +3653,6 @@ None
 ") SetDrawDatumAxes;
 		void SetDrawDatumAxes(Prs3d_DatumAxes theType);
 
-		/****************** SetDrawFirstAndSecondAxis ******************/
-		/**** md5 signature: 1fd5bcd59115b72c767701c3bf1f6f5b ****/
-		%feature("compactdefaultargs") SetDrawFirstAndSecondAxis;
-		%feature("autodoc", "Sets the drawfirstandsecondaxis attributes to active.
-
-Parameters
-----------
-theToDraw: bool
-
-Returns
--------
-None
-") SetDrawFirstAndSecondAxis;
-		void SetDrawFirstAndSecondAxis(Standard_Boolean theToDraw);
-
 		/****************** SetDrawLabels ******************/
 		/**** md5 signature: e034ff7bc5e70c3493e6a993aa989169 ****/
 		%feature("compactdefaultargs") SetDrawLabels;
@@ -3483,21 +3667,6 @@ Returns
 None
 ") SetDrawLabels;
 		void SetDrawLabels(Standard_Boolean theToDraw);
-
-		/****************** SetDrawThirdAxis ******************/
-		/**** md5 signature: 4d8879c1fd39a0164e6d80ad1a538318 ****/
-		%feature("compactdefaultargs") SetDrawThirdAxis;
-		%feature("autodoc", "Sets the drawthirdaxis attributes to active.
-
-Parameters
-----------
-theToDraw: bool
-
-Returns
--------
-None
-") SetDrawThirdAxis;
-		void SetDrawThirdAxis(Standard_Boolean theToDraw);
 
 		/****************** SetPointAspect ******************/
 		/**** md5 signature: 94b301114933fbb123df3ae8775512cc ****/
@@ -3545,9 +3714,9 @@ None
 		void SetToDrawLabels(Standard_Boolean theToDraw);
 
 		/****************** ShadingAspect ******************/
-		/**** md5 signature: f37e95672d8954a405e93d06cd2e55b7 ****/
+		/**** md5 signature: 0e02ad2657728f8fa670dd55189d1518 ****/
 		%feature("compactdefaultargs") ShadingAspect;
-		%feature("autodoc", "Returns the right-handed coordinate system set in setcomponent.
+		%feature("autodoc", "Returns shading aspect for specified part.
 
 Parameters
 ----------
@@ -3557,7 +3726,22 @@ Returns
 -------
 opencascade::handle<Prs3d_ShadingAspect>
 ") ShadingAspect;
-		opencascade::handle<Prs3d_ShadingAspect> ShadingAspect(Prs3d_DatumParts thePart);
+		const opencascade::handle<Prs3d_ShadingAspect> & ShadingAspect(Prs3d_DatumParts thePart);
+
+		/****************** TextAspect ******************/
+		/**** md5 signature: e0f44028ed1f363b874a5b8421f2d89b ****/
+		%feature("compactdefaultargs") TextAspect;
+		%feature("autodoc", "Returns the text attributes for rendering label of specified part (prs3d_datumparts_xaxis/prs3d_datumparts_yaxis/prs3d_datumparts_zaxis).
+
+Parameters
+----------
+thePart: Prs3d_DatumParts
+
+Returns
+-------
+opencascade::handle<Prs3d_TextAspect>
+") TextAspect;
+		const opencascade::handle<Prs3d_TextAspect> & TextAspect(Prs3d_DatumParts thePart);
 
 		/****************** TextAspect ******************/
 		/**** md5 signature: cfcafff19dee0a33d3ad10bb73a9e0cf ****/
@@ -3569,28 +3753,6 @@ Returns
 opencascade::handle<Prs3d_TextAspect>
 ") TextAspect;
 		const opencascade::handle<Prs3d_TextAspect> & TextAspect();
-
-		/****************** ThirdAxisAspect ******************/
-		/**** md5 signature: c6194af8dde5688a41414412bdb4427d ****/
-		%feature("compactdefaultargs") ThirdAxisAspect;
-		%feature("autodoc", "Returns the attributes for display of the third axis.
-
-Returns
--------
-opencascade::handle<Prs3d_LineAspect>
-") ThirdAxisAspect;
-		const opencascade::handle<Prs3d_LineAspect> & ThirdAxisAspect();
-
-		/****************** ThirdAxisLength ******************/
-		/**** md5 signature: d74a4508e782b7e7414178c8d744754f ****/
-		%feature("compactdefaultargs") ThirdAxisLength;
-		%feature("autodoc", "Returns the length of the displayed third axis.
-
-Returns
--------
-float
-") ThirdAxisLength;
-		Standard_Real ThirdAxisLength();
 
 		/****************** ToDrawArrows ******************/
 		/**** md5 signature: 7fd3cfe7831ebb75887b42f1c3721e82 ****/
@@ -5501,6 +5663,5 @@ class Prs3d_ShapeTool:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-Graphic3d_HighlightStyle=Prs3d_Drawer
 Prs3d_Presentation=OCC.Core.Graphic3d.Graphic3d_Structure
 }

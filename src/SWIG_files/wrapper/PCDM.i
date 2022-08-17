@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PCDMDOCSTRING
 "PCDM module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_pcdm.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_pcdm.html"
 %enddef
 %module (package="OCC.Core", docstring=PCDMDOCSTRING) PCDM
 
@@ -76,6 +76,7 @@ enum PCDM_StoreStatus {
 	PCDM_SS_No_Obj = 5,
 	PCDM_SS_Info_Section_Error = 6,
 	PCDM_SS_UserBreak = 7,
+	PCDM_SS_UnrecognizedFormat = 8,
 };
 
 enum PCDM_TypeOfFileDriver {
@@ -113,7 +114,7 @@ enum PCDM_ReaderStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class PCDM_StoreStatus(IntEnum):
@@ -125,6 +126,7 @@ class PCDM_StoreStatus(IntEnum):
 	PCDM_SS_No_Obj = 5
 	PCDM_SS_Info_Section_Error = 6
 	PCDM_SS_UserBreak = 7
+	PCDM_SS_UnrecognizedFormat = 8
 PCDM_SS_OK = PCDM_StoreStatus.PCDM_SS_OK
 PCDM_SS_DriverFailure = PCDM_StoreStatus.PCDM_SS_DriverFailure
 PCDM_SS_WriteFailure = PCDM_StoreStatus.PCDM_SS_WriteFailure
@@ -133,6 +135,7 @@ PCDM_SS_Doc_IsNull = PCDM_StoreStatus.PCDM_SS_Doc_IsNull
 PCDM_SS_No_Obj = PCDM_StoreStatus.PCDM_SS_No_Obj
 PCDM_SS_Info_Section_Error = PCDM_StoreStatus.PCDM_SS_Info_Section_Error
 PCDM_SS_UserBreak = PCDM_StoreStatus.PCDM_SS_UserBreak
+PCDM_SS_UnrecognizedFormat = PCDM_StoreStatus.PCDM_SS_UnrecognizedFormat
 
 class PCDM_TypeOfFileDriver(IntEnum):
 	PCDM_TOFD_File = 0
@@ -197,6 +200,7 @@ PCDM_RS_UserBreak = PCDM_ReaderStatus.PCDM_RS_UserBreak
 /* handles */
 %wrap_handle(PCDM_ReadWriter)
 %wrap_handle(PCDM_Reader)
+%wrap_handle(PCDM_ReaderFilter)
 %wrap_handle(PCDM_ReferenceIterator)
 %wrap_handle(PCDM_Writer)
 %wrap_handle(PCDM_ReadWriter_1)
@@ -506,17 +510,6 @@ opencascade::handle<PCDM_ReadWriter>
 %nodefaultctor PCDM_Reader;
 class PCDM_Reader : public Standard_Transient {
 	public:
-		/****************** CreateDocument ******************/
-		/**** md5 signature: 3dc32007df460b98657018893f54f5da ****/
-		%feature("compactdefaultargs") CreateDocument;
-		%feature("autodoc", "This method is called by the framework before the read method.
-
-Returns
--------
-opencascade::handle<CDM_Document>
-") CreateDocument;
-		virtual opencascade::handle<CDM_Document> CreateDocument();
-
 		/****************** GetStatus ******************/
 		/**** md5 signature: 7da0146422c21bfb19406a01283cc862 ****/
 		%feature("compactdefaultargs") GetStatus;
@@ -529,7 +522,7 @@ PCDM_ReaderStatus
 		PCDM_ReaderStatus GetStatus();
 
 		/****************** Read ******************/
-		/**** md5 signature: 3c01d1985562127592e40cf6cb2e32c2 ****/
+		/**** md5 signature: 2802ce2a9e685240bc6f6a5656a76a5d ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Retrieves the content of the file into a new document.
 
@@ -538,6 +531,8 @@ Parameters
 aFileName: TCollection_ExtendedString
 aNewDocument: CDM_Document
 anApplication: CDM_Application
+theFilter: PCDM_ReaderFilter,optional
+	default value is opencascade::handle<PCDM_ReaderFilter>()
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -545,7 +540,7 @@ Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -553,6 +548,338 @@ None
 %make_alias(PCDM_Reader)
 
 %extend PCDM_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class PCDM_ReaderFilter *
+**************************/
+class PCDM_ReaderFilter : public Standard_Transient {
+	public:
+/* public enums */
+enum AppendMode {
+	AppendMode_Forbid = 0,
+	AppendMode_Protect = 1,
+	AppendMode_Overwrite = 2,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class AppendMode(IntEnum):
+	AppendMode_Forbid = 0
+	AppendMode_Protect = 1
+	AppendMode_Overwrite = 2
+AppendMode_Forbid = AppendMode.AppendMode_Forbid
+AppendMode_Protect = AppendMode.AppendMode_Protect
+AppendMode_Overwrite = AppendMode.AppendMode_Overwrite
+};
+/* end python proxy for enums */
+
+		/****************** PCDM_ReaderFilter ******************/
+		/**** md5 signature: 4fdd663fc1eb9a0562bfea80432f3678 ****/
+		%feature("compactdefaultargs") PCDM_ReaderFilter;
+		%feature("autodoc", "Creates an empty filter, so, all will be retrieved if nothing else is defined.
+
+Returns
+-------
+None
+") PCDM_ReaderFilter;
+		 PCDM_ReaderFilter();
+
+		/****************** PCDM_ReaderFilter ******************/
+		/**** md5 signature: f469ce07b40ad960e4e48a472d2bc963 ****/
+		%feature("compactdefaultargs") PCDM_ReaderFilter;
+		%feature("autodoc", "Creates a filter to skip only one type of attributes.
+
+Parameters
+----------
+theSkipped: Standard_Type
+
+Returns
+-------
+None
+") PCDM_ReaderFilter;
+		 PCDM_ReaderFilter(const opencascade::handle<Standard_Type> & theSkipped);
+
+		/****************** PCDM_ReaderFilter ******************/
+		/**** md5 signature: 3dade491e95ccf0d8aa64edf2c0d55c6 ****/
+		%feature("compactdefaultargs") PCDM_ReaderFilter;
+		%feature("autodoc", "Creates a filter to read only sub-labels of a label-path. like, for '0:2' it will read all attributes for labels '0:2', '0:2:1', etc.
+
+Parameters
+----------
+theEntryToRead: TCollection_AsciiString
+
+Returns
+-------
+None
+") PCDM_ReaderFilter;
+		 PCDM_ReaderFilter(const TCollection_AsciiString & theEntryToRead);
+
+		/****************** PCDM_ReaderFilter ******************/
+		/**** md5 signature: 1b48284ae16fd29a0ea550b504663349 ****/
+		%feature("compactdefaultargs") PCDM_ReaderFilter;
+		%feature("autodoc", "Creates a filter to append the content of file to open to existing document.
+
+Parameters
+----------
+theAppend: AppendMode
+
+Returns
+-------
+None
+") PCDM_ReaderFilter;
+		 PCDM_ReaderFilter(AppendMode theAppend);
+
+		/****************** AddPath ******************/
+		/**** md5 signature: e26d150e60c619c720dd8dad7e857bbd ****/
+		%feature("compactdefaultargs") AddPath;
+		%feature("autodoc", "Adds sub-tree path (like '0:2').
+
+Parameters
+----------
+theEntryToRead: TCollection_AsciiString
+
+Returns
+-------
+None
+") AddPath;
+		void AddPath(const TCollection_AsciiString & theEntryToRead);
+
+		/****************** AddRead ******************/
+		/**** md5 signature: d55bf2b468f6fe99832137308b5afb34 ****/
+		%feature("compactdefaultargs") AddRead;
+		%feature("autodoc", "Adds attribute to read by type. disables the skipped attributes added.
+
+Parameters
+----------
+theRead: Standard_Type
+
+Returns
+-------
+None
+") AddRead;
+		void AddRead(const opencascade::handle<Standard_Type> & theRead);
+
+		/****************** AddRead ******************/
+		/**** md5 signature: a04c52605884c67563792b4d56cfb04d ****/
+		%feature("compactdefaultargs") AddRead;
+		%feature("autodoc", "Adds attribute to read by type name. disables the skipped attributes added.
+
+Parameters
+----------
+theRead: TCollection_AsciiString
+
+Returns
+-------
+None
+") AddRead;
+		void AddRead(const TCollection_AsciiString & theRead);
+
+		/****************** AddSkipped ******************/
+		/**** md5 signature: 17a3c13212ccf5121e7ea6f008a46a9e ****/
+		%feature("compactdefaultargs") AddSkipped;
+		%feature("autodoc", "Adds skipped attribute by type.
+
+Parameters
+----------
+theSkipped: Standard_Type
+
+Returns
+-------
+None
+") AddSkipped;
+		void AddSkipped(const opencascade::handle<Standard_Type> & theSkipped);
+
+		/****************** AddSkipped ******************/
+		/**** md5 signature: 1641b144b6c36dce12e568a2a0acb7f7 ****/
+		%feature("compactdefaultargs") AddSkipped;
+		%feature("autodoc", "Adds skipped attribute by type name.
+
+Parameters
+----------
+theSkipped: TCollection_AsciiString
+
+Returns
+-------
+None
+") AddSkipped;
+		void AddSkipped(const TCollection_AsciiString & theSkipped);
+
+		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Makes filter pass all data.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
+
+		/****************** Down ******************/
+		/**** md5 signature: 684b38c2ad7e6446dc5e63e3fe7acc0a ****/
+		%feature("compactdefaultargs") Down;
+		%feature("autodoc", "Iteration to the child with defined tag.
+
+Parameters
+----------
+theTag: int
+
+Returns
+-------
+None
+") Down;
+		virtual void Down(const int & theTag);
+
+		/****************** IsAppendMode ******************/
+		/**** md5 signature: c53202a73f18a553c82d098bdc9ca535 ****/
+		%feature("compactdefaultargs") IsAppendMode;
+		%feature("autodoc", "Returns true if appending to the document is performed.
+
+Returns
+-------
+bool
+") IsAppendMode;
+		Standard_Boolean IsAppendMode();
+
+		/****************** IsPartTree ******************/
+		/**** md5 signature: 642fca9fea4b8f850c4c9c7fb083d1c3 ****/
+		%feature("compactdefaultargs") IsPartTree;
+		%feature("autodoc", "Returns true if only part of the document tree will be retrieved.
+
+Returns
+-------
+bool
+") IsPartTree;
+		virtual Standard_Boolean IsPartTree();
+
+		/****************** IsPassed ******************/
+		/**** md5 signature: ff46ea18ae42f633977d14e6c1b34ba2 ****/
+		%feature("compactdefaultargs") IsPassed;
+		%feature("autodoc", "Returns true if attribute must be read.
+
+Parameters
+----------
+theAttributeID: Standard_Type
+
+Returns
+-------
+bool
+") IsPassed;
+		virtual Standard_Boolean IsPassed(const opencascade::handle<Standard_Type> & theAttributeID);
+
+		/****************** IsPassed ******************/
+		/**** md5 signature: 9e2e882b262a07e940f0bef16e372b54 ****/
+		%feature("compactdefaultargs") IsPassed;
+		%feature("autodoc", "Returns true if content of the label must be read.
+
+Parameters
+----------
+theEntry: TCollection_AsciiString
+
+Returns
+-------
+bool
+") IsPassed;
+		virtual Standard_Boolean IsPassed(const TCollection_AsciiString & theEntry);
+
+		/****************** IsPassed ******************/
+		/**** md5 signature: 5e48514b31a5fa61d8a015c3e7729542 ****/
+		%feature("compactdefaultargs") IsPassed;
+		%feature("autodoc", "Returns true if content of the currently iterated label must be read.
+
+Returns
+-------
+bool
+") IsPassed;
+		virtual Standard_Boolean IsPassed();
+
+		/****************** IsPassedAttr ******************/
+		/**** md5 signature: c87c4d1f2fdc991decf6199f8cd8a28e ****/
+		%feature("compactdefaultargs") IsPassedAttr;
+		%feature("autodoc", "Returns true if attribute must be read.
+
+Parameters
+----------
+theAttributeType: TCollection_AsciiString
+
+Returns
+-------
+bool
+") IsPassedAttr;
+		virtual Standard_Boolean IsPassedAttr(const TCollection_AsciiString & theAttributeType);
+
+		/****************** IsSubPassed ******************/
+		/**** md5 signature: ba594a6a5c6a8d3f037af25ddb422741 ****/
+		%feature("compactdefaultargs") IsSubPassed;
+		%feature("autodoc", "Returns true if some sub-label of the given label is passed.
+
+Parameters
+----------
+theEntry: TCollection_AsciiString
+
+Returns
+-------
+bool
+") IsSubPassed;
+		virtual Standard_Boolean IsSubPassed(const TCollection_AsciiString & theEntry);
+
+		/****************** IsSubPassed ******************/
+		/**** md5 signature: ac3b63e0f17ab0448083482de2136688 ****/
+		%feature("compactdefaultargs") IsSubPassed;
+		%feature("autodoc", "Returns true if some sub-label of the currently iterated label is passed.
+
+Returns
+-------
+bool
+") IsSubPassed;
+		virtual Standard_Boolean IsSubPassed();
+
+		/****************** Mode ******************/
+		/**** md5 signature: b965c8583016b065ce8a0e74db3f348a ****/
+		%feature("compactdefaultargs") Mode;
+		%feature("autodoc", "Returns the append mode.
+
+Returns
+-------
+PCDM_ReaderFilter::AppendMode
+") Mode;
+		PCDM_ReaderFilter::AppendMode Mode();
+
+		/****************** StartIteration ******************/
+		/**** md5 signature: e37a7287631a4e3700eac402b9e23054 ****/
+		%feature("compactdefaultargs") StartIteration;
+		%feature("autodoc", "Starts the tree iterator. it is used for fast searching of passed labels if the whole tree of labels is parsed. so, on each iteration step the methods up and down must be called after the iteration start.
+
+Returns
+-------
+None
+") StartIteration;
+		virtual void StartIteration();
+
+		/****************** Up ******************/
+		/**** md5 signature: bd266ecf07c8b3333e4c76605f7dd842 ****/
+		%feature("compactdefaultargs") Up;
+		%feature("autodoc", "Iteration to the child label.
+
+Returns
+-------
+None
+") Up;
+		virtual void Up();
+
+};
+
+
+%make_alias(PCDM_ReaderFilter)
+
+%extend PCDM_ReaderFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

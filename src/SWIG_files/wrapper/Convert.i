@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CONVERTDOCSTRING
 "Convert module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_convert.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_convert.html"
 %enddef
 %module (package="OCC.Core", docstring=CONVERTDOCSTRING) Convert
 
@@ -75,7 +75,7 @@ enum Convert_ParameterisationType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Convert_ParameterisationType(IntEnum):
@@ -888,7 +888,7 @@ class Convert_GridPolynomialToPoles {
 		/****************** Convert_GridPolynomialToPoles ******************/
 		/**** md5 signature: 5e19d6f7859f6437990e41ac8561873f ****/
 		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
-		%feature("autodoc", "To only one polynomial surface. the length of <polynomialuintervals> and <polynomialvintervals> have to be 2. this values defined the parametric domain of the polynomial equation. //! coefficients : the <coefficients> have to be formated than an 'c array' [maxudegree+1] [maxvdegree+1] [3].
+		%feature("autodoc", "To only one polynomial surface. the length of <polynomialuintervals> and <polynomialvintervals> have to be 2. this values defined the parametric domain of the polynomial equation. //! coefficients : the <coefficients> have to be formatted than an 'c array' [maxudegree+1] [maxvdegree+1] [3].
 
 Parameters
 ----------
@@ -908,7 +908,7 @@ None
 		/****************** Convert_GridPolynomialToPoles ******************/
 		/**** md5 signature: 51ca2d3289a0e8c21e7e42881ac480e0 ****/
 		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
-		%feature("autodoc", "To one grid of polynomial surface. warning! continuity in each parametric direction can be at most the maximum degree of the polynomial functions. //! <trueuintervals>, <truevintervals> : this is the true parameterisation for the composite surface //! coefficients : the coefficients have to be formated than an 'c array' [nbvsurfaces] [nbusurfaces] [maxudegree+1] [maxvdegree+1] [3] raises domainerror if <numcoeffpersurface> is not a [1, nbvsurfaces*nbusurfaces, 1,2] array. if <coefficients> is not a.
+		%feature("autodoc", "To one grid of polynomial surface. warning! continuity in each parametric direction can be at most the maximum degree of the polynomial functions. //! <trueuintervals>, <truevintervals> : this is the true parameterisation for the composite surface //! coefficients : the coefficients have to be formatted than an 'c array' [nbvsurfaces] [nbusurfaces] [maxudegree+1] [maxvdegree+1] [3] raises domainerror if <numcoeffpersurface> is not a [1, nbvsurfaces*nbusurfaces, 1,2] array. if <coefficients> is not a.
 
 Parameters
 ----------

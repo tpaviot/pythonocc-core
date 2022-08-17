@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFAPPDOCSTRING
 "XCAFApp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafapp.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafapp.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFAPPDOCSTRING) XCAFApp
 
@@ -43,6 +43,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafapp.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TDocStd_module.hxx>
+#include<CDM_module.hxx>
 #include<CDF_module.hxx>
 #include<CDM_module.hxx>
 #include<PCDM_module.hxx>
@@ -58,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafapp.html"
 %import Standard.i
 %import NCollection.i
 %import TDocStd.i
+%import CDM.i
 
 %pythoncode {
 from enum import IntEnum
@@ -67,7 +69,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -108,19 +110,19 @@ opencascade::handle<XCAFApp_Application>
 		static opencascade::handle<XCAFApp_Application> GetApplication();
 
 		/****************** InitDocument ******************/
-		/**** md5 signature: ba05c2f32b1b5c164fe28e112cc836ce ****/
+		/**** md5 signature: cb8b1250bf5bfec47bac72c3724adc69 ****/
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "Set xcafdoc_documenttool attribute.
 
 Parameters
 ----------
-aDoc: TDocStd_Document
+aDoc: CDM_Document
 
 Returns
 -------
 None
 ") InitDocument;
-		virtual void InitDocument(const opencascade::handle<TDocStd_Document> & aDoc);
+		virtual void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
 
 		/****************** ResourcesName ******************/
 		/**** md5 signature: 96f8731792cfcab6c0cf55cdc1a09a9b ****/

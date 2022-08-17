@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DEVALUATORDOCSTRING
 "Geom2dEvaluator module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2devaluator.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2devaluator.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DEVALUATORDOCSTRING) Geom2dEvaluator
 
@@ -66,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -362,20 +362,20 @@ None
 		 Geom2dEvaluator_OffsetCurve(const opencascade::handle<Geom2d_Curve> & theBase, const Standard_Real theOffset);
 
 		/****************** Geom2dEvaluator_OffsetCurve ******************/
-		/**** md5 signature: 8ce815f243f2cfc044f385720d494d24 ****/
+		/**** md5 signature: 3388eba04f937ebc239e3d148abc5d3a ****/
 		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
 		%feature("autodoc", "Initialize evaluator by curve adaptor.
 
 Parameters
 ----------
-theBase: Geom2dAdaptor_HCurve
+theBase: Geom2dAdaptor_Curve
 theOffset: float
 
 Returns
 -------
 None
 ") Geom2dEvaluator_OffsetCurve;
-		 Geom2dEvaluator_OffsetCurve(const opencascade::handle<Geom2dAdaptor_HCurve> & theBase, const Standard_Real theOffset);
+		 Geom2dEvaluator_OffsetCurve(const opencascade::handle<Geom2dAdaptor_Curve> & theBase, const Standard_Real theOffset);
 
 		/****************** D0 ******************/
 		/**** md5 signature: 9cca4337d408090f3abc160255ae26e1 ****/

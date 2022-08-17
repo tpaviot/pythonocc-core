@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GPROPDOCSTRING
 "GProp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gprop.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_gprop.html"
 %enddef
 %module (package="OCC.Core", docstring=GPROPDOCSTRING) GProp
 
@@ -86,7 +86,7 @@ enum GProp_ValueType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class GProp_EquaType(IntEnum):
@@ -188,7 +188,7 @@ None
 		/****************** GProp_GProps ******************/
 		/**** md5 signature: 5161631c7b51e73b531a2d56f3a2fb17 ****/
 		%feature("compactdefaultargs") GProp_GProps;
-		%feature("autodoc", "The point systemlocation is used to compute the gobal properties of the system. for more accuracy it is better to define this point closed to the location of the system. for example it could be a point around the centre of mass of the system. this point is referred to as the reference point for this framework. for greater accuracy it is better for the reference point to be close to the location of the system. it can, for example, be a point near the center of mass of the system. at initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. however, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. to do this, use the function add to define the components of the system. use it once per component of the system, and then use the interrogation functions available to access the computed values.
+		%feature("autodoc", "The point systemlocation is used to compute the global properties of the system. for more accuracy it is better to define this point closed to the location of the system. for example it could be a point around the centre of mass of the system. this point is referred to as the reference point for this framework. for greater accuracy it is better for the reference point to be close to the location of the system. it can, for example, be a point near the center of mass of the system. at initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. however, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. to do this, use the function add to define the components of the system. use it once per component of the system, and then use the interrogation functions available to access the computed values.
 
 Parameters
 ----------
@@ -482,7 +482,7 @@ bool
 		/****************** HasSymmetryAxis ******************/
 		/**** md5 signature: 0aa705126b824246c5a299d56663b6c9 ****/
 		%feature("compactdefaultargs") HasSymmetryAxis;
-		%feature("autodoc", "Returns true if the geometric system has an axis of symmetry. atol is relative tolerance for cheking equality of moments if atol == 0, relative tolerance is ~ 1.e-16 (epsilon(i)).
+		%feature("autodoc", "Returns true if the geometric system has an axis of symmetry. atol is relative tolerance for checking equality of moments if atol == 0, relative tolerance is ~ 1.e-16 (epsilon(i)).
 
 Parameters
 ----------
@@ -508,7 +508,7 @@ bool
 		/****************** HasSymmetryPoint ******************/
 		/**** md5 signature: fbe20b9573893063e40615b48635d22a ****/
 		%feature("compactdefaultargs") HasSymmetryPoint;
-		%feature("autodoc", "Returns true if the geometric system has a point of symmetry. atol is relative tolerance for cheking equality of moments if atol == 0, relative tolerance is ~ 1.e-16 (epsilon(i)).
+		%feature("autodoc", "Returns true if the geometric system has a point of symmetry. atol is relative tolerance for checking equality of moments if atol == 0, relative tolerance is ~ 1.e-16 (epsilon(i)).
 
 Parameters
 ----------

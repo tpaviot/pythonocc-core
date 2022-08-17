@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTWALKDOCSTRING
 "IntWalk module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intwalk.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intwalk.html"
 %enddef
 %module (package="OCC.Core", docstring=INTWALKDOCSTRING) IntWalk
 
@@ -84,7 +84,7 @@ enum IntWalk_StatusDeflection {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IntWalk_StatusDeflection(IntEnum):
@@ -118,42 +118,42 @@ IntWalk_OK = IntWalk_StatusDeflection.IntWalk_OK
 class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** IntWalk_TheFunctionOfTheInt2S ******************/
-		/**** md5 signature: e10ea1317bec9408353d3e39fa4c84eb ****/
+		/**** md5 signature: a6e86400c87c4372f37609d6e136a604 ****/
 		%feature("compactdefaultargs") IntWalk_TheFunctionOfTheInt2S;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") IntWalk_TheFunctionOfTheInt2S;
-		 IntWalk_TheFunctionOfTheInt2S(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2);
+		 IntWalk_TheFunctionOfTheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2);
 
 		/****************** AuxillarSurface1 ******************/
-		/**** md5 signature: de137e38f3f056bf64cd7e4eab548eaf ****/
+		/**** md5 signature: 2bcc0e8f6b940dfbbbc22a207b96f139 ****/
 		%feature("compactdefaultargs") AuxillarSurface1;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") AuxillarSurface1;
-		const opencascade::handle<Adaptor3d_HSurface> & AuxillarSurface1();
+		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface1();
 
 		/****************** AuxillarSurface2 ******************/
-		/**** md5 signature: 02af9eff198053eb68634237a25ca989 ****/
+		/**** md5 signature: 00eb01b56212c9640d2242fafdf3e920 ****/
 		%feature("compactdefaultargs") AuxillarSurface2;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") AuxillarSurface2;
-		const opencascade::handle<Adaptor3d_HSurface> & AuxillarSurface2();
+		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface2();
 
 		/****************** ComputeParameters ******************/
 		/**** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ****/
@@ -332,39 +332,39 @@ bool
 class IntWalk_TheInt2S {
 	public:
 		/****************** IntWalk_TheInt2S ******************/
-		/**** md5 signature: b95210448193a26bf5c2c55c1f7fca78 ****/
+		/**** md5 signature: 1c4cc577e5086d81834c89e839f0d692 ****/
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "Compute the solution point with the close point.
 
 Parameters
 ----------
 Param: TColStd_Array1OfReal
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 TolTangency: float
 
 Returns
 -------
 None
 ") IntWalk_TheInt2S;
-		 IntWalk_TheInt2S(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const Standard_Real TolTangency);
+		 IntWalk_TheInt2S(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
 		/****************** IntWalk_TheInt2S ******************/
-		/**** md5 signature: ade0e45c80bb946fd6ef9bc7c2156444 ****/
+		/**** md5 signature: f2356976844250378d7966a9409a843c ****/
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "Initialize the parameters to compute the solution point it 's possible to write to optimize: intimp_int2s inter(s1,s2,func,toltangency); math_functionsetroot rsnld(inter.function()); while ...{ param(1)=... param(2)=... param(3)=... inter.perform(param,rsnld); }.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 TolTangency: float
 
 Returns
 -------
 None
 ") IntWalk_TheInt2S;
-		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const Standard_Real TolTangency);
+		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
 		/****************** ChangePoint ******************/
 		/**** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ****/

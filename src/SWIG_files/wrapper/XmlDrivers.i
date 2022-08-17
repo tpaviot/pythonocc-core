@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLDRIVERSDOCSTRING
 "XmlDrivers module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmldrivers.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xmldrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLDRIVERSDOCSTRING) XmlDrivers
 
@@ -74,7 +74,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -261,13 +261,14 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** WriteShapeSection ******************/
-		/**** md5 signature: d4d59cc92ea3ce420696a7e2b6fd497c ****/
+		/**** md5 signature: 4760c0c9885febf6a979848ca7454a48 ****/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 thePDoc: XmlObjMgt_Element
+theStorageFormatVersion: TDocStd_FormatVersion
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -275,7 +276,7 @@ Returns
 -------
 bool
 ") WriteShapeSection;
-		virtual Standard_Boolean WriteShapeSection(XmlObjMgt_Element & thePDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual Standard_Boolean WriteShapeSection(XmlObjMgt_Element & thePDoc, const TDocStd_FormatVersion theStorageFormatVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

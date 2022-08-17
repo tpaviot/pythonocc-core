@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CDMDOCSTRING
 "CDM module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cdm.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_cdm.html"
 %enddef
 %module (package="OCC.Core", docstring=CDMDOCSTRING) CDM
 
@@ -74,7 +74,7 @@ enum CDM_CanCloseStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class CDM_CanCloseStatus(IntEnum):
@@ -323,21 +323,6 @@ bool
 ") CanCloseReference;
 		virtual Standard_Boolean CanCloseReference(const opencascade::handle<CDM_Document> & aDocument, const Standard_Integer aReferenceIdentifier);
 
-		/****************** ChangeStorageFormatVersion ******************/
-		/**** md5 signature: 95752de9d7059066fe5990db631cf0da ****/
-		%feature("compactdefaultargs") ChangeStorageFormatVersion;
-		%feature("autodoc", "Sets <theversion> of the format to be used to store the document.
-
-Parameters
-----------
-theVersion: int
-
-Returns
--------
-None
-") ChangeStorageFormatVersion;
-		void ChangeStorageFormatVersion(const Standard_Integer theVersion);
-
 		/****************** Close ******************/
 		/**** md5 signature: d50d7ba65c2beb3eb436584b5735f108 ****/
 		%feature("compactdefaultargs") Close;
@@ -368,7 +353,7 @@ None
 		/****************** Comment ******************/
 		/**** md5 signature: da330a9b0b5e37badd51cb0b90f32906 ****/
 		%feature("compactdefaultargs") Comment;
-		%feature("autodoc", "Returns the first of associated comments. by defaut the comment is an empty string.
+		%feature("autodoc", "Returns the first of associated comments. by default the comment is an empty string.
 
 Returns
 -------
@@ -894,7 +879,7 @@ TCollection_ExtendedString
 		/****************** RequestedName ******************/
 		/**** md5 signature: 4009a2976cb03e37a1f0f29540b865f5 ****/
 		%feature("compactdefaultargs") RequestedName;
-		%feature("autodoc", "Determines under which the document is going to be store. by default the name of the document wil be -- used. if the document has no name its presentation will be used.
+		%feature("autodoc", "Determines under which the document is going to be store. by default the name of the document will be used. if the document has no name its presentation will be used.
 
 Returns
 -------
@@ -1099,17 +1084,6 @@ Returns
 TCollection_ExtendedString
 ") StorageFormat;
 		virtual TCollection_ExtendedString StorageFormat();
-
-		/****************** StorageFormatVersion ******************/
-		/**** md5 signature: 586b4d904950a45653bf70db74ac295b ****/
-		%feature("compactdefaultargs") StorageFormatVersion;
-		%feature("autodoc", "Returns version of the format to be used to store the document.
-
-Returns
--------
-int
-") StorageFormatVersion;
-		Standard_Integer StorageFormatVersion();
 
 		/****************** StorageVersion ******************/
 		/**** md5 signature: cfa5fceedf718765fa0109d82c3e0482 ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPTOGEOMDOCSTRING
 "StepToGeom module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptogeom.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steptogeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 
@@ -46,6 +46,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptogeom.html"
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
+#include<StepRepr_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<StepShape_module.hxx>
 #include<StepBasic_module.hxx>
@@ -68,6 +70,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptogeom.html"
 %import Geom.i
 %import Geom2d.i
 %import gp.i
+%import StepRepr.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -77,7 +81,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -126,6 +130,21 @@ Returns
 opencascade::handle<Geom_Axis2Placement>
 ") MakeAxis2Placement;
 		static opencascade::handle<Geom_Axis2Placement> MakeAxis2Placement(const opencascade::handle<StepGeom_Axis2Placement3d> & SA);
+
+		/****************** MakeAxis2Placement ******************/
+		/**** md5 signature: 9c31e6d955fc394caecd4f46d406587b ****/
+		%feature("compactdefaultargs") MakeAxis2Placement;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SP: StepGeom_SuParameters
+
+Returns
+-------
+opencascade::handle<Geom_Axis2Placement>
+") MakeAxis2Placement;
+		static opencascade::handle<Geom_Axis2Placement> MakeAxis2Placement(const opencascade::handle<StepGeom_SuParameters> & SP);
 
 		/****************** MakeAxisPlacement ******************/
 		/**** md5 signature: afd550d9a29a4881d24f34abb414ecdb ****/
@@ -788,6 +807,22 @@ Returns
 opencascade::handle<Geom2d_VectorWithMagnitude>
 ") MakeVectorWithMagnitude2d;
 		static opencascade::handle<Geom2d_VectorWithMagnitude> MakeVectorWithMagnitude2d(const opencascade::handle<StepGeom_Vector> & SV);
+
+		/****************** MakeYprRotation ******************/
+		/**** md5 signature: de9dc847a92c9949d29654e63b9eb686 ****/
+		%feature("compactdefaultargs") MakeYprRotation;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SR: StepKinematics_SpatialRotation
+theCntxt: StepRepr_GlobalUnitAssignedContext
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfReal>
+") MakeYprRotation;
+		static opencascade::handle<TColStd_HArray1OfReal> MakeYprRotation(const StepKinematics_SpatialRotation & SR, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & theCntxt);
 
 };
 

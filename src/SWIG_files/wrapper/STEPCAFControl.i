@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPCAFCONTROLDOCSTRING
 "STEPCAFControl module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcafcontrol.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepcafcontrol.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPCAFCONTROLDOCSTRING) STEPCAFControl
 
@@ -118,7 +118,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -957,6 +957,17 @@ bool
 ") GetSHUOMode;
 		Standard_Boolean GetSHUOMode();
 
+		/****************** GetShapeLabelMap ******************/
+		/**** md5 signature: a27551a2f74ec801c8cbaeeebce293a4 ****/
+		%feature("compactdefaultargs") GetShapeLabelMap;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+XCAFDoc_DataMapOfShapeLabel
+") GetShapeLabelMap;
+		const XCAFDoc_DataMapOfShapeLabel & GetShapeLabelMap();
+
 		/****************** GetViewMode ******************/
 		/**** md5 signature: a843d1c8dafb9fee3990369ff0e366ba ****/
 		%feature("compactdefaultargs") GetViewMode;
@@ -1585,6 +1596,27 @@ Returns
 bool
 ") Transfer;
 		Standard_Boolean Transfer(const TDF_Label & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Transfer ******************/
+		/**** md5 signature: 7533cb05eb0d45c4c5142f45de14069a ****/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "Mehod to writing sequence of root assemblies or part of the file specified by use by one label .
+
+Parameters
+----------
+L: TDF_LabelSequence
+mode: STEPControl_StepModelType,optional
+	default value is STEPControl_AsIs
+multi: char *,optional
+	default value is 0
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Transfer;
+		Standard_Boolean Transfer(const TDF_LabelSequence & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: a2c63443529fcf2508727dc0010cba46 ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DADAPTORDOCSTRING
 "Geom2dAdaptor module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dadaptor.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 
@@ -68,14 +68,13 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(Geom2dAdaptor_GHCurve)
-%wrap_handle(Geom2dAdaptor_HCurve)
+%wrap_handle(Geom2dAdaptor_Curve)
 /* end handles declaration */
 
 /* templates */
@@ -148,7 +147,7 @@ None
 		/****************** Geom2dAdaptor_Curve ******************/
 		/**** md5 signature: 68f15594f006f79ed7f5d7313c319ebe ****/
 		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast.
+		%feature("autodoc", "Standard_constructionerror is raised if ufirst>ulast.
 
 Parameters
 ----------
@@ -207,7 +206,7 @@ GeomAbs_Shape
 		GeomAbs_Shape Continuity();
 
 		/****************** Curve ******************/
-		/**** md5 signature: ddf7a75e69fe58663e31cac16bd20e3b ****/
+		/**** md5 signature: e09aeee135451614c1573555e3da507c ****/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "No available documentation.
 
@@ -326,7 +325,7 @@ gp_Elips2d
 		gp_Elips2d Ellipse();
 
 		/****************** FirstParameter ******************/
-		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
+		/**** md5 signature: 93c381754667baab23468a195644e410 ****/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -334,10 +333,10 @@ Returns
 -------
 float
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		virtual Standard_Real FirstParameter();
 
 		/****************** GetType ******************/
-		/**** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ****/
+		/**** md5 signature: eaef05bb051ab4b74eda73aca8930d16 ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "No available documentation.
 
@@ -345,7 +344,7 @@ Returns
 -------
 GeomAbs_CurveType
 ") GetType;
-		GeomAbs_CurveType GetType();
+		virtual GeomAbs_CurveType GetType();
 
 		/****************** Hyperbola ******************/
 		/**** md5 signature: 951e1971b5974627f011740e5c4c9ecb ****/
@@ -361,7 +360,7 @@ gp_Hypr2d
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -408,7 +407,7 @@ bool
 		Standard_Boolean IsRational();
 
 		/****************** LastParameter ******************/
-		/**** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ****/
+		/**** md5 signature: a2893a92f9c4af09acb0cd59d959d964 ****/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -416,7 +415,7 @@ Returns
 -------
 float
 ") LastParameter;
-		Standard_Real LastParameter();
+		virtual Standard_Real LastParameter();
 
 		/****************** Line ******************/
 		/**** md5 signature: d41344e9c3febf8a7347a9e78e837373 ****/
@@ -430,36 +429,36 @@ gp_Lin2d
 		gp_Lin2d Line();
 
 		/****************** Load ******************/
-		/**** md5 signature: fdcf9322cc527774508b69d52c733d85 ****/
+		/**** md5 signature: 2541208b3ec77b0ab58dcd00b56be7d9 ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Geom2d_Curve
+theCurve: Geom2d_Curve
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Geom2d_Curve> & C);
+		void Load(const opencascade::handle<Geom2d_Curve> & theCurve);
 
 		/****************** Load ******************/
-		/**** md5 signature: e53bb00b8959a1147c6b209edebcdf9d ****/
+		/**** md5 signature: 7a0e04bf8c70800ef741c293e6f1853c ****/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast.
+		%feature("autodoc", "Standard_constructionerror is raised if theufirst>theulast.
 
 Parameters
 ----------
-C: Geom2d_Curve
-UFirst: float
-ULast: float
+theCurve: Geom2d_Curve
+theUFirst: float
+theULast: float
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real UFirst, const Standard_Real ULast);
+		void Load(const opencascade::handle<Geom2d_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
 
 		/****************** NbIntervals ******************/
 		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
@@ -558,7 +557,7 @@ float
 		Standard_Real Resolution(const Standard_Real Ruv);
 
 		/****************** Trim ******************/
-		/**** md5 signature: e1eef64565323d75c47ee19ca861de8d ****/
+		/**** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -570,9 +569,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Trim;
-		opencascade::handle<Adaptor2d_HCurve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: 91dcf5c5229f25c64d3a714347090b29 ****/
@@ -592,160 +591,9 @@ gp_Pnt2d
 };
 
 
+%make_alias(Geom2dAdaptor_Curve)
+
 %extend Geom2dAdaptor_Curve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class Geom2dAdaptor_GHCurve *
-******************************/
-class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
-	public:
-		/****************** Geom2dAdaptor_GHCurve ******************/
-		/**** md5 signature: 072a27b96ff59badfe117194272d84ef ****/
-		%feature("compactdefaultargs") Geom2dAdaptor_GHCurve;
-		%feature("autodoc", "Creates an empty genhcurve2d.
-
-Returns
--------
-None
-") Geom2dAdaptor_GHCurve;
-		 Geom2dAdaptor_GHCurve();
-
-		/****************** Geom2dAdaptor_GHCurve ******************/
-		/**** md5 signature: 7c7fc9f77e7805886189b20b8c2739c8 ****/
-		%feature("compactdefaultargs") Geom2dAdaptor_GHCurve;
-		%feature("autodoc", "Creates a genhcurve2d from a curve.
-
-Parameters
-----------
-C: Geom2dAdaptor_Curve
-
-Returns
--------
-None
-") Geom2dAdaptor_GHCurve;
-		 Geom2dAdaptor_GHCurve(const Geom2dAdaptor_Curve & C);
-
-		/****************** ChangeCurve2d ******************/
-		/**** md5 signature: 2140fe22e7b7d159cfd1852d556180a2 ****/
-		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-Geom2dAdaptor_Curve
-") ChangeCurve2d;
-		Geom2dAdaptor_Curve & ChangeCurve2d();
-
-		/****************** Curve2d ******************/
-		/**** md5 signature: 87546edb35f2000a54f99255bb8c94db ****/
-		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve2d. this is redefined from hcurve2d, cannot be inline.
-
-Returns
--------
-Adaptor2d_Curve2d
-") Curve2d;
-		const Adaptor2d_Curve2d & Curve2d();
-
-		/****************** Set ******************/
-		/**** md5 signature: d491bd141bf3f5da75523d4d4b7f3963 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve2d.
-
-Parameters
-----------
-C: Geom2dAdaptor_Curve
-
-Returns
--------
-None
-") Set;
-		void Set(const Geom2dAdaptor_Curve & C);
-
-};
-
-
-%make_alias(Geom2dAdaptor_GHCurve)
-
-%extend Geom2dAdaptor_GHCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class Geom2dAdaptor_HCurve *
-*****************************/
-class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
-	public:
-		/****************** Geom2dAdaptor_HCurve ******************/
-		/**** md5 signature: 28a68b1bba9232a7107bed887b344ce3 ****/
-		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") Geom2dAdaptor_HCurve;
-		 Geom2dAdaptor_HCurve();
-
-		/****************** Geom2dAdaptor_HCurve ******************/
-		/**** md5 signature: 76fd083adc9318ad2d733c03244a4eb2 ****/
-		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-AS: Geom2dAdaptor_Curve
-
-Returns
--------
-None
-") Geom2dAdaptor_HCurve;
-		 Geom2dAdaptor_HCurve(const Geom2dAdaptor_Curve & AS);
-
-		/****************** Geom2dAdaptor_HCurve ******************/
-		/**** md5 signature: 119924484c2907c195d5fb93400a3ddf ****/
-		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-S: Geom2d_Curve
-
-Returns
--------
-None
-") Geom2dAdaptor_HCurve;
-		 Geom2dAdaptor_HCurve(const opencascade::handle<Geom2d_Curve> & S);
-
-		/****************** Geom2dAdaptor_HCurve ******************/
-		/**** md5 signature: 2dc2ff6c60097225fbf5a6294824e18b ****/
-		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
-		%feature("autodoc", "Constructionerror is raised if ufirst>ulast or vfirst>vlast.
-
-Parameters
-----------
-S: Geom2d_Curve
-UFirst: float
-ULast: float
-
-Returns
--------
-None
-") Geom2dAdaptor_HCurve;
-		 Geom2dAdaptor_HCurve(const opencascade::handle<Geom2d_Curve> & S, const Standard_Real UFirst, const Standard_Real ULast);
-
-};
-
-
-%make_alias(Geom2dAdaptor_HCurve)
-
-%extend Geom2dAdaptor_HCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

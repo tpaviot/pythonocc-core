@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSDOCSTRING
 "Units module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_units.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_units.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSDOCSTRING) Units
 
@@ -62,7 +62,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -700,7 +700,7 @@ class Units_Explorer {
 		/****************** Units_Explorer ******************/
 		/**** md5 signature: 8a8d095abcb8ce4f0921dd302b301d66 ****/
 		%feature("compactdefaultargs") Units_Explorer;
-		%feature("autodoc", "Empty contructor of the class.
+		%feature("autodoc", "Empty constructor of the class.
 
 Returns
 -------
@@ -1471,7 +1471,7 @@ opencascade::handle<Units_Token>
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return true if number of created tokens > 0 (i.e creation of sentence is succesfull).
+		%feature("autodoc", "Return true if number of created tokens > 0 (i.e creation of sentence is successful).
 
 Returns
 -------
@@ -2354,7 +2354,7 @@ None
 		/****************** Units_UnitsSystem ******************/
 		/**** md5 signature: 87e13c76c018885ca60c1b0c9be77315 ****/
 		%feature("compactdefaultargs") Units_UnitsSystem;
-		%feature("autodoc", "Returns an instance of unitssystem initialized to the s.i. units system upgraded by the base system units decription file. attempts to find the four following files: $csf_`aname`defaults/.aname $csf_`aname`sitedefaults/.aname $csf_`aname`groupdefaults/.aname $csf_`aname`userdefaults/.aname see : resource_manager for the description of this file.
+		%feature("autodoc", "Returns an instance of unitssystem initialized to the s.i. units system upgraded by the base system units description file. attempts to find the four following files: $csf_`aname`defaults/.aname $csf_`aname`sitedefaults/.aname $csf_`aname`groupdefaults/.aname $csf_`aname`userdefaults/.aname see : resource_manager for the description of this file.
 
 Parameters
 ----------
@@ -2413,7 +2413,7 @@ TCollection_AsciiString
 		/****************** ActiveUnitsSequence ******************/
 		/**** md5 signature: 6afbb572a41bd436215c98c3285a0dfc ****/
 		%feature("compactdefaultargs") ActiveUnitsSequence;
-		%feature("autodoc", "Returns a sequence of integer in correspondance with the sequence of quantities, which indicates, for each redefined quantity, the index into the sequence of units, of the active unit.
+		%feature("autodoc", "Returns a sequence of integer in correspondence with the sequence of quantities, which indicates, for each redefined quantity, the index into the sequence of units, of the active unit.
 
 Returns
 -------
@@ -2686,7 +2686,7 @@ class Units_ShiftedUnit : public Units_Unit {
 		/****************** Units_ShiftedUnit ******************/
 		/**** md5 signature: 723c5258f6e5560ce254ce2750aab52e ****/
 		%feature("compactdefaultargs") Units_ShiftedUnit;
-		%feature("autodoc", "Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the international system of units, and <amove> is the gap in relation to another unit. //! for example celcius dregee of temperature is an instance of shiftedunit with <avalue> equal to 1. and <amove> equal to 273.15.
+		%feature("autodoc", "Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the international system of units, and <amove> is the gap in relation to another unit. //! for example celsius degree of temperature is an instance of shiftedunit with <avalue> equal to 1. and <amove> equal to 273.15.
 
 Parameters
 ----------

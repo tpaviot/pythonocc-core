@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINLDRIVERSDOCSTRING
 "BinLDrivers module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binldrivers.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_binldrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINLDRIVERSDOCSTRING) BinLDrivers
 
@@ -45,8 +45,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binldrivers.html"
 #include<Message_module.hxx>
 #include<BinMDF_module.hxx>
 #include<TDocStd_module.hxx>
-#include<TCollection_module.hxx>
 #include<PCDM_module.hxx>
+#include<TCollection_module.hxx>
 #include<CDM_module.hxx>
 #include<Storage_module.hxx>
 #include<Resource_module.hxx>
@@ -62,8 +62,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binldrivers.html"
 %import Message.i
 %import BinMDF.i
 %import TDocStd.i
-%import TCollection.i
 %import PCDM.i
+%import TCollection.i
 %import CDM.i
 %import Storage.i
 
@@ -80,7 +80,7 @@ enum BinLDrivers_Marker {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BinLDrivers_Marker(IntEnum):
@@ -155,17 +155,6 @@ opencascade::handle<Standard_Transient>
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
-		/****************** StorageVersion ******************/
-		/**** md5 signature: a68044f4a6f5d5c72fd58dc4fdd88764 ****/
-		%feature("compactdefaultargs") StorageVersion;
-		%feature("autodoc", "Returns last storage version.
-
-Returns
--------
-TCollection_AsciiString
-") StorageVersion;
-		static TCollection_AsciiString StorageVersion();
-
 };
 
 
@@ -206,19 +195,8 @@ opencascade::handle<BinMDF_ADriverTable>
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** CreateDocument ******************/
-		/**** md5 signature: d7e352e938b9f62ab597a280f53e96dc ****/
-		%feature("compactdefaultargs") CreateDocument;
-		%feature("autodoc", "Pure virtual method definition.
-
-Returns
--------
-opencascade::handle<CDM_Document>
-") CreateDocument;
-		virtual opencascade::handle<CDM_Document> CreateDocument();
-
 		/****************** Read ******************/
-		/**** md5 signature: dc12000346c64247976b93026822d796 ****/
+		/**** md5 signature: f7b8bb13afb113e0cba89338b8e12a06 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Retrieves the content of the file into a new document.
 
@@ -227,6 +205,8 @@ Parameters
 theFileName: TCollection_ExtendedString
 theNewDocument: CDM_Document
 theApplication: CDM_Application
+theFilter: PCDM_ReaderFilter,optional
+	default value is opencascade::handle<PCDM_ReaderFilter>()
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -234,7 +214,7 @@ Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -353,14 +333,6 @@ None
 ") SetOffset;
 		void SetOffset(const uint64_t theOffset);
 
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteTOCToString() {
-            std::stringstream s;
-            self->WriteTOC(s);
-            return s.str();}
-        };
 };
 
 
@@ -417,6 +389,21 @@ Returns
 opencascade::handle<BinMDF_ADriverTable>
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** IsQuickPart ******************/
+		/**** md5 signature: 6353ee4c7a025e5e9aa62fb9950e7e78 ****/
+		%feature("compactdefaultargs") IsQuickPart;
+		%feature("autodoc", "Return true if document should be stored in quick mode for partial reading.
+
+Parameters
+----------
+theVersion: int
+
+Returns
+-------
+bool
+") IsQuickPart;
+		Standard_Boolean IsQuickPart(const Standard_Integer theVersion);
 
 		/****************** Write ******************/
 		/**** md5 signature: 3ba5a4920118cfb01ca7cb6e94265c60 ****/

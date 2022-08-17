@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DINTDOCSTRING
 "Geom2dInt module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dint.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dint.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DINTDOCSTRING) Geom2dInt
 
@@ -83,7 +83,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -1257,7 +1257,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -1957,7 +1957,7 @@ None
 		/****************** Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter ******************/
 		/**** md5 signature: a971c67190a2ca3f6addaffb1bbdce56 ****/
 		%feature("compactdefaultargs") Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -1975,7 +1975,7 @@ None
 		/****************** Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter ******************/
 		/**** md5 signature: a8c07ef8b33afcd3aa84d7cbfb06958e ****/
 		%feature("compactdefaultargs") Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -2178,7 +2178,7 @@ bool
 		/****************** ComputeWithBox ******************/
 		/**** md5 signature: a2577e286c7447afd172b5be81ef7131 ****/
 		%feature("compactdefaultargs") ComputeWithBox;
-		%feature("autodoc", "The current polygon is modified if most of the points of the polygon are are outside the box <otherbox>. in this situation, bounds are computed to build a polygon inside or near the otherbox.
+		%feature("autodoc", "The current polygon is modified if most of the points of the polygon are outside the box <otherbox>. in this situation, bounds are computed to build a polygon inside or near the otherbox.
 
 Parameters
 ----------
@@ -2295,7 +2295,7 @@ class Geom2dInt_TheProjPCurOfGInter {
 		/****************** FindParameter ******************/
 		/**** md5 signature: 09dfdffb4b5220d74013e1ecd50cdbd5 ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondance between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the rigth parameter has to be made on the natural parametric domain of the curve.
+		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the right parameter has to be made on the natural parametric domain of the curve.
 
 Parameters
 ----------
@@ -2312,7 +2312,7 @@ float
 		/****************** FindParameter ******************/
 		/**** md5 signature: 62d40694d41fa21c773faec789a5ba56 ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondance between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in wich the parameter certainly lies. these parameters are given to implement a more efficient algoritm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
+		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in which the parameter certainly lies. these parameters are given to implement a more efficient algorithm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
 
 Parameters
 ----------

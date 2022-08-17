@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECT3DDOCSTRING
 "Select3D module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_select3d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_select3d.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECT3DDOCSTRING) Select3D
 
@@ -105,7 +105,7 @@ enum Select3D_TypeOfSensitivity {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Select3D_TypeOfSensitivity(IntEnum):
@@ -119,9 +119,11 @@ Select3D_TOS_BOUNDARY = Select3D_TypeOfSensitivity.Select3D_TOS_BOUNDARY
 /* handles */
 %wrap_handle(Select3D_BVHIndexBuffer)
 %wrap_handle(Select3D_SensitiveBox)
+%wrap_handle(Select3D_SensitiveCylinder)
 %wrap_handle(Select3D_SensitiveFace)
 %wrap_handle(Select3D_SensitivePoint)
 %wrap_handle(Select3D_SensitiveSegment)
+%wrap_handle(Select3D_SensitiveSphere)
 %wrap_handle(Select3D_SensitiveTriangle)
 %wrap_handle(Select3D_InteriorSensitivePointSet)
 %wrap_handle(Select3D_SensitiveGroup)
@@ -533,6 +535,101 @@ bool
 	@methodnotwrapped
 	def Box(self):
 		pass
+	}
+};
+
+/***********************************
+* class Select3D_SensitiveCylinder *
+***********************************/
+class Select3D_SensitiveCylinder : public Select3D_SensitiveEntity {
+	public:
+		/****************** Select3D_SensitiveCylinder ******************/
+		/**** md5 signature: d59dec97bc93c5fff84d6d2372101895 ****/
+		%feature("compactdefaultargs") Select3D_SensitiveCylinder;
+		%feature("autodoc", "Constructs a sensitive cylinder object defined by the owner theownerid, @param[in] thebottomrad cylinder bottom radius @param[in] thetoprad cylinder top radius @param[in] theheight cylinder height.
+
+Parameters
+----------
+theOwnerId: SelectMgr_EntityOwner
+theBottomRad: float
+theTopRad: float
+theHeight: float
+theTrsf: gp_Trsf
+
+Returns
+-------
+None
+") Select3D_SensitiveCylinder;
+		 Select3D_SensitiveCylinder(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf);
+
+		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "Returns bounding box of the cylinder. if location transformation is set, it will be applied.
+
+Returns
+-------
+Select3D_BndBox3d
+") BoundingBox;
+		virtual Select3D_BndBox3d BoundingBox();
+
+		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
+		%feature("compactdefaultargs") CenterOfGeometry;
+		%feature("autodoc", "Returns center of the cylinder with transformation applied.
+
+Returns
+-------
+gp_Pnt
+") CenterOfGeometry;
+		virtual gp_Pnt CenterOfGeometry();
+
+		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
+		%feature("compactdefaultargs") Matches;
+		%feature("autodoc", "Checks whether the cylinder overlaps current selecting volume.
+
+Parameters
+----------
+theMgr: SelectBasics_SelectingVolumeManager
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") Matches;
+		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
+
+		/****************** NbSubElements ******************/
+		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
+		%feature("compactdefaultargs") NbSubElements;
+		%feature("autodoc", "Returns the amount of points.
+
+Returns
+-------
+int
+") NbSubElements;
+		virtual Standard_Integer NbSubElements();
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Always returns standard_false.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
+
+};
+
+
+%make_alias(Select3D_SensitiveCylinder)
+
+%extend Select3D_SensitiveCylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
 	}
 };
 
@@ -1010,6 +1107,143 @@ bool
 /******************************
 * class Select3D_SensitiveSet *
 ******************************/
+/*********************************
+* class Select3D_SensitiveSphere *
+*********************************/
+class Select3D_SensitiveSphere : public Select3D_SensitiveEntity {
+	public:
+		/****************** Select3D_SensitiveSphere ******************/
+		/**** md5 signature: 938b4c90c8a9ff2c3ef8aefa2cca1875 ****/
+		%feature("compactdefaultargs") Select3D_SensitiveSphere;
+		%feature("autodoc", "Constructs a sensitive sphere object defined by the owner theownerid, the center of the sphere and it's radius.
+
+Parameters
+----------
+theOwnerId: SelectMgr_EntityOwner
+theCenter: gp_Pnt
+theRadius: float
+
+Returns
+-------
+None
+") Select3D_SensitiveSphere;
+		 Select3D_SensitiveSphere(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & theCenter, const Standard_Real theRadius);
+
+		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "Returns bounding box of the sphere. if location transformation is set, it will be applied.
+
+Returns
+-------
+Select3D_BndBox3d
+") BoundingBox;
+		virtual Select3D_BndBox3d BoundingBox();
+
+		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 91b253b06a291fc09a167246137ee4aa ****/
+		%feature("compactdefaultargs") CenterOfGeometry;
+		%feature("autodoc", "Returns center of the sphere with transformation applied.
+
+Returns
+-------
+gp_Pnt
+") CenterOfGeometry;
+		virtual gp_Pnt CenterOfGeometry();
+
+		/****************** GetConnected ******************/
+		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
+		%feature("compactdefaultargs") GetConnected;
+		%feature("autodoc", "Returns the copy of this.
+
+Returns
+-------
+opencascade::handle<Select3D_SensitiveEntity>
+") GetConnected;
+		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
+
+		/****************** LastDetectedPoint ******************/
+		/**** md5 signature: e21e43f41a76a4e73c8bd23b296057d3 ****/
+		%feature("compactdefaultargs") LastDetectedPoint;
+		%feature("autodoc", "Returns the position of detected point on the sphere.
+
+Returns
+-------
+gp_Pnt
+") LastDetectedPoint;
+		const gp_Pnt LastDetectedPoint();
+
+		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
+		%feature("compactdefaultargs") Matches;
+		%feature("autodoc", "Checks whether the sphere overlaps current selecting volume.
+
+Parameters
+----------
+theMgr: SelectBasics_SelectingVolumeManager
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") Matches;
+		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
+
+		/****************** NbSubElements ******************/
+		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
+		%feature("compactdefaultargs") NbSubElements;
+		%feature("autodoc", "Returns the amount of points.
+
+Returns
+-------
+int
+") NbSubElements;
+		virtual Standard_Integer NbSubElements();
+
+		/****************** Radius ******************/
+		/**** md5 signature: e995997e31f334f223fb359fc7382a66 ****/
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", "Returns the radius of the sphere.
+
+Returns
+-------
+float
+") Radius;
+		Standard_Real Radius();
+
+		/****************** ResetLastDetectedPoint ******************/
+		/**** md5 signature: 1cbeaf92700ac7b137749cc664093495 ****/
+		%feature("compactdefaultargs") ResetLastDetectedPoint;
+		%feature("autodoc", "Invalidate the position of detected point on the sphere.
+
+Returns
+-------
+None
+") ResetLastDetectedPoint;
+		void ResetLastDetectedPoint();
+
+		/****************** ToBuildBVH ******************/
+		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
+		%feature("compactdefaultargs") ToBuildBVH;
+		%feature("autodoc", "Always returns standard_false.
+
+Returns
+-------
+bool
+") ToBuildBVH;
+		virtual Standard_Boolean ToBuildBVH();
+
+};
+
+
+%make_alias(Select3D_SensitiveSphere)
+
+%extend Select3D_SensitiveSphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************************
 * class Select3D_SensitiveTriangle *
 ***********************************/

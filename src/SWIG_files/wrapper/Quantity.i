@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define QUANTITYDOCSTRING
 "Quantity module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_quantity.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_quantity.html"
 %enddef
 %module (package="OCC.Core", docstring=QUANTITYDOCSTRING) Quantity
 
@@ -663,7 +663,7 @@ enum Quantity_PhysicalQuantity {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Quantity_NameOfColor(IntEnum):
@@ -1906,87 +1906,8 @@ Quantity_DOSEEQUIVALENT = Quantity_PhysicalQuantity.Quantity_DOSEEQUIVALENT
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Real Quantity_AbsorbedDose;
-typedef Standard_Real Quantity_Acceleration;
-typedef Standard_Real Quantity_AcousticIntensity;
-typedef Standard_Real Quantity_Activity;
-typedef Standard_Real Quantity_Admittance;
-typedef Standard_Real Quantity_AmountOfSubstance;
-typedef Standard_Real Quantity_AngularVelocity;
-typedef Standard_Real Quantity_Area;
 typedef NCollection_Array1<Quantity_Color> Quantity_Array1OfColor;
 typedef NCollection_Array2<Quantity_Color> Quantity_Array2OfColor;
-typedef Standard_Real Quantity_Capacitance;
-typedef Standard_Real Quantity_Coefficient;
-typedef Standard_Real Quantity_CoefficientOfExpansion;
-typedef Standard_Real Quantity_Concentration;
-typedef Standard_Real Quantity_Conductivity;
-typedef Standard_Real Quantity_Constant;
-typedef Standard_Real Quantity_Consumption;
-typedef Standard_Real Quantity_Content;
-typedef Standard_Real Quantity_Density;
-typedef Standard_Real Quantity_DoseEquivalent;
-typedef Standard_Real Quantity_ElectricCapacitance;
-typedef Standard_Real Quantity_ElectricCharge;
-typedef Standard_Real Quantity_ElectricCurrent;
-typedef Standard_Real Quantity_ElectricFieldStrength;
-typedef Standard_Real Quantity_ElectricPotential;
-typedef Standard_Real Quantity_Energy;
-typedef Standard_Real Quantity_Enthalpy;
-typedef Standard_Real Quantity_Entropy;
-typedef Standard_Real Quantity_Factor;
-typedef Standard_Real Quantity_Force;
-typedef Standard_Real Quantity_Frequency;
-typedef Standard_Real Quantity_Illuminance;
-typedef Standard_Real Quantity_Impedance;
-typedef Standard_Real Quantity_Index;
-typedef Standard_Real Quantity_Inductance;
-typedef Standard_Real Quantity_KinematicViscosity;
-typedef Standard_Real Quantity_KineticMoment;
-typedef Standard_Real Quantity_Length;
-typedef Standard_Real Quantity_Luminance;
-typedef Standard_Real Quantity_LuminousEfficacity;
-typedef Standard_Real Quantity_LuminousExposition;
-typedef Standard_Real Quantity_LuminousFlux;
-typedef Standard_Real Quantity_LuminousIntensity;
-typedef Standard_Real Quantity_MagneticFieldStrength;
-typedef Standard_Real Quantity_MagneticFlux;
-typedef Standard_Real Quantity_MagneticFluxDensity;
-typedef Standard_Real Quantity_Mass;
-typedef Standard_Real Quantity_MassFlow;
-typedef Standard_Real Quantity_MolarConcentration;
-typedef Standard_Real Quantity_MolarMass;
-typedef Standard_Real Quantity_MolarVolume;
-typedef Standard_Real Quantity_Molarity;
-typedef Standard_Real Quantity_MomentOfAForce;
-typedef Standard_Real Quantity_MomentOfInertia;
-typedef Standard_Real Quantity_Momentum;
-typedef Standard_Real Quantity_Normality;
-typedef Standard_Real Quantity_Parameter;
-typedef Standard_Real Quantity_PlaneAngle;
-typedef Standard_Real Quantity_Power;
-typedef Standard_Real Quantity_Pressure;
-typedef Standard_Real Quantity_Quotient;
-typedef Standard_Real Quantity_Rate;
-typedef Standard_Real Quantity_Ratio;
-typedef Standard_Real Quantity_Reluctance;
-typedef Standard_Real Quantity_Resistance;
-typedef Standard_Real Quantity_Resistivity;
-typedef Standard_Real Quantity_Scalaire;
-typedef Standard_Real Quantity_SolidAngle;
-typedef Standard_Real Quantity_SoundIntensity;
-typedef Standard_Real Quantity_SpecificHeatCapacity;
-typedef Standard_Real Quantity_Speed;
-typedef Standard_Real Quantity_SurfaceTension;
-typedef Standard_Real Quantity_Temperature;
-typedef Standard_Real Quantity_ThermalConductivity;
-typedef Standard_Real Quantity_Torque;
-typedef Standard_Real Quantity_Velocity;
-typedef Standard_Real Quantity_Viscosity;
-typedef Standard_Real Quantity_Volume;
-typedef Standard_Real Quantity_VolumeFlow;
-typedef Standard_Real Quantity_Weight;
-typedef Standard_Real Quantity_Work;
 /* end typedefs declaration */
 
 /***********************
@@ -3367,7 +3288,7 @@ bool
 		/****************** IsLeap ******************/
 		/**** md5 signature: 637a928f83e67c8159746f72af70ea4b ****/
 		%feature("compactdefaultargs") IsLeap;
-		%feature("autodoc", "Returns true if a year is a leap year. the leap years are divisable by 4 and not by 100 except the years divisable by 400.
+		%feature("autodoc", "Returns true if a year is a leap year. the leap years are divisible by 4 and not by 100 except the years divisible by 400.
 
 Parameters
 ----------

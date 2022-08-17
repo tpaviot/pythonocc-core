@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BSPLCLIBDOCSTRING
 "BSplCLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bsplclib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bsplclib.html"
 %enddef
 %module (package="OCC.Core", docstring=BSPLCLIBDOCSTRING) BSplCLib
 
@@ -80,7 +80,7 @@ enum BSplCLib_KnotDistribution {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BSplCLib_MultDistribution(IntEnum):
@@ -379,7 +379,7 @@ LP: float
 		/****************** BuildKnots ******************/
 		/**** md5 signature: 5b526b765c0171416b4d6dfd6b2cfaf1 ****/
 		%feature("compactdefaultargs") BuildKnots;
-		%feature("autodoc", "Stores in lk the usefull knots for the boorschem on the span knots(index) - knots(index+1).
+		%feature("autodoc", "Stores in lk the useful knots for the boorschem on the span knots(index) - knots(index+1).
 
 Parameters
 ----------
@@ -1413,7 +1413,7 @@ int
 		/****************** FunctionMultiply ******************/
 		/**** md5 signature: d11350ab30e3e1a830d351b4bb9b3c45 ****/
 		%feature("compactdefaultargs") FunctionMultiply;
-		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
+		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
 
 Parameters
 ----------
@@ -1435,7 +1435,7 @@ theStatus: int
 		/****************** FunctionMultiply ******************/
 		/**** md5 signature: b75e7664cfee0abd3a4bb0f96527f5f0 ****/
 		%feature("compactdefaultargs") FunctionMultiply;
-		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
+		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
 
 Parameters
 ----------
@@ -1456,7 +1456,7 @@ theStatus: int
 		/****************** FunctionMultiply ******************/
 		/**** md5 signature: 304af15d568488c4302864bfd1fe935b ****/
 		%feature("compactdefaultargs") FunctionMultiply;
-		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
+		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
 
 Parameters
 ----------
@@ -1477,7 +1477,7 @@ theStatus: int
 		/****************** FunctionMultiply ******************/
 		/**** md5 signature: 2d5b01a1995bf4a63b4ac71a00fa384d ****/
 		%feature("compactdefaultargs") FunctionMultiply;
-		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
+		%feature("autodoc", "This will multiply a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * f(t) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. the range of a(t) is the same as the range of f(t) warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(t)*f(t).
 
 Parameters
 ----------
@@ -1498,7 +1498,7 @@ theStatus: int
 		/****************** FunctionReparameterise ******************/
 		/**** md5 signature: 276c4138358cfb806cbc5e4946b652e7 ****/
 		%feature("compactdefaultargs") FunctionReparameterise;
-		%feature("autodoc", "This function will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following: //! 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots //! 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) //! warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method //! thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
+		%feature("autodoc", "This function will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following: //! 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots //! 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) //! warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method //! thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
 
 Parameters
 ----------
@@ -1520,7 +1520,7 @@ theStatus: int
 		/****************** FunctionReparameterise ******************/
 		/**** md5 signature: fff0db2cdbcf124496ae30f263735931 ****/
 		%feature("compactdefaultargs") FunctionReparameterise;
-		%feature("autodoc", "This function will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following: //! 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots //! 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) //! warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method //! thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
+		%feature("autodoc", "This function will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following: //! 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots //! 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) //! warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method //! thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
 
 Parameters
 ----------
@@ -1541,7 +1541,7 @@ theStatus: int
 		/****************** FunctionReparameterise ******************/
 		/**** md5 signature: 8482a00dea0cf23f29af3cb5e99182ea ****/
 		%feature("compactdefaultargs") FunctionReparameterise;
-		%feature("autodoc", "This will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following : 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
+		%feature("autodoc", "This will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following : 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
 
 Parameters
 ----------
@@ -1562,7 +1562,7 @@ theStatus: int
 		/****************** FunctionReparameterise ******************/
 		/**** md5 signature: 0681500ae08b1b57f6b23f3500cf8eb6 ****/
 		%feature("compactdefaultargs") FunctionReparameterise;
-		%feature("autodoc", "This will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following : 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
+		%feature("autodoc", "This will compose a given vectorial bspline f(t) defined by its bsplinedegree and bsplineflatknotsl, its poles array which are coded as an array of real of the form [1..numpoles][1..polesdimension] with a function a(t) which is assumed to satisfy the following : 1. f(a(t)) is a polynomial bspline that can be expressed exactly as a bspline of degree newdegree on the knots flatknots 2. a(t) defines a differentiable isomorphism between the range of flatknots to the range of bsplineflatknots which is the same as the range of f(t) warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of f(a(t)).
 
 Parameters
 ----------
@@ -1710,23 +1710,23 @@ None
 		static void IncreaseDegree(const Standard_Integer NewDegree, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****************** IncreaseDegree ******************/
-		/**** md5 signature: 3184972da800dade86b84a98f59c7c20 ****/
+		/**** md5 signature: 55f08fe0b94875d193f674df9e8d1f57 ****/
 		%feature("compactdefaultargs") IncreaseDegree;
-		%feature("autodoc", "Increase the degree of a bspline (or bezier) curve of dimension <dimension> form <degree> to <newdegree>. //! the number of poles in the new curve is : //! poles.length() + (newdegree - degree) * number of spans //! where the number of spans is : //! lastuknotindex(mults) - firstuknotindex(mults) + 1 //! for a non-periodic curve //! and knots.length() - 1 for a periodic curve. //! the multiplicities of all knots are increased by the degree elevation. //! the new knots are usually the same knots with the exception of a non-periodic curve with the first and last multiplicity not equal to degree+1 where knots are removed form the start and the bottom untils the sum of the multiplicities is equal to newdegree+1 at the knots corresponding to the first and last parameters of the curve. //! example : suppose a curve of degree 3 starting with following knots and multiplicities : //! knot : 0. 1. 2. mult : 1 2 1 //! the firstuknot is 2. because the sum of multiplicities is degree+1 : 1 + 2 + 1 = 4 = 3 + 1 //! i.e. the first parameter of the curve is 2. and will still be 2. after degree elevation. let raises this curve to degree 4. the multiplicities are increased by 2. //! they become 2 3 2. but we need a sum of multiplicities of 5 at knot 2. so the first knot is removed and the new knots are : //! knot : 1. 2. mult : 3 2 //! the multipicity of the first knot may also be reduced if the sum is still to big. //! in the most common situations (periodic curve or curve with first and last multiplicities equals to degree+1) the knots are knot changes. //! the method increasedegreecountknots can be used to compute the new number of knots.
+		%feature("autodoc", "Increase the degree of a bspline (or bezier) curve of dimension thedimension form thedegree to thenewdegree. //! the number of poles in the new curve is: @code poles.length() + (newdegree - degree) * number of spans @endcode where the number of spans is: @code lastuknotindex(mults) - firstuknotindex(mults) + 1 @endcode for a non-periodic curve, and @code knots.length() - 1 @endcode for a periodic curve. //! the multiplicities of all knots are increased by the degree elevation. //! the new knots are usually the same knots with the exception of a non-periodic curve with the first and last multiplicity not equal to degree+1 where knots are removed form the start and the bottom until the sum of the multiplicities is equal to newdegree+1 at the knots corresponding to the first and last parameters of the curve. //! example: suppose a curve of degree 3 starting with following knots and multiplicities: @code knot : 0. 1. 2. mult : 1 2 1 @endcode //! the firstuknot is 2.0 because the sum of multiplicities is @code degree+1 : 1 + 2 + 1 = 4 = 3 + 1 @endcode i.e. the first parameter of the curve is 2.0 and will still be 2.0 after degree elevation. let raise this curve to degree 4. the multiplicities are increased by 2. //! they become 2 3 2. but we need a sum of multiplicities of 5 at knot 2. so the first knot is removed and the new knots are: @code knot : 1. 2. mult : 3 2 @endcode the multipicity of the first knot may also be reduced if the sum is still to big. //! in the most common situations (periodic curve or curve with first and last multiplicities equals to degree+1) the knots are knot changes. //! the method increasedegreecountknots can be used to compute the new number of knots.
 
 Parameters
 ----------
-NewDegree: int
-Poles: TColgp_Array1OfPnt2d
-Weights: TColStd_Array1OfReal *
-NewPoles: TColgp_Array1OfPnt2d
-NewWeights: TColStd_Array1OfReal *
+theNewDegree: int
+thePoles: TColgp_Array1OfPnt2d
+theWeights: TColStd_Array1OfReal *
+theNewPoles: TColgp_Array1OfPnt2d
+theNewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
 None
 ") IncreaseDegree;
-		static void IncreaseDegree(const Standard_Integer NewDegree, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
+		static void IncreaseDegree(const Standard_Integer theNewDegree, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColgp_Array1OfPnt2d & theNewPoles, TColStd_Array1OfReal * theNewWeights);
 
 		/****************** IncreaseDegreeCountKnots ******************/
 		/**** md5 signature: 2806348fce0f853dcd1a4c2e39086690 ****/
@@ -1885,7 +1885,7 @@ None
 		/****************** Interpolate ******************/
 		/**** md5 signature: e2fa20a66c129381e33f3cb4e6ce9d21 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) containes the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation or interpolation at scheonberg points the method will work the inversionproblem will report 0 if there was no problem else it will give the index of the faulty pivot.
+		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) contains the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation or interpolation at scheonberg points the method will work the inversionproblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 
 Parameters
 ----------
@@ -1904,7 +1904,7 @@ InversionProblem: int
 		/****************** Interpolate ******************/
 		/**** md5 signature: fd5aeac99513f881ae37161394ea9685 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) containes the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation at knots or interpolation at scheonberg points the method will work. the inversionproblem w ll report 0 if there was no problem else it will give the index of the faulty pivot.
+		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) contains the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation at knots or interpolation at scheonberg points the method will work. the inversionproblem w ll report 0 if there was no problem else it will give the index of the faulty pivot.
 
 Parameters
 ----------
@@ -1923,7 +1923,7 @@ InversionProblem: int
 		/****************** Interpolate ******************/
 		/**** md5 signature: 2212219c7508d74418481956ee1ddf0e ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) containes the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation at knots or interpolation at scheonberg points the method will work. the inversionproblem will report 0 if there was no problem else it will give the index of the faulty pivot.
+		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) contains the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation at knots or interpolation at scheonberg points the method will work. the inversionproblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 
 Parameters
 ----------
@@ -1943,7 +1943,7 @@ InversionProblem: int
 		/****************** Interpolate ******************/
 		/**** md5 signature: 0cdd4d771c634dfeec3e69ce9529d617 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) containes the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation at knots or interpolation at scheonberg points the method will work. the inversionproblem w ll report 0 if there was no problem else it will give the i.
+		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) contains the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray, poles, the length of flatknots is degree + l + 1 warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation at knots or interpolation at scheonberg points the method will work. the inversionproblem w ll report 0 if there was no problem else it will give the i.
 
 Parameters
 ----------
@@ -1963,7 +1963,7 @@ InversionProblem: int
 		/****************** Interpolate ******************/
 		/**** md5 signature: b5cf60eb426c89a7bf0dd27c83c89e23 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) containes the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray the length of flatknots is degree + l + 1 the polesarray is an seen as an array[1..n][1..arraydimension] with n = tge length of the parameters array warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation or interpolation at scheonberg points the method will work the inversionproblem will report 0 if there was no problem else it will give the index of the faulty pivot.
+		%feature("autodoc", "Performs the interpolation of the data given in the poles array according to the requests in contactorderarray that is :  if contactorderarray(i) has value d it means that poles(i) contains the dth derivative of the function to be interpolated. the length l of the following arrays must be the same : parameters, contactorderarray the length of flatknots is degree + l + 1 the polesarray is an seen as an array[1..n][1..arraydimension] with n = tge length of the parameters array warning: the method used to do that interpolation is gauss elimination without pivoting. thus if the diagonal is not dominant there is no guarantee that the algorithm will work. nevertheless for cubic interpolation or interpolation at scheonberg points the method will work the inversionproblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 
 Parameters
 ----------
@@ -2347,7 +2347,7 @@ LastIndex: int
 		/****************** MovePointAndTangent ******************/
 		/**** md5 signature: f3528b941ebae064eb869dac3838fd8b ****/
 		%feature("compactdefaultargs") MovePointAndTangent;
-		%feature("autodoc", "This is the dimension free version of the utility u is the parameter must be within the first flatknots and the last flatknots delta is the amount the curve has to be moved deltaderivative is the amount the derivative has to be moved. delta and deltaderivative must be array of dimension arraydimension degree is the degree of the bspline and the flatknots are the knots of the bspline starting condition if = -1 means the starting point of the curve can move = 0 means the starting point of the cuve cannot move but tangen starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... same holds for endingcondition poles are the poles of the curve weights are the weights of the curve if not null newpoles are the poles of the deformed curve errorstatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions the way to solve this problem is to add knots to the bspline if startcondition = 1 and endcondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a c1 cubic you will need have at least 2 internal knots.
+		%feature("autodoc", "This is the dimension free version of the utility u is the parameter must be within the first flatknots and the last flatknots delta is the amount the curve has to be moved deltaderivative is the amount the derivative has to be moved. delta and deltaderivative must be array of dimension arraydimension degree is the degree of the bspline and the flatknots are the knots of the bspline starting condition if = -1 means the starting point of the curve can move = 0 means the starting point of the curve cannot move but tangent starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... same holds for endingcondition poles are the poles of the curve weights are the weights of the curve if not null newpoles are the poles of the deformed curve errorstatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions the way to solve this problem is to add knots to the bspline if startcondition = 1 and endcondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a c1 cubic you will need have at least 2 internal knots.
 
 Parameters
 ----------
@@ -2373,7 +2373,7 @@ ErrorStatus: int
 		/****************** MovePointAndTangent ******************/
 		/**** md5 signature: 84d0d45564e777fb1d986a7bc7085bd3 ****/
 		%feature("compactdefaultargs") MovePointAndTangent;
-		%feature("autodoc", "This is the dimension free version of the utility u is the parameter must be within the first flatknots and the last flatknots delta is the amount the curve has to be moved deltaderivative is the amount the derivative has to be moved. delta and deltaderivative must be array of dimension arraydimension degree is the degree of the bspline and the flatknots are the knots of the bspline starting condition if = -1 means the starting point of the curve can move = 0 means the starting point of the cuve cannot move but tangen starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... same holds for endingcondition poles are the poles of the curve weights are the weights of the curve if not null newpoles are the poles of the deformed curve errorstatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions the way to solve this problem is to add knots to the bspline if startcondition = 1 and endcondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a c1 cubic you will need have at least 2 internal knots.
+		%feature("autodoc", "This is the dimension free version of the utility u is the parameter must be within the first flatknots and the last flatknots delta is the amount the curve has to be moved deltaderivative is the amount the derivative has to be moved. delta and deltaderivative must be array of dimension arraydimension degree is the degree of the bspline and the flatknots are the knots of the bspline starting condition if = -1 means the starting point of the curve can move = 0 means the starting point of the curve cannot move but tangent starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... same holds for endingcondition poles are the poles of the curve weights are the weights of the curve if not null newpoles are the poles of the deformed curve errorstatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions the way to solve this problem is to add knots to the bspline if startcondition = 1 and endcondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a c1 cubic you will need have at least 2 internal knots.
 
 Parameters
 ----------
@@ -2398,7 +2398,7 @@ ErrorStatus: int
 		/****************** MovePointAndTangent ******************/
 		/**** md5 signature: 4281391111a23f8a2fbca803f5519e35 ****/
 		%feature("compactdefaultargs") MovePointAndTangent;
-		%feature("autodoc", "This is the dimension free version of the utility u is the parameter must be within the first flatknots and the last flatknots delta is the amount the curve has to be moved deltaderivative is the amount the derivative has to be moved. delta and deltaderivative must be array of dimension arraydimension degree is the degree of the bspline and the flatknots are the knots of the bspline starting condition if = -1 means the starting point of the curve can move = 0 means the starting point of the cuve cannot move but tangen starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... same holds for endingcondition poles are the poles of the curve weights are the weights of the curve if not null newpoles are the poles of the deformed curve errorstatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions the way to solve this problem is to add knots to the bspline if startcondition = 1 and endcondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a c1 cubic you will need have at least 2 internal knots.
+		%feature("autodoc", "This is the dimension free version of the utility u is the parameter must be within the first flatknots and the last flatknots delta is the amount the curve has to be moved deltaderivative is the amount the derivative has to be moved. delta and deltaderivative must be array of dimension arraydimension degree is the degree of the bspline and the flatknots are the knots of the bspline starting condition if = -1 means the starting point of the curve can move = 0 means the starting point of the curve cannot move but tangent starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... same holds for endingcondition poles are the poles of the curve weights are the weights of the curve if not null newpoles are the poles of the deformed curve errorstatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions the way to solve this problem is to add knots to the bspline if startcondition = 1 and endcondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a c1 cubic you will need have at least 2 internal knots.
 
 Parameters
 ----------
@@ -2589,7 +2589,7 @@ NbKnots: int
 		/****************** PrepareTrimming ******************/
 		/**** md5 signature: 86f0fb4e064014ba01b07670c1d98634 ****/
 		%feature("compactdefaultargs") PrepareTrimming;
-		%feature("autodoc", "Set in <nbknots> and <nbpoles> the number of knots and poles of the curve resulting of the trimming of the bsplinecurve definded with <degree>, <knots>, <mults>.
+		%feature("autodoc", "Set in <nbknots> and <nbpoles> the number of knots and poles of the curve resulting from the trimming of the bsplinecurve defined with <degree>, <knots>, <mults>.
 
 Parameters
 ----------
@@ -2985,7 +2985,7 @@ Weights: float
 		/****************** SolveBandedSystem ******************/
 		/**** md5 signature: c3b54f9241e23af58a316990c4c05c84 ****/
 		%feature("compactdefaultargs") SolveBandedSystem;
-		%feature("autodoc", "This solves the system matrix.x = b with when matrix is factored in lu form the array is an seen as an array[1..n][1..arraydimension] with n = the rank of the matrix matrix. the result is stored in array when each coordinate is solved that is b is the array whose values are b[i] = array[i][p] for each p in 1..arraydimension. if homogeneousflag == 0 the poles are multiplied by the weights uppon entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. otherwise if homogenousflag == 1 the poles and weigths are treated homogenously that is that those are interpolated as they are and result is returned without division by the interpolated weigths.
+		%feature("autodoc", "This solves the system matrix.x = b with when matrix is factored in lu form the array is an seen as an array[1..n][1..arraydimension] with n = the rank of the matrix matrix. the result is stored in array when each coordinate is solved that is b is the array whose values are b[i] = array[i][p] for each p in 1..arraydimension. if homogeneousflag == 0 the poles are multiplied by the weights upon entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. otherwise if homogenousflag == 1 the poles and weigths are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weigths.
 
 Parameters
 ----------
@@ -3005,7 +3005,7 @@ int
 		/****************** SolveBandedSystem ******************/
 		/**** md5 signature: bf46510a32c49fb829ee5209d1191b72 ****/
 		%feature("compactdefaultargs") SolveBandedSystem;
-		%feature("autodoc", "This solves the system matrix.x = b with when matrix is factored in lu form the array is an seen as an array[1..n][1..arraydimension] with n = the rank of the matrix matrix. the result is stored in array when each coordinate is solved that is b is the array whose values are b[i] = array[i][p] for each p in 1..arraydimension if homogeneousflag == 0 the poles are multiplied by the weights uppon entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. otherwise if homogenousflag == 1 the poles and weigths are treated homogenously that is that those are interpolated as they are and result is returned without division by the interpolated weigths.
+		%feature("autodoc", "This solves the system matrix.x = b with when matrix is factored in lu form the array is an seen as an array[1..n][1..arraydimension] with n = the rank of the matrix matrix. the result is stored in array when each coordinate is solved that is b is the array whose values are b[i] = array[i][p] for each p in 1..arraydimension if homogeneousflag == 0 the poles are multiplied by the weights upon entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. otherwise if homogenousflag == 1 the poles and weigths are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weigths.
 
 Parameters
 ----------

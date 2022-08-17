@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINMXCAFDOCDOCSTRING
 "BinMXCAFDoc module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binmxcafdoc.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_binmxcafdoc.html"
 %enddef
 %module (package="OCC.Core", docstring=BINMXCAFDOCDOCSTRING) BinMXCAFDoc
 
@@ -46,7 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binmxcafdoc.html"
 #include<Message_module.hxx>
 #include<TDF_module.hxx>
 #include<BinObjMgt_module.hxx>
-#include<BinTools_module.hxx>
+#include<BinMNaming_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Resource_module.hxx>
 #include<Geom_module.hxx>
@@ -66,7 +66,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binmxcafdoc.html"
 %import Message.i
 %import TDF.i
 %import BinObjMgt.i
-%import BinTools.i
+%import BinMNaming.i
 %import TopLoc.i
 
 %pythoncode {
@@ -77,7 +77,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -89,6 +89,7 @@ from OCC.Core.Exception import *
 %wrap_handle(BinMXCAFDoc_DatumDriver)
 %wrap_handle(BinMXCAFDoc_DimTolDriver)
 %wrap_handle(BinMXCAFDoc_GraphNodeDriver)
+%wrap_handle(BinMXCAFDoc_LengthUnitDriver)
 %wrap_handle(BinMXCAFDoc_LocationDriver)
 %wrap_handle(BinMXCAFDoc_MaterialDriver)
 %wrap_handle(BinMXCAFDoc_NoteDriver)
@@ -591,6 +592,82 @@ None
 	}
 };
 
+/*************************************
+* class BinMXCAFDoc_LengthUnitDriver *
+*************************************/
+class BinMXCAFDoc_LengthUnitDriver : public BinMDF_ADriver {
+	public:
+		/****************** BinMXCAFDoc_LengthUnitDriver ******************/
+		/**** md5 signature: 84791bd884b758ab125885102aed1181 ****/
+		%feature("compactdefaultargs") BinMXCAFDoc_LengthUnitDriver;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+None
+") BinMXCAFDoc_LengthUnitDriver;
+		 BinMXCAFDoc_LengthUnitDriver(const opencascade::handle<Message_Messenger> & theMsgDriver);
+
+		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		/**** md5 signature: 1e52cd985850eb2ad199c368fa7282ef ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSource: BinObjMgt_Persistent
+theTarget: TDF_Attribute
+theRelocTable: BinObjMgt_RRelocationTable
+
+Returns
+-------
+bool
+") Paste;
+		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, BinObjMgt_RRelocationTable & theRelocTable);
+
+		/****************** Paste ******************/
+		/**** md5 signature: 0d6af46154b0454b42333f770b1e15f1 ****/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSource: TDF_Attribute
+theTarget: BinObjMgt_Persistent
+theRelocTable: BinObjMgt_SRelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, BinObjMgt_SRelocationTable & theRelocTable);
+
+};
+
+
+%make_alias(BinMXCAFDoc_LengthUnitDriver)
+
+%extend BinMXCAFDoc_LengthUnitDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************************
 * class BinMXCAFDoc_LocationDriver *
 ***********************************/
@@ -656,20 +733,20 @@ None
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, BinObjMgt_SRelocationTable & theRelocTable);
 
-		/****************** SetSharedLocations ******************/
-		/**** md5 signature: 9780e60ef49e2e627ed3a82a98eed35f ****/
-		%feature("compactdefaultargs") SetSharedLocations;
+		/****************** SetNSDriver ******************/
+		/**** md5 signature: f3cb65b5e43b312739ef39e2d6ebc688 ****/
+		%feature("compactdefaultargs") SetNSDriver;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theLocations: BinTools_LocationSetPtr
+theNSDriver: BinMNaming_NamedShapeDriver
 
 Returns
 -------
 None
-") SetSharedLocations;
-		void SetSharedLocations(const BinTools_LocationSetPtr & theLocations);
+") SetNSDriver;
+		void SetNSDriver(const opencascade::handle<BinMNaming_NamedShapeDriver> & theNSDriver);
 
 		/****************** Translate ******************/
 		/**** md5 signature: 894ea8006cf844ca094b6b68a5b6b96f ****/

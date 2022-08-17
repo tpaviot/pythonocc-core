@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PRSDIMDOCSTRING
 "PrsDim module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsdim.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_prsdim.html"
 %enddef
 %module (package="OCC.Core", docstring=PRSDIMDOCSTRING) PrsDim
 
@@ -164,7 +164,7 @@ enum PrsDim_TypeOfAngle {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class PrsDim_DimensionSelectionMode(IntEnum):
@@ -834,7 +834,7 @@ enum ComputeMode {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class ComputeMode(IntEnum):
@@ -1060,7 +1060,7 @@ None
 		/****************** SetCustomValue ******************/
 		/**** md5 signature: aa638ede9bd0fe424934618474a9c131 ****/
 		%feature("compactdefaultargs") SetCustomValue;
-		%feature("autodoc", "Sets user-defined dimension value. unit conversion during the display is not applyed. @param thevalue [in] the user-defined value to display.
+		%feature("autodoc", "Sets user-defined dimension value. unit conversion during the display is not applied. @param thevalue [in] the user-defined value to display.
 
 Parameters
 ----------
@@ -1275,22 +1275,21 @@ None
 		 PrsDim_DimensionOwner(const opencascade::handle<SelectMgr_SelectableObject> & theSelObject, const PrsDim_DimensionSelectionMode theSelMode, const Standard_Integer thePriority = 0);
 
 		/****************** HilightWithColor ******************/
-		/**** md5 signature: 56e556dd0edce796a3c3d12b272af59e ****/
+		/**** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-thePM: PrsMgr_PresentationManager3d
+thePM: PrsMgr_PresentationManager
 theStyle: Prs3d_Drawer
-theMode: int,optional
-	default value is 0
+theMode: int
 
 Returns
 -------
 None
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
 		/****************** IsHilighted ******************/
 		/**** md5 signature: 47cdfcd94ad9e17a52e4b8d49964f328 ****/
@@ -3022,6 +3021,17 @@ TColStd_ListOfTransient
 class PrsDim_LengthDimension : public PrsDim_Dimension {
 	public:
 		/****************** PrsDim_LengthDimension ******************/
+		/**** md5 signature: 76e262900b82f282d533e9d72cd330de ****/
+		%feature("compactdefaultargs") PrsDim_LengthDimension;
+		%feature("autodoc", "Construct an empty length dimension. @sa setmeasuredgeometry(), setmeasuredshapes() for initialization.
+
+Returns
+-------
+None
+") PrsDim_LengthDimension;
+		 PrsDim_LengthDimension();
+
+		/****************** PrsDim_LengthDimension ******************/
 		/**** md5 signature: b8d2bd968153bc92dd94147ef64017a0 ****/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "Construct length dimension between face and edge. here dimension can be built without user-defined plane. @param theface [in] the face (first shape). @param theedge [in] the edge (second shape).
@@ -3106,7 +3116,7 @@ None
 		/****************** FirstPoint ******************/
 		/**** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ****/
 		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "Returns first attachement point.
+		%feature("autodoc", "Returns first attachment point.
 
 Returns
 -------
@@ -3117,7 +3127,7 @@ gp_Pnt
 		/****************** FirstShape ******************/
 		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
 		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "Returns first attachement shape.
+		%feature("autodoc", "Returns first attachment shape.
 
 Returns
 -------
@@ -3161,7 +3171,7 @@ gp_Pnt
 		/****************** SecondPoint ******************/
 		/**** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ****/
 		%feature("compactdefaultargs") SecondPoint;
-		%feature("autodoc", "Returns second attachement point.
+		%feature("autodoc", "Returns second attachment point.
 
 Returns
 -------
@@ -3172,7 +3182,7 @@ gp_Pnt
 		/****************** SecondShape ******************/
 		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
 		%feature("compactdefaultargs") SecondShape;
-		%feature("autodoc", "Returns second attachement shape.
+		%feature("autodoc", "Returns second attachment shape.
 
 Returns
 -------
@@ -3215,7 +3225,7 @@ None
 		/****************** SetMeasuredGeometry ******************/
 		/**** md5 signature: cef07b2afa7411d338e4348d1fb09cb3 ****/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
-		%feature("autodoc", "Measure distance between two points. the dimension will become invalid if the new distance between attachement points is less than precision::confusion(). @param thefirstpoint [in] the first point. @param thesecondpoint [in] the second point. @param theplane [in] the user-defined plane.
+		%feature("autodoc", "Measure distance between two points. the dimension will become invalid if the new distance between attachment points is less than precision::confusion(). @param thefirstpoint [in] the first point. @param thesecondpoint [in] the second point. @param theplane [in] the user-defined plane.
 
 Parameters
 ----------

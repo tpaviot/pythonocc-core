@@ -180,7 +180,7 @@ class TopologyExplorer:
             TopAbs_COMPSOLID: TopoDS_CompSolid,
         }
         topology_explorer = TopExp_Explorer()
-        if topology_type not in topo_types.keys():
+        if topology_type not in topo_types:
             raise AssertionError(f"{topology_type} not one of {topo_types.keys()}")
         # use self.my_shape if nothing is specified
         if topological_entity is None and topology_type_to_avoid is None:
@@ -729,7 +729,7 @@ def list_of_shapes_to_compound(
     list_of_shapes: List[TopoDS_Shape],
 ) -> Tuple[TopoDS_Compound, bool]:
     """takes a list of shape in input, gather all shapes into one compound
-    returns the compound and a boolean, True if all shapes were added to the compund,
+    returns the compound and a boolean, True if all shapes were added to the compound,
     False otherwise
     """
     all_shapes_converted = True

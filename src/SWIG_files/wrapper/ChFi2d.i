@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFI2DDOCSTRING
 "ChFi2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfi2d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_chfi2d.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFI2DDOCSTRING) ChFi2d
 
@@ -82,7 +82,7 @@ enum ChFi2d_ConstructionError {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class ChFi2d_ConstructionError(IntEnum):
@@ -964,7 +964,7 @@ bool
 		/****************** Result ******************/
 		/**** md5 signature: 47609a9593530a1c197f05dabded44c9 ****/
 		%feature("compactdefaultargs") Result;
-		%feature("autodoc", "Returns result (fillet edge, modified edge1, modified edge2), neares to the given point <thepoint> if isolution == -1. <thepoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). put the intersecting (or common) point of the edges.
+		%feature("autodoc", "Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thepoint> if isolution == -1. <thepoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). put the intersecting (or common) point of the edges.
 
 Parameters
 ----------

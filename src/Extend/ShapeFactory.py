@@ -464,7 +464,7 @@ def recognize_face(topods_face):
         kind = "Other"
         tuple_to_return = (kind, None, None)
     else:
-        tuple_to_return = ("Unknwon", None, None)
+        tuple_to_return = ("Unknown", None, None)
 
     return tuple_to_return
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPTOPADAPTORDOCSTRING
 "BRepTopAdaptor module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptopadaptor.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_breptopadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPTOPADAPTORDOCSTRING) BRepTopAdaptor
 
@@ -37,6 +37,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptopadaptor.ht
 
 
 %{
+#include<BRepAdaptor_Curve2d.hxx>
 #include<BRepTopAdaptor_module.hxx>
 
 //Dependencies
@@ -78,7 +79,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -206,20 +207,20 @@ TopAbs_State
 class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 	public:
 		/****************** BRepTopAdaptor_HVertex ******************/
-		/**** md5 signature: 074cc397ac377683fc7e5baeac36dca5 ****/
+		/**** md5 signature: fb5f8882c6434ceec0ae660be4e57a44 ****/
 		%feature("compactdefaultargs") BRepTopAdaptor_HVertex;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 Vtx: TopoDS_Vertex
-Curve: BRepAdaptor_HCurve2d
+Curve: BRepAdaptor_Curve2d
 
 Returns
 -------
 None
 ") BRepTopAdaptor_HVertex;
-		 BRepTopAdaptor_HVertex(const TopoDS_Vertex & Vtx, const opencascade::handle<BRepAdaptor_HCurve2d> & Curve);
+		 BRepTopAdaptor_HVertex(const TopoDS_Vertex & Vtx, const opencascade::handle<BRepAdaptor_Curve2d> & Curve);
 
 		/****************** ChangeVertex ******************/
 		/**** md5 signature: 656bb17afe52454f9a05f1376056a6f2 ****/
@@ -259,34 +260,34 @@ TopAbs_Orientation
 		virtual TopAbs_Orientation Orientation();
 
 		/****************** Parameter ******************/
-		/**** md5 signature: 94a7d8e3950c1b6cd8601beea6d797e5 ****/
+		/**** md5 signature: 7946c860c156c882efbe28718cc8bb1f ****/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Parameter;
-		virtual Standard_Real Parameter(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		virtual Standard_Real Parameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Resolution ******************/
-		/**** md5 signature: 58ffcfda77fcb1f2307c4d27d217e5fc ****/
+		/**** md5 signature: a164413bb7ed733cd7b505fea3e66eed ****/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "Parametric resolution (2d).
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Resolution;
-		virtual Standard_Real Resolution(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		virtual Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Value ******************/
 		/**** md5 signature: 554738eb7febee95dce3c7ca7bc631d6 ****/
@@ -354,20 +355,20 @@ None
 		 BRepTopAdaptor_Tool(const TopoDS_Face & F, const Standard_Real Tol2d);
 
 		/****************** BRepTopAdaptor_Tool ******************/
-		/**** md5 signature: 7e1124fd43a8913e3a2a0735609d729d ****/
+		/**** md5 signature: a513e74acf6cfe0783456be96ccc60c9 ****/
 		%feature("compactdefaultargs") BRepTopAdaptor_Tool;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surface: Adaptor3d_HSurface
+Surface: Adaptor3d_Surface
 Tol2d: float
 
 Returns
 -------
 None
 ") BRepTopAdaptor_Tool;
-		 BRepTopAdaptor_Tool(const opencascade::handle<Adaptor3d_HSurface> & Surface, const Standard_Real Tol2d);
+		 BRepTopAdaptor_Tool(const opencascade::handle<Adaptor3d_Surface> & Surface, const Standard_Real Tol2d);
 
 		/****************** Destroy ******************/
 		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
@@ -381,15 +382,15 @@ None
 		void Destroy();
 
 		/****************** GetSurface ******************/
-		/**** md5 signature: 50d06de8d329a03e7154431f35fe4ef4 ****/
+		/**** md5 signature: afbd71c808e80f77f5a76ef64e3237a1 ****/
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") GetSurface;
-		opencascade::handle<Adaptor3d_HSurface> GetSurface();
+		opencascade::handle<Adaptor3d_Surface> GetSurface();
 
 		/****************** GetTopolTool ******************/
 		/**** md5 signature: ff64aa4100d21790bf932c85946a7eac ****/
@@ -419,20 +420,20 @@ None
 		void Init(const TopoDS_Face & F, const Standard_Real Tol2d);
 
 		/****************** Init ******************/
-		/**** md5 signature: 3f726d32ba85e51e2e5ccbc5160ec527 ****/
+		/**** md5 signature: 6237b6ed41260a567f87d98e1986dbbe ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surface: Adaptor3d_HSurface
+Surface: Adaptor3d_Surface
 Tol2d: float
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Adaptor3d_HSurface> & Surface, const Standard_Real Tol2d);
+		void Init(const opencascade::handle<Adaptor3d_Surface> & Surface, const Standard_Real Tol2d);
 
 		/****************** SetTopolTool ******************/
 		/**** md5 signature: 3bffbb5885a2ed968b12bd808603632f ****/
@@ -475,19 +476,19 @@ None
 		 BRepTopAdaptor_TopolTool();
 
 		/****************** BRepTopAdaptor_TopolTool ******************/
-		/**** md5 signature: 56c628c8df694ad801f941b658a0b9c7 ****/
+		/**** md5 signature: 891cbde0b65f09eb06f8b982bf4b268b ****/
 		%feature("compactdefaultargs") BRepTopAdaptor_TopolTool;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surface: Adaptor3d_HSurface
+Surface: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") BRepTopAdaptor_TopolTool;
-		 BRepTopAdaptor_TopolTool(const opencascade::handle<Adaptor3d_HSurface> & Surface);
+		 BRepTopAdaptor_TopolTool(const opencascade::handle<Adaptor3d_Surface> & Surface);
 
 		/****************** Classify ******************/
 		/**** md5 signature: a7bbbaec3e65fcebf225d366fb51ee9a ****/
@@ -596,34 +597,34 @@ None
 		virtual void Initialize();
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 9212cd79a1f58670bacb19f92e754ac8 ****/
+		/**** md5 signature: 305d623733409be1d8fbf4ab26ddf2d5 ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Initialize;
-		virtual void Initialize(const opencascade::handle<Adaptor3d_HSurface> & S);
+		virtual void Initialize(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 02cf97bc3b844688e9ba73e26b230254 ****/
+		/**** md5 signature: a7c35bee18e0399050a6e43b1c80eded ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Curve: Adaptor2d_HCurve2d
+Curve: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Initialize;
-		virtual void Initialize(const opencascade::handle<Adaptor2d_HCurve2d> & Curve);
+		virtual void Initialize(const opencascade::handle<Adaptor2d_Curve2d> & Curve);
 
 		/****************** IsThePointOn ******************/
 		/**** md5 signature: a8af42c0c4037ab93f856b0272aaeeac ****/
@@ -721,19 +722,19 @@ None
 		virtual void NextVertex();
 
 		/****************** Orientation ******************/
-		/**** md5 signature: ec4e6aeda890fe65be6f21abdaf8d1ae ****/
+		/**** md5 signature: 0735971c665e1d16dd72730276bafb3b ****/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "If the function returns the orientation of the arc. if the orientation is forward or reversed, the arc is a 'real' limit of the surface. if the orientation is internal or external, the arc is considered as an arc on the surface.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 TopAbs_Orientation
 ") Orientation;
-		virtual TopAbs_Orientation Orientation(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		virtual TopAbs_Orientation Orientation(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Orientation ******************/
 		/**** md5 signature: 1e1d1ced6b52c356f59b839a0952b3b6 ****/
@@ -783,19 +784,19 @@ None
 		virtual void SamplePoint(const Standard_Integer Index, gp_Pnt2d & P2d, gp_Pnt & P3d);
 
 		/****************** Tol3d ******************/
-		/**** md5 signature: 5c555615a0871a252a6a0c4ef1849f7f ****/
+		/**** md5 signature: f820189d20028993788ef5efc7f9ea0f ****/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "Returns 3d tolerance of the arc c.
 
 Parameters
 ----------
-C: Adaptor2d_HCurve2d
+C: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Tol3d;
-		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****************** Tol3d ******************/
 		/**** md5 signature: 36153ba1d394ad94701849f935fac318 ****/
@@ -813,15 +814,15 @@ float
 		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****************** Value ******************/
-		/**** md5 signature: b6d378a3136fff8867d9ec8b6d114b11 ****/
+		/**** md5 signature: d434368cfe93892ae89893f79cf67479 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Value;
-		virtual opencascade::handle<Adaptor2d_HCurve2d> Value();
+		virtual opencascade::handle<Adaptor2d_Curve2d> Value();
 
 		/****************** Vertex ******************/
 		/**** md5 signature: 6c366dfe7165527233236e7fbb6bdce6 ****/

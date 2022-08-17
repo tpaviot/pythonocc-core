@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -49,7 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_BvhCStructureSetTrsfPers.hxx>
 #include<Graphic3d_CLight.hxx>
 #include<Graphic3d_CStructure.hxx>
-#include<Graphic3d_CTexture.hxx>
 #include<Graphic3d_CView.hxx>
 #include<Graphic3d_Camera.hxx>
 #include<Graphic3d_CameraTile.hxx>
@@ -69,11 +68,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_FrameStatsTimer.hxx>
 #include<Graphic3d_GraduatedTrihedron.hxx>
 #include<Graphic3d_GraphicDriver.hxx>
+#include<Graphic3d_GraphicDriverFactory.hxx>
 #include<Graphic3d_Group.hxx>
 #include<Graphic3d_GroupAspect.hxx>
 #include<Graphic3d_GroupDefinitionError.hxx>
 #include<Graphic3d_HatchStyle.hxx>
-#include<Graphic3d_HighlightStyle.hxx>
 #include<Graphic3d_HorizontalTextAlignment.hxx>
 #include<Graphic3d_IndexBuffer.hxx>
 #include<Graphic3d_Layer.hxx>
@@ -83,7 +82,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_MapOfAspectsToAspects.hxx>
 #include<Graphic3d_MapOfObject.hxx>
 #include<Graphic3d_MapOfStructure.hxx>
-#include<Graphic3d_MapOfZLayerSettings.hxx>
 #include<Graphic3d_MarkerImage.hxx>
 #include<Graphic3d_Mat4.hxx>
 #include<Graphic3d_Mat4d.hxx>
@@ -109,6 +107,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_SequenceOfHClipPlane.hxx>
 #include<Graphic3d_SequenceOfStructure.hxx>
 #include<Graphic3d_ShaderAttribute.hxx>
+#include<Graphic3d_ShaderFlags.hxx>
+#include<Graphic3d_ShaderManager.hxx>
 #include<Graphic3d_ShaderObject.hxx>
 #include<Graphic3d_ShaderProgram.hxx>
 #include<Graphic3d_ShaderVariable.hxx>
@@ -133,13 +133,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_TextureUnit.hxx>
 #include<Graphic3d_ToneMappingMethod.hxx>
 #include<Graphic3d_TransModeFlags.hxx>
-#include<Graphic3d_TransformError.hxx>
 #include<Graphic3d_TransformPers.hxx>
+#include<Graphic3d_TransformPersScaledAbove.hxx>
 #include<Graphic3d_TransformUtils.hxx>
 #include<Graphic3d_TypeOfAnswer.hxx>
 #include<Graphic3d_TypeOfBackfacingModel.hxx>
 #include<Graphic3d_TypeOfBackground.hxx>
-#include<Graphic3d_TypeOfComposition.hxx>
 #include<Graphic3d_TypeOfConnection.hxx>
 #include<Graphic3d_TypeOfLightSource.hxx>
 #include<Graphic3d_TypeOfLimit.hxx>

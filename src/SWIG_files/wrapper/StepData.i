@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPDATADOCSTRING
 "StepData module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdata.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepdata.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPDATADOCSTRING) StepData
 
@@ -75,7 +75,7 @@ enum StepData_Logical {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class StepData_Logical(IntEnum):
@@ -1263,7 +1263,7 @@ None
 		/****************** SetString ******************/
 		/**** md5 signature: fd08d5f8b5cfd32e65c1be12d7e2440a ****/
 		%feature("compactdefaultargs") SetString;
-		%feature("autodoc", "Sets a string value (or predeclares a list as string) does not redefine the kind if it is alread string or enum.
+		%feature("autodoc", "Sets a string value (or predeclares a list as string) does not redefine the kind if it is already string or enum.
 
 Parameters
 ----------
@@ -1543,6 +1543,130 @@ None
 	}
 };
 
+/*******************************
+* class StepData_GlobalFactors *
+*******************************/
+%nodefaultctor StepData_GlobalFactors;
+class StepData_GlobalFactors {
+	public:
+		/****************** CascadeUnit ******************/
+		/**** md5 signature: 1d922b1909929662e8a86e6a23ede302 ****/
+		%feature("compactdefaultargs") CascadeUnit;
+		%feature("autodoc", "Returns length unit for current transfer process (mm by default).
+
+Returns
+-------
+float
+") CascadeUnit;
+		Standard_Real CascadeUnit();
+
+		/****************** FactorDegreeRadian ******************/
+		/**** md5 signature: fedc74b704a2e72463aac2b15d888fed ****/
+		%feature("compactdefaultargs") FactorDegreeRadian;
+		%feature("autodoc", "Returns transient factor degree radian for conversion of angles at one stage of transfer process.
+
+Returns
+-------
+float
+") FactorDegreeRadian;
+		Standard_Real FactorDegreeRadian();
+
+		/****************** FactorRadianDegree ******************/
+		/**** md5 signature: 5bd933935fec8d7cc09bfb26a323362d ****/
+		%feature("compactdefaultargs") FactorRadianDegree;
+		%feature("autodoc", "Returns transient factor radian degree for conversion of angles at one stage of transfer process.
+
+Returns
+-------
+float
+") FactorRadianDegree;
+		Standard_Real FactorRadianDegree();
+
+		/****************** InitializeFactors ******************/
+		/**** md5 signature: cd04360a2d1cbd674218ed3c1e732874 ****/
+		%feature("compactdefaultargs") InitializeFactors;
+		%feature("autodoc", "Initializes the 3 factors for the conversion of units.
+
+Parameters
+----------
+theLengthFactor: float
+thePlaneAngleFactor: float
+theSolidAngleFactor: float
+
+Returns
+-------
+None
+") InitializeFactors;
+		void InitializeFactors(const Standard_Real theLengthFactor, const Standard_Real thePlaneAngleFactor, const Standard_Real theSolidAngleFactor);
+
+		/****************** Intance ******************/
+		/**** md5 signature: 7f5502a01c51de8576abf266a805c432 ****/
+		%feature("compactdefaultargs") Intance;
+		%feature("autodoc", "Returns a global static object.
+
+Returns
+-------
+StepData_GlobalFactors
+") Intance;
+		static StepData_GlobalFactors & Intance();
+
+		/****************** LengthFactor ******************/
+		/**** md5 signature: 8ecee2a738cfd3d25ea62faec23cb9f3 ****/
+		%feature("compactdefaultargs") LengthFactor;
+		%feature("autodoc", "Returns transient length factor for scaling of shapes at one stage of transfer process.
+
+Returns
+-------
+float
+") LengthFactor;
+		Standard_Real LengthFactor();
+
+		/****************** PlaneAngleFactor ******************/
+		/**** md5 signature: 5ab6ca47a256360934b00071841825fc ****/
+		%feature("compactdefaultargs") PlaneAngleFactor;
+		%feature("autodoc", "Returns transient plane angle factor for conversion of angles at one stage of transfer process.
+
+Returns
+-------
+float
+") PlaneAngleFactor;
+		Standard_Real PlaneAngleFactor();
+
+		/****************** SetCascadeUnit ******************/
+		/**** md5 signature: 9681d8ff7bf315f004a2dba0dc32aacc ****/
+		%feature("compactdefaultargs") SetCascadeUnit;
+		%feature("autodoc", "Sets length unit for current transfer process.
+
+Parameters
+----------
+theUnit: float
+
+Returns
+-------
+None
+") SetCascadeUnit;
+		void SetCascadeUnit(const Standard_Real theUnit);
+
+		/****************** SolidAngleFactor ******************/
+		/**** md5 signature: 191f77f63c19e48f9e70e03bdbc69a21 ****/
+		%feature("compactdefaultargs") SolidAngleFactor;
+		%feature("autodoc", "Returns transient solid angle factor for conversion of angles at one stage of transfer process.
+
+Returns
+-------
+float
+") SolidAngleFactor;
+		Standard_Real SolidAngleFactor();
+
+};
+
+
+%extend StepData_GlobalFactors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***************************************
 * class StepData_GlobalNodeOfWriterLib *
 ***************************************/
@@ -1562,7 +1686,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 497be690de5df95c0f5f595cb301a456 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondance.
+		%feature("autodoc", "Adds a module bound with a protocol to the list : does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
 
 Parameters
 ----------
@@ -3559,7 +3683,7 @@ None
 		/****************** HasHeaderEntity ******************/
 		/**** md5 signature: b89a0a364c711932b6d01b56cee77906 ****/
 		%feature("compactdefaultargs") HasHeaderEntity;
-		%feature("autodoc", "Says if a header entity has a specifed type.
+		%feature("autodoc", "Says if a header entity has a specified type.
 
 Parameters
 ----------
@@ -3612,6 +3736,28 @@ int
 ") IdentLabel;
 		Standard_Integer IdentLabel(const opencascade::handle<Standard_Transient> & ent);
 
+		/****************** IsInitializedUnit ******************/
+		/**** md5 signature: fe0bd8baacb679c3138fd7d26ea62f98 ****/
+		%feature("compactdefaultargs") IsInitializedUnit;
+		%feature("autodoc", "Returns the unit initialization flag true - the unit was initialized false - the unit value was not initialized, the default value is used.
+
+Returns
+-------
+bool
+") IsInitializedUnit;
+		Standard_Boolean IsInitializedUnit();
+
+		/****************** LocalLengthUnit ******************/
+		/**** md5 signature: 985f2c4be943ccdeef11a3c7627d6535 ****/
+		%feature("compactdefaultargs") LocalLengthUnit;
+		%feature("autodoc", "Returns local length unit using for transfer process (1 by default).
+
+Returns
+-------
+float
+") LocalLengthUnit;
+		Standard_Real LocalLengthUnit();
+
 		/****************** NewEmptyModel ******************/
 		/**** md5 signature: 40876c8eb593ebc41abaf47645e862e5 ****/
 		%feature("compactdefaultargs") NewEmptyModel;
@@ -3639,6 +3785,21 @@ None
 ") SetIdentLabel;
 		void SetIdentLabel(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer ident);
 
+		/****************** SetLocalLengthUnit ******************/
+		/**** md5 signature: 783595f799eb693ca1a2109c4ddaf448 ****/
+		%feature("compactdefaultargs") SetLocalLengthUnit;
+		%feature("autodoc", "Sets local length unit using for transfer process.
+
+Parameters
+----------
+theUnit: float
+
+Returns
+-------
+None
+") SetLocalLengthUnit;
+		void SetLocalLengthUnit(const Standard_Real theUnit);
+
 		/****************** SetSourceCodePage ******************/
 		/**** md5 signature: aa588b60c23e4bbb2537b739d5a43a57 ****/
 		%feature("compactdefaultargs") SetSourceCodePage;
@@ -3653,6 +3814,21 @@ Returns
 None
 ") SetSourceCodePage;
 		void SetSourceCodePage(Resource_FormatType theCode);
+
+		/****************** SetWriteLengthUnit ******************/
+		/**** md5 signature: c506583997fe9e8405e47ccc0d6e9a2b ****/
+		%feature("compactdefaultargs") SetWriteLengthUnit;
+		%feature("autodoc", "Sets length unit using for writing process.
+
+Parameters
+----------
+theUnit: float
+
+Returns
+-------
+None
+") SetWriteLengthUnit;
+		void SetWriteLengthUnit(const Standard_Real theUnit);
 
 		/****************** SourceCodePage ******************/
 		/**** md5 signature: e194da071972a41e58548e424201cc2c ****/
@@ -3694,6 +3870,17 @@ Returns
 None
 ") VerifyCheck;
 		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
+
+		/****************** WriteLengthUnit ******************/
+		/**** md5 signature: a15b65aac54886b2c56544fdb4e2f592 ****/
+		%feature("compactdefaultargs") WriteLengthUnit;
+		%feature("autodoc", "Returns length unit using for writing process (1 by default).
+
+Returns
+-------
+float
+") WriteLengthUnit;
+		Standard_Real WriteLengthUnit();
 
 };
 
@@ -3942,7 +4129,7 @@ int
 		/****************** NextForComplex ******************/
 		/**** md5 signature: dcd2936f68f0d3198fecec8298b34d93 ****/
 		%feature("compactdefaultargs") NextForComplex;
-		%feature("autodoc", "Returns the next 'componant' for a complex type entity, of which <num> is already a componant (the first one or a next one) returns 0 for a simple type or for the last componant.
+		%feature("autodoc", "Returns the next 'component' for a complex type entity, of which <num> is already a component (the first one or a next one) returns 0 for a simple type or for the last component.
 
 Parameters
 ----------
@@ -4520,7 +4707,7 @@ None
 		/****************** AddParam ******************/
 		/**** md5 signature: b7c09c76557d15a905a6585c105fc6eb ****/
 		%feature("compactdefaultargs") AddParam;
-		%feature("autodoc", "Prepares adding a parameter (that is, adds ',' except for first one); normally for internal use; can be used to send a totally empty parameter (with no litteral value).
+		%feature("autodoc", "Prepares adding a parameter (that is, adds ',' except for first one); normally for internal use; can be used to send a totally empty parameter (with no literal value).
 
 Returns
 -------
@@ -4568,7 +4755,7 @@ None
 		/****************** EndComplex ******************/
 		/**** md5 signature: 647e8f46af8631ebe3ef1f2b96ad4dea ****/
 		%feature("compactdefaultargs") EndComplex;
-		%feature("autodoc", "Sends the end of a complex entity : a simple closed bracket it must be called after sending all the componants and before the final call to endentity.
+		%feature("autodoc", "Sends the end of a complex entity : a simple closed bracket it must be called after sending all the components and before the final call to endentity.
 
 Returns
 -------
@@ -4771,7 +4958,7 @@ None
 		/****************** Send ******************/
 		/**** md5 signature: f58679aa6a4d459eeebef2ee9689b9ec ****/
 		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "Sends a real parameter (wroks with floatwriter).
+		%feature("autodoc", "Sends a real parameter (works with floatwriter).
 
 Parameters
 ----------
@@ -4909,7 +5096,7 @@ None
 		/****************** SendEntity ******************/
 		/**** md5 signature: 815da511e408035eb7d900f0d5de06aa ****/
 		%feature("compactdefaultargs") SendEntity;
-		%feature("autodoc", "Send an entity of the data section. if it corresponds to a scope, also sends the scope informations and contained items.
+		%feature("autodoc", "Send an entity of the data section. if it corresponds to a scope, also sends the scope information and contained items.
 
 Parameters
 ----------
@@ -4925,7 +5112,7 @@ None
 		/****************** SendEnum ******************/
 		/**** md5 signature: 3697a0d2e471dd3afbe9d81d2d3efbe7 ****/
 		%feature("compactdefaultargs") SendEnum;
-		%feature("autodoc", "Sends an enum given by string (litteral expression) adds '.' around it if not done remark : val can be computed by class enumtool from stepdata: stepwriter.sendenum (myenum.text(enumval));.
+		%feature("autodoc", "Sends an enum given by string (literal expression) adds '.' around it if not done remark : val can be computed by class enumtool from stepdata: stepwriter.sendenum (myenum.text(enumval));.
 
 Parameters
 ----------
@@ -4940,7 +5127,7 @@ None
 		/****************** SendEnum ******************/
 		/**** md5 signature: ece5bc46b726e98cedf51fd63ae16366 ****/
 		%feature("compactdefaultargs") SendEnum;
-		%feature("autodoc", "Sends an enum given by string (litteral expression) adds '.' around it if not done.
+		%feature("autodoc", "Sends an enum given by string (literal expression) adds '.' around it if not done.
 
 Parameters
 ----------
@@ -5102,7 +5289,7 @@ None
 		/****************** SendUndef ******************/
 		/**** md5 signature: 2f7e3905171f54dc8bc4c8128123b2a0 ****/
 		%feature("compactdefaultargs") SendUndef;
-		%feature("autodoc", "Sends an undefined (optionnal absent) parameter (by '$').
+		%feature("autodoc", "Sends an undefined (optional absent) parameter (by '$').
 
 Returns
 -------
@@ -5129,7 +5316,7 @@ None
 		/****************** StartComplex ******************/
 		/**** md5 signature: 32f5a1b6cc0ca2550cde910812f629aa ****/
 		%feature("compactdefaultargs") StartComplex;
-		%feature("autodoc", "Sends the start of a complex entity, which is a simple open bracket (without increasing braket level) it must be called just after sendentity and before sending componants, each one begins by startentity.
+		%feature("autodoc", "Sends the start of a complex entity, which is a simple open bracket (without increasing braket level) it must be called just after sendentity and before sending components, each one begins by startentity.
 
 Returns
 -------
@@ -5140,7 +5327,7 @@ None
 		/****************** StartEntity ******************/
 		/**** md5 signature: fb2e99a3062c663c9c61b42c2f9ee4a7 ****/
 		%feature("compactdefaultargs") StartEntity;
-		%feature("autodoc", "Sets entity's steptype, opens brakets, starts param no to 0 params are separated by comma remark : for a multiple type entity (see express andor clause) startcomplex must be called before sending componants, then each 'componant' must be send separately (one call to startentity for each one) : the type which preceeds is then automaticaly closed. once all the componants have been sent, endcomplex must be called, then and only then endentity.
+		%feature("autodoc", "Sets entity's steptype, opens brakets, starts param no to 0 params are separated by comma remark : for a multiple type entity (see express andor clause) startcomplex must be called before sending components, then each 'component' must be sent separately (one call to startentity for each one) : the type which precedes is then automatically closed. once all the components have been sent, endcomplex must be called, then and only then endentity.
 
 Parameters
 ----------
@@ -6068,7 +6255,7 @@ None
 		/****************** GlobalCheck ******************/
 		/**** md5 signature: 0c271e5ee55036c2344ebf1a4f07ae92 ****/
 		%feature("compactdefaultargs") GlobalCheck;
-		%feature("autodoc", "Calls globalcheck for each of its recorded ressources.
+		%feature("autodoc", "Calls globalcheck for each of its recorded resources.
 
 Parameters
 ----------

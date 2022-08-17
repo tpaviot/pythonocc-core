@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCPNTSDOCSTRING
 "GCPnts module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gcpnts.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_gcpnts.html"
 %enddef
 %module (package="OCC.Core", docstring=GCPNTSDOCSTRING) GCPnts
 
@@ -84,7 +84,7 @@ enum GCPnts_AbscissaType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class GCPnts_DeflectionType(IntEnum):
@@ -124,7 +124,7 @@ class GCPnts_AbscissaPoint {
 		/****************** GCPnts_AbscissaPoint ******************/
 		/**** md5 signature: e9e9ed8389a2f8082b7f1c66900c4a47 ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -133,148 +133,148 @@ None
 		 GCPnts_AbscissaPoint();
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: 13fa7fec22d8738eacffcc71a526050d ****/
+		/**** md5 signature: 994f7fd46e144d693934367c87eff7d8 ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-U0: float
+theC: Adaptor3d_Curve
+theAbscissa: float
+theU0: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0);
+		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: 39fc08c89f4b15376ce9f8b70371c087 ****/
+		/**** md5 signature: e899defbc3b18b307a0f709838f26d36 ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0> with the given tolerance.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0 with the given tolerance.
 
 Parameters
 ----------
-Tol: float
-C: Adaptor3d_Curve
-Abscissa: float
-U0: float
+theTol: float
+theC: Adaptor3d_Curve
+theAbscissa: float
+theU0: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Standard_Real Tol, const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0);
+		 GCPnts_AbscissaPoint(const Standard_Real theTol, const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: e7e8411a006f0f65fb4638306f22291e ****/
+		/**** md5 signature: bf74800bc5e96e7e6bece681096cc227 ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0> with the given tolerance.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0 with the given tolerance.
 
 Parameters
 ----------
-Tol: float
-C: Adaptor2d_Curve2d
-Abscissa: float
-U0: float
+theTol: float
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theU0: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Standard_Real Tol, const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0);
+		 GCPnts_AbscissaPoint(const Standard_Real theTol, const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: f663f2726ca2323b0a9fe699b88229e4 ****/
+		/**** md5 signature: 149827954cacc4a64054884618228ebc ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-U0: float
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theU0: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0);
+		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: 02c0c16c94f3338047ec03f03649ea26 ****/
+		/**** md5 signature: f0d4479d46145782f8e11143c82b6809 ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be close to the final solution.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-U0: float
-Ui: float
+theC: Adaptor3d_Curve
+theAbscissa: float
+theU0: float
+theUi: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui);
+		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: bb7188368d709950161699b43569abd9 ****/
+		/**** md5 signature: e276268e7f3319a5141ea9d9269d427e ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be closed to the final solution.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-U0: float
-Ui: float
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theU0: float
+theUi: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui);
+		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: c680835ef5a8e88805b58e15c8f414ed ****/
+		/**** md5 signature: edb80e41eebb154b56723e549d17cd66 ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be close to the final solution.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-U0: float
-Ui: float
-Tol: float
+theC: Adaptor3d_Curve
+theAbscissa: float
+theU0: float
+theUi: float
+theTol: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Tol);
+		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi, const Standard_Real theTol);
 
 		/****************** GCPnts_AbscissaPoint ******************/
-		/**** md5 signature: 71164c1b7987746efc1115470883c54e ****/
+		/**** md5 signature: e2821bf35681332a03f6bfe49874a10b ****/
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution.
+		%feature("autodoc", "The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be close to the final solution.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-U0: float
-Ui: float
-Tol: float
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theU0: float
+theUi: float
+theTol: float
 
 Returns
 -------
 None
 ") GCPnts_AbscissaPoint;
-		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Tol);
+		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi, const Standard_Real theTol);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
@@ -288,136 +288,136 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** Length ******************/
-		/**** md5 signature: eba769e16675af7987425cafd53458ca ****/
+		/**** md5 signature: 042f9221edd3ab5e957807852ec69e0f ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c>.
+		%feature("autodoc", "Computes the length of the 3d curve.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C);
+		static Standard_Real Length(const Adaptor3d_Curve & theC);
 
 		/****************** Length ******************/
-		/**** md5 signature: 765cbebd0c62408a590e139d7941ff63 ****/
+		/**** md5 signature: 2ab2e1b92a4eeed3a8a63ee4e4e8d78d ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c>.
+		%feature("autodoc", "Computes the length of the 2d curve.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C);
+		static Standard_Real Length(const Adaptor2d_Curve2d & theC);
 
 		/****************** Length ******************/
-		/**** md5 signature: 0c294f64dbc0f6a4115eef7dd6094c0a ****/
+		/**** md5 signature: 9a1db470fe18f3a43cf1c177415bed7c ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c> with the given tolerance.
+		%feature("autodoc", "Computes the length of the 3d curve with the given tolerance.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Tol: float
+theC: Adaptor3d_Curve
+theTol: float
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real Tol);
+		static Standard_Real Length(const Adaptor3d_Curve & theC, const Standard_Real theTol);
 
 		/****************** Length ******************/
-		/**** md5 signature: 2369489a44197d1ca38f55d75b7ed4bb ****/
+		/**** md5 signature: 4782e2d3c54640d45f3910856a523a0d ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c> with the given tolerance.
+		%feature("autodoc", "Computes the length of the 2d curve with the given tolerance.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Tol: float
+theC: Adaptor2d_Curve2d
+theTol: float
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real Tol);
+		static Standard_Real Length(const Adaptor2d_Curve2d & theC, const Standard_Real theTol);
 
 		/****************** Length ******************/
-		/**** md5 signature: 0ff9ac31546f5bd02057bb36f563f5d4 ****/
+		/**** md5 signature: 92a3bd66d06c2f69fd7d3efcc4a1a170 ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c>.
+		%feature("autodoc", "Computes the length of the 3d curve.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-U1: float
-U2: float
+theC: Adaptor3d_Curve
+theU1: float
+theU2: float
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2);
+		static Standard_Real Length(const Adaptor3d_Curve & theC, const Standard_Real theU1, const Standard_Real theU2);
 
 		/****************** Length ******************/
-		/**** md5 signature: 1e46daf657fccb259b7d9f58dc7e413b ****/
+		/**** md5 signature: 2b066742b0469dfd4834243e7a135d11 ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c>.
+		%feature("autodoc", "Computes the length of the 2d curve.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U1: float
-U2: float
+theC: Adaptor2d_Curve2d
+theU1: float
+theU2: float
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2);
+		static Standard_Real Length(const Adaptor2d_Curve2d & theC, const Standard_Real theU1, const Standard_Real theU2);
 
 		/****************** Length ******************/
-		/**** md5 signature: 2e36ed9a5703e01dfe14dffcfd406a78 ****/
+		/**** md5 signature: bb6b4be428e60ce7959343316ec50d58 ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c> with the given tolerance.
+		%feature("autodoc", "Computes the length of the 3d curve with the given tolerance.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-U1: float
-U2: float
-Tol: float
+theC: Adaptor3d_Curve
+theU1: float
+theU2: float
+theTol: float
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
+		static Standard_Real Length(const Adaptor3d_Curve & theC, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theTol);
 
 		/****************** Length ******************/
-		/**** md5 signature: 01305edaf2437396737fa3c58ad94127 ****/
+		/**** md5 signature: 57f71acf7ac66837fcd814ff6da0c063 ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Computes the length of the curve <c> with the given tolerance. constructs an empty algorithm. this function is used only for initializing a framework to compute the length of a curve (or a series of curves). warning the function isdone will return the value false after the use of this function.
+		%feature("autodoc", "Computes the length of the curve with the given tolerance.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U1: float
-U2: float
-Tol: float
+theC: Adaptor2d_Curve2d
+theU1: float
+theU2: float
+theTol: float
 
 Returns
 -------
 float
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
+		static Standard_Real Length(const Adaptor2d_Curve2d & theC, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theTol);
 
 		/****************** Parameter ******************/
 		/**** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ****/
@@ -572,140 +572,140 @@ None
 		 GCPnts_QuasiUniformAbscissa();
 
 		/****************** GCPnts_QuasiUniformAbscissa ******************/
-		/**** md5 signature: 8fe67c8bf8bcaeb8dd81c44abc998e63 ****/
+		/**** md5 signature: dd562f7cb1072dc4828085b7acd50b2f ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points - on the curve c where abscissa is the curvilinear distance between two consecutive points of the distribution.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points - on the curve where abscissa is the curvilinear distance between two consecutive points of the distribution.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
+theC: Adaptor3d_Curve
+theNbPoints: int
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformAbscissa;
-		 GCPnts_QuasiUniformAbscissa(const Adaptor3d_Curve & C, const Standard_Integer NbPoints);
+		 GCPnts_QuasiUniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints);
 
 		/****************** GCPnts_QuasiUniformAbscissa ******************/
-		/**** md5 signature: d6b8d649ee5bc9861491ee8690fc7ddd ****/
+		/**** md5 signature: 208585ff814fd87a45d0395b14d6927b ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on the part of curve c limited by the two parameter values u1 and u2, where abscissa is the curvilinear distance between two consecutive points of the distribution. the first point of the distribution is either the origin of curve c or the point of parameter u1. the following points are computed such that the curvilinear distance between two consecutive points is equal to abscissa. the last point of the distribution is either the end point of curve c or the point of parameter u2. however the curvilinear distance between this last point and the point just preceding it in the distribution is, of course, generally not equal to abscissa. use the function isdone to verify that the computation was successful, the function nbpoints to obtain the number of points of the computed distribution, and the function parameter to read the parameter of each point. warning the roles of u1 and u2 are inverted if u1 > u2 . warning c is an adapted curve, that is, an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on the part of curve limited by the two parameter values theu1 and theu2, where abscissa is the curvilinear distance between two consecutive points of the distribution. the first point of the distribution is either the origin of curve or the point of parameter theu1. the following points are computed such that the curvilinear distance between two consecutive points is equal to abscissa. the last point of the distribution is either the end point of curve or the point of parameter theu2. however the curvilinear distance between this last point and the point just preceding it in the distribution is, of course, generally not equal to abscissa. use the function isdone() to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter() to read the parameter of each point. //! warning the roles of theu1 and theu2 are inverted if theu1 > theu2. warning thec is an adapted curve, that is, an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm. @param thec [in] input 3d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
-U1: float
-U2: float
+theC: Adaptor3d_Curve
+theNbPoints: int
+theU1: float
+theU2: float
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformAbscissa;
-		 GCPnts_QuasiUniformAbscissa(const Adaptor3d_Curve & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2);
+		 GCPnts_QuasiUniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
 		/****************** GCPnts_QuasiUniformAbscissa ******************/
-		/**** md5 signature: 91115d7f24542ea7b8be7fd060ecf888 ****/
+		/**** md5 signature: 5b685a23d5e0c95b72641488537f0bb4 ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on the curve2d <c>. <nbpoints> defines the nomber of desired points.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on the 2d curve. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
+theC: Adaptor2d_Curve2d
+theNbPoints: int
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformAbscissa;
-		 GCPnts_QuasiUniformAbscissa(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints);
+		 GCPnts_QuasiUniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints);
 
 		/****************** GCPnts_QuasiUniformAbscissa ******************/
-		/**** md5 signature: 30dc0733afd16e4522e4245467edee5a ****/
+		/**** md5 signature: 68eba7225e3210dd556f8f7c730aed8f ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the curve2d <c>.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the 2d curve. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
-U1: float
-U2: float
+theC: Adaptor2d_Curve2d
+theNbPoints: int
+theU1: float
+theU2: float
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformAbscissa;
-		 GCPnts_QuasiUniformAbscissa(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2);
+		 GCPnts_QuasiUniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 78e009081d465109cd710d1f4a75cd46 ****/
+		/**** md5 signature: b84c4aadf7906dd0835d7108bad17a6f ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <nbpoints> and.
+		%feature("autodoc", "Initialize the algorithms with 3d curve and target number of points. @param thec [in] input 3d curve @param thenbpoints [in] defines the number of desired points.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
+theC: Adaptor3d_Curve
+theNbPoints: int
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbPoints);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: b376ca3f00cc8baa31efada6f557917b ****/
+		/**** md5 signature: 53ce7362fdacfdc7fff6d7912f75ef9f ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <u1>, <u2>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, target number of points and curve parameter range. @param thec [in] input 3d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
-U1: float
-U2: float
+theC: Adaptor3d_Curve
+theNbPoints: int
+theU1: float
+theU2: float
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: e198761a4b69ce7c00e5cf592491a6f7 ****/
+		/**** md5 signature: c0645af498cba44e7fdc2497f9e35b9d ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <nbpoints> and.
+		%feature("autodoc", "Initialize the algorithms with 2d curve and target number of points. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
+theC: Adaptor2d_Curve2d
+theNbPoints: int
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: dbb71176aee097012f26a1d2c4d8b47c ****/
+		/**** md5 signature: ed4a2afda240c0f04b820d3a8e6dfb1a ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <u1>, <u2>.
+		%feature("autodoc", "Initialize the algorithms with 2d curve, target number of points and curve parameter range. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
-U1: float
-U2: float
+theC: Adaptor2d_Curve2d
+theNbPoints: int
+theU1: float
+theU2: float
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
@@ -761,7 +761,7 @@ class GCPnts_QuasiUniformDeflection {
 		/****************** GCPnts_QuasiUniformDeflection ******************/
 		/**** md5 signature: efa98a17078c26984adf714d01a559d0 ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformDeflection;
-		%feature("autodoc", "Constructs an empty algorithm. to define the problem to be solved, use the function initialize.
+		%feature("autodoc", "Constructs an empty algorithm. to define the problem to be solved, use the function initialize().
 
 Returns
 -------
@@ -770,80 +770,80 @@ None
 		 GCPnts_QuasiUniformDeflection();
 
 		/****************** GCPnts_QuasiUniformDeflection ******************/
-		/**** md5 signature: 21f3cdb414dfacc1adb769f5feeefaa5 ****/
+		/**** md5 signature: 9f427f22da8d1765aa59c8978c365230 ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformDeflection;
-		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on the curve <c>.
+		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on the curve.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformDeflection;
-		 GCPnts_QuasiUniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		 GCPnts_QuasiUniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** GCPnts_QuasiUniformDeflection ******************/
-		/**** md5 signature: 4406b6f8f6b53db0691121375ca5097b ****/
+		/**** md5 signature: 47da4f025691c83a80f04c6175d1185d ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformDeflection;
-		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on the curve <c>.
+		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on the curve.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformDeflection;
-		 GCPnts_QuasiUniformDeflection(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		 GCPnts_QuasiUniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** GCPnts_QuasiUniformDeflection ******************/
-		/**** md5 signature: e5c32f3d7419a9ad1125046a26eedbb9 ****/
+		/**** md5 signature: 70a0f4989745d4e7d0413f64ba479aa8 ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformDeflection;
-		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on a part of the curve <c>.
+		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on a part of the curve.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-U1: float
-U2: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theU1: float
+theU2: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformDeflection;
-		 GCPnts_QuasiUniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		 GCPnts_QuasiUniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** GCPnts_QuasiUniformDeflection ******************/
-		/**** md5 signature: d88ae7d685789f15a2fd2e2380727de9 ****/
+		/**** md5 signature: dbd5412a35e8329eb249a545ab74b89d ****/
 		%feature("compactdefaultargs") GCPnts_QuasiUniformDeflection;
-		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on a part of the curve <c>. this and the above algorithms compute a distribution of points: - on the curve c, or - on the part of curve c limited by the two parameter values u1 and u2, where the deflection resulting from the distributed points is not greater than deflection. the first point of the distribution is either the origin of curve c or the point of parameter u1. the last point of the distribution is either the end point of curve c or the point of parameter u2. intermediate points of the distribution are built such that the deflection is not greater than deflection. using the following evaluation of the deflection: if pi and pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of pi and pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve c). continuity, defaulted to geomabs_c1, gives the degree of continuity of the curve c. (note that c is an adaptor3d_curve or an adaptor2d_curve2d object, and does not know the degree of continuity of the underlying curve). use the function isdone to verify that the computation was successful, the function nbpoints to obtain the number of points of the computed distribution, and the function parameter to read the parameter of each point. warning - the roles of u1 and u2 are inverted if u1 > u2. - derivative functions on the curve are called according to continuity. an error may occur if continuity is greater than the real degree of continuity of the curve. warning c is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
+		%feature("autodoc", "Computes a quasiuniform deflection distribution of points on a part of the curve. this and the above algorithms compute a distribution of points: - on the curve thec, or - on the part of curve thec limited by the two parameter values theu1 and theu2, where the deflection resulting from the distributed points is not greater than thedeflection. //! the first point of the distribution is either the origin of curve thec or the point of parameter theu1. the last point of the distribution is either the end point of curve thec or the point of parameter theu2. //! intermediate points of the distribution are built such that the deflection is not greater than thedeflection. using the following evaluation of the deflection: if pi and pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of pi and pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2] on curve thec). thecontinuity, defaulted to geomabs_c1, gives the degree of continuity of the curve thec. (note that c is an adaptor3d_curve or an adaptor2d_curve2d object, and does not know the degree of continuity of the underlying curve). use the function isdone() to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter() to read the parameter of each point. //! warning - the roles of theu1 and theu2 are inverted if theu1 > theu2. - derivative functions on the curve are called according to thecontinuity. an error may occur if thecontinuity is greater than the real degree of continuity of the curve. //! warning thec is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-U1: float
-U2: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theU1: float
+theU2: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") GCPnts_QuasiUniformDeflection;
-		 GCPnts_QuasiUniformDeflection(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		 GCPnts_QuasiUniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** Deflection ******************/
 		/**** md5 signature: 6fb4c31e8f4445c1597fc8b70a63cbfb ****/
@@ -857,80 +857,80 @@ float
 		Standard_Real Deflection();
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 8037dff755addb429b7afa155db10600 ****/
+		/**** md5 signature: 82b0287725f04e0899a9450752ed5d64 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve and deflection.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 3d070484282d8ce5900ff21b78680257 ****/
+		/**** md5 signature: 04b5bf695538016e85b1a76c8d15238f ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>.
+		%feature("autodoc", "Initialize the algorithms with 2d curve and deflection.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: c07ec77c5c33688ac1ac7c53a0f3a6bf ****/
+		/**** md5 signature: 8d2138e60f7bf0b16e0be1feef9962ca ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <u1>,<u2>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, deflection and parameter range.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-U1: float
-U2: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theU1: float
+theU2: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: cbd8869806d86afcd8a644ce9d87c19a ****/
+		/**** md5 signature: 367f2a9f47dcc2fe28b985d61eeb7da5 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, -- <u1>,<u2> this and the above algorithms initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve c, or - on the part of curve c limited by the two parameter values u1 and u2, where the deflection resulting from the distributed points is not greater than deflection. the first point of the distribution is either the origin of curve c or the point of parameter u1. the last point of the distribution is either the end point of curve c or the point of parameter u2. intermediate points of the distribution are built in such a way that the deflection is not greater than deflection. using the following evaluation of the deflection: if pi and pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of pi and pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve c). continuity, defaulted to geomabs_c1, gives the degree of continuity of the curve c. (note that c is an adaptor3d_curve or an adaptor2d_curve2d object, and does not know the degree of continuity of the underlying curve). use the function isdone to verify that the computation was successful, the function nbpoints to obtain the number of points of the computed distribution, and the function parameter to read the parameter of each point. warning - the roles of u1 and u2 are inverted if u1 > u2. - derivative functions on the curve are called according to continuity. an error may occur if continuity is greater than the real degree of continuity of the curve. warning c is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), and those required on the curve by the computation algorithm.
+		%feature("autodoc", "Initialize the algorithms with thec, thedeflection, theu1, theu2. this and the above algorithms initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve thec, or - on the part of curve thec limited by the two parameter values theu1 and theu2, where the deflection resulting from the distributed points is not greater than thedeflection. //! the first point of the distribution is either the origin of curve thec or the point of parameter theu1. the last point of the distribution is either the end point of curve thec or the point of parameter theu2. //! intermediate points of the distribution are built in such a way that the deflection is not greater than thedeflection. using the following evaluation of the deflection: if pi and pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of pi and pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2] on curve thec). thecontinuity, defaulted to geomabs_c1, gives the degree of continuity of the curve thec. (note that c is an adaptor3d_curve or an adaptor2d_curve2d object, and does not know the degree of continuity of the underlying curve). use the function isdone to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter() to read the parameter of each point. //! warning - the roles of theu1 and theu2 are inverted if theu1 > theu2. - derivative functions on the curve are called according to thecontinuity. an error may occur if thecontinuity is greater than the real degree of continuity of the curve. //! warning thec is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), and those required on the curve by the computation algorithm.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-U1: float
-U2: float
-Continuity: GeomAbs_Shape,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theU1: float
+theU2: float
+theContinuity: GeomAbs_Shape,optional
 	default value is GeomAbs_C1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const GeomAbs_Shape Continuity = GeomAbs_C1);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
@@ -993,6 +993,47 @@ gp_Pnt
 	}
 };
 
+/***************************
+* class GCPnts_TCurveTypes *
+***************************/
+/**********************************************
+* class GCPnts_TCurveTypes<Adaptor2d_Curve2d> *
+**********************************************/
+class GCPnts_TCurveTypes<Adaptor2d_Curve2d> {
+	public:
+typedef gp_Pnt2d Point;
+typedef Geom2d_BezierCurve BezierCurve;
+typedef Geom2d_BSplineCurve BSplineCurve;
+typedef GCPnts_DistFunction2d DistFunction;
+typedef GCPnts_DistFunction2dMV DistFunctionMV;
+};
+
+
+%extend GCPnts_TCurveTypes<Adaptor2d_Curve2d> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************************
+* class GCPnts_TCurveTypes<Adaptor3d_Curve> *
+********************************************/
+class GCPnts_TCurveTypes<Adaptor3d_Curve> {
+	public:
+typedef gp_Pnt Point;
+typedef Geom_BezierCurve BezierCurve;
+typedef Geom_BSplineCurve BSplineCurve;
+typedef GCPnts_DistFunction DistFunction;
+typedef GCPnts_DistFunctionMV DistFunctionMV;
+};
+
+
+%extend GCPnts_TCurveTypes<Adaptor3d_Curve> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /************************************
 * class GCPnts_TangentialDeflection *
 ************************************/
@@ -1001,7 +1042,7 @@ class GCPnts_TangentialDeflection {
 		/****************** GCPnts_TangentialDeflection ******************/
 		/**** md5 signature: d6a43ebbe398bf311982f493adb5385b ****/
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty constructor. @sa initialize().
 
 Returns
 -------
@@ -1010,18 +1051,18 @@ None
 		 GCPnts_TangentialDeflection();
 
 		/****************** GCPnts_TangentialDeflection ******************/
-		/**** md5 signature: c660a8d8e12a218029eb29218515686c ****/
+		/**** md5 signature: e2876f14004b1580160f394dc792d41c ****/
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Constructor for 3d curve. @param thec [in] 3d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor3d_Curve
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1030,23 +1071,23 @@ Returns
 -------
 None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection(const Adaptor3d_Curve & C, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		 GCPnts_TangentialDeflection(const Adaptor3d_Curve & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** GCPnts_TangentialDeflection ******************/
-		/**** md5 signature: f48b065a496b32f5dce300dd35e83635 ****/
+		/**** md5 signature: e7a79d9031269c6fe80fc514568ab577 ****/
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Constructor for 3d curve with restricted range. @param thec [in] 3d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theuto l [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-FirstParameter: float
-LastParameter: float
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor3d_Curve
+theFirstParameter: float
+theLastParameter: float
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1055,21 +1096,21 @@ Returns
 -------
 None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection(const Adaptor3d_Curve & C, const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		 GCPnts_TangentialDeflection(const Adaptor3d_Curve & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** GCPnts_TangentialDeflection ******************/
-		/**** md5 signature: 43c0c45cc41c56b61c30dfaf69e3bbbd ****/
+		/**** md5 signature: 5e673103e112601047af3ac0bac3a4fd ****/
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Constructor for 2d curve. @param thec [in] 2d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor2d_Curve2d
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1078,23 +1119,23 @@ Returns
 -------
 None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection(const Adaptor2d_Curve2d & C, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		 GCPnts_TangentialDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** GCPnts_TangentialDeflection ******************/
-		/**** md5 signature: f8aa47debd82b4b67a49483e1077bc14 ****/
+		/**** md5 signature: 02f053303f91ec596066601be7daba5c ****/
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Constructor for 2d curve with restricted range. @param thec [in] 2d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-FirstParameter: float
-LastParameter: float
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor2d_Curve2d
+theFirstParameter: float
+theLastParameter: float
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1103,7 +1144,7 @@ Returns
 -------
 None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection(const Adaptor2d_Curve2d & C, const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		 GCPnts_TangentialDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** AddPoint ******************/
 		/**** md5 signature: f541c04e71bbea5ee903e5e80a7a0852 ****/
@@ -1142,18 +1183,18 @@ float
 		static Standard_Real ArcAngularStep(const Standard_Real theRadius, const Standard_Real theLinearDeflection, const Standard_Real theAngularDeflection, const Standard_Real theMinLength);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 3f4810501754bd962ba0f8c60ff6c7c8 ****/
+		/**** md5 signature: 45dfbf57c6460a500be0ab7afd32d9a9 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize algorithm for 3d curve. @param thec [in] 3d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor3d_Curve
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1162,23 +1203,23 @@ Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 7b53b2f250c25c5924285ae631b934ac ****/
+		/**** md5 signature: ceed2a4aeba90562a9390be05e1707d1 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize algorithm for 3d curve with restricted range. @param thec [in] 3d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-FirstParameter: float
-LastParameter: float
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor3d_Curve
+theFirstParameter: float
+theLastParameter: float
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1187,21 +1228,21 @@ Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: c3a2bc0838a75a314ec8f5af318457e9 ****/
+		/**** md5 signature: ab28884c050d2a18b4766f5812a89976 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize algorithm for 2d curve. @param thec [in] 2d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor2d_Curve2d
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1210,23 +1251,23 @@ Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: f9dcd1eb0295207081e937bfab5b9041 ****/
+		/**** md5 signature: f84b8cf525a400a6e86d7d8444bff702 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize algorithm for 2d curve with restricted range. @param thec [in] 2d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-FirstParameter: float
-LastParameter: float
-AngularDeflection: float
-CurvatureDeflection: float
-MinimumOfPoints: int,optional
+theC: Adaptor2d_Curve2d
+theFirstParameter: float
+theLastParameter: float
+theAngularDeflection: float
+theCurvatureDeflection: float
+theMinimumOfPoints: int,optional
 	default value is 2
-UTol: float,optional
+theUTol: float,optional
 	default value is 1.0e-9
 theMinLen: float,optional
 	default value is 1.0e-7
@@ -1235,7 +1276,7 @@ Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Real AngularDeflection, const Standard_Real CurvatureDeflection, const Standard_Integer MinimumOfPoints = 2, const Standard_Real UTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
 		/****************** NbPoints ******************/
 		/**** md5 signature: e92014a2f157c195ed77b7745c7eae3f ****/
@@ -1304,161 +1345,161 @@ None
 		 GCPnts_UniformAbscissa();
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 847d116290d70c3d449113ed2d5fa49b ****/
+		/**** md5 signature: 067c34c9d2c8769449e50d61b02e7f5b ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on the curve <c>. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on the 3d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-Toler: float,optional
+theC: Adaptor3d_Curve
+theAbscissa: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 6c78d0b33249d925e4a2f842e86b46a6 ****/
+		/**** md5 signature: 0eb5f5a11094ce6bd3b46636cfc0f0d2 ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the curve <c>. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the 3d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor3d_Curve
+theAbscissa: float
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 8adeb75e606dbe750d9590e3fbce5517 ****/
+		/**** md5 signature: e3357fe7bf7c1f17214b690b4a50931b ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on the curve <c>. <nbpoints> defines the nomber of desired points. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on the 3d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
-Toler: float,optional
+theC: Adaptor3d_Curve
+theNbPoints: int
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & C, const Standard_Integer NbPoints, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 73c98ea46a55c86c72f4e645b09c4908 ****/
+		/**** md5 signature: b9d6d100e05d95af13a4f10cd1b4a3a0 ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the curve <c>. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the 3d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor3d_Curve
+theNbPoints: int
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 203be95da802e634bc2e764ecf26cdfe ****/
+		/**** md5 signature: dcc249075db75a8a30eec5756a74803d ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on the curve2d <c>. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on the 2d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: fa4b7a0f35377ce7c9fd83832ce80d64 ****/
+		/**** md5 signature: 4e52fdb748a3a0c4a321d10fe2d811d0 ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the curve2d <c>. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the 2d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 21d9281621986ccbc891e403456bbbe4 ****/
+		/**** md5 signature: 7cf2d5fda64d545a74dfb6676b73c92b ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on the curve2d <c>. <nbpoints> defines the nomber of desired points. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on the 2d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theNbPoints: int
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
 		/****************** GCPnts_UniformAbscissa ******************/
-		/**** md5 signature: 9aa42f43a3eb602b4e98329d33781bb3 ****/
+		/**** md5 signature: 3e022da984e879ec9bd91c909485d5b9 ****/
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the curve2d <c>. parameter toler is equal precision::confusion by default. it is used for more precise calculation of curve length.
+		%feature("autodoc", "Computes a uniform abscissa distribution of points on a part of the 2d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theNbPoints: int
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** Abscissa ******************/
 		/**** md5 signature: c89bcc85ff4523eefe5f7f8d1fd84247 ****/
 		%feature("compactdefaultargs") Abscissa;
-		%feature("autodoc", "Returne the current abscissa ie the distance between two consecutive points.
+		%feature("autodoc", "Returns the current abscissa, i.e. the distance between two consecutive points.
 
 Returns
 -------
@@ -1467,156 +1508,156 @@ float
 		Standard_Real Abscissa();
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 16a94ad18b431351ca533d12e2177995 ****/
+		/**** md5 signature: ff8ed44ea9e8cfca56786c72d93727e4 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <toler>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, abscissa, and tolerance. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-Toler: float,optional
+theC: Adaptor3d_Curve
+theAbscissa: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 5494ef79aef105455cbf21673f497861 ****/
+		/**** md5 signature: 8b44b683fe0d6498b3497a9091ec2a9c ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <u1>, <u2>, <toler>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, abscissa, tolerance, and parameter range. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Abscissa: float
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor3d_Curve
+theAbscissa: float
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: a5eabf8785fe352212dc7ad8a71f52a1 ****/
+		/**** md5 signature: 6eca052b89a1db443ccc9f720a731ca8 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <nbpoints>, <toler> and.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, number of points, and tolerance. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
-Toler: float,optional
+theC: Adaptor3d_Curve
+theNbPoints: int
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbPoints, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: b4462395334b1b9a81f5ac0f05f23836 ****/
+		/**** md5 signature: 6eeb18455b67ea7baed1e86dfe5be46e ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <u1>, <u2>, <toler>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, number of points, tolerance, and parameter range. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-NbPoints: int
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor3d_Curve
+theNbPoints: int
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 963294d56d8ae76f3793d0e73f52b583 ****/
+		/**** md5 signature: d082dd0da5c8b7e9d016381b64adbe8a ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <toler>.
+		%feature("autodoc", "Initialize the algorithms with 2d curve, abscissa, and tolerance. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 8c8c47722deff6df8f0e6682f7c04be1 ****/
+		/**** md5 signature: 5fed61a500498f1212f77bb22ba940f8 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <u1>, <u2>, <toler>.
+		%feature("autodoc", "Initialize the algorithms with 2d curve, abscissa, tolerance, and parameter range. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Abscissa: float
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theAbscissa: float
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 243da27f5629ddff823669ce2b5eb0f7 ****/
+		/**** md5 signature: 745a95a2b151a47cf5b22071d4b33bdc ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <nbpoints>, <toler> and.
+		%feature("autodoc", "Initialize the algorithms with 2d curve, number of points, and tolerance. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theNbPoints: int
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: e9fe989c38c211b313367cb90e4316f7 ****/
+		/**** md5 signature: f19f9a0beef93e46dbd6b52969a74201 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <abscissa>, <u1>, <u2>, <toler>.
+		%feature("autodoc", "Initialize the algorithms with 2d curve, number of points, tolerance, and parameter range. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-NbPoints: int
-U1: float
-U2: float
-Toler: float,optional
+theC: Adaptor2d_Curve2d
+theNbPoints: int
+theU1: float
+theU2: float
+theToler: float,optional
 	default value is -1
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2, const Standard_Real Toler = -1);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
@@ -1681,80 +1722,80 @@ None
 		 GCPnts_UniformDeflection();
 
 		/****************** GCPnts_UniformDeflection ******************/
-		/**** md5 signature: 4a44af6e4fc70090fa58cc125f52be7e ****/
+		/**** md5 signature: 474b0144d7ee1af0847eba83fb74e324 ****/
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "Computes a uniform deflection distribution of points on the curve <c>. if <withcontrol> is true,the algorithm controls the estimate deflection.
+		%feature("autodoc", "Computes a uniform deflection distribution of points on the curve. @param thec [in] input 3d curve @param thedeflection [in] target deflection @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-WithControl: bool,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") GCPnts_UniformDeflection;
-		 GCPnts_UniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Boolean WithControl = Standard_True);
+		 GCPnts_UniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** GCPnts_UniformDeflection ******************/
-		/**** md5 signature: b818db46c02144d112c562e9d6b77dc3 ****/
+		/**** md5 signature: c3b66ef8894abe8e285c7908a277a990 ****/
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "Computes a uniform deflection distribution of points on the curve <c>. if <withcontrol> is true,the algorithm controls the estimate deflection.
+		%feature("autodoc", "Computes a uniform deflection distribution of points on the curve. @param thec [in] input 2d curve @param thedeflection [in] target deflection @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-WithControl: bool,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") GCPnts_UniformDeflection;
-		 GCPnts_UniformDeflection(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Boolean WithControl = Standard_True);
+		 GCPnts_UniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** GCPnts_UniformDeflection ******************/
-		/**** md5 signature: 4ece604037704318e350a35d09a7b882 ****/
+		/**** md5 signature: 467225835404cd4e0f4b8fd6d878c18c ****/
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "Computes a uniform deflection distribution of points on a part of the curve <c>. if <withcontrol> is true,the algorithm controls the estimate deflection.
+		%feature("autodoc", "Computes a uniform deflection distribution of points on a part of the curve. @param thec [in] input 3d curve @param thedeflection [in] target deflection @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-U1: float
-U2: float
-WithControl: bool,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theU1: float
+theU2: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") GCPnts_UniformDeflection;
-		 GCPnts_UniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean WithControl = Standard_True);
+		 GCPnts_UniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** GCPnts_UniformDeflection ******************/
-		/**** md5 signature: 6db7439f6d931d574c8c10ee5c57a3ce ****/
+		/**** md5 signature: bba43a3bb954557da4c6c6ab78fc8468 ****/
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "Computes a uniform deflection distribution of points on a part of the curve <c>. if <withcontrol> is true,the algorithm controls the estimate deflection.
+		%feature("autodoc", "Computes a uniform deflection distribution of points on a part of the curve. @param thec [in] input 2d curve @param thedeflection [in] target deflection @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-U1: float
-U2: float
-WithControl: bool,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theU1: float
+theU2: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") GCPnts_UniformDeflection;
-		 GCPnts_UniformDeflection(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean WithControl = Standard_True);
+		 GCPnts_UniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** Deflection ******************/
 		/**** md5 signature: 6fb4c31e8f4445c1597fc8b70a63cbfb ****/
@@ -1768,80 +1809,80 @@ float
 		Standard_Real Deflection();
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 2cd00e7a4e0e75cc1e5a6fb0cc956826 ****/
+		/**** md5 signature: 7de03351085fb8daea53a5f412261592 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve and deflection.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-WithControl: bool,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Boolean WithControl = Standard_True);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: ea7c6dd872adbb3c0e195071800fc25c ****/
+		/**** md5 signature: 846a126a55a539a4287ae056e82c995c ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>.
+		%feature("autodoc", "Initialize the algorithms with 2d curve and deflection.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-WithControl: bool,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Boolean WithControl = Standard_True);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 526e683ceeb24974117f9305515bb24e ****/
+		/**** md5 signature: a64a6e461e094380d38a15977c86637a ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <u1>,<u2>.
+		%feature("autodoc", "Initialize the algorithms with 3d curve, deflection, parameter range.
 
 Parameters
 ----------
-C: Adaptor3d_Curve
-Deflection: float
-U1: float
-U2: float
-WithControl: bool,optional
+theC: Adaptor3d_Curve
+theDeflection: float
+theU1: float
+theU2: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean WithControl = Standard_True);
+		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: f4240e246b02ba5995cb4b23215d0dc4 ****/
+		/**** md5 signature: 2d624d7604e4e23f6a84fe4515c62859 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize the algoritms with <c>, <deflection>, <u1>,<u2> this and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve c, or - on the part of curve c limited by the two parameter values u1 and u2, where the maximum distance between c and the polygon that results from the points of the distribution is not greater than deflection. the first point of the distribution is either the origin of curve c or the point of parameter u1. the last point of the distribution is either the end point of curve c or the point of parameter u2. intermediate points of the distribution are built using interpolations of segments of the curve limited at the 2nd degree. the construction ensures, in a first step, that the chordal deviation for this interpolation of the curve is less than or equal to deflection. however, it does not ensure that the chordal deviation for the curve itself is less than or equal to deflection. to do this a check is necessary, which may generate (second step) additional intermediate points. this check is time consuming, and can be avoided by setting withcontrol to false. note that by default withcontrol is true and check is performed. use the function isdone to verify that the computation was successful, the function nbpoints to obtain the number of points of the computed distribution, and the function parameter to read the parameter of each point. warning - c is necessary, 'c2' continuous. this property is not checked at construction time. - the roles of u1 and u2 are inverted if u1 > u2. warning c is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
+		%feature("autodoc", "Initialize the algorithms with curve, deflection, parameter range. this and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve thec, or - on the part of curve thec limited by the two parameter values theu1 and theu2, where the maximum distance between thec and the polygon that results from the points of the distribution is not greater than thedeflection. the first point of the distribution is either the origin of curve thec or the point of parameter theu1. the last point of the distribution is either the end point of curve thec or the point of parameter theu2. intermediate points of the distribution are built using interpolations of segments of the curve limited at the 2nd degree. the construction ensures, in a first step, that the chordal deviation for this interpolation of the curve is less than or equal to thedeflection. however, it does not ensure that the chordal deviation for the curve itself is less than or equal to thedeflection. to do this a check is necessary, which may generate (second step) additional intermediate points. this check is time consuming, and can be avoided by setting thewithcontrol to false. note that by default thewithcontrol is true and check is performed. use the function isdone to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter to read the parameter of each point. //! warning - thec is necessary, 'c2' continuous. this property is not checked at construction time. - the roles of theu1 and theu2 are inverted if theu1 > theu2. //! warning thec is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
 
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-Deflection: float
-U1: float
-U2: float
-WithControl: bool,optional
+theC: Adaptor2d_Curve2d
+theDeflection: float
+theU1: float
+theU2: float
+theWithControl: bool,optional
 	default value is Standard_True
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean WithControl = Standard_True);
+		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
@@ -1912,6 +1953,10 @@ class GCPnts_DistFunction:
 
 @classnotwrapped
 class GCPnts_DistFunction2d:
+	pass
+
+@classnotwrapped
+class GCPnts_TCurveTypes:
 	pass
 
 }

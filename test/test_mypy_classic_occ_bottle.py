@@ -151,7 +151,10 @@ while aFaceExplorer.More():
 facesToRemove = TopTools_ListOfShape()
 facesToRemove.Append(aFace)
 
-myBody_step3 = BRepOffsetAPI_MakeThickSolid(myBody_step2.Shape(), facesToRemove, -thickness / 50.0, 0.001)
+mk_thick_solid = BRepOffsetAPI_MakeThickSolid()
+mk_thick_solid.MakeThickSolidByJoin(myBody_step2.Shape(), facesToRemove, -thickness / 50.0, 0.001)
+mk_thick_solid.Build()
+myBody_step3 = mk_thick_solid.Shape()
 
 # Set up our surfaces for the threading on the neck
 neckAx2_Ax3 = gp_Ax3(neckLocation, gp_DZ())
@@ -201,6 +204,6 @@ myThreading = aTool.Shape()
 bottle = TopoDS_Compound()
 aBuilder = BRep_Builder()
 aBuilder.MakeCompound(bottle)
-aBuilder.Add(bottle, myBody_step3.Shape())
+aBuilder.Add(bottle, myBody_step3)
 aBuilder.Add(bottle, myThreading)
 print("bottle created")

@@ -2,7 +2,6 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 
 # TKernel
 	FSD
-	MMgt
 	Message
 	NCollection
 	OSD

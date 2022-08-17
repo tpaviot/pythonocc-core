@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLLECTIONDOCSTRING
 "TCollection module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcollection.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tcollection.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLLECTIONDOCSTRING) TCollection
 
@@ -56,37 +56,22 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum TCollection_Side {
-	TCollection_Left = 0,
-	TCollection_Right = 1,
-};
-
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
-
-class TCollection_Side(IntEnum):
-	TCollection_Left = 0
-	TCollection_Right = 1
-TCollection_Left = TCollection_Side.TCollection_Left
-TCollection_Right = TCollection_Side.TCollection_Right
 };
 /* end python proxy for enums */
 
 /* handles */
 %wrap_handle(TCollection_HAsciiString)
 %wrap_handle(TCollection_HExtendedString)
-%wrap_handle(TCollection_MapNode)
-%wrap_handle(TCollection_SeqNode)
 /* end handles declaration */
 
 /* templates */
 /* end templates declaration */
 
 /* typedefs */
-typedef TCollection_MapNode * TCollection_MapNodePtr;
-typedef TCollection_SeqNode * TCollection_SeqNodePtr;
 /* end typedefs declaration */
 
 /********************
@@ -184,7 +169,7 @@ None
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: ac8ac9c34e424f0a9f52452a771d440e ****/
 		%feature("compactdefaultargs") TCollection_AsciiString;
-		%feature("autodoc", "Initializes an asciistring with <length> space allocated. and filled with <filler>. this is usefull for buffers.
+		%feature("autodoc", "Initializes an asciistring with <length> space allocated. and filled with <filler>. this is useful for buffers.
 
 Parameters
 ----------
@@ -308,7 +293,7 @@ None
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 31b9469f567d9991529cd4b23f00ac83 ****/
 		%feature("compactdefaultargs") TCollection_AsciiString;
-		%feature("autodoc", "Creation by converting an extended string to an ascii string. if replacenonascii is non-null charecter, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
+		%feature("autodoc", "Creation by converting an extended string to an ascii string. if replacenonascii is non-null character, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
 
 Parameters
 ----------
@@ -517,7 +502,7 @@ None
 		/****************** ChangeAll ******************/
 		/**** md5 signature: 2a8248c4e2acd40c1b84a1410fcc9575 ****/
 		%feature("compactdefaultargs") ChangeAll;
-		%feature("autodoc", "Substitutes all the characters equal to achar by newchar in the asciistring <self>. the substitution can be case sensitive. if you don't use default case sensitive, no matter wether achar is uppercase or not. example: me = 'histake' -> changeall('h','m',standard_true) gives me = 'mistake'.
+		%feature("autodoc", "Substitutes all the characters equal to achar by newchar in the asciistring <self>. the substitution can be case sensitive. if you don't use default case sensitive, no matter whether achar is uppercase or not. example: me = 'histake' -> changeall('h','m',standard_true) gives me = 'mistake'.
 
 Parameters
 ----------
@@ -915,15 +900,20 @@ bool
 		Standard_Boolean IsLess(const TCollection_AsciiString & other);
 
 		/****************** IsRealValue ******************/
-		/**** md5 signature: 37730896bf853986942d4303fcf722e6 ****/
+		/**** md5 signature: 3455e68cf132006275afbfe41b3e332b ****/
 		%feature("compactdefaultargs") IsRealValue;
-		%feature("autodoc", "Returns true if the asciistring contains a real value. note: an integer value is considered to be a real value as well.
+		%feature("autodoc", "Returns true if the asciistring starts with some characters that can be interpreted as integer or real value. @param thetocheckfull [in] when true, checks if entire string defines a real value;  otherwise checks if string starts with a real value note: an integer value is considered to be a real value as well.
+
+Parameters
+----------
+theToCheckFull: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 bool
 ") IsRealValue;
-		Standard_Boolean IsRealValue();
+		Standard_Boolean IsRealValue(Standard_Boolean theToCheckFull = Standard_False);
 
 		/****************** IsSameString ******************/
 		/**** md5 signature: c1d604c9c70a25aef5035beb6698a7da ****/
@@ -945,7 +935,7 @@ bool
 		/****************** LeftAdjust ******************/
 		/**** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ****/
 		%feature("compactdefaultargs") LeftAdjust;
-		%feature("autodoc", "Removes all space characters in the begining of the string.
+		%feature("autodoc", "Removes all space characters in the beginning of the string.
 
 Returns
 -------
@@ -983,7 +973,7 @@ int
 		/****************** Location ******************/
 		/**** md5 signature: b7df9b412181c7ea45c2f5f147569013 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns an index in the string <self> of the first occurence of the string s in the string <self> from the starting index fromindex to the ending index toindex returns zero if failure raises an exception if fromindex or toindex is out of range. example: before me = 'aabaaaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabaaaa' returns 4.
+		%feature("autodoc", "Returns an index in the string <self> of the first occurrence of the string s in the string <self> from the starting index fromindex to the ending index toindex returns zero if failure raises an exception if fromindex or toindex is out of range. example: before me = 'aabaaaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabaaaa' returns 4.
 
 Parameters
 ----------
@@ -1000,7 +990,7 @@ int
 		/****************** Location ******************/
 		/**** md5 signature: 6bebd5959426436339306c497d79377d ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns the index of the nth occurence of the character c in the string <self> from the starting index fromindex to the ending index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range. example: before me = 'aabaa', n = 3, c = 'a', fromindex = 1, toindex = 5 after me = 'aabaa' returns 5.
+		%feature("autodoc", "Returns the index of the nth occurrence of the character c in the string <self> from the starting index fromindex to the ending index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range. example: before me = 'aabaa', n = 3, c = 'a', fromindex = 1, toindex = 5 after me = 'aabaa' returns 5.
 
 Parameters
 ----------
@@ -1087,7 +1077,7 @@ None
 		/****************** RemoveAll ******************/
 		/**** md5 signature: 17e901953b8ffee8fc2a18f2cc4c7ebe ****/
 		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "Remove all the occurences of the character c in the string. example: before me = 'hellllo', c = 'l' , casesensitive = true after me = 'hello'.
+		%feature("autodoc", "Remove all the occurrences of the character c in the string. example: before me = 'hellllo', c = 'l' , casesensitive = true after me = 'hello'.
 
 Parameters
 ----------
@@ -1380,7 +1370,7 @@ int
 		/****************** Value ******************/
 		/**** md5 signature: b790c256d0e62b0d42a4819aca4e63bb ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns character at position <where> in <self>. if <where> is less than zero or greater than the lenght of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
+		%feature("autodoc", "Returns character at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
 
 Parameters
 ----------
@@ -1582,174 +1572,6 @@ TCollection_AsciiString
 
 
 %extend TCollection_AsciiString {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************************
-* class TCollection_BaseSequence *
-*********************************/
-%nodefaultctor TCollection_BaseSequence;
-class TCollection_BaseSequence {
-	public:
-		/****************** Exchange ******************/
-		/**** md5 signature: 3faab1f487d68b5230cea955610b5349 ****/
-		%feature("compactdefaultargs") Exchange;
-		%feature("autodoc", "Swaps elements which are located at positions <i> and <j> in <self>. raises an exception if i or j is out of bound. example: before me = (a b c), i = 1, j = 3 after me = (c b a).
-
-Parameters
-----------
-I: int
-J: int
-
-Returns
--------
-None
-") Exchange;
-		void Exchange(const Standard_Integer I, const Standard_Integer J);
-
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Returns true if the sequence <self> contains no elements.
-
-Returns
--------
-bool
-") IsEmpty;
-		Standard_Boolean IsEmpty();
-
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Returns the number of element(s) in the sequence. returns zero if the sequence is empty.
-
-Returns
--------
-int
-") Length;
-		Standard_Integer Length();
-
-		/****************** Reverse ******************/
-		/**** md5 signature: b751d6874fc026e19a7a6cb37e9ac1b4 ****/
-		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "Reverses the order of items on <self>. example: before me = (a b c) after me = (c b a).
-
-Returns
--------
-None
-") Reverse;
-		void Reverse();
-
-};
-
-
-%extend TCollection_BaseSequence {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class TCollection_BasicMap *
-*****************************/
-%nodefaultctor TCollection_BasicMap;
-class TCollection_BasicMap {
-	public:
-		/****************** Extent ******************/
-		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "Returns the number of keys already stored in <self>.
-
-Returns
--------
-int
-") Extent;
-		Standard_Integer Extent();
-
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Returns true when the map contains no keys. this is exactly extent() == 0.
-
-Returns
--------
-bool
-") IsEmpty;
-		Standard_Boolean IsEmpty();
-
-		/****************** NbBuckets ******************/
-		/**** md5 signature: 558ee01d25f82e9482b59df62eb99945 ****/
-		%feature("compactdefaultargs") NbBuckets;
-		%feature("autodoc", "Returns the number of buckets in <self>.
-
-Returns
--------
-int
-") NbBuckets;
-		Standard_Integer NbBuckets();
-
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string StatisticsToString() {
-            std::stringstream s;
-            self->Statistics(s);
-            return s.str();}
-        };
-};
-
-
-%extend TCollection_BasicMap {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*************************************
-* class TCollection_BasicMapIterator *
-*************************************/
-%nodefaultctor TCollection_BasicMapIterator;
-class TCollection_BasicMapIterator {
-	public:
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns true if there is a current entry for this iterator in the map. use the function next to set this iterator to the position of the next entry, if it exists.
-
-Returns
--------
-bool
-") More;
-		Standard_Boolean More();
-
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Sets this iterator to the position of the next entry of the map. nothing is changed if there is no more entry to explore in the map: this iterator is always positioned on the last entry of the map but the function more returns false.
-
-Returns
--------
-None
-") Next;
-		void Next();
-
-		/****************** Reset ******************/
-		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Resets the iterator to the first node.
-
-Returns
--------
-None
-") Reset;
-		void Reset();
-
-};
-
-
-%extend TCollection_BasicMapIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1989,7 +1811,7 @@ TCollection_ExtendedString
 		/****************** ChangeAll ******************/
 		/**** md5 signature: 172cbf77fdcbc202d23ddaed833764da ****/
 		%feature("compactdefaultargs") ChangeAll;
-		%feature("autodoc", "Substitutes all the characters equal to achar by newchar in the extendedstring <self>. the substitution can be case sensitive. if you don't use default case sensitive, no matter wether achar is uppercase or not.
+		%feature("autodoc", "Substitutes all the characters equal to achar by newchar in the extendedstring <self>. the substitution can be case sensitive. if you don't use default case sensitive, no matter whether achar is uppercase or not.
 
 Parameters
 ----------
@@ -2479,7 +2301,7 @@ None
 		/****************** Value ******************/
 		/**** md5 signature: 84bd4561d49bb9835b6ef809ad6dbc29 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns character at position <where> in <self>. if <where> is less than zero or greater than the lenght of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e' exceptions standard_outofrange if where lies outside the bounds of this extended string.
+		%feature("autodoc", "Returns character at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e' exceptions standard_outofrange if where lies outside the bounds of this extended string.
 
 Parameters
 ----------
@@ -2711,7 +2533,7 @@ None
 		/****************** TCollection_HAsciiString ******************/
 		/**** md5 signature: 2d2c9cf505fe6268a2d3ca5bb9f0df5c ****/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
-		%feature("autodoc", "Initializes a hasciistring with a hextendedstring. if replacenonascii is non-null charecter, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
+		%feature("autodoc", "Initializes a hasciistring with a hextendedstring. if replacenonascii is non-null character, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
 
 Parameters
 ----------
@@ -3103,7 +2925,7 @@ bool
 		/****************** LeftAdjust ******************/
 		/**** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ****/
 		%feature("compactdefaultargs") LeftAdjust;
-		%feature("autodoc", "Removes all space characters in the begining of the string.
+		%feature("autodoc", "Removes all space characters in the beginning of the string.
 
 Returns
 -------
@@ -3141,7 +2963,7 @@ int
 		/****************** Location ******************/
 		/**** md5 signature: 557d6cdb6bdb38582292298f38e087e8 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns an index in the string <self> of the first occurence of the string s in the string <self> from the starting index fromindex to the ending index toindex returns zero if failure raises an exception if fromindex or toindex is out of range. example: before me = 'aabaaaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabaaaa' returns 4.
+		%feature("autodoc", "Returns an index in the string <self> of the first occurrence of the string s in the string <self> from the starting index fromindex to the ending index toindex returns zero if failure raises an exception if fromindex or toindex is out of range. example: before me = 'aabaaaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabaaaa' returns 4.
 
 Parameters
 ----------
@@ -3158,7 +2980,7 @@ int
 		/****************** Location ******************/
 		/**** md5 signature: 6bebd5959426436339306c497d79377d ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns the index of the nth occurence of the character c in the string <self> from the starting index fromindex to the ending index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range example: before me = 'aabaa', n = 3, c = 'a', fromindex = 1, toindex = 5 after me = 'aabaa' returns 5.
+		%feature("autodoc", "Returns the index of the nth occurrence of the character c in the string <self> from the starting index fromindex to the ending index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range example: before me = 'aabaa', n = 3, c = 'a', fromindex = 1, toindex = 5 after me = 'aabaa' returns 5.
 
 Parameters
 ----------
@@ -3187,7 +3009,7 @@ None
 		/****************** Prepend ******************/
 		/**** md5 signature: 71edcb8a4aaf67dd7f8a4065c9e6ab32 ****/
 		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "Inserts the other string at the begining of the string <self> example: before me = 'cde' , s = 'ab' after me = 'abcde' , s = 'ab'.
+		%feature("autodoc", "Inserts the other string at the beginning of the string <self> example: before me = 'cde' , s = 'ab' after me = 'abcde' , s = 'ab'.
 
 Parameters
 ----------
@@ -3238,7 +3060,7 @@ None
 		/****************** RemoveAll ******************/
 		/**** md5 signature: 17e901953b8ffee8fc2a18f2cc4c7ebe ****/
 		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "Remove all the occurences of the character c in the string example: before me = 'hellllo', c = 'l' , casesensitive = true after me = 'hello'.
+		%feature("autodoc", "Remove all the occurrences of the character c in the string example: before me = 'hellllo', c = 'l' , casesensitive = true after me = 'hello'.
 
 Parameters
 ----------
@@ -3512,7 +3334,7 @@ int
 		/****************** Value ******************/
 		/**** md5 signature: b790c256d0e62b0d42a4819aca4e63bb ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns character at position <where> in <self>. if <where> is less than zero or greater than the lenght of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
+		%feature("autodoc", "Returns character at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
 
 Parameters
 ----------
@@ -3599,7 +3421,7 @@ None
 		/****************** TCollection_HExtendedString ******************/
 		/**** md5 signature: 2296e03682630049aa1941ff334aa49d ****/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
-		%feature("autodoc", "Initializes a hextendedstring with <length> space allocated. and filled with <filler>.this is usefull for buffers.
+		%feature("autodoc", "Initializes a hextendedstring with <length> space allocated. and filled with <filler>. this is useful for buffers.
 
 Parameters
 ----------
@@ -4016,102 +3838,6 @@ Standard_ExtCharacter
 %make_alias(TCollection_HExtendedString)
 
 %extend TCollection_HExtendedString {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class TCollection_MapNode *
-****************************/
-class TCollection_MapNode : public Standard_Transient {
-	public:
-		/****************** TCollection_MapNode ******************/
-		/**** md5 signature: 8ef7c4db0c33b6cca1484b228821b316 ****/
-		%feature("compactdefaultargs") TCollection_MapNode;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-n: TCollection_MapNodePtr
-
-Returns
--------
-None
-") TCollection_MapNode;
-		 TCollection_MapNode(const TCollection_MapNodePtr & n);
-
-		/****************** Next ******************/
-		/**** md5 signature: 004eb29eeedb7cd2aa82c1dd61c2d193 ****/
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TCollection_MapNodePtr
-") Next;
-		TCollection_MapNodePtr & Next();
-
-};
-
-
-%make_alias(TCollection_MapNode)
-
-%extend TCollection_MapNode {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class TCollection_SeqNode *
-****************************/
-class TCollection_SeqNode : public Standard_Transient {
-	public:
-		/****************** TCollection_SeqNode ******************/
-		/**** md5 signature: ca459acccb03ff254b9fad899af111e8 ****/
-		%feature("compactdefaultargs") TCollection_SeqNode;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-n: TCollection_SeqNodePtr
-p: TCollection_SeqNodePtr
-
-Returns
--------
-None
-") TCollection_SeqNode;
-		 TCollection_SeqNode(const TCollection_SeqNodePtr & n, const TCollection_SeqNodePtr & p);
-
-		/****************** Next ******************/
-		/**** md5 signature: 23248815da0e6934b1f8d60aecd98900 ****/
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TCollection_SeqNodePtr
-") Next;
-		TCollection_SeqNodePtr & Next();
-
-		/****************** Previous ******************/
-		/**** md5 signature: 31e9b8d85f3792b214edbd0ecd1021c6 ****/
-		%feature("compactdefaultargs") Previous;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TCollection_SeqNodePtr
-") Previous;
-		TCollection_SeqNodePtr & Previous();
-
-};
-
-
-%make_alias(TCollection_SeqNode)
-
-%extend TCollection_SeqNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

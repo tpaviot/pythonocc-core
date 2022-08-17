@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPOFFSETDOCSTRING
 "BRepOffset module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepoffset.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETDOCSTRING) BRepOffset
 
@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
 #include<TopoDS_module.hxx>
 #include<TopTools_module.hxx>
 #include<ChFiDS_module.hxx>
+#include<Message_module.hxx>
 #include<BRepAlgo_module.hxx>
 #include<TopAbs_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -103,6 +104,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
 %import TopoDS.i
 %import TopTools.i
 %import ChFiDS.i
+%import Message.i
 %import BRepAlgo.i
 %import TopAbs.i
 %import GeomAbs.i
@@ -128,6 +130,7 @@ enum BRepOffset_Error {
 	BRepOffset_CannotTrimEdges = 6,
 	BRepOffset_CannotFuseVertices = 7,
 	BRepOffset_CannotExtentEdge = 8,
+	BRepOffset_UserBreak = 9,
 };
 
 enum BRepOffsetSimple_Status {
@@ -154,7 +157,7 @@ enum BRepOffset_Status {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BRepOffset_Error(IntEnum):
@@ -167,6 +170,7 @@ class BRepOffset_Error(IntEnum):
 	BRepOffset_CannotTrimEdges = 6
 	BRepOffset_CannotFuseVertices = 7
 	BRepOffset_CannotExtentEdge = 8
+	BRepOffset_UserBreak = 9
 BRepOffset_NoError = BRepOffset_Error.BRepOffset_NoError
 BRepOffset_UnknownError = BRepOffset_Error.BRepOffset_UnknownError
 BRepOffset_BadNormalsOnGeometry = BRepOffset_Error.BRepOffset_BadNormalsOnGeometry
@@ -176,6 +180,7 @@ BRepOffset_NotConnectedShell = BRepOffset_Error.BRepOffset_NotConnectedShell
 BRepOffset_CannotTrimEdges = BRepOffset_Error.BRepOffset_CannotTrimEdges
 BRepOffset_CannotFuseVertices = BRepOffset_Error.BRepOffset_CannotFuseVertices
 BRepOffset_CannotExtentEdge = BRepOffset_Error.BRepOffset_CannotExtentEdge
+BRepOffset_UserBreak = BRepOffset_Error.BRepOffset_UserBreak
 
 class BRepOffsetSimple_Status(IntEnum):
 	BRepOffsetSimple_OK = 0
@@ -554,7 +559,7 @@ TopTools_ListOfShape
 		const TopTools_ListOfShape & NewFaces();
 
 		/****************** Perform ******************/
-		/**** md5 signature: c355917b7e1bcc75a618007be133da6b ****/
+		/**** md5 signature: 15379b06ecba8382979b6910520f10b4 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the analysis.
 
@@ -562,12 +567,14 @@ Parameters
 ----------
 theS: TopoDS_Shape
 theAngle: float
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const TopoDS_Shape & theS, const Standard_Real theAngle);
+		void Perform(const TopoDS_Shape & theS, const Standard_Real theAngle, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetFaceOffsetMap ******************/
 		/**** md5 signature: c0dee5c14e1fc5e4f89a0d54179182fd ****/
@@ -646,7 +653,7 @@ BRepOffset_ListOfInterval
 class BRepOffset_Inter2d {
 	public:
 		/****************** Compute ******************/
-		/**** md5 signature: bde03ec66a797cb4685832503e894f02 ****/
+		/**** md5 signature: 8676c4f6ddf0fb8dbe22fb366209c8f2 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Computes the intersections between the edges stored is asdes as descendants of <f> . intersections is computed between two edges if one of them is bound in newedges. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -658,15 +665,16 @@ NewEdges: TopTools_IndexedMapOfShape
 Tol: float
 theEdgeIntEdges: TopTools_DataMapOfShapeListOfShape
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") Compute;
-		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, const TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, const TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
 		/****************** ConnexIntByInt ******************/
-		/**** md5 signature: 9542f85ef2c6d8783402b4d5f6bb0b58 ****/
+		/**** md5 signature: 1d06e218233c0cb963048a32785e6a20 ****/
 		%feature("compactdefaultargs") ConnexIntByInt;
 		%feature("autodoc", "Computes the intersection between the offset edges of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -685,15 +693,16 @@ FacesWithVerts: TopTools_IndexedMapOfShape
 theImageVV: BRepAlgo_Image
 theEdgeIntEdges: TopTools_DataMapOfShapeListOfShape
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
+theRange: Message_ProgressRange
 
 Returns
 -------
 bool
 ") ConnexIntByInt;
-		static Standard_Boolean ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, BRepAlgo_Image & theImageVV, TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static Standard_Boolean ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, BRepAlgo_Image & theImageVV, TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
 		/****************** ConnexIntByIntInVert ******************/
-		/**** md5 signature: ea838c391bea9387e57a224561f2be12 ****/
+		/**** md5 signature: 29b216d0fc2dd04c81eddf2b9ff0af69 ****/
 		%feature("compactdefaultargs") ConnexIntByIntInVert;
 		%feature("autodoc", "Computes the intersection between the offset edges generated from vertices and stored into asdes as descendants of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
 
@@ -708,12 +717,13 @@ AsDes2d: BRepAlgo_AsDes
 Tol: float
 Analyse: BRepOffset_Analyse
 theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") ConnexIntByIntInVert;
-		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV);
+		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
 		/****************** ExtentEdge ******************/
 		/**** md5 signature: b18af25b66d4abbae97b9437f24da597 ****/
@@ -764,13 +774,13 @@ bool
 class BRepOffset_Inter3d {
 	public:
 		/****************** BRepOffset_Inter3d ******************/
-		/**** md5 signature: 9fd66aef3ebdcf13bcde09e6d645c2ee ****/
+		/**** md5 signature: a50e9a2c6e0d91514a6703132cf5226e ****/
 		%feature("compactdefaultargs") BRepOffset_Inter3d;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Constructor.
 
 Parameters
 ----------
-AsDes: BRepAlgo_AsDes
+AsDes: Handle ( BRepAlgo_AsDes )
 Side: TopAbs_State
 Tol: float
 
@@ -778,36 +788,10 @@ Returns
 -------
 None
 ") BRepOffset_Inter3d;
-		 BRepOffset_Inter3d(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopAbs_State Side, const Standard_Real Tol);
-
-		/****************** AddCommonEdges ******************/
-		/**** md5 signature: 3a1075fa148914bfe74048a60d117c64 ****/
-		%feature("compactdefaultargs") AddCommonEdges;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-SetOfFaces: TopTools_ListOfShape
-
-Returns
--------
-None
-") AddCommonEdges;
-		void AddCommonEdges(const TopTools_ListOfShape & SetOfFaces);
-
-		/****************** AsDes ******************/
-		/**** md5 signature: 6803275846107842748239bc71773529 ****/
-		%feature("compactdefaultargs") AsDes;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<BRepAlgo_AsDes>
-") AsDes;
-		opencascade::handle<BRepAlgo_AsDes> AsDes();
+		 BRepOffset_Inter3d(const Handle ( BRepAlgo_AsDes ) & AsDes, const TopAbs_State Side, const Standard_Real Tol);
 
 		/****************** CompletInt ******************/
-		/**** md5 signature: 2133be53edd37d3e3641e3d39b4f050d ****/
+		/**** md5 signature: 3d14748ac531a357f6f40197c38eda01 ****/
 		%feature("compactdefaultargs") CompletInt;
 		%feature("autodoc", "No available documentation.
 
@@ -815,17 +799,18 @@ Parameters
 ----------
 SetOfFaces: TopTools_ListOfShape
 InitOffsetFace: BRepAlgo_Image
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") CompletInt;
-		void CompletInt(const TopTools_ListOfShape & SetOfFaces, const BRepAlgo_Image & InitOffsetFace);
+		void CompletInt(const TopTools_ListOfShape & SetOfFaces, const BRepAlgo_Image & InitOffsetFace, const Message_ProgressRange & theRange);
 
 		/****************** ConnexIntByArc ******************/
-		/**** md5 signature: 48b7695a5a1df82b4be43f9aeb6a0fce ****/
+		/**** md5 signature: 04b429aa49d7537664fab974813577f7 ****/
 		%feature("compactdefaultargs") ConnexIntByArc;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Computes connections of the offset faces that have to be connected by arcs.
 
 Parameters
 ----------
@@ -833,17 +818,18 @@ SetOfFaces: TopTools_ListOfShape
 ShapeInit: TopoDS_Shape
 Analyse: BRepOffset_Analyse
 InitOffsetFace: BRepAlgo_Image
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") ConnexIntByArc;
-		void ConnexIntByArc(const TopTools_ListOfShape & SetOfFaces, const TopoDS_Shape & ShapeInit, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace);
+		void ConnexIntByArc(const TopTools_ListOfShape & SetOfFaces, const TopoDS_Shape & ShapeInit, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, const Message_ProgressRange & theRange);
 
 		/****************** ConnexIntByInt ******************/
-		/**** md5 signature: 8e70f0e8b2d959b5b32aeb39f7f9d09f ****/
+		/**** md5 signature: 0076ca9fe52ebefcccba69f1a02c3046 ****/
 		%feature("compactdefaultargs") ConnexIntByInt;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Computes intersection of the offset faces that have to be connected by sharp edges, i.e. it computes intersection between extended offset faces.
 
 Parameters
 ----------
@@ -853,6 +839,7 @@ A: BRepOffset_Analyse
 MES: TopTools_DataMapOfShapeShape
 Build: TopTools_DataMapOfShapeShape
 Failed: TopTools_ListOfShape
+theRange: Message_ProgressRange
 bIsPlanar: bool,optional
 	default value is Standard_False
 
@@ -860,12 +847,12 @@ Returns
 -------
 None
 ") ConnexIntByInt;
-		void ConnexIntByInt(const TopoDS_Shape & SI, const BRepOffset_DataMapOfShapeOffset & MapSF, const BRepOffset_Analyse & A, TopTools_DataMapOfShapeShape & MES, TopTools_DataMapOfShapeShape & Build, TopTools_ListOfShape & Failed, const Standard_Boolean bIsPlanar = Standard_False);
+		void ConnexIntByInt(const TopoDS_Shape & SI, const BRepOffset_DataMapOfShapeOffset & MapSF, const BRepOffset_Analyse & A, TopTools_DataMapOfShapeShape & MES, TopTools_DataMapOfShapeShape & Build, TopTools_ListOfShape & Failed, const Message_ProgressRange & theRange, const Standard_Boolean bIsPlanar = Standard_False);
 
 		/****************** ContextIntByArc ******************/
-		/**** md5 signature: bce31c968a516813d7fb1b570dd93e23 ****/
+		/**** md5 signature: 77469bdfc3371b922103cfe1e74b59c6 ****/
 		%feature("compactdefaultargs") ContextIntByArc;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Computes connections of the not offset faces that have to be connected by arcs.
 
 Parameters
 ----------
@@ -874,17 +861,18 @@ ExtentContext: bool
 Analyse: BRepOffset_Analyse
 InitOffsetFace: BRepAlgo_Image
 InitOffsetEdge: BRepAlgo_Image
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") ContextIntByArc;
-		void ContextIntByArc(const TopTools_IndexedMapOfShape & ContextFaces, const Standard_Boolean ExtentContext, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, BRepAlgo_Image & InitOffsetEdge);
+		void ContextIntByArc(const TopTools_IndexedMapOfShape & ContextFaces, const Standard_Boolean ExtentContext, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, BRepAlgo_Image & InitOffsetEdge, const Message_ProgressRange & theRange);
 
 		/****************** ContextIntByInt ******************/
-		/**** md5 signature: d7d4d8ad021ac6ded14d065090cec7fe ****/
+		/**** md5 signature: ae35b5925db57bda395571dcc47d3c11 ****/
 		%feature("compactdefaultargs") ContextIntByInt;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Computes intersection with not offset faces .
 
 Parameters
 ----------
@@ -895,6 +883,7 @@ A: BRepOffset_Analyse
 MES: TopTools_DataMapOfShapeShape
 Build: TopTools_DataMapOfShapeShape
 Failed: TopTools_ListOfShape
+theRange: Message_ProgressRange
 bIsPlanar: bool,optional
 	default value is Standard_False
 
@@ -902,12 +891,12 @@ Returns
 -------
 None
 ") ContextIntByInt;
-		void ContextIntByInt(const TopTools_IndexedMapOfShape & ContextFaces, const Standard_Boolean ExtentContext, const BRepOffset_DataMapOfShapeOffset & MapSF, const BRepOffset_Analyse & A, TopTools_DataMapOfShapeShape & MES, TopTools_DataMapOfShapeShape & Build, TopTools_ListOfShape & Failed, const Standard_Boolean bIsPlanar = Standard_False);
+		void ContextIntByInt(const TopTools_IndexedMapOfShape & ContextFaces, const Standard_Boolean ExtentContext, const BRepOffset_DataMapOfShapeOffset & MapSF, const BRepOffset_Analyse & A, TopTools_DataMapOfShapeShape & MES, TopTools_DataMapOfShapeShape & Build, TopTools_ListOfShape & Failed, const Message_ProgressRange & theRange, const Standard_Boolean bIsPlanar = Standard_False);
 
 		/****************** FaceInter ******************/
 		/**** md5 signature: 62d9b8b2341ea348e10a9705c1e1a1d6 ****/
 		%feature("compactdefaultargs") FaceInter;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Computes intersection of pair of faces.
 
 Parameters
 ----------
@@ -924,7 +913,7 @@ None
 		/****************** IsDone ******************/
 		/**** md5 signature: 8801efe525a67dac919cc689e660bf42 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Checks if the pair of faces has already been treated.
 
 Parameters
 ----------
@@ -938,9 +927,9 @@ bool
 		Standard_Boolean IsDone(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
 		/****************** NewEdges ******************/
-		/**** md5 signature: a2b25cad9fda67ee995ca631566b88e7 ****/
+		/**** md5 signature: 975ce143c1c9ad7032004090c4ea255a ****/
 		%feature("compactdefaultargs") NewEdges;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns new edges.
 
 Returns
 -------
@@ -951,7 +940,7 @@ TopTools_IndexedMapOfShape
 		/****************** SetDone ******************/
 		/**** md5 signature: d9f3a39ef77387fe413720595d42df62 ****/
 		%feature("compactdefaultargs") SetDone;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Marks the pair of faces as already intersected.
 
 Parameters
 ----------
@@ -965,9 +954,9 @@ None
 		void SetDone(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
 		/****************** TouchedFaces ******************/
-		/**** md5 signature: c6cb7871fc937245c8cd275623b60a64 ****/
+		/**** md5 signature: e1597833f2e42e18789e5809f3a43359 ****/
 		%feature("compactdefaultargs") TouchedFaces;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns touched faces.
 
 Returns
 -------
@@ -1121,7 +1110,7 @@ None
 		 BRepOffset_MakeLoops();
 
 		/****************** Build ******************/
-		/**** md5 signature: fa75ced0f1b13af9db45939bc0b3ea40 ****/
+		/**** md5 signature: a3ef36c00947a38334570c219cb36bba ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "No available documentation.
 
@@ -1131,15 +1120,16 @@ LF: TopTools_ListOfShape
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
 theImageVV: BRepAlgo_Image
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") Build;
-		void Build(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, BRepAlgo_Image & theImageVV);
+		void Build(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, BRepAlgo_Image & theImageVV, const Message_ProgressRange & theRange);
 
 		/****************** BuildFaces ******************/
-		/**** md5 signature: c3db0e3d2792b138a1249d8591b7cf76 ****/
+		/**** md5 signature: db5370c8364c7b784d98eba5f5783e25 ****/
 		%feature("compactdefaultargs") BuildFaces;
 		%feature("autodoc", "No available documentation.
 
@@ -1148,15 +1138,16 @@ Parameters
 LF: TopTools_ListOfShape
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") BuildFaces;
-		void BuildFaces(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image);
+		void BuildFaces(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const Message_ProgressRange & theRange);
 
 		/****************** BuildOnContext ******************/
-		/**** md5 signature: bc99175fcb78130f592a2aff740f2ff3 ****/
+		/**** md5 signature: 3696d929e7c8f5753dbdac8d11ecc214 ****/
 		%feature("compactdefaultargs") BuildOnContext;
 		%feature("autodoc", "No available documentation.
 
@@ -1167,12 +1158,13 @@ Analyse: BRepOffset_Analyse
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
 InSide: bool
+theRange: Message_ProgressRange
 
 Returns
 -------
 None
 ") BuildOnContext;
-		void BuildOnContext(const TopTools_ListOfShape & LContext, const BRepOffset_Analyse & Analyse, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const Standard_Boolean InSide);
+		void BuildOnContext(const TopTools_ListOfShape & LContext, const BRepOffset_Analyse & Analyse, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const Standard_Boolean InSide, const Message_ProgressRange & theRange);
 
 };
 
@@ -1200,7 +1192,7 @@ None
 		 BRepOffset_MakeOffset();
 
 		/****************** BRepOffset_MakeOffset ******************/
-		/**** md5 signature: 171c87d8e680578c0a8bc3f18e9d5b1f ****/
+		/**** md5 signature: ee57348738e6773115f85db9e79ce047 ****/
 		%feature("compactdefaultargs") BRepOffset_MakeOffset;
 		%feature("autodoc", "No available documentation.
 
@@ -1221,12 +1213,14 @@ Thickening: bool,optional
 	default value is Standard_False
 RemoveIntEdges: bool,optional
 	default value is Standard_False
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepOffset_MakeOffset;
-		 BRepOffset_MakeOffset(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Thickening = Standard_False, const Standard_Boolean RemoveIntEdges = Standard_False);
+		 BRepOffset_MakeOffset(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Thickening = Standard_False, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** AddFace ******************/
 		/**** md5 signature: 5fecadaf3ef2e154bc4683eed0767084 ****/
@@ -1259,15 +1253,19 @@ None
 		void AllowLinearization(const Standard_Boolean theIsAllowed);
 
 		/****************** CheckInputData ******************/
-		/**** md5 signature: 99b88da9ff25acb39451f2ea45c0c7aa ****/
+		/**** md5 signature: 9afa07862279ffa138a4fd97c69973f1 ****/
 		%feature("compactdefaultargs") CheckInputData;
 		%feature("autodoc", "Makes pre analysis of possibility offset perform. use method error() to get more information. finds first error. list of checks: 1) check for existence object with non-null offset. 2) check for connectivity in offset shell. 3) check continuity of input surfaces. 4) check for normals existence on grid. returns true if possible make computations and false otherwise.
+
+Parameters
+----------
+theRange: Message_ProgressRange
 
 Returns
 -------
 bool
 ") CheckInputData;
-		Standard_Boolean CheckInputData();
+		Standard_Boolean CheckInputData(const Message_ProgressRange & theRange);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -1406,26 +1404,36 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** MakeOffsetShape ******************/
-		/**** md5 signature: c28a2e07542c09a34ec888d10d3aaa98 ****/
+		/**** md5 signature: 90eb5beb7eaec8a61b9373222b37bf2a ****/
 		%feature("compactdefaultargs") MakeOffsetShape;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") MakeOffsetShape;
-		void MakeOffsetShape();
+		void MakeOffsetShape(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** MakeThickSolid ******************/
-		/**** md5 signature: fb5906e94a5737d57bb0ef13f12dcb1e ****/
+		/**** md5 signature: b65451d4fcfd016c468dfc9dd1fc4dc2 ****/
 		%feature("compactdefaultargs") MakeThickSolid;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") MakeThickSolid;
-		void MakeThickSolid();
+		void MakeThickSolid(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Modified ******************/
 		/**** md5 signature: 5d9ac8e1ec1d1479a40fa0773fd021b0 ****/
@@ -1539,7 +1547,7 @@ None
 		/****************** Generated ******************/
 		/**** md5 signature: 24159a2591570d74b47fceb984e706dd ****/
 		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "Returnes result shape for the given one (if exists).
+		%feature("autodoc", "Returns result shape for the given one (if exists).
 
 Parameters
 ----------
@@ -1647,7 +1655,7 @@ bool
 		/****************** Modified ******************/
 		/**** md5 signature: 0ab0361e49e1bf256b9fc5a21ac6a9fa ****/
 		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "Returnes modified shape for the given one (if exists).
+		%feature("autodoc", "Returns modified shape for the given one (if exists).
 
 Parameters
 ----------
@@ -1767,7 +1775,7 @@ None
 		/****************** BRepOffset_Offset ******************/
 		/**** md5 signature: 4a75c6b0a6934ea4df38a31848783ca4 ****/
 		%feature("compactdefaultargs") BRepOffset_Offset;
-		%feature("autodoc", "This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe). //! the map will be fill as follow: //! created(e) = e' with: e = an edge of <face> e' = the image of e in the offseting of another face sharing e with a continuity at least g1.
+		%feature("autodoc", "This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe). //! the map will be fill as follow: //! created(e) = e' with: e = an edge of <face> e' = the image of e in the offsetting of another face sharing e with a continuity at least g1.
 
 Parameters
 ----------
@@ -1838,7 +1846,7 @@ None
 		/****************** BRepOffset_Offset ******************/
 		/**** md5 signature: 4855766d144a61e46d61e820d1f2151a ****/
 		%feature("compactdefaultargs") BRepOffset_Offset;
-		%feature("autodoc", "Tol and conti are only used if polynomial is true (used to perfrom the approximation).
+		%feature("autodoc", "Tol and conti are only used if polynomial is true (used to perform the approximation).
 
 Parameters
 ----------
@@ -1978,7 +1986,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: a55d171e913f36f0b4e55051d82643fd ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Tol and conti are only used if polynomial is true (used to perfrom the approximation).
+		%feature("autodoc", "Tol and conti are only used if polynomial is true (used to perform the approximation).
 
 Parameters
 ----------
@@ -2270,7 +2278,7 @@ None
 		/****************** Deboucle3D ******************/
 		/**** md5 signature: 604726f64f42702b8591f042f704509e ****/
 		%feature("compactdefaultargs") Deboucle3D;
-		%feature("autodoc", "Remove the non valid part of an offsetshape 1 - remove all the free boundary and the faces connex to such edges. 2 - remove all the shapes not valid in the result (according to the side of offseting) in this verion only the first point is implemented.
+		%feature("autodoc", "Remove the non valid part of an offsetshape 1 - remove all the free boundary and the faces connex to such edges. 2 - remove all the shapes not valid in the result (according to the side of offsetting) in this version only the first point is implemented.
 
 Parameters
 ----------

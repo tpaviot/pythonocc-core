@@ -647,9 +647,9 @@ class TestWrapperFeatures(unittest.TestCase):
     def test_repr_for_null_TopoDS_Shape(self) -> None:
         # create null vertex and shape
         v = TopoDS_Vertex()
-        self.assertTrue("Null" in v.__repr__())
+        self.assertTrue("Null" in repr(v))
         s = TopoDS_Shape()
-        self.assertTrue("Null" in s.__repr__())
+        self.assertTrue("Null" in repr(s))
 
     def test_in_place_operators(self) -> None:
         # operator +=

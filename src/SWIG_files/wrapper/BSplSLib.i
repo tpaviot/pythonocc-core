@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BSPLSLIBDOCSTRING
 "BSplSLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bsplslib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bsplslib.html"
 %enddef
 %module (package="OCC.Core", docstring=BSPLSLIBDOCSTRING) BSplSLib
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -466,7 +466,7 @@ None
 		/****************** FunctionMultiply ******************/
 		/**** md5 signature: 45abca34df2cfa28f99d3579bc8a3b9c ****/
 		%feature("compactdefaultargs") FunctionMultiply;
-		%feature("autodoc", "This will multiply a given bspline numerator n(u,v) and denominator d(u,v) defined by its u/vbsplinedegree and u/vbsplineknots, and u/vmults. its poles and weights are arrays which are coded as array2 of the form [1..unumpoles][1..vnumpoles] by a function a(u,v) which is assumed to satisfy the following : 1. a(u,v) * n(u,v) and a(u,v) * d(u,v) is a polynomial bspline that can be expressed exactly as a bspline of degree u/vnewdegree on the knots u/vflatknots 2. the range of a(u,v) is the same as the range of n(u,v) or d(u,v) ---warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method -- thestatus will return 0 if ok else it will return the pivot index -- of the matrix that was inverted to compute the multiplied -- bspline : the method used is interpolation at schoenenberg -- points of a(u,v)* n(u,v) and a(u,v) * d(u,v) thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(u,v)*f(u,v) --.
+		%feature("autodoc", "This will multiply a given bspline numerator n(u,v) and denominator d(u,v) defined by its u/vbsplinedegree and u/vbsplineknots, and u/vmults. its poles and weights are arrays which are coded as array2 of the form [1..unumpoles][1..vnumpoles] by a function a(u,v) which is assumed to satisfy the following : 1. a(u,v) * n(u,v) and a(u,v) * d(u,v) is a polynomial bspline that can be expressed exactly as a bspline of degree u/vnewdegree on the knots u/vflatknots 2. the range of a(u,v) is the same as the range of n(u,v) or d(u,v) ---warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method -- thestatus will return 0 if ok else it will return the pivot index -- of the matrix that was inverted to compute the multiplied -- bspline : the method used is interpolation at schoenenberg -- points of a(u,v)* n(u,v) and a(u,v) * d(u,v) thestatus will return 0 if ok else it will return the pivot index of the matrix that was inverted to compute the multiplied bspline : the method used is interpolation at schoenenberg points of a(u,v)*f(u,v) --.
 
 Parameters
 ----------

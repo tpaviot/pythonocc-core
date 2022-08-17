@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPCHECKDOCSTRING
 "BRepCheck module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepcheck.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepcheck.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCHECKDOCSTRING) BRepCheck
 
@@ -110,7 +110,7 @@ enum BRepCheck_Status {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BRepCheck_Status(IntEnum):
@@ -202,8 +202,7 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
 /* end handles declaration */
 
 /* templates */
-%template(BRepCheck_DataMapOfShapeListOfStatus) NCollection_DataMap<TopoDS_Shape,BRepCheck_ListOfStatus,TopTools_ShapeMapHasher>;
-%template(BRepCheck_DataMapOfShapeResult) NCollection_DataMap<TopoDS_Shape,opencascade::handle<BRepCheck_Result>,TopTools_OrientedShapeMapHasher>;
+%template(BRepCheck_IndexedDataMapOfShapeResult) NCollection_IndexedDataMap<TopoDS_Shape,opencascade::handle<BRepCheck_Result>,TopTools_OrientedShapeMapHasher>;
 %template(BRepCheck_ListIteratorOfListOfStatus) NCollection_TListIterator<BRepCheck_Status>;
 %template(BRepCheck_ListOfStatus) NCollection_List<BRepCheck_Status>;
 
@@ -216,10 +215,10 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, BRepCheck_ListOfStatus, TopTools_ShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<BRepCheck_Result>, TopTools_OrientedShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
-typedef NCollection_DataMap<TopoDS_Shape, BRepCheck_ListOfStatus, TopTools_ShapeMapHasher> BRepCheck_DataMapOfShapeListOfStatus;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<BRepCheck_Result>, TopTools_OrientedShapeMapHasher> BRepCheck_DataMapOfShapeResult;
+typedef NCollection_DataMap<TopoDS_Shape, Handle ( NCollection_Shared<BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
+typedef NCollection_DataMap<TopoDS_Shape, Handle ( NCollection_Shared<BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher> BRepCheck_DataMapOfShapeListOfStatus;
+typedef NCollection_Shared<BRepCheck_ListOfStatus> BRepCheck_HListOfStatus;
+typedef NCollection_IndexedDataMap<TopoDS_Shape, opencascade::handle<BRepCheck_Result>, TopTools_OrientedShapeMapHasher> BRepCheck_IndexedDataMapOfShapeResult;
 typedef NCollection_List<BRepCheck_Status>::Iterator BRepCheck_ListIteratorOfListOfStatus;
 typedef NCollection_List<BRepCheck_Status> BRepCheck_ListOfStatus;
 /* end typedefs declaration */
@@ -262,19 +261,19 @@ float
 		static Standard_Real PrecCurve(const Adaptor3d_Curve & aAC3D);
 
 		/****************** PrecSurface ******************/
-		/**** md5 signature: 1ee0cf2b6eac4a6cd14cb86720323439 ****/
+		/**** md5 signature: 6f4c623dddf91472dbeeff8461bbbbf9 ****/
 		%feature("compactdefaultargs") PrecSurface;
 		%feature("autodoc", "Returns the resolution on the surface.
 
 Parameters
 ----------
-aAHSurf: Adaptor3d_HSurface
+aAHSurf: Adaptor3d_Surface
 
 Returns
 -------
 float
 ") PrecSurface;
-		static Standard_Real PrecSurface(const opencascade::handle<Adaptor3d_HSurface> & aAHSurf);
+		static Standard_Real PrecSurface(const opencascade::handle<Adaptor3d_Surface> & aAHSurf);
 
 		/****************** SelfIntersection ******************/
 		/**** md5 signature: bb04b20d19bd60ec83e4525199c06c3b ****/
@@ -309,7 +308,7 @@ bool
 class BRepCheck_Analyzer {
 	public:
 		/****************** BRepCheck_Analyzer ******************/
-		/**** md5 signature: 1ea01ba3f32c876f168d8f18b7120753 ****/
+		/**** md5 signature: 863e07daa9878e246ad0df9e39cb12c7 ****/
 		%feature("compactdefaultargs") BRepCheck_Analyzer;
 		%feature("autodoc", "Constructs a shape validation object defined by the shape s. <s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex : brepcheck_invalidtolerancevalue nyi for an edge : brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerancevalue nyi for a face : brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerancevalue nyi for a wire : brepcheck_selfintersectingwire.
 
@@ -318,15 +317,17 @@ Parameters
 S: TopoDS_Shape
 GeomControls: bool,optional
 	default value is Standard_True
+theIsParallel: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") BRepCheck_Analyzer;
-		 BRepCheck_Analyzer(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True);
+		 BRepCheck_Analyzer(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True, const Standard_Boolean theIsParallel = Standard_False);
 
 		/****************** Init ******************/
-		/**** md5 signature: 5196c4939ad07fcdde4186169aa9d21c ****/
+		/**** md5 signature: c4f36359b7ff320b0be9eb21e30c20b6 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "<s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex : brepcheck_invalidtolerance nyi for an edge : brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerance nyi for a face : brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerance nyi for a wire : brepcheck_selfintersectingwire.
 
@@ -335,12 +336,14 @@ Parameters
 S: TopoDS_Shape
 GeomControls: bool,optional
 	default value is Standard_True
+theIsParallel: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") Init;
-		void Init(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True);
+		void Init(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True, const Standard_Boolean theIsParallel = Standard_False);
 
 		/****************** IsValid ******************/
 		/**** md5 signature: 067e002b3bd9e0362264cfada4f4eeac ****/
@@ -358,7 +361,7 @@ bool
 		Standard_Boolean IsValid(const TopoDS_Shape & S);
 
 		/****************** IsValid ******************/
-		/**** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ****/
+		/**** md5 signature: 7d115ff85bb657b98ab8790006673845 ****/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Returns true if no defect is detected on the shape s or any of its subshapes. returns true if the shape s is valid. this function checks whether a given shape is valid by checking that: - the topology is correct - parameterization of edges in particular is correct. for the topology to be correct, the following conditions must be satisfied: - edges should have at least two vertices if they are not degenerate edges. the vertices should be within the range of the bounding edges at the tolerance specified in the vertex, - edges should share at least one face. the representation of the edges should be within the tolerance criterion assigned to them. - wires defining a face should not self-intersect and should be closed, - there should be one wire which contains all other wires inside a face, - wires should be correctly oriented with respect to each of the edges, - faces should be correctly oriented, in particular with respect to adjacent faces if these faces define a solid, - shells defining a solid should be closed. there should be one enclosing shell if the shape is a solid; to check parameterization of edge, there are 2 approaches depending on the edge?s contextual situation. - if the edge is either single, or it is in the context of a wire or a compound, its parameterization is defined by the parameterization of its 3d curve and is considered as valid. - if the edge is in the context of a face, it should have sameparameter and samerange flags set to standard_true. to check these flags, you should call the function brep_tool::sameparameter and brep_tool::samerange for an edge. if at least one of these flags is set to standard_false, the edge is considered as invalid without any additional check. if the edge is contained by a face, and it has sameparameter and samerange flags set to standard_true, isvalid checks whether representation of the edge on face, in context of which the edge is considered, has the same parameterization up to the tolerance value coded on the edge. for a given parameter t on the edge having c as a 3d curve and one pcurve p on a surface s (base surface of the reference face), this checks that |c(t) - s(p(t))| is less than or equal to tolerance, where tolerance is the tolerance value coded on the edge.
 
@@ -369,19 +372,19 @@ bool
 		Standard_Boolean IsValid();
 
 		/****************** Result ******************/
-		/**** md5 signature: 7fd5f89db753d52aa955dc54a91f1dca ****/
+		/**** md5 signature: 4d39ddda3bce0424b01a6b2fbba14ad2 ****/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-SubS: TopoDS_Shape
+theSubS: TopoDS_Shape
 
 Returns
 -------
 opencascade::handle<BRepCheck_Result>
 ") Result;
-		const opencascade::handle<BRepCheck_Result> & Result(const TopoDS_Shape & SubS);
+		const opencascade::handle<BRepCheck_Result> & Result(const TopoDS_Shape & theSubS);
 
 };
 
@@ -410,7 +413,7 @@ None
 		virtual void Blind();
 
 		/****************** ContextualShape ******************/
-		/**** md5 signature: a584ebc1dedd342131b091fe5e1e437d ****/
+		/**** md5 signature: eb8bd6cde885ea4f72b149425281ff43 ****/
 		%feature("compactdefaultargs") ContextualShape;
 		%feature("autodoc", "No available documentation.
 
@@ -462,7 +465,7 @@ None
 		void InitContextIterator();
 
 		/****************** IsBlind ******************/
-		/**** md5 signature: ff5e40e27b44b4cdc0af878d02e09a0e ****/
+		/**** md5 signature: 7bdfbaa9abb88d00524ebffdd69f140b ****/
 		%feature("compactdefaultargs") IsBlind;
 		%feature("autodoc", "No available documentation.
 
@@ -473,7 +476,7 @@ bool
 		Standard_Boolean IsBlind();
 
 		/****************** IsMinimum ******************/
-		/**** md5 signature: 6488fc4883a388bc6a5f73438abeaae1 ****/
+		/**** md5 signature: a6bf8651a71b5ace0b26012ddb26bfd5 ****/
 		%feature("compactdefaultargs") IsMinimum;
 		%feature("autodoc", "No available documentation.
 
@@ -482,6 +485,21 @@ Returns
 bool
 ") IsMinimum;
 		Standard_Boolean IsMinimum();
+
+		/****************** IsStatusOnShape ******************/
+		/**** md5 signature: 7a9b88e66fff4774274cebabd6b916eb ****/
+		%feature("compactdefaultargs") IsStatusOnShape;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+bool
+") IsStatusOnShape;
+		Standard_Boolean IsStatusOnShape(const TopoDS_Shape & theShape);
 
 		/****************** Minimum ******************/
 		/**** md5 signature: 567db75783723918a8acfdd7121b3ae4 ****/
@@ -495,7 +513,7 @@ None
 		virtual void Minimum();
 
 		/****************** MoreShapeInContext ******************/
-		/**** md5 signature: abe30661c8b45664c5aa94279afd2fd5 ****/
+		/**** md5 signature: aaff979dbb1ba3d73332a5aa219d6b33 ****/
 		%feature("compactdefaultargs") MoreShapeInContext;
 		%feature("autodoc", "No available documentation.
 
@@ -531,8 +549,23 @@ None
 ") SetFailStatus;
 		void SetFailStatus(const TopoDS_Shape & S);
 
+		/****************** SetParallel ******************/
+		/**** md5 signature: 75181e0ac6329b778751501d9f3f15d9 ****/
+		%feature("compactdefaultargs") SetParallel;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theIsParallel: bool
+
+Returns
+-------
+None
+") SetParallel;
+		void SetParallel(Standard_Boolean theIsParallel);
+
 		/****************** Status ******************/
-		/**** md5 signature: 2b35975a0de3dfdf852d1653c75a7cab ****/
+		/**** md5 signature: 64167c852e0650aecc4792387cb6ad32 ****/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "No available documentation.
 
@@ -543,22 +576,7 @@ BRepCheck_ListOfStatus
 		const BRepCheck_ListOfStatus & Status();
 
 		/****************** StatusOnShape ******************/
-		/**** md5 signature: ea055126ff7476811793b92dafd7757d ****/
-		%feature("compactdefaultargs") StatusOnShape;
-		%feature("autodoc", "If not already done, performs the incontext control and returns the list of status.
-
-Parameters
-----------
-S: TopoDS_Shape
-
-Returns
--------
-BRepCheck_ListOfStatus
-") StatusOnShape;
-		const BRepCheck_ListOfStatus & StatusOnShape(const TopoDS_Shape & S);
-
-		/****************** StatusOnShape ******************/
-		/**** md5 signature: b9a7334597b91c919b966f5d1e8d799f ****/
+		/**** md5 signature: 9d703d3594f470498bdec69da88c13b2 ****/
 		%feature("compactdefaultargs") StatusOnShape;
 		%feature("autodoc", "No available documentation.
 
@@ -567,6 +585,21 @@ Returns
 BRepCheck_ListOfStatus
 ") StatusOnShape;
 		const BRepCheck_ListOfStatus & StatusOnShape();
+
+		/****************** StatusOnShape ******************/
+		/**** md5 signature: c188dfc8bfd0a5dda5145143d5c9b549 ****/
+		%feature("compactdefaultargs") StatusOnShape;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+BRepCheck_ListOfStatus
+") StatusOnShape;
+		const BRepCheck_ListOfStatus & StatusOnShape(const TopoDS_Shape & theShape);
 
 };
 
@@ -1211,7 +1244,7 @@ None
 		/****************** Closed ******************/
 		/**** md5 signature: 13c91693b79f0b3874479828b766a2ec ****/
 		%feature("compactdefaultargs") Closed;
-		%feature("autodoc", "Checks if the oriented edges of the wire give a closed wire. if the wire is closed, returns brepcheck_noerror. warning : if the first and last edge are infinite, the wire will be considered as a closed one. if <update> is set to standard_true, registers the status in the list. may return (and registers): **brepcheck_notconnected, if wire is not topologically closed **brepcheck_redundantedge, if an edge is in wire more than 3 times or in case of 2 occurences if not with forward and reversed orientation. **brepcheck_noerror.
+		%feature("autodoc", "Checks if the oriented edges of the wire give a closed wire. if the wire is closed, returns brepcheck_noerror. warning : if the first and last edge are infinite, the wire will be considered as a closed one. if <update> is set to standard_true, registers the status in the list. may return (and registers): **brepcheck_notconnected, if wire is not topologically closed **brepcheck_redundantedge, if an edge is in wire more than 3 times or in case of 2 occurrences if not with forward and reversed orientation. **brepcheck_noerror.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define EXTREMADOCSTRING
 "Extrema module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_extrema.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_extrema.html"
 %enddef
 %module (package="OCC.Core", docstring=EXTREMADOCSTRING) Extrema
 
@@ -96,7 +96,7 @@ enum Extrema_ElementType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Extrema_ExtAlgo(IntEnum):
@@ -134,7 +134,6 @@ Extrema_Face = Extrema_ElementType.Extrema_Face
 %wrap_handle(Extrema_HArray2OfPOnCurv2d)
 %wrap_handle(Extrema_HArray2OfPOnCurv)
 %wrap_handle(Extrema_HArray2OfPOnSurf)
-%wrap_handle(Extrema_HArray2OfPOnSurfParams)
 /* end handles declaration */
 
 /* templates */
@@ -1517,7 +1516,7 @@ gp_Hypr
 		/****************** Intervals ******************/
 		/**** md5 signature: c59b411ed8f13aec3361e6336ed8b81f ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2125,7 +2124,7 @@ None
 		/****************** Extrema_ELPCOfLocateExtPC ******************/
 		/**** md5 signature: 5eb013e4fc68fcbf6f33585765f7e07d ****/
 		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2145,7 +2144,7 @@ None
 		/****************** Extrema_ELPCOfLocateExtPC ******************/
 		/**** md5 signature: ead97d1e3f13344482279c11cf20d92f ****/
 		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2306,7 +2305,7 @@ None
 		/****************** Extrema_ELPCOfLocateExtPC2d ******************/
 		/**** md5 signature: ca7ed58355df77b568d0d2b8e4c4d3b5 ****/
 		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2326,7 +2325,7 @@ None
 		/****************** Extrema_ELPCOfLocateExtPC2d ******************/
 		/**** md5 signature: 9ae6c47d8acbe1e37a56bc7bb09b19cd ****/
 		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2487,7 +2486,7 @@ None
 		/****************** Extrema_EPCOfELPCOfLocateExtPC ******************/
 		/**** md5 signature: 909eda134dca8bd066edf6f295b1a9d2 ****/
 		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2506,7 +2505,7 @@ None
 		/****************** Extrema_EPCOfELPCOfLocateExtPC ******************/
 		/**** md5 signature: a06ba847c93cff0df9b4ab69c43b3ea4 ****/
 		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2706,7 +2705,7 @@ None
 		/****************** Extrema_EPCOfELPCOfLocateExtPC2d ******************/
 		/**** md5 signature: 8f3881b23e0058c54bf5de87961608df ****/
 		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2725,7 +2724,7 @@ None
 		/****************** Extrema_EPCOfELPCOfLocateExtPC2d ******************/
 		/**** md5 signature: 2ff481b1955aaf32316f2eedc538cb2e ****/
 		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2925,7 +2924,7 @@ None
 		/****************** Extrema_EPCOfExtPC ******************/
 		/**** md5 signature: 48fc709c66fee1c004b2cc4dd1545dbc ****/
 		%feature("compactdefaultargs") Extrema_EPCOfExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -2944,7 +2943,7 @@ None
 		/****************** Extrema_EPCOfExtPC ******************/
 		/**** md5 signature: 592c802da1f9faf50937c805bbc4dec7 ****/
 		%feature("compactdefaultargs") Extrema_EPCOfExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -3144,7 +3143,7 @@ None
 		/****************** Extrema_EPCOfExtPC2d ******************/
 		/**** md5 signature: e215bb58b06e418352ca7a41838988ff ****/
 		%feature("compactdefaultargs") Extrema_EPCOfExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -3163,7 +3162,7 @@ None
 		/****************** Extrema_EPCOfExtPC2d ******************/
 		/**** md5 signature: 180127b2ebbcb30f4366bc818c7a8176 ****/
 		%feature("compactdefaultargs") Extrema_EPCOfExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -3421,6 +3420,50 @@ Returns
 bool
 ") GetSingleSolutionFlag;
 		Standard_Boolean GetSingleSolutionFlag();
+
+		/****************** Initialize ******************/
+		/**** md5 signature: 33f5791b9afdaba1c00cac69bb0ae58a ****/
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "Initializes but does not perform algorithm.
+
+Parameters
+----------
+C1: Adaptor3d_Curve
+C2: Adaptor3d_Curve
+TolC1: float,optional
+	default value is 1.0e-10
+TolC2: float,optional
+	default value is 1.0e-10
+
+Returns
+-------
+None
+") Initialize;
+		void Initialize(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+
+		/****************** Initialize ******************/
+		/**** md5 signature: 241a78b6a479e657dbee2350ce37c1ae ****/
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "Initializes but does not perform algorithm.
+
+Parameters
+----------
+C1: Adaptor3d_Curve
+C2: Adaptor3d_Curve
+U1: float
+U2: float
+V1: float
+V2: float
+TolC1: float,optional
+	default value is 1.0e-10
+TolC2: float,optional
+	default value is 1.0e-10
+
+Returns
+-------
+None
+") Initialize;
+		void Initialize(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -3890,6 +3933,23 @@ None
 		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real UCinf, const Standard_Real UCsup, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolC, const Standard_Real TolS);
 
 		/****************** Initialize ******************/
+		/**** md5 signature: e63b3f3f490bda228580d04568edb6b3 ****/
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "Initializes the fields of the algorithm.
+
+Parameters
+----------
+S: Adaptor3d_Surface
+TolC: float
+TolS: float
+
+Returns
+-------
+None
+") Initialize;
+		void Initialize(const Adaptor3d_Surface & S, const Standard_Real TolC, const Standard_Real TolS);
+
+		/****************** Initialize ******************/
 		/**** md5 signature: 6ca083b40ba666c98208199a3aec58ff ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Initializes the fields of the algorithm.
@@ -4054,7 +4114,7 @@ None
 		/****************** Extrema_ExtElC ******************/
 		/**** md5 signature: 9fc2edc96231aa3d1ee6d30a8e95ad20 ****/
 		%feature("compactdefaultargs") Extrema_ExtElC;
-		%feature("autodoc", "Calculates the distance between a line and an elipse.
+		%feature("autodoc", "Calculates the distance between a line and an ellipse.
 
 Parameters
 ----------
@@ -4243,7 +4303,7 @@ None
 		/****************** Extrema_ExtElC2d ******************/
 		/**** md5 signature: c5e7e832342f09b3e3f5af22bdc53d53 ****/
 		%feature("compactdefaultargs") Extrema_ExtElC2d;
-		%feature("autodoc", "Calculates the distance between a line and an elipse.
+		%feature("autodoc", "Calculates the distance between a line and an ellipse.
 
 Parameters
 ----------
@@ -4307,7 +4367,7 @@ None
 		/****************** Extrema_ExtElC2d ******************/
 		/**** md5 signature: 9dfec4428f361b16a6bad7c8b994c894 ****/
 		%feature("compactdefaultargs") Extrema_ExtElC2d;
-		%feature("autodoc", "Calculates the distance between a circle and an elipse.
+		%feature("autodoc", "Calculates the distance between a circle and an ellipse.
 
 Parameters
 ----------
@@ -5172,7 +5232,7 @@ None
 		/****************** Extrema_ExtPC ******************/
 		/**** md5 signature: 80236a796df22a03cb53e858bdaf4dfe ****/
 		%feature("compactdefaultargs") Extrema_ExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -5192,7 +5252,7 @@ None
 		/****************** Extrema_ExtPC ******************/
 		/**** md5 signature: 67d047a0517c372399b96860078635d6 ****/
 		%feature("compactdefaultargs") Extrema_ExtPC;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -5353,7 +5413,7 @@ None
 		/****************** Extrema_ExtPC2d ******************/
 		/**** md5 signature: 85453b0ec67e15ba150de917544e3938 ****/
 		%feature("compactdefaultargs") Extrema_ExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -5373,7 +5433,7 @@ None
 		/****************** Extrema_ExtPC2d ******************/
 		/**** md5 signature: b53ba77823cd004a73e74f43a6e53d26 ****/
 		%feature("compactdefaultargs") Extrema_ExtPC2d;
-		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+		%feature("autodoc", "It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
 
 Parameters
 ----------
@@ -5572,7 +5632,7 @@ None
 		/****************** Extrema_ExtPElC ******************/
 		/**** md5 signature: 8aea1ee5525a05788869a67c6ce46ea8 ****/
 		%feature("compactdefaultargs") Extrema_ExtPElC;
-		%feature("autodoc", "Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the elipse c. tol is used to determine if the point is on the axis of the elipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. if p is on the axis of the elipse, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
+		%feature("autodoc", "Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the ellipse c. tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. if p is on the axis of the ellipse, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
 
 Parameters
 ----------
@@ -5854,7 +5914,7 @@ None
 		/****************** Extrema_ExtPElC2d ******************/
 		/**** md5 signature: 70b2bf1822d25a12a548d783db318ceb ****/
 		%feature("compactdefaultargs") Extrema_ExtPElC2d;
-		%feature("autodoc", "Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the elipse c. tol is used to determine if the point is on the axis of the elipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. if p is on the axis of the elipse, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
+		%feature("autodoc", "Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the ellipse c. tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. if p is on the axis of the ellipse, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
 
 Parameters
 ----------
@@ -6343,14 +6403,14 @@ None
 		 Extrema_ExtPExtS();
 
 		/****************** Extrema_ExtPExtS ******************/
-		/**** md5 signature: f1d913eeae325e790b9432275629930b ****/
+		/**** md5 signature: 8390b68d70e936cf950fa530f03196c5 ****/
 		%feature("compactdefaultargs") Extrema_ExtPExtS;
 		%feature("autodoc", "It calculates all the distances between a point from gp and a surface.
 
 Parameters
 ----------
 P: gp_Pnt
-S: GeomAdaptor_HSurfaceOfLinearExtrusion
+S: GeomAdaptor_SurfaceOfLinearExtrusion
 Umin: float
 Usup: float
 Vmin: float
@@ -6362,17 +6422,17 @@ Returns
 -------
 None
 ") Extrema_ExtPExtS;
-		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_HSurfaceOfLinearExtrusion> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** Extrema_ExtPExtS ******************/
-		/**** md5 signature: ace865e0e17c924debb403f840ef6dde ****/
+		/**** md5 signature: 40ff9b6a45a9298edc4bc7b99b8b9323 ****/
 		%feature("compactdefaultargs") Extrema_ExtPExtS;
 		%feature("autodoc", "It calculates all the distances between a point from gp and a surface.
 
 Parameters
 ----------
 P: gp_Pnt
-S: GeomAdaptor_HSurfaceOfLinearExtrusion
+S: GeomAdaptor_SurfaceOfLinearExtrusion
 TolU: float
 TolV: float
 
@@ -6380,16 +6440,16 @@ Returns
 -------
 None
 ") Extrema_ExtPExtS;
-		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_HSurfaceOfLinearExtrusion> & S, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 0758c9e0bbaad928803c39a5e7bd9060 ****/
+		/**** md5 signature: 2c188151ca29551136581ffad667e7ed ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Initializes the fields of the algorithm.
 
 Parameters
 ----------
-S: GeomAdaptor_HSurfaceOfLinearExtrusion
+S: GeomAdaptor_SurfaceOfLinearExtrusion
 Uinf: float
 Usup: float
 Vinf: float
@@ -6401,7 +6461,7 @@ Returns
 -------
 None
 ") Initialize;
-		void Initialize(const opencascade::handle<GeomAdaptor_HSurfaceOfLinearExtrusion> & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -6498,14 +6558,14 @@ None
 		 Extrema_ExtPRevS();
 
 		/****************** Extrema_ExtPRevS ******************/
-		/**** md5 signature: 67d30f13480087ad21b924aee50e378b ****/
+		/**** md5 signature: 1ac9435e6f9a8efe5739acf51bc42518 ****/
 		%feature("compactdefaultargs") Extrema_ExtPRevS;
 		%feature("autodoc", "It calculates all the distances between a point from gp and a surfaceptr from adaptor3d.
 
 Parameters
 ----------
 P: gp_Pnt
-S: GeomAdaptor_HSurfaceOfRevolution
+S: GeomAdaptor_SurfaceOfRevolution
 Umin: float
 Usup: float
 Vmin: float
@@ -6517,17 +6577,17 @@ Returns
 -------
 None
 ") Extrema_ExtPRevS;
-		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_HSurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** Extrema_ExtPRevS ******************/
-		/**** md5 signature: 8c5194fce2c1f87ce692a7a5123971e9 ****/
+		/**** md5 signature: e5055c0383c605df1cfed351d87ac4e8 ****/
 		%feature("compactdefaultargs") Extrema_ExtPRevS;
 		%feature("autodoc", "It calculates all the distances between a point from gp and a surfaceptr from adaptor3d.
 
 Parameters
 ----------
 P: gp_Pnt
-S: GeomAdaptor_HSurfaceOfRevolution
+S: GeomAdaptor_SurfaceOfRevolution
 TolU: float
 TolV: float
 
@@ -6535,16 +6595,16 @@ Returns
 -------
 None
 ") Extrema_ExtPRevS;
-		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_HSurfaceOfRevolution> & S, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 503e26ea2c1d6cc0791266f1a243bf10 ****/
+		/**** md5 signature: 51cbb1f7b6fbef202ed05be3503ea920 ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: GeomAdaptor_HSurfaceOfRevolution
+S: GeomAdaptor_SurfaceOfRevolution
 Umin: float
 Usup: float
 Vmin: float
@@ -6556,7 +6616,7 @@ Returns
 -------
 None
 ") Initialize;
-		void Initialize(const opencascade::handle<GeomAdaptor_HSurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -6942,7 +7002,7 @@ bool
 		/****************** IsParallel ******************/
 		/**** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ****/
 		%feature("compactdefaultargs") IsParallel;
-		%feature("autodoc", "Returns true if the curve is on a parallel surface.
+		%feature("autodoc", "Returns true if the surfaces are parallel.
 
 Returns
 -------
@@ -7746,7 +7806,7 @@ None
 		/****************** Extrema_GenExtCS ******************/
 		/**** md5 signature: bba1c45ae7b3a767217c8ab190dca0fe ****/
 		%feature("compactdefaultargs") Extrema_GenExtCS;
-		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(s1(u1,v1),s2(u2,v2)) has an extremum when gradient(f)=0. the algorithm searchs all the zeros inside the definition ranges of the surfaces. nbu and nbv are used to locate the close points on the surface and nbt on the curve to find the zeros.
+		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(s1(u1,v1),s2(u2,v2)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surfaces. nbu and nbv are used to locate the close points on the surface and nbt on the curve to find the zeros.
 
 Parameters
 ----------
@@ -7767,7 +7827,7 @@ None
 		/****************** Extrema_GenExtCS ******************/
 		/**** md5 signature: 327c5ab7f1a3e9581157d19a9c2d2db1 ****/
 		%feature("compactdefaultargs") Extrema_GenExtCS;
-		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searchs all the zeros inside the definition ranges of the surface. nbt,nbu and nbv are used to locate the close points to find the zeros.
+		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbt,nbu and nbv are used to locate the close points to find the zeros.
 
 Parameters
 ----------
@@ -7962,7 +8022,7 @@ None
 		/****************** Extrema_GenExtPS ******************/
 		/**** md5 signature: daed258cc828cde49776b51c85d4209e ****/
 		%feature("compactdefaultargs") Extrema_GenExtPS;
-		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searchs all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
+		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
 
 Parameters
 ----------
@@ -7986,7 +8046,7 @@ None
 		/****************** Extrema_GenExtPS ******************/
 		/**** md5 signature: 9127ff28bfac5b4aee96e6256661db4d ****/
 		%feature("compactdefaultargs") Extrema_GenExtPS;
-		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searchs all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
+		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
 
 Parameters
 ----------
@@ -8178,7 +8238,7 @@ None
 		/****************** Extrema_GenExtSS ******************/
 		/**** md5 signature: 0360818ba5d986552ab9f07d2828956b ****/
 		%feature("compactdefaultargs") Extrema_GenExtSS;
-		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(s1(u1,v1),s2(u2,v2)) has an extremum when gradient(f)=0. the algorithm searchs all the zeros inside the definition ranges of the surfaces. nbu and nbv are used to locate the close points to find the zeros.
+		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(s1(u1,v1),s2(u2,v2)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surfaces. nbu and nbv are used to locate the close points to find the zeros.
 
 Parameters
 ----------
@@ -8198,7 +8258,7 @@ None
 		/****************** Extrema_GenExtSS ******************/
 		/**** md5 signature: c712f92876bba0c244979fbd6c3f61fe ****/
 		%feature("compactdefaultargs") Extrema_GenExtSS;
-		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searchs all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros.
+		%feature("autodoc", "It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros.
 
 Parameters
 ----------
@@ -8394,7 +8454,7 @@ None
 		/****************** Extrema_GenLocateExtCS ******************/
 		/**** md5 signature: e4b395d8dfe4cac4c586cc73639a70bb ****/
 		%feature("compactdefaultargs") Extrema_GenLocateExtCS;
-		%feature("autodoc", "Calculates the distance with two close points. the close points are defined by the parameter values t for c and (u,v) for s. the function f(t,u,v)=distance(c(t),s(u,v)) has an extremun when gradient(f)=0. the algorithm searchs a zero near the close points.
+		%feature("autodoc", "Calculates the distance with two close points. the close points are defined by the parameter values t for c and (u,v) for s. the function f(t,u,v)=distance(c(t),s(u,v)) has an extremun when gradient(f)=0. the algorithm searches a zero near the close points.
 
 Parameters
 ----------
@@ -8521,6 +8581,24 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** IsMinDist ******************/
+		/**** md5 signature: 366fbadfb859c8db594bc4646bf37807 ****/
+		%feature("compactdefaultargs") IsMinDist;
+		%feature("autodoc", "Returns true if uv point theu0, thev0 is point of local minimum of square distance between point thep and points thes(u, v), u, v are in small area around theu0, thev0.
+
+Parameters
+----------
+theP: gp_Pnt
+theS: Adaptor3d_Surface
+theU0: float
+theV0: float
+
+Returns
+-------
+bool
+") IsMinDist;
+		static Standard_Boolean IsMinDist(const gp_Pnt & theP, const Adaptor3d_Surface & theS, const Standard_Real theU0, const Standard_Real theV0);
+
 		/****************** Perform ******************/
 		/**** md5 signature: 1356c2657a2e0ea627880218a7af615f ****/
 		%feature("compactdefaultargs") Perform;
@@ -8590,7 +8668,7 @@ None
 		/****************** Extrema_GenLocateExtSS ******************/
 		/**** md5 signature: ecd085c1d3d7d14e4947fbff65cc1cdf ****/
 		%feature("compactdefaultargs") Extrema_GenLocateExtSS;
-		%feature("autodoc", "Calculates the distance with two close points. the close points are defined by the parameter values (u1,v1) for s1 and (u2,v2) for s2. the function f(u1,v1,u2,v2)=distance(s1(u1,v1),s2(u2,v2)) has an extremun when gradient(f)=0. the algorithm searchs a zero near the close points.
+		%feature("autodoc", "Calculates the distance with two close points. the close points are defined by the parameter values (u1,v1) for s1 and (u2,v2) for s2. the function f(u1,v1,u2,v2)=distance(s1(u1,v1),s2(u2,v2)) has an extremun when gradient(f)=0. the algorithm searches a zero near the close points.
 
 Parameters
 ----------
@@ -9339,7 +9417,7 @@ class Extrema_LocECC {
 		/****************** Extrema_LocECC ******************/
 		/**** md5 signature: b7729509f3f5df86a49fc9bcf1ed4ca4 ****/
 		%feature("compactdefaultargs") Extrema_LocECC;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searchs the zero near the close point.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
 
 Parameters
 ----------
@@ -9411,7 +9489,7 @@ class Extrema_LocECC2d {
 		/****************** Extrema_LocECC2d ******************/
 		/**** md5 signature: 6498e5613a60c1f849de06e79134f45c ****/
 		%feature("compactdefaultargs") Extrema_LocECC2d;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searchs the zero near the close point.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
 
 Parameters
 ----------
@@ -9494,7 +9572,7 @@ None
 		/****************** Extrema_LocEPCOfLocateExtPC ******************/
 		/**** md5 signature: b7a86f687213d8fba59800755f030350 ****/
 		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -9512,7 +9590,7 @@ None
 		/****************** Extrema_LocEPCOfLocateExtPC ******************/
 		/**** md5 signature: 6dbc9dd4faaee8fbc458b42a67c3818b ****/
 		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -9635,7 +9713,7 @@ None
 		/****************** Extrema_LocEPCOfLocateExtPC2d ******************/
 		/**** md5 signature: 879fbc456e9fc716f88079cbe4c20275 ****/
 		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC2d;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -9653,7 +9731,7 @@ None
 		/****************** Extrema_LocEPCOfLocateExtPC2d ******************/
 		/**** md5 signature: 03740e511e912a1b646a373d0676107f ****/
 		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC2d;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -9765,7 +9843,7 @@ class Extrema_LocateExtCC {
 		/****************** Extrema_LocateExtCC ******************/
 		/**** md5 signature: c5d4ad63f928f38bacb40f7e1b99f897 ****/
 		%feature("compactdefaultargs") Extrema_LocateExtCC;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searchs the zero near the close point.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
 
 Parameters
 ----------
@@ -9835,7 +9913,7 @@ class Extrema_LocateExtCC2d {
 		/****************** Extrema_LocateExtCC2d ******************/
 		/**** md5 signature: aeae2a9a17c936a1feeafeb2cf4c33c0 ****/
 		%feature("compactdefaultargs") Extrema_LocateExtCC2d;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searchs the zero near the close point.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
 
 Parameters
 ----------
@@ -9916,7 +9994,7 @@ None
 		/****************** Extrema_LocateExtPC ******************/
 		/**** md5 signature: 1f82bfa9e68e569fd665333dc6cc52d7 ****/
 		%feature("compactdefaultargs") Extrema_LocateExtPC;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
 
 Parameters
 ----------
@@ -9934,7 +10012,7 @@ None
 		/****************** Extrema_LocateExtPC ******************/
 		/**** md5 signature: 562aab74aab68868fccddce757fa6257 ****/
 		%feature("compactdefaultargs") Extrema_LocateExtPC;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. zeros are searched between umin et usup. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
 
 Parameters
 ----------
@@ -10057,7 +10135,7 @@ None
 		/****************** Extrema_LocateExtPC2d ******************/
 		/**** md5 signature: b4963ac0ef219fdc026e3860d56ab1ff ****/
 		%feature("compactdefaultargs") Extrema_LocateExtPC2d;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
 
 Parameters
 ----------
@@ -10075,7 +10153,7 @@ None
 		/****************** Extrema_LocateExtPC2d ******************/
 		/**** md5 signature: b92462651cc4a17c9d9664a4fc8748c0 ****/
 		%feature("compactdefaultargs") Extrema_LocateExtPC2d;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. zeros are searched between umin et usup. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
 
 Parameters
 ----------
@@ -10270,7 +10348,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -10481,7 +10559,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -10692,7 +10770,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -10903,7 +10981,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -11114,7 +11192,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -11325,7 +11403,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -11885,19 +11963,6 @@ class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard
     Extrema_Array2OfPOnSurf& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnSurf)
-
-
-class Extrema_HArray2OfPOnSurfParams : public Extrema_Array2OfPOnSurfParams, public Standard_Transient {
-  public:
-    Extrema_HArray2OfPOnSurfParams(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    Extrema_HArray2OfPOnSurfParams(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnSurfParams::value_type& theValue);
-    Extrema_HArray2OfPOnSurfParams(const Extrema_Array2OfPOnSurfParams& theOther);
-    const Extrema_Array2OfPOnSurfParams& Array2 ();
-    Extrema_Array2OfPOnSurfParams& ChangeArray2 (); 
-};
-%make_alias(Extrema_HArray2OfPOnSurfParams)
 
 
 /* hsequence classes */

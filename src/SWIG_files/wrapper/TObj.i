@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOBJDOCSTRING
 "TObj module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tobj.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tobj.html"
 %enddef
 %module (package="OCC.Core", docstring=TOBJDOCSTRING) TObj
 
@@ -78,7 +78,7 @@ enum TObj_DeletingMode {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TObj_DeletingMode(IntEnum):
@@ -857,6 +857,13 @@ bool
 ") Load;
 		virtual Standard_Boolean Load(const TCollection_ExtendedString & theFile);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                void LoadFromString(std::string src) {
+                std::stringstream s(src);
+                self->Load(s);}
+            };
 		/****************** Messenger ******************/
 		/**** md5 signature: 77a43db9d3d7b7c3ed75b149057d7c93 ****/
 		%feature("compactdefaultargs") Messenger;
@@ -950,6 +957,14 @@ bool
 ") SaveAs;
 		virtual Standard_Boolean SaveAs(const TCollection_ExtendedString & theFile);
 
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string SaveAsToString() {
+            std::stringstream s;
+            self->SaveAs(s);
+            return s.str();}
+        };
 		/****************** SetLabel ******************/
 		/**** md5 signature: cc470d5ce9738c8709b266c2b6c1b90a ****/
 		%feature("compactdefaultargs") SetLabel;
@@ -1069,7 +1084,7 @@ enum ObjectState {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TypeFlags(IntEnum):
@@ -1108,7 +1123,7 @@ None
 		/****************** AfterRetrieval ******************/
 		/**** md5 signature: 9432a7bda4a565e50e735ba186488263 ****/
 		%feature("compactdefaultargs") AfterRetrieval;
-		%feature("autodoc", "Preforms updating the links and dependances of the object which are not stored in persistence. should be redefined if necessary.
+		%feature("autodoc", "Performs updating the links and dependances of the object which are not stored in persistence. should be redefined if necessary.
 
 Returns
 -------
@@ -1134,7 +1149,7 @@ None
 		/****************** BeforeStoring ******************/
 		/**** md5 signature: 488bb473c5aebeae45654fc7c70f010e ****/
 		%feature("compactdefaultargs") BeforeStoring;
-		%feature("autodoc", "Preforms storing the objects transient fields in ocaf document which were outside transaction mechanism. default implementation doesnot nothing.
+		%feature("autodoc", "Performs storing the objects transient fields in ocaf document which were outside transaction mechanism. default implementation does nothing.
 
 Returns
 -------
@@ -1203,7 +1218,7 @@ None
 		/****************** Clone ******************/
 		/**** md5 signature: 4d3e1f9e7709184411e95abee3db3285 ****/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "Copy me to other label thetargetlabel new object will not have all the reference that has me. coping object with data and childs, but change name by adding string '_copy' as result return handle of new object (null handle is something wrong) note: backreferences not coping. after clonning all objects it is neccessary to call copy references with the same relocation table.
+		%feature("autodoc", "Copy me to other label thetargetlabel new object will not have all the reference that has me. coping object with data and childs, but change name by adding string '_copy' as result return handle of new object (null handle is something wrong) note: backreferences not coping. after cloning all objects it is necessary to call copy references with the same relocation table.
 
 Parameters
 ----------
@@ -1268,7 +1283,7 @@ bool
 		/****************** Detach ******************/
 		/**** md5 signature: f0c9138d15bd2cb29790cadf9f5c972d ****/
 		%feature("compactdefaultargs") Detach;
-		%feature("autodoc", "Deletes the object from the label. checks if object can be deleted. finds object on the label and detaches it by calling previos method. returns true if there is no object on the label after detaching.
+		%feature("autodoc", "Deletes the object from the label. checks if object can be deleted. finds object on the label and detaches it by calling previous method. returns true if there is no object on the label after detaching.
 
 Parameters
 ----------
@@ -1285,7 +1300,7 @@ bool
 		/****************** GetBackReferences ******************/
 		/**** md5 signature: 3e183cb7f37d2b6bff8cad6e30d26852 ****/
 		%feature("compactdefaultargs") GetBackReferences;
-		%feature("autodoc", "Returns iterator for the objects which depend on this one. these reffering objects may belong to other models. thetype narrows a variety of iterated objects.
+		%feature("autodoc", "Returns iterator for the objects which depend on this one. these referring objects may belong to other models. thetype narrows a variety of iterated objects.
 
 Parameters
 ----------
@@ -1538,7 +1553,7 @@ int
 		/****************** HasBackReferences ******************/
 		/**** md5 signature: 0a45fd14f1152310725b0d9b3e69ac78 ****/
 		%feature("compactdefaultargs") HasBackReferences;
-		%feature("autodoc", "Returns true if obejct has 1 or more back references.
+		%feature("autodoc", "Returns true if object has 1 or more back references.
 
 Returns
 -------
@@ -2255,7 +2270,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 6ba00d7004a7e14a8d556aa8bab2f70a ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the the model object.
+		%feature("autodoc", "Sets the model object.
 
 Parameters
 ----------
@@ -3147,7 +3162,7 @@ class TObj_Partition : public TObj_Object {
 		/****************** AfterRetrieval ******************/
 		/**** md5 signature: 5116de267db888dbe3c4cd27cb5af96d ****/
 		%feature("compactdefaultargs") AfterRetrieval;
-		%feature("autodoc", "Preforms updating the links and dependances of the object which are not stored in persistence. does not register the partition name.
+		%feature("autodoc", "Performs updating the links and dependencies of the object which are not stored in persistence. does not register the partition name.
 
 Returns
 -------
@@ -3197,7 +3212,7 @@ opencascade::handle<TCollection_HExtendedString>
 		/****************** GetNewName ******************/
 		/**** md5 signature: b4e368c8f5d87830213831249f7b65f8 ****/
 		%feature("compactdefaultargs") GetNewName;
-		%feature("autodoc", "Generates and returns name for new object in partition. if theistochangecount is true partition icrease own counter to generate new name next time starting from new counter value.
+		%feature("autodoc", "Generates and returns name for new object in partition. if theistochangecount is true partition increase own counter to generate new name next time starting from new counter value.
 
 Parameters
 ----------

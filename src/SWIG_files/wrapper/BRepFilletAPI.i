@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPFILLETAPIDOCSTRING
 "BRepFilletAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfilletapi.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfilletapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPFILLETAPIDOCSTRING) BRepFilletAPI
 
@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfilletapi.htm
 #include<BRepBuilderAPI_module.hxx>
 #include<TopoDS_module.hxx>
 #include<ChFiDS_module.hxx>
+#include<Message_module.hxx>
 #include<TopTools_module.hxx>
 #include<ChFi2d_module.hxx>
 #include<TopOpeBRepBuild_module.hxx>
@@ -87,6 +88,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfilletapi.htm
 %import BRepBuilderAPI.i
 %import TopoDS.i
 %import ChFiDS.i
+%import Message.i
 %import TopTools.i
 %import ChFi2d.i
 %import TopOpeBRepBuild.i
@@ -104,7 +106,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -498,15 +500,20 @@ TopoDS_Edge
 		const TopoDS_Edge BasisEdge(const TopoDS_Edge & E);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Update the result and set the done flag.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ChamferEdges ******************/
 		/**** md5 signature: 66edbe74780ce3ab689192aa27e7b595 ****/
@@ -578,7 +585,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: 7b460233038b2f415eaddf1e321fc705 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "This initialize method allow to init the builder from a face <refface> and another face <modface> which derive from <refface>. this is usefull to modify a fillet or a chamfer already created on <modface> .
+		%feature("autodoc", "This initialize method allow to init the builder from a face refface and another face modface which derive from refface. this is useful to modify a fillet or a chamfer already created on modface.
 
 Parameters
 ----------
@@ -876,15 +883,20 @@ None
 		void AddDA(const Standard_Real Dis, const Standard_Real Angle, const TopoDS_Edge & E, const TopoDS_Face & F);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the chamfers on all the contours in the internal data structure of this algorithm and constructs the resulting shape. use the function isdone to verify that the chamfered shape is built. use the function shape to retrieve the chamfered shape. warning the construction of chamfers implements highly complex construction algorithms. consequently, there may be instances where the algorithm fails, for example if the data defining the parameters of the chamfer is not compatible with the geometry of the initial shape. there is no initial analysis of errors and these only become evident at the construction stage. additionally, in the current software release, the following cases are not handled: - the end point of the contour is the point of intersection of 4 or more edges of the shape, or - the intersection of the chamfer with a face which limits the contour is not fully contained in this face.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Builder ******************/
 		/**** md5 signature: c97c63149316e999abd03e780cc959bf ****/
@@ -1068,7 +1080,7 @@ bool
 		/****************** IsSymetric ******************/
 		/**** md5 signature: e834faba1d738c1f857cbe69bcf685bd ****/
 		%feature("compactdefaultargs") IsSymetric;
-		%feature("autodoc", "Return true if chamfer symetric false else.
+		%feature("autodoc", "Return true if chamfer symmetric false else.
 
 Parameters
 ----------
@@ -1476,15 +1488,20 @@ TopoDS_Shape
 		TopoDS_Shape BadShape();
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the fillets on all the contours in the internal data structure of this algorithm and constructs the resulting shape. use the function isdone to verify that the filleted shape is built. use the function shape to retrieve the filleted shape. warning the construction of fillets implements highly complex construction algorithms. consequently, there may be instances where the algorithm fails, for example if the data defining the radius of the fillet is not compatible with the geometry of the initial shape. there is no initial analysis of errors and they only become evident at the construction stage. additionally, in the current software release, the following cases are not handled: - the end point of the contour is the point of intersection of 4 or more edges of the shape, or - the intersection of the fillet with a face which limits the contour is not fully contained in this face.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Builder ******************/
 		/**** md5 signature: c97c63149316e999abd03e780cc959bf ****/

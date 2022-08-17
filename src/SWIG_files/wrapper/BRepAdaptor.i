@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPADAPTORDOCSTRING
 "BRepAdaptor module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepadaptor.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPADAPTORDOCSTRING) BRepAdaptor
 
@@ -37,6 +37,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepadaptor.html"
 
 
 %{
+#include<Adaptor2d_Curve2d.hxx>
+#include<Adaptor2d_OffsetCurve.hxx>
 #include<BRepAdaptor_module.hxx>
 
 //Dependencies
@@ -50,10 +52,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepadaptor.html"
 #include<TColStd_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
-#include<Adaptor2d_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
+#include<Adaptor2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -69,7 +71,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepadaptor.html"
 %import TColStd.i
 %import GeomAdaptor.i
 %import Geom2dAdaptor.i
-%import Adaptor2d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -79,16 +80,16 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(BRepAdaptor_HCompCurve)
-%wrap_handle(BRepAdaptor_HCurve)
-%wrap_handle(BRepAdaptor_HCurve2d)
-%wrap_handle(BRepAdaptor_HSurface)
+%wrap_handle(BRepAdaptor_CompCurve)
+%wrap_handle(BRepAdaptor_Curve)
+%wrap_handle(BRepAdaptor_Curve2d)
+%wrap_handle(BRepAdaptor_Surface)
 %wrap_handle(BRepAdaptor_HArray1OfCurve)
 /* end handles declaration */
 
@@ -170,7 +171,7 @@ None
 		/****************** BRepAdaptor_CompCurve ******************/
 		/**** md5 signature: d6d730d5ed59cc103614b39691bdbfd1 ****/
 		%feature("compactdefaultargs") BRepAdaptor_CompCurve;
-		%feature("autodoc", "Creates a curve to acces to the geometry of edge <w>.
+		%feature("autodoc", "Creates a curve to access the geometry of edge <w>.
 
 Parameters
 ----------
@@ -425,7 +426,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -568,7 +569,7 @@ float
 		Standard_Real Resolution(const Standard_Real R3d);
 
 		/****************** Trim ******************/
-		/**** md5 signature: 113944489c8ce9efcb5cb2d44fff51d7 ****/
+		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -580,9 +581,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
@@ -613,6 +614,8 @@ TopoDS_Wire
 };
 
 
+%make_alias(BRepAdaptor_CompCurve)
+
 %extend BRepAdaptor_CompCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -638,7 +641,7 @@ None
 		/****************** BRepAdaptor_Curve ******************/
 		/**** md5 signature: 740e451b59f60726263aab98ec1f1316 ****/
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
-		%feature("autodoc", "Creates a curve to acces to the geometry of edge <e>.
+		%feature("autodoc", "Creates a curve to access the geometry of edge <e>.
 
 Parameters
 ----------
@@ -653,7 +656,7 @@ None
 		/****************** BRepAdaptor_Curve ******************/
 		/**** md5 signature: c4ad88c445ddb172d9a61b5a673cf024 ****/
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
-		%feature("autodoc", "Creates a curve to acces to the geometry of edge <e>. the geometry will be computed using the parametric curve of <e> on the face <f>. an error is raised if the edge does not have a pcurve on the face.
+		%feature("autodoc", "Creates a curve to access the geometry of edge <e>. the geometry will be computed using the parametric curve of <e> on the face <f>. an error is raised if the edge does not have a pcurve on the face.
 
 Parameters
 ----------
@@ -669,7 +672,7 @@ None
 		/****************** BSpline ******************/
 		/**** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ****/
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "Warning : this will make a copy of the bspline curve since it applies to it mytsrf . be carefull when using this method.
+		%feature("autodoc", "Warning: this will make a copy of the bspline curve since it applies to it mytsrf. be careful when using this method.
 
 Returns
 -------
@@ -680,7 +683,7 @@ opencascade::handle<Geom_BSplineCurve>
 		/****************** Bezier ******************/
 		/**** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ****/
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "Warning : this will make a copy of the bezier curve since it applies to it mytsrf . be carefull when using this method.
+		%feature("autodoc", "Warning: this will make a copy of the bezier curve since it applies to it mytsrf. be careful when using this method.
 
 Returns
 -------
@@ -887,7 +890,7 @@ gp_Hypr
 		/****************** Initialize ******************/
 		/**** md5 signature: b0b8cb0790e5e63c5a8b3b133b757731 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Sets the curve <self> to acces to the geometry of edge <e>.
+		%feature("autodoc", "Sets the curve <self> to access the geometry of edge <e>.
 
 Parameters
 ----------
@@ -902,7 +905,7 @@ None
 		/****************** Initialize ******************/
 		/**** md5 signature: cf258179577adbc75b4efbc5847934f6 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Sets the curve <self> to acces to the geometry of edge <e>. the geometry will be computed using the parametric curve of <e> on the face <f>. an error is raised if the edge does not have a pcurve on the face.
+		%feature("autodoc", "Sets the curve <self> to access the geometry of edge <e>. the geometry will be computed using the parametric curve of <e> on the face <f>. an error is raised if the edge does not have a pcurve on the face.
 
 Parameters
 ----------
@@ -918,7 +921,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1116,7 +1119,7 @@ float
 		Standard_Real Tolerance();
 
 		/****************** Trim ******************/
-		/**** md5 signature: 113944489c8ce9efcb5cb2d44fff51d7 ****/
+		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -1128,9 +1131,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Trsf ******************/
 		/**** md5 signature: 97ab79d36bbfac916eee88e8b5acb351 ****/
@@ -1160,6 +1163,8 @@ gp_Pnt
 
 };
 
+
+%make_alias(BRepAdaptor_Curve)
 
 %extend BRepAdaptor_Curve {
 	%pythoncode {
@@ -1240,345 +1245,9 @@ None
 };
 
 
+%make_alias(BRepAdaptor_Curve2d)
+
 %extend BRepAdaptor_Curve2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*******************************
-* class BRepAdaptor_HCompCurve *
-*******************************/
-class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
-	public:
-		/****************** BRepAdaptor_HCompCurve ******************/
-		/**** md5 signature: ee2332085191c287653cc1dc3c443d67 ****/
-		%feature("compactdefaultargs") BRepAdaptor_HCompCurve;
-		%feature("autodoc", "Creates an empty genhcurve.
-
-Returns
--------
-None
-") BRepAdaptor_HCompCurve;
-		 BRepAdaptor_HCompCurve();
-
-		/****************** BRepAdaptor_HCompCurve ******************/
-		/**** md5 signature: 529069a7142997396ae63cdbe29595c4 ****/
-		%feature("compactdefaultargs") BRepAdaptor_HCompCurve;
-		%feature("autodoc", "Creates a genhcurve from a curve.
-
-Parameters
-----------
-C: BRepAdaptor_CompCurve
-
-Returns
--------
-None
-") BRepAdaptor_HCompCurve;
-		 BRepAdaptor_HCompCurve(const BRepAdaptor_CompCurve & C);
-
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: 5584aafa803567f0b14765f59d1e9df7 ****/
-		%feature("compactdefaultargs") ChangeCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-BRepAdaptor_CompCurve
-") ChangeCurve;
-		BRepAdaptor_CompCurve & ChangeCurve();
-
-		/****************** Curve ******************/
-		/**** md5 signature: a89f0959dbb9c3c030843720c3636148 ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") Curve;
-		const Adaptor3d_Curve & Curve();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: 73b397b3522011e6948956523664e20c ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") GetCurve;
-		Adaptor3d_Curve & GetCurve();
-
-		/****************** Set ******************/
-		/**** md5 signature: 293e0d7a041d2ce7fad35d23e78b19a5 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve.
-
-Parameters
-----------
-C: BRepAdaptor_CompCurve
-
-Returns
--------
-None
-") Set;
-		void Set(const BRepAdaptor_CompCurve & C);
-
-};
-
-
-%make_alias(BRepAdaptor_HCompCurve)
-
-%extend BRepAdaptor_HCompCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***************************
-* class BRepAdaptor_HCurve *
-***************************/
-class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
-	public:
-		/****************** BRepAdaptor_HCurve ******************/
-		/**** md5 signature: c2c284c5ce4093000fb8547d17b56caa ****/
-		%feature("compactdefaultargs") BRepAdaptor_HCurve;
-		%feature("autodoc", "Creates an empty genhcurve.
-
-Returns
--------
-None
-") BRepAdaptor_HCurve;
-		 BRepAdaptor_HCurve();
-
-		/****************** BRepAdaptor_HCurve ******************/
-		/**** md5 signature: e646efb1776bc9066f0b18779c8630da ****/
-		%feature("compactdefaultargs") BRepAdaptor_HCurve;
-		%feature("autodoc", "Creates a genhcurve from a curve.
-
-Parameters
-----------
-C: BRepAdaptor_Curve
-
-Returns
--------
-None
-") BRepAdaptor_HCurve;
-		 BRepAdaptor_HCurve(const BRepAdaptor_Curve & C);
-
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: ec3c49a6c008b42a2a45ef58ef5939e3 ****/
-		%feature("compactdefaultargs") ChangeCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-BRepAdaptor_Curve
-") ChangeCurve;
-		BRepAdaptor_Curve & ChangeCurve();
-
-		/****************** Curve ******************/
-		/**** md5 signature: a89f0959dbb9c3c030843720c3636148 ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") Curve;
-		const Adaptor3d_Curve & Curve();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: 73b397b3522011e6948956523664e20c ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "Returns the curve used to create the genhcurve. this is redefined from hcurve, cannot be inline.
-
-Returns
--------
-Adaptor3d_Curve
-") GetCurve;
-		Adaptor3d_Curve & GetCurve();
-
-		/****************** Set ******************/
-		/**** md5 signature: 6d7ab21b172ab8d3910d6bddd09a65b7 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve.
-
-Parameters
-----------
-C: BRepAdaptor_Curve
-
-Returns
--------
-None
-") Set;
-		void Set(const BRepAdaptor_Curve & C);
-
-};
-
-
-%make_alias(BRepAdaptor_HCurve)
-
-%extend BRepAdaptor_HCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class BRepAdaptor_HCurve2d *
-*****************************/
-class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
-	public:
-		/****************** BRepAdaptor_HCurve2d ******************/
-		/**** md5 signature: c87733446815b91c488e07d5c4adb51a ****/
-		%feature("compactdefaultargs") BRepAdaptor_HCurve2d;
-		%feature("autodoc", "Creates an empty genhcurve2d.
-
-Returns
--------
-None
-") BRepAdaptor_HCurve2d;
-		 BRepAdaptor_HCurve2d();
-
-		/****************** BRepAdaptor_HCurve2d ******************/
-		/**** md5 signature: b630f3a90244c1bfeb089666571296b9 ****/
-		%feature("compactdefaultargs") BRepAdaptor_HCurve2d;
-		%feature("autodoc", "Creates a genhcurve2d from a curve.
-
-Parameters
-----------
-C: BRepAdaptor_Curve2d
-
-Returns
--------
-None
-") BRepAdaptor_HCurve2d;
-		 BRepAdaptor_HCurve2d(const BRepAdaptor_Curve2d & C);
-
-		/****************** ChangeCurve2d ******************/
-		/**** md5 signature: 5eaafe0a2840f766190f2993e7e4d917 ****/
-		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-BRepAdaptor_Curve2d
-") ChangeCurve2d;
-		BRepAdaptor_Curve2d & ChangeCurve2d();
-
-		/****************** Curve2d ******************/
-		/**** md5 signature: 87546edb35f2000a54f99255bb8c94db ****/
-		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve2d. this is redefined from hcurve2d, cannot be inline.
-
-Returns
--------
-Adaptor2d_Curve2d
-") Curve2d;
-		const Adaptor2d_Curve2d & Curve2d();
-
-		/****************** Set ******************/
-		/**** md5 signature: c9606a59ae51084ae5fc17beeb0843ff ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve2d.
-
-Parameters
-----------
-C: BRepAdaptor_Curve2d
-
-Returns
--------
-None
-") Set;
-		void Set(const BRepAdaptor_Curve2d & C);
-
-};
-
-
-%make_alias(BRepAdaptor_HCurve2d)
-
-%extend BRepAdaptor_HCurve2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class BRepAdaptor_HSurface *
-*****************************/
-class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
-	public:
-		/****************** BRepAdaptor_HSurface ******************/
-		/**** md5 signature: 47d131914c3d836b6ee8dfca74879c7c ****/
-		%feature("compactdefaultargs") BRepAdaptor_HSurface;
-		%feature("autodoc", "Creates an empty genhsurface.
-
-Returns
--------
-None
-") BRepAdaptor_HSurface;
-		 BRepAdaptor_HSurface();
-
-		/****************** BRepAdaptor_HSurface ******************/
-		/**** md5 signature: 99cc409cc8049c0bbcbb1e8a795e84c0 ****/
-		%feature("compactdefaultargs") BRepAdaptor_HSurface;
-		%feature("autodoc", "Creates a genhsurface from a surface.
-
-Parameters
-----------
-S: BRepAdaptor_Surface
-
-Returns
--------
-None
-") BRepAdaptor_HSurface;
-		 BRepAdaptor_HSurface(const BRepAdaptor_Surface & S);
-
-		/****************** ChangeSurface ******************/
-		/**** md5 signature: 26725220266e2a65b2ae7cf9cd23eaf2 ****/
-		%feature("compactdefaultargs") ChangeSurface;
-		%feature("autodoc", "Returns the surface used to create the genhsurface.
-
-Returns
--------
-BRepAdaptor_Surface
-") ChangeSurface;
-		BRepAdaptor_Surface & ChangeSurface();
-
-		/****************** Set ******************/
-		/**** md5 signature: fcf34872ec48434410d7179500550649 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhsurface.
-
-Parameters
-----------
-S: BRepAdaptor_Surface
-
-Returns
--------
-None
-") Set;
-		void Set(const BRepAdaptor_Surface & S);
-
-		/****************** Surface ******************/
-		/**** md5 signature: 87b43b57a8dc79c19df787e8ef796cad ****/
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns a reference to the surface inside the hsurface. this is redefined from hsurface, cannot be inline.
-
-Returns
--------
-Adaptor3d_Surface
-") Surface;
-		const Adaptor3d_Surface & Surface();
-
-};
-
-
-%make_alias(BRepAdaptor_HSurface)
-
-%extend BRepAdaptor_HSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1631,7 +1300,7 @@ gp_Ax1
 		/****************** BSpline ******************/
 		/**** md5 signature: 7edfedec29b3e090d1dbb1c560f9218f ****/
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "Warning : this will make a copy of the bspline surface since it applies to it the mytsrf transformation be carefull when using this method.
+		%feature("autodoc", "Warning : this will make a copy of the bspline surface since it applies to it the mytsrf transformation be careful when using this method.
 
 Returns
 -------
@@ -1640,26 +1309,26 @@ opencascade::handle<Geom_BSplineSurface>
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****************** BasisCurve ******************/
-		/**** md5 signature: 649d212d15fc34b20cfbf05abf61b226 ****/
+		/**** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ****/
 		%feature("compactdefaultargs") BasisCurve;
-		%feature("autodoc", "Only for surfaceofextrusion and surfaceofrevolution warning: this will make a copy of the underlying curve since it applies to it the transformation mytrsf. be carefull when using this method.
+		%feature("autodoc", "Only for surfaceofextrusion and surfaceofrevolution warning: this will make a copy of the underlying curve since it applies to it the transformation mytrsf. be careful when using this method.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") BasisCurve;
-		opencascade::handle<Adaptor3d_HCurve> BasisCurve();
+		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****************** BasisSurface ******************/
-		/**** md5 signature: 421ea038c6d9bcc3b023d9c1239bea84 ****/
+		/**** md5 signature: de63a8a43356a45f5d395e828ec0014c ****/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") BasisSurface;
-		opencascade::handle<Adaptor3d_HSurface> BasisSurface();
+		opencascade::handle<Adaptor3d_Surface> BasisSurface();
 
 		/****************** Bezier ******************/
 		/**** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ****/
@@ -1830,7 +1499,7 @@ TopoDS_Face
 		const TopoDS_Face Face();
 
 		/****************** FirstUParameter ******************/
-		/**** md5 signature: 62341804d7e1ffc3de87fae2bf43b512 ****/
+		/**** md5 signature: 9f6a318ef39f30d9051cc243f6edc9ac ****/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1838,10 +1507,10 @@ Returns
 -------
 float
 ") FirstUParameter;
-		Standard_Real FirstUParameter();
+		virtual Standard_Real FirstUParameter();
 
 		/****************** FirstVParameter ******************/
-		/**** md5 signature: 982af8f353fd309c87f6c3698af95089 ****/
+		/**** md5 signature: 026c8b687e22be56263a275efcb1a191 ****/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1849,10 +1518,10 @@ Returns
 -------
 float
 ") FirstVParameter;
-		Standard_Real FirstVParameter();
+		virtual Standard_Real FirstVParameter();
 
 		/****************** GetType ******************/
-		/**** md5 signature: 96aa962fbb94c2c631f870283212b1d3 ****/
+		/**** md5 signature: 936170b269276a5a12605a71a86272c0 ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Returns the type of the surface : plane, cylinder, cone, sphere, torus, beziersurface, bsplinesurface, surfaceofrevolution, surfaceofextrusion, othersurface.
 
@@ -1860,7 +1529,7 @@ Returns
 -------
 GeomAbs_SurfaceType
 ") GetType;
-		GeomAbs_SurfaceType GetType();
+		virtual GeomAbs_SurfaceType GetType();
 
 		/****************** Initialize ******************/
 		/**** md5 signature: f3aeecb0e2fbd866889f168f070cf082 ****/
@@ -1880,7 +1549,7 @@ None
 		void Initialize(const TopoDS_Face & F, const Standard_Boolean Restriction = Standard_True);
 
 		/****************** IsUClosed ******************/
-		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
+		/**** md5 signature: 3889881a8bccaf01bdc63482d847fec7 ****/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "No available documentation.
 
@@ -1888,10 +1557,10 @@ Returns
 -------
 bool
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		virtual Standard_Boolean IsUClosed();
 
 		/****************** IsUPeriodic ******************/
-		/**** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ****/
+		/**** md5 signature: baaa80f0fba4fab1ff0458c41067535b ****/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "No available documentation.
 
@@ -1899,10 +1568,10 @@ Returns
 -------
 bool
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		virtual Standard_Boolean IsUPeriodic();
 
 		/****************** IsURational ******************/
-		/**** md5 signature: 503a5a81658ea54283ba1b83fd4c4159 ****/
+		/**** md5 signature: 972bde55bb1931ba89cfd38a75b346b4 ****/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "No available documentation.
 
@@ -1910,10 +1579,10 @@ Returns
 -------
 bool
 ") IsURational;
-		Standard_Boolean IsURational();
+		virtual Standard_Boolean IsURational();
 
 		/****************** IsVClosed ******************/
-		/**** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ****/
+		/**** md5 signature: f5d8b2178f14695d158c648b5d67e50b ****/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "No available documentation.
 
@@ -1921,10 +1590,10 @@ Returns
 -------
 bool
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		virtual Standard_Boolean IsVClosed();
 
 		/****************** IsVPeriodic ******************/
-		/**** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ****/
+		/**** md5 signature: a7b7752f1716f49329b3486241deda0e ****/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "No available documentation.
 
@@ -1932,10 +1601,10 @@ Returns
 -------
 bool
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		virtual Standard_Boolean IsVPeriodic();
 
 		/****************** IsVRational ******************/
-		/**** md5 signature: 43ab877f92028162dd9780a1e61ecdd7 ****/
+		/**** md5 signature: bfc5bd774a4b38bf6259615a711f8ed2 ****/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "No available documentation.
 
@@ -1943,10 +1612,10 @@ Returns
 -------
 bool
 ") IsVRational;
-		Standard_Boolean IsVRational();
+		virtual Standard_Boolean IsVRational();
 
 		/****************** LastUParameter ******************/
-		/**** md5 signature: 1d079dee0cfc1756347bcb2471c5c822 ****/
+		/**** md5 signature: 3133997e2ee3ea09c0b46a884e833ca4 ****/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1954,10 +1623,10 @@ Returns
 -------
 float
 ") LastUParameter;
-		Standard_Real LastUParameter();
+		virtual Standard_Real LastUParameter();
 
 		/****************** LastVParameter ******************/
-		/**** md5 signature: 2b4acdfbc345aaeedbb1d34eef2873f2 ****/
+		/**** md5 signature: f1f64233932dd0768276d78ffb537717 ****/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "No available documentation.
 
@@ -1965,25 +1634,25 @@ Returns
 -------
 float
 ") LastVParameter;
-		Standard_Real LastVParameter();
+		virtual Standard_Real LastVParameter();
 
 		/****************** NbUIntervals ******************/
-		/**** md5 signature: 36290e0c805f559fce0d4de0d4d51789 ****/
+		/**** md5 signature: ae4875076949dd10d5b3e8aa53673562 ****/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "If necessary, breaks the surface in u intervals of continuity <s>. and returns the number of intervals.
 
 Parameters
 ----------
-S: GeomAbs_Shape
+theSh: GeomAbs_Shape
 
 Returns
 -------
 int
 ") NbUIntervals;
-		Standard_Integer NbUIntervals(const GeomAbs_Shape S);
+		virtual Standard_Integer NbUIntervals(const GeomAbs_Shape theSh);
 
 		/****************** NbUKnots ******************/
-		/**** md5 signature: b3d8ce13e5341877d4ffaaf0b52ec603 ****/
+		/**** md5 signature: 9c52bcf67cce67b26f246c3aa4ea551f ****/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "No available documentation.
 
@@ -1991,10 +1660,10 @@ Returns
 -------
 int
 ") NbUKnots;
-		Standard_Integer NbUKnots();
+		virtual Standard_Integer NbUKnots();
 
 		/****************** NbUPoles ******************/
-		/**** md5 signature: 5c5f4e3c3fe024076b4fb29a46558ec0 ****/
+		/**** md5 signature: 8d31152e70dd85bb21fb36dbd5b33693 ****/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "No available documentation.
 
@@ -2002,25 +1671,25 @@ Returns
 -------
 int
 ") NbUPoles;
-		Standard_Integer NbUPoles();
+		virtual Standard_Integer NbUPoles();
 
 		/****************** NbVIntervals ******************/
-		/**** md5 signature: 1386a357acacae70889de04788135ce2 ****/
+		/**** md5 signature: f8d85deebab1e39694985284c6a9f17e ****/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "If necessary, breaks the surface in v intervals of continuity <s>. and returns the number of intervals.
 
 Parameters
 ----------
-S: GeomAbs_Shape
+theSh: GeomAbs_Shape
 
 Returns
 -------
 int
 ") NbVIntervals;
-		Standard_Integer NbVIntervals(const GeomAbs_Shape S);
+		virtual Standard_Integer NbVIntervals(const GeomAbs_Shape theSh);
 
 		/****************** NbVKnots ******************/
-		/**** md5 signature: b1cd06ae6e3ff5f29ab4140934f12d0a ****/
+		/**** md5 signature: 6aef7952062b9c9994e4e5162b5eecc2 ****/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "No available documentation.
 
@@ -2028,10 +1697,10 @@ Returns
 -------
 int
 ") NbVKnots;
-		Standard_Integer NbVKnots();
+		virtual Standard_Integer NbVKnots();
 
 		/****************** NbVPoles ******************/
-		/**** md5 signature: d1321a0d34d7aaceadde41cd3444173f ****/
+		/**** md5 signature: c198f9b4e351d69009dae4cc79544fc2 ****/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "No available documentation.
 
@@ -2039,7 +1708,7 @@ Returns
 -------
 int
 ") NbVPoles;
-		Standard_Integer NbVPoles();
+		virtual Standard_Integer NbVPoles();
 
 		/****************** OffsetValue ******************/
 		/**** md5 signature: ae23f5f41fc62b65137ff41b8ee27c47 ****/
@@ -2119,7 +1788,7 @@ gp_Trsf
 		const gp_Trsf Trsf();
 
 		/****************** UContinuity ******************/
-		/**** md5 signature: 734a4ef77d0d03bc93d92e10bda465e4 ****/
+		/**** md5 signature: 3d5af3bf8bc22c7a70f14bdb9e75696a ****/
 		%feature("compactdefaultargs") UContinuity;
 		%feature("autodoc", "No available documentation.
 
@@ -2127,10 +1796,10 @@ Returns
 -------
 GeomAbs_Shape
 ") UContinuity;
-		GeomAbs_Shape UContinuity();
+		virtual GeomAbs_Shape UContinuity();
 
 		/****************** UDegree ******************/
-		/**** md5 signature: fe5d6f101c0706d20343b36865ccf566 ****/
+		/**** md5 signature: 2acc7b7f865332e05b9779cd0a953da6 ****/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "No available documentation.
 
@@ -2138,7 +1807,7 @@ Returns
 -------
 int
 ") UDegree;
-		Standard_Integer UDegree();
+		virtual Standard_Integer UDegree();
 
 		/****************** UIntervals ******************/
 		/**** md5 signature: 5a653f364681c4a5c1065b7e92c5d659 ****/
@@ -2157,7 +1826,7 @@ None
 		void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** UPeriod ******************/
-		/**** md5 signature: a3dec1a81b623affa1d3ea1e9e49c97e ****/
+		/**** md5 signature: 9816370c908f909f6185bf5b607b6ed4 ****/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "No available documentation.
 
@@ -2165,25 +1834,25 @@ Returns
 -------
 float
 ") UPeriod;
-		Standard_Real UPeriod();
+		virtual Standard_Real UPeriod();
 
 		/****************** UResolution ******************/
-		/**** md5 signature: 449c7efbd4cbc4136589973c1bc1500b ****/
+		/**** md5 signature: c908970ed85794b4b55fe21095a41df4 ****/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "Returns the parametric u resolution corresponding to the real space resolution <r3d>.
 
 Parameters
 ----------
-R3d: float
+theR3d: float
 
 Returns
 -------
 float
 ") UResolution;
-		Standard_Real UResolution(const Standard_Real R3d);
+		virtual Standard_Real UResolution(const Standard_Real theR3d);
 
 		/****************** UTrim ******************/
-		/**** md5 signature: 2f1effe4b247d770d76c6bb7e909f894 ****/
+		/**** md5 signature: 3604326125cf753b2a6722a946fb54be ****/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "Returns a surface trimmed in the u direction equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2195,12 +1864,12 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") UTrim;
-		opencascade::handle<Adaptor3d_HSurface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** VContinuity ******************/
-		/**** md5 signature: 147ea173efc6a600ed241c35c98936ea ****/
+		/**** md5 signature: a992dce85d001ed1cf99e1672e6d07ff ****/
 		%feature("compactdefaultargs") VContinuity;
 		%feature("autodoc", "No available documentation.
 
@@ -2208,10 +1877,10 @@ Returns
 -------
 GeomAbs_Shape
 ") VContinuity;
-		GeomAbs_Shape VContinuity();
+		virtual GeomAbs_Shape VContinuity();
 
 		/****************** VDegree ******************/
-		/**** md5 signature: b7875d48d80bf8a6fde9c47500038fd4 ****/
+		/**** md5 signature: 40f217d7a0d71a97880e9ed212ed6f4e ****/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "No available documentation.
 
@@ -2219,7 +1888,7 @@ Returns
 -------
 int
 ") VDegree;
-		Standard_Integer VDegree();
+		virtual Standard_Integer VDegree();
 
 		/****************** VIntervals ******************/
 		/**** md5 signature: bf8bef8286fec18f81beea299dd5cb6d ****/
@@ -2238,7 +1907,7 @@ None
 		void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** VPeriod ******************/
-		/**** md5 signature: e6f079a3e4e62dbf708e1ce56dfd23b6 ****/
+		/**** md5 signature: 72036cc062bfffc50fc8cd70671f4f03 ****/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "No available documentation.
 
@@ -2246,25 +1915,25 @@ Returns
 -------
 float
 ") VPeriod;
-		Standard_Real VPeriod();
+		virtual Standard_Real VPeriod();
 
 		/****************** VResolution ******************/
-		/**** md5 signature: a2dfdb6521f339dcde6811097088d560 ****/
+		/**** md5 signature: 6834713e8a40b99362514d586f78d876 ****/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "Returns the parametric v resolution corresponding to the real space resolution <r3d>.
 
 Parameters
 ----------
-R3d: float
+theR3d: float
 
 Returns
 -------
 float
 ") VResolution;
-		Standard_Real VResolution(const Standard_Real R3d);
+		virtual Standard_Real VResolution(const Standard_Real theR3d);
 
 		/****************** VTrim ******************/
-		/**** md5 signature: acb52a48cbc4aa80908911477b02f7f4 ****/
+		/**** md5 signature: d094345261a4439c6edc98b200ea4e3d ****/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "Returns a surface trimmed in the v direction between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2276,9 +1945,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") VTrim;
-		opencascade::handle<Adaptor3d_HSurface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: bc01a119296408176c75cc0dfb0636ae ****/
@@ -2298,6 +1967,8 @@ gp_Pnt
 
 };
 
+
+%make_alias(BRepAdaptor_Surface)
 
 %extend BRepAdaptor_Surface {
 	%pythoncode {

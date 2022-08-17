@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPGEOMDOCSTRING
 "RWStepGeom module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepgeom.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwstepgeom.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPGEOMDOCSTRING) RWStepGeom
 
@@ -73,7 +73,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -5115,6 +5115,81 @@ None
 
 
 %extend RWStepGeom_RWSphericalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************
+* class RWStepGeom_RWSuParameters *
+**********************************/
+class RWStepGeom_RWSuParameters {
+	public:
+		/****************** RWStepGeom_RWSuParameters ******************/
+		/**** md5 signature: 8a2b07a385085e201d4d219699f3cd36 ****/
+		%feature("compactdefaultargs") RWStepGeom_RWSuParameters;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepGeom_RWSuParameters;
+		 RWStepGeom_RWSuParameters();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 1db8a731b521247bb58ea688443826a1 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theAch: Interface_Check
+theEnt: StepGeom_SuParameters
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theAch, const opencascade::handle<StepGeom_SuParameters> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 6a1ea50614f8d7356a7f7660630f90e2 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepGeom_SuParameters
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepGeom_SuParameters> & theEnt, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 08718add97158750d10b201d6c6569f4 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepGeom_SuParameters
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepGeom_SuParameters> & theEnt);
+
+};
+
+
+%extend RWStepGeom_RWSuParameters {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

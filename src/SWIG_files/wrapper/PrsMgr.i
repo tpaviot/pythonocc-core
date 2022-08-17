@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PRSMGRDOCSTRING
 "PrsMgr module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsmgr.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_prsmgr.html"
 %enddef
 %module (package="OCC.Core", docstring=PRSMGRDOCSTRING) PrsMgr
 
@@ -101,19 +101,42 @@ from OCC.Core.Exception import *
 /* public enums */
 enum PrsMgr_TypeOfPresentation3d {
 	PrsMgr_TOP_AllView = 0,
-	PrsMgr_TOP_ProjectorDependant = 1,
+	PrsMgr_TOP_ProjectorDependent = 1,
+};
+
+enum PrsMgr_DisplayStatus {
+	PrsMgr_DisplayStatus_Displayed = 0,
+	PrsMgr_DisplayStatus_Erased = 1,
+	PrsMgr_DisplayStatus_None = 2,
+	AIS_DS_Displayed = PrsMgr_DisplayStatus_Displayed,
+	AIS_DS_Erased = PrsMgr_DisplayStatus_Erased,
+	AIS_DS_None = PrsMgr_DisplayStatus_None,
 };
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class PrsMgr_TypeOfPresentation3d(IntEnum):
 	PrsMgr_TOP_AllView = 0
-	PrsMgr_TOP_ProjectorDependant = 1
+	PrsMgr_TOP_ProjectorDependent = 1
 PrsMgr_TOP_AllView = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_AllView
-PrsMgr_TOP_ProjectorDependant = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependant
+PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependent
+
+class PrsMgr_DisplayStatus(IntEnum):
+	PrsMgr_DisplayStatus_Displayed = 0
+	PrsMgr_DisplayStatus_Erased = 1
+	PrsMgr_DisplayStatus_None = 2
+	AIS_DS_Displayed = PrsMgr_DisplayStatus_Displayed
+	AIS_DS_Erased = PrsMgr_DisplayStatus_Erased
+	AIS_DS_None = PrsMgr_DisplayStatus_None
+PrsMgr_DisplayStatus_Displayed = PrsMgr_DisplayStatus.PrsMgr_DisplayStatus_Displayed
+PrsMgr_DisplayStatus_Erased = PrsMgr_DisplayStatus.PrsMgr_DisplayStatus_Erased
+PrsMgr_DisplayStatus_None = PrsMgr_DisplayStatus.PrsMgr_DisplayStatus_None
+AIS_DS_Displayed = PrsMgr_DisplayStatus.AIS_DS_Displayed
+AIS_DS_Erased = PrsMgr_DisplayStatus.AIS_DS_Erased
+AIS_DS_None = PrsMgr_DisplayStatus.AIS_DS_None
 };
 /* end python proxy for enums */
 
@@ -337,6 +360,17 @@ int
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
+		/****************** DisplayStatus ******************/
+		/**** md5 signature: ee3d5b78bf379a82087b86d8b5b0b3e3 ****/
+		%feature("compactdefaultargs") DisplayStatus;
+		%feature("autodoc", "Return presentation display status; prsmgr_displaystatus_none by default.
+
+Returns
+-------
+PrsMgr_DisplayStatus
+") DisplayStatus;
+		PrsMgr_DisplayStatus DisplayStatus();
+
 
             %feature("autodoc", "1");
             %extend{
@@ -348,35 +382,13 @@ int
 		/****************** DynamicHilightAttributes ******************/
 		/**** md5 signature: 9c44b3555020951e689ea9d2e141bc3d ****/
 		%feature("compactdefaultargs") DynamicHilightAttributes;
-		%feature("autodoc", "Returns the hilight attributes settings. when not null, overrides both prs3d_typeofhighlight_localdynamic and prs3d_typeofhighlight_dynamic defined within ais_interactivecontext.
+		%feature("autodoc", "Returns the hilight attributes settings. when not null, overrides both prs3d_typeofhighlight_localdynamic and prs3d_typeofhighlight_dynamic defined within ais_interactivecontext::highlightstyle(). @sa ais_interactivecontext::highlightstyle().
 
 Returns
 -------
 opencascade::handle<Prs3d_Drawer>
 ") DynamicHilightAttributes;
 		const opencascade::handle<Prs3d_Drawer> & DynamicHilightAttributes();
-
-		/****************** GetTransformPersistenceMode ******************/
-		/**** md5 signature: 962072ac918366817a8f5012a823a38e ****/
-		%feature("compactdefaultargs") GetTransformPersistenceMode;
-		%feature("autodoc", "Gets transform persistence mode for this object.
-
-Returns
--------
-Graphic3d_TransModeFlags
-") GetTransformPersistenceMode;
-		Graphic3d_TransModeFlags GetTransformPersistenceMode();
-
-		/****************** GetTransformPersistencePoint ******************/
-		/**** md5 signature: 3adb552378412254ff4b806352304578 ****/
-		%feature("compactdefaultargs") GetTransformPersistencePoint;
-		%feature("autodoc", "Gets point of transform persistence for this object.
-
-Returns
--------
-gp_Pnt
-") GetTransformPersistencePoint;
-		gp_Pnt GetTransformPersistencePoint();
 
 		/****************** HasColor ******************/
 		/**** md5 signature: f14084fe0c7674324d105b06cc1ff5b4 ****/
@@ -403,7 +415,7 @@ bool
 		/****************** HasHilightMode ******************/
 		/**** md5 signature: 35c4cc36b9d1287cbb8be9209c167aef ****/
 		%feature("compactdefaultargs") HasHilightMode;
-		%feature("autodoc", "Returns true if the interactive object is in highlight mode.
+		%feature("autodoc", "Returns true if the interactive object is in highlight mode. @sa hilightattributes().
 
 Returns
 -------
@@ -469,7 +481,7 @@ bool
 		/****************** HilightAttributes ******************/
 		/**** md5 signature: 028c3cfd528f1150f36206e2e1fd24ab ****/
 		%feature("compactdefaultargs") HilightAttributes;
-		%feature("autodoc", "Returns the hilight attributes settings. when not null, overrides both prs3d_typeofhighlight_localselected and prs3d_typeofhighlight_selected defined within ais_interactivecontext.
+		%feature("autodoc", "Returns the hilight attributes settings. when not null, overrides both prs3d_typeofhighlight_localselected and prs3d_typeofhighlight_selected defined within ais_interactivecontext::highlightstyle(). @sa ais_interactivecontext::highlightstyle().
 
 Returns
 -------
@@ -480,7 +492,7 @@ opencascade::handle<Prs3d_Drawer>
 		/****************** HilightMode ******************/
 		/**** md5 signature: 65e4b0407fae3cd6d737aa6b7e74bfa0 ****/
 		%feature("compactdefaultargs") HilightMode;
-		%feature("autodoc", "Returns highlight display mode. this is obsolete method for backward compatibility - use ::hilightattributes() and ::dynamichilightattributes() instead.
+		%feature("autodoc", "Returns highlight display mode. this is obsolete method for backward compatibility - use ::hilightattributes() and ::dynamichilightattributes() instead. @sa hilightattributes().
 
 Returns
 -------
@@ -689,21 +701,6 @@ None
 ") SetClipPlanes;
 		virtual void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
-		/****************** SetClipPlanes ******************/
-		/**** md5 signature: 07b77eb94c54463d3580213e6e88f118 ****/
-		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePlanes: Graphic3d_SequenceOfHClipPlane
-
-Returns
--------
-None
-") SetClipPlanes;
-		void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane & thePlanes);
-
 		/****************** SetColor ******************/
 		/**** md5 signature: 00f0a4e343c1e144a6992078bccbe32c ****/
 		%feature("compactdefaultargs") SetColor;
@@ -783,7 +780,7 @@ None
 		/****************** SetHilightMode ******************/
 		/**** md5 signature: 0fd85a8f52dd5fb591746b6a5ceb9590 ****/
 		%feature("compactdefaultargs") SetHilightMode;
-		%feature("autodoc", "Sets highlight display mode. this is obsolete method for backward compatibility - use ::hilightattributes() and ::dynamichilightattributes() instead.
+		%feature("autodoc", "Sets highlight display mode. this is obsolete method for backward compatibility - use ::hilightattributes() and ::dynamichilightattributes() instead. @sa hilightattributes().
 
 Parameters
 ----------
@@ -960,23 +957,6 @@ Returns
 None
 ") SetTransformPersistence;
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
-
-		/****************** SetTransformPersistence ******************/
-		/**** md5 signature: 40850175dee1c75cf5c4de5f4378d711 ****/
-		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "Sets up transform persistence mode for this object. this function used to lock in object position, rotation and / or zooming relative to camera position. object will be drawn in the origin setted by thepoint parameter (except graphic3d_tmf_triedronpers flag - see description later). themode should be: - graphic3d_tmf_none - no persistence attributes (reset); - graphic3d_tmf_zoompers - object doesn't resize; - graphic3d_tmf_rotatepers - object doesn't rotate; - graphic3d_tmf_zoomrotatepers - object doesn't resize and rotate; - graphic3d_tmf_rotatepers - object doesn't rotate; - graphic3d_tmf_triedronpers - object behaves like trihedron. if graphic3d_tmf_triedronpers or graphic3d_tmf_2d persistence mode selected thepoint coordinates x and y means: - x = 0.0, y = 0.0 - center of view window; - x > 0.0, y > 0.0 - right upper corner of view window; - x > 0.0, y < 0.0 - right lower corner of view window; - x < 0.0, y > 0.0 - left upper corner of view window; - x < 0.0, y < 0.0 - left lower corner of view window. and z coordinate defines the gap from border of view window (except center position).
-
-Parameters
-----------
-theMode: Graphic3d_TransModeFlags
-thePoint: gp_Pnt,optional
-	default value is gp_Pnt(0.0,0.0,0.0)
-
-Returns
--------
-None
-") SetTransformPersistence;
-		void SetTransformPersistence(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePoint = gp_Pnt(0.0,0.0,0.0));
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: 6904036a7c429832a3fcf1769aa51bbc ****/
@@ -1194,7 +1174,7 @@ None
 		/****************** UnsetHilightMode ******************/
 		/**** md5 signature: cc3796da2fbce682bdfefcce93091c39 ****/
 		%feature("compactdefaultargs") UnsetHilightMode;
-		%feature("autodoc", "Unsets highlight display mode.
+		%feature("autodoc", "Unsets highlight display mode. @sa hilightattributes().
 
 Returns
 -------
@@ -1836,22 +1816,6 @@ Returns
 None
 ") Unhighlight;
 		void Unhighlight(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
-
-		/****************** Unhighlight ******************/
-		/**** md5 signature: 1a2e1121e9c12589e75a718f291cd4b8 ****/
-		%feature("compactdefaultargs") Unhighlight;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-thePrsObject: PrsMgr_PresentableObject
-theMode: int
-
-Returns
--------
-None
-") Unhighlight;
-		void Unhighlight(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode);
 
 		/****************** Update ******************/
 		/**** md5 signature: 6f121173a28205c89b330155df4d893b ****/

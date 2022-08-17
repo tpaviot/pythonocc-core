@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BOPTOOLSDOCSTRING
 "BOPTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_boptools.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_boptools.html"
 %enddef
 %module (package="OCC.Core", docstring=BOPTOOLSDOCSTRING) BOPTools
 
@@ -88,7 +88,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -665,7 +665,7 @@ bool
 		/****************** IsSplitToReverse ******************/
 		/**** md5 signature: 6dca305aeb7fd21e742843dd4184640f ****/
 		%feature("compactdefaultargs") IsSplitToReverse;
-		%feature("autodoc", "Checks if the direction of the split shape is opposite to the direction of the original shape. the method is an overload for (edge,edge) and (face,face) corresponding methods and checks only these types of shapes. for faces the method checks if normal directions are opposite. for edges the method checks if tangent vectors are opposite. //! in case the directions do not coincide, it returns true, meaning that split shape has to be reversed to match the direction of the original shape. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - error from (edge,edge) or (face,face) corresponding method - 100 - bad types. in case of any error the method always returns false. //! @param thesplit [in] split shape @param theshape [in] original shape @param thecontext [in] cashed geometrical tools @param theerror [out] error status of the operation.
+		%feature("autodoc", "Checks if the direction of the split shape is opposite to the direction of the original shape. the method is an overload for (edge,edge) and (face,face) corresponding methods and checks only these types of shapes. for faces the method checks if normal directions are opposite. for edges the method checks if tangent vectors are opposite. //! in case the directions do not coincide, it returns true, meaning that split shape has to be reversed to match the direction of the original shape. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - error from (edge,edge) or (face,face) corresponding method - 100 - bad types. in case of any error the method always returns false. //! @param thesplit [in] split shape @param theshape [in] original shape @param thecontext [in] cached geometrical tools @param theerror [out] error status of the operation.
 
 Parameters
 ----------
@@ -684,7 +684,7 @@ bool
 		/****************** IsSplitToReverse ******************/
 		/**** md5 signature: a442a1278308b2eef20ed84d8ecc93fd ****/
 		%feature("compactdefaultargs") IsSplitToReverse;
-		%feature("autodoc", "Checks if the normal direction of the split face is opposite to the normal direction of the original face. the normal directions for both faces are taken in the same point - point inside the split face is projected onto the original face. returns true if the normals do not coincide, meaning the necessity to revert the orientation of the split face to match the direction of the original face. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - 1 - unable to find the point inside split face; - 2 - unable to compute the normal for the split face; - 3 - unable to project the point inside the split face on the original face; - 4 - unable to compute the normal for the original face. in case of any error the method always returns false. //! @param thesplit [in] split face @param theshape [in] original face @param thecontext [in] cashed geometrical tools @param theerror [out] error status of the operation.
+		%feature("autodoc", "Checks if the normal direction of the split face is opposite to the normal direction of the original face. the normal directions for both faces are taken in the same point - point inside the split face is projected onto the original face. returns true if the normals do not coincide, meaning the necessity to revert the orientation of the split face to match the direction of the original face. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - 1 - unable to find the point inside split face; - 2 - unable to compute the normal for the split face; - 3 - unable to project the point inside the split face on the original face; - 4 - unable to compute the normal for the original face. in case of any error the method always returns false. //! @param thesplit [in] split face @param theshape [in] original face @param thecontext [in] cached geometrical tools @param theerror [out] error status of the operation.
 
 Parameters
 ----------
@@ -703,7 +703,7 @@ bool
 		/****************** IsSplitToReverse ******************/
 		/**** md5 signature: db1c9d5e59695f6d3bb15e0065a0cb7c ****/
 		%feature("compactdefaultargs") IsSplitToReverse;
-		%feature("autodoc", "Checks if the tangent vector of the split edge is opposite to the tangent vector of the original edge. the tangent vectors for both edges are computed in the same point - point inside the split edge is projected onto the original edge. returns true if the tangent vectors do not coincide, meaning the necessity to revert the orientation of the split edge to match the direction of the original edge. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - 1 - degenerated edges are given; - 2 - unable to compute the tangent vector for the split edge; - 3 - unable to project the point inside the split edge on the original edge; - 4 - unable to compute the tangent vector for the original edge; in case of any error the method always returns false. //! @param thesplit [in] split edge @param theshape [in] original edge @param thecontext [in] cashed geometrical tools @param theerror [out] error status of the operation.
+		%feature("autodoc", "Checks if the tangent vector of the split edge is opposite to the tangent vector of the original edge. the tangent vectors for both edges are computed in the same point - point inside the split edge is projected onto the original edge. returns true if the tangent vectors do not coincide, meaning the necessity to revert the orientation of the split edge to match the direction of the original edge. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - 1 - degenerated edges are given; - 2 - unable to compute the tangent vector for the split edge; - 3 - unable to project the point inside the split edge on the original edge; - 4 - unable to compute the tangent vector for the original edge; in case of any error the method always returns false. //! @param thesplit [in] split edge @param theshape [in] original edge @param thecontext [in] cached geometrical tools @param theerror [out] error status of the operation.
 
 Parameters
 ----------
@@ -1365,7 +1365,7 @@ float
 		/****************** IsEdgeIsoline ******************/
 		/**** md5 signature: f327241ed8b7983321061c77e81b5e58 ****/
 		%feature("compactdefaultargs") IsEdgeIsoline;
-		%feature("autodoc", "Checks if curveonsurface of thee on thef matches with isoline of thef surface. sets corresponding values for istheuiso and istheviso variables. attention!!! this method is based on comparation between direction of surface (which thef is based on) iso-lines and the direction of the edge p-curve (on thef) in middle-point of the p-curve. this method should be used carefully (e.g. brep_tool::isclosed(...) together) in order to avoid false classification some p-curves as isoline (e.g. circle on a plane).
+		%feature("autodoc", "Checks if curveonsurface of thee on thef matches with isoline of thef surface. sets corresponding values for istheuiso and istheviso variables. //! attention!!! this method is based on the comparison between direction of surface (which thef is based on) iso-lines and the direction of the edge p-curve (on thef) in middle-point of the p-curve. //! this method should be used carefully (e.g. brep_tool::isclosed(...) together) in order to avoid false classification some p-curves as isoline (e.g. circle on a plane).
 
 Parameters
 ----------

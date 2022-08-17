@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFNOTEOBJECTSDOCSTRING
 "XCAFNoteObjects module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafnoteobjects.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafnoteobjects.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFNOTEOBJECTSDOCSTRING) XCAFNoteObjects
 
@@ -63,7 +63,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -145,7 +145,7 @@ gp_Pnt
 		/****************** GetPresentation ******************/
 		/**** md5 signature: bbc5f4d37a92b27b1fad241f99fa7409 ****/
 		%feature("compactdefaultargs") GetPresentation;
-		%feature("autodoc", "Returns a tesselated annotation if specified.
+		%feature("autodoc", "Returns a tessellated annotation if specified.
 
 Returns
 -------
@@ -245,7 +245,7 @@ None
 		/****************** SetPresentation ******************/
 		/**** md5 signature: a7d37bb77417d96a9ced3154dcaff279 ****/
 		%feature("compactdefaultargs") SetPresentation;
-		%feature("autodoc", "Sets a tesselated annotation.
+		%feature("autodoc", "Sets a tessellated annotation.
 
 Parameters
 ----------

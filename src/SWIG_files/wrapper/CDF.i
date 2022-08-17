@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CDFDOCSTRING
 "CDF module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cdf.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_cdf.html"
 %enddef
 %module (package="OCC.Core", docstring=CDFDOCSTRING) CDF
 
@@ -94,7 +94,7 @@ enum CDF_StoreSetNameStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class CDF_TypeOfActivation(IntEnum):
@@ -174,37 +174,39 @@ CDM_CanCloseStatus
 		CDM_CanCloseStatus CanClose(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** CanRetrieve ******************/
-		/**** md5 signature: d5cbe1ab160ad972a9496d9457c24318 ****/
+		/**** md5 signature: 0d61ed06c73aeded6f513d70d206870f ****/
 		%feature("compactdefaultargs") CanRetrieve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
+theFolder: TCollection_ExtendedString
+theName: TCollection_ExtendedString
+theAppendMode: bool
 
 Returns
 -------
 PCDM_ReaderStatus
 ") CanRetrieve;
-		PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName);
+		PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString & theFolder, const TCollection_ExtendedString & theName, const bool theAppendMode);
 
 		/****************** CanRetrieve ******************/
-		/**** md5 signature: 6a3972f2482b6d2d9e823a66696730fd ****/
+		/**** md5 signature: 64f35736d7773166005363b757a7c8ee ****/
 		%feature("compactdefaultargs") CanRetrieve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+theFolder: TCollection_ExtendedString
+theName: TCollection_ExtendedString
+theVersion: TCollection_ExtendedString
+theAppendMode: bool
 
 Returns
 -------
 PCDM_ReaderStatus
 ") CanRetrieve;
-		PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion);
+		PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString & theFolder, const TCollection_ExtendedString & theName, const TCollection_ExtendedString & theVersion, const bool theAppendMode);
 
 		/****************** Close ******************/
 		/**** md5 signature: 18e2edbb6413a2dad4b76efdcffb5374 ****/
@@ -259,6 +261,21 @@ PCDM_ReaderStatus
 ") GetRetrieveStatus;
 		PCDM_ReaderStatus GetRetrieveStatus();
 
+		/****************** InitDocument ******************/
+		/**** md5 signature: 71633d306d5c5cc6ec7824c1818ae992 ****/
+		%feature("compactdefaultargs") InitDocument;
+		%feature("autodoc", "Initialize a document for the applicative session. this virtual function is called by newdocument and should be redefined for each specific application.
+
+Parameters
+----------
+theDoc: CDM_Document
+
+Returns
+-------
+None
+") InitDocument;
+		virtual void InitDocument(const opencascade::handle<CDM_Document> & theDoc);
+
 		/****************** Load ******************/
 		/**** md5 signature: 6f28094ffe0ccd3492096f784ee50c07 ****/
 		%feature("compactdefaultargs") Load;
@@ -285,6 +302,22 @@ opencascade::handle<CDF_MetaDataDriver>
 ") MetaDataDriver;
 		opencascade::handle<CDF_MetaDataDriver> MetaDataDriver();
 
+		/****************** NewDocument ******************/
+		/**** md5 signature: 8948e39f4c19a050838644ef4dd96de3 ****/
+		%feature("compactdefaultargs") NewDocument;
+		%feature("autodoc", "Constructs an new empty document. this document will have the specified format. if initdocument() is redefined for a specific application, the new document is handled by the applicative session.
+
+Parameters
+----------
+theFormat: TCollection_ExtendedString
+theDoc: CDM_Document
+
+Returns
+-------
+None
+") NewDocument;
+		virtual void NewDocument(const TCollection_ExtendedString & theFormat, opencascade::handle<CDM_Document> & theDoc);
+
 		/****************** Open ******************/
 		/**** md5 signature: 5e6498f06bf961c0c0c61cc007aa0a28 ****/
 		%feature("compactdefaultargs") Open;
@@ -300,13 +333,6 @@ None
 ") Open;
 		void Open(const opencascade::handle<CDM_Document> & aDocument);
 
-
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
 		/****************** ReaderFromFormat ******************/
 		/**** md5 signature: aab6344d555db3220a1fcf7db3c7d59e ****/
 		%feature("compactdefaultargs") ReaderFromFormat;
@@ -323,9 +349,9 @@ opencascade::handle<PCDM_Reader>
 		virtual opencascade::handle<PCDM_Reader> ReaderFromFormat(const TCollection_ExtendedString & aFormat);
 
 		/****************** Retrieve ******************/
-		/**** md5 signature: 2cf1ddbb1c6a8f4160a602328b4e8265 ****/
+		/**** md5 signature: 529a7c29af3c51fd8c94c064e0b3dbcb ****/
 		%feature("compactdefaultargs") Retrieve;
-		%feature("autodoc", "This method retrieves a document from the database. if the document references other documents which have been updated, the latest version of these documents will be used if {usestorageconfiguration} is standard_true. the content of {afolder}, {aname} and {aversion} depends on the database manager system. if the dbms is only based on the os, {afolder} is a directory and {aname} is the name of a file. in this case the use of the syntax with {aversion} has no sense. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('/home/cascade','box.dsg'); if the dbms is euclid/design manager, {afolder}, {aname} have the form they have in euclid/design manager. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('|user|cascade','box'); //! since the version is not specified in this syntax, the latest wil be used. a link is kept with the database through an instance of cdm_metadata.
+		%feature("autodoc", "This method retrieves a document from the database. if the document references other documents which have been updated, the latest version of these documents will be used if {usestorageconfiguration} is standard_true. the content of {afolder}, {aname} and {aversion} depends on the database manager system. if the dbms is only based on the os, {afolder} is a directory and {aname} is the name of a file. in this case the use of the syntax with {aversion} has no sense. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('/home/cascade','box.dsg'); if the dbms is euclid/design manager, {afolder}, {aname} have the form they have in euclid/design manager. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('|user|cascade','box'); //! since the version is not specified in this syntax, the latest will be used. a link is kept with the database through an instance of cdm_metadata.
 
 Parameters
 ----------
@@ -333,6 +359,8 @@ aFolder: TCollection_ExtendedString
 aName: TCollection_ExtendedString
 UseStorageConfiguration: bool,optional
 	default value is Standard_True
+theFilter: PCDM_ReaderFilter,optional
+	default value is opencascade::handle<PCDM_ReaderFilter>()
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -340,10 +368,10 @@ Returns
 -------
 opencascade::handle<CDM_Document>
 ") Retrieve;
-		opencascade::handle<CDM_Document> Retrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const Standard_Boolean UseStorageConfiguration = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<CDM_Document> Retrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Retrieve ******************/
-		/**** md5 signature: 2ba10e52bde68acd8d0bae90bbbc25c8 ****/
+		/**** md5 signature: dd78ce93c0b60ff0965f3c7e69833777 ****/
 		%feature("compactdefaultargs") Retrieve;
 		%feature("autodoc", "This method retrieves a document from the database. if the document references other documents which have been updated, the latest version of these documents will be used if {usestorageconfiguration} is standard_true. -- if the dbms is only based on the os, this syntax should not be used. //! if the dbms is euclid/design manager, {afolder}, {aname} and {aversion} have the form they have in euclid/design manager. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('|user|cascade','box','2'); a link is kept with the database through an instance of cdm_metadata.
 
@@ -354,6 +382,8 @@ aName: TCollection_ExtendedString
 aVersion: TCollection_ExtendedString
 UseStorageConfiguration: bool,optional
 	default value is Standard_True
+theFilter: PCDM_ReaderFilter,optional
+	default value is opencascade::handle<PCDM_ReaderFilter>()
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -361,7 +391,7 @@ Returns
 -------
 opencascade::handle<CDM_Document>
 ") Retrieve;
-		opencascade::handle<CDM_Document> Retrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion, const Standard_Boolean UseStorageConfiguration = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<CDM_Document> Retrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetDefaultFolder ******************/
 		/**** md5 signature: b5857edec14e8dcab31bb5ac39a5223a ****/
@@ -752,7 +782,7 @@ opencascade::handle<PCDM_ReferenceIterator>
 		/****************** SetName ******************/
 		/**** md5 signature: 10c6e80103256298f85d47fc462c3021 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "This methods is usefull if the name of an object -- depends on the metadatadriver. for example a driver -- based on the operating system can choose to add the extension of file to create to the object.
+		%feature("autodoc", "This method is useful if the name of an object -- depends on the metadatadriver. for example a driver -- based on the operating system can choose to add the extension of file to create to the object.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTSURFDOCSTRING
 "IntSurf module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intsurf.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intsurf.html"
 %enddef
 %module (package="OCC.Core", docstring=INTSURFDOCSTRING) IntSurf
 
@@ -81,7 +81,7 @@ enum IntSurf_TypeTrans {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IntSurf_Situation(IntEnum):
@@ -189,21 +189,21 @@ None
 		static void MakeTransition(const gp_Vec & TgFirst, const gp_Vec & TgSecond, const gp_Dir & Normal, IntSurf_Transition & TFirst, IntSurf_Transition & TSecond);
 
 		/****************** SetPeriod ******************/
-		/**** md5 signature: 16a7ae508b5887130ad1ba538c9ee0ff ****/
+		/**** md5 signature: 486891f66d1363af6895d7c681cba2a3 ****/
 		%feature("compactdefaultargs") SetPeriod;
 		%feature("autodoc", "Fills thearrofperiod array by the period values of thefirstsurf and thesecondsurf. [0] = u-period of thefirstsurf, [1] = v-period of thefirstsurf, [2] = u-period of thesecondsurf, [3] = v-period of thesecondsurf. //! if surface is not periodic in correspond direction then its period is considered to be equal to 0.
 
 Parameters
 ----------
-theFirstSurf: Adaptor3d_HSurface
-theSecondSurf: Adaptor3d_HSurface
+theFirstSurf: Adaptor3d_Surface
+theSecondSurf: Adaptor3d_Surface
 theArrOfPeriod: float
 
 Returns
 -------
 None
 ") SetPeriod;
-		static void SetPeriod(const opencascade::handle<Adaptor3d_HSurface> & theFirstSurf, const opencascade::handle<Adaptor3d_HSurface> & theSecondSurf, Standard_Real theArrOfPeriod[4]);
+		static void SetPeriod(const opencascade::handle<Adaptor3d_Surface> & theFirstSurf, const opencascade::handle<Adaptor3d_Surface> & theSecondSurf, Standard_Real theArrOfPeriod[4]);
 
 };
 
@@ -629,6 +629,22 @@ Returns
 None
 ") Reverse;
 		void Reverse();
+
+		/****************** SetPoint ******************/
+		/**** md5 signature: 3f014f983e4959a8adc3802bc6e127de ****/
+		%feature("compactdefaultargs") SetPoint;
+		%feature("autodoc", "Sets the 3d point of the index-th pnton2s.
+
+Parameters
+----------
+Index: int
+thePnt: gp_Pnt
+
+Returns
+-------
+None
+") SetPoint;
+		void SetPoint(const Standard_Integer Index, const gp_Pnt & thePnt);
 
 		/****************** SetUV ******************/
 		/**** md5 signature: ace9005a01cb7b993999ab66ef8c0659 ****/

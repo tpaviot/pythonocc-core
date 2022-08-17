@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STDPRSDOCSTRING
 "StdPrs module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdprs.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdprs.html"
 %enddef
 %module (package="OCC.Core", docstring=STDPRSDOCSTRING) StdPrs
 
@@ -117,7 +117,7 @@ enum StdPrs_Volume {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class StdPrs_Volume(IntEnum):
@@ -982,14 +982,14 @@ None
 		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
 		/****************** AddOnSurface ******************/
-		/**** md5 signature: 2a39018c9ad850bc04d4002ce676b267 ****/
+		/**** md5 signature: df3d10afd0ae22442b9d52062f1fc4a4 ****/
 		%feature("compactdefaultargs") AddOnSurface;
 		%feature("autodoc", "Computes isolines on surface and adds them to presentation. @param thepresentation [in] the presentation. @param thesurface [in] the surface. @param thedrawer [in] the display settings. @param thedeflection [in] the deflection value. @param theuisoparams [in] the parameters of u isolines to compute. @param thevisoparams [in] the parameters of v isolines to compute.
 
 Parameters
 ----------
 thePresentation: Prs3d_Presentation
-theSurface: BRepAdaptor_HSurface
+theSurface: BRepAdaptor_Surface
 theDrawer: Prs3d_Drawer
 theDeflection: float
 theUIsoParams: TColStd_SequenceOfReal
@@ -999,7 +999,7 @@ Returns
 -------
 None
 ") AddOnSurface;
-		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_HSurface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
+		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
 		/****************** AddOnTriangulation ******************/
 		/**** md5 signature: edc7640cc9248e14e63a44d5f239dbf2 ****/
@@ -1060,7 +1060,7 @@ None
 		/****************** UVIsoParameters ******************/
 		/**** md5 signature: 624d137e5f58c70fc47c9a4a74925873 ****/
 		%feature("compactdefaultargs") UVIsoParameters;
-		%feature("autodoc", "Evalute sequence of parameters for drawing uv isolines for a given face. @param theface [in] the face. @param thenbisou [in] the number of u isolines. @param thenbisov [in] the number of v isolines. @param theuvlimit [in] the u, v parameter value limit. @param theuisoparams [out] the sequence of u isoline parameters. @param thevisoparams [out] the sequence of v isoline parameters. @param theumin [out] the lower u boundary of theface. @param theumax [out] the upper u boundary of theface. @param thevmin [out] the lower v boundary of theface. @param thevmax [out] the upper v boundary of theface.
+		%feature("autodoc", "Evaluate sequence of parameters for drawing uv isolines for a given face. @param theface [in] the face. @param thenbisou [in] the number of u isolines. @param thenbisov [in] the number of v isolines. @param theuvlimit [in] the u, v parameter value limit. @param theuisoparams [out] the sequence of u isoline parameters. @param thevisoparams [out] the sequence of v isoline parameters. @param theumin [out] the lower u boundary of theface. @param theumax [out] the upper u boundary of theface. @param thevmin [out] the lower v boundary of theface. @param thevmax [out] the upper v boundary of theface.
 
 Parameters
 ----------
@@ -1752,19 +1752,19 @@ None
 		 StdPrs_ToolRFace();
 
 		/****************** StdPrs_ToolRFace ******************/
-		/**** md5 signature: 983555aabecb3bc77e3e28a1ffd5c0a3 ****/
+		/**** md5 signature: e7bc0fa23547e41ba692892564fc2893 ****/
 		%feature("compactdefaultargs") StdPrs_ToolRFace;
 		%feature("autodoc", "Constructor with initialization.
 
 Parameters
 ----------
-aSurface: BRepAdaptor_HSurface
+aSurface: BRepAdaptor_Surface
 
 Returns
 -------
 None
 ") StdPrs_ToolRFace;
-		 StdPrs_ToolRFace(const opencascade::handle<BRepAdaptor_HSurface> & aSurface);
+		 StdPrs_ToolRFace(const opencascade::handle<BRepAdaptor_Surface> & aSurface);
 
 		/****************** Edge ******************/
 		/**** md5 signature: be590cff987799d8b7c28083399d0e9f ****/
@@ -2059,31 +2059,31 @@ Z: float
 class StdPrs_WFDeflectionRestrictedFace : public Prs3d_Root {
 	public:
 		/****************** Add ******************/
-		/**** md5 signature: c3779aab39acf244c115012e93a7b53f ****/
+		/**** md5 signature: d12972390c3d49174724abd88e035741 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Defines a display featuring u and v isoparameters. adds the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of u and v isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_hsurface surface created from a face in a topological shape. which is passed as an argument through the brepadaptor_hsurface surface created from it. this is what allows the topological face to be treated as a geometric surface.
+		%feature("autodoc", "Defines a display featuring u and v isoparameters. adds the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of u and v isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface.
 
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 None
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****************** Add ******************/
-		/**** md5 signature: bd67831026bf2f8410d269d4d216516e ****/
+		/**** md5 signature: a43b9cb76c2452baca5c8f7ad5d11599 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Defines a display of a delection-specified face. the display will feature u and v isoparameters. adds the topology ashape to the stdprs_wfrestrictedface algorithm. this shape is found in the presentation object apresentation, and its display attributes - except the number of u and v isoparameters - are set in the attribute manager adrawer. the function sets the number of u and v isoparameters, nbuiso and nbviso, in the shape. to do this, the arguments drawuiso and drawviso must be true. aface is brepadaptor_hsurface surface created from a face in a topological shape. which is passed as an argument through the brepadaptor_hsurface surface created from it. this is what allows the topological face to be treated as a geometric surface. curves give a sequence of face curves, it is used if the primitivearray visualization approach is activated (it is activated by default).
+		%feature("autodoc", "Defines a display of a delection-specified face. the display will feature u and v isoparameters. adds the topology ashape to the stdprs_wfrestrictedface algorithm. this shape is found in the presentation object apresentation, and its display attributes - except the number of u and v isoparameters - are set in the attribute manager adrawer. the function sets the number of u and v isoparameters, nbuiso and nbviso, in the shape. to do this, the arguments drawuiso and drawviso must be true. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface. curves give a sequence of face curves, it is used if the primitivearray visualization approach is activated (it is activated by default).
 
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 DrawUIso: bool
 DrawVIso: bool
 Deflection: float
@@ -2096,44 +2096,44 @@ Returns
 -------
 None
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, Prs3d_NListOfSequenceOfPnt & Curves);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, Prs3d_NListOfSequenceOfPnt & Curves);
 
 		/****************** AddUIso ******************/
-		/**** md5 signature: c7bc1083953eb55ee37830dae7cc0d08 ****/
+		/**** md5 signature: abfa66a39e010c944e7999fccfbc51bc ****/
 		%feature("compactdefaultargs") AddUIso;
-		%feature("autodoc", "Defines a display featuring u isoparameters respectively. add the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of u isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_hsurface surface created from a face in a topological shape. which is passed to the function as an argument through the brepadaptor_hsurface surface created from it. this is what allows the topological face to be treated as a geometric surface.
+		%feature("autodoc", "Defines a display featuring u isoparameters respectively. add the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of u isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed to the function as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface.
 
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 None
 ") AddUIso;
-		static void AddUIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static void AddUIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****************** AddVIso ******************/
-		/**** md5 signature: 3454b5eb78296ec3fe63fd100e981573 ****/
+		/**** md5 signature: ab3ca8960e5f458613d750c65aa59839 ****/
 		%feature("compactdefaultargs") AddVIso;
-		%feature("autodoc", "Defines a display featuring v isoparameters respectively. add the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of v isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_hsurface surface created from a face in a topological shape. which is passed to the function as an argument through the brepadaptor_hsurface surface created from it. this is what allows the topological face to be treated as a geometric surface.
+		%feature("autodoc", "Defines a display featuring v isoparameters respectively. add the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of v isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed to the function as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface.
 
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 None
 ") AddVIso;
-		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****************** Match ******************/
-		/**** md5 signature: ba1a38f9bdbfa9e5b5bdd906c65a82b1 ****/
+		/**** md5 signature: 36064271588fe17924d682737e08c090 ****/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "No available documentation.
 
@@ -2143,17 +2143,17 @@ X: float
 Y: float
 Z: float
 aDistance: float
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 bool
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****************** Match ******************/
-		/**** md5 signature: 80e712bfb9a326d9059eafb824fa08d0 ****/
+		/**** md5 signature: 647e7386d58dcbc030ed16f372590bd3 ****/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "No available documentation.
 
@@ -2163,7 +2163,7 @@ X: float
 Y: float
 Z: float
 aDistance: float
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 DrawUIso: bool
 DrawVIso: bool
@@ -2175,10 +2175,10 @@ Returns
 -------
 bool
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real aDeflection, const Standard_Integer NBUiso, const Standard_Integer NBViso);
+		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real aDeflection, const Standard_Integer NBUiso, const Standard_Integer NBViso);
 
 		/****************** MatchUIso ******************/
-		/**** md5 signature: 25c861dd6b719e861a8671b67433efc4 ****/
+		/**** md5 signature: c8686c8ec60c7dfe1d0960364542d7a9 ****/
 		%feature("compactdefaultargs") MatchUIso;
 		%feature("autodoc", "No available documentation.
 
@@ -2188,17 +2188,17 @@ X: float
 Y: float
 Z: float
 aDistance: float
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 bool
 ") MatchUIso;
-		static Standard_Boolean MatchUIso(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static Standard_Boolean MatchUIso(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****************** MatchVIso ******************/
-		/**** md5 signature: b4aa459088ca23619268888f5e3cc21e ****/
+		/**** md5 signature: 7ed1a209bfc944df2831a03220e9bbdd ****/
 		%feature("compactdefaultargs") MatchVIso;
 		%feature("autodoc", "No available documentation.
 
@@ -2208,14 +2208,14 @@ X: float
 Y: float
 Z: float
 aDistance: float
-aFace: BRepAdaptor_HSurface
+aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 bool
 ") MatchVIso;
-		static Standard_Boolean MatchVIso(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_HSurface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static Standard_Boolean MatchVIso(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 };
 
@@ -2232,21 +2232,21 @@ bool
 class StdPrs_WFDeflectionSurface : public Prs3d_Root {
 	public:
 		/****************** Add ******************/
-		/**** md5 signature: 42666969419c36293cf76b80c7e1a7bc ****/
+		/**** md5 signature: 22102598190948bd248c9eed6e92b2c5 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Adds the surface asurface to the presentation object apresentation, and defines its boundaries and isoparameters. the shape's display attributes are set in the attribute manager adrawer. these include whether deflection is absolute or relative to the size of the shape. the surface asurface is a surface object from adaptor, and provides data from a geom surface. this makes it possible to use the surface in a geometric algorithm. note that this surface object is manipulated by handles.
 
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
-aSurface: Adaptor3d_HSurface
+aSurface: Adaptor3d_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 None
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_HSurface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_Surface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 };
 
@@ -2294,14 +2294,14 @@ None
 class StdPrs_WFRestrictedFace : public Prs3d_Root {
 	public:
 		/****************** Add ******************/
-		/**** md5 signature: 18dd5b60438ad5bbde64376bd4de6291 ****/
+		/**** md5 signature: 076538b85d4e03db1c26729f0039250d ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 thePresentation: Handle ( Prs3d_Presentation )
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawUIso: bool
 theDrawVIso: bool
 theNbUIso: int
@@ -2313,61 +2313,61 @@ Returns
 -------
 None
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
+		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
 
 		/****************** Add ******************/
-		/**** md5 signature: 1fe61a26cdc16ffabfe9b8ef70da3e88 ****/
+		/**** md5 signature: e45d54c16977319468756914ccb16f96 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 thePresentation: Handle ( Prs3d_Presentation )
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawer: Handle ( Prs3d_Drawer )
 
 Returns
 -------
 None
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
 
 		/****************** AddUIso ******************/
-		/**** md5 signature: f92a0a6b19543688630f4bad6580345b ****/
+		/**** md5 signature: 691ce66b22bdadce9b0791ceff26e3e6 ****/
 		%feature("compactdefaultargs") AddUIso;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 thePresentation: Handle ( Prs3d_Presentation )
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawer: Handle ( Prs3d_Drawer )
 
 Returns
 -------
 None
 ") AddUIso;
-		static void AddUIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void AddUIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
 
 		/****************** AddVIso ******************/
-		/**** md5 signature: aea5fb11d169fe06d0173b15b7abd569 ****/
+		/**** md5 signature: e4053cb34cfa26f718bd0aac8e5ab0c8 ****/
 		%feature("compactdefaultargs") AddVIso;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 thePresentation: Handle ( Prs3d_Presentation )
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawer: Handle ( Prs3d_Drawer )
 
 Returns
 -------
 None
 ") AddVIso;
-		static void AddVIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void AddVIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
 
 		/****************** Match ******************/
-		/**** md5 signature: e6cd786e533b89c47314d7d5673dbac8 ****/
+		/**** md5 signature: 73807c62eed49a19c080d0ed89c7ee6e ****/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "No available documentation.
 
@@ -2377,7 +2377,7 @@ theX: float
 theY: float
 theZ: float
 theDistance: float
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawUIso: bool
 theDrawVIso: bool
 theDeflection: float
@@ -2389,10 +2389,10 @@ Returns
 -------
 bool
 ") Match;
-		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Real theDeflection, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Real theDeflection, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****************** Match ******************/
-		/**** md5 signature: 20f30b2bb19ebd10743c635e848c4b52 ****/
+		/**** md5 signature: 1c3eff0f811bf265e1062653bc20f999 ****/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "No available documentation.
 
@@ -2402,17 +2402,17 @@ theX: float
 theY: float
 theZ: float
 theDistance: float
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawer: Handle ( Prs3d_Drawer )
 
 Returns
 -------
 bool
 ") Match;
-		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
 
 		/****************** MatchUIso ******************/
-		/**** md5 signature: a8c999afb264c4c071200195a057f928 ****/
+		/**** md5 signature: 285b5f5fb51f89038ecfc31952642b0e ****/
 		%feature("compactdefaultargs") MatchUIso;
 		%feature("autodoc", "No available documentation.
 
@@ -2422,17 +2422,17 @@ theX: float
 theY: float
 theZ: float
 theDistance: float
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawer: Handle ( Prs3d_Drawer )
 
 Returns
 -------
 bool
 ") MatchUIso;
-		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
 
 		/****************** MatchVIso ******************/
-		/**** md5 signature: 7118dd075c642266a9771b2aa81d2b73 ****/
+		/**** md5 signature: 8add17f73e226b549cfb6f2f022faec1 ****/
 		%feature("compactdefaultargs") MatchVIso;
 		%feature("autodoc", "No available documentation.
 
@@ -2442,14 +2442,14 @@ theX: float
 theY: float
 theZ: float
 theDistance: float
-theFace: BRepAdaptor_HSurface
+theFace: BRepAdaptor_Surface
 theDrawer: Handle ( Prs3d_Drawer )
 
 Returns
 -------
 bool
 ") MatchVIso;
-		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_HSurface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
 
 };
 
@@ -2566,21 +2566,21 @@ opencascade::handle<Graphic3d_ArrayOfPoints>
 class StdPrs_WFSurface : public Prs3d_Root {
 	public:
 		/****************** Add ******************/
-		/**** md5 signature: 42666969419c36293cf76b80c7e1a7bc ****/
+		/**** md5 signature: 22102598190948bd248c9eed6e92b2c5 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Draws a surface by drawing the isoparametric curves with respect to a fixed number of points given by the drawer. the number of isoparametric curves to be drawn and their color are controlled by the furnished drawer.
 
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
-aSurface: Adaptor3d_HSurface
+aSurface: Adaptor3d_Surface
 aDrawer: Prs3d_Drawer
 
 Returns
 -------
 None
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_HSurface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_Surface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 };
 

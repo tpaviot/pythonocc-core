@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPOPEBREPTOOLDOCSTRING
 "TopOpeBRepTool module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebreptool.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_topopebreptool.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPTOOLDOCSTRING) TopOpeBRepTool
 
@@ -111,7 +111,7 @@ enum TopOpeBRepTool_OutCurveType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TopOpeBRepTool_OutCurveType(IntEnum):
@@ -209,7 +209,7 @@ bool
 		/****************** PurgeClosingEdges ******************/
 		/**** md5 signature: 3f09068948e5882f4cb7f9c6684a5042 ****/
 		%feature("compactdefaultargs") PurgeClosingEdges;
-		%feature("autodoc", "Fuse edges (in a wire) of a shape where we have useless vertex. in case face <ff> is built on uv-non-connexed wires (with the two closing edges forward and reversed, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <mshnok>. <ff> is a face descendant of <f>. <mwisold>(wire) = 1 if wire is wire of <f> 0 wire results from <f>'s wire splitted. returns false if purge fails.
+		%feature("autodoc", "Fuse edges (in a wire) of a shape where we have useless vertex. in case face <ff> is built on uv-non-connexed wires (with the two closing edges forward and reversed, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <mshnok>. <ff> is a face descendant of <f>. <mwisold>(wire) = 1 if wire is wire of <f> 0 wire results from <f>'s wire split. returns false if purge fails.
 
 Parameters
 ----------
@@ -2788,7 +2788,7 @@ None
 		/****************** StateShapeReference ******************/
 		/**** md5 signature: 21275217b285152340efe576bdf6e98b ****/
 		%feature("compactdefaultargs") StateShapeReference;
-		%feature("autodoc", "Classify shape s compared with reference shape. avoids is not used in classification; avoids may be isnull(). (usefull to avoid on or unknown state in special cases).
+		%feature("autodoc", "Classify shape s compared with reference shape. avoids is not used in classification; avoids may be isnull(). (useful to avoid on or unknown state in special cases).
 
 Parameters
 ----------
@@ -2804,7 +2804,7 @@ TopAbs_State
 		/****************** StateShapeReference ******************/
 		/**** md5 signature: 539dc2bd0e65d0b7433a78853b5d0784 ****/
 		%feature("compactdefaultargs") StateShapeReference;
-		%feature("autodoc", "Classify shape s compared with reference shape. lavoids is list of s subshapes to avoid in classification (usefull to avoid on or unknown state in special cases).
+		%feature("autodoc", "Classify shape s compared with reference shape. lavoids is list of s subshapes to avoid in classification (useful to avoid on or unknown state in special cases).
 
 Parameters
 ----------
@@ -2838,7 +2838,7 @@ TopAbs_State
 		/****************** StateShapeShape ******************/
 		/**** md5 signature: 18821ac5fc4ff711b33a9f2fd0875739 ****/
 		%feature("compactdefaultargs") StateShapeShape;
-		%feature("autodoc", "Classify shape s compared with shape sref. avoids is not used in classification; avoids may be isnull(). (usefull to avoid on or unknown state in special cases).
+		%feature("autodoc", "Classify shape s compared with shape sref. avoids is not used in classification; avoids may be isnull(). (useful to avoid on or unknown state in special cases).
 
 Parameters
 ----------
@@ -2855,7 +2855,7 @@ TopAbs_State
 		/****************** StateShapeShape ******************/
 		/**** md5 signature: 01f8acc6bc763ab47ed4fc86c9290f60 ****/
 		%feature("compactdefaultargs") StateShapeShape;
-		%feature("autodoc", "Classify shape s compared with shape sref. lavoids is list of s subshapes to avoid in classification avoids is not used in classification; avoids may be isnull(). (usefull to avoid on or unknown state in special cases).
+		%feature("autodoc", "Classify shape s compared with shape sref. lavoids is list of s subshapes to avoid in classification avoids is not used in classification; avoids may be isnull(). (useful to avoid on or unknown state in special cases).
 
 Parameters
 ----------
@@ -2886,7 +2886,7 @@ class TopOpeBRepTool_ShapeExplorer : public TopExp_Explorer {
 		/****************** TopOpeBRepTool_ShapeExplorer ******************/
 		/**** md5 signature: d28ec3a269705b3d2788cbb540c525f1 ****/
 		%feature("compactdefaultargs") TopOpeBRepTool_ShapeExplorer;
-		%feature("autodoc", "Creates an empty explorer, becomes usefull after init.
+		%feature("autodoc", "Creates an empty explorer, becomes useful after init.
 
 Returns
 -------
@@ -2977,7 +2977,7 @@ class TopOpeBRepTool_ShapeTool {
 		/****************** AdjustOnPeriodic ******************/
 		/**** md5 signature: 41bcb4e57dc28b5f5437e0900ab4acb9 ****/
 		%feature("compactdefaultargs") AdjustOnPeriodic;
-		%feature("autodoc", "Ajust u,v values in uvbounds of the domain of the geometric shape <s>, according to uperiodicity and vperiodicity of the domain. <s> is assumed to be a face. u and/or v is/are not modified when the domain is not periodic in u and/or v .
+		%feature("autodoc", "Adjust u,v values in uvbounds of the domain of the geometric shape <s>, according to uperiodicity and vperiodicity of the domain. <s> is assumed to be a face. u and/or v is/are not modified when the domain is not periodic in u and/or v .
 
 Parameters
 ----------
@@ -3053,7 +3053,7 @@ opencascade::handle<Geom_Surface>
 		/****************** Closed ******************/
 		/**** md5 signature: 3b8ea13bf165f42e4e92ae659707a9b1 ****/
 		%feature("compactdefaultargs") Closed;
-		%feature("autodoc", "Indicates wheter shape s1 is a closing shape on s2 or not.
+		%feature("autodoc", "Indicates whether shape s1 is a closing shape on s2 or not.
 
 Parameters
 ----------

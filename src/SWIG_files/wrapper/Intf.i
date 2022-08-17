@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTFDOCSTRING
 "Intf module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intf.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intf.html"
 %enddef
 %module (package="OCC.Core", docstring=INTFDOCSTRING) Intf
 
@@ -69,7 +69,7 @@ enum Intf_PIType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Intf_PIType(IntEnum):
@@ -786,7 +786,7 @@ Param: float
 		/****************** InfoFirst ******************/
 		/**** md5 signature: 20ef78affbd1bcd59c9ff0691a63d6e8 ****/
 		%feature("compactdefaultargs") InfoFirst;
-		%feature("autodoc", "Gives the datas about the first argument of the interference.
+		%feature("autodoc", "Gives the data about the first argument of the interference.
 
 Parameters
 ----------
@@ -819,7 +819,7 @@ Param: float
 		/****************** InfoSecond ******************/
 		/**** md5 signature: 679ab58838015e2dca23bde4c3ef8e13 ****/
 		%feature("compactdefaultargs") InfoSecond;
-		%feature("autodoc", "Gives the datas about the second argument of the interference.
+		%feature("autodoc", "Gives the data about the second argument of the interference.
 
 Parameters
 ----------
@@ -835,7 +835,7 @@ Param: float
 		/****************** IsEqual ******************/
 		/**** md5 signature: 927719925907a38badbab5fe6cdce988 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Returns true if the two sectionpoint have the same logical informations.
+		%feature("autodoc", "Returns true if the two sectionpoint have the same logical information.
 
 Parameters
 ----------
@@ -1081,7 +1081,7 @@ paraMax: float
 		/****************** InfoSecond ******************/
 		/**** md5 signature: 5f7628c3595ae1430ae905fb1aaa5468 ****/
 		%feature("compactdefaultargs") InfoSecond;
-		%feature("autodoc", "Gives informations about the second argument of the interference. (usable only for polygon).
+		%feature("autodoc", "Gives information about the second argument of the interference. (usable only for polygon).
 
 Parameters
 ----------

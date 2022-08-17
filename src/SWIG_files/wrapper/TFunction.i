@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TFUNCTIONDOCSTRING
 "TFunction module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tfunction.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_tfunction.html"
 %enddef
 %module (package="OCC.Core", docstring=TFUNCTIONDOCSTRING) TFunction
 
@@ -70,7 +70,7 @@ enum TFunction_ExecutionStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TFunction_ExecutionStatus(IntEnum):
@@ -417,6 +417,14 @@ None
             self->Dump(s);
             return s.str();}
         };
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** Failed ******************/
 		/**** md5 signature: c3da447468b921d93e6422cc08e3d1e7 ****/
 		%feature("compactdefaultargs") Failed;
@@ -563,7 +571,7 @@ opencascade::handle<TFunction_Function>
 		/****************** SetDriverGUID ******************/
 		/**** md5 signature: 07186d86451e9b1ad5ad4848dd63f1dc ****/
 		%feature("compactdefaultargs") SetDriverGUID;
-		%feature("autodoc", "Sets the driver for this function as that indentified by the guid guid.
+		%feature("autodoc", "Sets the driver for this function as that identified by the guid guid.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINDRIVERSDOCSTRING
 "BinDrivers module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bindrivers.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bindrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINDRIVERSDOCSTRING) BinDrivers
 
@@ -45,7 +45,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bindrivers.html"
 #include<Message_module.hxx>
 #include<BinMDF_module.hxx>
 #include<TDocStd_module.hxx>
-#include<TCollection_module.hxx>
 #include<BinLDrivers_module.hxx>
 #include<Storage_module.hxx>
 #include<Resource_module.hxx>
@@ -63,7 +62,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bindrivers.html"
 %import Message.i
 %import BinMDF.i
 %import TDocStd.i
-%import TCollection.i
 %import BinLDrivers.i
 %import Storage.i
 
@@ -80,7 +78,7 @@ enum BinDrivers_Marker {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BinDrivers_Marker(IntEnum):
@@ -153,17 +151,6 @@ opencascade::handle<Standard_Transient>
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
-		/****************** StorageVersion ******************/
-		/**** md5 signature: a68044f4a6f5d5c72fd58dc4fdd88764 ****/
-		%feature("compactdefaultargs") StorageVersion;
-		%feature("autodoc", "Returns '1'.
-
-Returns
--------
-TCollection_AsciiString
-") StorageVersion;
-		static TCollection_AsciiString StorageVersion();
-
 };
 
 
@@ -215,6 +202,22 @@ None
 ") Clear;
 		virtual void Clear();
 
+		/****************** EnableQuickPartReading ******************/
+		/**** md5 signature: f261e2d709a543f0a293a3d73e15d394 ****/
+		%feature("compactdefaultargs") EnableQuickPartReading;
+		%feature("autodoc", "Enables reading in the quick part access mode.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+theValue: bool
+
+Returns
+-------
+None
+") EnableQuickPartReading;
+		virtual void EnableQuickPartReading(const opencascade::handle<Message_Messenger> & theMessageDriver, Standard_Boolean theValue);
+
 };
 
 
@@ -257,6 +260,44 @@ opencascade::handle<BinMDF_ADriverTable>
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
+		/****************** Clear ******************/
+		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Clears the namedshape driver.
+
+Returns
+-------
+None
+") Clear;
+		virtual void Clear();
+
+		/****************** EnableQuickPartWriting ******************/
+		/**** md5 signature: 67669b500f4a4f57fa9f8e71b5f7bab8 ****/
+		%feature("compactdefaultargs") EnableQuickPartWriting;
+		%feature("autodoc", "Enables writing in the quick part access mode.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+theValue: bool
+
+Returns
+-------
+None
+") EnableQuickPartWriting;
+		void EnableQuickPartWriting(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theValue);
+
+		/****************** IsWithNormals ******************/
+		/**** md5 signature: 9d2bdcdcd1f884eaceb6d40879d090bb ****/
+		%feature("compactdefaultargs") IsWithNormals;
+		%feature("autodoc", "Return true if shape should be stored with triangulation normals.
+
+Returns
+-------
+bool
+") IsWithNormals;
+		Standard_Boolean IsWithNormals();
+
 		/****************** IsWithTriangles ******************/
 		/**** md5 signature: 32c48a11bbc2ae55f906cde0d81b8f2d ****/
 		%feature("compactdefaultargs") IsWithTriangles;
@@ -267,6 +308,22 @@ Returns
 bool
 ") IsWithTriangles;
 		Standard_Boolean IsWithTriangles();
+
+		/****************** SetWithNormals ******************/
+		/**** md5 signature: 7fde6e7e5f05b8658b05741a6e66c3d2 ****/
+		%feature("compactdefaultargs") SetWithNormals;
+		%feature("autodoc", "Set if triangulation should be stored with normals or not.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+theWithTriangulation: bool
+
+Returns
+-------
+None
+") SetWithNormals;
+		void SetWithNormals(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
 
 		/****************** SetWithTriangles ******************/
 		/**** md5 signature: db0227376859215948d44ae6c914f15c ****/

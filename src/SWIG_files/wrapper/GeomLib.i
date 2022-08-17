@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMLIBDOCSTRING
 "GeomLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomlib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomlib.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMLIBDOCSTRING) GeomLib
 
@@ -89,7 +89,7 @@ enum GeomLib_InterpolationErrors {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class GeomLib_InterpolationErrors(IntEnum):
@@ -146,6 +146,7 @@ GeomLib_InversionProblem = GeomLib_InterpolationErrors.GeomLib_InversionProblem
 /* end templates declaration */
 
 /* typedefs */
+typedef class Adaptor2d_Curve2d Adaptor2d_Curve2d;
 typedef NCollection_Array1<gp_Mat> GeomLib_Array1OfMat;
 typedef GeomLib_DenominatorMultiplier * GeomLib_DenominatorMultiplierPtr;
 /* end typedefs declaration */
@@ -222,7 +223,7 @@ AverageDeviation: float
 		/****************** CancelDenominatorDerivative ******************/
 		/**** md5 signature: b1394cc1fa88b83b1e70a1006cce9d30 ****/
 		%feature("compactdefaultargs") CancelDenominatorDerivative;
-		%feature("autodoc", "Cancel,on the boudaries,the denominator first derivative in the directions wished by the user and set its value to 1.
+		%feature("autodoc", "Cancel,on the boundaries,the denominator first derivative in the directions wished by the user and set its value to 1.
 
 Parameters
 ----------
@@ -256,7 +257,7 @@ None
 		/****************** EvalMaxDistanceAlongParameter ******************/
 		/**** md5 signature: de42bb38ce6c9358ba871ec80228c62c ****/
 		%feature("compactdefaultargs") EvalMaxDistanceAlongParameter;
-		%feature("autodoc", "This will compute the maximum distancef at the parameters given in the parameters array by projecting from the curve to the reference curve and taking the minimum distance than the maximum will be taken on those minimas.
+		%feature("autodoc", "This will compute the maximum distance at the parameters given in the parameters array by projecting from the curve to the reference curve and taking the minimum distance than the maximum will be taken on those minimas.
 
 Parameters
 ----------
@@ -366,7 +367,7 @@ opencascade::handle<Geom2d_Curve>
 		/****************** Inertia ******************/
 		/**** md5 signature: 0cfbab9df00372ef7059361fbb0e5866 ****/
 		%feature("compactdefaultargs") Inertia;
-		%feature("autodoc", "Compute principale axes of inertia, and dispertion value of some points.
+		%feature("autodoc", "Compute principale axes of inertia, and dispersion value of some points.
 
 Parameters
 ----------
@@ -493,7 +494,7 @@ int
 		/****************** RemovePointsFromArray ******************/
 		/**** md5 signature: 8ab10cabc9f24666f30aef7fc0f14871 ****/
 		%feature("compactdefaultargs") RemovePointsFromArray;
-		%feature("autodoc", "Warning! this assume that the inparameter is an increasing sequence of real number and it will not check for that : unpredictable result can happen if this is not satisfied. it is the caller responsability to check for that property. //! this method makes uniform numpoints segments s1,...snumpoints out of the segment defined by the first parameter and the last parameter ofthe inparameter ; keeps only one point of the inparameters set of parameter in each of the uniform segments taking care of the first and the last parameters. for the ith segment the element of the inparameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment there will be at the end at most numpoints + 1 if numpoints > 2 in the outparameters array.
+		%feature("autodoc", "Warning! this assume that the inparameter is an increasing sequence of real number and it will not check for that : unpredictable result can happen if this is not satisfied. it is the caller responsibility to check for that property. //! this method makes uniform numpoints segments s1,...snumpoints out of the segment defined by the first parameter and the last parameter of the inparameter ; keeps only one point of the inparameters set of parameter in each of the uniform segments taking care of the first and the last parameters. for the ith segment the element of the inparameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment there will be at the end at most numpoints + 1 if numpoints > 2 in the outparameters array.
 
 Parameters
 ----------
@@ -545,14 +546,14 @@ opencascade::handle<Geom_Curve>
 		static opencascade::handle<Geom_Curve> To3d(const gp_Ax2 & Position, const opencascade::handle<Geom2d_Curve> & Curve2d);
 
 		/****************** buildC3dOnIsoLine ******************/
-		/**** md5 signature: a73b098d4bd8a8e673d451db6a581c97 ****/
+		/**** md5 signature: 7cf923021ff43067abdd03bd5d4c42a6 ****/
 		%feature("compactdefaultargs") buildC3dOnIsoLine;
 		%feature("autodoc", "Builds 3d curve for a isoline. this method takes corresponding isoline from the input surface. @param thec2d trimmed curve to be approximated. @param theisu flag indicating that line is u const. @param theparam line parameter. @param theisforward flag indicating forward parameterization on a isoline. returns standard_true when 3d curve is built and standard_false otherwise.
 
 Parameters
 ----------
-theC2D: Adaptor2d_HCurve2d
-theSurf: Adaptor3d_HSurface
+theC2D: Adaptor2d_Curve2d
+theSurf: Adaptor3d_Surface
 theFirst: float
 theLast: float
 theTolerance: float
@@ -564,16 +565,16 @@ Returns
 -------
 opencascade::handle<Geom_Curve>
 ") buildC3dOnIsoLine;
-		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_HCurve2d > theC2D, const opencascade::handle<Adaptor3d_HSurface > theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
+		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_Curve2d > theC2D, const opencascade::handle<Adaptor3d_Surface > theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
 
 		/****************** isIsoLine ******************/
-		/**** md5 signature: d4686810fc634e66611de117189366e9 ****/
+		/**** md5 signature: bd8c9f34a6bd6dba755af86ef9fcbca3 ****/
 		%feature("compactdefaultargs") isIsoLine;
 		%feature("autodoc", "Checks whether the 2d curve is a isoline. it can be represented by b-spline, bezier, or geometric line. this line should have natural parameterization. @param thec2d trimmed curve to be checked. @param theisu flag indicating that line is u const. @param theparam line parameter. @param theisforward flag indicating forward parameterization on a isoline. returns standard_true when 2d curve is a line and standard_false otherwise.
 
 Parameters
 ----------
-theC2D: Adaptor2d_HCurve2d
+theC2D: Adaptor2d_Curve2d
 
 Returns
 -------
@@ -581,7 +582,7 @@ theIsU: bool
 theParam: float
 theIsForward: bool
 ") isIsoLine;
-		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_HCurve2d > theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
+		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_Curve2d > theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
 };
 
@@ -778,7 +779,7 @@ class GeomLib_CheckCurveOnSurface {
 		/****************** GeomLib_CheckCurveOnSurface ******************/
 		/**** md5 signature: f411d7e872ddc970370879b04bbfec4d ****/
 		%feature("compactdefaultargs") GeomLib_CheckCurveOnSurface;
-		%feature("autodoc", "Default contructor.
+		%feature("autodoc", "Default constructor.
 
 Returns
 -------
@@ -787,16 +788,13 @@ None
 		 GeomLib_CheckCurveOnSurface();
 
 		/****************** GeomLib_CheckCurveOnSurface ******************/
-		/**** md5 signature: e25f5931a8aee45fd8e054ead1cdb2e5 ****/
+		/**** md5 signature: 4c10043862b08450260b336d9ad8391b ****/
 		%feature("compactdefaultargs") GeomLib_CheckCurveOnSurface;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theCurve: Geom_Curve
-theSurface: Geom_Surface
-theFirst: float
-theLast: float
+theCurve: Adaptor3d_Curve
 theTolRange: float,optional
 	default value is Precision::PConfusion()
 
@@ -804,18 +802,7 @@ Returns
 -------
 None
 ") GeomLib_CheckCurveOnSurface;
-		 GeomLib_CheckCurveOnSurface(const opencascade::handle<Geom_Curve> & theCurve, const opencascade::handle<Geom_Surface> & theSurface, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolRange = Precision::PConfusion());
-
-		/****************** Curve ******************/
-		/**** md5 signature: 62a16889fb975efa1b2de012099c169b ****/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns my3dcurve.
-
-Returns
--------
-opencascade::handle<Geom_Curve>
-") Curve;
-		const opencascade::handle<Geom_Curve> & Curve();
+		 GeomLib_CheckCurveOnSurface(const opencascade::handle<Adaptor3d_Curve> & theCurve, const Standard_Real theTolRange = Precision::PConfusion());
 
 		/****************** ErrorStatus ******************/
 		/**** md5 signature: 23ccaf4f25108c0b871675cdf964cbf6 ****/
@@ -829,16 +816,13 @@ int
 		Standard_Integer ErrorStatus();
 
 		/****************** Init ******************/
-		/**** md5 signature: d34b6f83c0750724e05b69368151cd50 ****/
+		/**** md5 signature: dbe821d8ad3f25ebee5e4d4b5428201c ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Sets the data for the algorithm.
 
 Parameters
 ----------
-theCurve: Geom_Curve
-theSurface: Geom_Surface
-theFirst: float
-theLast: float
+theCurve: Adaptor3d_Curve
 theTolRange: float,optional
 	default value is Precision::PConfusion()
 
@@ -846,12 +830,12 @@ Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & theCurve, const opencascade::handle<Geom_Surface> & theSurface, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolRange = Precision::PConfusion());
+		void Init(const opencascade::handle<Adaptor3d_Curve> & theCurve, const Standard_Real theTolRange = Precision::PConfusion());
 
 		/****************** Init ******************/
 		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initializes all members by dafault values.
+		%feature("autodoc", "Initializes all members by default values.
 
 Returns
 -------
@@ -893,47 +877,21 @@ float
 		Standard_Real MaxParameter();
 
 		/****************** Perform ******************/
-		/**** md5 signature: c060bcfa81d9cdd3f37c79b90b7dee75 ****/
+		/**** md5 signature: 1d825d707aa54593e1d0d19b4cd89341 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Computes the max distance for the 3d curve <mycurve> and 2d curve <thepcurve> if isthemultytheaddisabled == true then computation will be made without any parallelization.
+		%feature("autodoc", "Computes the max distance for the 3d curve <mycurve> and 2d curve <thecurveonsurface> if ismultithread == standard_true then computation will be performed in parallel.
 
 Parameters
 ----------
-thePCurve: Geom2d_Curve
-isTheMultyTheradDisabled: bool,optional
+theCurveOnSurface: Adaptor3d_CurveOnSurface
+isMultiThread: bool,optional
 	default value is Standard_False
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & thePCurve, const Standard_Boolean isTheMultyTheradDisabled = Standard_False);
-
-		/****************** Range ******************/
-		/**** md5 signature: d6d291eeedf26e22d25b030eceff7dfa ****/
-		%feature("compactdefaultargs") Range;
-		%feature("autodoc", "Returns first and last parameter of the curves (2d- and 3d-curves are considered to have same range).
-
-Parameters
-----------
-
-Returns
--------
-theFirst: float
-theLast: float
-") Range;
-		void Range(Standard_Real &OutValue, Standard_Real &OutValue);
-
-		/****************** Surface ******************/
-		/**** md5 signature: 3aa31a6d63da8a25f018cf96599c0928 ****/
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns mysurface.
-
-Returns
--------
-opencascade::handle<Geom_Surface>
-") Surface;
-		const opencascade::handle<Geom_Surface> & Surface();
+		void Perform(const opencascade::handle<Adaptor3d_CurveOnSurface> & theCurveOnSurface, const Standard_Boolean isMultiThread = Standard_False);
 
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPREPRDOCSTRING
 "StepRepr module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steprepr.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steprepr.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPREPRDOCSTRING) StepRepr
 
@@ -74,7 +74,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -95,8 +95,10 @@ from OCC.Core.Exception import *
 %wrap_handle(StepRepr_PropertyDefinitionRepresentation)
 %wrap_handle(StepRepr_Representation)
 %wrap_handle(StepRepr_RepresentationContext)
+%wrap_handle(StepRepr_RepresentationContextReference)
 %wrap_handle(StepRepr_RepresentationItem)
 %wrap_handle(StepRepr_RepresentationMap)
+%wrap_handle(StepRepr_RepresentationReference)
 %wrap_handle(StepRepr_RepresentationRelationship)
 %wrap_handle(StepRepr_ShapeAspect)
 %wrap_handle(StepRepr_ShapeAspectRelationship)
@@ -1266,6 +1268,17 @@ opencascade::handle<TCollection_HAsciiString>
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
+		/****************** HasDescription ******************/
+		/**** md5 signature: 6792c1621c006761fed03425ebc22116 ****/
+		%feature("compactdefaultargs") HasDescription;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasDescription;
+		Standard_Boolean HasDescription();
+
 		/****************** Init ******************/
 		/**** md5 signature: 0e834570dec89c800ec534731b946b3a ****/
 		%feature("compactdefaultargs") Init;
@@ -2292,6 +2305,74 @@ None
 	}
 };
 
+/************************************************
+* class StepRepr_RepresentationContextReference *
+************************************************/
+class StepRepr_RepresentationContextReference : public Standard_Transient {
+	public:
+		/****************** StepRepr_RepresentationContextReference ******************/
+		/**** md5 signature: c328213af080df48a9b8729b1837422b ****/
+		%feature("compactdefaultargs") StepRepr_RepresentationContextReference;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepRepr_RepresentationContextReference;
+		 StepRepr_RepresentationContextReference();
+
+		/****************** ContextIdentifier ******************/
+		/**** md5 signature: 3b88cf0586009b9bd3138bd2c7449f57 ****/
+		%feature("compactdefaultargs") ContextIdentifier;
+		%feature("autodoc", "Returns field contextidentifier.
+
+Returns
+-------
+opencascade::handle<TCollection_HAsciiString>
+") ContextIdentifier;
+		opencascade::handle<TCollection_HAsciiString> ContextIdentifier();
+
+		/****************** Init ******************/
+		/**** md5 signature: 2ccf5654d2b711006d7a780ce817e13c ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theContextIdentifier: TCollection_HAsciiString
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theContextIdentifier);
+
+		/****************** SetContextIdentifier ******************/
+		/**** md5 signature: 60f8090548271b758b7db604c2dbd754 ****/
+		%feature("compactdefaultargs") SetContextIdentifier;
+		%feature("autodoc", "Sets field contextidentifier.
+
+Parameters
+----------
+theContextIdentifier: TCollection_HAsciiString
+
+Returns
+-------
+None
+") SetContextIdentifier;
+		void SetContextIdentifier(const opencascade::handle<TCollection_HAsciiString> & theContextIdentifier);
+
+};
+
+
+%make_alias(StepRepr_RepresentationContextReference)
+
+%extend StepRepr_RepresentationContextReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /************************************
 * class StepRepr_RepresentationItem *
 ************************************/
@@ -2455,6 +2536,163 @@ None
 	}
 };
 
+/*********************************************************
+* class StepRepr_RepresentationOrRepresentationReference *
+*********************************************************/
+class StepRepr_RepresentationOrRepresentationReference : public StepData_SelectType {
+	public:
+		/****************** StepRepr_RepresentationOrRepresentationReference ******************/
+		/**** md5 signature: 2ee1db7ab40515398436157a4ae8c738 ****/
+		%feature("compactdefaultargs") StepRepr_RepresentationOrRepresentationReference;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") StepRepr_RepresentationOrRepresentationReference;
+		 StepRepr_RepresentationOrRepresentationReference();
+
+		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "Recognizes a kind of representationorrepresentationreference select type -- 1 -> representation -- 2 -> representationreference.
+
+Parameters
+----------
+ent: Standard_Transient
+
+Returns
+-------
+int
+") CaseNum;
+		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** Representation ******************/
+		/**** md5 signature: b68b8aa0615de130a54bdd2ee7c69058 ****/
+		%feature("compactdefaultargs") Representation;
+		%feature("autodoc", "Returns value as representation (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepRepr_Representation>
+") Representation;
+		opencascade::handle<StepRepr_Representation> Representation();
+
+		/****************** RepresentationReference ******************/
+		/**** md5 signature: 461a26e5dad75c33acefac7805351baf ****/
+		%feature("compactdefaultargs") RepresentationReference;
+		%feature("autodoc", "Returns value as representationreference (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepRepr_RepresentationReference>
+") RepresentationReference;
+		opencascade::handle<StepRepr_RepresentationReference> RepresentationReference();
+
+};
+
+
+%extend StepRepr_RepresentationOrRepresentationReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class StepRepr_RepresentationReference *
+*****************************************/
+class StepRepr_RepresentationReference : public Standard_Transient {
+	public:
+		/****************** StepRepr_RepresentationReference ******************/
+		/**** md5 signature: 46eaeb50ae59ce7f0b7436ba049fb18a ****/
+		%feature("compactdefaultargs") StepRepr_RepresentationReference;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepRepr_RepresentationReference;
+		 StepRepr_RepresentationReference();
+
+		/****************** ContextOfItems ******************/
+		/**** md5 signature: c7fff1cb1d425ac6c93ad8199b152c1a ****/
+		%feature("compactdefaultargs") ContextOfItems;
+		%feature("autodoc", "Returns field contextofitems.
+
+Returns
+-------
+opencascade::handle<StepRepr_RepresentationContextReference>
+") ContextOfItems;
+		opencascade::handle<StepRepr_RepresentationContextReference> ContextOfItems();
+
+		/****************** Id ******************/
+		/**** md5 signature: cad437aa1c6f9043742098c562124f9e ****/
+		%feature("compactdefaultargs") Id;
+		%feature("autodoc", "Returns field id.
+
+Returns
+-------
+opencascade::handle<TCollection_HAsciiString>
+") Id;
+		opencascade::handle<TCollection_HAsciiString> Id();
+
+		/****************** Init ******************/
+		/**** md5 signature: 6936a0ecf85a476f465a79b99ca725cc ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theId: TCollection_HAsciiString
+theContextOfItems: StepRepr_RepresentationContextReference
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theId, const opencascade::handle<StepRepr_RepresentationContextReference> & theContextOfItems);
+
+		/****************** SetContextOfItems ******************/
+		/**** md5 signature: 9c4f4a49658882a41529c2d80e4b9d11 ****/
+		%feature("compactdefaultargs") SetContextOfItems;
+		%feature("autodoc", "Sets field contextofitems.
+
+Parameters
+----------
+theContextOfItems: StepRepr_RepresentationContextReference
+
+Returns
+-------
+None
+") SetContextOfItems;
+		void SetContextOfItems(const opencascade::handle<StepRepr_RepresentationContextReference> & theContextOfItems);
+
+		/****************** SetId ******************/
+		/**** md5 signature: b1f60d3e5102c6da05e855395131256d ****/
+		%feature("compactdefaultargs") SetId;
+		%feature("autodoc", "Sets field id.
+
+Parameters
+----------
+theId: TCollection_HAsciiString
+
+Returns
+-------
+None
+") SetId;
+		void SetId(const opencascade::handle<TCollection_HAsciiString> & theId);
+
+};
+
+
+%make_alias(StepRepr_RepresentationReference)
+
+%extend StepRepr_RepresentationReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /********************************************
 * class StepRepr_RepresentationRelationship *
 ********************************************/
@@ -2481,6 +2719,17 @@ Returns
 opencascade::handle<TCollection_HAsciiString>
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
+
+		/****************** HasDescription ******************/
+		/**** md5 signature: 083af65e5ebbf93f76d20e3d8763206e ****/
+		%feature("compactdefaultargs") HasDescription;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasDescription;
+		Standard_Boolean HasDescription();
 
 		/****************** Init ******************/
 		/**** md5 signature: 148c2be5cfa53e5b136d44a9d5e3c232 ****/

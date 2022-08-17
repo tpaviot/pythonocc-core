@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPREPRDOCSTRING
 "RWStepRepr module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwsteprepr.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwsteprepr.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPREPRDOCSTRING) RWStepRepr
 
@@ -74,7 +74,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -3769,6 +3769,81 @@ None
 	}
 };
 
+/****************************************************
+* class RWStepRepr_RWRepresentationContextReference *
+****************************************************/
+class RWStepRepr_RWRepresentationContextReference {
+	public:
+		/****************** RWStepRepr_RWRepresentationContextReference ******************/
+		/**** md5 signature: 6102bef038e55a9824b4a82ece074206 ****/
+		%feature("compactdefaultargs") RWStepRepr_RWRepresentationContextReference;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepRepr_RWRepresentationContextReference;
+		 RWStepRepr_RWRepresentationContextReference();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 7a4eb87daa50dfc935b55712f4c673b2 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theAch: Interface_Check
+theEnt: StepRepr_RepresentationContextReference
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theAch, const opencascade::handle<StepRepr_RepresentationContextReference> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: fb9cd84781537a67de93cf3d01e11d24 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepRepr_RepresentationContextReference
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepRepr_RepresentationContextReference> & theEnt, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: ea43bfe96e65da022aaf866e1eeff4be ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SW: StepData_StepWriter
+theEnt: StepRepr_RepresentationContextReference
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepRepr_RepresentationContextReference> & theEnt);
+
+};
+
+
+%extend RWStepRepr_RWRepresentationContextReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /****************************************
 * class RWStepRepr_RWRepresentationItem *
 ****************************************/
@@ -3898,6 +3973,81 @@ None
 
 
 %extend RWStepRepr_RWRepresentationMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************
+* class RWStepRepr_RWRepresentationReference *
+*********************************************/
+class RWStepRepr_RWRepresentationReference {
+	public:
+		/****************** RWStepRepr_RWRepresentationReference ******************/
+		/**** md5 signature: 8f9ff076521431e22245a208b730cd20 ****/
+		%feature("compactdefaultargs") RWStepRepr_RWRepresentationReference;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepRepr_RWRepresentationReference;
+		 RWStepRepr_RWRepresentationReference();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: ad52f954171fd0276fb6dcabc69efb25 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theAch: Interface_Check
+theEnt: StepRepr_RepresentationReference
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theAch, const opencascade::handle<StepRepr_RepresentationReference> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 2e94a9b4583a27a40c10ba3919333bd3 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepRepr_RepresentationReference
+iter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepRepr_RepresentationReference> & theEnt, Interface_EntityIterator & iter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 4a4a9df6724dea14a3219ff7a5f094ee ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+SW: StepData_StepWriter
+theEnt: StepRepr_RepresentationReference
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepRepr_RepresentationReference> & theEnt);
+
+};
+
+
+%extend RWStepRepr_RWRepresentationReference {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

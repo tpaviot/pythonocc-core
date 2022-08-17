@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BLENDFUNCDOCSTRING
 "BlendFunc module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blendfunc.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_blendfunc.html"
 %enddef
 %module (package="OCC.Core", docstring=BLENDFUNCDOCSTRING) BlendFunc
 
@@ -37,6 +37,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blendfunc.html"
 
 
 %{
+#include<Adaptor2d_Curve2d.hxx>
 #include<BlendFunc_module.hxx>
 
 //Dependencies
@@ -88,7 +89,7 @@ enum BlendFunc_SectionShape {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BlendFunc_SectionShape(IntEnum):
@@ -119,13 +120,13 @@ BlendFunc_Linear = BlendFunc_SectionShape.BlendFunc_Linear
 class BlendFunc {
 	public:
 		/****************** ComputeDNormal ******************/
-		/**** md5 signature: f066a8c4e5ca3896e02a2f4a119a1427 ****/
+		/**** md5 signature: cde71b23cab8a2f1227199266c8cb896 ****/
 		%feature("compactdefaultargs") ComputeDNormal;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 p2d: gp_Pnt2d
 Normal: gp_Vec
 DNu: gp_Vec
@@ -135,16 +136,16 @@ Returns
 -------
 bool
 ") ComputeDNormal;
-		static Standard_Boolean ComputeDNormal(const opencascade::handle<Adaptor3d_HSurface> & Surf, const gp_Pnt2d & p2d, gp_Vec & Normal, gp_Vec & DNu, gp_Vec & DNv);
+		static Standard_Boolean ComputeDNormal(const opencascade::handle<Adaptor3d_Surface> & Surf, const gp_Pnt2d & p2d, gp_Vec & Normal, gp_Vec & DNu, gp_Vec & DNv);
 
 		/****************** ComputeNormal ******************/
-		/**** md5 signature: 3ff79316037356952d52d5773250be00 ****/
+		/**** md5 signature: b82124d6f2c9c1dff1a9cca5be99986f ****/
 		%feature("compactdefaultargs") ComputeNormal;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 p2d: gp_Pnt2d
 Normal: gp_Vec
 
@@ -152,7 +153,7 @@ Returns
 -------
 bool
 ") ComputeNormal;
-		static Standard_Boolean ComputeNormal(const opencascade::handle<Adaptor3d_HSurface> & Surf, const gp_Pnt2d & p2d, gp_Vec & Normal);
+		static Standard_Boolean ComputeNormal(const opencascade::handle<Adaptor3d_Surface> & Surf, const gp_Pnt2d & p2d, gp_Vec & Normal);
 
 		/****************** GetMinimalWeights ******************/
 		/**** md5 signature: 309c1f7f13e6d4dfd26fbb05a6dc9e40 ****/
@@ -230,22 +231,22 @@ GeomAbs_Shape
 class BlendFunc_CSCircular : public Blend_CSFunction {
 	public:
 		/****************** BlendFunc_CSCircular ******************/
-		/**** md5 signature: 5aabfa02d378ab470a30e84ee52a6c7d ****/
+		/**** md5 signature: d43560f235cf7a01ad5e6452468104a7 ****/
 		%feature("compactdefaultargs") BlendFunc_CSCircular;
 		%feature("autodoc", "Creates a function for a circular blending between a curve <c> and a surface <s>. the direction of the planes are given by <cguide>. the position of the plane is determined on the curve <c>. <l> defines the change of parameter between <c> and <cguide>. so, the planes are defined as described below : t is the current parameter on the guide line. pguide = c(l(t)); nguide = cguide'(t)/||cguide'(t)||.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
-CGuide: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
+CGuide: Adaptor3d_Curve
 L: Law_Function
 
 Returns
 -------
 None
 ") BlendFunc_CSCircular;
-		 BlendFunc_CSCircular(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HCurve> & CGuide, const opencascade::handle<Law_Function> & L);
+		 BlendFunc_CSCircular(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & CGuide, const opencascade::handle<Law_Function> & L);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -380,7 +381,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
 
 Parameters
 ----------
@@ -803,21 +804,21 @@ bool
 class BlendFunc_CSConstRad : public Blend_CSFunction {
 	public:
 		/****************** BlendFunc_CSConstRad ******************/
-		/**** md5 signature: 6b8b56678cb2aa99e1d038c477c227ac ****/
+		/**** md5 signature: 168f276159a046c8f0cdc04c4ef368b0 ****/
 		%feature("compactdefaultargs") BlendFunc_CSConstRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
-CGuide: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
+CGuide: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_CSConstRad;
-		 BlendFunc_CSConstRad(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HCurve> & CGuide);
+		 BlendFunc_CSConstRad(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & CGuide);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -952,7 +953,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
 
 Parameters
 ----------
@@ -1364,21 +1365,21 @@ bool
 class BlendFunc_ChAsym : public Blend_Function {
 	public:
 		/****************** BlendFunc_ChAsym ******************/
-		/**** md5 signature: c5ccfbb8cb1ce21d9a61d191af697154 ****/
+		/**** md5 signature: b229d2c8a2fc1a7aa0dd5e5a3c42e55f ****/
 		%feature("compactdefaultargs") BlendFunc_ChAsym;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ChAsym;
-		 BlendFunc_ChAsym(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ChAsym(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** ComputeValues ******************/
 		/**** md5 signature: 204816d5dcb99a46213f8c407defdb50 ****/
@@ -1432,7 +1433,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -1521,7 +1522,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1935,21 +1936,21 @@ bool
 class BlendFunc_ChAsymInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_ChAsymInv ******************/
-		/**** md5 signature: a38e4ebbfc241372f20d992b33f24c6a ****/
+		/**** md5 signature: 57d9c726e0f3e32ebb79dc260d6ff4e1 ****/
 		%feature("compactdefaultargs") BlendFunc_ChAsymInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ChAsymInv;
-		 BlendFunc_ChAsymInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ChAsymInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** ComputeValues ******************/
 		/**** md5 signature: 204816d5dcb99a46213f8c407defdb50 ****/
@@ -2044,20 +2045,20 @@ int
 		Standard_Integer NbEquations();
 
 		/****************** Set ******************/
-		/**** md5 signature: 9a5329dd41f671f675afb78a1ac44701 ****/
+		/**** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 OnFirst: bool
-COnSurf: Adaptor2d_HCurve2d
+COnSurf: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
+		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Set ******************/
 		/**** md5 signature: 3d2665ead473e36c7266c389a87d886a ****/
@@ -2124,21 +2125,21 @@ bool
 class BlendFunc_ConstRad : public Blend_Function {
 	public:
 		/****************** BlendFunc_ConstRad ******************/
-		/**** md5 signature: 3542520f3ad949bdbc206ab556cd95b2 ****/
+		/**** md5 signature: ec463286ed779585c6f6c64e454c4923 ****/
 		%feature("compactdefaultargs") BlendFunc_ConstRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ConstRad;
-		 BlendFunc_ConstRad(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ConstRad(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** AxeRot ******************/
 		/**** md5 signature: 0c9178d91224ee5e9d339eb0f66536ab ****/
@@ -2190,7 +2191,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -2279,7 +2280,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2707,21 +2708,21 @@ bool
 class BlendFunc_ConstRadInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_ConstRadInv ******************/
-		/**** md5 signature: ad697509e914e35d04fcf8d89739d319 ****/
+		/**** md5 signature: c8f32f0129f68758453c9740132fe619 ****/
 		%feature("compactdefaultargs") BlendFunc_ConstRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ConstRadInv;
-		 BlendFunc_ConstRadInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ConstRadInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -2799,20 +2800,20 @@ int
 		Standard_Integer NbEquations();
 
 		/****************** Set ******************/
-		/**** md5 signature: 9a5329dd41f671f675afb78a1ac44701 ****/
+		/**** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 OnFirst: bool
-COnSurf: Adaptor2d_HCurve2d
+COnSurf: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
+		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Set ******************/
 		/**** md5 signature: 941166ee1a941569b8be371b05e6b601 ****/
@@ -2878,20 +2879,20 @@ bool
 class BlendFunc_Corde {
 	public:
 		/****************** BlendFunc_Corde ******************/
-		/**** md5 signature: d14c0262460f5da83f485c78719fc7f5 ****/
+		/**** md5 signature: 09c11190c26094da844f7a5a6a6617c4 ****/
 		%feature("compactdefaultargs") BlendFunc_Corde;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-CGuide: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+CGuide: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_Corde;
-		 BlendFunc_Corde(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & CGuide);
+		 BlendFunc_Corde(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & CGuide);
 
 		/****************** DerFguide ******************/
 		/**** md5 signature: 23a9f18e67908903d4dd5177d48fb2af ****/
@@ -3068,22 +3069,22 @@ bool
 class BlendFunc_EvolRad : public Blend_Function {
 	public:
 		/****************** BlendFunc_EvolRad ******************/
-		/**** md5 signature: 9b176fc9db389ee1339e277c61d4781f ****/
+		/**** md5 signature: 0d3aa13d1183ca5db26a2b0aa1b7ba32 ****/
 		%feature("compactdefaultargs") BlendFunc_EvolRad;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 Law: Law_Function
 
 Returns
 -------
 None
 ") BlendFunc_EvolRad;
-		 BlendFunc_EvolRad(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Law_Function> & Law);
+		 BlendFunc_EvolRad(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Law_Function> & Law);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -3120,7 +3121,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -3209,7 +3210,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -3636,22 +3637,22 @@ bool
 class BlendFunc_EvolRadInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_EvolRadInv ******************/
-		/**** md5 signature: d98cdf0b742b9880acbeacf9949b9776 ****/
+		/**** md5 signature: d0bf0a36455b752e44c89151c15747c3 ****/
 		%feature("compactdefaultargs") BlendFunc_EvolRadInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 Law: Law_Function
 
 Returns
 -------
 None
 ") BlendFunc_EvolRadInv;
-		 BlendFunc_EvolRadInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Law_Function> & Law);
+		 BlendFunc_EvolRadInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Law_Function> & Law);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -3729,20 +3730,20 @@ int
 		Standard_Integer NbEquations();
 
 		/****************** Set ******************/
-		/**** md5 signature: 8bb3e469c34889cbf25b4fc4beae02a1 ****/
+		/**** md5 signature: cdc53548b1d92196db3a77124e819099 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 OnFirst: bool
-COnSurf: Adaptor2d_HCurve2d
+COnSurf: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
+		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Set ******************/
 		/**** md5 signature: d73c9c4058c0955fc8cd59888660f750 ****/
@@ -3851,20 +3852,20 @@ int
 		Standard_Integer NbEquations();
 
 		/****************** Set ******************/
-		/**** md5 signature: c4b1deeee5b8345f398d1d63ec77fc1b ****/
+		/**** md5 signature: 4eba17c1fe83cac47590d6f96738fedb ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 OnFirst: bool
-COnSurf: Adaptor2d_HCurve2d
+COnSurf: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
+		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Set ******************/
 		/**** md5 signature: ee1b691ca844b8dd605892e1ef6591ed ****/
@@ -3934,7 +3935,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -4012,7 +4013,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
 
 Parameters
 ----------
@@ -4273,21 +4274,21 @@ bool
 class BlendFunc_Ruled : public Blend_Function {
 	public:
 		/****************** BlendFunc_Ruled ******************/
-		/**** md5 signature: 7b29e135c5ec01d315383baadb5d2e36 ****/
+		/**** md5 signature: e253035d359b127a63cfdd5fd602f572 ****/
 		%feature("compactdefaultargs") BlendFunc_Ruled;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_Ruled;
-		 BlendFunc_Ruled(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_Ruled(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** AxeRot ******************/
 		/**** md5 signature: 0c9178d91224ee5e9d339eb0f66536ab ****/
@@ -4339,7 +4340,7 @@ None
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance beetween two extremitys of calculed sections.
+		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
 
 Returns
 -------
@@ -4449,7 +4450,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
 
 Parameters
 ----------
@@ -4803,21 +4804,21 @@ bool
 class BlendFunc_RuledInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_RuledInv ******************/
-		/**** md5 signature: 2578aab4b26b8b46f77abfb6d22abd70 ****/
+		/**** md5 signature: f15fc82b59c0b2a87d88c3189053e8a5 ****/
 		%feature("compactdefaultargs") BlendFunc_RuledInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_RuledInv;
-		 BlendFunc_RuledInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_RuledInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -4895,20 +4896,20 @@ int
 		Standard_Integer NbEquations();
 
 		/****************** Set ******************/
-		/**** md5 signature: 9a5329dd41f671f675afb78a1ac44701 ****/
+		/**** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 OnFirst: bool
-COnSurf: Adaptor2d_HCurve2d
+COnSurf: Adaptor2d_Curve2d
 
 Returns
 -------
 None
 ") Set;
-		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
+		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Value ******************/
 		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
@@ -5050,21 +5051,21 @@ float
 class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 	public:
 		/****************** BlendFunc_ChamfInv ******************/
-		/**** md5 signature: 3eb4d39deb7dc480e2249d52a42e392a ****/
+		/**** md5 signature: 03770f1d2075d29aa171bd8362874cff ****/
 		%feature("compactdefaultargs") BlendFunc_ChamfInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ChamfInv;
-		 BlendFunc_ChamfInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ChamfInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -5146,21 +5147,21 @@ bool
 class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 	public:
 		/****************** BlendFunc_Chamfer ******************/
-		/**** md5 signature: 6c2bb6bd5601aa68b73824c3544b1c1d ****/
+		/**** md5 signature: 95f7dc1cb02ec7d245aeb0d13e68126f ****/
 		%feature("compactdefaultargs") BlendFunc_Chamfer;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-CG: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+CG: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_Chamfer;
-		 BlendFunc_Chamfer(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & CG);
+		 BlendFunc_Chamfer(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & CG);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -5367,21 +5368,21 @@ bool
 class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 	public:
 		/****************** BlendFunc_ConstThroat ******************/
-		/**** md5 signature: 535ab4761994307186594af27339246f ****/
+		/**** md5 signature: cbea5b84841b251171871eebe4d6cd9e ****/
 		%feature("compactdefaultargs") BlendFunc_ConstThroat;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ConstThroat;
-		 BlendFunc_ConstThroat(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ConstThroat(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -5588,21 +5589,21 @@ bool
 class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 	public:
 		/****************** BlendFunc_ConstThroatInv ******************/
-		/**** md5 signature: 63f70f99e6a8865b816983676f75b58f ****/
+		/**** md5 signature: 95409ba97313f153bfd0f5ac1ebb3f61 ****/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ConstThroatInv;
-		 BlendFunc_ConstThroatInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ConstThroatInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -5684,21 +5685,21 @@ bool
 class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 	public:
 		/****************** BlendFunc_ConstThroatWithPenetration ******************/
-		/**** md5 signature: 7784734638904cb3fd3cff05a34f07ed ****/
+		/**** md5 signature: ea57eb46c007f8b6b82e5faf10c5067c ****/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatWithPenetration;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ConstThroatWithPenetration;
-		 BlendFunc_ConstThroatWithPenetration(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ConstThroatWithPenetration(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
@@ -5818,21 +5819,21 @@ bool
 class BlendFunc_ConstThroatWithPenetrationInv : public BlendFunc_ConstThroatInv {
 	public:
 		/****************** BlendFunc_ConstThroatWithPenetrationInv ******************/
-		/**** md5 signature: 2add6271da6f16e56e4b583f12a18aaa ****/
+		/**** md5 signature: 4f8493ab3f5eb8a9ea5778e7a093e544 ****/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatWithPenetrationInv;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") BlendFunc_ConstThroatWithPenetrationInv;
-		 BlendFunc_ConstThroatWithPenetrationInv(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 BlendFunc_ConstThroatWithPenetrationInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/

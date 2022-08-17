@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPALGODOCSTRING
 "BRepAlgo module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgo.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepalgo.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPALGODOCSTRING) BRepAlgo
 
@@ -45,12 +45,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgo.html"
 #include<TopoDS_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopTools_module.hxx>
-#include<BRepBuilderAPI_module.hxx>
-#include<TopOpeBRepBuild_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
-#include<gp_module.hxx>
-#include<Geom_module.hxx>
 #include<TopExp_module.hxx>
 #include<TopLoc_module.hxx>
 #include<IntSurf_module.hxx>
@@ -70,6 +66,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgo.html"
 #include<BRepAdaptor_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<Geom_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -80,12 +77,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgo.html"
 %import TopoDS.i
 %import GeomAbs.i
 %import TopTools.i
-%import BRepBuilderAPI.i
-%import TopOpeBRepBuild.i
 %import TopAbs.i
 %import Adaptor3d.i
-%import gp.i
-%import Geom.i
 
 %pythoncode {
 from enum import IntEnum
@@ -93,21 +86,10 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum BRepAlgo_CheckStatus {
-	BRepAlgo_OK = 0,
-	BRepAlgo_NOK = 1,
-};
-
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
-
-class BRepAlgo_CheckStatus(IntEnum):
-	BRepAlgo_OK = 0
-	BRepAlgo_NOK = 1
-BRepAlgo_OK = BRepAlgo_CheckStatus.BRepAlgo_OK
-BRepAlgo_NOK = BRepAlgo_CheckStatus.BRepAlgo_NOK
 };
 /* end python proxy for enums */
 
@@ -163,7 +145,7 @@ TopoDS_Edge
 		/****************** IsTopologicallyValid ******************/
 		/**** md5 signature: 862e9687e6641e5b5520e1bc35a7dd50 ****/
 		%feature("compactdefaultargs") IsTopologicallyValid;
-		%feature("autodoc", "Checks if the shape is 'correct'. if not, returns <standard_false>, else returns <standard_true>. this method differs from the previous one in the fact that no geometric contols (intersection of wires, pcurve validity) are performed.
+		%feature("autodoc", "Checks if the shape is 'correct'. if not, returns false, else returns true. this method differs from the previous one in the fact that no geometric controls (intersection of wires, pcurve validity) are performed.
 
 Parameters
 ----------
@@ -371,35 +353,35 @@ bool
 		Standard_Boolean HasDescendant(const TopoDS_Shape & S);
 
 		/****************** Remove ******************/
-		/**** md5 signature: 05a88c75d9ea5ff51b2f8c0a39e09679 ****/
+		/**** md5 signature: add61cba503919d35888054f3de3699f ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Remove <s> from me.
+		%feature("autodoc", "Remove thes from me.
 
 Parameters
 ----------
-S: TopoDS_Shape
+theS: TopoDS_Shape
 
 Returns
 -------
 None
 ") Remove;
-		void Remove(const TopoDS_Shape & S);
+		void Remove(const TopoDS_Shape & theS);
 
 		/****************** Replace ******************/
-		/**** md5 signature: aa831f4803287da25b19255611f1b870 ****/
+		/**** md5 signature: 7efbf7d2833396fcda557293d6dcc3ee ****/
 		%feature("compactdefaultargs") Replace;
-		%feature("autodoc", "Replace <olds> by <news>. <olds> disapear from <self>.
+		%feature("autodoc", "Replace theolds by thenews. theolds disappear from this.
 
 Parameters
 ----------
-OldS: TopoDS_Shape
-NewS: TopoDS_Shape
+theOldS: TopoDS_Shape
+theNewS: TopoDS_Shape
 
 Returns
 -------
 None
 ") Replace;
-		void Replace(const TopoDS_Shape & OldS, const TopoDS_Shape & NewS);
+		void Replace(const TopoDS_Shape & theOldS, const TopoDS_Shape & theNewS);
 
 };
 
@@ -407,111 +389,6 @@ None
 %make_alias(BRepAlgo_AsDes)
 
 %extend BRepAlgo_AsDes {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************
-* class BRepAlgo_BooleanOperation *
-**********************************/
-%nodefaultctor BRepAlgo_BooleanOperation;
-class BRepAlgo_BooleanOperation : public BRepBuilderAPI_MakeShape {
-	public:
-		/****************** Builder ******************/
-		/**** md5 signature: c97c63149316e999abd03e780cc959bf ****/
-		%feature("compactdefaultargs") Builder;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TopOpeBRepBuild_HBuilder>
-") Builder;
-		opencascade::handle<TopOpeBRepBuild_HBuilder> Builder();
-
-		/****************** IsDeleted ******************/
-		/**** md5 signature: 28be7c17a3b2776f59567554f488bbf5 ****/
-		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-S: TopoDS_Shape
-
-Returns
--------
-bool
-") IsDeleted;
-		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
-
-		/****************** Modified ******************/
-		/**** md5 signature: 73ccfe97b4ed94547a190332224ffe23 ****/
-		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "Returns the list of shapes modified from the shape <s>.
-
-Parameters
-----------
-S: TopoDS_Shape
-
-Returns
--------
-TopTools_ListOfShape
-") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
-
-		/****************** Perform ******************/
-		/**** md5 signature: 6eb14a53eba47750cd8130b167bd0170 ****/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-St1: TopAbs_State
-St2: TopAbs_State
-
-Returns
--------
-None
-") Perform;
-		void Perform(const TopAbs_State St1, const TopAbs_State St2);
-
-		/****************** PerformDS ******************/
-		/**** md5 signature: e01b11b18525c743543ad58a2f802249 ****/
-		%feature("compactdefaultargs") PerformDS;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") PerformDS;
-		void PerformDS();
-
-		/****************** Shape1 ******************/
-		/**** md5 signature: 07a3db9d6b637af56fb1391aee4b7641 ****/
-		%feature("compactdefaultargs") Shape1;
-		%feature("autodoc", "Returns the first shape involved in this boolean operation.
-
-Returns
--------
-TopoDS_Shape
-") Shape1;
-		const TopoDS_Shape Shape1();
-
-		/****************** Shape2 ******************/
-		/**** md5 signature: 3655a6c56b55e5313d1b146d7ee7458a ****/
-		%feature("compactdefaultargs") Shape2;
-		%feature("autodoc", "Returns the second shape involved in this boolean operation.
-
-Returns
--------
-TopoDS_Shape
-") Shape2;
-		const TopoDS_Shape Shape2();
-
-};
-
-
-%extend BRepAlgo_BooleanOperation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -573,7 +450,7 @@ TopoDS_Face
 		/****************** Init ******************/
 		/**** md5 signature: 8a340284dcc52534c4ed6303f8706321 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "The surface of <f> will be the the surface of each new faces built. <proj> is used to update pcurves on edges if necessary. see add().
+		%feature("autodoc", "The surface of <f> will be the surface of each new faces built. <proj> is used to update pcurves on edges if necessary. see add().
 
 Parameters
 ----------
@@ -1384,7 +1261,7 @@ None
 		/****************** SetParams ******************/
 		/**** md5 signature: 145439fe62b19bd0fd3e24e9c7dd4c4d ****/
 		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "Set the parameters used for computation tol3d is the requiered tolerance between the 3d projected curve and its 2d representation internalcontinuity is the order of constraints used for approximation. maxdeg and maxseg are the maximum degree and the maximum number of segment for bspline resulting of an approximation.
+		%feature("autodoc", "Set the parameters used for computation tol3d is the required tolerance between the 3d projected curve and its 2d representation internalcontinuity is the order of constraints used for approximation. maxdeg and maxseg are the maximum degree and the maximum number of segment for bspline resulting of an approximation.
 
 Parameters
 ----------
@@ -1404,408 +1281,6 @@ None
 
 
 %extend BRepAlgo_NormalProjection {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************
-* class BRepAlgo_Tool *
-**********************/
-class BRepAlgo_Tool {
-	public:
-		/****************** Deboucle3D ******************/
-		/**** md5 signature: 604726f64f42702b8591f042f704509e ****/
-		%feature("compactdefaultargs") Deboucle3D;
-		%feature("autodoc", "Remove the non valid part of an offsetshape 1 - remove all the free boundary and the faces connex to such edges. 2 - remove all the shapes not valid in the result (according to the side of offseting) in this verion only the first point is implemented.
-
-Parameters
-----------
-S: TopoDS_Shape
-Boundary: TopTools_MapOfShape
-
-Returns
--------
-TopoDS_Shape
-") Deboucle3D;
-		static TopoDS_Shape Deboucle3D(const TopoDS_Shape & S, const TopTools_MapOfShape & Boundary);
-
-};
-
-
-%extend BRepAlgo_Tool {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class BRepAlgo_Common *
-************************/
-class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
-	public:
-		/****************** BRepAlgo_Common ******************/
-		/**** md5 signature: c303f23f715db05d4b283d942e0ed480 ****/
-		%feature("compactdefaultargs") BRepAlgo_Common;
-		%feature("autodoc", "Constructs the common part of shapes s1 and s2.
-
-Parameters
-----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-
-Returns
--------
-None
-") BRepAlgo_Common;
-		 BRepAlgo_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
-
-};
-
-
-%extend BRepAlgo_Common {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************
-* class BRepAlgo_Cut *
-*********************/
-class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
-	public:
-		/****************** BRepAlgo_Cut ******************/
-		/**** md5 signature: f90348e962c1c16c754ac1427051f107 ****/
-		%feature("compactdefaultargs") BRepAlgo_Cut;
-		%feature("autodoc", "Cuts the shape s2 from the shape s1.
-
-Parameters
-----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-
-Returns
--------
-None
-") BRepAlgo_Cut;
-		 BRepAlgo_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
-
-};
-
-
-%extend BRepAlgo_Cut {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************
-* class BRepAlgo_Fuse *
-**********************/
-class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
-	public:
-		/****************** BRepAlgo_Fuse ******************/
-		/**** md5 signature: f117438a19e4ceb14492964fd0e05965 ****/
-		%feature("compactdefaultargs") BRepAlgo_Fuse;
-		%feature("autodoc", "Fuse s1 and s2.
-
-Parameters
-----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-
-Returns
--------
-None
-") BRepAlgo_Fuse;
-		 BRepAlgo_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
-
-};
-
-
-%extend BRepAlgo_Fuse {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*************************
-* class BRepAlgo_Section *
-*************************/
-class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
-	public:
-		/****************** BRepAlgo_Section ******************/
-		/**** md5 signature: 3b0b603cdaa19c3fa8b14a4fc6430eae ****/
-		%feature("compactdefaultargs") BRepAlgo_Section;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Sh1: TopoDS_Shape
-Sh2: TopoDS_Shape
-PerformNow: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") BRepAlgo_Section;
-		 BRepAlgo_Section(const TopoDS_Shape & Sh1, const TopoDS_Shape & Sh2, const Standard_Boolean PerformNow = Standard_True);
-
-		/****************** BRepAlgo_Section ******************/
-		/**** md5 signature: 2eec517a00968b44883cf7812c34cb07 ****/
-		%feature("compactdefaultargs") BRepAlgo_Section;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Sh: TopoDS_Shape
-Pl: gp_Pln
-PerformNow: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") BRepAlgo_Section;
-		 BRepAlgo_Section(const TopoDS_Shape & Sh, const gp_Pln & Pl, const Standard_Boolean PerformNow = Standard_True);
-
-		/****************** BRepAlgo_Section ******************/
-		/**** md5 signature: 51e4d1698105486e7345243a65fcf053 ****/
-		%feature("compactdefaultargs") BRepAlgo_Section;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Sh: TopoDS_Shape
-Sf: Geom_Surface
-PerformNow: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") BRepAlgo_Section;
-		 BRepAlgo_Section(const TopoDS_Shape & Sh, const opencascade::handle<Geom_Surface> & Sf, const Standard_Boolean PerformNow = Standard_True);
-
-		/****************** BRepAlgo_Section ******************/
-		/**** md5 signature: bf125371c0f12c703b776422977b8fc4 ****/
-		%feature("compactdefaultargs") BRepAlgo_Section;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Sf: Geom_Surface
-Sh: TopoDS_Shape
-PerformNow: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") BRepAlgo_Section;
-		 BRepAlgo_Section(const opencascade::handle<Geom_Surface> & Sf, const TopoDS_Shape & Sh, const Standard_Boolean PerformNow = Standard_True);
-
-		/****************** BRepAlgo_Section ******************/
-		/**** md5 signature: cba6ed73b7e463d63e15fef3e258420c ****/
-		%feature("compactdefaultargs") BRepAlgo_Section;
-		%feature("autodoc", "This and the above algorithms construct a framework for computing the section lines of - the two shapes sh1 and sh2, or - the shape sh and the plane pl, or - the shape sh and the surface sf, or - the surface sf and the shape sh, or - the two surfaces sf1 and sf2, and builds the result if performnow equals true, its default value. if performnow equals false, the intersection will be computed later by the function build. the constructed shape will be returned by the function shape. this is a compound object composed of edges. these intersection edges may be built: - on new intersection lines, or - on coincident portions of edges in the two intersected shapes. these intersection edges are independent: they are not chained or grouped in wires. if no intersection edge exists, the result is an empty compound object. note that other objects than topods_shape shapes involved in these syntaxes are converted into faces or shells before performing the computation of the intersection. a shape resulting from this conversion can be retrieved with the function shape1 or shape2. parametric 2d curves on intersection edges no parametric 2d curve (pcurve) is defined for each elementary edge of the result. to attach such parametric curves to the constructed edges you may use a constructor with the performnow flag equal to false; then you use: - the function computepcurveon1 to ask for the additional computation of a pcurve in the parametric space of the first shape, - the function computepcurveon2 to ask for the additional computation of a pcurve in the parametric space of the second shape, - in the end, the function build to construct the result. note that as a result, pcurves will only be added on edges built on new intersection lines. approximation of intersection edges the underlying 3d geometry attached to each elementary edge of the result is: - analytic where possible, provided the corresponding geometry corresponds to a type of analytic curve defined in the geom package; for example, the intersection of a cylindrical shape with a plane gives an ellipse or a circle; - or elsewhere, given as a succession of points grouped together in a bspline curve of degree 1. if you prefer to have an attached 3d geometry which is a bspline approximation of the computed set of points on computed elementary intersection edges whose underlying geometry is not analytic, you may use a constructor with the performnow flag equal to false. then you use: - the function approximation to ask for this computation option, and - the function build to construct the result. note that as a result, approximations will only be computed on edges built on new intersection lines. example you may also combine these computation options. in the following example: - each elementary edge of the computed intersection, built on a new intersection line, which does not correspond to an analytic geom curve, will be approximated by a bspline curve whose degree is not greater than 8. - each elementary edge built on a new intersection line, will have: - a pcurve in the parametric space of the shape s1, - no pcurve in the parametric space of the shape s2. // topods_shape s1 = ... , s2 = ... ; standard_boolean performnow = standard_false; brepalgo_section s ( s1, s2, performnow ); s.computepcurveon1 (standard_true); s.approximation (standard_true); s.build(); topods_shape r = s.shape();.
-
-Parameters
-----------
-Sf1: Geom_Surface
-Sf2: Geom_Surface
-PerformNow: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") BRepAlgo_Section;
-		 BRepAlgo_Section(const opencascade::handle<Geom_Surface> & Sf1, const opencascade::handle<Geom_Surface> & Sf2, const Standard_Boolean PerformNow = Standard_True);
-
-		/****************** Approximation ******************/
-		/**** md5 signature: f599ca30fa002b2a3dc329decde6ce74 ****/
-		%feature("compactdefaultargs") Approximation;
-		%feature("autodoc", "Defines an option for computation of further intersections. this computation will be performed by the function build in this framework. by default, the underlying 3d geometry attached to each elementary edge of the result of a computed intersection is: - analytic where possible, provided the corresponding geometry corresponds to a type of analytic curve defined in the geom package; for example the intersection of a cylindrical shape with a plane gives an ellipse or a circle; - or elsewhere, given as a succession of points grouped together in a bspline curve of degree 1. if approx equals true, when further computations are performed in this framework with the function build, these edges will have an attached 3d geometry which is a bspline approximation of the computed set of points. note that as a result, approximations will be computed on edges built only on new intersection lines.
-
-Parameters
-----------
-B: bool
-
-Returns
--------
-None
-") Approximation;
-		void Approximation(const Standard_Boolean B);
-
-		/****************** Build ******************/
-		/**** md5 signature: fbc5fbed76b24de64a843e82da1c1005 ****/
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Performs the computation of the section lines between the two parts defined at the time of construction of this framework or reinitialized with the init1 and init2 functions. the constructed shape will be returned by the function shape. this is a compound object composed of edges. these intersection edges may be built: - on new intersection lines, or - on coincident portions of edges in the two intersected shapes. these intersection edges are independent: they are not chained or grouped into wires. if no intersection edge exists, the result is an empty compound object. the shapes involved in the construction of the section lines can be retrieved with the function shape1 or shape2. note that other objects than topods_shape shapes given as arguments at the construction time of this framework, or to the init1 or init2 function, are converted into faces or shells before performing the computation of the intersection. parametric 2d curves on intersection edges no parametric 2d curve (pcurve) is defined for the elementary edges of the result. to attach parametric curves like this to the constructed edges you have to use: - the function computepcurveon1 to ask for the additional computation of a pcurve in the parametric space of the first shape, - the function computepcurveon2 to ask for the additional computation of a pcurve in the parametric space of the second shape. this must be done before calling this function. note that as a result, pcurves are added on edges built on new intersection lines only. approximation of intersection edges the underlying 3d geometry attached to each elementary edge of the result is: - analytic where possible provided the corresponding geometry corresponds to a type of analytic curve defined in the geom package; for example, the intersection of a cylindrical shape with a plane gives an ellipse or a circle; or - elsewhere, given as a succession of points grouped together in a bspline curve of degree 1. if, on computed elementary intersection edges whose underlying geometry is not analytic, you prefer to have an attached 3d geometry which is a bspline approximation of the computed set of points, you have to use the function approximation to ask for this computation option before calling this function. you may also have combined these computation options: look at the example given above to illustrate the use of the constructors.
-
-Returns
--------
-None
-") Build;
-		void Build();
-
-		/****************** ComputePCurveOn1 ******************/
-		/**** md5 signature: e4a8add7cd0d8f532479132026321808 ****/
-		%feature("compactdefaultargs") ComputePCurveOn1;
-		%feature("autodoc", "Indicates if the pcurve must be (or not) performed on first part.
-
-Parameters
-----------
-B: bool
-
-Returns
--------
-None
-") ComputePCurveOn1;
-		void ComputePCurveOn1(const Standard_Boolean B);
-
-		/****************** ComputePCurveOn2 ******************/
-		/**** md5 signature: 69d49dff388a83191da02eb8e1945b69 ****/
-		%feature("compactdefaultargs") ComputePCurveOn2;
-		%feature("autodoc", "Define options for the computation of further intersections which will be performed by the function build in this framework. by default, no parametric 2d curve (pcurve) is defined for the elementary edges of the result. if computepcurve1 equals true, further computations performed in this framework with the function build will attach an additional pcurve in the parametric space of the first shape to the constructed edges. if computepcurve2 equals true, the additional pcurve will be attached to the constructed edges in the parametric space of the second shape. these two functions may be used together. note that as a result, pcurves will only be added onto edges built on new intersection lines.
-
-Parameters
-----------
-B: bool
-
-Returns
--------
-None
-") ComputePCurveOn2;
-		void ComputePCurveOn2(const Standard_Boolean B);
-
-		/****************** HasAncestorFaceOn1 ******************/
-		/**** md5 signature: 36605047037cbfa30f9efcc59b149e44 ****/
-		%feature("compactdefaultargs") HasAncestorFaceOn1;
-		%feature("autodoc", "Identifies the ancestor faces of the new intersection edge e resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge e lies: - hasancestorfaceon1 gives the ancestor face in the first shape, and these functions return: - true if an ancestor face f is found, or - false if not. an ancestor face is identifiable for the edge e if the three following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the init1 function, - e is one of the elementary edges built by the last computation of this section algorithm, - the edge e is built on an intersection curve. in other words, e is a new edge built on the intersection curve, not on edges belonging to the intersecting shapes. to use these functions properly, you have to test the returned boolean value before using the ancestor face: f is significant only if the returned boolean value equals true.
-
-Parameters
-----------
-E: TopoDS_Shape
-F: TopoDS_Shape
-
-Returns
--------
-bool
-") HasAncestorFaceOn1;
-		Standard_Boolean HasAncestorFaceOn1(const TopoDS_Shape & E, TopoDS_Shape & F);
-
-		/****************** HasAncestorFaceOn2 ******************/
-		/**** md5 signature: 0642a4fb4df5a635412bd18e5f65e916 ****/
-		%feature("compactdefaultargs") HasAncestorFaceOn2;
-		%feature("autodoc", "Identifies the ancestor faces of the new intersection edge e resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge e lies: - hasancestorfaceon2 gives the ancestor face in the second shape. these functions return: - true if an ancestor face f is found, or - false if not. an ancestor face is identifiable for the edge e if the three following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the init1 function, - e is one of the elementary edges built by the last computation of this section algorithm, - the edge e is built on an intersection curve. in other words, e is a new edge built on the intersection curve, not on edges belonging to the intersecting shapes. to use these functions properly, you have to test the returned boolean value before using the ancestor face: f is significant only if the returned boolean value equals true.
-
-Parameters
-----------
-E: TopoDS_Shape
-F: TopoDS_Shape
-
-Returns
--------
-bool
-") HasAncestorFaceOn2;
-		Standard_Boolean HasAncestorFaceOn2(const TopoDS_Shape & E, TopoDS_Shape & F);
-
-		/****************** Init1 ******************/
-		/**** md5 signature: 7fa686f55d72920afc50e65b8a84a805 ****/
-		%feature("compactdefaultargs") Init1;
-		%feature("autodoc", "Initializes the first part.
-
-Parameters
-----------
-S1: TopoDS_Shape
-
-Returns
--------
-None
-") Init1;
-		void Init1(const TopoDS_Shape & S1);
-
-		/****************** Init1 ******************/
-		/**** md5 signature: 1e834e5b66aacf2f588a792cb0edcd57 ****/
-		%feature("compactdefaultargs") Init1;
-		%feature("autodoc", "Initializes the first part.
-
-Parameters
-----------
-Pl: gp_Pln
-
-Returns
--------
-None
-") Init1;
-		void Init1(const gp_Pln & Pl);
-
-		/****************** Init1 ******************/
-		/**** md5 signature: a94f1a0649d28cfd679dcbe46833b484 ****/
-		%feature("compactdefaultargs") Init1;
-		%feature("autodoc", "Initializes the first part.
-
-Parameters
-----------
-Sf: Geom_Surface
-
-Returns
--------
-None
-") Init1;
-		void Init1(const opencascade::handle<Geom_Surface> & Sf);
-
-		/****************** Init2 ******************/
-		/**** md5 signature: 8a35dc2983e205023df1fac2afbf3b01 ****/
-		%feature("compactdefaultargs") Init2;
-		%feature("autodoc", "Initialize second part.
-
-Parameters
-----------
-S2: TopoDS_Shape
-
-Returns
--------
-None
-") Init2;
-		void Init2(const TopoDS_Shape & S2);
-
-		/****************** Init2 ******************/
-		/**** md5 signature: 1fb6fdb5216fde3b15724409206adcfe ****/
-		%feature("compactdefaultargs") Init2;
-		%feature("autodoc", "Initializes the second part.
-
-Parameters
-----------
-Pl: gp_Pln
-
-Returns
--------
-None
-") Init2;
-		void Init2(const gp_Pln & Pl);
-
-		/****************** Init2 ******************/
-		/**** md5 signature: 86865e03b7bd5eecac0d55746d523771 ****/
-		%feature("compactdefaultargs") Init2;
-		%feature("autodoc", "This and the above algorithms reinitialize the first and the second parts on which this algorithm is going to perform the intersection computation. this is done with either: the surface sf, the plane pl or the shape sh. you use the function build to construct the result.
-
-Parameters
-----------
-Sf: Geom_Surface
-
-Returns
--------
-None
-") Init2;
-		void Init2(const opencascade::handle<Geom_Surface> & Sf);
-
-};
-
-
-%extend BRepAlgo_Section {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

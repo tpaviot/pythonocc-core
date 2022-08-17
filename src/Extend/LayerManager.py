@@ -17,21 +17,24 @@
 
 
 class Layer:
-    def __init__(self, from_display, shape=None, color=0):
+    def __init__(self, from_display, shape=None, color=0, tansparency=0.0):
         """
         :param from_display: the display from the main code
         :param shape: TopoDS_Shape
         :param color: Quantity color
+        :param transparency: from 0.0 to 1.0
         """
         self.clear()
         self.color = color
         self.display = from_display
+        self.transparency = tansparency
         if shape is not None:
             self.add(shape)
 
     def add(self, shape):
         self.to_display = {self.count}
         self.to_display = self.display.DisplayShape(shape, color=self.color)[0]
+        self.display.Context.SetTransparency(self.to_display, self.transparency, True)
         self.list_to_display.append(self.to_display)
         self.shapes.append(shape)
         self.count += 1

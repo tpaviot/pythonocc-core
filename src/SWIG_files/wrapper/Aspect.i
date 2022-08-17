@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ASPECTDOCSTRING
 "Aspect module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_aspect.html"
 %enddef
 %module (package="OCC.Core", docstring=ASPECTDOCSTRING) Aspect
 
@@ -37,16 +37,17 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
 
 
 %{
+#include<Standard_Atomic.hxx>
 #include<Aspect_module.hxx>
 
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Quantity_module.hxx>
+#include<Graphic3d_module.hxx>
 #include<TCollection_module.hxx>
 #include<gp_module.hxx>
 #include<Image_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<Bnd_module.hxx>
 #include<Media_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,10 +58,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
 %import Standard.i
 %import NCollection.i
 %import Quantity.i
+%import Graphic3d.i
 %import TCollection.i
 %import gp.i
 %import Image.i
-%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -245,15 +246,25 @@ enum Aspect_TypeOfLine {
 };
 
 enum Aspect_GradientFillMethod {
-	Aspect_GFM_NONE = 0,
-	Aspect_GFM_HOR = 1,
-	Aspect_GFM_VER = 2,
-	Aspect_GFM_DIAG1 = 3,
-	Aspect_GFM_DIAG2 = 4,
-	Aspect_GFM_CORNER1 = 5,
-	Aspect_GFM_CORNER2 = 6,
-	Aspect_GFM_CORNER3 = 7,
-	Aspect_GFM_CORNER4 = 8,
+	Aspect_GradientFillMethod_None = 0,
+	Aspect_GradientFillMethod_Horizontal = 1,
+	Aspect_GradientFillMethod_Vertical = 2,
+	Aspect_GradientFillMethod_Diagonal1 = 3,
+	Aspect_GradientFillMethod_Diagonal2 = 4,
+	Aspect_GradientFillMethod_Corner1 = 5,
+	Aspect_GradientFillMethod_Corner2 = 6,
+	Aspect_GradientFillMethod_Corner3 = 7,
+	Aspect_GradientFillMethod_Corner4 = 8,
+	Aspect_GradientFillMethod_Elliptical = 9,
+	Aspect_GFM_NONE = Aspect_GradientFillMethod_None,
+	Aspect_GFM_HOR = Aspect_GradientFillMethod_Horizontal,
+	Aspect_GFM_VER = Aspect_GradientFillMethod_Vertical,
+	Aspect_GFM_DIAG1 = Aspect_GradientFillMethod_Diagonal1,
+	Aspect_GFM_DIAG2 = Aspect_GradientFillMethod_Diagonal2,
+	Aspect_GFM_CORNER1 = Aspect_GradientFillMethod_Corner1,
+	Aspect_GFM_CORNER2 = Aspect_GradientFillMethod_Corner2,
+	Aspect_GFM_CORNER3 = Aspect_GradientFillMethod_Corner3,
+	Aspect_GFM_CORNER4 = Aspect_GradientFillMethod_Corner4,
 };
 
 enum Aspect_XRGenericAction {
@@ -482,7 +493,7 @@ enum Aspect_InteriorStyle {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class Aspect_Eye(IntEnum):
@@ -800,15 +811,35 @@ Aspect_TOL_DOTDASH = Aspect_TypeOfLine.Aspect_TOL_DOTDASH
 Aspect_TOL_USERDEFINED = Aspect_TypeOfLine.Aspect_TOL_USERDEFINED
 
 class Aspect_GradientFillMethod(IntEnum):
-	Aspect_GFM_NONE = 0
-	Aspect_GFM_HOR = 1
-	Aspect_GFM_VER = 2
-	Aspect_GFM_DIAG1 = 3
-	Aspect_GFM_DIAG2 = 4
-	Aspect_GFM_CORNER1 = 5
-	Aspect_GFM_CORNER2 = 6
-	Aspect_GFM_CORNER3 = 7
-	Aspect_GFM_CORNER4 = 8
+	Aspect_GradientFillMethod_None = 0
+	Aspect_GradientFillMethod_Horizontal = 1
+	Aspect_GradientFillMethod_Vertical = 2
+	Aspect_GradientFillMethod_Diagonal1 = 3
+	Aspect_GradientFillMethod_Diagonal2 = 4
+	Aspect_GradientFillMethod_Corner1 = 5
+	Aspect_GradientFillMethod_Corner2 = 6
+	Aspect_GradientFillMethod_Corner3 = 7
+	Aspect_GradientFillMethod_Corner4 = 8
+	Aspect_GradientFillMethod_Elliptical = 9
+	Aspect_GFM_NONE = Aspect_GradientFillMethod_None
+	Aspect_GFM_HOR = Aspect_GradientFillMethod_Horizontal
+	Aspect_GFM_VER = Aspect_GradientFillMethod_Vertical
+	Aspect_GFM_DIAG1 = Aspect_GradientFillMethod_Diagonal1
+	Aspect_GFM_DIAG2 = Aspect_GradientFillMethod_Diagonal2
+	Aspect_GFM_CORNER1 = Aspect_GradientFillMethod_Corner1
+	Aspect_GFM_CORNER2 = Aspect_GradientFillMethod_Corner2
+	Aspect_GFM_CORNER3 = Aspect_GradientFillMethod_Corner3
+	Aspect_GFM_CORNER4 = Aspect_GradientFillMethod_Corner4
+Aspect_GradientFillMethod_None = Aspect_GradientFillMethod.Aspect_GradientFillMethod_None
+Aspect_GradientFillMethod_Horizontal = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Horizontal
+Aspect_GradientFillMethod_Vertical = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Vertical
+Aspect_GradientFillMethod_Diagonal1 = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Diagonal1
+Aspect_GradientFillMethod_Diagonal2 = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Diagonal2
+Aspect_GradientFillMethod_Corner1 = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Corner1
+Aspect_GradientFillMethod_Corner2 = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Corner2
+Aspect_GradientFillMethod_Corner3 = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Corner3
+Aspect_GradientFillMethod_Corner4 = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Corner4
+Aspect_GradientFillMethod_Elliptical = Aspect_GradientFillMethod.Aspect_GradientFillMethod_Elliptical
 Aspect_GFM_NONE = Aspect_GradientFillMethod.Aspect_GFM_NONE
 Aspect_GFM_HOR = Aspect_GradientFillMethod.Aspect_GFM_HOR
 Aspect_GFM_VER = Aspect_GradientFillMethod.Aspect_GFM_VER
@@ -1187,7 +1218,7 @@ Aspect_IS_HOLLOW = Aspect_InteriorStyle.Aspect_IS_HOLLOW
 /* typedefs */
 typedef void * Aspect_Display;
 typedef unsigned long Aspect_Drawable;
-typedef void * Aspect_FBConfig;
+typedef GLXFBConfig Aspect_FBConfig;
 typedef unsigned long Aspect_Handle;
 typedef void * Aspect_RenderingContext;
 typedef NCollection_Sequence<Quantity_Color> Aspect_SequenceOfColor;
@@ -1281,6 +1312,39 @@ None
 *********************************/
 class Aspect_DisplayConnection : public Standard_Transient {
 	public:
+		/****************** GetDefaultFBConfig ******************/
+		/**** md5 signature: 622b64beb2b73c32aace98cc90ab7793 ****/
+		%feature("compactdefaultargs") GetDefaultFBConfig;
+		%feature("autodoc", "Returns native window fb config (glxfbconfig on xlib).
+
+Returns
+-------
+Aspect_FBConfig
+") GetDefaultFBConfig;
+		Aspect_FBConfig GetDefaultFBConfig();
+
+		/****************** GetDefaultVisualInfo ******************/
+		/**** md5 signature: dde27c64c5cbb24e80531c18197370c1 ****/
+		%feature("compactdefaultargs") GetDefaultVisualInfo;
+		%feature("autodoc", "Return default window visual or null when undefined.
+
+Returns
+-------
+Aspect_XVisualInfo *
+") GetDefaultVisualInfo;
+		Aspect_XVisualInfo * GetDefaultVisualInfo();
+
+		/****************** GetDisplayAspect ******************/
+		/**** md5 signature: b7c859e60cde1d6a2d363b0c0841abb9 ****/
+		%feature("compactdefaultargs") GetDisplayAspect;
+		%feature("autodoc", "Returns pointer to display structure that serves as the connection to the x server.
+
+Returns
+-------
+Aspect_XDisplay *
+") GetDisplayAspect;
+		Aspect_XDisplay * GetDisplayAspect();
+
 };
 
 
@@ -1312,6 +1376,18 @@ class Aspect_DisplayConnection : public Standard_Transient {
 
 	@methodnotwrapped
 	def IsOwnDisplay(self):
+		pass
+
+	@methodnotwrapped
+	def GetAtomX(self):
+		pass
+
+	@methodnotwrapped
+	def GetDefaultVisualInfoX(self):
+		pass
+
+	@methodnotwrapped
+	def SetDefaultVisualInfo(self):
 		pass
 	}
 };
@@ -1978,6 +2054,58 @@ Aspect_FillMethod
 ") BackgroundFillMethod;
 		Aspect_FillMethod BackgroundFillMethod();
 
+		/****************** ConvertPointFromBacking ******************/
+		/**** md5 signature: 621f59446c2c34234eba0b43cd724552 ****/
+		%feature("compactdefaultargs") ConvertPointFromBacking;
+		%feature("autodoc", "Convert point from backing store units to logical units.
+
+Parameters
+----------
+thePnt: Graphic3d_Vec2d
+
+Returns
+-------
+Graphic3d_Vec2d
+") ConvertPointFromBacking;
+		virtual Graphic3d_Vec2d ConvertPointFromBacking(const Graphic3d_Vec2d & thePnt);
+
+		/****************** ConvertPointToBacking ******************/
+		/**** md5 signature: 37a4876c01cca0dee435e17d82ae73d5 ****/
+		%feature("compactdefaultargs") ConvertPointToBacking;
+		%feature("autodoc", "Convert point from logical units into backing store units.
+
+Parameters
+----------
+thePnt: Graphic3d_Vec2d
+
+Returns
+-------
+Graphic3d_Vec2d
+") ConvertPointToBacking;
+		virtual Graphic3d_Vec2d ConvertPointToBacking(const Graphic3d_Vec2d & thePnt);
+
+		/****************** DevicePixelRatio ******************/
+		/**** md5 signature: 6492ff955dcc6243b26fa4c3bdea7bf0 ****/
+		%feature("compactdefaultargs") DevicePixelRatio;
+		%feature("autodoc", "Return device pixel ratio (logical to backing store scale factor).
+
+Returns
+-------
+float
+") DevicePixelRatio;
+		virtual Standard_Real DevicePixelRatio();
+
+		/****************** DisplayConnection ******************/
+		/**** md5 signature: 411dcd7f318927d5a5c6c027eda3726a ****/
+		%feature("compactdefaultargs") DisplayConnection;
+		%feature("autodoc", "Returns connection to display or null.
+
+Returns
+-------
+opencascade::handle<Aspect_DisplayConnection>
+") DisplayConnection;
+		const opencascade::handle<Aspect_DisplayConnection> & DisplayConnection();
+
 		/****************** DoMapping ******************/
 		/**** md5 signature: bccedbb13c087bbcb0fdc2dc4be5fafa ****/
 		%feature("compactdefaultargs") DoMapping;
@@ -2240,6 +2368,544 @@ None
 	@methodnotwrapped
 	def NativeParentHandle(self):
 		pass
+	}
+};
+
+/***********************************
+* class Aspect_WindowInputListener *
+***********************************/
+%nodefaultctor Aspect_WindowInputListener;
+class Aspect_WindowInputListener {
+	public:
+		/****************** AddTouchPoint ******************/
+		/**** md5 signature: 93b82d6d34eb813c208bc4163ef671c4 ****/
+		%feature("compactdefaultargs") AddTouchPoint;
+		%feature("autodoc", "Add touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates @param theclearbefore if true previously registered touches will be removed.
+
+Parameters
+----------
+theId: Standard_Size
+thePnt: Graphic3d_Vec2d
+theClearBefore: bool,optional
+	default value is false
+
+Returns
+-------
+None
+") AddTouchPoint;
+		virtual void AddTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt, Standard_Boolean theClearBefore = false);
+
+		/****************** Change3dMouseIsNoRotate ******************/
+		/**** md5 signature: b2ff1af628a01e66606ed582c146ef69 ****/
+		%feature("compactdefaultargs") Change3dMouseIsNoRotate;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Change3dMouseIsNoRotate;
+		NCollection_Vec3<bool> & Change3dMouseIsNoRotate();
+
+		/****************** Change3dMouseToReverse ******************/
+		/**** md5 signature: 74994d53f8199fd2049bc1854acbcdb2 ****/
+		%feature("compactdefaultargs") Change3dMouseToReverse;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Change3dMouseToReverse;
+		NCollection_Vec3<bool> & Change3dMouseToReverse();
+
+		/****************** ChangeKeys ******************/
+		/**** md5 signature: 5ba331e57bcd00b6539ab5d9145324ac ****/
+		%feature("compactdefaultargs") ChangeKeys;
+		%feature("autodoc", "Return keyboard state.
+
+Returns
+-------
+Aspect_VKeySet
+") ChangeKeys;
+		Aspect_VKeySet & ChangeKeys();
+
+		/****************** EventTime ******************/
+		/**** md5 signature: 6bdc5b17561b5be0e9e4dbdd76a72ace ****/
+		%feature("compactdefaultargs") EventTime;
+		%feature("autodoc", "Return event time (e.g. current time).
+
+Returns
+-------
+double
+") EventTime;
+		double EventTime();
+
+		/****************** Get3dMouseIsNoRotate ******************/
+		/**** md5 signature: ae14b65261c4d2a6b12679cc1f5c5ed4 ****/
+		%feature("compactdefaultargs") Get3dMouseIsNoRotate;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Get3dMouseIsNoRotate;
+		const NCollection_Vec3<bool> & Get3dMouseIsNoRotate();
+
+		/****************** Get3dMouseRotationScale ******************/
+		/**** md5 signature: 6e7927184907412546b0e3bf5c131f00 ****/
+		%feature("compactdefaultargs") Get3dMouseRotationScale;
+		%feature("autodoc", "Return acceleration ratio for rotation event; 4.0 by default.
+
+Returns
+-------
+float
+") Get3dMouseRotationScale;
+		float Get3dMouseRotationScale();
+
+		/****************** Get3dMouseToReverse ******************/
+		/**** md5 signature: a365f1e9e4397aece1eb44aa7383f6d5 ****/
+		%feature("compactdefaultargs") Get3dMouseToReverse;
+		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
+
+Returns
+-------
+NCollection_Vec3<bool>
+") Get3dMouseToReverse;
+		const NCollection_Vec3<bool> & Get3dMouseToReverse();
+
+		/****************** Get3dMouseTranslationScale ******************/
+		/**** md5 signature: f426a4558b5227de61530d9d20b93e7e ****/
+		%feature("compactdefaultargs") Get3dMouseTranslationScale;
+		%feature("autodoc", "Return acceleration ratio for translation event; 2.0 by default.
+
+Returns
+-------
+float
+") Get3dMouseTranslationScale;
+		float Get3dMouseTranslationScale();
+
+		/****************** HasTouchPoints ******************/
+		/**** md5 signature: f6532233e79841283a6d00ea2e7477d5 ****/
+		%feature("compactdefaultargs") HasTouchPoints;
+		%feature("autodoc", "Return true if touches map is not empty.
+
+Returns
+-------
+bool
+") HasTouchPoints;
+		bool HasTouchPoints();
+
+		/****************** KeyDown ******************/
+		/**** md5 signature: 5192d78be0f66dc0b2cf998103ed19af ****/
+		%feature("compactdefaultargs") KeyDown;
+		%feature("autodoc", "Press key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
+
+Parameters
+----------
+theKey: Aspect_VKey
+theTime: double
+thePressure: double,optional
+	default value is 1.0
+
+Returns
+-------
+None
+") KeyDown;
+		virtual void KeyDown(Aspect_VKey theKey, double theTime, double thePressure = 1.0);
+
+		/****************** KeyFromAxis ******************/
+		/**** md5 signature: a8592c856484d5ea635556005b4dbf66 ****/
+		%feature("compactdefaultargs") KeyFromAxis;
+		%feature("autodoc", "Simulate key up/down events from axis value. default implementation updates internal cache.
+
+Parameters
+----------
+theNegative: Aspect_VKey
+thePositive: Aspect_VKey
+theTime: double
+thePressure: double
+
+Returns
+-------
+None
+") KeyFromAxis;
+		virtual void KeyFromAxis(Aspect_VKey theNegative, Aspect_VKey thePositive, double theTime, double thePressure);
+
+		/****************** KeyUp ******************/
+		/**** md5 signature: facf026fe52d5d68e622d779a08b26c3 ****/
+		%feature("compactdefaultargs") KeyUp;
+		%feature("autodoc", "Release key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
+
+Parameters
+----------
+theKey: Aspect_VKey
+theTime: double
+
+Returns
+-------
+None
+") KeyUp;
+		virtual void KeyUp(Aspect_VKey theKey, double theTime);
+
+		/****************** Keys ******************/
+		/**** md5 signature: 71088904ae13bced99cf6e1155c58478 ****/
+		%feature("compactdefaultargs") Keys;
+		%feature("autodoc", "Return keyboard state.
+
+Returns
+-------
+Aspect_VKeySet
+") Keys;
+		const Aspect_VKeySet & Keys();
+
+		/****************** LastMouseFlags ******************/
+		/**** md5 signature: 891e38e0b645d78e87ef09c802ac2d63 ****/
+		%feature("compactdefaultargs") LastMouseFlags;
+		%feature("autodoc", "Return active key modifiers passed with last mouse event.
+
+Returns
+-------
+Aspect_VKeyFlags
+") LastMouseFlags;
+		Aspect_VKeyFlags LastMouseFlags();
+
+		/****************** LastMousePosition ******************/
+		/**** md5 signature: 69040771a57339f922c8a0c6021122bb ****/
+		%feature("compactdefaultargs") LastMousePosition;
+		%feature("autodoc", "Return last mouse position.
+
+Returns
+-------
+Graphic3d_Vec2i
+") LastMousePosition;
+		const Graphic3d_Vec2i & LastMousePosition();
+
+		/****************** PressMouseButton ******************/
+		/**** md5 signature: 3011ceaa0add6213ae689425180a9aab ****/
+		%feature("compactdefaultargs") PressMouseButton;
+		%feature("autodoc", "Handle mouse button press event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton pressed button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
+
+Parameters
+----------
+thePoint: Graphic3d_Vec2i
+theButton: Aspect_VKeyMouse
+theModifiers: Aspect_VKeyFlags
+theIsEmulated: bool
+
+Returns
+-------
+bool
+") PressMouseButton;
+		bool PressMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
+
+		/****************** PressedMouseButtons ******************/
+		/**** md5 signature: 28ea733557be0052235dc8a7fe3ed119 ****/
+		%feature("compactdefaultargs") PressedMouseButtons;
+		%feature("autodoc", "Return currently pressed mouse buttons.
+
+Returns
+-------
+Aspect_VKeyMouse
+") PressedMouseButtons;
+		Aspect_VKeyMouse PressedMouseButtons();
+
+		/****************** ProcessClose ******************/
+		/**** md5 signature: 59654ad0d3a6816d4daa90e13a580cde ****/
+		%feature("compactdefaultargs") ProcessClose;
+		%feature("autodoc", "Handle window close event.
+
+Returns
+-------
+None
+") ProcessClose;
+		virtual void ProcessClose();
+
+		/****************** ProcessConfigure ******************/
+		/**** md5 signature: ca30e387334b4284a619ea054d2c8c75 ****/
+		%feature("compactdefaultargs") ProcessConfigure;
+		%feature("autodoc", "Handle window resize event.
+
+Parameters
+----------
+theIsResized: bool
+
+Returns
+-------
+None
+") ProcessConfigure;
+		virtual void ProcessConfigure(bool theIsResized);
+
+		/****************** ProcessExpose ******************/
+		/**** md5 signature: f597030918979508d41a1535a55a52da ****/
+		%feature("compactdefaultargs") ProcessExpose;
+		%feature("autodoc", "Handle expose event (window content has been invalidation and should be redrawn).
+
+Returns
+-------
+None
+") ProcessExpose;
+		virtual void ProcessExpose();
+
+		/****************** ProcessFocus ******************/
+		/**** md5 signature: 62ed591bdb7901b7386a340b9d7b2f9b ****/
+		%feature("compactdefaultargs") ProcessFocus;
+		%feature("autodoc", "Handle focus event.
+
+Parameters
+----------
+theIsActivated: bool
+
+Returns
+-------
+None
+") ProcessFocus;
+		virtual void ProcessFocus(bool theIsActivated);
+
+		/****************** ProcessInput ******************/
+		/**** md5 signature: 25eccaa30cc27b2a88e167899d319730 ****/
+		%feature("compactdefaultargs") ProcessInput;
+		%feature("autodoc", "Handle window input event immediately (flush input buffer or ignore).
+
+Returns
+-------
+None
+") ProcessInput;
+		virtual void ProcessInput();
+
+		/****************** ReleaseMouseButton ******************/
+		/**** md5 signature: a9b43da8768564266828a78fde53802f ****/
+		%feature("compactdefaultargs") ReleaseMouseButton;
+		%feature("autodoc", "Handle mouse button release event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton released button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
+
+Parameters
+----------
+thePoint: Graphic3d_Vec2i
+theButton: Aspect_VKeyMouse
+theModifiers: Aspect_VKeyFlags
+theIsEmulated: bool
+
+Returns
+-------
+bool
+") ReleaseMouseButton;
+		bool ReleaseMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
+
+		/****************** RemoveTouchPoint ******************/
+		/**** md5 signature: 45c3401339716ca58b815f7e44a3d196 ****/
+		%feature("compactdefaultargs") RemoveTouchPoint;
+		%feature("autodoc", "Remove touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param theclearselectpnts if true will initiate clearing of selection points returns true if point has been removed.
+
+Parameters
+----------
+theId: Standard_Size
+theClearSelectPnts: bool,optional
+	default value is false
+
+Returns
+-------
+bool
+") RemoveTouchPoint;
+		virtual bool RemoveTouchPoint(Standard_Size theId, Standard_Boolean theClearSelectPnts = false);
+
+		/****************** Set3dMousePreciseInput ******************/
+		/**** md5 signature: 0ff4172c7dce21c124fb3941d21634cd ****/
+		%feature("compactdefaultargs") Set3dMousePreciseInput;
+		%feature("autodoc", "Set quadric acceleration flag.
+
+Parameters
+----------
+theIsQuadric: bool
+
+Returns
+-------
+None
+") Set3dMousePreciseInput;
+		void Set3dMousePreciseInput(bool theIsQuadric);
+
+		/****************** Set3dMouseRotationScale ******************/
+		/**** md5 signature: 26cc1d3413bc1ed0806210cb74503bf8 ****/
+		%feature("compactdefaultargs") Set3dMouseRotationScale;
+		%feature("autodoc", "Set acceleration ratio for rotation event.
+
+Parameters
+----------
+theScale: float
+
+Returns
+-------
+None
+") Set3dMouseRotationScale;
+		void Set3dMouseRotationScale(float theScale);
+
+		/****************** Set3dMouseTranslationScale ******************/
+		/**** md5 signature: d66cf6c87510f4cf28118e77235f6dc1 ****/
+		%feature("compactdefaultargs") Set3dMouseTranslationScale;
+		%feature("autodoc", "Set acceleration ratio for translation event.
+
+Parameters
+----------
+theScale: float
+
+Returns
+-------
+None
+") Set3dMouseTranslationScale;
+		void Set3dMouseTranslationScale(float theScale);
+
+		/****************** To3dMousePreciseInput ******************/
+		/**** md5 signature: e7d1cbbce6f739652fb2dcffebfdc574 ****/
+		%feature("compactdefaultargs") To3dMousePreciseInput;
+		%feature("autodoc", "Return quadric acceleration flag; true by default.
+
+Returns
+-------
+bool
+") To3dMousePreciseInput;
+		bool To3dMousePreciseInput();
+
+		/****************** TouchPoints ******************/
+		/**** md5 signature: aae5a0777c45c41be0cc42d98cb8d6a5 ****/
+		%feature("compactdefaultargs") TouchPoints;
+		%feature("autodoc", "Return map of active touches.
+
+Returns
+-------
+Aspect_TouchMap
+") TouchPoints;
+		const Aspect_TouchMap & TouchPoints();
+
+		/****************** Update3dMouse ******************/
+		/**** md5 signature: 989c941c2b66167e2e5fa84999e81fe3 ****/
+		%feature("compactdefaultargs") Update3dMouse;
+		%feature("autodoc", "Process 3d mouse input event (redirects to translation, rotation and keys).
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") Update3dMouse;
+		virtual bool Update3dMouse(const WNT_HIDSpaceMouse & theEvent);
+
+		/****************** UpdateMouseButtons ******************/
+		/**** md5 signature: 344a32c08e48df63d66f82e75f14f4ac ****/
+		%feature("compactdefaultargs") UpdateMouseButtons;
+		%feature("autodoc", "Handle mouse button press/release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
+
+Parameters
+----------
+thePoint: Graphic3d_Vec2i
+theButtons: Aspect_VKeyMouse
+theModifiers: Aspect_VKeyFlags
+theIsEmulated: bool
+
+Returns
+-------
+bool
+") UpdateMouseButtons;
+		virtual bool UpdateMouseButtons(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
+
+		/****************** UpdateMousePosition ******************/
+		/**** md5 signature: 217f410d7de77f6f79b905cc2f67eaf4 ****/
+		%feature("compactdefaultargs") UpdateMousePosition;
+		%feature("autodoc", "Handle mouse cursor movement event. this method is expected to be called from ui thread. default implementation does nothing. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
+
+Parameters
+----------
+thePoint: Graphic3d_Vec2i
+theButtons: Aspect_VKeyMouse
+theModifiers: Aspect_VKeyFlags
+theIsEmulated: bool
+
+Returns
+-------
+bool
+") UpdateMousePosition;
+		virtual bool UpdateMousePosition(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
+
+		/****************** UpdateMouseScroll ******************/
+		/**** md5 signature: 33a1d2af16e7dcdaa2ec2c0ec68a7748 ****/
+		%feature("compactdefaultargs") UpdateMouseScroll;
+		%feature("autodoc", "Update mouse scroll event. this method is expected to be called from ui thread. @param thedelta mouse cursor position and delta returns true if new event has been created or false if existing one has been updated.
+
+Parameters
+----------
+theDelta: Aspect_ScrollDelta
+
+Returns
+-------
+bool
+") UpdateMouseScroll;
+		virtual bool UpdateMouseScroll(const Aspect_ScrollDelta & theDelta);
+
+		/****************** UpdateTouchPoint ******************/
+		/**** md5 signature: 32b5b3a5782487b44b49157cf52c6e04 ****/
+		%feature("compactdefaultargs") UpdateTouchPoint;
+		%feature("autodoc", "Update touch point with the given id. if point with specified id was not registered before, it will be added. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates.
+
+Parameters
+----------
+theId: Standard_Size
+thePnt: Graphic3d_Vec2d
+
+Returns
+-------
+None
+") UpdateTouchPoint;
+		virtual void UpdateTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt);
+
+		/****************** update3dMouseKeys ******************/
+		/**** md5 signature: 7068d4e0858b2659de00f111094ecc7f ****/
+		%feature("compactdefaultargs") update3dMouseKeys;
+		%feature("autodoc", "Process 3d mouse input keys event.
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") update3dMouseKeys;
+		virtual bool update3dMouseKeys(const WNT_HIDSpaceMouse & theEvent);
+
+		/****************** update3dMouseRotation ******************/
+		/**** md5 signature: 0e88dd09859b6f02e48c9b73ec73f69b ****/
+		%feature("compactdefaultargs") update3dMouseRotation;
+		%feature("autodoc", "Process 3d mouse input rotation event.
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") update3dMouseRotation;
+		virtual bool update3dMouseRotation(const WNT_HIDSpaceMouse & theEvent);
+
+		/****************** update3dMouseTranslation ******************/
+		/**** md5 signature: c826319c70a567fbe2c3401c0a5c2471 ****/
+		%feature("compactdefaultargs") update3dMouseTranslation;
+		%feature("autodoc", "Process 3d mouse input translation event.
+
+Parameters
+----------
+theEvent: WNT_HIDSpaceMouse
+
+Returns
+-------
+bool
+") update3dMouseTranslation;
+		virtual bool update3dMouseTranslation(const WNT_HIDSpaceMouse & theEvent);
+
+};
+
+
+%extend Aspect_WindowInputListener {
+	%pythoncode {
+	__repr__ = _dumps_object
 	}
 };
 
@@ -2588,7 +3254,7 @@ enum InfoString {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class TrackingUniverseOrigin(IntEnum):
@@ -3098,7 +3764,7 @@ class Aspect_GradientBackground : public Aspect_Background {
 		/****************** Aspect_GradientBackground ******************/
 		/**** md5 signature: 2a3b12e3984621a36868307403d00696 ****/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "Creates a window gradient background. default colors : quantity_noc_black. default fill method : aspect_gfm_none.
+		%feature("autodoc", "Creates a window gradient background. default color is quantity_noc_black. default fill method is aspect_gradientfillmethod_none.
 
 Returns
 -------
@@ -3107,22 +3773,22 @@ None
 		 Aspect_GradientBackground();
 
 		/****************** Aspect_GradientBackground ******************/
-		/**** md5 signature: a6f68c9f1a0e9cb605f0a1cfca9bada3 ****/
+		/**** md5 signature: 85f06b5f3ce72c2ed98cd0a1aa2d2a99 ****/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "Creates a window gradient background with colours <acolor1, acolor2>.
+		%feature("autodoc", "Creates a window gradient background with two colours.
 
 Parameters
 ----------
-AColor1: Quantity_Color
-AColor2: Quantity_Color
-AMethod: Aspect_GradientFillMethod,optional
-	default value is Aspect_GFM_HOR
+theColor1: Quantity_Color
+theColor2: Quantity_Color
+theMethod: Aspect_GradientFillMethod,optional
+	default value is Aspect_GradientFillMethod_Horizontal
 
 Returns
 -------
 None
 ") Aspect_GradientBackground;
-		 Aspect_GradientBackground(const Quantity_Color & AColor1, const Quantity_Color & AColor2, const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
+		 Aspect_GradientBackground(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal);
 
 		/****************** BgGradientFillMethod ******************/
 		/**** md5 signature: 7ed50907542306114d5e90acbea724cc ****/
@@ -3136,20 +3802,20 @@ Aspect_GradientFillMethod
 		Aspect_GradientFillMethod BgGradientFillMethod();
 
 		/****************** Colors ******************/
-		/**** md5 signature: 1f444dae8ef6192a952d97253320da63 ****/
+		/**** md5 signature: 2e3f4d55b92b83e682d47f9e5901fc34 ****/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "Returns colours of the window gradient background <self>.
+		%feature("autodoc", "Returns colours of the window gradient background.
 
 Parameters
 ----------
-AColor1: Quantity_Color
-AColor2: Quantity_Color
+theColor1: Quantity_Color
+theColor2: Quantity_Color
 
 Returns
 -------
 None
 ") Colors;
-		void Colors(Quantity_Color & AColor1, Quantity_Color & AColor2);
+		void Colors(Quantity_Color & theColor1, Quantity_Color & theColor2);
 
 
             %feature("autodoc", "1");
@@ -3160,22 +3826,22 @@ None
                 return s.str();}
             };
 		/****************** SetColors ******************/
-		/**** md5 signature: e9d1a160fb9ca8b15bcaf9ca8e97b5f0 ****/
+		/**** md5 signature: ca78c9c4d4c2f941b5264058f8f3157f ****/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "Modifies the colours of the window gradient background <self>.
+		%feature("autodoc", "Modifies the colours of the window gradient background.
 
 Parameters
 ----------
-AColor1: Quantity_Color
-AColor2: Quantity_Color
-AMethod: Aspect_GradientFillMethod,optional
-	default value is Aspect_GFM_HOR
+theColor1: Quantity_Color
+theColor2: Quantity_Color
+theMethod: Aspect_GradientFillMethod,optional
+	default value is Aspect_GradientFillMethod_Horizontal
 
 Returns
 -------
 None
 ") SetColors;
-		void SetColors(const Quantity_Color & AColor1, const Quantity_Color & AColor2, const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
+		void SetColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal);
 
 };
 

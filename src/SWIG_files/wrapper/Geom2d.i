@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DDOCSTRING
 "Geom2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2d.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DDOCSTRING) Geom2d
 
@@ -66,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -282,7 +282,7 @@ opencascade::handle<Geom2d_Geometry>
 		/****************** Translate ******************/
 		/**** md5 signature: 1cd2e000b85692a9f89a6bf8e8e4782c ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "Translates a geometry. v is the vector of the tanslation.
+		%feature("autodoc", "Translates a geometry. v is the vector of the translation.
 
 Parameters
 ----------
@@ -408,7 +408,7 @@ gp_TrsfForm
 		/****************** Invert ******************/
 		/**** md5 signature: 980f166f600d23a8c77565829af2eeff ****/
 		%feature("compactdefaultargs") Invert;
-		%feature("autodoc", "Computes the inverse of this transformation. and assigns the result to this transformatio //! raised if the the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
+		%feature("autodoc", "Computes the inverse of this transformation. and assigns the result to this transformatio //! raised if the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
 
 Returns
 -------
@@ -419,7 +419,7 @@ None
 		/****************** Inverted ******************/
 		/**** md5 signature: ac7792d594b6e5d63f643761efff806c ****/
 		%feature("compactdefaultargs") Inverted;
-		%feature("autodoc", "Computes the inverse of this transformation and creates a new one. raises constructionerror if the the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
+		%feature("autodoc", "Computes the inverse of this transformation and creates a new one. raises constructionerror if the transformation is singular. this means that the scalefactor is lower or equal to resolution from package gp.
 
 Returns
 -------
@@ -692,7 +692,7 @@ gp_Trsf2d
 		/****************** Value ******************/
 		/**** md5 signature: 1f17b21423db514e298b820a9dd11211 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns the coefficients of the global matrix of tranformation. it is a 2 rows x 3 columns matrix. //! raised if row < 1 or row > 2 or col < 1 or col > 2 //! computes the reverse transformation.
+		%feature("autodoc", "Returns the coefficients of the global matrix of transformation. it is a 2 rows x 3 columns matrix. //! raised if row < 1 or row > 2 or col < 1 or col > 2 //! computes the reverse transformation.
 
 Parameters
 ----------
@@ -1070,7 +1070,7 @@ bool
 		/****************** IsClosed ******************/
 		/**** md5 signature: be44ba5ab9beeb7f60f33a5068f1446b ****/
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "Returns true if the curve is closed. examples : some curves such as circle are always closed, others such as line are never closed (by definition). some curves such as offsetcurve can be closed or not. these curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the resolution from package gp wich is a fixed criterion independant of the application.
+		%feature("autodoc", "Returns true if the curve is closed. examples : some curves such as circle are always closed, others such as line are never closed (by definition). some curves such as offsetcurve can be closed or not. these curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the resolution from package gp which is a fixed criterion independent of the application.
 
 Returns
 -------
@@ -1118,7 +1118,7 @@ float
 		/****************** Period ******************/
 		/**** md5 signature: e4913c399f3a0a7037e498c5a9da8e1f ****/
 		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "Returns thne period of this curve. raises if the curve is not periodic.
+		%feature("autodoc", "Returns the period of this curve. raises if the curve is not periodic.
 
 Returns
 -------
@@ -3284,7 +3284,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		/****************** Geom2d_BSplineCurve ******************/
 		/**** md5 signature: 11a20905aef4367dd31844768a3e3683 ****/
 		%feature("compactdefaultargs") Geom2d_BSplineCurve;
-		%feature("autodoc", "Creates a non-rational b_spline curve on the basis <knots, multiplicities> of degree <degree>. the following conditions must be verified. 0 < degree <= maxdegree. //! knots.length() == mults.length() >= 2 //! knots(i) < knots(i+1) (knots are increasing) //! 1 <= mults(i) <= degree //! on a non periodic curve the first and last multiplicities may be degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). //! on a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! poles.length() == sum(mults(i)) - degree - 1 >= 2 //! on periodic curves //! poles.length() == sum(mults(i)) except the first or last.
+		%feature("autodoc", "Creates a non-rational b_spline curve on the basis <knots, multiplicities> of degree <degree>. the following conditions must be verified. 0 < degree <= maxdegree. //! knots.length() == mults.length() >= 2 //! knots(i) < knots(i+1) (knots are increasing) //! 1 <= mults(i) <= degree //! on a non periodic curve the first and last multiplicities may be degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! on a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! poles.length() == sum(mults(i)) - degree - 1 >= 2 //! on periodic curves //! poles.length() == sum(mults(i)) except the first or last.
 
 Parameters
 ----------
@@ -3304,7 +3304,7 @@ None
 		/****************** Geom2d_BSplineCurve ******************/
 		/**** md5 signature: bfc846dbbd0da2db80352d8b9059ba5b ****/
 		%feature("compactdefaultargs") Geom2d_BSplineCurve;
-		%feature("autodoc", "Creates a rational b_spline curve on the basis <knots, multiplicities> of degree <degree>. the following conditions must be verified. 0 < degree <= maxdegree. //! knots.length() == mults.length() >= 2 //! knots(i) < knots(i+1) (knots are increasing) //! 1 <= mults(i) <= degree //! on a non periodic curve the first and last multiplicities may be degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). //! on a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! poles.length() == sum(mults(i)) - degree - 1 >= 2 //! on periodic curves //! poles.length() == sum(mults(i)) except the first or last.
+		%feature("autodoc", "Creates a rational b_spline curve on the basis <knots, multiplicities> of degree <degree>. the following conditions must be verified. 0 < degree <= maxdegree. //! knots.length() == mults.length() >= 2 //! knots(i) < knots(i+1) (knots are increasing) //! 1 <= mults(i) <= degree //! on a non periodic curve the first and last multiplicities may be degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! on a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! poles.length() == sum(mults(i)) - degree - 1 >= 2 //! on periodic curves //! poles.length() == sum(mults(i)) except the first or last.
 
 Parameters
 ----------
@@ -3651,7 +3651,7 @@ bool
 		/****************** IsG1 ******************/
 		/**** md5 signature: 9f6daa5a840326c7c14dda9f95a957d1 ****/
 		%feature("compactdefaultargs") IsG1;
-		%feature("autodoc", "Check if curve has at least g1 continuity in interval [thetf, thetl] returns true if iscn(1) or angle betweem 'left' and 'right' first derivatives at knots with c0 continuity is less then theangtol only knots in interval [thetf, thetl] is checked.
+		%feature("autodoc", "Check if curve has at least g1 continuity in interval [thetf, thetl] returns true if iscn(1) or angle between 'left' and 'right' first derivatives at knots with c0 continuity is less then theangtol only knots in interval [thetf, thetl] is checked.
 
 Parameters
 ----------
@@ -3952,7 +3952,7 @@ LastModifiedPole: int
 		/****************** MovePointAndTangent ******************/
 		/**** md5 signature: b6aeba81982b81257d85b0fd1b73a01d ****/
 		%feature("compactdefaultargs") MovePointAndTangent;
-		%feature("autodoc", "Move a point with parameter u to p. and makes it tangent at u be tangent. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enought degree of freedom with the constrain to deform the curve accordingly.
+		%feature("autodoc", "Move a point with parameter u to p. and makes it tangent at u be tangent. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enough degree of freedom with the constrain to deform the curve accordingly.
 
 Parameters
 ----------
@@ -5885,7 +5885,7 @@ gp_Ax2d
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
-		%feature("autodoc", "Returns the excentricity of the hyperbola (e > 1). if f is the distance between the location of the hyperbola and the focus1 then the eccentricity e = f / majorradius. raised if majorradius = 0.0.
+		%feature("autodoc", "Returns the eccentricity of the hyperbola (e > 1). if f is the distance between the location of the hyperbola and the focus1 then the eccentricity e = f / majorradius. raised if majorradius = 0.0.
 
 Returns
 -------

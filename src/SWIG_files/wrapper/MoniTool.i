@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MONITOOLDOCSTRING
 "MoniTool module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_monitool.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_monitool.html"
 %enddef
 %module (package="OCC.Core", docstring=MONITOOLDOCSTRING) MoniTool
 
@@ -84,7 +84,7 @@ enum MoniTool_ValueType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class MoniTool_ValueType(IntEnum):
@@ -835,7 +835,7 @@ bool
 		/****************** Kind ******************/
 		/**** md5 signature: 240ee38bbdcd2cdfc62382e178aee32c ****/
 		%feature("compactdefaultargs") Kind;
-		%feature("autodoc", "Returns the kind of a data : kind type meaning 0 any any (not one of the followings) 1 ex raised exception 2 en entity 3 g geom 4 sh shape 5 xyz xyz 6 xy or uv xy 7 rr 2 reals 8 r 1 real 9 cpu cpu (1 real) 10 t text 11 i integer //! for namenum, these codes for type must be given exact i.e. sh for a shape, not s nor shape nor solid etc.
+		%feature("autodoc", "Returns the kind of a data : kind type meaning 0 any any (not one of the following) 1 ex raised exception 2 en entity 3 g geom 4 sh shape 5 xyz xyz 6 xy or uv xy 7 rr 2 reals 8 r 1 real 9 cpu cpu (1 real) 10 t text 11 i integer //! for namenum, these codes for type must be given exact i.e. sh for a shape, not s nor shape nor solid etc.
 
 Parameters
 ----------
@@ -905,7 +905,7 @@ TCollection_AsciiString
 		/****************** NameNum ******************/
 		/**** md5 signature: 1d3a907e11739d5a6bd945884af12849 ****/
 		%feature("compactdefaultargs") NameNum;
-		%feature("autodoc", "Returns the first suitable data rank for a given name exact maching (exact case, no completion) is required firstly checks the recorded names if not found, considers the name as follows : name = 'type' : search for the first item with this type name = 'type:nn' : search for the nn.th item with this type see allowed values in method kind.
+		%feature("autodoc", "Returns the first suitable data rank for a given name exact matching (exact case, no completion) is required firstly checks the recorded names if not found, considers the name as follows : name = 'type' : search for the first item with this type name = 'type:nn' : search for the nn.th item with this type see allowed values in method kind.
 
 Parameters
 ----------
@@ -1293,7 +1293,7 @@ MoniTool_AttrList
 		/****************** Equates ******************/
 		/**** md5 signature: 1e903a4f175e33c1a9f161e9ea07b5f3 ****/
 		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "Specific testof equallity : to be defined by each sub-class, must be false if elements have not the same true type, else their contents must be compared.
+		%feature("autodoc", "Specific testof equality : to be defined by each sub-class, must be false if elements have not the same true type, else their contents must be compared.
 
 Parameters
 ----------
@@ -1616,7 +1616,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: f3fab2c5142a08a50b9a3023611b3ad1 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Directly addes items.
+		%feature("autodoc", "Directly adds items.
 
 Parameters
 ----------
@@ -2210,7 +2210,7 @@ TCollection_AsciiString
 		/****************** EnumCase ******************/
 		/**** md5 signature: 62406df61445d184caa1d6ed239fe6a3 ****/
 		%feature("compactdefaultargs") EnumCase;
-		%feature("autodoc", "Returns the case number which cooresponds to a string value works with main and additionnal values returns (startenum - 1) if not ok, -1 if not an enum.
+		%feature("autodoc", "Returns the case number which corresponds to a string value works with main and additional values returns (startenum - 1) if not ok, -1 if not an enum.
 
 Parameters
 ----------
@@ -2721,7 +2721,7 @@ bool
 		/****************** SetSatisfies ******************/
 		/**** md5 signature: 10cbef7ca241ca4eed214bb6602da3f0 ****/
 		%feature("compactdefaultargs") SetSatisfies;
-		%feature("autodoc", "Sets a specific satisfies function : it is added to the already defined criteria it must match the form : statisfies (val : hasciistring) returns boolean.
+		%feature("autodoc", "Sets a specific satisfies function : it is added to the already defined criteria it must match the form : satisfies (val : hasciistring) returns boolean.
 
 Parameters
 ----------
@@ -2892,7 +2892,7 @@ None
 		/****************** Equates ******************/
 		/**** md5 signature: 37e72bdf003bc234f02a6795d9820def ****/
 		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "Specific testof equallity : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+		%feature("autodoc", "Specific testof equality : defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
 
 Parameters
 ----------

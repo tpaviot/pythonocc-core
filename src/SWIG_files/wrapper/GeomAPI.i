@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMAPIDOCSTRING
 "GeomAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomapi.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomapi.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMAPIDOCSTRING) GeomAPI
 
@@ -79,7 +79,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -253,6 +253,17 @@ Returns
 None
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
+
+		/****************** IsParallel ******************/
+		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if the two curves are parallel.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
 
 		/****************** LowerDistance ******************/
 		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
@@ -509,6 +520,17 @@ None
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Wmin, const Standard_Real Wmax, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
 
+		/****************** IsParallel ******************/
+		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if the curve is on a parallel surface.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
+
 		/****************** LowerDistance ******************/
 		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
 		%feature("compactdefaultargs") LowerDistance;
@@ -727,6 +749,17 @@ Returns
 None
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real V1min, const Standard_Real V1max, const Standard_Real U2min, const Standard_Real U2max, const Standard_Real V2min, const Standard_Real V2max);
+
+		/****************** IsParallel ******************/
+		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if the surfaces are parallel.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
 
 		/****************** LowerDistance ******************/
 		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/

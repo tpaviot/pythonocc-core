@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMFILLDOCSTRING
 "GeomFill module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomfill.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomfill.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMFILLDOCSTRING) GeomFill
 
@@ -120,7 +120,7 @@ enum GeomFill_PipeError {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class GeomFill_ApproxStyle(IntEnum):
@@ -178,6 +178,7 @@ GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
 %wrap_handle(GeomFill_Line)
 %wrap_handle(GeomFill_LocationLaw)
 %wrap_handle(GeomFill_SectionLaw)
+%wrap_handle(GeomFill_SnglrFunc)
 %wrap_handle(GeomFill_SweepFunction)
 %wrap_handle(GeomFill_TgtField)
 %wrap_handle(GeomFill_TrihedronLaw)
@@ -1948,15 +1949,15 @@ gp_Pnt
 class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	public:
 		/****************** GeomFill_CircularBlendFunc ******************/
-		/**** md5 signature: bafdd660219fe39f80e3292e9c6aa0f4 ****/
+		/**** md5 signature: 83f6c8e8a78d3d9b9d1c32c9733c80f7 ****/
 		%feature("compactdefaultargs") GeomFill_CircularBlendFunc;
 		%feature("autodoc", "Create a blend with a constant radius with 2 guide-line. <fshape> sets the type of fillet surface. the -- default value is convert_tgtthetaover2 (classical -- nurbs -- representation of circles). chfi3d_quasiangular -- corresponds to a nurbs representation of circles -- which parameterisation matches the circle one. -- chfi3d_polynomial corresponds to a polynomial -- representation of circles.
 
 Parameters
 ----------
-Path: Adaptor3d_HCurve
-Curve1: Adaptor3d_HCurve
-Curve2: Adaptor3d_HCurve
+Path: Adaptor3d_Curve
+Curve1: Adaptor3d_Curve
+Curve2: Adaptor3d_Curve
 Radius: float
 Polynomial: bool,optional
 	default value is Standard_False
@@ -1965,12 +1966,12 @@ Returns
 -------
 None
 ") GeomFill_CircularBlendFunc;
-		 GeomFill_CircularBlendFunc(const opencascade::handle<Adaptor3d_HCurve> & Path, const opencascade::handle<Adaptor3d_HCurve> & Curve1, const opencascade::handle<Adaptor3d_HCurve> & Curve2, const Standard_Real Radius, const Standard_Boolean Polynomial = Standard_False);
+		 GeomFill_CircularBlendFunc(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius, const Standard_Boolean Polynomial = Standard_False);
 
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation.
 
 Returns
 -------
@@ -2050,7 +2051,7 @@ bool
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections. this information is useful to perform well conditioned rational approximation.
 
 Parameters
 ----------
@@ -2083,7 +2084,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2125,7 +2126,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the maximum section. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Returns the length of the maximum section. this information is useful to perform well conditioned rational approximation.
 
 Returns
 -------
@@ -2398,7 +2399,7 @@ None
 		/****************** SetDomain ******************/
 		/**** md5 signature: f15e2b06830a710fdf8f11f792509cfd ****/
 		%feature("compactdefaultargs") SetDomain;
-		%feature("autodoc", "Allows to modify domain on witch the blending function associated to the constrained boundary b will propag the influence of the field of tangency. can be usefull to reduce influence of boundaries on whitch the coons compatibility conditions are not respected. l is a relative value of the parametric range of b. default value for l is 1 (used in init). warning: must be called after init with a constrained boundary used in the call to init.
+		%feature("autodoc", "Allows to modify domain on witch the blending function associated to the constrained boundary b will propag the influence of the field of tangency. can be useful to reduce influence of boundaries on which the coons compatibility conditions are not respected. l is a relative value of the parametric range of b. default value for l is 1 (used in init). warning: must be called after init with a constrained boundary used in the call to init.
 
 Parameters
 ----------
@@ -2854,29 +2855,29 @@ bool
 class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** GeomFill_FunctionDraft ******************/
-		/**** md5 signature: 178271c5b9c2baec39e6e9142ced9d7f ****/
+		/**** md5 signature: e0b75f20f9ca33331d77d2796abf9e26 ****/
 		%feature("compactdefaultargs") GeomFill_FunctionDraft;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomFill_FunctionDraft;
-		 GeomFill_FunctionDraft(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 GeomFill_FunctionDraft(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Deriv2T ******************/
-		/**** md5 signature: 296f64e4925be19b19e0a50ae54545cf ****/
+		/**** md5 signature: ed865b0d80ade12a428d221ca18ba8bf ****/
 		%feature("compactdefaultargs") Deriv2T;
 		%feature("autodoc", "Returns the values <f> of the t2 derivatives for the parameter param .
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 Param: float
 W: float
 d2N: gp_Vec
@@ -2887,7 +2888,7 @@ Returns
 -------
 bool
 ") Deriv2T;
-		Standard_Boolean Deriv2T(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & d2N, const Standard_Real teta, math_Vector & F);
+		Standard_Boolean Deriv2T(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & d2N, const Standard_Real teta, math_Vector & F);
 
 		/****************** Deriv2X ******************/
 		/**** md5 signature: 3717235c7a0694bb0026f224747d3335 ****/
@@ -2906,13 +2907,13 @@ bool
 		Standard_Boolean Deriv2X(const math_Vector & X, GeomFill_Tensor & T);
 
 		/****************** DerivT ******************/
-		/**** md5 signature: 4d36763de463ed3975bad9df69ce4b17 ****/
+		/**** md5 signature: 009f827b0251fad55638995d4292a3f9 ****/
 		%feature("compactdefaultargs") DerivT;
 		%feature("autodoc", "Returns the values <f> of the t derivatives for the parameter param .
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 Param: float
 W: float
 dN: gp_Vec
@@ -2923,7 +2924,7 @@ Returns
 -------
 bool
 ") DerivT;
-		Standard_Boolean DerivT(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & dN, const Standard_Real teta, math_Vector & F);
+		Standard_Boolean DerivT(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & dN, const Standard_Real teta, math_Vector & F);
 
 		/****************** DerivTX ******************/
 		/**** md5 signature: 364759ce3f6d1a901ce6394ecbbe5652 ****/
@@ -3028,14 +3029,14 @@ bool
 class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** GeomFill_FunctionGuide ******************/
-		/**** md5 signature: c0add4de311a84100121077f637a58d1 ****/
+		/**** md5 signature: 126009e7c37512c316697b8b2d32329a ****/
 		%feature("compactdefaultargs") GeomFill_FunctionGuide;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 S: GeomFill_SectionLaw
-Guide: Adaptor3d_HCurve
+Guide: Adaptor3d_Curve
 ParamOnLaw: float,optional
 	default value is 0.0
 
@@ -3043,7 +3044,7 @@ Returns
 -------
 None
 ") GeomFill_FunctionGuide;
-		 GeomFill_FunctionGuide(const opencascade::handle<GeomFill_SectionLaw> & S, const opencascade::handle<Adaptor3d_HCurve> & Guide, const Standard_Real ParamOnLaw = 0.0);
+		 GeomFill_FunctionGuide(const opencascade::handle<GeomFill_SectionLaw> & S, const opencascade::handle<Adaptor3d_Curve> & Guide, const Standard_Real ParamOnLaw = 0.0);
 
 		/****************** DerivT ******************/
 		/**** md5 signature: 8497a0e1c79d28b9784f7f110d8384d9 ****/
@@ -3387,7 +3388,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 86f0d1b0166d91c445bbc4baeef97928 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -3408,7 +3409,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: b8394f0997756eb2e29dda1a7f0fba5e ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -3457,15 +3458,15 @@ None
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: 4a1ef3d9ce66db54e3e4d47a7b4fc050 ****/
+		/**** md5 signature: 1afa1565b694007fff9dce84f020382d ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		virtual const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****************** GetDomain ******************/
 		/**** md5 signature: cf4b59a00ac748986e419ee48c8333d6 ****/
@@ -3533,7 +3534,7 @@ bool
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -3633,19 +3634,19 @@ None
 		virtual void Rotation(gp_Pnt & Center);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: b1fda43a9cad4ea0461b36c87a954013 ****/
+		/**** md5 signature: 7370f78ae703bcab1430cb6db96778d3 ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ****/
@@ -3666,7 +3667,7 @@ None
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 1565024762efa75936883ee9558fa99d ****/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "Is usefull, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
+		%feature("autodoc", "Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
 
 Parameters
 ----------
@@ -3697,7 +3698,7 @@ None
 		/****************** TraceNumber ******************/
 		/**** md5 signature: d8da584be0a6e10afb5206d653daab74 ****/
 		%feature("compactdefaultargs") TraceNumber;
-		%feature("autodoc", "Give the number of trace (curves 2d wich are not restriction) returns 0 (default implementation).
+		%feature("autodoc", "Give the number of trace (curves 2d which are not restriction) returns 0 (default implementation).
 
 Returns
 -------
@@ -3803,7 +3804,7 @@ None
 		/****************** GeomFill_Pipe ******************/
 		/**** md5 signature: 21e998388a5fd330c89065860278090b ****/
 		%feature("compactdefaultargs") GeomFill_Pipe;
-		%feature("autodoc", "Create a pipe with an evolving section the section evoluate from first to last section.
+		%feature("autodoc", "Create a pipe with an evolving section the section evaluate from first to last section.
 
 Parameters
 ----------
@@ -3820,7 +3821,7 @@ None
 		/****************** GeomFill_Pipe ******************/
 		/**** md5 signature: d33e1011fa11db81b148eb3e78127152 ****/
 		%feature("compactdefaultargs") GeomFill_Pipe;
-		%feature("autodoc", "Create a pipe with n sections the section evoluate from first to last section.
+		%feature("autodoc", "Create a pipe with n sections the section evaluate from first to last section.
 
 Parameters
 ----------
@@ -3852,32 +3853,32 @@ None
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & Curve1, const opencascade::handle<Geom_Curve> & Curve2, const Standard_Real Radius);
 
 		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: bbe271d79f8412ad875968c53c099387 ****/
+		/**** md5 signature: 4530f1063599f6222f5a997daa03b7d8 ****/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "Create a pipe with a constant radius with 2 guide-line.
 
 Parameters
 ----------
-Path: Adaptor3d_HCurve
-Curve1: Adaptor3d_HCurve
-Curve2: Adaptor3d_HCurve
+Path: Adaptor3d_Curve
+Curve1: Adaptor3d_Curve
+Curve2: Adaptor3d_Curve
 Radius: float
 
 Returns
 -------
 None
 ") GeomFill_Pipe;
-		 GeomFill_Pipe(const opencascade::handle<Adaptor3d_HCurve> & Path, const opencascade::handle<Adaptor3d_HCurve> & Curve1, const opencascade::handle<Adaptor3d_HCurve> & Curve2, const Standard_Real Radius);
+		 GeomFill_Pipe(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius);
 
 		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: ad01ec3b93107af5be5d298fb4c00be1 ****/
+		/**** md5 signature: 62a6afc55ea058c5a6fba97090c13c8d ****/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "Create a pipe with a constant section and with 1 guide-line. use the function perform to build the surface. all standard specific cases are detected in order to construct, according to the respective geometric nature of path and the sections, a planar, cylindrical, conical, spherical or toroidal surface, a surface of linear extrusion or a surface of revolution. in the general case, the result is a bspline surface (nurbs) built by approximation of a series of sections where: - the number of sections n is chosen automatically by the algorithm according to the respective geometries of path and the sections. n is greater than or equal to 2; - n points pi (with i in the range [ 1,n ]) are defined at regular intervals along the curve path from its first point to its end point. at each point pi, a coordinate system ti is computed with pi as origin, and with the tangential and normal vectors to path defining two of its coordinate axes. in the case of a pipe with a constant circular section, the first section is a circle of radius radius centered on the origin of path and whose 'z axis' is aligned along the vector tangential to the origin of path. in the case of a pipe with a constant section, the first section is the curve firstsect. in these two cases, the ith section (for values of i greater than 1) is obtained by applying to a copy of this first section the geometric transformation which transforms coordinate system t1 into coordinate system ti. in the case of an evolving section, n-2 intermediate curves si are first computed (if n is greater than 2, and with i in the range [ 2,n-1 ]) whose geometry evolves regularly from the curve s1=firstsect to the curve sn=lastsect. the first section is firstsect, and the ith section (for values of i greater than 1) is obtained by applying to the curve si the geometric transformation which transforms coordinate system t1 into coordinate system ti.
 
 Parameters
 ----------
 Path: Geom_Curve
-Guide: Adaptor3d_HCurve
+Guide: Adaptor3d_Curve
 FirstSect: Geom_Curve
 ByACR: bool
 rotat: bool
@@ -3886,7 +3887,7 @@ Returns
 -------
 None
 ") GeomFill_Pipe;
-		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_HCurve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
+		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
 
 		/****************** ErrorOnSurf ******************/
 		/**** md5 signature: 8f3f314d7b67e1d3eba24c5bbbfc1bbe ****/
@@ -4038,32 +4039,32 @@ None
 		void Init(const opencascade::handle<Geom_Curve> & Path, const TColGeom_SequenceOfCurve & NSections);
 
 		/****************** Init ******************/
-		/**** md5 signature: 6b8c033e7f0e709d08fa123d51eebb91 ****/
+		/**** md5 signature: 12794c57e4e9e1d3f57a21a8225d0fc9 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Create a pipe with a constant radius with 2 guide-line.
 
 Parameters
 ----------
-Path: Adaptor3d_HCurve
-Curve1: Adaptor3d_HCurve
-Curve2: Adaptor3d_HCurve
+Path: Adaptor3d_Curve
+Curve1: Adaptor3d_Curve
+Curve2: Adaptor3d_Curve
 Radius: float
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Adaptor3d_HCurve> & Path, const opencascade::handle<Adaptor3d_HCurve> & Curve1, const opencascade::handle<Adaptor3d_HCurve> & Curve2, const Standard_Real Radius);
+		void Init(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius);
 
 		/****************** Init ******************/
-		/**** md5 signature: 2c9856fb0aa3957df108423b1312aea7 ****/
+		/**** md5 signature: d595c424249c2e943c3d6b16e9369ce8 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initializes this pipe algorithm to build the following surface: - a pipe with a constant circular section of radius radius along the path path, or - a pipe with constant section firstsect along the path path, or - a pipe where the section evolves from firstsect to lastsect along the path path. use the function perform to build the surface. note: a description of the resulting surface is given under constructors.
 
 Parameters
 ----------
 Path: Geom_Curve
-Guide: Adaptor3d_HCurve
+Guide: Adaptor3d_Curve
 FirstSect: Geom_Curve
 ByACR: bool
 rotat: bool
@@ -4072,7 +4073,7 @@ Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_HCurve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
+		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -4151,7 +4152,7 @@ opencascade::handle<Geom_Surface>
 class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	public:
 		/****************** GeomFill_PlanFunc ******************/
-		/**** md5 signature: 7f7996e42c119051df0fe4e37e9b1d0a ****/
+		/**** md5 signature: d2111f7e04703bf5d8e4b88603c7da47 ****/
 		%feature("compactdefaultargs") GeomFill_PlanFunc;
 		%feature("autodoc", "No available documentation.
 
@@ -4159,13 +4160,13 @@ Parameters
 ----------
 P: gp_Pnt
 V: gp_Vec
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomFill_PlanFunc;
-		 GeomFill_PlanFunc(const gp_Pnt & P, const gp_Vec & V, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 GeomFill_PlanFunc(const gp_Pnt & P, const gp_Vec & V, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** D2 ******************/
 		/**** md5 signature: 3593cd3677dd66060bb00c05ef08ee1e ****/
@@ -4467,7 +4468,7 @@ bool
 		/****************** KnotsAndMults ******************/
 		/**** md5 signature: 19787aa39b0400d3a08b5785b90459e8 ****/
 		%feature("compactdefaultargs") KnotsAndMults;
-		%feature("autodoc", "Raises if not yet perform raises if the lengthes of <knots> and <mults> are not equal to nbknots().
+		%feature("autodoc", "Raises if not yet perform raises if the lengths of <knots> and <mults> are not equal to nbknots().
 
 Parameters
 ----------
@@ -4703,7 +4704,7 @@ opencascade::handle<Geom_BSplineSurface>
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: cbc6eaf5619edbfc0f2839466f8de856 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditioned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Returns
 -------
@@ -4757,7 +4758,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: e3c6434afb03815d368e10617d5a7f5b ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -4776,7 +4777,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: 8e60d2fe6644e0ec8d5c8468e973d40c ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -4827,7 +4828,7 @@ Last: float
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 6fdd12d5da1669c5217b9449c91c0d9e ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is usefull to control error in rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
 
 Parameters
 ----------
@@ -4860,7 +4861,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -4952,7 +4953,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: 138e071f49741ba955ed2185c4c8ab9f ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the greater section. this information is usefull to g1's control. warning: with an little value, approximation can be slower.
+		%feature("autodoc", "Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
 
 Returns
 -------
@@ -5025,7 +5026,7 @@ None
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 1565024762efa75936883ee9558fa99d ****/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "Is usefull, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
+		%feature("autodoc", "Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
 
 Parameters
 ----------
@@ -5106,7 +5107,7 @@ bool
 		/****************** ModifiedSection ******************/
 		/**** md5 signature: d50774cace5784c6bcc30e9f082ed831 ****/
 		%feature("compactdefaultargs") ModifiedSection;
-		%feature("autodoc", "Compute the section, in the coordinate syteme given by the location law. to have the normal to section equal to the location law normal. if <withtranslation> contact beetween <section> and <path> is forced.
+		%feature("autodoc", "Compute the section, in the coordinate system given by the location law. to have the normal to section equal to the location law normal. if <withtranslation> contact between <section> and <path> is forced.
 
 Parameters
 ----------
@@ -5156,20 +5157,20 @@ None
 		void Perform(const Standard_Real Tol);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 542185d2c15c97da6e95ee9fb149834c ****/
+		/**** md5 signature: 323bd7995787fb3c31cb6a2a0269c1cc ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Path: Adaptor3d_HCurve
+Path: Adaptor3d_Curve
 Tol: float
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HCurve> & Path, const Standard_Real Tol);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & Path, const Standard_Real Tol);
 
 		/****************** Perform ******************/
 		/**** md5 signature: 1247c2342803e8af98196331e0da37ff ****/
@@ -5190,7 +5191,7 @@ None
 		/****************** Section ******************/
 		/**** md5 signature: 06d8ebfd837653e5db544efc38571dc8 ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Compute the section, in the coordinate syteme given by the location law. if <withtranslation> contact beetween <section> and <path> is forced.
+		%feature("autodoc", "Compute the section, in the coordinate system given by the location law. if <withtranslation> contact between <section> and <path> is forced.
 
 Parameters
 ----------
@@ -5249,19 +5250,19 @@ gp_Trsf
 class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 	public:
 		/****************** GeomFill_SnglrFunc ******************/
-		/**** md5 signature: 9d23a6d56ef665fed92eb38743540c2d ****/
+		/**** md5 signature: 11e312347af8bf4b41690fc0fcf50e44 ****/
 		%feature("compactdefaultargs") GeomFill_SnglrFunc;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-HC: Adaptor3d_HCurve
+HC: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomFill_SnglrFunc;
-		 GeomFill_SnglrFunc(const opencascade::handle<Adaptor3d_HCurve> & HC);
+		 GeomFill_SnglrFunc(const opencascade::handle<Adaptor3d_Curve> & HC);
 
 		/****************** D0 ******************/
 		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
@@ -5374,7 +5375,7 @@ GeomAbs_CurveType
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -5483,6 +5484,8 @@ gp_Pnt
 };
 
 
+%make_alias(GeomFill_SnglrFunc)
+
 %extend GeomFill_SnglrFunc {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5514,7 +5517,7 @@ None
 		/****************** Build ******************/
 		/**** md5 signature: 81671eb89e696302d692cbf60bef48d7 ****/
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Build the sweeep surface approxstyle defines approximation strategy - geomfill_section : the composed function : location x section is directly approximed. - geomfill_location : the location law is approximed, and the sweepsurface is build algebric composition of approximed location law and section law this option is ok, if section.surface() methode is effective. continuity : the continuity in v waiting on the surface degmax : the maximum degree in v requiered on the surface segmax : the maximum number of span in v requiered on the surface //! raise if domain are infinite or profile not setted.
+		%feature("autodoc", "Build the sweeep surface approxstyle defines approximation strategy - geomfill_section : the composed function : location x section is directly approximated. - geomfill_location : the location law is approximated, and the sweepsurface is build algebric composition of approximated location law and section law this option is ok, if section.surface() methode is effective. continuity : the continuity in v waiting on the surface degmax : the maximum degree in v required on the surface segmax : the maximum number of span in v required on the surface //! raise if domain are infinite or profile not set.
 
 Parameters
 ----------
@@ -5628,7 +5631,7 @@ opencascade::handle<Geom2d_Curve>
 		/****************** SetDomain ******************/
 		/**** md5 signature: cd38e538169c6afd28f46a7bef651d8c ****/
 		%feature("compactdefaultargs") SetDomain;
-		%feature("autodoc", "Set parametric information [<first>, <last>] sets the parametric bound of the sweeping surface to build. <sectionfirst>, <sectionlast> gives coresponding bounds parameter on the section law of <first> and <last> //! v-iso on sweeping surface s(u,v) is defined by location(v) and section(w) where w = sectionfirst + (v - first) / (last-first) * (sectionlast - sectionfirst) //! by default w = v, and first and last are given by first and last parameter stored in locationlaw.
+		%feature("autodoc", "Set parametric information [<first>, <last>] sets the parametric bound of the sweeping surface to build. <sectionfirst>, <sectionlast> gives corresponding bounds parameter on the section law of <first> and <last> //! v-iso on sweeping surface s(u,v) is defined by location(v) and section(w) where w = sectionfirst + (v - first) / (last-first) * (sectionlast - sectionfirst) //! by default w = v, and first and last are given by first and last parameter stored in locationlaw.
 
 Parameters
 ----------
@@ -5661,7 +5664,7 @@ None
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 9b397c9283d7e37feb630a46515777f2 ****/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "Set approximation tolerance tol3d : tolerance to surface approximation tol2d : tolerance used to perform curve approximation normaly the 2d curve are approximated with a tolerance given by the resolution method define in <locationlaw> but if this tolerance is too large tol2d is used. tolangular : tolerance (in radian) to control the angle beetween tangents on the section law and tangent of iso-v on approximed surface.
+		%feature("autodoc", "Set approximation tolerance tol3d : tolerance to surface approximation tol2d : tolerance used to perform curve approximation normally the 2d curve are approximated with a tolerance given by the resolution method define in <locationlaw> but if this tolerance is too large tol2d is used. tolangular : tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface.
 
 Parameters
 ----------
@@ -5763,7 +5766,7 @@ None
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditionned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Returns
 -------
@@ -5843,7 +5846,7 @@ bool
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections. this information is usefull to perform well conditionned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Parameters
 ----------
@@ -5876,7 +5879,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -5892,7 +5895,7 @@ None
 		/****************** IsRational ******************/
 		/**** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ****/
 		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "Returns if the section is rationnal or not.
+		%feature("autodoc", "Returns if the section is rational or not.
 
 Returns
 -------
@@ -5918,7 +5921,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the maximum section. this information is usefull to perform well conditionned rational approximation.
+		%feature("autodoc", "Returns the length of the maximum section. this information is useful to perform well conditioned rational approximation.
 
 Returns
 -------
@@ -5987,7 +5990,7 @@ TolV: float
 		/****************** SectionShape ******************/
 		/**** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ****/
 		%feature("compactdefaultargs") SectionShape;
-		%feature("autodoc", "Get the format of an section.
+		%feature("autodoc", "Get the format of a section.
 
 Parameters
 ----------
@@ -6266,7 +6269,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: b5761cd22f011e952e89db7159aa7a9f ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -6287,7 +6290,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: 6a10a5c6f84e96e0f1ac82eef85cbf5f ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -6354,7 +6357,7 @@ Last: float
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -6381,7 +6384,7 @@ bool
 		/****************** IsOnlyBy3dCurve ******************/
 		/**** md5 signature: f8d791bc049901655a5239dfa1822db7 ****/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
-		%feature("autodoc", "Say if the law is defined, only by the 3d geometry of the setted curve return false by default.
+		%feature("autodoc", "Say if the law is defined, only by the 3d geometry of the set curve return false by default.
 
 Returns
 -------
@@ -6405,19 +6408,19 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 1717edc5168c614fe8501a6ca815a592 ****/
+		/**** md5 signature: 2dae31c246023c37a7825f72c7877ada ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 128fbeb43b59baa5a891a2c4ea58f02a ****/
@@ -6454,7 +6457,7 @@ class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 		/****************** GeomFill_BoundWithSurf ******************/
 		/**** md5 signature: d054c1079b9edcd7cb9b4e65d2b74232 ****/
 		%feature("compactdefaultargs") GeomFill_BoundWithSurf;
-		%feature("autodoc", "Constructs a boundary object defined by the 3d curve curveonsurf. the surface to be filled along this boundary will be in the tolerance range defined by tol3d. what's more, at each point of curveonsurf, the angle between the normal to the surface to be filled along this boundary, and the normal to the surface on which curveonsurf lies, must not be greater than tolang. this object is to be used as a boundary for a geomfill_constrainedfilling framework. warning curveonsurf is an adapted curve, that is, an object which is an interface between: - the services provided by a curve lying on a surface from the package geom - and those required of the curve by the computation algorithm which uses it. the adapted curve is created in the following way: opencascade::handle<geom_surface> mysurface = ... ; opencascade::handle<geom2d_curve> myparamcurve = ... ; // where myparamcurve is a 2d curve in the parametric space of the surface mysurface opencascade::handle<geomadaptor_hsurface> surface = new geomadaptor_hsurface(mysurface); opencascade::handle<geom2dadaptor_hcurve> paramcurve = new geom2dadaptor_hcurve(myparamcurve); curveonsurf = adaptor3d_curveonsurface(paramcurve,surface); the boundary is then constructed with the curveonsurf object: standard_real tol = ... ; standard_real tolang = ... ; myboundary = geomfill_boundwithsurf ( curveonsurf, tol, tolang );.
+		%feature("autodoc", "Constructs a boundary object defined by the 3d curve curveonsurf. the surface to be filled along this boundary will be in the tolerance range defined by tol3d. what's more, at each point of curveonsurf, the angle between the normal to the surface to be filled along this boundary, and the normal to the surface on which curveonsurf lies, must not be greater than tolang. this object is to be used as a boundary for a geomfill_constrainedfilling framework. warning curveonsurf is an adapted curve, that is, an object which is an interface between: - the services provided by a curve lying on a surface from the package geom - and those required of the curve by the computation algorithm which uses it. the adapted curve is created in the following way: opencascade::handle<geom_surface> mysurface = ... ; opencascade::handle<geom2d_curve> myparamcurve = ... ; // where myparamcurve is a 2d curve in the parametric space of the surface mysurface opencascade::handle<geomadaptor_surface> surface = new geomadaptor_surface(mysurface); opencascade::handle<geom2dadaptor_curve> paramcurve = new geom2dadaptor_curve(myparamcurve); curveonsurf = adaptor3d_curveonsurface(paramcurve,surface); the boundary is then constructed with the curveonsurf object: standard_real tol = ... ; standard_real tolang = ... ; myboundary = geomfill_boundwithsurf ( curveonsurf, tol, tolang );.
 
 Parameters
 ----------
@@ -6653,7 +6656,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Computes triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Computes triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -6674,7 +6677,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -6715,7 +6718,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -6766,19 +6769,19 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 };
 
@@ -6959,7 +6962,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -6980,7 +6983,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -7032,7 +7035,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -7083,19 +7086,19 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -7193,7 +7196,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 288bb22d14e06a66281554b33f433d63 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -7214,7 +7217,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: 940621cc935757a0b177b16f7cd72d05 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -7252,15 +7255,15 @@ None
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: ead921cddde0ab49628eb8cd84dd99a0 ****/
+		/**** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		virtual const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****************** GetDomain ******************/
 		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
@@ -7306,7 +7309,7 @@ float
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -7378,19 +7381,19 @@ None
 		virtual void Rotation(gp_Pnt & Center);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -7655,7 +7658,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -7676,7 +7679,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -7717,7 +7720,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -7940,7 +7943,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute trihedron and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation for the moment it returns null values for dtangent, dnormal and dbinormal.
+		%feature("autodoc", "Compute trihedron and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation for the moment it returns null values for dtangent, dnormal and dbinormal.
 
 Parameters
 ----------
@@ -7961,7 +7964,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation for the moment it returns null values for dtangent, dnormal dbinormal, d2tangent, d2normal, d2binormal.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation for the moment it returns null values for dtangent, dnormal dbinormal, d2tangent, d2normal, d2binormal.
 
 Parameters
 ----------
@@ -8013,7 +8016,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -8064,19 +8067,19 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 };
 
@@ -8124,7 +8127,7 @@ opencascade::handle<GeomFill_TrihedronLaw>
 		/****************** D0 ******************/
 		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -8142,7 +8145,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -8187,7 +8190,7 @@ bool
 		/****************** GetAverageLaw ******************/
 		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
 		%feature("compactdefaultargs") GetAverageLaw;
-		%feature("autodoc", "Get average value of tangent(t) and normal(t) it is usefull to make fast approximation of rational surfaces.
+		%feature("autodoc", "Get average value of tangent(t) and normal(t) it is useful to make fast approximation of rational surfaces.
 
 Parameters
 ----------
@@ -8204,7 +8207,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -8315,7 +8318,7 @@ opencascade::handle<Geom_BSplineSurface>
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditioned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Returns
 -------
@@ -8354,7 +8357,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -8373,7 +8376,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e7553cf232323cae7964c205cd5a06a9 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -8424,7 +8427,7 @@ Last: float
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is usefull to control error in rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
 
 Parameters
 ----------
@@ -8457,7 +8460,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -8535,7 +8538,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the greater section. this information is usefull to g1's control. warning: with an little value, approximation can be slower.
+		%feature("autodoc", "Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
 
 Returns
 -------
@@ -8669,7 +8672,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -8690,7 +8693,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -8731,7 +8734,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -8829,7 +8832,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute triedrhon and derivative trihedron on curve at parameter <param> warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -8850,7 +8853,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute trihedron on curve first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -8902,7 +8905,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -8953,19 +8956,19 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 };
 
@@ -9099,7 +9102,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 288bb22d14e06a66281554b33f433d63 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -9120,7 +9123,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: 940621cc935757a0b177b16f7cd72d05 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -9169,15 +9172,15 @@ None
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: ead921cddde0ab49628eb8cd84dd99a0 ****/
+		/**** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		virtual const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****************** GetDomain ******************/
 		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
@@ -9245,7 +9248,7 @@ bool
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -9360,19 +9363,19 @@ None
 		void SetAngle(const Standard_Real Angle);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -9391,19 +9394,19 @@ None
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
 		/****************** SetStopSurf ******************/
-		/**** md5 signature: 82e5909f3450ddb28497aec115ad1d50 ****/
+		/**** md5 signature: 27ac1cb5a5e32dd01b46f24b3bd0230c ****/
 		%feature("compactdefaultargs") SetStopSurf;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf: Adaptor3d_HSurface
+Surf: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") SetStopSurf;
-		void SetStopSurf(const opencascade::handle<Adaptor3d_HSurface> & Surf);
+		void SetStopSurf(const opencascade::handle<Adaptor3d_Surface> & Surf);
 
 		/****************** SetTrsf ******************/
 		/**** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ****/
@@ -9423,7 +9426,7 @@ None
 		/****************** TraceNumber ******************/
 		/**** md5 signature: 603a2d12181693878dfcc406bb4cd8ac ****/
 		%feature("compactdefaultargs") TraceNumber;
-		%feature("autodoc", "Give the number of trace (curves 2d wich are not restriction) returns 1 (default implementation).
+		%feature("autodoc", "Give the number of trace (curves 2d which are not restriction) returns 1 (default implementation).
 
 Returns
 -------
@@ -9526,7 +9529,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 288bb22d14e06a66281554b33f433d63 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first derivatives. warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -9547,7 +9550,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: 940621cc935757a0b177b16f7cd72d05 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute location 2d points and associated first and seconde derivatives. warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -9607,15 +9610,15 @@ None
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: ead921cddde0ab49628eb8cd84dd99a0 ****/
+		/**** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		virtual const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****************** GetDomain ******************/
 		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
@@ -9659,15 +9662,15 @@ float
 		virtual Standard_Real GetMaximalNorm();
 
 		/****************** Guide ******************/
-		/**** md5 signature: 7f9eb3f08360f033106bb3e58722ebc3 ****/
+		/**** md5 signature: c51ccc2583f44ed177afcd058430a88a ****/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Guide;
-		opencascade::handle<Adaptor3d_HCurve> Guide();
+		opencascade::handle<Adaptor3d_Curve> Guide();
 
 		/****************** HasFirstRestriction ******************/
 		/**** md5 signature: ccbee780c99b1c07b285852506752491 ****/
@@ -9694,7 +9697,7 @@ bool
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -9813,19 +9816,19 @@ LastAngle: float
 		void Set(const opencascade::handle<GeomFill_SectionLaw> & Section, const Standard_Boolean rotat, const Standard_Real SFirst, const Standard_Real SLast, const Standard_Real PrecAngle, Standard_Real &OutValue);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -9862,7 +9865,7 @@ None
 		/****************** SetTolerance ******************/
 		/**** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ****/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "Is usefull, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
+		%feature("autodoc", "Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
 
 Parameters
 ----------
@@ -9893,7 +9896,7 @@ None
 		/****************** TraceNumber ******************/
 		/**** md5 signature: 603a2d12181693878dfcc406bb4cd8ac ****/
 		%feature("compactdefaultargs") TraceNumber;
-		%feature("autodoc", "Give the number of trace (curves 2d wich are not restriction) returns 1 (default implementation).
+		%feature("autodoc", "Give the number of trace (curves 2d which are not restriction) returns 1 (default implementation).
 
 Returns
 -------
@@ -10004,7 +10007,7 @@ opencascade::handle<Geom_BSplineSurface>
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditioned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Returns
 -------
@@ -10069,7 +10072,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -10088,7 +10091,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e7553cf232323cae7964c205cd5a06a9 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -10139,7 +10142,7 @@ Last: float
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is usefull to control error in rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
 
 Parameters
 ----------
@@ -10172,7 +10175,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -10264,7 +10267,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the greater section. this information is usefull to g1's control. warning: with an little value, approximation can be slower.
+		%feature("autodoc", "Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
 
 Returns
 -------
@@ -10507,13 +10510,13 @@ None
 class GeomFill_SimpleBound : public GeomFill_Boundary {
 	public:
 		/****************** GeomFill_SimpleBound ******************/
-		/**** md5 signature: 9d3727d66f84862b81072dc871109cea ****/
+		/**** md5 signature: dc4d80fb194fc40e8b356e68221b1993 ****/
 		%feature("compactdefaultargs") GeomFill_SimpleBound;
-		%feature("autodoc", "Constructs the boundary object defined by the 3d curve. the surface to be built along this boundary will be in the tolerance range defined by tol3d. this object is to be used as a boundary for a geomfill_constrainedfilling framework. dummy is initialized but has no function in this class. warning curve is an adapted curve, that is, an object which is an interface between: - the services provided by a 3d curve from the package geom - and those required of the curve by the computation algorithm which uses it. the adapted curve is created in one of the following ways: - first sequence: opencascade::handle<geom_curve> mycurve = ... ; opencascade::handle<geomadaptor_hcurve> curve = new geomadaptor_hcurve(mycurve); - second sequence: // step 1 opencascade::handle<geom_curve> mycurve = ... ; geomadaptor_curve crv (mycurve); // step 2 opencascade::handle<geomadaptor_hcurve> curve = new geomadaptor_hcurve(crv); you use the second part of this sequence if you already have the adapted curve crv. the boundary is then constructed with the curve object: standard_real tol = ... ; standard_real dummy = 0. ; myboundary = geomfill_simplebound (curve,tol,dummy);.
+		%feature("autodoc", "Constructs the boundary object defined by the 3d curve. the surface to be built along this boundary will be in the tolerance range defined by tol3d. this object is to be used as a boundary for a geomfill_constrainedfilling framework. dummy is initialized but has no function in this class. warning curve is an adapted curve, that is, an object which is an interface between: - the services provided by a 3d curve from the package geom - and those required of the curve by the computation algorithm which uses it. the adapted curve is created in one of the following ways: - first sequence: opencascade::handle<geom_curve> mycurve = ... ; opencascade::handle<geomadaptor_curve> curve = new geomadaptor_curve(mycurve); - second sequence: // step 1 opencascade::handle<geom_curve> mycurve = ... ; geomadaptor_curve crv (mycurve); // step 2 opencascade::handle<geomadaptor_curve> curve = new geomadaptor_curve(crv); you use the second part of this sequence if you already have the adapted curve crv. the boundary is then constructed with the curve object: standard_real tol = ... ; standard_real dummy = 0. ; myboundary = geomfill_simplebound (curve,tol,dummy);.
 
 Parameters
 ----------
-Curve: Adaptor3d_HCurve
+Curve: Adaptor3d_Curve
 Tol3d: float
 Tolang: float
 
@@ -10521,7 +10524,7 @@ Returns
 -------
 None
 ") GeomFill_SimpleBound;
-		 GeomFill_SimpleBound(const opencascade::handle<Adaptor3d_HCurve> & Curve, const Standard_Real Tol3d, const Standard_Real Tolang);
+		 GeomFill_SimpleBound(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const Standard_Real Tolang);
 
 		/****************** Bounds ******************/
 		/**** md5 signature: 618f7ac8e8773975015964105699f46f ****/
@@ -10815,15 +10818,15 @@ gp_Pnt
 		gp_Pnt CurrentPointOnGuide();
 
 		/****************** Guide ******************/
-		/**** md5 signature: b13fb6fbc45c3f2506db01721bc154fa ****/
+		/**** md5 signature: 09e47fc31e0ff29ebb6d8706ed5b2098 ****/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Guide;
-		virtual opencascade::handle<Adaptor3d_HCurve> Guide();
+		virtual opencascade::handle<Adaptor3d_Curve> Guide();
 
 		/****************** Origine ******************/
 		/**** md5 signature: 16919287683a2d5ba18e225cee37cd92 ****/
@@ -10890,7 +10893,7 @@ opencascade::handle<Geom_BSplineSurface>
 		/****************** BarycentreOfSurf ******************/
 		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
 		%feature("compactdefaultargs") BarycentreOfSurf;
-		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficent. this information is usefull to perform well conditioned rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
 
 Returns
 -------
@@ -10929,7 +10932,7 @@ bool
 		/****************** D1 ******************/
 		/**** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 aproximation.
+		%feature("autodoc", "Compute the first derivative in v direction of the section for v = param warning : it used only for c1 or c2 approximation.
 
 Parameters
 ----------
@@ -10948,7 +10951,7 @@ bool
 		/****************** D2 ******************/
 		/**** md5 signature: e7553cf232323cae7964c205cd5a06a9 ****/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 aproximation.
+		%feature("autodoc", "Compute the second derivative in v direction of the section for v = param warning : it used only for c2 approximation.
 
 Parameters
 ----------
@@ -10999,7 +11002,7 @@ Last: float
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is usefull to control error in rational approximation. warning: used only if <self> isrational.
+		%feature("autodoc", "Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
 
 Parameters
 ----------
@@ -11032,7 +11035,7 @@ None
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -11110,7 +11113,7 @@ None
 		/****************** MaximalSection ******************/
 		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
 		%feature("compactdefaultargs") MaximalSection;
-		%feature("autodoc", "Returns the length of the greater section. this information is usefull to g1's control. warning: with an little value, approximation can be slower.
+		%feature("autodoc", "Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
 
 Returns
 -------
@@ -11197,19 +11200,19 @@ None
 class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 	public:
 		/****************** GeomFill_GuideTrihedronAC ******************/
-		/**** md5 signature: 3210e6226bc168d1bbb8276d12d59fa5 ****/
+		/**** md5 signature: b3b260cc8039974b28f456867aa004c0 ****/
 		%feature("compactdefaultargs") GeomFill_GuideTrihedronAC;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-guide: Adaptor3d_HCurve
+guide: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomFill_GuideTrihedronAC;
-		 GeomFill_GuideTrihedronAC(const opencascade::handle<Adaptor3d_HCurve> & guide);
+		 GeomFill_GuideTrihedronAC(const opencascade::handle<Adaptor3d_Curve> & guide);
 
 		/****************** Copy ******************/
 		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
@@ -11303,20 +11306,20 @@ None
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
 		/****************** Guide ******************/
-		/**** md5 signature: 7825016167368c6530be15068ef7ba41 ****/
+		/**** md5 signature: 17558c6f9257708f1da49899c586c13c ****/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Guide;
-		virtual opencascade::handle<Adaptor3d_HCurve> Guide();
+		virtual opencascade::handle<Adaptor3d_Curve> Guide();
 
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -11343,7 +11346,7 @@ bool
 		/****************** IsOnlyBy3dCurve ******************/
 		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
-		%feature("autodoc", "Say if the law is defined, only by the 3d geometry of the setted curve return false by default.
+		%feature("autodoc", "Say if the law is defined, only by the 3d geometry of the set curve return false by default.
 
 Returns
 -------
@@ -11383,19 +11386,19 @@ None
 		virtual void Origine(const Standard_Real OrACR1, const Standard_Real OrACR2);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 5ec05cc00541a0c19784acc9db48edc6 ****/
+		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -11430,19 +11433,19 @@ None
 class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 	public:
 		/****************** GeomFill_GuideTrihedronPlan ******************/
-		/**** md5 signature: c01bdb6e70304336b9b42c5ed34b7639 ****/
+		/**** md5 signature: 0e4f012fb4a92ecb65e9205ba6b0adce ****/
 		%feature("compactdefaultargs") GeomFill_GuideTrihedronPlan;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theGuide: Adaptor3d_HCurve
+theGuide: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") GeomFill_GuideTrihedronPlan;
-		 GeomFill_GuideTrihedronPlan(const opencascade::handle<Adaptor3d_HCurve> & theGuide);
+		 GeomFill_GuideTrihedronPlan(const opencascade::handle<Adaptor3d_Curve> & theGuide);
 
 		/****************** Copy ******************/
 		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
@@ -11547,20 +11550,20 @@ None
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
 		/****************** Guide ******************/
-		/**** md5 signature: 7825016167368c6530be15068ef7ba41 ****/
+		/**** md5 signature: 17558c6f9257708f1da49899c586c13c ****/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Guide;
-		virtual opencascade::handle<Adaptor3d_HCurve> Guide();
+		virtual opencascade::handle<Adaptor3d_Curve> Guide();
 
 		/****************** Intervals ******************/
 		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -11587,7 +11590,7 @@ bool
 		/****************** IsOnlyBy3dCurve ******************/
 		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
-		%feature("autodoc", "Say if the law is defined, only by the 3d geometry of the setted curve return false by default.
+		%feature("autodoc", "Say if the law is defined, only by the 3d geometry of the set curve return false by default.
 
 Returns
 -------
@@ -11627,19 +11630,19 @@ None
 		virtual void Origine(const Standard_Real OrACR1, const Standard_Real OrACR2);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 461c0cca1ef3154515f91bc70d65d0a5 ****/
+		/**** md5 signature: cad734bff5f673ac1acd8eb3a4ad371c ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-thePath: Adaptor3d_HCurve
+thePath: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & thePath);
+		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & thePath);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/

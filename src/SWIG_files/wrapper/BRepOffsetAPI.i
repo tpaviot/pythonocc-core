@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPOFFSETAPIDOCSTRING
 "BRepOffsetAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffsetapi.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepoffsetapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETAPIDOCSTRING) BRepOffsetAPI
 
@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffsetapi.htm
 #include<BRepBuilderAPI_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
+#include<Message_module.hxx>
 #include<TopTools_module.hxx>
 #include<Draft_module.hxx>
 #include<Geom_module.hxx>
@@ -106,6 +107,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffsetapi.htm
 %import BRepBuilderAPI.i
 %import TopoDS.i
 %import gp.i
+%import Message.i
 %import TopTools.i
 %import Draft.i
 %import Geom.i
@@ -125,7 +127,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -221,15 +223,20 @@ bool
 		Standard_Boolean AddDone();
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -368,7 +375,7 @@ None
 		/****************** Status ******************/
 		/**** md5 signature: 26dc5cff0cd2168b2136c6f9bb9e099c ****/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "Returns an error status when an error has occured (face, edge or vertex recomputaion problem). otherwise returns draft_noerror. the method may be called if adddone returns standard_false, or when isdone returns standard_false.
+		%feature("autodoc", "Returns an error status when an error has occurred (face, edge or vertex recomputation problem). otherwise returns draft_noerror. the method may be called if adddone returns standard_false, or when isdone returns standard_false.
 
 Returns
 -------
@@ -801,15 +808,20 @@ TopoDS_Shape
 		const TopoDS_Shape Bottom();
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Evolved ******************/
 		/**** md5 signature: 9cd16375e762072934864900214c9cab ****/
@@ -984,15 +996,20 @@ int
 		Standard_Integer Add(const Standard_Real U, const Standard_Real V, const TopoDS_Face & Support, const GeomAbs_Shape Order);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting faces.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** G0Error ******************/
 		/**** md5 signature: ba177a9a7bac2d394577a179fd8040ef ****/
@@ -1156,7 +1173,7 @@ None
 		/****************** SetResolParam ******************/
 		/**** md5 signature: 96cad4665171fb74735ecc8d46155136 ****/
 		%feature("compactdefaultargs") SetResolParam;
-		%feature("autodoc", "Sets the parameters used for resolution. the default values of these parameters have been chosen for a good ratio quality/performance. degree: it is the order of energy criterion to minimize for computing the deformation of the surface. the default value is 3 the recommanded value is i+2 where i is the maximum order of the constraints. nbptsoncur: it is the average number of points for discretisation of the edges. nbiter: it is the maximum number of iterations of the process. for each iteration the number of discretisation points is increased. anisotropie:.
+		%feature("autodoc", "Sets the parameters used for resolution. the default values of these parameters have been chosen for a good ratio quality/performance. degree: it is the order of energy criterion to minimize for computing the deformation of the surface. the default value is 3 the recommended value is i+2 where i is the maximum order of the constraints. nbptsoncur: it is the average number of points for discretisation of the edges. nbiter: it is the maximum number of iterations of the process. for each iteration the number of discretisation points is increased. anisotropie:.
 
 Parameters
 ----------
@@ -1254,15 +1271,20 @@ None
 		void AddWire(const TopoDS_Wire & Spine);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Generated ******************/
 		/**** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ****/
@@ -1301,7 +1323,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: 36efcaeec9c18f0906259d528d83ea6b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize the evaluation of offseting.
+		%feature("autodoc", "Initialize the evaluation of offsetting.
 
 Parameters
 ----------
@@ -1358,43 +1380,21 @@ None
 ") BRepOffsetAPI_MakeOffsetShape;
 		 BRepOffsetAPI_MakeOffsetShape();
 
-		/****************** BRepOffsetAPI_MakeOffsetShape ******************/
-		/**** md5 signature: 8a8fe72515b618d61b455b9b1b3afd7c ****/
-		%feature("compactdefaultargs") BRepOffsetAPI_MakeOffsetShape;
-		%feature("autodoc", "Deprecated constructor. please avoid usage of this constructor.
+		/****************** Build ******************/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "Does nothing.
 
 Parameters
 ----------
-S: TopoDS_Shape
-Offset: float
-Tol: float
-Mode: BRepOffset_Mode,optional
-	default value is BRepOffset_Skin
-Intersection: bool,optional
-	default value is Standard_False
-SelfInter: bool,optional
-	default value is Standard_False
-Join: GeomAbs_JoinType,optional
-	default value is GeomAbs_Arc
-RemoveIntEdges: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") BRepOffsetAPI_MakeOffsetShape;
-		 BRepOffsetAPI_MakeOffsetShape(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False);
-
-		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Does nothing.
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Generated ******************/
 		/**** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ****/
@@ -1464,7 +1464,7 @@ TopTools_ListOfShape
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****************** PerformByJoin ******************/
-		/**** md5 signature: 6ac254a6e8ed9352884246b2f9d9a1a7 ****/
+		/**** md5 signature: 95722a888d9ea1332d96f8f0377af232 ****/
 		%feature("compactdefaultargs") PerformByJoin;
 		%feature("autodoc", "Constructs a shape parallel to the shape s, where - s may be a face, a shell, a solid or a compound of these shape kinds; - offset is the offset value. the offset shape is constructed: - outside s, if offset is positive, - inside s, if offset is negative; - tol defines the coincidence tolerance criterion for generated shapes; - mode defines the construction type of parallels applied to the free edges of shape s; currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value brepoffset_skin; - intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if intersection is true, the intersection is calculated by taking all generated parallels into account; this computation method is more general as it avoids some self-intersections generated in the offset shape from features of small dimensions on shape s, however this method has not been completely implemented and therefore is not recommended for use; - selfinter tells the algorithm whether a computation to eliminate self-intersections must be applied to the resulting shape; however, as this functionality is not yet implemented, it is recommended to use the default value (false); - join defines how to fill the holes that may appear between parallels to the two adjacent faces. it may take values geomabs_arc or geomabs_intersection: - if join is equal to geomabs_arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if join is equal to geomabs_intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. removeintedges flag defines whether to remove the internal edges from the result or not. warnings 1. all the faces of the shape s should be based on the surfaces with continuity at least c1. 2. the offset value should be sufficiently small to avoid self-intersections in resulting shape. otherwise these self-intersections may appear inside an offset face if its initial surface is not plane or sphere or cylinder, also some non-adjacent offset faces may intersect each other. also, some offset surfaces may 'turn inside out'. 3. the algorithm may fail if the shape s contains vertices where more than 3 edges converge. 4. since 3d-offset algorithm involves intersection of surfaces, it is under limitations of surface intersection algorithm. 5. a result cannot be generated if the underlying geometry of s is bspline with continuity c0. exceptions geom_undefinedderivative if the underlying geometry of s is bspline with continuity c0.
 
@@ -1483,12 +1483,14 @@ Join: GeomAbs_JoinType,optional
 	default value is GeomAbs_Arc
 RemoveIntEdges: bool,optional
 	default value is Standard_False
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") PerformByJoin;
-		void PerformByJoin(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False);
+		void PerformByJoin(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** PerformBySimple ******************/
 		/**** md5 signature: 005d9d4f6366bed358be54e547e045db ****/
@@ -1556,15 +1558,20 @@ None
 		 BRepOffsetAPI_MakePipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile, const GeomFill_Trihedron aMode, const Standard_Boolean ForceApproxC1 = Standard_False);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ErrorOnSurface ******************/
 		/**** md5 signature: b6b87ca0efc7814953c22829fefc7f65 ****/
@@ -1658,7 +1665,7 @@ class BRepOffsetAPI_MakePipeShell : public BRepPrimAPI_MakeSweep {
 		/****************** BRepOffsetAPI_MakePipeShell ******************/
 		/**** md5 signature: 2de09d18cf07159481a80873b4b5d90c ****/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakePipeShell;
-		%feature("autodoc", "Constructs the shell-generating framework defined by the wire spine. sets an sweep's mode if no mode are setted, the mode use in makepipe is used.
+		%feature("autodoc", "Constructs the shell-generating framework defined by the wire spine. sets an sweep's mode if no mode are set, the mode use in makepipe is used.
 
 Parameters
 ----------
@@ -1710,15 +1717,20 @@ None
 		void Add(const TopoDS_Shape & Profile, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Delete ******************/
 		/**** md5 signature: 12e4f2f3609a7b21fcf42ba451fc7b90 ****/
@@ -1962,7 +1974,7 @@ None
 		/****************** SetMode ******************/
 		/**** md5 signature: 58a4bdd8c9c0ebb3412c56dad6c67f67 ****/
 		%feature("compactdefaultargs") SetMode;
-		%feature("autodoc", "Sets a fixed binormal direction to perform the -- sweeping. angular relations beetween the section(s) and <binormal> will be constant.
+		%feature("autodoc", "Sets a fixed binormal direction to perform the -- sweeping. angular relations between the section(s) and <binormal> will be constant.
 
 Parameters
 ----------
@@ -1977,7 +1989,7 @@ None
 		/****************** SetMode ******************/
 		/**** md5 signature: f11f503b2f352f2900bc069378318b41 ****/
 		%feature("compactdefaultargs") SetMode;
-		%feature("autodoc", "Sets support to the spine to define the binormal of the trihedron, like the normal to the surfaces. warning: to be effective, each edge of the <spine> must have an representaion on one face of<spinesupport>.
+		%feature("autodoc", "Sets support to the spine to define the binormal of the trihedron, like the normal to the surfaces. warning: to be effective, each edge of the <spine> must have a representation on one face of<spinesupport>.
 
 Parameters
 ----------
@@ -1992,7 +2004,7 @@ bool
 		/****************** SetMode ******************/
 		/**** md5 signature: b56b51364ac5002747edc4b052d16a76 ****/
 		%feature("compactdefaultargs") SetMode;
-		%feature("autodoc", "Sets an auxiliary spine to define the normal for each point of the spine p, an point q is evalued on <auxiliaryspine> if <curvilinearequivalence> q split <auxiliaryspine> with the same length ratio than p split <spline>. else the plan define by p and the tangent to the <spine> intersect <auxiliaryspine> in q. if <keepcontact> equals brepfill_nocontact: the normal is defined by the vector pq. if <keepcontact> equals brepfill_contact: the normal is defined to achieve that the sweeped section is in contact to the auxiliaryspine. the width of section is constant all along the path. in other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. however, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. if <keepcontact> equals brepfill_contactonborder: the auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path. give section to sweep. possibilities are : - give one or sevral section - give one profile and an homotetic law. - automatic compute of correspondance beetween spine, and section on the sweeped shape - correspondance beetween spine, and section on the sweeped shape defined by a vertex of the spine.
+		%feature("autodoc", "Sets an auxiliary spine to define the normal for each point of the spine p, an point q is evalued on <auxiliaryspine> if <curvilinearequivalence> q split <auxiliaryspine> with the same length ratio than p split <spline>. else the plan define by p and the tangent to the <spine> intersect <auxiliaryspine> in q. if <keepcontact> equals brepfill_nocontact: the normal is defined by the vector pq. if <keepcontact> equals brepfill_contact: the normal is defined to achieve that the sweeped section is in contact to the auxiliaryspine. the width of section is constant all along the path. in other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. however, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. if <keepcontact> equals brepfill_contactonborder: the auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path. give section to sweep. possibilities are : - give one or sevral section - give one profile and an homotetic law. - automatic compute of correspondence between spine, and section on the sweeped shape - correspondence between spine, and section on the sweeped shape defined by a vertex of the spine.
 
 Parameters
 ----------
@@ -2046,7 +2058,7 @@ None
 		/****************** Simulate ******************/
 		/**** md5 signature: b923147c061b5747b67b09a6323794bf ****/
 		%feature("compactdefaultargs") Simulate;
-		%feature("autodoc", "Simulates the resulting shape by calculating its cross-sections. the spine is devided by this cross-sections into (numberofsection - 1) equal parts, the number of cross-sections is numberofsection. the cross-sections are wires and they are returned in the list result. this gives a rapid preview of the resulting shape, which will be obtained using the settings you have provided. raises notdone if <self> it is not ready.
+		%feature("autodoc", "Simulates the resulting shape by calculating its cross-sections. the spine is divided by this cross-sections into (numberofsection - 1) equal parts, the number of cross-sections is numberofsection. the cross-sections are wires and they are returned in the list result. this gives a rapid preview of the resulting shape, which will be obtained using the settings you have provided. raises notdone if <self> it is not ready.
 
 Parameters
 ----------
@@ -2102,15 +2114,20 @@ None
 		 BRepOffsetAPI_MiddlePath(const TopoDS_Shape & aShape, const TopoDS_Shape & StartShape, const TopoDS_Shape & EndShape);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -2183,15 +2200,20 @@ TopoDS_Shape
 		const TopoDS_Shape Ancestor(const TopoDS_Edge & E);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the result of the projection as a compound of wires. tries to build oriented wires.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** BuildWire ******************/
 		/**** md5 signature: e5fb4f3952649b872b4fb3c469f5b161 ****/
@@ -2227,7 +2249,7 @@ None
 		/****************** Couple ******************/
 		/**** md5 signature: cbe6db4e25bf42b45544f6235fc33773 ****/
 		%feature("compactdefaultargs") Couple;
-		%feature("autodoc", "Returns the initial face corresponding to the projected edge e. exceptions stdfail_notdone if no face was found. standard_nosuchobject if if a face corresponding to e has already been found.
+		%feature("autodoc", "Returns the initial face corresponding to the projected edge e. exceptions stdfail_notdone if no face was found. standard_nosuchobject if a face corresponding to e has already been found.
 
 Parameters
 ----------
@@ -2325,7 +2347,7 @@ None
 		/****************** SetParams ******************/
 		/**** md5 signature: 145439fe62b19bd0fd3e24e9c7dd4c4d ****/
 		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "Sets the parameters used for computation tol3 is the requiered tolerance between the 3d projected curve and its 2d representation internalcontinuity is the order of constraints used for approximation maxdeg and maxseg are the maximum degree and the maximum number of segment for bspline resulting of an approximation.
+		%feature("autodoc", "Sets the parameters used for computation tol3 is the required tolerance between the 3d projected curve and its 2d representation internalcontinuity is the order of constraints used for approximation maxdeg and maxseg are the maximum degree and the maximum number of segment for bspline resulting of an approximation.
 
 Parameters
 ----------
@@ -2406,15 +2428,20 @@ None
 		void AddWire(const TopoDS_Wire & wire);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** CheckCompatibility ******************/
 		/**** md5 signature: 9d9925f6850c3d616051e8fa827482f4 ****/
@@ -2677,47 +2704,24 @@ None
 ") BRepOffsetAPI_MakeThickSolid;
 		 BRepOffsetAPI_MakeThickSolid();
 
-		/****************** BRepOffsetAPI_MakeThickSolid ******************/
-		/**** md5 signature: a45a9aa567bf7cf5a87b43fb0a945bcf ****/
-		%feature("compactdefaultargs") BRepOffsetAPI_MakeThickSolid;
-		%feature("autodoc", "Deprecated constructor. please avoid usage of this constructor.
+		/****************** Build ******************/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: TopoDS_Shape
-ClosingFaces: TopTools_ListOfShape
-Offset: float
-Tol: float
-Mode: BRepOffset_Mode,optional
-	default value is BRepOffset_Skin
-Intersection: bool,optional
-	default value is Standard_False
-SelfInter: bool,optional
-	default value is Standard_False
-Join: GeomAbs_JoinType,optional
-	default value is GeomAbs_Arc
-RemoveIntEdges: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") BRepOffsetAPI_MakeThickSolid;
-		 BRepOffsetAPI_MakeThickSolid(const TopoDS_Shape & S, const TopTools_ListOfShape & ClosingFaces, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False);
-
-		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
-		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "No available documentation.
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** MakeThickSolidByJoin ******************/
-		/**** md5 signature: 383198924d6bc560c2c63216873b3dfd ****/
+		/**** md5 signature: dcb05ab3a700af2d16599d05a81891dd ****/
 		%feature("compactdefaultargs") MakeThickSolidByJoin;
 		%feature("autodoc", "Constructs a hollowed solid from the solid s by removing the set of faces closingfaces from s, where: offset defines the thickness of the walls. its sign indicates which side of the surface of the solid the hollowed shape is built on; - tol defines the tolerance criterion for coincidence in generated shapes; - mode defines the construction type of parallels applied to free edges of shape s. currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value brepoffset_skin; intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if intersection is true, the intersection is calculated by taking account of all parallels generated; this computation method is more general as it avoids self-intersections generated in the offset shape from features of small dimensions on shape s, however this method has not been completely implemented and therefore is not recommended for use; - selfinter tells the algorithm whether a computation to eliminate self-intersections needs to be applied to the resulting shape. however, as this functionality is not yet implemented, you should use the default value (false); - join defines how to fill the holes that may appear between parallels to the two adjacent faces. it may take values geomabs_arc or geomabs_intersection: - if join is equal to geomabs_arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if join is equal to geomabs_intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. removeintedges flag defines whether to remove the internal edges from the result or not. warnings since the algorithm of makethicksolid is based on makeoffsetshape algorithm, the warnings are the same as for makeoffsetshape.
 
@@ -2737,12 +2741,14 @@ Join: GeomAbs_JoinType,optional
 	default value is GeomAbs_Arc
 RemoveIntEdges: bool,optional
 	default value is Standard_False
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") MakeThickSolidByJoin;
-		void MakeThickSolidByJoin(const TopoDS_Shape & S, const TopTools_ListOfShape & ClosingFaces, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False);
+		void MakeThickSolidByJoin(const TopoDS_Shape & S, const TopTools_ListOfShape & ClosingFaces, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** MakeThickSolidBySimple ******************/
 		/**** md5 signature: 61ce1557142588e14d9829f511172d15 ****/

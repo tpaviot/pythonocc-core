@@ -27,6 +27,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
+X3DOM_RELEASE = "1.8.2"
 
 def spinning_cursor():
     while True:
@@ -69,7 +70,7 @@ HEADER = """
             position: absolute;
             left: 1%;
             bottom: 2%;
-            height: 38px;
+            height: 19px;
             width: 280px;
             border-radius: 5px;
             border: 2px solid #f7941e;
@@ -111,9 +112,7 @@ BODY = """
 <body>
     @X3DSCENE@
     <div id="pythonocc_rocks">
-        pythonocc-@VERSION@ <a href="https://www.x3dom.org" target="_blank">x3dom</a> renderer
-        <br>Check our blog at
-        <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
+        pythonocc-@VERSION@ <a href="https://www.x3dom.org" target="_blank">x3dom @X3DOMVERSION@</a> renderer
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
@@ -251,7 +250,7 @@ class HTMLBody:
                 self._axis_plane_zoom_factor,
                 self._axis_plane_zoom_factor,
             )
-            # global rotateso that z is aligne properly
+            # global rotateso that z is align properly
         x3dcontent += (
             '<transform id="glbal_scene_rotation_Id" rotation="1 0 0 -1.57079632679">'
         )
@@ -270,6 +269,7 @@ class HTMLBody:
         x3dcontent += "</transform>"
         x3dcontent += "\t\t</Scene>\n\t</x3d>\n"
         body_str = body_str.replace("@X3DSCENE@", x3dcontent)
+        body_str = body_str.replace("@X3DOMVERSION@", X3DOM_RELEASE)
         return body_str
 
 
@@ -500,7 +500,7 @@ class X3DomRenderer:
 
     def generate_html_file(self, axes_plane, axes_plane_zoom_factor):
         """Generate the HTML file to be rendered wy the web browser
-        axes_plane: a boolean, telles wether or not display axes
+        axes_plane: a boolean, tells whether or not display axes
         """
         with open(self._html_filename, "w") as html_file:
             html_file.write("<!DOCTYPE HTML>\n")

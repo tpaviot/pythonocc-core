@@ -36,6 +36,8 @@ class Image_Format(IntEnum):
     Image_Format_BGRF: int = ...
     Image_Format_RGBAF: int = ...
     Image_Format_BGRAF: int = ...
+    Image_Format_RGF_half: int = ...
+    Image_Format_RGBAF_half: int = ...
 
 Image_Format_UNKNOWN = Image_Format.Image_Format_UNKNOWN
 Image_Format_Gray = Image_Format.Image_Format_Gray
@@ -53,6 +55,8 @@ Image_Format_RGBF = Image_Format.Image_Format_RGBF
 Image_Format_BGRF = Image_Format.Image_Format_BGRF
 Image_Format_RGBAF = Image_Format.Image_Format_RGBAF
 Image_Format_BGRAF = Image_Format.Image_Format_BGRAF
+Image_Format_RGF_half = Image_Format.Image_Format_RGF_half
+Image_Format_RGBAF_half = Image_Format.Image_Format_RGBAF_half
 
 
 #classnotwrapped

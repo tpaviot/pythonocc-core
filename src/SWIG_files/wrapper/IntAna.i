@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTANADOCSTRING
 "IntAna module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intana.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intana.html"
 %enddef
 %module (package="OCC.Core", docstring=INTANADOCSTRING) IntAna
 
@@ -75,7 +75,7 @@ enum IntAna_ResultType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IntAna_ResultType(IntEnum):
@@ -1175,7 +1175,7 @@ theOpposite: bool
 		/****************** Parameters ******************/
 		/**** md5 signature: 1a69ef9c9de63fa7c201d4948035bbbc ****/
 		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "Returns the paramaters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range n.
+		%feature("autodoc", "Returns the parameters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range n.
 
 Parameters
 ----------
@@ -1420,7 +1420,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: c899ef71b547bd2db47a92525a93d4e8 ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween a sphere and a cone.
+		%feature("autodoc", "Creates the intersection between a sphere and a cone.
 
 Parameters
 ----------
@@ -1437,7 +1437,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: 83c0e66baae701351794bdef3237d1c0 ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween two cones.
+		%feature("autodoc", "Creates the intersection between two cones.
 
 Parameters
 ----------
@@ -1454,7 +1454,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: c75df91c18f3a3c576cfd0718237e421 ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween plane and torus.
+		%feature("autodoc", "Creates the intersection between plane and torus.
 
 Parameters
 ----------
@@ -1471,7 +1471,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: f5ac6f131f5a59a873c78e730effc98f ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween cylinder and torus.
+		%feature("autodoc", "Creates the intersection between cylinder and torus.
 
 Parameters
 ----------
@@ -1488,7 +1488,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: e4e77874a454e3533ea55734015b9474 ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween cone and torus.
+		%feature("autodoc", "Creates the intersection between cone and torus.
 
 Parameters
 ----------
@@ -1505,7 +1505,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: 97435d4d72d5795ad710cd68d360d41b ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween sphere and torus.
+		%feature("autodoc", "Creates the intersection between sphere and torus.
 
 Parameters
 ----------
@@ -1522,7 +1522,7 @@ None
 		/****************** IntAna_QuadQuadGeo ******************/
 		/**** md5 signature: a10fe1606b42c6e442296cd2783bbcce ****/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
-		%feature("autodoc", "Creates the intersection beween two toruses.
+		%feature("autodoc", "Creates the intersection between two toruses.
 
 Parameters
 ----------
@@ -1621,7 +1621,7 @@ gp_Lin
 		/****************** NbSolutions ******************/
 		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
 		%feature("compactdefaultargs") NbSolutions;
-		%feature("autodoc", "Returns the number of interesections. the possible intersections are : - 1 point - 1 or 2 line(s) - 1 point and 1 line - 1 circle - 1 ellipse - 1 parabola - 1 or 2 hyperbola(s).
+		%feature("autodoc", "Returns the number of intersections. the possible intersections are : - 1 point - 1 or 2 line(s) - 1 point and 1 line - 1 circle - 1 ellipse - 1 parabola - 1 or 2 hyperbola(s).
 
 Returns
 -------

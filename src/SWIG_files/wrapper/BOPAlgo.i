@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BOPALGODOCSTRING
 "BOPAlgo module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopalgo.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bopalgo.html"
 %enddef
 %module (package="OCC.Core", docstring=BOPALGODOCSTRING) BOPAlgo
 
@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopalgo.html"
 #include<TopoDS_module.hxx>
 #include<TopTools_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<IntTools_module.hxx>
 #include<BOPDS_module.hxx>
 #include<Bnd_module.hxx>
@@ -79,6 +80,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopalgo.html"
 %import TopoDS.i
 %import TopTools.i
 %import Message.i
+%import TColStd.i
 %import IntTools.i
 %import BOPDS.i
 %import Bnd.i
@@ -125,7 +127,7 @@ enum BOPAlgo_GlueEnum {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BOPAlgo_CheckStatus(IntEnum):
@@ -698,21 +700,6 @@ None
 ") SetParallelMode;
 		static void SetParallelMode(const Standard_Boolean theNewMode);
 
-		/****************** SetProgressIndicator ******************/
-		/**** md5 signature: 57981193097658933e1f62427ed993d3 ****/
-		%feature("compactdefaultargs") SetProgressIndicator;
-		%feature("autodoc", "Set the progress indicator object.
-
-Parameters
-----------
-theProgress: Message_ProgressScope
-
-Returns
--------
-None
-") SetProgressIndicator;
-		void SetProgressIndicator(const Message_ProgressScope & theProgress);
-
 		/****************** SetRunParallel ******************/
 		/**** md5 signature: bf7fbc3e9b126cd865579ef58026ce14 ****/
 		%feature("compactdefaultargs") SetRunParallel;
@@ -758,6 +745,88 @@ bool
 
 
 %extend BOPAlgo_Options {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************
+* class BOPAlgo_PISteps *
+************************/
+class BOPAlgo_PISteps {
+	public:
+		/****************** BOPAlgo_PISteps ******************/
+		/**** md5 signature: 678f847738ab187532af2fc55a728601 ****/
+		%feature("compactdefaultargs") BOPAlgo_PISteps;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theNbOp: int
+
+Returns
+-------
+None
+") BOPAlgo_PISteps;
+		 BOPAlgo_PISteps(const Standard_Integer theNbOp);
+
+		/****************** ChangeSteps ******************/
+		/**** md5 signature: 6afaf1bdd0c07a7da0643b663ae7e1bf ****/
+		%feature("compactdefaultargs") ChangeSteps;
+		%feature("autodoc", "Returns modifiable steps.
+
+Returns
+-------
+TColStd_Array1OfReal
+") ChangeSteps;
+		TColStd_Array1OfReal & ChangeSteps();
+
+		/****************** GetStep ******************/
+		/**** md5 signature: 085c03e320fb55492a498c74030ef52d ****/
+		%feature("compactdefaultargs") GetStep;
+		%feature("autodoc", "Returns the step assigned to the operation.
+
+Parameters
+----------
+theOperation: int
+
+Returns
+-------
+float
+") GetStep;
+		Standard_Real GetStep(const Standard_Integer theOperation);
+
+		/****************** SetStep ******************/
+		/**** md5 signature: 0ecefcccd3c3f72bac80ecf106cf7705 ****/
+		%feature("compactdefaultargs") SetStep;
+		%feature("autodoc", "Assign the value thestep to theoperation.
+
+Parameters
+----------
+theOperation: int
+theStep: float
+
+Returns
+-------
+None
+") SetStep;
+		void SetStep(const Standard_Integer theOperation, const Standard_Real theStep);
+
+		/****************** Steps ******************/
+		/**** md5 signature: 5fc38fb11ebee5e2c132b891668077b8 ****/
+		%feature("compactdefaultargs") Steps;
+		%feature("autodoc", "Returns the steps.
+
+Returns
+-------
+TColStd_Array1OfReal
+") Steps;
+		const TColStd_Array1OfReal & Steps();
+
+};
+
+
+%extend BOPAlgo_PISteps {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -889,7 +958,7 @@ bool
 class BOPAlgo_Tools {
 	public:
 		/****************** ClassifyFaces ******************/
-		/**** md5 signature: 7a3a4e079fbca663eebea4065ac21345 ****/
+		/**** md5 signature: aecd30a1f788074add579e534de83f3d ****/
 		%feature("compactdefaultargs") ClassifyFaces;
 		%feature("autodoc", "Classifies the faces <thefaces> relatively solids <thesolids>. the in faces for solids are stored into output data map <theinparts>. //! the map <thesolidsif> contains internal faces of the solids, to avoid their additional classification. //! firstly, it checks the intersection of bounding boxes of the shapes. if the box is not stored in the <theshapeboxmap> map, it builds the box. if the bounding boxes of solid and face are interfering the classification is performed. //! it is assumed that all faces and solids are already intersected and do not have any geometrically coinciding parts without topological sharing of these parts.
 
@@ -904,12 +973,14 @@ theShapeBoxMap: TopTools_DataMapOfShapeBox,optional
 	default value is TopTools_DataMapOfShapeBox()
 theSolidsIF: TopTools_DataMapOfShapeListOfShape,optional
 	default value is TopTools_DataMapOfShapeListOfShape()
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") ClassifyFaces;
-		static void ClassifyFaces(const TopTools_ListOfShape & theFaces, const TopTools_ListOfShape & theSolids, const Standard_Boolean theRunParallel, opencascade::handle<IntTools_Context> & theContext, TopTools_IndexedDataMapOfShapeListOfShape & theInParts, const TopTools_DataMapOfShapeBox & theShapeBoxMap = TopTools_DataMapOfShapeBox(), const TopTools_DataMapOfShapeListOfShape & theSolidsIF = TopTools_DataMapOfShapeListOfShape());
+		static void ClassifyFaces(const TopTools_ListOfShape & theFaces, const TopTools_ListOfShape & theSolids, const Standard_Boolean theRunParallel, opencascade::handle<IntTools_Context> & theContext, TopTools_IndexedDataMapOfShapeListOfShape & theInParts, const TopTools_DataMapOfShapeBox & theShapeBoxMap = TopTools_DataMapOfShapeBox(), const TopTools_DataMapOfShapeListOfShape & theSolidsIF = TopTools_DataMapOfShapeListOfShape(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ComputeToleranceOfCB ******************/
 		/**** md5 signature: e685c89cf11769ed8a1377be0947b846 ****/
@@ -951,7 +1022,7 @@ int
 		/****************** FillInternals ******************/
 		/**** md5 signature: 114b79f8adcd1665a2acbeeb894b98bb ****/
 		%feature("compactdefaultargs") FillInternals;
-		%feature("autodoc", "Classifies the given parts relatively the given solids and fills the solids with the parts classified as internal. //! @param thesolids - the solids to put internals to @param theparts - the parts to classify relatively solids @param theimages - possible images of the parts that has to be classified @param thecontext - cashed geometrical tools to speed-up classifications.
+		%feature("autodoc", "Classifies the given parts relatively the given solids and fills the solids with the parts classified as internal. //! @param thesolids - the solids to put internals to @param theparts - the parts to classify relatively solids @param theimages - possible images of the parts that has to be classified @param thecontext - cached geometrical tools to speed-up classifications.
 
 Parameters
 ----------
@@ -1218,15 +1289,20 @@ TopTools_ListOfShape
 class BOPAlgo_Algo : public BOPAlgo_Options {
 	public:
 		/****************** Perform ******************/
-		/**** md5 signature: e23b98e5ba6fc1b2692a5d6fc76fd990 ****/
+		/**** md5 signature: 398f71859219956837273801c6ed1f07 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "The main method to implement the operation providing the range allows to enable progress indicator user break functionalities.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -2162,15 +2238,20 @@ BOPAlgo_Operation
 		BOPAlgo_Operation  OperationType();
 
 		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/**** md5 signature: 237808a6b51056c9f8e292d343f26d7d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs analysis.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform();
+		void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 
         %feature("autodoc","1");
@@ -2522,6 +2603,40 @@ TopoDS_Shape
 	}
 };
 
+/*****************************
+* class BOPAlgo_ParallelAlgo *
+*****************************/
+%nodefaultctor BOPAlgo_ParallelAlgo;
+class BOPAlgo_ParallelAlgo : public BOPAlgo_Algo {
+	public:
+		/****************** SetProgressRange ******************/
+		/**** md5 signature: e46fe49a703ffe9531bdc8614884d302 ****/
+		%feature("compactdefaultargs") SetProgressRange;
+		%feature("autodoc", "Sets the range for a single run.
+
+Parameters
+----------
+theRange: Message_ProgressRange
+
+Returns
+-------
+None
+") SetProgressRange;
+		void SetProgressRange(const Message_ProgressRange & theRange);
+
+};
+
+
+%extend BOPAlgo_ParallelAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Perform(self):
+		pass
+	}
+};
+
 /***************************
 * class BOPAlgo_PaveFiller *
 ***************************/
@@ -2647,15 +2762,20 @@ BOPDS_PDS
 		BOPDS_PDS PDS();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetArguments ******************/
 		/**** md5 signature: c8050caf960534f7d5c8a2cd210eb861 ****/
@@ -2792,15 +2912,20 @@ None
 		void AddStartElement(const TopoDS_Shape & theS);
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the algorithm.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Shells ******************/
 		/**** md5 signature: 253534f051afc8c1348ee153669d53c1 ****/
@@ -2907,15 +3032,20 @@ None
 		static void MakeWire(TopTools_ListOfShape & theLE, TopoDS_Wire & theW);
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetContext ******************/
 		/**** md5 signature: e78608a6b667b26dfbb5221975ad17a2 ****/
@@ -2989,6 +3119,7 @@ BOPAlgo_WireEdgeSet
 ************************/
 class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 	public:
+		class NbShapes {};
 		/****************** BOPAlgo_Builder ******************/
 		/**** md5 signature: 1f86d9941e9ea86a4622ff7ec326d7fc ****/
 		%feature("compactdefaultargs") BOPAlgo_Builder;
@@ -3042,9 +3173,9 @@ TopTools_ListOfShape
 		const TopTools_ListOfShape & Arguments();
 
 		/****************** BuildBOP ******************/
-		/**** md5 signature: bf05d8cf5f4ff010d1c03062f4eaf238 ****/
+		/**** md5 signature: 2e1b9ea27d66f788b2416af1e795c40a ****/
 		%feature("compactdefaultargs") BuildBOP;
-		%feature("autodoc", "Builds the result shape according to the given states for the objects and tools. these states can be unambiguously converted into the boolean operation type. thus, it performs the boolean operation on the given groups of shapes. //! the result is built basing on the result of builder operation (gf or any other). the only condition for the builder is that the splits of faces should be created and classified relatively solids. //! the method uses classification approach for choosing the faces which will participate in building the result shape: - all faces from each group having the given state for the opposite group will be taken into result. //! such approach shows better results (in comparison with bopalgo_buildersolid approach) when working with open solids. however, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! history is not created for the solids in this method. //! to avoid pollution of the report of builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. but, if the new report is not given, the builder report will be used. so, even if builder passed without any errors, but some error has been stored into its report in this method, for the following calls the builder report must be cleared. //! the method may set the following errors: - bopalgo_alertbuilderfailed - building operation has not been performed yet or failed; - bopalgo_alertbopnotset - invalid bop type is given (common/fuse/cut/cut21 are supported); - bopalgo_alerttoofewarguments - arguments are not given; - bopalgo_alertunknownshape - the shape is unknown for the operation. //! parameters: @param theobjects - the group of objects for bop; @param theobjstate - state for objects faces to pass into result; @param thetools - the group of tools for bop; @param theobjstate - state for tools faces to pass into result; @param thereport - the alternative report to avoid pollution of the main one.
+		%feature("autodoc", "Builds the result shape according to the given states for the objects and tools. these states can be unambiguously converted into the boolean operation type. thus, it performs the boolean operation on the given groups of shapes. //! the result is built basing on the result of builder operation (gf or any other). the only condition for the builder is that the splits of faces should be created and classified relatively solids. //! the method uses classification approach for choosing the faces which will participate in building the result shape: - all faces from each group having the given state for the opposite group will be taken into result. //! such approach shows better results (in comparison with bopalgo_buildersolid approach) when working with open solids. however, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! history is not created for the solids in this method. //! to avoid pollution of the report of builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. but, if the new report is not given, the builder report will be used. so, even if builder passed without any errors, but some error has been stored into its report in this method, for the following calls the builder report must be cleared. //! the method may set the following errors: - bopalgo_alertbuilderfailed - building operation has not been performed yet or failed; - bopalgo_alertbopnotset - invalid bop type is given (common/fuse/cut/cut21 are supported); - bopalgo_alerttoofewarguments - arguments are not given; - bopalgo_alertunknownshape - the shape is unknown for the operation. //! parameters: @param theobjects - the group of objects for bop; @param theobjstate - state for objects faces to pass into result; @param thetools - the group of tools for bop; @param thetoolsstate - state for tools faces to pass into result; @param thereport - the alternative report to avoid pollution of the main one.
 
 Parameters
 ----------
@@ -3052,6 +3183,7 @@ theObjects: TopTools_ListOfShape
 theObjState: TopAbs_State
 theTools: TopTools_ListOfShape
 theToolsState: TopAbs_State
+theRange: Message_ProgressRange
 theReport: Message_Report,optional
 	default value is NULL
 
@@ -3059,18 +3191,19 @@ Returns
 -------
 None
 ") BuildBOP;
-		virtual void BuildBOP(const TopTools_ListOfShape & theObjects, const TopAbs_State theObjState, const TopTools_ListOfShape & theTools, const TopAbs_State theToolsState, opencascade::handle<Message_Report > theReport = NULL);
+		virtual void BuildBOP(const TopTools_ListOfShape & theObjects, const TopAbs_State theObjState, const TopTools_ListOfShape & theTools, const TopAbs_State theToolsState, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = NULL);
 
 		/****************** BuildBOP ******************/
-		/**** md5 signature: 5f2c4d2c7b32fe57c63ffb4571f06910 ****/
+		/**** md5 signature: 18c5ea0ce9eb413167db72fc87c235d6 ****/
 		%feature("compactdefaultargs") BuildBOP;
-		%feature("autodoc", "Builds the result of boolean operation of given type basing on the result of builder operation (gf or any other). //! the method converts the given type of operation into the states for the objects and tools required for their face to pass into result and performs the call to the same method, but with states instead of operation type. //! the conversion looks as follows: - common is built from the faces of objects located in any of the tools and vice versa. - fuse is built from the faces out of all given shapes; - cut is built from the faces of the objects out of the tools and faces of the tools located in solids of the objects. //! @param theobjects - the group of objects for bop; @param thetools - the group of tools for bop; @param theoperation - the bop type; @param thereport - the alternative report to avoid pollution of the global one.
+		%feature("autodoc", "Builds the result of boolean operation of given type basing on the result of builder operation (gf or any other). //! the method converts the given type of operation into the states for the objects and tools required for their face to pass into result and performs the call to the same method, but with states instead of operation type. //! the conversion looks as follows: - common is built from the faces of objects located in any of the tools and vice versa. - fuse is built from the faces out of all given shapes; - cut is built from the faces of the objects out of the tools and faces of the tools located in solids of the objects. //! @param theobjects - the group of objects for bop; @param thetools - the group of tools for bop; @param theoperation - the bop type; @param therange - the parameter to progressindicator @param thereport - the alternative report to avoid pollution of the global one.
 
 Parameters
 ----------
 theObjects: TopTools_ListOfShape
 theTools: TopTools_ListOfShape
 theOperation: BOPAlgo_Operation
+theRange: Message_ProgressRange
 theReport: Message_Report,optional
 	default value is NULL
 
@@ -3078,7 +3211,7 @@ Returns
 -------
 None
 ") BuildBOP;
-		void BuildBOP(const TopTools_ListOfShape & theObjects, const TopTools_ListOfShape & theTools, const BOPAlgo_Operation theOperation, opencascade::handle<Message_Report > theReport = NULL);
+		void BuildBOP(const TopTools_ListOfShape & theObjects, const TopTools_ListOfShape & theTools, const BOPAlgo_Operation theOperation, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = NULL);
 
 		/****************** CheckInverted ******************/
 		/**** md5 signature: ce3c18df15bc3282101b99ee82f78b47 ****/
@@ -3180,30 +3313,37 @@ BOPAlgo_PPaveFiller
 		BOPAlgo_PPaveFiller PPaveFiller();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the operation. the intersection will be performed also.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** PerformWithFiller ******************/
-		/**** md5 signature: ad9328f46e269c9c83bdf7ea4e1b2493 ****/
+		/**** md5 signature: dcd0b26cc1d80352d6565f05cc10fd51 ****/
 		%feature("compactdefaultargs") PerformWithFiller;
 		%feature("autodoc", "Performs the operation with the prepared filler. the intersection will not be performed in this case.
 
 Parameters
 ----------
 theFiller: BOPAlgo_PaveFiller
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") PerformWithFiller;
-		virtual void PerformWithFiller(const BOPAlgo_PaveFiller & theFiller);
+		virtual void PerformWithFiller(const BOPAlgo_PaveFiller & theFiller, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetArguments ******************/
 		/**** md5 signature: 52d846757af37684f5519c7b7f1b4940 ****/
@@ -3339,15 +3479,20 @@ TopAbs_Orientation
 		TopAbs_Orientation Orientation();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the algorithm.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetFace ******************/
 		/**** md5 signature: 5b74a256c8032110740067b9210114f8 ****/
@@ -3416,15 +3561,20 @@ TopTools_DataMapOfShapeBox
 		const TopTools_DataMapOfShapeBox & GetBoxesMap();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the construction of the solids from the given faces.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -3452,15 +3602,20 @@ None
 		 BOPAlgo_CheckerSI();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetLevelOfCheck ******************/
 		/**** md5 signature: 8b368cd9515ac3e41d12f4691644e2cf ****/
@@ -3566,15 +3721,20 @@ TopoDS_Shape
 		const TopoDS_Shape InputShape();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the operation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetShape ******************/
 		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
@@ -3757,7 +3917,7 @@ class BOPAlgo_MakerVolume : public BOPAlgo_Builder {
 		/****************** BOPAlgo_MakerVolume ******************/
 		/**** md5 signature: d0e6199b15a5886e06dc5392486c5729 ****/
 		%feature("compactdefaultargs") BOPAlgo_MakerVolume;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -3768,7 +3928,7 @@ None
 		/****************** BOPAlgo_MakerVolume ******************/
 		/**** md5 signature: d34685403aab74ebc2da37a1a29c02c6 ****/
 		%feature("compactdefaultargs") BOPAlgo_MakerVolume;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Parameters
 ----------
@@ -3836,15 +3996,20 @@ bool
 		Standard_Boolean IsIntersect();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the operation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetAvoidInternalShapes ******************/
 		/**** md5 signature: d4ee80659b0195413556579790baf956 ****/
@@ -4071,15 +4236,20 @@ BOPAlgo_Operation
 		BOPAlgo_Operation Operation();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetOperation ******************/
 		/**** md5 signature: 315e93f5dc046c73744bab20d8a0d13f ****/
@@ -4137,15 +4307,20 @@ None
 		 BOPAlgo_Splitter(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****************** Perform ******************/
-		/**** md5 signature: d73234ef092f057e6680afbd2a273a2a ****/
+		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the operation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		virtual void Perform();
+		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

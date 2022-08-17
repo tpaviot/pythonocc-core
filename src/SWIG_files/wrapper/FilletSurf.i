@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define FILLETSURFDOCSTRING
 "FilletSurf module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_filletsurf.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_filletsurf.html"
 %enddef
 %module (package="OCC.Core", docstring=FILLETSURFDOCSTRING) FilletSurf
 
@@ -109,7 +109,7 @@ enum FilletSurf_ErrorTypeStatus {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class FilletSurf_StatusDone(IntEnum):
@@ -161,7 +161,7 @@ class FilletSurf_Builder {
 		/****************** FilletSurf_Builder ******************/
 		/**** md5 signature: c321636a39909ce21004c881f9c9aefa ****/
 		%feature("compactdefaultargs") FilletSurf_Builder;
-		%feature("autodoc", "Initialize of the informations necessary for the computation of the fillet on the shape s from a list of edges e and a radius r. //! ta is the angular tolerance tapp3d is the 3d approximation tolerance tapp2d is the 2d approximation tolerance.
+		%feature("autodoc", "Initialize of the information necessary for the computation of the fillet on the shape s from a list of edges e and a radius r. //! ta is the angular tolerance tapp3d is the 3d approximation tolerance tapp2d is the 2d approximation tolerance.
 
 Parameters
 ----------
@@ -394,7 +394,7 @@ FilletSurf_StatusType
 		/****************** StatusError ******************/
 		/**** md5 signature: 5167445f2539889d85097497988c0fab ****/
 		%feature("compactdefaultargs") StatusError;
-		%feature("autodoc", "Gives informations about error status if isdone=isnotok returns edgenotg1: the edges are not g1 facesnotg1 : two connected faces on a same support are not g1 edgenotonshape: the edge is not on shape notsharpedge: the edge is not sharp pbfilletcompute: problem during the computation of the fillet.
+		%feature("autodoc", "Gives information about error status if isdone=isnotok returns edgenotg1: the edges are not g1 facesnotg1 : two connected faces on a same support are not g1 edgenotonshape: the edge is not on shape notsharpedge: the edge is not sharp pbfilletcompute: problem during the computation of the fillet.
 
 Returns
 -------

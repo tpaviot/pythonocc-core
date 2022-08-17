@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFPRSDOCSTRING
 "XCAFPrs module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafprs.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafprs.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFPRSDOCSTRING) XCAFPrs
 
@@ -119,7 +119,7 @@ enum  {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -738,6 +738,17 @@ Returns
 None
 ") XCAFPrs_Style;
 		 XCAFPrs_Style();
+
+		/****************** BaseColorTexture ******************/
+		/**** md5 signature: 5593aadcb24e7c7c552097db0852e354 ****/
+		%feature("compactdefaultargs") BaseColorTexture;
+		%feature("autodoc", "Return base color texture.
+
+Returns
+-------
+opencascade::handle<Image_Texture>
+") BaseColorTexture;
+		const opencascade::handle<Image_Texture> & BaseColorTexture();
 
 
             %feature("autodoc", "1");

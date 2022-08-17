@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define FAIRCURVEDOCSTRING
 "FairCurve module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_faircurve.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_faircurve.html"
 %enddef
 %module (package="OCC.Core", docstring=FAIRCURVEDOCSTRING) FairCurve
 
@@ -76,7 +76,7 @@ enum FairCurve_AnalysisCode {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class FairCurve_AnalysisCode(IntEnum):
@@ -679,7 +679,7 @@ E: float
 		/****************** Variable ******************/
 		/**** md5 signature: fa8df2d29e345b3cf776461e366afde6 ****/
 		%feature("compactdefaultargs") Variable;
-		%feature("autodoc", "Compute the variables <x> wich correspond with the field <mypoles>.
+		%feature("autodoc", "Compute the variables <x> which correspond with the field <mypoles>.
 
 Parameters
 ----------
@@ -978,7 +978,7 @@ FairCurve_AnalysisCode
 		/****************** Variable ******************/
 		/**** md5 signature: 6b3488daaca93e6e9325a2eab7fcdfd7 ****/
 		%feature("compactdefaultargs") Variable;
-		%feature("autodoc", "Compute the variables <x> wich correspond with the field <mypoles>.
+		%feature("autodoc", "Compute the variables <x> which correspond with the field <mypoles>.
 
 Parameters
 ----------
@@ -1061,7 +1061,7 @@ FairCurve_AnalysisCode
 		/****************** Variable ******************/
 		/**** md5 signature: 6b3488daaca93e6e9325a2eab7fcdfd7 ****/
 		%feature("compactdefaultargs") Variable;
-		%feature("autodoc", "Compute the variables <x> wich correspond with the field <mypoles>.
+		%feature("autodoc", "Compute the variables <x> which correspond with the field <mypoles>.
 
 Parameters
 ----------

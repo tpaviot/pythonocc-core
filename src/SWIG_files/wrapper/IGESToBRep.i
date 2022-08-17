@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IGESTOBREPDOCSTRING
 "IGESToBRep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igestobrep.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igestobrep.html"
 %enddef
 %module (package="OCC.Core", docstring=IGESTOBREPDOCSTRING) IGESToBRep
 
@@ -81,7 +81,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -146,7 +146,7 @@ None
 		/****************** IsBRepEntity ******************/
 		/**** md5 signature: 8c2bfa7b35a4b91f6ff083af713cb642 ****/
 		%feature("compactdefaultargs") IsBRepEntity;
-		%feature("autodoc", "Return true if the igesentity can be transfered by transferbrepentity. ex: vertexlist, edgelist, loop, face, shell, manifold solid brep object from igessolid : 502, 504, 508, 510, 514, 186.
+		%feature("autodoc", "Return true if the igesentity can be transferred by transferbrepentity. ex: vertexlist, edgelist, loop, face, shell, manifold solid brep object from igessolid : 502, 504, 508, 510, 514, 186.
 
 Parameters
 ----------
@@ -161,7 +161,7 @@ bool
 		/****************** IsBasicCurve ******************/
 		/**** md5 signature: 42ec9ba034e2ab3c6c5dfcfcccd225d2 ****/
 		%feature("compactdefaultargs") IsBasicCurve;
-		%feature("autodoc", "Return true if the igesentity can be transfered by transferbasiccurve. ex: circulararc, conicarc, line, copiousdata, bsplinecurve, splinecurve... from igesgeom : 104,110,112,126.
+		%feature("autodoc", "Return true if the igesentity can be transferred by transferbasiccurve. ex: circulararc, conicarc, line, copiousdata, bsplinecurve, splinecurve... from igesgeom : 104,110,112,126.
 
 Parameters
 ----------
@@ -176,7 +176,7 @@ bool
 		/****************** IsBasicSurface ******************/
 		/**** md5 signature: d0dc8dd41529b6d3fef6c4adced6727d ****/
 		%feature("compactdefaultargs") IsBasicSurface;
-		%feature("autodoc", "Return true if the igesentity can be transfered by transferbasicsurface. ex: bsplinesurface, splinesurface... from igesgeom : 114,128.
+		%feature("autodoc", "Return true if the igesentity can be transferred by transferbasicsurface. ex: bsplinesurface, splinesurface... from igesgeom : 114,128.
 
 Parameters
 ----------
@@ -191,7 +191,7 @@ bool
 		/****************** IsCurveAndSurface ******************/
 		/**** md5 signature: b96b33689780417661991af3b76ddee1 ****/
 		%feature("compactdefaultargs") IsCurveAndSurface;
-		%feature("autodoc", "Return true if the igesentity can be transfered by transfercurveandsurface. ex: all igesentity from igesgeom.
+		%feature("autodoc", "Return true if the igesentity can be transferred by transfercurveandsurface. ex: all igesentity from igesgeom.
 
 Parameters
 ----------
@@ -206,7 +206,7 @@ bool
 		/****************** IsTopoCurve ******************/
 		/**** md5 signature: 8beaa6c0e1d32256ba611244ed46c96d ****/
 		%feature("compactdefaultargs") IsTopoCurve;
-		%feature("autodoc", "Return true if the igesentity can be transfered by transfertopocurve. ex: all curves from igesgeom : all basic curves,102,130,142,144.
+		%feature("autodoc", "Return true if the igesentity can be transferred by transfertopocurve. ex: all curves from igesgeom : all basic curves,102,130,142,144.
 
 Parameters
 ----------
@@ -221,7 +221,7 @@ bool
 		/****************** IsTopoSurface ******************/
 		/**** md5 signature: 6eadf76f141e5e89c1e625ef86dd94cb ****/
 		%feature("compactdefaultargs") IsTopoSurface;
-		%feature("autodoc", "Return true if the igesentity can be transfered by transfertoposurface. ex: all surfaces from igesgeom : all basic surfaces,108,118,120,122,141,143.
+		%feature("autodoc", "Return true if the igesentity can be transferred by transfertoposurface. ex: all surfaces from igesgeom : all basic surfaces,108,118,120,122,141,143.
 
 Parameters
 ----------
@@ -1166,7 +1166,7 @@ opencascade::handle<ShapeExtend_WireData>
 		/****************** WireData2d ******************/
 		/**** md5 signature: f13b6c48a5d56ce535e5140fc6c3c4ac ****/
 		%feature("compactdefaultargs") WireData2d;
-		%feature("autodoc", "Returns the the wire from 2d curves (edges contain pcurves only).
+		%feature("autodoc", "Returns the wire from 2d curves (edges contain pcurves only).
 
 Returns
 -------
@@ -1973,7 +1973,7 @@ None
 		/****************** TransferBSplineSurface ******************/
 		/**** md5 signature: 6f986be59ffad8d912ca9bc145330b80 ****/
 		%feature("compactdefaultargs") TransferBSplineSurface;
-		%feature("autodoc", "Returns bsplinesurface from geom if the transfer has succeded.
+		%feature("autodoc", "Returns bsplinesurface from geom if the transfer has succeeded.
 
 Parameters
 ----------
@@ -1988,7 +1988,7 @@ opencascade::handle<Geom_BSplineSurface>
 		/****************** TransferBasicSurface ******************/
 		/**** md5 signature: d474fcac88568463bac1af7b1b00f5ad ****/
 		%feature("compactdefaultargs") TransferBasicSurface;
-		%feature("autodoc", "Returns surface from geom if the last transfer has succeded.
+		%feature("autodoc", "Returns surface from geom if the last transfer has succeeded.
 
 Parameters
 ----------
@@ -2003,7 +2003,7 @@ opencascade::handle<Geom_Surface>
 		/****************** TransferPlaneSurface ******************/
 		/**** md5 signature: 2dc0fec5d663ef8184fbdedc63835c00 ****/
 		%feature("compactdefaultargs") TransferPlaneSurface;
-		%feature("autodoc", "Returns plane from geom if the transfer has succeded.
+		%feature("autodoc", "Returns plane from geom if the transfer has succeeded.
 
 Parameters
 ----------
@@ -2018,7 +2018,7 @@ opencascade::handle<Geom_Plane>
 		/****************** TransferRigthConicalSurface ******************/
 		/**** md5 signature: ffa494667ebcfc55698bbc74c2df3e62 ****/
 		%feature("compactdefaultargs") TransferRigthConicalSurface;
-		%feature("autodoc", "Returns conicalsurface from geom if the transfer has succeded.
+		%feature("autodoc", "Returns conicalsurface from geom if the transfer has succeeded.
 
 Parameters
 ----------
@@ -2033,7 +2033,7 @@ opencascade::handle<Geom_ConicalSurface>
 		/****************** TransferRigthCylindricalSurface ******************/
 		/**** md5 signature: 647a61ea89b6e94f7e0ea1b0e3397b1a ****/
 		%feature("compactdefaultargs") TransferRigthCylindricalSurface;
-		%feature("autodoc", "Returns cylindricalsurface from geom if the transfer has succeded.
+		%feature("autodoc", "Returns cylindricalsurface from geom if the transfer has succeeded.
 
 Parameters
 ----------
@@ -2048,7 +2048,7 @@ opencascade::handle<Geom_CylindricalSurface>
 		/****************** TransferSphericalSurface ******************/
 		/**** md5 signature: e27706f05b86cf919954067355d7e37a ****/
 		%feature("compactdefaultargs") TransferSphericalSurface;
-		%feature("autodoc", "Returns sphericalsurface from geom if the transfer has succeded.
+		%feature("autodoc", "Returns sphericalsurface from geom if the transfer has succeeded.
 
 Parameters
 ----------
@@ -2063,7 +2063,7 @@ opencascade::handle<Geom_SphericalSurface>
 		/****************** TransferSplineSurface ******************/
 		/**** md5 signature: 7c60488b9fd6d9d70c76c5657fbec318 ****/
 		%feature("compactdefaultargs") TransferSplineSurface;
-		%feature("autodoc", "Returns bsplinesurface from geom if the transfer has succeded.
+		%feature("autodoc", "Returns bsplinesurface from geom if the transfer has succeeded.
 
 Parameters
 ----------
@@ -2078,7 +2078,7 @@ opencascade::handle<Geom_BSplineSurface>
 		/****************** TransferToroidalSurface ******************/
 		/**** md5 signature: 790209401c0642f4b97f0279a92e4514 ****/
 		%feature("compactdefaultargs") TransferToroidalSurface;
-		%feature("autodoc", "Returns sphericalsurface from geom if the transfer has succeded.
+		%feature("autodoc", "Returns sphericalsurface from geom if the transfer has succeeded.
 
 Parameters
 ----------

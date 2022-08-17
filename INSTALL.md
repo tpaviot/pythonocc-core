@@ -19,14 +19,13 @@ Requirements
 pythonOCC needs the following libraries or programs to be installed before you
 can compile/use it :
 
-*   the python programming language (<http://www.python.org>). Python 3.x is required. Python 2
-is officially dropped since the release 7.5.0.
+*   the python programming language (<http://www.python.org>). Python 3.x is required.
 
-*   OpenCascade 7.5.2 (<https://dev.opencascade.org>), direct source download at https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=0dc2c377fc5a2d8cf065f4ec005e356240cb484c;sf=tgz
+*   OpenCascade 7.6.2 (<https://dev.opencascade.org>)
 
     IMPORTANT: OpenCASCADE has to be compiled using flag -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
 
-*   SWIG 3.0.11 or higher (<http://www.swig.org>),
+*   SWIG 4.0.2 or higher (<http://www.swig.org>)
 
 Optional
 --------

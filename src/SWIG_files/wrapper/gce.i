@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCEDOCSTRING
 "gce module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gce.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_gce.html"
 %enddef
 %module (package="OCC.Core", docstring=GCEDOCSTRING) gce
 
@@ -77,7 +77,7 @@ enum gce_ErrorType {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class gce_ErrorType(IntEnum):
@@ -2358,7 +2358,7 @@ None
 		/****************** gce_MakePln ******************/
 		/**** md5 signature: 2d1af5be7261492c27624b5286909af0 ****/
 		%feature("compactdefaultargs") gce_MakePln;
-		%feature("autodoc", "Make a pln from gp <thepln> parallel to another pln <pln> at the distance <dist> which can be greater or less than zero. in the first case the result is at the distance <dist> to the plane <pln> in the direction of the normal to <pln>. otherwize it is in the opposite direction.
+		%feature("autodoc", "Make a pln from gp <thepln> parallel to another pln <pln> at the distance <dist> which can be greater or less than zero. in the first case the result is at the distance <dist> to the plane <pln> in the direction of the normal to <pln>. otherwise it is in the opposite direction.
 
 Parameters
 ----------

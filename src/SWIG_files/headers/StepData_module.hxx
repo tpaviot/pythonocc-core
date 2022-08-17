@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -36,6 +36,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepData_FileRecognizer.hxx>
 #include<StepData_FreeFormEntity.hxx>
 #include<StepData_GeneralModule.hxx>
+#include<StepData_GlobalFactors.hxx>
 #include<StepData_GlobalNodeOfWriterLib.hxx>
 #include<StepData_HArray1OfField.hxx>
 #include<StepData_Logical.hxx>

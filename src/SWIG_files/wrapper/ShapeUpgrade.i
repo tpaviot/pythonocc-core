@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEUPGRADEDOCSTRING
 "ShapeUpgrade module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeupgrade.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapeupgrade.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
@@ -105,7 +105,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -168,7 +168,7 @@ bool
 		/****************** C0BSplineToSequenceOfC1BSplineCurve ******************/
 		/**** md5 signature: b2f124ea9a65afe841263d044caf576a ****/
 		%feature("compactdefaultargs") C0BSplineToSequenceOfC1BSplineCurve;
-		%feature("autodoc", "Converts c0 b-spline curve into sequence of c1 b-spline curves. this method splits b-spline at the knots with multiplicities equal to degree, i.e. unlike method geomconvert::c0bsplinetoarrayofc1bsplinecurve this one does not use any tolerance and therefore does not change the geometry of b-spline. returns true if c0 b-spline was successfully splitted, else returns false (if bs is c1 b-spline).
+		%feature("autodoc", "Converts c0 b-spline curve into sequence of c1 b-spline curves. this method splits b-spline at the knots with multiplicities equal to degree, i.e. unlike method geomconvert::c0bsplinetoarrayofc1bsplinecurve this one does not use any tolerance and therefore does not change the geometry of b-spline. returns true if c0 b-spline was successfully split, else returns false (if bs is c1 b-spline).
 
 Parameters
 ----------
@@ -198,7 +198,7 @@ class ShapeUpgrade_RemoveLocations : public Standard_Transient {
 		/****************** ShapeUpgrade_RemoveLocations ******************/
 		/**** md5 signature: 54dac0aa6aad1fe2656b7d5ae1b4515b ****/
 		%feature("compactdefaultargs") ShapeUpgrade_RemoveLocations;
-		%feature("autodoc", "Empy constructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -209,7 +209,7 @@ None
 		/****************** GetResult ******************/
 		/**** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ****/
 		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "Returns shape with removed locatins.
+		%feature("autodoc", "Returns shape with removed locations.
 
 Returns
 -------
@@ -520,7 +520,7 @@ None
 		/****************** Status ******************/
 		/**** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ****/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "Queries the status of last call to perform ok : no splitting was done (or no call to perform) done1: some edges were splitted done2: surface was splitted fail1: some errors occured.
+		%feature("autodoc", "Queries the status of last call to perform ok : no splitting was done (or no call to perform) done1: some edges were split done2: surface was split fail1: some errors occurred.
 
 Parameters
 ----------
@@ -1260,9 +1260,6 @@ TopoDS_Shape
 	}
 };
 
-/***************************
-* class SubSequenceOfEdges *
-***************************/
 /*************************************************
 * class ShapeUpgrade_ConvertSurfaceToBezierBasis *
 *************************************************/
@@ -1759,7 +1756,7 @@ bool
 		/****************** Status ******************/
 		/**** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ****/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "Queries the status of last call to perform ok : no splitting was done (or no call to perform) done1: some edges were splitted done2: surface was splitted done3: surface was modified without splitting fail1: some fails encountered during splitting wires fail2: face cannot be splitted.
+		%feature("autodoc", "Queries the status of last call to perform ok : no splitting was done (or no call to perform) done1: some edges were split done2: surface was split done3: surface was modified without splitting fail1: some fails encountered during splitting wires fail2: face cannot be split.
 
 Parameters
 ----------
@@ -3337,7 +3334,7 @@ None
 		/****************** Status ******************/
 		/**** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ****/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "Queries status of last call to perform() ok - no edges were splitted, wire left untouched done1 - some edges were splitted fail1 - some edges have no 3d curve (skipped) fail2 - some edges have no pcurve (skipped).
+		%feature("autodoc", "Queries status of last call to perform() ok - no edges were split, wire left untouched done1 - some edges were split fail1 - some edges have no 3d curve (skipped) fail2 - some edges have no pcurve (skipped).
 
 Parameters
 ----------
@@ -3458,7 +3455,7 @@ int
 		/****************** SetNbSplitPoints ******************/
 		/**** md5 signature: 03dde7b4fa7d112ab39d0955ccf1da2e ****/
 		%feature("compactdefaultargs") SetNbSplitPoints;
-		%feature("autodoc", "Sets the number of cutting lines by which closed face will be splitted. the resulting faces will be num+1.
+		%feature("autodoc", "Sets the number of cutting lines by which closed face will be split. the resulting faces will be num+1.
 
 Parameters
 ----------
@@ -3537,7 +3534,7 @@ None
 		/****************** SplitParams ******************/
 		/**** md5 signature: 58b035673d8a2196e251a31275012623 ****/
 		%feature("compactdefaultargs") SplitParams;
-		%feature("autodoc", "Returns the list of splitted parameters in original curve parametrisation.
+		%feature("autodoc", "Returns the list of split parameters in original curve parametrisation.
 
 Returns
 -------
@@ -3679,7 +3676,7 @@ None
 		/****************** SplitParams ******************/
 		/**** md5 signature: 58b035673d8a2196e251a31275012623 ****/
 		%feature("compactdefaultargs") SplitParams;
-		%feature("autodoc", "Returns the list of splitted parameters in original curve parametrisation.
+		%feature("autodoc", "Returns the list of split parameters in original curve parametrisation.
 
 Returns
 -------

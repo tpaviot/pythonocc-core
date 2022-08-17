@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTTOOLSDOCSTRING
 "IntTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_inttools.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_inttools.html"
 %enddef
 %module (package="OCC.Core", docstring=INTTOOLSDOCSTRING) IntTools
 
@@ -42,6 +42,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_inttools.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
@@ -54,7 +55,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_inttools.html"
 #include<Geom2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<IntSurf_module.hxx>
-#include<TColStd_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<IntPatch_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -88,6 +88,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_inttools.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import BRepAdaptor.i
 %import TopoDS.i
 %import gp.i
@@ -100,7 +101,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_inttools.html"
 %import Geom2d.i
 %import GeomAbs.i
 %import IntSurf.i
-%import TColStd.i
 %import Adaptor3d.i
 %import IntPatch.i
 %import GeomAdaptor.i
@@ -114,7 +114,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -271,6 +271,7 @@ from OCC.Core.Exception import *
 /* typedefs */
 typedef NCollection_Array1<IntTools_Range> IntTools_Array1OfRange;
 typedef NCollection_Array1<IntTools_Root> IntTools_Array1OfRoots;
+typedef TColStd_Array1OfReal IntTools_CArray1OfReal;
 typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher> IntTools_DataMapOfCurveSampleBox;
@@ -363,7 +364,7 @@ aParm: float
 		static Standard_Integer Parameter(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve, Standard_Real &OutValue);
 
 		/****************** PrepareArgs ******************/
-		/**** md5 signature: b4c98ac5b03aec6376256041a726519e ****/
+		/**** md5 signature: db11865e519dd2b6c4899b1e9a125409 ****/
 		%feature("compactdefaultargs") PrepareArgs;
 		%feature("autodoc", "No available documentation.
 
@@ -374,13 +375,13 @@ tMax: float
 tMin: float
 Discret: int
 Deflect: float
-anArgs: IntTools_CArray1OfReal
+anArgs: TColStd_Array1OfReal
 
 Returns
 -------
 int
 ") PrepareArgs;
-		static Standard_Integer PrepareArgs(BRepAdaptor_Curve & C, const Standard_Real tMax, const Standard_Real tMin, const Standard_Integer Discret, const Standard_Real Deflect, IntTools_CArray1OfReal & anArgs);
+		static Standard_Integer PrepareArgs(BRepAdaptor_Curve & C, const Standard_Real tMax, const Standard_Real tMin, const Standard_Integer Discret, const Standard_Real Deflect, TColStd_Array1OfReal & anArgs);
 
 		/****************** RemoveIdenticalRoots ******************/
 		/**** md5 signature: 105777c711c5ed7389810d8aa8b35c2b ****/
@@ -401,7 +402,7 @@ None
 		/****************** SortRoots ******************/
 		/**** md5 signature: b0ecb73396f4953e96f152f925a6cdf5 ****/
 		%feature("compactdefaultargs") SortRoots;
-		%feature("autodoc", "Sort the sequence aseq of the roots to arrange the roons in increasing order.
+		%feature("autodoc", "Sort the sequence aseq of the roots to arrange the roots in increasing order.
 
 Parameters
 ----------
@@ -455,7 +456,7 @@ None
 		 IntTools_BaseRangeSample(const Standard_Integer theDepth);
 
 		/****************** GetDepth ******************/
-		/**** md5 signature: 5b5fcf7ad77b54551dc80e457c815290 ****/
+		/**** md5 signature: 3240086606b0522e674383dfc59a8226 ****/
 		%feature("compactdefaultargs") GetDepth;
 		%feature("autodoc", "No available documentation.
 
@@ -466,7 +467,7 @@ int
 		Standard_Integer GetDepth();
 
 		/****************** SetDepth ******************/
-		/**** md5 signature: c8265c6a36782867c90a897686530314 ****/
+		/**** md5 signature: 5e77e638430ea7a494f4d91f424ddb79 ****/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "No available documentation.
 
@@ -566,7 +567,7 @@ None
 		/****************** Context ******************/
 		/**** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ****/
 		%feature("compactdefaultargs") Context;
-		%feature("autodoc", "Gets the intersecton context.
+		%feature("autodoc", "Gets the intersection context.
 
 Returns
 -------
@@ -710,7 +711,7 @@ None
 		/****************** SetContext ******************/
 		/**** md5 signature: e78608a6b667b26dfbb5221975ad17a2 ****/
 		%feature("compactdefaultargs") SetContext;
-		%feature("autodoc", "Sets the intersecton context.
+		%feature("autodoc", "Sets the intersection context.
 
 Parameters
 ----------
@@ -749,12 +750,6 @@ None
 	}
 };
 
-/**********************************
-* class IntTools_CArray1OfInteger *
-**********************************/
-/*******************************
-* class IntTools_CArray1OfReal *
-*******************************/
 /***************************
 * class IntTools_CommonPrt *
 ***************************/
@@ -1929,7 +1924,7 @@ bool
 		Standard_Boolean FindBox(const IntTools_CurveRangeSample & theRange, Bnd_Box & theBox);
 
 		/****************** GetMinRange ******************/
-		/**** md5 signature: dcc14bc1113a77b9fb168eb5763c890a ****/
+		/**** md5 signature: c20164b072a0539b77d80ec44457b89b ****/
 		%feature("compactdefaultargs") GetMinRange;
 		%feature("autodoc", "No available documentation.
 
@@ -1940,7 +1935,7 @@ float
 		Standard_Real GetMinRange();
 
 		/****************** GetNbSample ******************/
-		/**** md5 signature: 0b29023252f4f007c9a6350bbe08369a ****/
+		/**** md5 signature: b7817d28b4ff3dc88a09b6dd1762ed0e ****/
 		%feature("compactdefaultargs") GetNbSample;
 		%feature("autodoc", "No available documentation.
 
@@ -1995,7 +1990,7 @@ None
 class IntTools_CurveRangeSampleMapHasher {
 	public:
 		/****************** HashCode ******************/
-		/**** md5 signature: 93dbae0a5a5a7d9243a92becc779bda7 ****/
+		/**** md5 signature: 693b5d51486ed409caaa0e5852c654f0 ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for the given key, in the range [1, theupperbound] @param thekey the key which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -2011,7 +2006,7 @@ int
 		static Standard_Integer HashCode(const IntTools_CurveRangeSample & theKey, const Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: d2202a0d0916043d4c098e8eee5ece3d ****/
+		/**** md5 signature: 4d1714c29d69b36b600c5e46a135d5a8 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
 
@@ -2043,7 +2038,7 @@ class IntTools_EdgeEdge {
 		/****************** IntTools_EdgeEdge ******************/
 		/**** md5 signature: 4551d18744ed7c6ae5b1e1b4794a6264 ****/
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
-		%feature("autodoc", "Empty contructor.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -2054,7 +2049,7 @@ None
 		/****************** IntTools_EdgeEdge ******************/
 		/**** md5 signature: a7b58f57429b22fb3dc3ed0030a8f53e ****/
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
-		%feature("autodoc", "Contructor.
+		%feature("autodoc", "Constructor.
 
 Parameters
 ----------
@@ -2070,7 +2065,7 @@ None
 		/****************** IntTools_EdgeEdge ******************/
 		/**** md5 signature: 69b54a28360beb7321650d1ae6f019d5 ****/
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
-		%feature("autodoc", "Contructor.
+		%feature("autodoc", "Constructor.
 
 Parameters
 ----------
@@ -2703,7 +2698,7 @@ None
 		/****************** Context ******************/
 		/**** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ****/
 		%feature("compactdefaultargs") Context;
-		%feature("autodoc", "Gets the intersecton context.
+		%feature("autodoc", "Gets the intersection context.
 
 Returns
 -------
@@ -2767,7 +2762,7 @@ IntTools_SequenceOfCurves
 		const IntTools_SequenceOfCurves & Lines();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 20b101b6609f56b4df981165ffc5760a ****/
+		/**** md5 signature: fc787f09bbe9fa2375bf6639020db29c ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Intersects underliing surfaces of f1 and f2 use sum of tolerance of f1 and f2 as intersection criteria.
 
@@ -2775,12 +2770,14 @@ Parameters
 ----------
 F1: TopoDS_Face
 F2: TopoDS_Face
+theToRunParallel: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const TopoDS_Face & F1, const TopoDS_Face & F2);
+		void Perform(const TopoDS_Face & F1, const TopoDS_Face & F2, const Standard_Boolean theToRunParallel = Standard_False);
 
 		/****************** Points ******************/
 		/**** md5 signature: 4c491afe08e7fca7a25cfca5246db6f2 ****/
@@ -2796,7 +2793,7 @@ IntTools_SequenceOfPntOn2Faces
 		/****************** PrepareLines3D ******************/
 		/**** md5 signature: 9608103b9dced13800e46e92e7b50562 ****/
 		%feature("compactdefaultargs") PrepareLines3D;
-		%feature("autodoc", "Provides post-processing the result lines. <btosplit> - the flag. in case of <btosplit> is true the closed 3d-curves will be splitted on parts. in case of <btosplit> is false the closed 3d-curves remain untouched.
+		%feature("autodoc", "Provides post-processing the result lines. @param btosplit [in] split the closed 3d-curves on parts when true,  remain untouched otherwise.
 
 Parameters
 ----------
@@ -2812,7 +2809,7 @@ None
 		/****************** SetContext ******************/
 		/**** md5 signature: ca18ce635d4700b2601132549e0efa1a ****/
 		%feature("compactdefaultargs") SetContext;
-		%feature("autodoc", "Sets the intersecton context.
+		%feature("autodoc", "Sets the intersection context.
 
 Parameters
 ----------
@@ -2926,20 +2923,20 @@ None
 		 IntTools_MarkedRangeSet(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag);
 
 		/****************** IntTools_MarkedRangeSet ******************/
-		/**** md5 signature: d24094bb339a747b35e080a89aa86097 ****/
+		/**** md5 signature: 508a82e4699613c19a94c30b7427830c ****/
 		%feature("compactdefaultargs") IntTools_MarkedRangeSet;
 		%feature("autodoc", "Build set of ranges based on the array of progressive sorted values //! warning: the constructor do not check if the values of array are not sorted it should be checked before function invocation.
 
 Parameters
 ----------
-theSortedArray: IntTools_CArray1OfReal
+theSortedArray: TColStd_Array1OfReal
 theInitFlag: int
 
 Returns
 -------
 None
 ") IntTools_MarkedRangeSet;
-		 IntTools_MarkedRangeSet(const IntTools_CArray1OfReal & theSortedArray, const Standard_Integer theInitFlag);
+		 IntTools_MarkedRangeSet(const TColStd_Array1OfReal & theSortedArray, const Standard_Integer theInitFlag);
 
 		/****************** Flag ******************/
 		/**** md5 signature: 5a633977422925ff5909997008039bcc ****/
@@ -3071,7 +3068,7 @@ bool
 		Standard_Boolean InsertRange(const IntTools_Range & theRange, const Standard_Integer theFlag, const Standard_Integer theIndex);
 
 		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/**** md5 signature: f2d149cffca76ec002490404b3e808e1 ****/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Returns number of ranges.
 
@@ -3130,20 +3127,20 @@ None
 		void SetFlag(const Standard_Integer theIndex, const Standard_Integer theFlag);
 
 		/****************** SetRanges ******************/
-		/**** md5 signature: 9f170a5b3715e9f6a807626888c14c88 ****/
+		/**** md5 signature: c5c8955c67ec7778126857cdd282197b ****/
 		%feature("compactdefaultargs") SetRanges;
 		%feature("autodoc", "Build set of ranges based on the array of progressive sorted values //! warning: the function do not check if the values of array are not sorted it should be checked before function invocation.
 
 Parameters
 ----------
-theSortedArray: IntTools_CArray1OfReal
+theSortedArray: TColStd_Array1OfReal
 theInitFlag: int
 
 Returns
 -------
 None
 ") SetRanges;
-		void SetRanges(const IntTools_CArray1OfReal & theSortedArray, const Standard_Integer theInitFlag);
+		void SetRanges(const TColStd_Array1OfReal & theSortedArray, const Standard_Integer theInitFlag);
 
 };
 
@@ -4804,7 +4801,7 @@ None
 class IntTools_SurfaceRangeSampleMapHasher {
 	public:
 		/****************** HashCode ******************/
-		/**** md5 signature: 35efde7190414f5129d072b44af7911b ****/
+		/**** md5 signature: 6ee701ed7444348a33c6581638820b5d ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for the given key, in the range [1, theupperbound] @param thekey the key which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -4820,7 +4817,7 @@ int
 		static Standard_Integer HashCode(const IntTools_SurfaceRangeSample & theKey, Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: 6d3b19735347659cabfe0a41e2669234 ****/
+		/**** md5 signature: 4a42ac47392dd9c52f7bcd81ded299d5 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
 
@@ -4899,7 +4896,7 @@ float
 		static Standard_Real ComputeIntRange(const Standard_Real theTol1, const Standard_Real theTol2, const Standard_Real theAngle);
 
 		/****************** ComputeTolerance ******************/
-		/**** md5 signature: 123f50856194234a392e784b535ee463 ****/
+		/**** md5 signature: 81df055defddfd139d552aebd1f5b38b ****/
 		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "Computes the max distance between points taken from 3d and 2d curves by the same parameter.
 
@@ -4912,13 +4909,15 @@ theFirst: float
 theLast: float
 theTolRange: float,optional
 	default value is Precision::PConfusion()
+theToRunParallel: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 theMaxDist: float
 theMaxPar: float
 ") ComputeTolerance;
-		static Standard_Boolean ComputeTolerance(const opencascade::handle<Geom_Curve> & theCurve3D, const opencascade::handle<Geom2d_Curve> & theCurve2D, const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theTolRange = Precision::PConfusion());
+		static Standard_Boolean ComputeTolerance(const opencascade::handle<Geom_Curve> & theCurve3D, const opencascade::handle<Geom2d_Curve> & theCurve2D, const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theTolRange = Precision::PConfusion(), const Standard_Boolean theToRunParallel = Standard_False);
 
 		/****************** ComputeVV ******************/
 		/**** md5 signature: 2b5edabfa3d68f4b56b0751fa8f7f611 ****/
@@ -5001,7 +5000,7 @@ bool
 		/****************** IsDirsCoinside ******************/
 		/**** md5 signature: 5decb6946d416223e5b88e58f24beacb ****/
 		%feature("compactdefaultargs") IsDirsCoinside;
-		%feature("autodoc", "Returns true if d1 and d2 coinside.
+		%feature("autodoc", "Returns true if d1 and d2 coincide.
 
 Parameters
 ----------
@@ -5017,7 +5016,7 @@ bool
 		/****************** IsDirsCoinside ******************/
 		/**** md5 signature: dd7cc4ec22a39e710a7e84da1ec268a6 ****/
 		%feature("compactdefaultargs") IsDirsCoinside;
-		%feature("autodoc", "Returns true if d1 and d2 coinside with given tolerance.
+		%feature("autodoc", "Returns true if d1 and d2 coincide with given tolerance.
 
 Parameters
 ----------
@@ -5293,19 +5292,19 @@ None
 		 IntTools_TopolTool();
 
 		/****************** IntTools_TopolTool ******************/
-		/**** md5 signature: 087710c751b18169da37de9e3df00120 ****/
+		/**** md5 signature: 818340ed6ac86f3b5724d0b7304c646e ****/
 		%feature("compactdefaultargs") IntTools_TopolTool;
 		%feature("autodoc", "Initializes me by surface.
 
 Parameters
 ----------
-theSurface: Adaptor3d_HSurface
+theSurface: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") IntTools_TopolTool;
-		 IntTools_TopolTool(const opencascade::handle<Adaptor3d_HSurface> & theSurface);
+		 IntTools_TopolTool(const opencascade::handle<Adaptor3d_Surface> & theSurface);
 
 		/****************** ComputeSamplePoints ******************/
 		/**** md5 signature: 940d159b31fac83590ed8721227cec02 ****/
@@ -5330,19 +5329,19 @@ None
 		virtual void Initialize();
 
 		/****************** Initialize ******************/
-		/**** md5 signature: 6021f0261cec049855d140d76f7a62a1 ****/
+		/**** md5 signature: 2bf222342864de7b8471615bc05064e5 ****/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Initializes me by surface.
 
 Parameters
 ----------
-theSurface: Adaptor3d_HSurface
+theSurface: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Initialize;
-		virtual void Initialize(const opencascade::handle<Adaptor3d_HSurface> & theSurface);
+		virtual void Initialize(const opencascade::handle<Adaptor3d_Surface> & theSurface);
 
 		/****************** NbSamples ******************/
 		/**** md5 signature: cd99f1dfd0ef40a4d961f9638d39e555 ****/
@@ -5380,7 +5379,7 @@ int
 		/****************** SamplePnts ******************/
 		/**** md5 signature: a3961c7c25c5a055dad05c3f17c7d5a9 ****/
 		%feature("compactdefaultargs") SamplePnts;
-		%feature("autodoc", "Compute the sample-points for the intersections algorithms by adaptive algorithm for bspline surfaces. for other surfaces algorithm is the same as in method computesamplepoints(), but only fill arrays of u and v sample parameters; thedefl is a requred deflection thenumin, thenvmin are minimal nb points for u and v.
+		%feature("autodoc", "Compute the sample-points for the intersections algorithms by adaptive algorithm for bspline surfaces. for other surfaces algorithm is the same as in method computesamplepoints(), but only fill arrays of u and v sample parameters; thedefl is a required deflection thenumin, thenvmin are minimal nb points for u and v.
 
 Parameters
 ----------
@@ -5428,15 +5427,15 @@ None
 class IntTools_WLineTool {
 	public:
 		/****************** DecompositionOfWLine ******************/
-		/**** md5 signature: 6f67b74dd70a713679e38978cbda5b5f ****/
+		/**** md5 signature: 34e653d17172e47173c6f5f738af6d81 ****/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 theWLine: IntPatch_WLine
-theSurface1: GeomAdaptor_HSurface
-theSurface2: GeomAdaptor_HSurface
+theSurface1: GeomAdaptor_Surface
+theSurface2: GeomAdaptor_Surface
 theFace1: TopoDS_Face
 theFace2: TopoDS_Face
 theLConstructor: GeomInt_LineConstructor
@@ -5449,7 +5448,7 @@ Returns
 -------
 theReachedTol3d: float
 ") DecompositionOfWLine;
-		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_HSurface> & theSurface1, const opencascade::handle<GeomAdaptor_HSurface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, Standard_Real &OutValue, const opencascade::handle<IntTools_Context > &);
+		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, Standard_Real &OutValue, const opencascade::handle<IntTools_Context > &);
 
 		/****************** NotUseSurfacesForApprox ******************/
 		/**** md5 signature: eb83c267182a721a80afc576ebb61258 ****/
@@ -5528,7 +5527,7 @@ IntTools_Range
 		IntTools_Range GetRange(const Standard_Real theFirst, const Standard_Real theLast, const Standard_Integer theNbSample);
 
 		/****************** GetRangeIndex ******************/
-		/**** md5 signature: 9e0601229553314c5d6cf17f97f01bb8 ****/
+		/**** md5 signature: d7c896b92faa58172b48e4a3aace9c5d ****/
 		%feature("compactdefaultargs") GetRangeIndex;
 		%feature("autodoc", "No available documentation.
 
@@ -5539,7 +5538,7 @@ int
 		Standard_Integer GetRangeIndex();
 
 		/****************** GetRangeIndexDeeper ******************/
-		/**** md5 signature: 3b627fc0839e39820de5be25e9e0841c ****/
+		/**** md5 signature: 2c6cf6516f0d753f98e1f1c5b208996f ****/
 		%feature("compactdefaultargs") GetRangeIndexDeeper;
 		%feature("autodoc", "No available documentation.
 
@@ -5554,7 +5553,7 @@ int
 		Standard_Integer GetRangeIndexDeeper(const Standard_Integer theNbSample);
 
 		/****************** IsEqual ******************/
-		/**** md5 signature: 720357c32baa29595c9829a8d3340edc ****/
+		/**** md5 signature: d04651fd45b57f48a9ead52d9839367a ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "No available documentation.
 
@@ -5569,7 +5568,7 @@ bool
 		Standard_Boolean IsEqual(const IntTools_CurveRangeSample & Other);
 
 		/****************** SetRangeIndex ******************/
-		/**** md5 signature: 4fdbf789713035dfca58226b512c050d ****/
+		/**** md5 signature: d58a3cfeddc0c94332057980ef6d4fef ****/
 		%feature("compactdefaultargs") SetRangeIndex;
 		%feature("autodoc", "No available documentation.
 
@@ -5609,4 +5608,5 @@ class IntTools_CArray1OfReal:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+IntTools_CArray1OfReal=OCC.Core.TColStd.TColStd_Array1OfReal
 }

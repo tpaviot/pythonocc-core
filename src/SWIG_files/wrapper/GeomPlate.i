@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMPLATEDOCSTRING
 "GeomPlate module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomplate.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomplate.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMPLATEDOCSTRING) GeomPlate
 
@@ -87,7 +87,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -103,9 +103,9 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(GeomPlate_Array1OfHCurve) NCollection_Array1<opencascade::handle<Adaptor3d_HCurve>>;
+%template(GeomPlate_Array1OfHCurve) NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>;
 
-%extend NCollection_Array1<opencascade::handle<Adaptor3d_HCurve>> {
+%extend NCollection_Array1<opencascade::handle<Adaptor3d_Curve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -200,7 +200,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<Adaptor3d_HCurve>> GeomPlate_Array1OfHCurve;
+typedef NCollection_Array1<opencascade::handle<Adaptor3d_Curve>> GeomPlate_Array1OfHCurve;
 typedef NCollection_Array1<TColStd_SequenceOfReal> GeomPlate_Array1OfSequenceOfReal;
 typedef NCollection_Sequence<GeomPlate_Aij> GeomPlate_SequenceOfAij;
 typedef NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>> GeomPlate_SequenceOfCurveConstraint;
@@ -566,7 +566,7 @@ None
 		/****************** G0Error ******************/
 		/**** md5 signature: ba177a9a7bac2d394577a179fd8040ef ****/
 		%feature("compactdefaultargs") G0Error;
-		%feature("autodoc", "Returns the max distance betwen the result and the constraints.
+		%feature("autodoc", "Returns the max distance between the result and the constraints.
 
 Returns
 -------
@@ -592,7 +592,7 @@ float
 		/****************** G1Error ******************/
 		/**** md5 signature: 0a0e55267bc5572a38177b75a97dfedc ****/
 		%feature("compactdefaultargs") G1Error;
-		%feature("autodoc", "Returns the max angle betwen the result and the constraints.
+		%feature("autodoc", "Returns the max angle between the result and the constraints.
 
 Returns
 -------
@@ -618,7 +618,7 @@ float
 		/****************** G2Error ******************/
 		/**** md5 signature: 0eac129a84e8ae945532a18ff833414e ****/
 		%feature("compactdefaultargs") G2Error;
-		%feature("autodoc", "Returns the max difference of curvature betwen the result and the constraints.
+		%feature("autodoc", "Returns the max difference of curvature between the result and the constraints.
 
 Returns
 -------
@@ -723,7 +723,7 @@ opencascade::handle<GeomPlate_PointConstraint>
 		/****************** Sense ******************/
 		/**** md5 signature: 8cfff544568a5ecc0c039bc023102a19 ****/
 		%feature("compactdefaultargs") Sense;
-		%feature("autodoc", "Allows you to ensure that the array of curves returned by curves2d has the correct orientation. returns the orientation of the curves in the the array returned by curves2d. computation changes the orientation of these curves. consequently, this method returns the orientation prior to computation.
+		%feature("autodoc", "Allows you to ensure that the array of curves returned by curves2d has the correct orientation. returns the orientation of the curves in the array returned by curves2d. computation changes the orientation of these curves. consequently, this method returns the orientation prior to computation.
 
 Returns
 -------
@@ -794,13 +794,13 @@ None
 		 GeomPlate_CurveConstraint();
 
 		/****************** GeomPlate_CurveConstraint ******************/
-		/**** md5 signature: a62faecefa077f152bd27f5f64755f67 ****/
+		/**** md5 signature: 401c58e34f2f2beea3aadc062461bd35 ****/
 		%feature("compactdefaultargs") GeomPlate_CurveConstraint;
 		%feature("autodoc", "Create a constraint order is the order of the constraint. the possible values for order are -1,0,1,2. order i means constraints gi npt is the number of points associated with the constraint. toldist is the maximum error to satisfy for g0 constraints tolang is the maximum error to satisfy for g1 constraints tolcurv is the maximum error to satisfy for g2 constraints these errors can be replaced by laws of criterion. raises constructionerror if order is not -1 , 0, 1, 2.
 
 Parameters
 ----------
-Boundary: Adaptor3d_HCurve
+Boundary: Adaptor3d_Curve
 Order: int
 NPt: int,optional
 	default value is 10
@@ -815,7 +815,7 @@ Returns
 -------
 None
 ") GeomPlate_CurveConstraint;
-		 GeomPlate_CurveConstraint(const opencascade::handle<Adaptor3d_HCurve> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
+		 GeomPlate_CurveConstraint(const opencascade::handle<Adaptor3d_Curve> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
 		/****************** Curve2dOnSurf ******************/
 		/**** md5 signature: 8c609bb48844258264c3cf92c31ed7f4 ****/
@@ -829,15 +829,15 @@ opencascade::handle<Geom2d_Curve>
 		opencascade::handle<Geom2d_Curve> Curve2dOnSurf();
 
 		/****************** Curve3d ******************/
-		/**** md5 signature: 596e8aeb9d7f684bb78e6f52b63a1e08 ****/
+		/**** md5 signature: 2fa5bec7732a5b0addd39b44bb53f0e5 ****/
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Curve3d;
-		opencascade::handle<Adaptor3d_HCurve> Curve3d();
+		opencascade::handle<Adaptor3d_Curve> Curve3d();
 
 		/****************** D0 ******************/
 		/**** md5 signature: c5111ce8ff4abb74b6c4ba34040c62bb ****/
@@ -1010,15 +1010,15 @@ int
 		Standard_Integer Order();
 
 		/****************** ProjectedCurve ******************/
-		/**** md5 signature: c2c13b514792a4dff1cc971d955aac37 ****/
+		/**** md5 signature: 29a2a58b4c1684492940e001f45b28a1 ****/
 		%feature("compactdefaultargs") ProjectedCurve;
 		%feature("autodoc", "Returns the projected curve resulting from the normal projection of the curve on the initial surface.
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") ProjectedCurve;
-		opencascade::handle<Adaptor2d_HCurve2d> ProjectedCurve();
+		opencascade::handle<Adaptor2d_Curve2d> ProjectedCurve();
 
 		/****************** SetCurve2dOnSurf ******************/
 		/**** md5 signature: e48c08a1c66719832c40503ef697b26b ****/
@@ -1111,13 +1111,13 @@ None
 		void SetOrder(const Standard_Integer Order);
 
 		/****************** SetProjectedCurve ******************/
-		/**** md5 signature: 537f5fc7e623dce31c80f73c538af961 ****/
+		/**** md5 signature: 61ce53d83dd31188e0a868cc575a4394 ****/
 		%feature("compactdefaultargs") SetProjectedCurve;
 		%feature("autodoc", "Loads a 2d curve resulting from the normal projection of the curve on the initial surface.
 
 Parameters
 ----------
-Curve2d: Adaptor2d_HCurve2d
+Curve2d: Adaptor2d_Curve2d
 TolU: float
 TolV: float
 
@@ -1125,7 +1125,7 @@ Returns
 -------
 None
 ") SetProjectedCurve;
-		void SetProjectedCurve(const opencascade::handle<Adaptor2d_HCurve2d> & Curve2d, const Standard_Real TolU, const Standard_Real TolV);
+		void SetProjectedCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve2d, const Standard_Real TolU, const Standard_Real TolV);
 
 };
 
@@ -1892,7 +1892,7 @@ bool
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are obtained by transforming u,v with th 2d transformation returned by //! me->parametrictransformation(t) //! this methods returns an identity transformation //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
+		%feature("autodoc", "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns an identity transformation //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
 
 Parameters
 ----------
@@ -1957,7 +1957,7 @@ None
 		/****************** TransformParameters ******************/
 		/**** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ****/
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. //! me->transformed(t)->value(u',v') //! is the same point as //! me->value(u,v).transformed(t) //! where u',v' are the new values of u,v after calling //! me->tranformparameters(u,v,t) //! this methods does not change <u> and <v> //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
+		%feature("autodoc", "Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this methods does not change <u> and <v> //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
 
 Parameters
 ----------
@@ -2010,7 +2010,7 @@ None
 		/****************** UReversedParameter ******************/
 		/**** md5 signature: 0071925b176316f0aaaf26f369ac410c ****/
 		%feature("compactdefaultargs") UReversedParameter;
-		%feature("autodoc", "Return the parameter on the ureversed surface for the point of parameter u on <self>. //! me->ureversed()->value(me->ureversedparameter(u),v) //! is the same point as //! me->value(u,v).
+		%feature("autodoc", "Return the parameter on the ureversed surface for the point of parameter u on <self>. @code me->ureversed()->value(me->ureversedparameter(u),v) @endcode is the same point as @code me->value(u,v) @endcode.
 
 Parameters
 ----------
@@ -2062,7 +2062,7 @@ None
 		/****************** VReversedParameter ******************/
 		/**** md5 signature: 92057d43e0e5ee078908582a4176343b ****/
 		%feature("compactdefaultargs") VReversedParameter;
-		%feature("autodoc", "Return the parameter on the vreversed surface for the point of parameter v on <self>. //! me->vreversed()->value(u,me->vreversedparameter(v)) //! is the same point as //! me->value(u,v).
+		%feature("autodoc", "Return the parameter on the vreversed surface for the point of parameter v on <self>. @code me->vreversed()->value(u,me->vreversedparameter(v)) @endcode is the same point as @code me->value(u,v) @endcode.
 
 Parameters
 ----------

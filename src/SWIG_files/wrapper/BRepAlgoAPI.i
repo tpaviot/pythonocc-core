@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPALGOAPIDOCSTRING
 "BRepAlgoAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgoapi.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepalgoapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPALGOAPIDOCSTRING) BRepAlgoAPI
 
@@ -44,6 +44,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgoapi.html"
 #include<NCollection_module.hxx>
 #include<BOPAlgo_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Message_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
 #include<TopTools_module.hxx>
 #include<BRepTools_module.hxx>
@@ -77,6 +78,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgoapi.html"
 %import NCollection.i
 %import BOPAlgo.i
 %import TopoDS.i
+%import Message.i
 %import BRepBuilderAPI.i
 %import TopTools.i
 %import BRepTools.i
@@ -93,7 +95,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -124,9 +126,9 @@ None
 		 BRepAlgoAPI_Check();
 
 		/****************** BRepAlgoAPI_Check ******************/
-		/**** md5 signature: 0d046774211ccfb7a57473b281d4869c ****/
+		/**** md5 signature: 4c7f74c0b1475c6354942a65d5c7e394 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
-		%feature("autodoc", "Constructor for checking single shape. //! @param thes [in] - the shape to check; @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true;.
+		%feature("autodoc", "Constructor for checking single shape. //! @param thes [in] - the shape to check; @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true; @param therange [in] - parameter to use progress indicator.
 
 Parameters
 ----------
@@ -135,17 +137,19 @@ bTestSE: bool,optional
 	default value is Standard_True
 bTestSI: bool,optional
 	default value is Standard_True
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Check;
-		 BRepAlgoAPI_Check(const TopoDS_Shape & theS, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True);
+		 BRepAlgoAPI_Check(const TopoDS_Shape & theS, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** BRepAlgoAPI_Check ******************/
-		/**** md5 signature: 6068a5b505f5a3d60d502aaacd5e7d72 ****/
+		/**** md5 signature: 6d8665f00fc74c35f58fdcae0bcdc4ea ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
-		%feature("autodoc", "Constructor for checking the couple of shapes. additionally to the validity checks of each given shape, the types of the given shapes will be checked on validity for boolean operation of given type. //! @param thes1 [in] - the first shape to check; @param thes2 [in] - the second shape to check; @param theop [in] - the type of boolean operation for which the validity of given shapes should be checked. @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true;.
+		%feature("autodoc", "Constructor for checking the couple of shapes. additionally to the validity checks of each given shape, the types of the given shapes will be checked on validity for boolean operation of given type. //! @param thes1 [in] - the first shape to check; @param thes2 [in] - the second shape to check; @param theop [in] - the type of boolean operation for which the validity of given shapes should be checked. @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true; @param therange [in] - parameter to use progress indicator.
 
 Parameters
 ----------
@@ -157,12 +161,14 @@ bTestSE: bool,optional
 	default value is Standard_True
 bTestSI: bool,optional
 	default value is Standard_True
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Check;
-		 BRepAlgoAPI_Check(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True);
+		 BRepAlgoAPI_Check(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** IsValid ******************/
 		/**** md5 signature: c1993b3b31d320b598a9a9b27c56914e ****/
@@ -176,15 +182,20 @@ bool
 		Standard_Boolean IsValid();
 
 		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/**** md5 signature: 237808a6b51056c9f8e292d343f26d7d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs the check.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Perform;
-		void Perform();
+		void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Result ******************/
 		/**** md5 signature: 7cf3309b46dab6da497e78cfc1a9af75 ****/
@@ -317,15 +328,20 @@ TopTools_ListOfShape
 		const TopTools_ListOfShape & Arguments();
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Performs the algorithm.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Builder ******************/
 		/**** md5 signature: 8b185d6cf1a66c51174428861a33b6c7 ****/
@@ -644,15 +660,20 @@ None
 		void AddFacesToRemove(const TopTools_ListOfShape & theFaces);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Performs the operation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** FacesToRemove ******************/
 		/**** md5 signature: 947971dfb74df8135dc7f7ce60eaaa90 ****/
@@ -847,15 +868,20 @@ None
 		 BRepAlgoAPI_BooleanOperation(const BOPAlgo_PaveFiller & thePF);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Performs the boolean operation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Operation ******************/
 		/**** md5 signature: 3fe7ad033306b813a524bc39f03a5e6e ****/
@@ -972,15 +998,20 @@ None
 		 BRepAlgoAPI_Splitter(const BOPAlgo_PaveFiller & thePF);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Performs the split operation. performs the intersection of the argument shapes (both objects and tools) and splits objects by the tools.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetTools ******************/
 		/**** md5 signature: 3be2cbb7f8439cb12462b3704230f424 ****/
@@ -1049,7 +1080,7 @@ None
 		 BRepAlgoAPI_Common(const BOPAlgo_PaveFiller & PF);
 
 		/****************** BRepAlgoAPI_Common ******************/
-		/**** md5 signature: 65c64c29f7cf2b9ce8fc226b39f512dd ****/
+		/**** md5 signature: 281aea6470a4b9efa44abd92f03bd429 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Common;
 		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation obsolete.
 
@@ -1057,15 +1088,17 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Common;
-		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
+		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** BRepAlgoAPI_Common ******************/
-		/**** md5 signature: 234cc5b6a4b65f1836f72b85b4853c82 ****/
+		/**** md5 signature: 435fb55f2697ff39118c51724120f6f5 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Common;
 		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation <pf> - pavefiller object that is carried out obsolete.
 
@@ -1074,12 +1107,14 @@ Parameters
 S1: TopoDS_Shape
 S2: TopoDS_Shape
 PF: BOPAlgo_PaveFiller
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Common;
-		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & PF);
+		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & PF, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -1122,7 +1157,7 @@ None
 		 BRepAlgoAPI_Cut(const BOPAlgo_PaveFiller & PF);
 
 		/****************** BRepAlgoAPI_Cut ******************/
-		/**** md5 signature: 11f9a02b23a31e70aa286dbffb024431 ****/
+		/**** md5 signature: aa1da534b9c66c537779d74c3ab72d96 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Cut;
 		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation obsolete.
 
@@ -1130,15 +1165,17 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Cut;
-		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
+		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** BRepAlgoAPI_Cut ******************/
-		/**** md5 signature: e0df31a6859bf1c0dc245660c66fab53 ****/
+		/**** md5 signature: ac4b1606254f036b586cca6028e78c28 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Cut;
 		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation <pf> - pavefiller object that is carried out obsolete.
 
@@ -1149,12 +1186,14 @@ S2: TopoDS_Shape
 aDSF: BOPAlgo_PaveFiller
 bFWD: bool,optional
 	default value is Standard_True
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Cut;
-		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Standard_Boolean bFWD = Standard_True);
+		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Standard_Boolean bFWD = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -1197,7 +1236,7 @@ None
 		 BRepAlgoAPI_Fuse(const BOPAlgo_PaveFiller & PF);
 
 		/****************** BRepAlgoAPI_Fuse ******************/
-		/**** md5 signature: 879433be8fed9f569be5cc5a6a1e1325 ****/
+		/**** md5 signature: 997b51870f06f995a1de922a1d169097 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Fuse;
 		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation obsolete.
 
@@ -1205,15 +1244,17 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Fuse;
-		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
+		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** BRepAlgoAPI_Fuse ******************/
-		/**** md5 signature: 0a16e33ccaa30501e91551c57e5f2810 ****/
+		/**** md5 signature: 0619d132bb7d5cd901bfe7d534a8a34b ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Fuse;
 		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation <pf> - pavefiller object that is carried out obsolete.
 
@@ -1222,12 +1263,14 @@ Parameters
 S1: TopoDS_Shape
 S2: TopoDS_Shape
 aDSF: BOPAlgo_PaveFiller
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") BRepAlgoAPI_Fuse;
-		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF);
+		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -1272,7 +1315,7 @@ None
 		/****************** BRepAlgoAPI_Section ******************/
 		/**** md5 signature: cb5bfbec844bcec9b0cb0f6e222e3512 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
-		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediatly obsolete.
+		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
 
 Parameters
 ----------
@@ -1290,7 +1333,7 @@ None
 		/****************** BRepAlgoAPI_Section ******************/
 		/**** md5 signature: 6f2f6902a99b64288c481b6cad474b59 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
-		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <pf> - pavefiller object that is carried out <performnow> - the flag: if <performnow>=true - the algorithm is performed immediatly obsolete.
+		%feature("autodoc", "Constructor with two shapes <s1> -argument <s2> -tool <pf> - pavefiller object that is carried out <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
 
 Parameters
 ----------
@@ -1309,7 +1352,7 @@ None
 		/****************** BRepAlgoAPI_Section ******************/
 		/**** md5 signature: 30e774e5a1508f5dd6195bbba8028bdd ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
-		%feature("autodoc", "Constructor with two shapes <s1> - argument <pl> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediatly obsolete.
+		%feature("autodoc", "Constructor with two shapes <s1> - argument <pl> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
 
 Parameters
 ----------
@@ -1327,7 +1370,7 @@ None
 		/****************** BRepAlgoAPI_Section ******************/
 		/**** md5 signature: c287bb4bc888ac88d0cb0da777c82aa7 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
-		%feature("autodoc", "Constructor with two shapes <s1> - argument <sf> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediatly obsolete.
+		%feature("autodoc", "Constructor with two shapes <s1> - argument <sf> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
 
 Parameters
 ----------
@@ -1345,7 +1388,7 @@ None
 		/****************** BRepAlgoAPI_Section ******************/
 		/**** md5 signature: 672281bf6f9f679b4d466fb17e60f6c9 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
-		%feature("autodoc", "Constructor with two shapes <sf> - argument <s2> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediatly obsolete.
+		%feature("autodoc", "Constructor with two shapes <sf> - argument <s2> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
 
 Parameters
 ----------
@@ -1363,7 +1406,7 @@ None
 		/****************** BRepAlgoAPI_Section ******************/
 		/**** md5 signature: b272770396cfbca61affc5a095f04dbc ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
-		%feature("autodoc", "Constructor with two shapes <sf1> - argument <sf2> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediatly obsolete.
+		%feature("autodoc", "Constructor with two shapes <sf1> - argument <sf2> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
 
 Parameters
 ----------
@@ -1394,15 +1437,20 @@ None
 		void Approximation(const Standard_Boolean B);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Performs the algorithm filling interference data structure (if it is necessary) building the result of the operation.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ComputePCurveOn1 ******************/
 		/**** md5 signature: e4a8add7cd0d8f532479132026321808 ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPECUSTOMDOCSTRING
 "ShapeCustom module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapecustom.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapecustom.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECUSTOMDOCSTRING) ShapeCustom
 
@@ -86,7 +86,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -940,7 +940,7 @@ Tol: float
 		/****************** NewCurve2d ******************/
 		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
 		%feature("compactdefaultargs") NewCurve2d;
-		%feature("autodoc", "Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be usefull.
+		%feature("autodoc", "Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be useful.
 
 Parameters
 ----------
@@ -1011,7 +1011,7 @@ RevFace: bool
 		/****************** SetExtrusionMode ******************/
 		/**** md5 signature: 169e481cbec21216a690aea07c39e8bf ****/
 		%feature("compactdefaultargs") SetExtrusionMode;
-		%feature("autodoc", "Sets mode for convertion of surfaces of linear extrusion.
+		%feature("autodoc", "Sets mode for conversion of surfaces of linear extrusion.
 
 Parameters
 ----------
@@ -1026,7 +1026,7 @@ None
 		/****************** SetOffsetMode ******************/
 		/**** md5 signature: 95ca203f203423b410d33a2b819a45cb ****/
 		%feature("compactdefaultargs") SetOffsetMode;
-		%feature("autodoc", "Sets mode for convertion of offset surfaces.
+		%feature("autodoc", "Sets mode for conversion of offset surfaces.
 
 Parameters
 ----------
@@ -1041,7 +1041,7 @@ None
 		/****************** SetPlaneMode ******************/
 		/**** md5 signature: 76c90747b069acf4539a86c302869898 ****/
 		%feature("compactdefaultargs") SetPlaneMode;
-		%feature("autodoc", "Sets mode for convertion of plane surfaces.
+		%feature("autodoc", "Sets mode for conversion of plane surfaces.
 
 Parameters
 ----------
@@ -1056,7 +1056,7 @@ None
 		/****************** SetRevolutionMode ******************/
 		/**** md5 signature: e7948e94ae621e0951e54d40c4147525 ****/
 		%feature("compactdefaultargs") SetRevolutionMode;
-		%feature("autodoc", "Sets mode for convertion of surfaces of revolution.
+		%feature("autodoc", "Sets mode for conversion of surfaces of revolution.
 
 Parameters
 ----------
@@ -1138,7 +1138,7 @@ Tol: float
 		/****************** NewCurve2d ******************/
 		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
 		%feature("compactdefaultargs") NewCurve2d;
-		%feature("autodoc", "Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be usefull.
+		%feature("autodoc", "Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be useful.
 
 Parameters
 ----------

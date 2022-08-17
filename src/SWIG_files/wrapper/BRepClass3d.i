@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPCLASS3DDOCSTRING
 "BRepClass3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepclass3d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepclass3d.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCLASS3DDOCSTRING) BRepClass3d
 
@@ -84,7 +84,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -214,7 +214,7 @@ gp_Pnt
 		/****************** State ******************/
 		/**** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ****/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "Returns the state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boudary of the face).
+		%feature("autodoc", "Returns the state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
 
 Returns
 -------
@@ -766,7 +766,7 @@ Index: int
 		Standard_Boolean PointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue);
 
 		/****************** PointInTheFace ******************/
-		/**** md5 signature: 2409cfffa35ee7af69816ed64caca69e ****/
+		/**** md5 signature: 986766809c3fdf601631ad22531992f8 ****/
 		%feature("compactdefaultargs") PointInTheFace;
 		%feature("autodoc", "No available documentation.
 
@@ -774,7 +774,7 @@ Parameters
 ----------
 F: TopoDS_Face
 P: gp_Pnt
-surf: BRepAdaptor_HSurface
+surf: BRepAdaptor_Surface
 u1: float
 v1: float
 u2: float
@@ -787,10 +787,10 @@ v: float
 Param: float
 Index: int
 ") PointInTheFace;
-		Standard_Boolean PointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, const opencascade::handle<BRepAdaptor_HSurface> & surf, const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2);
+		Standard_Boolean PointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, const opencascade::handle<BRepAdaptor_Surface> & surf, const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2);
 
 		/****************** PointInTheFace ******************/
-		/**** md5 signature: ab70975c9887205d9944a58eab4d39a9 ****/
+		/**** md5 signature: 69801e47f45d76167828452cfb2f933a ****/
 		%feature("compactdefaultargs") PointInTheFace;
 		%feature("autodoc", "<index> gives point index to search from and returns point index of succeseful search.
 
@@ -798,7 +798,7 @@ Parameters
 ----------
 F: TopoDS_Face
 P: gp_Pnt
-surf: BRepAdaptor_HSurface
+surf: BRepAdaptor_Surface
 u1: float
 v1: float
 u2: float
@@ -813,7 +813,7 @@ v: float
 Param: float
 Index: int
 ") PointInTheFace;
-		Standard_Boolean PointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, const opencascade::handle<BRepAdaptor_HSurface> & surf, const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec & theVecD1U, gp_Vec & theVecD1V);
+		Standard_Boolean PointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, const opencascade::handle<BRepAdaptor_Surface> & surf, const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec & theVecD1U, gp_Vec & theVecD1V);
 
 		/****************** Reject ******************/
 		/**** md5 signature: 51de68ac10b383926f08d5ff11ad46ef ****/

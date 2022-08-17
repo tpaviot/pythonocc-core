@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPMESHDOCSTRING
 "BRepMesh module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepmesh.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPMESHDOCSTRING) BRepMesh
 
@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<IMeshData_module.hxx>
+#include<TColgp_module.hxx>
 #include<TShort_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
@@ -91,6 +92,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
 %import Geom2d.i
 %import Geom.i
 %import IMeshData.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -117,7 +119,7 @@ enum BRepMesh_DegreeOfFreedom {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class BRepMesh_FactoryError(IntEnum):
@@ -532,7 +534,7 @@ None
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Retruns true if cell filter contains no circle.
+		%feature("autodoc", "Returns true if cell filter contains no circle.
 
 Returns
 -------
@@ -959,7 +961,7 @@ None
 		/****************** ElementsConnectedTo ******************/
 		/**** md5 signature: 6a0793321d2308e1d5fc176a3a016706 ****/
 		%feature("compactdefaultargs") ElementsConnectedTo;
-		%feature("autodoc", "Returns indices of elements conected to the link with the given index. @param thelinkindex index of link whose data should be retrieved. returns indices of elements conected to the link.
+		%feature("autodoc", "Returns indices of elements connected to the link with the given index. @param thelinkindex index of link whose data should be retrieved. returns indices of elements connected to the link.
 
 Parameters
 ----------
@@ -2086,7 +2088,7 @@ enum IntFlag {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class IntFlag(IntEnum):
@@ -2108,7 +2110,7 @@ Same = IntFlag.Same
 		/****************** BRepMesh_GeomTool ******************/
 		/**** md5 signature: ec04b4c4c9e0ee7dd6affaf9f42c0597 ****/
 		%feature("compactdefaultargs") BRepMesh_GeomTool;
-		%feature("autodoc", "Constructor. initiates discretization of the given geometric curve. @param thecurve curve to be discretized. @param thefirstparam first parameter of the curve. @param thelastparam last parameter of the curve. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param theminpointsnb minimum nuber of points to be produced.
+		%feature("autodoc", "Constructor. initiates discretization of the given geometric curve. @param thecurve curve to be discretized. @param thefirstparam first parameter of the curve. @param thelastparam last parameter of the curve. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param theminpointsnb minimum number of points to be produced.
 
 Parameters
 ----------
@@ -2129,13 +2131,13 @@ None
 		 BRepMesh_GeomTool(const BRepAdaptor_Curve & theCurve, const Standard_Real theFirstParam, const Standard_Real theLastParam, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, const Standard_Integer theMinPointsNb = 2, const Standard_Real theMinSize = Precision::Confusion());
 
 		/****************** BRepMesh_GeomTool ******************/
-		/**** md5 signature: eef7ffc2e58c998ab628e4b864e7b3f9 ****/
+		/**** md5 signature: d38bb75f11ee9f3b3aa475e4ac404495 ****/
 		%feature("compactdefaultargs") BRepMesh_GeomTool;
-		%feature("autodoc", "Constructor. initiates discretization of geometric curve corresponding to iso curve of the given surface. @param thesurface surface the iso curve to be taken from. @param theisotype type of iso curve to be used, u or v. @param theparamiso parameter on the surface specifying the iso curve. @param thefirstparam first parameter of the curve. @param thelastparam last parameter of the curve. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param theminpointsnb minimum nuber of points to be produced.
+		%feature("autodoc", "Constructor. initiates discretization of geometric curve corresponding to iso curve of the given surface. @param thesurface surface the iso curve to be taken from. @param theisotype type of iso curve to be used, u or v. @param theparamiso parameter on the surface specifying the iso curve. @param thefirstparam first parameter of the curve. @param thelastparam last parameter of the curve. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param theminpointsnb minimum number of points to be produced.
 
 Parameters
 ----------
-theSurface: BRepAdaptor_HSurface
+theSurface: BRepAdaptor_Surface
 theIsoType: GeomAbs_IsoType
 theParamIso: float
 theFirstParam: float
@@ -2151,7 +2153,7 @@ Returns
 -------
 None
 ") BRepMesh_GeomTool;
-		 BRepMesh_GeomTool(const opencascade::handle<BRepAdaptor_HSurface> & theSurface, const GeomAbs_IsoType theIsoType, const Standard_Real theParamIso, const Standard_Real theFirstParam, const Standard_Real theLastParam, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, const Standard_Integer theMinPointsNb = 2, const Standard_Real theMinSize = Precision::Confusion());
+		 BRepMesh_GeomTool(const opencascade::handle<BRepAdaptor_Surface> & theSurface, const GeomAbs_IsoType theIsoType, const Standard_Real theParamIso, const Standard_Real theFirstParam, const Standard_Real theLastParam, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, const Standard_Integer theMinPointsNb = 2, const Standard_Real theMinSize = Precision::Confusion());
 
 		/****************** AddPoint ******************/
 		/**** md5 signature: 23339736f9d509a41c0708ffbbc4a1c0 ****/
@@ -2172,13 +2174,13 @@ int
 		Standard_Integer AddPoint(const gp_Pnt & thePoint, const Standard_Real theParam, const Standard_Boolean theIsReplace = Standard_True);
 
 		/****************** CellsCount ******************/
-		/**** md5 signature: f555c3d8b5193267318e0d2960295c4f ****/
+		/**** md5 signature: fe52990183566da293fd7fa3dff8d5e3 ****/
 		%feature("compactdefaultargs") CellsCount;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-theSurface: Handle ( Adaptor3d_HSurface )
+theSurface: Handle ( Adaptor3d_Surface )
 theVerticesNb: int
 theDeflection: float
 theRangeSplitter: BRepMesh_DefaultRangeSplitter *
@@ -2187,7 +2189,7 @@ Returns
 -------
 std::pair<int, int >
 ") CellsCount;
-		static std::pair<Standard_Integer, Standard_Integer > CellsCount(const Handle ( Adaptor3d_HSurface ) & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
+		static std::pair<Standard_Integer, Standard_Integer > CellsCount(const Handle ( Adaptor3d_Surface ) & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
 
 		/****************** NbPoints ******************/
 		/**** md5 signature: e92014a2f157c195ed77b7745c7eae3f ****/
@@ -2236,14 +2238,14 @@ theParam: float
 		Standard_Boolean Value(const Standard_Integer theIndex, const Standard_Real theIsoParam, Standard_Real &OutValue, gp_Pnt & thePoint, gp_Pnt2d & theUV);
 
 		/****************** Value ******************/
-		/**** md5 signature: 5137ed8c7896582006a26573c7605c34 ****/
+		/**** md5 signature: fbc0396de3fa600b97894c7f57e3dffd ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Gets parameters of discretization point with the given index. @param theindex index of discretization point. @param thesurface surface the curve is lying onto. @param theparam[out] parameter of the point on the curve. @param thepoint[out] discretization point. @param theuv[out] discretization point in parametric space of the surface. returns true on success, false elsewhere.
 
 Parameters
 ----------
 theIndex: int
-theSurface: BRepAdaptor_HSurface
+theSurface: BRepAdaptor_Surface
 thePoint: gp_Pnt
 theUV: gp_Pnt2d
 
@@ -2251,7 +2253,7 @@ Returns
 -------
 theParam: float
 ") Value;
-		Standard_Boolean Value(const Standard_Integer theIndex, const opencascade::handle<BRepAdaptor_HSurface> & theSurface, Standard_Real &OutValue, gp_Pnt & thePoint, gp_Pnt2d & theUV);
+		Standard_Boolean Value(const Standard_Integer theIndex, const opencascade::handle<BRepAdaptor_Surface> & theSurface, Standard_Real &OutValue, gp_Pnt & thePoint, gp_Pnt2d & theUV);
 
 };
 
@@ -2356,7 +2358,7 @@ None
 		/****************** AddLink ******************/
 		/**** md5 signature: d24cd13523eaaf65a058f4a062b08f96 ****/
 		%feature("compactdefaultargs") AddLink;
-		%feature("autodoc", "Adds new link to mesh. updates link index and link orientaion parameters.
+		%feature("autodoc", "Adds new link to mesh. updates link index and link orientation parameters.
 
 Parameters
 ----------
@@ -2671,7 +2673,7 @@ int
 		/****************** IsEqual ******************/
 		/**** md5 signature: 1a1e5601f44f2e973a1227eedc8ed008 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Checks this and other edge for equality. @param theother edge to be checked against this one. @retrun true if edges have the same orientation, false if not.
+		%feature("autodoc", "Checks this and other edge for equality. @param theother edge to be checked against this one. returns true if edges have the same orientation, false if not.
 
 Parameters
 ----------
@@ -2762,7 +2764,7 @@ None
 		/****************** Extent ******************/
 		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "Returns number of initialized indeces.
+		%feature("autodoc", "Returns number of initialized indices.
 
 Returns
 -------
@@ -3572,6 +3574,83 @@ None
 	}
 };
 
+/******************************
+* class BRepMesh_Triangulator *
+******************************/
+class BRepMesh_Triangulator {
+	public:
+		/****************** BRepMesh_Triangulator ******************/
+		/**** md5 signature: acefc005fa22073e6e50e1f3d9e880a2 ****/
+		%feature("compactdefaultargs") BRepMesh_Triangulator;
+		%feature("autodoc", "Constructor. initialized tool by the given parameters.
+
+Parameters
+----------
+theXYZs: NCollection_Vector<gp_XYZ>
+theWires: NCollection_List<TColStd_SequenceOfInteger>
+theNorm: gp_Dir
+
+Returns
+-------
+None
+") BRepMesh_Triangulator;
+		 BRepMesh_Triangulator(const NCollection_Vector<gp_XYZ> & theXYZs, const NCollection_List<TColStd_SequenceOfInteger> & theWires, const gp_Dir & theNorm);
+
+		/****************** Perform ******************/
+		/**** md5 signature: c533ed821316fe1176fce590cecfd805 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Performs triangulation of source wires and stores triangles the output list.
+
+Parameters
+----------
+thePolyTriangles: NCollection_List<Poly_Triangle>
+
+Returns
+-------
+bool
+") Perform;
+		Standard_Boolean Perform(NCollection_List<Poly_Triangle> & thePolyTriangles);
+
+		/****************** SetMessenger ******************/
+		/**** md5 signature: 64d8b30fe8bddfb6111cbf1a0e26e584 ****/
+		%feature("compactdefaultargs") SetMessenger;
+		%feature("autodoc", "Set messenger for output information without this message::defaultmessenger() will be used.
+
+Parameters
+----------
+theMess: Message_Messenger
+
+Returns
+-------
+None
+") SetMessenger;
+		void SetMessenger(const opencascade::handle<Message_Messenger> & theMess);
+
+		/****************** ToPolyTriangulation ******************/
+		/**** md5 signature: f294791c79f89b5907206362dfc74a77 ****/
+		%feature("compactdefaultargs") ToPolyTriangulation;
+		%feature("autodoc", "Performs conversion of the given list of triangles to poly_triangulation.
+
+Parameters
+----------
+theNodes: TColgp_Array1OfPnt
+thePolyTriangles: NCollection_List<Poly_Triangle>
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") ToPolyTriangulation;
+		static opencascade::handle<Poly_Triangulation> ToPolyTriangulation(const TColgp_Array1OfPnt & theNodes, const NCollection_List<Poly_Triangle> & thePolyTriangles);
+
+};
+
+
+%extend BRepMesh_Triangulator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /************************
 * class BRepMesh_Vertex *
 ************************/
@@ -4275,7 +4354,7 @@ bool
 		/****************** IsSameOrientation ******************/
 		/**** md5 signature: 89af0bb4a997d047c8d1bc9628fad9dd ****/
 		%feature("compactdefaultargs") IsSameOrientation;
-		%feature("autodoc", "Checks if the given edge and this one have the same orientation. @param theother edge to be checked against this one. etrun true if edges have the same orientation, false if not.
+		%feature("autodoc", "Checks if the given edge and this one have the same orientation. @param theother edge to be checked against this one. eturn true if edges have the same orientation, false if not.
 
 Parameters
 ----------
@@ -4468,7 +4547,7 @@ IMeshTools_Parameters
 		/****************** Perform ******************/
 		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs meshing ot the shape.
+		%feature("autodoc", "Performs meshing of the shape.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPCONSTRUCTDOCSTRING
 "STEPConstruct module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepconstruct.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepconstruct.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPCONSTRUCTDOCSTRING) STEPConstruct
 
@@ -100,7 +100,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -1913,7 +1913,7 @@ int
 		/****************** ConvertSiPrefix ******************/
 		/**** md5 signature: da1d7efb2a96f1799098b82e4aa16394 ****/
 		%feature("compactdefaultargs") ConvertSiPrefix;
-		%feature("autodoc", "Convert si prefix defined by enumertaion to corresponding real factor (e.g. 1e6 for mega).
+		%feature("autodoc", "Convert si prefix defined by enumeration to corresponding real factor (e.g. 1e6 for mega).
 
 Parameters
 ----------
@@ -2554,7 +2554,7 @@ bool
 		/****************** LoadInvisStyles ******************/
 		/**** md5 signature: 0e85b82c907be2deec7d1178e9b59af4 ****/
 		%feature("compactdefaultargs") LoadInvisStyles;
-		%feature("autodoc", "Searches the step model for the inisibility enteties (which bring styles) and fills out sequence of styles.
+		%feature("autodoc", "Searches the step model for the inisibility entities (which bring styles) and fills out sequence of styles.
 
 Parameters
 ----------

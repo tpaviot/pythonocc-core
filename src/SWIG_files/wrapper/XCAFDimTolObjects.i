@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFDIMTOLOBJECTSDOCSTRING
 "XCAFDimTolObjects module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafdimtolobjects.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafdimtolobjects.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFDIMTOLOBJECTSDOCSTRING) XCAFDimTolObjects
 
@@ -305,7 +305,7 @@ enum XCAFDimTolObjects_DimensionGrade {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class XCAFDimTolObjects_GeomToleranceType(IntEnum):
@@ -826,6 +826,14 @@ None
 ") AddModifier;
 		void AddModifier(const XCAFDimTolObjects_DatumSingleModif theModifier);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetDatumTarget ******************/
 		/**** md5 signature: 907a10d068832d0dfb763a345de9f7e3 ****/
 		%feature("compactdefaultargs") GetDatumTarget;
@@ -1376,6 +1384,14 @@ None
 ") AddModifier;
 		void AddModifier(const XCAFDimTolObjects_DimensionModif theModifier);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetClassOfTolerance ******************/
 		/**** md5 signature: 5c7792eec51fc027e2d5d6043f6964ff ****/
 		%feature("compactdefaultargs") GetClassOfTolerance;
@@ -2110,6 +2126,14 @@ None
 ") AddModifier;
 		void AddModifier(const XCAFDimTolObjects_GeomToleranceModif theModifier);
 
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
 		/****************** GetAffectedPlane ******************/
 		/**** md5 signature: a2b83a410ab5eca7c1125298d914df55 ****/
 		%feature("compactdefaultargs") GetAffectedPlane;

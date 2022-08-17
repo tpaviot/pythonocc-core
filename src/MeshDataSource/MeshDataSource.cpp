@@ -79,7 +79,7 @@ MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 	std::vector<std::vector<int>> Ele2NodeData;
 	CoordData.resize(polyTri->NbNodes());
 	Ele2NodeData.resize(polyTri->NbTriangles());
-	const TColgp_Array1OfPnt& nodes = polyTri->Nodes();
+	const TColgp_Array1OfPnt& nodes = polyTri->MapNodeArray()->Array1();
 	for (Standard_Integer nodeId = nodes.Lower(); nodeId <= nodes.Upper(); nodeId++) {
 		const gp_Pnt& node = nodes.Value(nodeId);
 		CoordData[nodeId - nodes.Lower()] = node;

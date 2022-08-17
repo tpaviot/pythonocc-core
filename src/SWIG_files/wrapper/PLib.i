@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PLIBDOCSTRING
 "PLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_plib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_plib.html"
 %enddef
 %module (package="OCC.Core", docstring=PLIBDOCSTRING) PLib
 
@@ -67,7 +67,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -215,7 +215,7 @@ GeomAbs_Shape
 		/****************** EvalCubicHermite ******************/
 		/**** md5 signature: 70b5084cb477532383770ec1daed2d40 ****/
 		%feature("compactdefaultargs") EvalCubicHermite;
-		%feature("autodoc", "Performs the cubic hermite interpolation of given series of points with given parameters with the requested derivative order. valuearray stores the value at the first and last parameter. it has the following format : [0], [dimension-1]  : value at first param [dimension], [dimension + dimension-1] : value at last param derivative array stores the value of the derivatives at the first parameter and at the last parameter in the following format [0], [dimension-1]  : derivative at first param [dimension], [dimension + dimension-1] : derivative at last param //! parameterarray stores the first and last parameter in the following format : [0] : first parameter [1] : last parameter //! results will store things in the following format with d = derivativeorder //! [0], [dimension-1]  : value [dimension], [dimension + dimension-1] : first derivative //! [d *dimension], [d*dimension + dimension-1]: dth derivative.
+		%feature("autodoc", "Performs the cubic hermite interpolation of given series of points with given parameters with the requested derivative order. valuearray stores the value at the first and last parameter. it has the following format : @code [0], [dimension-1]  : value at first param [dimension], [dimension + dimension-1] : value at last param @endcode derivative array stores the value of the derivatives at the first parameter and at the last parameter in the following format @code [0], [dimension-1]  : derivative at @endcode first param @code [dimension], [dimension + dimension-1] : derivative at @endcode last param //! parameterarray stores the first and last parameter in the following format : @code [0] : first parameter [1] : last parameter @endcode //! results will store things in the following format with d = derivativeorder @code [0], [dimension-1]  : value [dimension], [dimension + dimension-1] : first derivative //! [d *dimension], [d*dimension + dimension-1]: dth derivative @endcode.
 
 Parameters
 ----------
@@ -235,7 +235,7 @@ Results: float
 		/****************** EvalLagrange ******************/
 		/**** md5 signature: db70dc230b872e9d346e3aab66b28d83 ****/
 		%feature("compactdefaultargs") EvalLagrange;
-		%feature("autodoc", "Performs the lagrange interpolation of given series of points with given parameters with the requested derivative order results will store things in the following format with d = derivativeorder //! [0], [dimension-1]  : value [dimension], [dimension + dimension-1] : first derivative //! [d *dimension], [d*dimension + dimension-1]: dth derivative.
+		%feature("autodoc", "Performs the lagrange interpolation of given series of points with given parameters with the requested derivative order results will store things in the following format with d = derivativeorder @code [0], [dimension-1]  : value [dimension], [dimension + dimension-1] : first derivative //! [d *dimension], [d*dimension + dimension-1]: dth derivative @endcode.
 
 Parameters
 ----------
@@ -295,7 +295,7 @@ Error: float
 		/****************** EvalPoly2Var ******************/
 		/**** md5 signature: f820034b111d664eb87d8d6417e36fc7 ****/
 		%feature("compactdefaultargs") EvalPoly2Var;
-		%feature("autodoc", "Applies evalpolynomial twice to evaluate the derivative of orders uderivativeorder in u, vderivativeorder in v at parameters u,v //! polynomialcoeff are stored in the following fashion c00(1) .... c00(dimension) c10(1) .... c10(dimension) .... cm0(1) .... cm0(dimension) .... c01(1) .... c01(dimension) c11(1) .... c11(dimension) .... cm1(1) .... cm1(dimension) .... c0n(1) .... c0n(dimension) c1n(1) .... c1n(dimension) .... cmn(1) .... cmn(dimension) //! where the polynomial is defined as : 2  m c00 + c10 u + c20 u + .... + cm0 u 2  m + c01 v + c11 uv + c21 u v + .... + cm1 u v n m n + .... + c0n v + .... + cmn u v //! with m = udegree and n = vdegree //! results stores the result in the following format //! f(1) f(2) .... f(dimension) //! warning: <results> and <polynomialcoeff> must be dimensioned properly.
+		%feature("autodoc", "Applies evalpolynomial twice to evaluate the derivative of orders uderivativeorder in u, vderivativeorder in v at parameters u,v //! polynomialcoeff are stored in the following fashion @code c00(1) .... c00(dimension) c10(1) .... c10(dimension) .... cm0(1) .... cm0(dimension) .... c01(1) .... c01(dimension) c11(1) .... c11(dimension) .... cm1(1) .... cm1(dimension) .... c0n(1) .... c0n(dimension) c1n(1) .... c1n(dimension) .... cmn(1) .... cmn(dimension) @endcode where the polynomial is defined as : @code 2  m c00 + c10 u + c20 u + .... + cm0 u 2  m + c01 v + c11 uv + c21 u v + .... + cm1 u v n m n + .... + c0n v + .... + cmn u v @endcode with m = udegree and n = vdegree //! results stores the result in the following format @code f(1) f(2) .... f(dimension) @endcode warning: <results> and <polynomialcoeff> must be dimensioned properly.
 
 Parameters
 ----------
@@ -317,7 +317,7 @@ Results: float
 		/****************** EvalPolynomial ******************/
 		/**** md5 signature: ab7638add7201ad9dc7d8b63cb124efa ****/
 		%feature("compactdefaultargs") EvalPolynomial;
-		%feature("autodoc", "Performs horner method with synthethic division for derivatives parameter <u>, with <degree> and <dimension>. polynomialcoeff are stored in the following fashion c0(1) c0(2) .... c0(dimension) c1(1) c1(2) .... c1(dimension) //! cdegree(1) cdegree(2) .... cdegree(dimension) where the polynomial is defined as : //! 2 degree c0 + c1 x + c2 x + .... cdegree x //! results stores the result in the following format //! f(1) f(2) .... f(dimension) (1)  (1)  (1) f (1) f (2) .... f (dimension) //! (derivativerequest) (derivativerequest) f (1)  f (dimension) //! this just evaluates the point at parameter u //! warning: <results> and <polynomialcoeff> must be dimensioned properly.
+		%feature("autodoc", "Performs horner method with synthetic division for derivatives parameter <u>, with <degree> and <dimension>. polynomialcoeff are stored in the following fashion @code c0(1) c0(2) .... c0(dimension) c1(1) c1(2) .... c1(dimension) //! cdegree(1) cdegree(2) .... cdegree(dimension) @endcode where the polynomial is defined as : @code 2 degree c0 + c1 x + c2 x + .... cdegree x @endcode results stores the result in the following format @code f(1) f(2) .... f(dimension) (1)  (1)  (1) f (1) f (2) .... f (dimension) //! (derivativerequest) (derivativerequest) f (1)  f (dimension) @endcode this just evaluates the point at parameter u //! warning: <results> and <polynomialcoeff> must be dimensioned properly.
 
 Parameters
 ----------
@@ -1423,7 +1423,7 @@ int
 		/****************** Points ******************/
 		/**** md5 signature: 653579675c537b457b38505106af2c77 ****/
 		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "Returns the jacobi points for gauss integration ie the positive values of the legendre roots by increasing values nbgausspoints is the number of points choosen for the integral computation. tabpoints (0,nbgausspoints/2) tabpoints (0) is loaded only for the odd values of nbgausspoints the possible values for nbgausspoints are : 8, 10, 15, 20, 25, 30, 35, 40, 50, 61 nbgausspoints must be greater than degree.
+		%feature("autodoc", "Returns the jacobi points for gauss integration ie the positive values of the legendre roots by increasing values nbgausspoints is the number of points chosen for the integral computation. tabpoints (0,nbgausspoints/2) tabpoints (0) is loaded only for the odd values of nbgausspoints the possible values for nbgausspoints are : 8, 10, 15, 20, 25, 30, 35, 40, 50, 61 nbgausspoints must be greater than degree.
 
 Parameters
 ----------
@@ -1476,7 +1476,7 @@ None
 		/****************** Weights ******************/
 		/**** md5 signature: 4ae0ffe39406097290e31be2570d9f0d ****/
 		%feature("compactdefaultargs") Weights;
-		%feature("autodoc", "Returns the jacobi weigths for gauss integration only for the positive values of the legendre roots in the order they are given by the method points nbgausspoints is the number of points choosen for the integral computation. tabweights (0,nbgausspoints/2,0,degree) tabweights (0,.) are only loaded for the odd values of nbgausspoints the possible values for nbgausspoints are : 8 , 10 , 15 ,20 ,25 , 30, 35 , 40 , 50 , 61 nbgausspoints must be greater than degree.
+		%feature("autodoc", "Returns the jacobi weigths for gauss integration only for the positive values of the legendre roots in the order they are given by the method points nbgausspoints is the number of points chosen for the integral computation. tabweights (0,nbgausspoints/2,0,degree) tabweights (0,.) are only loaded for the odd values of nbgausspoints the possible values for nbgausspoints are : 8 , 10 , 15 ,20 ,25 , 30, 35 , 40 , 50 , 61 nbgausspoints must be greater than degree.
 
 Parameters
 ----------

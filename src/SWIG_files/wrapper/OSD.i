@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define OSDDOCSTRING
 "OSD module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_osd.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_osd.html"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
@@ -166,7 +166,7 @@ enum OSD_SingleProtection {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class OSD_LockType(IntEnum):
@@ -348,6 +348,9 @@ OSD_RWXD = OSD_SingleProtection.OSD_RWXD
 
 /* typedefs */
 typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
+typedef OSD_StreamBuffer<std::iostream> OSD_IOStreamBuffer;
+typedef OSD_StreamBuffer<std::istream> OSD_IStreamBuffer;
+typedef OSD_StreamBuffer<std::ostream> OSD_OStreamBuffer;
 typedef pthread_t OSD_PThread;
 /* end typedefs declaration */
 
@@ -375,6 +378,9 @@ typedef pthread_t OSD_PThread;
 /*********************
 * class OSD_FileNode *
 *********************/
+/***********************
+* class OSD_FileSystem *
+***********************/
 /*****************
 * class OSD_Host *
 *****************/
@@ -402,18 +408,30 @@ typedef pthread_t OSD_PThread;
 /**************************
 * class OSD_SharedLibrary *
 **************************/
+/*************************
+* class OSD_StreamBuffer *
+*************************/
 /*******************
 * class OSD_Thread *
 *******************/
 /***********************
 * class OSD_ThreadPool *
 ***********************/
+/*****************************
+* class OSD_CachedFileSystem *
+*****************************/
 /**********************
 * class OSD_Directory *
 **********************/
 /*****************
 * class OSD_File *
 *****************/
+/*******************************
+* class OSD_FileSystemSelector *
+*******************************/
+/****************************
+* class OSD_LocalFileSystem *
+****************************/
 /******************
 * class OSD_Timer *
 ******************/
@@ -425,6 +443,10 @@ class OSD_Timer:
 
 @classnotwrapped
 class OSD_PerfMeter:
+	pass
+
+@classnotwrapped
+class OSD_FileSystem:
 	pass
 
 @classnotwrapped
@@ -440,7 +462,15 @@ class OSD_MemInfo:
 	pass
 
 @classnotwrapped
+class OSD_StreamBuffer:
+	pass
+
+@classnotwrapped
 class OSD_DirectoryIterator:
+	pass
+
+@classnotwrapped
+class OSD_CachedFileSystem:
 	pass
 
 @classnotwrapped
@@ -472,6 +502,10 @@ class OSD_Directory:
 	pass
 
 @classnotwrapped
+class OSD_FileSystemSelector:
+	pass
+
+@classnotwrapped
 class OSD_Path:
 	pass
 
@@ -497,6 +531,10 @@ class OSD_FileIterator:
 
 @classnotwrapped
 class OSD_Thread:
+	pass
+
+@classnotwrapped
+class OSD_LocalFileSystem:
 	pass
 
 @classnotwrapped

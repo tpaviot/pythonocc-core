@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPTRANSDOCSTRING
 "TopTrans module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptrans.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_toptrans.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPTRANSDOCSTRING) TopTrans
 
@@ -62,7 +62,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -134,7 +134,7 @@ None
 		/****************** Reset ******************/
 		/**** md5 signature: 477dbad6632871c94ebb699631f93444 ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Initialize a transition with the local description of a straigth line.
+		%feature("autodoc", "Initialize a transition with the local description of a straight line.
 
 Parameters
 ----------

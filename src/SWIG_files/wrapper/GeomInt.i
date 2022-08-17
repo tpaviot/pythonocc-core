@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMINTDOCSTRING
 "GeomInt module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomint.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomint.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMINTDOCSTRING) GeomInt
 
@@ -96,7 +96,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -1133,14 +1133,14 @@ None
 		void Perform(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real Tol, const Standard_Boolean Approx = Standard_True, const Standard_Boolean ApproxS1 = Standard_False, const Standard_Boolean ApproxS2 = Standard_False);
 
 		/****************** Perform ******************/
-		/**** md5 signature: b2a019dcc3a6698ca6e543f29c1a5fdb ****/
+		/**** md5 signature: 941b2b95a9b8f4e8d1f31d8f8f515e3d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Intersection of adapted surfaces.
 
 Parameters
 ----------
-HS1: GeomAdaptor_HSurface
-HS2: GeomAdaptor_HSurface
+HS1: GeomAdaptor_Surface
+HS2: GeomAdaptor_Surface
 Tol: float
 Approx: bool,optional
 	default value is Standard_True
@@ -1153,7 +1153,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<GeomAdaptor_HSurface> & HS1, const opencascade::handle<GeomAdaptor_HSurface> & HS2, const Standard_Real Tol, const Standard_Boolean Approx = Standard_True, const Standard_Boolean ApproxS1 = Standard_False, const Standard_Boolean ApproxS2 = Standard_False);
+		void Perform(const opencascade::handle<GeomAdaptor_Surface> & HS1, const opencascade::handle<GeomAdaptor_Surface> & HS2, const Standard_Real Tol, const Standard_Boolean Approx = Standard_True, const Standard_Boolean ApproxS1 = Standard_False, const Standard_Boolean ApproxS2 = Standard_False);
 
 		/****************** Perform ******************/
 		/**** md5 signature: 73c48116f09d9e8b379e1bbb117b10b1 ****/
@@ -1183,14 +1183,14 @@ None
 		void Perform(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real Tol, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Boolean Approx = Standard_True, const Standard_Boolean ApproxS1 = Standard_False, const Standard_Boolean ApproxS2 = Standard_False);
 
 		/****************** Perform ******************/
-		/**** md5 signature: b9277d7ddec70e649af5066d9199c604 ****/
+		/**** md5 signature: a1e4f1bf6f4cefe55312366702abfa51 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Intersection of adapted surfaces using a starting point.
 
 Parameters
 ----------
-HS1: GeomAdaptor_HSurface
-HS2: GeomAdaptor_HSurface
+HS1: GeomAdaptor_Surface
+HS2: GeomAdaptor_Surface
 Tol: float
 U1: float
 V1: float
@@ -1207,7 +1207,7 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<GeomAdaptor_HSurface> & HS1, const opencascade::handle<GeomAdaptor_HSurface> & HS2, const Standard_Real Tol, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Boolean Approx = Standard_True, const Standard_Boolean ApproxS1 = Standard_False, const Standard_Boolean ApproxS2 = Standard_False);
+		void Perform(const opencascade::handle<GeomAdaptor_Surface> & HS1, const opencascade::handle<GeomAdaptor_Surface> & HS2, const Standard_Real Tol, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Boolean Approx = Standard_True, const Standard_Boolean ApproxS1 = Standard_False, const Standard_Boolean ApproxS2 = Standard_False);
 
 		/****************** Pnt2d ******************/
 		/**** md5 signature: 70e3cf4a0a6f4cd62919c61b21b8dac0 ****/
@@ -1263,15 +1263,15 @@ float
 		Standard_Real TolReached3d();
 
 		/****************** TreatRLine ******************/
-		/**** md5 signature: 491c3dacd5f6421cc8110e8eca9b2a74 ****/
+		/**** md5 signature: 937cc34b25e05ec74387ed10ee40296e ****/
 		%feature("compactdefaultargs") TreatRLine;
 		%feature("autodoc", "Converts rline to geom(2d)_curve.
 
 Parameters
 ----------
 theRL: IntPatch_RLine
-theHS1: GeomAdaptor_HSurface
-theHS2: GeomAdaptor_HSurface
+theHS1: GeomAdaptor_Surface
+theHS2: GeomAdaptor_Surface
 theC3d: Geom_Curve
 theC2d1: Geom2d_Curve
 theC2d2: Geom2d_Curve
@@ -1280,7 +1280,7 @@ Returns
 -------
 theTolReached: float
 ") TreatRLine;
-		static void TreatRLine(const opencascade::handle<IntPatch_RLine> & theRL, const opencascade::handle<GeomAdaptor_HSurface> & theHS1, const opencascade::handle<GeomAdaptor_HSurface> & theHS2, opencascade::handle<Geom_Curve> & theC3d, opencascade::handle<Geom2d_Curve> & theC2d1, opencascade::handle<Geom2d_Curve> & theC2d2, Standard_Real &OutValue);
+		static void TreatRLine(const opencascade::handle<IntPatch_RLine> & theRL, const opencascade::handle<GeomAdaptor_Surface> & theHS1, const opencascade::handle<GeomAdaptor_Surface> & theHS2, opencascade::handle<Geom_Curve> & theC3d, opencascade::handle<Geom2d_Curve> & theC2d1, opencascade::handle<Geom2d_Curve> & theC2d2, Standard_Real &OutValue);
 
 		/****************** TrimILineOnSurfBoundaries ******************/
 		/**** md5 signature: 296ff18403a193bd148a0bb591fb60d7 ****/
@@ -1346,7 +1346,7 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** Load ******************/
-		/**** md5 signature: 4d5aac89c4d3cac18412238d60b86a1b ****/
+		/**** md5 signature: 79e3a2dc3b8e325809da53bf6db5f35b ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Initializes me by two surfaces and corresponding tools which represent boundaries of surfaces.
 
@@ -1354,14 +1354,14 @@ Parameters
 ----------
 D1: Adaptor3d_TopolTool
 D2: Adaptor3d_TopolTool
-S1: GeomAdaptor_HSurface
-S2: GeomAdaptor_HSurface
+S1: GeomAdaptor_Surface
+S2: GeomAdaptor_Surface
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_TopolTool> & D2, const opencascade::handle<GeomAdaptor_HSurface> & S1, const opencascade::handle<GeomAdaptor_HSurface> & S2);
+		void Load(const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_TopolTool> & D2, const opencascade::handle<GeomAdaptor_Surface> & S1, const opencascade::handle<GeomAdaptor_Surface> & S2);
 
 		/****************** NbParts ******************/
 		/**** md5 signature: 309ebdfe06afb1fef88f3046131c3deb ****/
@@ -1420,15 +1420,15 @@ None
 class GeomInt_LineTool {
 	public:
 		/****************** DecompositionOfWLine ******************/
-		/**** md5 signature: 774f308a6369fea4648dea0a75ae1a0c ****/
+		/**** md5 signature: a11cd86ba4ec963237a16709f49a30e5 ****/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 theWLine: IntPatch_WLine
-theSurface1: GeomAdaptor_HSurface
-theSurface2: GeomAdaptor_HSurface
+theSurface1: GeomAdaptor_Surface
+theSurface2: GeomAdaptor_Surface
 aTolSum: float
 theLConstructor: GeomInt_LineConstructor
 theNewLines: IntPatch_SequenceOfLine
@@ -1437,7 +1437,7 @@ Returns
 -------
 bool
 ") DecompositionOfWLine;
-		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_HSurface> & theSurface1, const opencascade::handle<GeomAdaptor_HSurface> & theSurface2, const Standard_Real aTolSum, const GeomInt_LineConstructor & theLConstructor, IntPatch_SequenceOfLine & theNewLines);
+		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const Standard_Real aTolSum, const GeomInt_LineConstructor & theLConstructor, IntPatch_SequenceOfLine & theNewLines);
 
 		/****************** FirstParameter ******************/
 		/**** md5 signature: cccff448706b5dedef51e7fc2e64ae95 ****/
@@ -3879,7 +3879,7 @@ None
 		/****************** SetPeriodic ******************/
 		/**** md5 signature: 3109823bbe448d62437b44b39b4d9b19 ****/
 		%feature("compactdefaultargs") SetPeriodic;
-		%feature("autodoc", "Sets periodic flag. if theperiodic = standard_true, algorith tries to build periodic multicurve using corresponding c1 boundary condition for first and last multipoints. multiline must be closed.
+		%feature("autodoc", "Sets periodic flag. if theperiodic = standard_true, algorithm tries to build periodic multicurve using corresponding c1 boundary condition for first and last multipoints. multiline must be closed.
 
 Parameters
 ----------
@@ -3933,42 +3933,42 @@ AppParCurves_MultiBSpCurve
 class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: 04e99abbd3cd62b143bbab42c401762d ****/
+		/**** md5 signature: 25a05e92e7b02b3aa541cd2ad3d594a9 ****/
 		%feature("compactdefaultargs") GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2);
+		 GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2);
 
 		/****************** AuxillarSurface1 ******************/
-		/**** md5 signature: de137e38f3f056bf64cd7e4eab548eaf ****/
+		/**** md5 signature: 2bcc0e8f6b940dfbbbc22a207b96f139 ****/
 		%feature("compactdefaultargs") AuxillarSurface1;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") AuxillarSurface1;
-		const opencascade::handle<Adaptor3d_HSurface> & AuxillarSurface1();
+		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface1();
 
 		/****************** AuxillarSurface2 ******************/
-		/**** md5 signature: 02af9eff198053eb68634237a25ca989 ****/
+		/**** md5 signature: 00eb01b56212c9640d2242fafdf3e920 ****/
 		%feature("compactdefaultargs") AuxillarSurface2;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") AuxillarSurface2;
-		const opencascade::handle<Adaptor3d_HSurface> & AuxillarSurface2();
+		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface2();
 
 		/****************** ComputeParameters ******************/
 		/**** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ****/
@@ -4148,36 +4148,36 @@ bool
 class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	public:
 		/****************** GeomInt_TheImpPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: 67802e9ec30b002579345b39c4c42061 ****/
+		/**** md5 signature: 756b0be5f48f711bd5c404150aa6617e ****/
 		%feature("compactdefaultargs") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
+Surf1: Adaptor3d_Surface
 Surf2: IntSurf_Quadric
 
 Returns
 -------
 None
 ") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheImpPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const IntSurf_Quadric & Surf2);
+		 GeomInt_TheImpPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_Surface> & Surf1, const IntSurf_Quadric & Surf2);
 
 		/****************** GeomInt_TheImpPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: e34c1e0ff4d487121cdafcee827c63a9 ****/
+		/**** md5 signature: 206f2546010b9fbe1ff8c3002f470f88 ****/
 		%feature("compactdefaultargs") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 Surf1: IntSurf_Quadric
-Surf2: Adaptor3d_HSurface
+Surf2: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheImpPrmSvSurfacesOfWLApprox(const IntSurf_Quadric & Surf1, const opencascade::handle<Adaptor3d_HSurface> & Surf2);
+		 GeomInt_TheImpPrmSvSurfacesOfWLApprox(const IntSurf_Quadric & Surf1, const opencascade::handle<Adaptor3d_Surface> & Surf2);
 
 		/****************** Compute ******************/
 		/**** md5 signature: 1b6699512251d1cde0fa87fb6fb9f2bf ****/
@@ -4314,39 +4314,39 @@ bool
 class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 	public:
 		/****************** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: 04b2619a6f98ac1a5927c14c79f12519 ****/
+		/**** md5 signature: e56262fd3a0a528ff9551e1825dcea4c ****/
 		%feature("compactdefaultargs") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "Compute the solution point with the close point.
 
 Parameters
 ----------
 Param: TColStd_Array1OfReal
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 TolTangency: float
 
 Returns
 -------
 None
 ") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const Standard_Real TolTangency);
+		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
 		/****************** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: 040b8daf3619bbcc53290d53fda04889 ****/
+		/**** md5 signature: 4c370cda13592e56acd24cbe06174af1 ****/
 		%feature("compactdefaultargs") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "Initialize the parameters to compute the solution point it 's possible to write to optimize: intimp_int2s inter(s1,s2,func,toltangency); math_functionsetroot rsnld(inter.function()); while ...{ param(1)=... param(2)=... param(3)=... inter.perform(param,rsnld); }.
 
 Parameters
 ----------
-S1: Adaptor3d_HSurface
-S2: Adaptor3d_HSurface
+S1: Adaptor3d_Surface
+S2: Adaptor3d_Surface
 TolTangency: float
 
 Returns
 -------
 None
 ") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const Standard_Real TolTangency);
+		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
 		/****************** ChangePoint ******************/
 		/**** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ****/
@@ -5081,20 +5081,20 @@ Approx_Status
 class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	public:
 		/****************** GeomInt_ThePrmPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: 7eee316f3f8c667ac175b17810322d14 ****/
+		/**** md5 signature: 4fba916203d8e976746fb2838ff206f9 ****/
 		%feature("compactdefaultargs") GeomInt_ThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-Surf1: Adaptor3d_HSurface
-Surf2: Adaptor3d_HSurface
+Surf1: Adaptor3d_Surface
+Surf2: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") GeomInt_ThePrmPrmSvSurfacesOfWLApprox;
-		 GeomInt_ThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_HSurface> & Surf1, const opencascade::handle<Adaptor3d_HSurface> & Surf2);
+		 GeomInt_ThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_Surface> & Surf2);
 
 		/****************** Compute ******************/
 		/**** md5 signature: 1b6699512251d1cde0fa87fb6fb9f2bf ****/
@@ -5238,20 +5238,20 @@ None
 		 GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox();
 
 		/****************** GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox ******************/
-		/**** md5 signature: 2101093207590f04c74bb5f87f45afed ****/
+		/**** md5 signature: 8ded961e5c3205c0b178bffeb780a030 ****/
 		%feature("compactdefaultargs") GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-PS: Adaptor3d_HSurface
+PS: Adaptor3d_Surface
 IS: IntSurf_Quadric
 
 Returns
 -------
 None
 ") GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_HSurface> & PS, const IntSurf_Quadric & IS);
+		 GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_Surface> & PS, const IntSurf_Quadric & IS);
 
 		/****************** GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox ******************/
 		/**** md5 signature: 2f8aa55f338308969cc539957c11e030 ****/
@@ -5351,15 +5351,15 @@ int
 		Standard_Integer NbVariables();
 
 		/****************** PSurface ******************/
-		/**** md5 signature: 0a40ce1f5ad8ff1450f2b3c7ab3a7140 ****/
+		/**** md5 signature: ba545ec7900073a2f2c5530d5104284d ****/
 		%feature("compactdefaultargs") PSurface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") PSurface;
-		const opencascade::handle<Adaptor3d_HSurface> & PSurface();
+		const opencascade::handle<Adaptor3d_Surface> & PSurface();
 
 		/****************** Point ******************/
 		/**** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ****/
@@ -5384,19 +5384,19 @@ float
 		Standard_Real Root();
 
 		/****************** Set ******************/
-		/**** md5 signature: 9ecb67ee9b893e382519f5f1648548ac ****/
+		/**** md5 signature: 9ddb344b11924e5532d547145d17d9e5 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-PS: Adaptor3d_HSurface
+PS: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Set;
-		void Set(const opencascade::handle<Adaptor3d_HSurface> & PS);
+		void Set(const opencascade::handle<Adaptor3d_Surface> & PS);
 
 		/****************** Set ******************/
 		/**** md5 signature: 7e3e1092ebe5da1f71e965a1091893e3 ****/

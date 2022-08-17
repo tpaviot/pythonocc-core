@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPPRIMAPIDOCSTRING
 "BRepPrimAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepprimapi.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepprimapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMAPIDOCSTRING) BRepPrimAPI
 
@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepprimapi.html"
 #include<BRepBuilderAPI_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Message_module.hxx>
 #include<BRepPrim_module.hxx>
 #include<TopTools_module.hxx>
 #include<BRepSweep_module.hxx>
@@ -67,6 +68,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepprimapi.html"
 %import BRepBuilderAPI.i
 %import gp.i
 %import TopoDS.i
+%import Message.i
 %import BRepPrim.i
 %import TopTools.i
 %import BRepSweep.i
@@ -80,7 +82,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -202,15 +204,20 @@ TopoDS_Face
 		const TopoDS_Face BottomFace();
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Stores the solid in myshape.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** FrontFace ******************/
 		/**** md5 signature: dedf687aa14ee674479d6969119aae35 ****/
@@ -431,15 +438,20 @@ TopoDS_Solid
 class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Stores the solid in myshape.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Face ******************/
 		/**** md5 signature: d92baec220de1f2e935a9694c6d65407 ****/
@@ -617,15 +629,20 @@ None
 		 BRepPrimAPI_MakeWedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real xmin, const Standard_Real zmin, const Standard_Real xmax, const Standard_Real zmax);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Stores the solid in myshape.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Shell ******************/
 		/**** md5 signature: 642de93edbb586600e27d55251851e8c ****/
@@ -929,15 +946,20 @@ None
 		 BRepPrimAPI_MakePrism(const TopoDS_Shape & S, const gp_Dir & D, const Standard_Boolean Inf = Standard_True, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** FirstShape ******************/
 		/**** md5 signature: 58fcb2a790a0aa12dce93bc2307abc16 ****/
@@ -1084,15 +1106,20 @@ None
 		 BRepPrimAPI_MakeRevol(const TopoDS_Shape & S, const gp_Ax1 & A, const Standard_Boolean Copy = Standard_False);
 
 		/****************** Build ******************/
-		/**** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ****/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds the resulting shape (redefined from makeshape).
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
 
 Returns
 -------
 None
 ") Build;
-		virtual void Build();
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Degenerated ******************/
 		/**** md5 signature: ff38f303d61ce3594b19f818a854ffa1 ****/

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTCURVEDOCSTRING
 "IntCurve module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurve.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intcurve.html"
 %enddef
 %module (package="OCC.Core", docstring=INTCURVEDOCSTRING) IntCurve
 
@@ -70,7 +70,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -243,7 +243,7 @@ float
 		/****************** FindParameter ******************/
 		/**** md5 signature: 096fb3de7d235570ab80208eeea6a6c8 ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter u of the point on the implicit curve corresponding to the point p. the correspondance between p and the point p(u) on the implicit curve must be coherent with the way of determination of the signed distance.
+		%feature("autodoc", "Returns the parameter u of the point on the implicit curve corresponding to the point p. the correspondence between p and the point p(u) on the implicit curve must be coherent with the way of determination of the signed distance.
 
 Parameters
 ----------
@@ -1445,7 +1445,7 @@ class IntCurve_ProjectOnPConicTool {
 		/****************** FindParameter ******************/
 		/**** md5 signature: b3ff9d781501a95779dcbe1748529594 ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondance between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the rigth parameter has to be made on the natural parametric domain of the curve.
+		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the right parameter has to be made on the natural parametric domain of the curve.
 
 Parameters
 ----------
@@ -1462,7 +1462,7 @@ float
 		/****************** FindParameter ******************/
 		/**** md5 signature: 9e46f77742bf8dcfba587637b406a059 ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondance between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in wich the parameter certainly lies. these parameters are given to implement a more efficient algoritm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
+		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in which the parameter certainly lies. these parameters are given to implement a more efficient algorithm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
 
 Parameters
 ----------

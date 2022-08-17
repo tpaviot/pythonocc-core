@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINMNAMINGDOCSTRING
 "BinMNaming module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binmnaming.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_binmnaming.html"
 %enddef
 %module (package="OCC.Core", docstring=BINMNAMINGDOCSTRING) BinMNaming
 
@@ -75,7 +75,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -153,27 +153,53 @@ None
 ") Clear;
 		void Clear();
 
-		/****************** GetFormatNb ******************/
-		/**** md5 signature: 9809eaa2f443c2602f3527736fa218f2 ****/
-		%feature("compactdefaultargs") GetFormatNb;
-		%feature("autodoc", "Get the format of topology.
+		/****************** EnableQuickPart ******************/
+		/**** md5 signature: cec3cd0b4a2a26b64dabfcaa2c58ee1c ****/
+		%feature("compactdefaultargs") EnableQuickPart;
+		%feature("autodoc", "Sets the flag for quick part of the document access: shapes are stored in the attribute.
+
+Parameters
+----------
+theValue: bool
 
 Returns
 -------
-int
-") GetFormatNb;
-		Standard_Integer GetFormatNb();
+None
+") EnableQuickPart;
+		void EnableQuickPart(const Standard_Boolean theValue);
 
 		/****************** GetShapesLocations ******************/
-		/**** md5 signature: 747eb6b8251eb0259ac6f889ad0dbe04 ****/
+		/**** md5 signature: 9cd92ab397d1145dc380f0edef6fc008 ****/
 		%feature("compactdefaultargs") GetShapesLocations;
-		%feature("autodoc", "Get the format of topology.
+		%feature("autodoc", "Get the shapes locations.
 
 Returns
 -------
 BinTools_LocationSet
 ") GetShapesLocations;
 		BinTools_LocationSet & GetShapesLocations();
+
+		/****************** IsQuickPart ******************/
+		/**** md5 signature: 1b93209c8c5b5efc320465bf731b4acb ****/
+		%feature("compactdefaultargs") IsQuickPart;
+		%feature("autodoc", "Returns true if quick part of the document access is enabled: shapes are stored in the attribute.
+
+Returns
+-------
+bool
+") IsQuickPart;
+		Standard_Boolean IsQuickPart();
+
+		/****************** IsWithNormals ******************/
+		/**** md5 signature: 49f5baecd893691e08f163fb559d8b06 ****/
+		%feature("compactdefaultargs") IsWithNormals;
+		%feature("autodoc", "Return true if shape should be stored with triangulation normals.
+
+Returns
+-------
+bool
+") IsWithNormals;
+		Standard_Boolean IsWithNormals();
 
 		/****************** IsWithTriangles ******************/
 		/**** md5 signature: 2adacf1f8e5d4c926108b4db84751e9a ****/
@@ -238,20 +264,20 @@ None
                 std::stringstream s(src);
                 self->ReadShapeSection(s);}
             };
-		/****************** SetFormatNb ******************/
-		/**** md5 signature: 0be85d313a433ece54bf3e7f8567bba5 ****/
-		%feature("compactdefaultargs") SetFormatNb;
-		%feature("autodoc", "Set the format of topology first : does not write curveonsurface uv points into the file on reading calls check() method. second: stores curveonsurface uv points.
+		/****************** SetWithNormals ******************/
+		/**** md5 signature: 2f7757cd59d0573f368c1b217c28b7f5 ****/
+		%feature("compactdefaultargs") SetWithNormals;
+		%feature("autodoc", "Set whether to store triangulation with normals.
 
 Parameters
 ----------
-theFormat: int
+isWithNormals: bool
 
 Returns
 -------
 None
-") SetFormatNb;
-		void SetFormatNb(const Standard_Integer theFormat);
+") SetWithNormals;
+		void SetWithNormals(const Standard_Boolean isWithNormals);
 
 		/****************** SetWithTriangles ******************/
 		/**** md5 signature: ac168a6a3fad4f9bcc30c8362a1cf0c6 ****/
@@ -268,14 +294,21 @@ None
 ") SetWithTriangles;
 		void SetWithTriangles(const Standard_Boolean isWithTriangles);
 
+		/****************** ShapeSet ******************/
+		/**** md5 signature: 9b5007d7513ff5d1f7e764f2202870c2 ****/
+		%feature("compactdefaultargs") ShapeSet;
+		%feature("autodoc", "Returns shape-set of the needed type.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteShapeSectionToString() {
-            std::stringstream s;
-            self->WriteShapeSection(s);
-            return s.str();}
-        };
+Parameters
+----------
+theReading: bool
+
+Returns
+-------
+BinTools_ShapeSetBase *
+") ShapeSet;
+		BinTools_ShapeSetBase * ShapeSet(const Standard_Boolean theReading);
+
 };
 
 

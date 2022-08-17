@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PROJLIBDOCSTRING
 "ProjLib module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_projlib.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_projlib.html"
 %enddef
 %module (package="OCC.Core", docstring=PROJLIBDOCSTRING) ProjLib
 
@@ -47,11 +47,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_projlib.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TColStd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<math_module.hxx>
-#include<Geom_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -66,11 +66,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_projlib.html"
 %import Geom2d.i
 %import gp.i
 %import Adaptor2d.i
+%import Geom.i
 %import GeomAbs.i
 %import TColStd.i
 %import AppParCurves.i
 %import math.i
-%import Geom.i
 %import GeomAdaptor.i
 
 %pythoncode {
@@ -81,14 +81,15 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(ProjLib_HCompProjectedCurve)
-%wrap_handle(ProjLib_HProjectedCurve)
+%wrap_handle(ProjLib_CompProjectedCurve)
+%wrap_handle(ProjLib_ProjectOnPlane)
+%wrap_handle(ProjLib_ProjectedCurve)
 %wrap_handle(ProjLib_HSequenceOfHSequenceOfPnt)
 /* end handles declaration */
 
@@ -104,6 +105,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
+typedef ProjLib_CompProjectedCurve ProjLib_HCompProjectedCurve;
+typedef ProjLib_ProjectedCurve ProjLib_HProjectedCurve;
 typedef NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> ProjLib_SequenceOfHSequenceOfPnt;
 /* end typedefs declaration */
 
@@ -114,19 +117,19 @@ typedef NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> ProjLib
 class ProjLib {
 	public:
 		/****************** IsAnaSurf ******************/
-		/**** md5 signature: 4ea8d0e9af36abaf035c27a554ceb7fa ****/
+		/**** md5 signature: 409f5415ecf911e71bada1348ae276b0 ****/
 		%feature("compactdefaultargs") IsAnaSurf;
 		%feature("autodoc", "Returns 'true' if surface is analytical, that is it can be plane, cylinder, cone, sphere, torus. for all other types of surface method returns 'false'.
 
 Parameters
 ----------
-theAS: Adaptor3d_HSurface
+theAS: Adaptor3d_Surface
 
 Returns
 -------
 bool
 ") IsAnaSurf;
-		static Standard_Boolean IsAnaSurf(const opencascade::handle<Adaptor3d_HSurface> & theAS);
+		static Standard_Boolean IsAnaSurf(const opencascade::handle<Adaptor3d_Surface> & theAS);
 
 		/****************** MakePCurveOfType ******************/
 		/**** md5 signature: 874915f47cdfd90614a48c32012a43ce ****/
@@ -426,14 +429,14 @@ None
 		 ProjLib_CompProjectedCurve();
 
 		/****************** ProjLib_CompProjectedCurve ******************/
-		/**** md5 signature: a7e3e034951b8cd0d4ce3b91b069b3d9 ****/
+		/**** md5 signature: 08dd3c7edaea388012cc726f98f9e13e ****/
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "Try to find all solutions.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 TolU: float
 TolV: float
 
@@ -441,17 +444,17 @@ Returns
 -------
 None
 ") ProjLib_CompProjectedCurve;
-		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real TolU, const Standard_Real TolV);
+		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real TolU, const Standard_Real TolV);
 
 		/****************** ProjLib_CompProjectedCurve ******************/
-		/**** md5 signature: a16b7212abfd4e7d3504b464616d2397 ****/
+		/**** md5 signature: a5db5b76fcdc305ab156c65c2cd559a9 ****/
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "This constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then maxdist. if maxdist < 0 then algorithm works as above.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 TolU: float
 TolV: float
 MaxDist: float
@@ -460,7 +463,26 @@ Returns
 -------
 None
 ") ProjLib_CompProjectedCurve;
-		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real TolU, const Standard_Real TolV, const Standard_Real MaxDist);
+		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real TolU, const Standard_Real TolV, const Standard_Real MaxDist);
+
+		/****************** ProjLib_CompProjectedCurve ******************/
+		/**** md5 signature: 05bb3bd54ea40e0e7af3be7d2c911359 ****/
+		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
+		%feature("autodoc", "This constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then maxdist. if maxdist < 0 then algorithm try to find all solutions tolerances of parameters are calculated automatically.
+
+Parameters
+----------
+Tol3d: float
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
+MaxDist: float,optional
+	default value is -1.0
+
+Returns
+-------
+None
+") ProjLib_CompProjectedCurve;
+		 ProjLib_CompProjectedCurve(const Standard_Real Tol3d, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real MaxDist = -1.0);
 
 		/****************** Bounds ******************/
 		/**** md5 signature: 24282d415a0402b2ddb398db6e27be97 ****/
@@ -557,15 +579,142 @@ float
 		Standard_Real FirstParameter();
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: 2dafd2c1a86bd5912cda3a4f5114b0ca ****/
+		/**** md5 signature: c4c186157bff8d4b55a9d0a19a63ce6d ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		const opencascade::handle<Adaptor3d_Curve> & GetCurve();
+
+		/****************** GetProj2d ******************/
+		/**** md5 signature: 007fc2fbfc8771942194fc818ead51b5 ****/
+		%feature("compactdefaultargs") GetProj2d;
+		%feature("autodoc", "Returns the parameter, which defines necessity of only 2d results.
+
+Returns
+-------
+bool
+") GetProj2d;
+		Standard_Boolean GetProj2d();
+
+		/****************** GetProj3d ******************/
+		/**** md5 signature: 5bc1d8a6587b179d2045e5157c866850 ****/
+		%feature("compactdefaultargs") GetProj3d;
+		%feature("autodoc", "Returns the parameter, which defines necessity of only 3d results.
+
+Returns
+-------
+bool
+") GetProj3d;
+		Standard_Boolean GetProj3d();
+
+		/****************** GetResult2dC ******************/
+		/**** md5 signature: 96d965765f63b3b91f4cb37112eaa771 ****/
+		%feature("compactdefaultargs") GetResult2dC;
+		%feature("autodoc", "Returns the resulting 2d-curve of projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") GetResult2dC;
+		opencascade::handle<Geom2d_Curve> GetResult2dC(const Standard_Integer theIndex);
+
+		/****************** GetResult2dP ******************/
+		/**** md5 signature: e5ed7efabb43e9a259abe437b09fea96 ****/
+		%feature("compactdefaultargs") GetResult2dP;
+		%feature("autodoc", "Returns the resulting 2d-point of projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+gp_Pnt2d
+") GetResult2dP;
+		gp_Pnt2d GetResult2dP(const Standard_Integer theIndex);
+
+		/****************** GetResult2dUApproxError ******************/
+		/**** md5 signature: a7c2281b27a985837ed11d6494634c9b ****/
+		%feature("compactdefaultargs") GetResult2dUApproxError;
+		%feature("autodoc", "Returns the error of approximation of u parameter 2d-curve as a result projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+float
+") GetResult2dUApproxError;
+		Standard_Real GetResult2dUApproxError(const Standard_Integer theIndex);
+
+		/****************** GetResult2dVApproxError ******************/
+		/**** md5 signature: 11b8dbfbde6c5749f403bfd3f4bbd1a1 ****/
+		%feature("compactdefaultargs") GetResult2dVApproxError;
+		%feature("autodoc", "Returns the error of approximation of v parameter 2d-curve as a result projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+float
+") GetResult2dVApproxError;
+		Standard_Real GetResult2dVApproxError(const Standard_Integer theIndex);
+
+		/****************** GetResult3dApproxError ******************/
+		/**** md5 signature: e2590f528d3ee217cdec7ce160b40731 ****/
+		%feature("compactdefaultargs") GetResult3dApproxError;
+		%feature("autodoc", "Returns the error of approximation of 3d-curve as a result projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+float
+") GetResult3dApproxError;
+		Standard_Real GetResult3dApproxError(const Standard_Integer theIndex);
+
+		/****************** GetResult3dC ******************/
+		/**** md5 signature: 7a13a149ade3dc00f611c82fbdffb5d0 ****/
+		%feature("compactdefaultargs") GetResult3dC;
+		%feature("autodoc", "Returns the resulting 3d-curve of projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+opencascade::handle<Geom_Curve>
+") GetResult3dC;
+		opencascade::handle<Geom_Curve> GetResult3dC(const Standard_Integer theIndex);
+
+		/****************** GetResult3dP ******************/
+		/**** md5 signature: 0e7d7f5de659e7d823081953d0527c61 ****/
+		%feature("compactdefaultargs") GetResult3dP;
+		%feature("autodoc", "Returns the resulting 3d-point of projecting of the curve interval with number index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+gp_Pnt
+") GetResult3dP;
+		gp_Pnt GetResult3dP(const Standard_Integer theIndex);
 
 		/****************** GetSequence ******************/
 		/**** md5 signature: e9bad1b71015b635dfab48628ac28803 ****/
@@ -579,15 +728,15 @@ opencascade::handle<ProjLib_HSequenceOfHSequenceOfPnt>
 		const opencascade::handle<ProjLib_HSequenceOfHSequenceOfPnt> & GetSequence();
 
 		/****************** GetSurface ******************/
-		/**** md5 signature: a4a1c7c92c718762dc89945deb151cb7 ****/
+		/**** md5 signature: 56dff0248d5d8fc9e2bd341c8dad1556 ****/
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") GetSurface;
-		const opencascade::handle<Adaptor3d_HSurface> & GetSurface();
+		const opencascade::handle<Adaptor3d_Surface> & GetSurface();
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: f8936a6db95965d7ff78da376cdea110 ****/
@@ -700,34 +849,34 @@ float
 		Standard_Real LastParameter();
 
 		/****************** Load ******************/
-		/**** md5 signature: 4e28ad4f267fb2bf6f257a9658f019ac ****/
+		/**** md5 signature: 5fdedc45f7f3e3286603c8152dd5d5ba ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Changes the surface.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_HSurface> & S);
+		void Load(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** Load ******************/
-		/**** md5 signature: 7ec2d3d2173b0cd6b7f2097ff67dfa81 ****/
+		/**** md5 signature: 01185c022b32d6c381a2144e2963295b ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Changes the curve.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_HCurve> & C);
+		void Load(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** MaxDistance ******************/
 		/**** md5 signature: 2482e25dc8d2cba55f7f64c41a0160e5 ****/
@@ -770,8 +919,124 @@ int
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
+		/****************** Perform ******************/
+		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Performs projecting for given curve. if projecting uses approximation, approximation parameters can be set before by corresponding methods settol3d(...), secontinuity(...), setmaxdegree(...), setmaxseg(...).
+
+Returns
+-------
+None
+") Perform;
+		void Perform();
+
+		/****************** ResultIsPoint ******************/
+		/**** md5 signature: 8df4055fdfa68a6f03a84be17417af04 ****/
+		%feature("compactdefaultargs") ResultIsPoint;
+		%feature("autodoc", "Returns true if result of projecting of the curve interval with number index is point.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+bool
+") ResultIsPoint;
+		Standard_Boolean ResultIsPoint(const Standard_Integer theIndex);
+
+		/****************** SetContinuity ******************/
+		/**** md5 signature: 473faebb309a058577820ec9b582e0f6 ****/
+		%feature("compactdefaultargs") SetContinuity;
+		%feature("autodoc", "Set the parameter, which defines curve continuity. default value is geomabs_c2;.
+
+Parameters
+----------
+theContinuity: GeomAbs_Shape
+
+Returns
+-------
+None
+") SetContinuity;
+		void SetContinuity(const GeomAbs_Shape theContinuity);
+
+		/****************** SetMaxDegree ******************/
+		/**** md5 signature: efc61408e3f0d1e41503836c049cbe18 ****/
+		%feature("compactdefaultargs") SetMaxDegree;
+		%feature("autodoc", "Set max possible degree of result bspline curve2d, which is got by approximation. if maxdegree < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
+
+Parameters
+----------
+theMaxDegree: int
+
+Returns
+-------
+None
+") SetMaxDegree;
+		void SetMaxDegree(const Standard_Integer theMaxDegree);
+
+		/****************** SetMaxSeg ******************/
+		/**** md5 signature: 66e7b336ed24a318e6679512ef71b3a7 ****/
+		%feature("compactdefaultargs") SetMaxSeg;
+		%feature("autodoc", "Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. if maxseg < 0, algorithm uses default value = 16.
+
+Parameters
+----------
+theMaxSeg: int
+
+Returns
+-------
+None
+") SetMaxSeg;
+		void SetMaxSeg(const Standard_Integer theMaxSeg);
+
+		/****************** SetProj2d ******************/
+		/**** md5 signature: 7a320b8018cb550d84f2f2fcca0967e8 ****/
+		%feature("compactdefaultargs") SetProj2d;
+		%feature("autodoc", "Set the parameter, which defines necessity of 2d results.
+
+Parameters
+----------
+theProj2d: bool
+
+Returns
+-------
+None
+") SetProj2d;
+		void SetProj2d(const Standard_Boolean theProj2d);
+
+		/****************** SetProj3d ******************/
+		/**** md5 signature: 5c98f0f94ea5c0ea4efb0e680a4a9679 ****/
+		%feature("compactdefaultargs") SetProj3d;
+		%feature("autodoc", "Set the parameter, which defines necessity of 3d results.
+
+Parameters
+----------
+theProj3d: bool
+
+Returns
+-------
+None
+") SetProj3d;
+		void SetProj3d(const Standard_Boolean theProj3d);
+
+		/****************** SetTol3d ******************/
+		/**** md5 signature: e30512cadc319d04110248d2c13d0c2a ****/
+		%feature("compactdefaultargs") SetTol3d;
+		%feature("autodoc", "Set the parameter, which defines 3d tolerance of approximation.
+
+Parameters
+----------
+theTol3d: float
+
+Returns
+-------
+None
+") SetTol3d;
+		void SetTol3d(const Standard_Real theTol3d);
+
 		/****************** Trim ******************/
-		/**** md5 signature: 623ded740078dacb8936ca103506ad99 ****/
+		/**** md5 signature: 8e64093bc793cc6590b82d43c4a17978 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 2d points confusion. if <first> >= <last>.
 
@@ -783,9 +1048,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Trim;
-		opencascade::handle<Adaptor2d_HCurve2d> Trim(const Standard_Real FirstParam, const Standard_Real LastParam, const Standard_Real Tol);
+		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real FirstParam, const Standard_Real LastParam, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: 91dcf5c5229f25c64d3a714347090b29 ****/
@@ -804,6 +1069,8 @@ gp_Pnt2d
 
 };
 
+
+%make_alias(ProjLib_CompProjectedCurve)
 
 %extend ProjLib_CompProjectedCurve {
 	%pythoncode {
@@ -828,21 +1095,21 @@ None
 		 ProjLib_ComputeApprox();
 
 		/****************** ProjLib_ComputeApprox ******************/
-		/**** md5 signature: 7c4894bf0bb138d2510fbc65a69a6a10 ****/
+		/**** md5 signature: 6e6bbb92eece37105f669d98cd6b1394 ****/
 		%feature("compactdefaultargs") ProjLib_ComputeApprox;
 		%feature("autodoc", "<tol> is the tolerance with which the approximation is performed. other parameters for approximation have default values.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") ProjLib_ComputeApprox;
-		 ProjLib_ComputeApprox(const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
+		 ProjLib_ComputeApprox(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
 		/****************** BSpline ******************/
 		/**** md5 signature: 990ef8e312bcecfd89dc4fcce5384c7d ****/
@@ -867,20 +1134,20 @@ opencascade::handle<Geom2d_BezierCurve>
 		opencascade::handle<Geom2d_BezierCurve> Bezier();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d446ecbf3a39591baf4f9c1dc6ae542d ****/
+		/**** md5 signature: 0c34f73535d2bab5ab08edde25a61f18 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs projecting. in case of approximation current values of parameters are used: default values or set by corresponding methods set...
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** SetBndPnt ******************/
 		/**** md5 signature: 83e95ddb03e3f36471306d61ee8ca703 ****/
@@ -980,14 +1247,14 @@ None
 		 ProjLib_ComputeApproxOnPolarSurface();
 
 		/****************** ProjLib_ComputeApproxOnPolarSurface ******************/
-		/**** md5 signature: b7e66678196ac14f3227b34265a75e1f ****/
+		/**** md5 signature: d0490d2e8ad01483388efe6cd271814b ****/
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "Constructor, which performs projecting.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 Tol: float,optional
 	default value is 1.0e-4
 
@@ -995,44 +1262,44 @@ Returns
 -------
 None
 ") ProjLib_ComputeApproxOnPolarSurface;
-		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol = 1.0e-4);
+		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol = 1.0e-4);
 
 		/****************** ProjLib_ComputeApproxOnPolarSurface ******************/
-		/**** md5 signature: 900fa8ca5834433b6602044e5be38c2e ****/
+		/**** md5 signature: 26723c3f812147a3071b4f1a8310e739 ****/
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "Constructor, which performs projecting, using initial curve 2d initcurve2d, which is any rough approximation of result curve. parameter tol is 3d tolerance of approximation.
 
 Parameters
 ----------
-InitCurve2d: Adaptor2d_HCurve2d
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+InitCurve2d: Adaptor2d_Curve2d
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") ProjLib_ComputeApproxOnPolarSurface;
-		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
+		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
 		/****************** ProjLib_ComputeApproxOnPolarSurface ******************/
-		/**** md5 signature: 845e5d8bb0f9f41dd87c48de8e627404 ****/
+		/**** md5 signature: 302746a86975d11d0b69ccb9cfa8c8be ****/
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "Constructor, which performs projecting, using two initial curves 2d: initcurve2d and initcurve2dbis that are any rough approximations of result curves. this constructor is used to get two pcurves for seem edge. parameter tol is 3d tolerance of approximation.
 
 Parameters
 ----------
-InitCurve2d: Adaptor2d_HCurve2d
-InitCurve2dBis: Adaptor2d_HCurve2d
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+InitCurve2d: Adaptor2d_Curve2d
+InitCurve2dBis: Adaptor2d_Curve2d
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 Tol: float
 
 Returns
 -------
 None
 ") ProjLib_ComputeApproxOnPolarSurface;
-		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2d, const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2dBis, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real Tol);
+		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2dBis, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
 		/****************** BSpline ******************/
 		/**** md5 signature: 990ef8e312bcecfd89dc4fcce5384c7d ****/
@@ -1046,20 +1313,20 @@ opencascade::handle<Geom2d_BSplineCurve>
 		opencascade::handle<Geom2d_BSplineCurve> BSpline();
 
 		/****************** BuildInitialCurve2d ******************/
-		/**** md5 signature: 9fdb01557bf42e018e26c2897d17d64e ****/
+		/**** md5 signature: 05adce7fea9e40e792f1212d9ed1cd2d ****/
 		%feature("compactdefaultargs") BuildInitialCurve2d;
-		%feature("autodoc", "Builds initial 2d curve as bspline with degree = 1 using extrema algoritm. method is used in method perform(...).
+		%feature("autodoc", "Builds initial 2d curve as bspline with degree = 1 using extrema algorithm. method is used in method perform(...).
 
 Parameters
 ----------
-Curve: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+Curve: Adaptor3d_Curve
+S: Adaptor3d_Surface
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") BuildInitialCurve2d;
-		opencascade::handle<Adaptor2d_HCurve2d> BuildInitialCurve2d(const opencascade::handle<Adaptor3d_HCurve> & Curve, const opencascade::handle<Adaptor3d_HSurface> & S);
+		opencascade::handle<Adaptor2d_Curve2d> BuildInitialCurve2d(const opencascade::handle<Adaptor3d_Curve> & Curve, const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** Curve2d ******************/
 		/**** md5 signature: 2238084fe0748f28af09927c40970ede ****/
@@ -1084,54 +1351,54 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** Perform ******************/
-		/**** md5 signature: d446ecbf3a39591baf4f9c1dc6ae542d ****/
+		/**** md5 signature: 0c34f73535d2bab5ab08edde25a61f18 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Method, which performs projecting, using default values of parameters or they must be set by corresponding methods before using.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 5a33a0b48c117d0ce48bbbe01744bca5 ****/
+		/**** md5 signature: 96366b287f4e6016f04fb0468a888911 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Method, which performs projecting, using default values of parameters or they must be set by corresponding methods before using. parameter initcurve2d is any rough estimation of 2d result curve.
 
 Parameters
 ----------
-InitCurve2d: Adaptor2d_HCurve2d
-C: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
+InitCurve2d: Adaptor2d_Curve2d
+C: Adaptor3d_Curve
+S: Adaptor3d_Surface
 
 Returns
 -------
 opencascade::handle<Geom2d_BSplineCurve>
 ") Perform;
-		opencascade::handle<Geom2d_BSplineCurve> Perform(const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_HCurve> & C, const opencascade::handle<Adaptor3d_HSurface> & S);
+		opencascade::handle<Geom2d_BSplineCurve> Perform(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** ProjectUsingInitialCurve2d ******************/
-		/**** md5 signature: 3e39f2136c785561c6394b72b31783b1 ****/
+		/**** md5 signature: 3900b16638c8542857f0acb902b2c4f7 ****/
 		%feature("compactdefaultargs") ProjectUsingInitialCurve2d;
 		%feature("autodoc", "Method, which performs projecting. method is used in method perform(...).
 
 Parameters
 ----------
-Curve: Adaptor3d_HCurve
-S: Adaptor3d_HSurface
-InitCurve2d: Adaptor2d_HCurve2d
+Curve: Adaptor3d_Curve
+S: Adaptor3d_Surface
+InitCurve2d: Adaptor2d_Curve2d
 
 Returns
 -------
 opencascade::handle<Geom2d_BSplineCurve>
 ") ProjectUsingInitialCurve2d;
-		opencascade::handle<Geom2d_BSplineCurve> ProjectUsingInitialCurve2d(const opencascade::handle<Adaptor3d_HCurve> & Curve, const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2d);
+		opencascade::handle<Geom2d_BSplineCurve> ProjectUsingInitialCurve2d(const opencascade::handle<Adaptor3d_Curve> & Curve, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d);
 
 		/****************** SetBndPnt ******************/
 		/**** md5 signature: 83e95ddb03e3f36471306d61ee8ca703 ****/
@@ -1167,7 +1434,7 @@ None
 		/****************** SetMaxDist ******************/
 		/**** md5 signature: 42d3e5302e76e2f097ff4b175c4b2803 ****/
 		%feature("compactdefaultargs") SetMaxDist;
-		%feature("autodoc", "Set the parameter, which defines maximal possible distance between projected curve and surface. it is used only for projecting on not analytical surfaces. if themaxdist < 0, algoritm uses default value 100.*tolerance. if real distance between curve and surface more then themaxdist, algorithm stops working.
+		%feature("autodoc", "Set the parameter, which defines maximal possible distance between projected curve and surface. it is used only for projecting on not analytical surfaces. if themaxdist < 0, algorithm uses default value 100.*tolerance. if real distance between curve and surface more then themaxdist, algorithm stops working.
 
 Parameters
 ----------
@@ -1229,186 +1496,28 @@ float
 	}
 };
 
-/************************************
-* class ProjLib_HCompProjectedCurve *
-************************************/
-class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
-	public:
-		/****************** ProjLib_HCompProjectedCurve ******************/
-		/**** md5 signature: 3ecaa2ad5d82bf2aa9ff327aab54cf2d ****/
-		%feature("compactdefaultargs") ProjLib_HCompProjectedCurve;
-		%feature("autodoc", "Creates an empty genhcurve2d.
-
-Returns
--------
-None
-") ProjLib_HCompProjectedCurve;
-		 ProjLib_HCompProjectedCurve();
-
-		/****************** ProjLib_HCompProjectedCurve ******************/
-		/**** md5 signature: 9bf654b49337e561275b4a580c472f55 ****/
-		%feature("compactdefaultargs") ProjLib_HCompProjectedCurve;
-		%feature("autodoc", "Creates a genhcurve2d from a curve.
-
-Parameters
-----------
-C: ProjLib_CompProjectedCurve
-
-Returns
--------
-None
-") ProjLib_HCompProjectedCurve;
-		 ProjLib_HCompProjectedCurve(const ProjLib_CompProjectedCurve & C);
-
-		/****************** ChangeCurve2d ******************/
-		/**** md5 signature: f7f86956c0ba637a0f9c6048de02ef31 ****/
-		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-ProjLib_CompProjectedCurve
-") ChangeCurve2d;
-		ProjLib_CompProjectedCurve & ChangeCurve2d();
-
-		/****************** Curve2d ******************/
-		/**** md5 signature: 87546edb35f2000a54f99255bb8c94db ****/
-		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve2d. this is redefined from hcurve2d, cannot be inline.
-
-Returns
--------
-Adaptor2d_Curve2d
-") Curve2d;
-		const Adaptor2d_Curve2d & Curve2d();
-
-		/****************** Set ******************/
-		/**** md5 signature: 8ba622ae759f2a7bf42e2d500d284b8f ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve2d.
-
-Parameters
-----------
-C: ProjLib_CompProjectedCurve
-
-Returns
--------
-None
-") Set;
-		void Set(const ProjLib_CompProjectedCurve & C);
-
-};
-
-
-%make_alias(ProjLib_HCompProjectedCurve)
-
-%extend ProjLib_HCompProjectedCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************
-* class ProjLib_HProjectedCurve *
-********************************/
-class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
-	public:
-		/****************** ProjLib_HProjectedCurve ******************/
-		/**** md5 signature: 88449fe224eecf8f7bbfc5569769b3e9 ****/
-		%feature("compactdefaultargs") ProjLib_HProjectedCurve;
-		%feature("autodoc", "Creates an empty genhcurve2d.
-
-Returns
--------
-None
-") ProjLib_HProjectedCurve;
-		 ProjLib_HProjectedCurve();
-
-		/****************** ProjLib_HProjectedCurve ******************/
-		/**** md5 signature: f04ab940032efcce7bc9fe8d490e5954 ****/
-		%feature("compactdefaultargs") ProjLib_HProjectedCurve;
-		%feature("autodoc", "Creates a genhcurve2d from a curve.
-
-Parameters
-----------
-C: ProjLib_ProjectedCurve
-
-Returns
--------
-None
-") ProjLib_HProjectedCurve;
-		 ProjLib_HProjectedCurve(const ProjLib_ProjectedCurve & C);
-
-		/****************** ChangeCurve2d ******************/
-		/**** md5 signature: 686f86de8b255b7ca668d5dbaf4b03c6 ****/
-		%feature("compactdefaultargs") ChangeCurve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve.
-
-Returns
--------
-ProjLib_ProjectedCurve
-") ChangeCurve2d;
-		ProjLib_ProjectedCurve & ChangeCurve2d();
-
-		/****************** Curve2d ******************/
-		/**** md5 signature: 87546edb35f2000a54f99255bb8c94db ****/
-		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "Returns the curve used to create the genhcurve2d. this is redefined from hcurve2d, cannot be inline.
-
-Returns
--------
-Adaptor2d_Curve2d
-") Curve2d;
-		const Adaptor2d_Curve2d & Curve2d();
-
-		/****************** Set ******************/
-		/**** md5 signature: 785fe0defe0ffbf47b4e01938ce190e7 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the field of the genhcurve2d.
-
-Parameters
-----------
-C: ProjLib_ProjectedCurve
-
-Returns
--------
-None
-") Set;
-		void Set(const ProjLib_ProjectedCurve & C);
-
-};
-
-
-%make_alias(ProjLib_HProjectedCurve)
-
-%extend ProjLib_HProjectedCurve {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /************************
 * class ProjLib_PrjFunc *
 ************************/
 class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** ProjLib_PrjFunc ******************/
-		/**** md5 signature: 120b7bc7b0254663e57deac550cc038c ****/
+		/**** md5 signature: b8f566acf7a0e9e08415dab3f6e4da36 ****/
 		%feature("compactdefaultargs") ProjLib_PrjFunc;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-C: Adaptor3d_CurvePtr
+C: Adaptor3d_Curve *
 FixVal: float
-S: Adaptor3d_SurfacePtr
+S: Adaptor3d_Surface *
 Fix: int
 
 Returns
 -------
 None
 ") ProjLib_PrjFunc;
-		 ProjLib_PrjFunc(const Adaptor3d_CurvePtr & C, const Standard_Real FixVal, const Adaptor3d_SurfacePtr & S, const Standard_Integer Fix);
+		 ProjLib_PrjFunc(const Adaptor3d_Curve * C, const Standard_Real FixVal, const Adaptor3d_Surface * S, const Standard_Integer Fix);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
@@ -1537,7 +1646,7 @@ bool
 		/****************** Perform ******************/
 		/**** md5 signature: 3e6c7ef4ff8082da8be8b1588435d3c7 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Calculates the ort from c(t) to s with a close point. the close point is defined by the parameter values u0 and v0. the function f(u,v)=distance(s(u,v),c(t)) has an extremum when gradient(f)=0. the algorithm searchs a zero near the close point.
+		%feature("autodoc", "Calculates the ort from c(t) to s with a close point. the close point is defined by the parameter values u0 and v0. the function f(u,v)=distance(s(u,v),c(t)) has an extremum when gradient(f)=0. the algorithm searches a zero near the close point.
 
 Parameters
 ----------
@@ -1789,15 +1898,15 @@ float
 		Standard_Real FirstParameter();
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: 2dafd2c1a86bd5912cda3a4f5114b0ca ****/
+		/**** md5 signature: c4c186157bff8d4b55a9d0a19a63ce6d ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****************** GetDirection ******************/
 		/**** md5 signature: b6eb17b51f95e3e399a1271a423f3532 ****/
@@ -1822,15 +1931,15 @@ gp_Ax3
 		const gp_Ax3 GetPlane();
 
 		/****************** GetResult ******************/
-		/**** md5 signature: 10a0abdf9d7ceafa53273593232c8ed6 ****/
+		/**** md5 signature: f6ba5b1ad08f0e4df5c78e461cf39633 ****/
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<GeomAdaptor_HCurve>
+opencascade::handle<GeomAdaptor_Curve>
 ") GetResult;
-		const opencascade::handle<GeomAdaptor_HCurve> & GetResult();
+		const opencascade::handle<GeomAdaptor_Curve> & GetResult();
 
 		/****************** GetType ******************/
 		/**** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ****/
@@ -1857,7 +1966,7 @@ gp_Hypr
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -1926,13 +2035,13 @@ gp_Lin
 		gp_Lin Line();
 
 		/****************** Load ******************/
-		/**** md5 signature: f65c8de6d296dca9a6b80f037128bc37 ****/
+		/**** md5 signature: 31a752f627fb0153cb1407e5c6490ff4 ****/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "Sets the curve and perform the projection. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it meens: proj(c(u)) = pc(u) for each u. otherwize, the parametrization may change.
+		%feature("autodoc", "Sets the curve and perform the projection. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it means: proj(c(u)) = pc(u) for each u. otherwise, the parametrization may change.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 Tolerance: float
 KeepParametrization: bool,optional
 	default value is Standard_True
@@ -1941,7 +2050,7 @@ Returns
 -------
 None
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real Tolerance, const Standard_Boolean KeepParametrization = Standard_True);
+		void Load(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tolerance, const Standard_Boolean KeepParametrization = Standard_True);
 
 		/****************** NbIntervals ******************/
 		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
@@ -2018,7 +2127,7 @@ float
 		Standard_Real Resolution(const Standard_Real R3d);
 
 		/****************** Trim ******************/
-		/**** md5 signature: 113944489c8ce9efcb5cb2d44fff51d7 ****/
+		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2030,9 +2139,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") Trim;
-		opencascade::handle<Adaptor3d_HCurve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
@@ -2051,6 +2160,8 @@ gp_Pnt
 
 };
 
+
+%make_alias(ProjLib_ProjectOnPlane)
 
 %extend ProjLib_ProjectOnPlane {
 	%pythoncode {
@@ -2075,19 +2186,19 @@ None
 		 ProjLib_ProjectOnSurface();
 
 		/****************** ProjLib_ProjectOnSurface ******************/
-		/**** md5 signature: 7ee7d94f2665b6bd5dce8b0872213d02 ****/
+		/**** md5 signature: e0f2fe05c79663cd563fd99d0aa83d9f ****/
 		%feature("compactdefaultargs") ProjLib_ProjectOnSurface;
-		%feature("autodoc", "Create a projector normaly to the surface <s>.
+		%feature("autodoc", "Create a projector normally to the surface <s>.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") ProjLib_ProjectOnSurface;
-		 ProjLib_ProjectOnSurface(const opencascade::handle<Adaptor3d_HSurface> & S);
+		 ProjLib_ProjectOnSurface(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** BSpline ******************/
 		/**** md5 signature: 496d8648e54b9bba1acabb31d1b7a380 ****/
@@ -2101,7 +2212,7 @@ opencascade::handle<Geom_BSplineCurve>
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "No available documentation.
 
@@ -2141,52 +2252,52 @@ None
 		 ProjLib_ProjectedCurve();
 
 		/****************** ProjLib_ProjectedCurve ******************/
-		/**** md5 signature: 6e3d07889a90aa7da697f1d58ace3ab4 ****/
+		/**** md5 signature: 806e5753a4ed213087d3260ea4e88cc4 ****/
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "Constructor with initialisation field mysurface.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") ProjLib_ProjectedCurve;
-		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_HSurface> & S);
+		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** ProjLib_ProjectedCurve ******************/
-		/**** md5 signature: 10684abd3bdd6a4eb971f33f58b2fcd6 ****/
+		/**** md5 signature: 5d1c7eb5c22d6e037ea9b3c4462a649d ****/
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "Constructor, which performs projecting. if projecting uses approximation, default parameters are used, in particular, 3d tolerance of approximation is precision::confusion().
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") ProjLib_ProjectedCurve;
-		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C);
+		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** ProjLib_ProjectedCurve ******************/
-		/**** md5 signature: 8a39bf49a3c66e0c953d638824602b0c ****/
+		/**** md5 signature: 3d9164c6323fdb2132df526d14e5ec72 ****/
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "Constructor, which performs projecting. if projecting uses approximation, 3d tolerance is tol, default parameters are used, .
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
-C: Adaptor3d_HCurve
+S: Adaptor3d_Surface
+C: Adaptor3d_Curve
 Tol: float
 
 Returns
 -------
 None
 ") ProjLib_ProjectedCurve;
-		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real Tol);
+		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tol);
 
 		/****************** BSpline ******************/
 		/**** md5 signature: 9439c331c4f14f299277aa5a4ff16cec ****/
@@ -2352,26 +2463,26 @@ float
 		Standard_Real FirstParameter();
 
 		/****************** GetCurve ******************/
-		/**** md5 signature: 2dafd2c1a86bd5912cda3a4f5114b0ca ****/
+		/**** md5 signature: c4c186157bff8d4b55a9d0a19a63ce6d ****/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") GetCurve;
-		const opencascade::handle<Adaptor3d_HCurve> & GetCurve();
+		const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****************** GetSurface ******************/
-		/**** md5 signature: a4a1c7c92c718762dc89945deb151cb7 ****/
+		/**** md5 signature: 56dff0248d5d8fc9e2bd341c8dad1556 ****/
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "No available documentation.
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") GetSurface;
-		const opencascade::handle<Adaptor3d_HSurface> & GetSurface();
+		const opencascade::handle<Adaptor3d_Surface> & GetSurface();
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 0b68579e68d60bdd102d14afab21387e ****/
@@ -2409,7 +2520,7 @@ gp_Hypr2d
 		/****************** Intervals ******************/
 		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2526,19 +2637,19 @@ gp_Parab2d
 		gp_Parab2d Parabola();
 
 		/****************** Perform ******************/
-		/**** md5 signature: b16044d0b6ab4a0f0ebe4930b8cca351 ****/
+		/**** md5 signature: 9a095a38277b9f3df203b3cfa73b1f1d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs projecting for given curve. if projecting uses approximation, approximation parameters can be set before by corresponding methods setdegree(...), setmaxsegmets(...), setbndpnt(...), setmaxdist(...).
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_HCurve> & C);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Period ******************/
 		/**** md5 signature: 88909a321398632744c0d6841580c626 ****/
@@ -2600,7 +2711,7 @@ None
 		/****************** SetMaxDist ******************/
 		/**** md5 signature: 42d3e5302e76e2f097ff4b175c4b2803 ****/
 		%feature("compactdefaultargs") SetMaxDist;
-		%feature("autodoc", "Set the parameter, which degines maximal possible distance between projected curve and surface. it uses only for projecting on not analytical surfaces. if themaxdist < 0, algoritm uses default value 100.*tolerance. if real distance between curve and surface more then themaxdist, algorithm stops working.
+		%feature("autodoc", "Set the parameter, which degines maximal possible distance between projected curve and surface. it uses only for projecting on not analytical surfaces. if themaxdist < 0, algorithm uses default value 100.*tolerance. if real distance between curve and surface more then themaxdist, algorithm stops working.
 
 Parameters
 ----------
@@ -2628,7 +2739,7 @@ None
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
 
 		/****************** Trim ******************/
-		/**** md5 signature: e1eef64565323d75c47ee19ca861de8d ****/
+		/**** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ****/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
 
@@ -2640,9 +2751,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor2d_HCurve2d>
+opencascade::handle<Adaptor2d_Curve2d>
 ") Trim;
-		opencascade::handle<Adaptor2d_HCurve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: 91dcf5c5229f25c64d3a714347090b29 ****/
@@ -2661,6 +2772,8 @@ gp_Pnt2d
 
 };
 
+
+%make_alias(ProjLib_ProjectedCurve)
 
 %extend ProjLib_ProjectedCurve {
 	%pythoncode {
@@ -3859,4 +3972,6 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public ProjLib_SequenceOfHSequenceOfPn
 
 /* class aliases */
 %pythoncode {
+ProjLib_HCompProjectedCurve=ProjLib_CompProjectedCurve
+ProjLib_HProjectedCurve=ProjLib_ProjectedCurve
 }

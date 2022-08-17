@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRBREPDOCSTRING
 "HLRBRep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrbrep.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_hlrbrep.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRBREPDOCSTRING) HLRBRep
 
@@ -118,7 +118,7 @@ enum HLRBRep_TypeOfResultingEdge {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class HLRBRep_TypeOfResultingEdge(IntEnum):
@@ -790,7 +790,7 @@ gp_Hypr
 		/****************** Intervals ******************/
 		/**** md5 signature: f429463d75cd548af36c429f480bc438 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -2352,7 +2352,7 @@ gp_Hypr2d
 		/****************** Intervals ******************/
 		/**** md5 signature: c7a2f17df7514293a67a56baae0afb68 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -3003,7 +3003,7 @@ gp_Hypr2d
 		/****************** Intervals ******************/
 		/**** md5 signature: f4845d7a44f9b537c0b15d3febb0634f ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 
 Parameters
 ----------
@@ -3611,7 +3611,7 @@ bool
 		/****************** SimplClassify ******************/
 		/**** md5 signature: 55d1fd4787d6f9ea6b9011a26a063db8 ****/
 		%feature("compactdefaultargs") SimplClassify;
-		%feature("autodoc", "Simple classification of part of edge [p1, p2] returns out if at least 1 of nbp points of edge is out othewise returns in it is used to check 'suspision' hided part of edge.
+		%feature("autodoc", "Simple classification of part of edge [p1, p2]. returns out if at least 1 of nbp points of edge is out; otherwise returns in. it is used to check 'suspicion' hidden part of edge.
 
 Parameters
 ----------
@@ -3667,7 +3667,7 @@ Standard_ShortReal
 		/****************** Update ******************/
 		/**** md5 signature: d7a49bc87b072ee91bdb1d6dfd85432d ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "End of building of the data and updating all the informations linked to the projection.
+		%feature("autodoc", "End of building of the data and updating all the information linked to the projection.
 
 Parameters
 ----------
@@ -6811,7 +6811,7 @@ int
 		/****************** Perform ******************/
 		/**** md5 signature: ad6a57edaa391e06877cb1bee2bae6c2 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the auto intersection of an edge. the edge domain is cutted at start with da1*(b-a) and at end with db1*(b-a).
+		%feature("autodoc", "Performs the auto intersection of an edge. the edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
 
 Parameters
 ----------
@@ -6828,7 +6828,7 @@ None
 		/****************** Perform ******************/
 		/**** md5 signature: 4f119c0498079f9f268caca23730d0d5 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the intersection between the two edges. the edges domains are cutted at start with da*(b-a) and at end with db*(b-a).
+		%feature("autodoc", "Performs the intersection between the two edges. the edges domains are cut at start with da*(b-a) and at end with db*(b-a).
 
 Parameters
 ----------
@@ -7660,7 +7660,7 @@ bool
 		/****************** NbExt ******************/
 		/**** md5 signature: 84ada636e4651cacf916eb056265a1d9 ****/
 		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return the nunber of found extrema.
+		%feature("autodoc", "Return the number of found extrema.
 
 Returns
 -------
@@ -7827,7 +7827,7 @@ None
 		 HLRBRep_PolyAlgo(const TopoDS_Shape & S);
 
 		/****************** Algo ******************/
-		/**** md5 signature: ebeae28e548136fa3c0a74aeb956a363 ****/
+		/**** md5 signature: cd1fc8891d8e67ed127640c762ef6d62 ****/
 		%feature("compactdefaultargs") Algo;
 		%feature("autodoc", "No available documentation.
 
@@ -7835,7 +7835,7 @@ Returns
 -------
 opencascade::handle<HLRAlgo_PolyAlgo>
 ") Algo;
-		opencascade::handle<HLRAlgo_PolyAlgo> Algo();
+		const opencascade::handle<HLRAlgo_PolyAlgo> & Algo();
 
 		/****************** Debug ******************/
 		/**** md5 signature: 69dc7ba9221c00c4012a027efb557742 ****/
@@ -9166,7 +9166,7 @@ opencascade::handle<Geom_BSplineSurface>
 		static opencascade::handle<Geom_BSplineSurface> BSpline(const Standard_Address S);
 
 		/****************** BasisCurve ******************/
-		/**** md5 signature: 3449d1f2a4c351a42135a6894bbd624b ****/
+		/**** md5 signature: 800cb1ec50ed14042ffd84fb9d7f16fe ****/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "No available documentation.
 
@@ -9176,12 +9176,12 @@ S: Standard_Address
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HCurve>
+opencascade::handle<Adaptor3d_Curve>
 ") BasisCurve;
-		static opencascade::handle<Adaptor3d_HCurve> BasisCurve(const Standard_Address S);
+		static opencascade::handle<Adaptor3d_Curve> BasisCurve(const Standard_Address S);
 
 		/****************** BasisSurface ******************/
-		/**** md5 signature: 50ab537b396967f0626793f834225bd9 ****/
+		/**** md5 signature: e90675a246e7d6d61a9ca69df68a8bde ****/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "No available documentation.
 
@@ -9191,9 +9191,9 @@ S: Standard_Address
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") BasisSurface;
-		static opencascade::handle<Adaptor3d_HSurface> BasisSurface(const Standard_Address S);
+		static opencascade::handle<Adaptor3d_Surface> BasisSurface(const Standard_Address S);
 
 		/****************** Bezier ******************/
 		/**** md5 signature: 1b7883c3f8ccd14ba98ea3102b92482a ****/
@@ -9702,7 +9702,7 @@ float
 		static Standard_Real UResolution(const Standard_Address S, const Standard_Real R3d);
 
 		/****************** UTrim ******************/
-		/**** md5 signature: 5785ae163102422a94c3377374cc646a ****/
+		/**** md5 signature: 85e441d9fff0bfb7cfe199a8ef2d2aec ****/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "If <first> >= <last>.
 
@@ -9715,9 +9715,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") UTrim;
-		static opencascade::handle<Adaptor3d_HSurface> UTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		static opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** VIntervals ******************/
 		/**** md5 signature: 349fd1650c53bee88da5eb6085891c0c ****/
@@ -9768,7 +9768,7 @@ float
 		static Standard_Real VResolution(const Standard_Address S, const Standard_Real R3d);
 
 		/****************** VTrim ******************/
-		/**** md5 signature: f5d24d13f9913349e068709e9ac96e5b ****/
+		/**** md5 signature: 9c95e57bce1c7a7d40af515009ac46f7 ****/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "If <first> >= <last>.
 
@@ -9781,9 +9781,9 @@ Tol: float
 
 Returns
 -------
-opencascade::handle<Adaptor3d_HSurface>
+opencascade::handle<Adaptor3d_Surface>
 ") VTrim;
-		static opencascade::handle<Adaptor3d_HSurface> VTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		static opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
 		/****************** Value ******************/
 		/**** md5 signature: 6dbf71d8deef85164fbe55f3e77b5728 ****/
@@ -10922,7 +10922,7 @@ None
 		/****************** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ******************/
 		/**** md5 signature: 2404bc558ec12c49789c3598f94daa2b ****/
 		%feature("compactdefaultargs") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -10940,7 +10940,7 @@ None
 		/****************** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ******************/
 		/**** md5 signature: e0698389ad945e5cff9fe9be0284beb7 ****/
 		%feature("compactdefaultargs") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searchs a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+		%feature("autodoc", "Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin and usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
 
 Parameters
 ----------
@@ -11143,7 +11143,7 @@ bool
 		/****************** ComputeWithBox ******************/
 		/**** md5 signature: 7d618b2066ef81b993e4f38bdebc62ca ****/
 		%feature("compactdefaultargs") ComputeWithBox;
-		%feature("autodoc", "The current polygon is modified if most of the points of the polygon are are outside the box <otherbox>. in this situation, bounds are computed to build a polygon inside or near the otherbox.
+		%feature("autodoc", "The current polygon is modified if most of the points of the polygon are outside the box <otherbox>. in this situation, bounds are computed to build a polygon inside or near the otherbox.
 
 Parameters
 ----------
@@ -11324,22 +11324,22 @@ float
 		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
 
 		/****************** BeginOfSeg ******************/
-		/**** md5 signature: 3d238bbcef54b3e034127352ea83ab27 ****/
+		/**** md5 signature: d9c773bc099d0d92cc222653e8226d5e ****/
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "Give the point of range index in the polygon.
 
 Parameters
 ----------
-Index: int
+theIndex: int
 
 Returns
 -------
 gp_Pnt
 ") BeginOfSeg;
-		const gp_Pnt BeginOfSeg(const Standard_Integer Index);
+		const gp_Pnt BeginOfSeg(const Standard_Integer theIndex);
 
 		/****************** Bounding ******************/
-		/**** md5 signature: 8283e6d7921bb28044a85a5b8e0569c1 ****/
+		/**** md5 signature: 54ccbf8f63f02bb43c2fc9c718922d78 ****/
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "Give the bounding box of the polygon.
 
@@ -11350,22 +11350,22 @@ Bnd_Box
 		const Bnd_Box & Bounding();
 
 		/****************** Closed ******************/
-		/**** md5 signature: c5b0bafd47da29606481588a971270ce ****/
+		/**** md5 signature: e853f3a0de69f6e7f92ebd8ac1362e0c ****/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-clos: bool
+flag: bool
 
 Returns
 -------
 None
 ") Closed;
-		void Closed(const Standard_Boolean clos);
+		void Closed(const Standard_Boolean flag);
 
 		/****************** Closed ******************/
-		/**** md5 signature: 6964da666f9b5a80bedb32cfb1fdc0ba ****/
+		/**** md5 signature: f94551c898fe323903f1d14861bbe901 ****/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "No available documentation.
 
@@ -11376,7 +11376,7 @@ bool
 		Standard_Boolean Closed();
 
 		/****************** DeflectionOverEstimation ******************/
-		/**** md5 signature: 0e10e8a0297f14d67919e7ee30d4f816 ****/
+		/**** md5 signature: b4c80a54735f171bb52e56c083257109 ****/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "No available documentation.
 
@@ -11398,22 +11398,22 @@ None
 		void Dump();
 
 		/****************** EndOfSeg ******************/
-		/**** md5 signature: 926c5cd8e4c3aff42af21c0c8b794c75 ****/
+		/**** md5 signature: fa65a7dd84749b3192eff93d48f5b1d6 ****/
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "Give the point of range index in the polygon.
 
 Parameters
 ----------
-Index: int
+theIndex: int
 
 Returns
 -------
 gp_Pnt
 ") EndOfSeg;
-		const gp_Pnt EndOfSeg(const Standard_Integer Index);
+		const gp_Pnt EndOfSeg(const Standard_Integer theIndex);
 
 		/****************** InfParameter ******************/
-		/**** md5 signature: 8559659cfaf88d25c04ace5dcdcbde32 ****/
+		/**** md5 signature: f596238a0398d517210e4fad0d4b84b2 ****/
 		%feature("compactdefaultargs") InfParameter;
 		%feature("autodoc", "Returns the parameter (on the curve) of the first point of the polygon.
 
@@ -11424,7 +11424,7 @@ float
 		Standard_Real InfParameter();
 
 		/****************** NbSegments ******************/
-		/**** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ****/
+		/**** md5 signature: 9f8199ef0d5690074e4037e7feba62da ****/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Give the number of segments in the polyline.
 
@@ -11435,7 +11435,7 @@ int
 		Standard_Integer NbSegments();
 
 		/****************** SetDeflectionOverEstimation ******************/
-		/**** md5 signature: 310446258d4443a660c9cfe280519b05 ****/
+		/**** md5 signature: 872cf63726ece2c3b812a597bb60fe29 ****/
 		%feature("compactdefaultargs") SetDeflectionOverEstimation;
 		%feature("autodoc", "No available documentation.
 
@@ -11450,7 +11450,7 @@ None
 		void SetDeflectionOverEstimation(const Standard_Real x);
 
 		/****************** SupParameter ******************/
-		/**** md5 signature: 67f72e7357fa61911c23a764d72614ea ****/
+		/**** md5 signature: 688f110f02a5711ae550904ec8e3220d ****/
 		%feature("compactdefaultargs") SupParameter;
 		%feature("autodoc", "Returns the parameter (on the curve) of the last point of the polygon.
 
@@ -11693,7 +11693,7 @@ bool
 		/****************** NbTriangles ******************/
 		/**** md5 signature: 8aae3d76f3218cae09710e3ea2158686 ****/
 		%feature("compactdefaultargs") NbTriangles;
-		%feature("autodoc", "Give the number of triangles in this polyedral surface.
+		%feature("autodoc", "Give the number of triangles in this polyhedral surface.
 
 Parameters
 ----------
@@ -11708,7 +11708,7 @@ int
 		/****************** Point ******************/
 		/**** md5 signature: 5674891cbaca4c7ce90a78a09fc4c54a ****/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Give the point of index i in the polyedral surface.
+		%feature("autodoc", "Give the point of index i in the polyhedral surface.
 
 Parameters
 ----------
@@ -11724,7 +11724,7 @@ gp_Pnt
 		/****************** TriConnex ******************/
 		/**** md5 signature: d041417e60bce37dbe8565dbf06d95a0 ****/
 		%feature("compactdefaultargs") TriConnex;
-		%feature("autodoc", "Give the addresse tricon of the triangle connexe to the triangle of address triang by the edge pivot pedge and the third point of this connexe triangle. when we are on a free edge tricon==0 but the function return the value of the triangle in the other side of pivot on the free edge. used to turn around a vertex.
+		%feature("autodoc", "Give the address tricon of the triangle connexe to the triangle of address triang by the edge pivot pedge and the third point of this connexe triangle. when we are on a free edge tricon==0 but the function return the value of the triangle in the other side of pivot on the free edge. used to turn around a vertex.
 
 Parameters
 ----------
@@ -11775,7 +11775,7 @@ class HLRBRep_TheProjPCurOfCInter {
 		/****************** FindParameter ******************/
 		/**** md5 signature: ece1816b3f28762e1d44b5aa074a236b ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondance between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the rigth parameter has to be made on the natural parametric domain of the curve.
+		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the right parameter has to be made on the natural parametric domain of the curve.
 
 Parameters
 ----------
@@ -11792,7 +11792,7 @@ float
 		/****************** FindParameter ******************/
 		/**** md5 signature: 7a692a1a974abdb0d81ce6c269a9e2dc ****/
 		%feature("compactdefaultargs") FindParameter;
-		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondance between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in wich the parameter certainly lies. these parameters are given to implement a more efficient algoritm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
+		%feature("autodoc", "Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in which the parameter certainly lies. these parameters are given to implement a more efficient algorithm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
 
 Parameters
 ----------
@@ -12033,7 +12033,7 @@ HLRAlgo_Intersection
 		/****************** IsBoundary ******************/
 		/**** md5 signature: 9d78e8db3d0caa05aa9a267c764c472e ****/
 		%feature("compactdefaultargs") IsBoundary;
-		%feature("autodoc", "Returns true if the current vertex is is on the boundary of the edge.
+		%feature("autodoc", "Returns true if the current vertex is on the boundary of the edge.
 
 Returns
 -------

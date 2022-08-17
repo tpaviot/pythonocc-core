@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEFIXDOCSTRING
 "ShapeFix module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapefix.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapefix.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEFIXDOCSTRING) ShapeFix
 
@@ -92,7 +92,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -1741,7 +1741,7 @@ None
 		/****************** SplitEdges ******************/
 		/**** md5 signature: 331bb3c5f5af91cdf07f7ad382ac1f69 ****/
 		%feature("compactdefaultargs") SplitEdges;
-		%feature("autodoc", "Splits edges in the original shape by grid. this is a part of perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded. //! note: if edge is splitted, it is replaced by wire, and order of edges in the wire corresponds to forward orientation of the edge.
+		%feature("autodoc", "Splits edges in the original shape by grid. this is a part of perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded. //! note: if edge is split, it is replaced by wire, and order of edges in the wire corresponds to forward orientation of the edge.
 
 Returns
 -------
@@ -1907,7 +1907,7 @@ bool
 		/****************** FixLoopWire ******************/
 		/**** md5 signature: f97141bba35ff4c3a243e9711fbe3754 ****/
 		%feature("compactdefaultargs") FixLoopWire;
-		%feature("autodoc", "Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was splitted status was set to value shapeextend_done6.
+		%feature("autodoc", "Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was split status was set to value shapeextend_done6.
 
 Parameters
 ----------
@@ -2188,7 +2188,7 @@ bool
 		/****************** Result ******************/
 		/**** md5 signature: e7d296a4a4a5995509cb67e3ee28f5dc ****/
 		%feature("compactdefaultargs") Result;
-		%feature("autodoc", "Returns resulting shape (face or shell if splitted) to be used instead of face() if fixmissingseam involved.
+		%feature("autodoc", "Returns resulting shape (face or shell if split) to be used instead of face() if fixmissingseam involved.
 
 Returns
 -------
@@ -2997,7 +2997,7 @@ TopoDS_Compound
 		/****************** FixFaceOrientation ******************/
 		/**** md5 signature: ff34d366ae4848ab5f8277e68d81b0db ****/
 		%feature("compactdefaultargs") FixFaceOrientation;
-		%feature("autodoc", "Fixes orientation of faces in shell. changes orientation of face in the shell, if it is oriented opposite to neigbouring faces. if it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. other faces are stored in error compound. modes : isaccountmulticonex - mode for account cases of multiconnexity. if this mode is equal to standard_true, separate shells will be created in the cases of multiconnexity. if this mode is equal to standard_false, one shell will be created without account of multiconnexity.by defautt - standard_true; nonmanifold - mode for creation of non-manifold shells. if this mode is equal to standard_true one non-manifold will be created from shell contains multishared edges. else if this mode is equal to standard_false only manifold shells will be created. by default - standard_false.
+		%feature("autodoc", "Fixes orientation of faces in shell. changes orientation of face in the shell, if it is oriented opposite to neighbouring faces. if it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. other faces are stored in error compound. modes : isaccountmulticonex - mode for account cases of multiconnexity. if this mode is equal to standard_true, separate shells will be created in the cases of multiconnexity. if this mode is equal to standard_false, one shell will be created without account of multiconnexity.by defautt - standard_true; nonmanifold - mode for creation of non-manifold shells. if this mode is equal to standard_true one non-manifold will be created from shell contains multishared edges. else if this mode is equal to standard_false only manifold shells will be created. by default - standard_false.
 
 Parameters
 ----------
@@ -3652,7 +3652,7 @@ bool
 		/****************** FixConnected ******************/
 		/**** md5 signature: 7d709d2fdd3a7b3c1d87cdd42f7e46a7 ****/
 		%feature("compactdefaultargs") FixConnected;
-		%feature("autodoc", "Fixes connected edges (preceeding and current) forces vertices (end of preceeding-begin of current) to be the same one tests with starting preci or, if given greater, <prec> if <prec> is -1 then maxtolerance() is taken.
+		%feature("autodoc", "Fixes connected edges (preceding and current) forces vertices (end of preceding-begin of current) to be the same one tests with starting preci or, if given greater, <prec> if <prec> is -1 then maxtolerance() is taken.
 
 Parameters
 ----------
@@ -4143,7 +4143,7 @@ int
 		/****************** FixSmall ******************/
 		/**** md5 signature: 58abaa56305b1fe5b2efde18d1cf22ad ****/
 		%feature("compactdefaultargs") FixSmall;
-		%feature("autodoc", "Fixes null length edge to be removed if an edge has null length (regarding preci, or <precsmall> - what is smaller), it should be removed it can be with no problem if its two vertices are the same else, if lockvtx is false, it is removed and its end vertex is put on the preceeding edge but if lockvtx is true, this edge must be kept ...
+		%feature("autodoc", "Fixes null length edge to be removed if an edge has null length (regarding preci, or <precsmall> - what is smaller), it should be removed it can be with no problem if its two vertices are the same else, if lockvtx is false, it is removed and its end vertex is put on the preceding edge but if lockvtx is true, this edge must be kept ...
 
 Parameters
 ----------
@@ -4609,7 +4609,7 @@ bool
 		/****************** StatusRemovedSegment ******************/
 		/**** md5 signature: 70675d4f6f1fd8791c8e40f92a56e97e ****/
 		%feature("compactdefaultargs") StatusRemovedSegment;
-		%feature("autodoc", "Querying the status of perfomed api fixing procedures each status..() methods gives information about the last call to the corresponding fix..() method of api level: ok : no problems detected; nothing done done: some problem(s) was(were) detected and successfully fixed fail: some problem(s) cannot be fixed.
+		%feature("autodoc", "Querying the status of performed api fixing procedures each status..() methods gives information about the last call to the corresponding fix..() method of api level: ok : no problems detected; nothing done done: some problem(s) was(were) detected and successfully fixed fail: some problem(s) cannot be fixed.
 
 Returns
 -------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -70,8 +70,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI.hxx>
 #include<RWStepRepr_RWRepresentation.hxx>
 #include<RWStepRepr_RWRepresentationContext.hxx>
+#include<RWStepRepr_RWRepresentationContextReference.hxx>
 #include<RWStepRepr_RWRepresentationItem.hxx>
 #include<RWStepRepr_RWRepresentationMap.hxx>
+#include<RWStepRepr_RWRepresentationReference.hxx>
 #include<RWStepRepr_RWRepresentationRelationship.hxx>
 #include<RWStepRepr_RWRepresentationRelationshipWithTransformation.hxx>
 #include<RWStepRepr_RWShapeAspect.hxx>

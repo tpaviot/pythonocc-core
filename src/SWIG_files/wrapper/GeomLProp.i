@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMLPROPDOCSTRING
 "GeomLProp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomlprop.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomlprop.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMLPROPDOCSTRING) GeomLProp
 
@@ -64,7 +64,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -109,7 +109,7 @@ GeomAbs_Shape
 		/****************** Continuity ******************/
 		/**** md5 signature: 6fa4bcc756438bbc69c0c6e99919c3f8 ****/
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "The same as preciding but using the standard tolerances from package precision.
+		%feature("autodoc", "The same as preceding but using the standard tolerances from package precision.
 
 Parameters
 ----------

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTPOLYHDOCSTRING
 "IntPolyh module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intpolyh.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_intpolyh.html"
 %enddef
 %module (package="OCC.Core", docstring=INTPOLYHDOCSTRING) IntPolyh
 
@@ -68,7 +68,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -509,32 +509,32 @@ None
 class IntPolyh_Intersection {
 	public:
 		/****************** IntPolyh_Intersection ******************/
-		/**** md5 signature: f18d9fbcd433488558ef7a008a739917 ****/
+		/**** md5 signature: d8f94c58cfea4bdf03f2258e8edaf528 ****/
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "Constructor for intersection of two surfaces with default parameters. performs intersection.
 
 Parameters
 ----------
-theS1: Adaptor3d_HSurface
-theS2: Adaptor3d_HSurface
+theS1: Adaptor3d_Surface
+theS2: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") IntPolyh_Intersection;
-		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_HSurface> & theS1, const opencascade::handle<Adaptor3d_HSurface> & theS2);
+		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2);
 
 		/****************** IntPolyh_Intersection ******************/
-		/**** md5 signature: 94052d037a4896b938be5a6b8fcb526b ****/
+		/**** md5 signature: 71b7be6adc9244e9f59fb99eaa24befd ****/
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "Constructor for intersection of two surfaces with the given size of the sampling nets: - <thenbsu1> x <thenbsv1> - for the first surface <thes1>; - <thenbsu2> x <thenbsv2> - for the second surface <thes2>. performs intersection.
 
 Parameters
 ----------
-theS1: Adaptor3d_HSurface
+theS1: Adaptor3d_Surface
 theNbSU1: int
 theNbSV1: int
-theS2: Adaptor3d_HSurface
+theS2: Adaptor3d_Surface
 theNbSU2: int
 theNbSV2: int
 
@@ -542,19 +542,19 @@ Returns
 -------
 None
 ") IntPolyh_Intersection;
-		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_HSurface> & theS1, const Standard_Integer theNbSU1, const Standard_Integer theNbSV1, const opencascade::handle<Adaptor3d_HSurface> & theS2, const Standard_Integer theNbSU2, const Standard_Integer theNbSV2);
+		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const Standard_Integer theNbSU1, const Standard_Integer theNbSV1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Integer theNbSU2, const Standard_Integer theNbSV2);
 
 		/****************** IntPolyh_Intersection ******************/
-		/**** md5 signature: 93e9167bc900d310c3498d954ecf3183 ****/
+		/**** md5 signature: 12ca04ca57100d5f9d30d0ce84e68ecd ****/
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "Constructor for intersection of two surfaces with the precomputed sampling. performs intersection.
 
 Parameters
 ----------
-theS1: Adaptor3d_HSurface
+theS1: Adaptor3d_Surface
 theUPars1: TColStd_Array1OfReal
 theVPars1: TColStd_Array1OfReal
-theS2: Adaptor3d_HSurface
+theS2: Adaptor3d_Surface
 theUPars2: TColStd_Array1OfReal
 theVPars2: TColStd_Array1OfReal
 
@@ -562,7 +562,7 @@ Returns
 -------
 None
 ") IntPolyh_Intersection;
-		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_HSurface> & theS1, const TColStd_Array1OfReal & theUPars1, const TColStd_Array1OfReal & theVPars1, const opencascade::handle<Adaptor3d_HSurface> & theS2, const TColStd_Array1OfReal & theUPars2, const TColStd_Array1OfReal & theVPars2);
+		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const TColStd_Array1OfReal & theUPars1, const TColStd_Array1OfReal & theVPars1, const opencascade::handle<Adaptor3d_Surface> & theS2, const TColStd_Array1OfReal & theUPars2, const TColStd_Array1OfReal & theVPars2);
 
 		/****************** GetLinePoint ******************/
 		/**** md5 signature: 1d6e9a1fe8c96c912dec520f27020a75 ****/
@@ -818,13 +818,13 @@ None
 		void Dump(const Standard_Integer i);
 
 		/****************** Middle ******************/
-		/**** md5 signature: cc93526ee2db8e570c321c6f93164d0f ****/
+		/**** md5 signature: d69a1e6fd4244709afb4adc77b42cd7b ****/
 		%feature("compactdefaultargs") Middle;
 		%feature("autodoc", "Creates middle point from p1 and p2 and stores it to this.
 
 Parameters
 ----------
-MySurface: Adaptor3d_HSurface
+MySurface: Adaptor3d_Surface
 P1: IntPolyh_Point
 P2: IntPolyh_Point
 
@@ -832,7 +832,7 @@ Returns
 -------
 None
 ") Middle;
-		void Middle(const opencascade::handle<Adaptor3d_HSurface> & MySurface, const IntPolyh_Point & P1, const IntPolyh_Point & P2);
+		void Middle(const opencascade::handle<Adaptor3d_Surface> & MySurface, const IntPolyh_Point & P1, const IntPolyh_Point & P2);
 
 		/****************** Multiplication ******************/
 		/**** md5 signature: 5a6c10891abd815fe7f286827a7694e3 ****/
@@ -1774,13 +1774,13 @@ float
 class IntPolyh_Tools {
 	public:
 		/****************** ComputeDeflection ******************/
-		/**** md5 signature: 10b204e084b5a0096f453c31fa80dfb1 ****/
+		/**** md5 signature: 6910f4dfdc84512a298a4c401025077a ****/
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "Computes the deflection tolerance on the surface for the given sampling.
 
 Parameters
 ----------
-theSurf: Adaptor3d_HSurface
+theSurf: Adaptor3d_Surface
 theUPars: TColStd_Array1OfReal
 theVPars: TColStd_Array1OfReal
 
@@ -1788,16 +1788,16 @@ Returns
 -------
 float
 ") ComputeDeflection;
-		static Standard_Real ComputeDeflection(const opencascade::handle<Adaptor3d_HSurface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars);
+		static Standard_Real ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars);
 
 		/****************** FillArrayOfPointNormal ******************/
-		/**** md5 signature: 34516749f675f2c90dfd624fa3345954 ****/
+		/**** md5 signature: 2adb116f2ef679f969c5bf03ddaff6a1 ****/
 		%feature("compactdefaultargs") FillArrayOfPointNormal;
 		%feature("autodoc", "Fills the array <thepoints> with the points (triangulation nodes) on the surface and normal directions of the surface in these points.
 
 Parameters
 ----------
-theSurf: Adaptor3d_HSurface
+theSurf: Adaptor3d_Surface
 theUPars: TColStd_Array1OfReal
 theVPars: TColStd_Array1OfReal
 thePoints: IntPolyh_ArrayOfPointNormal
@@ -1806,32 +1806,32 @@ Returns
 -------
 None
 ") FillArrayOfPointNormal;
-		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_HSurface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
+		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
 
 		/****************** IsEnlargePossible ******************/
-		/**** md5 signature: 440671813562fb10706e466fec369a98 ****/
+		/**** md5 signature: 3ab593ec60e1a248533d894cd7c3cea3 ****/
 		%feature("compactdefaultargs") IsEnlargePossible;
 		%feature("autodoc", "Checks if the surface can be enlarged in u or v direction.
 
 Parameters
 ----------
-theSurf: Adaptor3d_HSurface
+theSurf: Adaptor3d_Surface
 
 Returns
 -------
 theUEnlarge: bool
 theVEnlarge: bool
 ") IsEnlargePossible;
-		static void IsEnlargePossible(const opencascade::handle<Adaptor3d_HSurface> & theSurf, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		static void IsEnlargePossible(const opencascade::handle<Adaptor3d_Surface> & theSurf, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** MakeSampling ******************/
-		/**** md5 signature: a5db612cc5a535de56e16106b36c0dc4 ****/
+		/**** md5 signature: cfdeaf4bb5f9938ac66f44b0caab0c9e ****/
 		%feature("compactdefaultargs") MakeSampling;
 		%feature("autodoc", "Makes the sampling of the given surface <thesurf> making the net of <thenbsu> x <thenbsv> sampling points. the flag <theenlargezone> controls the enlargement of the sampling zone on the surface. the parameters of the sampling points are stored into <theupars> and <thevpars> arrays.
 
 Parameters
 ----------
-theSurf: Adaptor3d_HSurface
+theSurf: Adaptor3d_Surface
 theNbSU: int
 theNbSV: int
 theEnlargeZone: bool
@@ -1842,7 +1842,7 @@ Returns
 -------
 None
 ") MakeSampling;
-		static void MakeSampling(const opencascade::handle<Adaptor3d_HSurface> & theSurf, const Standard_Integer theNbSU, const Standard_Integer theNbSV, const Standard_Boolean theEnlargeZone, TColStd_Array1OfReal & theUPars, TColStd_Array1OfReal & theVPars);
+		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Integer theNbSU, const Standard_Integer theNbSV, const Standard_Boolean theEnlargeZone, TColStd_Array1OfReal & theUPars, TColStd_Array1OfReal & theVPars);
 
 };
 
@@ -1902,20 +1902,20 @@ Bnd_Box
 		const Bnd_Box & BoundingBox(const IntPolyh_ArrayOfPoints & thePoints);
 
 		/****************** ComputeDeflection ******************/
-		/**** md5 signature: 39d69f8f43a6bb0e49b5e2c0e12281f0 ****/
+		/**** md5 signature: 27152449d94d09952a80dfd69a413feb ****/
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "Computes the deflection for the triangle.
 
 Parameters
 ----------
-theSurface: Adaptor3d_HSurface
+theSurface: Adaptor3d_Surface
 thePoints: IntPolyh_ArrayOfPoints
 
 Returns
 -------
 float
 ") ComputeDeflection;
-		Standard_Real ComputeDeflection(const opencascade::handle<Adaptor3d_HSurface> & theSurface, const IntPolyh_ArrayOfPoints & thePoints);
+		Standard_Real ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurface, const IntPolyh_ArrayOfPoints & thePoints);
 
 		/****************** Deflection ******************/
 		/**** md5 signature: 6fb4c31e8f4445c1597fc8b70a63cbfb ****/
@@ -2075,14 +2075,14 @@ None
 		void LinkEdges2Triangle(const IntPolyh_ArrayOfEdges & TEdges, const Standard_Integer theEdge1, const Standard_Integer theEdge2, const Standard_Integer theEdge3);
 
 		/****************** MiddleRefinement ******************/
-		/**** md5 signature: 04f14607f9b83383d5d87e61fdfe7ae6 ****/
+		/**** md5 signature: 61626a4a9e3960cafd878c1146fa7f69 ****/
 		%feature("compactdefaultargs") MiddleRefinement;
 		%feature("autodoc", "Splits the triangle on two to decrease its deflection.
 
 Parameters
 ----------
 theTriangleNumber: int
-theSurface: Adaptor3d_HSurface
+theSurface: Adaptor3d_Surface
 TPoints: IntPolyh_ArrayOfPoints
 TTriangles: IntPolyh_ArrayOfTriangles
 TEdges: IntPolyh_ArrayOfEdges
@@ -2091,10 +2091,10 @@ Returns
 -------
 None
 ") MiddleRefinement;
-		void MiddleRefinement(const Standard_Integer theTriangleNumber, const opencascade::handle<Adaptor3d_HSurface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
+		void MiddleRefinement(const Standard_Integer theTriangleNumber, const opencascade::handle<Adaptor3d_Surface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
 
 		/****************** MultipleMiddleRefinement ******************/
-		/**** md5 signature: 881b3b985aa940def7a3c568440ff6a8 ****/
+		/**** md5 signature: edfbe2be00529fe0c26433342bf3f5f2 ****/
 		%feature("compactdefaultargs") MultipleMiddleRefinement;
 		%feature("autodoc", "Splits the current triangle and new triangles until the refinement criterion is not achieved.
 
@@ -2103,7 +2103,7 @@ Parameters
 theRefineCriterion: float
 theBox: Bnd_Box
 theTriangleNumber: int
-theSurface: Adaptor3d_HSurface
+theSurface: Adaptor3d_Surface
 TPoints: IntPolyh_ArrayOfPoints
 TTriangles: IntPolyh_ArrayOfTriangles
 TEdges: IntPolyh_ArrayOfEdges
@@ -2112,7 +2112,7 @@ Returns
 -------
 None
 ") MultipleMiddleRefinement;
-		void MultipleMiddleRefinement(const Standard_Real theRefineCriterion, const Bnd_Box & theBox, const Standard_Integer theTriangleNumber, const opencascade::handle<Adaptor3d_HSurface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
+		void MultipleMiddleRefinement(const Standard_Real theRefineCriterion, const Bnd_Box & theBox, const Standard_Integer theTriangleNumber, const opencascade::handle<Adaptor3d_Surface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
 
 		/****************** SecondEdge ******************/
 		/**** md5 signature: 472cb748b92b2789c125a4969bbacbcb ****/

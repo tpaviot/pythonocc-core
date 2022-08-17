@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MATDOCSTRING
 "MAT module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_mat.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_mat.html"
 %enddef
 %module (package="OCC.Core", docstring=MATDOCSTRING) MAT
 
@@ -63,7 +63,7 @@ enum MAT_Side {
 
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 
 class MAT_Side(IntEnum):

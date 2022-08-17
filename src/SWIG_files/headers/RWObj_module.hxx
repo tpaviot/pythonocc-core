@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -21,8 +21,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<RWObj.hxx>
 #include<RWObj_CafReader.hxx>
+#include<RWObj_CafWriter.hxx>
 #include<RWObj_Material.hxx>
 #include<RWObj_MtlReader.hxx>
+#include<RWObj_ObjMaterialMap.hxx>
+#include<RWObj_ObjWriterContext.hxx>
 #include<RWObj_Reader.hxx>
 #include<RWObj_SubMesh.hxx>
 #include<RWObj_SubMeshReason.hxx>

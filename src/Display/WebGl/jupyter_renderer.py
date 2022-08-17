@@ -448,7 +448,7 @@ class JupyterRenderer:
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
-        # a dictionnary of all the shapes belonging to the renderer
+        # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes = {}
 
@@ -529,7 +529,7 @@ class JupyterRenderer:
 
     def remove_shape(self, *kargs):
         self.clicked_obj.visible = not self.clicked_obj.visible
-        # remove shape fro mthe mapping dict
+        # remove shape from the mapping dict
         cur_id = self.clicked_obj.name
         del self._shapes[cur_id]
         self._remove_shp_button.disabled = True
@@ -731,7 +731,7 @@ class JupyterRenderer:
         """Displays a topods_shape in the renderer instance.
         shp: the TopoDS_Shape to render
         shape_color: the shape color, in html corm, eg '#abe000'
-        render_edges: optional, False by default. If True, compute and dislay all
+        render_edges: optional, False by default. If True, compute and display all
                       edges as a linear interpolation of segments.
         edge_color: optional, black by default. The color used for edge rendering,
                     in html form eg '#ff00ee'
@@ -739,7 +739,7 @@ class JupyterRenderer:
         vertex_color: optional
         quality: optional, 1.0 by default. If set to something lower than 1.0,
                       mesh will be more precise. If set to something higher than 1.0,
-                      mesh will be less precise, i.e. lower numer of triangles.
+                      mesh will be less precise, i.e. lower number of triangles.
         transparency: optional, False by default (opaque).
         opacity: optional, float, by default to 1 (opaque). if transparency is set to True,
                  1. is fully opaque, 0. is fully transparent.
@@ -869,7 +869,7 @@ class JupyterRenderer:
         transparency=False,
         opacity=1.0,
     ):
-        # first, compute the tesselation
+        # first, compute the tessellation
         tess = ShapeTesselator(shp)
         tess.Compute(compute_edges=render_edges, mesh_quality=quality, parallel=True)
         # get vertices and normals

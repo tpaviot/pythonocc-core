@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LPROP3DDOCSTRING
 "LProp3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_lprop3d.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_lprop3d.html"
 %enddef
 %module (package="OCC.Core", docstring=LPROP3DDOCSTRING) LProp3d
 
@@ -66,7 +66,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -86,13 +86,13 @@ from OCC.Core.Exception import *
 class LProp3d_CLProps {
 	public:
 		/****************** LProp3d_CLProps ******************/
-		/**** md5 signature: 72c8030382cd0143389eb5f868e97fea ****/
+		/**** md5 signature: 55346d22164284569aa322c86d4ed2e9 ****/
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "Initializes the local properties of the curve <c> the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, 2 or 3). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 N: int
 Resolution: float
 
@@ -100,16 +100,16 @@ Returns
 -------
 None
 ") LProp3d_CLProps;
-		 LProp3d_CLProps(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Integer N, const Standard_Real Resolution);
+		 LProp3d_CLProps(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Integer N, const Standard_Real Resolution);
 
 		/****************** LProp3d_CLProps ******************/
-		/**** md5 signature: 9175d7a560f2f0a5e53df59d2bac7edf ****/
+		/**** md5 signature: 0322c52bac5bb9e9cc7b748c91d91215 ****/
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "Same as previous constructor but here the parameter is set to the value <u>. all the computations done will be related to <c> and <u>.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 U: float
 N: int
 Resolution: float
@@ -118,7 +118,7 @@ Returns
 -------
 None
 ") LProp3d_CLProps;
-		 LProp3d_CLProps(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
+		 LProp3d_CLProps(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
 
 		/****************** LProp3d_CLProps ******************/
 		/**** md5 signature: 7f3ee4ee884748be05d5efbac5962e75 ****/
@@ -222,19 +222,19 @@ None
 		void Normal(gp_Dir & N);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 0aa2e16ff2d1289512b39f87ba1d546d ****/
+		/**** md5 signature: c10d16ef149061e06174e6a21df7d6fd ****/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "Initializes the local properties of the curve for the new curve.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 None
 ") SetCurve;
-		void SetCurve(const opencascade::handle<Adaptor3d_HCurve> & C);
+		void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetParameter ******************/
 		/**** md5 signature: 6d7d0a8f07175b76bb327cfdc33d2266 ****/
@@ -292,28 +292,28 @@ gp_Pnt
 class LProp3d_CurveTool {
 	public:
 		/****************** Continuity ******************/
-		/**** md5 signature: f74282d576193a8a4468c05bd37aebd4 ****/
+		/**** md5 signature: 67ad52ef2db0c9cf038f39663725f559 ****/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Returns the order of continuity of the hcurve <c>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable. returns 3 : first, second and third are computable.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 int
 ") Continuity;
-		static Standard_Integer Continuity(const opencascade::handle<Adaptor3d_HCurve> & C);
+		static Standard_Integer Continuity(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** D1 ******************/
-		/**** md5 signature: ca717eb422034c7a68c51607382fb7ff ****/
+		/**** md5 signature: 64701d22c465e4adc06f3de193348692 ****/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "Computes the point <p> and first derivative <v1> of parameter <u> on the hcurve <c>.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 U: float
 P: gp_Pnt
 V1: gp_Vec
@@ -322,16 +322,16 @@ Returns
 -------
 None
 ") D1;
-		static void D1(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
+		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
 		/****************** D2 ******************/
-		/**** md5 signature: c09529dc7b635a906884c36fc27e6614 ****/
+		/**** md5 signature: a03fec54dc9fb384b49128be1eeb6ab5 ****/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "Computes the point <p>, the first derivative <v1> and second derivative <v2> of parameter <u> on the hcurve <c>.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 U: float
 P: gp_Pnt
 V1: gp_Vec
@@ -341,16 +341,16 @@ Returns
 -------
 None
 ") D2;
-		static void D2(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****************** D3 ******************/
-		/**** md5 signature: 3bf35cb48a03694dcf006305239f076f ****/
+		/**** md5 signature: daf7fd27ce53952002a95005add4c7db ****/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "Computes the point <p>, the first derivative <v1>, the second derivative <v2> and third derivative <v3> of parameter <u> on the hcurve <c>.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 U: float
 P: gp_Pnt
 V1: gp_Vec
@@ -361,46 +361,46 @@ Returns
 -------
 None
 ") D3;
-		static void D3(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****************** FirstParameter ******************/
-		/**** md5 signature: d9e1f13e76e33ca8ffa49bead51ff742 ****/
+		/**** md5 signature: 25c42492a02c6ff0b57c4cf91fb40f86 ****/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Returns the first parameter bound of the hcurve.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 float
 ") FirstParameter;
-		static Standard_Real FirstParameter(const opencascade::handle<Adaptor3d_HCurve> & C);
+		static Standard_Real FirstParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** LastParameter ******************/
-		/**** md5 signature: cc67fdec2ebae09fe338337b96bbe757 ****/
+		/**** md5 signature: c00409255c9efae31d007ea0f35327b6 ****/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Returns the last parameter bound of the hcurve. firstparameter must be less than lastparamenter.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 
 Returns
 -------
 float
 ") LastParameter;
-		static Standard_Real LastParameter(const opencascade::handle<Adaptor3d_HCurve> & C);
+		static Standard_Real LastParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** Value ******************/
-		/**** md5 signature: 1a099d297657fc72fa3fb3465137d6c6 ****/
+		/**** md5 signature: c9166e787eb6dba49df04f09341196b6 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Computes the point <p> of parameter <u> on the hcurve <c>.
 
 Parameters
 ----------
-C: Adaptor3d_HCurve
+C: Adaptor3d_Curve
 U: float
 P: gp_Pnt
 
@@ -408,7 +408,7 @@ Returns
 -------
 None
 ") Value;
-		static void Value(const opencascade::handle<Adaptor3d_HCurve> & C, const Standard_Real U, gp_Pnt & P);
+		static void Value(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P);
 
 };
 
@@ -425,13 +425,13 @@ None
 class LProp3d_SLProps {
 	public:
 		/****************** LProp3d_SLProps ******************/
-		/**** md5 signature: ca57cd9bd4ea585a715e66900220457d ****/
+		/**** md5 signature: 8e26364dfa92e188c2d1b9bdfa61d9d0 ****/
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "Initializes the local properties of the surface <s> for the parameter values (<u>, <v>). the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, or 2). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 N: int
@@ -441,16 +441,16 @@ Returns
 -------
 None
 ") LProp3d_SLProps;
-		 LProp3d_SLProps(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer N, const Standard_Real Resolution);
+		 LProp3d_SLProps(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer N, const Standard_Real Resolution);
 
 		/****************** LProp3d_SLProps ******************/
-		/**** md5 signature: 23e46a1e42fa8c20a0abbfbb2c4a3a90 ****/
+		/**** md5 signature: 551b173d5b0f247fb20f33862006b68e ****/
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "Idem as previous constructor but without setting the value of parameters <u> and <v>.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 N: int
 Resolution: float
 
@@ -458,7 +458,7 @@ Returns
 -------
 None
 ") LProp3d_SLProps;
-		 LProp3d_SLProps(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Integer N, const Standard_Real Resolution);
+		 LProp3d_SLProps(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Integer N, const Standard_Real Resolution);
 
 		/****************** LProp3d_SLProps ******************/
 		/**** md5 signature: 4665210bb798bfd8a1be71399d0323f0 ****/
@@ -674,19 +674,19 @@ None
 		void SetParameters(const Standard_Real U, const Standard_Real V);
 
 		/****************** SetSurface ******************/
-		/**** md5 signature: c0f9085198ca86e592bdb1756098ae53 ****/
+		/**** md5 signature: 31b5f8e96962760e8ffab10ebcefd535 ****/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "Initializes the local properties of the surface s for the new surface.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 None
 ") SetSurface;
-		void SetSurface(const opencascade::handle<Adaptor3d_HSurface> & S);
+		void SetSurface(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** TangentU ******************/
 		/**** md5 signature: ff20f7d1d23e153974b932d55fa30a7f ****/
@@ -744,13 +744,13 @@ gp_Pnt
 class LProp3d_SurfaceTool {
 	public:
 		/****************** Bounds ******************/
-		/**** md5 signature: b78317c028597566c368a993cf1c448c ****/
+		/**** md5 signature: 2f47c789bea86a8d768de90521a99be5 ****/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "Returns the bounds of the hsurface.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
@@ -759,31 +759,31 @@ V1: float
 U2: float
 V2: float
 ") Bounds;
-		static void Bounds(const opencascade::handle<Adaptor3d_HSurface> & S, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Bounds(const opencascade::handle<Adaptor3d_Surface> & S, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Continuity ******************/
-		/**** md5 signature: 6fd78900dd50afbdc96d50e1e159ee93 ****/
+		/**** md5 signature: 0fa75bd197e4456fe4ae2b28cfedb774 ****/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Returns the order of continuity of the hsurface <s>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 
 Returns
 -------
 int
 ") Continuity;
-		static Standard_Integer Continuity(const opencascade::handle<Adaptor3d_HSurface> & S);
+		static Standard_Integer Continuity(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****************** D1 ******************/
-		/**** md5 signature: d1d64a7b4d697015545621cd8dfff2d0 ****/
+		/**** md5 signature: 0ed65c587f44222a126bf3c8a594165d ****/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "Computes the point <p> and first derivative <d1*> of parameter <u> and <v> on the hsurface <s>.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 P: gp_Pnt
@@ -794,16 +794,16 @@ Returns
 -------
 None
 ") D1;
-		static void D1(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+		static void D1(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
 		/****************** D2 ******************/
-		/**** md5 signature: 5049459f17910ae762d2b23d7dddba6d ****/
+		/**** md5 signature: a2a0e00ba5339b2afc6c2cca9361278c ****/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "Computes the point <p>, the first derivative <d1*> and second derivative <d2*> of parameter <u> and <v> on the hsurface <s>.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 P: gp_Pnt
@@ -817,16 +817,16 @@ Returns
 -------
 None
 ") D2;
-		static void D2(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
+		static void D2(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
 		/****************** DN ******************/
-		/**** md5 signature: b1a239f1b3763bed60166997fbba9bb0 ****/
+		/**** md5 signature: bcc30853ace75615fb49f72515a4abb1 ****/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 IU: int
@@ -836,16 +836,16 @@ Returns
 -------
 gp_Vec
 ") DN;
-		static gp_Vec DN(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer IU, const Standard_Integer IV);
+		static gp_Vec DN(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer IU, const Standard_Integer IV);
 
 		/****************** Value ******************/
-		/**** md5 signature: 44050e1becf438b9389ef3cc59c41b3f ****/
+		/**** md5 signature: 8c6567385008e24d9a3e3cf268ab3933 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Computes the point <p> of parameter <u> and <v> on the hsurface <s>.
 
 Parameters
 ----------
-S: Adaptor3d_HSurface
+S: Adaptor3d_Surface
 U: float
 V: float
 P: gp_Pnt
@@ -854,7 +854,7 @@ Returns
 -------
 None
 ") Value;
-		static void Value(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
+		static void Value(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
 };
 

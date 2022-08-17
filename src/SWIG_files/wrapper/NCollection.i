@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define NCOLLECTIONDOCSTRING
 "NCollection module, see official documentation at
-https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ncollection.html"
+https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_ncollection.html"
 %enddef
 %module (package="OCC.Core", docstring=NCOLLECTIONDOCSTRING) NCollection
 
@@ -88,7 +88,7 @@ from OCC.Core.Exception import *
 /* public enums */
 /* end public enums declaration */
 
-/* python proy classes for enums */
+/* python proxy classes for enums */
 %pythoncode {
 };
 /* end python proxy for enums */
@@ -118,6 +118,9 @@ typedef NCollection_UtfString<Standard_WideChar> NCollection_UtfWideString;
 typedef size_t Standard_Size;
 /* end typedefs declaration */
 
+/*********************************
+* class NCollection_AliasedArray *
+*********************************/
 /***************************
 * class NCollection_Array1 *
 ***************************/
@@ -157,6 +160,9 @@ typedef size_t Standard_Size;
 /*******************************
 * class NCollection_LocalArray *
 *******************************/
+/*************************
+* class NCollection_Mat3 *
+*************************/
 /*************************
 * class NCollection_Mat4 *
 *************************/
@@ -409,6 +415,10 @@ class NCollection_BaseList:
 	pass
 
 @classnotwrapped
+class NCollection_Mat3:
+	pass
+
+@classnotwrapped
 class NCollection_SparseArray:
 	pass
 
@@ -434,6 +444,10 @@ class NCollection_IndexedMap:
 
 @classnotwrapped
 class NCollection_Vec2:
+	pass
+
+@classnotwrapped
+class NCollection_AliasedArray:
 	pass
 
 @classnotwrapped
