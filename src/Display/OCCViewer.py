@@ -430,7 +430,11 @@ class Viewer3d(Display3d):
             pnt_start = gp_Pnt(start.X(), start.Y(), start.Z())
 
             Prs3d_Arrow.Draw(
-                aStructure, pnt_start, gp_Dir(vec), math.radians(20), vec.Magnitude()
+                aStructure.CurrentGroup(),
+                pnt_start,
+                gp_Dir(vec),
+                math.radians(20),
+                vec.Magnitude(),
             )
             aStructure.Display()
             # it would be more coherent if a AIS_InteractiveObject
@@ -440,23 +444,30 @@ class Viewer3d(Display3d):
             return aStructure
 
     def DisplayMessage(
-        self, point, text_to_write, height=None, message_color=None, update=False
+        self,
+        point,
+        text_to_write,
+        height=14.0,
+        message_color=(0.0, 0.0, 0.0),
+        update=False,
     ):
         """
         :point: a gp_Pnt or gp_Pnt2d instance
         :text_to_write: a string
-        :message_color: triple with the range 0-1
+        :height: font height, 12 by defaults
+        :message_color: triple with the range 0-1, default to black
         """
         aStructure = Graphic3d_Structure(self._struc_mgr)
-        text_aspect = Prs3d_TextAspect()
 
-        if message_color is not None:
-            text_aspect.SetColor(rgb_color(*message_color))
-        if height is not None:
-            text_aspect.SetHeight(height)
+        text_aspect = Prs3d_TextAspect()
+        text_aspect.SetColor(rgb_color(*message_color))
+        text_aspect.SetHeight(height)
         if isinstance(point, gp_Pnt2d):
             point = gp_Pnt(point.X(), point.Y(), 0)
-        Prs3d_Text.Draw(aStructure, text_aspect, to_string(text_to_write), point)
+
+        Prs3d_Text.Draw(
+            aStructure.CurrentGroup(), text_aspect, to_string(text_to_write), point
+        )
         aStructure.Display()
         # @TODO: it would be more coherent if a AIS_InteractiveObject
         # is be returned
