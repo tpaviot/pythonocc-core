@@ -627,6 +627,7 @@ class Viewer3d(Display3d):
         self.View.Pan(dx, dy)
 
     def SetSelectionMode(self, mode=None):
+        self.Context.Deactivate()
         topo_level = next(modes)
         if mode is None:
             self.Context.Activate(AIS_Shape_SelectionMode(topo_level), True)
