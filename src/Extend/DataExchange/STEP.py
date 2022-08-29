@@ -357,7 +357,6 @@ def read_step_file_with_names_colors(filename):
 
     _get_shapes()
     return output_shapes
-<<<<<<< HEAD:src/Extend/DataExchange.py
 
 
 #########################
