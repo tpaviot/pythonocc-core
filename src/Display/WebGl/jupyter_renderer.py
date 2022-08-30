@@ -25,7 +25,6 @@ import sys
 
 # pythreejs
 try:
-<<<<<<< HEAD
     from pythreejs import (
         CombinedCamera,
         BufferAttribute,
@@ -50,19 +49,8 @@ try:
         Points,
         make_text,
     )
-    from IPython.display import display, SVG
-=======
-    from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry,
-                           Mesh, LineSegmentsGeometry, LineMaterial,
-                           LineSegments2, AmbientLight,
-                           DirectionalLight, Scene, OrbitControls, Renderer,
-                           Picker, Group, GridHelper, Line,
-                           ShaderMaterial, ShaderLib, LineBasicMaterial,
-                           PointsMaterial, Points, make_text)
     from IPython.display import display, SVG, clear_output
->>>>>>> added a progress indicator in Jupyter renderer
-    from ipywidgets import (HTML, HBox, VBox, Checkbox, Button,
-                            Layout, Dropdown, embed)
+    from ipywidgets import HTML, HBox, VBox, Checkbox, Button, Layout, Dropdown, embed
     import numpy as np
 except ImportError:
     error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
@@ -80,17 +68,28 @@ from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.Tesselator import ShapeTesselator
 
-from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, discretize_edge,
-                                      discretize_wire, get_type_as_string)
-from OCC.Extend.ShapeFactory import (get_oriented_boundingbox,
-                                     get_aligned_boundingbox,
-                                     measure_shape_mass_center_of_gravity,
-                                     recognize_face)
+from OCC.Extend.TopologyUtils import (
+    TopologyExplorer,
+    is_edge,
+    is_wire,
+    discretize_edge,
+    discretize_wire,
+    get_type_as_string,
+)
+from OCC.Extend.ShapeFactory import (
+    get_oriented_boundingbox,
+    get_aligned_boundingbox,
+    measure_shape_mass_center_of_gravity,
+    recognize_face,
+)
+
 try:
     from OCC.Extend.DataExchange import export_shape_to_svg
+
     HAVE_SVG = True
 except ImportError:
     HAVE_SVG = False
+
 
 def create_download_link(a_str, filename):
     b64 = base64.b64encode(a_str.encode())
@@ -98,6 +97,7 @@ def create_download_link(a_str, filename):
     html = '<a download="{filename}" href="data:text/x3d;base64,{payload}" target="_blank">{title}</a>'
     html = html.format(payload=payload, title="Download " + filename, filename=filename)
     return HTML(html)
+
 
 def progress_indicator(progress, prompt="Progress"):
     bar_length = 20
@@ -112,9 +112,12 @@ def progress_indicator(progress, prompt="Progress"):
 
     block = int(round(bar_length * progress))
 
-    clear_output(wait = True)
-    text = prompt + ": [{0}] {1:.1f}%".format("#" * block + "-" * (bar_length - block), progress * 100)
+    clear_output(wait=True)
+    text = prompt + ": [{0}] {1:.1f}%".format(
+        "#" * block + "-" * (bar_length - block), progress * 100
+    )
     print(text)
+
 
 #
 # Util mathematical functions
@@ -266,7 +269,6 @@ class Axes(Helpers):
     def __init__(self, bb_center, length=1, width=3, display_labels=False):
         Helpers.__init__(self, bb_center)
 
-<<<<<<< HEAD
         self.axes = []
         for vector, color in zip(
             ([length, 0, 0], [0, length, 0], [0, 0, length]), ("red", "green", "blue")
@@ -279,13 +281,6 @@ class Axes(Helpers):
                     LineMaterial(linewidth=width, color=color),
                 )
             )
-=======
-        self._axes = []
-        for vector, color in zip(([length, 0, 0], [0, length, 0], [0, 0, length]), ('red', 'green', 'blue')):
-            self._axes.append(LineSegments2(LineSegmentsGeometry(positions=[[self.center,
-                                                                            _shift(self.center, vector)]]),
-                                           LineMaterial(linewidth=width, color=color)))
->>>>>>> Clean ups in jupyter-renderer
 
         if display_labels:
             # add x, y and z labels
@@ -340,16 +335,12 @@ class CustomMaterial(ShaderMaterial):
         uniforms = shader["uniforms"]
         uniforms["alpha"] = dict(value=0.7)
 
-<<<<<<< HEAD
         ShaderMaterial.__init__(
             self,
             uniforms=uniforms,
             vertexShader=vertexShader,
             fragmentShader=fragmentShader,
         )
-=======
-        ShaderMaterial.__init__(self, uniforms=uniforms, vertexShader=vertex_shader, fragmentShader=fragment_shader)
->>>>>>> Clean ups in jupyter-renderer
         self.lights = True
 
     @property
@@ -397,7 +388,6 @@ class BoundingBox:
         )
         self.max = reduce(lambda a, b: max(abs(a), abs(b)), bbox)
 
-<<<<<<< HEAD
     def _max_dist_from_center(self):
         return max(
             [
@@ -421,17 +411,6 @@ class BoundingBox:
                 )
             ]
         )
-=======
-    def compute_max_dist_from_center(self):
-        return max([_distance(self.center, v)
-                    for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
-                   ])
-
-    def compute_max_dist_from_origin(self):
-        return max([np.linalg.norm(v)
-                    for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
-                   ])
->>>>>>> Clean ups in jupyter-renderer
 
     def _bounding_box(self, obj, tol=1e-5):
         bbox = Bnd_Box()
@@ -507,12 +486,9 @@ class JupyterRenderer:
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
-<<<<<<< HEAD
-=======
         # the controller
         self._controller = None
 
->>>>>>> Clean ups in jupyter-renderer
         # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes = {}
@@ -536,14 +512,10 @@ class JupyterRenderer:
         self._selection_color = format_color(232, 176, 36)
         self._current_selection_material_color = None
 
-<<<<<<< HEAD
+        self.clicked_obj = None
         self._select_callbacks = (
             []
         )  # a list of all functions called after an object is selected
-=======
-        self.clicked_obj = None
-        self._select_callbacks = []  # a list of all functions called after an object is selected
->>>>>>> Clean ups in jupyter-renderer
 
         # UI
         self.layout = Layout(width="auto", height="auto")
@@ -564,7 +536,7 @@ class JupyterRenderer:
             disabled=True,
         )
         self._shp_properties_button.observe(self.on_compute_change)
-<<<<<<< HEAD
+
         self._remove_shp_button = self.create_button(
             "Remove",
             "Permanently remove the shape from the Scene",
@@ -581,20 +553,10 @@ class JupyterRenderer:
             self._toggle_shp_visibility_button,
             self._remove_shp_button,
         ]
-=======
-        self._remove_shp_button = self.create_button("Remove", "Permanently remove the shape from the Scene",
-                                                     True, self.remove_shape)
-        self._controls = [self.create_checkbox("axes", "Axes", True, self.toggle_axes_visibility),
-                          self.create_checkbox("grid", "Grid", True, self.toggle_grid_visibility),
-                          self.create_button("Reset View", "Restore default view", False, self._reset),
-                          self._shp_properties_button,
-                          self._toggle_shp_visibility_button,
-                          self._remove_shp_button]
         self._axes = None
         self._horizontal_grid = None
         self._vertical_grid = None
 
->>>>>>> Clean ups in jupyter-renderer
         self.html = HTML("")
 
     def create_button(self, description, tooltip, disabled, handler):
@@ -775,7 +737,6 @@ class JupyterRenderer:
         """Returns the selected shape"""
         return self._current_shape_selection
 
-<<<<<<< HEAD
     def DisplayShapeAsSVG(
         self,
         shp,
@@ -785,6 +746,9 @@ class JupyterRenderer:
         color="black",
         line_width=0.5,
     ):
+        if not HAVE_SVG:
+            print("svg export not available")
+            return False
         svg_string = export_shape_to_svg(
             shp,
             export_hidden_edges=export_hidden_edges,
@@ -795,22 +759,6 @@ class JupyterRenderer:
             margin_left=0,
             margin_top=0,
         )
-=======
-    def DisplayShapeAsSVG(self,
-                          shp,
-                          export_hidden_edges=True,
-                          location=gp_Pnt(0, 0, 0),
-                          direction=gp_Dir(1, 1, 1),
-                          color="black",
-                          line_width=0.5):
-        if not HAVE_SVG:
-            print("svg export not available")
-            return False
-        svg_string = export_shape_to_svg(shp, export_hidden_edges=export_hidden_edges,
-                                         location=location, direction=direction,
-                                         color=color, line_width=line_width,
-                                         margin_left=0, margin_top=0)
->>>>>>> added create_download_link to jupyter_renderer
         svg = SVG(data=svg_string)
         display(svg)
         return True
@@ -960,7 +908,6 @@ class JupyterRenderer:
 
         return edge_line
 
-<<<<<<< HEAD
     def AddShapeToScene(
         self,
         shp,
@@ -972,18 +919,6 @@ class JupyterRenderer:
         transparency=False,
         opacity=1.0,
     ):
-=======
-
-    def AddShapeToScene(self,
-                        shp,
-                        shape_color=None,  # the default
-                        render_edges=False,
-                        edge_color=None,
-                        vertex_color=None,
-                        quality=1.0,
-                        transparency=False,
-                        opacity=1.):
->>>>>>> Clean ups in jupyter-renderer
         # first, compute the tessellation
         tess = ShapeTesselator(shp)
         tess.Compute(compute_edges=render_edges, mesh_quality=quality, parallel=True)
@@ -1062,16 +997,12 @@ class JupyterRenderer:
         return shape_mesh
 
     def _scale(self, vec):
-        r = self._bb.compute_max_dist_from_center() * self._camera_distance_factor
+        r = self._bb._max_dist_from_center() * self._camera_distance_factor
         n = np.linalg.norm(vec)
         new_vec = [v / n * r for v in vec]
         return new_vec
 
     def _material(self, color, transparent=False, opacity=1.0):
-<<<<<<< HEAD
-        # material = MeshPhongMaterial()
-=======
->>>>>>> Clean ups in jupyter-renderer
         material = CustomMaterial("standard")
         material.color = color
         material.clipping = True
@@ -1100,7 +1031,7 @@ class JupyterRenderer:
         else:  # if nothing registered yet, create a fake bb
             self._bb = BoundingBox([[BRepPrimAPI_MakeSphere(5.0).Shape()]])
         bb_max = self._bb.max
-        orbit_radius = 1.5 * self._bb.compute_max_dist_from_center()
+        orbit_radius = 1.5 * self._bb._max_dist_from_center()
 
         # Set up camera
         camera_target = self._bb.center
@@ -1128,15 +1059,14 @@ class JupyterRenderer:
         ambient_light = AmbientLight(intensity=0.1)
 
         # Set up Helpers
-<<<<<<< HEAD
-        self.axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
-        self.horizontal_grid = Grid(
+        self._axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
+        self._horizontal_grid = Grid(
             bb_center=self._bb.center,
             maximum=bb_max,
             colorCenterLine="#aaa",
             colorGrid="#ddd",
         )
-        self.vertical_grid = Grid(
+        self._vertical_grid = Grid(
             bb_center=self._bb.center,
             maximum=bb_max,
             colorCenterLine="#aaa",
@@ -1144,12 +1074,12 @@ class JupyterRenderer:
         )
         # Set up scene
         environment = (
-            self.axes.axes
+            self._axes.get_axes()
             + key_lights
             + [
                 ambient_light,
-                self.horizontal_grid.grid,
-                self.vertical_grid.grid,
+                self._horizontal_grid.grid,
+                self._vertical_grid.grid,
                 self._camera,
             ]
         )
@@ -1161,21 +1091,6 @@ class JupyterRenderer:
             ]
             + environment
         )
-=======
-        self._axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
-        self._horizontal_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
-                                    colorCenterLine='#aaa', colorGrid='#ddd')
-        self._vertical_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
-                                  colorCenterLine='#aaa', colorGrid='#ddd')
-        # Set up scene
-        environment = self._axes.get_axes() + key_lights + [ambient_light,
-                                                     self._horizontal_grid.grid,
-                                                     self._vertical_grid.grid,
-                                                     self._camera]
-
-        scene_shp = Scene(children=[self._displayed_pickable_objects,
-                                    self._displayed_non_pickable_objects] + environment)
->>>>>>> Clean ups in jupyter-renderer
 
         # Set up Controllers
         self._controller = OrbitControls(
@@ -1206,11 +1121,7 @@ class JupyterRenderer:
         self._horizontal_grid.set_position((0, 0, 0))
         self._horizontal_grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
 
-<<<<<<< HEAD
-        self.vertical_grid.set_position((0, -bb_max, 0))
-=======
-        self._vertical_grid.set_position((0, - bb_max, 0))
->>>>>>> Clean ups in jupyter-renderer
+        self._vertical_grid.set_position((0, -bb_max, 0))
 
         self._savestate = (self._camera.rotation, self._controller.target)
 
