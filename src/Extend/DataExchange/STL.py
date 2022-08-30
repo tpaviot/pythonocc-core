@@ -24,9 +24,11 @@ from OCC.Core.StlAPI import stlapi_Read, StlAPI_Writer
 #########################
 # STL import and export #
 #########################
-def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angular_deflection=0.5):
-    """ export the shape to a STL file
-    Be careful, the shape first need to be explicitely meshed using BRepMesh_IncrementalMesh
+def write_stl_file(
+    a_shape, filename, mode="ascii", linear_deflection=0.9, angular_deflection=0.5
+):
+    """export the shape to a STL file
+    Be careful, the shape first need to be explicitly meshed using BRepMesh_IncrementalMesh
     a_shape: the topods_shape to export
     filename: the filename
     mode: optional, "ascii" by default. Can either be "binary"
@@ -38,10 +40,12 @@ def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angul
     if mode not in ["ascii", "binary"]:
         raise AssertionError("mode should be either ascii or binary")
     if os.path.isfile(filename):
-        print("Warning: %s file already exists and will be replaced" % filename)
+        print(f"Warning: {filename} file already exists and will be replaced")
     # first mesh the shape
-    mesh = BRepMesh_IncrementalMesh(a_shape, linear_deflection, False, angular_deflection, True)
-    #mesh.SetDeflection(0.05)
+    mesh = BRepMesh_IncrementalMesh(
+        a_shape, linear_deflection, False, angular_deflection, True
+    )
+    # mesh.SetDeflection(0.05)
     mesh.Perform()
     if not mesh.IsDone():
         raise AssertionError("Mesh is not done.")
@@ -58,10 +62,9 @@ def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angul
 
 
 def read_stl_file(filename):
-    """ opens a stl file, reads the content, and returns a BRep topods_shape object
-    """
+    """opens a stl file, reads the content, and returns a BRep topods_shape object"""
     if not os.path.isfile(filename):
-        raise FileNotFoundError("%s not found." % filename)
+        raise FileNotFoundError(f"{filename} not found.")
 
     the_shape = TopoDS_Shape()
     stlapi_Read(the_shape, filename)

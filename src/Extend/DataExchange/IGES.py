@@ -25,8 +25,10 @@ from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 ######################
 # IGES import/export #
 ######################
-def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_only=False):
-    """ read the IGES file and returns a compound
+def read_iges_file(
+    filename, return_as_shapes=False, verbosity=False, visible_only=False
+):
+    """read the IGES file and returns a compound
     filename: the file path
     return_as_shapes: optional, False by default. If True returns a list of shapes,
                       else returns a single compound
@@ -48,10 +50,10 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_on
             iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
         iges_reader.TransferRoots()
         nbr = iges_reader.NbRootsForTransfer()
-        for _ in range(1, nbr+1):
+        for _ in range(1, nbr + 1):
             nbs = iges_reader.NbShapes()
             if nbs == 0:
-                print("At least one shape in IGES cannot be transfered")
+                print("At least one shape in IGES cannot be transferred")
             elif nbr == 1 and nbs == 1:
                 a_res_shape = iges_reader.Shape(1)
                 if a_res_shape.IsNull():
@@ -59,7 +61,7 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_on
                 else:
                     _shapes.append(a_res_shape)
             else:
-                for i in range(1, nbs+1):
+                for i in range(1, nbs + 1):
                     a_shape = iges_reader.Shape(i)
                     if a_shape.IsNull():
                         print("At least one shape in STEP cannot be transferred")
@@ -76,8 +78,9 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_on
         _shapes = compound
     return _shapes
 
+
 def write_iges_file(a_shape, filename):
-    """ exports a shape to a STEP file
+    """exports a shape to a STEP file
     a_shape: the topods_shape to export (a compound, a solid etc.)
     filename: the filename
     application protocol: "AP203" or "AP214"
@@ -86,7 +89,7 @@ def write_iges_file(a_shape, filename):
     if a_shape.IsNull():
         raise AssertionError("Shape is null.")
     if os.path.isfile(filename):
-        print("Warning: %s file already exists and will be replaced" % filename)
+        print(f"Warning: {filename} file already exists and will be replaced")
     # creates and initialise the step exporter
     iges_writer = IGESControl_Writer()
     iges_writer.AddShape(a_shape)

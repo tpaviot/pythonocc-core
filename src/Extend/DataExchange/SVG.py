@@ -25,6 +25,7 @@ from OCC.Extend.TopologyUtils import discretize_edge, get_sorted_hlr_edges
 
 try:
     import svgwrite
+
     HAVE_SVGWRITE = True
 except ImportError:
     HAVE_SVGWRITE = False
@@ -32,8 +33,7 @@ except ImportError:
 
 
 def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
-    """ Returns a svgwrite.Path for the edge, and the 2d bounding box
-    """
+    """Returns a svgwrite.Path for the edge, and the 2d bounding box"""
     unit_factor = 1  # by default
 
     if unit == "mm":
@@ -47,7 +47,7 @@ def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
 
     for point in points_3d:
         # we tak only the first 2 coordinates (x and y, leave z)
-        x_p = - point[0] * unit_factor
+        x_p = -point[0] * unit_factor
         y_p = point[1] * unit_factor
         box2d.Add(gp_Pnt2d(x_p, y_p))
         points_2d.append((x_p, y_p))
@@ -55,14 +55,21 @@ def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
     return svgwrite.shapes.Polyline(points_2d, fill="none"), box2d
 
 
-def export_shape_to_svg(shape, filename=None,
-                        width=800, height=600, margin_left=10,
-                        margin_top=30, export_hidden_edges=True,
-                        location=gp_Pnt(0, 0, 0), direction=gp_Dir(1, 1, 1),
-                        color="black",
-                        line_width="1px",
-                        unit="mm"):
-    """ export a single shape to an svg file and/or string.
+def export_shape_to_svg(
+    shape,
+    filename=None,
+    width=800,
+    height=600,
+    margin_left=10,
+    margin_top=30,
+    export_hidden_edges=True,
+    location=gp_Pnt(0, 0, 0),
+    direction=gp_Dir(1, 1, 1),
+    color="black",
+    line_width="1px",
+    unit="mm",
+):
+    """export a single shape to an svg file and/or string.
     shape: the TopoDS_Shape to export
     filename (optional): if provided, save to an svg file
     width, height (optional): integers, specify the canva size in pixels
@@ -77,7 +84,12 @@ def export_shape_to_svg(shape, filename=None,
         raise AssertionError("shape is Null")
 
     # find all edges
-    visible_edges, hidden_edges = get_sorted_hlr_edges(shape, position=location, direction=direction, export_hidden_edges=export_hidden_edges)
+    visible_edges, hidden_edges = get_sorted_hlr_edges(
+        shape,
+        position=location,
+        direction=direction,
+        export_hidden_edges=export_hidden_edges,
+    )
 
     # compute polylines for all edges
     # we compute a global 2d bounding box as well, to be able to compute
@@ -87,12 +99,16 @@ def export_shape_to_svg(shape, filename=None,
 
     polylines = []
     for visible_edge in visible_edges:
-        visible_svg_line, visible_edge_box2d = edge_to_svg_polyline(visible_edge, 0.1, unit)
+        visible_svg_line, visible_edge_box2d = edge_to_svg_polyline(
+            visible_edge, 0.1, unit
+        )
         polylines.append(visible_svg_line)
         global_2d_bounding_box.Add(visible_edge_box2d)
     if export_hidden_edges:
         for hidden_edge in hidden_edges:
-            hidden_svg_line, hidden_edge_box2d = edge_to_svg_polyline(hidden_edge, 0.1, unit)
+            hidden_svg_line, hidden_edge_box2d = edge_to_svg_polyline(
+                hidden_edge, 0.1, unit
+            )
             # hidden lines are dashed style
             hidden_svg_line.dasharray([5, 5])
             polylines.append(hidden_svg_line)
@@ -108,8 +124,12 @@ def export_shape_to_svg(shape, filename=None,
     # build the svg drawing
     dwg = svgwrite.Drawing(filename, (width, height), debug=True)
     # adjust the view box so that the lines fit then svg canvas
-    dwg.viewbox(x_min - margin_left, y_min - margin_top,
-                bb2d_width + 2 * margin_left, bb2d_height + 2 * margin_top)
+    dwg.viewbox(
+        x_min - margin_left,
+        y_min - margin_top,
+        bb2d_width + 2 * margin_left,
+        bb2d_height + 2 * margin_top,
+    )
 
     for polyline in polylines:
         # apply color and style
@@ -122,6 +142,6 @@ def export_shape_to_svg(shape, filename=None,
         dwg.save()
         if not os.path.isfile(filename):
             raise AssertionError("svg export failed")
-        print("Shape successfully exported to %s" % filename)
+        print(f"Shape successfully exported to {filename}")
         return True
     return dwg.tostring()
