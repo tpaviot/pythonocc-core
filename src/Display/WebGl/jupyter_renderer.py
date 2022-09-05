@@ -269,11 +269,11 @@ class Axes(Helpers):
     def __init__(self, bb_center, length=1, width=3, display_labels=False):
         Helpers.__init__(self, bb_center)
 
-        self.axes = []
+        self._axes = []
         for vector, color in zip(
             ([length, 0, 0], [0, length, 0], [0, 0, length]), ("red", "green", "blue")
         ):
-            self.axes.append(
+            self._axes.append(
                 LineSegments2(
                     LineSegmentsGeometry(
                         positions=[[self.center, _shift(self.center, vector)]]
@@ -338,8 +338,8 @@ class CustomMaterial(ShaderMaterial):
         ShaderMaterial.__init__(
             self,
             uniforms=uniforms,
-            vertexShader=vertexShader,
-            fragmentShader=fragmentShader,
+            vertexShader=vertex_shader,
+            fragmentShader=fragment_shader,
         )
         self.lights = True
 
