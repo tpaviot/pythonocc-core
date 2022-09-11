@@ -1,4 +1,4 @@
-{% set version = "7.6.2" %}
+{% set version = "7.6.3" %}
 
 package:
   name: pythonocc-core
@@ -26,11 +26,11 @@ requirements:
 
   host:
     - python {{ python }}
-    - occt ==7.6.2
+    - occt ==7.6.3
     - numpy >=1.17
 
   run:
-    - occt ==7.6.2
+    - occt ==7.6.3
     - python
     - six
     - numpy >=1.17

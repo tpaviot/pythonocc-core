@@ -5427,7 +5427,7 @@ None
 class IntTools_WLineTool {
 	public:
 		/****************** DecompositionOfWLine ******************/
-		/**** md5 signature: 34e653d17172e47173c6f5f738af6d81 ****/
+		/**** md5 signature: f0e45c7481555cd59fc2441081754a7d ****/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", "No available documentation.
 
@@ -5442,11 +5442,12 @@ theLConstructor: GeomInt_LineConstructor
 theAvoidLConstructor: bool
 theTol: float
 theNewLines: IntPatch_SequenceOfLine
+&: float
 &: IntTools_Context
 
 Returns
 -------
-theReachedTol3d: float
+bool
 ") DecompositionOfWLine;
 		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, Standard_Real &OutValue, const opencascade::handle<IntTools_Context > &);
 
