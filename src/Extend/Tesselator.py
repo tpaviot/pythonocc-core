@@ -528,9 +528,9 @@ class FaceTesselator(Tesselator):
         nodes = myT.MapNodeArray().Array1()
         for i in range(nodes.Lower(), nodes.Upper() + 1):
             if self._global_coordinates:
-                p = nodes(i).Transformed(aLocation.Transformation())
+                p = myT.Node(i).Transformed(aLocation.Transformation()).XYZ()
             else:
-                p = nodes(i)
+                p = myT.Node(i)
             vertex_coords.append([p.X(), p.Y(), p.Z()])
 
         # write triangle buffer
@@ -555,7 +555,7 @@ class FaceTesselator(Tesselator):
             uvnodes = myT.MapUVNodeArray().Array1()
 
             for i in range(uvnodes.Lower(), uvnodes.Upper() + 1):
-                uv_pnt = uvnodes(i)
+                uv_pnt = myT.UVNode(i)#uvnodes(i)
                 p = gp_Pnt()
                 n = gp_Vec()
                 prop.Normal(uv_pnt.X(), uv_pnt.Y(), p, n)
@@ -642,13 +642,13 @@ class ShapeTesselator(Tesselator):
                     continue
 
                 indices = aPoly.Nodes()
-                Nodes = aPolyTria.Nodes()
+                Nodes = aPolyTria.MapNodeArray().Array1()
 
                 edge_indices = []
                 # go through the index array
                 for i in range(indices.Lower(), indices.Upper() + 1):
                     # node index in face triangulation
-                    V = Nodes(indices.Value(i))
+                    V = aPolyTria.Node(indices.Value(i))
                     if self._global_coordinates:
                         V.Transform(myTransf)
                     vertex_coord = [V.X(), V.Y(), V.Z()]
@@ -682,6 +682,7 @@ class ShapeTesselator(Tesselator):
             self._angular_deflection * self._mesh_quality,
         )
         msh_algo.Perform()
+
         all_vertex_coords = []
         all_vertex_indices = []
         all_normal_coords = []
@@ -740,7 +741,7 @@ if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Extend.ShapeFactory import translate_shp
 
-    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    #box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     box = BRepPrimAPI_MakeTorus(30, 10).Shape()
     bo_t = translate_shp(box, gp_Vec(0, 0, 10), copy=False)
     # t = BRepPrimAPI_MakeBox(100, 20, 30).Shape()
@@ -763,24 +764,23 @@ if __name__ == "__main__":
     # print('Edges:', tess._edges_indices)
     print("Translation", tess.get_translation())
     print("Rotation", tess.get_rotation())
-    print(final_time - init_time)
+    print("Time: ", final_time - init_time)
     # # compare with the c++ tesselator
-    # from OCC.Core.Tesselator import ShapeTesselator
-    # init_time = time.perf_counter()
-    # tess = ShapeTesselator(bo_t)
-    # tess.Compute(compute_normals=True)
-    # print(tess.GetVertexIndices())
-    # print(tess.GetVertexCoords())
-    # final_time = time.perf_counter()
-    # nb_i = len(tess.GetVertexIndices())
-    # nb_v = len(tess.GetVertexCoords())
+    from OCC.Core.Tesselator import ShapeTesselator
+    init_time = time.perf_counter()
+    tess = ShapeTesselator(bo_t)
+    tess.Compute()
+    #print(tess.GetVertexIndices())
+    #print(tess.GetVertexCoords())
+    final_time = time.perf_counter()
+    #nb_i = len(tess.GetVertexIndices())
+    #nb_v = len(tess.GetVertexCoords())
 
-    # print('Nb indices :', nb_i)
-    # print('Nb vertices:', nb_v)
+    #print('Nb indices :', nb_i)
+    #print('Nb vertices:', nb_v)
 
-    # print(final_time - init_time)
+    print(final_time - init_time)
     # build and descretize and helix
-
     from OCC.Core.gp import gp_Pnt2d, gp_XOY, gp_Lin2d, gp_Ax3, gp_Dir2d
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
     from OCC.Core.Geom import Geom_CylindricalSurface
@@ -803,23 +803,24 @@ if __name__ == "__main__":
     box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     # loads brep shape
     # create a rendering window and renderer
-    ren = vtk.vtkRenderer()
-    renWin = vtk.vtkRenderWindow()
-    renWin.AddRenderer(ren)
-    a_tess = ShapeTesselator(torus)
-    print(a_tess.get_mesh_density())
-    # a_polydata = a_tess.to_vtk()
-    decimated_pd = a_tess.decimate(0.75)
-    print(a_tess.get_mesh_density())
-    # mapper
-    mapper = vtk.vtkPolyDataMapper()
-    mapper.SetInputData(decimated_pd)
-    # actor
-    actor = vtk.vtkActor()
-    actor.SetMapper(mapper)
-    ren.AddActor(actor)
-    iren = vtk.vtkRenderWindowInteractor()
-    iren.SetRenderWindow(renWin)
-    iren.Initialize()
-    renWin.Render()
-    iren.Start()
+    if HAVE_VTK:
+        ren = vtk.vtkRenderer()
+        renWin = vtk.vtkRenderWindow()
+        renWin.AddRenderer(ren)
+        a_tess = ShapeTesselator(torus)
+        print(a_tess.get_mesh_density())
+        # a_polydata = a_tess.to_vtk()
+        decimated_pd = a_tess.decimate(0.75)
+        print(a_tess.get_mesh_density())
+        # mapper
+        mapper = vtk.vtkPolyDataMapper()
+        mapper.SetInputData(decimated_pd)
+        # actor
+        actor = vtk.vtkActor()
+        actor.SetMapper(mapper)
+        ren.AddActor(actor)
+        iren = vtk.vtkRenderWindowInteractor()
+        iren.SetRenderWindow(renWin)
+        iren.Initialize()
+        renWin.Render()
+        iren.Start()
