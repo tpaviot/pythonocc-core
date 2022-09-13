@@ -26,9 +26,17 @@ from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_Projector
 from OCC.Core.ShapeFix import ShapeFix_Shape
-from OCC.Core.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
-                             TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
-                             TopAbs_COMPSOLID, TopAbs_ShapeEnum)
+from OCC.Core.TopAbs import (
+    TopAbs_VERTEX,
+    TopAbs_EDGE,
+    TopAbs_FACE,
+    TopAbs_WIRE,
+    TopAbs_SHELL,
+    TopAbs_SOLID,
+    TopAbs_COMPOUND,
+    TopAbs_COMPSOLID,
+    TopAbs_ShapeEnum,
+)
 from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
 from OCC.Core.TopTools import (
     TopTools_ListIteratorOfListOfShape,
@@ -657,11 +665,18 @@ def is_compsolid(topods_shape: TopoDS_Shape) -> bool:
 
 
 def get_type_as_string(topods_shape: TopoDS_Shape) -> str:
-    """ just get the type string, remove TopAbs_ and lowercas all ending letters
-    """
-    types = {TopAbs_VERTEX: "Vertex", TopAbs_COMPSOLID: "CompSolid", TopAbs_FACE: "Face",
-             TopAbs_WIRE: "Wire", TopAbs_EDGE: "Edge", TopAbs_COMPOUND: "Compound",
-             TopAbs_COMPSOLID: "CompSolid", TopAbs_SOLID: "Solid", TopAbs_SHELL: "Shell"}
+    """just get the type string, remove TopAbs_ and lowercas all ending letters"""
+    types = {
+        TopAbs_VERTEX: "Vertex",
+        TopAbs_COMPSOLID: "CompSolid",
+        TopAbs_FACE: "Face",
+        TopAbs_WIRE: "Wire",
+        TopAbs_EDGE: "Edge",
+        TopAbs_COMPOUND: "Compound",
+        TopAbs_COMPSOLID: "CompSolid",
+        TopAbs_SOLID: "Solid",
+        TopAbs_SHELL: "Shell",
+    }
     return types[topods_shape.ShapeType()]
 
 
@@ -732,9 +747,9 @@ def list_of_shapes_to_compound(
         the_builder.Add(the_compound, shp)
     return the_compound, all_shapes_converted
 
+
 def check_shape(a_topods_shape, fix=True):
-    """ check whether this is a valid shape, fix it if flag set to True
-    """
+    """check whether this is a valid shape, fix it if flag set to True"""
     analyzer = BRepCheck_Analyzer(a_topods_shape)
     is_valid = analyzer.IsValid()
     fixed = None

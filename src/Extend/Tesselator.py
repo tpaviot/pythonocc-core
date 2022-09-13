@@ -555,7 +555,7 @@ class FaceTesselator(Tesselator):
             uvnodes = myT.MapUVNodeArray().Array1()
 
             for i in range(uvnodes.Lower(), uvnodes.Upper() + 1):
-                uv_pnt = myT.UVNode(i)#uvnodes(i)
+                uv_pnt = myT.UVNode(i)  # uvnodes(i)
                 p = gp_Pnt()
                 n = gp_Vec()
                 prop.Normal(uv_pnt.X(), uv_pnt.Y(), p, n)
@@ -741,7 +741,7 @@ if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Extend.ShapeFactory import translate_shp
 
-    #box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    # box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     box = BRepPrimAPI_MakeTorus(30, 10).Shape()
     bo_t = translate_shp(box, gp_Vec(0, 0, 10), copy=False)
     # t = BRepPrimAPI_MakeBox(100, 20, 30).Shape()
@@ -767,17 +767,18 @@ if __name__ == "__main__":
     print("Time: ", final_time - init_time)
     # # compare with the c++ tesselator
     from OCC.Core.Tesselator import ShapeTesselator
+
     init_time = time.perf_counter()
     tess = ShapeTesselator(bo_t)
     tess.Compute()
-    #print(tess.GetVertexIndices())
-    #print(tess.GetVertexCoords())
+    # print(tess.GetVertexIndices())
+    # print(tess.GetVertexCoords())
     final_time = time.perf_counter()
-    #nb_i = len(tess.GetVertexIndices())
-    #nb_v = len(tess.GetVertexCoords())
+    # nb_i = len(tess.GetVertexIndices())
+    # nb_v = len(tess.GetVertexCoords())
 
-    #print('Nb indices :', nb_i)
-    #print('Nb vertices:', nb_v)
+    # print('Nb indices :', nb_i)
+    # print('Nb vertices:', nb_v)
 
     print(final_time - init_time)
     # build and descretize and helix

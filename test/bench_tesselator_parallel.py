@@ -2,7 +2,7 @@ import os
 import os.path
 import time
 
-from OCC.Core.Visualization import Tesselator
+from OCC.Core.Tesselator import ShapeTesselator
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
 from OCC.Extend.DataExchange import read_step_file
@@ -20,7 +20,7 @@ shp2 = read_step_file(step_file)
 
 # tesselate in single thread mode
 print("Tesselate in single thread mode")
-t_single = Tesselator(shp)
+t_single = ShapeTesselator(shp)
 t0 = time.monotonic()
 t_single.Compute(parallel=False, mesh_quality=0.5)
 t1 = time.monotonic()
@@ -28,7 +28,7 @@ delta_single = t1 - t0
 
 # tesselate in parallel thread mode
 print("Tesselate in parallelized mode")
-t_multi = Tesselator(shp2)
+t_multi = ShapeTesselator(shp2)
 t2 = time.monotonic()
 t_multi.Compute(parallel=True, mesh_quality=0.5)
 t3 = time.monotonic()

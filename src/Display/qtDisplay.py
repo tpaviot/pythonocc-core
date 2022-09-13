@@ -216,7 +216,9 @@ class qtViewer3d(qtBaseViewer):
                     # single select otherwise
                     self._display.Select(pt.x(), pt.y())
 
-                    if (self._display.selected_shapes is not None) and self.HAVE_PYQT_SIGNAL:
+                    if (
+                        self._display.selected_shapes is not None
+                    ) and self.HAVE_PYQT_SIGNAL:
 
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 

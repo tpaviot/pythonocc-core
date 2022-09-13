@@ -35,10 +35,10 @@ from OCC.Extend.DataExchange.STEP import read_step_file
 
 
 class TestTesselator(unittest.TestCase):
-    """A class for testing tesselation algorithm"""
+    """A class for testing tessellation algorithm"""
 
     def test_tesselate_box(self):
-        """1st test : tesselation of a box"""
+        """1st test : tessellation of a box"""
         a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         tess = ShapeTesselator(a_box)
         tess.Compute()
@@ -46,7 +46,7 @@ class TestTesselator(unittest.TestCase):
         self.assertEqual(tess.ObjGetNormalCount(), 24)
 
     def test_tesselate_torus(self):
-        """2st test : tesselation of a torus"""
+        """2nd test : tessellation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute()
@@ -54,7 +54,7 @@ class TestTesselator(unittest.TestCase):
         self.assertGreater(tess.ObjGetNormalCount(), 100)
 
     def test_tesselate_torus_with_edges(self):
-        """2st test : tesselation of a torus"""
+        """2nd test : tessellation of a torus, with edges"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute(compute_edges=True)
@@ -62,7 +62,7 @@ class TestTesselator(unittest.TestCase):
         self.assertGreater(tess.ObjGetNormalCount(), 100)
 
     def test_tesselate_torus_with_bad_quality(self):
-        """2st test : tesselation of a torus"""
+        """2nd test : tessellation of a torus, bad quality"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute(mesh_quality=40.0)
@@ -116,7 +116,7 @@ class TestTesselator(unittest.TestCase):
             ET.fromstring(x3d_content)  # raise an exception if not valid xml
 
     def test_tesselate_STEP_file(self):
-        """loads a step file, tesselate. The as1_pe_203 contains
+        """loads a step file, tessellate. The as1_pe_203 contains
         free edges"""
         stp_file = os.path.join(os.path.join("test_io", "as1_pe_203.stp"))
         stp_file_shape = read_step_file(stp_file)
