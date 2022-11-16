@@ -2361,7 +2361,7 @@ None
 		 math_FunctionSetRoot(math_FunctionSetWithDerivatives & F, const Standard_Integer NbIterations = 100);
 
 		/****************** Derivative ******************/
-		/**** md5 signature: 3dcf53e070495d3f965a044124317010 ****/
+		/**** md5 signature: fcd9ef2e33cbc01b115f3add2846c468 ****/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "Returns the matrix value of the derivative at the root. exception notdone is raised if the root was not found.
 
@@ -2372,7 +2372,7 @@ math_Matrix
 		const math_Matrix & Derivative();
 
 		/****************** Derivative ******************/
-		/**** md5 signature: a541fd37b04e5a32f186e9bd160ab411 ****/
+		/**** md5 signature: 7c4478e7f2c54768ee35dbf6b4914076 ****/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "Outputs the matrix value of the derivative at the root in der. exception notdone is raised if the root was not found. exception dimensionerror is raised if the column range of <der> is not equal to the range of the startingpoint.
 
@@ -2395,7 +2395,7 @@ None
             return s.str();}
         };
 		/****************** FunctionSetErrors ******************/
-		/**** md5 signature: f60cf743c92edccf04b38617ec21af42 ****/
+		/**** md5 signature: 5c3b5fe11df662477290ea4121b545af ****/
 		%feature("compactdefaultargs") FunctionSetErrors;
 		%feature("autodoc", "Returns the vector value of the error done on the functions at the root. exception notdone is raised if the root was not found.
 
@@ -2421,7 +2421,7 @@ None
 		void FunctionSetErrors(math_Vector & Err);
 
 		/****************** IsDivergent ******************/
-		/**** md5 signature: 34d4726b89ed546a888bb10215580d36 ****/
+		/**** md5 signature: 96410564fded70ab52b25d92b739e5b8 ****/
 		%feature("compactdefaultargs") IsDivergent;
 		%feature("autodoc", "No available documentation.
 
@@ -2432,7 +2432,7 @@ bool
 		Standard_Boolean IsDivergent();
 
 		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Returns true if the computations are successful, otherwise returns false.
 
@@ -2443,22 +2443,22 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** IsSolutionReached ******************/
-		/**** md5 signature: 8f22da97fa90e99c4558e184c58d5b3e ****/
+		/**** md5 signature: 2a9a392515a38070b5013e85c5f9b31f ****/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "This routine is called at the end of each iteration to check if the solution was found. it can be redefined in a sub-class to implement a specific test to stop the iterations. in this case, the solution is found when: abs(xi - xi-1) <= tolerance for all unknowns.
 
 Parameters
 ----------
-F: math_FunctionSetWithDerivatives
+&: math_FunctionSetWithDerivatives
 
 Returns
 -------
 bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_FunctionSetWithDerivatives & F);
+		virtual Standard_Boolean IsSolutionReached(math_FunctionSetWithDerivatives &);
 
 		/****************** NbIterations ******************/
-		/**** md5 signature: 05334f1e34f7c858ac022754e906f2bf ****/
+		/**** md5 signature: afa9e692e88494ad7998dd4619f3c08a ****/
 		%feature("compactdefaultargs") NbIterations;
 		%feature("autodoc", "Returns the number of iterations really done during the computation of the root. exception notdone is raised if the root was not found.
 
@@ -2507,7 +2507,7 @@ None
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint, const math_Vector & theInfBound, const math_Vector & theSupBound, const Standard_Boolean theStopOnDivergent = Standard_False);
 
 		/****************** Root ******************/
-		/**** md5 signature: 877a7a2963433958443904730046ad0c ****/
+		/**** md5 signature: 467f474c854f954a53bf30f3d82b793e ****/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Returns the value of the root of function f. exception notdone is raised if the root was not found.
 
@@ -2548,7 +2548,7 @@ None
 		void SetTolerance(const math_Vector & Tolerance);
 
 		/****************** StateNumber ******************/
-		/**** md5 signature: c825243d16208354db2b16a295147184 ****/
+		/**** md5 signature: f01709bfa944492be6fea9699946cca6 ****/
 		%feature("compactdefaultargs") StateNumber;
 		%feature("autodoc", "Returns the statenumber (as returned by f.getstatenumber()) associated to the root found.
 

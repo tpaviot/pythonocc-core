@@ -308,7 +308,7 @@ None
 		void SetFrontPlaneDistance(Standard_Real theDistance);
 
 		/****************** SetGDTPoint ******************/
-		/**** md5 signature: 1b80ce6b104bf1b4c24025ca4ac7da98 ****/
+		/**** md5 signature: 3dee4280a8434a0d76707dbe5f8b7819 ****/
 		%feature("compactdefaultargs") SetGDTPoint;
 		%feature("autodoc", "No available documentation.
 
@@ -321,7 +321,7 @@ Returns
 -------
 None
 ") SetGDTPoint;
-		void SetGDTPoint(const Standard_Integer theIndex, const gp_Pnt thePoint);
+		void SetGDTPoint(const Standard_Integer theIndex, const gp_Pnt & thePoint);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 5a1093e3141e426b70566411902bc345 ****/
@@ -339,7 +339,7 @@ None
 		void SetName(opencascade::handle<TCollection_HAsciiString > theName);
 
 		/****************** SetProjectionPoint ******************/
-		/**** md5 signature: dd8878886718206f128b1eeb580bb2f6 ****/
+		/**** md5 signature: 19026b95ec0255a010e1c46d7876ef42 ****/
 		%feature("compactdefaultargs") SetProjectionPoint;
 		%feature("autodoc", "No available documentation.
 
@@ -351,7 +351,7 @@ Returns
 -------
 None
 ") SetProjectionPoint;
-		void SetProjectionPoint(gp_Pnt thePoint);
+		void SetProjectionPoint(const gp_Pnt & thePoint);
 
 		/****************** SetType ******************/
 		/**** md5 signature: f0d13799e0fc97053a52a9b545460075 ****/
@@ -369,7 +369,7 @@ None
 		void SetType(XCAFView_ProjectionType theType);
 
 		/****************** SetUpDirection ******************/
-		/**** md5 signature: 9575d938efb3f7d1648686e4a69aca9d ****/
+		/**** md5 signature: dff1fffc8f21df6ca1742b9919dd9f4d ****/
 		%feature("compactdefaultargs") SetUpDirection;
 		%feature("autodoc", "No available documentation.
 
@@ -381,10 +381,10 @@ Returns
 -------
 None
 ") SetUpDirection;
-		void SetUpDirection(gp_Dir theDirection);
+		void SetUpDirection(const gp_Dir & theDirection);
 
 		/****************** SetViewDirection ******************/
-		/**** md5 signature: 40115a55468d95b120feb5a29a8c10f3 ****/
+		/**** md5 signature: d2b48e3c989a7dd82d24ce335e3b28eb ****/
 		%feature("compactdefaultargs") SetViewDirection;
 		%feature("autodoc", "No available documentation.
 
@@ -396,7 +396,7 @@ Returns
 -------
 None
 ") SetViewDirection;
-		void SetViewDirection(gp_Dir theDirection);
+		void SetViewDirection(const gp_Dir & theDirection);
 
 		/****************** SetViewVolumeSidesClipping ******************/
 		/**** md5 signature: 8e109040f01baed9ca80d38d53a8743b ****/

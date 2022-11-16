@@ -63,6 +63,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_prsdim.html"
 #include<Media_module.hxx>
 #include<Poly_module.hxx>
 #include<Select3D_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

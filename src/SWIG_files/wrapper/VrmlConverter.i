@@ -68,6 +68,16 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmlconverter.htm
 #include<Graphic3d_module.hxx>
 #include<Bnd_module.hxx>
 #include<Media_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TopTools_module.hxx>
+#include<CDF_module.hxx>
+#include<PCDM_module.hxx>
+#include<TDF_module.hxx>
+#include<MoniTool_module.hxx>
+#include<Transfer_module.hxx>
+#include<Interface_module.hxx>
+#include<TDocStd_module.hxx>
+#include<XSControl_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

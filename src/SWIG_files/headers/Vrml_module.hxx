@@ -24,6 +24,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Vrml_AsciiTextJustification.hxx>
 #include<Vrml_Cone.hxx>
 #include<Vrml_ConeParts.hxx>
+#include<Vrml_ConfigurationNode.hxx>
 #include<Vrml_Coordinate3.hxx>
 #include<Vrml_Cube.hxx>
 #include<Vrml_Cylinder.hxx>
@@ -49,6 +50,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Vrml_PerspectiveCamera.hxx>
 #include<Vrml_PointLight.hxx>
 #include<Vrml_PointSet.hxx>
+#include<Vrml_Provider.hxx>
 #include<Vrml_Rotation.hxx>
 #include<Vrml_SFImage.hxx>
 #include<Vrml_SFImageNumber.hxx>

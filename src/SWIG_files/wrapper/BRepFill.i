@@ -1816,6 +1816,17 @@ TopTools_ListOfShape
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SSection);
 
+		/****************** IsMutableInput ******************/
+		/**** md5 signature: 2df16e5a957577cfce65832aa2d90512 ****/
+		%feature("compactdefaultargs") IsMutableInput;
+		%feature("autodoc", "Returns the current mutable input state.
+
+Returns
+-------
+bool
+") IsMutableInput;
+		Standard_Boolean IsMutableInput();
+
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
@@ -1826,6 +1837,36 @@ Returns
 None
 ") Perform;
 		void Perform();
+
+		/****************** ResultShape ******************/
+		/**** md5 signature: 01e3ecee0f6c4e9a7725c78d5680438b ****/
+		%feature("compactdefaultargs") ResultShape;
+		%feature("autodoc", "Returns a modified shape in the constructed shell, if shape is not changed (replaced) during operation => returns the same shape.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+TopoDS_Shape
+") ResultShape;
+		TopoDS_Shape ResultShape(const TopoDS_Shape & theShape);
+
+		/****************** SetMutableInput ******************/
+		/**** md5 signature: a0db619cccd4a2c2b443a5ab39c10ef8 ****/
+		%feature("compactdefaultargs") SetMutableInput;
+		%feature("autodoc", "Sets the mutable input state if true then the input profile can be modified inside the operation. default value is true.
+
+Parameters
+----------
+theIsMutableInput: bool
+
+Returns
+-------
+None
+") SetMutableInput;
+		void SetMutableInput(const Standard_Boolean theIsMutableInput);
 
 		/****************** Shell ******************/
 		/**** md5 signature: c581862d26a0a34b15cf9dd6d442e65d ****/
@@ -3996,21 +4037,22 @@ bool
 class BRepFill_TrimShellCorner {
 	public:
 		/****************** BRepFill_TrimShellCorner ******************/
-		/**** md5 signature: 3f51ac9ad276e5ea9d71202c20886db0 ****/
+		/**** md5 signature: 2bb20b7a9d4f9625d8bd98b1e30b2acd ****/
 		%feature("compactdefaultargs") BRepFill_TrimShellCorner;
-		%feature("autodoc", "Constructor: takes faces to intersect, type of transition (it can be rightcorner or roundcorner) and axis of bisector plane.
+		%feature("autodoc", "Constructor: takes faces to intersect, type of transition (it can be rightcorner or roundcorner) and axis of bisector plane theintersectpointcrossdirection : prev path direction at the origin point of theaxeofbisplane cross next path direction at the origin point of theaxeofbisplane. used when ee has more than one vertices.
 
 Parameters
 ----------
 theFaces: TopTools_HArray2OfShape
 theTransition: BRepFill_TransitionStyle
 theAxeOfBisPlane: gp_Ax2
+theIntPointCrossDir: gp_Vec
 
 Returns
 -------
 None
 ") BRepFill_TrimShellCorner;
-		 BRepFill_TrimShellCorner(const opencascade::handle<TopTools_HArray2OfShape> & theFaces, const BRepFill_TransitionStyle theTransition, const gp_Ax2 & theAxeOfBisPlane);
+		 BRepFill_TrimShellCorner(const opencascade::handle<TopTools_HArray2OfShape> & theFaces, const BRepFill_TransitionStyle theTransition, const gp_Ax2 & theAxeOfBisPlane, const gp_Vec & theIntPointCrossDir);
 
 		/****************** AddBounds ******************/
 		/**** md5 signature: 70621cde2e2ea8a90994c6feb97fbd2c ****/

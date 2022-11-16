@@ -129,14 +129,7 @@ enum AIS_MouseGesture {
 	AIS_MouseGesture_Pan = 5,
 	AIS_MouseGesture_RotateOrbit = 6,
 	AIS_MouseGesture_RotateView = 7,
-};
-
-enum AIS_ClearMode {
-	AIS_CM_All = 0,
-	AIS_CM_Interactive = 1,
-	AIS_CM_Filters = 2,
-	AIS_CM_StandardModes = 3,
-	AIS_CM_TemporaryShapePrs = 4,
+	AIS_MouseGesture_Drag = 8,
 };
 
 enum AIS_TypeOfAttribute {
@@ -195,13 +188,6 @@ enum AIS_SelectionScheme {
 	AIS_SelectionScheme_XOR = 3,
 	AIS_SelectionScheme_Clear = 4,
 	AIS_SelectionScheme_ReplaceExtra = 5,
-};
-
-enum AIS_ConnectStatus {
-	AIS_CS_None = 0,
-	AIS_CS_Connection = 1,
-	AIS_CS_Transform = 2,
-	AIS_CS_Both = 3,
 };
 
 enum AIS_RotationMode {
@@ -333,6 +319,7 @@ class AIS_MouseGesture(IntEnum):
 	AIS_MouseGesture_Pan = 5
 	AIS_MouseGesture_RotateOrbit = 6
 	AIS_MouseGesture_RotateView = 7
+	AIS_MouseGesture_Drag = 8
 AIS_MouseGesture_NONE = AIS_MouseGesture.AIS_MouseGesture_NONE
 AIS_MouseGesture_SelectRectangle = AIS_MouseGesture.AIS_MouseGesture_SelectRectangle
 AIS_MouseGesture_SelectLasso = AIS_MouseGesture.AIS_MouseGesture_SelectLasso
@@ -341,18 +328,7 @@ AIS_MouseGesture_ZoomWindow = AIS_MouseGesture.AIS_MouseGesture_ZoomWindow
 AIS_MouseGesture_Pan = AIS_MouseGesture.AIS_MouseGesture_Pan
 AIS_MouseGesture_RotateOrbit = AIS_MouseGesture.AIS_MouseGesture_RotateOrbit
 AIS_MouseGesture_RotateView = AIS_MouseGesture.AIS_MouseGesture_RotateView
-
-class AIS_ClearMode(IntEnum):
-	AIS_CM_All = 0
-	AIS_CM_Interactive = 1
-	AIS_CM_Filters = 2
-	AIS_CM_StandardModes = 3
-	AIS_CM_TemporaryShapePrs = 4
-AIS_CM_All = AIS_ClearMode.AIS_CM_All
-AIS_CM_Interactive = AIS_ClearMode.AIS_CM_Interactive
-AIS_CM_Filters = AIS_ClearMode.AIS_CM_Filters
-AIS_CM_StandardModes = AIS_ClearMode.AIS_CM_StandardModes
-AIS_CM_TemporaryShapePrs = AIS_ClearMode.AIS_CM_TemporaryShapePrs
+AIS_MouseGesture_Drag = AIS_MouseGesture.AIS_MouseGesture_Drag
 
 class AIS_TypeOfAttribute(IntEnum):
 	AIS_TOA_Line = 0
@@ -449,16 +425,6 @@ AIS_SelectionScheme_Remove = AIS_SelectionScheme.AIS_SelectionScheme_Remove
 AIS_SelectionScheme_XOR = AIS_SelectionScheme.AIS_SelectionScheme_XOR
 AIS_SelectionScheme_Clear = AIS_SelectionScheme.AIS_SelectionScheme_Clear
 AIS_SelectionScheme_ReplaceExtra = AIS_SelectionScheme.AIS_SelectionScheme_ReplaceExtra
-
-class AIS_ConnectStatus(IntEnum):
-	AIS_CS_None = 0
-	AIS_CS_Connection = 1
-	AIS_CS_Transform = 2
-	AIS_CS_Both = 3
-AIS_CS_None = AIS_ConnectStatus.AIS_CS_None
-AIS_CS_Connection = AIS_ConnectStatus.AIS_CS_Connection
-AIS_CS_Transform = AIS_ConnectStatus.AIS_CS_Transform
-AIS_CS_Both = AIS_ConnectStatus.AIS_CS_Both
 
 class AIS_RotationMode(IntEnum):
 	AIS_RotationMode_BndBoxActive = 0
@@ -636,20 +602,6 @@ AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 /* templates */
 %template(AIS_DataMapOfIOStatus) NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>,opencascade::handle<AIS_GlobalStatus>,TColStd_MapTransientHasher>;
 %template(AIS_DataMapOfShapeDrawer) NCollection_DataMap<TopoDS_Shape,opencascade::handle<AIS_ColoredDrawer>,TopTools_ShapeMapHasher>;
-%template(AIS_DataMapofIntegerListOfinteractive) NCollection_DataMap<Standard_Integer,AIS_ListOfInteractive,TColStd_MapIntegerHasher>;
-
-%extend NCollection_DataMap<Standard_Integer,AIS_ListOfInteractive,TColStd_MapIntegerHasher> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (AIS_DataMapofIntegerListOfinteractive::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(AIS_IndexedDataMapOfOwnerPrs) NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,opencascade::handle<Prs3d_Presentation>,TColStd_MapTransientHasher>;
 %template(AIS_ListIteratorOfListOfInteractive) NCollection_TListIterator<opencascade::handle<AIS_InteractiveObject>>;
 %template(AIS_ListOfInteractive) NCollection_List<opencascade::handle<AIS_InteractiveObject>>;
 
@@ -659,7 +611,6 @@ AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
         return self.Size()
     }
 };
-%template(AIS_MapOfInteractive) NCollection_Map<opencascade::handle<AIS_InteractiveObject>,TColStd_MapTransientHasher>;
 %template(AIS_MouseGestureMap) NCollection_DataMap<unsigned int, AIS_MouseGesture>;
 %template(AIS_MouseSelectionSchemeMap) NCollection_DataMap<unsigned int, AIS_SelectionScheme>;
 %template(AIS_NArray1OfEntityOwner) NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>>;
@@ -705,34 +656,20 @@ AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
         return self.Size()
     }
 };
-%template(AIS_SequenceOfInteractive) NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>;
-
-%extend NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
 /* end templates declaration */
 
 /* typedefs */
 typedef Media_Timer AIS_AnimationTimer;
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
-typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher>::Iterator AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
-typedef NCollection_DataMap<Standard_Integer, AIS_ListOfInteractive, TColStd_MapIntegerHasher> AIS_DataMapofIntegerListOfinteractive;
 typedef PrsMgr_DisplayStatus AIS_DisplayStatus;
-typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<Prs3d_Presentation>, TColStd_MapTransientHasher> AIS_IndexedDataMapOfOwnerPrs;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>> AIS_ListOfInteractive;
-typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher>::Iterator AIS_MapIteratorOfMapOfInteractive;
-typedef NCollection_Map<opencascade::handle<AIS_InteractiveObject>, TColStd_MapTransientHasher> AIS_MapOfInteractive;
 typedef NCollection_DataMap<unsigned int, AIS_MouseGesture> AIS_MouseGestureMap;
 typedef NCollection_DataMap<unsigned int, AIS_SelectionScheme> AIS_MouseSelectionSchemeMap;
 typedef NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> AIS_NArray1OfEntityOwner;
 typedef NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
-typedef NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> AIS_SequenceOfInteractive;
 /* end typedefs declaration */
 
 /************
@@ -2416,9 +2353,24 @@ bool
 		Standard_Boolean BeginImmediateDraw();
 
 		/****************** BoundingBoxOfSelection ******************/
-		/**** md5 signature: 19a0242f29a43de5c30da614a02e6932 ****/
+		/**** md5 signature: ce3c459b72706889de79199277654aa5 ****/
 		%feature("compactdefaultargs") BoundingBoxOfSelection;
 		%feature("autodoc", "Returns bounding box of selected objects.
+
+Parameters
+----------
+theView: V3d_View
+
+Returns
+-------
+Bnd_Box
+") BoundingBoxOfSelection;
+		Bnd_Box BoundingBoxOfSelection(const opencascade::handle<V3d_View> & theView);
+
+		/****************** BoundingBoxOfSelection ******************/
+		/**** md5 signature: e06af7ec716edc2c5f5cf7203564685a ****/
+		%feature("compactdefaultargs") BoundingBoxOfSelection;
+		%feature("autodoc", "No available documentation.
 
 Returns
 -------
@@ -2841,7 +2793,7 @@ int
 		Standard_Integer DisplayMode();
 
 		/****************** DisplayPriority ******************/
-		/**** md5 signature: c3d8c29f8000764afe6d1d744631698f ****/
+		/**** md5 signature: 5ee166e687f439119f4237cb1827925f ****/
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "Returns the display priority of the object.
 
@@ -2851,9 +2803,9 @@ theIObj: AIS_InteractiveObject
 
 Returns
 -------
-int
+Graphic3d_DisplayPriority
 ") DisplayPriority;
-		Standard_Integer DisplayPriority(const opencascade::handle<AIS_InteractiveObject> & theIObj);
+		Graphic3d_DisplayPriority DisplayPriority(const opencascade::handle<AIS_InteractiveObject> & theIObj);
 
 		/****************** DisplaySelected ******************/
 		/**** md5 signature: 6981bcb57104e11b8ce741613e585a41 ****/
@@ -4608,9 +4560,25 @@ None
 		void SetDisplayMode(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theMode, const Standard_Boolean theToUpdateViewer);
 
 		/****************** SetDisplayPriority ******************/
-		/**** md5 signature: bf4d439c11543113184d91660ddaf446 ****/
+		/**** md5 signature: 42353ccb4c6eda1cc29153e74393c82b ****/
 		%feature("compactdefaultargs") SetDisplayPriority;
 		%feature("autodoc", "Sets the display priority of the seen parts presentation of the object.
+
+Parameters
+----------
+theIObj: AIS_InteractiveObject
+thePriority: Graphic3d_DisplayPriority
+
+Returns
+-------
+None
+") SetDisplayPriority;
+		void SetDisplayPriority(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Graphic3d_DisplayPriority thePriority);
+
+		/****************** SetDisplayPriority ******************/
+		/**** md5 signature: e26c06c0788dcb81557652d666d011f9 ****/
+		%feature("compactdefaultargs") SetDisplayPriority;
+		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
@@ -6107,7 +6075,7 @@ AIS_SelectStatus
 		/****************** SelectOwners ******************/
 		/**** md5 signature: ac1b8c76b8f30a86ea808928babe4605 ****/
 		%feature("compactdefaultargs") SelectOwners;
-		%feature("autodoc", "Select or deselect owners depending on the selection scheme. @param theowners [in] elements to change selection state @param theselscheme [in] selection scheme, defines how owner is selected @param thetoallowseloverlap [in] selection flag, if true - overlapped entities are allowed @param thefilter [in] context filter to skip not acceptable owners.
+		%feature("autodoc", "Select or deselect owners depending on the selection scheme. @param[in] thepickedowners elements to change selection state @param[in] theselscheme selection scheme, defines how owner is selected @param[in] thetoallowseloverlap selection flag, if true - overlapped entities are allowed @param[in] thefilter context filter to skip not acceptable owners.
 
 Parameters
 ----------
@@ -6645,6 +6613,23 @@ Returns
 None
 ") OnSelectionChanged;
 		virtual void OnSelectionChanged(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
+
+		/****************** OnSubviewChanged ******************/
+		/**** md5 signature: 164823ba5741e132455aee7ed3e0374f ****/
+		%feature("compactdefaultargs") OnSubviewChanged;
+		%feature("autodoc", "Callback called by handleviewevents() on selection of another (sub)view. this method is expected to be called from rendering thread.
+
+Parameters
+----------
+theCtx: AIS_InteractiveContext
+theOldView: V3d_View
+theNewView: V3d_View
+
+Returns
+-------
+None
+") OnSubviewChanged;
+		virtual void OnSubviewChanged(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theOldView, const opencascade::handle<V3d_View> & theNewView);
 
 		/****************** OrbitAcceleration ******************/
 		/**** md5 signature: da5f202aed945c1ea0545de4854049ae ****/

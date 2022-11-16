@@ -20,6 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<STEPCAFControl_ActorWrite.hxx>
+#include<STEPCAFControl_ConfigurationNode.hxx>
 #include<STEPCAFControl_Controller.hxx>
 #include<STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile.hxx>
 #include<STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape.hxx>
@@ -35,6 +36,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<STEPCAFControl_DataMapOfShapeSDR.hxx>
 #include<STEPCAFControl_ExternFile.hxx>
 #include<STEPCAFControl_GDTProperty.hxx>
+#include<STEPCAFControl_Provider.hxx>
 #include<STEPCAFControl_Reader.hxx>
 #include<STEPCAFControl_Writer.hxx>
 

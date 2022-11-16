@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomlib.html"
 #include<Adaptor2d_module.hxx>
 #include<math_module.hxx>
 #include<AdvApprox_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
 #include<PLib_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Precision_module.hxx>
@@ -73,6 +74,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomlib.html"
 %import Adaptor2d.i
 %import math.i
 %import AdvApprox.i
+%import Geom2dAdaptor.i
 
 %pythoncode {
 from enum import IntEnum
@@ -474,22 +476,22 @@ isVClosed: bool
 		static void IsClosed(const opencascade::handle<Geom_Surface> & S, const Standard_Real Tol, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** NormEstim ******************/
-		/**** md5 signature: 6d05db75f095f2ef4b602f081da51ac2 ****/
+		/**** md5 signature: 6b4a62ec9e633686c228abf462c66161 ****/
 		%feature("compactdefaultargs") NormEstim;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Estimate surface normal at the given (u, v) point. @param[in] thesurf input surface @param[in] theuv (u, v) point coordinates on the surface @param[in] thetol estimation tolerance @param[out] thenorm computed normal returns 0 if normal estimated from d1, 1 if estimated from d2 (quasysingular), >=2 in case of failure (undefined or infinite solutions).
 
 Parameters
 ----------
-S: Geom_Surface
-UV: gp_Pnt2d
-Tol: float
-N: gp_Dir
+theSurf: Geom_Surface
+theUV: gp_Pnt2d
+theTol: float
+theNorm: gp_Dir
 
 Returns
 -------
 int
 ") NormEstim;
-		static Standard_Integer NormEstim(const opencascade::handle<Geom_Surface> & S, const gp_Pnt2d & UV, const Standard_Real Tol, gp_Dir & N);
+		static Standard_Integer NormEstim(const opencascade::handle<Geom_Surface> & theSurf, const gp_Pnt2d & theUV, const Standard_Real theTol, gp_Dir & theNorm);
 
 		/****************** RemovePointsFromArray ******************/
 		/**** md5 signature: 8ab10cabc9f24666f30aef7fc0f14871 ****/
@@ -854,6 +856,17 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** IsParallel ******************/
+		/**** md5 signature: fc1de18a583c6aa3b3d9897c80aa553e ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if parallel flag is set.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
+
 		/****************** MaxDistance ******************/
 		/**** md5 signature: eb56c1d1489e07dddfaf89c1bd00ff56 ****/
 		%feature("compactdefaultargs") MaxDistance;
@@ -877,21 +890,34 @@ float
 		Standard_Real MaxParameter();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 1d825d707aa54593e1d0d19b4cd89341 ****/
+		/**** md5 signature: c9a9d63797e176cee0499468eb03150c ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Computes the max distance for the 3d curve <mycurve> and 2d curve <thecurveonsurface> if ismultithread == standard_true then computation will be performed in parallel.
 
 Parameters
 ----------
 theCurveOnSurface: Adaptor3d_CurveOnSurface
-isMultiThread: bool,optional
-	default value is Standard_False
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_CurveOnSurface> & theCurveOnSurface, const Standard_Boolean isMultiThread = Standard_False);
+		void Perform(const opencascade::handle<Adaptor3d_CurveOnSurface> & theCurveOnSurface);
+
+		/****************** SetParallel ******************/
+		/**** md5 signature: 91c6328a8c6135d4f1f1da7db8aee28f ****/
+		%feature("compactdefaultargs") SetParallel;
+		%feature("autodoc", "Sets parallel flag.
+
+Parameters
+----------
+theIsParallel: bool
+
+Returns
+-------
+None
+") SetParallel;
+		void SetParallel(const Standard_Boolean theIsParallel);
 
 };
 
@@ -1343,6 +1369,56 @@ D: float
 *********************/
 class GeomLib_Tool {
 	public:
+		/****************** ComputeDeviation ******************/
+		/**** md5 signature: 01d2c301872142ad511ab53d75993ed5 ****/
+		%feature("compactdefaultargs") ComputeDeviation;
+		%feature("autodoc", "Computes parameter in thecurve (*theprmoncurve) where maximal deviation between thecurve and the linear segment joining its points with the parameters thefpar and thelpar is obtained. returns the (positive) value of deviation. returns negative value if the deviation cannot be computed. the returned parameter (in case of successful) will always be in the range [thefpar, thelpar]. iterative method is used for computation. so, thestartparameter is needed to be set. recommend value of thestartparameter can be found with the overloaded method. additionally, following values can be returned (optionally): @param theptoncurve - the point on curve where maximal deviation is achieved; @param theprmoncurve - the parameter of theptoncurve; @param theveccurvline - the vector along which is computed (this vector is always  perpendicular theline); @param theline - the linear segment joining the point of thecurve having parameters thefpar and thelpar.
+
+Parameters
+----------
+theCurve: Geom2dAdaptor_Curve
+theFPar: float
+theLPar: float
+theStartParameter: float
+theNbIters: int,optional
+	default value is 100
+thePrmOnCurve: float *,optional
+	default value is NULL
+thePtOnCurve: gp_Pnt2d *,optional
+	default value is NULL
+theVecCurvLine: gp_Vec2d *,optional
+	default value is NULL
+theLine: gp_Lin2d *,optional
+	default value is NULL
+
+Returns
+-------
+float
+") ComputeDeviation;
+		static Standard_Real ComputeDeviation(const Geom2dAdaptor_Curve & theCurve, const Standard_Real theFPar, const Standard_Real theLPar, const Standard_Real theStartParameter, const Standard_Integer theNbIters = 100, Standard_Real * const thePrmOnCurve = NULL, gp_Pnt2d * const thePtOnCurve = NULL, gp_Vec2d * const theVecCurvLine = NULL, gp_Lin2d * const theLine = NULL);
+
+		/****************** ComputeDeviation ******************/
+		/**** md5 signature: bc135083861ec4aa4d15fd2159b269a6 ****/
+		%feature("compactdefaultargs") ComputeDeviation;
+		%feature("autodoc", "Computes parameter in thecurve (*theprmoncurve) where maximal deviation between thecurve and the linear segment joining its points with the parameters thefpar and thelpar is obtained. returns the (positive) value of deviation. returns negative value if the deviation cannot be computed. the returned parameter (in case of successful) will always be in the range [thefpar, thelpar]. thenbsubintervals defines discretization of the given interval [thefpar, thelpar] to provide better search condition. this value should be chosen taking into account complexity of the curve in considered interval. e.g. if there are many oscillations of the curve in the interval then thenbsubintervals mus be great number. however, the greater value of thenbsubintervals the slower the algorithm will compute. thenbiters sets number of iterations. attention!!! this algorithm cannot compute deviation precisely (so, there is no point in setting big value of thenbiters). but it can give some start point for the overloaded method.
+
+Parameters
+----------
+theCurve: Geom2dAdaptor_Curve
+theFPar: float
+theLPar: float
+theNbSubIntervals: int
+theNbIters: int,optional
+	default value is 10
+thePrmOnCurve: float *,optional
+	default value is NULL
+
+Returns
+-------
+float
+") ComputeDeviation;
+		static Standard_Real ComputeDeviation(const Geom2dAdaptor_Curve & theCurve, const Standard_Real theFPar, const Standard_Real theLPar, const Standard_Integer theNbSubIntervals, const Standard_Integer theNbIters = 10, Standard_Real * const thePrmOnCurve = NULL);
+
 		/****************** Parameter ******************/
 		/**** md5 signature: d9fbd7bbd865805d2fa18829af3689c1 ****/
 		%feature("compactdefaultargs") Parameter;

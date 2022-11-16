@@ -39,11 +39,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepVisual_RWColour.hxx>
 #include<RWStepVisual_RWColourRgb.hxx>
 #include<RWStepVisual_RWColourSpecification.hxx>
+#include<RWStepVisual_RWComplexTriangulatedFace.hxx>
+#include<RWStepVisual_RWComplexTriangulatedSurfaceSet.hxx>
 #include<RWStepVisual_RWCompositeText.hxx>
 #include<RWStepVisual_RWCompositeTextWithExtent.hxx>
 #include<RWStepVisual_RWContextDependentInvisibility.hxx>
 #include<RWStepVisual_RWContextDependentOverRidingStyledItem.hxx>
 #include<RWStepVisual_RWCoordinatesList.hxx>
+#include<RWStepVisual_RWCubicBezierTessellatedEdge.hxx>
+#include<RWStepVisual_RWCubicBezierTriangulatedFace.hxx>
 #include<RWStepVisual_RWCurveStyle.hxx>
 #include<RWStepVisual_RWCurveStyleFont.hxx>
 #include<RWStepVisual_RWCurveStyleFontPattern.hxx>
@@ -74,6 +78,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepVisual_RWPresentationStyleByContext.hxx>
 #include<RWStepVisual_RWPresentationView.hxx>
 #include<RWStepVisual_RWPresentedItemRepresentation.hxx>
+#include<RWStepVisual_RWRepositionedTessellatedGeometricSet.hxx>
+#include<RWStepVisual_RWRepositionedTessellatedItem.hxx>
 #include<RWStepVisual_RWStyledItem.hxx>
 #include<RWStepVisual_RWSurfaceSideStyle.hxx>
 #include<RWStepVisual_RWSurfaceStyleBoundary.hxx>
@@ -90,13 +96,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepVisual_RWTemplate.hxx>
 #include<RWStepVisual_RWTemplateInstance.hxx>
 #include<RWStepVisual_RWTessellatedAnnotationOccurrence.hxx>
+#include<RWStepVisual_RWTessellatedConnectingEdge.hxx>
 #include<RWStepVisual_RWTessellatedCurveSet.hxx>
+#include<RWStepVisual_RWTessellatedEdge.hxx>
 #include<RWStepVisual_RWTessellatedGeometricSet.hxx>
 #include<RWStepVisual_RWTessellatedItem.hxx>
+#include<RWStepVisual_RWTessellatedPointSet.hxx>
+#include<RWStepVisual_RWTessellatedShapeRepresentation.hxx>
+#include<RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters.hxx>
+#include<RWStepVisual_RWTessellatedShell.hxx>
+#include<RWStepVisual_RWTessellatedSolid.hxx>
+#include<RWStepVisual_RWTessellatedStructuredItem.hxx>
+#include<RWStepVisual_RWTessellatedVertex.hxx>
+#include<RWStepVisual_RWTessellatedWire.hxx>
 #include<RWStepVisual_RWTextLiteral.hxx>
 #include<RWStepVisual_RWTextStyle.hxx>
 #include<RWStepVisual_RWTextStyleForDefinedFont.hxx>
 #include<RWStepVisual_RWTextStyleWithBoxCharacteristics.hxx>
+#include<RWStepVisual_RWTriangulatedFace.hxx>
 #include<RWStepVisual_RWViewVolume.hxx>
 
 #endif // RWSTEPVISUAL_HXX

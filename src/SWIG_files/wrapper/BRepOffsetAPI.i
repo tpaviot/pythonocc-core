@@ -1286,6 +1286,22 @@ None
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/****************** ConvertFace ******************/
+		/**** md5 signature: 4995d6c46f75b841a5ec1eeddfe269b6 ****/
+		%feature("compactdefaultargs") ConvertFace;
+		%feature("autodoc", "Converts each wire of the face into contour consisting only of arcs and segments. new 3d curves are built too.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theAngleTolerance: float
+
+Returns
+-------
+TopoDS_Face
+") ConvertFace;
+		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const Standard_Real theAngleTolerance);
+
 		/****************** Generated ******************/
 		/**** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ****/
 		%feature("compactdefaultargs") Generated;
@@ -1354,6 +1370,21 @@ Returns
 None
 ") Perform;
 		void Perform(const Standard_Real Offset, const Standard_Real Alt = 0.0);
+
+		/****************** SetApprox ******************/
+		/**** md5 signature: 57e45b5381196ac1a2610a07df3f37fa ****/
+		%feature("compactdefaultargs") SetApprox;
+		%feature("autodoc", "Set approximation flag for convertion input contours into ones consisting of 2d circular arcs and 2d linear segments only.
+
+Parameters
+----------
+ToApprox: bool
+
+Returns
+-------
+None
+") SetApprox;
+		void SetApprox(const Standard_Boolean ToApprox);
 
 };
 
@@ -2547,6 +2578,17 @@ None
 ") Init;
 		void Init(const Standard_Boolean isSolid = Standard_False, const Standard_Boolean ruled = Standard_False, const Standard_Real pres3d = 1.0e-06);
 
+		/****************** IsMutableInput ******************/
+		/**** md5 signature: 2df16e5a957577cfce65832aa2d90512 ****/
+		%feature("compactdefaultargs") IsMutableInput;
+		%feature("autodoc", "Returns the current mutable input state.
+
+Returns
+-------
+bool
+") IsMutableInput;
+		Standard_Boolean IsMutableInput();
+
 		/****************** LastShape ******************/
 		/**** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ****/
 		%feature("compactdefaultargs") LastShape;
@@ -2626,6 +2668,21 @@ Returns
 None
 ") SetMaxDegree;
 		void SetMaxDegree(const Standard_Integer MaxDeg);
+
+		/****************** SetMutableInput ******************/
+		/**** md5 signature: a0db619cccd4a2c2b443a5ab39c10ef8 ****/
+		%feature("compactdefaultargs") SetMutableInput;
+		%feature("autodoc", "Sets the mutable input state. if true then the input profile can be modified inside the thrusection operation. default value is true.
+
+Parameters
+----------
+theIsMutableInput: bool
+
+Returns
+-------
+None
+") SetMutableInput;
+		void SetMutableInput(const Standard_Boolean theIsMutableInput);
 
 		/****************** SetParType ******************/
 		/**** md5 signature: ff343d7833ad3cc796439eb5cefa88ba ****/

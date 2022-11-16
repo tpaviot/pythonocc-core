@@ -47,8 +47,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_projlib.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<Adaptor2d_module.hxx>
-#include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<Geom_module.hxx>
 #include<TColStd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<math_module.hxx>
@@ -66,8 +66,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_projlib.html"
 %import Geom2d.i
 %import gp.i
 %import Adaptor2d.i
-%import Geom.i
 %import GeomAbs.i
+%import Geom.i
 %import TColStd.i
 %import AppParCurves.i
 %import math.i
@@ -499,6 +499,17 @@ Udeb: float
 Ufin: float
 ") Bounds;
 		void Bounds(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** Continuity ******************/
+		/**** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ****/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "Returns the continuity used in the approximation.
+
+Returns
+-------
+GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity();
 
 		/****************** D0 ******************/
 		/**** md5 signature: 01a5234aae6db090351bac35b3718fd9 ****/

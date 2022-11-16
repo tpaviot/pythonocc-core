@@ -657,7 +657,7 @@ None
 		 TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation & Other);
 
 		/****************** TopLoc_SListOfItemLocation ******************/
-		/**** md5 signature: 1c6f700d8f414321f6d3380e557ccc97 ****/
+		/**** md5 signature: 0379b2634e957903294469c3ee0f66b5 ****/
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "Move constructor.
 

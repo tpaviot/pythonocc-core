@@ -1016,7 +1016,7 @@ None
 /************************
 * class XCAFPrs_Texture *
 ************************/
-class XCAFPrs_Texture : public Graphic3d_Texture2Dmanual {
+class XCAFPrs_Texture : public Graphic3d_Texture2D {
 	public:
 		/****************** XCAFPrs_Texture ******************/
 		/**** md5 signature: f9dbe9d0fe880b67c047fad8716af896 ****/

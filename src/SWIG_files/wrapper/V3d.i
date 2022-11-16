@@ -1346,6 +1346,21 @@ None
 ") AddClipPlane;
 		virtual void AddClipPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
+		/****************** AddSubview ******************/
+		/**** md5 signature: 49d415d9560118482695dd29dc13e13e ****/
+		%feature("compactdefaultargs") AddSubview;
+		%feature("autodoc", "Add subview to the list.
+
+Parameters
+----------
+theView: V3d_View
+
+Returns
+-------
+None
+") AddSubview;
+		void AddSubview(const opencascade::handle<V3d_View> & theView);
+
 		/****************** At ******************/
 		/**** md5 signature: 5c17b55c9dc9e96e036d6f29354c6a9d ****/
 		%feature("compactdefaultargs") At;
@@ -1466,6 +1481,17 @@ Returns
 Quantity_Color
 ") BackgroundColor;
 		Quantity_Color BackgroundColor();
+
+		/****************** BackgroundSkydome ******************/
+		/**** md5 signature: d7cf91d14be3f61f07eadf45a044328f ****/
+		%feature("compactdefaultargs") BackgroundSkydome;
+		%feature("autodoc", "Returns skydome aspect;.
+
+Returns
+-------
+Aspect_SkydomeBackground
+") BackgroundSkydome;
+		const Aspect_SkydomeBackground & BackgroundSkydome();
 
 		/****************** Camera ******************/
 		/**** md5 signature: e0e8d00ee700afb9ca88da977e8b5747 ****/
@@ -2112,6 +2138,17 @@ bool
 ") IsInvalidatedImmediate;
 		Standard_Boolean IsInvalidatedImmediate();
 
+		/****************** IsSubview ******************/
+		/**** md5 signature: e4786984f763125a6b3ee9d1975a34eb ****/
+		%feature("compactdefaultargs") IsSubview;
+		%feature("autodoc", "Return true if this is a subview of another view.
+
+Returns
+-------
+bool
+") IsSubview;
+		bool IsSubview();
+
 		/****************** LightLimit ******************/
 		/**** md5 signature: b11a43a1516a029b988eec97675ac76a ****/
 		%feature("compactdefaultargs") LightLimit;
@@ -2249,6 +2286,32 @@ Returns
 None
 ") Panning;
 		void Panning(const Standard_Real theDXv, const Standard_Real theDYv, const Standard_Real theZoomFactor = 1, const Standard_Boolean theToStart = Standard_True);
+
+		/****************** ParentView ******************/
+		/**** md5 signature: 1fedb0f310727ce611da19aaba5cb0df ****/
+		%feature("compactdefaultargs") ParentView;
+		%feature("autodoc", "Return parent view or null if this is not a subview.
+
+Returns
+-------
+V3d_View *
+") ParentView;
+		V3d_View * ParentView();
+
+		/****************** PickSubview ******************/
+		/**** md5 signature: ae3284197a75c2e344a9fb46d3fc2c53 ****/
+		%feature("compactdefaultargs") PickSubview;
+		%feature("autodoc", "Pick subview from the given 2d point.
+
+Parameters
+----------
+thePnt: Graphic3d_Vec2i
+
+Returns
+-------
+opencascade::handle<V3d_View>
+") PickSubview;
+		opencascade::handle<V3d_View> PickSubview(const Graphic3d_Vec2i & thePnt);
 
 		/****************** Place ******************/
 		/**** md5 signature: 8b79579dde4d0cdc166a71e9b2247f26 ****/
@@ -2400,6 +2463,21 @@ Returns
 None
 ") RemoveClipPlane;
 		virtual void RemoveClipPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
+
+		/****************** RemoveSubview ******************/
+		/**** md5 signature: 597a3f67c828ab5b584dae0746ef84d0 ****/
+		%feature("compactdefaultargs") RemoveSubview;
+		%feature("autodoc", "Remove subview from the list.
+
+Parameters
+----------
+theView: V3d_View *
+
+Returns
+-------
+bool
+") RemoveSubview;
+		bool RemoveSubview(const V3d_View * theView);
 
 		/****************** RenderingParams ******************/
 		/**** md5 signature: d19e1c94557ee6d68fe1c775b8ab94f6 ****/
@@ -2750,6 +2828,23 @@ Returns
 None
 ") SetBackgroundImage;
 		void SetBackgroundImage(const opencascade::handle<Graphic3d_Texture2D> & theTexture, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
+
+		/****************** SetBackgroundSkydome ******************/
+		/**** md5 signature: 25ac38bc9b5749e5230aaefbd5f8cce1 ****/
+		%feature("compactdefaultargs") SetBackgroundSkydome;
+		%feature("autodoc", "Sets skydome aspect @param theaspect cubemap generation parameters @param thetoupdatepbrenv defines whether ibl maps will be generated or not.
+
+Parameters
+----------
+theAspect: Aspect_SkydomeBackground
+theToUpdatePBREnv: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") SetBackgroundSkydome;
+		void SetBackgroundSkydome(const Aspect_SkydomeBackground & theAspect, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
 		/****************** SetBgGradientColors ******************/
 		/**** md5 signature: 3049343ce59ac7e41a044f16276d9ed3 ****/
@@ -3270,6 +3365,28 @@ None
 ") SetWindow;
 		void SetWindow(const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext = NULL);
 
+		/****************** SetWindow ******************/
+		/**** md5 signature: be3959fa21174d4532289a5d89b1b6fd ****/
+		%feature("compactdefaultargs") SetWindow;
+		%feature("autodoc", "Activates the view as subview of another view. @param[in] theparentview parent view to put subview into @param[in] thesize subview dimensions;  values >= 2 define size in pixels,  values <= 1.0 define size as a fraction of parent view @param[in] thecorner corner within parent view @param[in] theoffset offset from the corner;  values >= 1 define offset in pixels,  values < 1.0 define offset as a fraction of parent view @param[in] themargins subview margins in pixels //! example: to split parent view horizontally into 2 subview, define one subview with size=(0.5,1.0),offset=(0.0,0.0), and 2nd with size=(0.5,1.0),offset=(5.0,0.0);.
+
+Parameters
+----------
+theParentView: V3d_View
+theSize: Graphic3d_Vec2d
+theCorner: Aspect_TypeOfTriedronPosition,optional
+	default value is Aspect_TOTP_LEFT_UPPER
+theOffset: Graphic3d_Vec2d,optional
+	default value is Graphic3d_Vec2d()
+theMargins: Graphic3d_Vec2i,optional
+	default value is Graphic3d_Vec2i()
+
+Returns
+-------
+None
+") SetWindow;
+		void SetWindow(const opencascade::handle<V3d_View> & theParentView, const Graphic3d_Vec2d & theSize, Aspect_TypeOfTriedronPosition theCorner = Aspect_TOTP_LEFT_UPPER, const Graphic3d_Vec2d & theOffset = Graphic3d_Vec2d(), const Graphic3d_Vec2i & theMargins = Graphic3d_Vec2i());
+
 		/****************** SetZSize ******************/
 		/**** md5 signature: 7561e1378cbba3000055a4c19942c545 ****/
 		%feature("compactdefaultargs") SetZSize;
@@ -3387,6 +3504,17 @@ Returns
 None
 ") StatisticInformation;
 		void StatisticInformation(TColStd_IndexedDataMapOfStringString & theDict);
+
+		/****************** Subviews ******************/
+		/**** md5 signature: d3114f4bfa64a1d5149acdd6e8abd3a2 ****/
+		%feature("compactdefaultargs") Subviews;
+		%feature("autodoc", "Return subview list.
+
+Returns
+-------
+NCollection_Sequence<opencascade::handle<V3d_View>>
+") Subviews;
+		const NCollection_Sequence<opencascade::handle<V3d_View>> & Subviews();
 
 		/****************** TextureEnv ******************/
 		/**** md5 signature: 11fc7995513bc89d61631d77ea5a1796 ****/

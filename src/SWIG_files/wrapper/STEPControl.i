@@ -844,19 +844,34 @@ opencascade::handle<XSControl_WorkSession>
 		opencascade::handle<XSControl_WorkSession> WS();
 
 		/****************** Write ******************/
-		/**** md5 signature: a2c63443529fcf2508727dc0010cba46 ****/
+		/**** md5 signature: 14544d6ececf228a5871ef6afa0279ae ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Writes a step model in the file identified by filename.
 
 Parameters
 ----------
-filename: char *
+theFileName: char *
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") Write;
-		IFSelect_ReturnStatus Write(const char * filename);
+		IFSelect_ReturnStatus Write(const char * theFileName);
+
+		/****************** WriteStream ******************/
+		/**** md5 signature: ce65ef735ad27a9e0fa213e50b058382 ****/
+		%feature("compactdefaultargs") WriteStream;
+		%feature("autodoc", "Writes a step model in the std::ostream.
+
+Parameters
+----------
+theOStream: std::ostream
+
+Returns
+-------
+IFSelect_ReturnStatus
+") WriteStream;
+		IFSelect_ReturnStatus WriteStream(std::ostream & theOStream);
 
 };
 

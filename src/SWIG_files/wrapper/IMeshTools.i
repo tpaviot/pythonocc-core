@@ -619,6 +619,7 @@ class IMeshTools_Parameters {
 		bool Relative;
 		bool InternalVerticesMode;
 		bool ControlSurfaceDeflection;
+		bool EnableControlSurfaceDeflectionAllSurfaces;
 		bool CleanModel;
 		bool AdjustMinSize;
 		bool ForceFaceDeflection;

@@ -1394,7 +1394,7 @@ None
 		/****************** D1 ******************/
 		/**** md5 signature: 0868b105367e01c443402a5728aa3395 ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Computes the point and the first derivatives on the surface. raised if the continuity of the current intervals is not c1.
+		%feature("autodoc", "Computes the point and the first derivatives on the surface. raised if the continuity of the current intervals is not c1. //! tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
 
 Parameters
 ----------
@@ -1952,7 +1952,7 @@ opencascade::handle<Adaptor3d_Surface>
 		/****************** Value ******************/
 		/**** md5 signature: bc01a119296408176c75cc0dfb0636ae ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the point of parameters u,v on the surface.
+		%feature("autodoc", "Computes the point of parameters u,v on the surface. tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
 
 Parameters
 ----------

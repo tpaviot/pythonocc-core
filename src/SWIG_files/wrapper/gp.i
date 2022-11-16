@@ -19004,7 +19004,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 0aea59d9b8e91f4da1fd1bc82c836d0c ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Computes the sum of this number pair and number pair theother @code <self>.x() = <self>.x() + theother.x() <self>.y() = <self>.y() + theother.y().
+		%feature("autodoc", "Computes the sum of this number pair and number pair theother @code <self>.x() = <self>.x() + theother.x() <self>.y() = <self>.y() + theother.y() @endcode.
 
 Parameters
 ----------
@@ -19194,7 +19194,7 @@ float
 		/****************** Multiplied ******************/
 		/**** md5 signature: 32129e6fa98206b895bbd9d0dbc2abf5 ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "@code new.x() = <self>.x() * thescalar; new.y() = <self>.y() * thescalar;.
+		%feature("autodoc", "@code new.x() = <self>.x() * thescalar; new.y() = <self>.y() * thescalar; @endcode.
 
 Parameters
 ----------
@@ -19209,7 +19209,7 @@ gp_XY
 		/****************** Multiplied ******************/
 		/**** md5 signature: ec4467f37006708c16cbab6f60a02570 ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "@code new.x() = <self>.x() * theother.x(); new.y() = <self>.y() * theother.y();.
+		%feature("autodoc", "@code new.x() = <self>.x() * theother.x(); new.y() = <self>.y() * theother.y(); @endcode.
 
 Parameters
 ----------
@@ -19224,7 +19224,7 @@ gp_XY
 		/****************** Multiplied ******************/
 		/**** md5 signature: 32075de5ff84d6c32829b876df7d260e ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "New = thematrix * <self> @endcode.
+		%feature("autodoc", "New = thematrix * <self>.
 
 Parameters
 ----------
@@ -19239,7 +19239,7 @@ gp_XY
 		/****************** Multiply ******************/
 		/**** md5 signature: 94c083012ff2f3e798eccef399e23708 ****/
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "@code <self>.x() = <self>.x() * thescalar; <self>.y() = <self>.y() * thescalar;.
+		%feature("autodoc", "@code <self>.x() = <self>.x() * thescalar; <self>.y() = <self>.y() * thescalar; @endcode.
 
 Parameters
 ----------
@@ -19254,7 +19254,7 @@ None
 		/****************** Multiply ******************/
 		/**** md5 signature: 4f77e5fd412b710b83f5993cd03e1e94 ****/
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "@code <self>.x() = <self>.x() * theother.x(); <self>.y() = <self>.y() * theother.y();.
+		%feature("autodoc", "@code <self>.x() = <self>.x() * theother.x(); <self>.y() = <self>.y() * theother.y(); @endcode.
 
 Parameters
 ----------
@@ -19317,7 +19317,7 @@ None
 		/****************** Reversed ******************/
 		/**** md5 signature: 3f676473578a78a63892a2a9be728f89 ****/
 		%feature("compactdefaultargs") Reversed;
-		%feature("autodoc", "@code new.x() = -<self>.x() new.y() = -<self>.y().
+		%feature("autodoc", "@code new.x() = -<self>.x() new.y() = -<self>.y() @endcode.
 
 Returns
 -------
@@ -19360,7 +19360,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: f4be5e8116b5c8dfc176c7d306a12ba0 ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "Computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thea2 * thexy2.
+		%feature("autodoc", "Computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thea2 * thexy2 @endcode.
 
 Parameters
 ----------
@@ -19378,7 +19378,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 1bcb5467e4199183bfa35fbae933fd05 ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "-- computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thea2 * thexy2 + thexy3.
+		%feature("autodoc", "-- computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thea2 * thexy2 + thexy3 @endcode.
 
 Parameters
 ----------
@@ -19397,7 +19397,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 9bedff4d535ccad73cb118a63d2b0d6c ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "Computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thexy2.
+		%feature("autodoc", "Computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thexy2 @endcode.
 
 Parameters
 ----------
@@ -19414,7 +19414,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: bf4882d80826559c3bdeffa200aede8b ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "Computes the following linear combination and assigns the result to this number pair: @code thexy1 + thexy2.
+		%feature("autodoc", "Computes the following linear combination and assigns the result to this number pair: @code thexy1 + thexy2 @endcode.
 
 Parameters
 ----------
@@ -19471,7 +19471,7 @@ float
 		/****************** Subtract ******************/
 		/**** md5 signature: e3e2c4e485bf9f3f43cb609a03c015a0 ****/
 		%feature("compactdefaultargs") Subtract;
-		%feature("autodoc", "@code <self>.x() = <self>.x() - theother.x() <self>.y() = <self>.y() - theother.y().
+		%feature("autodoc", "@code <self>.x() = <self>.x() - theother.x() <self>.y() = <self>.y() - theother.y() @endcode.
 
 Parameters
 ----------
@@ -19732,7 +19732,7 @@ None
 		/****************** Add ******************/
 		/**** md5 signature: 67bef2099e583349ca294561f4af58fc ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "@code <self>.x() = <self>.x() + theother.x() <self>.y() = <self>.y() + theother.y() <self>.z() = <self>.z() + theother.z().
+		%feature("autodoc", "@code <self>.x() = <self>.x() + theother.x() <self>.y() = <self>.y() + theother.y() <self>.z() = <self>.z() + theother.z() @endcode.
 
 Parameters
 ----------
@@ -19817,7 +19817,7 @@ theZ: float
 		/****************** Cross ******************/
 		/**** md5 signature: 44b6cc9242ff22f43d9b071a9dafa3da ****/
 		%feature("compactdefaultargs") Cross;
-		%feature("autodoc", "@code <self>.x() = <self>.y() * theother.z() - <self>.z() * theother.y() <self>.y() = <self>.z() * theother.x() - <self>.x() * theother.z() <self>.z() = <self>.x() * theother.y() - <self>.y() * theother.x().
+		%feature("autodoc", "@code <self>.x() = <self>.y() * theother.z() - <self>.z() * theother.y() <self>.y() = <self>.z() * theother.x() - <self>.x() * theother.z() <self>.z() = <self>.x() * theother.y() - <self>.y() * theother.x() @endcode.
 
 Parameters
 ----------
@@ -20031,7 +20031,7 @@ float
 		/****************** Multiplied ******************/
 		/**** md5 signature: 4f02f17d09449e7bc0d36aff9a280f7d ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "@code new.x() = <self>.x() * thescalar; new.y() = <self>.y() * thescalar; new.z() = <self>.z() * thescalar;.
+		%feature("autodoc", "@code new.x() = <self>.x() * thescalar; new.y() = <self>.y() * thescalar; new.z() = <self>.z() * thescalar; @endcode.
 
 Parameters
 ----------
@@ -20046,7 +20046,7 @@ gp_XYZ
 		/****************** Multiplied ******************/
 		/**** md5 signature: 7ae2dfc6b2f7b6d173a9b3da78431f1a ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "@code new.x() = <self>.x() * theother.x(); new.y() = <self>.y() * theother.y(); new.z() = <self>.z() * theother.z();.
+		%feature("autodoc", "@code new.x() = <self>.x() * theother.x(); new.y() = <self>.y() * theother.y(); new.z() = <self>.z() * theother.z(); @endcode.
 
 Parameters
 ----------
@@ -20061,7 +20061,7 @@ gp_XYZ
 		/****************** Multiplied ******************/
 		/**** md5 signature: dcb20c1b76c36e98a12de7659a48c3c4 ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "New = thematrix * <self> @endcode.
+		%feature("autodoc", "New = thematrix * <self>.
 
 Parameters
 ----------
@@ -20076,7 +20076,7 @@ gp_XYZ
 		/****************** Multiply ******************/
 		/**** md5 signature: 94c083012ff2f3e798eccef399e23708 ****/
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "@code <self>.x() = <self>.x() * thescalar; <self>.y() = <self>.y() * thescalar; <self>.z() = <self>.z() * thescalar;.
+		%feature("autodoc", "@code <self>.x() = <self>.x() * thescalar; <self>.y() = <self>.y() * thescalar; <self>.z() = <self>.z() * thescalar; @endcode.
 
 Parameters
 ----------
@@ -20091,7 +20091,7 @@ None
 		/****************** Multiply ******************/
 		/**** md5 signature: 1f54f3d3d1c9a3d0e021cf8a336ae046 ****/
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "@code <self>.x() = <self>.x() * theother.x(); <self>.y() = <self>.y() * theother.y(); <self>.z() = <self>.z() * theother.z();.
+		%feature("autodoc", "@code <self>.x() = <self>.x() * theother.x(); <self>.y() = <self>.y() * theother.y(); <self>.z() = <self>.z() * theother.z(); @endcode.
 
 Parameters
 ----------
@@ -20143,7 +20143,7 @@ gp_XYZ
 		/****************** Reverse ******************/
 		/**** md5 signature: 51c7e0d05769dec0ec2bb70e4d25e48d ****/
 		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "@code <self>.x() = -<self>.x() <self>.y() = -<self>.y() <self>.z() = -<self>.z().
+		%feature("autodoc", "@code <self>.x() = -<self>.x() <self>.y() = -<self>.y() <self>.z() = -<self>.z() @endcode.
 
 Returns
 -------
@@ -20154,7 +20154,7 @@ None
 		/****************** Reversed ******************/
 		/**** md5 signature: f0776d123b6467ad09f21416658daa62 ****/
 		%feature("compactdefaultargs") Reversed;
-		%feature("autodoc", "@code new.x() = -<self>.x() new.y() = -<self>.y() new.z() = -<self>.z().
+		%feature("autodoc", "@code new.x() = -<self>.x() new.y() = -<self>.y() new.z() = -<self>.z() @endcode.
 
 Returns
 -------
@@ -20198,7 +20198,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 187eaf8a0109eb0d1bf1b2607b9db42c ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 + thea3 * thexyz3 + thexyz4.
+		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 + thea3 * thexyz3 + thexyz4 @endcode.
 
 Parameters
 ----------
@@ -20219,7 +20219,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 5505dee7539423f37f2420e473a2b697 ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 + thea3 * thexyz3.
+		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 + thea3 * thexyz3 @endcode.
 
 Parameters
 ----------
@@ -20239,7 +20239,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 0d2cb15a10177b6d17bb7f330090698c ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 + thexyz3.
+		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 + thexyz3 @endcode.
 
 Parameters
 ----------
@@ -20258,7 +20258,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 31093560c7c246c91928850f7e63307e ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2.
+		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thea2 * thexyz2 @endcode.
 
 Parameters
 ----------
@@ -20276,7 +20276,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 2553d068b4732f6c2e9f3dadc95f1017 ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thexyz2.
+		%feature("autodoc", "<self> is set to the following linear form : @code thea1 * thexyz1 + thexyz2 @endcode.
 
 Parameters
 ----------
@@ -20293,7 +20293,7 @@ None
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 840cca334d03ce271dc214917d8743a7 ****/
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "<self> is set to the following linear form : @code thexyz1 + thexyz2.
+		%feature("autodoc", "<self> is set to the following linear form : @code thexyz1 + thexyz2 @endcode.
 
 Parameters
 ----------
@@ -20365,7 +20365,7 @@ float
 		/****************** Subtract ******************/
 		/**** md5 signature: a6f9eb29be8643b68c4e25dcc30cda9e ****/
 		%feature("compactdefaultargs") Subtract;
-		%feature("autodoc", "@code <self>.x() = <self>.x() - theother.x() <self>.y() = <self>.y() - theother.y() <self>.z() = <self>.z() - theother.z().
+		%feature("autodoc", "@code <self>.x() = <self>.x() - theother.x() <self>.y() = <self>.y() - theother.y() <self>.z() = <self>.z() - theother.z() @endcode.
 
 Parameters
 ----------
@@ -20380,7 +20380,7 @@ None
 		/****************** Subtracted ******************/
 		/**** md5 signature: 47a2e916ad56b8a5128e2af6ce944547 ****/
 		%feature("compactdefaultargs") Subtracted;
-		%feature("autodoc", "@code new.x() = <self>.x() - theother.x() new.y() = <self>.y() - theother.y() new.z() = <self>.z() - theother.z().
+		%feature("autodoc", "@code new.x() = <self>.x() - theother.x() new.y() = <self>.y() - theother.y() new.z() = <self>.z() - theother.z() @endcode.
 
 Parameters
 ----------

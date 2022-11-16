@@ -142,6 +142,39 @@ TopoDS_Edge
 ") ConcatenateWireC0;
 		static TopoDS_Edge ConcatenateWireC0(const TopoDS_Wire & Wire);
 
+		/****************** ConvertFace ******************/
+		/**** md5 signature: 4995d6c46f75b841a5ec1eeddfe269b6 ****/
+		%feature("compactdefaultargs") ConvertFace;
+		%feature("autodoc", "Method of face conversion. the api corresponds to the method convertwire. this is a shortcut for calling convertwire() for each wire in theface.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theAngleTolerance: float
+
+Returns
+-------
+TopoDS_Face
+") ConvertFace;
+		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const Standard_Real theAngleTolerance);
+
+		/****************** ConvertWire ******************/
+		/**** md5 signature: 803ac9affea1e0a7a42b271f20e61001 ****/
+		%feature("compactdefaultargs") ConvertWire;
+		%feature("autodoc", "Method of wire conversion, calls brepalgo_approx internally. @param thewire input wire object. @param theangletolerance angle (in radians) defining the continuity of the wire: if two vectors differ by less than this angle, the result will be smooth (zero angle of tangent lines between curve elements). returns the new topods_wire object consisting of edges each representing an arc of circle or a linear segment. the accuracy of conversion is defined as the maximal tolerance of edges in thewire.
+
+Parameters
+----------
+theWire: TopoDS_Wire
+theAngleTolerance: float
+theFace: TopoDS_Face
+
+Returns
+-------
+TopoDS_Wire
+") ConvertWire;
+		static TopoDS_Wire ConvertWire(const TopoDS_Wire & theWire, const Standard_Real theAngleTolerance, const TopoDS_Face & theFace);
+
 		/****************** IsTopologicallyValid ******************/
 		/**** md5 signature: 862e9687e6641e5b5520e1bc35a7dd50 ****/
 		%feature("compactdefaultargs") IsTopologicallyValid;

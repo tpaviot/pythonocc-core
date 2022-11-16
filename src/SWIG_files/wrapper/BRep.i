@@ -2182,7 +2182,7 @@ None
 		/****************** Triangulation ******************/
 		/**** md5 signature: 031b83aac32b0db8569fa3861a62e31f ****/
 		%feature("compactdefaultargs") Triangulation;
-		%feature("autodoc", "Returns the triangulation of this face according to the mesh purpose. @param themeshpurpose [in] a mesh purpose to find appropriate triangulation (none by default). returns an active triangulation in case of none purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is anyfallback or null handle if there is no any suitable triangulation.
+		%feature("autodoc", "Returns the triangulation of this face according to the mesh purpose. @param[in] thepurpose a mesh purpose to find appropriate triangulation (none by default). returns an active triangulation in case of none purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is anyfallback or null handle if there is no any suitable triangulation.
 
 Parameters
 ----------

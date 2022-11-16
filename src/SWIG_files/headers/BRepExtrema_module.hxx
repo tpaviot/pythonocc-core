@@ -30,6 +30,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepExtrema_MapOfIntegerPackedMapOfInteger.hxx>
 #include<BRepExtrema_OverlapTool.hxx>
 #include<BRepExtrema_Poly.hxx>
+#include<BRepExtrema_ProximityDistTool.hxx>
+#include<BRepExtrema_ProximityValueTool.hxx>
 #include<BRepExtrema_SelfIntersection.hxx>
 #include<BRepExtrema_SeqOfSolution.hxx>
 #include<BRepExtrema_ShapeProximity.hxx>

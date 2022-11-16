@@ -78,6 +78,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfilletapi.htm
 #include<Poly_module.hxx>
 #include<TColGeom_module.hxx>
 #include<TShort_module.hxx>
+#include<IntSurf_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

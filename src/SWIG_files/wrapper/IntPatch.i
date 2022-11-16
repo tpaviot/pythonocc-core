@@ -2330,6 +2330,27 @@ IntPatch_Point
 ") Point;
 		const IntPatch_Point & Point(const Standard_Integer Index);
 
+		/****************** PrepareSurfaces ******************/
+		/**** md5 signature: 930cc378463b1ab18da60a0e1184a4b4 ****/
+		%feature("compactdefaultargs") PrepareSurfaces;
+		%feature("autodoc", "Prepares surfaces for intersection.
+
+Parameters
+----------
+theS1: Adaptor3d_Surface
+theD1: Adaptor3d_TopolTool
+theS2: Adaptor3d_Surface
+theD2: Adaptor3d_TopolTool
+Tol: float
+theSeqHS1: Adaptor3d_Surface
+theSeqHS2: Adaptor3d_Surface
+
+Returns
+-------
+None
+") PrepareSurfaces;
+		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const Standard_Real Tol, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS1, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS2);
+
 		/****************** SequenceOfLine ******************/
 		/**** md5 signature: 7663267a72cef685d6565935e73efb0a ****/
 		%feature("compactdefaultargs") SequenceOfLine;
@@ -3756,7 +3777,7 @@ None
 		 IntPatch_PrmPrmIntersection_T3Bits(const Standard_Integer size);
 
 		/****************** Add ******************/
-		/**** md5 signature: 7fcd2e77783b4e419caaef9da01cf583 ****/
+		/**** md5 signature: 98a402f6290d04fce66e9880a2a7b7b2 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "No available documentation.
 
@@ -3785,19 +3806,8 @@ indiceprecedent: int
 ") And;
 		Standard_Integer And(IntPatch_PrmPrmIntersection_T3Bits & Oth, Standard_Integer &OutValue);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") Destroy;
-		void Destroy();
-
 		/****************** Raz ******************/
-		/**** md5 signature: 10fdcbd6b16160ecdc7ab829747b0020 ****/
+		/**** md5 signature: 56a9b96c08122998b97c1ac996af72b6 ****/
 		%feature("compactdefaultargs") Raz;
 		%feature("autodoc", "No available documentation.
 
@@ -3823,7 +3833,7 @@ None
 		void ResetAnd();
 
 		/****************** Val ******************/
-		/**** md5 signature: a89797def7979fa7c11e3672212a8ca6 ****/
+		/**** md5 signature: 34f3d3ac041e2803382c64f8c722c400 ****/
 		%feature("compactdefaultargs") Val;
 		%feature("autodoc", "No available documentation.
 

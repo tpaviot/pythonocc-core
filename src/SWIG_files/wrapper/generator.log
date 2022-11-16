@@ -4,11 +4,11 @@ Running pythonocc-generator.
 ############################
 git revision : d684974
 
-operating system : Linux 64bit 5.4.0-125-generic
+operating system : Linux 64bit 5.4.0-132-generic
 
-occt version targeted : 7.6.3
+occt version targeted : 7.7.0
 
-date : 2022-09-11 07:02:58.887496
+date : 2022-11-29 05:19:23.050448
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -281,9 +281,11 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: BRepTools_Substitution
 [INFO ]  Class: BRepTools_WireExplorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: BRepTools_CopyModification
 [INFO ]  Class: BRepTools_GTrsfModification
-[INFO ]  Class: BRepTools_NurbsConvertModification
 [INFO ]  Class: BRepTools_TrsfModification
+[INFO ]      Creating Get and Set methods for method IsCopyMesh
+[INFO ]  Class: BRepTools_NurbsConvertModification
 [INFO ]  ## Processing module BinTools
 [INFO ]  Enum: BinTools_ObjectType
 [INFO ]  Enum: BinTools_FormatVersion
@@ -962,7 +964,6 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBlend_AppSurface
 [INFO ]      skipped method BRepBlend_AppSurface::c8d3e7f26c4ee8a50f4eca5274d79e63
-[INFO ]  Class: BRepBlend_CSWalking
 [INFO ]  Class: BRepBlend_CurvPointRadInv
 [INFO ]  Class: BRepBlend_Extremity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1375,6 +1376,7 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<int>, seems to be a template
 [INFO ]  Class: ApproxInt_SvSurfaces
 [INFO ]      Class ApproxInt_SvSurfaces is abstract, using %nodefaultctor.
+[INFO ]  Constructor skipped for abstract class ApproxInt_SvSurfaces
 [INFO ]  ## Processing module FairCurve
 [INFO ]  Enum: FairCurve_AnalysisCode
 [INFO ]  Class: FairCurve_Batten
@@ -1874,6 +1876,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPatch_Intersection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type NCollection_Vector<opencascade::handle<Adaptor3d_Surface>, because of trailing :
 [INFO ]  Class: IntPatch_Line
 [INFO ]  Class: IntPatch_LineConstructor
 [INFO ]  Class: IntPatch_Point
@@ -2527,6 +2530,8 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Geom2dConvert
 [INFO ]  Class: Geom2dConvert
+[INFO ]  Class: Geom2dConvert_ApproxArcsSegments
+[INFO ]  Enum: Status
 [INFO ]  Class: Geom2dConvert_ApproxCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dConvert_BSplineCurveKnotSplitting
@@ -2534,7 +2539,10 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dConvert_CompCurveToBSplineCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: Geom2dConvert_PPoint
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module GeomConvert
+[INFO ]  Enum: GeomConvert_ConvType
 [INFO ]  Class: GeomConvert
 [INFO ]  Class: GeomConvert_ApproxCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2550,6 +2558,16 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomConvert_CompCurveToBSplineCurve
 [INFO ]      skipped method GeomConvert_CompCurveToBSplineCurve::ae54be580b423a6eadbe062e0bdb44c2
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomConvert_CurveToAnaCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomConvert_FuncConeLSDist
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomConvert_FuncCylinderLSDist
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomConvert_FuncSphereLSDist
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomConvert_SurfToAnaSurf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomConvert_Units
 [INFO ]  ## Processing module GeomLib
@@ -3237,7 +3255,6 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Bnd_B3f
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Bnd_BoundSortBox
-[INFO ]  Class: Bnd_BoundSortBox2d
 [INFO ]  Class: Bnd_Box
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Bnd_Box2d
@@ -3758,8 +3775,10 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: BRepMesh_DelabellaBaseMeshAlgo
 [INFO ]  Class: BRepMesh_Edge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: BRepMesh_ExtrusionRangeSplitter
 [INFO ]  Class: BRepMesh_IncrementalMesh
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: BRepMesh_UndefinedRangeSplitter
 [INFO ]  Class: BRepMesh_DelaunayBaseMeshAlgo
 [INFO ]  ## Processing module BRepMeshData
 [INFO ]  Class: BRepMeshData_Curve
@@ -4124,7 +4143,15 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_List<opencascade::handle<RWGltf_GltfFace>>>
 [INFO ]  Class: RWGltf_CafReader
 [INFO ]  Class: RWGltf_CafWriter
+[INFO ]      Wrap nested class RWGltf_CafWriter::Mesh
 [INFO ]      Wrap nested class RWGltf_CafWriter::RWGltf_StyledShape
+[INFO ]  Class: RWGltf_ConfigurationNode
+[INFO ]      Wrap nested class RWGltf_ConfigurationNode::RWGltf_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[INFO ]  Class: RWGltf_DracoParameters
 [INFO ]  Class: RWGltf_GltfAccessor
 [INFO ]  Class: RWGltf_GltfBufferView
 [INFO ]  Class: RWGltf_GltfFace
@@ -4139,6 +4166,9 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: RWGltf_GltfSceneNodeMap
 [INFO ]  Class: RWGltf_MaterialCommon
 [INFO ]  Class: RWGltf_MaterialMetallicRoughness
+[INFO ]  Class: RWGltf_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: RWGltf_TriangulationReader
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<TopoDS_Face>, seems to be a template
 [WARNI]      [TypeHint] Skipping type rapidjson::ParseErrorCode, should contain _
@@ -4173,11 +4203,20 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: RWObj_SubMeshReason
 [INFO ]  Class: RWObj
 [INFO ]  Class: RWObj_CafWriter
+[INFO ]  Class: RWObj_ConfigurationNode
+[INFO ]      Wrap nested class RWObj_ConfigurationNode::RWObj_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: RWObj_IShapeReceiver
 [INFO ]      Class RWObj_IShapeReceiver is abstract, using %nodefaultctor.
 [INFO ]  Class: RWObj_Material
 [INFO ]  Class: RWObj_ObjMaterialMap
 [INFO ]  Class: RWObj_ObjWriterContext
+[INFO ]  Class: RWObj_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: RWObj_Reader
 [INFO ]      Class RWObj_Reader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWObj_Reader::ObjVec3iHasher
@@ -4315,6 +4354,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type std::ostream &, should contain _
 [INFO ]  ## Processing module STEPEdit
 [INFO ]  Class: STEPEdit
 [INFO ]  Class: STEPEdit_EditContext
@@ -4457,6 +4497,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: StepToTopoDS_TranslateVertexLoopError
 [INFO ]  Enum: StepToTopoDS_TranslateEdgeLoopError
 [INFO ]  Enum: StepToTopoDS_TranslateVertexError
+[INFO ]  Enum: StepToTopoDS_TranslateSolidError
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -4482,6 +4523,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepToTopoDS_TranslatePolyLoop
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: StepToTopoDS_TranslateShell
+[INFO ]  Class: StepToTopoDS_TranslateSolid
 [INFO ]  Class: StepToTopoDS_TranslateVertex
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: StepToTopoDS_TranslateVertexLoop
@@ -4517,6 +4559,8 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: TopoDSToStep_MakeStepVertex
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopoDSToStep_MakeStepWire
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: TopoDSToStep_MakeTessellatedItem
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopoDSToStep_WireframeBuilder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -4815,11 +4859,15 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: RWStepVisual_RWColour
 [INFO ]  Class: RWStepVisual_RWColourRgb
 [INFO ]  Class: RWStepVisual_RWColourSpecification
+[INFO ]  Class: RWStepVisual_RWComplexTriangulatedFace
+[INFO ]  Class: RWStepVisual_RWComplexTriangulatedSurfaceSet
 [INFO ]  Class: RWStepVisual_RWCompositeText
 [INFO ]  Class: RWStepVisual_RWCompositeTextWithExtent
 [INFO ]  Class: RWStepVisual_RWContextDependentInvisibility
 [INFO ]  Class: RWStepVisual_RWContextDependentOverRidingStyledItem
 [INFO ]  Class: RWStepVisual_RWCoordinatesList
+[INFO ]  Class: RWStepVisual_RWCubicBezierTessellatedEdge
+[INFO ]  Class: RWStepVisual_RWCubicBezierTriangulatedFace
 [INFO ]  Class: RWStepVisual_RWCurveStyle
 [INFO ]  Class: RWStepVisual_RWCurveStyleFont
 [INFO ]  Class: RWStepVisual_RWCurveStyleFontPattern
@@ -4850,6 +4898,8 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: RWStepVisual_RWPresentationStyleByContext
 [INFO ]  Class: RWStepVisual_RWPresentationView
 [INFO ]  Class: RWStepVisual_RWPresentedItemRepresentation
+[INFO ]  Class: RWStepVisual_RWRepositionedTessellatedGeometricSet
+[INFO ]  Class: RWStepVisual_RWRepositionedTessellatedItem
 [INFO ]  Class: RWStepVisual_RWStyledItem
 [INFO ]  Class: RWStepVisual_RWSurfaceSideStyle
 [INFO ]  Class: RWStepVisual_RWSurfaceStyleBoundary
@@ -4866,13 +4916,24 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: RWStepVisual_RWTemplate
 [INFO ]  Class: RWStepVisual_RWTemplateInstance
 [INFO ]  Class: RWStepVisual_RWTessellatedAnnotationOccurrence
+[INFO ]  Class: RWStepVisual_RWTessellatedConnectingEdge
 [INFO ]  Class: RWStepVisual_RWTessellatedCurveSet
+[INFO ]  Class: RWStepVisual_RWTessellatedEdge
 [INFO ]  Class: RWStepVisual_RWTessellatedGeometricSet
 [INFO ]  Class: RWStepVisual_RWTessellatedItem
+[INFO ]  Class: RWStepVisual_RWTessellatedPointSet
+[INFO ]  Class: RWStepVisual_RWTessellatedShapeRepresentation
+[INFO ]  Class: RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters
+[INFO ]  Class: RWStepVisual_RWTessellatedShell
+[INFO ]  Class: RWStepVisual_RWTessellatedSolid
+[INFO ]  Class: RWStepVisual_RWTessellatedStructuredItem
+[INFO ]  Class: RWStepVisual_RWTessellatedVertex
+[INFO ]  Class: RWStepVisual_RWTessellatedWire
 [INFO ]  Class: RWStepVisual_RWTextLiteral
 [INFO ]  Class: RWStepVisual_RWTextStyle
 [INFO ]  Class: RWStepVisual_RWTextStyleForDefinedFont
 [INFO ]  Class: RWStepVisual_RWTextStyleWithBoxCharacteristics
+[INFO ]  Class: RWStepVisual_RWTriangulatedFace
 [INFO ]  Class: RWStepVisual_RWViewVolume
 [INFO ]  ## Processing module StepDimTol
 [INFO ]  Found HARRAY1 definitionStepDimTol_HArray1OfToleranceZoneTarget: StepDimTol_Array1OfToleranceZoneTarget
@@ -4951,7 +5012,9 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  ## Processing module StepVisual
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfAnnotationPlaneElement: StepVisual_Array1OfAnnotationPlaneElement
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfDraughtingCalloutElement: StepVisual_Array1OfDraughtingCalloutElement
+[INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfTessellatedStructuredItem: StepVisual_Array1OfTessellatedStructuredItem
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfDirectionCountSelect: StepVisual_Array1OfDirectionCountSelect
+[INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfTessellatedEdgeOrVertex: StepVisual_Array1OfTessellatedEdgeOrVertex
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfStyleContextSelect: StepVisual_Array1OfStyleContextSelect
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfPresentationStyleSelect: StepVisual_Array1OfPresentationStyleSelect
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfCurveStyleFontPattern: StepVisual_Array1OfCurveStyleFontPattern
@@ -4971,6 +5034,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: StepVisual_TextPath
 [INFO ]  Enum: StepVisual_MarkerType
 [INFO ]  Enum: StepVisual_ShadingSurfaceMethod
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -4998,8 +5062,10 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepVisual_DraughtingCallout
 [INFO ]  Class: StepVisual_DraughtingCalloutElement
 [INFO ]  Class: StepVisual_DraughtingModel
+[INFO ]  Class: StepVisual_EdgeOrCurve
 [INFO ]  Class: StepVisual_ExternallyDefinedCurveFont
 [INFO ]  Class: StepVisual_ExternallyDefinedTextFont
+[INFO ]  Class: StepVisual_FaceOrSurface
 [INFO ]  Class: StepVisual_FillAreaStyle
 [INFO ]  Class: StepVisual_FillAreaStyleColour
 [INFO ]  Class: StepVisual_FillStyleSelect
@@ -5012,6 +5078,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepVisual_MarkerSelect
 [INFO ]  Class: StepVisual_NullStyleMember
 [WARNI]      [TypeHint] Skipping type const, should contain _
+[INFO ]  Class: StepVisual_PathOrCompositeCurve
 [INFO ]  Class: StepVisual_PlanarExtent
 [INFO ]  Class: StepVisual_PointStyle
 [INFO ]  Class: StepVisual_PreDefinedItem
@@ -5044,7 +5111,9 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepVisual_SurfaceStyleUsage
 [INFO ]  Class: StepVisual_Template
 [INFO ]  Class: StepVisual_TemplateInstance
+[INFO ]  Class: StepVisual_TessellatedEdgeOrVertex
 [INFO ]  Class: StepVisual_TessellatedItem
+[INFO ]  Class: StepVisual_TessellatedShapeRepresentation
 [INFO ]  Class: StepVisual_TextLiteral
 [INFO ]  Class: StepVisual_TextOrCharacter
 [INFO ]  Class: StepVisual_TextStyle
@@ -5070,6 +5139,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepVisual_PresentationArea
 [INFO ]  Class: StepVisual_PresentationStyleByContext
 [INFO ]  Class: StepVisual_PresentationView
+[INFO ]  Class: StepVisual_RepositionedTessellatedItem
 [INFO ]  Class: StepVisual_SurfaceStyleRenderingWithProperties
 [INFO ]  Class: StepVisual_TessellatedAnnotationOccurrence
 [INFO ]  Class: StepVisual_TessellatedCurveSet
@@ -5078,6 +5148,13 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepVisual_TessellatedGeometricSet
 [WARNI]      [TypeHint] Skipping type NCollection_Handle<StepVisual_Array1OfTessellatedItem>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Handle<StepVisual_Array1OfTessellatedItem, seems to be a template
+[INFO ]  Class: StepVisual_TessellatedPointSet
+[INFO ]  Class: StepVisual_TessellatedShapeRepresentationWithAccuracyParameters
+[INFO ]  Class: StepVisual_TessellatedShell
+[INFO ]  Class: StepVisual_TessellatedSolid
+[INFO ]  Class: StepVisual_TessellatedStructuredItem
+[INFO ]  Class: StepVisual_TessellatedSurfaceSet
+[INFO ]  Class: StepVisual_TessellatedWire
 [INFO ]  Class: StepVisual_TextStyleWithBoxCharacteristics
 [INFO ]  Class: StepVisual_AnnotationCurveOccurrence
 [INFO ]  Class: StepVisual_AnnotationFillAreaOccurrence
@@ -5085,12 +5162,23 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: StepVisual_AnnotationTextOccurrence
 [INFO ]  Class: StepVisual_CameraModelD3MultiClipping
 [INFO ]  Class: StepVisual_ColourRgb
+[INFO ]  Class: StepVisual_ComplexTriangulatedSurfaceSet
 [INFO ]  Class: StepVisual_ContextDependentOverRidingStyledItem
 [INFO ]  Class: StepVisual_DraughtingAnnotationOccurrence
 [INFO ]  Class: StepVisual_DraughtingPreDefinedColour
 [INFO ]  Class: StepVisual_DraughtingPreDefinedCurveFont
 [INFO ]  Class: StepVisual_MechanicalDesignGeometricPresentationArea
+[INFO ]  Class: StepVisual_RepositionedTessellatedGeometricSet
+[WARNI]      [TypeHint] Skipping type NCollection_Handle<StepVisual_Array1OfTessellatedItem>, seems to be a template
+[INFO ]  Class: StepVisual_TessellatedEdge
+[INFO ]  Class: StepVisual_TessellatedFace
+[INFO ]  Class: StepVisual_TessellatedVertex
 [INFO ]  Class: StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
+[INFO ]  Class: StepVisual_ComplexTriangulatedFace
+[INFO ]  Class: StepVisual_CubicBezierTessellatedEdge
+[INFO ]  Class: StepVisual_CubicBezierTriangulatedFace
+[INFO ]  Class: StepVisual_TessellatedConnectingEdge
+[INFO ]  Class: StepVisual_TriangulatedFace
 [INFO ]  Processing toolkit TKSTEPBase ===
 [INFO ]  ## Processing module RWStepBasic
 [INFO ]  Class: RWStepBasic_RWAction
@@ -5955,6 +6043,16 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Processing toolkit TKSTL ===
 [INFO ]  ## Processing module RWStl
 [INFO ]  Class: RWStl
+[WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Poly_Triangulation>, because of trailing :
+[INFO ]  Class: RWStl_ConfigurationNode
+[INFO ]      Wrap nested class RWStl_ConfigurationNode::RWStl_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[INFO ]  Class: RWStl_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  ## Processing module StlAPI
 [INFO ]  Class: StlAPI
 [INFO ]  Class: StlAPI_Reader
@@ -6024,6 +6122,8 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
+[INFO ]  Class: Aspect_SkydomeBackground
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Aspect_Touch
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [WARNI]  Wrong type in class property : NCollection_Vec2
@@ -6089,6 +6189,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: Graphic3d_GlslExtension
 [INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_StereoMode
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_AlphaMode
 [INFO ]  Enum: Graphic3d_FresnelModel
 [INFO ]  Enum: Graphic3d_TypeOfReflection
@@ -6129,6 +6230,8 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: Graphic3d_TypeOfData
 [INFO ]  Enum: Graphic3d_NameOfTexture2D
 [INFO ]  Enum: Graphic3d_NameOfMaterial
+[INFO ]  Enum: Graphic3d_DisplayPriority
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_TypeOfTextureFilter
 [INFO ]  Enum: Graphic3d_TypeOfVisualization
 [INFO ]  Enum: Graphic3d_TypeOfLightSource
@@ -6244,11 +6347,14 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Graphic3d_HatchStyle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_Layer
-[INFO ]      skipped method Graphic3d_Layer::152fec8cd6b97af9936ff5048fc3a01d
+[INFO ]      skipped method Graphic3d_Layer::76514379e1653dc9f6a778413fbb833f
 [INFO ]      skipped method Graphic3d_Layer::21e3842d70df347156e8904cbbae1655
 [INFO ]      skipped method Graphic3d_Layer::8552ea7b8e24eddd0b6a23b7f194e098
 [INFO ]      skipped method Graphic3d_Layer::0bcddaa70543c373f787e96d84b9791a
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<const, seems to be a template
+[INFO ]  Enum passed by reference: Graphic3d_DisplayPriority &thePriority changed to Graphic3d_DisplayPriority &OutValue
+[INFO ]  Enum passed by reference: Graphic3d_DisplayPriority & thePriority changed to Graphic3d_DisplayPriority &OutValue
+[INFO ]  Enum passed by reference: Graphic3d_DisplayPriority & thePriority changed to Graphic3d_DisplayPriority &OutValue
 [WARNI]      [TypeHint] Skip type Graphic3d_RenderingParams::FrustumCulling, because of trailing :
 [INFO ]  Class: Graphic3d_LightSet
 [INFO ]      Wrap nested class Graphic3d_LightSet::Iterator
@@ -6298,7 +6404,6 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      Wrap nested class Graphic3d_TransformPers::PersParams3d
 [INFO ]      Wrap nested class Graphic3d_TransformPers::PersParams2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type const, should contain _
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Graphic3d_Vec2>
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Graphic3d_Vec2i>
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Graphic3d_Vec3>
@@ -6366,6 +6471,7 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_Layer>>, because of trailing :
 [WARNI]      [TypeHint] Skipping type int, should contain _
 [WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_CView>>, because of trailing :
 [WARNI]      [TypeHint] Skipping type int, should contain _
 [INFO ]  Class: Graphic3d_FrameStatsDataTmp
 [INFO ]      Creating Get and Set methods for method ChangeFrameRate
@@ -6388,6 +6494,10 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Graphic3d_MutableIndexBuffer
 [INFO ]  Class: Graphic3d_Texture1D
 [INFO ]  Class: Graphic3d_Texture2D
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: Graphic3d_Texture3D
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<TCollection_AsciiString>, seems to be a template
 [INFO ]  Class: Graphic3d_CubeMapSeparate
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<TCollection_AsciiString>, seems to be a template
@@ -6396,8 +6506,6 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Graphic3d_Texture1Dmanual
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_Texture1Dsegment
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Graphic3d_Texture2Dmanual
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_Texture2Dplane
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -6482,6 +6590,8 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: ShapeAnalysis
+[INFO ]  Class: ShapeAnalysis_CanonicalRecognition
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeAnalysis_CheckSmallFace
 [INFO ]  Class: ShapeAnalysis_Curve
 [INFO ]  Class: ShapeAnalysis_Edge
@@ -6699,6 +6809,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: ShapeUpgrade_ShapeDivideArea
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method MaxArea
+[INFO ]      Creating Get and Set methods for method NbParts
 [INFO ]  Class: ShapeUpgrade_ShapeDivideClosed
 [INFO ]  Class: ShapeUpgrade_ShapeDivideClosedEdges
 [INFO ]  Class: ShapeUpgrade_ShapeDivideContinuity
@@ -6718,6 +6829,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: ShapeUpgrade_FaceDivideArea
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method MaxArea
+[INFO ]      Creating Get and Set methods for method NbParts
 [INFO ]  Class: ShapeUpgrade_FixSmallBezierCurves
 [INFO ]  Class: ShapeUpgrade_SplitCurve2dContinuity
 [INFO ]  Class: ShapeUpgrade_SplitCurve3dContinuity
@@ -6841,6 +6953,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBuilderAPI_MakePolygon
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: BRepBuilderAPI_MakeShapeOnMesh
 [INFO ]  Class: BRepBuilderAPI_MakeShell
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBuilderAPI_MakeSolid
@@ -6902,7 +7015,6 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: BRepExtrema_DistShapeShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_DistanceSS
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_ElementFilter
 [INFO ]  Enum: FilterResult
 [WARNI]      [TypeHint] Skip type BRepExtrema_ElementFilter::FilterResult, because of trailing :
@@ -6918,13 +7030,28 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: BRepExtrema_ExtPF
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_Poly
+[INFO ]  Class: BRepExtrema_ProximityDistTool
+[INFO ]      Wrap nested class BRepExtrema_ProximityDistTool::PrjState
+[INFO ]  Enum: ProxPnt_Status
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
+[INFO ]  Class: BRepExtrema_ProximityValueTool
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Enum passed by reference: ProxPnt_Status &thePointStatus1 changed to ProxPnt_Status &OutValue
+[INFO ]  Enum passed by reference: ProxPnt_Status &thePointStatus2 changed to ProxPnt_Status &OutValue
+[INFO ]  Enum passed by reference: ProxPnt_Status & thePointStatus1 changed to ProxPnt_Status &OutValue
+[INFO ]  Enum passed by reference: ProxPnt_Status & thePointStatus2 changed to ProxPnt_Status &OutValue
+[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
 [INFO ]  Class: BRepExtrema_ShapeProximity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
+[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
 [INFO ]  Class: BRepExtrema_SolutionElem
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_TriangleSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type BVH_Box<float,, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<int>, seems to be a template
 [INFO ]  Class: BRepExtrema_SelfIntersection
 [INFO ]      skipped method BRepExtrema_SelfIntersection::0c68ae9e4f2a1503208f51fabe6bb919
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -6973,7 +7100,12 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: BRepLib_FindSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepLib_FuseEdges
+[INFO ]  Class: BRepLib_PointCloudShape
+[INFO ]      Class BRepLib_PointCloudShape is abstract, using %nodefaultctor.
+[INFO ]  Constructor skipped for abstract class BRepLib_PointCloudShape
+[INFO ]  Class: BRepLib_ToolTriangulatedShape
 [INFO ]  Class: BRepLib_ValidateEdge
+[INFO ]      skipped method BRepLib_ValidateEdge::e317acb89ec96fb57ad5d8a365a0c932
 [INFO ]  Class: BRepLib_MakeShape
 [INFO ]  Class: BRepLib_MakeEdge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7069,13 +7201,11 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  ## Processing module AIS
 [INFO ]  Enum: AIS_TrihedronSelectionMode
 [INFO ]  Enum: AIS_MouseGesture
-[INFO ]  Enum: AIS_ClearMode
 [INFO ]  Enum: AIS_TypeOfAttribute
 [INFO ]  Enum: AIS_KindOfInteractive
 [INFO ]  Enum: AIS_SelectStatus
 [INFO ]  Enum: AIS_TypeOfAxis
 [INFO ]  Enum: AIS_SelectionScheme
-[INFO ]  Enum: AIS_ConnectStatus
 [INFO ]  Enum: AIS_RotationMode
 [INFO ]  Enum: 
 [INFO ]  Enum: AIS_ViewSelectionTool
@@ -7094,13 +7224,8 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: AIS_TypeOfPlane
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<Prs3d_Presentation>, TColStd_MapTransientHasher>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type, int,AIS not in module list
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7374,8 +7499,6 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]      [TypeHint] Skipping type double, should contain _
 [INFO ]  Class: Select3D_SensitiveWire
 [WARNI]      [TypeHint] Skip type NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>, because of trailing :
-[INFO ]  Class: Select3D_SensitiveCircle
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Select3D_SensitiveCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module SelectBasics
@@ -7520,6 +7643,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: V3d_Trihedron
 [INFO ]  Class: V3d_View
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<V3d_View>>, because of trailing :
 [INFO ]  Class: V3d_Viewer
 [WARNI]      [TypeHint] Skipping type int, should contain _
 [WARNI]      [TypeHint] Skipping type int, should contain _
@@ -7565,6 +7689,14 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Vrml_AsciiText
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_Cone
+[INFO ]  Class: Vrml_ConfigurationNode
+[INFO ]      Wrap nested class Vrml_ConfigurationNode::Vrml_InternalSection
+[INFO ]  Enum: WriteMode_WriterVersion
+[INFO ]  Enum: WriteMode_RepresentationType
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: Vrml_Coordinate3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_Cube
@@ -7598,6 +7730,9 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Vrml_PointLight
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_PointSet
+[INFO ]  Class: Vrml_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: Vrml_Rotation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_SFImage
@@ -7630,6 +7765,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  ## Processing module VrmlAPI
 [INFO ]  Enum: VrmlAPI_RepresentationOfShape
 [INFO ]  Class: VrmlAPI
+[INFO ]  Class: VrmlAPI_CafReader
 [INFO ]  Class: VrmlAPI_Writer
 [INFO ]  ## Processing module VrmlConverter
 [INFO ]  Enum: VrmlConverter_TypeOfLight
@@ -7736,6 +7872,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum: XCAFDimTolObjects_DatumModifWithValue
 [INFO ]  Enum: XCAFDimTolObjects_DimensionFormVariance
 [INFO ]  Enum: XCAFDimTolObjects_GeomToleranceZoneModif
+[INFO ]  Enum: XCAFDimTolObjects_AngularQualifier
 [INFO ]  Enum: XCAFDimTolObjects_DatumTargetType
 [INFO ]  Enum: XCAFDimTolObjects_DatumSingleModif
 [INFO ]  Enum: XCAFDimTolObjects_DimensionQualifier
@@ -7770,10 +7907,20 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: XCAFDoc
 [INFO ]  Class: XCAFDoc_Area
+[INFO ]  Class: XCAFDoc_AssemblyGraph
+[INFO ]      Wrap nested class XCAFDoc_AssemblyGraph::Iterator
+[INFO ]  Enum: NodeType
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type const AdjacencyMap &, should contain _
+[WARNI]      [TypeHint] Skip type XCAFDoc_AssemblyGraph::NodeType, because of trailing :
 [INFO ]  Class: XCAFDoc_AssemblyItemId
 [INFO ]      Wrap nested class XCAFDoc_AssemblyItemId::Hasher
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: XCAFDoc_AssemblyItemRef
+[INFO ]  Class: XCAFDoc_AssemblyIterator
+[INFO ]      Wrap nested class XCAFDoc_AssemblyIterator::AuxAssemblyItem
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: XCAFDoc_AssemblyTool
 [INFO ]  Class: XCAFDoc_Centroid
 [INFO ]  Class: XCAFDoc_ClippingPlaneTool
 [INFO ]  Class: XCAFDoc_Color
@@ -7835,6 +7982,23 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Processing toolkit TKXDEIGES ===
 [INFO ]  ## Processing module IGESCAFControl
 [INFO ]  Class: IGESCAFControl
+[INFO ]  Class: IGESCAFControl_ConfigurationNode
+[INFO ]      Wrap nested class IGESCAFControl_ConfigurationNode::IGESCAFControl_InternalSection
+[INFO ]  Enum: ReadMode_BSplineContinuity
+[INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_MaxPrecision
+[INFO ]  Enum: ReadMode_SurfaceCurve
+[INFO ]  Enum: WriteMode_BRep
+[INFO ]  Enum: WriteMode_ConvertSurface
+[INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_PlaneMode
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[INFO ]  Class: IGESCAFControl_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: IGESCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IGESCAFControl_Writer
@@ -7851,6 +8015,25 @@ date : 2022-09-11 07:02:58.887496
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [INFO ]  Class: STEPCAFControl_ActorWrite
+[INFO ]  Class: STEPCAFControl_ConfigurationNode
+[INFO ]      Wrap nested class STEPCAFControl_ConfigurationNode::STEPCAFControl_InternalSection
+[INFO ]  Enum: ReadMode_BSplineContinuity
+[INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_MaxPrecision
+[INFO ]  Enum: ReadMode_SurfaceCurve
+[INFO ]  Enum: AngleUnitMode
+[INFO ]  Enum: ReadMode_ProductContext
+[INFO ]  Enum: ReadMode_ShapeRepr
+[INFO ]  Enum: ReadMode_AssemblyLevel
+[INFO ]  Enum: RWMode_Tessellated
+[INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_Assembly
+[INFO ]  Enum: WriteMode_StepSchema
+[INFO ]  Enum: WriteMode_VertexMode
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: STEPCAFControl_Controller
 [INFO ]  Class: STEPCAFControl_ExternFile
 [INFO ]  Class: STEPCAFControl_GDTProperty
@@ -7872,12 +8055,17 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_GeomToleranceTypeValue &theType changed to XCAFDimTolObjects_GeomToleranceTypeValue &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_GeomToleranceTypeValue & theType changed to XCAFDimTolObjects_GeomToleranceTypeValue &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_GeomToleranceTypeValue & theType changed to XCAFDimTolObjects_GeomToleranceTypeValue &OutValue
+[INFO ]  Class: STEPCAFControl_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Class: STEPCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
+[WARNI]      [TypeHint] Skipping type std::istream &, should contain _
 [INFO ]  Class: STEPCAFControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
+[WARNI]      [TypeHint] Skipping type std::ostream &, should contain _
 [INFO ]  Processing toolkit TKXMesh ===
 [INFO ]  ## Processing module XBRepMesh
 [INFO ]  Class: XBRepMesh
@@ -8100,6 +8288,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Interface_Static
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  ## Processing module MoniTool
 [INFO ]  Found HSEQUENCE definitionMoniTool_HSequenceOfElement: MoniTool_SequenceOfElement
 [INFO ]  Enum: MoniTool_ValueType
@@ -8507,7 +8696,6 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Found HARRAY1 definitionQuantity_HArray1OfColor: Quantity_Array1OfColor
 [INFO ]  Enum: Quantity_NameOfColor
 [INFO ]  Enum: Quantity_TypeOfColor
-[INFO ]  Enum: Quantity_PhysicalQuantity
 [INFO ]  Class: Quantity_Color
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: Quantity_NameOfColor &theColor changed to Quantity_NameOfColor &OutValue
@@ -8552,6 +8740,7 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: Standard_Static_Assert<true>
 [INFO ]  Class: Standard_Transient
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: Standard_UUID
 [INFO ]  Class: Standard_Failure
 [INFO ]      Wrap nested class Standard_Failure::StringRef
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -8728,8 +8917,8 @@ date : 2022-09-11 07:02:58.887496
 [INFO ]  Class: UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 35.95s
+SWIG interface file generation completed in 39.69s
 #################################################
 
-[INFO ]  Number of classes: 4495
-[INFO ]  Number of methods: 45707
+[INFO ]  Number of classes: 4569
+[INFO ]  Number of methods: 46360

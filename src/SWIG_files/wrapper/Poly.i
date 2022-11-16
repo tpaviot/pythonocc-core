@@ -356,7 +356,7 @@ None
 		 Poly_ArrayOfNodes(const gp_Vec3f & theBegin, Standard_Integer theLength);
 
 		/****************** Poly_ArrayOfNodes ******************/
-		/**** md5 signature: cb45040330e6998f9e997be1b9e9fd56 ****/
+		/**** md5 signature: cb5136ed6787652571068de864b16043 ****/
 		%feature("compactdefaultargs") Poly_ArrayOfNodes;
 		%feature("autodoc", "Move constructor.
 
@@ -545,7 +545,7 @@ None
 		 Poly_ArrayOfUVNodes(const gp_Vec2f & theBegin, Standard_Integer theLength);
 
 		/****************** Poly_ArrayOfUVNodes ******************/
-		/**** md5 signature: e3d61b6156099393a7872494033064a3 ****/
+		/**** md5 signature: e99c7bef1e8b316f6baf0752957bcbf9 ****/
 		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
 		%feature("autodoc", "Move constructor.
 
@@ -2922,7 +2922,7 @@ int
 		/****************** Node ******************/
 		/**** md5 signature: 48e932705302aa5c401569deb665fd5b ****/
 		%feature("compactdefaultargs") Node;
-		%feature("autodoc", "Returns a node at the given index.
+		%feature("autodoc", "Returns a node at the given index. @param[in] theindex node index within [1, nbnodes()] range returns 3d point coordinates.
 
 Parameters
 ----------
@@ -2937,7 +2937,7 @@ gp_Pnt
 		/****************** Normal ******************/
 		/**** md5 signature: 253664a7e4e8068dfd6a122d8bad4c73 ****/
 		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "Returns normal at the given index.
+		%feature("autodoc", "Returns normal at the given index. @param[in] theindex node index within [1, nbnodes()] range returns normalized 3d vector defining a surface normal.
 
 Parameters
 ----------
@@ -2952,7 +2952,7 @@ gp_Dir
 		/****************** Normal ******************/
 		/**** md5 signature: 110aa4fbe5c4eb7a7d08446898f30660 ****/
 		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "Returns normal at the given index.
+		%feature("autodoc", "Returns normal at the given index. @param[in] theindex node index within [1, nbnodes()] range @param[out] thevec3 3d vector defining a surface normal.
 
 Parameters
 ----------
@@ -3093,7 +3093,7 @@ None
 		/****************** SetNode ******************/
 		/**** md5 signature: 4c86150f9d355bdf6918f3438a943304 ****/
 		%feature("compactdefaultargs") SetNode;
-		%feature("autodoc", "Sets a node coordinates.
+		%feature("autodoc", "Sets a node coordinates. @param[in] theindex node index within [1, nbnodes()] range @param[in] thepnt 3d point coordinates.
 
 Parameters
 ----------
@@ -3109,7 +3109,7 @@ None
 		/****************** SetNormal ******************/
 		/**** md5 signature: dc19aaf77561dbe449024631f4eeee1b ****/
 		%feature("compactdefaultargs") SetNormal;
-		%feature("autodoc", "Changes normal at the given index.
+		%feature("autodoc", "Changes normal at the given index. @param[in] theindex node index within [1, nbnodes()] range @param[in] thevec3 normalized 3d vector defining a surface normal.
 
 Parameters
 ----------
@@ -3125,7 +3125,7 @@ None
 		/****************** SetNormal ******************/
 		/**** md5 signature: 0fdfdf6eef8e01f6f44ef167778a8399 ****/
 		%feature("compactdefaultargs") SetNormal;
-		%feature("autodoc", "Changes normal at the given index.
+		%feature("autodoc", "Changes normal at the given index. @param[in] theindex node index within [1, nbnodes()] range @param[in] thenormal normalized 3d vector defining a surface normal.
 
 Parameters
 ----------
@@ -3156,7 +3156,7 @@ None
 		/****************** SetTriangle ******************/
 		/**** md5 signature: 95a552e8aa9d409a641c1fe5418519b3 ****/
 		%feature("compactdefaultargs") SetTriangle;
-		%feature("autodoc", "Sets a triangle.
+		%feature("autodoc", "Sets a triangle. @param[in] theindex triangle index within [1, nbtriangles()] range @param[in] thetriangle triangle node indices, with each node defined within [1, nbnodes()] range.
 
 Parameters
 ----------
@@ -3172,7 +3172,7 @@ None
 		/****************** SetUVNode ******************/
 		/**** md5 signature: 75f2dd3953e33c453b0caa0b3b20f49f ****/
 		%feature("compactdefaultargs") SetUVNode;
-		%feature("autodoc", "Sets an uv-node coordinates.
+		%feature("autodoc", "Sets an uv-node coordinates. @param[in] theindex node index within [1, nbnodes()] range @param[in] thepnt uv coordinates.
 
 Parameters
 ----------
@@ -3188,7 +3188,7 @@ None
 		/****************** Triangle ******************/
 		/**** md5 signature: 3883dfb3e28eb482bbc2fa1ac9c0a8bd ****/
 		%feature("compactdefaultargs") Triangle;
-		%feature("autodoc", "Returns triangle at the given index.
+		%feature("autodoc", "Returns triangle at the given index. @param[in] theindex triangle index within [1, nbtriangles()] range returns triangle node indices, with each node defined within [1, nbnodes()] range.
 
 Parameters
 ----------
@@ -3214,7 +3214,7 @@ Poly_Array1OfTriangle
 		/****************** UVNode ******************/
 		/**** md5 signature: 30f3fd5f160869900c18f852f4c89b00 ****/
 		%feature("compactdefaultargs") UVNode;
-		%feature("autodoc", "Returns uv-node at the given index.
+		%feature("autodoc", "Returns uv-node at the given index. @param[in] theindex node index within [1, nbnodes()] range returns 2d point defining uv coordinates.
 
 Parameters
 ----------

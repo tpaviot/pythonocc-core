@@ -1439,7 +1439,7 @@ V2: float
 		/****************** Continuity ******************/
 		/**** md5 signature: 8dbb475c198ca068fb275dadeaaecf82 ****/
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "Returns the global continuity of the surface in direction u and v : c0 : only geometric continuity, c1 : continuity of the first derivative all along the surface, c2 : continuity of the second derivative all along the surface, c3 : continuity of the third derivative all along the surface, g1 : tangency continuity all along the surface, g2 : curvature continuity all along the surface, cn : the order of continuity is infinite. example : if the surface is c1 in the v parametric direction and c2 in the u parametric direction shape = c1.
+		%feature("autodoc", "Returns the global continuity of the surface in direction u and v : - c0: only geometric continuity, - c1: continuity of the first derivative all along the surface, - c2: continuity of the second derivative all along the surface, - c3: continuity of the third derivative all along the surface, - g1: tangency continuity all along the surface, - g2: curvature continuity all along the surface, - cn: the order of continuity is infinite. //! example: if the surface is c1 in the v parametric direction and c2 in the u parametric direction shape = c1.
 
 Returns
 -------
@@ -1467,7 +1467,7 @@ None
 		/****************** D1 ******************/
 		/**** md5 signature: 91515045f48dad47c0dde2583e926abf ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Computes the point p and the first derivatives in the directions u and v at this point. raised if the continuity of the surface is not c1.
+		%feature("autodoc", "Computes the point p and the first derivatives in the directions u and v at this point. raised if the continuity of the surface is not c1. //! tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
 
 Parameters
 ----------
@@ -1534,7 +1534,7 @@ None
 		/****************** DN ******************/
 		/**** md5 signature: c33ccd4f50ab17b4dcf5bde75edfe95e ****/
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "---purpose ; computes the derivative of order nu in the direction u and nv in the direction v at the point p(u, v). //! raised if the continuity of the surface is not cnu in the u direction or not cnv in the v direction. raised if nu + nv < 1 or nu < 0 or nv < 0.
+		%feature("autodoc", "Computes the derivative of order nu in the direction u and nv in the direction v at the point p(u, v). //! raised if the continuity of the surface is not cnu in the u direction or not cnv in the v direction. raised if nu + nv < 1 or nu < 0 or nv < 0.
 
 Parameters
 ----------
@@ -1601,7 +1601,7 @@ bool
 		/****************** IsUPeriodic ******************/
 		/**** md5 signature: 7581170790b0f02294b3a98c2ef39654 ****/
 		%feature("compactdefaultargs") IsUPeriodic;
-		%feature("autodoc", "Checks if this surface is periodic in the u parametric direction. returns true if: - this surface is closed in the u parametric direction, and - there is a constant t such that the distance between the points p (u, v) and p (u + t, v) (or the points p (u, v) and p (u, v + t)) is less than or equal to gp::resolution(). note: t is the parametric period in the u parametric direction.
+		%feature("autodoc", "Checks if this surface is periodic in the u parametric direction. returns true if: - this surface is closed in the u parametric direction, and - there is a constant t such that the distance between the points p (u, v) and p (u + t, v) (or the points p (u, v) and p (u, v + t)) is less than or equal to gp::resolution(). //! note: t is the parametric period in the u parametric direction.
 
 Returns
 -------
@@ -1623,7 +1623,7 @@ bool
 		/****************** IsVPeriodic ******************/
 		/**** md5 signature: 157f80ff35b8cd25014f915c1fea4793 ****/
 		%feature("compactdefaultargs") IsVPeriodic;
-		%feature("autodoc", "Checks if this surface is periodic in the v parametric direction. returns true if: - this surface is closed in the v parametric direction, and - there is a constant t such that the distance between the points p (u, v) and p (u + t, v) (or the points p (u, v) and p (u, v + t)) is less than or equal to gp::resolution(). note: t is the parametric period in the v parametric direction.
+		%feature("autodoc", "Checks if this surface is periodic in the v parametric direction. returns true if: - this surface is closed in the v parametric direction, and - there is a constant t such that the distance between the points p (u, v) and p (u + t, v) (or the points p (u, v) and p (u, v + t)) is less than or equal to gp::resolution(). //! note: t is the parametric period in the v parametric direction.
 
 Returns
 -------
@@ -1791,7 +1791,7 @@ float
 		/****************** Value ******************/
 		/**** md5 signature: 42959897db65d301eb66b5528ed15f16 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the point of parameter u on the surface. //! it is implemented with d0 //! raised only for an 'offsetsurface' if it is not possible to compute the current point.
+		%feature("autodoc", "Computes the point of parameter (u, v) on the surface. //! it is implemented with d0. tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point. //! raised only for an 'offsetsurface' if it is not possible to compute the current point.
 
 Parameters
 ----------

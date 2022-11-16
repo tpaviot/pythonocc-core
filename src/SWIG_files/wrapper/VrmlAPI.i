@@ -43,6 +43,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmlapi.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<RWMesh_module.hxx>
 #include<VrmlConverter_module.hxx>
 #include<Vrml_module.hxx>
 #include<Quantity_module.hxx>
@@ -67,6 +68,24 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmlapi.html"
 #include<Bnd_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<Media_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TopTools_module.hxx>
+#include<MoniTool_module.hxx>
+#include<Transfer_module.hxx>
+#include<Interface_module.hxx>
+#include<TPrsStd_module.hxx>
+#include<SelectMgr_module.hxx>
+#include<Select3D_module.hxx>
+#include<AIS_module.hxx>
+#include<XCAFPrs_module.hxx>
+#include<Prs3d_module.hxx>
+#include<XSControl_module.hxx>
+#include<TDataStd_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<StdSelect_module.hxx>
+#include<V3d_module.hxx>
+#include<TNaming_module.hxx>
+#include<TDataXtd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -75,6 +94,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmlapi.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import RWMesh.i
 %import VrmlConverter.i
 %import Vrml.i
 %import Quantity.i
@@ -108,6 +128,7 @@ VrmlAPI_BothRepresentation = VrmlAPI_RepresentationOfShape.VrmlAPI_BothRepresent
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(VrmlAPI_CafReader)
 /* end handles declaration */
 
 /* templates */
@@ -144,6 +165,22 @@ bool
 
 
 %extend VrmlAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class VrmlAPI_CafReader *
+**************************/
+class VrmlAPI_CafReader : public RWMesh_CafReader {
+	public:
+};
+
+
+%make_alias(VrmlAPI_CafReader)
+
+%extend VrmlAPI_CafReader {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

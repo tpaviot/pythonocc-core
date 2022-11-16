@@ -636,10 +636,47 @@ bool
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
 
+		/****************** OverlapsCircle ******************/
+		/**** md5 signature: a8fa475b8c0320c2289cffbaffd6f1a5 ****/
+		%feature("compactdefaultargs") OverlapsCircle;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by circle with radius theradius, the boolean theisfilled, and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+
+Parameters
+----------
+theRadius: float
+theTrsf: gp_Trsf
+theIsFilled: bool
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") OverlapsCircle;
+		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, SelectBasics_PickResult & thePickResult);
+
+		/****************** OverlapsCircle ******************/
+		/**** md5 signature: c970c6818a43476df9f248bc6c7558b6 ****/
+		%feature("compactdefaultargs") OverlapsCircle;
+		%feature("autodoc", "Returns true if selecting volume is overlapped by circle with radius theradius, the boolean theisfilled, and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+
+Parameters
+----------
+theRadius: float
+theTrsf: gp_Trsf
+theIsFilled: bool
+theInside: bool *,optional
+	default value is NULL
+
+Returns
+-------
+bool
+") OverlapsCircle;
+		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
+
 		/****************** OverlapsCylinder ******************/
-		/**** md5 signature: c900e6ae11df67bcc70fbb50f6b570dc ****/
+		/**** md5 signature: b39aa1ecbb42ea81200fd25f27606124 ****/
 		%feature("compactdefaultargs") OverlapsCylinder;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight, the boolean theishollow and transformation to apply thetrsf.
 
 Parameters
 ----------
@@ -647,18 +684,19 @@ theBottomRad: float
 theTopRad: float
 theHeight: float
 theTrsf: gp_Trsf
+theIsHollow: bool
 thePickResult: SelectBasics_PickResult
 
 Returns
 -------
 bool
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, SelectBasics_PickResult & thePickResult);
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, SelectBasics_PickResult & thePickResult);
 
 		/****************** OverlapsCylinder ******************/
-		/**** md5 signature: 5f67d458875f1aefc78c51b6436b3f88 ****/
+		/**** md5 signature: 4ee34537f7f0591987b1ee29ed104939 ****/
 		%feature("compactdefaultargs") OverlapsCylinder;
-		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+		%feature("autodoc", "Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight, the boolean theishollow and transformation to apply thetrsf.
 
 Parameters
 ----------
@@ -666,6 +704,7 @@ theBottomRad: float
 theTopRad: float
 theHeight: float
 theTrsf: gp_Trsf
+theIsHollow: bool
 theInside: bool *,optional
 	default value is NULL
 
@@ -673,7 +712,7 @@ Returns
 -------
 bool
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, Standard_Boolean * theInside = NULL);
+		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
 
 		/****************** OverlapsPoint ******************/
 		/**** md5 signature: 60fbb482729178a9e23a299d60c9d746 ****/

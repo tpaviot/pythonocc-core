@@ -35,8 +35,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepLib_MakeSolid.hxx>
 #include<BRepLib_MakeVertex.hxx>
 #include<BRepLib_MakeWire.hxx>
+#include<BRepLib_PointCloudShape.hxx>
 #include<BRepLib_ShapeModification.hxx>
 #include<BRepLib_ShellError.hxx>
+#include<BRepLib_ToolTriangulatedShape.hxx>
 #include<BRepLib_ValidateEdge.hxx>
 #include<BRepLib_WireError.hxx>
 

@@ -35,6 +35,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepBuilderAPI_MakeFace.hxx>
 #include<BRepBuilderAPI_MakePolygon.hxx>
 #include<BRepBuilderAPI_MakeShape.hxx>
+#include<BRepBuilderAPI_MakeShapeOnMesh.hxx>
 #include<BRepBuilderAPI_MakeShell.hxx>
 #include<BRepBuilderAPI_MakeSolid.hxx>
 #include<BRepBuilderAPI_MakeVertex.hxx>

@@ -122,13 +122,13 @@ BRepExtrema_IsInFace = BRepExtrema_SupportType.BRepExtrema_IsInFace
         return self.Size()
     }
 };
-%template(BRepExtrema_ShapeList) NCollection_Vector<TopoDS_Face>;
+%template(BRepExtrema_ShapeList) NCollection_Vector<TopoDS_Shape>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_DataMap<Standard_Integer, TColStd_PackedMapOfInteger> BRepExtrema_MapOfIntegerPackedMapOfInteger;
 typedef NCollection_Sequence<BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
-typedef NCollection_Vector<TopoDS_Face> BRepExtrema_ShapeList;
+typedef NCollection_Vector<TopoDS_Shape> BRepExtrema_ShapeList;
 /* end typedefs declaration */
 
 /***********************************
@@ -528,56 +528,34 @@ float
 class BRepExtrema_DistanceSS {
 	public:
 		/****************** BRepExtrema_DistanceSS ******************/
-		/**** md5 signature: d3e5d2687b5071891936b70d17b69e76 ****/
+		/**** md5 signature: 990d62108850fe2e8efc715b0327cf72 ****/
 		%feature("compactdefaultargs") BRepExtrema_DistanceSS;
-		%feature("autodoc", "Computes the distance between two shapes ( face edge vertex). .
+		%feature("autodoc", "Computes the distance between two shapes (face edge vertex). @param thes1 - first shape @param thes2 - second shape @param thebox1 - bounding box of first shape @param thebox2 - bounding box of second shape @param thedstref - initial distance between the shapes to start with @param thedeflection - maximum deviation of extreme distances from the minimum one (default is precision::confusion()). @param theextflag - specifies which extrema solutions to look for (default is minmax, applied only to point-face extrema) @param theextalgo - specifies which extrema algorithm is to be used (default is grad algo, applied only to point-face extrema).
 
 Parameters
 ----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-B1: Bnd_Box
-B2: Bnd_Box
-DstRef: float
-F: Extrema_ExtFlag,optional
+theS1: TopoDS_Shape
+theS2: TopoDS_Shape
+theBox1: Bnd_Box
+theBox2: Bnd_Box
+theDstRef: float
+theDeflection: float,optional
+	default value is Precision::Confusion()
+theExtFlag: Extrema_ExtFlag,optional
 	default value is Extrema_ExtFlag_MINMAX
-A: Extrema_ExtAlgo,optional
+theExtAlgo: Extrema_ExtAlgo,optional
 	default value is Extrema_ExtAlgo_Grad
 
 Returns
 -------
 None
 ") BRepExtrema_DistanceSS;
-		 BRepExtrema_DistanceSS(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Bnd_Box & B1, const Bnd_Box & B2, const Standard_Real DstRef, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
-
-		/****************** BRepExtrema_DistanceSS ******************/
-		/**** md5 signature: 212b79b65f1836f024c8a0b7d41d886f ****/
-		%feature("compactdefaultargs") BRepExtrema_DistanceSS;
-		%feature("autodoc", "Computes the distance between two shapes ( face edge vertex). parameter thedeflection is used to specify a maximum deviation of extreme distances from the minimum one. default value is precision::confusion(). .
-
-Parameters
-----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-B1: Bnd_Box
-B2: Bnd_Box
-DstRef: float
-aDeflection: float
-F: Extrema_ExtFlag,optional
-	default value is Extrema_ExtFlag_MINMAX
-A: Extrema_ExtAlgo,optional
-	default value is Extrema_ExtAlgo_Grad
-
-Returns
--------
-None
-") BRepExtrema_DistanceSS;
-		 BRepExtrema_DistanceSS(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Bnd_Box & B1, const Bnd_Box & B2, const Standard_Real DstRef, const Standard_Real aDeflection, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 BRepExtrema_DistanceSS(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const Bnd_Box & theBox1, const Bnd_Box & theBox2, const Standard_Real theDstRef, const Standard_Real theDeflection = Precision::Confusion(), const Extrema_ExtFlag theExtFlag = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo theExtAlgo = Extrema_ExtAlgo_Grad);
 
 		/****************** DistValue ******************/
 		/**** md5 signature: 67516fa96bcaeb61c2a5da2a5ca3b852 ****/
 		%feature("compactdefaultargs") DistValue;
-		%feature("autodoc", "Returns the distance value .
+		%feature("autodoc", "Returns the distance value.
 
 Returns
 -------
@@ -588,7 +566,7 @@ float
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "True if the distance has been computed .
+		%feature("autodoc", "Returns true if the distance has been computed, false otherwise.
 
 Returns
 -------
@@ -599,7 +577,7 @@ bool
 		/****************** Seq1Value ******************/
 		/**** md5 signature: ce2418343fae9ea2a5448ab18333e3bf ****/
 		%feature("compactdefaultargs") Seq1Value;
-		%feature("autodoc", "Returns the list of solutions on the first shape .
+		%feature("autodoc", "Returns the list of solutions on the first shape.
 
 Returns
 -------
@@ -610,43 +588,13 @@ BRepExtrema_SeqOfSolution
 		/****************** Seq2Value ******************/
 		/**** md5 signature: 9e0d543064a1ba8b316c893c878533f4 ****/
 		%feature("compactdefaultargs") Seq2Value;
-		%feature("autodoc", "Returns the list of solutions on the second shape .
+		%feature("autodoc", "Returns the list of solutions on the second shape.
 
 Returns
 -------
 BRepExtrema_SeqOfSolution
 ") Seq2Value;
 		const BRepExtrema_SeqOfSolution & Seq2Value();
-
-		/****************** SetAlgo ******************/
-		/**** md5 signature: cad6f54c64a4b69da22bb042d2e4fe8a ****/
-		%feature("compactdefaultargs") SetAlgo;
-		%feature("autodoc", "Sets the flag controlling ...
-
-Parameters
-----------
-A: Extrema_ExtAlgo
-
-Returns
--------
-None
-") SetAlgo;
-		void SetAlgo(const Extrema_ExtAlgo A);
-
-		/****************** SetFlag ******************/
-		/**** md5 signature: 7ce767aa4373b85a8cea83f409a2ebfb ****/
-		%feature("compactdefaultargs") SetFlag;
-		%feature("autodoc", "Sets the flag controlling minimum and maximum search.
-
-Parameters
-----------
-F: Extrema_ExtFlag
-
-Returns
--------
-None
-") SetFlag;
-		void SetFlag(const Extrema_ExtFlag F);
 
 };
 
@@ -1656,29 +1604,388 @@ dist: float
 	}
 };
 
+/**************************************
+* class BRepExtrema_ProximityDistTool *
+**************************************/
+class BRepExtrema_ProximityDistTool : public BVH_Distance<Standard_Real,3,BVH_Vec3d,BRepExtrema_TriangleSet> {
+	public:
+typedef typename BVH_Tools<Standard_Real , 3>::BVH_PrjStateInTriangle BVH_PrjState;
+		class PrjState {};
+/* public enums */
+enum ProxPnt_Status {
+	ProxPnt_Status_BORDER = 0,
+	ProxPnt_Status_MIDDLE = 1,
+	ProxPnt_Status_UNKNOWN = 2,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class ProxPnt_Status(IntEnum):
+	ProxPnt_Status_BORDER = 0
+	ProxPnt_Status_MIDDLE = 1
+	ProxPnt_Status_UNKNOWN = 2
+ProxPnt_Status_BORDER = ProxPnt_Status.ProxPnt_Status_BORDER
+ProxPnt_Status_MIDDLE = ProxPnt_Status.ProxPnt_Status_MIDDLE
+ProxPnt_Status_UNKNOWN = ProxPnt_Status.ProxPnt_Status_UNKNOWN
+};
+/* end python proxy for enums */
+
+		/****************** BRepExtrema_ProximityDistTool ******************/
+		/**** md5 signature: 2988f1cc0151ca5566402211c63fd7de ****/
+		%feature("compactdefaultargs") BRepExtrema_ProximityDistTool;
+		%feature("autodoc", "Creates new unitialized tool.
+
+Returns
+-------
+None
+") BRepExtrema_ProximityDistTool;
+		 BRepExtrema_ProximityDistTool();
+
+		/****************** BRepExtrema_ProximityDistTool ******************/
+		/**** md5 signature: b9731e05e5136c7110e50a313b036c02 ****/
+		%feature("compactdefaultargs") BRepExtrema_ProximityDistTool;
+		%feature("autodoc", "Creates new tool for the given element sets.
+
+Parameters
+----------
+theSet1: BRepExtrema_TriangleSet
+theNbSamples1: int
+theSet2: BRepExtrema_TriangleSet
+theShapeList1: BRepExtrema_ShapeList
+theShapeList2: BRepExtrema_ShapeList
+
+Returns
+-------
+None
+") BRepExtrema_ProximityDistTool;
+		 BRepExtrema_ProximityDistTool(const opencascade::handle<BRepExtrema_TriangleSet> & theSet1, const Standard_Integer theNbSamples1, const opencascade::handle<BRepExtrema_TriangleSet> & theSet2, const BRepExtrema_ShapeList & theShapeList1, const BRepExtrema_ShapeList & theShapeList2);
+
+		/****************** Accept ******************/
+		/**** md5 signature: 47868288da8d60ae3574004f3eef6f3b ****/
+		%feature("compactdefaultargs") Accept;
+		%feature("autodoc", "Defines the rules for leaf acceptance.
+
+Parameters
+----------
+theSgmIdx: int
+&: float
+
+Returns
+-------
+bool
+") Accept;
+		virtual Standard_Boolean Accept(const Standard_Integer theSgmIdx, const Standard_Real &);
+
+		/****************** LoadShapeLists ******************/
+		/**** md5 signature: 2ec9bfacd5c06102fdebe80e35402ca0 ****/
+		%feature("compactdefaultargs") LoadShapeLists;
+		%feature("autodoc", "Loads the given list of subshapes into the tool.
+
+Parameters
+----------
+theShapeList1: BRepExtrema_ShapeList
+theShapeList2: BRepExtrema_ShapeList
+
+Returns
+-------
+None
+") LoadShapeLists;
+		void LoadShapeLists(const BRepExtrema_ShapeList & theShapeList1, const BRepExtrema_ShapeList & theShapeList2);
+
+		/****************** LoadTriangleSets ******************/
+		/**** md5 signature: dfd78a7a416eff23ee78d969d7e3cf4f ****/
+		%feature("compactdefaultargs") LoadTriangleSets;
+		%feature("autodoc", "Loads the given element sets into the tool.
+
+Parameters
+----------
+theSet1: BRepExtrema_TriangleSet
+theSet2: BRepExtrema_TriangleSet
+
+Returns
+-------
+None
+") LoadTriangleSets;
+		void LoadTriangleSets(const opencascade::handle<BRepExtrema_TriangleSet> & theSet1, const opencascade::handle<BRepExtrema_TriangleSet> & theSet2);
+
+		/****************** Perform ******************/
+		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Performs searching of the proximity distance.
+
+Returns
+-------
+None
+") Perform;
+		void Perform();
+
+		/****************** ProximityDistance ******************/
+		/**** md5 signature: 1c229c100cac62e1d3970eed3dcb9856 ****/
+		%feature("compactdefaultargs") ProximityDistance;
+		%feature("autodoc", "Returns the computed distance.
+
+Returns
+-------
+float
+") ProximityDistance;
+		Standard_Real ProximityDistance();
+
+		/****************** ProximityPoints ******************/
+		/**** md5 signature: 54701e724238367b6b602dfb87695880 ****/
+		%feature("compactdefaultargs") ProximityPoints;
+		%feature("autodoc", "Returns points on triangles sets, which provide the proximity distance.
+
+Parameters
+----------
+thePoint1: BVH_Vec3d
+thePoint2: BVH_Vec3d
+
+Returns
+-------
+None
+") ProximityPoints;
+		void ProximityPoints(BVH_Vec3d & thePoint1, BVH_Vec3d & thePoint2);
+
+		/****************** ProximityPointsStatus ******************/
+		/**** md5 signature: cbb67aeda5a68bd79cbb58089638d3f8 ****/
+		%feature("compactdefaultargs") ProximityPointsStatus;
+		%feature("autodoc", "Returns status of points on triangles sets, which provide the proximity distance.
+
+Parameters
+----------
+thePointStatus1: ProxPnt_Status
+thePointStatus2: ProxPnt_Status
+
+Returns
+-------
+None
+") ProximityPointsStatus;
+		void ProximityPointsStatus(ProxPnt_Status thePointStatus1, ProxPnt_Status thePointStatus2);
+
+		/****************** RejectNode ******************/
+		/**** md5 signature: 62cfd38e542b7e9753f6f91b3eb7777b ****/
+		%feature("compactdefaultargs") RejectNode;
+		%feature("autodoc", "Defines the rules for node rejection by bounding box.
+
+Parameters
+----------
+theCornerMin: BVH_Vec3d
+theCornerMax: BVH_Vec3d
+
+Returns
+-------
+theMetric: float
+") RejectNode;
+		virtual Standard_Boolean RejectNode(const BVH_Vec3d & theCornerMin, const BVH_Vec3d & theCornerMax, Standard_Real &OutValue);
+
+};
+
+
+%extend BRepExtrema_ProximityDistTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class BRepExtrema_ProximityValueTool *
+***************************************/
+class BRepExtrema_ProximityValueTool {
+	public:
+typedef typename BRepExtrema_ProximityDistTool ::ProxPnt_Status ProxPnt_Status;
+		/****************** BRepExtrema_ProximityValueTool ******************/
+		/**** md5 signature: f01190ce189b90d5b9278fbee66731a1 ****/
+		%feature("compactdefaultargs") BRepExtrema_ProximityValueTool;
+		%feature("autodoc", "Creates new unitialized proximity tool.
+
+Returns
+-------
+None
+") BRepExtrema_ProximityValueTool;
+		 BRepExtrema_ProximityValueTool();
+
+		/****************** BRepExtrema_ProximityValueTool ******************/
+		/**** md5 signature: 457895b0f954d4aa93c3b2011e47f0e1 ****/
+		%feature("compactdefaultargs") BRepExtrema_ProximityValueTool;
+		%feature("autodoc", "Creates new proximity tool for the given element sets.
+
+Parameters
+----------
+theSet1: BRepExtrema_TriangleSet
+theSet2: BRepExtrema_TriangleSet
+theShapeList1: BRepExtrema_ShapeList
+theShapeList2: BRepExtrema_ShapeList
+
+Returns
+-------
+None
+") BRepExtrema_ProximityValueTool;
+		 BRepExtrema_ProximityValueTool(const opencascade::handle<BRepExtrema_TriangleSet> & theSet1, const opencascade::handle<BRepExtrema_TriangleSet> & theSet2, const BRepExtrema_ShapeList & theShapeList1, const BRepExtrema_ShapeList & theShapeList2);
+
+		/****************** Distance ******************/
+		/**** md5 signature: d47317206a0fb34e540004324dbfafd8 ****/
+		%feature("compactdefaultargs") Distance;
+		%feature("autodoc", "Returns the computed distance.
+
+Returns
+-------
+float
+") Distance;
+		Standard_Real Distance();
+
+		/****************** IsDone ******************/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "Is proximity test completed?.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
+
+		/****************** LoadShapeLists ******************/
+		/**** md5 signature: 2ec9bfacd5c06102fdebe80e35402ca0 ****/
+		%feature("compactdefaultargs") LoadShapeLists;
+		%feature("autodoc", "Loads the given list of subshapes into the proximity tool.
+
+Parameters
+----------
+theShapeList1: BRepExtrema_ShapeList
+theShapeList2: BRepExtrema_ShapeList
+
+Returns
+-------
+None
+") LoadShapeLists;
+		void LoadShapeLists(const BRepExtrema_ShapeList & theShapeList1, const BRepExtrema_ShapeList & theShapeList2);
+
+		/****************** LoadTriangleSets ******************/
+		/**** md5 signature: 3a94a7860b973acbc6838bfe75b5b812 ****/
+		%feature("compactdefaultargs") LoadTriangleSets;
+		%feature("autodoc", "Loads the given element sets into the proximity tool.
+
+Parameters
+----------
+theSet1: Handle ( BRepExtrema_TriangleSet )
+theSet2: Handle ( BRepExtrema_TriangleSet )
+
+Returns
+-------
+None
+") LoadTriangleSets;
+		void LoadTriangleSets(const Handle ( BRepExtrema_TriangleSet ) & theSet1, const Handle ( BRepExtrema_TriangleSet ) & theSet2);
+
+		/****************** MarkDirty ******************/
+		/**** md5 signature: bd3f3e7de1b3b6a0c1da3082319fae2e ****/
+		%feature("compactdefaultargs") MarkDirty;
+		%feature("autodoc", "Marks test results as outdated.
+
+Returns
+-------
+None
+") MarkDirty;
+		void MarkDirty();
+
+		/****************** Perform ******************/
+		/**** md5 signature: c2c8700606b770cff797eb33824bf0aa ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Performs the computation of the proximity value.
+
+Parameters
+----------
+
+Returns
+-------
+theTolerance: float
+") Perform;
+		void Perform(Standard_Real &OutValue);
+
+		/****************** ProximityPoints ******************/
+		/**** md5 signature: 4ddc607867ad4f349b192d8bb4196f92 ****/
+		%feature("compactdefaultargs") ProximityPoints;
+		%feature("autodoc", "Returns points on triangles sets, which provide the proximity distance.
+
+Parameters
+----------
+thePoint1: gp_Pnt
+thePoint2: gp_Pnt
+
+Returns
+-------
+None
+") ProximityPoints;
+		void ProximityPoints(gp_Pnt & thePoint1, gp_Pnt & thePoint2);
+
+		/****************** ProximityPointsStatus ******************/
+		/**** md5 signature: cbb67aeda5a68bd79cbb58089638d3f8 ****/
+		%feature("compactdefaultargs") ProximityPointsStatus;
+		%feature("autodoc", "Returns status of points on triangles sets, which provide the proximity distance.
+
+Parameters
+----------
+
+Returns
+-------
+thePointStatus1: ProxPnt_Status
+thePointStatus2: ProxPnt_Status
+") ProximityPointsStatus;
+		void ProximityPointsStatus(ProxPnt_Status &OutValue, ProxPnt_Status &OutValue);
+
+		/****************** SetNbSamplePoints ******************/
+		/**** md5 signature: 200898431f5ab55f6d0477df1f50c3b9 ****/
+		%feature("compactdefaultargs") SetNbSamplePoints;
+		%feature("autodoc", "Sets number of sample points used for proximity calculation for each shape. if number is less or equal zero, all triangulation nodes are used.
+
+Parameters
+----------
+theSamples1: int,optional
+	default value is 0
+theSamples2: int,optional
+	default value is 0
+
+Returns
+-------
+None
+") SetNbSamplePoints;
+		void SetNbSamplePoints(const Standard_Integer theSamples1 = 0, const Standard_Integer theSamples2 = 0);
+
+};
+
+
+%extend BRepExtrema_ProximityValueTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************************
 * class BRepExtrema_ShapeProximity *
 ***********************************/
 class BRepExtrema_ShapeProximity {
 	public:
+typedef typename BRepExtrema_ProximityValueTool ::ProxPnt_Status ProxPnt_Status;
 		/****************** BRepExtrema_ShapeProximity ******************/
-		/**** md5 signature: d5e4520e332fd1ca29b2aa5faa01a742 ****/
+		/**** md5 signature: 73b29b290349b3955b499c712de97888 ****/
 		%feature("compactdefaultargs") BRepExtrema_ShapeProximity;
 		%feature("autodoc", "Creates empty proximity tool.
 
 Parameters
 ----------
 theTolerance: float,optional
-	default value is 0.0
+	default value is Precision::Infinite()
 
 Returns
 -------
 None
 ") BRepExtrema_ShapeProximity;
-		 BRepExtrema_ShapeProximity(const Standard_Real theTolerance = 0.0);
+		 BRepExtrema_ShapeProximity(const Standard_Real theTolerance = Precision::Infinite());
 
 		/****************** BRepExtrema_ShapeProximity ******************/
-		/**** md5 signature: 5ccb942611c6f542d06eaa2361fcb03f ****/
+		/**** md5 signature: 531da26b6a3f5440b741fe549c9ade34 ****/
 		%feature("compactdefaultargs") BRepExtrema_ShapeProximity;
 		%feature("autodoc", "Creates proximity tool for the given two shapes.
 
@@ -1687,13 +1994,13 @@ Parameters
 theShape1: TopoDS_Shape
 theShape2: TopoDS_Shape
 theTolerance: float,optional
-	default value is 0.0
+	default value is Precision::Infinite()
 
 Returns
 -------
 None
 ") BRepExtrema_ShapeProximity;
-		 BRepExtrema_ShapeProximity(const TopoDS_Shape & theShape1, const TopoDS_Shape & theShape2, const Standard_Real theTolerance = 0.0);
+		 BRepExtrema_ShapeProximity(const TopoDS_Shape & theShape1, const TopoDS_Shape & theShape2, const Standard_Real theTolerance = Precision::Infinite());
 
 		/****************** ElementSet1 ******************/
 		/**** md5 signature: f5328b7099eceb0eda7e749d56fd8afa ****/
@@ -1718,7 +2025,7 @@ opencascade::handle<BRepExtrema_TriangleSet>
 		const opencascade::handle<BRepExtrema_TriangleSet> & ElementSet2();
 
 		/****************** GetSubShape1 ******************/
-		/**** md5 signature: 87f159a97514b76326c740f1454acbd1 ****/
+		/**** md5 signature: 9d27a6a3fa6ff016ce6fb25c224de40d ****/
 		%feature("compactdefaultargs") GetSubShape1;
 		%feature("autodoc", "Returns sub-shape from 1st shape with the given index (started from 0).
 
@@ -1728,12 +2035,12 @@ theID: int
 
 Returns
 -------
-TopoDS_Face
+TopoDS_Shape
 ") GetSubShape1;
-		const TopoDS_Face GetSubShape1(const Standard_Integer theID);
+		const TopoDS_Shape GetSubShape1(const Standard_Integer theID);
 
 		/****************** GetSubShape2 ******************/
-		/**** md5 signature: 0a3fb2d88d8d3af2d88e2c958354e505 ****/
+		/**** md5 signature: 25abd1b9ef769c834795d782c0a14dbc ****/
 		%feature("compactdefaultargs") GetSubShape2;
 		%feature("autodoc", "Returns sub-shape from 1st shape with the given index (started from 0).
 
@@ -1743,9 +2050,9 @@ theID: int
 
 Returns
 -------
-TopoDS_Face
+TopoDS_Shape
 ") GetSubShape2;
-		const TopoDS_Face GetSubShape2(const Standard_Integer theID);
+		const TopoDS_Shape GetSubShape2(const Standard_Integer theID);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
@@ -1820,6 +2127,91 @@ Returns
 None
 ") Perform;
 		void Perform();
+
+		/****************** ProxPntStatus1 ******************/
+		/**** md5 signature: 5b5a621c79fd72dfa7174da351c8990f ****/
+		%feature("compactdefaultargs") ProxPntStatus1;
+		%feature("autodoc", "Returns the status of point on the 1st shape, which could be used as a reference point for the value of the proximity.
+
+Returns
+-------
+ProxPnt_Status
+") ProxPntStatus1;
+		const ProxPnt_Status  ProxPntStatus1();
+
+		/****************** ProxPntStatus2 ******************/
+		/**** md5 signature: 5f8c6ad089fa3dc1014ee2eaced6a8ee ****/
+		%feature("compactdefaultargs") ProxPntStatus2;
+		%feature("autodoc", "Returns the status of point on the 2nd shape, which could be used as a reference point for the value of the proximity.
+
+Returns
+-------
+ProxPnt_Status
+") ProxPntStatus2;
+		const ProxPnt_Status  ProxPntStatus2();
+
+		/****************** Proximity ******************/
+		/**** md5 signature: b971efcb1300162fab46e37d2a70dacd ****/
+		%feature("compactdefaultargs") Proximity;
+		%feature("autodoc", "Returns proximity value calculated for the whole input shapes.
+
+Returns
+-------
+float
+") Proximity;
+		Standard_Real Proximity();
+
+		/****************** ProximityPoint1 ******************/
+		/**** md5 signature: 7b89ebcbe2c3263efa38d81948de688a ****/
+		%feature("compactdefaultargs") ProximityPoint1;
+		%feature("autodoc", "Returns the point on the 1st shape, which could be used as a reference point for the value of the proximity.
+
+Returns
+-------
+gp_Pnt
+") ProximityPoint1;
+		const gp_Pnt ProximityPoint1();
+
+		/****************** ProximityPoint2 ******************/
+		/**** md5 signature: 694a8c2b488abd3573c6ab1ad209c1ff ****/
+		%feature("compactdefaultargs") ProximityPoint2;
+		%feature("autodoc", "Returns the point on the 2nd shape, which could be used as a reference point for the value of the proximity.
+
+Returns
+-------
+gp_Pnt
+") ProximityPoint2;
+		const gp_Pnt ProximityPoint2();
+
+		/****************** SetNbSamples1 ******************/
+		/**** md5 signature: 7c440e0080448ca35e32063181dbc6db ****/
+		%feature("compactdefaultargs") SetNbSamples1;
+		%feature("autodoc", "Set number of sample points on the 1st shape used to compute the proximity value. in case of 0, all triangulation nodes will be used.
+
+Parameters
+----------
+theNbSamples: int
+
+Returns
+-------
+None
+") SetNbSamples1;
+		void SetNbSamples1(const Standard_Integer theNbSamples);
+
+		/****************** SetNbSamples2 ******************/
+		/**** md5 signature: 1328b53fc399af111069fbfe7e25a24f ****/
+		%feature("compactdefaultargs") SetNbSamples2;
+		%feature("autodoc", "Set number of sample points on the 2nd shape used to compute the proximity value. in case of 0, all triangulation nodes will be used.
+
+Parameters
+----------
+theNbSamples: int
+
+Returns
+-------
+None
+") SetNbSamples2;
+		void SetNbSamples2(const Standard_Integer theNbSamples);
 
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 2df6ca87a12fc10518568e45d2ce38db ****/
@@ -2121,6 +2513,47 @@ int
 ") GetFaceID;
 		Standard_Integer GetFaceID(const Standard_Integer theIndex);
 
+		/****************** GetShapeIDOfVtx ******************/
+		/**** md5 signature: 94f7f027601fc3d870fcd3c7c286a3d2 ****/
+		%feature("compactdefaultargs") GetShapeIDOfVtx;
+		%feature("autodoc", "Returns shape id of the given vertex index.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+int
+") GetShapeIDOfVtx;
+		Standard_Integer GetShapeIDOfVtx(const Standard_Integer theIndex);
+
+		/****************** GetTrgIdxInShape ******************/
+		/**** md5 signature: 76f60b043a2db13c82e06a83b90203aa ****/
+		%feature("compactdefaultargs") GetTrgIdxInShape;
+		%feature("autodoc", "Returns triangle index (before swapping) in tringulation of the shape, which triangle belongs, with the given trg id in whole set (after swapping).
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+int
+") GetTrgIdxInShape;
+		Standard_Integer GetTrgIdxInShape(const Standard_Integer theIndex);
+
+		/****************** GetVertices ******************/
+		/**** md5 signature: 6895166cb2c145e3ff7ace9664551209 ****/
+		%feature("compactdefaultargs") GetVertices;
+		%feature("autodoc", "Returns all vertices.
+
+Returns
+-------
+BVH_Array3d
+") GetVertices;
+		const BVH_Array3d & GetVertices();
+
 		/****************** GetVertices ******************/
 		/**** md5 signature: 8f9f04b5f9949be6710853ac95fdc36d ****/
 		%feature("compactdefaultargs") GetVertices;
@@ -2139,20 +2572,51 @@ None
 ") GetVertices;
 		void GetVertices(const Standard_Integer theIndex, BVH_Vec3d & theVertex1, BVH_Vec3d & theVertex2, BVH_Vec3d & theVertex3);
 
+		/****************** GetVtxIdxInShape ******************/
+		/**** md5 signature: 638e97ebafbd36318e5edb25c78cf4af ****/
+		%feature("compactdefaultargs") GetVtxIdxInShape;
+		%feature("autodoc", "Returns vertex index in tringulation of the shape, which vertex belongs, with the given vtx id in whole set.
+
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+int
+") GetVtxIdxInShape;
+		Standard_Integer GetVtxIdxInShape(const Standard_Integer theIndex);
+
+		/****************** GetVtxIndices ******************/
+		/**** md5 signature: fb0daffb3cedb2be1930b6e0eebab39e ****/
+		%feature("compactdefaultargs") GetVtxIndices;
+		%feature("autodoc", "Returns vertex indices of the given triangle.
+
+Parameters
+----------
+theIndex: int
+theVtxIndices: NCollection_Array1<int>
+
+Returns
+-------
+None
+") GetVtxIndices;
+		void GetVtxIndices(const Standard_Integer theIndex, NCollection_Array1<Standard_Integer> & theVtxIndices);
+
 		/****************** Init ******************/
-		/**** md5 signature: 1a69b588a726877c7ffe576fe0f505d5 ****/
+		/**** md5 signature: e68262ad9df79c968a16107c49147612 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initializes triangle set.
 
 Parameters
 ----------
-theFaces: BRepExtrema_ShapeList
+theShapes: BRepExtrema_ShapeList
 
 Returns
 -------
 bool
 ") Init;
-		Standard_Boolean Init(const BRepExtrema_ShapeList & theFaces);
+		Standard_Boolean Init(const BRepExtrema_ShapeList & theShapes);
 
 		/****************** Size ******************/
 		/**** md5 signature: 35f6071839104c52ab17204b65e7eae6 ****/

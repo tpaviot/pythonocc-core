@@ -89,7 +89,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Stream.hxx>
 #include<Standard_ThreadId.hxx>
 #include<Standard_Time.hxx>
-#include<Standard_TooManyUsers.hxx>
 #include<Standard_Transient.hxx>
 #include<Standard_Type.hxx>
 #include<Standard_TypeDef.hxx>

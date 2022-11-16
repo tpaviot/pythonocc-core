@@ -20,7 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<Quantity_Array1OfColor.hxx>
-#include<Quantity_Array2OfColor.hxx>
 #include<Quantity_Color.hxx>
 #include<Quantity_ColorHasher.hxx>
 #include<Quantity_ColorRGBA.hxx>
@@ -31,7 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Quantity_NameOfColor.hxx>
 #include<Quantity_Period.hxx>
 #include<Quantity_PeriodDefinitionError.hxx>
-#include<Quantity_PhysicalQuantity.hxx>
 #include<Quantity_TypeOfColor.hxx>
 
 #endif // QUANTITY_HXX

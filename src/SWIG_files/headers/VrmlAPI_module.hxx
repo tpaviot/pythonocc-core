@@ -20,6 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<VrmlAPI.hxx>
+#include<VrmlAPI_CafReader.hxx>
 #include<VrmlAPI_RepresentationOfShape.hxx>
 #include<VrmlAPI_Writer.hxx>
 

@@ -1523,6 +1523,156 @@ None
 	}
 };
 
+/***********************************************
+* class RWStepVisual_RWComplexTriangulatedFace *
+***********************************************/
+class RWStepVisual_RWComplexTriangulatedFace {
+	public:
+		/****************** RWStepVisual_RWComplexTriangulatedFace ******************/
+		/**** md5 signature: 1c19bf5a22d9b448efe0634d51eaaa86 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWComplexTriangulatedFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWComplexTriangulatedFace;
+		 RWStepVisual_RWComplexTriangulatedFace();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: d208a500533a4704a4e0b1fce9196056 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_ComplexTriangulatedFace
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_ComplexTriangulatedFace> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: e3dc3eca219a6cde0a0128439a4236eb ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_ComplexTriangulatedFace
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_ComplexTriangulatedFace> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: dae581c560beb1051461bfe3b0f80cf9 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_ComplexTriangulatedFace
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_ComplexTriangulatedFace> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWComplexTriangulatedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************************
+* class RWStepVisual_RWComplexTriangulatedSurfaceSet *
+*****************************************************/
+class RWStepVisual_RWComplexTriangulatedSurfaceSet {
+	public:
+		/****************** RWStepVisual_RWComplexTriangulatedSurfaceSet ******************/
+		/**** md5 signature: 193ce28a2d3d519f81fe92533847d7ed ****/
+		%feature("compactdefaultargs") RWStepVisual_RWComplexTriangulatedSurfaceSet;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWComplexTriangulatedSurfaceSet;
+		 RWStepVisual_RWComplexTriangulatedSurfaceSet();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 1e799df1e869cc11e92b9ac883d14f7f ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_ComplexTriangulatedSurfaceSet
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_ComplexTriangulatedSurfaceSet> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: e9d02fc732279257215dd7555dab8a5d ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_ComplexTriangulatedSurfaceSet
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_ComplexTriangulatedSurfaceSet> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: ea87132d21c5d460c3ea1075c5b46438 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_ComplexTriangulatedSurfaceSet
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_ComplexTriangulatedSurfaceSet> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWComplexTriangulatedSurfaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*************************************
 * class RWStepVisual_RWCompositeText *
 *************************************/
@@ -1877,6 +2027,156 @@ None
 
 
 %extend RWStepVisual_RWCoordinatesList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************************************
+* class RWStepVisual_RWCubicBezierTessellatedEdge *
+**************************************************/
+class RWStepVisual_RWCubicBezierTessellatedEdge {
+	public:
+		/****************** RWStepVisual_RWCubicBezierTessellatedEdge ******************/
+		/**** md5 signature: 3d0a3d2417d06e7c6ddcdcd29ba07596 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWCubicBezierTessellatedEdge;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWCubicBezierTessellatedEdge;
+		 RWStepVisual_RWCubicBezierTessellatedEdge();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: f59384a600dcaaa2e0477add1477d646 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_CubicBezierTessellatedEdge
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_CubicBezierTessellatedEdge> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 24654af351b0249e05170daaf86c8ca7 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_CubicBezierTessellatedEdge
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_CubicBezierTessellatedEdge> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 73f396655f699c633f6a6ce13ed9ba8f ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_CubicBezierTessellatedEdge
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_CubicBezierTessellatedEdge> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWCubicBezierTessellatedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************************
+* class RWStepVisual_RWCubicBezierTriangulatedFace *
+***************************************************/
+class RWStepVisual_RWCubicBezierTriangulatedFace {
+	public:
+		/****************** RWStepVisual_RWCubicBezierTriangulatedFace ******************/
+		/**** md5 signature: 8f2c7febc92428f0ce869145166f16f4 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWCubicBezierTriangulatedFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWCubicBezierTriangulatedFace;
+		 RWStepVisual_RWCubicBezierTriangulatedFace();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: dfe0b2cb2137c7576f30da7d9ef37f4e ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_CubicBezierTriangulatedFace
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_CubicBezierTriangulatedFace> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 2213a22e3c91167cf49d98b0a52040cc ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_CubicBezierTriangulatedFace
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_CubicBezierTriangulatedFace> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 41da557dafe1778b272b2ef99ae2311f ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_CubicBezierTriangulatedFace
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_CubicBezierTriangulatedFace> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWCubicBezierTriangulatedFace {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4004,6 +4304,140 @@ None
 	}
 };
 
+/***********************************************************
+* class RWStepVisual_RWRepositionedTessellatedGeometricSet *
+***********************************************************/
+class RWStepVisual_RWRepositionedTessellatedGeometricSet {
+	public:
+		/****************** RWStepVisual_RWRepositionedTessellatedGeometricSet ******************/
+		/**** md5 signature: ec343ab10327f5aeffe59b506e0720e3 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWRepositionedTessellatedGeometricSet;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWStepVisual_RWRepositionedTessellatedGeometricSet;
+		 RWStepVisual_RWRepositionedTessellatedGeometricSet();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 28683c3234721281a7cf4d8190df7ea6 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "Reads repositionedtessellatedgeometricset.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theAch: Interface_Check
+theEnt: StepVisual_RepositionedTessellatedGeometricSet
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theAch, const opencascade::handle<StepVisual_RepositionedTessellatedGeometricSet> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 30d910adde207b4cbce9ddb611ac19ed ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "Fills data for graph (shared items).
+
+Parameters
+----------
+theEnt: StepVisual_RepositionedTessellatedGeometricSet
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_RepositionedTessellatedGeometricSet> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 019a3e39dab2397fd9a748de3774d365 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "Writes repositionedtessellatedgeometricset.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_RepositionedTessellatedGeometricSet
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_RepositionedTessellatedGeometricSet> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWRepositionedTessellatedGeometricSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************************
+* class RWStepVisual_RWRepositionedTessellatedItem *
+***************************************************/
+class RWStepVisual_RWRepositionedTessellatedItem {
+	public:
+		/****************** RWStepVisual_RWRepositionedTessellatedItem ******************/
+		/**** md5 signature: 87add1ec484e8b53e96cae3aa56ad058 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWRepositionedTessellatedItem;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWStepVisual_RWRepositionedTessellatedItem;
+		 RWStepVisual_RWRepositionedTessellatedItem();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 27b5d816581f1bcc441af86d16250c80 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "Reads repositionedtessellateditem.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theAch: Interface_Check
+theEnt: StepVisual_RepositionedTessellatedItem
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theAch, const opencascade::handle<StepVisual_RepositionedTessellatedItem> & theEnt);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: b43128cdd5c0e5f70efdd8947c7f4580 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "Writes repositionedtessellateditem.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_RepositionedTessellatedItem
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_RepositionedTessellatedItem> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWRepositionedTessellatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**********************************
 * class RWStepVisual_RWStyledItem *
 **********************************/
@@ -5204,6 +5638,81 @@ None
 	}
 };
 
+/*************************************************
+* class RWStepVisual_RWTessellatedConnectingEdge *
+*************************************************/
+class RWStepVisual_RWTessellatedConnectingEdge {
+	public:
+		/****************** RWStepVisual_RWTessellatedConnectingEdge ******************/
+		/**** md5 signature: e1dd9721e421d5ad77d7040b04968660 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedConnectingEdge;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedConnectingEdge;
+		 RWStepVisual_RWTessellatedConnectingEdge();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: f07fdc44fd71df55af9f6300d76e99fc ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedConnectingEdge
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedConnectingEdge> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: f3f90df2880e62ba5e86804d828b9f2d ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedConnectingEdge
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedConnectingEdge> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 497136cdd47ebc43e17c63a5dd1c1147 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedConnectingEdge
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedConnectingEdge> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedConnectingEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*******************************************
 * class RWStepVisual_RWTessellatedCurveSet *
 *******************************************/
@@ -5274,6 +5783,81 @@ None
 
 
 %extend RWStepVisual_RWTessellatedCurveSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class RWStepVisual_RWTessellatedEdge *
+***************************************/
+class RWStepVisual_RWTessellatedEdge {
+	public:
+		/****************** RWStepVisual_RWTessellatedEdge ******************/
+		/**** md5 signature: c6e967ed40f109d97654681f3f44158d ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedEdge;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedEdge;
+		 RWStepVisual_RWTessellatedEdge();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: fe5d4e2cf95b5c646ef7cbf9a7912551 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedEdge
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedEdge> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 7fb9d54e30077615758710fbc9569989 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedEdge
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedEdge> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 81393c929ae1aff5b504716dd2ccb04f ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedEdge
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedEdge> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5408,6 +5992,606 @@ None
 
 
 %extend RWStepVisual_RWTessellatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************************
+* class RWStepVisual_RWTessellatedPointSet *
+*******************************************/
+class RWStepVisual_RWTessellatedPointSet {
+	public:
+		/****************** RWStepVisual_RWTessellatedPointSet ******************/
+		/**** md5 signature: 6c2227ca7b0552e41ae27fb98d9b1206 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedPointSet;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedPointSet;
+		 RWStepVisual_RWTessellatedPointSet();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: b8ff46eef516be57476fcd3feabfad33 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedPointSet
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedPointSet> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 585d252950bc73148d005c72c484c0fa ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedPointSet
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedPointSet> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: a8d702fe42a97e20698d4079212c39b3 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedPointSet
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedPointSet> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedPointSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************************************
+* class RWStepVisual_RWTessellatedShapeRepresentation *
+******************************************************/
+class RWStepVisual_RWTessellatedShapeRepresentation {
+	public:
+		/****************** RWStepVisual_RWTessellatedShapeRepresentation ******************/
+		/**** md5 signature: c94465b61fd21320a415376488f4c322 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedShapeRepresentation;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedShapeRepresentation;
+		 RWStepVisual_RWTessellatedShapeRepresentation();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: f482bd72cdfef472f970e71105fc88bf ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedShapeRepresentation
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedShapeRepresentation> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 6a3a1e41d8f34c9ee0456ada14f02e81 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedShapeRepresentation
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedShapeRepresentation> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 52198475c04419bdfdeaf3046b1f63af ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedShapeRepresentation
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedShapeRepresentation> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************************************************
+* class RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters *
+****************************************************************************/
+class RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters {
+	public:
+		/****************** RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters ******************/
+		/**** md5 signature: 3aee18609382e4f956932ead6d92dc67 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters;
+		 RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 3ca5a66d710a685ec7d970558089532b ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedShapeRepresentationWithAccuracyParameters
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedShapeRepresentationWithAccuracyParameters> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: acb07d5361c2bde415aacba52d1462cf ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedShapeRepresentationWithAccuracyParameters
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedShapeRepresentationWithAccuracyParameters> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: d45aae4cc9e178be9924b6428b7b51ff ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedShapeRepresentationWithAccuracyParameters
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedShapeRepresentationWithAccuracyParameters> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedShapeRepresentationWithAccuracyParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class RWStepVisual_RWTessellatedShell *
+****************************************/
+class RWStepVisual_RWTessellatedShell {
+	public:
+		/****************** RWStepVisual_RWTessellatedShell ******************/
+		/**** md5 signature: 13f1069d0b569064debad7fde912ebff ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedShell;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedShell;
+		 RWStepVisual_RWTessellatedShell();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 632e3e06e56df8eb40a2897b66c236d4 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedShell
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedShell> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 5e189deff6a853a494d06a77f9c186dd ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedShell
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedShell> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 6c1af3ff69e4ae4dda72756805e7fc5e ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedShell
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedShell> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class RWStepVisual_RWTessellatedSolid *
+****************************************/
+class RWStepVisual_RWTessellatedSolid {
+	public:
+		/****************** RWStepVisual_RWTessellatedSolid ******************/
+		/**** md5 signature: ae5eb0341af0db1b469d737f9e5fe6d2 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedSolid;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedSolid;
+		 RWStepVisual_RWTessellatedSolid();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: cb75463c2f6834e81e7e1211ff5468d4 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedSolid
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedSolid> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 9a9df72b812672057c8fdd3f8e9c0eb3 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedSolid
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedSolid> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 5e40b5ac2f5e6be6719330759a81c04d ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedSolid
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedSolid> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************************
+* class RWStepVisual_RWTessellatedStructuredItem *
+*************************************************/
+class RWStepVisual_RWTessellatedStructuredItem {
+	public:
+		/****************** RWStepVisual_RWTessellatedStructuredItem ******************/
+		/**** md5 signature: 6010654f7a511dfa1b4a9c8a694aed96 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedStructuredItem;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedStructuredItem;
+		 RWStepVisual_RWTessellatedStructuredItem();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 03ee586182d27e42b689512ff8b64814 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedStructuredItem
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedStructuredItem> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 5b0e2a479e8d513615df2b524a0f68c1 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedStructuredItem
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedStructuredItem> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 034be76bcd47ce0eeb018cc85b8e3ade ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedStructuredItem
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedStructuredItem> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedStructuredItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class RWStepVisual_RWTessellatedVertex *
+*****************************************/
+class RWStepVisual_RWTessellatedVertex {
+	public:
+		/****************** RWStepVisual_RWTessellatedVertex ******************/
+		/**** md5 signature: ac91b35f0646f4df0ba0fd3d51877bb1 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedVertex;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedVertex;
+		 RWStepVisual_RWTessellatedVertex();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 6e19e476d744887148a5e56c71873d76 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedVertex
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedVertex> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: e107276c5891e06fb2d5512356fd7a6a ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedVertex
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedVertex> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: ad96eb5177900f8fcee35359b6237070 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedVertex
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedVertex> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class RWStepVisual_RWTessellatedWire *
+***************************************/
+class RWStepVisual_RWTessellatedWire {
+	public:
+		/****************** RWStepVisual_RWTessellatedWire ******************/
+		/**** md5 signature: b24c4537b81d5000094b2b62d42902c3 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTessellatedWire;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTessellatedWire;
+		 RWStepVisual_RWTessellatedWire();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: 20254c692e2bc312c22022e14b16ab78 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TessellatedWire
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TessellatedWire> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: f350708d0c28c0df9b9fa9d20b045338 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TessellatedWire
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TessellatedWire> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: d951715639a49184233aa4be0c87faa5 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TessellatedWire
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TessellatedWire> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTessellatedWire {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5708,6 +6892,81 @@ None
 
 
 %extend RWStepVisual_RWTextStyleWithBoxCharacteristics {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class RWStepVisual_RWTriangulatedFace *
+****************************************/
+class RWStepVisual_RWTriangulatedFace {
+	public:
+		/****************** RWStepVisual_RWTriangulatedFace ******************/
+		/**** md5 signature: cd39b8153ba8745d3a91503797cefcd4 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTriangulatedFace;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWStepVisual_RWTriangulatedFace;
+		 RWStepVisual_RWTriangulatedFace();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: fe8fea57a9d9a3d76cb8c48ca7676beb ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TriangulatedFace
+
+Returns
+-------
+None
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TriangulatedFace> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 71dcc32c7126aca72596815b1b655ce9 ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theEnt: StepVisual_TriangulatedFace
+theIter: Interface_EntityIterator
+
+Returns
+-------
+None
+") Share;
+		void Share(const opencascade::handle<StepVisual_TriangulatedFace> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: 90cd851a22867a5c713e3eec4ae6daa7 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TriangulatedFace
+
+Returns
+-------
+None
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TriangulatedFace> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTriangulatedFace {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

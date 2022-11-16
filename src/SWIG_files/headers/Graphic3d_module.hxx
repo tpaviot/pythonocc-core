@@ -62,6 +62,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_CullingTool.hxx>
 #include<Graphic3d_DataStructureManager.hxx>
 #include<Graphic3d_DiagnosticInfo.hxx>
+#include<Graphic3d_DisplayPriority.hxx>
 #include<Graphic3d_FrameStats.hxx>
 #include<Graphic3d_FrameStatsCounter.hxx>
 #include<Graphic3d_FrameStatsData.hxx>
@@ -124,6 +125,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_Texture2D.hxx>
 #include<Graphic3d_Texture2Dmanual.hxx>
 #include<Graphic3d_Texture2Dplane.hxx>
+#include<Graphic3d_Texture3D.hxx>
 #include<Graphic3d_TextureEnv.hxx>
 #include<Graphic3d_TextureMap.hxx>
 #include<Graphic3d_TextureParams.hxx>

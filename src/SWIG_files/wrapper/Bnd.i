@@ -183,21 +183,12 @@ from OCC.Core.Exception import *
     __next__ = next
     }
 };
-%template(Bnd_SeqOfBox) NCollection_Sequence<Bnd_Box>;
-
-%extend NCollection_Sequence<Bnd_Box> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<Bnd_Box> Bnd_Array1OfBox;
 typedef NCollection_Array1<Bnd_Box2d> Bnd_Array1OfBox2d;
 typedef NCollection_Array1<Bnd_Sphere> Bnd_Array1OfSphere;
-typedef NCollection_Sequence<Bnd_Box> Bnd_SeqOfBox;
 /* end typedefs declaration */
 
 /****************
@@ -1714,120 +1705,6 @@ None
 	}
 };
 
-/***************************
-* class Bnd_BoundSortBox2d *
-***************************/
-class Bnd_BoundSortBox2d {
-	public:
-		/****************** Bnd_BoundSortBox2d ******************/
-		/**** md5 signature: 478f70a9c2a9a079a6c4e0a33a658000 ****/
-		%feature("compactdefaultargs") Bnd_BoundSortBox2d;
-		%feature("autodoc", "Constructs an empty comparison algorithm for 2d bounding boxes. the bounding boxes are then defined using the initialize function.
-
-Returns
--------
-None
-") Bnd_BoundSortBox2d;
-		 Bnd_BoundSortBox2d();
-
-		/****************** Add ******************/
-		/**** md5 signature: 83580b6f6e6c748eb1588675cd711549 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds the 2d bounding box thebox at position boxindex in the array of boxes to be sorted by this comparison algorithm. this function is used only in conjunction with the third syntax described in the synopsis of initialize. exceptions - standard_outofrange if boxindex is not in the range [ 1,nbcomponents ] where nbcomponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. - standard_multiplydefined if a box still exists at position boxindex in the array of boxes to be sorted by this comparison algorithm.
-
-Parameters
-----------
-theBox: Bnd_Box2d
-boxIndex: int
-
-Returns
--------
-None
-") Add;
-		void Add(const Bnd_Box2d & theBox, const Standard_Integer boxIndex);
-
-		/****************** Compare ******************/
-		/**** md5 signature: 24a301777022bc45948ea5a0b99881a4 ****/
-		%feature("compactdefaultargs") Compare;
-		%feature("autodoc", "Compares the 2d bounding box thebox with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
-
-Parameters
-----------
-theBox: Bnd_Box2d
-
-Returns
--------
-TColStd_ListOfInteger
-") Compare;
-		const TColStd_ListOfInteger & Compare(const Bnd_Box2d & theBox);
-
-		/****************** Dump ******************/
-		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") Dump;
-		void Dump();
-
-		/****************** Initialize ******************/
-		/**** md5 signature: eb6a134a10e4f9dc5aa588049ba86217 ****/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initializes this comparison algorithm with - the set of 2d bounding boxes setofbox.
-
-Parameters
-----------
-CompleteBox: Bnd_Box2d
-SetOfBox: Bnd_HArray1OfBox2d
-
-Returns
--------
-None
-") Initialize;
-		void Initialize(const Bnd_Box2d & CompleteBox, const opencascade::handle<Bnd_HArray1OfBox2d> & SetOfBox);
-
-		/****************** Initialize ******************/
-		/**** md5 signature: 69f433e11c62138b26ec73df24714664 ****/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initializes this comparison algorithm with - the set of 2d bounding boxes setofbox, where completebox is given as the global bounding box of setofbox.
-
-Parameters
-----------
-SetOfBox: Bnd_HArray1OfBox2d
-
-Returns
--------
-None
-") Initialize;
-		void Initialize(const opencascade::handle<Bnd_HArray1OfBox2d> & SetOfBox);
-
-		/****************** Initialize ******************/
-		/**** md5 signature: 8057e14778fab48ce24190ff999e96d8 ****/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initializes this comparison algorithm, giving it only - the maximum number nbcomponents, and - the global bounding box completebox, of the 2d bounding boxes to be managed. use the add function to define the array of bounding boxes to be sorted by this algorithm.
-
-Parameters
-----------
-CompleteBox: Bnd_Box2d
-nbComponents: int
-
-Returns
--------
-None
-") Initialize;
-		void Initialize(const Bnd_Box2d & CompleteBox, const Standard_Integer nbComponents);
-
-};
-
-
-%extend Bnd_BoundSortBox2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /****************
 * class Bnd_Box *
 ****************/
@@ -1845,7 +1722,7 @@ None
 		 Bnd_Box();
 
 		/****************** Bnd_Box ******************/
-		/**** md5 signature: 8988059a3a19778057ad20076dff426e ****/
+		/**** md5 signature: e97cf06d6d1b2ccd51edf64dd6ab76e2 ****/
 		%feature("compactdefaultargs") Bnd_Box;
 		%feature("autodoc", "Creates a bounding box, it contains: - minimum/maximum point of bounding box, the constructed box is qualified void. its gap is null.
 
@@ -1858,7 +1735,7 @@ Returns
 -------
 None
 ") Bnd_Box;
-		 Bnd_Box(const gp_Pnt theMin, const gp_Pnt theMax);
+		 Bnd_Box(const gp_Pnt & theMin, const gp_Pnt & theMax);
 
 		/****************** Add ******************/
 		/**** md5 signature: f26c3b18c425c9af5e181dcf97365f7d ****/
