@@ -76,13 +76,12 @@ class DocFromSTEP:
         step_reader.SetNameMode(True)
         step_reader.SetMatMode(True)
         step_reader.SetGDTMode(True)
-        print("read STP file", stp_filename, "...", end="")
+
         status = step_reader.ReadFile(stp_filename)
         if status == IFSelect_RetDone:
             step_reader.Transfer(self._doc)
-            print("done.")
         else:
-            raise IOError("failed")
+            raise IOError(f"failed loadin STEP file {stp_filename}")
 
     def get_doc(self):
         return self._doc
@@ -121,7 +120,7 @@ class SceneGraphFromDoc:
         )
 
     def save_as_json(self, filename):
-        with open(filename, "w") as f:
+        with open(filename, "w", encoding="utf-8") as f:
             f.write(self.to_json_string())
 
     def get_scene(self):

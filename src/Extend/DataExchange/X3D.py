@@ -277,7 +277,7 @@ class X3DShapeExporter:
         self.to_x3d_graph()
 
     def to_x3d_graph(self, export_bb=False):
-        """ " takes the tessellator and build all related x3d nodes"""
+        """takes the tessellator and build all related x3d nodes"""
         if self._decimation_ratio > 0.0:
             self._shape_tesselator.decimate(self._decimation_ratio)
 

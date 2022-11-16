@@ -72,7 +72,7 @@ class WireDiscretizer:
     def __init__(self, a_wire):
         curve_type = a_wire.ShapeType()
         if curve_type != TopAbs_ShapeEnum.TopAbs_WIRE:
-            raise AssertionError("you must pass a wire to this class")
+            raise AssertionError("you must pass a wire the WireDiscretizer class")
         self._wire = a_wire
         self._pnts = []
 
@@ -98,7 +98,7 @@ class EdgeDiscretizer:
         curve_type = a_curve.ShapeType()
         if curve_type != TopAbs_ShapeEnum.TopAbs_EDGE:
             raise AssertionError(
-                "You must provide a wire or a curve to the CurveDiscretizer class."
+                "You must provide an edge to the EdgeDiscretizer class."
             )
 
         # the pnts
@@ -760,20 +760,21 @@ if __name__ == "__main__":
     print("Nb indices :", nb_i)
     print("Nb vertices:", nb_v)
     print("Nb normals:", nb_n)
+    print(dir(tess))
     print("Triangles, points density:", tess.get_mesh_density())
     # print('Edges:', tess._edges_indices)
     print("Translation", tess.get_translation())
     print("Rotation", tess.get_rotation())
     print("Time: ", final_time - init_time)
     # # compare with the c++ tesselator
-    from OCC.Core.Tesselator import ShapeTesselator
+    #from OCC.Core.Tesselator import ShapeTesselator
 
-    init_time = time.perf_counter()
-    tess = ShapeTesselator(bo_t)
-    tess.Compute()
+    #init_time = time.perf_counter()
+    #tess = ShapeTesselator(bo_t)
+    #tess.Compute()
     # print(tess.GetVertexIndices())
     # print(tess.GetVertexCoords())
-    final_time = time.perf_counter()
+    #final_time = time.perf_counter()
     # nb_i = len(tess.GetVertexIndices())
     # nb_v = len(tess.GetVertexCoords())
 
@@ -811,7 +812,7 @@ if __name__ == "__main__":
         a_tess = ShapeTesselator(torus)
         print(a_tess.get_mesh_density())
         # a_polydata = a_tess.to_vtk()
-        decimated_pd = a_tess.decimate(0.75)
+        decimated_pd = a_tess.decimate(0.9)
         print(a_tess.get_mesh_density())
         # mapper
         mapper = vtk.vtkPolyDataMapper()
