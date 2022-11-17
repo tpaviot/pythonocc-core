@@ -3,6 +3,7 @@
 
 
 #include <algorithm>
+#include <vector>
 
 #include <Standard.hxx>
 #include <Standard_Type.hxx>
@@ -16,12 +17,20 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
+#include <TColStd_DataMapOfIntegerInteger.hxx>
+#include <TColStd_DataMapOfIntegerReal.hxx>
 #include <MeshVS_EntityType.hxx>
 #include <MeshVS_DataSource.hxx>
 #include <Poly_Triangulation.hxx>
-#include <vector>
 #include <gp_Pnt.hxx>
 #include <gp_Vec.hxx>
+#include <Precision.hxx>
+#include <Standard_Type.hxx>
+#include <TColgp_SequenceOfXYZ.hxx>
+#include <TopTools_HArray2OfShape.hxx>
+#include <TopTools_HArray1OfListOfShape.hxx>
+#include <TopTools_HArray1OfShape.hxx>
+
 
 class MeshDS_DataSource;
 DEFINE_STANDARD_HANDLE(MeshDS_DataSource, MeshVS_DataSource)
