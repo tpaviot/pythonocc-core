@@ -30,6 +30,7 @@
   #include <Xw_Window.hxx>
 #endif
 
+#include <Aspect_Handle.hxx>
 #include <AIS_InteractiveContext.hxx>
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <V3d_Viewer.hxx>
