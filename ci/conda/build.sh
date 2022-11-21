@@ -1,11 +1,6 @@
 #!/bin/bash
 # make an in source build do to some problems with install
 
-declare -a CMAKE_PLATFORM_FLAGS
-if [[ ${HOST} =~ .*linux.* ]]; then
-    CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
-fi
-
 # Configure step
 cmake -G Ninja \
  -DPYTHONOCC_BUILD_TYPE=Release \
