@@ -22,7 +22,7 @@ requirements:
     - {{ cdt('libxi-devel') }}          # [linux]
     - ninja
     - cmake
-    - swig >=4.0.2
+    - swig ==4.0.2
 
   host:
     - python {{ python }}
@@ -31,7 +31,6 @@ requirements:
 
   run:
     - occt ==7.6.3
-    - python
     - six
     - numpy >=1.17
 
