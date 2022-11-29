@@ -21,11 +21,11 @@ can compile/use it :
 
 *   the python programming language (<http://www.python.org>). Python 3.x is required.
 
-*   OpenCascade 7.6.2 (<https://dev.opencascade.org>)
+*   OpenCascade 7.7.0 (<https://dev.opencascade.org>)
 
     IMPORTANT: OpenCASCADE has to be compiled using flag -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
 
-*   SWIG 4.0.2 or higher (<http://www.swig.org>)
+*   SWIG 4.0.2 (<http://www.swig.org>)
 
 Optional
 --------
