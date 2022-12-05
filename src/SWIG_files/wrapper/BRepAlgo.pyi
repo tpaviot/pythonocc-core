@@ -16,6 +16,10 @@ class brepalgo:
     @staticmethod
     def ConcatenateWireC0(Wire: TopoDS_Wire) -> TopoDS_Edge: ...
     @staticmethod
+    def ConvertFace(theFace: TopoDS_Face, theAngleTolerance: float) -> TopoDS_Face: ...
+    @staticmethod
+    def ConvertWire(theWire: TopoDS_Wire, theAngleTolerance: float, theFace: TopoDS_Face) -> TopoDS_Wire: ...
+    @staticmethod
     def IsTopologicallyValid(S: TopoDS_Shape) -> bool: ...
     @overload
     @staticmethod
@@ -120,6 +124,8 @@ class BRepAlgo_NormalProjection:
 
 brepalgo_ConcatenateWire = brepalgo.ConcatenateWire
 brepalgo_ConcatenateWireC0 = brepalgo.ConcatenateWireC0
+brepalgo_ConvertFace = brepalgo.ConvertFace
+brepalgo_ConvertWire = brepalgo.ConvertWire
 brepalgo_IsTopologicallyValid = brepalgo.IsTopologicallyValid
 brepalgo_IsValid = brepalgo.IsValid
 brepalgo_IsValid = brepalgo.IsValid

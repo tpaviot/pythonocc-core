@@ -308,7 +308,7 @@ bool
 class BRepCheck_Analyzer {
 	public:
 		/****************** BRepCheck_Analyzer ******************/
-		/**** md5 signature: 863e07daa9878e246ad0df9e39cb12c7 ****/
+		/**** md5 signature: c4951524e7a1ce44dddda94aa6e9d260 ****/
 		%feature("compactdefaultargs") BRepCheck_Analyzer;
 		%feature("autodoc", "Constructs a shape validation object defined by the shape s. <s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex : brepcheck_invalidtolerancevalue nyi for an edge : brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerancevalue nyi for a face : brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerancevalue nyi for a wire : brepcheck_selfintersectingwire.
 
@@ -319,15 +319,17 @@ GeomControls: bool,optional
 	default value is Standard_True
 theIsParallel: bool,optional
 	default value is Standard_False
+theIsExact: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") BRepCheck_Analyzer;
-		 BRepCheck_Analyzer(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True, const Standard_Boolean theIsParallel = Standard_False);
+		 BRepCheck_Analyzer(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True, const Standard_Boolean theIsParallel = Standard_False, const Standard_Boolean theIsExact = Standard_False);
 
 		/****************** Init ******************/
-		/**** md5 signature: c4f36359b7ff320b0be9eb21e30c20b6 ****/
+		/**** md5 signature: 5196c4939ad07fcdde4186169aa9d21c ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "<s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex : brepcheck_invalidtolerance nyi for an edge : brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerance nyi for a face : brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerance nyi for a wire : brepcheck_selfintersectingwire.
 
@@ -336,14 +338,34 @@ Parameters
 S: TopoDS_Shape
 GeomControls: bool,optional
 	default value is Standard_True
-theIsParallel: bool,optional
-	default value is Standard_False
 
 Returns
 -------
 None
 ") Init;
-		void Init(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True, const Standard_Boolean theIsParallel = Standard_False);
+		void Init(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True);
+
+		/****************** IsExactMethod ******************/
+		/**** md5 signature: 5e4b019881aa7aa6b5765966d6b467ca ****/
+		%feature("compactdefaultargs") IsExactMethod;
+		%feature("autodoc", "Returns true if exact method selected.
+
+Returns
+-------
+bool
+") IsExactMethod;
+		Standard_Boolean IsExactMethod();
+
+		/****************** IsParallel ******************/
+		/**** md5 signature: fc1de18a583c6aa3b3d9897c80aa553e ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if parallel flag is set.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
 
 		/****************** IsValid ******************/
 		/**** md5 signature: 067e002b3bd9e0362264cfada4f4eeac ****/
@@ -385,6 +407,36 @@ Returns
 opencascade::handle<BRepCheck_Result>
 ") Result;
 		const opencascade::handle<BRepCheck_Result> & Result(const TopoDS_Shape & theSubS);
+
+		/****************** SetExactMethod ******************/
+		/**** md5 signature: 7e9fb7a39514337474c163d15b041f18 ****/
+		%feature("compactdefaultargs") SetExactMethod;
+		%feature("autodoc", "Sets method to calculate distance: calculating in finite number of points (if theisexact is false, faster, but possible not correct result) or exact calculating by using breplib_checkcurveonsurface class (if theisexact is true, slowly, but more correctly). exact method is used only when edge is sameparameter. default method is calculating in finite number of points.
+
+Parameters
+----------
+theIsExact: bool
+
+Returns
+-------
+None
+") SetExactMethod;
+		void SetExactMethod(const Standard_Boolean theIsExact);
+
+		/****************** SetParallel ******************/
+		/**** md5 signature: 91c6328a8c6135d4f1f1da7db8aee28f ****/
+		%feature("compactdefaultargs") SetParallel;
+		%feature("autodoc", "Sets parallel flag.
+
+Parameters
+----------
+theIsParallel: bool
+
+Returns
+-------
+None
+") SetParallel;
+		void SetParallel(const Standard_Boolean theIsParallel);
 
 };
 
@@ -699,6 +751,17 @@ None
 ") InContext;
 		void InContext(const TopoDS_Shape & ContextShape);
 
+		/****************** IsExactMethod ******************/
+		/**** md5 signature: 5e4b019881aa7aa6b5765966d6b467ca ****/
+		%feature("compactdefaultargs") IsExactMethod;
+		%feature("autodoc", "Returns true if exact method selected.
+
+Returns
+-------
+bool
+") IsExactMethod;
+		Standard_Boolean IsExactMethod();
+
 		/****************** Minimum ******************/
 		/**** md5 signature: bcca4bce745250eb4a0cbc554641b42d ****/
 		%feature("compactdefaultargs") Minimum;
@@ -709,6 +772,21 @@ Returns
 None
 ") Minimum;
 		void Minimum();
+
+		/****************** SetExactMethod ******************/
+		/**** md5 signature: 61e71faebec158e548494f19380d6da6 ****/
+		%feature("compactdefaultargs") SetExactMethod;
+		%feature("autodoc", "Sets method to calculate distance: calculating in finite number of points (if theisexact is false, faster, but possible not correct result) or exact calculating by using breplib_checkcurveonsurface class (if theisexact is true, slowly, but more correctly). exact method is used only when edge is sameparameter. default method is calculating in finite number of points.
+
+Parameters
+----------
+theIsExact: bool
+
+Returns
+-------
+None
+") SetExactMethod;
+		void SetExactMethod(Standard_Boolean theIsExact);
 
 		/****************** SetStatus ******************/
 		/**** md5 signature: 86ab384d3d45dec24b5a7e095ad3e061 ****/

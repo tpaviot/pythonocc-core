@@ -10,6 +10,7 @@ from OCC.Core.PrsMgr import *
 from OCC.Core.TopLoc import *
 from OCC.Core.V3d import *
 from OCC.Core.Select3D import *
+from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 
 
@@ -90,6 +91,8 @@ class StdSelect_BRepSelectionTool:
     @staticmethod
     def GetEdgeSensitive(theShape: TopoDS_Shape, theOwner: SelectMgr_EntityOwner, theSelection: SelectMgr_Selection, theDeflection: float, theDeviationAngle: float, theNbPOnEdge: int, theMaxiParam: float, theSensitive: Select3D_SensitiveEntity) -> None: ...
     @staticmethod
+    def GetSensitiveForCylinder(theSubfacesMap: TopTools_IndexedMapOfShape, theOwner: SelectMgr_EntityOwner, theSelection: SelectMgr_Selection) -> bool: ...
+    @staticmethod
     def GetSensitiveForFace(theFace: TopoDS_Face, theOwner: SelectMgr_EntityOwner, theOutList: Select3D_EntitySequence, theAutoTriang: Optional[bool] = True, theNbPOnEdge: Optional[int] = 9, theMaxiParam: Optional[float] = 500, theInteriorFlag: Optional[bool] = True) -> bool: ...
     @staticmethod
     def GetStandardPriority(theShape: TopoDS_Shape, theType: TopAbs_ShapeEnum) -> int: ...
@@ -137,6 +140,7 @@ class StdSelect_ShapeTypeFilter(SelectMgr_Filter):
 stdselect_SetDrawerForBRepOwner = stdselect.SetDrawerForBRepOwner
 StdSelect_BRepSelectionTool_ComputeSensitive = StdSelect_BRepSelectionTool.ComputeSensitive
 StdSelect_BRepSelectionTool_GetEdgeSensitive = StdSelect_BRepSelectionTool.GetEdgeSensitive
+StdSelect_BRepSelectionTool_GetSensitiveForCylinder = StdSelect_BRepSelectionTool.GetSensitiveForCylinder
 StdSelect_BRepSelectionTool_GetSensitiveForFace = StdSelect_BRepSelectionTool.GetSensitiveForFace
 StdSelect_BRepSelectionTool_GetStandardPriority = StdSelect_BRepSelectionTool.GetStandardPriority
 StdSelect_BRepSelectionTool_Load = StdSelect_BRepSelectionTool.Load

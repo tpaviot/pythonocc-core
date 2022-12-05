@@ -46,18 +46,19 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepcafcontrol.ht
 #include<StepBasic_module.hxx>
 #include<STEPControl_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TColStd_module.hxx>
+#include<TCollection_module.hxx>
 #include<TDF_module.hxx>
 #include<IFSelect_module.hxx>
-#include<TCollection_module.hxx>
 #include<XSControl_module.hxx>
 #include<XCAFDimTolObjects_module.hxx>
 #include<StepDimTol_module.hxx>
 #include<StepRepr_module.hxx>
 #include<StepVisual_module.hxx>
-#include<XCAFDoc_module.hxx>
-#include<STEPConstruct_module.hxx>
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<STEPConstruct_module.hxx>
 #include<Interface_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopTools_module.hxx>
@@ -97,18 +98,19 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepcafcontrol.ht
 %import StepBasic.i
 %import STEPControl.i
 %import TopoDS.i
+%import TColStd.i
+%import TCollection.i
 %import TDF.i
 %import IFSelect.i
-%import TCollection.i
 %import XSControl.i
 %import XCAFDimTolObjects.i
 %import StepDimTol.i
 %import StepRepr.i
 %import StepVisual.i
-%import XCAFDoc.i
-%import STEPConstruct.i
 %import TDocStd.i
 %import Message.i
+%import XCAFDoc.i
+%import STEPConstruct.i
 
 %pythoncode {
 from enum import IntEnum
@@ -232,6 +234,377 @@ None
 %make_alias(STEPCAFControl_ActorWrite)
 
 %extend STEPCAFControl_ActorWrite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class STEPCAFControl_ConfigurationNode *
+*****************************************/
+class STEPCAFControl_ConfigurationNode : public DE_ConfigurationNode {
+	public:
+		class STEPCAFControl_InternalSection {};
+/* public enums */
+enum ReadMode_BSplineContinuity {
+	ReadMode_BSplineContinuity_C0 = 0,
+	ReadMode_BSplineContinuity_C1 = 1,
+	ReadMode_BSplineContinuity_C2 = 2,
+};
+
+enum ReadMode_Precision {
+	ReadMode_Precision_File = 0,
+	ReadMode_Precision_User = 1,
+};
+
+enum ReadMode_MaxPrecision {
+	ReadMode_MaxPrecision_Preferred = 0,
+	ReadMode_MaxPrecision_Forced = 1,
+};
+
+enum ReadMode_SurfaceCurve {
+	ReadMode_SurfaceCurve_Default = 0,
+	ReadMode_SurfaceCurve_2DUse_Preferred = 2,
+	ReadMode_SurfaceCurve_2DUse_Forced = - 2,
+	ReadMode_SurfaceCurve_3DUse_Preferred = 3,
+	ReadMode_SurfaceCurve_3DUse_Forced = - 3,
+};
+
+enum AngleUnitMode {
+	AngleUnitMode_File = 0,
+	AngleUnitMode_Rad = 1,
+	AngleUnitMode_Deg = 2,
+};
+
+enum ReadMode_ProductContext {
+	ReadMode_ProductContext_All = 1,
+	ReadMode_ProductContext_Design = 2,
+	ReadMode_ProductContext_Analysis = 3,
+};
+
+enum ReadMode_ShapeRepr {
+	ReadMode_ShapeRepr_All = 1,
+	ReadMode_ShapeRepr_ABSR = 2,
+	ReadMode_ShapeRepr_MSSR = 3,
+	ReadMode_ShapeRepr_GBSSR = 4,
+	ReadMode_ShapeRepr_FBSR = 5,
+	ReadMode_ShapeRepr_EBWSR = 6,
+	ReadMode_ShapeRepr_GBWSR = 7,
+};
+
+enum ReadMode_AssemblyLevel {
+	ReadMode_AssemblyLevel_All = 1,
+	ReadMode_AssemblyLevel_Assembly = 2,
+	ReadMode_AssemblyLevel_Structure = 3,
+	ReadMode_AssemblyLevel_Shape = 4,
+};
+
+enum RWMode_Tessellated {
+	RWMode_Tessellated_Off = 0,
+	RWMode_Tessellated_On = 1,
+	RWMode_Tessellated_OnNoBRep = 2,
+};
+
+enum WriteMode_PrecisionMode {
+	WriteMode_PrecisionMode_Least = - 1,
+	WriteMode_PrecisionMode_Average = 0,
+	WriteMode_PrecisionMode_Greatest = 1,
+	WriteMode_PrecisionMode_Session = 2,
+};
+
+enum WriteMode_Assembly {
+	WriteMode_Assembly_Off = 0,
+	WriteMode_Assembly_On = 1,
+	WriteMode_Assembly_Auto = 2,
+};
+
+enum WriteMode_StepSchema {
+	WriteMode_StepSchema_AP214CD = 1,
+	WriteMode_StepSchema_AP214DIS = 2,
+	WriteMode_StepSchema_AP203 = 3,
+	WriteMode_StepSchema_AP214IS = 4,
+	WriteMode_StepSchema_AP242DIS = 5,
+};
+
+enum WriteMode_VertexMode {
+	WriteMode_VertexMode_OneCompound = 0,
+	WriteMode_VertexMode_SingleVertex = 1,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class ReadMode_BSplineContinuity(IntEnum):
+	ReadMode_BSplineContinuity_C0 = 0
+	ReadMode_BSplineContinuity_C1 = 1
+	ReadMode_BSplineContinuity_C2 = 2
+ReadMode_BSplineContinuity_C0 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C0
+ReadMode_BSplineContinuity_C1 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C1
+ReadMode_BSplineContinuity_C2 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C2
+
+class ReadMode_Precision(IntEnum):
+	ReadMode_Precision_File = 0
+	ReadMode_Precision_User = 1
+ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
+ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
+
+class ReadMode_MaxPrecision(IntEnum):
+	ReadMode_MaxPrecision_Preferred = 0
+	ReadMode_MaxPrecision_Forced = 1
+ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
+ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
+
+class ReadMode_SurfaceCurve(IntEnum):
+	ReadMode_SurfaceCurve_Default = 0
+	ReadMode_SurfaceCurve_2DUse_Preferred = 2
+	ReadMode_SurfaceCurve_2DUse_Forced = - 2
+	ReadMode_SurfaceCurve_3DUse_Preferred = 3
+	ReadMode_SurfaceCurve_3DUse_Forced = - 3
+ReadMode_SurfaceCurve_Default = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_Default
+ReadMode_SurfaceCurve_2DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Preferred
+ReadMode_SurfaceCurve_2DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Forced
+ReadMode_SurfaceCurve_3DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Preferred
+ReadMode_SurfaceCurve_3DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Forced
+
+class AngleUnitMode(IntEnum):
+	AngleUnitMode_File = 0
+	AngleUnitMode_Rad = 1
+	AngleUnitMode_Deg = 2
+AngleUnitMode_File = AngleUnitMode.AngleUnitMode_File
+AngleUnitMode_Rad = AngleUnitMode.AngleUnitMode_Rad
+AngleUnitMode_Deg = AngleUnitMode.AngleUnitMode_Deg
+
+class ReadMode_ProductContext(IntEnum):
+	ReadMode_ProductContext_All = 1
+	ReadMode_ProductContext_Design = 2
+	ReadMode_ProductContext_Analysis = 3
+ReadMode_ProductContext_All = ReadMode_ProductContext.ReadMode_ProductContext_All
+ReadMode_ProductContext_Design = ReadMode_ProductContext.ReadMode_ProductContext_Design
+ReadMode_ProductContext_Analysis = ReadMode_ProductContext.ReadMode_ProductContext_Analysis
+
+class ReadMode_ShapeRepr(IntEnum):
+	ReadMode_ShapeRepr_All = 1
+	ReadMode_ShapeRepr_ABSR = 2
+	ReadMode_ShapeRepr_MSSR = 3
+	ReadMode_ShapeRepr_GBSSR = 4
+	ReadMode_ShapeRepr_FBSR = 5
+	ReadMode_ShapeRepr_EBWSR = 6
+	ReadMode_ShapeRepr_GBWSR = 7
+ReadMode_ShapeRepr_All = ReadMode_ShapeRepr.ReadMode_ShapeRepr_All
+ReadMode_ShapeRepr_ABSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_ABSR
+ReadMode_ShapeRepr_MSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_MSSR
+ReadMode_ShapeRepr_GBSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBSSR
+ReadMode_ShapeRepr_FBSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_FBSR
+ReadMode_ShapeRepr_EBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_EBWSR
+ReadMode_ShapeRepr_GBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBWSR
+
+class ReadMode_AssemblyLevel(IntEnum):
+	ReadMode_AssemblyLevel_All = 1
+	ReadMode_AssemblyLevel_Assembly = 2
+	ReadMode_AssemblyLevel_Structure = 3
+	ReadMode_AssemblyLevel_Shape = 4
+ReadMode_AssemblyLevel_All = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_All
+ReadMode_AssemblyLevel_Assembly = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Assembly
+ReadMode_AssemblyLevel_Structure = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Structure
+ReadMode_AssemblyLevel_Shape = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Shape
+
+class RWMode_Tessellated(IntEnum):
+	RWMode_Tessellated_Off = 0
+	RWMode_Tessellated_On = 1
+	RWMode_Tessellated_OnNoBRep = 2
+RWMode_Tessellated_Off = RWMode_Tessellated.RWMode_Tessellated_Off
+RWMode_Tessellated_On = RWMode_Tessellated.RWMode_Tessellated_On
+RWMode_Tessellated_OnNoBRep = RWMode_Tessellated.RWMode_Tessellated_OnNoBRep
+
+class WriteMode_PrecisionMode(IntEnum):
+	WriteMode_PrecisionMode_Least = - 1
+	WriteMode_PrecisionMode_Average = 0
+	WriteMode_PrecisionMode_Greatest = 1
+	WriteMode_PrecisionMode_Session = 2
+WriteMode_PrecisionMode_Least = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Least
+WriteMode_PrecisionMode_Average = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Average
+WriteMode_PrecisionMode_Greatest = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Greatest
+WriteMode_PrecisionMode_Session = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Session
+
+class WriteMode_Assembly(IntEnum):
+	WriteMode_Assembly_Off = 0
+	WriteMode_Assembly_On = 1
+	WriteMode_Assembly_Auto = 2
+WriteMode_Assembly_Off = WriteMode_Assembly.WriteMode_Assembly_Off
+WriteMode_Assembly_On = WriteMode_Assembly.WriteMode_Assembly_On
+WriteMode_Assembly_Auto = WriteMode_Assembly.WriteMode_Assembly_Auto
+
+class WriteMode_StepSchema(IntEnum):
+	WriteMode_StepSchema_AP214CD = 1
+	WriteMode_StepSchema_AP214DIS = 2
+	WriteMode_StepSchema_AP203 = 3
+	WriteMode_StepSchema_AP214IS = 4
+	WriteMode_StepSchema_AP242DIS = 5
+WriteMode_StepSchema_AP214CD = WriteMode_StepSchema.WriteMode_StepSchema_AP214CD
+WriteMode_StepSchema_AP214DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP214DIS
+WriteMode_StepSchema_AP203 = WriteMode_StepSchema.WriteMode_StepSchema_AP203
+WriteMode_StepSchema_AP214IS = WriteMode_StepSchema.WriteMode_StepSchema_AP214IS
+WriteMode_StepSchema_AP242DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP242DIS
+
+class WriteMode_VertexMode(IntEnum):
+	WriteMode_VertexMode_OneCompound = 0
+	WriteMode_VertexMode_SingleVertex = 1
+WriteMode_VertexMode_OneCompound = WriteMode_VertexMode.WriteMode_VertexMode_OneCompound
+WriteMode_VertexMode_SingleVertex = WriteMode_VertexMode.WriteMode_VertexMode_SingleVertex
+};
+/* end python proxy for enums */
+
+		STEPCAFControl_InternalSection InternalParameters;
+		/****************** STEPCAFControl_ConfigurationNode ******************/
+		/**** md5 signature: 6f36f5fec71c0b21b0bc1a66ab772a2b ****/
+		%feature("compactdefaultargs") STEPCAFControl_ConfigurationNode;
+		%feature("autodoc", "Initializes all field by default.
+
+Returns
+-------
+None
+") STEPCAFControl_ConfigurationNode;
+		 STEPCAFControl_ConfigurationNode();
+
+		/****************** STEPCAFControl_ConfigurationNode ******************/
+		/**** md5 signature: 0998d97bff85e24764099cc27d48b734 ****/
+		%feature("compactdefaultargs") STEPCAFControl_ConfigurationNode;
+		%feature("autodoc", "Copies values of all fields @param[in] thenode object to copy.
+
+Parameters
+----------
+theNode: STEPCAFControl_ConfigurationNode
+
+Returns
+-------
+None
+") STEPCAFControl_ConfigurationNode;
+		 STEPCAFControl_ConfigurationNode(const opencascade::handle<STEPCAFControl_ConfigurationNode> & theNode);
+
+		/****************** BuildProvider ******************/
+		/**** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ****/
+		%feature("compactdefaultargs") BuildProvider;
+		%feature("autodoc", "Creates new provider for the own format returns new created provider.
+
+Returns
+-------
+opencascade::handle<DE_Provider>
+") BuildProvider;
+		virtual opencascade::handle<DE_Provider> BuildProvider();
+
+		/****************** CheckContent ******************/
+		/**** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ****/
+		%feature("compactdefaultargs") CheckContent;
+		%feature("autodoc", "Checks the file content to verify a format @param[in] thebuffer read stream buffer to check content returns standard_true if file is supported by a current provider.
+
+Parameters
+----------
+theBuffer: NCollection_Buffer
+
+Returns
+-------
+bool
+") CheckContent;
+		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
+
+		/****************** Copy ******************/
+		/**** md5 signature: 4559608ebdab2961e97de40732291656 ****/
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "Copies values of all fields returns new object with the same field values.
+
+Returns
+-------
+opencascade::handle<DE_ConfigurationNode>
+") Copy;
+		virtual opencascade::handle<DE_ConfigurationNode> Copy();
+
+		/****************** GetExtensions ******************/
+		/**** md5 signature: a58fd9c22a501a38d695eed6406f94bb ****/
+		%feature("compactdefaultargs") GetExtensions;
+		%feature("autodoc", "Gets list of supported file extensions returns list of extensions.
+
+Returns
+-------
+TColStd_ListOfAsciiString
+") GetExtensions;
+		virtual TColStd_ListOfAsciiString GetExtensions();
+
+		/****************** GetFormat ******************/
+		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		%feature("compactdefaultargs") GetFormat;
+		%feature("autodoc", "Gets cad format name of associated provider returns provider cad format.
+
+Returns
+-------
+TCollection_AsciiString
+") GetFormat;
+		virtual TCollection_AsciiString GetFormat();
+
+		/****************** GetVendor ******************/
+		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		%feature("compactdefaultargs") GetVendor;
+		%feature("autodoc", "Gets provider's vendor name of associated provider returns provider's vendor name.
+
+Returns
+-------
+TCollection_AsciiString
+") GetVendor;
+		virtual TCollection_AsciiString GetVendor();
+
+		/****************** IsExportSupported ******************/
+		/**** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ****/
+		%feature("compactdefaultargs") IsExportSupported;
+		%feature("autodoc", "Checks the export supporting returns true if export is supported.
+
+Returns
+-------
+bool
+") IsExportSupported;
+		virtual bool IsExportSupported();
+
+		/****************** IsImportSupported ******************/
+		/**** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ****/
+		%feature("compactdefaultargs") IsImportSupported;
+		%feature("autodoc", "Checks the import supporting returns true if import is supported.
+
+Returns
+-------
+bool
+") IsImportSupported;
+		virtual bool IsImportSupported();
+
+		/****************** Load ******************/
+		/**** md5 signature: 994009254510d81a5f0f9a326a356850 ****/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "Updates values according the resource @param[in] theresource input resource to use returns true if theresource loading has ended correctly.
+
+Parameters
+----------
+theResource: DE_ConfigurationContext
+
+Returns
+-------
+bool
+") Load;
+		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
+
+		/****************** Save ******************/
+		/**** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ****/
+		%feature("compactdefaultargs") Save;
+		%feature("autodoc", "Writes configuration to the string returns result resource string.
+
+Returns
+-------
+TCollection_AsciiString
+") Save;
+		virtual TCollection_AsciiString Save();
+
+};
+
+
+%extend STEPCAFControl_ConfigurationNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -475,7 +848,7 @@ None
 		 STEPCAFControl_GDTProperty();
 
 		/****************** GetDatumRefModifiers ******************/
-		/**** md5 signature: fdb8258d358004e855c446ee4070ea01 ****/
+		/**** md5 signature: a9135dd15c61564a975d92fa2356d979 ****/
 		%feature("compactdefaultargs") GetDatumRefModifiers;
 		%feature("autodoc", "No available documentation.
 
@@ -490,7 +863,7 @@ Returns
 -------
 opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>
 ") GetDatumRefModifiers;
-		static opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> GetDatumRefModifiers(const XCAFDimTolObjects_DatumModifiersSequence theModifiers, const XCAFDimTolObjects_DatumModifWithValue theModifWithVal, const Standard_Real theValue, const StepBasic_Unit theUnit);
+		static opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> GetDatumRefModifiers(const XCAFDimTolObjects_DatumModifiersSequence & theModifiers, const XCAFDimTolObjects_DatumModifWithValue & theModifWithVal, const Standard_Real theValue, const StepBasic_Unit theUnit);
 
 		/****************** GetDatumTargetName ******************/
 		/**** md5 signature: b72f88dd48cee3c7fded9891ceb0cee6 ****/
@@ -791,6 +1164,216 @@ bool
 	}
 };
 
+/********************************
+* class STEPCAFControl_Provider *
+********************************/
+class STEPCAFControl_Provider : public DE_Provider {
+	public:
+		/****************** STEPCAFControl_Provider ******************/
+		/**** md5 signature: 20adbbdc11bc9103b1d42c07a2a70db5 ****/
+		%feature("compactdefaultargs") STEPCAFControl_Provider;
+		%feature("autodoc", "Default constructor configure translation process with global configuration.
+
+Returns
+-------
+None
+") STEPCAFControl_Provider;
+		 STEPCAFControl_Provider();
+
+		/****************** STEPCAFControl_Provider ******************/
+		/**** md5 signature: 5130c206da3c63a654403b73610c627d ****/
+		%feature("compactdefaultargs") STEPCAFControl_Provider;
+		%feature("autodoc", "Configure translation process @param[in] thenode object to copy.
+
+Parameters
+----------
+theNode: DE_ConfigurationNode
+
+Returns
+-------
+None
+") STEPCAFControl_Provider;
+		 STEPCAFControl_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
+
+		/****************** GetFormat ******************/
+		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		%feature("compactdefaultargs") GetFormat;
+		%feature("autodoc", "Gets cad format name of associated provider returns provider cad format.
+
+Returns
+-------
+TCollection_AsciiString
+") GetFormat;
+		virtual TCollection_AsciiString GetFormat();
+
+		/****************** GetVendor ******************/
+		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		%feature("compactdefaultargs") GetVendor;
+		%feature("autodoc", "Gets provider's vendor name of associated provider returns provider's vendor name.
+
+Returns
+-------
+TCollection_AsciiString
+") GetVendor;
+		virtual TCollection_AsciiString GetVendor();
+
+		/****************** Read ******************/
+		/**** md5 signature: 5da3d196d6292385962a1e60f3dec8a0 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param[in] thews current work session @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Read ******************/
+		/**** md5 signature: ec9914af037216c0502c72d0c8784072 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Read ******************/
+		/**** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param[in] thews current work session @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Read ******************/
+		/**** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+};
+
+
+%extend STEPCAFControl_Provider {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /******************************
 * class STEPCAFControl_Reader *
 ******************************/
@@ -1008,7 +1591,7 @@ int
 		Standard_Integer NbRootsForTransfer();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 7ebce43b9ff377998fb424ae59ad713b ****/
+		/**** md5 signature: 038a674a14ffeea66b522dd74c593d9c ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -1023,10 +1606,10 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const TCollection_AsciiString & filename, opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(const TCollection_AsciiString & filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
-		/**** md5 signature: d9ca38a0abfb5f609c92cc37497a4451 ****/
+		/**** md5 signature: a4a2998dbb462f3822a286fdffd32a42 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Translate step file given by filename into the document return true if succeeded, and false in case of fail.
 
@@ -1041,22 +1624,38 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const char * filename, opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(const char * filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
-		/**** md5 signature: 0c5675761cd6df0c5f286882695ad872 ****/
+		/**** md5 signature: d86a92113a329cc8dabf010061f31392 ****/
 		%feature("compactdefaultargs") ReadFile;
-		%feature("autodoc", "Loads a file and returns the read status provided for use like single-file reader.
+		%feature("autodoc", "Loads a file and returns the read status provided for use like single-file reader. @param thefilename [in] file to open returns read status.
 
 Parameters
 ----------
-filename: char *
+theFileName: char *
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(const char * filename);
+		IFSelect_ReturnStatus ReadFile(const char * theFileName);
+
+		/****************** ReadStream ******************/
+		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "Loads a file from stream and returns the read status. @param thename [in] auxiliary stream name @param theistream [in] stream to read from returns read status.
+
+Parameters
+----------
+theName: char *
+theIStream: std::istream
+
+Returns
+-------
+IFSelect_ReturnStatus
+") ReadStream;
+		IFSelect_ReturnStatus ReadStream(const char * theName, std::istream & theIStream);
 
 		/****************** Reader ******************/
 		/**** md5 signature: c54201c04d6a5ca89c65eb2fb14b8396 ****/
@@ -1190,7 +1789,7 @@ None
 		void SetViewMode(const Standard_Boolean viewmode);
 
 		/****************** Transfer ******************/
-		/**** md5 signature: ff33323c63476d45f7ad89095c5bbe86 ****/
+		/**** md5 signature: 31249612d40a7a08f4519552635fb88d ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "Translates currently loaded step file into the document returns true if succeeded, and false in case of fail provided for use like single-file reader.
 
@@ -1204,10 +1803,10 @@ Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferOneRoot ******************/
-		/**** md5 signature: 1d76b4a667d440519b476d0c7570cbd6 ****/
+		/**** md5 signature: aa429310a76644e6f8262a806c04d28e ****/
 		%feature("compactdefaultargs") TransferOneRoot;
 		%feature("autodoc", "Translates currently loaded step file into the document returns true if succeeded, and false in case of fail provided for use like single-file reader.
 
@@ -1222,7 +1821,7 @@ Returns
 -------
 bool
 ") TransferOneRoot;
-		Standard_Boolean TransferOneRoot(const Standard_Integer num, opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean TransferOneRoot(const Standard_Integer num, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1619,19 +2218,34 @@ bool
 		Standard_Boolean Transfer(const TDF_LabelSequence & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
-		/**** md5 signature: a2c63443529fcf2508727dc0010cba46 ****/
+		/**** md5 signature: 14544d6ececf228a5871ef6afa0279ae ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Writes all the produced models into file in case of multimodel with extern references, filename will be a name of root file, all other files have names of corresponding parts provided for use like single-file writer.
 
 Parameters
 ----------
-filename: char *
+theFileName: char *
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") Write;
-		IFSelect_ReturnStatus Write(const char * filename);
+		IFSelect_ReturnStatus Write(const char * theFileName);
+
+		/****************** WriteStream ******************/
+		/**** md5 signature: e58591412136b10e3743cbf1ab89de94 ****/
+		%feature("compactdefaultargs") WriteStream;
+		%feature("autodoc", "Writes all the produced models into the stream. provided for use like single-file writer.
+
+Parameters
+----------
+theStream: std::ostream
+
+Returns
+-------
+IFSelect_ReturnStatus
+") WriteStream;
+		IFSelect_ReturnStatus WriteStream(std::ostream & theStream);
 
 		/****************** Writer ******************/
 		/**** md5 signature: 70b6d632350a5ba6ff972c4b437432a0 ****/

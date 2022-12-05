@@ -3970,15 +3970,20 @@ bool
             }
         };
 		/****************** FixReorder ******************/
-		/**** md5 signature: 0d745aeb80c03bb878dfbe0d7f89eda2 ****/
+		/**** md5 signature: 42e11344e450d54e565c85e591f410ab ****/
 		%feature("compactdefaultargs") FixReorder;
-		%feature("autodoc", "Performs an analysis and reorders edges in the wire using class wireorder.
+		%feature("autodoc", "Performs an analysis and reorders edges in the wire using class wireorder. flag <themodeboth> determines the use of miscible mode if necessary.
+
+Parameters
+----------
+theModeBoth: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 bool
 ") FixReorder;
-		Standard_Boolean FixReorder();
+		Standard_Boolean FixReorder(Standard_Boolean theModeBoth = Standard_False);
 
 		/****************** FixReorder ******************/
 		/**** md5 signature: 714f0bb13d626a574d67d5b76557a0ae ****/

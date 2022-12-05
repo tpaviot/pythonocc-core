@@ -84,6 +84,7 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(IntCurvesFace_Intersector)
 /* end handles declaration */
 
 /* templates */
@@ -95,7 +96,7 @@ from OCC.Core.Exception import *
 /**********************************
 * class IntCurvesFace_Intersector *
 **********************************/
-class IntCurvesFace_Intersector {
+class IntCurvesFace_Intersector : public Standard_Transient {
 	public:
 		/****************** IntCurvesFace_Intersector ******************/
 		/**** md5 signature: a52cfef3564a89d4318791e0ef2ba78a ****/
@@ -142,17 +143,6 @@ Returns
 TopAbs_State
 ") ClassifyUVPoint;
 		TopAbs_State ClassifyUVPoint(const gp_Pnt2d & Puv);
-
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") Destroy;
-		void Destroy();
 
 		/****************** Face ******************/
 		/**** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ****/
@@ -362,6 +352,8 @@ float
 };
 
 
+%make_alias(IntCurvesFace_Intersector)
+
 %extend IntCurvesFace_Intersector {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -384,19 +376,8 @@ None
 ") IntCurvesFace_ShapeIntersector;
 		 IntCurvesFace_ShapeIntersector();
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") Destroy;
-		void Destroy();
-
 		/****************** Face ******************/
-		/**** md5 signature: d1eb857c2a65e9d3cb2fc51a7ab45063 ****/
+		/**** md5 signature: cfd60355079000e5d794463ee51aa209 ****/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Returns the significant face used to determine the intersection.
 
@@ -411,9 +392,9 @@ TopoDS_Face
 		const TopoDS_Face Face(const Standard_Integer I);
 
 		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "True is returned when the intersection have been computed.
+		%feature("autodoc", "True when the intersection has been computed.
 
 Returns
 -------
@@ -438,9 +419,9 @@ None
 		void Load(const TopoDS_Shape & Sh, const Standard_Real Tol);
 
 		/****************** NbPnt ******************/
-		/**** md5 signature: 7493472b43e2ee7c4bd85784ca2a7eb4 ****/
+		/**** md5 signature: be148f70782dfd3642552d1c87925ad8 ****/
 		%feature("compactdefaultargs") NbPnt;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns the number of the intersection points.
 
 Returns
 -------
@@ -451,7 +432,7 @@ int
 		/****************** Perform ******************/
 		/**** md5 signature: e18419430124de4e84da27951ae80914 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parammter on the line //! for an infinite line pinf and psup can be +/- reallast.
+		%feature("autodoc", "Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parameter on the line //! for an infinite line pinf and psup can be +/- reallast.
 
 Parameters
 ----------
@@ -468,7 +449,7 @@ None
 		/****************** Perform ******************/
 		/**** md5 signature: c8caf88fde1edb2033386b7b626b143d ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Same method for a hcurve from adaptor3d. pinf an psup can also be - and + inf.
+		%feature("autodoc", "Same method for a hcurve from adaptor3d. pinf an psup can also be -inf and +inf.
 
 Parameters
 ----------
@@ -485,7 +466,7 @@ None
 		/****************** PerformNearest ******************/
 		/**** md5 signature: ed809ea9e3a548c6cd15a623c13b9c18 ****/
 		%feature("compactdefaultargs") PerformNearest;
-		%feature("autodoc", "Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parammter on the line //! for an infinite line pinf and psup can be +/- reallast.
+		%feature("autodoc", "Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parameter on the line //! for an infinite line pinf and psup can be +/- reallast.
 
 Parameters
 ----------
@@ -500,7 +481,7 @@ None
 		void PerformNearest(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Pnt ******************/
-		/**** md5 signature: d0440fe82ac13d790faf173438707e9c ****/
+		/**** md5 signature: 867836d5adb3737ee8fa8a25df767b5f ****/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "Returns the geometric point of the ith intersection between the line and the surface.
 
@@ -526,7 +507,7 @@ None
 		void SortResult();
 
 		/****************** State ******************/
-		/**** md5 signature: 3ef584a4c8697b5b43cfa0be6c8072f7 ****/
+		/**** md5 signature: 0b607cc57075af0e92d50aac1d2dabea ****/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
 
@@ -541,7 +522,7 @@ TopAbs_State
 		TopAbs_State State(const Standard_Integer I);
 
 		/****************** Transition ******************/
-		/**** md5 signature: 33876f9f7fa6077fbaede5c70296e547 ****/
+		/**** md5 signature: 776c076743ef9a0accb92662a1d0386a ****/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "Returns the ith transition of the line on the surface.
 
@@ -556,7 +537,7 @@ IntCurveSurface_TransitionOnCurve
 		IntCurveSurface_TransitionOnCurve Transition(const Standard_Integer I);
 
 		/****************** UParameter ******************/
-		/**** md5 signature: 4e2ab34c664fe365f73ab40bf6b7907c ****/
+		/**** md5 signature: 2cb2ac0f526160df3256c7f8e41fd6b3 ****/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "Returns the u parameter of the ith intersection point on the surface.
 
@@ -571,7 +552,7 @@ float
 		Standard_Real UParameter(const Standard_Integer I);
 
 		/****************** VParameter ******************/
-		/**** md5 signature: 9b61d482fd013334ec36688975ff9502 ****/
+		/**** md5 signature: 1a707d9bf40883790bcc4de33d8963ae ****/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "Returns the v parameter of the ith intersection point on the surface.
 
@@ -586,7 +567,7 @@ float
 		Standard_Real VParameter(const Standard_Integer I);
 
 		/****************** WParameter ******************/
-		/**** md5 signature: dc0b89e88ad9e0b7c00279c03b1e7687 ****/
+		/**** md5 signature: 16651482049d64839981feb7105e98dc ****/
 		%feature("compactdefaultargs") WParameter;
 		%feature("autodoc", "Returns the parameter of the ith intersection point on the line.
 

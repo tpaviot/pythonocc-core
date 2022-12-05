@@ -32,15 +32,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<OSD_Exception_ACCESS_VIOLATION.hxx>
 #include<OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx>
 #include<OSD_Exception_CTRL_BREAK.hxx>
-#include<OSD_Exception_FLT_DENORMAL_OPERAND.hxx>
-#include<OSD_Exception_FLT_DIVIDE_BY_ZERO.hxx>
-#include<OSD_Exception_FLT_INEXACT_RESULT.hxx>
-#include<OSD_Exception_FLT_INVALID_OPERATION.hxx>
-#include<OSD_Exception_FLT_OVERFLOW.hxx>
-#include<OSD_Exception_FLT_STACK_CHECK.hxx>
-#include<OSD_Exception_FLT_UNDERFLOW.hxx>
 #include<OSD_Exception_ILLEGAL_INSTRUCTION.hxx>
-#include<OSD_Exception_INT_DIVIDE_BY_ZERO.hxx>
 #include<OSD_Exception_INT_OVERFLOW.hxx>
 #include<OSD_Exception_INVALID_DISPOSITION.hxx>
 #include<OSD_Exception_IN_PAGE_ERROR.hxx>

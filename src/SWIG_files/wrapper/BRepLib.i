@@ -51,6 +51,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_breplib.html"
 #include<Geom_module.hxx>
 #include<BRepTools_module.hxx>
 #include<TopLoc_module.hxx>
+#include<Poly_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<BRep_module.hxx>
@@ -74,6 +75,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_breplib.html"
 %import Geom.i
 %import BRepTools.i
 %import TopLoc.i
+%import Poly.i
 
 %pythoncode {
 from enum import IntEnum
@@ -787,7 +789,7 @@ None
 class BRepLib_CheckCurveOnSurface {
 	public:
 		/****************** BRepLib_CheckCurveOnSurface ******************/
-		/**** md5 signature: 588c2b7becc8474a44af769cd1861cc0 ****/
+		/**** md5 signature: ad4740ee3e59e42d75e2ee6144706591 ****/
 		%feature("compactdefaultargs") BRepLib_CheckCurveOnSurface;
 		%feature("autodoc", "Default constructor.
 
@@ -851,6 +853,17 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** IsParallel ******************/
+		/**** md5 signature: fc1de18a583c6aa3b3d9897c80aa553e ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if parallel flag is set.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
+
 		/****************** MaxDistance ******************/
 		/**** md5 signature: eb56c1d1489e07dddfaf89c1bd00ff56 ****/
 		%feature("compactdefaultargs") MaxDistance;
@@ -874,20 +887,30 @@ float
 		Standard_Real MaxParameter();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 7c48e222647f30c71b37ef8e0a2cdb24 ****/
+		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the calculation if ismultithread == standard_true then computation will be performed in parallel.
-
-Parameters
-----------
-isMultiThread: bool,optional
-	default value is Standard_False
+		%feature("autodoc", "Performs the calculation if myisparallel == standard_true then computation will be performed in parallel.
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const Standard_Boolean isMultiThread = Standard_False);
+		void Perform();
+
+		/****************** SetParallel ******************/
+		/**** md5 signature: 91c6328a8c6135d4f1f1da7db8aee28f ****/
+		%feature("compactdefaultargs") SetParallel;
+		%feature("autodoc", "Sets parallel flag.
+
+Parameters
+----------
+theIsParallel: bool
+
+Returns
+-------
+None
+") SetParallel;
+		void SetParallel(const Standard_Boolean theIsParallel);
 
 };
 
@@ -1208,6 +1231,200 @@ TopoDS_Shape
 	}
 };
 
+/********************************
+* class BRepLib_PointCloudShape *
+********************************/
+%nodefaultctor BRepLib_PointCloudShape;
+class BRepLib_PointCloudShape {
+	public:
+		/****************** GeneratePointsByDensity ******************/
+		/**** md5 signature: 619270416b95000e397399807042b65a ****/
+		%feature("compactdefaultargs") GeneratePointsByDensity;
+		%feature("autodoc", "Computes points with specified density for initial shape. if parameter density is equal to 0 then density will be computed automatically by criterion: - 10 points per minimal unreduced face area. //! note: this function should not be called from concurrent threads without external lock.
+
+Parameters
+----------
+theDensity: float,optional
+	default value is 0.0
+
+Returns
+-------
+bool
+") GeneratePointsByDensity;
+		Standard_Boolean GeneratePointsByDensity(const Standard_Real theDensity = 0.0);
+
+		/****************** GeneratePointsByTriangulation ******************/
+		/**** md5 signature: 912b82f3a10b1a54374d28369fcc6a67 ****/
+		%feature("compactdefaultargs") GeneratePointsByTriangulation;
+		%feature("autodoc", "Get points from triangulation existing in the shape.
+
+Returns
+-------
+bool
+") GeneratePointsByTriangulation;
+		Standard_Boolean GeneratePointsByTriangulation();
+
+		/****************** GetDistance ******************/
+		/**** md5 signature: a3cf6093e8abf55853fd25f21f892d82 ****/
+		%feature("compactdefaultargs") GetDistance;
+		%feature("autodoc", "Returns value of the distance to define deflection of points from shape along normal to shape; 0.0 by default.
+
+Returns
+-------
+float
+") GetDistance;
+		Standard_Real GetDistance();
+
+		/****************** NbPointsByDensity ******************/
+		/**** md5 signature: 2a3faf3ea9aed5ce1b6e260486ac5094 ****/
+		%feature("compactdefaultargs") NbPointsByDensity;
+		%feature("autodoc", "Returns size of the point cloud for specified density.
+
+Parameters
+----------
+theDensity: float,optional
+	default value is 0.0
+
+Returns
+-------
+int
+") NbPointsByDensity;
+		Standard_Integer NbPointsByDensity(const Standard_Real theDensity = 0.0);
+
+		/****************** NbPointsByTriangulation ******************/
+		/**** md5 signature: c88afd500722f5a19d60b6d00aabd05a ****/
+		%feature("compactdefaultargs") NbPointsByTriangulation;
+		%feature("autodoc", "Returns size of the point cloud for using triangulation.
+
+Returns
+-------
+int
+") NbPointsByTriangulation;
+		Standard_Integer NbPointsByTriangulation();
+
+		/****************** SetDistance ******************/
+		/**** md5 signature: 9c8aa9fbc03cbbcac598e64ccf79cf2e ****/
+		%feature("compactdefaultargs") SetDistance;
+		%feature("autodoc", "Sets value of the distance to define deflection of points from shape along normal to shape. negative values of thedist parameter are ignored.
+
+Parameters
+----------
+theDist: float
+
+Returns
+-------
+None
+") SetDistance;
+		void SetDistance(const Standard_Real theDist);
+
+		/****************** SetShape ******************/
+		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
+		%feature("compactdefaultargs") SetShape;
+		%feature("autodoc", "Set shape.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+None
+") SetShape;
+		void SetShape(const TopoDS_Shape & theShape);
+
+		/****************** SetTolerance ******************/
+		/**** md5 signature: 24665c79b6c4a1cf17fbde5e4ed41549 ****/
+		%feature("compactdefaultargs") SetTolerance;
+		%feature("autodoc", "Set tolerance.
+
+Parameters
+----------
+theTol: float
+
+Returns
+-------
+None
+") SetTolerance;
+		void SetTolerance(Standard_Real theTol);
+
+		/****************** Shape ******************/
+		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "Return loaded shape.
+
+Returns
+-------
+TopoDS_Shape
+") Shape;
+		const TopoDS_Shape Shape();
+
+		/****************** Tolerance ******************/
+		/**** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ****/
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "Return tolerance.
+
+Returns
+-------
+float
+") Tolerance;
+		Standard_Real Tolerance();
+
+};
+
+
+%extend BRepLib_PointCloudShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************************
+* class BRepLib_ToolTriangulatedShape *
+**************************************/
+class BRepLib_ToolTriangulatedShape {
+	public:
+		/****************** ComputeNormals ******************/
+		/**** md5 signature: 2d57466090fe2926dca8ad73827190c2 ****/
+		%feature("compactdefaultargs") ComputeNormals;
+		%feature("autodoc", "Computes nodal normals for poly_triangulation structure using uv coordinates and surface. does nothing if triangulation already defines normals. @param[in] theface the face @param[in] thetris the definition of a face triangulation.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTris: Poly_Triangulation
+
+Returns
+-------
+None
+") ComputeNormals;
+		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris);
+
+		/****************** ComputeNormals ******************/
+		/**** md5 signature: ff5b08874a5db62c157e96e68689a5a4 ****/
+		%feature("compactdefaultargs") ComputeNormals;
+		%feature("autodoc", "Computes nodal normals for poly_triangulation structure using uv coordinates and surface. does nothing if triangulation already defines normals. @param[in] theface the face @param[in] thetris the definition of a face triangulation @param[in,out] thepolyconnect optional, initialized tool for exploring triangulation.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTris: Poly_Triangulation
+thePolyConnect: Poly_Connect
+
+Returns
+-------
+None
+") ComputeNormals;
+		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris, Poly_Connect & thePolyConnect);
+
+};
+
+
+%extend BRepLib_ToolTriangulatedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************************
 * class BRepLib_ValidateEdge *
 *****************************/
@@ -1257,7 +1474,7 @@ float
 		Standard_Real GetMaxDistance();
 
 		/****************** IsDone ******************/
-		/**** md5 signature: e82277147f75ca02ef6500d3c84de9e6 ****/
+		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Returns true if the distance has been found for all points.
 
@@ -1267,10 +1484,32 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** IsExactMethod ******************/
+		/**** md5 signature: 5e4b019881aa7aa6b5765966d6b467ca ****/
+		%feature("compactdefaultargs") IsExactMethod;
+		%feature("autodoc", "Returns true if exact method selected.
+
+Returns
+-------
+bool
+") IsExactMethod;
+		Standard_Boolean IsExactMethod();
+
+		/****************** IsParallel ******************/
+		/**** md5 signature: fc1de18a583c6aa3b3d9897c80aa553e ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns true if parallel flag is set.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
+
 		/****************** Process ******************/
 		/**** md5 signature: f69ec5068362d1fb1c1da24f6f943a3d ****/
 		%feature("compactdefaultargs") Process;
-		%feature("autodoc", "Computes the max distance for the 3d curve <myreferencecurve> and curve on surface <myothercurve>. if the setexitiftoleranceexceeded() function was called before <mycalculateddistance> contains first greater than setexitiftoleranceexceeded() parameter value.
+		%feature("autodoc", "Computes the max distance for the 3d curve <myreferencecurve> and curve on surface <myothercurve>. if the setexitiftoleranceexceeded() function was called before <mycalculateddistance> contains first greater than setexitiftoleranceexceeded() parameter value. in case using exact method always computes real max distance.
 
 Returns
 -------
@@ -1293,20 +1532,35 @@ None
 ") SetControlPointsNumber;
 		void SetControlPointsNumber(Standard_Integer theControlPointsNumber);
 
-		/****************** SetExitIfToleranceExceeded ******************/
-		/**** md5 signature: e317acb89ec96fb57ad5d8a365a0c932 ****/
-		%feature("compactdefaultargs") SetExitIfToleranceExceeded;
-		%feature("autodoc", "Sets the maximal allowed distance in the process() function. if the distance greater than thetoleranceforchecking the process() function stops. use this for best performance in case of checking of tolerance.
+		/****************** SetExactMethod ******************/
+		/**** md5 signature: 61e71faebec158e548494f19380d6da6 ****/
+		%feature("compactdefaultargs") SetExactMethod;
+		%feature("autodoc", "Sets method to calculate distance: calculating in finite number of points (if theisexact is false, faster, but possible not correct result) or exact calculating by using breplib_checkcurveonsurface class (if theisexact is true, slowly, but more correctly). exact method is used only when edge is sameparameter. default method is calculating in finite number of points.
 
 Parameters
 ----------
-theToleranceForChecking: float
+theIsExact: bool
 
 Returns
 -------
 None
-") SetExitIfToleranceExceeded;
-		void SetExitIfToleranceExceeded(Standard_Real theToleranceForChecking);
+") SetExactMethod;
+		void SetExactMethod(Standard_Boolean theIsExact);
+
+		/****************** SetParallel ******************/
+		/**** md5 signature: 6daf50fa108f9f0000233a9dba805cd8 ****/
+		%feature("compactdefaultargs") SetParallel;
+		%feature("autodoc", "Sets parallel flag.
+
+Parameters
+----------
+theIsMultiThread: bool
+
+Returns
+-------
+None
+") SetParallel;
+		void SetParallel(Standard_Boolean theIsMultiThread);
 
 		/****************** UpdateTolerance ******************/
 		/**** md5 signature: 041719f1b7cceef57cb2fd1857736488 ****/
@@ -1328,6 +1582,10 @@ theToleranceToUpdate: float
 %extend BRepLib_ValidateEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def SetExitIfToleranceExceeded(self):
+		pass
 	}
 };
 

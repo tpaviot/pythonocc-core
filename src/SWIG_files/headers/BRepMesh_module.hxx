@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_EdgeDiscret.hxx>
 #include<BRepMesh_EdgeParameterProvider.hxx>
 #include<BRepMesh_EdgeTessellationExtractor.hxx>
+#include<BRepMesh_ExtrusionRangeSplitter.hxx>
 #include<BRepMesh_FaceChecker.hxx>
 #include<BRepMesh_FaceDiscret.hxx>
 #include<BRepMesh_FactoryError.hxx>
@@ -65,6 +66,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_ShapeVisitor.hxx>
 #include<BRepMesh_Triangle.hxx>
 #include<BRepMesh_Triangulator.hxx>
+#include<BRepMesh_UndefinedRangeSplitter.hxx>
 #include<BRepMesh_Vertex.hxx>
 #include<BRepMesh_VertexInspector.hxx>
 #include<BRepMesh_VertexTool.hxx>

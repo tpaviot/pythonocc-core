@@ -33,18 +33,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_Chamf2dDimension.hxx>
 #include<AIS_Chamf3dDimension.hxx>
 #include<AIS_Circle.hxx>
-#include<AIS_ClearMode.hxx>
 #include<AIS_ColorScale.hxx>
 #include<AIS_ColoredDrawer.hxx>
 #include<AIS_ColoredShape.hxx>
 #include<AIS_ConcentricRelation.hxx>
-#include<AIS_ConnectStatus.hxx>
 #include<AIS_ConnectedInteractive.hxx>
 #include<AIS_DataMapIteratorOfDataMapOfIOStatus.hxx>
-#include<AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive.hxx>
 #include<AIS_DataMapOfIOStatus.hxx>
 #include<AIS_DataMapOfShapeDrawer.hxx>
-#include<AIS_DataMapofIntegerListOfinteractive.hxx>
 #include<AIS_DiameterDimension.hxx>
 #include<AIS_Dimension.hxx>
 #include<AIS_DimensionOwner.hxx>
@@ -59,7 +55,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_GlobalStatus.hxx>
 #include<AIS_GraphicTool.hxx>
 #include<AIS_IdenticRelation.hxx>
-#include<AIS_IndexedDataMapOfOwnerPrs.hxx>
 #include<AIS_InteractiveContext.hxx>
 #include<AIS_InteractiveObject.hxx>
 #include<AIS_KindOfInteractive.hxx>
@@ -71,8 +66,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_Manipulator.hxx>
 #include<AIS_ManipulatorMode.hxx>
 #include<AIS_ManipulatorOwner.hxx>
-#include<AIS_MapIteratorOfMapOfInteractive.hxx>
-#include<AIS_MapOfInteractive.hxx>
 #include<AIS_MaxRadiusDimension.hxx>
 #include<AIS_MediaPlayer.hxx>
 #include<AIS_MidPointRelation.hxx>
@@ -97,7 +90,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_Selection.hxx>
 #include<AIS_SelectionModesConcurrency.hxx>
 #include<AIS_SelectionScheme.hxx>
-#include<AIS_SequenceOfInteractive.hxx>
 #include<AIS_Shape.hxx>
 #include<AIS_SignatureFilter.hxx>
 #include<AIS_StatusOfDetection.hxx>

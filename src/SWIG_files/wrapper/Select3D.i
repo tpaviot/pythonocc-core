@@ -130,7 +130,6 @@ Select3D_TOS_BOUNDARY = Select3D_TypeOfSensitivity.Select3D_TOS_BOUNDARY
 %wrap_handle(Select3D_SensitivePoly)
 %wrap_handle(Select3D_SensitivePrimitiveArray)
 %wrap_handle(Select3D_SensitiveWire)
-%wrap_handle(Select3D_SensitiveCircle)
 %wrap_handle(Select3D_SensitiveCurve)
 /* end handles declaration */
 
@@ -538,13 +537,16 @@ bool
 	}
 };
 
+/*********************************
+* class Select3D_SensitiveCircle *
+*********************************/
 /***********************************
 * class Select3D_SensitiveCylinder *
 ***********************************/
 class Select3D_SensitiveCylinder : public Select3D_SensitiveEntity {
 	public:
 		/****************** Select3D_SensitiveCylinder ******************/
-		/**** md5 signature: d59dec97bc93c5fff84d6d2372101895 ****/
+		/**** md5 signature: d3eb90bf89db274e1e5fce77acbb637f ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCylinder;
 		%feature("autodoc", "Constructs a sensitive cylinder object defined by the owner theownerid, @param[in] thebottomrad cylinder bottom radius @param[in] thetoprad cylinder top radius @param[in] theheight cylinder height.
 
@@ -555,12 +557,25 @@ theBottomRad: float
 theTopRad: float
 theHeight: float
 theTrsf: gp_Trsf
+theIsHollow: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") Select3D_SensitiveCylinder;
-		 Select3D_SensitiveCylinder(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf);
+		 Select3D_SensitiveCylinder(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow = Standard_False);
+
+		/****************** BottomRadius ******************/
+		/**** md5 signature: de685b24782911749c814e3c0fb81603 ****/
+		%feature("compactdefaultargs") BottomRadius;
+		%feature("autodoc", "Returns cylinder bottom radius.
+
+Returns
+-------
+float
+") BottomRadius;
+		Standard_Real BottomRadius();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
@@ -583,6 +598,28 @@ Returns
 gp_Pnt
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
+
+		/****************** Height ******************/
+		/**** md5 signature: e5e3c5b90c971d7ac0e43c341f82b9e0 ****/
+		%feature("compactdefaultargs") Height;
+		%feature("autodoc", "Returns cylinder height.
+
+Returns
+-------
+float
+") Height;
+		Standard_Real Height();
+
+		/****************** IsHollow ******************/
+		/**** md5 signature: fc875a52f0c9fdfe42f7e6284763402e ****/
+		%feature("compactdefaultargs") IsHollow;
+		%feature("autodoc", "Returns true if the cylinder is empty inside.
+
+Returns
+-------
+bool
+") IsHollow;
+		Standard_Boolean IsHollow();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
@@ -621,6 +658,28 @@ Returns
 bool
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
+
+		/****************** TopRadius ******************/
+		/**** md5 signature: ab96280c7a81a4f44a22a754e94dab2a ****/
+		%feature("compactdefaultargs") TopRadius;
+		%feature("autodoc", "Returns cylinder top radius.
+
+Returns
+-------
+float
+") TopRadius;
+		Standard_Real TopRadius();
+
+		/****************** Transformation ******************/
+		/**** md5 signature: 4340f0c35d6856faf6f9daeca03f9595 ****/
+		%feature("compactdefaultargs") Transformation;
+		%feature("autodoc", "Returns cylinder transformation.
+
+Returns
+-------
+gp_Trsf
+") Transformation;
+		const gp_Trsf Transformation();
 
 };
 
@@ -1936,9 +1995,31 @@ None
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const Standard_Boolean theIsBVHEnabled);
 
 		/****************** Select3D_SensitivePoly ******************/
+		/**** md5 signature: 52e8ce412d90abc5526f83da936e6b21 ****/
+		%feature("compactdefaultargs") Select3D_SensitivePoly;
+		%feature("autodoc", "Constructs the sensitive arc object defined by the owner theownerid, the circle thecircle, the parameters theu1 and theu2, the boolean theisfilled and the number of points thenbpnts. theu1 and theu2 define the first and last points of the arc on thecircle.
+
+Parameters
+----------
+theOwnerId: SelectMgr_EntityOwner
+theCircle: gp_Circ
+theU1: float
+theU2: float
+theIsFilled: bool,optional
+	default value is Standard_False
+theNbPnts: int,optional
+	default value is 12
+
+Returns
+-------
+None
+") Select3D_SensitivePoly;
+		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
+
+		/****************** Select3D_SensitivePoly ******************/
 		/**** md5 signature: a3f092b363cabde2cdf6a5c26e88592c ****/
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
-		%feature("autodoc", "Constructs the sensitive circle object defined by the owner ownerid, the circle circle, the boolean filledcircle and the number of points nbofpoints.
+		%feature("autodoc", "Constructs a sensitive curve or arc object defined by the owner theownerid, the theisbvhenabled flag, and the maximum number of points on the curve: thenbpnts.
 
 Parameters
 ----------
@@ -2043,6 +2124,22 @@ Returns
 gp_Pnt
 ") GetPoint3d;
 		gp_Pnt GetPoint3d(const Standard_Integer thePntIdx);
+
+		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
+		%feature("compactdefaultargs") Matches;
+		%feature("autodoc", "Checks whether the poly overlaps current selecting volume.
+
+Parameters
+----------
+theMgr: SelectBasics_SelectingVolumeManager
+thePickResult: SelectBasics_PickResult
+
+Returns
+-------
+bool
+") Matches;
+		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
@@ -2885,160 +2982,6 @@ None
 	}
 };
 
-/*********************************
-* class Select3D_SensitiveCircle *
-*********************************/
-class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
-	public:
-		/****************** Select3D_SensitiveCircle ******************/
-		/**** md5 signature: 55c92bdc9794261bfae56743283eb987 ****/
-		%feature("compactdefaultargs") Select3D_SensitiveCircle;
-		%feature("autodoc", "Constructs the sensitive circle object defined by the owner theownerid, the circle thecircle, the boolean theisfilled and the number of points thenbpnts.
-
-Parameters
-----------
-theOwnerId: SelectMgr_EntityOwner
-theCircle: gp_Circ
-theIsFilled: bool,optional
-	default value is Standard_False
-theNbPnts: int,optional
-	default value is 12
-
-Returns
--------
-None
-") Select3D_SensitiveCircle;
-		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
-
-		/****************** Select3D_SensitiveCircle ******************/
-		/**** md5 signature: 060771db8c7161cb25e7fb0e81ee60a5 ****/
-		%feature("compactdefaultargs") Select3D_SensitiveCircle;
-		%feature("autodoc", "Constructs the sensitive arc object defined by the owner theownerid, the circle thecircle, the parameters theu1 and theu2, the boolean theisfilled and the number of points thenbpnts. theu1 and theu2 define the first and last points of the arc on thecircle.
-
-Parameters
-----------
-theOwnerId: SelectMgr_EntityOwner
-theCircle: gp_Circ
-theU1: float
-theU2: float
-theIsFilled: bool,optional
-	default value is Standard_False
-theNbPnts: int,optional
-	default value is 12
-
-Returns
--------
-None
-") Select3D_SensitiveCircle;
-		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
-
-		/****************** Select3D_SensitiveCircle ******************/
-		/**** md5 signature: fe86e77eed0e56bb2b592c60290a9f02 ****/
-		%feature("compactdefaultargs") Select3D_SensitiveCircle;
-		%feature("autodoc", "Constructs the sensitive circle object defined by the owner theownerid, the array of triangles thepnts3d, and the boolean theisfilled. thepnts3d is an array of consecutive triangles on the circle. the triangle i+1 lies on the intersection of the tangents to the circle of i and i+2. note, that the first point of thepnts3d must be equal to the last point of thepnts3d.
-
-Parameters
-----------
-theOwnerId: SelectMgr_EntityOwner
-thePnts3d: TColgp_HArray1OfPnt
-theIsFilled: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") Select3D_SensitiveCircle;
-		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePnts3d, const Standard_Boolean theIsFilled = Standard_False);
-
-		/****************** Select3D_SensitiveCircle ******************/
-		/**** md5 signature: 7b48ca0c78c8e70a9317c8130d587bc5 ****/
-		%feature("compactdefaultargs") Select3D_SensitiveCircle;
-		%feature("autodoc", "Constructs the sensitive circle object defined by the owner theownerid, the array of points thepnts3d, and the boolean theisfilled. if the length of thepnts3d is more then 1, the first point of thepnts3d must be equal to the last point of thepnts3d.
-
-Parameters
-----------
-theOwnerId: SelectMgr_EntityOwner
-thePnts3d: TColgp_Array1OfPnt
-theIsFilled: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") Select3D_SensitiveCircle;
-		 Select3D_SensitiveCircle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePnts3d, const Standard_Boolean theIsFilled = Standard_False);
-
-		/****************** BVH ******************/
-		/**** md5 signature: 9d26e1a47d3d96ad1039d301e2b44c49 ****/
-		%feature("compactdefaultargs") BVH;
-		%feature("autodoc", "Builds bvh tree for a circle's edge segments if needed.
-
-Returns
--------
-None
-") BVH;
-		virtual void BVH();
-
-		/****************** CenterOfGeometry ******************/
-		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
-		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the circle. if location transformation is set, it will be applied.
-
-Returns
--------
-gp_Pnt
-") CenterOfGeometry;
-		virtual gp_Pnt CenterOfGeometry();
-
-		/****************** GetConnected ******************/
-		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
-		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<Select3D_SensitiveEntity>
-") GetConnected;
-		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
-
-		/****************** Matches ******************/
-		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the circle overlaps current selecting volume.
-
-Parameters
-----------
-theMgr: SelectBasics_SelectingVolumeManager
-thePickResult: SelectBasics_PickResult
-
-Returns
--------
-bool
-") Matches;
-		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
-
-		/****************** ToBuildBVH ******************/
-		/**** md5 signature: 1947eabea961b20e546599eeb7fbe28d ****/
-		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
-
-Returns
--------
-bool
-") ToBuildBVH;
-		virtual Standard_Boolean ToBuildBVH();
-
-};
-
-
-%make_alias(Select3D_SensitiveCircle)
-
-%extend Select3D_SensitiveCircle {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /********************************
 * class Select3D_SensitiveCurve *
 ********************************/
@@ -3132,6 +3075,10 @@ class Handle_Select3D_SensitiveEntity:
 
 @classnotwrapped
 class Select3D_SensitiveSet:
+	pass
+
+@classnotwrapped
+class Select3D_SensitiveCircle:
 	pass
 
 }

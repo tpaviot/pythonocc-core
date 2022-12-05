@@ -245,7 +245,7 @@ bool
 		virtual Standard_Boolean SeekPoint(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, IntSurf_PntOn2S & Point);
 
 		/****************** SetUseSolver ******************/
-		/**** md5 signature: 60f84821ae19a493df618fb006dc01ad ****/
+		/**** md5 signature: 8daf390fbfdad2bd58b32fcfe3098b8e ****/
 		%feature("compactdefaultargs") SetUseSolver;
 		%feature("autodoc", "No available documentation.
 
@@ -257,7 +257,7 @@ Returns
 -------
 None
 ") SetUseSolver;
-		virtual void SetUseSolver(const Standard_Boolean theUseSol);
+		void SetUseSolver(const Standard_Boolean theUseSol);
 
 		/****************** Tangency ******************/
 		/**** md5 signature: 2d07e542429be7042ab790c78def5d62 ****/

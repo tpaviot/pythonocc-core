@@ -52,6 +52,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_RenderingContext.hxx>
 #include<Aspect_ScrollDelta.hxx>
 #include<Aspect_SequenceOfColor.hxx>
+#include<Aspect_SkydomeBackground.hxx>
 #include<Aspect_Touch.hxx>
 #include<Aspect_TouchMap.hxx>
 #include<Aspect_TrackedDevicePose.hxx>

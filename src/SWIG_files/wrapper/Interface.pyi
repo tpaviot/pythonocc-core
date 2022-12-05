@@ -1108,6 +1108,7 @@ Interface_TypedValue_ParamTypeToValueType = Interface_TypedValue.ParamTypeToValu
 Interface_TypedValue_ValueTypeToParamType = Interface_TypedValue.ValueTypeToParamType
 Interface_Static_CDef = Interface_Static.CDef
 Interface_Static_CVal = Interface_Static.CVal
+Interface_Static_FillMap = Interface_Static.FillMap
 Interface_Static_IDef = Interface_Static.IDef
 Interface_Static_IVal = Interface_Static.IVal
 Interface_Static_Init = Interface_Static.Init

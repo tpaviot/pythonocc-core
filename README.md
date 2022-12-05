@@ -2,7 +2,7 @@
 [![Downloads Badge](https://anaconda.org/conda-forge/pythonocc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pythonocc-core)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tpaviot/pythonocc-core.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tpaviot/pythonocc-core/context:python)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.6.2)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.7.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3686916.svg)](https://doi.org/10.5281/zenodo.3686916)
 
 pythonocc-core
@@ -13,7 +13,7 @@ About
 
 pythonocc provides 3D modeling and dataexchange features. It is intended to CAD/PDM/PLM and BIM related development.
 
-Latest release : [pythonocc-core 7.6.2 (August 2022)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.6.2)
+Latest release : [pythonocc-core 7.7.0 (November 2022)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.7.0)
 
 Features
 --------
@@ -28,18 +28,18 @@ pythonocc provides the following features:
 Try online at mybinder
 ----------------------
 
-Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.6.2) to open a jupyter notebook running latest pythonocc-core 7.6.2, gmesh (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.7.0) to open a jupyter notebook running latest pythonocc-core 7.7.0, gmesh (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
 
 Download/install binaries for Linux/OSX/Windows
 -----------------------------------------------
 
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 3.8, 3.9 and 3.10. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.7:
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 3.8, 3.9 and 3.10. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.9:
 
 ```bash
 # first create an environment
 conda create --name=pyoccenv python=3.9
 source activate pyoccenv
-conda install -c conda-forge pythonocc-core=7.6.2
+conda install -c conda-forge pythonocc-core=7.7.0
 ```
 
 Other channels provide pythonocc-core packages, check https://anaconda.org/search?q=pythonocc-core.
@@ -70,7 +70,7 @@ We use the following online resources:
 pythonocc, oce and opencascade dependencies
 -------------------------------------------
 
-pythonocc-core 7.6.2 depends on the official OpenCascade-7.6.2 library (<https://dev.opencascade.org>)
+pythonocc-core 7.7.0 depends on the official OpenCascade-7.7.0 library (<https://dev.opencascade.org>)
 
 Former releases rely on oce (OpenCascade Community Edition), available at  
 [oce C++ library / CAD kernel](https://github.com/tpaviot/oce).

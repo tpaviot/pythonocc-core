@@ -590,77 +590,6 @@ enum Quantity_TypeOfColor {
 	Quantity_TOC_CIELch = 4,
 };
 
-enum Quantity_PhysicalQuantity {
-	Quantity_MASS = 0,
-	Quantity_PLANEANGLE = 1,
-	Quantity_SOLIDANGLE = 2,
-	Quantity_LENGTH = 3,
-	Quantity_AREA = 4,
-	Quantity_VOLUME = 5,
-	Quantity_SPEED = 6,
-	Quantity_VELOCITY = 7,
-	Quantity_ACCELERATION = 8,
-	Quantity_ANGULARVELOCITY = 9,
-	Quantity_FREQUENCY = 10,
-	Quantity_TEMPERATURE = 11,
-	Quantity_AMOUNTOFSUBSTANCE = 12,
-	Quantity_DENSITY = 13,
-	Quantity_MASSFLOW = 14,
-	Quantity_VOLUMEFLOW = 15,
-	Quantity_CONSUMPTION = 16,
-	Quantity_MOMENTUM = 17,
-	Quantity_KINETICMOMENT = 18,
-	Quantity_MOMENTOFINERTIA = 19,
-	Quantity_FORCE = 20,
-	Quantity_MOMENTOFAFORCE = 21,
-	Quantity_TORQUE = 22,
-	Quantity_WEIGHT = 23,
-	Quantity_PRESSURE = 24,
-	Quantity_VISCOSITY = 25,
-	Quantity_KINEMATICVISCOSITY = 26,
-	Quantity_ENERGY = 27,
-	Quantity_WORK = 28,
-	Quantity_POWER = 29,
-	Quantity_SURFACETENSION = 30,
-	Quantity_COEFFICIENTOFEXPANSION = 31,
-	Quantity_THERMALCONDUCTIVITY = 32,
-	Quantity_SPECIFICHEATCAPACITY = 33,
-	Quantity_ENTROPY = 34,
-	Quantity_ENTHALPY = 35,
-	Quantity_LUMINOUSINTENSITY = 36,
-	Quantity_LUMINOUSFLUX = 37,
-	Quantity_LUMINANCE = 38,
-	Quantity_ILLUMINANCE = 39,
-	Quantity_LUMINOUSEXPOSITION = 40,
-	Quantity_LUMINOUSEFFICACITY = 41,
-	Quantity_ELECTRICCHARGE = 42,
-	Quantity_ELECTRICCURRENT = 43,
-	Quantity_ELECTRICFIELDSTRENGTH = 44,
-	Quantity_ELECTRICPOTENTIAL = 45,
-	Quantity_ELECTRICCAPACITANCE = 46,
-	Quantity_MAGNETICFLUX = 47,
-	Quantity_MAGNETICFLUXDENSITY = 48,
-	Quantity_MAGNETICFIELDSTRENGTH = 49,
-	Quantity_RELUCTANCE = 50,
-	Quantity_RESISTANCE = 51,
-	Quantity_INDUCTANCE = 52,
-	Quantity_CAPACITANCE = 53,
-	Quantity_IMPEDANCE = 54,
-	Quantity_ADMITTANCE = 55,
-	Quantity_RESISTIVITY = 56,
-	Quantity_CONDUCTIVITY = 57,
-	Quantity_MOLARMASS = 58,
-	Quantity_MOLARVOLUME = 59,
-	Quantity_CONCENTRATION = 60,
-	Quantity_MOLARCONCENTRATION = 61,
-	Quantity_MOLARITY = 62,
-	Quantity_SOUNDINTENSITY = 63,
-	Quantity_ACOUSTICINTENSITY = 64,
-	Quantity_ACTIVITY = 65,
-	Quantity_ABSORBEDDOSE = 66,
-	Quantity_DOSEEQUIVALENT = 67,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
@@ -1721,144 +1650,6 @@ Quantity_TOC_sRGB = Quantity_TypeOfColor.Quantity_TOC_sRGB
 Quantity_TOC_HLS = Quantity_TypeOfColor.Quantity_TOC_HLS
 Quantity_TOC_CIELab = Quantity_TypeOfColor.Quantity_TOC_CIELab
 Quantity_TOC_CIELch = Quantity_TypeOfColor.Quantity_TOC_CIELch
-
-class Quantity_PhysicalQuantity(IntEnum):
-	Quantity_MASS = 0
-	Quantity_PLANEANGLE = 1
-	Quantity_SOLIDANGLE = 2
-	Quantity_LENGTH = 3
-	Quantity_AREA = 4
-	Quantity_VOLUME = 5
-	Quantity_SPEED = 6
-	Quantity_VELOCITY = 7
-	Quantity_ACCELERATION = 8
-	Quantity_ANGULARVELOCITY = 9
-	Quantity_FREQUENCY = 10
-	Quantity_TEMPERATURE = 11
-	Quantity_AMOUNTOFSUBSTANCE = 12
-	Quantity_DENSITY = 13
-	Quantity_MASSFLOW = 14
-	Quantity_VOLUMEFLOW = 15
-	Quantity_CONSUMPTION = 16
-	Quantity_MOMENTUM = 17
-	Quantity_KINETICMOMENT = 18
-	Quantity_MOMENTOFINERTIA = 19
-	Quantity_FORCE = 20
-	Quantity_MOMENTOFAFORCE = 21
-	Quantity_TORQUE = 22
-	Quantity_WEIGHT = 23
-	Quantity_PRESSURE = 24
-	Quantity_VISCOSITY = 25
-	Quantity_KINEMATICVISCOSITY = 26
-	Quantity_ENERGY = 27
-	Quantity_WORK = 28
-	Quantity_POWER = 29
-	Quantity_SURFACETENSION = 30
-	Quantity_COEFFICIENTOFEXPANSION = 31
-	Quantity_THERMALCONDUCTIVITY = 32
-	Quantity_SPECIFICHEATCAPACITY = 33
-	Quantity_ENTROPY = 34
-	Quantity_ENTHALPY = 35
-	Quantity_LUMINOUSINTENSITY = 36
-	Quantity_LUMINOUSFLUX = 37
-	Quantity_LUMINANCE = 38
-	Quantity_ILLUMINANCE = 39
-	Quantity_LUMINOUSEXPOSITION = 40
-	Quantity_LUMINOUSEFFICACITY = 41
-	Quantity_ELECTRICCHARGE = 42
-	Quantity_ELECTRICCURRENT = 43
-	Quantity_ELECTRICFIELDSTRENGTH = 44
-	Quantity_ELECTRICPOTENTIAL = 45
-	Quantity_ELECTRICCAPACITANCE = 46
-	Quantity_MAGNETICFLUX = 47
-	Quantity_MAGNETICFLUXDENSITY = 48
-	Quantity_MAGNETICFIELDSTRENGTH = 49
-	Quantity_RELUCTANCE = 50
-	Quantity_RESISTANCE = 51
-	Quantity_INDUCTANCE = 52
-	Quantity_CAPACITANCE = 53
-	Quantity_IMPEDANCE = 54
-	Quantity_ADMITTANCE = 55
-	Quantity_RESISTIVITY = 56
-	Quantity_CONDUCTIVITY = 57
-	Quantity_MOLARMASS = 58
-	Quantity_MOLARVOLUME = 59
-	Quantity_CONCENTRATION = 60
-	Quantity_MOLARCONCENTRATION = 61
-	Quantity_MOLARITY = 62
-	Quantity_SOUNDINTENSITY = 63
-	Quantity_ACOUSTICINTENSITY = 64
-	Quantity_ACTIVITY = 65
-	Quantity_ABSORBEDDOSE = 66
-	Quantity_DOSEEQUIVALENT = 67
-Quantity_MASS = Quantity_PhysicalQuantity.Quantity_MASS
-Quantity_PLANEANGLE = Quantity_PhysicalQuantity.Quantity_PLANEANGLE
-Quantity_SOLIDANGLE = Quantity_PhysicalQuantity.Quantity_SOLIDANGLE
-Quantity_LENGTH = Quantity_PhysicalQuantity.Quantity_LENGTH
-Quantity_AREA = Quantity_PhysicalQuantity.Quantity_AREA
-Quantity_VOLUME = Quantity_PhysicalQuantity.Quantity_VOLUME
-Quantity_SPEED = Quantity_PhysicalQuantity.Quantity_SPEED
-Quantity_VELOCITY = Quantity_PhysicalQuantity.Quantity_VELOCITY
-Quantity_ACCELERATION = Quantity_PhysicalQuantity.Quantity_ACCELERATION
-Quantity_ANGULARVELOCITY = Quantity_PhysicalQuantity.Quantity_ANGULARVELOCITY
-Quantity_FREQUENCY = Quantity_PhysicalQuantity.Quantity_FREQUENCY
-Quantity_TEMPERATURE = Quantity_PhysicalQuantity.Quantity_TEMPERATURE
-Quantity_AMOUNTOFSUBSTANCE = Quantity_PhysicalQuantity.Quantity_AMOUNTOFSUBSTANCE
-Quantity_DENSITY = Quantity_PhysicalQuantity.Quantity_DENSITY
-Quantity_MASSFLOW = Quantity_PhysicalQuantity.Quantity_MASSFLOW
-Quantity_VOLUMEFLOW = Quantity_PhysicalQuantity.Quantity_VOLUMEFLOW
-Quantity_CONSUMPTION = Quantity_PhysicalQuantity.Quantity_CONSUMPTION
-Quantity_MOMENTUM = Quantity_PhysicalQuantity.Quantity_MOMENTUM
-Quantity_KINETICMOMENT = Quantity_PhysicalQuantity.Quantity_KINETICMOMENT
-Quantity_MOMENTOFINERTIA = Quantity_PhysicalQuantity.Quantity_MOMENTOFINERTIA
-Quantity_FORCE = Quantity_PhysicalQuantity.Quantity_FORCE
-Quantity_MOMENTOFAFORCE = Quantity_PhysicalQuantity.Quantity_MOMENTOFAFORCE
-Quantity_TORQUE = Quantity_PhysicalQuantity.Quantity_TORQUE
-Quantity_WEIGHT = Quantity_PhysicalQuantity.Quantity_WEIGHT
-Quantity_PRESSURE = Quantity_PhysicalQuantity.Quantity_PRESSURE
-Quantity_VISCOSITY = Quantity_PhysicalQuantity.Quantity_VISCOSITY
-Quantity_KINEMATICVISCOSITY = Quantity_PhysicalQuantity.Quantity_KINEMATICVISCOSITY
-Quantity_ENERGY = Quantity_PhysicalQuantity.Quantity_ENERGY
-Quantity_WORK = Quantity_PhysicalQuantity.Quantity_WORK
-Quantity_POWER = Quantity_PhysicalQuantity.Quantity_POWER
-Quantity_SURFACETENSION = Quantity_PhysicalQuantity.Quantity_SURFACETENSION
-Quantity_COEFFICIENTOFEXPANSION = Quantity_PhysicalQuantity.Quantity_COEFFICIENTOFEXPANSION
-Quantity_THERMALCONDUCTIVITY = Quantity_PhysicalQuantity.Quantity_THERMALCONDUCTIVITY
-Quantity_SPECIFICHEATCAPACITY = Quantity_PhysicalQuantity.Quantity_SPECIFICHEATCAPACITY
-Quantity_ENTROPY = Quantity_PhysicalQuantity.Quantity_ENTROPY
-Quantity_ENTHALPY = Quantity_PhysicalQuantity.Quantity_ENTHALPY
-Quantity_LUMINOUSINTENSITY = Quantity_PhysicalQuantity.Quantity_LUMINOUSINTENSITY
-Quantity_LUMINOUSFLUX = Quantity_PhysicalQuantity.Quantity_LUMINOUSFLUX
-Quantity_LUMINANCE = Quantity_PhysicalQuantity.Quantity_LUMINANCE
-Quantity_ILLUMINANCE = Quantity_PhysicalQuantity.Quantity_ILLUMINANCE
-Quantity_LUMINOUSEXPOSITION = Quantity_PhysicalQuantity.Quantity_LUMINOUSEXPOSITION
-Quantity_LUMINOUSEFFICACITY = Quantity_PhysicalQuantity.Quantity_LUMINOUSEFFICACITY
-Quantity_ELECTRICCHARGE = Quantity_PhysicalQuantity.Quantity_ELECTRICCHARGE
-Quantity_ELECTRICCURRENT = Quantity_PhysicalQuantity.Quantity_ELECTRICCURRENT
-Quantity_ELECTRICFIELDSTRENGTH = Quantity_PhysicalQuantity.Quantity_ELECTRICFIELDSTRENGTH
-Quantity_ELECTRICPOTENTIAL = Quantity_PhysicalQuantity.Quantity_ELECTRICPOTENTIAL
-Quantity_ELECTRICCAPACITANCE = Quantity_PhysicalQuantity.Quantity_ELECTRICCAPACITANCE
-Quantity_MAGNETICFLUX = Quantity_PhysicalQuantity.Quantity_MAGNETICFLUX
-Quantity_MAGNETICFLUXDENSITY = Quantity_PhysicalQuantity.Quantity_MAGNETICFLUXDENSITY
-Quantity_MAGNETICFIELDSTRENGTH = Quantity_PhysicalQuantity.Quantity_MAGNETICFIELDSTRENGTH
-Quantity_RELUCTANCE = Quantity_PhysicalQuantity.Quantity_RELUCTANCE
-Quantity_RESISTANCE = Quantity_PhysicalQuantity.Quantity_RESISTANCE
-Quantity_INDUCTANCE = Quantity_PhysicalQuantity.Quantity_INDUCTANCE
-Quantity_CAPACITANCE = Quantity_PhysicalQuantity.Quantity_CAPACITANCE
-Quantity_IMPEDANCE = Quantity_PhysicalQuantity.Quantity_IMPEDANCE
-Quantity_ADMITTANCE = Quantity_PhysicalQuantity.Quantity_ADMITTANCE
-Quantity_RESISTIVITY = Quantity_PhysicalQuantity.Quantity_RESISTIVITY
-Quantity_CONDUCTIVITY = Quantity_PhysicalQuantity.Quantity_CONDUCTIVITY
-Quantity_MOLARMASS = Quantity_PhysicalQuantity.Quantity_MOLARMASS
-Quantity_MOLARVOLUME = Quantity_PhysicalQuantity.Quantity_MOLARVOLUME
-Quantity_CONCENTRATION = Quantity_PhysicalQuantity.Quantity_CONCENTRATION
-Quantity_MOLARCONCENTRATION = Quantity_PhysicalQuantity.Quantity_MOLARCONCENTRATION
-Quantity_MOLARITY = Quantity_PhysicalQuantity.Quantity_MOLARITY
-Quantity_SOUNDINTENSITY = Quantity_PhysicalQuantity.Quantity_SOUNDINTENSITY
-Quantity_ACOUSTICINTENSITY = Quantity_PhysicalQuantity.Quantity_ACOUSTICINTENSITY
-Quantity_ACTIVITY = Quantity_PhysicalQuantity.Quantity_ACTIVITY
-Quantity_ABSORBEDDOSE = Quantity_PhysicalQuantity.Quantity_ABSORBEDDOSE
-Quantity_DOSEEQUIVALENT = Quantity_PhysicalQuantity.Quantity_DOSEEQUIVALENT
 };
 /* end python proxy for enums */
 
@@ -1902,12 +1693,10 @@ Quantity_DOSEEQUIVALENT = Quantity_PhysicalQuantity.Quantity_DOSEEQUIVALENT
     __next__ = next
     }
 };
-%template(Quantity_Array2OfColor) NCollection_Array2<Quantity_Color>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<Quantity_Color> Quantity_Array1OfColor;
-typedef NCollection_Array2<Quantity_Color> Quantity_Array2OfColor;
 /* end typedefs declaration */
 
 /***********************

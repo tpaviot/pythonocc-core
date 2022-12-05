@@ -61,6 +61,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdprs.html"
 #include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<BRepLib_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Message_module.hxx>
@@ -76,6 +77,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdprs.html"
 #include<Select3D_module.hxx>
 #include<Media_module.hxx>
 #include<Prs3d_module.hxx>
+#include<BRepTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -102,6 +104,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdprs.html"
 %import TopTools.i
 %import TopAbs.i
 %import Adaptor2d.i
+%import BRepLib.i
 
 %pythoncode {
 from enum import IntEnum
@@ -1866,7 +1869,7 @@ Adaptor2d_Curve2d
 /*************************************
 * class StdPrs_ToolTriangulatedShape *
 *************************************/
-class StdPrs_ToolTriangulatedShape {
+class StdPrs_ToolTriangulatedShape : public BRepLib_ToolTriangulatedShape {
 	public:
 		/****************** ClearOnOwnDeflectionChange ******************/
 		/**** md5 signature: 98477340457ba32a3ffb2857a082605a ****/
@@ -1885,43 +1888,10 @@ None
 ") ClearOnOwnDeflectionChange;
 		static void ClearOnOwnDeflectionChange(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theToResetCoeff);
 
-		/****************** ComputeNormals ******************/
-		/**** md5 signature: 2d57466090fe2926dca8ad73827190c2 ****/
-		%feature("compactdefaultargs") ComputeNormals;
-		%feature("autodoc", "Computes nodal normals for poly_triangulation structure using uv coordinates and surface. does nothing if triangulation already defines normals. @param theface [in] the face @param thetris [in] the definition of a face triangulation.
-
-Parameters
-----------
-theFace: TopoDS_Face
-theTris: Poly_Triangulation
-
-Returns
--------
-None
-") ComputeNormals;
-		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris);
-
-		/****************** ComputeNormals ******************/
-		/**** md5 signature: ff5b08874a5db62c157e96e68689a5a4 ****/
-		%feature("compactdefaultargs") ComputeNormals;
-		%feature("autodoc", "Computes nodal normals for poly_triangulation structure using uv coordinates and surface. does nothing if triangulation already defines normals. @param theface [in] the face @param thetris [in] the definition of a face triangulation @param thepolyconnect [in,out] optional, initialized tool for exploring triangulation.
-
-Parameters
-----------
-theFace: TopoDS_Face
-theTris: Poly_Triangulation
-thePolyConnect: Poly_Connect
-
-Returns
--------
-None
-") ComputeNormals;
-		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris, Poly_Connect & thePolyConnect);
-
 		/****************** GetDeflection ******************/
 		/**** md5 signature: 32d565d6bf5769fcd44726cec516a592 ****/
 		%feature("compactdefaultargs") GetDeflection;
-		%feature("autodoc", "Computes the absolute deflection value depending on the type of deflection in thedrawer: <ul> <li><b>aspect_tod_relative</b>: the absolute deflection is computed using the relative deviation coefficient from thedrawer and the shape's bounding box;</li> <li><b>aspect_tod_absolute</b>: the maximal chordial deviation from thedrawer is returned.</li> </ul> in case of the type of deflection in thedrawer computed relative deflection for shape is stored as absolute deflection. it is necessary to use it later on for sub-shapes. this function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
+		%feature("autodoc", "Computes the absolute deflection value depending on the type of deflection in thedrawer: <ul> <li><b>aspect_tod_relative</b>: the absolute deflection is computed using the relative deviation coefficient from thedrawer and the shape's bounding box;</li> <li><b>aspect_tod_absolute</b>: the maximal chordial deviation from thedrawer is returned.</li> </ul> in case of the type of deflection in thedrawer computed relative deflection for shape is stored as absolute deflection. it is necessary to use it later on for sub-shapes. this function should always be used to compute the deflection value for building discrete representations of the shape (triangulation, wireframe) to avoid inconsistencies between different representations of the shape and undesirable visual artifacts.
 
 Parameters
 ----------
@@ -1980,27 +1950,10 @@ bool
 ") IsTriangulated;
 		static Standard_Boolean IsTriangulated(const TopoDS_Shape & theShape);
 
-		/****************** Normal ******************/
-		/**** md5 signature: b04d071f25e8a4fa6f4986e009a71f93 ****/
-		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "Evaluate normals for a triangle of a face. @param theface [in] the face. @param thepolyconnect [in] the definition of a face triangulation. @param thenormal [out] the array of normals for each triangle.
-
-Parameters
-----------
-theFace: TopoDS_Face
-thePolyConnect: Poly_Connect
-theNormals: TColgp_Array1OfDir
-
-Returns
--------
-None
-") Normal;
-		static void Normal(const TopoDS_Face & theFace, Poly_Connect & thePolyConnect, TColgp_Array1OfDir & theNormals);
-
 		/****************** Tessellate ******************/
 		/**** md5 signature: 4e3c55da546073fdfff034a5fa73f78a ****/
 		%feature("compactdefaultargs") Tessellate;
-		%feature("autodoc", "Validates triangulation within the shape and performs tessellation if necessary. @param theshape [in] the shape. @param thedrawer [in] the display settings. returns true if tesselation was recomputed and false otherwise.
+		%feature("autodoc", "Validates triangulation within the shape and performs tessellation if necessary. @param theshape [in] the shape. @param thedrawer [in] the display settings. returns true if tessellation was recomputed and false otherwise.
 
 Parameters
 ----------

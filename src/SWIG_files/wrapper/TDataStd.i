@@ -4839,7 +4839,7 @@ None
 		/****************** SetArrayOfReals ******************/
 		/**** md5 signature: 16f1e7f9567f65375c020bb23d8100af ****/
 		%feature("compactdefaultargs") SetArrayOfReals;
-		%feature("autodoc", "Defines a named array of real values. @param thename [in] key @param thearrayofintegers [in] new value, overrides existing (passed array will be copied by value!).
+		%feature("autodoc", "Defines a named array of real values. @param[in] thename key @param[in] thearrayofreals new value, overrides existing (passed array will be copied by value!).
 
 Parameters
 ----------

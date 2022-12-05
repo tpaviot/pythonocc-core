@@ -45,12 +45,12 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafdoc.html"
 #include<TCollection_module.hxx>
 #include<TDF_module.hxx>
 #include<TDataStd_module.hxx>
+#include<TDocStd_module.hxx>
 #include<TColStd_module.hxx>
 #include<gp_module.hxx>
 #include<Quantity_module.hxx>
 #include<TopoDS_module.hxx>
 #include<XCAFDimTolObjects_module.hxx>
-#include<TDocStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<XCAFNoteObjects_module.hxx>
 #include<OSD_module.hxx>
@@ -76,12 +76,12 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafdoc.html"
 %import TCollection.i
 %import TDF.i
 %import TDataStd.i
+%import TDocStd.i
 %import TColStd.i
 %import gp.i
 %import Quantity.i
 %import TopoDS.i
 %import XCAFDimTolObjects.i
-%import TDocStd.i
 %import TopLoc.i
 %import XCAFNoteObjects.i
 %import OSD.i
@@ -118,6 +118,7 @@ XCAFDoc_ColorCurv = XCAFDoc_ColorType.XCAFDoc_ColorCurv
 
 /* handles */
 %wrap_handle(XCAFDoc_Area)
+%wrap_handle(XCAFDoc_AssemblyGraph)
 %wrap_handle(XCAFDoc_AssemblyItemRef)
 %wrap_handle(XCAFDoc_Centroid)
 %wrap_handle(XCAFDoc_ClippingPlaneTool)
@@ -582,6 +583,242 @@ opencascade::handle<XCAFDoc_Area>
 %make_alias(XCAFDoc_Area)
 
 %extend XCAFDoc_Area {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************
+* class XCAFDoc_AssemblyGraph *
+******************************/
+class XCAFDoc_AssemblyGraph : public Standard_Transient {
+	public:
+typedef NCollection_DataMap<Standard_Integer , TColStd_PackedMapOfInteger> AdjacencyMap;
+		class Iterator {};
+/* public enums */
+enum NodeType {
+	NodeType_UNDEFINED = 0,
+	NodeType_AssemblyRoot = 1,
+	NodeType_Subassembly = 2,
+	NodeType_Occurrence = 3,
+	NodeType_Part = 4,
+	NodeType_Subshape = 5,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class NodeType(IntEnum):
+	NodeType_UNDEFINED = 0
+	NodeType_AssemblyRoot = 1
+	NodeType_Subassembly = 2
+	NodeType_Occurrence = 3
+	NodeType_Part = 4
+	NodeType_Subshape = 5
+NodeType_UNDEFINED = NodeType.NodeType_UNDEFINED
+NodeType_AssemblyRoot = NodeType.NodeType_AssemblyRoot
+NodeType_Subassembly = NodeType.NodeType_Subassembly
+NodeType_Occurrence = NodeType.NodeType_Occurrence
+NodeType_Part = NodeType.NodeType_Part
+NodeType_Subshape = NodeType.NodeType_Subshape
+};
+/* end python proxy for enums */
+
+		/****************** XCAFDoc_AssemblyGraph ******************/
+		/**** md5 signature: 7a43fcc42d351eea072de136f9d8ebb1 ****/
+		%feature("compactdefaultargs") XCAFDoc_AssemblyGraph;
+		%feature("autodoc", "\brief constructs graph from xcaf document. construction of a formal graph will be done immediately. \param [in] thedoc - document to iterate.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+
+Returns
+-------
+None
+") XCAFDoc_AssemblyGraph;
+		 XCAFDoc_AssemblyGraph(const opencascade::handle<TDocStd_Document> & theDoc);
+
+		/****************** XCAFDoc_AssemblyGraph ******************/
+		/**** md5 signature: 6521866e2af20cbd6733dfab8c4790a7 ****/
+		%feature("compactdefaultargs") XCAFDoc_AssemblyGraph;
+		%feature("autodoc", "\brief constructs graph from xcaf label. construction of a formal graph will be done immediately. the specified label is used as a starting position. \param [in] thedoc - document to iterate. \param [in] thelabel - starting position.
+
+Parameters
+----------
+theLabel: TDF_Label
+
+Returns
+-------
+None
+") XCAFDoc_AssemblyGraph;
+		 XCAFDoc_AssemblyGraph(const TDF_Label & theLabel);
+
+		/****************** GetChildren ******************/
+		/**** md5 signature: 78c28009556cae3a454a6f4d2b5d95fb ****/
+		%feature("compactdefaultargs") GetChildren;
+		%feature("autodoc", "\brief returns ids of child nodes for the given node. \param [in] thenode - one-based node id. eturn set of child ids.
+
+Parameters
+----------
+theNode: int
+
+Returns
+-------
+TColStd_PackedMapOfInteger
+") GetChildren;
+		const TColStd_PackedMapOfInteger & GetChildren(const Standard_Integer theNode);
+
+		/****************** GetLinks ******************/
+		/**** md5 signature: 71d026ba70bb50b3fb1f61585b29c8cb ****/
+		%feature("compactdefaultargs") GetLinks;
+		%feature("autodoc", "\brief returns the collection of graph links in the form of adjacency matrix. eturn graph links.
+
+Returns
+-------
+AdjacencyMap
+") GetLinks;
+		const AdjacencyMap & GetLinks();
+
+		/****************** GetNode ******************/
+		/**** md5 signature: 08746f2ada50261a47534d8d3ed0fa43 ****/
+		%feature("compactdefaultargs") GetNode;
+		%feature("autodoc", "\brief returns object id by node id. \param [in] thenode - one-based node id. eturn persistent id.
+
+Parameters
+----------
+theNode: int
+
+Returns
+-------
+TDF_Label
+") GetNode;
+		const TDF_Label & GetNode(const Standard_Integer theNode);
+
+		/****************** GetNodeType ******************/
+		/**** md5 signature: 2a8d798de989eafac09bfb870bab9fae ****/
+		%feature("compactdefaultargs") GetNodeType;
+		%feature("autodoc", "\brief returns the node type from ef nodetype enum. \param [in] thenode - one-based node id. eturn node type. \sa nodetype.
+
+Parameters
+----------
+theNode: int
+
+Returns
+-------
+XCAFDoc_AssemblyGraph::NodeType
+") GetNodeType;
+		XCAFDoc_AssemblyGraph::NodeType GetNodeType(const Standard_Integer theNode);
+
+		/****************** GetNodes ******************/
+		/**** md5 signature: 9ab15b253791908d8de8d61dad2baac4 ****/
+		%feature("compactdefaultargs") GetNodes;
+		%feature("autodoc", "\brief returns the unordered set of graph nodes. eturn graph nodes.
+
+Returns
+-------
+TDF_LabelIndexedMap
+") GetNodes;
+		const TDF_LabelIndexedMap & GetNodes();
+
+		/****************** GetRoots ******************/
+		/**** md5 signature: a9e5a8c4207210773dc54e4bb1aa3b34 ****/
+		%feature("compactdefaultargs") GetRoots;
+		%feature("autodoc", "\brief returns ids of the root nodes. eturn ids of the root nodes.
+
+Returns
+-------
+TColStd_PackedMapOfInteger
+") GetRoots;
+		const TColStd_PackedMapOfInteger & GetRoots();
+
+		/****************** GetShapeTool ******************/
+		/**** md5 signature: a61be1bd1f2b067dcdc81a2d70df068a ****/
+		%feature("compactdefaultargs") GetShapeTool;
+		%feature("autodoc", "Eturn document shape tool.
+
+Returns
+-------
+opencascade::handle<XCAFDoc_ShapeTool>
+") GetShapeTool;
+		const opencascade::handle<XCAFDoc_ShapeTool> & GetShapeTool();
+
+		/****************** HasChildren ******************/
+		/**** md5 signature: 63e31188c1861192467c6f10fd5052bd ****/
+		%feature("compactdefaultargs") HasChildren;
+		%feature("autodoc", "\brief checks whether direct children exist for the given node. \param [in] thenode - one-based node id. eturn true/false.
+
+Parameters
+----------
+theNode: int
+
+Returns
+-------
+bool
+") HasChildren;
+		Standard_Boolean HasChildren(const Standard_Integer theNode);
+
+		/****************** IsDirectLink ******************/
+		/**** md5 signature: 1faed4dba5ede28516016e22db4e8d87 ****/
+		%feature("compactdefaultargs") IsDirectLink;
+		%feature("autodoc", "\brief checks whether the assembly graph contains (n1, n2) directed link. \param [in] thenode1 - one-based id of the first node. \param [in] thenode2 - one-based id of the second node. eturn true/false.
+
+Parameters
+----------
+theNode1: int
+theNode2: int
+
+Returns
+-------
+bool
+") IsDirectLink;
+		Standard_Boolean IsDirectLink(const Standard_Integer theNode1, const Standard_Integer theNode2);
+
+		/****************** NbLinks ******************/
+		/**** md5 signature: 79abe033a91a532fb20a57d51be46cd3 ****/
+		%feature("compactdefaultargs") NbLinks;
+		%feature("autodoc", "\brief returns the number of graph links. eturn number of graph links.
+
+Returns
+-------
+int
+") NbLinks;
+		Standard_Integer NbLinks();
+
+		/****************** NbNodes ******************/
+		/**** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ****/
+		%feature("compactdefaultargs") NbNodes;
+		%feature("autodoc", "\brief returns the number of graph nodes. eturn number of graph nodes.
+
+Returns
+-------
+int
+") NbNodes;
+		Standard_Integer NbNodes();
+
+		/****************** NbOccurrences ******************/
+		/**** md5 signature: 0709027a395dbc5caa9d4801553bcbd4 ****/
+		%feature("compactdefaultargs") NbOccurrences;
+		%feature("autodoc", "Returns quantity of part usage occurrences. \param [in] thenode - one-based part id. eturn usage occurrence quantity.
+
+Parameters
+----------
+theNode: int
+
+Returns
+-------
+int
+") NbOccurrences;
+		Standard_Integer NbOccurrences(const Standard_Integer theNode);
+
+};
+
+
+%make_alias(XCAFDoc_AssemblyGraph)
+
+%extend XCAFDoc_AssemblyGraph {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1105,6 +1342,103 @@ None
 	}
 };
 
+/*********************************
+* class XCAFDoc_AssemblyIterator *
+*********************************/
+class XCAFDoc_AssemblyIterator {
+	public:
+		class AuxAssemblyItem {};
+		/****************** XCAFDoc_AssemblyIterator ******************/
+		/**** md5 signature: f213631244e18596430c804971b2db01 ****/
+		%feature("compactdefaultargs") XCAFDoc_AssemblyIterator;
+		%feature("autodoc", "Constructs iterator starting from assembly roots. \param [in] thedoc - document to iterate. \param [in, opt] thelevel - max level of hierarchy to reach (int_max is for no limit).
+
+Parameters
+----------
+theDoc: TDocStd_Document
+theLevel: int,optional
+	default value is INT_MAX
+
+Returns
+-------
+None
+") XCAFDoc_AssemblyIterator;
+		 XCAFDoc_AssemblyIterator(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Integer theLevel = INT_MAX);
+
+		/****************** XCAFDoc_AssemblyIterator ******************/
+		/**** md5 signature: 4fb9acc2af8eb9f22847137f2921a5a5 ****/
+		%feature("compactdefaultargs") XCAFDoc_AssemblyIterator;
+		%feature("autodoc", "Constructs iterator starting from the specified position in the assembly tree. \param [in] thedoc - document to iterate. \param [in] theroot - assembly item to start iterating from. \param [in, opt] thelevel - max level of hierarchy to reach (int_max is for no limit).
+
+Parameters
+----------
+theDoc: TDocStd_Document
+theRoot: XCAFDoc_AssemblyItemId
+theLevel: int,optional
+	default value is INT_MAX
+
+Returns
+-------
+None
+") XCAFDoc_AssemblyIterator;
+		 XCAFDoc_AssemblyIterator(const opencascade::handle<TDocStd_Document> & theDoc, const XCAFDoc_AssemblyItemId & theRoot, const Standard_Integer theLevel = INT_MAX);
+
+		/****************** Current ******************/
+		/**** md5 signature: 3c4f769b7dbbbef61faa7e2c796471ec ****/
+		%feature("compactdefaultargs") Current;
+		%feature("autodoc", "Eturn current item.
+
+Returns
+-------
+XCAFDoc_AssemblyItemId
+") Current;
+		XCAFDoc_AssemblyItemId Current();
+
+		/****************** More ******************/
+		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		%feature("compactdefaultargs") More;
+		%feature("autodoc", "Eturn true if there is still something to iterate, false -- otherwise.
+
+Returns
+-------
+bool
+") More;
+		Standard_Boolean More();
+
+		/****************** Next ******************/
+		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "Moves depth-first iterator to the next position.
+
+Returns
+-------
+None
+") Next;
+		void Next();
+
+};
+
+
+%extend XCAFDoc_AssemblyIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************
+* class XCAFDoc_AssemblyTool *
+*****************************/
+class XCAFDoc_AssemblyTool {
+	public:
+};
+
+
+%extend XCAFDoc_AssemblyTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*************************
 * class XCAFDoc_Centroid *
 *************************/
@@ -1287,7 +1621,7 @@ None
 		 XCAFDoc_ClippingPlaneTool();
 
 		/****************** AddClippingPlane ******************/
-		/**** md5 signature: 2d666fece3b201cb4a423c4e2440efeb ****/
+		/**** md5 signature: 96cd9764611efec9708f97a7964b7322 ****/
 		%feature("compactdefaultargs") AddClippingPlane;
 		%feature("autodoc", "Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
 
@@ -1301,10 +1635,10 @@ Returns
 -------
 TDF_Label
 ") AddClippingPlane;
-		TDF_Label AddClippingPlane(const gp_Pln thePlane, const TCollection_ExtendedString theName, const Standard_Boolean theCapping);
+		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const TCollection_ExtendedString theName, const Standard_Boolean theCapping);
 
 		/****************** AddClippingPlane ******************/
-		/**** md5 signature: ff5458b645806a0c34c4a76569134718 ****/
+		/**** md5 signature: 9131937433204037f31f3ee02b1b6873 ****/
 		%feature("compactdefaultargs") AddClippingPlane;
 		%feature("autodoc", "Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
 
@@ -1318,10 +1652,10 @@ Returns
 -------
 TDF_Label
 ") AddClippingPlane;
-		TDF_Label AddClippingPlane(const gp_Pln thePlane, const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Boolean theCapping);
+		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Boolean theCapping);
 
 		/****************** AddClippingPlane ******************/
-		/**** md5 signature: 80710e4f3c87179aa17422bd6fcbe9dd ****/
+		/**** md5 signature: 1402b567b5c2f09a4022c0affc0b5adc ****/
 		%feature("compactdefaultargs") AddClippingPlane;
 		%feature("autodoc", "Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
 
@@ -1334,10 +1668,10 @@ Returns
 -------
 TDF_Label
 ") AddClippingPlane;
-		TDF_Label AddClippingPlane(const gp_Pln thePlane, const TCollection_ExtendedString theName);
+		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const TCollection_ExtendedString theName);
 
 		/****************** AddClippingPlane ******************/
-		/**** md5 signature: 0c1955bb2e5280fb9585a297f76233e9 ****/
+		/**** md5 signature: 39b67f88acdbae8d7a347f43242b6396 ****/
 		%feature("compactdefaultargs") AddClippingPlane;
 		%feature("autodoc", "Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
 
@@ -1350,7 +1684,7 @@ Returns
 -------
 TDF_Label
 ") AddClippingPlane;
-		TDF_Label AddClippingPlane(const gp_Pln thePlane, const opencascade::handle<TCollection_HAsciiString> & theName);
+		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const opencascade::handle<TCollection_HAsciiString> & theName);
 
 		/****************** BaseLabel ******************/
 		/**** md5 signature: cb499d8135863e96e585085d0b85c75a ****/
@@ -1526,7 +1860,7 @@ None
 		void SetCapping(const TDF_Label & theClippingPlaneL, const Standard_Boolean theCapping);
 
 		/****************** UpdateClippingPlane ******************/
-		/**** md5 signature: 7fea425a2b56639e7b09dc9057cd12bb ****/
+		/**** md5 signature: bc776ceb1d6117cc8f2ecd1262d46521 ****/
 		%feature("compactdefaultargs") UpdateClippingPlane;
 		%feature("autodoc", "Sets new value of plane and name to the given clipping plane label or do nothing, if the given label is not a clipping plane label.
 
@@ -1540,7 +1874,7 @@ Returns
 -------
 None
 ") UpdateClippingPlane;
-		void UpdateClippingPlane(const TDF_Label & theLabelL, const gp_Pln thePlane, const TCollection_ExtendedString theName);
+		void UpdateClippingPlane(const TDF_Label & theLabelL, const gp_Pln & thePlane, const TCollection_ExtendedString theName);
 
 };
 
@@ -4441,7 +4775,7 @@ bool
 		/****************** Expand ******************/
 		/**** md5 signature: 1cc446d192c84b603f3864408a96c0c5 ****/
 		%feature("compactdefaultargs") Expand;
-		%feature("autodoc", "Converts all compounds shapes in the document to assembly @param[in] thedoc input document @param[in] theshape input shape label @param[in] therecursively recursively expand a compound subshape returns true if shape successfully expanded.
+		%feature("autodoc", "Converts all compounds shapes in the document to assembly @param[in] thedoc input document @param[in] therecursively recursively expand a compound subshape returns true if shape successfully expanded.
 
 Parameters
 ----------
@@ -4490,6 +4824,24 @@ Returns
 bool
 ") Extract;
 		static Standard_Boolean Extract(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, const Standard_Boolean theIsNoVisMat = Standard_False);
+
+		/****************** RescaleGeometry ******************/
+		/**** md5 signature: 6d7b362a664687f8478cc030b7cf7497 ****/
+		%feature("compactdefaultargs") RescaleGeometry;
+		%feature("autodoc", "Applies geometrical scaling to the following assembly components: - part geometry - sub-assembly/part occurrence location - part's centroid, area and volume attributes - pmis (warnings and errors are reported if it is impossible to make changes) normally, should start from a root sub-assembly, but if theforceifnotroot true scaling will be applied forcibly. if thelabel corresponds to the shape tool scaling is applied to the whole assembly. @param[in] thelabel starting label @param[in] thescalefactor scale factor, should be positive @param[in] theforceifnotroot allows scaling of a non root assembly if true,  otherwise - returns false returns true in case of success, otherwise - false.
+
+Parameters
+----------
+theLabel: TDF_Label
+theScaleFactor: float
+theForceIfNotRoot: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") RescaleGeometry;
+		static Standard_Boolean RescaleGeometry(const TDF_Label & theLabel, const Standard_Real theScaleFactor, const Standard_Boolean theForceIfNotRoot = Standard_False);
 
 };
 
@@ -8337,6 +8689,23 @@ Returns
 opencascade::handle<XCAFDoc_GraphNode>
 ") SetInstanceSHUO;
 		opencascade::handle<XCAFDoc_GraphNode> SetInstanceSHUO(const TopoDS_Shape & theShape);
+
+		/****************** SetLocation ******************/
+		/**** md5 signature: 9a34a0d86dea02beeb4159dd398eab09 ****/
+		%feature("compactdefaultargs") SetLocation;
+		%feature("autodoc", "Sets location to the shape label if label is reference -> changes location attribute if label is free shape -> creates reference with location to it @param[in] theshapelabel the shape label to change location @param[in] theloc location to set @param[out] thereflabel the reference label with new location returns true if new location was set.
+
+Parameters
+----------
+theShapeLabel: TDF_Label
+theLoc: TopLoc_Location
+theRefLabel: TDF_Label
+
+Returns
+-------
+bool
+") SetLocation;
+		Standard_Boolean SetLocation(const TDF_Label & theShapeLabel, const TopLoc_Location & theLoc, TDF_Label & theRefLabel);
 
 		/****************** SetSHUO ******************/
 		/**** md5 signature: f02f367ef3accdf59d9c28425fa6702b ****/

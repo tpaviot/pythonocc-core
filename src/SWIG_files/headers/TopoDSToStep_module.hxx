@@ -36,6 +36,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDSToStep_MakeStepFace.hxx>
 #include<TopoDSToStep_MakeStepVertex.hxx>
 #include<TopoDSToStep_MakeStepWire.hxx>
+#include<TopoDSToStep_MakeTessellatedItem.hxx>
 #include<TopoDSToStep_MakeVertexError.hxx>
 #include<TopoDSToStep_MakeWireError.hxx>
 #include<TopoDSToStep_Root.hxx>

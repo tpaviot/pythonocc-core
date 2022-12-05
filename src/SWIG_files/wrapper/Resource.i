@@ -246,6 +246,17 @@ None
 		 Resource_Manager(const char * aName, const Standard_Boolean Verbose = Standard_False);
 
 		/****************** Resource_Manager ******************/
+		/**** md5 signature: 94a9bf1e751906a5d5dd7b470590375c ****/
+		%feature("compactdefaultargs") Resource_Manager;
+		%feature("autodoc", "Create an empty resource manager.
+
+Returns
+-------
+None
+") Resource_Manager;
+		 Resource_Manager();
+
+		/****************** Resource_Manager ******************/
 		/**** md5 signature: 1f6d540d565637ee2761b199541d8d4f ****/
 		%feature("compactdefaultargs") Resource_Manager;
 		%feature("autodoc", "Create a resource manager. @param thename [in] description file name @param thedefaultsdirectory [in] default folder for looking description file @param theuserdefaultsdirectory [in] user folder for looking description file @param theisverbose [in] print verbose messages.
@@ -309,6 +320,22 @@ Returns
 bool
 ") Find;
 		Standard_Boolean Find(const TCollection_AsciiString & theResource, TCollection_AsciiString & theValue);
+
+		/****************** GetMap ******************/
+		/**** md5 signature: 0a184cd99b151391a734472d41136b3b ****/
+		%feature("compactdefaultargs") GetMap;
+		%feature("autodoc", "Returns internal ref or user map with parameters .
+
+Parameters
+----------
+theRefMap: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+Resource_DataMapOfAsciiStringAsciiString
+") GetMap;
+		Resource_DataMapOfAsciiStringAsciiString & GetMap(Standard_Boolean theRefMap = Standard_True);
 
 		/****************** GetResourcePath ******************/
 		/**** md5 signature: e37f4ebfe1a5c28a696f168d5c81f4e2 ****/

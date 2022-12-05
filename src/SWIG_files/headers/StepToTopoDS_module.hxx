@@ -52,6 +52,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepToTopoDS_TranslatePolyLoopError.hxx>
 #include<StepToTopoDS_TranslateShell.hxx>
 #include<StepToTopoDS_TranslateShellError.hxx>
+#include<StepToTopoDS_TranslateSolid.hxx>
+#include<StepToTopoDS_TranslateSolidError.hxx>
 #include<StepToTopoDS_TranslateVertex.hxx>
 #include<StepToTopoDS_TranslateVertexError.hxx>
 #include<StepToTopoDS_TranslateVertexLoop.hxx>

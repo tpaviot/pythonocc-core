@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steptotopods.html
 #include<Transfer_module.hxx>
 #include<Message_module.hxx>
 #include<Geom2d_module.hxx>
+#include<StepVisual_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
 #include<Interface_module.hxx>
@@ -78,6 +79,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steptotopods.html
 %import Transfer.i
 %import Message.i
 %import Geom2d.i
+%import StepVisual.i
 
 %pythoncode {
 from enum import IntEnum
@@ -132,6 +134,11 @@ enum StepToTopoDS_TranslateEdgeLoopError {
 enum StepToTopoDS_TranslateVertexError {
 	StepToTopoDS_TranslateVertexDone = 0,
 	StepToTopoDS_TranslateVertexOther = 1,
+};
+
+enum StepToTopoDS_TranslateSolidError {
+	StepToTopoDS_TranslateSolidDone = 0,
+	StepToTopoDS_TranslateSolidOther = 1,
 };
 
 /* end public enums declaration */
@@ -200,6 +207,12 @@ class StepToTopoDS_TranslateVertexError(IntEnum):
 	StepToTopoDS_TranslateVertexOther = 1
 StepToTopoDS_TranslateVertexDone = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexDone
 StepToTopoDS_TranslateVertexOther = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexOther
+
+class StepToTopoDS_TranslateSolidError(IntEnum):
+	StepToTopoDS_TranslateSolidDone = 0
+	StepToTopoDS_TranslateSolidOther = 1
+StepToTopoDS_TranslateSolidDone = StepToTopoDS_TranslateSolidError.StepToTopoDS_TranslateSolidDone
+StepToTopoDS_TranslateSolidOther = StepToTopoDS_TranslateSolidError.StepToTopoDS_TranslateSolidOther
 };
 /* end python proxy for enums */
 
@@ -1433,6 +1446,24 @@ None
 ") StepToTopoDS_TranslateFace;
 		 StepToTopoDS_TranslateFace(const opencascade::handle<StepShape_FaceSurface> & FS, StepToTopoDS_Tool & T, StepToTopoDS_NMTool & NMTool);
 
+		/****************** StepToTopoDS_TranslateFace ******************/
+		/**** md5 signature: 0eefc2831bcb7bc26ec7e4e24be5b8ac ****/
+		%feature("compactdefaultargs") StepToTopoDS_TranslateFace;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theTF: StepVisual_TessellatedFace
+theTool: StepToTopoDS_Tool
+theNMTool: StepToTopoDS_NMTool
+theReadTessellatedWhenNoBRepOnly: bool
+
+Returns
+-------
+theHasGeom: bool
+") StepToTopoDS_TranslateFace;
+		 StepToTopoDS_TranslateFace(const opencascade::handle<StepVisual_TessellatedFace> & theTF, StepToTopoDS_Tool & theTool, StepToTopoDS_NMTool & theNMTool, const Standard_Boolean theReadTessellatedWhenNoBRepOnly, Standard_Boolean &OutValue);
+
 		/****************** Error ******************/
 		/**** md5 signature: d8d7070b3c140555673282970df02982 ****/
 		%feature("compactdefaultargs") Error;
@@ -1460,6 +1491,24 @@ Returns
 None
 ") Init;
 		void Init(const opencascade::handle<StepShape_FaceSurface> & FS, StepToTopoDS_Tool & T, StepToTopoDS_NMTool & NMTool);
+
+		/****************** Init ******************/
+		/**** md5 signature: d39fc1574617af44989002b9016cb145 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theTF: StepVisual_TessellatedFace
+theTool: StepToTopoDS_Tool
+theNMTool: StepToTopoDS_NMTool
+theReadTessellatedWhenNoBRepOnly: bool
+
+Returns
+-------
+theHasGeom: bool
+") Init;
+		void Init(const opencascade::handle<StepVisual_TessellatedFace> & theTF, StepToTopoDS_Tool & theTool, StepToTopoDS_NMTool & theNMTool, const Standard_Boolean theReadTessellatedWhenNoBRepOnly, Standard_Boolean &OutValue);
 
 		/****************** Value ******************/
 		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/
@@ -1610,6 +1659,26 @@ None
 ") Init;
 		void Init(const opencascade::handle<StepShape_ConnectedFaceSet> & CFS, StepToTopoDS_Tool & T, StepToTopoDS_NMTool & NMTool, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****************** Init ******************/
+		/**** md5 signature: 547ba58fb7516521d5ff53bd71823fe1 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theTSh: StepVisual_TessellatedShell
+theTool: StepToTopoDS_Tool
+theNMTool: StepToTopoDS_NMTool
+theReadTessellatedWhenNoBRepOnly: bool
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+theHasGeom: bool
+") Init;
+		void Init(const opencascade::handle<StepVisual_TessellatedShell> & theTSh, StepToTopoDS_Tool & theTool, StepToTopoDS_NMTool & theNMTool, const Standard_Boolean theReadTessellatedWhenNoBRepOnly, Standard_Boolean &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 		/****************** Value ******************/
 		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/
 		%feature("compactdefaultargs") Value;
@@ -1625,6 +1694,74 @@ TopoDS_Shape
 
 
 %extend StepToTopoDS_TranslateShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class StepToTopoDS_TranslateSolid *
+************************************/
+class StepToTopoDS_TranslateSolid : public StepToTopoDS_Root {
+	public:
+		/****************** StepToTopoDS_TranslateSolid ******************/
+		/**** md5 signature: a1bc59a82f7fc42c5d1fbed6c7a86f9d ****/
+		%feature("compactdefaultargs") StepToTopoDS_TranslateSolid;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") StepToTopoDS_TranslateSolid;
+		 StepToTopoDS_TranslateSolid();
+
+		/****************** Error ******************/
+		/**** md5 signature: 182aa85674e767b1a95f9e67d85aa82e ****/
+		%feature("compactdefaultargs") Error;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+StepToTopoDS_TranslateSolidError
+") Error;
+		StepToTopoDS_TranslateSolidError Error();
+
+		/****************** Init ******************/
+		/**** md5 signature: 046ac37eb86e7bd5e6e36ec44425b63a ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theTSo: StepVisual_TessellatedSolid
+theTP: Transfer_TransientProcess
+theTool: StepToTopoDS_Tool
+theNMTool: StepToTopoDS_NMTool
+theReadTessellatedWhenNoBRepOnly: bool
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+theHasGeom: bool
+") Init;
+		void Init(const opencascade::handle<StepVisual_TessellatedSolid> & theTSo, const opencascade::handle<Transfer_TransientProcess> & theTP, StepToTopoDS_Tool & theTool, StepToTopoDS_NMTool & theNMTool, const Standard_Boolean theReadTessellatedWhenNoBRepOnly, Standard_Boolean &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Value ******************/
+		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Shape
+") Value;
+		const TopoDS_Shape Value();
+
+};
+
+
+%extend StepToTopoDS_TranslateSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

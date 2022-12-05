@@ -1677,6 +1677,28 @@ opencascade::handle<Geom2d_Curve>
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d();
 
+		/****************** Curve3d ******************/
+		/**** md5 signature: bf4d235dc27cc25572185a2b068878b7 ****/
+		%feature("compactdefaultargs") Curve3d;
+		%feature("autodoc", "Returns the 3d curve that has the same parameter as the 3d curve once evaluated on the surface up to the specified tolerance.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_Curve>
+") Curve3d;
+		opencascade::handle<Adaptor3d_Curve> Curve3d();
+
+		/****************** CurveOnSurface ******************/
+		/**** md5 signature: 4576c068b1d09f135c33c1fb035c3e4f ****/
+		%feature("compactdefaultargs") CurveOnSurface;
+		%feature("autodoc", "Returns the 3d curve on surface that has the same parameter as the 3d curve up to the specified tolerance.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_CurveOnSurface>
+") CurveOnSurface;
+		opencascade::handle<Adaptor3d_CurveOnSurface> CurveOnSurface();
+
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;

@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwobj.html"
 #include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Graphic3d_module.hxx>
+#include<XSControl_module.hxx>
 #include<gp_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
@@ -78,6 +79,16 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwobj.html"
 #include<V3d_module.hxx>
 #include<TDataXtd_module.hxx>
 #include<TNaming_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TopTools_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<CDF_module.hxx>
+#include<PCDM_module.hxx>
+#include<TDF_module.hxx>
+#include<MoniTool_module.hxx>
+#include<Transfer_module.hxx>
+#include<Interface_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -95,6 +106,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwobj.html"
 %import TColStd.i
 %import TopoDS.i
 %import Graphic3d.i
+%import XSControl.i
 %import gp.i
 
 %pythoncode {
@@ -298,6 +310,151 @@ None
 %make_alias(RWObj_CafWriter)
 
 %extend RWObj_CafWriter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class RWObj_ConfigurationNode *
+********************************/
+class RWObj_ConfigurationNode : public DE_ConfigurationNode {
+	public:
+		class RWObj_InternalSection {};
+		RWObj_InternalSection InternalParameters;
+		/****************** RWObj_ConfigurationNode ******************/
+		/**** md5 signature: fef3c64b7b1f08d5903a2e5a76359f5b ****/
+		%feature("compactdefaultargs") RWObj_ConfigurationNode;
+		%feature("autodoc", "Initializes all field by default.
+
+Returns
+-------
+None
+") RWObj_ConfigurationNode;
+		 RWObj_ConfigurationNode();
+
+		/****************** RWObj_ConfigurationNode ******************/
+		/**** md5 signature: b3d5669842004c383fdd24cbede8a505 ****/
+		%feature("compactdefaultargs") RWObj_ConfigurationNode;
+		%feature("autodoc", "Copies values of all fields @param[in] thenode object to copy.
+
+Parameters
+----------
+theNode: RWObj_ConfigurationNode
+
+Returns
+-------
+None
+") RWObj_ConfigurationNode;
+		 RWObj_ConfigurationNode(const opencascade::handle<RWObj_ConfigurationNode> & theNode);
+
+		/****************** BuildProvider ******************/
+		/**** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ****/
+		%feature("compactdefaultargs") BuildProvider;
+		%feature("autodoc", "Creates new provider for the own format returns new created provider.
+
+Returns
+-------
+opencascade::handle<DE_Provider>
+") BuildProvider;
+		virtual opencascade::handle<DE_Provider> BuildProvider();
+
+		/****************** Copy ******************/
+		/**** md5 signature: 4559608ebdab2961e97de40732291656 ****/
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "Copies values of all fields returns new object with the same field values.
+
+Returns
+-------
+opencascade::handle<DE_ConfigurationNode>
+") Copy;
+		virtual opencascade::handle<DE_ConfigurationNode> Copy();
+
+		/****************** GetExtensions ******************/
+		/**** md5 signature: a58fd9c22a501a38d695eed6406f94bb ****/
+		%feature("compactdefaultargs") GetExtensions;
+		%feature("autodoc", "Gets list of supported file extensions returns list of extensions.
+
+Returns
+-------
+TColStd_ListOfAsciiString
+") GetExtensions;
+		virtual TColStd_ListOfAsciiString GetExtensions();
+
+		/****************** GetFormat ******************/
+		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		%feature("compactdefaultargs") GetFormat;
+		%feature("autodoc", "Gets cad format name of associated provider returns provider cad format.
+
+Returns
+-------
+TCollection_AsciiString
+") GetFormat;
+		virtual TCollection_AsciiString GetFormat();
+
+		/****************** GetVendor ******************/
+		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		%feature("compactdefaultargs") GetVendor;
+		%feature("autodoc", "Gets provider's vendor name of associated provider returns provider's vendor name.
+
+Returns
+-------
+TCollection_AsciiString
+") GetVendor;
+		virtual TCollection_AsciiString GetVendor();
+
+		/****************** IsExportSupported ******************/
+		/**** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ****/
+		%feature("compactdefaultargs") IsExportSupported;
+		%feature("autodoc", "Checks the export supporting returns true if export is supported.
+
+Returns
+-------
+bool
+") IsExportSupported;
+		virtual bool IsExportSupported();
+
+		/****************** IsImportSupported ******************/
+		/**** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ****/
+		%feature("compactdefaultargs") IsImportSupported;
+		%feature("autodoc", "Checks the import supporting returns true if import is supported.
+
+Returns
+-------
+bool
+") IsImportSupported;
+		virtual bool IsImportSupported();
+
+		/****************** Load ******************/
+		/**** md5 signature: 994009254510d81a5f0f9a326a356850 ****/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "Updates values according the resource @param[in] theresource input resource to use returns true if theresource loading has ended correctly.
+
+Parameters
+----------
+theResource: DE_ConfigurationContext
+
+Returns
+-------
+bool
+") Load;
+		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
+
+		/****************** Save ******************/
+		/**** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ****/
+		%feature("compactdefaultargs") Save;
+		%feature("autodoc", "Writes configuration to the string returns result resource string.
+
+Returns
+-------
+TCollection_AsciiString
+") Save;
+		virtual TCollection_AsciiString Save();
+
+};
+
+
+%extend RWObj_ConfigurationNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -684,6 +841,216 @@ bool
 
 
 %extend RWObj_ObjWriterContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************
+* class RWObj_Provider *
+***********************/
+class RWObj_Provider : public DE_Provider {
+	public:
+		/****************** RWObj_Provider ******************/
+		/**** md5 signature: 0fbb63395fe5490ac4fe1d1e45033c86 ****/
+		%feature("compactdefaultargs") RWObj_Provider;
+		%feature("autodoc", "Default constructor configure translation process with global configuration.
+
+Returns
+-------
+None
+") RWObj_Provider;
+		 RWObj_Provider();
+
+		/****************** RWObj_Provider ******************/
+		/**** md5 signature: 7c5769edee9d0e799fadcc1fa14350f1 ****/
+		%feature("compactdefaultargs") RWObj_Provider;
+		%feature("autodoc", "Configure translation process @param[in] thenode object to copy.
+
+Parameters
+----------
+theNode: DE_ConfigurationNode
+
+Returns
+-------
+None
+") RWObj_Provider;
+		 RWObj_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
+
+		/****************** GetFormat ******************/
+		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		%feature("compactdefaultargs") GetFormat;
+		%feature("autodoc", "Gets cad format name of associated provider returns provider cad format.
+
+Returns
+-------
+TCollection_AsciiString
+") GetFormat;
+		virtual TCollection_AsciiString GetFormat();
+
+		/****************** GetVendor ******************/
+		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		%feature("compactdefaultargs") GetVendor;
+		%feature("autodoc", "Gets provider's vendor name of associated provider returns provider's vendor name.
+
+Returns
+-------
+TCollection_AsciiString
+") GetVendor;
+		virtual TCollection_AsciiString GetVendor();
+
+		/****************** Read ******************/
+		/**** md5 signature: 5da3d196d6292385962a1e60f3dec8a0 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param[in] thews current work session @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Read ******************/
+		/**** md5 signature: ec9914af037216c0502c72d0c8784072 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Read ******************/
+		/**** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param[in] thews current work session @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Read ******************/
+		/**** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param theprogress[in] progress indicator returns true if read operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Read;
+		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theDocument: TDocStd_Document
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator returns true if write operation has ended correctly.
+
+Parameters
+----------
+thePath: TCollection_AsciiString
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+bool
+") Write;
+		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+};
+
+
+%extend RWObj_Provider {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

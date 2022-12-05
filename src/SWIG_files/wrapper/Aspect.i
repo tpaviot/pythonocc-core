@@ -44,9 +44,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_aspect.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Quantity_module.hxx>
+#include<gp_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<TCollection_module.hxx>
-#include<gp_module.hxx>
 #include<Image_module.hxx>
 #include<Bnd_module.hxx>
 #include<Media_module.hxx>
@@ -58,9 +58,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_aspect.html"
 %import Standard.i
 %import NCollection.i
 %import Quantity.i
+%import gp.i
 %import Graphic3d.i
 %import TCollection.i
-%import gp.i
 %import Image.i
 
 %pythoncode {
@@ -1926,6 +1926,188 @@ None
 	}
 };
 
+/*********************************
+* class Aspect_SkydomeBackground *
+*********************************/
+class Aspect_SkydomeBackground {
+	public:
+		/****************** Aspect_SkydomeBackground ******************/
+		/**** md5 signature: 3c25f69c902a4ad07c515cd932d3d294 ****/
+		%feature("compactdefaultargs") Aspect_SkydomeBackground;
+		%feature("autodoc", "Creates a window skydome background. by default skydome is initialized with sun at its zenith (0.0, 1.0, 0.0), average clody (0.2), zero time parameter, zero fogginess, 512x512 texture size.
+
+Returns
+-------
+None
+") Aspect_SkydomeBackground;
+		 Aspect_SkydomeBackground();
+
+		/****************** Aspect_SkydomeBackground ******************/
+		/**** md5 signature: 3a75c743ed1f3d8ea420373174e19a33 ****/
+		%feature("compactdefaultargs") Aspect_SkydomeBackground;
+		%feature("autodoc", "Creates a window skydome background with given parameters. @param[in] thesundirection direction to the sun (moon). sun direction with negative y component  represents moon with (-x, -y, -z) direction. @param[in] thecloudiness cloud intensity, 0.0 means no clouds at all and 1.0 - high clody. @param[in] thetime time parameter of simulation. might be tweaked to slightly change appearance. @param[in] thefogginess fog intensity, 0.0 means no fog and 1.0 - high fogginess @param[in] thesize size of cubemap side in pixels.
+
+Parameters
+----------
+theSunDirection: gp_Dir
+theCloudiness: Standard_ShortReal
+theTime: Standard_ShortReal
+theFogginess: Standard_ShortReal
+theSize: int
+
+Returns
+-------
+None
+") Aspect_SkydomeBackground;
+		 Aspect_SkydomeBackground(const gp_Dir & theSunDirection, Standard_ShortReal theCloudiness, Standard_ShortReal theTime, Standard_ShortReal theFogginess, Standard_Integer theSize);
+
+		/****************** Cloudiness ******************/
+		/**** md5 signature: dc5cc52623d8691a38ed69cd8a0c18b7 ****/
+		%feature("compactdefaultargs") Cloudiness;
+		%feature("autodoc", "Get cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
+
+Returns
+-------
+Standard_ShortReal
+") Cloudiness;
+		Standard_ShortReal Cloudiness();
+
+
+            %feature("autodoc", "1");
+            %extend{
+                std::string DumpJsonToString(int depth=-1) {
+                std::stringstream s;
+                self->DumpJson(s, depth);
+                return s.str();}
+            };
+		/****************** Fogginess ******************/
+		/**** md5 signature: c50b52b93dcf09580ca9736bc7f6571e ****/
+		%feature("compactdefaultargs") Fogginess;
+		%feature("autodoc", "Get fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
+
+Returns
+-------
+Standard_ShortReal
+") Fogginess;
+		Standard_ShortReal Fogginess();
+
+		/****************** SetCloudiness ******************/
+		/**** md5 signature: 920d86159a2674d4c13553ecbeb16824 ****/
+		%feature("compactdefaultargs") SetCloudiness;
+		%feature("autodoc", "Set cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
+
+Parameters
+----------
+theCloudiness: Standard_ShortReal
+
+Returns
+-------
+None
+") SetCloudiness;
+		void SetCloudiness(Standard_ShortReal theCloudiness);
+
+		/****************** SetFogginess ******************/
+		/**** md5 signature: 96294984cc974e9ab6dd33824cb4a7b8 ****/
+		%feature("compactdefaultargs") SetFogginess;
+		%feature("autodoc", "Set fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
+
+Parameters
+----------
+theFogginess: Standard_ShortReal
+
+Returns
+-------
+None
+") SetFogginess;
+		void SetFogginess(Standard_ShortReal theFogginess);
+
+		/****************** SetSize ******************/
+		/**** md5 signature: 5a379cce6c2fb68b87bbdd7ae6575397 ****/
+		%feature("compactdefaultargs") SetSize;
+		%feature("autodoc", "Set size of cubemap. by default this value is 512.
+
+Parameters
+----------
+theSize: int
+
+Returns
+-------
+None
+") SetSize;
+		void SetSize(Standard_Integer theSize);
+
+		/****************** SetSunDirection ******************/
+		/**** md5 signature: d85bbe95c7e3d45dd1408af0a7346203 ****/
+		%feature("compactdefaultargs") SetSunDirection;
+		%feature("autodoc", "Set sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
+
+Parameters
+----------
+theSunDirection: gp_Dir
+
+Returns
+-------
+None
+") SetSunDirection;
+		void SetSunDirection(const gp_Dir & theSunDirection);
+
+		/****************** SetTimeParameter ******************/
+		/**** md5 signature: a44786d752ad3eaf0c2cb124be7e0294 ****/
+		%feature("compactdefaultargs") SetTimeParameter;
+		%feature("autodoc", "Set time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
+
+Parameters
+----------
+theTime: Standard_ShortReal
+
+Returns
+-------
+None
+") SetTimeParameter;
+		void SetTimeParameter(Standard_ShortReal theTime);
+
+		/****************** Size ******************/
+		/**** md5 signature: fe6e16e0f1e86558dd017c7384c76cd6 ****/
+		%feature("compactdefaultargs") Size;
+		%feature("autodoc", "Get size of cubemap. by default this value is 512.
+
+Returns
+-------
+int
+") Size;
+		Standard_Integer Size();
+
+		/****************** SunDirection ******************/
+		/**** md5 signature: 468ebca31659264b29a8630921783c51 ****/
+		%feature("compactdefaultargs") SunDirection;
+		%feature("autodoc", "Get sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
+
+Returns
+-------
+gp_Dir
+") SunDirection;
+		const gp_Dir SunDirection();
+
+		/****************** TimeParameter ******************/
+		/**** md5 signature: cab33c32ebd5264ea67ec9d3936a9232 ****/
+		%feature("compactdefaultargs") TimeParameter;
+		%feature("autodoc", "Get time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
+
+Returns
+-------
+Standard_ShortReal
+") TimeParameter;
+		Standard_ShortReal TimeParameter();
+
+};
+
+
+%extend Aspect_SkydomeBackground {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************
 * class Aspect_Touch *
 *********************/
@@ -2095,6 +2277,17 @@ float
 ") DevicePixelRatio;
 		virtual Standard_Real DevicePixelRatio();
 
+		/****************** Dimensions ******************/
+		/**** md5 signature: 7e270212c8ea0579f85528495512097b ****/
+		%feature("compactdefaultargs") Dimensions;
+		%feature("autodoc", "Returns window dimensions.
+
+Returns
+-------
+Graphic3d_Vec2i
+") Dimensions;
+		Graphic3d_Vec2i Dimensions();
+
 		/****************** DisplayConnection ******************/
 		/**** md5 signature: 411dcd7f318927d5a5c6c027eda3726a ****/
 		%feature("compactdefaultargs") DisplayConnection;
@@ -2235,49 +2428,49 @@ float
 		virtual Standard_Real Ratio();
 
 		/****************** SetBackground ******************/
-		/**** md5 signature: 1ead7ff97ae08966fe95d016244fe9b6 ****/
+		/**** md5 signature: 1060a0f428ba58a6057f242d39040d7b ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window background.
 
 Parameters
 ----------
-ABack: Aspect_Background
+theBack: Aspect_Background
 
 Returns
 -------
 None
 ") SetBackground;
-		void SetBackground(const Aspect_Background & ABack);
+		void SetBackground(const Aspect_Background & theBack);
 
 		/****************** SetBackground ******************/
-		/**** md5 signature: d24f1efd14ab0c25fed5c82da2583a6f ****/
+		/**** md5 signature: cbe59d034bfe68360b6e7b8aeecdb1e1 ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window background.
 
 Parameters
 ----------
-color: Quantity_Color
+theColor: Quantity_Color
 
 Returns
 -------
 None
 ") SetBackground;
-		void SetBackground(const Quantity_Color & color);
+		void SetBackground(const Quantity_Color & theColor);
 
 		/****************** SetBackground ******************/
-		/**** md5 signature: e326ee0ef2c818116b46fe0d832b2c39 ****/
+		/**** md5 signature: f4e2412715795dcef62591ecfa331106 ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window gradient background.
 
 Parameters
 ----------
-ABackground: Aspect_GradientBackground
+theBackground: Aspect_GradientBackground
 
 Returns
 -------
 None
 ") SetBackground;
-		void SetBackground(const Aspect_GradientBackground & ABackground);
+		void SetBackground(const Aspect_GradientBackground & theBackground);
 
 		/****************** SetBackground ******************/
 		/**** md5 signature: 333d66c15042163afcf370e304fa7b6a ****/
@@ -2340,6 +2533,17 @@ Width: int
 Height: int
 ") Size;
 		virtual void Size(Standard_Integer &OutValue, Standard_Integer &OutValue);
+
+		/****************** TopLeft ******************/
+		/**** md5 signature: 3da1646606e47f0bfb9b901a144b8b7a ****/
+		%feature("compactdefaultargs") TopLeft;
+		%feature("autodoc", "Returns window top-left corner.
+
+Returns
+-------
+Graphic3d_Vec2i
+") TopLeft;
+		Graphic3d_Vec2i TopLeft();
 
 		/****************** Unmap ******************/
 		/**** md5 signature: 2681daf3d4beece6a894fb54cb645818 ****/

@@ -20,6 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<BRepTools.hxx>
+#include<BRepTools_CopyModification.hxx>
 #include<BRepTools_DataMapIteratorOfMapOfVertexPnt2d.hxx>
 #include<BRepTools_GTrsfModification.hxx>
 #include<BRepTools_History.hxx>

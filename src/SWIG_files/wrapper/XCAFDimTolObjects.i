@@ -187,6 +187,13 @@ enum XCAFDimTolObjects_GeomToleranceZoneModif {
 	XCAFDimTolObjects_GeomToleranceZoneModif_NonUniform = 3,
 };
 
+enum XCAFDimTolObjects_AngularQualifier {
+	XCAFDimTolObjects_AngularQualifier_None = 0,
+	XCAFDimTolObjects_AngularQualifier_Small = 1,
+	XCAFDimTolObjects_AngularQualifier_Large = 2,
+	XCAFDimTolObjects_AngularQualifier_Equal = 3,
+};
+
 enum XCAFDimTolObjects_DatumTargetType {
 	XCAFDimTolObjects_DatumTargetType_Point = 0,
 	XCAFDimTolObjects_DatumTargetType_Line = 1,
@@ -509,6 +516,16 @@ XCAFDimTolObjects_GeomToleranceZoneModif_None = XCAFDimTolObjects_GeomToleranceZ
 XCAFDimTolObjects_GeomToleranceZoneModif_Projected = XCAFDimTolObjects_GeomToleranceZoneModif.XCAFDimTolObjects_GeomToleranceZoneModif_Projected
 XCAFDimTolObjects_GeomToleranceZoneModif_Runout = XCAFDimTolObjects_GeomToleranceZoneModif.XCAFDimTolObjects_GeomToleranceZoneModif_Runout
 XCAFDimTolObjects_GeomToleranceZoneModif_NonUniform = XCAFDimTolObjects_GeomToleranceZoneModif.XCAFDimTolObjects_GeomToleranceZoneModif_NonUniform
+
+class XCAFDimTolObjects_AngularQualifier(IntEnum):
+	XCAFDimTolObjects_AngularQualifier_None = 0
+	XCAFDimTolObjects_AngularQualifier_Small = 1
+	XCAFDimTolObjects_AngularQualifier_Large = 2
+	XCAFDimTolObjects_AngularQualifier_Equal = 3
+XCAFDimTolObjects_AngularQualifier_None = XCAFDimTolObjects_AngularQualifier.XCAFDimTolObjects_AngularQualifier_None
+XCAFDimTolObjects_AngularQualifier_Small = XCAFDimTolObjects_AngularQualifier.XCAFDimTolObjects_AngularQualifier_Small
+XCAFDimTolObjects_AngularQualifier_Large = XCAFDimTolObjects_AngularQualifier.XCAFDimTolObjects_AngularQualifier_Large
+XCAFDimTolObjects_AngularQualifier_Equal = XCAFDimTolObjects_AngularQualifier.XCAFDimTolObjects_AngularQualifier_Equal
 
 class XCAFDimTolObjects_DatumTargetType(IntEnum):
 	XCAFDimTolObjects_DatumTargetType_Point = 0
@@ -1392,6 +1409,17 @@ None
                 self->DumpJson(s, depth);
                 return s.str();}
             };
+		/****************** GetAngularQualifier ******************/
+		/**** md5 signature: 879aaa6d41f62cc9a57ed8bb32b54d97 ****/
+		%feature("compactdefaultargs") GetAngularQualifier;
+		%feature("autodoc", "Returns angular qualifier.
+
+Returns
+-------
+XCAFDimTolObjects_AngularQualifier
+") GetAngularQualifier;
+		XCAFDimTolObjects_AngularQualifier GetAngularQualifier();
+
 		/****************** GetClassOfTolerance ******************/
 		/**** md5 signature: 5c7792eec51fc027e2d5d6043f6964ff ****/
 		%feature("compactdefaultargs") GetClassOfTolerance;
@@ -1655,6 +1683,17 @@ opencascade::handle<TColStd_HArray1OfReal>
 ") GetValues;
 		opencascade::handle<TColStd_HArray1OfReal> GetValues();
 
+		/****************** HasAngularQualifier ******************/
+		/**** md5 signature: c0ae146472fe74681d928f8e33adc449 ****/
+		%feature("compactdefaultargs") HasAngularQualifier;
+		%feature("autodoc", "Returns true if the object has angular qualifier.
+
+Returns
+-------
+bool
+") HasAngularQualifier;
+		Standard_Boolean HasAngularQualifier();
+
 		/****************** HasDescriptions ******************/
 		/**** md5 signature: a29882da325e9c2ee8b0fd068b89d92c ****/
 		%feature("compactdefaultargs") HasDescriptions;
@@ -1780,6 +1819,21 @@ None
 ") RemoveDescription;
 		void RemoveDescription(const Standard_Integer theNumber);
 
+		/****************** SetAngularQualifier ******************/
+		/**** md5 signature: cf4d95e9599ca795141ca10e5321fe6e ****/
+		%feature("compactdefaultargs") SetAngularQualifier;
+		%feature("autodoc", "Sets angular qualifier as small, large or equal.
+
+Parameters
+----------
+theAngularQualifier: XCAFDimTolObjects_AngularQualifier
+
+Returns
+-------
+None
+") SetAngularQualifier;
+		void SetAngularQualifier(const XCAFDimTolObjects_AngularQualifier theAngularQualifier);
+
 		/****************** SetClassOfTolerance ******************/
 		/**** md5 signature: 73c5d12561a820f6615237d0257d08e9 ****/
 		%feature("compactdefaultargs") SetClassOfTolerance;
@@ -1904,7 +1958,7 @@ None
 		void SetPlane(const gp_Ax2 & thePlane);
 
 		/****************** SetPoint ******************/
-		/**** md5 signature: f9131907cb61340768fb9a1c8b97260a ****/
+		/**** md5 signature: 366a57481a7ee35be93bd56983beb928 ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Set connection point (for dimesional_size), set connection point for the first shape (for dimensional_location).
 
@@ -1916,10 +1970,10 @@ Returns
 -------
 None
 ") SetPoint;
-		void SetPoint(const gp_Pnt thePnt);
+		void SetPoint(const gp_Pnt & thePnt);
 
 		/****************** SetPoint2 ******************/
-		/**** md5 signature: c4e510d21705c6ee2f11aa2dfc519e7a ****/
+		/**** md5 signature: c4f1f34fb99406cc2260874f1d932235 ****/
 		%feature("compactdefaultargs") SetPoint2;
 		%feature("autodoc", "No available documentation.
 
@@ -1931,7 +1985,7 @@ Returns
 -------
 None
 ") SetPoint2;
-		void SetPoint2(const gp_Pnt thePnt);
+		void SetPoint2(const gp_Pnt & thePnt);
 
 		/****************** SetPointTextAttach ******************/
 		/**** md5 signature: 341561a939b1838061b22f9114c6f676 ****/
@@ -2423,7 +2477,7 @@ None
 		void SetAffectedPlaneType(const XCAFDimTolObjects_ToleranceZoneAffectedPlane theType);
 
 		/****************** SetAxis ******************/
-		/**** md5 signature: fb235ea263da030c660a8bbe3f5e66b6 ****/
+		/**** md5 signature: 54e51f1310b6be8e02c312df4bfb237e ****/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "No available documentation.
 
@@ -2435,7 +2489,7 @@ Returns
 -------
 None
 ") SetAxis;
-		void SetAxis(const gp_Ax2 theAxis);
+		void SetAxis(const gp_Ax2 & theAxis);
 
 		/****************** SetMaterialRequirementModifier ******************/
 		/**** md5 signature: de1309ae344830665d02742b0e761a4c ****/

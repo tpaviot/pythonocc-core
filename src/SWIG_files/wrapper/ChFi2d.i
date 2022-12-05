@@ -130,6 +130,41 @@ ChFi2d_NotAuthorized = ChFi2d_ConstructionError.ChFi2d_NotAuthorized
 %rename(chfi2d) ChFi2d;
 class ChFi2d {
 	public:
+		/****************** CommonVertex ******************/
+		/**** md5 signature: 988ba28b6b8eed9cf889373017dc105e ****/
+		%feature("compactdefaultargs") CommonVertex;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+E1: TopoDS_Edge
+E2: TopoDS_Edge
+V: TopoDS_Vertex
+
+Returns
+-------
+bool
+") CommonVertex;
+		static Standard_Boolean CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
+
+		/****************** FindConnectedEdges ******************/
+		/**** md5 signature: f30016be75d67e3942406dcd4bb2a68a ****/
+		%feature("compactdefaultargs") FindConnectedEdges;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+F: TopoDS_Face
+V: TopoDS_Vertex
+E1: TopoDS_Edge
+E2: TopoDS_Edge
+
+Returns
+-------
+ChFi2d_ConstructionError
+") FindConnectedEdges;
+		static ChFi2d_ConstructionError FindConnectedEdges(const TopoDS_Face & F, const TopoDS_Vertex & V, TopoDS_Edge & E1, TopoDS_Edge & E2);
+
 };
 
 

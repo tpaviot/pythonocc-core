@@ -638,7 +638,7 @@ class Message {
 		/****************** DefaultMessenger ******************/
 		/**** md5 signature: 8a9431fd909e432979fe2c3e70cbbe64 ****/
 		%feature("compactdefaultargs") DefaultMessenger;
-		%feature("autodoc", "Defines default messenger for occt applications. this is global static instance of the messenger. by default, it contains single printer directed to std::cout. it can be customized according to the application needs. //! the following syntax can be used to print messages: @begincode message::defaultmessenger()->send ('my warning', message_warning); message::sendwarning ('my warning'); // short-cut for message_warning message::sendwarning() << 'my warning with ' << thecounter << ' arguments'; message::sendfail ('my failure'); // short-cut for message_fail @endcode.
+		%feature("autodoc", "Defines default messenger for occt applications. this is global static instance of the messenger. by default, it contains single printer directed to std::cout. it can be customized according to the application needs. //! the following syntax can be used to print messages: @code message::defaultmessenger()->send ('my warning', message_warning); message::sendwarning ('my warning'); // short-cut for message_warning message::sendwarning() << 'my warning with ' << thecounter << ' arguments'; message::sendfail ('my failure'); // short-cut for message_fail @endcode.
 
 Returns
 -------
@@ -1475,19 +1475,19 @@ None
 		 Message_ExecStatus();
 
 		/****************** Message_ExecStatus ******************/
-		/**** md5 signature: 479313f920e7f073046a6de98b87e7ad ****/
+		/**** md5 signature: e70fcb9e18b669793b993e8322ea1605 ****/
 		%feature("compactdefaultargs") Message_ExecStatus;
 		%feature("autodoc", "Initialise the execution status.
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 None
 ") Message_ExecStatus;
-		 Message_ExecStatus(Message_Status status);
+		 Message_ExecStatus(Message_Status theStatus);
 
 		/****************** Add ******************/
 		/**** md5 signature: ab49ea507da657deadd740be919832a8 ****/
@@ -1520,19 +1520,19 @@ None
 		void And(const Message_ExecStatus & theOther);
 
 		/****************** Clear ******************/
-		/**** md5 signature: 028e0aabcb96b1fe37739fe8231bf52e ****/
+		/**** md5 signature: 5d217c7d5185defc9a72813a728bbe14 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clear one status.
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 None
 ") Clear;
-		void Clear(Message_Status status);
+		void Clear(Message_Status theStatus);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
@@ -1623,19 +1623,19 @@ bool
 		Standard_Boolean IsFail();
 
 		/****************** IsSet ******************/
-		/**** md5 signature: aa57ba93bd6a4d4711fe41f21bc9a931 ****/
+		/**** md5 signature: 19eb5fde3d07014e5af1d2a78dc374fb ****/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "Check status for being set.
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 bool
 ") IsSet;
-		Standard_Boolean IsSet(Message_Status status);
+		Standard_Boolean IsSet(Message_Status theStatus);
 
 		/****************** IsWarn ******************/
 		/**** md5 signature: 78d32331471a393a46e40ed3531de5f6 ****/
@@ -1649,34 +1649,34 @@ bool
 		Standard_Boolean IsWarn();
 
 		/****************** LocalStatusIndex ******************/
-		/**** md5 signature: 89ca5ad1155dc3d314229956eb97d159 ****/
+		/**** md5 signature: 6c712b1771472bd46c2b10e4dfc2c642 ****/
 		%feature("compactdefaultargs") LocalStatusIndex;
 		%feature("autodoc", "Returns index of status inside type of status (done or warn or, etc) in range [1, statusespertype].
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 int
 ") LocalStatusIndex;
-		static Standard_Integer LocalStatusIndex(Message_Status status);
+		static Standard_Integer LocalStatusIndex(Message_Status theStatus);
 
 		/****************** Set ******************/
-		/**** md5 signature: 42a40ca0729a12f810ef51809f45bc83 ****/
+		/**** md5 signature: b242a4657d21c49402bda067388b0208 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Sets a status flag.
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 None
 ") Set;
-		void Set(Message_Status status);
+		void Set(Message_Status theStatus);
 
 		/****************** SetAllAlarm ******************/
 		/**** md5 signature: 5fa17f1f5873afd6738f0ddb9ea513ac ****/
@@ -1738,34 +1738,34 @@ Message_Status
 		static Message_Status StatusByIndex(const Standard_Integer theIndex);
 
 		/****************** StatusIndex ******************/
-		/**** md5 signature: f51d4eb3d51bbc7a87552aa497881b76 ****/
+		/**** md5 signature: 97762e4edd481e82f85b8126209f9d05 ****/
 		%feature("compactdefaultargs") StatusIndex;
 		%feature("autodoc", "Returns index of status in whole range [firststatus, laststatus].
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 int
 ") StatusIndex;
-		static Standard_Integer StatusIndex(Message_Status status);
+		static Standard_Integer StatusIndex(Message_Status theStatus);
 
 		/****************** TypeOfStatus ******************/
-		/**** md5 signature: 9a9aa53818e212f80bfb9b39cf96ee58 ****/
+		/**** md5 signature: 7df3ebd7e6811078add1c79ae4d46cbb ****/
 		%feature("compactdefaultargs") TypeOfStatus;
 		%feature("autodoc", "Returns status type (done, warn, alarm, or fail) .
 
 Parameters
 ----------
-status: Message_Status
+theStatus: Message_Status
 
 Returns
 -------
 Message_StatusType
 ") TypeOfStatus;
-		static Message_StatusType TypeOfStatus(Message_Status status);
+		static Message_StatusType TypeOfStatus(Message_Status theStatus);
 
 };
 

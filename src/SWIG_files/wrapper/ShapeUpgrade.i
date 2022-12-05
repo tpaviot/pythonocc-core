@@ -772,7 +772,7 @@ None
 		void Init(const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Init ******************/
-		/**** md5 signature: edb18f6e2126a06701cf4c021085828a ****/
+		/**** md5 signature: c7d10a11179e927adbd9f6f482589311 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initializes with single supporting surface with bounding parameters.
 
@@ -783,12 +783,14 @@ UFirst: float
 ULast: float
 VFirst: float
 VLast: float
+theArea: float,optional
+	default value is 0
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast);
+		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, const Standard_Real theArea = 0);
 
 		/****************** Perform ******************/
 		/**** md5 signature: f19fe529840a01c5a1a2d89aafc1a081 ****/
@@ -1665,15 +1667,20 @@ None
 		void Init(const TopoDS_Face & F);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 13c494512ebd157b19de66d8b841f157 ****/
+		/**** md5 signature: 20d0b6fc51636d29419d616b6aa42e30 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs splitting and computes the resulting shell the context is used to keep track of former splittings in order to keep sharings. it is updated according to modifications made.
+		%feature("autodoc", "Performs splitting and computes the resulting shell the context is used to keep track of former splittings in order to keep sharings. it is updated according to modifications made. the optional argument <thearea> is used to initialize the tool for splitting surface in the case of splitting into n parts where n is user-defined.
+
+Parameters
+----------
+theArea: float,optional
+	default value is 0
 
 Returns
 -------
 bool
 ") Perform;
-		virtual Standard_Boolean Perform();
+		virtual Standard_Boolean Perform(const Standard_Real theArea = 0);
 
 		/****************** Result ******************/
 		/**** md5 signature: e7d296a4a4a5995509cb67e3ee28f5dc ****/
@@ -1743,15 +1750,20 @@ bool
 		virtual Standard_Boolean SplitCurves();
 
 		/****************** SplitSurface ******************/
-		/**** md5 signature: 28c891993b1287fcaeee3ee89ec6fb14 ****/
+		/**** md5 signature: 7d0e8fbace163592ba259546db534b47 ****/
 		%feature("compactdefaultargs") SplitSurface;
-		%feature("autodoc", "Performs splitting of surface and computes the shell from source face.
+		%feature("autodoc", "Performs splitting of surface and computes the shell from source face. the optional argument <thearea> is used to initialize the tool for splitting surface in the case of splitting into n parts where n is user-defined.
+
+Parameters
+----------
+theArea: float,optional
+	default value is 0
 
 Returns
 -------
 bool
 ") SplitSurface;
-		virtual Standard_Boolean SplitSurface();
+		virtual Standard_Boolean SplitSurface(const Standard_Real theArea = 0);
 
 		/****************** Status ******************/
 		/**** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ****/
@@ -2488,6 +2500,50 @@ None
             $self->MaxArea()=value;
             }
         };
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Integer GetNbParts() {
+            return (Standard_Integer) $self->NbParts();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetNbParts(Standard_Integer value) {
+            $self->NbParts()=value;
+            }
+        };
+		/****************** SetNumbersUVSplits ******************/
+		/**** md5 signature: 5588ef3b7b0b00baa41cae130044c379 ****/
+		%feature("compactdefaultargs") SetNumbersUVSplits;
+		%feature("autodoc", "Set fixed numbers of splits in u and v directions. only for 'splitting by numbers' mode.
+
+Parameters
+----------
+theNbUsplits: int
+theNbVsplits: int
+
+Returns
+-------
+None
+") SetNumbersUVSplits;
+		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
+
+		/****************** SetSplittingByNumber ******************/
+		/**** md5 signature: a51e94810d1031ba91234e4f5dfceec6 ****/
+		%feature("compactdefaultargs") SetSplittingByNumber;
+		%feature("autodoc", "Set splitting mode if the mode is 'splitting by number', the face is splitted approximately into <mynbparts> parts, the parts are similar to squares in 2d.
+
+Parameters
+----------
+theIsSplittingByNumber: bool
+
+Returns
+-------
+None
+") SetSplittingByNumber;
+		void SetSplittingByNumber(const Standard_Boolean theIsSplittingByNumber);
+
 };
 
 
@@ -2990,6 +3046,37 @@ None
             $self->NbParts()=value;
             }
         };
+		/****************** SetNumbersUVSplits ******************/
+		/**** md5 signature: 5588ef3b7b0b00baa41cae130044c379 ****/
+		%feature("compactdefaultargs") SetNumbersUVSplits;
+		%feature("autodoc", "Set fixed numbers of splits in u and v directions. only for 'splitting into squares' mode.
+
+Parameters
+----------
+theNbUsplits: int
+theNbVsplits: int
+
+Returns
+-------
+None
+") SetNumbersUVSplits;
+		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
+
+		/****************** SetSplittingIntoSquares ******************/
+		/**** md5 signature: c65f0f832a81aa16e23b9c29751ca885 ****/
+		%feature("compactdefaultargs") SetSplittingIntoSquares;
+		%feature("autodoc", "Set splitting mode if the mode is 'splitting into squares', the face is splitted approximately into <mynbparts> parts, the parts are similar to squares in 2d.
+
+Parameters
+----------
+theIsSplittingIntoSquares: bool
+
+Returns
+-------
+None
+") SetSplittingIntoSquares;
+		void SetSplittingIntoSquares(const Standard_Boolean theIsSplittingIntoSquares);
+
 };
 
 
@@ -3468,15 +3555,20 @@ None
 		void SetNbSplitPoints(const Standard_Integer num);
 
 		/****************** SplitSurface ******************/
-		/**** md5 signature: 04584f41cf6dae4ce77bea5c376454c0 ****/
+		/**** md5 signature: 61ae21075e41f26658581719bb3a1c27 ****/
 		%feature("compactdefaultargs") SplitSurface;
 		%feature("autodoc", "Performs splitting of surface and computes the shell from source face.
+
+Parameters
+----------
+theArea: float,optional
+	default value is 0
 
 Returns
 -------
 bool
 ") SplitSurface;
-		virtual Standard_Boolean SplitSurface();
+		virtual Standard_Boolean SplitSurface(const Standard_Real theArea = 0);
 
 };
 
@@ -3739,16 +3831,65 @@ None
             $self->MaxArea()=value;
             }
         };
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Integer GetNbParts() {
+            return (Standard_Integer) $self->NbParts();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetNbParts(Standard_Integer value) {
+            $self->NbParts()=value;
+            }
+        };
 		/****************** Perform ******************/
-		/**** md5 signature: c99899e52bd81d0144a4ee32ac4f2356 ****/
+		/**** md5 signature: 0a9ce5707853083f8879f76d7deee39d ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs splitting and computes the resulting shell the context is used to keep track of former splittings.
+
+Parameters
+----------
+theArea: float,optional
+	default value is 0
 
 Returns
 -------
 bool
 ") Perform;
-		virtual Standard_Boolean Perform();
+		virtual Standard_Boolean Perform(const Standard_Real theArea = 0);
+
+		/****************** SetNumbersUVSplits ******************/
+		/**** md5 signature: 5588ef3b7b0b00baa41cae130044c379 ****/
+		%feature("compactdefaultargs") SetNumbersUVSplits;
+		%feature("autodoc", "Set fixed numbers of splits in u and v directions. only for 'splitting by numbers' mode.
+
+Parameters
+----------
+theNbUsplits: int
+theNbVsplits: int
+
+Returns
+-------
+None
+") SetNumbersUVSplits;
+		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
+
+		/****************** SetSplittingByNumber ******************/
+		/**** md5 signature: a51e94810d1031ba91234e4f5dfceec6 ****/
+		%feature("compactdefaultargs") SetSplittingByNumber;
+		%feature("autodoc", "Set splitting mode if the mode is 'splitting by number', the face is splitted approximately into <mynbparts> parts, the parts are similar to squares in 2d.
+
+Parameters
+----------
+theIsSplittingByNumber: bool
+
+Returns
+-------
+None
+") SetSplittingByNumber;
+		void SetSplittingByNumber(const Standard_Boolean theIsSplittingByNumber);
 
 };
 

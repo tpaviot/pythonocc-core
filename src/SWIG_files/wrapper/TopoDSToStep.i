@@ -48,6 +48,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_topodstostep.html
 #include<MoniTool_module.hxx>
 #include<StepShape_module.hxx>
 #include<Message_module.hxx>
+#include<StepVisual_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
@@ -71,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_topodstostep.html
 %import MoniTool.i
 %import StepShape.i
 %import Message.i
+%import StepVisual.i
 %import TColStd.i
 
 %pythoncode {
@@ -693,7 +695,7 @@ None
 		 TopoDSToStep_Builder();
 
 		/****************** TopoDSToStep_Builder ******************/
-		/**** md5 signature: 0fa038e8a4fa5b38f1047d69f3e8ea54 ****/
+		/**** md5 signature: a5d81b153cd036b265c16ff33a6129b9 ****/
 		%feature("compactdefaultargs") TopoDSToStep_Builder;
 		%feature("autodoc", "No available documentation.
 
@@ -702,6 +704,7 @@ Parameters
 S: TopoDS_Shape
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
+theTessellatedGeomParam: int
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -709,7 +712,7 @@ Returns
 -------
 None
 ") TopoDSToStep_Builder;
-		 TopoDSToStep_Builder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_Builder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Standard_Integer theTessellatedGeomParam, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Error ******************/
 		/**** md5 signature: 4bfee53f7138b72d517fea79437aa1f7 ****/
@@ -723,7 +726,7 @@ TopoDSToStep_BuilderError
 		TopoDSToStep_BuilderError Error();
 
 		/****************** Init ******************/
-		/**** md5 signature: 4b93d07c681be44bd5e1849c4ec08b8c ****/
+		/**** md5 signature: 1b1131dfaedcd3d1fd73bdc837f75282 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -732,6 +735,7 @@ Parameters
 S: TopoDS_Shape
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
+theTessellatedGeomParam: int
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -739,7 +743,18 @@ Returns
 -------
 None
 ") Init;
-		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Standard_Integer theTessellatedGeomParam, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** TessellatedValue ******************/
+		/**** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ****/
+		%feature("compactdefaultargs") TessellatedValue;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") TessellatedValue;
+		const opencascade::handle<StepVisual_TessellatedItem> & TessellatedValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: 93f870518e0f3e5d539f05051ca83055 ****/
@@ -783,6 +798,17 @@ Returns
 None
 ") TopoDSToStep_MakeBrepWithVoids;
 		 TopoDSToStep_MakeBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** TessellatedValue ******************/
+		/**** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ****/
+		%feature("compactdefaultargs") TessellatedValue;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") TessellatedValue;
+		const opencascade::handle<StepVisual_TessellatedItem> & TessellatedValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: d72647c7f4bca2f2e71c4a091a4acc6e ****/
@@ -845,6 +871,17 @@ None
 ") TopoDSToStep_MakeFacetedBrep;
 		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****************** TessellatedValue ******************/
+		/**** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ****/
+		%feature("compactdefaultargs") TessellatedValue;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") TessellatedValue;
+		const opencascade::handle<StepVisual_TessellatedItem> & TessellatedValue();
+
 		/****************** Value ******************/
 		/**** md5 signature: b742cde4076883160493264b81367cb7 ****/
 		%feature("compactdefaultargs") Value;
@@ -887,6 +924,17 @@ Returns
 None
 ") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 		 TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** TessellatedValue ******************/
+		/**** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ****/
+		%feature("compactdefaultargs") TessellatedValue;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") TessellatedValue;
+		const opencascade::handle<StepVisual_TessellatedItem> & TessellatedValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: 3c4cb0ca6dbe9c2df0807e20ce2593d1 ****/
@@ -990,6 +1038,17 @@ None
 ") TopoDSToStep_MakeManifoldSolidBrep;
 		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****************** TessellatedValue ******************/
+		/**** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ****/
+		%feature("compactdefaultargs") TessellatedValue;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") TessellatedValue;
+		const opencascade::handle<StepVisual_TessellatedItem> & TessellatedValue();
+
 		/****************** Value ******************/
 		/**** md5 signature: 523ad3a36206eb6d9f186b9735aa69ce ****/
 		%feature("compactdefaultargs") Value;
@@ -1068,6 +1127,17 @@ Returns
 None
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
 		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** TessellatedValue ******************/
+		/**** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ****/
+		%feature("compactdefaultargs") TessellatedValue;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") TessellatedValue;
+		const opencascade::handle<StepVisual_TessellatedItem> & TessellatedValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: 6c59d3f4bc485bc5dec9fe78343c6060 ****/
@@ -1408,6 +1478,118 @@ opencascade::handle<StepShape_TopologicalRepresentationItem>
 
 
 %extend TopoDSToStep_MakeStepWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class TopoDSToStep_MakeTessellatedItem *
+*****************************************/
+class TopoDSToStep_MakeTessellatedItem : public TopoDSToStep_Root {
+	public:
+		/****************** TopoDSToStep_MakeTessellatedItem ******************/
+		/**** md5 signature: 7f4bc4ee3ac4628d994cdd508a007609 ****/
+		%feature("compactdefaultargs") TopoDSToStep_MakeTessellatedItem;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TopoDSToStep_MakeTessellatedItem;
+		 TopoDSToStep_MakeTessellatedItem();
+
+		/****************** TopoDSToStep_MakeTessellatedItem ******************/
+		/**** md5 signature: 6a0264e6a84394be2a4bef075c42e56b ****/
+		%feature("compactdefaultargs") TopoDSToStep_MakeTessellatedItem;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTool: TopoDSToStep_Tool
+theFP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+None
+") TopoDSToStep_MakeTessellatedItem;
+		 TopoDSToStep_MakeTessellatedItem(const TopoDS_Face & theFace, TopoDSToStep_Tool & theTool, const opencascade::handle<Transfer_FinderProcess> & theFP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** TopoDSToStep_MakeTessellatedItem ******************/
+		/**** md5 signature: 2941c27543604aed6e4746372c79c163 ****/
+		%feature("compactdefaultargs") TopoDSToStep_MakeTessellatedItem;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theShell: TopoDS_Shell
+theTool: TopoDSToStep_Tool
+theFP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+None
+") TopoDSToStep_MakeTessellatedItem;
+		 TopoDSToStep_MakeTessellatedItem(const TopoDS_Shell & theShell, TopoDSToStep_Tool & theTool, const opencascade::handle<Transfer_FinderProcess> & theFP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Init ******************/
+		/**** md5 signature: 31e48e0c2d9cf5197f189cb5ae71401a ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTool: TopoDSToStep_Tool
+theFP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+None
+") Init;
+		void Init(const TopoDS_Face & theFace, TopoDSToStep_Tool & theTool, const opencascade::handle<Transfer_FinderProcess> & theFP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Init ******************/
+		/**** md5 signature: 781e28edc1a038cd335bb888b804cc0a ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theShell: TopoDS_Shell
+theTool: TopoDSToStep_Tool
+theFP: Transfer_FinderProcess
+theProgress: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+None
+") Init;
+		void Init(const TopoDS_Shell & theShell, TopoDSToStep_Tool & theTool, const opencascade::handle<Transfer_FinderProcess> & theFP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Value ******************/
+		/**** md5 signature: 6c52dba76720ae1e573bfb8cddd551c1 ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedItem>
+") Value;
+		const opencascade::handle<StepVisual_TessellatedItem> & Value();
+
+};
+
+
+%extend TopoDSToStep_MakeTessellatedItem {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

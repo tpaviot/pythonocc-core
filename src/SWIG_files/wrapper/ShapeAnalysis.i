@@ -44,8 +44,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapeanalysis.htm
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<ShapeExtend_module.hxx>
-#include<TopTools_module.hxx>
 #include<gp_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
@@ -69,8 +69,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapeanalysis.htm
 %import NCollection.i
 %import TopoDS.i
 %import ShapeExtend.i
-%import TopTools.i
 %import gp.i
+%import TopTools.i
 %import Geom2d.i
 %import Bnd.i
 %import TColgp.i
@@ -230,19 +230,19 @@ bool
 		static Standard_Boolean IsOuterBound(const TopoDS_Face & face);
 
 		/****************** OuterWire ******************/
-		/**** md5 signature: 4cd1946e11004f8f3553337959c92b15 ****/
+		/**** md5 signature: 4eacb2464bf572e4b11b76bcce3c541d ****/
 		%feature("compactdefaultargs") OuterWire;
-		%feature("autodoc", "Returns the outer wire on the face <face>. this is replacement of the method breptools::outerwire until it works badly. returns the first wire oriented as outer according to fclass2d_classifier. if none, last wire is returned.
+		%feature("autodoc", "Returns positively oriented wire in the face. if there is no such wire - returns the last wire of the face.
 
 Parameters
 ----------
-face: TopoDS_Face
+theFace: TopoDS_Face
 
 Returns
 -------
 TopoDS_Wire
 ") OuterWire;
-		static TopoDS_Wire OuterWire(const TopoDS_Face & face);
+		static TopoDS_Wire OuterWire(const TopoDS_Face & theFace);
 
 		/****************** TotCross2D ******************/
 		/**** md5 signature: d02b539165ef061eca69acd36cb763dd ****/
@@ -264,6 +264,217 @@ float
 
 
 %extend ShapeAnalysis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************************
+* class ShapeAnalysis_CanonicalRecognition *
+*******************************************/
+class ShapeAnalysis_CanonicalRecognition {
+	public:
+		/****************** ShapeAnalysis_CanonicalRecognition ******************/
+		/**** md5 signature: 5c815ddb5c04eb763ce71ef952e88976 ****/
+		%feature("compactdefaultargs") ShapeAnalysis_CanonicalRecognition;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") ShapeAnalysis_CanonicalRecognition;
+		 ShapeAnalysis_CanonicalRecognition();
+
+		/****************** ShapeAnalysis_CanonicalRecognition ******************/
+		/**** md5 signature: c724d5f7f97549ca385d39f6f5ad765d ****/
+		%feature("compactdefaultargs") ShapeAnalysis_CanonicalRecognition;
+		%feature("autodoc", "Constructor with shape initialisation.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+None
+") ShapeAnalysis_CanonicalRecognition;
+		 ShapeAnalysis_CanonicalRecognition(const TopoDS_Shape & theShape);
+
+		/****************** ClearStatus ******************/
+		/**** md5 signature: 868f4799999f2c207835d2d54d713a4f ****/
+		%feature("compactdefaultargs") ClearStatus;
+		%feature("autodoc", "Returns status to be equal 0.
+
+Returns
+-------
+None
+") ClearStatus;
+		void ClearStatus();
+
+		/****************** GetGap ******************/
+		/**** md5 signature: 6750af4846e7c73d2306166a820dd5a3 ****/
+		%feature("compactdefaultargs") GetGap;
+		%feature("autodoc", "Returns deviation between input geometry entity and analytical entity.
+
+Returns
+-------
+float
+") GetGap;
+		Standard_Real GetGap();
+
+		/****************** GetShape ******************/
+		/**** md5 signature: 7c167c51f2939d15d5bfddc807114b00 ****/
+		%feature("compactdefaultargs") GetShape;
+		%feature("autodoc", "Returns input shape.
+
+Returns
+-------
+TopoDS_Shape
+") GetShape;
+		const TopoDS_Shape GetShape();
+
+		/****************** GetStatus ******************/
+		/**** md5 signature: 5833e1b616ca4e6620ae6e8d9d361c54 ****/
+		%feature("compactdefaultargs") GetStatus;
+		%feature("autodoc", "Returns status of operation. current meaning of possible values of status: -1 - algorithm is not initalazed by shape 0 - no errors 1 - error during any operation (usually - because of wrong input data) any operation (calling any methods like isplane(...), ...) can be performed when current staue is equal 0. if after any operation status != 0, it is necessary to set it 0 by method clearstatus() before calling other operation.
+
+Returns
+-------
+int
+") GetStatus;
+		Standard_Integer GetStatus();
+
+		/****************** IsCircle ******************/
+		/**** md5 signature: 291c319ba30921dc2ce073891dcd1c6a ****/
+		%feature("compactdefaultargs") IsCircle;
+		%feature("autodoc", "Returns true if the underlined curve can be represent by circle with tolerance thetol and sets in thecirc the result circle. .
+
+Parameters
+----------
+theTol: float
+theCirc: gp_Circ
+
+Returns
+-------
+bool
+") IsCircle;
+		Standard_Boolean IsCircle(const Standard_Real theTol, gp_Circ & theCirc);
+
+		/****************** IsCone ******************/
+		/**** md5 signature: 3ee8d204db0a9969c37a9a077c5209c5 ****/
+		%feature("compactdefaultargs") IsCone;
+		%feature("autodoc", "Returns true if the underlined surface can be represent by conical one with tolerance thetol and sets in thecone the result conical surface. .
+
+Parameters
+----------
+theTol: float
+theCone: gp_Cone
+
+Returns
+-------
+bool
+") IsCone;
+		Standard_Boolean IsCone(const Standard_Real theTol, gp_Cone & theCone);
+
+		/****************** IsCylinder ******************/
+		/**** md5 signature: 3cd23f6df09c0359b8056833b2ae5115 ****/
+		%feature("compactdefaultargs") IsCylinder;
+		%feature("autodoc", "Returns true if the underlined surface can be represent by cylindrical one with tolerance thetol and sets in thecyl the result cylinrical surface. .
+
+Parameters
+----------
+theTol: float
+theCyl: gp_Cylinder
+
+Returns
+-------
+bool
+") IsCylinder;
+		Standard_Boolean IsCylinder(const Standard_Real theTol, gp_Cylinder & theCyl);
+
+		/****************** IsEllipse ******************/
+		/**** md5 signature: 7b3958be9b23168fa3898fe37a797c86 ****/
+		%feature("compactdefaultargs") IsEllipse;
+		%feature("autodoc", "Returns true if the underlined curve can be represent by ellipse with tolerance thetol and sets in thecirc the result ellipse. .
+
+Parameters
+----------
+theTol: float
+theElips: gp_Elips
+
+Returns
+-------
+bool
+") IsEllipse;
+		Standard_Boolean IsEllipse(const Standard_Real theTol, gp_Elips & theElips);
+
+		/****************** IsLine ******************/
+		/**** md5 signature: fbfb5e40e9ca6661061ebe1c8bdb8322 ****/
+		%feature("compactdefaultargs") IsLine;
+		%feature("autodoc", "Returns true if the underlined curve can be represent by line with tolerance thetol and sets in thelin the result line. .
+
+Parameters
+----------
+theTol: float
+theLin: gp_Lin
+
+Returns
+-------
+bool
+") IsLine;
+		Standard_Boolean IsLine(const Standard_Real theTol, gp_Lin & theLin);
+
+		/****************** IsPlane ******************/
+		/**** md5 signature: 2d5e0a085eb132b5333a0b8de3ec7e9d ****/
+		%feature("compactdefaultargs") IsPlane;
+		%feature("autodoc", "Returns true if the underlined surface can be represent by plane with tolerance thetol and sets in thepln the result plane. .
+
+Parameters
+----------
+theTol: float
+thePln: gp_Pln
+
+Returns
+-------
+bool
+") IsPlane;
+		Standard_Boolean IsPlane(const Standard_Real theTol, gp_Pln & thePln);
+
+		/****************** IsSphere ******************/
+		/**** md5 signature: a9c3a50effc875d233eb621174f5f38c ****/
+		%feature("compactdefaultargs") IsSphere;
+		%feature("autodoc", "Returns true if the underlined surface can be represent by spherical one with tolerance thetol and sets in thesphere the result spherical surface. .
+
+Parameters
+----------
+theTol: float
+theSphere: gp_Sphere
+
+Returns
+-------
+bool
+") IsSphere;
+		Standard_Boolean IsSphere(const Standard_Real theTol, gp_Sphere & theSphere);
+
+		/****************** SetShape ******************/
+		/**** md5 signature: 26c388bb1dfffadc50ffdc7a812f81ef ****/
+		%feature("compactdefaultargs") SetShape;
+		%feature("autodoc", "Sets shape.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+None
+") SetShape;
+		void SetShape(const TopoDS_Shape & theShape);
+
+};
+
+
+%extend ShapeAnalysis_CanonicalRecognition {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4197,23 +4408,25 @@ bool
 		Standard_Boolean CheckOrder(const Standard_Boolean isClosed = Standard_True, const Standard_Boolean mode3d = Standard_True);
 
 		/****************** CheckOrder ******************/
-		/**** md5 signature: a2e2eaf75d1e119872f29bc306daff0b ****/
+		/**** md5 signature: 90589d1674c86d09625d55d1a899f1bb ****/
 		%feature("compactdefaultargs") CheckOrder;
-		%feature("autodoc", "Analyzes the order of the edges in the wire, uses class wireorder for that purpose. flag <isclosed> defines if the wire is closed or not flag <mode3d> defines which mode is used (3d or 2d) returns false if wire is already ordered (tail-to-head), true otherwise. use returned wireorder object for deeper analysis. status: ok : the same edges orientation, the same edges sequence done1: the same edges orientation, not the same edges sequence done2: as done1 and gaps more than myprecision done3: not the same edges orientation (some need to be reversed) done4: as done3 and gaps more than myprecision fail : algorithm failed (could not detect order).
+		%feature("autodoc", "Analyzes the order of the edges in the wire, uses class wireorder for that purpose. flag <isclosed> defines if the wire is closed or not flag <themode3d> defines 3d or 2d mode. flag <themodeboth> defines miscible mode and the flag <themode3d> is ignored. returns false if wire is already ordered (tail-to-head), true otherwise. use returned wireorder object for deeper analysis. status: ok : the same edges orientation, the same edges sequence done1: the same edges orientation, not the same edges sequence done2: as done1 and gaps more than myprecision done3: not the same edges orientation (some need to be reversed) done4: as done3 and gaps more than myprecision fail : algorithm failed (could not detect order).
 
 Parameters
 ----------
 sawo: ShapeAnalysis_WireOrder
 isClosed: bool,optional
 	default value is Standard_True
-mode3d: bool,optional
+theMode3D: bool,optional
 	default value is Standard_True
+theModeBoth: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 bool
 ") CheckOrder;
-		Standard_Boolean CheckOrder(ShapeAnalysis_WireOrder & sawo, const Standard_Boolean isClosed = Standard_True, const Standard_Boolean mode3d = Standard_True);
+		Standard_Boolean CheckOrder(ShapeAnalysis_WireOrder & sawo, Standard_Boolean isClosed = Standard_True, Standard_Boolean theMode3D = Standard_True, Standard_Boolean theModeBoth = Standard_False);
 
 		/****************** CheckOuterBound ******************/
 		/**** md5 signature: fa98a8de9235f276333826373de925cc ****/
@@ -4906,52 +5119,72 @@ None
 		 ShapeAnalysis_WireOrder();
 
 		/****************** ShapeAnalysis_WireOrder ******************/
-		/**** md5 signature: 7ba3558c4d0e2c01260ab61f9a5b9adb ****/
+		/**** md5 signature: d0ab6ef719feb71ca41da9094852a860 ****/
 		%feature("compactdefaultargs") ShapeAnalysis_WireOrder;
-		%feature("autodoc", "Creates a wireorder in 3d (if mode3d is true) or 2d (if false) with a tolerance.
+		%feature("autodoc", "Creates a wireorder. flag <themode3d> defines 3d or 2d mode. flag <themodeboth> defines miscible mode and the flag <themode3d> is ignored. warning: parameter <thetolerance> is not used in algorithm.
 
 Parameters
 ----------
-mode3d: bool
-tol: float
+theMode3D: bool
+theTolerance: float
+theModeBoth: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") ShapeAnalysis_WireOrder;
-		 ShapeAnalysis_WireOrder(const Standard_Boolean mode3d, const Standard_Real tol);
+		 ShapeAnalysis_WireOrder(const Standard_Boolean theMode3D, const Standard_Real theTolerance, const Standard_Boolean theModeBoth = Standard_False);
 
 		/****************** Add ******************/
-		/**** md5 signature: c594d7a0f5591d51480bf9a89b733e4d ****/
+		/**** md5 signature: 754529ef22ef038c5c7a4f365a6100e0 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a couple of points 3d (start,end).
+		%feature("autodoc", "Adds a couple of points 3d (start, end).
 
 Parameters
 ----------
-start3d: gp_XYZ
-end3d: gp_XYZ
+theStart3d: gp_XYZ
+theEnd3d: gp_XYZ
 
 Returns
 -------
 None
 ") Add;
-		void Add(const gp_XYZ & start3d, const gp_XYZ & end3d);
+		void Add(const gp_XYZ & theStart3d, const gp_XYZ & theEnd3d);
 
 		/****************** Add ******************/
-		/**** md5 signature: 8de64abf7dc8e839fe1f10f9fe02790a ****/
+		/**** md5 signature: de1924393c4f894699d89aee766a6d97 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds a couple of points 2d (start,end).
+		%feature("autodoc", "Adds a couple of points 2d (start, end).
 
 Parameters
 ----------
-start2d: gp_XY
-end2d: gp_XY
+theStart2d: gp_XY
+theEnd2d: gp_XY
 
 Returns
 -------
 None
 ") Add;
-		void Add(const gp_XY & start2d, const gp_XY & end2d);
+		void Add(const gp_XY & theStart2d, const gp_XY & theEnd2d);
+
+		/****************** Add ******************/
+		/**** md5 signature: 99e5beddea56c9e57f7d6f9f9780408d ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "Adds a couple of points 3d and 2d (start, end).
+
+Parameters
+----------
+theStart3d: gp_XYZ
+theEnd3d: gp_XYZ
+theStart2d: gp_XY
+theEnd2d: gp_XY
+
+Returns
+-------
+None
+") Add;
+		void Add(const gp_XYZ & theStart3d, const gp_XYZ & theEnd3d, const gp_XY & theStart2d, const gp_XY & theEnd2d);
 
 		/****************** Chain ******************/
 		/**** md5 signature: 5a804521be62174818d234e9543ffe87 ****/
@@ -5070,24 +5303,24 @@ int
 		Standard_Integer NbEdges();
 
 		/****************** Ordered ******************/
-		/**** md5 signature: 0344e7c24208d035518227431c148714 ****/
+		/**** md5 signature: a6b04776796d4f3e7848f3e21c897904 ****/
 		%feature("compactdefaultargs") Ordered;
 		%feature("autodoc", "Returns the number of original edge which correspond to the newly ordered number <n> warning : the returned value is negative if edge should be reversed.
 
 Parameters
 ----------
-n: int
+theIdx: int
 
 Returns
 -------
 int
 ") Ordered;
-		Standard_Integer Ordered(const Standard_Integer n);
+		Standard_Integer Ordered(const Standard_Integer theIdx);
 
 		/****************** Perform ******************/
 		/**** md5 signature: 076cdff70150a5d09e5d54a72cb0d21a ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Computes the better order if <closed> is true (d) considers also closure optimised if the couples were already in order the criterium is : two couples in order if distance between end-prec and start-cur is less then starting tolerance <tol> else, the smallest distance is reached gap corresponds to a smallest distance greater than <tol>.
+		%feature("autodoc", "Computes the better order optimised if the couples were already in order the criterium is : two couples in order if distance between end-prec and start-cur is less then starting tolerance <tol> else, the smallest distance is reached warning: parameter <closed> not used.
 
 Parameters
 ----------
@@ -5118,7 +5351,7 @@ None
 		/****************** SetCouples ******************/
 		/**** md5 signature: a10a2fc2bfd71b64ba1ba3a44e57e444 ****/
 		%feature("compactdefaultargs") SetCouples;
-		%feature("autodoc", "Determines the couples of edges for which end and start fit inside a given gap. queried by nbcouples and couple.
+		%feature("autodoc", "Determines the couples of edges for which end and start fit inside a given gap. queried by nbcouples and couple warning: function isn't implemented.
 
 Parameters
 ----------
@@ -5131,25 +5364,27 @@ None
 		void SetCouples(const Standard_Real gap);
 
 		/****************** SetMode ******************/
-		/**** md5 signature: ba0fdbb4cb9a7fffbf1cee2688fbb2ce ****/
+		/**** md5 signature: cfbbac7a6fa12a25d1c54f35b11c32ef ****/
 		%feature("compactdefaultargs") SetMode;
-		%feature("autodoc", "Sets new values. clears the connexion list if <mode3d> changes, also clears the edge list (else, doesn't).
+		%feature("autodoc", "Sets new values. clears the edge list if the mode (<themode3d> or <themodeboth> ) changes. clears the connexion list. warning: parameter <thetolerance> is not used in algorithm.
 
 Parameters
 ----------
-mode3d: bool
-tol: float
+theMode3D: bool
+theTolerance: float
+theModeBoth: bool,optional
+	default value is Standard_False
 
 Returns
 -------
 None
 ") SetMode;
-		void SetMode(const Standard_Boolean mode3d, const Standard_Real tol);
+		void SetMode(const Standard_Boolean theMode3D, const Standard_Real theTolerance, const Standard_Boolean theModeBoth = Standard_False);
 
 		/****************** Status ******************/
 		/**** md5 signature: 95453a41824a64084ab7e8075846ede5 ****/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "Returns the status of the order (0 if not done) : 0 : all edges are direct and in sequence 1 : all edges are direct but some are not in sequence 2 : in addition, unresolved gaps remain -1 : some edges are reversed, but no gap remain -2 : some edges are reversed and some gaps remain -10 : could not be resolved, failure on reorder gap : regarding starting <tol>.
+		%feature("autodoc", "Returns the status of the order (0 if not done) : 0 : all edges are direct and in sequence 1 : all edges are direct but some are not in sequence -1 : some edges are reversed, but no gap remain 3 : edges in sequence are just shifted in forward or reverse manner.
 
 Returns
 -------
@@ -5169,38 +5404,38 @@ float
 		Standard_Real Tolerance();
 
 		/****************** XY ******************/
-		/**** md5 signature: cc8eac1d4cceca0ab81542864d197b96 ****/
+		/**** md5 signature: 7e9845fe73353a5c68a0d556a4e79634 ****/
 		%feature("compactdefaultargs") XY;
 		%feature("autodoc", "Returns the values of the couple <num>, as 2d values.
 
 Parameters
 ----------
-num: int
-start2d: gp_XY
-end2d: gp_XY
+theIdx: int
+theStart2D: gp_XY
+theEnd2D: gp_XY
 
 Returns
 -------
 None
 ") XY;
-		void XY(const Standard_Integer num, gp_XY & start2d, gp_XY & end2d);
+		void XY(const Standard_Integer theIdx, gp_XY & theStart2D, gp_XY & theEnd2D);
 
 		/****************** XYZ ******************/
-		/**** md5 signature: 5231a95bc657ee715aaac556f4c4b645 ****/
+		/**** md5 signature: 9e110ee78927a99c1388f3839593d1eb ****/
 		%feature("compactdefaultargs") XYZ;
 		%feature("autodoc", "Returns the values of the couple <num>, as 3d values.
 
 Parameters
 ----------
-num: int
-start3d: gp_XYZ
-end3d: gp_XYZ
+theIdx: int
+theStart3D: gp_XYZ
+theEnd3D: gp_XYZ
 
 Returns
 -------
 None
 ") XYZ;
-		void XYZ(const Standard_Integer num, gp_XYZ & start3d, gp_XYZ & end3d);
+		void XYZ(const Standard_Integer theIdx, gp_XYZ & theStart3D, gp_XYZ & theEnd3D);
 
 };
 

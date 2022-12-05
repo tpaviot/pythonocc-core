@@ -85,12 +85,14 @@ enum Image_Format {
 	Image_Format_BGRF = 13,
 	Image_Format_RGBAF = 14,
 	Image_Format_BGRAF = 15,
-	Image_Format_RGF_half = 16,
-	Image_Format_RGBAF_half = 17,
+	Image_Format_GrayF_half = 16,
+	Image_Format_RGF_half = 17,
+	Image_Format_RGBAF_half = 18,
+	Image_Format_Gray16 = 19,
 };
 
 enum  {
-	Image_Format_NB = Image_Format_RGBAF_half + 1,
+	Image_Format_NB = Image_Format_Gray16 + 1,
 };
 
 /* end public enums declaration */
@@ -127,8 +129,10 @@ class Image_Format(IntEnum):
 	Image_Format_BGRF = 13
 	Image_Format_RGBAF = 14
 	Image_Format_BGRAF = 15
-	Image_Format_RGF_half = 16
-	Image_Format_RGBAF_half = 17
+	Image_Format_GrayF_half = 16
+	Image_Format_RGF_half = 17
+	Image_Format_RGBAF_half = 18
+	Image_Format_Gray16 = 19
 Image_Format_UNKNOWN = Image_Format.Image_Format_UNKNOWN
 Image_Format_Gray = Image_Format.Image_Format_Gray
 Image_Format_Alpha = Image_Format.Image_Format_Alpha
@@ -145,8 +149,10 @@ Image_Format_RGBF = Image_Format.Image_Format_RGBF
 Image_Format_BGRF = Image_Format.Image_Format_BGRF
 Image_Format_RGBAF = Image_Format.Image_Format_RGBAF
 Image_Format_BGRAF = Image_Format.Image_Format_BGRAF
+Image_Format_GrayF_half = Image_Format.Image_Format_GrayF_half
 Image_Format_RGF_half = Image_Format.Image_Format_RGF_half
 Image_Format_RGBAF_half = Image_Format.Image_Format_RGBAF_half
+Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 };
 /* end python proxy for enums */
 

@@ -31,20 +31,12 @@ Standard_Size = NewType('Standard_Size', int)
 Standard_ThreadId = NewType('Standard_ThreadId', Standard_Size)
 #the following typedef cannot be wrapped as is
 Standard_Time = NewType('Standard_Time', Any)
-Standard_UUID = NewType('Standard_UUID', str)
+Standard_UInteger = NewType('Standard_UInteger', int)
 Standard_Utf16Char = NewType('Standard_Utf16Char', str)
 Standard_Utf32Char = NewType('Standard_Utf32Char', str)
 Standard_Utf8Char = NewType('Standard_Utf8Char', str)
 Standard_Utf8UChar = NewType('Standard_Utf8UChar', str)
 Standard_WideChar = NewType('Standard_WideChar', str)
-int16_t = NewType('int16_t', int)
-int32_t = NewType('int32_t', int)
-int64_t = NewType('int64_t', int)
-int8_t = NewType('int8_t', int)
-uint16_t = NewType('uint16_t', int)
-uint32_t = NewType('uint32_t', int)
-uint64_t = NewType('uint64_t', int)
-uint8_t = NewType('uint8_t', int)
 
 class Standard_HandlerStatus(IntEnum):
     Standard_HandlerVoid: int = ...
@@ -151,6 +143,9 @@ class Standard_Transient:
     def get_type_descriptor() -> Standard_Type: ...
     @staticmethod
     def get_type_name() -> str: ...
+
+class Standard_UUID:
+    pass
 
 class Standard_Failure(Standard_Transient):
     @overload

@@ -189,7 +189,10 @@ enum Graphic3d_StereoMode {
 	Graphic3d_StereoMode_OverUnder = 6,
 	Graphic3d_StereoMode_SoftPageFlip = 7,
 	Graphic3d_StereoMode_OpenVR = 8,
-	Graphic3d_StereoMode_NB = 9,
+};
+
+enum  {
+	Graphic3d_StereoMode_NB = Graphic3d_StereoMode_OpenVR + 1,
 };
 
 enum Graphic3d_AlphaMode {
@@ -368,10 +371,14 @@ enum Graphic3d_ToneMappingMethod {
 };
 
 enum Graphic3d_TypeOfTexture {
-	Graphic3d_TOT_1D = 0,
-	Graphic3d_TOT_2D = 1,
-	Graphic3d_TOT_2D_MIPMAP = 2,
-	Graphic3d_TOT_CUBEMAP = 3,
+	Graphic3d_TypeOfTexture_1D = 0,
+	Graphic3d_TypeOfTexture_2D = 1,
+	Graphic3d_TypeOfTexture_3D = 2,
+	Graphic3d_TypeOfTexture_CUBEMAP = 3,
+	Graphic3d_TOT_2D_MIPMAP = 4,
+	Graphic3d_TOT_1D = Graphic3d_TypeOfTexture_1D,
+	Graphic3d_TOT_2D = Graphic3d_TypeOfTexture_2D,
+	Graphic3d_TOT_CUBEMAP = Graphic3d_TypeOfTexture_CUBEMAP,
 };
 
 enum Graphic3d_TypeOfMaterial {
@@ -383,6 +390,7 @@ enum Graphic3d_TypeOfBackfacingModel {
 	Graphic3d_TypeOfBackfacingModel_Auto = 0,
 	Graphic3d_TypeOfBackfacingModel_DoubleSided = 1,
 	Graphic3d_TypeOfBackfacingModel_BackCulled = 2,
+	Graphic3d_TypeOfBackfacingModel_FrontCulled = 3,
 	Graphic3d_TOBM_AUTOMATIC = Graphic3d_TypeOfBackfacingModel_Auto,
 	Graphic3d_TOBM_FORCE = Graphic3d_TypeOfBackfacingModel_DoubleSided,
 	Graphic3d_TOBM_DISABLE = Graphic3d_TypeOfBackfacingModel_BackCulled,
@@ -633,6 +641,25 @@ enum Graphic3d_NameOfMaterial {
 	Graphic3d_NOM_UserDefined = Graphic3d_NameOfMaterial_UserDefined,
 };
 
+enum Graphic3d_DisplayPriority {
+	Graphic3d_DisplayPriority_INVALID = - 1,
+	Graphic3d_DisplayPriority_Bottom = 0,
+	Graphic3d_DisplayPriority_AlmostBottom = 1,
+	Graphic3d_DisplayPriority_Below2 = 2,
+	Graphic3d_DisplayPriority_Below1 = 3,
+	Graphic3d_DisplayPriority_Below = 4,
+	Graphic3d_DisplayPriority_Normal = 5,
+	Graphic3d_DisplayPriority_Above = 6,
+	Graphic3d_DisplayPriority_Above1 = 7,
+	Graphic3d_DisplayPriority_Above2 = 8,
+	Graphic3d_DisplayPriority_Highlight = 9,
+	Graphic3d_DisplayPriority_Topmost = 10,
+};
+
+enum  {
+	Graphic3d_DisplayPriority_NB = Graphic3d_DisplayPriority_Topmost - Graphic3d_DisplayPriority_Bottom + 1,
+};
+
 enum Graphic3d_TypeOfTextureFilter {
 	Graphic3d_TOTF_NEAREST = 0,
 	Graphic3d_TOTF_BILINEAR = 1,
@@ -814,7 +841,6 @@ class Graphic3d_StereoMode(IntEnum):
 	Graphic3d_StereoMode_OverUnder = 6
 	Graphic3d_StereoMode_SoftPageFlip = 7
 	Graphic3d_StereoMode_OpenVR = 8
-	Graphic3d_StereoMode_NB = 9
 Graphic3d_StereoMode_QuadBuffer = Graphic3d_StereoMode.Graphic3d_StereoMode_QuadBuffer
 Graphic3d_StereoMode_Anaglyph = Graphic3d_StereoMode.Graphic3d_StereoMode_Anaglyph
 Graphic3d_StereoMode_RowInterlaced = Graphic3d_StereoMode.Graphic3d_StereoMode_RowInterlaced
@@ -824,7 +850,6 @@ Graphic3d_StereoMode_SideBySide = Graphic3d_StereoMode.Graphic3d_StereoMode_Side
 Graphic3d_StereoMode_OverUnder = Graphic3d_StereoMode.Graphic3d_StereoMode_OverUnder
 Graphic3d_StereoMode_SoftPageFlip = Graphic3d_StereoMode.Graphic3d_StereoMode_SoftPageFlip
 Graphic3d_StereoMode_OpenVR = Graphic3d_StereoMode.Graphic3d_StereoMode_OpenVR
-Graphic3d_StereoMode_NB = Graphic3d_StereoMode.Graphic3d_StereoMode_NB
 
 class Graphic3d_AlphaMode(IntEnum):
 	Graphic3d_AlphaMode_Opaque = 0
@@ -1073,13 +1098,21 @@ Graphic3d_ToneMappingMethod_Disabled = Graphic3d_ToneMappingMethod.Graphic3d_Ton
 Graphic3d_ToneMappingMethod_Filmic = Graphic3d_ToneMappingMethod.Graphic3d_ToneMappingMethod_Filmic
 
 class Graphic3d_TypeOfTexture(IntEnum):
-	Graphic3d_TOT_1D = 0
-	Graphic3d_TOT_2D = 1
-	Graphic3d_TOT_2D_MIPMAP = 2
-	Graphic3d_TOT_CUBEMAP = 3
+	Graphic3d_TypeOfTexture_1D = 0
+	Graphic3d_TypeOfTexture_2D = 1
+	Graphic3d_TypeOfTexture_3D = 2
+	Graphic3d_TypeOfTexture_CUBEMAP = 3
+	Graphic3d_TOT_2D_MIPMAP = 4
+	Graphic3d_TOT_1D = Graphic3d_TypeOfTexture_1D
+	Graphic3d_TOT_2D = Graphic3d_TypeOfTexture_2D
+	Graphic3d_TOT_CUBEMAP = Graphic3d_TypeOfTexture_CUBEMAP
+Graphic3d_TypeOfTexture_1D = Graphic3d_TypeOfTexture.Graphic3d_TypeOfTexture_1D
+Graphic3d_TypeOfTexture_2D = Graphic3d_TypeOfTexture.Graphic3d_TypeOfTexture_2D
+Graphic3d_TypeOfTexture_3D = Graphic3d_TypeOfTexture.Graphic3d_TypeOfTexture_3D
+Graphic3d_TypeOfTexture_CUBEMAP = Graphic3d_TypeOfTexture.Graphic3d_TypeOfTexture_CUBEMAP
+Graphic3d_TOT_2D_MIPMAP = Graphic3d_TypeOfTexture.Graphic3d_TOT_2D_MIPMAP
 Graphic3d_TOT_1D = Graphic3d_TypeOfTexture.Graphic3d_TOT_1D
 Graphic3d_TOT_2D = Graphic3d_TypeOfTexture.Graphic3d_TOT_2D
-Graphic3d_TOT_2D_MIPMAP = Graphic3d_TypeOfTexture.Graphic3d_TOT_2D_MIPMAP
 Graphic3d_TOT_CUBEMAP = Graphic3d_TypeOfTexture.Graphic3d_TOT_CUBEMAP
 
 class Graphic3d_TypeOfMaterial(IntEnum):
@@ -1092,6 +1125,7 @@ class Graphic3d_TypeOfBackfacingModel(IntEnum):
 	Graphic3d_TypeOfBackfacingModel_Auto = 0
 	Graphic3d_TypeOfBackfacingModel_DoubleSided = 1
 	Graphic3d_TypeOfBackfacingModel_BackCulled = 2
+	Graphic3d_TypeOfBackfacingModel_FrontCulled = 3
 	Graphic3d_TOBM_AUTOMATIC = Graphic3d_TypeOfBackfacingModel_Auto
 	Graphic3d_TOBM_FORCE = Graphic3d_TypeOfBackfacingModel_DoubleSided
 	Graphic3d_TOBM_DISABLE = Graphic3d_TypeOfBackfacingModel_BackCulled
@@ -1101,6 +1135,7 @@ class Graphic3d_TypeOfBackfacingModel(IntEnum):
 Graphic3d_TypeOfBackfacingModel_Auto = Graphic3d_TypeOfBackfacingModel.Graphic3d_TypeOfBackfacingModel_Auto
 Graphic3d_TypeOfBackfacingModel_DoubleSided = Graphic3d_TypeOfBackfacingModel.Graphic3d_TypeOfBackfacingModel_DoubleSided
 Graphic3d_TypeOfBackfacingModel_BackCulled = Graphic3d_TypeOfBackfacingModel.Graphic3d_TypeOfBackfacingModel_BackCulled
+Graphic3d_TypeOfBackfacingModel_FrontCulled = Graphic3d_TypeOfBackfacingModel.Graphic3d_TypeOfBackfacingModel_FrontCulled
 Graphic3d_TOBM_AUTOMATIC = Graphic3d_TypeOfBackfacingModel.Graphic3d_TOBM_AUTOMATIC
 Graphic3d_TOBM_FORCE = Graphic3d_TypeOfBackfacingModel.Graphic3d_TOBM_FORCE
 Graphic3d_TOBM_DISABLE = Graphic3d_TypeOfBackfacingModel.Graphic3d_TOBM_DISABLE
@@ -1484,6 +1519,32 @@ Graphic3d_NOM_TRANSPARENT = Graphic3d_NameOfMaterial.Graphic3d_NOM_TRANSPARENT
 Graphic3d_NOM_DEFAULT = Graphic3d_NameOfMaterial.Graphic3d_NOM_DEFAULT
 Graphic3d_NOM_UserDefined = Graphic3d_NameOfMaterial.Graphic3d_NOM_UserDefined
 
+class Graphic3d_DisplayPriority(IntEnum):
+	Graphic3d_DisplayPriority_INVALID = - 1
+	Graphic3d_DisplayPriority_Bottom = 0
+	Graphic3d_DisplayPriority_AlmostBottom = 1
+	Graphic3d_DisplayPriority_Below2 = 2
+	Graphic3d_DisplayPriority_Below1 = 3
+	Graphic3d_DisplayPriority_Below = 4
+	Graphic3d_DisplayPriority_Normal = 5
+	Graphic3d_DisplayPriority_Above = 6
+	Graphic3d_DisplayPriority_Above1 = 7
+	Graphic3d_DisplayPriority_Above2 = 8
+	Graphic3d_DisplayPriority_Highlight = 9
+	Graphic3d_DisplayPriority_Topmost = 10
+Graphic3d_DisplayPriority_INVALID = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_INVALID
+Graphic3d_DisplayPriority_Bottom = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Bottom
+Graphic3d_DisplayPriority_AlmostBottom = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_AlmostBottom
+Graphic3d_DisplayPriority_Below2 = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Below2
+Graphic3d_DisplayPriority_Below1 = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Below1
+Graphic3d_DisplayPriority_Below = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Below
+Graphic3d_DisplayPriority_Normal = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Normal
+Graphic3d_DisplayPriority_Above = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Above
+Graphic3d_DisplayPriority_Above1 = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Above1
+Graphic3d_DisplayPriority_Above2 = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Above2
+Graphic3d_DisplayPriority_Highlight = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Highlight
+Graphic3d_DisplayPriority_Topmost = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Topmost
+
 class Graphic3d_TypeOfTextureFilter(IntEnum):
 	Graphic3d_TOTF_NEAREST = 0
 	Graphic3d_TOTF_BILINEAR = 1
@@ -1598,11 +1659,11 @@ Graphic3d_NOT_ENV_UNKNOWN = Graphic3d_NameOfTextureEnv.Graphic3d_NOT_ENV_UNKNOWN
 %wrap_handle(Graphic3d_CubeMap)
 %wrap_handle(Graphic3d_Texture1D)
 %wrap_handle(Graphic3d_Texture2D)
+%wrap_handle(Graphic3d_Texture3D)
 %wrap_handle(Graphic3d_CubeMapSeparate)
 %wrap_handle(Graphic3d_MediaTexture)
 %wrap_handle(Graphic3d_Texture1Dmanual)
 %wrap_handle(Graphic3d_Texture1Dsegment)
-%wrap_handle(Graphic3d_Texture2Dmanual)
 %wrap_handle(Graphic3d_Texture2Dplane)
 /* end handles declaration */
 
@@ -1642,41 +1703,7 @@ Graphic3d_NOT_ENV_UNKNOWN = Graphic3d_NameOfTextureEnv.Graphic3d_NOT_ENV_UNKNOWN
     __next__ = next
     }
 };
-%template(Graphic3d_ArrayOfIndexedMapOfStructure) NCollection_Array1<Graphic3d_IndexedMapOfStructure>;
-
-%extend NCollection_Array1<Graphic3d_IndexedMapOfStructure> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
+%template(Graphic3d_ArrayOfIndexedMapOfStructure) std::array<Graphic3d_IndexedMapOfStructure,Graphic3d_DisplayPriority_NB>;
 %template(Graphic3d_CameraLerp) NCollection_Lerp<opencascade::handle<Graphic3d_Camera>>;
 %template(Graphic3d_GraphicDriverFactoryList) NCollection_List<opencascade::handle<Graphic3d_GraphicDriverFactory>>;
 
@@ -1752,7 +1779,7 @@ Graphic3d_NOT_ENV_UNKNOWN = Graphic3d_NameOfTextureEnv.Graphic3d_NOT_ENV_UNKNOWN
 /* typedefs */
 typedef NCollection_Array1<Graphic3d_Attribute> Graphic3d_Array1OfAttribute;
 typedef Standard_Integer Graphic3d_ArrayFlags;
-typedef NCollection_Array1<Graphic3d_IndexedMapOfStructure> Graphic3d_ArrayOfIndexedMapOfStructure;
+typedef std::array<Graphic3d_IndexedMapOfStructure, Graphic3d_DisplayPriority_NB> Graphic3d_ArrayOfIndexedMapOfStructure;
 typedef BVH_Box<Standard_Real, 3> Graphic3d_BndBox3d;
 typedef BVH_Box<Standard_Real, 4> Graphic3d_BndBox4d;
 typedef BVH_Box<Standard_ShortReal, 4> Graphic3d_BndBox4f;
@@ -1771,6 +1798,7 @@ typedef NCollection_Sequence<opencascade::handle<Graphic3d_Structure>> Graphic3d
 typedef NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute>> Graphic3d_ShaderAttributeList;
 typedef NCollection_Sequence<opencascade::handle<Graphic3d_ShaderObject>> Graphic3d_ShaderObjectList;
 typedef NCollection_Sequence<opencascade::handle<Graphic3d_ShaderVariable>> Graphic3d_ShaderVariableList;
+typedef Graphic3d_Texture2D Graphic3d_Texture2Dmanual;
 typedef Graphic3d_UniformValue<Standard_ShortReal> Graphic3d_UniformFloat;
 typedef Graphic3d_UniformValue<Standard_Integer> Graphic3d_UniformInt;
 typedef Graphic3d_UniformValue<Graphic3d_Vec2> Graphic3d_UniformVec2;
@@ -2678,7 +2706,7 @@ None
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: 5e3741ae404c07188cda0cf2c04c1af9 ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color of rank theindex in the array.
+		%feature("autodoc", "Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node color.
 
 Parameters
 ----------
@@ -2694,7 +2722,7 @@ None
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: 7af065799323ec7bfb7d70ea95f7628d ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color of rank theindex in the array.
+		%feature("autodoc", "Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] ther red color value within [0, 1] range @param[in] theg green color value within [0, 1] range @param[in] theb blue color value within [0, 1] range.
 
 Parameters
 ----------
@@ -2712,7 +2740,7 @@ None
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: 365ecc2a1256e9e4dfce4691a873708a ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color of rank theindex in the array.
+		%feature("autodoc", "Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node rgba color values within [0, 255] range.
 
 Parameters
 ----------
@@ -2728,7 +2756,7 @@ None
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: eeeed96e9c367036c67cad249943f072 ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color of rank theindex> in the array. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode.
+		%feature("autodoc", "Change the vertex color in the array. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor32 packed rgba color values.
 
 Parameters
 ----------
@@ -2744,7 +2772,7 @@ None
 		/****************** SetVertexNormal ******************/
 		/**** md5 signature: 56e59c0948b5301def0a7eca1379fd17 ****/
 		%feature("compactdefaultargs") SetVertexNormal;
-		%feature("autodoc", "Change the vertex normal of rank theindex in the array.
+		%feature("autodoc", "Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenormal normalized surface normal.
 
 Parameters
 ----------
@@ -2760,7 +2788,7 @@ None
 		/****************** SetVertexNormal ******************/
 		/**** md5 signature: 63c2e7dcdaea066bc49bcf66ad7ca7f6 ****/
 		%feature("compactdefaultargs") SetVertexNormal;
-		%feature("autodoc", "Change the vertex normal of rank theindex in the array.
+		%feature("autodoc", "Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenx surface normal x component @param[in] theny surface normal y component @param[in] thenz surface normal z component.
 
 Parameters
 ----------
@@ -2778,7 +2806,7 @@ None
 		/****************** SetVertexTexel ******************/
 		/**** md5 signature: d290b59df93ca78d439630a79c10fb96 ****/
 		%feature("compactdefaultargs") SetVertexTexel;
-		%feature("autodoc", "Change the vertex texel of rank theindex in the array.
+		%feature("autodoc", "Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetexel node uv coordinates.
 
 Parameters
 ----------
@@ -2794,7 +2822,7 @@ None
 		/****************** SetVertexTexel ******************/
 		/**** md5 signature: 591a2402f51c2d9464abbf0004c2aab8 ****/
 		%feature("compactdefaultargs") SetVertexTexel;
-		%feature("autodoc", "Change the vertex texel of rank theindex in the array.
+		%feature("autodoc", "Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetx node u coordinate @param[in] thety node v coordinate.
 
 Parameters
 ----------
@@ -2811,7 +2839,7 @@ None
 		/****************** SetVertice ******************/
 		/**** md5 signature: 2b9b1a547f8ab7430320d077f7134a28 ****/
 		%feature("compactdefaultargs") SetVertice;
-		%feature("autodoc", "Change the vertice of rank theindex in the array.
+		%feature("autodoc", "Change the vertice of rank theindex in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thevertex 3d coordinates.
 
 Parameters
 ----------
@@ -2827,7 +2855,7 @@ None
 		/****************** SetVertice ******************/
 		/**** md5 signature: df303311bc01466daff43a98c2282220 ****/
 		%feature("compactdefaultargs") SetVertice;
-		%feature("autodoc", "Change the vertice of rank theindex in the array.
+		%feature("autodoc", "Change the vertice in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thex coordinate x @param[in] they coordinate y @param[in] thez coordinate z.
 
 Parameters
 ----------
@@ -2867,7 +2895,7 @@ Graphic3d_TypeOfPrimitiveArray
 		/****************** VertexColor ******************/
 		/**** md5 signature: 894c541db7b41bdf5464eb184c84acbc ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex color at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns node color rgb value.
 
 Parameters
 ----------
@@ -2882,7 +2910,7 @@ Quantity_Color
 		/****************** VertexColor ******************/
 		/**** md5 signature: 7de9a853ec7251d7d89a341ebd53d5cb ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color at rank theindex from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex color from the vertex table if defined. @param[in] theindex node index within [1, vertexnumber()] range @param[out] thecolor node rgba color values within [0, 255] range.
 
 Parameters
 ----------
@@ -2898,7 +2926,7 @@ None
 		/****************** VertexColor ******************/
 		/**** md5 signature: da4a7941920a5d3bfbc05b00562a2a98 ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color values at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] ther node red color component value within [0, 1] range @param[out] theg node green color component value within [0, 1] range @param[out] theb node blue color component value within [0, 1] range.
 
 Parameters
 ----------
@@ -2915,7 +2943,7 @@ theB: float
 		/****************** VertexColor ******************/
 		/**** md5 signature: 40aea0b0194d19a40dd5ce23e97b877c ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color values at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thecolor node rgba color packed into 32-bit integer.
 
 Parameters
 ----------
@@ -2930,7 +2958,7 @@ theColor: int
 		/****************** VertexNormal ******************/
 		/**** md5 signature: 23971fdb573e3fdf90a1785d18fde66e ****/
 		%feature("compactdefaultargs") VertexNormal;
-		%feature("autodoc", "Returns the vertex normal at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex normal from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns normalized 3d vector defining surface normal.
 
 Parameters
 ----------
@@ -2945,7 +2973,7 @@ gp_Dir
 		/****************** VertexNormal ******************/
 		/**** md5 signature: 9cb8eef363df84964f026aeed71d96a7 ****/
 		%feature("compactdefaultargs") VertexNormal;
-		%feature("autodoc", "Returns the vertex normal coordinates at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex normal coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thenx normal x coordinate @param[out] theny normal y coordinate @param[out] thenz normal z coordinate.
 
 Parameters
 ----------
@@ -2984,7 +3012,7 @@ int
 		/****************** VertexTexel ******************/
 		/**** md5 signature: 01f81ccb106fdd8a29d253220a7a126e ****/
 		%feature("compactdefaultargs") VertexTexel;
-		%feature("autodoc", "Returns the vertex texture at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex texture at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns uv coordinates.
 
 Parameters
 ----------
@@ -2999,7 +3027,7 @@ gp_Pnt2d
 		/****************** VertexTexel ******************/
 		/**** md5 signature: 91f5db91f39ec84c9ae06927d6fc5937 ****/
 		%feature("compactdefaultargs") VertexTexel;
-		%feature("autodoc", "Returns the vertex texture coordinates at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertex texture coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thetx texel u coordinate value @param[out] thety texel v coordinate value.
 
 Parameters
 ----------
@@ -3015,7 +3043,7 @@ theTY: float
 		/****************** Vertice ******************/
 		/**** md5 signature: 39ce48129cb147a713a12c21a8e35a55 ****/
 		%feature("compactdefaultargs") Vertice;
-		%feature("autodoc", "Returns the vertice at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertice from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns node 3d coordinates.
 
 Parameters
 ----------
@@ -3030,7 +3058,7 @@ gp_Pnt
 		/****************** Vertice ******************/
 		/**** md5 signature: 9a4d98ac80934cdba48966df4fecbe00 ****/
 		%feature("compactdefaultargs") Vertice;
-		%feature("autodoc", "Returns the vertice coordinates at rank therank from the vertex table if defined.
+		%feature("autodoc", "Returns the vertice coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thex node x coordinate value @param[out] they node y coordinate value @param[out] thez node z coordinate value.
 
 Parameters
 ----------
@@ -5502,10 +5530,6 @@ class Graphic3d_CStructure : public Standard_Transient {
 		class SubclassStructIterator {};
 		class SubclassGroupIterator {};
 		opencascade::handle<Graphic3d_ViewAffinity > ViewAffinity;
-		int Id;
-		int Priority;
-		int PreviousPriority;
-		int ContainsFacet;
 		unsigned IsInfinite;
 		unsigned stick;
 		unsigned highlight;
@@ -5677,6 +5701,17 @@ opencascade::handle<Graphic3d_PresentationAttributes>
 ") HighlightStyle;
 		const opencascade::handle<Graphic3d_PresentationAttributes> & HighlightStyle();
 
+		/****************** Identification ******************/
+		/**** md5 signature: f18c91e46c1b20a4777abd8f80b5550f ****/
+		%feature("compactdefaultargs") Identification;
+		%feature("autodoc", "Return structure id (generated by graphic3d_graphicdriver::newidentification() during structure construction).
+
+Returns
+-------
+int
+") Identification;
+		Standard_Integer Identification();
+
 		/****************** IsAlwaysRendered ******************/
 		/**** md5 signature: d6f70384d08093407d656cc6da2cd218 ****/
 		%feature("compactdefaultargs") IsAlwaysRendered;
@@ -5762,6 +5797,28 @@ None
 ") OnVisibilityChanged;
 		virtual void OnVisibilityChanged();
 
+		/****************** PreviousPriority ******************/
+		/**** md5 signature: 5ce130b5e3a1bc1ab2fddea0442f64cf ****/
+		%feature("compactdefaultargs") PreviousPriority;
+		%feature("autodoc", "Return previous structure display priority.
+
+Returns
+-------
+Graphic3d_DisplayPriority
+") PreviousPriority;
+		Graphic3d_DisplayPriority PreviousPriority();
+
+		/****************** Priority ******************/
+		/**** md5 signature: 27196dd56c108e83889182b069af6715 ****/
+		%feature("compactdefaultargs") Priority;
+		%feature("autodoc", "Return structure display priority.
+
+Returns
+-------
+Graphic3d_DisplayPriority
+") Priority;
+		Graphic3d_DisplayPriority Priority();
+
 		/****************** RemoveGroup ******************/
 		/**** md5 signature: 5306031610a77c3eda50a31cbc46b00d ****/
 		%feature("compactdefaultargs") RemoveGroup;
@@ -5836,6 +5893,36 @@ Returns
 None
 ") SetGroupTransformPersistence;
 		void SetGroupTransformPersistence(bool theValue);
+
+		/****************** SetPreviousPriority ******************/
+		/**** md5 signature: 6694962343cf95554e722769581ba96f ****/
+		%feature("compactdefaultargs") SetPreviousPriority;
+		%feature("autodoc", "Set previous structure display priority.
+
+Parameters
+----------
+thePriority: Graphic3d_DisplayPriority
+
+Returns
+-------
+None
+") SetPreviousPriority;
+		void SetPreviousPriority(Graphic3d_DisplayPriority thePriority);
+
+		/****************** SetPriority ******************/
+		/**** md5 signature: 4f328308d16b2119887631e15176fd97 ****/
+		%feature("compactdefaultargs") SetPriority;
+		%feature("autodoc", "Set structure display priority.
+
+Parameters
+----------
+thePriority: Graphic3d_DisplayPriority
+
+Returns
+-------
+None
+") SetPriority;
+		void SetPriority(Graphic3d_DisplayPriority thePriority);
 
 		/****************** SetTransformPersistence ******************/
 		/**** md5 signature: ebaa62acbe8ec5abd3805f5c94502bd2 ****/
@@ -6876,7 +6963,7 @@ None
 		/****************** SetProjectionType ******************/
 		/**** md5 signature: 500231e331fd3294fa2c82d618e95738 ****/
 		%feature("compactdefaultargs") SetProjectionType;
-		%feature("autodoc", "Change camera projection type. when switching to perspective projection from orthographic one, the znear and zfar are reset to default values (0.001, 3000.0) if less than 0.0. @param theprojectiontype [in] the camera projection type.
+		%feature("autodoc", "Change camera projection type. when switching to perspective projection from orthographic one, the znear and zfar are reset to default values (0.001, 3000.0) if less than 0.0. @param[in] theprojection the camera projection type.
 
 Parameters
 ----------
@@ -7141,7 +7228,7 @@ float
 		/****************** ZFitAll ******************/
 		/**** md5 signature: 05d966459b935643d69af2cf50829645 ****/
 		%feature("compactdefaultargs") ZFitAll;
-		%feature("autodoc", "Estimate z-min and z-max planes of projection volume to match the displayed objects. the methods ensures that view volume will be close by depth range to the displayed objects. fitting assumes that for orthogonal projection the view volume contains the displayed objects completely. for zoomed perspective view, the view volume is adjusted such that it contains the objects or their parts, located in front of the camera. @param thescalefactor [in] the scale factor for z-range. the range between z-min, z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. program error exception is thrown if negative or zero value is passed. @param theminmax [in] applicative min max boundaries. @param thescalefactor [in] real graphical boundaries (not accounting infinite flag).
+		%feature("autodoc", "Estimate z-min and z-max planes of projection volume to match the displayed objects. the methods ensures that view volume will be close by depth range to the displayed objects. fitting assumes that for orthogonal projection the view volume contains the displayed objects completely. for zoomed perspective view, the view volume is adjusted such that it contains the objects or their parts, located in front of the camera. @param[in] thescalefactor the scale factor for z-range. the range between z-min, z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. program error exception is thrown if negative or zero value is passed. @param[in] theminmax applicative min max boundaries. @param[in] thegraphicbb real graphical boundaries (not accounting infinite flag).
 
 Parameters
 ----------
@@ -9888,17 +9975,6 @@ None
 ") Clear;
 		virtual void Clear(const Standard_Boolean theUpdateStructureMgr = Standard_True);
 
-		/****************** ContainsFacet ******************/
-		/**** md5 signature: 4c181c9b014b3fa37004bc92ff243a15 ****/
-		%feature("compactdefaultargs") ContainsFacet;
-		%feature("autodoc", "Returns true if the group contains polygons, triangles or quadrangles.
-
-Returns
--------
-bool
-") ContainsFacet;
-		bool ContainsFacet();
-
 
             %feature("autodoc", "1");
             %extend{
@@ -10363,14 +10439,14 @@ Standard_Byte *
 class Graphic3d_Layer : public Standard_Transient {
 	public:
 		/****************** Add ******************/
-		/**** md5 signature: 6493b75ea05a8ab953e74ce8d421cc2d ****/
+		/**** md5 signature: feed5b038d881a49c0e3926c15ce7a1f ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 theStruct: Graphic3d_CStructure *
-thePriority: int
+thePriority: Graphic3d_DisplayPriority
 isForChangePriority: bool,optional
 	default value is Standard_False
 
@@ -10378,7 +10454,7 @@ Returns
 -------
 None
 ") Add;
-		void Add(const Graphic3d_CStructure * theStruct, Standard_Integer thePriority, Standard_Boolean isForChangePriority = Standard_False);
+		void Add(const Graphic3d_CStructure * theStruct, Graphic3d_DisplayPriority thePriority, Standard_Boolean isForChangePriority = Standard_False);
 
 		/****************** Append ******************/
 		/**** md5 signature: f0f4bee4c0b9813775925533dc644b0f ****/
@@ -10577,7 +10653,7 @@ NCollection_IndexedMap< Graphic3d_CStructure *>
 		const NCollection_IndexedMap<const Graphic3d_CStructure *> & NonCullableStructures();
 
 		/****************** Remove ******************/
-		/**** md5 signature: 507deaa1a24883309d58b8bfe19b9bc0 ****/
+		/**** md5 signature: f3eb2ac6b6511df0e3dec81686ca7861 ****/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "Remove structure and returns its priority, if the structure is not found, method returns negative value.
 
@@ -10589,9 +10665,9 @@ isForChangePriority: bool,optional
 
 Returns
 -------
-thePriority: int
+thePriority: Graphic3d_DisplayPriority
 ") Remove;
-		bool Remove(const Graphic3d_CStructure * theStruct, Standard_Integer &OutValue, Standard_Boolean isForChangePriority = Standard_False);
+		bool Remove(const Graphic3d_CStructure * theStruct, Graphic3d_DisplayPriority &OutValue, Standard_Boolean isForChangePriority = Standard_False);
 
 		/****************** SetLayerSettings ******************/
 		/**** md5 signature: 6813e1662f9cf34807e9b6113ac4bcc6 ****/
@@ -10607,6 +10683,21 @@ Returns
 None
 ") SetLayerSettings;
 		void SetLayerSettings(const Graphic3d_ZLayerSettings & theSettings);
+
+		/****************** Structures ******************/
+		/**** md5 signature: e3166735d417528b34f96d1e86e7e6cb ****/
+		%feature("compactdefaultargs") Structures;
+		%feature("autodoc", "Returns structures for specified priority.
+
+Parameters
+----------
+thePriority: Graphic3d_DisplayPriority
+
+Returns
+-------
+Graphic3d_IndexedMapOfStructure
+") Structures;
+		const Graphic3d_IndexedMapOfStructure & Structures(Graphic3d_DisplayPriority thePriority);
 
 		/****************** UpdateCulling ******************/
 		/**** md5 signature: 0c055279e50b63637445857e0a3e6256 ****/
@@ -11785,7 +11876,7 @@ Graphic3d_Vec3
 		/****************** GenerateEnvLUT ******************/
 		/**** md5 signature: ab6e4772a25884134f897d33a68ddf4d ****/
 		%feature("compactdefaultargs") GenerateEnvLUT;
-		%feature("autodoc", "Generates 2d look up table of scale and bias for fresnell zero coefficient. it is needed for calculation reflectance part of environment lighting. @param [out] thelut table storage (must be image_format_rgf). @param [in] theintegralsamplescount number of importance samples in hemisphere integral calculation for every table item.
+		%feature("autodoc", "Generates 2d look up table of scale and bias for fresnell zero coefficient. it is needed for calculation reflectance part of environment lighting. @param [out] thelut table storage (must be image_format_rgf). @param [in] thenbintegralsamples number of importance samples in hemisphere integral calculation for every table item.
 
 Parameters
 ----------
@@ -12466,6 +12557,7 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		Graphic3d_Mat4 AnaglyphLeft;
 		Graphic3d_Mat4 AnaglyphRight;
 		bool ToReverseStereo;
+		bool ToSmoothInterlacing;
 		bool ToMirrorComposer;
 		opencascade::handle<Graphic3d_TransformPers > StatsPosition;
 		opencascade::handle<Graphic3d_TransformPers > ChartPosition;
@@ -13817,17 +13909,6 @@ None
 ") Connect;
 		void Connect(const opencascade::handle<Graphic3d_Structure> & thePrs);
 
-		/****************** ContainsFacet ******************/
-		/**** md5 signature: c53b95b374faa3dd56807af9cbf654ce ****/
-		%feature("compactdefaultargs") ContainsFacet;
-		%feature("autodoc", "Returns standard_true if the structure <self> contains polygons, triangles or quadrangles.
-
-Returns
--------
-bool
-") ContainsFacet;
-		Standard_Boolean ContainsFacet();
-
 		/****************** CurrentGroup ******************/
 		/**** md5 signature: dc1f0b5eea98b580e880b9e6c8061d8f ****/
 		%feature("compactdefaultargs") CurrentGroup;
@@ -13896,15 +13977,15 @@ None
 		virtual void Display();
 
 		/****************** DisplayPriority ******************/
-		/**** md5 signature: c4fc85a901582e4dbb710c18c17c717d ****/
+		/**** md5 signature: 569cd12ac8a5e3ea17f776921edea002 ****/
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "Returns the current display priority for this structure.
 
 Returns
 -------
-int
+Graphic3d_DisplayPriority
 ") DisplayPriority;
-		Standard_Integer DisplayPriority();
+		Graphic3d_DisplayPriority DisplayPriority();
 
 
             %feature("autodoc", "1");
@@ -14309,7 +14390,7 @@ None
 		/****************** ResetDisplayPriority ******************/
 		/**** md5 signature: 7e9a6fef73d14b5bf0e50b4d1a74fe4f ****/
 		%feature("compactdefaultargs") ResetDisplayPriority;
-		%feature("autodoc", "Reset the current priority of the structure to the previous priority. category: methods to modify the class definition warning: if <self> is displayed then the setdisplaypriority method erase <self> and display <self> with the previous priority.
+		%feature("autodoc", "Reset the current priority of the structure to the previous priority. warning: if structure is displayed then the setdisplaypriority() method erases it and displays with the previous priority.
 
 Returns
 -------
@@ -14348,19 +14429,34 @@ None
 		void SetComputeVisual(const Graphic3d_TypeOfStructure theVisual);
 
 		/****************** SetDisplayPriority ******************/
-		/**** md5 signature: 7dec56e9d352d17186e909dc3a62fe0b ****/
+		/**** md5 signature: 7ab59d52dbc820e0408e02d58be68382 ****/
 		%feature("compactdefaultargs") SetDisplayPriority;
-		%feature("autodoc", "Modifies the order of displaying the structure. values are between 0 and 10. structures are drawn according to their display priorities in ascending order. a structure of priority 10 is displayed the last and appears over the others. the default value is 5. category: methods to modify the class definition warning: if <self> is displayed then the setdisplaypriority method erase <self> and display <self> with the new priority. raises prioritydefinitionerror if <priority> is greater than 10 or a negative value.
+		%feature("autodoc", "Modifies the order of displaying the structure. values are between 0 and 10. structures are drawn according to their display priorities in ascending order. a structure of priority 10 is displayed the last and appears over the others. the default value is 5. warning: if structure is displayed then the setdisplaypriority method erases it and displays with the new priority. raises graphic3d_prioritydefinitionerror if priority is greater than 10 or a negative value.
 
 Parameters
 ----------
-Priority: int
+thePriority: Graphic3d_DisplayPriority
 
 Returns
 -------
 None
 ") SetDisplayPriority;
-		void SetDisplayPriority(const Standard_Integer Priority);
+		void SetDisplayPriority(const Graphic3d_DisplayPriority thePriority);
+
+		/****************** SetDisplayPriority ******************/
+		/**** md5 signature: 257b1a4d2b02b4df2a7bdb13d8cd1785 ****/
+		%feature("compactdefaultargs") SetDisplayPriority;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePriority: int
+
+Returns
+-------
+None
+") SetDisplayPriority;
+		void SetDisplayPriority(const Standard_Integer thePriority);
 
 		/****************** SetHLRValidation ******************/
 		/**** md5 signature: 6a04c1b7f9ddd201cd2765dc7cdbe2db ****/
@@ -14640,21 +14736,21 @@ None
 		 Graphic3d_StructureManager(const opencascade::handle<Graphic3d_GraphicDriver> & theDriver);
 
 		/****************** ChangeDisplayPriority ******************/
-		/**** md5 signature: 93b1acf46f0a454b2eb008a179eb462e ****/
+		/**** md5 signature: f4e4404a4991ec3c3960c0f024d20108 ****/
 		%feature("compactdefaultargs") ChangeDisplayPriority;
 		%feature("autodoc", "Changes the display priority of the structure <astructure>.
 
 Parameters
 ----------
 theStructure: Graphic3d_Structure
-theOldPriority: int
-theNewPriority: int
+theOldPriority: Graphic3d_DisplayPriority
+theNewPriority: Graphic3d_DisplayPriority
 
 Returns
 -------
 None
 ") ChangeDisplayPriority;
-		virtual void ChangeDisplayPriority(const opencascade::handle<Graphic3d_Structure> & theStructure, const Standard_Integer theOldPriority, const Standard_Integer theNewPriority);
+		virtual void ChangeDisplayPriority(const opencascade::handle<Graphic3d_Structure> & theStructure, const Graphic3d_DisplayPriority theOldPriority, const Graphic3d_DisplayPriority theNewPriority);
 
 		/****************** ChangeZLayer ******************/
 		/**** md5 signature: d68c801a4cace524cd37e40b6911217d ****/
@@ -14889,7 +14985,7 @@ int
 		Standard_Integer MaxNumOfViews();
 
 		/****************** ObjectAffinity ******************/
-		/**** md5 signature: 407c06527737d1bd4096020ddd3ccd09 ****/
+		/**** md5 signature: e79830514c49bd4e88b290587984cd82 ****/
 		%feature("compactdefaultargs") ObjectAffinity;
 		%feature("autodoc", "No available documentation.
 
@@ -14901,7 +14997,7 @@ Returns
 -------
 opencascade::handle<Graphic3d_ViewAffinity>
 ") ObjectAffinity;
-		opencascade::handle<Graphic3d_ViewAffinity> ObjectAffinity(const opencascade::handle<Standard_Transient> & theObject);
+		const opencascade::handle<Graphic3d_ViewAffinity> & ObjectAffinity(const opencascade::handle<Standard_Transient> & theObject);
 
 		/****************** ReCompute ******************/
 		/**** md5 signature: 616a39795d0668f6d0f2c39a483d0904 ****/
@@ -14961,19 +15057,20 @@ None
 		void RecomputeStructures(const NCollection_Map<Graphic3d_Structure *> & theStructures);
 
 		/****************** RegisterObject ******************/
-		/**** md5 signature: 356445b1cad67ece66300fd0b81904b3 ****/
+		/**** md5 signature: 4d90aa666e5fb41b5a16e9a69b45f2f9 ****/
 		%feature("compactdefaultargs") RegisterObject;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
 theObject: Standard_Transient
+theAffinity: Graphic3d_ViewAffinity
 
 Returns
 -------
-opencascade::handle<Graphic3d_ViewAffinity>
+None
 ") RegisterObject;
-		opencascade::handle<Graphic3d_ViewAffinity> RegisterObject(const opencascade::handle<Standard_Transient> & theObject);
+		void RegisterObject(const opencascade::handle<Standard_Transient> & theObject, const opencascade::handle<Graphic3d_ViewAffinity> & theAffinity);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 57a23cda69c531e8d176ae30ce8f77c6 ****/
@@ -15780,6 +15877,17 @@ opencascade::handle<Graphic3d_TextureParams>
 ") GetParams;
 		const opencascade::handle<Graphic3d_TextureParams> & GetParams();
 
+		/****************** HasMipmaps ******************/
+		/**** md5 signature: b3b5fb053a7b49996b2be90fa9333800 ****/
+		%feature("compactdefaultargs") HasMipmaps;
+		%feature("autodoc", "Returns whether mipmaps should be generated or not.
+
+Returns
+-------
+bool
+") HasMipmaps;
+		Standard_Boolean HasMipmaps();
+
 		/****************** IsColorMap ******************/
 		/**** md5 signature: 09bcde660e67336c50f82f601f3d70f3 ****/
 		%feature("compactdefaultargs") IsColorMap;
@@ -15849,6 +15957,21 @@ Returns
 None
 ") SetColorMap;
 		void SetColorMap(Standard_Boolean theIsColor);
+
+		/****************** SetMipmapsGeneration ******************/
+		/**** md5 signature: e14a34fe3ead5b13a7caa5b8e688c68d ****/
+		%feature("compactdefaultargs") SetMipmapsGeneration;
+		%feature("autodoc", "Sets whether to generate mipmaps or not.
+
+Parameters
+----------
+theToGenerateMipmaps: bool
+
+Returns
+-------
+None
+") SetMipmapsGeneration;
+		void SetMipmapsGeneration(Standard_Boolean theToGenerateMipmaps);
 
 		/****************** TexturesFolder ******************/
 		/**** md5 signature: d0c7ddde8409f509c5551965f8259175 ****/
@@ -16147,21 +16270,21 @@ None
 		void SetPersistence(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset);
 
 		/****************** persistentScale ******************/
-		/**** md5 signature: 76c92526f0940f02546b36d34311d209 ****/
+		/**** md5 signature: 13772c1e0fd97e6d89e163f1469ae7f4 ****/
 		%feature("compactdefaultargs") persistentScale;
 		%feature("autodoc", "Find scale value based on the camera position and view dimensions @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
 
 Parameters
 ----------
 theCamera: Graphic3d_Camera
-Standard_Integer: 
+theViewportWidth: int
 theViewportHeight: int
 
 Returns
 -------
 float
 ") persistentScale;
-		virtual Standard_Real persistentScale(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer, const Standard_Integer theViewportHeight);
+		virtual Standard_Real persistentScale(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
 };
 
@@ -18610,6 +18733,21 @@ None
 ") Activate;
 		virtual void Activate();
 
+		/****************** AddSubview ******************/
+		/**** md5 signature: 087614f43cc50ee37f740a2917be8ce5 ****/
+		%feature("compactdefaultargs") AddSubview;
+		%feature("autodoc", "Add subview to the list.
+
+Parameters
+----------
+theView: Graphic3d_CView
+
+Returns
+-------
+None
+") AddSubview;
+		void AddSubview(const opencascade::handle<Graphic3d_CView> & theView);
+
 		/****************** BackfacingModel ******************/
 		/**** md5 signature: 4ef77cd5fd8e610f48c8d749a75b591a ****/
 		%feature("compactdefaultargs") BackfacingModel;
@@ -18665,6 +18803,17 @@ Aspect_FillMethod
 ") BackgroundImageStyle;
 		virtual Aspect_FillMethod BackgroundImageStyle();
 
+		/****************** BackgroundSkydome ******************/
+		/**** md5 signature: d7cf91d14be3f61f07eadf45a044328f ****/
+		%feature("compactdefaultargs") BackgroundSkydome;
+		%feature("autodoc", "Returns skydome aspect;.
+
+Returns
+-------
+Aspect_SkydomeBackground
+") BackgroundSkydome;
+		const Aspect_SkydomeBackground & BackgroundSkydome();
+
 		/****************** BackgroundType ******************/
 		/**** md5 signature: cc22829f256c1e73c4aabb07733228f1 ****/
 		%feature("compactdefaultargs") BackgroundType;
@@ -18713,17 +18862,6 @@ Returns
 opencascade::handle<Graphic3d_Camera>
 ") Camera;
 		virtual const opencascade::handle<Graphic3d_Camera> & Camera();
-
-		/****************** ChangeHiddenObjects ******************/
-		/**** md5 signature: 819ca3157a6786ec944f8f7d92ec9a7d ****/
-		%feature("compactdefaultargs") ChangeHiddenObjects;
-		%feature("autodoc", "Returns map of objects hidden within this specific view (not viewer-wise).
-
-Returns
--------
-opencascade::handle<Graphic3d_NMapOfTransient>
-") ChangeHiddenObjects;
-		opencascade::handle<Graphic3d_NMapOfTransient> & ChangeHiddenObjects();
 
 		/****************** ChangeRenderingParams ******************/
 		/**** md5 signature: 2930edc0d67ff31509e235f7390593e4 ****/
@@ -18811,32 +18949,6 @@ Returns
 float
 ") ConsiderZoomPersistenceObjects;
 		Standard_Real ConsiderZoomPersistenceObjects();
-
-		/****************** ContainsFacet ******************/
-		/**** md5 signature: c53b95b374faa3dd56807af9cbf654ce ****/
-		%feature("compactdefaultargs") ContainsFacet;
-		%feature("autodoc", "Returns standard_true if one of the structures displayed in the view contains polygons, triangles or quadrangles.
-
-Returns
--------
-bool
-") ContainsFacet;
-		Standard_Boolean ContainsFacet();
-
-		/****************** ContainsFacet ******************/
-		/**** md5 signature: 228771deab60c4d5474dc8500325b37b ****/
-		%feature("compactdefaultargs") ContainsFacet;
-		%feature("autodoc", "Returns standard_true if one of the structures in the set contains polygons, triangles or quadrangles.
-
-Parameters
-----------
-theSet: Graphic3d_MapOfStructure
-
-Returns
--------
-bool
-") ContainsFacet;
-		Standard_Boolean ContainsFacet(const Graphic3d_MapOfStructure & theSet);
 
 		/****************** CopySettings ******************/
 		/**** md5 signature: 4026fe6fd42530f6aedac7fd6bd368b1 ****/
@@ -19044,17 +19156,6 @@ None
 ") GraduatedTrihedronMinMaxValues;
 		virtual void GraduatedTrihedronMinMaxValues(const Graphic3d_Vec3 theMin, const Graphic3d_Vec3 theMax);
 
-		/****************** HiddenObjects ******************/
-		/**** md5 signature: fcbd2338fa9c064c023e0aee2e8c9753 ****/
-		%feature("compactdefaultargs") HiddenObjects;
-		%feature("autodoc", "Returns map of objects hidden within this specific view (not viewer-wise).
-
-Returns
--------
-opencascade::handle<Graphic3d_NMapOfTransient>
-") HiddenObjects;
-		const opencascade::handle<Graphic3d_NMapOfTransient> & HiddenObjects();
-
 		/****************** IBLCubeMap ******************/
 		/**** md5 signature: ffcaee8919807a8917521c40504678ca ****/
 		%feature("compactdefaultargs") IBLCubeMap;
@@ -19234,6 +19335,39 @@ bool
 ") IsRemoved;
 		Standard_Boolean IsRemoved();
 
+		/****************** IsSubViewRelativeSize ******************/
+		/**** md5 signature: 04ae131a78555ab50e814ca94d8066c9 ****/
+		%feature("compactdefaultargs") IsSubViewRelativeSize;
+		%feature("autodoc", "Return true if subview size is set as proportions relative to parent view.
+
+Returns
+-------
+bool
+") IsSubViewRelativeSize;
+		bool IsSubViewRelativeSize();
+
+		/****************** IsSubview ******************/
+		/**** md5 signature: e4786984f763125a6b3ee9d1975a34eb ****/
+		%feature("compactdefaultargs") IsSubview;
+		%feature("autodoc", "Return true if this is a subview of another view.
+
+Returns
+-------
+bool
+") IsSubview;
+		bool IsSubview();
+
+		/****************** IsSubviewComposer ******************/
+		/**** md5 signature: dda8477995e5b91e1a15cec3f2e75a4f ****/
+		%feature("compactdefaultargs") IsSubviewComposer;
+		%feature("autodoc", "Return true if this is view performs rendering of subviews and nothing else; false by default. by default, view with subviews will render main scene and blit subviews on top of it. rendering of main scene might become redundant in case if subviews cover entire window of parent view. this flag allows to disable rendering of the main scene in such scenarios without creation of a dedicated v3d_viewer instance just for composing subviews.
+
+Returns
+-------
+bool
+") IsSubviewComposer;
+		bool IsSubviewComposer();
+
 		/****************** Layer ******************/
 		/**** md5 signature: 98e13d408eec5014ccb45661ed58591c ****/
 		%feature("compactdefaultargs") Layer;
@@ -19314,6 +19448,17 @@ Returns
 int
 ") NumberOfDisplayedStructures;
 		virtual Standard_Integer NumberOfDisplayedStructures();
+
+		/****************** ParentView ******************/
+		/**** md5 signature: 3277b1d4697d1e5bf1050aa6b3b068c0 ****/
+		%feature("compactdefaultargs") ParentView;
+		%feature("autodoc", "Return parent view or null if this is not a subview.
+
+Returns
+-------
+Graphic3d_CView *
+") ParentView;
+		Graphic3d_CView * ParentView();
 
 		/****************** PoseXRToWorld ******************/
 		/**** md5 signature: cd46f66daada283828955a8fd56f2748 ****/
@@ -19410,6 +19555,21 @@ Returns
 None
 ") Remove;
 		virtual void Remove();
+
+		/****************** RemoveSubview ******************/
+		/**** md5 signature: 6f7136c88cbfcfcd7c8c06abc029efcd ****/
+		%feature("compactdefaultargs") RemoveSubview;
+		%feature("autodoc", "Remove subview from the list.
+
+Parameters
+----------
+theView: Graphic3d_CView *
+
+Returns
+-------
+bool
+") RemoveSubview;
+		bool RemoveSubview(const Graphic3d_CView * theView);
 
 		/****************** RemoveZLayer ******************/
 		/**** md5 signature: 50d5f44e4a544e7ce1c8003cf95dee16 ****/
@@ -19509,6 +19669,23 @@ Returns
 None
 ") SetBackgroundImageStyle;
 		virtual void SetBackgroundImageStyle(const Aspect_FillMethod theFillStyle);
+
+		/****************** SetBackgroundSkydome ******************/
+		/**** md5 signature: 25ac38bc9b5749e5230aaefbd5f8cce1 ****/
+		%feature("compactdefaultargs") SetBackgroundSkydome;
+		%feature("autodoc", "Sets skydome aspect.
+
+Parameters
+----------
+theAspect: Aspect_SkydomeBackground
+theToUpdatePBREnv: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") SetBackgroundSkydome;
+		void SetBackgroundSkydome(const Aspect_SkydomeBackground & theAspect, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
 		/****************** SetBackgroundType ******************/
 		/**** md5 signature: 7cbcdf16f22591f5670a7bcbaa8dd21a ****/
@@ -19618,7 +19795,7 @@ None
 		/****************** SetImageBasedLighting ******************/
 		/**** md5 signature: e76255c15ac3a2efb6498739f2e1599d ****/
 		%feature("compactdefaultargs") SetImageBasedLighting;
-		%feature("autodoc", "Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap @param[in] thetoupdate redraw the view.
+		%feature("autodoc", "Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap.
 
 Parameters
 ----------
@@ -19690,6 +19867,81 @@ None
 ") SetShadingModel;
 		void SetShadingModel(Graphic3d_TypeOfShadingModel theModel);
 
+		/****************** SetSubviewComposer ******************/
+		/**** md5 signature: 55fbfea061f30b97532f4558c8bca661 ****/
+		%feature("compactdefaultargs") SetSubviewComposer;
+		%feature("autodoc", "Set if this view should perform composing of subviews and nothing else.
+
+Parameters
+----------
+theIsComposer: bool
+
+Returns
+-------
+None
+") SetSubviewComposer;
+		void SetSubviewComposer(bool theIsComposer);
+
+		/****************** SetSubviewCorner ******************/
+		/**** md5 signature: ef48b2f01aa985acb05b2f3d5b12b84d ****/
+		%feature("compactdefaultargs") SetSubviewCorner;
+		%feature("autodoc", "Set subview position within parent view.
+
+Parameters
+----------
+thePos: Aspect_TypeOfTriedronPosition
+
+Returns
+-------
+None
+") SetSubviewCorner;
+		void SetSubviewCorner(Aspect_TypeOfTriedronPosition thePos);
+
+		/****************** SetSubviewMargins ******************/
+		/**** md5 signature: a6919c6660a99e485ffb16751b7be266 ****/
+		%feature("compactdefaultargs") SetSubviewMargins;
+		%feature("autodoc", "Set subview margins in pixels.
+
+Parameters
+----------
+theMargins: Graphic3d_Vec2i
+
+Returns
+-------
+None
+") SetSubviewMargins;
+		void SetSubviewMargins(const Graphic3d_Vec2i & theMargins);
+
+		/****************** SetSubviewOffset ******************/
+		/**** md5 signature: 6d26aade394333d2428f8b425dec96ad ****/
+		%feature("compactdefaultargs") SetSubviewOffset;
+		%feature("autodoc", "Set corner offset within parent view.
+
+Parameters
+----------
+theOffset: Graphic3d_Vec2d
+
+Returns
+-------
+None
+") SetSubviewOffset;
+		void SetSubviewOffset(const Graphic3d_Vec2d & theOffset);
+
+		/****************** SetSubviewSize ******************/
+		/**** md5 signature: 3890d8e907c658450bb26e7d2b440749 ****/
+		%feature("compactdefaultargs") SetSubviewSize;
+		%feature("autodoc", "Set subview size relative to parent view.
+
+Parameters
+----------
+theSize: Graphic3d_Vec2d
+
+Returns
+-------
+None
+") SetSubviewSize;
+		void SetSubviewSize(const Graphic3d_Vec2d & theSize);
+
 		/****************** SetTextureEnv ******************/
 		/**** md5 signature: 7529a79a886636c7ffd10c57b2f00357 ****/
 		%feature("compactdefaultargs") SetTextureEnv;
@@ -19736,21 +19988,21 @@ None
 		void SetVisualizationType(const Graphic3d_TypeOfVisualization theType);
 
 		/****************** SetWindow ******************/
-		/**** md5 signature: 71601c2fe489c318b728df4d93c8ca96 ****/
+		/**** md5 signature: 202e4c90685904ae9b9d19f3767b6834 ****/
 		%feature("compactdefaultargs") SetWindow;
-		%feature("autodoc", "Creates and maps rendering window to the view. @param thewindow [in] the window. @param thecontext [in] the rendering context. if null the context will be created internally.
+		%feature("autodoc", "Creates and maps rendering window to the view. @param[in] theparentview parent view or null @param[in] thewindow the window @param[in] thecontext the rendering context; if null the context will be created internally.
 
 Parameters
 ----------
+theParentVIew: Graphic3d_CView
 theWindow: Aspect_Window
-theContext: Aspect_RenderingContext,optional
-	default value is NULL
+theContext: Aspect_RenderingContext
 
 Returns
 -------
 None
 ") SetWindow;
-		virtual void SetWindow(const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext = NULL);
+		virtual void SetWindow(const opencascade::handle<Graphic3d_CView> & theParentVIew, const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext);
 
 		/****************** SetXRSession ******************/
 		/**** md5 signature: a15f51b514a0e7938f3cd4b88c551f83 ****/
@@ -19841,6 +20093,87 @@ Returns
 opencascade::handle<Graphic3d_StructureManager>
 ") StructureManager;
 		const opencascade::handle<Graphic3d_StructureManager> & StructureManager();
+
+		/****************** SubviewCorner ******************/
+		/**** md5 signature: 7d5ec294d7810d260a8b0d02149f04fc ****/
+		%feature("compactdefaultargs") SubviewCorner;
+		%feature("autodoc", "Return subview position within parent view; aspect_totp_left_upper by default.
+
+Returns
+-------
+Aspect_TypeOfTriedronPosition
+") SubviewCorner;
+		Aspect_TypeOfTriedronPosition SubviewCorner();
+
+		/****************** SubviewMargins ******************/
+		/**** md5 signature: 73441877b09bb8003f7fe45cacf86b75 ****/
+		%feature("compactdefaultargs") SubviewMargins;
+		%feature("autodoc", "Return subview margins in pixels; (0,0) by default.
+
+Returns
+-------
+Graphic3d_Vec2i
+") SubviewMargins;
+		const Graphic3d_Vec2i & SubviewMargins();
+
+		/****************** SubviewOffset ******************/
+		/**** md5 signature: fc348ef0813f987030ebe7057973514b ****/
+		%feature("compactdefaultargs") SubviewOffset;
+		%feature("autodoc", "Return corner offset within parent view; (0.0,0.0) by default. values >= 2 define offset in pixels; values <= 1.0 define offset as fraction of parent view dimensions.
+
+Returns
+-------
+Graphic3d_Vec2d
+") SubviewOffset;
+		const Graphic3d_Vec2d & SubviewOffset();
+
+		/****************** SubviewResized ******************/
+		/**** md5 signature: e7bf10595e82dd8df76b634c88d3e63e ****/
+		%feature("compactdefaultargs") SubviewResized;
+		%feature("autodoc", "Update subview position and dimensions.
+
+Parameters
+----------
+theWindow: Aspect_NeutralWindow
+
+Returns
+-------
+None
+") SubviewResized;
+		void SubviewResized(const opencascade::handle<Aspect_NeutralWindow> & theWindow);
+
+		/****************** SubviewSize ******************/
+		/**** md5 signature: a519d860eba4b733614423ade1860ec8 ****/
+		%feature("compactdefaultargs") SubviewSize;
+		%feature("autodoc", "Return subview dimensions; (1.0, 1.0) by default. values >= 2 define size in pixels; values <= 1.0 define size as fraction of parent view.
+
+Returns
+-------
+Graphic3d_Vec2d
+") SubviewSize;
+		const Graphic3d_Vec2d & SubviewSize();
+
+		/****************** SubviewTopLeft ******************/
+		/**** md5 signature: 3d89968b4b5447313ffc8e599f37ec11 ****/
+		%feature("compactdefaultargs") SubviewTopLeft;
+		%feature("autodoc", "Return subview top-left position relative to parent view in pixels.
+
+Returns
+-------
+Graphic3d_Vec2i
+") SubviewTopLeft;
+		const Graphic3d_Vec2i & SubviewTopLeft();
+
+		/****************** Subviews ******************/
+		/**** md5 signature: efad4d5ad0d94cfbce25117f22a13570 ****/
+		%feature("compactdefaultargs") Subviews;
+		%feature("autodoc", "Return subview list.
+
+Returns
+-------
+NCollection_Sequence<opencascade::handle<Graphic3d_CView>>
+") Subviews;
+		const NCollection_Sequence<opencascade::handle<Graphic3d_CView>> & Subviews();
 
 		/****************** SynchronizeXRBaseToPosedCamera ******************/
 		/**** md5 signature: 871de4dab7795f0e2c4a6d9779b77617 ****/
@@ -20901,19 +21234,52 @@ TCollection_AsciiString
 /****************************
 * class Graphic3d_Texture2D *
 ****************************/
-%nodefaultctor Graphic3d_Texture2D;
 class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 	public:
-		/****************** HasMipMaps ******************/
-		/**** md5 signature: b3b5fb053a7b49996b2be90fa9333800 ****/
-		%feature("compactdefaultargs") HasMipMaps;
-		%feature("autodoc", "Return true if mip-maps should be used.
+		/****************** Graphic3d_Texture2D ******************/
+		/**** md5 signature: 42799dbe2ef101e14db536cd8b8ed8e0 ****/
+		%feature("compactdefaultargs") Graphic3d_Texture2D;
+		%feature("autodoc", "Creates a texture from a file. mipmaps levels will be automatically generated if needed.
+
+Parameters
+----------
+theFileName: TCollection_AsciiString
 
 Returns
 -------
-bool
-") HasMipMaps;
-		Standard_Boolean HasMipMaps();
+None
+") Graphic3d_Texture2D;
+		 Graphic3d_Texture2D(const TCollection_AsciiString & theFileName);
+
+		/****************** Graphic3d_Texture2D ******************/
+		/**** md5 signature: 1148eac074475874ab0ee8fd1f12cc0c ****/
+		%feature("compactdefaultargs") Graphic3d_Texture2D;
+		%feature("autodoc", "Creates a texture from a predefined texture name set. mipmaps levels will be automatically generated if needed.
+
+Parameters
+----------
+theNOT: Graphic3d_NameOfTexture2D
+
+Returns
+-------
+None
+") Graphic3d_Texture2D;
+		 Graphic3d_Texture2D(const Graphic3d_NameOfTexture2D theNOT);
+
+		/****************** Graphic3d_Texture2D ******************/
+		/**** md5 signature: f31bc2827b957c944fcc334f2c5c43a4 ****/
+		%feature("compactdefaultargs") Graphic3d_Texture2D;
+		%feature("autodoc", "Creates a texture from the pixmap. mipmaps levels will be automatically generated if needed.
+
+Parameters
+----------
+thePixMap: Image_PixMap
+
+Returns
+-------
+None
+") Graphic3d_Texture2D;
+		 Graphic3d_Texture2D(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** Name ******************/
 		/**** md5 signature: dda2451d076770a05a4cf60ebc1b2135 ****/
@@ -20952,21 +21318,6 @@ None
 ") SetImage;
 		void SetImage(const opencascade::handle<Image_PixMap> & thePixMap);
 
-		/****************** SetMipMaps ******************/
-		/**** md5 signature: 96cb7542bf6e82b31a77c3e2424bd6d1 ****/
-		%feature("compactdefaultargs") SetMipMaps;
-		%feature("autodoc", "Set if mip-maps should be used (generated if needed). note that this method should be called before loading / using the texture.
-
-Parameters
-----------
-theToUse: bool
-
-Returns
--------
-None
-") SetMipMaps;
-		void SetMipMaps(const Standard_Boolean theToUse);
-
 		/****************** TextureName ******************/
 		/**** md5 signature: 47ab46166fc3b73b226fc480a80ffd43 ****/
 		%feature("compactdefaultargs") TextureName;
@@ -20988,6 +21339,97 @@ TCollection_AsciiString
 %make_alias(Graphic3d_Texture2D)
 
 %extend Graphic3d_Texture2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************
+* class Graphic3d_Texture3D *
+****************************/
+class Graphic3d_Texture3D : public Graphic3d_TextureMap {
+	public:
+		/****************** Graphic3d_Texture3D ******************/
+		/**** md5 signature: 6fcc5f22036cf564f191b2df12d5acf4 ****/
+		%feature("compactdefaultargs") Graphic3d_Texture3D;
+		%feature("autodoc", "Creates a texture from a file.
+
+Parameters
+----------
+theFileName: TCollection_AsciiString
+
+Returns
+-------
+None
+") Graphic3d_Texture3D;
+		 Graphic3d_Texture3D(const TCollection_AsciiString & theFileName);
+
+		/****************** Graphic3d_Texture3D ******************/
+		/**** md5 signature: 12b8a332dec18b02096d54770852207e ****/
+		%feature("compactdefaultargs") Graphic3d_Texture3D;
+		%feature("autodoc", "Creates a texture from the pixmap.
+
+Parameters
+----------
+thePixMap: Image_PixMap
+
+Returns
+-------
+None
+") Graphic3d_Texture3D;
+		 Graphic3d_Texture3D(const opencascade::handle<Image_PixMap> & thePixMap);
+
+		/****************** Graphic3d_Texture3D ******************/
+		/**** md5 signature: b32ff230302c7b38b4a2a75c7f11b74e ****/
+		%feature("compactdefaultargs") Graphic3d_Texture3D;
+		%feature("autodoc", "Creates a texture from a file.
+
+Parameters
+----------
+theFiles: NCollection_Array1<TCollection_AsciiString>
+
+Returns
+-------
+None
+") Graphic3d_Texture3D;
+		 Graphic3d_Texture3D(const NCollection_Array1<TCollection_AsciiString> & theFiles);
+
+		/****************** GetImage ******************/
+		/**** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ****/
+		%feature("compactdefaultargs") GetImage;
+		%feature("autodoc", "Load and return image.
+
+Parameters
+----------
+theSupported: Image_SupportedFormats
+
+Returns
+-------
+opencascade::handle<Image_PixMap>
+") GetImage;
+		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
+
+		/****************** SetImage ******************/
+		/**** md5 signature: 1588c589999c87638afeed7026805f57 ****/
+		%feature("compactdefaultargs") SetImage;
+		%feature("autodoc", "Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
+
+Parameters
+----------
+thePixMap: Image_PixMap
+
+Returns
+-------
+None
+") SetImage;
+		void SetImage(const opencascade::handle<Image_PixMap> & thePixMap);
+
+};
+
+
+%make_alias(Graphic3d_Texture3D)
+
+%extend Graphic3d_Texture3D {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21340,67 +21782,6 @@ None
 %make_alias(Graphic3d_Texture1Dsegment)
 
 %extend Graphic3d_Texture1Dsegment {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************
-* class Graphic3d_Texture2Dmanual *
-**********************************/
-class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
-	public:
-		/****************** Graphic3d_Texture2Dmanual ******************/
-		/**** md5 signature: 89ba79d6f570d4df5db832a6a5f42564 ****/
-		%feature("compactdefaultargs") Graphic3d_Texture2Dmanual;
-		%feature("autodoc", "Creates a texture from a file. mipmaps levels will be automatically generated if needed.
-
-Parameters
-----------
-theFileName: TCollection_AsciiString
-
-Returns
--------
-None
-") Graphic3d_Texture2Dmanual;
-		 Graphic3d_Texture2Dmanual(const TCollection_AsciiString & theFileName);
-
-		/****************** Graphic3d_Texture2Dmanual ******************/
-		/**** md5 signature: e9b591bcc1d61ffeabbbbfca0b95ff39 ****/
-		%feature("compactdefaultargs") Graphic3d_Texture2Dmanual;
-		%feature("autodoc", "Creates a texture from a predefined texture name set. mipmaps levels will be automatically generated if needed.
-
-Parameters
-----------
-theNOT: Graphic3d_NameOfTexture2D
-
-Returns
--------
-None
-") Graphic3d_Texture2Dmanual;
-		 Graphic3d_Texture2Dmanual(const Graphic3d_NameOfTexture2D theNOT);
-
-		/****************** Graphic3d_Texture2Dmanual ******************/
-		/**** md5 signature: 8404d001b321e8f289082997e993fa03 ****/
-		%feature("compactdefaultargs") Graphic3d_Texture2Dmanual;
-		%feature("autodoc", "Creates a texture from the pixmap. mipmaps levels will be automatically generated if needed.
-
-Parameters
-----------
-thePixMap: Image_PixMap
-
-Returns
--------
-None
-") Graphic3d_Texture2Dmanual;
-		 Graphic3d_Texture2Dmanual(const opencascade::handle<Image_PixMap> & thePixMap);
-
-};
-
-
-%make_alias(Graphic3d_Texture2Dmanual)
-
-%extend Graphic3d_Texture2Dmanual {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21760,4 +22141,5 @@ class Graphic3d_BvhCStructureSetTrsfPers:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+Graphic3d_Texture2Dmanual=Graphic3d_Texture2D
 }

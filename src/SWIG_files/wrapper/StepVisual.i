@@ -226,6 +226,7 @@ StepVisual_ssmNormalShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmNorm
 %wrap_handle(StepVisual_Template)
 %wrap_handle(StepVisual_TemplateInstance)
 %wrap_handle(StepVisual_TessellatedItem)
+%wrap_handle(StepVisual_TessellatedShapeRepresentation)
 %wrap_handle(StepVisual_TextLiteral)
 %wrap_handle(StepVisual_TextStyle)
 %wrap_handle(StepVisual_TextStyleForDefinedFont)
@@ -250,10 +251,18 @@ StepVisual_ssmNormalShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmNorm
 %wrap_handle(StepVisual_PresentationArea)
 %wrap_handle(StepVisual_PresentationStyleByContext)
 %wrap_handle(StepVisual_PresentationView)
+%wrap_handle(StepVisual_RepositionedTessellatedItem)
 %wrap_handle(StepVisual_SurfaceStyleRenderingWithProperties)
 %wrap_handle(StepVisual_TessellatedAnnotationOccurrence)
 %wrap_handle(StepVisual_TessellatedCurveSet)
 %wrap_handle(StepVisual_TessellatedGeometricSet)
+%wrap_handle(StepVisual_TessellatedPointSet)
+%wrap_handle(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters)
+%wrap_handle(StepVisual_TessellatedShell)
+%wrap_handle(StepVisual_TessellatedSolid)
+%wrap_handle(StepVisual_TessellatedStructuredItem)
+%wrap_handle(StepVisual_TessellatedSurfaceSet)
+%wrap_handle(StepVisual_TessellatedWire)
 %wrap_handle(StepVisual_TextStyleWithBoxCharacteristics)
 %wrap_handle(StepVisual_AnnotationCurveOccurrence)
 %wrap_handle(StepVisual_AnnotationFillAreaOccurrence)
@@ -261,15 +270,27 @@ StepVisual_ssmNormalShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmNorm
 %wrap_handle(StepVisual_AnnotationTextOccurrence)
 %wrap_handle(StepVisual_CameraModelD3MultiClipping)
 %wrap_handle(StepVisual_ColourRgb)
+%wrap_handle(StepVisual_ComplexTriangulatedSurfaceSet)
 %wrap_handle(StepVisual_ContextDependentOverRidingStyledItem)
 %wrap_handle(StepVisual_DraughtingAnnotationOccurrence)
 %wrap_handle(StepVisual_DraughtingPreDefinedColour)
 %wrap_handle(StepVisual_DraughtingPreDefinedCurveFont)
 %wrap_handle(StepVisual_MechanicalDesignGeometricPresentationArea)
+%wrap_handle(StepVisual_RepositionedTessellatedGeometricSet)
+%wrap_handle(StepVisual_TessellatedEdge)
+%wrap_handle(StepVisual_TessellatedFace)
+%wrap_handle(StepVisual_TessellatedVertex)
 %wrap_handle(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem)
+%wrap_handle(StepVisual_ComplexTriangulatedFace)
+%wrap_handle(StepVisual_CubicBezierTessellatedEdge)
+%wrap_handle(StepVisual_CubicBezierTriangulatedFace)
+%wrap_handle(StepVisual_TessellatedConnectingEdge)
+%wrap_handle(StepVisual_TriangulatedFace)
 %wrap_handle(StepVisual_HArray1OfAnnotationPlaneElement)
 %wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
+%wrap_handle(StepVisual_HArray1OfTessellatedStructuredItem)
 %wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
+%wrap_handle(StepVisual_HArray1OfTessellatedEdgeOrVertex)
 %wrap_handle(StepVisual_HArray1OfStyleContextSelect)
 %wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
 %wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
@@ -811,9 +832,79 @@ StepVisual_ssmNormalShading = StepVisual_ShadingSurfaceMethod.StepVisual_ssmNorm
     __next__ = next
     }
 };
+%template(StepVisual_Array1OfTessellatedEdgeOrVertex) NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>;
+
+%extend NCollection_Array1<StepVisual_TessellatedEdgeOrVertex> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
 %template(StepVisual_Array1OfTessellatedItem) NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>>;
 
 %extend NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>> {
+    %pythoncode {
+    def __getitem__(self, index):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            return self.Value(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index + self.Lower() > self.Upper():
+            raise IndexError("index out of range")
+        else:
+            self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        self.low = self.Lower()
+        self.up = self.Upper()
+        self.current = self.Lower() - 1
+        return self
+
+    def next(self):
+        if self.current >= self.Upper():
+            raise StopIteration
+        else:
+            self.current += 1
+        return self.Value(self.current)
+
+    __next__ = next
+    }
+};
+%template(StepVisual_Array1OfTessellatedStructuredItem) NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>;
+
+%extend NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -900,7 +991,9 @@ typedef NCollection_Array1<StepVisual_PresentationStyleSelect> StepVisual_Array1
 typedef NCollection_Array1<StepVisual_RenderingPropertiesSelect> StepVisual_Array1OfRenderingPropertiesSelect;
 typedef NCollection_Array1<StepVisual_StyleContextSelect> StepVisual_Array1OfStyleContextSelect;
 typedef NCollection_Array1<StepVisual_SurfaceStyleElementSelect> StepVisual_Array1OfSurfaceStyleElementSelect;
+typedef NCollection_Array1<StepVisual_TessellatedEdgeOrVertex> StepVisual_Array1OfTessellatedEdgeOrVertex;
 typedef NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>> StepVisual_Array1OfTessellatedItem;
+typedef NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>> StepVisual_Array1OfTessellatedStructuredItem;
 typedef NCollection_Array1<StepVisual_TextOrCharacter> StepVisual_Array1OfTextOrCharacter;
 typedef NCollection_Vector<opencascade::handle<TColStd_HSequenceOfInteger>> StepVisual_VectorOfHSequenceOfInteger;
 /* end typedefs declaration */
@@ -2483,6 +2576,68 @@ None
 	}
 };
 
+/*******************************
+* class StepVisual_EdgeOrCurve *
+*******************************/
+class StepVisual_EdgeOrCurve : public StepData_SelectType {
+	public:
+		/****************** StepVisual_EdgeOrCurve ******************/
+		/**** md5 signature: 7e13a0cec827f21ff30a08609cc6a72e ****/
+		%feature("compactdefaultargs") StepVisual_EdgeOrCurve;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") StepVisual_EdgeOrCurve;
+		 StepVisual_EdgeOrCurve();
+
+		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "Recognizes a kind of edgeorcurve select type -- 1 -> curve -- 2 -> edge.
+
+Parameters
+----------
+ent: Standard_Transient
+
+Returns
+-------
+int
+") CaseNum;
+		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** Curve ******************/
+		/**** md5 signature: 29742eb86c60e95cfe724318fdd485f7 ****/
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "Returns value as curve (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepGeom_Curve>
+") Curve;
+		opencascade::handle<StepGeom_Curve> Curve();
+
+		/****************** Edge ******************/
+		/**** md5 signature: 6eccb4cb63dbfc116c3a6a3f77934b1d ****/
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "Returns value as edge (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepShape_Edge>
+") Edge;
+		opencascade::handle<StepShape_Edge> Edge();
+
+};
+
+
+%extend StepVisual_EdgeOrCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**********************************************
 * class StepVisual_ExternallyDefinedCurveFont *
 **********************************************/
@@ -2532,6 +2687,68 @@ None
 %make_alias(StepVisual_ExternallyDefinedTextFont)
 
 %extend StepVisual_ExternallyDefinedTextFont {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************
+* class StepVisual_FaceOrSurface *
+*********************************/
+class StepVisual_FaceOrSurface : public StepData_SelectType {
+	public:
+		/****************** StepVisual_FaceOrSurface ******************/
+		/**** md5 signature: 63718d0b8a42fdc6a2e024f4a3ffe41a ****/
+		%feature("compactdefaultargs") StepVisual_FaceOrSurface;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") StepVisual_FaceOrSurface;
+		 StepVisual_FaceOrSurface();
+
+		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "Recognizes a kind of faceorsurface select type -- 1 -> face -- 2 -> surface.
+
+Parameters
+----------
+ent: Standard_Transient
+
+Returns
+-------
+int
+") CaseNum;
+		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** Face ******************/
+		/**** md5 signature: cb3fb10fb42f13714d2b79863e6a19e2 ****/
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "Returns value as face (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepShape_Face>
+") Face;
+		opencascade::handle<StepShape_Face> Face();
+
+		/****************** Surface ******************/
+		/**** md5 signature: c2398e6bbff81fe9609620c081466496 ****/
+		%feature("compactdefaultargs") Surface;
+		%feature("autodoc", "Returns value as surface (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepGeom_Surface>
+") Surface;
+		opencascade::handle<StepGeom_Surface> Surface();
+
+};
+
+
+%extend StepVisual_FaceOrSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3485,6 +3702,68 @@ StepVisual_NullStyle
 %make_alias(StepVisual_NullStyleMember)
 
 %extend StepVisual_NullStyleMember {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class StepVisual_PathOrCompositeCurve *
+****************************************/
+class StepVisual_PathOrCompositeCurve : public StepData_SelectType {
+	public:
+		/****************** StepVisual_PathOrCompositeCurve ******************/
+		/**** md5 signature: eb73d76ee64d09e5435dcca493c8913e ****/
+		%feature("compactdefaultargs") StepVisual_PathOrCompositeCurve;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") StepVisual_PathOrCompositeCurve;
+		 StepVisual_PathOrCompositeCurve();
+
+		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "Recognizes a kind of pathorcompositecurve select type -- 1 -> compositecurve -- 2 -> path.
+
+Parameters
+----------
+ent: Standard_Transient
+
+Returns
+-------
+int
+") CaseNum;
+		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** CompositeCurve ******************/
+		/**** md5 signature: 42a10fec5b3fc66e2fe2af9d3d5512d3 ****/
+		%feature("compactdefaultargs") CompositeCurve;
+		%feature("autodoc", "Returns value as compositecurve (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepGeom_CompositeCurve>
+") CompositeCurve;
+		opencascade::handle<StepGeom_CompositeCurve> CompositeCurve();
+
+		/****************** Path ******************/
+		/**** md5 signature: 70a013beb029bdf0f121d725b800b390 ****/
+		%feature("compactdefaultargs") Path;
+		%feature("autodoc", "Returns value as path (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepShape_Path>
+") Path;
+		opencascade::handle<StepShape_Path> Path();
+
+};
+
+
+%extend StepVisual_PathOrCompositeCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6032,6 +6311,68 @@ None
 	}
 };
 
+/*******************************************
+* class StepVisual_TessellatedEdgeOrVertex *
+*******************************************/
+class StepVisual_TessellatedEdgeOrVertex : public StepData_SelectType {
+	public:
+		/****************** StepVisual_TessellatedEdgeOrVertex ******************/
+		/**** md5 signature: 364777b104683ec182c5e36348ac6671 ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedEdgeOrVertex;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedEdgeOrVertex;
+		 StepVisual_TessellatedEdgeOrVertex();
+
+		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		%feature("compactdefaultargs") CaseNum;
+		%feature("autodoc", "Recognizes a kind of tessellatededgeorvertex select type -- 1 -> tessellatededge -- 2 -> tessellatedvertex.
+
+Parameters
+----------
+ent: Standard_Transient
+
+Returns
+-------
+int
+") CaseNum;
+		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+
+		/****************** TessellatedEdge ******************/
+		/**** md5 signature: 0fd3afdf3d4017d4a02e01bd9318e50c ****/
+		%feature("compactdefaultargs") TessellatedEdge;
+		%feature("autodoc", "Returns value as tessellatededge (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedEdge>
+") TessellatedEdge;
+		opencascade::handle<StepVisual_TessellatedEdge> TessellatedEdge();
+
+		/****************** TessellatedVertex ******************/
+		/**** md5 signature: dd46ff2cd474cda5e6eb3b9a96bf936f ****/
+		%feature("compactdefaultargs") TessellatedVertex;
+		%feature("autodoc", "Returns value as tessellatedvertex (or null if another type).
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedVertex>
+") TessellatedVertex;
+		opencascade::handle<StepVisual_TessellatedVertex> TessellatedVertex();
+
+};
+
+
+%extend StepVisual_TessellatedEdgeOrVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************************
 * class StepVisual_TessellatedItem *
 ***********************************/
@@ -6054,6 +6395,33 @@ None
 %make_alias(StepVisual_TessellatedItem)
 
 %extend StepVisual_TessellatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************************************
+* class StepVisual_TessellatedShapeRepresentation *
+**************************************************/
+class StepVisual_TessellatedShapeRepresentation : public StepShape_ShapeRepresentation {
+	public:
+		/****************** StepVisual_TessellatedShapeRepresentation ******************/
+		/**** md5 signature: 6554c259ff46f1389191d79bba4a0f4e ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedShapeRepresentation;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedShapeRepresentation;
+		 StepVisual_TessellatedShapeRepresentation();
+
+};
+
+
+%make_alias(StepVisual_TessellatedShapeRepresentation)
+
+%extend StepVisual_TessellatedShapeRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7784,6 +8152,75 @@ None
 	}
 };
 
+/***********************************************
+* class StepVisual_RepositionedTessellatedItem *
+***********************************************/
+class StepVisual_RepositionedTessellatedItem : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_RepositionedTessellatedItem ******************/
+		/**** md5 signature: 676ee0afc6ba0ef5b172214d520839b2 ****/
+		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedItem;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_RepositionedTessellatedItem;
+		 StepVisual_RepositionedTessellatedItem();
+
+		/****************** Init ******************/
+		/**** md5 signature: fec1dcd27f9472f38ca79eda9f6136f6 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theName: TCollection_HAsciiString
+theLocation: StepGeom_Axis2Placement3d
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
+
+		/****************** Location ******************/
+		/**** md5 signature: 39fc6625e849c305cb623a87ef9754a6 ****/
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", "Returns location.
+
+Returns
+-------
+opencascade::handle<StepGeom_Axis2Placement3d>
+") Location;
+		opencascade::handle<StepGeom_Axis2Placement3d> Location();
+
+		/****************** SetLocation ******************/
+		/**** md5 signature: 447f5a9e9fa630b823c1544b8c75af39 ****/
+		%feature("compactdefaultargs") SetLocation;
+		%feature("autodoc", "Sets location.
+
+Parameters
+----------
+theLocation: StepGeom_Axis2Placement3d
+
+Returns
+-------
+None
+") SetLocation;
+		void SetLocation(const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
+
+};
+
+
+%make_alias(StepVisual_RepositionedTessellatedItem)
+
+%extend StepVisual_RepositionedTessellatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*******************************************************
 * class StepVisual_SurfaceStyleRenderingWithProperties *
 *******************************************************/
@@ -7996,6 +8433,788 @@ NCollection_Handle<StepVisual_Array1OfTessellatedItem >
 %make_alias(StepVisual_TessellatedGeometricSet)
 
 %extend StepVisual_TessellatedGeometricSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class StepVisual_TessellatedPointSet *
+***************************************/
+class StepVisual_TessellatedPointSet : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_TessellatedPointSet ******************/
+		/**** md5 signature: 29668321e19925d6464b922eeb814f6b ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedPointSet;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedPointSet;
+		 StepVisual_TessellatedPointSet();
+
+		/****************** Coordinates ******************/
+		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
+		%feature("compactdefaultargs") Coordinates;
+		%feature("autodoc", "Returns field coordinates.
+
+Returns
+-------
+opencascade::handle<StepVisual_CoordinatesList>
+") Coordinates;
+		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
+
+		/****************** Init ******************/
+		/**** md5 signature: ec4773c2104213411962b46a2e3b3447 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theCoordinates: StepVisual_CoordinatesList
+thePointList: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
+
+		/****************** NbPointList ******************/
+		/**** md5 signature: b90b8a3ea8a0827b868e6afd5f3bf74b ****/
+		%feature("compactdefaultargs") NbPointList;
+		%feature("autodoc", "Returns number of pointlist.
+
+Returns
+-------
+int
+") NbPointList;
+		Standard_Integer NbPointList();
+
+		/****************** PointList ******************/
+		/**** md5 signature: 2581e8b82450570684893bd02acfd0bd ****/
+		%feature("compactdefaultargs") PointList;
+		%feature("autodoc", "Returns field pointlist.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") PointList;
+		opencascade::handle<TColStd_HArray1OfInteger> PointList();
+
+		/****************** PointListValue ******************/
+		/**** md5 signature: 9f5033dc63673f11f4cb1e36bb1f4e93 ****/
+		%feature("compactdefaultargs") PointListValue;
+		%feature("autodoc", "Returns value of pointlist by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") PointListValue;
+		Standard_Integer PointListValue(const Standard_Integer theNum);
+
+		/****************** SetCoordinates ******************/
+		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "Sets field coordinates.
+
+Parameters
+----------
+theCoordinates: StepVisual_CoordinatesList
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
+
+		/****************** SetPointList ******************/
+		/**** md5 signature: 790f3d2e1872305718f8dd98a09ffda7 ****/
+		%feature("compactdefaultargs") SetPointList;
+		%feature("autodoc", "Sets field pointlist.
+
+Parameters
+----------
+thePointList: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetPointList;
+		void SetPointList(const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
+
+};
+
+
+%make_alias(StepVisual_TessellatedPointSet)
+
+%extend StepVisual_TessellatedPointSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************************************************
+* class StepVisual_TessellatedShapeRepresentationWithAccuracyParameters *
+************************************************************************/
+class StepVisual_TessellatedShapeRepresentationWithAccuracyParameters : public StepVisual_TessellatedShapeRepresentation {
+	public:
+		/****************** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters ******************/
+		/**** md5 signature: 8d31d2795e9efe46808a5ff4f979903e ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedShapeRepresentationWithAccuracyParameters;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedShapeRepresentationWithAccuracyParameters;
+		 StepVisual_TessellatedShapeRepresentationWithAccuracyParameters();
+
+		/****************** Init ******************/
+		/**** md5 signature: f85408479b34c1cade618da7b4de70e9 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentation_Name: TCollection_HAsciiString
+theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+theRepresentation_ContextOfItems: StepRepr_RepresentationContext
+theTessellationAccuracyParameters: TColStd_HArray1OfReal
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
+
+		/****************** NbTessellationAccuracyParameters ******************/
+		/**** md5 signature: 13b9a7e33d8f6c2c3b0aae5277001286 ****/
+		%feature("compactdefaultargs") NbTessellationAccuracyParameters;
+		%feature("autodoc", "Returns number of tessellationaccuracyparameters.
+
+Returns
+-------
+int
+") NbTessellationAccuracyParameters;
+		Standard_Integer NbTessellationAccuracyParameters();
+
+		/****************** SetTessellationAccuracyParameters ******************/
+		/**** md5 signature: 546fb6b6bbb12e01f420401102f6cfb1 ****/
+		%feature("compactdefaultargs") SetTessellationAccuracyParameters;
+		%feature("autodoc", "Sets field tessellationaccuracyparameters.
+
+Parameters
+----------
+theTessellationAccuracyParameters: TColStd_HArray1OfReal
+
+Returns
+-------
+None
+") SetTessellationAccuracyParameters;
+		void SetTessellationAccuracyParameters(const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
+
+		/****************** TessellationAccuracyParameters ******************/
+		/**** md5 signature: 15082317812f6de6cca655069baeb736 ****/
+		%feature("compactdefaultargs") TessellationAccuracyParameters;
+		%feature("autodoc", "Returns field tessellationaccuracyparameters.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfReal>
+") TessellationAccuracyParameters;
+		opencascade::handle<TColStd_HArray1OfReal> TessellationAccuracyParameters();
+
+		/****************** TessellationAccuracyParametersValue ******************/
+		/**** md5 signature: a2b0a93749d491897c6eb85998771d00 ****/
+		%feature("compactdefaultargs") TessellationAccuracyParametersValue;
+		%feature("autodoc", "Returns value of tessellationaccuracyparameters by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+float
+") TessellationAccuracyParametersValue;
+		const Standard_Real & TessellationAccuracyParametersValue(const Standard_Integer theNum);
+
+};
+
+
+%make_alias(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters)
+
+%extend StepVisual_TessellatedShapeRepresentationWithAccuracyParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class StepVisual_TessellatedShell *
+************************************/
+class StepVisual_TessellatedShell : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_TessellatedShell ******************/
+		/**** md5 signature: e90fe8078037e06c5ed69faea6f97b05 ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedShell;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedShell;
+		 StepVisual_TessellatedShell();
+
+		/****************** HasTopologicalLink ******************/
+		/**** md5 signature: b2a8f6180f026b329187f8297fbc4881 ****/
+		%feature("compactdefaultargs") HasTopologicalLink;
+		%feature("autodoc", "Returns true if optional field topologicallink is defined.
+
+Returns
+-------
+bool
+") HasTopologicalLink;
+		Standard_Boolean HasTopologicalLink();
+
+		/****************** Init ******************/
+		/**** md5 signature: 94210c7f690ac44251daba880caa734d ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theItems: StepVisual_HArray1OfTessellatedStructuredItem
+theHasTopologicalLink: bool
+theTopologicalLink: StepShape_ConnectedFaceSet
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems, const Standard_Boolean theHasTopologicalLink, const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
+
+		/****************** Items ******************/
+		/**** md5 signature: 203b14c6f195b69b3e0aacbe9f49e3fa ****/
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "Returns field items.
+
+Returns
+-------
+opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
+") Items;
+		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
+
+		/****************** ItemsValue ******************/
+		/**** md5 signature: 282108d369d7aea12634aa7e081aaa30 ****/
+		%feature("compactdefaultargs") ItemsValue;
+		%feature("autodoc", "Returns value of items by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedStructuredItem>
+") ItemsValue;
+		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
+
+		/****************** NbItems ******************/
+		/**** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ****/
+		%feature("compactdefaultargs") NbItems;
+		%feature("autodoc", "Returns number of items.
+
+Returns
+-------
+int
+") NbItems;
+		Standard_Integer NbItems();
+
+		/****************** SetItems ******************/
+		/**** md5 signature: b21476192d46c8f6e58044ebf10ef43c ****/
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "Sets field items.
+
+Parameters
+----------
+theItems: StepVisual_HArray1OfTessellatedStructuredItem
+
+Returns
+-------
+None
+") SetItems;
+		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
+
+		/****************** SetTopologicalLink ******************/
+		/**** md5 signature: fb3583e7f62ff4dd76a0e4a084a80aa3 ****/
+		%feature("compactdefaultargs") SetTopologicalLink;
+		%feature("autodoc", "Sets field topologicallink.
+
+Parameters
+----------
+theTopologicalLink: StepShape_ConnectedFaceSet
+
+Returns
+-------
+None
+") SetTopologicalLink;
+		void SetTopologicalLink(const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
+
+		/****************** TopologicalLink ******************/
+		/**** md5 signature: 801b30fc0a5c8414172d7068a656fda1 ****/
+		%feature("compactdefaultargs") TopologicalLink;
+		%feature("autodoc", "Returns field topologicallink.
+
+Returns
+-------
+opencascade::handle<StepShape_ConnectedFaceSet>
+") TopologicalLink;
+		opencascade::handle<StepShape_ConnectedFaceSet> TopologicalLink();
+
+};
+
+
+%make_alias(StepVisual_TessellatedShell)
+
+%extend StepVisual_TessellatedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class StepVisual_TessellatedSolid *
+************************************/
+class StepVisual_TessellatedSolid : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_TessellatedSolid ******************/
+		/**** md5 signature: 5de11e474867db0f613d06a9bc0d6d32 ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedSolid;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedSolid;
+		 StepVisual_TessellatedSolid();
+
+		/****************** GeometricLink ******************/
+		/**** md5 signature: 60267230a72235c885cdd2f465aecc79 ****/
+		%feature("compactdefaultargs") GeometricLink;
+		%feature("autodoc", "Returns field geometriclink.
+
+Returns
+-------
+opencascade::handle<StepShape_ManifoldSolidBrep>
+") GeometricLink;
+		opencascade::handle<StepShape_ManifoldSolidBrep> GeometricLink();
+
+		/****************** HasGeometricLink ******************/
+		/**** md5 signature: 432ca769d0ec23ad86df023b91c35498 ****/
+		%feature("compactdefaultargs") HasGeometricLink;
+		%feature("autodoc", "Returns true if optional field geometriclink is defined.
+
+Returns
+-------
+bool
+") HasGeometricLink;
+		Standard_Boolean HasGeometricLink();
+
+		/****************** Init ******************/
+		/**** md5 signature: 85dcd9e89962e4c2fe1ef90c4cccbb73 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theItems: StepVisual_HArray1OfTessellatedStructuredItem
+theHasGeometricLink: bool
+theGeometricLink: StepShape_ManifoldSolidBrep
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems, const Standard_Boolean theHasGeometricLink, const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
+
+		/****************** Items ******************/
+		/**** md5 signature: 203b14c6f195b69b3e0aacbe9f49e3fa ****/
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "Returns field items.
+
+Returns
+-------
+opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
+") Items;
+		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
+
+		/****************** ItemsValue ******************/
+		/**** md5 signature: 282108d369d7aea12634aa7e081aaa30 ****/
+		%feature("compactdefaultargs") ItemsValue;
+		%feature("autodoc", "Returns value of items by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedStructuredItem>
+") ItemsValue;
+		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
+
+		/****************** NbItems ******************/
+		/**** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ****/
+		%feature("compactdefaultargs") NbItems;
+		%feature("autodoc", "Returns number of items.
+
+Returns
+-------
+int
+") NbItems;
+		Standard_Integer NbItems();
+
+		/****************** SetGeometricLink ******************/
+		/**** md5 signature: a18372a243c7cd29aec2b1d7e7c35312 ****/
+		%feature("compactdefaultargs") SetGeometricLink;
+		%feature("autodoc", "Sets field geometriclink.
+
+Parameters
+----------
+theGeometricLink: StepShape_ManifoldSolidBrep
+
+Returns
+-------
+None
+") SetGeometricLink;
+		void SetGeometricLink(const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
+
+		/****************** SetItems ******************/
+		/**** md5 signature: b21476192d46c8f6e58044ebf10ef43c ****/
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "Sets field items.
+
+Parameters
+----------
+theItems: StepVisual_HArray1OfTessellatedStructuredItem
+
+Returns
+-------
+None
+") SetItems;
+		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
+
+};
+
+
+%make_alias(StepVisual_TessellatedSolid)
+
+%extend StepVisual_TessellatedSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************
+* class StepVisual_TessellatedStructuredItem *
+*********************************************/
+class StepVisual_TessellatedStructuredItem : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_TessellatedStructuredItem ******************/
+		/**** md5 signature: bfc821ae9d0aa6e7e2b07422c03f372a ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedStructuredItem;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedStructuredItem;
+		 StepVisual_TessellatedStructuredItem();
+
+};
+
+
+%make_alias(StepVisual_TessellatedStructuredItem)
+
+%extend StepVisual_TessellatedStructuredItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class StepVisual_TessellatedSurfaceSet *
+*****************************************/
+class StepVisual_TessellatedSurfaceSet : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_TessellatedSurfaceSet ******************/
+		/**** md5 signature: 208193128639d4a8d7ee20a09fe98e9e ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedSurfaceSet;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedSurfaceSet;
+		 StepVisual_TessellatedSurfaceSet();
+
+		/****************** Coordinates ******************/
+		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
+		%feature("compactdefaultargs") Coordinates;
+		%feature("autodoc", "Returns field coordinates.
+
+Returns
+-------
+opencascade::handle<StepVisual_CoordinatesList>
+") Coordinates;
+		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
+
+		/****************** Init ******************/
+		/**** md5 signature: 01962d23e27f7d3450592abfc9bcc70c ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theCoordinates: StepVisual_CoordinatesList
+thePnmax: int
+theNormals: TColStd_HArray2OfReal
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Integer thePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
+
+		/****************** NbNormals ******************/
+		/**** md5 signature: e8ae9c17a546ef8db4eb8b45e7edd0e8 ****/
+		%feature("compactdefaultargs") NbNormals;
+		%feature("autodoc", "Returns number of normals.
+
+Returns
+-------
+int
+") NbNormals;
+		Standard_Integer NbNormals();
+
+		/****************** Normals ******************/
+		/**** md5 signature: 369b381d12bed5d4109e95bc2ede0ab6 ****/
+		%feature("compactdefaultargs") Normals;
+		%feature("autodoc", "Returns field normals.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfReal>
+") Normals;
+		opencascade::handle<TColStd_HArray2OfReal> Normals();
+
+		/****************** Pnmax ******************/
+		/**** md5 signature: 0b280e192c56c44fffab9481c68ac038 ****/
+		%feature("compactdefaultargs") Pnmax;
+		%feature("autodoc", "Returns field pnmax.
+
+Returns
+-------
+int
+") Pnmax;
+		Standard_Integer Pnmax();
+
+		/****************** SetCoordinates ******************/
+		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "Sets field coordinates.
+
+Parameters
+----------
+theCoordinates: StepVisual_CoordinatesList
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
+
+		/****************** SetNormals ******************/
+		/**** md5 signature: 6dd69aae81e446ea2f47e92611adf4ec ****/
+		%feature("compactdefaultargs") SetNormals;
+		%feature("autodoc", "Sets field normals.
+
+Parameters
+----------
+theNormals: TColStd_HArray2OfReal
+
+Returns
+-------
+None
+") SetNormals;
+		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
+
+		/****************** SetPnmax ******************/
+		/**** md5 signature: 684034e32240f760527db1f7f7c9f728 ****/
+		%feature("compactdefaultargs") SetPnmax;
+		%feature("autodoc", "Sets field pnmax.
+
+Parameters
+----------
+thePnmax: int
+
+Returns
+-------
+None
+") SetPnmax;
+		void SetPnmax(const Standard_Integer thePnmax);
+
+};
+
+
+%make_alias(StepVisual_TessellatedSurfaceSet)
+
+%extend StepVisual_TessellatedSurfaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class StepVisual_TessellatedWire *
+***********************************/
+class StepVisual_TessellatedWire : public StepVisual_TessellatedItem {
+	public:
+		/****************** StepVisual_TessellatedWire ******************/
+		/**** md5 signature: 4e707fc69176a95bc70592bc29a6a978 ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedWire;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedWire;
+		 StepVisual_TessellatedWire();
+
+		/****************** GeometricModelLink ******************/
+		/**** md5 signature: e25a467067930f085f0ce317fa372caa ****/
+		%feature("compactdefaultargs") GeometricModelLink;
+		%feature("autodoc", "Returns field geometricmodellink.
+
+Returns
+-------
+StepVisual_PathOrCompositeCurve
+") GeometricModelLink;
+		StepVisual_PathOrCompositeCurve GeometricModelLink();
+
+		/****************** HasGeometricModelLink ******************/
+		/**** md5 signature: 7807a19596f6c3f1b22f6e665f78b0d0 ****/
+		%feature("compactdefaultargs") HasGeometricModelLink;
+		%feature("autodoc", "Returns true if optional field geometricmodellink is defined.
+
+Returns
+-------
+bool
+") HasGeometricModelLink;
+		Standard_Boolean HasGeometricModelLink();
+
+		/****************** Init ******************/
+		/**** md5 signature: 3e058d127115bf40cd9b0af41383277f ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theItems: StepVisual_HArray1OfTessellatedEdgeOrVertex
+theHasGeometricModelLink: bool
+theGeometricModelLink: StepVisual_PathOrCompositeCurve
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems, const Standard_Boolean theHasGeometricModelLink, const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
+
+		/****************** Items ******************/
+		/**** md5 signature: 7173f9b87705b3ad84710a5560ff269f ****/
+		%feature("compactdefaultargs") Items;
+		%feature("autodoc", "Returns field items.
+
+Returns
+-------
+opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex>
+") Items;
+		opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> Items();
+
+		/****************** ItemsValue ******************/
+		/**** md5 signature: 5d3a2bcb1e6aad294ea96aa96fa9b5b4 ****/
+		%feature("compactdefaultargs") ItemsValue;
+		%feature("autodoc", "Returns value of items by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+StepVisual_TessellatedEdgeOrVertex
+") ItemsValue;
+		const StepVisual_TessellatedEdgeOrVertex & ItemsValue(const Standard_Integer theNum);
+
+		/****************** NbItems ******************/
+		/**** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ****/
+		%feature("compactdefaultargs") NbItems;
+		%feature("autodoc", "Returns number of items.
+
+Returns
+-------
+int
+") NbItems;
+		Standard_Integer NbItems();
+
+		/****************** SetGeometricModelLink ******************/
+		/**** md5 signature: 3c1b193092fd68648e9fa59ae725fa94 ****/
+		%feature("compactdefaultargs") SetGeometricModelLink;
+		%feature("autodoc", "Sets field geometricmodellink.
+
+Parameters
+----------
+theGeometricModelLink: StepVisual_PathOrCompositeCurve
+
+Returns
+-------
+None
+") SetGeometricModelLink;
+		void SetGeometricModelLink(const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
+
+		/****************** SetItems ******************/
+		/**** md5 signature: 259d17bf79770a16966154928a674ffa ****/
+		%feature("compactdefaultargs") SetItems;
+		%feature("autodoc", "Sets field items.
+
+Parameters
+----------
+theItems: StepVisual_HArray1OfTessellatedEdgeOrVertex
+
+Returns
+-------
+None
+") SetItems;
+		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems);
+
+};
+
+
+%make_alias(StepVisual_TessellatedWire)
+
+%extend StepVisual_TessellatedWire {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8529,6 +9748,180 @@ None
 	}
 };
 
+/*************************************************
+* class StepVisual_ComplexTriangulatedSurfaceSet *
+*************************************************/
+class StepVisual_ComplexTriangulatedSurfaceSet : public StepVisual_TessellatedSurfaceSet {
+	public:
+		/****************** StepVisual_ComplexTriangulatedSurfaceSet ******************/
+		/**** md5 signature: f5a25facbd5e6f9b3584f609970d6c0e ****/
+		%feature("compactdefaultargs") StepVisual_ComplexTriangulatedSurfaceSet;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_ComplexTriangulatedSurfaceSet;
+		 StepVisual_ComplexTriangulatedSurfaceSet();
+
+		/****************** Init ******************/
+		/**** md5 signature: 3b113fbc7ec06fe4a160b5ba8e9cbaee ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theTessellatedSurfaceSet_Coordinates: StepVisual_CoordinatesList
+theTessellatedSurfaceSet_Pnmax: int
+theTessellatedSurfaceSet_Normals: TColStd_HArray2OfReal
+thePnindex: TColStd_HArray1OfInteger
+theTriangleStrips: TColStd_HArray2OfInteger
+theTriangleFans: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedSurfaceSet_Coordinates, const Standard_Integer theTessellatedSurfaceSet_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedSurfaceSet_Normals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+
+		/****************** NbPnindex ******************/
+		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
+		%feature("compactdefaultargs") NbPnindex;
+		%feature("autodoc", "Returns number of pnindex.
+
+Returns
+-------
+int
+") NbPnindex;
+		Standard_Integer NbPnindex();
+
+		/****************** NbTriangleFans ******************/
+		/**** md5 signature: e32a7cc03e1bf132b8ca51d998c1ef91 ****/
+		%feature("compactdefaultargs") NbTriangleFans;
+		%feature("autodoc", "Returns number of trianglefans.
+
+Returns
+-------
+int
+") NbTriangleFans;
+		Standard_Integer NbTriangleFans();
+
+		/****************** NbTriangleStrips ******************/
+		/**** md5 signature: 41f96c6e8734a500c69e77eb743995d5 ****/
+		%feature("compactdefaultargs") NbTriangleStrips;
+		%feature("autodoc", "Returns number of trianglestrips.
+
+Returns
+-------
+int
+") NbTriangleStrips;
+		Standard_Integer NbTriangleStrips();
+
+		/****************** Pnindex ******************/
+		/**** md5 signature: 4b1e18390247fb42f42f10361e8626ac ****/
+		%feature("compactdefaultargs") Pnindex;
+		%feature("autodoc", "Returns field pnindex.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") Pnindex;
+		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+
+		/****************** PnindexValue ******************/
+		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
+		%feature("compactdefaultargs") PnindexValue;
+		%feature("autodoc", "Returns value of pnindex by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") PnindexValue;
+		Standard_Integer PnindexValue(const Standard_Integer theNum);
+
+		/****************** SetPnindex ******************/
+		/**** md5 signature: 43575e7d7486f7f39672441e3410d824 ****/
+		%feature("compactdefaultargs") SetPnindex;
+		%feature("autodoc", "Sets field pnindex.
+
+Parameters
+----------
+thePnindex: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetPnindex;
+		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+
+		/****************** SetTriangleFans ******************/
+		/**** md5 signature: db9f04781f28ff74c0a910d332b01a50 ****/
+		%feature("compactdefaultargs") SetTriangleFans;
+		%feature("autodoc", "Sets field trianglefans.
+
+Parameters
+----------
+theTriangleFans: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") SetTriangleFans;
+		void SetTriangleFans(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+
+		/****************** SetTriangleStrips ******************/
+		/**** md5 signature: 305b524e4a12d6718cd4b65ad6a59730 ****/
+		%feature("compactdefaultargs") SetTriangleStrips;
+		%feature("autodoc", "Sets field trianglestrips.
+
+Parameters
+----------
+theTriangleStrips: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") SetTriangleStrips;
+		void SetTriangleStrips(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips);
+
+		/****************** TriangleFans ******************/
+		/**** md5 signature: 66cea853512deea6cf6d0195d2138e10 ****/
+		%feature("compactdefaultargs") TriangleFans;
+		%feature("autodoc", "Returns field trianglefans.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+") TriangleFans;
+		opencascade::handle<TColStd_HArray2OfInteger> TriangleFans();
+
+		/****************** TriangleStrips ******************/
+		/**** md5 signature: c2afe2543561429d8c5267016bec1fb9 ****/
+		%feature("compactdefaultargs") TriangleStrips;
+		%feature("autodoc", "Returns field trianglestrips.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+") TriangleStrips;
+		opencascade::handle<TColStd_HArray2OfInteger> TriangleStrips();
+
+};
+
+
+%make_alias(StepVisual_ComplexTriangulatedSurfaceSet)
+
+%extend StepVisual_ComplexTriangulatedSurfaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /********************************************************
 * class StepVisual_ContextDependentOverRidingStyledItem *
 ********************************************************/
@@ -8735,6 +10128,545 @@ None
 	}
 };
 
+/*******************************************************
+* class StepVisual_RepositionedTessellatedGeometricSet *
+*******************************************************/
+class StepVisual_RepositionedTessellatedGeometricSet : public StepVisual_TessellatedGeometricSet {
+	public:
+		/****************** StepVisual_RepositionedTessellatedGeometricSet ******************/
+		/**** md5 signature: 5e75598f572ae9847c8040be8e46f489 ****/
+		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedGeometricSet;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_RepositionedTessellatedGeometricSet;
+		 StepVisual_RepositionedTessellatedGeometricSet();
+
+		/****************** Init ******************/
+		/**** md5 signature: 2bf436aa69aeba3149fe483555dd0d5b ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theName: TCollection_HAsciiString
+theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem>
+theLocation: StepGeom_Axis2Placement3d
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<StepVisual_Array1OfTessellatedItem> & theItems, const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
+
+		/****************** Location ******************/
+		/**** md5 signature: 39fc6625e849c305cb623a87ef9754a6 ****/
+		%feature("compactdefaultargs") Location;
+		%feature("autodoc", "Returns location.
+
+Returns
+-------
+opencascade::handle<StepGeom_Axis2Placement3d>
+") Location;
+		opencascade::handle<StepGeom_Axis2Placement3d> Location();
+
+		/****************** SetLocation ******************/
+		/**** md5 signature: 447f5a9e9fa630b823c1544b8c75af39 ****/
+		%feature("compactdefaultargs") SetLocation;
+		%feature("autodoc", "Sets location.
+
+Parameters
+----------
+theLocation: StepGeom_Axis2Placement3d
+
+Returns
+-------
+None
+") SetLocation;
+		void SetLocation(const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
+
+};
+
+
+%make_alias(StepVisual_RepositionedTessellatedGeometricSet)
+
+%extend StepVisual_RepositionedTessellatedGeometricSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class StepVisual_TessellatedEdge *
+***********************************/
+class StepVisual_TessellatedEdge : public StepVisual_TessellatedStructuredItem {
+	public:
+		/****************** StepVisual_TessellatedEdge ******************/
+		/**** md5 signature: c013b92f5aa5aac524506ea5d3e53d39 ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedEdge;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedEdge;
+		 StepVisual_TessellatedEdge();
+
+		/****************** Coordinates ******************/
+		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
+		%feature("compactdefaultargs") Coordinates;
+		%feature("autodoc", "Returns field coordinates.
+
+Returns
+-------
+opencascade::handle<StepVisual_CoordinatesList>
+") Coordinates;
+		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
+
+		/****************** GeometricLink ******************/
+		/**** md5 signature: 925f3ac0b87083092684dd5f4ded6a57 ****/
+		%feature("compactdefaultargs") GeometricLink;
+		%feature("autodoc", "Returns field geometriclink.
+
+Returns
+-------
+StepVisual_EdgeOrCurve
+") GeometricLink;
+		StepVisual_EdgeOrCurve GeometricLink();
+
+		/****************** HasGeometricLink ******************/
+		/**** md5 signature: 432ca769d0ec23ad86df023b91c35498 ****/
+		%feature("compactdefaultargs") HasGeometricLink;
+		%feature("autodoc", "Returns true if optional field geometriclink is defined.
+
+Returns
+-------
+bool
+") HasGeometricLink;
+		Standard_Boolean HasGeometricLink();
+
+		/****************** Init ******************/
+		/**** md5 signature: 11a5c3cdbb8a817154f67381d04958f4 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theCoordinates: StepVisual_CoordinatesList
+theHasGeometricLink: bool
+theGeometricLink: StepVisual_EdgeOrCurve
+theLineStrip: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Boolean theHasGeometricLink, const StepVisual_EdgeOrCurve & theGeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
+
+		/****************** LineStrip ******************/
+		/**** md5 signature: 3ef443bbf72e31cb5369b198c3ad9fc5 ****/
+		%feature("compactdefaultargs") LineStrip;
+		%feature("autodoc", "Returns field linestrip.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") LineStrip;
+		opencascade::handle<TColStd_HArray1OfInteger> LineStrip();
+
+		/****************** LineStripValue ******************/
+		/**** md5 signature: a1e48466fbe771da213017820e55d46b ****/
+		%feature("compactdefaultargs") LineStripValue;
+		%feature("autodoc", "Returns value of linestrip by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") LineStripValue;
+		Standard_Integer LineStripValue(const Standard_Integer theNum);
+
+		/****************** NbLineStrip ******************/
+		/**** md5 signature: e3a6a387f711fc1b2573309d507eb3f8 ****/
+		%feature("compactdefaultargs") NbLineStrip;
+		%feature("autodoc", "Returns number of linestrip.
+
+Returns
+-------
+int
+") NbLineStrip;
+		Standard_Integer NbLineStrip();
+
+		/****************** SetCoordinates ******************/
+		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "Sets field coordinates.
+
+Parameters
+----------
+theCoordinates: StepVisual_CoordinatesList
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
+
+		/****************** SetGeometricLink ******************/
+		/**** md5 signature: 27d1504e34949f42efa5236d7d974433 ****/
+		%feature("compactdefaultargs") SetGeometricLink;
+		%feature("autodoc", "Sets field geometriclink.
+
+Parameters
+----------
+theGeometricLink: StepVisual_EdgeOrCurve
+
+Returns
+-------
+None
+") SetGeometricLink;
+		void SetGeometricLink(const StepVisual_EdgeOrCurve & theGeometricLink);
+
+		/****************** SetLineStrip ******************/
+		/**** md5 signature: ede707a2de223a4694210c12bfadb98a ****/
+		%feature("compactdefaultargs") SetLineStrip;
+		%feature("autodoc", "Sets field linestrip.
+
+Parameters
+----------
+theLineStrip: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetLineStrip;
+		void SetLineStrip(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
+
+};
+
+
+%make_alias(StepVisual_TessellatedEdge)
+
+%extend StepVisual_TessellatedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class StepVisual_TessellatedFace *
+***********************************/
+class StepVisual_TessellatedFace : public StepVisual_TessellatedStructuredItem {
+	public:
+		/****************** StepVisual_TessellatedFace ******************/
+		/**** md5 signature: ef7c9c35d3c2fabc32313d4960183e0b ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedFace;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedFace;
+		 StepVisual_TessellatedFace();
+
+		/****************** Coordinates ******************/
+		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
+		%feature("compactdefaultargs") Coordinates;
+		%feature("autodoc", "Returns field coordinates.
+
+Returns
+-------
+opencascade::handle<StepVisual_CoordinatesList>
+") Coordinates;
+		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
+
+		/****************** GeometricLink ******************/
+		/**** md5 signature: 2b68caeb7c36a74f35800182674c6c08 ****/
+		%feature("compactdefaultargs") GeometricLink;
+		%feature("autodoc", "Returns field geometriclink.
+
+Returns
+-------
+StepVisual_FaceOrSurface
+") GeometricLink;
+		StepVisual_FaceOrSurface GeometricLink();
+
+		/****************** HasGeometricLink ******************/
+		/**** md5 signature: 432ca769d0ec23ad86df023b91c35498 ****/
+		%feature("compactdefaultargs") HasGeometricLink;
+		%feature("autodoc", "Returns true if optional field geometriclink is defined.
+
+Returns
+-------
+bool
+") HasGeometricLink;
+		Standard_Boolean HasGeometricLink();
+
+		/****************** Init ******************/
+		/**** md5 signature: 835bebcd43fab8c7eb2394c030081db6 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theCoordinates: StepVisual_CoordinatesList
+thePnmax: int
+theNormals: TColStd_HArray2OfReal
+theHasGeometricLink: bool
+theGeometricLink: StepVisual_FaceOrSurface
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Integer thePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theNormals, const Standard_Boolean theHasGeometricLink, const StepVisual_FaceOrSurface & theGeometricLink);
+
+		/****************** NbNormals ******************/
+		/**** md5 signature: e8ae9c17a546ef8db4eb8b45e7edd0e8 ****/
+		%feature("compactdefaultargs") NbNormals;
+		%feature("autodoc", "Returns number of normals.
+
+Returns
+-------
+int
+") NbNormals;
+		Standard_Integer NbNormals();
+
+		/****************** Normals ******************/
+		/**** md5 signature: 369b381d12bed5d4109e95bc2ede0ab6 ****/
+		%feature("compactdefaultargs") Normals;
+		%feature("autodoc", "Returns field normals.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfReal>
+") Normals;
+		opencascade::handle<TColStd_HArray2OfReal> Normals();
+
+		/****************** Pnmax ******************/
+		/**** md5 signature: 0b280e192c56c44fffab9481c68ac038 ****/
+		%feature("compactdefaultargs") Pnmax;
+		%feature("autodoc", "Returns field pnmax.
+
+Returns
+-------
+int
+") Pnmax;
+		Standard_Integer Pnmax();
+
+		/****************** SetCoordinates ******************/
+		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "Sets field coordinates.
+
+Parameters
+----------
+theCoordinates: StepVisual_CoordinatesList
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
+
+		/****************** SetGeometricLink ******************/
+		/**** md5 signature: 7e838ce726efeca1c27b9d4f1e6d745b ****/
+		%feature("compactdefaultargs") SetGeometricLink;
+		%feature("autodoc", "Sets field geometriclink.
+
+Parameters
+----------
+theGeometricLink: StepVisual_FaceOrSurface
+
+Returns
+-------
+None
+") SetGeometricLink;
+		void SetGeometricLink(const StepVisual_FaceOrSurface & theGeometricLink);
+
+		/****************** SetNormals ******************/
+		/**** md5 signature: 6dd69aae81e446ea2f47e92611adf4ec ****/
+		%feature("compactdefaultargs") SetNormals;
+		%feature("autodoc", "Sets field normals.
+
+Parameters
+----------
+theNormals: TColStd_HArray2OfReal
+
+Returns
+-------
+None
+") SetNormals;
+		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
+
+		/****************** SetPnmax ******************/
+		/**** md5 signature: 684034e32240f760527db1f7f7c9f728 ****/
+		%feature("compactdefaultargs") SetPnmax;
+		%feature("autodoc", "Sets field pnmax.
+
+Parameters
+----------
+thePnmax: int
+
+Returns
+-------
+None
+") SetPnmax;
+		void SetPnmax(const Standard_Integer thePnmax);
+
+};
+
+
+%make_alias(StepVisual_TessellatedFace)
+
+%extend StepVisual_TessellatedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************
+* class StepVisual_TessellatedVertex *
+*************************************/
+class StepVisual_TessellatedVertex : public StepVisual_TessellatedStructuredItem {
+	public:
+		/****************** StepVisual_TessellatedVertex ******************/
+		/**** md5 signature: 1d479f8d322cf89bb62554a06ec2c5d6 ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedVertex;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedVertex;
+		 StepVisual_TessellatedVertex();
+
+		/****************** Coordinates ******************/
+		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
+		%feature("compactdefaultargs") Coordinates;
+		%feature("autodoc", "Returns field coordinates.
+
+Returns
+-------
+opencascade::handle<StepVisual_CoordinatesList>
+") Coordinates;
+		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
+
+		/****************** HasTopologicalLink ******************/
+		/**** md5 signature: b2a8f6180f026b329187f8297fbc4881 ****/
+		%feature("compactdefaultargs") HasTopologicalLink;
+		%feature("autodoc", "Returns true if optional field topologicallink is defined.
+
+Returns
+-------
+bool
+") HasTopologicalLink;
+		Standard_Boolean HasTopologicalLink();
+
+		/****************** Init ******************/
+		/**** md5 signature: 7a588a64770cae4be3ab835050b28a7b ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theCoordinates: StepVisual_CoordinatesList
+theHasTopologicalLink: bool
+theTopologicalLink: StepShape_VertexPoint
+thePointIndex: int
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Boolean theHasTopologicalLink, const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink, const Standard_Integer thePointIndex);
+
+		/****************** PointIndex ******************/
+		/**** md5 signature: a7100f38206242b5067e31337a15de37 ****/
+		%feature("compactdefaultargs") PointIndex;
+		%feature("autodoc", "Returns field pointindex.
+
+Returns
+-------
+int
+") PointIndex;
+		Standard_Integer PointIndex();
+
+		/****************** SetCoordinates ******************/
+		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
+		%feature("compactdefaultargs") SetCoordinates;
+		%feature("autodoc", "Sets field coordinates.
+
+Parameters
+----------
+theCoordinates: StepVisual_CoordinatesList
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
+
+		/****************** SetPointIndex ******************/
+		/**** md5 signature: d00ee3c6c96d00bf1679920e38c21622 ****/
+		%feature("compactdefaultargs") SetPointIndex;
+		%feature("autodoc", "Sets field pointindex.
+
+Parameters
+----------
+thePointIndex: int
+
+Returns
+-------
+None
+") SetPointIndex;
+		void SetPointIndex(const Standard_Integer thePointIndex);
+
+		/****************** SetTopologicalLink ******************/
+		/**** md5 signature: 7eb4225ce032f77d5e9072cb2c704a14 ****/
+		%feature("compactdefaultargs") SetTopologicalLink;
+		%feature("autodoc", "Sets field topologicallink.
+
+Parameters
+----------
+theTopologicalLink: StepShape_VertexPoint
+
+Returns
+-------
+None
+") SetTopologicalLink;
+		void SetTopologicalLink(const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink);
+
+		/****************** TopologicalLink ******************/
+		/**** md5 signature: 0e6978ef7ce1b6573c8c8c73bbfcc600 ****/
+		%feature("compactdefaultargs") TopologicalLink;
+		%feature("autodoc", "Returns field topologicallink.
+
+Returns
+-------
+opencascade::handle<StepShape_VertexPoint>
+") TopologicalLink;
+		opencascade::handle<StepShape_VertexPoint> TopologicalLink();
+
+};
+
+
+%make_alias(StepVisual_TessellatedVertex)
+
+%extend StepVisual_TessellatedVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /************************************************************
 * class StepVisual_AnnotationCurveOccurrenceAndGeomReprItem *
 ************************************************************/
@@ -8757,6 +10689,665 @@ None
 %make_alias(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem)
 
 %extend StepVisual_AnnotationCurveOccurrenceAndGeomReprItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************************
+* class StepVisual_ComplexTriangulatedFace *
+*******************************************/
+class StepVisual_ComplexTriangulatedFace : public StepVisual_TessellatedFace {
+	public:
+		/****************** StepVisual_ComplexTriangulatedFace ******************/
+		/**** md5 signature: 1626ac3c9d7cefb979edad870659935d ****/
+		%feature("compactdefaultargs") StepVisual_ComplexTriangulatedFace;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_ComplexTriangulatedFace;
+		 StepVisual_ComplexTriangulatedFace();
+
+		/****************** Init ******************/
+		/**** md5 signature: e1774105fd821d5c7b890a1a4073cc6f ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theTessellatedFace_Coordinates: StepVisual_CoordinatesList
+theTessellatedFace_Pnmax: int
+theTessellatedFace_Normals: TColStd_HArray2OfReal
+theHasTessellatedFace_GeometricLink: bool
+theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
+thePnindex: TColStd_HArray1OfInteger
+theTriangleStrips: TColStd_HArray2OfInteger
+theTriangleFans: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+
+		/****************** NbPnindex ******************/
+		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
+		%feature("compactdefaultargs") NbPnindex;
+		%feature("autodoc", "Returns number of pnindex.
+
+Returns
+-------
+int
+") NbPnindex;
+		Standard_Integer NbPnindex();
+
+		/****************** NbTriangleFans ******************/
+		/**** md5 signature: e32a7cc03e1bf132b8ca51d998c1ef91 ****/
+		%feature("compactdefaultargs") NbTriangleFans;
+		%feature("autodoc", "Returns number of trianglefans.
+
+Returns
+-------
+int
+") NbTriangleFans;
+		Standard_Integer NbTriangleFans();
+
+		/****************** NbTriangleStrips ******************/
+		/**** md5 signature: 41f96c6e8734a500c69e77eb743995d5 ****/
+		%feature("compactdefaultargs") NbTriangleStrips;
+		%feature("autodoc", "Returns number of trianglestrips.
+
+Returns
+-------
+int
+") NbTriangleStrips;
+		Standard_Integer NbTriangleStrips();
+
+		/****************** Pnindex ******************/
+		/**** md5 signature: 4b1e18390247fb42f42f10361e8626ac ****/
+		%feature("compactdefaultargs") Pnindex;
+		%feature("autodoc", "Returns field pnindex.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") Pnindex;
+		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+
+		/****************** PnindexValue ******************/
+		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
+		%feature("compactdefaultargs") PnindexValue;
+		%feature("autodoc", "Returns value of pnindex by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") PnindexValue;
+		Standard_Integer PnindexValue(const Standard_Integer theNum);
+
+		/****************** SetPnindex ******************/
+		/**** md5 signature: 43575e7d7486f7f39672441e3410d824 ****/
+		%feature("compactdefaultargs") SetPnindex;
+		%feature("autodoc", "Sets field pnindex.
+
+Parameters
+----------
+thePnindex: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetPnindex;
+		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+
+		/****************** SetTriangleFans ******************/
+		/**** md5 signature: db9f04781f28ff74c0a910d332b01a50 ****/
+		%feature("compactdefaultargs") SetTriangleFans;
+		%feature("autodoc", "Sets field trianglefans.
+
+Parameters
+----------
+theTriangleFans: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") SetTriangleFans;
+		void SetTriangleFans(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+
+		/****************** SetTriangleStrips ******************/
+		/**** md5 signature: 305b524e4a12d6718cd4b65ad6a59730 ****/
+		%feature("compactdefaultargs") SetTriangleStrips;
+		%feature("autodoc", "Sets field trianglestrips.
+
+Parameters
+----------
+theTriangleStrips: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") SetTriangleStrips;
+		void SetTriangleStrips(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips);
+
+		/****************** TriangleFans ******************/
+		/**** md5 signature: 66cea853512deea6cf6d0195d2138e10 ****/
+		%feature("compactdefaultargs") TriangleFans;
+		%feature("autodoc", "Returns field trianglefans.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+") TriangleFans;
+		opencascade::handle<TColStd_HArray2OfInteger> TriangleFans();
+
+		/****************** TriangleStrips ******************/
+		/**** md5 signature: c2afe2543561429d8c5267016bec1fb9 ****/
+		%feature("compactdefaultargs") TriangleStrips;
+		%feature("autodoc", "Returns field trianglestrips.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+") TriangleStrips;
+		opencascade::handle<TColStd_HArray2OfInteger> TriangleStrips();
+
+};
+
+
+%make_alias(StepVisual_ComplexTriangulatedFace)
+
+%extend StepVisual_ComplexTriangulatedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************************
+* class StepVisual_CubicBezierTessellatedEdge *
+**********************************************/
+class StepVisual_CubicBezierTessellatedEdge : public StepVisual_TessellatedEdge {
+	public:
+		/****************** StepVisual_CubicBezierTessellatedEdge ******************/
+		/**** md5 signature: 6a2d50c9d1d51ecb59aae29dbe2ea1d5 ****/
+		%feature("compactdefaultargs") StepVisual_CubicBezierTessellatedEdge;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_CubicBezierTessellatedEdge;
+		 StepVisual_CubicBezierTessellatedEdge();
+
+};
+
+
+%make_alias(StepVisual_CubicBezierTessellatedEdge)
+
+%extend StepVisual_CubicBezierTessellatedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************************
+* class StepVisual_CubicBezierTriangulatedFace *
+***********************************************/
+class StepVisual_CubicBezierTriangulatedFace : public StepVisual_TessellatedFace {
+	public:
+		/****************** StepVisual_CubicBezierTriangulatedFace ******************/
+		/**** md5 signature: f1c7ee7f1d108a679ab8eabfd2ccba42 ****/
+		%feature("compactdefaultargs") StepVisual_CubicBezierTriangulatedFace;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_CubicBezierTriangulatedFace;
+		 StepVisual_CubicBezierTriangulatedFace();
+
+		/****************** Ctriangles ******************/
+		/**** md5 signature: 102b295b6af84fe7d8a1b398774f2b91 ****/
+		%feature("compactdefaultargs") Ctriangles;
+		%feature("autodoc", "Returns field ctriangles.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+") Ctriangles;
+		opencascade::handle<TColStd_HArray2OfInteger> Ctriangles();
+
+		/****************** Init ******************/
+		/**** md5 signature: 33020c5fbd6b62e12d7b9c676274ab5d ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theTessellatedFace_Coordinates: StepVisual_CoordinatesList
+theTessellatedFace_Pnmax: int
+theTessellatedFace_Normals: TColStd_HArray2OfReal
+theHasTessellatedFace_GeometricLink: bool
+theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
+theCtriangles: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
+
+		/****************** NbCtriangles ******************/
+		/**** md5 signature: 13825b33bcce4596e533525b461804fe ****/
+		%feature("compactdefaultargs") NbCtriangles;
+		%feature("autodoc", "Returns number of ctriangles.
+
+Returns
+-------
+int
+") NbCtriangles;
+		Standard_Integer NbCtriangles();
+
+		/****************** SetCtriangles ******************/
+		/**** md5 signature: c78b3847a8d411dcb9aa0b29064c662e ****/
+		%feature("compactdefaultargs") SetCtriangles;
+		%feature("autodoc", "Sets field ctriangles.
+
+Parameters
+----------
+theCtriangles: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") SetCtriangles;
+		void SetCtriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
+
+};
+
+
+%make_alias(StepVisual_CubicBezierTriangulatedFace)
+
+%extend StepVisual_CubicBezierTriangulatedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************
+* class StepVisual_TessellatedConnectingEdge *
+*********************************************/
+class StepVisual_TessellatedConnectingEdge : public StepVisual_TessellatedEdge {
+	public:
+		/****************** StepVisual_TessellatedConnectingEdge ******************/
+		/**** md5 signature: e1448ecb17e19e47f146c708cf99a3ca ****/
+		%feature("compactdefaultargs") StepVisual_TessellatedConnectingEdge;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TessellatedConnectingEdge;
+		 StepVisual_TessellatedConnectingEdge();
+
+		/****************** Face1 ******************/
+		/**** md5 signature: c59628c5eef69eeffa774f97edd8c9d6 ****/
+		%feature("compactdefaultargs") Face1;
+		%feature("autodoc", "Returns field face1.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedFace>
+") Face1;
+		opencascade::handle<StepVisual_TessellatedFace> Face1();
+
+		/****************** Face2 ******************/
+		/**** md5 signature: 8b18a8f8498482930f6cca4385e2359e ****/
+		%feature("compactdefaultargs") Face2;
+		%feature("autodoc", "Returns field face2.
+
+Returns
+-------
+opencascade::handle<StepVisual_TessellatedFace>
+") Face2;
+		opencascade::handle<StepVisual_TessellatedFace> Face2();
+
+		/****************** Init ******************/
+		/**** md5 signature: 6f7011c37a483db00e2012c0e0b5fed6 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theTessellatedEdge_Coordinates: StepVisual_CoordinatesList
+theHasTessellatedEdge_GeometricLink: bool
+theTessellatedEdge_GeometricLink: StepVisual_EdgeOrCurve
+theTessellatedEdge_LineStrip: TColStd_HArray1OfInteger
+theSmooth: StepData_Logical
+theFace1: StepVisual_TessellatedFace
+theFace2: StepVisual_TessellatedFace
+theLineStripFace1: TColStd_HArray1OfInteger
+theLineStripFace2: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedEdge_Coordinates, const Standard_Boolean theHasTessellatedEdge_GeometricLink, const StepVisual_EdgeOrCurve & theTessellatedEdge_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & theTessellatedEdge_LineStrip, const StepData_Logical theSmooth, const opencascade::handle<StepVisual_TessellatedFace> & theFace1, const opencascade::handle<StepVisual_TessellatedFace> & theFace2, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
+
+		/****************** LineStripFace1 ******************/
+		/**** md5 signature: 0b7971e6a92c9c058b28d7fbec9a3bb1 ****/
+		%feature("compactdefaultargs") LineStripFace1;
+		%feature("autodoc", "Returns field linestripface1.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") LineStripFace1;
+		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace1();
+
+		/****************** LineStripFace1Value ******************/
+		/**** md5 signature: b66bd9daa4369c7dbc9c9933e5752bb9 ****/
+		%feature("compactdefaultargs") LineStripFace1Value;
+		%feature("autodoc", "Returns value of linestripface1 by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") LineStripFace1Value;
+		Standard_Integer LineStripFace1Value(const Standard_Integer theNum);
+
+		/****************** LineStripFace2 ******************/
+		/**** md5 signature: df497d760e695587a621010b5edcb83e ****/
+		%feature("compactdefaultargs") LineStripFace2;
+		%feature("autodoc", "Returns field linestripface2.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") LineStripFace2;
+		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace2();
+
+		/****************** LineStripFace2Value ******************/
+		/**** md5 signature: 1a065201dc96fe780a0ca0f3bba9b65c ****/
+		%feature("compactdefaultargs") LineStripFace2Value;
+		%feature("autodoc", "Returns value of linestripface2 by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") LineStripFace2Value;
+		Standard_Integer LineStripFace2Value(const Standard_Integer theNum);
+
+		/****************** NbLineStripFace1 ******************/
+		/**** md5 signature: 6635634092840488cc7bb70f66269c04 ****/
+		%feature("compactdefaultargs") NbLineStripFace1;
+		%feature("autodoc", "Returns number of linestripface1.
+
+Returns
+-------
+int
+") NbLineStripFace1;
+		Standard_Integer NbLineStripFace1();
+
+		/****************** NbLineStripFace2 ******************/
+		/**** md5 signature: f48092b6b68ea97a6dd7859a19f37f10 ****/
+		%feature("compactdefaultargs") NbLineStripFace2;
+		%feature("autodoc", "Returns number of linestripface2.
+
+Returns
+-------
+int
+") NbLineStripFace2;
+		Standard_Integer NbLineStripFace2();
+
+		/****************** SetFace1 ******************/
+		/**** md5 signature: cbae07fafdf9bee2009c474118199284 ****/
+		%feature("compactdefaultargs") SetFace1;
+		%feature("autodoc", "Sets field face1.
+
+Parameters
+----------
+theFace1: StepVisual_TessellatedFace
+
+Returns
+-------
+None
+") SetFace1;
+		void SetFace1(const opencascade::handle<StepVisual_TessellatedFace> & theFace1);
+
+		/****************** SetFace2 ******************/
+		/**** md5 signature: bcf0ccbb96a6fd4d59c7320522ee5788 ****/
+		%feature("compactdefaultargs") SetFace2;
+		%feature("autodoc", "Sets field face2.
+
+Parameters
+----------
+theFace2: StepVisual_TessellatedFace
+
+Returns
+-------
+None
+") SetFace2;
+		void SetFace2(const opencascade::handle<StepVisual_TessellatedFace> & theFace2);
+
+		/****************** SetLineStripFace1 ******************/
+		/**** md5 signature: 13b5d9f5b2ea77a515da533e3f220c3d ****/
+		%feature("compactdefaultargs") SetLineStripFace1;
+		%feature("autodoc", "Sets field linestripface1.
+
+Parameters
+----------
+theLineStripFace1: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetLineStripFace1;
+		void SetLineStripFace1(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1);
+
+		/****************** SetLineStripFace2 ******************/
+		/**** md5 signature: d540d27bf6489bfed701c6605eae7f77 ****/
+		%feature("compactdefaultargs") SetLineStripFace2;
+		%feature("autodoc", "Sets field linestripface2.
+
+Parameters
+----------
+theLineStripFace2: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetLineStripFace2;
+		void SetLineStripFace2(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
+
+		/****************** SetSmooth ******************/
+		/**** md5 signature: 87175ba25d9b6c8a69467c8ddf380c38 ****/
+		%feature("compactdefaultargs") SetSmooth;
+		%feature("autodoc", "Sets field smooth.
+
+Parameters
+----------
+theSmooth: StepData_Logical
+
+Returns
+-------
+None
+") SetSmooth;
+		void SetSmooth(const StepData_Logical theSmooth);
+
+		/****************** Smooth ******************/
+		/**** md5 signature: 25e54a525a1ab2adc3ec5f5328ebdf72 ****/
+		%feature("compactdefaultargs") Smooth;
+		%feature("autodoc", "Returns field smooth.
+
+Returns
+-------
+StepData_Logical
+") Smooth;
+		StepData_Logical Smooth();
+
+};
+
+
+%make_alias(StepVisual_TessellatedConnectingEdge)
+
+%extend StepVisual_TessellatedConnectingEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class StepVisual_TriangulatedFace *
+************************************/
+class StepVisual_TriangulatedFace : public StepVisual_TessellatedFace {
+	public:
+		/****************** StepVisual_TriangulatedFace ******************/
+		/**** md5 signature: 5403f9acccbdc71b03956b04a3a0adc4 ****/
+		%feature("compactdefaultargs") StepVisual_TriangulatedFace;
+		%feature("autodoc", "Default constructor.
+
+Returns
+-------
+None
+") StepVisual_TriangulatedFace;
+		 StepVisual_TriangulatedFace();
+
+		/****************** Init ******************/
+		/**** md5 signature: 51fae17da7ab38215a33b883083c62fc ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "Initialize all fields (own and inherited).
+
+Parameters
+----------
+theRepresentationItem_Name: TCollection_HAsciiString
+theTessellatedFace_Coordinates: StepVisual_CoordinatesList
+theTessellatedFace_Pnmax: int
+theTessellatedFace_Normals: TColStd_HArray2OfReal
+theHasTessellatedFace_GeometricLink: bool
+theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
+thePnindex: TColStd_HArray1OfInteger
+theTriangles: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+
+		/****************** NbPnindex ******************/
+		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
+		%feature("compactdefaultargs") NbPnindex;
+		%feature("autodoc", "Returns number of pnindex.
+
+Returns
+-------
+int
+") NbPnindex;
+		Standard_Integer NbPnindex();
+
+		/****************** NbTriangles ******************/
+		/**** md5 signature: c1e2294db77a16b75e32923c5461b457 ****/
+		%feature("compactdefaultargs") NbTriangles;
+		%feature("autodoc", "Returns number of triangles.
+
+Returns
+-------
+int
+") NbTriangles;
+		Standard_Integer NbTriangles();
+
+		/****************** Pnindex ******************/
+		/**** md5 signature: 4b1e18390247fb42f42f10361e8626ac ****/
+		%feature("compactdefaultargs") Pnindex;
+		%feature("autodoc", "Returns field pnindex.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+") Pnindex;
+		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+
+		/****************** PnindexValue ******************/
+		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
+		%feature("compactdefaultargs") PnindexValue;
+		%feature("autodoc", "Returns value of pnindex by its num.
+
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+int
+") PnindexValue;
+		Standard_Integer PnindexValue(const Standard_Integer theNum);
+
+		/****************** SetPnindex ******************/
+		/**** md5 signature: 43575e7d7486f7f39672441e3410d824 ****/
+		%feature("compactdefaultargs") SetPnindex;
+		%feature("autodoc", "Sets field pnindex.
+
+Parameters
+----------
+thePnindex: TColStd_HArray1OfInteger
+
+Returns
+-------
+None
+") SetPnindex;
+		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+
+		/****************** SetTriangles ******************/
+		/**** md5 signature: 7becaa4c9c5db60f179ba306d43829c7 ****/
+		%feature("compactdefaultargs") SetTriangles;
+		%feature("autodoc", "Sets field triangles.
+
+Parameters
+----------
+theTriangles: TColStd_HArray2OfInteger
+
+Returns
+-------
+None
+") SetTriangles;
+		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+
+		/****************** Triangles ******************/
+		/**** md5 signature: f0a213a304d57e07a9ee9efaa8d64eff ****/
+		%feature("compactdefaultargs") Triangles;
+		%feature("autodoc", "Returns field triangles.
+
+Returns
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+") Triangles;
+		opencascade::handle<TColStd_HArray2OfInteger> Triangles();
+
+};
+
+
+%make_alias(StepVisual_TriangulatedFace)
+
+%extend StepVisual_TriangulatedFace {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8786,6 +11377,17 @@ class StepVisual_HArray1OfDraughtingCalloutElement : public StepVisual_Array1OfD
 %make_alias(StepVisual_HArray1OfDraughtingCalloutElement)
 
 
+class StepVisual_HArray1OfTessellatedStructuredItem : public StepVisual_Array1OfTessellatedStructuredItem, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedStructuredItem::value_type& theValue);
+    StepVisual_HArray1OfTessellatedStructuredItem(const StepVisual_Array1OfTessellatedStructuredItem& theOther);
+    const StepVisual_Array1OfTessellatedStructuredItem& Array1();
+    StepVisual_Array1OfTessellatedStructuredItem& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfTessellatedStructuredItem)
+
+
 class StepVisual_HArray1OfDirectionCountSelect : public StepVisual_Array1OfDirectionCountSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -8795,6 +11397,17 @@ class StepVisual_HArray1OfDirectionCountSelect : public StepVisual_Array1OfDirec
     StepVisual_Array1OfDirectionCountSelect& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfDirectionCountSelect)
+
+
+class StepVisual_HArray1OfTessellatedEdgeOrVertex : public StepVisual_Array1OfTessellatedEdgeOrVertex, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedEdgeOrVertex::value_type& theValue);
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const StepVisual_Array1OfTessellatedEdgeOrVertex& theOther);
+    const StepVisual_Array1OfTessellatedEdgeOrVertex& Array1();
+    StepVisual_Array1OfTessellatedEdgeOrVertex& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfTessellatedEdgeOrVertex)
 
 
 class StepVisual_HArray1OfStyleContextSelect : public StepVisual_Array1OfStyleContextSelect, public Standard_Transient {

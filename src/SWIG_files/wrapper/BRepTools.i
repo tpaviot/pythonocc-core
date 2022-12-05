@@ -95,9 +95,10 @@ from OCC.Core.Exception import *
 %wrap_handle(BRepTools_History)
 %wrap_handle(BRepTools_Modification)
 %wrap_handle(BRepTools_ReShape)
+%wrap_handle(BRepTools_CopyModification)
 %wrap_handle(BRepTools_GTrsfModification)
-%wrap_handle(BRepTools_NurbsConvertModification)
 %wrap_handle(BRepTools_TrsfModification)
+%wrap_handle(BRepTools_NurbsConvertModification)
 /* end handles declaration */
 
 /* templates */
@@ -710,7 +711,7 @@ None
 		/****************** Write ******************/
 		/**** md5 signature: 2b0742433c64d0c04f4d2d4d98afcfa2 ****/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "Writes the shape to the file in an ascii format toptools_formatversion_version_1. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param therange the range of progress indicator to fill in.
+		%feature("autodoc", "Writes the shape to the file in an ascii format toptools_formatversion_version_1. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param theprogress the range of progress indicator to fill in.
 
 Parameters
 ----------
@@ -728,7 +729,7 @@ bool
 		/****************** Write ******************/
 		/**** md5 signature: 094fc04abd54fdb9dea8b811e19f6844 ****/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "Writes the shape to the file in an ascii format of specified version. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the toptools format version @param therange  the range of progress indicator to fill in.
+		%feature("autodoc", "Writes the shape to the file in an ascii format of specified version. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the toptools format version @param theprogress the range of progress indicator to fill in.
 
 Parameters
 ----------
@@ -2222,6 +2223,197 @@ TopAbs_Orientation
 	}
 };
 
+/***********************************
+* class BRepTools_CopyModification *
+***********************************/
+class BRepTools_CopyModification : public BRepTools_Modification {
+	public:
+		/****************** BRepTools_CopyModification ******************/
+		/**** md5 signature: dc62d9d01ecf0817e4b2bc548f32af61 ****/
+		%feature("compactdefaultargs") BRepTools_CopyModification;
+		%feature("autodoc", "Constructor. \param[in] thecopygeom indicates that the geomtery (surfaces and curves) should be copied \param[in] thecopymesh indicates that the triangulation should be copied.
+
+Parameters
+----------
+theCopyGeom: bool,optional
+	default value is Standard_True
+theCopyMesh: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") BRepTools_CopyModification;
+		 BRepTools_CopyModification(const Standard_Boolean theCopyGeom = Standard_True, const Standard_Boolean theCopyMesh = Standard_True);
+
+		/****************** Continuity ******************/
+		/**** md5 signature: 2c4d2ed85cbf31d94ccd5731f137e724 ****/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "Returns the continuity of thenewedge between thenewface1 and thenewface2. //! thenewedge is the new edge created from theedge. thenewface1 (resp. thenewface2) is the new face created from theface1 (resp. theface2).
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace1: TopoDS_Face
+theFace2: TopoDS_Face
+theNewEdge: TopoDS_Edge
+theNewFace1: TopoDS_Face
+theNewFace2: TopoDS_Face
+
+Returns
+-------
+GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace1, const TopoDS_Face & theNewFace2);
+
+		/****************** NewCurve ******************/
+		/**** md5 signature: c3400f68c675ff3dd16614251d9da49c ****/
+		%feature("compactdefaultargs") NewCurve;
+		%feature("autodoc", "Returns true if theedge has been modified. if the edge has been modified: - thecurve is the new geometric support of the edge, - theloc is the new location, and - thetol is the new tolerance. if the edge has not been modified, this function returns false, and the values of thecurve, theloc and thetol are not significant.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theCurve: Geom_Curve
+theLoc: TopLoc_Location
+
+Returns
+-------
+theTol: float
+") NewCurve;
+		Standard_Boolean NewCurve(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, TopLoc_Location & theLoc, Standard_Real &OutValue);
+
+		/****************** NewCurve2d ******************/
+		/**** md5 signature: 12d59de8232d43bec7de37a5392a1df4 ****/
+		%feature("compactdefaultargs") NewCurve2d;
+		%feature("autodoc", "Returns true if theedge has a new curve on surface on theface. if a new curve exists: - thecurve is the new geometric support of the edge, - thetol the new tolerance. if no new curve exists, this function returns false, and the values of thecurve and thetol are not significant.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace: TopoDS_Face
+theNewEdge: TopoDS_Edge
+theNewFace: TopoDS_Face
+theCurve: Geom2d_Curve
+
+Returns
+-------
+theTol: float
+") NewCurve2d;
+		Standard_Boolean NewCurve2d(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace, opencascade::handle<Geom2d_Curve> & theCurve, Standard_Real &OutValue);
+
+		/****************** NewParameter ******************/
+		/**** md5 signature: 54289ac8d83b6313663826ffc529a180 ****/
+		%feature("compactdefaultargs") NewParameter;
+		%feature("autodoc", "Returns true if thevertex has a new parameter on theedge. if a new parameter exists: - thepnt is the parameter, and - thetol is the new tolerance. if no new parameter exists, this function returns false, and the values of thepnt and thetol are not significant.
+
+Parameters
+----------
+theVertex: TopoDS_Vertex
+theEdge: TopoDS_Edge
+
+Returns
+-------
+thePnt: float
+theTol: float
+") NewParameter;
+		Standard_Boolean NewParameter(const TopoDS_Vertex & theVertex, const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** NewPoint ******************/
+		/**** md5 signature: a51d29c30c50c9cb108e5c5ea9b12a8b ****/
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "Returns true if thevertex has been modified. if the vertex has been modified: - thepnt is the new geometry of the vertex, and - thetol is the new tolerance. if the vertex has not been modified this function returns false, and the values of thepnt and thetol are not significant.
+
+Parameters
+----------
+theVertex: TopoDS_Vertex
+thePnt: gp_Pnt
+
+Returns
+-------
+theTol: float
+") NewPoint;
+		Standard_Boolean NewPoint(const TopoDS_Vertex & theVertex, gp_Pnt & thePnt, Standard_Real &OutValue);
+
+		/****************** NewPolygon ******************/
+		/**** md5 signature: 4badeef9050bef8cef3639edbc9b0271 ****/
+		%feature("compactdefaultargs") NewPolygon;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - thepoly is a new polygon.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+thePoly: Poly_Polygon3D
+
+Returns
+-------
+bool
+") NewPolygon;
+		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
+
+		/****************** NewPolygonOnTriangulation ******************/
+		/**** md5 signature: 362332d5c0a2020b059e4552360631f4 ****/
+		%feature("compactdefaultargs") NewPolygonOnTriangulation;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - thepoly is a new polygon on triangulation.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace: TopoDS_Face
+thePoly: Poly_PolygonOnTriangulation
+
+Returns
+-------
+bool
+") NewPolygonOnTriangulation;
+		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
+
+		/****************** NewSurface ******************/
+		/**** md5 signature: 005f5309703e67a2221655e2f7ff6568 ****/
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "Returns true if theface has been modified. if the face has been modified: - thesurf is the new geometry of the face, - theloc is its new location, and - thetol is the new tolerance. therevwires, therevface are always set to false, because the orientaion is not changed.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theSurf: Geom_Surface
+theLoc: TopLoc_Location
+
+Returns
+-------
+theTol: float
+theRevWires: bool
+theRevFace: bool
+") NewSurface;
+		Standard_Boolean NewSurface(const TopoDS_Face & theFace, opencascade::handle<Geom_Surface> & theSurf, TopLoc_Location & theLoc, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+
+		/****************** NewTriangulation ******************/
+		/**** md5 signature: c34f0504d87cfa075d0a16293a0a824a ****/
+		%feature("compactdefaultargs") NewTriangulation;
+		%feature("autodoc", "Returns true if the face has been modified according to changed triangulation. if the face has been modified: - thetri is a new triangulation on the face.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTri: Poly_Triangulation
+
+Returns
+-------
+bool
+") NewTriangulation;
+		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
+
+};
+
+
+%make_alias(BRepTools_CopyModification)
+
+%extend BRepTools_CopyModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /************************************
 * class BRepTools_GTrsfModification *
 ************************************/
@@ -2342,6 +2534,39 @@ Tol: float
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
+		/****************** NewPolygon ******************/
+		/**** md5 signature: 4badeef9050bef8cef3639edbc9b0271 ****/
+		%feature("compactdefaultargs") NewPolygon;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - thepoly is a new polygon.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+thePoly: Poly_Polygon3D
+
+Returns
+-------
+bool
+") NewPolygon;
+		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
+
+		/****************** NewPolygonOnTriangulation ******************/
+		/**** md5 signature: 362332d5c0a2020b059e4552360631f4 ****/
+		%feature("compactdefaultargs") NewPolygonOnTriangulation;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - thepoly is a new polygon on triangulation.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace: TopoDS_Face
+thePoly: Poly_PolygonOnTriangulation
+
+Returns
+-------
+bool
+") NewPolygonOnTriangulation;
+		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
+
 		/****************** NewSurface ******************/
 		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
 		%feature("compactdefaultargs") NewSurface;
@@ -2361,6 +2586,22 @@ RevFace: bool
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
+		/****************** NewTriangulation ******************/
+		/**** md5 signature: c34f0504d87cfa075d0a16293a0a824a ****/
+		%feature("compactdefaultargs") NewTriangulation;
+		%feature("autodoc", "Returns true if the face has been modified according to changed triangulation. if the face has been modified: - thetri is a new triangulation on the face.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTri: Poly_Triangulation
+
+Returns
+-------
+bool
+") NewTriangulation;
+		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
+
 };
 
 
@@ -2372,10 +2613,222 @@ RevFace: bool
 	}
 };
 
+/***********************************
+* class BRepTools_TrsfModification *
+***********************************/
+class BRepTools_TrsfModification : public BRepTools_Modification {
+	public:
+		/****************** BRepTools_TrsfModification ******************/
+		/**** md5 signature: 184d5436193d6786b8b2f10f95528e71 ****/
+		%feature("compactdefaultargs") BRepTools_TrsfModification;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+T: gp_Trsf
+
+Returns
+-------
+None
+") BRepTools_TrsfModification;
+		 BRepTools_TrsfModification(const gp_Trsf & T);
+
+		/****************** Continuity ******************/
+		/**** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ****/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+
+Parameters
+----------
+E: TopoDS_Edge
+F1: TopoDS_Face
+F2: TopoDS_Face
+NewE: TopoDS_Edge
+NewF1: TopoDS_Face
+NewF2: TopoDS_Face
+
+Returns
+-------
+GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
+
+
+        %feature("autodoc","1");
+        %extend {
+            Standard_Boolean GetIsCopyMesh() {
+            return (Standard_Boolean) $self->IsCopyMesh();
+            }
+        };
+        %feature("autodoc","1");
+        %extend {
+            void SetIsCopyMesh(Standard_Boolean value) {
+            $self->IsCopyMesh()=value;
+            }
+        };
+		/****************** NewCurve ******************/
+		/**** md5 signature: fae0c201ae8f07a170a1eb576572768a ****/
+		%feature("compactdefaultargs") NewCurve;
+		%feature("autodoc", "Returns true if the edge e has been modified. if the edge has been modified: - c is the new geometric support of the edge, - l is the new location, and - tol is the new tolerance. if the edge has not been modified, this function returns false, and the values of c, l and tol are not significant.
+
+Parameters
+----------
+E: TopoDS_Edge
+C: Geom_Curve
+L: TopLoc_Location
+
+Returns
+-------
+Tol: float
+") NewCurve;
+		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
+
+		/****************** NewCurve2d ******************/
+		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
+		%feature("compactdefaultargs") NewCurve2d;
+		%feature("autodoc", "Returns true if the edge e has a new curve on surface on the face f. if a new curve exists: - c is the new geometric support of the edge, - l is the new location, and - tol the new tolerance. if no new curve exists, this function returns false, and the values of c, l and tol are not significant.
+
+Parameters
+----------
+E: TopoDS_Edge
+F: TopoDS_Face
+NewE: TopoDS_Edge
+NewF: TopoDS_Face
+C: Geom2d_Curve
+
+Returns
+-------
+Tol: float
+") NewCurve2d;
+		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
+
+		/****************** NewParameter ******************/
+		/**** md5 signature: e14926b54c8548936ba9a49d140b8da3 ****/
+		%feature("compactdefaultargs") NewParameter;
+		%feature("autodoc", "Returns true if the vertex v has a new parameter on the edge e. if a new parameter exists: - p is the parameter, and - tol is the new tolerance. if no new parameter exists, this function returns false, and the values of p and tol are not significant.
+
+Parameters
+----------
+V: TopoDS_Vertex
+E: TopoDS_Edge
+
+Returns
+-------
+P: float
+Tol: float
+") NewParameter;
+		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** NewPoint ******************/
+		/**** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ****/
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "Returns true if the vertex v has been modified. if the vertex has been modified: - p is the new geometry of the vertex, and - tol is the new tolerance. if the vertex has not been modified this function returns false, and the values of p and tol are not significant.
+
+Parameters
+----------
+V: TopoDS_Vertex
+P: gp_Pnt
+
+Returns
+-------
+Tol: float
+") NewPoint;
+		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
+
+		/****************** NewPolygon ******************/
+		/**** md5 signature: 7f7c60619bea4afc74b068fbbb3cfa88 ****/
+		%feature("compactdefaultargs") NewPolygon;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - p is a new polygon.
+
+Parameters
+----------
+E: TopoDS_Edge
+P: Poly_Polygon3D
+
+Returns
+-------
+bool
+") NewPolygon;
+		Standard_Boolean NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
+
+		/****************** NewPolygonOnTriangulation ******************/
+		/**** md5 signature: 3725a7293cb8d43db5ec36c08ebcc7d9 ****/
+		%feature("compactdefaultargs") NewPolygonOnTriangulation;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - p is a new polygon on triangulation.
+
+Parameters
+----------
+E: TopoDS_Edge
+F: TopoDS_Face
+P: Poly_PolygonOnTriangulation
+
+Returns
+-------
+bool
+") NewPolygonOnTriangulation;
+		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
+
+		/****************** NewSurface ******************/
+		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "Returns true if the face f has been modified. if the face has been modified: - s is the new geometry of the face, - l is its new location, and - tol is the new tolerance. revwires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). revface is set to true if the orientation of the modified face changes in the shells which contain it. for this class, revface returns true if the gp_trsf associated with this modification is negative.
+
+Parameters
+----------
+F: TopoDS_Face
+S: Geom_Surface
+L: TopLoc_Location
+
+Returns
+-------
+Tol: float
+RevWires: bool
+RevFace: bool
+") NewSurface;
+		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+
+		/****************** NewTriangulation ******************/
+		/**** md5 signature: cdec58f103b48ecf1d9ad0fd3b8c73cc ****/
+		%feature("compactdefaultargs") NewTriangulation;
+		%feature("autodoc", "Returns true if the face has been modified according to changed triangulation. if the face has been modified: - t is a new triangulation on the face.
+
+Parameters
+----------
+F: TopoDS_Face
+T: Poly_Triangulation
+
+Returns
+-------
+bool
+") NewTriangulation;
+		Standard_Boolean NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
+
+		/****************** Trsf ******************/
+		/**** md5 signature: 162ba6693c622bc37c4b2d05c6f93a56 ****/
+		%feature("compactdefaultargs") Trsf;
+		%feature("autodoc", "Provides access to the gp_trsf associated with this modification. the transformation can be changed.
+
+Returns
+-------
+gp_Trsf
+") Trsf;
+		gp_Trsf Trsf();
+
+};
+
+
+%make_alias(BRepTools_TrsfModification)
+
+%extend BRepTools_TrsfModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*******************************************
 * class BRepTools_NurbsConvertModification *
 *******************************************/
-class BRepTools_NurbsConvertModification : public BRepTools_Modification {
+class BRepTools_NurbsConvertModification : public BRepTools_CopyModification {
 	public:
 		/****************** BRepTools_NurbsConvertModification ******************/
 		/**** md5 signature: 96ade83e8786f855501767969892ed98 ****/
@@ -2488,6 +2941,39 @@ Tol: float
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
+		/****************** NewPolygon ******************/
+		/**** md5 signature: 4badeef9050bef8cef3639edbc9b0271 ****/
+		%feature("compactdefaultargs") NewPolygon;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - thepoly is a new polygon.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+thePoly: Poly_Polygon3D
+
+Returns
+-------
+bool
+") NewPolygon;
+		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
+
+		/****************** NewPolygonOnTriangulation ******************/
+		/**** md5 signature: 362332d5c0a2020b059e4552360631f4 ****/
+		%feature("compactdefaultargs") NewPolygonOnTriangulation;
+		%feature("autodoc", "Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - thepoly is a new polygon on triangulation.
+
+Parameters
+----------
+theEdge: TopoDS_Edge
+theFace: TopoDS_Face
+thePoly: Poly_PolygonOnTriangulation
+
+Returns
+-------
+bool
+") NewPolygonOnTriangulation;
+		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
+
 		/****************** NewSurface ******************/
 		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
 		%feature("compactdefaultargs") NewSurface;
@@ -2507,162 +2993,28 @@ RevFace: bool
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
+		/****************** NewTriangulation ******************/
+		/**** md5 signature: c34f0504d87cfa075d0a16293a0a824a ****/
+		%feature("compactdefaultargs") NewTriangulation;
+		%feature("autodoc", "Returns true if the face has been modified according to changed triangulation. if the face has been modified: - thetri is a new triangulation on the face.
+
+Parameters
+----------
+theFace: TopoDS_Face
+theTri: Poly_Triangulation
+
+Returns
+-------
+bool
+") NewTriangulation;
+		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
+
 };
 
 
 %make_alias(BRepTools_NurbsConvertModification)
 
 %extend BRepTools_NurbsConvertModification {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***********************************
-* class BRepTools_TrsfModification *
-***********************************/
-class BRepTools_TrsfModification : public BRepTools_Modification {
-	public:
-		/****************** BRepTools_TrsfModification ******************/
-		/**** md5 signature: 184d5436193d6786b8b2f10f95528e71 ****/
-		%feature("compactdefaultargs") BRepTools_TrsfModification;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-T: gp_Trsf
-
-Returns
--------
-None
-") BRepTools_TrsfModification;
-		 BRepTools_TrsfModification(const gp_Trsf & T);
-
-		/****************** Continuity ******************/
-		/**** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ****/
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
-
-Parameters
-----------
-E: TopoDS_Edge
-F1: TopoDS_Face
-F2: TopoDS_Face
-NewE: TopoDS_Edge
-NewF1: TopoDS_Face
-NewF2: TopoDS_Face
-
-Returns
--------
-GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
-
-		/****************** NewCurve ******************/
-		/**** md5 signature: fae0c201ae8f07a170a1eb576572768a ****/
-		%feature("compactdefaultargs") NewCurve;
-		%feature("autodoc", "Returns true if the edge e has been modified. if the edge has been modified: - c is the new geometric support of the edge, - l is the new location, and - tol is the new tolerance. if the edge has not been modified, this function returns false, and the values of c, l and tol are not significant.
-
-Parameters
-----------
-E: TopoDS_Edge
-C: Geom_Curve
-L: TopLoc_Location
-
-Returns
--------
-Tol: float
-") NewCurve;
-		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
-
-		/****************** NewCurve2d ******************/
-		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
-		%feature("compactdefaultargs") NewCurve2d;
-		%feature("autodoc", "Returns true if the edge e has a new curve on surface on the face f. if a new curve exists: - c is the new geometric support of the edge, - l is the new location, and - tol the new tolerance. if no new curve exists, this function returns false, and the values of c, l and tol are not significant.
-
-Parameters
-----------
-E: TopoDS_Edge
-F: TopoDS_Face
-NewE: TopoDS_Edge
-NewF: TopoDS_Face
-C: Geom2d_Curve
-
-Returns
--------
-Tol: float
-") NewCurve2d;
-		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
-
-		/****************** NewParameter ******************/
-		/**** md5 signature: e14926b54c8548936ba9a49d140b8da3 ****/
-		%feature("compactdefaultargs") NewParameter;
-		%feature("autodoc", "Returns true if the vertex v has a new parameter on the edge e. if a new parameter exists: - p is the parameter, and - tol is the new tolerance. if no new parameter exists, this function returns false, and the values of p and tol are not significant.
-
-Parameters
-----------
-V: TopoDS_Vertex
-E: TopoDS_Edge
-
-Returns
--------
-P: float
-Tol: float
-") NewParameter;
-		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
-
-		/****************** NewPoint ******************/
-		/**** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ****/
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "Returns true if the vertex v has been modified. if the vertex has been modified: - p is the new geometry of the vertex, and - tol is the new tolerance. if the vertex has not been modified this function returns false, and the values of p and tol are not significant.
-
-Parameters
-----------
-V: TopoDS_Vertex
-P: gp_Pnt
-
-Returns
--------
-Tol: float
-") NewPoint;
-		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
-
-		/****************** NewSurface ******************/
-		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "Returns true if the face f has been modified. if the face has been modified: - s is the new geometry of the face, - l is its new location, and - tol is the new tolerance. revwires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). revface is set to true if the orientation of the modified face changes in the shells which contain it. for this class, revface returns true if the gp_trsf associated with this modification is negative.
-
-Parameters
-----------
-F: TopoDS_Face
-S: Geom_Surface
-L: TopLoc_Location
-
-Returns
--------
-Tol: float
-RevWires: bool
-RevFace: bool
-") NewSurface;
-		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
-
-		/****************** Trsf ******************/
-		/**** md5 signature: 162ba6693c622bc37c4b2d05c6f93a56 ****/
-		%feature("compactdefaultargs") Trsf;
-		%feature("autodoc", "Provides access to the gp_trsf associated with this modification. the transformation can be changed.
-
-Returns
--------
-gp_Trsf
-") Trsf;
-		gp_Trsf Trsf();
-
-};
-
-
-%make_alias(BRepTools_TrsfModification)
-
-%extend BRepTools_TrsfModification {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

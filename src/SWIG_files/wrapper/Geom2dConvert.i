@@ -46,8 +46,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dconvert.htm
 #include<TColGeom2d_module.hxx>
 #include<TColStd_module.hxx>
 #include<Convert_module.hxx>
-#include<GeomAbs_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<GeomAbs_module.hxx>
+#include<gp_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -60,8 +61,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geom2dconvert.htm
 %import TColGeom2d.i
 %import TColStd.i
 %import Convert.i
-%import GeomAbs.i
 %import Adaptor2d.i
+%import GeomAbs.i
+%import gp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -80,9 +82,18 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%template(Geom2dConvert_SequenceOfPPoint) NCollection_Sequence<Geom2dConvert_PPoint>;
+
+%extend NCollection_Sequence<Geom2dConvert_PPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_Sequence<Geom2dConvert_PPoint> Geom2dConvert_SequenceOfPPoint;
 /* end typedefs declaration */
 
 /**********************
@@ -259,6 +270,70 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 
 %extend Geom2dConvert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************
+* class Geom2dConvert_ApproxArcsSegments *
+*****************************************/
+class Geom2dConvert_ApproxArcsSegments {
+	public:
+/* public enums */
+enum Status {
+	StatusOK = 0,
+	StatusNotDone = 1,
+	StatusError = 2,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class Status(IntEnum):
+	StatusOK = 0
+	StatusNotDone = 1
+	StatusError = 2
+StatusOK = Status.StatusOK
+StatusNotDone = Status.StatusNotDone
+StatusError = Status.StatusError
+};
+/* end python proxy for enums */
+
+		/****************** Geom2dConvert_ApproxArcsSegments ******************/
+		/**** md5 signature: 9436d6631fd8b7c74d966e3a9a65ee33 ****/
+		%feature("compactdefaultargs") Geom2dConvert_ApproxArcsSegments;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theCurve: Adaptor2d_Curve2d
+theTolerance: float
+theAngleTol: float
+
+Returns
+-------
+None
+") Geom2dConvert_ApproxArcsSegments;
+		 Geom2dConvert_ApproxArcsSegments(const Adaptor2d_Curve2d & theCurve, const Standard_Real theTolerance, const Standard_Real theAngleTol);
+
+		/****************** GetResult ******************/
+		/**** md5 signature: a34db03551bc2315f5a46e5144fc58f3 ****/
+		%feature("compactdefaultargs") GetResult;
+		%feature("autodoc", "Get the result curve after approximation.
+
+Returns
+-------
+TColGeom2d_SequenceOfCurve
+") GetResult;
+		const TColGeom2d_SequenceOfCurve & GetResult();
+
+};
+
+
+%extend Geom2dConvert_ApproxArcsSegments {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -624,6 +699,155 @@ None
 
 
 %extend Geom2dConvert_CompCurveToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************
+* class Geom2dConvert_PPoint *
+*****************************/
+class Geom2dConvert_PPoint {
+	public:
+		/****************** Geom2dConvert_PPoint ******************/
+		/**** md5 signature: 9f97d79e0015cb789a1360bfe27a3d23 ****/
+		%feature("compactdefaultargs") Geom2dConvert_PPoint;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Geom2dConvert_PPoint;
+		 Geom2dConvert_PPoint();
+
+		/****************** Geom2dConvert_PPoint ******************/
+		/**** md5 signature: 83fab53d710c50a2f43ab7d934212a29 ****/
+		%feature("compactdefaultargs") Geom2dConvert_PPoint;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theParameter: float
+thePoint: gp_XY
+theD1: gp_XY
+
+Returns
+-------
+None
+") Geom2dConvert_PPoint;
+		 Geom2dConvert_PPoint(const Standard_Real theParameter, const gp_XY & thePoint, const gp_XY & theD1);
+
+		/****************** Geom2dConvert_PPoint ******************/
+		/**** md5 signature: 8ca77da2aff18500051b72ae40ec0e35 ****/
+		%feature("compactdefaultargs") Geom2dConvert_PPoint;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theParameter: float
+theAdaptor: Adaptor2d_Curve2d
+
+Returns
+-------
+None
+") Geom2dConvert_PPoint;
+		 Geom2dConvert_PPoint(const Standard_Real theParameter, const Adaptor2d_Curve2d & theAdaptor);
+
+		/****************** D1 ******************/
+		/**** md5 signature: 363c5218bb91ef153804430b7f543e9a ****/
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "Query the first derivatives.
+
+Returns
+-------
+gp_XY
+") D1;
+		const gp_XY D1();
+
+		/****************** Dist ******************/
+		/**** md5 signature: fbe08e9f862a6f276bcef10b706a490f ****/
+		%feature("compactdefaultargs") Dist;
+		%feature("autodoc", "Compute the distance betwwen two 2d points.
+
+Parameters
+----------
+theOth: Geom2dConvert_PPoint
+
+Returns
+-------
+float
+") Dist;
+		Standard_Real Dist(const Geom2dConvert_PPoint & theOth);
+
+		/****************** Parameter ******************/
+		/**** md5 signature: 5d3812215998dd4ad07d1ceb370aa6b8 ****/
+		%feature("compactdefaultargs") Parameter;
+		%feature("autodoc", "Query the parmeter value.
+
+Returns
+-------
+float
+") Parameter;
+		Standard_Real Parameter();
+
+		/****************** Point ******************/
+		/**** md5 signature: 0d3e0ab14ec3cab7ff6e03fe3e9807fc ****/
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "Query the point location.
+
+Returns
+-------
+gp_XY
+") Point;
+		const gp_XY Point();
+
+		/****************** SetD1 ******************/
+		/**** md5 signature: 5a5de6ec69bb60e69527c94d00e3b4b8 ****/
+		%feature("compactdefaultargs") SetD1;
+		%feature("autodoc", "Change the value of the derivative at the point.
+
+Parameters
+----------
+theD1: gp_XY
+
+Returns
+-------
+None
+") SetD1;
+		void SetD1(const gp_XY & theD1);
+
+
+            %extend{
+                bool __ne_wrapper__(const Geom2dConvert_PPoint other) {
+                if (*self!=other) return true;
+                else return false;
+                }
+            }
+            %pythoncode {
+            def __ne__(self, right):
+                try:
+                    return self.__ne_wrapper__(right)
+                except:
+                    return True
+            }
+
+            %extend{
+                bool __eq_wrapper__(const Geom2dConvert_PPoint other) {
+                if (*self==other) return true;
+                else return false;
+                }
+            }
+            %pythoncode {
+            def __eq__(self, right):
+                try:
+                    return self.__eq_wrapper__(right)
+                except:
+                    return False
+            }
+};
+
+
+%extend Geom2dConvert_PPoint {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

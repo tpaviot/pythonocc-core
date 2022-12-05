@@ -753,9 +753,9 @@ None
 		 Prs3d_Drawer();
 
 		/****************** ArrowAspect ******************/
-		/**** md5 signature: 3409671eacd3a6ddebe2587e2a54d896 ****/
+		/**** md5 signature: 51fa944f931a2a140820470b2c6a88b4 ****/
 		%feature("compactdefaultargs") ArrowAspect;
-		%feature("autodoc", "Returns the attributes for display of arrows.
+		%feature("autodoc", "Returns own attributes for display of arrows, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -775,9 +775,9 @@ None
 		void ClearLocalAttributes();
 
 		/****************** DatumAspect ******************/
-		/**** md5 signature: beebe709186e5633fab2e10121443784 ****/
+		/**** md5 signature: ab5b6c51905d06854a4304f89d4c7189 ****/
 		%feature("compactdefaultargs") DatumAspect;
-		%feature("autodoc", "Returns settings for the appearance of datums. these settings can be edited. the default values for the three axes are: color: quantity_noc_peachpuff type of line: aspect_tol_solid width: 1.0.
+		%feature("autodoc", "Returns own settings for the appearance of datums, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -852,9 +852,9 @@ TCollection_AsciiString
 		const TCollection_AsciiString & DimLengthModelUnits();
 
 		/****************** DimensionAspect ******************/
-		/**** md5 signature: 10df0d6af7e7b8803b9e77f22e74029c ****/
+		/**** md5 signature: 6b03f02ae9f62eec0f444824df72cb53 ****/
 		%feature("compactdefaultargs") DimensionAspect;
-		%feature("autodoc", "Returns settings for the appearance of dimensions. .
+		%feature("autodoc", "Returns own settings for the appearance of dimensions, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -915,9 +915,9 @@ None
 		void EnableDrawHiddenLine();
 
 		/****************** FaceBoundaryAspect ******************/
-		/**** md5 signature: 48e0f66264867be080e764d28c595f12 ****/
+		/**** md5 signature: 4fe7266a8c0b80fde255b0355cc018c4 ****/
 		%feature("compactdefaultargs") FaceBoundaryAspect;
-		%feature("autodoc", "Returns line aspect of face boundaries.
+		%feature("autodoc", "Returns own line aspect of face boundaries, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -948,9 +948,9 @@ GeomAbs_Shape
 		GeomAbs_Shape FaceBoundaryUpperContinuity();
 
 		/****************** FreeBoundaryAspect ******************/
-		/**** md5 signature: bcb90a41d3df197f3068ae30df99d65a ****/
+		/**** md5 signature: 27a3ed0ee4198d0e57b27d7d6e4d2266 ****/
 		%feature("compactdefaultargs") FreeBoundaryAspect;
-		%feature("autodoc", "Returns the values for presentation of free boundaries, in other words, boundaries which are not shared. the lineaspect for the free boundaries can be edited. the default values are: color: quantity_noc_green type of line: aspect_tol_solid width: 1.0 these attributes are used by the algorithm prs3d_wfshape.
+		%feature("autodoc", "Returns own settings for presentation of free boundaries, settings from linked drawer or null if neither was set. in other words, this settings affect boundaries which are not shared. these attributes are used by the algorithm prs3d_wfshape.
 
 Returns
 -------
@@ -1443,9 +1443,9 @@ bool
 		Standard_Boolean HasOwnWireDraw();
 
 		/****************** HiddenLineAspect ******************/
-		/**** md5 signature: 177432ab56258a3fc6008a2c1f13f0da ****/
+		/**** md5 signature: d6e22a29aab321c9beaf4361c0c42ae0 ****/
 		%feature("compactdefaultargs") HiddenLineAspect;
-		%feature("autodoc", "Returns settings for hidden line aspects. these settings can be edited. the default values are: color: quantity_noc_yellow type of line: aspect_tol_dash width: 1.0.
+		%feature("autodoc", "Returns own settings for hidden line aspects, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -1498,9 +1498,9 @@ bool
 		Standard_Boolean LineArrowDraw();
 
 		/****************** LineAspect ******************/
-		/**** md5 signature: 027e1e5fb5346cb15b29824097097601 ****/
+		/**** md5 signature: fcc623ed837f4e3e85d4e27b8d17160a ****/
 		%feature("compactdefaultargs") LineAspect;
-		%feature("autodoc", "Returns settings for line aspects. these settings can be edited. the default values are: color: quantity_noc_yellow type of line: aspect_tol_solid width: 1.0 these attributes are used by the following algorithms: prs3d_curve prs3d_line prs3d_hlrshape.
+		%feature("autodoc", "Returns own settings for line aspects, settings from linked drawer or null if neither was set. these attributes are used by the following algorithms: prs3d_curve prs3d_line prs3d_hlrshape.
 
 Returns
 -------
@@ -1509,7 +1509,7 @@ opencascade::handle<Prs3d_LineAspect>
 		const opencascade::handle<Prs3d_LineAspect> & LineAspect();
 
 		/****************** Link ******************/
-		/**** md5 signature: 1cc30a180a70ae7e36c17d972daf638c ****/
+		/**** md5 signature: d38faf34b978f82ca625ab3dd81f64aa ****/
 		%feature("compactdefaultargs") Link;
 		%feature("autodoc", "Returns the drawer to which the current object references.
 
@@ -1537,7 +1537,7 @@ None
 		/****************** MaximalChordialDeviation ******************/
 		/**** md5 signature: 1d43ee640bc87c33eb91c301526bbda9 ****/
 		%feature("compactdefaultargs") MaximalChordialDeviation;
-		%feature("autodoc", "Returns the maximal chordal deviation. the default value is 0.1. drawings of curves or patches are made with respect to an absolute maximal chordal deviation.
+		%feature("autodoc", "Returns the maximal chordal deviation. the default value is 0.0001. drawings of curves or patches are made with respect to an absolute maximal chordal deviation.
 
 Returns
 -------
@@ -1557,9 +1557,9 @@ float
 		Standard_Real MaximalParameterValue();
 
 		/****************** PlaneAspect ******************/
-		/**** md5 signature: 9935c00df2ffa99621ad980d7829edf0 ****/
+		/**** md5 signature: 5860cc597653e9aeb633d2f0fe7a3a7e ****/
 		%feature("compactdefaultargs") PlaneAspect;
-		%feature("autodoc", "Returns settings for the appearance of planes.
+		%feature("autodoc", "Returns own settings for the appearance of planes, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -1568,9 +1568,9 @@ opencascade::handle<Prs3d_PlaneAspect>
 		const opencascade::handle<Prs3d_PlaneAspect> & PlaneAspect();
 
 		/****************** PointAspect ******************/
-		/**** md5 signature: 7c189e1bda93781d1789973b5e70d268 ****/
+		/**** md5 signature: 29da78c1effc071ee48ea7973016bb47 ****/
 		%feature("compactdefaultargs") PointAspect;
-		%feature("autodoc", "Returns the point aspect setting. the default values are color: quantity_noc_yellow type of marker: aspect_tom_plus scale: 1.0 these attributes are used by the algorithms prs3d_point.
+		%feature("autodoc", "Returns own point aspect setting, settings from linked drawer or null if neither was set. these attributes are used by the algorithms prs3d_point.
 
 Returns
 -------
@@ -1612,9 +1612,9 @@ float
 		Standard_Real PreviousHLRDeviationAngle();
 
 		/****************** SectionAspect ******************/
-		/**** md5 signature: ee2222d98a1c7413369ab3d05a165c4d ****/
+		/**** md5 signature: 26f929946082f9b18d8262f33b33f118 ****/
 		%feature("compactdefaultargs") SectionAspect;
-		%feature("autodoc", "The lineaspect for the wire can be edited. the default values are: color: quantity_noc_orange type of line: aspect_tol_solid width: 1.0 these attributes are used by the algorithm prs3d_wfshape.
+		%feature("autodoc", "Returns own lineaspect for section wire, settings from linked drawer or null if neither was set. these attributes are used by the algorithm prs3d_wfshape.
 
 Returns
 -------
@@ -1623,9 +1623,9 @@ opencascade::handle<Prs3d_LineAspect>
 		const opencascade::handle<Prs3d_LineAspect> & SectionAspect();
 
 		/****************** SeenLineAspect ******************/
-		/**** md5 signature: d27ae606cea5a7059d7792bdf6ef1776 ****/
+		/**** md5 signature: a609dd759d3b7ec8b3b3731b84600f21 ****/
 		%feature("compactdefaultargs") SeenLineAspect;
-		%feature("autodoc", "Returns settings for seen line aspects. these settings can be edited. the default values are: color: quantity_noc_yellow type of line: aspect_tol_solid width: 1.0.
+		%feature("autodoc", "Returns own settings for seen line aspects, settings of linked drawer or null if neither was set.
 
 Returns
 -------
@@ -1634,7 +1634,7 @@ opencascade::handle<Prs3d_LineAspect>
 		const opencascade::handle<Prs3d_LineAspect> & SeenLineAspect();
 
 		/****************** SetArrowAspect ******************/
-		/**** md5 signature: 643cd6b67a2736aa8052d0bf41edc263 ****/
+		/**** md5 signature: 0a1adde0b720014d803adbe7c86e169d ****/
 		%feature("compactdefaultargs") SetArrowAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display attributes of arrows.
 
@@ -1664,7 +1664,7 @@ None
 		void SetAutoTriangulation(const Standard_Boolean theIsEnabled);
 
 		/****************** SetDatumAspect ******************/
-		/**** md5 signature: 2bd9183d1f002ef5303d9e06a9d9409e ****/
+		/**** md5 signature: 4647d9dc3797dd067dbf2dfe686ab369 ****/
 		%feature("compactdefaultargs") SetDatumAspect;
 		%feature("autodoc", "Sets the modality theaspect for the display of datums.
 
@@ -1791,7 +1791,7 @@ None
 		void SetDimLengthModelUnits(const TCollection_AsciiString & theUnits);
 
 		/****************** SetDimensionAspect ******************/
-		/**** md5 signature: 00e9dc8e1f7a5427cc3d5bfc6271deeb ****/
+		/**** md5 signature: 3cc8cbe992a4f857a78fc1aaa6580a19 ****/
 		%feature("compactdefaultargs") SetDimensionAspect;
 		%feature("autodoc", "Sets the settings for the appearance of dimensions. the method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 
@@ -1806,7 +1806,7 @@ None
 		void SetDimensionAspect(const opencascade::handle<Prs3d_DimensionAspect> & theAspect);
 
 		/****************** SetDiscretisation ******************/
-		/**** md5 signature: 72b1f5550d22bb674a8fe4a705c558ef ****/
+		/**** md5 signature: 4361b5c3f1e3b5111800c4ea836567ea ****/
 		%feature("compactdefaultargs") SetDiscretisation;
 		%feature("autodoc", "Sets the discretisation parameter thevalue.
 
@@ -1821,7 +1821,7 @@ None
 		void SetDiscretisation(const Standard_Integer theValue);
 
 		/****************** SetFaceBoundaryAspect ******************/
-		/**** md5 signature: 43695da91e742e0c2512654fe6396c46 ****/
+		/**** md5 signature: 804ad972596fdd35ecb093f15856c7bb ****/
 		%feature("compactdefaultargs") SetFaceBoundaryAspect;
 		%feature("autodoc", "Sets line aspect for face boundaries. the method sets line aspect owned by the drawer that will be used during visualization instead of the one set in link. theaspect is the line aspect that determines the look of the face boundaries.
 
@@ -1866,7 +1866,7 @@ None
 		void SetFaceBoundaryUpperContinuity(GeomAbs_Shape theMostAllowedEdgeClass);
 
 		/****************** SetFreeBoundaryAspect ******************/
-		/**** md5 signature: af67defeb0ef912bc4b644347b429809 ****/
+		/**** md5 signature: 75dc7272677c2d304c07e394f41c07b7 ****/
 		%feature("compactdefaultargs") SetFreeBoundaryAspect;
 		%feature("autodoc", "Sets the parameter theaspect for the display of free boundaries. the method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 
@@ -1922,7 +1922,7 @@ None
 		void SetHLRAngle();
 
 		/****************** SetHiddenLineAspect ******************/
-		/**** md5 signature: eb2840c9c6e171b09b5638136aca85da ****/
+		/**** md5 signature: fc23aa00ae1da6d858eccdd0bffd021b ****/
 		%feature("compactdefaultargs") SetHiddenLineAspect;
 		%feature("autodoc", "Sets the parameter theaspect for the display of hidden lines in hidden line removal mode.
 
@@ -1982,7 +1982,7 @@ None
 		void SetLineArrowDraw(const Standard_Boolean theIsEnabled);
 
 		/****************** SetLineAspect ******************/
-		/**** md5 signature: 36238b90d4486087277b19d6e712b6c8 ****/
+		/**** md5 signature: edeacff48ba26eb953ac27ee5da1b9dd ****/
 		%feature("compactdefaultargs") SetLineAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display attributes of lines.
 
@@ -2012,7 +2012,7 @@ None
 		void SetLink(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****************** SetMaximalChordialDeviation ******************/
-		/**** md5 signature: 8e3d125e12afe5acba7fd80db355a038 ****/
+		/**** md5 signature: 432b23f0ed55ddc741078b7674cf10e8 ****/
 		%feature("compactdefaultargs") SetMaximalChordialDeviation;
 		%feature("autodoc", "Defines the maximal chordial deviation when drawing any curve. even if the type of deviation is set to tod_relative, this value is used by: prs3d_deflectioncurve prs3d_wfdeflectionsurface prs3d_wfdeflectionrestrictedface.
 
@@ -2027,7 +2027,7 @@ None
 		void SetMaximalChordialDeviation(const Standard_Real theChordialDeviation);
 
 		/****************** SetMaximalParameterValue ******************/
-		/**** md5 signature: fc6b43e0eb42413698fe9208ea1a5869 ****/
+		/**** md5 signature: aa314594e57535d77970bac6f2f02a1d ****/
 		%feature("compactdefaultargs") SetMaximalParameterValue;
 		%feature("autodoc", "Defines the maximum value allowed for the first and last parameters of an infinite curve.
 
@@ -2060,7 +2060,7 @@ bool
 		/****************** SetOwnLineAspects ******************/
 		/**** md5 signature: e66409de321081b5ec44a17dddcf0e3d ****/
 		%feature("compactdefaultargs") SetOwnLineAspects;
-		%feature("autodoc", "Sets own line aspects. returns false if own line aspect are already set.
+		%feature("autodoc", "Sets own line aspects, which are single u and single v gray75 solid isolines (::uisoaspect(), ::visoaspect()), red wire (::wireaspect()), yellow line (::lineaspect()), yellow seen line (::seenlineaspect()), dashed yellow hidden line (::hiddenlineaspect()), green free boundary (::freeboundaryaspect()), yellow unfree boundary (::unfreeboundaryaspect()). returns false if own line aspect are already set.
 
 Parameters
 ----------
@@ -2074,7 +2074,7 @@ bool
 		Standard_Boolean SetOwnLineAspects(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****************** SetPlaneAspect ******************/
-		/**** md5 signature: 3b36c57f5bc62698b2917e38bd27c4b1 ****/
+		/**** md5 signature: f22d1aee7c3703b9676dab2ac3cf0178 ****/
 		%feature("compactdefaultargs") SetPlaneAspect;
 		%feature("autodoc", "Sets the parameter theaspect for the display of planes. .
 
@@ -2089,7 +2089,7 @@ None
 		void SetPlaneAspect(const opencascade::handle<Prs3d_PlaneAspect> & theAspect);
 
 		/****************** SetPointAspect ******************/
-		/**** md5 signature: ede5fac8f21ae0a19bc73289af31956c ****/
+		/**** md5 signature: 94b301114933fbb123df3ae8775512cc ****/
 		%feature("compactdefaultargs") SetPointAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display attributes of points.
 
@@ -2104,7 +2104,7 @@ None
 		void SetPointAspect(const opencascade::handle<Prs3d_PointAspect> & theAspect);
 
 		/****************** SetSectionAspect ******************/
-		/**** md5 signature: 14176de42dfc43598b44a5b7d19b281e ****/
+		/**** md5 signature: 6c19b7443c1dc36132903ac9a28a5a0b ****/
 		%feature("compactdefaultargs") SetSectionAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display attributes of sections. .
 
@@ -2119,7 +2119,7 @@ None
 		void SetSectionAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****************** SetSeenLineAspect ******************/
-		/**** md5 signature: d81978774fb390ccb646655ef9280b23 ****/
+		/**** md5 signature: 89d38d4b652b01b524f6eac51895b264 ****/
 		%feature("compactdefaultargs") SetSeenLineAspect;
 		%feature("autodoc", "Sets the parameter theaspect for the display of seen lines in hidden line removal mode.
 
@@ -2152,7 +2152,7 @@ bool
 		bool SetShaderProgram(const opencascade::handle<Graphic3d_ShaderProgram> & theProgram, const Graphic3d_GroupAspect theAspect, const bool theToOverrideDefaults = false);
 
 		/****************** SetShadingAspect ******************/
-		/**** md5 signature: f2f0f6a62ad6795b99b940e2338beeab ****/
+		/**** md5 signature: 45b3837322e0cd51320f7a5eb31578c6 ****/
 		%feature("compactdefaultargs") SetShadingAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display attributes of shading.
 
@@ -2184,7 +2184,7 @@ bool
 		bool SetShadingModel(Graphic3d_TypeOfShadingModel theModel, bool theToOverrideDefaults = false);
 
 		/****************** SetTextAspect ******************/
-		/**** md5 signature: db23f8c5c7da32557736a694e90c77a9 ****/
+		/**** md5 signature: 16268f9cae5cfb074a9ff4dfb480431d ****/
 		%feature("compactdefaultargs") SetTextAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display attributes of text.
 
@@ -2229,7 +2229,7 @@ None
 		void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR);
 
 		/****************** SetUIsoAspect ******************/
-		/**** md5 signature: f12edb96c9961d0a5af7ffb1127d5d54 ****/
+		/**** md5 signature: 53fb2c4032ab095bc605ef5ed9d6de04 ****/
 		%feature("compactdefaultargs") SetUIsoAspect;
 		%feature("autodoc", "No available documentation.
 
@@ -2244,7 +2244,7 @@ None
 		void SetUIsoAspect(const opencascade::handle<Prs3d_IsoAspect> & theAspect);
 
 		/****************** SetUnFreeBoundaryAspect ******************/
-		/**** md5 signature: 83947532b5d890464c37c41250204107 ****/
+		/**** md5 signature: b09e9b0550868d8e766250cc7582a2e5 ****/
 		%feature("compactdefaultargs") SetUnFreeBoundaryAspect;
 		%feature("autodoc", "Sets the parameter theaspect for the display of shared boundaries. the method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 
@@ -2274,7 +2274,7 @@ None
 		void SetUnFreeBoundaryDraw(const Standard_Boolean theIsEnabled);
 
 		/****************** SetVIsoAspect ******************/
-		/**** md5 signature: bb24f9a07e7637d859903f0b588f5905 ****/
+		/**** md5 signature: 911f2c0ee7deff12cef662388c471713 ****/
 		%feature("compactdefaultargs") SetVIsoAspect;
 		%feature("autodoc", "Sets the appearance of v isoparameters - theaspect.
 
@@ -2289,7 +2289,7 @@ None
 		void SetVIsoAspect(const opencascade::handle<Prs3d_IsoAspect> & theAspect);
 
 		/****************** SetVectorAspect ******************/
-		/**** md5 signature: 300944cd0222aea1be7f11241dc1c94a ****/
+		/**** md5 signature: 479fb7dcf203538af63a50a743c52cb5 ****/
 		%feature("compactdefaultargs") SetVectorAspect;
 		%feature("autodoc", "Sets the modality theaspect for the display of vectors.
 
@@ -2319,7 +2319,7 @@ None
 		void SetVertexDrawMode(const Prs3d_VertexDrawMode theMode);
 
 		/****************** SetWireAspect ******************/
-		/**** md5 signature: 1561c463234945b2ddcf81a7532a3bf2 ****/
+		/**** md5 signature: 72325ef6d023a7f7fa069eb7baf3294b ****/
 		%feature("compactdefaultargs") SetWireAspect;
 		%feature("autodoc", "Sets the parameter theaspect for display of wires.
 
@@ -2348,10 +2348,21 @@ None
 ") SetWireDraw;
 		void SetWireDraw(const Standard_Boolean theIsEnabled);
 
+		/****************** SetupOwnDefaults ******************/
+		/**** md5 signature: bdd5eb74b80039b116be4559fe1ee121 ****/
+		%feature("compactdefaultargs") SetupOwnDefaults;
+		%feature("autodoc", "Setup all own aspects with default values.
+
+Returns
+-------
+None
+") SetupOwnDefaults;
+		void SetupOwnDefaults();
+
 		/****************** SetupOwnFaceBoundaryAspect ******************/
 		/**** md5 signature: 56de0be3b702e67c26bd56574e01fd6d ****/
 		%feature("compactdefaultargs") SetupOwnFaceBoundaryAspect;
-		%feature("autodoc", "Sets own face boundary aspect. returns false if the drawer already has its own attribute for face boundary aspect.
+		%feature("autodoc", "Sets own face boundary aspect, which is a black solid line by default. returns false if the drawer already has its own attribute for face boundary aspect.
 
 Parameters
 ----------
@@ -2367,7 +2378,7 @@ bool
 		/****************** SetupOwnPointAspect ******************/
 		/**** md5 signature: d1c0bbfa9dfec0450774acf4ca54dad3 ****/
 		%feature("compactdefaultargs") SetupOwnPointAspect;
-		%feature("autodoc", "Sets own point aspect. returns false if the drawer already has its own attribute for point aspect.
+		%feature("autodoc", "Sets own point aspect, which is a yellow aspect_tom_plus marker by default. returns false if the drawer already has its own attribute for point aspect.
 
 Parameters
 ----------
@@ -2383,7 +2394,7 @@ bool
 		/****************** SetupOwnShadingAspect ******************/
 		/**** md5 signature: f23c7b598ed27ffb9a83c13b44836ee0 ****/
 		%feature("compactdefaultargs") SetupOwnShadingAspect;
-		%feature("autodoc", "Sets own shading aspect. returns false if the drawer already has its own attribute for shading aspect.
+		%feature("autodoc", "Sets own shading aspect, which is graphic3d_nameofmaterial_brass material by default. returns false if the drawer already has its own attribute for shading aspect.
 
 Parameters
 ----------
@@ -2397,9 +2408,9 @@ bool
 		Standard_Boolean SetupOwnShadingAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****************** ShadingAspect ******************/
-		/**** md5 signature: 9cc274fb4b9a2f02b2acd17e41400ef1 ****/
+		/**** md5 signature: d658a34c620283ed10ba0f5964949287 ****/
 		%feature("compactdefaultargs") ShadingAspect;
-		%feature("autodoc", "Returns settings for shading aspects. these settings can be edited. the default values are: - color: quantity_noc_yellow - material: graphic3d_nameofmaterial_brass shading aspect is obtained through decomposition of 3d faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
+		%feature("autodoc", "Returns own settings for shading aspects, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -2408,9 +2419,9 @@ opencascade::handle<Prs3d_ShadingAspect>
 		const opencascade::handle<Prs3d_ShadingAspect> & ShadingAspect();
 
 		/****************** TextAspect ******************/
-		/**** md5 signature: 07a444e27b8d3d266ed65558bab00a78 ****/
+		/**** md5 signature: b5579ef455a1d67c591bf61096ba8f71 ****/
 		%feature("compactdefaultargs") TextAspect;
-		%feature("autodoc", "Returns settings for text aspect. these settings can be edited. the default value is: - color: quantity_noc_yellow.
+		%feature("autodoc", "Returns own settings for text aspect, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -2430,7 +2441,7 @@ Aspect_TypeOfDeflection
 		Aspect_TypeOfDeflection TypeOfDeflection();
 
 		/****************** TypeOfHLR ******************/
-		/**** md5 signature: e96aea79ff0d051fddf4f996a845286b ****/
+		/**** md5 signature: e4e50942bf562af106d24a9f06c4e967 ****/
 		%feature("compactdefaultargs") TypeOfHLR;
 		%feature("autodoc", "Returns the type of hlr algorithm currently in use.
 
@@ -2441,9 +2452,9 @@ Prs3d_TypeOfHLR
 		Prs3d_TypeOfHLR TypeOfHLR();
 
 		/****************** UIsoAspect ******************/
-		/**** md5 signature: 50019144b96bd3c2b87073413a79ffe9 ****/
+		/**** md5 signature: 3190afcc1b7588cf3aebc5a5dfb0f248 ****/
 		%feature("compactdefaultargs") UIsoAspect;
-		%feature("autodoc", "Defines the attributes which are used when drawing an u isoparametric curve of a face. defines the number of u isoparametric curves to be drawn for a single face. the lineaspect for u isoparametric lines can be edited (methods setcolor, settypeofline, setwidth, setnumber) the default values are: color : quantity_noc_gray75 type of line: aspect_tol_solid width : 0.5 //! these attributes are used by the following algorithms: prs3d_wfdeflectionsurface prs3d_wfdeflectionrestrictedface.
+		%feature("autodoc", "Defines own attributes for drawing an u isoparametric curve of a face, settings from linked drawer or null if neither was set. //! these attributes are used by the following algorithms: prs3d_wfdeflectionsurface prs3d_wfdeflectionrestrictedface.
 
 Returns
 -------
@@ -2452,9 +2463,9 @@ opencascade::handle<Prs3d_IsoAspect>
 		const opencascade::handle<Prs3d_IsoAspect> & UIsoAspect();
 
 		/****************** UnFreeBoundaryAspect ******************/
-		/**** md5 signature: bfc1f1b5dc52195381afa16b705073fa ****/
+		/**** md5 signature: 938e2731b1cd708ba26696c39bdb6092 ****/
 		%feature("compactdefaultargs") UnFreeBoundaryAspect;
-		%feature("autodoc", "Returns settings for shared boundary line aspects. the lineaspect for the unfree boundaries can be edited. the default values are: color: quantity_noc_yellow type of line: aspect_tol_solid width: 1. these attributes are used by the algorithm prs3d_wfshape.
+		%feature("autodoc", "Returns own settings for shared boundary line aspects, settings from linked drawer or null if neither was set. these attributes are used by the algorithm prs3d_wfshape.
 
 Returns
 -------
@@ -2694,9 +2705,9 @@ None
 		void UpdatePreviousDeviationCoefficient();
 
 		/****************** VIsoAspect ******************/
-		/**** md5 signature: 3ba70c2e24502fe900bb7c426f2d93c9 ****/
+		/**** md5 signature: 09b7691a9856c7b528ebade397f4a1e3 ****/
 		%feature("compactdefaultargs") VIsoAspect;
-		%feature("autodoc", "Defines the attributes which are used when drawing an v isoparametric curve of a face. defines the number of v isoparametric curves to be drawn for a single face. the lineaspect for v isoparametric lines can be edited (methods setcolor, settypeofline, setwidth, setnumber) the default values are: color : quantity_noc_gray82 type of line: aspect_tol_solid width : 0.5 //! these attributes are used by the following algorithms: prs3d_wfdeflectionsurface prs3d_wfdeflectionrestrictedface.
+		%feature("autodoc", "Defines own attributes for drawing an v isoparametric curve of a face, settings from linked drawer or null if neither was set. //! these attributes are used by the following algorithms: prs3d_wfdeflectionsurface prs3d_wfdeflectionrestrictedface.
 
 Returns
 -------
@@ -2705,9 +2716,9 @@ opencascade::handle<Prs3d_IsoAspect>
 		const opencascade::handle<Prs3d_IsoAspect> & VIsoAspect();
 
 		/****************** VectorAspect ******************/
-		/**** md5 signature: 946a1c858e21a85d95a8cb4c84f64b4c ****/
+		/**** md5 signature: 5f71df175530885a64f389ca286a41bb ****/
 		%feature("compactdefaultargs") VectorAspect;
-		%feature("autodoc", "Returns settings for the appearance of vectors. these settings can be edited. the default values are: color: quantity_noc_skyblue type of line: aspect_tol_solid width: 1.0.
+		%feature("autodoc", "Returns own settings for the appearance of vectors, settings from linked drawer or null if neither was set.
 
 Returns
 -------
@@ -2716,7 +2727,7 @@ opencascade::handle<Prs3d_LineAspect>
 		const opencascade::handle<Prs3d_LineAspect> & VectorAspect();
 
 		/****************** VertexDrawMode ******************/
-		/**** md5 signature: df142e6b4072fc8a19e387201c453724 ****/
+		/**** md5 signature: 909b24d3d9a35693286245e367d6447e ****/
 		%feature("compactdefaultargs") VertexDrawMode;
 		%feature("autodoc", "Returns the current mode of visualization of vertices of a topods_shape instance.
 
@@ -2727,9 +2738,9 @@ Prs3d_VertexDrawMode
 		Prs3d_VertexDrawMode VertexDrawMode();
 
 		/****************** WireAspect ******************/
-		/**** md5 signature: 23ac38ad44b068c2548a6aeceb9793ae ****/
+		/**** md5 signature: 636754a09bc13a0e0aa4e77f5c589fd0 ****/
 		%feature("compactdefaultargs") WireAspect;
-		%feature("autodoc", "Returns wire aspect settings. the lineaspect for the free boundaries can be edited. the default values are: color: quantity_noc_green type of line: aspect_tol_solid width: 1.0 these attributes are used by the algorithm prs3d_wfshape.
+		%feature("autodoc", "Returns own wire aspect settings, settings from linked drawer or null if neither was set. these attributes are used by the algorithm prs3d_wfshape.
 
 Returns
 -------

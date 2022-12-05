@@ -49,6 +49,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomconvert.html"
 #include<GeomAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TColgp_module.hxx>
+#include<gp_module.hxx>
+#include<math_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -68,6 +70,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomconvert.html"
 %import GeomAbs.i
 %import Adaptor3d.i
 %import TColgp.i
+%import gp.i
+%import math.i
 %import Geom2d.i
 
 %pythoncode {
@@ -76,10 +80,24 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum GeomConvert_ConvType {
+	GeomConvert_Target = 0,
+	GeomConvert_Simplest = 1,
+	GeomConvert_MinGap = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class GeomConvert_ConvType(IntEnum):
+	GeomConvert_Target = 0
+	GeomConvert_Simplest = 1
+	GeomConvert_MinGap = 2
+GeomConvert_Target = GeomConvert_ConvType.GeomConvert_Target
+GeomConvert_Simplest = GeomConvert_ConvType.GeomConvert_Simplest
+GeomConvert_MinGap = GeomConvert_ConvType.GeomConvert_MinGap
 };
 /* end python proxy for enums */
 
@@ -1278,6 +1296,781 @@ opencascade::handle<Geom_BSplineCurve>
 	@methodnotwrapped
 	def Clear(self):
 		pass
+	}
+};
+
+/************************************
+* class GeomConvert_CurveToAnaCurve *
+************************************/
+class GeomConvert_CurveToAnaCurve {
+	public:
+		/****************** GeomConvert_CurveToAnaCurve ******************/
+		/**** md5 signature: ec961824468293cd902f1969c652e26c ****/
+		%feature("compactdefaultargs") GeomConvert_CurveToAnaCurve;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") GeomConvert_CurveToAnaCurve;
+		 GeomConvert_CurveToAnaCurve();
+
+		/****************** GeomConvert_CurveToAnaCurve ******************/
+		/**** md5 signature: b1ece9c96194a4a80262bfa8a26ee2ab ****/
+		%feature("compactdefaultargs") GeomConvert_CurveToAnaCurve;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Geom_Curve
+
+Returns
+-------
+None
+") GeomConvert_CurveToAnaCurve;
+		 GeomConvert_CurveToAnaCurve(const opencascade::handle<Geom_Curve> & C);
+
+		/****************** ComputeCircle ******************/
+		/**** md5 signature: ea256c1493cd79f11cc19a93be84040a ****/
+		%feature("compactdefaultargs") ComputeCircle;
+		%feature("autodoc", "Tries to convert the given curve to circle with given tolerance. returns null curve if conversion is not possible.
+
+Parameters
+----------
+curve: Geom_Curve
+tolerance: float
+c1: float
+c2: float
+
+Returns
+-------
+cf: float
+cl: float
+Deviation: float
+") ComputeCircle;
+		static opencascade::handle<Geom_Curve> ComputeCircle(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** ComputeCurve ******************/
+		/**** md5 signature: c66a84ff606c6ec09706eec6eb45f9d8 ****/
+		%feature("compactdefaultargs") ComputeCurve;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+curve: Geom_Curve
+tolerance: float
+c1: float
+c2: float
+theCurvType: GeomConvert_ConvType,optional
+	default value is GeomConvert_MinGap
+theTarget: GeomAbs_CurveType,optional
+	default value is GeomAbs_Line
+
+Returns
+-------
+cf: float
+cl: float
+theGap: float
+") ComputeCurve;
+		static opencascade::handle<Geom_Curve> ComputeCurve(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const GeomConvert_ConvType theCurvType = GeomConvert_MinGap, const GeomAbs_CurveType theTarget = GeomAbs_Line);
+
+		/****************** ComputeEllipse ******************/
+		/**** md5 signature: e0bb1bde95947083b93efaccf7353272 ****/
+		%feature("compactdefaultargs") ComputeEllipse;
+		%feature("autodoc", "Tries to convert the given curve to ellipse with given tolerance. returns null curve if conversion is not possible.
+
+Parameters
+----------
+curve: Geom_Curve
+tolerance: float
+c1: float
+c2: float
+
+Returns
+-------
+cf: float
+cl: float
+Deviation: float
+") ComputeEllipse;
+		static opencascade::handle<Geom_Curve> ComputeEllipse(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** ComputeLine ******************/
+		/**** md5 signature: bc5142fb7fe1aa589de179e14ba11de0 ****/
+		%feature("compactdefaultargs") ComputeLine;
+		%feature("autodoc", "Tries to convert the given curve to line with given tolerance. returns null curve if conversion is not possible.
+
+Parameters
+----------
+curve: Geom_Curve
+tolerance: float
+c1: float
+c2: float
+
+Returns
+-------
+cf: float
+cl: float
+Deviation: float
+") ComputeLine;
+		static opencascade::handle<Geom_Line> ComputeLine(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** ConvertToAnalytical ******************/
+		/**** md5 signature: 549770939dd4922960c2746330467b86 ****/
+		%feature("compactdefaultargs") ConvertToAnalytical;
+		%feature("autodoc", "Converts me to analytical if possible with given tolerance. the new first and last parameters are returned to newf, newl.
+
+Parameters
+----------
+theTol: float
+theResultCurve: Geom_Curve
+F: float
+L: float
+
+Returns
+-------
+newF: float
+newL: float
+") ConvertToAnalytical;
+		Standard_Boolean ConvertToAnalytical(const Standard_Real theTol, opencascade::handle<Geom_Curve> & theResultCurve, const Standard_Real F, const Standard_Real L, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** Gap ******************/
+		/**** md5 signature: ff26c000138f3c6675ca82e0935201b1 ****/
+		%feature("compactdefaultargs") Gap;
+		%feature("autodoc", "Returns maximal deviation of converted surface from the original one computed by last call to converttoanalytical.
+
+Returns
+-------
+float
+") Gap;
+		Standard_Real Gap();
+
+		/****************** GetCircle ******************/
+		/**** md5 signature: 54fff07540fbc3c56e68304652c6011a ****/
+		%feature("compactdefaultargs") GetCircle;
+		%feature("autodoc", "Creates circle on points. returns true if ok.
+
+Parameters
+----------
+Circ: gp_Circ
+P0: gp_Pnt
+P1: gp_Pnt
+P2: gp_Pnt
+
+Returns
+-------
+bool
+") GetCircle;
+		static Standard_Boolean GetCircle(gp_Circ & Circ, const gp_Pnt & P0, const gp_Pnt & P1, const gp_Pnt & P2);
+
+		/****************** GetConvType ******************/
+		/**** md5 signature: 3380d79ecc2a38ee84684af221c8db7d ****/
+		%feature("compactdefaultargs") GetConvType;
+		%feature("autodoc", "Returns conversion type .
+
+Returns
+-------
+GeomConvert_ConvType
+") GetConvType;
+		GeomConvert_ConvType GetConvType();
+
+		/****************** GetLine ******************/
+		/**** md5 signature: f5adcee8a16048ac03ea0dd1162c6076 ****/
+		%feature("compactdefaultargs") GetLine;
+		%feature("autodoc", "Creates line on two points. resulting parameters returned.
+
+Parameters
+----------
+P1: gp_Pnt
+P2: gp_Pnt
+
+Returns
+-------
+cf: float
+cl: float
+") GetLine;
+		static gp_Lin GetLine(const gp_Pnt & P1, const gp_Pnt & P2, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****************** GetTarget ******************/
+		/**** md5 signature: 5c2574892803a79756a17ac0020a223f ****/
+		%feature("compactdefaultargs") GetTarget;
+		%feature("autodoc", "Returns target curve type .
+
+Returns
+-------
+GeomAbs_CurveType
+") GetTarget;
+		GeomAbs_CurveType GetTarget();
+
+		/****************** Init ******************/
+		/**** md5 signature: 3a7fb0adde1a97c68f435539513bba2c ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Geom_Curve
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<Geom_Curve> & C);
+
+		/****************** IsLinear ******************/
+		/**** md5 signature: 3fffa92876acf756eec0fb545af7bee0 ****/
+		%feature("compactdefaultargs") IsLinear;
+		%feature("autodoc", "Returns true if the set of points is linear with given tolerance.
+
+Parameters
+----------
+aPoints: TColgp_Array1OfPnt
+tolerance: float
+
+Returns
+-------
+Deviation: float
+") IsLinear;
+		static Standard_Boolean IsLinear(const TColgp_Array1OfPnt & aPoints, const Standard_Real tolerance, Standard_Real &OutValue);
+
+		/****************** SetConvType ******************/
+		/**** md5 signature: dc5b7fda06c157912253fd5c8fdcffe7 ****/
+		%feature("compactdefaultargs") SetConvType;
+		%feature("autodoc", "Sets type of convertion.
+
+Parameters
+----------
+theConvType: GeomConvert_ConvType
+
+Returns
+-------
+None
+") SetConvType;
+		void SetConvType(const GeomConvert_ConvType theConvType);
+
+		/****************** SetTarget ******************/
+		/**** md5 signature: ea3732f46794fadef2b53622915d7a0a ****/
+		%feature("compactdefaultargs") SetTarget;
+		%feature("autodoc", "Sets target curve type.
+
+Parameters
+----------
+theTarget: GeomAbs_CurveType
+
+Returns
+-------
+None
+") SetTarget;
+		void SetTarget(const GeomAbs_CurveType theTarget);
+
+};
+
+
+%extend GeomConvert_CurveToAnaCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***********************************
+* class GeomConvert_FuncConeLSDist *
+***********************************/
+class GeomConvert_FuncConeLSDist : public math_MultipleVarFunction {
+	public:
+		/****************** GeomConvert_FuncConeLSDist ******************/
+		/**** md5 signature: c18fa0e2e30905df7fa7d871ba339b12 ****/
+		%feature("compactdefaultargs") GeomConvert_FuncConeLSDist;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") GeomConvert_FuncConeLSDist;
+		 GeomConvert_FuncConeLSDist();
+
+		/****************** GeomConvert_FuncConeLSDist ******************/
+		/**** md5 signature: 92c3b44800588b998b0bdcce35d8c57d ****/
+		%feature("compactdefaultargs") GeomConvert_FuncConeLSDist;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoints: TColgp_HArray1OfXYZ
+theDir: gp_Dir
+
+Returns
+-------
+None
+") GeomConvert_FuncConeLSDist;
+		 GeomConvert_FuncConeLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints, const gp_Dir & theDir);
+
+		/****************** NbVariables ******************/
+		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
+		%feature("compactdefaultargs") NbVariables;
+		%feature("autodoc", "Number of variables.
+
+Returns
+-------
+int
+") NbVariables;
+		Standard_Integer NbVariables();
+
+		/****************** SetDir ******************/
+		/**** md5 signature: 1d0b77c139a977d9a07e3e8f20d2c562 ****/
+		%feature("compactdefaultargs") SetDir;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theDir: gp_Dir
+
+Returns
+-------
+None
+") SetDir;
+		void SetDir(const gp_Dir & theDir);
+
+		/****************** SetPoints ******************/
+		/**** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ****/
+		%feature("compactdefaultargs") SetPoints;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoints: TColgp_HArray1OfXYZ
+
+Returns
+-------
+None
+") SetPoints;
+		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
+
+		/****************** Value ******************/
+		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "Value.
+
+Parameters
+----------
+X: math_Vector
+
+Returns
+-------
+F: float
+") Value;
+		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+
+};
+
+
+%extend GeomConvert_FuncConeLSDist {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class GeomConvert_FuncCylinderLSDist *
+***************************************/
+class GeomConvert_FuncCylinderLSDist : public math_MultipleVarFunctionWithGradient {
+	public:
+		/****************** GeomConvert_FuncCylinderLSDist ******************/
+		/**** md5 signature: 9294d6c0e3d8b33feb6b8f55c7f9a765 ****/
+		%feature("compactdefaultargs") GeomConvert_FuncCylinderLSDist;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") GeomConvert_FuncCylinderLSDist;
+		 GeomConvert_FuncCylinderLSDist();
+
+		/****************** GeomConvert_FuncCylinderLSDist ******************/
+		/**** md5 signature: c28ebf082656d19dd5bbcd73e94e4d3c ****/
+		%feature("compactdefaultargs") GeomConvert_FuncCylinderLSDist;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoints: TColgp_HArray1OfXYZ
+theDir: gp_Dir
+
+Returns
+-------
+None
+") GeomConvert_FuncCylinderLSDist;
+		 GeomConvert_FuncCylinderLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints, const gp_Dir & theDir);
+
+		/****************** Gradient ******************/
+		/**** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ****/
+		%feature("compactdefaultargs") Gradient;
+		%feature("autodoc", "Gradient.
+
+Parameters
+----------
+X: math_Vector
+G: math_Vector
+
+Returns
+-------
+bool
+") Gradient;
+		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+
+		/****************** NbVariables ******************/
+		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
+		%feature("compactdefaultargs") NbVariables;
+		%feature("autodoc", "Number of variables.
+
+Returns
+-------
+int
+") NbVariables;
+		Standard_Integer NbVariables();
+
+		/****************** SetDir ******************/
+		/**** md5 signature: 1d0b77c139a977d9a07e3e8f20d2c562 ****/
+		%feature("compactdefaultargs") SetDir;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theDir: gp_Dir
+
+Returns
+-------
+None
+") SetDir;
+		void SetDir(const gp_Dir & theDir);
+
+		/****************** SetPoints ******************/
+		/**** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ****/
+		%feature("compactdefaultargs") SetPoints;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoints: TColgp_HArray1OfXYZ
+
+Returns
+-------
+None
+") SetPoints;
+		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
+
+		/****************** Value ******************/
+		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "Value.
+
+Parameters
+----------
+X: math_Vector
+
+Returns
+-------
+F: float
+") Value;
+		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+
+		/****************** Values ******************/
+		/**** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ****/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "Value and gradient.
+
+Parameters
+----------
+X: math_Vector
+G: math_Vector
+
+Returns
+-------
+F: float
+") Values;
+		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+
+};
+
+
+%extend GeomConvert_FuncCylinderLSDist {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************
+* class GeomConvert_FuncSphereLSDist *
+*************************************/
+class GeomConvert_FuncSphereLSDist : public math_MultipleVarFunctionWithGradient {
+	public:
+		/****************** GeomConvert_FuncSphereLSDist ******************/
+		/**** md5 signature: ecd22e69071f4a915806374c28120477 ****/
+		%feature("compactdefaultargs") GeomConvert_FuncSphereLSDist;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") GeomConvert_FuncSphereLSDist;
+		 GeomConvert_FuncSphereLSDist();
+
+		/****************** GeomConvert_FuncSphereLSDist ******************/
+		/**** md5 signature: fda9d28bcb623805c42baa638f23890c ****/
+		%feature("compactdefaultargs") GeomConvert_FuncSphereLSDist;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoints: TColgp_HArray1OfXYZ
+
+Returns
+-------
+None
+") GeomConvert_FuncSphereLSDist;
+		 GeomConvert_FuncSphereLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
+
+		/****************** Gradient ******************/
+		/**** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ****/
+		%feature("compactdefaultargs") Gradient;
+		%feature("autodoc", "Gradient.
+
+Parameters
+----------
+X: math_Vector
+G: math_Vector
+
+Returns
+-------
+bool
+") Gradient;
+		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+
+		/****************** NbVariables ******************/
+		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
+		%feature("compactdefaultargs") NbVariables;
+		%feature("autodoc", "Number of variables.
+
+Returns
+-------
+int
+") NbVariables;
+		Standard_Integer NbVariables();
+
+		/****************** SetPoints ******************/
+		/**** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ****/
+		%feature("compactdefaultargs") SetPoints;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoints: TColgp_HArray1OfXYZ
+
+Returns
+-------
+None
+") SetPoints;
+		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
+
+		/****************** Value ******************/
+		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "Value.
+
+Parameters
+----------
+X: math_Vector
+
+Returns
+-------
+F: float
+") Value;
+		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+
+		/****************** Values ******************/
+		/**** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ****/
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "Value and gradient.
+
+Parameters
+----------
+X: math_Vector
+G: math_Vector
+
+Returns
+-------
+F: float
+") Values;
+		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+
+};
+
+
+%extend GeomConvert_FuncSphereLSDist {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************
+* class GeomConvert_SurfToAnaSurf *
+**********************************/
+class GeomConvert_SurfToAnaSurf {
+	public:
+		/****************** GeomConvert_SurfToAnaSurf ******************/
+		/**** md5 signature: bdd7948b4c741cf42bf7406c87cb003b ****/
+		%feature("compactdefaultargs") GeomConvert_SurfToAnaSurf;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") GeomConvert_SurfToAnaSurf;
+		 GeomConvert_SurfToAnaSurf();
+
+		/****************** GeomConvert_SurfToAnaSurf ******************/
+		/**** md5 signature: a26e73f3d11a0e1e50ab31901a426539 ****/
+		%feature("compactdefaultargs") GeomConvert_SurfToAnaSurf;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Geom_Surface
+
+Returns
+-------
+None
+") GeomConvert_SurfToAnaSurf;
+		 GeomConvert_SurfToAnaSurf(const opencascade::handle<Geom_Surface> & S);
+
+		/****************** ConvertToAnalytical ******************/
+		/**** md5 signature: e57ac2326fa470e5e6cce2c0710d834d ****/
+		%feature("compactdefaultargs") ConvertToAnalytical;
+		%feature("autodoc", "Tries to convert the surface to an analytic form returns the result in case of failure, returns a null handle //!.
+
+Parameters
+----------
+InitialToler: float
+
+Returns
+-------
+opencascade::handle<Geom_Surface>
+") ConvertToAnalytical;
+		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real InitialToler);
+
+		/****************** ConvertToAnalytical ******************/
+		/**** md5 signature: 33b00422234d22dc8293f4611ee298de ****/
+		%feature("compactdefaultargs") ConvertToAnalytical;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+InitialToler: float
+Umin: float
+Umax: float
+Vmin: float
+Vmax: float
+
+Returns
+-------
+opencascade::handle<Geom_Surface>
+") ConvertToAnalytical;
+		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real InitialToler, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
+
+		/****************** Gap ******************/
+		/**** md5 signature: ff26c000138f3c6675ca82e0935201b1 ****/
+		%feature("compactdefaultargs") Gap;
+		%feature("autodoc", "Returns maximal deviation of converted surface from the original one computed by last call to converttoanalytical.
+
+Returns
+-------
+float
+") Gap;
+		Standard_Real Gap();
+
+		/****************** Init ******************/
+		/**** md5 signature: ae778074c5c355f705c26cfe08f002f6 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Geom_Surface
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<Geom_Surface> & S);
+
+		/****************** IsCanonical ******************/
+		/**** md5 signature: 65430f5df436025e37dd842c4efa5212 ****/
+		%feature("compactdefaultargs") IsCanonical;
+		%feature("autodoc", "Returns true, if surface is canonical.
+
+Parameters
+----------
+S: Geom_Surface
+
+Returns
+-------
+bool
+") IsCanonical;
+		static Standard_Boolean IsCanonical(const opencascade::handle<Geom_Surface> & S);
+
+		/****************** IsSame ******************/
+		/**** md5 signature: 349e0ba479554f88945ea67ac1ab3569 ****/
+		%feature("compactdefaultargs") IsSame;
+		%feature("autodoc", "Returns true if surfaces is same with the given tolerance.
+
+Parameters
+----------
+S1: Geom_Surface
+S2: Geom_Surface
+tol: float
+
+Returns
+-------
+bool
+") IsSame;
+		static Standard_Boolean IsSame(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real tol);
+
+		/****************** SetConvType ******************/
+		/**** md5 signature: 03bbc5678dadf68c699f6a038fd4fd40 ****/
+		%feature("compactdefaultargs") SetConvType;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theConvType: GeomConvert_ConvType,optional
+	default value is GeomConvert_Simplest
+
+Returns
+-------
+None
+") SetConvType;
+		void SetConvType(const GeomConvert_ConvType theConvType = GeomConvert_Simplest);
+
+		/****************** SetTarget ******************/
+		/**** md5 signature: 78977fc6a03db0963d60bdba17618653 ****/
+		%feature("compactdefaultargs") SetTarget;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSurfType: GeomAbs_SurfaceType,optional
+	default value is GeomAbs_Plane
+
+Returns
+-------
+None
+") SetTarget;
+		void SetTarget(const GeomAbs_SurfaceType theSurfType = GeomAbs_Plane);
+
+};
+
+
+%extend GeomConvert_SurfToAnaSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
 	}
 };
 

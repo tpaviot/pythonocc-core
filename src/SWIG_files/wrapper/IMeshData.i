@@ -81,7 +81,7 @@ enum IMeshData_Status {
 	IMeshData_TooFewPoints = 32,
 	IMeshData_Outdated = 64,
 	IMeshData_Reused = 128,
-	IMeshData_UserBreak = 352,
+	IMeshData_UserBreak = 256,
 };
 
 /* end public enums declaration */
@@ -99,7 +99,7 @@ class IMeshData_Status(IntEnum):
 	IMeshData_TooFewPoints = 32
 	IMeshData_Outdated = 64
 	IMeshData_Reused = 128
-	IMeshData_UserBreak = 352
+	IMeshData_UserBreak = 256
 IMeshData_NoError = IMeshData_Status.IMeshData_NoError
 IMeshData_OpenWire = IMeshData_Status.IMeshData_OpenWire
 IMeshData_SelfIntersectingWire = IMeshData_Status.IMeshData_SelfIntersectingWire

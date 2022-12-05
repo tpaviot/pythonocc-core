@@ -760,6 +760,24 @@ GeomAbs_SurfaceType
 ") GetType;
 		static GeomAbs_SurfaceType GetType(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
+		/****************** IsSurfG1 ******************/
+		/**** md5 signature: d95107568ad3b12d40cce978273a764d ****/
+		%feature("compactdefaultargs") IsSurfG1;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSurf: Adaptor3d_Surface
+theAlongU: bool
+theAngTol: float,optional
+	default value is Precision::Angular()
+
+Returns
+-------
+bool
+") IsSurfG1;
+		static Standard_Boolean IsSurfG1(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Boolean theAlongU, const Standard_Real theAngTol = Precision::Angular());
+
 		/****************** IsUClosed ******************/
 		/**** md5 signature: 72572d307cc1b0c468f6fd5b46afb6a4 ****/
 		%feature("compactdefaultargs") IsUClosed;
@@ -1454,7 +1472,7 @@ None
 		/****************** D1 ******************/
 		/**** md5 signature: 35469e629742699989c5c1b8606a25fd ****/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Computes the point and the first derivatives on the surface. raised if the continuity of the current intervals is not c1.
+		%feature("autodoc", "Computes the point and the first derivatives on the surface. raised if the continuity of the current intervals is not c1. //! tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
 
 Parameters
 ----------
@@ -1951,7 +1969,7 @@ opencascade::handle<Adaptor3d_Surface>
 		/****************** Value ******************/
 		/**** md5 signature: 86112fa27918493b04ce20ef2fcddd47 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the point of parameters u,v on the surface.
+		%feature("autodoc", "Computes the point of parameters u,v on the surface. tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
 
 Parameters
 ----------
@@ -2073,6 +2091,22 @@ Returns
 Standard_Address
 ") Edge;
 		virtual Standard_Address Edge();
+
+		/****************** GetConeApexParam ******************/
+		/**** md5 signature: 8be4fd6f665527c4e6b570e1d3c513af ****/
+		%feature("compactdefaultargs") GetConeApexParam;
+		%feature("autodoc", "Computes the cone's apex parameters. @param[in] thec conical surface @param[in] theu u parameter of cone's apex @param[in] thev v parameter of cone's apex.
+
+Parameters
+----------
+theC: gp_Cone
+
+Returns
+-------
+theU: float
+theV: float
+") GetConeApexParam;
+		static void GetConeApexParam(const gp_Cone & theC, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Has3d ******************/
 		/**** md5 signature: e26db380d8c3401e2b00bbdf4f01fa61 ****/

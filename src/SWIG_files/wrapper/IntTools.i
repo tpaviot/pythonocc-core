@@ -2586,17 +2586,6 @@ None
 ") IntTools_FClass2d;
 		 IntTools_FClass2d(const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "Destructor.
-
-Returns
--------
-None
-") Destroy;
-		void Destroy();
-
 		/****************** Init ******************/
 		/**** md5 signature: 9fa3174f39f493855c5fe31d2b5b64fc ****/
 		%feature("compactdefaultargs") Init;
@@ -2627,7 +2616,7 @@ bool
 		/****************** Perform ******************/
 		/**** md5 signature: 403774510e6e0c4bd249a27908ad88fd ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Returns state of the 2d point puv. if recadreonperiodic is true (defalut value), for the periodic surface 2d point, adjusted to period, is classified.
+		%feature("autodoc", "Returns state of the 2d point puv. if recadreonperiodic is true (default value), for the periodic surface 2d point, adjusted to period, is classified.
 
 Parameters
 ----------
@@ -5427,7 +5416,7 @@ None
 class IntTools_WLineTool {
 	public:
 		/****************** DecompositionOfWLine ******************/
-		/**** md5 signature: f0e45c7481555cd59fc2441081754a7d ****/
+		/**** md5 signature: 5c7884447a7d22e6ab34f6cf1e1fb685 ****/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", "No available documentation.
 
@@ -5442,14 +5431,13 @@ theLConstructor: GeomInt_LineConstructor
 theAvoidLConstructor: bool
 theTol: float
 theNewLines: IntPatch_SequenceOfLine
-&: float
 &: IntTools_Context
 
 Returns
 -------
 bool
 ") DecompositionOfWLine;
-		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, Standard_Real &OutValue, const opencascade::handle<IntTools_Context > &);
+		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, const opencascade::handle<IntTools_Context > &);
 
 		/****************** NotUseSurfacesForApprox ******************/
 		/**** md5 signature: eb83c267182a721a80afc576ebb61258 ****/

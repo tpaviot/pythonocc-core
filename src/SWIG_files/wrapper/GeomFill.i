@@ -3634,9 +3634,9 @@ None
 		virtual void Rotation(gp_Pnt & Center);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 7370f78ae703bcab1430cb6db96778d3 ****/
+		/**** md5 signature: 4f61bd5930a6293e48d18d548fb6b67a ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of location law.
 
 Parameters
 ----------
@@ -3644,9 +3644,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ****/
@@ -3936,6 +3936,17 @@ Returns
 bool
 ") GenerateParticularCase;
 		Standard_Boolean GenerateParticularCase();
+
+		/****************** GetStatus ******************/
+		/**** md5 signature: c62c84d505dd238d67f4c6383f3266b4 ****/
+		%feature("compactdefaultargs") GetStatus;
+		%feature("autodoc", "Returns execution status.
+
+Returns
+-------
+GeomFill_PipeError
+") GetStatus;
+		GeomFill_PipeError GetStatus();
 
 		/****************** Init ******************/
 		/**** md5 signature: d03408a50bd75e5b4692d40387d5a32a ****/
@@ -6408,9 +6419,9 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 2dae31c246023c37a7825f72c7877ada ****/
+		/**** md5 signature: a1d4a28acef1d51b0f5fb229ea384020 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of trihedron law returns standard_true.
 
 Parameters
 ----------
@@ -6418,9 +6429,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 128fbeb43b59baa5a891a2c4ea58f02a ****/
@@ -6769,9 +6780,9 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of trihedron law returns standard_true in case if execution end correctly.
 
 Parameters
 ----------
@@ -6779,9 +6790,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 };
 
@@ -7086,9 +7097,9 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of frenet law returns standard_true in case if execution end correctly.
 
 Parameters
 ----------
@@ -7096,9 +7107,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -7381,9 +7392,9 @@ None
 		virtual void Rotation(gp_Pnt & Center);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of trihedron law returns standard_true in case if execution end correctly.
 
 Parameters
 ----------
@@ -7391,9 +7402,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -8067,9 +8078,9 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of trihedron law returns standard_true in case if execution end correctly.
 
 Parameters
 ----------
@@ -8077,9 +8088,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 };
 
@@ -8956,9 +8967,9 @@ int
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of frenet law returns standard_true.
 
 Parameters
 ----------
@@ -8966,9 +8977,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 };
 
@@ -9363,9 +9374,9 @@ None
 		void SetAngle(const Standard_Real Angle);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Calculation of poles on locking surfaces (the intersection between the generatrixand the surface at the cross - section points mynbpts) returns standard_true in case if execution end correctly.
 
 Parameters
 ----------
@@ -9373,9 +9384,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -9816,9 +9827,9 @@ LastAngle: float
 		void Set(const opencascade::handle<GeomFill_SectionLaw> & Section, const Standard_Boolean rotat, const Standard_Real SFirst, const Standard_Real SLast, const Standard_Real PrecAngle, Standard_Real &OutValue);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Calculating poles on a surface (courbe guide / the surface of rotation in points mynbpts) returns standard_true.
 
 Parameters
 ----------
@@ -9826,9 +9837,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -11386,9 +11397,9 @@ None
 		virtual void Origine(const Standard_Real OrACR1, const Standard_Real OrACR2);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: 4e7881a8a5dfb5abce43b0bae2a3f3cb ****/
+		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of trihedron law returns standard_true.
 
 Parameters
 ----------
@@ -11396,9 +11407,9 @@ C: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
@@ -11630,9 +11641,9 @@ None
 		virtual void Origine(const Standard_Real OrACR1, const Standard_Real OrACR2);
 
 		/****************** SetCurve ******************/
-		/**** md5 signature: cad734bff5f673ac1acd8eb3a4ad371c ****/
+		/**** md5 signature: 855db3d4cb52339d3bce0cd3d9c66477 ****/
 		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Initialize curve of trihedron law returns standard_true in case if execution end correctly.
 
 Parameters
 ----------
@@ -11640,9 +11651,9 @@ thePath: Adaptor3d_Curve
 
 Returns
 -------
-None
+bool
 ") SetCurve;
-		virtual void SetCurve(const opencascade::handle<Adaptor3d_Curve> & thePath);
+		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & thePath);
 
 		/****************** SetInterval ******************/
 		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/

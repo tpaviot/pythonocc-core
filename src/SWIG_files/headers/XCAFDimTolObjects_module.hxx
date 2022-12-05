@@ -19,6 +19,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define XCAFDIMTOLOBJECTS_HXX
 
 
+#include<XCAFDimTolObjects_AngularQualifier.hxx>
 #include<XCAFDimTolObjects_DataMapOfToleranceDatum.hxx>
 #include<XCAFDimTolObjects_DatumModifWithValue.hxx>
 #include<XCAFDimTolObjects_DatumModifiersSequence.hxx>

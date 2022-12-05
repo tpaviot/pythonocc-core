@@ -742,7 +742,7 @@ None
 class BRepMesh_CurveTessellator : public IMeshTools_CurveTessellator {
 	public:
 		/****************** BRepMesh_CurveTessellator ******************/
-		/**** md5 signature: 3593aae58628fa87930993b4428a5e2a ****/
+		/**** md5 signature: 8969af78dec0b3b693d65dedebb220b7 ****/
 		%feature("compactdefaultargs") BRepMesh_CurveTessellator;
 		%feature("autodoc", "Constructor.
 
@@ -750,15 +750,17 @@ Parameters
 ----------
 theEdge: IMeshData::IEdgeHandle
 theParameters: IMeshTools_Parameters
+theMinPointsNb: int,optional
+	default value is 2
 
 Returns
 -------
 None
 ") BRepMesh_CurveTessellator;
-		 BRepMesh_CurveTessellator(const IMeshData::IEdgeHandle & theEdge, const IMeshTools_Parameters & theParameters);
+		 BRepMesh_CurveTessellator(const IMeshData::IEdgeHandle & theEdge, const IMeshTools_Parameters & theParameters, const Standard_Integer theMinPointsNb = 2);
 
 		/****************** BRepMesh_CurveTessellator ******************/
-		/**** md5 signature: 9a2c9c5077d96f99b2955155e2ab2441 ****/
+		/**** md5 signature: f45923b0468f038ca021eb1a2e3c68a7 ****/
 		%feature("compactdefaultargs") BRepMesh_CurveTessellator;
 		%feature("autodoc", "Constructor.
 
@@ -768,12 +770,14 @@ theEdge: IMeshData::IEdgeHandle
 theOrientation: TopAbs_Orientation
 theFace: IMeshData::IFaceHandle
 theParameters: IMeshTools_Parameters
+theMinPointsNb: int,optional
+	default value is 2
 
 Returns
 -------
 None
 ") BRepMesh_CurveTessellator;
-		 BRepMesh_CurveTessellator(const IMeshData::IEdgeHandle & theEdge, const TopAbs_Orientation theOrientation, const IMeshData::IFaceHandle & theFace, const IMeshTools_Parameters & theParameters);
+		 BRepMesh_CurveTessellator(const IMeshData::IEdgeHandle & theEdge, const TopAbs_Orientation theOrientation, const IMeshData::IFaceHandle & theFace, const IMeshTools_Parameters & theParameters, const Standard_Integer theMinPointsNb = 2);
 
 		/****************** PointsNb ******************/
 		/**** md5 signature: c7dec7b525c6ed3a148d8633ce567fe8 ****/
@@ -1915,7 +1919,7 @@ opencascade::handle<IMeshTools_CurveTessellator>
 		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellationExtractor(const IMeshData::IEdgeHandle & theDEdge, const IMeshData::IFaceHandle & theDFace);
 
 		/****************** CreateEdgeTessellator ******************/
-		/**** md5 signature: 1a2f4a5874f4c90651529ca6331ecc64 ****/
+		/**** md5 signature: c54c3d94cb5163c340c6d04455184934 ****/
 		%feature("compactdefaultargs") CreateEdgeTessellator;
 		%feature("autodoc", "Creates instance of free edge tessellator.
 
@@ -1923,15 +1927,17 @@ Parameters
 ----------
 theDEdge: IMeshData::IEdgeHandle
 theParameters: IMeshTools_Parameters
+theMinPointsNb: int,optional
+	default value is 2
 
 Returns
 -------
 opencascade::handle<IMeshTools_CurveTessellator>
 ") CreateEdgeTessellator;
-		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellator(const IMeshData::IEdgeHandle & theDEdge, const IMeshTools_Parameters & theParameters);
+		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellator(const IMeshData::IEdgeHandle & theDEdge, const IMeshTools_Parameters & theParameters, const Standard_Integer theMinPointsNb = 2);
 
 		/****************** CreateEdgeTessellator ******************/
-		/**** md5 signature: 98207a26095e16964a3d9439bb95d3cb ****/
+		/**** md5 signature: 1278d9934a8c73c14a0e219eab804270 ****/
 		%feature("compactdefaultargs") CreateEdgeTessellator;
 		%feature("autodoc", "Creates instance of edge tessellator.
 
@@ -1941,12 +1947,14 @@ theDEdge: IMeshData::IEdgeHandle
 theOrientation: TopAbs_Orientation
 theDFace: IMeshData::IFaceHandle
 theParameters: IMeshTools_Parameters
+theMinPointsNb: int,optional
+	default value is 2
 
 Returns
 -------
 opencascade::handle<IMeshTools_CurveTessellator>
 ") CreateEdgeTessellator;
-		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellator(const IMeshData::IEdgeHandle & theDEdge, const TopAbs_Orientation theOrientation, const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
+		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellator(const IMeshData::IEdgeHandle & theDEdge, const TopAbs_Orientation theOrientation, const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters, const Standard_Integer theMinPointsNb = 2);
 
 		/****************** Tessellate2d ******************/
 		/**** md5 signature: 07584604f6427ce52a0d4cc717031e44 ****/
@@ -4415,6 +4423,31 @@ None
 	}
 };
 
+/****************************************
+* class BRepMesh_ExtrusionRangeSplitter *
+****************************************/
+class BRepMesh_ExtrusionRangeSplitter : public BRepMesh_NURBSRangeSplitter {
+	public:
+		/****************** BRepMesh_ExtrusionRangeSplitter ******************/
+		/**** md5 signature: d07f4ec89669b0f89c1b66fc1e06d3ae ****/
+		%feature("compactdefaultargs") BRepMesh_ExtrusionRangeSplitter;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") BRepMesh_ExtrusionRangeSplitter;
+		 BRepMesh_ExtrusionRangeSplitter();
+
+};
+
+
+%extend BRepMesh_ExtrusionRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************************
 * class BRepMesh_IncrementalMesh *
 *********************************/
@@ -4598,6 +4631,31 @@ None
 %make_alias(BRepMesh_IncrementalMesh)
 
 %extend BRepMesh_IncrementalMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class BRepMesh_UndefinedRangeSplitter *
+****************************************/
+class BRepMesh_UndefinedRangeSplitter : public BRepMesh_NURBSRangeSplitter {
+	public:
+		/****************** BRepMesh_UndefinedRangeSplitter ******************/
+		/**** md5 signature: 8f04bf79f8ca9eff32045bf37a6720ba ****/
+		%feature("compactdefaultargs") BRepMesh_UndefinedRangeSplitter;
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") BRepMesh_UndefinedRangeSplitter;
+		 BRepMesh_UndefinedRangeSplitter();
+
+};
+
+
+%extend BRepMesh_UndefinedRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

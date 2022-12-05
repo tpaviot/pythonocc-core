@@ -228,7 +228,7 @@ None
 		 TCollection_AsciiString(const TCollection_AsciiString & astring);
 
 		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: ff5b7e6d1e3a3b11b166656508242920 ****/
+		/**** md5 signature: 77b3f342a0e7402e7425759425c20ae9 ****/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "Move constructor.
 
@@ -1732,7 +1732,7 @@ None
 		 TCollection_ExtendedString(const TCollection_ExtendedString & astring);
 
 		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: be6c1705de12aa7310de6c66e8c7839d ****/
+		/**** md5 signature: 48db9560fec5e00cc0d2840716162fbf ****/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "Move constructor.
 
@@ -1868,7 +1868,7 @@ bool
 		/****************** HashCode ******************/
 		/**** md5 signature: a6589c5513a379021f17112f206c8ccb ****/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "Returns a hashed value for the extended string within the range 1 .. theupper. note: if string is ascii, the computed value is the same as the value computed with the hashcode function on a tcollection_asciistring string composed with equivalent ascii characters. @param theextendedstring the extended string which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
+		%feature("autodoc", "Returns a hashed value for the extended string within the range 1 .. theupper. note: if string is ascii, the computed value is the same as the value computed with the hashcode function on a tcollection_asciistring string composed with equivalent ascii characters. @param thestring the extended string which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
 Parameters
 ----------

@@ -1271,96 +1271,6 @@ int
 /****************************
 * class BRepBlend_CSWalking *
 ****************************/
-class BRepBlend_CSWalking {
-	public:
-		/****************** BRepBlend_CSWalking ******************/
-		/**** md5 signature: a74a5d5cdd7c84c7c5635410477bc4fe ****/
-		%feature("compactdefaultargs") BRepBlend_CSWalking;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Curv: Adaptor3d_Curve
-Surf: Adaptor3d_Surface
-Domain: Adaptor3d_TopolTool
-
-Returns
--------
-None
-") BRepBlend_CSWalking;
-		 BRepBlend_CSWalking(const opencascade::handle<Adaptor3d_Curve> & Curv, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain);
-
-		/****************** Complete ******************/
-		/**** md5 signature: 8a1bdd17921ba51464cb2900597d7f15 ****/
-		%feature("compactdefaultargs") Complete;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-F: Blend_CSFunction
-Pmin: float
-
-Returns
--------
-bool
-") Complete;
-		Standard_Boolean Complete(Blend_CSFunction & F, const Standard_Real Pmin);
-
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****************** Line ******************/
-		/**** md5 signature: 9bbdb2164431d955d7a3a08a37fd239f ****/
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<BRepBlend_Line>
-") Line;
-		const opencascade::handle<BRepBlend_Line> & Line();
-
-		/****************** Perform ******************/
-		/**** md5 signature: a361649c1733aab22de8bce76b7d94ae ****/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-F: Blend_CSFunction
-Pdep: float
-Pmax: float
-MaxStep: float
-TolGuide: float
-Soldep: math_Vector
-Tolesp: float
-Fleche: float
-Appro: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") Perform;
-		void Perform(Blend_CSFunction & F, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Tolesp, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
-
-};
-
-
-%extend BRepBlend_CSWalking {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /**********************************
 * class BRepBlend_CurvPointRadInv *
 **********************************/
@@ -6205,6 +6115,14 @@ None
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class BRepBlend_CSWalking:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

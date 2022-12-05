@@ -51,6 +51,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepbuilderapi.ht
 #include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom2d_module.hxx>
+#include<Poly_module.hxx>
 #include<BRep_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TShort_module.hxx>
@@ -71,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepbuilderapi.ht
 %import TColStd.i
 %import Bnd.i
 %import Geom2d.i
+%import Poly.i
 
 %pythoncode {
 from enum import IntEnum
@@ -3832,6 +3834,51 @@ TopoDS_Wire
 	}
 };
 
+/***************************************
+* class BRepBuilderAPI_MakeShapeOnMesh *
+***************************************/
+class BRepBuilderAPI_MakeShapeOnMesh : public BRepBuilderAPI_MakeShape {
+	public:
+		/****************** BRepBuilderAPI_MakeShapeOnMesh ******************/
+		/**** md5 signature: d9775140ece54795f4552a05eb93688b ****/
+		%feature("compactdefaultargs") BRepBuilderAPI_MakeShapeOnMesh;
+		%feature("autodoc", "Ctor. sets mesh to process. @param themesh [in] - mesh to construct shape for.
+
+Parameters
+----------
+theMesh: Poly_Triangulation
+
+Returns
+-------
+None
+") BRepBuilderAPI_MakeShapeOnMesh;
+		 BRepBuilderAPI_MakeShapeOnMesh(const opencascade::handle<Poly_Triangulation> & theMesh);
+
+		/****************** Build ******************/
+		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "Builds shape on mesh.
+
+Parameters
+----------
+theRange: Message_ProgressRange,optional
+	default value is Message_ProgressRange()
+
+Returns
+-------
+None
+") Build;
+		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+
+};
+
+
+%extend BRepBuilderAPI_MakeShapeOnMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************************
 * class BRepBuilderAPI_MakeShell *
 *********************************/
@@ -4694,22 +4741,24 @@ None
 		 BRepBuilderAPI_Transform(const gp_Trsf & T);
 
 		/****************** BRepBuilderAPI_Transform ******************/
-		/**** md5 signature: 580043d7d7072f80daac5d9450a520d9 ****/
+		/**** md5 signature: 0ab1a7312e9d2fe5b40a55da4604dabf ****/
 		%feature("compactdefaultargs") BRepBuilderAPI_Transform;
-		%feature("autodoc", "Creates a transformation from the gp_trsf <t>, and applies it to the shape <s>. if the transformation is direct and isometric (determinant = 1) and <copy> = standard_false, the resulting shape is <s> on which a new location has been set. otherwise, the transformation is applied on a duplication of <s>.
+		%feature("autodoc", "Creates a transformation from the gp_trsf <thetrsf>, and applies it to the shape <theshape>. if the transformation is direct and isometric (determinant = 1) and <thecopygeom> = standard_false, the resulting shape is <theshape> on which a new location has been set. otherwise, the transformation is applied on a duplication of <theshape>. if <thecopymesh> is true, the triangulation will be copied, and the copy will be assigned to the result shape.
 
 Parameters
 ----------
-S: TopoDS_Shape
-T: gp_Trsf
-Copy: bool,optional
+theShape: TopoDS_Shape
+theTrsf: gp_Trsf
+theCopyGeom: bool,optional
+	default value is Standard_False
+theCopyMesh: bool,optional
 	default value is Standard_False
 
 Returns
 -------
 None
 ") BRepBuilderAPI_Transform;
-		 BRepBuilderAPI_Transform(const TopoDS_Shape & S, const gp_Trsf & T, const Standard_Boolean Copy = Standard_False);
+		 BRepBuilderAPI_Transform(const TopoDS_Shape & theShape, const gp_Trsf & theTrsf, const Standard_Boolean theCopyGeom = Standard_False, const Standard_Boolean theCopyMesh = Standard_False);
 
 		/****************** Modified ******************/
 		/**** md5 signature: 73ccfe97b4ed94547a190332224ffe23 ****/
@@ -4742,21 +4791,23 @@ TopoDS_Shape
 		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 18b546559b34b40c9a50445613009c29 ****/
+		/**** md5 signature: 373b1849db31ffa26c084b85e421ba70 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Pplies the geometric transformation defined at the time of construction of this framework to the shape s. - if the transformation t is direct and isometric, in other words, if the determinant of the vectorial part of t is equal to 1., and if copy equals false (the default value), the resulting shape is the same as the original but with a new location assigned to it. - in all other cases, the transformation is applied to a duplicate of s. use the function shape to access the result. note: this framework can be reused to apply the same geometric transformation to other shapes. you only need to specify them by calling the function perform again.
+		%feature("autodoc", "Applies the geometric transformation defined at the time of construction of this framework to the shape s. - if the transformation t is direct and isometric, in other words, if the determinant of the vectorial part of t is equal to 1., and if thecopygeom equals false (the default value), the resulting shape is the same as the original but with a new location assigned to it. - in all other cases, the transformation is applied to a duplicate of theshape. - if thecopymesh is true, the triangulation will be copied, and the copy will be assigned to the result shape. use the function shape to access the result. note: this framework can be reused to apply the same geometric transformation to other shapes. you only need to specify them by calling the function perform again.
 
 Parameters
 ----------
-S: TopoDS_Shape
-Copy: bool,optional
+theShape: TopoDS_Shape
+theCopyGeom: bool,optional
+	default value is Standard_False
+theCopyMesh: bool,optional
 	default value is Standard_False
 
 Returns
 -------
 None
 ") Perform;
-		void Perform(const TopoDS_Shape & S, const Standard_Boolean Copy = Standard_False);
+		void Perform(const TopoDS_Shape & theShape, const Standard_Boolean theCopyGeom = Standard_False, const Standard_Boolean theCopyMesh = Standard_False);
 
 };
 

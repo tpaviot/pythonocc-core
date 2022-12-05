@@ -620,6 +620,17 @@ bool
 ") IsDone;
 		Standard_Boolean IsDone();
 
+		/****************** IsParallel ******************/
+		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "Returns state of the operation.
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
+
 		/****************** NbPointsInLine ******************/
 		/**** md5 signature: f3ec11eec3cea5651932d4048586f83f ****/
 		%feature("compactdefaultargs") NbPointsInLine;

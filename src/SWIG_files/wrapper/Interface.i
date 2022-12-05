@@ -9738,6 +9738,21 @@ char *
 ") Family;
 		const char * Family();
 
+		/****************** FillMap ******************/
+		/**** md5 signature: e51e3c4131980a267a8de08fac73e54c ****/
+		%feature("compactdefaultargs") FillMap;
+		%feature("autodoc", "Fills given string-to-string map with all static data.
+
+Parameters
+----------
+theMap: NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString>
+
+Returns
+-------
+None
+") FillMap;
+		static void FillMap(NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> & theMap);
+
 		/****************** IDef ******************/
 		/**** md5 signature: 809047165ba17b6256ca717fd657b669 ****/
 		%feature("compactdefaultargs") IDef;

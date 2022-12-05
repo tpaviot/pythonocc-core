@@ -70,6 +70,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bopalgo.html"
 #include<BRep_module.hxx>
 #include<TShort_module.hxx>
 #include<Poly_module.hxx>
+#include<IntCurvesFace_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

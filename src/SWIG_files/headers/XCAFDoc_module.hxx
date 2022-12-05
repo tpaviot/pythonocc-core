@@ -21,8 +21,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<XCAFDoc.hxx>
 #include<XCAFDoc_Area.hxx>
+#include<XCAFDoc_AssemblyGraph.hxx>
 #include<XCAFDoc_AssemblyItemId.hxx>
 #include<XCAFDoc_AssemblyItemRef.hxx>
+#include<XCAFDoc_AssemblyIterator.hxx>
+#include<XCAFDoc_AssemblyTool.hxx>
 #include<XCAFDoc_Centroid.hxx>
 #include<XCAFDoc_ClippingPlaneTool.hxx>
 #include<XCAFDoc_Color.hxx>

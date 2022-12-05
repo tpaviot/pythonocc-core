@@ -1226,6 +1226,17 @@ None
 ") UpdateTransformation;
 		virtual void UpdateTransformation();
 
+		/****************** ViewAffinity ******************/
+		/**** md5 signature: c35163d8d141e7b5addc4d77c76dd71f ****/
+		%feature("compactdefaultargs") ViewAffinity;
+		%feature("autodoc", "Return view affinity mask.
+
+Returns
+-------
+opencascade::handle<Graphic3d_ViewAffinity>
+") ViewAffinity;
+		const opencascade::handle<Graphic3d_ViewAffinity> & ViewAffinity();
+
 		/****************** Width ******************/
 		/**** md5 signature: fabf8349fc4fa48cbd44877ecd356f67 ****/
 		%feature("compactdefaultargs") Width;
@@ -1563,7 +1574,7 @@ None
 		void Display(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
 		/****************** DisplayPriority ******************/
-		/**** md5 signature: 4cd85affe30131b51370a5de99d0bffe ****/
+		/**** md5 signature: 90f66350e590479c3e4675265df1e605 ****/
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "Returns the display priority of the presentable object theprsobject in this framework with the display mode themode.
 
@@ -1574,9 +1585,9 @@ theMode: int
 
 Returns
 -------
-int
+Graphic3d_DisplayPriority
 ") DisplayPriority;
-		Standard_Integer DisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode);
+		Graphic3d_DisplayPriority DisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode);
 
 		/****************** EndImmediateDraw ******************/
 		/**** md5 signature: 6979ec7acf16ddaac04142f401974aa8 ****/
@@ -1724,7 +1735,7 @@ None
 		void RedrawImmediate(const opencascade::handle<V3d_Viewer> & theViewer);
 
 		/****************** SetDisplayPriority ******************/
-		/**** md5 signature: fd1b8158e0bd7c369bc599803445088d ****/
+		/**** md5 signature: 9a549ca30dd3170bb74ca40344856587 ****/
 		%feature("compactdefaultargs") SetDisplayPriority;
 		%feature("autodoc", "Sets the display priority thenewprior of the presentable object theprsobject in this framework with the display mode themode.
 
@@ -1732,13 +1743,13 @@ Parameters
 ----------
 thePrsObject: PrsMgr_PresentableObject
 theMode: int
-theNewPrior: int
+theNewPrior: Graphic3d_DisplayPriority
 
 Returns
 -------
 None
 ") SetDisplayPriority;
-		void SetDisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode, const Standard_Integer theNewPrior);
+		void SetDisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode, const Graphic3d_DisplayPriority theNewPrior);
 
 		/****************** SetVisibility ******************/
 		/**** md5 signature: d7287cc5906b7a3a48ea7b6451457b6e ****/

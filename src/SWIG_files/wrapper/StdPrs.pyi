@@ -22,6 +22,7 @@ from OCC.Core.Bnd import *
 from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 from OCC.Core.Adaptor2d import *
+from OCC.Core.BRepLib import *
 
 StdPrs_BndBox = NewType('StdPrs_BndBox', Prs3d_BndBox)
 #the following typedef cannot be wrapped as is
@@ -225,15 +226,9 @@ class StdPrs_ToolRFace:
     def Orientation(self) -> TopAbs_Orientation: ...
     def Value(self) -> Adaptor2d_Curve2d: ...
 
-class StdPrs_ToolTriangulatedShape:
+class StdPrs_ToolTriangulatedShape(BRepLib_ToolTriangulatedShape):
     @staticmethod
     def ClearOnOwnDeflectionChange(theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer, theToResetCoeff: bool) -> None: ...
-    @overload
-    @staticmethod
-    def ComputeNormals(theFace: TopoDS_Face, theTris: Poly_Triangulation) -> None: ...
-    @overload
-    @staticmethod
-    def ComputeNormals(theFace: TopoDS_Face, theTris: Poly_Triangulation, thePolyConnect: Poly_Connect) -> None: ...
     @staticmethod
     def GetDeflection(theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer) -> float: ...
     @staticmethod
@@ -242,8 +237,6 @@ class StdPrs_ToolTriangulatedShape:
     def IsTessellated(theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer) -> bool: ...
     @staticmethod
     def IsTriangulated(theShape: TopoDS_Shape) -> bool: ...
-    @staticmethod
-    def Normal(theFace: TopoDS_Face, thePolyConnect: Poly_Connect, theNormals: TColgp_Array1OfDir) -> None: ...
     @staticmethod
     def Tessellate(theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer) -> bool: ...
 
@@ -369,13 +362,10 @@ StdPrs_ShadedSurface_Add = StdPrs_ShadedSurface.Add
 StdPrs_ShapeTool_IsPlanarFace = StdPrs_ShapeTool.IsPlanarFace
 StdPrs_ToolPoint_Coord = StdPrs_ToolPoint.Coord
 StdPrs_ToolTriangulatedShape_ClearOnOwnDeflectionChange = StdPrs_ToolTriangulatedShape.ClearOnOwnDeflectionChange
-StdPrs_ToolTriangulatedShape_ComputeNormals = StdPrs_ToolTriangulatedShape.ComputeNormals
-StdPrs_ToolTriangulatedShape_ComputeNormals = StdPrs_ToolTriangulatedShape.ComputeNormals
 StdPrs_ToolTriangulatedShape_GetDeflection = StdPrs_ToolTriangulatedShape.GetDeflection
 StdPrs_ToolTriangulatedShape_IsClosed = StdPrs_ToolTriangulatedShape.IsClosed
 StdPrs_ToolTriangulatedShape_IsTessellated = StdPrs_ToolTriangulatedShape.IsTessellated
 StdPrs_ToolTriangulatedShape_IsTriangulated = StdPrs_ToolTriangulatedShape.IsTriangulated
-StdPrs_ToolTriangulatedShape_Normal = StdPrs_ToolTriangulatedShape.Normal
 StdPrs_ToolTriangulatedShape_Tessellate = StdPrs_ToolTriangulatedShape.Tessellate
 StdPrs_ToolVertex_Coord = StdPrs_ToolVertex.Coord
 StdPrs_WFDeflectionRestrictedFace_Add = StdPrs_WFDeflectionRestrictedFace.Add

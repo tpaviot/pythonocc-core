@@ -109,25 +109,14 @@ typedef float Standard_ShortReal;
 typedef size_t Standard_Size;
 typedef Standard_Size Standard_ThreadId;
 typedef std::time_t Standard_Time;
-typedef GUID Standard_UUID;
+typedef unsigned int Standard_UInteger;
 typedef char16_t Standard_Utf16Char;
 typedef char32_t Standard_Utf32Char;
 typedef char Standard_Utf8Char;
 typedef unsigned char Standard_Utf8UChar;
 typedef wchar_t Standard_WideChar;
-typedef signed __int16 int16_t;
-typedef signed __int32 int32_t;
-typedef signed __int64 int64_t;
-typedef signed __int8 int8_t;
-typedef unsigned __int16 uint16_t;
-typedef unsigned __int32 uint32_t;
-typedef unsigned __int64 uint64_t;
-typedef unsigned __int8 uint8_t;
 /* end typedefs declaration */
 
-/*************
-* class GUID *
-*************/
 /*****************
 * class Standard *
 *****************/
@@ -1105,12 +1094,24 @@ char *
 	}
 };
 
-/********************
-* class conditional *
-********************/
-/**********************************************
-* class conditional<false,TypeTrue,TypeFalse> *
-**********************************************/
+/**********************
+* class Standard_UUID *
+**********************/
+class Standard_UUID {
+	public:
+		uint32_t Data1;
+		uint16_t Data2;
+		uint16_t Data3;
+		uint8_t Data4[8];
+};
+
+
+%extend Standard_UUID {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************************
 * class direct_base_class_as_tuple *
 ***********************************/
@@ -1120,12 +1121,6 @@ char *
 /**************************
 * class disable_deduction *
 **************************/
-/******************
-* class enable_if *
-******************/
-/******************************
-* class enable_if<true,_Type> *
-******************************/
 /***************
 * class handle *
 ***************/

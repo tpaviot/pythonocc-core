@@ -7795,7 +7795,7 @@ class Extrema_GenExtCS {
 		/****************** Extrema_GenExtCS ******************/
 		/**** md5 signature: f167ca7a9c7e606895908255498d3a2f ****/
 		%feature("compactdefaultargs") Extrema_GenExtCS;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -8011,7 +8011,7 @@ class Extrema_GenExtPS {
 		/****************** Extrema_GenExtPS ******************/
 		/**** md5 signature: a5064b4d9e02a8b5f95bf2e555839ea7 ****/
 		%feature("compactdefaultargs") Extrema_GenExtPS;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------
@@ -8227,7 +8227,7 @@ class Extrema_GenExtSS {
 		/****************** Extrema_GenExtSS ******************/
 		/**** md5 signature: bdbaa032cdecd5329d7e7eff59343f37 ****/
 		%feature("compactdefaultargs") Extrema_GenExtSS;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Empty constructor.
 
 Returns
 -------

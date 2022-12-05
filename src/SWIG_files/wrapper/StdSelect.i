@@ -49,6 +49,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdselect.html"
 #include<TopLoc_module.hxx>
 #include<V3d_module.hxx>
 #include<Select3D_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<TShort_module.hxx>
@@ -83,6 +84,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdselect.html"
 %import TopLoc.i
 %import V3d.i
 %import Select3D.i
+%import TopTools.i
 %import TopAbs.i
 
 %pythoncode {
@@ -471,7 +473,7 @@ class StdSelect_BRepSelectionTool {
 		/****************** ComputeSensitive ******************/
 		/**** md5 signature: 80156af8bd1629db930e94f1fa305511 ****/
 		%feature("compactdefaultargs") ComputeSensitive;
-		%feature("autodoc", "Computes the sensitive primitives, stores them in the selectmgr_selection object, and returns this object. @param theshape shape to compute sensitive entities @param theowner selectable owner object @param theselection selection to append new sensitive entities @param thedeflection linear deflection @param thedeflangle angular deflection @param thenbponedge sensitivity parameters for edges and wires @param themaxiparam sensitivity parameters for infinite objects (the default value is 500) @param theautotriang flag to compute triangulation for the faces which have none.
+		%feature("autodoc", "Computes the sensitive primitives, stores them in the selectmgr_selection object, and returns this object. @param[in] theshape shape to compute sensitive entities @param[in] theowner selectable owner object @param[in] theselection selection to append new sensitive entities @param[in] thedeflection linear deflection @param[in] thedeflangle angular deflection @param[in] thenbponedge sensitivity parameters for edges and wires @param[in] themaxiparam sensitivity parameters for infinite objects (the default value is 500) @param[in] theautotriang flag to compute triangulation for the faces which have none.
 
 Parameters
 ----------
@@ -494,7 +496,7 @@ None
 		/****************** GetEdgeSensitive ******************/
 		/**** md5 signature: 60efc4b0470e1680eb7febd4c2b6e11a ****/
 		%feature("compactdefaultargs") GetEdgeSensitive;
-		%feature("autodoc", "Create a sensitive edge or sensitive wire. @param theshape either topods_edge or topods_wire to compute sensitive entities @param theowner selectable owner object @param theselection selection to append new sensitive entities @param thedeflection linear deflection @param thedeviationangle angular deflection @param thenbponedge sensitivity parameters @param themaxiparam sensitivity parameters.
+		%feature("autodoc", "Create a sensitive edge or sensitive wire. @param[in] theshape either topods_edge or topods_wire to compute sensitive entities @param[in] theowner selectable owner object @param[in] theselection selection to append new sensitive entities @param[in] thedeflection linear deflection @param[in] thedeviationangle angular deflection @param[in] thenbponedge sensitivity parameters @param[out] themaxiparam sensitivity parameters.
 
 Parameters
 ----------
@@ -513,10 +515,27 @@ None
 ") GetEdgeSensitive;
 		static void GetEdgeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
+		/****************** GetSensitiveForCylinder ******************/
+		/**** md5 signature: eac39b3b0583dbd2fd17b15718b9faca ****/
+		%feature("compactdefaultargs") GetSensitiveForCylinder;
+		%feature("autodoc", "Creates a sensitive cylinder. @param[in] thesubfacesmap map of cylinder faces @param[in] theowner selectable owner object @param[in] theselection selection to append new sensitive entities.
+
+Parameters
+----------
+theSubfacesMap: TopTools_IndexedMapOfShape
+theOwner: SelectMgr_EntityOwner
+theSelection: SelectMgr_Selection
+
+Returns
+-------
+bool
+") GetSensitiveForCylinder;
+		static Standard_Boolean GetSensitiveForCylinder(const TopTools_IndexedMapOfShape & theSubfacesMap, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection);
+
 		/****************** GetSensitiveForFace ******************/
 		/**** md5 signature: 2642b35a3a997e099ba05a1cdd42764e ****/
 		%feature("compactdefaultargs") GetSensitiveForFace;
-		%feature("autodoc", "Creates the 3d sensitive entities for face selection. @param theface face to compute sensitive entities @param theowner selectable owner object @param theoutlist output result list to append created entities @param theautotriang obsolete flag (has no effect) @param thenbponedge sensitivity parameters @param themaxiparam sensitivity parameters @param theinteriorflag flag indicating that face interior (true) or face boundary (false) should be selectable.
+		%feature("autodoc", "Creates the 3d sensitive entities for face selection. @param[in] theface face to compute sensitive entities @param[in] theowner selectable owner object @param[out] theoutlist output result list to append created entities @param[in] theautotriang obsolete flag (has no effect) @param[in] thenbponedge sensitivity parameters @param[in] themaxiparam sensitivity parameters @param[in] theinteriorflag flag indicating that face interior (true) or face boundary (false) should be selectable.
 
 Parameters
 ----------
