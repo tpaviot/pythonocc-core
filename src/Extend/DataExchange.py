@@ -20,7 +20,7 @@ import os
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.TopAbs import TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
-from OCC.Core.StlAPI import stlapi_Read, StlAPI_Writer
+from OCC.Core.StlAPI import stlapi, StlAPI_Writer
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.gp import gp_Pnt, gp_Dir, gp_Pnt2d
 from OCC.Core.Bnd import Bnd_Box2d
@@ -35,12 +35,11 @@ from OCC.Core.STEPControl import (
     STEPControl_Writer,
     STEPControl_AsIs,
 )
-from OCC.Core.Interface import Interface_Static_SetCVal
+from OCC.Core.Interface import Interface_Static
 from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (
-    XCAFDoc_DocumentTool_ShapeTool,
-    XCAFDoc_DocumentTool_ColorTool,
+    XCAFDoc_DocumentTool,
     XCAFDoc_ColorTool,
 )
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
@@ -129,7 +128,7 @@ def write_step_file(a_shape, filename, application_protocol="AP203"):
         print(f"Warning: {filename} file already exists and will be replaced")
     # creates and initialise the step exporter
     step_writer = STEPControl_Writer()
-    Interface_Static_SetCVal("write.step.schema", application_protocol)
+    Interface_Static.SetCVal("write.step.schema", application_protocol)
 
     # transfer shapes and write file
     step_writer.Transfer(a_shape, STEPControl_AsIs)
@@ -154,8 +153,8 @@ def read_step_file_with_names_colors(filename):
     doc = TDocStd_Document("pythonocc-doc")
 
     # Get root assembly
-    shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
-    color_tool = XCAFDoc_DocumentTool_ColorTool(doc.Main())
+    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+    color_tool = XCAFDoc_DocumentTool.ColorTool(doc.Main())
     # layer_tool = XCAFDoc_DocumentTool_LayerTool(doc.Main())
     # mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
 
@@ -417,7 +416,7 @@ def read_stl_file(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
     the_shape = TopoDS_Shape()
-    stlapi_Read(the_shape, filename)
+    stlapi.Read(the_shape, filename)
 
     if the_shape.IsNull():
         raise AssertionError("Shape is null.")

@@ -35,7 +35,7 @@ from OCC.Core.TopAbs import (
     TopAbs_COMPSOLID,
     TopAbs_ShapeEnum,
 )
-from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
+from OCC.Core.TopExp import TopExp_Explorer, topexp
 from OCC.Core.TopTools import (
     TopTools_ListIteratorOfListOfShape,
     TopTools_IndexedDataMapOfShapeListOfShape,
@@ -51,8 +51,6 @@ from OCC.Core.TopoDS import (
     TopoDS_Shape,
     TopoDS_Compound,
     TopoDS_CompSolid,
-    topods_Edge,
-    topods_Vertex,
     TopoDS_Iterator,
 )
 from OCC.Core.GCPnts import (
@@ -101,7 +99,7 @@ class WireExplorer:
     def _loop_topo(self, edges: Optional[bool] = True) -> Iterator[Any]:
         if self.done:
             self._reinitialize()
-        topology_type = topods_Edge if edges else topods_Vertex
+        topology_type = topods.Edge if edges else topods.Vertex
         seq = []
 
         while self.wire_explorer.More():
@@ -333,7 +331,7 @@ class TopologyExplorer:
         topo_set = set()
         topo_set_hash_codes = {}
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
-        topexp_MapShapesAndAncestors(
+        topexp.MapShapesAndAncestors(
             self.my_shape, topology_type_1, topology_type_2, _map
         )
         results = _map.FindFromKey(topological_entity)
@@ -383,7 +381,7 @@ class TopologyExplorer:
         """
         topo_set = set()
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
-        topexp_MapShapesAndAncestors(
+        topexp.MapShapesAndAncestors(
             self.my_shape, topology_type_1, topology_type_2, _map
         )
         results = _map.FindFromKey(topological_entity)
@@ -531,7 +529,7 @@ def dump_topology_to_string(
     brt = BRep_Tool()
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
-        pnt = brt.Pnt(topods_Vertex(shape))
+        pnt = brt.Pnt(topods.Vertex(shape))
         print(".." * level + f"<Vertex {hash(shape)}: {pnt.X()} {pnt.Y()} {pnt.Z()}>\n")
     else:
         print(".." * level, end="")

@@ -30,7 +30,7 @@ from OCC.Core.AIS import (
     AIS_Shaded,
     AIS_TexturedShape,
     AIS_WireFrame,
-    AIS_Shape_SelectionMode,
+    AIS_Shape,
 )
 from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.Core.BRepBuilderAPI import (
@@ -621,9 +621,9 @@ class Viewer3d(Display3d):
         self.Context.Deactivate()
         topo_level = next(modes)
         if mode is None:
-            self.Context.Activate(AIS_Shape_SelectionMode(topo_level), True)
+            self.Context.Activate(AIS_Shape.SelectionMode(topo_level), True)
         else:
-            self.Context.Activate(AIS_Shape_SelectionMode(mode), True)
+            self.Context.Activate(AIS_Shape.SelectionMode(mode), True)
         self.Context.UpdateSelected(True)
 
     def SetSelectionModeVertex(self):
