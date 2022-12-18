@@ -62,7 +62,6 @@ from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
 MAX_32_BIT_INT = 2**31 - 1
 
-
 def _number_of_topo(iterable: Iterable) -> int:
     nbr_topo = 0
     for _ in iterable:
