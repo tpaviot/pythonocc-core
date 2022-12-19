@@ -156,9 +156,10 @@ class Viewer3d(Display3d):
         self.Context = self.GetContext()
         self.Viewer = self.GetViewer()
         self.View = self.GetView()
+        self.camera = self.GetCamera()
+        self.struc_mgr = self.GetStructureManager()
 
         self.default_drawer = None
-        self._struc_mgr = None
         self._is_offscreen = None
 
         self.selected_shapes = []
@@ -166,7 +167,6 @@ class Viewer3d(Display3d):
         self._overlay_items = []
 
         self._window_handle = None
-        self.camera = None
 
     def get_parent(self):
         return self._parent
@@ -222,7 +222,6 @@ class Viewer3d(Display3d):
             self.Viewer.SetDefaultLights()
             self.Viewer.SetLightOn()
 
-        self.camera = self.View.Camera()
         self.default_drawer = self.Context.DefaultDrawer()
 
         # draw black contour edges, like other famous CAD packages
@@ -236,9 +235,6 @@ class Viewer3d(Display3d):
         if phong_shading:
             # gouraud shading by default, prefer phong instead
             self.View.SetShadingModel(Graphic3d_TOSM_FRAGMENT)
-
-        # necessary for text rendering
-        self._struc_mgr = self.Context.MainPrsMgr().StructureManager()
 
         # turn self._inited flag to True
         self._inited = True
@@ -418,7 +414,7 @@ class Viewer3d(Display3d):
     def DisplayVector(self, vec, pnt, update=False):
         """displays a vector as an arrow"""
         if self._inited:
-            aStructure = Graphic3d_Structure(self._struc_mgr)
+            aStructure = Graphic3d_Structure(self.struc_mgr)
 
             pnt_as_vec = gp_Vec(pnt.X(), pnt.Y(), pnt.Z())
             start = pnt_as_vec + vec
@@ -452,7 +448,7 @@ class Viewer3d(Display3d):
         :height: font height, 12 by defaults
         :message_color: triple with the range 0-1, default to black
         """
-        aStructure = Graphic3d_Structure(self._struc_mgr)
+        aStructure = Graphic3d_Structure(self.struc_mgr)
 
         text_aspect = Prs3d_TextAspect()
         text_aspect.SetColor(rgb_color(*message_color))

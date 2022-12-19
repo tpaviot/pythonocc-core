@@ -69,7 +69,9 @@ public:
   Standard_EXPORT void DisableVBO();
   Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
-	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
+  Standard_EXPORT Handle_Graphic3d_Camera& GetCamera() {return myGraphic3dCamera;};
+	Standard_EXPORT Handle_AIS_InteractiveContext& GetContext() {return myAISContext;};
+  Standard_EXPORT Handle_Graphic3d_StructureManager& GetStructureManager() {return myGraphic3dStructureManager;};
 	Standard_EXPORT void Test();
   Standard_EXPORT void GlInfo();
 
@@ -87,6 +89,8 @@ protected:
    Handle_AIS_InteractiveContext myAISContext;
    Handle_V3d_Viewer myV3dViewer;
    Handle_V3d_View myV3dView;
+   Handle_Graphic3d_Camera myGraphic3dCamera;
+   Handle_Graphic3d_StructureManager myGraphic3dStructureManager;
 
    int mySizeX;
    int mySizeY;

@@ -64,7 +64,11 @@ class Display3d {
     %feature("autodoc", "1");
     Handle_V3d_Viewer& GetViewer();
     %feature("autodoc", "1");
-    Handle_AIS_InteractiveContext GetContext();
+    Handle_Graphic3d_Camera& GetCamera();
+    %feature("autodoc", "1");
+    Handle_AIS_InteractiveContext& GetContext();
+    %feature("autodoc", "1");
+    Handle_Graphic3d_StructureManager& GetStructureManager();
     %feature("autodoc", "1");
     void Test();
     %feature("autodoc", "1");
