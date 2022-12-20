@@ -12,6 +12,7 @@ from OCC.Core.gp import *
 from OCC.Core.Quantity import *
 from OCC.Core.TopoDS import *
 from OCC.Core.XCAFDimTolObjects import *
+from OCC.Core.UnitsMethods import *
 from OCC.Core.TopLoc import *
 from OCC.Core.XCAFNoteObjects import *
 from OCC.Core.OSD import *
@@ -511,6 +512,9 @@ class XCAFDoc_DocumentTool(TDataStd_GenericEmpty):
     def GetID() -> Standard_GUID: ...
     @overload
     @staticmethod
+    def GetLengthUnit(theDoc: TDocStd_Document, theBaseUnit: UnitsMethods_LengthUnit) -> Tuple[bool, float]: ...
+    @overload
+    @staticmethod
     def GetLengthUnit(theDoc: TDocStd_Document) -> Tuple[bool, float]: ...
     def ID(self) -> Standard_GUID: ...
     def Init(self) -> None: ...
@@ -533,6 +537,9 @@ class XCAFDoc_DocumentTool(TDataStd_GenericEmpty):
     @overload
     @staticmethod
     def SetLengthUnit(theDoc: TDocStd_Document, theUnitValue: float) -> None: ...
+    @overload
+    @staticmethod
+    def SetLengthUnit(theDoc: TDocStd_Document, theUnitValue: float, theBaseUnit: UnitsMethods_LengthUnit) -> None: ...
     @staticmethod
     def ShapeTool(acces: TDF_Label) -> XCAFDoc_ShapeTool: ...
     @staticmethod

@@ -16,6 +16,7 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	TShort
 	Units
 	UnitsAPI
+	UnitsMethods
 # TKMath
 	BSplCLib
 	BSplSLib
@@ -240,6 +241,7 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 # TKRWMesh
 	RWGltf
 	RWObj
+	RWPly
 	RWMesh
 # TKSTEP
 	StepAP214
