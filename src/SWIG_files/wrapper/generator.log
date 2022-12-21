@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : d684974
+git revision : b4bebcd
 
-operating system : Linux 64bit 5.4.0-132-generic
+operating system : Linux 64bit 5.4.0-135-generic
 
 occt version targeted : 7.7.0
 
-date : 2022-11-29 05:19:23.050448
+date : 2022-12-21 08:22:33.161644
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -4227,6 +4227,19 @@ date : 2022-11-29 05:19:23.050448
 [INFO ]  Class: RWObj_CafReader
 [INFO ]  Class: RWObj_TriangulationReader
 [WARNI]      [TypeHint] Skipping type const char, should contain _
+[INFO ]  ## Processing module RWPly
+[INFO ]  Class: RWPly_CafWriter
+[INFO ]  Class: RWPly_ConfigurationNode
+[INFO ]      Wrap nested class RWPly_ConfigurationNode::RWPly_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[INFO ]  Class: RWPly_PlyWriterContext
+[WARNI]      [TypeHint] Skip type std::shared_ptr<std::ostream>, because of trailing :
+[INFO ]  Class: RWPly_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
 [INFO ]  Processing toolkit TKSTEP ===
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Class: GeomToStep_Root
@@ -7932,8 +7945,6 @@ date : 2022-11-29 05:19:23.050448
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TDF_Label,, seems to be a template
 [INFO ]  Class: XCAFDoc_Dimension
 [INFO ]  Class: XCAFDoc_DocumentTool
-[WARNI]      [TypeHint] Skipping unknown type, UnitsMethods not in module list
-[WARNI]      [TypeHint] Skipping unknown type, UnitsMethods not in module list
 [INFO ]  Class: XCAFDoc_Editor
 [WARNI]      [TypeHint] Skip type NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>,, because of trailing :
 [INFO ]  Class: XCAFDoc_GraphNode
@@ -8915,10 +8926,13 @@ date : 2022-11-29 05:19:23.050448
 [INFO ]  ## Processing module UnitsAPI
 [INFO ]  Enum: UnitsAPI_SystemUnits
 [INFO ]  Class: UnitsAPI
+[INFO ]  ## Processing module UnitsMethods
+[INFO ]  Enum: UnitsMethods_LengthUnit
+[INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 39.69s
+SWIG interface file generation completed in 41.25s
 #################################################
 
-[INFO ]  Number of classes: 4569
-[INFO ]  Number of methods: 46360
+[INFO ]  Number of classes: 4574
+[INFO ]  Number of methods: 46433

@@ -51,6 +51,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafdoc.html"
 #include<Quantity_module.hxx>
 #include<TopoDS_module.hxx>
 #include<XCAFDimTolObjects_module.hxx>
+#include<UnitsMethods_module.hxx>
 #include<TopLoc_module.hxx>
 #include<XCAFNoteObjects_module.hxx>
 #include<OSD_module.hxx>
@@ -82,6 +83,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xcafdoc.html"
 %import Quantity.i
 %import TopoDS.i
 %import XCAFDimTolObjects.i
+%import UnitsMethods.i
 %import TopLoc.i
 %import XCAFNoteObjects.i
 %import OSD.i
