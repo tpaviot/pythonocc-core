@@ -29,6 +29,7 @@ from OCC.Display.WebGl.simple_server import start_server
 
 X3DOM_RELEASE = "1.8.2"
 
+
 def spinning_cursor():
     while True:
         for cursor in "|/-\\":

@@ -62,7 +62,7 @@ from OCC.Core.GCPnts import (
 )
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
-MAX_32_BIT_INT = 2 ** 31 - 1
+MAX_32_BIT_INT = 2**31 - 1
 
 
 class WireExplorer:

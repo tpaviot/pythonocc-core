@@ -129,7 +129,7 @@ def _shift(v, offset):
 # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
 def _nice_number(value, round_=False):
     exponent = math.floor(math.log(value, 10))
-    fraction = value / 10 ** exponent
+    fraction = value / 10**exponent
 
     if round_:
         if fraction < 1.5:
@@ -150,7 +150,7 @@ def _nice_number(value, round_=False):
         else:
             nice_fraction = 10.0
 
-    return nice_fraction * 10 ** exponent
+    return nice_fraction * 10**exponent
 
 
 def _nice_bounds(axis_start, axis_end, num_ticks=10):

@@ -64,8 +64,7 @@ def init_display(
         offscreen_renderer = OffscreenRenderer()
 
         def do_nothing(*kargs: Any, **kwargs: Any) -> None:
-            """takes as many parameters as you want, and does nothing
-            """
+            """takes as many parameters as you want, and does nothing"""
             return None
 
         def call_function(s, func: Callable) -> None:

@@ -8,7 +8,7 @@ from OCC.Display.WebGl.threejs_renderer import (
     OCC_VERSION,
     THREEJS_RELEASE,
     color_to_hex,
-    export_edgedata_to_json
+    export_edgedata_to_json,
 )
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Core.Tesselator import ShapeTesselator
@@ -40,7 +40,7 @@ class RenderWraper(ThreejsRenderer):
         self._default_edge_color = default_edge_color
         self._default_vertex_color = default_vertex_color
 
-    def ConvertShape(
+    def convert_shape(
         self,
         shape,
         export_edges=False,
@@ -67,7 +67,7 @@ class RenderWraper(ThreejsRenderer):
         elif is_wire(shape):
             print("discretize a wire")
             pnts = discretize_wire(shape)
-            wire_hash = "wir%s" % uuid.uuid4().hex
+            wire_hash = f"wir{uuid.uuid4().hex}"
             shape_content = export_edgedata_to_json(wire_hash, pnts)
             # store this edge hash
             self._3js_edges[wire_hash] = [color, line_width, shape_content]
@@ -84,7 +84,7 @@ class RenderWraper(ThreejsRenderer):
                 vertext_to_add = BRepBuilderAPI_MakeVertex(vertex).Shape()
                 BB.Add(compound, vertext_to_add)
                 vertices_list.append([vertex.X(), vertex.Y(), vertex.Z()])
-            points_hash = "pnt%s" % uuid.uuid4().hex
+            points_hash = f"pnt{uuid.uuid4().hex}"
             # store this vertex hash. Note: TopoDS_Compound did not save now
             self._3js_vertex[points_hash] = [color, point_size, vertices_list]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
@@ -99,8 +99,7 @@ class RenderWraper(ThreejsRenderer):
         )
         # update spinning cursor
         sys.stdout.write(
-            "\r%s mesh shape %s, %i triangles     "
-            % (next(self.spinning_cursor), shape_hash, tess.ObjGetTriangleCount())
+            f"\r{next(self.spinning_cursor)} mesh shape {shape_hash}, {tess.ObjGetTriangleCount()} triangles     "
         )
         sys.stdout.flush()
         # export to 3JS
@@ -130,7 +129,7 @@ class RenderWraper(ThreejsRenderer):
                 for i_vert in range(nbr_vertices):
                     edge_point_set.append(tess.GetEdgeVertex(i_edge, i_vert))
                 # write to file
-                edge_hash = "edg%s" % uuid.uuid4().hex
+                edge_hash = f"edg{uuid.uuid4().hex}"
                 edge_content += export_edgedata_to_json(edge_hash, edge_point_set)
                 # store this edge hash, with black color
                 self._3js_edges[edge_hash] = [
@@ -141,7 +140,7 @@ class RenderWraper(ThreejsRenderer):
         return self._3js_shapes, self._3js_edges, self._3js_vertex
 
 
-class RenderConfig(object):
+class RenderConfig:
     def __init__(
         self,
         bg_gradient_color1="#ced7de",
@@ -193,8 +192,8 @@ if __name__ == "__main__":
         t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
 
         init_time = time.time()
-        my_ren.ConvertShape(box, export_edges=True)
-        my_ren.ConvertShape(t_torus, export_edges=True)
+        my_ren.convert_shape(box, export_edges=True)
+        my_ren.convert_shape(t_torus, export_edges=True)
         final_time = time.time()
         print("\nTotal meshing time : {:.2f}s".format(final_time - init_time))
 
