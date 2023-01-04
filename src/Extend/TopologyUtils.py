@@ -65,6 +65,23 @@ from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 MAX_32_BIT_INT = 2**31 - 1
 
 
+def _number_of_topo(iterable: Iterable) -> int:
+    nbr_topo = 0
+    for _ in iterable:
+        nbr_topo += 1
+    return nbr_topo
+
+
+def ordered_vertices_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Vertex]:
+    wire_exp = WireExplorer(wire)
+    return wire_exp.ordered_vertices()
+
+
+def ordered_edges_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Edge]:
+    wire_exp = WireExplorer(wire)
+    return wire_exp.ordered_edges()
+
+
 class WireExplorer:
     """
     Wire traversal
@@ -232,14 +249,8 @@ class TopologyExplorer:
         """
         return self._loop_topo(TopAbs_FACE)
 
-    def _number_of_topo(self, iterable: Iterable) -> int:
-        nbr_topo = 0
-        for _ in iterable:
-            nbr_topo += 1
-        return nbr_topo
-
     def number_of_faces(self) -> int:
-        return self._number_of_topo(self.faces())
+        return _number_of_topo(self.faces())
 
     def vertices(self) -> Iterator[TopoDS_Vertex]:
         """
@@ -248,7 +259,7 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_VERTEX)
 
     def number_of_vertices(self) -> int:
-        return self._number_of_topo(self.vertices())
+        return _number_of_topo(self.vertices())
 
     def edges(self) -> Iterator[TopoDS_Edge]:
         """
@@ -257,7 +268,7 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_EDGE)
 
     def number_of_edges(self) -> int:
-        return self._number_of_topo(self.edges())
+        return _number_of_topo(self.edges())
 
     def wires(self) -> Iterator[TopoDS_Wire]:
         """
@@ -266,7 +277,7 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_WIRE)
 
     def number_of_wires(self) -> int:
-        return self._number_of_topo(self.wires())
+        return _number_of_topo(self.wires())
 
     def shells(self) -> Iterator[TopoDS_Shell]:
         """
@@ -275,7 +286,7 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_SHELL, None)
 
     def number_of_shells(self) -> int:
-        return self._number_of_topo(self.shells())
+        return _number_of_topo(self.shells())
 
     def solids(self) -> Iterator[TopoDS_Solid]:
         """
@@ -284,7 +295,7 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_SOLID, None)
 
     def number_of_solids(self) -> int:
-        return self._number_of_topo(self.solids())
+        return _number_of_topo(self.solids())
 
     def comp_solids(self) -> Iterator[TopoDS_CompSolid]:
         """
@@ -293,7 +304,7 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_COMPSOLID)
 
     def number_of_comp_solids(self) -> int:
-        return self._number_of_topo(self.comp_solids())
+        return _number_of_topo(self.comp_solids())
 
     def compounds(self) -> Iterator[TopoDS_Compound]:
         """
@@ -302,27 +313,13 @@ class TopologyExplorer:
         return self._loop_topo(TopAbs_COMPOUND)
 
     def number_of_compounds(self) -> int:
-        return self._number_of_topo(self.compounds())
-
-    def ordered_vertices_from_wire(self, wire: TopoDS_Wire) -> Iterator[TopoDS_Vertex]:
-        """
-        @param wire: TopoDS_Wire
-        """
-        wire_exp = WireExplorer(wire)
-        return wire_exp.ordered_vertices()
+        return _number_of_topo(self.compounds())
 
     def number_of_ordered_vertices_from_wire(self, wire: TopoDS_Wire) -> int:
-        return self._number_of_topo(self.ordered_vertices_from_wire(wire))
-
-    def ordered_edges_from_wire(self, wire: TopoDS_Wire) -> Iterator[TopoDS_Edge]:
-        """
-        @param wire: TopoDS_Wire
-        """
-        wire_exp = WireExplorer(wire)
-        return wire_exp.ordered_edges()
+        return _number_of_topo(ordered_vertices_from_wire(wire))
 
     def number_of_ordered_edges_from_wire(self, wire: TopoDS_Wire) -> int:
-        return self._number_of_topo(self.ordered_edges_from_wire(wire))
+        return _number_of_topo(ordered_edges_from_wire(wire))
 
     def _map_shapes_and_ancestors(
         self, topology_type_1, topology_type_2, topological_entity
