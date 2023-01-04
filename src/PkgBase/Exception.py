@@ -50,6 +50,6 @@ def methodnotwrapped(func):
 def classnotwrapped(klass):
     class NewCls:
         def __init__(self, *args, **kwargs):
-            raise ClassNotWrappedError(f"{func.__name__} not wrapped")
+            raise ClassNotWrappedError(f"{klass.__name__} not wrapped")
 
     return NewCls
