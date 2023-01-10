@@ -305,6 +305,9 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	Transfer
 	TransferBRep
 	MoniTool
+	HeaderSection
+    RWHeaderSection
+    APIHeaderSection
 # TKXmlXCAF
 	XmlXCAFDrivers
 	XmlMXCAFDoc

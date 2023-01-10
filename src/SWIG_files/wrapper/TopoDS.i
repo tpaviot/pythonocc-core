@@ -1434,12 +1434,12 @@ None
 %extend TopoDS_Shape {
 %pythoncode {
 	def __getstate__(self):
-		from .BRepTools import breptools_WriteToString
-		str_shape = breptools_WriteToString(self, True)
+		from .BRepTools import breptools
+		str_shape = breptools.WriteToString(self, True)
 		return str_shape
 	def __setstate__(self, state):
-		from .BRepTools import breptools_ReadFromString
-		the_shape = breptools_ReadFromString(state)
+		from .BRepTools import breptools
+		the_shape = breptools.ReadFromString(state)
 		self.this = the_shape.this
 	}
 };
