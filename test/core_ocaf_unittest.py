@@ -116,10 +116,10 @@ class TestOCAF(unittest.TestCase):
         self.assertFalse(a_shape.IsNull())
 
 
-def suite() -> unittest.TestSuite:
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestOCAF))
-    return suite
+def suite():
+    test_suite = unittest.TestSuite()
+    test_suite.addTest(unittest.makeSuite(TestOCAF))
+    return test_suite
 
 
 if __name__ == "__main__":
