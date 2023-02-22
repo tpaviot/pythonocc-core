@@ -78,8 +78,8 @@ class TestTesselator(unittest.TestCase):
         a_sphere = BRepPrimAPI_MakeSphere(10.0).Shape()
         tess = ShapeTesselator(a_sphere)
         tess.Compute()
-        tess.ExportShapeToX3D(os.path.join("test_io", "sphere.x3d"))
-        self.assertTrue(os.path.exists(os.path.join("test_io", "sphere.x3d")))
+        tess.ExportShapeToX3D(os.path.join("test", "test_io", "sphere.x3d"))
+        self.assertTrue(os.path.exists(os.path.join("test", "test_io", "sphere.x3d")))
 
     def test_export_to_x3d_TriangleSet(self):
         """3rd test : export a sphere to an X3D TriangleSet triangle mesh"""
@@ -108,7 +108,7 @@ class TestTesselator(unittest.TestCase):
         another_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         torus_tess = ShapeTesselator(another_torus)
         torus_tess.Compute()
-        output_x3d_filename = os.path.join("test_io", "torus.x3d")
+        output_x3d_filename = os.path.join("test", "test_io", "torus.x3d")
         torus_tess.ExportShapeToX3D(output_x3d_filename)
         self.assertTrue(os.path.exists(output_x3d_filename))
         with open(output_x3d_filename, "r") as x3d_file:
@@ -118,7 +118,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_STEP_file(self):
         """loads a step file, tesselate. The as1_pe_203 contains
         free edges"""
-        stp_file = os.path.join(os.path.join("test_io", "as1_pe_203.stp"))
+        stp_file = os.path.join(os.path.join("test", "test_io", "as1_pe_203.stp"))
         stp_file_shape = read_step_file(stp_file)
         stp_file_tesselator = ShapeTesselator(stp_file_shape)
 

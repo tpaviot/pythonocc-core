@@ -77,9 +77,9 @@ class TestOCAF(unittest.TestCase):
         WS = XSControl_WorkSession()
         writer = STEPCAFControl_Writer(WS, False)
         writer.Transfer(doc, STEPControl_AsIs)
-        status = writer.Write("./test_io/test_ocaf_generated.stp")
+        status = writer.Write("./test/test_io/test_ocaf_generated.stp")
         self.assertTrue(status)
-        self.assertTrue(os.path.isfile("./test_io/test_ocaf_generated.stp"))
+        self.assertTrue(os.path.isfile("./test/test_io/test_ocaf_generated.stp"))
 
     def test_read_step_file(self) -> None:
         """Reads the previous step file"""
@@ -93,7 +93,7 @@ class TestOCAF(unittest.TestCase):
         step_reader.SetLayerMode(True)
         step_reader.SetNameMode(True)
         step_reader.SetMatMode(True)
-        status = step_reader.ReadFile("./test_io/test_ocaf.stp")
+        status = step_reader.ReadFile("./test/test_io/test_ocaf.stp")
         if status == IFSelect_RetDone:
             step_reader.Transfer(doc)
 
