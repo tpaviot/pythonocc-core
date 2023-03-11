@@ -8386,7 +8386,6 @@ None
 
 Parameters
 ----------
-tit: TCollection_HAsciiString
 phn: TColStd_HSequenceOfAsciiString
 phw: TColStd_HSequenceOfReal
 phdeb: TColStd_HSequenceOfInteger
@@ -8395,9 +8394,10 @@ stw: TColStd_HSequenceOfReal
 
 Returns
 -------
+tit: TCollection_HAsciiString
 total: float
 ") Internals;
-		void Internals(opencascade::handle<TCollection_HAsciiString> & tit, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
+		void Internals(opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
 
 		/****************** NextCycle ******************/
 		/**** md5 signature: ca214add52f3821b26accc6fe7f36e0c ****/
@@ -9288,13 +9288,13 @@ Parameters
 ----------
 num: int
 ent: Standard_Transient
-val: TCollection_HAsciiString
 
 Returns
 -------
 ptype: Interface_ParamType
+val: TCollection_HAsciiString
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 761c0b32c3eb0e5da7ddfca321a3322d ****/

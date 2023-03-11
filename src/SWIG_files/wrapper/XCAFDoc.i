@@ -1755,13 +1755,13 @@ Parameters
 ----------
 theLabel: TDF_Label
 thePlane: gp_Pln
-theName: TCollection_HAsciiString
 
 Returns
 -------
+theName: TCollection_HAsciiString
 theCapping: bool
 ") GetClippingPlane;
-		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> & theName, Standard_Boolean &OutValue);
+		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Boolean &OutValue);
 
 		/****************** GetClippingPlanes ******************/
 		/**** md5 signature: 075e7b42329dbcab74840155da865a35 ****/
@@ -3453,15 +3453,14 @@ TDF_Label
 Parameters
 ----------
 theDatumL: TDF_Label
-theName: TCollection_HAsciiString
-theDescription: TCollection_HAsciiString
-theIdentification: TCollection_HAsciiString
 
 Returns
 -------
-bool
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+theIdentification: TCollection_HAsciiString
 ") GetDatum;
-		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription, opencascade::handle<TCollection_HAsciiString> & theIdentification);
+		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetDatumLabels ******************/
 		/**** md5 signature: 55e6de8f484b7fb12b9a45740915465a ****/
@@ -3519,14 +3518,14 @@ Parameters
 ----------
 theDimTolL: TDF_Label
 theVal: TColStd_HArray1OfReal
-theName: TCollection_HAsciiString
-theDescription: TCollection_HAsciiString
 
 Returns
 -------
 theKind: int
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
 ") GetDimTol;
-		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription);
+		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetDimTolLabels ******************/
 		/**** md5 signature: ecf3558fc2a17c2bcf4c65b55b7aabbc ****/
@@ -6465,16 +6464,16 @@ Standard_GUID
 Parameters
 ----------
 MatL: TDF_Label
-aName: TCollection_HAsciiString
-aDescription: TCollection_HAsciiString
-aDensName: TCollection_HAsciiString
-aDensValType: TCollection_HAsciiString
 
 Returns
 -------
+aName: TCollection_HAsciiString
+aDescription: TCollection_HAsciiString
 aDensity: float
+aDensName: TCollection_HAsciiString
+aDensValType: TCollection_HAsciiString
 ") GetMaterial;
-		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> & aName, opencascade::handle<TCollection_HAsciiString> & aDescription, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> & aDensName, opencascade::handle<TCollection_HAsciiString> & aDensValType);
+		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetMaterialLabels ******************/
 		/**** md5 signature: cd3883adc849957e7e10d763ad936071 ****/
