@@ -4331,13 +4331,12 @@ num: int
 nump: int
 mess: char *
 ach: Interface_Check
-val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ReadString;
-		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadSub ******************/
 		/**** md5 signature: c5ac3109022b64e7d22ee6e578f203ae ****/

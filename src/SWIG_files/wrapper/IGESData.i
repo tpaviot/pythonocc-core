@@ -5472,13 +5472,12 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadText ******************/
 		/**** md5 signature: 583adf171adc696820aae6403d5703c0 ****/
@@ -5489,13 +5488,12 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 mess: char *
-val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadTexts ******************/
 		/**** md5 signature: c6a37e5e63bf6ab8b99c9480e131fa17 ****/
@@ -7469,13 +7467,12 @@ Parameters
 num: int
 ptype: Interface_ParamType
 ent: IGESData_IGESEntity
-val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 2a0bffa8d17df8d6aa5a1fa692044d19 ****/

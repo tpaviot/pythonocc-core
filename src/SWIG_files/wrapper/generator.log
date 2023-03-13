@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 0d7667c
+git revision : 3bf4de6
 
-operating system : Linux 64bit 5.4.0-135-generic
+operating system : Linux 64bit 5.4.0-144-generic
 
 occt version targeted : 7.7.0
 
-date : 2022-12-21 14:49:25.368706
+date : 2023-03-11 07:10:22.607336
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -8038,6 +8038,16 @@ date : 2022-12-21 14:49:25.368706
 [INFO ]  ## Processing module XBRepMesh
 [INFO ]  Class: XBRepMesh
 [INFO ]  Processing toolkit TKXSBase ===
+[INFO ]  ## Processing module APIHeaderSection
+[INFO ]  Class: APIHeaderSection_EditHeader
+[INFO ]  Class: APIHeaderSection_MakeHeader
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module HeaderSection
+[INFO ]  Class: HeaderSection
+[INFO ]  Class: HeaderSection_FileDescription
+[INFO ]  Class: HeaderSection_FileName
+[INFO ]  Class: HeaderSection_FileSchema
+[INFO ]  Class: HeaderSection_Protocol
 [INFO ]  ## Processing module IFSelect
 [INFO ]  Found HSEQUENCE definitionIFSelect_HSeqOfSelection: IFSelect_TSeqOfSelection
 [INFO ]  Enum: IFSelect_PrintFail
@@ -8291,6 +8301,13 @@ date : 2022-12-21 14:49:25.368706
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Class: MoniTool_SignShape
 [INFO ]  Class: MoniTool_TransientElem
+[INFO ]  ## Processing module RWHeaderSection
+[INFO ]  Class: RWHeaderSection
+[INFO ]  Class: RWHeaderSection_GeneralModule
+[INFO ]  Class: RWHeaderSection_RWFileDescription
+[INFO ]  Class: RWHeaderSection_RWFileName
+[INFO ]  Class: RWHeaderSection_RWFileSchema
+[INFO ]  Class: RWHeaderSection_ReadWriteModule
 [INFO ]  ## Processing module StepData
 [INFO ]  Found HARRAY1 definitionStepData_HArray1OfField: StepData_Array1OfField
 [INFO ]  Enum: StepData_Logical
@@ -8883,8 +8900,8 @@ date : 2022-12-21 14:49:25.368706
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 38.08s
+SWIG interface file generation completed in 36.06s
 #################################################
 
-[INFO ]  Number of classes: 4574
-[INFO ]  Number of methods: 46433
+[INFO ]  Number of classes: 4587
+[INFO ]  Number of methods: 46544
