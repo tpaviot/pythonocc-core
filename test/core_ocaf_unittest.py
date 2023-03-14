@@ -101,7 +101,7 @@ class TestOCAF(unittest.TestCase):
         step_reader.SetLayerMode(True)
         step_reader.SetNameMode(True)
         step_reader.SetMatMode(True)
-        status = step_reader.ReadFile("./test_io/test_ocaf.stp")
+        status = step_reader.ReadFile("./test/test_io/test_ocaf.stp")
         self.assertEqual(status, IFSelect_RetDone)
         step_reader.Transfer(doc)
 
@@ -132,7 +132,7 @@ class TestOCAF(unittest.TestCase):
         mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
         step_reader = STEPCAFControl_Reader()
 
-        status = step_reader.ReadFile("./test_io/eight_cyl.stp")
+        status = step_reader.ReadFile("./test/test_io/eight_cyl.stp")
 
         self.assertEqual(status, IFSelect_RetDone)
         step_reader.Transfer(doc)
