@@ -41,6 +41,7 @@ from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.XSControl import XSControl_WorkSession
 from OCC.Core.STEPControl import STEPControl_AsIs
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.StepKinematics import StepKinematics_ScrewPairWithRange
 
 
 @contextmanager
