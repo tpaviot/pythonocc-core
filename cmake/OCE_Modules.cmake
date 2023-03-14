@@ -253,6 +253,7 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	GeomToStep
 	StepToGeom
 	StepToTopoDS
+	StepKinematics
 	TopoDSToStep
 	STEPControl
 	STEPSelections

@@ -2,55 +2,106 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 3bf4de6
+git revision : 2a639c0
 
 operating system : Windows 64bit 10
 
 occt version targeted : 7.7.0
 
-date : 2023-03-14 11:56:11.469790
+date : 2023-03-14 18:00:03.831205
 ############################
 
-[INFO ]  ## Processing module Units
-[INFO ]  Found HSEQUENCE definitionUnits_QuantitiesSequence: Units_QtsSequence
-[INFO ]  Found HSEQUENCE definitionUnits_TokensSequence: Units_TksSequence
-[INFO ]  Found HSEQUENCE definitionUnits_UnitsSequence: Units_UtsSequence
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: Units
-[INFO ]  Class: Units_Dimensions
-[INFO ]  Class: Units_Explorer
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_Lexicon
-[INFO ]  Class: Units_Measurement
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_Quantity
-[INFO ]  Class: Units_Sentence
-[INFO ]  Class: Units_Token
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_Unit
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_UnitsDictionary
-[INFO ]  Class: Units_UnitsSystem
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_MathSentence
-[INFO ]  Class: Units_ShiftedToken
-[INFO ]  Class: Units_ShiftedUnit
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_UnitSentence
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Units_UnitsLexicon
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping type const, should contain _
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping type const, should contain _
+[INFO ]  ## Processing module StepKinematics
+[INFO ]  Enum: StepKinematics_ActuatedDirection
+[INFO ]  Class: StepKinematics_ContextDependentKinematicLinkRepresentation
+[INFO ]  Class: StepKinematics_KinematicJoint
+[INFO ]  Class: StepKinematics_KinematicLink
+[INFO ]  Class: StepKinematics_KinematicLinkRepresentation
+[INFO ]  Class: StepKinematics_KinematicLinkRepresentationAssociation
+[INFO ]  Class: StepKinematics_KinematicPair
+[INFO ]  Class: StepKinematics_KinematicPropertyDefinitionRepresentation
+[INFO ]  Class: StepKinematics_KinematicTopologyDirectedStructure
+[INFO ]  Class: StepKinematics_KinematicTopologyNetworkStructure
+[INFO ]  Class: StepKinematics_KinematicTopologyRepresentationSelect
+[INFO ]  Class: StepKinematics_KinematicTopologyStructure
+[INFO ]  Class: StepKinematics_MechanismRepresentation
+[INFO ]  Class: StepKinematics_MechanismStateRepresentation
+[INFO ]  Class: StepKinematics_OrientedJoint
+[INFO ]  Class: StepKinematics_PairRepresentationRelationship
+[INFO ]  Class: StepKinematics_PairValue
+[INFO ]  Class: StepKinematics_ProductDefinitionKinematics
+[INFO ]  Class: StepKinematics_ProductDefinitionRelationshipKinematics
+[INFO ]  Class: StepKinematics_RigidPlacement
+[INFO ]  Class: StepKinematics_RotationAboutDirection
+[INFO ]  Class: StepKinematics_SpatialRotation
+[INFO ]  Class: StepKinematics_SphericalPairSelect
+[INFO ]  Class: StepKinematics_ActuatedKinPairAndOrderKinPair
+[INFO ]  Class: StepKinematics_ActuatedKinematicPair
+[INFO ]  Class: StepKinematics_CylindricalPairValue
+[INFO ]  Class: StepKinematics_GearPairValue
+[INFO ]  Class: StepKinematics_HighOrderKinematicPair
+[INFO ]  Class: StepKinematics_KinematicPropertyMechanismRepresentation
+[INFO ]  Class: StepKinematics_LinearFlexibleLinkRepresentation
+[INFO ]  Class: StepKinematics_LowOrderKinematicPair
+[INFO ]  Class: StepKinematics_LowOrderKinematicPairValue
+[INFO ]  Class: StepKinematics_LowOrderKinematicPairWithMotionCoupling
+[INFO ]  Class: StepKinematics_PlanarPairValue
+[INFO ]  Class: StepKinematics_PointOnPlanarCurvePairValue
+[INFO ]  Class: StepKinematics_PointOnSurfacePairValue
+[INFO ]  Class: StepKinematics_PrismaticPairValue
+[INFO ]  Class: StepKinematics_RackAndPinionPairValue
+[INFO ]  Class: StepKinematics_RevolutePairValue
+[INFO ]  Class: StepKinematics_RigidLinkRepresentation
+[INFO ]  Class: StepKinematics_RollingCurvePairValue
+[INFO ]  Class: StepKinematics_RollingSurfacePairValue
+[INFO ]  Class: StepKinematics_ScrewPairValue
+[INFO ]  Class: StepKinematics_SlidingCurvePairValue
+[INFO ]  Class: StepKinematics_SlidingSurfacePairValue
+[INFO ]  Class: StepKinematics_SphericalPairValue
+[INFO ]  Class: StepKinematics_UnconstrainedPairValue
+[INFO ]  Class: StepKinematics_UniversalPairValue
+[INFO ]  Class: StepKinematics_CylindricalPair
+[INFO ]  Class: StepKinematics_FullyConstrainedPair
+[INFO ]  Class: StepKinematics_GearPair
+[INFO ]  Class: StepKinematics_LinearFlexibleAndPinionPair
+[INFO ]  Class: StepKinematics_LinearFlexibleAndPlanarCurvePair
+[INFO ]  Class: StepKinematics_LowOrderKinematicPairWithRange
+[INFO ]  Class: StepKinematics_PlanarCurvePair
+[INFO ]  Class: StepKinematics_PlanarPair
+[INFO ]  Class: StepKinematics_PointOnPlanarCurvePair
+[INFO ]  Class: StepKinematics_PointOnSurfacePair
+[INFO ]  Class: StepKinematics_PrismaticPair
+[INFO ]  Class: StepKinematics_RackAndPinionPair
+[INFO ]  Class: StepKinematics_RevolutePair
+[INFO ]  Class: StepKinematics_ScrewPair
+[INFO ]  Class: StepKinematics_SphericalPair
+[INFO ]  Class: StepKinematics_SphericalPairWithPin
+[INFO ]  Class: StepKinematics_SurfacePair
+[INFO ]  Class: StepKinematics_UnconstrainedPair
+[INFO ]  Class: StepKinematics_UniversalPair
+[INFO ]  Class: StepKinematics_CylindricalPairWithRange
+[INFO ]  Class: StepKinematics_GearPairWithRange
+[INFO ]  Class: StepKinematics_HomokineticPair
+[INFO ]  Class: StepKinematics_PlanarCurvePairRange
+[INFO ]  Class: StepKinematics_PlanarPairWithRange
+[INFO ]  Class: StepKinematics_PointOnPlanarCurvePairWithRange
+[INFO ]  Class: StepKinematics_PointOnSurfacePairWithRange
+[INFO ]  Class: StepKinematics_PrismaticPairWithRange
+[INFO ]  Class: StepKinematics_RackAndPinionPairWithRange
+[INFO ]  Class: StepKinematics_RevolutePairWithRange
+[INFO ]  Class: StepKinematics_RollingCurvePair
+[INFO ]  Class: StepKinematics_RollingSurfacePair
+[INFO ]  Class: StepKinematics_ScrewPairWithRange
+[INFO ]  Class: StepKinematics_SlidingCurvePair
+[INFO ]  Class: StepKinematics_SlidingSurfacePair
+[INFO ]  Class: StepKinematics_SphericalPairWithPinAndRange
+[INFO ]  Class: StepKinematics_SphericalPairWithRange
+[INFO ]  Class: StepKinematics_SurfacePairWithRange
+[INFO ]  Class: StepKinematics_UniversalPairWithRange
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 0.41s
+SWIG interface file generation completed in 0.70s
 #################################################
 
-[INFO ]  Number of classes: 16
-[INFO ]  Number of methods: 197
+[INFO ]  Number of classes: 85
+[INFO ]  Number of methods: 513
