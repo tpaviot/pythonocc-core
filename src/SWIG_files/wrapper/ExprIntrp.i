@@ -121,14 +121,14 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<opencascade::handle<Expr_GeneralExpression>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralExpression;
-typedef NCollection_List<opencascade::handle<Expr_GeneralFunction>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralFunction;
-typedef NCollection_List<opencascade::handle<Expr_GeneralRelation>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralRelation;
-typedef NCollection_Sequence<opencascade::handle<Expr_NamedExpression>> ExprIntrp_SequenceOfNamedExpression;
-typedef NCollection_Sequence<opencascade::handle<Expr_NamedFunction>> ExprIntrp_SequenceOfNamedFunction;
-typedef NCollection_List<opencascade::handle<Expr_GeneralExpression>> ExprIntrp_StackOfGeneralExpression;
-typedef NCollection_List<opencascade::handle<Expr_GeneralFunction>> ExprIntrp_StackOfGeneralFunction;
-typedef NCollection_List<opencascade::handle<Expr_GeneralRelation>> ExprIntrp_StackOfGeneralRelation;
+typedef NCollection_List <opencascade::handle <Expr_GeneralExpression>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralExpression;
+typedef NCollection_List <opencascade::handle <Expr_GeneralFunction>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralFunction;
+typedef NCollection_List <opencascade::handle <Expr_GeneralRelation>>::Iterator ExprIntrp_ListIteratorOfStackOfGeneralRelation;
+typedef NCollection_Sequence <opencascade::handle <Expr_NamedExpression>> ExprIntrp_SequenceOfNamedExpression;
+typedef NCollection_Sequence <opencascade::handle <Expr_NamedFunction>> ExprIntrp_SequenceOfNamedFunction;
+typedef NCollection_List <opencascade::handle <Expr_GeneralExpression>> ExprIntrp_StackOfGeneralExpression;
+typedef NCollection_List <opencascade::handle <Expr_GeneralFunction>> ExprIntrp_StackOfGeneralFunction;
+typedef NCollection_List <opencascade::handle <Expr_GeneralRelation>> ExprIntrp_StackOfGeneralRelation;
 /* end typedefs declaration */
 
 /******************

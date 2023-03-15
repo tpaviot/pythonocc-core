@@ -111,6 +111,12 @@ enum BOPAlgo_CheckStatus {
 	BOPAlgo_NotValid = 11,
 };
 
+enum BOPAlgo_GlueEnum {
+	BOPAlgo_GlueOff = 0,
+	BOPAlgo_GlueShift = 1,
+	BOPAlgo_GlueFull = 2,
+};
+
 enum BOPAlgo_Operation {
 	BOPAlgo_COMMON = 0,
 	BOPAlgo_FUSE = 1,
@@ -118,12 +124,6 @@ enum BOPAlgo_Operation {
 	BOPAlgo_CUT21 = 3,
 	BOPAlgo_SECTION = 4,
 	BOPAlgo_UNKNOWN = 5,
-};
-
-enum BOPAlgo_GlueEnum {
-	BOPAlgo_GlueOff = 0,
-	BOPAlgo_GlueShift = 1,
-	BOPAlgo_GlueFull = 2,
 };
 
 /* end public enums declaration */
@@ -157,6 +157,14 @@ BOPAlgo_GeomAbs_C0 = BOPAlgo_CheckStatus.BOPAlgo_GeomAbs_C0
 BOPAlgo_InvalidCurveOnSurface = BOPAlgo_CheckStatus.BOPAlgo_InvalidCurveOnSurface
 BOPAlgo_NotValid = BOPAlgo_CheckStatus.BOPAlgo_NotValid
 
+class BOPAlgo_GlueEnum(IntEnum):
+	BOPAlgo_GlueOff = 0
+	BOPAlgo_GlueShift = 1
+	BOPAlgo_GlueFull = 2
+BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
+BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
+BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
+
 class BOPAlgo_Operation(IntEnum):
 	BOPAlgo_COMMON = 0
 	BOPAlgo_FUSE = 1
@@ -170,14 +178,6 @@ BOPAlgo_CUT = BOPAlgo_Operation.BOPAlgo_CUT
 BOPAlgo_CUT21 = BOPAlgo_Operation.BOPAlgo_CUT21
 BOPAlgo_SECTION = BOPAlgo_Operation.BOPAlgo_SECTION
 BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
-
-class BOPAlgo_GlueEnum(IntEnum):
-	BOPAlgo_GlueOff = 0
-	BOPAlgo_GlueShift = 1
-	BOPAlgo_GlueFull = 2
-BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
-BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
-BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
 };
 /* end python proxy for enums */
 
@@ -197,7 +197,7 @@ BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
 
 /* typedefs */
 typedef BOPAlgo_ListOfCheckResult::Iterator BOPAlgo_ListIteratorOfListOfCheckResult;
-typedef NCollection_List<BOPAlgo_CheckResult> BOPAlgo_ListOfCheckResult;
+typedef NCollection_List <BOPAlgo_CheckResult> BOPAlgo_ListOfCheckResult;
 typedef BOPAlgo_ArgumentAnalyzer * BOPAlgo_PArgumentAnalyzer;
 typedef BOPAlgo_BOP * BOPAlgo_PBOP;
 typedef BOPAlgo_Builder * BOPAlgo_PBuilder;
@@ -499,7 +499,7 @@ None
 		/****************** AddError ******************/
 		/**** md5 signature: f00155f55c673f9e74c0f0dd7c25fadd ****/
 		%feature("compactdefaultargs") AddError;
-		%feature("autodoc", "Adds the alert as error (fail).
+		%feature("autodoc", "//!@name error reporting mechanism adds the alert as error (fail).
 
 Parameters
 ----------
@@ -589,7 +589,7 @@ float
 		/****************** GetParallelMode ******************/
 		/**** md5 signature: feaeebd94ff83efc7e77e3c0da668764 ****/
 		%feature("compactdefaultargs") GetParallelMode;
-		%feature("autodoc", "Gets the global parallel mode.
+		%feature("autodoc", "//!@name parallel processing mode gets the global parallel mode.
 
 Returns
 -------
@@ -674,7 +674,7 @@ bool
 		/****************** SetFuzzyValue ******************/
 		/**** md5 signature: a6e52c994eeddfce238b90491de5f35c ****/
 		%feature("compactdefaultargs") SetFuzzyValue;
-		%feature("autodoc", "Sets the additional tolerance.
+		%feature("autodoc", "//!@name fuzzy tolerance sets the additional tolerance.
 
 Parameters
 ----------
@@ -697,7 +697,7 @@ theNewMode: bool
 
 Returns
 -------
-None
+void
 ") SetParallelMode;
 		static void SetParallelMode(const Standard_Boolean theNewMode);
 
@@ -719,7 +719,7 @@ None
 		/****************** SetUseOBB ******************/
 		/**** md5 signature: 6d40fa7ee94de6963b0a47968b0c2b35 ****/
 		%feature("compactdefaultargs") SetUseOBB;
-		%feature("autodoc", "Enables/disables the usage of obb.
+		%feature("autodoc", "//!@name usage of oriented bounding boxes enables/disables the usage of obb.
 
 Parameters
 ----------
@@ -757,7 +757,7 @@ bool
 class BOPAlgo_PISteps {
 	public:
 		/****************** BOPAlgo_PISteps ******************/
-		/**** md5 signature: 678f847738ab187532af2fc55a728601 ****/
+		/**** md5 signature: 0e0ab8905f1be6453e2225622459ae7e ****/
 		%feature("compactdefaultargs") BOPAlgo_PISteps;
 		%feature("autodoc", "Constructor.
 
@@ -839,7 +839,7 @@ TColStd_Array1OfReal
 class BOPAlgo_SectionAttribute {
 	public:
 		/****************** BOPAlgo_SectionAttribute ******************/
-		/**** md5 signature: d009c63d3a8a919760589f1003ae4986 ****/
+		/**** md5 signature: 222d0248393913d7a1254c6dcd1e70b1 ****/
 		%feature("compactdefaultargs") BOPAlgo_SectionAttribute;
 		%feature("autodoc", "Default constructor.
 
@@ -850,7 +850,7 @@ None
 		 BOPAlgo_SectionAttribute();
 
 		/****************** BOPAlgo_SectionAttribute ******************/
-		/**** md5 signature: 3d85e8151b6f1576f015e50486ffbe64 ****/
+		/**** md5 signature: 423f9073df913d624bfd158007da37dc ****/
 		%feature("compactdefaultargs") BOPAlgo_SectionAttribute;
 		%feature("autodoc", "Constructor.
 
@@ -979,7 +979,7 @@ theRange: Message_ProgressRange,optional
 
 Returns
 -------
-None
+void
 ") ClassifyFaces;
 		static void ClassifyFaces(const TopTools_ListOfShape & theFaces, const TopTools_ListOfShape & theSolids, const Standard_Boolean theRunParallel, opencascade::handle<IntTools_Context> & theContext, TopTools_IndexedDataMapOfShapeListOfShape & theInParts, const TopTools_DataMapOfShapeBox & theShapeBoxMap = TopTools_DataMapOfShapeBox(), const TopTools_DataMapOfShapeListOfShape & theSolidsIF = TopTools_DataMapOfShapeListOfShape(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1001,7 +1001,7 @@ float
 		static Standard_Real ComputeToleranceOfCB(const opencascade::handle<BOPDS_CommonBlock> & theCB, const BOPDS_PDS theDS, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****************** EdgesToWires ******************/
-		/**** md5 signature: e795d71da8d102674043cf89e2807135 ****/
+		/**** md5 signature: 8546c09143396e5da3296058460bce9f ****/
 		%feature("compactdefaultargs") EdgesToWires;
 		%feature("autodoc", "Creates planar wires from the given edges. the input edges are expected to be planar. and for the performance sake the method does not check if the edges are really planar. thus, the result wires will also be not planar if the input edges are not planar. the edges may be not shared, but the resulting wires will be sharing the coinciding parts and intersecting parts. the output wires may be non-manifold and contain free and multi-connected vertices. parameters: <theedges> - input edges; <thewires> - output wires; <theshared> - boolean flag which defines whether the input edges are already shared or have to be intersected; <theangtol> - the angular tolerance which will be used for distinguishing the planes in which the edges are located. default value is 1.e-8 which is used for intersection of planes in inttools_faceface. method returns the following error statuses: 0 - in case of success (at least one wire has been built); 1 - in case there are no edges in the given shape; 2 - sharing of the edges has failed.
 
@@ -1034,7 +1034,7 @@ theContext: IntTools_Context
 
 Returns
 -------
-None
+void
 ") FillInternals;
 		static void FillInternals(const TopTools_ListOfShape & theSolids, const TopTools_ListOfShape & theParts, const TopTools_DataMapOfShapeListOfShape & theImages, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1051,7 +1051,7 @@ theChains: TopTools_ListOfListOfShape
 
 Returns
 -------
-None
+void
 ") IntersectVertices;
 		static void IntersectVertices(const TopTools_IndexedDataMapOfShapeReal & theVertices, const Standard_Real theFuzzyValue, TopTools_ListOfListOfShape & theChains);
 
@@ -1070,7 +1070,7 @@ theContext: IntTools_Context,optional
 
 Returns
 -------
-None
+void
 ") PerformCommonBlocks;
 		static void PerformCommonBlocks(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & theDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1089,12 +1089,12 @@ theContext: IntTools_Context,optional
 
 Returns
 -------
-None
+void
 ") PerformCommonBlocks;
 		static void PerformCommonBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfInteger & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & pDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****************** TrsfToPoint ******************/
-		/**** md5 signature: 836e5f67ee22544085d9d2fab2016425 ****/
+		/**** md5 signature: 718c9015822a127145c78a25a9f52a41 ****/
 		%feature("compactdefaultargs") TrsfToPoint;
 		%feature("autodoc", "Computes the transformation needed to move the objects to the given point to increase the quality of computations. returns true if the objects are located far from the given point (relatively given criteria), false otherwise. @param thebox1 the aabb of the first object @param thebox2 the aabb of the second object @param thetrsf the computed transformation @param thepoint the point to compute transformation to @param thecriteria the criteria to check whether thranformation is required.
 
@@ -1115,7 +1115,7 @@ bool
 		static Standard_Boolean TrsfToPoint(const Bnd_Box & theBox1, const Bnd_Box & theBox2, gp_Trsf & theTrsf, const gp_Pnt & thePoint = gp_Pnt(0.0,0.0,0.0), const Standard_Real theCriteria = 1e+5);
 
 		/****************** WiresToFaces ******************/
-		/**** md5 signature: 16dc9996c77bddaa892446101a7cb4b5 ****/
+		/**** md5 signature: da4c0ea87968cae2dfa56e4b877fada4 ****/
 		%feature("compactdefaultargs") WiresToFaces;
 		%feature("autodoc", "Creates planar faces from given planar wires. the method does not check if the wires are really planar. the input wires may be non-manifold but should be shared. the wires located in the same planes and included into other wires will create holes in the faces built from outer wires. the tolerance values of the input shapes may be modified during the operation due to projection of the edges on the planes for creation of 2d curves. parameters: <thewires> - the given wires; <thefaces> - the output faces; <theangtol> - the angular tolerance for distinguishing the planes in which the wires are located. default value is 1.e-8 which is used for intersection of planes in inttools_faceface. method returns true in case of success, i.e. at least one face has been built.
 
@@ -1320,9 +1320,9 @@ None
 class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 	public:
 		/****************** BOPAlgo_MakeConnected ******************/
-		/**** md5 signature: b6b80e8925410141807a3d11286b03bf ****/
+		/**** md5 signature: 1262841cacfe82b6e15600d793cea413 ****/
 		%feature("compactdefaultargs") BOPAlgo_MakeConnected;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructor empty constructor.
 
 Returns
 -------
@@ -1359,7 +1359,7 @@ TopTools_ListOfShape
 		/****************** Clear ******************/
 		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the contents of the algorithm.
+		%feature("autodoc", "@name clearing the contents of the algorithm from previous runs clears the contents of the algorithm.
 
 Returns
 -------
@@ -1411,7 +1411,7 @@ TopTools_ListOfShape
 		/****************** History ******************/
 		/**** md5 signature: 773151b712351341bc4cedd074c69f00 ****/
 		%feature("compactdefaultargs") History;
-		%feature("autodoc", "Returns the history of operations.
+		%feature("autodoc", "@name history methods returns the history of operations.
 
 Returns
 -------
@@ -1422,7 +1422,7 @@ opencascade::handle<BRepTools_History>
 		/****************** MakePeriodic ******************/
 		/**** md5 signature: fa6a1689dfb3f4346cf8892a55e9eab9 ****/
 		%feature("compactdefaultargs") MakePeriodic;
-		%feature("autodoc", "Makes the connected shape periodic. repeated calls of this method overwrite the previous calls working with the basis connected shape. @param theparams [in] periodic options.
+		%feature("autodoc", "@name shape periodicity & repetition makes the connected shape periodic. repeated calls of this method overwrite the previous calls working with the basis connected shape. @param theparams [in] periodic options.
 
 Parameters
 ----------
@@ -1452,7 +1452,7 @@ TopTools_ListOfShape
 		/****************** MaterialsOnPositiveSide ******************/
 		/**** md5 signature: 08f98025f671410be24c9e1ce19c2d94 ****/
 		%feature("compactdefaultargs") MaterialsOnPositiveSide;
-		%feature("autodoc", "Returns the original shapes which images contain the the given shape with forward orientation. @param thes [in] the shape for which the materials are necessary.
+		%feature("autodoc", "@name material transitions returns the original shapes which images contain the the given shape with forward orientation. @param thes [in] the shape for which the materials are necessary.
 
 Parameters
 ----------
@@ -1467,7 +1467,7 @@ TopTools_ListOfShape
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the operation, i.e. makes the input shapes connected.
+		%feature("autodoc", "@name performing the operations performs the operation, i.e. makes the input shapes connected.
 
 Returns
 -------
@@ -1516,7 +1516,7 @@ None
 		/****************** SetArguments ******************/
 		/**** md5 signature: c11327ccf7873847aaf3c9f2c70f6eeb ****/
 		%feature("compactdefaultargs") SetArguments;
-		%feature("autodoc", "Sets the shape for making them connected. @param theargs [in] the arguments for the operation.
+		%feature("autodoc", "@name setters for the shapes to make connected sets the shape for making them connected. @param theargs [in] the arguments for the operation.
 
 Parameters
 ----------
@@ -1531,7 +1531,7 @@ None
 		/****************** Shape ******************/
 		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the resulting connected shape.
+		%feature("autodoc", "@name getting the result shapes returns the resulting connected shape.
 
 Returns
 -------
@@ -1555,9 +1555,9 @@ class BOPAlgo_MakePeriodic : public BOPAlgo_Options {
 	public:
 		class PeriodicityParams {};
 		/****************** BOPAlgo_MakePeriodic ******************/
-		/**** md5 signature: 4d5c6c6476f6d1dac6cdff8dacf51577 ****/
+		/**** md5 signature: fc2129b7788dd4f921561cecf7634b6e ****/
 		%feature("compactdefaultargs") BOPAlgo_MakePeriodic;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructor empty constructor.
 
 Returns
 -------
@@ -1568,7 +1568,7 @@ None
 		/****************** Clear ******************/
 		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the algorithm from previous runs.
+		%feature("autodoc", "@name clearing the algorithm from previous runs clears the algorithm from previous runs.
 
 Returns
 -------
@@ -1590,7 +1590,7 @@ None
 		/****************** GetTwins ******************/
 		/**** md5 signature: 7acec2f72b7c127c74cb7b8ac498de87 ****/
 		%feature("compactdefaultargs") GetTwins;
-		%feature("autodoc", "Returns the identical shapes for the given shape located on the opposite periodic side. returns empty list in case the shape has no twin. //! @param thes [in] shape to get the twins for.
+		%feature("autodoc", "@name getting the identical shapes returns the identical shapes for the given shape located on the opposite periodic side. returns empty list in case the shape has no twin. //! @param thes [in] shape to get the twins for.
 
 Parameters
 ----------
@@ -1605,7 +1605,7 @@ TopTools_ListOfShape
 		/****************** History ******************/
 		/**** md5 signature: 773151b712351341bc4cedd074c69f00 ****/
 		%feature("compactdefaultargs") History;
-		%feature("autodoc", "Returns the history of the algorithm.
+		%feature("autodoc", "@name getting the history of the algorithm returns the history of the algorithm.
 
 Returns
 -------
@@ -1712,7 +1712,7 @@ bool
 		/****************** MakePeriodic ******************/
 		/**** md5 signature: c4286c9a3e55c3953b69faa375b6e1b3 ****/
 		%feature("compactdefaultargs") MakePeriodic;
-		%feature("autodoc", "Sets the flag to make the shape periodic in specified direction: - 0 - x direction; - 1 - y direction; - 2 - z direction. //! @param thedirectionid [in] the direction's id; @param theisperiodic [in] flag defining periodicity in given direction; @param theperiod [in] required period in given direction.
+		%feature("autodoc", "@name methods for setting/getting periodicity info using id as a direction sets the flag to make the shape periodic in specified direction: - 0 - x direction; - 1 - y direction; - 2 - z direction. //! @param thedirectionid [in] the direction's id; @param theisperiodic [in] flag defining periodicity in given direction; @param theperiod [in] required period in given direction.
 
 Parameters
 ----------
@@ -1730,7 +1730,7 @@ None
 		/****************** MakeXPeriodic ******************/
 		/**** md5 signature: df3376e9d459c637fa867e10c13236ef ****/
 		%feature("compactdefaultargs") MakeXPeriodic;
-		%feature("autodoc", "Sets the flag to make the shape periodic in x direction. @param theisperiodic [in] flag defining periodicity in x direction; @param theperiod [in] required period in x direction.
+		%feature("autodoc", "@name named methods for setting/getting info about shape's periodicity sets the flag to make the shape periodic in x direction. @param theisperiodic [in] flag defining periodicity in x direction; @param theperiod [in] required period in x direction.
 
 Parameters
 ----------
@@ -1781,7 +1781,7 @@ None
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Makes the shape periodic in necessary directions.
+		%feature("autodoc", "@name performing the operation makes the shape periodic in necessary directions.
 
 Returns
 -------
@@ -1826,14 +1826,14 @@ float
 
 Returns
 -------
-BOPAlgo_MakePeriodic::PeriodicityParams
+PeriodicityParams
 ") PeriodicityParameters;
-		BOPAlgo_MakePeriodic::PeriodicityParams PeriodicityParameters();
+		const PeriodicityParams & PeriodicityParameters();
 
 		/****************** RepeatShape ******************/
 		/**** md5 signature: 498d51ce623dcf5bdb9974585637d231 ****/
 		%feature("compactdefaultargs") RepeatShape;
-		%feature("autodoc", "Performs repetition of the shape in specified direction required number of times. negative value of times means that the repetition should be perform in negative direction. makes the repeated shape a base for following repetitions. //! @param thedirectionid [in] the direction's id; @param thetimes [in] requested number of repetitions.
+		%feature("autodoc", "@name using the algorithm to repeat the shape performs repetition of the shape in specified direction required number of times. negative value of times means that the repetition should be perform in negative direction. makes the repeated shape a base for following repetitions. //! @param thedirectionid [in] the direction's id; @param thetimes [in] requested number of repetitions.
 
 Parameters
 ----------
@@ -1849,7 +1849,7 @@ TopoDS_Shape
 		/****************** RepeatedShape ******************/
 		/**** md5 signature: bc344bbb89766dbca655721d874cfcd6 ****/
 		%feature("compactdefaultargs") RepeatedShape;
-		%feature("autodoc", "Returns the repeated shape.
+		%feature("autodoc", "@name starting the repetitions over returns the repeated shape.
 
 Returns
 -------
@@ -1860,7 +1860,7 @@ TopoDS_Shape
 		/****************** SetPeriodicityParameters ******************/
 		/**** md5 signature: 0952cf9752b01bf7cfc1d3d1baacf266 ****/
 		%feature("compactdefaultargs") SetPeriodicityParameters;
-		%feature("autodoc", "Sets the periodicity parameters. @param theparams [in] periodicity parameters.
+		%feature("autodoc", "//!< array of start parameters of the xyz periods: required for trimming @name setters/getters for periodicity parameters structure sets the periodicity parameters. @param theparams [in] periodicity parameters.
 
 Parameters
 ----------
@@ -1870,12 +1870,12 @@ Returns
 -------
 None
 ") SetPeriodicityParameters;
-		void SetPeriodicityParameters(PeriodicityParams theParams);
+		void SetPeriodicityParameters(const PeriodicityParams & theParams);
 
 		/****************** SetShape ******************/
 		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
 		%feature("compactdefaultargs") SetShape;
-		%feature("autodoc", "Sets the shape to make it periodic. @param theshape [in] the shape to make periodic.
+		%feature("autodoc", "@name setting the shape to make it periodic sets the shape to make it periodic. @param theshape [in] the shape to make periodic.
 
 Parameters
 ----------
@@ -1890,7 +1890,7 @@ None
 		/****************** SetTrimmed ******************/
 		/**** md5 signature: 36ad2721a8f03216522c13264ed2d5ec ****/
 		%feature("compactdefaultargs") SetTrimmed;
-		%feature("autodoc", "Defines whether the input shape is already trimmed in specified direction to fit the period in this direction. direction is defined by an id: - 0 - x direction; - 1 - y direction; - 2 - z direction. //! if the shape is not trimmed it is required to set the first parameter of the period in that direction. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param thedirectionid [in] the direction's id; @param theistrimmed [in] the flag defining trimming of the shape in given direction; @param thefirst [in] the first periodic parameter in the given direction.
+		%feature("autodoc", "@name methods for setting/getting trimming info taking direction id as a parameter defines whether the input shape is already trimmed in specified direction to fit the period in this direction. direction is defined by an id: - 0 - x direction; - 1 - y direction; - 2 - z direction. //! if the shape is not trimmed it is required to set the first parameter of the period in that direction. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param thedirectionid [in] the direction's id; @param theistrimmed [in] the flag defining trimming of the shape in given direction; @param thefirst [in] the first periodic parameter in the given direction.
 
 Parameters
 ----------
@@ -1908,7 +1908,7 @@ None
 		/****************** SetXTrimmed ******************/
 		/**** md5 signature: 81bbfd4b7a5f26b85a82d52dc5af0149 ****/
 		%feature("compactdefaultargs") SetXTrimmed;
-		%feature("autodoc", "Defines whether the input shape is already trimmed in x direction to fit the x period. if the shape is not trimmed it is required to set the first parameter for the x period. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param theistrimmed [in] flag defining whether the shape is already trimmed  in x direction to fit the x period; @param thefirst [in] the first x periodic parameter.
+		%feature("autodoc", "@name named methods for setting/getting trimming info defines whether the input shape is already trimmed in x direction to fit the x period. if the shape is not trimmed it is required to set the first parameter for the x period. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param theistrimmed [in] flag defining whether the shape is already trimmed  in x direction to fit the x period; @param thefirst [in] the first x periodic parameter.
 
 Parameters
 ----------
@@ -1959,7 +1959,7 @@ None
 		/****************** Shape ******************/
 		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the resulting periodic shape.
+		%feature("autodoc", "@name obtaining the result shape returns the resulting periodic shape.
 
 Returns
 -------
@@ -1970,7 +1970,7 @@ TopoDS_Shape
 		/****************** ToDirectionID ******************/
 		/**** md5 signature: 93eb37961bf75f72a1ed4293ff2f6860 ****/
 		%feature("compactdefaultargs") ToDirectionID;
-		%feature("autodoc", "Converts the integer to id of periodic direction.
+		%feature("autodoc", "@name conversion of the integer to id of periodic direction converts the integer to id of periodic direction.
 
 Parameters
 ----------
@@ -2557,7 +2557,7 @@ bool
 		/****************** Modified ******************/
 		/**** md5 signature: 3627cf8d69b07cd5db7ba10195303d15 ****/
 		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "Returns the list of shapes modified from the shape thes.
+		%feature("autodoc", "@name history methods returns the list of shapes modified from the shape thes.
 
 Parameters
 ----------
@@ -2572,7 +2572,7 @@ TopTools_ListOfShape
 		/****************** SetToFillHistory ******************/
 		/**** md5 signature: 0645816549ab38af8118c8f63f46c0ea ****/
 		%feature("compactdefaultargs") SetToFillHistory;
-		%feature("autodoc", "Allows disabling the history collection.
+		%feature("autodoc", "@name enabling/disabling the history collection. allows disabling the history collection.
 
 Parameters
 ----------
@@ -2587,7 +2587,7 @@ None
 		/****************** Shape ******************/
 		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the result of algorithm.
+		%feature("autodoc", "@name getting the result returns the result of algorithm.
 
 Returns
 -------
@@ -2950,7 +2950,7 @@ theCB: BOPTools_ConnexityBlock
 
 Returns
 -------
-None
+void
 ") SplitBlock;
 		static void SplitBlock(BOPTools_ConnexityBlock & theCB);
 
@@ -3028,7 +3028,7 @@ theW: TopoDS_Wire
 
 Returns
 -------
-None
+void
 ") MakeWire;
 		static void MakeWire(TopTools_ListOfShape & theLE, TopoDS_Wire & theW);
 
@@ -3091,7 +3091,7 @@ theContext: IntTools_Context
 
 Returns
 -------
-None
+void
 ") SplitBlock;
 		static void SplitBlock(const TopoDS_Face & theF, BOPTools_ConnexityBlock & theCB, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -3150,7 +3150,7 @@ None
 		/****************** AddArgument ******************/
 		/**** md5 signature: 60c2b0316a67e93c3535a28f84d56231 ****/
 		%feature("compactdefaultargs") AddArgument;
-		%feature("autodoc", "Adds the argument to the operation.
+		%feature("autodoc", "@name arguments adds the argument to the operation.
 
 Parameters
 ----------
@@ -3176,7 +3176,7 @@ TopTools_ListOfShape
 		/****************** BuildBOP ******************/
 		/**** md5 signature: 2e1b9ea27d66f788b2416af1e795c40a ****/
 		%feature("compactdefaultargs") BuildBOP;
-		%feature("autodoc", "Builds the result shape according to the given states for the objects and tools. these states can be unambiguously converted into the boolean operation type. thus, it performs the boolean operation on the given groups of shapes. //! the result is built basing on the result of builder operation (gf or any other). the only condition for the builder is that the splits of faces should be created and classified relatively solids. //! the method uses classification approach for choosing the faces which will participate in building the result shape: - all faces from each group having the given state for the opposite group will be taken into result. //! such approach shows better results (in comparison with bopalgo_buildersolid approach) when working with open solids. however, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! history is not created for the solids in this method. //! to avoid pollution of the report of builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. but, if the new report is not given, the builder report will be used. so, even if builder passed without any errors, but some error has been stored into its report in this method, for the following calls the builder report must be cleared. //! the method may set the following errors: - bopalgo_alertbuilderfailed - building operation has not been performed yet or failed; - bopalgo_alertbopnotset - invalid bop type is given (common/fuse/cut/cut21 are supported); - bopalgo_alerttoofewarguments - arguments are not given; - bopalgo_alertunknownshape - the shape is unknown for the operation. //! parameters: @param theobjects - the group of objects for bop; @param theobjstate - state for objects faces to pass into result; @param thetools - the group of tools for bop; @param thetoolsstate - state for tools faces to pass into result; @param thereport - the alternative report to avoid pollution of the main one.
+		%feature("autodoc", "@name bops on open solids builds the result shape according to the given states for the objects and tools. these states can be unambiguously converted into the boolean operation type. thus, it performs the boolean operation on the given groups of shapes. //! the result is built basing on the result of builder operation (gf or any other). the only condition for the builder is that the splits of faces should be created and classified relatively solids. //! the method uses classification approach for choosing the faces which will participate in building the result shape: - all faces from each group having the given state for the opposite group will be taken into result. //! such approach shows better results (in comparison with bopalgo_buildersolid approach) when working with open solids. however, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! history is not created for the solids in this method. //! to avoid pollution of the report of builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. but, if the new report is not given, the builder report will be used. so, even if builder passed without any errors, but some error has been stored into its report in this method, for the following calls the builder report must be cleared. //! the method may set the following errors: - bopalgo_alertbuilderfailed - building operation has not been performed yet or failed; - bopalgo_alertbopnotset - invalid bop type is given (common/fuse/cut/cut21 are supported); - bopalgo_alerttoofewarguments - arguments are not given; - bopalgo_alertunknownshape - the shape is unknown for the operation. //! parameters: @param theobjects - the group of objects for bop; @param theobjstate - state for objects faces to pass into result; @param thetools - the group of tools for bop; @param thetoolsstate - state for tools faces to pass into result; @param thereport - the alternative report to avoid pollution of the main one.
 
 Parameters
 ----------
@@ -3192,7 +3192,7 @@ Returns
 -------
 None
 ") BuildBOP;
-		virtual void BuildBOP(const TopTools_ListOfShape & theObjects, const TopAbs_State theObjState, const TopTools_ListOfShape & theTools, const TopAbs_State theToolsState, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = NULL);
+		virtual void BuildBOP(const TopTools_ListOfShape & theObjects, const TopAbs_State theObjState, const TopTools_ListOfShape & theTools, const TopAbs_State theToolsState, const Message_ProgressRange & theRange, opencascade::handle<Message_Report> theReport = NULL);
 
 		/****************** BuildBOP ******************/
 		/**** md5 signature: 18c5ea0ce9eb413167db72fc87c235d6 ****/
@@ -3212,7 +3212,7 @@ Returns
 -------
 None
 ") BuildBOP;
-		void BuildBOP(const TopTools_ListOfShape & theObjects, const TopTools_ListOfShape & theTools, const BOPAlgo_Operation theOperation, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = NULL);
+		void BuildBOP(const TopTools_ListOfShape & theObjects, const TopTools_ListOfShape & theTools, const BOPAlgo_Operation theOperation, const Message_ProgressRange & theRange, opencascade::handle<Message_Report> theReport = NULL);
 
 		/****************** CheckInverted ******************/
 		/**** md5 signature: ce3c18df15bc3282101b99ee82f78b47 ****/
@@ -3261,7 +3261,7 @@ BOPAlgo_GlueEnum
 		/****************** Images ******************/
 		/**** md5 signature: b5e41f40108249a88217f4fca2899406 ****/
 		%feature("compactdefaultargs") Images;
-		%feature("autodoc", "Returns the map of images.
+		%feature("autodoc", "@name images/origins returns the map of images.
 
 Returns
 -------
@@ -3316,7 +3316,7 @@ BOPAlgo_PPaveFiller
 		/****************** Perform ******************/
 		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the operation. the intersection will be performed also.
+		%feature("autodoc", "@name performing the operation performs the operation. the intersection will be performed also.
 
 Parameters
 ----------
@@ -3394,7 +3394,7 @@ None
 		/****************** SetNonDestructive ******************/
 		/**** md5 signature: 0a29c6536a8337536ce71b892337fbbb ****/
 		%feature("compactdefaultargs") SetNonDestructive;
-		%feature("autodoc", "Sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated. this flag is taken into account if internal pavefiller is used only. in the case of calling performwithfiller the corresponding flag of that pavefiller is in force.
+		%feature("autodoc", "@name options sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated. this flag is taken into account if internal pavefiller is used only. in the case of calling performwithfiller the corresponding flag of that pavefiller is in force.
 
 Parameters
 ----------
@@ -3527,7 +3527,7 @@ class BOPAlgo_BuilderSolid : public BOPAlgo_BuilderArea {
 		/****************** BOPAlgo_BuilderSolid ******************/
 		/**** md5 signature: 3207f4476326a857182303f4e535631e ****/
 		%feature("compactdefaultargs") BOPAlgo_BuilderSolid;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -3553,7 +3553,7 @@ None
 		/****************** GetBoxesMap ******************/
 		/**** md5 signature: a5a9e80370b6f3886c3433f1fcf548da ****/
 		%feature("compactdefaultargs") GetBoxesMap;
-		%feature("autodoc", "For classification purposes the algorithm builds the bounding boxes for all created solids. this method returns the data map of solid - box pairs.
+		%feature("autodoc", "@name getting the bounding boxes of the created solids for classification purposes the algorithm builds the bounding boxes for all created solids. this method returns the data map of solid - box pairs.
 
 Returns
 -------
@@ -3564,7 +3564,7 @@ TopTools_DataMapOfShapeBox
 		/****************** Perform ******************/
 		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the construction of the solids from the given faces.
+		%feature("autodoc", "@name performing the operation performs the construction of the solids from the given faces.
 
 Parameters
 ----------
@@ -3648,9 +3648,9 @@ None
 class BOPAlgo_RemoveFeatures : public BOPAlgo_BuilderShape {
 	public:
 		/****************** BOPAlgo_RemoveFeatures ******************/
-		/**** md5 signature: 7b50bf592dac62efc3164c9eb9f4d77d ****/
+		/**** md5 signature: ec5c8307c2736846078114ad6cad6542 ****/
 		%feature("compactdefaultargs") BOPAlgo_RemoveFeatures;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -3691,7 +3691,7 @@ None
 		/****************** Clear ******************/
 		/**** md5 signature: aed78bc7ea4fdcb55502fff982e7b775 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the contents of the algorithm from previous run, allowing reusing it for following removals.
+		%feature("autodoc", "@name clearing the contents of the algorithm clears the contents of the algorithm from previous run, allowing reusing it for following removals.
 
 Returns
 -------
@@ -3724,7 +3724,7 @@ TopoDS_Shape
 		/****************** Perform ******************/
 		/**** md5 signature: 0c284a2ff880da6562c1121fb4e216b7 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the operation.
+		%feature("autodoc", "@name performing the operation performs the operation.
 
 Parameters
 ----------
@@ -3740,7 +3740,7 @@ None
 		/****************** SetShape ******************/
 		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
 		%feature("compactdefaultargs") SetShape;
-		%feature("autodoc", "Sets the shape for processing. @param theshape [in] the shape to remove the faces from.  it should either be the solid, compsolid or compound of solids.
+		%feature("autodoc", "@name setting input data for the algorithm sets the shape for processing. @param theshape [in] the shape to remove the faces from.  it should either be the solid, compsolid or compound of solids.
 
 Parameters
 ----------

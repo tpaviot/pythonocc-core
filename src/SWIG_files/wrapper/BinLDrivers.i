@@ -101,7 +101,7 @@ BinLDrivers_ENDLABEL = BinLDrivers_Marker.BinLDrivers_ENDLABEL
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Vector<BinLDrivers_DocumentSection> BinLDrivers_VectorOfDocumentSection;
+typedef NCollection_Vector <BinLDrivers_DocumentSection> BinLDrivers_VectorOfDocumentSection;
 /* end typedefs declaration */
 
 /********************
@@ -136,7 +136,7 @@ theApp: TDocStd_Application
 
 Returns
 -------
-None
+void
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 

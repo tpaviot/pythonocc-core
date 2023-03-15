@@ -92,19 +92,6 @@ enum GeomFill_ApproxStyle {
 	GeomFill_Location = 1,
 };
 
-enum GeomFill_Trihedron {
-	GeomFill_IsCorrectedFrenet = 0,
-	GeomFill_IsFixed = 1,
-	GeomFill_IsFrenet = 2,
-	GeomFill_IsConstantNormal = 3,
-	GeomFill_IsDarboux = 4,
-	GeomFill_IsGuideAC = 5,
-	GeomFill_IsGuidePlan = 6,
-	GeomFill_IsGuideACWithContact = 7,
-	GeomFill_IsGuidePlanWithContact = 8,
-	GeomFill_IsDiscreteTrihedron = 9,
-};
-
 enum GeomFill_FillingStyle {
 	GeomFill_StretchStyle = 0,
 	GeomFill_CoonsStyle = 1,
@@ -118,6 +105,19 @@ enum GeomFill_PipeError {
 	GeomFill_ImpossibleContact = 3,
 };
 
+enum GeomFill_Trihedron {
+	GeomFill_IsCorrectedFrenet = 0,
+	GeomFill_IsFixed = 1,
+	GeomFill_IsFrenet = 2,
+	GeomFill_IsConstantNormal = 3,
+	GeomFill_IsDarboux = 4,
+	GeomFill_IsGuideAC = 5,
+	GeomFill_IsGuidePlan = 6,
+	GeomFill_IsGuideACWithContact = 7,
+	GeomFill_IsGuidePlanWithContact = 8,
+	GeomFill_IsDiscreteTrihedron = 9,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
@@ -128,6 +128,24 @@ class GeomFill_ApproxStyle(IntEnum):
 	GeomFill_Location = 1
 GeomFill_Section = GeomFill_ApproxStyle.GeomFill_Section
 GeomFill_Location = GeomFill_ApproxStyle.GeomFill_Location
+
+class GeomFill_FillingStyle(IntEnum):
+	GeomFill_StretchStyle = 0
+	GeomFill_CoonsStyle = 1
+	GeomFill_CurvedStyle = 2
+GeomFill_StretchStyle = GeomFill_FillingStyle.GeomFill_StretchStyle
+GeomFill_CoonsStyle = GeomFill_FillingStyle.GeomFill_CoonsStyle
+GeomFill_CurvedStyle = GeomFill_FillingStyle.GeomFill_CurvedStyle
+
+class GeomFill_PipeError(IntEnum):
+	GeomFill_PipeOk = 0
+	GeomFill_PipeNotOk = 1
+	GeomFill_PlaneNotIntersectGuide = 2
+	GeomFill_ImpossibleContact = 3
+GeomFill_PipeOk = GeomFill_PipeError.GeomFill_PipeOk
+GeomFill_PipeNotOk = GeomFill_PipeError.GeomFill_PipeNotOk
+GeomFill_PlaneNotIntersectGuide = GeomFill_PipeError.GeomFill_PlaneNotIntersectGuide
+GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
 
 class GeomFill_Trihedron(IntEnum):
 	GeomFill_IsCorrectedFrenet = 0
@@ -150,24 +168,6 @@ GeomFill_IsGuidePlan = GeomFill_Trihedron.GeomFill_IsGuidePlan
 GeomFill_IsGuideACWithContact = GeomFill_Trihedron.GeomFill_IsGuideACWithContact
 GeomFill_IsGuidePlanWithContact = GeomFill_Trihedron.GeomFill_IsGuidePlanWithContact
 GeomFill_IsDiscreteTrihedron = GeomFill_Trihedron.GeomFill_IsDiscreteTrihedron
-
-class GeomFill_FillingStyle(IntEnum):
-	GeomFill_StretchStyle = 0
-	GeomFill_CoonsStyle = 1
-	GeomFill_CurvedStyle = 2
-GeomFill_StretchStyle = GeomFill_FillingStyle.GeomFill_StretchStyle
-GeomFill_CoonsStyle = GeomFill_FillingStyle.GeomFill_CoonsStyle
-GeomFill_CurvedStyle = GeomFill_FillingStyle.GeomFill_CurvedStyle
-
-class GeomFill_PipeError(IntEnum):
-	GeomFill_PipeOk = 0
-	GeomFill_PipeNotOk = 1
-	GeomFill_PlaneNotIntersectGuide = 2
-	GeomFill_ImpossibleContact = 3
-GeomFill_PipeOk = GeomFill_PipeError.GeomFill_PipeOk
-GeomFill_PipeNotOk = GeomFill_PipeError.GeomFill_PipeNotOk
-GeomFill_PlaneNotIntersectGuide = GeomFill_PipeError.GeomFill_PlaneNotIntersectGuide
-GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
 };
 /* end python proxy for enums */
 
@@ -297,10 +297,10 @@ GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<GeomFill_LocationLaw>> GeomFill_Array1OfLocationLaw;
-typedef NCollection_Array1<opencascade::handle<GeomFill_SectionLaw>> GeomFill_Array1OfSectionLaw;
-typedef NCollection_Sequence<gp_Ax2> GeomFill_SequenceOfAx2;
-typedef NCollection_Sequence<gp_Trsf> GeomFill_SequenceOfTrsf;
+typedef NCollection_Array1 <opencascade::handle <GeomFill_LocationLaw>> GeomFill_Array1OfLocationLaw;
+typedef NCollection_Array1 <opencascade::handle <GeomFill_SectionLaw>> GeomFill_Array1OfSectionLaw;
+typedef NCollection_Sequence <gp_Ax2> GeomFill_SequenceOfAx2;
+typedef NCollection_Sequence <gp_Trsf> GeomFill_SequenceOfTrsf;
 /* end typedefs declaration */
 
 /*****************
@@ -329,7 +329,7 @@ Weigths: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") GetCircle;
 		static void GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & nplan, const gp_Pnt & pt1, const gp_Pnt & pt2, const Standard_Real Rayon, const gp_Pnt & Center, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
@@ -422,7 +422,7 @@ Weigths: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") GetMinimalWeights;
 		static void GetMinimalWeights(const Convert_ParameterisationType TConv, const Standard_Real AngleMin, const Standard_Real AngleMax, TColStd_Array1OfReal & Weigths);
 
@@ -475,7 +475,7 @@ TKnots: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Knots;
 		static void Knots(const Convert_ParameterisationType TypeConv, TColStd_Array1OfReal & TKnots);
 
@@ -491,7 +491,7 @@ TMults: TColStd_Array1OfInteger
 
 Returns
 -------
-None
+void
 ") Mults;
 		static void Mults(const Convert_ParameterisationType TypeConv, TColStd_Array1OfInteger & TMults);
 

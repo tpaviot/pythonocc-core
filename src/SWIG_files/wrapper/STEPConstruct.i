@@ -114,10 +114,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>, TCollection_AsciiString>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
-typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>, STEPConstruct_PointHasher>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>, TCollection_AsciiString> STEPConstruct_DataMapOfAsciiStringTransient;
-typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>, STEPConstruct_PointHasher> STEPConstruct_DataMapOfPointTransient;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <Standard_Transient>, TCollection_AsciiString>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
+typedef NCollection_DataMap <gp_Pnt, opencascade::handle <Standard_Transient>, STEPConstruct_PointHasher>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <Standard_Transient>, TCollection_AsciiString> STEPConstruct_DataMapOfAsciiStringTransient;
+typedef NCollection_DataMap <gp_Pnt, opencascade::handle <Standard_Transient>, STEPConstruct_PointHasher> STEPConstruct_DataMapOfPointTransient;
 /* end typedefs declaration */
 
 /**********************

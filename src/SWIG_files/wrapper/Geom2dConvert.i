@@ -93,7 +93,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<Geom2dConvert_PPoint> Geom2dConvert_SequenceOfPPoint;
+typedef NCollection_Sequence <Geom2dConvert_PPoint> Geom2dConvert_SequenceOfPPoint;
 /* end typedefs declaration */
 
 /**********************
@@ -115,7 +115,7 @@ Tolerance: float
 
 Returns
 -------
-None
+void
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & tabBS, const Standard_Real Tolerance);
 
@@ -133,7 +133,7 @@ Tolerance: float
 
 Returns
 -------
-None
+void
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & tabBS, const Standard_Real AngularTolerance, const Standard_Real Tolerance);
 
@@ -149,7 +149,7 @@ Tolerance: float
 
 Returns
 -------
-None
+void
 ") C0BSplineToC1BSplineCurve;
 		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real Tolerance);
 
@@ -710,7 +710,7 @@ None
 class Geom2dConvert_PPoint {
 	public:
 		/****************** Geom2dConvert_PPoint ******************/
-		/**** md5 signature: 9f97d79e0015cb789a1360bfe27a3d23 ****/
+		/**** md5 signature: e1332d3e676123f39d18a8db7f5c3bac ****/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "Empty constructor.
 
@@ -721,7 +721,7 @@ None
 		 Geom2dConvert_PPoint();
 
 		/****************** Geom2dConvert_PPoint ******************/
-		/**** md5 signature: 83fab53d710c50a2f43ab7d934212a29 ****/
+		/**** md5 signature: 2a4dd83f5a7c1f2cf8c6a12885d63736 ****/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "Constructor.
 
@@ -760,9 +760,9 @@ None
 
 Returns
 -------
-gp_XY
+inline  gp_XY
 ") D1;
-		const gp_XY D1();
+		inline const gp_XY D1();
 
 		/****************** Dist ******************/
 		/**** md5 signature: fbe08e9f862a6f276bcef10b706a490f ****/
@@ -775,9 +775,9 @@ theOth: Geom2dConvert_PPoint
 
 Returns
 -------
-float
+inline float
 ") Dist;
-		Standard_Real Dist(const Geom2dConvert_PPoint & theOth);
+		inline Standard_Real Dist(const Geom2dConvert_PPoint & theOth);
 
 		/****************** Parameter ******************/
 		/**** md5 signature: 5d3812215998dd4ad07d1ceb370aa6b8 ****/
@@ -786,9 +786,9 @@ float
 
 Returns
 -------
-float
+inline float
 ") Parameter;
-		Standard_Real Parameter();
+		inline Standard_Real Parameter();
 
 		/****************** Point ******************/
 		/**** md5 signature: 0d3e0ab14ec3cab7ff6e03fe3e9807fc ****/
@@ -797,9 +797,9 @@ float
 
 Returns
 -------
-gp_XY
+inline  gp_XY
 ") Point;
-		const gp_XY Point();
+		inline const gp_XY Point();
 
 		/****************** SetD1 ******************/
 		/**** md5 signature: 5a5de6ec69bb60e69527c94d00e3b4b8 ****/
@@ -812,9 +812,9 @@ theD1: gp_XY
 
 Returns
 -------
-None
+inline void
 ") SetD1;
-		void SetD1(const gp_XY & theD1);
+		inline void SetD1(const gp_XY & theD1);
 
 
             %extend{

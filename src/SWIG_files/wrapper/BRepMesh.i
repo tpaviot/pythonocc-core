@@ -52,13 +52,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepmesh.html"
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
 #include<BRepAdaptor_module.hxx>
-#include<Adaptor3d_module.hxx>
 #include<Poly_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopLoc_module.hxx>
-#include<Geom2d_module.hxx>
-#include<Geom_module.hxx>
-#include<IMeshData_module.hxx>
 #include<TColgp_module.hxx>
 #include<TShort_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -85,13 +81,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepmesh.html"
 %import TCollection.i
 %import TColStd.i
 %import BRepAdaptor.i
-%import Adaptor3d.i
 %import Poly.i
 %import Bnd.i
 %import TopLoc.i
-%import Geom2d.i
-%import Geom.i
-%import IMeshData.i
 %import TColgp.i
 
 %pythoncode {
@@ -100,13 +92,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum BRepMesh_FactoryError {
-	BRepMesh_FE_NOERROR = 0,
-	BRepMesh_FE_LIBRARYNOTFOUND = 1,
-	BRepMesh_FE_FUNCTIONNOTFOUND = 2,
-	BRepMesh_FE_CANNOTCREATEALGO = 3,
-};
-
 enum BRepMesh_DegreeOfFreedom {
 	BRepMesh_Free = 0,
 	BRepMesh_InVolume = 1,
@@ -117,20 +102,17 @@ enum BRepMesh_DegreeOfFreedom {
 	BRepMesh_Deleted = 6,
 };
 
+enum BRepMesh_FactoryError {
+	BRepMesh_FE_NOERROR = 0,
+	BRepMesh_FE_LIBRARYNOTFOUND = 1,
+	BRepMesh_FE_FUNCTIONNOTFOUND = 2,
+	BRepMesh_FE_CANNOTCREATEALGO = 3,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class BRepMesh_FactoryError(IntEnum):
-	BRepMesh_FE_NOERROR = 0
-	BRepMesh_FE_LIBRARYNOTFOUND = 1
-	BRepMesh_FE_FUNCTIONNOTFOUND = 2
-	BRepMesh_FE_CANNOTCREATEALGO = 3
-BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
-BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
-BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
-BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
 
 class BRepMesh_DegreeOfFreedom(IntEnum):
 	BRepMesh_Free = 0
@@ -147,6 +129,16 @@ BRepMesh_OnCurve = BRepMesh_DegreeOfFreedom.BRepMesh_OnCurve
 BRepMesh_Fixed = BRepMesh_DegreeOfFreedom.BRepMesh_Fixed
 BRepMesh_Frontier = BRepMesh_DegreeOfFreedom.BRepMesh_Frontier
 BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
+
+class BRepMesh_FactoryError(IntEnum):
+	BRepMesh_FE_NOERROR = 0
+	BRepMesh_FE_LIBRARYNOTFOUND = 1
+	BRepMesh_FE_FUNCTIONNOTFOUND = 2
+	BRepMesh_FE_CANNOTCREATEALGO = 3
+BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
+BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
+BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
+BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
 };
 /* end python proxy for enums */
 
@@ -168,18 +160,19 @@ BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
 
 /* typedefs */
 typedef Standard_Integer ( * BRepMesh_PluginEntryType ) ( const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, BRepMesh_DiscretRoot * & theMeshAlgoInstance );
+typedef IMeshTools_Parameters Parameters;
 /* end typedefs declaration */
 
-/***********************
-* class <anon-class-1> *
-***********************/
+/*********
+* class  *
+*********/
 /******************************
 * class BRepMesh_BaseMeshAlgo *
 ******************************/
 %nodefaultctor BRepMesh_BaseMeshAlgo;
 class BRepMesh_BaseMeshAlgo : public IMeshTools_MeshAlgo {
 	public:
-typedef NCollection_Shared<NCollection_Vector<gp_Pnt>> VectorOfPnt;
+typedef NCollection_Shared <NCollection_Vector <gp_Pnt>> VectorOfPnt;
 		/****************** Perform ******************/
 		/**** md5 signature: d685bfcd2d4c1ddec38b4671470322e6 ****/
 		%feature("compactdefaultargs") Perform;
@@ -213,7 +206,7 @@ None
 class BRepMesh_Circle {
 	public:
 		/****************** BRepMesh_Circle ******************/
-		/**** md5 signature: 351446427e4f3cd2ee3d37f31f7510db ****/
+		/**** md5 signature: ed8ebf8a99cfa7f69dda333ca0ddde38 ****/
 		%feature("compactdefaultargs") BRepMesh_Circle;
 		%feature("autodoc", "Default constructor.
 
@@ -224,7 +217,7 @@ None
 		 BRepMesh_Circle();
 
 		/****************** BRepMesh_Circle ******************/
-		/**** md5 signature: c5833c762e5c82e444de7dd2eceedecd ****/
+		/**** md5 signature: bc9e30cbf8bd58cbdca4f332242514be ****/
 		%feature("compactdefaultargs") BRepMesh_Circle;
 		%feature("autodoc", "Constructor. @param thelocation location of a circle. @param theradius radius of a circle.
 
@@ -307,7 +300,7 @@ class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	public:
 typedef Standard_Integer Target;
 		/****************** BRepMesh_CircleInspector ******************/
-		/**** md5 signature: 9e543288b820133538a575a6fc20eeb1 ****/
+		/**** md5 signature: 563c55cd8a07b4e78bfb1d00b84f7844 ****/
 		%feature("compactdefaultargs") BRepMesh_CircleInspector;
 		%feature("autodoc", "Constructor. @param thetolerance tolerance to be used for identification of shot circles. @param thereservedsize size to be reserved for vector of circles. @param theallocator memory allocator to be used by internal collections.
 
@@ -954,13 +947,13 @@ None
 Parameters
 ----------
 theElement: BRepMesh_Triangle
-): int (  theNodes
+: int(theNodes)
 
 Returns
 -------
 None
 ") ElementNodes;
-		void ElementNodes(const BRepMesh_Triangle & theElement, Standard_Integer ( & theNodes )[3]);
+		void ElementNodes(const BRepMesh_Triangle & theElement, Standard_Integer(&theNodes) [3]);
 
 		/****************** ElementsConnectedTo ******************/
 		/**** md5 signature: 6a0793321d2308e1d5fc176a3a016706 ****/
@@ -1092,7 +1085,7 @@ IMeshData::MapOfInteger
 		/****************** NbElements ******************/
 		/**** md5 signature: 31ab3b416016e435682ef37235c33db1 ****/
 		%feature("compactdefaultargs") NbElements;
-		%feature("autodoc", "Returns number of links.
+		%feature("autodoc", "@name api for accessing mesh elements. returns number of links.
 
 Returns
 -------
@@ -1103,7 +1096,7 @@ int
 		/****************** NbLinks ******************/
 		/**** md5 signature: 2c9671a2bdbbb6b3c071b4befae3ab9c ****/
 		%feature("compactdefaultargs") NbLinks;
-		%feature("autodoc", "Returns number of links.
+		%feature("autodoc", "@name api for accessing mesh links. returns number of links.
 
 Returns
 -------
@@ -1114,7 +1107,7 @@ int
 		/****************** NbNodes ******************/
 		/**** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ****/
 		%feature("compactdefaultargs") NbNodes;
-		%feature("autodoc", "Returns number of nodes.
+		%feature("autodoc", "@name api for accessing mesh nodes. returns number of nodes.
 
 Returns
 -------
@@ -1273,7 +1266,7 @@ theParameters: IMeshTools_Parameters
 
 Returns
 -------
-None
+void
 ") ComputeDeflection;
 		static void ComputeDeflection(const IMeshData::IEdgeHandle & theDEdge, const Standard_Real theMaxShapeSize, const IMeshTools_Parameters & theParameters);
 
@@ -1289,7 +1282,7 @@ theParameters: IMeshTools_Parameters
 
 Returns
 -------
-None
+void
 ") ComputeDeflection;
 		static void ComputeDeflection(const IMeshData::IWireHandle & theDWire, const IMeshTools_Parameters & theParameters);
 
@@ -1305,7 +1298,7 @@ theParameters: IMeshTools_Parameters
 
 Returns
 -------
-None
+void
 ") ComputeDeflection;
 		static void ComputeDeflection(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
 
@@ -1457,7 +1450,7 @@ None
 
 Parameters
 ----------
-theOldMesh: Handle ( BRepMesh_DataStructureOfDelaun )
+theOldMesh: Handle(BRepMesh_DataStructureOfDelaun)
 theVertexIndices: IMeshData::VectorOfInteger
 theCellsCountU: int
 theCellsCountV: int
@@ -1466,7 +1459,7 @@ Returns
 -------
 None
 ") BRepMesh_Delaun;
-		 BRepMesh_Delaun(const Handle ( BRepMesh_DataStructureOfDelaun ) & theOldMesh, IMeshData::VectorOfInteger & theVertexIndices, const Standard_Integer theCellsCountU, const Standard_Integer theCellsCountV);
+		 BRepMesh_Delaun(const Handle(BRepMesh_DataStructureOfDelaun) & theOldMesh, IMeshData::VectorOfInteger & theVertexIndices, const Standard_Integer theCellsCountU, const Standard_Integer theCellsCountV);
 
 		/****************** AddVertices ******************/
 		/**** md5 signature: 113e996513917ce7251d5a839da38bcc ****/
@@ -1637,9 +1630,9 @@ theSupVert: IMeshData::VectorOfInteger
 
 Returns
 -------
-None
+inline void
 ") SetAuxVertices;
-		void SetAuxVertices(const IMeshData::VectorOfInteger & theSupVert);
+		inline void SetAuxVertices(const IMeshData::VectorOfInteger & theSupVert);
 
 		/****************** UseEdge ******************/
 		/**** md5 signature: 02fbf448c47cf1029f0cd536b06426d3 ****/
@@ -1968,7 +1961,7 @@ theUpdateEnds: bool
 
 Returns
 -------
-None
+void
 ") Tessellate2d;
 		static void Tessellate2d(const IMeshData::IEdgeHandle & theDEdge, const Standard_Boolean theUpdateEnds);
 
@@ -1985,7 +1978,7 @@ theUpdateEnds: bool
 
 Returns
 -------
-None
+void
 ") Tessellate3d;
 		static void Tessellate3d(const IMeshData::IEdgeHandle & theDEdge, const opencascade::handle<IMeshTools_CurveTessellator> & theTessellator, const Standard_Boolean theUpdateEnds);
 
@@ -2009,8 +2002,8 @@ None
 *****************************/
 class BRepMesh_FaceChecker : public Standard_Transient {
 	public:
-typedef NCollection_Shared<NCollection_Vector<Segment>> Segments;
-typedef NCollection_Shared<NCollection_Array1<opencascade ::handle<Segments>>> ArrayOfSegments;
+typedef NCollection_Shared <NCollection_Vector <Segment>> Segments;
+typedef NCollection_Shared <NCollection_Array1 <opencascade::handle <Segments>>> ArrayOfSegments;
 		class Segment {};
 		/****************** BRepMesh_FaceChecker ******************/
 		/**** md5 signature: 5e1e1f82e3705e28ebff9dc29b27b5a6 ****/
@@ -2188,16 +2181,16 @@ int
 
 Parameters
 ----------
-theSurface: Handle ( Adaptor3d_Surface )
+theSurface: Handle(Adaptor3d_Surface)
 theVerticesNb: int
 theDeflection: float
 theRangeSplitter: BRepMesh_DefaultRangeSplitter *
 
 Returns
 -------
-std::pair<int, int >
+std::pair<int, int>
 ") CellsCount;
-		static std::pair<Standard_Integer, Standard_Integer > CellsCount(const Handle ( Adaptor3d_Surface ) & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
+		static std::pair<Standard_Integer, Standard_Integer> CellsCount(const Handle(Adaptor3d_Surface) & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
 
 		/****************** NbPoints ******************/
 		/**** md5 signature: e92014a2f157c195ed77b7745c7eae3f ****/
@@ -2390,13 +2383,13 @@ Parameters
 thePoint1: int
 thePoint2: int
 thePoint3: int
-): int (  theEdges
+: int(theEdges)
 
 Returns
 -------
 None
 ") AddTriangle;
-		void AddTriangle(const Standard_Integer thePoint1, const Standard_Integer thePoint2, const Standard_Integer thePoint3, Standard_Integer ( & theEdges )[3]);
+		void AddTriangle(const Standard_Integer thePoint1, const Standard_Integer thePoint2, const Standard_Integer thePoint3, Standard_Integer(&theEdges) [3]);
 
 		/****************** CleanFrontierLinks ******************/
 		/**** md5 signature: 63fc3ce6394f9f579070f64eb2be550d ****/
@@ -2620,7 +2613,7 @@ None
 class BRepMesh_OrientedEdge {
 	public:
 		/****************** BRepMesh_OrientedEdge ******************/
-		/**** md5 signature: 40cd54f8ff406e529cbca096a4dcba4a ****/
+		/**** md5 signature: cfa44193269da7bf9e9672e7353cd685 ****/
 		%feature("compactdefaultargs") BRepMesh_OrientedEdge;
 		%feature("autodoc", "Default constructor.
 
@@ -2631,7 +2624,7 @@ None
 		 BRepMesh_OrientedEdge();
 
 		/****************** BRepMesh_OrientedEdge ******************/
-		/**** md5 signature: 7eaf07ac54e195f9bc4f9f560013a8a2 ****/
+		/**** md5 signature: 4ec24ec192d27fa335b14e08787c3c06 ****/
 		%feature("compactdefaultargs") BRepMesh_OrientedEdge;
 		%feature("autodoc", "Constructs a link between two vertices.
 
@@ -3132,7 +3125,7 @@ theTriangulation: Poly_Triangulation
 
 Returns
 -------
-None
+void
 ") AddInFace;
 		static void AddInFace(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -3163,7 +3156,7 @@ thePCurve: IMeshData::IPCurveHandle
 
 Returns
 -------
-None
+void
 ") CheckAndUpdateFlags;
 		static void CheckAndUpdateFlags(const IMeshData::IEdgeHandle & theEdge, const IMeshData::IPCurveHandle & thePCurve);
 
@@ -3190,14 +3183,14 @@ float
 Parameters
 ----------
 theEdge: TopoDS_Edge
-theTriangulation: Handle ( Poly_Triangulation )
+theTriangulation: Handle(Poly_Triangulation)
 theLocation: TopLoc_Location
 
 Returns
 -------
-None
+void
 ") NullifyEdge;
-		static void NullifyEdge(const TopoDS_Edge & theEdge, const Handle ( Poly_Triangulation ) & theTriangulation, const TopLoc_Location & theLocation);
+		static void NullifyEdge(const TopoDS_Edge & theEdge, const Handle(Poly_Triangulation) & theTriangulation, const TopLoc_Location & theLocation);
 
 		/****************** NullifyEdge ******************/
 		/**** md5 signature: a40c1f6240ceb504d322009c0248d48a ****/
@@ -3211,7 +3204,7 @@ theLocation: TopLoc_Location
 
 Returns
 -------
-None
+void
 ") NullifyEdge;
 		static void NullifyEdge(const TopoDS_Edge & theEdge, const TopLoc_Location & theLocation);
 
@@ -3226,7 +3219,7 @@ theFace: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") NullifyFace;
 		static void NullifyFace(const TopoDS_Face & theFace);
 
@@ -3239,7 +3232,7 @@ Parameters
 ----------
 theEdge: TopoDS_Edge
 theFace: TopoDS_Face
-thePCurve: Handle ( Geom2d_Curve )
+thePCurve: Handle(Geom2d_Curve)
 isConsiderOrientation: bool,optional
 	default value is Standard_False
 
@@ -3248,7 +3241,7 @@ Returns
 theFirstParam: float
 theLastParam: float
 ") Range;
-		static Standard_Boolean Range(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, Handle ( Geom2d_Curve ) & thePCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
+		static Standard_Boolean Range(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, Handle(Geom2d_Curve) & thePCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
 
 		/****************** Range ******************/
 		/**** md5 signature: 4f2c0c58738d79d22379878c484ed3af ****/
@@ -3258,7 +3251,7 @@ theLastParam: float
 Parameters
 ----------
 theEdge: TopoDS_Edge
-theCurve: Handle ( Geom_Curve )
+theCurve: Handle(Geom_Curve)
 isConsiderOrientation: bool,optional
 	default value is Standard_False
 
@@ -3267,7 +3260,7 @@ Returns
 theFirstParam: float
 theLastParam: float
 ") Range;
-		static Standard_Boolean Range(const TopoDS_Edge & theEdge, Handle ( Geom_Curve ) & theCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
+		static Standard_Boolean Range(const TopoDS_Edge & theEdge, Handle(Geom_Curve) & theCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
 
 		/****************** UVPoints ******************/
 		/**** md5 signature: 1252140d03973dd7dff854c69c805cd8 ****/
@@ -3297,15 +3290,15 @@ bool
 Parameters
 ----------
 theEdge: TopoDS_Edge
-thePolygon: Handle ( Poly_PolygonOnTriangulation )
-theTriangulation: Handle ( Poly_Triangulation )
+thePolygon: Handle(Poly_PolygonOnTriangulation)
+theTriangulation: Handle(Poly_Triangulation)
 theLocation: TopLoc_Location
 
 Returns
 -------
-None
+void
 ") UpdateEdge;
-		static void UpdateEdge(const TopoDS_Edge & theEdge, const Handle ( Poly_PolygonOnTriangulation ) & thePolygon, const Handle ( Poly_Triangulation ) & theTriangulation, const TopLoc_Location & theLocation);
+		static void UpdateEdge(const TopoDS_Edge & theEdge, const Handle(Poly_PolygonOnTriangulation) & thePolygon, const Handle(Poly_Triangulation) & theTriangulation, const TopLoc_Location & theLocation);
 
 		/****************** UpdateEdge ******************/
 		/**** md5 signature: 7d40445fe5ea272ec9d3f2c1b9ae4074 ****/
@@ -3319,7 +3312,7 @@ thePolygon: Poly_Polygon3D
 
 Returns
 -------
-None
+void
 ") UpdateEdge;
 		static void UpdateEdge(const TopoDS_Edge & theEdge, const opencascade::handle<Poly_Polygon3D> & thePolygon);
 
@@ -3331,16 +3324,16 @@ None
 Parameters
 ----------
 theEdge: TopoDS_Edge
-thePolygon1: Handle ( Poly_PolygonOnTriangulation )
-thePolygon2: Handle ( Poly_PolygonOnTriangulation )
-theTriangulation: Handle ( Poly_Triangulation )
+thePolygon1: Handle(Poly_PolygonOnTriangulation)
+thePolygon2: Handle(Poly_PolygonOnTriangulation)
+theTriangulation: Handle(Poly_Triangulation)
 theLocation: TopLoc_Location
 
 Returns
 -------
-None
+void
 ") UpdateEdge;
-		static void UpdateEdge(const TopoDS_Edge & theEdge, const Handle ( Poly_PolygonOnTriangulation ) & thePolygon1, const Handle ( Poly_PolygonOnTriangulation ) & thePolygon2, const Handle ( Poly_Triangulation ) & theTriangulation, const TopLoc_Location & theLocation);
+		static void UpdateEdge(const TopoDS_Edge & theEdge, const Handle(Poly_PolygonOnTriangulation) & thePolygon1, const Handle(Poly_PolygonOnTriangulation) & thePolygon2, const Handle(Poly_Triangulation) & theTriangulation, const TopLoc_Location & theLocation);
 
 		/****************** UseLocation ******************/
 		/**** md5 signature: 1d483b4a9b5ac80702e3ffccb5ce462e ****/
@@ -3381,13 +3374,13 @@ class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 
 Parameters
 ----------
-theModel: Handle ( IMeshData_Model )
+theModel: Handle(IMeshData_Model)
 
 Returns
 -------
 None
 ") BRepMesh_ShapeVisitor;
-		 BRepMesh_ShapeVisitor(const Handle ( IMeshData_Model ) & theModel);
+		 BRepMesh_ShapeVisitor(const Handle(IMeshData_Model) & theModel);
 
 		/****************** Visit ******************/
 		/**** md5 signature: ebcbeb83d8be062abed52fb56f5b893f ****/
@@ -3437,7 +3430,7 @@ class BRepMesh_Triangle {
 		bool myOrientations[3];
 		BRepMesh_DegreeOfFreedom myMovability;
 		/****************** BRepMesh_Triangle ******************/
-		/**** md5 signature: a7b2afb496f1368f3f769aedd8d11850 ****/
+		/**** md5 signature: 4263569a51b9e153bc1f4edcacd0d9a7 ****/
 		%feature("compactdefaultargs") BRepMesh_Triangle;
 		%feature("autodoc", "Default constructor.
 
@@ -3454,15 +3447,15 @@ None
 
 Parameters
 ----------
-): int (  theEdges
-): bool (  theOrientations
+Standard_Integer(&theEdges): 
+Standard_Boolean(&theOrientations): 
 theMovability: BRepMesh_DegreeOfFreedom
 
 Returns
 -------
 None
 ") BRepMesh_Triangle;
-		 BRepMesh_Triangle(const Standard_Integer ( & theEdges )[3], const Standard_Boolean ( & theOrientations )[3], const BRepMesh_DegreeOfFreedom theMovability);
+		 BRepMesh_Triangle(const Standard_Integer(&theEdges)[3], const Standard_Boolean(&theOrientations)[3], const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** Edges ******************/
 		/**** md5 signature: 4d9a1eb522cb4c5f438c181c4cc333a2 ****/
@@ -3471,14 +3464,14 @@ None
 
 Parameters
 ----------
-): int (  theEdges
-): bool (  theOrientations
+: int(theEdges)
+: bool(theOrientations)
 
 Returns
 -------
 None
 ") Edges;
-		void Edges(Standard_Integer ( & theEdges )[3], Standard_Boolean ( & theOrientations )[3]);
+		void Edges(Standard_Integer(&theEdges) [3], Standard_Boolean(&theOrientations) [3]);
 
 		/****************** HashCode ******************/
 		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
@@ -3508,15 +3501,15 @@ int
 
 Parameters
 ----------
-): int (  theEdges
-): bool (  theOrientations
+Standard_Integer(&theEdges): 
+Standard_Boolean(&theOrientations): 
 theMovability: BRepMesh_DegreeOfFreedom
 
 Returns
 -------
 None
 ") Initialize;
-		void Initialize(const Standard_Integer ( & theEdges )[3], const Standard_Boolean ( & theOrientations )[3], const BRepMesh_DegreeOfFreedom theMovability);
+		void Initialize(const Standard_Integer(&theEdges)[3], const Standard_Boolean(&theOrientations)[3], const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 475c8cafbb251ef77ebaff68a5aa0c19 ****/
@@ -3665,7 +3658,7 @@ opencascade::handle<Poly_Triangulation>
 class BRepMesh_Vertex {
 	public:
 		/****************** BRepMesh_Vertex ******************/
-		/**** md5 signature: 3973d06ef43acb5c8647a9d5a5d533af ****/
+		/**** md5 signature: bc83d1490327509889d04f8f155ccf1e ****/
 		%feature("compactdefaultargs") BRepMesh_Vertex;
 		%feature("autodoc", "Default constructor.
 
@@ -3693,7 +3686,7 @@ None
 		 BRepMesh_Vertex(const gp_XY & theUV, const Standard_Integer theLocation3d, const BRepMesh_DegreeOfFreedom theMovability);
 
 		/****************** BRepMesh_Vertex ******************/
-		/**** md5 signature: 9eadd3f7c60ce98b5b0f2653c1cd76f1 ****/
+		/**** md5 signature: 9ce636f570700ce9f9335bb16de8b27d ****/
 		%feature("compactdefaultargs") BRepMesh_Vertex;
 		%feature("autodoc", "Creates vertex without association with point in 3d space. @param theu u position of vertex in parametric space. @param thev v position of vertex in parametric space. @param themovability movability of the vertex.
 
@@ -3851,7 +3844,7 @@ class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 	public:
 typedef Standard_Integer Target;
 		/****************** BRepMesh_VertexInspector ******************/
-		/**** md5 signature: 7c9c8f3e11f83e3929f77935677ecf69 ****/
+		/**** md5 signature: 08f4123104eb925eca3f59afd5cd72d4 ****/
 		%feature("compactdefaultargs") BRepMesh_VertexInspector;
 		%feature("autodoc", "Constructor. @param theallocator memory allocator to be used by internal collections.
 
@@ -4317,7 +4310,7 @@ None
 class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 	public:
 		/****************** BRepMesh_Edge ******************/
-		/**** md5 signature: 148292be386085c6fd2cc96072e9c3de ****/
+		/**** md5 signature: 9dab0ad64083c2468b24e4e0c4b4d9dd ****/
 		%feature("compactdefaultargs") BRepMesh_Edge;
 		%feature("autodoc", "Default constructor.
 
@@ -4328,7 +4321,7 @@ None
 		 BRepMesh_Edge();
 
 		/****************** BRepMesh_Edge ******************/
-		/**** md5 signature: 899778d80da95fd1669c2bc626ea9637 ****/
+		/**** md5 signature: d281845402b06d742466c13f5b7500d9 ****/
 		%feature("compactdefaultargs") BRepMesh_Edge;
 		%feature("autodoc", "Constructs a link between two vertices.
 
@@ -4456,7 +4449,7 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 		/****************** BRepMesh_IncrementalMesh ******************/
 		/**** md5 signature: 423409375831fd5b22ca5152c321696e ****/
 		%feature("compactdefaultargs") BRepMesh_IncrementalMesh;
-		%feature("autodoc", "Default constructor.
+		%feature("autodoc", "@name mesher api default constructor.
 
 Returns
 -------
@@ -4518,7 +4511,7 @@ IMeshTools_Parameters
 		/****************** Discret ******************/
 		/**** md5 signature: 48d8518acd93b0a2608de45caeb5d913 ****/
 		%feature("compactdefaultargs") Discret;
-		%feature("autodoc", "Plugin interface for the mesh factories. initializes meshing algorithm with the given parameters. @param theshape shape to be meshed. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param[out] thealgo pointer to initialized algorithm.
+		%feature("autodoc", "@name plugin api plugin interface for the mesh factories. initializes meshing algorithm with the given parameters. @param theshape shape to be meshed. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param[out] thealgo pointer to initialized algorithm.
 
 Parameters
 ----------
@@ -4569,7 +4562,7 @@ bool
 		/****************** Parameters ******************/
 		/**** md5 signature: 80bd17a03936a7214968019ed0fbca90 ****/
 		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "Returns meshing parameters.
+		%feature("autodoc", "@name accessing to parameters. returns meshing parameters.
 
 Returns
 -------
@@ -4621,7 +4614,7 @@ isInParallel: bool
 
 Returns
 -------
-None
+void
 ") SetParallelDefault;
 		static void SetParallelDefault(const Standard_Boolean isInParallel);
 
@@ -4739,4 +4732,5 @@ class BRepMesh_DelaunayNodeInsertionMeshAlgo:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+Parameters=OCC.Core.IMeshTools.IMeshTools_Parameters
 }

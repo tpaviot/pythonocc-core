@@ -122,10 +122,10 @@ HLRAlgo_PolyMask_FMskFrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFrBack
 %wrap_handle(HLRAlgo_PolyInternalNode)
 %wrap_handle(HLRAlgo_PolyShellData)
 %wrap_handle(HLRAlgo_WiresBlock)
-%wrap_handle(HLRAlgo_HArray1OfPINod)
 %wrap_handle(HLRAlgo_HArray1OfPHDat)
-%wrap_handle(HLRAlgo_HArray1OfTData)
+%wrap_handle(HLRAlgo_HArray1OfPINod)
 %wrap_handle(HLRAlgo_HArray1OfPISeg)
+%wrap_handle(HLRAlgo_HArray1OfTData)
 /* end handles declaration */
 
 /* templates */
@@ -255,13 +255,13 @@ HLRAlgo_PolyMask_FMskFrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFrBack
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> HLRAlgo_Array1OfPINod;
-typedef NCollection_Array1<HLRAlgo_PolyInternalSegment> HLRAlgo_Array1OfPISeg;
-typedef NCollection_Array1<HLRAlgo_TriangleData> HLRAlgo_Array1OfTData;
-typedef NCollection_List<HLRAlgo_Interference> HLRAlgo_InterferenceList;
-typedef NCollection_List<HLRAlgo_Interference>::Iterator HLRAlgo_ListIteratorOfInterferenceList;
-typedef NCollection_List<HLRAlgo_BiPoint>::Iterator HLRAlgo_ListIteratorOfListOfBPoint;
-typedef NCollection_List<HLRAlgo_BiPoint> HLRAlgo_ListOfBPoint;
+typedef NCollection_Array1 <opencascade::handle <HLRAlgo_PolyInternalNode>> HLRAlgo_Array1OfPINod;
+typedef NCollection_Array1 <HLRAlgo_PolyInternalSegment> HLRAlgo_Array1OfPISeg;
+typedef NCollection_Array1 <HLRAlgo_TriangleData> HLRAlgo_Array1OfTData;
+typedef NCollection_List <HLRAlgo_Interference> HLRAlgo_InterferenceList;
+typedef NCollection_List <HLRAlgo_Interference>::Iterator HLRAlgo_ListIteratorOfInterferenceList;
+typedef NCollection_List <HLRAlgo_BiPoint>::Iterator HLRAlgo_ListIteratorOfListOfBPoint;
+typedef NCollection_List <HLRAlgo_BiPoint> HLRAlgo_ListOfBPoint;
 /* end typedefs declaration */
 
 /****************
@@ -284,7 +284,7 @@ OMax: HLRAlgo_EdgesBlock::MinMaxIndices
 
 Returns
 -------
-None
+void
 ") AddMinMax;
 		static void AddMinMax(HLRAlgo_EdgesBlock::MinMaxIndices & IMin, HLRAlgo_EdgesBlock::MinMaxIndices & IMax, HLRAlgo_EdgesBlock::MinMaxIndices & OMin, HLRAlgo_EdgesBlock::MinMaxIndices & OMax);
 
@@ -302,7 +302,7 @@ OMax: HLRAlgo_EdgesBlock::MinMaxIndices
 
 Returns
 -------
-None
+void
 ") CopyMinMax;
 		static void CopyMinMax(HLRAlgo_EdgesBlock::MinMaxIndices & IMin, HLRAlgo_EdgesBlock::MinMaxIndices & IMax, HLRAlgo_EdgesBlock::MinMaxIndices & OMin, HLRAlgo_EdgesBlock::MinMaxIndices & OMax);
 
@@ -319,7 +319,7 @@ Max: HLRAlgo_EdgesBlock::MinMaxIndices
 
 Returns
 -------
-None
+void
 ") DecodeMinMax;
 		static void DecodeMinMax(const HLRAlgo_EdgesBlock::MinMaxIndices & MinMax, HLRAlgo_EdgesBlock::MinMaxIndices & Min, HLRAlgo_EdgesBlock::MinMaxIndices & Max);
 
@@ -336,7 +336,7 @@ MinMax: HLRAlgo_EdgesBlock::MinMaxIndices
 
 Returns
 -------
-None
+void
 ") EncodeMinMax;
 		static void EncodeMinMax(HLRAlgo_EdgesBlock::MinMaxIndices & Min, HLRAlgo_EdgesBlock::MinMaxIndices & Max, HLRAlgo_EdgesBlock::MinMaxIndices & MinMax);
 
@@ -353,7 +353,7 @@ Max: float
 
 Returns
 -------
-None
+void
 ") EnlargeMinMax;
 		static void EnlargeMinMax(const Standard_Real tol, Standard_Real Min[16], Standard_Real Max[16]);
 
@@ -370,7 +370,7 @@ Max: float
 
 Returns
 -------
-None
+void
 ") InitMinMax;
 		static void InitMinMax(const Standard_Real Big, Standard_Real Min[16], Standard_Real Max[16]);
 
@@ -405,7 +405,7 @@ Max: float
 
 Returns
 -------
-None
+void
 ") UpdateMinMax;
 		static void UpdateMinMax(const Standard_Real x, const Standard_Real y, const Standard_Real z, Standard_Real Min[16], Standard_Real Max[16]);
 
@@ -784,7 +784,7 @@ None
 class HLRAlgo_Coincidence {
 	public:
 		/****************** HLRAlgo_Coincidence ******************/
-		/**** md5 signature: aa06ac22acb71819bf2eda53bcf6183e ****/
+		/**** md5 signature: 5fb771b9dcdd4446043398557e8269ef ****/
 		%feature("compactdefaultargs") HLRAlgo_Coincidence;
 		%feature("autodoc", "No available documentation.
 
@@ -1351,9 +1351,9 @@ None
 
 Returns
 -------
-HLRAlgo_EdgesBlock::MinMaxIndices
+MinMaxIndices
 ") MinMax;
-		HLRAlgo_EdgesBlock::MinMaxIndices MinMax();
+		MinMaxIndices & MinMax();
 
 		/****************** NbEdges ******************/
 		/**** md5 signature: 31924aa1f5b2c848f6f0ca402e060038 ****/
@@ -2971,7 +2971,7 @@ gp_Trsf
 class HLRAlgo_WiresBlock : public Standard_Transient {
 	public:
 		/****************** HLRAlgo_WiresBlock ******************/
-		/**** md5 signature: a3813db1547d3356adc436359819aab0 ****/
+		/**** md5 signature: 0082c650d14181c3524f0faa82e87092 ****/
 		%feature("compactdefaultargs") HLRAlgo_WiresBlock;
 		%feature("autodoc", "Create a block of blocks.
 
@@ -3082,17 +3082,6 @@ class HLRAlgo_PolyHidingData:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class HLRAlgo_HArray1OfPINod : public HLRAlgo_Array1OfPINod, public Standard_Transient {
-  public:
-    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPINod::value_type& theValue);
-    HLRAlgo_HArray1OfPINod(const HLRAlgo_Array1OfPINod& theOther);
-    const HLRAlgo_Array1OfPINod& Array1();
-    HLRAlgo_Array1OfPINod& ChangeArray1();
-};
-%make_alias(HLRAlgo_HArray1OfPINod)
-
-
 class HLRAlgo_HArray1OfPHDat : public HLRAlgo_Array1OfPHDat, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3104,15 +3093,15 @@ class HLRAlgo_HArray1OfPHDat : public HLRAlgo_Array1OfPHDat, public Standard_Tra
 %make_alias(HLRAlgo_HArray1OfPHDat)
 
 
-class HLRAlgo_HArray1OfTData : public HLRAlgo_Array1OfTData, public Standard_Transient {
+class HLRAlgo_HArray1OfPINod : public HLRAlgo_Array1OfPINod, public Standard_Transient {
   public:
-    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfTData::value_type& theValue);
-    HLRAlgo_HArray1OfTData(const HLRAlgo_Array1OfTData& theOther);
-    const HLRAlgo_Array1OfTData& Array1();
-    HLRAlgo_Array1OfTData& ChangeArray1();
+    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
+    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPINod::value_type& theValue);
+    HLRAlgo_HArray1OfPINod(const HLRAlgo_Array1OfPINod& theOther);
+    const HLRAlgo_Array1OfPINod& Array1();
+    HLRAlgo_Array1OfPINod& ChangeArray1();
 };
-%make_alias(HLRAlgo_HArray1OfTData)
+%make_alias(HLRAlgo_HArray1OfPINod)
 
 
 class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Transient {
@@ -3124,6 +3113,17 @@ class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Tra
     HLRAlgo_Array1OfPISeg& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPISeg)
+
+
+class HLRAlgo_HArray1OfTData : public HLRAlgo_Array1OfTData, public Standard_Transient {
+  public:
+    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper);
+    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfTData::value_type& theValue);
+    HLRAlgo_HArray1OfTData(const HLRAlgo_Array1OfTData& theOther);
+    const HLRAlgo_Array1OfTData& Array1();
+    HLRAlgo_Array1OfTData& ChangeArray1();
+};
+%make_alias(HLRAlgo_HArray1OfTData)
 
 /* harray2 classes */
 /* hsequence classes */

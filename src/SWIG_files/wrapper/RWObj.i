@@ -508,7 +508,7 @@ class RWObj_Material {
 		Standard_ShortReal Shininess;
 		Standard_ShortReal Transparency;
 		/****************** RWObj_Material ******************/
-		/**** md5 signature: e824e5ca5d324e17a53317770dbbc543 ****/
+		/**** md5 signature: bb8dc9b5b5361840931212091211cbd1 ****/
 		%feature("compactdefaultargs") RWObj_Material;
 		%feature("autodoc", "No available documentation.
 
@@ -1306,7 +1306,7 @@ None
 class RWObj_TriangulationReader : public RWObj_Reader {
 	public:
 		/****************** RWObj_TriangulationReader ******************/
-		/**** md5 signature: 3c004fcddd264c3577c6f2cb0d444634 ****/
+		/**** md5 signature: ce33582a66814fd78deca0da5043ff2d ****/
 		%feature("compactdefaultargs") RWObj_TriangulationReader;
 		%feature("autodoc", "Constructor.
 

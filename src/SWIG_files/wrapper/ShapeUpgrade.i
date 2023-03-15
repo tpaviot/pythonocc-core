@@ -772,7 +772,7 @@ None
 		void Init(const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Init ******************/
-		/**** md5 signature: c7d10a11179e927adbd9f6f482589311 ****/
+		/**** md5 signature: c9887c6b78c318ffa02c5611544ac50b ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initializes with single supporting surface with bounding parameters.
 
@@ -1063,7 +1063,7 @@ None
 *************************************/
 class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
 	public:
-typedef NCollection_DataMap<TopoDS_Shape , opencascade ::handle<Geom_Plane>, TopTools_ShapeMapHasher> DataMapOfFacePlane;
+typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <Geom_Plane>, TopTools_ShapeMapHasher> DataMapOfFacePlane;
 		/****************** ShapeUpgrade_UnifySameDomain ******************/
 		/**** md5 signature: 81e68dd91fd764ff95aa62b12dc88ed6 ****/
 		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;
@@ -1667,7 +1667,7 @@ None
 		void Init(const TopoDS_Face & F);
 
 		/****************** Perform ******************/
-		/**** md5 signature: 20d0b6fc51636d29419d616b6aa42e30 ****/
+		/**** md5 signature: 67288b7d41a3d5b579c7966b03a730ce ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs splitting and computes the resulting shell the context is used to keep track of former splittings in order to keep sharings. it is updated according to modifications made. the optional argument <thearea> is used to initialize the tool for splitting surface in the case of splitting into n parts where n is user-defined.
 
@@ -1750,7 +1750,7 @@ bool
 		virtual Standard_Boolean SplitCurves();
 
 		/****************** SplitSurface ******************/
-		/**** md5 signature: 7d0e8fbace163592ba259546db534b47 ****/
+		/**** md5 signature: 464a4fd661bf45f4f5602d2f5823ef4a ****/
 		%feature("compactdefaultargs") SplitSurface;
 		%feature("autodoc", "Performs splitting of surface and computes the shell from source face. the optional argument <thearea> is used to initialize the tool for splitting surface in the case of splitting into n parts where n is user-defined.
 
@@ -3555,7 +3555,7 @@ None
 		void SetNbSplitPoints(const Standard_Integer num);
 
 		/****************** SplitSurface ******************/
-		/**** md5 signature: 61ae21075e41f26658581719bb3a1c27 ****/
+		/**** md5 signature: 793ffd0d25c46de65fa2f82b4019ff65 ****/
 		%feature("compactdefaultargs") SplitSurface;
 		%feature("autodoc", "Performs splitting of surface and computes the shell from source face.
 
@@ -3845,7 +3845,7 @@ None
             }
         };
 		/****************** Perform ******************/
-		/**** md5 signature: 0a9ce5707853083f8879f76d7deee39d ****/
+		/**** md5 signature: e193385846c7ec7a3d4134178d079eee ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Performs splitting and computes the resulting shell the context is used to keep track of former splittings.
 

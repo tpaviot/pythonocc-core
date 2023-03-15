@@ -73,8 +73,8 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(Bnd_HArray1OfBox)
-%wrap_handle(Bnd_HArray1OfSphere)
 %wrap_handle(Bnd_HArray1OfBox2d)
+%wrap_handle(Bnd_HArray1OfSphere)
 /* end handles declaration */
 
 /* templates */
@@ -186,9 +186,9 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<Bnd_Box> Bnd_Array1OfBox;
-typedef NCollection_Array1<Bnd_Box2d> Bnd_Array1OfBox2d;
-typedef NCollection_Array1<Bnd_Sphere> Bnd_Array1OfSphere;
+typedef NCollection_Array1 <Bnd_Box> Bnd_Array1OfBox;
+typedef NCollection_Array1 <Bnd_Box2d> Bnd_Array1OfBox2d;
+typedef NCollection_Array1 <Bnd_Sphere> Bnd_Array1OfSphere;
 /* end typedefs declaration */
 
 /****************
@@ -2417,7 +2417,7 @@ None
 class Bnd_Box2d {
 	public:
 		/****************** Bnd_Box2d ******************/
-		/**** md5 signature: 18bdb98247d9982c9bb8ed597d8523b6 ****/
+		/**** md5 signature: 03bff9ede325b76f4b37cb5bf8c11250 ****/
 		%feature("compactdefaultargs") Bnd_Box2d;
 		%feature("autodoc", "Creates an empty 2d bounding box. the constructed box is qualified void. its gap is null.
 
@@ -2889,7 +2889,7 @@ None
 class Bnd_OBB {
 	public:
 		/****************** Bnd_OBB ******************/
-		/**** md5 signature: 89e871e268e0b019a1a62d73fd55eb19 ****/
+		/**** md5 signature: 5c21e576e4f87ff531f14bfb8f51971c ****/
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "Empty constructor.
 
@@ -2900,7 +2900,7 @@ None
 		 Bnd_OBB();
 
 		/****************** Bnd_OBB ******************/
-		/**** md5 signature: 9217a828a0fc36ef6ace41d448b130b0 ****/
+		/**** md5 signature: 525d85ccde27fb8b80720b9655f9c27d ****/
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "Constructor taking all defining parameters.
 
@@ -2921,7 +2921,7 @@ None
 		 Bnd_OBB(const gp_Pnt & theCenter, const gp_Dir & theXDirection, const gp_Dir & theYDirection, const gp_Dir & theZDirection, const Standard_Real theHXSize, const Standard_Real theHYSize, const Standard_Real theHZSize);
 
 		/****************** Bnd_OBB ******************/
-		/**** md5 signature: 5c80c49300d6c6d28ac3791ffa9f9dfb ****/
+		/**** md5 signature: fc18353bbdb1c5a5433bb782a5f185ff ****/
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "Constructor to create obb from aabb.
 
@@ -3292,7 +3292,7 @@ float
 class Bnd_Range {
 	public:
 		/****************** Bnd_Range ******************/
-		/**** md5 signature: c4e1ef542ad0477e9971285d75047d7d ****/
+		/**** md5 signature: f924fb82b8e11e8be179ae43bdeac711 ****/
 		%feature("compactdefaultargs") Bnd_Range;
 		%feature("autodoc", "Default constructor. creates void range.
 
@@ -3303,7 +3303,7 @@ None
 		 Bnd_Range();
 
 		/****************** Bnd_Range ******************/
-		/**** md5 signature: 39d4d1bfbab659fc681a5eaf9d4bcdd7 ****/
+		/**** md5 signature: 3b5115137fc3949e2409a6507523cc8c ****/
 		%feature("compactdefaultargs") Bnd_Range;
 		%feature("autodoc", "Constructor. never creates void range.
 
@@ -3896,7 +3896,7 @@ class Bnd_Tools {
 		/****************** Bnd2BVH ******************/
 		/**** md5 signature: cb874faf532c5f417d96e7f24657756b ****/
 		%feature("compactdefaultargs") Bnd2BVH;
-		%feature("autodoc", "Converts the given bnd_box2d to bvh_box.
+		%feature("autodoc", "@name bnd_box to bvh_box conversion converts the given bnd_box2d to bvh_box.
 
 Parameters
 ----------
@@ -3904,9 +3904,9 @@ theBox: Bnd_Box2d
 
 Returns
 -------
-BVH_Box<float, 2 >
+BVH_Box<float, 2>
 ") Bnd2BVH;
-		static BVH_Box<Standard_Real, 2 > Bnd2BVH(const Bnd_Box2d & theBox);
+		static BVH_Box<Standard_Real, 2> Bnd2BVH(const Bnd_Box2d & theBox);
 
 		/****************** Bnd2BVH ******************/
 		/**** md5 signature: 91eae1d8889c489de53fa29abb792a4c ****/
@@ -3919,9 +3919,9 @@ theBox: Bnd_Box
 
 Returns
 -------
-BVH_Box<float, 3 >
+BVH_Box<float, 3>
 ") Bnd2BVH;
-		static BVH_Box<Standard_Real, 3 > Bnd2BVH(const Bnd_Box & theBox);
+		static BVH_Box<Standard_Real, 3> Bnd2BVH(const Bnd_Box & theBox);
 
 };
 
@@ -3945,17 +3945,6 @@ class Bnd_HArray1OfBox : public Bnd_Array1OfBox, public Standard_Transient {
 %make_alias(Bnd_HArray1OfBox)
 
 
-class Bnd_HArray1OfSphere : public Bnd_Array1OfSphere, public Standard_Transient {
-  public:
-    Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfSphere::value_type& theValue);
-    Bnd_HArray1OfSphere(const Bnd_Array1OfSphere& theOther);
-    const Bnd_Array1OfSphere& Array1();
-    Bnd_Array1OfSphere& ChangeArray1();
-};
-%make_alias(Bnd_HArray1OfSphere)
-
-
 class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
   public:
     Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3965,6 +3954,17 @@ class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
     Bnd_Array1OfBox2d& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfBox2d)
+
+
+class Bnd_HArray1OfSphere : public Bnd_Array1OfSphere, public Standard_Transient {
+  public:
+    Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper);
+    Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfSphere::value_type& theValue);
+    Bnd_HArray1OfSphere(const Bnd_Array1OfSphere& theOther);
+    const Bnd_Array1OfSphere& Array1();
+    Bnd_Array1OfSphere& ChangeArray1();
+};
+%make_alias(Bnd_HArray1OfSphere)
 
 /* harray2 classes */
 /* hsequence classes */

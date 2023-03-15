@@ -102,9 +102,9 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<Plate_Plate>::Iterator NLPlate_ListIteratorOfStackOfPlate;
-typedef NCollection_Sequence<opencascade::handle<NLPlate_HGPPConstraint>> NLPlate_SequenceOfHGPPConstraint;
-typedef NCollection_List<Plate_Plate> NLPlate_StackOfPlate;
+typedef NCollection_List <Plate_Plate>::Iterator NLPlate_ListIteratorOfStackOfPlate;
+typedef NCollection_Sequence <opencascade::handle <NLPlate_HGPPConstraint>> NLPlate_SequenceOfHGPPConstraint;
+typedef NCollection_List <Plate_Plate> NLPlate_StackOfPlate;
 /* end typedefs declaration */
 
 /*******************************

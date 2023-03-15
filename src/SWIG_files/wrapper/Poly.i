@@ -143,11 +143,11 @@ enum  {
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<Poly_Triangle> Poly_Array1OfTriangle;
-typedef NCollection_Vector<Poly_CoherentLink>::Iterator Poly_BaseIteratorOfCoherentLink;
-typedef NCollection_Vector<Poly_CoherentNode>::Iterator Poly_BaseIteratorOfCoherentNode;
-typedef NCollection_Vector<Poly_CoherentTriangle>::Iterator Poly_BaseIteratorOfCoherentTriangle;
-typedef NCollection_List<opencascade::handle<Poly_Triangulation>> Poly_ListOfTriangulation;
+typedef NCollection_Array1 <Poly_Triangle> Poly_Array1OfTriangle;
+typedef NCollection_Vector <Poly_CoherentLink>::Iterator Poly_BaseIteratorOfCoherentLink;
+typedef NCollection_Vector <Poly_CoherentNode>::Iterator Poly_BaseIteratorOfCoherentNode;
+typedef NCollection_Vector <Poly_CoherentTriangle>::Iterator Poly_BaseIteratorOfCoherentTriangle;
+typedef NCollection_List <opencascade::handle <Poly_Triangulation>> Poly_ListOfTriangulation;
 typedef unsigned int Poly_MeshPurpose;
 /* end typedefs declaration */
 
@@ -183,7 +183,7 @@ Tri: Poly_Triangulation
 
 Returns
 -------
-None
+void
 ") ComputeNormals;
 		static void ComputeNormals(const opencascade::handle<Poly_Triangulation> & Tri);
 
@@ -283,7 +283,7 @@ float
 class Poly_ArrayOfNodes : public NCollection_AliasedArray<> {
 	public:
 		/****************** Poly_ArrayOfNodes ******************/
-		/**** md5 signature: a3fbef88d7cea7f227931f473b2f3f7e ****/
+		/**** md5 signature: 81751053a15da4f5202ffbcd71c71a4a ****/
 		%feature("compactdefaultargs") Poly_ArrayOfNodes;
 		%feature("autodoc", "Empty constructor of double-precision array.
 
@@ -294,7 +294,7 @@ None
 		 Poly_ArrayOfNodes();
 
 		/****************** Poly_ArrayOfNodes ******************/
-		/**** md5 signature: b77f7672fcf3bad012991e517148d0b6 ****/
+		/**** md5 signature: 7eeccc8451e93230bd14d8ca1e61ba5e ****/
 		%feature("compactdefaultargs") Poly_ArrayOfNodes;
 		%feature("autodoc", "Constructor of double-precision array.
 
@@ -324,7 +324,7 @@ None
 		 Poly_ArrayOfNodes(const Poly_ArrayOfNodes & theOther);
 
 		/****************** Poly_ArrayOfNodes ******************/
-		/**** md5 signature: 282e112d1d6b3b00cb621fbcc3d69c68 ****/
+		/**** md5 signature: d2e68f60140635d2481469db17d3e862 ****/
 		%feature("compactdefaultargs") Poly_ArrayOfNodes;
 		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
 
@@ -340,7 +340,7 @@ None
 		 Poly_ArrayOfNodes(const gp_Pnt & theBegin, Standard_Integer theLength);
 
 		/****************** Poly_ArrayOfNodes ******************/
-		/**** md5 signature: f55ffaa17385828819bcc3d1f6ab78f6 ****/
+		/**** md5 signature: 48ddee98772c27d8696824a065006f0d ****/
 		%feature("compactdefaultargs") Poly_ArrayOfNodes;
 		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
 
@@ -356,19 +356,19 @@ None
 		 Poly_ArrayOfNodes(const gp_Vec3f & theBegin, Standard_Integer theLength);
 
 		/****************** Poly_ArrayOfNodes ******************/
-		/**** md5 signature: cb5136ed6787652571068de864b16043 ****/
+		/**** md5 signature: 2f26b0a8d5a773eff822ba074cd79bff ****/
 		%feature("compactdefaultargs") Poly_ArrayOfNodes;
 		%feature("autodoc", "Move constructor.
 
 Parameters
 ----------
-theOther: Poly_ArrayOfNodes
+NCollection_AliasedArray(std::move(theOther): Poly_ArrayOfNodes  theOther) Standard_Noexcept:
 
 Returns
 -------
 None
 ") Poly_ArrayOfNodes;
-		 Poly_ArrayOfNodes(Poly_ArrayOfNodes & theOther);
+		 Poly_ArrayOfNodes(Poly_ArrayOfNodes & theOther) Standard_Noexcept: NCollection_AliasedArray(std::move(theOther));
 
 		/****************** Assign ******************/
 		/**** md5 signature: 702830dcb95dd43aecf671cba8d7bfdb ****/
@@ -438,9 +438,9 @@ theValue: gp_Pnt
 
 Returns
 -------
-None
+inline void
 ") SetValue;
-		void SetValue(Standard_Integer theIndex, const gp_Pnt & theValue);
+		inline void SetValue(Standard_Integer theIndex, const gp_Pnt & theValue);
 
 		/****************** Value ******************/
 		/**** md5 signature: cbbd0dda18a18774ab964a5d559342fd ****/
@@ -453,9 +453,9 @@ theIndex: int
 
 Returns
 -------
-gp_Pnt
+inline gp_Pnt
 ") Value;
-		gp_Pnt Value(Standard_Integer theIndex);
+		inline gp_Pnt Value(Standard_Integer theIndex);
 
 };
 
@@ -472,7 +472,7 @@ gp_Pnt
 class Poly_ArrayOfUVNodes : public NCollection_AliasedArray<> {
 	public:
 		/****************** Poly_ArrayOfUVNodes ******************/
-		/**** md5 signature: 6a860cf1c687b8dd0af354b672ebd0be ****/
+		/**** md5 signature: 937a6a2ea587d005a588bd85994ad7dd ****/
 		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
 		%feature("autodoc", "Empty constructor of double-precision array.
 
@@ -483,7 +483,7 @@ None
 		 Poly_ArrayOfUVNodes();
 
 		/****************** Poly_ArrayOfUVNodes ******************/
-		/**** md5 signature: 1d8cb6cf40bbc06f334d0a0a080d9f94 ****/
+		/**** md5 signature: e4ce10f2c95a9083d9964835b882ff60 ****/
 		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
 		%feature("autodoc", "Constructor of double-precision array.
 
@@ -513,7 +513,7 @@ None
 		 Poly_ArrayOfUVNodes(const Poly_ArrayOfUVNodes & theOther);
 
 		/****************** Poly_ArrayOfUVNodes ******************/
-		/**** md5 signature: fcc79601f1f551bf654e4b036563851d ****/
+		/**** md5 signature: 66bc78907fcf0342a12c82a579fc43cd ****/
 		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
 		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
 
@@ -529,7 +529,7 @@ None
 		 Poly_ArrayOfUVNodes(const gp_Pnt2d & theBegin, Standard_Integer theLength);
 
 		/****************** Poly_ArrayOfUVNodes ******************/
-		/**** md5 signature: 8dc88b2a8e6a1970829bc8d4ae3807c9 ****/
+		/**** md5 signature: 4eb909ad83652c59706b11348acd818d ****/
 		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
 		%feature("autodoc", "Constructor wrapping pre-allocated c-array of values without copying them.
 
@@ -545,19 +545,19 @@ None
 		 Poly_ArrayOfUVNodes(const gp_Vec2f & theBegin, Standard_Integer theLength);
 
 		/****************** Poly_ArrayOfUVNodes ******************/
-		/**** md5 signature: e99c7bef1e8b316f6baf0752957bcbf9 ****/
+		/**** md5 signature: 11a7e816d5f1e047745124224533386a ****/
 		%feature("compactdefaultargs") Poly_ArrayOfUVNodes;
 		%feature("autodoc", "Move constructor.
 
 Parameters
 ----------
-theOther: Poly_ArrayOfUVNodes
+NCollection_AliasedArray(std::move(theOther): Poly_ArrayOfUVNodes  theOther) Standard_Noexcept:
 
 Returns
 -------
 None
 ") Poly_ArrayOfUVNodes;
-		 Poly_ArrayOfUVNodes(Poly_ArrayOfUVNodes & theOther);
+		 Poly_ArrayOfUVNodes(Poly_ArrayOfUVNodes & theOther) Standard_Noexcept: NCollection_AliasedArray(std::move(theOther));
 
 		/****************** Assign ******************/
 		/**** md5 signature: 0bd9a842cd074feea2878a80c6c59e05 ****/
@@ -627,9 +627,9 @@ theValue: gp_Pnt2d
 
 Returns
 -------
-None
+inline void
 ") SetValue;
-		void SetValue(Standard_Integer theIndex, const gp_Pnt2d & theValue);
+		inline void SetValue(Standard_Integer theIndex, const gp_Pnt2d & theValue);
 
 		/****************** Value ******************/
 		/**** md5 signature: 4d7c0ab83170d94e467103748821c3a2 ****/
@@ -642,9 +642,9 @@ theIndex: int
 
 Returns
 -------
-gp_Pnt2d
+inline gp_Pnt2d
 ") Value;
-		gp_Pnt2d Value(Standard_Integer theIndex);
+		inline gp_Pnt2d Value(Standard_Integer theIndex);
 
 };
 
@@ -672,9 +672,9 @@ None
 		 Poly_CoherentLink();
 
 		/****************** Poly_CoherentLink ******************/
-		/**** md5 signature: 4e38aae465e5a86814325a10b67df9b3 ****/
+		/**** md5 signature: f5a6e5fb0e89036f0cd8ff77d7de9cb6 ****/
 		%feature("compactdefaultargs") Poly_CoherentLink;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * constructor. creates a link that has no reference to 'opposite nodes'. * this constructor is useful to create temporary object that is not * inserted into any existing triangulation. */.
 
 Parameters
 ----------
@@ -710,9 +710,9 @@ None
 
 Returns
 -------
-Standard_Address
+inline Standard_Address
 ") GetAttribute;
-		Standard_Address GetAttribute();
+		inline Standard_Address GetAttribute();
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
@@ -721,9 +721,9 @@ Standard_Address
 
 Returns
 -------
-bool
+inline bool
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		inline Standard_Boolean IsEmpty();
 
 		/****************** Node ******************/
 		/**** md5 signature: 0c8b3e4d6b02b354a59bbdabd461f25e ****/
@@ -736,9 +736,9 @@ ind: int
 
 Returns
 -------
-int
+inline int
 ") Node;
-		Standard_Integer Node(const Standard_Integer ind);
+		inline Standard_Integer Node(const Standard_Integer ind);
 
 		/****************** Nullify ******************/
 		/**** md5 signature: da3ddb1c253fce8554813210fafdb757 ****/
@@ -747,9 +747,9 @@ int
 
 Returns
 -------
-None
+inline void
 ") Nullify;
-		void Nullify();
+		inline void Nullify();
 
 		/****************** OppositeNode ******************/
 		/**** md5 signature: 38ad0f771fdab79fb96de90e7fdf8dde ****/
@@ -762,9 +762,9 @@ ind: int
 
 Returns
 -------
-int
+inline int
 ") OppositeNode;
-		Standard_Integer OppositeNode(const Standard_Integer ind);
+		inline Standard_Integer OppositeNode(const Standard_Integer ind);
 
 		/****************** SetAttribute ******************/
 		/**** md5 signature: 010064256220b0dd62418f98aaddd85b ****/
@@ -777,9 +777,9 @@ theAtt: Standard_Address
 
 Returns
 -------
-None
+inline void
 ") SetAttribute;
-		void SetAttribute(const Standard_Address theAtt);
+		inline void SetAttribute(const Standard_Address theAtt);
 
 };
 
@@ -796,7 +796,7 @@ None
 class Poly_CoherentNode : public gp_XYZ {
 	public:
 		/****************** Poly_CoherentNode ******************/
-		/**** md5 signature: 2e6eb857b24efe616d474b306cd58a72 ****/
+		/**** md5 signature: 82dcae49f927ecb01b6f50ce23b9edd5 ****/
 		%feature("compactdefaultargs") Poly_CoherentNode;
 		%feature("autodoc", "/** * empty constructor. */.
 
@@ -807,7 +807,7 @@ None
 		 Poly_CoherentNode();
 
 		/****************** Poly_CoherentNode ******************/
-		/**** md5 signature: 7e2af40a10394af569759ee7160a203e ****/
+		/**** md5 signature: 476e34fae491a1b3e314ec67d1085a92 ****/
 		%feature("compactdefaultargs") Poly_CoherentNode;
 		%feature("autodoc", "/** * constructor. */.
 
@@ -850,7 +850,7 @@ Returns
 -------
 None
 ") Clear;
-		void Clear(const opencascade::handle<NCollection_BaseAllocator > &);
+		void Clear(const opencascade::handle<NCollection_BaseAllocator> &);
 
 
         %feature("autodoc", "1");
@@ -867,9 +867,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") GetIndex;
-		Standard_Integer GetIndex();
+		inline Standard_Integer GetIndex();
 
 		/****************** GetNormal ******************/
 		/**** md5 signature: df606ba50212d9d3d862cb1144920109 ****/
@@ -878,9 +878,9 @@ int
 
 Returns
 -------
-gp_XYZ
+inline gp_XYZ
 ") GetNormal;
-		gp_XYZ GetNormal();
+		inline gp_XYZ GetNormal();
 
 		/****************** GetU ******************/
 		/**** md5 signature: 556ee62969f53fa454ac85ee4c38c218 ****/
@@ -889,9 +889,9 @@ gp_XYZ
 
 Returns
 -------
-float
+inline float
 ") GetU;
-		Standard_Real GetU();
+		inline Standard_Real GetU();
 
 		/****************** GetV ******************/
 		/**** md5 signature: d163971450f10223055714766ac9732c ****/
@@ -900,9 +900,9 @@ float
 
 Returns
 -------
-float
+inline float
 ") GetV;
-		Standard_Real GetV();
+		inline Standard_Real GetV();
 
 		/****************** HasNormal ******************/
 		/**** md5 signature: f8f58ef06722b8ccc4ca569b238b0131 ****/
@@ -911,9 +911,9 @@ float
 
 Returns
 -------
-bool
+inline bool
 ") HasNormal;
-		Standard_Boolean HasNormal();
+		inline Standard_Boolean HasNormal();
 
 		/****************** IsFreeNode ******************/
 		/**** md5 signature: 6f86c9feae49f6018fdfa1c1cc416abc ****/
@@ -922,9 +922,9 @@ bool
 
 Returns
 -------
-bool
+inline bool
 ") IsFreeNode;
-		Standard_Boolean IsFreeNode();
+		inline Standard_Boolean IsFreeNode();
 
 		/****************** RemoveTriangle ******************/
 		/**** md5 signature: d1a4317c9ea5271ea94d8b07067e3352 ****/
@@ -953,9 +953,9 @@ theIndex: int
 
 Returns
 -------
-None
+inline void
 ") SetIndex;
-		void SetIndex(const Standard_Integer theIndex);
+		inline void SetIndex(const Standard_Integer theIndex);
 
 		/****************** SetNormal ******************/
 		/**** md5 signature: 42571b60712fece320abefbb371dd328 ****/
@@ -984,9 +984,9 @@ theV: float
 
 Returns
 -------
-None
+inline void
 ") SetUV;
-		void SetUV(const Standard_Real theU, const Standard_Real theV);
+		inline void SetUV(const Standard_Real theU, const Standard_Real theV);
 
 		/****************** TriangleIterator ******************/
 		/**** md5 signature: abb21a0bc72481ca955b0d303e2f72d2 ****/
@@ -995,9 +995,9 @@ None
 
 Returns
 -------
-Poly_CoherentTriPtr::Iterator
+inline Poly_CoherentTriPtr::Iterator
 ") TriangleIterator;
-		Poly_CoherentTriPtr::Iterator TriangleIterator();
+		inline Poly_CoherentTriPtr::Iterator TriangleIterator();
 
 };
 
@@ -1070,9 +1070,9 @@ iConn: int
 
 Returns
 -------
-int
+inline int
 ") GetConnectedNode;
-		Standard_Integer GetConnectedNode(const Standard_Integer iConn);
+		inline Standard_Integer GetConnectedNode(const Standard_Integer iConn);
 
 		/****************** GetConnectedTri ******************/
 		/**** md5 signature: a594865824d29f8efc10c28f93cb6719 ****/
@@ -1085,9 +1085,9 @@ iConn: int
 
 Returns
 -------
-Poly_CoherentTriangle *
+inline  Poly_CoherentTriangle *
 ") GetConnectedTri;
-		const Poly_CoherentTriangle * GetConnectedTri(const Standard_Integer iConn);
+		inline const Poly_CoherentTriangle * GetConnectedTri(const Standard_Integer iConn);
 
 		/****************** GetLink ******************/
 		/**** md5 signature: 3147cabde40a5b5c4a6566469e78c1af ****/
@@ -1100,9 +1100,9 @@ iLink: int
 
 Returns
 -------
-Poly_CoherentLink *
+inline  Poly_CoherentLink *
 ") GetLink;
-		const Poly_CoherentLink * GetLink(const Standard_Integer iLink);
+		inline const Poly_CoherentLink * GetLink(const Standard_Integer iLink);
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: e0fa1d0f35a1c4ad702e4e993780ae41 ****/
@@ -1111,9 +1111,9 @@ Poly_CoherentLink *
 
 Returns
 -------
-bool
+inline bool
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		inline Standard_Boolean IsEmpty();
 
 		/****************** NConnections ******************/
 		/**** md5 signature: 7c08f0ab362e6158b745da0f9b271c9e ****/
@@ -1122,9 +1122,9 @@ bool
 
 Returns
 -------
-int
+inline int
 ") NConnections;
-		Standard_Integer NConnections();
+		inline Standard_Integer NConnections();
 
 		/****************** Node ******************/
 		/**** md5 signature: 0c8b3e4d6b02b354a59bbdabd461f25e ****/
@@ -1137,9 +1137,9 @@ ind: int
 
 Returns
 -------
-int
+inline int
 ") Node;
-		Standard_Integer Node(const Standard_Integer ind);
+		inline Standard_Integer Node(const Standard_Integer ind);
 
 		/****************** RemoveConnection ******************/
 		/**** md5 signature: f5aebaf1db860838366c89c8ceeceb3f ****/
@@ -1779,9 +1779,9 @@ bool
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") computeTriNormal;
-		NCollection_Vec3<float > computeTriNormal();
+		NCollection_Vec3<float> computeTriNormal();
 
 };
 
@@ -2878,7 +2878,7 @@ bool
 		/****************** NbDeferredNodes ******************/
 		/**** md5 signature: 181f24753f86afef53db878ca490cb7f ****/
 		%feature("compactdefaultargs") NbDeferredNodes;
-		%feature("autodoc", "Returns number of deferred nodes that can be loaded using loaddeferreddata(). note: this is estimated values, which might be different from actually loaded values. always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+		%feature("autodoc", "@name late-load deferred data interface returns number of deferred nodes that can be loaded using loaddeferreddata(). note: this is estimated values, which might be different from actually loaded values. always check triangulation size of actually loaded data in code to avoid out-of-range issues.
 
 Returns
 -------
@@ -3265,7 +3265,7 @@ None
 class Poly_TriangulationParameters : public Standard_Transient {
 	public:
 		/****************** Poly_TriangulationParameters ******************/
-		/**** md5 signature: 2846ec507556dc9aeed354635ae24a71 ****/
+		/**** md5 signature: 8aa6be2559a2b97e4331cc2e0ad92190 ****/
 		%feature("compactdefaultargs") Poly_TriangulationParameters;
 		%feature("autodoc", "Constructor. initializes object with the given parameters. @param thedeflection linear deflection @param theangle angular deflection @param theminsize minimum size.
 

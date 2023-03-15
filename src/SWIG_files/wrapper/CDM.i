@@ -123,16 +123,16 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>, TCollection_ExtendedString>::Iterator CDM_DataMapIteratorOfMetaDataLookUpTable;
-typedef NCollection_DefaultHasher<opencascade::handle<CDM_Document>> CDM_DocumentHasher;
+typedef NCollection_DataMap <TCollection_ExtendedString, opencascade::handle <CDM_MetaData>, TCollection_ExtendedString>::Iterator CDM_DataMapIteratorOfMetaDataLookUpTable;
+typedef NCollection_DefaultHasher <opencascade::handle <CDM_Document>> CDM_DocumentHasher;
 typedef CDM_Document * CDM_DocumentPointer;
-typedef NCollection_List<opencascade::handle<CDM_Document>>::Iterator CDM_ListIteratorOfListOfDocument;
-typedef NCollection_List<opencascade::handle<CDM_Reference>>::Iterator CDM_ListIteratorOfListOfReferences;
-typedef NCollection_List<opencascade::handle<CDM_Document>> CDM_ListOfDocument;
-typedef NCollection_List<opencascade::handle<CDM_Reference>> CDM_ListOfReferences;
-typedef NCollection_Map<opencascade::handle<CDM_Document>, CDM_DocumentHasher>::Iterator CDM_MapIteratorOfMapOfDocument;
-typedef NCollection_Map<opencascade::handle<CDM_Document>, CDM_DocumentHasher> CDM_MapOfDocument;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>, TCollection_ExtendedString> CDM_MetaDataLookUpTable;
+typedef NCollection_List <opencascade::handle <CDM_Document>>::Iterator CDM_ListIteratorOfListOfDocument;
+typedef NCollection_List <opencascade::handle <CDM_Reference>>::Iterator CDM_ListIteratorOfListOfReferences;
+typedef NCollection_List <opencascade::handle <CDM_Document>> CDM_ListOfDocument;
+typedef NCollection_List <opencascade::handle <CDM_Reference>> CDM_ListOfReferences;
+typedef NCollection_Map <opencascade::handle <CDM_Document>, CDM_DocumentHasher>::Iterator CDM_MapIteratorOfMapOfDocument;
+typedef NCollection_Map <opencascade::handle <CDM_Document>, CDM_DocumentHasher> CDM_MapOfDocument;
+typedef NCollection_DataMap <TCollection_ExtendedString, opencascade::handle <CDM_MetaData>, TCollection_ExtendedString> CDM_MetaDataLookUpTable;
 typedef TColStd_DataMapOfStringInteger CDM_NamesDirectory;
 /* end typedefs declaration */
 

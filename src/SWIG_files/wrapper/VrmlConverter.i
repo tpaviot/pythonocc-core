@@ -102,6 +102,12 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum VrmlConverter_TypeOfCamera {
+	VrmlConverter_NoCamera = 0,
+	VrmlConverter_PerspectiveCamera = 1,
+	VrmlConverter_OrthographicCamera = 2,
+};
+
 enum VrmlConverter_TypeOfLight {
 	VrmlConverter_NoLight = 0,
 	VrmlConverter_DirectionLight = 1,
@@ -109,16 +115,18 @@ enum VrmlConverter_TypeOfLight {
 	VrmlConverter_SpotLight = 3,
 };
 
-enum VrmlConverter_TypeOfCamera {
-	VrmlConverter_NoCamera = 0,
-	VrmlConverter_PerspectiveCamera = 1,
-	VrmlConverter_OrthographicCamera = 2,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class VrmlConverter_TypeOfCamera(IntEnum):
+	VrmlConverter_NoCamera = 0
+	VrmlConverter_PerspectiveCamera = 1
+	VrmlConverter_OrthographicCamera = 2
+VrmlConverter_NoCamera = VrmlConverter_TypeOfCamera.VrmlConverter_NoCamera
+VrmlConverter_PerspectiveCamera = VrmlConverter_TypeOfCamera.VrmlConverter_PerspectiveCamera
+VrmlConverter_OrthographicCamera = VrmlConverter_TypeOfCamera.VrmlConverter_OrthographicCamera
 
 class VrmlConverter_TypeOfLight(IntEnum):
 	VrmlConverter_NoLight = 0
@@ -129,14 +137,6 @@ VrmlConverter_NoLight = VrmlConverter_TypeOfLight.VrmlConverter_NoLight
 VrmlConverter_DirectionLight = VrmlConverter_TypeOfLight.VrmlConverter_DirectionLight
 VrmlConverter_PointLight = VrmlConverter_TypeOfLight.VrmlConverter_PointLight
 VrmlConverter_SpotLight = VrmlConverter_TypeOfLight.VrmlConverter_SpotLight
-
-class VrmlConverter_TypeOfCamera(IntEnum):
-	VrmlConverter_NoCamera = 0
-	VrmlConverter_PerspectiveCamera = 1
-	VrmlConverter_OrthographicCamera = 2
-VrmlConverter_NoCamera = VrmlConverter_TypeOfCamera.VrmlConverter_NoCamera
-VrmlConverter_PerspectiveCamera = VrmlConverter_TypeOfCamera.VrmlConverter_PerspectiveCamera
-VrmlConverter_OrthographicCamera = VrmlConverter_TypeOfCamera.VrmlConverter_OrthographicCamera
 };
 /* end python proxy for enums */
 
@@ -1072,7 +1072,7 @@ Nor: TColgp_Array1OfDir
 
 Returns
 -------
-None
+void
 ") ComputeNormal;
 		static void ComputeNormal(const TopoDS_Face & aFace, Poly_Connect & pc, TColgp_Array1OfDir & Nor);
 

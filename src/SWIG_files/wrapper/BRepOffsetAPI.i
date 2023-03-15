@@ -155,8 +155,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<TColStd_SequenceOfReal> BRepOffsetAPI_SequenceOfSequenceOfReal;
-typedef NCollection_Sequence<TopTools_SequenceOfShape> BRepOffsetAPI_SequenceOfSequenceOfShape;
+typedef NCollection_Sequence <TColStd_SequenceOfReal> BRepOffsetAPI_SequenceOfSequenceOfReal;
+typedef NCollection_Sequence <TopTools_SequenceOfShape> BRepOffsetAPI_SequenceOfSequenceOfShape;
 typedef BRepBuilderAPI_Sewing BRepOffsetAPI_Sewing;
 /* end typedefs declaration */
 

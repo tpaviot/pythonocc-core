@@ -74,10 +74,35 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum StepDimTol_LimitCondition {
-	StepDimTol_MaximumMaterialCondition = 0,
-	StepDimTol_LeastMaterialCondition = 1,
-	StepDimTol_RegardlessOfFeatureSize = 2,
+enum StepDimTol_AreaUnitType {
+	StepDimTol_Circular = 0,
+	StepDimTol_Rectangular = 1,
+	StepDimTol_Square = 2,
+};
+
+enum StepDimTol_DatumReferenceModifierType {
+	StepDimTol_CircularOrCylindrical = 0,
+	StepDimTol_Distance = 1,
+	StepDimTol_Projected = 2,
+	StepDimTol_Spherical = 3,
+};
+
+enum StepDimTol_GeometricToleranceModifier {
+	StepDimTol_GTMAnyCrossSection = 0,
+	StepDimTol_GTMCommonZone = 1,
+	StepDimTol_GTMEachRadialElement = 2,
+	StepDimTol_GTMFreeState = 3,
+	StepDimTol_GTMLeastMaterialRequirement = 4,
+	StepDimTol_GTMLineElement = 5,
+	StepDimTol_GTMMajorDiameter = 6,
+	StepDimTol_GTMMaximumMaterialRequirement = 7,
+	StepDimTol_GTMMinorDiameter = 8,
+	StepDimTol_GTMNotConvex = 9,
+	StepDimTol_GTMPitchDiameter = 10,
+	StepDimTol_GTMReciprocityRequirement = 11,
+	StepDimTol_GTMSeparateRequirement = 12,
+	StepDimTol_GTMStatisticalTolerance = 13,
+	StepDimTol_GTMTangentPlane = 14,
 };
 
 enum StepDimTol_GeometricToleranceType {
@@ -98,11 +123,10 @@ enum StepDimTol_GeometricToleranceType {
 	StepDimTol_GTTTotalRunoutTolerance = 14,
 };
 
-enum StepDimTol_DatumReferenceModifierType {
-	StepDimTol_CircularOrCylindrical = 0,
-	StepDimTol_Distance = 1,
-	StepDimTol_Projected = 2,
-	StepDimTol_Spherical = 3,
+enum StepDimTol_LimitCondition {
+	StepDimTol_MaximumMaterialCondition = 0,
+	StepDimTol_LeastMaterialCondition = 1,
+	StepDimTol_RegardlessOfFeatureSize = 2,
 };
 
 enum StepDimTol_SimpleDatumReferenceModifier {
@@ -130,42 +154,60 @@ enum StepDimTol_SimpleDatumReferenceModifier {
 	StepDimTol_SDRMTranslation = 21,
 };
 
-enum StepDimTol_AreaUnitType {
-	StepDimTol_Circular = 0,
-	StepDimTol_Rectangular = 1,
-	StepDimTol_Square = 2,
-};
-
-enum StepDimTol_GeometricToleranceModifier {
-	StepDimTol_GTMAnyCrossSection = 0,
-	StepDimTol_GTMCommonZone = 1,
-	StepDimTol_GTMEachRadialElement = 2,
-	StepDimTol_GTMFreeState = 3,
-	StepDimTol_GTMLeastMaterialRequirement = 4,
-	StepDimTol_GTMLineElement = 5,
-	StepDimTol_GTMMajorDiameter = 6,
-	StepDimTol_GTMMaximumMaterialRequirement = 7,
-	StepDimTol_GTMMinorDiameter = 8,
-	StepDimTol_GTMNotConvex = 9,
-	StepDimTol_GTMPitchDiameter = 10,
-	StepDimTol_GTMReciprocityRequirement = 11,
-	StepDimTol_GTMSeparateRequirement = 12,
-	StepDimTol_GTMStatisticalTolerance = 13,
-	StepDimTol_GTMTangentPlane = 14,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
 
-class StepDimTol_LimitCondition(IntEnum):
-	StepDimTol_MaximumMaterialCondition = 0
-	StepDimTol_LeastMaterialCondition = 1
-	StepDimTol_RegardlessOfFeatureSize = 2
-StepDimTol_MaximumMaterialCondition = StepDimTol_LimitCondition.StepDimTol_MaximumMaterialCondition
-StepDimTol_LeastMaterialCondition = StepDimTol_LimitCondition.StepDimTol_LeastMaterialCondition
-StepDimTol_RegardlessOfFeatureSize = StepDimTol_LimitCondition.StepDimTol_RegardlessOfFeatureSize
+class StepDimTol_AreaUnitType(IntEnum):
+	StepDimTol_Circular = 0
+	StepDimTol_Rectangular = 1
+	StepDimTol_Square = 2
+StepDimTol_Circular = StepDimTol_AreaUnitType.StepDimTol_Circular
+StepDimTol_Rectangular = StepDimTol_AreaUnitType.StepDimTol_Rectangular
+StepDimTol_Square = StepDimTol_AreaUnitType.StepDimTol_Square
+
+class StepDimTol_DatumReferenceModifierType(IntEnum):
+	StepDimTol_CircularOrCylindrical = 0
+	StepDimTol_Distance = 1
+	StepDimTol_Projected = 2
+	StepDimTol_Spherical = 3
+StepDimTol_CircularOrCylindrical = StepDimTol_DatumReferenceModifierType.StepDimTol_CircularOrCylindrical
+StepDimTol_Distance = StepDimTol_DatumReferenceModifierType.StepDimTol_Distance
+StepDimTol_Projected = StepDimTol_DatumReferenceModifierType.StepDimTol_Projected
+StepDimTol_Spherical = StepDimTol_DatumReferenceModifierType.StepDimTol_Spherical
+
+class StepDimTol_GeometricToleranceModifier(IntEnum):
+	StepDimTol_GTMAnyCrossSection = 0
+	StepDimTol_GTMCommonZone = 1
+	StepDimTol_GTMEachRadialElement = 2
+	StepDimTol_GTMFreeState = 3
+	StepDimTol_GTMLeastMaterialRequirement = 4
+	StepDimTol_GTMLineElement = 5
+	StepDimTol_GTMMajorDiameter = 6
+	StepDimTol_GTMMaximumMaterialRequirement = 7
+	StepDimTol_GTMMinorDiameter = 8
+	StepDimTol_GTMNotConvex = 9
+	StepDimTol_GTMPitchDiameter = 10
+	StepDimTol_GTMReciprocityRequirement = 11
+	StepDimTol_GTMSeparateRequirement = 12
+	StepDimTol_GTMStatisticalTolerance = 13
+	StepDimTol_GTMTangentPlane = 14
+StepDimTol_GTMAnyCrossSection = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMAnyCrossSection
+StepDimTol_GTMCommonZone = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMCommonZone
+StepDimTol_GTMEachRadialElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMEachRadialElement
+StepDimTol_GTMFreeState = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMFreeState
+StepDimTol_GTMLeastMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLeastMaterialRequirement
+StepDimTol_GTMLineElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLineElement
+StepDimTol_GTMMajorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMajorDiameter
+StepDimTol_GTMMaximumMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMaximumMaterialRequirement
+StepDimTol_GTMMinorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMinorDiameter
+StepDimTol_GTMNotConvex = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMNotConvex
+StepDimTol_GTMPitchDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMPitchDiameter
+StepDimTol_GTMReciprocityRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMReciprocityRequirement
+StepDimTol_GTMSeparateRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMSeparateRequirement
+StepDimTol_GTMStatisticalTolerance = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMStatisticalTolerance
+StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMTangentPlane
 
 class StepDimTol_GeometricToleranceType(IntEnum):
 	StepDimTol_GTTAngularityTolerance = 0
@@ -199,15 +241,13 @@ StepDimTol_GTTSurfaceProfileTolerance = StepDimTol_GeometricToleranceType.StepDi
 StepDimTol_GTTSymmetryTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTSymmetryTolerance
 StepDimTol_GTTTotalRunoutTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTTotalRunoutTolerance
 
-class StepDimTol_DatumReferenceModifierType(IntEnum):
-	StepDimTol_CircularOrCylindrical = 0
-	StepDimTol_Distance = 1
-	StepDimTol_Projected = 2
-	StepDimTol_Spherical = 3
-StepDimTol_CircularOrCylindrical = StepDimTol_DatumReferenceModifierType.StepDimTol_CircularOrCylindrical
-StepDimTol_Distance = StepDimTol_DatumReferenceModifierType.StepDimTol_Distance
-StepDimTol_Projected = StepDimTol_DatumReferenceModifierType.StepDimTol_Projected
-StepDimTol_Spherical = StepDimTol_DatumReferenceModifierType.StepDimTol_Spherical
+class StepDimTol_LimitCondition(IntEnum):
+	StepDimTol_MaximumMaterialCondition = 0
+	StepDimTol_LeastMaterialCondition = 1
+	StepDimTol_RegardlessOfFeatureSize = 2
+StepDimTol_MaximumMaterialCondition = StepDimTol_LimitCondition.StepDimTol_MaximumMaterialCondition
+StepDimTol_LeastMaterialCondition = StepDimTol_LimitCondition.StepDimTol_LeastMaterialCondition
+StepDimTol_RegardlessOfFeatureSize = StepDimTol_LimitCondition.StepDimTol_RegardlessOfFeatureSize
 
 class StepDimTol_SimpleDatumReferenceModifier(IntEnum):
 	StepDimTol_SDRMAnyCrossSection = 0
@@ -254,46 +294,6 @@ StepDimTol_SDRMPitchDiameter = StepDimTol_SimpleDatumReferenceModifier.StepDimTo
 StepDimTol_SDRMPlane = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPlane
 StepDimTol_SDRMPoint = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPoint
 StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMTranslation
-
-class StepDimTol_AreaUnitType(IntEnum):
-	StepDimTol_Circular = 0
-	StepDimTol_Rectangular = 1
-	StepDimTol_Square = 2
-StepDimTol_Circular = StepDimTol_AreaUnitType.StepDimTol_Circular
-StepDimTol_Rectangular = StepDimTol_AreaUnitType.StepDimTol_Rectangular
-StepDimTol_Square = StepDimTol_AreaUnitType.StepDimTol_Square
-
-class StepDimTol_GeometricToleranceModifier(IntEnum):
-	StepDimTol_GTMAnyCrossSection = 0
-	StepDimTol_GTMCommonZone = 1
-	StepDimTol_GTMEachRadialElement = 2
-	StepDimTol_GTMFreeState = 3
-	StepDimTol_GTMLeastMaterialRequirement = 4
-	StepDimTol_GTMLineElement = 5
-	StepDimTol_GTMMajorDiameter = 6
-	StepDimTol_GTMMaximumMaterialRequirement = 7
-	StepDimTol_GTMMinorDiameter = 8
-	StepDimTol_GTMNotConvex = 9
-	StepDimTol_GTMPitchDiameter = 10
-	StepDimTol_GTMReciprocityRequirement = 11
-	StepDimTol_GTMSeparateRequirement = 12
-	StepDimTol_GTMStatisticalTolerance = 13
-	StepDimTol_GTMTangentPlane = 14
-StepDimTol_GTMAnyCrossSection = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMAnyCrossSection
-StepDimTol_GTMCommonZone = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMCommonZone
-StepDimTol_GTMEachRadialElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMEachRadialElement
-StepDimTol_GTMFreeState = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMFreeState
-StepDimTol_GTMLeastMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLeastMaterialRequirement
-StepDimTol_GTMLineElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLineElement
-StepDimTol_GTMMajorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMajorDiameter
-StepDimTol_GTMMaximumMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMaximumMaterialRequirement
-StepDimTol_GTMMinorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMinorDiameter
-StepDimTol_GTMNotConvex = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMNotConvex
-StepDimTol_GTMPitchDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMPitchDiameter
-StepDimTol_GTMReciprocityRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMReciprocityRequirement
-StepDimTol_GTMSeparateRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMSeparateRequirement
-StepDimTol_GTMStatisticalTolerance = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMStatisticalTolerance
-StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMTangentPlane
 };
 /* end python proxy for enums */
 
@@ -348,13 +348,13 @@ StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GT
 %wrap_handle(StepDimTol_PerpendicularityTolerance)
 %wrap_handle(StepDimTol_SymmetryTolerance)
 %wrap_handle(StepDimTol_TotalRunoutTolerance)
-%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
 %wrap_handle(StepDimTol_HArray1OfDatumReference)
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
-%wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
 %wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
+%wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
 %wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
+%wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
 %wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
+%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
 /* end handles declaration */
 
 /* templates */
@@ -606,13 +606,13 @@ StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GT
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>> StepDimTol_Array1OfDatumReference;
-typedef NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>> StepDimTol_Array1OfDatumReferenceCompartment;
-typedef NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>> StepDimTol_Array1OfDatumReferenceElement;
-typedef NCollection_Array1<StepDimTol_DatumReferenceModifier> StepDimTol_Array1OfDatumReferenceModifier;
-typedef NCollection_Array1<StepDimTol_DatumSystemOrReference> StepDimTol_Array1OfDatumSystemOrReference;
-typedef NCollection_Array1<StepDimTol_GeometricToleranceModifier> StepDimTol_Array1OfGeometricToleranceModifier;
-typedef NCollection_Array1<StepDimTol_ToleranceZoneTarget> StepDimTol_Array1OfToleranceZoneTarget;
+typedef NCollection_Array1 <opencascade::handle <StepDimTol_DatumReference>> StepDimTol_Array1OfDatumReference;
+typedef NCollection_Array1 <opencascade::handle <StepDimTol_DatumReferenceCompartment>> StepDimTol_Array1OfDatumReferenceCompartment;
+typedef NCollection_Array1 <opencascade::handle <StepDimTol_DatumReferenceElement>> StepDimTol_Array1OfDatumReferenceElement;
+typedef NCollection_Array1 <StepDimTol_DatumReferenceModifier> StepDimTol_Array1OfDatumReferenceModifier;
+typedef NCollection_Array1 <StepDimTol_DatumSystemOrReference> StepDimTol_Array1OfDatumSystemOrReference;
+typedef NCollection_Array1 <StepDimTol_GeometricToleranceModifier> StepDimTol_Array1OfGeometricToleranceModifier;
+typedef NCollection_Array1 <StepDimTol_ToleranceZoneTarget> StepDimTol_Array1OfToleranceZoneTarget;
 /* end typedefs declaration */
 
 /*******************************
@@ -1048,9 +1048,9 @@ None
 
 Returns
 -------
-StepDimTol_DatumReferenceModifierType
+inline StepDimTol_DatumReferenceModifierType
 ") ModifierType;
-		StepDimTol_DatumReferenceModifierType ModifierType();
+		inline StepDimTol_DatumReferenceModifierType ModifierType();
 
 		/****************** ModifierValue ******************/
 		/**** md5 signature: b62890d4a5be56a5de81480d722b8cad ****/
@@ -1059,9 +1059,9 @@ StepDimTol_DatumReferenceModifierType
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") ModifierValue;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> ModifierValue();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> ModifierValue();
 
 		/****************** SetModifierType ******************/
 		/**** md5 signature: a3a5c27a810eabd9232ae188fe84e4b7 ****/
@@ -1074,9 +1074,9 @@ theModifierType: StepDimTol_DatumReferenceModifierType
 
 Returns
 -------
-None
+inline void
 ") SetModifierType;
-		void SetModifierType(const StepDimTol_DatumReferenceModifierType & theModifierType);
+		inline void SetModifierType(const StepDimTol_DatumReferenceModifierType & theModifierType);
 
 		/****************** SetModifierValue ******************/
 		/**** md5 signature: c9888ffc21cae24e74d3f4c2bd5fee90 ****/
@@ -1089,9 +1089,9 @@ theModifierValue: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetModifierValue;
-		void SetModifierValue(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theModifierValue);
+		inline void SetModifierValue(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theModifierValue);
 
 };
 
@@ -1127,9 +1127,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment>
+inline opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment>
 ") Constituents;
-		opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> Constituents();
+		inline opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> Constituents();
 
 		/****************** ConstituentsValue ******************/
 		/**** md5 signature: 98a90152edbe4f2ec67d87304e6bf0da ****/
@@ -1142,9 +1142,9 @@ num: int
 
 Returns
 -------
-opencascade::handle<StepDimTol_DatumReferenceCompartment>
+inline opencascade::handle<StepDimTol_DatumReferenceCompartment>
 ") ConstituentsValue;
-		opencascade::handle<StepDimTol_DatumReferenceCompartment> ConstituentsValue(const Standard_Integer num);
+		inline opencascade::handle<StepDimTol_DatumReferenceCompartment> ConstituentsValue(const Standard_Integer num);
 
 		/****************** ConstituentsValue ******************/
 		/**** md5 signature: a8ca9b5b4f738cfe48f14dcd39df8ee6 ****/
@@ -1158,9 +1158,9 @@ theItem: StepDimTol_DatumReferenceCompartment
 
 Returns
 -------
-None
+inline void
 ") ConstituentsValue;
-		void ConstituentsValue(const Standard_Integer num, const opencascade::handle<StepDimTol_DatumReferenceCompartment> & theItem);
+		inline void ConstituentsValue(const Standard_Integer num, const opencascade::handle<StepDimTol_DatumReferenceCompartment> & theItem);
 
 		/****************** Init ******************/
 		/**** md5 signature: 85fbd700167ff957979bb3c12656af2d ****/
@@ -1188,9 +1188,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") NbConstituents;
-		Standard_Integer NbConstituents();
+		inline Standard_Integer NbConstituents();
 
 		/****************** SetConstituents ******************/
 		/**** md5 signature: 3a6bb4e5df9bdc44c5a4a22a25487d80 ****/
@@ -1203,9 +1203,9 @@ theConstituents: StepDimTol_HArray1OfDatumReferenceCompartment
 
 Returns
 -------
-None
+inline void
 ") SetConstituents;
-		void SetConstituents(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> & theConstituents);
+		inline void SetConstituents(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> & theConstituents);
 
 };
 
@@ -1375,9 +1375,9 @@ None
 
 Returns
 -------
-StepDimTol_DatumOrCommonDatum
+inline StepDimTol_DatumOrCommonDatum
 ") Base;
-		StepDimTol_DatumOrCommonDatum Base();
+		inline StepDimTol_DatumOrCommonDatum Base();
 
 		/****************** HasModifiers ******************/
 		/**** md5 signature: 6b878e7f71c1776a334d6641401b1705 ****/
@@ -1386,9 +1386,9 @@ StepDimTol_DatumOrCommonDatum
 
 Returns
 -------
-bool
+inline bool
 ") HasModifiers;
-		Standard_Boolean HasModifiers();
+		inline Standard_Boolean HasModifiers();
 
 		/****************** Init ******************/
 		/**** md5 signature: a83f1b028fde8bf4e158b9044d147fcb ****/
@@ -1418,9 +1418,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>
+inline opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>
 ") Modifiers;
-		opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> Modifiers();
+		inline opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> Modifiers();
 
 		/****************** ModifiersValue ******************/
 		/**** md5 signature: be75d7d5af47a0dd03d46d1472603bd7 ****/
@@ -1433,9 +1433,9 @@ theNum: int
 
 Returns
 -------
-StepDimTol_DatumReferenceModifier
+inline StepDimTol_DatumReferenceModifier
 ") ModifiersValue;
-		StepDimTol_DatumReferenceModifier ModifiersValue(const Standard_Integer theNum);
+		inline StepDimTol_DatumReferenceModifier ModifiersValue(const Standard_Integer theNum);
 
 		/****************** ModifiersValue ******************/
 		/**** md5 signature: 343049fab7d440fa757e02b776469762 ****/
@@ -1449,9 +1449,9 @@ theItem: StepDimTol_DatumReferenceModifier
 
 Returns
 -------
-None
+inline void
 ") ModifiersValue;
-		void ModifiersValue(const Standard_Integer theNum, const StepDimTol_DatumReferenceModifier & theItem);
+		inline void ModifiersValue(const Standard_Integer theNum, const StepDimTol_DatumReferenceModifier & theItem);
 
 		/****************** NbModifiers ******************/
 		/**** md5 signature: 1cbfb9180169154c165f1c4fedd82ad9 ****/
@@ -1460,9 +1460,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") NbModifiers;
-		Standard_Integer NbModifiers();
+		inline Standard_Integer NbModifiers();
 
 		/****************** SetBase ******************/
 		/**** md5 signature: dac13489b0dfceabb8613c41ae9fc7bd ****/
@@ -1475,9 +1475,9 @@ theBase: StepDimTol_DatumOrCommonDatum
 
 Returns
 -------
-None
+inline void
 ") SetBase;
-		void SetBase(const StepDimTol_DatumOrCommonDatum & theBase);
+		inline void SetBase(const StepDimTol_DatumOrCommonDatum & theBase);
 
 		/****************** SetModifiers ******************/
 		/**** md5 signature: 36dced0f8695541a3658d1bee4f32f19 ****/
@@ -1490,9 +1490,9 @@ theModifiers: StepDimTol_HArray1OfDatumReferenceModifier
 
 Returns
 -------
-None
+inline void
 ") SetModifiers;
-		void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> & theModifiers);
+		inline void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> & theModifiers);
 
 };
 
@@ -1943,9 +1943,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit>
+inline opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit>
 ") Angle;
-		opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> Angle();
+		inline opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> Angle();
 
 		/****************** Init ******************/
 		/**** md5 signature: 76093fd32ad79e5ebe59800feeb6a380 ****/
@@ -1973,9 +1973,9 @@ theAngle: StepBasic_PlaneAngleMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetAngle;
-		void SetAngle(const opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> & theAngle);
+		inline void SetAngle(const opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> & theAngle);
 
 };
 
@@ -2201,9 +2201,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget>
+inline opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget>
 ") DefiningTolerance;
-		opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> DefiningTolerance();
+		inline opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> DefiningTolerance();
 
 		/****************** DefiningToleranceValue ******************/
 		/**** md5 signature: 380d01d85ee8b08008192f2c3fd6fdc8 ****/
@@ -2216,9 +2216,9 @@ theNum: int
 
 Returns
 -------
-StepDimTol_ToleranceZoneTarget
+inline StepDimTol_ToleranceZoneTarget
 ") DefiningToleranceValue;
-		StepDimTol_ToleranceZoneTarget DefiningToleranceValue(const Standard_Integer theNum);
+		inline StepDimTol_ToleranceZoneTarget DefiningToleranceValue(const Standard_Integer theNum);
 
 		/****************** Form ******************/
 		/**** md5 signature: 2d742834282a6991d68afa5b50c1be8f ****/
@@ -2227,9 +2227,9 @@ StepDimTol_ToleranceZoneTarget
 
 Returns
 -------
-opencascade::handle<StepDimTol_ToleranceZoneForm>
+inline opencascade::handle<StepDimTol_ToleranceZoneForm>
 ") Form;
-		opencascade::handle<StepDimTol_ToleranceZoneForm> Form();
+		inline opencascade::handle<StepDimTol_ToleranceZoneForm> Form();
 
 		/****************** Init ******************/
 		/**** md5 signature: c1e50354d7e87eb51fe7bee751ebe1a2 ****/
@@ -2258,9 +2258,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") NbDefiningTolerances;
-		Standard_Integer NbDefiningTolerances();
+		inline Standard_Integer NbDefiningTolerances();
 
 		/****************** SetDefiningTolerance ******************/
 		/**** md5 signature: bd490bccf679cccd7f668817adff5e51 ****/
@@ -2273,9 +2273,9 @@ theDefiningTolerance: StepDimTol_HArray1OfToleranceZoneTarget
 
 Returns
 -------
-None
+inline void
 ") SetDefiningTolerance;
-		void SetDefiningTolerance(const opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> & theDefiningTolerance);
+		inline void SetDefiningTolerance(const opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> & theDefiningTolerance);
 
 		/****************** SetDefiningToleranceValue ******************/
 		/**** md5 signature: 0185fe37cda17da176310361d026e5cc ****/
@@ -2289,9 +2289,9 @@ theItem: StepDimTol_ToleranceZoneTarget
 
 Returns
 -------
-None
+inline void
 ") SetDefiningToleranceValue;
-		void SetDefiningToleranceValue(const Standard_Integer theNum, const StepDimTol_ToleranceZoneTarget & theItem);
+		inline void SetDefiningToleranceValue(const Standard_Integer theNum, const StepDimTol_ToleranceZoneTarget & theItem);
 
 		/****************** SetForm ******************/
 		/**** md5 signature: f18d904127cff65de4ae70fb17e8039d ****/
@@ -2304,9 +2304,9 @@ theForm: StepDimTol_ToleranceZoneForm
 
 Returns
 -------
-None
+inline void
 ") SetForm;
-		void SetForm(const opencascade::handle<StepDimTol_ToleranceZoneForm> & theForm);
+		inline void SetForm(const opencascade::handle<StepDimTol_ToleranceZoneForm> & theForm);
 
 };
 
@@ -2342,9 +2342,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepRepr_HArray1OfShapeAspect>
+inline opencascade::handle<StepRepr_HArray1OfShapeAspect>
 ") Boundaries;
-		opencascade::handle<StepRepr_HArray1OfShapeAspect> Boundaries();
+		inline opencascade::handle<StepRepr_HArray1OfShapeAspect> Boundaries();
 
 		/****************** BoundariesValue ******************/
 		/**** md5 signature: e9c4a4ba31767a03e0505b3021b58041 ****/
@@ -2357,9 +2357,9 @@ theNum: int
 
 Returns
 -------
-opencascade::handle<StepRepr_ShapeAspect>
+inline opencascade::handle<StepRepr_ShapeAspect>
 ") BoundariesValue;
-		opencascade::handle<StepRepr_ShapeAspect> BoundariesValue(const Standard_Integer theNum);
+		inline opencascade::handle<StepRepr_ShapeAspect> BoundariesValue(const Standard_Integer theNum);
 
 		/****************** Init ******************/
 		/**** md5 signature: ebb8228f7f868938b39df7d5c3519731 ****/
@@ -2384,9 +2384,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") NbBoundaries;
-		Standard_Integer NbBoundaries();
+		inline Standard_Integer NbBoundaries();
 
 		/****************** SetBoundaries ******************/
 		/**** md5 signature: a01aa98a902dfd4978214ffb087b4a46 ****/
@@ -2399,9 +2399,9 @@ theBoundaries: StepRepr_HArray1OfShapeAspect
 
 Returns
 -------
-None
+inline void
 ") SetBoundaries;
-		void SetBoundaries(const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries);
+		inline void SetBoundaries(const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries);
 
 		/****************** SetBoundariesValue ******************/
 		/**** md5 signature: de4217b221ddc7bd3a68fc8059fb6054 ****/
@@ -2415,9 +2415,9 @@ theItem: StepRepr_ShapeAspect
 
 Returns
 -------
-None
+inline void
 ") SetBoundariesValue;
-		void SetBoundariesValue(const Standard_Integer theNum, const opencascade::handle<StepRepr_ShapeAspect> & theItem);
+		inline void SetBoundariesValue(const Standard_Integer theNum, const opencascade::handle<StepRepr_ShapeAspect> & theItem);
 
 		/****************** SetZone ******************/
 		/**** md5 signature: d7fc3d46d963bc3a2008101ad05c4220 ****/
@@ -2430,9 +2430,9 @@ theZone: StepDimTol_ToleranceZone
 
 Returns
 -------
-None
+inline void
 ") SetZone;
-		void SetZone(const opencascade::handle<StepDimTol_ToleranceZone> & theZone);
+		inline void SetZone(const opencascade::handle<StepDimTol_ToleranceZone> & theZone);
 
 		/****************** Zone ******************/
 		/**** md5 signature: 004b0726a085b920d125fca36a407c14 ****/
@@ -2441,9 +2441,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_ToleranceZone>
+inline opencascade::handle<StepDimTol_ToleranceZone>
 ") Zone;
-		opencascade::handle<StepDimTol_ToleranceZone> Zone();
+		inline opencascade::handle<StepDimTol_ToleranceZone> Zone();
 
 };
 
@@ -2494,9 +2494,9 @@ None
 
 Returns
 -------
-opencascade::handle<TCollection_HAsciiString>
+inline opencascade::handle<TCollection_HAsciiString>
 ") Name;
-		opencascade::handle<TCollection_HAsciiString> Name();
+		inline opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetName ******************/
 		/**** md5 signature: e058c117d39fc45f2a180acd037ae283 ****/
@@ -2509,9 +2509,9 @@ theName: TCollection_HAsciiString
 
 Returns
 -------
-None
+inline void
 ") SetName;
-		void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
+		inline void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
 };
 
@@ -2739,9 +2739,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference>
+inline opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference>
 ") GetGeometricToleranceWithDatumReference;
-		opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> GetGeometricToleranceWithDatumReference();
+		inline opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> GetGeometricToleranceWithDatumReference();
 
 		/****************** GetToleranceType ******************/
 		/**** md5 signature: dfc2abab001107623cc95cff337f0872 ****/
@@ -2805,9 +2805,9 @@ theType: StepDimTol_GeometricToleranceType
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceType;
-		void SetGeometricToleranceType(const StepDimTol_GeometricToleranceType theType);
+		inline void SetGeometricToleranceType(const StepDimTol_GeometricToleranceType theType);
 
 		/****************** SetGeometricToleranceWithDatumReference ******************/
 		/**** md5 signature: 38873bdcf2f0ee5a682749a9a21829fb ****/
@@ -2820,9 +2820,9 @@ theGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceWithDatumReference;
-		void SetGeometricToleranceWithDatumReference(const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR);
+		inline void SetGeometricToleranceWithDatumReference(const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR);
 
 };
 
@@ -2858,9 +2858,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference>
+inline opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference>
 ") GetGeometricToleranceWithDatumReference;
-		opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> GetGeometricToleranceWithDatumReference();
+		inline opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> GetGeometricToleranceWithDatumReference();
 
 		/****************** GetGeometricToleranceWithModifiers ******************/
 		/**** md5 signature: 796e1e2c4ee3b5f75f1cb3dc3307e9b0 ****/
@@ -2869,9 +2869,9 @@ opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference>
 
 Returns
 -------
-opencascade::handle<StepDimTol_GeometricToleranceWithModifiers>
+inline opencascade::handle<StepDimTol_GeometricToleranceWithModifiers>
 ") GetGeometricToleranceWithModifiers;
-		opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> GetGeometricToleranceWithModifiers();
+		inline opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> GetGeometricToleranceWithModifiers();
 
 		/****************** GetToleranceType ******************/
 		/**** md5 signature: dfc2abab001107623cc95cff337f0872 ****/
@@ -2937,9 +2937,9 @@ theType: StepDimTol_GeometricToleranceType
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceType;
-		void SetGeometricToleranceType(const StepDimTol_GeometricToleranceType theType);
+		inline void SetGeometricToleranceType(const StepDimTol_GeometricToleranceType theType);
 
 		/****************** SetGeometricToleranceWithDatumReference ******************/
 		/**** md5 signature: 38873bdcf2f0ee5a682749a9a21829fb ****/
@@ -2952,9 +2952,9 @@ theGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceWithDatumReference;
-		void SetGeometricToleranceWithDatumReference(const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR);
+		inline void SetGeometricToleranceWithDatumReference(const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR);
 
 		/****************** SetGeometricToleranceWithModifiers ******************/
 		/**** md5 signature: 99e55dedf20045f96ea27f04524dadc3 ****/
@@ -2967,9 +2967,9 @@ theGTWM: StepDimTol_GeometricToleranceWithModifiers
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceWithModifiers;
-		void SetGeometricToleranceWithModifiers(const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM);
+		inline void SetGeometricToleranceWithModifiers(const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM);
 
 };
 
@@ -3150,9 +3150,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_GeometricToleranceWithModifiers>
+inline opencascade::handle<StepDimTol_GeometricToleranceWithModifiers>
 ") GetGeometricToleranceWithModifiers;
-		opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> GetGeometricToleranceWithModifiers();
+		inline opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> GetGeometricToleranceWithModifiers();
 
 		/****************** GetToleranceType ******************/
 		/**** md5 signature: dfc2abab001107623cc95cff337f0872 ****/
@@ -3216,9 +3216,9 @@ theType: StepDimTol_GeometricToleranceType
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceType;
-		void SetGeometricToleranceType(const StepDimTol_GeometricToleranceType theType);
+		inline void SetGeometricToleranceType(const StepDimTol_GeometricToleranceType theType);
 
 		/****************** SetGeometricToleranceWithModifiers ******************/
 		/**** md5 signature: 99e55dedf20045f96ea27f04524dadc3 ****/
@@ -3231,9 +3231,9 @@ theGTWM: StepDimTol_GeometricToleranceWithModifiers
 
 Returns
 -------
-None
+inline void
 ") SetGeometricToleranceWithModifiers;
-		void SetGeometricToleranceWithModifiers(const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM);
+		inline void SetGeometricToleranceWithModifiers(const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM);
 
 };
 
@@ -3428,9 +3428,9 @@ theUnitSize: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetUnitSize;
-		void SetUnitSize(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
+		inline void SetUnitSize(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
 		/****************** UnitSize ******************/
 		/**** md5 signature: 6e17765329442a1657bb7a745d7b06ba ****/
@@ -3439,9 +3439,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") UnitSize;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> UnitSize();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> UnitSize();
 
 };
 
@@ -3500,9 +3500,9 @@ theNum: int
 
 Returns
 -------
-StepDimTol_GeometricToleranceModifier
+inline StepDimTol_GeometricToleranceModifier
 ") ModifierValue;
-		StepDimTol_GeometricToleranceModifier ModifierValue(const Standard_Integer theNum);
+		inline StepDimTol_GeometricToleranceModifier ModifierValue(const Standard_Integer theNum);
 
 		/****************** Modifiers ******************/
 		/**** md5 signature: 6286db818b55f86219dc8ce29564fe4f ****/
@@ -3511,9 +3511,9 @@ StepDimTol_GeometricToleranceModifier
 
 Returns
 -------
-opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier>
+inline opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier>
 ") Modifiers;
-		opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> Modifiers();
+		inline opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> Modifiers();
 
 		/****************** NbModifiers ******************/
 		/**** md5 signature: 1cbfb9180169154c165f1c4fedd82ad9 ****/
@@ -3522,9 +3522,9 @@ opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier>
 
 Returns
 -------
-int
+inline int
 ") NbModifiers;
-		Standard_Integer NbModifiers();
+		inline Standard_Integer NbModifiers();
 
 		/****************** SetModifierValue ******************/
 		/**** md5 signature: 5b9f7d48d3afb5fe52c19e3047094e84 ****/
@@ -3538,9 +3538,9 @@ theItem: StepDimTol_GeometricToleranceModifier
 
 Returns
 -------
-None
+inline void
 ") SetModifierValue;
-		void SetModifierValue(const Standard_Integer theNum, const StepDimTol_GeometricToleranceModifier theItem);
+		inline void SetModifierValue(const Standard_Integer theNum, const StepDimTol_GeometricToleranceModifier theItem);
 
 		/****************** SetModifiers ******************/
 		/**** md5 signature: feee0f5bad7156814085c204d0ebf2fa ****/
@@ -3553,9 +3553,9 @@ theModifiers: StepDimTol_HArray1OfGeometricToleranceModifier
 
 Returns
 -------
-None
+inline void
 ") SetModifiers;
-		void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> & theModifiers);
+		inline void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> & theModifiers);
 
 };
 
@@ -3808,9 +3808,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepRepr_ShapeAspect>
+inline opencascade::handle<StepRepr_ShapeAspect>
 ") ProjectionEnd;
-		opencascade::handle<StepRepr_ShapeAspect> ProjectionEnd();
+		inline opencascade::handle<StepRepr_ShapeAspect> ProjectionEnd();
 
 		/****************** ProjectionLength ******************/
 		/**** md5 signature: 4d5f37f36aba4a2c9941b3b16a842e4a ****/
@@ -3819,9 +3819,9 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") ProjectionLength;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> ProjectionLength();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> ProjectionLength();
 
 		/****************** SetProjectionEnd ******************/
 		/**** md5 signature: 5d9520f3aca77475b16948046f248db0 ****/
@@ -3834,9 +3834,9 @@ theProjectionEnd: StepRepr_ShapeAspect
 
 Returns
 -------
-None
+inline void
 ") SetProjectionEnd;
-		void SetProjectionEnd(const opencascade::handle<StepRepr_ShapeAspect> & theProjectionEnd);
+		inline void SetProjectionEnd(const opencascade::handle<StepRepr_ShapeAspect> & theProjectionEnd);
 
 		/****************** SetProjectionLength ******************/
 		/**** md5 signature: 23d060d1b565e33a6c172da34cd5e94e ****/
@@ -3849,9 +3849,9 @@ theProjectionLength: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetProjectionLength;
-		void SetProjectionLength(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theProjectionLength);
+		inline void SetProjectionLength(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theProjectionLength);
 
 };
 
@@ -3931,9 +3931,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_RunoutZoneOrientation>
+inline opencascade::handle<StepDimTol_RunoutZoneOrientation>
 ") Orientation;
-		opencascade::handle<StepDimTol_RunoutZoneOrientation> Orientation();
+		inline opencascade::handle<StepDimTol_RunoutZoneOrientation> Orientation();
 
 		/****************** SetOrientation ******************/
 		/**** md5 signature: db78f94b7a516a237c2cf9b984a8311a ****/
@@ -3946,9 +3946,9 @@ theOrientation: StepDimTol_RunoutZoneOrientation
 
 Returns
 -------
-None
+inline void
 ") SetOrientation;
-		void SetOrientation(const opencascade::handle<StepDimTol_RunoutZoneOrientation> & theOrientation);
+		inline void SetOrientation(const opencascade::handle<StepDimTol_RunoutZoneOrientation> & theOrientation);
 
 };
 
@@ -4038,9 +4038,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") Displacement;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> Displacement();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> Displacement();
 
 		/****************** Init ******************/
 		/**** md5 signature: 20f92bd7a2186d2e9166bb57346d712d ****/
@@ -4072,9 +4072,9 @@ theDisplacement: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetDisplacement;
-		void SetDisplacement(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theDisplacement);
+		inline void SetDisplacement(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theDisplacement);
 
 };
 
@@ -4218,9 +4218,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") GetMaxTolerance;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> GetMaxTolerance();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> GetMaxTolerance();
 
 		/****************** Init ******************/
 		/**** md5 signature: b7cd711d36fa0c6c1c5adad5faa90dbc ****/
@@ -4277,9 +4277,9 @@ theMaxTol: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetMaxTolerance;
-		void SetMaxTolerance(opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
+		inline void SetMaxTolerance(opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
 
 };
 
@@ -4315,9 +4315,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance>
+inline opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance>
 ") GetUnequallyDisposedGeometricTolerance;
-		opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> GetUnequallyDisposedGeometricTolerance();
+		inline opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> GetUnequallyDisposedGeometricTolerance();
 
 		/****************** Init ******************/
 		/**** md5 signature: fafa8191d22e8911f4e9bb802fbbe294 ****/
@@ -4372,9 +4372,9 @@ theUDGT: StepDimTol_UnequallyDisposedGeometricTolerance
 
 Returns
 -------
-None
+inline void
 ") SetUnequallyDisposedGeometricTolerance;
-		void SetUnequallyDisposedGeometricTolerance(const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & theUDGT);
+		inline void SetUnequallyDisposedGeometricTolerance(const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & theUDGT);
 
 };
 
@@ -4410,9 +4410,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") GetMaxTolerance;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> GetMaxTolerance();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> GetMaxTolerance();
 
 		/****************** Init ******************/
 		/**** md5 signature: 57af504a837853cb45d399427161ba76 ****/
@@ -4467,9 +4467,9 @@ theMaxTol: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetMaxTolerance;
-		void SetMaxTolerance(opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
+		inline void SetMaxTolerance(opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
 
 };
 
@@ -4505,9 +4505,9 @@ None
 
 Returns
 -------
-StepDimTol_AreaUnitType
+inline StepDimTol_AreaUnitType
 ") AreaType;
-		StepDimTol_AreaUnitType AreaType();
+		inline StepDimTol_AreaUnitType AreaType();
 
 		/****************** HasSecondUnitSize ******************/
 		/**** md5 signature: cfb1a0ebc66fdc4fe8bb892ccf734e1c ****/
@@ -4516,9 +4516,9 @@ StepDimTol_AreaUnitType
 
 Returns
 -------
-bool
+inline bool
 ") HasSecondUnitSize;
-		Standard_Boolean HasSecondUnitSize();
+		inline Standard_Boolean HasSecondUnitSize();
 
 		/****************** Init ******************/
 		/**** md5 signature: 1cbb2d4b4060f14485541c03ec4b5bd2 ****/
@@ -4549,9 +4549,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") SecondUnitSize;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> SecondUnitSize();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> SecondUnitSize();
 
 		/****************** SetAreaType ******************/
 		/**** md5 signature: 9644dafae4c4f51214f210a1a1c581b4 ****/
@@ -4564,9 +4564,9 @@ theAreaType: StepDimTol_AreaUnitType
 
 Returns
 -------
-None
+inline void
 ") SetAreaType;
-		void SetAreaType(const StepDimTol_AreaUnitType theAreaType);
+		inline void SetAreaType(const StepDimTol_AreaUnitType theAreaType);
 
 		/****************** SetSecondUnitSize ******************/
 		/**** md5 signature: 6696147c85603519386dcff5053118de ****/
@@ -4579,9 +4579,9 @@ theSecondUnitSize: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetSecondUnitSize;
-		void SetSecondUnitSize(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theSecondUnitSize);
+		inline void SetSecondUnitSize(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theSecondUnitSize);
 
 };
 
@@ -4637,9 +4637,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepBasic_LengthMeasureWithUnit>
+inline opencascade::handle<StepBasic_LengthMeasureWithUnit>
 ") MaximumUpperTolerance;
-		opencascade::handle<StepBasic_LengthMeasureWithUnit> MaximumUpperTolerance();
+		inline opencascade::handle<StepBasic_LengthMeasureWithUnit> MaximumUpperTolerance();
 
 		/****************** SetMaximumUpperTolerance ******************/
 		/**** md5 signature: a3ccb1445128271cb084d59267279817 ****/
@@ -4652,9 +4652,9 @@ theMaximumUpperTolerance: StepBasic_LengthMeasureWithUnit
 
 Returns
 -------
-None
+inline void
 ") SetMaximumUpperTolerance;
-		void SetMaximumUpperTolerance(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaximumUpperTolerance);
+		inline void SetMaximumUpperTolerance(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaximumUpperTolerance);
 
 };
 
@@ -4777,17 +4777,6 @@ None
 
 /* harray1 classes */
 
-class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
-  public:
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
-    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
-    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
-    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
-};
-%make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
-
-
 class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumReference, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4797,28 +4786,6 @@ class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumRefere
     StepDimTol_Array1OfDatumReference& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReference)
-
-
-class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
-  public:
-    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceElement::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceElement(const StepDimTol_Array1OfDatumReferenceElement& theOther);
-    const StepDimTol_Array1OfDatumReferenceElement& Array1();
-    StepDimTol_Array1OfDatumReferenceElement& ChangeArray1();
-};
-%make_alias(StepDimTol_HArray1OfDatumReferenceElement)
-
-
-class StepDimTol_HArray1OfDatumSystemOrReference : public StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
-  public:
-    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumSystemOrReference::value_type& theValue);
-    StepDimTol_HArray1OfDatumSystemOrReference(const StepDimTol_Array1OfDatumSystemOrReference& theOther);
-    const StepDimTol_Array1OfDatumSystemOrReference& Array1();
-    StepDimTol_Array1OfDatumSystemOrReference& ChangeArray1();
-};
-%make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
 
 
 class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
@@ -4832,6 +4799,17 @@ class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1Of
 %make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
 
 
+class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
+  public:
+    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceElement::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceElement(const StepDimTol_Array1OfDatumReferenceElement& theOther);
+    const StepDimTol_Array1OfDatumReferenceElement& Array1();
+    StepDimTol_Array1OfDatumReferenceElement& ChangeArray1();
+};
+%make_alias(StepDimTol_HArray1OfDatumReferenceElement)
+
+
 class StepDimTol_HArray1OfDatumReferenceModifier : public StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4843,6 +4821,17 @@ class StepDimTol_HArray1OfDatumReferenceModifier : public StepDimTol_Array1OfDat
 %make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
 
 
+class StepDimTol_HArray1OfDatumSystemOrReference : public StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
+  public:
+    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumSystemOrReference::value_type& theValue);
+    StepDimTol_HArray1OfDatumSystemOrReference(const StepDimTol_Array1OfDatumSystemOrReference& theOther);
+    const StepDimTol_Array1OfDatumSystemOrReference& Array1();
+    StepDimTol_Array1OfDatumSystemOrReference& ChangeArray1();
+};
+%make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
+
+
 class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
   public:
     StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4852,6 +4841,17 @@ class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1O
     StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
+
+
+class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+  public:
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
+    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
+    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
+    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+};
+%make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
 
 /* harray2 classes */
 /* hsequence classes */

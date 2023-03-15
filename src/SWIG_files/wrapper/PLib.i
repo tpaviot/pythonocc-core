@@ -120,7 +120,7 @@ WPoles: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColgp_Array1OfPnt & Coefs, const TColStd_Array1OfReal * WCoefs, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal * WPoles);
 
@@ -138,7 +138,7 @@ WPoles: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColgp_Array1OfPnt2d & Coefs, const TColStd_Array1OfReal * WCoefs, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal * WPoles);
 
@@ -156,7 +156,7 @@ WPoles: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColStd_Array1OfReal & Coefs, const TColStd_Array1OfReal * WCoefs, TColStd_Array1OfReal & Poles, TColStd_Array1OfReal * WPoles);
 
@@ -175,7 +175,7 @@ WPoles: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const Standard_Integer dim, const TColStd_Array1OfReal & Coefs, const TColStd_Array1OfReal * WCoefs, TColStd_Array1OfReal & Poles, TColStd_Array1OfReal * WPoles);
 
@@ -193,7 +193,7 @@ WPoles: TColStd_Array2OfReal *
 
 Returns
 -------
-None
+void
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColgp_Array2OfPnt & Coefs, const TColStd_Array2OfReal * WCoefs, TColgp_Array2OfPnt & Poles, TColStd_Array2OfReal * WPoles);
 
@@ -345,7 +345,7 @@ Poles: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles);
 
@@ -362,7 +362,7 @@ Weights: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights);
 
@@ -378,7 +378,7 @@ Poles: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles);
 
@@ -395,7 +395,7 @@ Weights: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & Weights);
 
@@ -499,9 +499,9 @@ Results: float
 
 Returns
 -------
-TColStd_Array1OfReal *
+inline TColStd_Array1OfReal *
 ") NoWeights;
-		static TColStd_Array1OfReal * NoWeights();
+		inline static TColStd_Array1OfReal * NoWeights();
 
 		/****************** NoWeights2 ******************/
 		/**** md5 signature: 4e85666f7316eb9ea248be00715a2600 ****/
@@ -510,9 +510,9 @@ TColStd_Array1OfReal *
 
 Returns
 -------
-TColStd_Array2OfReal *
+inline TColStd_Array2OfReal *
 ") NoWeights2;
-		static TColStd_Array2OfReal * NoWeights2();
+		inline static TColStd_Array2OfReal * NoWeights2();
 
 		/****************** RationalDerivative ******************/
 		/**** md5 signature: 73b52c09f25fc1cb9a4f36df7003b108 ****/
@@ -564,7 +564,7 @@ FP: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & FP);
 
@@ -581,7 +581,7 @@ FP: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
@@ -597,7 +597,7 @@ FP: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & FP);
 
@@ -614,7 +614,7 @@ FP: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
@@ -632,7 +632,7 @@ WCoeffs: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, TColgp_Array1OfPnt & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
@@ -650,7 +650,7 @@ WCoeffs: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, TColgp_Array1OfPnt2d & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
@@ -668,7 +668,7 @@ WCoeffs: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
@@ -687,7 +687,7 @@ WCoeffs: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, const Standard_Integer dim, TColStd_Array1OfReal & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
@@ -705,7 +705,7 @@ WCoeffs: TColStd_Array2OfReal *
 
 Returns
 -------
-None
+void
 ") UTrimming;
 		static void UTrimming(const Standard_Real U1, const Standard_Real U2, TColgp_Array2OfPnt & Coeffs, TColStd_Array2OfReal * WCoeffs);
 
@@ -723,7 +723,7 @@ WCoeffs: TColStd_Array2OfReal *
 
 Returns
 -------
-None
+void
 ") VTrimming;
 		static void VTrimming(const Standard_Real V1, const Standard_Real V2, TColgp_Array2OfPnt & Coeffs, TColStd_Array2OfReal * WCoeffs);
 

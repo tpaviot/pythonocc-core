@@ -269,28 +269,28 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<IntTools_Range> IntTools_Array1OfRange;
-typedef NCollection_Array1<IntTools_Root> IntTools_Array1OfRoots;
+typedef NCollection_Array1 <IntTools_Range> IntTools_Array1OfRange;
+typedef NCollection_Array1 <IntTools_Root> IntTools_Array1OfRoots;
 typedef TColStd_Array1OfReal IntTools_CArray1OfReal;
-typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
-typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
-typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher> IntTools_DataMapOfCurveSampleBox;
-typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher> IntTools_DataMapOfSurfaceSampleBox;
-typedef NCollection_List<Bnd_Box>::Iterator IntTools_ListIteratorOfListOfBox;
-typedef NCollection_List<IntTools_CurveRangeSample>::Iterator IntTools_ListIteratorOfListOfCurveRangeSample;
-typedef NCollection_List<IntTools_SurfaceRangeSample>::Iterator IntTools_ListIteratorOfListOfSurfaceRangeSample;
-typedef NCollection_List<Bnd_Box> IntTools_ListOfBox;
-typedef NCollection_List<IntTools_CurveRangeSample> IntTools_ListOfCurveRangeSample;
-typedef NCollection_List<IntTools_SurfaceRangeSample> IntTools_ListOfSurfaceRangeSample;
-typedef NCollection_Map<IntTools_CurveRangeSample, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_MapIteratorOfMapOfCurveSample;
-typedef NCollection_Map<IntTools_SurfaceRangeSample, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_MapIteratorOfMapOfSurfaceSample;
-typedef NCollection_Map<IntTools_CurveRangeSample, IntTools_CurveRangeSampleMapHasher> IntTools_MapOfCurveSample;
-typedef NCollection_Map<IntTools_SurfaceRangeSample, IntTools_SurfaceRangeSampleMapHasher> IntTools_MapOfSurfaceSample;
-typedef NCollection_Sequence<IntTools_CommonPrt> IntTools_SequenceOfCommonPrts;
-typedef NCollection_Sequence<IntTools_Curve> IntTools_SequenceOfCurves;
-typedef NCollection_Sequence<IntTools_PntOn2Faces> IntTools_SequenceOfPntOn2Faces;
-typedef NCollection_Sequence<IntTools_Range> IntTools_SequenceOfRanges;
-typedef NCollection_Sequence<IntTools_Root> IntTools_SequenceOfRoots;
+typedef NCollection_DataMap <IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
+typedef NCollection_DataMap <IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
+typedef NCollection_DataMap <IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher> IntTools_DataMapOfCurveSampleBox;
+typedef NCollection_DataMap <IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher> IntTools_DataMapOfSurfaceSampleBox;
+typedef NCollection_List <Bnd_Box>::Iterator IntTools_ListIteratorOfListOfBox;
+typedef NCollection_List <IntTools_CurveRangeSample>::Iterator IntTools_ListIteratorOfListOfCurveRangeSample;
+typedef NCollection_List <IntTools_SurfaceRangeSample>::Iterator IntTools_ListIteratorOfListOfSurfaceRangeSample;
+typedef NCollection_List <Bnd_Box> IntTools_ListOfBox;
+typedef NCollection_List <IntTools_CurveRangeSample> IntTools_ListOfCurveRangeSample;
+typedef NCollection_List <IntTools_SurfaceRangeSample> IntTools_ListOfSurfaceRangeSample;
+typedef NCollection_Map <IntTools_CurveRangeSample, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_MapIteratorOfMapOfCurveSample;
+typedef NCollection_Map <IntTools_SurfaceRangeSample, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_MapIteratorOfMapOfSurfaceSample;
+typedef NCollection_Map <IntTools_CurveRangeSample, IntTools_CurveRangeSampleMapHasher> IntTools_MapOfCurveSample;
+typedef NCollection_Map <IntTools_SurfaceRangeSample, IntTools_SurfaceRangeSampleMapHasher> IntTools_MapOfSurfaceSample;
+typedef NCollection_Sequence <IntTools_CommonPrt> IntTools_SequenceOfCommonPrts;
+typedef NCollection_Sequence <IntTools_Curve> IntTools_SequenceOfCurves;
+typedef NCollection_Sequence <IntTools_PntOn2Faces> IntTools_SequenceOfPntOn2Faces;
+typedef NCollection_Sequence <IntTools_Range> IntTools_SequenceOfRanges;
+typedef NCollection_Sequence <IntTools_Root> IntTools_SequenceOfRoots;
 /* end typedefs declaration */
 
 /*****************
@@ -311,7 +311,7 @@ anEpsNull: float
 
 Returns
 -------
-None
+void
 ") FindRootStates;
 		static void FindRootStates(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsNull);
 
@@ -395,7 +395,7 @@ anEpsT: float
 
 Returns
 -------
-None
+void
 ") RemoveIdenticalRoots;
 		static void RemoveIdenticalRoots(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsT);
 
@@ -411,7 +411,7 @@ anEpsT: float
 
 Returns
 -------
-None
+void
 ") SortRoots;
 		static void SortRoots(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsT);
 
@@ -2310,7 +2310,7 @@ class IntTools_EdgeFace {
 		/****************** IntTools_EdgeFace ******************/
 		/**** md5 signature: ac76d8fd37641cf3850f9d0e1fa7cf07 ****/
 		%feature("compactdefaultargs") IntTools_EdgeFace;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -2321,7 +2321,7 @@ None
 		/****************** CommonParts ******************/
 		/**** md5 signature: b79ce635c2dbbad1683c1b56a034e14b ****/
 		%feature("compactdefaultargs") CommonParts;
-		%feature("autodoc", "Returns resulting common parts.
+		%feature("autodoc", "@name obtaining results returns resulting common parts.
 
 Returns
 -------
@@ -2398,7 +2398,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns true if computation was successful. otherwise returns false.
+		%feature("autodoc", "@name checking validity of the intersection returns true if computation was successful. otherwise returns false.
 
 Returns
 -------
@@ -2420,7 +2420,7 @@ float
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Launches the process.
+		%feature("autodoc", "@name performing the operation launches the process.
 
 Returns
 -------
@@ -2457,7 +2457,7 @@ None
 		/****************** SetEdge ******************/
 		/**** md5 signature: 6f2fdc35f76ff0b75031b7bba2264008 ****/
 		%feature("compactdefaultargs") SetEdge;
-		%feature("autodoc", "Sets the edge for intersection.
+		%feature("autodoc", "@name setters/getters sets the edge for intersection.
 
 Parameters
 ----------
@@ -5164,7 +5164,7 @@ aFNew: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") MakeFaceFromWireAndFace;
 		static void MakeFaceFromWireAndFace(const TopoDS_Wire & aW, const TopoDS_Face & aF, TopoDS_Face & aFNew);
 
@@ -5180,7 +5180,7 @@ aSOut: IntTools_SequenceOfCurves
 
 Returns
 -------
-None
+void
 ") RejectLines;
 		static void RejectLines(const IntTools_SequenceOfCurves & aSIn, IntTools_SequenceOfCurves & aSOut);
 
@@ -5437,7 +5437,7 @@ Returns
 -------
 bool
 ") DecompositionOfWLine;
-		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, const opencascade::handle<IntTools_Context > &);
+		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, const opencascade::handle<IntTools_Context> &);
 
 		/****************** NotUseSurfacesForApprox ******************/
 		/**** md5 signature: eb83c267182a721a80afc576ebb61258 ****/

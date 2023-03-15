@@ -170,7 +170,7 @@ Weigths: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") GetMinimalWeights;
 		static void GetMinimalWeights(const BlendFunc_SectionShape SectShape, const Convert_ParameterisationType TConv, const Standard_Real AngleMin, const Standard_Real AngleMax, TColStd_Array1OfReal & Weigths);
 
@@ -5720,7 +5720,7 @@ bool
 		/****************** GetSectionSize ******************/
 		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
 		%feature("compactdefaultargs") GetSectionSize;
-		%feature("autodoc", "Returns the length of the maximum section.
+		%feature("autodoc", "Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points. sets the throat and the 'quadrant'. returns the length of the maximum section.
 
 Returns
 -------

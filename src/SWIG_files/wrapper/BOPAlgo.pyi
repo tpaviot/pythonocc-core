@@ -65,6 +65,15 @@ BOPAlgo_GeomAbs_C0 = BOPAlgo_CheckStatus.BOPAlgo_GeomAbs_C0
 BOPAlgo_InvalidCurveOnSurface = BOPAlgo_CheckStatus.BOPAlgo_InvalidCurveOnSurface
 BOPAlgo_NotValid = BOPAlgo_CheckStatus.BOPAlgo_NotValid
 
+class BOPAlgo_GlueEnum(IntEnum):
+    BOPAlgo_GlueOff: int = ...
+    BOPAlgo_GlueShift: int = ...
+    BOPAlgo_GlueFull: int = ...
+
+BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
+BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
+BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
+
 class BOPAlgo_Operation(IntEnum):
     BOPAlgo_COMMON: int = ...
     BOPAlgo_FUSE: int = ...
@@ -79,15 +88,6 @@ BOPAlgo_CUT = BOPAlgo_Operation.BOPAlgo_CUT
 BOPAlgo_CUT21 = BOPAlgo_Operation.BOPAlgo_CUT21
 BOPAlgo_SECTION = BOPAlgo_Operation.BOPAlgo_SECTION
 BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
-
-class BOPAlgo_GlueEnum(IntEnum):
-    BOPAlgo_GlueOff: int = ...
-    BOPAlgo_GlueShift: int = ...
-    BOPAlgo_GlueFull: int = ...
-
-BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
-BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
-BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
 
 class BOPAlgo_CheckResult:
     def __init__(self) -> None: ...

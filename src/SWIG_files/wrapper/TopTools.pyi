@@ -188,14 +188,14 @@ class TopTools_ShapeSet:
 
 # harray1 classes
 
-class TopTools_HArray1OfShape(TopTools_Array1OfShape, Standard_Transient):
-    def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> TopTools_Array1OfShape: ...
-
-
 class TopTools_HArray1OfListOfShape(TopTools_Array1OfListOfShape, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TopTools_Array1OfListOfShape: ...
+
+
+class TopTools_HArray1OfShape(TopTools_Array1OfShape, Standard_Transient):
+    def __init__(self, theLower: int, theUpper: int) -> None: ...
+    def Array1(self) -> TopTools_Array1OfShape: ...
 
 # harray2 classes
 

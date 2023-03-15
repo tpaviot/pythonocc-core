@@ -243,12 +243,12 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<Expr_GeneralExpression>> Expr_Array1OfGeneralExpression;
-typedef NCollection_Array1<opencascade::handle<Expr_NamedUnknown>> Expr_Array1OfNamedUnknown;
-typedef NCollection_Array1<opencascade::handle<Expr_SingleRelation>> Expr_Array1OfSingleRelation;
-typedef NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>, TColStd_MapTransientHasher> Expr_MapOfNamedUnknown;
-typedef NCollection_Sequence<opencascade::handle<Expr_GeneralExpression>> Expr_SequenceOfGeneralExpression;
-typedef NCollection_Sequence<opencascade::handle<Expr_GeneralRelation>> Expr_SequenceOfGeneralRelation;
+typedef NCollection_Array1 <opencascade::handle <Expr_GeneralExpression>> Expr_Array1OfGeneralExpression;
+typedef NCollection_Array1 <opencascade::handle <Expr_NamedUnknown>> Expr_Array1OfNamedUnknown;
+typedef NCollection_Array1 <opencascade::handle <Expr_SingleRelation>> Expr_Array1OfSingleRelation;
+typedef NCollection_IndexedMap <opencascade::handle <Expr_NamedUnknown>, TColStd_MapTransientHasher> Expr_MapOfNamedUnknown;
+typedef NCollection_Sequence <opencascade::handle <Expr_GeneralExpression>> Expr_SequenceOfGeneralExpression;
+typedef NCollection_Sequence <opencascade::handle <Expr_GeneralRelation>> Expr_SequenceOfGeneralRelation;
 /* end typedefs declaration */
 
 /*************

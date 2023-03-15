@@ -187,21 +187,21 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringByte;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringString;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte, TCollection_ExtendedString> TDataStd_DataMapOfStringByte;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>, TCollection_ExtendedString> TDataStd_DataMapOfStringHArray1OfInteger;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>, TCollection_ExtendedString> TDataStd_DataMapOfStringHArray1OfReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real, TCollection_ExtendedString> TDataStd_DataMapOfStringReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString, TCollection_ExtendedString> TDataStd_DataMapOfStringString;
-typedef NCollection_Array1<TDF_Label> TDataStd_LabelArray1;
-typedef NCollection_List<Standard_Byte>::Iterator TDataStd_ListIteratorOfListOfByte;
-typedef NCollection_List<TCollection_ExtendedString>::Iterator TDataStd_ListIteratorOfListOfExtendedString;
-typedef NCollection_List<Standard_Byte> TDataStd_ListOfByte;
-typedef NCollection_List<TCollection_ExtendedString> TDataStd_ListOfExtendedString;
+typedef NCollection_DataMap <TCollection_ExtendedString, Standard_Byte, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringByte;
+typedef NCollection_DataMap <TCollection_ExtendedString, opencascade::handle <TColStd_HArray1OfInteger>, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
+typedef NCollection_DataMap <TCollection_ExtendedString, opencascade::handle <TColStd_HArray1OfReal>, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
+typedef NCollection_DataMap <TCollection_ExtendedString, Standard_Real, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
+typedef NCollection_DataMap <TCollection_ExtendedString, TCollection_ExtendedString, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringString;
+typedef NCollection_DataMap <TCollection_ExtendedString, Standard_Byte, TCollection_ExtendedString> TDataStd_DataMapOfStringByte;
+typedef NCollection_DataMap <TCollection_ExtendedString, opencascade::handle <TColStd_HArray1OfInteger>, TCollection_ExtendedString> TDataStd_DataMapOfStringHArray1OfInteger;
+typedef NCollection_DataMap <TCollection_ExtendedString, opencascade::handle <TColStd_HArray1OfReal>, TCollection_ExtendedString> TDataStd_DataMapOfStringHArray1OfReal;
+typedef NCollection_DataMap <TCollection_ExtendedString, Standard_Real, TCollection_ExtendedString> TDataStd_DataMapOfStringReal;
+typedef NCollection_DataMap <TCollection_ExtendedString, TCollection_ExtendedString, TCollection_ExtendedString> TDataStd_DataMapOfStringString;
+typedef NCollection_Array1 <TDF_Label> TDataStd_LabelArray1;
+typedef NCollection_List <Standard_Byte>::Iterator TDataStd_ListIteratorOfListOfByte;
+typedef NCollection_List <TCollection_ExtendedString>::Iterator TDataStd_ListIteratorOfListOfExtendedString;
+typedef NCollection_List <Standard_Byte> TDataStd_ListOfByte;
+typedef NCollection_List <TCollection_ExtendedString> TDataStd_ListOfExtendedString;
 typedef TDataStd_TreeNode * TDataStd_PtrTreeNode;
 /* end typedefs declaration */
 
@@ -222,7 +222,7 @@ anIDList: TDF_IDList
 
 Returns
 -------
-None
+void
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -1591,7 +1591,7 @@ L: TDF_Label
 
 Returns
 -------
-None
+void
 ") Set;
 		static void Set(const TDF_Label & L);
 
@@ -4650,7 +4650,7 @@ bool
 		/****************** HasDeferredData ******************/
 		/**** md5 signature: 6d3e21e66856957a5fa945244fecad2c ****/
 		%feature("compactdefaultargs") HasDeferredData;
-		%feature("autodoc", "Returns true if some data is not loaded from deferred storage and can be loaded using loaddeferreddata(). //! late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. this feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return false here. //! late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and undo/redo mechanism will not work until deferred data being loaded. //! usage scenarios: - application displays model in read-only way. late-load elements are loaded temporarily on demand and immediately unloaded. thenameddata->loaddeferreddata (true); tcollection_asciistring avalue = thenameddata->getstring (thekey); thenameddata->unloaddeferreddata(); - application saves the model into another format. all late-load elements should be loaded (at least temporary during operation). - application modifies the model. late-load element should be loaded with removed link to deferred storage, so that undo()/redo() will work as expected since loading. thenameddata->loaddeferreddata (false); thenameddata->setstring (thekey, thenewvalue);.
+		%feature("autodoc", "@name late-load deferred data interface returns true if some data is not loaded from deferred storage and can be loaded using loaddeferreddata(). //! late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. this feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return false here. //! late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and undo/redo mechanism will not work until deferred data being loaded. //! usage scenarios: - application displays model in read-only way. late-load elements are loaded temporarily on demand and immediately unloaded. thenameddata->loaddeferreddata (true); tcollection_asciistring avalue = thenameddata->getstring (thekey); thenameddata->unloaddeferreddata(); - application saves the model into another format. all late-load elements should be loaded (at least temporary during operation). - application modifies the model. late-load element should be loaded with removed link to deferred storage, so that undo()/redo() will work as expected since loading. thenameddata->loaddeferreddata (false); thenameddata->setstring (thekey, thenewvalue);.
 
 Returns
 -------
@@ -4739,7 +4739,7 @@ bool
 		/****************** ID ******************/
 		/**** md5 signature: 18550bf05502080c8e2a8a16aabb4183 ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@name tdf_attribute interface.
 
 Returns
 -------

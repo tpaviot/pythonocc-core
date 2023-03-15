@@ -139,13 +139,13 @@ TFunction_ES_Failed = TFunction_ExecutionStatus.TFunction_ES_Failed
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<TFunction_DataMapOfGUIDDriver> TFunction_Array1OfDataMapOfGUIDDriver;
-typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TFunction_Driver>, Standard_GUID>::Iterator TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
-typedef NCollection_DataMap<TDF_Label, TDF_LabelList, TDF_LabelMapHasher>::Iterator TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
-typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TFunction_Driver>, Standard_GUID> TFunction_DataMapOfGUIDDriver;
-typedef NCollection_DataMap<TDF_Label, TDF_LabelList, TDF_LabelMapHasher> TFunction_DataMapOfLabelListOfLabel;
-typedef NCollection_DoubleMap<Standard_Integer, TDF_Label, TColStd_MapIntegerHasher, TDF_LabelMapHasher>::Iterator TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
-typedef NCollection_DoubleMap<Standard_Integer, TDF_Label, TColStd_MapIntegerHasher, TDF_LabelMapHasher> TFunction_DoubleMapOfIntegerLabel;
+typedef NCollection_Array1 <TFunction_DataMapOfGUIDDriver> TFunction_Array1OfDataMapOfGUIDDriver;
+typedef NCollection_DataMap <Standard_GUID, opencascade::handle <TFunction_Driver>, Standard_GUID>::Iterator TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
+typedef NCollection_DataMap <TDF_Label, TDF_LabelList, TDF_LabelMapHasher>::Iterator TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
+typedef NCollection_DataMap <Standard_GUID, opencascade::handle <TFunction_Driver>, Standard_GUID> TFunction_DataMapOfGUIDDriver;
+typedef NCollection_DataMap <TDF_Label, TDF_LabelList, TDF_LabelMapHasher> TFunction_DataMapOfLabelListOfLabel;
+typedef NCollection_DoubleMap <Standard_Integer, TDF_Label, TColStd_MapIntegerHasher, TDF_LabelMapHasher>::Iterator TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
+typedef NCollection_DoubleMap <Standard_Integer, TDF_Label, TColStd_MapIntegerHasher, TDF_LabelMapHasher> TFunction_DoubleMapOfIntegerLabel;
 /* end typedefs declaration */
 
 /*************************
@@ -1359,7 +1359,7 @@ class TFunction_Logbook : public TDF_Attribute {
 		/****************** TFunction_Logbook ******************/
 		/**** md5 signature: 7f6e366f5622e0cb7923ed223f2950b3 ****/
 		%feature("compactdefaultargs") TFunction_Logbook;
-		%feature("autodoc", "Constructor (empty).
+		%feature("autodoc", "The methods manipulating the data (touched, impacted and valid labels) constructor (empty).
 
 Returns
 -------
@@ -1463,7 +1463,7 @@ None
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "Returns the id of the attribute.
+		%feature("autodoc", "The methods inherited from tdf_attribute returns the id of the attribute.
 
 Returns
 -------

@@ -215,12 +215,12 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, Handle ( NCollection_Shared<BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
-typedef NCollection_DataMap<TopoDS_Shape, Handle ( NCollection_Shared<BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher> BRepCheck_DataMapOfShapeListOfStatus;
-typedef NCollection_Shared<BRepCheck_ListOfStatus> BRepCheck_HListOfStatus;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, opencascade::handle<BRepCheck_Result>, TopTools_OrientedShapeMapHasher> BRepCheck_IndexedDataMapOfShapeResult;
-typedef NCollection_List<BRepCheck_Status>::Iterator BRepCheck_ListIteratorOfListOfStatus;
-typedef NCollection_List<BRepCheck_Status> BRepCheck_ListOfStatus;
+typedef NCollection_DataMap <TopoDS_Shape, Handle ( NCollection_Shared <BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
+typedef NCollection_DataMap <TopoDS_Shape, Handle ( NCollection_Shared <BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher> BRepCheck_DataMapOfShapeListOfStatus;
+typedef NCollection_Shared <BRepCheck_ListOfStatus> BRepCheck_HListOfStatus;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, opencascade::handle <BRepCheck_Result>, TopTools_OrientedShapeMapHasher> BRepCheck_IndexedDataMapOfShapeResult;
+typedef NCollection_List <BRepCheck_Status>::Iterator BRepCheck_ListIteratorOfListOfStatus;
+typedef NCollection_List <BRepCheck_Status> BRepCheck_ListOfStatus;
 /* end typedefs declaration */
 
 /******************
@@ -241,7 +241,7 @@ Stat: BRepCheck_Status
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(BRepCheck_ListOfStatus & List, const BRepCheck_Status Stat);
 
@@ -308,7 +308,7 @@ bool
 class BRepCheck_Analyzer {
 	public:
 		/****************** BRepCheck_Analyzer ******************/
-		/**** md5 signature: c4951524e7a1ce44dddda94aa6e9d260 ****/
+		/**** md5 signature: ee39026247ecbc90b52ac5dfe8a11a70 ****/
 		%feature("compactdefaultargs") BRepCheck_Analyzer;
 		%feature("autodoc", "Constructs a shape validation object defined by the shape s. <s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex : brepcheck_invalidtolerancevalue nyi for an edge : brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerancevalue nyi for a face : brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerancevalue nyi for a wire : brepcheck_selfintersectingwire.
 

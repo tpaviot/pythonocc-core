@@ -121,8 +121,8 @@ IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<IntCurveSurface_IntersectionPoint> IntCurveSurface_SequenceOfPnt;
-typedef NCollection_Sequence<IntCurveSurface_IntersectionSegment> IntCurveSurface_SequenceOfSeg;
+typedef NCollection_Sequence <IntCurveSurface_IntersectionPoint> IntCurveSurface_SequenceOfPnt;
+typedef NCollection_Sequence <IntCurveSurface_IntersectionSegment> IntCurveSurface_SequenceOfSeg;
 /* end typedefs declaration */
 
 /*************************************
@@ -877,7 +877,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P);
 
@@ -895,7 +895,7 @@ V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -914,7 +914,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -934,7 +934,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -1028,7 +1028,7 @@ S: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1187,7 +1187,7 @@ Pars: TColStd_HArray1OfReal
 
 Returns
 -------
-None
+void
 ") SamplePars;
 		static void SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U0, const Standard_Real U1, const Standard_Real Defl, const Standard_Integer NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
@@ -1766,7 +1766,7 @@ thePolygon: IntCurveSurface_ThePolygonOfHInter
 
 Returns
 -------
-None
+void
 ") Dump;
 		static void Dump(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
@@ -1874,7 +1874,7 @@ thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 
 Returns
 -------
-None
+void
 ") Dump;
 		static void Dump(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 

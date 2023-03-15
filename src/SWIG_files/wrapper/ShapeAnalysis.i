@@ -118,10 +118,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_UBTree<Standard_Integer, Bnd_Box> ShapeAnalysis_BoxBndTree;
-typedef NCollection_DataMap<TopoDS_Shape, TColStd_ListOfReal, TopTools_ShapeMapHasher>::Iterator ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal;
-typedef NCollection_DataMap<TopoDS_Shape, TColStd_ListOfReal, TopTools_ShapeMapHasher> ShapeAnalysis_DataMapOfShapeListOfReal;
-typedef NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>> ShapeAnalysis_SequenceOfFreeBounds;
+typedef NCollection_UBTree <Standard_Integer, Bnd_Box> ShapeAnalysis_BoxBndTree;
+typedef NCollection_DataMap <TopoDS_Shape, TColStd_ListOfReal, TopTools_ShapeMapHasher>::Iterator ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal;
+typedef NCollection_DataMap <TopoDS_Shape, TColStd_ListOfReal, TopTools_ShapeMapHasher> ShapeAnalysis_DataMapOfShapeListOfReal;
+typedef NCollection_Sequence <opencascade::handle <ShapeAnalysis_FreeBoundData>> ShapeAnalysis_SequenceOfFreeBounds;
 /* end typedefs declaration */
 
 /**********************
@@ -192,7 +192,7 @@ V2: TopoDS_Vertex
 
 Returns
 -------
-None
+void
 ") FindBounds;
 		static void FindBounds(const TopoDS_Shape & shape, TopoDS_Vertex & V1, TopoDS_Vertex & V2);
 
@@ -2010,7 +2010,7 @@ wires: TopTools_HSequenceOfShape
 
 Returns
 -------
-None
+void
 ") ConnectEdgesToWires;
 		static void ConnectEdgesToWires(opencascade::handle<TopTools_HSequenceOfShape> & edges, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & wires);
 
@@ -2028,7 +2028,7 @@ owires: TopTools_HSequenceOfShape
 
 Returns
 -------
-None
+void
 ") ConnectWiresToWires;
 		static void ConnectWiresToWires(opencascade::handle<TopTools_HSequenceOfShape> & iwires, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & owires);
 
@@ -2047,7 +2047,7 @@ vertices: TopTools_DataMapOfShapeShape
 
 Returns
 -------
-None
+void
 ") ConnectWiresToWires;
 		static void ConnectWiresToWires(opencascade::handle<TopTools_HSequenceOfShape> & iwires, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & owires, TopTools_DataMapOfShapeShape & vertices);
 
@@ -2064,7 +2064,7 @@ open: TopoDS_Compound
 
 Returns
 -------
-None
+void
 ") DispatchWires;
 		static void DispatchWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, TopoDS_Compound & closed, TopoDS_Compound & open);
 
@@ -2105,7 +2105,7 @@ open: TopTools_HSequenceOfShape
 
 Returns
 -------
-None
+void
 ") SplitWires;
 		static void SplitWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & closed, opencascade::handle<TopTools_HSequenceOfShape> & open);
 

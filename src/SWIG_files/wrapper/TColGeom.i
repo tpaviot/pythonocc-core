@@ -67,10 +67,10 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TColGeom_HArray1OfSurface)
 %wrap_handle(TColGeom_HArray1OfBezierCurve)
 %wrap_handle(TColGeom_HArray1OfBSplineCurve)
 %wrap_handle(TColGeom_HArray1OfCurve)
+%wrap_handle(TColGeom_HArray1OfSurface)
 %wrap_handle(TColGeom_HArray2OfSurface)
 %wrap_handle(TColGeom_HSequenceOfBoundedCurve)
 %wrap_handle(TColGeom_HSequenceOfCurve)
@@ -246,29 +246,18 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<Geom_BSplineCurve>> TColGeom_Array1OfBSplineCurve;
-typedef NCollection_Array1<opencascade::handle<Geom_BezierCurve>> TColGeom_Array1OfBezierCurve;
-typedef NCollection_Array1<opencascade::handle<Geom_Curve>> TColGeom_Array1OfCurve;
-typedef NCollection_Array1<opencascade::handle<Geom_Surface>> TColGeom_Array1OfSurface;
-typedef NCollection_Array2<opencascade::handle<Geom_BezierSurface>> TColGeom_Array2OfBezierSurface;
-typedef NCollection_Array2<opencascade::handle<Geom_Surface>> TColGeom_Array2OfSurface;
-typedef NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>> TColGeom_SequenceOfBoundedCurve;
-typedef NCollection_Sequence<opencascade::handle<Geom_Curve>> TColGeom_SequenceOfCurve;
-typedef NCollection_Sequence<opencascade::handle<Geom_Surface>> TColGeom_SequenceOfSurface;
+typedef NCollection_Array1 <opencascade::handle <Geom_BSplineCurve>> TColGeom_Array1OfBSplineCurve;
+typedef NCollection_Array1 <opencascade::handle <Geom_BezierCurve>> TColGeom_Array1OfBezierCurve;
+typedef NCollection_Array1 <opencascade::handle <Geom_Curve>> TColGeom_Array1OfCurve;
+typedef NCollection_Array1 <opencascade::handle <Geom_Surface>> TColGeom_Array1OfSurface;
+typedef NCollection_Array2 <opencascade::handle <Geom_BezierSurface>> TColGeom_Array2OfBezierSurface;
+typedef NCollection_Array2 <opencascade::handle <Geom_Surface>> TColGeom_Array2OfSurface;
+typedef NCollection_Sequence <opencascade::handle <Geom_BoundedCurve>> TColGeom_SequenceOfBoundedCurve;
+typedef NCollection_Sequence <opencascade::handle <Geom_Curve>> TColGeom_SequenceOfCurve;
+typedef NCollection_Sequence <opencascade::handle <Geom_Surface>> TColGeom_SequenceOfSurface;
 /* end typedefs declaration */
 
 /* harray1 classes */
-
-class TColGeom_HArray1OfSurface : public TColGeom_Array1OfSurface, public Standard_Transient {
-  public:
-    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom_Array1OfSurface::value_type& theValue);
-    TColGeom_HArray1OfSurface(const TColGeom_Array1OfSurface& theOther);
-    const TColGeom_Array1OfSurface& Array1();
-    TColGeom_Array1OfSurface& ChangeArray1();
-};
-%make_alias(TColGeom_HArray1OfSurface)
-
 
 class TColGeom_HArray1OfBezierCurve : public TColGeom_Array1OfBezierCurve, public Standard_Transient {
   public:
@@ -301,6 +290,17 @@ class TColGeom_HArray1OfCurve : public TColGeom_Array1OfCurve, public Standard_T
     TColGeom_Array1OfCurve& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfCurve)
+
+
+class TColGeom_HArray1OfSurface : public TColGeom_Array1OfSurface, public Standard_Transient {
+  public:
+    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom_Array1OfSurface::value_type& theValue);
+    TColGeom_HArray1OfSurface(const TColGeom_Array1OfSurface& theOther);
+    const TColGeom_Array1OfSurface& Array1();
+    TColGeom_Array1OfSurface& ChangeArray1();
+};
+%make_alias(TColGeom_HArray1OfSurface)
 
 /* harray2 classes */
 class TColGeom_HArray2OfSurface : public TColGeom_Array2OfSurface, public Standard_Transient {

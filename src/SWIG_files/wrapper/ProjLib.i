@@ -107,7 +107,7 @@ from OCC.Core.Exception import *
 /* typedefs */
 typedef ProjLib_CompProjectedCurve ProjLib_HCompProjectedCurve;
 typedef ProjLib_ProjectedCurve ProjLib_HProjectedCurve;
-typedef NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> ProjLib_SequenceOfHSequenceOfPnt;
+typedef NCollection_Sequence <opencascade::handle <TColgp_HSequenceOfPnt>> ProjLib_SequenceOfHSequenceOfPnt;
 /* end typedefs declaration */
 
 /****************
@@ -143,7 +143,7 @@ aC: Geom2d_Curve
 
 Returns
 -------
-None
+void
 ") MakePCurveOfType;
 		static void MakePCurveOfType(const ProjLib_ProjectedCurve & PC, opencascade::handle<Geom2d_Curve> & aC);
 

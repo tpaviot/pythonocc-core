@@ -644,7 +644,7 @@ bool
 class IGESCAFControl_Reader : public IGESControl_Reader {
 	public:
 		/****************** IGESCAFControl_Reader ******************/
-		/**** md5 signature: 247dc9b3de494ba90e36e7db39edee6b ****/
+		/**** md5 signature: dd60562cdd5382294449c3113a49dbd2 ****/
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
 		%feature("autodoc", "Creates a reader with an empty iges model and sets colormode, layermode and namemode to standard_true.
 
@@ -655,7 +655,7 @@ None
 		 IGESCAFControl_Reader();
 
 		/****************** IGESCAFControl_Reader ******************/
-		/**** md5 signature: ed2325657273ea5f907b2a7d8ba9ffcc ****/
+		/**** md5 signature: df325901758e50dd86359148fee12565 ****/
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
 		%feature("autodoc", "Creates a reader tool and attaches it to an already existing session clears the session if it was not yet set for iges.
 

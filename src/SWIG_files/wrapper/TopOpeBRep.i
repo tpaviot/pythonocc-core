@@ -166,8 +166,8 @@ TopOpeBRep_OTHERTYPE = TopOpeBRep_TypeLineCurve.TopOpeBRep_OTHERTYPE
 %wrap_handle(TopOpeBRep_FFDumper)
 %wrap_handle(TopOpeBRep_Hctxee2d)
 %wrap_handle(TopOpeBRep_Hctxff2d)
-%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
 %wrap_handle(TopOpeBRep_HArray1OfLineInter)
+%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
 /* end handles declaration */
 
 /* templates */
@@ -262,12 +262,12 @@ TopOpeBRep_OTHERTYPE = TopOpeBRep_TypeLineCurve.TopOpeBRep_OTHERTYPE
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<TopOpeBRep_LineInter> TopOpeBRep_Array1OfLineInter;
-typedef NCollection_Array1<TopOpeBRep_VPointInter> TopOpeBRep_Array1OfVPointInter;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<BRepTopAdaptor_TopolTool>, TopTools_ShapeMapHasher>::Iterator TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<BRepTopAdaptor_TopolTool>, TopTools_ShapeMapHasher> TopOpeBRep_DataMapOfTopolTool;
-typedef NCollection_List<TopOpeBRep_Bipoint>::Iterator TopOpeBRep_ListIteratorOfListOfBipoint;
-typedef NCollection_List<TopOpeBRep_Bipoint> TopOpeBRep_ListOfBipoint;
+typedef NCollection_Array1 <TopOpeBRep_LineInter> TopOpeBRep_Array1OfLineInter;
+typedef NCollection_Array1 <TopOpeBRep_VPointInter> TopOpeBRep_Array1OfVPointInter;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <BRepTopAdaptor_TopolTool>, TopTools_ShapeMapHasher>::Iterator TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <BRepTopAdaptor_TopolTool>, TopTools_ShapeMapHasher> TopOpeBRep_DataMapOfTopolTool;
+typedef NCollection_List <TopOpeBRep_Bipoint>::Iterator TopOpeBRep_ListIteratorOfListOfBipoint;
+typedef NCollection_List <TopOpeBRep_Bipoint> TopOpeBRep_ListOfBipoint;
 typedef TopOpeBRep_EdgesIntersector * TopOpeBRep_PEdgesIntersector;
 typedef TopOpeBRep_FacesFiller * TopOpeBRep_PFacesFiller;
 typedef TopOpeBRep_FacesIntersector * TopOpeBRep_PFacesIntersector;
@@ -275,7 +275,7 @@ typedef IntRes2d_IntersectionPoint * TopOpeBRep_PIntRes2d_IntersectionPoint;
 typedef TopOpeBRep_LineInter * TopOpeBRep_PLineInter;
 typedef IntSurf_PntOn2S * TopOpeBRep_PPntOn2S;
 typedef IntPatch_Point * TopOpeBRep_PThePointOfIntersection;
-typedef NCollection_Sequence<TopOpeBRep_Point2d> TopOpeBRep_SequenceOfPoint2d;
+typedef NCollection_Sequence <TopOpeBRep_Point2d> TopOpeBRep_SequenceOfPoint2d;
 /* end typedefs declaration */
 
 /*******************
@@ -2773,7 +2773,7 @@ C: Geom_Curve
 
 Returns
 -------
-None
+void
 ") MakeCurve;
 		static void MakeCurve(const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter & L, opencascade::handle<Geom_Curve> & C);
 
@@ -2795,7 +2795,7 @@ PC2: Geom2d_Curve
 
 Returns
 -------
-None
+void
 ") MakeCurves;
 		static void MakeCurves(const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter & L, const TopoDS_Shape & S1, const TopoDS_Shape & S2, TopOpeBRepDS_Curve & C, opencascade::handle<Geom2d_Curve> & PC1, opencascade::handle<Geom2d_Curve> & PC2);
 
@@ -5886,17 +5886,6 @@ class TopOpeBRep_traceSIFF:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class TopOpeBRep_HArray1OfVPointInter : public TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
-  public:
-    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRep_Array1OfVPointInter::value_type& theValue);
-    TopOpeBRep_HArray1OfVPointInter(const TopOpeBRep_Array1OfVPointInter& theOther);
-    const TopOpeBRep_Array1OfVPointInter& Array1();
-    TopOpeBRep_Array1OfVPointInter& ChangeArray1();
-};
-%make_alias(TopOpeBRep_HArray1OfVPointInter)
-
-
 class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5906,6 +5895,17 @@ class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, publi
     TopOpeBRep_Array1OfLineInter& ChangeArray1();
 };
 %make_alias(TopOpeBRep_HArray1OfLineInter)
+
+
+class TopOpeBRep_HArray1OfVPointInter : public TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
+  public:
+    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRep_Array1OfVPointInter::value_type& theValue);
+    TopOpeBRep_HArray1OfVPointInter(const TopOpeBRep_Array1OfVPointInter& theOther);
+    const TopOpeBRep_Array1OfVPointInter& Array1();
+    TopOpeBRep_Array1OfVPointInter& ChangeArray1();
+};
+%make_alias(TopOpeBRep_HArray1OfVPointInter)
 
 /* harray2 classes */
 /* hsequence classes */

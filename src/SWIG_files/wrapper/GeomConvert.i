@@ -129,7 +129,7 @@ tolerance: float
 
 Returns
 -------
-None
+void
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & tabBS, const Standard_Real tolerance);
 
@@ -147,7 +147,7 @@ tolerance: float
 
 Returns
 -------
-None
+void
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & tabBS, const Standard_Real AngularTolerance, const Standard_Real tolerance);
 
@@ -165,7 +165,7 @@ AngularTolerance: float,optional
 
 Returns
 -------
-None
+void
 ") C0BSplineToC1BSplineCurve;
 		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real tolerance, const Standard_Real AngularTolerance = 1.0e-7);
 

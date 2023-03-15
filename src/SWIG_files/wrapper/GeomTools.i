@@ -107,7 +107,7 @@ aHandler: GeomTools_UndefinedTypeHandler
 
 Returns
 -------
-None
+void
 ") SetUndefinedTypeHandler;
 		static void SetUndefinedTypeHandler(const opencascade::handle<GeomTools_UndefinedTypeHandler> & aHandler);
 

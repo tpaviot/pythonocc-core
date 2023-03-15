@@ -143,10 +143,10 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> AdvApp2Var_SequenceOfNode;
-typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> AdvApp2Var_SequenceOfPatch;
-typedef NCollection_Sequence<AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
-typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> AdvApp2Var_Strip;
+typedef NCollection_Sequence <opencascade::handle <AdvApp2Var_Node>> AdvApp2Var_SequenceOfNode;
+typedef NCollection_Sequence <opencascade::handle <AdvApp2Var_Patch>> AdvApp2Var_SequenceOfPatch;
+typedef NCollection_Sequence <AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
+typedef NCollection_Sequence <opencascade::handle <AdvApp2Var_Iso>> AdvApp2Var_Strip;
 /* end typedefs declaration */
 
 /***********************************
@@ -2233,7 +2233,7 @@ Parameters
 
 Returns
 -------
-None
+void
 ") mmwprcs_;
 		static void mmwprcs_(doublereal * , doublereal * , doublereal * , doublereal * , integer * , integer * );
 
@@ -3102,6 +3102,8 @@ int
 class AdvApp2Var_SysBase {
 	public:
 		class mitem {};
+		class  {};
+		class  {};
 		/****************** AdvApp2Var_SysBase ******************/
 		/**** md5 signature: 037dbb5c455e29c97a0cdd1615e8c69a ****/
 		%feature("compactdefaultargs") AdvApp2Var_SysBase;
@@ -3386,7 +3388,7 @@ adt: void *
 
 Returns
 -------
-None
+void
 ") miraz_;
 		static void miraz_(integer * taille, void * adt);
 
@@ -3463,7 +3465,7 @@ adt: void *
 
 Returns
 -------
-None
+void
 ") mvriraz_;
 		static void mvriraz_(integer * taille, void * adt);
 

@@ -16,6 +16,19 @@ from OCC.Core.TColGeom import *
 from OCC.Core.LocOpe import *
 
 
+class BRepFeat_PerfSelection(IntEnum):
+    BRepFeat_NoSelection: int = ...
+    BRepFeat_SelectionFU: int = ...
+    BRepFeat_SelectionU: int = ...
+    BRepFeat_SelectionSh: int = ...
+    BRepFeat_SelectionShU: int = ...
+
+BRepFeat_NoSelection = BRepFeat_PerfSelection.BRepFeat_NoSelection
+BRepFeat_SelectionFU = BRepFeat_PerfSelection.BRepFeat_SelectionFU
+BRepFeat_SelectionU = BRepFeat_PerfSelection.BRepFeat_SelectionU
+BRepFeat_SelectionSh = BRepFeat_PerfSelection.BRepFeat_SelectionSh
+BRepFeat_SelectionShU = BRepFeat_PerfSelection.BRepFeat_SelectionShU
+
 class BRepFeat_Status(IntEnum):
     BRepFeat_NoError: int = ...
     BRepFeat_InvalidPlacement: int = ...
@@ -83,19 +96,6 @@ BRepFeat_NotYetImplemented = BRepFeat_StatusError.BRepFeat_NotYetImplemented
 BRepFeat_NullRealTool = BRepFeat_StatusError.BRepFeat_NullRealTool
 BRepFeat_NullToolF = BRepFeat_StatusError.BRepFeat_NullToolF
 BRepFeat_NullToolU = BRepFeat_StatusError.BRepFeat_NullToolU
-
-class BRepFeat_PerfSelection(IntEnum):
-    BRepFeat_NoSelection: int = ...
-    BRepFeat_SelectionFU: int = ...
-    BRepFeat_SelectionU: int = ...
-    BRepFeat_SelectionSh: int = ...
-    BRepFeat_SelectionShU: int = ...
-
-BRepFeat_NoSelection = BRepFeat_PerfSelection.BRepFeat_NoSelection
-BRepFeat_SelectionFU = BRepFeat_PerfSelection.BRepFeat_SelectionFU
-BRepFeat_SelectionU = BRepFeat_PerfSelection.BRepFeat_SelectionU
-BRepFeat_SelectionSh = BRepFeat_PerfSelection.BRepFeat_SelectionSh
-BRepFeat_SelectionShU = BRepFeat_PerfSelection.BRepFeat_SelectionShU
 
 class brepfeat:
     @staticmethod

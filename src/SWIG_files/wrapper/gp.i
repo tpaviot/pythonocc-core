@@ -58,18 +58,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum gp_TrsfForm {
-	gp_Identity = 0,
-	gp_Rotation = 1,
-	gp_Translation = 2,
-	gp_PntMirror = 3,
-	gp_Ax1Mirror = 4,
-	gp_Ax2Mirror = 5,
-	gp_Scale = 6,
-	gp_CompoundTrsf = 7,
-	gp_Other = 8,
-};
-
 enum gp_EulerSequence {
 	gp_EulerAngles = 0,
 	gp_YawPitchRoll = 1,
@@ -99,30 +87,22 @@ enum gp_EulerSequence {
 	gp_Intrinsic_ZYZ = 25,
 };
 
+enum gp_TrsfForm {
+	gp_Identity = 0,
+	gp_Rotation = 1,
+	gp_Translation = 2,
+	gp_PntMirror = 3,
+	gp_Ax1Mirror = 4,
+	gp_Ax2Mirror = 5,
+	gp_Scale = 6,
+	gp_CompoundTrsf = 7,
+	gp_Other = 8,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class gp_TrsfForm(IntEnum):
-	gp_Identity = 0
-	gp_Rotation = 1
-	gp_Translation = 2
-	gp_PntMirror = 3
-	gp_Ax1Mirror = 4
-	gp_Ax2Mirror = 5
-	gp_Scale = 6
-	gp_CompoundTrsf = 7
-	gp_Other = 8
-gp_Identity = gp_TrsfForm.gp_Identity
-gp_Rotation = gp_TrsfForm.gp_Rotation
-gp_Translation = gp_TrsfForm.gp_Translation
-gp_PntMirror = gp_TrsfForm.gp_PntMirror
-gp_Ax1Mirror = gp_TrsfForm.gp_Ax1Mirror
-gp_Ax2Mirror = gp_TrsfForm.gp_Ax2Mirror
-gp_Scale = gp_TrsfForm.gp_Scale
-gp_CompoundTrsf = gp_TrsfForm.gp_CompoundTrsf
-gp_Other = gp_TrsfForm.gp_Other
 
 class gp_EulerSequence(IntEnum):
 	gp_EulerAngles = 0
@@ -177,6 +157,26 @@ gp_Intrinsic_YZY = gp_EulerSequence.gp_Intrinsic_YZY
 gp_Intrinsic_YXY = gp_EulerSequence.gp_Intrinsic_YXY
 gp_Intrinsic_ZXZ = gp_EulerSequence.gp_Intrinsic_ZXZ
 gp_Intrinsic_ZYZ = gp_EulerSequence.gp_Intrinsic_ZYZ
+
+class gp_TrsfForm(IntEnum):
+	gp_Identity = 0
+	gp_Rotation = 1
+	gp_Translation = 2
+	gp_PntMirror = 3
+	gp_Ax1Mirror = 4
+	gp_Ax2Mirror = 5
+	gp_Scale = 6
+	gp_CompoundTrsf = 7
+	gp_Other = 8
+gp_Identity = gp_TrsfForm.gp_Identity
+gp_Rotation = gp_TrsfForm.gp_Rotation
+gp_Translation = gp_TrsfForm.gp_Translation
+gp_PntMirror = gp_TrsfForm.gp_PntMirror
+gp_Ax1Mirror = gp_TrsfForm.gp_Ax1Mirror
+gp_Ax2Mirror = gp_TrsfForm.gp_Ax2Mirror
+gp_Scale = gp_TrsfForm.gp_Scale
+gp_CompoundTrsf = gp_TrsfForm.gp_CompoundTrsf
+gp_Other = gp_TrsfForm.gp_Other
 };
 /* end python proxy for enums */
 
@@ -189,8 +189,8 @@ gp_Intrinsic_ZYZ = gp_EulerSequence.gp_Intrinsic_ZYZ
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Vec2<Standard_ShortReal> gp_Vec2f;
-typedef NCollection_Vec3<Standard_ShortReal> gp_Vec3f;
+typedef NCollection_Vec2 <Standard_ShortReal> gp_Vec2f;
+typedef NCollection_Vec3 <Standard_ShortReal> gp_Vec3f;
 /* end typedefs declaration */
 
 /**********************************
@@ -393,7 +393,7 @@ gp_Ax2
 class gp_Ax1 {
 	public:
 		/****************** gp_Ax1 ******************/
-		/**** md5 signature: dc734c45fe2453f5dcc6d4e8bbfa5752 ****/
+		/**** md5 signature: 4b6c7aee296c0ee089b98327f607569b ****/
 		%feature("compactdefaultargs") gp_Ax1;
 		%feature("autodoc", "Creates an axis object representing z axis of the reference coordinate system.
 
@@ -404,7 +404,7 @@ None
 		 gp_Ax1();
 
 		/****************** gp_Ax1 ******************/
-		/**** md5 signature: 39eebc94aa4423fae1dba0b302d9c6b2 ****/
+		/**** md5 signature: 3d21342a62e74438170e93b7d8a3558c ****/
 		%feature("compactdefaultargs") gp_Ax1;
 		%feature("autodoc", "P is the location point and v is the direction of <self>.
 
@@ -857,7 +857,7 @@ gp_Ax1
 class gp_Ax2 {
 	public:
 		/****************** gp_Ax2 ******************/
-		/**** md5 signature: 3c7a2d75567725d80dd696424135bbde ****/
+		/**** md5 signature: 35ea81660ff3f2696076fcbbe8319796 ****/
 		%feature("compactdefaultargs") gp_Ax2;
 		%feature("autodoc", "Creates an object corresponding to the reference coordinate system (oxyz).
 
@@ -868,7 +868,7 @@ None
 		 gp_Ax2();
 
 		/****************** gp_Ax2 ******************/
-		/**** md5 signature: 4186a3383cec63c1de7a886d351d34ba ****/
+		/**** md5 signature: 0efc82e87911577be39d2ef7f74f079b ****/
 		%feature("compactdefaultargs") gp_Ax2;
 		%feature("autodoc", "Creates an axis placement with an origin p such that: - n is the direction, and - the 'x direction' is normal to n, in the plane defined by the vectors (n, vx): 'x direction' = (n ^ vx) ^ n, exception: raises constructionerror if n and vx are parallel (same or opposite orientation).
 
@@ -1363,7 +1363,7 @@ gp_Dir
 class gp_Ax22d {
 	public:
 		/****************** gp_Ax22d ******************/
-		/**** md5 signature: 9bed5f419bc513220f68fc75e8231e2f ****/
+		/**** md5 signature: 7511dd90f574afce78c04db017ad5a16 ****/
 		%feature("compactdefaultargs") gp_Ax22d;
 		%feature("autodoc", "Creates an object representing the reference coordinate system (oxy).
 
@@ -1374,7 +1374,7 @@ None
 		 gp_Ax22d();
 
 		/****************** gp_Ax22d ******************/
-		/**** md5 signature: c0497ebc3b83a8f54918c0f23fffe3f6 ****/
+		/**** md5 signature: dad1a2c750da9386ab0a616452e68cb7 ****/
 		%feature("compactdefaultargs") gp_Ax22d;
 		%feature("autodoc", "Creates a coordinate system with origin thep and where: - thevx is the 'x direction', and - the 'y direction' is orthogonal to thevx and oriented so that the cross products thevx^'y direction' and thevx^thevy have the same sign. raises constructionerror if thevx and thevy are parallel (same or opposite orientation).
 
@@ -1391,7 +1391,7 @@ None
 		 gp_Ax22d(const gp_Pnt2d & theP, const gp_Dir2d & theVx, const gp_Dir2d & theVy);
 
 		/****************** gp_Ax22d ******************/
-		/**** md5 signature: 44bd40632efc3c538836ee1b5485d122 ****/
+		/**** md5 signature: 1527bb44496d77bf479ad00421e6ed11 ****/
 		%feature("compactdefaultargs") gp_Ax22d;
 		%feature("autodoc", "Creates - a coordinate system with origin thep and 'x direction' thev, which is: - right-handed if theissense is true (default value), or - left-handed if theissense is false.
 
@@ -1409,7 +1409,7 @@ None
 		 gp_Ax22d(const gp_Pnt2d & theP, const gp_Dir2d & theV, const Standard_Boolean theIsSense = Standard_True);
 
 		/****************** gp_Ax22d ******************/
-		/**** md5 signature: 2d737b329d1aa62d15726e39c021bd2c ****/
+		/**** md5 signature: b105f538180c22bc136068d13081aa2e ****/
 		%feature("compactdefaultargs") gp_Ax22d;
 		%feature("autodoc", "Creates - a coordinate system where its origin is the origin of thea and its 'x direction' is the unit vector of thea, which is: - right-handed if theissense is true (default value), or - left-handed if theissense is false.
 
@@ -1809,7 +1809,7 @@ gp_Dir2d
 class gp_Ax2d {
 	public:
 		/****************** gp_Ax2d ******************/
-		/**** md5 signature: fbefef35a3253e0127a39f21f5149299 ****/
+		/**** md5 signature: b002d8e373f07b9cb931c050a2b80223 ****/
 		%feature("compactdefaultargs") gp_Ax2d;
 		%feature("autodoc", "Creates an axis object representing x axis of the reference co-ordinate system.
 
@@ -1820,7 +1820,7 @@ None
 		 gp_Ax2d();
 
 		/****************** gp_Ax2d ******************/
-		/**** md5 signature: 592b50727e5b4b614785f646b99e313f ****/
+		/**** md5 signature: bb03f777f366fd2f76f3fa03d6deae2b ****/
 		%feature("compactdefaultargs") gp_Ax2d;
 		%feature("autodoc", "Creates an ax2d. <thep> is the 'location' point of the axis placement and thev is the 'direction' of the axis placement.
 
@@ -2228,7 +2228,7 @@ gp_Ax2d
 class gp_Ax3 {
 	public:
 		/****************** gp_Ax3 ******************/
-		/**** md5 signature: 50158217200ccbb9ed316457b0e989a4 ****/
+		/**** md5 signature: 6714965c0280ccfea677fbfa68a072c7 ****/
 		%feature("compactdefaultargs") gp_Ax3;
 		%feature("autodoc", "Creates an object corresponding to the reference coordinate system (oxyz).
 
@@ -2254,7 +2254,7 @@ None
 		 gp_Ax3(const gp_Ax2 & theA);
 
 		/****************** gp_Ax3 ******************/
-		/**** md5 signature: 377b87eb0622cdfcce4e27a9fafe4493 ****/
+		/**** md5 signature: 2f4b648e6a7436616c7b32aec05f35ac ****/
 		%feature("compactdefaultargs") gp_Ax3;
 		%feature("autodoc", "Creates a right handed axis placement with the 'location' point thep and two directions, then gives the 'direction' and thevx gives the 'xdirection'. raises constructionerror if then and thevx are parallel (same or opposite orientation).
 
@@ -2804,7 +2804,7 @@ None
 class gp_Circ {
 	public:
 		/****************** gp_Circ ******************/
-		/**** md5 signature: 5f10d6909b85753006e6ebe03abc11d5 ****/
+		/**** md5 signature: 516f6dde004c8234ad4b6e3d54c545c8 ****/
 		%feature("compactdefaultargs") gp_Circ;
 		%feature("autodoc", "Creates an indefinite circle.
 
@@ -2815,7 +2815,7 @@ None
 		 gp_Circ();
 
 		/****************** gp_Circ ******************/
-		/**** md5 signature: 739b08382fa8319dc2d01e46b8d831b7 ****/
+		/**** md5 signature: 77b4438d9f3cfd12a9a97ec98a8fecd0 ****/
 		%feature("compactdefaultargs") gp_Circ;
 		%feature("autodoc", "A2 locates the circle and gives its orientation in 3d space. warnings : it is not forbidden to create a circle with theradius = 0.0 raises constructionerror if theradius < 0.0.
 
@@ -3285,7 +3285,7 @@ gp_Ax1
 class gp_Circ2d {
 	public:
 		/****************** gp_Circ2d ******************/
-		/**** md5 signature: 9abe96e635d4d5d4883afa39f2cc864d ****/
+		/**** md5 signature: 1ed710db826e4d08ed90797d8cfede6e ****/
 		%feature("compactdefaultargs") gp_Circ2d;
 		%feature("autodoc", "Creates an indefinite circle.
 
@@ -3296,7 +3296,7 @@ None
 		 gp_Circ2d();
 
 		/****************** gp_Circ2d ******************/
-		/**** md5 signature: 157b4c77138fe2dd66aa66d0e802a45a ****/
+		/**** md5 signature: 64fdbe240ac61c638dfde62c4192e213 ****/
 		%feature("compactdefaultargs") gp_Circ2d;
 		%feature("autodoc", "The location point of thexaxis is the center of the circle. warnings : it is not forbidden to create a circle with theradius = 0.0 raises constructionerror if theradius < 0.0. raised if theradius < 0.0.
 
@@ -3314,7 +3314,7 @@ None
 		 gp_Circ2d(const gp_Ax2d & theXAxis, const Standard_Real theRadius, const Standard_Boolean theIsSense = Standard_True);
 
 		/****************** gp_Circ2d ******************/
-		/**** md5 signature: 3b0c3e71e00672bbab9e12940ef92b09 ****/
+		/**** md5 signature: 25a966dccf9081f1770e9446f639ce70 ****/
 		%feature("compactdefaultargs") gp_Circ2d;
 		%feature("autodoc", "Theaxis defines the xaxis and yaxis of the circle which defines the origin and the sense of parametrization. the location point of theaxis is the center of the circle. warnings : it is not forbidden to create a circle with theradius = 0.0 raises constructionerror if theradius < 0.0. raised if theradius < 0.0.
 
@@ -3821,7 +3821,7 @@ gp_Ax2d
 class gp_Cone {
 	public:
 		/****************** gp_Cone ******************/
-		/**** md5 signature: b6d070bebbb32c502a61aa7801e0630c ****/
+		/**** md5 signature: 397732b161ee67c473fad22a92902abf ****/
 		%feature("compactdefaultargs") gp_Cone;
 		%feature("autodoc", "Creates an indefinite cone.
 
@@ -4339,7 +4339,7 @@ None
 		 gp_Cylinder();
 
 		/****************** gp_Cylinder ******************/
-		/**** md5 signature: 3f1d461b918ce280d6f9acdf73d030ac ****/
+		/**** md5 signature: 43ae8b61eda12c8cd8638ed2a18a1a33 ****/
 		%feature("compactdefaultargs") gp_Cylinder;
 		%feature("autodoc", "Creates a cylinder of radius radius, whose axis is the 'main axis' of thea3. thea3 is the local coordinate system of the cylinder. raises constructionerrord if theradius < 0.0.
 
@@ -4797,7 +4797,7 @@ gp_Ax1
 class gp_Dir {
 	public:
 		/****************** gp_Dir ******************/
-		/**** md5 signature: 1edbf324978bb50abc26edeb4b49cdba ****/
+		/**** md5 signature: 5578951e009f69f475c5e06997927f6d ****/
 		%feature("compactdefaultargs") gp_Dir;
 		%feature("autodoc", "Creates a direction corresponding to x axis.
 
@@ -5448,7 +5448,7 @@ gp_Dir
 class gp_Dir2d {
 	public:
 		/****************** gp_Dir2d ******************/
-		/**** md5 signature: 73646d5f15e04074cb632864bc85c116 ****/
+		/**** md5 signature: 9ee59e864ea7a8a09c1a9373f35472a9 ****/
 		%feature("compactdefaultargs") gp_Dir2d;
 		%feature("autodoc", "Creates a direction corresponding to x axis.
 
@@ -5944,7 +5944,7 @@ gp_Dir2d
 class gp_Elips {
 	public:
 		/****************** gp_Elips ******************/
-		/**** md5 signature: 4380d7ccbc733459a106a4ac839ca157 ****/
+		/**** md5 signature: 1a90c3324b8a441d06b1589ca8edee0c ****/
 		%feature("compactdefaultargs") gp_Elips;
 		%feature("autodoc", "Creates an indefinite ellipse.
 
@@ -5955,7 +5955,7 @@ None
 		 gp_Elips();
 
 		/****************** gp_Elips ******************/
-		/**** md5 signature: 7e0836115d9e0289c6f68a1e03b7539b ****/
+		/**** md5 signature: c56ad119346770f723c599328f687ec9 ****/
 		%feature("compactdefaultargs") gp_Elips;
 		%feature("autodoc", "The major radius of the ellipse is on the 'xaxis' and the minor radius is on the 'yaxis' of the ellipse. the 'xaxis' is defined with the 'xdirection' of thea2 and the 'yaxis' is defined with the 'ydirection' of thea2. warnings : it is not forbidden to create an ellipse with themajorradius = theminorradius. raises constructionerror if themajorradius < theminorradius or theminorradius < 0.
 
@@ -6472,7 +6472,7 @@ gp_Ax1
 class gp_Elips2d {
 	public:
 		/****************** gp_Elips2d ******************/
-		/**** md5 signature: 155a4b0babb698b6ce195f260509b0cf ****/
+		/**** md5 signature: 7fcae30fc158957a53c97ec8950cdb45 ****/
 		%feature("compactdefaultargs") gp_Elips2d;
 		%feature("autodoc", "Creates an indefinite ellipse.
 
@@ -6483,7 +6483,7 @@ None
 		 gp_Elips2d();
 
 		/****************** gp_Elips2d ******************/
-		/**** md5 signature: 104a95751748857ca6a90d8ee44b6ed6 ****/
+		/**** md5 signature: c332dd6e56323a5b6f8f513b1ce96f81 ****/
 		%feature("compactdefaultargs") gp_Elips2d;
 		%feature("autodoc", "Creates an ellipse with the major axis, the major and the minor radius. the location of the themajoraxis is the center of the ellipse. the sense of parametrization is given by theissense. warnings : it is possible to create an ellipse with themajorradius = theminorradius. raises constructionerror if themajorradius < theminorradius or theminorradius < 0.0.
 
@@ -6502,7 +6502,7 @@ None
 		 gp_Elips2d(const gp_Ax2d & theMajorAxis, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius, const Standard_Boolean theIsSense = Standard_True);
 
 		/****************** gp_Elips2d ******************/
-		/**** md5 signature: 4733a3ea1ba6f34c3dbc9d79a612c381 ****/
+		/**** md5 signature: 787c9fc59ab5f49dedcf588363d785f6 ****/
 		%feature("compactdefaultargs") gp_Elips2d;
 		%feature("autodoc", "Creates an ellipse with radii majorradius and minorradius, positioned in the plane by coordinate system thea where: - the origin of thea is the center of the ellipse, - the 'x direction' of thea defines the major axis of the ellipse, that is, the major radius majorradius is measured along this axis, and - the 'y direction' of thea defines the minor axis of the ellipse, that is, the minor radius theminorradius is measured along this axis, and - the orientation (direct or indirect sense) of thea gives the orientation of the ellipse. warnings : it is possible to create an ellipse with themajorradius = theminorradius. raises constructionerror if themajorradius < theminorradius or theminorradius < 0.0.
 
@@ -7071,7 +7071,7 @@ None
 		 gp_GTrsf(const gp_Trsf & theT);
 
 		/****************** gp_GTrsf ******************/
-		/**** md5 signature: b996e6f23aebecad739973d50a34c7e1 ****/
+		/**** md5 signature: 18dae3a4a1c2719b788312c638ac3fba ****/
 		%feature("compactdefaultargs") gp_GTrsf;
 		%feature("autodoc", "Creates a transformation based on the matrix them and the vector thev where them defines the vectorial part of the transformation, and v the translation part, or.
 
@@ -7476,7 +7476,7 @@ None
 		 gp_GTrsf2d(const gp_Trsf2d & theT);
 
 		/****************** gp_GTrsf2d ******************/
-		/**** md5 signature: 7dad38427f6203b577e15fc404abca18 ****/
+		/**** md5 signature: 3326643ea554edf3fad62964d6cc465b ****/
 		%feature("compactdefaultargs") gp_GTrsf2d;
 		%feature("autodoc", "Creates a transformation based on the matrix them and the vector thev where them defines the vectorial part of the transformation, and thev the translation part.
 
@@ -7834,7 +7834,7 @@ gp_GTrsf2d
 class gp_Hypr {
 	public:
 		/****************** gp_Hypr ******************/
-		/**** md5 signature: 094707d36c81c9ad4dd1b143111db4d9 ****/
+		/**** md5 signature: 3cf8f493c10288f2c097bb3e92a0e8fd ****/
 		%feature("compactdefaultargs") gp_Hypr;
 		%feature("autodoc", "Creates of an indefinite hyperbola.
 
@@ -7845,7 +7845,7 @@ None
 		 gp_Hypr();
 
 		/****************** gp_Hypr ******************/
-		/**** md5 signature: a314918ce7be912306e8f820877a7ec0 ****/
+		/**** md5 signature: 979ff853c5abf73f58b899850d73e8f4 ****/
 		%feature("compactdefaultargs") gp_Hypr;
 		%feature("autodoc", "Creates a hyperbola with radius themajorradius and theminorradius, positioned in the space by the coordinate system thea2 such that: - the origin of thea2 is the center of the hyperbola, - the 'x direction' of thea2 defines the major axis of the hyperbola, that is, the major radius themajorradius is measured along this axis, and - the 'y direction' of thea2 defines the minor axis of the hyperbola, that is, the minor radius theminorradius is measured along this axis. note: this class does not prevent the creation of a hyperbola where: - themajoraxis is equal to theminoraxis, or - themajoraxis is less than theminoraxis. exceptions standard_constructionerror if themajoraxis or theminoraxis is negative. raises constructionerror if themajorradius < 0.0 or theminorradius < 0.0 raised if themajorradius < 0.0 or theminorradius < 0.0.
 
@@ -8406,7 +8406,7 @@ gp_Ax1
 class gp_Hypr2d {
 	public:
 		/****************** gp_Hypr2d ******************/
-		/**** md5 signature: 79d79ae8ae2e362c68baae138de54ef3 ****/
+		/**** md5 signature: 381e3294b8c1e3f3257a2423503435b9 ****/
 		%feature("compactdefaultargs") gp_Hypr2d;
 		%feature("autodoc", "Creates of an indefinite hyperbola.
 
@@ -8417,7 +8417,7 @@ None
 		 gp_Hypr2d();
 
 		/****************** gp_Hypr2d ******************/
-		/**** md5 signature: 70edb425043f3488283d6bbb4e19fb1a ****/
+		/**** md5 signature: 4210ea90a4f4af398d07c8aaf5756633 ****/
 		%feature("compactdefaultargs") gp_Hypr2d;
 		%feature("autodoc", "Creates a hyperbola with radii themajorradius and theminorradius, centered on the origin of themajoraxis and where the unit vector of themajoraxis is the 'x direction' of the local coordinate system of the hyperbola. this coordinate system is direct if theissense is true (the default value), and indirect if theissense is false. warnings : it is yet possible to create an hyperbola with themajorradius <= theminorradius. raises constructionerror if themajorradius < 0.0 or theminorradius < 0.0.
 
@@ -8436,7 +8436,7 @@ None
 		 gp_Hypr2d(const gp_Ax2d & theMajorAxis, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius, const Standard_Boolean theIsSense = Standard_True);
 
 		/****************** gp_Hypr2d ******************/
-		/**** md5 signature: 32331a653843a478c5b03450edf97a43 ****/
+		/**** md5 signature: 5ea09399e15ff285af630657c5c504c8 ****/
 		%feature("compactdefaultargs") gp_Hypr2d;
 		%feature("autodoc", "A hyperbola with radii themajorradius and theminorradius, positioned in the plane by coordinate system thea where: - the origin of thea is the center of the hyperbola, - the 'x direction' of thea defines the major axis of the hyperbola, that is, the major radius themajorradius is measured along this axis, and - the 'y direction' of thea defines the minor axis of the hyperbola, that is, the minor radius theminorradius is measured along this axis, and - the orientation (direct or indirect sense) of thea gives the implicit orientation of the hyperbola. warnings : it is yet possible to create an hyperbola with themajorradius <= theminorradius. raises constructionerror if themajorradius < 0.0 or theminorradius < 0.0.
 
@@ -9034,7 +9034,7 @@ None
 		 gp_Lin();
 
 		/****************** gp_Lin ******************/
-		/**** md5 signature: dbccb350c307fd13d73d5eff540a1b3e ****/
+		/**** md5 signature: bcf74d4ce3b584f9742d5d4ea5326b8f ****/
 		%feature("compactdefaultargs") gp_Lin;
 		%feature("autodoc", "Creates a line defined by axis thea1.
 
@@ -9049,7 +9049,7 @@ None
 		 gp_Lin(const gp_Ax1 & theA1);
 
 		/****************** gp_Lin ******************/
-		/**** md5 signature: a6c9131e9c0e9811cb6b48eb9cafc2ee ****/
+		/**** md5 signature: b282704142ec6e994a1592b072ac452a ****/
 		%feature("compactdefaultargs") gp_Lin;
 		%feature("autodoc", "Creates a line passing through point thep and parallel to vector thev (thep and thev are, respectively, the origin and the unit vector of the positioning axis of the line).
 
@@ -9542,7 +9542,7 @@ None
 		 gp_Lin2d();
 
 		/****************** gp_Lin2d ******************/
-		/**** md5 signature: 51fad62c104e390fa7065fae9f719aed ****/
+		/**** md5 signature: 1e017e5e66bb4d61cdb8d7e880f76d6e ****/
 		%feature("compactdefaultargs") gp_Lin2d;
 		%feature("autodoc", "Creates a line located with thea.
 
@@ -9557,7 +9557,7 @@ None
 		 gp_Lin2d(const gp_Ax2d & theA);
 
 		/****************** gp_Lin2d ******************/
-		/**** md5 signature: 8c2bed35e809defd254acbb0f32bf4c7 ****/
+		/**** md5 signature: e068f654006891aecd3b2816c3e0343b ****/
 		%feature("compactdefaultargs") gp_Lin2d;
 		%feature("autodoc", "<thep> is the location point (origin) of the line and <thev> is the direction of the line.
 
@@ -11377,7 +11377,7 @@ gp_Mat2d
 class gp_Parab {
 	public:
 		/****************** gp_Parab ******************/
-		/**** md5 signature: 0bbad0099bcf19a0551fc6097a511ddf ****/
+		/**** md5 signature: 5759b85d94ceb4102f393861995e7cb5 ****/
 		%feature("compactdefaultargs") gp_Parab;
 		%feature("autodoc", "Creates an indefinite parabola.
 
@@ -11388,7 +11388,7 @@ None
 		 gp_Parab();
 
 		/****************** gp_Parab ******************/
-		/**** md5 signature: d18d67a44c54d6e79987bb27f5fc733a ****/
+		/**** md5 signature: f267c9ce8b8e2672db5be0f1bcd33234 ****/
 		%feature("compactdefaultargs") gp_Parab;
 		%feature("autodoc", "Creates a parabola with its local coordinate system 'thea2' and it's focal length 'focal'. the xdirection of thea2 defines the axis of symmetry of the parabola. the ydirection of thea2 is parallel to the directrix of the parabola. the location point of thea2 is the vertex of the parabola raises constructionerror if thefocal < 0.0 raised if thefocal < 0.0.
 
@@ -11839,7 +11839,7 @@ gp_Ax1
 class gp_Parab2d {
 	public:
 		/****************** gp_Parab2d ******************/
-		/**** md5 signature: 291962acfc5fd970ae287b879ec2aed8 ****/
+		/**** md5 signature: 3e2257cd1148877c19cf03b2d29cda59 ****/
 		%feature("compactdefaultargs") gp_Parab2d;
 		%feature("autodoc", "Creates an indefinite parabola.
 
@@ -11850,7 +11850,7 @@ None
 		 gp_Parab2d();
 
 		/****************** gp_Parab2d ******************/
-		/**** md5 signature: 405849b455cdb8b4e9138d65424b5567 ****/
+		/**** md5 signature: 8c0c9e5d686bdeebdaed9d090f927a81 ****/
 		%feature("compactdefaultargs") gp_Parab2d;
 		%feature("autodoc", "Creates a parabola with its vertex point, its axis of symmetry ('xaxis') and its focal length. the sense of parametrization is given by thesense. if thesense == true (by default) then right-handed coordinate system is used, otherwise - left-handed. warnings : it is possible to have focallength = 0. in this case, the parabola looks like a line, which is parallel to the symmetry-axis. raises constructionerror if focallength < 0.0.
 
@@ -11868,7 +11868,7 @@ None
 		 gp_Parab2d(const gp_Ax2d & theMirrorAxis, const Standard_Real theFocalLength, const Standard_Boolean theSense = Standard_True);
 
 		/****************** gp_Parab2d ******************/
-		/**** md5 signature: a85e70f69dcfb89ddc8141630ff5979c ****/
+		/**** md5 signature: 588a4a9f4a9bcbb283383262e9f0f861 ****/
 		%feature("compactdefaultargs") gp_Parab2d;
 		%feature("autodoc", "Creates a parabola with its vertex point, its axis of symmetry ('xaxis'), correspond y-axis and its focal length. warnings : it is possible to have focallength = 0. in this case, the parabola looks like a line, which is parallel to the symmetry-axis. raises constructionerror if focal < 0.0.
 
@@ -12332,7 +12332,7 @@ None
 		 gp_Pln();
 
 		/****************** gp_Pln ******************/
-		/**** md5 signature: 7ef965f86daf93d3e23e0a60703eea5a ****/
+		/**** md5 signature: fde8ff510bf835d1584231b069d47eb9 ****/
 		%feature("compactdefaultargs") gp_Pln;
 		%feature("autodoc", "The coordinate system of the plane is defined with the axis placement thea3. the 'direction' of thea3 defines the normal to the plane. the 'location' of thea3 defines the location (origin) of the plane. the 'xdirection' and 'ydirection' of thea3 define the 'xaxis' and the 'yaxis' of the plane used to parametrize the plane.
 
@@ -12933,7 +12933,7 @@ None
 		 gp_Pnt();
 
 		/****************** gp_Pnt ******************/
-		/**** md5 signature: 38c6c68bfa22a1daddd2c4838da7eb3e ****/
+		/**** md5 signature: a1537e9be60acf808041547e94d330fb ****/
 		%feature("compactdefaultargs") gp_Pnt;
 		%feature("autodoc", "Creates a point from a xyz object.
 
@@ -12948,7 +12948,7 @@ None
 		 gp_Pnt(const gp_XYZ & theCoord);
 
 		/****************** gp_Pnt ******************/
-		/**** md5 signature: 89fa34ea9824847657d3dce98df8da86 ****/
+		/**** md5 signature: cf3e719d3b14fc807245c9e619569cb4 ****/
 		%feature("compactdefaultargs") gp_Pnt;
 		%feature("autodoc", "Creates a point with its 3 cartesian's coordinates : thexp, theyp, thezp.
 
@@ -13512,7 +13512,7 @@ None
 		 gp_Pnt2d();
 
 		/****************** gp_Pnt2d ******************/
-		/**** md5 signature: 0b115859fd49adc9dce6d509324fa434 ****/
+		/**** md5 signature: ca83969e6f09727ada3f35c19bc20a87 ****/
 		%feature("compactdefaultargs") gp_Pnt2d;
 		%feature("autodoc", "Creates a point with a doublet of coordinates.
 
@@ -13527,7 +13527,7 @@ None
 		 gp_Pnt2d(const gp_XY & theCoord);
 
 		/****************** gp_Pnt2d ******************/
-		/**** md5 signature: ac15eb02af5890f339b11a9688b48bb2 ****/
+		/**** md5 signature: cfba3985e20f32c7468c9e04186d7f37 ****/
 		%feature("compactdefaultargs") gp_Pnt2d;
 		%feature("autodoc", "Creates a point with its 2 cartesian's coordinates : thexp, theyp.
 
@@ -13989,7 +13989,7 @@ float
 class gp_Quaternion {
 	public:
 		/****************** gp_Quaternion ******************/
-		/**** md5 signature: 8fd7b50aec9da4510c148f23c42e1b2e ****/
+		/**** md5 signature: bf649e39b93623f64ffeaeade6fcf9f1 ****/
 		%feature("compactdefaultargs") gp_Quaternion;
 		%feature("autodoc", "Creates an identity quaternion.
 
@@ -14000,7 +14000,7 @@ None
 		 gp_Quaternion();
 
 		/****************** gp_Quaternion ******************/
-		/**** md5 signature: 8cebe83ce1935c76fd992440dba8de74 ****/
+		/**** md5 signature: f76b2f7c62a29db272f37a97cd8d016d ****/
 		%feature("compactdefaultargs") gp_Quaternion;
 		%feature("autodoc", "Creates quaternion directly from component values.
 
@@ -14937,7 +14937,7 @@ None
 class gp_Sphere {
 	public:
 		/****************** gp_Sphere ******************/
-		/**** md5 signature: 8f3029d2ee745522f41b3401882eecb4 ****/
+		/**** md5 signature: 375e2bd58286fc537f56b04df25cd14f ****/
 		%feature("compactdefaultargs") gp_Sphere;
 		%feature("autodoc", "Creates an indefinite sphere.
 
@@ -14948,7 +14948,7 @@ None
 		 gp_Sphere();
 
 		/****************** gp_Sphere ******************/
-		/**** md5 signature: 88e7e45a96470b77aa78e9e60cf0de45 ****/
+		/**** md5 signature: adbfeea8cd6d8db9b3dc11d7718d2970 ****/
 		%feature("compactdefaultargs") gp_Sphere;
 		%feature("autodoc", "Constructs a sphere with radius theradius, centered on the origin of thea3. thea3 is the local coordinate system of the sphere. warnings : it is not forbidden to create a sphere with null radius. raises constructionerror if theradius < 0.0.
 
@@ -15402,7 +15402,7 @@ gp_Ax1
 class gp_Torus {
 	public:
 		/****************** gp_Torus ******************/
-		/**** md5 signature: b1b979ff943931fcf91b4a8e9becb529 ****/
+		/**** md5 signature: 386e91fa35ac9882e7cc982129c5ca95 ****/
 		%feature("compactdefaultargs") gp_Torus;
 		%feature("autodoc", "Creates an indefinite torus.
 
@@ -15413,7 +15413,7 @@ None
 		 gp_Torus();
 
 		/****************** gp_Torus ******************/
-		/**** md5 signature: 23dbfcfa62b5bd0787a6845547f399ae ****/
+		/**** md5 signature: 06cd7c0d9f5818f33d82f63a3c00a367 ****/
 		%feature("compactdefaultargs") gp_Torus;
 		%feature("autodoc", "A torus centered on the origin of coordinate system thea3, with major radius themajorradius and minor radius theminorradius, and with the reference plane defined by the origin, the 'x direction' and the 'y direction' of thea3. warnings : it is not forbidden to create a torus with themajorradius = theminorradius = 0.0 raises constructionerror if theminorradius < 0.0 or if themajorradius < 0.0.
 
@@ -16995,7 +16995,7 @@ None
 		 gp_Vec(const gp_Dir & theV);
 
 		/****************** gp_Vec ******************/
-		/**** md5 signature: 2134a3d4ef0ed3a83a8270dcaa872ad0 ****/
+		/**** md5 signature: a2861a3667898f176ffcfc4474e312f0 ****/
 		%feature("compactdefaultargs") gp_Vec;
 		%feature("autodoc", "Creates a vector with a triplet of coordinates.
 
@@ -17010,7 +17010,7 @@ None
 		 gp_Vec(const gp_XYZ & theCoord);
 
 		/****************** gp_Vec ******************/
-		/**** md5 signature: 9d8aee611723d77714205fe230577101 ****/
+		/**** md5 signature: eab62cfe75ec73098aaa6fc253e7df02 ****/
 		%feature("compactdefaultargs") gp_Vec;
 		%feature("autodoc", "Creates a point with its three cartesian coordinates.
 
@@ -18087,7 +18087,7 @@ None
 		 gp_Vec2d(const gp_Dir2d & theV);
 
 		/****************** gp_Vec2d ******************/
-		/**** md5 signature: 1c89ec00eeaa8493fe1c579caa2aff50 ****/
+		/**** md5 signature: 9f15ea5600822cdd497e37efd31ae985 ****/
 		%feature("compactdefaultargs") gp_Vec2d;
 		%feature("autodoc", "Creates a vector with a doublet of coordinates.
 
@@ -18102,7 +18102,7 @@ None
 		 gp_Vec2d(const gp_XY & theCoord);
 
 		/****************** gp_Vec2d ******************/
-		/**** md5 signature: c963b436d75381130b6b1e226db6beba ****/
+		/**** md5 signature: 3d125ef129ba47e3da29059da62d40d7 ****/
 		%feature("compactdefaultargs") gp_Vec2d;
 		%feature("autodoc", "Creates a point with its two cartesian coordinates.
 
@@ -18975,7 +18975,7 @@ gp_Vec2d
 class gp_XY {
 	public:
 		/****************** gp_XY ******************/
-		/**** md5 signature: 481937d291f637c0bf2b607e21a1236b ****/
+		/**** md5 signature: e6dfb3a8c958028fac97e62afa97ca35 ****/
 		%feature("compactdefaultargs") gp_XY;
 		%feature("autodoc", "Creates xy object with zero coordinates (0,0).
 
@@ -18986,7 +18986,7 @@ None
 		 gp_XY();
 
 		/****************** gp_XY ******************/
-		/**** md5 signature: 2954fedf69ba3bfdd8644975c9e365e4 ****/
+		/**** md5 signature: 568a7fb575db66195341f071c0e5eea0 ****/
 		%feature("compactdefaultargs") gp_XY;
 		%feature("autodoc", "A number pair defined by the xy coordinates.
 
@@ -19012,9 +19012,9 @@ theOther: gp_XY
 
 Returns
 -------
-None
+inline void
 ") Add;
-		void Add(const gp_XY & theOther);
+		inline void Add(const gp_XY & theOther);
 
 		/****************** Added ******************/
 		/**** md5 signature: 550ccb9bf6e21ceb48601cc416a4c7d3 ****/
@@ -19031,19 +19031,21 @@ gp_XY
 ") Added;
 		gp_XY Added(const gp_XY & theOther);
 
+		/****************** ChangeCoord ******************/
+		/**** md5 signature: 96d826068408c4db41685b5a50603906 ****/
+		%feature("compactdefaultargs") ChangeCoord;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetChangeCoord(const Standard_Integer theIndex) {
-            return (Standard_Real) $self->ChangeCoord(theIndex);
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetChangeCoord(const Standard_Integer theIndex,Standard_Real value) {
-            $self->ChangeCoord(theIndex)=value;
-            }
-        };
+Parameters
+----------
+theIndex: int
+
+Returns
+-------
+inline float
+") ChangeCoord;
+		inline Standard_Real & ChangeCoord(const Standard_Integer theIndex);
+
 		/****************** Coord ******************/
 		/**** md5 signature: f8e2ac672e52fd226debe419b91a5fdd ****/
 		%feature("compactdefaultargs") Coord;
@@ -19055,9 +19057,9 @@ theIndex: int
 
 Returns
 -------
-float
+inline float
 ") Coord;
-		Standard_Real Coord(const Standard_Integer theIndex);
+		inline Standard_Real Coord(const Standard_Integer theIndex);
 
 		/****************** Coord ******************/
 		/**** md5 signature: 777710661e7d75e02bbe6cd9da6204dc ****/
@@ -19072,7 +19074,7 @@ Returns
 theX: float
 theY: float
 ") Coord;
-		void Coord(Standard_Real &OutValue, Standard_Real &OutValue);
+		inline void Coord(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** CrossMagnitude ******************/
 		/**** md5 signature: b9d3fd498ec45080533a13dc2205b23d ****/
@@ -19085,9 +19087,9 @@ theRight: gp_XY
 
 Returns
 -------
-float
+inline float
 ") CrossMagnitude;
-		Standard_Real CrossMagnitude(const gp_XY & theRight);
+		inline Standard_Real CrossMagnitude(const gp_XY & theRight);
 
 		/****************** CrossSquareMagnitude ******************/
 		/**** md5 signature: 9cbab779daca690572d69e0cc393cce2 ****/
@@ -19100,9 +19102,9 @@ theRight: gp_XY
 
 Returns
 -------
-float
+inline float
 ") CrossSquareMagnitude;
-		Standard_Real CrossSquareMagnitude(const gp_XY & theRight);
+		inline Standard_Real CrossSquareMagnitude(const gp_XY & theRight);
 
 		/****************** Crossed ******************/
 		/**** md5 signature: 98e7234d929e0d7f7094422326680e37 ****/
@@ -19310,9 +19312,9 @@ gp_XY
 
 Returns
 -------
-None
+inline void
 ") Reverse;
-		void Reverse();
+		inline void Reverse();
 
 		/****************** Reversed ******************/
 		/**** md5 signature: 3f676473578a78a63892a2a9be728f89 ****/
@@ -19337,9 +19339,9 @@ theXi: float
 
 Returns
 -------
-None
+inline void
 ") SetCoord;
-		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
+		inline void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
 		/****************** SetCoord ******************/
 		/**** md5 signature: e607770359989dca6babf13f3f489305 ****/
@@ -19353,9 +19355,9 @@ theY: float
 
 Returns
 -------
-None
+inline void
 ") SetCoord;
-		void SetCoord(const Standard_Real theX, const Standard_Real theY);
+		inline void SetCoord(const Standard_Real theX, const Standard_Real theY);
 
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: f4be5e8116b5c8dfc176c7d306a12ba0 ****/
@@ -19371,9 +19373,9 @@ theXY2: gp_XY
 
 Returns
 -------
-None
+inline void
 ") SetLinearForm;
-		void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const Standard_Real theA2, const gp_XY & theXY2);
+		inline void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const Standard_Real theA2, const gp_XY & theXY2);
 
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 1bcb5467e4199183bfa35fbae933fd05 ****/
@@ -19390,9 +19392,9 @@ theXY3: gp_XY
 
 Returns
 -------
-None
+inline void
 ") SetLinearForm;
-		void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const Standard_Real theA2, const gp_XY & theXY2, const gp_XY & theXY3);
+		inline void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const Standard_Real theA2, const gp_XY & theXY2, const gp_XY & theXY3);
 
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: 9bedff4d535ccad73cb118a63d2b0d6c ****/
@@ -19407,9 +19409,9 @@ theXY2: gp_XY
 
 Returns
 -------
-None
+inline void
 ") SetLinearForm;
-		void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const gp_XY & theXY2);
+		inline void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const gp_XY & theXY2);
 
 		/****************** SetLinearForm ******************/
 		/**** md5 signature: bf4882d80826559c3bdeffa200aede8b ****/
@@ -19423,9 +19425,9 @@ theXY2: gp_XY
 
 Returns
 -------
-None
+inline void
 ") SetLinearForm;
-		void SetLinearForm(const gp_XY & theXY1, const gp_XY & theXY2);
+		inline void SetLinearForm(const gp_XY & theXY1, const gp_XY & theXY2);
 
 		/****************** SetX ******************/
 		/**** md5 signature: 1bf65ee31f0303d20dd96cc6dbcfa44e ****/
@@ -19479,9 +19481,9 @@ theOther: gp_XY
 
 Returns
 -------
-None
+inline void
 ") Subtract;
-		void Subtract(const gp_XY & theOther);
+		inline void Subtract(const gp_XY & theOther);
 
 		/****************** Subtracted ******************/
 		/**** md5 signature: f11c2c10f430d270dfb273489de56364 ****/
@@ -19702,7 +19704,7 @@ gp_XY
 class gp_XYZ {
 	public:
 		/****************** gp_XYZ ******************/
-		/**** md5 signature: 8e065ee14f52a32317aeda3dae3f3f86 ****/
+		/**** md5 signature: fd03611988df86399016b0075d25ab03 ****/
 		%feature("compactdefaultargs") gp_XYZ;
 		%feature("autodoc", "Creates an xyz object with zero coordinates (0,0,0).
 
@@ -19713,7 +19715,7 @@ None
 		 gp_XYZ();
 
 		/****************** gp_XYZ ******************/
-		/**** md5 signature: b892e83e6b84ed612c3c11b26e35f125 ****/
+		/**** md5 signature: b482f39454aa58abb85585b02e53f55f ****/
 		%feature("compactdefaultargs") gp_XYZ;
 		%feature("autodoc", "Creates an xyz with given coordinates.
 

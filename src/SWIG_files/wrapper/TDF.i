@@ -206,41 +206,41 @@ enum  {
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<TDF_Attribute>> TDF_AttributeArray1;
-typedef NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeDataMap;
-typedef NCollection_List<opencascade::handle<TDF_AttributeDelta>> TDF_AttributeDeltaList;
-typedef NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher> TDF_AttributeDoubleMap;
-typedef NCollection_IndexedMap<opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeIndexedMap;
-typedef NCollection_List<opencascade::handle<TDF_Attribute>> TDF_AttributeList;
-typedef NCollection_Map<opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeMap;
-typedef NCollection_Sequence<opencascade::handle<TDF_Attribute>> TDF_AttributeSequence;
-typedef NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>::Iterator TDF_DataMapIteratorOfAttributeDataMap;
-typedef NCollection_DataMap<TDF_Label, TDF_Label, TDF_LabelMapHasher>::Iterator TDF_DataMapIteratorOfLabelDataMap;
-typedef NCollection_DataMap<TDF_Label, Standard_Integer, TDF_LabelMapHasher>::Iterator TDF_DataMapIteratorOfLabelIntegerMap;
-typedef NCollection_List<opencascade::handle<TDF_Delta>> TDF_DeltaList;
-typedef NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>::Iterator TDF_DoubleMapIteratorOfAttributeDoubleMap;
-typedef NCollection_DoubleMap<Standard_GUID, TCollection_ExtendedString, Standard_GUID, TCollection_ExtendedString>::Iterator TDF_DoubleMapIteratorOfGUIDProgIDMap;
-typedef NCollection_DoubleMap<TDF_Label, TDF_Label, TDF_LabelMapHasher, TDF_LabelMapHasher>::Iterator TDF_DoubleMapIteratorOfLabelDoubleMap;
-typedef NCollection_DoubleMap<Standard_GUID, TCollection_ExtendedString, Standard_GUID, TCollection_ExtendedString> TDF_GUIDProgIDMap;
-typedef opencascade::handle<NCollection_BaseAllocator> TDF_HAllocator;
-typedef NCollection_List<Standard_GUID> TDF_IDList;
-typedef NCollection_Map<Standard_GUID, Standard_GUID> TDF_IDMap;
-typedef NCollection_DataMap<TDF_Label, TDF_Label, TDF_LabelMapHasher> TDF_LabelDataMap;
-typedef NCollection_DoubleMap<TDF_Label, TDF_Label, TDF_LabelMapHasher, TDF_LabelMapHasher> TDF_LabelDoubleMap;
-typedef NCollection_IndexedMap<TDF_Label, TDF_LabelMapHasher> TDF_LabelIndexedMap;
-typedef NCollection_DataMap<TDF_Label, Standard_Integer, TDF_LabelMapHasher> TDF_LabelIntegerMap;
-typedef NCollection_List<TDF_Label> TDF_LabelList;
-typedef NCollection_Map<TDF_Label, TDF_LabelMapHasher> TDF_LabelMap;
+typedef NCollection_Array1 <opencascade::handle <TDF_Attribute>> TDF_AttributeArray1;
+typedef NCollection_DataMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeDataMap;
+typedef NCollection_List <opencascade::handle <TDF_AttributeDelta>> TDF_AttributeDeltaList;
+typedef NCollection_DoubleMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher> TDF_AttributeDoubleMap;
+typedef NCollection_IndexedMap <opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeIndexedMap;
+typedef NCollection_List <opencascade::handle <TDF_Attribute>> TDF_AttributeList;
+typedef NCollection_Map <opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeMap;
+typedef NCollection_Sequence <opencascade::handle <TDF_Attribute>> TDF_AttributeSequence;
+typedef NCollection_DataMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher>::Iterator TDF_DataMapIteratorOfAttributeDataMap;
+typedef NCollection_DataMap <TDF_Label, TDF_Label, TDF_LabelMapHasher>::Iterator TDF_DataMapIteratorOfLabelDataMap;
+typedef NCollection_DataMap <TDF_Label, Standard_Integer, TDF_LabelMapHasher>::Iterator TDF_DataMapIteratorOfLabelIntegerMap;
+typedef NCollection_List <opencascade::handle <TDF_Delta>> TDF_DeltaList;
+typedef NCollection_DoubleMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>::Iterator TDF_DoubleMapIteratorOfAttributeDoubleMap;
+typedef NCollection_DoubleMap <Standard_GUID, TCollection_ExtendedString, Standard_GUID, TCollection_ExtendedString>::Iterator TDF_DoubleMapIteratorOfGUIDProgIDMap;
+typedef NCollection_DoubleMap <TDF_Label, TDF_Label, TDF_LabelMapHasher, TDF_LabelMapHasher>::Iterator TDF_DoubleMapIteratorOfLabelDoubleMap;
+typedef NCollection_DoubleMap <Standard_GUID, TCollection_ExtendedString, Standard_GUID, TCollection_ExtendedString> TDF_GUIDProgIDMap;
+typedef opencascade::handle <NCollection_BaseAllocator> TDF_HAllocator;
+typedef NCollection_List <Standard_GUID> TDF_IDList;
+typedef NCollection_Map <Standard_GUID, Standard_GUID> TDF_IDMap;
+typedef NCollection_DataMap <TDF_Label, TDF_Label, TDF_LabelMapHasher> TDF_LabelDataMap;
+typedef NCollection_DoubleMap <TDF_Label, TDF_Label, TDF_LabelMapHasher, TDF_LabelMapHasher> TDF_LabelDoubleMap;
+typedef NCollection_IndexedMap <TDF_Label, TDF_LabelMapHasher> TDF_LabelIndexedMap;
+typedef NCollection_DataMap <TDF_Label, Standard_Integer, TDF_LabelMapHasher> TDF_LabelIntegerMap;
+typedef NCollection_List <TDF_Label> TDF_LabelList;
+typedef NCollection_Map <TDF_Label, TDF_LabelMapHasher> TDF_LabelMap;
 typedef TDF_LabelNode * TDF_LabelNodePtr;
-typedef NCollection_Sequence<TDF_Label> TDF_LabelSequence;
-typedef NCollection_List<opencascade::handle<TDF_AttributeDelta>>::Iterator TDF_ListIteratorOfAttributeDeltaList;
-typedef NCollection_List<opencascade::handle<TDF_Attribute>>::Iterator TDF_ListIteratorOfAttributeList;
-typedef NCollection_List<opencascade::handle<TDF_Delta>>::Iterator TDF_ListIteratorOfDeltaList;
-typedef NCollection_List<Standard_GUID>::Iterator TDF_ListIteratorOfIDList;
-typedef NCollection_List<TDF_Label>::Iterator TDF_ListIteratorOfLabelList;
-typedef NCollection_Map<opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>::Iterator TDF_MapIteratorOfAttributeMap;
-typedef NCollection_Map<Standard_GUID, Standard_GUID>::Iterator TDF_MapIteratorOfIDMap;
-typedef NCollection_Map<TDF_Label, TDF_LabelMapHasher>::Iterator TDF_MapIteratorOfLabelMap;
+typedef NCollection_Sequence <TDF_Label> TDF_LabelSequence;
+typedef NCollection_List <opencascade::handle <TDF_AttributeDelta>>::Iterator TDF_ListIteratorOfAttributeDeltaList;
+typedef NCollection_List <opencascade::handle <TDF_Attribute>>::Iterator TDF_ListIteratorOfAttributeList;
+typedef NCollection_List <opencascade::handle <TDF_Delta>>::Iterator TDF_ListIteratorOfDeltaList;
+typedef NCollection_List <Standard_GUID>::Iterator TDF_ListIteratorOfIDList;
+typedef NCollection_List <TDF_Label>::Iterator TDF_ListIteratorOfLabelList;
+typedef NCollection_Map <opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher>::Iterator TDF_MapIteratorOfAttributeMap;
+typedef NCollection_Map <Standard_GUID, Standard_GUID>::Iterator TDF_MapIteratorOfIDMap;
+typedef NCollection_Map <TDF_Label, TDF_LabelMapHasher>::Iterator TDF_MapIteratorOfLabelMap;
 /* end typedefs declaration */
 
 /************
@@ -261,7 +261,7 @@ ProgID: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") AddLinkGUIDToProgID;
 		static void AddLinkGUIDToProgID(const Standard_GUID & ID, const TCollection_ExtendedString & ProgID);
 
@@ -976,9 +976,9 @@ None
 
 Returns
 -------
-bool
+inline bool
 ") More;
-		Standard_Boolean More();
+		inline Standard_Boolean More();
 
 		/****************** Next ******************/
 		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
@@ -998,9 +998,9 @@ None
 
 Returns
 -------
-TDF_Attribute *
+inline  TDF_Attribute *
 ") PtrValue;
-		const TDF_Attribute * PtrValue();
+		inline const TDF_Attribute * PtrValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: 84b1efb55f8dba80e554db1af53924bf ****/
@@ -1009,9 +1009,9 @@ TDF_Attribute *
 
 Returns
 -------
-opencascade::handle<TDF_Attribute>
+inline opencascade::handle<TDF_Attribute>
 ") Value;
-		opencascade::handle<TDF_Attribute> Value();
+		inline opencascade::handle<TDF_Attribute> Value();
 
 };
 
@@ -1328,7 +1328,7 @@ aDataSet: TDF_DataSet
 
 Returns
 -------
-None
+void
 ") Closure;
 		static void Closure(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1345,7 +1345,7 @@ aMode: TDF_ClosureMode
 
 Returns
 -------
-None
+void
 ") Closure;
 		static void Closure(const opencascade::handle<TDF_DataSet> & aDataSet, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
 
@@ -1364,7 +1364,7 @@ aMode: TDF_ClosureMode
 
 Returns
 -------
-None
+void
 ") Closure;
 		static void Closure(const TDF_Label & aLabel, TDF_LabelMap & aLabMap, TDF_AttributeMap & anAttMap, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
 
@@ -1396,7 +1396,7 @@ aRelocationTable: TDF_RelocationTable
 
 Returns
 -------
-None
+void
 ") Compare;
 		static void Compare(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_DataSet> & aTargetDataSet, const TDF_IDFilter & aFilter, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1411,7 +1411,7 @@ aDataSet: TDF_DataSet
 
 Returns
 -------
-None
+void
 ") Cut;
 		static void Cut(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1544,7 +1544,7 @@ aDataSet: TDF_DataSet
 
 Returns
 -------
-None
+void
 ") ExternalReferences;
 		static void ExternalReferences(const TDF_Label & aRefLab, const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter, opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1638,7 +1638,7 @@ aRelocationTable: TDF_RelocationTable
 
 Returns
 -------
-None
+void
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1655,7 +1655,7 @@ aPrivilegeFilter: TDF_IDFilter
 
 Returns
 -------
-None
+void
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aPrivilegeFilter);
 
@@ -1674,7 +1674,7 @@ setSelfContained: bool
 
 Returns
 -------
-None
+void
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aPrivilegeFilter, const TDF_IDFilter & aRefFilter, const Standard_Boolean setSelfContained);
 
@@ -3273,7 +3273,7 @@ aLabelMap: TDF_LabelIntegerMap
 
 Returns
 -------
-None
+void
 ") CountLabels;
 		static void CountLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
@@ -3289,7 +3289,7 @@ aLabelMap: TDF_LabelIntegerMap
 
 Returns
 -------
-None
+void
 ") DeductLabels;
 		static void DeductLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
@@ -3305,7 +3305,7 @@ anEntry: TCollection_AsciiString
 
 Returns
 -------
-None
+void
 ") Entry;
 		static void Entry(const TDF_Label & aLabel, TCollection_AsciiString & anEntry);
 
@@ -3355,7 +3355,7 @@ create: bool,optional
 
 Returns
 -------
-None
+void
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, const TCollection_AsciiString & anEntry, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
@@ -3374,7 +3374,7 @@ create: bool,optional
 
 Returns
 -------
-None
+void
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, const char * anEntry, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
@@ -3393,7 +3393,7 @@ create: bool,optional
 
 Returns
 -------
-None
+void
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, const TColStd_ListOfInteger & aTagList, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
@@ -3455,7 +3455,7 @@ atts: TDF_AttributeMap
 
 Returns
 -------
-None
+void
 ") OutReferences;
 		static void OutReferences(const TDF_Label & aLabel, TDF_AttributeMap & atts);
 
@@ -3473,7 +3473,7 @@ atts: TDF_AttributeMap
 
 Returns
 -------
-None
+void
 ") OutReferences;
 		static void OutReferences(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
@@ -3489,7 +3489,7 @@ theAtts: TDF_AttributeMap
 
 Returns
 -------
-None
+void
 ") OutReferers;
 		static void OutReferers(const TDF_Label & theLabel, TDF_AttributeMap & theAtts);
 
@@ -3507,7 +3507,7 @@ atts: TDF_AttributeMap
 
 Returns
 -------
-None
+void
 ") OutReferers;
 		static void OutReferers(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
@@ -3527,7 +3527,7 @@ create: bool,optional
 
 Returns
 -------
-None
+void
 ") RelocateLabel;
 		static void RelocateLabel(const TDF_Label & aSourceLabel, const TDF_Label & fromRoot, const TDF_Label & toRoot, TDF_Label & aTargetLabel, const Standard_Boolean create = Standard_False);
 
@@ -3543,7 +3543,7 @@ aTagList: TColStd_ListOfInteger
 
 Returns
 -------
-None
+void
 ") TagList;
 		static void TagList(const TDF_Label & aLabel, TColStd_ListOfInteger & aTagList);
 
@@ -3559,7 +3559,7 @@ aTagList: TColStd_ListOfInteger
 
 Returns
 -------
-None
+void
 ") TagList;
 		static void TagList(const TCollection_AsciiString & anEntry, TColStd_ListOfInteger & aTagList);
 

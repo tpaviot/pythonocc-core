@@ -121,8 +121,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Adaptor2d_Curve2d>, TColStd_MapIntegerHasher>::Iterator ChFiKPart_DataMapIteratorOfRstMap;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Adaptor2d_Curve2d>, TColStd_MapIntegerHasher> ChFiKPart_RstMap;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <Adaptor2d_Curve2d>, TColStd_MapIntegerHasher>::Iterator ChFiKPart_DataMapIteratorOfRstMap;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <Adaptor2d_Curve2d>, TColStd_MapIntegerHasher> ChFiKPart_RstMap;
 /* end typedefs declaration */
 
 /******************************

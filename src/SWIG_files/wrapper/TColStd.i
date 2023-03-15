@@ -67,27 +67,27 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(TColStd_HPackedMapOfInteger)
-%wrap_handle(TColStd_HArray1OfExtendedString)
-%wrap_handle(TColStd_HArray1OfCharacter)
-%wrap_handle(TColStd_HArray1OfBoolean)
 %wrap_handle(TColStd_HArray1OfAsciiString)
-%wrap_handle(TColStd_HArray1OfReal)
+%wrap_handle(TColStd_HArray1OfBoolean)
+%wrap_handle(TColStd_HArray1OfByte)
+%wrap_handle(TColStd_HArray1OfCharacter)
+%wrap_handle(TColStd_HArray1OfExtendedString)
 %wrap_handle(TColStd_HArray1OfInteger)
 %wrap_handle(TColStd_HArray1OfListOfInteger)
+%wrap_handle(TColStd_HArray1OfReal)
 %wrap_handle(TColStd_HArray1OfTransient)
-%wrap_handle(TColStd_HArray1OfByte)
 %wrap_handle(TColStd_HArray2OfBoolean)
-%wrap_handle(TColStd_HArray2OfTransient)
-%wrap_handle(TColStd_HArray2OfReal)
-%wrap_handle(TColStd_HArray2OfInteger)
 %wrap_handle(TColStd_HArray2OfCharacter)
-%wrap_handle(TColStd_HSequenceOfHAsciiString)
-%wrap_handle(TColStd_HSequenceOfTransient)
+%wrap_handle(TColStd_HArray2OfInteger)
+%wrap_handle(TColStd_HArray2OfReal)
+%wrap_handle(TColStd_HArray2OfTransient)
 %wrap_handle(TColStd_HSequenceOfAsciiString)
+%wrap_handle(TColStd_HSequenceOfExtendedString)
+%wrap_handle(TColStd_HSequenceOfHAsciiString)
 %wrap_handle(TColStd_HSequenceOfHExtendedString)
 %wrap_handle(TColStd_HSequenceOfInteger)
-%wrap_handle(TColStd_HSequenceOfExtendedString)
 %wrap_handle(TColStd_HSequenceOfReal)
+%wrap_handle(TColStd_HSequenceOfTransient)
 /* end handles declaration */
 
 /* templates */
@@ -589,68 +589,68 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<TCollection_AsciiString> TColStd_Array1OfAsciiString;
-typedef NCollection_Array1<Standard_Boolean> TColStd_Array1OfBoolean;
-typedef NCollection_Array1<Standard_Byte> TColStd_Array1OfByte;
-typedef NCollection_Array1<Standard_Character> TColStd_Array1OfCharacter;
-typedef NCollection_Array1<TCollection_ExtendedString> TColStd_Array1OfExtendedString;
-typedef NCollection_Array1<Standard_Integer> TColStd_Array1OfInteger;
-typedef NCollection_Array1<TColStd_ListOfInteger> TColStd_Array1OfListOfInteger;
-typedef NCollection_Array1<Standard_Real> TColStd_Array1OfReal;
-typedef NCollection_Array1<opencascade::handle<Standard_Transient>> TColStd_Array1OfTransient;
-typedef NCollection_Array2<Standard_Boolean> TColStd_Array2OfBoolean;
-typedef NCollection_Array2<Standard_Character> TColStd_Array2OfCharacter;
-typedef NCollection_Array2<Standard_Integer> TColStd_Array2OfInteger;
-typedef NCollection_Array2<Standard_Real> TColStd_Array2OfReal;
-typedef NCollection_Array2<opencascade::handle<Standard_Transient>> TColStd_Array2OfTransient;
-typedef NCollection_DataMap<TCollection_AsciiString, Standard_Integer, TCollection_AsciiString>::Iterator TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
-typedef NCollection_DataMap<Standard_Integer, Standard_Integer, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
-typedef NCollection_DataMap<Standard_Integer, TColStd_ListOfInteger, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
-typedef NCollection_DataMap<Standard_Integer, Standard_Real, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerReal;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Standard_Transient>, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Integer, TCollection_ExtendedString>::Iterator TColStd_DataMapIteratorOfDataMapOfStringInteger;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfTransientTransient;
-typedef NCollection_DataMap<TCollection_AsciiString, Standard_Integer, TCollection_AsciiString> TColStd_DataMapOfAsciiStringInteger;
-typedef NCollection_DataMap<Standard_Integer, Standard_Integer, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerInteger;
-typedef NCollection_DataMap<Standard_Integer, TColStd_ListOfInteger, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerListOfInteger;
-typedef NCollection_DataMap<Standard_Integer, Standard_Real, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerReal;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Standard_Transient>, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerTransient;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Integer, TCollection_ExtendedString> TColStd_DataMapOfStringInteger;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher> TColStd_DataMapOfTransientTransient;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> TColStd_IndexedDataMapOfStringString;
-typedef NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher> TColStd_IndexedDataMapOfTransientTransient;
-typedef NCollection_IndexedMap<Standard_Integer, TColStd_MapIntegerHasher> TColStd_IndexedMapOfInteger;
-typedef NCollection_IndexedMap<Standard_Real, TColStd_MapRealHasher> TColStd_IndexedMapOfReal;
-typedef NCollection_IndexedMap<opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher> TColStd_IndexedMapOfTransient;
-typedef NCollection_List<TCollection_AsciiString>::Iterator TColStd_ListIteratorOfListOfAsciiString;
-typedef NCollection_List<Standard_Integer>::Iterator TColStd_ListIteratorOfListOfInteger;
-typedef NCollection_List<Standard_Real>::Iterator TColStd_ListIteratorOfListOfReal;
-typedef NCollection_List<opencascade::handle<Standard_Transient>>::Iterator TColStd_ListIteratorOfListOfTransient;
-typedef NCollection_List<TCollection_AsciiString> TColStd_ListOfAsciiString;
-typedef NCollection_List<Standard_Integer> TColStd_ListOfInteger;
-typedef NCollection_List<Standard_Real> TColStd_ListOfReal;
-typedef NCollection_List<opencascade::handle<Standard_Transient>> TColStd_ListOfTransient;
-typedef NCollection_DefaultHasher<Standard_Integer> TColStd_MapIntegerHasher;
-typedef NCollection_Map<TCollection_AsciiString, TCollection_AsciiString>::Iterator TColStd_MapIteratorOfMapOfAsciiString;
-typedef NCollection_Map<Standard_Integer, TColStd_MapIntegerHasher>::Iterator TColStd_MapIteratorOfMapOfInteger;
-typedef NCollection_Map<Standard_Real, TColStd_MapRealHasher>::Iterator TColStd_MapIteratorOfMapOfReal;
-typedef NCollection_Map<opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>::Iterator TColStd_MapIteratorOfMapOfTransient;
+typedef NCollection_Array1 <TCollection_AsciiString> TColStd_Array1OfAsciiString;
+typedef NCollection_Array1 <Standard_Boolean> TColStd_Array1OfBoolean;
+typedef NCollection_Array1 <Standard_Byte> TColStd_Array1OfByte;
+typedef NCollection_Array1 <Standard_Character> TColStd_Array1OfCharacter;
+typedef NCollection_Array1 <TCollection_ExtendedString> TColStd_Array1OfExtendedString;
+typedef NCollection_Array1 <Standard_Integer> TColStd_Array1OfInteger;
+typedef NCollection_Array1 <TColStd_ListOfInteger> TColStd_Array1OfListOfInteger;
+typedef NCollection_Array1 <Standard_Real> TColStd_Array1OfReal;
+typedef NCollection_Array1 <opencascade::handle <Standard_Transient>> TColStd_Array1OfTransient;
+typedef NCollection_Array2 <Standard_Boolean> TColStd_Array2OfBoolean;
+typedef NCollection_Array2 <Standard_Character> TColStd_Array2OfCharacter;
+typedef NCollection_Array2 <Standard_Integer> TColStd_Array2OfInteger;
+typedef NCollection_Array2 <Standard_Real> TColStd_Array2OfReal;
+typedef NCollection_Array2 <opencascade::handle <Standard_Transient>> TColStd_Array2OfTransient;
+typedef NCollection_DataMap <TCollection_AsciiString, Standard_Integer, TCollection_AsciiString>::Iterator TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
+typedef NCollection_DataMap <Standard_Integer, Standard_Integer, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
+typedef NCollection_DataMap <Standard_Integer, TColStd_ListOfInteger, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
+typedef NCollection_DataMap <Standard_Integer, Standard_Real, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerReal;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <Standard_Transient>, TColStd_MapIntegerHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
+typedef NCollection_DataMap <TCollection_ExtendedString, Standard_Integer, TCollection_ExtendedString>::Iterator TColStd_DataMapIteratorOfDataMapOfStringInteger;
+typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher>::Iterator TColStd_DataMapIteratorOfDataMapOfTransientTransient;
+typedef NCollection_DataMap <TCollection_AsciiString, Standard_Integer, TCollection_AsciiString> TColStd_DataMapOfAsciiStringInteger;
+typedef NCollection_DataMap <Standard_Integer, Standard_Integer, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerInteger;
+typedef NCollection_DataMap <Standard_Integer, TColStd_ListOfInteger, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerListOfInteger;
+typedef NCollection_DataMap <Standard_Integer, Standard_Real, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerReal;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <Standard_Transient>, TColStd_MapIntegerHasher> TColStd_DataMapOfIntegerTransient;
+typedef NCollection_DataMap <TCollection_ExtendedString, Standard_Integer, TCollection_ExtendedString> TColStd_DataMapOfStringInteger;
+typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher> TColStd_DataMapOfTransientTransient;
+typedef NCollection_IndexedDataMap <TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> TColStd_IndexedDataMapOfStringString;
+typedef NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher> TColStd_IndexedDataMapOfTransientTransient;
+typedef NCollection_IndexedMap <Standard_Integer, TColStd_MapIntegerHasher> TColStd_IndexedMapOfInteger;
+typedef NCollection_IndexedMap <Standard_Real, TColStd_MapRealHasher> TColStd_IndexedMapOfReal;
+typedef NCollection_IndexedMap <opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher> TColStd_IndexedMapOfTransient;
+typedef NCollection_List <TCollection_AsciiString>::Iterator TColStd_ListIteratorOfListOfAsciiString;
+typedef NCollection_List <Standard_Integer>::Iterator TColStd_ListIteratorOfListOfInteger;
+typedef NCollection_List <Standard_Real>::Iterator TColStd_ListIteratorOfListOfReal;
+typedef NCollection_List <opencascade::handle <Standard_Transient>>::Iterator TColStd_ListIteratorOfListOfTransient;
+typedef NCollection_List <TCollection_AsciiString> TColStd_ListOfAsciiString;
+typedef NCollection_List <Standard_Integer> TColStd_ListOfInteger;
+typedef NCollection_List <Standard_Real> TColStd_ListOfReal;
+typedef NCollection_List <opencascade::handle <Standard_Transient>> TColStd_ListOfTransient;
+typedef NCollection_DefaultHasher <Standard_Integer> TColStd_MapIntegerHasher;
+typedef NCollection_Map <TCollection_AsciiString, TCollection_AsciiString>::Iterator TColStd_MapIteratorOfMapOfAsciiString;
+typedef NCollection_Map <Standard_Integer, TColStd_MapIntegerHasher>::Iterator TColStd_MapIteratorOfMapOfInteger;
+typedef NCollection_Map <Standard_Real, TColStd_MapRealHasher>::Iterator TColStd_MapIteratorOfMapOfReal;
+typedef NCollection_Map <opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher>::Iterator TColStd_MapIteratorOfMapOfTransient;
 typedef TColStd_PackedMapOfInteger::Iterator TColStd_MapIteratorOfPackedMapOfInteger;
-typedef NCollection_Map<TCollection_AsciiString, TCollection_AsciiString> TColStd_MapOfAsciiString;
-typedef NCollection_Map<Standard_Integer, TColStd_MapIntegerHasher> TColStd_MapOfInteger;
-typedef NCollection_Map<Standard_Real, TColStd_MapRealHasher> TColStd_MapOfReal;
-typedef NCollection_Map<opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher> TColStd_MapOfTransient;
-typedef NCollection_DefaultHasher<Standard_Real> TColStd_MapRealHasher;
-typedef NCollection_DefaultHasher<opencascade::handle<Standard_Transient>> TColStd_MapTransientHasher;
-typedef NCollection_Sequence<Standard_Address> TColStd_SequenceOfAddress;
-typedef NCollection_Sequence<TCollection_AsciiString> TColStd_SequenceOfAsciiString;
-typedef NCollection_Sequence<Standard_Boolean> TColStd_SequenceOfBoolean;
-typedef NCollection_Sequence<TCollection_ExtendedString> TColStd_SequenceOfExtendedString;
-typedef NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>> TColStd_SequenceOfHAsciiString;
-typedef NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>> TColStd_SequenceOfHExtendedString;
-typedef NCollection_Sequence<Standard_Integer> TColStd_SequenceOfInteger;
-typedef NCollection_Sequence<Standard_Real> TColStd_SequenceOfReal;
-typedef NCollection_Sequence<opencascade::handle<Standard_Transient>> TColStd_SequenceOfTransient;
+typedef NCollection_Map <TCollection_AsciiString, TCollection_AsciiString> TColStd_MapOfAsciiString;
+typedef NCollection_Map <Standard_Integer, TColStd_MapIntegerHasher> TColStd_MapOfInteger;
+typedef NCollection_Map <Standard_Real, TColStd_MapRealHasher> TColStd_MapOfReal;
+typedef NCollection_Map <opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher> TColStd_MapOfTransient;
+typedef NCollection_DefaultHasher <Standard_Real> TColStd_MapRealHasher;
+typedef NCollection_DefaultHasher <opencascade::handle <Standard_Transient>> TColStd_MapTransientHasher;
+typedef NCollection_Sequence <Standard_Address> TColStd_SequenceOfAddress;
+typedef NCollection_Sequence <TCollection_AsciiString> TColStd_SequenceOfAsciiString;
+typedef NCollection_Sequence <Standard_Boolean> TColStd_SequenceOfBoolean;
+typedef NCollection_Sequence <TCollection_ExtendedString> TColStd_SequenceOfExtendedString;
+typedef NCollection_Sequence <opencascade::handle <TCollection_HAsciiString>> TColStd_SequenceOfHAsciiString;
+typedef NCollection_Sequence <opencascade::handle <TCollection_HExtendedString>> TColStd_SequenceOfHExtendedString;
+typedef NCollection_Sequence <Standard_Integer> TColStd_SequenceOfInteger;
+typedef NCollection_Sequence <Standard_Real> TColStd_SequenceOfReal;
+typedef NCollection_Sequence <opencascade::handle <Standard_Transient>> TColStd_SequenceOfTransient;
 /* end typedefs declaration */
 
 /************************************
@@ -730,9 +730,9 @@ class TColStd_PackedMapOfInteger {
 		class TColStd_intMapNode {};
 		class Iterator {};
 		/****************** TColStd_PackedMapOfInteger ******************/
-		/**** md5 signature: ee60f291faae5f56871e692625f9167d ****/
+		/**** md5 signature: 18de52cdb9ee27c0f41ddb1c59502dae ****/
 		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
-		%feature("autodoc", "Constructor.
+		%feature("autodoc", "//!< currently iterated key constructor.
 
 Parameters
 ----------
@@ -746,7 +746,7 @@ None
 		 TColStd_PackedMapOfInteger(const Standard_Integer theNbBuckets = 1);
 
 		/****************** TColStd_PackedMapOfInteger ******************/
-		/**** md5 signature: 2cdd258a707cd6ed3411a3db79e6a60a ****/
+		/**** md5 signature: 1ac8c1776c3c1051679ca26b5297b220 ****/
 		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
 		%feature("autodoc", "Copy constructor.
 
@@ -1050,7 +1050,7 @@ None
 		/****************** Union ******************/
 		/**** md5 signature: 63b0f7f4fb443df4653a7795cd699dd0 ****/
 		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "/** * sets this map to be the result of union (aka addition, fuse, merge, boolean or) operation between two given maps. * the new map contains the values that are contained either in the first map or in the second map or in both. * all previous contents of this map is cleared. this map (result of the boolean operation) can also be passed as one of operands. */.
+		%feature("autodoc", "//!@name boolean operations with maps as sets of integers //!@{/** * sets this map to be the result of union (aka addition, fuse, merge, boolean or) operation between two given maps. * the new map contains the values that are contained either in the first map or in the second map or in both. * all previous contents of this map is cleared. this map (result of the boolean operation) can also be passed as one of operands. */.
 
 Parameters
 ----------
@@ -1114,26 +1114,15 @@ bool
 
 /* harray1 classes */
 
-class TColStd_HArray1OfExtendedString : public TColStd_Array1OfExtendedString, public Standard_Transient {
+class TColStd_HArray1OfAsciiString : public TColStd_Array1OfAsciiString, public Standard_Transient {
   public:
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfExtendedString::value_type& theValue);
-    TColStd_HArray1OfExtendedString(const TColStd_Array1OfExtendedString& theOther);
-    const TColStd_Array1OfExtendedString& Array1();
-    TColStd_Array1OfExtendedString& ChangeArray1();
+    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfAsciiString::value_type& theValue);
+    TColStd_HArray1OfAsciiString(const TColStd_Array1OfAsciiString& theOther);
+    const TColStd_Array1OfAsciiString& Array1();
+    TColStd_Array1OfAsciiString& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfExtendedString)
-
-
-class TColStd_HArray1OfCharacter : public TColStd_Array1OfCharacter, public Standard_Transient {
-  public:
-    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfCharacter::value_type& theValue);
-    TColStd_HArray1OfCharacter(const TColStd_Array1OfCharacter& theOther);
-    const TColStd_Array1OfCharacter& Array1();
-    TColStd_Array1OfCharacter& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfCharacter)
+%make_alias(TColStd_HArray1OfAsciiString)
 
 
 class TColStd_HArray1OfBoolean : public TColStd_Array1OfBoolean, public Standard_Transient {
@@ -1147,26 +1136,37 @@ class TColStd_HArray1OfBoolean : public TColStd_Array1OfBoolean, public Standard
 %make_alias(TColStd_HArray1OfBoolean)
 
 
-class TColStd_HArray1OfAsciiString : public TColStd_Array1OfAsciiString, public Standard_Transient {
+class TColStd_HArray1OfByte : public TColStd_Array1OfByte, public Standard_Transient {
   public:
-    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfAsciiString::value_type& theValue);
-    TColStd_HArray1OfAsciiString(const TColStd_Array1OfAsciiString& theOther);
-    const TColStd_Array1OfAsciiString& Array1();
-    TColStd_Array1OfAsciiString& ChangeArray1();
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfByte::value_type& theValue);
+    TColStd_HArray1OfByte(const TColStd_Array1OfByte& theOther);
+    const TColStd_Array1OfByte& Array1();
+    TColStd_Array1OfByte& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfAsciiString)
+%make_alias(TColStd_HArray1OfByte)
 
 
-class TColStd_HArray1OfReal : public TColStd_Array1OfReal, public Standard_Transient {
+class TColStd_HArray1OfCharacter : public TColStd_Array1OfCharacter, public Standard_Transient {
   public:
-    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfReal::value_type& theValue);
-    TColStd_HArray1OfReal(const TColStd_Array1OfReal& theOther);
-    const TColStd_Array1OfReal& Array1();
-    TColStd_Array1OfReal& ChangeArray1();
+    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfCharacter::value_type& theValue);
+    TColStd_HArray1OfCharacter(const TColStd_Array1OfCharacter& theOther);
+    const TColStd_Array1OfCharacter& Array1();
+    TColStd_Array1OfCharacter& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfReal)
+%make_alias(TColStd_HArray1OfCharacter)
+
+
+class TColStd_HArray1OfExtendedString : public TColStd_Array1OfExtendedString, public Standard_Transient {
+  public:
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfExtendedString::value_type& theValue);
+    TColStd_HArray1OfExtendedString(const TColStd_Array1OfExtendedString& theOther);
+    const TColStd_Array1OfExtendedString& Array1();
+    TColStd_Array1OfExtendedString& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfExtendedString)
 
 
 class TColStd_HArray1OfInteger : public TColStd_Array1OfInteger, public Standard_Transient {
@@ -1191,6 +1191,17 @@ class TColStd_HArray1OfListOfInteger : public TColStd_Array1OfListOfInteger, pub
 %make_alias(TColStd_HArray1OfListOfInteger)
 
 
+class TColStd_HArray1OfReal : public TColStd_Array1OfReal, public Standard_Transient {
+  public:
+    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfReal::value_type& theValue);
+    TColStd_HArray1OfReal(const TColStd_Array1OfReal& theOther);
+    const TColStd_Array1OfReal& Array1();
+    TColStd_Array1OfReal& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfReal)
+
+
 class TColStd_HArray1OfTransient : public TColStd_Array1OfTransient, public Standard_Transient {
   public:
     TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1200,17 +1211,6 @@ class TColStd_HArray1OfTransient : public TColStd_Array1OfTransient, public Stan
     TColStd_Array1OfTransient& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfTransient)
-
-
-class TColStd_HArray1OfByte : public TColStd_Array1OfByte, public Standard_Transient {
-  public:
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfByte::value_type& theValue);
-    TColStd_HArray1OfByte(const TColStd_Array1OfByte& theOther);
-    const TColStd_Array1OfByte& Array1();
-    TColStd_Array1OfByte& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfByte)
 
 /* harray2 classes */
 class TColStd_HArray2OfBoolean : public TColStd_Array2OfBoolean, public Standard_Transient {
@@ -1226,30 +1226,17 @@ class TColStd_HArray2OfBoolean : public TColStd_Array2OfBoolean, public Standard
 %make_alias(TColStd_HArray2OfBoolean)
 
 
-class TColStd_HArray2OfTransient : public TColStd_Array2OfTransient, public Standard_Transient {
+class TColStd_HArray2OfCharacter : public TColStd_Array2OfCharacter, public Standard_Transient {
   public:
-    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColStd_HArray2OfCharacter(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColStd_Array2OfTransient::value_type& theValue);
-    TColStd_HArray2OfTransient(const TColStd_Array2OfTransient& theOther);
-    const TColStd_Array2OfTransient& Array2 ();
-    TColStd_Array2OfTransient& ChangeArray2 (); 
+    TColStd_HArray2OfCharacter(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColStd_Array2OfCharacter::value_type& theValue);
+    TColStd_HArray2OfCharacter(const TColStd_Array2OfCharacter& theOther);
+    const TColStd_Array2OfCharacter& Array2 ();
+    TColStd_Array2OfCharacter& ChangeArray2 (); 
 };
-%make_alias(TColStd_HArray2OfTransient)
-
-
-class TColStd_HArray2OfReal : public TColStd_Array2OfReal, public Standard_Transient {
-  public:
-    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColStd_Array2OfReal::value_type& theValue);
-    TColStd_HArray2OfReal(const TColStd_Array2OfReal& theOther);
-    const TColStd_Array2OfReal& Array2 ();
-    TColStd_Array2OfReal& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfReal)
+%make_alias(TColStd_HArray2OfCharacter)
 
 
 class TColStd_HArray2OfInteger : public TColStd_Array2OfInteger, public Standard_Transient {
@@ -1265,44 +1252,33 @@ class TColStd_HArray2OfInteger : public TColStd_Array2OfInteger, public Standard
 %make_alias(TColStd_HArray2OfInteger)
 
 
-class TColStd_HArray2OfCharacter : public TColStd_Array2OfCharacter, public Standard_Transient {
+class TColStd_HArray2OfReal : public TColStd_Array2OfReal, public Standard_Transient {
   public:
-    TColStd_HArray2OfCharacter(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColStd_HArray2OfCharacter(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColStd_Array2OfCharacter::value_type& theValue);
-    TColStd_HArray2OfCharacter(const TColStd_Array2OfCharacter& theOther);
-    const TColStd_Array2OfCharacter& Array2 ();
-    TColStd_Array2OfCharacter& ChangeArray2 (); 
+    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColStd_Array2OfReal::value_type& theValue);
+    TColStd_HArray2OfReal(const TColStd_Array2OfReal& theOther);
+    const TColStd_Array2OfReal& Array2 ();
+    TColStd_Array2OfReal& ChangeArray2 (); 
 };
-%make_alias(TColStd_HArray2OfCharacter)
+%make_alias(TColStd_HArray2OfReal)
+
+
+class TColStd_HArray2OfTransient : public TColStd_Array2OfTransient, public Standard_Transient {
+  public:
+    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColStd_Array2OfTransient::value_type& theValue);
+    TColStd_HArray2OfTransient(const TColStd_Array2OfTransient& theOther);
+    const TColStd_Array2OfTransient& Array2 ();
+    TColStd_Array2OfTransient& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfTransient)
 
 
 /* hsequence classes */
-class TColStd_HSequenceOfHAsciiString : public TColStd_SequenceOfHAsciiString, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfHAsciiString();
-    TColStd_HSequenceOfHAsciiString(const TColStd_SequenceOfHAsciiString& theOther);
-    const TColStd_SequenceOfHAsciiString& Sequence();
-    void Append (const TColStd_SequenceOfHAsciiString::value_type& theItem);
-    void Append (TColStd_SequenceOfHAsciiString& theSequence);
-    TColStd_SequenceOfHAsciiString& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfHAsciiString)
-
-
-class TColStd_HSequenceOfTransient : public TColStd_SequenceOfTransient, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfTransient();
-    TColStd_HSequenceOfTransient(const TColStd_SequenceOfTransient& theOther);
-    const TColStd_SequenceOfTransient& Sequence();
-    void Append (const TColStd_SequenceOfTransient::value_type& theItem);
-    void Append (TColStd_SequenceOfTransient& theSequence);
-    TColStd_SequenceOfTransient& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfTransient)
-
-
 class TColStd_HSequenceOfAsciiString : public TColStd_SequenceOfAsciiString, public Standard_Transient {
   public:
     TColStd_HSequenceOfAsciiString();
@@ -1313,6 +1289,30 @@ class TColStd_HSequenceOfAsciiString : public TColStd_SequenceOfAsciiString, pub
     TColStd_SequenceOfAsciiString& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfAsciiString)
+
+
+class TColStd_HSequenceOfExtendedString : public TColStd_SequenceOfExtendedString, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfExtendedString();
+    TColStd_HSequenceOfExtendedString(const TColStd_SequenceOfExtendedString& theOther);
+    const TColStd_SequenceOfExtendedString& Sequence();
+    void Append (const TColStd_SequenceOfExtendedString::value_type& theItem);
+    void Append (TColStd_SequenceOfExtendedString& theSequence);
+    TColStd_SequenceOfExtendedString& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfExtendedString)
+
+
+class TColStd_HSequenceOfHAsciiString : public TColStd_SequenceOfHAsciiString, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfHAsciiString();
+    TColStd_HSequenceOfHAsciiString(const TColStd_SequenceOfHAsciiString& theOther);
+    const TColStd_SequenceOfHAsciiString& Sequence();
+    void Append (const TColStd_SequenceOfHAsciiString::value_type& theItem);
+    void Append (TColStd_SequenceOfHAsciiString& theSequence);
+    TColStd_SequenceOfHAsciiString& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfHAsciiString)
 
 
 class TColStd_HSequenceOfHExtendedString : public TColStd_SequenceOfHExtendedString, public Standard_Transient {
@@ -1339,18 +1339,6 @@ class TColStd_HSequenceOfInteger : public TColStd_SequenceOfInteger, public Stan
 %make_alias(TColStd_HSequenceOfInteger)
 
 
-class TColStd_HSequenceOfExtendedString : public TColStd_SequenceOfExtendedString, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfExtendedString();
-    TColStd_HSequenceOfExtendedString(const TColStd_SequenceOfExtendedString& theOther);
-    const TColStd_SequenceOfExtendedString& Sequence();
-    void Append (const TColStd_SequenceOfExtendedString::value_type& theItem);
-    void Append (TColStd_SequenceOfExtendedString& theSequence);
-    TColStd_SequenceOfExtendedString& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfExtendedString)
-
-
 class TColStd_HSequenceOfReal : public TColStd_SequenceOfReal, public Standard_Transient {
   public:
     TColStd_HSequenceOfReal();
@@ -1361,6 +1349,18 @@ class TColStd_HSequenceOfReal : public TColStd_SequenceOfReal, public Standard_T
     TColStd_SequenceOfReal& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfReal)
+
+
+class TColStd_HSequenceOfTransient : public TColStd_SequenceOfTransient, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfTransient();
+    TColStd_HSequenceOfTransient(const TColStd_SequenceOfTransient& theOther);
+    const TColStd_SequenceOfTransient& Sequence();
+    void Append (const TColStd_SequenceOfTransient::value_type& theItem);
+    void Append (TColStd_SequenceOfTransient& theSequence);
+    TColStd_SequenceOfTransient& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfTransient)
 
 
 /* class aliases */

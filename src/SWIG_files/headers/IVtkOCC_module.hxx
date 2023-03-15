@@ -19,5 +19,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define IVTKOCC_HXX
 
 
+#include<IVtkOCC_SelectableObject.hxx>
+#include<IVtkOCC_Shape.hxx>
+#include<IVtkOCC_ShapeMesher.hxx>
+#include<IVtkOCC_ShapePickerAlgo.hxx>
+#include<IVtkOCC_ViewerSelector.hxx>
 
 #endif // IVTKOCC_HXX

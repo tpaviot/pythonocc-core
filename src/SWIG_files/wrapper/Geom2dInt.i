@@ -526,7 +526,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -544,7 +544,7 @@ T: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T);
 
@@ -563,7 +563,7 @@ N: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T, gp_Vec2d & N);
 
@@ -583,7 +583,7 @@ V: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T, gp_Vec2d & N, gp_Vec2d & V);
 
@@ -740,7 +740,7 @@ Tab: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const Adaptor2d_Curve2d & C, TColStd_Array1OfReal & Tab);
 

@@ -81,7 +81,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real, const Standard_Address );
+typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real, 	 	 	 	 	 const Standard_Address );
 /* end typedefs declaration */
 
 /****************************

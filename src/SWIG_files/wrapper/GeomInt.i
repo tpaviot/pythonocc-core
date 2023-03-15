@@ -117,8 +117,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<GeomInt_ParameterAndOrientation> GeomInt_SequenceOfParameterAndOrientation;
-typedef NCollection_Vector<Standard_Real> GeomInt_VectorOfReal;
+typedef NCollection_Sequence <GeomInt_ParameterAndOrientation> GeomInt_SequenceOfParameterAndOrientation;
+typedef NCollection_Vector <Standard_Real> GeomInt_VectorOfReal;
 /* end typedefs declaration */
 
 /****************
@@ -1297,7 +1297,7 @@ theArrayOfParameters: GeomInt_VectorOfReal
 
 Returns
 -------
-None
+void
 ") TrimILineOnSurfBoundaries;
 		static void TrimILineOnSurfBoundaries(const opencascade::handle<Geom2d_Curve> & theC2d1, const opencascade::handle<Geom2d_Curve> & theC2d2, const Bnd_Box2d & theBound1, const Bnd_Box2d & theBound2, GeomInt_VectorOfReal & theArrayOfParameters);
 
@@ -4844,7 +4844,7 @@ ML: GeomInt_TheMultiLineOfWLApprox
 
 Returns
 -------
-None
+void
 ") Dump;
 		static void Dump(const GeomInt_TheMultiLineOfWLApprox & ML);
 
@@ -5010,7 +5010,7 @@ tabPt: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
 
@@ -5027,7 +5027,7 @@ tabPt2d: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
@@ -5045,7 +5045,7 @@ tabPt2d: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 

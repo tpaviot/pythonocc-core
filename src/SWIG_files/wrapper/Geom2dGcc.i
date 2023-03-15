@@ -71,6 +71,15 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Geom2dGcc_Type1 {
+	Geom2dGcc_CuCuCu = 0,
+	Geom2dGcc_CiCuCu = 1,
+	Geom2dGcc_CiCiCu = 2,
+	Geom2dGcc_CiLiCu = 3,
+	Geom2dGcc_LiLiCu = 4,
+	Geom2dGcc_LiCuCu = 5,
+};
+
 enum Geom2dGcc_Type2 {
 	Geom2dGcc_CuCuOnCu = 0,
 	Geom2dGcc_CiCuOnCu = 1,
@@ -91,19 +100,24 @@ enum Geom2dGcc_Type3 {
 	Geom2dGcc_CiCu = 1,
 };
 
-enum Geom2dGcc_Type1 {
-	Geom2dGcc_CuCuCu = 0,
-	Geom2dGcc_CiCuCu = 1,
-	Geom2dGcc_CiCiCu = 2,
-	Geom2dGcc_CiLiCu = 3,
-	Geom2dGcc_LiLiCu = 4,
-	Geom2dGcc_LiCuCu = 5,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Geom2dGcc_Type1(IntEnum):
+	Geom2dGcc_CuCuCu = 0
+	Geom2dGcc_CiCuCu = 1
+	Geom2dGcc_CiCiCu = 2
+	Geom2dGcc_CiLiCu = 3
+	Geom2dGcc_LiLiCu = 4
+	Geom2dGcc_LiCuCu = 5
+Geom2dGcc_CuCuCu = Geom2dGcc_Type1.Geom2dGcc_CuCuCu
+Geom2dGcc_CiCuCu = Geom2dGcc_Type1.Geom2dGcc_CiCuCu
+Geom2dGcc_CiCiCu = Geom2dGcc_Type1.Geom2dGcc_CiCiCu
+Geom2dGcc_CiLiCu = Geom2dGcc_Type1.Geom2dGcc_CiLiCu
+Geom2dGcc_LiLiCu = Geom2dGcc_Type1.Geom2dGcc_LiLiCu
+Geom2dGcc_LiCuCu = Geom2dGcc_Type1.Geom2dGcc_LiCuCu
 
 class Geom2dGcc_Type2(IntEnum):
 	Geom2dGcc_CuCuOnCu = 0
@@ -136,20 +150,6 @@ class Geom2dGcc_Type3(IntEnum):
 	Geom2dGcc_CiCu = 1
 Geom2dGcc_CuCu = Geom2dGcc_Type3.Geom2dGcc_CuCu
 Geom2dGcc_CiCu = Geom2dGcc_Type3.Geom2dGcc_CiCu
-
-class Geom2dGcc_Type1(IntEnum):
-	Geom2dGcc_CuCuCu = 0
-	Geom2dGcc_CiCuCu = 1
-	Geom2dGcc_CiCiCu = 2
-	Geom2dGcc_CiLiCu = 3
-	Geom2dGcc_LiLiCu = 4
-	Geom2dGcc_LiCuCu = 5
-Geom2dGcc_CuCuCu = Geom2dGcc_Type1.Geom2dGcc_CuCuCu
-Geom2dGcc_CiCuCu = Geom2dGcc_Type1.Geom2dGcc_CiCuCu
-Geom2dGcc_CiCiCu = Geom2dGcc_Type1.Geom2dGcc_CiCiCu
-Geom2dGcc_CiLiCu = Geom2dGcc_Type1.Geom2dGcc_CiLiCu
-Geom2dGcc_LiLiCu = Geom2dGcc_Type1.Geom2dGcc_LiLiCu
-Geom2dGcc_LiCuCu = Geom2dGcc_Type1.Geom2dGcc_LiCuCu
 };
 /* end python proxy for enums */
 
@@ -2749,7 +2749,7 @@ T: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Geom2dAdaptor_Curve & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T);
 
@@ -2768,7 +2768,7 @@ N: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Geom2dAdaptor_Curve & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T, gp_Vec2d & N);
 
@@ -2788,7 +2788,7 @@ dN: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Geom2dAdaptor_Curve & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T, gp_Vec2d & N, gp_Vec2d & dN);
 

@@ -147,17 +147,17 @@ TopOpeBRepTool_INTERPOL = TopOpeBRepTool_OutCurveType.TopOpeBRepTool_INTERPOL
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepTool_C2DF, TopTools_OrientedShapeMapHasher>::Iterator TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepTool_ListOfC2DF, TopTools_ShapeMapHasher>::Iterator TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepTool_face, TopTools_ShapeMapHasher>::Iterator TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepTool_C2DF, TopTools_OrientedShapeMapHasher> TopOpeBRepTool_DataMapOfOrientedShapeC2DF;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepTool_ListOfC2DF, TopTools_ShapeMapHasher> TopOpeBRepTool_DataMapOfShapeListOfC2DF;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepTool_face, TopTools_ShapeMapHasher> TopOpeBRepTool_DataMapOfShapeface;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, Bnd_Box, TopTools_OrientedShapeMapHasher> TopOpeBRepTool_IndexedDataMapOfShapeBox;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, Bnd_Box2d, TopTools_OrientedShapeMapHasher> TopOpeBRepTool_IndexedDataMapOfShapeBox2d;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepTool_connexity, TopTools_ShapeMapHasher> TopOpeBRepTool_IndexedDataMapOfShapeconnexity;
-typedef NCollection_List<TopOpeBRepTool_C2DF>::Iterator TopOpeBRepTool_ListIteratorOfListOfC2DF;
-typedef NCollection_List<TopOpeBRepTool_C2DF> TopOpeBRepTool_ListOfC2DF;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepTool_C2DF, TopTools_OrientedShapeMapHasher>::Iterator TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepTool_ListOfC2DF, TopTools_ShapeMapHasher>::Iterator TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepTool_face, TopTools_ShapeMapHasher>::Iterator TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepTool_C2DF, TopTools_OrientedShapeMapHasher> TopOpeBRepTool_DataMapOfOrientedShapeC2DF;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepTool_ListOfC2DF, TopTools_ShapeMapHasher> TopOpeBRepTool_DataMapOfShapeListOfC2DF;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepTool_face, TopTools_ShapeMapHasher> TopOpeBRepTool_DataMapOfShapeface;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, Bnd_Box, TopTools_OrientedShapeMapHasher> TopOpeBRepTool_IndexedDataMapOfShapeBox;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, Bnd_Box2d, TopTools_OrientedShapeMapHasher> TopOpeBRepTool_IndexedDataMapOfShapeBox2d;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, TopOpeBRepTool_connexity, TopTools_ShapeMapHasher> TopOpeBRepTool_IndexedDataMapOfShapeconnexity;
+typedef NCollection_List <TopOpeBRepTool_C2DF>::Iterator TopOpeBRepTool_ListIteratorOfListOfC2DF;
+typedef NCollection_List <TopOpeBRepTool_C2DF> TopOpeBRepTool_ListOfC2DF;
 typedef TopOpeBRepTool_ShapeClassifier * TopOpeBRepTool_PShapeClassifier;
 typedef BRepClass3d_SolidClassifier * TopOpeBRepTool_PSoClassif;
 typedef TopTools_ListOfShape * TopOpeBRepTool_Plos;
@@ -338,7 +338,7 @@ M: TopTools_IndexedDataMapOfShapeListOfShape
 
 Returns
 -------
-None
+void
 ") MakeAncestors;
 		static void MakeAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
@@ -544,7 +544,7 @@ COB: Bnd_Box
 
 Returns
 -------
-None
+void
 ") MakeHABCOB;
 		static void MakeHABCOB(const opencascade::handle<Bnd_HArray1OfBox> & HAB, Bnd_Box & COB);
 
@@ -1890,7 +1890,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") ComputeBox;
 		static void ComputeBox(const TopoDS_Shape & S, Bnd_Box & B);
 
@@ -1906,7 +1906,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") ComputeBoxOnVertices;
 		static void ComputeBoxOnVertices(const TopoDS_Shape & S, Bnd_Box & B);
 
@@ -1921,7 +1921,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") DumpB;
 		static void DumpB(const Bnd_Box & B);
 
@@ -2884,7 +2884,7 @@ TopAbs_State
 class TopOpeBRepTool_ShapeExplorer : public TopExp_Explorer {
 	public:
 		/****************** TopOpeBRepTool_ShapeExplorer ******************/
-		/**** md5 signature: d28ec3a269705b3d2788cbb540c525f1 ****/
+		/**** md5 signature: e429f0677f499fcce5e47c9a8dd43dbe ****/
 		%feature("compactdefaultargs") TopOpeBRepTool_ShapeExplorer;
 		%feature("autodoc", "Creates an empty explorer, becomes useful after init.
 
@@ -2895,7 +2895,7 @@ None
 		 TopOpeBRepTool_ShapeExplorer();
 
 		/****************** TopOpeBRepTool_ShapeExplorer ******************/
-		/**** md5 signature: 840772ab2f0f6c2524995886174d9288 ****/
+		/**** md5 signature: 519cf2e30d9c1236a718ac9e2c636c59 ****/
 		%feature("compactdefaultargs") TopOpeBRepTool_ShapeExplorer;
 		%feature("autodoc", "Creates an explorer on the shape <s>. //! <tofind> is the type of shapes to search. topabs_vertex, topabs_edge, ... //! <toavoid> is the type of shape to skip in the exploration. if <toavoid> is equal or less complex than <tofind> or if <toavoid> is shape it has no effect on the exploration.
 
@@ -3780,7 +3780,7 @@ She: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") MkShell;
 		static void MkShell(const TopTools_ListOfShape & lF, TopoDS_Shape & She);
 
@@ -4100,7 +4100,7 @@ C2DF: TopOpeBRepTool_C2DF
 
 Returns
 -------
-None
+void
 ") TrslUV;
 		static void TrslUV(const gp_Vec2d & t2d, TopOpeBRepTool_C2DF & C2DF);
 
@@ -4220,7 +4220,7 @@ Vces: TopTools_Array1OfShape
 
 Returns
 -------
-None
+void
 ") Vertices;
 		static void Vertices(const TopoDS_Edge & E, TopTools_Array1OfShape & Vces);
 

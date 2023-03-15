@@ -138,13 +138,13 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> TObj_DataMapOfNameLabel;
-typedef NCollection_DataMap<opencascade::handle<TObj_Object>, opencascade::handle<TObj_HSequenceOfObject>> TObj_DataMapOfObjectHSequenceOcafObjects;
-typedef NCollection_DataMap<TCollection_AsciiString, Standard_Address> TObj_DataMapOfStringPointer;
-typedef NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>> TObj_SequenceOfIterator;
-typedef NCollection_Sequence<opencascade::handle<TObj_Object>> TObj_SequenceOfObject;
-typedef NCollection_SparseArray<Standard_Integer> TObj_TIntSparseArray_MapOfData;
-typedef NCollection_SparseArray<Standard_Integer> TObj_TIntSparseArray_VecOfData;
+typedef NCollection_DataMap <opencascade::handle <TCollection_HExtendedString>, TDF_Label> TObj_DataMapOfNameLabel;
+typedef NCollection_DataMap <opencascade::handle <TObj_Object>, opencascade::handle <TObj_HSequenceOfObject>> TObj_DataMapOfObjectHSequenceOcafObjects;
+typedef NCollection_DataMap <TCollection_AsciiString, Standard_Address> TObj_DataMapOfStringPointer;
+typedef NCollection_Sequence <opencascade::handle <TObj_ObjectIterator>> TObj_SequenceOfIterator;
+typedef NCollection_Sequence <opencascade::handle <TObj_Object>> TObj_SequenceOfObject;
+typedef NCollection_SparseArray <Standard_Integer> TObj_TIntSparseArray_MapOfData;
+typedef NCollection_SparseArray <Standard_Integer> TObj_TIntSparseArray_VecOfData;
 /* end typedefs declaration */
 
 /*************************
@@ -260,7 +260,7 @@ opencascade::handle<Message_Messenger>
 		/****************** ResourcesName ******************/
 		/**** md5 signature: 96f8731792cfcab6c0cf55cdc1a09a9b ****/
 		%feature("compactdefaultargs") ResourcesName;
-		%feature("autodoc", "Return name of resource (i.e. 'tobj').
+		%feature("autodoc", "/** * redefined ocaf methods */ return name of resource (i.e. 'tobj').
 
 Returns
 -------
@@ -271,7 +271,7 @@ char *
 		/****************** SaveDocument ******************/
 		/**** md5 signature: dcfedbeb5fa0e25c1797d36111fba7ba ****/
 		%feature("compactdefaultargs") SaveDocument;
-		%feature("autodoc", "Saving the ocaf document to a file.
+		%feature("autodoc", "/** * load/save support */ saving the ocaf document to a file.
 
 Parameters
 ----------
@@ -326,9 +326,9 @@ theModel: TObj_Model
 
 Returns
 -------
-None
+void
 ") BindModel;
-		static void BindModel(const opencascade::handle<TObj_Model > theModel);
+		static void BindModel(const opencascade::handle<TObj_Model> theModel);
 
 		/****************** BindType ******************/
 		/**** md5 signature: 4c08d477bf36ab0aee13c610d61470b2 ****/
@@ -352,7 +352,7 @@ int
 
 Returns
 -------
-None
+void
 ") ClearModelMap;
 		static void ClearModelMap();
 
@@ -363,14 +363,14 @@ None
 
 Returns
 -------
-None
+void
 ") ClearTypeMap;
 		static void ClearTypeMap();
 
 		/****************** FindModel ******************/
 		/**** md5 signature: e92adf0596d1a4921ec125698f7e69a8 ****/
 		%feature("compactdefaultargs") FindModel;
-		%feature("autodoc", "Finds model by name.
+		%feature("autodoc", "/** * interface for datamap of modeller name */ finds model by name.
 
 Parameters
 ----------
@@ -385,7 +385,7 @@ opencascade::handle<TObj_Model>
 		/****************** FindType ******************/
 		/**** md5 signature: b1e7bafac320a7941eacca004bbb32c3 ****/
 		%feature("compactdefaultargs") FindType;
-		%feature("autodoc", "Finds standard_type by index; returns null handle if not found.
+		%feature("autodoc", "/** * interface for map of standard types */ finds standard_type by index; returns null handle if not found.
 
 Parameters
 ----------
@@ -437,7 +437,7 @@ opencascade::handle<TObj_Model>
 		/****************** SetCurrentModel ******************/
 		/**** md5 signature: 27a38fa83b881e2bf304d41c94878a3b ****/
 		%feature("compactdefaultargs") SetCurrentModel;
-		%feature("autodoc", "Sets current model.
+		%feature("autodoc", "/** * interface to the current model */ sets current model.
 
 Parameters
 ----------
@@ -445,7 +445,7 @@ theModel: TObj_Model
 
 Returns
 -------
-None
+void
 ") SetCurrentModel;
 		static void SetCurrentModel(const opencascade::handle<TObj_Model> & theModel);
 
@@ -456,7 +456,7 @@ None
 
 Returns
 -------
-None
+void
 ") UnSetCurrentModel;
 		static void UnSetCurrentModel();
 
@@ -475,7 +475,7 @@ None
 class TObj_CheckModel : public Message_Algorithm {
 	public:
 		/****************** TObj_CheckModel ******************/
-		/**** md5 signature: 39399dcf73c56a60e5bf685930b227ec ****/
+		/**** md5 signature: 3a3168c86b49ebe631388c5b23fa2240 ****/
 		%feature("compactdefaultargs") TObj_CheckModel;
 		%feature("autodoc", "Initialize checker by model.
 
@@ -569,7 +569,7 @@ None
 		/****************** Close ******************/
 		/**** md5 signature: 413b77e104256091d7f6a8bf1c40b584 ****/
 		%feature("compactdefaultargs") Close;
-		%feature("autodoc", "Close the model.
+		%feature("autodoc", "/** * work with document */ close the model.
 
 Returns
 -------
@@ -638,7 +638,7 @@ opencascade::handle<TObj_Object>
 		/****************** GetApplication ******************/
 		/**** md5 signature: a3b8ddf16da387ad7753074f0773f0fd ****/
 		%feature("compactdefaultargs") GetApplication;
-		%feature("autodoc", "Returns handle to static instance of the relevant application class.
+		%feature("autodoc", "/** * methods for obtaining application */ returns handle to static instance of the relevant application class.
 
 Returns
 -------
@@ -671,7 +671,7 @@ opencascade::handle<TObj_ObjectIterator>
 		/****************** GetDictionary ******************/
 		/**** md5 signature: 3e94bc2b20ff15d3bdd40ec3acadd79b ****/
 		%feature("compactdefaultargs") GetDictionary;
-		%feature("autodoc", "Returns the map of names of the objects.
+		%feature("autodoc", "/** * internal methods */ returns the map of names of the objects.
 
 Returns
 -------
@@ -719,7 +719,7 @@ opencascade::handle<TCollection_HExtendedString>
 		/****************** GetFormat ******************/
 		/**** md5 signature: e4e78e254c48e2fdfe3e980cb5bc547d ****/
 		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Returns the format for save/restore. this implementation returns 'binocaf'. the method should be redefined for those models that should use another format.
+		%feature("autodoc", "/** * methods for obtaining the version of format */ returns the format for save/restore. this implementation returns 'binocaf'. the method should be redefined for those models that should use another format.
 
 Returns
 -------
@@ -741,7 +741,7 @@ int
 		/****************** GetGUID ******************/
 		/**** md5 signature: 2e4ec7705c6889137d267052207a2d44 ****/
 		%feature("compactdefaultargs") GetGUID;
-		%feature("autodoc", "Defines interface guid for tobj_model.
+		%feature("autodoc", "/** * definition of interface guid */ defines interface guid for tobj_model.
 
 Returns
 -------
@@ -752,7 +752,7 @@ Standard_GUID
 		/****************** GetLabel ******************/
 		/**** md5 signature: 5ab1f3863e9e6f51586f46622e4aeabe ****/
 		%feature("compactdefaultargs") GetLabel;
-		%feature("autodoc", "Returns ocaf label on which model data are stored.
+		%feature("autodoc", "/** * ocaf methods */ returns ocaf label on which model data are stored.
 
 Returns
 -------
@@ -774,7 +774,7 @@ opencascade::handle<TObj_Partition>
 		/****************** GetModelName ******************/
 		/**** md5 signature: 1f23fd984199a8df51123c7670a0fcfb ****/
 		%feature("compactdefaultargs") GetModelName;
-		%feature("autodoc", "Returns the name of the model.
+		%feature("autodoc", "/** * methods for supporting unique naming of the objects in model */ returns the name of the model.
 
 Returns
 -------
@@ -785,7 +785,7 @@ opencascade::handle<TCollection_HExtendedString>
 		/****************** GetObjects ******************/
 		/**** md5 signature: 44ed7c407bf8f507e345e88084e98880 ****/
 		%feature("compactdefaultargs") GetObjects;
-		%feature("autodoc", "Returns an iterator on all objects in the model.
+		%feature("autodoc", "/** * access to the objects in the model */ returns an iterator on all objects in the model.
 
 Returns
 -------
@@ -796,7 +796,7 @@ opencascade::handle<TObj_ObjectIterator>
 		/****************** GetRoot ******************/
 		/**** md5 signature: 968ebe73886225a8d735f28edc7277a2 ****/
 		%feature("compactdefaultargs") GetRoot;
-		%feature("autodoc", "Returns root object of model.
+		%feature("autodoc", "/** * methods for iteration on the model */ returns root object of model.
 
 Returns
 -------
@@ -807,7 +807,7 @@ opencascade::handle<TObj_Object>
 		/****************** HasOpenCommand ******************/
 		/**** md5 signature: dd69c57ebd4821e931afe0accf5d3235 ****/
 		%feature("compactdefaultargs") HasOpenCommand;
-		%feature("autodoc", "Returns true if a command transaction is open starting, finishing the transaction.
+		%feature("autodoc", "/** * api for transaction mechanism */ returns true if a command transaction is open starting, finishing the transaction.
 
 Returns
 -------
@@ -845,7 +845,7 @@ bool
 		/****************** Load ******************/
 		/**** md5 signature: 71012ab36ad60691b764a409b2c58cf5 ****/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "Load the ocaf model from a file. if the filename is empty or file does not exists, it just initializes model by empty data.
+		%feature("autodoc", "/** * implementation of load/save for ocaf based models */ load the ocaf model from a file. if the filename is empty or file does not exists, it just initializes model by empty data.
 
 Parameters
 ----------
@@ -900,7 +900,7 @@ None
 		/****************** Paste ******************/
 		/**** md5 signature: cbf806c47e2ef29c9d73f4131da52e66 ****/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "Pastes me to the new model references will not be copied if thereloctable is not 0 if thereloctable is not null thereloctable is filled by objects.
+		%feature("autodoc", "/** * methods for clone model */ pastes me to the new model references will not be copied if thereloctable is not 0 if thereloctable is not null thereloctable is filled by objects.
 
 Parameters
 ----------
@@ -912,7 +912,7 @@ Returns
 -------
 bool
 ") Paste;
-		virtual Standard_Boolean Paste(opencascade::handle<TObj_Model > theModel, opencascade::handle<TDF_RelocationTable > theRelocTable = 0);
+		virtual Standard_Boolean Paste(opencascade::handle<TObj_Model> theModel, opencascade::handle<TDF_RelocationTable> theRelocTable = 0);
 
 		/****************** RegisterName ******************/
 		/**** md5 signature: 2d1cada8d3a2478f6398b1f301f39e14 ****/
@@ -983,7 +983,7 @@ None
 		/****************** SetMessenger ******************/
 		/**** md5 signature: 40401cd5d4068f0f7513825084c27c19 ****/
 		%feature("compactdefaultargs") SetMessenger;
-		%feature("autodoc", "Set messenger to use for messages output.
+		%feature("autodoc", "/** * messages mechanism */ set messenger to use for messages output.
 
 Parameters
 ----------
@@ -1021,7 +1021,7 @@ theObject: TObj_Object
 
 Returns
 -------
-None
+void
 ") SetNewName;
 		static void SetNewName(const opencascade::handle<TObj_Object> & theObject);
 
@@ -1044,7 +1044,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: 9538e94c343decb275b2f65bb11a4f6c ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "This method is called before activating this model.
+		%feature("autodoc", "/** * methods for updating model */ this method is called before activating this model.
 
 Returns
 -------
@@ -1123,7 +1123,7 @@ None
 		/****************** AfterRetrieval ******************/
 		/**** md5 signature: 9432a7bda4a565e50e735ba186488263 ****/
 		%feature("compactdefaultargs") AfterRetrieval;
-		%feature("autodoc", "Performs updating the links and dependances of the object which are not stored in persistence. should be redefined if necessary.
+		%feature("autodoc", "/** * method for updating object afrer restoring */ performs updating the links and dependances of the object which are not stored in persistence. should be redefined if necessary.
 
 Returns
 -------
@@ -1160,7 +1160,7 @@ None
 		/****************** CanDetach ******************/
 		/**** md5 signature: 2f3782ec79bf0e89e6d8ca3e6212285c ****/
 		%feature("compactdefaultargs") CanDetach;
-		%feature("autodoc", "Checks if object can be detached with specified mode.
+		%feature("autodoc", "/** * methods for deleting the object */ checks if object can be detached with specified mode.
 
 Parameters
 ----------
@@ -1218,7 +1218,7 @@ None
 		/****************** Clone ******************/
 		/**** md5 signature: 4d3e1f9e7709184411e95abee3db3285 ****/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "Copy me to other label thetargetlabel new object will not have all the reference that has me. coping object with data and childs, but change name by adding string '_copy' as result return handle of new object (null handle is something wrong) note: backreferences not coping. after cloning all objects it is necessary to call copy references with the same relocation table.
+		%feature("autodoc", "/** * cloning related methods */ copy me to other label thetargetlabel new object will not have all the reference that has me. coping object with data and childs, but change name by adding string '_copy' as result return handle of new object (null handle is something wrong) note: backreferences not coping. after cloning all objects it is necessary to call copy references with the same relocation table.
 
 Parameters
 ----------
@@ -1230,7 +1230,7 @@ Returns
 -------
 opencascade::handle<TObj_Object>
 ") Clone;
-		virtual opencascade::handle<TObj_Object> Clone(const TDF_Label & theTargetLabel, opencascade::handle<TDF_RelocationTable > theRelocTable = 0);
+		virtual opencascade::handle<TObj_Object> Clone(const TDF_Label & theTargetLabel, opencascade::handle<TDF_RelocationTable> theRelocTable = 0);
 
 		/****************** CopyChildren ******************/
 		/**** md5 signature: 94136ac341e957983a87f40509805b9f ****/
@@ -1370,7 +1370,7 @@ TDF_Label
 		/****************** GetDictionary ******************/
 		/**** md5 signature: f248df60e037e02784000e7bf3b48e89 ****/
 		%feature("compactdefaultargs") GetDictionary;
-		%feature("autodoc", "Returns the map of names of the objects default implementation returns global dictionary of the model.
+		%feature("autodoc", "/** * methods handling name of the object */ returns the map of names of the objects default implementation returns global dictionary of the model.
 
 Returns
 -------
@@ -1408,7 +1408,7 @@ int
 		/****************** GetLabel ******************/
 		/**** md5 signature: b7ae9617d4db4ef8a9995ea610f01207 ****/
 		%feature("compactdefaultargs") GetLabel;
-		%feature("autodoc", "Returns the ocaf label on which object`s data are stored.
+		%feature("autodoc", "/** * access to the ocaf-specific data */ returns the ocaf label on which object`s data are stored.
 
 Returns
 -------
@@ -1419,7 +1419,7 @@ TDF_Label
 		/****************** GetModel ******************/
 		/**** md5 signature: 30fa7d635f757601f5d651ee57343bbd ****/
 		%feature("compactdefaultargs") GetModel;
-		%feature("autodoc", "Returns the model to which the object belongs.
+		%feature("autodoc", "/** * virtual methods */ returns the model to which the object belongs.
 
 Returns
 -------
@@ -1481,12 +1481,12 @@ Returns
 -------
 opencascade::handle<TCollection_HExtendedString>
 ") GetNameForClone;
-		virtual opencascade::handle<TCollection_HExtendedString> GetNameForClone(const opencascade::handle<TObj_Object > &);
+		virtual opencascade::handle<TCollection_HExtendedString> GetNameForClone(const opencascade::handle<TObj_Object> &);
 
 		/****************** GetObj ******************/
 		/**** md5 signature: fc45832e63c78e31a312d2584bd1b74b ****/
 		%feature("compactdefaultargs") GetObj;
-		%feature("autodoc", "Returns the object attached to a given label. returns false if no object of type tobj_object is stored on the specified label. if issuper is true tries to find on the super labels.
+		%feature("autodoc", "/** * methods for object retrieval */ returns the object attached to a given label. returns false if no object of type tobj_object is stored on the specified label. if issuper is true tries to find on the super labels.
 
 Parameters
 ----------
@@ -1504,7 +1504,7 @@ bool
 		/****************** GetOrder ******************/
 		/**** md5 signature: 5aab3f1cde1c2f11047c1b86b05c2bd6 ****/
 		%feature("compactdefaultargs") GetOrder;
-		%feature("autodoc", "Returns order of object (or tag of their label if order is not initialised).
+		%feature("autodoc", "/** * public methods to access order of object */ returns order of object (or tag of their label if order is not initialised).
 
 Returns
 -------
@@ -1542,7 +1542,7 @@ opencascade::handle<TObj_ObjectIterator>
 		/****************** GetTypeFlags ******************/
 		/**** md5 signature: d2170fe93320a164ab89a2ddecc55009 ****/
 		%feature("compactdefaultargs") GetTypeFlags;
-		%feature("autodoc", "Returns flags (bitmask) that define properties of objects of that type by default returns flag visible.
+		%feature("autodoc", "/** * access to object flags */ returns flags (bitmask) that define properties of objects of that type by default returns flag visible.
 
 Returns
 -------
@@ -1575,7 +1575,7 @@ bool
 		/****************** HasReference ******************/
 		/**** md5 signature: e8677deafeb1a27e87cdc3d9ba839b8d ****/
 		%feature("compactdefaultargs") HasReference;
-		%feature("autodoc", "Returns true if object has reference to indicated object.
+		%feature("autodoc", "/** * analysis of dependencies on other objects */ returns true if object has reference to indicated object.
 
 Parameters
 ----------
@@ -1590,7 +1590,7 @@ bool
 		/****************** IsAlive ******************/
 		/**** md5 signature: 68953950fdbb6213c244979fcec8e757 ****/
 		%feature("compactdefaultargs") IsAlive;
-		%feature("autodoc", "Checks that object alive in model default implementation checks that object has tobject attribute at own label.
+		%feature("autodoc", "/** * methods for checking and updating object */ checks that object alive in model default implementation checks that object has tobject attribute at own label.
 
 Returns
 -------
@@ -1866,7 +1866,7 @@ class TObj_Persistence {
 		/****************** CreateNewObject ******************/
 		/**** md5 signature: b7abb2b5034a2342962587782f3e2282 ****/
 		%feature("compactdefaultargs") CreateNewObject;
-		%feature("autodoc", "Creates and returns a new object of the registered type if the type is not registered, returns null handle.
+		%feature("autodoc", "/** * public methods, to be called externally */ creates and returns a new object of the registered type if the type is not registered, returns null handle.
 
 Parameters
 ----------
@@ -1901,7 +1901,7 @@ opencascade::handle<TObj_Object>
 *****************************/
 class TObj_TIntSparseArray : public TDF_Attribute {
 	public:
-typedef TObj_TIntSparseArray_VecOfData ::ConstIterator Iterator;
+typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 		/****************** TObj_TIntSparseArray ******************/
 		/**** md5 signature: c9aff193b0588231fc96fab91e80e58f ****/
 		%feature("compactdefaultargs") TObj_TIntSparseArray;
@@ -2039,7 +2039,7 @@ Standard_GUID
 		/****************** NewEmpty ******************/
 		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "Returns an new empty tobj_tintsparsearray attribute. it is used by the copy algorithm.
+		%feature("autodoc", "Redefined ocaf abstract methods returns an new empty tobj_tintsparsearray attribute. it is used by the copy algorithm.
 
 Returns
 -------
@@ -2096,7 +2096,7 @@ opencascade::handle<TObj_TIntSparseArray>
 		/****************** SetDoBackup ******************/
 		/**** md5 signature: 1deb6cecab7e3c4cc9a49e82bd95c62a ****/
 		%feature("compactdefaultargs") SetDoBackup;
-		%feature("autodoc", "Sets the flag pointing to the necessity to maintain a modification delta. it is called by the retrieval driver.
+		%feature("autodoc", "Methods to handle the modification delta sets the flag pointing to the necessity to maintain a modification delta. it is called by the retrieval driver.
 
 Parameters
 ----------
@@ -2127,7 +2127,7 @@ None
 		/****************** Size ******************/
 		/**** md5 signature: 84043604cd4d694d29fbe523f032e5d8 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the number of stored values in the set.
+		%feature("autodoc", "Methods for access to data returns the number of stored values in the set.
 
 Returns
 -------
@@ -2184,7 +2184,7 @@ class TObj_TModel : public TDF_Attribute {
 		/****************** TObj_TModel ******************/
 		/**** md5 signature: dbf993e5fe22e1c4382769ad5780c577 ****/
 		%feature("compactdefaultargs") TObj_TModel;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "/** * standard methods of attribute */ empty constructor.
 
 Returns
 -------
@@ -2228,7 +2228,7 @@ opencascade::handle<TObj_Model>
 		/****************** NewEmpty ******************/
 		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "Returns an new empty tobj_tmodel attribute. it is used by the copy algorithm.
+		%feature("autodoc", "Redefined ocaf abstract methods returns an new empty tobj_tmodel attribute. it is used by the copy algorithm.
 
 Returns
 -------
@@ -2270,7 +2270,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 6ba00d7004a7e14a8d556aa8bab2f70a ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the model object.
+		%feature("autodoc", "Methods for setting and obtaining the model object sets the model object.
 
 Parameters
 ----------
@@ -2301,7 +2301,7 @@ class TObj_TNameContainer : public TDF_Attribute {
 		/****************** TObj_TNameContainer ******************/
 		/**** md5 signature: cb5b252305845193df1f07169c9802ba ****/
 		%feature("compactdefaultargs") TObj_TNameContainer;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "Standard methods of ocaf attribute empty constructor.
 
 Returns
 -------
@@ -2371,7 +2371,7 @@ bool
 		/****************** NewEmpty ******************/
 		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "Returns an new empty tobj_tnamecontainer attribute. it is used by the copy algorithm.
+		%feature("autodoc", "Redefined ocaf abstract methods returns an new empty tobj_tnamecontainer attribute. it is used by the copy algorithm.
 
 Returns
 -------
@@ -2398,7 +2398,7 @@ None
 		/****************** RecordName ******************/
 		/**** md5 signature: f80322bd67469ee82cb871f8ffe05355 ****/
 		%feature("compactdefaultargs") RecordName;
-		%feature("autodoc", "Records name with label attached.
+		%feature("autodoc", "Methods for adding and removing names records name with label attached.
 
 Parameters
 ----------
@@ -2444,7 +2444,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: d27a684a880394d49a8829df7d74be38 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Creates tobj_datamapofnamelabel attribute on given label if not exist.
+		%feature("autodoc", "Method for create tobj_tnamecontainer object creates tobj_datamapofnamelabel attribute on given label if not exist.
 
 Parameters
 ----------
@@ -2459,7 +2459,7 @@ opencascade::handle<TObj_TNameContainer>
 		/****************** Set ******************/
 		/**** md5 signature: 582c256dc9c9dfafd336c11a75dac99b ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the tobj_datamapofnamelabel object.
+		%feature("autodoc", "Methods for setting and obtaining tobj_tnamecontainer sets the tobj_datamapofnamelabel object.
 
 Parameters
 ----------
@@ -2490,7 +2490,7 @@ class TObj_TObject : public TDF_Attribute {
 		/****************** TObj_TObject ******************/
 		/**** md5 signature: 567a6ce4698f0d40c3c3e5bdf97ca027 ****/
 		%feature("compactdefaultargs") TObj_TObject;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "Standard methods of ocaf attribute empty constructor.
 
 Returns
 -------
@@ -2561,7 +2561,7 @@ Standard_GUID
 		/****************** NewEmpty ******************/
 		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "Returns an new empty tobj_tobject attribute. it is used by the copy algorithm.
+		%feature("autodoc", "Redefined ocaf abstract methods returns an new empty tobj_tobject attribute. it is used by the copy algorithm.
 
 Returns
 -------
@@ -2603,7 +2603,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 0713a51dcac75e1b222ea562dd30f9bb ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Creates tobj_tobject attribute on given label.
+		%feature("autodoc", "Method for create tobj_tobject object creates tobj_tobject attribute on given label.
 
 Parameters
 ----------
@@ -2619,7 +2619,7 @@ opencascade::handle<TObj_TObject>
 		/****************** Set ******************/
 		/**** md5 signature: 51a06c6c42bebef3114999f4bd225f85 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the tobj_object object.
+		%feature("autodoc", "Methods for setting and obtaining tobj_object sets the tobj_object object.
 
 Parameters
 ----------
@@ -2650,7 +2650,7 @@ class TObj_TReference : public TDF_Attribute {
 		/****************** TObj_TReference ******************/
 		/**** md5 signature: c3307e95b690d126dd9dc6a8776c417b ****/
 		%feature("compactdefaultargs") TObj_TReference;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "Standard methods of ocaf attribute empty constructor.
 
 Returns
 -------
@@ -2788,7 +2788,7 @@ Standard_GUID
 		/****************** NewEmpty ******************/
 		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "Returns an new empty tobj_treference attribute. it is used by the copy algorithm.
+		%feature("autodoc", "Redefined ocaf abstract methods returns an new empty tobj_treference attribute. it is used by the copy algorithm.
 
 Returns
 -------
@@ -2830,7 +2830,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 67ea755fe91a8cb150e5d7cc0eafa426 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Creates reference on tdf_label <thelabel> to the object <theobject> and creates backreference from the object <theobject> to <themaster> one.
+		%feature("autodoc", "Method for create tobj_treference object creates reference on tdf_label <thelabel> to the object <theobject> and creates backreference from the object <theobject> to <themaster> one.
 
 Parameters
 ----------
@@ -2847,7 +2847,7 @@ opencascade::handle<TObj_TReference>
 		/****************** Set ******************/
 		/**** md5 signature: 6e4ac7f97eb10d77e996ed4ab5bf310a ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the reference to the theobject.
+		%feature("autodoc", "Methods for setting and obtaining referenced object sets the reference to the theobject.
 
 Parameters
 ----------
@@ -2895,7 +2895,7 @@ class TObj_TXYZ : public TDF_Attribute {
 		/****************** TObj_TXYZ ******************/
 		/**** md5 signature: 4ad159fabf30b68a39e24fae8c49edb3 ****/
 		%feature("compactdefaultargs") TObj_TXYZ;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "Standard methods of ocaf attribute empty constructor.
 
 Returns
 -------
@@ -2947,7 +2947,7 @@ Standard_GUID
 		/****************** NewEmpty ******************/
 		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "Returns an new empty tobj_txyz attribute. it is used by the copy algorithm.
+		%feature("autodoc", "Redefined ocaf abstract methods returns an new empty tobj_txyz attribute. it is used by the copy algorithm.
 
 Returns
 -------
@@ -2989,7 +2989,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 86be6bf42e1d34b1830b1188f0af72b4 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Creates attribute and sets the xyz.
+		%feature("autodoc", "Method for create tobj_txyz object creates attribute and sets the xyz.
 
 Parameters
 ----------
@@ -3005,7 +3005,7 @@ opencascade::handle<TObj_TXYZ>
 		/****************** Set ******************/
 		/**** md5 signature: e6c77c9806d517177bb367126303cc20 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the xyz.
+		%feature("autodoc", "Methods for setting and obtaining xyz sets the xyz.
 
 Parameters
 ----------
@@ -3041,14 +3041,14 @@ class TObj_LabelIterator : public TObj_ObjectIterator {
 
 Returns
 -------
-TDF_Label
+inline  TDF_Label
 ") LabelValue;
-		const TDF_Label & LabelValue();
+		inline const TDF_Label & LabelValue();
 
 		/****************** More ******************/
 		/**** md5 signature: 1e5d8e0dca9bbb9162656bc9b0694e47 ****/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns true if there is a current item in the iteration.
+		%feature("autodoc", "/** * redefined methods */ returns true if there is a current item in the iteration.
 
 Returns
 -------
@@ -3112,7 +3112,7 @@ None
 		/****************** More ******************/
 		/**** md5 signature: b2821025844f4f2823e07323c717a764 ****/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns true if iteration is not finished and method value() will give the object.
+		%feature("autodoc", "/** * methods to iterate on objects. */ returns true if iteration is not finished and method value() will give the object.
 
 Returns
 -------
@@ -3162,7 +3162,7 @@ class TObj_Partition : public TObj_Object {
 		/****************** AfterRetrieval ******************/
 		/**** md5 signature: 5116de267db888dbe3c4cd27cb5af96d ****/
 		%feature("compactdefaultargs") AfterRetrieval;
-		%feature("autodoc", "Performs updating the links and dependencies of the object which are not stored in persistence. does not register the partition name.
+		%feature("autodoc", "/** * method for updating object afrer restoring */ performs updating the links and dependencies of the object which are not stored in persistence. does not register the partition name.
 
 Returns
 -------
@@ -3173,7 +3173,7 @@ None
 		/****************** Create ******************/
 		/**** md5 signature: 0825e50eb60f2c25400b581c167f8a28 ****/
 		%feature("compactdefaultargs") Create;
-		%feature("autodoc", "Creates a new partition on given label.
+		%feature("autodoc", "/** * method for create partition */ creates a new partition on given label.
 
 Parameters
 ----------
@@ -3228,7 +3228,7 @@ opencascade::handle<TCollection_HExtendedString>
 		/****************** GetPartition ******************/
 		/**** md5 signature: 13ad38d3df7453cccb9a62aab75fddb6 ****/
 		%feature("compactdefaultargs") GetPartition;
-		%feature("autodoc", "Returns the partition in which object is stored. null partition returned if not found.
+		%feature("autodoc", "/** * methods to define partition by object */ returns the partition in which object is stored. null partition returned if not found.
 
 Parameters
 ----------
@@ -3243,7 +3243,7 @@ opencascade::handle<TObj_Partition>
 		/****************** NewLabel ******************/
 		/**** md5 signature: b252dc5a0d8c728384cf385ea9cfcdc0 ****/
 		%feature("compactdefaultargs") NewLabel;
-		%feature("autodoc", "Creates and returns label for new object in partition.
+		%feature("autodoc", "/** * methods handling of the objects in partition */ creates and returns label for new object in partition.
 
 Returns
 -------
@@ -3269,7 +3269,7 @@ None
 		/****************** SetName ******************/
 		/**** md5 signature: fb723fddc9b8a3cd18607ae9add2b576 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "Sets name of the object. partition does not check unique of own name.
+		%feature("autodoc", "/** * methods handling name of the object */ sets name of the object. partition does not check unique of own name.
 
 Parameters
 ----------
@@ -3299,7 +3299,7 @@ None
 		/****************** Update ******************/
 		/**** md5 signature: 8770459c04056535aba1783bd04567c5 ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Does nothing in the partition.
+		%feature("autodoc", "/** * methods for updating the object */ does nothing in the partition.
 
 Returns
 -------
@@ -3326,7 +3326,7 @@ class TObj_SequenceIterator : public TObj_ObjectIterator {
 		/****************** TObj_SequenceIterator ******************/
 		/**** md5 signature: b4180e8a504198d2687dbb509ae28e9a ****/
 		%feature("compactdefaultargs") TObj_SequenceIterator;
-		%feature("autodoc", "Creates an iterator an initialize it by sequence of objects.
+		%feature("autodoc", "/** * constructor */ creates an iterator an initialize it by sequence of objects.
 
 Parameters
 ----------
@@ -3343,7 +3343,7 @@ None
 		/****************** More ******************/
 		/**** md5 signature: b2821025844f4f2823e07323c717a764 ****/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns true if there is a current item in the iteration.
+		%feature("autodoc", "/** * redefined methods */ returns true if there is a current item in the iteration.
 
 Returns
 -------

@@ -125,7 +125,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>> Geom_SequenceOfBSplineSurface;
+typedef NCollection_Sequence <opencascade::handle <Geom_BSplineSurface>> Geom_SequenceOfBSplineSurface;
 /* end typedefs declaration */
 
 /**********************
@@ -4058,9 +4058,9 @@ None
 
 Returns
 -------
-opencascade::handle<Geom_Surface>
+inline  opencascade::handle<Geom_Surface>
 ") BasisSurface;
-		const opencascade::handle<Geom_Surface> & BasisSurface();
+		inline const opencascade::handle<Geom_Surface> & BasisSurface();
 
 		/****************** Bounds ******************/
 		/**** md5 signature: bbc36976e796eedf3c69513e986f2adb ****/
@@ -4218,9 +4218,9 @@ gp_Vec
 
 Returns
 -------
-GeomAbs_Shape
+inline GeomAbs_Shape
 ") GetBasisSurfContinuity;
-		GeomAbs_Shape GetBasisSurfContinuity();
+		inline GeomAbs_Shape GetBasisSurfContinuity();
 
 		/****************** IsCNu ******************/
 		/**** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ****/
@@ -4303,9 +4303,9 @@ bool
 
 Returns
 -------
-float
+inline float
 ") Offset;
-		Standard_Real Offset();
+		inline Standard_Real Offset();
 
 		/****************** OsculatingSurface ******************/
 		/**** md5 signature: 3b2b79c090adc05a74f74def3f1d4232 ****/
@@ -4314,9 +4314,9 @@ float
 
 Returns
 -------
-opencascade::handle<Geom_OsculatingSurface>
+inline  opencascade::handle<Geom_OsculatingSurface>
 ") OsculatingSurface;
-		const opencascade::handle<Geom_OsculatingSurface> & OsculatingSurface();
+		inline const opencascade::handle<Geom_OsculatingSurface> & OsculatingSurface();
 
 		/****************** ParametricTransformation ******************/
 		/**** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ****/
@@ -4969,7 +4969,7 @@ None
 		/****************** Subtracted ******************/
 		/**** md5 signature: 5df26fa71096eabaaaebf8fc9486c2a5 ****/
 		%feature("compactdefaultargs") Subtracted;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Subtracts the vector other to <self>. a new vector is returned.
 
 Parameters
 ----------

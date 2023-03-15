@@ -141,8 +141,6 @@ class MoniTool_DataInfo:
 
 class MoniTool_ElemHasher:
     @staticmethod
-    def HashCode(theElement: MoniTool_Element, theUpperBound: int) -> int: ...
-    @staticmethod
     def IsEqual(K1: MoniTool_Element, K2: MoniTool_Element) -> bool: ...
 
 class MoniTool_Element(Standard_Transient):

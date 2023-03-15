@@ -72,17 +72,17 @@ enum Transfer_StatusExec {
 	Transfer_StatusLoop = 4,
 };
 
+enum Transfer_StatusResult {
+	Transfer_StatusVoid = 0,
+	Transfer_StatusDefined = 1,
+	Transfer_StatusUsed = 2,
+};
+
 enum Transfer_UndefMode {
 	Transfer_UndefIgnore = 0,
 	Transfer_UndefFailure = 1,
 	Transfer_UndefContent = 2,
 	Transfer_UndefUser = 3,
-};
-
-enum Transfer_StatusResult {
-	Transfer_StatusVoid = 0,
-	Transfer_StatusDefined = 1,
-	Transfer_StatusUsed = 2,
 };
 
 /* end public enums declaration */
@@ -102,6 +102,14 @@ Transfer_StatusDone = Transfer_StatusExec.Transfer_StatusDone
 Transfer_StatusError = Transfer_StatusExec.Transfer_StatusError
 Transfer_StatusLoop = Transfer_StatusExec.Transfer_StatusLoop
 
+class Transfer_StatusResult(IntEnum):
+	Transfer_StatusVoid = 0
+	Transfer_StatusDefined = 1
+	Transfer_StatusUsed = 2
+Transfer_StatusVoid = Transfer_StatusResult.Transfer_StatusVoid
+Transfer_StatusDefined = Transfer_StatusResult.Transfer_StatusDefined
+Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
+
 class Transfer_UndefMode(IntEnum):
 	Transfer_UndefIgnore = 0
 	Transfer_UndefFailure = 1
@@ -111,14 +119,6 @@ Transfer_UndefIgnore = Transfer_UndefMode.Transfer_UndefIgnore
 Transfer_UndefFailure = Transfer_UndefMode.Transfer_UndefFailure
 Transfer_UndefContent = Transfer_UndefMode.Transfer_UndefContent
 Transfer_UndefUser = Transfer_UndefMode.Transfer_UndefUser
-
-class Transfer_StatusResult(IntEnum):
-	Transfer_StatusVoid = 0
-	Transfer_StatusDefined = 1
-	Transfer_StatusUsed = 2
-Transfer_StatusVoid = Transfer_StatusResult.Transfer_StatusVoid
-Transfer_StatusDefined = Transfer_StatusResult.Transfer_StatusDefined
-Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
 };
 /* end python proxy for enums */
 
@@ -169,10 +169,10 @@ Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<Transfer_Binder>> Transfer_SequenceOfBinder;
-typedef NCollection_Sequence<opencascade::handle<Transfer_Finder>> Transfer_SequenceOfFinder;
-typedef NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>, opencascade::handle<Transfer_Binder>, Transfer_FindHasher> Transfer_TransferMapOfProcessForFinder;
-typedef NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>, TColStd_MapTransientHasher> Transfer_TransferMapOfProcessForTransient;
+typedef NCollection_Sequence <opencascade::handle <Transfer_Binder>> Transfer_SequenceOfBinder;
+typedef NCollection_Sequence <opencascade::handle <Transfer_Finder>> Transfer_SequenceOfFinder;
+typedef NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, opencascade::handle <Transfer_Binder>, Transfer_FindHasher> Transfer_TransferMapOfProcessForFinder;
+typedef NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Transfer_Binder>, TColStd_MapTransientHasher> Transfer_TransferMapOfProcessForTransient;
 /* end typedefs declaration */
 
 /*****************************************
@@ -812,14 +812,14 @@ class Transfer_FindHasher {
 
 Parameters
 ----------
-theFinder: Handle ( Transfer_Finder )
+theFinder: Handle(Transfer_Finder)
 theUpperBound: int
 
 Returns
 -------
 int
 ") HashCode;
-		static Standard_Integer HashCode(const Handle ( Transfer_Finder ) & theFinder, Standard_Integer theUpperBound);
+		static Standard_Integer HashCode(const Handle(Transfer_Finder) & theFinder, Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: ca64cb1ad49afab41adb3682d1ade24a ****/

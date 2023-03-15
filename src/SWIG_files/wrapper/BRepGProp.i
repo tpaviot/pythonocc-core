@@ -120,7 +120,7 @@ UseTriangulation: bool,optional
 
 Returns
 -------
-None
+void
 ") LinearProperties;
 		static void LinearProperties(const TopoDS_Shape & S, GProp_GProps & LProps, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
@@ -140,7 +140,7 @@ UseTriangulation: bool,optional
 
 Returns
 -------
-None
+void
 ") SurfaceProperties;
 		static void SurfaceProperties(const TopoDS_Shape & S, GProp_GProps & SProps, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
@@ -181,7 +181,7 @@ UseTriangulation: bool,optional
 
 Returns
 -------
-None
+void
 ") VolumeProperties;
 		static void VolumeProperties(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
@@ -461,7 +461,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
@@ -508,7 +508,7 @@ S: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -985,7 +985,7 @@ Returns
 -------
 None
 ") BRepGProp_Gauss;
-		 BRepGProp_Gauss(BRepGProp_GaussType theType);
+		 BRepGProp_Gauss(const BRepGProp_GaussType theType);
 
 };
 
@@ -1043,7 +1043,7 @@ thePolyg: TColgp_HArray1OfPnt
 
 Returns
 -------
-None
+void
 ") PreparePolygon;
 		static void PreparePolygon(const TopoDS_Edge & theE, opencascade::handle<TColgp_HArray1OfPnt> & thePolyg);
 
@@ -1941,7 +1941,7 @@ None
 class BRepGProp_VinertGK : public GProp_GProps {
 	public:
 		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 2b4ec0003b8c134168e48daf41971b72 ****/
+		/**** md5 signature: c3d9906cc28f7ec1d530adbb6b7241ba ****/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "Empty constructor.
 

@@ -130,7 +130,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<AppDef_MultiPointConstraint> AppDef_Array1OfMultiPointConstraint;
+typedef NCollection_Array1 <AppDef_MultiPointConstraint> AppDef_Array1OfMultiPointConstraint;
 /* end typedefs declaration */
 
 /****************************************************************
@@ -2709,7 +2709,7 @@ tabPt: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
 
@@ -2726,7 +2726,7 @@ tabPt2d: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
@@ -2744,7 +2744,7 @@ tabPt2d: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 

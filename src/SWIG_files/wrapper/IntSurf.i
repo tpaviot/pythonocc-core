@@ -154,13 +154,13 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
 /* end templates declaration */
 
 /* typedefs */
-typedef opencascade::handle<NCollection_BaseAllocator> IntSurf_Allocator;
-typedef NCollection_List<IntSurf_PntOn2S>::Iterator IntSurf_ListIteratorOfListOfPntOn2S;
-typedef NCollection_List<IntSurf_PntOn2S> IntSurf_ListOfPntOn2S;
-typedef NCollection_Sequence<IntSurf_Couple> IntSurf_SequenceOfCouple;
-typedef NCollection_Sequence<IntSurf_InteriorPoint> IntSurf_SequenceOfInteriorPoint;
-typedef NCollection_Sequence<IntSurf_PathPoint> IntSurf_SequenceOfPathPoint;
-typedef NCollection_Sequence<IntSurf_PntOn2S> IntSurf_SequenceOfPntOn2S;
+typedef opencascade::handle <NCollection_BaseAllocator> IntSurf_Allocator;
+typedef NCollection_List <IntSurf_PntOn2S>::Iterator IntSurf_ListIteratorOfListOfPntOn2S;
+typedef NCollection_List <IntSurf_PntOn2S> IntSurf_ListOfPntOn2S;
+typedef NCollection_Sequence <IntSurf_Couple> IntSurf_SequenceOfCouple;
+typedef NCollection_Sequence <IntSurf_InteriorPoint> IntSurf_SequenceOfInteriorPoint;
+typedef NCollection_Sequence <IntSurf_PathPoint> IntSurf_SequenceOfPathPoint;
+typedef NCollection_Sequence <IntSurf_PntOn2S> IntSurf_SequenceOfPntOn2S;
 /* end typedefs declaration */
 
 /****************
@@ -184,7 +184,7 @@ TSecond: IntSurf_Transition
 
 Returns
 -------
-None
+void
 ") MakeTransition;
 		static void MakeTransition(const gp_Vec & TgFirst, const gp_Vec & TgSecond, const gp_Dir & Normal, IntSurf_Transition & TFirst, IntSurf_Transition & TSecond);
 
@@ -201,7 +201,7 @@ theArrOfPeriod: float
 
 Returns
 -------
-None
+void
 ") SetPeriod;
 		static void SetPeriod(const opencascade::handle<Adaptor3d_Surface> & theFirstSurf, const opencascade::handle<Adaptor3d_Surface> & theSecondSurf, Standard_Real theArrOfPeriod[4]);
 
@@ -1703,7 +1703,7 @@ V: gp_Vec
 
 Returns
 -------
-None
+void
 ") Gradient;
 		static void Gradient(const IntSurf_Quadric & Quad, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, gp_Vec & V);
 

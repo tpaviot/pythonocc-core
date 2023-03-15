@@ -936,7 +936,7 @@ theFrame2: Media_Frame
 
 Returns
 -------
-None
+void
 ") Swap;
 		static void Swap(const opencascade::handle<Media_Frame> & theFrame1, const opencascade::handle<Media_Frame> & theFrame2);
 
@@ -1454,7 +1454,7 @@ None
 class Media_Timer : public Standard_Transient {
 	public:
 		/****************** Media_Timer ******************/
-		/**** md5 signature: 5502207261d24805316c6ff0b6584707 ****/
+		/**** md5 signature: b2d1493c0204fc908ffafaa0d15b3a01 ****/
 		%feature("compactdefaultargs") Media_Timer;
 		%feature("autodoc", "Empty constructor.
 

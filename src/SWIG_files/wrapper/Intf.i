@@ -150,10 +150,10 @@ Intf_VERTEX = Intf_PIType.Intf_VERTEX
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<gp_Lin> Intf_Array1OfLin;
-typedef NCollection_Sequence<Intf_SectionLine> Intf_SeqOfSectionLine;
-typedef NCollection_Sequence<Intf_SectionPoint> Intf_SeqOfSectionPoint;
-typedef NCollection_Sequence<Intf_TangentZone> Intf_SeqOfTangentZone;
+typedef NCollection_Array1 <gp_Lin> Intf_Array1OfLin;
+typedef NCollection_Sequence <Intf_SectionLine> Intf_SeqOfSectionLine;
+typedef NCollection_Sequence <Intf_SectionPoint> Intf_SeqOfSectionPoint;
+typedef NCollection_Sequence <Intf_TangentZone> Intf_SeqOfTangentZone;
 /* end typedefs declaration */
 
 /*************

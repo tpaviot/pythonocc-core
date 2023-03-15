@@ -19,5 +19,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define IVTKVTK_HXX
 
 
+#include<IVtkVTK_ShapeData.hxx>
+#include<IVtkVTK_View.hxx>
 
 #endif // IVTKVTK_HXX

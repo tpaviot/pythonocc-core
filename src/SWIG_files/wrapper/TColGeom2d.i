@@ -67,9 +67,9 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TColGeom2d_HArray1OfCurve)
 %wrap_handle(TColGeom2d_HArray1OfBezierCurve)
 %wrap_handle(TColGeom2d_HArray1OfBSplineCurve)
+%wrap_handle(TColGeom2d_HArray1OfCurve)
 %wrap_handle(TColGeom2d_HSequenceOfBoundedCurve)
 %wrap_handle(TColGeom2d_HSequenceOfCurve)
 /* end handles declaration */
@@ -207,26 +207,15 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>> TColGeom2d_Array1OfBSplineCurve;
-typedef NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>> TColGeom2d_Array1OfBezierCurve;
-typedef NCollection_Array1<opencascade::handle<Geom2d_Curve>> TColGeom2d_Array1OfCurve;
-typedef NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>> TColGeom2d_SequenceOfBoundedCurve;
-typedef NCollection_Sequence<opencascade::handle<Geom2d_Curve>> TColGeom2d_SequenceOfCurve;
-typedef NCollection_Sequence<opencascade::handle<Geom2d_Geometry>> TColGeom2d_SequenceOfGeometry;
+typedef NCollection_Array1 <opencascade::handle <Geom2d_BSplineCurve>> TColGeom2d_Array1OfBSplineCurve;
+typedef NCollection_Array1 <opencascade::handle <Geom2d_BezierCurve>> TColGeom2d_Array1OfBezierCurve;
+typedef NCollection_Array1 <opencascade::handle <Geom2d_Curve>> TColGeom2d_Array1OfCurve;
+typedef NCollection_Sequence <opencascade::handle <Geom2d_BoundedCurve>> TColGeom2d_SequenceOfBoundedCurve;
+typedef NCollection_Sequence <opencascade::handle <Geom2d_Curve>> TColGeom2d_SequenceOfCurve;
+typedef NCollection_Sequence <opencascade::handle <Geom2d_Geometry>> TColGeom2d_SequenceOfGeometry;
 /* end typedefs declaration */
 
 /* harray1 classes */
-
-class TColGeom2d_HArray1OfCurve : public TColGeom2d_Array1OfCurve, public Standard_Transient {
-  public:
-    TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom2d_Array1OfCurve::value_type& theValue);
-    TColGeom2d_HArray1OfCurve(const TColGeom2d_Array1OfCurve& theOther);
-    const TColGeom2d_Array1OfCurve& Array1();
-    TColGeom2d_Array1OfCurve& ChangeArray1();
-};
-%make_alias(TColGeom2d_HArray1OfCurve)
-
 
 class TColGeom2d_HArray1OfBezierCurve : public TColGeom2d_Array1OfBezierCurve, public Standard_Transient {
   public:
@@ -248,6 +237,17 @@ class TColGeom2d_HArray1OfBSplineCurve : public TColGeom2d_Array1OfBSplineCurve,
     TColGeom2d_Array1OfBSplineCurve& ChangeArray1();
 };
 %make_alias(TColGeom2d_HArray1OfBSplineCurve)
+
+
+class TColGeom2d_HArray1OfCurve : public TColGeom2d_Array1OfCurve, public Standard_Transient {
+  public:
+    TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom2d_Array1OfCurve::value_type& theValue);
+    TColGeom2d_HArray1OfCurve(const TColGeom2d_Array1OfCurve& theOther);
+    const TColGeom2d_Array1OfCurve& Array1();
+    TColGeom2d_Array1OfCurve& ChangeArray1();
+};
+%make_alias(TColGeom2d_HArray1OfCurve)
 
 /* harray2 classes */
 /* hsequence classes */

@@ -233,7 +233,7 @@ OrFace: TopAbs_Orientation
 
 Returns
 -------
-None
+void
 ") NextSide;
 		static void NextSide(TopAbs_Orientation & Or, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
 

@@ -113,10 +113,9 @@ enum SelectMgr_FilterType {
 	SelectMgr_FilterType_OR = 1,
 };
 
-enum SelectMgr_TypeOfDepthTolerance {
-	SelectMgr_TypeOfDepthTolerance_Uniform = 0,
-	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1,
-	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2,
+enum SelectMgr_PickingStrategy {
+	SelectMgr_PickingStrategy_FirstAcceptable = 0,
+	SelectMgr_PickingStrategy_OnlyTopmost = 1,
 };
 
 enum SelectMgr_SelectionType {
@@ -126,10 +125,11 @@ enum SelectMgr_SelectionType {
 	SelectMgr_SelectionType_Polyline = 3,
 };
 
-enum SelectMgr_TypeOfUpdate {
-	SelectMgr_TOU_Full = 0,
-	SelectMgr_TOU_Partial = 1,
-	SelectMgr_TOU_None = 2,
+enum SelectMgr_StateOfSelection {
+	SelectMgr_SOS_Any = - 2,
+	SelectMgr_SOS_Unknown = - 1,
+	SelectMgr_SOS_Deactivated = 0,
+	SelectMgr_SOS_Activated = 1,
 };
 
 enum SelectMgr_TypeOfBVHUpdate {
@@ -140,16 +140,16 @@ enum SelectMgr_TypeOfBVHUpdate {
 	SelectMgr_TBU_None = 4,
 };
 
-enum SelectMgr_StateOfSelection {
-	SelectMgr_SOS_Any = - 2,
-	SelectMgr_SOS_Unknown = - 1,
-	SelectMgr_SOS_Deactivated = 0,
-	SelectMgr_SOS_Activated = 1,
+enum SelectMgr_TypeOfDepthTolerance {
+	SelectMgr_TypeOfDepthTolerance_Uniform = 0,
+	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1,
+	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2,
 };
 
-enum SelectMgr_PickingStrategy {
-	SelectMgr_PickingStrategy_FirstAcceptable = 0,
-	SelectMgr_PickingStrategy_OnlyTopmost = 1,
+enum SelectMgr_TypeOfUpdate {
+	SelectMgr_TOU_Full = 0,
+	SelectMgr_TOU_Partial = 1,
+	SelectMgr_TOU_None = 2,
 };
 
 /* end public enums declaration */
@@ -163,13 +163,11 @@ class SelectMgr_FilterType(IntEnum):
 SelectMgr_FilterType_AND = SelectMgr_FilterType.SelectMgr_FilterType_AND
 SelectMgr_FilterType_OR = SelectMgr_FilterType.SelectMgr_FilterType_OR
 
-class SelectMgr_TypeOfDepthTolerance(IntEnum):
-	SelectMgr_TypeOfDepthTolerance_Uniform = 0
-	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1
-	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2
-SelectMgr_TypeOfDepthTolerance_Uniform = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_Uniform
-SelectMgr_TypeOfDepthTolerance_UniformPixels = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_UniformPixels
-SelectMgr_TypeOfDepthTolerance_SensitivityFactor = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_SensitivityFactor
+class SelectMgr_PickingStrategy(IntEnum):
+	SelectMgr_PickingStrategy_FirstAcceptable = 0
+	SelectMgr_PickingStrategy_OnlyTopmost = 1
+SelectMgr_PickingStrategy_FirstAcceptable = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_FirstAcceptable
+SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_OnlyTopmost
 
 class SelectMgr_SelectionType(IntEnum):
 	SelectMgr_SelectionType_Unknown = - 1
@@ -181,13 +179,15 @@ SelectMgr_SelectionType_Point = SelectMgr_SelectionType.SelectMgr_SelectionType_
 SelectMgr_SelectionType_Box = SelectMgr_SelectionType.SelectMgr_SelectionType_Box
 SelectMgr_SelectionType_Polyline = SelectMgr_SelectionType.SelectMgr_SelectionType_Polyline
 
-class SelectMgr_TypeOfUpdate(IntEnum):
-	SelectMgr_TOU_Full = 0
-	SelectMgr_TOU_Partial = 1
-	SelectMgr_TOU_None = 2
-SelectMgr_TOU_Full = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Full
-SelectMgr_TOU_Partial = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Partial
-SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
+class SelectMgr_StateOfSelection(IntEnum):
+	SelectMgr_SOS_Any = - 2
+	SelectMgr_SOS_Unknown = - 1
+	SelectMgr_SOS_Deactivated = 0
+	SelectMgr_SOS_Activated = 1
+SelectMgr_SOS_Any = SelectMgr_StateOfSelection.SelectMgr_SOS_Any
+SelectMgr_SOS_Unknown = SelectMgr_StateOfSelection.SelectMgr_SOS_Unknown
+SelectMgr_SOS_Deactivated = SelectMgr_StateOfSelection.SelectMgr_SOS_Deactivated
+SelectMgr_SOS_Activated = SelectMgr_StateOfSelection.SelectMgr_SOS_Activated
 
 class SelectMgr_TypeOfBVHUpdate(IntEnum):
 	SelectMgr_TBU_Add = 0
@@ -201,21 +201,21 @@ SelectMgr_TBU_Renew = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Renew
 SelectMgr_TBU_Invalidate = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Invalidate
 SelectMgr_TBU_None = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_None
 
-class SelectMgr_StateOfSelection(IntEnum):
-	SelectMgr_SOS_Any = - 2
-	SelectMgr_SOS_Unknown = - 1
-	SelectMgr_SOS_Deactivated = 0
-	SelectMgr_SOS_Activated = 1
-SelectMgr_SOS_Any = SelectMgr_StateOfSelection.SelectMgr_SOS_Any
-SelectMgr_SOS_Unknown = SelectMgr_StateOfSelection.SelectMgr_SOS_Unknown
-SelectMgr_SOS_Deactivated = SelectMgr_StateOfSelection.SelectMgr_SOS_Deactivated
-SelectMgr_SOS_Activated = SelectMgr_StateOfSelection.SelectMgr_SOS_Activated
+class SelectMgr_TypeOfDepthTolerance(IntEnum):
+	SelectMgr_TypeOfDepthTolerance_Uniform = 0
+	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1
+	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2
+SelectMgr_TypeOfDepthTolerance_Uniform = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_Uniform
+SelectMgr_TypeOfDepthTolerance_UniformPixels = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_UniformPixels
+SelectMgr_TypeOfDepthTolerance_SensitivityFactor = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_SensitivityFactor
 
-class SelectMgr_PickingStrategy(IntEnum):
-	SelectMgr_PickingStrategy_FirstAcceptable = 0
-	SelectMgr_PickingStrategy_OnlyTopmost = 1
-SelectMgr_PickingStrategy_FirstAcceptable = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_FirstAcceptable
-SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_OnlyTopmost
+class SelectMgr_TypeOfUpdate(IntEnum):
+	SelectMgr_TOU_Full = 0
+	SelectMgr_TOU_Partial = 1
+	SelectMgr_TOU_None = 2
+SelectMgr_TOU_Full = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Full
+SelectMgr_TOU_Partial = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Partial
+SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
 };
 /* end python proxy for enums */
 
@@ -285,19 +285,19 @@ SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_Pick
 
 /* typedefs */
 typedef SelectMgr_EntityOwner SelectBasics_EntityOwner;
-typedef NCollection_DataMap<Standard_Integer, SelectMgr_SelectingVolumeManager> SelectMgr_FrustumCache;
-typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, SelectMgr_SortCriterion, TColStd_MapTransientHasher> SelectMgr_IndexedDataMapOfOwnerCriterion;
-typedef NCollection_IndexedMap<opencascade::handle<SelectMgr_SensitiveEntity>> SelectMgr_IndexedMapOfHSensitive;
-typedef NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>> SelectMgr_IndexedMapOfOwner;
-typedef NCollection_List<opencascade::handle<SelectMgr_Filter>>::Iterator SelectMgr_ListIteratorOfListOfFilter;
-typedef NCollection_List<opencascade::handle<SelectMgr_Filter>> SelectMgr_ListOfFilter;
-typedef NCollection_DataMap<opencascade::handle<SelectMgr_SelectableObject>, opencascade::handle<SelectMgr_SensitiveEntitySet>>::Iterator SelectMgr_MapOfObjectSensitivesIterator;
-typedef NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>, Standard_Integer> SelectMgr_MapOfOwners;
-typedef NCollection_Mat4<Standard_Real> SelectMgr_Mat4;
-typedef NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> SelectMgr_SequenceOfOwner;
-typedef NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> SelectMgr_SequenceOfSelection;
-typedef NCollection_Vec3<Standard_Real> SelectMgr_Vec3;
-typedef NCollection_Vec4<Standard_Real> SelectMgr_Vec4;
+typedef NCollection_DataMap <Standard_Integer, SelectMgr_SelectingVolumeManager> SelectMgr_FrustumCache;
+typedef NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, SelectMgr_SortCriterion, TColStd_MapTransientHasher> SelectMgr_IndexedDataMapOfOwnerCriterion;
+typedef NCollection_IndexedMap <opencascade::handle <SelectMgr_SensitiveEntity>> SelectMgr_IndexedMapOfHSensitive;
+typedef NCollection_Shared<NCollection_IndexedMap <opencascade::handle <SelectMgr_EntityOwner>>> SelectMgr_IndexedMapOfOwner;
+typedef NCollection_List <opencascade::handle <SelectMgr_Filter>>::Iterator SelectMgr_ListIteratorOfListOfFilter;
+typedef NCollection_List <opencascade::handle <SelectMgr_Filter>> SelectMgr_ListOfFilter;
+typedef NCollection_DataMap <opencascade::handle <SelectMgr_SelectableObject>, opencascade::handle <SelectMgr_SensitiveEntitySet>>::Iterator SelectMgr_MapOfObjectSensitivesIterator;
+typedef NCollection_DataMap <opencascade::handle <SelectMgr_EntityOwner>, Standard_Integer> SelectMgr_MapOfOwners;
+typedef NCollection_Mat4 <Standard_Real> SelectMgr_Mat4;
+typedef NCollection_Sequence <opencascade::handle <SelectMgr_EntityOwner>> SelectMgr_SequenceOfOwner;
+typedef NCollection_Sequence <opencascade::handle <SelectMgr_Selection>> SelectMgr_SequenceOfSelection;
+typedef NCollection_Vec3 <Standard_Real> SelectMgr_Vec3;
+typedef NCollection_Vec4 <Standard_Real> SelectMgr_Vec4;
 /* end typedefs declaration */
 
 /******************
@@ -320,7 +320,7 @@ theTrsfPers: Graphic3d_TransformPers
 
 Returns
 -------
-None
+void
 ") ComputeSensitivePrs;
 		static void ComputeSensitivePrs(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theLoc, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -1024,7 +1024,7 @@ None
 		/****************** Clear ******************/
 		/**** md5 signature: d5969540eab52130ef3a242724a4b637 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the owners matching the value of the selection mode amode from the presentation manager object apm.
+		%feature("autodoc", "Clears the owners matching the value of the selection mode amode from the presentation manager object apm. /// todo.
 
 Parameters
 ----------
@@ -1927,7 +1927,7 @@ Returns
 -------
 opencascade::handle<BVH_Tree<float, 3>>
 ") BVH;
-		const opencascade::handle<BVH_Tree<Standard_Real, 3>> & BVH(BVHSubset theSubset);
+		const opencascade::handle<BVH_Tree<Standard_Real, 3>> & BVH(const BVHSubset theSubset);
 
 		/****************** ChangeSubset ******************/
 		/**** md5 signature: cbec19f3893244976644826379ec6795 ****/
@@ -1981,7 +1981,7 @@ Returns
 -------
 opencascade::handle<SelectMgr_SelectableObject>
 ") GetObjectById;
-		const opencascade::handle<SelectMgr_SelectableObject> & GetObjectById(BVHSubset theSubset, const Standard_Integer theIndex);
+		const opencascade::handle<SelectMgr_SelectableObject> & GetObjectById(const BVHSubset theSubset, const Standard_Integer theIndex);
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
@@ -2007,7 +2007,7 @@ Returns
 -------
 bool
 ") IsEmpty;
-		Standard_Boolean IsEmpty(BVHSubset theSubset);
+		Standard_Boolean IsEmpty(const BVHSubset theSubset);
 
 		/****************** MarkDirty ******************/
 		/**** md5 signature: 37381481e073d0bb85d53a543d2b10a1 ****/
@@ -2649,7 +2649,7 @@ Returns
 -------
 None
 ") SetCamera;
-		void SetCamera(const opencascade::handle<Graphic3d_Camera > theCamera);
+		void SetCamera(const opencascade::handle<Graphic3d_Camera> theCamera);
 
 		/****************** SetPixelTolerance ******************/
 		/**** md5 signature: fda084bdc0d0a8e945d1f4e82a500297 ****/
@@ -3448,7 +3448,7 @@ None
 ********************************/
 class SelectMgr_SortCriterion {
 	public:
-		opencascade::handle<Select3D_SensitiveEntity > Entity;
+		opencascade::handle<Select3D_SensitiveEntity> Entity;
 		gp_Pnt Point;
 		Graphic3d_Vec3 Normal;
 		float Depth;
@@ -3458,9 +3458,9 @@ class SelectMgr_SortCriterion {
 		int ZLayerPosition;
 		int NbOwnerMatches;
 		/****************** SelectMgr_SortCriterion ******************/
-		/**** md5 signature: 7c43477619c7a9df7500d7db5ac6145a ****/
+		/**** md5 signature: 1bfce8aa5e3dafb56f412359f61c8a17 ****/
 		%feature("compactdefaultargs") SelectMgr_SortCriterion;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "//!< overall number of entities collected for the same owner empty constructor.
 
 Returns
 -------

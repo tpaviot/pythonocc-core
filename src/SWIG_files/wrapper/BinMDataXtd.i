@@ -106,7 +106,7 @@ aMsgDrv: Message_Messenger
 
 Returns
 -------
-None
+void
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & aMsgDrv);
 
@@ -132,7 +132,7 @@ DocVersion: int
 
 Returns
 -------
-None
+void
 ") SetDocumentVersion;
 		static void SetDocumentVersion(const Standard_Integer DocVersion);
 

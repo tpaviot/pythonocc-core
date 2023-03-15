@@ -99,11 +99,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum PrsMgr_TypeOfPresentation3d {
-	PrsMgr_TOP_AllView = 0,
-	PrsMgr_TOP_ProjectorDependent = 1,
-};
-
 enum PrsMgr_DisplayStatus {
 	PrsMgr_DisplayStatus_Displayed = 0,
 	PrsMgr_DisplayStatus_Erased = 1,
@@ -113,16 +108,15 @@ enum PrsMgr_DisplayStatus {
 	AIS_DS_None = PrsMgr_DisplayStatus_None,
 };
 
+enum PrsMgr_TypeOfPresentation3d {
+	PrsMgr_TOP_AllView = 0,
+	PrsMgr_TOP_ProjectorDependent = 1,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class PrsMgr_TypeOfPresentation3d(IntEnum):
-	PrsMgr_TOP_AllView = 0
-	PrsMgr_TOP_ProjectorDependent = 1
-PrsMgr_TOP_AllView = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_AllView
-PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependent
 
 class PrsMgr_DisplayStatus(IntEnum):
 	PrsMgr_DisplayStatus_Displayed = 0
@@ -137,6 +131,12 @@ PrsMgr_DisplayStatus_None = PrsMgr_DisplayStatus.PrsMgr_DisplayStatus_None
 AIS_DS_Displayed = PrsMgr_DisplayStatus.AIS_DS_Displayed
 AIS_DS_Erased = PrsMgr_DisplayStatus.AIS_DS_Erased
 AIS_DS_None = PrsMgr_DisplayStatus.AIS_DS_None
+
+class PrsMgr_TypeOfPresentation3d(IntEnum):
+	PrsMgr_TOP_AllView = 0
+	PrsMgr_TOP_ProjectorDependent = 1
+PrsMgr_TOP_AllView = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_AllView
+PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependent
 };
 /* end python proxy for enums */
 
@@ -178,12 +178,12 @@ AIS_DS_None = PrsMgr_DisplayStatus.AIS_DS_None
 typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;
 typedef Handle_PrsMgr_PresentationManager Handle_PrsMgr_PresentationManager3d;
 typedef Graphic3d_Structure Prs3d_Presentation;
-typedef NCollection_List<opencascade::handle<PrsMgr_PresentableObject>> PrsMgr_ListOfPresentableObjects;
-typedef NCollection_List<opencascade::handle<PrsMgr_PresentableObject>>::Iterator PrsMgr_ListOfPresentableObjectsIter;
-typedef NCollection_List<opencascade::handle<Prs3d_Presentation>> PrsMgr_ListOfPresentations;
+typedef NCollection_List <opencascade::handle <PrsMgr_PresentableObject>> PrsMgr_ListOfPresentableObjects;
+typedef NCollection_List <opencascade::handle <PrsMgr_PresentableObject>>::Iterator PrsMgr_ListOfPresentableObjectsIter;
+typedef NCollection_List <opencascade::handle <Prs3d_Presentation>> PrsMgr_ListOfPresentations;
 typedef PrsMgr_Presentation PrsMgr_Presentation3d;
 typedef PrsMgr_PresentationManager PrsMgr_PresentationManager3d;
-typedef NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>> PrsMgr_Presentations;
+typedef NCollection_Sequence <opencascade::handle <PrsMgr_Presentation>> PrsMgr_Presentations;
 /* end typedefs declaration */
 
 /*********************************
@@ -256,7 +256,7 @@ None
 		/****************** Attributes ******************/
 		/**** md5 signature: 7c024beac873893f3a088f538b4ad41a ****/
 		%feature("compactdefaultargs") Attributes;
-		%feature("autodoc", "Returns the attributes settings.
+		%feature("autodoc", "@name presentation attributes returns the attributes settings.
 
 Returns
 -------
@@ -293,7 +293,7 @@ PrsMgr_ListOfPresentableObjects
 		/****************** ClipPlanes ******************/
 		/**** md5 signature: 26ab80085e76b6f03b64af6598080486 ****/
 		%feature("compactdefaultargs") ClipPlanes;
-		%feature("autodoc", "Get clip planes. returns set of previously added clip planes for all display mode presentations.
+		%feature("autodoc", "@name clipping planes get clip planes. returns set of previously added clip planes for all display mode presentations.
 
 Returns
 -------
@@ -580,7 +580,7 @@ Graphic3d_NameOfMaterial
 		/****************** Parent ******************/
 		/**** md5 signature: b281c508616907c678ce34cfa2fc8478 ****/
 		%feature("compactdefaultargs") Parent;
-		%feature("autodoc", "Returns parent of current object in scene hierarchy.
+		%feature("autodoc", "@name parent/children properties returns parent of current object in scene hierarchy.
 
 Returns
 -------
@@ -811,7 +811,7 @@ None
 		/****************** SetIsoOnTriangulation ******************/
 		/**** md5 signature: ce0a77a4be58bef84b86bf0f2501ffef ****/
 		%feature("compactdefaultargs") SetIsoOnTriangulation;
-		%feature("autodoc", "Enables or disables on-triangulation build of isolines according to the flag given.
+		%feature("autodoc", "@name simplified presentation properties api enables or disables on-triangulation build of isolines according to the flag given.
 
 Parameters
 ----------
@@ -1049,7 +1049,7 @@ bool
 		/****************** ToBeUpdated ******************/
 		/**** md5 signature: 905b5fc6f277735ff6cfd6892f9be7f4 ****/
 		%feature("compactdefaultargs") ToBeUpdated;
-		%feature("autodoc", "Gives the list of modes which are flagged 'to be updated'.
+		%feature("autodoc", "@name deprecated methods gives the list of modes which are flagged 'to be updated'.
 
 Parameters
 ----------
@@ -1075,7 +1075,7 @@ bool
 		/****************** TransformPersistence ******************/
 		/**** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ****/
 		%feature("compactdefaultargs") TransformPersistence;
-		%feature("autodoc", "Returns transformation persistence defining a special local coordinate system where this presentable object is located or null handle if not defined. position of the object having transformation persistence is mutable and depends on camera position. the same applies to a bounding box of the object. @sa graphic3d_transformpers class description.
+		%feature("autodoc", "@name object transformation returns transformation persistence defining a special local coordinate system where this presentable object is located or null handle if not defined. position of the object having transformation persistence is mutable and depends on camera position. the same applies to a bounding box of the object. @sa graphic3d_transformpers class description.
 
 Returns
 -------

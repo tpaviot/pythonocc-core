@@ -141,13 +141,13 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * MoniTool_ValueSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfShapeTransient;
-typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, MoniTool_MTHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfTimer;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_DataMapOfShapeTransient;
-typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, MoniTool_MTHasher> MoniTool_DataMapOfTimer;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_IndexedDataMapOfShapeTransient;
-typedef NCollection_Sequence<opencascade::handle<MoniTool_Element>> MoniTool_SequenceOfElement;
+typedef Standard_Boolean ( * MoniTool_ValueSatisfies ) ( const opencascade::handle <TCollection_HAsciiString>& val );
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <Standard_Transient>, TopTools_ShapeMapHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfShapeTransient;
+typedef NCollection_DataMap <Standard_CString, opencascade::handle <MoniTool_Timer>, MoniTool_MTHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfTimer;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_DataMapOfShapeTransient;
+typedef NCollection_DataMap <Standard_CString, opencascade::handle <MoniTool_Timer>, MoniTool_MTHasher> MoniTool_DataMapOfTimer;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, opencascade::handle <Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_IndexedDataMapOfShapeTransient;
+typedef NCollection_Sequence <opencascade::handle <MoniTool_Element>> MoniTool_SequenceOfElement;
 /* end typedefs declaration */
 
 /**************************
@@ -1022,7 +1022,7 @@ acode: char *
 
 Returns
 -------
-None
+void
 ") SetDefFail;
 		static void SetDefFail(const char * acode);
 
@@ -1038,7 +1038,7 @@ mesdef: char *
 
 Returns
 -------
-None
+void
 ") SetDefMsg;
 		static void SetDefMsg(const char * casecode, const char * mesdef);
 
@@ -1053,7 +1053,7 @@ acode: char *
 
 Returns
 -------
-None
+void
 ") SetDefWarning;
 		static void SetDefWarning(const char * acode);
 
@@ -1239,14 +1239,14 @@ class MoniTool_ElemHasher {
 
 Parameters
 ----------
-theElement: Handle ( MoniTool_Element )
+theElement: Handle(MoniTool_Element)
 theUpperBound: int
 
 Returns
 -------
 int
 ") HashCode;
-		static Standard_Integer HashCode(const Handle ( MoniTool_Element ) & theElement, Standard_Integer theUpperBound);
+		static Standard_Integer HashCode(const Handle(MoniTool_Element) & theElement, Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 84b993ef1cb63a485f6d39c8e686a3d8 ****/
@@ -1795,7 +1795,7 @@ float
 
 Returns
 -------
-None
+void
 ") ClearTimers;
 		static void ClearTimers();
 
@@ -1806,7 +1806,7 @@ None
 
 Returns
 -------
-None
+void
 ") ComputeAmendments;
 		static void ComputeAmendments();
 
@@ -1909,7 +1909,7 @@ name: char *
 
 Returns
 -------
-None
+void
 ") Start;
 		static void Start(const char * name);
 
@@ -1935,7 +1935,7 @@ name: char *
 
 Returns
 -------
-None
+void
 ") Stop;
 		static void Stop(const char * name);
 

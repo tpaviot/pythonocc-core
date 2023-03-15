@@ -133,7 +133,7 @@ math_NotBracketed = math_Status.math_NotBracketed
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<math_ValueAndWeight> math_Array1OfValueAndWeight;
+typedef NCollection_Array1 <math_ValueAndWeight> math_Array1OfValueAndWeight;
 /* end typedefs declaration */
 
 /*********************
@@ -157,7 +157,7 @@ Points: math_Vector
 
 Returns
 -------
-None
+void
 ") GaussPoints;
 		static void GaussPoints(const Standard_Integer Index, math_Vector & Points);
 
@@ -184,7 +184,7 @@ Weights: math_Vector
 
 Returns
 -------
-None
+void
 ") GaussWeights;
 		static void GaussWeights(const Standard_Integer Index, math_Vector & Weights);
 
@@ -960,7 +960,7 @@ None
 class math_BullardGenerator {
 	public:
 		/****************** math_BullardGenerator ******************/
-		/**** md5 signature: 07a559474d096973d7f90362f8ec9a2b ****/
+		/**** md5 signature: 8d597b3860a92063a2ea34db5354d134 ****/
 		%feature("compactdefaultargs") math_BullardGenerator;
 		%feature("autodoc", "Creates new xorshift 64-bit rng.
 
@@ -2994,9 +2994,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") GetContinuity;
-		Standard_Integer GetContinuity();
+		inline Standard_Integer GetContinuity();
 
 		/****************** GetF ******************/
 		/**** md5 signature: e2d80181d22382966f76c2b7388843b5 ****/
@@ -3005,9 +3005,9 @@ int
 
 Returns
 -------
-float
+inline float
 ") GetF;
-		Standard_Real GetF();
+		inline Standard_Real GetF();
 
 		/****************** GetFunctionalMinimalValue ******************/
 		/**** md5 signature: 3fda6f005c0b7a9cc05bcc067e5af42a ****/
@@ -3016,9 +3016,9 @@ float
 
 Returns
 -------
-float
+inline float
 ") GetFunctionalMinimalValue;
-		Standard_Real GetFunctionalMinimalValue();
+		inline Standard_Real GetFunctionalMinimalValue();
 
 		/****************** GetLipConstState ******************/
 		/**** md5 signature: c4288e61ff39bf6e928aa9d8e66b8b8e ****/
@@ -3027,9 +3027,9 @@ float
 
 Returns
 -------
-bool
+inline bool
 ") GetLipConstState;
-		Standard_Boolean GetLipConstState();
+		inline Standard_Boolean GetLipConstState();
 
 		/****************** GetTol ******************/
 		/**** md5 signature: 93891d3ae67f7376cfc9fdc8a29db359 ****/
@@ -3053,9 +3053,9 @@ theSameTol: float
 
 Returns
 -------
-int
+inline int
 ") NbExtrema;
-		Standard_Integer NbExtrema();
+		inline Standard_Integer NbExtrema();
 
 		/****************** Perform ******************/
 		/**** md5 signature: 10db8f17c813777ba5d8d5249b5e8807 ****/
@@ -3100,9 +3100,9 @@ theCont: int
 
 Returns
 -------
-None
+inline void
 ") SetContinuity;
-		void SetContinuity(const Standard_Integer theCont);
+		inline void SetContinuity(const Standard_Integer theCont);
 
 		/****************** SetFunctionalMinimalValue ******************/
 		/**** md5 signature: 29b24164c13be9e8a33b2433d137b35b ****/
@@ -3115,9 +3115,9 @@ theMinimalValue: float
 
 Returns
 -------
-None
+inline void
 ") SetFunctionalMinimalValue;
-		void SetFunctionalMinimalValue(const Standard_Real theMinimalValue);
+		inline void SetFunctionalMinimalValue(const Standard_Real theMinimalValue);
 
 		/****************** SetGlobalParams ******************/
 		/**** md5 signature: 1e821fc9cd49a39a8aa5598e35144696 ****/
@@ -3153,9 +3153,9 @@ theFlag: bool
 
 Returns
 -------
-None
+inline void
 ") SetLipConstState;
-		void SetLipConstState(const Standard_Boolean theFlag);
+		inline void SetLipConstState(const Standard_Boolean theFlag);
 
 		/****************** SetLocalParams ******************/
 		/**** md5 signature: 97018be93cbbbef470df3a2b89577642 ****/
@@ -3196,9 +3196,9 @@ None
 
 Returns
 -------
-bool
+inline bool
 ") isDone;
-		Standard_Boolean isDone();
+		inline Standard_Boolean isDone();
 
 };
 
@@ -3511,9 +3511,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") Length;
-		Standard_Integer Length();
+		inline Standard_Integer Length();
 
 		/****************** Lower ******************/
 		/**** md5 signature: 6c38bb0c1489e359c874ded75054c1be ****/
@@ -3522,9 +3522,9 @@ int
 
 Returns
 -------
-int
+inline int
 ") Lower;
-		Standard_Integer Lower();
+		inline Standard_Integer Lower();
 
 		/****************** Max ******************/
 		/**** md5 signature: 470538a8afd0d98566fced0034decdc6 ****/
@@ -3743,9 +3743,9 @@ math_IntegerVector
 
 Returns
 -------
-int
+inline int
 ") Upper;
-		Standard_Integer Upper();
+		inline Standard_Integer Upper();
 
 		/****************** Value ******************/
 		/**** md5 signature: a737b7e1628947c8b4a6110611c56acb ****/
@@ -3762,19 +3762,21 @@ int
 ") Value;
 		const Standard_Integer & Value(const Standard_Integer theNum);
 
+		/****************** Value ******************/
+		/**** md5 signature: c9b65a1302549af23981f221501c017e ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "Accesses (in read or write mode) the value of index thenum of an integervector.
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetValue(const Standard_Integer theNum) {
-            return (Standard_Integer) $self->Value(theNum);
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetValue(const Standard_Integer theNum,Standard_Integer value) {
-            $self->Value(theNum)=value;
-            }
-        };
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+inline int
+") Value;
+		inline Standard_Integer & Value(const Standard_Integer theNum);
+
 		/****************** operator * ******************/
 		/**** md5 signature: eb8b881a959d28e5cbc50023c6d0165b ****/
 		%feature("compactdefaultargs") operator *;
@@ -6268,7 +6270,7 @@ math_Vector
 class math_ValueAndWeight {
 	public:
 		/****************** math_ValueAndWeight ******************/
-		/**** md5 signature: c4cb905212fb4ef5bdeb4a4ab2ec90a9 ****/
+		/**** md5 signature: 3d5bc96909315a25383c107d90b82a72 ****/
 		%feature("compactdefaultargs") math_ValueAndWeight;
 		%feature("autodoc", "No available documentation.
 
@@ -6279,7 +6281,7 @@ None
 		 math_ValueAndWeight();
 
 		/****************** math_ValueAndWeight ******************/
-		/**** md5 signature: 96e398fa5fd0fba94549e32703ffcb63 ****/
+		/**** md5 signature: 6b38e10aaf95011578583e31571ed71c ****/
 		%feature("compactdefaultargs") math_ValueAndWeight;
 		%feature("autodoc", "No available documentation.
 
@@ -6568,9 +6570,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") Length;
-		Standard_Integer Length();
+		inline Standard_Integer Length();
 
 		/****************** Lower ******************/
 		/**** md5 signature: 6c38bb0c1489e359c874ded75054c1be ****/
@@ -6579,9 +6581,9 @@ int
 
 Returns
 -------
-int
+inline int
 ") Lower;
-		Standard_Integer Lower();
+		inline Standard_Integer Lower();
 
 		/****************** Max ******************/
 		/**** md5 signature: 470538a8afd0d98566fced0034decdc6 ****/
@@ -6901,9 +6903,9 @@ None
 
 Returns
 -------
-int
+inline int
 ") Upper;
-		Standard_Integer Upper();
+		inline Standard_Integer Upper();
 
 		/****************** Value ******************/
 		/**** md5 signature: 51ca32c5ce4b1bce383f158e12c2ed93 ****/
@@ -6920,19 +6922,21 @@ float
 ") Value;
 		const Standard_Real & Value(const Standard_Integer theNum);
 
+		/****************** Value ******************/
+		/**** md5 signature: cfb88b53cc888ee0ccbdfa05f0e0b0d7 ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "Accesses (in read or write mode) the value of index 'thenum' of a vector.
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetValue(const Standard_Integer theNum) {
-            return (Standard_Real) $self->Value(theNum);
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetValue(const Standard_Integer theNum,Standard_Real value) {
-            $self->Value(theNum)=value;
-            }
-        };
+Parameters
+----------
+theNum: int
+
+Returns
+-------
+inline float
+") Value;
+		inline Standard_Real & Value(const Standard_Integer theNum);
+
 		/****************** operator * ******************/
 		/**** md5 signature: 37cd52b96c4154ef3556979c35376966 ****/
 		%feature("compactdefaultargs") operator *;
@@ -7403,7 +7407,7 @@ F: float
 class math_TrigonometricEquationFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** math_TrigonometricEquationFunction ******************/
-		/**** md5 signature: 141c3811e3d80f125700d93b57169917 ****/
+		/**** md5 signature: c555d2b049ad5a4c18cf87e4e07d6472 ****/
 		%feature("compactdefaultargs") math_TrigonometricEquationFunction;
 		%feature("autodoc", "No available documentation.
 

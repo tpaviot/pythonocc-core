@@ -122,8 +122,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyComponent>> STEPSelections_SequenceOfAssemblyComponent;
-typedef NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>> STEPSelections_SequenceOfAssemblyLink;
+typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyComponent>> STEPSelections_SequenceOfAssemblyComponent;
+typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyLink>> STEPSelections_SequenceOfAssemblyLink;
 /* end typedefs declaration */
 
 /*****************************************

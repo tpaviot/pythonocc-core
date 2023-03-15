@@ -149,12 +149,12 @@ Select3D_TOS_BOUNDARY = Select3D_TypeOfSensitivity.Select3D_TOS_BOUNDARY
 /* end templates declaration */
 
 /* typedefs */
-typedef BVH_Builder<Standard_Real, 3> Select3D_BVHBuilder3d;
-typedef NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>> Select3D_EntitySequence;
-typedef NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>>::Iterator Select3D_EntitySequenceIter;
-typedef NCollection_IndexedMap<opencascade::handle<Select3D_SensitiveEntity>> Select3D_IndexedMapOfEntity;
-typedef NCollection_Vec3<Standard_Real> Select3D_Vec3;
-typedef NCollection_Vector<opencascade::handle<Select3D_SensitivePoly>> Select3D_VectorOfHPoly;
+typedef BVH_Builder <Standard_Real, 3> Select3D_BVHBuilder3d;
+typedef NCollection_Sequence <opencascade::handle <Select3D_SensitiveEntity>> Select3D_EntitySequence;
+typedef NCollection_Sequence <opencascade::handle <Select3D_SensitiveEntity>>::Iterator Select3D_EntitySequenceIter;
+typedef NCollection_IndexedMap <opencascade::handle <Select3D_SensitiveEntity>> Select3D_IndexedMapOfEntity;
+typedef NCollection_Vec3 <Standard_Real> Select3D_Vec3;
+typedef NCollection_Vector <opencascade::handle <Select3D_SensitivePoly>> Select3D_VectorOfHPoly;
 typedef Select3D_SensitiveEntity SelectBasics_SensitiveEntity;
 /* end typedefs declaration */
 
@@ -164,7 +164,7 @@ typedef Select3D_SensitiveEntity SelectBasics_SensitiveEntity;
 class Select3D_BVHIndexBuffer : public Graphic3d_Buffer {
 	public:
 		/****************** Select3D_BVHIndexBuffer ******************/
-		/**** md5 signature: 9c6a695201e9d6a1c47446f6ab981c91 ****/
+		/**** md5 signature: a4a8c033252872780e6c90e77ab46156 ****/
 		%feature("compactdefaultargs") Select3D_BVHIndexBuffer;
 		%feature("autodoc", "Empty constructor.
 
@@ -302,7 +302,7 @@ class Select3D_Pnt {
 class Select3D_PointData {
 	public:
 		/****************** Select3D_PointData ******************/
-		/**** md5 signature: 85c98e02ccdc6aa842a8add8fc9ae869 ****/
+		/**** md5 signature: 57f7800572aa06a983e1c60dc6c6112e ****/
 		%feature("compactdefaultargs") Select3D_PointData;
 		%feature("autodoc", "No available documentation.
 
@@ -2988,7 +2988,7 @@ None
 class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 	public:
 		/****************** Select3D_SensitiveCurve ******************/
-		/**** md5 signature: c9a40bfe5b28b7b974abc3c2b3e80be9 ****/
+		/**** md5 signature: 4b0d263b043be9554f9a56ac567f0c92 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
 		%feature("autodoc", "Constructs a sensitive curve object defined by the owner theownerid, the curve thecurve, and the maximum number of points on the curve: thenbpnts.
 

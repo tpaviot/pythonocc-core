@@ -96,7 +96,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") ConeD0;
 		static void ConeD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P);
 
@@ -118,7 +118,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") ConeD1;
 		static void ConeD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -143,7 +143,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") ConeD2;
 		static void ConeD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -172,7 +172,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") ConeD3;
 		static void ConeD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -286,7 +286,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") CylinderD0;
 		static void CylinderD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P);
 
@@ -307,7 +307,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") CylinderD1;
 		static void CylinderD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -331,7 +331,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") CylinderD2;
 		static void CylinderD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -359,7 +359,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") CylinderD3;
 		static void CylinderD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -467,7 +467,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, gp_Pnt & P);
 
@@ -485,7 +485,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P);
 
@@ -503,7 +503,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P);
 
@@ -521,7 +521,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P);
 
@@ -539,7 +539,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P);
 
@@ -559,7 +559,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -579,7 +579,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -599,7 +599,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -619,7 +619,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -639,7 +639,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -662,7 +662,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -685,7 +685,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -708,7 +708,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -731,7 +731,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -758,7 +758,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -785,7 +785,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -812,7 +812,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -839,7 +839,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -1037,7 +1037,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") PlaneD0;
 		static void PlaneD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, gp_Pnt & P);
 
@@ -1057,7 +1057,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") PlaneD1;
 		static void PlaneD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -1161,7 +1161,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") SphereD0;
 		static void SphereD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P);
 
@@ -1182,7 +1182,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") SphereD1;
 		static void SphereD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -1206,7 +1206,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") SphereD2;
 		static void SphereD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -1234,7 +1234,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") SphereD3;
 		static void SphereD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -1344,7 +1344,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") TorusD0;
 		static void TorusD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P);
 
@@ -1366,7 +1366,7 @@ Vv: gp_Vec
 
 Returns
 -------
-None
+void
 ") TorusD1;
 		static void TorusD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -1391,7 +1391,7 @@ Vuv: gp_Vec
 
 Returns
 -------
-None
+void
 ") TorusD2;
 		static void TorusD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -1420,7 +1420,7 @@ Vuvv: gp_Vec
 
 Returns
 -------
-None
+void
 ") TorusD3;
 		static void TorusD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 

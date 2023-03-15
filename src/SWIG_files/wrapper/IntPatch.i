@@ -81,15 +81,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum IntPatch_SpecPntType {
-	IntPatch_SPntNone = 0,
-	IntPatch_SPntSeamU = 1,
-	IntPatch_SPntSeamV = 2,
-	IntPatch_SPntSeamUV = 3,
-	IntPatch_SPntPoleSeamU = 4,
-	IntPatch_SPntPole = 5,
-};
-
 enum IntPatch_IType {
 	IntPatch_Lin = 0,
 	IntPatch_Circle = 1,
@@ -101,24 +92,19 @@ enum IntPatch_IType {
 	IntPatch_Restriction = 7,
 };
 
+enum IntPatch_SpecPntType {
+	IntPatch_SPntNone = 0,
+	IntPatch_SPntSeamU = 1,
+	IntPatch_SPntSeamV = 2,
+	IntPatch_SPntSeamUV = 3,
+	IntPatch_SPntPoleSeamU = 4,
+	IntPatch_SPntPole = 5,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class IntPatch_SpecPntType(IntEnum):
-	IntPatch_SPntNone = 0
-	IntPatch_SPntSeamU = 1
-	IntPatch_SPntSeamV = 2
-	IntPatch_SPntSeamUV = 3
-	IntPatch_SPntPoleSeamU = 4
-	IntPatch_SPntPole = 5
-IntPatch_SPntNone = IntPatch_SpecPntType.IntPatch_SPntNone
-IntPatch_SPntSeamU = IntPatch_SpecPntType.IntPatch_SPntSeamU
-IntPatch_SPntSeamV = IntPatch_SpecPntType.IntPatch_SPntSeamV
-IntPatch_SPntSeamUV = IntPatch_SpecPntType.IntPatch_SPntSeamUV
-IntPatch_SPntPoleSeamU = IntPatch_SpecPntType.IntPatch_SPntPoleSeamU
-IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 
 class IntPatch_IType(IntEnum):
 	IntPatch_Lin = 0
@@ -137,6 +123,20 @@ IntPatch_Hyperbola = IntPatch_IType.IntPatch_Hyperbola
 IntPatch_Analytic = IntPatch_IType.IntPatch_Analytic
 IntPatch_Walking = IntPatch_IType.IntPatch_Walking
 IntPatch_Restriction = IntPatch_IType.IntPatch_Restriction
+
+class IntPatch_SpecPntType(IntEnum):
+	IntPatch_SPntNone = 0
+	IntPatch_SPntSeamU = 1
+	IntPatch_SPntSeamV = 2
+	IntPatch_SPntSeamUV = 3
+	IntPatch_SPntPoleSeamU = 4
+	IntPatch_SPntPole = 5
+IntPatch_SPntNone = IntPatch_SpecPntType.IntPatch_SPntNone
+IntPatch_SPntSeamU = IntPatch_SpecPntType.IntPatch_SPntSeamU
+IntPatch_SPntSeamV = IntPatch_SpecPntType.IntPatch_SPntSeamV
+IntPatch_SPntSeamUV = IntPatch_SpecPntType.IntPatch_SPntSeamUV
+IntPatch_SPntPoleSeamU = IntPatch_SpecPntType.IntPatch_SPntPoleSeamU
+IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 };
 /* end python proxy for enums */
 
@@ -195,11 +195,11 @@ IntPatch_Restriction = IntPatch_IType.IntPatch_Restriction
 
 /* typedefs */
 typedef Intf_InterferencePolygon2d IntPatch_SearchPnt;
-typedef NCollection_Sequence<opencascade::handle<IntPatch_TheIWLineOfTheIWalking>> IntPatch_SequenceOfIWLineOfTheIWalking;
-typedef NCollection_Sequence<opencascade::handle<IntPatch_Line>> IntPatch_SequenceOfLine;
-typedef NCollection_Sequence<IntPatch_ThePathPointOfTheSOnBounds> IntPatch_SequenceOfPathPointOfTheSOnBounds;
-typedef NCollection_Sequence<IntPatch_Point> IntPatch_SequenceOfPoint;
-typedef NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds> IntPatch_SequenceOfSegmentOfTheSOnBounds;
+typedef NCollection_Sequence <opencascade::handle <IntPatch_TheIWLineOfTheIWalking>> IntPatch_SequenceOfIWLineOfTheIWalking;
+typedef NCollection_Sequence <opencascade::handle <IntPatch_Line>> IntPatch_SequenceOfLine;
+typedef NCollection_Sequence <IntPatch_ThePathPointOfTheSOnBounds> IntPatch_SequenceOfPathPointOfTheSOnBounds;
+typedef NCollection_Sequence <IntPatch_Point> IntPatch_SequenceOfPoint;
+typedef NCollection_Sequence <IntPatch_TheSegmentOfTheSOnBounds> IntPatch_SequenceOfSegmentOfTheSOnBounds;
 /* end typedefs declaration */
 
 /******************************
@@ -912,7 +912,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -930,7 +930,7 @@ V: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -949,7 +949,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -969,7 +969,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1063,7 +1063,7 @@ S: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1592,7 +1592,7 @@ V: Adaptor3d_HVertex
 
 Returns
 -------
-None
+void
 ") Vertex;
 		static void Vertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -2347,9 +2347,9 @@ theSeqHS2: Adaptor3d_Surface
 
 Returns
 -------
-None
+void
 ") PrepareSurfaces;
-		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const Standard_Real Tol, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS1, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS2);
+		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const Standard_Real Tol, NCollection_Vector< opencascade::handle<Adaptor3d_Surface> > & theSeqHS1, NCollection_Vector< opencascade::handle<Adaptor3d_Surface> > & theSeqHS2);
 
 		/****************** SequenceOfLine ******************/
 		/**** md5 signature: 7663267a72cef685d6565935e73efb0a ****/
@@ -3877,7 +3877,7 @@ Tol: float
 
 Returns
 -------
-None
+void
 ") PutVertexOnLine;
 		static void PutVertexOnLine(const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const opencascade::handle<Adaptor3d_Surface> & OtherSurf, const Standard_Boolean OnFirst, const Standard_Real Tol);
 
@@ -3980,7 +3980,7 @@ theVertex: IntPatch_Point *,optional
 
 Returns
 -------
-None
+void
 ") AdjustPointAndVertex;
 		static void AdjustPointAndVertex(const IntSurf_PntOn2S & theRefPoint, const Standard_Real theArrPeriods[4], IntSurf_PntOn2S & theNewPoint, IntPatch_Point * const theVertex = 0);
 
@@ -5374,7 +5374,7 @@ theListOfCriticalPoints: NCollection_List<gp_Pnt>
 
 Returns
 -------
-None
+void
 ") ExtendTwoWLines;
 		static void ExtendTwoWLines(IntPatch_SequenceOfLine & theSlin, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Real theToler3D, const Standard_Real * const theArrPeriods, const Bnd_Box2d & theBoxS1, const Bnd_Box2d & theBoxS2, const NCollection_List<gp_Pnt> & theListOfCriticalPoints);
 
@@ -5393,9 +5393,9 @@ theTol3D: float
 
 Returns
 -------
-None
+void
 ") JoinWLines;
-		static void JoinWLines(IntPatch_SequenceOfLine & theSlin, IntPatch_SequenceOfPoint & theSPnt, opencascade::handle<Adaptor3d_Surface > theS1, opencascade::handle<Adaptor3d_Surface > theS2, const Standard_Real theTol3D);
+		static void JoinWLines(IntPatch_SequenceOfLine & theSlin, IntPatch_SequenceOfPoint & theSPnt, opencascade::handle<Adaptor3d_Surface> theS1, opencascade::handle<Adaptor3d_Surface> theS2, const Standard_Real theTol3D);
 
 };
 
@@ -7364,9 +7364,9 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Returns
 -------
-IntPatch_WLine::IntPatch_WLType
+IntPatch_WLType
 ") GetCreatingWay;
-		IntPatch_WLine::IntPatch_WLType GetCreatingWay();
+		IntPatch_WLType GetCreatingWay();
 
 		/****************** HasArcOnS1 ******************/
 		/**** md5 signature: 8868354e4f346cdb153201e572da56df ****/

@@ -125,7 +125,7 @@ int
 class SelectBasics_PickResult {
 	public:
 		/****************** SelectBasics_PickResult ******************/
-		/**** md5 signature: 70c24972c2e1acb414eec1dcb85de08a ****/
+		/**** md5 signature: d4953d2d706121003b9d367b1d442448 ****/
 		%feature("compactdefaultargs") SelectBasics_PickResult;
 		%feature("autodoc", "Empty constructor defining an invalid result.
 
@@ -136,7 +136,7 @@ None
 		 SelectBasics_PickResult();
 
 		/****************** SelectBasics_PickResult ******************/
-		/**** md5 signature: efe0549d557fe14d14d3bce83544927e ****/
+		/**** md5 signature: b9657181c4fe266c1d161562fd84c1f3 ****/
 		%feature("compactdefaultargs") SelectBasics_PickResult;
 		%feature("autodoc", "Constructor with initialization.
 

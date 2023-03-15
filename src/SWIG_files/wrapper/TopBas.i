@@ -82,8 +82,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<TopBas_TestInterference>::Iterator TopBas_ListIteratorOfListOfTestInterference;
-typedef NCollection_List<TopBas_TestInterference> TopBas_ListOfTestInterference;
+typedef NCollection_List <TopBas_TestInterference>::Iterator TopBas_ListIteratorOfListOfTestInterference;
+typedef NCollection_List <TopBas_TestInterference> TopBas_ListOfTestInterference;
 /* end typedefs declaration */
 
 /********************************

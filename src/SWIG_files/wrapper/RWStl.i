@@ -207,7 +207,7 @@ theProgress: Message_ProgressRange,optional
 
 Returns
 -------
-None
+void
 ") ReadFile;
 		static void ReadFile(const char * theFile, const Standard_Real theMergeAngle, NCollection_Sequence<opencascade::handle<Poly_Triangulation> > & theTriangList, const Message_ProgressRange & theProgress = Message_ProgressRange());
 

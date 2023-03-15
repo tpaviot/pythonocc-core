@@ -1696,7 +1696,7 @@ Quantity_TOC_CIELch = Quantity_TypeOfColor.Quantity_TOC_CIELch
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<Quantity_Color> Quantity_Array1OfColor;
+typedef NCollection_Array1 <Quantity_Color> Quantity_Array1OfColor;
 /* end typedefs declaration */
 
 /***********************
@@ -1705,7 +1705,7 @@ typedef NCollection_Array1<Quantity_Color> Quantity_Array1OfColor;
 class Quantity_Color {
 	public:
 		/****************** Quantity_Color ******************/
-		/**** md5 signature: be3aca6a0556dca0b09770f68f4af1d3 ****/
+		/**** md5 signature: 869f14acc1eafa07d8794175c12e3344 ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Creates quantity_noc_yellow color (for historical reasons).
 
@@ -1716,7 +1716,7 @@ None
 		 Quantity_Color();
 
 		/****************** Quantity_Color ******************/
-		/**** md5 signature: f0161d09513393232661f2e54de12943 ****/
+		/**** md5 signature: f0f7228c0fbd6b55a51f51dceee46940 ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Creates the color from enumeration value.
 
@@ -1775,7 +1775,7 @@ theColor: Quantity_Color
 
 Returns
 -------
-None
+void
 ") Argb2color;
 		static void Argb2color(const Standard_Integer theARGB, Quantity_Color & theColor);
 
@@ -1838,7 +1838,7 @@ theARGB: int
 		/****************** ColorFromHex ******************/
 		/**** md5 signature: cf1c58e7652e94fdb05ddd8062f56f58 ****/
 		%feature("compactdefaultargs") ColorFromHex;
-		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short srgb color, or '#ffff00' for srgb color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing returns true if parsing was successful, or false otherwise.
+		%feature("autodoc", "//!@name routines converting colors between different encodings and color spaces parses the string as a hex color (like '#ff0' for short srgb color, or '#ffff00' for srgb color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing returns true if parsing was successful, or false otherwise.
 
 Parameters
 ----------
@@ -1910,9 +1910,9 @@ theHls: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_HLS_To_LinearRGB;
-		static NCollection_Vec3<float > Convert_HLS_To_LinearRGB(const NCollection_Vec3<float> & theHls);
+		static NCollection_Vec3<float> Convert_HLS_To_LinearRGB(const NCollection_Vec3<float> & theHls);
 
 		/****************** Convert_HLS_To_sRGB ******************/
 		/**** md5 signature: 095c9406fed75ba28043396b6c9b6758 ****/
@@ -1925,9 +1925,9 @@ theHls: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_HLS_To_sRGB;
-		static NCollection_Vec3<float > Convert_HLS_To_sRGB(const NCollection_Vec3<float> & theHls);
+		static NCollection_Vec3<float> Convert_HLS_To_sRGB(const NCollection_Vec3<float> & theHls);
 
 		/****************** Convert_Lab_To_Lch ******************/
 		/**** md5 signature: e314508d514e40178da8ccabfdeb089b ****/
@@ -1940,9 +1940,9 @@ theLab: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_Lab_To_Lch;
-		static NCollection_Vec3<float > Convert_Lab_To_Lch(const NCollection_Vec3<float> & theLab);
+		static NCollection_Vec3<float> Convert_Lab_To_Lch(const NCollection_Vec3<float> & theLab);
 
 		/****************** Convert_Lab_To_LinearRGB ******************/
 		/**** md5 signature: 0c6c4ddf5406866b32ec261b1cf94f21 ****/
@@ -1955,9 +1955,9 @@ theLab: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_Lab_To_LinearRGB;
-		static NCollection_Vec3<float > Convert_Lab_To_LinearRGB(const NCollection_Vec3<float> & theLab);
+		static NCollection_Vec3<float> Convert_Lab_To_LinearRGB(const NCollection_Vec3<float> & theLab);
 
 		/****************** Convert_Lch_To_Lab ******************/
 		/**** md5 signature: 93c1edbe958133c9e09bbde022485a6e ****/
@@ -1970,9 +1970,9 @@ theLch: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_Lch_To_Lab;
-		static NCollection_Vec3<float > Convert_Lch_To_Lab(const NCollection_Vec3<float> & theLch);
+		static NCollection_Vec3<float> Convert_Lch_To_Lab(const NCollection_Vec3<float> & theLch);
 
 		/****************** Convert_LinearRGB_To_HLS ******************/
 		/**** md5 signature: 16cdb7ddc80e4228e4c30cc99fd6fa04 ****/
@@ -1985,9 +1985,9 @@ theRgb: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_LinearRGB_To_HLS;
-		static NCollection_Vec3<float > Convert_LinearRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
+		static NCollection_Vec3<float> Convert_LinearRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
 
 		/****************** Convert_LinearRGB_To_Lab ******************/
 		/**** md5 signature: 5b247b8dd24d09dc3abd0bc17e08ae67 ****/
@@ -2000,9 +2000,9 @@ theRgb: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_LinearRGB_To_Lab;
-		static NCollection_Vec3<float > Convert_LinearRGB_To_Lab(const NCollection_Vec3<float> & theRgb);
+		static NCollection_Vec3<float> Convert_LinearRGB_To_Lab(const NCollection_Vec3<float> & theRgb);
 
 		/****************** Convert_LinearRGB_To_sRGB ******************/
 		/**** md5 signature: 8dcd1cbe2cd85f9b32805bba2ca210be ****/
@@ -2060,9 +2060,9 @@ theRGB: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_LinearRGB_To_sRGB_approx22;
-		static NCollection_Vec3<float > Convert_LinearRGB_To_sRGB_approx22(const NCollection_Vec3<float> & theRGB);
+		static NCollection_Vec3<float> Convert_LinearRGB_To_sRGB_approx22(const NCollection_Vec3<float> & theRGB);
 
 		/****************** Convert_sRGB_To_HLS ******************/
 		/**** md5 signature: 5cfa409cdac941c7bf488327c5b613f6 ****/
@@ -2075,9 +2075,9 @@ theRgb: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_sRGB_To_HLS;
-		static NCollection_Vec3<float > Convert_sRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
+		static NCollection_Vec3<float> Convert_sRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
 
 		/****************** Convert_sRGB_To_LinearRGB ******************/
 		/**** md5 signature: a18f3040739c19cc49070bdc1babfdd2 ****/
@@ -2135,9 +2135,9 @@ theRGB: NCollection_Vec3<float>
 
 Returns
 -------
-NCollection_Vec3<float >
+NCollection_Vec3<float>
 ") Convert_sRGB_To_LinearRGB_approx22;
-		static NCollection_Vec3<float > Convert_sRGB_To_LinearRGB_approx22(const NCollection_Vec3<float> & theRGB);
+		static NCollection_Vec3<float> Convert_sRGB_To_LinearRGB_approx22(const NCollection_Vec3<float> & theRGB);
 
 		/****************** Delta ******************/
 		/**** md5 signature: 66117996530d1f4401730a3a02cdeaff ****/
@@ -2392,7 +2392,7 @@ theEpsilon: float
 
 Returns
 -------
-None
+void
 ") SetEpsilon;
 		static void SetEpsilon(const Standard_Real theEpsilon);
 
@@ -2565,7 +2565,7 @@ bool
 class Quantity_ColorRGBA {
 	public:
 		/****************** Quantity_ColorRGBA ******************/
-		/**** md5 signature: 59cdeedded54e4a79897a6a11ec68037 ****/
+		/**** md5 signature: ad0ba7494830bb5ad1fe58b317db9147 ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates a color with the default value.
 
@@ -2576,7 +2576,7 @@ None
 		 Quantity_ColorRGBA();
 
 		/****************** Quantity_ColorRGBA ******************/
-		/**** md5 signature: c2578e3af784ca8c36479364834b45cf ****/
+		/**** md5 signature: 7cbc48b539af18c18083ad26ae247be2 ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color with specified rgb value.
 
@@ -2591,7 +2591,7 @@ None
 		 Quantity_ColorRGBA(const Quantity_Color & theRgb);
 
 		/****************** Quantity_ColorRGBA ******************/
-		/**** md5 signature: 12805420d06dcf56a46265f53218218a ****/
+		/**** md5 signature: c50e047093ee4e252ba977cec486d681 ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color with specified rgba values.
 
@@ -2607,7 +2607,7 @@ None
 		 Quantity_ColorRGBA(const Quantity_Color & theRgb, float theAlpha);
 
 		/****************** Quantity_ColorRGBA ******************/
-		/**** md5 signature: 169a4fc643fdae14510d92bffe1581fe ****/
+		/**** md5 signature: 4c36961c3af2a6cbf20792b2b6b6bfce ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color from rgba vector.
 
@@ -2622,7 +2622,7 @@ None
 		 Quantity_ColorRGBA(const NCollection_Vec4<float> & theRgba);
 
 		/****************** Quantity_ColorRGBA ******************/
-		/**** md5 signature: 8bf5ac0c566506e4521f2e554e6547b7 ****/
+		/**** md5 signature: bff00804c5c6c21425c1ff5f5eda89d5 ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color from rgba values.
 
@@ -2723,9 +2723,9 @@ theRGB: NCollection_Vec4<float>
 
 Returns
 -------
-NCollection_Vec4<float >
+NCollection_Vec4<float>
 ") Convert_LinearRGB_To_sRGB;
-		static NCollection_Vec4<float > Convert_LinearRGB_To_sRGB(const NCollection_Vec4<float> & theRGB);
+		static NCollection_Vec4<float> Convert_LinearRGB_To_sRGB(const NCollection_Vec4<float> & theRGB);
 
 		/****************** Convert_sRGB_To_LinearRGB ******************/
 		/**** md5 signature: e316739a87cd6eed8dbd55e011cb4328 ****/
@@ -2738,9 +2738,9 @@ theRGB: NCollection_Vec4<float>
 
 Returns
 -------
-NCollection_Vec4<float >
+NCollection_Vec4<float>
 ") Convert_sRGB_To_LinearRGB;
-		static NCollection_Vec4<float > Convert_sRGB_To_LinearRGB(const NCollection_Vec4<float> & theRGB);
+		static NCollection_Vec4<float> Convert_sRGB_To_LinearRGB(const NCollection_Vec4<float> & theRGB);
 
 
             %feature("autodoc", "1");

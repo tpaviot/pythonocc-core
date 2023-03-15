@@ -118,9 +118,9 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<Standard_ShortReal> TShort_Array1OfShortReal;
-typedef NCollection_Array2<Standard_ShortReal> TShort_Array2OfShortReal;
-typedef NCollection_Sequence<Standard_ShortReal> TShort_SequenceOfShortReal;
+typedef NCollection_Array1 <Standard_ShortReal> TShort_Array1OfShortReal;
+typedef NCollection_Array2 <Standard_ShortReal> TShort_Array2OfShortReal;
+typedef NCollection_Sequence <Standard_ShortReal> TShort_SequenceOfShortReal;
 /* end typedefs declaration */
 
 /* harray1 classes */

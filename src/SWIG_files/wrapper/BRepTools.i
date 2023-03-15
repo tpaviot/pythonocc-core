@@ -106,8 +106,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, TColgp_SequenceOfPnt2d, TopTools_ShapeMapHasher>::Iterator BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
-typedef NCollection_DataMap<TopoDS_Shape, TColgp_SequenceOfPnt2d, TopTools_ShapeMapHasher> BRepTools_MapOfVertexPnt2d;
+typedef NCollection_DataMap <TopoDS_Shape, TColgp_SequenceOfPnt2d, TopTools_ShapeMapHasher>::Iterator BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
+typedef NCollection_DataMap <TopoDS_Shape, TColgp_SequenceOfPnt2d, TopTools_ShapeMapHasher> BRepTools_MapOfVertexPnt2d;
 /* end typedefs declaration */
 
 /******************
@@ -146,7 +146,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, Bnd_Box2d & B);
 
@@ -163,7 +163,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, const TopoDS_Wire & W, Bnd_Box2d & B);
 
@@ -180,7 +180,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Bnd_Box2d & B);
 
@@ -196,7 +196,7 @@ theProblemShapes: TopTools_ListOfShape
 
 Returns
 -------
-None
+void
 ") CheckLocations;
 		static void CheckLocations(const TopoDS_Shape & theS, TopTools_ListOfShape & theProblemShapes);
 
@@ -213,7 +213,7 @@ theForce: bool,optional
 
 Returns
 -------
-None
+void
 ") Clean;
 		static void Clean(const TopoDS_Shape & theShape, const Standard_Boolean theForce = Standard_False);
 
@@ -228,7 +228,7 @@ theShape: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") CleanGeometry;
 		static void CleanGeometry(const TopoDS_Shape & theShape);
 
@@ -298,7 +298,7 @@ Returns
 -------
 float
 ") EvalAndUpdateTol;
-		static Standard_Real EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve > theC2d, const opencascade::handle<Geom_Surface> & theS, const Standard_Real theF, const Standard_Real theL);
+		static Standard_Real EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve> theC2d, const opencascade::handle<Geom_Surface> & theS, const Standard_Real theF, const Standard_Real theL);
 
 		/****************** IsReallyClosed ******************/
 		/**** md5 signature: d361112f12ce86c3a572783eb22c3dcb ****/
@@ -366,7 +366,7 @@ M: TopTools_IndexedMapOfShape
 
 Returns
 -------
-None
+void
 ") Map3DEdges;
 		static void Map3DEdges(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
 
@@ -433,7 +433,7 @@ theForce: bool,optional
 
 Returns
 -------
-None
+void
 ") RemoveInternals;
 		static void RemoveInternals(TopoDS_Shape & theS, const Standard_Boolean theForce = Standard_False);
 
@@ -448,7 +448,7 @@ S: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") RemoveUnusedPCurves;
 		static void RemoveUnusedPCurves(const TopoDS_Shape & S);
 
@@ -569,7 +569,7 @@ V: TopoDS_Vertex
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Vertex & V);
 
@@ -584,7 +584,7 @@ E: TopoDS_Edge
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Edge & E);
 
@@ -599,7 +599,7 @@ W: TopoDS_Wire
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Wire & W);
 
@@ -614,7 +614,7 @@ F: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Face & F);
 
@@ -629,7 +629,7 @@ S: TopoDS_Shell
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Shell & S);
 
@@ -644,7 +644,7 @@ S: TopoDS_Solid
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Solid & S);
 
@@ -659,7 +659,7 @@ C: TopoDS_CompSolid
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_CompSolid & C);
 
@@ -674,7 +674,7 @@ C: TopoDS_Compound
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Compound & C);
 
@@ -689,7 +689,7 @@ S: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TopoDS_Shape & S);
 
@@ -704,7 +704,7 @@ theF: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") UpdateFaceUVPoints;
 		static void UpdateFaceUVPoints(const TopoDS_Face & theF);
 
@@ -807,7 +807,7 @@ TRelationType_Modified = TRelationType.TRelationType_Modified
 		/****************** AddGenerated ******************/
 		/**** md5 signature: a7f4c29c6486250bd1401110ad1490c1 ****/
 		%feature("compactdefaultargs") AddGenerated;
-		%feature("autodoc", "Set the second shape as generated one from the first shape.
+		%feature("autodoc", "Methods to set the history. set the second shape as generated one from the first shape.
 
 Parameters
 ----------
@@ -858,7 +858,7 @@ None
 		/****************** Generated ******************/
 		/**** md5 signature: 308ecbb5e9f94e72f26d5a5fd518be68 ****/
 		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Methods to read the history. returns all shapes generated from the shape.
 
 Parameters
 ----------
@@ -906,7 +906,7 @@ bool
 		/****************** IsRemoved ******************/
 		/**** md5 signature: bc824baa664531040b00c34aff9af72f ****/
 		%feature("compactdefaultargs") IsRemoved;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns 'true' if the shape is removed.
 
 Parameters
 ----------
@@ -936,7 +936,7 @@ bool
 		/****************** Modified ******************/
 		/**** md5 signature: ea431397963162255277d1bdbac78ef8 ****/
 		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns all shapes modified from the shape.
 
 Parameters
 ----------

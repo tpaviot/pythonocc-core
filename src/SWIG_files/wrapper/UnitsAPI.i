@@ -497,7 +497,7 @@ UnitsAPI_SystemUnits
 
 Returns
 -------
-None
+void
 ") Reload;
 		static void Reload();
 
@@ -524,7 +524,7 @@ float
 
 Returns
 -------
-None
+void
 ") Save;
 		static void Save();
 
@@ -540,7 +540,7 @@ aUnit: char *
 
 Returns
 -------
-None
+void
 ") SetCurrentUnit;
 		static void SetCurrentUnit(const char * aQuantity, const char * aUnit);
 
@@ -556,7 +556,7 @@ aSystemUnit: UnitsAPI_SystemUnits,optional
 
 Returns
 -------
-None
+void
 ") SetLocalSystem;
 		static void SetLocalSystem(const UnitsAPI_SystemUnits aSystemUnit = UnitsAPI_SI);
 

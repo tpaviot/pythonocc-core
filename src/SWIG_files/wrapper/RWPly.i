@@ -634,7 +634,7 @@ bool
 		/****************** HasSurfaceId ******************/
 		/**** md5 signature: 06476969015b7cfc83bfb928b3eaadfb ****/
 		%feature("compactdefaultargs") HasSurfaceId;
-		%feature("autodoc", "Return true if surface id should be written as element attribute; false by default.
+		%feature("autodoc", "@name element attributes parameters return true if surface id should be written as element attribute; false by default.
 
 Returns
 -------
@@ -656,7 +656,7 @@ bool
 		/****************** IsDoublePrecision ******************/
 		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
 		%feature("compactdefaultargs") IsDoublePrecision;
-		%feature("autodoc", "Return true if vertex position should be stored with double floating point precision; false by default.
+		%feature("autodoc", "@name vertex attributes parameters return true if vertex position should be stored with double floating point precision; false by default.
 
 Returns
 -------
@@ -667,7 +667,7 @@ bool
 		/****************** IsOpened ******************/
 		/**** md5 signature: d6d5671acf3a396e5229c08ea66ce77f ****/
 		%feature("compactdefaultargs") IsOpened;
-		%feature("autodoc", "Return true if file has been opened.
+		%feature("autodoc", "@name writing into file return true if file has been opened.
 
 Returns
 -------

@@ -85,16 +85,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum ChFiDS_State {
-	ChFiDS_OnSame = 0,
-	ChFiDS_OnDiff = 1,
-	ChFiDS_AllSame = 2,
-	ChFiDS_BreakPoint = 3,
-	ChFiDS_FreeBoundary = 4,
-	ChFiDS_Closed = 5,
-	ChFiDS_Tangent = 6,
-};
-
 enum ChFiDS_ChamfMethod {
 	ChFiDS_Sym = 0,
 	ChFiDS_TwoDist = 1,
@@ -115,6 +105,16 @@ enum ChFiDS_ErrorStatus {
 	ChFiDS_TwistedSurface = 4,
 };
 
+enum ChFiDS_State {
+	ChFiDS_OnSame = 0,
+	ChFiDS_OnDiff = 1,
+	ChFiDS_AllSame = 2,
+	ChFiDS_BreakPoint = 3,
+	ChFiDS_FreeBoundary = 4,
+	ChFiDS_Closed = 5,
+	ChFiDS_Tangent = 6,
+};
+
 enum ChFiDS_TypeOfConcavity {
 	ChFiDS_Concave = 0,
 	ChFiDS_Convex = 1,
@@ -127,22 +127,6 @@ enum ChFiDS_TypeOfConcavity {
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class ChFiDS_State(IntEnum):
-	ChFiDS_OnSame = 0
-	ChFiDS_OnDiff = 1
-	ChFiDS_AllSame = 2
-	ChFiDS_BreakPoint = 3
-	ChFiDS_FreeBoundary = 4
-	ChFiDS_Closed = 5
-	ChFiDS_Tangent = 6
-ChFiDS_OnSame = ChFiDS_State.ChFiDS_OnSame
-ChFiDS_OnDiff = ChFiDS_State.ChFiDS_OnDiff
-ChFiDS_AllSame = ChFiDS_State.ChFiDS_AllSame
-ChFiDS_BreakPoint = ChFiDS_State.ChFiDS_BreakPoint
-ChFiDS_FreeBoundary = ChFiDS_State.ChFiDS_FreeBoundary
-ChFiDS_Closed = ChFiDS_State.ChFiDS_Closed
-ChFiDS_Tangent = ChFiDS_State.ChFiDS_Tangent
 
 class ChFiDS_ChamfMethod(IntEnum):
 	ChFiDS_Sym = 0
@@ -171,6 +155,22 @@ ChFiDS_Error = ChFiDS_ErrorStatus.ChFiDS_Error
 ChFiDS_WalkingFailure = ChFiDS_ErrorStatus.ChFiDS_WalkingFailure
 ChFiDS_StartsolFailure = ChFiDS_ErrorStatus.ChFiDS_StartsolFailure
 ChFiDS_TwistedSurface = ChFiDS_ErrorStatus.ChFiDS_TwistedSurface
+
+class ChFiDS_State(IntEnum):
+	ChFiDS_OnSame = 0
+	ChFiDS_OnDiff = 1
+	ChFiDS_AllSame = 2
+	ChFiDS_BreakPoint = 3
+	ChFiDS_FreeBoundary = 4
+	ChFiDS_Closed = 5
+	ChFiDS_Tangent = 6
+ChFiDS_OnSame = ChFiDS_State.ChFiDS_OnSame
+ChFiDS_OnDiff = ChFiDS_State.ChFiDS_OnDiff
+ChFiDS_AllSame = ChFiDS_State.ChFiDS_AllSame
+ChFiDS_BreakPoint = ChFiDS_State.ChFiDS_BreakPoint
+ChFiDS_FreeBoundary = ChFiDS_State.ChFiDS_FreeBoundary
+ChFiDS_Closed = ChFiDS_State.ChFiDS_Closed
+ChFiDS_Tangent = ChFiDS_State.ChFiDS_Tangent
 
 class ChFiDS_TypeOfConcavity(IntEnum):
 	ChFiDS_Concave = 0
@@ -315,17 +315,17 @@ ChFiDS_Other = ChFiDS_TypeOfConcavity.ChFiDS_Other
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_IndexedDataMap<TopoDS_Vertex, ChFiDS_ListOfStripe, TopTools_ShapeMapHasher> ChFiDS_IndexedDataMapOfVertexListOfStripe;
-typedef NCollection_List<opencascade::handle<ChFiDS_ElSpine>>::Iterator ChFiDS_ListIteratorOfListOfHElSpine;
-typedef NCollection_List<opencascade::handle<ChFiDS_Stripe>>::Iterator ChFiDS_ListIteratorOfListOfStripe;
-typedef NCollection_List<ChFiDS_Regul>::Iterator ChFiDS_ListIteratorOfRegularities;
-typedef NCollection_List<opencascade::handle<ChFiDS_ElSpine>> ChFiDS_ListOfHElSpine;
-typedef NCollection_List<opencascade::handle<ChFiDS_Stripe>> ChFiDS_ListOfStripe;
-typedef NCollection_List<ChFiDS_Regul> ChFiDS_Regularities;
-typedef NCollection_Array1<ChFiDS_CircSection> ChFiDS_SecArray1;
-typedef NCollection_Sequence<opencascade::handle<ChFiDS_Spine>> ChFiDS_SequenceOfSpine;
-typedef NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> ChFiDS_SequenceOfSurfData;
-typedef NCollection_Array1<opencascade::handle<ChFiDS_Stripe>> ChFiDS_StripeArray1;
+typedef NCollection_IndexedDataMap <TopoDS_Vertex, ChFiDS_ListOfStripe, TopTools_ShapeMapHasher> ChFiDS_IndexedDataMapOfVertexListOfStripe;
+typedef NCollection_List <opencascade::handle <ChFiDS_ElSpine>>::Iterator ChFiDS_ListIteratorOfListOfHElSpine;
+typedef NCollection_List <opencascade::handle <ChFiDS_Stripe>>::Iterator ChFiDS_ListIteratorOfListOfStripe;
+typedef NCollection_List <ChFiDS_Regul>::Iterator ChFiDS_ListIteratorOfRegularities;
+typedef NCollection_List <opencascade::handle <ChFiDS_ElSpine>> ChFiDS_ListOfHElSpine;
+typedef NCollection_List <opencascade::handle <ChFiDS_Stripe>> ChFiDS_ListOfStripe;
+typedef NCollection_List <ChFiDS_Regul> ChFiDS_Regularities;
+typedef NCollection_Array1 <ChFiDS_CircSection> ChFiDS_SecArray1;
+typedef NCollection_Sequence <opencascade::handle <ChFiDS_Spine>> ChFiDS_SequenceOfSpine;
+typedef NCollection_Sequence <opencascade::handle <ChFiDS_SurfData>> ChFiDS_SequenceOfSurfData;
+typedef NCollection_Array1 <opencascade::handle <ChFiDS_Stripe>> ChFiDS_StripeArray1;
 /* end typedefs declaration */
 
 /***************************

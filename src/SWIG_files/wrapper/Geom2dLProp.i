@@ -402,7 +402,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -421,7 +421,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -441,7 +441,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -488,7 +488,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P);
 

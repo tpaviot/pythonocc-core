@@ -119,10 +119,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Hatching, TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfHatchings;
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element, TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfMapOfElements;
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Hatching, TColStd_MapIntegerHasher> Geom2dHatch_Hatchings;
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element, TColStd_MapIntegerHasher> Geom2dHatch_MapOfElements;
+typedef NCollection_DataMap <Standard_Integer, Geom2dHatch_Hatching, TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfHatchings;
+typedef NCollection_DataMap <Standard_Integer, Geom2dHatch_Element, TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfMapOfElements;
+typedef NCollection_DataMap <Standard_Integer, Geom2dHatch_Hatching, TColStd_MapIntegerHasher> Geom2dHatch_Hatchings;
+typedef NCollection_DataMap <Standard_Integer, Geom2dHatch_Element, TColStd_MapIntegerHasher> Geom2dHatch_MapOfElements;
 /* end typedefs declaration */
 
 /*******************************

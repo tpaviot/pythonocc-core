@@ -126,10 +126,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<opencascade::handle<BRep_CurveRepresentation>>::Iterator BRep_ListIteratorOfListOfCurveRepresentation;
-typedef NCollection_List<opencascade::handle<BRep_PointRepresentation>>::Iterator BRep_ListIteratorOfListOfPointRepresentation;
-typedef NCollection_List<opencascade::handle<BRep_CurveRepresentation>> BRep_ListOfCurveRepresentation;
-typedef NCollection_List<opencascade::handle<BRep_PointRepresentation>> BRep_ListOfPointRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>>::Iterator BRep_ListIteratorOfListOfCurveRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_PointRepresentation>>::Iterator BRep_ListIteratorOfListOfPointRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_CurveRepresentation>> BRep_ListOfCurveRepresentation;
+typedef NCollection_List <opencascade::handle <BRep_PointRepresentation>> BRep_ListOfPointRepresentation;
 /* end typedefs declaration */
 
 /*********************
@@ -2923,7 +2923,7 @@ L: TopLoc_Location
 
 Returns
 -------
-None
+void
 ") PolygonOnSurface;
 		static void PolygonOnSurface(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon2D> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L);
 
@@ -2942,7 +2942,7 @@ Index: int
 
 Returns
 -------
-None
+void
 ") PolygonOnSurface;
 		static void PolygonOnSurface(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon2D> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, const Standard_Integer Index);
 
@@ -2977,7 +2977,7 @@ L: TopLoc_Location
 
 Returns
 -------
-None
+void
 ") PolygonOnTriangulation;
 		static void PolygonOnTriangulation(const TopoDS_Edge & E, opencascade::handle<Poly_PolygonOnTriangulation> & P, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & L);
 
@@ -2996,7 +2996,7 @@ Index: int
 
 Returns
 -------
-None
+void
 ") PolygonOnTriangulation;
 		static void PolygonOnTriangulation(const TopoDS_Edge & E, opencascade::handle<Poly_PolygonOnTriangulation> & P, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & L, const Standard_Integer Index);
 
@@ -3096,7 +3096,7 @@ PLast: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") SetUVPoints;
 		static void SetUVPoints(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const gp_Pnt2d & PFirst, const gp_Pnt2d & PLast);
 
@@ -3114,7 +3114,7 @@ PLast: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") SetUVPoints;
 		static void SetUVPoints(const TopoDS_Edge & E, const TopoDS_Face & F, const gp_Pnt2d & PFirst, const gp_Pnt2d & PLast);
 
@@ -3243,7 +3243,7 @@ PLast: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") UVPoints;
 		static void UVPoints(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, gp_Pnt2d & PFirst, gp_Pnt2d & PLast);
 
@@ -3261,7 +3261,7 @@ PLast: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") UVPoints;
 		static void UVPoints(const TopoDS_Edge & E, const TopoDS_Face & F, gp_Pnt2d & PFirst, gp_Pnt2d & PLast);
 

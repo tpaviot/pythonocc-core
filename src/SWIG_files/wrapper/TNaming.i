@@ -190,22 +190,22 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 
 /* typedefs */
 typedef TNaming_DataMapOfShapeMapOfShape::Iterator TNaming_DataMapIteratorOfDataMapOfShapeMapOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
-typedef NCollection_DataMap<TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapeShapesSet;
-typedef NCollection_DataMap<TopoDS_Shape, TNaming_MapOfShape> TNaming_DataMapOfShapeMapOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher> TNaming_DataMapOfShapePtrRefShape;
-typedef NCollection_DataMap<TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher> TNaming_DataMapOfShapeShapesSet;
-typedef NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape>::Iterator TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
-typedef NCollection_List<TopTools_MapOfShape>::Iterator TNaming_ListIteratorOfListOfMapOfShape;
-typedef NCollection_List<opencascade::handle<TNaming_NamedShape>>::Iterator TNaming_ListIteratorOfListOfNamedShape;
-typedef NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape> TNaming_ListOfIndexedDataMapOfShapeListOfShape;
-typedef NCollection_List<TopTools_MapOfShape> TNaming_ListOfMapOfShape;
-typedef NCollection_List<opencascade::handle<TNaming_NamedShape>> TNaming_ListOfNamedShape;
-typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>, TNaming_NamedShapeHasher>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
+typedef NCollection_DataMap <TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
+typedef NCollection_DataMap <TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapeShapesSet;
+typedef NCollection_DataMap <TopoDS_Shape, TNaming_MapOfShape> TNaming_DataMapOfShapeMapOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher> TNaming_DataMapOfShapePtrRefShape;
+typedef NCollection_DataMap <TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher> TNaming_DataMapOfShapeShapesSet;
+typedef NCollection_List <TopTools_IndexedDataMapOfShapeListOfShape>::Iterator TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
+typedef NCollection_List <TopTools_MapOfShape>::Iterator TNaming_ListIteratorOfListOfMapOfShape;
+typedef NCollection_List <opencascade::handle <TNaming_NamedShape>>::Iterator TNaming_ListIteratorOfListOfNamedShape;
+typedef NCollection_List <TopTools_IndexedDataMapOfShapeListOfShape> TNaming_ListOfIndexedDataMapOfShapeListOfShape;
+typedef NCollection_List <TopTools_MapOfShape> TNaming_ListOfMapOfShape;
+typedef NCollection_List <opencascade::handle <TNaming_NamedShape>> TNaming_ListOfNamedShape;
+typedef NCollection_Map <opencascade::handle <TNaming_NamedShape>, TNaming_NamedShapeHasher>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
 typedef TNaming_MapOfShape::Iterator TNaming_MapIteratorOfMapOfShape;
-typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>, TNaming_NamedShapeHasher> TNaming_MapOfNamedShape;
-typedef NCollection_Map<TopoDS_Shape> TNaming_MapOfShape;
-typedef NCollection_DefaultHasher<opencascade::handle<TNaming_NamedShape>> TNaming_NamedShapeHasher;
+typedef NCollection_Map <opencascade::handle <TNaming_NamedShape>, TNaming_NamedShapeHasher> TNaming_MapOfNamedShape;
+typedef NCollection_Map <TopoDS_Shape> TNaming_MapOfShape;
+typedef NCollection_DefaultHasher <opencascade::handle <TNaming_NamedShape>> TNaming_NamedShapeHasher;
 typedef TNaming_NamedShape * TNaming_PtrAttribute;
 typedef TNaming_Node * TNaming_PtrNode;
 typedef TNaming_RefShape * TNaming_PtrRefShape;
@@ -229,7 +229,7 @@ M: TopTools_DataMapOfShapeShape
 
 Returns
 -------
-None
+void
 ") ChangeShapes;
 		static void ChangeShapes(const TDF_Label & label, TopTools_DataMapOfShapeShape & M);
 
@@ -247,7 +247,7 @@ WithOld: bool,optional
 
 Returns
 -------
-None
+void
 ") Displace;
 		static void Displace(const TDF_Label & label, const TopLoc_Location & aLocation, const Standard_Boolean WithOld = Standard_True);
 
@@ -295,7 +295,7 @@ anIDList: TDF_IDList
 
 Returns
 -------
-None
+void
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -359,7 +359,7 @@ L: TDF_Label
 
 Returns
 -------
-None
+void
 ") Replicate;
 		static void Replicate(const opencascade::handle<TNaming_NamedShape> & NS, const gp_Trsf & T, const TDF_Label & L);
 
@@ -376,7 +376,7 @@ L: TDF_Label
 
 Returns
 -------
-None
+void
 ") Replicate;
 		static void Replicate(const TopoDS_Shape & SH, const gp_Trsf & T, const TDF_Label & L);
 
@@ -393,7 +393,7 @@ mapOldNew: TopTools_DataMapOfShapeShape
 
 Returns
 -------
-None
+void
 ") Substitute;
 		static void Substitute(const TDF_Label & labelsource, const TDF_Label & labelcible, TopTools_DataMapOfShapeShape & mapOldNew);
 
@@ -426,7 +426,7 @@ aTransformation: gp_Trsf
 
 Returns
 -------
-None
+void
 ") Transform;
 		static void Transform(const TDF_Label & label, const gp_Trsf & aTransformation);
 
@@ -442,7 +442,7 @@ mapOldNew: TopTools_DataMapOfShapeShape
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TDF_Label & label, TopTools_DataMapOfShapeShape & mapOldNew);
 
@@ -591,7 +591,7 @@ aResult: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") CopyTool;
 		static void CopyTool(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult);
 
@@ -609,7 +609,7 @@ TrTool: TNaming_TranslateTool
 
 Returns
 -------
-None
+void
 ") Translate;
 		static void Translate(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
 
@@ -1262,7 +1262,7 @@ theListOfGenerators: TopTools_ListOfShape
 
 Returns
 -------
-None
+void
 ") FindGenerator;
 		static void FindGenerator(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, TopTools_ListOfShape & theListOfGenerators);
 
@@ -1296,7 +1296,7 @@ theSC: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") FindShapeContext;
 		static void FindShapeContext(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & theS, TopoDS_Shape & theSC);
 
@@ -2178,7 +2178,7 @@ Labels: TDF_LabelMap
 
 Returns
 -------
-None
+void
 ") BuildDescendants;
 		static void BuildDescendants(const opencascade::handle<TNaming_NamedShape> & NS, TDF_LabelMap & Labels);
 
@@ -2196,7 +2196,7 @@ MS: TopTools_IndexedMapOfShape
 
 Returns
 -------
-None
+void
 ") CurrentShape;
 		static void CurrentShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & NS, TopTools_IndexedMapOfShape & MS);
 
@@ -2215,7 +2215,7 @@ MS: TopTools_IndexedMapOfShape
 
 Returns
 -------
-None
+void
 ") CurrentShapeFromShape;
 		static void CurrentShapeFromShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const TDF_Label & Acces, const TopoDS_Shape & S, TopTools_IndexedMapOfShape & MS);
 
@@ -3241,7 +3241,7 @@ OnlyModif: bool,optional
 
 Returns
 -------
-None
+void
 ") Collect;
 		static void Collect(const opencascade::handle<TNaming_NamedShape> & NS, TNaming_MapOfNamedShape & Labels, const Standard_Boolean OnlyModif = Standard_True);
 
@@ -3321,7 +3321,7 @@ S: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") FindShape;
 		static void FindShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
 

@@ -57,12 +57,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum Storage_SolveMode {
-	Storage_AddSolve = 0,
-	Storage_WriteSolve = 1,
-	Storage_ReadSolve = 2,
-};
-
 enum Storage_Error {
 	Storage_VSOk = 0,
 	Storage_VSOpenError = 1,
@@ -87,18 +81,16 @@ enum Storage_OpenMode {
 	Storage_VSReadWrite = 3,
 };
 
+enum Storage_SolveMode {
+	Storage_AddSolve = 0,
+	Storage_WriteSolve = 1,
+	Storage_ReadSolve = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class Storage_SolveMode(IntEnum):
-	Storage_AddSolve = 0
-	Storage_WriteSolve = 1
-	Storage_ReadSolve = 2
-Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
-Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
-Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 
 class Storage_Error(IntEnum):
 	Storage_VSOk = 0
@@ -139,6 +131,14 @@ Storage_VSNone = Storage_OpenMode.Storage_VSNone
 Storage_VSRead = Storage_OpenMode.Storage_VSRead
 Storage_VSWrite = Storage_OpenMode.Storage_VSWrite
 Storage_VSReadWrite = Storage_OpenMode.Storage_VSReadWrite
+
+class Storage_SolveMode(IntEnum):
+	Storage_AddSolve = 0
+	Storage_WriteSolve = 1
+	Storage_ReadSolve = 2
+Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
+Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
+Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 };
 /* end python proxy for enums */
 
@@ -227,15 +227,15 @@ Storage_VSReadWrite = Storage_OpenMode.Storage_VSReadWrite
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<Storage_CallBack>> Storage_ArrayOfCallBack;
-typedef NCollection_Array1<opencascade::handle<Storage_Schema>> Storage_ArrayOfSchema;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>, TCollection_AsciiString>::Iterator Storage_DataMapIteratorOfMapOfCallBack;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>, TCollection_AsciiString>::Iterator Storage_DataMapIteratorOfMapOfPers;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>, TCollection_AsciiString> Storage_MapOfCallBack;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>, TCollection_AsciiString> Storage_MapOfPers;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer, TCollection_AsciiString> Storage_PType;
+typedef NCollection_Array1 <opencascade::handle <Storage_CallBack>> Storage_ArrayOfCallBack;
+typedef NCollection_Array1 <opencascade::handle <Storage_Schema>> Storage_ArrayOfSchema;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <Storage_TypedCallBack>, TCollection_AsciiString>::Iterator Storage_DataMapIteratorOfMapOfCallBack;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <Storage_Root>, TCollection_AsciiString>::Iterator Storage_DataMapIteratorOfMapOfPers;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <Storage_TypedCallBack>, TCollection_AsciiString> Storage_MapOfCallBack;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <Storage_Root>, TCollection_AsciiString> Storage_MapOfPers;
+typedef NCollection_IndexedDataMap <TCollection_AsciiString, Standard_Integer, TCollection_AsciiString> Storage_PType;
 typedef long Storage_Position;
-typedef NCollection_Sequence<opencascade::handle<Storage_Root>> Storage_SeqOfRoot;
+typedef NCollection_Sequence <opencascade::handle <Storage_Root>> Storage_SeqOfRoot;
 /* end typedefs declaration */
 
 /****************
@@ -286,6 +286,10 @@ typedef NCollection_Sequence<opencascade::handle<Storage_Root>> Storage_SeqOfRoo
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
+class Storage_BaseDriver:
+	pass
+
+@classnotwrapped
 class Storage_Bucket:
 	pass
 
@@ -298,19 +302,11 @@ class Storage_BucketIterator:
 	pass
 
 @classnotwrapped
-class Storage_RootData:
+class Storage_CallBack:
 	pass
 
 @classnotwrapped
-class Storage_TypeData:
-	pass
-
-@classnotwrapped
-class Storage_Root:
-	pass
-
-@classnotwrapped
-class Storage_Schema:
+class Storage_Data:
 	pass
 
 @classnotwrapped
@@ -318,19 +314,7 @@ class Storage_DefaultCallBack:
 	pass
 
 @classnotwrapped
-class Storage_TypedCallBack:
-	pass
-
-@classnotwrapped
-class Storage_CallBack:
-	pass
-
-@classnotwrapped
 class Storage_HeaderData:
-	pass
-
-@classnotwrapped
-class Storage_BaseDriver:
 	pass
 
 @classnotwrapped
@@ -338,7 +322,23 @@ class Storage_InternalData:
 	pass
 
 @classnotwrapped
-class Storage_Data:
+class Storage_Root:
+	pass
+
+@classnotwrapped
+class Storage_RootData:
+	pass
+
+@classnotwrapped
+class Storage_Schema:
+	pass
+
+@classnotwrapped
+class Storage_TypeData:
+	pass
+
+@classnotwrapped
+class Storage_TypedCallBack:
 	pass
 
 @classnotwrapped
@@ -348,6 +348,17 @@ class Storage:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
+
+class Storage_HArrayOfCallBack : public Storage_ArrayOfCallBack, public Standard_Transient {
+  public:
+    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
+    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfCallBack::value_type& theValue);
+    Storage_HArrayOfCallBack(const Storage_ArrayOfCallBack& theOther);
+    const Storage_ArrayOfCallBack& Array1();
+    Storage_ArrayOfCallBack& ChangeArray1();
+};
+%make_alias(Storage_HArrayOfCallBack)
+
 
 class Storage_HArrayOfSchema : public Storage_ArrayOfSchema, public Standard_Transient {
   public:
@@ -369,17 +380,6 @@ class Storage_HPArray : public Storage_PArray, public Standard_Transient {
     Storage_PArray& ChangeArray1();
 };
 %make_alias(Storage_HPArray)
-
-
-class Storage_HArrayOfCallBack : public Storage_ArrayOfCallBack, public Standard_Transient {
-  public:
-    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfCallBack::value_type& theValue);
-    Storage_HArrayOfCallBack(const Storage_ArrayOfCallBack& theOther);
-    const Storage_ArrayOfCallBack& Array1();
-    Storage_ArrayOfCallBack& ChangeArray1();
-};
-%make_alias(Storage_HArrayOfCallBack)
 
 /* harray2 classes */
 /* hsequence classes */

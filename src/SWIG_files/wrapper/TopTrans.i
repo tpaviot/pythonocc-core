@@ -75,7 +75,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array2<TopAbs_Orientation> TopTrans_Array2OfOrientation;
+typedef NCollection_Array2 <TopAbs_Orientation> TopTrans_Array2OfOrientation;
 /* end typedefs declaration */
 
 /*********************************

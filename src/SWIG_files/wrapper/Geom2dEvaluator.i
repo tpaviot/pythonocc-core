@@ -101,7 +101,7 @@ theOffset: float
 
 Returns
 -------
-None
+void
 ") CalculateD0;
 		static void CalculateD0(gp_Pnt2d & theValue, const gp_Vec2d & theD1, const Standard_Real theOffset);
 
@@ -119,7 +119,7 @@ theOffset: float
 
 Returns
 -------
-None
+void
 ") CalculateD1;
 		static void CalculateD1(gp_Pnt2d & theValue, gp_Vec2d & theD1, const gp_Vec2d & theD2, const Standard_Real theOffset);
 
@@ -139,7 +139,7 @@ theOffset: float
 
 Returns
 -------
-None
+void
 ") CalculateD2;
 		static void CalculateD2(gp_Pnt2d & theValue, gp_Vec2d & theD1, gp_Vec2d & theD2, const gp_Vec2d & theD3, const Standard_Boolean theIsDirChange, const Standard_Real theOffset);
 
@@ -160,7 +160,7 @@ theOffset: float
 
 Returns
 -------
-None
+void
 ") CalculateD3;
 		static void CalculateD3(gp_Pnt2d & theValue, gp_Vec2d & theD1, gp_Vec2d & theD2, gp_Vec2d & theD3, const gp_Vec2d & theD4, const Standard_Boolean theIsDirChange, const Standard_Real theOffset);
 

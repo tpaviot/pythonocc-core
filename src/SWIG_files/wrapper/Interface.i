@@ -65,6 +65,25 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Interface_CheckStatus {
+	Interface_CheckOK = 0,
+	Interface_CheckWarning = 1,
+	Interface_CheckFail = 2,
+	Interface_CheckAny = 3,
+	Interface_CheckMessage = 4,
+	Interface_CheckNoFail = 5,
+};
+
+enum Interface_DataState {
+	Interface_StateOK = 0,
+	Interface_LoadWarning = 1,
+	Interface_LoadFail = 2,
+	Interface_DataWarning = 3,
+	Interface_DataFail = 4,
+	Interface_StateUnloaded = 5,
+	Interface_StateUnknown = 6,
+};
+
 enum Interface_ParamType {
 	Interface_ParamMisc = 0,
 	Interface_ParamInteger = 1,
@@ -79,29 +98,40 @@ enum Interface_ParamType {
 	Interface_ParamBinary = 10,
 };
 
-enum Interface_DataState {
-	Interface_StateOK = 0,
-	Interface_LoadWarning = 1,
-	Interface_LoadFail = 2,
-	Interface_DataWarning = 3,
-	Interface_DataFail = 4,
-	Interface_StateUnloaded = 5,
-	Interface_StateUnknown = 6,
-};
-
-enum Interface_CheckStatus {
-	Interface_CheckOK = 0,
-	Interface_CheckWarning = 1,
-	Interface_CheckFail = 2,
-	Interface_CheckAny = 3,
-	Interface_CheckMessage = 4,
-	Interface_CheckNoFail = 5,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Interface_CheckStatus(IntEnum):
+	Interface_CheckOK = 0
+	Interface_CheckWarning = 1
+	Interface_CheckFail = 2
+	Interface_CheckAny = 3
+	Interface_CheckMessage = 4
+	Interface_CheckNoFail = 5
+Interface_CheckOK = Interface_CheckStatus.Interface_CheckOK
+Interface_CheckWarning = Interface_CheckStatus.Interface_CheckWarning
+Interface_CheckFail = Interface_CheckStatus.Interface_CheckFail
+Interface_CheckAny = Interface_CheckStatus.Interface_CheckAny
+Interface_CheckMessage = Interface_CheckStatus.Interface_CheckMessage
+Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
+
+class Interface_DataState(IntEnum):
+	Interface_StateOK = 0
+	Interface_LoadWarning = 1
+	Interface_LoadFail = 2
+	Interface_DataWarning = 3
+	Interface_DataFail = 4
+	Interface_StateUnloaded = 5
+	Interface_StateUnknown = 6
+Interface_StateOK = Interface_DataState.Interface_StateOK
+Interface_LoadWarning = Interface_DataState.Interface_LoadWarning
+Interface_LoadFail = Interface_DataState.Interface_LoadFail
+Interface_DataWarning = Interface_DataState.Interface_DataWarning
+Interface_DataFail = Interface_DataState.Interface_DataFail
+Interface_StateUnloaded = Interface_DataState.Interface_StateUnloaded
+Interface_StateUnknown = Interface_DataState.Interface_StateUnknown
 
 class Interface_ParamType(IntEnum):
 	Interface_ParamMisc = 0
@@ -126,36 +156,6 @@ Interface_ParamLogical = Interface_ParamType.Interface_ParamLogical
 Interface_ParamSub = Interface_ParamType.Interface_ParamSub
 Interface_ParamHexa = Interface_ParamType.Interface_ParamHexa
 Interface_ParamBinary = Interface_ParamType.Interface_ParamBinary
-
-class Interface_DataState(IntEnum):
-	Interface_StateOK = 0
-	Interface_LoadWarning = 1
-	Interface_LoadFail = 2
-	Interface_DataWarning = 3
-	Interface_DataFail = 4
-	Interface_StateUnloaded = 5
-	Interface_StateUnknown = 6
-Interface_StateOK = Interface_DataState.Interface_StateOK
-Interface_LoadWarning = Interface_DataState.Interface_LoadWarning
-Interface_LoadFail = Interface_DataState.Interface_LoadFail
-Interface_DataWarning = Interface_DataState.Interface_DataWarning
-Interface_DataFail = Interface_DataState.Interface_DataFail
-Interface_StateUnloaded = Interface_DataState.Interface_StateUnloaded
-Interface_StateUnknown = Interface_DataState.Interface_StateUnknown
-
-class Interface_CheckStatus(IntEnum):
-	Interface_CheckOK = 0
-	Interface_CheckWarning = 1
-	Interface_CheckFail = 2
-	Interface_CheckAny = 3
-	Interface_CheckMessage = 4
-	Interface_CheckNoFail = 5
-Interface_CheckOK = Interface_CheckStatus.Interface_CheckOK
-Interface_CheckWarning = Interface_CheckStatus.Interface_CheckWarning
-Interface_CheckFail = Interface_CheckStatus.Interface_CheckFail
-Interface_CheckAny = Interface_CheckStatus.Interface_CheckAny
-Interface_CheckMessage = Interface_CheckStatus.Interface_CheckMessage
-Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
 };
 /* end python proxy for enums */
 
@@ -273,14 +273,14 @@ Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * Interface_StaticSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
-typedef NCollection_Array1<Interface_FileParameter> Interface_Array1OfFileParameter;
-typedef NCollection_Array1<opencascade::handle<TCollection_HAsciiString>> Interface_Array1OfHAsciiString;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher> Interface_DataMapOfTransientInteger;
-typedef NCollection_IndexedMap<TCollection_AsciiString, Interface_MapAsciiStringHasher> Interface_IndexedMapOfAsciiString;
-typedef NCollection_Sequence<opencascade::handle<Interface_Check>> Interface_SequenceOfCheck;
-typedef NCollection_Vector<Interface_FileParameter> Interface_VectorOfFileParameter;
+typedef Standard_Boolean ( * Interface_ValueSatisfies ) ( const opencascade::handle <TCollection_HAsciiString>& val );
+typedef NCollection_Array1 <Interface_FileParameter> Interface_Array1OfFileParameter;
+typedef NCollection_Array1 <opencascade::handle <TCollection_HAsciiString>> Interface_Array1OfHAsciiString;
+typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;
+typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher> Interface_DataMapOfTransientInteger;
+typedef NCollection_IndexedMap <TCollection_AsciiString, Interface_MapAsciiStringHasher> Interface_IndexedMapOfAsciiString;
+typedef NCollection_Sequence <opencascade::handle <Interface_Check>> Interface_SequenceOfCheck;
+typedef NCollection_Vector <Interface_FileParameter> Interface_VectorOfFileParameter;
 /* end typedefs declaration */
 
 /*************************
@@ -657,7 +657,7 @@ bool
 class Interface_Category {
 	public:
 		/****************** Interface_Category ******************/
-		/**** md5 signature: efb3fe3148b618457c9b09c50b924bec ****/
+		/**** md5 signature: 0a632c79048992c5f00a7a5b3f51a6a6 ****/
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "Creates a category, with no protocol yet.
 
@@ -668,7 +668,7 @@ None
 		 Interface_Category();
 
 		/****************** Interface_Category ******************/
-		/**** md5 signature: 78e71b948bfa660059997bf6cc10c1c7 ****/
+		/**** md5 signature: 49aaf72cf30f7d32cee4665ed9caa0a4 ****/
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "Creates a category with a given protocol.
 
@@ -683,7 +683,7 @@ None
 		 Interface_Category(const opencascade::handle<Interface_Protocol> & theProtocol);
 
 		/****************** Interface_Category ******************/
-		/**** md5 signature: ba7276b213b743915ca4fe4fc5707d99 ****/
+		/**** md5 signature: 826a4a5d67c916c9dc992df1f681c787 ****/
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "Creates a category with a given gtool.
 
@@ -762,7 +762,7 @@ None
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -4281,7 +4281,7 @@ aprotocol: Interface_Protocol
 
 Returns
 -------
-None
+void
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<Interface_GeneralModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -7111,7 +7111,7 @@ item: char *
 
 Returns
 -------
-None
+void
 ") Record;
 		static void Record(const char * key, const char * item);
 
@@ -7127,7 +7127,7 @@ raising: bool
 
 Returns
 -------
-None
+void
 ") SetMode;
 		static void SetMode(const Standard_Boolean running, const Standard_Boolean raising);
 
@@ -7143,7 +7143,7 @@ torecord: bool
 
 Returns
 -------
-None
+void
 ") SetTrace;
 		static void SetTrace(const Standard_Boolean toprint, const Standard_Boolean torecord);
 
@@ -7166,7 +7166,7 @@ format: char *,optional
 
 Returns
 -------
-None
+void
 ") TDate;
 		static void TDate(const char * text, const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const char * format = "");
 
@@ -7712,7 +7712,7 @@ int
 
 Returns
 -------
-None
+void
 ") ClearActive;
 		static void ClearActive();
 
@@ -7840,7 +7840,7 @@ aprotocol: Interface_Protocol
 
 Returns
 -------
-None
+void
 ") SetActive;
 		static void SetActive(const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -8038,7 +8038,7 @@ aprotocol: Interface_Protocol
 
 Returns
 -------
-None
+void
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<Interface_ReaderModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -8375,7 +8375,7 @@ total: float
 
 Returns
 -------
-None
+void
 ") End;
 		static void End();
 
@@ -8386,6 +8386,7 @@ None
 
 Parameters
 ----------
+tit: TCollection_HAsciiString
 phn: TColStd_HSequenceOfAsciiString
 phw: TColStd_HSequenceOfReal
 phdeb: TColStd_HSequenceOfInteger
@@ -8394,10 +8395,9 @@ stw: TColStd_HSequenceOfReal
 
 Returns
 -------
-tit: TCollection_HAsciiString
 total: float
 ") Internals;
-		void Internals(opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
+		void Internals(opencascade::handle<TCollection_HAsciiString> & tit, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
 
 		/****************** NextCycle ******************/
 		/**** md5 signature: ca214add52f3821b26accc6fe7f36e0c ****/
@@ -8410,7 +8410,7 @@ items: int
 
 Returns
 -------
-None
+void
 ") NextCycle;
 		static void NextCycle(const Standard_Integer items);
 
@@ -8426,7 +8426,7 @@ nbitems: int,optional
 
 Returns
 -------
-None
+void
 ") NextItem;
 		static void NextItem(const Standard_Integer nbitems = 1);
 
@@ -8443,7 +8443,7 @@ cycles: int,optional
 
 Returns
 -------
-None
+void
 ") NextPhase;
 		static void NextPhase(const Standard_Integer items, const Standard_Integer cycles = 1);
 
@@ -8454,7 +8454,7 @@ None
 
 Returns
 -------
-None
+void
 ") NextStep;
 		static void NextStep();
 
@@ -8505,7 +8505,7 @@ cycles: int,optional
 
 Returns
 -------
-None
+void
 ") SetPhase;
 		static void SetPhase(const Standard_Integer items, const Standard_Integer cycles = 1);
 
@@ -8539,7 +8539,7 @@ title: char *,optional
 
 Returns
 -------
-None
+void
 ") StartCount;
 		static void StartCount(const Standard_Integer items, const char * title = "");
 
@@ -9288,13 +9288,13 @@ Parameters
 ----------
 num: int
 ent: Standard_Transient
+val: TCollection_HAsciiString
 
 Returns
 -------
 ptype: Interface_ParamType
-val: TCollection_HAsciiString
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 761c0b32c3eb0e5da7ddfca321a3322d ****/
@@ -9749,7 +9749,7 @@ theMap: NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TC
 
 Returns
 -------
-None
+void
 ") FillMap;
 		static void FillMap(NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> & theMap);
 
@@ -9991,7 +9991,7 @@ None
 
 Returns
 -------
-None
+void
 ") Standards;
 		static void Standards();
 

@@ -599,7 +599,7 @@ IMeshData::IFaceHandle
 		/****************** EdgesNb ******************/
 		/**** md5 signature: d8bed3659eeea9d444f232f4eeeb7350 ****/
 		%feature("compactdefaultargs") EdgesNb;
-		%feature("autodoc", "Returns number of edges in discrete model.
+		%feature("autodoc", "@name discrete edges returns number of edges in discrete model.
 
 Returns
 -------
@@ -610,7 +610,7 @@ int
 		/****************** FacesNb ******************/
 		/**** md5 signature: 65bd60c646a1f9634db0dc8215150552 ****/
 		%feature("compactdefaultargs") FacesNb;
-		%feature("autodoc", "Returns number of faces in discrete model.
+		%feature("autodoc", "@name discrete faces returns number of faces in discrete model.
 
 Returns
 -------

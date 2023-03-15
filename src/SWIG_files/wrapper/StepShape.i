@@ -202,16 +202,16 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_OrientedOpenShell)
 %wrap_handle(StepShape_SeamEdge)
 %wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
-%wrap_handle(StepShape_HArray1OfFaceBound)
-%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
 %wrap_handle(StepShape_HArray1OfConnectedFaceSet)
 %wrap_handle(StepShape_HArray1OfEdge)
 %wrap_handle(StepShape_HArray1OfFace)
-%wrap_handle(StepShape_HArray1OfShapeDimensionRepresentationItem)
-%wrap_handle(StepShape_HArray1OfValueQualifier)
-%wrap_handle(StepShape_HArray1OfShell)
+%wrap_handle(StepShape_HArray1OfFaceBound)
+%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
 %wrap_handle(StepShape_HArray1OfOrientedClosedShell)
 %wrap_handle(StepShape_HArray1OfOrientedEdge)
+%wrap_handle(StepShape_HArray1OfShapeDimensionRepresentationItem)
+%wrap_handle(StepShape_HArray1OfShell)
+%wrap_handle(StepShape_HArray1OfValueQualifier)
 /* end handles declaration */
 
 /* templates */
@@ -603,17 +603,17 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>> StepShape_Array1OfConnectedEdgeSet;
-typedef NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>> StepShape_Array1OfConnectedFaceSet;
-typedef NCollection_Array1<opencascade::handle<StepShape_Edge>> StepShape_Array1OfEdge;
-typedef NCollection_Array1<opencascade::handle<StepShape_Face>> StepShape_Array1OfFace;
-typedef NCollection_Array1<opencascade::handle<StepShape_FaceBound>> StepShape_Array1OfFaceBound;
-typedef NCollection_Array1<StepShape_GeometricSetSelect> StepShape_Array1OfGeometricSetSelect;
-typedef NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>> StepShape_Array1OfOrientedClosedShell;
-typedef NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>> StepShape_Array1OfOrientedEdge;
-typedef NCollection_Array1<StepShape_ShapeDimensionRepresentationItem> StepShape_Array1OfShapeDimensionRepresentationItem;
-typedef NCollection_Array1<StepShape_Shell> StepShape_Array1OfShell;
-typedef NCollection_Array1<StepShape_ValueQualifier> StepShape_Array1OfValueQualifier;
+typedef NCollection_Array1 <opencascade::handle <StepShape_ConnectedEdgeSet>> StepShape_Array1OfConnectedEdgeSet;
+typedef NCollection_Array1 <opencascade::handle <StepShape_ConnectedFaceSet>> StepShape_Array1OfConnectedFaceSet;
+typedef NCollection_Array1 <opencascade::handle <StepShape_Edge>> StepShape_Array1OfEdge;
+typedef NCollection_Array1 <opencascade::handle <StepShape_Face>> StepShape_Array1OfFace;
+typedef NCollection_Array1 <opencascade::handle <StepShape_FaceBound>> StepShape_Array1OfFaceBound;
+typedef NCollection_Array1 <StepShape_GeometricSetSelect> StepShape_Array1OfGeometricSetSelect;
+typedef NCollection_Array1 <opencascade::handle <StepShape_OrientedClosedShell>> StepShape_Array1OfOrientedClosedShell;
+typedef NCollection_Array1 <opencascade::handle <StepShape_OrientedEdge>> StepShape_Array1OfOrientedEdge;
+typedef NCollection_Array1 <StepShape_ShapeDimensionRepresentationItem> StepShape_Array1OfShapeDimensionRepresentationItem;
+typedef NCollection_Array1 <StepShape_Shell> StepShape_Array1OfShell;
+typedef NCollection_Array1 <StepShape_ValueQualifier> StepShape_Array1OfValueQualifier;
 /* end typedefs declaration */
 
 /************************
@@ -4408,9 +4408,9 @@ None
 
 Returns
 -------
-opencascade::handle<TCollection_HAsciiString>
+inline opencascade::handle<TCollection_HAsciiString>
 ") FormatType;
-		opencascade::handle<TCollection_HAsciiString> FormatType();
+		inline opencascade::handle<TCollection_HAsciiString> FormatType();
 
 		/****************** Init ******************/
 		/**** md5 signature: 12ee23b91d7748b17508842b62fb6d40 ****/
@@ -4438,9 +4438,9 @@ theFormatType: TCollection_HAsciiString
 
 Returns
 -------
-None
+inline void
 ") SetFormatType;
-		void SetFormatType(const opencascade::handle<TCollection_HAsciiString> & theFormatType);
+		inline void SetFormatType(const opencascade::handle<TCollection_HAsciiString> & theFormatType);
 
 };
 
@@ -8859,28 +8859,6 @@ class StepShape_HArray1OfConnectedEdgeSet : public StepShape_Array1OfConnectedEd
 %make_alias(StepShape_HArray1OfConnectedEdgeSet)
 
 
-class StepShape_HArray1OfFaceBound : public StepShape_Array1OfFaceBound, public Standard_Transient {
-  public:
-    StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfFaceBound::value_type& theValue);
-    StepShape_HArray1OfFaceBound(const StepShape_Array1OfFaceBound& theOther);
-    const StepShape_Array1OfFaceBound& Array1();
-    StepShape_Array1OfFaceBound& ChangeArray1();
-};
-%make_alias(StepShape_HArray1OfFaceBound)
-
-
-class StepShape_HArray1OfGeometricSetSelect : public StepShape_Array1OfGeometricSetSelect, public Standard_Transient {
-  public:
-    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfGeometricSetSelect::value_type& theValue);
-    StepShape_HArray1OfGeometricSetSelect(const StepShape_Array1OfGeometricSetSelect& theOther);
-    const StepShape_Array1OfGeometricSetSelect& Array1();
-    StepShape_Array1OfGeometricSetSelect& ChangeArray1();
-};
-%make_alias(StepShape_HArray1OfGeometricSetSelect)
-
-
 class StepShape_HArray1OfConnectedFaceSet : public StepShape_Array1OfConnectedFaceSet, public Standard_Transient {
   public:
     StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -8914,37 +8892,26 @@ class StepShape_HArray1OfFace : public StepShape_Array1OfFace, public Standard_T
 %make_alias(StepShape_HArray1OfFace)
 
 
-class StepShape_HArray1OfShapeDimensionRepresentationItem : public StepShape_Array1OfShapeDimensionRepresentationItem, public Standard_Transient {
+class StepShape_HArray1OfFaceBound : public StepShape_Array1OfFaceBound, public Standard_Transient {
   public:
-    StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShapeDimensionRepresentationItem::value_type& theValue);
-    StepShape_HArray1OfShapeDimensionRepresentationItem(const StepShape_Array1OfShapeDimensionRepresentationItem& theOther);
-    const StepShape_Array1OfShapeDimensionRepresentationItem& Array1();
-    StepShape_Array1OfShapeDimensionRepresentationItem& ChangeArray1();
+    StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfFaceBound::value_type& theValue);
+    StepShape_HArray1OfFaceBound(const StepShape_Array1OfFaceBound& theOther);
+    const StepShape_Array1OfFaceBound& Array1();
+    StepShape_Array1OfFaceBound& ChangeArray1();
 };
-%make_alias(StepShape_HArray1OfShapeDimensionRepresentationItem)
+%make_alias(StepShape_HArray1OfFaceBound)
 
 
-class StepShape_HArray1OfValueQualifier : public StepShape_Array1OfValueQualifier, public Standard_Transient {
+class StepShape_HArray1OfGeometricSetSelect : public StepShape_Array1OfGeometricSetSelect, public Standard_Transient {
   public:
-    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfValueQualifier::value_type& theValue);
-    StepShape_HArray1OfValueQualifier(const StepShape_Array1OfValueQualifier& theOther);
-    const StepShape_Array1OfValueQualifier& Array1();
-    StepShape_Array1OfValueQualifier& ChangeArray1();
+    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfGeometricSetSelect::value_type& theValue);
+    StepShape_HArray1OfGeometricSetSelect(const StepShape_Array1OfGeometricSetSelect& theOther);
+    const StepShape_Array1OfGeometricSetSelect& Array1();
+    StepShape_Array1OfGeometricSetSelect& ChangeArray1();
 };
-%make_alias(StepShape_HArray1OfValueQualifier)
-
-
-class StepShape_HArray1OfShell : public StepShape_Array1OfShell, public Standard_Transient {
-  public:
-    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShell::value_type& theValue);
-    StepShape_HArray1OfShell(const StepShape_Array1OfShell& theOther);
-    const StepShape_Array1OfShell& Array1();
-    StepShape_Array1OfShell& ChangeArray1();
-};
-%make_alias(StepShape_HArray1OfShell)
+%make_alias(StepShape_HArray1OfGeometricSetSelect)
 
 
 class StepShape_HArray1OfOrientedClosedShell : public StepShape_Array1OfOrientedClosedShell, public Standard_Transient {
@@ -8967,6 +8934,39 @@ class StepShape_HArray1OfOrientedEdge : public StepShape_Array1OfOrientedEdge, p
     StepShape_Array1OfOrientedEdge& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfOrientedEdge)
+
+
+class StepShape_HArray1OfShapeDimensionRepresentationItem : public StepShape_Array1OfShapeDimensionRepresentationItem, public Standard_Transient {
+  public:
+    StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShapeDimensionRepresentationItem::value_type& theValue);
+    StepShape_HArray1OfShapeDimensionRepresentationItem(const StepShape_Array1OfShapeDimensionRepresentationItem& theOther);
+    const StepShape_Array1OfShapeDimensionRepresentationItem& Array1();
+    StepShape_Array1OfShapeDimensionRepresentationItem& ChangeArray1();
+};
+%make_alias(StepShape_HArray1OfShapeDimensionRepresentationItem)
+
+
+class StepShape_HArray1OfShell : public StepShape_Array1OfShell, public Standard_Transient {
+  public:
+    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShell::value_type& theValue);
+    StepShape_HArray1OfShell(const StepShape_Array1OfShell& theOther);
+    const StepShape_Array1OfShell& Array1();
+    StepShape_Array1OfShell& ChangeArray1();
+};
+%make_alias(StepShape_HArray1OfShell)
+
+
+class StepShape_HArray1OfValueQualifier : public StepShape_Array1OfValueQualifier, public Standard_Transient {
+  public:
+    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfValueQualifier::value_type& theValue);
+    StepShape_HArray1OfValueQualifier(const StepShape_Array1OfValueQualifier& theOther);
+    const StepShape_Array1OfValueQualifier& Array1();
+    StepShape_Array1OfValueQualifier& ChangeArray1();
+};
+%make_alias(StepShape_HArray1OfValueQualifier)
 
 /* harray2 classes */
 /* hsequence classes */

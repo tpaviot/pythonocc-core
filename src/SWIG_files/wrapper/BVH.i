@@ -79,28 +79,29 @@ enum  {
 /* end templates declaration */
 
 /* typedefs */
-typedef BVH::ArrayType<Standard_Real, 2>::Type BVH_Array2d;
-typedef BVH::ArrayType<Standard_ShortReal, 2>::Type BVH_Array2f;
-typedef BVH::ArrayType<Standard_Integer, 2>::Type BVH_Array2i;
-typedef BVH::ArrayType<Standard_Real, 3>::Type BVH_Array3d;
-typedef BVH::ArrayType<Standard_ShortReal, 3>::Type BVH_Array3f;
-typedef BVH::ArrayType<Standard_Integer, 3>::Type BVH_Array3i;
-typedef BVH::ArrayType<Standard_Real, 4>::Type BVH_Array4d;
-typedef BVH::ArrayType<Standard_ShortReal, 4>::Type BVH_Array4f;
-typedef BVH::ArrayType<Standard_Integer, 4>::Type BVH_Array4i;
-typedef std::pair<unsigned int, Standard_Integer> BVH_EncodedLink;
-typedef BVH::MatrixType<Standard_Real, 4>::Type BVH_Mat4d;
-typedef BVH::MatrixType<Standard_ShortReal, 4>::Type BVH_Mat4f;
-typedef BVH_PrimitiveSet<Standard_Real, 3> BVH_PrimitiveSet3d;
-typedef BVH::VectorType<Standard_Real, 2>::Type BVH_Vec2d;
-typedef BVH::VectorType<Standard_ShortReal, 2>::Type BVH_Vec2f;
-typedef BVH::VectorType<Standard_Integer, 2>::Type BVH_Vec2i;
-typedef BVH::VectorType<Standard_Real, 3>::Type BVH_Vec3d;
-typedef BVH::VectorType<Standard_ShortReal, 3>::Type BVH_Vec3f;
-typedef BVH::VectorType<Standard_Integer, 3>::Type BVH_Vec3i;
-typedef BVH::VectorType<Standard_Real, 4>::Type BVH_Vec4d;
-typedef BVH::VectorType<Standard_ShortReal, 4>::Type BVH_Vec4f;
-typedef BVH::VectorType<Standard_Integer, 4>::Type BVH_Vec4i;
+typedef BVH::ArrayType <Standard_Real, 2>::Type BVH_Array2d;
+typedef BVH::ArrayType <Standard_ShortReal, 2>::Type BVH_Array2f;
+typedef BVH::ArrayType <Standard_Integer, 2>::Type BVH_Array2i;
+typedef BVH::ArrayType <Standard_Real, 3>::Type BVH_Array3d;
+typedef BVH::ArrayType <Standard_ShortReal, 3>::Type BVH_Array3f;
+typedef BVH::ArrayType <Standard_Integer, 3>::Type BVH_Array3i;
+typedef BVH::ArrayType <Standard_Real, 4>::Type BVH_Array4d;
+typedef BVH::ArrayType <Standard_ShortReal, 4>::Type BVH_Array4f;
+typedef BVH::ArrayType <Standard_Integer, 4>::Type BVH_Array4i;
+typedef std::pair <unsigned int, Standard_Integer> BVH_EncodedLink;
+typedef BVH::MatrixType <Standard_Real, 4>::Type BVH_Mat4d;
+typedef BVH::MatrixType <Standard_ShortReal, 4>::Type BVH_Mat4f;
+typedef BVH_PrimitiveSet <Standard_Real, 3> BVH_PrimitiveSet3d;
+typedef BVH::VectorType <Standard_Real, 2>::Type BVH_Vec2d;
+typedef BVH::VectorType <Standard_ShortReal, 2>::Type BVH_Vec2f;
+typedef BVH::VectorType <Standard_Integer, 2>::Type BVH_Vec2i;
+typedef BVH::VectorType <Standard_Real, 3>::Type BVH_Vec3d;
+typedef BVH::VectorType <Standard_ShortReal, 3>::Type BVH_Vec3f;
+typedef BVH::VectorType <Standard_Integer, 3>::Type BVH_Vec3i;
+typedef BVH::VectorType <Standard_Real, 4>::Type BVH_Vec4d;
+typedef BVH::VectorType <Standard_ShortReal, 4>::Type BVH_Vec4f;
+typedef BVH::VectorType <Standard_Integer, 4>::Type BVH_Vec4i;
+typedef typename BVH_QueueBuilder <T, N>::BVH_PrimitiveRange Range;
 /* end typedefs declaration */
 
 /**************
@@ -117,7 +118,7 @@ typedef BVH::VectorType<Standard_Integer, 4>::Type BVH_Vec4i;
 ******************************/
 class BVH_AxisSelector<T,2> {
 	public:
-typedef typename BVH ::VectorType<T , 2>::Type BVH_VecNt;
+typedef typename BVH::VectorType <T , 2>::Type BVH_VecNt;
 		/****************** MainAxis ******************/
 		/**** md5 signature: 3eeb73485373349ee6e5770c410c7405 ****/
 		%feature("compactdefaultargs") MainAxis;
@@ -176,9 +177,9 @@ theTransform: NCollection_Mat4<T>
 
 Returns
 -------
-BVH_Box<T, 3 >
+BVH_Box<T, 3>
 ") Transformed;
-		BVH_Box<T, 3 > Transformed(const NCollection_Mat4<T> & theTransform);
+		BVH_Box<T, 3> Transformed(const NCollection_Mat4<T> & theTransform);
 
 };
 
@@ -339,18 +340,12 @@ BVH_Box<T, 3 >
 /**************************
 * class BVH_BinnedBuilder *
 **************************/
-/****************
-* class BVH_Box *
-****************/
 /*******************
 * class BVH_BoxSet *
 *******************/
 /********************
 * class BVH_Builder *
 ********************/
-/*********************
-* class BVH_Distance *
-*********************/
 /*********************
 * class BVH_Geometry *
 *********************/
@@ -364,13 +359,7 @@ BVH_Box<T, 3 >
 * class BVH_ObjectSet *
 **********************/
 /*************************
-* class BVH_PairDistance *
-*************************/
-/*************************
 * class BVH_PairTraverse *
-*************************/
-/*************************
-* class BVH_PrimitiveSet *
 *************************/
 /*************************
 * class BVH_QueueBuilder *
@@ -381,9 +370,6 @@ BVH_Box<T, 3 >
 /************************
 * class BVH_RadixSorter *
 ************************/
-/*********************************
-* class BVH_SpatialMedianBuilder *
-*********************************/
 /******************************
 * class BVH_SweepPlaneBuilder *
 ******************************/
@@ -396,13 +382,13 @@ BVH_Box<T, 3 >
 /*************************************
 * class BVH_Tree<T,N,BVH_BinaryTree> *
 *************************************/
-class BVH_Tree<T,N,BVH_BinaryTree> : public BVH_TreeBase<T,N> {
+class BVH_Tree<T,N,BVH_BinaryTree> : public BVH_TreeBase<T, N > {
 	public:
-typedef typename BVH_TreeBase<T , N>::BVH_VecNt BVH_VecNt;
+typedef typename BVH_TreeBase <T , N>::BVH_VecNt BVH_VecNt;
 		/****************** BVH_Tree ******************/
-		/**** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ****/
+		/**** md5 signature: be082d8c338e7395785e1e90682e8185 ****/
 		%feature("compactdefaultargs") BVH_Tree;
-		%feature("autodoc", "Creates new empty bvh tree.
+		%feature("autodoc", "@name methods for accessing individual nodes creates new empty bvh tree.
 
 Returns
 -------
@@ -515,7 +501,7 @@ int
 		/****************** Clear ******************/
 		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Removes all nodes from the tree.
+		%feature("autodoc", "@name methods for adding/removing tree nodes removes all nodes from the tree.
 
 Returns
 -------
@@ -537,7 +523,7 @@ BVH_Tree<T, N, BVH_QuadTree> *
 		/****************** EstimateSAH ******************/
 		/**** md5 signature: 3b150e7f34a26485a48f784b21aaf6ef ****/
 		%feature("compactdefaultargs") EstimateSAH;
-		%feature("autodoc", "Returns value of sah (surface area heuristic). allows to compare the quality of bvh trees constructed for the same sets of geometric objects with different methods.
+		%feature("autodoc", "@name methods specific to binary bvh returns value of sah (surface area heuristic). allows to compare the quality of bvh trees constructed for the same sets of geometric objects with different methods.
 
 Returns
 -------
@@ -602,12 +588,12 @@ None
 /***********************************
 * class BVH_Tree<T,N,BVH_QuadTree> *
 ***********************************/
-class BVH_Tree<T,N,BVH_QuadTree> : public BVH_TreeBase<T,N> {
+class BVH_Tree<T,N,BVH_QuadTree> : public BVH_TreeBase<T, N > {
 	public:
 		/****************** BVH_Tree ******************/
-		/**** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ****/
+		/**** md5 signature: be082d8c338e7395785e1e90682e8185 ****/
 		%feature("compactdefaultargs") BVH_Tree;
-		%feature("autodoc", "Creates new empty bvh tree.
+		%feature("autodoc", "@name general methods creates new empty bvh tree.
 
 Returns
 -------
@@ -633,23 +619,19 @@ None
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class BVH_Tools:
+class BVH_Tree:
 	pass
 
 @classnotwrapped
-class BVH_BuildTool:
+class BVH_Bin:
 	pass
 
 @classnotwrapped
-class BVH_BuildThread:
+class BVH_BinnedBuilder:
 	pass
 
 @classnotwrapped
-class BVH_Sorter:
-	pass
-
-@classnotwrapped
-class BVH_ObjectSet:
+class BVH_AxisSelector:
 	pass
 
 @classnotwrapped
@@ -673,7 +655,51 @@ class BoxMinMax:
 	pass
 
 @classnotwrapped
+class BVH_BoxSet:
+	pass
+
+@classnotwrapped
+class BVH_BuilderTransient:
+	pass
+
+@classnotwrapped
+class BVH_Builder:
+	pass
+
+@classnotwrapped
+class BVH_BuildQueue:
+	pass
+
+@classnotwrapped
+class BVH_BuildTool:
+	pass
+
+@classnotwrapped
+class BVH_BuildThread:
+	pass
+
+@classnotwrapped
 class BVH_Distance:
+	pass
+
+@classnotwrapped
+class BVH_DistanceField:
+	pass
+
+@classnotwrapped
+class BVH_Geometry:
+	pass
+
+@classnotwrapped
+class BVH_LinearBuilder:
+	pass
+
+@classnotwrapped
+class BoundData:
+	pass
+
+@classnotwrapped
+class UpdateBoundTask:
 	pass
 
 @classnotwrapped
@@ -685,35 +711,15 @@ class BVH_Object:
 	pass
 
 @classnotwrapped
-class BVH_QuickSorter:
+class BVH_ObjectSet:
 	pass
 
 @classnotwrapped
-class BVH_Set:
-	pass
-
-@classnotwrapped
-class BVH_SpatialMedianBuilder:
-	pass
-
-@classnotwrapped
-class BVH_Tree:
+class BVH_PairDistance:
 	pass
 
 @classnotwrapped
 class BVH_PrimitiveSet:
-	pass
-
-@classnotwrapped
-class BVH_BuildQueue:
-	pass
-
-@classnotwrapped
-class BVH_BuilderTransient:
-	pass
-
-@classnotwrapped
-class BVH_Builder:
 	pass
 
 @classnotwrapped
@@ -733,6 +739,14 @@ class UnitVector:
 	pass
 
 @classnotwrapped
+class BVH_QueueBuilder:
+	pass
+
+@classnotwrapped
+class BVH_QuickSorter:
+	pass
+
+@classnotwrapped
 class BVH_RadixSorter:
 	pass
 
@@ -746,6 +760,62 @@ class BitComparator:
 
 @classnotwrapped
 class RadixSorter:
+	pass
+
+@classnotwrapped
+class BVH_Ray:
+	pass
+
+@classnotwrapped
+class BVH_Set:
+	pass
+
+@classnotwrapped
+class BVH_Sorter:
+	pass
+
+@classnotwrapped
+class BVH_SpatialMedianBuilder:
+	pass
+
+@classnotwrapped
+class BVH_SweepPlaneBuilder:
+	pass
+
+@classnotwrapped
+class BVH_Tools:
+	pass
+
+@classnotwrapped
+class BVH_BaseTraverse:
+	pass
+
+@classnotwrapped
+class BVH_Traverse:
+	pass
+
+@classnotwrapped
+class BVH_PairTraverse:
+	pass
+
+@classnotwrapped
+class BVH_TreeBaseTransient:
+	pass
+
+@classnotwrapped
+class BVH_TreeBase:
+	pass
+
+@classnotwrapped
+class BVH_QuadTree:
+	pass
+
+@classnotwrapped
+class BVH_BinaryTree:
+	pass
+
+@classnotwrapped
+class BVH_Triangulation:
 	pass
 
 @classnotwrapped
@@ -766,90 +836,6 @@ class VecComp:
 
 @classnotwrapped
 class Array:
-	pass
-
-@classnotwrapped
-class BVH_Triangulation:
-	pass
-
-@classnotwrapped
-class BVH_PairDistance:
-	pass
-
-@classnotwrapped
-class BVH_TreeBaseTransient:
-	pass
-
-@classnotwrapped
-class BVH_TreeBase:
-	pass
-
-@classnotwrapped
-class BVH_QuadTree:
-	pass
-
-@classnotwrapped
-class BVH_BinaryTree:
-	pass
-
-@classnotwrapped
-class BVH_SweepPlaneBuilder:
-	pass
-
-@classnotwrapped
-class BVH_BaseTraverse:
-	pass
-
-@classnotwrapped
-class BVH_Traverse:
-	pass
-
-@classnotwrapped
-class BVH_PairTraverse:
-	pass
-
-@classnotwrapped
-class BVH_BoxSet:
-	pass
-
-@classnotwrapped
-class BVH_Ray:
-	pass
-
-@classnotwrapped
-class BVH_Geometry:
-	pass
-
-@classnotwrapped
-class BVH_QueueBuilder:
-	pass
-
-@classnotwrapped
-class BVH_DistanceField:
-	pass
-
-@classnotwrapped
-class BVH_LinearBuilder:
-	pass
-
-@classnotwrapped
-class BoundData:
-	pass
-
-@classnotwrapped
-class UpdateBoundTask:
-	pass
-
-@classnotwrapped
-class BVH_Bin:
-	pass
-
-@classnotwrapped
-class BVH_BinnedBuilder:
-	pass
-
-@classnotwrapped
-class BVH_AxisSelector:
 	pass
 
 }

@@ -149,7 +149,7 @@ GeomLib_InversionProblem = GeomLib_InterpolationErrors.GeomLib_InversionProblem
 
 /* typedefs */
 typedef class Adaptor2d_Curve2d Adaptor2d_Curve2d;
-typedef NCollection_Array1<gp_Mat> GeomLib_Array1OfMat;
+typedef NCollection_Array1 <gp_Mat> GeomLib_Array1OfMat;
 typedef GeomLib_DenominatorMultiplier * GeomLib_DenominatorMultiplierPtr;
 /* end typedefs declaration */
 
@@ -174,7 +174,7 @@ T2: gp_Vec
 
 Returns
 -------
-None
+void
 ") AdjustExtremity;
 		static void AdjustExtremity(opencascade::handle<Geom_BoundedCurve> & Curve, const gp_Pnt & P1, const gp_Pnt & P2, const gp_Vec & T1, const gp_Vec & T2);
 
@@ -235,7 +235,7 @@ VDirection: bool
 
 Returns
 -------
-None
+void
 ") CancelDenominatorDerivative;
 		static void CancelDenominatorDerivative(opencascade::handle<Geom_BSplineSurface> & BSurf, const Standard_Boolean UDirection, const Standard_Boolean VDirection);
 
@@ -252,7 +252,7 @@ OutParameters: TColStd_HArray1OfReal
 
 Returns
 -------
-None
+void
 ") DensifyArray1OfReal;
 		static void DensifyArray1OfReal(const Standard_Integer MinNumPoints, const TColStd_Array1OfReal & InParameters, opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
@@ -306,7 +306,7 @@ After: bool
 
 Returns
 -------
-None
+void
 ") ExtendCurveToPoint;
 		static void ExtendCurveToPoint(opencascade::handle<Geom_BoundedCurve> & Curve, const gp_Pnt & Point, const Standard_Integer Cont, const Standard_Boolean After);
 
@@ -325,7 +325,7 @@ After: bool
 
 Returns
 -------
-None
+void
 ") ExtendSurfByLength;
 		static void ExtendSurfByLength(opencascade::handle<Geom_BoundedSurface> & Surf, const Standard_Real Length, const Standard_Integer Cont, const Standard_Boolean InU, const Standard_Boolean After);
 
@@ -346,7 +346,7 @@ IsAdjustToFirstInterval: bool,optional
 
 Returns
 -------
-None
+void
 ") FuseIntervals;
 		static void FuseIntervals(const TColStd_Array1OfReal & Interval1, const TColStd_Array1OfReal & Interval2, TColStd_SequenceOfReal & Fusion, const Standard_Real Confusion = 1.0e-9, const Standard_Boolean IsAdjustToFirstInterval = Standard_False);
 
@@ -506,7 +506,7 @@ OutParameters: TColStd_HArray1OfReal
 
 Returns
 -------
-None
+void
 ") RemovePointsFromArray;
 		static void RemovePointsFromArray(const Standard_Integer NumPoints, const TColStd_Array1OfReal & InParameters, opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
@@ -527,7 +527,7 @@ NewCurve2dPtr: Geom2d_Curve
 
 Returns
 -------
-None
+void
 ") SameRange;
 		static void SameRange(const Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve> & Curve2dPtr, const Standard_Real First, const Standard_Real Last, const Standard_Real RequestedFirst, const Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve> & NewCurve2dPtr);
 
@@ -567,7 +567,7 @@ Returns
 -------
 opencascade::handle<Geom_Curve>
 ") buildC3dOnIsoLine;
-		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_Curve2d > theC2D, const opencascade::handle<Adaptor3d_Surface > theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
+		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_Curve2d> theC2D, const opencascade::handle<Adaptor3d_Surface> theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
 
 		/****************** isIsoLine ******************/
 		/**** md5 signature: bd8c9f34a6bd6dba755af86ef9fcbca3 ****/
@@ -584,7 +584,7 @@ theIsU: bool
 theParam: float
 theIsForward: bool
 ") isIsoLine;
-		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_Curve2d > theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
+		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_Curve2d> theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
 };
 
@@ -783,16 +783,20 @@ class GeomLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") GeomLib_CheckCurveOnSurface;
 		%feature("autodoc", "Default constructor.
 
+Parameters
+----------
+: void
+
 Returns
 -------
 None
 ") GeomLib_CheckCurveOnSurface;
-		 GeomLib_CheckCurveOnSurface();
+		 GeomLib_CheckCurveOnSurface(void );
 
 		/****************** GeomLib_CheckCurveOnSurface ******************/
 		/**** md5 signature: 4c10043862b08450260b336d9ad8391b ****/
 		%feature("compactdefaultargs") GeomLib_CheckCurveOnSurface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Constructor.
 
 Parameters
 ----------

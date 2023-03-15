@@ -151,7 +151,7 @@ M: TopTools_IndexedMapOfShape
 
 Returns
 -------
-None
+void
 ") MapShapes;
 		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_IndexedMapOfShape & M);
 
@@ -171,7 +171,7 @@ cumLoc: bool,optional
 
 Returns
 -------
-None
+void
 ") MapShapes;
 		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
@@ -191,7 +191,7 @@ cumLoc: bool,optional
 
 Returns
 -------
-None
+void
 ") MapShapes;
 		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
@@ -209,7 +209,7 @@ M: TopTools_IndexedDataMapOfShapeListOfShape
 
 Returns
 -------
-None
+void
 ") MapShapesAndAncestors;
 		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
@@ -229,7 +229,7 @@ useOrientation: bool,optional
 
 Returns
 -------
-None
+void
 ") MapShapesAndUniqueAncestors;
 		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M, const Standard_Boolean useOrientation = Standard_False);
 
@@ -248,7 +248,7 @@ CumOri: bool,optional
 
 Returns
 -------
-None
+void
 ") Vertices;
 		static void Vertices(const TopoDS_Edge & E, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast, const Standard_Boolean CumOri = Standard_False);
 
@@ -265,7 +265,7 @@ Vlast: TopoDS_Vertex
 
 Returns
 -------
-None
+void
 ") Vertices;
 		static void Vertices(const TopoDS_Wire & W, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast);
 

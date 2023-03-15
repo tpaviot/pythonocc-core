@@ -119,7 +119,7 @@ theApp: TDocStd_Application
 
 Returns
 -------
-None
+void
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 

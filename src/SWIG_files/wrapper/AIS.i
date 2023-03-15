@@ -113,11 +113,40 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum AIS_TrihedronSelectionMode {
-	AIS_TrihedronSelectionMode_EntireObject = 0,
-	AIS_TrihedronSelectionMode_Origin = 1,
-	AIS_TrihedronSelectionMode_Axes = 2,
-	AIS_TrihedronSelectionMode_MainPlanes = 3,
+enum AIS_DisplayMode {
+	AIS_WireFrame = 0,
+	AIS_Shaded = 1,
+};
+
+enum AIS_DragAction {
+	AIS_DragAction_Start = 0,
+	AIS_DragAction_Update = 1,
+	AIS_DragAction_Stop = 2,
+	AIS_DragAction_Abort = 3,
+};
+
+enum AIS_KindOfInteractive {
+	AIS_KindOfInteractive_None = 0,
+	AIS_KindOfInteractive_Datum = 1,
+	AIS_KindOfInteractive_Shape = 2,
+	AIS_KindOfInteractive_Object = 3,
+	AIS_KindOfInteractive_Relation = 4,
+	AIS_KindOfInteractive_Dimension = 5,
+	AIS_KindOfInteractive_LightSource = 6,
+	AIS_KOI_None = AIS_KindOfInteractive_None,
+	AIS_KOI_Datum = AIS_KindOfInteractive_Datum,
+	AIS_KOI_Shape = AIS_KindOfInteractive_Shape,
+	AIS_KOI_Object = AIS_KindOfInteractive_Object,
+	AIS_KOI_Relation = AIS_KindOfInteractive_Relation,
+	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension,
+};
+
+enum AIS_ManipulatorMode {
+	AIS_MM_None = 0,
+	AIS_MM_Translation = 1,
+	AIS_MM_Rotation = 2,
+	AIS_MM_Scaling = 3,
+	AIS_MM_TranslationPlane = 4,
 };
 
 enum AIS_MouseGesture {
@@ -130,6 +159,77 @@ enum AIS_MouseGesture {
 	AIS_MouseGesture_RotateOrbit = 6,
 	AIS_MouseGesture_RotateView = 7,
 	AIS_MouseGesture_Drag = 8,
+};
+
+enum AIS_NavigationMode {
+	AIS_NavigationMode_Orbit = 0,
+	AIS_NavigationMode_FirstPersonFlight = 1,
+	AIS_NavigationMode_FirstPersonWalk = 2,
+};
+
+enum  {
+	AIS_NavigationMode_LOWER = 0,
+	AIS_NavigationMode_UPPER = AIS_NavigationMode_FirstPersonWalk,
+};
+
+enum AIS_RotationMode {
+	AIS_RotationMode_BndBoxActive = 0,
+	AIS_RotationMode_PickLast = 1,
+	AIS_RotationMode_PickCenter = 2,
+	AIS_RotationMode_CameraAt = 3,
+	AIS_RotationMode_BndBoxScene = 4,
+};
+
+enum  {
+	AIS_RotationMode_LOWER = 0,
+	AIS_RotationMode_UPPER = AIS_RotationMode_BndBoxScene,
+};
+
+enum AIS_SelectionModesConcurrency {
+	AIS_SelectionModesConcurrency_Single = 0,
+	AIS_SelectionModesConcurrency_GlobalOrLocal = 1,
+	AIS_SelectionModesConcurrency_Multiple = 2,
+};
+
+enum AIS_SelectionScheme {
+	AIS_SelectionScheme_UNKNOWN = - 1,
+	AIS_SelectionScheme_Replace = 0,
+	AIS_SelectionScheme_Add = 1,
+	AIS_SelectionScheme_Remove = 2,
+	AIS_SelectionScheme_XOR = 3,
+	AIS_SelectionScheme_Clear = 4,
+	AIS_SelectionScheme_ReplaceExtra = 5,
+};
+
+enum AIS_SelectStatus {
+	AIS_SS_Added = 0,
+	AIS_SS_Removed = 1,
+	AIS_SS_NotDone = 2,
+};
+
+enum AIS_StatusOfDetection {
+	AIS_SOD_Error = 0,
+	AIS_SOD_Nothing = 1,
+	AIS_SOD_AllBad = 2,
+	AIS_SOD_Selected = 3,
+	AIS_SOD_OnlyOneDetected = 4,
+	AIS_SOD_OnlyOneGood = 5,
+	AIS_SOD_SeveralGood = 6,
+};
+
+enum AIS_StatusOfPick {
+	AIS_SOP_Error = 0,
+	AIS_SOP_NothingSelected = 1,
+	AIS_SOP_Removed = 2,
+	AIS_SOP_OneSelected = 3,
+	AIS_SOP_SeveralSelected = 4,
+};
+
+enum AIS_TrihedronSelectionMode {
+	AIS_TrihedronSelectionMode_EntireObject = 0,
+	AIS_TrihedronSelectionMode_Origin = 1,
+	AIS_TrihedronSelectionMode_Axes = 2,
+	AIS_TrihedronSelectionMode_MainPlanes = 3,
 };
 
 enum AIS_TypeOfAttribute {
@@ -151,28 +251,6 @@ enum AIS_TypeOfAttribute {
 	AIS_TOA_ThirdAxis = 15,
 };
 
-enum AIS_KindOfInteractive {
-	AIS_KindOfInteractive_None = 0,
-	AIS_KindOfInteractive_Datum = 1,
-	AIS_KindOfInteractive_Shape = 2,
-	AIS_KindOfInteractive_Object = 3,
-	AIS_KindOfInteractive_Relation = 4,
-	AIS_KindOfInteractive_Dimension = 5,
-	AIS_KindOfInteractive_LightSource = 6,
-	AIS_KOI_None = AIS_KindOfInteractive_None,
-	AIS_KOI_Datum = AIS_KindOfInteractive_Datum,
-	AIS_KOI_Shape = AIS_KindOfInteractive_Shape,
-	AIS_KOI_Object = AIS_KindOfInteractive_Object,
-	AIS_KOI_Relation = AIS_KindOfInteractive_Relation,
-	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension,
-};
-
-enum AIS_SelectStatus {
-	AIS_SS_Added = 0,
-	AIS_SS_Removed = 1,
-	AIS_SS_NotDone = 2,
-};
-
 enum AIS_TypeOfAxis {
 	AIS_TOAX_Unknown = 0,
 	AIS_TOAX_XAxis = 1,
@@ -180,27 +258,17 @@ enum AIS_TypeOfAxis {
 	AIS_TOAX_ZAxis = 3,
 };
 
-enum AIS_SelectionScheme {
-	AIS_SelectionScheme_UNKNOWN = - 1,
-	AIS_SelectionScheme_Replace = 0,
-	AIS_SelectionScheme_Add = 1,
-	AIS_SelectionScheme_Remove = 2,
-	AIS_SelectionScheme_XOR = 3,
-	AIS_SelectionScheme_Clear = 4,
-	AIS_SelectionScheme_ReplaceExtra = 5,
+enum AIS_TypeOfIso {
+	AIS_TOI_IsoU = 0,
+	AIS_TOI_IsoV = 1,
+	AIS_TOI_Both = 2,
 };
 
-enum AIS_RotationMode {
-	AIS_RotationMode_BndBoxActive = 0,
-	AIS_RotationMode_PickLast = 1,
-	AIS_RotationMode_PickCenter = 2,
-	AIS_RotationMode_CameraAt = 3,
-	AIS_RotationMode_BndBoxScene = 4,
-};
-
-enum  {
-	AIS_RotationMode_LOWER = 0,
-	AIS_RotationMode_UPPER = AIS_RotationMode_BndBoxScene,
+enum AIS_TypeOfPlane {
+	AIS_TOPL_Unknown = 0,
+	AIS_TOPL_XYPlane = 1,
+	AIS_TOPL_XZPlane = 2,
+	AIS_TOPL_YZPlane = 3,
 };
 
 enum AIS_ViewSelectionTool {
@@ -215,33 +283,6 @@ enum AIS_ViewInputBufferType {
 	AIS_ViewInputBufferType_GL = 1,
 };
 
-enum AIS_NavigationMode {
-	AIS_NavigationMode_Orbit = 0,
-	AIS_NavigationMode_FirstPersonFlight = 1,
-	AIS_NavigationMode_FirstPersonWalk = 2,
-};
-
-enum  {
-	AIS_NavigationMode_LOWER = 0,
-	AIS_NavigationMode_UPPER = AIS_NavigationMode_FirstPersonWalk,
-};
-
-enum AIS_TypeOfIso {
-	AIS_TOI_IsoU = 0,
-	AIS_TOI_IsoV = 1,
-	AIS_TOI_Both = 2,
-};
-
-enum AIS_StatusOfDetection {
-	AIS_SOD_Error = 0,
-	AIS_SOD_Nothing = 1,
-	AIS_SOD_AllBad = 2,
-	AIS_SOD_Selected = 3,
-	AIS_SOD_OnlyOneDetected = 4,
-	AIS_SOD_OnlyOneGood = 5,
-	AIS_SOD_SeveralGood = 6,
-};
-
 enum AIS_WalkTranslation {
 	AIS_WalkTranslation_Forward = 0,
 	AIS_WalkTranslation_Side = 1,
@@ -254,61 +295,66 @@ enum AIS_WalkRotation {
 	AIS_WalkRotation_Roll = 2,
 };
 
-enum AIS_ManipulatorMode {
-	AIS_MM_None = 0,
-	AIS_MM_Translation = 1,
-	AIS_MM_Rotation = 2,
-	AIS_MM_Scaling = 3,
-	AIS_MM_TranslationPlane = 4,
-};
-
-enum AIS_SelectionModesConcurrency {
-	AIS_SelectionModesConcurrency_Single = 0,
-	AIS_SelectionModesConcurrency_GlobalOrLocal = 1,
-	AIS_SelectionModesConcurrency_Multiple = 2,
-};
-
-enum AIS_DisplayMode {
-	AIS_WireFrame = 0,
-	AIS_Shaded = 1,
-};
-
-enum AIS_StatusOfPick {
-	AIS_SOP_Error = 0,
-	AIS_SOP_NothingSelected = 1,
-	AIS_SOP_Removed = 2,
-	AIS_SOP_OneSelected = 3,
-	AIS_SOP_SeveralSelected = 4,
-};
-
-enum AIS_DragAction {
-	AIS_DragAction_Start = 0,
-	AIS_DragAction_Update = 1,
-	AIS_DragAction_Stop = 2,
-	AIS_DragAction_Abort = 3,
-};
-
-enum AIS_TypeOfPlane {
-	AIS_TOPL_Unknown = 0,
-	AIS_TOPL_XYPlane = 1,
-	AIS_TOPL_XZPlane = 2,
-	AIS_TOPL_YZPlane = 3,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
 
-class AIS_TrihedronSelectionMode(IntEnum):
-	AIS_TrihedronSelectionMode_EntireObject = 0
-	AIS_TrihedronSelectionMode_Origin = 1
-	AIS_TrihedronSelectionMode_Axes = 2
-	AIS_TrihedronSelectionMode_MainPlanes = 3
-AIS_TrihedronSelectionMode_EntireObject = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_EntireObject
-AIS_TrihedronSelectionMode_Origin = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Origin
-AIS_TrihedronSelectionMode_Axes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Axes
-AIS_TrihedronSelectionMode_MainPlanes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_MainPlanes
+class AIS_DisplayMode(IntEnum):
+	AIS_WireFrame = 0
+	AIS_Shaded = 1
+AIS_WireFrame = AIS_DisplayMode.AIS_WireFrame
+AIS_Shaded = AIS_DisplayMode.AIS_Shaded
+
+class AIS_DragAction(IntEnum):
+	AIS_DragAction_Start = 0
+	AIS_DragAction_Update = 1
+	AIS_DragAction_Stop = 2
+	AIS_DragAction_Abort = 3
+AIS_DragAction_Start = AIS_DragAction.AIS_DragAction_Start
+AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
+AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
+AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
+
+class AIS_KindOfInteractive(IntEnum):
+	AIS_KindOfInteractive_None = 0
+	AIS_KindOfInteractive_Datum = 1
+	AIS_KindOfInteractive_Shape = 2
+	AIS_KindOfInteractive_Object = 3
+	AIS_KindOfInteractive_Relation = 4
+	AIS_KindOfInteractive_Dimension = 5
+	AIS_KindOfInteractive_LightSource = 6
+	AIS_KOI_None = AIS_KindOfInteractive_None
+	AIS_KOI_Datum = AIS_KindOfInteractive_Datum
+	AIS_KOI_Shape = AIS_KindOfInteractive_Shape
+	AIS_KOI_Object = AIS_KindOfInteractive_Object
+	AIS_KOI_Relation = AIS_KindOfInteractive_Relation
+	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension
+AIS_KindOfInteractive_None = AIS_KindOfInteractive.AIS_KindOfInteractive_None
+AIS_KindOfInteractive_Datum = AIS_KindOfInteractive.AIS_KindOfInteractive_Datum
+AIS_KindOfInteractive_Shape = AIS_KindOfInteractive.AIS_KindOfInteractive_Shape
+AIS_KindOfInteractive_Object = AIS_KindOfInteractive.AIS_KindOfInteractive_Object
+AIS_KindOfInteractive_Relation = AIS_KindOfInteractive.AIS_KindOfInteractive_Relation
+AIS_KindOfInteractive_Dimension = AIS_KindOfInteractive.AIS_KindOfInteractive_Dimension
+AIS_KindOfInteractive_LightSource = AIS_KindOfInteractive.AIS_KindOfInteractive_LightSource
+AIS_KOI_None = AIS_KindOfInteractive.AIS_KOI_None
+AIS_KOI_Datum = AIS_KindOfInteractive.AIS_KOI_Datum
+AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
+AIS_KOI_Object = AIS_KindOfInteractive.AIS_KOI_Object
+AIS_KOI_Relation = AIS_KindOfInteractive.AIS_KOI_Relation
+AIS_KOI_Dimension = AIS_KindOfInteractive.AIS_KOI_Dimension
+
+class AIS_ManipulatorMode(IntEnum):
+	AIS_MM_None = 0
+	AIS_MM_Translation = 1
+	AIS_MM_Rotation = 2
+	AIS_MM_Scaling = 3
+	AIS_MM_TranslationPlane = 4
+AIS_MM_None = AIS_ManipulatorMode.AIS_MM_None
+AIS_MM_Translation = AIS_ManipulatorMode.AIS_MM_Translation
+AIS_MM_Rotation = AIS_ManipulatorMode.AIS_MM_Rotation
+AIS_MM_Scaling = AIS_ManipulatorMode.AIS_MM_Scaling
+AIS_MM_TranslationPlane = AIS_ManipulatorMode.AIS_MM_TranslationPlane
 
 class AIS_MouseGesture(IntEnum):
 	AIS_MouseGesture_NONE = 0
@@ -329,6 +375,96 @@ AIS_MouseGesture_Pan = AIS_MouseGesture.AIS_MouseGesture_Pan
 AIS_MouseGesture_RotateOrbit = AIS_MouseGesture.AIS_MouseGesture_RotateOrbit
 AIS_MouseGesture_RotateView = AIS_MouseGesture.AIS_MouseGesture_RotateView
 AIS_MouseGesture_Drag = AIS_MouseGesture.AIS_MouseGesture_Drag
+
+class AIS_NavigationMode(IntEnum):
+	AIS_NavigationMode_Orbit = 0
+	AIS_NavigationMode_FirstPersonFlight = 1
+	AIS_NavigationMode_FirstPersonWalk = 2
+AIS_NavigationMode_Orbit = AIS_NavigationMode.AIS_NavigationMode_Orbit
+AIS_NavigationMode_FirstPersonFlight = AIS_NavigationMode.AIS_NavigationMode_FirstPersonFlight
+AIS_NavigationMode_FirstPersonWalk = AIS_NavigationMode.AIS_NavigationMode_FirstPersonWalk
+
+class AIS_RotationMode(IntEnum):
+	AIS_RotationMode_BndBoxActive = 0
+	AIS_RotationMode_PickLast = 1
+	AIS_RotationMode_PickCenter = 2
+	AIS_RotationMode_CameraAt = 3
+	AIS_RotationMode_BndBoxScene = 4
+AIS_RotationMode_BndBoxActive = AIS_RotationMode.AIS_RotationMode_BndBoxActive
+AIS_RotationMode_PickLast = AIS_RotationMode.AIS_RotationMode_PickLast
+AIS_RotationMode_PickCenter = AIS_RotationMode.AIS_RotationMode_PickCenter
+AIS_RotationMode_CameraAt = AIS_RotationMode.AIS_RotationMode_CameraAt
+AIS_RotationMode_BndBoxScene = AIS_RotationMode.AIS_RotationMode_BndBoxScene
+
+class AIS_SelectionModesConcurrency(IntEnum):
+	AIS_SelectionModesConcurrency_Single = 0
+	AIS_SelectionModesConcurrency_GlobalOrLocal = 1
+	AIS_SelectionModesConcurrency_Multiple = 2
+AIS_SelectionModesConcurrency_Single = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Single
+AIS_SelectionModesConcurrency_GlobalOrLocal = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_GlobalOrLocal
+AIS_SelectionModesConcurrency_Multiple = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Multiple
+
+class AIS_SelectionScheme(IntEnum):
+	AIS_SelectionScheme_UNKNOWN = - 1
+	AIS_SelectionScheme_Replace = 0
+	AIS_SelectionScheme_Add = 1
+	AIS_SelectionScheme_Remove = 2
+	AIS_SelectionScheme_XOR = 3
+	AIS_SelectionScheme_Clear = 4
+	AIS_SelectionScheme_ReplaceExtra = 5
+AIS_SelectionScheme_UNKNOWN = AIS_SelectionScheme.AIS_SelectionScheme_UNKNOWN
+AIS_SelectionScheme_Replace = AIS_SelectionScheme.AIS_SelectionScheme_Replace
+AIS_SelectionScheme_Add = AIS_SelectionScheme.AIS_SelectionScheme_Add
+AIS_SelectionScheme_Remove = AIS_SelectionScheme.AIS_SelectionScheme_Remove
+AIS_SelectionScheme_XOR = AIS_SelectionScheme.AIS_SelectionScheme_XOR
+AIS_SelectionScheme_Clear = AIS_SelectionScheme.AIS_SelectionScheme_Clear
+AIS_SelectionScheme_ReplaceExtra = AIS_SelectionScheme.AIS_SelectionScheme_ReplaceExtra
+
+class AIS_SelectStatus(IntEnum):
+	AIS_SS_Added = 0
+	AIS_SS_Removed = 1
+	AIS_SS_NotDone = 2
+AIS_SS_Added = AIS_SelectStatus.AIS_SS_Added
+AIS_SS_Removed = AIS_SelectStatus.AIS_SS_Removed
+AIS_SS_NotDone = AIS_SelectStatus.AIS_SS_NotDone
+
+class AIS_StatusOfDetection(IntEnum):
+	AIS_SOD_Error = 0
+	AIS_SOD_Nothing = 1
+	AIS_SOD_AllBad = 2
+	AIS_SOD_Selected = 3
+	AIS_SOD_OnlyOneDetected = 4
+	AIS_SOD_OnlyOneGood = 5
+	AIS_SOD_SeveralGood = 6
+AIS_SOD_Error = AIS_StatusOfDetection.AIS_SOD_Error
+AIS_SOD_Nothing = AIS_StatusOfDetection.AIS_SOD_Nothing
+AIS_SOD_AllBad = AIS_StatusOfDetection.AIS_SOD_AllBad
+AIS_SOD_Selected = AIS_StatusOfDetection.AIS_SOD_Selected
+AIS_SOD_OnlyOneDetected = AIS_StatusOfDetection.AIS_SOD_OnlyOneDetected
+AIS_SOD_OnlyOneGood = AIS_StatusOfDetection.AIS_SOD_OnlyOneGood
+AIS_SOD_SeveralGood = AIS_StatusOfDetection.AIS_SOD_SeveralGood
+
+class AIS_StatusOfPick(IntEnum):
+	AIS_SOP_Error = 0
+	AIS_SOP_NothingSelected = 1
+	AIS_SOP_Removed = 2
+	AIS_SOP_OneSelected = 3
+	AIS_SOP_SeveralSelected = 4
+AIS_SOP_Error = AIS_StatusOfPick.AIS_SOP_Error
+AIS_SOP_NothingSelected = AIS_StatusOfPick.AIS_SOP_NothingSelected
+AIS_SOP_Removed = AIS_StatusOfPick.AIS_SOP_Removed
+AIS_SOP_OneSelected = AIS_StatusOfPick.AIS_SOP_OneSelected
+AIS_SOP_SeveralSelected = AIS_StatusOfPick.AIS_SOP_SeveralSelected
+
+class AIS_TrihedronSelectionMode(IntEnum):
+	AIS_TrihedronSelectionMode_EntireObject = 0
+	AIS_TrihedronSelectionMode_Origin = 1
+	AIS_TrihedronSelectionMode_Axes = 2
+	AIS_TrihedronSelectionMode_MainPlanes = 3
+AIS_TrihedronSelectionMode_EntireObject = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_EntireObject
+AIS_TrihedronSelectionMode_Origin = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Origin
+AIS_TrihedronSelectionMode_Axes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Axes
+AIS_TrihedronSelectionMode_MainPlanes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_MainPlanes
 
 class AIS_TypeOfAttribute(IntEnum):
 	AIS_TOA_Line = 0
@@ -364,42 +500,6 @@ AIS_TOA_FirstAxis = AIS_TypeOfAttribute.AIS_TOA_FirstAxis
 AIS_TOA_SecondAxis = AIS_TypeOfAttribute.AIS_TOA_SecondAxis
 AIS_TOA_ThirdAxis = AIS_TypeOfAttribute.AIS_TOA_ThirdAxis
 
-class AIS_KindOfInteractive(IntEnum):
-	AIS_KindOfInteractive_None = 0
-	AIS_KindOfInteractive_Datum = 1
-	AIS_KindOfInteractive_Shape = 2
-	AIS_KindOfInteractive_Object = 3
-	AIS_KindOfInteractive_Relation = 4
-	AIS_KindOfInteractive_Dimension = 5
-	AIS_KindOfInteractive_LightSource = 6
-	AIS_KOI_None = AIS_KindOfInteractive_None
-	AIS_KOI_Datum = AIS_KindOfInteractive_Datum
-	AIS_KOI_Shape = AIS_KindOfInteractive_Shape
-	AIS_KOI_Object = AIS_KindOfInteractive_Object
-	AIS_KOI_Relation = AIS_KindOfInteractive_Relation
-	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension
-AIS_KindOfInteractive_None = AIS_KindOfInteractive.AIS_KindOfInteractive_None
-AIS_KindOfInteractive_Datum = AIS_KindOfInteractive.AIS_KindOfInteractive_Datum
-AIS_KindOfInteractive_Shape = AIS_KindOfInteractive.AIS_KindOfInteractive_Shape
-AIS_KindOfInteractive_Object = AIS_KindOfInteractive.AIS_KindOfInteractive_Object
-AIS_KindOfInteractive_Relation = AIS_KindOfInteractive.AIS_KindOfInteractive_Relation
-AIS_KindOfInteractive_Dimension = AIS_KindOfInteractive.AIS_KindOfInteractive_Dimension
-AIS_KindOfInteractive_LightSource = AIS_KindOfInteractive.AIS_KindOfInteractive_LightSource
-AIS_KOI_None = AIS_KindOfInteractive.AIS_KOI_None
-AIS_KOI_Datum = AIS_KindOfInteractive.AIS_KOI_Datum
-AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
-AIS_KOI_Object = AIS_KindOfInteractive.AIS_KOI_Object
-AIS_KOI_Relation = AIS_KindOfInteractive.AIS_KOI_Relation
-AIS_KOI_Dimension = AIS_KindOfInteractive.AIS_KOI_Dimension
-
-class AIS_SelectStatus(IntEnum):
-	AIS_SS_Added = 0
-	AIS_SS_Removed = 1
-	AIS_SS_NotDone = 2
-AIS_SS_Added = AIS_SelectStatus.AIS_SS_Added
-AIS_SS_Removed = AIS_SelectStatus.AIS_SS_Removed
-AIS_SS_NotDone = AIS_SelectStatus.AIS_SS_NotDone
-
 class AIS_TypeOfAxis(IntEnum):
 	AIS_TOAX_Unknown = 0
 	AIS_TOAX_XAxis = 1
@@ -410,33 +510,23 @@ AIS_TOAX_XAxis = AIS_TypeOfAxis.AIS_TOAX_XAxis
 AIS_TOAX_YAxis = AIS_TypeOfAxis.AIS_TOAX_YAxis
 AIS_TOAX_ZAxis = AIS_TypeOfAxis.AIS_TOAX_ZAxis
 
-class AIS_SelectionScheme(IntEnum):
-	AIS_SelectionScheme_UNKNOWN = - 1
-	AIS_SelectionScheme_Replace = 0
-	AIS_SelectionScheme_Add = 1
-	AIS_SelectionScheme_Remove = 2
-	AIS_SelectionScheme_XOR = 3
-	AIS_SelectionScheme_Clear = 4
-	AIS_SelectionScheme_ReplaceExtra = 5
-AIS_SelectionScheme_UNKNOWN = AIS_SelectionScheme.AIS_SelectionScheme_UNKNOWN
-AIS_SelectionScheme_Replace = AIS_SelectionScheme.AIS_SelectionScheme_Replace
-AIS_SelectionScheme_Add = AIS_SelectionScheme.AIS_SelectionScheme_Add
-AIS_SelectionScheme_Remove = AIS_SelectionScheme.AIS_SelectionScheme_Remove
-AIS_SelectionScheme_XOR = AIS_SelectionScheme.AIS_SelectionScheme_XOR
-AIS_SelectionScheme_Clear = AIS_SelectionScheme.AIS_SelectionScheme_Clear
-AIS_SelectionScheme_ReplaceExtra = AIS_SelectionScheme.AIS_SelectionScheme_ReplaceExtra
+class AIS_TypeOfIso(IntEnum):
+	AIS_TOI_IsoU = 0
+	AIS_TOI_IsoV = 1
+	AIS_TOI_Both = 2
+AIS_TOI_IsoU = AIS_TypeOfIso.AIS_TOI_IsoU
+AIS_TOI_IsoV = AIS_TypeOfIso.AIS_TOI_IsoV
+AIS_TOI_Both = AIS_TypeOfIso.AIS_TOI_Both
 
-class AIS_RotationMode(IntEnum):
-	AIS_RotationMode_BndBoxActive = 0
-	AIS_RotationMode_PickLast = 1
-	AIS_RotationMode_PickCenter = 2
-	AIS_RotationMode_CameraAt = 3
-	AIS_RotationMode_BndBoxScene = 4
-AIS_RotationMode_BndBoxActive = AIS_RotationMode.AIS_RotationMode_BndBoxActive
-AIS_RotationMode_PickLast = AIS_RotationMode.AIS_RotationMode_PickLast
-AIS_RotationMode_PickCenter = AIS_RotationMode.AIS_RotationMode_PickCenter
-AIS_RotationMode_CameraAt = AIS_RotationMode.AIS_RotationMode_CameraAt
-AIS_RotationMode_BndBoxScene = AIS_RotationMode.AIS_RotationMode_BndBoxScene
+class AIS_TypeOfPlane(IntEnum):
+	AIS_TOPL_Unknown = 0
+	AIS_TOPL_XYPlane = 1
+	AIS_TOPL_XZPlane = 2
+	AIS_TOPL_YZPlane = 3
+AIS_TOPL_Unknown = AIS_TypeOfPlane.AIS_TOPL_Unknown
+AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
+AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
+AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 
 class AIS_ViewSelectionTool(IntEnum):
 	AIS_ViewSelectionTool_Picking = 0
@@ -454,38 +544,6 @@ class AIS_ViewInputBufferType(IntEnum):
 AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
 AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
 
-class AIS_NavigationMode(IntEnum):
-	AIS_NavigationMode_Orbit = 0
-	AIS_NavigationMode_FirstPersonFlight = 1
-	AIS_NavigationMode_FirstPersonWalk = 2
-AIS_NavigationMode_Orbit = AIS_NavigationMode.AIS_NavigationMode_Orbit
-AIS_NavigationMode_FirstPersonFlight = AIS_NavigationMode.AIS_NavigationMode_FirstPersonFlight
-AIS_NavigationMode_FirstPersonWalk = AIS_NavigationMode.AIS_NavigationMode_FirstPersonWalk
-
-class AIS_TypeOfIso(IntEnum):
-	AIS_TOI_IsoU = 0
-	AIS_TOI_IsoV = 1
-	AIS_TOI_Both = 2
-AIS_TOI_IsoU = AIS_TypeOfIso.AIS_TOI_IsoU
-AIS_TOI_IsoV = AIS_TypeOfIso.AIS_TOI_IsoV
-AIS_TOI_Both = AIS_TypeOfIso.AIS_TOI_Both
-
-class AIS_StatusOfDetection(IntEnum):
-	AIS_SOD_Error = 0
-	AIS_SOD_Nothing = 1
-	AIS_SOD_AllBad = 2
-	AIS_SOD_Selected = 3
-	AIS_SOD_OnlyOneDetected = 4
-	AIS_SOD_OnlyOneGood = 5
-	AIS_SOD_SeveralGood = 6
-AIS_SOD_Error = AIS_StatusOfDetection.AIS_SOD_Error
-AIS_SOD_Nothing = AIS_StatusOfDetection.AIS_SOD_Nothing
-AIS_SOD_AllBad = AIS_StatusOfDetection.AIS_SOD_AllBad
-AIS_SOD_Selected = AIS_StatusOfDetection.AIS_SOD_Selected
-AIS_SOD_OnlyOneDetected = AIS_StatusOfDetection.AIS_SOD_OnlyOneDetected
-AIS_SOD_OnlyOneGood = AIS_StatusOfDetection.AIS_SOD_OnlyOneGood
-AIS_SOD_SeveralGood = AIS_StatusOfDetection.AIS_SOD_SeveralGood
-
 class AIS_WalkTranslation(IntEnum):
 	AIS_WalkTranslation_Forward = 0
 	AIS_WalkTranslation_Side = 1
@@ -501,64 +559,6 @@ class AIS_WalkRotation(IntEnum):
 AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
 AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
 AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
-
-class AIS_ManipulatorMode(IntEnum):
-	AIS_MM_None = 0
-	AIS_MM_Translation = 1
-	AIS_MM_Rotation = 2
-	AIS_MM_Scaling = 3
-	AIS_MM_TranslationPlane = 4
-AIS_MM_None = AIS_ManipulatorMode.AIS_MM_None
-AIS_MM_Translation = AIS_ManipulatorMode.AIS_MM_Translation
-AIS_MM_Rotation = AIS_ManipulatorMode.AIS_MM_Rotation
-AIS_MM_Scaling = AIS_ManipulatorMode.AIS_MM_Scaling
-AIS_MM_TranslationPlane = AIS_ManipulatorMode.AIS_MM_TranslationPlane
-
-class AIS_SelectionModesConcurrency(IntEnum):
-	AIS_SelectionModesConcurrency_Single = 0
-	AIS_SelectionModesConcurrency_GlobalOrLocal = 1
-	AIS_SelectionModesConcurrency_Multiple = 2
-AIS_SelectionModesConcurrency_Single = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Single
-AIS_SelectionModesConcurrency_GlobalOrLocal = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_GlobalOrLocal
-AIS_SelectionModesConcurrency_Multiple = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Multiple
-
-class AIS_DisplayMode(IntEnum):
-	AIS_WireFrame = 0
-	AIS_Shaded = 1
-AIS_WireFrame = AIS_DisplayMode.AIS_WireFrame
-AIS_Shaded = AIS_DisplayMode.AIS_Shaded
-
-class AIS_StatusOfPick(IntEnum):
-	AIS_SOP_Error = 0
-	AIS_SOP_NothingSelected = 1
-	AIS_SOP_Removed = 2
-	AIS_SOP_OneSelected = 3
-	AIS_SOP_SeveralSelected = 4
-AIS_SOP_Error = AIS_StatusOfPick.AIS_SOP_Error
-AIS_SOP_NothingSelected = AIS_StatusOfPick.AIS_SOP_NothingSelected
-AIS_SOP_Removed = AIS_StatusOfPick.AIS_SOP_Removed
-AIS_SOP_OneSelected = AIS_StatusOfPick.AIS_SOP_OneSelected
-AIS_SOP_SeveralSelected = AIS_StatusOfPick.AIS_SOP_SeveralSelected
-
-class AIS_DragAction(IntEnum):
-	AIS_DragAction_Start = 0
-	AIS_DragAction_Update = 1
-	AIS_DragAction_Stop = 2
-	AIS_DragAction_Abort = 3
-AIS_DragAction_Start = AIS_DragAction.AIS_DragAction_Start
-AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
-AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
-AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
-
-class AIS_TypeOfPlane(IntEnum):
-	AIS_TOPL_Unknown = 0
-	AIS_TOPL_XYPlane = 1
-	AIS_TOPL_XZPlane = 2
-	AIS_TOPL_YZPlane = 3
-AIS_TOPL_Unknown = AIS_TypeOfPlane.AIS_TOPL_Unknown
-AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
-AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
-AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 };
 /* end python proxy for enums */
 
@@ -611,8 +611,8 @@ AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
         return self.Size()
     }
 };
-%template(AIS_MouseGestureMap) NCollection_DataMap<unsigned int, AIS_MouseGesture>;
-%template(AIS_MouseSelectionSchemeMap) NCollection_DataMap<unsigned int, AIS_SelectionScheme>;
+%template(AIS_MouseGestureMap) NCollection_DataMap <unsigned int, AIS_MouseGesture>;
+%template(AIS_MouseSelectionSchemeMap) NCollection_DataMap <unsigned int, AIS_SelectionScheme>;
 %template(AIS_NArray1OfEntityOwner) NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>>;
 
 %extend NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> {
@@ -660,16 +660,16 @@ AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 
 /* typedefs */
 typedef Media_Timer AIS_AnimationTimer;
-typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
-typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
+typedef NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
+typedef NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
 typedef PrsMgr_DisplayStatus AIS_DisplayStatus;
-typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
-typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>> AIS_ListOfInteractive;
-typedef NCollection_DataMap<unsigned int, AIS_MouseGesture> AIS_MouseGestureMap;
-typedef NCollection_DataMap<unsigned int, AIS_SelectionScheme> AIS_MouseSelectionSchemeMap;
-typedef NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> AIS_NArray1OfEntityOwner;
-typedef NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
+typedef NCollection_List <opencascade::handle <AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
+typedef NCollection_List <opencascade::handle <AIS_InteractiveObject>> AIS_ListOfInteractive;
+typedef NCollection_DataMap <unsigned int, AIS_MouseGesture> AIS_MouseGestureMap;
+typedef NCollection_DataMap <unsigned int, AIS_SelectionScheme> AIS_MouseSelectionSchemeMap;
+typedef NCollection_Array1 <opencascade::handle <SelectMgr_EntityOwner>> AIS_NArray1OfEntityOwner;
+typedef NCollection_List <opencascade::handle <SelectMgr_EntityOwner>> AIS_NListOfEntityOwner;
 /* end typedefs declaration */
 
 /************
@@ -1051,9 +1051,9 @@ class AIS_AnimationProgress {
 		float LocalPts;
 		float LocalNormalized;
 		/****************** AIS_AnimationProgress ******************/
-		/**** md5 signature: 9e9e671b9cf6b1f96915c177eaaa8cf0 ****/
+		/**** md5 signature: 750ad420af220873e671995d1f27fadc ****/
 		%feature("compactdefaultargs") AIS_AnimationProgress;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "//!< normalized position within current animation within 0..1 range.
 
 Returns
 -------
@@ -1391,7 +1391,7 @@ class AIS_ColoredDrawer : public Prs3d_Drawer {
 		bool myHasOwnTransp;
 		bool myHasOwnWidth;
 		/****************** AIS_ColoredDrawer ******************/
-		/**** md5 signature: fb206bfbdf2e0955a791e7882ddd0a6d ****/
+		/**** md5 signature: 26e03372f41172911dc12e9710a7e83b ****/
 		%feature("compactdefaultargs") AIS_ColoredDrawer;
 		%feature("autodoc", "Default constructor.
 
@@ -2043,7 +2043,7 @@ aColor: Quantity_Color
 
 Returns
 -------
-None
+void
 ") GetInteriorColor;
 		static void GetInteriorColor(const opencascade::handle<Prs3d_Drawer> & aDrawer, Quantity_Color & aColor);
 
@@ -2094,7 +2094,7 @@ TheLineColor: Quantity_Color
 
 Returns
 -------
-None
+void
 ") GetLineColor;
 		static void GetLineColor(const opencascade::handle<Prs3d_Drawer> & aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_Color & TheLineColor);
 
@@ -2162,7 +2162,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		/****************** AIS_InteractiveContext ******************/
 		/**** md5 signature: e050aa4400b6a1b1bad39801422c3f15 ****/
 		%feature("compactdefaultargs") AIS_InteractiveContext;
-		%feature("autodoc", "Constructs the interactive context object defined by the principal viewer mainviewer.
+		%feature("autodoc", "@name object display management constructs the interactive context object defined by the principal viewer mainviewer.
 
 Parameters
 ----------
@@ -2292,7 +2292,7 @@ None
 		/****************** AddSelect ******************/
 		/**** md5 signature: 52ea6338337a736ab508e9fc2a8879f6 ****/
 		%feature("compactdefaultargs") AddSelect;
-		%feature("autodoc", "Adds object in the selection.
+		%feature("autodoc", "@name selection management adds object in the selection.
 
 Parameters
 ----------
@@ -2344,7 +2344,7 @@ bool
 		/****************** BeginImmediateDraw ******************/
 		/**** md5 signature: 35e8d0184dd051a6d98a100d7384205d ****/
 		%feature("compactdefaultargs") BeginImmediateDraw;
-		%feature("autodoc", "Initializes the list of presentations to be displayed returns false if no local context is opened.
+		%feature("autodoc", "@name immediate mode rendering initializes the list of presentations to be displayed returns false if no local context is opened.
 
 Returns
 -------
@@ -2554,7 +2554,7 @@ None
 		/****************** DefaultDrawer ******************/
 		/**** md5 signature: 14128b182687edc7e9f18d40a682f0b8 ****/
 		%feature("compactdefaultargs") DefaultDrawer;
-		%feature("autodoc", "Returns the default attribute manager. this contains all the color and line attributes which can be used by interactive objects which do not have their own attributes.
+		%feature("autodoc", "@name common properties returns the default attribute manager. this contains all the color and line attributes which can be used by interactive objects which do not have their own attributes.
 
 Returns
 -------
@@ -2717,7 +2717,7 @@ None
 		/****************** Display ******************/
 		/**** md5 signature: 3bee65d480eafecc8a7bf6cf7e559b20 ****/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@name obsolete methods.
 
 Parameters
 ----------
@@ -2738,7 +2738,7 @@ None
 		/****************** DisplayActiveSensitive ******************/
 		/**** md5 signature: 3e2889a461702eed5abdf967dcfcfd6c ****/
 		%feature("compactdefaultargs") DisplayActiveSensitive;
-		%feature("autodoc", "Visualization of sensitives - for debugging purposes!.
+		%feature("autodoc", "@name debug visualization visualization of sensitives - for debugging purposes!.
 
 Parameters
 ----------
@@ -2784,7 +2784,7 @@ None
 		/****************** DisplayMode ******************/
 		/**** md5 signature: 87ab8eae5ccb1d4f4dfd02dc34d6febc ****/
 		%feature("compactdefaultargs") DisplayMode;
-		%feature("autodoc", "Returns the display mode setting to be used by default.
+		%feature("autodoc", "@name display mode management returns the display mode setting to be used by default.
 
 Returns
 -------
@@ -2795,7 +2795,7 @@ int
 		/****************** DisplayPriority ******************/
 		/**** md5 signature: 5ee166e687f439119f4237cb1827925f ****/
 		%feature("compactdefaultargs") DisplayPriority;
-		%feature("autodoc", "Returns the display priority of the object.
+		%feature("autodoc", "@name object presence management (view affinity, layer, priority) returns the display priority of the object.
 
 Parameters
 ----------
@@ -3006,7 +3006,7 @@ None
 		/****************** FilterType ******************/
 		/**** md5 signature: e37fce598a0b5e9b676a367504573e6c ****/
 		%feature("compactdefaultargs") FilterType;
-		%feature("autodoc", "Returns the context selection filter type.
+		%feature("autodoc", "@name selection filters management returns the context selection filter type.
 
 Returns
 -------
@@ -3223,7 +3223,7 @@ bool
 		/****************** HiddenLineAspect ******************/
 		/**** md5 signature: 94d1c2a65d1f004db7812470264560c4 ****/
 		%feature("compactdefaultargs") HiddenLineAspect;
-		%feature("autodoc", "Initializes hidden line aspect in the default drawing tool, or drawer. the default values are: color: quantity_noc_yellow type of line: aspect_tol_dash width: 1.
+		%feature("autodoc", "@name hlr (hidden line removal) display attributes initializes hidden line aspect in the default drawing tool, or drawer. the default values are: color: quantity_noc_yellow type of line: aspect_tol_dash width: 1.
 
 Returns
 -------
@@ -3234,7 +3234,7 @@ opencascade::handle<Prs3d_LineAspect>
 		/****************** HighlightStyle ******************/
 		/**** md5 signature: 2cb78034dd0075f5760ff6947175afbf ****/
 		%feature("compactdefaultargs") HighlightStyle;
-		%feature("autodoc", "Returns default highlight style settings (could be overridden by prsmgr_presentableobject). //! tip: although highlighting style is defined by prs3d_drawer, only a small set of properties derived from it's base class graphic3d_presentationattributes will be actually used in most cases. //! default highlight style for all types is aspect_tohm_color. other defaults: - prs3d_typeofhighlight_dynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_top, object highlighting is drawn on top of main scene within immediate layers, so that v3d_view::redrawimmediate() will be enough to see update; - prs3d_typeofhighlight_localdynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_topmost, object parts highlighting is drawn on top of main scene within immediate layers with depth cleared (even overlapped geometry will be revealed); - prs3d_typeofhighlight_selected * color: quantity_noc_gray80; * layer: graphic3d_zlayerid_unknown, object highlighting is drawn on top of main scene within the same layer as object itself (e.g. graphic3d_zlayerid_default by default) and increased priority. //! @param[in] thestyletype highlight style to modify returns drawer associated to specified highlight type //! @sa moveto() using prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic types @sa selectdetected() using prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected types @sa prsmgr_presentableobject::dynamichilightattributes() overriding prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic defaults on object level @sa prsmgr_presentableobject::hilightattributes() overriding prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected defaults on object level.
+		%feature("autodoc", "@name highlighting management returns default highlight style settings (could be overridden by prsmgr_presentableobject). //! tip: although highlighting style is defined by prs3d_drawer, only a small set of properties derived from it's base class graphic3d_presentationattributes will be actually used in most cases. //! default highlight style for all types is aspect_tohm_color. other defaults: - prs3d_typeofhighlight_dynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_top, object highlighting is drawn on top of main scene within immediate layers, so that v3d_view::redrawimmediate() will be enough to see update; - prs3d_typeofhighlight_localdynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_topmost, object parts highlighting is drawn on top of main scene within immediate layers with depth cleared (even overlapped geometry will be revealed); - prs3d_typeofhighlight_selected * color: quantity_noc_gray80; * layer: graphic3d_zlayerid_unknown, object highlighting is drawn on top of main scene within the same layer as object itself (e.g. graphic3d_zlayerid_default by default) and increased priority. //! @param[in] thestyletype highlight style to modify returns drawer associated to specified highlight type //! @sa moveto() using prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic types @sa selectdetected() using prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected types @sa prsmgr_presentableobject::dynamichilightattributes() overriding prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic defaults on object level @sa prsmgr_presentableobject::hilightattributes() overriding prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected defaults on object level.
 
 Parameters
 ----------
@@ -3417,7 +3417,7 @@ None
 		/****************** InitDetected ******************/
 		/**** md5 signature: c8e093453ccb47b93fdb3539272d695f ****/
 		%feature("compactdefaultargs") InitDetected;
-		%feature("autodoc", "Initialization for iteration through mouse-detected objects in interactive context or in local context if it is opened. @sa detectedcurrentowner(), moredetected(), nextdetected().
+		%feature("autodoc", "@name iteration through detected entities initialization for iteration through mouse-detected objects in interactive context or in local context if it is opened. @sa detectedcurrentowner(), moredetected(), nextdetected().
 
 Returns
 -------
@@ -4497,7 +4497,7 @@ None
 		/****************** SetDeviationCoefficient ******************/
 		/**** md5 signature: a869465c8496bd4f68daf77ec26ec399 ****/
 		%feature("compactdefaultargs") SetDeviationCoefficient;
-		%feature("autodoc", "Sets the deviation coefficient thecoefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient thecoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through the method: setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
+		%feature("autodoc", "@name tessellation deviation properties for automatic triangulation sets the deviation coefficient thecoefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient thecoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through the method: setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
 
 Parameters
 ----------
@@ -4655,7 +4655,7 @@ None
 		/****************** SetIsoNumber ******************/
 		/**** md5 signature: 108e9a31a51c2c1be4fb2fc91b68906c ****/
 		%feature("compactdefaultargs") SetIsoNumber;
-		%feature("autodoc", "Sets the number of u and v isoparameters displayed.
+		%feature("autodoc", "@name iso-line display attributes sets the number of u and v isoparameters displayed.
 
 Parameters
 ----------
@@ -4672,7 +4672,7 @@ None
 		/****************** SetLocalAttributes ******************/
 		/**** md5 signature: 2dc75f962d027692405727903e0ef22c ****/
 		%feature("compactdefaultargs") SetLocalAttributes;
-		%feature("autodoc", "Sets the graphic attributes of the interactive object, such as visualization mode, color, and material.
+		%feature("autodoc", "@name common object display attributes sets the graphic attributes of the interactive object, such as visualization mode, color, and material.
 
 Parameters
 ----------
@@ -4689,7 +4689,7 @@ None
 		/****************** SetLocation ******************/
 		/**** md5 signature: 278570b2ad71d01112ac61ba95d92f6f ****/
 		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "Puts the location on the initial graphic representation and the selection for the object.
+		%feature("autodoc", "@name object local transformation management puts the location on the initial graphic representation and the selection for the object.
 
 Parameters
 ----------
@@ -4737,7 +4737,7 @@ None
 		/****************** SetPixelTolerance ******************/
 		/**** md5 signature: 0687dc8be567f668454cb9cecd8746b3 ****/
 		%feature("compactdefaultargs") SetPixelTolerance;
-		%feature("autodoc", "Setup pixel tolerance for moveto() operation. @sa moveto().
+		%feature("autodoc", "@name mouse picking logic (detection and dynamic highlighting of entities under cursor) setup pixel tolerance for moveto() operation. @sa moveto().
 
 Parameters
 ----------
@@ -4753,7 +4753,7 @@ None
 		/****************** SetPlaneSize ******************/
 		/**** md5 signature: 6377ec1f2a7840f7b57b14849d1af438 ****/
 		%feature("compactdefaultargs") SetPlaneSize;
-		%feature("autodoc", "Sets the plane size defined by the length in the x direction xsize and that in the y direction ysize.
+		%feature("autodoc", "@name plane display attributes sets the plane size defined by the length in the x direction xsize and that in the y direction ysize.
 
 Parameters
 ----------
@@ -4884,7 +4884,7 @@ None
 		/****************** SetSelectionModeActive ******************/
 		/**** md5 signature: 7c19717100bc0b50dcae6e86485112ab ****/
 		%feature("compactdefaultargs") SetSelectionModeActive;
-		%feature("autodoc", "Activates or deactivates the selection mode for specified object. has no effect if selection mode was already active/deactivated. @param theobj object to activate/deactivate selection mode @param themode selection mode to activate/deactivate;  deactivation of -1 selection mode will effectively deactivate all selection modes;  activation of -1 selection mode with ais_selectionmodesconcurrency_single  will deactivate all selection modes, and will has no effect otherwise @param thetoactivate activation/deactivation flag @param theconcurrency specifies how to handle already activated selection modes;  default value (ais_selectionmodesconcurrency_multiple) means active selection modes should be left as is,  ais_selectionmodesconcurrency_single can be used if only one selection mode is expected to be active  and ais_selectionmodesconcurrency_globalorlocal can be used if either ais_interactiveobject::globalselectionmode()  or any combination of local selection modes is acceptable;  this value is considered only if thetoactivate set to true @param theisforce when set to true, the display status will be ignored while activating selection mode.
+		%feature("autodoc", "@name management of active selection modes activates or deactivates the selection mode for specified object. has no effect if selection mode was already active/deactivated. @param theobj object to activate/deactivate selection mode @param themode selection mode to activate/deactivate;  deactivation of -1 selection mode will effectively deactivate all selection modes;  activation of -1 selection mode with ais_selectionmodesconcurrency_single  will deactivate all selection modes, and will has no effect otherwise @param thetoactivate activation/deactivation flag @param theconcurrency specifies how to handle already activated selection modes;  default value (ais_selectionmodesconcurrency_multiple) means active selection modes should be left as is,  ais_selectionmodesconcurrency_single can be used if only one selection mode is expected to be active  and ais_selectionmodesconcurrency_globalorlocal can be used if either ais_interactiveobject::globalselectionmode()  or any combination of local selection modes is acceptable;  this value is considered only if thetoactivate set to true @param theisforce when set to true, the display status will be ignored while activating selection mode.
 
 Parameters
 ----------
@@ -5000,7 +5000,7 @@ None
 		/****************** SetTrihedronSize ******************/
 		/**** md5 signature: 5fd503409307be524e278af757eb2d24 ****/
 		%feature("compactdefaultargs") SetTrihedronSize;
-		%feature("autodoc", "Sets the size asize of the trihedron. is used to change the default value 100 mm for display of trihedra. use of this function in one of your own interactive objects requires a call to the compute function of the new class. this will recalculate the presentation for every trihedron displayed.
+		%feature("autodoc", "@name trihedron display attributes sets the size asize of the trihedron. is used to change the default value 100 mm for display of trihedra. use of this function in one of your own interactive objects requires a call to the compute function of the new class. this will recalculate the presentation for every trihedron displayed.
 
 Parameters
 ----------
@@ -5118,7 +5118,7 @@ AIS_StatusOfPick
 		/****************** SubIntensityColor ******************/
 		/**** md5 signature: e1332d593cf25efd90cc06d78287a52b ****/
 		%feature("compactdefaultargs") SubIntensityColor;
-		%feature("autodoc", "Sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). the method returns the color of such highlighting. by default, it is quantity_noc_gray40.
+		%feature("autodoc", "@name sub-intensity management (deprecated) sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). the method returns the color of such highlighting. by default, it is quantity_noc_gray40.
 
 Returns
 -------
@@ -6540,7 +6540,7 @@ double
 		/****************** MouseGestureMap ******************/
 		/**** md5 signature: 6a56ea9364a41a0bd33383ac695e295c ****/
 		%feature("compactdefaultargs") MouseGestureMap;
-		%feature("autodoc", "Return map defining mouse gestures.
+		%feature("autodoc", "@name mouse input return map defining mouse gestures.
 
 Returns
 -------
@@ -6719,7 +6719,7 @@ None
 		/****************** ProcessExpose ******************/
 		/**** md5 signature: dc0514da1009d9a5010f9cf835c23893 ****/
 		%feature("compactdefaultargs") ProcessExpose;
-		%feature("autodoc", "Handle expose event (window content has been invalidation and should be redrawn). default implementation does nothing.
+		%feature("autodoc", "@name resize events handle expose event (window content has been invalidation and should be redrawn). default implementation does nothing.
 
 Returns
 -------
@@ -6795,7 +6795,7 @@ None
 		/****************** RotationMode ******************/
 		/**** md5 signature: fe28f5b4de6b6363de3be27ba9b18699 ****/
 		%feature("compactdefaultargs") RotationMode;
-		%feature("autodoc", "Return camera rotation mode, ais_rotationmode_bndboxactive by default.
+		%feature("autodoc", "@name global parameters return camera rotation mode, ais_rotationmode_bndboxactive by default.
 
 Returns
 -------
@@ -7462,7 +7462,7 @@ bool
 		/****************** TouchToleranceScale ******************/
 		/**** md5 signature: 2f6188968f83596542ec90be7549c9c6 ****/
 		%feature("compactdefaultargs") TouchToleranceScale;
-		%feature("autodoc", "Return scale factor for adjusting tolerances for starting multi-touch gestures; 1.0 by default this scale factor is expected to be computed from touch screen resolution.
+		%feature("autodoc", "@name multi-touch input return scale factor for adjusting tolerances for starting multi-touch gestures; 1.0 by default this scale factor is expected to be computed from touch screen resolution.
 
 Returns
 -------
@@ -7473,7 +7473,7 @@ float
 		/****************** Update3dMouse ******************/
 		/**** md5 signature: 38284aace0b4c5126a95024b97bd63b9 ****/
 		%feature("compactdefaultargs") Update3dMouse;
-		%feature("autodoc", "Process 3d mouse input event (redirects to translation, rotation and keys).
+		%feature("autodoc", "@name 3d mouse input process 3d mouse input event (redirects to translation, rotation and keys).
 
 Parameters
 ----------
@@ -8055,7 +8055,7 @@ bool
 class AIS_ViewCubeOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AIS_ViewCubeOwner ******************/
-		/**** md5 signature: 36978750a4457ecd3b36a6a3432d9241 ****/
+		/**** md5 signature: c5e1548ac969d723ba493a8bafbeb09f ****/
 		%feature("compactdefaultargs") AIS_ViewCubeOwner;
 		%feature("autodoc", "Main constructor.
 
@@ -8181,7 +8181,7 @@ class AIS_ViewInputBuffer {
 		class _viewRotation {};
 		class _zrotateParams {};
 		bool IsNewGesture;
-		NCollection_Sequence<Aspect_ScrollDelta > ZoomActions;
+		NCollection_Sequence<Aspect_ScrollDelta> ZoomActions;
 		_orientation Orientation;
 		_highlighting MoveTo;
 		_selection Selection;
@@ -8191,7 +8191,7 @@ class AIS_ViewInputBuffer {
 		_viewRotation ViewRotation;
 		_zrotateParams ZRotate;
 		/****************** AIS_ViewInputBuffer ******************/
-		/**** md5 signature: 745d73c10e784c3d8e971b2aac633943 ****/
+		/**** md5 signature: 6625c1fedf9eb4cdbd8ea2f30e923874 ****/
 		%feature("compactdefaultargs") AIS_ViewInputBuffer;
 		%feature("autodoc", "No available documentation.
 
@@ -8227,7 +8227,7 @@ None
 class AIS_WalkDelta {
 	public:
 		/****************** AIS_WalkDelta ******************/
-		/**** md5 signature: 78d0e66f1b9582c94cc5e1325ffc1ece ****/
+		/**** md5 signature: b2e44d1a4992eb958e610f31973b4ec3 ****/
 		%feature("compactdefaultargs") AIS_WalkDelta;
 		%feature("autodoc", "Empty constructor.
 
@@ -8392,7 +8392,7 @@ class AIS_WalkPart {
 		float Pressure;
 		float Duration;
 		/****************** AIS_WalkPart ******************/
-		/**** md5 signature: 5e3a0f6962670df498761fa44109c312 ****/
+		/**** md5 signature: 6e1e8d414a035a50f732ece8ff81cd6c ****/
 		%feature("compactdefaultargs") AIS_WalkPart;
 		%feature("autodoc", "Empty constructor.
 
@@ -8405,7 +8405,7 @@ None
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 70a41d5fe65955a28167088305fc6991 ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Return true if delta is empty.
+		%feature("autodoc", "//!< duration return true if delta is empty.
 
 Returns
 -------
@@ -9265,7 +9265,7 @@ Returns
 -------
 None
 ") ComputeSelection;
-		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection > &, const Standard_Integer);
+		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> &, const Standard_Integer);
 
 		/****************** FindColor ******************/
 		/**** md5 signature: 45503e79acd0e8e9e8f6cbed02ec31bf ****/
@@ -10704,7 +10704,7 @@ float
 		/****************** ToDisplayName ******************/
 		/**** md5 signature: 017d2ca9b70c34687c2520bc2f6310a7 ****/
 		%feature("compactdefaultargs") ToDisplayName;
-		%feature("autodoc", "Returns true if the light source name should be displayed; true by default.
+		%feature("autodoc", "@name light properties returns true if the light source name should be displayed; true by default.
 
 Returns
 -------
@@ -10986,7 +10986,7 @@ int
 		/****************** ActiveMode ******************/
 		/**** md5 signature: 518316bdc464c63b5a1ab2fd9b9e2cb2 ****/
 		%feature("compactdefaultargs") ActiveMode;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@name setters for parameters.
 
 Returns
 -------
@@ -11009,7 +11009,7 @@ Returns
 -------
 None
 ") Attach;
-		void Attach(const opencascade::handle<AIS_InteractiveObject> & theObject, OptionsForAttach theOptions = OptionsForAttach());
+		void Attach(const opencascade::handle<AIS_InteractiveObject> & theObject, const OptionsForAttach & theOptions = OptionsForAttach());
 
 		/****************** Attach ******************/
 		/**** md5 signature: 832dc115dea47eb279f6ed86e41ac087 ****/
@@ -11026,7 +11026,7 @@ Returns
 -------
 None
 ") Attach;
-		void Attach(const opencascade::handle<AIS_ManipulatorObjectSequence> & theObject, OptionsForAttach theOptions = OptionsForAttach());
+		void Attach(const opencascade::handle<AIS_ManipulatorObjectSequence> & theObject, const OptionsForAttach & theOptions = OptionsForAttach());
 
 		/****************** ClearSelected ******************/
 		/**** md5 signature: 3aaae3eac8509b6abfc3ffd58cbe26e1 ****/
@@ -11042,7 +11042,7 @@ None
 		/****************** Compute ******************/
 		/**** md5 signature: 5d0087b3c43a18eabfc5a74a27907c07 ****/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Fills presentation. @note manipulator presentation does not use display mode and for all modes has the same presentation.
+		%feature("autodoc", "@name presentation computation fills presentation. @note manipulator presentation does not use display mode and for all modes has the same presentation.
 
 Parameters
 ----------
@@ -11395,7 +11395,7 @@ None
 		/****************** SetZoomPersistence ******************/
 		/**** md5 signature: 6d63f55bd881baa9dbefc2bc469583f4 ****/
 		%feature("compactdefaultargs") SetZoomPersistence;
-		%feature("autodoc", "Enable or disable zoom persistence mode for the manipulator. with this mode turned on the presentation will keep fixed screen size. @warning when turned on this option overrides transform persistence properties and local transformation to achieve necessary visual effect. @warning revise use of adjustsize argument of of \sa attachtoobjects method when enabling zoom persistence.
+		%feature("autodoc", "@name configuration of graphical transformations enable or disable zoom persistence mode for the manipulator. with this mode turned on the presentation will keep fixed screen size. @warning when turned on this option overrides transform persistence properties and local transformation to achieve necessary visual effect. @warning revise use of adjustsize argument of of \sa attachtoobjects method when enabling zoom persistence.
 
 Parameters
 ----------
@@ -13609,7 +13609,7 @@ gp_Pnt2d
 		/****************** TextureRepeatUV ******************/
 		/**** md5 signature: de849df2f2a78aabc5d59235e4643811 ****/
 		%feature("compactdefaultargs") TextureRepeatUV;
-		%feature("autodoc", "Return texture repeat uv values; (1, 1) by default.
+		%feature("autodoc", "@name methods to alter texture mapping properties return texture repeat uv values; (1, 1) by default.
 
 Returns
 -------
@@ -13730,7 +13730,7 @@ theDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") computeHlrPresentation;
 		static void computeHlrPresentation(const opencascade::handle<Graphic3d_Camera> & theProjector, const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -14889,7 +14889,7 @@ None
 		/****************** AcceptDisplayMode ******************/
 		/**** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ****/
 		%feature("compactdefaultargs") AcceptDisplayMode;
-		%feature("autodoc", "Return true for supported display mode.
+		%feature("autodoc", "@name presentation computation return true for supported display mode.
 
 Parameters
 ----------
@@ -15055,7 +15055,7 @@ TCollection_AsciiString
 		/****************** BoxSideStyle ******************/
 		/**** md5 signature: a46fcc5ed6922015f07f2f9b6adb0b29 ****/
 		%feature("compactdefaultargs") BoxSideStyle;
-		%feature("autodoc", "Return shading style of box sides.
+		%feature("autodoc", "@name style management api return shading style of box sides.
 
 Returns
 -------
@@ -15122,7 +15122,7 @@ None
 		/****************** Duration ******************/
 		/**** md5 signature: cd23e793a0fab00473e0b8c81979e62b ****/
 		%feature("compactdefaultargs") Duration;
-		%feature("autodoc", "Return duration of animation in seconds; 0.5 sec by default.
+		%feature("autodoc", "@name animation methods return duration of animation in seconds; 0.5 sec by default.
 
 Returns
 -------
@@ -15808,7 +15808,7 @@ None
 		/****************** Size ******************/
 		/**** md5 signature: 0113d47673ecbdcb4822fb85c27ac0c5 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns size (width and height) of view cube sides; 100 by default.
+		%feature("autodoc", "@name geometry management api returns size (width and height) of view cube sides; 100 by default.
 
 Returns
 -------
@@ -16203,7 +16203,7 @@ None
 		/****************** CustomAspects ******************/
 		/**** md5 signature: 23e6d1633ab573a66905b41e46a87dae ****/
 		%feature("compactdefaultargs") CustomAspects;
-		%feature("autodoc", "Customize properties of specified sub-shape. the shape will be stored in the map but ignored, if it is not sub-shape of main shape! this method can be used to mark sub-shapes with customizable properties.
+		%feature("autodoc", "@name sub-shape aspects customize properties of specified sub-shape. the shape will be stored in the map but ignored, if it is not sub-shape of main shape! this method can be used to mark sub-shapes with customizable properties.
 
 Parameters
 ----------
@@ -16229,7 +16229,7 @@ AIS_DataMapOfShapeDrawer
 		/****************** SetColor ******************/
 		/**** md5 signature: 259272248bacb2cef242adbc667f0ef9 ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Setup color of entire shape.
+		%feature("autodoc", "@name global aspects setup color of entire shape.
 
 Parameters
 ----------
@@ -16392,7 +16392,7 @@ class AIS_TexturedShape : public AIS_Shape {
 		/****************** AIS_TexturedShape ******************/
 		/**** md5 signature: 7b5e3f67785ea4fff1a50e2a26f126ec ****/
 		%feature("compactdefaultargs") AIS_TexturedShape;
-		%feature("autodoc", "Initializes the textured shape.
+		%feature("autodoc", "@name main methods initializes the textured shape.
 
 Parameters
 ----------
@@ -16737,7 +16737,7 @@ None
 		/****************** UpdateAttributes ******************/
 		/**** md5 signature: 334c979de66ee04703d34c5c9478d7f3 ****/
 		%feature("compactdefaultargs") UpdateAttributes;
-		%feature("autodoc", "Use this method to display the textured shape without recomputing the whole presentation. use this method when only the texture content has been changed. if other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed: @code if (myshape->displaymode() == 3) { myaiscontext->recomputeprsonly (myshape); } else { myaiscontext->setdisplaymode (myshape, 3, standard_false); myaiscontext->display (myshape, standard_true); } @endcode.
+		%feature("autodoc", "@name methods to alter texture mapping properties use this method to display the textured shape without recomputing the whole presentation. use this method when only the texture content has been changed. if other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed: @code if (myshape->displaymode() == 3) { myaiscontext->recomputeprsonly (myshape); } else { myaiscontext->setdisplaymode (myshape, 3, standard_false); myaiscontext->display (myshape, standard_true); } @endcode.
 
 Returns
 -------

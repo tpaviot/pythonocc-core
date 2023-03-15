@@ -272,7 +272,7 @@ isClearText: bool,optional
 
 Returns
 -------
-None
+void
 ") SetStringValue;
 		static void SetStringValue(XmlObjMgt_Element & theElement, const XmlObjMgt_DOMString & theData, const Standard_Boolean isClearText = Standard_False);
 
@@ -288,7 +288,7 @@ theTagEntry: TCollection_AsciiString
 
 Returns
 -------
-None
+void
 ") SetTagEntryString;
 		static void SetTagEntryString(XmlObjMgt_DOMString & theSource, const TCollection_AsciiString & theTagEntry);
 

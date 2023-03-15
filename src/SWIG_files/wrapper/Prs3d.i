@@ -98,33 +98,6 @@ from OCC.Core.Exception import *
 
 %include "Prs3d_Point.hxx";
 /* public enums */
-enum Prs3d_DimensionTextVerticalPosition {
-	Prs3d_DTVP_Above = 0,
-	Prs3d_DTVP_Below = 1,
-	Prs3d_DTVP_Center = 2,
-};
-
-enum Prs3d_TypeOfHighlight {
-	Prs3d_TypeOfHighlight_None = 0,
-	Prs3d_TypeOfHighlight_Selected = 1,
-	Prs3d_TypeOfHighlight_Dynamic = 2,
-	Prs3d_TypeOfHighlight_LocalSelected = 3,
-	Prs3d_TypeOfHighlight_LocalDynamic = 4,
-	Prs3d_TypeOfHighlight_SubIntensity = 5,
-	Prs3d_TypeOfHighlight_NB = 6,
-};
-
-enum Prs3d_VertexDrawMode {
-	Prs3d_VDM_Isolated = 0,
-	Prs3d_VDM_All = 1,
-	Prs3d_VDM_Inherited = 2,
-};
-
-enum Prs3d_DatumMode {
-	Prs3d_DM_WireFrame = 0,
-	Prs3d_DM_Shaded = 1,
-};
-
 enum Prs3d_DatumAttribute {
 	Prs3d_DatumAttribute_XAxisLength = 0,
 	Prs3d_DatumAttribute_YAxisLength = 1,
@@ -148,24 +121,6 @@ enum  {
 	Prs3d_DatumAttribute_NB = Prs3d_DatumAttribute_ShadingNumberOfFacettes + 1,
 };
 
-enum Prs3d_DimensionTextHorizontalPosition {
-	Prs3d_DTHP_Left = 0,
-	Prs3d_DTHP_Right = 1,
-	Prs3d_DTHP_Center = 2,
-	Prs3d_DTHP_Fit = 3,
-};
-
-enum Prs3d_TypeOfLinePicking {
-	Prs3d_TOLP_Point = 0,
-	Prs3d_TOLP_Segment = 1,
-};
-
-enum Prs3d_TypeOfHLR {
-	Prs3d_TOH_NotSet = 0,
-	Prs3d_TOH_PolyAlgo = 1,
-	Prs3d_TOH_Algo = 2,
-};
-
 enum Prs3d_DatumAxes {
 	Prs3d_DatumAxes_XAxis = 1,
 	Prs3d_DatumAxes_YAxis = 2,
@@ -181,6 +136,11 @@ enum Prs3d_DatumAxes {
 	Prs3d_DA_YZAxis = Prs3d_DatumAxes_YZAxes,
 	Prs3d_DA_XZAxis = Prs3d_DatumAxes_XZAxes,
 	Prs3d_DA_XYZAxis = Prs3d_DatumAxes_XYZAxes,
+};
+
+enum Prs3d_DatumMode {
+	Prs3d_DM_WireFrame = 0,
+	Prs3d_DM_Shaded = 1,
 };
 
 enum Prs3d_DatumParts {
@@ -218,48 +178,50 @@ enum Prs3d_DimensionArrowOrientation {
 	Prs3d_DAO_Fit = 2,
 };
 
+enum Prs3d_DimensionTextHorizontalPosition {
+	Prs3d_DTHP_Left = 0,
+	Prs3d_DTHP_Right = 1,
+	Prs3d_DTHP_Center = 2,
+	Prs3d_DTHP_Fit = 3,
+};
+
+enum Prs3d_DimensionTextVerticalPosition {
+	Prs3d_DTVP_Above = 0,
+	Prs3d_DTVP_Below = 1,
+	Prs3d_DTVP_Center = 2,
+};
+
+enum Prs3d_TypeOfHighlight {
+	Prs3d_TypeOfHighlight_None = 0,
+	Prs3d_TypeOfHighlight_Selected = 1,
+	Prs3d_TypeOfHighlight_Dynamic = 2,
+	Prs3d_TypeOfHighlight_LocalSelected = 3,
+	Prs3d_TypeOfHighlight_LocalDynamic = 4,
+	Prs3d_TypeOfHighlight_SubIntensity = 5,
+	Prs3d_TypeOfHighlight_NB = 6,
+};
+
+enum Prs3d_TypeOfHLR {
+	Prs3d_TOH_NotSet = 0,
+	Prs3d_TOH_PolyAlgo = 1,
+	Prs3d_TOH_Algo = 2,
+};
+
+enum Prs3d_TypeOfLinePicking {
+	Prs3d_TOLP_Point = 0,
+	Prs3d_TOLP_Segment = 1,
+};
+
+enum Prs3d_VertexDrawMode {
+	Prs3d_VDM_Isolated = 0,
+	Prs3d_VDM_All = 1,
+	Prs3d_VDM_Inherited = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class Prs3d_DimensionTextVerticalPosition(IntEnum):
-	Prs3d_DTVP_Above = 0
-	Prs3d_DTVP_Below = 1
-	Prs3d_DTVP_Center = 2
-Prs3d_DTVP_Above = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Above
-Prs3d_DTVP_Below = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Below
-Prs3d_DTVP_Center = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Center
-
-class Prs3d_TypeOfHighlight(IntEnum):
-	Prs3d_TypeOfHighlight_None = 0
-	Prs3d_TypeOfHighlight_Selected = 1
-	Prs3d_TypeOfHighlight_Dynamic = 2
-	Prs3d_TypeOfHighlight_LocalSelected = 3
-	Prs3d_TypeOfHighlight_LocalDynamic = 4
-	Prs3d_TypeOfHighlight_SubIntensity = 5
-	Prs3d_TypeOfHighlight_NB = 6
-Prs3d_TypeOfHighlight_None = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_None
-Prs3d_TypeOfHighlight_Selected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Selected
-Prs3d_TypeOfHighlight_Dynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Dynamic
-Prs3d_TypeOfHighlight_LocalSelected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalSelected
-Prs3d_TypeOfHighlight_LocalDynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalDynamic
-Prs3d_TypeOfHighlight_SubIntensity = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_SubIntensity
-Prs3d_TypeOfHighlight_NB = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_NB
-
-class Prs3d_VertexDrawMode(IntEnum):
-	Prs3d_VDM_Isolated = 0
-	Prs3d_VDM_All = 1
-	Prs3d_VDM_Inherited = 2
-Prs3d_VDM_Isolated = Prs3d_VertexDrawMode.Prs3d_VDM_Isolated
-Prs3d_VDM_All = Prs3d_VertexDrawMode.Prs3d_VDM_All
-Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
-
-class Prs3d_DatumMode(IntEnum):
-	Prs3d_DM_WireFrame = 0
-	Prs3d_DM_Shaded = 1
-Prs3d_DM_WireFrame = Prs3d_DatumMode.Prs3d_DM_WireFrame
-Prs3d_DM_Shaded = Prs3d_DatumMode.Prs3d_DM_Shaded
 
 class Prs3d_DatumAttribute(IntEnum):
 	Prs3d_DatumAttribute_XAxisLength = 0
@@ -295,30 +257,6 @@ Prs3d_DP_ShadingConeLengthPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingConeLen
 Prs3d_DP_ShadingOriginRadiusPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingOriginRadiusPercent
 Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute.Prs3d_DP_ShadingNumberOfFacettes
 
-class Prs3d_DimensionTextHorizontalPosition(IntEnum):
-	Prs3d_DTHP_Left = 0
-	Prs3d_DTHP_Right = 1
-	Prs3d_DTHP_Center = 2
-	Prs3d_DTHP_Fit = 3
-Prs3d_DTHP_Left = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Left
-Prs3d_DTHP_Right = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Right
-Prs3d_DTHP_Center = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Center
-Prs3d_DTHP_Fit = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Fit
-
-class Prs3d_TypeOfLinePicking(IntEnum):
-	Prs3d_TOLP_Point = 0
-	Prs3d_TOLP_Segment = 1
-Prs3d_TOLP_Point = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Point
-Prs3d_TOLP_Segment = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Segment
-
-class Prs3d_TypeOfHLR(IntEnum):
-	Prs3d_TOH_NotSet = 0
-	Prs3d_TOH_PolyAlgo = 1
-	Prs3d_TOH_Algo = 2
-Prs3d_TOH_NotSet = Prs3d_TypeOfHLR.Prs3d_TOH_NotSet
-Prs3d_TOH_PolyAlgo = Prs3d_TypeOfHLR.Prs3d_TOH_PolyAlgo
-Prs3d_TOH_Algo = Prs3d_TypeOfHLR.Prs3d_TOH_Algo
-
 class Prs3d_DatumAxes(IntEnum):
 	Prs3d_DatumAxes_XAxis = 1
 	Prs3d_DatumAxes_YAxis = 2
@@ -348,6 +286,12 @@ Prs3d_DA_XYAxis = Prs3d_DatumAxes.Prs3d_DA_XYAxis
 Prs3d_DA_YZAxis = Prs3d_DatumAxes.Prs3d_DA_YZAxis
 Prs3d_DA_XZAxis = Prs3d_DatumAxes.Prs3d_DA_XZAxis
 Prs3d_DA_XYZAxis = Prs3d_DatumAxes.Prs3d_DA_XYZAxis
+
+class Prs3d_DatumMode(IntEnum):
+	Prs3d_DM_WireFrame = 0
+	Prs3d_DM_Shaded = 1
+Prs3d_DM_WireFrame = Prs3d_DatumMode.Prs3d_DM_WireFrame
+Prs3d_DM_Shaded = Prs3d_DatumMode.Prs3d_DM_Shaded
 
 class Prs3d_DatumParts(IntEnum):
 	Prs3d_DatumParts_Origin = 0
@@ -402,6 +346,62 @@ class Prs3d_DimensionArrowOrientation(IntEnum):
 Prs3d_DAO_Internal = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Internal
 Prs3d_DAO_External = Prs3d_DimensionArrowOrientation.Prs3d_DAO_External
 Prs3d_DAO_Fit = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Fit
+
+class Prs3d_DimensionTextHorizontalPosition(IntEnum):
+	Prs3d_DTHP_Left = 0
+	Prs3d_DTHP_Right = 1
+	Prs3d_DTHP_Center = 2
+	Prs3d_DTHP_Fit = 3
+Prs3d_DTHP_Left = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Left
+Prs3d_DTHP_Right = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Right
+Prs3d_DTHP_Center = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Center
+Prs3d_DTHP_Fit = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Fit
+
+class Prs3d_DimensionTextVerticalPosition(IntEnum):
+	Prs3d_DTVP_Above = 0
+	Prs3d_DTVP_Below = 1
+	Prs3d_DTVP_Center = 2
+Prs3d_DTVP_Above = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Above
+Prs3d_DTVP_Below = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Below
+Prs3d_DTVP_Center = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Center
+
+class Prs3d_TypeOfHighlight(IntEnum):
+	Prs3d_TypeOfHighlight_None = 0
+	Prs3d_TypeOfHighlight_Selected = 1
+	Prs3d_TypeOfHighlight_Dynamic = 2
+	Prs3d_TypeOfHighlight_LocalSelected = 3
+	Prs3d_TypeOfHighlight_LocalDynamic = 4
+	Prs3d_TypeOfHighlight_SubIntensity = 5
+	Prs3d_TypeOfHighlight_NB = 6
+Prs3d_TypeOfHighlight_None = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_None
+Prs3d_TypeOfHighlight_Selected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Selected
+Prs3d_TypeOfHighlight_Dynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Dynamic
+Prs3d_TypeOfHighlight_LocalSelected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalSelected
+Prs3d_TypeOfHighlight_LocalDynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalDynamic
+Prs3d_TypeOfHighlight_SubIntensity = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_SubIntensity
+Prs3d_TypeOfHighlight_NB = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_NB
+
+class Prs3d_TypeOfHLR(IntEnum):
+	Prs3d_TOH_NotSet = 0
+	Prs3d_TOH_PolyAlgo = 1
+	Prs3d_TOH_Algo = 2
+Prs3d_TOH_NotSet = Prs3d_TypeOfHLR.Prs3d_TOH_NotSet
+Prs3d_TOH_PolyAlgo = Prs3d_TypeOfHLR.Prs3d_TOH_PolyAlgo
+Prs3d_TOH_Algo = Prs3d_TypeOfHLR.Prs3d_TOH_Algo
+
+class Prs3d_TypeOfLinePicking(IntEnum):
+	Prs3d_TOLP_Point = 0
+	Prs3d_TOLP_Segment = 1
+Prs3d_TOLP_Point = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Point
+Prs3d_TOLP_Segment = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Segment
+
+class Prs3d_VertexDrawMode(IntEnum):
+	Prs3d_VDM_Isolated = 0
+	Prs3d_VDM_All = 1
+	Prs3d_VDM_Inherited = 2
+Prs3d_VDM_Isolated = Prs3d_VertexDrawMode.Prs3d_VDM_Isolated
+Prs3d_VDM_All = Prs3d_VertexDrawMode.Prs3d_VDM_All
+Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
 };
 /* end python proxy for enums */
 
@@ -433,7 +433,7 @@ Prs3d_DAO_Fit = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Fit
 
 /* typedefs */
 typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
-typedef NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>> Prs3d_NListOfSequenceOfPnt;
+typedef NCollection_List <opencascade::handle <TColgp_HSequenceOfPnt>> Prs3d_NListOfSequenceOfPnt;
 typedef Graphic3d_Structure Prs3d_Presentation;
 /* end typedefs declaration */
 
@@ -456,7 +456,7 @@ theLocation: gp_Trsf
 
 Returns
 -------
-None
+void
 ") AddFreeEdges;
 		static void AddFreeEdges(TColgp_SequenceOfPnt & theSegments, const opencascade::handle<Poly_Triangulation> & thePolyTri, const gp_Trsf & theLocation);
 
@@ -473,7 +473,7 @@ thePolylines: Prs3d_NListOfSequenceOfPnt
 
 Returns
 -------
-None
+void
 ") AddPrimitivesGroup;
 		static void AddPrimitivesGroup(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_LineAspect> & theAspect, Prs3d_NListOfSequenceOfPnt & thePolylines);
 
@@ -575,7 +575,7 @@ theLength: float
 
 Returns
 -------
-None
+void
 ") Draw;
 		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
 
@@ -650,7 +650,7 @@ class Prs3d_BasicAspect : public Standard_Transient {
 class Prs3d_DimensionUnits {
 	public:
 		/****************** Prs3d_DimensionUnits ******************/
-		/**** md5 signature: 6858cebef83a95894808c7bb951f2586 ****/
+		/**** md5 signature: f38458320086168cf2f2e61e6b33fe2c ****/
 		%feature("compactdefaultargs") Prs3d_DimensionUnits;
 		%feature("autodoc", "Default constructor. sets meters as default length units and radians as default angle units.
 
@@ -661,7 +661,7 @@ None
 		 Prs3d_DimensionUnits();
 
 		/****************** Prs3d_DimensionUnits ******************/
-		/**** md5 signature: 6a8f298b7552282c2afeb9ec3d08706a ****/
+		/**** md5 signature: f0b40c5069161ec97ed2e35ceb9c4435 ****/
 		%feature("compactdefaultargs") Prs3d_DimensionUnits;
 		%feature("autodoc", "No available documentation.
 
@@ -1898,7 +1898,7 @@ None
 		/****************** SetHLRAngle ******************/
 		/**** md5 signature: 76fda7a04861224b0871f98ee167394b ****/
 		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@name deprecated methods.
 
 Parameters
 ----------
@@ -2782,15 +2782,15 @@ class Prs3d_Point {
 
 Parameters
 ----------
-thePrs: Handle ( Prs3d_Presentation )
+thePrs: Handle(Prs3d_Presentation)
 thePoint: AnyPoint
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
-None
+void
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePrs, const AnyPoint & thePoint, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void Add(const Handle(Prs3d_Presentation) & thePrs, const AnyPoint & thePoint, const Handle(Prs3d_Drawer) & theDrawer);
 
 		/****************** Match ******************/
 		/**** md5 signature: 0b99a7d2ff1fac1a4a91e5728b1339c9 ****/
@@ -2867,9 +2867,9 @@ None
 
 Returns
 -------
-opencascade::handle<Graphic3d_ViewAffinity>
+inline  opencascade::handle<Graphic3d_ViewAffinity>
 ") ParentAffinity;
-		const opencascade::handle<Graphic3d_ViewAffinity> & ParentAffinity();
+		inline const opencascade::handle<Graphic3d_ViewAffinity> & ParentAffinity();
 
 		/****************** ParentId ******************/
 		/**** md5 signature: c6149323d3f3c6f3e02c4be5b579c343 ****/
@@ -2878,9 +2878,9 @@ opencascade::handle<Graphic3d_ViewAffinity>
 
 Returns
 -------
-int
+inline int
 ") ParentId;
-		Standard_Integer ParentId();
+		inline Standard_Integer ParentId();
 
 };
 
@@ -3331,7 +3331,7 @@ theDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const Bnd_Box & theBndBox, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -3348,7 +3348,7 @@ theDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const Bnd_OBB & theBndBox, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -3394,7 +3394,7 @@ theBox: Bnd_OBB
 
 Returns
 -------
-None
+void
 ") FillSegments;
 		static void FillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const Bnd_OBB & theBox);
 
@@ -3410,7 +3410,7 @@ theBox: Bnd_Box
 
 Returns
 -------
-None
+void
 ") FillSegments;
 		static void FillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const Bnd_Box & theBox);
 
@@ -3426,7 +3426,7 @@ theBox: gp_Pnt *
 
 Returns
 -------
-None
+void
 ") fillSegments;
 		static void fillSegments(const opencascade::handle<Graphic3d_ArrayOfSegments> & theSegments, const gp_Pnt * theBox);
 
@@ -4209,7 +4209,7 @@ None
 		 Prs3d_LineAspect(const Quantity_Color & theColor, const Aspect_TypeOfLine theType, const Standard_Real theWidth);
 
 		/****************** Prs3d_LineAspect ******************/
-		/**** md5 signature: 0927d9715b5f7a178665974ee6006b1b ****/
+		/**** md5 signature: 234ffa4162e228ad90a5656441d3eda3 ****/
 		%feature("compactdefaultargs") Prs3d_LineAspect;
 		%feature("autodoc", "No available documentation.
 
@@ -4668,7 +4668,7 @@ None
 		 Prs3d_PointAspect(const Quantity_Color & theColor, const Standard_Integer theWidth, const Standard_Integer theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTexture);
 
 		/****************** Prs3d_PointAspect ******************/
-		/**** md5 signature: 5e221962e2590f7f3a9470ca4c69750a ****/
+		/**** md5 signature: deacdfc44d54c6a99cbe784695417ae2 ****/
 		%feature("compactdefaultargs") Prs3d_PointAspect;
 		%feature("autodoc", "No available documentation.
 
@@ -4815,7 +4815,7 @@ None
 		 Prs3d_ShadingAspect();
 
 		/****************** Prs3d_ShadingAspect ******************/
-		/**** md5 signature: dd594bd5c6416ab50d29290cd219d4d2 ****/
+		/**** md5 signature: 0e23d8d12c4676e42c3494ac03b18dd1 ****/
 		%feature("compactdefaultargs") Prs3d_ShadingAspect;
 		%feature("autodoc", "Constructor with initialization.
 
@@ -5607,7 +5607,7 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 class Prs3d_IsoAspect : public Prs3d_LineAspect {
 	public:
 		/****************** Prs3d_IsoAspect ******************/
-		/**** md5 signature: 20cefbd9d7de79b5d91df215a7381425 ****/
+		/**** md5 signature: de0bc0688b4078600e975e23ff3b0c6c ****/
 		%feature("compactdefaultargs") Prs3d_IsoAspect;
 		%feature("autodoc", "Constructs a framework to define display attributes of isoparameters. these include: - the color attribute acolor - the type of line atype - the width value awidth - anumber, the number of isoparameters to be displayed.
 

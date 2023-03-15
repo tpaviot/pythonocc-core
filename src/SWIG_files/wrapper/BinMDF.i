@@ -89,11 +89,11 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher>::Iterator BinMDF_DataMapIteratorOfTypeADriverMap;
-typedef NCollection_DoubleMap<opencascade::handle<Standard_Type>, Standard_Integer, TColStd_MapTransientHasher, TColStd_MapIntegerHasher>::Iterator BinMDF_DoubleMapIteratorOfTypeIdMap;
+typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <BinMDF_ADriver>, TColStd_MapTransientHasher>::Iterator BinMDF_DataMapIteratorOfTypeADriverMap;
+typedef NCollection_DoubleMap <opencascade::handle <Standard_Type>, Standard_Integer, TColStd_MapTransientHasher, TColStd_MapIntegerHasher>::Iterator BinMDF_DoubleMapIteratorOfTypeIdMap;
 typedef TColStd_DataMapOfAsciiStringInteger BinMDF_StringIdMap;
-typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher> BinMDF_TypeADriverMap;
-typedef NCollection_DoubleMap<opencascade::handle<Standard_Type>, Standard_Integer, TColStd_MapTransientHasher, TColStd_MapIntegerHasher> BinMDF_TypeIdMap;
+typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <BinMDF_ADriver>, TColStd_MapTransientHasher> BinMDF_TypeADriverMap;
+typedef NCollection_DoubleMap <opencascade::handle <Standard_Type>, Standard_Integer, TColStd_MapTransientHasher, TColStd_MapIntegerHasher> BinMDF_TypeIdMap;
 /* end typedefs declaration */
 
 /***************
@@ -114,7 +114,7 @@ aMsgDrv: Message_Messenger
 
 Returns
 -------
-None
+void
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & aMsgDrv);
 
@@ -361,7 +361,7 @@ opencascade::handle<BinMDF_ADriver>
 class BinMDF_DerivedDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDF_DerivedDriver ******************/
-		/**** md5 signature: 577f5e9f1d04d82bf9ec7dbed2fcf96c ****/
+		/**** md5 signature: 8e061ede5d4db063a6ccbf6dd5e382ff ****/
 		%feature("compactdefaultargs") BinMDF_DerivedDriver;
 		%feature("autodoc", "Creates a derivative persistence driver for thederivative attribute by reusage of thebasedriver @param thederivative an instance of the attribute, just created, detached from any label @param thebasedriver a driver of the base attribute, called by paste methods.
 

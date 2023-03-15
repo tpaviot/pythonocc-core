@@ -102,8 +102,8 @@ Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<Hatch_Line> Hatch_SequenceOfLine;
-typedef NCollection_Sequence<Hatch_Parameter> Hatch_SequenceOfParameter;
+typedef NCollection_Sequence <Hatch_Line> Hatch_SequenceOfLine;
+typedef NCollection_Sequence <Hatch_Parameter> Hatch_SequenceOfParameter;
 /* end typedefs declaration */
 
 /**********************

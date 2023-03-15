@@ -80,21 +80,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum BRepBuilderAPI_ShapeModification {
-	BRepBuilderAPI_Preserved = 0,
-	BRepBuilderAPI_Deleted = 1,
-	BRepBuilderAPI_Trimmed = 2,
-	BRepBuilderAPI_Merged = 3,
-	BRepBuilderAPI_BoundaryModified = 4,
-};
-
-enum BRepBuilderAPI_WireError {
-	BRepBuilderAPI_WireDone = 0,
-	BRepBuilderAPI_EmptyWire = 1,
-	BRepBuilderAPI_DisconnectedWire = 2,
-	BRepBuilderAPI_NonManifoldWire = 3,
-};
-
 enum BRepBuilderAPI_EdgeError {
 	BRepBuilderAPI_EdgeDone = 0,
 	BRepBuilderAPI_PointProjectionFailed = 1,
@@ -105,6 +90,14 @@ enum BRepBuilderAPI_EdgeError {
 	BRepBuilderAPI_LineThroughIdenticPoints = 6,
 };
 
+enum BRepBuilderAPI_FaceError {
+	BRepBuilderAPI_FaceDone = 0,
+	BRepBuilderAPI_NoFace = 1,
+	BRepBuilderAPI_NotPlanar = 2,
+	BRepBuilderAPI_CurveProjectionFailed = 3,
+	BRepBuilderAPI_ParametersOutOfRange = 4,
+};
+
 enum BRepBuilderAPI_PipeError {
 	BRepBuilderAPI_PipeDone = 0,
 	BRepBuilderAPI_PipeNotDone = 1,
@@ -112,18 +105,12 @@ enum BRepBuilderAPI_PipeError {
 	BRepBuilderAPI_ImpossibleContact = 3,
 };
 
-enum BRepBuilderAPI_TransitionMode {
-	BRepBuilderAPI_Transformed = 0,
-	BRepBuilderAPI_RightCorner = 1,
-	BRepBuilderAPI_RoundCorner = 2,
-};
-
-enum BRepBuilderAPI_FaceError {
-	BRepBuilderAPI_FaceDone = 0,
-	BRepBuilderAPI_NoFace = 1,
-	BRepBuilderAPI_NotPlanar = 2,
-	BRepBuilderAPI_CurveProjectionFailed = 3,
-	BRepBuilderAPI_ParametersOutOfRange = 4,
+enum BRepBuilderAPI_ShapeModification {
+	BRepBuilderAPI_Preserved = 0,
+	BRepBuilderAPI_Deleted = 1,
+	BRepBuilderAPI_Trimmed = 2,
+	BRepBuilderAPI_Merged = 3,
+	BRepBuilderAPI_BoundaryModified = 4,
 };
 
 enum BRepBuilderAPI_ShellError {
@@ -133,32 +120,23 @@ enum BRepBuilderAPI_ShellError {
 	BRepBuilderAPI_ShellParametersOutOfRange = 3,
 };
 
+enum BRepBuilderAPI_TransitionMode {
+	BRepBuilderAPI_Transformed = 0,
+	BRepBuilderAPI_RightCorner = 1,
+	BRepBuilderAPI_RoundCorner = 2,
+};
+
+enum BRepBuilderAPI_WireError {
+	BRepBuilderAPI_WireDone = 0,
+	BRepBuilderAPI_EmptyWire = 1,
+	BRepBuilderAPI_DisconnectedWire = 2,
+	BRepBuilderAPI_NonManifoldWire = 3,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class BRepBuilderAPI_ShapeModification(IntEnum):
-	BRepBuilderAPI_Preserved = 0
-	BRepBuilderAPI_Deleted = 1
-	BRepBuilderAPI_Trimmed = 2
-	BRepBuilderAPI_Merged = 3
-	BRepBuilderAPI_BoundaryModified = 4
-BRepBuilderAPI_Preserved = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Preserved
-BRepBuilderAPI_Deleted = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Deleted
-BRepBuilderAPI_Trimmed = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Trimmed
-BRepBuilderAPI_Merged = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Merged
-BRepBuilderAPI_BoundaryModified = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_BoundaryModified
-
-class BRepBuilderAPI_WireError(IntEnum):
-	BRepBuilderAPI_WireDone = 0
-	BRepBuilderAPI_EmptyWire = 1
-	BRepBuilderAPI_DisconnectedWire = 2
-	BRepBuilderAPI_NonManifoldWire = 3
-BRepBuilderAPI_WireDone = BRepBuilderAPI_WireError.BRepBuilderAPI_WireDone
-BRepBuilderAPI_EmptyWire = BRepBuilderAPI_WireError.BRepBuilderAPI_EmptyWire
-BRepBuilderAPI_DisconnectedWire = BRepBuilderAPI_WireError.BRepBuilderAPI_DisconnectedWire
-BRepBuilderAPI_NonManifoldWire = BRepBuilderAPI_WireError.BRepBuilderAPI_NonManifoldWire
 
 class BRepBuilderAPI_EdgeError(IntEnum):
 	BRepBuilderAPI_EdgeDone = 0
@@ -176,24 +154,6 @@ BRepBuilderAPI_PointWithInfiniteParameter = BRepBuilderAPI_EdgeError.BRepBuilder
 BRepBuilderAPI_DifferentsPointAndParameter = BRepBuilderAPI_EdgeError.BRepBuilderAPI_DifferentsPointAndParameter
 BRepBuilderAPI_LineThroughIdenticPoints = BRepBuilderAPI_EdgeError.BRepBuilderAPI_LineThroughIdenticPoints
 
-class BRepBuilderAPI_PipeError(IntEnum):
-	BRepBuilderAPI_PipeDone = 0
-	BRepBuilderAPI_PipeNotDone = 1
-	BRepBuilderAPI_PlaneNotIntersectGuide = 2
-	BRepBuilderAPI_ImpossibleContact = 3
-BRepBuilderAPI_PipeDone = BRepBuilderAPI_PipeError.BRepBuilderAPI_PipeDone
-BRepBuilderAPI_PipeNotDone = BRepBuilderAPI_PipeError.BRepBuilderAPI_PipeNotDone
-BRepBuilderAPI_PlaneNotIntersectGuide = BRepBuilderAPI_PipeError.BRepBuilderAPI_PlaneNotIntersectGuide
-BRepBuilderAPI_ImpossibleContact = BRepBuilderAPI_PipeError.BRepBuilderAPI_ImpossibleContact
-
-class BRepBuilderAPI_TransitionMode(IntEnum):
-	BRepBuilderAPI_Transformed = 0
-	BRepBuilderAPI_RightCorner = 1
-	BRepBuilderAPI_RoundCorner = 2
-BRepBuilderAPI_Transformed = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_Transformed
-BRepBuilderAPI_RightCorner = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_RightCorner
-BRepBuilderAPI_RoundCorner = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_RoundCorner
-
 class BRepBuilderAPI_FaceError(IntEnum):
 	BRepBuilderAPI_FaceDone = 0
 	BRepBuilderAPI_NoFace = 1
@@ -206,6 +166,28 @@ BRepBuilderAPI_NotPlanar = BRepBuilderAPI_FaceError.BRepBuilderAPI_NotPlanar
 BRepBuilderAPI_CurveProjectionFailed = BRepBuilderAPI_FaceError.BRepBuilderAPI_CurveProjectionFailed
 BRepBuilderAPI_ParametersOutOfRange = BRepBuilderAPI_FaceError.BRepBuilderAPI_ParametersOutOfRange
 
+class BRepBuilderAPI_PipeError(IntEnum):
+	BRepBuilderAPI_PipeDone = 0
+	BRepBuilderAPI_PipeNotDone = 1
+	BRepBuilderAPI_PlaneNotIntersectGuide = 2
+	BRepBuilderAPI_ImpossibleContact = 3
+BRepBuilderAPI_PipeDone = BRepBuilderAPI_PipeError.BRepBuilderAPI_PipeDone
+BRepBuilderAPI_PipeNotDone = BRepBuilderAPI_PipeError.BRepBuilderAPI_PipeNotDone
+BRepBuilderAPI_PlaneNotIntersectGuide = BRepBuilderAPI_PipeError.BRepBuilderAPI_PlaneNotIntersectGuide
+BRepBuilderAPI_ImpossibleContact = BRepBuilderAPI_PipeError.BRepBuilderAPI_ImpossibleContact
+
+class BRepBuilderAPI_ShapeModification(IntEnum):
+	BRepBuilderAPI_Preserved = 0
+	BRepBuilderAPI_Deleted = 1
+	BRepBuilderAPI_Trimmed = 2
+	BRepBuilderAPI_Merged = 3
+	BRepBuilderAPI_BoundaryModified = 4
+BRepBuilderAPI_Preserved = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Preserved
+BRepBuilderAPI_Deleted = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Deleted
+BRepBuilderAPI_Trimmed = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Trimmed
+BRepBuilderAPI_Merged = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Merged
+BRepBuilderAPI_BoundaryModified = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_BoundaryModified
+
 class BRepBuilderAPI_ShellError(IntEnum):
 	BRepBuilderAPI_ShellDone = 0
 	BRepBuilderAPI_EmptyShell = 1
@@ -215,6 +197,24 @@ BRepBuilderAPI_ShellDone = BRepBuilderAPI_ShellError.BRepBuilderAPI_ShellDone
 BRepBuilderAPI_EmptyShell = BRepBuilderAPI_ShellError.BRepBuilderAPI_EmptyShell
 BRepBuilderAPI_DisconnectedShell = BRepBuilderAPI_ShellError.BRepBuilderAPI_DisconnectedShell
 BRepBuilderAPI_ShellParametersOutOfRange = BRepBuilderAPI_ShellError.BRepBuilderAPI_ShellParametersOutOfRange
+
+class BRepBuilderAPI_TransitionMode(IntEnum):
+	BRepBuilderAPI_Transformed = 0
+	BRepBuilderAPI_RightCorner = 1
+	BRepBuilderAPI_RoundCorner = 2
+BRepBuilderAPI_Transformed = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_Transformed
+BRepBuilderAPI_RightCorner = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_RightCorner
+BRepBuilderAPI_RoundCorner = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_RoundCorner
+
+class BRepBuilderAPI_WireError(IntEnum):
+	BRepBuilderAPI_WireDone = 0
+	BRepBuilderAPI_EmptyWire = 1
+	BRepBuilderAPI_DisconnectedWire = 2
+	BRepBuilderAPI_NonManifoldWire = 3
+BRepBuilderAPI_WireDone = BRepBuilderAPI_WireError.BRepBuilderAPI_WireDone
+BRepBuilderAPI_EmptyWire = BRepBuilderAPI_WireError.BRepBuilderAPI_EmptyWire
+BRepBuilderAPI_DisconnectedWire = BRepBuilderAPI_WireError.BRepBuilderAPI_DisconnectedWire
+BRepBuilderAPI_NonManifoldWire = BRepBuilderAPI_WireError.BRepBuilderAPI_NonManifoldWire
 };
 /* end python proxy for enums */
 
@@ -228,9 +228,9 @@ BRepBuilderAPI_ShellParametersOutOfRange = BRepBuilderAPI_ShellError.BRepBuilder
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_UBTree<Standard_Integer, Bnd_Box> BRepBuilderAPI_BndBoxTree;
-typedef NCollection_CellFilter<BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
-typedef NCollection_Vector<gp_XYZ> VectorOfPoint;
+typedef NCollection_UBTree <Standard_Integer, Bnd_Box> BRepBuilderAPI_BndBoxTree;
+typedef NCollection_CellFilter <BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
+typedef NCollection_Vector <gp_XYZ> VectorOfPoint;
 /* end typedefs declaration */
 
 /***********************
@@ -250,7 +250,7 @@ P: Geom_Plane
 
 Returns
 -------
-None
+void
 ") Plane;
 		static void Plane(const opencascade::handle<Geom_Plane> & P);
 
@@ -276,7 +276,7 @@ P: float
 
 Returns
 -------
-None
+void
 ") Precision;
 		static void Precision(const Standard_Real P);
 
@@ -570,11 +570,15 @@ float
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Compute resulted shape.
 
+Parameters
+----------
+: void
+
 Returns
 -------
 None
 ") Perform;
-		void Perform();
+		void Perform(void );
 
 		/****************** SetTolerance ******************/
 		/**** md5 signature: 4181eb50f502c475b9b01c03a6a70db9 ****/
@@ -1327,7 +1331,7 @@ class BRepBuilderAPI_VertexInspector : public NCollection_CellFilter_InspectorXY
 	public:
 typedef Standard_Integer Target;
 		/****************** BRepBuilderAPI_VertexInspector ******************/
-		/**** md5 signature: 0eeefa290e63d77a3860d0886de050c7 ****/
+		/**** md5 signature: e0432d231af1a5c7f6fb76b06e43cfdb ****/
 		%feature("compactdefaultargs") BRepBuilderAPI_VertexInspector;
 		%feature("autodoc", "Constructor; remembers the tolerance.
 
@@ -1423,7 +1427,7 @@ None
 class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Selector {
 	public:
 		/****************** BRepBuilderAPI_BndBoxTreeSelector ******************/
-		/**** md5 signature: 701377c6f5b5b4ad360057f52164f1cc ****/
+		/**** md5 signature: fc3fb2a10df5da243c7fffe5f5f3a22c ****/
 		%feature("compactdefaultargs") BRepBuilderAPI_BndBoxTreeSelector;
 		%feature("autodoc", "Constructor; calls the base class constructor.
 
@@ -3840,7 +3844,7 @@ TopoDS_Wire
 class BRepBuilderAPI_MakeShapeOnMesh : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepBuilderAPI_MakeShapeOnMesh ******************/
-		/**** md5 signature: d9775140ece54795f4552a05eb93688b ****/
+		/**** md5 signature: 914be935ea26aae2db7c74dff22e34bc ****/
 		%feature("compactdefaultargs") BRepBuilderAPI_MakeShapeOnMesh;
 		%feature("autodoc", "Ctor. sets mesh to process. @param themesh [in] - mesh to construct shape for.
 

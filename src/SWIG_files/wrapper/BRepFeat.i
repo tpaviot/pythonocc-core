@@ -99,6 +99,14 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum BRepFeat_PerfSelection {
+	BRepFeat_NoSelection = 0,
+	BRepFeat_SelectionFU = 1,
+	BRepFeat_SelectionU = 2,
+	BRepFeat_SelectionSh = 3,
+	BRepFeat_SelectionShU = 4,
+};
+
 enum BRepFeat_Status {
 	BRepFeat_NoError = 0,
 	BRepFeat_InvalidPlacement = 1,
@@ -136,18 +144,22 @@ enum BRepFeat_StatusError {
 	BRepFeat_NullToolU = 27,
 };
 
-enum BRepFeat_PerfSelection {
-	BRepFeat_NoSelection = 0,
-	BRepFeat_SelectionFU = 1,
-	BRepFeat_SelectionU = 2,
-	BRepFeat_SelectionSh = 3,
-	BRepFeat_SelectionShU = 4,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class BRepFeat_PerfSelection(IntEnum):
+	BRepFeat_NoSelection = 0
+	BRepFeat_SelectionFU = 1
+	BRepFeat_SelectionU = 2
+	BRepFeat_SelectionSh = 3
+	BRepFeat_SelectionShU = 4
+BRepFeat_NoSelection = BRepFeat_PerfSelection.BRepFeat_NoSelection
+BRepFeat_SelectionFU = BRepFeat_PerfSelection.BRepFeat_SelectionFU
+BRepFeat_SelectionU = BRepFeat_PerfSelection.BRepFeat_SelectionU
+BRepFeat_SelectionSh = BRepFeat_PerfSelection.BRepFeat_SelectionSh
+BRepFeat_SelectionShU = BRepFeat_PerfSelection.BRepFeat_SelectionShU
 
 class BRepFeat_Status(IntEnum):
 	BRepFeat_NoError = 0
@@ -214,18 +226,6 @@ BRepFeat_NotYetImplemented = BRepFeat_StatusError.BRepFeat_NotYetImplemented
 BRepFeat_NullRealTool = BRepFeat_StatusError.BRepFeat_NullRealTool
 BRepFeat_NullToolF = BRepFeat_StatusError.BRepFeat_NullToolF
 BRepFeat_NullToolU = BRepFeat_StatusError.BRepFeat_NullToolU
-
-class BRepFeat_PerfSelection(IntEnum):
-	BRepFeat_NoSelection = 0
-	BRepFeat_SelectionFU = 1
-	BRepFeat_SelectionU = 2
-	BRepFeat_SelectionSh = 3
-	BRepFeat_SelectionShU = 4
-BRepFeat_NoSelection = BRepFeat_PerfSelection.BRepFeat_NoSelection
-BRepFeat_SelectionFU = BRepFeat_PerfSelection.BRepFeat_SelectionFU
-BRepFeat_SelectionU = BRepFeat_PerfSelection.BRepFeat_SelectionU
-BRepFeat_SelectionSh = BRepFeat_PerfSelection.BRepFeat_SelectionSh
-BRepFeat_SelectionShU = BRepFeat_PerfSelection.BRepFeat_SelectionShU
 };
 /* end python proxy for enums */
 
@@ -256,7 +256,7 @@ Pt: gp_Pnt
 
 Returns
 -------
-None
+void
 ") Barycenter;
 		static void Barycenter(const TopoDS_Shape & S, gp_Pnt & Pt);
 
@@ -272,7 +272,7 @@ F: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") FaceUntil;
 		static void FaceUntil(const TopoDS_Shape & S, TopoDS_Face & F);
 
@@ -342,7 +342,7 @@ Pt: TColgp_SequenceOfPnt
 
 Returns
 -------
-None
+void
 ") SampleEdges;
 		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
 
@@ -1567,7 +1567,7 @@ None
 		 BRepFeat_MakeDPrism(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
 		/****************** BRepFeat_MakeDPrism ******************/
-		/**** md5 signature: 72552317c20790f89347229a5f21c621 ****/
+		/**** md5 signature: 06bd30df37c9a4af1b3956abe06777d7 ****/
 		%feature("compactdefaultargs") BRepFeat_MakeDPrism;
 		%feature("autodoc", "No available documentation.
 

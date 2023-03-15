@@ -132,7 +132,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<BRepAdaptor_Curve> BRepAdaptor_Array1OfCurve;
+typedef NCollection_Array1 <BRepAdaptor_Curve> BRepAdaptor_Array1OfCurve;
 /* end typedefs declaration */
 
 /******************************

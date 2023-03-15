@@ -101,7 +101,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>> TransferBRep_SequenceOfTransferResultInfo;
+typedef NCollection_Sequence <opencascade::handle <TransferBRep_TransferResultInfo>> TransferBRep_SequenceOfTransferResultInfo;
 /* end typedefs declaration */
 
 /*********************
@@ -173,7 +173,7 @@ printEmpty: bool,optional
 
 Returns
 -------
-None
+void
 ") PrintResultInfo;
 		static void PrintResultInfo(const opencascade::handle<Message_Printer> & Printer, const Message_Msg & Header, const opencascade::handle<TransferBRep_TransferResultInfo> & ResultInfo, const Standard_Boolean printEmpty = Standard_True);
 
@@ -223,7 +223,7 @@ result: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") SetShapeResult;
 		static void SetShapeResult(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent, const TopoDS_Shape & result);
 
@@ -240,7 +240,7 @@ result: Standard_Transient
 
 Returns
 -------
-None
+void
 ") SetTransientFromShape;
 		static void SetTransientFromShape(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape, const opencascade::handle<Standard_Transient> & result);
 
@@ -353,7 +353,7 @@ InfoSeq: TransferBRep_HSequenceOfTransferResultInfo
 
 Returns
 -------
-None
+void
 ") TransferResultInfo;
 		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & EntityTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
@@ -370,7 +370,7 @@ InfoSeq: TransferBRep_HSequenceOfTransferResultInfo
 
 Returns
 -------
-None
+void
 ") TransferResultInfo;
 		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TColStd_HSequenceOfInteger> & ShapeTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 

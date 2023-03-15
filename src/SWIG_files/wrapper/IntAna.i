@@ -118,8 +118,8 @@ IntAna_NoGeometricSolution = IntAna_ResultType.IntAna_NoGeometricSolution
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<IntAna_Curve>::Iterator IntAna_ListIteratorOfListOfCurve;
-typedef NCollection_List<IntAna_Curve> IntAna_ListOfCurve;
+typedef NCollection_List <IntAna_Curve>::Iterator IntAna_ListIteratorOfListOfCurve;
+typedef NCollection_List <IntAna_Curve> IntAna_ListOfCurve;
 /* end typedefs declaration */
 
 /*********************

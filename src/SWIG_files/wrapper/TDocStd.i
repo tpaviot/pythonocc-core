@@ -158,10 +158,10 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TDF_Label, TDF_IDMap, TDF_LabelMapHasher>::Iterator TDocStd_DataMapIteratorOfLabelIDMapDataMap;
-typedef NCollection_DataMap<TDF_Label, TDF_IDMap, TDF_LabelMapHasher> TDocStd_LabelIDMapDataMap;
-typedef NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> TDocStd_SequenceOfApplicationDelta;
-typedef NCollection_Sequence<opencascade::handle<TDocStd_Document>> TDocStd_SequenceOfDocument;
+typedef NCollection_DataMap <TDF_Label, TDF_IDMap, TDF_LabelMapHasher>::Iterator TDocStd_DataMapIteratorOfLabelIDMapDataMap;
+typedef NCollection_DataMap <TDF_Label, TDF_IDMap, TDF_LabelMapHasher> TDocStd_LabelIDMapDataMap;
+typedef NCollection_Sequence <opencascade::handle <TDocStd_ApplicationDelta>> TDocStd_SequenceOfApplicationDelta;
+typedef NCollection_Sequence <opencascade::handle <TDocStd_Document>> TDocStd_SequenceOfDocument;
 typedef TDocStd_XLink * TDocStd_XLinkPtr;
 /* end typedefs declaration */
 
@@ -182,7 +182,7 @@ anIDList: TDF_IDList
 
 Returns
 -------
-None
+void
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -1406,7 +1406,7 @@ access: TDF_Label
 
 Returns
 -------
-None
+void
 ") Clear;
 		static void Clear(const TDF_Label & access);
 
@@ -2026,7 +2026,7 @@ doc: TDocStd_Document
 
 Returns
 -------
-None
+void
 ") SetDocument;
 		static void SetDocument(const opencascade::handle<TDF_Data> & indata, const opencascade::handle<TDocStd_Document> & doc);
 
@@ -2042,7 +2042,7 @@ doc: TDocStd_Document *
 
 Returns
 -------
-None
+void
 ") SetDocument;
 		static void SetDocument(const opencascade::handle<TDF_Data> & indata, TDocStd_Document * doc);
 
@@ -2587,7 +2587,7 @@ anXLinkPtr: TDocStd_XLinkPtr
 
 Returns
 -------
-None
+void
 ") Insert;
 		static void Insert(const TDocStd_XLinkPtr & anXLinkPtr);
 
@@ -2629,7 +2629,7 @@ anXLinkPtr: TDocStd_XLinkPtr
 
 Returns
 -------
-None
+void
 ") Remove;
 		static void Remove(const TDocStd_XLinkPtr & anXLinkPtr);
 

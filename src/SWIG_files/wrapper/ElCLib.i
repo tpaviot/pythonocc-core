@@ -113,7 +113,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") CircleD1;
 		static void CircleD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & V1);
 
@@ -132,7 +132,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CircleD1;
 		static void CircleD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -152,7 +152,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") CircleD2;
 		static void CircleD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -172,7 +172,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CircleD2;
 		static void CircleD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -193,7 +193,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") CircleD3;
 		static void CircleD3(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -214,7 +214,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CircleD3;
 		static void CircleD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -334,7 +334,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Lin & L, gp_Pnt & P, gp_Vec & V1);
 
@@ -352,7 +352,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1);
 
@@ -370,7 +370,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Elips & E, gp_Pnt & P, gp_Vec & V1);
 
@@ -388,7 +388,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Hypr & H, gp_Pnt & P, gp_Vec & V1);
 
@@ -406,7 +406,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Parab & Prb, gp_Pnt & P, gp_Vec & V1);
 
@@ -424,7 +424,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Lin2d & L, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -442,7 +442,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Circ2d & C, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -460,7 +460,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Elips2d & E, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -478,7 +478,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -496,7 +496,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const gp_Parab2d & Prb, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -515,7 +515,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -534,7 +534,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Elips & E, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -553,7 +553,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Hypr & H, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -572,7 +572,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Parab & Prb, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -591,7 +591,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Circ2d & C, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -610,7 +610,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Elips2d & E, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -629,7 +629,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -648,7 +648,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const gp_Parab2d & Prb, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -668,7 +668,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -688,7 +688,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const gp_Elips & E, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -708,7 +708,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const gp_Hypr & H, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -728,7 +728,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const gp_Circ2d & C, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -748,7 +748,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const gp_Elips2d & E, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -768,7 +768,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -958,7 +958,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") EllipseD1;
 		static void EllipseD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1);
 
@@ -978,7 +978,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") EllipseD1;
 		static void EllipseD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -999,7 +999,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") EllipseD2;
 		static void EllipseD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -1020,7 +1020,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") EllipseD2;
 		static void EllipseD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1042,7 +1042,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") EllipseD3;
 		static void EllipseD3(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -1064,7 +1064,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") EllipseD3;
 		static void EllipseD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1194,7 +1194,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") HyperbolaD1;
 		static void HyperbolaD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1);
 
@@ -1214,7 +1214,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") HyperbolaD1;
 		static void HyperbolaD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -1235,7 +1235,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") HyperbolaD2;
 		static void HyperbolaD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -1256,7 +1256,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") HyperbolaD2;
 		static void HyperbolaD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1278,7 +1278,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") HyperbolaD3;
 		static void HyperbolaD3(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -1300,7 +1300,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") HyperbolaD3;
 		static void HyperbolaD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1445,7 +1445,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") LineD1;
 		static void LineD1(const Standard_Real U, const gp_Ax1 & Pos, gp_Pnt & P, gp_Vec & V1);
 
@@ -1463,7 +1463,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") LineD1;
 		static void LineD1(const Standard_Real U, const gp_Ax2d & Pos, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -1580,7 +1580,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") ParabolaD1;
 		static void ParabolaD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Focal, gp_Pnt & P, gp_Vec & V1);
 
@@ -1599,7 +1599,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") ParabolaD1;
 		static void ParabolaD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -1619,7 +1619,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") ParabolaD2;
 		static void ParabolaD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Focal, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -1639,7 +1639,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") ParabolaD2;
 		static void ParabolaD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 

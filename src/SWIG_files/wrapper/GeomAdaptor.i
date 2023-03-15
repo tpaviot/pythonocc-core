@@ -142,7 +142,7 @@ opencascade::handle<Geom_Surface>
 class GeomAdaptor_Curve : public Adaptor3d_Curve {
 	public:
 		/****************** GeomAdaptor_Curve ******************/
-		/**** md5 signature: ccb204f3ef4733cff0b86e86ac3d5f12 ****/
+		/**** md5 signature: 58ef3afdb32a23d91b565e3599f401b9 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
 		%feature("autodoc", "No available documentation.
 
@@ -628,7 +628,7 @@ gp_Pnt
 class GeomAdaptor_Surface : public Adaptor3d_Surface {
 	public:
 		/****************** GeomAdaptor_Surface ******************/
-		/**** md5 signature: e4d8f69fd067a07f447e80b193ed4e6d ****/
+		/**** md5 signature: a9aba41923e556356efbe1dab9dbb710 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", "No available documentation.
 
@@ -639,7 +639,7 @@ None
 		 GeomAdaptor_Surface();
 
 		/****************** GeomAdaptor_Surface ******************/
-		/**** md5 signature: 10dc0d4a45b263adcecf88a448666f99 ****/
+		/**** md5 signature: e94d79b883890056e3b0287762d61ac7 ****/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", "No available documentation.
 

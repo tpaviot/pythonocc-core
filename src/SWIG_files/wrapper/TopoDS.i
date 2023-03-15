@@ -97,8 +97,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<TopoDS_Shape>::Iterator TopoDS_ListIteratorOfListOfShape;
-typedef NCollection_List<TopoDS_Shape> TopoDS_ListOfShape;
+typedef NCollection_List <TopoDS_Shape>::Iterator TopoDS_ListIteratorOfListOfShape;
+typedef NCollection_List <TopoDS_Shape> TopoDS_ListOfShape;
 /* end typedefs declaration */
 
 /***************
@@ -133,9 +133,9 @@ Parameters
 
 Returns
 -------
-TopoDS_CompSolid
+inline TopoDS_CompSolid
 ") CompSolid;
-		static TopoDS_CompSolid CompSolid(TopoDS_Shape &);
+		inline static TopoDS_CompSolid CompSolid(TopoDS_Shape &);
 
 		/****************** Compound ******************/
 		/**** md5 signature: c17cf0d09b6ccab9c17dc865a09c7150 ****/
@@ -163,9 +163,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Compound
+inline TopoDS_Compound
 ") Compound;
-		static TopoDS_Compound Compound(TopoDS_Shape &);
+		inline static TopoDS_Compound Compound(TopoDS_Shape &);
 
 		/****************** Edge ******************/
 		/**** md5 signature: 2efe03945bfb23dc595529d700df79fe ****/
@@ -193,9 +193,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Edge
+inline TopoDS_Edge
 ") Edge;
-		static TopoDS_Edge Edge(TopoDS_Shape &);
+		inline static TopoDS_Edge Edge(TopoDS_Shape &);
 
 		/****************** Face ******************/
 		/**** md5 signature: fc38e2ff501b643c83b607450ae60258 ****/
@@ -223,9 +223,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Face
+inline TopoDS_Face
 ") Face;
-		static TopoDS_Face Face(TopoDS_Shape &);
+		inline static TopoDS_Face Face(TopoDS_Shape &);
 
 		/****************** Shell ******************/
 		/**** md5 signature: dfadc1f5af3f5b4c35af960076bc47d2 ****/
@@ -253,9 +253,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Shell
+inline TopoDS_Shell
 ") Shell;
-		static TopoDS_Shell Shell(TopoDS_Shape &);
+		inline static TopoDS_Shell Shell(TopoDS_Shape &);
 
 		/****************** Solid ******************/
 		/**** md5 signature: 53ff4c77d3412e4bb8f19ba5e83f838c ****/
@@ -283,9 +283,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Solid
+inline TopoDS_Solid
 ") Solid;
-		static TopoDS_Solid Solid(TopoDS_Shape &);
+		inline static TopoDS_Solid Solid(TopoDS_Shape &);
 
 		/****************** Vertex ******************/
 		/**** md5 signature: 21ffb745f1245cff3cbd88e6c40f3c0b ****/
@@ -313,9 +313,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Vertex
+inline TopoDS_Vertex
 ") Vertex;
-		static TopoDS_Vertex Vertex(TopoDS_Shape &);
+		inline static TopoDS_Vertex Vertex(TopoDS_Shape &);
 
 		/****************** Wire ******************/
 		/**** md5 signature: 108068a348cc0d726ab22196f451f319 ****/
@@ -343,9 +343,9 @@ Parameters
 
 Returns
 -------
-TopoDS_Wire
+inline TopoDS_Wire
 ") Wire;
-		static TopoDS_Wire Wire(TopoDS_Shape &);
+		inline static TopoDS_Wire Wire(TopoDS_Shape &);
 
 };
 
@@ -409,7 +409,7 @@ theShape: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") Send;
 		static void Send(const opencascade::handle<Message_Messenger> & theMessenger, const TopoDS_Shape & theShape);
 
@@ -807,7 +807,7 @@ class TopoDS_Shape {
 		%feature("autodoc", "1");
 		TopoDS_Shape(const TopoDS_Shape arg0);
 		/****************** TopoDS_Shape ******************/
-		/**** md5 signature: edf08caaf8216af1bae07927d5abddda ****/
+		/**** md5 signature: 1bea57c1d08d603eb94c73f30c95281c ****/
 		%feature("compactdefaultargs") TopoDS_Shape;
 		%feature("autodoc", "Creates a null shape referring to nothing.
 

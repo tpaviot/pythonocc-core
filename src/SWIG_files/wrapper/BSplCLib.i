@@ -67,21 +67,27 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum BSplCLib_KnotDistribution {
+	BSplCLib_NonUniform = 0,
+	BSplCLib_Uniform = 1,
+};
+
 enum BSplCLib_MultDistribution {
 	BSplCLib_NonConstant = 0,
 	BSplCLib_Constant = 1,
 	BSplCLib_QuasiConstant = 2,
 };
 
-enum BSplCLib_KnotDistribution {
-	BSplCLib_NonUniform = 0,
-	BSplCLib_Uniform = 1,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class BSplCLib_KnotDistribution(IntEnum):
+	BSplCLib_NonUniform = 0
+	BSplCLib_Uniform = 1
+BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
+BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
 
 class BSplCLib_MultDistribution(IntEnum):
 	BSplCLib_NonConstant = 0
@@ -90,12 +96,6 @@ class BSplCLib_MultDistribution(IntEnum):
 BSplCLib_NonConstant = BSplCLib_MultDistribution.BSplCLib_NonConstant
 BSplCLib_Constant = BSplCLib_MultDistribution.BSplCLib_Constant
 BSplCLib_QuasiConstant = BSplCLib_MultDistribution.BSplCLib_QuasiConstant
-
-class BSplCLib_KnotDistribution(IntEnum):
-	BSplCLib_NonUniform = 0
-	BSplCLib_Uniform = 1
-BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
-BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
 };
 /* end python proxy for enums */
 
@@ -249,7 +249,7 @@ CacheWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") BuildCache;
 		static void BuildCache(const Standard_Real U, const Standard_Real InverseOfSpanDomain, const Standard_Boolean PeriodicFlag, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
@@ -272,7 +272,7 @@ CacheWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") BuildCache;
 		static void BuildCache(const Standard_Real U, const Standard_Real InverseOfSpanDomain, const Standard_Boolean PeriodicFlag, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
@@ -295,7 +295,7 @@ theCacheArray: TColStd_Array2OfReal
 
 Returns
 -------
-None
+void
 ") BuildCache;
 		static void BuildCache(const Standard_Real theParameter, const Standard_Real theSpanDomain, const Standard_Boolean thePeriodicFlag, const Standard_Integer theDegree, const Standard_Integer theSpanIndex, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights, TColStd_Array2OfReal & theCacheArray);
 
@@ -318,7 +318,7 @@ theCacheArray: TColStd_Array2OfReal
 
 Returns
 -------
-None
+void
 ") BuildCache;
 		static void BuildCache(const Standard_Real theParameter, const Standard_Real theSpanDomain, const Standard_Boolean thePeriodicFlag, const Standard_Integer theDegree, const Standard_Integer theSpanIndex, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColStd_Array2OfReal & theCacheArray);
 
@@ -408,7 +408,7 @@ Parameters: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") BuildSchoenbergPoints;
 		static void BuildSchoenbergPoints(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, TColStd_Array1OfReal & Parameters);
 
@@ -429,7 +429,7 @@ Point: gp_Pnt
 
 Returns
 -------
-None
+void
 ") CacheD0;
 		static void CacheD0(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point);
 
@@ -450,7 +450,7 @@ Point: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") CacheD0;
 		static void CacheD0(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point);
 
@@ -472,7 +472,7 @@ Vec: gp_Vec
 
 Returns
 -------
-None
+void
 ") CacheD1;
 		static void CacheD1(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec);
 
@@ -494,7 +494,7 @@ Vec: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CacheD1;
 		static void CacheD1(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
 
@@ -517,7 +517,7 @@ Vec2: gp_Vec
 
 Returns
 -------
-None
+void
 ") CacheD2;
 		static void CacheD2(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
 
@@ -540,7 +540,7 @@ Vec2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CacheD2;
 		static void CacheD2(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
 
@@ -564,7 +564,7 @@ Vec3: gp_Vec
 
 Returns
 -------
-None
+void
 ") CacheD3;
 		static void CacheD3(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
 
@@ -588,7 +588,7 @@ Vec3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CacheD3;
 		static void CacheD3(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
 
@@ -606,7 +606,7 @@ Point: gp_Pnt
 
 Returns
 -------
-None
+void
 ") CoefsD0;
 		static void CoefsD0(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point);
 
@@ -624,7 +624,7 @@ Point: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") CoefsD0;
 		static void CoefsD0(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point);
 
@@ -643,7 +643,7 @@ Vec: gp_Vec
 
 Returns
 -------
-None
+void
 ") CoefsD1;
 		static void CoefsD1(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec);
 
@@ -662,7 +662,7 @@ Vec: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CoefsD1;
 		static void CoefsD1(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
 
@@ -682,7 +682,7 @@ Vec2: gp_Vec
 
 Returns
 -------
-None
+void
 ") CoefsD2;
 		static void CoefsD2(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
 
@@ -702,7 +702,7 @@ Vec2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CoefsD2;
 		static void CoefsD2(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
 
@@ -723,7 +723,7 @@ Vec3: gp_Vec
 
 Returns
 -------
-None
+void
 ") CoefsD3;
 		static void CoefsD3(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
 
@@ -744,7 +744,7 @@ Vec3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") CoefsD3;
 		static void CoefsD3(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
 
@@ -789,7 +789,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P);
 
@@ -812,7 +812,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P);
 
@@ -830,7 +830,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P);
 
@@ -848,7 +848,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P);
 
@@ -895,7 +895,7 @@ V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V);
 
@@ -919,7 +919,7 @@ V: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -938,7 +938,7 @@ V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V);
 
@@ -957,7 +957,7 @@ V: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -1006,7 +1006,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -1031,7 +1031,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1051,7 +1051,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -1071,7 +1071,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1122,7 +1122,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -1148,7 +1148,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1169,7 +1169,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -1190,7 +1190,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1636,7 +1636,7 @@ NewMults: TColStd_Array1OfInteger
 
 Returns
 -------
-None
+void
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
@@ -1661,7 +1661,7 @@ NewMults: TColStd_Array1OfInteger
 
 Returns
 -------
-None
+void
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
@@ -1686,7 +1686,7 @@ NewMults: TColStd_Array1OfInteger
 
 Returns
 -------
-None
+void
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
@@ -1705,7 +1705,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer NewDegree, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -1724,7 +1724,7 @@ theNewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer theNewDegree, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColgp_Array1OfPnt2d & theNewPoles, TColStd_Array1OfReal * theNewWeights);
 
@@ -1767,7 +1767,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") InsertKnot;
 		static void InsertKnot(const Standard_Integer UIndex, const Standard_Real U, const Standard_Integer UMult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -1792,7 +1792,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") InsertKnot;
 		static void InsertKnot(const Standard_Integer UIndex, const Standard_Real U, const Standard_Integer UMult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -1820,7 +1820,7 @@ Add: bool,optional
 
 Returns
 -------
-None
+void
 ") InsertKnots;
 		static void InsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
@@ -1849,7 +1849,7 @@ Add: bool,optional
 
 Returns
 -------
-None
+void
 ") InsertKnots;
 		static void InsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
@@ -1878,7 +1878,7 @@ Add: bool,optional
 
 Returns
 -------
-None
+void
 ") InsertKnots;
 		static void InsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
@@ -2071,7 +2071,7 @@ Periodic: bool,optional
 
 Returns
 -------
-None
+void
 ") KnotSequence;
 		static void KnotSequence(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & KnotSeq, const Standard_Boolean Periodic = Standard_False);
 
@@ -2090,7 +2090,7 @@ KnotSeq: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") KnotSequence;
 		static void KnotSequence(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Degree, const Standard_Boolean Periodic, TColStd_Array1OfReal & KnotSeq);
 
@@ -2126,7 +2126,7 @@ Periodic: bool,optional
 
 Returns
 -------
-None
+void
 ") Knots;
 		static void Knots(const TColStd_Array1OfReal & KnotSeq, TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults, const Standard_Boolean Periodic = Standard_False);
 
@@ -2506,7 +2506,7 @@ CachePoles: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt2d & Poles, TColgp_Array1OfPnt2d & CachePoles);
 
@@ -2524,7 +2524,7 @@ CacheWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
@@ -2540,7 +2540,7 @@ CachePoles: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt & CachePoles);
 
@@ -2558,7 +2558,7 @@ CacheWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
@@ -2644,7 +2644,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") RaiseMultiplicity;
 		static void RaiseMultiplicity(const Standard_Integer KnotIndex, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -2668,7 +2668,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") RaiseMultiplicity;
 		static void RaiseMultiplicity(const Standard_Integer KnotIndex, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -2765,7 +2765,7 @@ Knots: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Reparametrize;
 		static void Reparametrize(const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & Knots);
 
@@ -2841,7 +2841,7 @@ Knots: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Reverse;
 		static void Reverse(TColStd_Array1OfReal & Knots);
 
@@ -2856,7 +2856,7 @@ Mults: TColStd_Array1OfInteger
 
 Returns
 -------
-None
+void
 ") Reverse;
 		static void Reverse(TColStd_Array1OfInteger & Mults);
 
@@ -2872,7 +2872,7 @@ Last: int
 
 Returns
 -------
-None
+void
 ") Reverse;
 		static void Reverse(TColgp_Array1OfPnt & Poles, const Standard_Integer Last);
 
@@ -2888,7 +2888,7 @@ Last: int
 
 Returns
 -------
-None
+void
 ") Reverse;
 		static void Reverse(TColgp_Array1OfPnt2d & Poles, const Standard_Integer Last);
 
@@ -2904,7 +2904,7 @@ Last: int
 
 Returns
 -------
-None
+void
 ") Reverse;
 		static void Reverse(TColStd_Array1OfReal & Weights, const Standard_Integer Last);
 
@@ -3069,7 +3069,7 @@ NewPoles: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Poles, const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewPoles);
 
@@ -3095,7 +3095,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -3121,7 +3121,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Trimming;
 		static void Trimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -3143,7 +3143,7 @@ NewPoles: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Unperiodize;
 		static void Unperiodize(const Standard_Integer Degree, const Standard_Integer Dimension, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfReal & Poles, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfReal & NewPoles);
 
@@ -3166,7 +3166,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Unperiodize;
 		static void Unperiodize(const Standard_Integer Degree, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -3189,7 +3189,7 @@ NewWeights: TColStd_Array1OfReal *
 
 Returns
 -------
-None
+void
 ") Unperiodize;
 		static void Unperiodize(const Standard_Integer Degree, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
@@ -3463,9 +3463,9 @@ class BSplCLib_CacheParams {
 		float SpanLength;
 		int SpanIndex;
 		/****************** BSplCLib_CacheParams ******************/
-		/**** md5 signature: 9dc6d39f5a0f6a64d0c5f2ef90fb4329 ****/
+		/**** md5 signature: 0813365b7bd8e1a9ec4fa50c152a6bcc ****/
 		%feature("compactdefaultargs") BSplCLib_CacheParams;
-		%feature("autodoc", "Constructor, prepares data structures for caching. \param thedegree degree of the b-spline (or bezier) \param theperiodic identify whether the b-spline is periodic \param theflatknots knots of bezier / b-spline parameterization.
+		%feature("autodoc", "///< index of the span constructor, prepares data structures for caching. \param thedegree degree of the b-spline (or bezier) \param theperiodic identify whether the b-spline is periodic \param theflatknots knots of bezier / b-spline parameterization.
 
 Parameters
 ----------

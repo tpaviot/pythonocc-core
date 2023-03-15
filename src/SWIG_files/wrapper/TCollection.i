@@ -228,19 +228,20 @@ None
 		 TCollection_AsciiString(const TCollection_AsciiString & astring);
 
 		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 77b3f342a0e7402e7425759425c20ae9 ****/
+		/**** md5 signature: b78bd68f3424fcd5bdbdcb8f89235ae1 ****/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "Move constructor.
 
 Parameters
 ----------
-theOther: TCollection_AsciiString
+mystring(theOthermystring): TCollection_AsciiString  theOther) Standard_Noexcept:
+: mylength(theOthermylength
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(TCollection_AsciiString & theOther);
+		 TCollection_AsciiString(TCollection_AsciiString & theOther) Standard_Noexcept: mystring(theOthermystring), mylength(theOthermylength );
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 3701982dde49508c3c592490ddafa417 ****/
@@ -1732,19 +1733,20 @@ None
 		 TCollection_ExtendedString(const TCollection_ExtendedString & astring);
 
 		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 48db9560fec5e00cc0d2840716162fbf ****/
+		/**** md5 signature: 2fcef7d29cc7d7e7132a93084a4513de ****/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "Move constructor.
 
 Parameters
 ----------
-theOther: TCollection_ExtendedString
+mystring(theOthermystring): TCollection_ExtendedString  theOther) Standard_Noexcept:
+: mylength(theOthermylength
 
 Returns
 -------
 None
 ") TCollection_ExtendedString;
-		 TCollection_ExtendedString(TCollection_ExtendedString & theOther);
+		 TCollection_ExtendedString(TCollection_ExtendedString & theOther) Standard_Noexcept: mystring(theOthermystring), mylength(theOthermylength );
 
 		/****************** TCollection_ExtendedString ******************/
 		/**** md5 signature: 65128c52391eef873746fec9d8584835 ****/

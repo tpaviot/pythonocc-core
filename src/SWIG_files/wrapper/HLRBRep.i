@@ -245,13 +245,13 @@ HLRBRep_Sharp = HLRBRep_TypeOfResultingEdge.HLRBRep_Sharp
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<HLRBRep_EdgeData> HLRBRep_Array1OfEData;
-typedef NCollection_Array1<HLRBRep_FaceData> HLRBRep_Array1OfFData;
-typedef NCollection_List<HLRBRep_BiPnt2D>::Iterator HLRBRep_ListIteratorOfListOfBPnt2D;
-typedef NCollection_List<HLRBRep_BiPoint>::Iterator HLRBRep_ListIteratorOfListOfBPoint;
-typedef NCollection_List<HLRBRep_BiPnt2D> HLRBRep_ListOfBPnt2D;
-typedef NCollection_List<HLRBRep_BiPoint> HLRBRep_ListOfBPoint;
-typedef NCollection_Sequence<HLRBRep_ShapeBounds> HLRBRep_SeqOfShapeBounds;
+typedef NCollection_Array1 <HLRBRep_EdgeData> HLRBRep_Array1OfEData;
+typedef NCollection_Array1 <HLRBRep_FaceData> HLRBRep_Array1OfFData;
+typedef NCollection_List <HLRBRep_BiPnt2D>::Iterator HLRBRep_ListIteratorOfListOfBPnt2D;
+typedef NCollection_List <HLRBRep_BiPoint>::Iterator HLRBRep_ListIteratorOfListOfBPoint;
+typedef NCollection_List <HLRBRep_BiPnt2D> HLRBRep_ListOfBPnt2D;
+typedef NCollection_List <HLRBRep_BiPoint> HLRBRep_ListOfBPoint;
+typedef NCollection_Sequence <HLRBRep_ShapeBounds> HLRBRep_SeqOfShapeBounds;
 /* end typedefs declaration */
 
 /****************
@@ -634,7 +634,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P);
 
@@ -652,7 +652,7 @@ V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -671,7 +671,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -691,7 +691,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -800,7 +800,7 @@ S: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -984,7 +984,7 @@ T: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") Poles;
 		static void Poles(const BRepAdaptor_Curve & C, TColgp_Array1OfPnt & T);
 
@@ -1001,7 +1001,7 @@ W: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") PolesAndWeights;
 		static void PolesAndWeights(const BRepAdaptor_Curve & C, TColgp_Array1OfPnt & T, TColStd_Array1OfReal & W);
 
@@ -1055,7 +1055,7 @@ gp_Pnt
 class HLRBRep_BiPnt2D {
 	public:
 		/****************** HLRBRep_BiPnt2D ******************/
-		/**** md5 signature: 5222eb713abf9c22008977029d3c38bb ****/
+		/**** md5 signature: bb2eb4819d259857328c2dfdf737a1ef ****/
 		%feature("compactdefaultargs") HLRBRep_BiPnt2D;
 		%feature("autodoc", "No available documentation.
 
@@ -1066,7 +1066,7 @@ None
 		 HLRBRep_BiPnt2D();
 
 		/****************** HLRBRep_BiPnt2D ******************/
-		/**** md5 signature: 7de8d55cb4ff4b525dc93e614657e18b ****/
+		/**** md5 signature: ee4e29df1eb359a3a286ea8a261f4ac2 ****/
 		%feature("compactdefaultargs") HLRBRep_BiPnt2D;
 		%feature("autodoc", "No available documentation.
 
@@ -1089,7 +1089,7 @@ None
 		 HLRBRep_BiPnt2D(const Standard_Real x1, const Standard_Real y1, const Standard_Real x2, const Standard_Real y2, const TopoDS_Shape & S, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
 
 		/****************** HLRBRep_BiPnt2D ******************/
-		/**** md5 signature: a614f22a1e85cb9e105bb92c0f4493b9 ****/
+		/**** md5 signature: a4cd3cac4612d84f0285b719b34660a4 ****/
 		%feature("compactdefaultargs") HLRBRep_BiPnt2D;
 		%feature("autodoc", "No available documentation.
 
@@ -1276,7 +1276,7 @@ None
 class HLRBRep_BiPoint {
 	public:
 		/****************** HLRBRep_BiPoint ******************/
-		/**** md5 signature: 23f973eb3a4b8708e47e313d2a38e222 ****/
+		/**** md5 signature: 0ea5653f7a997b37456c4c28d5c3dcab ****/
 		%feature("compactdefaultargs") HLRBRep_BiPoint;
 		%feature("autodoc", "No available documentation.
 
@@ -1287,7 +1287,7 @@ None
 		 HLRBRep_BiPoint();
 
 		/****************** HLRBRep_BiPoint ******************/
-		/**** md5 signature: ebcb9699c5eff50e6efc4b93c8fc33b1 ****/
+		/**** md5 signature: 82a724085f728dcd16a9b2b8d36752f6 ****/
 		%feature("compactdefaultargs") HLRBRep_BiPoint;
 		%feature("autodoc", "No available documentation.
 
@@ -2001,7 +2001,7 @@ V1: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -2020,7 +2020,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -2040,7 +2040,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -2087,7 +2087,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P);
 
@@ -2814,7 +2814,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -2832,7 +2832,7 @@ V: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -2851,7 +2851,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -2871,7 +2871,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -3012,7 +3012,7 @@ T: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const Standard_Address C, TColStd_Array1OfReal & T);
 
@@ -3945,7 +3945,7 @@ opencascade::handle<HLRBRep_AreaLimit>
 class HLRBRep_EdgeData {
 	public:
 		/****************** HLRBRep_EdgeData ******************/
-		/**** md5 signature: 52972d50f33ee119b5b220b1a28e2de6 ****/
+		/**** md5 signature: caf25f7dd28053dce75f4b497fdf1c6e ****/
 		%feature("compactdefaultargs") HLRBRep_EdgeData;
 		%feature("autodoc", "No available documentation.
 
@@ -4556,7 +4556,7 @@ T: HLRBRep_EdgeInterferenceTool
 
 Returns
 -------
-None
+void
 ") AddInterference;
 		static void AddInterference(HLRAlgo_InterferenceList & IL, const HLRAlgo_Interference & I, const HLRBRep_EdgeInterferenceTool & T);
 
@@ -4572,7 +4572,7 @@ T: HLRBRep_EdgeInterferenceTool
 
 Returns
 -------
-None
+void
 ") ProcessComplex;
 		static void ProcessComplex(HLRAlgo_InterferenceList & IL, const HLRBRep_EdgeInterferenceTool & T);
 
@@ -6999,7 +6999,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const gp_Lin & C, const Standard_Real U, gp_Pnt & P);
 
@@ -7017,7 +7017,7 @@ V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -7036,7 +7036,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -7056,7 +7056,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -7210,7 +7210,7 @@ Sh: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const gp_Lin & C, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
 
@@ -7272,7 +7272,7 @@ TM: TColStd_Array1OfInteger
 
 Returns
 -------
-None
+void
 ") KnotsAndMultiplicities;
 		static void KnotsAndMultiplicities(const gp_Lin & C, TColStd_Array1OfReal & TK, TColStd_Array1OfInteger & TM);
 
@@ -7411,7 +7411,7 @@ TP: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") Poles;
 		static void Poles(const gp_Lin & C, TColgp_Array1OfPnt & TP);
 
@@ -7428,7 +7428,7 @@ TW: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") PolesAndWeights;
 		static void PolesAndWeights(const gp_Lin & C, TColgp_Array1OfPnt & TP, TColStd_Array1OfReal & TW);
 
@@ -7464,7 +7464,7 @@ Pars: TColStd_HArray1OfReal
 
 Returns
 -------
-None
+void
 ") SamplePars;
 		static void SamplePars(const gp_Lin & C, const Standard_Real U0, const Standard_Real U1, const Standard_Real Defl, const Standard_Integer NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
@@ -8795,7 +8795,7 @@ D1V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -8818,7 +8818,7 @@ DUV: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
@@ -8855,7 +8855,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
@@ -9254,7 +9254,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P);
 
@@ -9274,7 +9274,7 @@ D1v: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1u, gp_Vec & D1v);
 
@@ -9297,7 +9297,7 @@ D2UV: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
@@ -9324,7 +9324,7 @@ D3UVV: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
@@ -9666,7 +9666,7 @@ Sh: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") UIntervals;
 		static void UIntervals(const Standard_Address S, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
 
@@ -9732,7 +9732,7 @@ Sh: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") VIntervals;
 		static void VIntervals(const Standard_Address S, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
 
@@ -11546,7 +11546,7 @@ thePolygon: HLRBRep_ThePolygonOfInterCSurf
 
 Returns
 -------
-None
+void
 ") Dump;
 		static void Dump(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
@@ -11654,7 +11654,7 @@ thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 
 Returns
 -------
-None
+void
 ") Dump;
 		static void Dump(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 

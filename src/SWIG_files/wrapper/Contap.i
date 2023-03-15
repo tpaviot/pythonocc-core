@@ -168,11 +168,11 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>> Contap_SequenceOfIWLineOfTheIWalking;
-typedef NCollection_Sequence<Contap_ThePathPointOfTheSearch> Contap_SequenceOfPathPointOfTheSearch;
-typedef NCollection_Sequence<Contap_TheSegmentOfTheSearch> Contap_SequenceOfSegmentOfTheSearch;
-typedef NCollection_Sequence<Contap_Line> Contap_TheSequenceOfLine;
-typedef NCollection_Sequence<Contap_Point> Contap_TheSequenceOfPoint;
+typedef NCollection_Sequence <opencascade::handle <Contap_TheIWLineOfTheIWalking>> Contap_SequenceOfIWLineOfTheIWalking;
+typedef NCollection_Sequence <Contap_ThePathPointOfTheSearch> Contap_SequenceOfPathPointOfTheSearch;
+typedef NCollection_Sequence <Contap_TheSegmentOfTheSearch> Contap_SequenceOfSegmentOfTheSearch;
+typedef NCollection_Sequence <Contap_Line> Contap_TheSequenceOfLine;
+typedef NCollection_Sequence <Contap_Point> Contap_TheSequenceOfPoint;
 /* end typedefs declaration */
 
 /***************************
@@ -1225,7 +1225,7 @@ V: Adaptor3d_HVertex
 
 Returns
 -------
-None
+void
 ") Vertex;
 		static void Vertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -1316,7 +1316,7 @@ P: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -1334,7 +1334,7 @@ V: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -1353,7 +1353,7 @@ V2: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1373,7 +1373,7 @@ V3: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1467,7 +1467,7 @@ S: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2512,7 +2512,7 @@ N: gp_Vec
 
 Returns
 -------
-None
+void
 ") DerivAndNorm;
 		static void DerivAndNorm(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & d1u, gp_Vec & d1v, gp_Vec & N);
 
@@ -2533,7 +2533,7 @@ Dnv: gp_Vec
 
 Returns
 -------
-None
+void
 ") NormAndDn;
 		static void NormAndDn(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N, gp_Vec & Dnu, gp_Vec & Dnv);
 
@@ -2552,7 +2552,7 @@ N: gp_Vec
 
 Returns
 -------
-None
+void
 ") Normale;
 		static void Normale(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N);
 

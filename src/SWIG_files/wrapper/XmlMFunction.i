@@ -102,7 +102,7 @@ theMessageDriver: Message_Messenger
 
 Returns
 -------
-None
+void
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 

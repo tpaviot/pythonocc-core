@@ -3,8 +3,8 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.StepShape import *
 from OCC.Core.StepBasic import *
+from OCC.Core.StepShape import *
 from OCC.Core.STEPControl import *
 from OCC.Core.TopoDS import *
 from OCC.Core.TColStd import *

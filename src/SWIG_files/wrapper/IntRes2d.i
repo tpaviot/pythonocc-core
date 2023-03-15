@@ -133,8 +133,8 @@ IntRes2d_Undecided = IntRes2d_TypeTrans.IntRes2d_Undecided
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<IntRes2d_IntersectionPoint> IntRes2d_SequenceOfIntersectionPoint;
-typedef NCollection_Sequence<IntRes2d_IntersectionSegment> IntRes2d_SequenceOfIntersectionSegment;
+typedef NCollection_Sequence <IntRes2d_IntersectionPoint> IntRes2d_SequenceOfIntersectionPoint;
+typedef NCollection_Sequence <IntRes2d_IntersectionSegment> IntRes2d_SequenceOfIntersectionSegment;
 /* end typedefs declaration */
 
 /************************

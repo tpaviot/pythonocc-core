@@ -109,12 +109,12 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, HLRTopoBRep_FaceData, TopTools_ShapeMapHasher>::Iterator HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData;
-typedef NCollection_DataMap<TopoDS_Shape, HLRTopoBRep_ListOfVData, TopTools_ShapeMapHasher>::Iterator HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData;
-typedef NCollection_DataMap<TopoDS_Shape, HLRTopoBRep_FaceData, TopTools_ShapeMapHasher> HLRTopoBRep_DataMapOfShapeFaceData;
-typedef NCollection_List<HLRTopoBRep_VData>::Iterator HLRTopoBRep_ListIteratorOfListOfVData;
-typedef NCollection_List<HLRTopoBRep_VData> HLRTopoBRep_ListOfVData;
-typedef NCollection_DataMap<TopoDS_Shape, HLRTopoBRep_ListOfVData, TopTools_ShapeMapHasher> HLRTopoBRep_MapOfShapeListOfVData;
+typedef NCollection_DataMap <TopoDS_Shape, HLRTopoBRep_FaceData, TopTools_ShapeMapHasher>::Iterator HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData;
+typedef NCollection_DataMap <TopoDS_Shape, HLRTopoBRep_ListOfVData, TopTools_ShapeMapHasher>::Iterator HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData;
+typedef NCollection_DataMap <TopoDS_Shape, HLRTopoBRep_FaceData, TopTools_ShapeMapHasher> HLRTopoBRep_DataMapOfShapeFaceData;
+typedef NCollection_List <HLRTopoBRep_VData>::Iterator HLRTopoBRep_ListIteratorOfListOfVData;
+typedef NCollection_List <HLRTopoBRep_VData> HLRTopoBRep_ListOfVData;
+typedef NCollection_DataMap <TopoDS_Shape, HLRTopoBRep_ListOfVData, TopTools_ShapeMapHasher> HLRTopoBRep_MapOfShapeListOfVData;
 /* end typedefs declaration */
 
 /*****************************
@@ -137,7 +137,7 @@ nbIso: int
 
 Returns
 -------
-None
+void
 ") Insert;
 		static void Insert(const TopoDS_Shape & S, Contap_Contour & FO, HLRTopoBRep_Data & DS, BRepTopAdaptor_MapOfShapeTool & MST, const Standard_Integer nbIso);
 
@@ -781,7 +781,7 @@ DS: HLRTopoBRep_Data
 
 Returns
 -------
-None
+void
 ") MakeIsoLine;
 		static void MakeIsoLine(const TopoDS_Face & F, const opencascade::handle<Geom2d_Line> & Iso, TopoDS_Vertex & V1, TopoDS_Vertex & V2, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, HLRTopoBRep_Data & DS);
 
@@ -818,7 +818,7 @@ nbIsos: int
 
 Returns
 -------
-None
+void
 ") Perform;
 		static void Perform(const Standard_Integer FI, const TopoDS_Face & F, HLRTopoBRep_Data & DS, const Standard_Integer nbIsos);
 

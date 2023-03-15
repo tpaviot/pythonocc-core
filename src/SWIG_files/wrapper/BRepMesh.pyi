@@ -12,26 +12,12 @@ from OCC.Core.GeomAbs import *
 from OCC.Core.TCollection import *
 from OCC.Core.TColStd import *
 from OCC.Core.BRepAdaptor import *
-from OCC.Core.Adaptor3d import *
 from OCC.Core.Poly import *
 from OCC.Core.Bnd import *
 from OCC.Core.TopLoc import *
-from OCC.Core.Geom2d import *
-from OCC.Core.Geom import *
-from OCC.Core.IMeshData import *
 from OCC.Core.TColgp import *
 
-
-class BRepMesh_FactoryError(IntEnum):
-    BRepMesh_FE_NOERROR: int = ...
-    BRepMesh_FE_LIBRARYNOTFOUND: int = ...
-    BRepMesh_FE_FUNCTIONNOTFOUND: int = ...
-    BRepMesh_FE_CANNOTCREATEALGO: int = ...
-
-BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
-BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
-BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
-BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
+Parameters = NewType('Parameters', IMeshTools_Parameters)
 
 class BRepMesh_DegreeOfFreedom(IntEnum):
     BRepMesh_Free: int = ...
@@ -49,6 +35,17 @@ BRepMesh_OnCurve = BRepMesh_DegreeOfFreedom.BRepMesh_OnCurve
 BRepMesh_Fixed = BRepMesh_DegreeOfFreedom.BRepMesh_Fixed
 BRepMesh_Frontier = BRepMesh_DegreeOfFreedom.BRepMesh_Frontier
 BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
+
+class BRepMesh_FactoryError(IntEnum):
+    BRepMesh_FE_NOERROR: int = ...
+    BRepMesh_FE_LIBRARYNOTFOUND: int = ...
+    BRepMesh_FE_FUNCTIONNOTFOUND: int = ...
+    BRepMesh_FE_CANNOTCREATEALGO: int = ...
+
+BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
+BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
+BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
+BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
 
 class BRepMesh_BaseMeshAlgo(IMeshTools_MeshAlgo):
     pass
@@ -194,8 +191,6 @@ class BRepMesh_GeomTool:
     @overload
     def __init__(self, theSurface: BRepAdaptor_Surface, theIsoType: GeomAbs_IsoType, theParamIso: float, theFirstParam: float, theLastParam: float, theLinDeflection: float, theAngDeflection: float, theMinPointsNb: Optional[int] = 2, theMinSize: Optional[float] = Precision.Confusion()) -> None: ...
     def AddPoint(self, thePoint: gp_Pnt, theParam: float, theIsReplace: Optional[bool] = True) -> int: ...
-    @staticmethod
-    def CellsCount(theSurface: Adaptor3d_Surface, theVerticesNb: int, theDeflection: float, theRangeSplitter: BRepMesh_DefaultRangeSplitter) -> False: ...
     def NbPoints(self) -> int: ...
     @staticmethod
     def SquareDeflectionOfSegment(theFirstPoint: gp_Pnt, theLastPoint: gp_Pnt, theMidPoint: gp_Pnt) -> float: ...
@@ -286,34 +281,18 @@ class BRepMesh_ShapeTool(Standard_Transient):
     def MaxFaceTolerance(theFace: TopoDS_Face) -> float: ...
     @overload
     @staticmethod
-    def NullifyEdge(theEdge: TopoDS_Edge, theTriangulation: Poly_Triangulation, theLocation: TopLoc_Location) -> None: ...
-    @overload
-    @staticmethod
     def NullifyEdge(theEdge: TopoDS_Edge, theLocation: TopLoc_Location) -> None: ...
     @staticmethod
     def NullifyFace(theFace: TopoDS_Face) -> None: ...
-    @overload
-    @staticmethod
-    def Range(theEdge: TopoDS_Edge, theFace: TopoDS_Face, thePCurve: Geom2d_Curve, isConsiderOrientation: Optional[bool] = False) -> Tuple[bool, float, float]: ...
-    @overload
-    @staticmethod
-    def Range(theEdge: TopoDS_Edge, theCurve: Geom_Curve, isConsiderOrientation: Optional[bool] = False) -> Tuple[bool, float, float]: ...
     @staticmethod
     def UVPoints(theEdge: TopoDS_Edge, theFace: TopoDS_Face, theFirstPoint2d: gp_Pnt2d, theLastPoint2d: gp_Pnt2d, isConsiderOrientation: Optional[bool] = False) -> bool: ...
     @overload
     @staticmethod
-    def UpdateEdge(theEdge: TopoDS_Edge, thePolygon: Poly_PolygonOnTriangulation, theTriangulation: Poly_Triangulation, theLocation: TopLoc_Location) -> None: ...
-    @overload
-    @staticmethod
     def UpdateEdge(theEdge: TopoDS_Edge, thePolygon: Poly_Polygon3D) -> None: ...
-    @overload
-    @staticmethod
-    def UpdateEdge(theEdge: TopoDS_Edge, thePolygon1: Poly_PolygonOnTriangulation, thePolygon2: Poly_PolygonOnTriangulation, theTriangulation: Poly_Triangulation, theLocation: TopLoc_Location) -> None: ...
     @staticmethod
     def UseLocation(thePnt: gp_Pnt, theLoc: TopLoc_Location) -> gp_Pnt: ...
 
 class BRepMesh_ShapeVisitor(IMeshTools_ShapeVisitor):
-    def __init__(self, theModel: IMeshData_Model) -> None: ...
     @overload
     def Visit(self, theFace: TopoDS_Face) -> None: ...
     @overload

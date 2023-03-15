@@ -105,10 +105,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>> FEmTool_AssemblyTable;
-typedef NCollection_List<opencascade::handle<TColStd_HArray1OfReal>>::Iterator FEmTool_ListIteratorOfListOfVectors;
-typedef NCollection_List<opencascade::handle<TColStd_HArray1OfReal>> FEmTool_ListOfVectors;
-typedef NCollection_Sequence<FEmTool_ListOfVectors> FEmTool_SeqOfLinConstr;
+typedef NCollection_Array2 <opencascade::handle <TColStd_HArray1OfInteger>> FEmTool_AssemblyTable;
+typedef NCollection_List <opencascade::handle <TColStd_HArray1OfReal>>::Iterator FEmTool_ListIteratorOfListOfVectors;
+typedef NCollection_List <opencascade::handle <TColStd_HArray1OfReal>> FEmTool_ListOfVectors;
+typedef NCollection_Sequence <FEmTool_ListOfVectors> FEmTool_SeqOfLinConstr;
 /* end typedefs declaration */
 
 /*************************

@@ -96,16 +96,16 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef IntPolyh_Array<IntPolyh_Edge> IntPolyh_ArrayOfEdges;
-typedef IntPolyh_Array<IntPolyh_PointNormal> IntPolyh_ArrayOfPointNormal;
-typedef IntPolyh_Array<IntPolyh_Point> IntPolyh_ArrayOfPoints;
-typedef IntPolyh_Array<IntPolyh_SectionLine> IntPolyh_ArrayOfSectionLines;
-typedef IntPolyh_Array<IntPolyh_StartPoint> IntPolyh_ArrayOfTangentZones;
-typedef IntPolyh_Array<IntPolyh_Triangle> IntPolyh_ArrayOfTriangles;
+typedef IntPolyh_Array <IntPolyh_Edge> IntPolyh_ArrayOfEdges;
+typedef IntPolyh_Array <IntPolyh_PointNormal> IntPolyh_ArrayOfPointNormal;
+typedef IntPolyh_Array <IntPolyh_Point> IntPolyh_ArrayOfPoints;
+typedef IntPolyh_Array <IntPolyh_SectionLine> IntPolyh_ArrayOfSectionLines;
+typedef IntPolyh_Array <IntPolyh_StartPoint> IntPolyh_ArrayOfTangentZones;
+typedef IntPolyh_Array <IntPolyh_Triangle> IntPolyh_ArrayOfTriangles;
 typedef IntPolyh_ListOfCouples::Iterator IntPolyh_ListIteratorOfListOfCouples;
-typedef NCollection_List<IntPolyh_Couple> IntPolyh_ListOfCouples;
+typedef NCollection_List <IntPolyh_Couple> IntPolyh_ListOfCouples;
 typedef IntPolyh_MaillageAffinage * IntPolyh_PMaillageAffinage;
-typedef NCollection_Sequence<IntPolyh_StartPoint> IntPolyh_SeqOfStartPoints;
+typedef NCollection_Sequence <IntPolyh_StartPoint> IntPolyh_SeqOfStartPoints;
 /* end typedefs declaration */
 
 /***********************
@@ -117,7 +117,7 @@ typedef NCollection_Sequence<IntPolyh_StartPoint> IntPolyh_SeqOfStartPoints;
 class IntPolyh_Couple {
 	public:
 		/****************** IntPolyh_Couple ******************/
-		/**** md5 signature: 4905c4bc961aef0240459f6c6c349da3 ****/
+		/**** md5 signature: 4e7ec7e1f2c65ca3fdab59cb7d18cfc6 ****/
 		%feature("compactdefaultargs") IntPolyh_Couple;
 		%feature("autodoc", "Constructor.
 
@@ -128,7 +128,7 @@ None
 		 IntPolyh_Couple();
 
 		/****************** IntPolyh_Couple ******************/
-		/**** md5 signature: 2ad54cd045a228f75ac9a719fd4ad546 ****/
+		/**** md5 signature: e69d6e122fe6b8a036749e8cf1ec496f ****/
 		%feature("compactdefaultargs") IntPolyh_Couple;
 		%feature("autodoc", "Constructor.
 
@@ -347,7 +347,7 @@ bool
 class IntPolyh_Edge {
 	public:
 		/****************** IntPolyh_Edge ******************/
-		/**** md5 signature: 5075b69dd8ac9ff9cb3f7c222b7adb4e ****/
+		/**** md5 signature: 4b837feb32cce3112c610da6903675c6 ****/
 		%feature("compactdefaultargs") IntPolyh_Edge;
 		%feature("autodoc", "Constructor.
 
@@ -358,7 +358,7 @@ None
 		 IntPolyh_Edge();
 
 		/****************** IntPolyh_Edge ******************/
-		/**** md5 signature: 546354eae7a42255ee366566dccf8437 ****/
+		/**** md5 signature: da18b0848bc03c9ae9d4867e14ccf979 ****/
 		%feature("compactdefaultargs") IntPolyh_Edge;
 		%feature("autodoc", "Constructor.
 
@@ -511,7 +511,7 @@ class IntPolyh_Intersection {
 		/****************** IntPolyh_Intersection ******************/
 		/**** md5 signature: d8f94c58cfea4bdf03f2258e8edaf528 ****/
 		%feature("compactdefaultargs") IntPolyh_Intersection;
-		%feature("autodoc", "Constructor for intersection of two surfaces with default parameters. performs intersection.
+		%feature("autodoc", "@name constructors constructor for intersection of two surfaces with default parameters. performs intersection.
 
 Parameters
 ----------
@@ -612,7 +612,7 @@ v2: float
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns state of the operation.
+		%feature("autodoc", "@name getting the results returns state of the operation.
 
 Returns
 -------
@@ -701,7 +701,7 @@ int
 class IntPolyh_Point {
 	public:
 		/****************** IntPolyh_Point ******************/
-		/**** md5 signature: c8496207698f85ff16b4fb6e16ae4771 ****/
+		/**** md5 signature: 24f4ff99334dd918479cdd1179586b5f ****/
 		%feature("compactdefaultargs") IntPolyh_Point;
 		%feature("autodoc", "Constructor.
 
@@ -712,7 +712,7 @@ None
 		 IntPolyh_Point();
 
 		/****************** IntPolyh_Point ******************/
-		/**** md5 signature: 0dad2edb2770898af34a7ca0fc080236 ****/
+		/**** md5 signature: 28ef9443a4ecd735dbfc6c64a67888fa ****/
 		%feature("compactdefaultargs") IntPolyh_Point;
 		%feature("autodoc", "Constructor.
 
@@ -1815,7 +1815,7 @@ thePoints: IntPolyh_ArrayOfPointNormal
 
 Returns
 -------
-None
+void
 ") FillArrayOfPointNormal;
 		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
 
@@ -1851,7 +1851,7 @@ theVPars: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") MakeSampling;
 		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Integer theNbSU, const Standard_Integer theNbSV, const Standard_Boolean theEnlargeZone, TColStd_Array1OfReal & theUPars, TColStd_Array1OfReal & theVPars);
 
@@ -1870,7 +1870,7 @@ None
 class IntPolyh_Triangle {
 	public:
 		/****************** IntPolyh_Triangle ******************/
-		/**** md5 signature: 9a631a4c34468bd2d2f6e7ff36d74f04 ****/
+		/**** md5 signature: 4204a9872e35a5027c2b2eb77a9fc359 ****/
 		%feature("compactdefaultargs") IntPolyh_Triangle;
 		%feature("autodoc", "Constructor.
 
@@ -1881,7 +1881,7 @@ None
 		 IntPolyh_Triangle();
 
 		/****************** IntPolyh_Triangle ******************/
-		/**** md5 signature: d9dae26ef6c441c84cc9c185b45673cc ****/
+		/**** md5 signature: 6633b645a3a123942f82bd1da0674034 ****/
 		%feature("compactdefaultargs") IntPolyh_Triangle;
 		%feature("autodoc", "Constructor.
 

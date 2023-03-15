@@ -101,7 +101,7 @@ class RWHeaderSection {
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 

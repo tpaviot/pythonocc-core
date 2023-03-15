@@ -113,7 +113,7 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt>> Convert_SequenceOfArray1OfPoles;
+typedef NCollection_Sequence <opencascade::handle <TColgp_HArray1OfPnt>> Convert_SequenceOfArray1OfPoles;
 typedef TColgp_SequenceOfArray1OfPnt2d Convert_SequenceOfArray1OfPoles2d;
 /* end typedefs declaration */
 

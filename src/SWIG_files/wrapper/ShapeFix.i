@@ -126,9 +126,9 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, Bnd_Box2d, TopTools_ShapeMapHasher>::Iterator ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
-typedef NCollection_DataMap<TopoDS_Shape, Bnd_Box2d, TopTools_ShapeMapHasher> ShapeFix_DataMapOfShapeBox2d;
-typedef NCollection_Sequence<ShapeFix_WireSegment> ShapeFix_SequenceOfWireSegment;
+typedef NCollection_DataMap <TopoDS_Shape, Bnd_Box2d, TopTools_ShapeMapHasher>::Iterator ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
+typedef NCollection_DataMap <TopoDS_Shape, Bnd_Box2d, TopTools_ShapeMapHasher> ShapeFix_DataMapOfShapeBox2d;
+typedef NCollection_Sequence <ShapeFix_WireSegment> ShapeFix_SequenceOfWireSegment;
 /* end typedefs declaration */
 
 /*****************
@@ -150,7 +150,7 @@ tolang: float,optional
 
 Returns
 -------
-None
+void
 ") EncodeRegularity;
 		static void EncodeRegularity(const TopoDS_Shape & shape, const Standard_Real tolang = 1.0e-10);
 

@@ -118,7 +118,7 @@ class BRepAlgoAPI_Check : public BOPAlgo_Options {
 		/****************** BRepAlgoAPI_Check ******************/
 		/**** md5 signature: 411402657614d45c8444ed8f583c4d89 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -174,7 +174,7 @@ None
 		/****************** IsValid ******************/
 		/**** md5 signature: c1993b3b31d320b598a9a9b27c56914e ****/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Shows whether shape(s) valid or not.
+		%feature("autodoc", "@name getting the results. shows whether shape(s) valid or not.
 
 Returns
 -------
@@ -185,7 +185,7 @@ bool
 		/****************** Perform ******************/
 		/**** md5 signature: 237808a6b51056c9f8e292d343f26d7d ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the check.
+		%feature("autodoc", "@name performing the operation performs the check.
 
 Parameters
 ----------
@@ -212,7 +212,7 @@ BOPAlgo_ListOfCheckResult
 		/****************** SetData ******************/
 		/**** md5 signature: c1fd665a073df98354476ae857f43c48 ****/
 		%feature("compactdefaultargs") SetData;
-		%feature("autodoc", "Initializes the algorithm with single shape. //! @param thes [in] - the shape to check; @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true;.
+		%feature("autodoc", "@name initializing the algorithm initializes the algorithm with single shape. //! @param thes [in] - the shape to check; @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true;.
 
 Parameters
 ----------
@@ -294,7 +294,7 @@ class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 		/****************** BRepAlgoAPI_BuilderAlgo ******************/
 		/**** md5 signature: f034b0ea83263b0b12a5034e2ab03c28 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_BuilderAlgo;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -331,7 +331,7 @@ TopTools_ListOfShape
 		/****************** Build ******************/
 		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Performs the algorithm.
+		%feature("autodoc", "@name performing the operation performs the algorithm.
 
 Parameters
 ----------
@@ -369,7 +369,7 @@ bool
 		/****************** DSFiller ******************/
 		/**** md5 signature: eacda80fa3f8437b06bd46026236195a ****/
 		%feature("compactdefaultargs") DSFiller;
-		%feature("autodoc", "Returns the intersection tool.
+		%feature("autodoc", "@name getting tools performing the job returns the intersection tool.
 
 Returns
 -------
@@ -476,7 +476,7 @@ bool
 		/****************** Modified ******************/
 		/**** md5 signature: 4e20601bbc1c3aead85ab39355caf9fd ****/
 		%feature("compactdefaultargs") Modified;
-		%feature("autodoc", "Returns the shapes modified from the shape <thes>. if any, the list will contain only those splits of the given shape, contained in the result.
+		%feature("autodoc", "@name history support returns the shapes modified from the shape <thes>. if any, the list will contain only those splits of the given shape, contained in the result.
 
 Parameters
 ----------
@@ -502,7 +502,7 @@ bool
 		/****************** SectionEdges ******************/
 		/**** md5 signature: 8d1d78adb60588ec6c6d9bac5ddb95cb ****/
 		%feature("compactdefaultargs") SectionEdges;
-		%feature("autodoc", "Returns a list of section edges. the edges represent the result of intersection between arguments of operation.
+		%feature("autodoc", "@name getting the section edges returns a list of section edges. the edges represent the result of intersection between arguments of operation.
 
 Returns
 -------
@@ -513,7 +513,7 @@ TopTools_ListOfShape
 		/****************** SetArguments ******************/
 		/**** md5 signature: c8050caf960534f7d5c8a2cd210eb861 ****/
 		%feature("compactdefaultargs") SetArguments;
-		%feature("autodoc", "Sets the arguments.
+		%feature("autodoc", "@name setting/getting data for the algorithm sets the arguments.
 
 Parameters
 ----------
@@ -558,7 +558,7 @@ None
 		/****************** SetNonDestructive ******************/
 		/**** md5 signature: 0a29c6536a8337536ce71b892337fbbb ****/
 		%feature("compactdefaultargs") SetNonDestructive;
-		%feature("autodoc", "Sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
+		%feature("autodoc", "@name setting options sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
 
 Parameters
 ----------
@@ -573,7 +573,7 @@ None
 		/****************** SetToFillHistory ******************/
 		/**** md5 signature: 0645816549ab38af8118c8f63f46c0ea ****/
 		%feature("compactdefaultargs") SetToFillHistory;
-		%feature("autodoc", "Allows disabling the history collection.
+		%feature("autodoc", "@name enabling/disabling the history collection. allows disabling the history collection.
 
 Parameters
 ----------
@@ -588,7 +588,7 @@ None
 		/****************** SimplifyResult ******************/
 		/**** md5 signature: 88e0cdcd55300620756ca014f3c6371d ****/
 		%feature("compactdefaultargs") SimplifyResult;
-		%feature("autodoc", "Simplification of the result shape is performed by the means of *shapeupgrade_unifysamedomain* algorithm. the result of the operation will be overwritten with the simplified result. //! the simplification is performed without creation of the internal shapes, i.e. shapes connections will never be broken. //! simplification is performed on the whole result shape. thus, if the input shapes contained connected tangent edges or faces unmodified during the operation they will also be unified. //! after simplification, the history of result simplification is merged into the main history of operation. so, it is taken into account when asking for modified, generated and deleted shapes. //! some options of the main operation are passed into the unifier: - fuzzy tolerance of the operation is given to the unifier as the linear tolerance. - non destructive mode here controls the safe input mode in unifier. //! @param theunifyedges controls the edges unification. true by default. @param theunifyfaces controls the faces unification. true by default. @param theangulartol angular criteria for tangency of edges and faces.  precision::angular() by default.
+		%feature("autodoc", "@name result simplification simplification of the result shape is performed by the means of *shapeupgrade_unifysamedomain* algorithm. the result of the operation will be overwritten with the simplified result. //! the simplification is performed without creation of the internal shapes, i.e. shapes connections will never be broken. //! simplification is performed on the whole result shape. thus, if the input shapes contained connected tangent edges or faces unmodified during the operation they will also be unified. //! after simplification, the history of result simplification is merged into the main history of operation. so, it is taken into account when asking for modified, generated and deleted shapes. //! some options of the main operation are passed into the unifier: - fuzzy tolerance of the operation is given to the unifier as the linear tolerance. - non destructive mode here controls the safe input mode in unifier. //! @param theunifyedges controls the edges unification. true by default. @param theunifyfaces controls the faces unification. true by default. @param theangulartol angular criteria for tangency of edges and faces.  precision::angular() by default.
 
 Parameters
 ----------
@@ -620,9 +620,9 @@ None
 class BRepAlgoAPI_Defeaturing : public BRepAlgoAPI_Algo {
 	public:
 		/****************** BRepAlgoAPI_Defeaturing ******************/
-		/**** md5 signature: c00608d9bba8810c82a05b46e3e4f871 ****/
+		/**** md5 signature: 5a598f609cd472219e0db026de314e65 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Defeaturing;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -663,7 +663,7 @@ None
 		/****************** Build ******************/
 		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Performs the operation.
+		%feature("autodoc", "@name performing the operation performs the operation.
 
 Parameters
 ----------
@@ -801,7 +801,7 @@ TopTools_ListOfShape
 		/****************** SetShape ******************/
 		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
 		%feature("compactdefaultargs") SetShape;
-		%feature("autodoc", "Sets the shape for processing. @param theshape [in] the shape to remove the features from.  it should either be the solid, compsolid or compound of solids.
+		%feature("autodoc", "@name setting input data for the algorithm sets the shape for processing. @param theshape [in] the shape to remove the features from.  it should either be the solid, compsolid or compound of solids.
 
 Parameters
 ----------
@@ -816,7 +816,7 @@ None
 		/****************** SetToFillHistory ******************/
 		/**** md5 signature: 74ee5996560ad06ab737a4c8f4c7350d ****/
 		%feature("compactdefaultargs") SetToFillHistory;
-		%feature("autodoc", "Defines whether to track the modification of the shapes or not.
+		%feature("autodoc", "@name history methods defines whether to track the modification of the shapes or not.
 
 Parameters
 ----------
@@ -845,7 +845,7 @@ class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 		/****************** BRepAlgoAPI_BooleanOperation ******************/
 		/**** md5 signature: ecd6042de04813653a64f217d81e1a57 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_BooleanOperation;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -871,7 +871,7 @@ None
 		/****************** Build ******************/
 		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Performs the boolean operation.
+		%feature("autodoc", "@name performing the operation performs the boolean operation.
 
 Parameters
 ----------
@@ -898,7 +898,7 @@ BOPAlgo_Operation
 		/****************** SetOperation ******************/
 		/**** md5 signature: cef1e63b0452d16e7996e89724a77c38 ****/
 		%feature("compactdefaultargs") SetOperation;
-		%feature("autodoc", "Sets the type of boolean operation.
+		%feature("autodoc", "@name setting/getting the type of boolean operation sets the type of boolean operation.
 
 Parameters
 ----------
@@ -928,7 +928,7 @@ None
 		/****************** Shape1 ******************/
 		/**** md5 signature: 8981b86985f46147f6d78d0ef2565c6e ****/
 		%feature("compactdefaultargs") Shape1;
-		%feature("autodoc", "Returns the first argument involved in this boolean operation. obsolete.
+		%feature("autodoc", "@name setting/getting arguments returns the first argument involved in this boolean operation. obsolete.
 
 Returns
 -------
@@ -975,7 +975,7 @@ class BRepAlgoAPI_Splitter : public BRepAlgoAPI_BuilderAlgo {
 		/****************** BRepAlgoAPI_Splitter ******************/
 		/**** md5 signature: 9ef21f13bc074dc22af2512d12d68538 ****/
 		%feature("compactdefaultargs") BRepAlgoAPI_Splitter;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "@name constructors empty constructor.
 
 Returns
 -------
@@ -1001,7 +1001,7 @@ None
 		/****************** Build ******************/
 		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "Performs the split operation. performs the intersection of the argument shapes (both objects and tools) and splits objects by the tools.
+		%feature("autodoc", "@name performing the operation performs the split operation. performs the intersection of the argument shapes (both objects and tools) and splits objects by the tools.
 
 Parameters
 ----------
@@ -1017,7 +1017,7 @@ None
 		/****************** SetTools ******************/
 		/**** md5 signature: 3be2cbb7f8439cb12462b3704230f424 ****/
 		%feature("compactdefaultargs") SetTools;
-		%feature("autodoc", "Sets the tool arguments.
+		%feature("autodoc", "@name setters/getters for the tools sets the tool arguments.
 
 Parameters
 ----------

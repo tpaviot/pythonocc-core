@@ -42,8 +42,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepcafcontrol.ht
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<StepShape_module.hxx>
 #include<StepBasic_module.hxx>
+#include<StepShape_module.hxx>
 #include<STEPControl_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TColStd_module.hxx>
@@ -94,8 +94,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepcafcontrol.ht
 %};
 %import Standard.i
 %import NCollection.i
-%import StepShape.i
 %import StepBasic.i
+%import StepShape.i
 %import STEPControl.i
 %import TopoDS.i
 %import TColStd.i
@@ -141,18 +141,18 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TDF_Label, opencascade::handle<STEPCAFControl_ExternFile>, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-typedef NCollection_DataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-typedef NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-typedef NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepBasic_ProductDefinition>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-typedef NCollection_DataMap<TDF_Label, opencascade::handle<STEPCAFControl_ExternFile>, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelExternFile;
-typedef NCollection_DataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelShape;
-typedef NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfPDExternFile;
-typedef NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfSDRExternFile;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepBasic_ProductDefinition>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapePD;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapeSDR;
+typedef NCollection_DataMap <TDF_Label, opencascade::handle <STEPCAFControl_ExternFile>, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
+typedef NCollection_DataMap <TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
+typedef NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
+typedef NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <StepBasic_ProductDefinition>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
+typedef NCollection_DataMap <TDF_Label, opencascade::handle <STEPCAFControl_ExternFile>, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelExternFile;
+typedef NCollection_DataMap <TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelShape;
+typedef NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfPDExternFile;
+typedef NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfSDRExternFile;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <StepBasic_ProductDefinition>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapePD;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapeSDR;
 /* end typedefs declaration */
 
 /**********************************
@@ -939,7 +939,7 @@ theModifiers: XCAFDimTolObjects_DimensionModifiersSequence
 
 Returns
 -------
-None
+void
 ") GetDimModifiers;
 		static void GetDimModifiers(const opencascade::handle<StepRepr_CompoundRepresentationItem> & theCRI, XCAFDimTolObjects_DimensionModifiersSequence & theModifiers);
 

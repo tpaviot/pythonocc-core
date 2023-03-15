@@ -68,27 +68,12 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum IGESData_ReadStage {
-	IGESData_ReadDir = 0,
-	IGESData_ReadOwn = 1,
-	IGESData_ReadAssocs = 2,
-	IGESData_ReadProps = 3,
-	IGESData_ReadEnd = 4,
-};
-
 enum IGESData_DefList {
 	IGESData_DefNone = 0,
 	IGESData_DefOne = 1,
 	IGESData_DefSeveral = 2,
 	IGESData_ErrorOne = 3,
 	IGESData_ErrorSeveral = 4,
-};
-
-enum IGESData_Status {
-	IGESData_EntityOK = 0,
-	IGESData_EntityError = 1,
-	IGESData_ReferenceError = 2,
-	IGESData_TypeError = 3,
 };
 
 enum IGESData_DefType {
@@ -100,22 +85,25 @@ enum IGESData_DefType {
 	IGESData_ErrorRef = 5,
 };
 
+enum IGESData_ReadStage {
+	IGESData_ReadDir = 0,
+	IGESData_ReadOwn = 1,
+	IGESData_ReadAssocs = 2,
+	IGESData_ReadProps = 3,
+	IGESData_ReadEnd = 4,
+};
+
+enum IGESData_Status {
+	IGESData_EntityOK = 0,
+	IGESData_EntityError = 1,
+	IGESData_ReferenceError = 2,
+	IGESData_TypeError = 3,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class IGESData_ReadStage(IntEnum):
-	IGESData_ReadDir = 0
-	IGESData_ReadOwn = 1
-	IGESData_ReadAssocs = 2
-	IGESData_ReadProps = 3
-	IGESData_ReadEnd = 4
-IGESData_ReadDir = IGESData_ReadStage.IGESData_ReadDir
-IGESData_ReadOwn = IGESData_ReadStage.IGESData_ReadOwn
-IGESData_ReadAssocs = IGESData_ReadStage.IGESData_ReadAssocs
-IGESData_ReadProps = IGESData_ReadStage.IGESData_ReadProps
-IGESData_ReadEnd = IGESData_ReadStage.IGESData_ReadEnd
 
 class IGESData_DefList(IntEnum):
 	IGESData_DefNone = 0
@@ -128,16 +116,6 @@ IGESData_DefOne = IGESData_DefList.IGESData_DefOne
 IGESData_DefSeveral = IGESData_DefList.IGESData_DefSeveral
 IGESData_ErrorOne = IGESData_DefList.IGESData_ErrorOne
 IGESData_ErrorSeveral = IGESData_DefList.IGESData_ErrorSeveral
-
-class IGESData_Status(IntEnum):
-	IGESData_EntityOK = 0
-	IGESData_EntityError = 1
-	IGESData_ReferenceError = 2
-	IGESData_TypeError = 3
-IGESData_EntityOK = IGESData_Status.IGESData_EntityOK
-IGESData_EntityError = IGESData_Status.IGESData_EntityError
-IGESData_ReferenceError = IGESData_Status.IGESData_ReferenceError
-IGESData_TypeError = IGESData_Status.IGESData_TypeError
 
 class IGESData_DefType(IntEnum):
 	IGESData_DefVoid = 0
@@ -152,6 +130,28 @@ IGESData_DefReference = IGESData_DefType.IGESData_DefReference
 IGESData_DefAny = IGESData_DefType.IGESData_DefAny
 IGESData_ErrorVal = IGESData_DefType.IGESData_ErrorVal
 IGESData_ErrorRef = IGESData_DefType.IGESData_ErrorRef
+
+class IGESData_ReadStage(IntEnum):
+	IGESData_ReadDir = 0
+	IGESData_ReadOwn = 1
+	IGESData_ReadAssocs = 2
+	IGESData_ReadProps = 3
+	IGESData_ReadEnd = 4
+IGESData_ReadDir = IGESData_ReadStage.IGESData_ReadDir
+IGESData_ReadOwn = IGESData_ReadStage.IGESData_ReadOwn
+IGESData_ReadAssocs = IGESData_ReadStage.IGESData_ReadAssocs
+IGESData_ReadProps = IGESData_ReadStage.IGESData_ReadProps
+IGESData_ReadEnd = IGESData_ReadStage.IGESData_ReadEnd
+
+class IGESData_Status(IntEnum):
+	IGESData_EntityOK = 0
+	IGESData_EntityError = 1
+	IGESData_ReferenceError = 2
+	IGESData_TypeError = 3
+IGESData_EntityOK = IGESData_Status.IGESData_EntityOK
+IGESData_EntityError = IGESData_Status.IGESData_EntityError
+IGESData_ReferenceError = IGESData_Status.IGESData_ReferenceError
+IGESData_TypeError = IGESData_Status.IGESData_TypeError
 };
 /* end python proxy for enums */
 
@@ -259,8 +259,8 @@ IGESData_ErrorRef = IGESData_DefType.IGESData_ErrorRef
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<IGESData_DirPart> IGESData_Array1OfDirPart;
-typedef NCollection_Array1<opencascade::handle<IGESData_IGESEntity>> IGESData_Array1OfIGESEntity;
+typedef NCollection_Array1 <IGESData_DirPart> IGESData_Array1OfDirPart;
+typedef NCollection_Array1 <opencascade::handle <IGESData_IGESEntity>> IGESData_Array1OfIGESEntity;
 /* end typedefs declaration */
 
 /*****************
@@ -276,7 +276,7 @@ class IGESData {
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -5472,12 +5472,13 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
+val: TCollection_HAsciiString
 
 Returns
 -------
-val: TCollection_HAsciiString
+bool
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ReadText ******************/
 		/**** md5 signature: 583adf171adc696820aae6403d5703c0 ****/
@@ -5488,12 +5489,13 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 mess: char *
+val: TCollection_HAsciiString
 
 Returns
 -------
-val: TCollection_HAsciiString
+bool
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ReadTexts ******************/
 		/**** md5 signature: c6a37e5e63bf6ab8b99c9480e131fa17 ****/
@@ -6095,7 +6097,7 @@ aprotocol: IGESData_Protocol
 
 Returns
 -------
-None
+void
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<IGESData_SpecificModule> & amodule, const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -6597,7 +6599,7 @@ aprotocol: IGESData_Protocol
 
 Returns
 -------
-None
+void
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<IGESData_ReadWriteModule> & amodule, const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -7467,12 +7469,13 @@ Parameters
 num: int
 ptype: Interface_ParamType
 ent: IGESData_IGESEntity
+val: TCollection_HAsciiString
 
 Returns
 -------
-val: TCollection_HAsciiString
+bool
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 2a0bffa8d17df8d6aa5a1fa692044d19 ****/

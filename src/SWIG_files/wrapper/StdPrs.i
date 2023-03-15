@@ -145,8 +145,8 @@ StdPrs_Volume_Opened = StdPrs_Volume.StdPrs_Volume_Opened
 
 /* typedefs */
 typedef Prs3d_BndBox StdPrs_BndBox;
-typedef Prs3d_Point<opencascade::handle<Geom_Point>, StdPrs_ToolPoint> StdPrs_Point;
-typedef Prs3d_Point<TopoDS_Vertex, StdPrs_ToolVertex> StdPrs_Vertex;
+typedef Prs3d_Point <opencascade::handle <Geom_Point>, StdPrs_ToolPoint> StdPrs_Point;
+typedef Prs3d_Point <TopoDS_Vertex, StdPrs_ToolVertex> StdPrs_Vertex;
 /* end typedefs declaration */
 
 /************************
@@ -554,7 +554,7 @@ drawCurve: bool,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean drawCurve = Standard_True);
 
@@ -575,7 +575,7 @@ drawCurve: bool,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean drawCurve = Standard_True);
 
@@ -595,7 +595,7 @@ drawCurve: bool,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, TColgp_SequenceOfPnt & Points, const Standard_Boolean drawCurve = Standard_True);
 
@@ -618,7 +618,7 @@ drawCurve: bool,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, TColgp_SequenceOfPnt & Points, const Standard_Integer aNbPoints = 30, const Standard_Boolean drawCurve = Standard_True);
 
@@ -924,9 +924,9 @@ theDeflection: float
 
 Returns
 -------
-None
+inline void
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
+		inline static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
 
 		/****************** Add ******************/
 		/**** md5 signature: 5de803694dec54609521ff59e1207e6a ****/
@@ -943,7 +943,7 @@ theVPolylines: Prs3d_NListOfSequenceOfPnt
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
@@ -961,7 +961,7 @@ theDeflection: float
 
 Returns
 -------
-None
+void
 ") AddOnSurface;
 		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
 
@@ -980,7 +980,7 @@ theVPolylines: Prs3d_NListOfSequenceOfPnt
 
 Returns
 -------
-None
+void
 ") AddOnSurface;
 		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
@@ -1000,7 +1000,7 @@ theVIsoParams: TColStd_SequenceOfReal
 
 Returns
 -------
-None
+void
 ") AddOnSurface;
 		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
@@ -1017,7 +1017,7 @@ theDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") AddOnTriangulation;
 		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -1035,7 +1035,7 @@ theVPolylines: Prs3d_NListOfSequenceOfPnt
 
 Returns
 -------
-None
+void
 ") AddOnTriangulation;
 		static void AddOnTriangulation(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
@@ -1056,7 +1056,7 @@ theVIsoParams: TColStd_SequenceOfReal
 
 Returns
 -------
-None
+void
 ") AddOnTriangulation;
 		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<Geom_Surface> & theSurface, const TopLoc_Location & theLocation, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
@@ -1110,7 +1110,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aPlane, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1161,7 +1161,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1234,7 +1234,7 @@ theVolume: StdPrs_Volume,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection);
 
@@ -1257,7 +1257,7 @@ theVolume: StdPrs_Volume,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection);
 
@@ -1274,7 +1274,7 @@ theDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") AddWireframeForFacesWithoutTriangles;
 		static void AddWireframeForFacesWithoutTriangles(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -1291,7 +1291,7 @@ theDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") AddWireframeForFreeElements;
 		static void AddWireframeForFreeElements(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -1310,7 +1310,7 @@ theIgnore1DSubShape: bool
 
 Returns
 -------
-None
+void
 ") ExploreSolids;
 		static void ExploreSolids(const TopoDS_Shape & theShape, const BRep_Builder & theBuilder, TopoDS_Compound & theClosed, TopoDS_Compound & theOpened, const Standard_Boolean theIgnore1DSubShape);
 
@@ -1392,7 +1392,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1884,7 +1884,7 @@ theToResetCoeff: bool
 
 Returns
 -------
-None
+void
 ") ClearOnOwnDeflectionChange;
 		static void ClearOnOwnDeflectionChange(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theToResetCoeff);
 
@@ -2024,7 +2024,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2047,7 +2047,7 @@ Curves: Prs3d_NListOfSequenceOfPnt
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, Prs3d_NListOfSequenceOfPnt & Curves);
 
@@ -2064,7 +2064,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") AddUIso;
 		static void AddUIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2081,7 +2081,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") AddVIso;
 		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2197,7 +2197,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_Surface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2228,7 +2228,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2253,7 +2253,7 @@ class StdPrs_WFRestrictedFace : public Prs3d_Root {
 
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Handle(Prs3d_Presentation)
 theFace: BRepAdaptor_Surface
 theDrawUIso: bool
 theDrawVIso: bool
@@ -2264,9 +2264,9 @@ theCurves: Prs3d_NListOfSequenceOfPnt
 
 Returns
 -------
-None
+void
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
+		static void Add(const Handle(Prs3d_Presentation) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
 
 		/****************** Add ******************/
 		/**** md5 signature: e45d54c16977319468756914ccb16f96 ****/
@@ -2275,15 +2275,15 @@ None
 
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Handle(Prs3d_Presentation)
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
-None
+void
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void Add(const Handle(Prs3d_Presentation) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle(Prs3d_Drawer) & theDrawer);
 
 		/****************** AddUIso ******************/
 		/**** md5 signature: 691ce66b22bdadce9b0791ceff26e3e6 ****/
@@ -2292,15 +2292,15 @@ None
 
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Handle(Prs3d_Presentation)
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
-None
+void
 ") AddUIso;
-		static void AddUIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void AddUIso(const Handle(Prs3d_Presentation) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle(Prs3d_Drawer) & theDrawer);
 
 		/****************** AddVIso ******************/
 		/**** md5 signature: e4053cb34cfa26f718bd0aac8e5ab0c8 ****/
@@ -2309,15 +2309,15 @@ None
 
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Handle(Prs3d_Presentation)
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
-None
+void
 ") AddVIso;
-		static void AddVIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void AddVIso(const Handle(Prs3d_Presentation) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle(Prs3d_Drawer) & theDrawer);
 
 		/****************** Match ******************/
 		/**** md5 signature: 73807c62eed49a19c080d0ed89c7ee6e ****/
@@ -2356,13 +2356,13 @@ theY: float
 theZ: float
 theDistance: float
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
 bool
 ") Match;
-		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle(Prs3d_Drawer) & theDrawer);
 
 		/****************** MatchUIso ******************/
 		/**** md5 signature: 285b5f5fb51f89038ecfc31952642b0e ****/
@@ -2376,13 +2376,13 @@ theY: float
 theZ: float
 theDistance: float
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
 bool
 ") MatchUIso;
-		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle(Prs3d_Drawer) & theDrawer);
 
 		/****************** MatchVIso ******************/
 		/**** md5 signature: 8add17f73e226b549cfb6f2f022faec1 ****/
@@ -2396,13 +2396,13 @@ theY: float
 theZ: float
 theDistance: float
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Handle(Prs3d_Drawer)
 
 Returns
 -------
 bool
 ") MatchVIso;
-		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle(Prs3d_Drawer) & theDrawer);
 
 };
 
@@ -2433,7 +2433,7 @@ theIsParallel: bool,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, Standard_Boolean theIsParallel = Standard_False);
 
@@ -2484,7 +2484,7 @@ theToExcludeGeometric: bool,optional
 
 Returns
 -------
-None
+void
 ") AddEdgesOnTriangulation;
 		static void AddEdgesOnTriangulation(TColgp_SequenceOfPnt & theSegments, const TopoDS_Shape & theShape, const Standard_Boolean theToExcludeGeometric = Standard_True);
 
@@ -2531,7 +2531,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_Surface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 

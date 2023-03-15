@@ -127,7 +127,7 @@ GccEnt_noqualifier = GccEnt_Position.GccEnt_noqualifier
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<GccEnt_Position> GccEnt_Array1OfPosition;
+typedef NCollection_Array1 <GccEnt_Position> GccEnt_Array1OfPosition;
 /* end typedefs declaration */
 
 /***************

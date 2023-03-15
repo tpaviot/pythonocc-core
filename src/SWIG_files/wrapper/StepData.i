@@ -153,7 +153,7 @@ StepData_LUnknown = StepData_Logical.StepData_LUnknown
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<StepData_Field> StepData_Array1OfField;
+typedef NCollection_Array1 <StepData_Field> StepData_Array1OfField;
 /* end typedefs declaration */
 
 /*****************
@@ -173,7 +173,7 @@ headerproto: StepData_Protocol
 
 Returns
 -------
-None
+void
 ") AddHeaderProtocol;
 		static void AddHeaderProtocol(const opencascade::handle<StepData_Protocol> & headerproto);
 
@@ -195,7 +195,7 @@ opencascade::handle<StepData_Protocol>
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -4331,12 +4331,13 @@ num: int
 nump: int
 mess: char *
 ach: Interface_Check
+val: TCollection_HAsciiString
 
 Returns
 -------
-val: TCollection_HAsciiString
+bool
 ") ReadString;
-		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ReadSub ******************/
 		/**** md5 signature: c5ac3109022b64e7d22ee6e578f203ae ****/
@@ -5503,7 +5504,7 @@ aprotocol: StepData_Protocol
 
 Returns
 -------
-None
+void
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<StepData_ReadWriteModule> & amodule, const opencascade::handle<StepData_Protocol> & aprotocol);
 

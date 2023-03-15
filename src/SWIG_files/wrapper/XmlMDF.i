@@ -86,10 +86,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>, TCollection_AsciiString>::Iterator XmlMDF_DataMapIteratorOfMapOfDriver;
-typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator XmlMDF_DataMapIteratorOfTypeADriverMap;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>, TCollection_AsciiString> XmlMDF_MapOfDriver;
-typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher> XmlMDF_TypeADriverMap;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <XmlMDF_ADriver>, TCollection_AsciiString>::Iterator XmlMDF_DataMapIteratorOfMapOfDriver;
+typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator XmlMDF_DataMapIteratorOfTypeADriverMap;
+typedef NCollection_DataMap <TCollection_AsciiString, opencascade::handle <XmlMDF_ADriver>, TCollection_AsciiString> XmlMDF_MapOfDriver;
+typedef NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher> XmlMDF_TypeADriverMap;
 /* end typedefs declaration */
 
 /***************
@@ -110,7 +110,7 @@ theMessageDriver: Message_Messenger
 
 Returns
 -------
-None
+void
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -130,7 +130,7 @@ theRange: Message_ProgressRange,optional
 
 Returns
 -------
-None
+void
 ") FromTo;
 		static void FromTo(const opencascade::handle<TDF_Data> & aSource, XmlObjMgt_Element & aTarget, XmlObjMgt_SRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -389,7 +389,7 @@ bool
 class XmlMDF_DerivedDriver : public XmlMDF_ADriver {
 	public:
 		/****************** XmlMDF_DerivedDriver ******************/
-		/**** md5 signature: 9fd7a0ae1dfaceed6d0fe854211abbae ****/
+		/**** md5 signature: f78a6ef60a8417a8a74ed04c40c8c4da ****/
 		%feature("compactdefaultargs") XmlMDF_DerivedDriver;
 		%feature("autodoc", "Creates a derivative persistence driver for thederivative attribute by reusage of thebasedriver @param thederivative an instance of the attribute, just created, detached from any label @param thebasedriver a driver of the base attribute, called by paste methods.
 

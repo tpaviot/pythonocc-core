@@ -103,6 +103,11 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum RWMesh_CafReaderStatusEx {
+	RWMesh_CafReaderStatusEx_NONE = 0,
+	RWMesh_CafReaderStatusEx_Partial = 1,
+};
+
 enum RWMesh_CoordinateSystem {
 	RWMesh_CoordinateSystem_Undefined = - 1,
 	RWMesh_CoordinateSystem_posYfwd_posZup = 0,
@@ -123,15 +128,16 @@ enum RWMesh_NameFormat {
 	RWMesh_NameFormat_ProductAndInstanceAndOcaf = 6,
 };
 
-enum RWMesh_CafReaderStatusEx {
-	RWMesh_CafReaderStatusEx_NONE = 0,
-	RWMesh_CafReaderStatusEx_Partial = 1,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class RWMesh_CafReaderStatusEx(IntEnum):
+	RWMesh_CafReaderStatusEx_NONE = 0
+	RWMesh_CafReaderStatusEx_Partial = 1
+RWMesh_CafReaderStatusEx_NONE = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_NONE
+RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_Partial
 
 class RWMesh_CoordinateSystem(IntEnum):
 	RWMesh_CoordinateSystem_Undefined = - 1
@@ -164,12 +170,6 @@ RWMesh_NameFormat_InstanceOrProduct = RWMesh_NameFormat.RWMesh_NameFormat_Instan
 RWMesh_NameFormat_ProductOrInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductOrInstance
 RWMesh_NameFormat_ProductAndInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstance
 RWMesh_NameFormat_ProductAndInstanceAndOcaf = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstanceAndOcaf
-
-class RWMesh_CafReaderStatusEx(IntEnum):
-	RWMesh_CafReaderStatusEx_NONE = 0
-	RWMesh_CafReaderStatusEx_Partial = 1
-RWMesh_CafReaderStatusEx_NONE = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_NONE
-RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_Partial
 };
 /* end python proxy for enums */
 
@@ -185,7 +185,7 @@ RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStat
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, RWMesh_NodeAttributes, TopTools_ShapeMapHasher> RWMesh_NodeAttributeMap;
+typedef NCollection_DataMap <TopoDS_Shape, RWMesh_NodeAttributes, TopTools_ShapeMapHasher> RWMesh_NodeAttributeMap;
 /* end typedefs declaration */
 
 /***************
@@ -1365,7 +1365,7 @@ class RWMesh_NodeAttributes {
 	public:
 		TCollection_AsciiString Name;
 		TCollection_AsciiString RawName;
-		opencascade::handle<TDataStd_NamedData > NamedData;
+		opencascade::handle<TDataStd_NamedData> NamedData;
 		XCAFPrs_Style Style;
 };
 
@@ -1617,7 +1617,7 @@ int
 		/****************** NbDeferredNodes ******************/
 		/**** md5 signature: d15a5896fc85a8c93365e1d85513fbb0 ****/
 		%feature("compactdefaultargs") NbDeferredNodes;
-		%feature("autodoc", "Returns number of nodes for deferred loading. note: this is estimated values defined in object header, which might be different from actually loaded values (due to broken header or extra mesh processing). always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+		%feature("autodoc", "@name late-load deferred data interface returns number of nodes for deferred loading. note: this is estimated values defined in object header, which might be different from actually loaded values (due to broken header or extra mesh processing). always check triangulation size of actually loaded data in code to avoid out-of-range issues.
 
 Returns
 -------

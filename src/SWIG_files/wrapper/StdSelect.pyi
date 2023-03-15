@@ -14,6 +14,15 @@ from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 
 
+class StdSelect_TypeOfEdge(IntEnum):
+    StdSelect_AnyEdge: int = ...
+    StdSelect_Line: int = ...
+    StdSelect_Circle: int = ...
+
+StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
+StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
+StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
+
 class StdSelect_TypeOfFace(IntEnum):
     StdSelect_AnyFace: int = ...
     StdSelect_Plane: int = ...
@@ -30,15 +39,6 @@ StdSelect_Sphere = StdSelect_TypeOfFace.StdSelect_Sphere
 StdSelect_Torus = StdSelect_TypeOfFace.StdSelect_Torus
 StdSelect_Revol = StdSelect_TypeOfFace.StdSelect_Revol
 StdSelect_Cone = StdSelect_TypeOfFace.StdSelect_Cone
-
-class StdSelect_TypeOfEdge(IntEnum):
-    StdSelect_AnyEdge: int = ...
-    StdSelect_Line: int = ...
-    StdSelect_Circle: int = ...
-
-StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
-StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
-StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
 
 class StdSelect_TypeOfSelectionImage(IntEnum):
     StdSelect_TypeOfSelectionImage_NormalizedDepth: int = ...

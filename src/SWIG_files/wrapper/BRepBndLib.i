@@ -98,7 +98,7 @@ useTriangulation: bool,optional
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const TopoDS_Shape & S, Bnd_Box & B, const Standard_Boolean useTriangulation = Standard_True);
 
@@ -114,7 +114,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddClose;
 		static void AddClose(const TopoDS_Shape & S, Bnd_Box & B);
 
@@ -136,7 +136,7 @@ theIsShapeToleranceUsed: bool,optional
 
 Returns
 -------
-None
+void
 ") AddOBB;
 		static void AddOBB(const TopoDS_Shape & theS, Bnd_OBB & theOBB, const Standard_Boolean theIsTriangulationUsed = Standard_True, const Standard_Boolean theIsOptimal = Standard_False, const Standard_Boolean theIsShapeToleranceUsed = Standard_True);
 
@@ -156,7 +156,7 @@ useShapeTolerance: bool,optional
 
 Returns
 -------
-None
+void
 ") AddOptimal;
 		static void AddOptimal(const TopoDS_Shape & S, Bnd_Box & B, const Standard_Boolean useTriangulation = Standard_True, const Standard_Boolean useShapeTolerance = Standard_False);
 

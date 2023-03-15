@@ -280,13 +280,13 @@ bool
 
 Parameters
 ----------
-theEdgeDiscret: Handle ( IMeshTools_ModelAlgo )
+theEdgeDiscret: Handle(IMeshTools_ModelAlgo)
 
 Returns
 -------
 None
 ") SetEdgeDiscret;
-		void SetEdgeDiscret(const Handle ( IMeshTools_ModelAlgo ) & theEdgeDiscret);
+		void SetEdgeDiscret(const Handle(IMeshTools_ModelAlgo) & theEdgeDiscret);
 
 		/****************** SetFaceDiscret ******************/
 		/**** md5 signature: e5f88be0158f99b3a420ac23970c0074 ****/
@@ -310,13 +310,13 @@ None
 
 Parameters
 ----------
-theBuilder: Handle ( IMeshTools_ModelBuilder )
+theBuilder: Handle(IMeshTools_ModelBuilder)
 
 Returns
 -------
 None
 ") SetModelBuilder;
-		void SetModelBuilder(const Handle ( IMeshTools_ModelBuilder ) & theBuilder);
+		void SetModelBuilder(const Handle(IMeshTools_ModelBuilder) & theBuilder);
 
 		/****************** SetModelHealer ******************/
 		/**** md5 signature: 5abcede778d7925cf655f85c1b509e25 ****/
@@ -508,13 +508,13 @@ None
 
 Parameters
 ----------
-theContext: Handle ( IMeshTools_Context )
+theContext: Handle(IMeshTools_Context)
 
 Returns
 -------
 None
 ") IMeshTools_MeshBuilder;
-		 IMeshTools_MeshBuilder(const Handle ( IMeshTools_Context ) & theContext);
+		 IMeshTools_MeshBuilder(const Handle(IMeshTools_Context) & theContext);
 
 		/****************** Perform ******************/
 		/**** md5 signature: 3be29591efb89b639a8e87056a3f4905 ****/
@@ -538,13 +538,13 @@ None
 
 Parameters
 ----------
-theContext: Handle ( IMeshTools_Context )
+theContext: Handle(IMeshTools_Context)
 
 Returns
 -------
 None
 ") SetContext;
-		void SetContext(const Handle ( IMeshTools_Context ) & theContext);
+		void SetContext(const Handle(IMeshTools_Context) & theContext);
 
 };
 
@@ -568,7 +568,7 @@ class IMeshTools_ModelAlgo : public Standard_Transient {
 
 Parameters
 ----------
-theModel: Handle ( IMeshData_Model )
+theModel: Handle(IMeshData_Model)
 theParameters: IMeshTools_Parameters
 theRange: Message_ProgressRange
 
@@ -576,7 +576,7 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const Handle ( IMeshData_Model ) & theModel, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange);
+		Standard_Boolean Perform(const Handle(IMeshData_Model) & theModel, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange);
 
 };
 
@@ -625,7 +625,7 @@ class IMeshTools_Parameters {
 		bool ForceFaceDeflection;
 		bool AllowQualityDecrease;
 		/****************** IMeshTools_Parameters ******************/
-		/**** md5 signature: 354732bb8aea0c3d5affb49a91591d02 ****/
+		/**** md5 signature: 89275808c7962722dc5d8be9e95c2e7e ****/
 		%feature("compactdefaultargs") IMeshTools_Parameters;
 		%feature("autodoc", "Default constructor.
 
@@ -682,13 +682,13 @@ None
 
 Parameters
 ----------
-theVisitor: Handle ( IMeshTools_ShapeVisitor )
+theVisitor: Handle(IMeshTools_ShapeVisitor)
 
 Returns
 -------
 None
 ") Accept;
-		virtual void Accept(const Handle ( IMeshTools_ShapeVisitor ) & theVisitor);
+		virtual void Accept(const Handle(IMeshTools_ShapeVisitor) & theVisitor);
 
 };
 

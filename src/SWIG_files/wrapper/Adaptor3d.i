@@ -607,7 +607,7 @@ thePnt: gp_Pnt
 
 Returns
 -------
-None
+void
 ") D0;
 		static void D0(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt);
 
@@ -627,7 +627,7 @@ theD1V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V);
 
@@ -650,7 +650,7 @@ theD2UV: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
@@ -677,7 +677,7 @@ theD3UVV: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
@@ -930,7 +930,7 @@ Returns
 -------
 int
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_Surface > &, const Standard_Real v1, const Standard_Real v2);
+		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_Surface> &, const Standard_Real v1, const Standard_Real v2);
 
 		/****************** NbUIntervals ******************/
 		/**** md5 signature: fef1dad379e290c3cf16fef6ea8c820e ****/
@@ -1037,7 +1037,7 @@ theSh: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") UIntervals;
 		static void UIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, TColStd_Array1OfReal & theTab, const GeomAbs_Shape theSh);
 
@@ -1103,7 +1103,7 @@ theSh: GeomAbs_Shape
 
 Returns
 -------
-None
+void
 ") VIntervals;
 		static void VIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, TColStd_Array1OfReal & theTab, const GeomAbs_Shape theSh);
 

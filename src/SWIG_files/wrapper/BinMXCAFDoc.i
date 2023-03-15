@@ -123,7 +123,7 @@ theMsgDrv: Message_Messenger
 
 Returns
 -------
-None
+void
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & theMsgDrv);
 

@@ -98,7 +98,7 @@ anInfo: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") AddToUserInfo;
 		static void AddToUserInfo(const opencascade::handle<Storage_Data> & aData, const TCollection_ExtendedString & anInfo);
 

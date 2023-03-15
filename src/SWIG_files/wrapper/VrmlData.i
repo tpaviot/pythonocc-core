@@ -175,9 +175,9 @@ VrmlData_NotImplemented = VrmlData_ErrorStatus.VrmlData_NotImplemented
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance>> VrmlData_DataMapOfShapeAppearance;
-typedef NCollection_List<opencascade::handle<VrmlData_Node>> VrmlData_ListOfNode;
-typedef NCollection_Map<opencascade::handle<VrmlData_Node>> VrmlData_MapOfNode;
+typedef NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>> VrmlData_DataMapOfShapeAppearance;
+typedef NCollection_List <opencascade::handle <VrmlData_Node>> VrmlData_ListOfNode;
+typedef NCollection_Map <opencascade::handle <VrmlData_Node>> VrmlData_MapOfNode;
 /* end typedefs declaration */
 
 /******************
@@ -205,18 +205,18 @@ Returns
 -------
 opencascade::handle<VrmlData_Node>
 ") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node > &);
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> &);
 
 		/****************** GlobalIndent ******************/
 		/**** md5 signature: 34dc63c04f14bab986cae9b597e23160 ****/
 		%feature("compactdefaultargs") GlobalIndent;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * define the common indent in spaces, for writing all nodes. */.
 
 Returns
 -------
-int
+inline int
 ") GlobalIndent;
-		static Standard_Integer GlobalIndent();
+		static inline Standard_Integer GlobalIndent();
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 1b7a136faa0c8ac407d7529214546ac4 ****/
@@ -236,9 +236,9 @@ bool
 
 Returns
 -------
-char *
+inline  char *
 ") Name;
-		const char * Name();
+		inline const char * Name();
 
 		/****************** OK ******************/
 		/**** md5 signature: cb1fbcecf8852bbcc5ef89f9f2e03292 ****/
@@ -251,9 +251,9 @@ theStat: VrmlData_ErrorStatus
 
 Returns
 -------
-bool
+inline bool
 ") OK;
-		static Standard_Boolean OK(const VrmlData_ErrorStatus theStat);
+		static inline Standard_Boolean OK(const VrmlData_ErrorStatus theStat);
 
 		/****************** OK ******************/
 		/**** md5 signature: 78490ef035e0d10fa78bb02187dae4ae ****/
@@ -268,7 +268,7 @@ Returns
 -------
 outStat: VrmlData_ErrorStatus
 ") OK;
-		static Standard_Boolean OK(VrmlData_ErrorStatus &OutValue, const VrmlData_ErrorStatus theStat);
+		static inline Standard_Boolean OK(VrmlData_ErrorStatus &OutValue, const VrmlData_ErrorStatus theStat);
 
 		/****************** Read ******************/
 		/**** md5 signature: 1ad536bb6f0a141f658023ed487ae5c4 ****/
@@ -373,9 +373,9 @@ VrmlData_ErrorStatus
 
 Returns
 -------
-VrmlData_Scene
+inline  VrmlData_Scene
 ") Scene;
-		const VrmlData_Scene & Scene();
+		inline const VrmlData_Scene & Scene();
 
 		/****************** Write ******************/
 		/**** md5 signature: cb843c1e0dee6a359cf95725d05270a5 ****/
@@ -419,7 +419,7 @@ VrmlData_ErrorStatus
 ***********************/
 class VrmlData_Scene {
 	public:
-typedef VrmlData_ListOfNode ::Iterator Iterator;
+typedef VrmlData_ListOfNode::Iterator Iterator;
 		/****************** VrmlData_Scene ******************/
 		/**** md5 signature: 1e25ecb1dc18d738bfd2921992deea3b ****/
 		%feature("compactdefaultargs") VrmlData_Scene;
@@ -434,7 +434,7 @@ Returns
 -------
 None
 ") VrmlData_Scene;
-		 VrmlData_Scene(const opencascade::handle<NCollection_IncAllocator > & = 0L);
+		 VrmlData_Scene(const opencascade::handle<NCollection_IncAllocator> & = 0L);
 
 		/****************** AddNode ******************/
 		/**** md5 signature: 6a4ae55d6e300286914af41a6d87f1a0 ****/
@@ -460,9 +460,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-opencascade::handle<NCollection_IncAllocator>
+inline  opencascade::handle<NCollection_IncAllocator>
 ") Allocator;
-		const opencascade::handle<NCollection_IncAllocator> & Allocator();
+		inline const opencascade::handle<NCollection_IncAllocator> & Allocator();
 
 
         %feature("autodoc", "1");
@@ -512,9 +512,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-Iterator
+inline Iterator
 ") GetIterator;
-		Iterator GetIterator();
+		inline Iterator GetIterator();
 
 		/****************** GetLineError ******************/
 		/**** md5 signature: 99998ea33b6f4845bfd1d9a2f75e8a6f ****/
@@ -523,9 +523,9 @@ Iterator
 
 Returns
 -------
-int
+inline int
 ") GetLineError;
-		Standard_Integer GetLineError();
+		inline Standard_Integer GetLineError();
 
 		/****************** GetShape ******************/
 		/**** md5 signature: ca46f2aa9b54e25e8f902de55e34455a ****/
@@ -549,9 +549,9 @@ TopoDS_Shape
 
 Returns
 -------
-bool
+inline bool
 ") IsDummyWrite;
-		Standard_Boolean IsDummyWrite();
+		inline Standard_Boolean IsDummyWrite();
 
 		/****************** NamedNodesIterator ******************/
 		/**** md5 signature: 9b887a7b29ee8caccd653f9a89564086 ****/
@@ -560,14 +560,14 @@ bool
 
 Returns
 -------
-VrmlData_MapOfNode::Iterator
+inline VrmlData_MapOfNode::Iterator
 ") NamedNodesIterator;
-		VrmlData_MapOfNode::Iterator NamedNodesIterator();
+		inline VrmlData_MapOfNode::Iterator NamedNodesIterator();
 
 		/****************** ReadArrIndex ******************/
 		/**** md5 signature: d67efde97661473390f579e21524dd63 ****/
 		%feature("compactdefaultargs") ReadArrIndex;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * read an array of integer indices, for indexedfaceset and indexedlineset. */.
 
 Parameters
 ----------
@@ -676,9 +676,9 @@ nSpc: int
 
 Returns
 -------
-None
+inline void
 ") SetIndent;
-		void SetIndent(const Standard_Integer nSpc);
+		inline void SetIndent(const Standard_Integer nSpc);
 
 		/****************** SetLinearScale ******************/
 		/**** md5 signature: 38cfc9610c04a64446367581600bc8ca ****/
@@ -691,9 +691,9 @@ theScale: float
 
 Returns
 -------
-None
+inline void
 ") SetLinearScale;
-		void SetLinearScale(const Standard_Real theScale);
+		inline void SetLinearScale(const Standard_Real theScale);
 
 		/****************** SetVrmlDir ******************/
 		/**** md5 signature: c61174c1f52c4ff5b725672bce4a62a7 ****/
@@ -717,9 +717,9 @@ None
 
 Returns
 -------
-VrmlData_ErrorStatus
+inline VrmlData_ErrorStatus
 ") Status;
-		VrmlData_ErrorStatus Status();
+		inline VrmlData_ErrorStatus Status();
 
 		/****************** VrmlDirIterator ******************/
 		/**** md5 signature: bb38e737d6185ad960925e7bb895ddc2 ****/
@@ -728,9 +728,9 @@ VrmlData_ErrorStatus
 
 Returns
 -------
-NCollection_List<TCollection_ExtendedString >::Iterator
+inline NCollection_List<TCollection_ExtendedString>::Iterator
 ") VrmlDirIterator;
-		NCollection_List<TCollection_ExtendedString >::Iterator VrmlDirIterator();
+		inline NCollection_List<TCollection_ExtendedString>::Iterator VrmlDirIterator();
 
 		/****************** WorldInfo ******************/
 		/**** md5 signature: 8ad3acd26207bc3f4cec13dfc2d423ab ****/
@@ -793,7 +793,7 @@ Returns
 -------
 VrmlData_ErrorStatus
 ") WriteNode;
-		VrmlData_ErrorStatus WriteNode(const char * thePrefix, const opencascade::handle<VrmlData_Node > &);
+		VrmlData_ErrorStatus WriteNode(const char * thePrefix, const opencascade::handle<VrmlData_Node> &);
 
 		/****************** WriteXYZ ******************/
 		/**** md5 signature: 0a114bf1ea6405d7e4a3b5c08ea9d7a0 ****/
@@ -829,7 +829,7 @@ class VrmlData_ShapeConvert {
 	public:
 		class ShapeData {};
 		/****************** VrmlData_ShapeConvert ******************/
-		/**** md5 signature: 68e08b4d3980da44c6e1dd4d301de8b2 ****/
+		/**** md5 signature: e2d95d72cac8100a6fd34f2dd6901f9f ****/
 		%feature("compactdefaultargs") VrmlData_ShapeConvert;
 		%feature("autodoc", "/** * constructor. * @param thescene * scene receiving all vrml data. * @param thescale * scale factor, considering that vrml standard specifies coordinates in * meters. so if your data are in mm, you should provide thescale=0.001 */.
 
@@ -863,7 +863,7 @@ None
 		void AddShape(const TopoDS_Shape & theShape, const char * theName = 0L);
 
 		/****************** Convert ******************/
-		/**** md5 signature: f593201deba882e1902592660879f146 ****/
+		/**** md5 signature: 1406c9281d3aa35c8e5a7569d0392357 ****/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "/** * convert all accumulated shapes and store them in myscene. * the internal data structures are cleared in the end of conversion. * @param theextractfaces * if true, converter extracst faces from the shapes. * @param theextractedges * if true, converter extracts edges from the shapes. * @param thedeflection * deflection for tessellation of geometrical lines/surfaces. existing mesh * is used if its deflection is smaller than the one given by this * parameter. * @param thedeflangle * angular deflection for tessellation of geometrical lines. */.
 
@@ -923,7 +923,7 @@ None
 		 VrmlData_Appearance();
 
 		/****************** VrmlData_Appearance ******************/
-		/**** md5 signature: f602ec806c76f8c47b43bd2117d0b152 ****/
+		/**** md5 signature: 5d1115aab6b2dbab365c1335b6f63a30 ****/
 		%feature("compactdefaultargs") VrmlData_Appearance;
 		%feature("autodoc", "/** * constructor */.
 
@@ -951,7 +951,7 @@ Returns
 -------
 opencascade::handle<VrmlData_Node>
 ") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node > &);
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> &);
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 4ff647a3408e78788bd7a6b5e61c46ed ****/
@@ -971,9 +971,9 @@ bool
 
 Returns
 -------
-opencascade::handle<VrmlData_Material>
+inline  opencascade::handle<VrmlData_Material>
 ") Material;
-		const opencascade::handle<VrmlData_Material> & Material();
+		inline const opencascade::handle<VrmlData_Material> & Material();
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -1001,9 +1001,9 @@ theMat: VrmlData_Material
 
 Returns
 -------
-None
+inline void
 ") SetMaterial;
-		void SetMaterial(const opencascade::handle<VrmlData_Material> & theMat);
+		inline void SetMaterial(const opencascade::handle<VrmlData_Material> & theMat);
 
 		/****************** SetTexture ******************/
 		/**** md5 signature: 95006966de79d9897f58d7677e31b19f ****/
@@ -1016,9 +1016,9 @@ theTexture: VrmlData_Texture
 
 Returns
 -------
-None
+inline void
 ") SetTexture;
-		void SetTexture(const opencascade::handle<VrmlData_Texture> & theTexture);
+		inline void SetTexture(const opencascade::handle<VrmlData_Texture> & theTexture);
 
 		/****************** SetTextureTransform ******************/
 		/**** md5 signature: ec2b4dc33a369d79ad0ed1ec33f5778f ****/
@@ -1031,9 +1031,9 @@ theTT: VrmlData_TextureTransform
 
 Returns
 -------
-None
+inline void
 ") SetTextureTransform;
-		void SetTextureTransform(const opencascade::handle<VrmlData_TextureTransform> & theTT);
+		inline void SetTextureTransform(const opencascade::handle<VrmlData_TextureTransform> & theTT);
 
 		/****************** Texture ******************/
 		/**** md5 signature: 21e8cf614290f83ff95ea00ca14e284c ****/
@@ -1042,9 +1042,9 @@ None
 
 Returns
 -------
-opencascade::handle<VrmlData_Texture>
+inline  opencascade::handle<VrmlData_Texture>
 ") Texture;
-		const opencascade::handle<VrmlData_Texture> & Texture();
+		inline const opencascade::handle<VrmlData_Texture> & Texture();
 
 		/****************** TextureTransform ******************/
 		/**** md5 signature: bbde9d0f47eddbfab2dfd262c15d6259 ****/
@@ -1053,9 +1053,9 @@ opencascade::handle<VrmlData_Texture>
 
 Returns
 -------
-opencascade::handle<VrmlData_TextureTransform>
+inline  opencascade::handle<VrmlData_TextureTransform>
 ") TextureTransform;
-		const opencascade::handle<VrmlData_TextureTransform> & TextureTransform();
+		inline const opencascade::handle<VrmlData_TextureTransform> & TextureTransform();
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/
@@ -1119,9 +1119,9 @@ opencascade::handle<TopoDS_TShape>
 ***********************/
 class VrmlData_Group : public VrmlData_Node {
 	public:
-typedef VrmlData_ListOfNode ::Iterator Iterator;
+typedef VrmlData_ListOfNode::Iterator Iterator;
 		/****************** VrmlData_Group ******************/
-		/**** md5 signature: 4a4b8084283a33ae08c7ae61eaa4fb12 ****/
+		/**** md5 signature: 742ab28e5a867edeb513189148183e74 ****/
 		%feature("compactdefaultargs") VrmlData_Group;
 		%feature("autodoc", "/** * empty constructor. * @param istransform * true if the group of type transform is defined * @param thealloc * allocator used for the list of children */.
 
@@ -1165,9 +1165,9 @@ theNode: VrmlData_Node
 
 Returns
 -------
-opencascade::handle<VrmlData_Node>
+inline opencascade::handle<VrmlData_Node>
 ") AddNode;
-		opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theNode);
+		inline opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theNode);
 
 		/****************** Box ******************/
 		/**** md5 signature: 79505dc9b66a5350ccdc24c305c2610f ****/
@@ -1176,9 +1176,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-Bnd_B3f
+inline  Bnd_B3f
 ") Box;
-		const Bnd_B3f & Box();
+		inline const Bnd_B3f & Box();
 
 		/****************** Clone ******************/
 		/**** md5 signature: 95e2aeff203be5b6c751a82b7c3b80f7 ****/
@@ -1214,13 +1214,13 @@ opencascade::handle<VrmlData_Node>
 		/****************** GetTransform ******************/
 		/**** md5 signature: d12c205b591852c15c62f6d350ce2c60 ****/
 		%feature("compactdefaultargs") GetTransform;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * query the transform value. * for group without transformation this always returns identity */.
 
 Returns
 -------
-gp_Trsf
+inline  gp_Trsf
 ") GetTransform;
-		const gp_Trsf GetTransform();
+		inline const gp_Trsf GetTransform();
 
 		/****************** IsTransform ******************/
 		/**** md5 signature: 698d1d2517dd6d50affe948167d5d36d ****/
@@ -1229,9 +1229,9 @@ gp_Trsf
 
 Returns
 -------
-bool
+inline bool
 ") IsTransform;
-		Standard_Boolean IsTransform();
+		inline Standard_Boolean IsTransform();
 
 		/****************** NodeIterator ******************/
 		/**** md5 signature: ad0aab1fa703096830ba4e298bc4db90 ****/
@@ -1240,9 +1240,9 @@ bool
 
 Returns
 -------
-Iterator
+inline Iterator
 ") NodeIterator;
-		Iterator NodeIterator();
+		inline Iterator NodeIterator();
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -1285,9 +1285,9 @@ theBox: Bnd_B3f
 
 Returns
 -------
-None
+inline void
 ") SetBox;
-		void SetBox(const Bnd_B3f & theBox);
+		inline void SetBox(const Bnd_B3f & theBox);
 
 		/****************** SetTransform ******************/
 		/**** md5 signature: a79c8b6e3b300aa0676359932262e26f ****/
@@ -1363,7 +1363,7 @@ None
 		 VrmlData_Material();
 
 		/****************** VrmlData_Material ******************/
-		/**** md5 signature: ae7e51685706df89044aaea15b8f1c5c ****/
+		/**** md5 signature: c85d12a055378b9b29f039b7b6f41778 ****/
 		%feature("compactdefaultargs") VrmlData_Material;
 		%feature("autodoc", "/** * constructor */.
 
@@ -1391,9 +1391,9 @@ None
 
 Returns
 -------
-float
+inline float
 ") AmbientIntensity;
-		Standard_Real AmbientIntensity();
+		inline Standard_Real AmbientIntensity();
 
 		/****************** Clone ******************/
 		/**** md5 signature: 95e2aeff203be5b6c751a82b7c3b80f7 ****/
@@ -1417,9 +1417,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-Quantity_Color
+inline  Quantity_Color
 ") DiffuseColor;
-		const Quantity_Color & DiffuseColor();
+		inline const Quantity_Color & DiffuseColor();
 
 		/****************** EmissiveColor ******************/
 		/**** md5 signature: a81902b710d4283046e2074f8c68f238 ****/
@@ -1428,9 +1428,9 @@ Quantity_Color
 
 Returns
 -------
-Quantity_Color
+inline  Quantity_Color
 ") EmissiveColor;
-		const Quantity_Color & EmissiveColor();
+		inline const Quantity_Color & EmissiveColor();
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 4ff647a3408e78788bd7a6b5e61c46ed ****/
@@ -1469,9 +1469,9 @@ theAmbientIntensity: float
 
 Returns
 -------
-None
+inline void
 ") SetAmbientIntensity;
-		void SetAmbientIntensity(const Standard_Real theAmbientIntensity);
+		inline void SetAmbientIntensity(const Standard_Real theAmbientIntensity);
 
 		/****************** SetDiffuseColor ******************/
 		/**** md5 signature: a706faa79c39966ccc5de82231bccb71 ****/
@@ -1484,9 +1484,9 @@ theColor: Quantity_Color
 
 Returns
 -------
-None
+inline void
 ") SetDiffuseColor;
-		void SetDiffuseColor(const Quantity_Color & theColor);
+		inline void SetDiffuseColor(const Quantity_Color & theColor);
 
 		/****************** SetEmissiveColor ******************/
 		/**** md5 signature: 7e66ad66ed9e2434756333c8dfa79c87 ****/
@@ -1499,9 +1499,9 @@ theColor: Quantity_Color
 
 Returns
 -------
-None
+inline void
 ") SetEmissiveColor;
-		void SetEmissiveColor(const Quantity_Color & theColor);
+		inline void SetEmissiveColor(const Quantity_Color & theColor);
 
 		/****************** SetShininess ******************/
 		/**** md5 signature: 004a07a86fd2858f7efa7ec10a36e474 ****/
@@ -1514,9 +1514,9 @@ theShininess: float
 
 Returns
 -------
-None
+inline void
 ") SetShininess;
-		void SetShininess(const Standard_Real theShininess);
+		inline void SetShininess(const Standard_Real theShininess);
 
 		/****************** SetSpecularColor ******************/
 		/**** md5 signature: 12ed5001ae01a3cbcd54180d440dda73 ****/
@@ -1529,9 +1529,9 @@ theColor: Quantity_Color
 
 Returns
 -------
-None
+inline void
 ") SetSpecularColor;
-		void SetSpecularColor(const Quantity_Color & theColor);
+		inline void SetSpecularColor(const Quantity_Color & theColor);
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: 17e88f34e47ad9901af84d1e770277d5 ****/
@@ -1544,9 +1544,9 @@ theTransparency: float
 
 Returns
 -------
-None
+inline void
 ") SetTransparency;
-		void SetTransparency(const Standard_Real theTransparency);
+		inline void SetTransparency(const Standard_Real theTransparency);
 
 		/****************** Shininess ******************/
 		/**** md5 signature: 983427691a540fd8368535dcb05b594e ****/
@@ -1555,9 +1555,9 @@ None
 
 Returns
 -------
-float
+inline float
 ") Shininess;
-		Standard_Real Shininess();
+		inline Standard_Real Shininess();
 
 		/****************** SpecularColor ******************/
 		/**** md5 signature: be13421d5a460089944a56fa84b44f51 ****/
@@ -1566,9 +1566,9 @@ float
 
 Returns
 -------
-Quantity_Color
+inline  Quantity_Color
 ") SpecularColor;
-		const Quantity_Color & SpecularColor();
+		inline const Quantity_Color & SpecularColor();
 
 		/****************** Transparency ******************/
 		/**** md5 signature: 9bfecadb0f0bfb252b68fe64205240fc ****/
@@ -1577,9 +1577,9 @@ Quantity_Color
 
 Returns
 -------
-float
+inline float
 ") Transparency;
-		Standard_Real Transparency();
+		inline Standard_Real Transparency();
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/
@@ -1624,7 +1624,7 @@ None
 		 VrmlData_ShapeNode();
 
 		/****************** VrmlData_ShapeNode ******************/
-		/**** md5 signature: e5acc2d5d906e1df28b1135e2c10a2f6 ****/
+		/**** md5 signature: ad2acbe97f6486823f9e72c6dca6d047 ****/
 		%feature("compactdefaultargs") VrmlData_ShapeNode;
 		%feature("autodoc", "/** * constructor */.
 
@@ -1646,9 +1646,9 @@ None
 
 Returns
 -------
-opencascade::handle<VrmlData_Appearance>
+inline  opencascade::handle<VrmlData_Appearance>
 ") Appearance;
-		const opencascade::handle<VrmlData_Appearance> & Appearance();
+		inline const opencascade::handle<VrmlData_Appearance> & Appearance();
 
 		/****************** Clone ******************/
 		/**** md5 signature: 95e2aeff203be5b6c751a82b7c3b80f7 ****/
@@ -1672,9 +1672,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-opencascade::handle<VrmlData_Geometry>
+inline  opencascade::handle<VrmlData_Geometry>
 ") Geometry;
-		const opencascade::handle<VrmlData_Geometry> & Geometry();
+		inline const opencascade::handle<VrmlData_Geometry> & Geometry();
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 4ff647a3408e78788bd7a6b5e61c46ed ****/
@@ -1713,9 +1713,9 @@ theAppear: VrmlData_Appearance
 
 Returns
 -------
-None
+inline void
 ") SetAppearance;
-		void SetAppearance(const opencascade::handle<VrmlData_Appearance> & theAppear);
+		inline void SetAppearance(const opencascade::handle<VrmlData_Appearance> & theAppear);
 
 		/****************** SetGeometry ******************/
 		/**** md5 signature: 2eebe1602c0ddfeb3e9b0c2cd24b0c4e ****/
@@ -1728,9 +1728,9 @@ theGeometry: VrmlData_Geometry
 
 Returns
 -------
-None
+inline void
 ") SetGeometry;
-		void SetGeometry(const opencascade::handle<VrmlData_Geometry> & theGeometry);
+		inline void SetGeometry(const opencascade::handle<VrmlData_Geometry> & theGeometry);
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/
@@ -1767,7 +1767,7 @@ VrmlData_ErrorStatus
 class VrmlData_TextureCoordinate : public VrmlData_Node {
 	public:
 		/****************** VrmlData_TextureCoordinate ******************/
-		/**** md5 signature: 1e0218f2ec543d6d77789d9d5b9ecdb9 ****/
+		/**** md5 signature: ec5faca1cf5b70ea2cbdec612254cc3e ****/
 		%feature("compactdefaultargs") VrmlData_TextureCoordinate;
 		%feature("autodoc", "/** * empty constructor */.
 
@@ -1778,7 +1778,7 @@ None
 		 VrmlData_TextureCoordinate();
 
 		/****************** VrmlData_TextureCoordinate ******************/
-		/**** md5 signature: a4102e9b0fb9dd68244eb21ad6fac2c7 ****/
+		/**** md5 signature: cf9506d0a64ceb26e68f03bced8e249b ****/
 		%feature("compactdefaultargs") VrmlData_TextureCoordinate;
 		%feature("autodoc", "/** * constructor */.
 
@@ -1800,7 +1800,7 @@ None
 		/****************** AllocateValues ******************/
 		/**** md5 signature: 88bf53f92249259a9becd560ef2840f4 ****/
 		%feature("compactdefaultargs") AllocateValues;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * create a data array and assign the field myarray. * returns * true if allocation was successful. */.
 
 Parameters
 ----------
@@ -1834,9 +1834,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-size_t
+inline size_t
 ") Length;
-		size_t Length();
+		inline size_t Length();
 
 		/****************** Points ******************/
 		/**** md5 signature: fba12d84b09cea75d6adf0416f8768aa ****/
@@ -1845,9 +1845,9 @@ size_t
 
 Returns
 -------
-gp_XY *
+inline  gp_XY *
 ") Points;
-		const gp_XY * Points();
+		inline const gp_XY * Points();
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -1876,9 +1876,9 @@ arrPoints: gp_XY *
 
 Returns
 -------
-None
+inline void
 ") SetPoints;
-		void SetPoints(const size_t nPoints, const gp_XY * arrPoints);
+		inline void SetPoints(const size_t nPoints, const gp_XY * arrPoints);
 
 };
 
@@ -1911,7 +1911,7 @@ None
 		 VrmlData_UnknownNode();
 
 		/****************** VrmlData_UnknownNode ******************/
-		/**** md5 signature: 57b4673e61eae586704a23ba1fdac668 ****/
+		/**** md5 signature: f275d74347f56e1fa2b76d0bec57212d ****/
 		%feature("compactdefaultargs") VrmlData_UnknownNode;
 		%feature("autodoc", "/** * constructor. */.
 
@@ -1936,9 +1936,9 @@ None
 
 Returns
 -------
-TCollection_AsciiString
+inline  TCollection_AsciiString
 ") GetTitle;
-		const TCollection_AsciiString & GetTitle();
+		inline const TCollection_AsciiString & GetTitle();
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 4ff647a3408e78788bd7a6b5e61c46ed ****/
@@ -1983,7 +1983,7 @@ VrmlData_ErrorStatus
 class VrmlData_WorldInfo : public VrmlData_Node {
 	public:
 		/****************** VrmlData_WorldInfo ******************/
-		/**** md5 signature: ba5f3e416e2336f1c58ba9cf60eb277f ****/
+		/**** md5 signature: 420dff6ffb4bb45290e25814459213a4 ****/
 		%feature("compactdefaultargs") VrmlData_WorldInfo;
 		%feature("autodoc", "/** * empty constructor. */.
 
@@ -2049,9 +2049,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-NCollection_List< char * >::Iterator
+inline NCollection_List< char *>::Iterator
 ") InfoIterator;
-		NCollection_List<const char * >::Iterator InfoIterator();
+		inline NCollection_List<const char *>::Iterator InfoIterator();
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 4ff647a3408e78788bd7a6b5e61c46ed ****/
@@ -2101,9 +2101,9 @@ None
 
 Returns
 -------
-char *
+inline  char *
 ") Title;
-		const char * Title();
+		inline const char * Title();
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/
@@ -2137,7 +2137,7 @@ VrmlData_ErrorStatus
 class VrmlData_Box : public VrmlData_Geometry {
 	public:
 		/****************** VrmlData_Box ******************/
-		/**** md5 signature: d30516859426c07b2f913fe75ec3f22e ****/
+		/**** md5 signature: 7d2bb21ad257b93e1c9b28ef49347bba ****/
 		%feature("compactdefaultargs") VrmlData_Box;
 		%feature("autodoc", "/** * empty constructor */.
 
@@ -2148,7 +2148,7 @@ None
 		 VrmlData_Box();
 
 		/****************** VrmlData_Box ******************/
-		/**** md5 signature: 3100b66caab1ba4bb8b2cde8b9df5cbe ****/
+		/**** md5 signature: 663bd0614a403bee19f4ff7cc35aa4aa ****/
 		%feature("compactdefaultargs") VrmlData_Box;
 		%feature("autodoc", "/** * constructor */.
 
@@ -2210,9 +2210,9 @@ theSize: gp_XYZ
 
 Returns
 -------
-None
+inline void
 ") SetSize;
-		void SetSize(const gp_XYZ & theSize);
+		inline void SetSize(const gp_XYZ & theSize);
 
 		/****************** Size ******************/
 		/**** md5 signature: 7e535208625ee843fb3d514d99dc0e16 ****/
@@ -2221,9 +2221,9 @@ None
 
 Returns
 -------
-gp_XYZ
+inline  gp_XYZ
 ") Size;
-		const gp_XYZ Size();
+		inline const gp_XYZ Size();
 
 		/****************** TShape ******************/
 		/**** md5 signature: 93fab9efcf27c195565c5eda2f729711 ****/
@@ -2279,7 +2279,7 @@ None
 		 VrmlData_Color();
 
 		/****************** VrmlData_Color ******************/
-		/**** md5 signature: b7e214cf3e454f240b3da18173f2237c ****/
+		/**** md5 signature: 44803c0bd90e8e6c9c2bc1db6c187e8f ****/
 		%feature("compactdefaultargs") VrmlData_Color;
 		%feature("autodoc", "/** * constructor. */.
 
@@ -2324,9 +2324,9 @@ i: int
 
 Returns
 -------
-Quantity_Color
+inline  Quantity_Color
 ") Color;
-		const Quantity_Color Color(const Standard_Integer i);
+		inline const Quantity_Color Color(const Standard_Integer i);
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -2355,9 +2355,9 @@ arrColors: gp_XYZ *
 
 Returns
 -------
-None
+inline void
 ") SetColors;
-		void SetColors(const size_t nColors, const gp_XYZ * arrColors);
+		inline void SetColors(const size_t nColors, const gp_XYZ * arrColors);
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/
@@ -2391,7 +2391,7 @@ VrmlData_ErrorStatus
 class VrmlData_Cone : public VrmlData_Geometry {
 	public:
 		/****************** VrmlData_Cone ******************/
-		/**** md5 signature: 8db8bb078fa51ba51579a6fe8a5e2ae2 ****/
+		/**** md5 signature: 8d0861f51b973f4daf87ad828bb14099 ****/
 		%feature("compactdefaultargs") VrmlData_Cone;
 		%feature("autodoc", "/** * empty constructor */.
 
@@ -2402,7 +2402,7 @@ None
 		 VrmlData_Cone();
 
 		/****************** VrmlData_Cone ******************/
-		/**** md5 signature: 3c1076725275cf56394c2dd84f2306f2 ****/
+		/**** md5 signature: 3000a9e950d730101a6a7d066eb1c36d ****/
 		%feature("compactdefaultargs") VrmlData_Cone;
 		%feature("autodoc", "/** * constructor */.
 
@@ -2428,9 +2428,9 @@ None
 
 Returns
 -------
-float
+inline float
 ") BottomRadius;
-		Standard_Real BottomRadius();
+		inline Standard_Real BottomRadius();
 
 		/****************** Clone ******************/
 		/**** md5 signature: 95e2aeff203be5b6c751a82b7c3b80f7 ****/
@@ -2454,9 +2454,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-bool
+inline bool
 ") HasBottom;
-		Standard_Boolean HasBottom();
+		inline Standard_Boolean HasBottom();
 
 		/****************** HasSide ******************/
 		/**** md5 signature: c8a7940100871f9d13e6d4209710b8f2 ****/
@@ -2465,9 +2465,9 @@ bool
 
 Returns
 -------
-bool
+inline bool
 ") HasSide;
-		Standard_Boolean HasSide();
+		inline Standard_Boolean HasSide();
 
 		/****************** Height ******************/
 		/**** md5 signature: ead56356911f8df313dceca6929dde18 ****/
@@ -2476,9 +2476,9 @@ bool
 
 Returns
 -------
-float
+inline float
 ") Height;
-		Standard_Real Height();
+		inline Standard_Real Height();
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -2506,9 +2506,9 @@ theRadius: float
 
 Returns
 -------
-None
+inline void
 ") SetBottomRadius;
-		void SetBottomRadius(const Standard_Real theRadius);
+		inline void SetBottomRadius(const Standard_Real theRadius);
 
 		/****************** SetFaces ******************/
 		/**** md5 signature: fbbd4f6837038f188c4b930de01bc1a8 ****/
@@ -2522,9 +2522,9 @@ hasSide: bool
 
 Returns
 -------
-None
+inline void
 ") SetFaces;
-		void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide);
+		inline void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide);
 
 		/****************** SetHeight ******************/
 		/**** md5 signature: 390c55787a7bcabd97d84df43b58e6f5 ****/
@@ -2537,9 +2537,9 @@ theHeight: float
 
 Returns
 -------
-None
+inline void
 ") SetHeight;
-		void SetHeight(const Standard_Real theHeight);
+		inline void SetHeight(const Standard_Real theHeight);
 
 		/****************** TShape ******************/
 		/**** md5 signature: 93fab9efcf27c195565c5eda2f729711 ****/
@@ -2595,7 +2595,7 @@ None
 		 VrmlData_Coordinate();
 
 		/****************** VrmlData_Coordinate ******************/
-		/**** md5 signature: 001c403814378e9a41212a101b7087de ****/
+		/**** md5 signature: f434753efaba6fa2dccb46cafb94d4ef ****/
 		%feature("compactdefaultargs") VrmlData_Coordinate;
 		%feature("autodoc", "/** * constructor */.
 
@@ -2640,9 +2640,9 @@ i: int
 
 Returns
 -------
-gp_XYZ
+inline  gp_XYZ
 ") Coordinate;
-		const gp_XYZ Coordinate(const Standard_Integer i);
+		inline const gp_XYZ Coordinate(const Standard_Integer i);
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -2691,7 +2691,7 @@ VrmlData_ErrorStatus
 class VrmlData_Cylinder : public VrmlData_Geometry {
 	public:
 		/****************** VrmlData_Cylinder ******************/
-		/**** md5 signature: 898b22af591489d021496ce1afc5b5a2 ****/
+		/**** md5 signature: 9493d44f3808149da30f012f8c31f214 ****/
 		%feature("compactdefaultargs") VrmlData_Cylinder;
 		%feature("autodoc", "/** * empty constructor */.
 
@@ -2702,7 +2702,7 @@ None
 		 VrmlData_Cylinder();
 
 		/****************** VrmlData_Cylinder ******************/
-		/**** md5 signature: 0f20848858e3daf2c32cecd2fcbdcf84 ****/
+		/**** md5 signature: 90be24a028776dd49139bddc2f20485a ****/
 		%feature("compactdefaultargs") VrmlData_Cylinder;
 		%feature("autodoc", "/** * constructor */.
 
@@ -2743,9 +2743,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-bool
+inline bool
 ") HasBottom;
-		Standard_Boolean HasBottom();
+		inline Standard_Boolean HasBottom();
 
 		/****************** HasSide ******************/
 		/**** md5 signature: c8a7940100871f9d13e6d4209710b8f2 ****/
@@ -2754,9 +2754,9 @@ bool
 
 Returns
 -------
-bool
+inline bool
 ") HasSide;
-		Standard_Boolean HasSide();
+		inline Standard_Boolean HasSide();
 
 		/****************** HasTop ******************/
 		/**** md5 signature: 2b763f765f4d0a768b40c60677894ed9 ****/
@@ -2765,9 +2765,9 @@ bool
 
 Returns
 -------
-bool
+inline bool
 ") HasTop;
-		Standard_Boolean HasTop();
+		inline Standard_Boolean HasTop();
 
 		/****************** Height ******************/
 		/**** md5 signature: ead56356911f8df313dceca6929dde18 ****/
@@ -2776,9 +2776,9 @@ bool
 
 Returns
 -------
-float
+inline float
 ") Height;
-		Standard_Real Height();
+		inline Standard_Real Height();
 
 		/****************** Radius ******************/
 		/**** md5 signature: b6bde1f02875769e3b96869e2c7c3dfd ****/
@@ -2787,9 +2787,9 @@ float
 
 Returns
 -------
-float
+inline float
 ") Radius;
-		Standard_Real Radius();
+		inline Standard_Real Radius();
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -2819,9 +2819,9 @@ hasTop: bool
 
 Returns
 -------
-None
+inline void
 ") SetFaces;
-		void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide, const Standard_Boolean hasTop);
+		inline void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide, const Standard_Boolean hasTop);
 
 		/****************** SetHeight ******************/
 		/**** md5 signature: 390c55787a7bcabd97d84df43b58e6f5 ****/
@@ -2834,9 +2834,9 @@ theHeight: float
 
 Returns
 -------
-None
+inline void
 ") SetHeight;
-		void SetHeight(const Standard_Real theHeight);
+		inline void SetHeight(const Standard_Real theHeight);
 
 		/****************** SetRadius ******************/
 		/**** md5 signature: 088308acb04b143d2b529239c413a089 ****/
@@ -2849,9 +2849,9 @@ theRadius: float
 
 Returns
 -------
-None
+inline void
 ") SetRadius;
-		void SetRadius(const Standard_Real theRadius);
+		inline void SetRadius(const Standard_Real theRadius);
 
 		/****************** TShape ******************/
 		/**** md5 signature: 93fab9efcf27c195565c5eda2f729711 ****/
@@ -2968,9 +2968,9 @@ VrmlData_ErrorStatus
 
 Returns
 -------
-NCollection_List<TCollection_AsciiString>
+inline  NCollection_List<TCollection_AsciiString>
 ") URL;
-		const NCollection_List<TCollection_AsciiString> & URL();
+		inline const NCollection_List<TCollection_AsciiString> & URL();
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/
@@ -3004,7 +3004,7 @@ VrmlData_ErrorStatus
 class VrmlData_IndexedLineSet : public VrmlData_Geometry {
 	public:
 		/****************** VrmlData_IndexedLineSet ******************/
-		/**** md5 signature: 8a125211d4aec3ce066e097fb2ae890d ****/
+		/**** md5 signature: ee0c6dc56bceaf26caf97f0d04fc5a61 ****/
 		%feature("compactdefaultargs") VrmlData_IndexedLineSet;
 		%feature("autodoc", "/** * empty constructor. */.
 
@@ -3015,7 +3015,7 @@ None
 		 VrmlData_IndexedLineSet();
 
 		/****************** VrmlData_IndexedLineSet ******************/
-		/**** md5 signature: 44bf6d254fffdb07c24a262da3d9b76e ****/
+		/**** md5 signature: 53cacf11e70b1f90cd2ed0a701f6c91c ****/
 		%feature("compactdefaultargs") VrmlData_IndexedLineSet;
 		%feature("autodoc", "/** * constructor. */.
 
@@ -3043,9 +3043,9 @@ arrColorInd: int * *
 
 Returns
 -------
-size_t
+inline size_t
 ") ArrayColorInd;
-		size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
+		inline size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
 
 		/****************** Clone ******************/
 		/**** md5 signature: 95e2aeff203be5b6c751a82b7c3b80f7 ****/
@@ -3069,9 +3069,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-opencascade::handle<VrmlData_Color>
+inline  opencascade::handle<VrmlData_Color>
 ") Colors;
-		const opencascade::handle<VrmlData_Color> & Colors();
+		inline const opencascade::handle<VrmlData_Color> & Colors();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: dff615ecf03f4916071d4af06ba569bd ****/
@@ -3080,9 +3080,9 @@ opencascade::handle<VrmlData_Color>
 
 Returns
 -------
-opencascade::handle<VrmlData_Coordinate>
+inline  opencascade::handle<VrmlData_Coordinate>
 ") Coordinates;
-		const opencascade::handle<VrmlData_Coordinate> & Coordinates();
+		inline const opencascade::handle<VrmlData_Coordinate> & Coordinates();
 
 		/****************** GetColor ******************/
 		/**** md5 signature: a020b9dcebdd30dfa4aee7144dc3e7a6 ****/
@@ -3123,9 +3123,9 @@ outIndice: int *
 
 Returns
 -------
-int
+inline int
 ") Polygon;
-		Standard_Integer Polygon(const Standard_Integer iPolygon, const Standard_Integer * & outIndice);
+		inline Standard_Integer Polygon(const Standard_Integer iPolygon, const Standard_Integer * & outIndice);
 
 		/****************** Polygons ******************/
 		/**** md5 signature: e6bcceeaaf838ffe8cef407d5f7d5a45 ****/
@@ -3138,9 +3138,9 @@ arrPolygons: int * *
 
 Returns
 -------
-size_t
+inline size_t
 ") Polygons;
-		size_t Polygons(const Standard_Integer * * & arrPolygons);
+		inline size_t Polygons(const Standard_Integer * * & arrPolygons);
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -3169,9 +3169,9 @@ theIndice: int * *
 
 Returns
 -------
-None
+inline void
 ") SetColorInd;
-		void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
+		inline void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetColorPerVertex ******************/
 		/**** md5 signature: fa366f870d7e3f62742a025e7f4090bb ****/
@@ -3184,9 +3184,9 @@ isColorPerVertex: bool
 
 Returns
 -------
-None
+inline void
 ") SetColorPerVertex;
-		void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
+		inline void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
 
 		/****************** SetColors ******************/
 		/**** md5 signature: da46e6673528d4cedf179f062bf01e72 ****/
@@ -3199,9 +3199,9 @@ theColors: VrmlData_Color
 
 Returns
 -------
-None
+inline void
 ") SetColors;
-		void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
+		inline void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: bf51adc127a7b2dd3219a99e2901a3c6 ****/
@@ -3214,9 +3214,9 @@ theCoord: VrmlData_Coordinate
 
 Returns
 -------
-None
+inline void
 ") SetCoordinates;
-		void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
+		inline void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
 
 		/****************** SetPolygons ******************/
 		/**** md5 signature: 02125773a51a65ded3e1f69ef3940628 ****/
@@ -3230,9 +3230,9 @@ thePolygons: int * *
 
 Returns
 -------
-None
+inline void
 ") SetPolygons;
-		void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
+		inline void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
 
 		/****************** TShape ******************/
 		/**** md5 signature: 93fab9efcf27c195565c5eda2f729711 ****/
@@ -3288,7 +3288,7 @@ None
 		 VrmlData_Normal();
 
 		/****************** VrmlData_Normal ******************/
-		/**** md5 signature: 9859a50d88d9a4dd95d188b484ca1648 ****/
+		/**** md5 signature: aefc8e8e728e7a9827e29514f7665436 ****/
 		%feature("compactdefaultargs") VrmlData_Normal;
 		%feature("autodoc", "/** * constructor */.
 
@@ -3333,9 +3333,9 @@ i: int
 
 Returns
 -------
-gp_XYZ
+inline  gp_XYZ
 ") Normal;
-		const gp_XYZ Normal(const Standard_Integer i);
+		inline const gp_XYZ Normal(const Standard_Integer i);
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -3384,7 +3384,7 @@ VrmlData_ErrorStatus
 class VrmlData_Sphere : public VrmlData_Geometry {
 	public:
 		/****************** VrmlData_Sphere ******************/
-		/**** md5 signature: 16f1b145583f7c046eeb8523af246c61 ****/
+		/**** md5 signature: d9e2ee8a1e34c853b974f8faaa62dc60 ****/
 		%feature("compactdefaultargs") VrmlData_Sphere;
 		%feature("autodoc", "/** * empty constructor */.
 
@@ -3395,7 +3395,7 @@ None
 		 VrmlData_Sphere();
 
 		/****************** VrmlData_Sphere ******************/
-		/**** md5 signature: e2324ed361c04f299e2a4aed36bc432f ****/
+		/**** md5 signature: 45a2bf0e428518ca4ca201154ce45972 ****/
 		%feature("compactdefaultargs") VrmlData_Sphere;
 		%feature("autodoc", "/** * constructor */.
 
@@ -3434,9 +3434,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-float
+inline float
 ") Radius;
-		Standard_Real Radius();
+		inline Standard_Real Radius();
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -3464,9 +3464,9 @@ theRadius: float
 
 Returns
 -------
-None
+inline void
 ") SetRadius;
-		void SetRadius(const Standard_Real theRadius);
+		inline void SetRadius(const Standard_Real theRadius);
 
 		/****************** TShape ******************/
 		/**** md5 signature: 93fab9efcf27c195565c5eda2f729711 ****/
@@ -3511,7 +3511,7 @@ VrmlData_ErrorStatus
 class VrmlData_IndexedFaceSet : public VrmlData_Faceted {
 	public:
 		/****************** VrmlData_IndexedFaceSet ******************/
-		/**** md5 signature: 56865c96be521fd297fcf6647ded2447 ****/
+		/**** md5 signature: cc8fb76f4b920e80e2d09a9709bdf296 ****/
 		%feature("compactdefaultargs") VrmlData_IndexedFaceSet;
 		%feature("autodoc", "/** * empty constructor */.
 
@@ -3522,7 +3522,7 @@ None
 		 VrmlData_IndexedFaceSet();
 
 		/****************** VrmlData_IndexedFaceSet ******************/
-		/**** md5 signature: c5db453c541790928e632d73a04d887c ****/
+		/**** md5 signature: 52a440ae789c9f686e0c94f18eaa0ef3 ****/
 		%feature("compactdefaultargs") VrmlData_IndexedFaceSet;
 		%feature("autodoc", "/** * constructor */.
 
@@ -3556,9 +3556,9 @@ arrColorInd: int * *
 
 Returns
 -------
-size_t
+inline size_t
 ") ArrayColorInd;
-		size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
+		inline size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
 
 		/****************** ArrayNormalInd ******************/
 		/**** md5 signature: 26ef190401d0d586c7669e26de222f05 ****/
@@ -3571,9 +3571,9 @@ arrNormalInd: int * *
 
 Returns
 -------
-size_t
+inline size_t
 ") ArrayNormalInd;
-		size_t ArrayNormalInd(const Standard_Integer * * & arrNormalInd);
+		inline size_t ArrayNormalInd(const Standard_Integer * * & arrNormalInd);
 
 		/****************** ArrayTextureCoordInd ******************/
 		/**** md5 signature: 9cc0663e62ce2eac26a965741dad6949 ****/
@@ -3586,9 +3586,9 @@ arrTextureCoordInd: int * *
 
 Returns
 -------
-size_t
+inline size_t
 ") ArrayTextureCoordInd;
-		size_t ArrayTextureCoordInd(const Standard_Integer * * & arrTextureCoordInd);
+		inline size_t ArrayTextureCoordInd(const Standard_Integer * * & arrTextureCoordInd);
 
 		/****************** Clone ******************/
 		/**** md5 signature: 95e2aeff203be5b6c751a82b7c3b80f7 ****/
@@ -3612,9 +3612,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-opencascade::handle<VrmlData_Color>
+inline  opencascade::handle<VrmlData_Color>
 ") Colors;
-		const opencascade::handle<VrmlData_Color> & Colors();
+		inline const opencascade::handle<VrmlData_Color> & Colors();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: dff615ecf03f4916071d4af06ba569bd ****/
@@ -3623,9 +3623,9 @@ opencascade::handle<VrmlData_Color>
 
 Returns
 -------
-opencascade::handle<VrmlData_Coordinate>
+inline  opencascade::handle<VrmlData_Coordinate>
 ") Coordinates;
-		const opencascade::handle<VrmlData_Coordinate> & Coordinates();
+		inline const opencascade::handle<VrmlData_Coordinate> & Coordinates();
 
 		/****************** GetColor ******************/
 		/**** md5 signature: a020b9dcebdd30dfa4aee7144dc3e7a6 ****/
@@ -3655,9 +3655,9 @@ outIndice: int *
 
 Returns
 -------
-int
+inline int
 ") IndiceNormals;
-		Standard_Integer IndiceNormals(const Standard_Integer iFace, const Standard_Integer * & outIndice);
+		inline Standard_Integer IndiceNormals(const Standard_Integer iFace, const Standard_Integer * & outIndice);
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 4ff647a3408e78788bd7a6b5e61c46ed ****/
@@ -3677,9 +3677,9 @@ bool
 
 Returns
 -------
-opencascade::handle<VrmlData_Normal>
+inline  opencascade::handle<VrmlData_Normal>
 ") Normals;
-		const opencascade::handle<VrmlData_Normal> & Normals();
+		inline const opencascade::handle<VrmlData_Normal> & Normals();
 
 		/****************** Polygon ******************/
 		/**** md5 signature: d000b486c964dc6e7dd3c8ce3800da79 ****/
@@ -3693,9 +3693,9 @@ outIndice: int *
 
 Returns
 -------
-int
+inline int
 ") Polygon;
-		Standard_Integer Polygon(const Standard_Integer iFace, const Standard_Integer * & outIndice);
+		inline Standard_Integer Polygon(const Standard_Integer iFace, const Standard_Integer * & outIndice);
 
 		/****************** Polygons ******************/
 		/**** md5 signature: e6bcceeaaf838ffe8cef407d5f7d5a45 ****/
@@ -3708,9 +3708,9 @@ arrPolygons: int * *
 
 Returns
 -------
-size_t
+inline size_t
 ") Polygons;
-		size_t Polygons(const Standard_Integer * * & arrPolygons);
+		inline size_t Polygons(const Standard_Integer * * & arrPolygons);
 
 		/****************** Read ******************/
 		/**** md5 signature: 43d452e1523643764ed0a3ed08e10595 ****/
@@ -3739,9 +3739,9 @@ theIndice: int * *
 
 Returns
 -------
-None
+inline void
 ") SetColorInd;
-		void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
+		inline void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetColorPerVertex ******************/
 		/**** md5 signature: fa366f870d7e3f62742a025e7f4090bb ****/
@@ -3754,9 +3754,9 @@ isColorPerVertex: bool
 
 Returns
 -------
-None
+inline void
 ") SetColorPerVertex;
-		void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
+		inline void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
 
 		/****************** SetColors ******************/
 		/**** md5 signature: da46e6673528d4cedf179f062bf01e72 ****/
@@ -3769,9 +3769,9 @@ theColors: VrmlData_Color
 
 Returns
 -------
-None
+inline void
 ") SetColors;
-		void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
+		inline void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: bf51adc127a7b2dd3219a99e2901a3c6 ****/
@@ -3784,9 +3784,9 @@ theCoord: VrmlData_Coordinate
 
 Returns
 -------
-None
+inline void
 ") SetCoordinates;
-		void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
+		inline void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
 
 		/****************** SetNormalInd ******************/
 		/**** md5 signature: dea75969424aff27642ede98896a91a4 ****/
@@ -3800,9 +3800,9 @@ theIndice: int * *
 
 Returns
 -------
-None
+inline void
 ") SetNormalInd;
-		void SetNormalInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
+		inline void SetNormalInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetNormalPerVertex ******************/
 		/**** md5 signature: 1662498d2415121aba88aab86fcd4e7d ****/
@@ -3815,9 +3815,9 @@ isNormalPerVertex: bool
 
 Returns
 -------
-None
+inline void
 ") SetNormalPerVertex;
-		void SetNormalPerVertex(const Standard_Boolean isNormalPerVertex);
+		inline void SetNormalPerVertex(const Standard_Boolean isNormalPerVertex);
 
 		/****************** SetNormals ******************/
 		/**** md5 signature: e32729d2e2c119c2bf7bcd986503d323 ****/
@@ -3830,9 +3830,9 @@ theNormals: VrmlData_Normal
 
 Returns
 -------
-None
+inline void
 ") SetNormals;
-		void SetNormals(const opencascade::handle<VrmlData_Normal> & theNormals);
+		inline void SetNormals(const opencascade::handle<VrmlData_Normal> & theNormals);
 
 		/****************** SetPolygons ******************/
 		/**** md5 signature: 02125773a51a65ded3e1f69ef3940628 ****/
@@ -3846,9 +3846,9 @@ thePolygons: int * *
 
 Returns
 -------
-None
+inline void
 ") SetPolygons;
-		void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
+		inline void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
 
 		/****************** SetTextureCoordInd ******************/
 		/**** md5 signature: 5f7330587b3f6dbea88698c7bb47199f ****/
@@ -3862,9 +3862,9 @@ theIndice: int * *
 
 Returns
 -------
-None
+inline void
 ") SetTextureCoordInd;
-		void SetTextureCoordInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
+		inline void SetTextureCoordInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetTextureCoords ******************/
 		/**** md5 signature: 176293ee2ebe8f4fe8657ef1a99f7e1a ****/
@@ -3877,9 +3877,9 @@ tc: VrmlData_TextureCoordinate
 
 Returns
 -------
-None
+inline void
 ") SetTextureCoords;
-		void SetTextureCoords(const opencascade::handle<VrmlData_TextureCoordinate> & tc);
+		inline void SetTextureCoords(const opencascade::handle<VrmlData_TextureCoordinate> & tc);
 
 		/****************** TShape ******************/
 		/**** md5 signature: 93fab9efcf27c195565c5eda2f729711 ****/
@@ -3899,9 +3899,9 @@ opencascade::handle<TopoDS_TShape>
 
 Returns
 -------
-opencascade::handle<VrmlData_TextureCoordinate>
+inline  opencascade::handle<VrmlData_TextureCoordinate>
 ") TextureCoords;
-		const opencascade::handle<VrmlData_TextureCoordinate> & TextureCoords();
+		inline const opencascade::handle<VrmlData_TextureCoordinate> & TextureCoords();
 
 		/****************** Write ******************/
 		/**** md5 signature: 1c9d5b990d872d184760c29e6d2e1492 ****/

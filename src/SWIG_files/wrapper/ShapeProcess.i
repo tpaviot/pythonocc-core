@@ -104,7 +104,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle<ShapeProcess_Context>& context, const Message_ProgressRange & theProgress );
+typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle <ShapeProcess_Context>& context, const Message_ProgressRange & theProgress );
 /* end typedefs declaration */
 
 /*********************
@@ -511,7 +511,7 @@ TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 

@@ -19,5 +19,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define IVTK_HXX
 
 
+#include<IVtk_IShape.hxx>
+#include<IVtk_IShapeData.hxx>
+#include<IVtk_IShapeMesher.hxx>
+#include<IVtk_IShapePickerAlgo.hxx>
+#include<IVtk_IView.hxx>
+#include<IVtk_Interface.hxx>
+#include<IVtk_Types.hxx>
 
 #endif // IVTK_HXX

@@ -153,8 +153,8 @@ typedef BlendFunc_EvolRad BRepBlend_EvolRad;
 typedef BlendFunc_EvolRadInv BRepBlend_EvolRadInv;
 typedef BlendFunc_Ruled BRepBlend_Ruled;
 typedef BlendFunc_RuledInv BRepBlend_RuledInv;
-typedef NCollection_Sequence<opencascade::handle<BRepBlend_Line>> BRepBlend_SequenceOfLine;
-typedef NCollection_Sequence<BRepBlend_PointOnRst> BRepBlend_SequenceOfPointOnRst;
+typedef NCollection_Sequence <opencascade::handle <BRepBlend_Line>> BRepBlend_SequenceOfLine;
+typedef NCollection_Sequence <BRepBlend_PointOnRst> BRepBlend_SequenceOfPointOnRst;
 /* end typedefs declaration */
 
 /******************************

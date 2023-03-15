@@ -137,13 +137,13 @@ enum  {
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape, XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>, XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher>::Iterator XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle;
-typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape, XCAFPrs_Style> XCAFPrs_DataMapOfStyleShape;
-typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>, XCAFPrs_Style> XCAFPrs_DataMapOfStyleTransient;
+typedef NCollection_DataMap <XCAFPrs_Style, TopoDS_Shape, XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
+typedef NCollection_DataMap <XCAFPrs_Style, opencascade::handle <Standard_Transient>, XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher>::Iterator XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle;
+typedef NCollection_DataMap <XCAFPrs_Style, TopoDS_Shape, XCAFPrs_Style> XCAFPrs_DataMapOfStyleShape;
+typedef NCollection_DataMap <XCAFPrs_Style, opencascade::handle <Standard_Transient>, XCAFPrs_Style> XCAFPrs_DataMapOfStyleTransient;
 typedef Standard_Integer XCAFPrs_DocumentExplorerFlags;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher> XCAFPrs_IndexedDataMapOfShapeStyle;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher> XCAFPrs_IndexedDataMapOfShapeStyle;
 /* end typedefs declaration */
 
 /****************
@@ -167,7 +167,7 @@ theLayerColor: Quantity_ColorRGBA,optional
 
 Returns
 -------
-None
+void
 ") CollectStyleSettings;
 		static void CollectStyleSettings(const TDF_Label & L, const TopLoc_Location & loc, XCAFPrs_IndexedDataMapOfShapeStyle & settings, const Quantity_ColorRGBA & theLayerColor = Quantity_ColorRGBA(Quantity_NOC_WHITE));
 
@@ -193,7 +193,7 @@ viewNameMode: bool
 
 Returns
 -------
-None
+void
 ") SetViewNameMode;
 		static void SetViewNameMode(const Standard_Boolean viewNameMode);
 
@@ -409,7 +409,7 @@ int
 		/****************** DefineChildId ******************/
 		/**** md5 signature: 408d6adf19c4d2c6d062f1bce2dab794 ****/
 		%feature("compactdefaultargs") DefineChildId;
-		%feature("autodoc", "Construct a unique string identifier for the given label. the identifier is a concatenation of label entries (tdf_tool::entry() with tailing '.') of hierarchy from parent to child joined via '/' and looking like this: @code 0:1:1:1./0:1:1:1:9./0:1:1:5:7. @endcode this generation scheme also allows finding originating labels using tdf_tool::label(). the tailing dot simplifies parent equality check. @param thelabel child label to define id @param theparentid parent string identifier defined by this method.
+		%feature("autodoc", "@name string identification tools construct a unique string identifier for the given label. the identifier is a concatenation of label entries (tdf_tool::entry() with tailing '.') of hierarchy from parent to child joined via '/' and looking like this: @code 0:1:1:1./0:1:1:1:9./0:1:1:5:7. @endcode this generation scheme also allows finding originating labels using tdf_tool::label(). the tailing dot simplifies parent equality check. @param thelabel child label to define id @param theparentid parent string identifier defined by this method.
 
 Parameters
 ----------
@@ -559,7 +559,7 @@ opencascade::handle<XCAFDoc_VisMaterialTool>
 class XCAFPrs_DocumentIdIterator {
 	public:
 		/****************** XCAFPrs_DocumentIdIterator ******************/
-		/**** md5 signature: 6eadeae34139dcef0fb7e3b2667aa2e8 ****/
+		/**** md5 signature: 6596b3f2863e215640d415e65fcfe4fa ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentIdIterator;
 		%feature("autodoc", "Main constructor.
 
@@ -629,9 +629,9 @@ class XCAFPrs_DocumentNode {
 		TDF_ChildIterator ChildIter;
 		bool IsAssembly;
 		/****************** XCAFPrs_DocumentNode ******************/
-		/**** md5 signature: 2d49950cf26abc8cee5d537bc0321564 ****/
+		/**** md5 signature: 5870303e392cbf31dfaad535d9a77932 ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentNode;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "//!< flag indicating that this label is assembly.
 
 Returns
 -------

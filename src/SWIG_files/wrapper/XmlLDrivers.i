@@ -97,7 +97,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<XmlLDrivers_NamespaceDef> XmlLDrivers_SequenceOfNamespaceDef;
+typedef NCollection_Sequence <XmlLDrivers_NamespaceDef> XmlLDrivers_SequenceOfNamespaceDef;
 /* end typedefs declaration */
 
 /********************
@@ -143,7 +143,7 @@ theApp: TDocStd_Application
 
 Returns
 -------
-None
+void
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 

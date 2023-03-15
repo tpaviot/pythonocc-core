@@ -135,9 +135,9 @@ HatchGen_UNDETERMINED = HatchGen_IntersectionType.HatchGen_UNDETERMINED
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<HatchGen_Domain> HatchGen_Domains;
-typedef NCollection_Sequence<HatchGen_PointOnElement> HatchGen_PointsOnElement;
-typedef NCollection_Sequence<HatchGen_PointOnHatching> HatchGen_PointsOnHatching;
+typedef NCollection_Sequence <HatchGen_Domain> HatchGen_Domains;
+typedef NCollection_Sequence <HatchGen_PointOnElement> HatchGen_PointsOnElement;
+typedef NCollection_Sequence <HatchGen_PointOnHatching> HatchGen_PointsOnHatching;
 /* end typedefs declaration */
 
 /************************

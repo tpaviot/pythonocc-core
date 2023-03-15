@@ -608,7 +608,7 @@ IFSelect_ReturnStatus
 		/****************** WorkLibrary ******************/
 		/**** md5 signature: 7c195930f9d0e8c986e2cba27b8d6ee4 ****/
 		%feature("compactdefaultargs") WorkLibrary;
-		%feature("autodoc", "Returns the worklibrary attached to the norm. remark that it has to be in phase with the protocol (read from field).
+		%feature("autodoc", "Returns the signtype attached to the norm (from field) returns the worklibrary attached to the norm. remark that it has to be in phase with the protocol (read from field).
 
 Returns
 -------
@@ -659,7 +659,7 @@ bool
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -701,7 +701,7 @@ class XSControl_Functions {
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -1717,7 +1717,7 @@ theMode: int,optional
 
 Returns
 -------
-None
+void
 ") PrintStatsOnList;
 		static void PrintStatsOnList(const opencascade::handle<Transfer_TransientProcess> & theTP, const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
@@ -1735,7 +1735,7 @@ theMode: int,optional
 
 Returns
 -------
-None
+void
 ") PrintStatsProcess;
 		static void PrintStatsProcess(const opencascade::handle<Transfer_TransientProcess> & theTP, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
@@ -2061,7 +2061,7 @@ opencascade::handle<Standard_Transient>
 class XSControl_TransferWriter : public Standard_Transient {
 	public:
 		/****************** XSControl_TransferWriter ******************/
-		/**** md5 signature: c238b8946022215507643a042bd9b965 ****/
+		/**** md5 signature: 749905348510a43633ba2024603bc186 ****/
 		%feature("compactdefaultargs") XSControl_TransferWriter;
 		%feature("autodoc", "Creates a transferwriter, empty, ready to run with an empty finderprocess (but no controller, etc).
 

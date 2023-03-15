@@ -70,6 +70,19 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum BinTools_FormatVersion {
+	BinTools_FormatVersion_VERSION_1 = 1,
+	BinTools_FormatVersion_VERSION_2 = 2,
+	BinTools_FormatVersion_VERSION_3 = 3,
+	BinTools_FormatVersion_VERSION_4 = 4,
+	BinTools_FormatVersion_CURRENT = BinTools_FormatVersion_VERSION_4,
+};
+
+enum  {
+	BinTools_FormatVersion_LOWER = BinTools_FormatVersion_VERSION_1,
+	BinTools_FormatVersion_UPPER = BinTools_FormatVersion_VERSION_4,
+};
+
 enum BinTools_ObjectType {
 	BinTools_ObjectType_Unknown = 0,
 	BinTools_ObjectType_Reference8 = 1,
@@ -96,23 +109,22 @@ enum BinTools_ObjectType {
 	BinTools_ObjectType_EndShape = 199,
 };
 
-enum BinTools_FormatVersion {
-	BinTools_FormatVersion_VERSION_1 = 1,
-	BinTools_FormatVersion_VERSION_2 = 2,
-	BinTools_FormatVersion_VERSION_3 = 3,
-	BinTools_FormatVersion_VERSION_4 = 4,
-	BinTools_FormatVersion_CURRENT = BinTools_FormatVersion_VERSION_4,
-};
-
-enum  {
-	BinTools_FormatVersion_LOWER = BinTools_FormatVersion_VERSION_1,
-	BinTools_FormatVersion_UPPER = BinTools_FormatVersion_VERSION_4,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class BinTools_FormatVersion(IntEnum):
+	BinTools_FormatVersion_VERSION_1 = 1
+	BinTools_FormatVersion_VERSION_2 = 2
+	BinTools_FormatVersion_VERSION_3 = 3
+	BinTools_FormatVersion_VERSION_4 = 4
+	BinTools_FormatVersion_CURRENT = BinTools_FormatVersion_VERSION_4
+BinTools_FormatVersion_VERSION_1 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_1
+BinTools_FormatVersion_VERSION_2 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_2
+BinTools_FormatVersion_VERSION_3 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_3
+BinTools_FormatVersion_VERSION_4 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_4
+BinTools_FormatVersion_CURRENT = BinTools_FormatVersion.BinTools_FormatVersion_CURRENT
 
 class BinTools_ObjectType(IntEnum):
 	BinTools_ObjectType_Unknown = 0
@@ -161,18 +173,6 @@ BinTools_ObjectType_Triangulation = BinTools_ObjectType.BinTools_ObjectType_Tria
 BinTools_ObjectType_EmptyTriangulation = BinTools_ObjectType.BinTools_ObjectType_EmptyTriangulation
 BinTools_ObjectType_EmptyShape = BinTools_ObjectType.BinTools_ObjectType_EmptyShape
 BinTools_ObjectType_EndShape = BinTools_ObjectType.BinTools_ObjectType_EndShape
-
-class BinTools_FormatVersion(IntEnum):
-	BinTools_FormatVersion_VERSION_1 = 1
-	BinTools_FormatVersion_VERSION_2 = 2
-	BinTools_FormatVersion_VERSION_3 = 3
-	BinTools_FormatVersion_VERSION_4 = 4
-	BinTools_FormatVersion_CURRENT = BinTools_FormatVersion_VERSION_4
-BinTools_FormatVersion_VERSION_1 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_1
-BinTools_FormatVersion_VERSION_2 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_2
-BinTools_FormatVersion_VERSION_3 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_3
-BinTools_FormatVersion_VERSION_4 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_4
-BinTools_FormatVersion_CURRENT = BinTools_FormatVersion.BinTools_FormatVersion_CURRENT
 };
 /* end python proxy for enums */
 
@@ -357,7 +357,7 @@ OS: BinTools_OStream
 
 Returns
 -------
-None
+void
 ") WriteCurve2d;
 		static void WriteCurve2d(const opencascade::handle<Geom2d_Curve> & C, BinTools_OStream & OS);
 
@@ -473,7 +473,7 @@ OS: BinTools_OStream
 
 Returns
 -------
-None
+void
 ") WriteCurve;
 		static void WriteCurve(const opencascade::handle<Geom_Curve> & C, BinTools_OStream & OS);
 
@@ -827,7 +827,7 @@ OS: BinTools_OStream
 
 Returns
 -------
-None
+void
 ") WriteSurface;
 		static void WriteSurface(const opencascade::handle<Geom_Surface> & S, BinTools_OStream & OS);
 

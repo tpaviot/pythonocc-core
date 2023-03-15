@@ -441,7 +441,7 @@ bool
 		/****************** Multiplied ******************/
 		/**** md5 signature: ff8178e5123036b64b3a48d6d1795233 ****/
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Computes the transformation composed with other and <self>. <self> * other. returns a new transformation.
 
 Parameters
 ----------
@@ -2928,7 +2928,7 @@ None
 		/****************** Added ******************/
 		/**** md5 signature: 9115475aabc98af8d41462cc81c932cc ****/
 		%feature("compactdefaultargs") Added;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Adds the vector other to <self>.
 
 Parameters
 ----------
@@ -3149,7 +3149,7 @@ None
 		/****************** Subtracted ******************/
 		/**** md5 signature: 4fbb6b22e705df6acc8e9854d44ae113 ****/
 		%feature("compactdefaultargs") Subtracted;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Subtracts the vector other to <self>. a new vector is returned.
 
 Parameters
 ----------

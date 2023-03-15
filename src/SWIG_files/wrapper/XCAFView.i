@@ -290,7 +290,7 @@ Returns
 -------
 None
 ") SetClippingExpression;
-		void SetClippingExpression(opencascade::handle<TCollection_HAsciiString > theExpression);
+		void SetClippingExpression(opencascade::handle<TCollection_HAsciiString> theExpression);
 
 		/****************** SetFrontPlaneDistance ******************/
 		/**** md5 signature: 443b1317d6f4077efa5428592305573d ****/
@@ -336,7 +336,7 @@ Returns
 -------
 None
 ") SetName;
-		void SetName(opencascade::handle<TCollection_HAsciiString > theName);
+		void SetName(opencascade::handle<TCollection_HAsciiString> theName);
 
 		/****************** SetProjectionPoint ******************/
 		/**** md5 signature: 19026b95ec0255a010e1c46d7876ef42 ****/

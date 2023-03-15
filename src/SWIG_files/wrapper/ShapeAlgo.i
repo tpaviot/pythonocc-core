@@ -120,7 +120,7 @@ opencascade::handle<ShapeAlgo_AlgoContainer>
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -135,7 +135,7 @@ aContainer: ShapeAlgo_AlgoContainer
 
 Returns
 -------
-None
+void
 ") SetAlgoContainer;
 		static void SetAlgoContainer(const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 

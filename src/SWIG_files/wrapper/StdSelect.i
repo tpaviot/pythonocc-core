@@ -93,6 +93,12 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum StdSelect_TypeOfEdge {
+	StdSelect_AnyEdge = 0,
+	StdSelect_Line = 1,
+	StdSelect_Circle = 2,
+};
+
 enum StdSelect_TypeOfFace {
 	StdSelect_AnyFace = 0,
 	StdSelect_Plane = 1,
@@ -101,12 +107,6 @@ enum StdSelect_TypeOfFace {
 	StdSelect_Torus = 4,
 	StdSelect_Revol = 5,
 	StdSelect_Cone = 6,
-};
-
-enum StdSelect_TypeOfEdge {
-	StdSelect_AnyEdge = 0,
-	StdSelect_Line = 1,
-	StdSelect_Circle = 2,
 };
 
 enum StdSelect_TypeOfSelectionImage {
@@ -126,6 +126,14 @@ enum StdSelect_TypeOfSelectionImage {
 /* python proxy classes for enums */
 %pythoncode {
 
+class StdSelect_TypeOfEdge(IntEnum):
+	StdSelect_AnyEdge = 0
+	StdSelect_Line = 1
+	StdSelect_Circle = 2
+StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
+StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
+StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
+
 class StdSelect_TypeOfFace(IntEnum):
 	StdSelect_AnyFace = 0
 	StdSelect_Plane = 1
@@ -141,14 +149,6 @@ StdSelect_Sphere = StdSelect_TypeOfFace.StdSelect_Sphere
 StdSelect_Torus = StdSelect_TypeOfFace.StdSelect_Torus
 StdSelect_Revol = StdSelect_TypeOfFace.StdSelect_Revol
 StdSelect_Cone = StdSelect_TypeOfFace.StdSelect_Cone
-
-class StdSelect_TypeOfEdge(IntEnum):
-	StdSelect_AnyEdge = 0
-	StdSelect_Line = 1
-	StdSelect_Circle = 2
-StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
-StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
-StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
 
 class StdSelect_TypeOfSelectionImage(IntEnum):
 	StdSelect_TypeOfSelectionImage_NormalizedDepth = 0
@@ -204,7 +204,7 @@ aDrawer: Prs3d_Drawer
 
 Returns
 -------
-None
+void
 ") SetDrawerForBRepOwner;
 		static void SetDrawerForBRepOwner(const opencascade::handle<SelectMgr_Selection> & aSelection, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -489,7 +489,7 @@ theAutoTriang: bool,optional
 
 Returns
 -------
-None
+void
 ") ComputeSensitive;
 		static void ComputeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeflAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, const Standard_Boolean theAutoTriang = Standard_True);
 
@@ -511,7 +511,7 @@ theSensitive: Select3D_SensitiveEntity
 
 Returns
 -------
-None
+void
 ") GetEdgeSensitive;
 		static void GetEdgeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -596,7 +596,7 @@ MaximalParameter: float,optional
 
 Returns
 -------
-None
+void
 ") Load;
 		static void Load(const opencascade::handle<SelectMgr_Selection> & aSelection, const TopoDS_Shape & aShape, const TopAbs_ShapeEnum aType, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer aPriority = -1, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaximalParameter = 500);
 
@@ -624,7 +624,7 @@ MaximalParameter: float,optional
 
 Returns
 -------
-None
+void
 ") Load;
 		static void Load(const opencascade::handle<SelectMgr_Selection> & aSelection, const opencascade::handle<SelectMgr_SelectableObject> & Origin, const TopoDS_Shape & aShape, const TopAbs_ShapeEnum aType, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer aPriority = -1, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaximalParameter = 500);
 
@@ -639,7 +639,7 @@ theSelection: SelectMgr_Selection
 
 Returns
 -------
-None
+void
 ") PreBuildBVH;
 		static void PreBuildBVH(const opencascade::handle<SelectMgr_Selection> & theSelection);
 

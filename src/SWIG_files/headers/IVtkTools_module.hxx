@@ -19,5 +19,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define IVTKTOOLS_HXX
 
 
+#include<IVtkTools.hxx>
+#include<IVtkTools_DisplayModeFilter.hxx>
+#include<IVtkTools_ShapeDataSource.hxx>
+#include<IVtkTools_ShapeObject.hxx>
+#include<IVtkTools_ShapePicker.hxx>
+#include<IVtkTools_SubPolyDataFilter.hxx>
 
 #endif // IVTKTOOLS_HXX

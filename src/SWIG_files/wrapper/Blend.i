@@ -72,6 +72,13 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Blend_DecrochStatus {
+	Blend_NoDecroch = 0,
+	Blend_DecrochRst1 = 1,
+	Blend_DecrochRst2 = 2,
+	Blend_DecrochBoth = 3,
+};
+
 enum Blend_Status {
 	Blend_StepTooLarge = 0,
 	Blend_StepTooSmall = 1,
@@ -83,17 +90,20 @@ enum Blend_Status {
 	Blend_OK = 7,
 };
 
-enum Blend_DecrochStatus {
-	Blend_NoDecroch = 0,
-	Blend_DecrochRst1 = 1,
-	Blend_DecrochRst2 = 2,
-	Blend_DecrochBoth = 3,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Blend_DecrochStatus(IntEnum):
+	Blend_NoDecroch = 0
+	Blend_DecrochRst1 = 1
+	Blend_DecrochRst2 = 2
+	Blend_DecrochBoth = 3
+Blend_NoDecroch = Blend_DecrochStatus.Blend_NoDecroch
+Blend_DecrochRst1 = Blend_DecrochStatus.Blend_DecrochRst1
+Blend_DecrochRst2 = Blend_DecrochStatus.Blend_DecrochRst2
+Blend_DecrochBoth = Blend_DecrochStatus.Blend_DecrochBoth
 
 class Blend_Status(IntEnum):
 	Blend_StepTooLarge = 0
@@ -112,16 +122,6 @@ Blend_OnRst1 = Blend_Status.Blend_OnRst1
 Blend_OnRst2 = Blend_Status.Blend_OnRst2
 Blend_OnRst12 = Blend_Status.Blend_OnRst12
 Blend_OK = Blend_Status.Blend_OK
-
-class Blend_DecrochStatus(IntEnum):
-	Blend_NoDecroch = 0
-	Blend_DecrochRst1 = 1
-	Blend_DecrochRst2 = 2
-	Blend_DecrochBoth = 3
-Blend_NoDecroch = Blend_DecrochStatus.Blend_NoDecroch
-Blend_DecrochRst1 = Blend_DecrochStatus.Blend_DecrochRst1
-Blend_DecrochRst2 = Blend_DecrochStatus.Blend_DecrochRst2
-Blend_DecrochBoth = Blend_DecrochStatus.Blend_DecrochBoth
 };
 /* end python proxy for enums */
 
@@ -140,7 +140,7 @@ Blend_DecrochBoth = Blend_DecrochStatus.Blend_DecrochBoth
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<Blend_Point> Blend_SequenceOfPoint;
+typedef NCollection_Sequence <Blend_Point> Blend_SequenceOfPoint;
 /* end typedefs declaration */
 
 /**************************

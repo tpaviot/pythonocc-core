@@ -156,7 +156,7 @@ Operator: gp_Mat
 
 Returns
 -------
-None
+void
 ") HOperator;
 		static void HOperator(const gp_Pnt & G, const gp_Pnt & Q, const Standard_Real Mass, gp_Mat & Operator);
 

@@ -105,7 +105,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Lin & L, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -124,7 +124,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Lin2d & L, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -141,7 +141,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Circ & C, const Standard_Real Tol, Bnd_Box & B);
 
@@ -160,7 +160,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Circ & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -177,7 +177,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Circ2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -196,7 +196,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Circ2d & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -213,7 +213,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Elips & C, const Standard_Real Tol, Bnd_Box & B);
 
@@ -232,7 +232,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Elips & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -249,7 +249,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Elips2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -268,7 +268,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Elips2d & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -287,7 +287,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Parab & P, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -306,7 +306,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Parab2d & P, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -325,7 +325,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Hypr & H, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -344,7 +344,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Hypr2d & H, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -365,7 +365,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Cylinder & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -384,7 +384,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Cylinder & S, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -405,7 +405,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Cone & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -424,7 +424,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Cone & S, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -441,7 +441,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Sphere & S, const Standard_Real Tol, Bnd_Box & B);
 
@@ -462,7 +462,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Sphere & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -479,7 +479,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Torus & P, const Standard_Real Tol, Bnd_Box & B);
 
@@ -500,7 +500,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const gp_Torus & P, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -531,7 +531,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const Adaptor2d_Curve2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -550,7 +550,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -567,7 +567,7 @@ Box: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real Tol, Bnd_Box2d & Box);
 
@@ -586,7 +586,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -605,7 +605,7 @@ B: Bnd_Box2d
 
 Returns
 -------
-None
+void
 ") AddOptimal;
 		static void AddOptimal(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -636,7 +636,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const Adaptor3d_Curve & C, const Standard_Real Tol, Bnd_Box & B);
 
@@ -655,7 +655,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -674,7 +674,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddGenCurv;
 		static void AddGenCurv(const Adaptor3d_Curve & C, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -691,7 +691,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Curve & C, const Standard_Real Tol, Bnd_Box & B);
 
@@ -710,7 +710,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -741,7 +741,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const Adaptor3d_Surface & S, const Standard_Real Tol, Bnd_Box & B);
 
@@ -762,7 +762,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") Add;
 		static void Add(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -783,14 +783,14 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddGenSurf;
 		static void AddGenSurf(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
 		/****************** AddOptimal ******************/
 		/**** md5 signature: 8a4f780b04453b509615616b28d119e2 ****/
 		%feature("compactdefaultargs") AddOptimal;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Adds the surface s to the bounding box b. this algorithm builds precise bounding box.
 
 Parameters
 ----------
@@ -800,7 +800,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Surface & S, const Standard_Real Tol, Bnd_Box & B);
 
@@ -821,7 +821,7 @@ B: Bnd_Box
 
 Returns
 -------
-None
+void
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 

@@ -66,17 +66,10 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum CDF_TypeOfActivation {
-	CDF_TOA_New = 0,
-	CDF_TOA_Modified = 1,
-	CDF_TOA_Unchanged = 2,
-};
-
-enum CDF_TryStoreStatus {
-	CDF_TS_OK = 0,
-	CDF_TS_NoCurrentDocument = 1,
-	CDF_TS_NoDriver = 2,
-	CDF_TS_NoSubComponentDriver = 3,
+enum CDF_StoreSetNameStatus {
+	CDF_SSNS_OK = 0,
+	CDF_SSNS_ReplacingAnExistentDocument = 1,
+	CDF_SSNS_OpenDocument = 2,
 };
 
 enum CDF_SubComponentStatus {
@@ -86,10 +79,17 @@ enum CDF_SubComponentStatus {
 	CDF_SCS_Modified = 3,
 };
 
-enum CDF_StoreSetNameStatus {
-	CDF_SSNS_OK = 0,
-	CDF_SSNS_ReplacingAnExistentDocument = 1,
-	CDF_SSNS_OpenDocument = 2,
+enum CDF_TryStoreStatus {
+	CDF_TS_OK = 0,
+	CDF_TS_NoCurrentDocument = 1,
+	CDF_TS_NoDriver = 2,
+	CDF_TS_NoSubComponentDriver = 3,
+};
+
+enum CDF_TypeOfActivation {
+	CDF_TOA_New = 0,
+	CDF_TOA_Modified = 1,
+	CDF_TOA_Unchanged = 2,
 };
 
 /* end public enums declaration */
@@ -97,23 +97,13 @@ enum CDF_StoreSetNameStatus {
 /* python proxy classes for enums */
 %pythoncode {
 
-class CDF_TypeOfActivation(IntEnum):
-	CDF_TOA_New = 0
-	CDF_TOA_Modified = 1
-	CDF_TOA_Unchanged = 2
-CDF_TOA_New = CDF_TypeOfActivation.CDF_TOA_New
-CDF_TOA_Modified = CDF_TypeOfActivation.CDF_TOA_Modified
-CDF_TOA_Unchanged = CDF_TypeOfActivation.CDF_TOA_Unchanged
-
-class CDF_TryStoreStatus(IntEnum):
-	CDF_TS_OK = 0
-	CDF_TS_NoCurrentDocument = 1
-	CDF_TS_NoDriver = 2
-	CDF_TS_NoSubComponentDriver = 3
-CDF_TS_OK = CDF_TryStoreStatus.CDF_TS_OK
-CDF_TS_NoCurrentDocument = CDF_TryStoreStatus.CDF_TS_NoCurrentDocument
-CDF_TS_NoDriver = CDF_TryStoreStatus.CDF_TS_NoDriver
-CDF_TS_NoSubComponentDriver = CDF_TryStoreStatus.CDF_TS_NoSubComponentDriver
+class CDF_StoreSetNameStatus(IntEnum):
+	CDF_SSNS_OK = 0
+	CDF_SSNS_ReplacingAnExistentDocument = 1
+	CDF_SSNS_OpenDocument = 2
+CDF_SSNS_OK = CDF_StoreSetNameStatus.CDF_SSNS_OK
+CDF_SSNS_ReplacingAnExistentDocument = CDF_StoreSetNameStatus.CDF_SSNS_ReplacingAnExistentDocument
+CDF_SSNS_OpenDocument = CDF_StoreSetNameStatus.CDF_SSNS_OpenDocument
 
 class CDF_SubComponentStatus(IntEnum):
 	CDF_SCS_Consistent = 0
@@ -125,13 +115,23 @@ CDF_SCS_Unconsistent = CDF_SubComponentStatus.CDF_SCS_Unconsistent
 CDF_SCS_Stored = CDF_SubComponentStatus.CDF_SCS_Stored
 CDF_SCS_Modified = CDF_SubComponentStatus.CDF_SCS_Modified
 
-class CDF_StoreSetNameStatus(IntEnum):
-	CDF_SSNS_OK = 0
-	CDF_SSNS_ReplacingAnExistentDocument = 1
-	CDF_SSNS_OpenDocument = 2
-CDF_SSNS_OK = CDF_StoreSetNameStatus.CDF_SSNS_OK
-CDF_SSNS_ReplacingAnExistentDocument = CDF_StoreSetNameStatus.CDF_SSNS_ReplacingAnExistentDocument
-CDF_SSNS_OpenDocument = CDF_StoreSetNameStatus.CDF_SSNS_OpenDocument
+class CDF_TryStoreStatus(IntEnum):
+	CDF_TS_OK = 0
+	CDF_TS_NoCurrentDocument = 1
+	CDF_TS_NoDriver = 2
+	CDF_TS_NoSubComponentDriver = 3
+CDF_TS_OK = CDF_TryStoreStatus.CDF_TS_OK
+CDF_TS_NoCurrentDocument = CDF_TryStoreStatus.CDF_TS_NoCurrentDocument
+CDF_TS_NoDriver = CDF_TryStoreStatus.CDF_TS_NoDriver
+CDF_TS_NoSubComponentDriver = CDF_TryStoreStatus.CDF_TS_NoSubComponentDriver
+
+class CDF_TypeOfActivation(IntEnum):
+	CDF_TOA_New = 0
+	CDF_TOA_Modified = 1
+	CDF_TOA_Unchanged = 2
+CDF_TOA_New = CDF_TypeOfActivation.CDF_TOA_New
+CDF_TOA_Modified = CDF_TypeOfActivation.CDF_TOA_Modified
+CDF_TOA_Unchanged = CDF_TypeOfActivation.CDF_TOA_Unchanged
 };
 /* end python proxy for enums */
 
@@ -156,8 +156,8 @@ CDF_SSNS_OpenDocument = CDF_StoreSetNameStatus.CDF_SSNS_OpenDocument
 %nodefaultctor CDF_Application;
 class CDF_Application : public CDM_Application {
 	public:
-		opencascade::handle<CDF_MetaDataDriver > myMetaDataDriver;
-		opencascade::handle<CDF_Directory > myDirectory;
+		opencascade::handle<CDF_MetaDataDriver> myMetaDataDriver;
+		opencascade::handle<CDF_Directory> myDirectory;
 		/****************** CanClose ******************/
 		/**** md5 signature: c6d5b2cf0ce51a973521c5b4c25f2ec1 ****/
 		%feature("compactdefaultargs") CanClose;

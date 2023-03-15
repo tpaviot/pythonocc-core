@@ -250,7 +250,7 @@ TDataXtd_CYLINDER = TDataXtd_GeometryEnum.TDataXtd_CYLINDER
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<gp_Trsf> TDataXtd_Array1OfTrsf;
+typedef NCollection_Array1 <gp_Trsf> TDataXtd_Array1OfTrsf;
 /* end typedefs declaration */
 
 /*****************
@@ -270,7 +270,7 @@ anIDList: TDF_IDList
 
 Returns
 -------
-None
+void
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -410,7 +410,7 @@ TheList: TDF_LabelList
 
 Returns
 -------
-None
+void
 ") CollectChildConstraints;
 		static void CollectChildConstraints(const TDF_Label & aLabel, TDF_LabelList & TheList);
 
@@ -1654,7 +1654,7 @@ aPos: gp_Pnt
 
 Returns
 -------
-None
+void
 ") Set;
 		static void Set(const TDF_Label & aLabel, const gp_Pnt & aPos);
 
@@ -1707,7 +1707,7 @@ class TDataXtd_Presentation : public TDF_Attribute {
 		/****************** TDataXtd_Presentation ******************/
 		/**** md5 signature: 100517e7455655aa1566718b13ab74d5 ****/
 		%feature("compactdefaultargs") TDataXtd_Presentation;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "//!@name attribute mechanics empty constructor.
 
 Returns
 -------
@@ -1757,7 +1757,7 @@ Quantity_NameOfColor
 		/****************** GetDriverGUID ******************/
 		/**** md5 signature: 8cfb8f91ff622f4361276ad127a77d5c ****/
 		%feature("compactdefaultargs") GetDriverGUID;
-		%feature("autodoc", "Returns the guid of the driver managing display of associated ais object.
+		%feature("autodoc", "//!@name access to data returns the guid of the driver managing display of associated ais object.
 
 Returns
 -------
@@ -2115,7 +2115,7 @@ theLabel: TDF_Label
 
 Returns
 -------
-None
+void
 ") Unset;
 		static void Unset(const TDF_Label & theLabel);
 
@@ -2379,7 +2379,7 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		/****************** TDataXtd_Triangulation ******************/
 		/**** md5 signature: bee09c6a8c6d388acb27df035eccdb53 ****/
 		%feature("compactdefaultargs") TDataXtd_Triangulation;
-		%feature("autodoc", "A constructor. don't use it directly, use please the static method set(), which returns the attribute attached to a label.
+		%feature("autodoc", "Object methods a constructor. don't use it directly, use please the static method set(), which returns the attribute attached to a label.
 
 Returns
 -------
@@ -2390,7 +2390,7 @@ None
 		/****************** Deflection ******************/
 		/**** md5 signature: cc0b59ab46f82f52f9a9398cfae7702b ****/
 		%feature("compactdefaultargs") Deflection;
-		%feature("autodoc", "Returns the deflection of this triangulation.
+		%feature("autodoc", "Poly_triangulation methods the methods are 'covered' by this attribute to prevent direct modification of the mesh. there is no performance problem to call poly_triangulation method through this attribute. the most of the methods are considered as 'inline' by the compiler in release mode. returns the deflection of this triangulation.
 
 Returns
 -------
@@ -2435,7 +2435,7 @@ opencascade::handle<Poly_Triangulation>
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "Returns the id of the triangulation attribute.
+		%feature("autodoc", "Static methods returns the id of the triangulation attribute.
 
 Returns
 -------
@@ -2468,7 +2468,7 @@ bool
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Inherited attribute methods.
 
 Returns
 -------

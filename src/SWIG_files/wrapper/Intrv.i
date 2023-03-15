@@ -122,7 +122,7 @@ Intrv_After = Intrv_Position.Intrv_After
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<Intrv_Interval> Intrv_SequenceOfInterval;
+typedef NCollection_Sequence <Intrv_Interval> Intrv_SequenceOfInterval;
 /* end typedefs declaration */
 
 /***********************

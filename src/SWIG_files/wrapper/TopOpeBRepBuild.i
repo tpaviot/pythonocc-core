@@ -156,17 +156,17 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepBuild_ListOfShapeListOfShape, TopTools_ShapeMapHasher>::Iterator TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepBuild_ListOfShapeListOfShape, TopTools_ShapeMapHasher> TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepBuild_VertexInfo, TopTools_ShapeMapHasher> TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo;
-typedef NCollection_List<TopOpeBRepBuild_ListOfLoop>::Iterator TopOpeBRepBuild_ListIteratorOfListOfListOfLoop;
-typedef NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>>::Iterator TopOpeBRepBuild_ListIteratorOfListOfLoop;
-typedef NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave>>::Iterator TopOpeBRepBuild_ListIteratorOfListOfPave;
-typedef NCollection_List<TopOpeBRepBuild_ShapeListOfShape>::Iterator TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape;
-typedef NCollection_List<TopOpeBRepBuild_ListOfLoop> TopOpeBRepBuild_ListOfListOfLoop;
-typedef NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>> TopOpeBRepBuild_ListOfLoop;
-typedef NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave>> TopOpeBRepBuild_ListOfPave;
-typedef NCollection_List<TopOpeBRepBuild_ShapeListOfShape> TopOpeBRepBuild_ListOfShapeListOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepBuild_ListOfShapeListOfShape, TopTools_ShapeMapHasher>::Iterator TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepBuild_ListOfShapeListOfShape, TopTools_ShapeMapHasher> TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, TopOpeBRepBuild_VertexInfo, TopTools_ShapeMapHasher> TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo;
+typedef NCollection_List <TopOpeBRepBuild_ListOfLoop>::Iterator TopOpeBRepBuild_ListIteratorOfListOfListOfLoop;
+typedef NCollection_List <opencascade::handle <TopOpeBRepBuild_Loop>>::Iterator TopOpeBRepBuild_ListIteratorOfListOfLoop;
+typedef NCollection_List <opencascade::handle <TopOpeBRepBuild_Pave>>::Iterator TopOpeBRepBuild_ListIteratorOfListOfPave;
+typedef NCollection_List <TopOpeBRepBuild_ShapeListOfShape>::Iterator TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape;
+typedef NCollection_List <TopOpeBRepBuild_ListOfLoop> TopOpeBRepBuild_ListOfListOfLoop;
+typedef NCollection_List <opencascade::handle <TopOpeBRepBuild_Loop>> TopOpeBRepBuild_ListOfLoop;
+typedef NCollection_List <opencascade::handle <TopOpeBRepBuild_Pave>> TopOpeBRepBuild_ListOfPave;
+typedef NCollection_List <TopOpeBRepBuild_ShapeListOfShape> TopOpeBRepBuild_ListOfShapeListOfShape;
 typedef TopOpeBRepBuild_Builder * TopOpeBRepBuild_PBuilder;
 typedef TopOpeBRepBuild_GTopo * TopOpeBRepBuild_PGTopo;
 typedef TopOpeBRepBuild_WireEdgeSet * TopOpeBRepBuild_PWireEdgeSet;
@@ -1054,7 +1054,7 @@ Lou: TopTools_ListOfShape
 
 Returns
 -------
-None
+void
 ") GCopyList;
 		static void GCopyList(const TopTools_ListOfShape & Lin, const Standard_Integer i1, const Standard_Integer i2, TopTools_ListOfShape & Lou);
 
@@ -1070,7 +1070,7 @@ Lou: TopTools_ListOfShape
 
 Returns
 -------
-None
+void
 ") GCopyList;
 		static void GCopyList(const TopTools_ListOfShape & Lin, TopTools_ListOfShape & Lou);
 
@@ -2054,7 +2054,7 @@ Pnt: gp_Pnt
 
 Returns
 -------
-None
+void
 ") GdumpORIPARPNT;
 		static void GdumpORIPARPNT(const TopAbs_Orientation o, const Standard_Real p, const gp_Pnt & Pnt);
 
@@ -2069,7 +2069,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") GdumpPNT;
 		static void GdumpPNT(const gp_Pnt & P);
 
@@ -3300,7 +3300,7 @@ E: TopoDS_Edge
 
 Returns
 -------
-None
+void
 ") PrintCur;
 		static void PrintCur(const TopoDS_Edge & E);
 
@@ -3315,7 +3315,7 @@ S: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") PrintGeo;
 		static void PrintGeo(const TopoDS_Shape & S);
 
@@ -3330,7 +3330,7 @@ S: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") PrintOri;
 		static void PrintOri(const TopoDS_Shape & S);
 
@@ -3345,7 +3345,7 @@ V: TopoDS_Vertex
 
 Returns
 -------
-None
+void
 ") PrintPnt;
 		static void PrintPnt(const TopoDS_Vertex & V);
 
@@ -3360,7 +3360,7 @@ F: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") PrintSur;
 		static void PrintSur(const TopoDS_Face & F);
 
@@ -3816,7 +3816,7 @@ aHeadList: TopTools_ListOfShape
 
 Returns
 -------
-None
+void
 ") CheckList;
 		static void CheckList(const TopoDS_Face & aFace, TopTools_ListOfShape & aHeadList);
 
@@ -3867,7 +3867,7 @@ P2dL: gp_Pnt2d
 
 Returns
 -------
-None
+void
 ") GetP2dFL;
 		static void GetP2dFL(const TopoDS_Face & aFace, const TopoDS_Edge & anEdge, gp_Pnt2d & P2dF, gp_Pnt2d & P2dL);
 
@@ -6637,7 +6637,7 @@ aTolMax: float,optional
 
 Returns
 -------
-None
+void
 ") CorrectCurveOnSurface;
 		static void CorrectCurveOnSurface(const TopoDS_Shape & aS, const Standard_Real aTolMax = 0.0001);
 
@@ -6655,7 +6655,7 @@ aMapOfCorrect2dEdges: TopTools_IndexedDataMapOfShapeShape
 
 Returns
 -------
-None
+void
 ") CorrectFace2d;
 		static void CorrectFace2d(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace, const TopTools_IndexedMapOfOrientedShape & aSourceShapes, TopTools_IndexedDataMapOfShapeShape & aMapOfCorrect2dEdges);
 
@@ -6672,7 +6672,7 @@ aTolMax: float,optional
 
 Returns
 -------
-None
+void
 ") CorrectPointOnCurve;
 		static void CorrectPointOnCurve(const TopoDS_Shape & aS, const Standard_Real aTolMax = 0.0001);
 
@@ -6689,7 +6689,7 @@ aTolMax: float,optional
 
 Returns
 -------
-None
+void
 ") CorrectTolerances;
 		static void CorrectTolerances(const TopoDS_Shape & aS, const Standard_Real aTolMax = 0.0001);
 
@@ -6709,7 +6709,7 @@ aMapVs: TopOpeBRepDS_DataMapOfShapeState
 
 Returns
 -------
-None
+void
 ") FindState;
 		static void FindState(const TopoDS_Shape & aVertex, const TopAbs_State aState, const TopAbs_ShapeEnum aShapeEnum, const TopTools_IndexedDataMapOfShapeListOfShape & aMapVertexEdges, TopTools_MapOfShape & aMapProcessedVertices, TopOpeBRepDS_DataMapOfShapeState & aMapVs);
 
@@ -6728,7 +6728,7 @@ aMapVs: TopOpeBRepDS_DataMapOfShapeState
 
 Returns
 -------
-None
+void
 ") FindState1;
 		static void FindState1(const TopoDS_Shape & anEdge, const TopAbs_State aState, const TopTools_IndexedDataMapOfShapeListOfShape & aMapEdgesFaces, TopTools_MapOfShape & aMapProcessedVertices, TopOpeBRepDS_DataMapOfShapeState & aMapVs);
 
@@ -6747,7 +6747,7 @@ aMapVs: TopOpeBRepDS_DataMapOfShapeState
 
 Returns
 -------
-None
+void
 ") FindState2;
 		static void FindState2(const TopoDS_Shape & anEdge, const TopAbs_State aState, const TopTools_IndexedDataMapOfShapeListOfShape & aMapEdgesFaces, TopTools_MapOfShape & aMapProcessedEdges, TopOpeBRepDS_DataMapOfShapeState & aMapVs);
 
@@ -6800,7 +6800,7 @@ aNormal: gp_Vec
 
 Returns
 -------
-None
+void
 ") GetNormalInNearestPoint;
 		static void GetNormalInNearestPoint(const TopoDS_Face & aFace, const TopoDS_Edge & anEdge, gp_Vec & aNormal);
 
@@ -6817,7 +6817,7 @@ aDirNormal: gp_Vec
 
 Returns
 -------
-None
+void
 ") GetNormalToFaceOnEdge;
 		static void GetNormalToFaceOnEdge(const TopoDS_Face & aFObj, const TopoDS_Edge & anEdgeObj, gp_Vec & aDirNormal);
 
@@ -6883,7 +6883,7 @@ corrFace: TopoDS_Shape
 
 Returns
 -------
-None
+void
 ") NormalizeFace;
 		static void NormalizeFace(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace);
 
@@ -6904,7 +6904,7 @@ anUnkStateShapes: TopTools_MapOfShape
 
 Returns
 -------
-None
+void
 ") PropagateState;
 		static void PropagateState(const TopOpeBRepDS_DataMapOfShapeState & aSplEdgesState, const TopTools_IndexedMapOfShape & anEdgesToRestMap, const TopAbs_ShapeEnum aShapeEnum1, const TopAbs_ShapeEnum aShapeEnum2, TopOpeBRepTool_ShapeClassifier & aShapeClassifier, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState, const TopTools_MapOfShape & anUnkStateShapes);
 
@@ -6920,7 +6920,7 @@ aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
 
 Returns
 -------
-None
+void
 ") PropagateStateForWires;
 		static void PropagateStateForWires(const TopTools_IndexedMapOfShape & aFacesToRestMap, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState);
 
@@ -6937,7 +6937,7 @@ aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
 
 Returns
 -------
-None
+void
 ") SpreadStateToChild;
 		static void SpreadStateToChild(const TopoDS_Shape & aShape, const TopAbs_State aState, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState);
 
@@ -6954,7 +6954,7 @@ NewFace: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") UpdateEdgeOnFace;
 		static void UpdateEdgeOnFace(const TopoDS_Edge & aEdgeToUpdate, const TopoDS_Face & OldFace, const TopoDS_Face & NewFace);
 
@@ -6971,7 +6971,7 @@ NewFace: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") UpdateEdgeOnPeriodicalFace;
 		static void UpdateEdgeOnPeriodicalFace(const TopoDS_Edge & aEdgeToUpdate, const TopoDS_Face & OldFace, const TopoDS_Face & NewFace);
 
@@ -6988,7 +6988,7 @@ toFace: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") UpdatePCurves;
 		static void UpdatePCurves(const TopoDS_Wire & aWire, const TopoDS_Face & fromFace, const TopoDS_Face & toFace);
 
@@ -7017,7 +7017,7 @@ aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
 
 Returns
 -------
-None
+void
 ") DumpMapOfShapeVertexInfo;
 		static void DumpMapOfShapeVertexInfo(const TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & aMap);
 
@@ -7033,7 +7033,7 @@ aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
 
 Returns
 -------
-None
+void
 ") MakeMapOfShapeVertexInfo;
 		static void MakeMapOfShapeVertexInfo(const TopoDS_Wire & aWire, TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & aMap);
 
@@ -7049,7 +7049,7 @@ aResList: TopTools_ListOfShape
 
 Returns
 -------
-None
+void
 ") Path;
 		static void Path(const TopoDS_Wire & aWire, TopTools_ListOfShape & aResList);
 
@@ -7465,7 +7465,7 @@ L: TopOpeBRepBuild_ListOfLoop
 
 Returns
 -------
-None
+void
 ") DumpList;
 		static void DumpList(const TopOpeBRepBuild_ListOfLoop & L);
 
@@ -8566,7 +8566,7 @@ Lout: TopOpeBRepBuild_ListOfPave
 
 Returns
 -------
-None
+void
 ") SortPave;
 		static void SortPave(const TopOpeBRepBuild_ListOfPave & Lin, TopOpeBRepBuild_ListOfPave & Lout);
 

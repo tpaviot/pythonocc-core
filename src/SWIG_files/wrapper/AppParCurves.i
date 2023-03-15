@@ -90,10 +90,10 @@ AppParCurves_CurvaturePoint = AppParCurves_Constraint.AppParCurves_CurvaturePoin
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(AppParCurves_HArray1OfMultiCurve)
 %wrap_handle(AppParCurves_HArray1OfConstraintCouple)
-%wrap_handle(AppParCurves_HArray1OfMultiPoint)
 %wrap_handle(AppParCurves_HArray1OfMultiBSpCurve)
+%wrap_handle(AppParCurves_HArray1OfMultiCurve)
+%wrap_handle(AppParCurves_HArray1OfMultiPoint)
 /* end handles declaration */
 
 /* templates */
@@ -256,12 +256,12 @@ AppParCurves_CurvaturePoint = AppParCurves_Constraint.AppParCurves_CurvaturePoin
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<AppParCurves_ConstraintCouple> AppParCurves_Array1OfConstraintCouple;
-typedef NCollection_Array1<AppParCurves_MultiBSpCurve> AppParCurves_Array1OfMultiBSpCurve;
-typedef NCollection_Array1<AppParCurves_MultiCurve> AppParCurves_Array1OfMultiCurve;
-typedef NCollection_Array1<AppParCurves_MultiPoint> AppParCurves_Array1OfMultiPoint;
-typedef NCollection_Sequence<AppParCurves_MultiBSpCurve> AppParCurves_SequenceOfMultiBSpCurve;
-typedef NCollection_Sequence<AppParCurves_MultiCurve> AppParCurves_SequenceOfMultiCurve;
+typedef NCollection_Array1 <AppParCurves_ConstraintCouple> AppParCurves_Array1OfConstraintCouple;
+typedef NCollection_Array1 <AppParCurves_MultiBSpCurve> AppParCurves_Array1OfMultiBSpCurve;
+typedef NCollection_Array1 <AppParCurves_MultiCurve> AppParCurves_Array1OfMultiCurve;
+typedef NCollection_Array1 <AppParCurves_MultiPoint> AppParCurves_Array1OfMultiPoint;
+typedef NCollection_Sequence <AppParCurves_MultiBSpCurve> AppParCurves_SequenceOfMultiBSpCurve;
+typedef NCollection_Sequence <AppParCurves_MultiCurve> AppParCurves_SequenceOfMultiCurve;
 /* end typedefs declaration */
 
 /*********************
@@ -284,7 +284,7 @@ DA: math_Matrix
 
 Returns
 -------
-None
+void
 ") Bernstein;
 		static void Bernstein(const Standard_Integer NbPoles, const math_Vector & U, math_Matrix & A, math_Matrix & DA);
 
@@ -301,7 +301,7 @@ A: math_Matrix
 
 Returns
 -------
-None
+void
 ") BernsteinMatrix;
 		static void BernsteinMatrix(const Standard_Integer NbPoles, const math_Vector & U, math_Matrix & A);
 
@@ -317,7 +317,7 @@ DDA: math_Vector
 
 Returns
 -------
-None
+void
 ") SecondDerivativeBernstein;
 		static void SecondDerivativeBernstein(const Standard_Real U, math_Vector & DDA);
 
@@ -338,7 +338,7 @@ Index: math_IntegerVector
 
 Returns
 -------
-None
+void
 ") SplineFunction;
 		static void SplineFunction(const Standard_Integer NbPoles, const Standard_Integer Degree, const math_Vector & Parameters, const math_Vector & FlatKnots, math_Matrix & A, math_Matrix & DA, math_IntegerVector & Index);
 
@@ -1302,17 +1302,6 @@ None
 
 /* harray1 classes */
 
-class AppParCurves_HArray1OfMultiCurve : public AppParCurves_Array1OfMultiCurve, public Standard_Transient {
-  public:
-    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiCurve::value_type& theValue);
-    AppParCurves_HArray1OfMultiCurve(const AppParCurves_Array1OfMultiCurve& theOther);
-    const AppParCurves_Array1OfMultiCurve& Array1();
-    AppParCurves_Array1OfMultiCurve& ChangeArray1();
-};
-%make_alias(AppParCurves_HArray1OfMultiCurve)
-
-
 class AppParCurves_HArray1OfConstraintCouple : public AppParCurves_Array1OfConstraintCouple, public Standard_Transient {
   public:
     AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1324,17 +1313,6 @@ class AppParCurves_HArray1OfConstraintCouple : public AppParCurves_Array1OfConst
 %make_alias(AppParCurves_HArray1OfConstraintCouple)
 
 
-class AppParCurves_HArray1OfMultiPoint : public AppParCurves_Array1OfMultiPoint, public Standard_Transient {
-  public:
-    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiPoint::value_type& theValue);
-    AppParCurves_HArray1OfMultiPoint(const AppParCurves_Array1OfMultiPoint& theOther);
-    const AppParCurves_Array1OfMultiPoint& Array1();
-    AppParCurves_Array1OfMultiPoint& ChangeArray1();
-};
-%make_alias(AppParCurves_HArray1OfMultiPoint)
-
-
 class AppParCurves_HArray1OfMultiBSpCurve : public AppParCurves_Array1OfMultiBSpCurve, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1344,6 +1322,28 @@ class AppParCurves_HArray1OfMultiBSpCurve : public AppParCurves_Array1OfMultiBSp
     AppParCurves_Array1OfMultiBSpCurve& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiBSpCurve)
+
+
+class AppParCurves_HArray1OfMultiCurve : public AppParCurves_Array1OfMultiCurve, public Standard_Transient {
+  public:
+    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiCurve::value_type& theValue);
+    AppParCurves_HArray1OfMultiCurve(const AppParCurves_Array1OfMultiCurve& theOther);
+    const AppParCurves_Array1OfMultiCurve& Array1();
+    AppParCurves_Array1OfMultiCurve& ChangeArray1();
+};
+%make_alias(AppParCurves_HArray1OfMultiCurve)
+
+
+class AppParCurves_HArray1OfMultiPoint : public AppParCurves_Array1OfMultiPoint, public Standard_Transient {
+  public:
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiPoint::value_type& theValue);
+    AppParCurves_HArray1OfMultiPoint(const AppParCurves_Array1OfMultiPoint& theOther);
+    const AppParCurves_Array1OfMultiPoint& Array1();
+    AppParCurves_Array1OfMultiPoint& ChangeArray1();
+};
+%make_alias(AppParCurves_HArray1OfMultiPoint)
 
 /* harray2 classes */
 /* hsequence classes */

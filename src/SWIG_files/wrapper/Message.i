@@ -62,6 +62,42 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Message_ConsoleColor {
+	Message_ConsoleColor_Default = 0,
+	Message_ConsoleColor_Black = 1,
+	Message_ConsoleColor_White = 2,
+	Message_ConsoleColor_Red = 3,
+	Message_ConsoleColor_Blue = 4,
+	Message_ConsoleColor_Green = 5,
+	Message_ConsoleColor_Yellow = 6,
+	Message_ConsoleColor_Cyan = 7,
+	Message_ConsoleColor_Magenta = 8,
+};
+
+enum Message_Gravity {
+	Message_Trace = 0,
+	Message_Info = 1,
+	Message_Warning = 2,
+	Message_Alarm = 3,
+	Message_Fail = 4,
+};
+
+enum Message_MetricType {
+	Message_MetricType_None = 0,
+	Message_MetricType_ThreadCPUUserTime = 1,
+	Message_MetricType_ThreadCPUSystemTime = 2,
+	Message_MetricType_ProcessCPUUserTime = 3,
+	Message_MetricType_ProcessCPUSystemTime = 4,
+	Message_MetricType_WallClock = 5,
+	Message_MetricType_MemPrivate = 6,
+	Message_MetricType_MemVirtual = 7,
+	Message_MetricType_MemWorkingSet = 8,
+	Message_MetricType_MemWorkingSetPeak = 9,
+	Message_MetricType_MemSwapUsage = 10,
+	Message_MetricType_MemSwapUsagePeak = 11,
+	Message_MetricType_MemHeapUsage = 12,
+};
+
 enum Message_Status {
 	Message_None = 0,
 	Message_Done1 = Message_DONE,
@@ -194,42 +230,6 @@ enum Message_Status {
 	Message_Fail32 = 128,
 };
 
-enum Message_ConsoleColor {
-	Message_ConsoleColor_Default = 0,
-	Message_ConsoleColor_Black = 1,
-	Message_ConsoleColor_White = 2,
-	Message_ConsoleColor_Red = 3,
-	Message_ConsoleColor_Blue = 4,
-	Message_ConsoleColor_Green = 5,
-	Message_ConsoleColor_Yellow = 6,
-	Message_ConsoleColor_Cyan = 7,
-	Message_ConsoleColor_Magenta = 8,
-};
-
-enum Message_Gravity {
-	Message_Trace = 0,
-	Message_Info = 1,
-	Message_Warning = 2,
-	Message_Alarm = 3,
-	Message_Fail = 4,
-};
-
-enum Message_MetricType {
-	Message_MetricType_None = 0,
-	Message_MetricType_ThreadCPUUserTime = 1,
-	Message_MetricType_ThreadCPUSystemTime = 2,
-	Message_MetricType_ProcessCPUUserTime = 3,
-	Message_MetricType_ProcessCPUSystemTime = 4,
-	Message_MetricType_WallClock = 5,
-	Message_MetricType_MemPrivate = 6,
-	Message_MetricType_MemVirtual = 7,
-	Message_MetricType_MemWorkingSet = 8,
-	Message_MetricType_MemWorkingSetPeak = 9,
-	Message_MetricType_MemSwapUsage = 10,
-	Message_MetricType_MemSwapUsagePeak = 11,
-	Message_MetricType_MemHeapUsage = 12,
-};
-
 enum Message_StatusType {
 	Message_DONE = 256,
 	Message_WARN = 512,
@@ -241,6 +241,66 @@ enum Message_StatusType {
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Message_ConsoleColor(IntEnum):
+	Message_ConsoleColor_Default = 0
+	Message_ConsoleColor_Black = 1
+	Message_ConsoleColor_White = 2
+	Message_ConsoleColor_Red = 3
+	Message_ConsoleColor_Blue = 4
+	Message_ConsoleColor_Green = 5
+	Message_ConsoleColor_Yellow = 6
+	Message_ConsoleColor_Cyan = 7
+	Message_ConsoleColor_Magenta = 8
+Message_ConsoleColor_Default = Message_ConsoleColor.Message_ConsoleColor_Default
+Message_ConsoleColor_Black = Message_ConsoleColor.Message_ConsoleColor_Black
+Message_ConsoleColor_White = Message_ConsoleColor.Message_ConsoleColor_White
+Message_ConsoleColor_Red = Message_ConsoleColor.Message_ConsoleColor_Red
+Message_ConsoleColor_Blue = Message_ConsoleColor.Message_ConsoleColor_Blue
+Message_ConsoleColor_Green = Message_ConsoleColor.Message_ConsoleColor_Green
+Message_ConsoleColor_Yellow = Message_ConsoleColor.Message_ConsoleColor_Yellow
+Message_ConsoleColor_Cyan = Message_ConsoleColor.Message_ConsoleColor_Cyan
+Message_ConsoleColor_Magenta = Message_ConsoleColor.Message_ConsoleColor_Magenta
+
+class Message_Gravity(IntEnum):
+	Message_Trace = 0
+	Message_Info = 1
+	Message_Warning = 2
+	Message_Alarm = 3
+	Message_Fail = 4
+Message_Trace = Message_Gravity.Message_Trace
+Message_Info = Message_Gravity.Message_Info
+Message_Warning = Message_Gravity.Message_Warning
+Message_Alarm = Message_Gravity.Message_Alarm
+Message_Fail = Message_Gravity.Message_Fail
+
+class Message_MetricType(IntEnum):
+	Message_MetricType_None = 0
+	Message_MetricType_ThreadCPUUserTime = 1
+	Message_MetricType_ThreadCPUSystemTime = 2
+	Message_MetricType_ProcessCPUUserTime = 3
+	Message_MetricType_ProcessCPUSystemTime = 4
+	Message_MetricType_WallClock = 5
+	Message_MetricType_MemPrivate = 6
+	Message_MetricType_MemVirtual = 7
+	Message_MetricType_MemWorkingSet = 8
+	Message_MetricType_MemWorkingSetPeak = 9
+	Message_MetricType_MemSwapUsage = 10
+	Message_MetricType_MemSwapUsagePeak = 11
+	Message_MetricType_MemHeapUsage = 12
+Message_MetricType_None = Message_MetricType.Message_MetricType_None
+Message_MetricType_ThreadCPUUserTime = Message_MetricType.Message_MetricType_ThreadCPUUserTime
+Message_MetricType_ThreadCPUSystemTime = Message_MetricType.Message_MetricType_ThreadCPUSystemTime
+Message_MetricType_ProcessCPUUserTime = Message_MetricType.Message_MetricType_ProcessCPUUserTime
+Message_MetricType_ProcessCPUSystemTime = Message_MetricType.Message_MetricType_ProcessCPUSystemTime
+Message_MetricType_WallClock = Message_MetricType.Message_MetricType_WallClock
+Message_MetricType_MemPrivate = Message_MetricType.Message_MetricType_MemPrivate
+Message_MetricType_MemVirtual = Message_MetricType.Message_MetricType_MemVirtual
+Message_MetricType_MemWorkingSet = Message_MetricType.Message_MetricType_MemWorkingSet
+Message_MetricType_MemWorkingSetPeak = Message_MetricType.Message_MetricType_MemWorkingSetPeak
+Message_MetricType_MemSwapUsage = Message_MetricType.Message_MetricType_MemSwapUsage
+Message_MetricType_MemSwapUsagePeak = Message_MetricType.Message_MetricType_MemSwapUsagePeak
+Message_MetricType_MemHeapUsage = Message_MetricType.Message_MetricType_MemHeapUsage
 
 class Message_Status(IntEnum):
 	Message_None = 0
@@ -502,66 +562,6 @@ Message_Fail30 = Message_Status.Message_Fail30
 Message_Fail31 = Message_Status.Message_Fail31
 Message_Fail32 = Message_Status.Message_Fail32
 
-class Message_ConsoleColor(IntEnum):
-	Message_ConsoleColor_Default = 0
-	Message_ConsoleColor_Black = 1
-	Message_ConsoleColor_White = 2
-	Message_ConsoleColor_Red = 3
-	Message_ConsoleColor_Blue = 4
-	Message_ConsoleColor_Green = 5
-	Message_ConsoleColor_Yellow = 6
-	Message_ConsoleColor_Cyan = 7
-	Message_ConsoleColor_Magenta = 8
-Message_ConsoleColor_Default = Message_ConsoleColor.Message_ConsoleColor_Default
-Message_ConsoleColor_Black = Message_ConsoleColor.Message_ConsoleColor_Black
-Message_ConsoleColor_White = Message_ConsoleColor.Message_ConsoleColor_White
-Message_ConsoleColor_Red = Message_ConsoleColor.Message_ConsoleColor_Red
-Message_ConsoleColor_Blue = Message_ConsoleColor.Message_ConsoleColor_Blue
-Message_ConsoleColor_Green = Message_ConsoleColor.Message_ConsoleColor_Green
-Message_ConsoleColor_Yellow = Message_ConsoleColor.Message_ConsoleColor_Yellow
-Message_ConsoleColor_Cyan = Message_ConsoleColor.Message_ConsoleColor_Cyan
-Message_ConsoleColor_Magenta = Message_ConsoleColor.Message_ConsoleColor_Magenta
-
-class Message_Gravity(IntEnum):
-	Message_Trace = 0
-	Message_Info = 1
-	Message_Warning = 2
-	Message_Alarm = 3
-	Message_Fail = 4
-Message_Trace = Message_Gravity.Message_Trace
-Message_Info = Message_Gravity.Message_Info
-Message_Warning = Message_Gravity.Message_Warning
-Message_Alarm = Message_Gravity.Message_Alarm
-Message_Fail = Message_Gravity.Message_Fail
-
-class Message_MetricType(IntEnum):
-	Message_MetricType_None = 0
-	Message_MetricType_ThreadCPUUserTime = 1
-	Message_MetricType_ThreadCPUSystemTime = 2
-	Message_MetricType_ProcessCPUUserTime = 3
-	Message_MetricType_ProcessCPUSystemTime = 4
-	Message_MetricType_WallClock = 5
-	Message_MetricType_MemPrivate = 6
-	Message_MetricType_MemVirtual = 7
-	Message_MetricType_MemWorkingSet = 8
-	Message_MetricType_MemWorkingSetPeak = 9
-	Message_MetricType_MemSwapUsage = 10
-	Message_MetricType_MemSwapUsagePeak = 11
-	Message_MetricType_MemHeapUsage = 12
-Message_MetricType_None = Message_MetricType.Message_MetricType_None
-Message_MetricType_ThreadCPUUserTime = Message_MetricType.Message_MetricType_ThreadCPUUserTime
-Message_MetricType_ThreadCPUSystemTime = Message_MetricType.Message_MetricType_ThreadCPUSystemTime
-Message_MetricType_ProcessCPUUserTime = Message_MetricType.Message_MetricType_ProcessCPUUserTime
-Message_MetricType_ProcessCPUSystemTime = Message_MetricType.Message_MetricType_ProcessCPUSystemTime
-Message_MetricType_WallClock = Message_MetricType.Message_MetricType_WallClock
-Message_MetricType_MemPrivate = Message_MetricType.Message_MetricType_MemPrivate
-Message_MetricType_MemVirtual = Message_MetricType.Message_MetricType_MemVirtual
-Message_MetricType_MemWorkingSet = Message_MetricType.Message_MetricType_MemWorkingSet
-Message_MetricType_MemWorkingSetPeak = Message_MetricType.Message_MetricType_MemWorkingSetPeak
-Message_MetricType_MemSwapUsage = Message_MetricType.Message_MetricType_MemSwapUsage
-Message_MetricType_MemSwapUsagePeak = Message_MetricType.Message_MetricType_MemSwapUsagePeak
-Message_MetricType_MemHeapUsage = Message_MetricType.Message_MetricType_MemHeapUsage
-
 class Message_StatusType(IntEnum):
 	Message_DONE = 256
 	Message_WARN = 512
@@ -621,12 +621,12 @@ Message_FAIL = Message_StatusType.Message_FAIL
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<NCollection_Handle<Message_Msg>> Message_ArrayOfMsg;
-typedef NCollection_Handle<Message_ArrayOfMsg> Message_HArrayOfMsg;
-typedef NCollection_List<Message_Msg>::Iterator Message_ListIteratorOfListOfMsg;
-typedef NCollection_List<opencascade::handle<Message_Alert>> Message_ListOfAlert;
-typedef NCollection_List<Message_Msg> Message_ListOfMsg;
-typedef NCollection_Sequence<opencascade::handle<Message_Printer>> Message_SequenceOfPrinters;
+typedef NCollection_Array1 <NCollection_Handle <Message_Msg>> Message_ArrayOfMsg;
+typedef NCollection_Handle <Message_ArrayOfMsg> Message_HArrayOfMsg;
+typedef NCollection_List <Message_Msg>::Iterator Message_ListIteratorOfListOfMsg;
+typedef NCollection_List <opencascade::handle <Message_Alert>> Message_ListOfAlert;
+typedef NCollection_List <Message_Msg> Message_ListOfMsg;
+typedef NCollection_Sequence <opencascade::handle <Message_Printer>> Message_SequenceOfPrinters;
 /* end typedefs declaration */
 
 /****************
@@ -1464,9 +1464,9 @@ LastStatus = StatusRange.LastStatus
 /* end python proxy for enums */
 
 		/****************** Message_ExecStatus ******************/
-		/**** md5 signature: 04a3641ea96e31fb888770b16b3f97b3 ****/
+		/**** md5 signature: 81ce600a10147bda408af7fde8804409 ****/
 		%feature("compactdefaultargs") Message_ExecStatus;
-		%feature("autodoc", "Create empty execution status.
+		%feature("autodoc", "//!@name creation and simple operations with statuses //!@{ create empty execution status.
 
 Returns
 -------
@@ -1475,7 +1475,7 @@ None
 		 Message_ExecStatus();
 
 		/****************** Message_ExecStatus ******************/
-		/**** md5 signature: e70fcb9e18b669793b993e8322ea1605 ****/
+		/**** md5 signature: 81e17341219b4d3276fcce03efe2f535 ****/
 		%feature("compactdefaultargs") Message_ExecStatus;
 		%feature("autodoc", "Initialise the execution status.
 
@@ -1603,7 +1603,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Check if at least one status of each type is set.
+		%feature("autodoc", "//!@} //!@name advanced: group operations (useful for analysis) //!@{ check if at least one status of each type is set.
 
 Returns
 -------
@@ -2513,7 +2513,7 @@ class Message_ProgressIndicator : public Standard_Transient {
 		/****************** GetPosition ******************/
 		/**** md5 signature: a5e1b2902874eb36e192e83771aaa0de ****/
 		%feature("compactdefaultargs") GetPosition;
-		%feature("autodoc", "Returns total progress position ranged from 0 to 1. should not be called concurrently while the progress is advancing, except from implementation of method show().
+		%feature("autodoc", "//!@name auxiliary methods returns total progress position ranged from 0 to 1. should not be called concurrently while the progress is advancing, except from implementation of method show().
 
 Returns
 -------
@@ -2524,7 +2524,7 @@ float
 		/****************** Start ******************/
 		/**** md5 signature: 641d195faa8ef13594a798925aa3d5fe ****/
 		%feature("compactdefaultargs") Start;
-		%feature("autodoc", "Resets the indicator to zero, calls reset(), and returns the range. this range refers to the scope that has no name and is initialized with max value 1 and step 1. use this method to get the top level range for progress indication.
+		%feature("autodoc", "//!@name initialization of progress indication resets the indicator to zero, calls reset(), and returns the range. this range refers to the scope that has no name and is initialized with max value 1 and step 1. use this method to get the top level range for progress indication.
 
 Returns
 -------
@@ -2564,7 +2564,7 @@ Message_ProgressRange
 class Message_ProgressRange {
 	public:
 		/****************** Message_ProgressRange ******************/
-		/**** md5 signature: bcc3605cb831aa500c4a3f7a8a42117b ****/
+		/**** md5 signature: e697cba764b32d837041e5b89d33031f ****/
 		%feature("compactdefaultargs") Message_ProgressRange;
 		%feature("autodoc", "Constructor of the empty range.
 
@@ -2575,7 +2575,7 @@ None
 		 Message_ProgressRange();
 
 		/****************** Message_ProgressRange ******************/
-		/**** md5 signature: 03ca52206a59f90254b00728aece2467 ****/
+		/**** md5 signature: d2f3a707a379f30914ebe70f2ef10b91 ****/
 		%feature("compactdefaultargs") Message_ProgressRange;
 		%feature("autodoc", "Copy constructor disarms the source.
 
@@ -3003,7 +3003,7 @@ None
 class Message_AlertExtended : public Message_Alert {
 	public:
 		/****************** Message_AlertExtended ******************/
-		/**** md5 signature: 511a89534645d66d0f332b262d6c6a00 ****/
+		/**** md5 signature: e45676ad3f711d40001b87f6c628965a ****/
 		%feature("compactdefaultargs") Message_AlertExtended;
 		%feature("autodoc", "Empty constructor.
 
@@ -3199,7 +3199,7 @@ theStartValue: bool
 
 Returns
 -------
-None
+void
 ") SetAlertMetrics;
 		static void SetAlertMetrics(const opencascade::handle<Message_AlertExtended> & theAlert, const Standard_Boolean theStartValue);
 
@@ -3246,7 +3246,7 @@ theAlert: Message_AlertExtended
 
 Returns
 -------
-None
+void
 ") StartAlert;
 		static void StartAlert(const opencascade::handle<Message_AlertExtended> & theAlert);
 
@@ -3276,7 +3276,7 @@ theAlert: Message_AlertExtended
 
 Returns
 -------
-None
+void
 ") StopAlert;
 		static void StopAlert(const opencascade::handle<Message_AlertExtended> & theAlert);
 
@@ -3676,7 +3676,7 @@ None
 class Message_ProgressSentry : public Message_ProgressScope {
 	public:
 		/****************** Message_ProgressSentry ******************/
-		/**** md5 signature: 1230165fd9f060b2f2607edcf046b87e ****/
+		/**** md5 signature: 8b6c7a22433664fd95be03aa7a7de57c ****/
 		%feature("compactdefaultargs") Message_ProgressSentry;
 		%feature("autodoc", "Deprecated constructor, message_progressscope should be created instead.
 

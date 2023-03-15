@@ -80,6 +80,12 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum ShapeExtend_Parametrisation {
+	ShapeExtend_Natural = 0,
+	ShapeExtend_Uniform = 1,
+	ShapeExtend_Unitary = 2,
+};
+
 enum ShapeExtend_Status {
 	ShapeExtend_OK = 0,
 	ShapeExtend_DONE1 = 1,
@@ -102,16 +108,18 @@ enum ShapeExtend_Status {
 	ShapeExtend_FAIL = 18,
 };
 
-enum ShapeExtend_Parametrisation {
-	ShapeExtend_Natural = 0,
-	ShapeExtend_Uniform = 1,
-	ShapeExtend_Unitary = 2,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class ShapeExtend_Parametrisation(IntEnum):
+	ShapeExtend_Natural = 0
+	ShapeExtend_Uniform = 1
+	ShapeExtend_Unitary = 2
+ShapeExtend_Natural = ShapeExtend_Parametrisation.ShapeExtend_Natural
+ShapeExtend_Uniform = ShapeExtend_Parametrisation.ShapeExtend_Uniform
+ShapeExtend_Unitary = ShapeExtend_Parametrisation.ShapeExtend_Unitary
 
 class ShapeExtend_Status(IntEnum):
 	ShapeExtend_OK = 0
@@ -152,14 +160,6 @@ ShapeExtend_FAIL6 = ShapeExtend_Status.ShapeExtend_FAIL6
 ShapeExtend_FAIL7 = ShapeExtend_Status.ShapeExtend_FAIL7
 ShapeExtend_FAIL8 = ShapeExtend_Status.ShapeExtend_FAIL8
 ShapeExtend_FAIL = ShapeExtend_Status.ShapeExtend_FAIL
-
-class ShapeExtend_Parametrisation(IntEnum):
-	ShapeExtend_Natural = 0
-	ShapeExtend_Uniform = 1
-	ShapeExtend_Unitary = 2
-ShapeExtend_Natural = ShapeExtend_Parametrisation.ShapeExtend_Natural
-ShapeExtend_Uniform = ShapeExtend_Parametrisation.ShapeExtend_Uniform
-ShapeExtend_Unitary = ShapeExtend_Parametrisation.ShapeExtend_Unitary
 };
 /* end python proxy for enums */
 
@@ -177,10 +177,10 @@ ShapeExtend_Unitary = ShapeExtend_Parametrisation.ShapeExtend_Unitary
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, Message_ListOfMsg, TopTools_ShapeMapHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_ListOfMsg, TColStd_MapTransientHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
-typedef NCollection_DataMap<TopoDS_Shape, Message_ListOfMsg, TopTools_ShapeMapHasher> ShapeExtend_DataMapOfShapeListOfMsg;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_ListOfMsg, TColStd_MapTransientHasher> ShapeExtend_DataMapOfTransientListOfMsg;
+typedef NCollection_DataMap <TopoDS_Shape, Message_ListOfMsg, TopTools_ShapeMapHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
+typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Message_ListOfMsg, TColStd_MapTransientHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
+typedef NCollection_DataMap <TopoDS_Shape, Message_ListOfMsg, TopTools_ShapeMapHasher> ShapeExtend_DataMapOfShapeListOfMsg;
+typedef NCollection_DataMap <opencascade::handle <Standard_Transient>, Message_ListOfMsg, TColStd_MapTransientHasher> ShapeExtend_DataMapOfTransientListOfMsg;
 /* end typedefs declaration */
 
 /********************
@@ -227,7 +227,7 @@ int
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 

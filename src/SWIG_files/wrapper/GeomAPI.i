@@ -1489,7 +1489,7 @@ None
 		/****************** GeomAPI_PointsToBSplineSurface ******************/
 		/**** md5 signature: 89e4fef7b36ea0cc4809845df2ec0702 ****/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of points. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
 
 Parameters
 ----------
@@ -1512,7 +1512,7 @@ None
 		/****************** GeomAPI_PointsToBSplineSurface ******************/
 		/**** md5 signature: b06632372e631834dec233be4c6062b7 ****/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of points. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
 
 Parameters
 ----------
@@ -1536,7 +1536,7 @@ None
 		/****************** GeomAPI_PointsToBSplineSurface ******************/
 		/**** md5 signature: 0f92d967ca91e638ce16cb1de728d40e ****/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of points using variational smoothing algorithm, which tries to minimize additional criterium: weight1*curvelength + weight2*curvature + weight3*torsion.
 
 Parameters
 ----------
@@ -1560,7 +1560,7 @@ None
 		/****************** GeomAPI_PointsToBSplineSurface ******************/
 		/**** md5 signature: 18c9dc77b1398b22b7b96c2894279ca8 ****/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of points. //! the points will be constructed as follow: p(i,j) = gp_pnt( x0 + (i-1)*dx , y0 + (j-1)*dy , zpoints(i,j) ) //! the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d 4- the parametrization of the surface will verify: s->value( u, v) = gp_pnt( u, v, z(u,v) );.
 
 Parameters
 ----------
@@ -1587,7 +1587,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: d1fe1adbe74945ffd2f0b0828c24cbba ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
 
 Parameters
 ----------
@@ -1610,7 +1610,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: 1f71893fa018098b5de546e2782bf809 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of points. //! the points will be constructed as follow: p(i,j) = gp_pnt( x0 + (i-1)*dx , y0 + (j-1)*dy , zpoints(i,j) ) //! the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d 4- the parametrization of the surface will verify: s->value( u, v) = gp_pnt( u, v, z(u,v) );.
 
 Parameters
 ----------
@@ -1637,7 +1637,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: cbcc6dc6d8d95c3356809760518dbbe5 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
 
 Parameters
 ----------
@@ -1663,7 +1663,7 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: b8b27b2e999215a80edec006fc879478 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Approximates a bspline surface passing through an array of point using variational smoothing algorithm, which tries to minimize additional criterium: weight1*curvelength + weight2*curvature + weight3*torsion.
 
 Parameters
 ----------
@@ -1687,7 +1687,7 @@ None
 		/****************** Interpolate ******************/
 		/**** md5 signature: 39a2fafd0536bd02290befa9647199e4 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Interpolates a bspline surface passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be 3. 2- his continuity will be c2.
 
 Parameters
 ----------
@@ -1704,7 +1704,7 @@ None
 		/****************** Interpolate ******************/
 		/**** md5 signature: bc163deb29fcb86c6c064c33384a7741 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Interpolates a bspline surface passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be 3. 2- his continuity will be c2.
 
 Parameters
 ----------
@@ -1722,7 +1722,7 @@ None
 		/****************** Interpolate ******************/
 		/**** md5 signature: 90cbcca9c810e9398c32dca0c12c513c ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Interpolates a bspline surface passing through an array of points. //! the points will be constructed as follow: p(i,j) = gp_pnt( x0 + (i-1)*dx , y0 + (j-1)*dy , zpoints(i,j) ) //! the resulting bspline will have the following properties: 1- his degree will be 3 2- his continuity will be c2. 4- the parametrization of the surface will verify: s->value( u, v) = gp_pnt( u, v, z(u,v) );.
 
 Parameters
 ----------

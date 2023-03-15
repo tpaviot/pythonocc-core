@@ -231,6 +231,10 @@ Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
+class Image_AlienPixMap:
+	pass
+
+@classnotwrapped
 class Image_ColorRGB:
 	pass
 
@@ -275,15 +279,19 @@ class Image_ColorBGRAF:
 	pass
 
 @classnotwrapped
-class Image_VideoParams:
-	pass
-
-@classnotwrapped
-class Image_VideoRecorder:
-	pass
-
-@classnotwrapped
 class Image_CompressedPixMap:
+	pass
+
+@classnotwrapped
+class Image_DDSParser:
+	pass
+
+@classnotwrapped
+class Image_Diff:
+	pass
+
+@classnotwrapped
+class Image_PixMap:
 	pass
 
 @classnotwrapped
@@ -295,11 +303,7 @@ class Image_PixMapTypedData:
 	pass
 
 @classnotwrapped
-class Image_DDSParser:
-	pass
-
-@classnotwrapped
-class Image_PixMap:
+class Image_SupportedFormats:
 	pass
 
 @classnotwrapped
@@ -307,15 +311,11 @@ class Image_Texture:
 	pass
 
 @classnotwrapped
-class Image_AlienPixMap:
+class Image_VideoParams:
 	pass
 
 @classnotwrapped
-class Image_Diff:
-	pass
-
-@classnotwrapped
-class Image_SupportedFormats:
+class Image_VideoRecorder:
 	pass
 
 }

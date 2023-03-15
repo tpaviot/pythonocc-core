@@ -106,7 +106,7 @@ class RWStepAP214 {
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 

@@ -42,8 +42,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfill.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TopTools_module.hxx>
 #include<MAT_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
@@ -81,8 +81,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfill.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TopTools.i
 %import MAT.i
+%import TopTools.i
 %import TopoDS.i
 %import gp.i
 %import TColStd.i
@@ -105,30 +105,22 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum BRepFill_TypeOfContact {
-	BRepFill_NoContact = 0,
-	BRepFill_Contact = 1,
-	BRepFill_ContactOnBorder = 2,
-};
-
 enum BRepFill_TransitionStyle {
 	BRepFill_Modified = 0,
 	BRepFill_Right = 1,
 	BRepFill_Round = 2,
 };
 
+enum BRepFill_TypeOfContact {
+	BRepFill_NoContact = 0,
+	BRepFill_Contact = 1,
+	BRepFill_ContactOnBorder = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class BRepFill_TypeOfContact(IntEnum):
-	BRepFill_NoContact = 0
-	BRepFill_Contact = 1
-	BRepFill_ContactOnBorder = 2
-BRepFill_NoContact = BRepFill_TypeOfContact.BRepFill_NoContact
-BRepFill_Contact = BRepFill_TypeOfContact.BRepFill_Contact
-BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 
 class BRepFill_TransitionStyle(IntEnum):
 	BRepFill_Modified = 0
@@ -137,6 +129,14 @@ class BRepFill_TransitionStyle(IntEnum):
 BRepFill_Modified = BRepFill_TransitionStyle.BRepFill_Modified
 BRepFill_Right = BRepFill_TransitionStyle.BRepFill_Right
 BRepFill_Round = BRepFill_TransitionStyle.BRepFill_Round
+
+class BRepFill_TypeOfContact(IntEnum):
+	BRepFill_NoContact = 0
+	BRepFill_Contact = 1
+	BRepFill_ContactOnBorder = 2
+BRepFill_NoContact = BRepFill_TypeOfContact.BRepFill_NoContact
+BRepFill_Contact = BRepFill_TypeOfContact.BRepFill_Contact
+BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 };
 /* end python proxy for enums */
 
@@ -198,26 +198,26 @@ BRepFill_Round = BRepFill_TransitionStyle.BRepFill_Round
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<MAT_Node>, TopTools_DataMapOfShapeShape, TColStd_MapTransientHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape;
-typedef NCollection_DataMap<opencascade::handle<MAT_Node>, TopoDS_Shape, TColStd_MapTransientHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfNodeShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopTools_ListOfShape, TopTools_OrientedShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopTools_DataMapOfShapeListOfShape, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<TopTools_HArray2OfShape>, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TColgp_SequenceOfPnt, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt;
-typedef NCollection_DataMap<TopoDS_Shape, TColStd_SequenceOfReal, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal;
-typedef NCollection_DataMap<opencascade::handle<MAT_Node>, TopTools_DataMapOfShapeShape, TColStd_MapTransientHasher> BRepFill_DataMapOfNodeDataMapOfShapeShape;
-typedef NCollection_DataMap<opencascade::handle<MAT_Node>, TopoDS_Shape, TColStd_MapTransientHasher> BRepFill_DataMapOfNodeShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopTools_ListOfShape, TopTools_OrientedShapeMapHasher> BRepFill_DataMapOfOrientedShapeListOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopTools_DataMapOfShapeListOfShape, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeDataMapOfShapeListOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<TopTools_HArray2OfShape>, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeHArray2OfShape;
-typedef NCollection_DataMap<TopoDS_Shape, TColgp_SequenceOfPnt, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeSequenceOfPnt;
-typedef NCollection_DataMap<TopoDS_Shape, TColStd_SequenceOfReal, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeSequenceOfReal;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, TopTools_ListOfShape, TopTools_OrientedShapeMapHasher> BRepFill_IndexedDataMapOfOrientedShapeListOfShape;
-typedef NCollection_List<BRepFill_OffsetWire>::Iterator BRepFill_ListIteratorOfListOfOffsetWire;
-typedef NCollection_List<BRepFill_OffsetWire> BRepFill_ListOfOffsetWire;
-typedef NCollection_Sequence<BRepFill_EdgeFaceAndOrder> BRepFill_SequenceOfEdgeFaceAndOrder;
-typedef NCollection_Sequence<BRepFill_FaceAndOrder> BRepFill_SequenceOfFaceAndOrder;
-typedef NCollection_Sequence<BRepFill_Section> BRepFill_SequenceOfSection;
+typedef NCollection_DataMap <opencascade::handle <MAT_Node>, TopTools_DataMapOfShapeShape, TColStd_MapTransientHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape;
+typedef NCollection_DataMap <opencascade::handle <MAT_Node>, TopoDS_Shape, TColStd_MapTransientHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfNodeShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopTools_ListOfShape, TopTools_OrientedShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopTools_DataMapOfShapeListOfShape, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <TopTools_HArray2OfShape>, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TColgp_SequenceOfPnt, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt;
+typedef NCollection_DataMap <TopoDS_Shape, TColStd_SequenceOfReal, TopTools_ShapeMapHasher>::Iterator BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal;
+typedef NCollection_DataMap <opencascade::handle <MAT_Node>, TopTools_DataMapOfShapeShape, TColStd_MapTransientHasher> BRepFill_DataMapOfNodeDataMapOfShapeShape;
+typedef NCollection_DataMap <opencascade::handle <MAT_Node>, TopoDS_Shape, TColStd_MapTransientHasher> BRepFill_DataMapOfNodeShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopTools_ListOfShape, TopTools_OrientedShapeMapHasher> BRepFill_DataMapOfOrientedShapeListOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopTools_DataMapOfShapeListOfShape, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeDataMapOfShapeListOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <TopTools_HArray2OfShape>, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeHArray2OfShape;
+typedef NCollection_DataMap <TopoDS_Shape, TColgp_SequenceOfPnt, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeSequenceOfPnt;
+typedef NCollection_DataMap <TopoDS_Shape, TColStd_SequenceOfReal, TopTools_ShapeMapHasher> BRepFill_DataMapOfShapeSequenceOfReal;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, TopTools_ListOfShape, TopTools_OrientedShapeMapHasher> BRepFill_IndexedDataMapOfOrientedShapeListOfShape;
+typedef NCollection_List <BRepFill_OffsetWire>::Iterator BRepFill_ListIteratorOfListOfOffsetWire;
+typedef NCollection_List <BRepFill_OffsetWire> BRepFill_ListOfOffsetWire;
+typedef NCollection_Sequence <BRepFill_EdgeFaceAndOrder> BRepFill_SequenceOfEdgeFaceAndOrder;
+typedef NCollection_Sequence <BRepFill_FaceAndOrder> BRepFill_SequenceOfFaceAndOrder;
+typedef NCollection_Sequence <BRepFill_Section> BRepFill_SequenceOfSection;
 /* end typedefs declaration */
 
 /*****************
@@ -256,7 +256,7 @@ ACR: TColStd_Array1OfReal
 
 Returns
 -------
-None
+void
 ") ComputeACR;
 		static void ComputeACR(const TopoDS_Wire & wire, TColStd_Array1OfReal & ACR);
 
@@ -324,7 +324,7 @@ TopoDS_Shell
 class BRepFill_AdvancedEvolved {
 	public:
 		/****************** BRepFill_AdvancedEvolved ******************/
-		/**** md5 signature: de66ae3cdf69d9d623f47984cdb95d29 ****/
+		/**** md5 signature: ab34e9fe0d70534304b59a7933dc1ff0 ****/
 		%feature("compactdefaultargs") BRepFill_AdvancedEvolved;
 		%feature("autodoc", "Constructor.
 

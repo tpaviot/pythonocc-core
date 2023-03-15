@@ -127,8 +127,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TPrsStd_Driver>, Standard_GUID>::Iterator TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
-typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TPrsStd_Driver>, Standard_GUID> TPrsStd_DataMapOfGUIDDriver;
+typedef NCollection_DataMap <Standard_GUID, opencascade::handle <TPrsStd_Driver>, Standard_GUID>::Iterator TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
+typedef NCollection_DataMap <Standard_GUID, opencascade::handle <TPrsStd_Driver>, Standard_GUID> TPrsStd_DataMapOfGUIDDriver;
 /* end typedefs declaration */
 
 /********************************
@@ -692,7 +692,7 @@ L: TDF_Label
 
 Returns
 -------
-None
+void
 ") Unset;
 		static void Unset(const TDF_Label & L);
 
@@ -1015,7 +1015,7 @@ acces: TDF_Label
 
 Returns
 -------
-None
+void
 ") Update;
 		static void Update(const TDF_Label & acces);
 
@@ -1058,7 +1058,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeAngle;
 		static void ComputeAngle(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1074,7 +1074,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeAngleForOneFace;
 		static void ComputeAngleForOneFace(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1090,7 +1090,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeCoincident;
 		static void ComputeCoincident(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1106,7 +1106,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeConcentric;
 		static void ComputeConcentric(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1122,7 +1122,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeDiameter;
 		static void ComputeDiameter(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1138,7 +1138,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeDistance;
 		static void ComputeDistance(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1154,7 +1154,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeEqualDistance;
 		static void ComputeEqualDistance(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1170,7 +1170,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeEqualRadius;
 		static void ComputeEqualRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1186,7 +1186,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeFix;
 		static void ComputeFix(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1202,7 +1202,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeMaxRadius;
 		static void ComputeMaxRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1218,7 +1218,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeMidPoint;
 		static void ComputeMidPoint(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1234,7 +1234,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeMinRadius;
 		static void ComputeMinRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1250,7 +1250,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeOffset;
 		static void ComputeOffset(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1266,7 +1266,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeOthers;
 		static void ComputeOthers(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1282,7 +1282,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeParallel;
 		static void ComputeParallel(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1298,7 +1298,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputePerpendicular;
 		static void ComputePerpendicular(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1314,7 +1314,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputePlacement;
 		static void ComputePlacement(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1330,7 +1330,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeRadius;
 		static void ComputeRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1346,7 +1346,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeRound;
 		static void ComputeRound(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1362,7 +1362,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeSymmetry;
 		static void ComputeSymmetry(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1378,7 +1378,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") ComputeTangent;
 		static void ComputeTangent(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
@@ -1411,7 +1411,7 @@ anAIS: AIS_InteractiveObject
 
 Returns
 -------
-None
+void
 ") UpdateOnlyValue;
 		static void UpdateOnlyValue(const opencascade::handle<TDataXtd_Constraint> & aConst, const opencascade::handle<AIS_InteractiveObject> & anAIS);
 

@@ -86,21 +86,17 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum V3d_TypeOfVisualization {
-	V3d_WIREFRAME = 0,
-	V3d_ZBUFFER = 1,
-};
-
-enum V3d_TypeOfView {
-	V3d_ORTHOGRAPHIC = 0,
-	V3d_PERSPECTIVE = 1,
-};
-
 enum V3d_StereoDumpOptions {
 	V3d_SDO_MONO = 0,
 	V3d_SDO_LEFT_EYE = 1,
 	V3d_SDO_RIGHT_EYE = 2,
 	V3d_SDO_BLENDED = 3,
+};
+
+enum V3d_TypeOfAxe {
+	V3d_X = 0,
+	V3d_Y = 1,
+	V3d_Z = 2,
 };
 
 enum V3d_TypeOfOrientation {
@@ -148,28 +144,20 @@ enum V3d_TypeOfOrientation {
 	V3d_TypeOfOrientation_Yup_Right = V3d_Xneg,
 };
 
-enum V3d_TypeOfAxe {
-	V3d_X = 0,
-	V3d_Y = 1,
-	V3d_Z = 2,
+enum V3d_TypeOfView {
+	V3d_ORTHOGRAPHIC = 0,
+	V3d_PERSPECTIVE = 1,
+};
+
+enum V3d_TypeOfVisualization {
+	V3d_WIREFRAME = 0,
+	V3d_ZBUFFER = 1,
 };
 
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class V3d_TypeOfVisualization(IntEnum):
-	V3d_WIREFRAME = 0
-	V3d_ZBUFFER = 1
-V3d_WIREFRAME = V3d_TypeOfVisualization.V3d_WIREFRAME
-V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
-
-class V3d_TypeOfView(IntEnum):
-	V3d_ORTHOGRAPHIC = 0
-	V3d_PERSPECTIVE = 1
-V3d_ORTHOGRAPHIC = V3d_TypeOfView.V3d_ORTHOGRAPHIC
-V3d_PERSPECTIVE = V3d_TypeOfView.V3d_PERSPECTIVE
 
 class V3d_StereoDumpOptions(IntEnum):
 	V3d_SDO_MONO = 0
@@ -180,6 +168,14 @@ V3d_SDO_MONO = V3d_StereoDumpOptions.V3d_SDO_MONO
 V3d_SDO_LEFT_EYE = V3d_StereoDumpOptions.V3d_SDO_LEFT_EYE
 V3d_SDO_RIGHT_EYE = V3d_StereoDumpOptions.V3d_SDO_RIGHT_EYE
 V3d_SDO_BLENDED = V3d_StereoDumpOptions.V3d_SDO_BLENDED
+
+class V3d_TypeOfAxe(IntEnum):
+	V3d_X = 0
+	V3d_Y = 1
+	V3d_Z = 2
+V3d_X = V3d_TypeOfAxe.V3d_X
+V3d_Y = V3d_TypeOfAxe.V3d_Y
+V3d_Z = V3d_TypeOfAxe.V3d_Z
 
 class V3d_TypeOfOrientation(IntEnum):
 	V3d_Xpos = 0
@@ -267,13 +263,17 @@ V3d_TypeOfOrientation_Yup_Bottom = V3d_TypeOfOrientation.V3d_TypeOfOrientation_Y
 V3d_TypeOfOrientation_Yup_Left = V3d_TypeOfOrientation.V3d_TypeOfOrientation_Yup_Left
 V3d_TypeOfOrientation_Yup_Right = V3d_TypeOfOrientation.V3d_TypeOfOrientation_Yup_Right
 
-class V3d_TypeOfAxe(IntEnum):
-	V3d_X = 0
-	V3d_Y = 1
-	V3d_Z = 2
-V3d_X = V3d_TypeOfAxe.V3d_X
-V3d_Y = V3d_TypeOfAxe.V3d_Y
-V3d_Z = V3d_TypeOfAxe.V3d_Z
+class V3d_TypeOfView(IntEnum):
+	V3d_ORTHOGRAPHIC = 0
+	V3d_PERSPECTIVE = 1
+V3d_ORTHOGRAPHIC = V3d_TypeOfView.V3d_ORTHOGRAPHIC
+V3d_PERSPECTIVE = V3d_TypeOfView.V3d_PERSPECTIVE
+
+class V3d_TypeOfVisualization(IntEnum):
+	V3d_WIREFRAME = 0
+	V3d_ZBUFFER = 1
+V3d_WIREFRAME = V3d_TypeOfVisualization.V3d_WIREFRAME
+V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
 };
 /* end python proxy for enums */
 
@@ -313,9 +313,9 @@ V3d_Z = V3d_TypeOfAxe.V3d_Z
 /* typedefs */
 typedef Handle_Graphic3d_CLight Handle_V3d_Light;
 typedef Graphic3d_CLight V3d_Light;
-typedef NCollection_List<opencascade::handle<Graphic3d_CLight>> V3d_ListOfLight;
+typedef NCollection_List <opencascade::handle <Graphic3d_CLight>> V3d_ListOfLight;
 typedef V3d_ListOfLight::Iterator V3d_ListOfLightIterator;
-typedef NCollection_List<opencascade::handle<V3d_View>> V3d_ListOfView;
+typedef NCollection_List <opencascade::handle <V3d_View>> V3d_ListOfView;
 typedef V3d_ListOfView::Iterator V3d_ListOfViewIterator;
 typedef Graphic3d_TypeOfBackfacingModel V3d_TypeOfBackfacingModel;
 typedef Graphic3d_TypeOfLightSource V3d_TypeOfLight;
@@ -348,7 +348,7 @@ Lng: float
 
 Returns
 -------
-None
+void
 ") ArrowOfRadius;
 		static void ArrowOfRadius(const opencascade::handle<Graphic3d_Group> & garrow, const Standard_Real X0, const Standard_Real Y0, const Standard_Real Z0, const Standard_Real DX, const Standard_Real DY, const Standard_Real DZ, const Standard_Real Alpha, const Standard_Real Lng);
 
@@ -370,7 +370,7 @@ Radius: float
 
 Returns
 -------
-None
+void
 ") CircleInPlane;
 		static void CircleInPlane(const opencascade::handle<Graphic3d_Group> & gcircle, const Standard_Real X0, const Standard_Real Y0, const Standard_Real Z0, const Standard_Real VX, const Standard_Real VY, const Standard_Real VZ, const Standard_Real Radius);
 
@@ -401,7 +401,7 @@ aNextView: V3d_View
 
 Returns
 -------
-None
+void
 ") SwitchViewsinWindow;
 		static void SwitchViewsinWindow(const opencascade::handle<V3d_View> & aPreviousView, const opencascade::handle<V3d_View> & aNextView);
 
@@ -624,9 +624,9 @@ class V3d_ImageDumpOptions {
 		int TileSize;
 		bool ToAdjustAspect;
 		/****************** V3d_ImageDumpOptions ******************/
-		/**** md5 signature: 76f5aa893839bb4a2f4519e2b5549b24 ****/
+		/**** md5 signature: ce1cbd6f8afb87bd978f6e4f9bd1ab2a ****/
 		%feature("compactdefaultargs") V3d_ImageDumpOptions;
-		%feature("autodoc", "Default constructor.
+		%feature("autodoc", "//!< flag to override active view aspect ratio by (width / height) defined for image dump (true by default) default constructor.
 
 Returns
 -------
@@ -2016,7 +2016,7 @@ gp_Pnt
 		/****************** IfMoreLights ******************/
 		/**** md5 signature: f43a715413579a7ba11da9f479d85caa ****/
 		%feature("compactdefaultargs") IfMoreLights;
-		%feature("autodoc", "Returns true if one light more can be activated in this view.
+		%feature("autodoc", "@name deprecated methods returns true if one light more can be activated in this view.
 
 Returns
 -------
@@ -2141,7 +2141,7 @@ bool
 		/****************** IsSubview ******************/
 		/**** md5 signature: e4786984f763125a6b3ee9d1975a34eb ****/
 		%feature("compactdefaultargs") IsSubview;
-		%feature("autodoc", "Return true if this is a subview of another view.
+		%feature("autodoc", "@name subvew management return true if this is a subview of another view.
 
 Returns
 -------
@@ -3990,7 +3990,7 @@ None
 		/****************** ActivateGrid ******************/
 		/**** md5 signature: 00bc3f4c997ffd5dbf63fdf576318948 ****/
 		%feature("compactdefaultargs") ActivateGrid;
-		%feature("autodoc", "Activates the grid in all views of <self>.
+		%feature("autodoc", "@name grid management activates the grid in all views of <self>.
 
 Parameters
 ----------
@@ -4391,7 +4391,7 @@ opencascade::handle<Graphic3d_GraphicDriver>
 		/****************** Erase ******************/
 		/**** md5 signature: 22f17cdf7e7984cb80d1d94de19c3493 ****/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "Erase all objects in all the views.
+		%feature("autodoc", "@name objects management erase all objects in all the views.
 
 Returns
 -------
@@ -4609,7 +4609,7 @@ None
 		/****************** IsActive ******************/
 		/**** md5 signature: 619177a77eb0e03f8c6370d0e90fb199 ****/
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "Returns standard_true if a grid is activated in <self>.
+		%feature("autodoc", "@name deprecated methods returns standard_true if a grid is activated in <self>.
 
 Returns
 -------
@@ -4745,7 +4745,7 @@ None
 		/****************** PrivilegedPlane ******************/
 		/**** md5 signature: 5dfdae9a994a6d00bba77273741a9e43 ****/
 		%feature("compactdefaultargs") PrivilegedPlane;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@name privileged plane management.
 
 Returns
 -------
@@ -4936,7 +4936,7 @@ None
 		/****************** SetDefaultLights ******************/
 		/**** md5 signature: b4a267b5dfce1e27f8107f3e4fa518ca ****/
 		%feature("compactdefaultargs") SetDefaultLights;
-		%feature("autodoc", "Defines default lights: positional-light 0.3 0. 0. directional-light v3d_xnegyposzpos directional-light v3d_xnegyneg ambient-light.
+		%feature("autodoc", "@name lights management defines default lights: positional-light 0.3 0. 0. directional-light v3d_xnegyposzpos directional-light v3d_xnegyneg ambient-light.
 
 Returns
 -------

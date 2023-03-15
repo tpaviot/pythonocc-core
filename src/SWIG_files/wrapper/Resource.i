@@ -176,10 +176,10 @@ Resource_GB = Resource_FormatType.Resource_GB
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString>::Iterator Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString;
-typedef NCollection_DataMap<TCollection_AsciiString, TCollection_ExtendedString, TCollection_AsciiString>::Iterator Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString;
-typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> Resource_DataMapOfAsciiStringAsciiString;
-typedef NCollection_DataMap<TCollection_AsciiString, TCollection_ExtendedString, TCollection_AsciiString> Resource_DataMapOfAsciiStringExtendedString;
+typedef NCollection_DataMap <TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString>::Iterator Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString;
+typedef NCollection_DataMap <TCollection_AsciiString, TCollection_ExtendedString, TCollection_AsciiString>::Iterator Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString;
+typedef NCollection_DataMap <TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> Resource_DataMapOfAsciiStringAsciiString;
+typedef NCollection_DataMap <TCollection_AsciiString, TCollection_ExtendedString, TCollection_AsciiString> Resource_DataMapOfAsciiStringExtendedString;
 /* end typedefs declaration */
 
 /********************************
@@ -350,7 +350,7 @@ isUserDefaults: bool
 
 Returns
 -------
-None
+void
 ") GetResourcePath;
 		static void GetResourcePath(TCollection_AsciiString & aPath, const char * aName, const Standard_Boolean isUserDefaults);
 
@@ -518,7 +518,7 @@ tostr: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") ConvertEUCToUnicode;
 		static void ConvertEUCToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
 
@@ -534,7 +534,7 @@ theToStr: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode(const char * theFromStr, TCollection_ExtendedString & theToStr);
 
@@ -551,7 +551,7 @@ theToStr: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, const char * theFromStr, TCollection_ExtendedString & theToStr);
 
@@ -583,7 +583,7 @@ tostr: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") ConvertGBToUnicode;
 		static void ConvertGBToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
 
@@ -599,7 +599,7 @@ tostr: TCollection_ExtendedString
 
 Returns
 -------
-None
+void
 ") ConvertSJISToUnicode;
 		static void ConvertSJISToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
 
@@ -724,7 +724,7 @@ Resource_FormatType
 
 Returns
 -------
-None
+void
 ") ReadFormat;
 		static void ReadFormat();
 
@@ -739,7 +739,7 @@ typecode: Resource_FormatType
 
 Returns
 -------
-None
+void
 ") SetFormat;
 		static void SetFormat(const Resource_FormatType typecode);
 

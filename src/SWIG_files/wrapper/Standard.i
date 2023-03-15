@@ -95,7 +95,7 @@ typedef char Standard_Character;
 typedef Standard_ErrorHandler::Callback Standard_ErrorHandlerCallback;
 typedef char16_t Standard_ExtCharacter;
 typedef const Standard_ExtCharacter * Standard_ExtString;
-typedef NCollection_Shared<Standard_Mutex> Standard_HMutex;
+typedef NCollection_Shared <Standard_Mutex> Standard_HMutex;
 typedef std::istream Standard_IStream;
 typedef int Standard_Integer;
 typedef std::ostream Standard_OStream;
@@ -890,7 +890,7 @@ class Standard_Static_Assert<true> {
 
 Returns
 -------
-None
+void
 ") assert_ok;
 		static void assert_ok();
 
@@ -910,7 +910,7 @@ class Standard_Transient {
 	public:
 typedef void base_type;
 		/****************** Standard_Transient ******************/
-		/**** md5 signature: dd92ecab4695d79cd189c5ef2bdf59de ****/
+		/**** md5 signature: cd48a81b96defda64d25c904685341d0 ****/
 		%feature("compactdefaultargs") Standard_Transient;
 		%feature("autodoc", "Empty constructor.
 
@@ -921,7 +921,7 @@ None
 		 Standard_Transient();
 
 		/****************** Standard_Transient ******************/
-		/**** md5 signature: 0b27200416df796984d203ab179771be ****/
+		/**** md5 signature: 3901f16a12b3aa475968759e2be2e43d ****/
 		%feature("compactdefaultargs") Standard_Transient;
 		%feature("autodoc", "Copy constructor -- does nothing.
 
@@ -971,7 +971,7 @@ opencascade::handle<Standard_Type>
 		/****************** GetRefCount ******************/
 		/**** md5 signature: 823f634c14521d142c777f76623eccd8 ****/
 		%feature("compactdefaultargs") GetRefCount;
-		%feature("autodoc", "Get the reference counter of this object.
+		%feature("autodoc", "//!@name reference counting, for use by handle<> get the reference counter of this object.
 
 Returns
 -------
@@ -1115,9 +1115,9 @@ class Standard_UUID {
 /***********************************
 * class direct_base_class_as_tuple *
 ***********************************/
-/***************************************************************************
-* class direct_base_class_as_tuple<std::tr2::__reflection_typelist<Ts...>> *
-***************************************************************************/
+/************************************************************************
+* class direct_base_class_as_tuple<std::tr2::__reflection_typelist<Ts>> *
+************************************************************************/
 /**************************
 * class disable_deduction *
 **************************/
@@ -1127,21 +1127,12 @@ class Standard_UUID {
 /*********************************
 * class has_type<T,std::tuple<>> *
 *********************************/
-/****************************************
-* class has_type<T,std::tuple<T,Ts...>> *
-****************************************/
-/****************************************
-* class has_type<T,std::tuple<U,Ts...>> *
-****************************************/
-/*****************************
-* class is_base_but_not_same *
-*****************************/
+/*************************************
+* class has_type<T,std::tuple<T,Ts>> *
+*************************************/
 /***********************************************************************************************************************
-* class is_base_but_not_same<T1,T2,typenameopencascade::std::enable_if::type<opencascade::std::is_same::value<T1,T2>>> *
+* class is_base_but_not_same<T1,T2,typenameopencascade::std::enable_if<opencascade::std::is_same<T1,T2>::value>::type> *
 ***********************************************************************************************************************/
-/*******************
-* class is_integer *
-*******************/
 /**********************
 * class type_instance *
 **********************/
@@ -1306,7 +1297,7 @@ aMessage: char *,optional
 
 Returns
 -------
-None
+void
 ") Raise;
 		static void Raise(const char * aMessage = "");
 
@@ -1321,7 +1312,7 @@ aReason: Standard_SStream
 
 Returns
 -------
-None
+void
 ") Raise;
 		static void Raise(const Standard_SStream & aReason);
 
@@ -1377,7 +1368,7 @@ theNbStackTraces: int
 
 Returns
 -------
-None
+void
 ") SetDefaultStackTraceLength;
 		static void SetDefaultStackTraceLength(Standard_Integer theNbStackTraces);
 
@@ -1756,7 +1747,7 @@ theMessage: char *,optional
 
 Returns
 -------
-None
+void
 ") Raise;
 		static void Raise(const char * theMessage = "");
 
@@ -1771,7 +1762,7 @@ theMessage: Standard_SStream
 
 Returns
 -------
-None
+void
 ") Raise;
 		static void Raise(Standard_SStream & theMessage);
 
@@ -1807,7 +1798,7 @@ None
 class Standard_Persistent : public Standard_Transient {
 	public:
 		/****************** Standard_Persistent ******************/
-		/**** md5 signature: 1010220e77e16d238565d1a022df9111 ****/
+		/**** md5 signature: d753dfde61069dd94e72e73dfe602718 ****/
 		%feature("compactdefaultargs") Standard_Persistent;
 		%feature("autodoc", "No available documentation.
 
@@ -1958,6 +1949,15 @@ char *
 	}
 };
 
+/*************************************
+* class has_type<T,std::tuple<U,Ts>> *
+*************************************/
+/*****************************
+* class is_base_but_not_same *
+*****************************/
+/*******************
+* class is_integer *
+*******************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped

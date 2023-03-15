@@ -77,10 +77,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_IndexedMap<TopLoc_Location, TopLoc_MapLocationHasher> TopLoc_IndexedMapOfLocation;
-typedef NCollection_Map<TopLoc_Location, TopLoc_MapLocationHasher>::Iterator TopLoc_MapIteratorOfMapOfLocation;
-typedef NCollection_DefaultHasher<TopLoc_Location> TopLoc_MapLocationHasher;
-typedef NCollection_Map<TopLoc_Location, TopLoc_MapLocationHasher> TopLoc_MapOfLocation;
+typedef NCollection_IndexedMap <TopLoc_Location, TopLoc_MapLocationHasher> TopLoc_IndexedMapOfLocation;
+typedef NCollection_Map <TopLoc_Location, TopLoc_MapLocationHasher>::Iterator TopLoc_MapIteratorOfMapOfLocation;
+typedef NCollection_DefaultHasher <TopLoc_Location> TopLoc_MapLocationHasher;
+typedef NCollection_Map <TopLoc_Location, TopLoc_MapLocationHasher> TopLoc_MapOfLocation;
 /* end typedefs declaration */
 
 /***********************
@@ -642,7 +642,7 @@ None
 		 TopLoc_SListOfItemLocation(const TopLoc_ItemLocation & anItem, const TopLoc_SListOfItemLocation & aTail);
 
 		/****************** TopLoc_SListOfItemLocation ******************/
-		/**** md5 signature: c23bf9b5c1b0adfcaf79aa477b9cc274 ****/
+		/**** md5 signature: 4d0e04504f95b740166b59633e20aecf ****/
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "Creates a list from an other one. the lists are shared.
 
@@ -657,19 +657,19 @@ None
 		 TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation & Other);
 
 		/****************** TopLoc_SListOfItemLocation ******************/
-		/**** md5 signature: 0379b2634e957903294469c3ee0f66b5 ****/
+		/**** md5 signature: fd82125252d76db39d2c77ffffa6a547 ****/
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "Move constructor.
 
 Parameters
 ----------
-theOther: TopLoc_SListOfItemLocation
+myNode(std::move(theOthermyNode): TopLoc_SListOfItemLocation  theOther) Standard_Noexcept:
 
 Returns
 -------
 None
 ") TopLoc_SListOfItemLocation;
-		 TopLoc_SListOfItemLocation(TopLoc_SListOfItemLocation & theOther);
+		 TopLoc_SListOfItemLocation(TopLoc_SListOfItemLocation & theOther) Standard_Noexcept: myNode(std::move(theOthermyNode));
 
 		/****************** Assign ******************/
 		/**** md5 signature: b5735fdd3d6cb7b6ceb4cfc062cd319b ****/

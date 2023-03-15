@@ -209,48 +209,48 @@ typedef BOPDS_DataMapOfPaveBlockCommonBlock::Iterator BOPDS_DataMapIteratorOfDat
 typedef BOPDS_DataMapOfPaveBlockListOfInteger::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger;
 typedef BOPDS_DataMapOfPaveBlockListOfPaveBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock;
 typedef BOPDS_DataMapOfShapeCoupleOfPaveBlocks::Iterator BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_DataMap<Standard_Integer, BOPDS_ListOfPaveBlock, TColStd_MapIntegerHasher> BOPDS_DataMapOfIntegerListOfPaveBlock;
-typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger, TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfInteger;
-typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock, TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfPaveBlock;
-typedef NCollection_DataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_DataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger, TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
-typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock, TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_IndexedMapOfPaveBlock;
+typedef NCollection_DataMap <Standard_Integer, BOPDS_ListOfPaveBlock, TColStd_MapIntegerHasher> BOPDS_DataMapOfIntegerListOfPaveBlock;
+typedef NCollection_DataMap <opencascade::handle <BOPDS_PaveBlock>, TColStd_ListOfInteger, TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfInteger;
+typedef NCollection_DataMap <opencascade::handle <BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock, TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfPaveBlock;
+typedef NCollection_DataMap <TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_DataMapOfShapeCoupleOfPaveBlocks;
+typedef NCollection_IndexedDataMap <opencascade::handle <BOPDS_PaveBlock>, TColStd_ListOfInteger, TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
+typedef NCollection_IndexedDataMap <opencascade::handle <BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock, TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks;
+typedef NCollection_IndexedMap <opencascade::handle <BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_IndexedMapOfPaveBlock;
 typedef BOPDS_ListOfPave::Iterator BOPDS_ListIteratorOfListOfPave;
 typedef BOPDS_ListOfPaveBlock::Iterator BOPDS_ListIteratorOfListOfPaveBlock;
-typedef NCollection_List<BOPDS_Pave> BOPDS_ListOfPave;
-typedef NCollection_List<opencascade::handle<BOPDS_PaveBlock>> BOPDS_ListOfPaveBlock;
+typedef NCollection_List <BOPDS_Pave> BOPDS_ListOfPave;
+typedef NCollection_List <opencascade::handle <BOPDS_PaveBlock>> BOPDS_ListOfPaveBlock;
 typedef BOPDS_MapOfCommonBlock::Iterator BOPDS_MapIteratorOfMapOfCommonBlock;
 typedef BOPDS_MapOfPair::Iterator BOPDS_MapIteratorOfMapOfPair;
 typedef BOPDS_MapOfPave::Iterator BOPDS_MapIteratorOfMapOfPave;
 typedef BOPDS_MapOfPaveBlock::Iterator BOPDS_MapIteratorOfMapOfPaveBlock;
-typedef NCollection_Map<opencascade::handle<BOPDS_CommonBlock>, TColStd_MapTransientHasher> BOPDS_MapOfCommonBlock;
-typedef NCollection_Map<BOPDS_Pair, BOPDS_PairMapHasher> BOPDS_MapOfPair;
-typedef NCollection_Map<BOPDS_Pave, BOPDS_PaveMapHasher> BOPDS_MapOfPave;
-typedef NCollection_Map<opencascade::handle<BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_MapOfPaveBlock;
+typedef NCollection_Map <opencascade::handle <BOPDS_CommonBlock>, TColStd_MapTransientHasher> BOPDS_MapOfCommonBlock;
+typedef NCollection_Map <BOPDS_Pair, BOPDS_PairMapHasher> BOPDS_MapOfPair;
+typedef NCollection_Map <BOPDS_Pave, BOPDS_PaveMapHasher> BOPDS_MapOfPave;
+typedef NCollection_Map <opencascade::handle <BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_MapOfPaveBlock;
 typedef BOPDS_DS * BOPDS_PDS;
 typedef BOPDS_Iterator * BOPDS_PIterator;
 typedef BOPDS_IteratorSI * BOPDS_PIteratorSI;
-typedef NCollection_Vector<BOPDS_Curve> BOPDS_VectorOfCurve;
-typedef NCollection_Vector<BOPDS_FaceInfo> BOPDS_VectorOfFaceInfo;
-typedef NCollection_Vector<BOPDS_IndexRange> BOPDS_VectorOfIndexRange;
-typedef NCollection_Vector<BOPDS_InterfEE> BOPDS_VectorOfInterfEE;
-typedef NCollection_Vector<BOPDS_InterfEF> BOPDS_VectorOfInterfEF;
-typedef NCollection_Vector<BOPDS_InterfEZ> BOPDS_VectorOfInterfEZ;
-typedef NCollection_Vector<BOPDS_InterfFF> BOPDS_VectorOfInterfFF;
-typedef NCollection_Vector<BOPDS_InterfFZ> BOPDS_VectorOfInterfFZ;
-typedef NCollection_Vector<BOPDS_InterfVE> BOPDS_VectorOfInterfVE;
-typedef NCollection_Vector<BOPDS_InterfVF> BOPDS_VectorOfInterfVF;
-typedef NCollection_Vector<BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
-typedef NCollection_Vector<BOPDS_InterfVZ> BOPDS_VectorOfInterfVZ;
-typedef NCollection_Vector<BOPDS_InterfZZ> BOPDS_VectorOfInterfZZ;
-typedef NCollection_Vector<BOPDS_ListOfPaveBlock> BOPDS_VectorOfListOfPaveBlock;
-typedef NCollection_Vector<BOPDS_Pair> BOPDS_VectorOfPair;
-typedef NCollection_Array1<BOPDS_Pave> BOPDS_VectorOfPave;
-typedef NCollection_Vector<BOPDS_Point> BOPDS_VectorOfPoint;
-typedef NCollection_Vector<BOPDS_ShapeInfo> BOPDS_VectorOfShapeInfo;
-typedef NCollection_Vector<BOPDS_VectorOfPair> BOPDS_VectorOfVectorOfPair;
+typedef NCollection_Vector <BOPDS_Curve> BOPDS_VectorOfCurve;
+typedef NCollection_Vector <BOPDS_FaceInfo> BOPDS_VectorOfFaceInfo;
+typedef NCollection_Vector <BOPDS_IndexRange> BOPDS_VectorOfIndexRange;
+typedef NCollection_Vector <BOPDS_InterfEE> BOPDS_VectorOfInterfEE;
+typedef NCollection_Vector <BOPDS_InterfEF> BOPDS_VectorOfInterfEF;
+typedef NCollection_Vector <BOPDS_InterfEZ> BOPDS_VectorOfInterfEZ;
+typedef NCollection_Vector <BOPDS_InterfFF> BOPDS_VectorOfInterfFF;
+typedef NCollection_Vector <BOPDS_InterfFZ> BOPDS_VectorOfInterfFZ;
+typedef NCollection_Vector <BOPDS_InterfVE> BOPDS_VectorOfInterfVE;
+typedef NCollection_Vector <BOPDS_InterfVF> BOPDS_VectorOfInterfVF;
+typedef NCollection_Vector <BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
+typedef NCollection_Vector <BOPDS_InterfVZ> BOPDS_VectorOfInterfVZ;
+typedef NCollection_Vector <BOPDS_InterfZZ> BOPDS_VectorOfInterfZZ;
+typedef NCollection_Vector <BOPDS_ListOfPaveBlock> BOPDS_VectorOfListOfPaveBlock;
+typedef NCollection_Vector <BOPDS_Pair> BOPDS_VectorOfPair;
+typedef NCollection_Array1 <BOPDS_Pave> BOPDS_VectorOfPave;
+typedef NCollection_Vector <BOPDS_Point> BOPDS_VectorOfPoint;
+typedef NCollection_Vector <BOPDS_ShapeInfo> BOPDS_VectorOfShapeInfo;
+typedef NCollection_Vector <BOPDS_VectorOfPair> BOPDS_VectorOfVectorOfPair;
 /* end typedefs declaration */
 
 /**************************
@@ -562,7 +562,7 @@ float
 class BOPDS_CoupleOfPaveBlocks {
 	public:
 		/****************** BOPDS_CoupleOfPaveBlocks ******************/
-		/**** md5 signature: 4da52fdebc0ef3b3fa5901784d78a411 ****/
+		/**** md5 signature: 975ec715a0fc789458009568626a0abc ****/
 		%feature("compactdefaultargs") BOPDS_CoupleOfPaveBlocks;
 		%feature("autodoc", "/** * constructor */.
 
@@ -573,7 +573,7 @@ None
 		 BOPDS_CoupleOfPaveBlocks();
 
 		/****************** BOPDS_CoupleOfPaveBlocks ******************/
-		/**** md5 signature: 172b7f8f41b35e1ec971579ff5740616 ****/
+		/**** md5 signature: 7d2b1f27b83374c255ed6bb7e0ece4ae ****/
 		%feature("compactdefaultargs") BOPDS_CoupleOfPaveBlocks;
 		%feature("autodoc", "/** * constructor * @param thepb1 * first pave block * @param thepb2 * secondt pave block */.
 
@@ -613,7 +613,7 @@ int
 		/****************** PaveBlock1 ******************/
 		/**** md5 signature: fbed016ee3e75bed6bbdc5dc7e5b9e3f ****/
 		%feature("compactdefaultargs") PaveBlock1;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * returns the first pave block * returns * the first pave block */.
 
 Returns
 -------
@@ -624,7 +624,7 @@ opencascade::handle<BOPDS_PaveBlock>
 		/****************** PaveBlock2 ******************/
 		/**** md5 signature: c11c5d7da97830f552326c1f5060abd7 ****/
 		%feature("compactdefaultargs") PaveBlock2;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * returns the second pave block * returns * the second pave block */.
 
 Returns
 -------
@@ -635,7 +635,7 @@ opencascade::handle<BOPDS_PaveBlock>
 		/****************** PaveBlocks ******************/
 		/**** md5 signature: 742498916321e6fa2c60c1c2fa641fb7 ****/
 		%feature("compactdefaultargs") PaveBlocks;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * returns pave blocks * @param thepb1 * the first pave block * @param thepb2 * the second pave block */.
 
 Parameters
 ----------
@@ -666,7 +666,7 @@ None
 		/****************** SetIndexInterf ******************/
 		/**** md5 signature: d82912a5e6070d14fdaa4e4b53bfbf16 ****/
 		%feature("compactdefaultargs") SetIndexInterf;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * sets an index of an interference * @param theindex * index of an interference */.
 
 Parameters
 ----------
@@ -681,7 +681,7 @@ None
 		/****************** SetPaveBlock1 ******************/
 		/**** md5 signature: acf4bc4664fb826b50250c087925e0d4 ****/
 		%feature("compactdefaultargs") SetPaveBlock1;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * sets the first pave block * @param thepb * the first pave block */.
 
 Parameters
 ----------
@@ -696,7 +696,7 @@ None
 		/****************** SetPaveBlock2 ******************/
 		/**** md5 signature: d8fe450c6b6529f87a18a0ffa11e9323 ****/
 		%feature("compactdefaultargs") SetPaveBlock2;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * sets the second pave block * @param thepb * the second pave block */.
 
 Parameters
 ----------
@@ -711,7 +711,7 @@ None
 		/****************** SetPaveBlocks ******************/
 		/**** md5 signature: 718ca1b486bee0d326da69a80a6c9984 ****/
 		%feature("compactdefaultargs") SetPaveBlocks;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * sets pave blocks * @param thepb1 * first pave block * @param thepb2 * secondt pave block */.
 
 Parameters
 ----------
@@ -2527,7 +2527,7 @@ bool
 		/****************** NbExtInterfs ******************/
 		/**** md5 signature: dfeacf68558221c9d70c06d649e6cdeb ****/
 		%feature("compactdefaultargs") NbExtInterfs;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@name number of extra interfering types.
 
 Returns
 -------
@@ -2637,7 +2637,7 @@ theIndex2: int
 class BOPDS_Pair {
 	public:
 		/****************** BOPDS_Pair ******************/
-		/**** md5 signature: 5718626f84016ecf34e58bc5be00bee7 ****/
+		/**** md5 signature: 10f3dcb26ac8243f6f63f8d4aa77ec0c ****/
 		%feature("compactdefaultargs") BOPDS_Pair;
 		%feature("autodoc", "No available documentation.
 
@@ -2648,7 +2648,7 @@ None
 		 BOPDS_Pair();
 
 		/****************** BOPDS_Pair ******************/
-		/**** md5 signature: a80bf875fa78b42adb2f59e1eefedf94 ****/
+		/**** md5 signature: f99a4ba786c601f30f7bab957409a7a8 ****/
 		%feature("compactdefaultargs") BOPDS_Pair;
 		%feature("autodoc", "No available documentation.
 
@@ -4069,7 +4069,7 @@ int
 class BOPDS_InterfEE : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfEE ******************/
-		/**** md5 signature: 3a56ee86c80ca876a599958dcbb93de2 ****/
+		/**** md5 signature: 894c1e8acbf5f22eb751c1660c455f86 ****/
 		%feature("compactdefaultargs") BOPDS_InterfEE;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4080,7 +4080,7 @@ None
 		 BOPDS_InterfEE();
 
 		/****************** BOPDS_InterfEE ******************/
-		/**** md5 signature: 66f80f94fd23238be82f83cc36f1acf0 ****/
+		/**** md5 signature: e8b2f2397be4f3ed595cee3fec3403a4 ****/
 		%feature("compactdefaultargs") BOPDS_InterfEE;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4135,7 +4135,7 @@ None
 class BOPDS_InterfEF : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfEF ******************/
-		/**** md5 signature: db7b1db9510fdcd08228116450854f56 ****/
+		/**** md5 signature: 255389356f8f3d7e8ed00300ac031b1a ****/
 		%feature("compactdefaultargs") BOPDS_InterfEF;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4146,9 +4146,9 @@ None
 		 BOPDS_InterfEF();
 
 		/****************** BOPDS_InterfEF ******************/
-		/**** md5 signature: 0888789645a47ab19ec98d181244c93e ****/
+		/**** md5 signature: 93108df770c476d872094577db715993 ****/
 		%feature("compactdefaultargs") BOPDS_InterfEF;
-		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
+		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory *//** * constructor * @param theallocator * allocator to manage the memory */.
 
 Parameters
 ----------
@@ -4201,7 +4201,7 @@ None
 class BOPDS_InterfEZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfEZ ******************/
-		/**** md5 signature: 68a3e3081232b079fb3aa95b06499417 ****/
+		/**** md5 signature: 5110710c637215cc17cac4a500c4a564 ****/
 		%feature("compactdefaultargs") BOPDS_InterfEZ;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4212,7 +4212,7 @@ None
 		 BOPDS_InterfEZ();
 
 		/****************** BOPDS_InterfEZ ******************/
-		/**** md5 signature: 324a547e187942b91af368889f5e90b3 ****/
+		/**** md5 signature: 33cad7b3b8eb3f9ded8a1e65b661ffcf ****/
 		%feature("compactdefaultargs") BOPDS_InterfEZ;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4241,7 +4241,7 @@ None
 class BOPDS_InterfFF : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfFF ******************/
-		/**** md5 signature: e9636cf1028f0ee0277b9b2d95fd34bf ****/
+		/**** md5 signature: 734adb2f691f1a7f71013a10f59bde96 ****/
 		%feature("compactdefaultargs") BOPDS_InterfFF;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4287,7 +4287,7 @@ BOPDS_VectorOfCurve
 		/****************** Init ******************/
 		/**** md5 signature: 4ef383c666596f906f9ce4d66071677d ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "/** * initializer * @param thenbcurves * number of intersection curves * @param thenbpoints * number of intersection points */.
 
 Parameters
 ----------
@@ -4352,7 +4352,7 @@ bool
 class BOPDS_InterfFZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfFZ ******************/
-		/**** md5 signature: e5c202a4fb5b68fc49a5668dc1d5fc67 ****/
+		/**** md5 signature: be896c95bfca1d4f579ceed926206823 ****/
 		%feature("compactdefaultargs") BOPDS_InterfFZ;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4363,7 +4363,7 @@ None
 		 BOPDS_InterfFZ();
 
 		/****************** BOPDS_InterfFZ ******************/
-		/**** md5 signature: fe1676b3d8f89dc728bd691b5be673f3 ****/
+		/**** md5 signature: 7da8cdfcba64a0644b1b217e1bf7d865 ****/
 		%feature("compactdefaultargs") BOPDS_InterfFZ;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4392,7 +4392,7 @@ None
 class BOPDS_InterfVE : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVE ******************/
-		/**** md5 signature: 6271df0bb8ec22b4b5d2f12a131e2ae8 ****/
+		/**** md5 signature: 36fb7386bd2795da370399d4844337a1 ****/
 		%feature("compactdefaultargs") BOPDS_InterfVE;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4403,7 +4403,7 @@ None
 		 BOPDS_InterfVE();
 
 		/****************** BOPDS_InterfVE ******************/
-		/**** md5 signature: 0517f3ece389f8cd8f4272e4ce15ca4d ****/
+		/**** md5 signature: d107a18113943be5359f91d6d82a2b99 ****/
 		%feature("compactdefaultargs") BOPDS_InterfVE;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4458,7 +4458,7 @@ None
 class BOPDS_InterfVF : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVF ******************/
-		/**** md5 signature: 4f904beb865fa4a8a7b6ce31b90e31ce ****/
+		/**** md5 signature: c3bf0ed7a831710b9c83424efafe997d ****/
 		%feature("compactdefaultargs") BOPDS_InterfVF;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4469,7 +4469,7 @@ None
 		 BOPDS_InterfVF();
 
 		/****************** BOPDS_InterfVF ******************/
-		/**** md5 signature: 845ad13694dca1bb6664247530187612 ****/
+		/**** md5 signature: 75e40a3c1752c579f3108791e347e696 ****/
 		%feature("compactdefaultargs") BOPDS_InterfVF;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4529,7 +4529,7 @@ theV: float
 class BOPDS_InterfVV : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVV ******************/
-		/**** md5 signature: e630b4eef92ce00d9ba3c276b244a9d9 ****/
+		/**** md5 signature: db8a1a19960e222a40ca4ff5491f195f ****/
 		%feature("compactdefaultargs") BOPDS_InterfVV;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4540,7 +4540,7 @@ None
 		 BOPDS_InterfVV();
 
 		/****************** BOPDS_InterfVV ******************/
-		/**** md5 signature: b8d96d83bfe94f647252a7f68f684680 ****/
+		/**** md5 signature: b9730b7120c248c701b7784e43f812a5 ****/
 		%feature("compactdefaultargs") BOPDS_InterfVV;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4569,7 +4569,7 @@ None
 class BOPDS_InterfVZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVZ ******************/
-		/**** md5 signature: 96ec00ba8d018a2dbf0e43b26f1e2583 ****/
+		/**** md5 signature: b4e0f3d98ca35fb6fc6bb58a9301db47 ****/
 		%feature("compactdefaultargs") BOPDS_InterfVZ;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4580,7 +4580,7 @@ None
 		 BOPDS_InterfVZ();
 
 		/****************** BOPDS_InterfVZ ******************/
-		/**** md5 signature: 5c02cc4070faaca682e63bf98e24be8d ****/
+		/**** md5 signature: 84628194c411c13570495c4b17e62ce8 ****/
 		%feature("compactdefaultargs") BOPDS_InterfVZ;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 
@@ -4609,7 +4609,7 @@ None
 class BOPDS_InterfZZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfZZ ******************/
-		/**** md5 signature: 113ab70d063043dabdc7028349eeea00 ****/
+		/**** md5 signature: 7e010b31c339a8dcd36d5779c444ad2c ****/
 		%feature("compactdefaultargs") BOPDS_InterfZZ;
 		%feature("autodoc", "/** * constructor */.
 
@@ -4620,7 +4620,7 @@ None
 		 BOPDS_InterfZZ();
 
 		/****************** BOPDS_InterfZZ ******************/
-		/**** md5 signature: 5f74a14b8c05998299025f2f1bc01f77 ****/
+		/**** md5 signature: 039fe6031fe27ac88ebec013f2723a43 ****/
 		%feature("compactdefaultargs") BOPDS_InterfZZ;
 		%feature("autodoc", "/** * constructor * @param theallocator * allocator to manage the memory */.
 

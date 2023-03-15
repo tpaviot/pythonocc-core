@@ -1342,7 +1342,7 @@ T: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const IntCurve_PConic & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T);
 
@@ -1361,7 +1361,7 @@ N: gp_Vec2d
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const IntCurve_PConic & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & T, gp_Vec2d & N);
 

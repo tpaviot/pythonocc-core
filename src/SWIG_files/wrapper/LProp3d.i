@@ -320,7 +320,7 @@ V1: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
@@ -339,7 +339,7 @@ V2: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -359,7 +359,7 @@ V3: gp_Vec
 
 Returns
 -------
-None
+void
 ") D3;
 		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -406,7 +406,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P);
 
@@ -792,7 +792,7 @@ D1V: gp_Vec
 
 Returns
 -------
-None
+void
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -815,7 +815,7 @@ DUV: gp_Vec
 
 Returns
 -------
-None
+void
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
@@ -852,7 +852,7 @@ P: gp_Pnt
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 

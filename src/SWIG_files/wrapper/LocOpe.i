@@ -141,11 +141,11 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, gp_Pnt, TopTools_ShapeMapHasher>::Iterator LocOpe_DataMapIteratorOfDataMapOfShapePnt;
-typedef NCollection_DataMap<TopoDS_Shape, gp_Pnt, TopTools_ShapeMapHasher> LocOpe_DataMapOfShapePnt;
-typedef NCollection_Sequence<gp_Circ> LocOpe_SequenceOfCirc;
-typedef NCollection_Sequence<gp_Lin> LocOpe_SequenceOfLin;
-typedef NCollection_Sequence<LocOpe_PntFace> LocOpe_SequenceOfPntFace;
+typedef NCollection_DataMap <TopoDS_Shape, gp_Pnt, TopTools_ShapeMapHasher>::Iterator LocOpe_DataMapIteratorOfDataMapOfShapePnt;
+typedef NCollection_DataMap <TopoDS_Shape, gp_Pnt, TopTools_ShapeMapHasher> LocOpe_DataMapOfShapePnt;
+typedef NCollection_Sequence <gp_Circ> LocOpe_SequenceOfCirc;
+typedef NCollection_Sequence <gp_Lin> LocOpe_SequenceOfLin;
+typedef NCollection_Sequence <LocOpe_PntFace> LocOpe_SequenceOfPntFace;
 /* end typedefs declaration */
 
 /***************
@@ -198,7 +198,7 @@ Pt: TColgp_SequenceOfPnt
 
 Returns
 -------
-None
+void
 ") SampleEdges;
 		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
 
@@ -1823,7 +1823,7 @@ TopoDS_Shape
 class LocOpe_PntFace {
 	public:
 		/****************** LocOpe_PntFace ******************/
-		/**** md5 signature: c684a8bde8adce128427067674a86331 ****/
+		/**** md5 signature: 4b323f6ccea060c8fdc073e7b7bd4a79 ****/
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "Empty constructor. useful only for the list.
 
@@ -1834,7 +1834,7 @@ None
 		 LocOpe_PntFace();
 
 		/****************** LocOpe_PntFace ******************/
-		/**** md5 signature: ea86175f30e9af52a111a51286aaae17 ****/
+		/**** md5 signature: 352cc33811bbed69b841db8f6142829e ****/
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "No available documentation.
 
@@ -2127,7 +2127,7 @@ None
 		 LocOpe_SplitDrafts();
 
 		/****************** LocOpe_SplitDrafts ******************/
-		/**** md5 signature: e2701639f1b17ae18c73bfdf74b775be ****/
+		/**** md5 signature: 077f9bcf7fafecf284c0be58c0cb2aea ****/
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "Creates the algorithm on the shape <s>.
 

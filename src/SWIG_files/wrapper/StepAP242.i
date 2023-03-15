@@ -122,9 +122,9 @@ None
 
 Returns
 -------
-opencascade::handle<TCollection_HAsciiString>
+inline opencascade::handle<TCollection_HAsciiString>
 ") AttributeValue;
-		opencascade::handle<TCollection_HAsciiString> AttributeValue();
+		inline opencascade::handle<TCollection_HAsciiString> AttributeValue();
 
 		/****************** IdentifiedItem ******************/
 		/**** md5 signature: 22dbcc40152d04af05b3e34678d7fb4e ****/
@@ -133,9 +133,9 @@ opencascade::handle<TCollection_HAsciiString>
 
 Returns
 -------
-StepAP242_IdAttributeSelect
+inline StepAP242_IdAttributeSelect
 ") IdentifiedItem;
-		StepAP242_IdAttributeSelect IdentifiedItem();
+		inline StepAP242_IdAttributeSelect IdentifiedItem();
 
 		/****************** Init ******************/
 		/**** md5 signature: 08239daa2e0d431bf0c6be628d64a336 ****/
@@ -164,9 +164,9 @@ theAttributeValue: TCollection_HAsciiString
 
 Returns
 -------
-None
+inline void
 ") SetAttributeValue;
-		void SetAttributeValue(const opencascade::handle<TCollection_HAsciiString> & theAttributeValue);
+		inline void SetAttributeValue(const opencascade::handle<TCollection_HAsciiString> & theAttributeValue);
 
 		/****************** SetIdentifiedItem ******************/
 		/**** md5 signature: a284a423df0c9582240124b9512fa1f9 ****/
@@ -179,9 +179,9 @@ theIdentifiedItem: StepAP242_IdAttributeSelect
 
 Returns
 -------
-None
+inline void
 ") SetIdentifiedItem;
-		void SetIdentifiedItem(const StepAP242_IdAttributeSelect & theIdentifiedItem);
+		inline void SetIdentifiedItem(const StepAP242_IdAttributeSelect & theIdentifiedItem);
 
 };
 
@@ -378,9 +378,9 @@ None
 
 Returns
 -------
-StepAP242_ItemIdentifiedRepresentationUsageDefinition
+inline StepAP242_ItemIdentifiedRepresentationUsageDefinition
 ") Definition;
-		StepAP242_ItemIdentifiedRepresentationUsageDefinition Definition();
+		inline StepAP242_ItemIdentifiedRepresentationUsageDefinition Definition();
 
 		/****************** Description ******************/
 		/**** md5 signature: 7afda2a98699b570b25a81c5acf9e043 ****/
@@ -389,9 +389,9 @@ StepAP242_ItemIdentifiedRepresentationUsageDefinition
 
 Returns
 -------
-opencascade::handle<TCollection_HAsciiString>
+inline opencascade::handle<TCollection_HAsciiString>
 ") Description;
-		opencascade::handle<TCollection_HAsciiString> Description();
+		inline opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** IdentifiedItem ******************/
 		/**** md5 signature: 2f7ebe1107954650bb508514bae23994 ****/
@@ -400,9 +400,9 @@ opencascade::handle<TCollection_HAsciiString>
 
 Returns
 -------
-opencascade::handle<StepRepr_HArray1OfRepresentationItem>
+inline opencascade::handle<StepRepr_HArray1OfRepresentationItem>
 ") IdentifiedItem;
-		opencascade::handle<StepRepr_HArray1OfRepresentationItem> IdentifiedItem();
+		inline opencascade::handle<StepRepr_HArray1OfRepresentationItem> IdentifiedItem();
 
 		/****************** IdentifiedItemValue ******************/
 		/**** md5 signature: d901fcdbe75f6f4819aea517aa0951ee ****/
@@ -415,9 +415,9 @@ num: int
 
 Returns
 -------
-opencascade::handle<StepRepr_RepresentationItem>
+inline opencascade::handle<StepRepr_RepresentationItem>
 ") IdentifiedItemValue;
-		opencascade::handle<StepRepr_RepresentationItem> IdentifiedItemValue(const Standard_Integer num);
+		inline opencascade::handle<StepRepr_RepresentationItem> IdentifiedItemValue(const Standard_Integer num);
 
 		/****************** Init ******************/
 		/**** md5 signature: 6d1eb1c4fa0f31b992b8238c982be05a ****/
@@ -445,9 +445,9 @@ None
 
 Returns
 -------
-opencascade::handle<TCollection_HAsciiString>
+inline opencascade::handle<TCollection_HAsciiString>
 ") Name;
-		opencascade::handle<TCollection_HAsciiString> Name();
+		inline opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** NbIdentifiedItem ******************/
 		/**** md5 signature: 60f8e4abc308ba7cd5d67e96c8cdb010 ****/
@@ -456,9 +456,9 @@ opencascade::handle<TCollection_HAsciiString>
 
 Returns
 -------
-int
+inline int
 ") NbIdentifiedItem;
-		Standard_Integer NbIdentifiedItem();
+		inline Standard_Integer NbIdentifiedItem();
 
 		/****************** SetDefinition ******************/
 		/**** md5 signature: cd39bedc7b00410c1ca91625b706751a ****/
@@ -471,9 +471,9 @@ theDefinition: StepAP242_ItemIdentifiedRepresentationUsageDefinition
 
 Returns
 -------
-None
+inline void
 ") SetDefinition;
-		void SetDefinition(const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition);
+		inline void SetDefinition(const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition);
 
 		/****************** SetDescription ******************/
 		/**** md5 signature: 0bce0561a53455957ccc1e744344d445 ****/
@@ -486,9 +486,9 @@ theDescription: TCollection_HAsciiString
 
 Returns
 -------
-None
+inline void
 ") SetDescription;
-		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & theDescription);
+		inline void SetDescription(const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****************** SetIdentifiedItem ******************/
 		/**** md5 signature: c8c178c6a18f5eef57cf629ecf236a8b ****/
@@ -501,9 +501,9 @@ theIdentifiedItem: StepRepr_HArray1OfRepresentationItem
 
 Returns
 -------
-None
+inline void
 ") SetIdentifiedItem;
-		void SetIdentifiedItem(const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theIdentifiedItem);
+		inline void SetIdentifiedItem(const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theIdentifiedItem);
 
 		/****************** SetIdentifiedItemValue ******************/
 		/**** md5 signature: 1785481ef39e08611f3beba3da47577e ****/
@@ -517,9 +517,9 @@ theItem: StepRepr_RepresentationItem
 
 Returns
 -------
-None
+inline void
 ") SetIdentifiedItemValue;
-		void SetIdentifiedItemValue(const Standard_Integer num, const opencascade::handle<StepRepr_RepresentationItem> & theItem);
+		inline void SetIdentifiedItemValue(const Standard_Integer num, const opencascade::handle<StepRepr_RepresentationItem> & theItem);
 
 		/****************** SetName ******************/
 		/**** md5 signature: e058c117d39fc45f2a180acd037ae283 ****/
@@ -532,9 +532,9 @@ theName: TCollection_HAsciiString
 
 Returns
 -------
-None
+inline void
 ") SetName;
-		void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
+		inline void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
 		/****************** SetUsedRepresentation ******************/
 		/**** md5 signature: 57f2b7bf4737b55bb8dc47cbb0799237 ****/
@@ -547,9 +547,9 @@ theUsedRepresentation: StepRepr_Representation
 
 Returns
 -------
-None
+inline void
 ") SetUsedRepresentation;
-		void SetUsedRepresentation(const opencascade::handle<StepRepr_Representation> & theUsedRepresentation);
+		inline void SetUsedRepresentation(const opencascade::handle<StepRepr_Representation> & theUsedRepresentation);
 
 		/****************** UsedRepresentation ******************/
 		/**** md5 signature: 31fb83363cd632dfd92cd10a687caef9 ****/
@@ -558,9 +558,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepRepr_Representation>
+inline opencascade::handle<StepRepr_Representation>
 ") UsedRepresentation;
-		opencascade::handle<StepRepr_Representation> UsedRepresentation();
+		inline opencascade::handle<StepRepr_Representation> UsedRepresentation();
 
 };
 

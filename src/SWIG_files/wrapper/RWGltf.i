@@ -128,21 +128,31 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum RWGltf_GltfPrimitiveMode {
-	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1,
-	RWGltf_GltfPrimitiveMode_Points = 0,
-	RWGltf_GltfPrimitiveMode_Lines = 1,
-	RWGltf_GltfPrimitiveMode_LineLoop = 2,
-	RWGltf_GltfPrimitiveMode_LineStrip = 3,
-	RWGltf_GltfPrimitiveMode_Triangles = 4,
-	RWGltf_GltfPrimitiveMode_TriangleStrip = 5,
-	RWGltf_GltfPrimitiveMode_TriangleFan = 6,
+enum RWGltf_GltfAccessorCompType {
+	RWGltf_GltfAccessorCompType_UNKNOWN = 0,
+	RWGltf_GltfAccessorCompType_Int8 = 5120,
+	RWGltf_GltfAccessorCompType_UInt8 = 5121,
+	RWGltf_GltfAccessorCompType_Int16 = 5122,
+	RWGltf_GltfAccessorCompType_UInt16 = 5123,
+	RWGltf_GltfAccessorCompType_UInt32 = 5125,
+	RWGltf_GltfAccessorCompType_Float32 = 5126,
 };
 
-enum RWGltf_GltfBufferViewTarget {
-	RWGltf_GltfBufferViewTarget_UNKNOWN = 0,
-	RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = 34962,
-	RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = 34963,
+enum RWGltf_GltfAccessorLayout {
+	RWGltf_GltfAccessorLayout_UNKNOWN = 0,
+	RWGltf_GltfAccessorLayout_Scalar = 1,
+	RWGltf_GltfAccessorLayout_Vec2 = 2,
+	RWGltf_GltfAccessorLayout_Vec3 = 3,
+	RWGltf_GltfAccessorLayout_Vec4 = 4,
+	RWGltf_GltfAccessorLayout_Mat2 = 5,
+	RWGltf_GltfAccessorLayout_Mat3 = 6,
+	RWGltf_GltfAccessorLayout_Mat4 = 7,
+};
+
+enum RWGltf_GltfAlphaMode {
+	RWGltf_GltfAlphaMode_Opaque = 0,
+	RWGltf_GltfAlphaMode_Mask = 1,
+	RWGltf_GltfAlphaMode_Blend = 2,
 };
 
 enum RWGltf_GltfArrayType {
@@ -155,6 +165,23 @@ enum RWGltf_GltfArrayType {
 	RWGltf_GltfArrayType_TCoord1 = 6,
 	RWGltf_GltfArrayType_Joint = 7,
 	RWGltf_GltfArrayType_Weight = 8,
+};
+
+enum RWGltf_GltfBufferViewTarget {
+	RWGltf_GltfBufferViewTarget_UNKNOWN = 0,
+	RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = 34962,
+	RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = 34963,
+};
+
+enum RWGltf_GltfPrimitiveMode {
+	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1,
+	RWGltf_GltfPrimitiveMode_Points = 0,
+	RWGltf_GltfPrimitiveMode_Lines = 1,
+	RWGltf_GltfPrimitiveMode_LineLoop = 2,
+	RWGltf_GltfPrimitiveMode_LineStrip = 3,
+	RWGltf_GltfPrimitiveMode_Triangles = 4,
+	RWGltf_GltfPrimitiveMode_TriangleStrip = 5,
+	RWGltf_GltfPrimitiveMode_TriangleFan = 6,
 };
 
 enum RWGltf_GltfRootElement {
@@ -181,33 +208,6 @@ enum RWGltf_GltfRootElement {
 	RWGltf_GltfRootElement_NB = 20,
 };
 
-enum RWGltf_GltfAccessorCompType {
-	RWGltf_GltfAccessorCompType_UNKNOWN = 0,
-	RWGltf_GltfAccessorCompType_Int8 = 5120,
-	RWGltf_GltfAccessorCompType_UInt8 = 5121,
-	RWGltf_GltfAccessorCompType_Int16 = 5122,
-	RWGltf_GltfAccessorCompType_UInt16 = 5123,
-	RWGltf_GltfAccessorCompType_UInt32 = 5125,
-	RWGltf_GltfAccessorCompType_Float32 = 5126,
-};
-
-enum RWGltf_GltfAlphaMode {
-	RWGltf_GltfAlphaMode_Opaque = 0,
-	RWGltf_GltfAlphaMode_Mask = 1,
-	RWGltf_GltfAlphaMode_Blend = 2,
-};
-
-enum RWGltf_GltfAccessorLayout {
-	RWGltf_GltfAccessorLayout_UNKNOWN = 0,
-	RWGltf_GltfAccessorLayout_Scalar = 1,
-	RWGltf_GltfAccessorLayout_Vec2 = 2,
-	RWGltf_GltfAccessorLayout_Vec3 = 3,
-	RWGltf_GltfAccessorLayout_Vec4 = 4,
-	RWGltf_GltfAccessorLayout_Mat2 = 5,
-	RWGltf_GltfAccessorLayout_Mat3 = 6,
-	RWGltf_GltfAccessorLayout_Mat4 = 7,
-};
-
 enum RWGltf_WriterTrsfFormat {
 	RWGltf_WriterTrsfFormat_Compact = 0,
 	RWGltf_WriterTrsfFormat_Mat4 = 1,
@@ -224,31 +224,47 @@ enum  {
 /* python proxy classes for enums */
 %pythoncode {
 
-class RWGltf_GltfPrimitiveMode(IntEnum):
-	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1
-	RWGltf_GltfPrimitiveMode_Points = 0
-	RWGltf_GltfPrimitiveMode_Lines = 1
-	RWGltf_GltfPrimitiveMode_LineLoop = 2
-	RWGltf_GltfPrimitiveMode_LineStrip = 3
-	RWGltf_GltfPrimitiveMode_Triangles = 4
-	RWGltf_GltfPrimitiveMode_TriangleStrip = 5
-	RWGltf_GltfPrimitiveMode_TriangleFan = 6
-RWGltf_GltfPrimitiveMode_UNKNOWN = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_UNKNOWN
-RWGltf_GltfPrimitiveMode_Points = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Points
-RWGltf_GltfPrimitiveMode_Lines = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Lines
-RWGltf_GltfPrimitiveMode_LineLoop = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineLoop
-RWGltf_GltfPrimitiveMode_LineStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineStrip
-RWGltf_GltfPrimitiveMode_Triangles = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Triangles
-RWGltf_GltfPrimitiveMode_TriangleStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleStrip
-RWGltf_GltfPrimitiveMode_TriangleFan = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleFan
+class RWGltf_GltfAccessorCompType(IntEnum):
+	RWGltf_GltfAccessorCompType_UNKNOWN = 0
+	RWGltf_GltfAccessorCompType_Int8 = 5120
+	RWGltf_GltfAccessorCompType_UInt8 = 5121
+	RWGltf_GltfAccessorCompType_Int16 = 5122
+	RWGltf_GltfAccessorCompType_UInt16 = 5123
+	RWGltf_GltfAccessorCompType_UInt32 = 5125
+	RWGltf_GltfAccessorCompType_Float32 = 5126
+RWGltf_GltfAccessorCompType_UNKNOWN = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UNKNOWN
+RWGltf_GltfAccessorCompType_Int8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int8
+RWGltf_GltfAccessorCompType_UInt8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt8
+RWGltf_GltfAccessorCompType_Int16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int16
+RWGltf_GltfAccessorCompType_UInt16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt16
+RWGltf_GltfAccessorCompType_UInt32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt32
+RWGltf_GltfAccessorCompType_Float32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Float32
 
-class RWGltf_GltfBufferViewTarget(IntEnum):
-	RWGltf_GltfBufferViewTarget_UNKNOWN = 0
-	RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = 34962
-	RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = 34963
-RWGltf_GltfBufferViewTarget_UNKNOWN = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_UNKNOWN
-RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ARRAY_BUFFER
-RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER
+class RWGltf_GltfAccessorLayout(IntEnum):
+	RWGltf_GltfAccessorLayout_UNKNOWN = 0
+	RWGltf_GltfAccessorLayout_Scalar = 1
+	RWGltf_GltfAccessorLayout_Vec2 = 2
+	RWGltf_GltfAccessorLayout_Vec3 = 3
+	RWGltf_GltfAccessorLayout_Vec4 = 4
+	RWGltf_GltfAccessorLayout_Mat2 = 5
+	RWGltf_GltfAccessorLayout_Mat3 = 6
+	RWGltf_GltfAccessorLayout_Mat4 = 7
+RWGltf_GltfAccessorLayout_UNKNOWN = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_UNKNOWN
+RWGltf_GltfAccessorLayout_Scalar = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Scalar
+RWGltf_GltfAccessorLayout_Vec2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec2
+RWGltf_GltfAccessorLayout_Vec3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec3
+RWGltf_GltfAccessorLayout_Vec4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec4
+RWGltf_GltfAccessorLayout_Mat2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat2
+RWGltf_GltfAccessorLayout_Mat3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat3
+RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat4
+
+class RWGltf_GltfAlphaMode(IntEnum):
+	RWGltf_GltfAlphaMode_Opaque = 0
+	RWGltf_GltfAlphaMode_Mask = 1
+	RWGltf_GltfAlphaMode_Blend = 2
+RWGltf_GltfAlphaMode_Opaque = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Opaque
+RWGltf_GltfAlphaMode_Mask = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Mask
+RWGltf_GltfAlphaMode_Blend = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Blend
 
 class RWGltf_GltfArrayType(IntEnum):
 	RWGltf_GltfArrayType_UNKNOWN = 0
@@ -269,6 +285,32 @@ RWGltf_GltfArrayType_TCoord0 = RWGltf_GltfArrayType.RWGltf_GltfArrayType_TCoord0
 RWGltf_GltfArrayType_TCoord1 = RWGltf_GltfArrayType.RWGltf_GltfArrayType_TCoord1
 RWGltf_GltfArrayType_Joint = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Joint
 RWGltf_GltfArrayType_Weight = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Weight
+
+class RWGltf_GltfBufferViewTarget(IntEnum):
+	RWGltf_GltfBufferViewTarget_UNKNOWN = 0
+	RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = 34962
+	RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = 34963
+RWGltf_GltfBufferViewTarget_UNKNOWN = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_UNKNOWN
+RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ARRAY_BUFFER
+RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER
+
+class RWGltf_GltfPrimitiveMode(IntEnum):
+	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1
+	RWGltf_GltfPrimitiveMode_Points = 0
+	RWGltf_GltfPrimitiveMode_Lines = 1
+	RWGltf_GltfPrimitiveMode_LineLoop = 2
+	RWGltf_GltfPrimitiveMode_LineStrip = 3
+	RWGltf_GltfPrimitiveMode_Triangles = 4
+	RWGltf_GltfPrimitiveMode_TriangleStrip = 5
+	RWGltf_GltfPrimitiveMode_TriangleFan = 6
+RWGltf_GltfPrimitiveMode_UNKNOWN = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_UNKNOWN
+RWGltf_GltfPrimitiveMode_Points = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Points
+RWGltf_GltfPrimitiveMode_Lines = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Lines
+RWGltf_GltfPrimitiveMode_LineLoop = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineLoop
+RWGltf_GltfPrimitiveMode_LineStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineStrip
+RWGltf_GltfPrimitiveMode_Triangles = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Triangles
+RWGltf_GltfPrimitiveMode_TriangleStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleStrip
+RWGltf_GltfPrimitiveMode_TriangleFan = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleFan
 
 class RWGltf_GltfRootElement(IntEnum):
 	RWGltf_GltfRootElement_Asset = 0
@@ -314,48 +356,6 @@ RWGltf_GltfRootElement_ExtensionsUsed = RWGltf_GltfRootElement.RWGltf_GltfRootEl
 RWGltf_GltfRootElement_ExtensionsRequired = RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsRequired
 RWGltf_GltfRootElement_NB = RWGltf_GltfRootElement.RWGltf_GltfRootElement_NB
 
-class RWGltf_GltfAccessorCompType(IntEnum):
-	RWGltf_GltfAccessorCompType_UNKNOWN = 0
-	RWGltf_GltfAccessorCompType_Int8 = 5120
-	RWGltf_GltfAccessorCompType_UInt8 = 5121
-	RWGltf_GltfAccessorCompType_Int16 = 5122
-	RWGltf_GltfAccessorCompType_UInt16 = 5123
-	RWGltf_GltfAccessorCompType_UInt32 = 5125
-	RWGltf_GltfAccessorCompType_Float32 = 5126
-RWGltf_GltfAccessorCompType_UNKNOWN = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UNKNOWN
-RWGltf_GltfAccessorCompType_Int8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int8
-RWGltf_GltfAccessorCompType_UInt8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt8
-RWGltf_GltfAccessorCompType_Int16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int16
-RWGltf_GltfAccessorCompType_UInt16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt16
-RWGltf_GltfAccessorCompType_UInt32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt32
-RWGltf_GltfAccessorCompType_Float32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Float32
-
-class RWGltf_GltfAlphaMode(IntEnum):
-	RWGltf_GltfAlphaMode_Opaque = 0
-	RWGltf_GltfAlphaMode_Mask = 1
-	RWGltf_GltfAlphaMode_Blend = 2
-RWGltf_GltfAlphaMode_Opaque = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Opaque
-RWGltf_GltfAlphaMode_Mask = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Mask
-RWGltf_GltfAlphaMode_Blend = RWGltf_GltfAlphaMode.RWGltf_GltfAlphaMode_Blend
-
-class RWGltf_GltfAccessorLayout(IntEnum):
-	RWGltf_GltfAccessorLayout_UNKNOWN = 0
-	RWGltf_GltfAccessorLayout_Scalar = 1
-	RWGltf_GltfAccessorLayout_Vec2 = 2
-	RWGltf_GltfAccessorLayout_Vec3 = 3
-	RWGltf_GltfAccessorLayout_Vec4 = 4
-	RWGltf_GltfAccessorLayout_Mat2 = 5
-	RWGltf_GltfAccessorLayout_Mat3 = 6
-	RWGltf_GltfAccessorLayout_Mat4 = 7
-RWGltf_GltfAccessorLayout_UNKNOWN = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_UNKNOWN
-RWGltf_GltfAccessorLayout_Scalar = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Scalar
-RWGltf_GltfAccessorLayout_Vec2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec2
-RWGltf_GltfAccessorLayout_Vec3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec3
-RWGltf_GltfAccessorLayout_Vec4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec4
-RWGltf_GltfAccessorLayout_Mat2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat2
-RWGltf_GltfAccessorLayout_Mat3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat3
-RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat4
-
 class RWGltf_WriterTrsfFormat(IntEnum):
 	RWGltf_WriterTrsfFormat_Compact = 0
 	RWGltf_WriterTrsfFormat_Mat4 = 1
@@ -377,13 +377,10 @@ RWGltf_WriterTrsfFormat_TRS = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_TR
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Shared<NCollection_List<opencascade::handle<RWGltf_GltfFace>>> RWGltf_GltfFaceList;
+typedef NCollection_Shared <NCollection_List <opencascade::handle <RWGltf_GltfFace>>> RWGltf_GltfFaceList;
 typedef rapidjson::Document::ValueType RWGltf_JsonValue;
 /* end typedefs declaration */
 
-/***********************
-* class GltfElementMap *
-***********************/
 /*************************
 * class RWGltf_CafReader *
 *************************/
@@ -627,7 +624,7 @@ class RWGltf_CafWriter : public Standard_Transient {
 		/****************** RWGltf_CafWriter ******************/
 		/**** md5 signature: ff99e81d575a475273adc594a6a9069b ****/
 		%feature("compactdefaultargs") RWGltf_CafWriter;
-		%feature("autodoc", "Main constructor. @param thefile [in] path to output gltf file @param theisbinary [in] flag to write into binary gltf format (.glb).
+		%feature("autodoc", "//!< vector for mesh indices main constructor. @param thefile [in] path to output gltf file @param theisbinary [in] flag to write into binary gltf format (.glb).
 
 Parameters
 ----------
@@ -1154,7 +1151,7 @@ class RWGltf_DracoParameters {
 		int QuantizeGenericBits;
 		bool UnifiedQuantization;
 		/****************** RWGltf_DracoParameters ******************/
-		/**** md5 signature: d5dfa6304b51c9885dba464f263b6e30 ****/
+		/**** md5 signature: e2a35d429a406f18e3426e240f63bc03 ****/
 		%feature("compactdefaultargs") RWGltf_DracoParameters;
 		%feature("autodoc", "No available documentation.
 
@@ -1187,9 +1184,9 @@ class RWGltf_GltfAccessor {
 		Graphic3d_BndBox3d BndBox;
 		bool IsCompressed;
 		/****************** RWGltf_GltfAccessor ******************/
-		/**** md5 signature: 1ac0c993d4339614409d9c5e0ac9bdc9 ****/
+		/**** md5 signature: 8b64f4715da5fd8f33ed5f4530632dac ****/
 		%feature("compactdefaultargs") RWGltf_GltfAccessor;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "//!< flag indicating khr_draco_mesh_compression empty constructor.
 
 Returns
 -------
@@ -1217,7 +1214,7 @@ class RWGltf_GltfBufferView {
 		int32_t ByteStride;
 		RWGltf_GltfBufferViewTarget Target;
 		/****************** RWGltf_GltfBufferView ******************/
-		/**** md5 signature: 7f05f05ddf9d2f909355f94a9fbcef5d ****/
+		/**** md5 signature: 171ffbab0b9bba1a9b041af6abac9026 ****/
 		%feature("compactdefaultargs") RWGltf_GltfBufferView;
 		%feature("autodoc", "No available documentation.
 
@@ -1249,9 +1246,9 @@ class RWGltf_GltfFace : public Standard_Transient {
 		XCAFPrs_Style Style;
 		int NbIndexedNodes;
 		/****************** RWGltf_GltfFace ******************/
-		/**** md5 signature: f1d3a933cb06de89e0a1c4e714a35b6f ****/
+		/**** md5 signature: 0c019620b8976a45d6a9f402e00cd960 ****/
 		%feature("compactdefaultargs") RWGltf_GltfFace;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "//!< transient variable for merging several faces into one while writing indices.
 
 Returns
 -------
@@ -1653,7 +1650,7 @@ opencascade::handle<Image_Texture>
 class RWGltf_GltfOStreamWriter : public rapidjson::Writer<rapidjson::OStreamWrapper> {
 	public:
 		/****************** RWGltf_GltfOStreamWriter ******************/
-		/**** md5 signature: 39e45338506e2d1a7664840241a7b472 ****/
+		/**** md5 signature: c76faa3a857a139fb40148b7372451f3 ****/
 		%feature("compactdefaultargs") RWGltf_GltfOStreamWriter;
 		%feature("autodoc", "Main constructor.
 
@@ -1681,14 +1678,14 @@ None
 *********************************/
 class RWGltf_GltfPrimArrayData {
 	public:
-		opencascade::handle<NCollection_Buffer > StreamData;
+		opencascade::handle<NCollection_Buffer> StreamData;
 		TCollection_AsciiString StreamUri;
 		int64_t StreamOffset;
 		int64_t StreamLength;
 		RWGltf_GltfAccessor Accessor;
 		RWGltf_GltfArrayType Type;
 		/****************** RWGltf_GltfPrimArrayData ******************/
-		/**** md5 signature: 082773010cd7514b9dd09e3d44d4bec5 ****/
+		/**** md5 signature: dc51df7b6af2448771c820ecc7c99284 ****/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
 		%feature("autodoc", "No available documentation.
 
@@ -1699,7 +1696,7 @@ None
 		 RWGltf_GltfPrimArrayData();
 
 		/****************** RWGltf_GltfPrimArrayData ******************/
-		/**** md5 signature: 8b5a6513192f0ecb3cdb8caf0433eb34 ****/
+		/**** md5 signature: 62850d19979b91363aacdc838848b7b6 ****/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
 		%feature("autodoc", "No available documentation.
 
@@ -1722,54 +1719,14 @@ None
 	}
 };
 
-/********************************
-* class RWGltf_GltfSceneNodeMap *
-********************************/
-class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode,XCAFPrs_DocumentNode> {
-	public:
-		/****************** RWGltf_GltfSceneNodeMap ******************/
-		/**** md5 signature: 7eb6a53ba949dbdb457796ba63fb4a03 ****/
-		%feature("compactdefaultargs") RWGltf_GltfSceneNodeMap;
-		%feature("autodoc", "Empty constructor.
-
-Returns
--------
-None
-") RWGltf_GltfSceneNodeMap;
-		 RWGltf_GltfSceneNodeMap();
-
-		/****************** FindIndex ******************/
-		/**** md5 signature: 47457616668af339aa3d60c8b18b08d5 ****/
-		%feature("compactdefaultargs") FindIndex;
-		%feature("autodoc", "Find index from document node string identifier.
-
-Parameters
-----------
-theNodeId: TCollection_AsciiString
-
-Returns
--------
-int
-") FindIndex;
-		Standard_Integer FindIndex(const TCollection_AsciiString & theNodeId);
-
-};
-
-
-%extend RWGltf_GltfSceneNodeMap {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /******************************
 * class RWGltf_MaterialCommon *
 ******************************/
 class RWGltf_MaterialCommon : public Standard_Transient {
 	public:
-		opencascade::handle<Image_Texture > AmbientTexture;
-		opencascade::handle<Image_Texture > DiffuseTexture;
-		opencascade::handle<Image_Texture > SpecularTexture;
+		opencascade::handle<Image_Texture> AmbientTexture;
+		opencascade::handle<Image_Texture> DiffuseTexture;
+		opencascade::handle<Image_Texture> SpecularTexture;
 		TCollection_AsciiString Id;
 		TCollection_AsciiString Name;
 		Quantity_Color AmbientColor;
@@ -1779,7 +1736,7 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 		Standard_ShortReal Shininess;
 		Standard_ShortReal Transparency;
 		/****************** RWGltf_MaterialCommon ******************/
-		/**** md5 signature: 5f7db091e0ba1d4aaa046ad813cbb86f ****/
+		/**** md5 signature: f0af89af2fc01791794c2523c116ec25 ****/
 		%feature("compactdefaultargs") RWGltf_MaterialCommon;
 		%feature("autodoc", "No available documentation.
 
@@ -1805,11 +1762,11 @@ None
 *****************************************/
 class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 	public:
-		opencascade::handle<Image_Texture > BaseColorTexture;
-		opencascade::handle<Image_Texture > MetallicRoughnessTexture;
-		opencascade::handle<Image_Texture > EmissiveTexture;
-		opencascade::handle<Image_Texture > OcclusionTexture;
-		opencascade::handle<Image_Texture > NormalTexture;
+		opencascade::handle<Image_Texture> BaseColorTexture;
+		opencascade::handle<Image_Texture> MetallicRoughnessTexture;
+		opencascade::handle<Image_Texture> EmissiveTexture;
+		opencascade::handle<Image_Texture> OcclusionTexture;
+		opencascade::handle<Image_Texture> NormalTexture;
 		TCollection_AsciiString Id;
 		TCollection_AsciiString Name;
 		Quantity_ColorRGBA BaseColor;
@@ -1820,9 +1777,9 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 		RWGltf_GltfAlphaMode AlphaMode;
 		bool IsDoubleSided;
 		/****************** RWGltf_MaterialMetallicRoughness ******************/
-		/**** md5 signature: 3e7e7f6dcac2ab520e773c1e52d06831 ****/
+		/**** md5 signature: 147599a43d3c4e3ea77a9db46b5f3632 ****/
 		%feature("compactdefaultargs") RWGltf_MaterialMetallicRoughness;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "//!< specifies whether the material is double sided; false by default.
 
 Returns
 -------
@@ -2087,6 +2044,46 @@ bool
 
 
 %extend RWGltf_TriangulationReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class RWGltf_GltfSceneNodeMap *
+********************************/
+class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode, XCAFPrs_DocumentNode > {
+	public:
+		/****************** RWGltf_GltfSceneNodeMap ******************/
+		/**** md5 signature: 7eb6a53ba949dbdb457796ba63fb4a03 ****/
+		%feature("compactdefaultargs") RWGltf_GltfSceneNodeMap;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWGltf_GltfSceneNodeMap;
+		 RWGltf_GltfSceneNodeMap();
+
+		/****************** FindIndex ******************/
+		/**** md5 signature: 47457616668af339aa3d60c8b18b08d5 ****/
+		%feature("compactdefaultargs") FindIndex;
+		%feature("autodoc", "Find index from document node string identifier.
+
+Parameters
+----------
+theNodeId: TCollection_AsciiString
+
+Returns
+-------
+int
+") FindIndex;
+		Standard_Integer FindIndex(const TCollection_AsciiString & theNodeId);
+
+};
+
+
+%extend RWGltf_GltfSceneNodeMap {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

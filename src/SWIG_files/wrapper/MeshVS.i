@@ -42,8 +42,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_meshvs.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColgp_module.hxx>
 #include<SelectMgr_module.hxx>
+#include<TColgp_module.hxx>
 #include<Select3D_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
@@ -83,8 +83,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_meshvs.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColgp.i
 %import SelectMgr.i
+%import TColgp.i
 %import Select3D.i
 %import gp.i
 %import TColStd.i
@@ -104,35 +104,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum MeshVS_EntityType {
-	MeshVS_ET_NONE = 0,
-	MeshVS_ET_Node = 1,
-	MeshVS_ET_0D = 2,
-	MeshVS_ET_Link = 4,
-	MeshVS_ET_Face = 8,
-	MeshVS_ET_Volume = 16,
-	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume,
-	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node,
-};
-
-enum MeshVS_MeshSelectionMethod {
-	MeshVS_MSM_PRECISE = 0,
-	MeshVS_MSM_NODES = 1,
-	MeshVS_MSM_BOX = 2,
-};
-
-enum MeshVS_SelectionModeFlags {
-	MeshVS_SMF_Mesh = 0,
-	MeshVS_SMF_Node = 1,
-	MeshVS_SMF_0D = 2,
-	MeshVS_SMF_Link = 4,
-	MeshVS_SMF_Face = 8,
-	MeshVS_SMF_Volume = 16,
-	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume,
-	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node,
-	MeshVS_SMF_Group = 256,
-};
-
 enum  {
 	MeshVS_BP_Mesh = 5,
 	MeshVS_BP_NodalColor = 10,
@@ -141,6 +112,25 @@ enum  {
 	MeshVS_BP_Vector = 25,
 	MeshVS_BP_User = 30,
 	MeshVS_BP_Default = MeshVS_BP_User,
+};
+
+enum  {
+	MeshVS_DMF_WireFrame = 1,
+	MeshVS_DMF_Shading = 2,
+	MeshVS_DMF_Shrink = 3,
+	MeshVS_DMF_OCCMask = ( MeshVS_DMF_WireFrame | MeshVS_DMF_Shading | MeshVS_DMF_Shrink ),
+	MeshVS_DMF_VectorDataPrs = 4,
+	MeshVS_DMF_NodalColorDataPrs = 8,
+	MeshVS_DMF_ElementalColorDataPrs = 16,
+	MeshVS_DMF_TextDataPrs = 32,
+	MeshVS_DMF_EntitiesWithData = 64,
+	MeshVS_DMF_DeformedPrsWireFrame = 128,
+	MeshVS_DMF_DeformedPrsShading = 256,
+	MeshVS_DMF_DeformedPrsShrink = 384,
+	MeshVS_DMF_DeformedMask = ( MeshVS_DMF_DeformedPrsWireFrame | MeshVS_DMF_DeformedPrsShading | MeshVS_DMF_DeformedPrsShrink ),
+	MeshVS_DMF_SelectionPrs = 512,
+	MeshVS_DMF_HilightPrs = 1024,
+	MeshVS_DMF_User = 2048,
 };
 
 enum MeshVS_DrawerAttribute {
@@ -186,75 +176,39 @@ enum MeshVS_DrawerAttribute {
 	MeshVS_DA_User = 39,
 };
 
-enum  {
-	MeshVS_DMF_WireFrame = 1,
-	MeshVS_DMF_Shading = 2,
-	MeshVS_DMF_Shrink = 3,
-	MeshVS_DMF_OCCMask = ( MeshVS_DMF_WireFrame | MeshVS_DMF_Shading | MeshVS_DMF_Shrink ),
-	MeshVS_DMF_VectorDataPrs = 4,
-	MeshVS_DMF_NodalColorDataPrs = 8,
-	MeshVS_DMF_ElementalColorDataPrs = 16,
-	MeshVS_DMF_TextDataPrs = 32,
-	MeshVS_DMF_EntitiesWithData = 64,
-	MeshVS_DMF_DeformedPrsWireFrame = 128,
-	MeshVS_DMF_DeformedPrsShading = 256,
-	MeshVS_DMF_DeformedPrsShrink = 384,
-	MeshVS_DMF_DeformedMask = ( MeshVS_DMF_DeformedPrsWireFrame | MeshVS_DMF_DeformedPrsShading | MeshVS_DMF_DeformedPrsShrink ),
-	MeshVS_DMF_SelectionPrs = 512,
-	MeshVS_DMF_HilightPrs = 1024,
-	MeshVS_DMF_User = 2048,
+enum MeshVS_EntityType {
+	MeshVS_ET_NONE = 0,
+	MeshVS_ET_Node = 1,
+	MeshVS_ET_0D = 2,
+	MeshVS_ET_Link = 4,
+	MeshVS_ET_Face = 8,
+	MeshVS_ET_Volume = 16,
+	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume,
+	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node,
+};
+
+enum MeshVS_MeshSelectionMethod {
+	MeshVS_MSM_PRECISE = 0,
+	MeshVS_MSM_NODES = 1,
+	MeshVS_MSM_BOX = 2,
+};
+
+enum MeshVS_SelectionModeFlags {
+	MeshVS_SMF_Mesh = 0,
+	MeshVS_SMF_Node = 1,
+	MeshVS_SMF_0D = 2,
+	MeshVS_SMF_Link = 4,
+	MeshVS_SMF_Face = 8,
+	MeshVS_SMF_Volume = 16,
+	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume,
+	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node,
+	MeshVS_SMF_Group = 256,
 };
 
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class MeshVS_EntityType(IntEnum):
-	MeshVS_ET_NONE = 0
-	MeshVS_ET_Node = 1
-	MeshVS_ET_0D = 2
-	MeshVS_ET_Link = 4
-	MeshVS_ET_Face = 8
-	MeshVS_ET_Volume = 16
-	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume
-	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node
-MeshVS_ET_NONE = MeshVS_EntityType.MeshVS_ET_NONE
-MeshVS_ET_Node = MeshVS_EntityType.MeshVS_ET_Node
-MeshVS_ET_0D = MeshVS_EntityType.MeshVS_ET_0D
-MeshVS_ET_Link = MeshVS_EntityType.MeshVS_ET_Link
-MeshVS_ET_Face = MeshVS_EntityType.MeshVS_ET_Face
-MeshVS_ET_Volume = MeshVS_EntityType.MeshVS_ET_Volume
-MeshVS_ET_Element = MeshVS_EntityType.MeshVS_ET_Element
-MeshVS_ET_All = MeshVS_EntityType.MeshVS_ET_All
-
-class MeshVS_MeshSelectionMethod(IntEnum):
-	MeshVS_MSM_PRECISE = 0
-	MeshVS_MSM_NODES = 1
-	MeshVS_MSM_BOX = 2
-MeshVS_MSM_PRECISE = MeshVS_MeshSelectionMethod.MeshVS_MSM_PRECISE
-MeshVS_MSM_NODES = MeshVS_MeshSelectionMethod.MeshVS_MSM_NODES
-MeshVS_MSM_BOX = MeshVS_MeshSelectionMethod.MeshVS_MSM_BOX
-
-class MeshVS_SelectionModeFlags(IntEnum):
-	MeshVS_SMF_Mesh = 0
-	MeshVS_SMF_Node = 1
-	MeshVS_SMF_0D = 2
-	MeshVS_SMF_Link = 4
-	MeshVS_SMF_Face = 8
-	MeshVS_SMF_Volume = 16
-	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume
-	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node
-	MeshVS_SMF_Group = 256
-MeshVS_SMF_Mesh = MeshVS_SelectionModeFlags.MeshVS_SMF_Mesh
-MeshVS_SMF_Node = MeshVS_SelectionModeFlags.MeshVS_SMF_Node
-MeshVS_SMF_0D = MeshVS_SelectionModeFlags.MeshVS_SMF_0D
-MeshVS_SMF_Link = MeshVS_SelectionModeFlags.MeshVS_SMF_Link
-MeshVS_SMF_Face = MeshVS_SelectionModeFlags.MeshVS_SMF_Face
-MeshVS_SMF_Volume = MeshVS_SelectionModeFlags.MeshVS_SMF_Volume
-MeshVS_SMF_Element = MeshVS_SelectionModeFlags.MeshVS_SMF_Element
-MeshVS_SMF_All = MeshVS_SelectionModeFlags.MeshVS_SMF_All
-MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
 
 class MeshVS_DrawerAttribute(IntEnum):
 	MeshVS_DA_InteriorStyle = 0
@@ -337,6 +291,52 @@ MeshVS_DA_ShowEdges = MeshVS_DrawerAttribute.MeshVS_DA_ShowEdges
 MeshVS_DA_SmoothShading = MeshVS_DrawerAttribute.MeshVS_DA_SmoothShading
 MeshVS_DA_SupressBackFaces = MeshVS_DrawerAttribute.MeshVS_DA_SupressBackFaces
 MeshVS_DA_User = MeshVS_DrawerAttribute.MeshVS_DA_User
+
+class MeshVS_EntityType(IntEnum):
+	MeshVS_ET_NONE = 0
+	MeshVS_ET_Node = 1
+	MeshVS_ET_0D = 2
+	MeshVS_ET_Link = 4
+	MeshVS_ET_Face = 8
+	MeshVS_ET_Volume = 16
+	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume
+	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node
+MeshVS_ET_NONE = MeshVS_EntityType.MeshVS_ET_NONE
+MeshVS_ET_Node = MeshVS_EntityType.MeshVS_ET_Node
+MeshVS_ET_0D = MeshVS_EntityType.MeshVS_ET_0D
+MeshVS_ET_Link = MeshVS_EntityType.MeshVS_ET_Link
+MeshVS_ET_Face = MeshVS_EntityType.MeshVS_ET_Face
+MeshVS_ET_Volume = MeshVS_EntityType.MeshVS_ET_Volume
+MeshVS_ET_Element = MeshVS_EntityType.MeshVS_ET_Element
+MeshVS_ET_All = MeshVS_EntityType.MeshVS_ET_All
+
+class MeshVS_MeshSelectionMethod(IntEnum):
+	MeshVS_MSM_PRECISE = 0
+	MeshVS_MSM_NODES = 1
+	MeshVS_MSM_BOX = 2
+MeshVS_MSM_PRECISE = MeshVS_MeshSelectionMethod.MeshVS_MSM_PRECISE
+MeshVS_MSM_NODES = MeshVS_MeshSelectionMethod.MeshVS_MSM_NODES
+MeshVS_MSM_BOX = MeshVS_MeshSelectionMethod.MeshVS_MSM_BOX
+
+class MeshVS_SelectionModeFlags(IntEnum):
+	MeshVS_SMF_Mesh = 0
+	MeshVS_SMF_Node = 1
+	MeshVS_SMF_0D = 2
+	MeshVS_SMF_Link = 4
+	MeshVS_SMF_Face = 8
+	MeshVS_SMF_Volume = 16
+	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume
+	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node
+	MeshVS_SMF_Group = 256
+MeshVS_SMF_Mesh = MeshVS_SelectionModeFlags.MeshVS_SMF_Mesh
+MeshVS_SMF_Node = MeshVS_SelectionModeFlags.MeshVS_SMF_Node
+MeshVS_SMF_0D = MeshVS_SelectionModeFlags.MeshVS_SMF_0D
+MeshVS_SMF_Link = MeshVS_SelectionModeFlags.MeshVS_SMF_Link
+MeshVS_SMF_Face = MeshVS_SelectionModeFlags.MeshVS_SMF_Face
+MeshVS_SMF_Volume = MeshVS_SelectionModeFlags.MeshVS_SMF_Volume
+MeshVS_SMF_Element = MeshVS_SelectionModeFlags.MeshVS_SMF_Element
+MeshVS_SMF_All = MeshVS_SelectionModeFlags.MeshVS_SMF_All
+MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
 };
 /* end python proxy for enums */
 
@@ -542,40 +542,40 @@ MeshVS_DA_User = MeshVS_DrawerAttribute.MeshVS_DA_User
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<TColStd_SequenceOfInteger> MeshVS_Array1OfSequenceOfInteger;
+typedef NCollection_Array1 <TColStd_SequenceOfInteger> MeshVS_Array1OfSequenceOfInteger;
 typedef Standard_Integer MeshVS_BuilderPriority;
-typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
-typedef NCollection_DataMap<Standard_Integer, Standard_Boolean, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean;
-typedef NCollection_DataMap<Standard_Integer, Quantity_Color, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerColor;
-typedef NCollection_DataMap<Standard_Integer, Graphic3d_MaterialAspect, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<SelectMgr_EntityOwner>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerOwner;
-typedef NCollection_DataMap<Standard_Integer, MeshVS_TwoColors, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerVector;
-typedef NCollection_DataMap<MeshVS_TwoColors, TColStd_MapOfInteger, MeshVS_TwoColorsHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
-typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher> MeshVS_DataMapOfColorMapOfInteger;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher> MeshVS_DataMapOfHArray1OfSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerAsciiString;
-typedef NCollection_DataMap<Standard_Integer, Standard_Boolean, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerBoolean;
-typedef NCollection_DataMap<Standard_Integer, Quantity_Color, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerColor;
-typedef NCollection_DataMap<Standard_Integer, Graphic3d_MaterialAspect, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMaterial;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMeshEntityOwner;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<SelectMgr_EntityOwner>, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerOwner;
-typedef NCollection_DataMap<Standard_Integer, MeshVS_TwoColors, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerTwoColors;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerVector;
-typedef NCollection_DataMap<MeshVS_TwoColors, TColStd_MapOfInteger, MeshVS_TwoColorsHasher> MeshVS_DataMapOfTwoColorsMapOfInteger;
+typedef NCollection_DataMap <Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
+typedef NCollection_DataMap <Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
+typedef NCollection_DataMap <Standard_Integer, Standard_Boolean, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean;
+typedef NCollection_DataMap <Standard_Integer, Quantity_Color, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerColor;
+typedef NCollection_DataMap <Standard_Integer, Graphic3d_MaterialAspect, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <SelectMgr_EntityOwner>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerOwner;
+typedef NCollection_DataMap <Standard_Integer, MeshVS_TwoColors, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors;
+typedef NCollection_DataMap <Standard_Integer, gp_Vec, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerVector;
+typedef NCollection_DataMap <MeshVS_TwoColors, TColStd_MapOfInteger, MeshVS_TwoColorsHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
+typedef NCollection_DataMap <Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher> MeshVS_DataMapOfColorMapOfInteger;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher> MeshVS_DataMapOfHArray1OfSequenceOfInteger;
+typedef NCollection_DataMap <Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerAsciiString;
+typedef NCollection_DataMap <Standard_Integer, Standard_Boolean, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerBoolean;
+typedef NCollection_DataMap <Standard_Integer, Quantity_Color, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerColor;
+typedef NCollection_DataMap <Standard_Integer, Graphic3d_MaterialAspect, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMaterial;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMeshEntityOwner;
+typedef NCollection_DataMap <Standard_Integer, opencascade::handle <SelectMgr_EntityOwner>, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerOwner;
+typedef NCollection_DataMap <Standard_Integer, MeshVS_TwoColors, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerTwoColors;
+typedef NCollection_DataMap <Standard_Integer, gp_Vec, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerVector;
+typedef NCollection_DataMap <MeshVS_TwoColors, TColStd_MapOfInteger, MeshVS_TwoColorsHasher> MeshVS_DataMapOfTwoColorsMapOfInteger;
 typedef Standard_Integer MeshVS_DisplayModeFlags;
-typedef NCollection_Map<MeshVS_TwoNodes, MeshVS_TwoNodesHasher>::Iterator MeshVS_MapIteratorOfMapOfTwoNodes;
-typedef NCollection_Map<MeshVS_TwoNodes, MeshVS_TwoNodesHasher> MeshVS_MapOfTwoNodes;
+typedef NCollection_Map <MeshVS_TwoNodes, MeshVS_TwoNodesHasher>::Iterator MeshVS_MapIteratorOfMapOfTwoNodes;
+typedef NCollection_Map <MeshVS_TwoNodes, MeshVS_TwoNodesHasher> MeshVS_MapOfTwoNodes;
 typedef MeshVS_Mesh * MeshVS_MeshPtr;
-typedef std::pair<Standard_Integer, Standard_Integer> MeshVS_NodePair;
-typedef NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>> MeshVS_PolyhedronVerts;
-typedef NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>>::Iterator MeshVS_PolyhedronVertsIter;
-typedef NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>> MeshVS_SequenceOfPrsBuilder;
-typedef NCollection_DefaultHasher<MeshVS_TwoColors> MeshVS_TwoColorsHasher;
-typedef NCollection_DefaultHasher<MeshVS_TwoNodes> MeshVS_TwoNodesHasher;
+typedef std::pair <Standard_Integer, Standard_Integer> MeshVS_NodePair;
+typedef NCollection_List <opencascade::handle <TColgp_HArray1OfPnt>> MeshVS_PolyhedronVerts;
+typedef NCollection_List <opencascade::handle <TColgp_HArray1OfPnt>>::Iterator MeshVS_PolyhedronVertsIter;
+typedef NCollection_Sequence <opencascade::handle <MeshVS_PrsBuilder>> MeshVS_SequenceOfPrsBuilder;
+typedef NCollection_DefaultHasher <MeshVS_TwoColors> MeshVS_TwoColorsHasher;
+typedef NCollection_DefaultHasher <MeshVS_TwoNodes> MeshVS_TwoNodesHasher;
 /* end typedefs declaration */
 
 /**********************
@@ -584,7 +584,7 @@ typedef NCollection_DefaultHasher<MeshVS_TwoNodes> MeshVS_TwoNodesHasher;
 class MeshVS_Buffer {
 	public:
 		/****************** MeshVS_Buffer ******************/
-		/**** md5 signature: 6aa133acb7bf6a8defb6a753a4c6dbff ****/
+		/**** md5 signature: 5ffa4139679d7c8674860814e5fd1d7e ****/
 		%feature("compactdefaultargs") MeshVS_Buffer;
 		%feature("autodoc", "Constructor of the buffer of the requested size.
 
@@ -3190,7 +3190,7 @@ class MeshVS_TwoNodes {
 		int First;
 		int Second;
 		/****************** MeshVS_TwoNodes ******************/
-		/**** md5 signature: 2b6bd8f3a56b7ff4d11d86701a1067ce ****/
+		/**** md5 signature: 2cffbb1e12180f09cd5c6f9ca46e2f90 ****/
 		%feature("compactdefaultargs") MeshVS_TwoNodes;
 		%feature("autodoc", "No available documentation.
 
@@ -3815,7 +3815,7 @@ ShrinkCoef: float
 
 Returns
 -------
-None
+void
 ") AddVolumePrs;
 		static void AddVolumePrs(const opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & Topo, const TColStd_Array1OfReal & Nodes, const Standard_Integer NbNodes, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Array, const Standard_Boolean IsReflected, const Standard_Boolean IsShrinked, const Standard_Boolean IsSelect, const Standard_Real ShrinkCoef);
 

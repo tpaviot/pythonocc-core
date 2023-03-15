@@ -236,14 +236,14 @@ BRepOffset_Unknown = BRepOffset_Status.BRepOffset_Unknown
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, BRepOffset_ListOfInterval, TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval;
-typedef NCollection_DataMap<TopoDS_Shape, TopTools_MapOfShape, TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeOffset;
-typedef NCollection_DataMap<TopoDS_Shape, BRepOffset_ListOfInterval, TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeListOfInterval;
-typedef NCollection_DataMap<TopoDS_Shape, TopTools_MapOfShape, TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeMapOfShape;
-typedef NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeOffset;
-typedef NCollection_List<BRepOffset_Interval>::Iterator BRepOffset_ListIteratorOfListOfInterval;
-typedef NCollection_List<BRepOffset_Interval> BRepOffset_ListOfInterval;
+typedef NCollection_DataMap <TopoDS_Shape, BRepOffset_ListOfInterval, TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval;
+typedef NCollection_DataMap <TopoDS_Shape, TopTools_MapOfShape, TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher>::Iterator BRepOffset_DataMapIteratorOfDataMapOfShapeOffset;
+typedef NCollection_DataMap <TopoDS_Shape, BRepOffset_ListOfInterval, TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeListOfInterval;
+typedef NCollection_DataMap <TopoDS_Shape, TopTools_MapOfShape, TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeMapOfShape;
+typedef NCollection_DataMap <TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher> BRepOffset_DataMapOfShapeOffset;
+typedef NCollection_List <BRepOffset_Interval>::Iterator BRepOffset_ListIteratorOfListOfInterval;
+typedef NCollection_List <BRepOffset_Interval> BRepOffset_ListOfInterval;
 /* end typedefs declaration */
 
 /*******************
@@ -304,7 +304,7 @@ class BRepOffset_Analyse {
 		/****************** BRepOffset_Analyse ******************/
 		/**** md5 signature: ba0b94f56b61c28244d4736b236bb3b0 ****/
 		%feature("compactdefaultargs") BRepOffset_Analyse;
-		%feature("autodoc", "Empty c-tor.
+		%feature("autodoc", "@name constructors empty c-tor.
 
 Returns
 -------
@@ -383,7 +383,7 @@ TopTools_ListOfShape
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the content of the algorithm.
+		%feature("autodoc", "@name clearing the content clears the content of the algorithm.
 
 Returns
 -------
@@ -539,7 +539,7 @@ bool
 		/****************** IsDone ******************/
 		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns status of the algorithm.
+		%feature("autodoc", "@name results returns status of the algorithm.
 
 Returns
 -------
@@ -561,7 +561,7 @@ TopTools_ListOfShape
 		/****************** Perform ******************/
 		/**** md5 signature: 15379b06ecba8382979b6910520f10b4 ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Performs the analysis.
+		%feature("autodoc", "@name performing analysis performs the analysis.
 
 Parameters
 ----------
@@ -669,7 +669,7 @@ theRange: Message_ProgressRange
 
 Returns
 -------
-None
+void
 ") Compute;
 		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, const TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
@@ -721,7 +721,7 @@ theRange: Message_ProgressRange
 
 Returns
 -------
-None
+void
 ") ConnexIntByIntInVert;
 		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
@@ -780,7 +780,7 @@ class BRepOffset_Inter3d {
 
 Parameters
 ----------
-AsDes: Handle ( BRepAlgo_AsDes )
+AsDes: Handle(BRepAlgo_AsDes)
 Side: TopAbs_State
 Tol: float
 
@@ -788,7 +788,7 @@ Returns
 -------
 None
 ") BRepOffset_Inter3d;
-		 BRepOffset_Inter3d(const Handle ( BRepAlgo_AsDes ) & AsDes, const TopAbs_State Side, const Standard_Real Tol);
+		 BRepOffset_Inter3d(const Handle(BRepAlgo_AsDes) & AsDes, const TopAbs_State Side, const Standard_Real Tol);
 
 		/****************** CompletInt ******************/
 		/**** md5 signature: 3d14748ac531a357f6f40197c38eda01 ****/
@@ -1303,7 +1303,7 @@ BRepOffset_Error
 		/****************** Generated ******************/
 		/**** md5 signature: 902551eb6fcfb35ec8c1137ae3d18685 ****/
 		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "Returns the list of shapes generated from the shape <s>.
+		%feature("autodoc", "@name history methods returns the list of shapes generated from the shape <s>.
 
 Parameters
 ----------
@@ -2216,7 +2216,7 @@ NOnV2: TopTools_DataMapOfShapeShape
 
 Returns
 -------
-None
+void
 ") BuildNeighbour;
 		static void BuildNeighbour(const TopoDS_Wire & W, const TopoDS_Face & F, TopTools_DataMapOfShapeShape & NOnV1, TopTools_DataMapOfShapeShape & NOnV2);
 
@@ -2239,7 +2239,7 @@ enlargeVlast: bool
 		static void CheckBounds(const TopoDS_Face & F, const BRepOffset_Analyse & Analyse, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** CheckPlanesNormals ******************/
-		/**** md5 signature: 0dfa65e060f5df310856444063f6f7e4 ****/
+		/**** md5 signature: 83e85b6b3be6063dd5a40ce39c7a70ed ****/
 		%feature("compactdefaultargs") CheckPlanesNormals;
 		%feature("autodoc", "Compares the normal directions of the planar faces and returns true if the directions are the same with the given precision.
 
@@ -2271,7 +2271,7 @@ Offset: float
 
 Returns
 -------
-None
+void
 ") CorrectOrientation;
 		static void CorrectOrientation(const TopoDS_Shape & SI, const TopTools_IndexedMapOfShape & NewEdges, opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & InitOffset, const Standard_Real Offset);
 
@@ -2304,12 +2304,12 @@ V2: TopoDS_Vertex
 
 Returns
 -------
-None
+void
 ") EdgeVertices;
 		static void EdgeVertices(const TopoDS_Edge & E, TopoDS_Vertex & V1, TopoDS_Vertex & V2);
 
 		/****************** EnLargeFace ******************/
-		/**** md5 signature: 32b678a9e8c54375869c991fb479becc ****/
+		/**** md5 signature: c22aa7173a00dc7a97314d58abd6a5c7 ****/
 		%feature("compactdefaultargs") EnLargeFace;
 		%feature("autodoc", "Returns true if the surface of <nf> has changed. if <changegeom> is true , the surface can be changed . if <updatepcurve> is true, update the pcurves of the edges of <f> on the new surface if the surface has been changed. <enlargeu>, <enlargevfirst>, <enlargevlast> allow or forbid enlargement in u and v directions correspondingly. <theextensionmode> is a mode of extension of the surface of the face: if <theextensionmode> equals 1, potentially infinite surfaces are extended by maximum value, and limited surfaces are extended by 25%. if <theextensionmode> equals 2, potentially infinite surfaces are extended by 10*(correspondent size of face), and limited surfaces are extended by 100%. <thelenbeforeufirst>, <thelenafterulast>, <thelenbeforevfirst>, <thelenaftervlast> set the values of enlargement on correspondent directions. if some of them equals -1, the default value of enlargement is used.
 
@@ -2359,7 +2359,7 @@ NF: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") ExtentFace;
 		static void ExtentFace(const TopoDS_Face & F, TopTools_DataMapOfShapeShape & ConstShapes, TopTools_DataMapOfShapeShape & ToBuild, const TopAbs_State Side, const Standard_Real TolConf, TopoDS_Face & NF);
 
@@ -2429,7 +2429,7 @@ Tol: float
 
 Returns
 -------
-None
+void
 ") Inter2d;
 		static void Inter2d(const TopoDS_Face & F, const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopTools_ListOfShape & LV, const Standard_Real Tol);
 
@@ -2451,7 +2451,7 @@ RefFace2: TopoDS_Face
 
 Returns
 -------
-None
+void
 ") Inter3D;
 		static void Inter3D(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const TopoDS_Edge & RefEdge, const TopoDS_Face & RefFace1, const TopoDS_Face & RefFace2);
 
@@ -2470,7 +2470,7 @@ Side: TopAbs_State
 
 Returns
 -------
-None
+void
 ") InterOrExtent;
 		static void InterOrExtent(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side);
 
@@ -2486,7 +2486,7 @@ MVE: TopTools_DataMapOfShapeListOfShape
 
 Returns
 -------
-None
+void
 ") MapVertexEdges;
 		static void MapVertexEdges(const TopoDS_Shape & S, TopTools_DataMapOfShapeListOfShape & MVE);
 
@@ -2523,7 +2523,7 @@ Side: TopAbs_State
 
 Returns
 -------
-None
+void
 ") PipeInter;
 		static void PipeInter(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side);
 

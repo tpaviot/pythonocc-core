@@ -179,71 +179,15 @@ DsgPrs_AS_FIRSTPT_LASTAR = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTPT_LASTAR
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class DsgPrs_EllipseRadiusPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_XYZPlanePresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_ConcentricPresentation:
-	pass
-
-@classnotwrapped
 class DsgPrs_AnglePresentation:
 	pass
 
 @classnotwrapped
-class DsgPrs_ShadedPlanePresentation:
+class DsgPrs_Chamf2dPresentation:
 	pass
 
 @classnotwrapped
-class DsgPrs_RadiusPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_TangentPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_SymbPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_FilletRadiusPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_SymmetricPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_ShapeDirPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_FixPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_IdenticPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_MidPointPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_EqualRadiusPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_LengthPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_EqualDistancePresentation:
+class DsgPrs_ConcentricPresentation:
 	pass
 
 @classnotwrapped
@@ -255,7 +199,35 @@ class DsgPrs_DiameterPresentation:
 	pass
 
 @classnotwrapped
-class DsgPrs_ParalPresentation:
+class DsgPrs_EllipseRadiusPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_EqualDistancePresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_EqualRadiusPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_FilletRadiusPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_FixPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_IdenticPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_LengthPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_MidPointPresentation:
 	pass
 
 @classnotwrapped
@@ -263,15 +235,43 @@ class DsgPrs_OffsetPresentation:
 	pass
 
 @classnotwrapped
-class DsgPrs_XYZAxisPresentation:
-	pass
-
-@classnotwrapped
-class DsgPrs_Chamf2dPresentation:
+class DsgPrs_ParalPresentation:
 	pass
 
 @classnotwrapped
 class DsgPrs_PerpenPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_RadiusPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_ShadedPlanePresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_ShapeDirPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_SymbPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_SymmetricPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_TangentPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_XYZAxisPresentation:
+	pass
+
+@classnotwrapped
+class DsgPrs_XYZPlanePresentation:
 	pass
 
 @classnotwrapped

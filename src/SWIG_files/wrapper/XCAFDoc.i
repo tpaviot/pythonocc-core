@@ -164,9 +164,9 @@ XCAFDoc_ColorCurv = XCAFDoc_ColorType.XCAFDoc_ColorCurv
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, TDF_Label, TopTools_ShapeMapHasher>::Iterator XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
-typedef NCollection_DataMap<TopoDS_Shape, TDF_Label, TopTools_ShapeMapHasher> XCAFDoc_DataMapOfShapeLabel;
-typedef NCollection_Sequence<opencascade::handle<XCAFDoc_GraphNode>> XCAFDoc_GraphNodeSequence;
+typedef NCollection_DataMap <TopoDS_Shape, TDF_Label, TopTools_ShapeMapHasher>::Iterator XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
+typedef NCollection_DataMap <TopoDS_Shape, TDF_Label, TopTools_ShapeMapHasher> XCAFDoc_DataMapOfShapeLabel;
+typedef NCollection_Sequence <opencascade::handle <XCAFDoc_GraphNode>> XCAFDoc_GraphNodeSequence;
 typedef TCollection_AsciiString XCAFDoc_PartId;
 /* end typedefs declaration */
 
@@ -595,7 +595,7 @@ opencascade::handle<XCAFDoc_Area>
 ******************************/
 class XCAFDoc_AssemblyGraph : public Standard_Transient {
 	public:
-typedef NCollection_DataMap<Standard_Integer , TColStd_PackedMapOfInteger> AdjacencyMap;
+typedef NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> AdjacencyMap;
 		class Iterator {};
 /* public enums */
 enum NodeType {
@@ -631,7 +631,7 @@ NodeType_Subshape = NodeType.NodeType_Subshape
 		/****************** XCAFDoc_AssemblyGraph ******************/
 		/**** md5 signature: 7a43fcc42d351eea072de136f9d8ebb1 ****/
 		%feature("compactdefaultargs") XCAFDoc_AssemblyGraph;
-		%feature("autodoc", "\brief constructs graph from xcaf document. construction of a formal graph will be done immediately. \param [in] thedoc - document to iterate.
+		%feature("autodoc", "//!< current 1-based node id. \brief constructs graph from xcaf document. construction of a formal graph will be done immediately. \param [in] thedoc - document to iterate.
 
 Parameters
 ----------
@@ -710,9 +710,9 @@ theNode: int
 
 Returns
 -------
-XCAFDoc_AssemblyGraph::NodeType
+NodeType
 ") GetNodeType;
-		XCAFDoc_AssemblyGraph::NodeType GetNodeType(const Standard_Integer theNode);
+		NodeType GetNodeType(const Standard_Integer theNode);
 
 		/****************** GetNodes ******************/
 		/**** md5 signature: 9ab15b253791908d8de8d61dad2baac4 ****/
@@ -1017,7 +1017,7 @@ class XCAFDoc_AssemblyItemRef : public TDF_Attribute {
 		/****************** XCAFDoc_AssemblyItemRef ******************/
 		/**** md5 signature: 7f77a642c1be436263b736d0b2eb7d35 ****/
 		%feature("compactdefaultargs") XCAFDoc_AssemblyItemRef;
-		%feature("autodoc", "Creates an empty reference attribute.
+		%feature("autodoc", "@} creates an empty reference attribute.
 
 Returns
 -------
@@ -1028,7 +1028,7 @@ None
 		/****************** ClearExtraRef ******************/
 		/**** md5 signature: 263d6cb44cbbb2149f9558d7817e131b ****/
 		%feature("compactdefaultargs") ClearExtraRef;
-		%feature("autodoc", "Reverts the reference to empty state.
+		%feature("autodoc", "@} reverts the reference to empty state.
 
 Returns
 -------
@@ -1092,7 +1092,7 @@ Standard_GUID
 		/****************** GetItem ******************/
 		/**** md5 signature: b6a222a305b35c43f5b5bf5c092a486c ****/
 		%feature("compactdefaultargs") GetItem;
-		%feature("autodoc", "Returns the assembly item id that the reference points to.
+		%feature("autodoc", "@} returns the assembly item id that the reference points to.
 
 Returns
 -------
@@ -1114,7 +1114,7 @@ int
 		/****************** HasExtraRef ******************/
 		/**** md5 signature: 22588d8035b6e09da2a7e6d0bb7118c6 ****/
 		%feature("compactdefaultargs") HasExtraRef;
-		%feature("autodoc", "Checks if the reference points on an item's shapeindex or attribute.
+		%feature("autodoc", "@name extra reference functions. @{ checks if the reference points on an item's shapeindex or attribute.
 
 Returns
 -------
@@ -1211,7 +1211,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: bd9d6e07b3021dd893a192411c53dd3d ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Create (if not exist) a reference to an assembly item. \param [in] thelabel - label to add the attribute. \param [in] theitemid - assembly item id. eturn a handle to the attribute instance.
+		%feature("autodoc", "@name set reference attribute functions. @{ create (if not exist) a reference to an assembly item. \param [in] thelabel - label to add the attribute. \param [in] theitemid - assembly item id. eturn a handle to the attribute instance.
 
 Parameters
 ----------
@@ -1276,7 +1276,7 @@ None
 		/****************** SetItem ******************/
 		/**** md5 signature: 0b321c4a6177112c45f4d4bd9c118caf ****/
 		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "Sets the assembly item id that the reference points to. extra reference data (if any) will be cleared.
+		%feature("autodoc", "@name set reference data functions. @{ sets the assembly item id that the reference points to. extra reference data (if any) will be cleared.
 
 Parameters
 ----------
@@ -1755,13 +1755,13 @@ Parameters
 ----------
 theLabel: TDF_Label
 thePlane: gp_Pln
+theName: TCollection_HAsciiString
 
 Returns
 -------
-theName: TCollection_HAsciiString
 theCapping: bool
 ") GetClippingPlane;
-		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Boolean &OutValue);
+		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> & theName, Standard_Boolean &OutValue);
 
 		/****************** GetClippingPlanes ******************/
 		/**** md5 signature: 075e7b42329dbcab74840155da865a35 ****/
@@ -2667,7 +2667,7 @@ theIsAutoNaming: bool
 
 Returns
 -------
-None
+void
 ") SetAutoNaming;
 		static void SetAutoNaming(Standard_Boolean theIsAutoNaming);
 
@@ -3453,14 +3453,15 @@ TDF_Label
 Parameters
 ----------
 theDatumL: TDF_Label
-
-Returns
--------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 theIdentification: TCollection_HAsciiString
+
+Returns
+-------
+bool
 ") GetDatum;
-		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription, opencascade::handle<TCollection_HAsciiString> & theIdentification);
 
 		/****************** GetDatumLabels ******************/
 		/**** md5 signature: 55e6de8f484b7fb12b9a45740915465a ****/
@@ -3518,14 +3519,14 @@ Parameters
 ----------
 theDimTolL: TDF_Label
 theVal: TColStd_HArray1OfReal
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
 
 Returns
 -------
 theKind: int
-theName: TCollection_HAsciiString
-theDescription: TCollection_HAsciiString
 ") GetDimTol;
-		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****************** GetDimTolLabels ******************/
 		/**** md5 signature: ecf3558fc2a17c2bcf4c65b55b7aabbc ****/
@@ -4583,7 +4584,7 @@ theUnitValue: float
 
 Returns
 -------
-None
+void
 ") SetLengthUnit;
 		static void SetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Real theUnitValue);
 
@@ -4600,7 +4601,7 @@ theBaseUnit: UnitsMethods_LengthUnit
 
 Returns
 -------
-None
+void
 ") SetLengthUnit;
 		static void SetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit);
 
@@ -4733,7 +4734,7 @@ theToCopyAttributes: bool,optional
 
 Returns
 -------
-None
+void
 ") CloneMetaData;
 		static void CloneMetaData(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial> > * theVisMatMap, const Standard_Boolean theToCopyColor = Standard_True, const Standard_Boolean theToCopyLayer = Standard_True, const Standard_Boolean theToCopyMaterial = Standard_True, const Standard_Boolean theToCopyVisMaterial = Standard_True, const Standard_Boolean theToCopyAttributes = Standard_True);
 
@@ -6464,16 +6465,16 @@ Standard_GUID
 Parameters
 ----------
 MatL: TDF_Label
+aName: TCollection_HAsciiString
+aDescription: TCollection_HAsciiString
+aDensName: TCollection_HAsciiString
+aDensValType: TCollection_HAsciiString
 
 Returns
 -------
-aName: TCollection_HAsciiString
-aDescription: TCollection_HAsciiString
 aDensity: float
-aDensName: TCollection_HAsciiString
-aDensValType: TCollection_HAsciiString
 ") GetMaterial;
-		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> & aName, opencascade::handle<TCollection_HAsciiString> & aDescription, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> & aDensName, opencascade::handle<TCollection_HAsciiString> & aDensValType);
 
 		/****************** GetMaterialLabels ******************/
 		/**** md5 signature: cd3883adc849957e7e10d763ad936071 ****/
@@ -6777,7 +6778,7 @@ None
 		/****************** AddNote ******************/
 		/**** md5 signature: c9f044efe559b77b586fd200c2229d61 ****/
 		%feature("compactdefaultargs") AddNote;
-		%feature("autodoc", "Adds the given note to the assembly item. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. eturn a handle to the assembly reference attribute.
+		%feature("autodoc", "@} @name annotation functions @{ adds the given note to the assembly item. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. eturn a handle to the assembly reference attribute.
 
 Parameters
 ----------
@@ -6932,7 +6933,7 @@ opencascade::handle<XCAFDoc_Note>
 		/****************** CreateComment ******************/
 		/**** md5 signature: 41b663076b0b608af4ceedbf243160b2 ****/
 		%feature("compactdefaultargs") CreateComment;
-		%feature("autodoc", "Create a new comment note. creates a new label under the notes hive and attaches ef xcafdoc_notecomment attribute (derived ftom ef xcafdoc_note). \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. \param [in] thecomment - textual comment. eturn a handle to the base note attribute.
+		%feature("autodoc", "@} @name note creation functions @{ create a new comment note. creates a new label under the notes hive and attaches ef xcafdoc_notecomment attribute (derived ftom ef xcafdoc_note). \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. \param [in] thecomment - textual comment. eturn a handle to the base note attribute.
 
 Parameters
 ----------
@@ -6960,7 +6961,7 @@ int
 		/****************** DeleteNote ******************/
 		/**** md5 signature: fcc5261113674a7f0d27fa7a33b4b226 ****/
 		%feature("compactdefaultargs") DeleteNote;
-		%feature("autodoc", "Deletes the given note. removes all links with items annotated by the note. \param [in] thenotelabel - note label. eturn true if the note is deleted, otherwise - false.
+		%feature("autodoc", "@} @name delete note functions @{ deletes the given note. removes all links with items annotated by the note. \param [in] thenotelabel - note label. eturn true if the note is deleted, otherwise - false.
 
 Parameters
 ----------
@@ -7009,7 +7010,7 @@ int
 		/****************** FindAnnotatedItem ******************/
 		/**** md5 signature: 7e562ae1ec4bb3d6b2a750f4a95ec514 ****/
 		%feature("compactdefaultargs") FindAnnotatedItem;
-		%feature("autodoc", "Finds a label of the given assembly item id in the annotated items hive. \param [in] theitemid - assembly item id. eturn annotated item label if it is found, otherwise - null label.
+		%feature("autodoc", "@name find annotated item functions @{ finds a label of the given assembly item id in the annotated items hive. \param [in] theitemid - assembly item id. eturn annotated item label if it is found, otherwise - null label.
 
 Parameters
 ----------
@@ -7189,7 +7190,7 @@ None
 		/****************** GetNotes ******************/
 		/**** md5 signature: 9677742e6436764971a3aa625485ac9b ****/
 		%feature("compactdefaultargs") GetNotes;
-		%feature("autodoc", "Gets all note labels of the assembly item. notes linked to item's subshapes or attributes aren't taken into account. the label sequence isn't cleared beforehand. \param [in] theitemid - assembly item id. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
+		%feature("autodoc", "@} @name get notes from annotated items functions @{ gets all note labels of the assembly item. notes linked to item's subshapes or attributes aren't taken into account. the label sequence isn't cleared beforehand. \param [in] theitemid - assembly item id. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
 
 Parameters
 ----------
@@ -7264,7 +7265,7 @@ int
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "@}.
 
 Returns
 -------
@@ -7327,7 +7328,7 @@ int
 		/****************** NbOrphanNotes ******************/
 		/**** md5 signature: af3b04100b88fbb2f39a73d2e8ea0fc2 ****/
 		%feature("compactdefaultargs") NbOrphanNotes;
-		%feature("autodoc", "Returns number of notes that aren't linked to annotated items.
+		%feature("autodoc", "@} @name orphan annotated items functions @{ returns number of notes that aren't linked to annotated items.
 
 Returns
 -------
@@ -7464,7 +7465,7 @@ bool
 		/****************** RemoveNote ******************/
 		/**** md5 signature: 59b78cbc6224f13948a628dcc964c09d ****/
 		%feature("compactdefaultargs") RemoveNote;
-		%feature("autodoc", "Removes the given note from the assembly item. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly items  linked with the note. eturn true if the note is removed, otherwise - false.
+		%feature("autodoc", "@} @name remove annotation functions @{ removes the given note from the assembly item. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly items  linked with the note. eturn true if the note is removed, otherwise - false.
 
 Parameters
 ----------
@@ -8074,7 +8075,7 @@ SHAS: TColStd_SequenceOfHAsciiString
 
 Returns
 -------
-None
+void
 ") GetExternRefs;
 		static void GetExternRefs(const TDF_Label & L, TColStd_SequenceOfHAsciiString & SHAS);
 
@@ -8641,7 +8642,7 @@ V: bool
 
 Returns
 -------
-None
+void
 ") SetAutoNaming;
 		static void SetAutoNaming(const Standard_Boolean V);
 
@@ -9426,7 +9427,7 @@ bool
 		/****************** ID ******************/
 		/**** md5 signature: 1f78b7b062d92028dbde1d3574326fe0 ****/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "Return guid of this attribute type.
+		%feature("autodoc", "@name interface implementation return guid of this attribute type.
 
 Returns
 -------
@@ -9665,7 +9666,7 @@ None
 **********************************/
 class XCAFDoc_VisMaterialCommon {
 	public:
-		opencascade::handle<Image_Texture > DiffuseTexture;
+		opencascade::handle<Image_Texture> DiffuseTexture;
 		Quantity_Color AmbientColor;
 		Quantity_Color DiffuseColor;
 		Quantity_Color SpecularColor;
@@ -9674,9 +9675,9 @@ class XCAFDoc_VisMaterialCommon {
 		Standard_ShortReal Transparency;
 		bool IsDefined;
 		/****************** XCAFDoc_VisMaterialCommon ******************/
-		/**** md5 signature: 902673da58471421f95b5ccf0bdee6a3 ****/
+		/**** md5 signature: c9dd7540f3d865e19f60898c1233154a ****/
 		%feature("compactdefaultargs") XCAFDoc_VisMaterialCommon;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "//!< defined flag; true by default empty constructor.
 
 Returns
 -------
@@ -9721,11 +9722,11 @@ bool
 *******************************/
 class XCAFDoc_VisMaterialPBR {
 	public:
-		opencascade::handle<Image_Texture > BaseColorTexture;
-		opencascade::handle<Image_Texture > MetallicRoughnessTexture;
-		opencascade::handle<Image_Texture > EmissiveTexture;
-		opencascade::handle<Image_Texture > OcclusionTexture;
-		opencascade::handle<Image_Texture > NormalTexture;
+		opencascade::handle<Image_Texture> BaseColorTexture;
+		opencascade::handle<Image_Texture> MetallicRoughnessTexture;
+		opencascade::handle<Image_Texture> EmissiveTexture;
+		opencascade::handle<Image_Texture> OcclusionTexture;
+		opencascade::handle<Image_Texture> NormalTexture;
 		Quantity_ColorRGBA BaseColor;
 		Graphic3d_Vec3 EmissiveFactor;
 		Standard_ShortReal Metallic;
@@ -9733,9 +9734,9 @@ class XCAFDoc_VisMaterialPBR {
 		Standard_ShortReal RefractionIndex;
 		bool IsDefined;
 		/****************** XCAFDoc_VisMaterialPBR ******************/
-		/**** md5 signature: 11ea295424c444b06892c19d880417c9 ****/
+		/**** md5 signature: 998fe3242c50160917d2483531cbb254 ****/
 		%feature("compactdefaultargs") XCAFDoc_VisMaterialPBR;
-		%feature("autodoc", "Empty constructor.
+		%feature("autodoc", "//!< defined flag; true by default empty constructor.
 
 Returns
 -------
@@ -10017,7 +10018,7 @@ Returns
 -------
 None
 ") Paste;
-		virtual void Paste(const opencascade::handle<TDF_Attribute > &, const opencascade::handle<TDF_RelocationTable > &);
+		virtual void Paste(const opencascade::handle<TDF_Attribute> &, const opencascade::handle<TDF_RelocationTable> &);
 
 		/****************** RemoveMaterial ******************/
 		/**** md5 signature: 775c769efa33703b71d57b14aad1c668 ****/
@@ -10047,7 +10048,7 @@ Returns
 -------
 None
 ") Restore;
-		virtual void Restore(const opencascade::handle<TDF_Attribute > &);
+		virtual void Restore(const opencascade::handle<TDF_Attribute> &);
 
 		/****************** Set ******************/
 		/**** md5 signature: d22b33d6563c5e4e2eb49ebdf3751fdb ****/
@@ -10278,7 +10279,7 @@ class XCAFDoc_NoteBinData : public XCAFDoc_Note {
 		/****************** XCAFDoc_NoteBinData ******************/
 		/**** md5 signature: f25e08a0f55dc8c306751fc7d98a29d0 ****/
 		%feature("compactdefaultargs") XCAFDoc_NoteBinData;
-		%feature("autodoc", "Creates an empty binary data note.
+		%feature("autodoc", "@} creates an empty binary data note.
 
 Returns
 -------
@@ -10398,7 +10399,7 @@ None
 		/****************** Set ******************/
 		/**** md5 signature: 9c3daba24c507f0c878aceba1bebac7f ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Create (if not exist) a binary note with data loaded from a binary file. \param [in] thelabel - label to add the attribute. \param [in] theusername - the name of the user, who created the note. \param [in] thetimestamp - creation timestamp of the note. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file. eturn a handle to the attribute instance.
+		%feature("autodoc", "@name set attribute functions. @{ create (if not exist) a binary note with data loaded from a binary file. \param [in] thelabel - label to add the attribute. \param [in] theusername - the name of the user, who created the note. \param [in] thetimestamp - creation timestamp of the note. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file. eturn a handle to the attribute instance.
 
 Parameters
 ----------
@@ -10438,7 +10439,7 @@ opencascade::handle<XCAFDoc_NoteBinData>
 		/****************** Set ******************/
 		/**** md5 signature: 687dd70a71c09ae4e0a64c71d20cde3d ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets title, mime type and data from a binary file. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file.
+		%feature("autodoc", "@name set attribute data functions. @{ sets title, mime type and data from a binary file. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file.
 
 Parameters
 ----------
@@ -10483,7 +10484,7 @@ int
 		/****************** Title ******************/
 		/**** md5 signature: f6908c94b14b08bda1ee947ff0d8b2f6 ****/
 		%feature("compactdefaultargs") Title;
-		%feature("autodoc", "Returns the note title.
+		%feature("autodoc", "@} returns the note title.
 
 Returns
 -------

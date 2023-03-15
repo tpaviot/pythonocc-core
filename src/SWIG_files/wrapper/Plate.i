@@ -138,10 +138,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<Plate_PinpointConstraint> Plate_Array1OfPinpointConstraint;
-typedef NCollection_Sequence<Plate_LinearScalarConstraint> Plate_SequenceOfLinearScalarConstraint;
-typedef NCollection_Sequence<Plate_LinearXYZConstraint> Plate_SequenceOfLinearXYZConstraint;
-typedef NCollection_Sequence<Plate_PinpointConstraint> Plate_SequenceOfPinpointConstraint;
+typedef NCollection_Array1 <Plate_PinpointConstraint> Plate_Array1OfPinpointConstraint;
+typedef NCollection_Sequence <Plate_LinearScalarConstraint> Plate_SequenceOfLinearScalarConstraint;
+typedef NCollection_Sequence <Plate_LinearXYZConstraint> Plate_SequenceOfLinearXYZConstraint;
+typedef NCollection_Sequence <Plate_PinpointConstraint> Plate_SequenceOfPinpointConstraint;
 /* end typedefs declaration */
 
 /*****************

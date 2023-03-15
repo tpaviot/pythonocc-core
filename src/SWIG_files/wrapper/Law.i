@@ -99,8 +99,8 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<opencascade::handle<Law_Function>> Law_Laws;
-typedef NCollection_List<opencascade::handle<Law_Function>>::Iterator Law_ListIteratorOfLaws;
+typedef NCollection_List <opencascade::handle <Law_Function>> Law_Laws;
+typedef NCollection_List <opencascade::handle <Law_Function>>::Iterator Law_ListIteratorOfLaws;
 /* end typedefs declaration */
 
 /************

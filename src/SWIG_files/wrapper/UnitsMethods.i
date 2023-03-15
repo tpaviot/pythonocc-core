@@ -241,7 +241,7 @@ theBaseUnit: UnitsMethods_LengthUnit,optional
 
 Returns
 -------
-None
+void
 ") SetCasCadeLengthUnit;
 		static void SetCasCadeLengthUnit(const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
@@ -256,7 +256,7 @@ theUnit: int
 
 Returns
 -------
-None
+void
 ") SetCasCadeLengthUnit;
 		static void SetCasCadeLengthUnit(const Standard_Integer theUnit);
 

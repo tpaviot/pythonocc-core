@@ -89,15 +89,15 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum TopOpeBRepDS_CheckStatus {
+	TopOpeBRepDS_OK = 0,
+	TopOpeBRepDS_NOK = 1,
+};
+
 enum TopOpeBRepDS_Config {
 	TopOpeBRepDS_UNSHGEOMETRY = 0,
 	TopOpeBRepDS_SAMEORIENTED = 1,
 	TopOpeBRepDS_DIFFORIENTED = 2,
-};
-
-enum TopOpeBRepDS_CheckStatus {
-	TopOpeBRepDS_OK = 0,
-	TopOpeBRepDS_NOK = 1,
 };
 
 enum TopOpeBRepDS_Kind {
@@ -120,6 +120,12 @@ enum TopOpeBRepDS_Kind {
 /* python proxy classes for enums */
 %pythoncode {
 
+class TopOpeBRepDS_CheckStatus(IntEnum):
+	TopOpeBRepDS_OK = 0
+	TopOpeBRepDS_NOK = 1
+TopOpeBRepDS_OK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_OK
+TopOpeBRepDS_NOK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_NOK
+
 class TopOpeBRepDS_Config(IntEnum):
 	TopOpeBRepDS_UNSHGEOMETRY = 0
 	TopOpeBRepDS_SAMEORIENTED = 1
@@ -127,12 +133,6 @@ class TopOpeBRepDS_Config(IntEnum):
 TopOpeBRepDS_UNSHGEOMETRY = TopOpeBRepDS_Config.TopOpeBRepDS_UNSHGEOMETRY
 TopOpeBRepDS_SAMEORIENTED = TopOpeBRepDS_Config.TopOpeBRepDS_SAMEORIENTED
 TopOpeBRepDS_DIFFORIENTED = TopOpeBRepDS_Config.TopOpeBRepDS_DIFFORIENTED
-
-class TopOpeBRepDS_CheckStatus(IntEnum):
-	TopOpeBRepDS_OK = 0
-	TopOpeBRepDS_NOK = 1
-TopOpeBRepDS_OK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_OK
-TopOpeBRepDS_NOK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_NOK
 
 class TopOpeBRepDS_Kind(IntEnum):
 	TopOpeBRepDS_POINT = 0
@@ -312,37 +312,37 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference> TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CheckStatus, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ListOfInterference, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference;
-typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference, TColStd_MapTransientHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference;
-typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopoDS_Shape, TColStd_MapTransientHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State;
-typedef NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CurveData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfCurve;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ShapeData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_PointData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfPoint;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_SurfaceData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfSurface;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Geom_Surface>, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfShapeSurface;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CheckStatus, TColStd_MapIntegerHasher> TopOpeBRepDS_DataMapOfCheckStatus;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ListOfInterference, TColStd_MapIntegerHasher> TopOpeBRepDS_DataMapOfIntegerListOfInterference;
-typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference, TColStd_MapTransientHasher> TopOpeBRepDS_DataMapOfInterferenceListOfInterference;
-typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopoDS_Shape, TColStd_MapTransientHasher> TopOpeBRepDS_DataMapOfInterferenceShape;
-typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State;
-typedef NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> TopOpeBRepDS_DataMapOfShapeState;
-typedef NCollection_DoubleMap<Standard_Integer, TopoDS_Shape, TColStd_MapIntegerHasher, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
-typedef NCollection_DoubleMap<Standard_Integer, TopoDS_Shape, TColStd_MapIntegerHasher, TopTools_ShapeMapHasher> TopOpeBRepDS_DoubleMapOfIntegerShape;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> TopOpeBRepDS_IndexedDataMapOfShapeWithState;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_Point, TopTools_ShapeMapHasher> TopOpeBRepDS_IndexedDataMapOfVertexPoint;
-typedef NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>::Iterator TopOpeBRepDS_ListIteratorOfListOfInterference;
-typedef NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> TopOpeBRepDS_ListOfInterference;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CurveData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfCurve;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ShapeData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfIntegerShapeData;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_PointData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfPoint;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeData, TopTools_ShapeMapHasher> TopOpeBRepDS_MapOfShapeData;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_SurfaceData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfSurface;
+typedef NCollection_Array1 <TopOpeBRepDS_DataMapOfIntegerListOfInterference> TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_CheckStatus, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_ListOfInterference, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference;
+typedef NCollection_DataMap <opencascade::handle <TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference, TColStd_MapTransientHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference;
+typedef NCollection_DataMap <opencascade::handle <TopOpeBRepDS_Interference>, TopoDS_Shape, TColStd_MapTransientHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State;
+typedef NCollection_DataMap <TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_CurveData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfCurve;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_ShapeData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_PointData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfPoint;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_SurfaceData, TColStd_MapIntegerHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfSurface;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <Geom_Surface>, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfShapeSurface;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_CheckStatus, TColStd_MapIntegerHasher> TopOpeBRepDS_DataMapOfCheckStatus;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_ListOfInterference, TColStd_MapIntegerHasher> TopOpeBRepDS_DataMapOfIntegerListOfInterference;
+typedef NCollection_DataMap <opencascade::handle <TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference, TColStd_MapTransientHasher> TopOpeBRepDS_DataMapOfInterferenceListOfInterference;
+typedef NCollection_DataMap <opencascade::handle <TopOpeBRepDS_Interference>, TopoDS_Shape, TColStd_MapTransientHasher> TopOpeBRepDS_DataMapOfInterferenceShape;
+typedef NCollection_DataMap <TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State;
+typedef NCollection_DataMap <TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> TopOpeBRepDS_DataMapOfShapeState;
+typedef NCollection_DoubleMap <Standard_Integer, TopoDS_Shape, TColStd_MapIntegerHasher, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
+typedef NCollection_DoubleMap <Standard_Integer, TopoDS_Shape, TColStd_MapIntegerHasher, TopTools_ShapeMapHasher> TopOpeBRepDS_DoubleMapOfIntegerShape;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> TopOpeBRepDS_IndexedDataMapOfShapeWithState;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, TopOpeBRepDS_Point, TopTools_ShapeMapHasher> TopOpeBRepDS_IndexedDataMapOfVertexPoint;
+typedef NCollection_List <opencascade::handle <TopOpeBRepDS_Interference>>::Iterator TopOpeBRepDS_ListIteratorOfListOfInterference;
+typedef NCollection_List <opencascade::handle <TopOpeBRepDS_Interference>> TopOpeBRepDS_ListOfInterference;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_CurveData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfCurve;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_ShapeData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfIntegerShapeData;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_PointData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfPoint;
+typedef NCollection_IndexedDataMap <TopoDS_Shape, TopOpeBRepDS_ShapeData, TopTools_ShapeMapHasher> TopOpeBRepDS_MapOfShapeData;
+typedef NCollection_DataMap <Standard_Integer, TopOpeBRepDS_SurfaceData, TColStd_MapIntegerHasher> TopOpeBRepDS_MapOfSurface;
 typedef TopOpeBRepDS_DataStructure * TopOpeBRepDS_PDataStructure;
-typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Geom_Surface>, TopTools_ShapeMapHasher> TopOpeBRepDS_ShapeSurface;
+typedef NCollection_DataMap <TopoDS_Shape, opencascade::handle <Geom_Surface>, TopTools_ShapeMapHasher> TopOpeBRepDS_ShapeSurface;
 /* end typedefs declaration */
 
 /*********************
@@ -5534,7 +5534,7 @@ Par: float
 
 Returns
 -------
-None
+void
 ") Parameter;
 		static void Parameter(const opencascade::handle<TopOpeBRepDS_Interference> & CPI, const Standard_Real Par);
 

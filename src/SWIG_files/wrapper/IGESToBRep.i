@@ -139,7 +139,7 @@ int
 
 Returns
 -------
-None
+void
 ") Init;
 		static void Init();
 
@@ -244,7 +244,7 @@ aContainer: IGESToBRep_AlgoContainer
 
 Returns
 -------
-None
+void
 ") SetAlgoContainer;
 		static void SetAlgoContainer(const opencascade::handle<IGESToBRep_AlgoContainer> & aContainer);
 

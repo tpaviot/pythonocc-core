@@ -161,7 +161,7 @@ TheParameters: math_Vector
 
 Returns
 -------
-None
+void
 ") Parameters;
 		static void Parameters(const BRepApprox_TheMultiLineOfApprox & Line, const Standard_Integer firstP, const Standard_Integer lastP, const Approx_ParametrizationType Par, math_Vector & TheParameters);
 
@@ -4270,7 +4270,7 @@ ML: BRepApprox_TheMultiLineOfApprox
 
 Returns
 -------
-None
+void
 ") Dump;
 		static void Dump(const BRepApprox_TheMultiLineOfApprox & ML);
 
@@ -4436,7 +4436,7 @@ tabPt: TColgp_Array1OfPnt
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
 
@@ -4453,7 +4453,7 @@ tabPt2d: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
@@ -4471,7 +4471,7 @@ tabPt2d: TColgp_Array1OfPnt2d
 
 Returns
 -------
-None
+void
 ") Value;
 		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 

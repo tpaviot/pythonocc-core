@@ -135,7 +135,7 @@ theKnots: NCollection_Vector<int>
 
 Returns
 -------
-None
+void
 ") BuildKnots;
 		static void BuildKnots(const TColgp_Array1OfPnt & thePntsXYZ, const TColgp_Array1OfPnt2d & thePntsU1V1, const TColgp_Array1OfPnt2d & thePntsU2V2, const math_Vector & thePars, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2, const Standard_Integer theMinNbPnts, NCollection_Vector<Standard_Integer> & theKnots);
 

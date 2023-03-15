@@ -10,6 +10,15 @@ from OCC.Core.GeomAbs import *
 from OCC.Core.gp import *
 
 
+class GCPnts_AbscissaType(IntEnum):
+    GCPnts_LengthParametrized: int = ...
+    GCPnts_Parametrized: int = ...
+    GCPnts_AbsComposite: int = ...
+
+GCPnts_LengthParametrized = GCPnts_AbscissaType.GCPnts_LengthParametrized
+GCPnts_Parametrized = GCPnts_AbscissaType.GCPnts_Parametrized
+GCPnts_AbsComposite = GCPnts_AbscissaType.GCPnts_AbsComposite
+
 class GCPnts_DeflectionType(IntEnum):
     GCPnts_Linear: int = ...
     GCPnts_Circular: int = ...
@@ -20,15 +29,6 @@ GCPnts_Linear = GCPnts_DeflectionType.GCPnts_Linear
 GCPnts_Circular = GCPnts_DeflectionType.GCPnts_Circular
 GCPnts_Curved = GCPnts_DeflectionType.GCPnts_Curved
 GCPnts_DefComposite = GCPnts_DeflectionType.GCPnts_DefComposite
-
-class GCPnts_AbscissaType(IntEnum):
-    GCPnts_LengthParametrized: int = ...
-    GCPnts_Parametrized: int = ...
-    GCPnts_AbsComposite: int = ...
-
-GCPnts_LengthParametrized = GCPnts_AbscissaType.GCPnts_LengthParametrized
-GCPnts_Parametrized = GCPnts_AbscissaType.GCPnts_Parametrized
-GCPnts_AbsComposite = GCPnts_AbscissaType.GCPnts_AbsComposite
 
 class GCPnts_AbscissaPoint:
     @overload
