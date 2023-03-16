@@ -467,13 +467,13 @@ unsigned int
 
 Parameters
 ----------
-theInput: TCollection_AsciiString
+theInput: str
 
 Returns
 -------
 bool
 ") OpenInput;
-		bool OpenInput(const TCollection_AsciiString & theInput);
+		bool OpenInput(TCollection_AsciiString theInput);
 
 		/****************** PtsStartBase ******************/
 		/**** md5 signature: 6b47d8a3bebf5d1cc984499c8eeb1ea4 ****/
@@ -1215,14 +1215,14 @@ None
 
 Parameters
 ----------
-theSrcVideo: TCollection_AsciiString
-theMediaInfo: TCollection_AsciiString
+theSrcVideo: str
+theMediaInfo: str
 
 Returns
 -------
 opencascade::handle<Media_Frame>
 ") DumpFirstFrame;
-		static opencascade::handle<Media_Frame> DumpFirstFrame(const TCollection_AsciiString & theSrcVideo, TCollection_AsciiString & theMediaInfo);
+		static opencascade::handle<Media_Frame> DumpFirstFrame(TCollection_AsciiString theSrcVideo, TCollection_AsciiString & theMediaInfo);
 
 		/****************** DumpFirstFrame ******************/
 		/**** md5 signature: 6950a2d22c04cbd05974f88c89f1ad71 ****/
@@ -1231,9 +1231,9 @@ opencascade::handle<Media_Frame>
 
 Parameters
 ----------
-theSrcVideo: TCollection_AsciiString
-theOutImage: TCollection_AsciiString
-theMediaInfo: TCollection_AsciiString
+theSrcVideo: str
+theOutImage: str
+theMediaInfo: str
 theMaxSize: int,optional
 	default value is 0
 
@@ -1241,7 +1241,7 @@ Returns
 -------
 bool
 ") DumpFirstFrame;
-		static bool DumpFirstFrame(const TCollection_AsciiString & theSrcVideo, const TCollection_AsciiString & theOutImage, TCollection_AsciiString & theMediaInfo, int theMaxSize = 0);
+		static bool DumpFirstFrame(TCollection_AsciiString theSrcVideo, TCollection_AsciiString theOutImage, TCollection_AsciiString & theMediaInfo, int theMaxSize = 0);
 
 		/****************** Pause ******************/
 		/**** md5 signature: 29dbaa6814dab6226a053621aee10839 ****/
@@ -1334,14 +1334,14 @@ None
 
 Parameters
 ----------
-theInputPath: TCollection_AsciiString
+theInputPath: str
 theToWait: bool
 
 Returns
 -------
 None
 ") SetInput;
-		void SetInput(const TCollection_AsciiString & theInputPath, Standard_Boolean theToWait);
+		void SetInput(TCollection_AsciiString theInputPath, Standard_Boolean theToWait);
 
 		/****************** ToForceRgb ******************/
 		/**** md5 signature: 5f21d38bf7884162a0a8027e30c0c524 ****/

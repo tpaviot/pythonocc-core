@@ -1267,13 +1267,13 @@ bool
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 int
 ") LoadFile;
-		Standard_Integer LoadFile(const char * filename);
+		Standard_Integer LoadFile(Standard_CString filename);
 
 		/****************** Model ******************/
 		/**** md5 signature: 4b3130e3b28afba6f0c58ab4875c4253 ****/

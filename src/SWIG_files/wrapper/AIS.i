@@ -699,13 +699,13 @@ class AIS_Animation : public Standard_Transient {
 
 Parameters
 ----------
-theAnimationName: TCollection_AsciiString
+theAnimationName: str
 
 Returns
 -------
 None
 ") AIS_Animation;
-		 AIS_Animation(const TCollection_AsciiString & theAnimationName);
+		 AIS_Animation(TCollection_AsciiString theAnimationName);
 
 		/****************** Add ******************/
 		/**** md5 signature: b7202ad1c8c688e6eb7fda91d2734c8a ****/
@@ -788,13 +788,13 @@ float
 
 Parameters
 ----------
-theAnimationName: TCollection_AsciiString
+theAnimationName: str
 
 Returns
 -------
 opencascade::handle<AIS_Animation>
 ") Find;
-		opencascade::handle<AIS_Animation> Find(const TCollection_AsciiString & theAnimationName);
+		opencascade::handle<AIS_Animation> Find(TCollection_AsciiString theAnimationName);
 
 		/****************** HasOwnDuration ******************/
 		/**** md5 signature: d56fdc215ecd1f278eef79952f8de61f ****/
@@ -8434,14 +8434,14 @@ class AIS_AnimationCamera : public AIS_Animation {
 
 Parameters
 ----------
-theAnimationName: TCollection_AsciiString
+theAnimationName: str
 theView: V3d_View
 
 Returns
 -------
 None
 ") AIS_AnimationCamera;
-		 AIS_AnimationCamera(const TCollection_AsciiString & theAnimationName, const opencascade::handle<V3d_View> & theView);
+		 AIS_AnimationCamera(TCollection_AsciiString theAnimationName, const opencascade::handle<V3d_View> & theView);
 
 		/****************** CameraEnd ******************/
 		/**** md5 signature: b01b09ea2b055e00cd1afbc9547d1944 ****/
@@ -8544,7 +8544,7 @@ class AIS_AnimationObject : public AIS_Animation {
 
 Parameters
 ----------
-theAnimationName: TCollection_AsciiString
+theAnimationName: str
 theContext: AIS_InteractiveContext
 theObject: AIS_InteractiveObject
 theTrsfStart: gp_Trsf
@@ -8554,7 +8554,7 @@ Returns
 -------
 None
 ") AIS_AnimationObject;
-		 AIS_AnimationObject(const TCollection_AsciiString & theAnimationName, const opencascade::handle<AIS_InteractiveContext> & theContext, const opencascade::handle<AIS_InteractiveObject> & theObject, const gp_Trsf & theTrsfStart, const gp_Trsf & theTrsfEnd);
+		 AIS_AnimationObject(TCollection_AsciiString theAnimationName, const opencascade::handle<AIS_InteractiveContext> & theContext, const opencascade::handle<AIS_InteractiveObject> & theObject, const gp_Trsf & theTrsfStart, const gp_Trsf & theTrsfEnd);
 
 };
 
@@ -9782,13 +9782,13 @@ None
 
 Parameters
 ----------
-theFormat: TCollection_AsciiString
+theFormat: str
 
 Returns
 -------
 None
 ") SetFormat;
-		void SetFormat(const TCollection_AsciiString & theFormat);
+		void SetFormat(TCollection_AsciiString theFormat);
 
 		/****************** SetHeight ******************/
 		/**** md5 signature: e32aa97606dad72235a0a6b4a7c46ba6 ****/
@@ -9844,14 +9844,14 @@ None
 
 Parameters
 ----------
-theLabel: TCollection_ExtendedString
+theLabel: str
 theIndex: int
 
 Returns
 -------
 None
 ") SetLabel;
-		void SetLabel(const TCollection_ExtendedString & theLabel, const Standard_Integer theIndex);
+		void SetLabel(TCollection_ExtendedString theLabel, const Standard_Integer theIndex);
 
 		/****************** SetLabelAtBorder ******************/
 		/**** md5 signature: 2e74089f2855b82e157ab10779d34d9a ****/
@@ -10073,13 +10073,13 @@ None
 
 Parameters
 ----------
-theTitle: TCollection_ExtendedString
+theTitle: str
 
 Returns
 -------
 None
 ") SetTitle;
-		void SetTitle(const TCollection_ExtendedString & theTitle);
+		void SetTitle(TCollection_ExtendedString theTitle);
 
 		/****************** SetTitlePosition ******************/
 		/**** md5 signature: ffb68e1026952762986ee0e118b51626 ****/
@@ -10150,13 +10150,13 @@ None
 
 Parameters
 ----------
-theText: TCollection_ExtendedString
+theText: str
 
 Returns
 -------
 int
 ") TextHeight;
-		Standard_Integer TextHeight(const TCollection_ExtendedString & theText);
+		Standard_Integer TextHeight(TCollection_ExtendedString theText);
 
 		/****************** TextSize ******************/
 		/**** md5 signature: df57c5cfbbb6f8f9a5d75ce1943f61ab ****/
@@ -10165,7 +10165,7 @@ int
 
 Parameters
 ----------
-theText: TCollection_ExtendedString
+theText: str
 theHeight: int
 
 Returns
@@ -10174,7 +10174,7 @@ theWidth: int
 theAscent: int
 theDescent: int
 ") TextSize;
-		void TextSize(const TCollection_ExtendedString & theText, const Standard_Integer theHeight, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void TextSize(TCollection_ExtendedString theText, const Standard_Integer theHeight, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** TextWidth ******************/
 		/**** md5 signature: ef6e59d61da317f2087b0778bbc36b23 ****/
@@ -10183,13 +10183,13 @@ theDescent: int
 
 Parameters
 ----------
-theText: TCollection_ExtendedString
+theText: str
 
 Returns
 -------
 int
 ") TextWidth;
-		Standard_Integer TextWidth(const TCollection_ExtendedString & theText);
+		Standard_Integer TextWidth(TCollection_ExtendedString theText);
 
 		/****************** hueToValidRange ******************/
 		/**** md5 signature: f60f245014fce41540c5cd6f560cd4ad ****/
@@ -11577,14 +11577,14 @@ double
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theToWait: bool
 
 Returns
 -------
 None
 ") OpenInput;
-		void OpenInput(const TCollection_AsciiString & thePath, Standard_Boolean theToWait);
+		void OpenInput(TCollection_AsciiString thePath, Standard_Boolean theToWait);
 
 		/****************** PlayPause ******************/
 		/**** md5 signature: 811ffa83708da2acdc8d22e930c8cece ****/
@@ -12456,13 +12456,13 @@ None
 
 Parameters
 ----------
-theLabel: TCollection_AsciiString
+theLabel: str
 
 Returns
 -------
 None
 ") SetXLabel;
-		void SetXLabel(const TCollection_AsciiString & theLabel);
+		void SetXLabel(TCollection_AsciiString theLabel);
 
 		/****************** SetYLabel ******************/
 		/**** md5 signature: 8fe68a257c14798d817c0a27a82042b8 ****/
@@ -12471,13 +12471,13 @@ None
 
 Parameters
 ----------
-theLabel: TCollection_AsciiString
+theLabel: str
 
 Returns
 -------
 None
 ") SetYLabel;
-		void SetYLabel(const TCollection_AsciiString & theLabel);
+		void SetYLabel(TCollection_AsciiString theLabel);
 
 		/****************** Signature ******************/
 		/**** md5 signature: 4e037e01ba764fd5d5261e3d9ba6557d ****/
@@ -13982,13 +13982,13 @@ None
 
 Parameters
 ----------
-theFont: char *
+theFont: str
 
 Returns
 -------
 None
 ") SetFont;
-		void SetFont(const char * theFont);
+		void SetFont(Standard_CString theFont);
 
 		/****************** SetFontAspect ******************/
 		/**** md5 signature: 5c2494c796ae98d97b009a2fec1f0d8d ****/
@@ -14102,13 +14102,13 @@ None
 
 Parameters
 ----------
-theText: TCollection_ExtendedString
+theText: str
 
 Returns
 -------
 None
 ") SetText;
-		void SetText(const TCollection_ExtendedString & theText);
+		void SetText(TCollection_ExtendedString theText);
 
 		/****************** SetTextFormatter ******************/
 		/**** md5 signature: 69d92dbd5b2f2ec93859c8dcc0b4f585 ****/
@@ -14666,13 +14666,13 @@ None
 Parameters
 ----------
 thePart: Prs3d_DatumParts
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 None
 ") SetLabel;
-		void SetLabel(const Prs3d_DatumParts thePart, const TCollection_ExtendedString & theName);
+		void SetLabel(const Prs3d_DatumParts thePart, TCollection_ExtendedString theName);
 
 		/****************** SetOriginColor ******************/
 		/**** md5 signature: 1017d076464e72d0a5e64feb3baf458f ****/
@@ -15370,15 +15370,15 @@ None
 
 Parameters
 ----------
-theX: TCollection_AsciiString
-theY: TCollection_AsciiString
-theZ: TCollection_AsciiString
+theX: str
+theY: str
+theZ: str
 
 Returns
 -------
 None
 ") SetAxesLabels;
-		void SetAxesLabels(const TCollection_AsciiString & theX, const TCollection_AsciiString & theY, const TCollection_AsciiString & theZ);
+		void SetAxesLabels(TCollection_AsciiString theX, TCollection_AsciiString theY, TCollection_AsciiString theZ);
 
 		/****************** SetAxesPadding ******************/
 		/**** md5 signature: bda467829db54201ecc24927f31793c3 ****/
@@ -15508,13 +15508,13 @@ None
 Parameters
 ----------
 theSide: V3d_TypeOfOrientation
-theLabel: TCollection_AsciiString
+theLabel: str
 
 Returns
 -------
 None
 ") SetBoxSideLabel;
-		void SetBoxSideLabel(const V3d_TypeOfOrientation theSide, const TCollection_AsciiString & theLabel);
+		void SetBoxSideLabel(const V3d_TypeOfOrientation theSide, TCollection_AsciiString theLabel);
 
 		/****************** SetBoxTransparency ******************/
 		/**** md5 signature: 7b1db2c489dae836412f459804ab26de ****/
@@ -15643,13 +15643,13 @@ None
 
 Parameters
 ----------
-theFont: TCollection_AsciiString
+theFont: str
 
 Returns
 -------
 None
 ") SetFont;
-		void SetFont(const TCollection_AsciiString & theFont);
+		void SetFont(TCollection_AsciiString theFont);
 
 		/****************** SetFontHeight ******************/
 		/**** md5 signature: 88c3666178019f6b9e8629cb7bd9166f ****/
@@ -16478,13 +16478,13 @@ None
 
 Parameters
 ----------
-theTextureFileName: TCollection_AsciiString
+theTextureFileName: str
 
 Returns
 -------
 None
 ") SetTextureFileName;
-		virtual void SetTextureFileName(const TCollection_AsciiString & theTextureFileName);
+		virtual void SetTextureFileName(TCollection_AsciiString theTextureFileName);
 
 		/****************** SetTextureMapOff ******************/
 		/**** md5 signature: 63364859b184736648b21d705a82db43 ****/
@@ -16587,9 +16587,9 @@ None
 
 Returns
 -------
-char *
+str
 ") TextureFile;
-		const char * TextureFile();
+		Standard_CString TextureFile();
 
 		/****************** TextureMapState ******************/
 		/**** md5 signature: 383404f1553dcde6191be859120a79f5 ****/

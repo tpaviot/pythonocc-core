@@ -1390,7 +1390,7 @@ None
 Parameters
 ----------
 aConst: TDataXtd_Constraint
-aText: TCollection_ExtendedString
+aText: str
 anIsAngle: bool
 
 Returns

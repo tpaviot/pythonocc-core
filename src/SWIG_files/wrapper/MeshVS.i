@@ -1092,7 +1092,7 @@ None
 Parameters
 ----------
 Key: int
-Value: TCollection_AsciiString
+Value: str
 
 Returns
 -------
@@ -1275,13 +1275,13 @@ bool
 Parameters
 ----------
 Key: int
-Value: TCollection_AsciiString
+Value: str
 
 Returns
 -------
 None
 ") SetAsciiString;
-		void SetAsciiString(const Standard_Integer Key, const TCollection_AsciiString & Value);
+		void SetAsciiString(const Standard_Integer Key, TCollection_AsciiString Value);
 
 		/****************** SetBoolean ******************/
 		/**** md5 signature: de57cc8afe03434b7e50da2a4245e18d ****/
@@ -1613,13 +1613,13 @@ None
 
 Parameters
 ----------
-TypeString: char *
+TypeString: str
 
 Returns
 -------
 opencascade::handle<MeshVS_PrsBuilder>
 ") FindBuilder;
-		opencascade::handle<MeshVS_PrsBuilder> FindBuilder(const char * TypeString);
+		opencascade::handle<MeshVS_PrsBuilder> FindBuilder(Standard_CString TypeString);
 
 		/****************** GetBuilder ******************/
 		/**** md5 signature: 4c9607e94ac7aa236064857b9e1b7e7b ****/
@@ -4263,7 +4263,7 @@ Parameters
 ----------
 IsElement: bool
 ID: int
-Text: TCollection_AsciiString
+Text: str
 
 Returns
 -------
@@ -4310,13 +4310,13 @@ Parameters
 ----------
 IsElement: bool
 ID: int
-Text: TCollection_AsciiString
+Text: str
 
 Returns
 -------
 None
 ") SetText;
-		void SetText(const Standard_Boolean IsElement, const Standard_Integer ID, const TCollection_AsciiString & Text);
+		void SetText(const Standard_Boolean IsElement, const Standard_Integer ID, TCollection_AsciiString Text);
 
 		/****************** SetTexts ******************/
 		/**** md5 signature: 417e71af0ee08340a68f99a92c30842d ****/

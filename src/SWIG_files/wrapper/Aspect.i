@@ -2496,13 +2496,13 @@ None
 
 Parameters
 ----------
-theTitle: TCollection_AsciiString
+theTitle: str
 
 Returns
 -------
 None
 ") SetTitle;
-		virtual void SetTitle(const TCollection_AsciiString & theTitle);
+		virtual void SetTitle(TCollection_AsciiString theTitle);
 
 		/****************** SetVirtual ******************/
 		/**** md5 signature: f013b7099e5195f3ad8ac5f9c350083a ****/
@@ -3125,14 +3125,14 @@ class Aspect_XRAction : public Standard_Transient {
 
 Parameters
 ----------
-theId: TCollection_AsciiString
+theId: str
 theType: Aspect_XRActionType
 
 Returns
 -------
 None
 ") Aspect_XRAction;
-		 Aspect_XRAction(const TCollection_AsciiString & theId, const Aspect_XRActionType theType);
+		 Aspect_XRAction(TCollection_AsciiString theId, const Aspect_XRActionType theType);
 
 		/****************** Id ******************/
 		/**** md5 signature: 932272b78b9184cc2485436a72cc2df4 ****/
@@ -3216,13 +3216,13 @@ class Aspect_XRActionSet : public Standard_Transient {
 
 Parameters
 ----------
-theId: TCollection_AsciiString
+theId: str
 
 Returns
 -------
 None
 ") Aspect_XRActionSet;
-		 Aspect_XRActionSet(const TCollection_AsciiString & theId);
+		 Aspect_XRActionSet(TCollection_AsciiString theId);
 
 		/****************** Actions ******************/
 		/**** md5 signature: 8711ba344778f38c5ecdfeccb1ff6133 ****/

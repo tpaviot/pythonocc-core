@@ -199,13 +199,13 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") Attribute;
-		opencascade::handle<Standard_Transient> Attribute(const char * name);
+		opencascade::handle<Standard_Transient> Attribute(Standard_CString name);
 
 		/****************** AttributeType ******************/
 		/**** md5 signature: 9014240ef88a98ed31e2ac659ed330bb ****/
@@ -214,13 +214,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 MoniTool_ValueType
 ") AttributeType;
-		MoniTool_ValueType AttributeType(const char * name);
+		MoniTool_ValueType AttributeType(Standard_CString name);
 
 		/****************** GetAttribute ******************/
 		/**** md5 signature: 2af91cadcf009781db910ca0a130a005 ****/
@@ -229,7 +229,7 @@ MoniTool_ValueType
 
 Parameters
 ----------
-name: char *
+name: str
 type: Standard_Type
 val: Standard_Transient
 
@@ -237,7 +237,7 @@ Returns
 -------
 bool
 ") GetAttribute;
-		Standard_Boolean GetAttribute(const char * name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
+		Standard_Boolean GetAttribute(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
 		/****************** GetAttributes ******************/
 		/**** md5 signature: 1fc563dcdd495504eda158a1799a2a7d ****/
@@ -247,7 +247,7 @@ bool
 Parameters
 ----------
 other: MoniTool_AttrList
-fromname: char *,optional
+fromname: str,optional
 	default value is ""
 copied: bool,optional
 	default value is Standard_True
@@ -256,7 +256,7 @@ Returns
 -------
 None
 ") GetAttributes;
-		void GetAttributes(const MoniTool_AttrList & other, const char * fromname = "", const Standard_Boolean copied = Standard_True);
+		void GetAttributes(const MoniTool_AttrList & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
 		/****************** GetIntegerAttribute ******************/
 		/**** md5 signature: ea2fdae17b02c2aa020d84d6b452688b ****/
@@ -265,13 +265,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 val: int
 ") GetIntegerAttribute;
-		Standard_Boolean GetIntegerAttribute(const char * name, Standard_Integer &OutValue);
+		Standard_Boolean GetIntegerAttribute(Standard_CString name, Standard_Integer &OutValue);
 
 		/****************** GetRealAttribute ******************/
 		/**** md5 signature: 5f2c96db8b329d634687ce67f5e59b4b ****/
@@ -280,13 +280,13 @@ val: int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 val: float
 ") GetRealAttribute;
-		Standard_Boolean GetRealAttribute(const char * name, Standard_Real &OutValue);
+		Standard_Boolean GetRealAttribute(Standard_CString name, Standard_Real &OutValue);
 
 		/****************** GetStringAttribute ******************/
 		/**** md5 signature: 318a12b6d26483dacbc14b18a716e743 ****/
@@ -295,14 +295,14 @@ val: float
 
 Parameters
 ----------
-name: char *
-val: char *
+name: str
+val: str
 
 Returns
 -------
 bool
 ") GetStringAttribute;
-		Standard_Boolean GetStringAttribute(const char * name, const char * & val);
+		Standard_Boolean GetStringAttribute(Standard_CString name, Standard_CString val);
 
 		/****************** IntegerAttribute ******************/
 		/**** md5 signature: 93d9fbf5febe449e6af99311c8d8ce44 ****/
@@ -311,13 +311,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") IntegerAttribute;
-		Standard_Integer IntegerAttribute(const char * name);
+		Standard_Integer IntegerAttribute(Standard_CString name);
 
 		/****************** RealAttribute ******************/
 		/**** md5 signature: 58a4e4d83ca92f4eca73ac61ee1fe729 ****/
@@ -326,13 +326,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 float
 ") RealAttribute;
-		Standard_Real RealAttribute(const char * name);
+		Standard_Real RealAttribute(Standard_CString name);
 
 		/****************** RemoveAttribute ******************/
 		/**** md5 signature: 57071515bfbcf1a2ae1f11ad7d448049 ****/
@@ -341,13 +341,13 @@ float
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") RemoveAttribute;
-		Standard_Boolean RemoveAttribute(const char * name);
+		Standard_Boolean RemoveAttribute(Standard_CString name);
 
 		/****************** SameAttributes ******************/
 		/**** md5 signature: 547f034f219ce85d3fb7576a461a7e64 ****/
@@ -371,14 +371,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: Standard_Transient
 
 Returns
 -------
 None
 ") SetAttribute;
-		void SetAttribute(const char * name, const opencascade::handle<Standard_Transient> & val);
+		void SetAttribute(Standard_CString name, const opencascade::handle<Standard_Transient> & val);
 
 		/****************** SetIntegerAttribute ******************/
 		/**** md5 signature: 91bcd8c22467c6503d3124ea1bc29193 ****/
@@ -387,14 +387,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: int
 
 Returns
 -------
 None
 ") SetIntegerAttribute;
-		void SetIntegerAttribute(const char * name, const Standard_Integer val);
+		void SetIntegerAttribute(Standard_CString name, const Standard_Integer val);
 
 		/****************** SetRealAttribute ******************/
 		/**** md5 signature: 6336cf08a7edf9acb99611e6933d3024 ****/
@@ -403,14 +403,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: float
 
 Returns
 -------
 None
 ") SetRealAttribute;
-		void SetRealAttribute(const char * name, const Standard_Real val);
+		void SetRealAttribute(Standard_CString name, const Standard_Real val);
 
 		/****************** SetStringAttribute ******************/
 		/**** md5 signature: c4470714ba0031d975841ff9a21690ca ****/
@@ -419,14 +419,14 @@ None
 
 Parameters
 ----------
-name: char *
-val: char *
+name: str
+val: str
 
 Returns
 -------
 None
 ") SetStringAttribute;
-		void SetStringAttribute(const char * name, const char * val);
+		void SetStringAttribute(Standard_CString name, Standard_CString val);
 
 		/****************** StringAttribute ******************/
 		/**** md5 signature: c2ee3863f53a113455cc1e4716e85015 ****/
@@ -435,13 +435,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
-char *
+str
 ") StringAttribute;
-		const char * StringAttribute(const char * name);
+		Standard_CString StringAttribute(Standard_CString name);
 
 };
 
@@ -464,16 +464,16 @@ class MoniTool_CaseData : public Standard_Transient {
 
 Parameters
 ----------
-caseid: char *,optional
+caseid: str,optional
 	default value is ""
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") MoniTool_CaseData;
-		 MoniTool_CaseData(const char * caseid = "", const char * name = "");
+		 MoniTool_CaseData(Standard_CString caseid = "", Standard_CString name = "");
 
 		/****************** AddAny ******************/
 		/**** md5 signature: 709a2fd6303bcca56f76fc49d1c53165 ****/
@@ -483,14 +483,14 @@ None
 Parameters
 ----------
 val: Standard_Transient
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddAny;
-		void AddAny(const opencascade::handle<Standard_Transient> & val, const char * name = "");
+		void AddAny(const opencascade::handle<Standard_Transient> & val, Standard_CString name = "");
 
 		/****************** AddCPU ******************/
 		/**** md5 signature: 0b9a5de720b389c1022fbd88ca2aa134 ****/
@@ -502,14 +502,14 @@ Parameters
 lastCPU: float
 curCPU: float,optional
 	default value is 0
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddCPU;
-		void AddCPU(const Standard_Real lastCPU, const Standard_Real curCPU = 0, const char * name = "");
+		void AddCPU(const Standard_Real lastCPU, const Standard_Real curCPU = 0, Standard_CString name = "");
 
 		/****************** AddData ******************/
 		/**** md5 signature: e189fc454edeaa2eda99c8d1942c5eaf ****/
@@ -520,14 +520,14 @@ Parameters
 ----------
 val: Standard_Transient
 kind: int
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddData;
-		void AddData(const opencascade::handle<Standard_Transient> & val, const Standard_Integer kind, const char * name = "");
+		void AddData(const opencascade::handle<Standard_Transient> & val, const Standard_Integer kind, Standard_CString name = "");
 
 		/****************** AddEntity ******************/
 		/**** md5 signature: ef1423904a64872bedc94dbaa33024cd ****/
@@ -537,14 +537,14 @@ None
 Parameters
 ----------
 ent: Standard_Transient
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddEntity;
-		void AddEntity(const opencascade::handle<Standard_Transient> & ent, const char * name = "");
+		void AddEntity(const opencascade::handle<Standard_Transient> & ent, Standard_CString name = "");
 
 		/****************** AddGeom ******************/
 		/**** md5 signature: 395ed39ca7e9dbcb0d96192c9b9b5133 ****/
@@ -554,14 +554,14 @@ None
 Parameters
 ----------
 geom: Standard_Transient
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddGeom;
-		void AddGeom(const opencascade::handle<Standard_Transient> & geom, const char * name = "");
+		void AddGeom(const opencascade::handle<Standard_Transient> & geom, Standard_CString name = "");
 
 		/****************** AddInteger ******************/
 		/**** md5 signature: 4ed9fedcaa74eccb711a8d608ab755f4 ****/
@@ -571,14 +571,14 @@ None
 Parameters
 ----------
 val: int
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddInteger;
-		void AddInteger(const Standard_Integer val, const char * name = "");
+		void AddInteger(const Standard_Integer val, Standard_CString name = "");
 
 		/****************** AddRaised ******************/
 		/**** md5 signature: 19b75a9ad3f3f5b77c60473ad6eff707 ****/
@@ -588,14 +588,14 @@ None
 Parameters
 ----------
 theException: Standard_Failure
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddRaised;
-		void AddRaised(const opencascade::handle<Standard_Failure> & theException, const char * name = "");
+		void AddRaised(const opencascade::handle<Standard_Failure> & theException, Standard_CString name = "");
 
 		/****************** AddReal ******************/
 		/**** md5 signature: 780a7a087ce809d081144c47cf3b4f39 ****/
@@ -605,14 +605,14 @@ None
 Parameters
 ----------
 val: float
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddReal;
-		void AddReal(const Standard_Real val, const char * name = "");
+		void AddReal(const Standard_Real val, Standard_CString name = "");
 
 		/****************** AddReals ******************/
 		/**** md5 signature: 9c0acc336ad0a492fbfa5f1fe5fd1687 ****/
@@ -623,14 +623,14 @@ Parameters
 ----------
 v1: float
 v2: float
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddReals;
-		void AddReals(const Standard_Real v1, const Standard_Real v2, const char * name = "");
+		void AddReals(const Standard_Real v1, const Standard_Real v2, Standard_CString name = "");
 
 		/****************** AddShape ******************/
 		/**** md5 signature: 7e2f031b8d272c8a0b3fa7e20cb62eb5 ****/
@@ -640,14 +640,14 @@ None
 Parameters
 ----------
 sh: TopoDS_Shape
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddShape;
-		void AddShape(const TopoDS_Shape & sh, const char * name = "");
+		void AddShape(const TopoDS_Shape & sh, Standard_CString name = "");
 
 		/****************** AddText ******************/
 		/**** md5 signature: a4eaadd4ba4352f6b55cb9c7d2514620 ****/
@@ -656,15 +656,15 @@ None
 
 Parameters
 ----------
-text: char *
-name: char *,optional
+text: str
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddText;
-		void AddText(const char * text, const char * name = "");
+		void AddText(Standard_CString text, Standard_CString name = "");
 
 		/****************** AddXY ******************/
 		/**** md5 signature: b4c2f9d1d8072378fc2125fb0795e979 ****/
@@ -674,14 +674,14 @@ None
 Parameters
 ----------
 aXY: gp_XY
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddXY;
-		void AddXY(const gp_XY & aXY, const char * name = "");
+		void AddXY(const gp_XY & aXY, Standard_CString name = "");
 
 		/****************** AddXYZ ******************/
 		/**** md5 signature: 812ae7a37099d4e0579eb148e74e815d ****/
@@ -691,14 +691,14 @@ None
 Parameters
 ----------
 aXYZ: gp_XYZ
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddXYZ;
-		void AddXYZ(const gp_XYZ & aXYZ, const char * name = "");
+		void AddXYZ(const gp_XYZ & aXYZ, Standard_CString name = "");
 
 		/****************** CaseId ******************/
 		/**** md5 signature: 00273d8277e031d07a637ab90697c910 ****/
@@ -707,9 +707,9 @@ None
 
 Returns
 -------
-char *
+str
 ") CaseId;
-		const char * CaseId();
+		Standard_CString CaseId();
 
 		/****************** Data ******************/
 		/**** md5 signature: f80568a434a1353b089e99d0a8827cee ****/
@@ -733,13 +733,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-acode: char *
+acode: str
 
 Returns
 -------
 int
 ") DefCheck;
-		static Standard_Integer DefCheck(const char * acode);
+		static Standard_Integer DefCheck(Standard_CString acode);
 
 		/****************** DefMsg ******************/
 		/**** md5 signature: f3fdd9962e01566774984d3cbbc8b441 ****/
@@ -748,13 +748,13 @@ int
 
 Parameters
 ----------
-casecode: char *
+casecode: str
 
 Returns
 -------
-char *
+str
 ") DefMsg;
-		static const char * DefMsg(const char * casecode);
+		static Standard_CString DefMsg(Standard_CString casecode);
 
 		/****************** GetCPU ******************/
 		/**** md5 signature: 00bbde2fe3bee9e2c2e91eb52554c939 ****/
@@ -883,9 +883,9 @@ Message_Msg
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** Name ******************/
 		/**** md5 signature: daa685c923900f80fa41f50d5eeb7f76 ****/
@@ -909,13 +909,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") NameNum;
-		Standard_Integer NameNum(const char * name);
+		Standard_Integer NameNum(Standard_CString name);
 
 		/****************** NbData ******************/
 		/**** md5 signature: 65dffaaee72ce13df8f72ba4f254de29 ****/
@@ -992,13 +992,13 @@ None
 
 Parameters
 ----------
-caseid: char *
+caseid: str
 
 Returns
 -------
 None
 ") SetCaseId;
-		void SetCaseId(const char * caseid);
+		void SetCaseId(Standard_CString caseid);
 
 		/****************** SetChange ******************/
 		/**** md5 signature: 35020ffdf661ae424b32ec90844aa543 ****/
@@ -1018,13 +1018,13 @@ None
 
 Parameters
 ----------
-acode: char *
+acode: str
 
 Returns
 -------
 None
 ") SetDefFail;
-		static void SetDefFail(const char * acode);
+		static void SetDefFail(Standard_CString acode);
 
 		/****************** SetDefMsg ******************/
 		/**** md5 signature: 129902a2108aea4a762b8e75e5fd239d ****/
@@ -1033,14 +1033,14 @@ None
 
 Parameters
 ----------
-casecode: char *
-mesdef: char *
+casecode: str
+mesdef: str
 
 Returns
 -------
 None
 ") SetDefMsg;
-		static void SetDefMsg(const char * casecode, const char * mesdef);
+		static void SetDefMsg(Standard_CString casecode, Standard_CString mesdef);
 
 		/****************** SetDefWarning ******************/
 		/**** md5 signature: fc48374ca5a180ca723d24adab781749 ****/
@@ -1049,13 +1049,13 @@ None
 
 Parameters
 ----------
-acode: char *
+acode: str
 
 Returns
 -------
 None
 ") SetDefWarning;
-		static void SetDefWarning(const char * acode);
+		static void SetDefWarning(Standard_CString acode);
 
 		/****************** SetFail ******************/
 		/**** md5 signature: 31938ccd35b6a5850873a21884c12ffc ****/
@@ -1075,13 +1075,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const char * name);
+		void SetName(Standard_CString name);
 
 		/****************** SetReplace ******************/
 		/**** md5 signature: d05913aa2cce37b4b1cb745952a24764 ****/
@@ -1132,13 +1132,13 @@ TopoDS_Shape
 Parameters
 ----------
 nd: int
-text: char *
+text: str
 
 Returns
 -------
 bool
 ") Text;
-		Standard_Boolean Text(const Standard_Integer nd, const char * & text);
+		Standard_Boolean Text(const Standard_Integer nd, Standard_CString text);
 
 		/****************** XY ******************/
 		/**** md5 signature: 6265946dc936f94b9ea104fac9e33a84 ****/
@@ -1214,9 +1214,9 @@ ent: Standard_Transient
 
 Returns
 -------
-char *
+str
 ") TypeName;
-		static const char * TypeName(const opencascade::handle<Standard_Transient> & ent);
+		static Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -1345,9 +1345,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ValueTypeName;
-		virtual const char * ValueTypeName();
+		virtual Standard_CString ValueTypeName();
 
 };
 
@@ -1428,14 +1428,14 @@ class MoniTool_MTHasher {
 
 Parameters
 ----------
-theString: char *
+theString: str
 theUpperBound: int
 
 Returns
 -------
 int
 ") HashCode;
-		static Standard_Integer HashCode(const char * theString, Standard_Integer theUpperBound);
+		static Standard_Integer HashCode(Standard_CString theString, Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: d58faee5604f73146448a83725c5050b ****/
@@ -1444,14 +1444,14 @@ int
 
 Parameters
 ----------
-Str1: char *
-Str2: char *
+Str1: str
+Str2: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		static Standard_Boolean IsEqual(const char * Str1, const char * Str2);
+		static Standard_Boolean IsEqual(Standard_CString Str1, Standard_CString Str2);
 
 };
 
@@ -1531,9 +1531,9 @@ class MoniTool_SignText : public Standard_Transient {
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** Text ******************/
 		/**** md5 signature: 8d6fbb08669c0a43c9d336ccc51c4fbd ****/
@@ -1589,14 +1589,14 @@ class MoniTool_Stat {
 
 Parameters
 ----------
-title: char *,optional
+title: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") MoniTool_Stat;
-		 MoniTool_Stat(const char * title = "");
+		 MoniTool_Stat(Standard_CString title = "");
 
 		/****************** MoniTool_Stat ******************/
 		/**** md5 signature: 68a05e88f487eadb51ec526eeea9410c ****/
@@ -1905,13 +1905,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") Start;
-		static void Start(const char * name);
+		static void Start(Standard_CString name);
 
 		/****************** Stop ******************/
 		/**** md5 signature: 702270b81e0a152f42e95b594cbf6271 ****/
@@ -1931,13 +1931,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") Stop;
-		static void Stop(const char * name);
+		static void Stop(Standard_CString name);
 
 		/****************** Timer ******************/
 		/**** md5 signature: bcb4e9e61cdff233394f8b155f896468 ****/
@@ -1968,13 +1968,13 @@ OSD_Timer
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<MoniTool_Timer>
 ") Timer;
-		static opencascade::handle<MoniTool_Timer> Timer(const char * name);
+		static opencascade::handle<MoniTool_Timer> Timer(Standard_CString name);
 
 };
 
@@ -1999,13 +1999,13 @@ class MoniTool_TimerSentry {
 
 Parameters
 ----------
-cname: char *
+cname: str
 
 Returns
 -------
 None
 ") MoniTool_TimerSentry;
-		 MoniTool_TimerSentry(const char * cname);
+		 MoniTool_TimerSentry(Standard_CString cname);
 
 		/****************** MoniTool_TimerSentry ******************/
 		/**** md5 signature: f8ad07fc64ca3f7f856174a2c43628b8 ****/
@@ -2065,17 +2065,17 @@ class MoniTool_TypedValue : public Standard_Transient {
 
 Parameters
 ----------
-name: char *
+name: str
 type: MoniTool_ValueType,optional
 	default value is MoniTool_ValueText
-init: char *,optional
+init: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") MoniTool_TypedValue;
-		 MoniTool_TypedValue(const char * name, const MoniTool_ValueType type = MoniTool_ValueText, const char * init = "");
+		 MoniTool_TypedValue(Standard_CString name, const MoniTool_ValueType type = MoniTool_ValueText, Standard_CString init = "");
 
 		/****************** MoniTool_TypedValue ******************/
 		/**** md5 signature: 2b88b6976dfa2d96905a887c992d595a ****/
@@ -2099,13 +2099,13 @@ None
 
 Parameters
 ----------
-initext: char *
+initext: str
 
 Returns
 -------
 bool
 ") AddDef;
-		Standard_Boolean AddDef(const char * initext);
+		Standard_Boolean AddDef(Standard_CString initext);
 
 		/****************** AddEnum ******************/
 		/**** md5 signature: e6ae955f31fb3a2e2ceeb01f3e9686bd ****/
@@ -2114,32 +2114,32 @@ bool
 
 Parameters
 ----------
-v1: char *,optional
+v1: str,optional
 	default value is ""
-v2: char *,optional
+v2: str,optional
 	default value is ""
-v3: char *,optional
+v3: str,optional
 	default value is ""
-v4: char *,optional
+v4: str,optional
 	default value is ""
-v5: char *,optional
+v5: str,optional
 	default value is ""
-v6: char *,optional
+v6: str,optional
 	default value is ""
-v7: char *,optional
+v7: str,optional
 	default value is ""
-v8: char *,optional
+v8: str,optional
 	default value is ""
-v9: char *,optional
+v9: str,optional
 	default value is ""
-v10: char *,optional
+v10: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddEnum;
-		void AddEnum(const char * v1 = "", const char * v2 = "", const char * v3 = "", const char * v4 = "", const char * v5 = "", const char * v6 = "", const char * v7 = "", const char * v8 = "", const char * v9 = "", const char * v10 = "");
+		void AddEnum(Standard_CString v1 = "", Standard_CString v2 = "", Standard_CString v3 = "", Standard_CString v4 = "", Standard_CString v5 = "", Standard_CString v6 = "", Standard_CString v7 = "", Standard_CString v8 = "", Standard_CString v9 = "", Standard_CString v10 = "");
 
 		/****************** AddEnumValue ******************/
 		/**** md5 signature: dd36fba0a6d141a7dfbf4646a6317bd6 ****/
@@ -2148,14 +2148,14 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 num: int
 
 Returns
 -------
 None
 ") AddEnumValue;
-		void AddEnumValue(const char * val, const Standard_Integer num);
+		void AddEnumValue(Standard_CString val, const Standard_Integer num);
 
 		/****************** AddLib ******************/
 		/**** md5 signature: c61cc150ba0ebcce137a721917e17662 ****/
@@ -2165,14 +2165,14 @@ None
 Parameters
 ----------
 tv: MoniTool_TypedValue
-def: char *,optional
+def: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") AddLib;
-		static Standard_Boolean AddLib(const opencascade::handle<MoniTool_TypedValue> & tv, const char * def = "");
+		static Standard_Boolean AddLib(const opencascade::handle<MoniTool_TypedValue> & tv, Standard_CString def = "");
 
 		/****************** CStringValue ******************/
 		/**** md5 signature: e29eae6e0076125e72074e4bd0c76b3a ****/
@@ -2181,9 +2181,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") CStringValue;
-		const char * CStringValue();
+		Standard_CString CStringValue();
 
 		/****************** ClearValue ******************/
 		/**** md5 signature: 70260fa193dc762fb315c6297127fb7c ****/
@@ -2214,13 +2214,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 int
 ") EnumCase;
-		Standard_Integer EnumCase(const char * val);
+		Standard_Integer EnumCase(Standard_CString val);
 
 		/****************** EnumDef ******************/
 		/**** md5 signature: 980792930a6ea3fdf361dc3b1c7d441d ****/
@@ -2249,9 +2249,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") EnumVal;
-		const char * EnumVal(const Standard_Integer num);
+		Standard_CString EnumVal(const Standard_Integer num);
 
 		/****************** FromLib ******************/
 		/**** md5 signature: fa43a04fa4b4ae98ce69c9be25395f2a ****/
@@ -2260,13 +2260,13 @@ char *
 
 Parameters
 ----------
-def: char *
+def: str
 
 Returns
 -------
 opencascade::handle<MoniTool_TypedValue>
 ") FromLib;
-		static opencascade::handle<MoniTool_TypedValue> FromLib(const char * def);
+		static opencascade::handle<MoniTool_TypedValue> FromLib(Standard_CString def);
 
 		/****************** GetObjectValue ******************/
 		/**** md5 signature: 23272bc4133e0775830a35a37d96d179 ****/
@@ -2340,14 +2340,14 @@ Parameters
 ----------
 interp: MoniTool_ValueInterpret
 satisf: MoniTool_ValueSatisfies
-satisname: char *
+satisname: str
 enums: NCollection_DataMap<TCollection_AsciiString, int>
 
 Returns
 -------
 None
 ") Internals;
-		void Internals(MoniTool_ValueInterpret & interp, MoniTool_ValueSatisfies & satisf, const char * & satisname, NCollection_DataMap<TCollection_AsciiString, Standard_Integer> & enums);
+		void Internals(MoniTool_ValueInterpret & interp, MoniTool_ValueSatisfies & satisf, Standard_CString satisname, NCollection_DataMap<TCollection_AsciiString, Standard_Integer> & enums);
 
 		/****************** Interpret ******************/
 		/**** md5 signature: 9c6153888caed409cc74bdcaede46f12 ****/
@@ -2383,9 +2383,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Label;
-		const char * Label();
+		Standard_CString Label();
 
 		/****************** Lib ******************/
 		/**** md5 signature: a5d90c5d20ec2688667bfa72e7671bb5 ****/
@@ -2394,13 +2394,13 @@ char *
 
 Parameters
 ----------
-def: char *
+def: str
 
 Returns
 -------
 opencascade::handle<MoniTool_TypedValue>
 ") Lib;
-		static opencascade::handle<MoniTool_TypedValue> Lib(const char * def);
+		static opencascade::handle<MoniTool_TypedValue> Lib(Standard_CString def);
 
 		/****************** LibList ******************/
 		/**** md5 signature: 0d836a3a9b5bd600e3f329f3412de2d0 ****/
@@ -2431,9 +2431,9 @@ int
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** ObjectType ******************/
 		/**** md5 signature: 6320624908ef64342bea6f08a015e066 ****/
@@ -2453,9 +2453,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ObjectTypeName;
-		const char * ObjectTypeName();
+		Standard_CString ObjectTypeName();
 
 		/****************** ObjectValue ******************/
 		/**** md5 signature: bd801152e11f117b295705342aad54e1 ****/
@@ -2532,9 +2532,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") SatisfiesName;
-		const char * SatisfiesName();
+		Standard_CString SatisfiesName();
 
 		/****************** SetCStringValue ******************/
 		/**** md5 signature: effa6c9216f0b492b4c2e518069e1a90 ****/
@@ -2543,13 +2543,13 @@ char *
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 bool
 ") SetCStringValue;
-		virtual Standard_Boolean SetCStringValue(const char * val);
+		virtual Standard_Boolean SetCStringValue(Standard_CString val);
 
 		/****************** SetDefinition ******************/
 		/**** md5 signature: d99e23b341c7f1e3f198dd0f04a36d84 ****/
@@ -2558,13 +2558,13 @@ bool
 
 Parameters
 ----------
-deftext: char *
+deftext: str
 
 Returns
 -------
 None
 ") SetDefinition;
-		void SetDefinition(const char * deftext);
+		void SetDefinition(Standard_CString deftext);
 
 		/****************** SetHStringValue ******************/
 		/**** md5 signature: de7c62babaa97912ec98c71879a0d8a9 ****/
@@ -2634,13 +2634,13 @@ None
 
 Parameters
 ----------
-label: char *
+label: str
 
 Returns
 -------
 None
 ") SetLabel;
-		void SetLabel(const char * label);
+		void SetLabel(Standard_CString label);
 
 		/****************** SetMaxLength ******************/
 		/**** md5 signature: 056e107e4772026e4004710b692c8026 ****/
@@ -2726,13 +2726,13 @@ bool
 Parameters
 ----------
 func: MoniTool_ValueSatisfies
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetSatisfies;
-		void SetSatisfies(const MoniTool_ValueSatisfies func, const char * name);
+		void SetSatisfies(const MoniTool_ValueSatisfies func, Standard_CString name);
 
 		/****************** SetUnitDef ******************/
 		/**** md5 signature: 30b7503e4ee844870c530c56053721a7 ****/
@@ -2741,13 +2741,13 @@ None
 
 Parameters
 ----------
-def: char *
+def: str
 
 Returns
 -------
 None
 ") SetUnitDef;
-		void SetUnitDef(const char * def);
+		void SetUnitDef(Standard_CString def);
 
 		/****************** StartEnum ******************/
 		/**** md5 signature: 0ae13a6123edbd6996b53e248a55a112 ****/
@@ -2774,13 +2774,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<MoniTool_TypedValue>
 ") StaticValue;
-		static opencascade::handle<MoniTool_TypedValue> StaticValue(const char * name);
+		static opencascade::handle<MoniTool_TypedValue> StaticValue(Standard_CString name);
 
 		/****************** UnitDef ******************/
 		/**** md5 signature: 61b7bdf19530e233fa3664a070cf6b90 ****/
@@ -2789,9 +2789,9 @@ opencascade::handle<MoniTool_TypedValue>
 
 Returns
 -------
-char *
+str
 ") UnitDef;
-		const char * UnitDef();
+		Standard_CString UnitDef();
 
 		/****************** ValueType ******************/
 		/**** md5 signature: a2b700590fb8f925c50c498db15aa421 ****/
@@ -2838,9 +2838,9 @@ None
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** Text ******************/
 		/**** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ****/
@@ -2933,9 +2933,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ValueTypeName;
-		virtual const char * ValueTypeName();
+		virtual Standard_CString ValueTypeName();
 
 };
 

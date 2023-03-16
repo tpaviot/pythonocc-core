@@ -218,13 +218,13 @@ GccEnt_QualifiedCirc
 
 Parameters
 ----------
-thePositionString: char *
+thePositionString: str
 
 Returns
 -------
 GccEnt_Position
 ") PositionFromString;
-		static GccEnt_Position PositionFromString(const char * thePositionString);
+		static GccEnt_Position PositionFromString(Standard_CString thePositionString);
 
 		/****************** PositionFromString ******************/
 		/**** md5 signature: abba1dd8002a1fb52e2f5e4bcffaf233 ****/
@@ -233,13 +233,13 @@ GccEnt_Position
 
 Parameters
 ----------
-thePositionString: char *
+thePositionString: str
 
 Returns
 -------
 thePosition: GccEnt_Position
 ") PositionFromString;
-		static Standard_Boolean PositionFromString(const char * thePositionString, GccEnt_Position &OutValue);
+		static Standard_Boolean PositionFromString(Standard_CString thePositionString, GccEnt_Position &OutValue);
 
 		/****************** PositionToString ******************/
 		/**** md5 signature: aa141e44eefa2445ec255edf68a240f8 ****/
@@ -252,9 +252,9 @@ thePosition: GccEnt_Position
 
 Returns
 -------
-char *
+str
 ") PositionToString;
-		static const char * PositionToString(GccEnt_Position thePosition);
+		static Standard_CString PositionToString(GccEnt_Position thePosition);
 
 		/****************** Unqualified ******************/
 		/**** md5 signature: 0b3ce4b2adf987fc69edb4f535e49b85 ****/

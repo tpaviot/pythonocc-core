@@ -151,7 +151,7 @@ class VrmlAPI {
 Parameters
 ----------
 aShape: TopoDS_Shape
-aFileName: char *
+aFileName: str
 aVersion: int,optional
 	default value is 2
 
@@ -159,7 +159,7 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & aShape, const char * aFileName, const Standard_Integer aVersion = 2);
+		static Standard_Boolean Write(const TopoDS_Shape & aShape, Standard_CString aFileName, const Standard_Integer aVersion = 2);
 
 };
 
@@ -457,7 +457,7 @@ None
 Parameters
 ----------
 aShape: TopoDS_Shape
-aFile: char *
+aFile: str
 aVersion: int,optional
 	default value is 2
 
@@ -465,7 +465,7 @@ Returns
 -------
 bool
 ") Write;
-		Standard_Boolean Write(const TopoDS_Shape & aShape, const char * aFile, const Standard_Integer aVersion = 2);
+		Standard_Boolean Write(const TopoDS_Shape & aShape, Standard_CString aFile, const Standard_Integer aVersion = 2);
 
 		/****************** WriteDoc ******************/
 		/**** md5 signature: 293e597b30a83ac910add0bca5222bf1 ****/
@@ -475,14 +475,14 @@ bool
 Parameters
 ----------
 theDoc: TDocStd_Document
-theFile: char *
+theFile: str
 theScale: float
 
 Returns
 -------
 bool
 ") WriteDoc;
-		Standard_Boolean WriteDoc(const opencascade::handle<TDocStd_Document> & theDoc, const char * theFile, const Standard_Real theScale);
+		Standard_Boolean WriteDoc(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFile, const Standard_Real theScale);
 
 };
 

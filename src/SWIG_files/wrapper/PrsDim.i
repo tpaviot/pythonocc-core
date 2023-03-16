@@ -1065,13 +1065,13 @@ None
 
 Parameters
 ----------
-theValue: TCollection_ExtendedString
+theValue: str
 
 Returns
 -------
 None
 ") SetCustomValue;
-		void SetCustomValue(const TCollection_ExtendedString & theValue);
+		void SetCustomValue(TCollection_ExtendedString theValue);
 
 		/****************** SetDimensionAspect ******************/
 		/**** md5 signature: 653cffb5413acf12c0dc78f7606b5fb6 ****/
@@ -1110,7 +1110,7 @@ None
 
 Parameters
 ----------
-&: TCollection_AsciiString
+&: str
 
 Returns
 -------
@@ -1140,7 +1140,7 @@ None
 
 Parameters
 ----------
-&: TCollection_AsciiString
+&: str
 
 Returns
 -------
@@ -1630,13 +1630,13 @@ None
 
 Parameters
 ----------
-theText: TCollection_ExtendedString
+theText: str
 
 Returns
 -------
 None
 ") SetText;
-		void SetText(const TCollection_ExtendedString & theText);
+		void SetText(TCollection_ExtendedString theText);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 5be0c2680e760a4f92ac7b7d3ae78786 ****/
@@ -1965,13 +1965,13 @@ None
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetMeasuredGeometry ******************/
 		/**** md5 signature: bd2a1958aebc184ac052f65310544456 ****/
@@ -2078,13 +2078,13 @@ None
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetTextPosition ******************/
 		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
@@ -2153,13 +2153,13 @@ Parameters
 aFShape: TopoDS_Shape
 aPlane: Geom_Plane
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 
 Returns
 -------
 None
 ") PrsDim_Chamf2dDimension;
-		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, const TCollection_ExtendedString & aText);
+		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, TCollection_ExtendedString aText);
 
 		/****************** PrsDim_Chamf2dDimension ******************/
 		/**** md5 signature: 50cb8ca97e253bfa32a7e7efb9b6a289 ****/
@@ -2171,7 +2171,7 @@ Parameters
 aFShape: TopoDS_Shape
 aPlane: Geom_Plane
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 aPosition: gp_Pnt
 aSymbolPrs: DsgPrs_ArrowSide
 anArrowSize: float,optional
@@ -2181,7 +2181,7 @@ Returns
 -------
 None
 ") PrsDim_Chamf2dDimension;
-		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
+		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
 		/****************** IsMovable ******************/
 		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
@@ -2230,13 +2230,13 @@ Parameters
 ----------
 aFShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 
 Returns
 -------
 None
 ") PrsDim_Chamf3dDimension;
-		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
+		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
 		/****************** PrsDim_Chamf3dDimension ******************/
 		/**** md5 signature: 485f32758f4c90220dd128f21c767125 ****/
@@ -2247,7 +2247,7 @@ Parameters
 ----------
 aFShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 aPosition: gp_Pnt
 aSymbolPrs: DsgPrs_ArrowSide
 anArrowSize: float,optional
@@ -2257,7 +2257,7 @@ Returns
 -------
 None
 ") PrsDim_Chamf3dDimension;
-		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
+		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
 		/****************** IsMovable ******************/
 		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
@@ -2454,13 +2454,13 @@ gp_Pnt
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetMeasuredGeometry ******************/
 		/**** md5 signature: c1b9a4fe27f3e19a1218bcbc41264af8 ****/
@@ -2499,13 +2499,13 @@ None
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetTextPosition ******************/
 		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
@@ -3215,13 +3215,13 @@ None
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetMeasuredGeometry ******************/
 		/**** md5 signature: cef07b2afa7411d338e4348d1fb09cb3 ****/
@@ -3311,13 +3311,13 @@ None
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetTextPosition ******************/
 		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
@@ -3431,13 +3431,13 @@ Parameters
 FistShape: TopoDS_Shape
 SecondShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 
 Returns
 -------
 None
 ") PrsDim_OffsetDimension;
-		 PrsDim_OffsetDimension(const TopoDS_Shape & FistShape, const TopoDS_Shape & SecondShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
+		 PrsDim_OffsetDimension(const TopoDS_Shape & FistShape, const TopoDS_Shape & SecondShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
 		/****************** IsMovable ******************/
 		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
@@ -3714,13 +3714,13 @@ gp_Pnt
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetDisplayUnits;
-		virtual void SetDisplayUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetMeasuredGeometry ******************/
 		/**** md5 signature: 20f5d2af27af2754cd354025e857b6b0 ****/
@@ -3795,13 +3795,13 @@ None
 
 Parameters
 ----------
-theUnits: TCollection_AsciiString
+theUnits: str
 
 Returns
 -------
 None
 ") SetModelUnits;
-		virtual void SetModelUnits(const TCollection_AsciiString & theUnits);
+		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
 		/****************** SetTextPosition ******************/
 		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
@@ -3986,13 +3986,13 @@ Parameters
 ----------
 aShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 
 Returns
 -------
 None
 ") PrsDim_MaxRadiusDimension;
-		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
+		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
 		/****************** PrsDim_MaxRadiusDimension ******************/
 		/**** md5 signature: e7d293361b5fa36a3871cea6bba086cf ****/
@@ -4003,7 +4003,7 @@ Parameters
 ----------
 aShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 aPosition: gp_Pnt
 aSymbolPrs: DsgPrs_ArrowSide
 anArrowSize: float,optional
@@ -4013,7 +4013,7 @@ Returns
 -------
 None
 ") PrsDim_MaxRadiusDimension;
-		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
+		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
 };
 
@@ -4040,13 +4040,13 @@ Parameters
 ----------
 aShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 
 Returns
 -------
 None
 ") PrsDim_MinRadiusDimension;
-		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText);
+		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
 		/****************** PrsDim_MinRadiusDimension ******************/
 		/**** md5 signature: 141213159afe170ab0fead5219510652 ****/
@@ -4057,7 +4057,7 @@ Parameters
 ----------
 aShape: TopoDS_Shape
 aVal: float
-aText: TCollection_ExtendedString
+aText: str
 aPosition: gp_Pnt
 aSymbolPrs: DsgPrs_ArrowSide
 anArrowSize: float,optional
@@ -4067,7 +4067,7 @@ Returns
 -------
 None
 ") PrsDim_MinRadiusDimension;
-		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, const TCollection_ExtendedString & aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
+		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
 };
 

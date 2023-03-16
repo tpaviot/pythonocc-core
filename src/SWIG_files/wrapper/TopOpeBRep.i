@@ -828,7 +828,7 @@ int
 
 Parameters
 ----------
-str: TCollection_AsciiString
+str: str
 ie1: int,optional
 	default value is 0
 ie2: int,optional
@@ -838,7 +838,7 @@ Returns
 -------
 None
 ") Dump;
-		void Dump(const TCollection_AsciiString & str, const Standard_Integer ie1 = 0, const Standard_Integer ie2 = 0);
+		void Dump(TCollection_AsciiString str, const Standard_Integer ie1 = 0, const Standard_Integer ie2 = 0);
 
 		/****************** Edge ******************/
 		/**** md5 signature: 307eac48f15b7575b76de6ac6147f9b1 ****/
@@ -3188,14 +3188,14 @@ opencascade::handle<Geom_Curve>
 Parameters
 ----------
 B: TopOpeBRep_Bipoint
-s1: TCollection_AsciiString
-s2: TCollection_AsciiString
+s1: str
+s2: str
 
 Returns
 -------
 None
 ") DumpBipoint;
-		void DumpBipoint(const TopOpeBRep_Bipoint & B, const TCollection_AsciiString & s1, const TCollection_AsciiString & s2);
+		void DumpBipoint(const TopOpeBRep_Bipoint & B, TCollection_AsciiString s1, TCollection_AsciiString s2);
 
 
         %feature("autodoc", "1");
@@ -3224,14 +3224,14 @@ None
 Parameters
 ----------
 I: int
-s1: TCollection_AsciiString
-s2: TCollection_AsciiString
+s1: str
+s2: str
 
 Returns
 -------
 None
 ") DumpVPoint;
-		void DumpVPoint(const Standard_Integer I, const TCollection_AsciiString & s1, const TCollection_AsciiString & s2);
+		void DumpVPoint(const Standard_Integer I, TCollection_AsciiString s1, TCollection_AsciiString s2);
 
 		/****************** FaceFaceTransition ******************/
 		/**** md5 signature: 83ffefbe5b8ae65ccfae12ac03265cee ****/

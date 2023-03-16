@@ -102,13 +102,13 @@ class UnitsAPI {
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 
 Returns
 -------
 float
 ") AnyFromLS;
-		static Standard_Real AnyFromLS(const Standard_Real aData, const char * aUnit);
+		static Standard_Real AnyFromLS(const Standard_Real aData, Standard_CString aUnit);
 
 		/****************** AnyFromSI ******************/
 		/**** md5 signature: 51d298a84e57287a88c41611637a9aa9 ****/
@@ -118,13 +118,13 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 
 Returns
 -------
 float
 ") AnyFromSI;
-		static Standard_Real AnyFromSI(const Standard_Real aData, const char * aUnit);
+		static Standard_Real AnyFromSI(const Standard_Real aData, Standard_CString aUnit);
 
 		/****************** AnyToAny ******************/
 		/**** md5 signature: a34e13f8062d74576011237fdc11241b ****/
@@ -134,14 +134,14 @@ float
 Parameters
 ----------
 aData: float
-aUnit1: char *
-aUnit2: char *
+aUnit1: str
+aUnit2: str
 
 Returns
 -------
 float
 ") AnyToAny;
-		static Standard_Real AnyToAny(const Standard_Real aData, const char * aUnit1, const char * aUnit2);
+		static Standard_Real AnyToAny(const Standard_Real aData, Standard_CString aUnit1, Standard_CString aUnit2);
 
 		/****************** AnyToLS ******************/
 		/**** md5 signature: be97d95d076c1f8b0986e8919aa752ea ****/
@@ -151,13 +151,13 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 
 Returns
 -------
 float
 ") AnyToLS;
-		static Standard_Real AnyToLS(const Standard_Real aData, const char * aUnit);
+		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit);
 
 		/****************** AnyToLS ******************/
 		/**** md5 signature: 46cdace99266b9ed9c51e1fdd1e1382a ****/
@@ -167,14 +167,14 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 aDim: Units_Dimensions
 
 Returns
 -------
 float
 ") AnyToLS;
-		static Standard_Real AnyToLS(const Standard_Real aData, const char * aUnit, opencascade::handle<Units_Dimensions> & aDim);
+		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
 		/****************** AnyToSI ******************/
 		/**** md5 signature: 2322f8d6fc98e87d4c97235741f5c4c0 ****/
@@ -184,13 +184,13 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 
 Returns
 -------
 float
 ") AnyToSI;
-		static Standard_Real AnyToSI(const Standard_Real aData, const char * aUnit);
+		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit);
 
 		/****************** AnyToSI ******************/
 		/**** md5 signature: 3984bca4e7e6b466dd4cc37343372bd4 ****/
@@ -200,14 +200,14 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 aDim: Units_Dimensions
 
 Returns
 -------
 float
 ") AnyToSI;
-		static Standard_Real AnyToSI(const Standard_Real aData, const char * aUnit, opencascade::handle<Units_Dimensions> & aDim);
+		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
 		/****************** Check ******************/
 		/**** md5 signature: 8fd354cea0b43ea55552afe1a0c9a172 ****/
@@ -216,14 +216,14 @@ float
 
 Parameters
 ----------
-aQuantity: char *
-aUnit: char *
+aQuantity: str
+aUnit: str
 
 Returns
 -------
 bool
 ") Check;
-		static Standard_Boolean Check(const char * aQuantity, const char * aUnit);
+		static Standard_Boolean Check(Standard_CString aQuantity, Standard_CString aUnit);
 
 		/****************** CurrentFromAny ******************/
 		/**** md5 signature: e481372ea449ecc215486204b576346a ****/
@@ -233,14 +233,14 @@ bool
 Parameters
 ----------
 aData: float
-aQuantity: char *
-aUnit: char *
+aQuantity: str
+aUnit: str
 
 Returns
 -------
 float
 ") CurrentFromAny;
-		static Standard_Real CurrentFromAny(const Standard_Real aData, const char * aQuantity, const char * aUnit);
+		static Standard_Real CurrentFromAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
 
 		/****************** CurrentFromLS ******************/
 		/**** md5 signature: baf46d9b2387f58a6af6f0df8c113850 ****/
@@ -250,13 +250,13 @@ float
 Parameters
 ----------
 aData: float
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 float
 ") CurrentFromLS;
-		static Standard_Real CurrentFromLS(const Standard_Real aData, const char * aQuantity);
+		static Standard_Real CurrentFromLS(const Standard_Real aData, Standard_CString aQuantity);
 
 		/****************** CurrentFromSI ******************/
 		/**** md5 signature: b4cb9aa8765d61361f181d61763312f3 ****/
@@ -266,13 +266,13 @@ float
 Parameters
 ----------
 aData: float
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 float
 ") CurrentFromSI;
-		static Standard_Real CurrentFromSI(const Standard_Real aData, const char * aQuantity);
+		static Standard_Real CurrentFromSI(const Standard_Real aData, Standard_CString aQuantity);
 
 		/****************** CurrentToAny ******************/
 		/**** md5 signature: 626c139702fb138665d6dd8afd9482ae ****/
@@ -282,14 +282,14 @@ float
 Parameters
 ----------
 aData: float
-aQuantity: char *
-aUnit: char *
+aQuantity: str
+aUnit: str
 
 Returns
 -------
 float
 ") CurrentToAny;
-		static Standard_Real CurrentToAny(const Standard_Real aData, const char * aQuantity, const char * aUnit);
+		static Standard_Real CurrentToAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
 
 		/****************** CurrentToLS ******************/
 		/**** md5 signature: 6a36e9c67f2ece9a3e15958a515e9454 ****/
@@ -299,13 +299,13 @@ float
 Parameters
 ----------
 aData: float
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 float
 ") CurrentToLS;
-		static Standard_Real CurrentToLS(const Standard_Real aData, const char * aQuantity);
+		static Standard_Real CurrentToLS(const Standard_Real aData, Standard_CString aQuantity);
 
 		/****************** CurrentToSI ******************/
 		/**** md5 signature: 9286242f061106c9da565bb7a13df149 ****/
@@ -315,13 +315,13 @@ float
 Parameters
 ----------
 aData: float
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 float
 ") CurrentToSI;
-		static Standard_Real CurrentToSI(const Standard_Real aData, const char * aQuantity);
+		static Standard_Real CurrentToSI(const Standard_Real aData, Standard_CString aQuantity);
 
 		/****************** CurrentUnit ******************/
 		/**** md5 signature: f01f00f078d1eec0021f4a2418a15c1f ****/
@@ -330,13 +330,13 @@ float
 
 Parameters
 ----------
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
-char *
+str
 ") CurrentUnit;
-		static const char * CurrentUnit(const char * aQuantity);
+		static Standard_CString CurrentUnit(Standard_CString aQuantity);
 
 		/****************** DimensionAmountOfSubstance ******************/
 		/**** md5 signature: 6438adbeca1586be140df666112d9ed8 ****/
@@ -455,13 +455,13 @@ opencascade::handle<Units_Dimensions>
 
 Parameters
 ----------
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 opencascade::handle<Units_Dimensions>
 ") Dimensions;
-		static opencascade::handle<Units_Dimensions> Dimensions(const char * aQuantity);
+		static opencascade::handle<Units_Dimensions> Dimensions(Standard_CString aQuantity);
 
 		/****************** LSToSI ******************/
 		/**** md5 signature: b7335812925a563eeda3a379ecb8050c ****/
@@ -471,13 +471,13 @@ opencascade::handle<Units_Dimensions>
 Parameters
 ----------
 aData: float
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 float
 ") LSToSI;
-		static Standard_Real LSToSI(const Standard_Real aData, const char * aQuantity);
+		static Standard_Real LSToSI(const Standard_Real aData, Standard_CString aQuantity);
 
 		/****************** LocalSystem ******************/
 		/**** md5 signature: 61dd63b9b169d3619a3b18bc847f81b2 ****/
@@ -509,13 +509,13 @@ None
 Parameters
 ----------
 aData: float
-aQuantity: char *
+aQuantity: str
 
 Returns
 -------
 float
 ") SIToLS;
-		static Standard_Real SIToLS(const Standard_Real aData, const char * aQuantity);
+		static Standard_Real SIToLS(const Standard_Real aData, Standard_CString aQuantity);
 
 		/****************** Save ******************/
 		/**** md5 signature: 5415c3e3c77906824a66d1620fd32f67 ****/
@@ -535,14 +535,14 @@ None
 
 Parameters
 ----------
-aQuantity: char *
-aUnit: char *
+aQuantity: str
+aUnit: str
 
 Returns
 -------
 None
 ") SetCurrentUnit;
-		static void SetCurrentUnit(const char * aQuantity, const char * aUnit);
+		static void SetCurrentUnit(Standard_CString aQuantity, Standard_CString aUnit);
 
 		/****************** SetLocalSystem ******************/
 		/**** md5 signature: ee27f19c32ea8b52c56dd6af5e661b4b ****/

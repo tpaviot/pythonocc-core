@@ -1224,7 +1224,7 @@ TCollection_AsciiString
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -1234,7 +1234,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: ec9914af037216c0502c72d0c8784072 ****/
@@ -1243,7 +1243,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1252,7 +1252,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ****/
@@ -1261,7 +1261,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -1271,7 +1271,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ****/
@@ -1280,7 +1280,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1289,7 +1289,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
@@ -1298,7 +1298,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -1308,7 +1308,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
@@ -1317,7 +1317,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1326,7 +1326,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
@@ -1335,7 +1335,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -1345,7 +1345,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
@@ -1354,7 +1354,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1363,7 +1363,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1425,14 +1425,14 @@ STEPControl_Reader
 
 Parameters
 ----------
-name: char *
+name: str
 ef: STEPCAFControl_ExternFile
 
 Returns
 -------
 bool
 ") ExternFile;
-		Standard_Boolean ExternFile(const char * name, opencascade::handle<STEPCAFControl_ExternFile> & ef);
+		Standard_Boolean ExternFile(Standard_CString name, opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
 		/****************** ExternFiles ******************/
 		/**** md5 signature: 1154c88bc3253c7291077317c11363ab ****/
@@ -1597,7 +1597,7 @@ int
 
 Parameters
 ----------
-filename: TCollection_AsciiString
+filename: str
 doc: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1606,7 +1606,7 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const TCollection_AsciiString & filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(TCollection_AsciiString filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
 		/**** md5 signature: a4a2998dbb462f3822a286fdffd32a42 ****/
@@ -1615,7 +1615,7 @@ bool
 
 Parameters
 ----------
-filename: char *
+filename: str
 doc: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1624,7 +1624,7 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const char * filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(Standard_CString filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** ReadFile ******************/
 		/**** md5 signature: d86a92113a329cc8dabf010061f31392 ****/
@@ -1633,13 +1633,13 @@ bool
 
 Parameters
 ----------
-theFileName: char *
+theFileName: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(const char * theFileName);
+		IFSelect_ReturnStatus ReadFile(Standard_CString theFileName);
 
 		/****************** ReadStream ******************/
 		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
@@ -1648,14 +1648,14 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-theName: char *
+theName: str
 theIStream: std::istream
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadStream;
-		IFSelect_ReturnStatus ReadStream(const char * theName, std::istream & theIStream);
+		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
 		/****************** Reader ******************/
 		/**** md5 signature: c54201c04d6a5ca89c65eb2fb14b8396 ****/
@@ -1899,14 +1899,14 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 ef: STEPCAFControl_ExternFile
 
 Returns
 -------
 bool
 ") ExternFile;
-		Standard_Boolean ExternFile(const char * name, opencascade::handle<STEPCAFControl_ExternFile> & ef);
+		Standard_Boolean ExternFile(Standard_CString name, opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
 		/****************** ExternFiles ******************/
 		/**** md5 signature: 1154c88bc3253c7291077317c11363ab ****/
@@ -2021,7 +2021,7 @@ None
 Parameters
 ----------
 doc: TDocStd_Document
-filename: TCollection_AsciiString
+filename: str
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -2029,7 +2029,7 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const TCollection_AsciiString & filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, TCollection_AsciiString filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
 		/**** md5 signature: 1ef00b1bd520cd3b05cc4f00e91c494d ****/
@@ -2039,7 +2039,7 @@ bool
 Parameters
 ----------
 doc: TDocStd_Document
-filename: char *
+filename: str
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -2047,7 +2047,7 @@ Returns
 -------
 bool
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, const char * filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, Standard_CString filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** SetColorMode ******************/
 		/**** md5 signature: e8d41838c31a9460a1c83d84b1f572a1 ****/
@@ -2164,7 +2164,7 @@ Parameters
 doc: TDocStd_Document
 mode: STEPControl_StepModelType,optional
 	default value is STEPControl_AsIs
-multi: char *,optional
+multi: str,optional
 	default value is 0
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -2173,7 +2173,7 @@ Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const STEPControl_StepModelType mode = STEPControl_AsIs, Standard_CString multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
 		/**** md5 signature: 3230c3763f234bd8211762a290f20e3d ****/
@@ -2185,7 +2185,7 @@ Parameters
 L: TDF_Label
 mode: STEPControl_StepModelType,optional
 	default value is STEPControl_AsIs
-multi: char *,optional
+multi: str,optional
 	default value is 0
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -2194,7 +2194,7 @@ Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_Label & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const TDF_Label & L, const STEPControl_StepModelType mode = STEPControl_AsIs, Standard_CString multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
 		/**** md5 signature: 7533cb05eb0d45c4c5142f45de14069a ****/
@@ -2206,7 +2206,7 @@ Parameters
 L: TDF_LabelSequence
 mode: STEPControl_StepModelType,optional
 	default value is STEPControl_AsIs
-multi: char *,optional
+multi: str,optional
 	default value is 0
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -2215,7 +2215,7 @@ Returns
 -------
 bool
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_LabelSequence & L, const STEPControl_StepModelType mode = STEPControl_AsIs, const char * multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const TDF_LabelSequence & L, const STEPControl_StepModelType mode = STEPControl_AsIs, Standard_CString multi = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 14544d6ececf228a5871ef6afa0279ae ****/
@@ -2224,13 +2224,13 @@ bool
 
 Parameters
 ----------
-theFileName: char *
+theFileName: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") Write;
-		IFSelect_ReturnStatus Write(const char * theFileName);
+		IFSelect_ReturnStatus Write(Standard_CString theFileName);
 
 		/****************** WriteStream ******************/
 		/**** md5 signature: e58591412136b10e3743cbf1ab89de94 ****/

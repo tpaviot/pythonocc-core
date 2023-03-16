@@ -302,9 +302,9 @@ Error: StepToTopoDS_GeometricToolError
 
 Returns
 -------
-char *
+str
 ") DecodeGeometricToolError;
-		static const char * DecodeGeometricToolError(const StepToTopoDS_GeometricToolError Error);
+		static Standard_CString DecodeGeometricToolError(const StepToTopoDS_GeometricToolError Error);
 
 		/****************** DecodePolyLoopError ******************/
 		/**** md5 signature: 2ca2e1443a619e76fe6a0cc8a856a348 ****/
@@ -562,14 +562,14 @@ None
 
 Parameters
 ----------
-RIName: TCollection_AsciiString
+RIName: str
 S: TopoDS_Shape
 
 Returns
 -------
 None
 ") Bind;
-		void Bind(const TCollection_AsciiString & RIName, const TopoDS_Shape & S);
+		void Bind(TCollection_AsciiString RIName, const TopoDS_Shape & S);
 
 		/****************** CleanUp ******************/
 		/**** md5 signature: f3a256cc048719bbee06926323c3a77c ****/
@@ -604,13 +604,13 @@ TopoDS_Shape
 
 Parameters
 ----------
-RIName: TCollection_AsciiString
+RIName: str
 
 Returns
 -------
 TopoDS_Shape
 ") Find;
-		const TopoDS_Shape Find(const TCollection_AsciiString & RIName);
+		const TopoDS_Shape Find(TCollection_AsciiString RIName);
 
 		/****************** Init ******************/
 		/**** md5 signature: ef9b81781232fa5ed79ae79f4d4e8a14 ****/
@@ -661,13 +661,13 @@ bool
 
 Parameters
 ----------
-RIName: TCollection_AsciiString
+RIName: str
 
 Returns
 -------
 bool
 ") IsBound;
-		Standard_Boolean IsBound(const TCollection_AsciiString & RIName);
+		Standard_Boolean IsBound(TCollection_AsciiString RIName);
 
 		/****************** IsIDEASCase ******************/
 		/**** md5 signature: cb4d1921b8ccac1de00b7adf6143ebbf ****/

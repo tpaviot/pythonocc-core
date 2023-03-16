@@ -166,7 +166,7 @@ class RWObj {
 
 Parameters
 ----------
-theFile: char *
+theFile: str
 aProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -174,7 +174,7 @@ Returns
 -------
 opencascade::handle<Poly_Triangulation>
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const Message_ProgressRange & aProgress = Message_ProgressRange());
+		static opencascade::handle<Poly_Triangulation> ReadFile(Standard_CString theFile, const Message_ProgressRange & aProgress = Message_ProgressRange());
 
 };
 
@@ -197,13 +197,13 @@ class RWObj_CafWriter : public Standard_Transient {
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 
 Returns
 -------
 None
 ") RWObj_CafWriter;
-		 RWObj_CafWriter(const TCollection_AsciiString & theFile);
+		 RWObj_CafWriter(TCollection_AsciiString theFile);
 
 		/****************** ChangeCoordinateSystemConverter ******************/
 		/**** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ****/
@@ -474,7 +474,7 @@ class RWObj_IShapeReceiver {
 Parameters
 ----------
 theShape: TopoDS_Shape
-theName: TCollection_AsciiString
+theName: str
 theMaterial: RWObj_Material *
 theIsRootShape: bool
 
@@ -482,7 +482,7 @@ Returns
 -------
 None
 ") BindNamedShape;
-		virtual void BindNamedShape(const TopoDS_Shape & theShape, const TCollection_AsciiString & theName, const RWObj_Material * theMaterial, const Standard_Boolean theIsRootShape);
+		virtual void BindNamedShape(const TopoDS_Shape & theShape, TCollection_AsciiString theName, const RWObj_Material * theMaterial, const Standard_Boolean theIsRootShape);
 
 };
 
@@ -542,13 +542,13 @@ class RWObj_ObjMaterialMap : public RWMesh_MaterialMap {
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 
 Returns
 -------
 None
 ") RWObj_ObjMaterialMap;
-		 RWObj_ObjMaterialMap(const TCollection_AsciiString & theFile);
+		 RWObj_ObjMaterialMap(TCollection_AsciiString theFile);
 
 		/****************** AddMaterial ******************/
 		/**** md5 signature: a65de496eac4b0afca748cbe0920fca0 ****/
@@ -573,14 +573,14 @@ TCollection_AsciiString
 Parameters
 ----------
 theStyle: XCAFPrs_Style
-theKey: TCollection_AsciiString
-theName: TCollection_AsciiString
+theKey: str
+theName: str
 
 Returns
 -------
 None
 ") DefineMaterial;
-		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, const TCollection_AsciiString & theKey, const TCollection_AsciiString & theName);
+		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, TCollection_AsciiString theKey, TCollection_AsciiString theName);
 
 };
 
@@ -606,13 +606,13 @@ class RWObj_ObjWriterContext {
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 None
 ") RWObj_ObjWriterContext;
-		 RWObj_ObjWriterContext(const TCollection_AsciiString & theName);
+		 RWObj_ObjWriterContext(TCollection_AsciiString theName);
 
 		/****************** ActiveMaterial ******************/
 		/**** md5 signature: 5863ab1f6ab96ae1abb4503ebc57e2c2 ****/
@@ -721,13 +721,13 @@ None
 
 Parameters
 ----------
-theMaterial: TCollection_AsciiString
+theMaterial: str
 
 Returns
 -------
 bool
 ") WriteActiveMaterial;
-		bool WriteActiveMaterial(const TCollection_AsciiString & theMaterial);
+		bool WriteActiveMaterial(TCollection_AsciiString theMaterial);
 
 		/****************** WriteGroup ******************/
 		/**** md5 signature: d33f0a10b0910de5ab5748574f48f32d ****/
@@ -736,13 +736,13 @@ bool
 
 Parameters
 ----------
-theValue: TCollection_AsciiString
+theValue: str
 
 Returns
 -------
 bool
 ") WriteGroup;
-		bool WriteGroup(const TCollection_AsciiString & theValue);
+		bool WriteGroup(TCollection_AsciiString theValue);
 
 		/****************** WriteHeader ******************/
 		/**** md5 signature: 145306955b9203346c019851d530ffab ****/
@@ -753,14 +753,14 @@ Parameters
 ----------
 theNbNodes: int
 theNbElems: int
-theMatLib: TCollection_AsciiString
+theMatLib: str
 theFileInfo: TColStd_IndexedDataMapOfStringString
 
 Returns
 -------
 bool
 ") WriteHeader;
-		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, const TCollection_AsciiString & theMatLib, const TColStd_IndexedDataMapOfStringString & theFileInfo);
+		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, TCollection_AsciiString theMatLib, const TColStd_IndexedDataMapOfStringString & theFileInfo);
 
 		/****************** WriteNormal ******************/
 		/**** md5 signature: e50c1b6f5ea1daef7e39690e78a55c3f ****/
@@ -906,7 +906,7 @@ TCollection_AsciiString
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -916,7 +916,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: ec9914af037216c0502c72d0c8784072 ****/
@@ -925,7 +925,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -934,7 +934,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ****/
@@ -943,7 +943,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -953,7 +953,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ****/
@@ -962,7 +962,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -971,7 +971,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
@@ -980,7 +980,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -990,7 +990,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
@@ -999,7 +999,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1008,7 +1008,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
@@ -1017,7 +1017,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -1027,7 +1027,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
@@ -1036,7 +1036,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1045,7 +1045,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1137,14 +1137,14 @@ int
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 theProgress: Message_ProgressRange
 
 Returns
 -------
 bool
 ") Probe;
-		Standard_Boolean Probe(const TCollection_AsciiString & theFile, const Message_ProgressRange & theProgress);
+		Standard_Boolean Probe(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****************** Read ******************/
 		/**** md5 signature: 22d0a4b3b93a1e3452e7be9b291128a7 ****/
@@ -1153,14 +1153,14 @@ bool
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 theProgress: Message_ProgressRange
 
 Returns
 -------
 bool
 ") Read;
-		Standard_Boolean Read(const TCollection_AsciiString & theFile, const Message_ProgressRange & theProgress);
+		Standard_Boolean Read(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****************** SetMemoryLimit ******************/
 		/**** md5 signature: 6570682bb3b681c7b6ede732333556b3 ****/

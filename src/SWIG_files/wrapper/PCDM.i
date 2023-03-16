@@ -247,14 +247,14 @@ class PCDM {
 
 Parameters
 ----------
-aFileName: TCollection_AsciiString
+aFileName: str
 aBaseDriver: Storage_BaseDriver
 
 Returns
 -------
 PCDM_TypeOfFileDriver
 ") FileDriverType;
-		static PCDM_TypeOfFileDriver FileDriverType(const TCollection_AsciiString & aFileName, opencascade::handle<Storage_BaseDriver> & aBaseDriver);
+		static PCDM_TypeOfFileDriver FileDriverType(TCollection_AsciiString aFileName, opencascade::handle<Storage_BaseDriver> & aBaseDriver);
 
 };
 
@@ -284,13 +284,13 @@ class PCDM_ReadWriter : public Standard_Transient {
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") FileFormat;
-		static TCollection_ExtendedString FileFormat(const TCollection_ExtendedString & aFileName);
+		static TCollection_ExtendedString FileFormat(TCollection_ExtendedString aFileName);
 
 		/****************** Open ******************/
 		/**** md5 signature: a144cbf2785ef2f8f31a70359be3305c ****/
@@ -300,14 +300,14 @@ TCollection_ExtendedString
 Parameters
 ----------
 aDriver: Storage_BaseDriver
-aFileName: TCollection_ExtendedString
+aFileName: str
 anOpenMode: Storage_OpenMode
 
 Returns
 -------
 None
 ") Open;
-		static void Open(const opencascade::handle<Storage_BaseDriver> & aDriver, const TCollection_ExtendedString & aFileName, const Storage_OpenMode anOpenMode);
+		static void Open(const opencascade::handle<Storage_BaseDriver> & aDriver, TCollection_ExtendedString aFileName, const Storage_OpenMode anOpenMode);
 
 		/****************** ReadDocumentVersion ******************/
 		/**** md5 signature: bf1f618098d7343ef9fbe7740b59f3aa ****/
@@ -316,14 +316,14 @@ None
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theMsgDriver: Message_Messenger
 
 Returns
 -------
 int
 ") ReadDocumentVersion;
-		virtual Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		virtual Standard_Integer ReadDocumentVersion(TCollection_ExtendedString aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadExtensions ******************/
 		/**** md5 signature: 2739d7ca0016c071d9071f6a6efd593b ****/
@@ -332,7 +332,7 @@ int
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theExtensions: TColStd_SequenceOfExtendedString
 theMsgDriver: Message_Messenger
 
@@ -340,7 +340,7 @@ Returns
 -------
 None
 ") ReadExtensions;
-		virtual void ReadExtensions(const TCollection_ExtendedString & aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		virtual void ReadExtensions(TCollection_ExtendedString aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferenceCounter ******************/
 		/**** md5 signature: c78e646bc2907d99bd148ca5d6ab0520 ****/
@@ -349,14 +349,14 @@ None
 
 Parameters
 ----------
-theFileName: TCollection_ExtendedString
+theFileName: str
 theMsgDriver: Message_Messenger
 
 Returns
 -------
 int
 ") ReadReferenceCounter;
-		virtual Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		virtual Standard_Integer ReadReferenceCounter(TCollection_ExtendedString theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferences ******************/
 		/**** md5 signature: b3faa5a407a9c6a70f34faa350ed3328 ****/
@@ -365,7 +365,7 @@ int
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theReferences: PCDM_SequenceOfReference
 theMsgDriver: Message_Messenger
 
@@ -373,7 +373,7 @@ Returns
 -------
 None
 ") ReadReferences;
-		virtual void ReadReferences(const TCollection_ExtendedString & aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		virtual void ReadReferences(TCollection_ExtendedString aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Reader ******************/
 		/**** md5 signature: 5abfb4fc6587b1edbdb91359566a4f72 ****/
@@ -382,13 +382,13 @@ None
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 
 Returns
 -------
 opencascade::handle<PCDM_ReadWriter>
 ") Reader;
-		static opencascade::handle<PCDM_ReadWriter> Reader(const TCollection_ExtendedString & aFileName);
+		static opencascade::handle<PCDM_ReadWriter> Reader(TCollection_ExtendedString aFileName);
 
 		/****************** Version ******************/
 		/**** md5 signature: 3a6502e85781045440638f7269538a9b ****/
@@ -458,13 +458,13 @@ Parameters
 ----------
 aData: Storage_Data
 aDocument: CDM_Document
-theReferencerFileName: TCollection_ExtendedString
+theReferencerFileName: str
 
 Returns
 -------
 None
 ") WriteReferences;
-		virtual void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & theReferencerFileName);
+		virtual void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString theReferencerFileName);
 
 		/****************** WriteVersion ******************/
 		/**** md5 signature: 159c6fe061eaba42cff513dc8813ee2f ****/
@@ -528,7 +528,7 @@ PCDM_ReaderStatus
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 aNewDocument: CDM_Document
 anApplication: CDM_Application
 theFilter: PCDM_ReaderFilter,optional
@@ -540,7 +540,7 @@ Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual void Read(TCollection_ExtendedString aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -613,13 +613,13 @@ None
 
 Parameters
 ----------
-theEntryToRead: TCollection_AsciiString
+theEntryToRead: str
 
 Returns
 -------
 None
 ") PCDM_ReaderFilter;
-		 PCDM_ReaderFilter(const TCollection_AsciiString & theEntryToRead);
+		 PCDM_ReaderFilter(TCollection_AsciiString theEntryToRead);
 
 		/****************** PCDM_ReaderFilter ******************/
 		/**** md5 signature: 1b48284ae16fd29a0ea550b504663349 ****/
@@ -643,13 +643,13 @@ None
 
 Parameters
 ----------
-theEntryToRead: TCollection_AsciiString
+theEntryToRead: str
 
 Returns
 -------
 None
 ") AddPath;
-		void AddPath(const TCollection_AsciiString & theEntryToRead);
+		void AddPath(TCollection_AsciiString theEntryToRead);
 
 		/****************** AddRead ******************/
 		/**** md5 signature: d55bf2b468f6fe99832137308b5afb34 ****/
@@ -673,13 +673,13 @@ None
 
 Parameters
 ----------
-theRead: TCollection_AsciiString
+theRead: str
 
 Returns
 -------
 None
 ") AddRead;
-		void AddRead(const TCollection_AsciiString & theRead);
+		void AddRead(TCollection_AsciiString theRead);
 
 		/****************** AddSkipped ******************/
 		/**** md5 signature: 17a3c13212ccf5121e7ea6f008a46a9e ****/
@@ -703,13 +703,13 @@ None
 
 Parameters
 ----------
-theSkipped: TCollection_AsciiString
+theSkipped: str
 
 Returns
 -------
 None
 ") AddSkipped;
-		void AddSkipped(const TCollection_AsciiString & theSkipped);
+		void AddSkipped(TCollection_AsciiString theSkipped);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -781,13 +781,13 @@ bool
 
 Parameters
 ----------
-theEntry: TCollection_AsciiString
+theEntry: str
 
 Returns
 -------
 bool
 ") IsPassed;
-		virtual Standard_Boolean IsPassed(const TCollection_AsciiString & theEntry);
+		virtual Standard_Boolean IsPassed(TCollection_AsciiString theEntry);
 
 		/****************** IsPassed ******************/
 		/**** md5 signature: 5e48514b31a5fa61d8a015c3e7729542 ****/
@@ -807,13 +807,13 @@ bool
 
 Parameters
 ----------
-theAttributeType: TCollection_AsciiString
+theAttributeType: str
 
 Returns
 -------
 bool
 ") IsPassedAttr;
-		virtual Standard_Boolean IsPassedAttr(const TCollection_AsciiString & theAttributeType);
+		virtual Standard_Boolean IsPassedAttr(TCollection_AsciiString theAttributeType);
 
 		/****************** IsSubPassed ******************/
 		/**** md5 signature: ba594a6a5c6a8d3f037af25ddb422741 ****/
@@ -822,13 +822,13 @@ bool
 
 Parameters
 ----------
-theEntry: TCollection_AsciiString
+theEntry: str
 
 Returns
 -------
 bool
 ") IsSubPassed;
-		virtual Standard_Boolean IsSubPassed(const TCollection_AsciiString & theEntry);
+		virtual Standard_Boolean IsSubPassed(TCollection_AsciiString theEntry);
 
 		/****************** IsSubPassed ******************/
 		/**** md5 signature: ac3b63e0f17ab0448083482de2136688 ****/
@@ -909,14 +909,14 @@ None
 Parameters
 ----------
 aReferenceIdentifier: int
-aFileName: TCollection_ExtendedString
+aFileName: str
 aDocumentVersion: int
 
 Returns
 -------
 None
 ") PCDM_Reference;
-		 PCDM_Reference(const Standard_Integer aReferenceIdentifier, const TCollection_ExtendedString & aFileName, const Standard_Integer aDocumentVersion);
+		 PCDM_Reference(const Standard_Integer aReferenceIdentifier, TCollection_ExtendedString aFileName, const Standard_Integer aDocumentVersion);
 
 		/****************** DocumentVersion ******************/
 		/**** md5 signature: bf19019d65def7107fbf722b45605af2 ****/
@@ -1038,7 +1038,7 @@ class PCDM_Writer : public Standard_Transient {
 Parameters
 ----------
 aDocument: CDM_Document
-aFileName: TCollection_ExtendedString
+aFileName: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -1046,7 +1046,7 @@ Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -1082,14 +1082,14 @@ None
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theMsgDriver: Message_Messenger
 
 Returns
 -------
 int
 ") ReadDocumentVersion;
-		Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		Standard_Integer ReadDocumentVersion(TCollection_ExtendedString aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadExtensions ******************/
 		/**** md5 signature: e79724363b9b64d4ee07dc721eaab89c ****/
@@ -1098,7 +1098,7 @@ int
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theExtensions: TColStd_SequenceOfExtendedString
 theMsgDriver: Message_Messenger
 
@@ -1106,7 +1106,7 @@ Returns
 -------
 None
 ") ReadExtensions;
-		void ReadExtensions(const TCollection_ExtendedString & aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		void ReadExtensions(TCollection_ExtendedString aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferenceCounter ******************/
 		/**** md5 signature: 2a9d538fbc9a34aae5162f188bc0dec8 ****/
@@ -1115,14 +1115,14 @@ None
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theMsgDriver: Message_Messenger
 
 Returns
 -------
 int
 ") ReadReferenceCounter;
-		Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		Standard_Integer ReadReferenceCounter(TCollection_ExtendedString aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferences ******************/
 		/**** md5 signature: c890e9c775ee329a9c416a624708d4fb ****/
@@ -1131,7 +1131,7 @@ int
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 theReferences: PCDM_SequenceOfReference
 theMsgDriver: Message_Messenger
 
@@ -1139,7 +1139,7 @@ Returns
 -------
 None
 ") ReadReferences;
-		void ReadReferences(const TCollection_ExtendedString & aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		void ReadReferences(TCollection_ExtendedString aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Version ******************/
 		/**** md5 signature: 0ac00c5dd4c467cbc7e9c3010b5092a6 ****/
@@ -1193,13 +1193,13 @@ Parameters
 ----------
 aData: Storage_Data
 aDocument: CDM_Document
-theReferencerFileName: TCollection_ExtendedString
+theReferencerFileName: str
 
 Returns
 -------
 None
 ") WriteReferences;
-		void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & theReferencerFileName);
+		void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString theReferencerFileName);
 
 		/****************** WriteVersion ******************/
 		/**** md5 signature: 1237b39223ebf6a0c84b2cfc30675d46 ****/
@@ -1241,14 +1241,14 @@ class PCDM_RetrievalDriver : public PCDM_Reader {
 
 Parameters
 ----------
-theFileName: TCollection_ExtendedString
+theFileName: str
 theMsgDriver: Message_Messenger
 
 Returns
 -------
 int
 ") DocumentVersion;
-		static Standard_Integer DocumentVersion(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		static Standard_Integer DocumentVersion(TCollection_ExtendedString theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** GetFormat ******************/
 		/**** md5 signature: fffd3a693cb020e12e5658bc526df844 ****/
@@ -1268,14 +1268,14 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-theFileName: TCollection_ExtendedString
+theFileName: str
 theMsgDriver: Message_Messenger
 
 Returns
 -------
 int
 ") ReferenceCounter;
-		static Standard_Integer ReferenceCounter(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		static Standard_Integer ReferenceCounter(TCollection_ExtendedString theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** SetFormat ******************/
 		/**** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ****/
@@ -1284,13 +1284,13 @@ int
 
 Parameters
 ----------
-aformat: TCollection_ExtendedString
+aformat: str
 
 Returns
 -------
 None
 ") SetFormat;
-		void SetFormat(const TCollection_ExtendedString & aformat);
+		void SetFormat(TCollection_ExtendedString aformat);
 
 };
 
@@ -1379,13 +1379,13 @@ None
 
 Parameters
 ----------
-aformat: TCollection_ExtendedString
+aformat: str
 
 Returns
 -------
 None
 ") SetFormat;
-		void SetFormat(const TCollection_ExtendedString & aformat);
+		void SetFormat(TCollection_ExtendedString aformat);
 
 		/****************** SetIsError ******************/
 		/**** md5 signature: 62f1d1b8739fce144b7c044eeba2371b ****/
@@ -1425,7 +1425,7 @@ None
 Parameters
 ----------
 aDocument: CDM_Document
-aFileName: TCollection_ExtendedString
+aFileName: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -1433,7 +1433,7 @@ Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

@@ -161,13 +161,13 @@ class TObj_Application : public TDocStd_Application {
 Parameters
 ----------
 theDoc: TDocStd_Document
-theFormat: TCollection_ExtendedString
+theFormat: str
 
 Returns
 -------
 bool
 ") CreateNewDocument;
-		virtual Standard_Boolean CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, const TCollection_ExtendedString & theFormat);
+		virtual Standard_Boolean CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString theFormat);
 
 
             %feature("autodoc", "1");
@@ -184,14 +184,14 @@ bool
 
 Parameters
 ----------
-theMsg: TCollection_ExtendedString
+theMsg: str
 theLevel: Message_Gravity
 
 Returns
 -------
 None
 ") ErrorMessage;
-		virtual void ErrorMessage(const TCollection_ExtendedString & theMsg, const Message_Gravity theLevel);
+		virtual void ErrorMessage(TCollection_ExtendedString theMsg, const Message_Gravity theLevel);
 
 		/****************** ErrorMessage ******************/
 		/**** md5 signature: 3dc6ec1416dc97db30a8ca8087e13790 ****/
@@ -200,13 +200,13 @@ None
 
 Parameters
 ----------
-theMsg: TCollection_ExtendedString
+theMsg: str
 
 Returns
 -------
 None
 ") ErrorMessage;
-		virtual void ErrorMessage(const TCollection_ExtendedString & theMsg);
+		virtual void ErrorMessage(TCollection_ExtendedString theMsg);
 
 		/****************** GetInstance ******************/
 		/**** md5 signature: b53344174e51d974cfc3c10987d85a58 ****/
@@ -237,14 +237,14 @@ bool
 
 Parameters
 ----------
-theSourceFile: TCollection_ExtendedString
+theSourceFile: str
 theTargetDoc: TDocStd_Document
 
 Returns
 -------
 bool
 ") LoadDocument;
-		virtual Standard_Boolean LoadDocument(const TCollection_ExtendedString & theSourceFile, opencascade::handle<TDocStd_Document> & theTargetDoc);
+		virtual Standard_Boolean LoadDocument(TCollection_ExtendedString theSourceFile, opencascade::handle<TDocStd_Document> & theTargetDoc);
 
 		/****************** Messenger ******************/
 		/**** md5 signature: fe56be9196543a6602ef636ef1016498 ****/
@@ -264,9 +264,9 @@ opencascade::handle<Message_Messenger>
 
 Returns
 -------
-char *
+str
 ") ResourcesName;
-		virtual const char * ResourcesName();
+		virtual Standard_CString ResourcesName();
 
 		/****************** SaveDocument ******************/
 		/**** md5 signature: dcfedbeb5fa0e25c1797d36111fba7ba ****/
@@ -276,13 +276,13 @@ char *
 Parameters
 ----------
 theSourceDoc: TDocStd_Document
-theTargetFile: TCollection_ExtendedString
+theTargetFile: str
 
 Returns
 -------
 bool
 ") SaveDocument;
-		virtual Standard_Boolean SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, const TCollection_ExtendedString & theTargetFile);
+		virtual Standard_Boolean SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, TCollection_ExtendedString theTargetFile);
 
 		/****************** SetVerbose ******************/
 		/**** md5 signature: ec07929ffcbc58b57cfe36e4754b10e9 ****/
@@ -374,13 +374,13 @@ None
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 opencascade::handle<TObj_Model>
 ") FindModel;
-		static opencascade::handle<TObj_Model> FindModel(const char * theName);
+		static opencascade::handle<TObj_Model> FindModel(Standard_CString theName);
 
 		/****************** FindType ******************/
 		/**** md5 signature: b1e7bafac320a7941eacca004bbb32c3 ****/
@@ -849,13 +849,13 @@ bool
 
 Parameters
 ----------
-theFile: TCollection_ExtendedString
+theFile: str
 
 Returns
 -------
 bool
 ") Load;
-		virtual Standard_Boolean Load(const TCollection_ExtendedString & theFile);
+		virtual Standard_Boolean Load(TCollection_ExtendedString theFile);
 
 
             %feature("autodoc", "1");
@@ -949,13 +949,13 @@ bool
 
 Parameters
 ----------
-theFile: TCollection_ExtendedString
+theFile: str
 
 Returns
 -------
 bool
 ") SaveAs;
-		virtual Standard_Boolean SaveAs(const TCollection_ExtendedString & theFile);
+		virtual Standard_Boolean SaveAs(TCollection_ExtendedString theFile);
 
 
         %feature("autodoc", "1");
@@ -1445,7 +1445,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
@@ -1460,7 +1460,7 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
@@ -1743,13 +1743,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetName;
-		Standard_Boolean SetName(const char * name);
+		Standard_Boolean SetName(Standard_CString name);
 
 		/****************** SetOrder ******************/
 		/**** md5 signature: 8206803240cbf5a17027b57cbad1c294 ****/
@@ -1870,14 +1870,14 @@ class TObj_Persistence {
 
 Parameters
 ----------
-theType: char *
+theType: str
 theLabel: TDF_Label
 
 Returns
 -------
 opencascade::handle<TObj_Object>
 ") CreateNewObject;
-		static opencascade::handle<TObj_Object> CreateNewObject(const char * theType, const TDF_Label & theLabel);
+		static opencascade::handle<TObj_Object> CreateNewObject(Standard_CString theType, const TDF_Label & theLabel);
 
 
         %feature("autodoc", "1");

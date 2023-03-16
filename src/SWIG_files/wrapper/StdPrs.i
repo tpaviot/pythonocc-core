@@ -304,7 +304,7 @@ opencascade::handle<Font_FTFont>
 
 Parameters
 ----------
-theFontName: TCollection_AsciiString
+theFontName: str
 theFontAspect: Font_FontAspect
 theSize: float
 theStrictLevel: Font_StrictLevel,optional
@@ -314,7 +314,7 @@ Returns
 -------
 opencascade::handle<StdPrs_BRepFont>
 ") FindAndCreate;
-		static opencascade::handle<StdPrs_BRepFont> FindAndCreate(const TCollection_AsciiString & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+		static opencascade::handle<StdPrs_BRepFont> FindAndCreate(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
 		/****************** FindAndInit ******************/
 		/**** md5 signature: 33bf264db4f7fb13be769117703cf8e4 ****/
@@ -323,7 +323,7 @@ opencascade::handle<StdPrs_BRepFont>
 
 Parameters
 ----------
-theFontName: TCollection_AsciiString
+theFontName: str
 theFontAspect: Font_FontAspect
 theSize: float
 theStrictLevel: Font_StrictLevel,optional
@@ -333,7 +333,7 @@ Returns
 -------
 bool
 ") FindAndInit;
-		bool FindAndInit(const TCollection_AsciiString & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+		bool FindAndInit(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
 		/****************** Init ******************/
 		/**** md5 signature: 14deab12f664b3e6a0b208965809fe62 ****/

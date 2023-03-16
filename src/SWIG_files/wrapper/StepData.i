@@ -232,13 +232,13 @@ class StepData_Described : public Standard_Transient {
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 opencascade::handle<StepData_Simple>
 ") As;
-		virtual opencascade::handle<StepData_Simple> As(const char * steptype);
+		virtual opencascade::handle<StepData_Simple> As(Standard_CString steptype);
 
 		/****************** CField ******************/
 		/**** md5 signature: 3942529d9415c9a1148718142b858ef3 ****/
@@ -247,13 +247,13 @@ opencascade::handle<StepData_Simple>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 StepData_Field
 ") CField;
-		virtual StepData_Field & CField(const char * name);
+		virtual StepData_Field & CField(Standard_CString name);
 
 		/****************** Check ******************/
 		/**** md5 signature: a6c0f3d98344bfd32cbe8030f11e49a2 ****/
@@ -288,13 +288,13 @@ opencascade::handle<StepData_EDescr>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 StepData_Field
 ") Field;
-		virtual const StepData_Field & Field(const char * name);
+		virtual const StepData_Field & Field(Standard_CString name);
 
 		/****************** HasField ******************/
 		/**** md5 signature: 763cef82240aba1dfcfff32b45427471 ****/
@@ -303,13 +303,13 @@ StepData_Field
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") HasField;
-		virtual Standard_Boolean HasField(const char * name);
+		virtual Standard_Boolean HasField(Standard_CString name);
 
 		/****************** IsComplex ******************/
 		/**** md5 signature: 215c43b1ca8c148c12b487f2fd98bef8 ****/
@@ -329,13 +329,13 @@ bool
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const char * steptype);
+		virtual Standard_Boolean Matches(Standard_CString steptype);
 
 		/****************** Shared ******************/
 		/**** md5 signature: d9e9efa040bea745d29689599b296689 ****/
@@ -387,13 +387,13 @@ bool
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const char * steptype);
+		virtual Standard_Boolean Matches(Standard_CString steptype);
 
 		/****************** NewEntity ******************/
 		/**** md5 signature: 6ca199af3f6d883b631677c74f1720fd ****/
@@ -429,92 +429,92 @@ class StepData_EnumTool {
 
 Parameters
 ----------
-e0: char *,optional
+e0: str,optional
 	default value is ""
-e1: char *,optional
+e1: str,optional
 	default value is ""
-e2: char *,optional
+e2: str,optional
 	default value is ""
-e3: char *,optional
+e3: str,optional
 	default value is ""
-e4: char *,optional
+e4: str,optional
 	default value is ""
-e5: char *,optional
+e5: str,optional
 	default value is ""
-e6: char *,optional
+e6: str,optional
 	default value is ""
-e7: char *,optional
+e7: str,optional
 	default value is ""
-e8: char *,optional
+e8: str,optional
 	default value is ""
-e9: char *,optional
+e9: str,optional
 	default value is ""
-e10: char *,optional
+e10: str,optional
 	default value is ""
-e11: char *,optional
+e11: str,optional
 	default value is ""
-e12: char *,optional
+e12: str,optional
 	default value is ""
-e13: char *,optional
+e13: str,optional
 	default value is ""
-e14: char *,optional
+e14: str,optional
 	default value is ""
-e15: char *,optional
+e15: str,optional
 	default value is ""
-e16: char *,optional
+e16: str,optional
 	default value is ""
-e17: char *,optional
+e17: str,optional
 	default value is ""
-e18: char *,optional
+e18: str,optional
 	default value is ""
-e19: char *,optional
+e19: str,optional
 	default value is ""
-e20: char *,optional
+e20: str,optional
 	default value is ""
-e21: char *,optional
+e21: str,optional
 	default value is ""
-e22: char *,optional
+e22: str,optional
 	default value is ""
-e23: char *,optional
+e23: str,optional
 	default value is ""
-e24: char *,optional
+e24: str,optional
 	default value is ""
-e25: char *,optional
+e25: str,optional
 	default value is ""
-e26: char *,optional
+e26: str,optional
 	default value is ""
-e27: char *,optional
+e27: str,optional
 	default value is ""
-e28: char *,optional
+e28: str,optional
 	default value is ""
-e29: char *,optional
+e29: str,optional
 	default value is ""
-e30: char *,optional
+e30: str,optional
 	default value is ""
-e31: char *,optional
+e31: str,optional
 	default value is ""
-e32: char *,optional
+e32: str,optional
 	default value is ""
-e33: char *,optional
+e33: str,optional
 	default value is ""
-e34: char *,optional
+e34: str,optional
 	default value is ""
-e35: char *,optional
+e35: str,optional
 	default value is ""
-e36: char *,optional
+e36: str,optional
 	default value is ""
-e37: char *,optional
+e37: str,optional
 	default value is ""
-e38: char *,optional
+e38: str,optional
 	default value is ""
-e39: char *,optional
+e39: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") StepData_EnumTool;
-		 StepData_EnumTool(const char * e0 = "", const char * e1 = "", const char * e2 = "", const char * e3 = "", const char * e4 = "", const char * e5 = "", const char * e6 = "", const char * e7 = "", const char * e8 = "", const char * e9 = "", const char * e10 = "", const char * e11 = "", const char * e12 = "", const char * e13 = "", const char * e14 = "", const char * e15 = "", const char * e16 = "", const char * e17 = "", const char * e18 = "", const char * e19 = "", const char * e20 = "", const char * e21 = "", const char * e22 = "", const char * e23 = "", const char * e24 = "", const char * e25 = "", const char * e26 = "", const char * e27 = "", const char * e28 = "", const char * e29 = "", const char * e30 = "", const char * e31 = "", const char * e32 = "", const char * e33 = "", const char * e34 = "", const char * e35 = "", const char * e36 = "", const char * e37 = "", const char * e38 = "", const char * e39 = "");
+		 StepData_EnumTool(Standard_CString e0 = "", Standard_CString e1 = "", Standard_CString e2 = "", Standard_CString e3 = "", Standard_CString e4 = "", Standard_CString e5 = "", Standard_CString e6 = "", Standard_CString e7 = "", Standard_CString e8 = "", Standard_CString e9 = "", Standard_CString e10 = "", Standard_CString e11 = "", Standard_CString e12 = "", Standard_CString e13 = "", Standard_CString e14 = "", Standard_CString e15 = "", Standard_CString e16 = "", Standard_CString e17 = "", Standard_CString e18 = "", Standard_CString e19 = "", Standard_CString e20 = "", Standard_CString e21 = "", Standard_CString e22 = "", Standard_CString e23 = "", Standard_CString e24 = "", Standard_CString e25 = "", Standard_CString e26 = "", Standard_CString e27 = "", Standard_CString e28 = "", Standard_CString e29 = "", Standard_CString e30 = "", Standard_CString e31 = "", Standard_CString e32 = "", Standard_CString e33 = "", Standard_CString e34 = "", Standard_CString e35 = "", Standard_CString e36 = "", Standard_CString e37 = "", Standard_CString e38 = "", Standard_CString e39 = "");
 
 		/****************** AddDefinition ******************/
 		/**** md5 signature: 23a5c4986f78df0c3ae858b925eb5246 ****/
@@ -523,13 +523,13 @@ None
 
 Parameters
 ----------
-term: char *
+term: str
 
 Returns
 -------
 None
 ") AddDefinition;
-		void AddDefinition(const char * term);
+		void AddDefinition(Standard_CString term);
 
 		/****************** IsSet ******************/
 		/**** md5 signature: d771f80e63fcb5d314de94e557642c75 ****/
@@ -601,13 +601,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-txt: char *
+txt: str
 
 Returns
 -------
 int
 ") Value;
-		Standard_Integer Value(const char * txt);
+		Standard_Integer Value(Standard_CString txt);
 
 		/****************** Value ******************/
 		/**** md5 signature: 297d6bfd8a3e6e4466b4cf9c8399a2f1 ****/
@@ -616,13 +616,13 @@ int
 
 Parameters
 ----------
-txt: TCollection_AsciiString
+txt: str
 
 Returns
 -------
 int
 ") Value;
-		Standard_Integer Value(const TCollection_AsciiString & txt);
+		Standard_Integer Value(TCollection_AsciiString txt);
 
 };
 
@@ -791,9 +791,9 @@ n2: int,optional
 
 Returns
 -------
-char *
+str
 ") EnumText;
-		const char * EnumText(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		Standard_CString EnumText(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
 
 		/****************** Int ******************/
 		/**** md5 signature: 1413d7ff960425ad93b46a46cdc240ec ****/
@@ -1053,14 +1053,14 @@ Parameters
 ----------
 val: int,optional
 	default value is -1
-text: char *,optional
+text: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetEnum;
-		void SetEnum(const Standard_Integer val = -1, const char * text = "");
+		void SetEnum(const Standard_Integer val = -1, Standard_CString text = "");
 
 		/****************** SetEnum ******************/
 		/**** md5 signature: bc1babd5877fcdfbed8c3c18c8fb941d ****/
@@ -1071,14 +1071,14 @@ Parameters
 ----------
 num: int
 val: int
-text: char *,optional
+text: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetEnum;
-		void SetEnum(const Standard_Integer num, const Standard_Integer val, const char * text = "");
+		void SetEnum(const Standard_Integer num, const Standard_Integer val, Standard_CString text = "");
 
 		/****************** SetInt ******************/
 		/**** md5 signature: dcaa71e8d1c44545b3a4bd91a6b8e118 ****/
@@ -1267,14 +1267,14 @@ None
 
 Parameters
 ----------
-val: char *,optional
+val: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetString;
-		void SetString(const char * val = "");
+		void SetString(Standard_CString val = "");
 
 		/****************** SetString ******************/
 		/**** md5 signature: f741937452f9aac8d558f8cc952598a6 ****/
@@ -1284,13 +1284,13 @@ None
 Parameters
 ----------
 num: int
-val: char *
+val: str
 
 Returns
 -------
 None
 ") SetString;
-		void SetString(const Standard_Integer num, const char * val);
+		void SetString(const Standard_Integer num, Standard_CString val);
 
 		/****************** String ******************/
 		/**** md5 signature: 52aed6fbe6a9dbd2567c65ce961ec922 ****/
@@ -1306,9 +1306,9 @@ n2: int,optional
 
 Returns
 -------
-char *
+str
 ") String;
-		const char * String(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		Standard_CString String(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
 
 		/****************** Transient ******************/
 		/**** md5 signature: 5e2d51bfd45ca63ce3acf2b050563c85 ****/
@@ -1439,14 +1439,14 @@ None
 
 Parameters
 ----------
-akey: TCollection_AsciiString
+akey: str
 res: Standard_Transient
 
 Returns
 -------
 bool
 ") Evaluate;
-		Standard_Boolean Evaluate(const TCollection_AsciiString & akey, opencascade::handle<Standard_Transient> & res);
+		Standard_Boolean Evaluate(TCollection_AsciiString akey, opencascade::handle<Standard_Transient> & res);
 
 		/****************** Result ******************/
 		/**** md5 signature: 1e478c458b39937c7be2973ea1c73aa7 ****/
@@ -1857,13 +1857,13 @@ None
 
 Parameters
 ----------
-enumdef: char *
+enumdef: str
 
 Returns
 -------
 None
 ") AddEnumDef;
-		void AddEnumDef(const char * enumdef);
+		void AddEnumDef(Standard_CString enumdef);
 
 		/****************** AddMember ******************/
 		/**** md5 signature: 8b4d028f234e253b6e252a8999245bcc ****/
@@ -1914,9 +1914,9 @@ None
 
 Returns
 -------
-char *
+str
 ") DescrName;
-		const char * DescrName();
+		Standard_CString DescrName();
 
 		/****************** EnumMax ******************/
 		/**** md5 signature: aa737d66db4ab58d09a625e0a52a3fa7 ****/
@@ -1940,9 +1940,9 @@ val: int
 
 Returns
 -------
-char *
+str
 ") EnumText;
-		const char * EnumText(const Standard_Integer val);
+		Standard_CString EnumText(const Standard_Integer val);
 
 		/****************** EnumValue ******************/
 		/**** md5 signature: 6c468230915f39b81b0354c088266e55 ****/
@@ -1951,13 +1951,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") EnumValue;
-		Standard_Integer EnumValue(const char * name);
+		Standard_Integer EnumValue(Standard_CString name);
 
 		/****************** FieldName ******************/
 		/**** md5 signature: 8f41dbaec7635486ef27f4b3e9739bb0 ****/
@@ -1966,9 +1966,9 @@ int
 
 Returns
 -------
-char *
+str
 ") FieldName;
-		const char * FieldName();
+		Standard_CString FieldName();
 
 		/****************** FieldRank ******************/
 		/**** md5 signature: 260020dccf4d2143e00013a5db3a717c ****/
@@ -2139,13 +2139,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<StepData_PDescr>
 ") Member;
-		opencascade::handle<StepData_PDescr> Member(const char * name);
+		opencascade::handle<StepData_PDescr> Member(Standard_CString name);
 
 		/****************** Name ******************/
 		/**** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ****/
@@ -2154,9 +2154,9 @@ opencascade::handle<StepData_PDescr>
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** SetArity ******************/
 		/**** md5 signature: 19349cb1569c7d2c99201a4b17f62b09 ****/
@@ -2208,13 +2208,13 @@ None
 
 Parameters
 ----------
-dscnam: char *
+dscnam: str
 
 Returns
 -------
 None
 ") SetDescr;
-		void SetDescr(const char * dscnam);
+		void SetDescr(Standard_CString dscnam);
 
 		/****************** SetEnum ******************/
 		/**** md5 signature: 7f9613aa4cc5debf6e829382aa1b5c8f ****/
@@ -2234,14 +2234,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 rank: int
 
 Returns
 -------
 None
 ") SetField;
-		void SetField(const char * name, const Standard_Integer rank);
+		void SetField(Standard_CString name, const Standard_Integer rank);
 
 		/****************** SetFrom ******************/
 		/**** md5 signature: 3627e9a1276d95210a26b8aa1638d208 ****/
@@ -2287,13 +2287,13 @@ None
 
 Parameters
 ----------
-memname: char *
+memname: str
 
 Returns
 -------
 None
 ") SetMemberName;
-		void SetMemberName(const char * memname);
+		void SetMemberName(Standard_CString memname);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ****/
@@ -2302,13 +2302,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const char * name);
+		void SetName(Standard_CString name);
 
 		/****************** SetOptional ******************/
 		/**** md5 signature: 205ea788b56cdff70243eaa68a2bc517 ****/
@@ -2476,7 +2476,7 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 anylevel: bool,optional
 	default value is Standard_True
 
@@ -2484,7 +2484,7 @@ Returns
 -------
 opencascade::handle<StepData_EDescr>
 ") BasicDescr;
-		opencascade::handle<StepData_EDescr> BasicDescr(const char * name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_EDescr> BasicDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
 		/****************** CaseNumber ******************/
 		/**** md5 signature: d6b7e103ec41af298dd6803be8908a5e ****/
@@ -2523,7 +2523,7 @@ opencascade::handle<StepData_EDescr>
 
 Parameters
 ----------
-name: char *
+name: str
 anylevel: bool,optional
 	default value is Standard_True
 
@@ -2531,7 +2531,7 @@ Returns
 -------
 opencascade::handle<StepData_EDescr>
 ") Descr;
-		opencascade::handle<StepData_EDescr> Descr(const char * name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_EDescr> Descr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
 		/****************** DescrNumber ******************/
 		/**** md5 signature: 6654ae9b30db0b05d98cad2dcce64330 ****/
@@ -2572,7 +2572,7 @@ opencascade::handle<StepData_ECDescr>
 
 Parameters
 ----------
-name: char *
+name: str
 anylevel: bool,optional
 	default value is Standard_True
 
@@ -2580,7 +2580,7 @@ Returns
 -------
 opencascade::handle<StepData_ESDescr>
 ") ESDescr;
-		opencascade::handle<StepData_ESDescr> ESDescr(const char * name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_ESDescr> ESDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
 		/****************** HasDescr ******************/
 		/**** md5 signature: bf5be80666d0e25b04a7537155317256 ****/
@@ -2652,7 +2652,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Parameters
 ----------
-name: char *
+name: str
 anylevel: bool,optional
 	default value is Standard_True
 
@@ -2660,7 +2660,7 @@ Returns
 -------
 opencascade::handle<StepData_PDescr>
 ") PDescr;
-		opencascade::handle<StepData_PDescr> PDescr(const char * name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_PDescr> PDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
 		/****************** Resource ******************/
 		/**** md5 signature: d60e6fb01254af21c091aa5baad80e74 ****/
@@ -2684,9 +2684,9 @@ opencascade::handle<Interface_Protocol>
 
 Returns
 -------
-char *
+str
 ") SchemaName;
-		virtual const char * SchemaName();
+		virtual Standard_CString SchemaName();
 
 		/****************** TypeNumber ******************/
 		/**** md5 signature: c141bcfd5e7e4d36c0619b6951ddde94 ****/
@@ -2754,13 +2754,13 @@ int
 
 Parameters
 ----------
-atype: TCollection_AsciiString
+atype: str
 
 Returns
 -------
 int
 ") CaseStep;
-		virtual Standard_Integer CaseStep(const TCollection_AsciiString & atype);
+		virtual Standard_Integer CaseStep(TCollection_AsciiString atype);
 
 		/****************** CaseStep ******************/
 		/**** md5 signature: d9651ca055fd2343fe45b2e5d648493f ****/
@@ -2949,9 +2949,9 @@ int
 
 Returns
 -------
-char *
+str
 ") EnumText;
-		virtual const char * EnumText();
+		virtual Standard_CString EnumText();
 
 		/****************** HasName ******************/
 		/**** md5 signature: a74e6ea53e000ac8d5a7eb1d6d14b850 ****/
@@ -3015,13 +3015,13 @@ StepData_Logical
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const char * name);
+		virtual Standard_Boolean Matches(Standard_CString name);
 
 		/****************** Name ******************/
 		/**** md5 signature: 4bbe2b58331ae651e1fa6526c574b2e9 ****/
@@ -3030,9 +3030,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** ParamType ******************/
 		/**** md5 signature: dc18453a4564d25585accbb5ebf0a4f7 ****/
@@ -3079,14 +3079,14 @@ None
 Parameters
 ----------
 val: int
-text: char *,optional
+text: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetEnum;
-		void SetEnum(const Standard_Integer val, const char * text = "");
+		void SetEnum(const Standard_Integer val, Standard_CString text = "");
 
 		/****************** SetEnumText ******************/
 		/**** md5 signature: 6e5583fdb08591f7e8f8f226898b0d67 ****/
@@ -3096,13 +3096,13 @@ None
 Parameters
 ----------
 val: int
-text: char *
+text: str
 
 Returns
 -------
 None
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer val, const char * text);
+		virtual void SetEnumText(const Standard_Integer val, Standard_CString text);
 
 		/****************** SetInt ******************/
 		/**** md5 signature: 289060698bf307997261972a524e768b ****/
@@ -3171,13 +3171,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetName;
-		virtual Standard_Boolean SetName(const char * name);
+		virtual Standard_Boolean SetName(Standard_CString name);
 
 		/****************** SetReal ******************/
 		/**** md5 signature: ead3399bdee9d33e972dd778e9163719 ****/
@@ -3201,13 +3201,13 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 None
 ") SetString;
-		virtual void SetString(const char * val);
+		virtual void SetString(Standard_CString val);
 
 		/****************** String ******************/
 		/**** md5 signature: 2ee5f6c9286e147f38695747c263fc79 ****/
@@ -3216,9 +3216,9 @@ None
 
 Returns
 -------
-char *
+str
 ") String;
-		virtual const char * String();
+		virtual Standard_CString String();
 
 };
 
@@ -3421,9 +3421,9 @@ float
 
 Returns
 -------
-char *
+str
 ") SelectName;
-		const char * SelectName();
+		Standard_CString SelectName();
 
 		/****************** SetBoolean ******************/
 		/**** md5 signature: 4c36e531ab59ebb4eac7bfea6d026b1b ****/
@@ -3433,14 +3433,14 @@ char *
 Parameters
 ----------
 val: bool
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetBoolean;
-		void SetBoolean(const Standard_Boolean val, const char * name = "");
+		void SetBoolean(const Standard_Boolean val, Standard_CString name = "");
 
 		/****************** SetInt ******************/
 		/**** md5 signature: dcaa71e8d1c44545b3a4bd91a6b8e118 ****/
@@ -3465,14 +3465,14 @@ None
 Parameters
 ----------
 val: int
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetInteger;
-		void SetInteger(const Standard_Integer val, const char * name = "");
+		void SetInteger(const Standard_Integer val, Standard_CString name = "");
 
 		/****************** SetLogical ******************/
 		/**** md5 signature: 8b08112ac196caf89d73cb41e1657d45 ****/
@@ -3482,14 +3482,14 @@ None
 Parameters
 ----------
 val: StepData_Logical
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetLogical;
-		void SetLogical(const StepData_Logical val, const char * name = "");
+		void SetLogical(const StepData_Logical val, Standard_CString name = "");
 
 		/****************** SetReal ******************/
 		/**** md5 signature: 235b28f168469ea4a0d3160bc30cf516 ****/
@@ -3499,14 +3499,14 @@ None
 Parameters
 ----------
 val: float
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetReal;
-		void SetReal(const Standard_Real val, const char * name = "");
+		void SetReal(const Standard_Real val, Standard_CString name = "");
 
 		/****************** SetValue ******************/
 		/**** md5 signature: a322c71f7e82fac78b60be1e7fcd4248 ****/
@@ -3925,7 +3925,7 @@ None
 Parameters
 ----------
 num: int
-aval: char *
+aval: str
 atype: Interface_ParamType
 nument: int,optional
 	default value is 0
@@ -3934,7 +3934,7 @@ Returns
 -------
 None
 ") AddStepParam;
-		void AddStepParam(const Standard_Integer num, const char * aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
+		void AddStepParam(const Standard_Integer num, Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
 		/****************** CType ******************/
 		/**** md5 signature: 3471c88389b71f86b2469f9965af46ab ****/
@@ -3947,9 +3947,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") CType;
-		const char * CType(const Standard_Integer num);
+		Standard_CString CType(const Standard_Integer num);
 
 		/****************** CheckDerived ******************/
 		/**** md5 signature: d9839de6294aa8ba65f812eb1e812f91 ****/
@@ -3960,7 +3960,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 errstat: bool,optional
 	default value is Standard_False
@@ -3969,7 +3969,7 @@ Returns
 -------
 bool
 ") CheckDerived;
-		Standard_Boolean CheckDerived(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, const Standard_Boolean errstat = Standard_False);
+		Standard_Boolean CheckDerived(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const Standard_Boolean errstat = Standard_False);
 
 		/****************** CheckNbParams ******************/
 		/**** md5 signature: 40bd050708432827e8edcb713a598c03 ****/
@@ -3981,14 +3981,14 @@ Parameters
 num: int
 nbreq: int
 ach: Interface_Check
-mess: char *,optional
+mess: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") CheckNbParams;
-		Standard_Boolean CheckNbParams(const Standard_Integer num, const Standard_Integer nbreq, opencascade::handle<Interface_Check> & ach, const char * mess = "");
+		Standard_Boolean CheckNbParams(const Standard_Integer num, const Standard_Integer nbreq, opencascade::handle<Interface_Check> & ach, Standard_CString mess = "");
 
 		/****************** ComplexType ******************/
 		/**** md5 signature: 340da4e2cb3395caa521e4492b2553d1 ****/
@@ -4015,14 +4015,14 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
 -------
 None
 ") FailEnumValue;
-		void FailEnumValue(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach);
+		void FailEnumValue(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach);
 
 		/****************** FindNextHeaderRecord ******************/
 		/**** md5 signature: 4810c89976f8a19ded7f4ad73027cd2a ****/
@@ -4087,7 +4087,7 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 num0: int
 ach: Interface_Check
 
@@ -4095,7 +4095,7 @@ Returns
 -------
 num: int
 ") NamedForComplex;
-		Standard_Boolean NamedForComplex(const char * name, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
+		Standard_Boolean NamedForComplex(Standard_CString name, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
 
 		/****************** NamedForComplex ******************/
 		/**** md5 signature: 9323d5d37d3d46676be6970d81776e60 ****/
@@ -4104,8 +4104,8 @@ num: int
 
 Parameters
 ----------
-theName: char *
-theShortName: char *
+theName: str
+theShortName: str
 num0: int
 ach: Interface_Check
 
@@ -4113,7 +4113,7 @@ Returns
 -------
 num: int
 ") NamedForComplex;
-		Standard_Boolean NamedForComplex(const char * theName, const char * theShortName, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
+		Standard_Boolean NamedForComplex(Standard_CString theName, Standard_CString theShortName, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
 
 		/****************** NbEntities ******************/
 		/**** md5 signature: ab39f1a260e05424e9d879a047ae3f8d ****/
@@ -4161,7 +4161,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 descr: StepData_PDescr
 val: Standard_Transient
@@ -4170,7 +4170,7 @@ Returns
 -------
 bool
 ") ReadAny;
-		Standard_Boolean ReadAny(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
+		Standard_Boolean ReadAny(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
 
 		/****************** ReadBoolean ******************/
 		/**** md5 signature: c61b344ba750add039b5fae58b747ea7 ****/
@@ -4181,14 +4181,14 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
 -------
 flag: bool
 ") ReadBoolean;
-		Standard_Boolean ReadBoolean(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Boolean &OutValue);
+		Standard_Boolean ReadBoolean(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Boolean &OutValue);
 
 		/****************** ReadEnum ******************/
 		/**** md5 signature: 1ba2321f0ae50fef377849bb1f6650d7 ****/
@@ -4199,7 +4199,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 enumtool: StepData_EnumTool
 
@@ -4207,7 +4207,7 @@ Returns
 -------
 val: int
 ") ReadEnum;
-		Standard_Boolean ReadEnum(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, const StepData_EnumTool & enumtool, Standard_Integer &OutValue);
+		Standard_Boolean ReadEnum(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const StepData_EnumTool & enumtool, Standard_Integer &OutValue);
 
 		/****************** ReadEnumParam ******************/
 		/**** md5 signature: 673529d8e471385b72ef2a193883fa07 ****/
@@ -4218,15 +4218,15 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
-text: char *
+text: str
 
 Returns
 -------
 bool
 ") ReadEnumParam;
-		Standard_Boolean ReadEnumParam(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, const char * & text);
+		Standard_Boolean ReadEnumParam(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_CString text);
 
 		/****************** ReadField ******************/
 		/**** md5 signature: 117cffc7ad5a8d128a01db0184aab062 ****/
@@ -4237,7 +4237,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 descr: StepData_PDescr
 fild: StepData_Field
@@ -4246,7 +4246,7 @@ Returns
 -------
 bool
 ") ReadField;
-		Standard_Boolean ReadField(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, StepData_Field & fild);
+		Standard_Boolean ReadField(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, StepData_Field & fild);
 
 		/****************** ReadInteger ******************/
 		/**** md5 signature: 8df89f40ca3baa06d5708a995e3bc965 ****/
@@ -4257,14 +4257,14 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
 -------
 val: int
 ") ReadInteger;
-		Standard_Boolean ReadInteger(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue);
+		Standard_Boolean ReadInteger(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue);
 
 		/****************** ReadList ******************/
 		/**** md5 signature: 6fee9a6abd753aabac229fd7505f0bec ****/
@@ -4293,14 +4293,14 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
 -------
 flag: StepData_Logical
 ") ReadLogical;
-		Standard_Boolean ReadLogical(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, StepData_Logical &OutValue);
+		Standard_Boolean ReadLogical(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, StepData_Logical &OutValue);
 
 		/****************** ReadReal ******************/
 		/**** md5 signature: ffb5a16c71361b585a01f0d634e7c1d7 ****/
@@ -4311,14 +4311,14 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
 -------
 val: float
 ") ReadReal;
-		Standard_Boolean ReadReal(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue);
+		Standard_Boolean ReadReal(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue);
 
 		/****************** ReadString ******************/
 		/**** md5 signature: 488fccca903c0d056793019b913279db ****/
@@ -4329,14 +4329,14 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
 -------
 val: TCollection_HAsciiString
 ") ReadString;
-		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadSub ******************/
 		/**** md5 signature: c5ac3109022b64e7d22ee6e578f203ae ****/
@@ -4346,7 +4346,7 @@ val: TCollection_HAsciiString
 Parameters
 ----------
 numsub: int
-mess: char *
+mess: str
 ach: Interface_Check
 descr: StepData_PDescr
 val: Standard_Transient
@@ -4355,7 +4355,7 @@ Returns
 -------
 int
 ") ReadSub;
-		Standard_Integer ReadSub(const Standard_Integer numsub, const char * mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
+		Standard_Integer ReadSub(const Standard_Integer numsub, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
 
 		/****************** ReadSubList ******************/
 		/**** md5 signature: cf974a9ca2509fac417e73c1eeffb784 ****/
@@ -4366,7 +4366,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 optional: bool,optional
 	default value is Standard_False
@@ -4379,7 +4379,7 @@ Returns
 -------
 numsub: int
 ") ReadSubList;
-		Standard_Boolean ReadSubList(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, const Standard_Boolean optional = Standard_False, const Standard_Integer lenmin = 0, const Standard_Integer lenmax = 0);
+		Standard_Boolean ReadSubList(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, const Standard_Boolean optional = Standard_False, const Standard_Integer lenmin = 0, const Standard_Integer lenmax = 0);
 
 		/****************** ReadTypedParam ******************/
 		/**** md5 signature: 9ae8cb43153e7d06c2546e73f27b8a23 ****/
@@ -4391,16 +4391,16 @@ Parameters
 num: int
 nump: int
 mustbetyped: bool
-mess: char *
+mess: str
 ach: Interface_Check
-typ: TCollection_AsciiString
+typ: str
 
 Returns
 -------
 numr: int
 numrp: int
 ") ReadTypedParam;
-		Standard_Boolean ReadTypedParam(const Standard_Integer num, const Standard_Integer nump, const Standard_Boolean mustbetyped, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, Standard_Integer &OutValue, TCollection_AsciiString & typ);
+		Standard_Boolean ReadTypedParam(const Standard_Integer num, const Standard_Integer nump, const Standard_Boolean mustbetyped, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, Standard_Integer &OutValue, TCollection_AsciiString & typ);
 
 		/****************** ReadXY ******************/
 		/**** md5 signature: 35739d3be1921b37774b2c9ffd74a099 ****/
@@ -4411,7 +4411,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
@@ -4419,7 +4419,7 @@ Returns
 X: float
 Y: float
 ") ReadXY;
-		Standard_Boolean ReadXY(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue);
+		Standard_Boolean ReadXY(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** ReadXYZ ******************/
 		/**** md5 signature: 7aabc99aae7f903c581d308dafdf7469 ****/
@@ -4430,7 +4430,7 @@ Parameters
 ----------
 num: int
 nump: int
-mess: char *
+mess: str
 ach: Interface_Check
 
 Returns
@@ -4439,7 +4439,7 @@ X: float
 Y: float
 Z: float
 ") ReadXYZ;
-		Standard_Boolean ReadXYZ(const Standard_Integer num, const Standard_Integer nump, const char * mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		Standard_Boolean ReadXYZ(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** RecordIdent ******************/
 		/**** md5 signature: c1cae48e2f0b459a26c9eb869d36a23b ****/
@@ -4495,15 +4495,15 @@ None
 Parameters
 ----------
 num: int
-ident: char *
-type: char *
+ident: str
+type: str
 nbpar: int
 
 Returns
 -------
 None
 ") SetRecord;
-		void SetRecord(const Standard_Integer num, const char * ident, const char * type, const Standard_Integer nbpar);
+		void SetRecord(const Standard_Integer num, Standard_CString ident, Standard_CString type, const Standard_Integer nbpar);
 
 		/****************** SubListNumber ******************/
 		/**** md5 signature: c968678faf4381e8c92b5055d58a7092 ****/
@@ -4923,13 +4923,13 @@ None
 
 Parameters
 ----------
-subtype: char *
+subtype: str
 
 Returns
 -------
 None
 ") OpenTypedSub;
-		void OpenTypedSub(const char * subtype);
+		void OpenTypedSub(Standard_CString subtype);
 
 
         %feature("autodoc", "1");
@@ -4976,13 +4976,13 @@ None
 
 Parameters
 ----------
-val: TCollection_AsciiString
+val: str
 
 Returns
 -------
 None
 ") Send;
-		void Send(const TCollection_AsciiString & val);
+		void Send(TCollection_AsciiString val);
 
 		/****************** Send ******************/
 		/**** md5 signature: 3880ccc0702fdb7655055e88ee1fc846 ****/
@@ -5051,13 +5051,13 @@ None
 
 Parameters
 ----------
-text: char *
+text: str
 
 Returns
 -------
 None
 ") SendComment;
-		void SendComment(const char * text);
+		void SendComment(Standard_CString text);
 
 		/****************** SendData ******************/
 		/**** md5 signature: d649dad9b048a0857622c773c2313876 ****/
@@ -5115,13 +5115,13 @@ None
 
 Parameters
 ----------
-val: TCollection_AsciiString
+val: str
 
 Returns
 -------
 None
 ") SendEnum;
-		void SendEnum(const TCollection_AsciiString & val);
+		void SendEnum(TCollection_AsciiString val);
 
 		/****************** SendEnum ******************/
 		/**** md5 signature: ece5bc46b726e98cedf51fd63ae16366 ****/
@@ -5130,13 +5130,13 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 None
 ") SendEnum;
-		void SendEnum(const char * val);
+		void SendEnum(Standard_CString val);
 
 		/****************** SendField ******************/
 		/**** md5 signature: d6d4a7b78133afcc05bebc4b4655a49e ****/
@@ -5262,13 +5262,13 @@ None
 
 Parameters
 ----------
-val: TCollection_AsciiString
+val: str
 
 Returns
 -------
 None
 ") SendString;
-		void SendString(const TCollection_AsciiString & val);
+		void SendString(TCollection_AsciiString val);
 
 		/****************** SendString ******************/
 		/**** md5 signature: 2a52fec60aa726da40d31560629ccab1 ****/
@@ -5277,13 +5277,13 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 None
 ") SendString;
-		void SendString(const char * val);
+		void SendString(Standard_CString val);
 
 		/****************** SendUndef ******************/
 		/**** md5 signature: 2f7e3905171f54dc8bc4c8128123b2a0 ****/
@@ -5330,13 +5330,13 @@ None
 
 Parameters
 ----------
-atype: TCollection_AsciiString
+atype: str
 
 Returns
 -------
 None
 ") StartEntity;
-		void StartEntity(const TCollection_AsciiString & atype);
+		void StartEntity(TCollection_AsciiString atype);
 
 
         %feature("autodoc","1");
@@ -5672,13 +5672,13 @@ bool
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 bool
 ") Matches;
-		Standard_Boolean Matches(const char * steptype);
+		Standard_Boolean Matches(Standard_CString steptype);
 
 		/****************** Member ******************/
 		/**** md5 signature: 435d565cdd42b6028f2889346da774f8 ****/
@@ -5751,13 +5751,13 @@ class StepData_ESDescr : public StepData_EDescr {
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") StepData_ESDescr;
-		 StepData_ESDescr(const char * name);
+		 StepData_ESDescr(Standard_CString name);
 
 		/****************** Base ******************/
 		/**** md5 signature: ea04cb6a986eaf32f4a3b105c2ff525b ****/
@@ -5818,13 +5818,13 @@ bool
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 bool
 ") Matches;
-		Standard_Boolean Matches(const char * steptype);
+		Standard_Boolean Matches(Standard_CString steptype);
 
 		/****************** Name ******************/
 		/**** md5 signature: 9147a7d0c7cc3f58d615827664b3d780 ****/
@@ -5837,9 +5837,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name(const Standard_Integer num);
+		Standard_CString Name(const Standard_Integer num);
 
 		/****************** NamedField ******************/
 		/**** md5 signature: a022259a4403307aba71981645b428da ****/
@@ -5848,13 +5848,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<StepData_PDescr>
 ") NamedField;
-		opencascade::handle<StepData_PDescr> NamedField(const char * name);
+		opencascade::handle<StepData_PDescr> NamedField(Standard_CString name);
 
 		/****************** NbFields ******************/
 		/**** md5 signature: 3a0202b8c2c96cf1ff6b7765aa84d699 ****/
@@ -5885,13 +5885,13 @@ opencascade::handle<StepData_Described>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") Rank;
-		Standard_Integer Rank(const char * name);
+		Standard_Integer Rank(Standard_CString name);
 
 		/****************** SetBase ******************/
 		/**** md5 signature: 07f8051ecaa95846bec41a717b24c354 ****/
@@ -5916,14 +5916,14 @@ None
 Parameters
 ----------
 num: int
-name: char *
+name: str
 descr: StepData_PDescr
 
 Returns
 -------
 None
 ") SetField;
-		void SetField(const Standard_Integer num, const char * name, const opencascade::handle<StepData_PDescr> & descr);
+		void SetField(const Standard_Integer num, Standard_CString name, const opencascade::handle<StepData_PDescr> & descr);
 
 		/****************** SetNbFields ******************/
 		/**** md5 signature: 50335a67d4b95ef42d6982fcae5c2187 ****/
@@ -5984,9 +5984,9 @@ opencascade::handle<StepData_ESDescr>
 
 Returns
 -------
-char *
+str
 ") TypeName;
-		const char * TypeName();
+		Standard_CString TypeName();
 
 };
 
@@ -6300,9 +6300,9 @@ opencascade::handle<Interface_Protocol>
 
 Returns
 -------
-char *
+str
 ") SchemaName;
-		virtual const char * SchemaName();
+		virtual Standard_CString SchemaName();
 
 		/****************** TypeNumber ******************/
 		/**** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ****/
@@ -6372,13 +6372,13 @@ None
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 opencascade::handle<StepData_Simple>
 ") As;
-		opencascade::handle<StepData_Simple> As(const char * steptype);
+		opencascade::handle<StepData_Simple> As(Standard_CString steptype);
 
 		/****************** CField ******************/
 		/**** md5 signature: 40f3201ea099aeccb82acc5445d0f96e ****/
@@ -6387,13 +6387,13 @@ opencascade::handle<StepData_Simple>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 StepData_Field
 ") CField;
-		StepData_Field & CField(const char * name);
+		StepData_Field & CField(Standard_CString name);
 
 		/****************** Check ******************/
 		/**** md5 signature: 391f0e357b34862749cae0a57bd47b8d ****/
@@ -6428,13 +6428,13 @@ opencascade::handle<StepData_ECDescr>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 StepData_Field
 ") Field;
-		const StepData_Field & Field(const char * name);
+		const StepData_Field & Field(Standard_CString name);
 
 		/****************** HasField ******************/
 		/**** md5 signature: d3dae4e2aed9325ead74f94179c5b06c ****/
@@ -6443,13 +6443,13 @@ StepData_Field
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") HasField;
-		Standard_Boolean HasField(const char * name);
+		Standard_Boolean HasField(Standard_CString name);
 
 		/****************** IsComplex ******************/
 		/**** md5 signature: 3fa56289b77889af0bfdd6826c1eed29 ****/
@@ -6469,13 +6469,13 @@ bool
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 bool
 ") Matches;
-		Standard_Boolean Matches(const char * steptype);
+		Standard_Boolean Matches(Standard_CString steptype);
 
 		/****************** Member ******************/
 		/**** md5 signature: c3076bfab7e254207a7d2740ed587727 ****/
@@ -6697,9 +6697,9 @@ int
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** Real ******************/
 		/**** md5 signature: c9456a7c56ea266ceb625e159fd1b575 ****/
@@ -6749,13 +6749,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetName;
-		virtual Standard_Boolean SetName(const char * name);
+		virtual Standard_Boolean SetName(Standard_CString name);
 
 		/****************** SetReal ******************/
 		/**** md5 signature: 12ca179780b0a6880b41325c17c33afd ****/
@@ -6779,13 +6779,13 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 None
 ") SetString;
-		virtual void SetString(const char * val);
+		virtual void SetString(Standard_CString val);
 
 		/****************** String ******************/
 		/**** md5 signature: c8e7159fddba166cd70249088a18f326 ****/
@@ -6794,9 +6794,9 @@ None
 
 Returns
 -------
-char *
+str
 ") String;
-		virtual const char * String();
+		virtual Standard_CString String();
 
 };
 
@@ -6900,13 +6900,13 @@ None
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 opencascade::handle<StepData_Simple>
 ") As;
-		opencascade::handle<StepData_Simple> As(const char * steptype);
+		opencascade::handle<StepData_Simple> As(Standard_CString steptype);
 
 		/****************** CField ******************/
 		/**** md5 signature: 40f3201ea099aeccb82acc5445d0f96e ****/
@@ -6915,13 +6915,13 @@ opencascade::handle<StepData_Simple>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 StepData_Field
 ") CField;
-		StepData_Field & CField(const char * name);
+		StepData_Field & CField(Standard_CString name);
 
 		/****************** CFieldNum ******************/
 		/**** md5 signature: a7d486756179e14ce3b0b453f3f39c7a ****/
@@ -6982,13 +6982,13 @@ opencascade::handle<StepData_ESDescr>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 StepData_Field
 ") Field;
-		const StepData_Field & Field(const char * name);
+		const StepData_Field & Field(Standard_CString name);
 
 		/****************** FieldNum ******************/
 		/**** md5 signature: 468afcfd3ad5be1751459fde7fa1aa3d ****/
@@ -7023,13 +7023,13 @@ StepData_FieldListN
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") HasField;
-		Standard_Boolean HasField(const char * name);
+		Standard_Boolean HasField(Standard_CString name);
 
 		/****************** IsComplex ******************/
 		/**** md5 signature: 3fa56289b77889af0bfdd6826c1eed29 ****/
@@ -7049,13 +7049,13 @@ bool
 
 Parameters
 ----------
-steptype: char *
+steptype: str
 
 Returns
 -------
 bool
 ") Matches;
-		Standard_Boolean Matches(const char * steptype);
+		Standard_Boolean Matches(Standard_CString steptype);
 
 		/****************** NbFields ******************/
 		/**** md5 signature: 3a0202b8c2c96cf1ff6b7765aa84d699 ****/
@@ -7090,9 +7090,9 @@ None
 
 Returns
 -------
-char *
+str
 ") StepType;
-		const char * StepType();
+		Standard_CString StepType();
 
 };
 

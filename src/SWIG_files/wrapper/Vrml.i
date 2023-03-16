@@ -1731,14 +1731,14 @@ class Vrml_Info {
 
 Parameters
 ----------
-aString: TCollection_AsciiString,optional
+aString: str,optional
 	default value is '<Undefinedinfo>'
 
 Returns
 -------
 None
 ") Vrml_Info;
-		 Vrml_Info(const TCollection_AsciiString & aString = "<Undefinedinfo>");
+		 Vrml_Info(TCollection_AsciiString aString = "<Undefinedinfo>");
 
 
         %feature("autodoc", "1");
@@ -1755,13 +1755,13 @@ None
 
 Parameters
 ----------
-aString: TCollection_AsciiString
+aString: str
 
 Returns
 -------
 None
 ") SetString;
-		void SetString(const TCollection_AsciiString & aString);
+		void SetString(TCollection_AsciiString aString);
 
 		/****************** String ******************/
 		/**** md5 signature: eff55c5ebef3b81579f35035613cf230 ****/
@@ -1795,13 +1795,13 @@ class Vrml_Instancing {
 
 Parameters
 ----------
-aString: TCollection_AsciiString
+aString: str
 
 Returns
 -------
 None
 ") Vrml_Instancing;
-		 Vrml_Instancing(const TCollection_AsciiString & aString);
+		 Vrml_Instancing(TCollection_AsciiString aString);
 
 
         %feature("autodoc", "1");
@@ -3057,7 +3057,7 @@ TCollection_AsciiString
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -3067,7 +3067,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: ec9914af037216c0502c72d0c8784072 ****/
@@ -3076,7 +3076,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -3085,7 +3085,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ****/
@@ -3094,7 +3094,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -3104,7 +3104,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ****/
@@ -3113,7 +3113,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -3122,7 +3122,7 @@ Returns
 -------
 bool
 ") Read;
-		virtual bool Read(const TCollection_AsciiString & thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
@@ -3131,7 +3131,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -3141,7 +3141,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
@@ -3150,7 +3150,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -3159,7 +3159,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
@@ -3168,7 +3168,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -3178,7 +3178,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
@@ -3187,7 +3187,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -3196,7 +3196,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -4271,7 +4271,7 @@ None
 
 Parameters
 ----------
-aFilename: TCollection_AsciiString
+aFilename: str
 aImage: Vrml_SFImage
 aWrapS: Vrml_Texture2Wrap
 aWrapT: Vrml_Texture2Wrap
@@ -4280,7 +4280,7 @@ Returns
 -------
 None
 ") Vrml_Texture2;
-		 Vrml_Texture2(const TCollection_AsciiString & aFilename, const opencascade::handle<Vrml_SFImage> & aImage, const Vrml_Texture2Wrap aWrapS, const Vrml_Texture2Wrap aWrapT);
+		 Vrml_Texture2(TCollection_AsciiString aFilename, const opencascade::handle<Vrml_SFImage> & aImage, const Vrml_Texture2Wrap aWrapS, const Vrml_Texture2Wrap aWrapT);
 
 		/****************** Filename ******************/
 		/**** md5 signature: 403f67c4638b8a808f68c91981c71440 ****/
@@ -4319,13 +4319,13 @@ opencascade::handle<Vrml_SFImage>
 
 Parameters
 ----------
-aFilename: TCollection_AsciiString
+aFilename: str
 
 Returns
 -------
 None
 ") SetFilename;
-		void SetFilename(const TCollection_AsciiString & aFilename);
+		void SetFilename(TCollection_AsciiString aFilename);
 
 		/****************** SetImage ******************/
 		/**** md5 signature: a9ae445e8b68c9036584f2fb4a7fd9f5 ****/
@@ -4935,9 +4935,9 @@ class Vrml_WWWAnchor {
 
 Parameters
 ----------
-aName: TCollection_AsciiString,optional
+aName: str,optional
 	default value is ""
-aDescription: TCollection_AsciiString,optional
+aDescription: str,optional
 	default value is ""
 aMap: Vrml_WWWAnchorMap,optional
 	default value is Vrml_MAP_NONE
@@ -4946,7 +4946,7 @@ Returns
 -------
 None
 ") Vrml_WWWAnchor;
-		 Vrml_WWWAnchor(const TCollection_AsciiString & aName = "", const TCollection_AsciiString & aDescription = "", const Vrml_WWWAnchorMap aMap = Vrml_MAP_NONE);
+		 Vrml_WWWAnchor(TCollection_AsciiString aName = "", TCollection_AsciiString aDescription = "", const Vrml_WWWAnchorMap aMap = Vrml_MAP_NONE);
 
 		/****************** Description ******************/
 		/**** md5 signature: b46267417d65ffb9a243344287317012 ****/
@@ -4996,13 +4996,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-aDescription: TCollection_AsciiString
+aDescription: str
 
 Returns
 -------
 None
 ") SetDescription;
-		void SetDescription(const TCollection_AsciiString & aDescription);
+		void SetDescription(TCollection_AsciiString aDescription);
 
 		/****************** SetMap ******************/
 		/**** md5 signature: a39b8d7582c6facd13d1ca3c9a1bc659 ****/
@@ -5026,13 +5026,13 @@ None
 
 Parameters
 ----------
-aName: TCollection_AsciiString
+aName: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & aName);
+		void SetName(TCollection_AsciiString aName);
 
 };
 
@@ -5066,7 +5066,7 @@ None
 
 Parameters
 ----------
-aName: TCollection_AsciiString
+aName: str
 aBboxSize: gp_Vec
 aBboxCenter: gp_Vec
 
@@ -5074,7 +5074,7 @@ Returns
 -------
 None
 ") Vrml_WWWInline;
-		 Vrml_WWWInline(const TCollection_AsciiString & aName, const gp_Vec & aBboxSize, const gp_Vec & aBboxCenter);
+		 Vrml_WWWInline(TCollection_AsciiString aName, const gp_Vec & aBboxSize, const gp_Vec & aBboxCenter);
 
 		/****************** BboxCenter ******************/
 		/**** md5 signature: 96c51f966aa30678cff38b2dd51e12fd ****/
@@ -5154,13 +5154,13 @@ None
 
 Parameters
 ----------
-aName: TCollection_AsciiString
+aName: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & aName);
+		void SetName(TCollection_AsciiString aName);
 
 };
 

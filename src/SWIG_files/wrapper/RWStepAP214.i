@@ -2222,13 +2222,13 @@ None
 
 Parameters
 ----------
-atype: TCollection_AsciiString
+atype: str
 
 Returns
 -------
 int
 ") CaseStep;
-		Standard_Integer CaseStep(const TCollection_AsciiString & atype);
+		Standard_Integer CaseStep(TCollection_AsciiString atype);
 
 		/****************** CaseStep ******************/
 		/**** md5 signature: 440149e7ecd34289be9e6811f7462a4e ****/

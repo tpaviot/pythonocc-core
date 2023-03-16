@@ -359,14 +359,14 @@ TColStd_IndexedDataMapOfStringString
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 theProgress: Message_ProgressRange
 
 Returns
 -------
 bool
 ") Perform;
-		bool Perform(const TCollection_AsciiString & theFile, const Message_ProgressRange & theProgress);
+		bool Perform(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****************** ProbeHeader ******************/
 		/**** md5 signature: 62d0d942adff0fd3f5d25c775b2e2dde ****/
@@ -375,7 +375,7 @@ bool
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -383,7 +383,7 @@ Returns
 -------
 bool
 ") ProbeHeader;
-		Standard_Boolean ProbeHeader(const TCollection_AsciiString & theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean ProbeHeader(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** RootPrefix ******************/
 		/**** md5 signature: 23690698ed70038f8be604f633be3713 ****/
@@ -508,13 +508,13 @@ None
 
 Parameters
 ----------
-theRootPrefix: TCollection_AsciiString
+theRootPrefix: str
 
 Returns
 -------
 None
 ") SetRootPrefix;
-		void SetRootPrefix(const TCollection_AsciiString & theRootPrefix);
+		void SetRootPrefix(TCollection_AsciiString theRootPrefix);
 
 		/****************** SetSystemCoordinateSystem ******************/
 		/**** md5 signature: 7c531314d6e79c5583ab16f29a8c9fcd ****/
@@ -1257,15 +1257,15 @@ TCollection_AsciiString
 
 Parameters
 ----------
-theResTexture: TCollection_AsciiString
+theResTexture: str
 theTexture: Image_Texture
-theKey: TCollection_AsciiString
+theKey: str
 
 Returns
 -------
 bool
 ") CopyTexture;
-		virtual bool CopyTexture(TCollection_AsciiString & theResTexture, const opencascade::handle<Image_Texture> & theTexture, const TCollection_AsciiString & theKey);
+		virtual bool CopyTexture(TCollection_AsciiString & theResTexture, const opencascade::handle<Image_Texture> & theTexture, TCollection_AsciiString theKey);
 
 		/****************** CreateTextureFolder ******************/
 		/**** md5 signature: 322adae0334fbf2be5b65dfb40347f45 ****/
@@ -1297,14 +1297,14 @@ XCAFPrs_Style
 Parameters
 ----------
 theStyle: XCAFPrs_Style
-theKey: TCollection_AsciiString
-theName: TCollection_AsciiString
+theKey: str
+theName: str
 
 Returns
 -------
 None
 ") DefineMaterial;
-		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, const TCollection_AsciiString & theKey, const TCollection_AsciiString & theName);
+		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, TCollection_AsciiString theKey, TCollection_AsciiString theName);
 
 		/****************** FindMaterial ******************/
 		/**** md5 signature: 2f57483d42a6c3ddeac51741c6c32190 ****/
@@ -1481,13 +1481,13 @@ None
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") SetFileName;
-		void SetFileName(const TCollection_AsciiString & theFileName);
+		void SetFileName(TCollection_AsciiString theFileName);
 
 		/****************** SetToPrintDebugMessages ******************/
 		/**** md5 signature: dcbcbd79fdeab4f6976a1573fd9e5905 ****/

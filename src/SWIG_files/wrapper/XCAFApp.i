@@ -131,9 +131,9 @@ None
 
 Returns
 -------
-char *
+str
 ") ResourcesName;
-		virtual const char * ResourcesName();
+		virtual Standard_CString ResourcesName();
 
 };
 
