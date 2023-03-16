@@ -21,13 +21,65 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %{
 #include <TopoDS.hxx>
+#include <TCollection_AsciiString.hxx>
+#include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
+#include <codecvt>
+#include <string>
 %}
 
 %include <typemaps.i>
 
 /*
-TCollection_HAsciiString & function transformation
+Standard_CString parameter transformation
+*/
+
+%typemap(in) Standard_CString
+{
+    $1 = PyUnicode_AsUTF8($input);
+}
+
+%typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) Standard_CString {
+    $1 = PyUnicode_Check($input) ? 1 : 0;
+}
+%typemap(out) Standard_CString {
+    $result = PyString_FromString($1);
+}
+
+/*
+TCollection_ExtendedString parameter transformation
+*/
+
+%typemap(in) TCollection_ExtendedString
+{
+    $1 = TCollection_ExtendedString(PyUnicode_AsUTF8($input));
+}
+%typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_ExtendedString {
+    $1 = PyUnicode_Check($input) ? 1 : 0;
+}
+%typemap(out) TCollection_ExtendedString {
+    std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
+    std::string temp = convert.to_bytes($1.ToExtString());
+    $result = PyUnicode_FromString(temp.c_str());
+}
+
+/*
+TCollection_AsciiString parameter transformation
+*/
+
+%typemap(in) TCollection_AsciiString
+{
+    $1 = TCollection_AsciiString(PyUnicode_AsUTF8($input));
+}
+%typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_AsciiString {
+    $1 = PyUnicode_Check($input) ? 1 : 0;
+}
+%typemap(out) TCollection_AsciiString {
+    $result = PyString_FromString($1.ToCString());
+}
+
+/*
+TCollection_HAsciiString output by ref parameter transformation
 */
 %typemap(argout) opencascade::handle<TCollection_HAsciiString> &OutValue {
     PyObject *o, *o2, *o3;
