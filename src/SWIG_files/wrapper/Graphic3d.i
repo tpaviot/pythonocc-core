@@ -16024,7 +16024,6 @@ class Graphic3d_TransformPers : public Standard_Transient {
 	public:
 		class PersParams3d {};
 		class PersParams2d {};
-		class union  {};
 		/****************** Graphic3d_TransformPers ******************/
 		/**** md5 signature: 357e8dfc8508c3c2260006d3b5d04b61 ****/
 		%feature("compactdefaultargs") Graphic3d_TransformPers;
