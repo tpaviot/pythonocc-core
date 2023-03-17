@@ -911,21 +911,13 @@ class TestWrapperFeatures(unittest.TestCase):
         edge_4 = BRepClass_Edge()
 
         facetopo.InitEdges()
-        topabs_ori_1 = facetopo.CurrentEdge(
-            edge_1
-        )
+        topabs_ori_1 = facetopo.CurrentEdge(edge_1)
         facetopo.NextEdge()
-        topabs_ori_2 = facetopo.CurrentEdge(
-            edge_2
-        )
+        topabs_ori_2 = facetopo.CurrentEdge(edge_2)
         facetopo.NextEdge()
-        topabs_ori_3 = facetopo.CurrentEdge(
-            edge_3
-        )
+        topabs_ori_3 = facetopo.CurrentEdge(edge_3)
         facetopo.NextEdge()
-        topabs_ori_4 = facetopo.CurrentEdge(
-            edge_4
-        )
+        topabs_ori_4 = facetopo.CurrentEdge(edge_4)
         self.assertEqual(topabs_ori_1, TopAbs_Orientation.TopAbs_REVERSED)
         self.assertEqual(topabs_ori_2, TopAbs_Orientation.TopAbs_REVERSED)
         self.assertEqual(topabs_ori_3, TopAbs_Orientation.TopAbs_FORWARD)

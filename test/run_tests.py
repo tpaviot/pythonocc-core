@@ -42,8 +42,7 @@ suite7 = core_extend_dataexchange_unittest.suite()
 suite8 = core_extend_shapefactory_unittest.suite()
 suite9 = core_meshdatasource_unittest.suite()
 # Add test cases
-tests = [suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8,
-         suite9]
+tests = [suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9]
 suite.addTests(tests)
 
 # Run test suite

@@ -15,6 +15,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import base64
 import enum
 from functools import reduce
 import itertools
@@ -48,16 +49,15 @@ try:
         Points,
         make_text,
     )
-    from IPython.display import display, SVG
+    from IPython.display import display, SVG, clear_output
     from ipywidgets import HTML, HBox, VBox, Checkbox, Button, Layout, Dropdown, embed
     import numpy as np
 except ImportError:
     error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
-If you installed pythonocc using conda, just type :
+If you installed pythonocc using conda, just type:
 $ conda install -c conda-forge pythreejs"""
     print(error_log)
     sys.exit(0)
-
 
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
@@ -82,13 +82,48 @@ from OCC.Extend.ShapeFactory import (
     measure_shape_mass_center_of_gravity,
     recognize_face,
 )
-from OCC.Extend.DataExchange import export_shape_to_svg
+
+try:
+    from OCC.Extend.DataExchange import export_shape_to_svg
+
+    HAVE_SVG = True
+except ImportError:
+    HAVE_SVG = False
+
+
+def create_download_link(a_str, filename):
+    b64 = base64.b64encode(a_str.encode())
+    payload = b64.decode()
+    html = '<a download="{filename}" href="data:text/x3d;base64,{payload}" target="_blank">{title}</a>'
+    html = html.format(payload=payload, title="Download " + filename, filename=filename)
+    return HTML(html)
+
+
+def progress_indicator(progress, prompt="Progress"):
+    bar_length = 20
+    if isinstance(progress, int):
+        progress = float(progress)
+    if not isinstance(progress, float):
+        progress = 0
+    if progress < 0:
+        progress = 0
+    if progress >= 1:
+        progress = 1
+
+    block = int(round(bar_length * progress))
+
+    clear_output(wait=True)
+    text = prompt + ": [{0}] {1:.1f}%".format(
+        "#" * block + "-" * (bar_length - block), progress * 100
+    )
+    print(text)
+
 
 #
 # Util mathematical functions
 #
-def _add(vec1, vec2):
-    return list(v1 + v2 for v1, v2 in zip(vec1, vec2))
+def _add(vec_1, vec_2):
+    return list(v_1 + v_2 for v_1, v_2 in zip(vec_1, vec_2))
 
 
 def _explode(edge_list):
@@ -103,8 +138,8 @@ def format_color(r, g, b):
     return "#%02x%02x%02x" % (r, g, b)
 
 
-def _distance(v1, v2):
-    return np.linalg.norm([x - y for x, y in zip(v1, v2)])
+def _distance(v_1, v_2):
+    return np.linalg.norm([x - y for x, y in zip(v_1, v_2)])
 
 
 def _bool_or_new(val):
@@ -234,11 +269,11 @@ class Axes(Helpers):
     def __init__(self, bb_center, length=1, width=3, display_labels=False):
         Helpers.__init__(self, bb_center)
 
-        self.axes = []
+        self._axes = []
         for vector, color in zip(
             ([length, 0, 0], [0, length, 0], [0, 0, length]), ("red", "green", "blue")
         ):
-            self.axes.append(
+            self._axes.append(
                 LineSegments2(
                     LineSegmentsGeometry(
                         positions=[[self.center, _shift(self.center, vector)]]
@@ -253,17 +288,20 @@ class Axes(Helpers):
             y_text = make_text("Y", [0, length, 0])
             z_text = make_text("Z", [0, 0, length])
 
-            self.axes.append(x_text)
-            self.axes.append(y_text)
-            self.axes.append(z_text)
+            self._axes.append(x_text)
+            self._axes.append(y_text)
+            self._axes.append(z_text)
+
+    def get_axes(self):
+        return self._axes
 
     def set_position(self, position):
         for i in range(3):
-            self.axes[i].position = position
+            self._axes[i].position = position
 
     def set_visibility(self, change):
         for i in range(3):
-            self.axes[i].visible = change
+            self._axes[i].visible = change
 
 
 #
@@ -281,7 +319,7 @@ class CustomMaterial(ShaderMaterial):
 
         shader = ShaderLib[typ]
 
-        fragmentShader = """
+        fragment_shader = """
         uniform float alpha;
         """
         frag_from = "gl_FragColor = vec4( outgoingLight, diffuseColor.a );"
@@ -291,17 +329,17 @@ class CustomMaterial(ShaderMaterial):
             } else {
                 gl_FragColor = vec4( diffuseColor.r, diffuseColor.g, diffuseColor.b, alpha * diffuseColor.a );
             }"""
-        fragmentShader += shader["fragmentShader"].replace(frag_from, frag_to)
+        fragment_shader += shader["fragmentShader"].replace(frag_from, frag_to)
 
-        vertexShader = shader["vertexShader"]
+        vertex_shader = shader["vertexShader"]
         uniforms = shader["uniforms"]
         uniforms["alpha"] = dict(value=0.7)
 
         ShaderMaterial.__init__(
             self,
             uniforms=uniforms,
-            vertexShader=vertexShader,
-            fragmentShader=fragmentShader,
+            vertexShader=vertex_shader,
+            fragmentShader=fragment_shader,
         )
         self.lights = True
 
@@ -378,8 +416,8 @@ class BoundingBox:
         bbox = Bnd_Box()
         bbox.SetGap(self.tol)
         brepbndlib_Add(obj, bbox, True)
-        values = bbox.Get()
-        return (values[0], values[3], values[1], values[4], values[2], values[5])
+        xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
+        return xmin, xmax, ymin, ymax, zmin, zmax
 
     def _bbox(self, objects):
         bb = reduce(_opt, [self._bounding_box(obj) for obj in objects])
@@ -416,7 +454,7 @@ class JupyterRenderer:
         size: a tuple (width, height). Must be a square, or shapes will look like deformed
         compute_normals_mode: optional, set to SERVER_SIDE by default. This flag lets you choose the
         way normals are computed. If SERVER_SIDE is selected (default value), then normals
-        will be computed by the Tesselator, packed as a python tuple, and send as a json structure
+        will be computed by the Tessellator, packed as a python tuple, and send as a json structure
         to the client. If, on the other hand, CLIENT_SIDE is chose, then the computer only compute vertex
         indices, and let the normals be computed by the client (the web js machine embedded in the webrowser).
 
@@ -448,6 +486,9 @@ class JupyterRenderer:
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
+        # the controller
+        self._controller = None
+
         # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes = {}
@@ -469,7 +510,9 @@ class JupyterRenderer:
         self._savestate = None
 
         self._selection_color = format_color(232, 176, 36)
+        self._current_selection_material_color = None
 
+        self.clicked_obj = None
         self._select_callbacks = (
             []
         )  # a list of all functions called after an object is selected
@@ -493,6 +536,7 @@ class JupyterRenderer:
             disabled=True,
         )
         self._shp_properties_button.observe(self.on_compute_change)
+
         self._remove_shp_button = self.create_button(
             "Remove",
             "Permanently remove the shape from the Scene",
@@ -509,6 +553,10 @@ class JupyterRenderer:
             self._toggle_shp_visibility_button,
             self._remove_shp_button,
         ]
+        self._axes = None
+        self._horizontal_grid = None
+        self._vertical_grid = None
+
         self.html = HTML("")
 
     def create_button(self, description, tooltip, disabled, handler):
@@ -625,11 +673,11 @@ class JupyterRenderer:
         self.clicked_obj.visible = not self.clicked_obj.visible
 
     def toggle_axes_visibility(self, change):
-        self.axes.set_visibility(_bool_or_new(change))
+        self._axes.set_visibility(_bool_or_new(change))
 
     def toggle_grid_visibility(self, change):
-        self.horizontal_grid.set_visibility(_bool_or_new(change))
-        self.vertical_grid.set_visibility(_bool_or_new(change))
+        self._horizontal_grid.set_visibility(_bool_or_new(change))
+        self._vertical_grid.set_visibility(_bool_or_new(change))
 
     def click(self, value):
         """called whenever a shape  or edge is clicked"""
@@ -677,15 +725,13 @@ class JupyterRenderer:
         """Adds a callback that will be called each time a shape is selected"""
         if not callable(callback):
             raise AssertionError("You must provide a callable to register the callback")
-        else:
-            self._select_callbacks.append(callback)
+        self._select_callbacks.append(callback)
 
     def unregister_callback(self, callback):
         """Remove a callback from the callback list"""
         if callback not in self._select_callbacks:
             raise AssertionError("This callback is not registered")
-        else:
-            self._select_callbacks.remove(callback)
+        self._select_callbacks.remove(callback)
 
     def GetSelectedShape(self):
         """Returns the selected shape"""
@@ -700,6 +746,9 @@ class JupyterRenderer:
         color="black",
         line_width=0.5,
     ):
+        if not HAVE_SVG:
+            print("svg export not available")
+            return False
         svg_string = export_shape_to_svg(
             shp,
             export_hidden_edges=export_hidden_edges,
@@ -712,6 +761,7 @@ class JupyterRenderer:
         )
         svg = SVG(data=svg_string)
         display(svg)
+        return True
 
     def DisplayShape(
         self,
@@ -807,13 +857,13 @@ class JupyterRenderer:
     def AddVerticesToScene(self, pnt_list, vertex_color, vertex_width=5):
         """shp is a list of gp_Pnt"""
         vertices_list = []  # will be passed to pythreejs
-        BB = BRep_Builder()
+        brp_bldr = BRep_Builder()
         compound = TopoDS_Compound()
-        BB.MakeCompound(compound)
+        brp_bldr.MakeCompound(compound)
 
         for vertex in pnt_list:
             vertex_to_add = BRepBuilderAPI_MakeVertex(vertex).Shape()
-            BB.Add(compound, vertex_to_add)
+            brp_bldr.Add(compound, vertex_to_add)
             vertices_list.append([vertex.X(), vertex.Y(), vertex.Z()])
 
         # map the Points and the AIS_PointCloud
@@ -953,7 +1003,6 @@ class JupyterRenderer:
         return new_vec
 
     def _material(self, color, transparent=False, opacity=1.0):
-        # material = MeshPhongMaterial()
         material = CustomMaterial("standard")
         material.color = color
         material.clipping = True
@@ -973,7 +1022,6 @@ class JupyterRenderer:
         self._displayed_pickable_objects = Group()
         self._current_shape_selection = None
         self._current_mesh_selection = None
-        self._current_selection_material = None
         self._renderer.scene = Scene(children=[])
 
     def Display(self, position=None, rotation=None):
@@ -1011,14 +1059,14 @@ class JupyterRenderer:
         ambient_light = AmbientLight(intensity=0.1)
 
         # Set up Helpers
-        self.axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
-        self.horizontal_grid = Grid(
+        self._axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
+        self._horizontal_grid = Grid(
             bb_center=self._bb.center,
             maximum=bb_max,
             colorCenterLine="#aaa",
             colorGrid="#ddd",
         )
-        self.vertical_grid = Grid(
+        self._vertical_grid = Grid(
             bb_center=self._bb.center,
             maximum=bb_max,
             colorCenterLine="#aaa",
@@ -1026,12 +1074,12 @@ class JupyterRenderer:
         )
         # Set up scene
         environment = (
-            self.axes.axes
+            self._axes.get_axes()
             + key_lights
             + [
                 ambient_light,
-                self.horizontal_grid.grid,
-                self.vertical_grid.grid,
+                self._horizontal_grid.grid,
+                self._vertical_grid.grid,
                 self._camera,
             ]
         )
@@ -1070,10 +1118,10 @@ class JupyterRenderer:
         )
 
         # set rotation and position for each grid
-        self.horizontal_grid.set_position((0, 0, 0))
-        self.horizontal_grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
+        self._horizontal_grid.set_position((0, 0, 0))
+        self._horizontal_grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
 
-        self.vertical_grid.set_position((0, -bb_max, 0))
+        self._vertical_grid.set_position((0, -bb_max, 0))
 
         self._savestate = (self._camera.rotation, self._controller.target)
 

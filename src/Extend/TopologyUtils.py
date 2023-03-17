@@ -20,10 +20,12 @@
 from typing import Any, Iterable, Iterator, List, Optional, Tuple
 
 from OCC.Core.BRep import BRep_Tool, BRep_Builder
+from OCC.Core.BRepCheck import BRepCheck_Analyzer
 from OCC.Core.BRepTools import BRepTools_WireExplorer
 from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_Projector
+from OCC.Core.ShapeFix import ShapeFix_Shape
 from OCC.Core.TopAbs import (
     TopAbs_VERTEX,
     TopAbs_EDGE,
@@ -670,6 +672,7 @@ def get_type_as_string(topods_shape: TopoDS_Shape) -> str:
         TopAbs_COMPOUND: "Compound",
         TopAbs_COMPSOLID: "CompSolid",
         TopAbs_SOLID: "Solid",
+        TopAbs_SHELL: "Shell",
     }
     return types[topods_shape.ShapeType()]
 
@@ -740,3 +743,23 @@ def list_of_shapes_to_compound(
             continue
         the_builder.Add(the_compound, shp)
     return the_compound, all_shapes_converted
+
+
+def check_shape(a_topods_shape, fix=True):
+    """check whether this is a valid shape, fix it if flag set to True"""
+    analyzer = BRepCheck_Analyzer(a_topods_shape)
+    is_valid = analyzer.IsValid()
+    fixed = None
+
+    if not is_valid and fix:
+        print("Detected invalid shape. Try to fix it...", end="")
+        sf = ShapeFix_Shape(a_topods_shape)
+        sf.Perform()
+        fixed = sf.Shape()
+        fixed_is_valid = BRepCheck_Analyzer(fixed).IsValid()
+        if fixed_is_valid:
+            print("fixed.")
+        else:
+            print(" fix failed.")
+
+    return is_valid, fixed

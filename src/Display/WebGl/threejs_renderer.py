@@ -30,7 +30,6 @@ from OCC.Display.WebGl.simple_server import start_server
 
 THREEJS_RELEASE = "r148"
 
-
 def spinning_cursor():
     while True:
         for cursor in "|/-\\":
