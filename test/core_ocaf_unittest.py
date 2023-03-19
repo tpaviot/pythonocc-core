@@ -59,13 +59,13 @@ class TestOCAF(unittest.TestCase):
     def test_create_doc(self) -> None:
         """Creates an OCAF app and an empty document"""
         # create an handle to a document
-        doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
+        doc = TDocStd_Document("MDTV-CAF")
         self.assertFalse(doc is None)
 
     def test_write_step_file(self) -> None:
         """Exports a colored box into a STEP file"""
         ### initialisation
-        doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
+        doc = TDocStd_Document("pythonocc-doc")
         self.assertTrue(doc is not None)
 
         # Get root assembly
@@ -92,7 +92,7 @@ class TestOCAF(unittest.TestCase):
     def test_read_step_file(self) -> None:
         """Reads the previous step file"""
         # create an handle to a document
-        doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
+        doc = TDocStd_Document("pythonocc-doc")
         # Get root assembly
         shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
         l_colors = XCAFDoc_DocumentTool.ColorTool(doc.Main())
@@ -125,7 +125,7 @@ class TestOCAF(unittest.TestCase):
 
     def test_read_step_material(self) -> None:
         # create an handle to a document
-        doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
+        doc = TDocStd_Document("pythonocc-doc")
 
         # Get root assembly
         shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
