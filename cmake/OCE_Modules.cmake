@@ -37,169 +37,169 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	gp
 	math
 # TKBRep
-	TopoDS
-	TopExp
-	TopTools
 	BRep
-	BRepLProp
 	BRepAdaptor
+	BRepLProp
 	BRepTools
 	BinTools
+	TopExp
+	TopTools
+	TopoDS
 # TKG2d
-	Geom2d
-	LProp
-	TColGeom2d
 	Adaptor2d
-	Geom2dLProp
+	Geom2d
 	Geom2dAdaptor
 	Geom2dEvaluator
+	Geom2dLProp
+	LProp
+	TColGeom2d
 # TKG3d
-	Geom
-	GProp
-	TColGeom
-	GeomAdaptor
-	AdvApprox
-	GeomLProp
 	Adaptor3d
-	LProp3d
-	TopAbs
+	AdvApprox
+	GProp
+	Geom
+	GeomAdaptor
 	GeomEvaluator
+	GeomLProp
+	LProp3d
+	TColGeom
+	TopAbs
 # TKGeomBase
-	ProjLib
-	GeomProjLib
-	GCPnts
-	CPnts
-	Approx
-	AppParCurves
-	FEmTool
-	AppCont
-	Extrema
-	IntAna
-	IntAna2d
-	GeomConvert
 	AdvApp2Var
-	GeomLib
-	Geom2dConvert
-	Hermit
-	BndLib
+	AppCont
 	AppDef
-	GeomTools
+	AppParCurves
+	Approx
+	BndLib
+	CPnts
+	Extrema
+	FEmTool
 	GC
 	GCE2d
+	GCPnts
+	Geom2dConvert
+	GeomConvert
+	GeomLib
+	GeomProjLib
+	GeomTools
+	Hermit
+	IntAna
+	IntAna2d
+	ProjLib
 	gce
 # TKBO
-	IntTools
-	BRepAlgoAPI
-	BOPDS
 	BOPAlgo
+	BOPDS
 	BOPTools
+	BRepAlgoAPI
+	IntTools
 # TKBool
-	TopOpeBRep
-	TopOpeBRepDS
-	TopOpeBRepBuild
-	TopOpeBRepTool
 	BRepAlgo
 	BRepFill
 	BRepProj
+	TopOpeBRep
+	TopOpeBRepBuild
+	TopOpeBRepDS
+	TopOpeBRepTool
 # TKFeat
-	LocOpe
 	BRepFeat
+	LocOpe
 # TKFillet
-	ChFiDS
+	BRepBlend
+	BRepFilletAPI
+	Blend
+	BlendFunc
 	ChFi2d
 	ChFi3d
+	ChFiDS
 	ChFiKPart
-	Blend
-	BRepBlend
-	BlendFunc
-	BRepFilletAPI
 	FilletSurf
 # TKGeomAlgo
-	Hatch
-	GeomInt
-	IntStart
-	IntWalk
-	IntImp
-	IntCurveSurface
-	IntSurf
-	IntPatch
-	Geom2dInt
-	IntImpParGen
-	IntRes2d
-	IntCurve
-	TopTrans
-	Intf
+	AppBlend
 	ApproxInt
+	FairCurve
 	GccAna
 	GccEnt
 	GccInt
-	HatchGen
-	Geom2dHatch
-	Law
-	AppBlend
-	Plate
-	GeomPlate
-	LocalAnalysis
-	GeomAPI
-	GeomFill
 	Geom2dAPI
 	Geom2dGcc
-	FairCurve
-	NLPlate
+	Geom2dHatch
+	Geom2dInt
+	GeomAPI
+	GeomFill
+	GeomInt
+	GeomPlate
+	Hatch
+	HatchGen
+	IntCurve
+	IntCurveSurface
+	IntImp
+	IntImpParGen
+	IntPatch
 	IntPolyh
+	IntRes2d
+	IntStart
+	IntSurf
+	IntWalk
+	Intf
+	Law
+	LocalAnalysis
+	NLPlate
+	Plate
 	TopClass
+	TopTrans
 # TKHLR
-	HLRTopoBRep
-	HLRBRep
+	Contap
 	HLRAlgo
 	HLRAppli
+	HLRBRep
+	HLRTopoBRep
 	Intrv
 	TopBas
 	TopCnx
-	Contap
 # TKMesh
 	BRepMesh
 	BRepMeshData
-	IMeshTools
 	IMeshData
+	IMeshTools
 # TKOffset
-	BRepOffsetAPI
-	Draft
 	BRepOffset
+	BRepOffsetAPI
 	BiTgte
+	Draft
 # TKPrim
 	BRepPrim
+	BRepPrimAPI
 	BRepSweep
 	Sweep
-	BRepPrimAPI
 # TKShHealing
+	ShapeAlgo
+	ShapeAnalysis
 	ShapeBuild
-	ShapeExtend
 	ShapeConstruct
 	ShapeCustom
-	ShapeAnalysis
+	ShapeExtend
 	ShapeFix
-	ShapeUpgrade
-	ShapeAlgo
 	ShapeProcess
 	ShapeProcessAPI
+	ShapeUpgrade
 # TKTopAlgo
+	BRepApprox
+	BRepBndLib
+	BRepBuilderAPI
+	BRepCheck
+	BRepClass
+	BRepClass3d
+	BRepExtrema
+	BRepGProp
+	BRepIntCurveSurface
+	BRepLib
+	BRepMAT2d
+	BRepTopAdaptor
+	Bisector
 	IntCurvesFace
 	MAT
 	MAT2d
-	Bisector
-	BRepMAT2d
-	BRepCheck
-	BRepBndLib
-	BRepExtrema
-	BRepClass
-	BRepClass3d
-	BRepLib
-	BRepGProp
-	BRepIntCurveSurface
-	BRepTopAdaptor
-	BRepBuilderAPI
-	BRepApprox
 # TKXMesh
 	XBRepMesh
 )
@@ -232,8 +232,8 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
 LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 
 # TKBinXCAF
-	BinXCAFDrivers
 	BinMXCAFDoc
+	BinXCAFDrivers
 # TKIGES
 	IGESControl
 	IGESData
@@ -241,25 +241,24 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 # TKRWMesh
 	RWGltf
 	RWObj
-	RWPly
 	RWMesh
+	RWPly
 # TKSTEP
-	StepAP214
-	RWStepAP214
-	StepAP203
-	RWStepAP203
-	STEPConstruct
-	STEPEdit
 	GeomToStep
+	RWStepAP203
+	RWStepAP214
+	RWStepAP242
+	STEPConstruct
+	STEPControl
+	StepKinematicsSTEPEdit
+	STEPSelections
+	StepAP203
+	StepAP209
+	StepAP214
+	StepAP242
 	StepToGeom
 	StepToTopoDS
-	StepKinematics
 	TopoDSToStep
-	STEPControl
-	STEPSelections
-	StepAP209
-	RWStepAP242
-	StepAP242
 # TKSTEP209
 	RWStepElement
 	RWStepFEA
@@ -271,18 +270,17 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	StepDimTol
 	StepVisual
 # TKSTEPBase
-	StepBasic
 	RWStepBasic
-	StepRepr
-	RWStepRepr
-	StepGeom
 	RWStepGeom
-	StepShape
+	RWStepRepr
 	RWStepShape
-	StepData
+	StepBasic
+	StepGeom
+	StepRepr
+	StepShape
 # TKSTL
-	StlAPI
 	RWStl
+	StlAPI
 # TKVRML
 	Vrml
 	VrmlAPI
@@ -292,9 +290,9 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	XCAFApp
 	XCAFDimTolObjects
 	XCAFDoc
+	XCAFNoteObjects
 	XCAFPrs
 	XCAFView
-	XCAFNoteObjects
 # TKXDEIGES
 	IGESCAFControl
 # TKXDESTEP
@@ -306,12 +304,13 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	Transfer
 	TransferBRep
 	MoniTool
+	StepData
 	HeaderSection
-    RWHeaderSection
-    APIHeaderSection
+	RWHeaderSection
+	APIHeaderSection
 # TKXmlXCAF
-	XmlXCAFDrivers
 	XmlMXCAFDoc
+	XmlXCAFDrivers
 )
 
 LIST(APPEND OCE_TOOLKIT_OCAF
