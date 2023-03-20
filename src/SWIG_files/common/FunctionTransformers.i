@@ -24,8 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
-#include <codecvt>
-#include <string>
 %}
 
 %include <typemaps.i>
@@ -58,9 +56,8 @@ TCollection_ExtendedString parameter transformation
     $1 = PyUnicode_Check($input) ? 1 : 0;
 }
 %typemap(out) TCollection_ExtendedString {
-    std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
-    std::string temp = convert.to_bytes($1.ToExtString());
-    $result = PyUnicode_FromString(temp.c_str());
+    // convert the TCollection_ExtendedString to TCollection_AsciiString
+    $result = PyUnicode_FromString(TCollection_AsciiString($1).ToCString());
 }
 
 /*
