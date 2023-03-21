@@ -266,8 +266,10 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	StepFEA
 # TKSTEPAttr
 	RWStepDimTol
+	RWStepKinematics
 	RWStepVisual
 	StepDimTol
+	StepKinematics
 	StepVisual
 # TKSTEPBase
 	StepBasic
