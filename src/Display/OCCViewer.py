@@ -59,7 +59,6 @@ from OCC.Core.V3d import (
     V3d_Yneg,
     V3d_XposYnegZpos,
 )
-from OCC.Core.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Core.Quantity import (
     Quantity_Color,
     Quantity_TOC_RGB,
@@ -138,10 +137,6 @@ def get_color_from_name(color_name):
         color_num = Quantity_NOC_WHITE
         print("Color name not defined. Use White by default")
     return Quantity_Color(color_num)
-
-
-def to_string(_string):
-    return TCollection_ExtendedString(_string)
 
 
 # some thing we'll need later
@@ -465,9 +460,7 @@ class Viewer3d(Display3d):
         if isinstance(point, gp_Pnt2d):
             point = gp_Pnt(point.X(), point.Y(), 0)
 
-        Prs3d_Text.Draw(
-            aStructure.CurrentGroup(), text_aspect, to_string(text_to_write), point
-        )
+        Prs3d_Text.Draw(aStructure.CurrentGroup(), text_aspect, text_to_write, point)
         aStructure.Display()
         # @TODO: it would be more coherent if a AIS_InteractiveObject
         # is be returned
@@ -524,9 +517,7 @@ class Viewer3d(Display3d):
                         originU,
                         originV,
                     ) = texture.GetProperties()
-                    shape_to_display.SetTextureFileName(
-                        TCollection_AsciiString(filename)
-                    )
+                    shape_to_display.SetTextureFileName(filename)
                     shape_to_display.SetTextureMapOn()
                     shape_to_display.SetTextureScale(True, toScaleU, toScaleV)
                     shape_to_display.SetTextureRepeat(True, toRepeatU, toRepeatV)

@@ -127,13 +127,13 @@ None
 
 Parameters
 ----------
-message: char *
+message: str
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const char * message);
+		 TCollection_AsciiString(Standard_CString message);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 0b4a61cbc31c5148ac8c8884319000a8 ****/
@@ -142,14 +142,14 @@ None
 
 Parameters
 ----------
-message: char *
+message: str
 aLen: int
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const char * message, const Standard_Integer aLen);
+		 TCollection_AsciiString(Standard_CString message, const Standard_Integer aLen);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: c76f9a4d7837e8df9d9d777686c286ad ****/
@@ -219,13 +219,13 @@ None
 
 Parameters
 ----------
-astring: TCollection_AsciiString
+astring: str
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const TCollection_AsciiString & astring);
+		 TCollection_AsciiString(TCollection_AsciiString astring);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 77b3f342a0e7402e7425759425c20ae9 ****/
@@ -234,7 +234,7 @@ None
 
 Parameters
 ----------
-theOther: TCollection_AsciiString
+theOther: str
 
 Returns
 -------
@@ -249,14 +249,14 @@ None
 
 Parameters
 ----------
-astring: TCollection_AsciiString
+astring: str
 message: Standard_Character
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const TCollection_AsciiString & astring, const Standard_Character message);
+		 TCollection_AsciiString(TCollection_AsciiString astring, const Standard_Character message);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 44c9f121d97b6fb21cd7dad01b6b7a8c ****/
@@ -265,14 +265,14 @@ None
 
 Parameters
 ----------
-astring: TCollection_AsciiString
-message: char *
+astring: str
+message: str
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const TCollection_AsciiString & astring, const char * message);
+		 TCollection_AsciiString(TCollection_AsciiString astring, Standard_CString message);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: bb44c125f566bd0a6db18f2d65d50b07 ****/
@@ -281,14 +281,14 @@ None
 
 Parameters
 ----------
-astring: TCollection_AsciiString
-message: TCollection_AsciiString
+astring: str
+message: str
 
 Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const TCollection_AsciiString & astring, const TCollection_AsciiString & message);
+		 TCollection_AsciiString(TCollection_AsciiString astring, TCollection_AsciiString message);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 31b9469f567d9991529cd4b23f00ac83 ****/
@@ -297,7 +297,7 @@ None
 
 Parameters
 ----------
-astring: TCollection_ExtendedString
+astring: str
 replaceNonAscii: Standard_Character,optional
 	default value is 0
 
@@ -305,7 +305,7 @@ Returns
 -------
 None
 ") TCollection_AsciiString;
-		 TCollection_AsciiString(const TCollection_ExtendedString & astring, const Standard_Character replaceNonAscii = 0);
+		 TCollection_AsciiString(TCollection_ExtendedString astring, const Standard_Character replaceNonAscii = 0);
 
 		/****************** TCollection_AsciiString ******************/
 		/**** md5 signature: 46a263c7e61324a58d93619d06999b79 ****/
@@ -374,13 +374,13 @@ None
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 None
 ") AssignCat;
-		void AssignCat(const char * other);
+		void AssignCat(Standard_CString other);
 
 		/****************** AssignCat ******************/
 		/**** md5 signature: 12a811c23be8ca554c4c1787ef331f49 ****/
@@ -389,13 +389,13 @@ None
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 None
 ") AssignCat;
-		void AssignCat(const TCollection_AsciiString & other);
+		void AssignCat(TCollection_AsciiString other);
 
 		/****************** Capitalize ******************/
 		/**** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ****/
@@ -460,13 +460,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 TCollection_AsciiString
 ") Cat;
-		TCollection_AsciiString Cat(const char * other);
+		TCollection_AsciiString Cat(Standard_CString other);
 
 		/****************** Cat ******************/
 		/**** md5 signature: d1cb84236f8c7dbaf11738768fd665c5 ****/
@@ -475,13 +475,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 TCollection_AsciiString
 ") Cat;
-		TCollection_AsciiString Cat(const TCollection_AsciiString & other);
+		TCollection_AsciiString Cat(TCollection_AsciiString other);
 
 		/****************** Center ******************/
 		/**** md5 signature: 2b5029e050de2f7db9db4538a961c189 ****/
@@ -535,13 +535,13 @@ None
 
 Parameters
 ----------
-fromwhere: char *
+fromwhere: str
 
 Returns
 -------
 None
 ") Copy;
-		void Copy(const char * fromwhere);
+		void Copy(Standard_CString fromwhere);
 
 		/****************** Copy ******************/
 		/**** md5 signature: f86e884387420e2c343398e6f0d1e0e6 ****/
@@ -550,13 +550,13 @@ None
 
 Parameters
 ----------
-fromwhere: TCollection_AsciiString
+fromwhere: str
 
 Returns
 -------
 None
 ") Copy;
-		void Copy(const TCollection_AsciiString & fromwhere);
+		void Copy(TCollection_AsciiString fromwhere);
 
 		/****************** EndsWith ******************/
 		/**** md5 signature: 14b6bb9d2f7c65ed6e9fb15a44705817 ****/
@@ -565,13 +565,13 @@ None
 
 Parameters
 ----------
-theEndString: TCollection_AsciiString
+theEndString: str
 
 Returns
 -------
 bool
 ") EndsWith;
-		Standard_Boolean EndsWith(const TCollection_AsciiString & theEndString);
+		Standard_Boolean EndsWith(TCollection_AsciiString theEndString);
 
 		/****************** FirstLocationInSet ******************/
 		/**** md5 signature: 95e8a699938630e9f642f2b7637f974c ****/
@@ -580,7 +580,7 @@ bool
 
 Parameters
 ----------
-Set: TCollection_AsciiString
+Set: str
 FromIndex: int
 ToIndex: int
 
@@ -588,7 +588,7 @@ Returns
 -------
 int
 ") FirstLocationInSet;
-		Standard_Integer FirstLocationInSet(const TCollection_AsciiString & Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
+		Standard_Integer FirstLocationInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
 		/****************** FirstLocationNotInSet ******************/
 		/**** md5 signature: cd3e9292963c2e9cbccef2a16bba30d8 ****/
@@ -597,7 +597,7 @@ int
 
 Parameters
 ----------
-Set: TCollection_AsciiString
+Set: str
 FromIndex: int
 ToIndex: int
 
@@ -605,7 +605,7 @@ Returns
 -------
 int
 ") FirstLocationNotInSet;
-		Standard_Integer FirstLocationNotInSet(const TCollection_AsciiString & Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
+		Standard_Integer FirstLocationNotInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
 		/****************** HashCode ******************/
 		/**** md5 signature: e2da36afc8f40403f8d6004d8f435bb2 ****/
@@ -614,14 +614,14 @@ int
 
 Parameters
 ----------
-theAsciiString: TCollection_AsciiString
+theAsciiString: str
 theUpperBound: int
 
 Returns
 -------
 int
 ") HashCode;
-		static Standard_Integer HashCode(const TCollection_AsciiString & theAsciiString, Standard_Integer theUpperBound);
+		static Standard_Integer HashCode(TCollection_AsciiString theAsciiString, Standard_Integer theUpperBound);
 
 		/****************** Insert ******************/
 		/**** md5 signature: 7904375fda1b58849d10a2c96c86615b ****/
@@ -647,13 +647,13 @@ None
 Parameters
 ----------
 where: int
-what: char *
+what: str
 
 Returns
 -------
 None
 ") Insert;
-		void Insert(const Standard_Integer where, const char * what);
+		void Insert(const Standard_Integer where, Standard_CString what);
 
 		/****************** Insert ******************/
 		/**** md5 signature: 594a8d885f4dcbedf56a6f6f1a4b4fb3 ****/
@@ -663,13 +663,13 @@ None
 Parameters
 ----------
 where: int
-what: TCollection_AsciiString
+what: str
 
 Returns
 -------
 None
 ") Insert;
-		void Insert(const Standard_Integer where, const TCollection_AsciiString & what);
+		void Insert(const Standard_Integer where, TCollection_AsciiString what);
 
 		/****************** InsertAfter ******************/
 		/**** md5 signature: 54235567163d784600660f2242e1209d ****/
@@ -679,13 +679,13 @@ None
 Parameters
 ----------
 Index: int
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 None
 ") InsertAfter;
-		void InsertAfter(const Standard_Integer Index, const TCollection_AsciiString & other);
+		void InsertAfter(const Standard_Integer Index, TCollection_AsciiString other);
 
 		/****************** InsertBefore ******************/
 		/**** md5 signature: 5a9fdac4a173310f1deb7c408e2944be ****/
@@ -695,13 +695,13 @@ None
 Parameters
 ----------
 Index: int
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 None
 ") InsertBefore;
-		void InsertBefore(const Standard_Integer Index, const TCollection_AsciiString & other);
+		void InsertBefore(const Standard_Integer Index, TCollection_AsciiString other);
 
 		/****************** IntegerValue ******************/
 		/**** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ****/
@@ -732,13 +732,13 @@ bool
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 bool
 ") IsDifferent;
-		Standard_Boolean IsDifferent(const char * other);
+		Standard_Boolean IsDifferent(Standard_CString other);
 
 		/****************** IsDifferent ******************/
 		/**** md5 signature: 468bebc984675a3b3d0a634f51ab1605 ****/
@@ -747,13 +747,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 bool
 ") IsDifferent;
-		Standard_Boolean IsDifferent(const TCollection_AsciiString & other);
+		Standard_Boolean IsDifferent(TCollection_AsciiString other);
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
@@ -773,13 +773,13 @@ bool
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const char * other);
+		Standard_Boolean IsEqual(Standard_CString other);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 193e634776bafa3e4f441e6722a21399 ****/
@@ -788,13 +788,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const TCollection_AsciiString & other);
+		Standard_Boolean IsEqual(TCollection_AsciiString other);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 5a9ec37f0ad7ada730b5d2dffb3c24c7 ****/
@@ -803,14 +803,14 @@ bool
 
 Parameters
 ----------
-string1: TCollection_AsciiString
-string2: TCollection_AsciiString
+string1: str
+string2: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		static Standard_Boolean IsEqual(const TCollection_AsciiString & string1, const TCollection_AsciiString & string2);
+		static Standard_Boolean IsEqual(TCollection_AsciiString string1, TCollection_AsciiString string2);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 7c609f6832978b47418a4e8af7502c2f ****/
@@ -819,14 +819,14 @@ bool
 
 Parameters
 ----------
-string1: TCollection_AsciiString
-string2: char *
+string1: str
+string2: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		static Standard_Boolean IsEqual(const TCollection_AsciiString & string1, const char * string2);
+		static Standard_Boolean IsEqual(TCollection_AsciiString string1, Standard_CString string2);
 
 		/****************** IsGreater ******************/
 		/**** md5 signature: d66794d426c77c31bfa16e28bf61d9a1 ****/
@@ -835,13 +835,13 @@ bool
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 bool
 ") IsGreater;
-		Standard_Boolean IsGreater(const char * other);
+		Standard_Boolean IsGreater(Standard_CString other);
 
 		/****************** IsGreater ******************/
 		/**** md5 signature: c1f84b8c3d802188b31dd64562f94b92 ****/
@@ -850,13 +850,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 bool
 ") IsGreater;
-		Standard_Boolean IsGreater(const TCollection_AsciiString & other);
+		Standard_Boolean IsGreater(TCollection_AsciiString other);
 
 		/****************** IsIntegerValue ******************/
 		/**** md5 signature: 621b664205e9bc7af1bfe940b363e7dc ****/
@@ -876,13 +876,13 @@ bool
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 bool
 ") IsLess;
-		Standard_Boolean IsLess(const char * other);
+		Standard_Boolean IsLess(Standard_CString other);
 
 		/****************** IsLess ******************/
 		/**** md5 signature: 8f3421d6aef0b4f85432c3254bb3b2b8 ****/
@@ -891,13 +891,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 bool
 ") IsLess;
-		Standard_Boolean IsLess(const TCollection_AsciiString & other);
+		Standard_Boolean IsLess(TCollection_AsciiString other);
 
 		/****************** IsRealValue ******************/
 		/**** md5 signature: 3455e68cf132006275afbfe41b3e332b ****/
@@ -922,15 +922,15 @@ bool
 
 Parameters
 ----------
-theString1: TCollection_AsciiString
-theString2: TCollection_AsciiString
+theString1: str
+theString2: str
 theIsCaseSensitive: bool
 
 Returns
 -------
 bool
 ") IsSameString;
-		static Standard_Boolean IsSameString(const TCollection_AsciiString & theString1, const TCollection_AsciiString & theString2, const Standard_Boolean theIsCaseSensitive);
+		static Standard_Boolean IsSameString(TCollection_AsciiString theString1, TCollection_AsciiString theString2, const Standard_Boolean theIsCaseSensitive);
 
 		/****************** LeftAdjust ******************/
 		/**** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ****/
@@ -977,7 +977,7 @@ int
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 FromIndex: int
 ToIndex: int
 
@@ -985,7 +985,7 @@ Returns
 -------
 int
 ") Location;
-		Standard_Integer Location(const TCollection_AsciiString & other, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
+		Standard_Integer Location(TCollection_AsciiString other, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
 		/****************** Location ******************/
 		/**** md5 signature: 6bebd5959426436339306c497d79377d ****/
@@ -1023,13 +1023,13 @@ None
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 None
 ") Prepend;
-		void Prepend(const TCollection_AsciiString & other);
+		void Prepend(TCollection_AsciiString other);
 
 
         %feature("autodoc", "1");
@@ -1139,13 +1139,13 @@ None
 
 Parameters
 ----------
-what: char *
+what: str
 
 Returns
 -------
 int
 ") Search;
-		Standard_Integer Search(const char * what);
+		Standard_Integer Search(Standard_CString what);
 
 		/****************** Search ******************/
 		/**** md5 signature: 77f3592dabaaab77a5508c4516e7237d ****/
@@ -1154,13 +1154,13 @@ int
 
 Parameters
 ----------
-what: TCollection_AsciiString
+what: str
 
 Returns
 -------
 int
 ") Search;
-		Standard_Integer Search(const TCollection_AsciiString & what);
+		Standard_Integer Search(TCollection_AsciiString what);
 
 		/****************** SearchFromEnd ******************/
 		/**** md5 signature: 001f750966fbbafd950bf1f5cadf23d9 ****/
@@ -1169,13 +1169,13 @@ int
 
 Parameters
 ----------
-what: char *
+what: str
 
 Returns
 -------
 int
 ") SearchFromEnd;
-		Standard_Integer SearchFromEnd(const char * what);
+		Standard_Integer SearchFromEnd(Standard_CString what);
 
 		/****************** SearchFromEnd ******************/
 		/**** md5 signature: 9cad9172f6139d357df95e50cc4809e0 ****/
@@ -1184,13 +1184,13 @@ int
 
 Parameters
 ----------
-what: TCollection_AsciiString
+what: str
 
 Returns
 -------
 int
 ") SearchFromEnd;
-		Standard_Integer SearchFromEnd(const TCollection_AsciiString & what);
+		Standard_Integer SearchFromEnd(TCollection_AsciiString what);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: b8dea7704af78fd9353092eed090171d ****/
@@ -1216,13 +1216,13 @@ None
 Parameters
 ----------
 where: int
-what: char *
+what: str
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const Standard_Integer where, const char * what);
+		void SetValue(const Standard_Integer where, Standard_CString what);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: e6cb739e16de0638799cbe91a77da04f ****/
@@ -1232,13 +1232,13 @@ None
 Parameters
 ----------
 where: int
-what: TCollection_AsciiString
+what: str
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const Standard_Integer where, const TCollection_AsciiString & what);
+		void SetValue(const Standard_Integer where, TCollection_AsciiString what);
 
 		/****************** Split ******************/
 		/**** md5 signature: 678d31683435e0d43e651b472354ee3f ****/
@@ -1262,13 +1262,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-theStartString: TCollection_AsciiString
+theStartString: str
 
 Returns
 -------
 bool
 ") StartsWith;
-		Standard_Boolean StartsWith(const TCollection_AsciiString & theStartString);
+		Standard_Boolean StartsWith(TCollection_AsciiString theStartString);
 
 		/****************** SubString ******************/
 		/**** md5 signature: df1c60951852a984d8317f5b29c25f99 ****/
@@ -1293,7 +1293,7 @@ TCollection_AsciiString
 
 Parameters
 ----------
-theOther: TCollection_AsciiString
+theOther: str
 
 Returns
 -------
@@ -1308,9 +1308,9 @@ None
 
 Returns
 -------
-char *
+str
 ") ToCString;
-		const char * ToCString();
+		Standard_CString ToCString();
 
 		/****************** Token ******************/
 		/**** md5 signature: 5c85538c5fc09bfcc1992f1c8c5c9d18 ****/
@@ -1319,7 +1319,7 @@ char *
 
 Parameters
 ----------
-separators: char *,optional
+separators: str,optional
 	default value is '\t'
 whichone: int,optional
 	default value is 1
@@ -1328,7 +1328,7 @@ Returns
 -------
 TCollection_AsciiString
 ") Token;
-		TCollection_AsciiString Token(const char * separators = "\t", const Standard_Integer whichone = 1);
+		TCollection_AsciiString Token(Standard_CString separators = "\t", const Standard_Integer whichone = 1);
 
 		/****************** Trunc ******************/
 		/**** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ****/
@@ -1462,13 +1462,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 TCollection_AsciiString
 ") operator +;
-		TCollection_AsciiString operator +(const char * other);
+		TCollection_AsciiString operator +(Standard_CString other);
 
 		/****************** operator + ******************/
 		/**** md5 signature: d6838314a8c2c0a320cde4fcaee86022 ****/
@@ -1477,13 +1477,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-other: TCollection_AsciiString
+other: str
 
 Returns
 -------
 TCollection_AsciiString
 ") operator +;
-		TCollection_AsciiString operator +(const TCollection_AsciiString & other);
+		TCollection_AsciiString operator +(TCollection_AsciiString other);
 
 
             %extend{
@@ -1600,7 +1600,7 @@ None
 
 Parameters
 ----------
-astring: char *
+astring: str
 isMultiByte: bool,optional
 	default value is Standard_False
 
@@ -1608,7 +1608,7 @@ Returns
 -------
 None
 ") TCollection_ExtendedString;
-		 TCollection_ExtendedString(const char * astring, const Standard_Boolean isMultiByte = Standard_False);
+		 TCollection_ExtendedString(Standard_CString astring, const Standard_Boolean isMultiByte = Standard_False);
 
 		/****************** TCollection_ExtendedString ******************/
 		/**** md5 signature: 32794e06c591ca0c74dea31f9c707296 ****/
@@ -1723,13 +1723,13 @@ None
 
 Parameters
 ----------
-astring: TCollection_ExtendedString
+astring: str
 
 Returns
 -------
 None
 ") TCollection_ExtendedString;
-		 TCollection_ExtendedString(const TCollection_ExtendedString & astring);
+		 TCollection_ExtendedString(TCollection_ExtendedString astring);
 
 		/****************** TCollection_ExtendedString ******************/
 		/**** md5 signature: 48db9560fec5e00cc0d2840716162fbf ****/
@@ -1738,7 +1738,7 @@ None
 
 Parameters
 ----------
-theOther: TCollection_ExtendedString
+theOther: str
 
 Returns
 -------
@@ -1753,7 +1753,7 @@ None
 
 Parameters
 ----------
-astring: TCollection_AsciiString
+astring: str
 isMultiByte: bool,optional
 	default value is Standard_True
 
@@ -1761,7 +1761,7 @@ Returns
 -------
 None
 ") TCollection_ExtendedString;
-		 TCollection_ExtendedString(const TCollection_AsciiString & astring, const Standard_Boolean isMultiByte = Standard_True);
+		 TCollection_ExtendedString(TCollection_AsciiString astring, const Standard_Boolean isMultiByte = Standard_True);
 
 		/****************** AssignCat ******************/
 		/**** md5 signature: 290473b12be80aeece2f43cf57b4b8c9 ****/
@@ -1770,13 +1770,13 @@ None
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 None
 ") AssignCat;
-		void AssignCat(const TCollection_ExtendedString & other);
+		void AssignCat(TCollection_ExtendedString other);
 
 		/****************** AssignCat ******************/
 		/**** md5 signature: af9511f20ca65b8d1031666c6ec91c33 ****/
@@ -1800,13 +1800,13 @@ None
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") Cat;
-		TCollection_ExtendedString Cat(const TCollection_ExtendedString & other);
+		TCollection_ExtendedString Cat(TCollection_ExtendedString other);
 
 		/****************** ChangeAll ******************/
 		/**** md5 signature: 172cbf77fdcbc202d23ddaed833764da ****/
@@ -1842,13 +1842,13 @@ None
 
 Parameters
 ----------
-fromwhere: TCollection_ExtendedString
+fromwhere: str
 
 Returns
 -------
 None
 ") Copy;
-		void Copy(const TCollection_ExtendedString & fromwhere);
+		void Copy(TCollection_ExtendedString fromwhere);
 
 		/****************** EndsWith ******************/
 		/**** md5 signature: 9634325ac41bffcbae04aa4d3f34465a ****/
@@ -1857,13 +1857,13 @@ None
 
 Parameters
 ----------
-theEndString: TCollection_ExtendedString
+theEndString: str
 
 Returns
 -------
 bool
 ") EndsWith;
-		Standard_Boolean EndsWith(const TCollection_ExtendedString & theEndString);
+		Standard_Boolean EndsWith(TCollection_ExtendedString theEndString);
 
 		/****************** HashCode ******************/
 		/**** md5 signature: a6589c5513a379021f17112f206c8ccb ****/
@@ -1872,14 +1872,14 @@ bool
 
 Parameters
 ----------
-theString: TCollection_ExtendedString
+theString: str
 theUpperBound: int
 
 Returns
 -------
 int
 ") HashCode;
-		static Standard_Integer HashCode(const TCollection_ExtendedString & theString, const Standard_Integer theUpperBound);
+		static Standard_Integer HashCode(TCollection_ExtendedString theString, const Standard_Integer theUpperBound);
 
 		/****************** Insert ******************/
 		/**** md5 signature: 0697ac1ff05f55e6371b2412e6df94e9 ****/
@@ -1905,13 +1905,13 @@ None
 Parameters
 ----------
 where: int
-what: TCollection_ExtendedString
+what: str
 
 Returns
 -------
 None
 ") Insert;
-		void Insert(const Standard_Integer where, const TCollection_ExtendedString & what);
+		void Insert(const Standard_Integer where, TCollection_ExtendedString what);
 
 		/****************** IsAscii ******************/
 		/**** md5 signature: 6f7276b908dd6009ce0fd19db811821c ****/
@@ -1946,13 +1946,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 bool
 ") IsDifferent;
-		Standard_Boolean IsDifferent(const TCollection_ExtendedString & other);
+		Standard_Boolean IsDifferent(TCollection_ExtendedString other);
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
@@ -1987,13 +1987,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const TCollection_ExtendedString & other);
+		Standard_Boolean IsEqual(TCollection_ExtendedString other);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 129ad9f997bed3d3858413785264e2f1 ****/
@@ -2002,14 +2002,14 @@ bool
 
 Parameters
 ----------
-theString1: TCollection_ExtendedString
-theString2: TCollection_ExtendedString
+theString1: str
+theString2: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		static Standard_Boolean IsEqual(const TCollection_ExtendedString & theString1, const TCollection_ExtendedString & theString2);
+		static Standard_Boolean IsEqual(TCollection_ExtendedString theString1, TCollection_ExtendedString theString2);
 
 		/****************** IsGreater ******************/
 		/**** md5 signature: 5cf9ca773a20caca0e06fa958481d2e9 ****/
@@ -2033,13 +2033,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 bool
 ") IsGreater;
-		Standard_Boolean IsGreater(const TCollection_ExtendedString & other);
+		Standard_Boolean IsGreater(TCollection_ExtendedString other);
 
 		/****************** IsLess ******************/
 		/**** md5 signature: c2cee3699b5b2477e673c526cc7fc7c3 ****/
@@ -2063,13 +2063,13 @@ bool
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 bool
 ") IsLess;
-		Standard_Boolean IsLess(const TCollection_ExtendedString & other);
+		Standard_Boolean IsLess(TCollection_ExtendedString other);
 
 		/****************** Length ******************/
 		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
@@ -2140,13 +2140,13 @@ None
 
 Parameters
 ----------
-what: TCollection_ExtendedString
+what: str
 
 Returns
 -------
 int
 ") Search;
-		Standard_Integer Search(const TCollection_ExtendedString & what);
+		Standard_Integer Search(TCollection_ExtendedString what);
 
 		/****************** SearchFromEnd ******************/
 		/**** md5 signature: b2afedfb1f65543f0e0888d888f00218 ****/
@@ -2155,13 +2155,13 @@ int
 
 Parameters
 ----------
-what: TCollection_ExtendedString
+what: str
 
 Returns
 -------
 int
 ") SearchFromEnd;
-		Standard_Integer SearchFromEnd(const TCollection_ExtendedString & what);
+		Standard_Integer SearchFromEnd(TCollection_ExtendedString what);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 294924c31fc292e1cf9eb136f9d9d649 ****/
@@ -2187,13 +2187,13 @@ None
 Parameters
 ----------
 where: int
-what: TCollection_ExtendedString
+what: str
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const Standard_Integer where, const TCollection_ExtendedString & what);
+		void SetValue(const Standard_Integer where, TCollection_ExtendedString what);
 
 		/****************** Split ******************/
 		/**** md5 signature: 8268b04610407501d58f674f1e5d1fef ****/
@@ -2217,13 +2217,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-theStartString: TCollection_ExtendedString
+theStartString: str
 
 Returns
 -------
 bool
 ") StartsWith;
-		Standard_Boolean StartsWith(const TCollection_ExtendedString & theStartString);
+		Standard_Boolean StartsWith(TCollection_ExtendedString theStartString);
 
 		/****************** Swap ******************/
 		/**** md5 signature: 64355d86a311821e9f828b1de3bbea86 ****/
@@ -2232,7 +2232,7 @@ bool
 
 Parameters
 ----------
-theOther: TCollection_ExtendedString
+theOther: str
 
 Returns
 -------
@@ -2348,13 +2348,13 @@ Standard_ExtCharacter
 
 Parameters
 ----------
-other: TCollection_ExtendedString
+other: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") operator +;
-		TCollection_ExtendedString operator +(const TCollection_ExtendedString & other);
+		TCollection_ExtendedString operator +(TCollection_ExtendedString other);
 
 
             %extend{
@@ -2431,13 +2431,13 @@ None
 
 Parameters
 ----------
-message: char *
+message: str
 
 Returns
 -------
 None
 ") TCollection_HAsciiString;
-		 TCollection_HAsciiString(const char * message);
+		 TCollection_HAsciiString(Standard_CString message);
 
 		/****************** TCollection_HAsciiString ******************/
 		/**** md5 signature: 42a7090e4a24c83fdcfa907627bbb5ed ****/
@@ -2507,13 +2507,13 @@ None
 
 Parameters
 ----------
-aString: TCollection_AsciiString
+aString: str
 
 Returns
 -------
 None
 ") TCollection_HAsciiString;
-		 TCollection_HAsciiString(const TCollection_AsciiString & aString);
+		 TCollection_HAsciiString(TCollection_AsciiString aString);
 
 		/****************** TCollection_HAsciiString ******************/
 		/**** md5 signature: 84b0260612dd7af944e9b7fbb8cd5693 ****/
@@ -2553,13 +2553,13 @@ None
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 None
 ") AssignCat;
-		void AssignCat(const char * other);
+		void AssignCat(Standard_CString other);
 
 		/****************** AssignCat ******************/
 		/**** md5 signature: 9a1804a3730fe6c158f51e3b1a62e311 ****/
@@ -2594,13 +2594,13 @@ None
 
 Parameters
 ----------
-other: char *
+other: str
 
 Returns
 -------
 opencascade::handle<TCollection_HAsciiString>
 ") Cat;
-		opencascade::handle<TCollection_HAsciiString> Cat(const char * other);
+		opencascade::handle<TCollection_HAsciiString> Cat(Standard_CString other);
 
 		/****************** Cat ******************/
 		/**** md5 signature: dd2183ed02563b08fc5f255cea059ce5 ****/
@@ -2720,13 +2720,13 @@ None
 Parameters
 ----------
 where: int
-what: char *
+what: str
 
 Returns
 -------
 None
 ") Insert;
-		void Insert(const Standard_Integer where, const char * what);
+		void Insert(const Standard_Integer where, Standard_CString what);
 
 		/****************** Insert ******************/
 		/**** md5 signature: 00bce82236f786524084c18458d05a52 ****/
@@ -3122,13 +3122,13 @@ None
 
 Parameters
 ----------
-what: char *
+what: str
 
 Returns
 -------
 int
 ") Search;
-		Standard_Integer Search(const char * what);
+		Standard_Integer Search(Standard_CString what);
 
 		/****************** Search ******************/
 		/**** md5 signature: b859c53f977f80fe95a3c9f5dd92d975 ****/
@@ -3152,13 +3152,13 @@ int
 
 Parameters
 ----------
-what: char *
+what: str
 
 Returns
 -------
 int
 ") SearchFromEnd;
-		Standard_Integer SearchFromEnd(const char * what);
+		Standard_Integer SearchFromEnd(Standard_CString what);
 
 		/****************** SearchFromEnd ******************/
 		/**** md5 signature: 26ef5632859c306517edacf175ffeb25 ****/
@@ -3199,13 +3199,13 @@ None
 Parameters
 ----------
 where: int
-what: char *
+what: str
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const Standard_Integer where, const char * what);
+		void SetValue(const Standard_Integer where, Standard_CString what);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 93f546312ca5b5eebe8fa91a70ccccf5 ****/
@@ -3272,9 +3272,9 @@ opencascade::handle<TCollection_HAsciiString>
 
 Returns
 -------
-char *
+str
 ") ToCString;
-		const char * ToCString();
+		Standard_CString ToCString();
 
 		/****************** Token ******************/
 		/**** md5 signature: 550b5c901eb3be27661f560e4facc9c6 ****/
@@ -3283,7 +3283,7 @@ char *
 
 Parameters
 ----------
-separators: char *,optional
+separators: str,optional
 	default value is '\t'
 whichone: int,optional
 	default value is 1
@@ -3292,7 +3292,7 @@ Returns
 -------
 opencascade::handle<TCollection_HAsciiString>
 ") Token;
-		opencascade::handle<TCollection_HAsciiString> Token(const char * separators = "\t", const Standard_Integer whichone = 1);
+		opencascade::handle<TCollection_HAsciiString> Token(Standard_CString separators = "\t", const Standard_Integer whichone = 1);
 
 		/****************** Trunc ******************/
 		/**** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ****/
@@ -3380,13 +3380,13 @@ None
 
 Parameters
 ----------
-message: char *
+message: str
 
 Returns
 -------
 None
 ") TCollection_HExtendedString;
-		 TCollection_HExtendedString(const char * message);
+		 TCollection_HExtendedString(Standard_CString message);
 
 		/****************** TCollection_HExtendedString ******************/
 		/**** md5 signature: de855a681a7f55677c0fc072b8c7b2cb ****/
@@ -3441,13 +3441,13 @@ None
 
 Parameters
 ----------
-aString: TCollection_ExtendedString
+aString: str
 
 Returns
 -------
 None
 ") TCollection_HExtendedString;
-		 TCollection_HExtendedString(const TCollection_ExtendedString & aString);
+		 TCollection_HExtendedString(TCollection_ExtendedString aString);
 
 		/****************** TCollection_HExtendedString ******************/
 		/**** md5 signature: af4627abe66bf228b7e542a0d52004e1 ****/

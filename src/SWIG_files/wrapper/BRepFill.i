@@ -391,13 +391,13 @@ None
 
 Parameters
 ----------
-thePath: char *
+thePath: str
 
 Returns
 -------
 None
 ") SetTemporaryDirectory;
-		void SetTemporaryDirectory(const char * & thePath);
+		void SetTemporaryDirectory(Standard_CString thePath);
 
 		/****************** Shape ******************/
 		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/

@@ -129,9 +129,9 @@ theBaseUnit: UnitsMethods_LengthUnit,optional
 
 Returns
 -------
-char *
+str
 ") DumpLengthUnit;
-		static const char * DumpLengthUnit(const Standard_Real theScaleFactor, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
+		static Standard_CString DumpLengthUnit(const Standard_Real theScaleFactor, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****************** DumpLengthUnit ******************/
 		/**** md5 signature: 041378fbbb50f903a1e84aa7dd62133b ****/
@@ -144,9 +144,9 @@ theUnit: UnitsMethods_LengthUnit
 
 Returns
 -------
-char *
+str
 ") DumpLengthUnit;
-		static const char * DumpLengthUnit(const UnitsMethods_LengthUnit theUnit);
+		static Standard_CString DumpLengthUnit(const UnitsMethods_LengthUnit theUnit);
 
 		/****************** GetCasCadeLengthUnit ******************/
 		/**** md5 signature: 4a35e7f810a7fd635427969f415c00c2 ****/
@@ -219,14 +219,14 @@ float
 
 Parameters
 ----------
-theStr: char *
+theStr: str
 theCaseSensitive: bool
 
 Returns
 -------
 UnitsMethods_LengthUnit
 ") LengthUnitFromString;
-		static UnitsMethods_LengthUnit LengthUnitFromString(const char * theStr, const Standard_Boolean theCaseSensitive);
+		static UnitsMethods_LengthUnit LengthUnitFromString(Standard_CString theStr, const Standard_Boolean theCaseSensitive);
 
 		/****************** SetCasCadeLengthUnit ******************/
 		/**** md5 signature: bae022cf6fb5e154dc0ccbb433978128 ****/

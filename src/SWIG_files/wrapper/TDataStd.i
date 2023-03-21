@@ -361,13 +361,13 @@ None
 Parameters
 ----------
 label: TDF_Label
-string: TCollection_AsciiString
+string: str
 
 Returns
 -------
 opencascade::handle<TDataStd_AsciiString>
 ") Set;
-		static opencascade::handle<TDataStd_AsciiString> Set(const TDF_Label & label, const TCollection_AsciiString & string);
+		static opencascade::handle<TDataStd_AsciiString> Set(const TDF_Label & label, TCollection_AsciiString string);
 
 		/****************** Set ******************/
 		/**** md5 signature: 8e0373c564c384eab06dd600329d309e ****/
@@ -378,13 +378,13 @@ Parameters
 ----------
 label: TDF_Label
 guid: Standard_GUID
-string: TCollection_AsciiString
+string: str
 
 Returns
 -------
 opencascade::handle<TDataStd_AsciiString>
 ") Set;
-		static opencascade::handle<TDataStd_AsciiString> Set(const TDF_Label & label, const Standard_GUID & guid, const TCollection_AsciiString & string);
+		static opencascade::handle<TDataStd_AsciiString> Set(const TDF_Label & label, const Standard_GUID & guid, TCollection_AsciiString string);
 
 		/****************** Set ******************/
 		/**** md5 signature: 42b969f7de2537345586a3005c1ea20a ****/
@@ -393,13 +393,13 @@ opencascade::handle<TDataStd_AsciiString>
 
 Parameters
 ----------
-S: TCollection_AsciiString
+S: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_AsciiString & S);
+		void Set(TCollection_AsciiString S);
 
 		/****************** SetID ******************/
 		/**** md5 signature: 7a929ce753effeac220c978ae7330330 ****/
@@ -1982,13 +1982,13 @@ opencascade::handle<TDataStd_Expression>
 
 Parameters
 ----------
-E: TCollection_ExtendedString
+E: str
 
 Returns
 -------
 None
 ") SetExpression;
-		void SetExpression(const TCollection_ExtendedString & E);
+		void SetExpression(TCollection_ExtendedString E);
 
 };
 
@@ -2277,13 +2277,13 @@ None
 Parameters
 ----------
 Index: int
-Value: TCollection_ExtendedString
+Value: str
 
 Returns
 -------
 None
 ") SetValue;
-		void SetValue(const Standard_Integer Index, const TCollection_ExtendedString & Value);
+		void SetValue(const Standard_Integer Index, TCollection_ExtendedString Value);
 
 		/****************** Upper ******************/
 		/**** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ****/
@@ -2345,13 +2345,13 @@ None
 
 Parameters
 ----------
-value: TCollection_ExtendedString
+value: str
 
 Returns
 -------
 None
 ") Append;
-		void Append(const TCollection_ExtendedString & value);
+		void Append(TCollection_ExtendedString value);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -2431,14 +2431,14 @@ Standard_GUID
 
 Parameters
 ----------
-value: TCollection_ExtendedString
-after_value: TCollection_ExtendedString
+value: str
+after_value: str
 
 Returns
 -------
 bool
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const TCollection_ExtendedString & value, const TCollection_ExtendedString & after_value);
+		Standard_Boolean InsertAfter(TCollection_ExtendedString value, TCollection_ExtendedString after_value);
 
 		/****************** InsertAfter ******************/
 		/**** md5 signature: a82efc1671cdc0567d137b17efea7e0e ****/
@@ -2448,13 +2448,13 @@ bool
 Parameters
 ----------
 index: int
-after_value: TCollection_ExtendedString
+after_value: str
 
 Returns
 -------
 bool
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const Standard_Integer index, const TCollection_ExtendedString & after_value);
+		Standard_Boolean InsertAfter(const Standard_Integer index, TCollection_ExtendedString after_value);
 
 		/****************** InsertBefore ******************/
 		/**** md5 signature: e2b5c32e8c030b4febd798d8af9aea38 ****/
@@ -2463,14 +2463,14 @@ bool
 
 Parameters
 ----------
-value: TCollection_ExtendedString
-before_value: TCollection_ExtendedString
+value: str
+before_value: str
 
 Returns
 -------
 bool
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const TCollection_ExtendedString & value, const TCollection_ExtendedString & before_value);
+		Standard_Boolean InsertBefore(TCollection_ExtendedString value, TCollection_ExtendedString before_value);
 
 		/****************** InsertBefore ******************/
 		/**** md5 signature: 39731173faa0cfeb50ebb04e09af3484 ****/
@@ -2480,13 +2480,13 @@ bool
 Parameters
 ----------
 index: int
-before_value: TCollection_ExtendedString
+before_value: str
 
 Returns
 -------
 bool
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const Standard_Integer index, const TCollection_ExtendedString & before_value);
+		Standard_Boolean InsertBefore(const Standard_Integer index, TCollection_ExtendedString before_value);
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
@@ -2555,13 +2555,13 @@ None
 
 Parameters
 ----------
-value: TCollection_ExtendedString
+value: str
 
 Returns
 -------
 None
 ") Prepend;
-		void Prepend(const TCollection_ExtendedString & value);
+		void Prepend(TCollection_ExtendedString value);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 6fa22246d331e634e7be4fd0a9fc76ad ****/
@@ -2570,13 +2570,13 @@ None
 
 Parameters
 ----------
-value: TCollection_ExtendedString
+value: str
 
 Returns
 -------
 bool
 ") Remove;
-		Standard_Boolean Remove(const TCollection_ExtendedString & value);
+		Standard_Boolean Remove(TCollection_ExtendedString value);
 
 		/****************** Remove ******************/
 		/**** md5 signature: d5758943c335a06d32f07ab2389e0fe6 ****/
@@ -4409,13 +4409,13 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
 ") GetArrayOfIntegers;
-		const opencascade::handle<TColStd_HArray1OfInteger> & GetArrayOfIntegers(const TCollection_ExtendedString & theName);
+		const opencascade::handle<TColStd_HArray1OfInteger> & GetArrayOfIntegers(TCollection_ExtendedString theName);
 
 		/****************** GetArrayOfReals ******************/
 		/**** md5 signature: db520b1dcc5a20b132bdacec290b4245 ****/
@@ -4424,13 +4424,13 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 opencascade::handle<TColStd_HArray1OfReal>
 ") GetArrayOfReals;
-		const opencascade::handle<TColStd_HArray1OfReal> & GetArrayOfReals(const TCollection_ExtendedString & theName);
+		const opencascade::handle<TColStd_HArray1OfReal> & GetArrayOfReals(TCollection_ExtendedString theName);
 
 		/****************** GetArraysOfIntegersContainer ******************/
 		/**** md5 signature: a1e9fe686378bda0fc070449d50a998a ****/
@@ -4461,13 +4461,13 @@ TDataStd_DataMapOfStringHArray1OfReal
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 Standard_Byte
 ") GetByte;
-		Standard_Byte GetByte(const TCollection_ExtendedString & theName);
+		Standard_Byte GetByte(TCollection_ExtendedString theName);
 
 		/****************** GetBytesContainer ******************/
 		/**** md5 signature: ea73b7a5406b0b6387303ddc10bec47f ****/
@@ -4498,13 +4498,13 @@ Standard_GUID
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 int
 ") GetInteger;
-		Standard_Integer GetInteger(const TCollection_ExtendedString & theName);
+		Standard_Integer GetInteger(TCollection_ExtendedString theName);
 
 		/****************** GetIntegersContainer ******************/
 		/**** md5 signature: 21b7a9b99a1fbfad05d9c3d28560589a ****/
@@ -4524,13 +4524,13 @@ TColStd_DataMapOfStringInteger
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 float
 ") GetReal;
-		Standard_Real GetReal(const TCollection_ExtendedString & theName);
+		Standard_Real GetReal(TCollection_ExtendedString theName);
 
 		/****************** GetRealsContainer ******************/
 		/**** md5 signature: b9e2c4440bc22fb7830c62903dc1a40c ****/
@@ -4550,13 +4550,13 @@ TDataStd_DataMapOfStringReal
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") GetString;
-		const TCollection_ExtendedString & GetString(const TCollection_ExtendedString & theName);
+		const TCollection_ExtendedString & GetString(TCollection_ExtendedString theName);
 
 		/****************** GetStringsContainer ******************/
 		/**** md5 signature: 13ee8580b035b794e3fdbc2e42bde3fe ****/
@@ -4576,13 +4576,13 @@ TDataStd_DataMapOfStringString
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") HasArrayOfIntegers;
-		Standard_Boolean HasArrayOfIntegers(const TCollection_ExtendedString & theName);
+		Standard_Boolean HasArrayOfIntegers(TCollection_ExtendedString theName);
 
 		/****************** HasArrayOfReals ******************/
 		/**** md5 signature: 5a74df706dd2f1d3399b54e753d72fa5 ****/
@@ -4591,13 +4591,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") HasArrayOfReals;
-		Standard_Boolean HasArrayOfReals(const TCollection_ExtendedString & theName);
+		Standard_Boolean HasArrayOfReals(TCollection_ExtendedString theName);
 
 		/****************** HasArraysOfIntegers ******************/
 		/**** md5 signature: 4eb40476bed752475b28d589eb3557f3 ****/
@@ -4628,13 +4628,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") HasByte;
-		Standard_Boolean HasByte(const TCollection_ExtendedString & theName);
+		Standard_Boolean HasByte(TCollection_ExtendedString theName);
 
 		/****************** HasBytes ******************/
 		/**** md5 signature: 0451a850345dbe15a00e9048eab7e808 ****/
@@ -4665,13 +4665,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") HasInteger;
-		Standard_Boolean HasInteger(const TCollection_ExtendedString & theName);
+		Standard_Boolean HasInteger(TCollection_ExtendedString theName);
 
 		/****************** HasIntegers ******************/
 		/**** md5 signature: ced4a2334acc044b72b0f671617a1019 ****/
@@ -4691,13 +4691,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") HasReal;
-		Standard_Boolean HasReal(const TCollection_ExtendedString & theName);
+		Standard_Boolean HasReal(TCollection_ExtendedString theName);
 
 		/****************** HasReals ******************/
 		/**** md5 signature: 14759d335b5245924e19e98e05dc851e ****/
@@ -4717,13 +4717,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") HasString;
-		Standard_Boolean HasString(const TCollection_ExtendedString & theName);
+		Standard_Boolean HasString(TCollection_ExtendedString theName);
 
 		/****************** HasStrings ******************/
 		/**** md5 signature: ff76feca31b86b3fc49e4aa6b2e1aa81 ****/
@@ -4827,14 +4827,14 @@ opencascade::handle<TDataStd_NamedData>
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theArrayOfIntegers: TColStd_HArray1OfInteger
 
 Returns
 -------
 None
 ") SetArrayOfIntegers;
-		void SetArrayOfIntegers(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
+		void SetArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
 		/****************** SetArrayOfReals ******************/
 		/**** md5 signature: 16f1e7f9567f65375c020bb23d8100af ****/
@@ -4843,14 +4843,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theArrayOfReals: TColStd_HArray1OfReal
 
 Returns
 -------
 None
 ") SetArrayOfReals;
-		void SetArrayOfReals(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
+		void SetArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
 
 		/****************** SetByte ******************/
 		/**** md5 signature: 4a6e013a0bf3337864e2187c10d95ca1 ****/
@@ -4859,14 +4859,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theByte: Standard_Byte
 
 Returns
 -------
 None
 ") SetByte;
-		void SetByte(const TCollection_ExtendedString & theName, const Standard_Byte theByte);
+		void SetByte(TCollection_ExtendedString theName, const Standard_Byte theByte);
 
 		/****************** SetInteger ******************/
 		/**** md5 signature: 4e011fdcaf36e99a883b60954eb74fd6 ****/
@@ -4875,14 +4875,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theInteger: int
 
 Returns
 -------
 None
 ") SetInteger;
-		void SetInteger(const TCollection_ExtendedString & theName, const Standard_Integer theInteger);
+		void SetInteger(TCollection_ExtendedString theName, const Standard_Integer theInteger);
 
 		/****************** SetReal ******************/
 		/**** md5 signature: 3881e61413b5d53222042466565b51e6 ****/
@@ -4891,14 +4891,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theReal: float
 
 Returns
 -------
 None
 ") SetReal;
-		void SetReal(const TCollection_ExtendedString & theName, const Standard_Real theReal);
+		void SetReal(TCollection_ExtendedString theName, const Standard_Real theReal);
 
 		/****************** SetString ******************/
 		/**** md5 signature: a95bad6b9ababf6273e290a39194b37c ****/
@@ -4907,14 +4907,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
-theString: TCollection_ExtendedString
+theName: str
+theString: str
 
 Returns
 -------
 None
 ") SetString;
-		void SetString(const TCollection_ExtendedString & theName, const TCollection_ExtendedString & theString);
+		void SetString(TCollection_ExtendedString theName, TCollection_ExtendedString theString);
 
 		/****************** UnloadDeferredData ******************/
 		/**** md5 signature: 0475147ec5a2f4fc11b633d052584e7a ****/
@@ -4945,14 +4945,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theArrayOfIntegers: TColStd_HArray1OfInteger
 
 Returns
 -------
 None
 ") setArrayOfIntegers;
-		void setArrayOfIntegers(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
+		void setArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
 		/****************** setArrayOfReals ******************/
 		/**** md5 signature: 26be02bfa2f598e0213856441ddbd2e7 ****/
@@ -4961,14 +4961,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theArrayOfReals: TColStd_HArray1OfReal
 
 Returns
 -------
 None
 ") setArrayOfReals;
-		void setArrayOfReals(const TCollection_ExtendedString & theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
+		void setArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
 
 		/****************** setByte ******************/
 		/**** md5 signature: 4a6e013a0bf3337864e2187c10d95ca1 ****/
@@ -4977,14 +4977,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theByte: Standard_Byte
 
 Returns
 -------
 None
 ") setByte;
-		void setByte(const TCollection_ExtendedString & theName, const Standard_Byte theByte);
+		void setByte(TCollection_ExtendedString theName, const Standard_Byte theByte);
 
 		/****************** setInteger ******************/
 		/**** md5 signature: 4e011fdcaf36e99a883b60954eb74fd6 ****/
@@ -4993,14 +4993,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theInteger: int
 
 Returns
 -------
 None
 ") setInteger;
-		void setInteger(const TCollection_ExtendedString & theName, const Standard_Integer theInteger);
+		void setInteger(TCollection_ExtendedString theName, const Standard_Integer theInteger);
 
 		/****************** setReal ******************/
 		/**** md5 signature: 3881e61413b5d53222042466565b51e6 ****/
@@ -5009,14 +5009,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 theReal: float
 
 Returns
 -------
 None
 ") setReal;
-		void setReal(const TCollection_ExtendedString & theName, const Standard_Real theReal);
+		void setReal(TCollection_ExtendedString theName, const Standard_Real theReal);
 
 		/****************** setString ******************/
 		/**** md5 signature: a95bad6b9ababf6273e290a39194b37c ****/
@@ -5025,14 +5025,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
-theString: TCollection_ExtendedString
+theName: str
+theString: str
 
 Returns
 -------
 None
 ") setString;
-		void setString(const TCollection_ExtendedString & theName, const TCollection_ExtendedString & theString);
+		void setString(TCollection_ExtendedString theName, TCollection_ExtendedString theString);
 
 };
 
@@ -7542,13 +7542,13 @@ bool
 
 Parameters
 ----------
-string: TCollection_ExtendedString
+string: str
 
 Returns
 -------
 None
 ") Name;
-		void Name(const TCollection_ExtendedString & string);
+		void Name(TCollection_ExtendedString string);
 
 		/****************** Name ******************/
 		/**** md5 signature: c14575b7951e7423490c17784a80a010 ****/
@@ -7682,13 +7682,13 @@ None
 
 Parameters
 ----------
-unit: TCollection_AsciiString
+unit: str
 
 Returns
 -------
 None
 ") Unit;
-		void Unit(const TCollection_AsciiString & unit);
+		void Unit(TCollection_AsciiString unit);
 
 		/****************** Unit ******************/
 		/**** md5 signature: dc6e549ec212bbf5cb33509a7a23a55a ****/
@@ -7770,13 +7770,13 @@ opencascade::handle<TDataStd_Comment>
 Parameters
 ----------
 label: TDF_Label
-string: TCollection_ExtendedString
+string: str
 
 Returns
 -------
 opencascade::handle<TDataStd_Comment>
 ") Set;
-		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label, const TCollection_ExtendedString & string);
+		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label, TCollection_ExtendedString string);
 
 		/****************** Set ******************/
 		/**** md5 signature: b14507b5f83a7ddf2dd74b6112f65c39 ****/
@@ -7785,13 +7785,13 @@ opencascade::handle<TDataStd_Comment>
 
 Parameters
 ----------
-S: TCollection_ExtendedString
+S: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_ExtendedString & S);
+		void Set(TCollection_ExtendedString S);
 
 		/****************** SetID ******************/
 		/**** md5 signature: 7a929ce753effeac220c978ae7330330 ****/
@@ -7991,13 +7991,13 @@ Standard_GUID
 Parameters
 ----------
 label: TDF_Label
-string: TCollection_ExtendedString
+string: str
 
 Returns
 -------
 opencascade::handle<TDataStd_Name>
 ") Set;
-		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const TCollection_ExtendedString & string);
+		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, TCollection_ExtendedString string);
 
 		/****************** Set ******************/
 		/**** md5 signature: d6ce2b5adb6750199ce8d7f1e385b58f ****/
@@ -8008,13 +8008,13 @@ Parameters
 ----------
 label: TDF_Label
 guid: Standard_GUID
-string: TCollection_ExtendedString
+string: str
 
 Returns
 -------
 opencascade::handle<TDataStd_Name>
 ") Set;
-		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const Standard_GUID & guid, const TCollection_ExtendedString & string);
+		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const Standard_GUID & guid, TCollection_ExtendedString string);
 
 		/****************** Set ******************/
 		/**** md5 signature: b14507b5f83a7ddf2dd74b6112f65c39 ****/
@@ -8023,13 +8023,13 @@ opencascade::handle<TDataStd_Name>
 
 Parameters
 ----------
-S: TCollection_ExtendedString
+S: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_ExtendedString & S);
+		void Set(TCollection_ExtendedString S);
 
 		/****************** SetID ******************/
 		/**** md5 signature: 7a929ce753effeac220c978ae7330330 ****/
@@ -8277,13 +8277,13 @@ opencascade::handle<TDataStd_Relation>
 
 Parameters
 ----------
-E: TCollection_ExtendedString
+E: str
 
 Returns
 -------
 None
 ") SetRelation;
-		void SetRelation(const TCollection_ExtendedString & E);
+		void SetRelation(TCollection_ExtendedString E);
 
 };
 

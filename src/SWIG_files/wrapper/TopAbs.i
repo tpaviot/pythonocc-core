@@ -197,13 +197,13 @@ TopAbs_Orientation
 
 Parameters
 ----------
-theOrientationString: char *
+theOrientationString: str
 
 Returns
 -------
 TopAbs_Orientation
 ") ShapeOrientationFromString;
-		static TopAbs_Orientation ShapeOrientationFromString(const char * theOrientationString);
+		static TopAbs_Orientation ShapeOrientationFromString(Standard_CString theOrientationString);
 
 		/****************** ShapeOrientationFromString ******************/
 		/**** md5 signature: 4bd3a8b6506d611c099d1cd778dd9fa2 ****/
@@ -212,13 +212,13 @@ TopAbs_Orientation
 
 Parameters
 ----------
-theOrientationString: char *
+theOrientationString: str
 
 Returns
 -------
 theOrientation: TopAbs_Orientation
 ") ShapeOrientationFromString;
-		static Standard_Boolean ShapeOrientationFromString(const char * theOrientationString, TopAbs_Orientation &OutValue);
+		static Standard_Boolean ShapeOrientationFromString(Standard_CString theOrientationString, TopAbs_Orientation &OutValue);
 
 		/****************** ShapeOrientationToString ******************/
 		/**** md5 signature: 08fa460365bf4bd2ca48f9d91582fbaa ****/
@@ -231,9 +231,9 @@ theOrientation: TopAbs_Orientation
 
 Returns
 -------
-char *
+str
 ") ShapeOrientationToString;
-		static const char * ShapeOrientationToString(TopAbs_Orientation theOrientation);
+		static Standard_CString ShapeOrientationToString(TopAbs_Orientation theOrientation);
 
 		/****************** ShapeTypeFromString ******************/
 		/**** md5 signature: ae0bd90ac4739a50df48b85c8da99f5d ****/
@@ -242,13 +242,13 @@ char *
 
 Parameters
 ----------
-theTypeString: char *
+theTypeString: str
 
 Returns
 -------
 TopAbs_ShapeEnum
 ") ShapeTypeFromString;
-		static TopAbs_ShapeEnum ShapeTypeFromString(const char * theTypeString);
+		static TopAbs_ShapeEnum ShapeTypeFromString(Standard_CString theTypeString);
 
 		/****************** ShapeTypeFromString ******************/
 		/**** md5 signature: d787d966b2bad997712c62065f94654d ****/
@@ -257,13 +257,13 @@ TopAbs_ShapeEnum
 
 Parameters
 ----------
-theTypeString: char *
+theTypeString: str
 
 Returns
 -------
 theType: TopAbs_ShapeEnum
 ") ShapeTypeFromString;
-		static Standard_Boolean ShapeTypeFromString(const char * theTypeString, TopAbs_ShapeEnum &OutValue);
+		static Standard_Boolean ShapeTypeFromString(Standard_CString theTypeString, TopAbs_ShapeEnum &OutValue);
 
 		/****************** ShapeTypeToString ******************/
 		/**** md5 signature: 47d69b9834372b84634fd7993fa38cf6 ****/
@@ -276,9 +276,9 @@ theType: TopAbs_ShapeEnum
 
 Returns
 -------
-char *
+str
 ") ShapeTypeToString;
-		static const char * ShapeTypeToString(TopAbs_ShapeEnum theType);
+		static Standard_CString ShapeTypeToString(TopAbs_ShapeEnum theType);
 
 };
 

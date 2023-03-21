@@ -474,9 +474,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		const char * ResultTypeName();
+		Standard_CString ResultTypeName();
 
 		/****************** SetResult ******************/
 		/**** md5 signature: b581a5ff3d4839af932b887a85802930 ****/
@@ -568,9 +568,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ValueTypeName;
-		virtual const char * ValueTypeName();
+		virtual Standard_CString ValueTypeName();
 
 };
 
@@ -1048,9 +1048,9 @@ ent: TopoDS_Shape
 
 Returns
 -------
-char *
+str
 ") TypeName;
-		static const char * TypeName(const TopoDS_Shape & ent);
+		static Standard_CString TypeName(const TopoDS_Shape & ent);
 
 };
 
@@ -1218,9 +1218,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		const char * ResultTypeName();
+		Standard_CString ResultTypeName();
 
 		/****************** SetResult ******************/
 		/**** md5 signature: ce058a0f2fb955a00dd16b642d73ddf3 ****/
@@ -1403,9 +1403,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ValueTypeName;
-		virtual const char * ValueTypeName();
+		virtual Standard_CString ValueTypeName();
 
 };
 

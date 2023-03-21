@@ -101,9 +101,9 @@ class AppStd_Application : public TDocStd_Application {
 
 Returns
 -------
-char *
+str
 ") ResourcesName;
-		const char * ResourcesName();
+		Standard_CString ResourcesName();
 
 };
 

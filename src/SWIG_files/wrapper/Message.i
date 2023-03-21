@@ -686,13 +686,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-theString: char *
+theString: str
 
 Returns
 -------
 theType: Message_MetricType
 ") MetricFromString;
-		static Standard_Boolean MetricFromString(const char * theString, Message_MetricType &OutValue);
+		static Standard_Boolean MetricFromString(Standard_CString theString, Message_MetricType &OutValue);
 
 		/****************** MetricFromString ******************/
 		/**** md5 signature: 7bcfa45f3a495293ba4a5aaadbb2c36c ****/
@@ -701,13 +701,13 @@ theType: Message_MetricType
 
 Parameters
 ----------
-theString: char *
+theString: str
 
 Returns
 -------
 Message_MetricType
 ") MetricFromString;
-		static Message_MetricType MetricFromString(const char * theString);
+		static Message_MetricType MetricFromString(Standard_CString theString);
 
 		/****************** MetricToString ******************/
 		/**** md5 signature: decdd094dd1c76ec3583d959cc1518c6 ****/
@@ -720,9 +720,9 @@ theType: Message_MetricType
 
 Returns
 -------
-char *
+str
 ") MetricToString;
-		static const char * MetricToString(const Message_MetricType theType);
+		static Standard_CString MetricToString(const Message_MetricType theType);
 
 		/****************** ToMessageMetric ******************/
 		/**** md5 signature: b5f6d46706472fd2bb258a2427547372 ****/
@@ -808,9 +808,9 @@ class Message_Alert : public Standard_Transient {
 
 Returns
 -------
-char *
+str
 ") GetMessageKey;
-		virtual const char * GetMessageKey();
+		virtual Standard_CString GetMessageKey();
 
 		/****************** Merge ******************/
 		/**** md5 signature: acdcb5438c842f7d18969756cbabade8 ****/
@@ -1093,7 +1093,7 @@ None
 Parameters
 ----------
 theStat: Message_Status
-theStr: char *
+theStr: str
 noRepetitions: bool,optional
 	default value is Standard_True
 
@@ -1101,7 +1101,7 @@ Returns
 -------
 None
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, const char * theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, Standard_CString theStr, const Standard_Boolean noRepetitions = Standard_True);
 
 		/****************** SetStatus ******************/
 		/**** md5 signature: 6ea7f63dea4d03ea5d72c2052270b87e ****/
@@ -1111,7 +1111,7 @@ None
 Parameters
 ----------
 theStat: Message_Status
-theStr: TCollection_AsciiString
+theStr: str
 noRepetitions: bool,optional
 	default value is Standard_True
 
@@ -1119,7 +1119,7 @@ Returns
 -------
 None
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, const TCollection_AsciiString & theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, TCollection_AsciiString theStr, const Standard_Boolean noRepetitions = Standard_True);
 
 		/****************** SetStatus ******************/
 		/**** md5 signature: e8c38966846b71da031483a199e40a71 ****/
@@ -1147,7 +1147,7 @@ None
 Parameters
 ----------
 theStat: Message_Status
-theStr: TCollection_ExtendedString
+theStr: str
 noRepetitions: bool,optional
 	default value is Standard_True
 
@@ -1155,7 +1155,7 @@ Returns
 -------
 None
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, const TCollection_ExtendedString & theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, TCollection_ExtendedString theStr, const Standard_Boolean noRepetitions = Standard_True);
 
 		/****************** SetStatus ******************/
 		/**** md5 signature: 8aad4895c12632591f8b584c181b749e ****/
@@ -1214,14 +1214,14 @@ class Message_Attribute : public Standard_Transient {
 
 Parameters
 ----------
-theName: TCollection_AsciiString,optional
+theName: str,optional
 	default value is TCollection_AsciiString()
 
 Returns
 -------
 None
 ") Message_Attribute;
-		 Message_Attribute(const TCollection_AsciiString & theName = TCollection_AsciiString());
+		 Message_Attribute(TCollection_AsciiString theName = TCollection_AsciiString());
 
 
             %feature("autodoc", "1");
@@ -1238,9 +1238,9 @@ None
 
 Returns
 -------
-char *
+str
 ") GetMessageKey;
-		virtual const char * GetMessageKey();
+		virtual Standard_CString GetMessageKey();
 
 		/****************** GetName ******************/
 		/**** md5 signature: 03f303d315214c418f43c2b4c12c386a ****/
@@ -1260,13 +1260,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & theName);
+		void SetName(TCollection_AsciiString theName);
 
 };
 
@@ -1788,14 +1788,14 @@ class Message_Level {
 
 Parameters
 ----------
-theName: TCollection_AsciiString,optional
+theName: str,optional
 	default value is TCollection_AsciiString()
 
 Returns
 -------
 None
 ") Message_Level;
-		 Message_Level(const TCollection_AsciiString & theName = TCollection_AsciiString());
+		 Message_Level(TCollection_AsciiString theName = TCollection_AsciiString());
 
 		/****************** AddAlert ******************/
 		/**** md5 signature: 6822168d042ac1736351cc369078d114 ****/
@@ -2029,13 +2029,13 @@ None
 
 Parameters
 ----------
-theKey: char *
+theKey: str
 
 Returns
 -------
 None
 ") Message_Msg;
-		 Message_Msg(const char * theKey);
+		 Message_Msg(Standard_CString theKey);
 
 		/****************** Message_Msg ******************/
 		/**** md5 signature: 9a71629a327a5dff18cec73638731fd0 ****/
@@ -2044,13 +2044,13 @@ None
 
 Parameters
 ----------
-theKey: TCollection_ExtendedString
+theKey: str
 
 Returns
 -------
 None
 ") Message_Msg;
-		 Message_Msg(const TCollection_ExtendedString & theKey);
+		 Message_Msg(TCollection_ExtendedString theKey);
 
 		/****************** Arg ******************/
 		/**** md5 signature: bdfbd4e9c9fdf706ac8b5dff6cf9cf7e ****/
@@ -2059,13 +2059,13 @@ None
 
 Parameters
 ----------
-theString: char *
+theString: str
 
 Returns
 -------
 Message_Msg
 ") Arg;
-		Message_Msg & Arg(const char * theString);
+		Message_Msg & Arg(Standard_CString theString);
 
 		/****************** Arg ******************/
 		/**** md5 signature: 53e0f531702eaebee5ed185deb9f154d ****/
@@ -2074,13 +2074,13 @@ Message_Msg
 
 Parameters
 ----------
-theString: TCollection_AsciiString
+theString: str
 
 Returns
 -------
 Message_Msg
 ") Arg;
-		Message_Msg & Arg(const TCollection_AsciiString & theString);
+		Message_Msg & Arg(TCollection_AsciiString theString);
 
 		/****************** Arg ******************/
 		/**** md5 signature: 565728917b415ff298216cda6e885300 ****/
@@ -2104,13 +2104,13 @@ Message_Msg
 
 Parameters
 ----------
-theString: TCollection_ExtendedString
+theString: str
 
 Returns
 -------
 Message_Msg
 ") Arg;
-		Message_Msg & Arg(const TCollection_ExtendedString & theString);
+		Message_Msg & Arg(TCollection_ExtendedString theString);
 
 		/****************** Arg ******************/
 		/**** md5 signature: f827cc0ee3691e862a49f42e77cff050 ****/
@@ -2197,13 +2197,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-theMsg: char *
+theMsg: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const char * theMsg);
+		void Set(Standard_CString theMsg);
 
 		/****************** Set ******************/
 		/**** md5 signature: 793a790c0dfc3ad98d22667b966665f4 ****/
@@ -2212,13 +2212,13 @@ None
 
 Parameters
 ----------
-theMsg: TCollection_ExtendedString
+theMsg: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_ExtendedString & theMsg);
+		void Set(TCollection_ExtendedString theMsg);
 
 		/****************** Value ******************/
 		/**** md5 signature: f2f68aad6ed0ed6d591de9948ef0a3f6 ****/
@@ -2252,14 +2252,14 @@ class Message_MsgFile {
 
 Parameters
 ----------
-key: TCollection_AsciiString
-text: TCollection_ExtendedString
+key: str
+text: str
 
 Returns
 -------
 bool
 ") AddMsg;
-		static Standard_Boolean AddMsg(const TCollection_AsciiString & key, const TCollection_ExtendedString & text);
+		static Standard_Boolean AddMsg(TCollection_AsciiString key, TCollection_ExtendedString text);
 
 		/****************** HasMsg ******************/
 		/**** md5 signature: 05156f53d05b0341643ee4353c054060 ****/
@@ -2268,13 +2268,13 @@ bool
 
 Parameters
 ----------
-key: TCollection_AsciiString
+key: str
 
 Returns
 -------
 bool
 ") HasMsg;
-		static Standard_Boolean HasMsg(const TCollection_AsciiString & key);
+		static Standard_Boolean HasMsg(TCollection_AsciiString key);
 
 		/****************** Load ******************/
 		/**** md5 signature: ec5da7edc4d116c864312f5c13e0bb66 ****/
@@ -2283,14 +2283,14 @@ bool
 
 Parameters
 ----------
-theDirName: char *
-theFileName: char *
+theDirName: str
+theFileName: str
 
 Returns
 -------
 bool
 ") Load;
-		static Standard_Boolean Load(const char * theDirName, const char * theFileName);
+		static Standard_Boolean Load(Standard_CString theDirName, Standard_CString theFileName);
 
 		/****************** LoadFile ******************/
 		/**** md5 signature: d126fd90b1ca292002a4e526aa9878bb ****/
@@ -2299,13 +2299,13 @@ bool
 
 Parameters
 ----------
-theFName: char *
+theFName: str
 
 Returns
 -------
 bool
 ") LoadFile;
-		static Standard_Boolean LoadFile(const char * theFName);
+		static Standard_Boolean LoadFile(Standard_CString theFName);
 
 		/****************** LoadFromEnv ******************/
 		/**** md5 signature: 70ebce2d146849639495af085d921cad ****/
@@ -2314,16 +2314,16 @@ bool
 
 Parameters
 ----------
-theEnvName: char *
-theFileName: char *
-theLangExt: char *,optional
+theEnvName: str
+theFileName: str
+theLangExt: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") LoadFromEnv;
-		static Standard_Boolean LoadFromEnv(const char * theEnvName, const char * theFileName, const char * theLangExt = "");
+		static Standard_Boolean LoadFromEnv(Standard_CString theEnvName, Standard_CString theFileName, Standard_CString theLangExt = "");
 
 		/****************** LoadFromString ******************/
 		/**** md5 signature: bd4253d938220e0de15c97ede6647b1f ****/
@@ -2332,7 +2332,7 @@ bool
 
 Parameters
 ----------
-theContent: char *
+theContent: str
 theLength: int,optional
 	default value is -1
 
@@ -2340,7 +2340,7 @@ Returns
 -------
 bool
 ") LoadFromString;
-		static Standard_Boolean LoadFromString(const char * theContent, const Standard_Integer theLength = -1);
+		static Standard_Boolean LoadFromString(Standard_CString theContent, const Standard_Integer theLength = -1);
 
 		/****************** Msg ******************/
 		/**** md5 signature: 1e408810c811877f3892fd1e97e25dcb ****/
@@ -2349,13 +2349,13 @@ bool
 
 Parameters
 ----------
-key: char *
+key: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") Msg;
-		static const TCollection_ExtendedString & Msg(const char * key);
+		static const TCollection_ExtendedString & Msg(Standard_CString key);
 
 		/****************** Msg ******************/
 		/**** md5 signature: 8c621fc4cece4752495337f2186770bf ****/
@@ -2364,13 +2364,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-key: TCollection_AsciiString
+key: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") Msg;
-		static const TCollection_ExtendedString & Msg(const TCollection_AsciiString & key);
+		static const TCollection_ExtendedString & Msg(TCollection_AsciiString key);
 
 };
 
@@ -2405,14 +2405,14 @@ Message_Gravity
 
 Parameters
 ----------
-theString: TCollection_ExtendedString
+theString: str
 theGravity: Message_Gravity
 
 Returns
 -------
 None
 ") Send;
-		virtual void Send(const TCollection_ExtendedString & theString, const Message_Gravity theGravity);
+		virtual void Send(TCollection_ExtendedString theString, const Message_Gravity theGravity);
 
 		/****************** Send ******************/
 		/**** md5 signature: 0c58ee0dbb6a09d1744f40578405c768 ****/
@@ -2421,14 +2421,14 @@ None
 
 Parameters
 ----------
-theString: char *
+theString: str
 theGravity: Message_Gravity
 
 Returns
 -------
 None
 ") Send;
-		virtual void Send(const char * theString, const Message_Gravity theGravity);
+		virtual void Send(Standard_CString theString, const Message_Gravity theGravity);
 
 		/****************** Send ******************/
 		/**** md5 signature: 4b9e6e900c60c7a53742bdd6d96a0c34 ****/
@@ -2437,14 +2437,14 @@ None
 
 Parameters
 ----------
-theString: TCollection_AsciiString
+theString: str
 theGravity: Message_Gravity
 
 Returns
 -------
 None
 ") Send;
-		virtual void Send(const TCollection_AsciiString & theString, const Message_Gravity theGravity);
+		virtual void Send(TCollection_AsciiString theString, const Message_Gravity theGravity);
 
 		/****************** SendObject ******************/
 		/**** md5 signature: 7c818ea3a690882c6ab2eaf01f19188a ****/
@@ -2713,13 +2713,13 @@ None
 Parameters
 ----------
 theLevel: Message_Level *
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 None
 ") AddLevel;
-		void AddLevel(Message_Level * theLevel, const TCollection_AsciiString & theName);
+		void AddLevel(Message_Level * theLevel, TCollection_AsciiString theName);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -3072,9 +3072,9 @@ opencascade::handle<Message_CompositeAlerts>
 
 Returns
 -------
-char *
+str
 ") GetMessageKey;
-		virtual const char * GetMessageKey();
+		virtual Standard_CString GetMessageKey();
 
 		/****************** Merge ******************/
 		/**** md5 signature: 35843034c2fcb7185666677c75445acd ****/
@@ -3140,14 +3140,14 @@ class Message_AttributeMeter : public Message_Attribute {
 
 Parameters
 ----------
-theName: TCollection_AsciiString,optional
+theName: str,optional
 	default value is TCollection_AsciiString()
 
 Returns
 -------
 None
 ") Message_AttributeMeter;
-		 Message_AttributeMeter(const TCollection_AsciiString & theName = TCollection_AsciiString());
+		 Message_AttributeMeter(TCollection_AsciiString theName = TCollection_AsciiString());
 
 
             %feature("autodoc", "1");
@@ -3330,14 +3330,14 @@ class Message_AttributeObject : public Message_Attribute {
 Parameters
 ----------
 theObject: Standard_Transient
-theName: TCollection_AsciiString,optional
+theName: str,optional
 	default value is TCollection_AsciiString()
 
 Returns
 -------
 None
 ") Message_AttributeObject;
-		 Message_AttributeObject(const opencascade::handle<Standard_Transient> & theObject, const TCollection_AsciiString & theName = TCollection_AsciiString());
+		 Message_AttributeObject(const opencascade::handle<Standard_Transient> & theObject, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
             %feature("autodoc", "1");
@@ -3397,14 +3397,14 @@ class Message_AttributeStream : public Message_Attribute {
 Parameters
 ----------
 theStream: Standard_SStream
-theName: TCollection_AsciiString,optional
+theName: str,optional
 	default value is TCollection_AsciiString()
 
 Returns
 -------
 None
 ") Message_AttributeStream;
-		 Message_AttributeStream(const Standard_SStream & theStream, const TCollection_AsciiString & theName = TCollection_AsciiString());
+		 Message_AttributeStream(const Standard_SStream & theStream, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
             %feature("autodoc", "1");
@@ -3482,7 +3482,7 @@ None
 
 Parameters
 ----------
-theFileName: char *
+theFileName: str
 theDoAppend: bool
 theTraceLevel: Message_Gravity,optional
 	default value is Message_Info
@@ -3491,7 +3491,7 @@ Returns
 -------
 None
 ") Message_PrinterOStream;
-		 Message_PrinterOStream(const char * theFileName, const Standard_Boolean theDoAppend, const Message_Gravity theTraceLevel = Message_Info);
+		 Message_PrinterOStream(Standard_CString theFileName, const Standard_Boolean theDoAppend, const Message_Gravity theTraceLevel = Message_Info);
 
 		/****************** Close ******************/
 		/**** md5 signature: d50d7ba65c2beb3eb436584b5735f108 ****/
@@ -3564,7 +3564,7 @@ class Message_PrinterSystemLog : public Message_Printer {
 
 Parameters
 ----------
-theEventSourceName: TCollection_AsciiString
+theEventSourceName: str
 theTraceLevel: Message_Gravity,optional
 	default value is Message_Info
 
@@ -3572,7 +3572,7 @@ Returns
 -------
 None
 ") Message_PrinterSystemLog;
-		 Message_PrinterSystemLog(const TCollection_AsciiString & theEventSourceName, const Message_Gravity theTraceLevel = Message_Info);
+		 Message_PrinterSystemLog(TCollection_AsciiString theEventSourceName, const Message_Gravity theTraceLevel = Message_Info);
 
 };
 
@@ -3683,7 +3683,7 @@ class Message_ProgressSentry : public Message_ProgressScope {
 Parameters
 ----------
 theRange: Message_ProgressRange
-theName: char *
+theName: str
 theMin: float
 theMax: float
 theStep: float
@@ -3696,7 +3696,7 @@ Returns
 -------
 None
 ") Message_ProgressSentry;
-		 Message_ProgressSentry(const Message_ProgressRange & theRange, const char * theName, const Standard_Real theMin, const Standard_Real theMax, const Standard_Real theStep, const Standard_Boolean theIsInf = Standard_False, const Standard_Real theNewScopeSpan = 0.0);
+		 Message_ProgressSentry(const Message_ProgressRange & theRange, Standard_CString theName, const Standard_Real theMin, const Standard_Real theMax, const Standard_Real theStep, const Standard_Boolean theIsInf = Standard_False, const Standard_Real theNewScopeSpan = 0.0);
 
 		/****************** Relieve ******************/
 		/**** md5 signature: afb30890579d12c604229a7b3e1a2bcf ****/

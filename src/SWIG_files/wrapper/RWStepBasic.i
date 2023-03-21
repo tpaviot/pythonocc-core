@@ -7413,13 +7413,13 @@ None
 Parameters
 ----------
 aName: StepBasic_SiUnitName
-text: char *
+text: str
 
 Returns
 -------
 bool
 ") DecodeName;
-		Standard_Boolean DecodeName(StepBasic_SiUnitName & aName, const char * text);
+		Standard_Boolean DecodeName(StepBasic_SiUnitName & aName, Standard_CString text);
 
 		/****************** DecodePrefix ******************/
 		/**** md5 signature: 2bb382afd3407be2e9ac33c238587176 ****/
@@ -7429,13 +7429,13 @@ bool
 Parameters
 ----------
 aPrefix: StepBasic_SiPrefix
-text: char *
+text: str
 
 Returns
 -------
 bool
 ") DecodePrefix;
-		Standard_Boolean DecodePrefix(StepBasic_SiPrefix & aPrefix, const char * text);
+		Standard_Boolean DecodePrefix(StepBasic_SiPrefix & aPrefix, Standard_CString text);
 
 		/****************** EncodeName ******************/
 		/**** md5 signature: ea4b95e3151e115dd193c066bcfb4b95 ****/

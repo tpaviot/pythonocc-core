@@ -522,7 +522,7 @@ None
 
 Parameters
 ----------
-unit: char *
+unit: str
 modecr: int,optional
 	default value is 0
 
@@ -530,7 +530,7 @@ Returns
 -------
 None
 ") IGESControl_Writer;
-		 IGESControl_Writer(const char * unit, const Standard_Integer modecr = 0);
+		 IGESControl_Writer(Standard_CString unit, const Standard_Integer modecr = 0);
 
 		/****************** IGESControl_Writer ******************/
 		/**** md5 signature: bc2e7ace544327e8a9958f3297e3d618 ****/
@@ -651,7 +651,7 @@ opencascade::handle<Transfer_FinderProcess>
 
 Parameters
 ----------
-file: char *
+file: str
 fnes: bool,optional
 	default value is Standard_False
 
@@ -659,7 +659,7 @@ Returns
 -------
 bool
 ") Write;
-		Standard_Boolean Write(const char * file, const Standard_Boolean fnes = Standard_False);
+		Standard_Boolean Write(Standard_CString file, const Standard_Boolean fnes = Standard_False);
 
 };
 

@@ -4846,9 +4846,9 @@ opencascade::handle<Interface_Protocol>
 
 Returns
 -------
-char *
+str
 ") SchemaName;
-		virtual const char * SchemaName();
+		virtual Standard_CString SchemaName();
 
 		/****************** TypeNumber ******************/
 		/**** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ****/

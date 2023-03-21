@@ -44,7 +44,6 @@ from OCC.Core.XCAFDoc import (
 )
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
-from OCC.Core.TCollection import TCollection_ExtendedString
 from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
@@ -150,7 +149,7 @@ def read_step_file_with_names_colors(filename):
     output_shapes = {}
 
     # create an handle to a document
-    doc = TDocStd_Document(TCollection_ExtendedString("pythonocc-doc"))
+    doc = TDocStd_Document("pythonocc-doc")
 
     # Get root assembly
     shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())

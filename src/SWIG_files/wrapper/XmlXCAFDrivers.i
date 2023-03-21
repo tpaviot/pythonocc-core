@@ -187,13 +187,13 @@ class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDr
 
 Parameters
 ----------
-theCopyright: TCollection_ExtendedString
+theCopyright: str
 
 Returns
 -------
 None
 ") XmlXCAFDrivers_DocumentStorageDriver;
-		 XmlXCAFDrivers_DocumentStorageDriver(const TCollection_ExtendedString & theCopyright);
+		 XmlXCAFDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/

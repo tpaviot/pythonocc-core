@@ -92,13 +92,13 @@ class StlAPI {
 Parameters
 ----------
 theShape: TopoDS_Shape
-aFile: char *
+aFile: str
 
 Returns
 -------
 bool
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & theShape, const char * aFile);
+		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString aFile);
 
 		/****************** Write ******************/
 		/**** md5 signature: 6440898486e448da078517629383a97a ****/
@@ -108,7 +108,7 @@ bool
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: char *
+theFile: str
 theAsciiMode: bool,optional
 	default value is Standard_True
 
@@ -116,7 +116,7 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Standard_Boolean theAsciiMode = Standard_True);
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theAsciiMode = Standard_True);
 
 };
 
@@ -140,13 +140,13 @@ class StlAPI_Reader {
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFileName: char *
+theFileName: str
 
 Returns
 -------
 bool
 ") Read;
-		Standard_Boolean Read(TopoDS_Shape & theShape, const char * theFileName);
+		Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFileName);
 
 };
 
@@ -194,7 +194,7 @@ None
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFileName: char *
+theFileName: str
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -202,7 +202,7 @@ Returns
 -------
 bool
 ") Write;
-		Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

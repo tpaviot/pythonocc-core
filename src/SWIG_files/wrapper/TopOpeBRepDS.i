@@ -435,16 +435,16 @@ Parameters
 ----------
 K: TopOpeBRepDS_Kind
 I: int
-B: TCollection_AsciiString,optional
+B: str,optional
 	default value is ""
-A: TCollection_AsciiString,optional
+A: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SPrint;
-		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K, const Standard_Integer I, const TCollection_AsciiString & B = "", const TCollection_AsciiString & A = "");
+		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K, const Standard_Integer I, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
 
 		/****************** SPrint ******************/
 		/**** md5 signature: bfdba83544259d7a60db9ed56c313822 ****/
@@ -3666,14 +3666,14 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopoDS_Shape
-B: TCollection_AsciiString,optional
+B: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SPrintShapeRefOri;
-		TCollection_AsciiString SPrintShapeRefOri(const TopoDS_Shape & S, const TCollection_AsciiString & B = "");
+		TCollection_AsciiString SPrintShapeRefOri(const TopoDS_Shape & S, TCollection_AsciiString B = "");
 
 		/****************** SPrintShapeRefOri ******************/
 		/**** md5 signature: 54da13540540d3a734590ba936839e14 ****/
@@ -3683,14 +3683,14 @@ TCollection_AsciiString
 Parameters
 ----------
 L: TopTools_ListOfShape
-B: TCollection_AsciiString,optional
+B: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SPrintShapeRefOri;
-		TCollection_AsciiString SPrintShapeRefOri(const TopTools_ListOfShape & L, const TCollection_AsciiString & B = "");
+		TCollection_AsciiString SPrintShapeRefOri(const TopTools_ListOfShape & L, TCollection_AsciiString B = "");
 
 };
 
@@ -6680,16 +6680,16 @@ None
 
 Parameters
 ----------
-s1: TCollection_AsciiString,optional
+s1: str,optional
 	default value is ""
-s2: TCollection_AsciiString,optional
+s2: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") DumpTKIIterator;
-		void DumpTKIIterator(const TCollection_AsciiString & s1 = "", const TCollection_AsciiString & s2 = "");
+		void DumpTKIIterator(TCollection_AsciiString s1 = "", TCollection_AsciiString s2 = "");
 
 		/****************** FillOnGeometry ******************/
 		/**** md5 signature: bc57c0884bf6423d13a2fa1a0ba316da ****/

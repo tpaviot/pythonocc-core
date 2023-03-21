@@ -369,14 +369,14 @@ class TopoDS_AlertAttribute : public Message_AttributeStream {
 Parameters
 ----------
 theShape: TopoDS_Shape
-theName: TCollection_AsciiString,optional
+theName: str,optional
 	default value is TCollection_AsciiString()
 
 Returns
 -------
 None
 ") TopoDS_AlertAttribute;
-		 TopoDS_AlertAttribute(const TopoDS_Shape & theShape, const TCollection_AsciiString & theName = TCollection_AsciiString());
+		 TopoDS_AlertAttribute(const TopoDS_Shape & theShape, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
             %feature("autodoc", "1");

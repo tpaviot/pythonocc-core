@@ -3408,9 +3408,9 @@ None
 
 Returns
 -------
-char *
+str
 ") EnumText;
-		virtual const char * EnumText();
+		virtual Standard_CString EnumText();
 
 		/****************** HasName ******************/
 		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
@@ -3430,9 +3430,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** SetEnumText ******************/
 		/**** md5 signature: 120d4c122fb5eaba7d84896e45beec24 ****/
@@ -3442,13 +3442,13 @@ char *
 Parameters
 ----------
 val: int
-text: char *
+text: str
 
 Returns
 -------
 None
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer val, const char * text);
+		virtual void SetEnumText(const Standard_Integer val, Standard_CString text);
 
 		/****************** SetName ******************/
 		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
@@ -3457,13 +3457,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetName;
-		virtual Standard_Boolean SetName(const char * name);
+		virtual Standard_Boolean SetName(Standard_CString name);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: e50f72140ef69e3beed4121f92905c6a ****/
@@ -3602,9 +3602,9 @@ None
 
 Returns
 -------
-char *
+str
 ") EnumText;
-		virtual const char * EnumText();
+		virtual Standard_CString EnumText();
 
 		/****************** HasName ******************/
 		/**** md5 signature: 454c871a85ff9e9d126353d7d8ebe205 ****/
@@ -3635,9 +3635,9 @@ int
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** SetEnumText ******************/
 		/**** md5 signature: b2fa2c708967006363f06f147171c7a7 ****/
@@ -3647,13 +3647,13 @@ char *
 Parameters
 ----------
 theValue: int
-theText: char *
+theText: str
 
 Returns
 -------
 None
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer theValue, const char * theText);
+		virtual void SetEnumText(const Standard_Integer theValue, Standard_CString theText);
 
 		/****************** SetName ******************/
 		/**** md5 signature: c0fb4b116d47426ff8c83f0fba90c9d0 ****/

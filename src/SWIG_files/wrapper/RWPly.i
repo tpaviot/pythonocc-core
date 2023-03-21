@@ -143,13 +143,13 @@ class RWPly_CafWriter : public Standard_Transient {
 
 Parameters
 ----------
-theFile: TCollection_AsciiString
+theFile: str
 
 Returns
 -------
 None
 ") RWPly_CafWriter;
-		 RWPly_CafWriter(const TCollection_AsciiString & theFile);
+		 RWPly_CafWriter(TCollection_AsciiString theFile);
 
 		/****************** ChangeCoordinateSystemConverter ******************/
 		/**** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ****/
@@ -704,7 +704,7 @@ int
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theStream: std::shared_ptr<std::ostream>,optional
 	default value is std::shared_ptr<std::ostream>()
 
@@ -712,7 +712,7 @@ Returns
 -------
 bool
 ") Open;
-		bool Open(const TCollection_AsciiString & theName, const std::shared_ptr<std::ostream> & theStream = std::shared_ptr<std::ostream>());
+		bool Open(TCollection_AsciiString theName, const std::shared_ptr<std::ostream> & theStream = std::shared_ptr<std::ostream>());
 
 		/****************** SetColors ******************/
 		/**** md5 signature: ba154b7155d7a27211ce6b222d360537 ****/
@@ -975,7 +975,7 @@ TCollection_AsciiString
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -985,7 +985,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
@@ -994,7 +994,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theDocument: TDocStd_Document
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1003,7 +1003,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
@@ -1012,7 +1012,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theWS: XSControl_WorkSession
 theProgress: Message_ProgressRange,optional
@@ -1022,7 +1022,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
@@ -1031,7 +1031,7 @@ bool
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theShape: TopoDS_Shape
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -1040,7 +1040,7 @@ Returns
 -------
 bool
 ") Write;
-		virtual bool Write(const TCollection_AsciiString & thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

@@ -466,15 +466,15 @@ class Transfer_Binder : public Standard_Transient {
 
 Parameters
 ----------
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddFail;
-		void AddFail(const char * mess, const char * orig = "");
+		void AddFail(Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AddResult ******************/
 		/**** md5 signature: c4d1dbf3cde88d1c0fe97dd4e1b160db ****/
@@ -498,15 +498,15 @@ None
 
 Parameters
 ----------
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddWarning;
-		void AddWarning(const char * mess, const char * orig = "");
+		void AddWarning(Standard_CString mess, Standard_CString orig = "");
 
 		/****************** CCheck ******************/
 		/**** md5 signature: 25f912471be6d6189472b3728ee8c8a0 ****/
@@ -596,9 +596,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		virtual const char * ResultTypeName();
+		virtual Standard_CString ResultTypeName();
 
 		/****************** SetAlreadyUsed ******************/
 		/**** md5 signature: da162a2fbf7d2c14d95e7b85fe8c2275 ****/
@@ -690,9 +690,9 @@ ent: Standard_Transient
 
 Returns
 -------
-char *
+str
 ") TypeName;
-		static const char * TypeName(const opencascade::handle<Standard_Transient> & ent);
+		static Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -870,13 +870,13 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") Attribute;
-		opencascade::handle<Standard_Transient> Attribute(const char * name);
+		opencascade::handle<Standard_Transient> Attribute(Standard_CString name);
 
 		/****************** AttributeType ******************/
 		/**** md5 signature: ebecc9f18283c7073dbc9ff9e987f2ae ****/
@@ -885,13 +885,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 Interface_ParamType
 ") AttributeType;
-		Interface_ParamType AttributeType(const char * name);
+		Interface_ParamType AttributeType(Standard_CString name);
 
 		/****************** Equates ******************/
 		/**** md5 signature: c23eeb6738a5a3b9c168de5c90033b61 ****/
@@ -915,7 +915,7 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 type: Standard_Type
 val: Standard_Transient
 
@@ -923,7 +923,7 @@ Returns
 -------
 bool
 ") GetAttribute;
-		Standard_Boolean GetAttribute(const char * name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
+		Standard_Boolean GetAttribute(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
 		/****************** GetAttributes ******************/
 		/**** md5 signature: 2600862f8c38b03a0506b6b2c2a55c2a ****/
@@ -933,7 +933,7 @@ bool
 Parameters
 ----------
 other: Transfer_Finder
-fromname: char *,optional
+fromname: str,optional
 	default value is ""
 copied: bool,optional
 	default value is Standard_True
@@ -942,7 +942,7 @@ Returns
 -------
 None
 ") GetAttributes;
-		void GetAttributes(const opencascade::handle<Transfer_Finder> & other, const char * fromname = "", const Standard_Boolean copied = Standard_True);
+		void GetAttributes(const opencascade::handle<Transfer_Finder> & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
 		/****************** GetHashCode ******************/
 		/**** md5 signature: bff72276a4c4e09c342f668ee3cdf337 ****/
@@ -962,13 +962,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 val: int
 ") GetIntegerAttribute;
-		Standard_Boolean GetIntegerAttribute(const char * name, Standard_Integer &OutValue);
+		Standard_Boolean GetIntegerAttribute(Standard_CString name, Standard_Integer &OutValue);
 
 		/****************** GetRealAttribute ******************/
 		/**** md5 signature: 5f2c96db8b329d634687ce67f5e59b4b ****/
@@ -977,13 +977,13 @@ val: int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 val: float
 ") GetRealAttribute;
-		Standard_Boolean GetRealAttribute(const char * name, Standard_Real &OutValue);
+		Standard_Boolean GetRealAttribute(Standard_CString name, Standard_Real &OutValue);
 
 		/****************** GetStringAttribute ******************/
 		/**** md5 signature: 318a12b6d26483dacbc14b18a716e743 ****/
@@ -992,14 +992,14 @@ val: float
 
 Parameters
 ----------
-name: char *
-val: char *
+name: str
+val: str
 
 Returns
 -------
 bool
 ") GetStringAttribute;
-		Standard_Boolean GetStringAttribute(const char * name, const char * & val);
+		Standard_Boolean GetStringAttribute(Standard_CString name, Standard_CString val);
 
 		/****************** IntegerAttribute ******************/
 		/**** md5 signature: 93d9fbf5febe449e6af99311c8d8ce44 ****/
@@ -1008,13 +1008,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") IntegerAttribute;
-		Standard_Integer IntegerAttribute(const char * name);
+		Standard_Integer IntegerAttribute(Standard_CString name);
 
 		/****************** RealAttribute ******************/
 		/**** md5 signature: 58a4e4d83ca92f4eca73ac61ee1fe729 ****/
@@ -1023,13 +1023,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 float
 ") RealAttribute;
-		Standard_Real RealAttribute(const char * name);
+		Standard_Real RealAttribute(Standard_CString name);
 
 		/****************** RemoveAttribute ******************/
 		/**** md5 signature: 57071515bfbcf1a2ae1f11ad7d448049 ****/
@@ -1038,13 +1038,13 @@ float
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") RemoveAttribute;
-		Standard_Boolean RemoveAttribute(const char * name);
+		Standard_Boolean RemoveAttribute(Standard_CString name);
 
 		/****************** SameAttributes ******************/
 		/**** md5 signature: 270660a3d80d1ea22a91fae883e90d14 ****/
@@ -1068,14 +1068,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: Standard_Transient
 
 Returns
 -------
 None
 ") SetAttribute;
-		void SetAttribute(const char * name, const opencascade::handle<Standard_Transient> & val);
+		void SetAttribute(Standard_CString name, const opencascade::handle<Standard_Transient> & val);
 
 		/****************** SetIntegerAttribute ******************/
 		/**** md5 signature: 91bcd8c22467c6503d3124ea1bc29193 ****/
@@ -1084,14 +1084,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: int
 
 Returns
 -------
 None
 ") SetIntegerAttribute;
-		void SetIntegerAttribute(const char * name, const Standard_Integer val);
+		void SetIntegerAttribute(Standard_CString name, const Standard_Integer val);
 
 		/****************** SetRealAttribute ******************/
 		/**** md5 signature: 6336cf08a7edf9acb99611e6933d3024 ****/
@@ -1100,14 +1100,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: float
 
 Returns
 -------
 None
 ") SetRealAttribute;
-		void SetRealAttribute(const char * name, const Standard_Real val);
+		void SetRealAttribute(Standard_CString name, const Standard_Real val);
 
 		/****************** SetStringAttribute ******************/
 		/**** md5 signature: c4470714ba0031d975841ff9a21690ca ****/
@@ -1116,14 +1116,14 @@ None
 
 Parameters
 ----------
-name: char *
-val: char *
+name: str
+val: str
 
 Returns
 -------
 None
 ") SetStringAttribute;
-		void SetStringAttribute(const char * name, const char * val);
+		void SetStringAttribute(Standard_CString name, Standard_CString val);
 
 		/****************** StringAttribute ******************/
 		/**** md5 signature: c2ee3863f53a113455cc1e4716e85015 ****/
@@ -1132,13 +1132,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
-char *
+str
 ") StringAttribute;
-		const char * StringAttribute(const char * name);
+		Standard_CString StringAttribute(Standard_CString name);
 
 		/****************** ValueType ******************/
 		/**** md5 signature: 7bf10d093b4c83528695e983de0b203f ****/
@@ -1158,9 +1158,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ValueTypeName;
-		virtual const char * ValueTypeName();
+		virtual Standard_CString ValueTypeName();
 
 };
 
@@ -1297,15 +1297,15 @@ opencascade::handle<Transfer_ActorOfProcessForTransient>
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddError;
-		void AddError(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddError(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AddFail ******************/
 		/**** md5 signature: 9795f5c11159dce99f638412f8744dee ****/
@@ -1315,15 +1315,15 @@ None
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddFail;
-		void AddFail(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AddFail ******************/
 		/**** md5 signature: 6b0d3fec2a52085b81fbdbfe16aef486 ****/
@@ -1365,15 +1365,15 @@ None
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddWarning;
-		void AddWarning(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AddWarning ******************/
 		/**** md5 signature: bc3b2f4ee089d893bd2b7716390affae ****/
@@ -1743,14 +1743,14 @@ opencascade::handle<Standard_Transient>
 Parameters
 ----------
 start: Standard_Transient
-pref: char *,optional
+pref: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") Mend;
-		void Mend(const opencascade::handle<Standard_Transient> & start, const char * pref = "");
+		void Mend(const opencascade::handle<Standard_Transient> & start, Standard_CString pref = "");
 
 		/****************** Messenger ******************/
 		/**** md5 signature: c51845cdafadb143338935f519a3d7c7 ****/
@@ -2259,9 +2259,9 @@ Interface_CheckStatus
 
 Returns
 -------
-char *
+str
 ") FileName;
-		const char * FileName();
+		Standard_CString FileName();
 
 		/****************** Fill ******************/
 		/**** md5 signature: 4b4edb201c233e76456aea2eb36c64a5 ****/
@@ -2312,9 +2312,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") MainLabel;
-		const char * MainLabel();
+		Standard_CString MainLabel();
 
 		/****************** MainNumber ******************/
 		/**** md5 signature: c7812d4aa5ac295ddd43bdd4ac8f1ead ****/
@@ -2386,13 +2386,13 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 None
 ") SetFileName;
-		void SetFileName(const char * filename);
+		void SetFileName(Standard_CString filename);
 
 		/****************** SetMainResult ******************/
 		/**** md5 signature: 65dcc5167fc4eed0bd35bdb86cf0bae5 ****/
@@ -3542,14 +3542,14 @@ opencascade::handle<Interface_InterfaceModel>
 
 Parameters
 ----------
-name: char *
+name: str
 num0: int
 
 Returns
 -------
 int
 ") NextMappedWithAttribute;
-		Standard_Integer NextMappedWithAttribute(const char * name, const Standard_Integer num0);
+		Standard_Integer NextMappedWithAttribute(Standard_CString name, const Standard_Integer num0);
 
 		/****************** SetModel ******************/
 		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
@@ -3872,9 +3872,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		const char * ResultTypeName();
+		Standard_CString ResultTypeName();
 
 		/****************** ResultValue ******************/
 		/**** md5 signature: b7cf2832698e64e96726045e72479981 ****/
@@ -3979,9 +3979,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		const char * ResultTypeName();
+		Standard_CString ResultTypeName();
 
 		/****************** SetResult ******************/
 		/**** md5 signature: a91ed353e0cbe1f40e4af5c64aac3b28 ****/
@@ -4106,9 +4106,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		const char * ResultTypeName();
+		Standard_CString ResultTypeName();
 
 		/****************** SetResult ******************/
 		/**** md5 signature: 9b9f3aa6b0da2cde777cca0377073974 ****/
@@ -4216,9 +4216,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ValueTypeName;
-		virtual const char * ValueTypeName();
+		virtual Standard_CString ValueTypeName();
 
 };
 
@@ -4285,7 +4285,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 
 Parameters
 ----------
-name: char *
+name: str
 type: Standard_Type
 ctx: Standard_Transient
 
@@ -4293,7 +4293,7 @@ Returns
 -------
 bool
 ") GetContext;
-		Standard_Boolean GetContext(const char * name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & ctx);
+		Standard_Boolean GetContext(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & ctx);
 
 		/****************** Graph ******************/
 		/**** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ****/
@@ -4387,14 +4387,14 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-name: char *
+name: str
 ctx: Standard_Transient
 
 Returns
 -------
 None
 ") SetContext;
-		void SetContext(const char * name, const opencascade::handle<Standard_Transient> & ctx);
+		void SetContext(Standard_CString name, const opencascade::handle<Standard_Transient> & ctx);
 
 		/****************** SetGraph ******************/
 		/**** md5 signature: c0b17a1913a1fcbe531cbabf35a93da0 ****/
@@ -4487,9 +4487,9 @@ opencascade::handle<Standard_Type>
 
 Returns
 -------
-char *
+str
 ") ResultTypeName;
-		const char * ResultTypeName();
+		Standard_CString ResultTypeName();
 
 };
 

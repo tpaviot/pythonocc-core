@@ -718,7 +718,7 @@ None
 
 Parameters
 ----------
-S: TCollection_AsciiString
+S: str
 
 Returns
 -------
