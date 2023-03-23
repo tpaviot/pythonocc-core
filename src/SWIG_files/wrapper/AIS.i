@@ -578,7 +578,6 @@ AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 %wrap_handle(AIS_TypeFilter)
 %wrap_handle(AIS_AnimationCamera)
 %wrap_handle(AIS_Axis)
-%wrap_handle(AIS_BaseAnimationObject)
 %wrap_handle(AIS_Circle)
 %wrap_handle(AIS_ColorScale)
 %wrap_handle(AIS_ConnectedInteractive)
@@ -595,7 +594,6 @@ AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 %wrap_handle(AIS_TextLabel)
 %wrap_handle(AIS_Triangulation)
 %wrap_handle(AIS_Trihedron)
-%wrap_handle(AIS_AnimationAxisRotation)
 %wrap_handle(AIS_AnimationObject)
 %wrap_handle(AIS_ColoredShape)
 %wrap_handle(AIS_TexturedShape)
@@ -8825,20 +8823,6 @@ None
 /********************************
 * class AIS_BaseAnimationObject *
 ********************************/
-%nodefaultctor AIS_BaseAnimationObject;
-class AIS_BaseAnimationObject : public AIS_Animation {
-	public:
-};
-
-
-%make_alias(AIS_BaseAnimationObject)
-
-%extend AIS_BaseAnimationObject {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /**************************
 * class AIS_CameraFrustum *
 **************************/
@@ -16130,39 +16114,6 @@ Standard_ShortReal
 /**********************************
 * class AIS_AnimationAxisRotation *
 **********************************/
-class AIS_AnimationAxisRotation : public AIS_BaseAnimationObject {
-	public:
-		/****************** AIS_AnimationAxisRotation ******************/
-		/**** md5 signature: 819427e2c422233cc067da4633992952 ****/
-		%feature("compactdefaultargs") AIS_AnimationAxisRotation;
-		%feature("autodoc", "Constructor with initialization. @param[in] theanimationname animation identifier @param[in] thecontext interactive context where object have been displayed @param[in] theobject object to apply rotation @param[in] theaxis rotation axis @param[in] theanglestart rotation angle at the start of animation @param[in] theangleend rotation angle at the end of animation.
-
-Parameters
-----------
-theAnimationName: str
-theContext: AIS_InteractiveContext
-theObject: AIS_InteractiveObject
-theAxis: gp_Ax1
-theAngleStart: float
-theAngleEnd: float
-
-Returns
--------
-None
-") AIS_AnimationAxisRotation;
-		 AIS_AnimationAxisRotation(TCollection_AsciiString theAnimationName, const opencascade::handle<AIS_InteractiveContext> & theContext, const opencascade::handle<AIS_InteractiveObject> & theObject, const gp_Ax1 & theAxis, const Standard_Real theAngleStart, const Standard_Real theAngleEnd);
-
-};
-
-
-%make_alias(AIS_AnimationAxisRotation)
-
-%extend AIS_AnimationAxisRotation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /****************************
 * class AIS_AnimationObject *
 ****************************/
@@ -16826,6 +16777,18 @@ float
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class AIS_AnimationAxisRotation:
+	pass
+
+@classnotwrapped
+class AIS_BaseAnimationObject:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

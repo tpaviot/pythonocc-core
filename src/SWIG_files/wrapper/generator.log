@@ -8,7 +8,7 @@ operating system : Windows 64bit 10
 
 occt version targeted : 7.7.1
 
-date : 2023-03-23 13:30:29.745563
+date : 2023-03-23 16:14:27.114140
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -7419,7 +7419,6 @@ date : 2023-03-23 13:30:29.745563
 [INFO ]  Class: AIS_AnimationCamera
 [INFO ]  Class: AIS_Axis
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: AIS_BaseAnimationObject
 [INFO ]  Class: AIS_CameraFrustum
 [INFO ]  Enum: SelectionMode
 [INFO ]  Class: AIS_Circle
@@ -7474,7 +7473,6 @@ date : 2023-03-23 13:30:29.745563
 [INFO ]      Wrap nested class AIS_ViewCube::IntegerHasher
 [INFO ]  Class: AIS_XRTrackedDevice
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: AIS_AnimationAxisRotation
 [INFO ]  Class: AIS_AnimationObject
 [INFO ]  Class: AIS_ColoredShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -9086,8 +9084,8 @@ date : 2023-03-23 13:30:29.745563
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 143.50s
+SWIG interface file generation completed in 236.89s
 #################################################
 
-[INFO ]  Number of classes: 4605
-[INFO ]  Number of methods: 46713
+[INFO ]  Number of classes: 4603
+[INFO ]  Number of methods: 46712
