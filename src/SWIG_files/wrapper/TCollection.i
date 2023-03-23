@@ -234,7 +234,8 @@ None
 
 Parameters
 ----------
-theOther: str
+mystring(theOthermystring): TCollection_AsciiString  theOther) Standard_Noexcept:
+: mylength(theOthermylength
 
 Returns
 -------
@@ -1738,7 +1739,8 @@ None
 
 Parameters
 ----------
-theOther: str
+mystring(theOthermystring): TCollection_ExtendedString  theOther) Standard_Noexcept:
+: mylength(theOthermylength
 
 Returns
 -------

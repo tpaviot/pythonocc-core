@@ -2001,6 +2001,29 @@ InversionProblem: int
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue);
 
+		/****************** Intervals ******************/
+		/**** md5 signature: 6005dd7b642eb153ae7f9293cf41ffb5 ****/
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "Splits the given range to bspline intervals of given continuity @param[in] theknots the knots of bspline @param[in] themults the knots' multiplicities @param[in] thedegree the degree of bspline @param[in] isperiodic the periodicity of bspline @param[in] thecontinuity the target interval's continuity @param[in] thefirst the begin of the target range @param[in] thelast the end of the target range @param[in] thetolerance the tolerance @param[in,out] theintervals the array to store intervals if isn't nullptr returns the number of intervals.
+
+Parameters
+----------
+theKnots: TColStd_Array1OfReal
+theMults: TColStd_Array1OfInteger
+theDegree: int
+isPeriodic: bool
+theContinuity: int
+theFirst: float
+theLast: float
+theTolerance: float
+theIntervals: TColStd_Array1OfReal *
+
+Returns
+-------
+int
+") Intervals;
+		static Standard_Integer Intervals(const TColStd_Array1OfReal & theKnots, const TColStd_Array1OfInteger & theMults, Standard_Integer theDegree, Standard_Boolean isPeriodic, Standard_Integer theContinuity, Standard_Real theFirst, Standard_Real theLast, Standard_Real theTolerance, TColStd_Array1OfReal * theIntervals);
+
 		/****************** IsRational ******************/
 		/**** md5 signature: 5ee1bb4d64e0a78acc3cb994f1afcefa ****/
 		%feature("compactdefaultargs") IsRational;

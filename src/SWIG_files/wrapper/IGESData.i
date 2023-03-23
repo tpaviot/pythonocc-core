@@ -5464,20 +5464,20 @@ bool
 		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
 
 		/****************** ReadText ******************/
-		/**** md5 signature: 8807f276466f6d3d64b7837129489f8b ****/
+		/**** md5 signature: e6c8b0b8fb6d1cf4fafe20a1632d5ec8 ****/
 		%feature("compactdefaultargs") ReadText;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-PC: IGESData_ParamCursor
-amsg: Message_Msg
+thePC: IGESData_ParamCursor
+theMsg: Message_Msg
 
 Returns
 -------
-val: TCollection_HAsciiString
+theVal: TCollection_HAsciiString
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & thePC, const Message_Msg & theMsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadText ******************/
 		/**** md5 signature: 583adf171adc696820aae6403d5703c0 ****/

@@ -131,6 +131,7 @@ enum BRepOffset_Error {
 	BRepOffset_CannotFuseVertices = 7,
 	BRepOffset_CannotExtentEdge = 8,
 	BRepOffset_UserBreak = 9,
+	BRepOffset_MixedConnectivity = 10,
 };
 
 enum BRepOffsetSimple_Status {
@@ -171,6 +172,7 @@ class BRepOffset_Error(IntEnum):
 	BRepOffset_CannotFuseVertices = 7
 	BRepOffset_CannotExtentEdge = 8
 	BRepOffset_UserBreak = 9
+	BRepOffset_MixedConnectivity = 10
 BRepOffset_NoError = BRepOffset_Error.BRepOffset_NoError
 BRepOffset_UnknownError = BRepOffset_Error.BRepOffset_UnknownError
 BRepOffset_BadNormalsOnGeometry = BRepOffset_Error.BRepOffset_BadNormalsOnGeometry
@@ -181,6 +183,7 @@ BRepOffset_CannotTrimEdges = BRepOffset_Error.BRepOffset_CannotTrimEdges
 BRepOffset_CannotFuseVertices = BRepOffset_Error.BRepOffset_CannotFuseVertices
 BRepOffset_CannotExtentEdge = BRepOffset_Error.BRepOffset_CannotExtentEdge
 BRepOffset_UserBreak = BRepOffset_Error.BRepOffset_UserBreak
+BRepOffset_MixedConnectivity = BRepOffset_Error.BRepOffset_MixedConnectivity
 
 class BRepOffsetSimple_Status(IntEnum):
 	BRepOffsetSimple_OK = 0

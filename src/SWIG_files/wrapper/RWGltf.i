@@ -1719,46 +1719,6 @@ None
 	}
 };
 
-/********************************
-* class RWGltf_GltfSceneNodeMap *
-********************************/
-class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode,XCAFPrs_DocumentNode> {
-	public:
-		/****************** RWGltf_GltfSceneNodeMap ******************/
-		/**** md5 signature: 7eb6a53ba949dbdb457796ba63fb4a03 ****/
-		%feature("compactdefaultargs") RWGltf_GltfSceneNodeMap;
-		%feature("autodoc", "Empty constructor.
-
-Returns
--------
-None
-") RWGltf_GltfSceneNodeMap;
-		 RWGltf_GltfSceneNodeMap();
-
-		/****************** FindIndex ******************/
-		/**** md5 signature: 47457616668af339aa3d60c8b18b08d5 ****/
-		%feature("compactdefaultargs") FindIndex;
-		%feature("autodoc", "Find index from document node string identifier.
-
-Parameters
-----------
-theNodeId: str
-
-Returns
--------
-int
-") FindIndex;
-		Standard_Integer FindIndex(TCollection_AsciiString theNodeId);
-
-};
-
-
-%extend RWGltf_GltfSceneNodeMap {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /******************************
 * class RWGltf_MaterialCommon *
 ******************************/

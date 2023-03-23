@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 7698413
+git revision : 5c16abe
 
 operating system : Windows 64bit 10
 
-occt version targeted : 7.7.0
+occt version targeted : 7.7.1
 
-date : 2023-03-19 08:19:35.073526
+date : 2023-03-23 13:30:29.745563
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -498,6 +498,7 @@ date : 2023-03-19 08:19:35.073526
 [INFO ]  Class: BRepAlgo_NormalProjection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepFill
+[INFO ]  Enum: BRepFill_ThruSectionErrorStatus
 [INFO ]  Enum: BRepFill_TransitionStyle
 [INFO ]  Enum: BRepFill_TypeOfContact
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7147,6 +7148,7 @@ date : 2023-03-19 08:19:35.073526
 [INFO ]  Enum: BRepExtrema_SupportType
 [WARNI]  Class BRepExtrema_ProximityDistTool has 4 ancestors and is skipped.
 [WARNI]      [TypeHint] Skipping unknown type, int,TColStd not in module list
+[WARNI]  Template: VectorOfPointskipped because name doesn't contain _.
 [WARNI]  Class BRepExtrema_ProximityDistTool has 4 ancestors and is skipped.
 [INFO ]  Class: BRepExtrema_DistShapeShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7181,6 +7183,7 @@ date : 2023-03-19 08:19:35.073526
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type BVH_Box<float,, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<int>, seems to be a template
+[INFO ]  Class: BRepExtrema_VertexInspector
 [INFO ]  Class: BRepExtrema_SelfIntersection
 [INFO ]      skipped method BRepExtrema_SelfIntersection::0c68ae9e4f2a1503208f51fabe6bb919
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7414,9 +7417,9 @@ date : 2023-03-19 08:19:35.073526
 [INFO ]  Class: AIS_WalkDelta
 [INFO ]  Class: AIS_WalkPart
 [INFO ]  Class: AIS_AnimationCamera
-[INFO ]  Class: AIS_AnimationObject
 [INFO ]  Class: AIS_Axis
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: AIS_BaseAnimationObject
 [INFO ]  Class: AIS_CameraFrustum
 [INFO ]  Enum: SelectionMode
 [INFO ]  Class: AIS_Circle
@@ -7471,6 +7474,8 @@ date : 2023-03-19 08:19:35.073526
 [INFO ]      Wrap nested class AIS_ViewCube::IntegerHasher
 [INFO ]  Class: AIS_XRTrackedDevice
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: AIS_AnimationAxisRotation
+[INFO ]  Class: AIS_AnimationObject
 [INFO ]  Class: AIS_ColoredShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AIS_TexturedShape
@@ -9081,8 +9086,8 @@ date : 2023-03-19 08:19:35.073526
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 36.44s
+SWIG interface file generation completed in 143.50s
 #################################################
 
-[INFO ]  Number of classes: 4587
-[INFO ]  Number of methods: 46543
+[INFO ]  Number of classes: 4605
+[INFO ]  Number of methods: 46713

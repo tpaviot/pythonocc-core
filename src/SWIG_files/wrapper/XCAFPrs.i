@@ -1019,7 +1019,7 @@ None
 class XCAFPrs_Texture : public Graphic3d_Texture2D {
 	public:
 		/****************** XCAFPrs_Texture ******************/
-		/**** md5 signature: f9dbe9d0fe880b67c047fad8716af896 ****/
+		/**** md5 signature: 000bd876aad38ca74535015d5e9463d7 ****/
 		%feature("compactdefaultargs") XCAFPrs_Texture;
 		%feature("autodoc", "Constructor.
 
@@ -1032,7 +1032,7 @@ Returns
 -------
 None
 ") XCAFPrs_Texture;
-		 XCAFPrs_Texture(const Image_Texture & theImageSource, const Graphic3d_TextureUnit theUnit);
+		 XCAFPrs_Texture(const opencascade::handle<Image_Texture> & theImageSource, const Graphic3d_TextureUnit theUnit);
 
 		/****************** GetCompressedImage ******************/
 		/**** md5 signature: bad0c95151f5a884e9dbc72217977538 ****/
@@ -1065,15 +1065,15 @@ opencascade::handle<Image_PixMap>
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** GetImageSource ******************/
-		/**** md5 signature: 1fa59174d8d0d408df072137f5b3fe0e ****/
+		/**** md5 signature: c24f99a1f3e5bf7521b240aa232d6d28 ****/
 		%feature("compactdefaultargs") GetImageSource;
 		%feature("autodoc", "Return image source.
 
 Returns
 -------
-Image_Texture
+opencascade::handle<Image_Texture>
 ") GetImageSource;
-		const Image_Texture & GetImageSource();
+		const opencascade::handle<Image_Texture> & GetImageSource();
 
 };
 

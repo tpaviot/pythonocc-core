@@ -278,6 +278,8 @@ class bsplclib:
     @staticmethod
     def Interpolate(Degree: int, FlatKnots: TColStd_Array1OfReal, Parameters: TColStd_Array1OfReal, ContactOrderArray: TColStd_Array1OfInteger, ArrayDimension: int) -> Tuple[float, float, int]: ...
     @staticmethod
+    def Intervals(theKnots: TColStd_Array1OfReal, theMults: TColStd_Array1OfInteger, theDegree: int, isPeriodic: bool, theContinuity: int, theFirst: float, theLast: float, theTolerance: float, theIntervals: TColStd_Array1OfReal) -> int: ...
+    @staticmethod
     def IsRational(Weights: TColStd_Array1OfReal, I1: int, I2: int, Epsilon: Optional[float] = 0.0) -> bool: ...
     @staticmethod
     def KnotAnalysis(Degree: int, Periodic: bool, CKnots: TColStd_Array1OfReal, CMults: TColStd_Array1OfInteger, KnotForm: GeomAbs_BSplKnotDistribution) -> int: ...
@@ -566,6 +568,7 @@ bsplclib_Interpolate = bsplclib.Interpolate
 bsplclib_Interpolate = bsplclib.Interpolate
 bsplclib_Interpolate = bsplclib.Interpolate
 bsplclib_Interpolate = bsplclib.Interpolate
+bsplclib_Intervals = bsplclib.Intervals
 bsplclib_IsRational = bsplclib.IsRational
 bsplclib_KnotAnalysis = bsplclib.KnotAnalysis
 bsplclib_KnotForm = bsplclib.KnotForm

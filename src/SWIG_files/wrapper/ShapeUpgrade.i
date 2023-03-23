@@ -1064,6 +1064,7 @@ None
 class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
 	public:
 typedef NCollection_DataMap <TopoDS_Shape , opencascade::handle <Geom_Plane>, TopTools_ShapeMapHasher> DataMapOfFacePlane;
+typedef NCollection_DataMap <TopoDS_Shape , TopTools_MapOfShape , TopTools_ShapeMapHasher> DataMapOfShapeMapOfShape;
 		/****************** ShapeUpgrade_UnifySameDomain ******************/
 		/**** md5 signature: 81e68dd91fd764ff95aa62b12dc88ed6 ****/
 		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;

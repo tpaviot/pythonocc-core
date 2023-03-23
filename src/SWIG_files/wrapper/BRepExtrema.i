@@ -126,9 +126,12 @@ BRepExtrema_IsInFace = BRepExtrema_SupportType.BRepExtrema_IsInFace
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_CellFilter <BRepExtrema_VertexInspector> BRepExtrema_CellFilter;
 typedef NCollection_DataMap <Standard_Integer, TColStd_PackedMapOfInteger> BRepExtrema_MapOfIntegerPackedMapOfInteger;
 typedef NCollection_Sequence <BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
 typedef NCollection_Vector <TopoDS_Shape> BRepExtrema_ShapeList;
+typedef typename BRepExtrema_ProximityDistTool::ProxPnt_Status ProxPnt_Status;
+typedef NCollection_Vector <gp_XYZ> VectorOfPoint;
 /* end typedefs declaration */
 
 /***********************************
@@ -1606,7 +1609,6 @@ dist: float
 ***************************************/
 class BRepExtrema_ProximityValueTool {
 	public:
-typedef typename BRepExtrema_ProximityDistTool::ProxPnt_Status ProxPnt_Status;
 		/****************** BRepExtrema_ProximityValueTool ******************/
 		/**** md5 signature: f01190ce189b90d5b9278fbee66731a1 ****/
 		%feature("compactdefaultargs") BRepExtrema_ProximityValueTool;
@@ -1779,7 +1781,6 @@ None
 ***********************************/
 class BRepExtrema_ShapeProximity {
 	public:
-typedef typename BRepExtrema_ProximityValueTool::ProxPnt_Status ProxPnt_Status;
 		/****************** BRepExtrema_ShapeProximity ******************/
 		/**** md5 signature: 73b29b290349b3955b499c712de97888 ****/
 		%feature("compactdefaultargs") BRepExtrema_ShapeProximity;
@@ -2463,6 +2464,103 @@ None
 %make_alias(BRepExtrema_TriangleSet)
 
 %extend BRepExtrema_TriangleSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class BRepExtrema_VertexInspector *
+************************************/
+class BRepExtrema_VertexInspector : public NCollection_CellFilter_InspectorXYZ {
+	public:
+typedef Standard_Integer Target;
+		/****************** BRepExtrema_VertexInspector ******************/
+		/**** md5 signature: 53fbe88087034c23b86d3bdf7797b2dc ****/
+		%feature("compactdefaultargs") BRepExtrema_VertexInspector;
+		%feature("autodoc", "Constructor; remembers the tolerance.
+
+Returns
+-------
+None
+") BRepExtrema_VertexInspector;
+		 BRepExtrema_VertexInspector();
+
+		/****************** Add ******************/
+		/**** md5 signature: 674df0f2056599deaae173500780a92d ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "Keep the points used for comparison.
+
+Parameters
+----------
+thePnt: gp_XYZ
+
+Returns
+-------
+None
+") Add;
+		void Add(const gp_XYZ & thePnt);
+
+		/****************** Inspect ******************/
+		/**** md5 signature: 261093865d6e31515b7e7f70c791b792 ****/
+		%feature("compactdefaultargs") Inspect;
+		%feature("autodoc", "Implementation of inspection method.
+
+Parameters
+----------
+theTarget: int
+
+Returns
+-------
+NCollection_CellFilter_Action
+") Inspect;
+		NCollection_CellFilter_Action Inspect(const Standard_Integer theTarget);
+
+		/****************** IsNeedAdd ******************/
+		/**** md5 signature: a76710b12bd40ec71526b03721dbb5ab ****/
+		%feature("compactdefaultargs") IsNeedAdd;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsNeedAdd;
+		Standard_Boolean IsNeedAdd();
+
+		/****************** SetCurrent ******************/
+		/**** md5 signature: 52c7652c9c3b17a93e1b9f74b55265ec ****/
+		%feature("compactdefaultargs") SetCurrent;
+		%feature("autodoc", "Set current point to search for coincidence.
+
+Parameters
+----------
+theCurPnt: gp_XYZ
+
+Returns
+-------
+None
+") SetCurrent;
+		void SetCurrent(const gp_XYZ & theCurPnt);
+
+		/****************** SetTol ******************/
+		/**** md5 signature: e2f99a636d9750a82bb2260a2802862d ****/
+		%feature("compactdefaultargs") SetTol;
+		%feature("autodoc", "Set tolerance for comparison of point coordinates.
+
+Parameters
+----------
+theTol: float
+
+Returns
+-------
+None
+") SetTol;
+		void SetTol(const Standard_Real theTol);
+
+};
+
+
+%extend BRepExtrema_VertexInspector {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

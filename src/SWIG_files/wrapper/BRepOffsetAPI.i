@@ -2558,6 +2558,17 @@ TopoDS_Shape
 ") GeneratedFace;
 		TopoDS_Shape GeneratedFace(const TopoDS_Shape & Edge);
 
+		/****************** GetStatus ******************/
+		/**** md5 signature: d01d66bd030c1232d59d2b7253fc3b10 ****/
+		%feature("compactdefaultargs") GetStatus;
+		%feature("autodoc", "Returns the status of thrusection operation.
+
+Returns
+-------
+BRepFill_ThruSectionErrorStatus
+") GetStatus;
+		BRepFill_ThruSectionErrorStatus GetStatus();
+
 		/****************** Init ******************/
 		/**** md5 signature: 82b061dc05f66b08422610d2d7504487 ****/
 		%feature("compactdefaultargs") Init;

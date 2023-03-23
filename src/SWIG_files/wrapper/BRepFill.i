@@ -105,6 +105,16 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum BRepFill_ThruSectionErrorStatus {
+	BRepFill_ThruSectionErrorStatus_Done = 0,
+	BRepFill_ThruSectionErrorStatus_NotDone = 1,
+	BRepFill_ThruSectionErrorStatus_NotSameTopology = 2,
+	BRepFill_ThruSectionErrorStatus_ProfilesInconsistent = 3,
+	BRepFill_ThruSectionErrorStatus_WrongUsage = 4,
+	BRepFill_ThruSectionErrorStatus_Null3DCurve = 5,
+	BRepFill_ThruSectionErrorStatus_Failed = 6,
+};
+
 enum BRepFill_TransitionStyle {
 	BRepFill_Modified = 0,
 	BRepFill_Right = 1,
@@ -121,6 +131,22 @@ enum BRepFill_TypeOfContact {
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class BRepFill_ThruSectionErrorStatus(IntEnum):
+	BRepFill_ThruSectionErrorStatus_Done = 0
+	BRepFill_ThruSectionErrorStatus_NotDone = 1
+	BRepFill_ThruSectionErrorStatus_NotSameTopology = 2
+	BRepFill_ThruSectionErrorStatus_ProfilesInconsistent = 3
+	BRepFill_ThruSectionErrorStatus_WrongUsage = 4
+	BRepFill_ThruSectionErrorStatus_Null3DCurve = 5
+	BRepFill_ThruSectionErrorStatus_Failed = 6
+BRepFill_ThruSectionErrorStatus_Done = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_Done
+BRepFill_ThruSectionErrorStatus_NotDone = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_NotDone
+BRepFill_ThruSectionErrorStatus_NotSameTopology = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_NotSameTopology
+BRepFill_ThruSectionErrorStatus_ProfilesInconsistent = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_ProfilesInconsistent
+BRepFill_ThruSectionErrorStatus_WrongUsage = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_WrongUsage
+BRepFill_ThruSectionErrorStatus_Null3DCurve = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_Null3DCurve
+BRepFill_ThruSectionErrorStatus_Failed = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_Failed
 
 class BRepFill_TransitionStyle(IntEnum):
 	BRepFill_Modified = 0
@@ -574,6 +600,17 @@ Returns
 TopTools_ListOfShape
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Edge & SubSection);
+
+		/****************** GetStatus ******************/
+		/**** md5 signature: d01d66bd030c1232d59d2b7253fc3b10 ****/
+		%feature("compactdefaultargs") GetStatus;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+BRepFill_ThruSectionErrorStatus
+") GetStatus;
+		BRepFill_ThruSectionErrorStatus GetStatus();
 
 		/****************** Init ******************/
 		/**** md5 signature: 217046dd3125fb37abc6e15803e209f1 ****/
@@ -1815,6 +1852,17 @@ Returns
 TopTools_ListOfShape
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SSection);
+
+		/****************** GetStatus ******************/
+		/**** md5 signature: d01d66bd030c1232d59d2b7253fc3b10 ****/
+		%feature("compactdefaultargs") GetStatus;
+		%feature("autodoc", "Returns status of the operation.
+
+Returns
+-------
+BRepFill_ThruSectionErrorStatus
+") GetStatus;
+		BRepFill_ThruSectionErrorStatus GetStatus();
 
 		/****************** IsMutableInput ******************/
 		/**** md5 signature: 2df16e5a957577cfce65832aa2d90512 ****/

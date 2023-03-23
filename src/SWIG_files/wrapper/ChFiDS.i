@@ -121,6 +121,7 @@ enum ChFiDS_TypeOfConcavity {
 	ChFiDS_Tangential = 2,
 	ChFiDS_FreeBound = 3,
 	ChFiDS_Other = 4,
+	ChFiDS_Mixed = 5,
 };
 
 /* end public enums declaration */
@@ -178,11 +179,13 @@ class ChFiDS_TypeOfConcavity(IntEnum):
 	ChFiDS_Tangential = 2
 	ChFiDS_FreeBound = 3
 	ChFiDS_Other = 4
+	ChFiDS_Mixed = 5
 ChFiDS_Concave = ChFiDS_TypeOfConcavity.ChFiDS_Concave
 ChFiDS_Convex = ChFiDS_TypeOfConcavity.ChFiDS_Convex
 ChFiDS_Tangential = ChFiDS_TypeOfConcavity.ChFiDS_Tangential
 ChFiDS_FreeBound = ChFiDS_TypeOfConcavity.ChFiDS_FreeBound
 ChFiDS_Other = ChFiDS_TypeOfConcavity.ChFiDS_Other
+ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
 };
 /* end python proxy for enums */
 
@@ -2028,6 +2031,17 @@ Returns
 TopoDS_Vertex
 ") FirstVertex;
 		TopoDS_Vertex FirstVertex();
+
+		/****************** GetTolesp ******************/
+		/**** md5 signature: 217c13748b3cb2bf2cc59e96cafe8207 ****/
+		%feature("compactdefaultargs") GetTolesp;
+		%feature("autodoc", "Return tolesp parameter.
+
+Returns
+-------
+float
+") GetTolesp;
+		Standard_Real GetTolesp();
 
 		/****************** GetType ******************/
 		/**** md5 signature: 6d4e6ae7972633971ba343e8afc91aa1 ****/
