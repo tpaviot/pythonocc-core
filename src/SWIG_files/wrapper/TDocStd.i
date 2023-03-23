@@ -233,9 +233,9 @@ None
 
 Parameters
 ----------
-theFormat: TCollection_AsciiString
-theDescription: TCollection_AsciiString
-theExtension: TCollection_AsciiString
+theFormat: str
+theDescription: str
+theExtension: str
 theReader: PCDM_RetrievalDriver
 theWriter: PCDM_StorageDriver
 
@@ -243,7 +243,7 @@ Returns
 -------
 None
 ") DefineFormat;
-		void DefineFormat(const TCollection_AsciiString & theFormat, const TCollection_AsciiString & theDescription, const TCollection_AsciiString & theExtension, const opencascade::handle<PCDM_RetrievalDriver> & theReader, const opencascade::handle<PCDM_StorageDriver> & theWriter);
+		void DefineFormat(TCollection_AsciiString theFormat, TCollection_AsciiString theDescription, TCollection_AsciiString theExtension, const opencascade::handle<PCDM_RetrievalDriver> & theReader, const opencascade::handle<PCDM_StorageDriver> & theWriter);
 
 
             %feature("autodoc", "1");
@@ -302,13 +302,13 @@ bool
 
 Parameters
 ----------
-path: TCollection_ExtendedString
+path: str
 
 Returns
 -------
 int
 ") IsInSession;
-		Standard_Integer IsInSession(const TCollection_ExtendedString & path);
+		Standard_Integer IsInSession(TCollection_ExtendedString path);
 
 		/****************** NbDocuments ******************/
 		/**** md5 signature: 962bf94556b581ec6396ebefd0c99d4c ****/
@@ -328,14 +328,14 @@ int
 
 Parameters
 ----------
-format: TCollection_ExtendedString
+format: str
 aDoc: CDM_Document
 
 Returns
 -------
 None
 ") NewDocument;
-		virtual void NewDocument(const TCollection_ExtendedString & format, opencascade::handle<CDM_Document> & aDoc);
+		virtual void NewDocument(TCollection_ExtendedString format, opencascade::handle<CDM_Document> & aDoc);
 
 		/****************** NewDocument ******************/
 		/**** md5 signature: 304cba09d9f9b321dcbffa19f8ee14a3 ****/
@@ -344,14 +344,14 @@ None
 
 Parameters
 ----------
-format: TCollection_ExtendedString
+format: str
 aDoc: TDocStd_Document
 
 Returns
 -------
 None
 ") NewDocument;
-		void NewDocument(const TCollection_ExtendedString & format, opencascade::handle<TDocStd_Document> & aDoc);
+		void NewDocument(TCollection_ExtendedString format, opencascade::handle<TDocStd_Document> & aDoc);
 
 		/****************** OnAbortTransaction ******************/
 		/**** md5 signature: 307f163969480bb723f66d714329e2ba ****/
@@ -405,7 +405,7 @@ None
 
 Parameters
 ----------
-thePath: TCollection_ExtendedString
+thePath: str
 theDoc: TDocStd_Document
 theFilter: PCDM_ReaderFilter
 theRange: Message_ProgressRange,optional
@@ -415,7 +415,7 @@ Returns
 -------
 PCDM_ReaderStatus
 ") Open;
-		PCDM_ReaderStatus Open(const TCollection_ExtendedString & thePath, opencascade::handle<TDocStd_Document> & theDoc, const opencascade::handle<PCDM_ReaderFilter> & theFilter, const Message_ProgressRange & theRange = Message_ProgressRange());
+		PCDM_ReaderStatus Open(TCollection_ExtendedString thePath, opencascade::handle<TDocStd_Document> & theDoc, const opencascade::handle<PCDM_ReaderFilter> & theFilter, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Open ******************/
 		/**** md5 signature: b45b12c15fac1f822dd6f693c26d27ce ****/
@@ -424,7 +424,7 @@ PCDM_ReaderStatus
 
 Parameters
 ----------
-thePath: TCollection_ExtendedString
+thePath: str
 theDoc: TDocStd_Document
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -433,7 +433,7 @@ Returns
 -------
 PCDM_ReaderStatus
 ") Open;
-		PCDM_ReaderStatus Open(const TCollection_ExtendedString & thePath, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
+		PCDM_ReaderStatus Open(TCollection_ExtendedString thePath, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ReadingFormats ******************/
 		/**** md5 signature: 6dff661583c284b08e2b917089276643 ****/
@@ -468,9 +468,9 @@ opencascade::handle<Resource_Manager>
 
 Returns
 -------
-char *
+str
 ") ResourcesName;
-		virtual const char * ResourcesName();
+		virtual Standard_CString ResourcesName();
 
 		/****************** Save ******************/
 		/**** md5 signature: b571dab0fb3d3e07b3e8150d22309a53 ****/
@@ -497,7 +497,7 @@ PCDM_StoreStatus
 Parameters
 ----------
 theDoc: TDocStd_Document
-theStatusMessage: TCollection_ExtendedString
+theStatusMessage: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -515,7 +515,7 @@ PCDM_StoreStatus
 Parameters
 ----------
 theDoc: TDocStd_Document
-path: TCollection_ExtendedString
+path: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -523,7 +523,7 @@ Returns
 -------
 PCDM_StoreStatus
 ") SaveAs;
-		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, const TCollection_ExtendedString & path, const Message_ProgressRange & theRange = Message_ProgressRange());
+		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString path, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SaveAs ******************/
 		/**** md5 signature: fc9f357e438e352135774e1dd7c1bb0f ****/
@@ -533,8 +533,8 @@ PCDM_StoreStatus
 Parameters
 ----------
 theDoc: TDocStd_Document
-path: TCollection_ExtendedString
-theStatusMessage: TCollection_ExtendedString
+path: str
+theStatusMessage: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -542,7 +542,7 @@ Returns
 -------
 PCDM_StoreStatus
 ") SaveAs;
-		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, const TCollection_ExtendedString & path, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
+		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString path, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** WritingFormats ******************/
 		/**** md5 signature: a5407beb640b0ebe68c0c3306feeeddb ****/
@@ -623,13 +623,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_ExtendedString & theName);
+		void SetName(TCollection_ExtendedString theName);
 
 };
 
@@ -732,13 +732,13 @@ class TDocStd_Document : public CDM_Document {
 
 Parameters
 ----------
-astorageformat: TCollection_ExtendedString
+astorageformat: str
 
 Returns
 -------
 None
 ") TDocStd_Document;
-		 TDocStd_Document(const TCollection_ExtendedString & astorageformat);
+		 TDocStd_Document(TCollection_ExtendedString astorageformat);
 
 		/****************** AbortCommand ******************/
 		/**** md5 signature: d0bb10d25bbdbaf736403be160aab8bb ****/
@@ -769,13 +769,13 @@ None
 
 Parameters
 ----------
-newStorageFormat: TCollection_ExtendedString
+newStorageFormat: str
 
 Returns
 -------
 None
 ") ChangeStorageFormat;
-		virtual void ChangeStorageFormat(const TCollection_ExtendedString & newStorageFormat);
+		virtual void ChangeStorageFormat(TCollection_ExtendedString newStorageFormat);
 
 		/****************** ChangeStorageFormatVersion ******************/
 		/**** md5 signature: c0a170d4f51e35c0959917fcc2b6dc37 ****/
@@ -1330,13 +1330,13 @@ None
 
 Parameters
 ----------
-aDocEntry: TCollection_AsciiString
+aDocEntry: str
 
 Returns
 -------
 None
 ") UpdateReferences;
-		void UpdateReferences(const TCollection_AsciiString & aDocEntry);
+		void UpdateReferences(TCollection_AsciiString aDocEntry);
 
 };
 
@@ -1683,13 +1683,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
 bool
 ") CommitCommand;
-		Standard_Boolean CommitCommand(const TCollection_ExtendedString & theName);
+		Standard_Boolean CommitCommand(TCollection_ExtendedString theName);
 
 		/****************** Documents ******************/
 		/**** md5 signature: 65ccd54a293a56a7b15c353e5c466919 ****/
@@ -2099,13 +2099,13 @@ class TDocStd_PathParser {
 
 Parameters
 ----------
-path: TCollection_ExtendedString
+path: str
 
 Returns
 -------
 None
 ") TDocStd_PathParser;
-		 TDocStd_PathParser(const TCollection_ExtendedString & path);
+		 TDocStd_PathParser(TCollection_ExtendedString path);
 
 		/****************** Extension ******************/
 		/**** md5 signature: 358567513bd0af360dd505afd61f845e ****/
@@ -2272,13 +2272,13 @@ bool
 
 Parameters
 ----------
-aDocEntry: TCollection_AsciiString
+aDocEntry: str
 
 Returns
 -------
 None
 ") DocumentEntry;
-		void DocumentEntry(const TCollection_AsciiString & aDocEntry);
+		void DocumentEntry(TCollection_AsciiString aDocEntry);
 
 		/****************** DocumentEntry ******************/
 		/**** md5 signature: 2e49b1b9cd0559e272eb5e5bc90c96a3 ****/
@@ -2343,13 +2343,13 @@ None
 
 Parameters
 ----------
-aLabEntry: TCollection_AsciiString
+aLabEntry: str
 
 Returns
 -------
 None
 ") LabelEntry;
-		void LabelEntry(const TCollection_AsciiString & aLabEntry);
+		void LabelEntry(TCollection_AsciiString aLabEntry);
 
 		/****************** LabelEntry ******************/
 		/**** md5 signature: bda75a377517bdf3b65a3a4ff247121d ****/

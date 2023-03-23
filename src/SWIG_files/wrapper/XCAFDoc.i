@@ -865,13 +865,13 @@ None
 
 Parameters
 ----------
-theString: TCollection_AsciiString
+theString: str
 
 Returns
 -------
 None
 ") XCAFDoc_AssemblyItemId;
-		 XCAFDoc_AssemblyItemId(const TCollection_AsciiString & theString);
+		 XCAFDoc_AssemblyItemId(TCollection_AsciiString theString);
 
 
             %feature("autodoc", "1");
@@ -914,13 +914,13 @@ None
 
 Parameters
 ----------
-theString: TCollection_AsciiString
+theString: str
 
 Returns
 -------
 None
 ") Init;
-		void Init(const TCollection_AsciiString & theString);
+		void Init(TCollection_AsciiString theString);
 
 		/****************** IsChild ******************/
 		/**** md5 signature: 74a81ffc330676a231e756fbcc5a0125 ****/
@@ -1310,13 +1310,13 @@ None
 
 Parameters
 ----------
-theString: TCollection_AsciiString
+theString: str
 
 Returns
 -------
 None
 ") SetItem;
-		void SetItem(const TCollection_AsciiString & theString);
+		void SetItem(TCollection_AsciiString theString);
 
 		/****************** SetSubshapeIndex ******************/
 		/**** md5 signature: 21266a81ca356bdccdc2388c3f31e929 ****/
@@ -1630,7 +1630,7 @@ None
 Parameters
 ----------
 thePlane: gp_Pln
-theName: TCollection_ExtendedString
+theName: str
 theCapping: bool
 
 Returns
@@ -1664,7 +1664,7 @@ TDF_Label
 Parameters
 ----------
 thePlane: gp_Pln
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
@@ -1738,7 +1738,7 @@ Parameters
 ----------
 theLabel: TDF_Label
 thePlane: gp_Pln
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
@@ -1755,13 +1755,13 @@ Parameters
 ----------
 theLabel: TDF_Label
 thePlane: gp_Pln
-theName: TCollection_HAsciiString
 
 Returns
 -------
+theName: TCollection_HAsciiString
 theCapping: bool
 ") GetClippingPlane;
-		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> & theName, Standard_Boolean &OutValue);
+		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Boolean &OutValue);
 
 		/****************** GetClippingPlanes ******************/
 		/**** md5 signature: 075e7b42329dbcab74840155da865a35 ****/
@@ -1870,7 +1870,7 @@ Parameters
 ----------
 theLabelL: TDF_Label
 thePlane: gp_Pln
-theName: TCollection_ExtendedString
+theName: str
 
 Returns
 -------
@@ -3453,15 +3453,14 @@ TDF_Label
 Parameters
 ----------
 theDatumL: TDF_Label
-theName: TCollection_HAsciiString
-theDescription: TCollection_HAsciiString
-theIdentification: TCollection_HAsciiString
 
 Returns
 -------
-bool
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+theIdentification: TCollection_HAsciiString
 ") GetDatum;
-		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription, opencascade::handle<TCollection_HAsciiString> & theIdentification);
+		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetDatumLabels ******************/
 		/**** md5 signature: 55e6de8f484b7fb12b9a45740915465a ****/
@@ -3519,14 +3518,14 @@ Parameters
 ----------
 theDimTolL: TDF_Label
 theVal: TColStd_HArray1OfReal
-theName: TCollection_HAsciiString
-theDescription: TCollection_HAsciiString
 
 Returns
 -------
 theKind: int
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
 ") GetDimTol;
-		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription);
+		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetDimTolLabels ******************/
 		/**** md5 signature: ecf3558fc2a17c2bcf4c65b55b7aabbc ****/
@@ -5277,13 +5276,13 @@ None
 
 Parameters
 ----------
-theLayer: TCollection_ExtendedString
+theLayer: str
 
 Returns
 -------
 TDF_Label
 ") AddLayer;
-		TDF_Label AddLayer(const TCollection_ExtendedString & theLayer);
+		TDF_Label AddLayer(TCollection_ExtendedString theLayer);
 
 		/****************** AddLayer ******************/
 		/**** md5 signature: efd3c8f010e5ea0400be0df10efda0ea ****/
@@ -5292,14 +5291,14 @@ TDF_Label
 
 Parameters
 ----------
-theLayer: TCollection_ExtendedString
+theLayer: str
 theToFindVisible: bool
 
 Returns
 -------
 TDF_Label
 ") AddLayer;
-		TDF_Label AddLayer(const TCollection_ExtendedString & theLayer, const Standard_Boolean theToFindVisible);
+		TDF_Label AddLayer(TCollection_ExtendedString theLayer, const Standard_Boolean theToFindVisible);
 
 		/****************** BaseLabel ******************/
 		/**** md5 signature: cb499d8135863e96e585085d0b85c75a ****/
@@ -5327,14 +5326,14 @@ TDF_Label
 
 Parameters
 ----------
-aLayer: TCollection_ExtendedString
+aLayer: str
 lab: TDF_Label
 
 Returns
 -------
 bool
 ") FindLayer;
-		Standard_Boolean FindLayer(const TCollection_ExtendedString & aLayer, TDF_Label & lab);
+		Standard_Boolean FindLayer(TCollection_ExtendedString aLayer, TDF_Label & lab);
 
 		/****************** FindLayer ******************/
 		/**** md5 signature: 0560222f5f3f399e6f4382dab748b597 ****/
@@ -5343,7 +5342,7 @@ bool
 
 Parameters
 ----------
-aLayer: TCollection_ExtendedString
+aLayer: str
 theToFindWithProperty: bool,optional
 	default value is Standard_False
 theToFindVisible: bool,optional
@@ -5353,7 +5352,7 @@ Returns
 -------
 TDF_Label
 ") FindLayer;
-		TDF_Label FindLayer(const TCollection_ExtendedString & aLayer, const Standard_Boolean theToFindWithProperty = Standard_False, const Standard_Boolean theToFindVisible = Standard_True);
+		TDF_Label FindLayer(TCollection_ExtendedString aLayer, const Standard_Boolean theToFindWithProperty = Standard_False, const Standard_Boolean theToFindVisible = Standard_True);
 
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
@@ -5374,7 +5373,7 @@ Standard_GUID
 Parameters
 ----------
 lab: TDF_Label
-aLayer: TCollection_ExtendedString
+aLayer: str
 
 Returns
 -------
@@ -5541,13 +5540,13 @@ bool
 Parameters
 ----------
 L: TDF_Label
-aLayer: TCollection_ExtendedString
+aLayer: str
 
 Returns
 -------
 bool
 ") IsSet;
-		Standard_Boolean IsSet(const TDF_Label & L, const TCollection_ExtendedString & aLayer);
+		Standard_Boolean IsSet(const TDF_Label & L, TCollection_ExtendedString aLayer);
 
 		/****************** IsSet ******************/
 		/**** md5 signature: a752a69f656dba6fbb8ebf3bb48adf18 ****/
@@ -5573,13 +5572,13 @@ bool
 Parameters
 ----------
 Sh: TopoDS_Shape
-aLayer: TCollection_ExtendedString
+aLayer: str
 
 Returns
 -------
 bool
 ") IsSet;
-		Standard_Boolean IsSet(const TopoDS_Shape & Sh, const TCollection_ExtendedString & aLayer);
+		Standard_Boolean IsSet(const TopoDS_Shape & Sh, TCollection_ExtendedString aLayer);
 
 		/****************** IsSet ******************/
 		/**** md5 signature: d8ac3a643dcc3086d6694928e97ec0a0 ****/
@@ -5668,7 +5667,7 @@ None
 Parameters
 ----------
 L: TDF_Label
-aLayer: TCollection_ExtendedString
+aLayer: str
 shapeInOneLayer: bool,optional
 	default value is Standard_False
 
@@ -5676,7 +5675,7 @@ Returns
 -------
 None
 ") SetLayer;
-		void SetLayer(const TDF_Label & L, const TCollection_ExtendedString & aLayer, const Standard_Boolean shapeInOneLayer = Standard_False);
+		void SetLayer(const TDF_Label & L, TCollection_ExtendedString aLayer, const Standard_Boolean shapeInOneLayer = Standard_False);
 
 		/****************** SetLayer ******************/
 		/**** md5 signature: 387666dea1ccb3d8d0644bd40bb7a443 ****/
@@ -5704,7 +5703,7 @@ bool
 Parameters
 ----------
 Sh: TopoDS_Shape
-aLayer: TCollection_ExtendedString
+aLayer: str
 shapeInOneLayer: bool,optional
 	default value is Standard_False
 
@@ -5712,7 +5711,7 @@ Returns
 -------
 bool
 ") SetLayer;
-		Standard_Boolean SetLayer(const TopoDS_Shape & Sh, const TCollection_ExtendedString & aLayer, const Standard_Boolean shapeInOneLayer = Standard_False);
+		Standard_Boolean SetLayer(const TopoDS_Shape & Sh, TCollection_ExtendedString aLayer, const Standard_Boolean shapeInOneLayer = Standard_False);
 
 		/****************** SetVisibility ******************/
 		/**** md5 signature: fd298e2f64f12ef8883e1e6d1ec6dea6 ****/
@@ -5780,13 +5779,13 @@ bool
 Parameters
 ----------
 L: TDF_Label
-aLayer: TCollection_ExtendedString
+aLayer: str
 
 Returns
 -------
 bool
 ") UnSetOneLayer;
-		Standard_Boolean UnSetOneLayer(const TDF_Label & L, const TCollection_ExtendedString & aLayer);
+		Standard_Boolean UnSetOneLayer(const TDF_Label & L, TCollection_ExtendedString aLayer);
 
 		/****************** UnSetOneLayer ******************/
 		/**** md5 signature: 302c9e7d6d6e40f3f9efacfcf142096e ****/
@@ -5812,13 +5811,13 @@ bool
 Parameters
 ----------
 Sh: TopoDS_Shape
-aLayer: TCollection_ExtendedString
+aLayer: str
 
 Returns
 -------
 bool
 ") UnSetOneLayer;
-		Standard_Boolean UnSetOneLayer(const TopoDS_Shape & Sh, const TCollection_ExtendedString & aLayer);
+		Standard_Boolean UnSetOneLayer(const TopoDS_Shape & Sh, TCollection_ExtendedString aLayer);
 
 		/****************** UnSetOneLayer ******************/
 		/**** md5 signature: 615aafd249a97646285d23d0f7c5fd58 ****/
@@ -5973,14 +5972,14 @@ None
 Parameters
 ----------
 theLabel: TDF_Label
-theUnitName: TCollection_AsciiString
+theUnitName: str
 theUnitValue: float
 
 Returns
 -------
 opencascade::handle<XCAFDoc_LengthUnit>
 ") Set;
-		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const TCollection_AsciiString & theUnitName, const Standard_Real theUnitValue);
+		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, TCollection_AsciiString theUnitName, const Standard_Real theUnitValue);
 
 		/****************** Set ******************/
 		/**** md5 signature: 6574b11e6a0f9e7ddc0ec3a5fa9d4758 ****/
@@ -6007,14 +6006,14 @@ Parameters
 ----------
 theLabel: TDF_Label
 theGUID: Standard_GUID
-theUnitName: TCollection_AsciiString
+theUnitName: str
 theUnitValue: float
 
 Returns
 -------
 opencascade::handle<XCAFDoc_LengthUnit>
 ") Set;
-		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const Standard_GUID & theGUID, const TCollection_AsciiString & theUnitName, const Standard_Real theUnitValue);
+		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const Standard_GUID & theGUID, TCollection_AsciiString theUnitName, const Standard_Real theUnitValue);
 
 		/****************** Set ******************/
 		/**** md5 signature: 886c0c008a83c600a3fa609bbf9b32eb ****/
@@ -6023,14 +6022,14 @@ opencascade::handle<XCAFDoc_LengthUnit>
 
 Parameters
 ----------
-theUnitName: TCollection_AsciiString
+theUnitName: str
 theUnitValue: float
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_AsciiString & theUnitName, const Standard_Real theUnitValue);
+		void Set(TCollection_AsciiString theUnitName, const Standard_Real theUnitValue);
 
 };
 
@@ -6465,16 +6464,16 @@ Standard_GUID
 Parameters
 ----------
 MatL: TDF_Label
-aName: TCollection_HAsciiString
-aDescription: TCollection_HAsciiString
-aDensName: TCollection_HAsciiString
-aDensValType: TCollection_HAsciiString
 
 Returns
 -------
+aName: TCollection_HAsciiString
+aDescription: TCollection_HAsciiString
 aDensity: float
+aDensName: TCollection_HAsciiString
+aDensValType: TCollection_HAsciiString
 ") GetMaterial;
-		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> & aName, opencascade::handle<TCollection_HAsciiString> & aDescription, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> & aDensName, opencascade::handle<TCollection_HAsciiString> & aDensValType);
+		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetMaterialLabels ******************/
 		/**** md5 signature: cd3883adc849957e7e10d763ad936071 ****/
@@ -6702,14 +6701,14 @@ None
 
 Parameters
 ----------
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
+theUserName: str
+theTimeStamp: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp);
+		void Set(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp);
 
 		/****************** SetObject ******************/
 		/**** md5 signature: 71119db957b809a32068e9c60ccf3aaf ****/
@@ -6882,15 +6881,15 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Parameters
 ----------
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theComment: TCollection_ExtendedString
+theUserName: str
+theTimeStamp: str
+theComment: str
 
 Returns
 -------
 opencascade::handle<XCAFDoc_Note>
 ") CreateBalloon;
-		opencascade::handle<XCAFDoc_Note> CreateBalloon(const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theComment);
+		opencascade::handle<XCAFDoc_Note> CreateBalloon(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
 		/****************** CreateBinData ******************/
 		/**** md5 signature: 8fffa593325c02823c46011e17c3c3e5 ****/
@@ -6899,17 +6898,17 @@ opencascade::handle<XCAFDoc_Note>
 
 Parameters
 ----------
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theTitle: TCollection_ExtendedString
-theMIMEtype: TCollection_AsciiString
+theUserName: str
+theTimeStamp: str
+theTitle: str
+theMIMEtype: str
 theFile: OSD_File
 
 Returns
 -------
 opencascade::handle<XCAFDoc_Note>
 ") CreateBinData;
-		opencascade::handle<XCAFDoc_Note> CreateBinData(const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theTitle, const TCollection_AsciiString & theMIMEtype, OSD_File & theFile);
+		opencascade::handle<XCAFDoc_Note> CreateBinData(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, OSD_File & theFile);
 
 		/****************** CreateBinData ******************/
 		/**** md5 signature: f95933746f1ce2d9b2f0b561d3f3005d ****/
@@ -6918,17 +6917,17 @@ opencascade::handle<XCAFDoc_Note>
 
 Parameters
 ----------
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theTitle: TCollection_ExtendedString
-theMIMEtype: TCollection_AsciiString
+theUserName: str
+theTimeStamp: str
+theTitle: str
+theMIMEtype: str
 theData: TColStd_HArray1OfByte
 
 Returns
 -------
 opencascade::handle<XCAFDoc_Note>
 ") CreateBinData;
-		opencascade::handle<XCAFDoc_Note> CreateBinData(const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theTitle, const TCollection_AsciiString & theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
+		opencascade::handle<XCAFDoc_Note> CreateBinData(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
 		/****************** CreateComment ******************/
 		/**** md5 signature: 41b663076b0b608af4ceedbf243160b2 ****/
@@ -6937,15 +6936,15 @@ opencascade::handle<XCAFDoc_Note>
 
 Parameters
 ----------
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theComment: TCollection_ExtendedString
+theUserName: str
+theTimeStamp: str
+theComment: str
 
 Returns
 -------
 opencascade::handle<XCAFDoc_Note>
 ") CreateComment;
-		opencascade::handle<XCAFDoc_Note> CreateComment(const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theComment);
+		opencascade::handle<XCAFDoc_Note> CreateComment(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
 		/****************** DeleteAllNotes ******************/
 		/**** md5 signature: d76db32223599baa426956fe4ae117fb ****/
@@ -9800,13 +9799,13 @@ None
 Parameters
 ----------
 theMat: XCAFDoc_VisMaterial
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 TDF_Label
 ") AddMaterial;
-		TDF_Label AddMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMat, const TCollection_AsciiString & theName);
+		TDF_Label AddMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMat, TCollection_AsciiString theName);
 
 		/****************** AddMaterial ******************/
 		/**** md5 signature: 4f812bc5d327fe3e730676ff3e6dd617 ****/
@@ -9815,13 +9814,13 @@ TDF_Label
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 TDF_Label
 ") AddMaterial;
-		TDF_Label AddMaterial(const TCollection_AsciiString & theName);
+		TDF_Label AddMaterial(TCollection_AsciiString theName);
 
 		/****************** BaseLabel ******************/
 		/**** md5 signature: 0fb6b1cd40875f3170cd1b9dbe0b46bd ****/
@@ -10404,17 +10403,17 @@ None
 Parameters
 ----------
 theLabel: TDF_Label
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theTitle: TCollection_ExtendedString
-theMIMEtype: TCollection_AsciiString
+theUserName: str
+theTimeStamp: str
+theTitle: str
+theMIMEtype: str
 theFile: OSD_File
 
 Returns
 -------
 opencascade::handle<XCAFDoc_NoteBinData>
 ") Set;
-		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theTitle, const TCollection_AsciiString & theMIMEtype, OSD_File & theFile);
+		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, OSD_File & theFile);
 
 		/****************** Set ******************/
 		/**** md5 signature: 2860d3c056ed0c365f58c7e7d299edb4 ****/
@@ -10424,17 +10423,17 @@ opencascade::handle<XCAFDoc_NoteBinData>
 Parameters
 ----------
 theLabel: TDF_Label
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theTitle: TCollection_ExtendedString
-theMIMEtype: TCollection_AsciiString
+theUserName: str
+theTimeStamp: str
+theTitle: str
+theMIMEtype: str
 theData: TColStd_HArray1OfByte
 
 Returns
 -------
 opencascade::handle<XCAFDoc_NoteBinData>
 ") Set;
-		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theTitle, const TCollection_AsciiString & theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
+		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
 		/****************** Set ******************/
 		/**** md5 signature: 687dd70a71c09ae4e0a64c71d20cde3d ****/
@@ -10443,15 +10442,15 @@ opencascade::handle<XCAFDoc_NoteBinData>
 
 Parameters
 ----------
-theTitle: TCollection_ExtendedString
-theMIMEtype: TCollection_AsciiString
+theTitle: str
+theMIMEtype: str
 theFile: OSD_File
 
 Returns
 -------
 bool
 ") Set;
-		Standard_Boolean Set(const TCollection_ExtendedString & theTitle, const TCollection_AsciiString & theMIMEtype, OSD_File & theFile);
+		Standard_Boolean Set(TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, OSD_File & theFile);
 
 		/****************** Set ******************/
 		/**** md5 signature: e0cd2bd6be68eba0bd2cad88cb216750 ****/
@@ -10460,15 +10459,15 @@ bool
 
 Parameters
 ----------
-theTitle: TCollection_ExtendedString
-theMIMEtype: TCollection_AsciiString
+theTitle: str
+theMIMEtype: str
 theData: TColStd_HArray1OfByte
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_ExtendedString & theTitle, const TCollection_AsciiString & theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
+		void Set(TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
 		/****************** Size ******************/
 		/**** md5 signature: fe6e16e0f1e86558dd017c7384c76cd6 ****/
@@ -10625,15 +10624,15 @@ None
 Parameters
 ----------
 theLabel: TDF_Label
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theComment: TCollection_ExtendedString
+theUserName: str
+theTimeStamp: str
+theComment: str
 
 Returns
 -------
 opencascade::handle<XCAFDoc_NoteComment>
 ") Set;
-		static opencascade::handle<XCAFDoc_NoteComment> Set(const TDF_Label & theLabel, const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theComment);
+		static opencascade::handle<XCAFDoc_NoteComment> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
 		/****************** Set ******************/
 		/**** md5 signature: 3e473f226231aa9fb962779c514f560d ****/
@@ -10642,13 +10641,13 @@ opencascade::handle<XCAFDoc_NoteComment>
 
 Parameters
 ----------
-theComment: TCollection_ExtendedString
+theComment: str
 
 Returns
 -------
 None
 ") Set;
-		void Set(const TCollection_ExtendedString & theComment);
+		void Set(TCollection_ExtendedString theComment);
 
 };
 
@@ -10722,15 +10721,15 @@ Standard_GUID
 Parameters
 ----------
 theLabel: TDF_Label
-theUserName: TCollection_ExtendedString
-theTimeStamp: TCollection_ExtendedString
-theComment: TCollection_ExtendedString
+theUserName: str
+theTimeStamp: str
+theComment: str
 
 Returns
 -------
 opencascade::handle<XCAFDoc_NoteBalloon>
 ") Set;
-		static opencascade::handle<XCAFDoc_NoteBalloon> Set(const TDF_Label & theLabel, const TCollection_ExtendedString & theUserName, const TCollection_ExtendedString & theTimeStamp, const TCollection_ExtendedString & theComment);
+		static opencascade::handle<XCAFDoc_NoteBalloon> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
 };
 

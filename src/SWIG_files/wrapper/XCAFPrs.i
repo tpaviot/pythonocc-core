@@ -414,13 +414,13 @@ int
 Parameters
 ----------
 theLabel: TDF_Label
-theParentId: TCollection_AsciiString
+theParentId: str
 
 Returns
 -------
 TCollection_AsciiString
 ") DefineChildId;
-		static TCollection_AsciiString DefineChildId(const TDF_Label & theLabel, const TCollection_AsciiString & theParentId);
+		static TCollection_AsciiString DefineChildId(const TDF_Label & theLabel, TCollection_AsciiString theParentId);
 
 		/****************** FindLabelFromPathId ******************/
 		/**** md5 signature: 36bd799783495ac64d75996cfdfc41d5 ****/
@@ -430,7 +430,7 @@ TCollection_AsciiString
 Parameters
 ----------
 theDocument: TDocStd_Document
-theId: TCollection_AsciiString
+theId: str
 theParentLocation: TopLoc_Location
 theLocation: TopLoc_Location
 
@@ -438,7 +438,7 @@ Returns
 -------
 TDF_Label
 ") FindLabelFromPathId;
-		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, const TCollection_AsciiString & theId, TopLoc_Location & theParentLocation, TopLoc_Location & theLocation);
+		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId, TopLoc_Location & theParentLocation, TopLoc_Location & theLocation);
 
 		/****************** FindLabelFromPathId ******************/
 		/**** md5 signature: c5c736078028775b674842dc6f73fef0 ****/
@@ -448,14 +448,14 @@ TDF_Label
 Parameters
 ----------
 theDocument: TDocStd_Document
-theId: TCollection_AsciiString
+theId: str
 theLocation: TopLoc_Location
 
 Returns
 -------
 TDF_Label
 ") FindLabelFromPathId;
-		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, const TCollection_AsciiString & theId, TopLoc_Location & theLocation);
+		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId, TopLoc_Location & theLocation);
 
 		/****************** FindShapeFromPathId ******************/
 		/**** md5 signature: fd58ff02219632fc8856de9d76e8dfa9 ****/
@@ -465,13 +465,13 @@ TDF_Label
 Parameters
 ----------
 theDocument: TDocStd_Document
-theId: TCollection_AsciiString
+theId: str
 
 Returns
 -------
 TopoDS_Shape
 ") FindShapeFromPathId;
-		static TopoDS_Shape FindShapeFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, const TCollection_AsciiString & theId);
+		static TopoDS_Shape FindShapeFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId);
 
 		/****************** Init ******************/
 		/**** md5 signature: eec1c7e6d6c080cb010b849abf99e398 ****/
@@ -565,13 +565,13 @@ class XCAFPrs_DocumentIdIterator {
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 
 Returns
 -------
 None
 ") XCAFPrs_DocumentIdIterator;
-		 XCAFPrs_DocumentIdIterator(const TCollection_AsciiString & thePath);
+		 XCAFPrs_DocumentIdIterator(TCollection_AsciiString thePath);
 
 		/****************** More ******************/
 		/**** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ****/

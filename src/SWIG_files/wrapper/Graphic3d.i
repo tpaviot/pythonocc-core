@@ -2877,9 +2877,9 @@ None
 
 Returns
 -------
-char *
+str
 ") StringType;
-		const char * StringType();
+		Standard_CString StringType();
 
 		/****************** Type ******************/
 		/**** md5 signature: 766ba92896e370dd36bb18b553d14b69 ****/
@@ -5389,13 +5389,13 @@ None
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & theName);
+		void SetName(TCollection_AsciiString theName);
 
 		/****************** SetPosition ******************/
 		/**** md5 signature: 6cd7cdcecb59ee7f74eb9c342f464f4d ****/
@@ -8982,13 +8982,13 @@ class Graphic3d_GraduatedTrihedron {
 
 Parameters
 ----------
-theNamesFont: TCollection_AsciiString,optional
+theNamesFont: str,optional
 	default value is 'Arial'
 theNamesStyle: Font_FontAspect,optional
 	default value is Font_FA_Bold
 theNamesSize: int,optional
 	default value is 12
-theValuesFont: TCollection_AsciiString,optional
+theValuesFont: str,optional
 	default value is 'Arial'
 theValuesStyle: Font_FontAspect,optional
 	default value is Font_FA_Regular
@@ -9007,7 +9007,7 @@ Returns
 -------
 None
 ") Graphic3d_GraduatedTrihedron;
-		 Graphic3d_GraduatedTrihedron(const TCollection_AsciiString & theNamesFont = "Arial", const Font_FontAspect & theNamesStyle = Font_FA_Bold, const Standard_Integer theNamesSize = 12, const TCollection_AsciiString & theValuesFont = "Arial", const Font_FontAspect & theValuesStyle = Font_FA_Regular, const Standard_Integer theValuesSize = 12, const Standard_ShortReal theArrowsLength = 30.0f, const Quantity_Color theGridColor = Quantity_NOC_WHITE, const Standard_Boolean theToDrawGrid = Standard_True, const Standard_Boolean theToDrawAxes = Standard_True);
+		 Graphic3d_GraduatedTrihedron(TCollection_AsciiString theNamesFont = "Arial", const Font_FontAspect & theNamesStyle = Font_FA_Bold, const Standard_Integer theNamesSize = 12, TCollection_AsciiString theValuesFont = "Arial", const Font_FontAspect & theValuesStyle = Font_FA_Regular, const Standard_Integer theValuesSize = 12, const Standard_ShortReal theArrowsLength = 30.0f, const Quantity_Color theGridColor = Quantity_NOC_WHITE, const Standard_Boolean theToDrawGrid = Standard_True, const Standard_Boolean theToDrawAxes = Standard_True);
 
 		/****************** ArrowsLength ******************/
 		/**** md5 signature: 436b8e7aca635cad334a456158318fd2 ****/
@@ -9209,13 +9209,13 @@ None
 
 Parameters
 ----------
-theFont: TCollection_AsciiString
+theFont: str
 
 Returns
 -------
 None
 ") SetNamesFont;
-		void SetNamesFont(const TCollection_AsciiString & theFont);
+		void SetNamesFont(TCollection_AsciiString theFont);
 
 		/****************** SetNamesFontAspect ******************/
 		/**** md5 signature: 95599011b4aa83f2326f3a73b956d72c ****/
@@ -9254,13 +9254,13 @@ None
 
 Parameters
 ----------
-theFont: TCollection_AsciiString
+theFont: str
 
 Returns
 -------
 None
 ") SetValuesFont;
-		void SetValuesFont(const TCollection_AsciiString & theFont);
+		void SetValuesFont(TCollection_AsciiString theFont);
 
 		/****************** SetValuesFontAspect ******************/
 		/**** md5 signature: d802052a96e2bd0dacd9adf90fe293cd ****/
@@ -9575,7 +9575,7 @@ bool
 Parameters
 ----------
 theFreeBytes: Standard_Size
-theInfo: TCollection_AsciiString
+theInfo: str
 
 Returns
 -------
@@ -9693,7 +9693,7 @@ None
 Parameters
 ----------
 theView: Graphic3d_CView
-theText: char *
+theText: str
 theHeight: Standard_ShortReal
 theWidth: Standard_ShortReal
 theAscent: Standard_ShortReal
@@ -9703,7 +9703,7 @@ Returns
 -------
 None
 ") TextSize;
-		virtual void TextSize(const opencascade::handle<Graphic3d_CView> & theView, const char * theText, const Standard_ShortReal theHeight, Standard_ShortReal & theWidth, Standard_ShortReal & theAscent, Standard_ShortReal & theDescent);
+		virtual void TextSize(const opencascade::handle<Graphic3d_CView> & theView, Standard_CString theText, const Standard_ShortReal theHeight, Standard_ShortReal & theWidth, Standard_ShortReal & theAscent, Standard_ShortReal & theDescent);
 
 		/****************** ViewExists ******************/
 		/**** md5 signature: af8cd22ce3ec7eb123e125bb1c41a940 ****/
@@ -9844,13 +9844,13 @@ void
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 void
 ") UnregisterFactory;
-		static void UnregisterFactory(const TCollection_AsciiString & theName);
+		static void UnregisterFactory(TCollection_AsciiString theName);
 
 };
 
@@ -10200,7 +10200,7 @@ None
 
 Parameters
 ----------
-AText: char *
+AText: str
 APoint: Graphic3d_Vertex
 AHeight: float
 AAngle: float
@@ -10214,7 +10214,7 @@ Returns
 -------
 None
 ") Text;
-		virtual void Text(const char * AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
+		virtual void Text(Standard_CString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: be90bceed3d1f9ecfe73fb5d7eec2212 ****/
@@ -10223,7 +10223,7 @@ None
 
 Parameters
 ----------
-AText: char *
+AText: str
 APoint: Graphic3d_Vertex
 AHeight: float
 EvalMinMax: bool,optional
@@ -10233,7 +10233,7 @@ Returns
 -------
 None
 ") Text;
-		void Text(const char * AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
+		void Text(Standard_CString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: 167eaea4dace1c338b0f703a2ac8d6fe ****/
@@ -10242,7 +10242,7 @@ None
 
 Parameters
 ----------
-AText: TCollection_ExtendedString
+AText: str
 APoint: Graphic3d_Vertex
 AHeight: float
 AAngle: float
@@ -10256,7 +10256,7 @@ Returns
 -------
 None
 ") Text;
-		void Text(const TCollection_ExtendedString & AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
+		void Text(TCollection_ExtendedString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: f0783ae39f19a1a065467da9245f7532 ****/
@@ -10265,7 +10265,7 @@ None
 
 Parameters
 ----------
-AText: TCollection_ExtendedString
+AText: str
 APoint: Graphic3d_Vertex
 AHeight: float
 EvalMinMax: bool,optional
@@ -10275,7 +10275,7 @@ Returns
 -------
 None
 ") Text;
-		void Text(const TCollection_ExtendedString & AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
+		void Text(TCollection_ExtendedString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: 812712c97896a87a2f25f26ff37669e8 ****/
@@ -10284,7 +10284,7 @@ None
 
 Parameters
 ----------
-theTextUtf: char *
+theTextUtf: str
 theOrientation: gp_Ax2
 theHeight: float
 theAngle: float
@@ -10300,7 +10300,7 @@ Returns
 -------
 None
 ") Text;
-		virtual void Text(const char * theTextUtf, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
+		virtual void Text(Standard_CString theTextUtf, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: 25f0d7834c7faf3babb07e3c6cec385f ****/
@@ -10309,7 +10309,7 @@ None
 
 Parameters
 ----------
-theText: TCollection_ExtendedString
+theText: str
 theOrientation: gp_Ax2
 theHeight: float
 theAngle: float
@@ -10325,7 +10325,7 @@ Returns
 -------
 None
 ") Text;
-		virtual void Text(const TCollection_ExtendedString & theText, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
+		virtual void Text(TCollection_ExtendedString theText, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
 		/****************** TransformPersistence ******************/
 		/**** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ****/
@@ -11336,13 +11336,13 @@ bool
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 theMat: Graphic3d_NameOfMaterial
 ") MaterialFromName;
-		static Standard_Boolean MaterialFromName(const char * theName, Graphic3d_NameOfMaterial &OutValue);
+		static Standard_Boolean MaterialFromName(Standard_CString theName, Graphic3d_NameOfMaterial &OutValue);
 
 		/****************** MaterialFromName ******************/
 		/**** md5 signature: 5208b8b1000547cce2f00804c81986c6 ****/
@@ -11351,13 +11351,13 @@ theMat: Graphic3d_NameOfMaterial
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 Graphic3d_NameOfMaterial
 ") MaterialFromName;
-		static Graphic3d_NameOfMaterial MaterialFromName(const char * theName);
+		static Graphic3d_NameOfMaterial MaterialFromName(Standard_CString theName);
 
 		/****************** MaterialName ******************/
 		/**** md5 signature: d372647674cf61e514d12db5cd3f1b18 ****/
@@ -11370,9 +11370,9 @@ theRank: int
 
 Returns
 -------
-char *
+str
 ") MaterialName;
-		static const char * MaterialName(const Standard_Integer theRank);
+		static Standard_CString MaterialName(const Standard_Integer theRank);
 
 		/****************** MaterialName ******************/
 		/**** md5 signature: 6e198d14926374db627e08901b3098c0 ****/
@@ -11381,9 +11381,9 @@ char *
 
 Returns
 -------
-char *
+str
 ") MaterialName;
-		const char * MaterialName();
+		Standard_CString MaterialName();
 
 		/****************** MaterialType ******************/
 		/**** md5 signature: 062008507cb52b85e69ad9189fb25451 ****/
@@ -11604,13 +11604,13 @@ None
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 None
 ") SetMaterialName;
-		void SetMaterialName(const TCollection_AsciiString & theName);
+		void SetMaterialName(TCollection_AsciiString theName);
 
 		/****************** SetMaterialType ******************/
 		/**** md5 signature: ab421f4a4a9e8596a2d576bdcb2e892a ****/
@@ -12768,14 +12768,14 @@ class Graphic3d_ShaderAttribute : public Standard_Transient {
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theLocation: int
 
 Returns
 -------
 None
 ") Graphic3d_ShaderAttribute;
-		 Graphic3d_ShaderAttribute(const TCollection_AsciiString & theName, const int theLocation);
+		 Graphic3d_ShaderAttribute(TCollection_AsciiString theName, const int theLocation);
 
 		/****************** Location ******************/
 		/**** md5 signature: fbf2df819f76398dfe948e6957cd938c ****/
@@ -13033,13 +13033,13 @@ typedef NCollection_Sequence <ShaderVariable> ShaderVariableList;
 Parameters
 ----------
 theType: Graphic3d_TypeOfShaderObject
-thePath: TCollection_AsciiString
+thePath: str
 
 Returns
 -------
 opencascade::handle<Graphic3d_ShaderObject>
 ") CreateFromFile;
-		static opencascade::handle<Graphic3d_ShaderObject> CreateFromFile(const Graphic3d_TypeOfShaderObject theType, const TCollection_AsciiString & thePath);
+		static opencascade::handle<Graphic3d_ShaderObject> CreateFromFile(const Graphic3d_TypeOfShaderObject theType, TCollection_AsciiString thePath);
 
 		/****************** CreateFromSource ******************/
 		/**** md5 signature: 89c8327f0382cb4ddac7df3854e7859f ****/
@@ -13049,13 +13049,13 @@ opencascade::handle<Graphic3d_ShaderObject>
 Parameters
 ----------
 theType: Graphic3d_TypeOfShaderObject
-theSource: TCollection_AsciiString
+theSource: str
 
 Returns
 -------
 opencascade::handle<Graphic3d_ShaderObject>
 ") CreateFromSource;
-		static opencascade::handle<Graphic3d_ShaderObject> CreateFromSource(const Graphic3d_TypeOfShaderObject theType, const TCollection_AsciiString & theSource);
+		static opencascade::handle<Graphic3d_ShaderObject> CreateFromSource(const Graphic3d_TypeOfShaderObject theType, TCollection_AsciiString theSource);
 
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
@@ -13146,13 +13146,13 @@ None
 
 Parameters
 ----------
-theHeaderLine: TCollection_AsciiString
+theHeaderLine: str
 
 Returns
 -------
 None
 ") AppendToHeader;
-		void AppendToHeader(const TCollection_AsciiString & theHeaderLine);
+		void AppendToHeader(TCollection_AsciiString theHeaderLine);
 
 		/****************** AttachShader ******************/
 		/**** md5 signature: 2ed7a5ea2e4cd4e4595f652b67432170 ****/
@@ -13323,14 +13323,14 @@ Graphic3d_RenderTransparentMethod
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: float
 
 Returns
 -------
 bool
 ") PushVariableFloat;
-		Standard_Boolean PushVariableFloat(const TCollection_AsciiString & theName, const float theValue);
+		Standard_Boolean PushVariableFloat(TCollection_AsciiString theName, const float theValue);
 
 		/****************** PushVariableInt ******************/
 		/**** md5 signature: bff478b182d9509a10882ce90419df79 ****/
@@ -13339,14 +13339,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: int
 
 Returns
 -------
 bool
 ") PushVariableInt;
-		Standard_Boolean PushVariableInt(const TCollection_AsciiString & theName, const int theValue);
+		Standard_Boolean PushVariableInt(TCollection_AsciiString theName, const int theValue);
 
 		/****************** PushVariableVec2 ******************/
 		/**** md5 signature: d02a003a9e11b722eacd37101ed0969b ****/
@@ -13355,14 +13355,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: Graphic3d_Vec2
 
 Returns
 -------
 bool
 ") PushVariableVec2;
-		Standard_Boolean PushVariableVec2(const TCollection_AsciiString & theName, const Graphic3d_Vec2 & theValue);
+		Standard_Boolean PushVariableVec2(TCollection_AsciiString theName, const Graphic3d_Vec2 & theValue);
 
 		/****************** PushVariableVec2i ******************/
 		/**** md5 signature: 231cdfeb088221c570d577a2e6af3ff2 ****/
@@ -13371,14 +13371,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: Graphic3d_Vec2i
 
 Returns
 -------
 bool
 ") PushVariableVec2i;
-		Standard_Boolean PushVariableVec2i(const TCollection_AsciiString & theName, const Graphic3d_Vec2i & theValue);
+		Standard_Boolean PushVariableVec2i(TCollection_AsciiString theName, const Graphic3d_Vec2i & theValue);
 
 		/****************** PushVariableVec3 ******************/
 		/**** md5 signature: 1e87fc6f4bed1bc59e32f075b299547f ****/
@@ -13387,14 +13387,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: Graphic3d_Vec3
 
 Returns
 -------
 bool
 ") PushVariableVec3;
-		Standard_Boolean PushVariableVec3(const TCollection_AsciiString & theName, const Graphic3d_Vec3 & theValue);
+		Standard_Boolean PushVariableVec3(TCollection_AsciiString theName, const Graphic3d_Vec3 & theValue);
 
 		/****************** PushVariableVec3i ******************/
 		/**** md5 signature: 76fcf0dab680077a9b9928f249715893 ****/
@@ -13403,14 +13403,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: Graphic3d_Vec3i
 
 Returns
 -------
 bool
 ") PushVariableVec3i;
-		Standard_Boolean PushVariableVec3i(const TCollection_AsciiString & theName, const Graphic3d_Vec3i & theValue);
+		Standard_Boolean PushVariableVec3i(TCollection_AsciiString theName, const Graphic3d_Vec3i & theValue);
 
 		/****************** PushVariableVec4 ******************/
 		/**** md5 signature: f48a6fd2b2fd4d2432e7e4555e958e8b ****/
@@ -13419,14 +13419,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: Graphic3d_Vec4
 
 Returns
 -------
 bool
 ") PushVariableVec4;
-		Standard_Boolean PushVariableVec4(const TCollection_AsciiString & theName, const Graphic3d_Vec4 & theValue);
+		Standard_Boolean PushVariableVec4(TCollection_AsciiString theName, const Graphic3d_Vec4 & theValue);
 
 		/****************** PushVariableVec4i ******************/
 		/**** md5 signature: 9cdd0cf7f8b36932596f084b1b32b4be ****/
@@ -13435,14 +13435,14 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 theValue: Graphic3d_Vec4i
 
 Returns
 -------
 bool
 ") PushVariableVec4i;
-		Standard_Boolean PushVariableVec4i(const TCollection_AsciiString & theName, const Graphic3d_Vec4i & theValue);
+		Standard_Boolean PushVariableVec4i(TCollection_AsciiString theName, const Graphic3d_Vec4i & theValue);
 
 		/****************** SetAlphaTest ******************/
 		/**** md5 signature: 0c8337e06f013097bf7fc3735dfd4764 ****/
@@ -13481,13 +13481,13 @@ None
 
 Parameters
 ----------
-theHeader: TCollection_AsciiString
+theHeader: str
 
 Returns
 -------
 None
 ") SetHeader;
-		void SetHeader(const TCollection_AsciiString & theHeader);
+		void SetHeader(TCollection_AsciiString theHeader);
 
 		/****************** SetId ******************/
 		/**** md5 signature: 64840b5ae68646959ed97ec8254f3d04 ****/
@@ -13496,13 +13496,13 @@ None
 
 Parameters
 ----------
-theId: TCollection_AsciiString
+theId: str
 
 Returns
 -------
 None
 ") SetId;
-		void SetId(const TCollection_AsciiString & theId);
+		void SetId(TCollection_AsciiString theId);
 
 		/****************** SetNbClipPlanesMax ******************/
 		/**** md5 signature: 8f90ee3fa5faecc284bd831b0a828a6a ****/
@@ -15384,13 +15384,13 @@ None
 
 Parameters
 ----------
-theText: TCollection_AsciiString
+theText: str
 
 Returns
 -------
 None
 ") SetText;
-		void SetText(const TCollection_AsciiString & theText);
+		void SetText(TCollection_AsciiString theText);
 
 		/****************** SetText ******************/
 		/**** md5 signature: b3558520ae610ca542b0fb6b77a0768d ****/
@@ -15399,13 +15399,13 @@ None
 
 Parameters
 ----------
-theText: char *
+theText: str
 
 Returns
 -------
 None
 ") SetText;
-		void SetText(const char * theText);
+		void SetText(Standard_CString theText);
 
 		/****************** SetTextFormatter ******************/
 		/**** md5 signature: 69d92dbd5b2f2ec93859c8dcc0b4f585 ****/
@@ -17239,13 +17239,13 @@ None
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & theName);
+		void SetName(TCollection_AsciiString theName);
 
 		/****************** SetOrigin ******************/
 		/**** md5 signature: 4e4636f1039090357f364099b018aa8c ****/
@@ -18277,7 +18277,7 @@ None
 Parameters
 ----------
 theColor: Quantity_Color
-theFont: char *
+theFont: str
 theExpansionFactor: float
 theSpace: float
 theStyle: Aspect_TypeOfStyleText,optional
@@ -18289,7 +18289,7 @@ Returns
 -------
 None
 ") Graphic3d_AspectText3d;
-		 Graphic3d_AspectText3d(const Quantity_Color & theColor, const char * theFont, Standard_Real theExpansionFactor, Standard_Real theSpace, Aspect_TypeOfStyleText theStyle = Aspect_TOST_NORMAL, Aspect_TypeOfDisplayText theDisplayType = Aspect_TODT_NORMAL);
+		 Graphic3d_AspectText3d(const Quantity_Color & theColor, Standard_CString theFont, Standard_Real theExpansionFactor, Standard_Real theSpace, Aspect_TypeOfStyleText theStyle = Aspect_TOST_NORMAL, Aspect_TypeOfDisplayText theDisplayType = Aspect_TODT_NORMAL);
 
 		/****************** Color ******************/
 		/**** md5 signature: 7cec116411eb20e52d1fabf3015346da ****/
@@ -18428,13 +18428,13 @@ None
 
 Parameters
 ----------
-theFont: TCollection_AsciiString
+theFont: str
 
 Returns
 -------
 None
 ") SetFont;
-		void SetFont(const TCollection_AsciiString & theFont);
+		void SetFont(TCollection_AsciiString theFont);
 
 		/****************** SetFont ******************/
 		/**** md5 signature: 61d12f4a548c85ea1d3fd6a76e34b6f6 ****/
@@ -18443,13 +18443,13 @@ None
 
 Parameters
 ----------
-theFont: char *
+theFont: str
 
 Returns
 -------
 None
 ") SetFont;
-		void SetFont(const char * theFont);
+		void SetFont(Standard_CString theFont);
 
 		/****************** SetStyle ******************/
 		/**** md5 signature: 79f0871ccb7f1986360bdd74fe84ff94 ****/
@@ -20570,14 +20570,14 @@ None
 
 Parameters
 ----------
-thePath: TCollection_AsciiString
+thePath: str
 theToWait: bool
 
 Returns
 -------
 None
 ") OpenInput;
-		void OpenInput(const TCollection_AsciiString & thePath, Standard_Boolean theToWait);
+		void OpenInput(TCollection_AsciiString thePath, Standard_Boolean theToWait);
 
 		/****************** PlayerContext ******************/
 		/**** md5 signature: 5fc0e0cbec11700279e3e8631feee60b ****/
@@ -20650,13 +20650,13 @@ class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") Graphic3d_TextureEnv;
-		 Graphic3d_TextureEnv(const TCollection_AsciiString & theFileName);
+		 Graphic3d_TextureEnv(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_TextureEnv ******************/
 		/**** md5 signature: ceed081a5b5bebc2038ab1db122c6085 ****/
@@ -21243,13 +21243,13 @@ class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") Graphic3d_Texture2D;
-		 Graphic3d_Texture2D(const TCollection_AsciiString & theFileName);
+		 Graphic3d_Texture2D(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture2D ******************/
 		/**** md5 signature: 1148eac074475874ab0ee8fd1f12cc0c ****/
@@ -21356,13 +21356,13 @@ class Graphic3d_Texture3D : public Graphic3d_TextureMap {
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") Graphic3d_Texture3D;
-		 Graphic3d_Texture3D(const TCollection_AsciiString & theFileName);
+		 Graphic3d_Texture3D(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture3D ******************/
 		/**** md5 signature: 12b8a332dec18b02096d54770852207e ****/
@@ -21637,13 +21637,13 @@ class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") Graphic3d_Texture1Dmanual;
-		 Graphic3d_Texture1Dmanual(const TCollection_AsciiString & theFileName);
+		 Graphic3d_Texture1Dmanual(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture1Dmanual ******************/
 		/**** md5 signature: 523b409c896dd67bb73e53f0713b5b88 ****/
@@ -21698,13 +21698,13 @@ class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") Graphic3d_Texture1Dsegment;
-		 Graphic3d_Texture1Dsegment(const TCollection_AsciiString & theFileName);
+		 Graphic3d_Texture1Dsegment(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture1Dsegment ******************/
 		/**** md5 signature: a05398d4cb31cf6396ad390a24ec4de7 ****/
@@ -21799,13 +21799,13 @@ class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 
 Parameters
 ----------
-theFileName: TCollection_AsciiString
+theFileName: str
 
 Returns
 -------
 None
 ") Graphic3d_Texture2Dplane;
-		 Graphic3d_Texture2Dplane(const TCollection_AsciiString & theFileName);
+		 Graphic3d_Texture2Dplane(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture2Dplane ******************/
 		/**** md5 signature: aea36b4535b2f3f95d113fe310be496a ****/

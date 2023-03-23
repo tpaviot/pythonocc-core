@@ -202,7 +202,7 @@ opencascade::handle<BinMDF_ADriverTable>
 
 Parameters
 ----------
-theFileName: TCollection_ExtendedString
+theFileName: str
 theNewDocument: CDM_Document
 theApplication: CDM_Application
 theFilter: PCDM_ReaderFilter,optional
@@ -214,7 +214,7 @@ Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -250,14 +250,14 @@ None
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 isPostRead: bool
 
 Returns
 -------
 None
 ") BinLDrivers_DocumentSection;
-		 BinLDrivers_DocumentSection(const TCollection_AsciiString & theName, const Standard_Boolean isPostRead);
+		 BinLDrivers_DocumentSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead);
 
 		/****************** IsPostRead ******************/
 		/**** md5 signature: f46b74fd06908e5a3c055dc46ad8d664 ****/
@@ -365,7 +365,7 @@ None
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 isPostRead: bool,optional
 	default value is Standard_True
 
@@ -373,7 +373,7 @@ Returns
 -------
 None
 ") AddSection;
-		void AddSection(const TCollection_AsciiString & theName, const Standard_Boolean isPostRead = Standard_True);
+		void AddSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead = Standard_True);
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: f05b53d6e03fc4c0b1a43a8f6b8dcd60 ****/
@@ -413,7 +413,7 @@ bool
 Parameters
 ----------
 theDocument: CDM_Document
-theFileName: TCollection_ExtendedString
+theFileName: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -421,7 +421,7 @@ Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, const TCollection_ExtendedString & theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

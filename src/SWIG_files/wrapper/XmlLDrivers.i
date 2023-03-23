@@ -209,7 +209,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 
 Parameters
 ----------
-theFileName: TCollection_ExtendedString
+theFileName: str
 theNewDocument: CDM_Document
 theApplication: CDM_Application
 theFilter: PCDM_ReaderFilter,optional
@@ -221,7 +221,7 @@ Returns
 -------
 None
 ") Read;
-		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -246,13 +246,13 @@ class XmlLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 
 Parameters
 ----------
-theCopyright: TCollection_ExtendedString
+theCopyright: str
 
 Returns
 -------
 None
 ") XmlLDrivers_DocumentStorageDriver;
-		 XmlLDrivers_DocumentStorageDriver(const TCollection_ExtendedString & theCopyright);
+		 XmlLDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: 8df783b7f95c753e0804758cea795cef ****/
@@ -277,7 +277,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 Parameters
 ----------
 theDocument: CDM_Document
-theFileName: TCollection_ExtendedString
+theFileName: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -285,7 +285,7 @@ Returns
 -------
 None
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, const TCollection_ExtendedString & theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -321,14 +321,14 @@ None
 
 Parameters
 ----------
-thePrefix: TCollection_AsciiString
-theURI: TCollection_AsciiString
+thePrefix: str
+theURI: str
 
 Returns
 -------
 None
 ") XmlLDrivers_NamespaceDef;
-		 XmlLDrivers_NamespaceDef(const TCollection_AsciiString & thePrefix, const TCollection_AsciiString & theURI);
+		 XmlLDrivers_NamespaceDef(TCollection_AsciiString thePrefix, TCollection_AsciiString theURI);
 
 		/****************** Prefix ******************/
 		/**** md5 signature: 3891509b09d4df1a141a4efe34da89ee ****/

@@ -2039,9 +2039,9 @@ status: int
 
 Returns
 -------
-char *
+str
 ") StatusMessage;
-		const char * StatusMessage(const Standard_Integer status);
+		Standard_CString StatusMessage(const Standard_Integer status);
 
 		/****************** Uncertainty ******************/
 		/**** md5 signature: d91d2a9d8a7c9b921d9f843bf59b3624 ****/
@@ -2134,15 +2134,15 @@ None
 
 Parameters
 ----------
-filename: char *
+filename: str
 PD: StepBasic_ProductDefinition
-format: char *
+format: str
 
 Returns
 -------
 int
 ") AddExternRef;
-		Standard_Integer AddExternRef(const char * filename, const opencascade::handle<StepBasic_ProductDefinition> & PD, const char * format);
+		Standard_Integer AddExternRef(Standard_CString filename, const opencascade::handle<StepBasic_ProductDefinition> & PD, Standard_CString format);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -2181,9 +2181,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") FileName;
-		const char * FileName(const Standard_Integer num);
+		Standard_CString FileName(const Standard_Integer num);
 
 		/****************** Format ******************/
 		/**** md5 signature: 600d3fed43f6e174acc9f0aff53e1d79 ****/
@@ -2707,7 +2707,7 @@ Parameters
 ----------
 Shape: TopoDS_Shape
 Prop: StepRepr_RepresentationItem
-Descr: char *
+Descr: str
 instance: bool,optional
 	default value is Standard_False
 
@@ -2715,7 +2715,7 @@ Returns
 -------
 bool
 ") AddProp;
-		Standard_Boolean AddProp(const TopoDS_Shape & Shape, const opencascade::handle<StepRepr_RepresentationItem> & Prop, const char * Descr, const Standard_Boolean instance = Standard_False);
+		Standard_Boolean AddProp(const TopoDS_Shape & Shape, const opencascade::handle<StepRepr_RepresentationItem> & Prop, Standard_CString Descr, const Standard_Boolean instance = Standard_False);
 
 		/****************** AddProp ******************/
 		/**** md5 signature: f72fb71cc97ec8abf9b1b1524386d515 ****/
@@ -2727,13 +2727,13 @@ Parameters
 target: StepRepr_CharacterizedDefinition
 Context: StepRepr_RepresentationContext
 Prop: StepRepr_RepresentationItem
-Descr: char *
+Descr: str
 
 Returns
 -------
 bool
 ") AddProp;
-		Standard_Boolean AddProp(const StepRepr_CharacterizedDefinition & target, const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepRepr_RepresentationItem> & Prop, const char * Descr);
+		Standard_Boolean AddProp(const StepRepr_CharacterizedDefinition & target, const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepRepr_RepresentationItem> & Prop, Standard_CString Descr);
 
 		/****************** AddVolume ******************/
 		/**** md5 signature: ce494cdd22f4586fedbbc19b590238d1 ****/

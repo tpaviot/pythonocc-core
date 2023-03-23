@@ -340,14 +340,14 @@ None
 
 Parameters
 ----------
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 int
 ") AddFlag;
-		Standard_Integer AddFlag(const char * name = "");
+		Standard_Integer AddFlag(Standard_CString name = "");
 
 		/****************** AddSomeFlags ******************/
 		/**** md5 signature: 847e94177a4401a5471f0ce8809a2518 ****/
@@ -420,9 +420,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") FlagName;
-		const char * FlagName(const Standard_Integer num);
+		Standard_CString FlagName(const Standard_Integer num);
 
 		/****************** FlagNumber ******************/
 		/**** md5 signature: dfbf758026c5cedb65e5965d13b268be ****/
@@ -431,13 +431,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") FlagNumber;
-		Standard_Integer FlagNumber(const char * name);
+		Standard_Integer FlagNumber(Standard_CString name);
 
 		/****************** Init ******************/
 		/**** md5 signature: 4873c90a7d9b0873090a22d6fde2925e ****/
@@ -567,13 +567,13 @@ None
 Parameters
 ----------
 num: int
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetFlagName;
-		Standard_Boolean SetFlagName(const Standard_Integer num, const char * name);
+		Standard_Boolean SetFlagName(const Standard_Integer num, Standard_CString name);
 
 		/****************** SetLength ******************/
 		/**** md5 signature: 7fa593eecff52e65f7a52831a8cc6baf ****/
@@ -704,13 +704,13 @@ None
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 int
 ") AddCategory;
-		static Standard_Integer AddCategory(const char * theName);
+		static Standard_Integer AddCategory(Standard_CString theName);
 
 		/****************** CatNum ******************/
 		/**** md5 signature: 3e07cbf7623ae6de435ab6d784f7ef87 ****/
@@ -777,9 +777,9 @@ theNum: int
 
 Returns
 -------
-char *
+str
 ") Name;
-		static const char * Name(const Standard_Integer theNum);
+		static Standard_CString Name(const Standard_Integer theNum);
 
 		/****************** NbCategories ******************/
 		/**** md5 signature: 15ca00fe4737c8bde1c54290a257c1ec ****/
@@ -814,13 +814,13 @@ int
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 int
 ") Number;
-		static Standard_Integer Number(const char * theName);
+		static Standard_Integer Number(Standard_CString theName);
 
 		/****************** SetProtocol ******************/
 		/**** md5 signature: 037fff6bcbc07de18c1688974b3bee5c ****/
@@ -915,15 +915,15 @@ None
 
 Parameters
 ----------
-amess: char *
-orig: char *,optional
+amess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddFail;
-		void AddFail(const char * amess, const char * orig = "");
+		void AddFail(Standard_CString amess, Standard_CString orig = "");
 
 		/****************** AddFail ******************/
 		/**** md5 signature: 475a01b010b4e2f284e66a83730c9014 ****/
@@ -978,15 +978,15 @@ None
 
 Parameters
 ----------
-amess: char *
-orig: char *,optional
+amess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddWarning;
-		void AddWarning(const char * amess, const char * orig = "");
+		void AddWarning(Standard_CString amess, Standard_CString orig = "");
 
 		/****************** AddWarning ******************/
 		/**** md5 signature: 00bb7fdd767eee55c100662f590ee316 ****/
@@ -1016,9 +1016,9 @@ final: bool,optional
 
 Returns
 -------
-char *
+str
 ") CFail;
-		const char * CFail(const Standard_Integer num, const Standard_Boolean final = Standard_True);
+		Standard_CString CFail(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
 		/****************** CInfoMsg ******************/
 		/**** md5 signature: cf6d3b7d4e368c59afdf8bee8c06f62f ****/
@@ -1033,9 +1033,9 @@ final: bool,optional
 
 Returns
 -------
-char *
+str
 ") CInfoMsg;
-		const char * CInfoMsg(const Standard_Integer num, const Standard_Boolean final = Standard_True);
+		Standard_CString CInfoMsg(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
 		/****************** CWarning ******************/
 		/**** md5 signature: 808de3f2d1afa1bd13afa58f447ddf7e ****/
@@ -1050,9 +1050,9 @@ final: bool,optional
 
 Returns
 -------
-char *
+str
 ") CWarning;
-		const char * CWarning(const Standard_Integer num, const Standard_Boolean final = Standard_True);
+		Standard_CString CWarning(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -1293,7 +1293,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Parameters
 ----------
-pref: char *
+pref: str
 num: int,optional
 	default value is 0
 
@@ -1301,7 +1301,7 @@ Returns
 -------
 bool
 ") Mend;
-		Standard_Boolean Mend(const char * pref, const Standard_Integer num = 0);
+		Standard_Boolean Mend(Standard_CString pref, const Standard_Integer num = 0);
 
 		/****************** NbFails ******************/
 		/**** md5 signature: 950d340013c289e6e9c9d027f2051ade ****/
@@ -1509,13 +1509,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") Interface_CheckIterator;
-		 Interface_CheckIterator(const char * name);
+		 Interface_CheckIterator(Standard_CString name);
 
 		/****************** Add ******************/
 		/**** md5 signature: 4a6b3c1f769b0854805edff2f650eff6 ****/
@@ -1669,7 +1669,7 @@ Interface_CheckIterator
 
 Parameters
 ----------
-mess: char *
+mess: str
 incl: int
 status: Interface_CheckStatus
 
@@ -1677,7 +1677,7 @@ Returns
 -------
 Interface_CheckIterator
 ") Extract;
-		Interface_CheckIterator Extract(const char * mess, const Standard_Integer incl, const Interface_CheckStatus status);
+		Interface_CheckIterator Extract(Standard_CString mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 803613576dcec3f9a8d605a071deb357 ****/
@@ -1738,9 +1738,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** Next ******************/
 		/**** md5 signature: db8382462e33c960ba2eedf02613f499 ****/
@@ -1771,7 +1771,7 @@ int
 
 Parameters
 ----------
-mess: char *
+mess: str
 incl: int
 status: Interface_CheckStatus
 
@@ -1779,7 +1779,7 @@ Returns
 -------
 bool
 ") Remove;
-		Standard_Boolean Remove(const char * mess, const Standard_Integer incl, const Interface_CheckStatus status);
+		Standard_Boolean Remove(Standard_CString mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
 		/****************** SetModel ******************/
 		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
@@ -1803,13 +1803,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const char * name);
+		void SetName(Standard_CString name);
 
 		/****************** Start ******************/
 		/**** md5 signature: c626be121588f79e9e18cc24cc705050 ****/
@@ -2979,9 +2979,9 @@ None
 
 Returns
 -------
-char *
+str
 ") CValue;
-		const char * CValue();
+		Standard_CString CValue();
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -3023,14 +3023,14 @@ int
 
 Parameters
 ----------
-val: TCollection_AsciiString
+val: str
 typ: Interface_ParamType
 
 Returns
 -------
 None
 ") Init;
-		void Init(const TCollection_AsciiString & val, const Interface_ParamType typ);
+		void Init(TCollection_AsciiString val, const Interface_ParamType typ);
 
 		/****************** Init ******************/
 		/**** md5 signature: d9af5d9fa4a25bf77ef7ae426708d16d ****/
@@ -3039,14 +3039,14 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 typ: Interface_ParamType
 
 Returns
 -------
 None
 ") Init;
-		void Init(const char * val, const Interface_ParamType typ);
+		void Init(Standard_CString val, const Interface_ParamType typ);
 
 		/****************** ParamType ******************/
 		/**** md5 signature: dc18453a4564d25585accbb5ebf0a4f7 ****/
@@ -3097,7 +3097,7 @@ class Interface_FileReaderData : public Standard_Transient {
 Parameters
 ----------
 num: int
-aval: char *
+aval: str
 atype: Interface_ParamType
 nument: int,optional
 	default value is 0
@@ -3106,7 +3106,7 @@ Returns
 -------
 None
 ") AddParam;
-		void AddParam(const Standard_Integer num, const char * aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
+		void AddParam(const Standard_Integer num, Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
 		/****************** AddParam ******************/
 		/**** md5 signature: cbb0f2de6076dbed8f2cd91097dbd947 ****/
@@ -3116,7 +3116,7 @@ None
 Parameters
 ----------
 num: int
-aval: TCollection_AsciiString
+aval: str
 atype: Interface_ParamType
 nument: int,optional
 	default value is 0
@@ -3125,7 +3125,7 @@ Returns
 -------
 None
 ") AddParam;
-		void AddParam(const Standard_Integer num, const TCollection_AsciiString & aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
+		void AddParam(const Standard_Integer num, TCollection_AsciiString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
 		/****************** AddParam ******************/
 		/**** md5 signature: cd0f1b4fe80c892227e65eb7256dde7c ****/
@@ -3208,13 +3208,13 @@ None
 
 Parameters
 ----------
-str: char *
+str: str
 
 Returns
 -------
 float
 ") Fastof;
-		static Standard_Real Fastof(const char * str);
+		static Standard_Real Fastof(Standard_CString str);
 
 		/****************** FindNextRecord ******************/
 		/**** md5 signature: fb2560ab5021a7b300ace6b22efac7bc ****/
@@ -3338,9 +3338,9 @@ nump: int
 
 Returns
 -------
-char *
+str
 ") ParamCValue;
-		const char * ParamCValue(const Standard_Integer num, const Standard_Integer nump);
+		Standard_CString ParamCValue(const Standard_Integer num, const Standard_Integer nump);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 7e8a196be284eb0e3e1b2a2dbd45f003 ****/
@@ -3817,18 +3817,18 @@ None
 Parameters
 ----------
 val: float
-text: char *
+text: str
 zerosup: bool
 Range1: float
 Range2: float
-mainform: char *
-rangeform: char *
+mainform: str
+rangeform: str
 
 Returns
 -------
 int
 ") Convert;
-		static Standard_Integer Convert(const Standard_Real val, const char * text, const Standard_Boolean zerosup, const Standard_Real Range1, const Standard_Real Range2, const char * mainform, const char * rangeform);
+		static Standard_Integer Convert(const Standard_Real val, Standard_CString text, const Standard_Boolean zerosup, const Standard_Real Range1, const Standard_Real Range2, Standard_CString mainform, Standard_CString rangeform);
 
 		/****************** FormatForRange ******************/
 		/**** md5 signature: 4c66511040ab21973efd4fb8a5336a70 ****/
@@ -3837,9 +3837,9 @@ int
 
 Returns
 -------
-char *
+str
 ") FormatForRange;
-		const char * FormatForRange();
+		Standard_CString FormatForRange();
 
 		/****************** MainFormat ******************/
 		/**** md5 signature: d5f20ec9bffc0b0df53410e928ed4e20 ****/
@@ -3848,9 +3848,9 @@ char *
 
 Returns
 -------
-char *
+str
 ") MainFormat;
-		const char * MainFormat();
+		Standard_CString MainFormat();
 
 		/****************** Options ******************/
 		/**** md5 signature: 0f9f7a2d709a585ab79f1b8ab7b7da24 ****/
@@ -3892,7 +3892,7 @@ None
 
 Parameters
 ----------
-form: char *
+form: str
 reset: bool,optional
 	default value is Standard_True
 
@@ -3900,7 +3900,7 @@ Returns
 -------
 None
 ") SetFormat;
-		void SetFormat(const char * form, const Standard_Boolean reset = Standard_True);
+		void SetFormat(Standard_CString form, const Standard_Boolean reset = Standard_True);
 
 		/****************** SetFormatForRange ******************/
 		/**** md5 signature: dae1e339fb84d300b23b00a19e3bdceb ****/
@@ -3909,7 +3909,7 @@ None
 
 Parameters
 ----------
-form: char *
+form: str
 R1: float
 R2: float
 
@@ -3917,7 +3917,7 @@ Returns
 -------
 None
 ") SetFormatForRange;
-		void SetFormatForRange(const char * form, const Standard_Real R1, const Standard_Real R2);
+		void SetFormatForRange(Standard_CString form, const Standard_Real R1, const Standard_Real R2);
 
 		/****************** SetZeroSuppress ******************/
 		/**** md5 signature: 37a02e3338eee7e275b19584090a7212 ****/
@@ -3942,13 +3942,13 @@ None
 Parameters
 ----------
 val: float
-text: char *
+text: str
 
 Returns
 -------
 int
 ") Write;
-		Standard_Integer Write(const Standard_Real val, const char * text);
+		Standard_Integer Write(const Standard_Real val, Standard_CString text);
 
 };
 
@@ -4099,9 +4099,9 @@ None
 
 Returns
 -------
-char *
+str
 ") SignName;
-		const char * SignName();
+		Standard_CString SignName();
 
 		/****************** SignType ******************/
 		/**** md5 signature: a97b35b4b087c5effacf0c1cc3ab8526 ****/
@@ -4126,9 +4126,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") SignValue;
-		const char * SignValue(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		Standard_CString SignValue(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -5914,13 +5914,13 @@ opencascade::handle<Interface_Check>
 
 Parameters
 ----------
-typnam: char *
+typnam: str
 
 Returns
 -------
-char *
+str
 ") ClassName;
-		static const char * ClassName(const char * typnam);
+		static Standard_CString ClassName(Standard_CString typnam);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
@@ -6153,13 +6153,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") HasTemplate;
-		static Standard_Boolean HasTemplate(const char * name);
+		static Standard_Boolean HasTemplate(Standard_CString name);
 
 		/****************** IsErrorEntity ******************/
 		/**** md5 signature: 9a0553bfba8f28a3e309e7419a8bf0b2 ****/
@@ -6278,7 +6278,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Parameters
 ----------
-label: char *
+label: str
 lastnum: int,optional
 	default value is 0
 exact: bool,optional
@@ -6288,7 +6288,7 @@ Returns
 -------
 int
 ") NextNumberForLabel;
-		virtual Standard_Integer NextNumberForLabel(const char * label, const Standard_Integer lastnum = 0, const Standard_Boolean exact = Standard_True);
+		virtual Standard_Integer NextNumberForLabel(Standard_CString label, const Standard_Integer lastnum = 0, const Standard_Boolean exact = Standard_True);
 
 		/****************** Number ******************/
 		/**** md5 signature: f25a1d68cbbad3b088f5d847de3ffede ****/
@@ -6491,14 +6491,14 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 model: Interface_InterfaceModel
 
 Returns
 -------
 bool
 ") SetTemplate;
-		static Standard_Boolean SetTemplate(const char * name, const opencascade::handle<Interface_InterfaceModel> & model);
+		static Standard_Boolean SetTemplate(Standard_CString name, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** StringLabel ******************/
 		/**** md5 signature: 31c0b3f4364a8064ca7024a2a736f259 ****/
@@ -6522,13 +6522,13 @@ opencascade::handle<TCollection_HAsciiString>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Interface_InterfaceModel>
 ") Template;
-		static opencascade::handle<Interface_InterfaceModel> Template(const char * name);
+		static opencascade::handle<Interface_InterfaceModel> Template(Standard_CString name);
 
 		/****************** Type ******************/
 		/**** md5 signature: da60bf49fd753ae14bcafada17bba312 ****/
@@ -6560,9 +6560,9 @@ complete: bool,optional
 
 Returns
 -------
-char *
+str
 ") TypeName;
-		const char * TypeName(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean complete = Standard_True);
+		Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean complete = Standard_True);
 
 		/****************** Value ******************/
 		/**** md5 signature: a291325b4e5caa2a5ab946934090ec8b ****/
@@ -6633,13 +6633,13 @@ None
 
 Parameters
 ----------
-text: char *
+text: str
 
 Returns
 -------
 None
 ") Add;
-		void Add(const char * text);
+		void Add(Standard_CString text);
 
 		/****************** Add ******************/
 		/**** md5 signature: 881da44d801a4bde276a120320281d38 ****/
@@ -6648,14 +6648,14 @@ None
 
 Parameters
 ----------
-text: char *
+text: str
 lntext: int
 
 Returns
 -------
 None
 ") Add;
-		void Add(const char * text, const Standard_Integer lntext);
+		void Add(Standard_CString text, const Standard_Integer lntext);
 
 		/****************** Add ******************/
 		/**** md5 signature: 44e9d546aa4891e8b4d514c71dd12e4a ****/
@@ -6664,13 +6664,13 @@ None
 
 Parameters
 ----------
-text: TCollection_AsciiString
+text: str
 
 Returns
 -------
 None
 ") Add;
-		void Add(const TCollection_AsciiString & text);
+		void Add(TCollection_AsciiString text);
 
 		/****************** Add ******************/
 		/**** md5 signature: 09c9ed86e8cab71a163a455eb49a769d ****/
@@ -6720,9 +6720,9 @@ None
 
 Returns
 -------
-char *
+str
 ") Content;
-		const char * Content();
+		Standard_CString Content();
 
 		/****************** FreezeInitial ******************/
 		/**** md5 signature: dbf139b695534a1365987a2862b1ca6a ****/
@@ -6753,7 +6753,7 @@ int
 
 Parameters
 ----------
-str: TCollection_AsciiString
+str: str
 
 Returns
 -------
@@ -6849,13 +6849,13 @@ class Interface_MSG {
 
 Parameters
 ----------
-key: char *
+key: str
 
 Returns
 -------
 None
 ") Interface_MSG;
-		 Interface_MSG(const char * key);
+		 Interface_MSG(Standard_CString key);
 
 		/****************** Interface_MSG ******************/
 		/**** md5 signature: 8fef5720569bdcbf8f66102a1bcd3773 ****/
@@ -6864,14 +6864,14 @@ None
 
 Parameters
 ----------
-key: char *
+key: str
 i1: int
 
 Returns
 -------
 None
 ") Interface_MSG;
-		 Interface_MSG(const char * key, const Standard_Integer i1);
+		 Interface_MSG(Standard_CString key, const Standard_Integer i1);
 
 		/****************** Interface_MSG ******************/
 		/**** md5 signature: b704e9e172b160d189e3aae96cf60977 ****/
@@ -6880,7 +6880,7 @@ None
 
 Parameters
 ----------
-key: char *
+key: str
 i1: int
 i2: int
 
@@ -6888,7 +6888,7 @@ Returns
 -------
 None
 ") Interface_MSG;
-		 Interface_MSG(const char * key, const Standard_Integer i1, const Standard_Integer i2);
+		 Interface_MSG(Standard_CString key, const Standard_Integer i1, const Standard_Integer i2);
 
 		/****************** Interface_MSG ******************/
 		/**** md5 signature: 39d5887ce5b9e3f190368eb9565041a7 ****/
@@ -6897,7 +6897,7 @@ None
 
 Parameters
 ----------
-key: char *
+key: str
 r1: float
 intervals: int,optional
 	default value is -1
@@ -6906,7 +6906,7 @@ Returns
 -------
 None
 ") Interface_MSG;
-		 Interface_MSG(const char * key, const Standard_Real r1, const Standard_Integer intervals = -1);
+		 Interface_MSG(Standard_CString key, const Standard_Real r1, const Standard_Integer intervals = -1);
 
 		/****************** Interface_MSG ******************/
 		/**** md5 signature: a2f1c0137cdd8a92831417c5462bb4ac ****/
@@ -6915,14 +6915,14 @@ None
 
 Parameters
 ----------
-key: char *
-str: char *
+key: str
+str: str
 
 Returns
 -------
 None
 ") Interface_MSG;
-		 Interface_MSG(const char * key, const char * str);
+		 Interface_MSG(Standard_CString key, Standard_CString str);
 
 		/****************** Interface_MSG ******************/
 		/**** md5 signature: 8e2b0e98eefb8d62808c6366cf59b6c7 ****/
@@ -6931,15 +6931,15 @@ None
 
 Parameters
 ----------
-key: char *
+key: str
 ival: int
-str: char *
+str: str
 
 Returns
 -------
 None
 ") Interface_MSG;
-		 Interface_MSG(const char * key, const Standard_Integer ival, const char * str);
+		 Interface_MSG(Standard_CString key, const Standard_Integer ival, Standard_CString str);
 
 		/****************** Blanks ******************/
 		/**** md5 signature: cbb8c4b37e8156925f73c160286da4ff ****/
@@ -6953,9 +6953,9 @@ max: int
 
 Returns
 -------
-char *
+str
 ") Blanks;
-		static const char * Blanks(const Standard_Integer val, const Standard_Integer max);
+		static Standard_CString Blanks(const Standard_Integer val, const Standard_Integer max);
 
 		/****************** Blanks ******************/
 		/**** md5 signature: a27333232482e7c6487dfb04b0ad78af ****/
@@ -6964,14 +6964,14 @@ char *
 
 Parameters
 ----------
-val: char *
+val: str
 max: int
 
 Returns
 -------
-char *
+str
 ") Blanks;
-		static const char * Blanks(const char * val, const Standard_Integer max);
+		static Standard_CString Blanks(Standard_CString val, const Standard_Integer max);
 
 		/****************** Blanks ******************/
 		/**** md5 signature: 0e8c564f928f260c2991324aa3b7b503 ****/
@@ -6984,9 +6984,9 @@ count: int
 
 Returns
 -------
-char *
+str
 ") Blanks;
-		static const char * Blanks(const Standard_Integer count);
+		static Standard_CString Blanks(const Standard_Integer count);
 
 		/****************** CDate ******************/
 		/**** md5 signature: 87ef2d72f27848bc913516356143b696 ****/
@@ -6995,14 +6995,14 @@ char *
 
 Parameters
 ----------
-text1: char *
-text2: char *
+text1: str
+text2: str
 
 Returns
 -------
 int
 ") CDate;
-		static Standard_Integer CDate(const char * text1, const char * text2);
+		static Standard_Integer CDate(Standard_CString text1, Standard_CString text2);
 
 		/****************** Destroy ******************/
 		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
@@ -7041,13 +7041,13 @@ float
 
 Parameters
 ----------
-mess: char *
+mess: str
 
 Returns
 -------
 bool
 ") IsKey;
-		static Standard_Boolean IsKey(const char * mess);
+		static Standard_Boolean IsKey(Standard_CString mess);
 
 		/****************** NDate ******************/
 		/**** md5 signature: eeb2f5af5a033fa1528f872cb3fd2fa2 ****/
@@ -7056,7 +7056,7 @@ bool
 
 Parameters
 ----------
-text: char *
+text: str
 
 Returns
 -------
@@ -7067,7 +7067,7 @@ hh: int
 mn: int
 ss: int
 ") NDate;
-		static Standard_Boolean NDate(const char * text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static Standard_Boolean NDate(Standard_CString text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 
         %feature("autodoc", "1");
@@ -7091,13 +7091,13 @@ ss: int
 
 Parameters
 ----------
-file: char *
+file: str
 
 Returns
 -------
 int
 ") Read;
-		static Standard_Integer Read(const char * file);
+		static Standard_Integer Read(Standard_CString file);
 
 		/****************** Record ******************/
 		/**** md5 signature: 57cce17521acc7b079a4a53ccae00972 ****/
@@ -7106,14 +7106,14 @@ int
 
 Parameters
 ----------
-key: char *
-item: char *
+key: str
+item: str
 
 Returns
 -------
 void
 ") Record;
-		static void Record(const char * key, const char * item);
+		static void Record(Standard_CString key, Standard_CString item);
 
 		/****************** SetMode ******************/
 		/**** md5 signature: b14fe630786054e523f862ea57aaf3ad ****/
@@ -7154,21 +7154,21 @@ void
 
 Parameters
 ----------
-text: char *
+text: str
 yy: int
 mm: int
 dd: int
 hh: int
 mn: int
 ss: int
-format: char *,optional
+format: str,optional
 	default value is ""
 
 Returns
 -------
 void
 ") TDate;
-		static void TDate(const char * text, const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const char * format = "");
+		static void TDate(Standard_CString text, const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, Standard_CString format = "");
 
 		/****************** Translated ******************/
 		/**** md5 signature: c9597bb549cfddf798fd1bc9a797094c ****/
@@ -7177,13 +7177,13 @@ void
 
 Parameters
 ----------
-key: char *
+key: str
 
 Returns
 -------
-char *
+str
 ") Translated;
-		static const char * Translated(const char * key);
+		static Standard_CString Translated(Standard_CString key);
 
 		/****************** Value ******************/
 		/**** md5 signature: e8ad3e0eb6ba1377e7d5d00bb4ae5215 ****/
@@ -7192,9 +7192,9 @@ char *
 
 Returns
 -------
-char *
+str
 ") Value;
-		const char * Value();
+		Standard_CString Value();
 
 };
 
@@ -7217,14 +7217,14 @@ class Interface_MapAsciiStringHasher {
 
 Parameters
 ----------
-theAsciiString: TCollection_AsciiString
+theAsciiString: str
 theUpperBound: int
 
 Returns
 -------
 int
 ") HashCode;
-		static Standard_Integer HashCode(const TCollection_AsciiString & theAsciiString, Standard_Integer theUpperBound);
+		static Standard_Integer HashCode(TCollection_AsciiString theAsciiString, Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 35e2d5de13dedd4a3cad858a55372251 ****/
@@ -7233,14 +7233,14 @@ int
 
 Parameters
 ----------
-K1: TCollection_AsciiString
-K2: TCollection_AsciiString
+K1: str
+K2: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		static Standard_Boolean IsEqual(const TCollection_AsciiString & K1, const TCollection_AsciiString & K2);
+		static Standard_Boolean IsEqual(TCollection_AsciiString K1, TCollection_AsciiString K2);
 
 };
 
@@ -7552,7 +7552,7 @@ None
 
 Parameters
 ----------
-val: char *
+val: str
 lnval: int
 typ: Interface_ParamType
 nument: int
@@ -7561,7 +7561,7 @@ Returns
 -------
 int
 ") Append;
-		Standard_Integer Append(const char * val, const Standard_Integer lnval, const Interface_ParamType typ, const Standard_Integer nument);
+		Standard_Integer Append(Standard_CString val, const Standard_Integer lnval, const Interface_ParamType typ, const Standard_Integer nument);
 
 		/****************** Append ******************/
 		/**** md5 signature: 9fa5e37158f08c7bcfa7adde0474e56e ****/
@@ -8295,14 +8295,14 @@ class Interface_STAT {
 
 Parameters
 ----------
-title: char *,optional
+title: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") Interface_STAT;
-		 Interface_STAT(const char * title = "");
+		 Interface_STAT(Standard_CString title = "");
 
 		/****************** Interface_STAT ******************/
 		/**** md5 signature: cb7d83a2fbadcfc6c6fe085b46e7cda4 ****/
@@ -8327,14 +8327,14 @@ None
 Parameters
 ----------
 weight: float
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddPhase;
-		void AddPhase(const Standard_Real weight, const char * name = "");
+		void AddPhase(const Standard_Real weight, Standard_CString name = "");
 
 		/****************** AddStep ******************/
 		/**** md5 signature: 21cde4a1cc77e723291ed3b27cf07e1e ****/
@@ -8359,14 +8359,14 @@ None
 
 Parameters
 ----------
-title: char *
+title: str
 
 Returns
 -------
 nbphases: int
 total: float
 ") Description;
-		void Description(Standard_Integer &OutValue, Standard_Real &OutValue, const char * & title);
+		void Description(Standard_Integer &OutValue, Standard_Real &OutValue, Standard_CString title);
 
 		/****************** End ******************/
 		/**** md5 signature: fb2ee652f9985fe24d44f58655360e4e ****/
@@ -8386,7 +8386,6 @@ void
 
 Parameters
 ----------
-tit: TCollection_HAsciiString
 phn: TColStd_HSequenceOfAsciiString
 phw: TColStd_HSequenceOfReal
 phdeb: TColStd_HSequenceOfInteger
@@ -8395,9 +8394,10 @@ stw: TColStd_HSequenceOfReal
 
 Returns
 -------
+tit: TCollection_HAsciiString
 total: float
 ") Internals;
-		void Internals(opencascade::handle<TCollection_HAsciiString> & tit, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
+		void Internals(opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
 
 		/****************** NextCycle ******************/
 		/**** md5 signature: ca214add52f3821b26accc6fe7f36e0c ****/
@@ -8482,7 +8482,7 @@ int
 Parameters
 ----------
 num: int
-name: char *
+name: str
 
 Returns
 -------
@@ -8490,7 +8490,7 @@ n0step: int
 nbstep: int
 weight: float
 ") Phase;
-		void Phase(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, const char * & name);
+		void Phase(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, Standard_CString name);
 
 		/****************** SetPhase ******************/
 		/**** md5 signature: 2ff988852c3a26f437f261f22891edb5 ****/
@@ -8534,14 +8534,14 @@ None
 Parameters
 ----------
 items: int
-title: char *,optional
+title: str,optional
 	default value is ""
 
 Returns
 -------
 void
 ") StartCount;
-		static void StartCount(const Standard_Integer items, const char * title = "");
+		static void StartCount(const Standard_Integer items, Standard_CString title = "");
 
 		/****************** Step ******************/
 		/**** md5 signature: f6be15730fe53ce056667df4e2f42266 ****/
@@ -8570,9 +8570,9 @@ phase: bool,optional
 
 Returns
 -------
-char *
+str
 ") Where;
-		static const char * Where(const Standard_Boolean phase = Standard_True);
+		static Standard_CString Where(const Standard_Boolean phase = Standard_True);
 
 };
 
@@ -8996,9 +8996,9 @@ None
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** Text ******************/
 		/**** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ****/
@@ -9040,13 +9040,13 @@ class Interface_SignType : public MoniTool_SignText {
 
 Parameters
 ----------
-typnam: char *
+typnam: str
 
 Returns
 -------
-char *
+str
 ") ClassName;
-		static const char * ClassName(const char * typnam);
+		static Standard_CString ClassName(Standard_CString typnam);
 
 		/****************** Text ******************/
 		/**** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ****/
@@ -9076,9 +9076,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") Value;
-		virtual const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -9103,17 +9103,17 @@ class Interface_TypedValue : public MoniTool_TypedValue {
 
 Parameters
 ----------
-name: char *
+name: str
 type: Interface_ParamType,optional
 	default value is Interface_ParamText
-init: char *,optional
+init: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") Interface_TypedValue;
-		 Interface_TypedValue(const char * name, const Interface_ParamType type = Interface_ParamText, const char * init = "");
+		 Interface_TypedValue(Standard_CString name, const Interface_ParamType type = Interface_ParamText, Standard_CString init = "");
 
 		/****************** ParamTypeToValueType ******************/
 		/**** md5 signature: aee1d139dcd9a716445f9c7c79e55597 ****/
@@ -9288,13 +9288,13 @@ Parameters
 ----------
 num: int
 ent: Standard_Transient
-val: TCollection_HAsciiString
 
 Returns
 -------
 ptype: Interface_ParamType
+val: TCollection_HAsciiString
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 761c0b32c3eb0e5da7ddfca321a3322d ****/
@@ -9666,18 +9666,18 @@ class Interface_Static : public Interface_TypedValue {
 
 Parameters
 ----------
-family: char *
-name: char *
+family: str
+name: str
 type: Interface_ParamType,optional
 	default value is Interface_ParamText
-init: char *,optional
+init: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") Interface_Static;
-		 Interface_Static(const char * family, const char * name, const Interface_ParamType type = Interface_ParamText, const char * init = "");
+		 Interface_Static(Standard_CString family, Standard_CString name, const Interface_ParamType type = Interface_ParamText, Standard_CString init = "");
 
 		/****************** Interface_Static ******************/
 		/**** md5 signature: 1b796482a7cd04d278a7b9014840dcaa ****/
@@ -9686,15 +9686,15 @@ None
 
 Parameters
 ----------
-family: char *
-name: char *
+family: str
+name: str
 other: Interface_Static
 
 Returns
 -------
 None
 ") Interface_Static;
-		 Interface_Static(const char * family, const char * name, const opencascade::handle<Interface_Static> & other);
+		 Interface_Static(Standard_CString family, Standard_CString name, const opencascade::handle<Interface_Static> & other);
 
 		/****************** CDef ******************/
 		/**** md5 signature: e75a32f8e0c4371af5746fcaf995304b ****/
@@ -9703,14 +9703,14 @@ None
 
 Parameters
 ----------
-name: char *
-part: char *
+name: str
+part: str
 
 Returns
 -------
-char *
+str
 ") CDef;
-		static const char * CDef(const char * name, const char * part);
+		static Standard_CString CDef(Standard_CString name, Standard_CString part);
 
 		/****************** CVal ******************/
 		/**** md5 signature: 78193cb29df4c8b21b9e3de1ba97a96c ****/
@@ -9719,13 +9719,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
-char *
+str
 ") CVal;
-		static const char * CVal(const char * name);
+		static Standard_CString CVal(Standard_CString name);
 
 		/****************** Family ******************/
 		/**** md5 signature: c69de37306b0fd5e9cf300cae0c2b57b ****/
@@ -9734,9 +9734,9 @@ char *
 
 Returns
 -------
-char *
+str
 ") Family;
-		const char * Family();
+		Standard_CString Family();
 
 		/****************** FillMap ******************/
 		/**** md5 signature: e51e3c4131980a267a8de08fac73e54c ****/
@@ -9760,14 +9760,14 @@ void
 
 Parameters
 ----------
-name: char *
-part: char *
+name: str
+part: str
 
 Returns
 -------
 int
 ") IDef;
-		static Standard_Integer IDef(const char * name, const char * part);
+		static Standard_Integer IDef(Standard_CString name, Standard_CString part);
 
 		/****************** IVal ******************/
 		/**** md5 signature: d117b0899e16831696a0625d434eb539 ****/
@@ -9776,13 +9776,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") IVal;
-		static Standard_Integer IVal(const char * name);
+		static Standard_Integer IVal(Standard_CString name);
 
 		/****************** Init ******************/
 		/**** md5 signature: 02eb0352d106423d698462902e8b3ea1 ****/
@@ -9791,17 +9791,17 @@ int
 
 Parameters
 ----------
-family: char *
-name: char *
+family: str
+name: str
 type: Interface_ParamType
-init: char *,optional
+init: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") Init;
-		static Standard_Boolean Init(const char * family, const char * name, const Interface_ParamType type, const char * init = "");
+		static Standard_Boolean Init(Standard_CString family, Standard_CString name, const Interface_ParamType type, Standard_CString init = "");
 
 		/****************** Init ******************/
 		/**** md5 signature: d38b0a501f52a64fdd63d9f5c82fde52 ****/
@@ -9810,17 +9810,17 @@ bool
 
 Parameters
 ----------
-family: char *
-name: char *
+family: str
+name: str
 type: Standard_Character
-init: char *,optional
+init: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") Init;
-		static Standard_Boolean Init(const char * family, const char * name, const Standard_Character type, const char * init = "");
+		static Standard_Boolean Init(Standard_CString family, Standard_CString name, const Standard_Character type, Standard_CString init = "");
 
 		/****************** IsPresent ******************/
 		/**** md5 signature: 739ef9f35758eeccd1fc8c726c993957 ****/
@@ -9829,13 +9829,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") IsPresent;
-		static Standard_Boolean IsPresent(const char * name);
+		static Standard_Boolean IsPresent(Standard_CString name);
 
 		/****************** IsSet ******************/
 		/**** md5 signature: 7cb64b3795f4342b7c2866fe3401f982 ****/
@@ -9844,7 +9844,7 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 proper: bool,optional
 	default value is Standard_True
 
@@ -9852,7 +9852,7 @@ Returns
 -------
 bool
 ") IsSet;
-		static Standard_Boolean IsSet(const char * name, const Standard_Boolean proper = Standard_True);
+		static Standard_Boolean IsSet(Standard_CString name, const Standard_Boolean proper = Standard_True);
 
 		/****************** IsUpdated ******************/
 		/**** md5 signature: 01f4e7e4af28f2ca518f5373d24756bb ****/
@@ -9861,13 +9861,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") IsUpdated;
-		static Standard_Boolean IsUpdated(const char * name);
+		static Standard_Boolean IsUpdated(Standard_CString name);
 
 		/****************** Items ******************/
 		/**** md5 signature: 368d94dc7edec3aecfc9c0963e7a3712 ****/
@@ -9878,14 +9878,14 @@ Parameters
 ----------
 mode: int,optional
 	default value is 0
-criter: char *,optional
+criter: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfHAsciiString>
 ") Items;
-		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const Standard_Integer mode = 0, const char * criter = "");
+		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const Standard_Integer mode = 0, Standard_CString criter = "");
 
 
         %feature("autodoc", "1");
@@ -9902,13 +9902,13 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 float
 ") RVal;
-		static Standard_Real RVal(const char * name);
+		static Standard_Real RVal(Standard_CString name);
 
 		/****************** SetCVal ******************/
 		/**** md5 signature: 0ac37808e24c6befe2c30c23a9b6a3e1 ****/
@@ -9917,14 +9917,14 @@ float
 
 Parameters
 ----------
-name: char *
-val: char *
+name: str
+val: str
 
 Returns
 -------
 bool
 ") SetCVal;
-		static Standard_Boolean SetCVal(const char * name, const char * val);
+		static Standard_Boolean SetCVal(Standard_CString name, Standard_CString val);
 
 		/****************** SetIVal ******************/
 		/**** md5 signature: a57a08b3c5b23d03ffc49dcd7f055b8f ****/
@@ -9933,14 +9933,14 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 val: int
 
 Returns
 -------
 bool
 ") SetIVal;
-		static Standard_Boolean SetIVal(const char * name, const Standard_Integer val);
+		static Standard_Boolean SetIVal(Standard_CString name, const Standard_Integer val);
 
 		/****************** SetRVal ******************/
 		/**** md5 signature: 8c4a79176322045249fd27d78834411f ****/
@@ -9949,14 +9949,14 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 val: float
 
 Returns
 -------
 bool
 ") SetRVal;
-		static Standard_Boolean SetRVal(const char * name, const Standard_Real val);
+		static Standard_Boolean SetRVal(Standard_CString name, const Standard_Real val);
 
 		/****************** SetUptodate ******************/
 		/**** md5 signature: 1cd883d27f7d4764a11bb187e2202572 ****/
@@ -10002,13 +10002,13 @@ void
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Interface_Static>
 ") Static;
-		static opencascade::handle<Interface_Static> Static(const char * name);
+		static opencascade::handle<Interface_Static> Static(Standard_CString name);
 
 		/****************** Update ******************/
 		/**** md5 signature: 185a217a8a41cc482d0b132448e027b6 ****/
@@ -10017,13 +10017,13 @@ opencascade::handle<Interface_Static>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") Update;
-		static Standard_Boolean Update(const char * name);
+		static Standard_Boolean Update(Standard_CString name);
 
 		/****************** UpdatedStatus ******************/
 		/**** md5 signature: 930fc09d937027882f5df9305551114a ****/

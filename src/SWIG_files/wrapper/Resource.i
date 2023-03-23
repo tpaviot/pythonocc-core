@@ -205,14 +205,14 @@ None
 
 Parameters
 ----------
-Left: TCollection_AsciiString
-Right: TCollection_AsciiString
+Left: str
+Right: str
 
 Returns
 -------
 bool
 ") IsLower;
-		Standard_Boolean IsLower(const TCollection_AsciiString & Left, const TCollection_AsciiString & Right);
+		Standard_Boolean IsLower(TCollection_AsciiString Left, TCollection_AsciiString Right);
 
 };
 
@@ -235,7 +235,7 @@ class Resource_Manager : public Standard_Transient {
 
 Parameters
 ----------
-aName: char *
+aName: str
 Verbose: bool,optional
 	default value is Standard_False
 
@@ -243,7 +243,7 @@ Returns
 -------
 None
 ") Resource_Manager;
-		 Resource_Manager(const char * aName, const Standard_Boolean Verbose = Standard_False);
+		 Resource_Manager(Standard_CString aName, const Standard_Boolean Verbose = Standard_False);
 
 		/****************** Resource_Manager ******************/
 		/**** md5 signature: 94a9bf1e751906a5d5dd7b470590375c ****/
@@ -263,9 +263,9 @@ None
 
 Parameters
 ----------
-theName: TCollection_AsciiString
-theDefaultsDirectory: TCollection_AsciiString
-theUserDefaultsDirectory: TCollection_AsciiString
+theName: str
+theDefaultsDirectory: str
+theUserDefaultsDirectory: str
 theIsVerbose: bool,optional
 	default value is Standard_False
 
@@ -273,7 +273,7 @@ Returns
 -------
 None
 ") Resource_Manager;
-		 Resource_Manager(const TCollection_AsciiString & theName, const TCollection_AsciiString & theDefaultsDirectory, const TCollection_AsciiString & theUserDefaultsDirectory, const Standard_Boolean theIsVerbose = Standard_False);
+		 Resource_Manager(TCollection_AsciiString theName, TCollection_AsciiString theDefaultsDirectory, TCollection_AsciiString theUserDefaultsDirectory, const Standard_Boolean theIsVerbose = Standard_False);
 
 		/****************** ExtValue ******************/
 		/**** md5 signature: eacb0ae55d7f76df617e14be66e1f1b0 ****/
@@ -282,13 +282,13 @@ None
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 
 Returns
 -------
 Standard_ExtString
 ") ExtValue;
-		virtual Standard_ExtString ExtValue(const char * aResourceName);
+		virtual Standard_ExtString ExtValue(Standard_CString aResourceName);
 
 		/****************** Find ******************/
 		/**** md5 signature: ad646ce41630b595ea3f002fe0683f59 ****/
@@ -297,13 +297,13 @@ Standard_ExtString
 
 Parameters
 ----------
-aResource: char *
+aResource: str
 
 Returns
 -------
 bool
 ") Find;
-		Standard_Boolean Find(const char * aResource);
+		Standard_Boolean Find(Standard_CString aResource);
 
 		/****************** Find ******************/
 		/**** md5 signature: 294981535cdceb04223d5675a243c4c7 ****/
@@ -312,14 +312,14 @@ bool
 
 Parameters
 ----------
-theResource: TCollection_AsciiString
-theValue: TCollection_AsciiString
+theResource: str
+theValue: str
 
 Returns
 -------
 bool
 ") Find;
-		Standard_Boolean Find(const TCollection_AsciiString & theResource, TCollection_AsciiString & theValue);
+		Standard_Boolean Find(TCollection_AsciiString theResource, TCollection_AsciiString & theValue);
 
 		/****************** GetMap ******************/
 		/**** md5 signature: 0a184cd99b151391a734472d41136b3b ****/
@@ -344,15 +344,15 @@ Resource_DataMapOfAsciiStringAsciiString
 
 Parameters
 ----------
-aPath: TCollection_AsciiString
-aName: char *
+aPath: str
+aName: str
 isUserDefaults: bool
 
 Returns
 -------
 void
 ") GetResourcePath;
-		static void GetResourcePath(TCollection_AsciiString & aPath, const char * aName, const Standard_Boolean isUserDefaults);
+		static void GetResourcePath(TCollection_AsciiString & aPath, Standard_CString aName, const Standard_Boolean isUserDefaults);
 
 		/****************** Integer ******************/
 		/**** md5 signature: 459f06c743be8fcf9fa4e5326394951e ****/
@@ -361,13 +361,13 @@ void
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 
 Returns
 -------
 int
 ") Integer;
-		virtual Standard_Integer Integer(const char * aResourceName);
+		virtual Standard_Integer Integer(Standard_CString aResourceName);
 
 		/****************** Real ******************/
 		/**** md5 signature: b6af1db9d303b345bf398c6e044f1093 ****/
@@ -376,13 +376,13 @@ int
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 
 Returns
 -------
 float
 ") Real;
-		virtual Standard_Real Real(const char * aResourceName);
+		virtual Standard_Real Real(Standard_CString aResourceName);
 
 		/****************** Save ******************/
 		/**** md5 signature: c46b0608963cc711253d0dc474525a23 ****/
@@ -402,14 +402,14 @@ bool
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 aValue: int
 
 Returns
 -------
 None
 ") SetResource;
-		virtual void SetResource(const char * aResourceName, const Standard_Integer aValue);
+		virtual void SetResource(Standard_CString aResourceName, const Standard_Integer aValue);
 
 		/****************** SetResource ******************/
 		/**** md5 signature: 5adf64f7de0821b4e2982633edbf9ea2 ****/
@@ -418,14 +418,14 @@ None
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 aValue: float
 
 Returns
 -------
 None
 ") SetResource;
-		virtual void SetResource(const char * aResourceName, const Standard_Real aValue);
+		virtual void SetResource(Standard_CString aResourceName, const Standard_Real aValue);
 
 		/****************** SetResource ******************/
 		/**** md5 signature: 8beffa88923a65f02524a44eab47c796 ****/
@@ -434,14 +434,14 @@ None
 
 Parameters
 ----------
-aResourceName: char *
-aValue: char *
+aResourceName: str
+aValue: str
 
 Returns
 -------
 None
 ") SetResource;
-		virtual void SetResource(const char * aResourceName, const char * aValue);
+		virtual void SetResource(Standard_CString aResourceName, Standard_CString aValue);
 
 		/****************** SetResource ******************/
 		/**** md5 signature: c3adf5010bcf4e1022068e87a43da2c6 ****/
@@ -450,14 +450,14 @@ None
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 aValue: Standard_ExtString
 
 Returns
 -------
 None
 ") SetResource;
-		virtual void SetResource(const char * aResourceName, const Standard_ExtString aValue);
+		virtual void SetResource(Standard_CString aResourceName, const Standard_ExtString aValue);
 
 		/****************** Value ******************/
 		/**** md5 signature: 704eea869ed3ea373c063217f10964ef ****/
@@ -466,13 +466,13 @@ None
 
 Parameters
 ----------
-aResourceName: char *
+aResourceName: str
 
 Returns
 -------
-char *
+str
 ") Value;
-		virtual const char * Value(const char * aResourceName);
+		virtual Standard_CString Value(Standard_CString aResourceName);
 
 };
 
@@ -497,14 +497,14 @@ class Resource_Unicode {
 
 Parameters
 ----------
-fromstr: char *
-tostr: TCollection_ExtendedString
+fromstr: str
+tostr: str
 
 Returns
 -------
 bool
 ") ConvertBig5ToUnicode;
-		static Standard_Boolean ConvertBig5ToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
+		static Standard_Boolean ConvertBig5ToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
 		/****************** ConvertEUCToUnicode ******************/
 		/**** md5 signature: a47f65202dbb4ad94609e631aefd3e71 ****/
@@ -513,14 +513,14 @@ bool
 
 Parameters
 ----------
-fromstr: char *
-tostr: TCollection_ExtendedString
+fromstr: str
+tostr: str
 
 Returns
 -------
 void
 ") ConvertEUCToUnicode;
-		static void ConvertEUCToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
+		static void ConvertEUCToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
 		/****************** ConvertFormatToUnicode ******************/
 		/**** md5 signature: 092af2a29361b36b8f1d60b684d8e660 ****/
@@ -529,14 +529,14 @@ void
 
 Parameters
 ----------
-theFromStr: char *
-theToStr: TCollection_ExtendedString
+theFromStr: str
+theToStr: str
 
 Returns
 -------
 void
 ") ConvertFormatToUnicode;
-		static void ConvertFormatToUnicode(const char * theFromStr, TCollection_ExtendedString & theToStr);
+		static void ConvertFormatToUnicode(Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
 
 		/****************** ConvertFormatToUnicode ******************/
 		/**** md5 signature: 1a39a61476a07a6c419d95aa2f936c87 ****/
@@ -546,14 +546,14 @@ void
 Parameters
 ----------
 theFormat: Resource_FormatType
-theFromStr: char *
-theToStr: TCollection_ExtendedString
+theFromStr: str
+theToStr: str
 
 Returns
 -------
 void
 ") ConvertFormatToUnicode;
-		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, const char * theFromStr, TCollection_ExtendedString & theToStr);
+		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
 
 		/****************** ConvertGBKToUnicode ******************/
 		/**** md5 signature: 55ed525176f6d874f96d41764a2499d6 ****/
@@ -562,14 +562,14 @@ void
 
 Parameters
 ----------
-fromstr: char *
-tostr: TCollection_ExtendedString
+fromstr: str
+tostr: str
 
 Returns
 -------
 bool
 ") ConvertGBKToUnicode;
-		static Standard_Boolean ConvertGBKToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
+		static Standard_Boolean ConvertGBKToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
 		/****************** ConvertGBToUnicode ******************/
 		/**** md5 signature: a22cad6ea4c1a1e6cd398d067edaa57c ****/
@@ -578,14 +578,14 @@ bool
 
 Parameters
 ----------
-fromstr: char *
-tostr: TCollection_ExtendedString
+fromstr: str
+tostr: str
 
 Returns
 -------
 void
 ") ConvertGBToUnicode;
-		static void ConvertGBToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
+		static void ConvertGBToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
 		/****************** ConvertSJISToUnicode ******************/
 		/**** md5 signature: 3e6f135c27c0b105b7e7e224b4376205 ****/
@@ -594,14 +594,14 @@ void
 
 Parameters
 ----------
-fromstr: char *
-tostr: TCollection_ExtendedString
+fromstr: str
+tostr: str
 
 Returns
 -------
 void
 ") ConvertSJISToUnicode;
-		static void ConvertSJISToUnicode(const char * fromstr, TCollection_ExtendedString & tostr);
+		static void ConvertSJISToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
 		/****************** ConvertUnicodeToANSI ******************/
 		/**** md5 signature: becd4b24e1324dac8a09502a0f3b35e3 ****/
@@ -610,7 +610,7 @@ void
 
 Parameters
 ----------
-fromstr: TCollection_ExtendedString
+fromstr: str
 tostr: Standard_PCharacter
 maxsize: int
 
@@ -618,7 +618,7 @@ Returns
 -------
 bool
 ") ConvertUnicodeToANSI;
-		static Standard_Boolean ConvertUnicodeToANSI(const TCollection_ExtendedString & fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static Standard_Boolean ConvertUnicodeToANSI(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
 		/****************** ConvertUnicodeToEUC ******************/
 		/**** md5 signature: 3de0636677422237545faabc4b82044a ****/
@@ -627,7 +627,7 @@ bool
 
 Parameters
 ----------
-fromstr: TCollection_ExtendedString
+fromstr: str
 tostr: Standard_PCharacter
 maxsize: int
 
@@ -635,7 +635,7 @@ Returns
 -------
 bool
 ") ConvertUnicodeToEUC;
-		static Standard_Boolean ConvertUnicodeToEUC(const TCollection_ExtendedString & fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static Standard_Boolean ConvertUnicodeToEUC(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
 		/****************** ConvertUnicodeToFormat ******************/
 		/**** md5 signature: 8743e70c9c2a155ce180b78c36c04a71 ****/
@@ -645,7 +645,7 @@ bool
 Parameters
 ----------
 theFormat: Resource_FormatType
-theFromStr: TCollection_ExtendedString
+theFromStr: str
 theToStr: Standard_PCharacter
 theMaxSize: int
 
@@ -653,7 +653,7 @@ Returns
 -------
 bool
 ") ConvertUnicodeToFormat;
-		static Standard_Boolean ConvertUnicodeToFormat(const Resource_FormatType theFormat, const TCollection_ExtendedString & theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
+		static Standard_Boolean ConvertUnicodeToFormat(const Resource_FormatType theFormat, TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
 
 		/****************** ConvertUnicodeToFormat ******************/
 		/**** md5 signature: 3a0226ee9a6304b9f55b4674dccd26dc ****/
@@ -662,7 +662,7 @@ bool
 
 Parameters
 ----------
-theFromStr: TCollection_ExtendedString
+theFromStr: str
 theToStr: Standard_PCharacter
 theMaxSize: int
 
@@ -670,7 +670,7 @@ Returns
 -------
 bool
 ") ConvertUnicodeToFormat;
-		static Standard_Boolean ConvertUnicodeToFormat(const TCollection_ExtendedString & theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
+		static Standard_Boolean ConvertUnicodeToFormat(TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
 
 		/****************** ConvertUnicodeToGB ******************/
 		/**** md5 signature: e92423028aa69f039e50fc871d72daf2 ****/
@@ -679,7 +679,7 @@ bool
 
 Parameters
 ----------
-fromstr: TCollection_ExtendedString
+fromstr: str
 tostr: Standard_PCharacter
 maxsize: int
 
@@ -687,7 +687,7 @@ Returns
 -------
 bool
 ") ConvertUnicodeToGB;
-		static Standard_Boolean ConvertUnicodeToGB(const TCollection_ExtendedString & fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static Standard_Boolean ConvertUnicodeToGB(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
 		/****************** ConvertUnicodeToSJIS ******************/
 		/**** md5 signature: 405eb61d326bd40b62e69514a5638a62 ****/
@@ -696,7 +696,7 @@ bool
 
 Parameters
 ----------
-fromstr: TCollection_ExtendedString
+fromstr: str
 tostr: Standard_PCharacter
 maxsize: int
 
@@ -704,7 +704,7 @@ Returns
 -------
 bool
 ") ConvertUnicodeToSJIS;
-		static Standard_Boolean ConvertUnicodeToSJIS(const TCollection_ExtendedString & fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static Standard_Boolean ConvertUnicodeToSJIS(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
 		/****************** GetFormat ******************/
 		/**** md5 signature: b7f0b16e429d16aced2ecaaf3804dc38 ****/

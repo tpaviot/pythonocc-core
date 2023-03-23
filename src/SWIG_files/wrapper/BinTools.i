@@ -200,7 +200,7 @@ class BinTools {
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: char *
+theFile: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -208,7 +208,7 @@ Returns
 -------
 bool
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & theShape, const char * theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 3881a3762eede8c671fff2911d095012 ****/
@@ -218,7 +218,7 @@ bool
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: char *
+theFile: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -226,7 +226,7 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: b26fc24f9c2e022ffc6d11aa96e8af41 ****/
@@ -236,7 +236,7 @@ bool
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: char *
+theFile: str
 theWithTriangles: bool
 theWithNormals: bool
 theVersion: BinTools_FormatVersion
@@ -247,7 +247,7 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

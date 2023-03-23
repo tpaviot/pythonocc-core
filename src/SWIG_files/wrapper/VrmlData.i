@@ -358,7 +358,7 @@ VrmlData_ErrorStatus
 Parameters
 ----------
 theBuffer: VrmlData_InBuffer
-theRes: TCollection_AsciiString
+theRes: str
 
 Returns
 -------
@@ -621,7 +621,7 @@ theResult: float
 Parameters
 ----------
 theBuffer: VrmlData_InBuffer
-theStr: TCollection_AsciiString
+theStr: str
 
 Returns
 -------
@@ -702,7 +702,7 @@ inline void
 
 Parameters
 ----------
-&: TCollection_ExtendedString
+&: str
 
 Returns
 -------

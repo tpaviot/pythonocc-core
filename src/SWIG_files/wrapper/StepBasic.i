@@ -6729,9 +6729,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** SetName ******************/
 		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
@@ -6740,13 +6740,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetName;
-		virtual Standard_Boolean SetName(const char * name);
+		virtual Standard_Boolean SetName(Standard_CString name);
 
 };
 
@@ -10185,9 +10185,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** SetName ******************/
 		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
@@ -10196,13 +10196,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetName;
-		virtual Standard_Boolean SetName(const char * name);
+		virtual Standard_Boolean SetName(Standard_CString name);
 
 };
 

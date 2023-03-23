@@ -94,13 +94,13 @@ class UTL {
 Parameters
 ----------
 aData: Storage_Data
-anInfo: TCollection_ExtendedString
+anInfo: str
 
 Returns
 -------
 void
 ") AddToUserInfo;
-		static void AddToUserInfo(const opencascade::handle<Storage_Data> & aData, const TCollection_ExtendedString & anInfo);
+		static void AddToUserInfo(const opencascade::handle<Storage_Data> & aData, TCollection_ExtendedString anInfo);
 
 		/****************** CString ******************/
 		/**** md5 signature: 27efc7f42e41e693f1b566c94a6e6b65 ****/
@@ -109,13 +109,13 @@ void
 
 Parameters
 ----------
-anExtendedString: TCollection_ExtendedString
+anExtendedString: str
 
 Returns
 -------
-char *
+str
 ") CString;
-		static const char * CString(const TCollection_ExtendedString & anExtendedString);
+		static Standard_CString CString(TCollection_ExtendedString anExtendedString);
 
 		/****************** Disk ******************/
 		/**** md5 signature: d10b057859f3bb88132a108ce30e1b0f ****/
@@ -139,13 +139,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-anAsciiString: TCollection_AsciiString
+anAsciiString: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") ExtendedString;
-		static TCollection_ExtendedString ExtendedString(const TCollection_AsciiString & anAsciiString);
+		static TCollection_ExtendedString ExtendedString(TCollection_AsciiString anAsciiString);
 
 		/****************** Extension ******************/
 		/**** md5 signature: 1fdfaa46bc1f63a768ff0970605a74b4 ****/
@@ -169,13 +169,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") Extension;
-		static TCollection_ExtendedString Extension(const TCollection_ExtendedString & aFileName);
+		static TCollection_ExtendedString Extension(TCollection_ExtendedString aFileName);
 
 		/****************** FileIterator ******************/
 		/**** md5 signature: 3b8e95af39e7222c79ee3874818359ae ****/
@@ -185,13 +185,13 @@ TCollection_ExtendedString
 Parameters
 ----------
 aPath: OSD_Path
-aMask: TCollection_ExtendedString
+aMask: str
 
 Returns
 -------
 OSD_FileIterator
 ") FileIterator;
-		static OSD_FileIterator FileIterator(const OSD_Path & aPath, const TCollection_ExtendedString & aMask);
+		static OSD_FileIterator FileIterator(const OSD_Path & aPath, TCollection_ExtendedString aMask);
 
 		/****************** Find ******************/
 		/**** md5 signature: 7d0c88cfc70710cdf2dc6818263dc184 ****/
@@ -201,13 +201,13 @@ OSD_FileIterator
 Parameters
 ----------
 aResourceManager: Resource_Manager
-aResourceName: TCollection_ExtendedString
+aResourceName: str
 
 Returns
 -------
 bool
 ") Find;
-		static Standard_Boolean Find(const opencascade::handle<Resource_Manager> & aResourceManager, const TCollection_ExtendedString & aResourceName);
+		static Standard_Boolean Find(const opencascade::handle<Resource_Manager> & aResourceManager, TCollection_ExtendedString aResourceName);
 
 		/****************** GUID ******************/
 		/**** md5 signature: 76570a611bd03b2da6866c2d772e9fca ****/
@@ -216,13 +216,13 @@ bool
 
 Parameters
 ----------
-anXString: TCollection_ExtendedString
+anXString: str
 
 Returns
 -------
 Standard_GUID
 ") GUID;
-		static Standard_GUID GUID(const TCollection_ExtendedString & anXString);
+		static Standard_GUID GUID(TCollection_ExtendedString anXString);
 
 		/****************** IntegerValue ******************/
 		/**** md5 signature: 5a50b43fa4a82a78c3725a39c3dd3b89 ****/
@@ -231,13 +231,13 @@ Standard_GUID
 
 Parameters
 ----------
-anExtendedString: TCollection_ExtendedString
+anExtendedString: str
 
 Returns
 -------
 int
 ") IntegerValue;
-		static Standard_Integer IntegerValue(const TCollection_ExtendedString & anExtendedString);
+		static Standard_Integer IntegerValue(TCollection_ExtendedString anExtendedString);
 
 		/****************** IsReadOnly ******************/
 		/**** md5 signature: 20a1ebdd29b1efdf19fc6ba48c54072e ****/
@@ -246,13 +246,13 @@ int
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 
 Returns
 -------
 bool
 ") IsReadOnly;
-		static Standard_Boolean IsReadOnly(const TCollection_ExtendedString & aFileName);
+		static Standard_Boolean IsReadOnly(TCollection_ExtendedString aFileName);
 
 		/****************** LocalHost ******************/
 		/**** md5 signature: 0263c99711423d618edb93f574dec1d5 ****/
@@ -288,14 +288,14 @@ TCollection_ExtendedString
 Parameters
 ----------
 aFile: Storage_BaseDriver
-aName: TCollection_ExtendedString
+aName: str
 aMode: Storage_OpenMode
 
 Returns
 -------
 Storage_Error
 ") OpenFile;
-		static Storage_Error OpenFile(const opencascade::handle<Storage_BaseDriver> & aFile, const TCollection_ExtendedString & aName, const Storage_OpenMode aMode);
+		static Storage_Error OpenFile(const opencascade::handle<Storage_BaseDriver> & aFile, TCollection_ExtendedString aName, const Storage_OpenMode aMode);
 
 		/****************** Path ******************/
 		/**** md5 signature: 9faecbe5b613cbbbe4a339567e73579e ****/
@@ -304,13 +304,13 @@ Storage_Error
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
+aFileName: str
 
 Returns
 -------
 OSD_Path
 ") Path;
-		static OSD_Path Path(const TCollection_ExtendedString & aFileName);
+		static OSD_Path Path(TCollection_ExtendedString aFileName);
 
 		/****************** Trek ******************/
 		/**** md5 signature: 3755ade30d352379a2655437c039728d ****/
@@ -335,13 +335,13 @@ TCollection_ExtendedString
 Parameters
 ----------
 aResourceManager: Resource_Manager
-aResourceName: TCollection_ExtendedString
+aResourceName: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") Value;
-		static TCollection_ExtendedString Value(const opencascade::handle<Resource_Manager> & aResourceManager, const TCollection_ExtendedString & aResourceName);
+		static TCollection_ExtendedString Value(const opencascade::handle<Resource_Manager> & aResourceManager, TCollection_ExtendedString aResourceName);
 
 		/****************** xgetenv ******************/
 		/**** md5 signature: f0cc6b56a545b4756269104c4f87d26e ****/
@@ -350,13 +350,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-aCString: char *
+aCString: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") xgetenv;
-		static TCollection_ExtendedString xgetenv(const char * aCString);
+		static TCollection_ExtendedString xgetenv(Standard_CString aCString);
 
 };
 

@@ -507,13 +507,13 @@ None
 
 Parameters
 ----------
-aGuid: char *
+aGuid: str
 
 Returns
 -------
 None
 ") Standard_GUID;
-		 Standard_GUID(const char * aGuid);
+		 Standard_GUID(Standard_CString aGuid);
 
 		/****************** Standard_GUID ******************/
 		/**** md5 signature: 8d0d307d0173ec7d9a9c9cec3e471f21 ****/
@@ -621,13 +621,13 @@ None
 
 Parameters
 ----------
-aGuid: char *
+aGuid: str
 
 Returns
 -------
 bool
 ") CheckGUIDFormat;
-		static Standard_Boolean CheckGUIDFormat(const char * aGuid);
+		static Standard_Boolean CheckGUIDFormat(Standard_CString aGuid);
 
 		/****************** Hash ******************/
 		/**** md5 signature: 2ca4d5ed910085d9b74b734c3ce42e00 ****/
@@ -1012,13 +1012,13 @@ bool
 
 Parameters
 ----------
-theTypeName: char *
+theTypeName: str
 
 Returns
 -------
 bool
 ") IsInstance;
-		Standard_Boolean IsInstance(const char * theTypeName);
+		Standard_Boolean IsInstance(Standard_CString theTypeName);
 
 		/****************** IsKind ******************/
 		/**** md5 signature: 09e998fa3503d5957eaed7054ae2afcb ****/
@@ -1042,13 +1042,13 @@ bool
 
 Parameters
 ----------
-theTypeName: char *
+theTypeName: str
 
 Returns
 -------
 bool
 ") IsKind;
-		Standard_Boolean IsKind(const char * theTypeName);
+		Standard_Boolean IsKind(Standard_CString theTypeName);
 
 		/****************** This ******************/
 		/**** md5 signature: 369ed7e5c72c58d7742ea0f5afa5efdd ****/
@@ -1178,13 +1178,13 @@ None
 
 Parameters
 ----------
-theDesc: char *
+theDesc: str
 
 Returns
 -------
 None
 ") Standard_Failure;
-		 Standard_Failure(const char * theDesc);
+		 Standard_Failure(Standard_CString theDesc);
 
 		/****************** Standard_Failure ******************/
 		/**** md5 signature: 598ccf8efeea31d62c1978fafbb81e3d ****/
@@ -1193,14 +1193,14 @@ None
 
 Parameters
 ----------
-theDesc: char *
-theStackTrace: char *
+theDesc: str
+theStackTrace: str
 
 Returns
 -------
 None
 ") Standard_Failure;
-		 Standard_Failure(const char * theDesc, const char * theStackTrace);
+		 Standard_Failure(Standard_CString theDesc, Standard_CString theStackTrace);
 
 		/****************** DefaultStackTraceLength ******************/
 		/**** md5 signature: 12c493f7dd93e3779bfe7abdb3051a3b ****/
@@ -1220,9 +1220,9 @@ int
 
 Returns
 -------
-char *
+str
 ") GetMessageString;
-		virtual const char * GetMessageString();
+		virtual Standard_CString GetMessageString();
 
 		/****************** GetStackString ******************/
 		/**** md5 signature: 5581b971f0facf6f7621539967764486 ****/
@@ -1231,9 +1231,9 @@ char *
 
 Returns
 -------
-char *
+str
 ") GetStackString;
-		virtual const char * GetStackString();
+		virtual Standard_CString GetStackString();
 
 		/****************** Jump ******************/
 		/**** md5 signature: e33ef5a1dbf8b90ad71d2447437ae607 ****/
@@ -1253,13 +1253,13 @@ None
 
 Parameters
 ----------
-theMessage: char *
+theMessage: str
 
 Returns
 -------
 opencascade::handle<Standard_Failure>
 ") NewInstance;
-		static opencascade::handle<Standard_Failure> NewInstance(const char * theMessage);
+		static opencascade::handle<Standard_Failure> NewInstance(Standard_CString theMessage);
 
 		/****************** NewInstance ******************/
 		/**** md5 signature: 47f811a9539bde6aaf8c4a9a851c69f7 ****/
@@ -1268,14 +1268,14 @@ opencascade::handle<Standard_Failure>
 
 Parameters
 ----------
-theMessage: char *
-theStackTrace: char *
+theMessage: str
+theStackTrace: str
 
 Returns
 -------
 opencascade::handle<Standard_Failure>
 ") NewInstance;
-		static opencascade::handle<Standard_Failure> NewInstance(const char * theMessage, const char * theStackTrace);
+		static opencascade::handle<Standard_Failure> NewInstance(Standard_CString theMessage, Standard_CString theStackTrace);
 
 
         %feature("autodoc", "1");
@@ -1292,14 +1292,14 @@ opencascade::handle<Standard_Failure>
 
 Parameters
 ----------
-aMessage: char *,optional
+aMessage: str,optional
 	default value is ""
 
 Returns
 -------
 void
 ") Raise;
-		static void Raise(const char * aMessage = "");
+		static void Raise(Standard_CString aMessage = "");
 
 		/****************** Raise ******************/
 		/**** md5 signature: 03c559f09da27928a7c59a30a5a6ce57 ****/
@@ -1334,13 +1334,13 @@ None
 
 Parameters
 ----------
-aMessage: char *
+aMessage: str
 
 Returns
 -------
 None
 ") Reraise;
-		void Reraise(const char * aMessage);
+		void Reraise(Standard_CString aMessage);
 
 		/****************** Reraise ******************/
 		/**** md5 signature: 77af3b338ca71e96bbc8da8476367087 ****/
@@ -1379,13 +1379,13 @@ void
 
 Parameters
 ----------
-theMessage: char *
+theMessage: str
 
 Returns
 -------
 None
 ") SetMessageString;
-		virtual void SetMessageString(const char * theMessage);
+		virtual void SetMessageString(Standard_CString theMessage);
 
 		/****************** SetStackString ******************/
 		/**** md5 signature: 0ac982cf92368c8ff9d3ab7dc330defa ****/
@@ -1394,13 +1394,13 @@ None
 
 Parameters
 ----------
-theStack: char *
+theStack: str
 
 Returns
 -------
 None
 ") SetStackString;
-		virtual void SetStackString(const char * theStack);
+		virtual void SetStackString(Standard_CString theStack);
 
 };
 
@@ -1683,14 +1683,14 @@ class Standard_OutOfMemory : public Standard_ProgramError {
 
 Parameters
 ----------
-theMessage: char *,optional
+theMessage: str,optional
 	default value is 0
 
 Returns
 -------
 None
 ") Standard_OutOfMemory;
-		 Standard_OutOfMemory(const char * theMessage = 0);
+		 Standard_OutOfMemory(Standard_CString theMessage = 0);
 
 		/****************** GetMessageString ******************/
 		/**** md5 signature: 363c8632ad9d571f22bc0c66e7debebf ****/
@@ -1699,9 +1699,9 @@ None
 
 Returns
 -------
-char *
+str
 ") GetMessageString;
-		const char * GetMessageString();
+		Standard_CString GetMessageString();
 
 		/****************** NewInstance ******************/
 		/**** md5 signature: c920a2e02bad464ffbe4c7662f3298ea ****/
@@ -1710,14 +1710,14 @@ char *
 
 Parameters
 ----------
-theMessage: char *,optional
+theMessage: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<Standard_OutOfMemory>
 ") NewInstance;
-		static opencascade::handle<Standard_OutOfMemory> NewInstance(const char * theMessage = "");
+		static opencascade::handle<Standard_OutOfMemory> NewInstance(Standard_CString theMessage = "");
 
 		/****************** NewInstance ******************/
 		/**** md5 signature: 6c918de0ecdc1c640cd677eed73b0564 ****/
@@ -1726,14 +1726,14 @@ opencascade::handle<Standard_OutOfMemory>
 
 Parameters
 ----------
-theMessage: char *
-theStackTrace: char *
+theMessage: str
+theStackTrace: str
 
 Returns
 -------
 opencascade::handle<Standard_OutOfMemory>
 ") NewInstance;
-		static opencascade::handle<Standard_OutOfMemory> NewInstance(const char * theMessage, const char * theStackTrace);
+		static opencascade::handle<Standard_OutOfMemory> NewInstance(Standard_CString theMessage, Standard_CString theStackTrace);
 
 		/****************** Raise ******************/
 		/**** md5 signature: 52297b82d875f5f61f56970e75bf80a5 ****/
@@ -1742,14 +1742,14 @@ opencascade::handle<Standard_OutOfMemory>
 
 Parameters
 ----------
-theMessage: char *,optional
+theMessage: str,optional
 	default value is ""
 
 Returns
 -------
 void
 ") Raise;
-		static void Raise(const char * theMessage = "");
+		static void Raise(Standard_CString theMessage = "");
 
 		/****************** Raise ******************/
 		/**** md5 signature: 978a21c380259eaa0fef27d74b086dae ****/
@@ -1773,13 +1773,13 @@ void
 
 Parameters
 ----------
-aMessage: char *
+aMessage: str
 
 Returns
 -------
 None
 ") SetMessageString;
-		void SetMessageString(const char * aMessage);
+		void SetMessageString(Standard_CString aMessage);
 
 };
 
@@ -1845,9 +1845,9 @@ class Standard_Type : public Standard_Transient {
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** Parent ******************/
 		/**** md5 signature: 4c52a6847edce109e140e2343296b76f ****/
@@ -1919,13 +1919,13 @@ bool
 
 Parameters
 ----------
-theOther: char *
+theOther: str
 
 Returns
 -------
 bool
 ") SubType;
-		Standard_Boolean SubType(const char * theOther);
+		Standard_Boolean SubType(Standard_CString theOther);
 
 		/****************** SystemName ******************/
 		/**** md5 signature: 3db3c1797a8dec854871c6caaa05c939 ****/
@@ -1934,9 +1934,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") SystemName;
-		const char * SystemName();
+		Standard_CString SystemName();
 
 };
 

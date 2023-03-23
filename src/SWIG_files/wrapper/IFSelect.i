@@ -316,13 +316,13 @@ class IFSelect {
 Parameters
 ----------
 WS: IFSelect_WorkSession
-file: char *
+file: str
 
 Returns
 -------
 bool
 ") RestoreSession;
-		static Standard_Boolean RestoreSession(const opencascade::handle<IFSelect_WorkSession> & WS, const char * file);
+		static Standard_Boolean RestoreSession(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString file);
 
 		/****************** SaveSession ******************/
 		/**** md5 signature: 70b61c20336eaa5196544d5cc6374f24 ****/
@@ -332,13 +332,13 @@ bool
 Parameters
 ----------
 WS: IFSelect_WorkSession
-file: char *
+file: str
 
 Returns
 -------
 bool
 ") SaveSession;
-		static Standard_Boolean SaveSession(const opencascade::handle<IFSelect_WorkSession> & WS, const char * file);
+		static Standard_Boolean SaveSession(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString file);
 
 };
 
@@ -363,13 +363,13 @@ class IFSelect_Activator : public Standard_Transient {
 Parameters
 ----------
 number: int
-command: char *
+command: str
 
 Returns
 -------
 None
 ") Add;
-		void Add(const Standard_Integer number, const char * command);
+		void Add(const Standard_Integer number, Standard_CString command);
 
 		/****************** AddSet ******************/
 		/**** md5 signature: 595aba69625ded0c77aa82a56fd1216b ****/
@@ -379,13 +379,13 @@ None
 Parameters
 ----------
 number: int
-command: char *
+command: str
 
 Returns
 -------
 None
 ") AddSet;
-		void AddSet(const Standard_Integer number, const char * command);
+		void AddSet(const Standard_Integer number, Standard_CString command);
 
 		/****************** Adding ******************/
 		/**** md5 signature: 0a5b580e999c19c508a9b0bd5aa30436 ****/
@@ -396,14 +396,14 @@ Parameters
 ----------
 actor: IFSelect_Activator
 number: int
-command: char *
+command: str
 mode: int
 
 Returns
 -------
 void
 ") Adding;
-		static void Adding(const opencascade::handle<IFSelect_Activator> & actor, const Standard_Integer number, const char * command, const Standard_Integer mode);
+		static void Adding(const opencascade::handle<IFSelect_Activator> & actor, const Standard_Integer number, Standard_CString command, const Standard_Integer mode);
 
 		/****************** Commands ******************/
 		/**** md5 signature: b84e2057293dd094c9908245b9306ac7 ****/
@@ -414,14 +414,14 @@ Parameters
 ----------
 mode: int,optional
 	default value is -1
-command: char *,optional
+command: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfAsciiString>
 ") Commands;
-		static opencascade::handle<TColStd_HSequenceOfAsciiString> Commands(const Standard_Integer mode = -1, const char * command = "");
+		static opencascade::handle<TColStd_HSequenceOfAsciiString> Commands(const Standard_Integer mode = -1, Standard_CString command = "");
 
 		/****************** Do ******************/
 		/**** md5 signature: ae99aa557642f0954662530c8a03e1a8 ****/
@@ -446,9 +446,9 @@ IFSelect_ReturnStatus
 
 Returns
 -------
-char *
+str
 ") File;
-		const char * File();
+		Standard_CString File();
 
 		/****************** Group ******************/
 		/**** md5 signature: e32957ecce589ad0dcae427ef81835ac ****/
@@ -457,9 +457,9 @@ char *
 
 Returns
 -------
-char *
+str
 ") Group;
-		const char * Group();
+		Standard_CString Group();
 
 		/****************** Help ******************/
 		/**** md5 signature: 34063682d348e913be3a5562c588f29e ****/
@@ -472,9 +472,9 @@ number: int
 
 Returns
 -------
-char *
+str
 ") Help;
-		virtual const char * Help(const Standard_Integer number);
+		virtual Standard_CString Help(const Standard_Integer number);
 
 		/****************** Mode ******************/
 		/**** md5 signature: 58c566204904e51650b70f3f1cb93410 ****/
@@ -483,13 +483,13 @@ char *
 
 Parameters
 ----------
-command: char *
+command: str
 
 Returns
 -------
 int
 ") Mode;
-		static Standard_Integer Mode(const char * command);
+		static Standard_Integer Mode(Standard_CString command);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 343d3fe70309328d1e972e9673d8fc49 ****/
@@ -498,13 +498,13 @@ int
 
 Parameters
 ----------
-command: char *
+command: str
 
 Returns
 -------
 void
 ") Remove;
-		static void Remove(const char * command);
+		static void Remove(Standard_CString command);
 
 		/****************** Select ******************/
 		/**** md5 signature: 6c3045b0ee10861aacbb9f8f770536b8 ****/
@@ -513,14 +513,14 @@ void
 
 Parameters
 ----------
-command: char *
+command: str
 actor: IFSelect_Activator
 
 Returns
 -------
 number: int
 ") Select;
-		static Standard_Boolean Select(const char * command, Standard_Integer &OutValue, opencascade::handle<IFSelect_Activator> & actor);
+		static Standard_Boolean Select(Standard_CString command, Standard_Integer &OutValue, opencascade::handle<IFSelect_Activator> & actor);
 
 		/****************** SetForGroup ******************/
 		/**** md5 signature: 36a5432dee8a72a5a44ee28941e69ed0 ****/
@@ -529,15 +529,15 @@ number: int
 
 Parameters
 ----------
-group: char *
-file: char *,optional
+group: str
+file: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") SetForGroup;
-		void SetForGroup(const char * group, const char * file = "");
+		void SetForGroup(Standard_CString group, Standard_CString file = "");
 
 };
 
@@ -690,14 +690,14 @@ Parameters
 ----------
 graph: Interface_Graph
 TC: Interface_CopyTool
-filename: char *,optional
+filename: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") IFSelect_ContextModif;
-		 IFSelect_ContextModif(const Interface_Graph & graph, const Interface_CopyTool & TC, const char * filename = "");
+		 IFSelect_ContextModif(const Interface_Graph & graph, const Interface_CopyTool & TC, Standard_CString filename = "");
 
 		/****************** IFSelect_ContextModif ******************/
 		/**** md5 signature: 39ea63f3302feedaeb379f8e82d5518e ****/
@@ -707,14 +707,14 @@ None
 Parameters
 ----------
 graph: Interface_Graph
-filename: char *,optional
+filename: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") IFSelect_ContextModif;
-		 IFSelect_ContextModif(const Interface_Graph & graph, const char * filename = "");
+		 IFSelect_ContextModif(const Interface_Graph & graph, Standard_CString filename = "");
 
 		/****************** AddCheck ******************/
 		/**** md5 signature: 8ef46b71a47a9a0c81f5f1e741392794 ****/
@@ -739,15 +739,15 @@ None
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddFail;
-		void AddFail(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AddWarning ******************/
 		/**** md5 signature: 988f49b1d5bd3bf018afd5790e28b086 ****/
@@ -757,15 +757,15 @@ None
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddWarning;
-		void AddWarning(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** CCheck ******************/
 		/**** md5 signature: 55ff9fbcf9040c69f661ca071beab1f7 ****/
@@ -827,9 +827,9 @@ opencascade::handle<Interface_CopyControl>
 
 Returns
 -------
-char *
+str
 ") FileName;
-		const char * FileName();
+		Standard_CString FileName();
 
 		/****************** HasFileName ******************/
 		/**** md5 signature: 327ef4fb29052a83700cf9cd01e8f2bf ****/
@@ -1030,14 +1030,14 @@ None
 
 Parameters
 ----------
-mess: char *,optional
+mess: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") Trace;
-		void Trace(const char * mess = "");
+		void Trace(Standard_CString mess = "");
 
 		/****************** TraceModifier ******************/
 		/**** md5 signature: 3edd0556fe765bd51e9d9fcb6c3184ca ****/
@@ -1104,13 +1104,13 @@ Parameters
 model: Interface_InterfaceModel
 proto: Interface_Protocol
 applieds: IFSelect_AppliedModifiers
-filename: char *
+filename: str
 
 Returns
 -------
 None
 ") IFSelect_ContextWrite;
-		 IFSelect_ContextWrite(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, const char * filename);
+		 IFSelect_ContextWrite(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, Standard_CString filename);
 
 		/****************** IFSelect_ContextWrite ******************/
 		/**** md5 signature: d671952aa9c623950812c050cfeec7a6 ****/
@@ -1122,13 +1122,13 @@ Parameters
 hgraph: Interface_HGraph
 proto: Interface_Protocol
 applieds: IFSelect_AppliedModifiers
-filename: char *
+filename: str
 
 Returns
 -------
 None
 ") IFSelect_ContextWrite;
-		 IFSelect_ContextWrite(const opencascade::handle<Interface_HGraph> & hgraph, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, const char * filename);
+		 IFSelect_ContextWrite(const opencascade::handle<Interface_HGraph> & hgraph, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, Standard_CString filename);
 
 		/****************** AddCheck ******************/
 		/**** md5 signature: 8ef46b71a47a9a0c81f5f1e741392794 ****/
@@ -1153,15 +1153,15 @@ None
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddFail;
-		void AddFail(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AddWarning ******************/
 		/**** md5 signature: 988f49b1d5bd3bf018afd5790e28b086 ****/
@@ -1171,15 +1171,15 @@ None
 Parameters
 ----------
 start: Standard_Transient
-mess: char *
-orig: char *,optional
+mess: str
+orig: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddWarning;
-		void AddWarning(const opencascade::handle<Standard_Transient> & start, const char * mess, const char * orig = "");
+		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
 		/****************** AppliedModifiers ******************/
 		/**** md5 signature: c907d59264aed84761d23bf1da073632 ****/
@@ -1252,9 +1252,9 @@ opencascade::handle<IFSelect_GeneralModifier>
 
 Returns
 -------
-char *
+str
 ") FileName;
-		const char * FileName();
+		Standard_CString FileName();
 
 		/****************** Graph ******************/
 		/**** md5 signature: 85b94047fc558166dc241ea6e5d26215 ****/
@@ -1605,14 +1605,14 @@ Parameters
 editor: IFSelect_Editor
 readonly: bool
 undoable: bool
-label: char *,optional
+label: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") IFSelect_EditForm;
-		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const Standard_Boolean readonly, const Standard_Boolean undoable, const char * label = "");
+		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const Standard_Boolean readonly, const Standard_Boolean undoable, Standard_CString label = "");
 
 		/****************** IFSelect_EditForm ******************/
 		/**** md5 signature: 420707d31c5ea31799194612884ac53f ****/
@@ -1625,14 +1625,14 @@ editor: IFSelect_Editor
 nums: TColStd_SequenceOfInteger
 readonly: bool
 undoable: bool
-label: char *,optional
+label: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") IFSelect_EditForm;
-		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const TColStd_SequenceOfInteger & nums, const Standard_Boolean readonly, const Standard_Boolean undoable, const char * label = "");
+		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const TColStd_SequenceOfInteger & nums, const Standard_Boolean readonly, const Standard_Boolean undoable, Standard_CString label = "");
 
 		/****************** Apply ******************/
 		/**** md5 signature: d13adb09606778db019693ec430295e5 ****/
@@ -1812,9 +1812,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Label;
-		const char * Label();
+		Standard_CString Label();
 
 		/****************** ListEditor ******************/
 		/**** md5 signature: ee67a0dbece1ed74b18ddc8b3c6973a5 ****/
@@ -2003,13 +2003,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") NameNumber;
-		Standard_Integer NameNumber(const char * name);
+		Standard_Integer NameNumber(Standard_CString name);
 
 		/****************** NameRank ******************/
 		/**** md5 signature: 828b9618f5e765e1584b5988eaf154b1 ****/
@@ -2018,13 +2018,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") NameRank;
-		Standard_Integer NameRank(const char * name);
+		Standard_Integer NameRank(Standard_CString name);
 
 		/****************** NbValues ******************/
 		/**** md5 signature: 688139b89cb2c7cce6d7bfb88eeb5856 ****/
@@ -2396,9 +2396,9 @@ isshort: bool,optional
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name(const Standard_Integer num, const Standard_Boolean isshort = Standard_False);
+		Standard_CString Name(const Standard_Integer num, const Standard_Boolean isshort = Standard_False);
 
 		/****************** NameNumber ******************/
 		/**** md5 signature: 92cf82f3d39d60a7ec7147dab4cceeac ****/
@@ -2407,13 +2407,13 @@ char *
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") NameNumber;
-		Standard_Integer NameNumber(const char * name);
+		Standard_Integer NameNumber(Standard_CString name);
 
 		/****************** NbValues ******************/
 		/**** md5 signature: 5aaee992dfbcf21a3b840e127a638649 ****/
@@ -2475,7 +2475,7 @@ Parameters
 ----------
 num: int
 typval: Interface_TypedValue
-shortname: char *,optional
+shortname: str,optional
 	default value is ""
 accessmode: IFSelect_EditValue,optional
 	default value is IFSelect_Editable
@@ -2484,7 +2484,7 @@ Returns
 -------
 None
 ") SetValue;
-		void SetValue(const Standard_Integer num, const opencascade::handle<Interface_TypedValue> & typval, const char * shortname = "", const IFSelect_EditValue accessmode = IFSelect_Editable);
+		void SetValue(const Standard_Integer num, const opencascade::handle<Interface_TypedValue> & typval, Standard_CString shortname = "", const IFSelect_EditValue accessmode = IFSelect_Editable);
 
 		/****************** StringValue ******************/
 		/**** md5 signature: 4982a2b783d5aac5c9acf7793c435877 ****/
@@ -2577,7 +2577,7 @@ class IFSelect_Functions {
 Parameters
 ----------
 WS: IFSelect_WorkSession
-name: char *
+name: str
 mode: bool,optional
 	default value is Standard_True
 
@@ -2585,7 +2585,7 @@ Returns
 -------
 opencascade::handle<IFSelect_Dispatch>
 ") GiveDispatch;
-		static opencascade::handle<IFSelect_Dispatch> GiveDispatch(const opencascade::handle<IFSelect_WorkSession> & WS, const char * name, const Standard_Boolean mode = Standard_True);
+		static opencascade::handle<IFSelect_Dispatch> GiveDispatch(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name, const Standard_Boolean mode = Standard_True);
 
 		/****************** GiveEntity ******************/
 		/**** md5 signature: 4e7f30f23e68802f268399dd529bc222 ****/
@@ -2595,14 +2595,14 @@ opencascade::handle<IFSelect_Dispatch>
 Parameters
 ----------
 WS: IFSelect_WorkSession
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") GiveEntity;
-		static opencascade::handle<Standard_Transient> GiveEntity(const opencascade::handle<IFSelect_WorkSession> & WS, const char * name = "");
+		static opencascade::handle<Standard_Transient> GiveEntity(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name = "");
 
 		/****************** GiveEntityNumber ******************/
 		/**** md5 signature: 906076325f9a2e8480976c96de8fd8e5 ****/
@@ -2612,14 +2612,14 @@ opencascade::handle<Standard_Transient>
 Parameters
 ----------
 WS: IFSelect_WorkSession
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 int
 ") GiveEntityNumber;
-		static Standard_Integer GiveEntityNumber(const opencascade::handle<IFSelect_WorkSession> & WS, const char * name = "");
+		static Standard_Integer GiveEntityNumber(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name = "");
 
 		/****************** GiveList ******************/
 		/**** md5 signature: b44baf3972464320be8eb951fb05f91f ****/
@@ -2629,16 +2629,16 @@ int
 Parameters
 ----------
 WS: IFSelect_WorkSession
-first: char *,optional
+first: str,optional
 	default value is ""
-second: char *,optional
+second: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfTransient>
 ") GiveList;
-		static opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, const char * first = "", const char * second = "");
+		static opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString first = "", Standard_CString second = "");
 
 		/****************** Init ******************/
 		/**** md5 signature: 342fdccc4643f67c269591c4b6447108 ****/
@@ -2811,13 +2811,13 @@ None
 
 Parameters
 ----------
-statname: char *
+statname: str
 
 Returns
 -------
 None
 ") SetStaticName;
-		void SetStaticName(const char * statname);
+		void SetStaticName(Standard_CString statname);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 653bb566b3bcc839d91852231e9c0a21 ****/
@@ -3156,14 +3156,14 @@ None
 
 Parameters
 ----------
-filename: TCollection_AsciiString
+filename: str
 content: Interface_InterfaceModel
 
 Returns
 -------
 bool
 ") AddFile;
-		Standard_Boolean AddFile(const TCollection_AsciiString & filename, const opencascade::handle<Interface_InterfaceModel> & content);
+		Standard_Boolean AddFile(TCollection_AsciiString filename, const opencascade::handle<Interface_InterfaceModel> & content);
 
 		/****************** AddSentFile ******************/
 		/**** md5 signature: d78b945bd2b4881efefcf05b966a19da ****/
@@ -3172,13 +3172,13 @@ bool
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 None
 ") AddSentFile;
-		void AddSentFile(const char * filename);
+		void AddSentFile(Standard_CString filename);
 
 		/****************** AppliedModifiers ******************/
 		/**** md5 signature: 94df5d02e1774373305e5d426c26c3e7 ****/
@@ -3325,13 +3325,13 @@ TCollection_AsciiString
 Parameters
 ----------
 num: int
-filename: TCollection_AsciiString
+filename: str
 
 Returns
 -------
 bool
 ") NameFile;
-		Standard_Boolean NameFile(const Standard_Integer num, const TCollection_AsciiString & filename);
+		Standard_Boolean NameFile(const Standard_Integer num, TCollection_AsciiString filename);
 
 		/****************** NbFiles ******************/
 		/**** md5 signature: f4ff740bb702aab2feb817a0f407ce9c ****/
@@ -3368,7 +3368,7 @@ Interface_CheckIterator
 
 Parameters
 ----------
-filename: char *
+filename: str
 G: Interface_Graph
 WL: IFSelect_WorkLibrary
 protocol: Interface_Protocol
@@ -3377,7 +3377,7 @@ Returns
 -------
 Interface_CheckIterator
 ") SendAll;
-		Interface_CheckIterator SendAll(const char * filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
+		Interface_CheckIterator SendAll(Standard_CString filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****************** SendCopied ******************/
 		/**** md5 signature: a3c0ccfff968b8ebbb53e51c0a714a02 ****/
@@ -3402,7 +3402,7 @@ Interface_CheckIterator
 
 Parameters
 ----------
-filename: char *
+filename: str
 G: Interface_Graph
 WL: IFSelect_WorkLibrary
 protocol: Interface_Protocol
@@ -3412,7 +3412,7 @@ Returns
 -------
 Interface_CheckIterator
 ") SendSelected;
-		Interface_CheckIterator SendSelected(const char * filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol, const Interface_EntityIterator & iter);
+		Interface_CheckIterator SendSelected(Standard_CString filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol, const Interface_EntityIterator & iter);
 
 		/****************** SentFiles ******************/
 		/**** md5 signature: ccec19bbefb996c0e777d6a8d7f3c41a ****/
@@ -3603,9 +3603,9 @@ opencascade::handle<Interface_InterfaceModel>
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** NbDuplicated ******************/
 		/**** md5 signature: f504f89fdd022fab0637c58f067da950 ****/
@@ -3656,13 +3656,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const char * name);
+		void SetName(Standard_CString name);
 
 };
 
@@ -3917,14 +3917,14 @@ opencascade::handle<IFSelect_SessionDumper>
 Parameters
 ----------
 file: IFSelect_SessionFile
-type: TCollection_AsciiString
+type: str
 item: Standard_Transient
 
 Returns
 -------
 bool
 ") ReadOwn;
-		virtual Standard_Boolean ReadOwn(IFSelect_SessionFile & file, const TCollection_AsciiString & type, opencascade::handle<Standard_Transient> & item);
+		virtual Standard_Boolean ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
 
 		/****************** WriteOwn ******************/
 		/**** md5 signature: b08a71cf7d60fc4b67e64bbbdeff2fa7 ****/
@@ -3981,13 +3981,13 @@ None
 Parameters
 ----------
 WS: IFSelect_WorkSession
-filename: char *
+filename: str
 
 Returns
 -------
 None
 ") IFSelect_SessionFile;
-		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS, const char * filename);
+		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString filename);
 
 		/****************** AddItem ******************/
 		/**** md5 signature: f1a791c33f3860d5d3ad930160435e21 ****/
@@ -4013,13 +4013,13 @@ None
 
 Parameters
 ----------
-line: char *
+line: str
 
 Returns
 -------
 None
 ") AddLine;
-		void AddLine(const char * line);
+		void AddLine(Standard_CString line);
 
 		/****************** ClearLines ******************/
 		/**** md5 signature: bd42443a58c4d2b13ae8f9baf81ba414 ****/
@@ -4174,13 +4174,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 int
 ") Read;
-		Standard_Integer Read(const char * filename);
+		Standard_Integer Read(Standard_CString filename);
 
 		/****************** ReadEnd ******************/
 		/**** md5 signature: 04b3e9077453f388e860118b0ce9c592 ****/
@@ -4200,13 +4200,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") ReadFile;
-		Standard_Boolean ReadFile(const char * name);
+		Standard_Boolean ReadFile(Standard_CString name);
 
 		/****************** ReadLine ******************/
 		/**** md5 signature: e284a22a44adfa94166a34668f8b3114 ****/
@@ -4252,13 +4252,13 @@ int
 
 Parameters
 ----------
-headerline: char *
+headerline: str
 
 Returns
 -------
 bool
 ") RecognizeFile;
-		Standard_Boolean RecognizeFile(const char * headerline);
+		Standard_Boolean RecognizeFile(Standard_CString headerline);
 
 		/****************** RemoveLastLine ******************/
 		/**** md5 signature: ed35097c51123c842aa92eeb14b910a4 ****/
@@ -4293,13 +4293,13 @@ None
 
 Parameters
 ----------
-text: char *
+text: str
 
 Returns
 -------
 None
 ") SendText;
-		void SendText(const char * text);
+		void SendText(Standard_CString text);
 
 		/****************** SendVoid ******************/
 		/**** md5 signature: 57e39e043394ecdca192085943c6d397 ****/
@@ -4349,13 +4349,13 @@ None
 
 Parameters
 ----------
-line: char *
+line: str
 
 Returns
 -------
 None
 ") SplitLine;
-		void SplitLine(const char * line);
+		void SplitLine(Standard_CString line);
 
 		/****************** TextValue ******************/
 		/**** md5 signature: 2724c1badc7572789ff00cd170d570c6 ****/
@@ -4390,13 +4390,13 @@ opencascade::handle<IFSelect_WorkSession>
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 int
 ") Write;
-		Standard_Integer Write(const char * filename);
+		Standard_Integer Write(Standard_CString filename);
 
 		/****************** WriteEnd ******************/
 		/**** md5 signature: ebd67493aceb3cb5ca76a180499ed0e5 ****/
@@ -4416,13 +4416,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") WriteFile;
-		Standard_Boolean WriteFile(const char * name);
+		Standard_Boolean WriteFile(Standard_CString name);
 
 		/****************** WriteLine ******************/
 		/**** md5 signature: 614718ee56368b00f0d0d11ed8f12021 ****/
@@ -4431,7 +4431,7 @@ bool
 
 Parameters
 ----------
-line: char *
+line: str
 follow: Standard_Character,optional
 	default value is 0
 
@@ -4439,7 +4439,7 @@ Returns
 -------
 None
 ") WriteLine;
-		void WriteLine(const char * line, const Standard_Character follow = 0);
+		void WriteLine(Standard_CString line, const Standard_Character follow = 0);
 
 		/****************** WriteOwn ******************/
 		/**** md5 signature: 27828a81117f2e9d53a26b94b00560df ****/
@@ -5223,13 +5223,13 @@ class IFSelect_Signature : public Interface_SignType {
 
 Parameters
 ----------
-acase: char *
+acase: str
 
 Returns
 -------
 None
 ") AddCase;
-		void AddCase(const char * acase);
+		void AddCase(Standard_CString acase);
 
 		/****************** CaseList ******************/
 		/**** md5 signature: 5b07c3fbe5d7bd548d4ebf205f3fae5d ****/
@@ -5253,9 +5253,9 @@ val: int
 
 Returns
 -------
-char *
+str
 ") IntValue;
-		static const char * IntValue(const Standard_Integer val);
+		static Standard_CString IntValue(const Standard_Integer val);
 
 		/****************** IsIntCase ******************/
 		/**** md5 signature: 1aa4e85c1e8a2536c5778c68f1fc5e0d ****/
@@ -5292,15 +5292,15 @@ TCollection_AsciiString
 
 Parameters
 ----------
-val: char *
-text: TCollection_AsciiString
+val: str
+text: str
 exact: bool
 
 Returns
 -------
 bool
 ") MatchValue;
-		static Standard_Boolean MatchValue(const char * val, const TCollection_AsciiString & text, const Standard_Boolean exact);
+		static Standard_Boolean MatchValue(Standard_CString val, TCollection_AsciiString text, const Standard_Boolean exact);
 
 		/****************** Matches ******************/
 		/**** md5 signature: 25b571cf97f17f16507fa37183f9efa7 ****/
@@ -5311,14 +5311,14 @@ Parameters
 ----------
 ent: Standard_Transient
 model: Interface_InterfaceModel
-text: TCollection_AsciiString
+text: str
 exact: bool
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, const TCollection_AsciiString & text, const Standard_Boolean exact);
+		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
 
 		/****************** Name ******************/
 		/**** md5 signature: f35e373630f40191cc40cd61094fa98a ****/
@@ -5327,9 +5327,9 @@ bool
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name();
+		Standard_CString Name();
 
 		/****************** SetIntCase ******************/
 		/**** md5 signature: 388e6f31fa1650afe25c0ac6d962f2c1 ****/
@@ -5389,13 +5389,13 @@ None
 Parameters
 ----------
 ent: Standard_Transient
-sign: char *
+sign: str
 
 Returns
 -------
 None
 ") Add;
-		void Add(const opencascade::handle<Standard_Transient> & ent, const char * sign);
+		void Add(const opencascade::handle<Standard_Transient> & ent, Standard_CString sign);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
@@ -5415,13 +5415,13 @@ None
 
 Parameters
 ----------
-sign: char *
+sign: str
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfTransient>
 ") Entities;
-		opencascade::handle<TColStd_HSequenceOfTransient> Entities(const char * sign);
+		opencascade::handle<TColStd_HSequenceOfTransient> Entities(Standard_CString sign);
 
 		/****************** HasEntities ******************/
 		/**** md5 signature: 46f4f7dae74e18c284e18a5f8162ac98 ****/
@@ -5441,7 +5441,7 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 count: NCollection_IndexedDataMap<TCollection_AsciiString, int>
 list: Standard_Transient
 nbnuls: int
@@ -5450,7 +5450,7 @@ Returns
 -------
 None
 ") Init;
-		void Init(const char * name, const NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer> & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & list, const Standard_Integer nbnuls);
+		void Init(Standard_CString name, const NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer> & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & list, const Standard_Integer nbnuls);
 
 		/****************** LastValue ******************/
 		/**** md5 signature: 122bd08c1221c9c0bf5730c64c0a8a77 ****/
@@ -5459,9 +5459,9 @@ None
 
 Returns
 -------
-char *
+str
 ") LastValue;
-		const char * LastValue();
+		Standard_CString LastValue();
 
 		/****************** List ******************/
 		/**** md5 signature: 8dc7679cdd22aa66cae030db33c24418 ****/
@@ -5470,14 +5470,14 @@ char *
 
 Parameters
 ----------
-root: char *,optional
+root: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfHAsciiString>
 ") List;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> List(const char * root = "");
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> List(Standard_CString root = "");
 
 
         %feature("autodoc","1");
@@ -5499,9 +5499,9 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** NbNulls ******************/
 		/**** md5 signature: cfa593b3c6472cd03b18541b1ee8bb0e ****/
@@ -5521,13 +5521,13 @@ int
 
 Parameters
 ----------
-sign: char *
+sign: str
 
 Returns
 -------
 int
 ") NbTimes;
-		Standard_Integer NbTimes(const char * sign);
+		Standard_Integer NbTimes(Standard_CString sign);
 
 
         %feature("autodoc", "1");
@@ -5567,13 +5567,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const char * name);
+		void SetName(Standard_CString name);
 
 };
 
@@ -5698,9 +5698,9 @@ level: int
 
 Returns
 -------
-char *
+str
 ") DumpHelp;
-		const char * DumpHelp(const Standard_Integer level);
+		Standard_CString DumpHelp(const Standard_Integer level);
 
 		/****************** DumpLevels ******************/
 		/**** md5 signature: 529ddb4236462ef77f450e8a022e3d8e ****/
@@ -5724,7 +5724,7 @@ max: int
 
 Parameters
 ----------
-name: char *
+name: str
 model: Interface_InterfaceModel
 protocol: Interface_Protocol
 
@@ -5732,7 +5732,7 @@ Returns
 -------
 int
 ") ReadFile;
-		virtual Standard_Integer ReadFile(const char * name, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
+		virtual Standard_Integer ReadFile(Standard_CString name, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****************** ReadStream ******************/
 		/**** md5 signature: 7d642d9553aebd964841d2f9dbcaac5a ****/
@@ -5741,7 +5741,7 @@ int
 
 Parameters
 ----------
-theName: char *
+theName: str
 theIStream: std::istream
 model: Interface_InterfaceModel
 protocol: Interface_Protocol
@@ -5750,7 +5750,7 @@ Returns
 -------
 int
 ") ReadStream;
-		virtual Standard_Integer ReadStream(const char * theName, std::istream & theIStream, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
+		virtual Standard_Integer ReadStream(Standard_CString theName, std::istream & theIStream, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****************** SetDumpHelp ******************/
 		/**** md5 signature: 52f5d8333bece08989ec0f399b1dcc5d ****/
@@ -5760,13 +5760,13 @@ int
 Parameters
 ----------
 level: int
-help: char *
+help: str
 
 Returns
 -------
 None
 ") SetDumpHelp;
-		void SetDumpHelp(const Standard_Integer level, const char * help);
+		void SetDumpHelp(const Standard_Integer level, Standard_CString help);
 
 		/****************** SetDumpLevels ******************/
 		/**** md5 signature: 21d4e6a7431b11e62e82eb90cee676f0 ****/
@@ -5850,7 +5850,7 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 item: Standard_Transient
 active: bool,optional
 	default value is Standard_True
@@ -5859,7 +5859,7 @@ Returns
 -------
 int
 ") AddNamedItem;
-		Standard_Integer AddNamedItem(const char * name, const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
+		Standard_Integer AddNamedItem(Standard_CString name, const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
 
 		/****************** AppliedDispatches ******************/
 		/**** md5 signature: 94c59edc2da25d825dd24e1d23fcb8dc ****/
@@ -5898,9 +5898,9 @@ ent: Standard_Transient
 
 Returns
 -------
-char *
+str
 ") CategoryName;
-		const char * CategoryName(const opencascade::handle<Standard_Transient> & ent);
+		Standard_CString CategoryName(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** CategoryNumber ******************/
 		/**** md5 signature: 4d7b0b22e0a14e3ca4b5666d61fea57d ****/
@@ -6423,13 +6423,13 @@ bool
 
 Parameters
 ----------
-file: char *
+file: str
 
 Returns
 -------
-char *
+str
 ") GiveFileComplete;
-		const char * GiveFileComplete(const char * file);
+		Standard_CString GiveFileComplete(Standard_CString file);
 
 		/****************** GiveFileRoot ******************/
 		/**** md5 signature: c99880fd6445cdb93e8e5b259e121dbb ****/
@@ -6438,13 +6438,13 @@ char *
 
 Parameters
 ----------
-file: char *
+file: str
 
 Returns
 -------
-char *
+str
 ") GiveFileRoot;
-		const char * GiveFileRoot(const char * file);
+		Standard_CString GiveFileRoot(Standard_CString file);
 
 		/****************** GiveList ******************/
 		/**** md5 signature: 4bca4d5724ad519a68e85d9dda679748 ****/
@@ -6468,15 +6468,15 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-first: char *
-second: char *,optional
+first: str
+second: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfTransient>
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const char * first, const char * second = "");
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first, Standard_CString second = "");
 
 		/****************** GiveListCombined ******************/
 		/**** md5 signature: 50ed957a633c524c90881f765cc28f20 ****/
@@ -6502,14 +6502,14 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-selname: char *
+selname: str
 ent: Standard_Transient
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfTransient>
 ") GiveListFromList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveListFromList(const char * selname, const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveListFromList(Standard_CString selname, const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** GiveSelection ******************/
 		/**** md5 signature: e7bdb5970e9ecb00b538d69fec32ab68 ****/
@@ -6518,13 +6518,13 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-selname: char *
+selname: str
 
 Returns
 -------
 opencascade::handle<IFSelect_Selection>
 ") GiveSelection;
-		opencascade::handle<IFSelect_Selection> GiveSelection(const char * selname);
+		opencascade::handle<IFSelect_Selection> GiveSelection(Standard_CString selname);
 
 		/****************** Graph ******************/
 		/**** md5 signature: 85b94047fc558166dc241ea6e5d26215 ****/
@@ -6712,13 +6712,13 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Parameters
 ----------
-label: char *
+label: str
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfHAsciiString>
 ") ItemNamesForLabel;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNamesForLabel(const char * label);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNamesForLabel(Standard_CString label);
 
 		/****************** ItemSelection ******************/
 		/**** md5 signature: 956eda2c30cfefc248c7413783399d39 ****/
@@ -6768,14 +6768,14 @@ None
 
 Parameters
 ----------
-label: char *,optional
+label: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") ListItems;
-		void ListItems(const char * label = "");
+		void ListItems(Standard_CString label = "");
 
 		/****************** LoadedFile ******************/
 		/**** md5 signature: cd8186f0319b05e7f10c031208799d3c ****/
@@ -6784,9 +6784,9 @@ None
 
 Returns
 -------
-char *
+str
 ") LoadedFile;
-		const char * LoadedFile();
+		Standard_CString LoadedFile();
 
 		/****************** MaxIdent ******************/
 		/**** md5 signature: 77c22d5a5b7fd8e9eb6d83243211ef9c ****/
@@ -6900,13 +6900,13 @@ opencascade::handle<TCollection_HAsciiString>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") NameIdent;
-		Standard_Integer NameIdent(const char * name);
+		Standard_Integer NameIdent(Standard_CString name);
 
 		/****************** NamedItem ******************/
 		/**** md5 signature: 302deb3c11d9f50a82fa45a13797af54 ****/
@@ -6915,13 +6915,13 @@ int
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") NamedItem;
-		opencascade::handle<Standard_Transient> NamedItem(const char * name);
+		opencascade::handle<Standard_Transient> NamedItem(Standard_CString name);
 
 		/****************** NamedItem ******************/
 		/**** md5 signature: bfe651ccce454616f8543444833ecfc7 ****/
@@ -6997,14 +6997,14 @@ int
 
 Parameters
 ----------
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<IFSelect_IntParam>
 ") NewIntParam;
-		opencascade::handle<IFSelect_IntParam> NewIntParam(const char * name = "");
+		opencascade::handle<IFSelect_IntParam> NewIntParam(Standard_CString name = "");
 
 		/****************** NewParamFromStatic ******************/
 		/**** md5 signature: 465eeca8f66472ff58410161834efa3c ****/
@@ -7013,15 +7013,15 @@ opencascade::handle<IFSelect_IntParam>
 
 Parameters
 ----------
-statname: char *
-name: char *,optional
+statname: str
+name: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") NewParamFromStatic;
-		opencascade::handle<Standard_Transient> NewParamFromStatic(const char * statname, const char * name = "");
+		opencascade::handle<Standard_Transient> NewParamFromStatic(Standard_CString statname, Standard_CString name = "");
 
 		/****************** NewSelectPointed ******************/
 		/**** md5 signature: 365a636cfc8cac99bd91aeb7635d138f ****/
@@ -7031,13 +7031,13 @@ opencascade::handle<Standard_Transient>
 Parameters
 ----------
 list: TColStd_HSequenceOfTransient
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<IFSelect_Selection>
 ") NewSelectPointed;
-		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const char * name);
+		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<TColStd_HSequenceOfTransient> & list, Standard_CString name);
 
 		/****************** NewTextParam ******************/
 		/**** md5 signature: 94aa5b9597995b0dacc18fe76ea6bc7a ****/
@@ -7046,14 +7046,14 @@ opencascade::handle<IFSelect_Selection>
 
 Parameters
 ----------
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TCollection_HAsciiString>
 ") NewTextParam;
-		opencascade::handle<TCollection_HAsciiString> NewTextParam(const char * name = "");
+		opencascade::handle<TCollection_HAsciiString> NewTextParam(Standard_CString name = "");
 
 		/****************** NewTransformStandard ******************/
 		/**** md5 signature: ab82691f7eeaf6b2bcfe7c083f1b0b93 ****/
@@ -7063,14 +7063,14 @@ opencascade::handle<TCollection_HAsciiString>
 Parameters
 ----------
 copy: bool
-name: char *,optional
+name: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<IFSelect_Transformer>
 ") NewTransformStandard;
-		opencascade::handle<IFSelect_Transformer> NewTransformStandard(const Standard_Boolean copy, const char * name = "");
+		opencascade::handle<IFSelect_Transformer> NewTransformStandard(const Standard_Boolean copy, Standard_CString name = "");
 
 		/****************** NextIdentForLabel ******************/
 		/**** md5 signature: 9dc1fa9cf365c59a75ed057df7775147 ****/
@@ -7079,7 +7079,7 @@ opencascade::handle<IFSelect_Transformer>
 
 Parameters
 ----------
-label: char *
+label: str
 id: int
 mode: int,optional
 	default value is 0
@@ -7088,7 +7088,7 @@ Returns
 -------
 int
 ") NextIdentForLabel;
-		Standard_Integer NextIdentForLabel(const char * label, const Standard_Integer id, const Standard_Integer mode = 0);
+		Standard_Integer NextIdentForLabel(Standard_CString label, const Standard_Integer id, const Standard_Integer mode = 0);
 
 		/****************** NumberFromLabel ******************/
 		/**** md5 signature: bd5e300d553ef788ce1731e581bced03 ****/
@@ -7097,7 +7097,7 @@ int
 
 Parameters
 ----------
-val: char *
+val: str
 afternum: int,optional
 	default value is 0
 
@@ -7105,7 +7105,7 @@ Returns
 -------
 int
 ") NumberFromLabel;
-		Standard_Integer NumberFromLabel(const char * val, const Standard_Integer afternum = 0);
+		Standard_Integer NumberFromLabel(Standard_CString val, const Standard_Integer afternum = 0);
 
 		/****************** Protocol ******************/
 		/**** md5 signature: 1c9ddeeacf191f917e4377fcdad955ea ****/
@@ -7171,13 +7171,13 @@ int
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(const char * filename);
+		IFSelect_ReturnStatus ReadFile(Standard_CString filename);
 
 		/****************** ReadStream ******************/
 		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
@@ -7186,14 +7186,14 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-theName: char *
+theName: str
 theIStream: std::istream
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadStream;
-		IFSelect_ReturnStatus ReadStream(const char * theName, std::istream & theIStream);
+		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
 		/****************** RemoveItem ******************/
 		/**** md5 signature: 3d21325464cc0ceb3ee75dda2155f717 ****/
@@ -7217,13 +7217,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") RemoveName;
-		Standard_Boolean RemoveName(const char * name);
+		Standard_Boolean RemoveName(Standard_CString name);
 
 		/****************** RemoveNamedItem ******************/
 		/**** md5 signature: 53ad2f8ee41fcd5d3ce5a228f1d78364 ****/
@@ -7232,13 +7232,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") RemoveNamedItem;
-		Standard_Boolean RemoveNamedItem(const char * name);
+		Standard_Boolean RemoveNamedItem(Standard_CString name);
 
 		/****************** ResetAppliedModifier ******************/
 		/**** md5 signature: dc48b8468d19fd478fa2baf43d97549c ****/
@@ -7371,7 +7371,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-filename: char *
+filename: str
 computegraph: bool,optional
 	default value is Standard_False
 
@@ -7379,7 +7379,7 @@ Returns
 -------
 IFSelect_ReturnStatus
 ") SendAll;
-		IFSelect_ReturnStatus SendAll(const char * filename, const Standard_Boolean computegraph = Standard_False);
+		IFSelect_ReturnStatus SendAll(Standard_CString filename, const Standard_Boolean computegraph = Standard_False);
 
 		/****************** SendSelected ******************/
 		/**** md5 signature: 39c03cff7e1c0be3f448192e8c12d306 ****/
@@ -7388,7 +7388,7 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-filename: char *
+filename: str
 sel: IFSelect_Selection
 computegraph: bool,optional
 	default value is Standard_False
@@ -7397,7 +7397,7 @@ Returns
 -------
 IFSelect_ReturnStatus
 ") SendSelected;
-		IFSelect_ReturnStatus SendSelected(const char * filename, const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean computegraph = Standard_False);
+		IFSelect_ReturnStatus SendSelected(Standard_CString filename, const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean computegraph = Standard_False);
 
 		/****************** SendSplit ******************/
 		/**** md5 signature: 6321d8c6881589ddbe6233be55e93e86 ****/
@@ -7494,13 +7494,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetDefaultFileRoot;
-		Standard_Boolean SetDefaultFileRoot(const char * name);
+		Standard_Boolean SetDefaultFileRoot(Standard_CString name);
 
 		/****************** SetErrorHandle ******************/
 		/**** md5 signature: e34e0e7413eb0cf0d82c36bfcce58564 ****/
@@ -7524,13 +7524,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetFileExtension;
-		void SetFileExtension(const char * name);
+		void SetFileExtension(Standard_CString name);
 
 		/****************** SetFilePrefix ******************/
 		/**** md5 signature: 935ba3ec4b009a6c90d1d4c415de055c ****/
@@ -7539,13 +7539,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") SetFilePrefix;
-		void SetFilePrefix(const char * name);
+		void SetFilePrefix(Standard_CString name);
 
 		/****************** SetFileRoot ******************/
 		/**** md5 signature: 1fd824ca1468435546e56024ca700721 ****/
@@ -7555,13 +7555,13 @@ None
 Parameters
 ----------
 disp: IFSelect_Dispatch
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetFileRoot;
-		Standard_Boolean SetFileRoot(const opencascade::handle<IFSelect_Dispatch> & disp, const char * name);
+		Standard_Boolean SetFileRoot(const opencascade::handle<IFSelect_Dispatch> & disp, Standard_CString name);
 
 		/****************** SetInputSelection ******************/
 		/**** md5 signature: efc80d2cba7e4bfb82d3449ae9456f04 ****/
@@ -7633,13 +7633,13 @@ None
 
 Parameters
 ----------
-theFileName: char *
+theFileName: str
 
 Returns
 -------
 None
 ") SetLoadedFile;
-		void SetLoadedFile(const char * theFileName);
+		void SetLoadedFile(Standard_CString theFileName);
 
 		/****************** SetModeStat ******************/
 		/**** md5 signature: c142785e8c8c940a8a328422512002b1 ****/
@@ -7805,13 +7805,13 @@ None
 Parameters
 ----------
 par: TCollection_HAsciiString
-val: char *
+val: str
 
 Returns
 -------
 bool
 ") SetTextValue;
-		Standard_Boolean SetTextValue(const opencascade::handle<TCollection_HAsciiString> & par, const char * val);
+		Standard_Boolean SetTextValue(const opencascade::handle<TCollection_HAsciiString> & par, Standard_CString val);
 
 		/****************** ShareOut ******************/
 		/**** md5 signature: 7d7ba6d89ad65a951a2f527007d5837f ****/
@@ -7892,9 +7892,9 @@ ent: Standard_Transient
 
 Returns
 -------
-char *
+str
 ") SignValue;
-		const char * SignValue(const opencascade::handle<IFSelect_Signature> & sign, const opencascade::handle<Standard_Transient> & ent);
+		Standard_CString SignValue(const opencascade::handle<IFSelect_Signature> & sign, const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Signature ******************/
 		/**** md5 signature: 07c27665dfc4d330174c985be304efbf ****/
@@ -8107,9 +8107,9 @@ ent: Standard_Transient
 
 Returns
 -------
-char *
+str
 ") ValidityName;
-		const char * ValidityName(const opencascade::handle<Standard_Transient> & ent);
+		Standard_CString ValidityName(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** WorkLibrary ******************/
 		/**** md5 signature: 7c195930f9d0e8c986e2cba27b8d6ee4 ****/
@@ -8129,13 +8129,13 @@ opencascade::handle<IFSelect_WorkLibrary>
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") WriteFile;
-		IFSelect_ReturnStatus WriteFile(const char * filename);
+		IFSelect_ReturnStatus WriteFile(Standard_CString filename);
 
 		/****************** WriteFile ******************/
 		/**** md5 signature: 790e8d08c70c44f34f75df82bc09ca6e ****/
@@ -8144,14 +8144,14 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-filename: char *
+filename: str
 sel: IFSelect_Selection
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") WriteFile;
-		IFSelect_ReturnStatus WriteFile(const char * filename, const opencascade::handle<IFSelect_Selection> & sel);
+		IFSelect_ReturnStatus WriteFile(Standard_CString filename, const opencascade::handle<IFSelect_Selection> & sel);
 
 };
 
@@ -8180,15 +8180,15 @@ class IFSelect_Act : public IFSelect_Activator {
 
 Parameters
 ----------
-name: char *
-help: char *
+name: str
+help: str
 func: IFSelect_ActFunc
 
 Returns
 -------
 None
 ") IFSelect_Act;
-		 IFSelect_Act(const char * name, const char * help, const IFSelect_ActFunc func);
+		 IFSelect_Act(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
 
 		/****************** AddFSet ******************/
 		/**** md5 signature: e2ffb6b816fea57f96597521d91d13d1 ****/
@@ -8197,15 +8197,15 @@ None
 
 Parameters
 ----------
-name: char *
-help: char *
+name: str
+help: str
 func: IFSelect_ActFunc
 
 Returns
 -------
 void
 ") AddFSet;
-		static void AddFSet(const char * name, const char * help, const IFSelect_ActFunc func);
+		static void AddFSet(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
 
 		/****************** AddFunc ******************/
 		/**** md5 signature: fbe777bcbfe4244fa2ba5ff24fe49d8f ****/
@@ -8214,15 +8214,15 @@ void
 
 Parameters
 ----------
-name: char *
-help: char *
+name: str
+help: str
 func: IFSelect_ActFunc
 
 Returns
 -------
 void
 ") AddFunc;
-		static void AddFunc(const char * name, const char * help, const IFSelect_ActFunc func);
+		static void AddFunc(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
 
 		/****************** Do ******************/
 		/**** md5 signature: 84f46bc11d2d5e9591ed76f3c0abda9a ****/
@@ -8251,9 +8251,9 @@ number: int
 
 Returns
 -------
-char *
+str
 ") Help;
-		const char * Help(const Standard_Integer number);
+		Standard_CString Help(const Standard_Integer number);
 
 		/****************** SetGroup ******************/
 		/**** md5 signature: d0c9e1b75a0955e5e67ca3830fd2cdcf ****/
@@ -8262,15 +8262,15 @@ char *
 
 Parameters
 ----------
-group: char *
-file: char *,optional
+group: str
+file: str,optional
 	default value is ""
 
 Returns
 -------
 void
 ") SetGroup;
-		static void SetGroup(const char * group, const char * file = "");
+		static void SetGroup(Standard_CString group, Standard_CString file = "");
 
 };
 
@@ -8307,14 +8307,14 @@ None
 Parameters
 ----------
 file: IFSelect_SessionFile
-type: TCollection_AsciiString
+type: str
 item: Standard_Transient
 
 Returns
 -------
 bool
 ") ReadOwn;
-		Standard_Boolean ReadOwn(IFSelect_SessionFile & file, const TCollection_AsciiString & type, opencascade::handle<Standard_Transient> & item);
+		Standard_Boolean ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
 
 		/****************** WriteOwn ******************/
 		/**** md5 signature: d3ac6824a29798b0b3016080139d7006 ****/
@@ -8862,9 +8862,9 @@ opencascade::handle<IFSelect_SignCounter>
 
 Returns
 -------
-char *
+str
 ") SignName;
-		const char * SignName();
+		Standard_CString SignName();
 
 };
 
@@ -8926,14 +8926,14 @@ Parameters
 ----------
 nbmax: int,optional
 	default value is 100
-label: char *,optional
+label: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") IFSelect_ParamEditor;
-		 IFSelect_ParamEditor(const Standard_Integer nbmax = 100, const char * label = "");
+		 IFSelect_ParamEditor(const Standard_Integer nbmax = 100, Standard_CString label = "");
 
 		/****************** AddConstantText ******************/
 		/**** md5 signature: c706f09bb0add6352d9a4e15a803ba72 ****/
@@ -8942,16 +8942,16 @@ None
 
 Parameters
 ----------
-val: char *
-shortname: char *
-completename: char *,optional
+val: str
+shortname: str
+completename: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddConstantText;
-		void AddConstantText(const char * val, const char * shortname, const char * completename = "");
+		void AddConstantText(Standard_CString val, Standard_CString shortname, Standard_CString completename = "");
 
 		/****************** AddValue ******************/
 		/**** md5 signature: ac3627cf81d5bc516ddff45ba712da52 ****/
@@ -8961,14 +8961,14 @@ None
 Parameters
 ----------
 val: Interface_TypedValue
-shortname: char *,optional
+shortname: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddValue;
-		void AddValue(const opencascade::handle<Interface_TypedValue> & val, const char * shortname = "");
+		void AddValue(const opencascade::handle<Interface_TypedValue> & val, Standard_CString shortname = "");
 
 		/****************** Apply ******************/
 		/**** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ****/
@@ -9038,14 +9038,14 @@ bool
 Parameters
 ----------
 list: TColStd_HSequenceOfHAsciiString
-label: char *,optional
+label: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<IFSelect_ParamEditor>
 ") StaticEditor;
-		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, const char * label = "");
+		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, Standard_CString label = "");
 
 		/****************** StringValue ******************/
 		/**** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ****/
@@ -9439,14 +9439,14 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 
 Parameters
 ----------
-prompt: char *,optional
+prompt: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") IFSelect_SessionPilot;
-		 IFSelect_SessionPilot(const char * prompt = "");
+		 IFSelect_SessionPilot(Standard_CString prompt = "");
 
 		/****************** Arg ******************/
 		/**** md5 signature: 2da64ea2a48487fcd46dcb82c6e58e6b ****/
@@ -9459,9 +9459,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") Arg;
-		const char * Arg(const Standard_Integer num);
+		Standard_CString Arg(const Standard_Integer num);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
@@ -9512,9 +9512,9 @@ numarg: int,optional
 
 Returns
 -------
-char *
+str
 ") CommandPart;
-		const char * CommandPart(const Standard_Integer numarg = 0);
+		Standard_CString CommandPart(const Standard_Integer numarg = 0);
 
 		/****************** Do ******************/
 		/**** md5 signature: 5ceca079a69923771351b0545691221e ****/
@@ -9539,13 +9539,13 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-command: TCollection_AsciiString
+command: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") Execute;
-		IFSelect_ReturnStatus Execute(const TCollection_AsciiString & command);
+		IFSelect_ReturnStatus Execute(TCollection_AsciiString command);
 
 		/****************** ExecuteAlias ******************/
 		/**** md5 signature: e07be4160db4a13348666d3fb5cb3af5 ****/
@@ -9554,13 +9554,13 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-aliasname: TCollection_AsciiString
+aliasname: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ExecuteAlias;
-		IFSelect_ReturnStatus ExecuteAlias(const TCollection_AsciiString & aliasname);
+		IFSelect_ReturnStatus ExecuteAlias(TCollection_AsciiString aliasname);
 
 		/****************** ExecuteCounter ******************/
 		/**** md5 signature: 4eaa898031294b8c05e43daa1cc2d67f ****/
@@ -9591,9 +9591,9 @@ number: int
 
 Returns
 -------
-char *
+str
 ") Help;
-		const char * Help(const Standard_Integer number);
+		Standard_CString Help(const Standard_Integer number);
 
 		/****************** Library ******************/
 		/**** md5 signature: 6f8e211d941f22828ff8762b8fc91e49 ****/
@@ -9635,13 +9635,13 @@ int
 
 Parameters
 ----------
-val: char *
+val: str
 
 Returns
 -------
 int
 ") Number;
-		Standard_Integer Number(const char * val);
+		Standard_Integer Number(Standard_CString val);
 
 		/****************** Perform ******************/
 		/**** md5 signature: 8c78d156fdf5368ae88c10d60efd4428 ****/
@@ -9661,14 +9661,14 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-file: char *,optional
+file: str,optional
 	default value is ""
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadScript;
-		IFSelect_ReturnStatus ReadScript(const char * file = "");
+		IFSelect_ReturnStatus ReadScript(Standard_CString file = "");
 
 		/****************** RecordItem ******************/
 		/**** md5 signature: f1527347754a5e5054d80ddc568a5131 ****/
@@ -9740,13 +9740,13 @@ opencascade::handle<IFSelect_WorkSession>
 
 Parameters
 ----------
-command: TCollection_AsciiString
+command: str
 
 Returns
 -------
 None
 ") SetCommandLine;
-		void SetCommandLine(const TCollection_AsciiString & command);
+		void SetCommandLine(TCollection_AsciiString command);
 
 		/****************** SetLibrary ******************/
 		/**** md5 signature: db5a590ba65f594bbef5e2ca606bd5a6 ****/
@@ -9847,9 +9847,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") Value;
-		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -10028,9 +10028,9 @@ G: Interface_Graph
 
 Returns
 -------
-char *
+str
 ") ComputedSign;
-		const char * ComputedSign(const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
+		Standard_CString ComputedSign(const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
 		/****************** SelMode ******************/
 		/**** md5 signature: ddfdcb2d213abcd775c5035b238d1167 ****/
@@ -10149,13 +10149,13 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") IFSelect_SignMultiple;
-		 IFSelect_SignMultiple(const char * name);
+		 IFSelect_SignMultiple(Standard_CString name);
 
 		/****************** Add ******************/
 		/**** md5 signature: 3228a1194cec7f5e691e5dcd687ac67c ****/
@@ -10185,14 +10185,14 @@ Parameters
 ----------
 ent: Standard_Transient
 model: Interface_InterfaceModel
-text: TCollection_AsciiString
+text: str
 exact: bool
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, const TCollection_AsciiString & text, const Standard_Boolean exact);
+		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
 
 		/****************** Value ******************/
 		/**** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ****/
@@ -10206,9 +10206,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") Value;
-		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -10254,9 +10254,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") Value;
-		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -10297,9 +10297,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") CVal;
-		static const char * CVal(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		static Standard_CString CVal(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** Value ******************/
 		/**** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ****/
@@ -10313,9 +10313,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") Value;
-		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -12042,13 +12042,13 @@ Interface_EntityIterator
 
 Parameters
 ----------
-lab: char *
+lab: str
 
 Returns
 -------
 None
 ") SetLabel;
-		void SetLabel(const char * lab);
+		void SetLabel(Standard_CString lab);
 
 };
 
@@ -12144,14 +12144,14 @@ Parameters
 ----------
 ent: Standard_Transient
 model: Interface_InterfaceModel
-text: TCollection_AsciiString
+text: str
 exact: bool
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, const TCollection_AsciiString & text, const Standard_Boolean exact);
+		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
 
 };
 
@@ -12276,13 +12276,13 @@ class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 
 Parameters
 ----------
-flagname: char *
+flagname: str
 
 Returns
 -------
 None
 ") IFSelect_SelectFlag;
-		 IFSelect_SelectFlag(const char * flagname);
+		 IFSelect_SelectFlag(Standard_CString flagname);
 
 		/****************** ExtractLabel ******************/
 		/**** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ****/
@@ -12302,9 +12302,9 @@ TCollection_AsciiString
 
 Returns
 -------
-char *
+str
 ") FlagName;
-		const char * FlagName();
+		Standard_CString FlagName();
 
 		/****************** RootResult ******************/
 		/**** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ****/
@@ -12834,7 +12834,7 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: char *
+signtext: str
 exact: bool,optional
 	default value is Standard_True
 
@@ -12842,7 +12842,7 @@ Returns
 -------
 None
 ") IFSelect_SelectSignature;
-		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, const char * signtext, const Standard_Boolean exact = Standard_True);
+		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True);
 
 		/****************** IFSelect_SelectSignature ******************/
 		/**** md5 signature: f0f816e1d36acf4abc69d940efcff930 ****/
@@ -12852,7 +12852,7 @@ None
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: TCollection_AsciiString
+signtext: str
 exact: bool,optional
 	default value is Standard_True
 
@@ -12860,7 +12860,7 @@ Returns
 -------
 None
 ") IFSelect_SelectSignature;
-		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, const TCollection_AsciiString & signtext, const Standard_Boolean exact = Standard_True);
+		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, TCollection_AsciiString signtext, const Standard_Boolean exact = Standard_True);
 
 		/****************** IFSelect_SelectSignature ******************/
 		/**** md5 signature: 2d5482446f425374777509a08ad2da25 ****/
@@ -12870,7 +12870,7 @@ None
 Parameters
 ----------
 matcher: IFSelect_SignCounter
-signtext: char *
+signtext: str
 exact: bool,optional
 	default value is Standard_True
 
@@ -12878,7 +12878,7 @@ Returns
 -------
 None
 ") IFSelect_SelectSignature;
-		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_SignCounter> & matcher, const char * signtext, const Standard_Boolean exact = Standard_True);
+		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_SignCounter> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True);
 
 		/****************** Counter ******************/
 		/**** md5 signature: 863d5febc23db3b01c693ba5cbe7a5ab ****/
@@ -12993,7 +12993,7 @@ class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: char *
+signtext: str
 exact: bool,optional
 	default value is Standard_True
 level: int,optional
@@ -13003,7 +13003,7 @@ Returns
 -------
 None
 ") IFSelect_SelectSignedShared;
-		 IFSelect_SelectSignedShared(const opencascade::handle<IFSelect_Signature> & matcher, const char * signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
+		 IFSelect_SelectSignedShared(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
 
 		/****************** Explore ******************/
 		/**** md5 signature: 50c4444632fd853033919d1a382f1178 ****/
@@ -13091,7 +13091,7 @@ class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: char *
+signtext: str
 exact: bool,optional
 	default value is Standard_True
 level: int,optional
@@ -13101,7 +13101,7 @@ Returns
 -------
 None
 ") IFSelect_SelectSignedSharing;
-		 IFSelect_SelectSignedSharing(const opencascade::handle<IFSelect_Signature> & matcher, const char * signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
+		 IFSelect_SelectSignedSharing(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
 
 		/****************** Explore ******************/
 		/**** md5 signature: 50c4444632fd853033919d1a382f1178 ****/

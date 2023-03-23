@@ -412,13 +412,13 @@ void
 
 Parameters
 ----------
-theTypeString: char *
+theTypeString: str
 
 Returns
 -------
 V3d_TypeOfOrientation
 ") TypeOfOrientationFromString;
-		static V3d_TypeOfOrientation TypeOfOrientationFromString(const char * theTypeString);
+		static V3d_TypeOfOrientation TypeOfOrientationFromString(Standard_CString theTypeString);
 
 		/****************** TypeOfOrientationFromString ******************/
 		/**** md5 signature: 6b78449f8330edf458cfd27636ffc2e3 ****/
@@ -427,13 +427,13 @@ V3d_TypeOfOrientation
 
 Parameters
 ----------
-theTypeString: char *
+theTypeString: str
 
 Returns
 -------
 theType: V3d_TypeOfOrientation
 ") TypeOfOrientationFromString;
-		static Standard_Boolean TypeOfOrientationFromString(const char * theTypeString, V3d_TypeOfOrientation &OutValue);
+		static Standard_Boolean TypeOfOrientationFromString(Standard_CString theTypeString, V3d_TypeOfOrientation &OutValue);
 
 		/****************** TypeOfOrientationToString ******************/
 		/**** md5 signature: 73659bdc699005210713bf8f9d6fab86 ****/
@@ -446,9 +446,9 @@ theType: V3d_TypeOfOrientation
 
 Returns
 -------
-char *
+str
 ") TypeOfOrientationToString;
-		static const char * TypeOfOrientationToString(V3d_TypeOfOrientation theType);
+		static Standard_CString TypeOfOrientationToString(V3d_TypeOfOrientation theType);
 
 };
 
@@ -1110,15 +1110,15 @@ None
 
 Parameters
 ----------
-theX: TCollection_AsciiString
-theY: TCollection_AsciiString
-theZ: TCollection_AsciiString
+theX: str
+theY: str
+theZ: str
 
 Returns
 -------
 None
 ") SetLabels;
-		void SetLabels(const TCollection_AsciiString & theX, const TCollection_AsciiString & theY, const TCollection_AsciiString & theZ);
+		void SetLabels(TCollection_AsciiString theX, TCollection_AsciiString theY, TCollection_AsciiString theZ);
 
 		/****************** SetLabelsColor ******************/
 		/**** md5 signature: 2e294d0668cecdbabc01b2838203a9e2 ****/
@@ -1785,7 +1785,7 @@ None
 
 Parameters
 ----------
-theFile: char *
+theFile: str
 theBufferType: Graphic3d_BufferType,optional
 	default value is Graphic3d_BT_RGB
 
@@ -1793,7 +1793,7 @@ Returns
 -------
 bool
 ") Dump;
-		Standard_Boolean Dump(const char * theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
+		Standard_Boolean Dump(Standard_CString theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
 
             %feature("autodoc", "1");
@@ -2798,7 +2798,7 @@ None
 
 Parameters
 ----------
-theFileName: char *
+theFileName: str
 theFillStyle: Aspect_FillMethod,optional
 	default value is Aspect_FM_CENTERED
 theToUpdate: bool,optional
@@ -2808,7 +2808,7 @@ Returns
 -------
 None
 ") SetBackgroundImage;
-		void SetBackgroundImage(const char * theFileName, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBackgroundImage(Standard_CString theFileName, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
 
 		/****************** SetBackgroundImage ******************/
 		/**** md5 signature: 4082281fe8d9c0c887d121ff7ee0f92c ****/

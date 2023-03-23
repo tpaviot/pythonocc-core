@@ -318,13 +318,13 @@ None
 
 Parameters
 ----------
-theDerivedType: char *
+theDerivedType: str
 
 Returns
 -------
 opencascade::handle<Standard_Type>
 ") AddDerivedDriver;
-		const opencascade::handle<Standard_Type> & AddDerivedDriver(const char * theDerivedType);
+		const opencascade::handle<Standard_Type> & AddDerivedDriver(Standard_CString theDerivedType);
 
 		/****************** AddDriver ******************/
 		/**** md5 signature: a1862a3b70afac69a2082adfc7eb62a0 ****/

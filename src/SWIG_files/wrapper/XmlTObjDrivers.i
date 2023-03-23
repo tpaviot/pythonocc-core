@@ -211,13 +211,13 @@ class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageD
 
 Parameters
 ----------
-theCopyright: TCollection_ExtendedString
+theCopyright: str
 
 Returns
 -------
 None
 ") XmlTObjDrivers_DocumentStorageDriver;
-		 XmlTObjDrivers_DocumentStorageDriver(const TCollection_ExtendedString & theCopyright);
+		 XmlTObjDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/

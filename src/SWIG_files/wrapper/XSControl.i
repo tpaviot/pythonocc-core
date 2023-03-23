@@ -307,7 +307,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 Parameters
 ----------
 theItem: Standard_Transient
-theName: char *
+theName: str
 toApply: bool,optional
 	default value is Standard_False
 
@@ -315,7 +315,7 @@ Returns
 -------
 None
 ") AddSessionItem;
-		void AddSessionItem(const opencascade::handle<Standard_Transient> & theItem, const char * theName, const Standard_Boolean toApply = Standard_False);
+		void AddSessionItem(const opencascade::handle<Standard_Transient> & theItem, Standard_CString theName, const Standard_Boolean toApply = Standard_False);
 
 		/****************** AutoRecord ******************/
 		/**** md5 signature: 1e12ceab21a1bbaa8139a52550ee2d9a ****/
@@ -390,9 +390,9 @@ shape: bool,optional
 
 Returns
 -------
-char *
+str
 ") ModeWriteHelp;
-		const char * ModeWriteHelp(const Standard_Integer modetrans, const Standard_Boolean shape = Standard_True);
+		Standard_CString ModeWriteHelp(const Standard_Integer modetrans, const Standard_Boolean shape = Standard_True);
 
 		/****************** Name ******************/
 		/**** md5 signature: a614a2a031c0f6de75e5496e2bd2c8da ****/
@@ -406,9 +406,9 @@ rsc: bool,optional
 
 Returns
 -------
-char *
+str
 ") Name;
-		const char * Name(const Standard_Boolean rsc = Standard_False);
+		Standard_CString Name(const Standard_Boolean rsc = Standard_False);
 
 		/****************** NewModel ******************/
 		/**** md5 signature: 0b1be90749007fa9c3aadc3c17bc79c8 ****/
@@ -473,13 +473,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 None
 ") Record;
-		void Record(const char * name);
+		void Record(Standard_CString name);
 
 		/****************** Recorded ******************/
 		/**** md5 signature: e7b0928c69a84934a61865297a1477f2 ****/
@@ -488,13 +488,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<XSControl_Controller>
 ") Recorded;
-		static opencascade::handle<XSControl_Controller> Recorded(const char * name);
+		static opencascade::handle<XSControl_Controller> Recorded(Standard_CString name);
 
 		/****************** SessionItem ******************/
 		/**** md5 signature: 1008f7dfeac004b90b54003352227a07 ****/
@@ -503,13 +503,13 @@ opencascade::handle<XSControl_Controller>
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") SessionItem;
-		opencascade::handle<Standard_Transient> SessionItem(const char * theName);
+		opencascade::handle<Standard_Transient> SessionItem(Standard_CString theName);
 
 		/****************** SetModeWrite ******************/
 		/**** md5 signature: 256e35b925b3df022507f10889c59c8f ****/
@@ -537,7 +537,7 @@ None
 Parameters
 ----------
 modetrans: int
-help: char *
+help: str
 shape: bool,optional
 	default value is Standard_True
 
@@ -545,7 +545,7 @@ Returns
 -------
 None
 ") SetModeWriteHelp;
-		void SetModeWriteHelp(const Standard_Integer modetrans, const char * help, const Standard_Boolean shape = Standard_True);
+		void SetModeWriteHelp(const Standard_Integer modetrans, Standard_CString help, const Standard_Boolean shape = Standard_True);
 
 		/****************** SetNames ******************/
 		/**** md5 signature: ade60fb8abd6821ca807fecdfd73838f ****/
@@ -554,14 +554,14 @@ None
 
 Parameters
 ----------
-theLongName: char *
-theShortName: char *
+theLongName: str
+theShortName: str
 
 Returns
 -------
 None
 ") SetNames;
-		void SetNames(const char * theLongName, const char * theShortName);
+		void SetNames(Standard_CString theLongName, Standard_CString theShortName);
 
 		/****************** TransferWriteShape ******************/
 		/**** md5 signature: a1087710e2fdfd6eb93794359a254234 ****/
@@ -640,17 +640,17 @@ class XSControl_FuncShape {
 Parameters
 ----------
 session: XSControl_WorkSession
-file: char *
-var: char *
-def: char *
-resfile: TCollection_AsciiString
-resvar: TCollection_AsciiString
+file: str
+var: str
+def: str
+resfile: str
+resvar: str
 
 Returns
 -------
 bool
 ") FileAndVar;
-		static Standard_Boolean FileAndVar(const opencascade::handle<XSControl_WorkSession> & session, const char * file, const char * var, const char * def, TCollection_AsciiString & resfile, TCollection_AsciiString & resvar);
+		static Standard_Boolean FileAndVar(const opencascade::handle<XSControl_WorkSession> & session, Standard_CString file, Standard_CString var, Standard_CString def, TCollection_AsciiString & resfile, TCollection_AsciiString & resvar);
 
 		/****************** Init ******************/
 		/**** md5 signature: 342fdccc4643f67c269591c4b6447108 ****/
@@ -672,13 +672,13 @@ Parameters
 ----------
 session: XSControl_WorkSession
 list: TopTools_HSequenceOfShape
-name: char *
+name: str
 
 Returns
 -------
 int
 ") MoreShapes;
-		static Standard_Integer MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<TopTools_HSequenceOfShape> & list, const char * name);
+		static Standard_Integer MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<TopTools_HSequenceOfShape> & list, Standard_CString name);
 
 };
 
@@ -737,13 +737,13 @@ None
 
 Parameters
 ----------
-norm: char *
+norm: str
 
 Returns
 -------
 None
 ") XSControl_Reader;
-		 XSControl_Reader(const char * norm);
+		 XSControl_Reader(Standard_CString norm);
 
 		/****************** XSControl_Reader ******************/
 		/**** md5 signature: dde5d0249121e014a940df9f07c34b20 ****/
@@ -797,16 +797,16 @@ nbWithFail: int
 
 Parameters
 ----------
-first: char *,optional
+first: str,optional
 	default value is ""
-second: char *,optional
+second: str,optional
 	default value is ""
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfTransient>
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const char * first = "", const char * second = "");
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first = "", Standard_CString second = "");
 
 		/****************** GiveList ******************/
 		/**** md5 signature: 05fdcf13ca9e417fad4d2b6ab10b4c43 ****/
@@ -815,14 +815,14 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Parameters
 ----------
-first: char *
+first: str
 ent: Standard_Transient
 
 Returns
 -------
 opencascade::handle<TColStd_HSequenceOfTransient>
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const char * first, const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first, const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Model ******************/
 		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
@@ -924,13 +924,13 @@ None
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(const char * filename);
+		IFSelect_ReturnStatus ReadFile(Standard_CString filename);
 
 		/****************** ReadStream ******************/
 		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
@@ -939,14 +939,14 @@ IFSelect_ReturnStatus
 
 Parameters
 ----------
-theName: char *
+theName: str
 theIStream: std::istream
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") ReadStream;
-		IFSelect_ReturnStatus ReadStream(const char * theName, std::istream & theIStream);
+		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
 		/****************** RootForTransfer ******************/
 		/**** md5 signature: c2a76b8d96e252b5e6c8127f08dd357b ****/
@@ -971,13 +971,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-norm: char *
+norm: str
 
 Returns
 -------
 bool
 ") SetNorm;
-		Standard_Boolean SetNorm(const char * norm);
+		Standard_Boolean SetNorm(Standard_CString norm);
 
 		/****************** SetWS ******************/
 		/**** md5 signature: 74ebce3f94d695bdeb4915fb004d07d2 ****/
@@ -1334,9 +1334,9 @@ model: Interface_InterfaceModel
 
 Returns
 -------
-char *
+str
 ") Value;
-		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -1523,9 +1523,9 @@ opencascade::handle<Standard_Transient>
 
 Returns
 -------
-char *
+str
 ") FileName;
-		const char * FileName();
+		Standard_CString FileName();
 
 		/****************** FinalEntityLabel ******************/
 		/**** md5 signature: b69bb15f15e6f82ae664a88db6ee06ce ****/
@@ -1538,9 +1538,9 @@ theEnt: Standard_Transient
 
 Returns
 -------
-char *
+str
 ") FinalEntityLabel;
-		const char * FinalEntityLabel(const opencascade::handle<Standard_Transient> & theEnt);
+		Standard_CString FinalEntityLabel(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****************** FinalEntityNumber ******************/
 		/**** md5 signature: 3e2d0fafc06899f9afe7055b8cad793b ****/
@@ -1579,7 +1579,7 @@ opencascade::handle<Transfer_ResultFromModel>
 
 Parameters
 ----------
-theName: char *
+theName: str
 theType: Standard_Type
 theCtx: Standard_Transient
 
@@ -1587,7 +1587,7 @@ Returns
 -------
 bool
 ") GetContext;
-		Standard_Boolean GetContext(const char * theName, const opencascade::handle<Standard_Type> & theType, opencascade::handle<Standard_Transient> & theCtx);
+		Standard_Boolean GetContext(Standard_CString theName, const opencascade::handle<Standard_Type> & theType, opencascade::handle<Standard_Transient> & theCtx);
 
 		/****************** HasChecks ******************/
 		/**** md5 signature: 2b7042065eb7437ca9470c6f68798861 ****/
@@ -1817,14 +1817,14 @@ None
 
 Parameters
 ----------
-theName: char *
+theName: str
 theCtx: Standard_Transient
 
 Returns
 -------
 None
 ") SetContext;
-		void SetContext(const char * theName, const opencascade::handle<Standard_Transient> & theCtx);
+		void SetContext(Standard_CString theName, const opencascade::handle<Standard_Transient> & theCtx);
 
 		/****************** SetController ******************/
 		/**** md5 signature: 288d2810c031f13ea60c18de24c3c86c ****/
@@ -1848,13 +1848,13 @@ None
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 None
 ") SetFileName;
-		void SetFileName(const char * theName);
+		void SetFileName(Standard_CString theName);
 
 		/****************** SetGraph ******************/
 		/**** md5 signature: 003fda4710fad22243642415793d506b ****/
@@ -2308,13 +2308,13 @@ None
 Parameters
 ----------
 seqval: TColStd_HSequenceOfHAsciiString
-strval: char *
+strval: str
 
 Returns
 -------
 None
 ") AppendCStr;
-		void AppendCStr(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & seqval, const char * strval);
+		void AppendCStr(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & seqval, Standard_CString strval);
 
 		/****************** AppendEStr ******************/
 		/**** md5 signature: 9934e3172203d6e27f9d10c78cd358ae ****/
@@ -2386,13 +2386,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-str: char *
+str: str
 
 Returns
 -------
 Standard_ExtString
 ") AsciiToExtended;
-		Standard_ExtString AsciiToExtended(const char * str);
+		Standard_ExtString AsciiToExtended(Standard_CString str);
 
 		/****************** BinderShape ******************/
 		/**** md5 signature: 1b884ed953b9de71d14d439713905b02 ****/
@@ -2421,9 +2421,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") CStrValue;
-		const char * CStrValue(const opencascade::handle<Standard_Transient> & list, const Standard_Integer num);
+		Standard_CString CStrValue(const opencascade::handle<Standard_Transient> & list, const Standard_Integer num);
 
 		/****************** CompoundFromSeq ******************/
 		/**** md5 signature: 9c42e270bfcdddbf1929a557984f4fda ****/
@@ -2456,9 +2456,9 @@ ss: int
 
 Returns
 -------
-char *
+str
 ") DateString;
-		const char * DateString(const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss);
+		Standard_CString DateString(const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss);
 
 		/****************** DateValues ******************/
 		/**** md5 signature: 80cd43251686342d1c83d54472b57f24 ****/
@@ -2467,7 +2467,7 @@ char *
 
 Parameters
 ----------
-text: char *
+text: str
 
 Returns
 -------
@@ -2478,7 +2478,7 @@ hh: int
 mn: int
 ss: int
 ") DateValues;
-		void DateValues(const char * text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void DateValues(Standard_CString text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** EStrValue ******************/
 		/**** md5 signature: 6160d687934a25fae20a4478d4a4ead9 ****/
@@ -2507,9 +2507,9 @@ str: Standard_ExtString
 
 Returns
 -------
-char *
+str
 ") ExtendedToAscii;
-		const char * ExtendedToAscii(const Standard_ExtString str);
+		Standard_CString ExtendedToAscii(const Standard_ExtString str);
 
 		/****************** IsAscii ******************/
 		/**** md5 signature: 4d8b39ffb883d51a71e0f32b2eaaa10d ****/
@@ -2708,13 +2708,13 @@ TopoDS_Shape
 
 Parameters
 ----------
-strcon: char *
+strcon: str
 
 Returns
 -------
 TCollection_AsciiString
 ") ToAString;
-		TCollection_AsciiString ToAString(const char * strcon);
+		TCollection_AsciiString ToAString(Standard_CString strcon);
 
 		/****************** ToCString ******************/
 		/**** md5 signature: 3b3d42a4d7befd95fc7da813c3e180a7 ****/
@@ -2727,9 +2727,9 @@ strval: TCollection_HAsciiString
 
 Returns
 -------
-char *
+str
 ") ToCString;
-		const char * ToCString(const opencascade::handle<TCollection_HAsciiString> & strval);
+		Standard_CString ToCString(const opencascade::handle<TCollection_HAsciiString> & strval);
 
 		/****************** ToCString ******************/
 		/**** md5 signature: 88caf2c381405fda99aa9c53fe594a55 ****/
@@ -2738,13 +2738,13 @@ char *
 
 Parameters
 ----------
-strval: TCollection_AsciiString
+strval: str
 
 Returns
 -------
-char *
+str
 ") ToCString;
-		const char * ToCString(const TCollection_AsciiString & strval);
+		Standard_CString ToCString(TCollection_AsciiString strval);
 
 		/****************** ToEString ******************/
 		/**** md5 signature: 92d646c74275aa73981716c4bb3d5966 ****/
@@ -2768,13 +2768,13 @@ Standard_ExtString
 
 Parameters
 ----------
-strval: TCollection_ExtendedString
+strval: str
 
 Returns
 -------
 Standard_ExtString
 ") ToEString;
-		Standard_ExtString ToEString(const TCollection_ExtendedString & strval);
+		Standard_ExtString ToEString(TCollection_ExtendedString strval);
 
 		/****************** ToHString ******************/
 		/**** md5 signature: 7b7d11344d2ddb25c7aca4ebcec91c98 ****/
@@ -2783,13 +2783,13 @@ Standard_ExtString
 
 Parameters
 ----------
-strcon: char *
+strcon: str
 
 Returns
 -------
 opencascade::handle<TCollection_HAsciiString>
 ") ToHString;
-		opencascade::handle<TCollection_HAsciiString> ToHString(const char * strcon);
+		opencascade::handle<TCollection_HAsciiString> ToHString(Standard_CString strcon);
 
 		/****************** ToHString ******************/
 		/**** md5 signature: 29cf32d289b49b94c85616a821a0be85 ****/
@@ -2844,13 +2844,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-line: char *
+line: str
 
 Returns
 -------
 None
 ") TraceLine;
-		void TraceLine(const char * line);
+		void TraceLine(Standard_CString line);
 
 		/****************** TraceLines ******************/
 		/**** md5 signature: 20cb718590610f63086ac24e0f2045c2 ****/
@@ -2880,9 +2880,9 @@ nopk: bool,optional
 
 Returns
 -------
-char *
+str
 ") TypeName;
-		const char * TypeName(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean nopk = Standard_False);
+		Standard_CString TypeName(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean nopk = Standard_False);
 
 };
 
@@ -2916,13 +2916,13 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Standard_Transient>
 ") Get;
-		virtual opencascade::handle<Standard_Transient> Get(const char * & name);
+		virtual opencascade::handle<Standard_Transient> Get(Standard_CString name);
 
 		/****************** GetCurve ******************/
 		/**** md5 signature: 599f63b9d3913ce0fc7886108c1a9673 ****/
@@ -2931,13 +2931,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Geom_Curve>
 ") GetCurve;
-		virtual opencascade::handle<Geom_Curve> GetCurve(const char * & name);
+		virtual opencascade::handle<Geom_Curve> GetCurve(Standard_CString name);
 
 		/****************** GetCurve2d ******************/
 		/**** md5 signature: e21c81bea4735f342ec556482c9688ec ****/
@@ -2946,13 +2946,13 @@ opencascade::handle<Geom_Curve>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Geom2d_Curve>
 ") GetCurve2d;
-		virtual opencascade::handle<Geom2d_Curve> GetCurve2d(const char * & name);
+		virtual opencascade::handle<Geom2d_Curve> GetCurve2d(Standard_CString name);
 
 		/****************** GetGeom ******************/
 		/**** md5 signature: f21f0d65f6dfbbe40fbbd732496261d2 ****/
@@ -2961,13 +2961,13 @@ opencascade::handle<Geom2d_Curve>
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Geom_Geometry>
 ") GetGeom;
-		virtual opencascade::handle<Geom_Geometry> GetGeom(const char * & name);
+		virtual opencascade::handle<Geom_Geometry> GetGeom(Standard_CString name);
 
 		/****************** GetPoint ******************/
 		/**** md5 signature: 8e4b51e11fdfe0bfb7441e816dabce20 ****/
@@ -2976,14 +2976,14 @@ opencascade::handle<Geom_Geometry>
 
 Parameters
 ----------
-name: char *
+name: str
 pnt: gp_Pnt
 
 Returns
 -------
 bool
 ") GetPoint;
-		virtual Standard_Boolean GetPoint(const char * & name, gp_Pnt & pnt);
+		virtual Standard_Boolean GetPoint(Standard_CString name, gp_Pnt & pnt);
 
 		/****************** GetPoint2d ******************/
 		/**** md5 signature: a582c7a95b992cb2d66a37a54d5ab3ff ****/
@@ -2992,14 +2992,14 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 pnt: gp_Pnt2d
 
 Returns
 -------
 bool
 ") GetPoint2d;
-		virtual Standard_Boolean GetPoint2d(const char * & name, gp_Pnt2d & pnt);
+		virtual Standard_Boolean GetPoint2d(Standard_CString name, gp_Pnt2d & pnt);
 
 		/****************** GetShape ******************/
 		/**** md5 signature: 2957ff82e7c3b4fbc9b3efaa76a4308e ****/
@@ -3008,13 +3008,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 TopoDS_Shape
 ") GetShape;
-		virtual TopoDS_Shape GetShape(const char * & name);
+		virtual TopoDS_Shape GetShape(Standard_CString name);
 
 		/****************** GetSurface ******************/
 		/**** md5 signature: 68a8636c4fa5cb0089082aa3efacf371 ****/
@@ -3023,13 +3023,13 @@ TopoDS_Shape
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 opencascade::handle<Geom_Surface>
 ") GetSurface;
-		virtual opencascade::handle<Geom_Surface> GetSurface(const char * & name);
+		virtual opencascade::handle<Geom_Surface> GetSurface(Standard_CString name);
 
 		/****************** Set ******************/
 		/**** md5 signature: 16d0a361edf7b31d7551d629d7eda692 ****/
@@ -3038,14 +3038,14 @@ opencascade::handle<Geom_Surface>
 
 Parameters
 ----------
-name: char *
+name: str
 val: Standard_Transient
 
 Returns
 -------
 None
 ") Set;
-		virtual void Set(const char * name, const opencascade::handle<Standard_Transient> & val);
+		virtual void Set(Standard_CString name, const opencascade::handle<Standard_Transient> & val);
 
 		/****************** SetPoint ******************/
 		/**** md5 signature: 4d0f75b4ab64236e257eaaecfb5de79c ****/
@@ -3054,14 +3054,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: gp_Pnt
 
 Returns
 -------
 None
 ") SetPoint;
-		virtual void SetPoint(const char * name, const gp_Pnt & val);
+		virtual void SetPoint(Standard_CString name, const gp_Pnt & val);
 
 		/****************** SetPoint2d ******************/
 		/**** md5 signature: 49e75825f7ac5dd58f7d04184e5302af ****/
@@ -3070,14 +3070,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: gp_Pnt2d
 
 Returns
 -------
 None
 ") SetPoint2d;
-		virtual void SetPoint2d(const char * name, const gp_Pnt2d & val);
+		virtual void SetPoint2d(Standard_CString name, const gp_Pnt2d & val);
 
 		/****************** SetShape ******************/
 		/**** md5 signature: eb81a1893f16847e142322a4c28cc4f0 ****/
@@ -3086,14 +3086,14 @@ None
 
 Parameters
 ----------
-name: char *
+name: str
 val: TopoDS_Shape
 
 Returns
 -------
 None
 ") SetShape;
-		virtual void SetShape(const char * name, const TopoDS_Shape & val);
+		virtual void SetShape(Standard_CString name, const TopoDS_Shape & val);
 
 };
 
@@ -3230,13 +3230,13 @@ opencascade::handle<Standard_Transient>
 
 Parameters
 ----------
-theNormName: char *
+theNormName: str
 
 Returns
 -------
 bool
 ") SelectNorm;
-		Standard_Boolean SelectNorm(const char * theNormName);
+		Standard_Boolean SelectNorm(Standard_CString theNormName);
 
 		/****************** SelectedNorm ******************/
 		/**** md5 signature: 69481250202915c86d557c39cca43930 ****/
@@ -3250,9 +3250,9 @@ theRsc: bool,optional
 
 Returns
 -------
-char *
+str
 ") SelectedNorm;
-		const char * SelectedNorm(const Standard_Boolean theRsc = Standard_False);
+		Standard_CString SelectedNorm(const Standard_Boolean theRsc = Standard_False);
 
 		/****************** SetAllContext ******************/
 		/**** md5 signature: c9d911ff4f5d4a8bfcada1763844bd0a ****/
@@ -3474,13 +3474,13 @@ None
 
 Parameters
 ----------
-norm: char *
+norm: str
 
 Returns
 -------
 None
 ") XSControl_Writer;
-		 XSControl_Writer(const char * norm);
+		 XSControl_Writer(Standard_CString norm);
 
 		/****************** XSControl_Writer ******************/
 		/**** md5 signature: fdc5250052abb6411e52ae5355a1787a ****/
@@ -3539,13 +3539,13 @@ None
 
 Parameters
 ----------
-norm: char *
+norm: str
 
 Returns
 -------
 bool
 ") SetNorm;
-		Standard_Boolean SetNorm(const char * norm);
+		Standard_Boolean SetNorm(Standard_CString norm);
 
 		/****************** SetWS ******************/
 		/**** md5 signature: 74ebce3f94d695bdeb4915fb004d07d2 ****/
@@ -3601,13 +3601,13 @@ opencascade::handle<XSControl_WorkSession>
 
 Parameters
 ----------
-filename: char *
+filename: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") WriteFile;
-		IFSelect_ReturnStatus WriteFile(const char * filename);
+		IFSelect_ReturnStatus WriteFile(Standard_CString filename);
 
 };
 

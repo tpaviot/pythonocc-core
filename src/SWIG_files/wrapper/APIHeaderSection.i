@@ -403,13 +403,13 @@ opencascade::handle<TCollection_HAsciiString>
 
 Parameters
 ----------
-nameval: char *
+nameval: str
 
 Returns
 -------
 None
 ") Init;
-		void Init(const char * nameval);
+		void Init(Standard_CString nameval);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/

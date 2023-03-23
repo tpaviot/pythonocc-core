@@ -422,9 +422,9 @@ flag: int
 
 Returns
 -------
-char *
+str
 ") DraftingName;
-		static const char * DraftingName(const Standard_Integer flag);
+		static Standard_CString DraftingName(const Standard_Integer flag);
 
 		/****************** IGESVersionMax ******************/
 		/**** md5 signature: 019f789bb05d370b5b7bd697923db3e3 ****/
@@ -448,9 +448,9 @@ flag: int
 
 Returns
 -------
-char *
+str
 ") IGESVersionName;
-		static const char * IGESVersionName(const Standard_Integer flag);
+		static Standard_CString IGESVersionName(const Standard_Integer flag);
 
 		/****************** Init ******************/
 		/**** md5 signature: 97f796e95dfea5372a999aeb34b6facb ****/
@@ -516,13 +516,13 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 bool
 ") SetUnitName;
-		Standard_Boolean SetUnitName(const char * name);
+		Standard_Boolean SetUnitName(Standard_CString name);
 
 		/****************** SetUnitValue ******************/
 		/**** md5 signature: 4bccc95d28117974dc630c9e1c105787 ****/
@@ -550,9 +550,9 @@ flag: int
 
 Returns
 -------
-char *
+str
 ") UnitFlagName;
-		static const char * UnitFlagName(const Standard_Integer flag);
+		static Standard_CString UnitFlagName(const Standard_Integer flag);
 
 		/****************** UnitFlagValue ******************/
 		/**** md5 signature: b4467742c6222d78be1cf6dd2ed0ead4 ****/
@@ -576,13 +576,13 @@ float
 
 Parameters
 ----------
-name: char *
+name: str
 
 Returns
 -------
 int
 ") UnitNameFlag;
-		static Standard_Integer UnitNameFlag(const char * name);
+		static Standard_Integer UnitNameFlag(Standard_CString name);
 
 };
 
@@ -1039,16 +1039,16 @@ i14: int
 i15: int
 i16: int
 i17: int
-res1: char *
-res2: char *
-label: char *
-subscript: char *
+res1: str
+res2: str
+label: str
+subscript: str
 
 Returns
 -------
 None
 ") Init;
-		void Init(const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i19, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, const char * res1, const char * res2, const char * label, const char * subscript);
+		void Init(const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i19, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subscript);
 
 		/****************** Type ******************/
 		/**** md5 signature: 69362c058d18efeaee307371b2621b00 ****/
@@ -1068,10 +1068,10 @@ IGESData_IGESType
 
 Parameters
 ----------
-res1: char *
-res2: char *
-label: char *
-subscript: char *
+res1: str
+res2: str
+label: str
+subscript: str
 
 Returns
 -------
@@ -1093,7 +1093,7 @@ i15: int
 i16: int
 i17: int
 ") Values;
-		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, const char * res1, const char * res2, const char * label, const char * subscript);
+		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subscript);
 
 };
 
@@ -2629,14 +2629,14 @@ int
 
 Parameters
 ----------
-res1: char *
-res2: char *
+res1: str
+res2: str
 
 Returns
 -------
 bool
 ") CResValues;
-		Standard_Boolean CResValues(const char * res1, const char * res2);
+		Standard_Boolean CResValues(Standard_CString res1, Standard_CString res2);
 
 		/****************** Color ******************/
 		/**** md5 signature: 9f059c3d16c0eb79fdf5239f02d987e7 ****/
@@ -3396,7 +3396,7 @@ None
 
 Parameters
 ----------
-line: char *
+line: str
 atnum: int,optional
 	default value is 0
 
@@ -3404,7 +3404,7 @@ Returns
 -------
 None
 ") AddStartLine;
-		void AddStartLine(const char * line, const Standard_Integer atnum = 0);
+		void AddStartLine(Standard_CString line, const Standard_Integer atnum = 0);
 
 		/****************** ApplyStatic ******************/
 		/**** md5 signature: 994a9ac1357b52e0bee3cbef68d704f1 ****/
@@ -3413,14 +3413,14 @@ None
 
 Parameters
 ----------
-param: char *,optional
+param: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") ApplyStatic;
-		Standard_Boolean ApplyStatic(const char * param = "");
+		Standard_Boolean ApplyStatic(Standard_CString param = "");
 
 		/****************** ChangeGlobalSection ******************/
 		/**** md5 signature: 040968795059a2599255a0b8e187d384 ****/
@@ -3602,9 +3602,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") StartLine;
-		const char * StartLine(const Standard_Integer num);
+		Standard_CString StartLine(const Standard_Integer num);
 
 		/****************** StartSection ******************/
 		/**** md5 signature: 998fa00be2a7bd3f42c5a6d35ff6278e ****/
@@ -3687,13 +3687,13 @@ None
 Parameters
 ----------
 atype: Interface_ParamType
-aval: char *
+aval: str
 
 Returns
 -------
 None
 ") AddGlobal;
-		void AddGlobal(const Interface_ParamType atype, const char * aval);
+		void AddGlobal(const Interface_ParamType atype, Standard_CString aval);
 
 		/****************** AddStartLine ******************/
 		/**** md5 signature: ce16629f6b3db7e5bbe2a7c8d7a4bc5f ****/
@@ -3702,13 +3702,13 @@ None
 
 Parameters
 ----------
-aval: char *
+aval: str
 
 Returns
 -------
 None
 ") AddStartLine;
-		void AddStartLine(const char * aval);
+		void AddStartLine(Standard_CString aval);
 
 		/****************** DefaultLineWeight ******************/
 		/**** md5 signature: 6dfd947d9c6ba05b9b68428e24e65be3 ****/
@@ -3759,10 +3759,10 @@ IGESData_IGESType
 Parameters
 ----------
 num: int
-res1: char *
-res2: char *
-label: char *
-subs: char *
+res1: str
+res2: str
+label: str
+subs: str
 
 Returns
 -------
@@ -3784,7 +3784,7 @@ i15: int
 i16: int
 i17: int
 ") DirValues;
-		void DirValues(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, const char * & res1, const char * & res2, const char * & label, const char * & subs);
+		void DirValues(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subs);
 
 		/****************** FindNextRecord ******************/
 		/**** md5 signature: b54f23c95a9eaf7d62f9c7b9d32982b2 ****/
@@ -3874,16 +3874,16 @@ i14: int
 i15: int
 i16: int
 i17: int
-res1: char *
-res2: char *
-label: char *
-subs: char *
+res1: str
+res2: str
+label: str
+subs: str
 
 Returns
 -------
 None
 ") SetDirPart;
-		void SetDirPart(const Standard_Integer num, const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i10, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, const char * res1, const char * res2, const char * label, const char * subs);
+		void SetDirPart(const Standard_Integer num, const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i10, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subs);
 
 		/****************** SetEntityNumbers ******************/
 		/**** md5 signature: 2160d07f29f3b4f2e31932dc1880e6da ****/
@@ -4446,13 +4446,13 @@ None
 
 Parameters
 ----------
-startline: char *
+startline: str
 
 Returns
 -------
 None
 ") SendStartLine;
-		void SendStartLine(const char * startline);
+		void SendStartLine(Standard_CString startline);
 
 		/****************** SendString ******************/
 		/**** md5 signature: 92320a0c3411641c39d308f7f62b1e3b ****/
@@ -4894,15 +4894,15 @@ None
 
 Parameters
 ----------
-afail: char *
-bfail: char *,optional
+afail: str
+bfail: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddFail;
-		void AddFail(const char * afail, const char * bfail = "");
+		void AddFail(Standard_CString afail, Standard_CString bfail = "");
 
 		/****************** AddFail ******************/
 		/**** md5 signature: c2e5e426059ba8bc38dac40e1adc4faa ****/
@@ -4927,15 +4927,15 @@ None
 
 Parameters
 ----------
-awarn: char *
-bwarn: char *,optional
+awarn: str
+bwarn: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") AddWarning;
-		void AddWarning(const char * awarn, const char * bwarn = "");
+		void AddWarning(Standard_CString awarn, Standard_CString bwarn = "");
 
 		/****************** AddWarning ******************/
 		/**** md5 signature: 08b677de5f00f85a69ff40630816ba2b ****/
@@ -5117,14 +5117,14 @@ bool
 
 Parameters
 ----------
-pref: char *,optional
+pref: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") Mend;
-		void Mend(const char * pref = "");
+		void Mend(Standard_CString pref = "");
 
 		/****************** NbParams ******************/
 		/**** md5 signature: 826f4756fca7f780e6d976c60183d715 ****/
@@ -5205,9 +5205,9 @@ num: int
 
 Returns
 -------
-char *
+str
 ") ParamValue;
-		const char * ParamValue(const Standard_Integer num);
+		Standard_CString ParamValue(const Standard_Integer num);
 
 		/****************** ReadBoolean ******************/
 		/**** md5 signature: 5af263137e415d719338928168c161b2 ****/
@@ -5235,7 +5235,7 @@ val: bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 exact: bool,optional
 	default value is Standard_True
 
@@ -5243,7 +5243,7 @@ Returns
 -------
 val: bool
 ") ReadBoolean;
-		Standard_Boolean ReadBoolean(const IGESData_ParamCursor & PC, const char * mess, Standard_Boolean &OutValue, const Standard_Boolean exact = Standard_True);
+		Standard_Boolean ReadBoolean(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Boolean &OutValue, const Standard_Boolean exact = Standard_True);
 
 		/****************** ReadEntList ******************/
 		/**** md5 signature: 9c9af56d8bc83ee3ea10a6bf14216be8 ****/
@@ -5274,7 +5274,7 @@ Parameters
 ----------
 IR: IGESData_IGESReaderData
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: Interface_EntityList
 ord: bool,optional
 	default value is Standard_True
@@ -5283,7 +5283,7 @@ Returns
 -------
 bool
 ") ReadEntList;
-		Standard_Boolean ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const char * mess, Interface_EntityList & val, const Standard_Boolean ord = Standard_True);
+		Standard_Boolean ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Standard_CString mess, Interface_EntityList & val, const Standard_Boolean ord = Standard_True);
 
 		/****************** ReadEnts ******************/
 		/**** md5 signature: 750391ef81f0fbfc5d61afa7f04ac7fd ****/
@@ -5314,7 +5314,7 @@ Parameters
 ----------
 IR: IGESData_IGESReaderData
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: IGESData_HArray1OfIGESEntity
 index: int,optional
 	default value is 1
@@ -5323,7 +5323,7 @@ Returns
 -------
 bool
 ") ReadEnts;
-		Standard_Boolean ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<IGESData_HArray1OfIGESEntity> & val, const Standard_Integer index = 1);
+		Standard_Boolean ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<IGESData_HArray1OfIGESEntity> & val, const Standard_Integer index = 1);
 
 		/****************** ReadInteger ******************/
 		/**** md5 signature: 5c7a57000d7ed53a1cc81fab0e105a88 ****/
@@ -5348,13 +5348,13 @@ val: int
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 
 Returns
 -------
 val: int
 ") ReadInteger;
-		Standard_Boolean ReadInteger(const IGESData_ParamCursor & PC, const char * mess, Standard_Integer &OutValue);
+		Standard_Boolean ReadInteger(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Integer &OutValue);
 
 		/****************** ReadInts ******************/
 		/**** md5 signature: 31cf4defba66a66fd688e116606f5f9e ****/
@@ -5383,7 +5383,7 @@ bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: TColStd_HArray1OfInteger
 index: int,optional
 	default value is 1
@@ -5392,7 +5392,7 @@ Returns
 -------
 bool
 ") ReadInts;
-		Standard_Boolean ReadInts(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TColStd_HArray1OfInteger> & val, const Standard_Integer index = 1);
+		Standard_Boolean ReadInts(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfInteger> & val, const Standard_Integer index = 1);
 
 		/****************** ReadReal ******************/
 		/**** md5 signature: c82333f3d5ddad52fc0fae29e9ff5ea1 ****/
@@ -5417,13 +5417,13 @@ val: float
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 
 Returns
 -------
 val: float
 ") ReadReal;
-		Standard_Boolean ReadReal(const IGESData_ParamCursor & PC, const char * mess, Standard_Real &OutValue);
+		Standard_Boolean ReadReal(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Real &OutValue);
 
 		/****************** ReadReals ******************/
 		/**** md5 signature: 966afe503c7f3736d9516f71c49612ff ****/
@@ -5452,7 +5452,7 @@ bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: TColStd_HArray1OfReal
 index: int,optional
 	default value is 1
@@ -5461,7 +5461,7 @@ Returns
 -------
 bool
 ") ReadReals;
-		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
+		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
 
 		/****************** ReadText ******************/
 		/**** md5 signature: 8807f276466f6d3d64b7837129489f8b ****/
@@ -5472,13 +5472,12 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadText ******************/
 		/**** md5 signature: 583adf171adc696820aae6403d5703c0 ****/
@@ -5488,14 +5487,13 @@ bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
-val: TCollection_HAsciiString
+mess: str
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadTexts ******************/
 		/**** md5 signature: c6a37e5e63bf6ab8b99c9480e131fa17 ****/
@@ -5524,7 +5522,7 @@ bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: Interface_HArray1OfHAsciiString
 index: int,optional
 	default value is 1
@@ -5533,7 +5531,7 @@ Returns
 -------
 bool
 ") ReadTexts;
-		Standard_Boolean ReadTexts(const IGESData_ParamCursor & PC, const char * mess, opencascade::handle<Interface_HArray1OfHAsciiString> & val, const Standard_Integer index = 1);
+		Standard_Boolean ReadTexts(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<Interface_HArray1OfHAsciiString> & val, const Standard_Integer index = 1);
 
 		/****************** ReadXY ******************/
 		/**** md5 signature: f1f930720d20b00d8163c922eb48a7cf ****/
@@ -5560,14 +5558,14 @@ bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: gp_XY
 
 Returns
 -------
 bool
 ") ReadXY;
-		Standard_Boolean ReadXY(const IGESData_ParamCursor & PC, const char * mess, gp_XY & val);
+		Standard_Boolean ReadXY(const IGESData_ParamCursor & PC, Standard_CString mess, gp_XY & val);
 
 		/****************** ReadXYZ ******************/
 		/**** md5 signature: e1f260ccc2a99b486835f0bbaf9490d4 ****/
@@ -5594,14 +5592,14 @@ bool
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: char *
+mess: str
 val: gp_XYZ
 
 Returns
 -------
 bool
 ") ReadXYZ;
-		Standard_Boolean ReadXYZ(const IGESData_ParamCursor & PC, const char * mess, gp_XYZ & val);
+		Standard_Boolean ReadXYZ(const IGESData_ParamCursor & PC, Standard_CString mess, gp_XYZ & val);
 
 		/****************** ReadingEntityNumber ******************/
 		/**** md5 signature: 92704ecd65c2acb93d1b95eb5695d76c ****/
@@ -5626,13 +5624,13 @@ val: int
 Parameters
 ----------
 num: int
-mess: char *
+mess: str
 
 Returns
 -------
 val: int
 ") ReadingEntityNumber;
-		Standard_Boolean ReadingEntityNumber(const Standard_Integer num, const char * mess, Standard_Integer &OutValue);
+		Standard_Boolean ReadingEntityNumber(const Standard_Integer num, Standard_CString mess, Standard_Integer &OutValue);
 
 		/****************** ReadingReal ******************/
 		/**** md5 signature: 1acc3f6abf688d2d1b7f455b5f35fd08 ****/
@@ -5657,13 +5655,13 @@ val: float
 Parameters
 ----------
 num: int
-mess: char *
+mess: str
 
 Returns
 -------
 val: float
 ") ReadingReal;
-		Standard_Boolean ReadingReal(const Standard_Integer num, const char * mess, Standard_Real &OutValue);
+		Standard_Boolean ReadingReal(const Standard_Integer num, Standard_CString mess, Standard_Real &OutValue);
 
 		/****************** SendFail ******************/
 		/**** md5 signature: 1eab4e53649e1a16e12a6f58bd826f30 ****/
@@ -7373,13 +7371,13 @@ None
 Parameters
 ----------
 ptype: Interface_ParamType
-val: char *
+val: str
 
 Returns
 -------
 None
 ") AddLiteral;
-		void AddLiteral(const Interface_ParamType ptype, const char * val);
+		void AddLiteral(const Interface_ParamType ptype, Standard_CString val);
 
 		/****************** AddNegativePointers ******************/
 		/**** md5 signature: 33e3fd63e015423d0c67a74a4d9b8824 ****/
@@ -7469,13 +7467,12 @@ Parameters
 num: int
 ptype: Interface_ParamType
 ent: IGESData_IGESEntity
-val: TCollection_HAsciiString
 
 Returns
 -------
-bool
+val: TCollection_HAsciiString
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> & val);
+		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ParamEntity ******************/
 		/**** md5 signature: 2a0bffa8d17df8d6aa5a1fa692044d19 ****/

@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 0cbd3e7
+git revision : 5c16abe
 
 operating system : Windows 64bit 10
 
 occt version targeted : 7.7.0
 
-date : 2023-03-15 18:03:39.147751
+date : 2023-03-23 09:28:31.492183
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -6100,6 +6100,7 @@ date : 2023-03-15 18:03:39.147751
 [INFO ]  Class: StepRepr_PromissoryUsageOccurrence
 [INFO ]  Class: StepRepr_QuantifiedAssemblyComponentUsage
 [INFO ]  Class: StepRepr_ReprItemAndLengthMeasureWithUnit
+[INFO ]  Class: StepRepr_ReprItemAndMeasureWithUnitAndQRI
 [INFO ]  Class: StepRepr_ReprItemAndPlaneAngleMeasureWithUnit
 [INFO ]  Class: StepRepr_RepresentationRelationshipWithTransformation
 [INFO ]  Class: StepRepr_SpecifiedHigherUsageOccurrence
@@ -8444,7 +8445,6 @@ date : 2023-03-15 18:03:39.147751
 [INFO ]  Enum: MoniTool_ValueType
 [WARNI]  Template: )skipped because name doesn't contain _.
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skip type Standard_CString,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: MoniTool_AttrList
@@ -8711,6 +8711,7 @@ date : 2023-03-15 18:03:39.147751
 [INFO ]  Class: XmlMFunction_ScopeDriver
 [INFO ]  ## Processing module XmlObjMgt
 [INFO ]  Class: XmlObjMgt
+[INFO ]      skipped method XmlObjMgt::d90d1ac036196cdb858a419d79e08e97
 [INFO ]  Class: XmlObjMgt_Array1
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: XmlObjMgt_GP
@@ -9080,8 +9081,8 @@ date : 2023-03-15 18:03:39.147751
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 124.55s
+SWIG interface file generation completed in 214.78s
 #################################################
 
-[INFO ]  Number of classes: 4601
-[INFO ]  Number of methods: 46691
+[INFO ]  Number of classes: 4602
+[INFO ]  Number of methods: 46694

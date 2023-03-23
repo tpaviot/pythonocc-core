@@ -120,14 +120,14 @@ class ShapeProcess {
 
 Parameters
 ----------
-name: char *
+name: str
 op: ShapeProcess_Operator
 
 Returns
 -------
 bool
 ") FindOperator;
-		static Standard_Boolean FindOperator(const char * name, opencascade::handle<ShapeProcess_Operator> & op);
+		static Standard_Boolean FindOperator(Standard_CString name, opencascade::handle<ShapeProcess_Operator> & op);
 
 		/****************** Perform ******************/
 		/**** md5 signature: b09a663248f0a938268494641ee9386a ****/
@@ -137,7 +137,7 @@ bool
 Parameters
 ----------
 context: ShapeProcess_Context
-seq: char *
+seq: str
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -145,7 +145,7 @@ Returns
 -------
 bool
 ") Perform;
-		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const char * seq, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, Standard_CString seq, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** RegisterOperator ******************/
 		/**** md5 signature: f3fc4533ca3193906e102f361e526b9e ****/
@@ -154,14 +154,14 @@ bool
 
 Parameters
 ----------
-name: char *
+name: str
 op: ShapeProcess_Operator
 
 Returns
 -------
 bool
 ") RegisterOperator;
-		static Standard_Boolean RegisterOperator(const char * name, const opencascade::handle<ShapeProcess_Operator> & op);
+		static Standard_Boolean RegisterOperator(Standard_CString name, const opencascade::handle<ShapeProcess_Operator> & op);
 
 };
 
@@ -195,15 +195,15 @@ None
 
 Parameters
 ----------
-file: char *
-scope: char *,optional
+file: str
+scope: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") ShapeProcess_Context;
-		 ShapeProcess_Context(const char * file, const char * scope = "");
+		 ShapeProcess_Context(Standard_CString file, Standard_CString scope = "");
 
 		/****************** BooleanVal ******************/
 		/**** md5 signature: 9ef6eb8d9ad5133cb1a4c75139909634 ****/
@@ -212,14 +212,14 @@ None
 
 Parameters
 ----------
-param: char *
+param: str
 def: bool
 
 Returns
 -------
 bool
 ") BooleanVal;
-		Standard_Boolean BooleanVal(const char * param, const Standard_Boolean def);
+		Standard_Boolean BooleanVal(Standard_CString param, const Standard_Boolean def);
 
 		/****************** GetBoolean ******************/
 		/**** md5 signature: 9df27916e333b4d27bedc4c44beaf1d4 ****/
@@ -228,13 +228,13 @@ bool
 
 Parameters
 ----------
-param: char *
+param: str
 
 Returns
 -------
 val: bool
 ") GetBoolean;
-		Standard_Boolean GetBoolean(const char * param, Standard_Boolean &OutValue);
+		Standard_Boolean GetBoolean(Standard_CString param, Standard_Boolean &OutValue);
 
 		/****************** GetInteger ******************/
 		/**** md5 signature: f7b7ac81028a2992ab387f7d40982c83 ****/
@@ -243,13 +243,13 @@ val: bool
 
 Parameters
 ----------
-param: char *
+param: str
 
 Returns
 -------
 val: int
 ") GetInteger;
-		Standard_Boolean GetInteger(const char * param, Standard_Integer &OutValue);
+		Standard_Boolean GetInteger(Standard_CString param, Standard_Integer &OutValue);
 
 		/****************** GetReal ******************/
 		/**** md5 signature: f76f4f5bd096be97f6395d4ae2b0c881 ****/
@@ -258,13 +258,13 @@ val: int
 
 Parameters
 ----------
-param: char *
+param: str
 
 Returns
 -------
 val: float
 ") GetReal;
-		Standard_Boolean GetReal(const char * param, Standard_Real &OutValue);
+		Standard_Boolean GetReal(Standard_CString param, Standard_Real &OutValue);
 
 		/****************** GetString ******************/
 		/**** md5 signature: d1aa90ddcb8f0c6991ce0ba3f0def1c1 ****/
@@ -273,14 +273,14 @@ val: float
 
 Parameters
 ----------
-param: char *
-val: TCollection_AsciiString
+param: str
+val: str
 
 Returns
 -------
 bool
 ") GetString;
-		Standard_Boolean GetString(const char * param, TCollection_AsciiString & val);
+		Standard_Boolean GetString(Standard_CString param, TCollection_AsciiString & val);
 
 		/****************** Init ******************/
 		/**** md5 signature: 847da2713ad977e0b2dcccc69df0b25c ****/
@@ -289,15 +289,15 @@ bool
 
 Parameters
 ----------
-file: char *
-scope: char *,optional
+file: str
+scope: str,optional
 	default value is ""
 
 Returns
 -------
 bool
 ") Init;
-		Standard_Boolean Init(const char * file, const char * scope = "");
+		Standard_Boolean Init(Standard_CString file, Standard_CString scope = "");
 
 		/****************** IntegerVal ******************/
 		/**** md5 signature: 9d0714ed8df23981995ae835d1b115f2 ****/
@@ -306,14 +306,14 @@ bool
 
 Parameters
 ----------
-param: char *
+param: str
 def: int
 
 Returns
 -------
 int
 ") IntegerVal;
-		Standard_Integer IntegerVal(const char * param, const Standard_Integer def);
+		Standard_Integer IntegerVal(Standard_CString param, const Standard_Integer def);
 
 		/****************** IsParamSet ******************/
 		/**** md5 signature: b7b37179e228d9c93cbc70f5f2a1f388 ****/
@@ -322,13 +322,13 @@ int
 
 Parameters
 ----------
-param: char *
+param: str
 
 Returns
 -------
 bool
 ") IsParamSet;
-		Standard_Boolean IsParamSet(const char * param);
+		Standard_Boolean IsParamSet(Standard_CString param);
 
 		/****************** LoadResourceManager ******************/
 		/**** md5 signature: e91c46eb5bef823da15ad18b28716741 ****/
@@ -337,13 +337,13 @@ bool
 
 Parameters
 ----------
-file: char *
+file: str
 
 Returns
 -------
 opencascade::handle<Resource_Manager>
 ") LoadResourceManager;
-		opencascade::handle<Resource_Manager> LoadResourceManager(const char * file);
+		opencascade::handle<Resource_Manager> LoadResourceManager(Standard_CString file);
 
 		/****************** Messenger ******************/
 		/**** md5 signature: c51845cdafadb143338935f519a3d7c7 ****/
@@ -363,14 +363,14 @@ opencascade::handle<Message_Messenger>
 
 Parameters
 ----------
-param: char *
+param: str
 def: float
 
 Returns
 -------
 float
 ") RealVal;
-		Standard_Real RealVal(const char * param, const Standard_Real def);
+		Standard_Real RealVal(Standard_CString param, const Standard_Real def);
 
 		/****************** ResourceManager ******************/
 		/**** md5 signature: 6cc7683a80ec93119c306087ce89d4fc ****/
@@ -405,13 +405,13 @@ None
 
 Parameters
 ----------
-scope: char *
+scope: str
 
 Returns
 -------
 None
 ") SetScope;
-		void SetScope(const char * scope);
+		void SetScope(Standard_CString scope);
 
 		/****************** SetTraceLevel ******************/
 		/**** md5 signature: b2d3fab409a6e2832ea6fb56a22812c1 ****/
@@ -435,14 +435,14 @@ None
 
 Parameters
 ----------
-param: char *
-def: char *
+param: str
+def: str
 
 Returns
 -------
-char *
+str
 ") StringVal;
-		const char * StringVal(const char * param, const char * def);
+		Standard_CString StringVal(Standard_CString param, Standard_CString def);
 
 		/****************** TraceLevel ******************/
 		/**** md5 signature: 71a5f63811c28c261ef1f9e77d8b2618 ****/
@@ -570,15 +570,15 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 
 Parameters
 ----------
-file: char *
-seq: char *,optional
+file: str
+seq: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") ShapeProcess_ShapeContext;
-		 ShapeProcess_ShapeContext(const char * file, const char * seq = "");
+		 ShapeProcess_ShapeContext(Standard_CString file, Standard_CString seq = "");
 
 		/****************** ShapeProcess_ShapeContext ******************/
 		/**** md5 signature: bbe323f78f09a408b3fe5639953403da ****/
@@ -588,15 +588,15 @@ None
 Parameters
 ----------
 S: TopoDS_Shape
-file: char *
-seq: char *,optional
+file: str
+seq: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") ShapeProcess_ShapeContext;
-		 ShapeProcess_ShapeContext(const TopoDS_Shape & S, const char * file, const char * seq = "");
+		 ShapeProcess_ShapeContext(const TopoDS_Shape & S, Standard_CString file, Standard_CString seq = "");
 
 		/****************** AddMessage ******************/
 		/**** md5 signature: d6c4b099fe68ccec72d5d85c1d0b829f ****/
@@ -623,14 +623,14 @@ None
 
 Parameters
 ----------
-param: char *
+param: str
 def: GeomAbs_Shape
 
 Returns
 -------
 GeomAbs_Shape
 ") ContinuityVal;
-		GeomAbs_Shape ContinuityVal(const char * param, const GeomAbs_Shape def);
+		GeomAbs_Shape ContinuityVal(Standard_CString param, const GeomAbs_Shape def);
 
 		/****************** GetContinuity ******************/
 		/**** md5 signature: 8156d1ea5c38e69794d6923a701e0552 ****/
@@ -639,13 +639,13 @@ GeomAbs_Shape
 
 Parameters
 ----------
-param: char *
+param: str
 
 Returns
 -------
 val: GeomAbs_Shape
 ") GetContinuity;
-		Standard_Boolean GetContinuity(const char * param, GeomAbs_Shape &OutValue);
+		Standard_Boolean GetContinuity(Standard_CString param, GeomAbs_Shape &OutValue);
 
 		/****************** GetDetalisation ******************/
 		/**** md5 signature: 39c7fd043c5ef7a11d722274e748b546 ****/

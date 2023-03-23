@@ -1842,14 +1842,14 @@ theARGB: int
 
 Parameters
 ----------
-theHexColorString: char *
+theHexColorString: str
 theColor: Quantity_Color
 
 Returns
 -------
 bool
 ") ColorFromHex;
-		static bool ColorFromHex(const char * theHexColorString, Quantity_Color & theColor);
+		static bool ColorFromHex(Standard_CString theHexColorString, Quantity_Color & theColor);
 
 		/****************** ColorFromName ******************/
 		/**** md5 signature: 52336467154f50ffb70349ec504d092e ****/
@@ -1858,13 +1858,13 @@ bool
 
 Parameters
 ----------
-theName: char *
+theName: str
 
 Returns
 -------
 theColor: Quantity_NameOfColor
 ") ColorFromName;
-		static Standard_Boolean ColorFromName(const char * theName, Quantity_NameOfColor &OutValue);
+		static Standard_Boolean ColorFromName(Standard_CString theName, Quantity_NameOfColor &OutValue);
 
 		/****************** ColorFromName ******************/
 		/**** md5 signature: 22de797bd27b14fa445f1fc6383d0e84 ****/
@@ -1873,14 +1873,14 @@ theColor: Quantity_NameOfColor
 
 Parameters
 ----------
-theColorNameString: char *
+theColorNameString: str
 theColor: Quantity_Color
 
 Returns
 -------
 bool
 ") ColorFromName;
-		static Standard_Boolean ColorFromName(const char * theColorNameString, Quantity_Color & theColor);
+		static Standard_Boolean ColorFromName(Standard_CString theColorNameString, Quantity_Color & theColor);
 
 		/****************** ColorToHex ******************/
 		/**** md5 signature: bca5c2e992e444dd039bba70d7834eaf ****/
@@ -2455,9 +2455,9 @@ theColor: Quantity_NameOfColor
 
 Returns
 -------
-char *
+str
 ") StringName;
-		static const char * StringName(const Quantity_NameOfColor theColor);
+		static Standard_CString StringName(const Quantity_NameOfColor theColor);
 
 		/****************** Values ******************/
 		/**** md5 signature: 3f9d5570eba07c52e9a8fcd90e25871c ****/
@@ -2686,14 +2686,14 @@ bool
 
 Parameters
 ----------
-theColorNameString: char *
+theColorNameString: str
 theColor: Quantity_ColorRGBA
 
 Returns
 -------
 bool
 ") ColorFromName;
-		static Standard_Boolean ColorFromName(const char * theColorNameString, Quantity_ColorRGBA & theColor);
+		static Standard_Boolean ColorFromName(Standard_CString theColorNameString, Quantity_ColorRGBA & theColor);
 
 		/****************** ColorToHex ******************/
 		/**** md5 signature: 2ddaf7ca0d632cd7bd0bafa4a9a275e3 ****/

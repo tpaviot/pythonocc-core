@@ -130,14 +130,14 @@ class Units {
 Parameters
 ----------
 avalue: float
-afirstunit: char *
-asecondunit: char *
+afirstunit: str
+asecondunit: str
 
 Returns
 -------
 float
 ") Convert;
-		static Standard_Real Convert(const Standard_Real avalue, const char * afirstunit, const char * asecondunit);
+		static Standard_Real Convert(const Standard_Real avalue, Standard_CString afirstunit, Standard_CString asecondunit);
 
 		/****************** DictionaryOfUnits ******************/
 		/**** md5 signature: 165dd792c98e5e7085892c1b5db3c84f ****/
@@ -162,13 +162,13 @@ opencascade::handle<Units_UnitsDictionary>
 
 Parameters
 ----------
-aType: char *
+aType: str
 
 Returns
 -------
 opencascade::handle<Units_Dimensions>
 ") Dimensions;
-		static opencascade::handle<Units_Dimensions> Dimensions(const char * aType);
+		static opencascade::handle<Units_Dimensions> Dimensions(Standard_CString aType);
 
 		/****************** FirstQuantity ******************/
 		/**** md5 signature: 57a438b224674b30f1f3279853c80e80 ****/
@@ -177,13 +177,13 @@ opencascade::handle<Units_Dimensions>
 
 Parameters
 ----------
-aunit: char *
+aunit: str
 
 Returns
 -------
-char *
+str
 ") FirstQuantity;
-		static const char * FirstQuantity(const char * aunit);
+		static Standard_CString FirstQuantity(Standard_CString aunit);
 
 		/****************** FromSI ******************/
 		/**** md5 signature: b9aaa13580eb6b7bec1a75161b3f38bd ****/
@@ -193,13 +193,13 @@ char *
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 
 Returns
 -------
 float
 ") FromSI;
-		static Standard_Real FromSI(const Standard_Real aData, const char * aUnit);
+		static Standard_Real FromSI(const Standard_Real aData, Standard_CString aUnit);
 
 		/****************** FromSI ******************/
 		/**** md5 signature: e4437e25fa11aff2c1d96274f621aa76 ****/
@@ -209,14 +209,14 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 aDim: Units_Dimensions
 
 Returns
 -------
 float
 ") FromSI;
-		static Standard_Real FromSI(const Standard_Real aData, const char * aUnit, opencascade::handle<Units_Dimensions> & aDim);
+		static Standard_Real FromSI(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
 		/****************** LexiconFile ******************/
 		/**** md5 signature: 0d1e1e276fdac596aad4c54270b5ed95 ****/
@@ -225,13 +225,13 @@ float
 
 Parameters
 ----------
-afile: char *
+afile: str
 
 Returns
 -------
 void
 ") LexiconFile;
-		static void LexiconFile(const char * afile);
+		static void LexiconFile(Standard_CString afile);
 
 		/****************** LexiconFormula ******************/
 		/**** md5 signature: e4b42815e2c05ced10bdf4f597e81ac0 ****/
@@ -278,13 +278,13 @@ opencascade::handle<Units_Dimensions>
 
 Parameters
 ----------
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 opencascade::handle<Units_Quantity>
 ") Quantity;
-		static opencascade::handle<Units_Quantity> Quantity(const char * aquantity);
+		static opencascade::handle<Units_Quantity> Quantity(Standard_CString aquantity);
 
 		/****************** ToSI ******************/
 		/**** md5 signature: 1f9885a9c585b0ad16edfcb704f20405 ****/
@@ -294,13 +294,13 @@ opencascade::handle<Units_Quantity>
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 
 Returns
 -------
 float
 ") ToSI;
-		static Standard_Real ToSI(const Standard_Real aData, const char * aUnit);
+		static Standard_Real ToSI(const Standard_Real aData, Standard_CString aUnit);
 
 		/****************** ToSI ******************/
 		/**** md5 signature: 1e2b0b697b20e12afc0806a8a0fc5525 ****/
@@ -310,14 +310,14 @@ float
 Parameters
 ----------
 aData: float
-aUnit: char *
+aUnit: str
 aDim: Units_Dimensions
 
 Returns
 -------
 float
 ") ToSI;
-		static Standard_Real ToSI(const Standard_Real aData, const char * aUnit, opencascade::handle<Units_Dimensions> & aDim);
+		static Standard_Real ToSI(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
 		/****************** UnitsFile ******************/
 		/**** md5 signature: d1d63a6bfea6a56ddb42b1aeb2170a43 ****/
@@ -326,13 +326,13 @@ float
 
 Parameters
 ----------
-afile: char *
+afile: str
 
 Returns
 -------
 void
 ") UnitsFile;
-		static void UnitsFile(const char * afile);
+		static void UnitsFile(Standard_CString afile);
 
 };
 
@@ -644,9 +644,9 @@ opencascade::handle<Units_Dimensions>
 
 Returns
 -------
-char *
+str
 ") Quantity;
-		const char * Quantity();
+		Standard_CString Quantity();
 
 		/****************** SolidAngle ******************/
 		/**** md5 signature: 31e4e2ea379c30067ca33e39d0264cd8 ****/
@@ -746,13 +746,13 @@ None
 Parameters
 ----------
 aunitssystem: Units_UnitsSystem
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 None
 ") Units_Explorer;
-		 Units_Explorer(const opencascade::handle<Units_UnitsSystem> & aunitssystem, const char * aquantity);
+		 Units_Explorer(const opencascade::handle<Units_UnitsSystem> & aunitssystem, Standard_CString aquantity);
 
 		/****************** Units_Explorer ******************/
 		/**** md5 signature: 9df61dde1855014446854d9a0f47cb63 ****/
@@ -762,13 +762,13 @@ None
 Parameters
 ----------
 aunitsdictionary: Units_UnitsDictionary
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 None
 ") Units_Explorer;
-		 Units_Explorer(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary, const char * aquantity);
+		 Units_Explorer(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary, Standard_CString aquantity);
 
 		/****************** Init ******************/
 		/**** md5 signature: 5d2d604f22b989ac2f8178a5a395c902 ****/
@@ -808,13 +808,13 @@ None
 Parameters
 ----------
 aunitssystem: Units_UnitsSystem
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Units_UnitsSystem> & aunitssystem, const char * aquantity);
+		void Init(const opencascade::handle<Units_UnitsSystem> & aunitssystem, Standard_CString aquantity);
 
 		/****************** Init ******************/
 		/**** md5 signature: 3f1f0728105192c0b3260faf5a827ae6 ****/
@@ -824,13 +824,13 @@ None
 Parameters
 ----------
 aunitsdictionary: Units_UnitsDictionary
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary, const char * aquantity);
+		void Init(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary, Standard_CString aquantity);
 
 		/****************** IsActive ******************/
 		/**** md5 signature: 476abafc82a8bb87ac904f5a77e179a3 ****/
@@ -941,15 +941,15 @@ None
 
 Parameters
 ----------
-aword: char *
-amean: char *
+aword: str
+amean: str
 avalue: float
 
 Returns
 -------
 None
 ") AddToken;
-		void AddToken(const char * aword, const char * amean, const Standard_Real avalue);
+		void AddToken(Standard_CString aword, Standard_CString amean, const Standard_Real avalue);
 
 		/****************** Creates ******************/
 		/**** md5 signature: 336960f3bd894b74398bcb460f145038 ****/
@@ -1035,13 +1035,13 @@ None
 Parameters
 ----------
 avalue: float
-aunit: char *
+aunit: str
 
 Returns
 -------
 None
 ") Units_Measurement;
-		 Units_Measurement(const Standard_Real avalue, const char * aunit);
+		 Units_Measurement(const Standard_Real avalue, Standard_CString aunit);
 
 		/****************** Add ******************/
 		/**** md5 signature: 172bc55901ca00e6db419ccdf92bc025 ****/
@@ -1065,13 +1065,13 @@ Units_Measurement
 
 Parameters
 ----------
-aunit: char *
+aunit: str
 
 Returns
 -------
 None
 ") Convert;
-		void Convert(const char * aunit);
+		void Convert(Standard_CString aunit);
 
 		/****************** Divide ******************/
 		/**** md5 signature: 5a69bb1fd49d61e815d14674626c2bc3 ****/
@@ -1340,7 +1340,7 @@ class Units_Quantity : public Standard_Transient {
 
 Parameters
 ----------
-aname: char *
+aname: str
 adimensions: Units_Dimensions
 aunitssequence: Units_UnitsSequence
 
@@ -1348,7 +1348,7 @@ Returns
 -------
 None
 ") Units_Quantity;
-		 Units_Quantity(const char * aname, const opencascade::handle<Units_Dimensions> & adimensions, const opencascade::handle<Units_UnitsSequence> & aunitssequence);
+		 Units_Quantity(Standard_CString aname, const opencascade::handle<Units_Dimensions> & adimensions, const opencascade::handle<Units_UnitsSequence> & aunitssequence);
 
 		/****************** Dimensions ******************/
 		/**** md5 signature: f6d82f417c034a7603f1ff62dccce1d1 ****/
@@ -1384,13 +1384,13 @@ None
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const char * astring);
+		Standard_Boolean IsEqual(Standard_CString astring);
 
 		/****************** Name ******************/
 		/**** md5 signature: 4ede994349b8ea032efece942c57861d ****/
@@ -1438,13 +1438,13 @@ class Units_Sentence {
 Parameters
 ----------
 alexicon: Units_Lexicon
-astring: char *
+astring: str
 
 Returns
 -------
 None
 ") Units_Sentence;
-		 Units_Sentence(const opencascade::handle<Units_Lexicon> & alexicon, const char * astring);
+		 Units_Sentence(const opencascade::handle<Units_Lexicon> & alexicon, Standard_CString astring);
 
 		/****************** Dump ******************/
 		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
@@ -1548,13 +1548,13 @@ None
 
 Parameters
 ----------
-aword: char *
+aword: str
 
 Returns
 -------
 None
 ") Units_Token;
-		 Units_Token(const char * aword);
+		 Units_Token(Standard_CString aword);
 
 		/****************** Units_Token ******************/
 		/**** md5 signature: 043758efc301a2c45ea92d46d8230962 ****/
@@ -1578,14 +1578,14 @@ None
 
 Parameters
 ----------
-aword: char *
-amean: char *
+aword: str
+amean: str
 
 Returns
 -------
 None
 ") Units_Token;
-		 Units_Token(const char * aword, const char * amean);
+		 Units_Token(Standard_CString aword, Standard_CString amean);
 
 		/****************** Units_Token ******************/
 		/**** md5 signature: 359d8ddb1e52ec2e76c978a2501dbcd1 ****/
@@ -1594,15 +1594,15 @@ None
 
 Parameters
 ----------
-aword: char *
-amean: char *
+aword: str
+amean: str
 avalue: float
 
 Returns
 -------
 None
 ") Units_Token;
-		 Units_Token(const char * aword, const char * amean, const Standard_Real avalue);
+		 Units_Token(Standard_CString aword, Standard_CString amean, const Standard_Real avalue);
 
 		/****************** Units_Token ******************/
 		/**** md5 signature: b4c73c34d1f9cc5658ad15f226b0bd2d ****/
@@ -1611,8 +1611,8 @@ None
 
 Parameters
 ----------
-aword: char *
-amean: char *
+aword: str
+amean: str
 avalue: float
 adimension: Units_Dimensions
 
@@ -1620,7 +1620,7 @@ Returns
 -------
 None
 ") Units_Token;
-		 Units_Token(const char * aword, const char * amean, const Standard_Real avalue, const opencascade::handle<Units_Dimensions> & adimension);
+		 Units_Token(Standard_CString aword, Standard_CString amean, const Standard_Real avalue, const opencascade::handle<Units_Dimensions> & adimension);
 
 		/****************** Add ******************/
 		/**** md5 signature: de749d1f5d36c7125c8cd10bf3bf8ef9 ****/
@@ -1742,13 +1742,13 @@ None
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const char * astring);
+		Standard_Boolean IsEqual(Standard_CString astring);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 34e3e8dcc8e89d690b9df0f8e1bf7953 ****/
@@ -1772,13 +1772,13 @@ bool
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 bool
 ") IsGreater;
-		Standard_Boolean IsGreater(const char * astring);
+		Standard_Boolean IsGreater(Standard_CString astring);
 
 		/****************** IsGreater ******************/
 		/**** md5 signature: a9772ca3092d476da2a358df580ff45c ****/
@@ -1817,13 +1817,13 @@ bool
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 bool
 ") IsLessOrEqual;
-		Standard_Boolean IsLessOrEqual(const char * astring);
+		Standard_Boolean IsLessOrEqual(Standard_CString astring);
 
 		/****************** IsNotEqual ******************/
 		/**** md5 signature: 36769476e47ab50f5409c20d3d8a3166 ****/
@@ -1832,13 +1832,13 @@ bool
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 bool
 ") IsNotEqual;
-		Standard_Boolean IsNotEqual(const char * astring);
+		Standard_Boolean IsNotEqual(Standard_CString astring);
 
 		/****************** IsNotEqual ******************/
 		/**** md5 signature: e8645ce2ac4cb3ac92c3ea01bf0c8a9e ****/
@@ -1884,13 +1884,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-amean: char *
+amean: str
 
 Returns
 -------
 None
 ") Mean;
-		void Mean(const char * amean);
+		void Mean(Standard_CString amean);
 
 		/****************** Multiplied ******************/
 		/**** md5 signature: 148d5140f6c68eb1df6adb62bba5b85d ****/
@@ -1974,13 +1974,13 @@ opencascade::handle<Units_Token>
 
 Parameters
 ----------
-amean: char *
+amean: str
 
 Returns
 -------
 None
 ") Update;
-		void Update(const char * amean);
+		void Update(Standard_CString amean);
 
 		/****************** Value ******************/
 		/**** md5 signature: 52655a2fb6642856b2c68a9331826787 ****/
@@ -2026,13 +2026,13 @@ TCollection_AsciiString
 
 Parameters
 ----------
-aword: char *
+aword: str
 
 Returns
 -------
 None
 ") Word;
-		void Word(const char * aword);
+		void Word(Standard_CString aword);
 
 };
 
@@ -2057,8 +2057,8 @@ class Units_Unit : public Standard_Transient {
 
 Parameters
 ----------
-aname: char *
-asymbol: char *
+aname: str
+asymbol: str
 avalue: float
 aquantity: Units_Quantity
 
@@ -2066,7 +2066,7 @@ Returns
 -------
 None
 ") Units_Unit;
-		 Units_Unit(const char * aname, const char * asymbol, const Standard_Real avalue, const opencascade::handle<Units_Quantity> & aquantity);
+		 Units_Unit(Standard_CString aname, Standard_CString asymbol, const Standard_Real avalue, const opencascade::handle<Units_Quantity> & aquantity);
 
 		/****************** Units_Unit ******************/
 		/**** md5 signature: d265038d101c891e6b30775b5e2f8260 ****/
@@ -2075,14 +2075,14 @@ None
 
 Parameters
 ----------
-aname: char *
-asymbol: char *
+aname: str
+asymbol: str
 
 Returns
 -------
 None
 ") Units_Unit;
-		 Units_Unit(const char * aname, const char * asymbol);
+		 Units_Unit(Standard_CString aname, Standard_CString asymbol);
 
 		/****************** Units_Unit ******************/
 		/**** md5 signature: 9a4cbb739b777a0c14088f4803208b58 ****/
@@ -2091,13 +2091,13 @@ None
 
 Parameters
 ----------
-aname: char *
+aname: str
 
 Returns
 -------
 None
 ") Units_Unit;
-		 Units_Unit(const char * aname);
+		 Units_Unit(Standard_CString aname);
 
 		/****************** Dump ******************/
 		/**** md5 signature: 11a72ea0354ab05ddfe8b781916d167a ****/
@@ -2122,13 +2122,13 @@ None
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 bool
 ") IsEqual;
-		Standard_Boolean IsEqual(const char * astring);
+		Standard_Boolean IsEqual(Standard_CString astring);
 
 		/****************** Name ******************/
 		/**** md5 signature: 4ede994349b8ea032efece942c57861d ****/
@@ -2174,13 +2174,13 @@ None
 
 Parameters
 ----------
-asymbol: char *
+asymbol: str
 
 Returns
 -------
 None
 ") Symbol;
-		void Symbol(const char * asymbol);
+		void Symbol(Standard_CString asymbol);
 
 		/****************** SymbolsSequence ******************/
 		/**** md5 signature: e247f0ae557660cc13b3dac1c873f3cb ****/
@@ -2264,13 +2264,13 @@ None
 
 Parameters
 ----------
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 TCollection_AsciiString
 ") ActiveUnit;
-		TCollection_AsciiString ActiveUnit(const char * aquantity);
+		TCollection_AsciiString ActiveUnit(Standard_CString aquantity);
 
 		/****************** Creates ******************/
 		/**** md5 signature: 336960f3bd894b74398bcb460f145038 ****/
@@ -2358,7 +2358,7 @@ None
 
 Parameters
 ----------
-aName: char *
+aName: str
 Verbose: bool,optional
 	default value is Standard_False
 
@@ -2366,7 +2366,7 @@ Returns
 -------
 None
 ") Units_UnitsSystem;
-		 Units_UnitsSystem(const char * aName, const Standard_Boolean Verbose = Standard_False);
+		 Units_UnitsSystem(Standard_CString aName, const Standard_Boolean Verbose = Standard_False);
 
 		/****************** Activate ******************/
 		/**** md5 signature: 7fa3572dcf0fdb978c6907bac59daf7f ****/
@@ -2375,14 +2375,14 @@ None
 
 Parameters
 ----------
-aquantity: char *
-aunit: char *
+aquantity: str
+aunit: str
 
 Returns
 -------
 None
 ") Activate;
-		void Activate(const char * aquantity, const char * aunit);
+		void Activate(Standard_CString aquantity, Standard_CString aunit);
 
 		/****************** Activates ******************/
 		/**** md5 signature: 4b6ab8581fdb5c0061b065b5a31097f9 ****/
@@ -2402,13 +2402,13 @@ None
 
 Parameters
 ----------
-aquantity: char *
+aquantity: str
 
 Returns
 -------
 TCollection_AsciiString
 ") ActiveUnit;
-		TCollection_AsciiString ActiveUnit(const char * aquantity);
+		TCollection_AsciiString ActiveUnit(Standard_CString aquantity);
 
 		/****************** ActiveUnitsSequence ******************/
 		/**** md5 signature: 6afbb572a41bd436215c98c3285a0dfc ****/
@@ -2428,14 +2428,14 @@ opencascade::handle<TColStd_HSequenceOfInteger>
 
 Parameters
 ----------
-aquantity: char *
+aquantity: str
 avalue: float
 
 Returns
 -------
 float
 ") ConvertSIValueToUserSystem;
-		Standard_Real ConvertSIValueToUserSystem(const char * aquantity, const Standard_Real avalue);
+		Standard_Real ConvertSIValueToUserSystem(Standard_CString aquantity, const Standard_Real avalue);
 
 		/****************** ConvertUserSystemValueToSI ******************/
 		/**** md5 signature: 0183bddd3e718408a18afdd3dd78348a ****/
@@ -2444,14 +2444,14 @@ float
 
 Parameters
 ----------
-aquantity: char *
+aquantity: str
 avalue: float
 
 Returns
 -------
 float
 ") ConvertUserSystemValueToSI;
-		Standard_Real ConvertUserSystemValueToSI(const char * aquantity, const Standard_Real avalue);
+		Standard_Real ConvertUserSystemValueToSI(Standard_CString aquantity, const Standard_Real avalue);
 
 		/****************** ConvertValueToUserSystem ******************/
 		/**** md5 signature: 601d7f865a6550eb8aff7e18b582a224 ****/
@@ -2460,15 +2460,15 @@ float
 
 Parameters
 ----------
-aquantity: char *
+aquantity: str
 avalue: float
-aunit: char *
+aunit: str
 
 Returns
 -------
 float
 ") ConvertValueToUserSystem;
-		Standard_Real ConvertValueToUserSystem(const char * aquantity, const Standard_Real avalue, const char * aunit);
+		Standard_Real ConvertValueToUserSystem(Standard_CString aquantity, const Standard_Real avalue, Standard_CString aunit);
 
 		/****************** Dump ******************/
 		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
@@ -2510,14 +2510,14 @@ opencascade::handle<Units_QuantitiesSequence>
 
 Parameters
 ----------
-aquantity: char *
-aunit: char *
+aquantity: str
+aunit: str
 
 Returns
 -------
 None
 ") Remove;
-		void Remove(const char * aquantity, const char * aunit);
+		void Remove(Standard_CString aquantity, Standard_CString aunit);
 
 		/****************** Specify ******************/
 		/**** md5 signature: aac6809cfcbfc1f8b1ba4a82bb3e4182 ****/
@@ -2526,14 +2526,14 @@ None
 
 Parameters
 ----------
-aquantity: char *
-aunit: char *
+aquantity: str
+aunit: str
 
 Returns
 -------
 None
 ") Specify;
-		void Specify(const char * aquantity, const char * aunit);
+		void Specify(Standard_CString aquantity, Standard_CString aunit);
 
 };
 
@@ -2558,13 +2558,13 @@ class Units_MathSentence : public Units_Sentence {
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 None
 ") Units_MathSentence;
-		 Units_MathSentence(const char * astring);
+		 Units_MathSentence(Standard_CString astring);
 
 };
 
@@ -2587,8 +2587,8 @@ class Units_ShiftedToken : public Units_Token {
 
 Parameters
 ----------
-aword: char *
-amean: char *
+aword: str
+amean: str
 avalue: float
 amove: float
 adimensions: Units_Dimensions
@@ -2597,7 +2597,7 @@ Returns
 -------
 None
 ") Units_ShiftedToken;
-		 Units_ShiftedToken(const char * aword, const char * amean, const Standard_Real avalue, const Standard_Real amove, const opencascade::handle<Units_Dimensions> & adimensions);
+		 Units_ShiftedToken(Standard_CString aword, Standard_CString amean, const Standard_Real avalue, const Standard_Real amove, const opencascade::handle<Units_Dimensions> & adimensions);
 
 		/****************** Creates ******************/
 		/**** md5 signature: d0675db69fb4f5482f0096baa17d254b ****/
@@ -2690,8 +2690,8 @@ class Units_ShiftedUnit : public Units_Unit {
 
 Parameters
 ----------
-aname: char *
-asymbol: char *
+aname: str
+asymbol: str
 avalue: float
 amove: float
 aquantity: Units_Quantity
@@ -2700,7 +2700,7 @@ Returns
 -------
 None
 ") Units_ShiftedUnit;
-		 Units_ShiftedUnit(const char * aname, const char * asymbol, const Standard_Real avalue, const Standard_Real amove, const opencascade::handle<Units_Quantity> & aquantity);
+		 Units_ShiftedUnit(Standard_CString aname, Standard_CString asymbol, const Standard_Real avalue, const Standard_Real amove, const opencascade::handle<Units_Quantity> & aquantity);
 
 		/****************** Units_ShiftedUnit ******************/
 		/**** md5 signature: dde8d329bda54e7b68a53aad706deaa7 ****/
@@ -2709,14 +2709,14 @@ None
 
 Parameters
 ----------
-aname: char *
-asymbol: char *
+aname: str
+asymbol: str
 
 Returns
 -------
 None
 ") Units_ShiftedUnit;
-		 Units_ShiftedUnit(const char * aname, const char * asymbol);
+		 Units_ShiftedUnit(Standard_CString aname, Standard_CString asymbol);
 
 		/****************** Units_ShiftedUnit ******************/
 		/**** md5 signature: 39584d4db24403e14b8abc85b5da37db ****/
@@ -2725,13 +2725,13 @@ None
 
 Parameters
 ----------
-aname: char *
+aname: str
 
 Returns
 -------
 None
 ") Units_ShiftedUnit;
-		 Units_ShiftedUnit(const char * aname);
+		 Units_ShiftedUnit(Standard_CString aname);
 
 		/****************** Dump ******************/
 		/**** md5 signature: 7ba3a97b6ef5901f04268a088bfd756b ****/
@@ -2809,13 +2809,13 @@ class Units_UnitSentence : public Units_Sentence {
 
 Parameters
 ----------
-astring: char *
+astring: str
 
 Returns
 -------
 None
 ") Units_UnitSentence;
-		 Units_UnitSentence(const char * astring);
+		 Units_UnitSentence(Standard_CString astring);
 
 		/****************** Units_UnitSentence ******************/
 		/**** md5 signature: 5b625b19d02339a0ef47688689e3be65 ****/
@@ -2824,14 +2824,14 @@ None
 
 Parameters
 ----------
-astring: char *
+astring: str
 aquantitiessequence: Units_QuantitiesSequence
 
 Returns
 -------
 None
 ") Units_UnitSentence;
-		 Units_UnitSentence(const char * astring, const opencascade::handle<Units_QuantitiesSequence> & aquantitiessequence);
+		 Units_UnitSentence(Standard_CString astring, const opencascade::handle<Units_QuantitiesSequence> & aquantitiessequence);
 
 		/****************** Analyse ******************/
 		/**** md5 signature: 7a03a82444f6b3d45e5bfd115d1feda6 ****/

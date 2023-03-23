@@ -45,6 +45,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steprepr.html"
 #include<TCollection_module.hxx>
 #include<StepData_module.hxx>
 #include<StepBasic_module.hxx>
+#include<StepShape_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TCollection_module.hxx>
 #include<Interface_module.hxx>
@@ -65,6 +66,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steprepr.html"
 %import TCollection.i
 %import StepData.i
 %import StepBasic.i
+%import StepShape.i
 
 %pythoncode {
 from enum import IntEnum
@@ -145,6 +147,7 @@ from OCC.Core.Exception import *
 %wrap_handle(StepRepr_PromissoryUsageOccurrence)
 %wrap_handle(StepRepr_QuantifiedAssemblyComponentUsage)
 %wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnit)
+%wrap_handle(StepRepr_ReprItemAndMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnit)
 %wrap_handle(StepRepr_RepresentationRelationshipWithTransformation)
 %wrap_handle(StepRepr_SpecifiedHigherUsageOccurrence)
@@ -5516,6 +5519,73 @@ None
 /**************************************************
 * class StepRepr_ReprItemAndMeasureWithUnitAndQRI *
 **************************************************/
+class StepRepr_ReprItemAndMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnit {
+	public:
+		/****************** StepRepr_ReprItemAndMeasureWithUnitAndQRI ******************/
+		/**** md5 signature: 82b2897b8147ed7a4bb6522dfae4b8fa ****/
+		%feature("compactdefaultargs") StepRepr_ReprItemAndMeasureWithUnitAndQRI;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") StepRepr_ReprItemAndMeasureWithUnitAndQRI;
+		 StepRepr_ReprItemAndMeasureWithUnitAndQRI();
+
+		/****************** GetQualifiedRepresentationItem ******************/
+		/**** md5 signature: 8a9356e1e9a7debe4ec9a61981b08d34 ****/
+		%feature("compactdefaultargs") GetQualifiedRepresentationItem;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<StepShape_QualifiedRepresentationItem>
+") GetQualifiedRepresentationItem;
+		opencascade::handle<StepShape_QualifiedRepresentationItem> GetQualifiedRepresentationItem();
+
+		/****************** Init ******************/
+		/**** md5 signature: 6c43750e18cd19a9516e1c5db864f7bd ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aMWU: StepBasic_MeasureWithUnit
+aRI: StepRepr_RepresentationItem
+aQRI: StepShape_QualifiedRepresentationItem
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<StepBasic_MeasureWithUnit> & aMWU, const opencascade::handle<StepRepr_RepresentationItem> & aRI, const opencascade::handle<StepShape_QualifiedRepresentationItem> aQRI);
+
+		/****************** SetQualifiedRepresentationItem ******************/
+		/**** md5 signature: e549c31abea9a2400e4fcfc93e85d9e6 ****/
+		%feature("compactdefaultargs") SetQualifiedRepresentationItem;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aQRI: StepShape_QualifiedRepresentationItem
+
+Returns
+-------
+None
+") SetQualifiedRepresentationItem;
+		void SetQualifiedRepresentationItem(const opencascade::handle<StepShape_QualifiedRepresentationItem> & aQRI);
+
+};
+
+
+%make_alias(StepRepr_ReprItemAndMeasureWithUnitAndQRI)
+
+%extend StepRepr_ReprItemAndMeasureWithUnitAndQRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /******************************************************
 * class StepRepr_ReprItemAndPlaneAngleMeasureWithUnit *
 ******************************************************/
@@ -6012,7 +6082,7 @@ None
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class StepRepr_ReprItemAndMeasureWithUnitAndQRI:
+class StepRepr_MeasureWithUnit:
 	pass
 
 }

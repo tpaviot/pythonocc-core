@@ -931,13 +931,13 @@ opencascade::handle<BRepMesh_VertexTool>
 
 Parameters
 ----------
-theFileNameStr: char *
+theFileNameStr: str
 
 Returns
 -------
 None
 ") Dump;
-		void Dump(const char * theFileNameStr);
+		void Dump(Standard_CString theFileNameStr);
 
 		/****************** ElementNodes ******************/
 		/**** md5 signature: 5db4f2cf5cd97ae13ac71bb7f7bf46de ****/
@@ -1760,15 +1760,15 @@ TColStd_MapOfAsciiString
 
 Parameters
 ----------
-theName: TCollection_AsciiString
-theFuncName: TCollection_AsciiString,optional
+theName: str
+theFuncName: str,optional
 	default value is 'DISCRETALGO'
 
 Returns
 -------
 bool
 ") SetDefault;
-		Standard_Boolean SetDefault(const TCollection_AsciiString & theName, const TCollection_AsciiString & theFuncName = "DISCRETALGO");
+		Standard_Boolean SetDefault(TCollection_AsciiString theName, TCollection_AsciiString theFuncName = "DISCRETALGO");
 
 		/****************** SetDefaultName ******************/
 		/**** md5 signature: 93c5c55f8eba457c231a268a0ebe4017 ****/
@@ -1777,13 +1777,13 @@ bool
 
 Parameters
 ----------
-theName: TCollection_AsciiString
+theName: str
 
 Returns
 -------
 bool
 ") SetDefaultName;
-		Standard_Boolean SetDefaultName(const TCollection_AsciiString & theName);
+		Standard_Boolean SetDefaultName(TCollection_AsciiString theName);
 
 		/****************** SetFunctionName ******************/
 		/**** md5 signature: 7082400624fff321b966b58b2455fbbd ****/
@@ -1792,13 +1792,13 @@ bool
 
 Parameters
 ----------
-theFuncName: TCollection_AsciiString
+theFuncName: str
 
 Returns
 -------
 bool
 ") SetFunctionName;
-		Standard_Boolean SetFunctionName(const TCollection_AsciiString & theFuncName);
+		Standard_Boolean SetFunctionName(TCollection_AsciiString theFuncName);
 
 };
 

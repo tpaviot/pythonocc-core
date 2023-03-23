@@ -2073,9 +2073,9 @@ None
 
 Returns
 -------
-char *
+str
 ") EnumText;
-		virtual const char * EnumText();
+		virtual Standard_CString EnumText();
 
 		/****************** HasName ******************/
 		/**** md5 signature: 454c871a85ff9e9d126353d7d8ebe205 ****/
@@ -2106,9 +2106,9 @@ int
 
 Returns
 -------
-char *
+str
 ") Name;
-		virtual const char * Name();
+		virtual Standard_CString Name();
 
 		/****************** SetEnumText ******************/
 		/**** md5 signature: b2fa2c708967006363f06f147171c7a7 ****/
@@ -2118,13 +2118,13 @@ char *
 Parameters
 ----------
 theValue: int
-theText: char *
+theText: str
 
 Returns
 -------
 None
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer theValue, const char * theText);
+		virtual void SetEnumText(const Standard_Integer theValue, Standard_CString theText);
 
 		/****************** SetName ******************/
 		/**** md5 signature: c0fb4b116d47426ff8c83f0fba90c9d0 ****/

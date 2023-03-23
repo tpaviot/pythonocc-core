@@ -108,15 +108,15 @@ class ShapeProcessAPI_ApplySequence {
 
 Parameters
 ----------
-rscName: char *
-seqName: char *,optional
+rscName: str
+seqName: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") ShapeProcessAPI_ApplySequence;
-		 ShapeProcessAPI_ApplySequence(const char * rscName, const char * seqName = "");
+		 ShapeProcessAPI_ApplySequence(Standard_CString rscName, Standard_CString seqName = "");
 
 		/****************** ClearMap ******************/
 		/**** md5 signature: 9356b49e3e18c060604ef62eda302963 ****/

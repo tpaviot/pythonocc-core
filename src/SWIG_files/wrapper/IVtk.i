@@ -44,6 +44,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_ivtk.html"
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
 #include<Graphic3d_module.hxx>
+#include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

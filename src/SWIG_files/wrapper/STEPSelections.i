@@ -718,14 +718,14 @@ Parameters
 ----------
 ent: Standard_Transient
 model: Interface_InterfaceModel
-text: TCollection_AsciiString
+text: str
 exact: bool
 
 Returns
 -------
 bool
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, const TCollection_AsciiString & text, const Standard_Boolean exact);
+		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
 
 };
 

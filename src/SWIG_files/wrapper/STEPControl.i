@@ -850,13 +850,13 @@ opencascade::handle<XSControl_WorkSession>
 
 Parameters
 ----------
-theFileName: char *
+theFileName: str
 
 Returns
 -------
 IFSelect_ReturnStatus
 ") Write;
-		IFSelect_ReturnStatus Write(const char * theFileName);
+		IFSelect_ReturnStatus Write(Standard_CString theFileName);
 
 		/****************** WriteStream ******************/
 		/**** md5 signature: ce65ef735ad27a9e0fa213e50b058382 ****/

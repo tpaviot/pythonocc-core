@@ -169,13 +169,13 @@ None
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 opencascade::handle<Expr_NamedFunction>
 ") GetFunction;
-		opencascade::handle<Expr_NamedFunction> GetFunction(const TCollection_AsciiString & name);
+		opencascade::handle<Expr_NamedFunction> GetFunction(TCollection_AsciiString name);
 
 		/****************** GetNamed ******************/
 		/**** md5 signature: 00571fc8f55255c5f9636b8e9080c78f ****/
@@ -184,13 +184,13 @@ opencascade::handle<Expr_NamedFunction>
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 opencascade::handle<Expr_NamedExpression>
 ") GetNamed;
-		opencascade::handle<Expr_NamedExpression> GetNamed(const TCollection_AsciiString & name);
+		opencascade::handle<Expr_NamedExpression> GetNamed(TCollection_AsciiString name);
 
 		/****************** IsExpStackEmpty ******************/
 		/**** md5 signature: 441f3f4e29c508b02f95a8a90083cf7b ****/
@@ -306,13 +306,13 @@ None
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 None
 ") PushName;
-		void PushName(const TCollection_AsciiString & name);
+		void PushName(TCollection_AsciiString name);
 
 		/****************** PushRelation ******************/
 		/**** md5 signature: 47853072625b744e73e4deeaa2a7c796 ****/
@@ -422,13 +422,13 @@ class ExprIntrp_Generator : public Standard_Transient {
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 opencascade::handle<Expr_NamedFunction>
 ") GetFunction;
-		opencascade::handle<Expr_NamedFunction> GetFunction(const TCollection_AsciiString & name);
+		opencascade::handle<Expr_NamedFunction> GetFunction(TCollection_AsciiString name);
 
 		/****************** GetFunctions ******************/
 		/**** md5 signature: ea7b11f8c2ec952b91fcef512794779f ****/
@@ -459,13 +459,13 @@ ExprIntrp_SequenceOfNamedExpression
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 opencascade::handle<Expr_NamedExpression>
 ") GetNamed;
-		opencascade::handle<Expr_NamedExpression> GetNamed(const TCollection_AsciiString & name);
+		opencascade::handle<Expr_NamedExpression> GetNamed(TCollection_AsciiString name);
 
 		/****************** Use ******************/
 		/**** md5 signature: bad91b0967a130b4629c7d0c7a8e578e ****/
@@ -554,13 +554,13 @@ bool
 
 Parameters
 ----------
-str: TCollection_AsciiString
+str: str
 
 Returns
 -------
 None
 ") Process;
-		void Process(const TCollection_AsciiString & str);
+		void Process(TCollection_AsciiString str);
 
 };
 
@@ -608,13 +608,13 @@ bool
 
 Parameters
 ----------
-str: TCollection_AsciiString
+str: str
 
 Returns
 -------
 None
 ") Process;
-		void Process(const TCollection_AsciiString & str);
+		void Process(TCollection_AsciiString str);
 
 };
 
@@ -662,13 +662,13 @@ bool
 
 Parameters
 ----------
-str: TCollection_AsciiString
+str: str
 
 Returns
 -------
 None
 ") Process;
-		void Process(const TCollection_AsciiString & str);
+		void Process(TCollection_AsciiString str);
 
 		/****************** Relation ******************/
 		/**** md5 signature: 27e77b80110b2821273b98db328e0f1b ****/

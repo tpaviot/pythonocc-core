@@ -1440,13 +1440,13 @@ bool
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & name);
+		void SetName(TCollection_AsciiString name);
 
 		/****************** String ******************/
 		/**** md5 signature: 29eba20994c971e692980f5879c5ee19 ****/
@@ -1482,7 +1482,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 exp: Expr_GeneralExpression
 vars: Expr_Array1OfNamedUnknown
 
@@ -1490,7 +1490,7 @@ Returns
 -------
 None
 ") Expr_NamedFunction;
-		 Expr_NamedFunction(const TCollection_AsciiString & name, const opencascade::handle<Expr_GeneralExpression> & exp, const Expr_Array1OfNamedUnknown & vars);
+		 Expr_NamedFunction(TCollection_AsciiString name, const opencascade::handle<Expr_GeneralExpression> & exp, const Expr_Array1OfNamedUnknown & vars);
 
 		/****************** Copy ******************/
 		/**** md5 signature: f36e6e5f7be603f7eb908df39a6c3a7d ****/
@@ -1646,13 +1646,13 @@ None
 
 Parameters
 ----------
-newname: TCollection_AsciiString
+newname: str
 
 Returns
 -------
 None
 ") SetName;
-		void SetName(const TCollection_AsciiString & newname);
+		void SetName(TCollection_AsciiString newname);
 
 		/****************** Variable ******************/
 		/**** md5 signature: 0dd774ec75a9b517f5abdc7feceaa26a ****/
@@ -5027,14 +5027,14 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 value: float
 
 Returns
 -------
 None
 ") Expr_NamedConstant;
-		 Expr_NamedConstant(const TCollection_AsciiString & name, const Standard_Real value);
+		 Expr_NamedConstant(TCollection_AsciiString name, const Standard_Real value);
 
 		/****************** Contains ******************/
 		/**** md5 signature: 4d3e3a365e28051266a44f7d96eb9917 ****/
@@ -5229,13 +5229,13 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 
 Parameters
 ----------
-name: TCollection_AsciiString
+name: str
 
 Returns
 -------
 None
 ") Expr_NamedUnknown;
-		 Expr_NamedUnknown(const TCollection_AsciiString & name);
+		 Expr_NamedUnknown(TCollection_AsciiString name);
 
 		/****************** Assign ******************/
 		/**** md5 signature: 2d586a2386463c9b0d4b174890bd7d12 ****/

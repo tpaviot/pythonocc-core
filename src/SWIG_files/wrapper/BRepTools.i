@@ -409,7 +409,7 @@ TopoDS_Wire
 Parameters
 ----------
 Sh: TopoDS_Shape
-File: char *
+File: str
 B: BRep_Builder
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
@@ -418,7 +418,7 @@ Returns
 -------
 bool
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & Sh, const char * File, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static Standard_Boolean Read(TopoDS_Shape & Sh, Standard_CString File, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** RemoveInternals ******************/
 		/**** md5 signature: fb7d53f36648eea1919fdf6c0fb177b1 ****/
@@ -716,7 +716,7 @@ void
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: char *
+theFile: str
 theProgress: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -724,7 +724,7 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 094fc04abd54fdb9dea8b811e19f6844 ****/
@@ -734,7 +734,7 @@ bool
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: char *
+theFile: str
 theWithTriangles: bool
 theWithNormals: bool
 theVersion: TopTools_FormatVersion
@@ -745,7 +745,7 @@ Returns
 -------
 bool
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, const char * theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 
                     %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;

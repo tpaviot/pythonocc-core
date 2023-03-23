@@ -147,28 +147,13 @@ XmlObjMgt_Element
 Parameters
 ----------
 theElement: XmlObjMgt_Element
-theString: TCollection_ExtendedString
+theString: str
 
 Returns
 -------
 bool
 ") GetExtendedString;
 		static Standard_Boolean GetExtendedString(const XmlObjMgt_Element & theElement, TCollection_ExtendedString & theString);
-
-		/****************** GetInteger ******************/
-		/**** md5 signature: d90d1ac036196cdb858a419d79e08e97 ****/
-		%feature("compactdefaultargs") GetInteger;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theString: char *
-
-Returns
--------
-theValue: int
-") GetInteger;
-		static Standard_Boolean GetInteger(const char * & theString, Standard_Integer &OutValue);
 
 		/****************** GetReal ******************/
 		/**** md5 signature: c37d4b711d18ff859f0aa8adfb17c76c ****/
@@ -177,13 +162,13 @@ theValue: int
 
 Parameters
 ----------
-theString: char *
+theString: str
 
 Returns
 -------
 theValue: float
 ") GetReal;
-		static Standard_Boolean GetReal(const char * & theString, Standard_Real &OutValue);
+		static Standard_Boolean GetReal(Standard_CString theString, Standard_Real &OutValue);
 
 		/****************** GetReal ******************/
 		/**** md5 signature: b83dcb37b66853c6106221ca771fbd92 ****/
@@ -223,7 +208,7 @@ XmlObjMgt_DOMString
 Parameters
 ----------
 theTarget: XmlObjMgt_DOMString
-theTagEntry: TCollection_AsciiString
+theTagEntry: str
 
 Returns
 -------
@@ -250,13 +235,13 @@ XmlObjMgt_DOMString
 Parameters
 ----------
 theElement: XmlObjMgt_Element
-theString: TCollection_ExtendedString
+theString: str
 
 Returns
 -------
 bool
 ") SetExtendedString;
-		static Standard_Boolean SetExtendedString(XmlObjMgt_Element & theElement, const TCollection_ExtendedString & theString);
+		static Standard_Boolean SetExtendedString(XmlObjMgt_Element & theElement, TCollection_ExtendedString theString);
 
 		/****************** SetStringValue ******************/
 		/**** md5 signature: 74078f466a38d1f08a9d785fc20e9665 ****/
@@ -284,13 +269,13 @@ void
 Parameters
 ----------
 theSource: XmlObjMgt_DOMString
-theTagEntry: TCollection_AsciiString
+theTagEntry: str
 
 Returns
 -------
 void
 ") SetTagEntryString;
-		static void SetTagEntryString(XmlObjMgt_DOMString & theSource, const TCollection_AsciiString & theTagEntry);
+		static void SetTagEntryString(XmlObjMgt_DOMString & theSource, TCollection_AsciiString theTagEntry);
 
 };
 
@@ -298,6 +283,10 @@ void
 %extend XmlObjMgt {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def GetInteger(self):
+		pass
 	}
 };
 

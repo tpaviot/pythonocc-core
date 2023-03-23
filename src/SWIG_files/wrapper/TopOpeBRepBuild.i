@@ -2172,16 +2172,16 @@ Parameters
 ----------
 iS: int
 T: TopAbs_State
-a: TCollection_AsciiString,optional
+a: str,optional
 	default value is ""
-b: TCollection_AsciiString,optional
+b: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") GdumpSHASTA;
-		void GdumpSHASTA(const Standard_Integer iS, const TopAbs_State T, const TCollection_AsciiString & a = "", const TCollection_AsciiString & b = "");
+		void GdumpSHASTA(const Standard_Integer iS, const TopAbs_State T, TCollection_AsciiString a = "", TCollection_AsciiString b = "");
 
 		/****************** GdumpSHASTA ******************/
 		/**** md5 signature: cad20edf8bfe449486276d27f8ff1f74 ****/
@@ -2192,16 +2192,16 @@ Parameters
 ----------
 S: TopoDS_Shape
 T: TopAbs_State
-a: TCollection_AsciiString,optional
+a: str,optional
 	default value is ""
-b: TCollection_AsciiString,optional
+b: str,optional
 	default value is ""
 
 Returns
 -------
 None
 ") GdumpSHASTA;
-		void GdumpSHASTA(const TopoDS_Shape & S, const TopAbs_State T, const TCollection_AsciiString & a = "", const TCollection_AsciiString & b = "");
+		void GdumpSHASTA(const TopoDS_Shape & S, const TopAbs_State T, TCollection_AsciiString a = "", TCollection_AsciiString b = "");
 
 		/****************** GdumpSHASTA ******************/
 		/**** md5 signature: ad5d444f38fc9076eb7fc932b55a4d7e ****/
@@ -2213,18 +2213,18 @@ Parameters
 iS: int
 T: TopAbs_State
 SS: TopOpeBRepBuild_ShapeSet
-a: TCollection_AsciiString,optional
+a: str,optional
 	default value is ""
-b: TCollection_AsciiString,optional
+b: str,optional
 	default value is ""
-c: TCollection_AsciiString,optional
+c: str,optional
 	default value is '\n'
 
 Returns
 -------
 None
 ") GdumpSHASTA;
-		void GdumpSHASTA(const Standard_Integer iS, const TopAbs_State T, const TopOpeBRepBuild_ShapeSet & SS, const TCollection_AsciiString & a = "", const TCollection_AsciiString & b = "", const TCollection_AsciiString & c = "\n");
+		void GdumpSHASTA(const Standard_Integer iS, const TopAbs_State T, const TopOpeBRepBuild_ShapeSet & SS, TCollection_AsciiString a = "", TCollection_AsciiString b = "", TCollection_AsciiString c = "\n");
 
 		/****************** GdumpSOBU ******************/
 		/**** md5 signature: 1aea67b9789dcd3f2eb7ecd482cf35ab ****/
@@ -6006,13 +6006,13 @@ bool
 
 Parameters
 ----------
-N: TCollection_AsciiString
+N: str
 
 Returns
 -------
 None
 ") DEBName;
-		void DEBName(const TCollection_AsciiString & N);
+		void DEBName(TCollection_AsciiString N);
 
 		/****************** DEBName ******************/
 		/**** md5 signature: 596c83e886c46038e831ad6994742c89 ****/
@@ -6237,16 +6237,16 @@ None
 Parameters
 ----------
 S: TopoDS_Shape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SName;
-		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SName ******************/
 		/**** md5 signature: aae50302d53b33cbeb1c320b118dd208 ****/
@@ -6256,16 +6256,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopTools_ListOfShape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SName;
-		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SNameori ******************/
 		/**** md5 signature: 38c70945225dd056fbf42066df8d01f7 ****/
@@ -6275,16 +6275,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopoDS_Shape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SNameori ******************/
 		/**** md5 signature: e4676f5575125dd0147b7098e8a6d83e ****/
@@ -6294,16 +6294,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopTools_ListOfShape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** Shape ******************/
 		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
@@ -8676,16 +8676,16 @@ None
 Parameters
 ----------
 S: TopoDS_Shape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SName;
-		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SName ******************/
 		/**** md5 signature: 439aa61e703e5a53a45918a05c2d0318 ****/
@@ -8695,16 +8695,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopTools_ListOfShape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SName;
-		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SNameori ******************/
 		/**** md5 signature: 13d091dc5a1df5e5b76408b1cf7882ab ****/
@@ -8714,16 +8714,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopoDS_Shape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SNameori ******************/
 		/**** md5 signature: 5a9c43c224cad506161a5139631efdf6 ****/
@@ -8733,16 +8733,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopTools_ListOfShape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** Solid ******************/
 		/**** md5 signature: 0e70c03e20bb23e014ac5417ea4abe26 ****/
@@ -8920,16 +8920,16 @@ TopTools_ListOfShape
 Parameters
 ----------
 S: TopoDS_Shape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SName;
-		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SName ******************/
 		/**** md5 signature: 439aa61e703e5a53a45918a05c2d0318 ****/
@@ -8939,16 +8939,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopTools_ListOfShape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SName;
-		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SNameori ******************/
 		/**** md5 signature: 13d091dc5a1df5e5b76408b1cf7882ab ****/
@@ -8958,16 +8958,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopoDS_Shape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****************** SNameori ******************/
 		/**** md5 signature: 5a9c43c224cad506161a5139631efdf6 ****/
@@ -8977,16 +8977,16 @@ TCollection_AsciiString
 Parameters
 ----------
 S: TopTools_ListOfShape
-sb: TCollection_AsciiString,optional
+sb: str,optional
 	default value is ""
-sa: TCollection_AsciiString,optional
+sa: str,optional
 	default value is ""
 
 Returns
 -------
 TCollection_AsciiString
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, const TCollection_AsciiString & sb = "", const TCollection_AsciiString & sa = "");
+		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 };
 

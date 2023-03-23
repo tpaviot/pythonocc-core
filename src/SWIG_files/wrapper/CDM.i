@@ -174,13 +174,13 @@ Parameters
 ----------
 aDocument: CDM_Document
 theStatus: bool
-ErrorString: TCollection_ExtendedString
+ErrorString: str
 
 Returns
 -------
 None
 ") EndOfUpdate;
-		virtual void EndOfUpdate(const opencascade::handle<CDM_Document> & aDocument, const Standard_Boolean theStatus, const TCollection_ExtendedString & ErrorString);
+		virtual void EndOfUpdate(const opencascade::handle<CDM_Document> & aDocument, const Standard_Boolean theStatus, TCollection_ExtendedString ErrorString);
 
 		/****************** MessageDriver ******************/
 		/**** md5 signature: 9c7cdb55e9a82d7cef41788491b5a1ec ****/
@@ -277,13 +277,13 @@ class CDM_Document : public Standard_Transient {
 
 Parameters
 ----------
-aComment: TCollection_ExtendedString
+aComment: str
 
 Returns
 -------
 None
 ") AddComment;
-		void AddComment(const TCollection_ExtendedString & aComment);
+		void AddComment(TCollection_ExtendedString aComment);
 
 		/****************** Application ******************/
 		/**** md5 signature: 64aab7c43cb82115fa37ae0c99da8f75 ****/
@@ -570,14 +570,14 @@ int
 
 Parameters
 ----------
-aFormat: TCollection_ExtendedString
+aFormat: str
 anAlternativeDocument: CDM_Document
 
 Returns
 -------
 bool
 ") GetAlternativeDocument;
-		virtual Standard_Boolean GetAlternativeDocument(const TCollection_ExtendedString & aFormat, opencascade::handle<CDM_Document> & anAlternativeDocument);
+		virtual Standard_Boolean GetAlternativeDocument(TCollection_ExtendedString aFormat, opencascade::handle<CDM_Document> & anAlternativeDocument);
 
 		/****************** HasRequestedFolder ******************/
 		/**** md5 signature: da91e14ce6ae50fe9ebda6e45778d6fc ****/
@@ -905,13 +905,13 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-aComment: TCollection_ExtendedString
+aComment: str
 
 Returns
 -------
 None
 ") SetComment;
-		void SetComment(const TCollection_ExtendedString & aComment);
+		void SetComment(TCollection_ExtendedString aComment);
 
 		/****************** SetComments ******************/
 		/**** md5 signature: 9a6226c9c4e9d40c44b0c40fcfd457e5 ****/
@@ -1006,13 +1006,13 @@ None
 
 Parameters
 ----------
-aComment: TCollection_ExtendedString
+aComment: str
 
 Returns
 -------
 None
 ") SetRequestedComment;
-		void SetRequestedComment(const TCollection_ExtendedString & aComment);
+		void SetRequestedComment(TCollection_ExtendedString aComment);
 
 		/****************** SetRequestedFolder ******************/
 		/**** md5 signature: 0957d8571358ae23729144fc08074f17 ****/
@@ -1021,13 +1021,13 @@ None
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
+aFolder: str
 
 Returns
 -------
 None
 ") SetRequestedFolder;
-		void SetRequestedFolder(const TCollection_ExtendedString & aFolder);
+		void SetRequestedFolder(TCollection_ExtendedString aFolder);
 
 		/****************** SetRequestedName ******************/
 		/**** md5 signature: 298752a1535e4ce720f8d2943f6c93d5 ****/
@@ -1036,13 +1036,13 @@ None
 
 Parameters
 ----------
-aName: TCollection_ExtendedString
+aName: str
 
 Returns
 -------
 None
 ") SetRequestedName;
-		void SetRequestedName(const TCollection_ExtendedString & aName);
+		void SetRequestedName(TCollection_ExtendedString aName);
 
 		/****************** SetRequestedPreviousVersion ******************/
 		/**** md5 signature: 1503faefc17021dc37f68166bf2a089c ****/
@@ -1051,13 +1051,13 @@ None
 
 Parameters
 ----------
-aPreviousVersion: TCollection_ExtendedString
+aPreviousVersion: str
 
 Returns
 -------
 None
 ") SetRequestedPreviousVersion;
-		void SetRequestedPreviousVersion(const TCollection_ExtendedString & aPreviousVersion);
+		void SetRequestedPreviousVersion(TCollection_ExtendedString aPreviousVersion);
 
 		/****************** ShallowReferences ******************/
 		/**** md5 signature: aa297a568fbd85c49d8f09dcb24692ae ****/
@@ -1175,7 +1175,7 @@ None
 
 Parameters
 ----------
-ErrorString: TCollection_ExtendedString
+ErrorString: str
 
 Returns
 -------
@@ -1308,17 +1308,17 @@ bool
 Parameters
 ----------
 theLookUpTable: CDM_MetaDataLookUpTable
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aPath: TCollection_ExtendedString
-aFileName: TCollection_ExtendedString
+aFolder: str
+aName: str
+aPath: str
+aFileName: str
 ReadOnly: bool
 
 Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aPath, const TCollection_ExtendedString & aFileName, const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aFileName, const Standard_Boolean ReadOnly);
 
 		/****************** LookUp ******************/
 		/**** md5 signature: 87e49a80556489bc1976c2417d858c6c ****/
@@ -1328,18 +1328,18 @@ opencascade::handle<CDM_MetaData>
 Parameters
 ----------
 theLookUpTable: CDM_MetaDataLookUpTable
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aPath: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
-aFileName: TCollection_ExtendedString
+aFolder: str
+aName: str
+aPath: str
+aVersion: str
+aFileName: str
 ReadOnly: bool
 
 Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aPath, const TCollection_ExtendedString & aVersion, const TCollection_ExtendedString & aFileName, const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aVersion, TCollection_ExtendedString aFileName, const Standard_Boolean ReadOnly);
 
 		/****************** Name ******************/
 		/**** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ****/

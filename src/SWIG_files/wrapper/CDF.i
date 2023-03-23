@@ -180,15 +180,15 @@ CDM_CanCloseStatus
 
 Parameters
 ----------
-theFolder: TCollection_ExtendedString
-theName: TCollection_ExtendedString
+theFolder: str
+theName: str
 theAppendMode: bool
 
 Returns
 -------
 PCDM_ReaderStatus
 ") CanRetrieve;
-		PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString & theFolder, const TCollection_ExtendedString & theName, const bool theAppendMode);
+		PCDM_ReaderStatus CanRetrieve(TCollection_ExtendedString theFolder, TCollection_ExtendedString theName, const bool theAppendMode);
 
 		/****************** CanRetrieve ******************/
 		/**** md5 signature: 64f35736d7773166005363b757a7c8ee ****/
@@ -197,16 +197,16 @@ PCDM_ReaderStatus
 
 Parameters
 ----------
-theFolder: TCollection_ExtendedString
-theName: TCollection_ExtendedString
-theVersion: TCollection_ExtendedString
+theFolder: str
+theName: str
+theVersion: str
 theAppendMode: bool
 
 Returns
 -------
 PCDM_ReaderStatus
 ") CanRetrieve;
-		PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString & theFolder, const TCollection_ExtendedString & theName, const TCollection_ExtendedString & theVersion, const bool theAppendMode);
+		PCDM_ReaderStatus CanRetrieve(TCollection_ExtendedString theFolder, TCollection_ExtendedString theName, TCollection_ExtendedString theVersion, const bool theAppendMode);
 
 		/****************** Close ******************/
 		/**** md5 signature: 18e2edbb6413a2dad4b76efdcffb5374 ****/
@@ -241,14 +241,14 @@ Standard_ExtString
 
 Parameters
 ----------
-aFileName: TCollection_ExtendedString
-theFormat: TCollection_ExtendedString
+aFileName: str
+theFormat: str
 
 Returns
 -------
 bool
 ") Format;
-		Standard_Boolean Format(const TCollection_ExtendedString & aFileName, TCollection_ExtendedString & theFormat);
+		Standard_Boolean Format(TCollection_ExtendedString aFileName, TCollection_ExtendedString & theFormat);
 
 		/****************** GetRetrieveStatus ******************/
 		/**** md5 signature: 5a9523dbf252a1564feb97c9e6a00909 ****/
@@ -309,14 +309,14 @@ opencascade::handle<CDF_MetaDataDriver>
 
 Parameters
 ----------
-theFormat: TCollection_ExtendedString
+theFormat: str
 theDoc: CDM_Document
 
 Returns
 -------
 None
 ") NewDocument;
-		virtual void NewDocument(const TCollection_ExtendedString & theFormat, opencascade::handle<CDM_Document> & theDoc);
+		virtual void NewDocument(TCollection_ExtendedString theFormat, opencascade::handle<CDM_Document> & theDoc);
 
 		/****************** Open ******************/
 		/**** md5 signature: 5e6498f06bf961c0c0c61cc007aa0a28 ****/
@@ -340,13 +340,13 @@ None
 
 Parameters
 ----------
-aFormat: TCollection_ExtendedString
+aFormat: str
 
 Returns
 -------
 opencascade::handle<PCDM_Reader>
 ") ReaderFromFormat;
-		virtual opencascade::handle<PCDM_Reader> ReaderFromFormat(const TCollection_ExtendedString & aFormat);
+		virtual opencascade::handle<PCDM_Reader> ReaderFromFormat(TCollection_ExtendedString aFormat);
 
 		/****************** Retrieve ******************/
 		/**** md5 signature: 529a7c29af3c51fd8c94c064e0b3dbcb ****/
@@ -355,8 +355,8 @@ opencascade::handle<PCDM_Reader>
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
+aFolder: str
+aName: str
 UseStorageConfiguration: bool,optional
 	default value is Standard_True
 theFilter: PCDM_ReaderFilter,optional
@@ -368,7 +368,7 @@ Returns
 -------
 opencascade::handle<CDM_Document>
 ") Retrieve;
-		opencascade::handle<CDM_Document> Retrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** Retrieve ******************/
 		/**** md5 signature: dd78ce93c0b60ff0965f3c7e69833777 ****/
@@ -377,9 +377,9 @@ opencascade::handle<CDM_Document>
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+aFolder: str
+aName: str
+aVersion: str
 UseStorageConfiguration: bool,optional
 	default value is Standard_True
 theFilter: PCDM_ReaderFilter,optional
@@ -391,7 +391,7 @@ Returns
 -------
 opencascade::handle<CDM_Document>
 ") Retrieve;
-		opencascade::handle<CDM_Document> Retrieve(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** SetDefaultFolder ******************/
 		/**** md5 signature: b5857edec14e8dcab31bb5ac39a5223a ****/
@@ -415,13 +415,13 @@ bool
 
 Parameters
 ----------
-aFormat: TCollection_ExtendedString
+aFormat: str
 
 Returns
 -------
 opencascade::handle<PCDM_StorageDriver>
 ") WriterFromFormat;
-		virtual opencascade::handle<PCDM_StorageDriver> WriterFromFormat(const TCollection_ExtendedString & aFormat);
+		virtual opencascade::handle<PCDM_StorageDriver> WriterFromFormat(TCollection_ExtendedString aFormat);
 
 };
 
@@ -587,13 +587,13 @@ None
 Parameters
 ----------
 aDocument: CDM_Document
-aFileName: TCollection_ExtendedString
+aFileName: str
 
 Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") CreateMetaData;
-		virtual opencascade::handle<CDM_MetaData> CreateMetaData(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
+		virtual opencascade::handle<CDM_MetaData> CreateMetaData(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName);
 
 		/****************** CreateReference ******************/
 		/**** md5 signature: ee0ba7d2788f0a828e0d919b0d1b98e9 ****/
@@ -631,15 +631,15 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+aFolder: str
+aName: str
+aVersion: str
 
 Returns
 -------
 bool
 ") Find;
-		virtual Standard_Boolean Find(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion);
+		virtual Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****************** Find ******************/
 		/**** md5 signature: 3790cd3f2b3362c62018b1d3652970dd ****/
@@ -648,14 +648,14 @@ bool
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
+aFolder: str
+aName: str
 
 Returns
 -------
 bool
 ") Find;
-		Standard_Boolean Find(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName);
+		Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
 		/****************** FindFolder ******************/
 		/**** md5 signature: 9a5e2cbe4eefa1eae2149c38651a75a9 ****/
@@ -664,13 +664,13 @@ bool
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
+aFolder: str
 
 Returns
 -------
 bool
 ") FindFolder;
-		virtual Standard_Boolean FindFolder(const TCollection_ExtendedString & aFolder);
+		virtual Standard_Boolean FindFolder(TCollection_ExtendedString aFolder);
 
 		/****************** HasReadPermission ******************/
 		/**** md5 signature: 18f97899c0a5d2e41387449551ecf940 ****/
@@ -679,15 +679,15 @@ bool
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+aFolder: str
+aName: str
+aVersion: str
 
 Returns
 -------
 bool
 ") HasReadPermission;
-		virtual Standard_Boolean HasReadPermission(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion);
+		virtual Standard_Boolean HasReadPermission(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****************** HasVersion ******************/
 		/**** md5 signature: 3e209adcc54fe62e2e5697f2ed0d2d8c ****/
@@ -696,14 +696,14 @@ bool
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
+aFolder: str
+aName: str
 
 Returns
 -------
 bool
 ") HasVersion;
-		virtual Standard_Boolean HasVersion(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName);
+		virtual Standard_Boolean HasVersion(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
 		/****************** HasVersionCapability ******************/
 		/**** md5 signature: 0e4f0bbd26688c9b437cf5bee430c353 ****/
@@ -738,15 +738,15 @@ opencascade::handle<CDM_MetaData>
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+aFolder: str
+aName: str
+aVersion: str
 
 Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") MetaData;
-		virtual opencascade::handle<CDM_MetaData> MetaData(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion);
+		virtual opencascade::handle<CDM_MetaData> MetaData(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****************** MetaData ******************/
 		/**** md5 signature: d6c67f068a67123fd1d2e0024518d5e4 ****/
@@ -755,14 +755,14 @@ opencascade::handle<CDM_MetaData>
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
+aFolder: str
+aName: str
 
 Returns
 -------
 opencascade::handle<CDM_MetaData>
 ") MetaData;
-		opencascade::handle<CDM_MetaData> MetaData(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName);
+		opencascade::handle<CDM_MetaData> MetaData(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
 		/****************** ReferenceIterator ******************/
 		/**** md5 signature: 6d4c044d33dd6f42be200285a2b215e5 ****/
@@ -787,13 +787,13 @@ opencascade::handle<PCDM_ReferenceIterator>
 Parameters
 ----------
 aDocument: CDM_Document
-aName: TCollection_ExtendedString
+aName: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") SetName;
-		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aName);
+		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aName);
 
 };
 
@@ -1072,13 +1072,13 @@ None
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
+aFolder: str
 
 Returns
 -------
 bool
 ") SetFolder;
-		Standard_Boolean SetFolder(const TCollection_ExtendedString & aFolder);
+		Standard_Boolean SetFolder(TCollection_ExtendedString aFolder);
 
 		/****************** SetFolder ******************/
 		/**** md5 signature: 801d484ce7c807a9dba40870f26f3b9c ****/
@@ -1128,13 +1128,13 @@ CDF_StoreSetNameStatus
 
 Parameters
 ----------
-aName: TCollection_ExtendedString
+aName: str
 
 Returns
 -------
 CDF_StoreSetNameStatus
 ") SetName;
-		CDF_StoreSetNameStatus SetName(const TCollection_ExtendedString & aName);
+		CDF_StoreSetNameStatus SetName(TCollection_ExtendedString aName);
 
 		/****************** SetPreviousVersion ******************/
 		/**** md5 signature: db8a5d8d68bb5cba7556c0e7f948b226 ****/
@@ -1243,7 +1243,7 @@ None
 Parameters
 ----------
 aMetaData: CDM_MetaData
-aStatusAssociatedText: TCollection_ExtendedString
+aStatusAssociatedText: str
 theRange: Message_ProgressRange,optional
 	default value is Message_ProgressRange()
 
@@ -1328,15 +1328,15 @@ TCollection_ExtendedString
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+aFolder: str
+aName: str
+aVersion: str
 
 Returns
 -------
 bool
 ") Find;
-		Standard_Boolean Find(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion);
+		Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****************** FindFolder ******************/
 		/**** md5 signature: 876d6b8f179e719bd5cd5d7750be1f28 ****/
@@ -1345,13 +1345,13 @@ bool
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
+aFolder: str
 
 Returns
 -------
 bool
 ") FindFolder;
-		Standard_Boolean FindFolder(const TCollection_ExtendedString & aFolder);
+		Standard_Boolean FindFolder(TCollection_ExtendedString aFolder);
 
 		/****************** HasReadPermission ******************/
 		/**** md5 signature: a56965c6bd74688f05fbee219b9c4232 ****/
@@ -1360,15 +1360,15 @@ bool
 
 Parameters
 ----------
-aFolder: TCollection_ExtendedString
-aName: TCollection_ExtendedString
-aVersion: TCollection_ExtendedString
+aFolder: str
+aName: str
+aVersion: str
 
 Returns
 -------
 bool
 ") HasReadPermission;
-		Standard_Boolean HasReadPermission(const TCollection_ExtendedString & aFolder, const TCollection_ExtendedString & aName, const TCollection_ExtendedString & aVersion);
+		Standard_Boolean HasReadPermission(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 274c7654cce9308e93e9edd7b5ee5d9d ****/
@@ -1378,13 +1378,13 @@ bool
 Parameters
 ----------
 aDocument: CDM_Document
-aName: TCollection_ExtendedString
+aName: str
 
 Returns
 -------
 TCollection_ExtendedString
 ") SetName;
-		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aName);
+		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aName);
 
 };
 
