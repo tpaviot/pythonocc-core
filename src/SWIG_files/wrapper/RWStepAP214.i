@@ -48,8 +48,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwstepap214.html"
 #include<StepAP214_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
-#include<StepRepr_module.hxx>
 #include<StepGeom_module.hxx>
+#include<StepRepr_module.hxx>
 #include<StepBasic_module.hxx>
 #include<StepShape_module.hxx>
 #include<StepVisual_module.hxx>

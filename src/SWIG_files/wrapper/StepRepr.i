@@ -6079,14 +6079,6 @@ None
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class StepRepr_MeasureWithUnit:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 
 class StepRepr_HArray1OfMaterialPropertyRepresentation : public StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {

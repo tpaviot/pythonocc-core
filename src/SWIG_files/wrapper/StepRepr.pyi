@@ -648,9 +648,6 @@ class StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI(StepRepr_ReprItemAndMe
 class StepRepr_ShapeRepresentationRelationshipWithTransformation(StepRepr_RepresentationRelationshipWithTransformation):
     def __init__(self) -> None: ...
 
-#classnotwrapped
-class StepRepr_MeasureWithUnit: ...
-
 # harray1 classes
 
 class StepRepr_HArray1OfMaterialPropertyRepresentation(StepRepr_Array1OfMaterialPropertyRepresentation, Standard_Transient):
