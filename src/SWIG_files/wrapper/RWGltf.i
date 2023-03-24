@@ -44,14 +44,12 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwgltf.html"
 #include<NCollection_module.hxx>
 #include<RWMesh_module.hxx>
 #include<TCollection_module.hxx>
-#include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
 #include<TDF_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Quantity_module.hxx>
 #include<Poly_module.hxx>
-#include<XCAFDoc_module.hxx>
 #include<Image_module.hxx>
 #include<XSControl_module.hxx>
 #include<TopoDS_module.hxx>
@@ -107,14 +105,12 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwgltf.html"
 %import NCollection.i
 %import RWMesh.i
 %import TCollection.i
-%import XCAFPrs.i
 %import TDocStd.i
 %import TDF.i
 %import TColStd.i
 %import Message.i
 %import Quantity.i
 %import Poly.i
-%import XCAFDoc.i
 %import Image.i
 %import XSControl.i
 %import TopoDS.i

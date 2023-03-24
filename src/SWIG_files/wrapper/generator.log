@@ -8,7 +8,7 @@ operating system : Windows 64bit 10
 
 occt version targeted : 7.7.1
 
-date : 2023-03-24 12:55:25.674621
+date : 2023-03-24 13:23:47.472855
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -9249,7 +9249,7 @@ date : 2023-03-24 12:55:25.674621
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 198.02s
+SWIG interface file generation completed in 94.97s
 #################################################
 
 [INFO ]  Number of classes: 4765

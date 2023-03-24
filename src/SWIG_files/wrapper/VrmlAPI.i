@@ -77,7 +77,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmlapi.html"
 #include<SelectMgr_module.hxx>
 #include<Select3D_module.hxx>
 #include<AIS_module.hxx>
-#include<XCAFPrs_module.hxx>
 #include<Prs3d_module.hxx>
 #include<XSControl_module.hxx>
 #include<TDataStd_module.hxx>

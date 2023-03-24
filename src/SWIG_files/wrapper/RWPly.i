@@ -68,7 +68,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwply.html"
 #include<SelectMgr_module.hxx>
 #include<AIS_module.hxx>
 #include<TPrsStd_module.hxx>
-#include<XCAFPrs_module.hxx>
 #include<TDataStd_module.hxx>
 #include<Prs3d_module.hxx>
 #include<XCAFDoc_module.hxx>
@@ -98,7 +97,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwply.html"
 %import NCollection.i
 %import TCollection.i
 %import RWMesh.i
-%import XCAFPrs.i
 %import TDocStd.i
 %import TDF.i
 %import TColStd.i

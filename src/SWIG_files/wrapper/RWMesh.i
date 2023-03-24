@@ -91,7 +91,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwmesh.html"
 %import TopoDS.i
 %import Graphic3d.i
 %import TopLoc.i
-%import XCAFPrs.i
 %import Quantity.i
 %import Poly.i
 %import Image.i
