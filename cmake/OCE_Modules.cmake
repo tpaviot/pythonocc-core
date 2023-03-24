@@ -250,7 +250,7 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	RWStepAP242
 	STEPConstruct
 	STEPControl
-	STEPEdit
+	StepKinematicsSTEPEdit
 	STEPSelections
 	StepAP203
 	StepAP209
@@ -364,13 +364,3 @@ LIST(APPEND OCE_TOOLKIT_OCAF
 # TKXmlTObj
 	XmlTObjDrivers
 )
-
-LIST(APPEND OCE_TOOLKIT_VTK
-
-# TKIVtk
-	IVtk
-	IVtkOCC
-	IVtkVTK
-	IVtkTools
-)
-
