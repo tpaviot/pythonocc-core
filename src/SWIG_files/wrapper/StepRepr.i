@@ -51,6 +51,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steprepr.html"
 #include<Interface_module.hxx>
 #include<StepBasic_module.hxx>
 #include<Message_module.hxx>
+#include<StepData_module.hxx>
+#include<StepGeom_module.hxx>
+#include<StepShape_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Resource_module.hxx>
 #include<TColgp_module.hxx>
@@ -63,7 +66,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steprepr.html"
 %import TCollection.i
 %import StepData.i
 %import StepBasic.i
-%import StepShape.i
 
 %pythoncode {
 from enum import IntEnum
