@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 5c16abe
+git revision : 1ef957f
 
 operating system : Windows 64bit 10
 
 occt version targeted : 7.7.1
 
-date : 2023-03-23 17:37:44.441100
+date : 2023-03-24 12:55:25.674621
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -4549,6 +4549,10 @@ date : 2023-03-23 17:37:44.441100
 [INFO ]  Class: STEPControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type std::ostream &, should contain _
+[INFO ]  ## Processing module STEPEdit
+[INFO ]  Class: STEPEdit
+[INFO ]  Class: STEPEdit_EditContext
+[INFO ]  Class: STEPEdit_EditSDR
 [INFO ]  ## Processing module STEPSelections
 [INFO ]  Found HSEQUENCE definitionSTEPSelections_HSequenceOfAssemblyLink: STEPSelections_SequenceOfAssemblyLink
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -4674,7 +4678,6 @@ date : 2023-03-23 17:37:44.441100
 [INFO ]  Class: StepAP242_ItemIdentifiedRepresentationUsageDefinition
 [INFO ]  Class: StepAP242_DraughtingModelItemAssociation
 [INFO ]  Class: StepAP242_GeometricItemSpecificUsage
-[INFO ]  ## Processing module StepKinematicsSTEPEdit
 [INFO ]  ## Processing module StepToGeom
 [INFO ]  Class: StepToGeom
 [INFO ]  ## Processing module StepToTopoDS
@@ -5029,6 +5032,81 @@ date : 2023-03-23 17:37:44.441100
 [INFO ]  Class: RWStepDimTol_RWToleranceZoneForm
 [INFO ]  Class: RWStepDimTol_RWTotalRunoutTolerance
 [INFO ]  Class: RWStepDimTol_RWUnequallyDisposedGeometricTolerance
+[INFO ]  ## Processing module RWStepKinematics
+[INFO ]  Class: RWStepKinematics_RWActuatedKinPairAndOrderKinPair
+[INFO ]  Class: RWStepKinematics_RWActuatedKinematicPair
+[INFO ]  Class: RWStepKinematics_RWContextDependentKinematicLinkRepresentation
+[INFO ]  Class: RWStepKinematics_RWCylindricalPair
+[INFO ]  Class: RWStepKinematics_RWCylindricalPairValue
+[INFO ]  Class: RWStepKinematics_RWCylindricalPairWithRange
+[INFO ]  Class: RWStepKinematics_RWFullyConstrainedPair
+[INFO ]  Class: RWStepKinematics_RWGearPair
+[INFO ]  Class: RWStepKinematics_RWGearPairValue
+[INFO ]  Class: RWStepKinematics_RWGearPairWithRange
+[INFO ]  Class: RWStepKinematics_RWHomokineticPair
+[INFO ]  Class: RWStepKinematics_RWKinematicJoint
+[INFO ]  Class: RWStepKinematics_RWKinematicLink
+[INFO ]  Class: RWStepKinematics_RWKinematicLinkRepresentationAssociation
+[INFO ]  Class: RWStepKinematics_RWKinematicPropertyMechanismRepresentation
+[INFO ]  Class: RWStepKinematics_RWKinematicTopologyDirectedStructure
+[INFO ]  Class: RWStepKinematics_RWKinematicTopologyNetworkStructure
+[INFO ]  Class: RWStepKinematics_RWKinematicTopologyStructure
+[INFO ]  Class: RWStepKinematics_RWLinearFlexibleAndPinionPair
+[INFO ]  Class: RWStepKinematics_RWLinearFlexibleAndPlanarCurvePair
+[INFO ]  Class: RWStepKinematics_RWLinearFlexibleLinkRepresentation
+[INFO ]  Class: RWStepKinematics_RWLowOrderKinematicPair
+[INFO ]  Class: RWStepKinematics_RWLowOrderKinematicPairValue
+[INFO ]  Class: RWStepKinematics_RWLowOrderKinematicPairWithRange
+[INFO ]  Class: RWStepKinematics_RWMechanismRepresentation
+[INFO ]  Class: RWStepKinematics_RWMechanismStateRepresentation
+[INFO ]  Class: RWStepKinematics_RWOrientedJoint
+[INFO ]  Class: RWStepKinematics_RWPairRepresentationRelationship
+[INFO ]  Class: RWStepKinematics_RWPlanarCurvePair
+[INFO ]  Class: RWStepKinematics_RWPlanarCurvePairRange
+[INFO ]  Class: RWStepKinematics_RWPlanarPair
+[INFO ]  Class: RWStepKinematics_RWPlanarPairValue
+[INFO ]  Class: RWStepKinematics_RWPlanarPairWithRange
+[INFO ]  Class: RWStepKinematics_RWPointOnPlanarCurvePair
+[INFO ]  Class: RWStepKinematics_RWPointOnPlanarCurvePairValue
+[INFO ]  Class: RWStepKinematics_RWPointOnPlanarCurvePairWithRange
+[INFO ]  Class: RWStepKinematics_RWPointOnSurfacePair
+[INFO ]  Class: RWStepKinematics_RWPointOnSurfacePairValue
+[INFO ]  Class: RWStepKinematics_RWPointOnSurfacePairWithRange
+[INFO ]  Class: RWStepKinematics_RWPrismaticPair
+[INFO ]  Class: RWStepKinematics_RWPrismaticPairValue
+[INFO ]  Class: RWStepKinematics_RWPrismaticPairWithRange
+[INFO ]  Class: RWStepKinematics_RWProductDefinitionKinematics
+[INFO ]  Class: RWStepKinematics_RWProductDefinitionRelationshipKinematics
+[INFO ]  Class: RWStepKinematics_RWRackAndPinionPair
+[INFO ]  Class: RWStepKinematics_RWRackAndPinionPairValue
+[INFO ]  Class: RWStepKinematics_RWRackAndPinionPairWithRange
+[INFO ]  Class: RWStepKinematics_RWRevolutePair
+[INFO ]  Class: RWStepKinematics_RWRevolutePairValue
+[INFO ]  Class: RWStepKinematics_RWRevolutePairWithRange
+[INFO ]  Class: RWStepKinematics_RWRigidLinkRepresentation
+[INFO ]  Class: RWStepKinematics_RWRollingCurvePair
+[INFO ]  Class: RWStepKinematics_RWRollingCurvePairValue
+[INFO ]  Class: RWStepKinematics_RWRollingSurfacePair
+[INFO ]  Class: RWStepKinematics_RWRollingSurfacePairValue
+[INFO ]  Class: RWStepKinematics_RWRotationAboutDirection
+[INFO ]  Class: RWStepKinematics_RWScrewPair
+[INFO ]  Class: RWStepKinematics_RWScrewPairValue
+[INFO ]  Class: RWStepKinematics_RWScrewPairWithRange
+[INFO ]  Class: RWStepKinematics_RWSlidingCurvePair
+[INFO ]  Class: RWStepKinematics_RWSlidingCurvePairValue
+[INFO ]  Class: RWStepKinematics_RWSlidingSurfacePair
+[INFO ]  Class: RWStepKinematics_RWSlidingSurfacePairValue
+[INFO ]  Class: RWStepKinematics_RWSphericalPair
+[INFO ]  Class: RWStepKinematics_RWSphericalPairValue
+[INFO ]  Class: RWStepKinematics_RWSphericalPairWithPin
+[INFO ]  Class: RWStepKinematics_RWSphericalPairWithPinAndRange
+[INFO ]  Class: RWStepKinematics_RWSphericalPairWithRange
+[INFO ]  Class: RWStepKinematics_RWSurfacePairWithRange
+[INFO ]  Class: RWStepKinematics_RWUnconstrainedPair
+[INFO ]  Class: RWStepKinematics_RWUnconstrainedPairValue
+[INFO ]  Class: RWStepKinematics_RWUniversalPair
+[INFO ]  Class: RWStepKinematics_RWUniversalPairValue
+[INFO ]  Class: RWStepKinematics_RWUniversalPairWithRange
 [INFO ]  ## Processing module RWStepVisual
 [INFO ]  Class: RWStepVisual_RWAnnotationCurveOccurrence
 [INFO ]  Class: RWStepVisual_RWAnnotationCurveOccurrenceAndGeomReprItem
@@ -5200,6 +5278,93 @@ date : 2023-03-23 17:37:44.441100
 [INFO ]  Class: StepDimTol_PerpendicularityTolerance
 [INFO ]  Class: StepDimTol_SymmetryTolerance
 [INFO ]  Class: StepDimTol_TotalRunoutTolerance
+[INFO ]  ## Processing module StepKinematics
+[INFO ]  Enum: StepKinematics_ActuatedDirection
+[INFO ]  Class: StepKinematics_ContextDependentKinematicLinkRepresentation
+[INFO ]  Class: StepKinematics_KinematicJoint
+[INFO ]  Class: StepKinematics_KinematicLink
+[INFO ]  Class: StepKinematics_KinematicLinkRepresentation
+[INFO ]  Class: StepKinematics_KinematicLinkRepresentationAssociation
+[INFO ]  Class: StepKinematics_KinematicPair
+[INFO ]  Class: StepKinematics_KinematicPropertyDefinitionRepresentation
+[INFO ]  Class: StepKinematics_KinematicTopologyDirectedStructure
+[INFO ]  Class: StepKinematics_KinematicTopologyNetworkStructure
+[INFO ]  Class: StepKinematics_KinematicTopologyRepresentationSelect
+[INFO ]  Class: StepKinematics_KinematicTopologyStructure
+[INFO ]  Class: StepKinematics_MechanismRepresentation
+[INFO ]  Class: StepKinematics_MechanismStateRepresentation
+[INFO ]  Class: StepKinematics_OrientedJoint
+[INFO ]  Class: StepKinematics_PairRepresentationRelationship
+[INFO ]  Class: StepKinematics_PairValue
+[INFO ]  Class: StepKinematics_ProductDefinitionKinematics
+[INFO ]  Class: StepKinematics_ProductDefinitionRelationshipKinematics
+[INFO ]  Class: StepKinematics_RigidPlacement
+[INFO ]  Class: StepKinematics_RotationAboutDirection
+[INFO ]  Class: StepKinematics_SpatialRotation
+[INFO ]  Class: StepKinematics_SphericalPairSelect
+[INFO ]  Class: StepKinematics_ActuatedKinPairAndOrderKinPair
+[INFO ]  Class: StepKinematics_ActuatedKinematicPair
+[INFO ]  Class: StepKinematics_CylindricalPairValue
+[INFO ]  Class: StepKinematics_GearPairValue
+[INFO ]  Class: StepKinematics_HighOrderKinematicPair
+[INFO ]  Class: StepKinematics_KinematicPropertyMechanismRepresentation
+[INFO ]  Class: StepKinematics_LinearFlexibleLinkRepresentation
+[INFO ]  Class: StepKinematics_LowOrderKinematicPair
+[INFO ]  Class: StepKinematics_LowOrderKinematicPairValue
+[INFO ]  Class: StepKinematics_LowOrderKinematicPairWithMotionCoupling
+[INFO ]  Class: StepKinematics_PlanarPairValue
+[INFO ]  Class: StepKinematics_PointOnPlanarCurvePairValue
+[INFO ]  Class: StepKinematics_PointOnSurfacePairValue
+[INFO ]  Class: StepKinematics_PrismaticPairValue
+[INFO ]  Class: StepKinematics_RackAndPinionPairValue
+[INFO ]  Class: StepKinematics_RevolutePairValue
+[INFO ]  Class: StepKinematics_RigidLinkRepresentation
+[INFO ]  Class: StepKinematics_RollingCurvePairValue
+[INFO ]  Class: StepKinematics_RollingSurfacePairValue
+[INFO ]  Class: StepKinematics_ScrewPairValue
+[INFO ]  Class: StepKinematics_SlidingCurvePairValue
+[INFO ]  Class: StepKinematics_SlidingSurfacePairValue
+[INFO ]  Class: StepKinematics_SphericalPairValue
+[INFO ]  Class: StepKinematics_UnconstrainedPairValue
+[INFO ]  Class: StepKinematics_UniversalPairValue
+[INFO ]  Class: StepKinematics_CylindricalPair
+[INFO ]  Class: StepKinematics_FullyConstrainedPair
+[INFO ]  Class: StepKinematics_GearPair
+[INFO ]  Class: StepKinematics_LinearFlexibleAndPinionPair
+[INFO ]  Class: StepKinematics_LinearFlexibleAndPlanarCurvePair
+[INFO ]  Class: StepKinematics_LowOrderKinematicPairWithRange
+[INFO ]  Class: StepKinematics_PlanarCurvePair
+[INFO ]  Class: StepKinematics_PlanarPair
+[INFO ]  Class: StepKinematics_PointOnPlanarCurvePair
+[INFO ]  Class: StepKinematics_PointOnSurfacePair
+[INFO ]  Class: StepKinematics_PrismaticPair
+[INFO ]  Class: StepKinematics_RackAndPinionPair
+[INFO ]  Class: StepKinematics_RevolutePair
+[INFO ]  Class: StepKinematics_ScrewPair
+[INFO ]  Class: StepKinematics_SphericalPair
+[INFO ]  Class: StepKinematics_SphericalPairWithPin
+[INFO ]  Class: StepKinematics_SurfacePair
+[INFO ]  Class: StepKinematics_UnconstrainedPair
+[INFO ]  Class: StepKinematics_UniversalPair
+[INFO ]  Class: StepKinematics_CylindricalPairWithRange
+[INFO ]  Class: StepKinematics_GearPairWithRange
+[INFO ]  Class: StepKinematics_HomokineticPair
+[INFO ]  Class: StepKinematics_PlanarCurvePairRange
+[INFO ]  Class: StepKinematics_PlanarPairWithRange
+[INFO ]  Class: StepKinematics_PointOnPlanarCurvePairWithRange
+[INFO ]  Class: StepKinematics_PointOnSurfacePairWithRange
+[INFO ]  Class: StepKinematics_PrismaticPairWithRange
+[INFO ]  Class: StepKinematics_RackAndPinionPairWithRange
+[INFO ]  Class: StepKinematics_RevolutePairWithRange
+[INFO ]  Class: StepKinematics_RollingCurvePair
+[INFO ]  Class: StepKinematics_RollingSurfacePair
+[INFO ]  Class: StepKinematics_ScrewPairWithRange
+[INFO ]  Class: StepKinematics_SlidingCurvePair
+[INFO ]  Class: StepKinematics_SlidingSurfacePair
+[INFO ]  Class: StepKinematics_SphericalPairWithPinAndRange
+[INFO ]  Class: StepKinematics_SphericalPairWithRange
+[INFO ]  Class: StepKinematics_SurfacePairWithRange
+[INFO ]  Class: StepKinematics_UniversalPairWithRange
 [INFO ]  ## Processing module StepVisual
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfAnnotationPlaneElement: StepVisual_Array1OfAnnotationPlaneElement
 [INFO ]  Found HARRAY1 definitionStepVisual_HArray1OfBoxCharacteristicSelect: StepVisual_Array1OfBoxCharacteristicSelect
@@ -9084,8 +9249,8 @@ date : 2023-03-23 17:37:44.441100
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 86.79s
+SWIG interface file generation completed in 198.02s
 #################################################
 
-[INFO ]  Number of classes: 4603
-[INFO ]  Number of methods: 46712
+[INFO ]  Number of classes: 4765
+[INFO ]  Number of methods: 47539

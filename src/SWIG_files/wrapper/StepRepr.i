@@ -53,7 +53,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steprepr.html"
 #include<Message_module.hxx>
 #include<StepData_module.hxx>
 #include<StepGeom_module.hxx>
-#include<StepShape_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Resource_module.hxx>
 #include<TColgp_module.hxx>

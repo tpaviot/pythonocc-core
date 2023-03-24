@@ -49,12 +49,10 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepkinematics.ht
 #include<StepData_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
-#include<Interface_module.hxx>
-#include<StepGeom_module.hxx>
-#include<StepData_module.hxx>
-#include<StepBasic_module.hxx>
-#include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
+#include<StepBasic_module.hxx>
+#include<Interface_module.hxx>
+#include<MoniTool_module.hxx>
 #include<Resource_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -909,7 +907,7 @@ Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation > theMechanism);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation> theMechanism);
 
 		/****************** Mechanism ******************/
 		/**** md5 signature: 08cdf7021078a7d81a012290f38d9d95 ****/
@@ -1477,9 +1475,9 @@ None
 
 Returns
 -------
-opencascade::handle<StepKinematics_ActuatedKinematicPair>
+inline opencascade::handle<StepKinematics_ActuatedKinematicPair>
 ") GetActuatedKinematicPair;
-		opencascade::handle<StepKinematics_ActuatedKinematicPair> GetActuatedKinematicPair();
+		inline opencascade::handle<StepKinematics_ActuatedKinematicPair> GetActuatedKinematicPair();
 
 		/****************** GetOrderKinematicPair ******************/
 		/**** md5 signature: 4d28c52d1a3bf519c398a25eb08bb0a0 ****/
@@ -1488,9 +1486,9 @@ opencascade::handle<StepKinematics_ActuatedKinematicPair>
 
 Returns
 -------
-opencascade::handle<StepKinematics_KinematicPair>
+inline opencascade::handle<StepKinematics_KinematicPair>
 ") GetOrderKinematicPair;
-		opencascade::handle<StepKinematics_KinematicPair> GetOrderKinematicPair();
+		inline opencascade::handle<StepKinematics_KinematicPair> GetOrderKinematicPair();
 
 		/****************** Init ******************/
 		/**** md5 signature: ad8e2fd2fa1db5508edfdab6995742f8 ****/
@@ -1526,9 +1524,9 @@ aKP: StepKinematics_ActuatedKinematicPair
 
 Returns
 -------
-None
+inline void
 ") SetActuatedKinematicPair;
-		void SetActuatedKinematicPair(const opencascade::handle<StepKinematics_ActuatedKinematicPair> & aKP);
+		inline void SetActuatedKinematicPair(const opencascade::handle<StepKinematics_ActuatedKinematicPair> & aKP);
 
 		/****************** SetOrderKinematicPair ******************/
 		/**** md5 signature: 973f44f9d4167dd730d69b775d6e54f2 ****/
@@ -1541,9 +1539,9 @@ aKP: StepKinematics_KinematicPair
 
 Returns
 -------
-None
+inline void
 ") SetOrderKinematicPair;
-		void SetOrderKinematicPair(const opencascade::handle<StepKinematics_KinematicPair> & aKP);
+		inline void SetOrderKinematicPair(const opencascade::handle<StepKinematics_KinematicPair> & aKP);
 
 };
 

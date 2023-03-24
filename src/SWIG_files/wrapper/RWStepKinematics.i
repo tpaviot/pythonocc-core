@@ -45,12 +45,11 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwstepkinematics.
 #include<StepData_module.hxx>
 #include<Interface_module.hxx>
 #include<StepKinematics_module.hxx>
-#include<Message_module.hxx>
-#include<StepShape_module.hxx>
 #include<StepBasic_module.hxx>
 #include<StepGeom_module.hxx>
+#include<StepShape_module.hxx>
 #include<StepRepr_module.hxx>
-#include<StepElement_module.hxx>
+#include<Message_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Resource_module.hxx>

@@ -54,7 +54,6 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepap242.html"
 #include<Interface_module.hxx>
 #include<StepShape_module.hxx>
 #include<StepGeom_module.hxx>
-#include<StepRepr_module.hxx>
 #include<StepVisual_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
