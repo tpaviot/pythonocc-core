@@ -235,8 +235,23 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	BinMXCAFDoc
 	BinXCAFDrivers
 # TKIGES
+	BRepToIGES
+	BRepToIGESBRep
+	Geom2dToIGES
+	GeomToIGES
+	IGESAppli
+	IGESBasic
 	IGESControl
+	IGESConvGeom
 	IGESData
+	IGESDefs
+	IGESDimen
+	IGESDraw
+	IGESFile
+	IGESGeom
+	IGESGraph
+	IGESSelect
+	IGESSolid
 	IGESToBRep
 # TKRWMesh
 	RWGltf
@@ -250,7 +265,7 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 	RWStepAP242
 	STEPConstruct
 	STEPControl
-	StepKinematicsSTEPEdit
+	STEPEdit
 	STEPSelections
 	StepAP203
 	StepAP209
@@ -364,3 +379,19 @@ LIST(APPEND OCE_TOOLKIT_OCAF
 # TKXmlTObj
 	XmlTObjDrivers
 )
+
+LIST(APPEND OCE_TOOLKIT_VTK
+
+# TKIVtk
+	IVtk
+	IVtkOCC
+	IVtkVTK
+	IVtkTools
+)
+
+LIST(APPEND OCE_TOOLKIT_DRAW
+
+# TKDraw
+	DBRep
+)
+

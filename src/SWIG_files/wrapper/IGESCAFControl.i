@@ -70,6 +70,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igescafcontrol.ht
 #include<TColGeom_module.hxx>
 #include<MoniTool_module.hxx>
 #include<IGESToBRep_module.hxx>
+#include<IGESBasic_module.hxx>
+#include<IGESGeom_module.hxx>
+#include<IGESSolid_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

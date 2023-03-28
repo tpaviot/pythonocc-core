@@ -97,6 +97,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwply.html"
 %import NCollection.i
 %import TCollection.i
 %import RWMesh.i
+%import XCAFPrs.i
 %import TDocStd.i
 %import TDF.i
 %import TColStd.i

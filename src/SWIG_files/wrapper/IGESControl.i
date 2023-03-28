@@ -54,6 +54,9 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igescontrol.html"
 #include<TopLoc_module.hxx>
 #include<TopTools_module.hxx>
 #include<IGESData_module.hxx>
+#include<IGESBasic_module.hxx>
+#include<IGESGeom_module.hxx>
+#include<IGESSolid_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Interface_module.hxx>

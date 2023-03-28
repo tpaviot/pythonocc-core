@@ -51,7 +51,10 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igestobrep.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<ShapeExtend_module.hxx>
+#include<IGESSolid_module.hxx>
+#include<IGESGeom_module.hxx>
 #include<Geom2d_module.hxx>
+#include<IGESBasic_module.hxx>
 #include<TColGeom_module.hxx>
 #include<TopTools_module.hxx>
 #include<MoniTool_module.hxx>
@@ -71,7 +74,10 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igestobrep.html"
 %import Geom.i
 %import gp.i
 %import ShapeExtend.i
+%import IGESSolid.i
+%import IGESGeom.i
 %import Geom2d.i
+%import IGESBasic.i
 
 %pythoncode {
 from enum import IntEnum

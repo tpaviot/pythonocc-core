@@ -80,6 +80,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_vrmlapi.html"
 #include<Prs3d_module.hxx>
 #include<XSControl_module.hxx>
 #include<TDataStd_module.hxx>
+#include<XCAFPrs_module.hxx>
 #include<XCAFDoc_module.hxx>
 #include<StdSelect_module.hxx>
 #include<V3d_module.hxx>
