@@ -154,12 +154,6 @@ class StdPrs_PoleCurve(Prs3d_Root):
     def Pick(X: float, Y: float, Z: float, aDistance: float, aCurve: Adaptor3d_Curve, aDrawer: Prs3d_Drawer) -> int: ...
 
 class StdPrs_ShadedShape(Prs3d_Root):
-    @overload
-    @staticmethod
-    def Add(thePresentation: Prs3d_Presentation, theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer, theVolume: Optional[StdPrs_Volume] = StdPrs_Volume_Autodetection, theGroup: Optional[Graphic3d_Group] = None) -> None: ...
-    @overload
-    @staticmethod
-    def Add(thePresentation: Prs3d_Presentation, theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer, theHasTexels: bool, theUVOrigin: gp_Pnt2d, theUVRepeat: gp_Pnt2d, theUVScale: gp_Pnt2d, theVolume: Optional[StdPrs_Volume] = StdPrs_Volume_Autodetection, theGroup: Optional[Graphic3d_Group] = None) -> None: ...
     @staticmethod
     def AddWireframeForFacesWithoutTriangles(thePrs: Prs3d_Presentation, theShape: TopoDS_Shape, theDrawer: Prs3d_Drawer) -> None: ...
     @staticmethod
@@ -333,8 +327,6 @@ StdPrs_Plane_Match = StdPrs_Plane.Match
 StdPrs_PoleCurve_Add = StdPrs_PoleCurve.Add
 StdPrs_PoleCurve_Match = StdPrs_PoleCurve.Match
 StdPrs_PoleCurve_Pick = StdPrs_PoleCurve.Pick
-StdPrs_ShadedShape_Add = StdPrs_ShadedShape.Add
-StdPrs_ShadedShape_Add = StdPrs_ShadedShape.Add
 StdPrs_ShadedShape_AddWireframeForFacesWithoutTriangles = StdPrs_ShadedShape.AddWireframeForFacesWithoutTriangles
 StdPrs_ShadedShape_AddWireframeForFreeElements = StdPrs_ShadedShape.AddWireframeForFreeElements
 StdPrs_ShadedShape_ExploreSolids = StdPrs_ShadedShape.ExploreSolids

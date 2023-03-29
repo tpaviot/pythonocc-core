@@ -1219,52 +1219,6 @@ int
 ***************************/
 class StdPrs_ShadedShape : public Prs3d_Root {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: eb25cffb7e72ca49100cdcc43a05ee8c ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Shades <theshape>. @param thevolumetype defines the way how to interpret input shapes - as closed volumes (to activate back-face culling and capping plane algorithms), as open volumes (shells or solids with holes) or to perform autodetection (would split input shape into two groups).
-
-Parameters
-----------
-thePresentation: Prs3d_Presentation
-theShape: TopoDS_Shape
-theDrawer: Prs3d_Drawer
-theVolume: StdPrs_Volume,optional
-	default value is StdPrs_Volume_Autodetection
-theGroup: Graphic3d_Group,optional
-	default value is NULL
-
-Returns
--------
-void
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = NULL);
-
-		/****************** Add ******************/
-		/**** md5 signature: c2784d9b78f332340fcb1d6c9293a2a1 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Shades <theshape> with texture coordinates. @param thevolumetype defines the way how to interpret input shapes - as closed volumes (to activate back-face culling and capping plane algorithms), as open volumes (shells or solids with holes) or to perform autodetection (would split input shape into two groups).
-
-Parameters
-----------
-thePresentation: Prs3d_Presentation
-theShape: TopoDS_Shape
-theDrawer: Prs3d_Drawer
-theHasTexels: bool
-theUVOrigin: gp_Pnt2d
-theUVRepeat: gp_Pnt2d
-theUVScale: gp_Pnt2d
-theVolume: StdPrs_Volume,optional
-	default value is StdPrs_Volume_Autodetection
-theGroup: Graphic3d_Group,optional
-	default value is NULL
-
-Returns
--------
-void
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = NULL);
-
 		/****************** AddWireframeForFacesWithoutTriangles ******************/
 		/**** md5 signature: 2399101e036cd3b0540bfa37732d6fc1 ****/
 		%feature("compactdefaultargs") AddWireframeForFacesWithoutTriangles;
@@ -1375,6 +1329,10 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 %extend StdPrs_ShadedShape {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Add(self):
+		pass
 	}
 };
 
