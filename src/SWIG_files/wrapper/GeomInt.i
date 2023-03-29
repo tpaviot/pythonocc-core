@@ -936,48 +936,6 @@ opencascade::handle<Geom_Curve>
 ") Boundary;
 		const opencascade::handle<Geom_Curve> & Boundary(const Standard_Integer Index);
 
-		/****************** BuildPCurves ******************/
-		/**** md5 signature: 6965f43fd020f13216b45cd065743faa ****/
-		%feature("compactdefaultargs") BuildPCurves;
-		%feature("autodoc", "Creates 2d-curve on given surface from given 3d-curve.
-
-Parameters
-----------
-theFirst: float
-theLast: float
-theUmin: float
-theUmax: float
-theVmin: float
-theVmax: float
-theSurface: Geom_Surface
-theCurve: Geom_Curve
-theCurve2d: Geom2d_Curve
-
-Returns
--------
-theTol: float
-") BuildPCurves;
-		static void BuildPCurves(const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theUmin, const Standard_Real theUmax, const Standard_Real theVmin, const Standard_Real theVmax, Standard_Real &OutValue, const opencascade::handle<Geom_Surface> & theSurface, const opencascade::handle<Geom_Curve> & theCurve, opencascade::handle<Geom2d_Curve> & theCurve2d);
-
-		/****************** BuildPCurves ******************/
-		/**** md5 signature: 2c2bdb53423075c70323712785098b12 ****/
-		%feature("compactdefaultargs") BuildPCurves;
-		%feature("autodoc", "Creates 2d-curve on given surface from given 3d-curve.
-
-Parameters
-----------
-f: float
-l: float
-S: Geom_Surface
-C: Geom_Curve
-C2d: Geom2d_Curve
-
-Returns
--------
-Tol: float
-") BuildPCurves;
-		static void BuildPCurves(const Standard_Real f, const Standard_Real l, Standard_Real &OutValue, const opencascade::handle<Geom_Surface> & S, const opencascade::handle<Geom_Curve> & C, opencascade::handle<Geom2d_Curve> & C2d);
-
 		/****************** HasLineOnS1 ******************/
 		/**** md5 signature: e18393447cffe4a479bac4f84a4e58a0 ****/
 		%feature("compactdefaultargs") HasLineOnS1;
@@ -1337,6 +1295,10 @@ void
 
 	@methodnotwrapped
 	def SetTolFixTangents(self):
+		pass
+
+	@methodnotwrapped
+	def BuildPCurves(self):
 		pass
 	}
 };
