@@ -21,6 +21,8 @@ import logging
 import os
 import sys
 
+from OCC.Core.AIS import AIS_Manipulator
+from OCC.Core.gp import gp_Trsf
 from OCC.Display import OCCViewer
 from OCC.Display.backend import get_qt_modules
 
@@ -218,7 +220,7 @@ class qtViewer3d(qtBaseViewer):
 
                     if (
                         self._display.selected_shapes is not None
-                    ) and self.HAVE_PYQT_SIGNAL:
+                        ) and self.HAVE_PYQT_SIGNAL:
 
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 
@@ -289,3 +291,164 @@ class qtViewer3d(qtBaseViewer):
             self._drawbox = False
             self._display.MoveTo(pt.x(), pt.y())
             self.cursor = "arrow"
+
+class qtViewer3dWithManipulator(qtViewer3d):
+
+    # emit signal when selection is changed
+    # is a list of TopoDS_*
+    HAVE_PYQT_SIGNAL = False
+    if hasattr(QtCore, "pyqtSignal"):  # PyQt
+        sig_topods_selected = QtCore.pyqtSignal(list)
+        HAVE_PYQT_SIGNAL = True
+    elif hasattr(QtCore, "Signal"):  # PySide2
+        sig_topods_selected = QtCore.Signal(list)
+        HAVE_PYQT_SIGNAL = True
+
+    def __init__(self, *kargs):
+        qtBaseViewer.__init__(self, *kargs)
+
+        self.setObjectName("qt_viewer_3d")
+
+        self._drawbox = False
+        self._zoom_area = False
+        self._select_area = False
+        self._inited = False
+        self._leftisdown = False
+        self._middleisdown = False
+        self._rightisdown = False
+        self._selection = None
+        self._drawtext = True
+        self._qApp = QtWidgets.QApplication.instance()
+        self._key_map = {}
+        self._current_cursor = "arrow"
+        self._available_cursors = {}
+
+        # create empty manipulator
+        self.manipulator = AIS_Manipulator()
+        self.trsf_manip = []
+        self.manip_moved = False
+
+    def set_manipulator(self, manipulator):
+        r"""
+        Define the manipulator to reference
+
+        Returns:
+        ----
+        none
+        """
+        self.trsf_manip = []
+        self.manipulator = manipulator
+        self.manip_moved = False
+
+    def mousePressEvent(self, event):
+        self.setFocus()
+        ev = event.pos()
+        self.dragStartPosX = ev.x()
+        self.dragStartPosY = ev.y()
+        if self.manipulator.HasActiveMode():
+            self.manipulator.StartTransform(
+                self.dragStartPosX, self.dragStartPosY, self._display.GetView())
+        else:
+            self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
+
+    def mouseMoveEvent(self, evt):
+        pt = evt.pos()
+        buttons = int(evt.buttons())
+        modifiers = evt.modifiers()
+        # TRANSFORM via MANIPULATOR or ROTATE
+        if buttons == QtCore.Qt.LeftButton and not modifiers == QtCore.Qt.ShiftModifier:
+            if self.manipulator.HasActiveMode():
+                self.trsf = self.manipulator.Transform(
+                    pt.x(), pt.y(), self._display.GetView())
+                self.manip_moved = True
+                self._display.View.Redraw()
+            else:
+                self.cursor = "rotate"
+                self._display.Rotation(pt.x(), pt.y())
+                self._drawbox = False
+        # DYNAMIC ZOOM
+        elif (
+            buttons == QtCore.Qt.RightButton
+            and not modifiers == QtCore.Qt.ShiftModifier
+        ):
+            self.cursor = "zoom"
+            self._display.Repaint()
+            self._display.DynamicZoom(
+                abs(self.dragStartPosX),
+                abs(self.dragStartPosY),
+                abs(pt.x()),
+                abs(pt.y()),
+            )
+            self.dragStartPosX = pt.x()
+            self.dragStartPosY = pt.y()
+            self._drawbox = False
+        # PAN
+        elif buttons == QtCore.Qt.MidButton:
+            dx = pt.x() - self.dragStartPosX
+            dy = pt.y() - self.dragStartPosY
+            self.dragStartPosX = pt.x()
+            self.dragStartPosY = pt.y()
+            self.cursor = "pan"
+            self._display.Pan(dx, -dy)
+            self._drawbox = False
+        # DRAW BOX
+        # ZOOM WINDOW
+        elif buttons == QtCore.Qt.RightButton and modifiers == QtCore.Qt.ShiftModifier:
+            self._zoom_area = True
+            self.cursor = "zoom-area"
+            self.DrawBox(evt)
+            self.update()
+        # SELECT AREA
+        elif buttons == QtCore.Qt.LeftButton and modifiers == QtCore.Qt.ShiftModifier:
+            self._select_area = True
+            self.DrawBox(evt)
+            self.update()
+        else:
+            self._drawbox = False
+            self._display.MoveTo(pt.x(), pt.y())
+            self.cursor = "arrow"
+
+    def get_trsf_from_manip(self):
+        r"""
+        Get the transformations done with the manipulator
+
+        Returns:
+        ----
+        gp_Trsf
+        """
+        trsf = gp_Trsf()
+        for t in self.trsf_manip:
+            trsf.Multiply(t)
+        return trsf
+    
+    def mouseReleaseEvent(self, event):
+        pt = event.pos()
+        modifiers = event.modifiers()
+        if event.button() == QtCore.Qt.LeftButton:
+            if self.manip_moved:
+                self.trsf_manip.append(self.trsf)
+                self.manip_moved = False
+            if self._select_area:
+                [Xmin, Ymin, dx, dy] = self._drawbox
+                self._display.SelectArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
+                self._select_area = False
+            else:
+                # multiple select if shift is pressed
+                if modifiers == QtCore.Qt.ShiftModifier:
+                    self._display.ShiftSelect(pt.x(), pt.y())
+                else:
+                    # single select otherwise
+                    self._display.Select(pt.x(), pt.y())
+
+                    if (self._display.selected_shapes is not None) and self.HAVE_PYQT_SIGNAL:
+
+                        self.sig_topods_selected.emit(self._display.selected_shapes)
+
+        elif event.button() == QtCore.Qt.RightButton:
+            if self._zoom_area:
+                [Xmin, Ymin, dx, dy] = self._drawbox
+                self._display.ZoomArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
+                self._zoom_area = False
+
+        self.cursor = "arrow"
+
