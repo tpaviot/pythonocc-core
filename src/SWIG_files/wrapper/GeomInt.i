@@ -937,6 +937,29 @@ opencascade::handle<Geom_Curve>
 		const opencascade::handle<Geom_Curve> & Boundary(const Standard_Integer Index);
 
 		/****************** BuildPCurves ******************/
+		/**** md5 signature: 6965f43fd020f13216b45cd065743faa ****/
+		%feature("compactdefaultargs") BuildPCurves;
+		%feature("autodoc", "Creates 2d-curve on given surface from given 3d-curve.
+
+Parameters
+----------
+theFirst: float
+theLast: float
+theUmin: float
+theUmax: float
+theVmin: float
+theVmax: float
+theSurface: Geom_Surface
+theCurve: Geom_Curve
+theCurve2d: Geom2d_Curve
+
+Returns
+-------
+theTol: float
+") BuildPCurves;
+		static void BuildPCurves(const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theUmin, const Standard_Real theUmax, const Standard_Real theVmin, const Standard_Real theVmax, Standard_Real &OutValue, const opencascade::handle<Geom_Surface> & theSurface, const opencascade::handle<Geom_Curve> & theCurve, opencascade::handle<Geom2d_Curve> & theCurve2d);
+
+		/****************** BuildPCurves ******************/
 		/**** md5 signature: 2c2bdb53423075c70323712785098b12 ****/
 		%feature("compactdefaultargs") BuildPCurves;
 		%feature("autodoc", "Creates 2d-curve on given surface from given 3d-curve.

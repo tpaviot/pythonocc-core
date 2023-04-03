@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steptogeom.html"
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
+#include<StepKinematics_module.hxx>
 #include<StepRepr_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
@@ -70,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_steptogeom.html"
 %import Geom.i
 %import Geom2d.i
 %import gp.i
+%import StepKinematics.i
 %import StepRepr.i
 %import TColStd.i
 

@@ -67,6 +67,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepFill_SequenceOfSection.hxx>
 #include<BRepFill_ShapeLaw.hxx>
 #include<BRepFill_Sweep.hxx>
+#include<BRepFill_ThruSectionErrorStatus.hxx>
 #include<BRepFill_TransitionStyle.hxx>
 #include<BRepFill_TrimEdgeTool.hxx>
 #include<BRepFill_TrimShellCorner.hxx>

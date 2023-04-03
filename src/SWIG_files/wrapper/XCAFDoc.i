@@ -2319,7 +2319,7 @@ TDF_Label
 		TDF_Label FindColor(const Quantity_ColorRGBA & col);
 
 		/****************** GetColor ******************/
-		/**** md5 signature: be86e43f2f2ac06163dce467a9739527 ****/
+		/**** md5 signature: 7092ec33c89b067e1ceab0d67b5ed02d ****/
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "Returns color defined by label lab returns false if the label is not in colortable or does not define a color.
 
@@ -2332,10 +2332,10 @@ Returns
 -------
 bool
 ") GetColor;
-		Standard_Boolean GetColor(const TDF_Label & lab, Quantity_Color & col);
+		static Standard_Boolean GetColor(const TDF_Label & lab, Quantity_Color & col);
 
 		/****************** GetColor ******************/
-		/**** md5 signature: a7a6506d3132240934c87e97ec6b28ed ****/
+		/**** md5 signature: 7252a98dd463a84602d0b7516d6cfc04 ****/
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "Returns color defined by label lab returns false if the label is not in colortable or does not define a color.
 
@@ -2348,7 +2348,7 @@ Returns
 -------
 bool
 ") GetColor;
-		Standard_Boolean GetColor(const TDF_Label & lab, Quantity_ColorRGBA & col);
+		static Standard_Boolean GetColor(const TDF_Label & lab, Quantity_ColorRGBA & col);
 
 		/****************** GetColor ******************/
 		/**** md5 signature: 869ec12dba73e125e4d66d2a85d2d496 ****/
@@ -2368,7 +2368,7 @@ bool
 		static Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, TDF_Label & colorL);
 
 		/****************** GetColor ******************/
-		/**** md5 signature: 5801253cfaf9cc63278aa2d80d15b2c3 ****/
+		/**** md5 signature: 9f42bc515522bf5857381b8ed56f5af6 ****/
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "Returns color assigned to <l> as <type> returns false if no such color is assigned.
 
@@ -2382,10 +2382,10 @@ Returns
 -------
 bool
 ") GetColor;
-		Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, Quantity_Color & color);
+		static Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, Quantity_Color & color);
 
 		/****************** GetColor ******************/
-		/**** md5 signature: f56e146c8c1c603ab9bcf2d6c801e3b4 ****/
+		/**** md5 signature: 175af0eadf13dd6e8e7059280dcebe1e ****/
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "Returns color assigned to <l> as <type> returns false if no such color is assigned.
 
@@ -2399,7 +2399,7 @@ Returns
 -------
 bool
 ") GetColor;
-		Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, Quantity_ColorRGBA & color);
+		static Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, Quantity_ColorRGBA & color);
 
 		/****************** GetColor ******************/
 		/**** md5 signature: 6e439ce30113cabaadf18ee4ce1d0971 ****/
@@ -2601,7 +2601,7 @@ bool
 		Standard_Boolean IsSet(const TopoDS_Shape & S, const XCAFDoc_ColorType type);
 
 		/****************** IsVisible ******************/
-		/**** md5 signature: e84f73aaf1ac293dea741c71b9f10a4b ****/
+		/**** md5 signature: bcc14ce19df050eb884b5911b48c4b59 ****/
 		%feature("compactdefaultargs") IsVisible;
 		%feature("autodoc", "Return true if object on this label is visible, false if invisible.
 
@@ -2613,7 +2613,7 @@ Returns
 -------
 bool
 ") IsVisible;
-		Standard_Boolean IsVisible(const TDF_Label & L);
+		static Standard_Boolean IsVisible(const TDF_Label & L);
 
 		/****************** RemoveColor ******************/
 		/**** md5 signature: 3e1749f5696dd21fe53c3eb3d8e77952 ****/
@@ -3478,7 +3478,7 @@ None
 		void GetDatumLabels(TDF_LabelSequence & Labels);
 
 		/****************** GetDatumOfTolerLabels ******************/
-		/**** md5 signature: ed65059da2973245ec5c0f5e0dfd7526 ****/
+		/**** md5 signature: 581e63a0a9642866e1575d216f9b4d3d ****/
 		%feature("compactdefaultargs") GetDatumOfTolerLabels;
 		%feature("autodoc", "Returns all datum labels defined for thedimtoll label.
 
@@ -3491,10 +3491,10 @@ Returns
 -------
 bool
 ") GetDatumOfTolerLabels;
-		Standard_Boolean GetDatumOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
+		static Standard_Boolean GetDatumOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
 
 		/****************** GetDatumWithObjectOfTolerLabels ******************/
-		/**** md5 signature: da94437dec84c797c8bab6e76d5e373f ****/
+		/**** md5 signature: d5f3a53d01bb6038ce1c82b7e4989ce4 ****/
 		%feature("compactdefaultargs") GetDatumWithObjectOfTolerLabels;
 		%feature("autodoc", "Returns all datum labels with xcafdimtolobjects_datumobject defined for label thedimtoll.
 
@@ -3507,7 +3507,7 @@ Returns
 -------
 bool
 ") GetDatumWithObjectOfTolerLabels;
-		Standard_Boolean GetDatumWithObjectOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
+		static Standard_Boolean GetDatumWithObjectOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
 
 		/****************** GetDimTol ******************/
 		/**** md5 signature: 5f2928d077835acfc683c0b7e312ac72 ****/
@@ -3647,7 +3647,7 @@ bool
 		Standard_Boolean GetRefGeomToleranceLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimTols);
 
 		/****************** GetRefShapeLabel ******************/
-		/**** md5 signature: e25d6989472f0a0e102c1daa5f739a29 ****/
+		/**** md5 signature: b09dac51ded70edf3dd23cc545931b1a ****/
 		%feature("compactdefaultargs") GetRefShapeLabel;
 		%feature("autodoc", "Gets all shape labels referred by thel label of the gd&t table. returns false if there are no shape labels added to the sequences.
 
@@ -3661,7 +3661,7 @@ Returns
 -------
 bool
 ") GetRefShapeLabel;
-		Standard_Boolean GetRefShapeLabel(const TDF_Label & theL, TDF_LabelSequence & theShapeLFirst, TDF_LabelSequence & theShapeLSecond);
+		static Standard_Boolean GetRefShapeLabel(const TDF_Label & theL, TDF_LabelSequence & theShapeLFirst, TDF_LabelSequence & theShapeLSecond);
 
 		/****************** GetTolerOfDatumLabels ******************/
 		/**** md5 signature: b4d4047d58bcf3d1d31d5586d788da7e ****/
@@ -5491,20 +5491,20 @@ opencascade::handle<TColStd_HSequenceOfExtendedString>
 		opencascade::handle<TColStd_HSequenceOfExtendedString> GetLayers(const TopoDS_Shape & Sh);
 
 		/****************** GetShapesOfLayer ******************/
-		/**** md5 signature: 8b01d3b5f0a0832996031f609b876e7c ****/
+		/**** md5 signature: 2bcd2de1711ebf8ae0d1ddf5d01dce52 ****/
 		%feature("compactdefaultargs") GetShapesOfLayer;
 		%feature("autodoc", "Return sequanese of shape labels that assigned with layers to <shlabels>.
 
 Parameters
 ----------
-layerL: TDF_Label
-ShLabels: TDF_LabelSequence
+theLayerL: TDF_Label
+theShLabels: TDF_LabelSequence
 
 Returns
 -------
 None
 ") GetShapesOfLayer;
-		void GetShapesOfLayer(const TDF_Label & layerL, TDF_LabelSequence & ShLabels);
+		static void GetShapesOfLayer(const TDF_Label & theLayerL, TDF_LabelSequence & theShLabels);
 
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
@@ -6457,7 +6457,7 @@ Standard_GUID
 		static const Standard_GUID & GetID();
 
 		/****************** GetMaterial ******************/
-		/**** md5 signature: 806c54e68af730f31f3353b2ba682bd0 ****/
+		/**** md5 signature: cf930e538eb371f96b92c4f439c49612 ****/
 		%feature("compactdefaultargs") GetMaterial;
 		%feature("autodoc", "Returns material assigned to <matl> returns false if no such material is assigned.
 
@@ -6473,7 +6473,7 @@ aDensity: float
 aDensName: TCollection_HAsciiString
 aDensValType: TCollection_HAsciiString
 ") GetMaterial;
-		Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		static Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** GetMaterialLabels ******************/
 		/**** md5 signature: cd3883adc849957e7e10d763ad936071 ****/
@@ -8152,6 +8152,32 @@ Returns
 opencascade::handle<TDataStd_NamedData>
 ") GetNamedProperties;
 		opencascade::handle<TDataStd_NamedData> GetNamedProperties(const TopoDS_Shape & theShape, const Standard_Boolean theToCreate = Standard_False);
+
+		/****************** GetOneShape ******************/
+		/**** md5 signature: 3215690f7fd49b341401d78832c630e0 ****/
+		%feature("compactdefaultargs") GetOneShape;
+		%feature("autodoc", "Gets shape from a sequence of shape's labels @param[in] thelabels a sequence of labels to get shapes from returns original shape in case of one label and a compound of shapes in case of more.
+
+Parameters
+----------
+theLabels: TDF_LabelSequence
+
+Returns
+-------
+TopoDS_Shape
+") GetOneShape;
+		static TopoDS_Shape GetOneShape(const TDF_LabelSequence & theLabels);
+
+		/****************** GetOneShape ******************/
+		/**** md5 signature: 5c1df85e1e2a72b0b93fde509f26a709 ****/
+		%feature("compactdefaultargs") GetOneShape;
+		%feature("autodoc", "Gets shape from a sequence of all top-level shapes which are free returns original shape in case of one label and a compound of shapes in case of more.
+
+Returns
+-------
+TopoDS_Shape
+") GetOneShape;
+		TopoDS_Shape GetOneShape();
 
 		/****************** GetReferredShape ******************/
 		/**** md5 signature: 63acc4d5460c835c166b1fc0b2913030 ****/
@@ -9845,7 +9871,7 @@ Standard_GUID
 		static const Standard_GUID & GetID();
 
 		/****************** GetMaterial ******************/
-		/**** md5 signature: 83194336f7abcf51085de62960d38361 ****/
+		/**** md5 signature: 694e93123423187642f68fe8d4e64f2a ****/
 		%feature("compactdefaultargs") GetMaterial;
 		%feature("autodoc", "Returns material defined by specified label, or null if the label is not in material table.
 
@@ -9857,7 +9883,7 @@ Returns
 -------
 opencascade::handle<XCAFDoc_VisMaterial>
 ") GetMaterial;
-		opencascade::handle<XCAFDoc_VisMaterial> GetMaterial(const TDF_Label & theMatLabel);
+		static opencascade::handle<XCAFDoc_VisMaterial> GetMaterial(const TDF_Label & theMatLabel);
 
 		/****************** GetMaterials ******************/
 		/**** md5 signature: a96d68af36051bd063fefc1e10aabb79 ****/
@@ -9891,7 +9917,7 @@ bool
 		static Standard_Boolean GetShapeMaterial(const TDF_Label & theShapeLabel, TDF_Label & theMaterialLabel);
 
 		/****************** GetShapeMaterial ******************/
-		/**** md5 signature: 86335bfdea98c720bcf3af0fe4fb0fe0 ****/
+		/**** md5 signature: 04847c1ad68cdd465933ffa2a713f244 ****/
 		%feature("compactdefaultargs") GetShapeMaterial;
 		%feature("autodoc", "Returns material assigned to the shape label.
 
@@ -9903,7 +9929,7 @@ Returns
 -------
 opencascade::handle<XCAFDoc_VisMaterial>
 ") GetShapeMaterial;
-		opencascade::handle<XCAFDoc_VisMaterial> GetShapeMaterial(const TDF_Label & theShapeLabel);
+		static opencascade::handle<XCAFDoc_VisMaterial> GetShapeMaterial(const TDF_Label & theShapeLabel);
 
 		/****************** GetShapeMaterial ******************/
 		/**** md5 signature: b4d2560c50c52f8b49c713aa67731929 ****/

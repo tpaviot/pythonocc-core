@@ -3508,7 +3508,7 @@ opencascade::handle<BRepBlend_Line>
 		const opencascade::handle<BRepBlend_Line> & Line();
 
 		/****************** Perform ******************/
-		/**** md5 signature: e410fc1bc97982de557150e942b13c80 ****/
+		/**** md5 signature: 5c6445d58f45808f7c3defd1db894a35 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -3522,9 +3522,9 @@ FinvP2: Blend_CurvPointFuncInv
 Pdep: float
 Pmax: float
 MaxStep: float
+Tol3d: float
 TolGuide: float
 Soldep: math_Vector
-Tolesp: float
 Fleche: float
 Appro: bool,optional
 	default value is Standard_False
@@ -3533,10 +3533,10 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(Blend_RstRstFunction & Func, Blend_SurfCurvFuncInv & Finv1, Blend_CurvPointFuncInv & FinvP1, Blend_SurfCurvFuncInv & Finv2, Blend_CurvPointFuncInv & FinvP2, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Tolesp, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
+		void Perform(Blend_RstRstFunction & Func, Blend_SurfCurvFuncInv & Finv1, Blend_CurvPointFuncInv & FinvP1, Blend_SurfCurvFuncInv & Finv2, Blend_CurvPointFuncInv & FinvP2, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real Tol3d, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
 
 		/****************** PerformFirstSection ******************/
-		/**** md5 signature: 78e8905aafd910d0fa3a7b23c096467b ****/
+		/**** md5 signature: 452fb9b79df54fb801f2f70d066f611b ****/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", "No available documentation.
 
@@ -3550,7 +3550,7 @@ FinvP2: Blend_CurvPointFuncInv
 Pdep: float
 Pmax: float
 Soldep: math_Vector
-Tolesp: float
+Tol3d: float
 TolGuide: float
 RecRst1: bool
 RecP1: bool
@@ -3562,7 +3562,7 @@ Returns
 -------
 Psol: float
 ") PerformFirstSection;
-		Standard_Boolean PerformFirstSection(Blend_RstRstFunction & Func, Blend_SurfCurvFuncInv & Finv1, Blend_CurvPointFuncInv & FinvP1, Blend_SurfCurvFuncInv & Finv2, Blend_CurvPointFuncInv & FinvP2, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector & Soldep, const Standard_Real Tolesp, const Standard_Real TolGuide, const Standard_Boolean RecRst1, const Standard_Boolean RecP1, const Standard_Boolean RecRst2, const Standard_Boolean RecP2, Standard_Real &OutValue, math_Vector & ParSol);
+		Standard_Boolean PerformFirstSection(Blend_RstRstFunction & Func, Blend_SurfCurvFuncInv & Finv1, Blend_CurvPointFuncInv & FinvP1, Blend_SurfCurvFuncInv & Finv2, Blend_CurvPointFuncInv & FinvP2, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector & Soldep, const Standard_Real Tol3d, const Standard_Real TolGuide, const Standard_Boolean RecRst1, const Standard_Boolean RecP1, const Standard_Boolean RecRst2, const Standard_Boolean RecP2, Standard_Real &OutValue, math_Vector & ParSol);
 
 };
 
@@ -5559,7 +5559,7 @@ opencascade::handle<BRepBlend_Line>
 		const opencascade::handle<BRepBlend_Line> & Line();
 
 		/****************** Perform ******************/
-		/**** md5 signature: 3ebeca31e507208cd42bab74df3ed6e3 ****/
+		/**** md5 signature: 86cf3650fa597d7655c244c1866126f2 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -5572,9 +5572,10 @@ FinvC: Blend_SurfCurvFuncInv
 Pdep: float
 Pmax: float
 MaxStep: float
+Tol3d: float
+Tol2d: float
 TolGuide: float
 Soldep: math_Vector
-Tolesp: float
 Fleche: float
 Appro: bool,optional
 	default value is Standard_False
@@ -5583,10 +5584,10 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(Blend_SurfRstFunction & Func, Blend_FuncInv & Finv, Blend_SurfPointFuncInv & FinvP, Blend_SurfCurvFuncInv & FinvC, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Tolesp, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
+		void Perform(Blend_SurfRstFunction & Func, Blend_FuncInv & Finv, Blend_SurfPointFuncInv & FinvP, Blend_SurfCurvFuncInv & FinvC, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
 
 		/****************** PerformFirstSection ******************/
-		/**** md5 signature: 691664aa4fe132192d2ccf25ba05720a ****/
+		/**** md5 signature: 429fbdc03f84a4a14fbebef94ad27ee5 ****/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", "No available documentation.
 
@@ -5599,7 +5600,8 @@ FinvC: Blend_SurfCurvFuncInv
 Pdep: float
 Pmax: float
 Soldep: math_Vector
-Tolesp: float
+Tol3d: float
+Tol2d: float
 TolGuide: float
 RecRst: bool
 RecP: bool
@@ -5610,7 +5612,7 @@ Returns
 -------
 Psol: float
 ") PerformFirstSection;
-		Standard_Boolean PerformFirstSection(Blend_SurfRstFunction & Func, Blend_FuncInv & Finv, Blend_SurfPointFuncInv & FinvP, Blend_SurfCurvFuncInv & FinvC, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector & Soldep, const Standard_Real Tolesp, const Standard_Real TolGuide, const Standard_Boolean RecRst, const Standard_Boolean RecP, const Standard_Boolean RecS, Standard_Real &OutValue, math_Vector & ParSol);
+		Standard_Boolean PerformFirstSection(Blend_SurfRstFunction & Func, Blend_FuncInv & Finv, Blend_SurfPointFuncInv & FinvP, Blend_SurfCurvFuncInv & FinvC, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector & Soldep, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Real TolGuide, const Standard_Boolean RecRst, const Standard_Boolean RecP, const Standard_Boolean RecS, Standard_Real &OutValue, math_Vector & ParSol);
 
 };
 
@@ -5795,7 +5797,7 @@ opencascade::handle<BRepBlend_Line>
 		const opencascade::handle<BRepBlend_Line> & Line();
 
 		/****************** Perform ******************/
-		/**** md5 signature: ef3b3700f467db4ea875b65f539d9955 ****/
+		/**** md5 signature: 6d94e3dcc7c71857d2c24ced3358703f ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -5806,9 +5808,9 @@ FInv: Blend_FuncInv
 Pdep: float
 Pmax: float
 MaxStep: float
+Tol3d: float
 TolGuide: float
 Soldep: math_Vector
-Tolesp: float
 Fleche: float
 Appro: bool,optional
 	default value is Standard_False
@@ -5817,10 +5819,10 @@ Returns
 -------
 None
 ") Perform;
-		void Perform(Blend_Function & F, Blend_FuncInv & FInv, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Tolesp, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
+		void Perform(Blend_Function & F, Blend_FuncInv & FInv, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real Tol3d, const Standard_Real TolGuide, const math_Vector & Soldep, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False);
 
 		/****************** PerformFirstSection ******************/
-		/**** md5 signature: a2bca51a10d7f020b86504fe9860626e ****/
+		/**** md5 signature: 92db8d0914da0712dd54b302697b3aa3 ****/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", "No available documentation.
 
@@ -5829,7 +5831,7 @@ Parameters
 F: Blend_Function
 Pdep: float
 ParDep: math_Vector
-Tolesp: float
+Tol3d: float
 TolGuide: float
 Pos1: TopAbs_State
 Pos2: TopAbs_State
@@ -5838,10 +5840,10 @@ Returns
 -------
 bool
 ") PerformFirstSection;
-		Standard_Boolean PerformFirstSection(Blend_Function & F, const Standard_Real Pdep, math_Vector & ParDep, const Standard_Real Tolesp, const Standard_Real TolGuide, TopAbs_State & Pos1, TopAbs_State & Pos2);
+		Standard_Boolean PerformFirstSection(Blend_Function & F, const Standard_Real Pdep, math_Vector & ParDep, const Standard_Real Tol3d, const Standard_Real TolGuide, TopAbs_State & Pos1, TopAbs_State & Pos2);
 
 		/****************** PerformFirstSection ******************/
-		/**** md5 signature: 39c72a7c59d31a28e720252eee26feee ****/
+		/**** md5 signature: 7464aaa5cedcb060541546a3a1ff5540 ****/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", "No available documentation.
 
@@ -5852,7 +5854,7 @@ FInv: Blend_FuncInv
 Pdep: float
 Pmax: float
 ParDep: math_Vector
-Tolesp: float
+Tol3d: float
 TolGuide: float
 RecOnS1: bool
 RecOnS2: bool
@@ -5862,7 +5864,7 @@ Returns
 -------
 Psol: float
 ") PerformFirstSection;
-		Standard_Boolean PerformFirstSection(Blend_Function & F, Blend_FuncInv & FInv, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector & ParDep, const Standard_Real Tolesp, const Standard_Real TolGuide, const Standard_Boolean RecOnS1, const Standard_Boolean RecOnS2, Standard_Real &OutValue, math_Vector & ParSol);
+		Standard_Boolean PerformFirstSection(Blend_Function & F, Blend_FuncInv & FInv, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector & ParDep, const Standard_Real Tol3d, const Standard_Real TolGuide, const Standard_Boolean RecOnS1, const Standard_Boolean RecOnS2, Standard_Real &OutValue, math_Vector & ParSol);
 
 		/****************** SetDomainsToRecadre ******************/
 		/**** md5 signature: 10664ebffbd6ed784502d7d4acfa5a93 ****/
