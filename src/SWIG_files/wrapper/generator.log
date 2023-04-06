@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 5009a4a
+git revision : 1a6d8a4
 
 operating system : Windows 64bit 10
 
 occt version targeted : 7.7.1
 
-date : 2023-03-28 09:45:09.493284
+date : 2023-04-06 15:53:14.892473
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -1004,7 +1004,6 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  Class: BRepBlend_AppSurf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBlend_AppSurface
-[INFO ]      skipped method BRepBlend_AppSurface::c8d3e7f26c4ee8a50f4eca5274d79e63
 [INFO ]  Class: BRepBlend_CurvPointRadInv
 [INFO ]  Class: BRepBlend_Extremity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2970,134 +2969,6 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  ## Processing module TopCnx
 [INFO ]  Class: TopCnx_EdgeFaceTransition
 [INFO ]  Processing toolkit TKIGES ===
-[INFO ]  ## Processing module BRepToIGES
-[INFO ]  Class: BRepToIGES_BREntity
-[INFO ]  Class: BRepToIGES_BRShell
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BRepToIGES_BRSolid
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BRepToIGES_BRWire
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  ## Processing module BRepToIGESBRep
-[INFO ]  Class: BRepToIGESBRep_Entity
-[INFO ]  ## Processing module Geom2dToIGES
-[INFO ]  Class: Geom2dToIGES_Geom2dEntity
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Geom2dToIGES_Geom2dCurve
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Geom2dToIGES_Geom2dPoint
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Geom2dToIGES_Geom2dVector
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  ## Processing module GeomToIGES
-[INFO ]  Class: GeomToIGES_GeomEntity
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: GeomToIGES_GeomCurve
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: GeomToIGES_GeomPoint
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: GeomToIGES_GeomSurface
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: GeomToIGES_GeomVector
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  ## Processing module IGESAppli
-[INFO ]  Found HARRAY1 definitionIGESAppli_HArray1OfFiniteElement: IGESAppli_Array1OfFiniteElement
-[INFO ]  Found HARRAY1 definitionIGESAppli_HArray1OfFlow: IGESAppli_Array1OfFlow
-[INFO ]  Found HARRAY1 definitionIGESAppli_HArray1OfNode: IGESAppli_Array1OfNode
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESAppli
-[INFO ]  Class: IGESAppli_DrilledHole
-[INFO ]  Class: IGESAppli_ElementResults
-[INFO ]  Class: IGESAppli_FiniteElement
-[INFO ]  Class: IGESAppli_Flow
-[INFO ]  Class: IGESAppli_FlowLineSpec
-[INFO ]  Class: IGESAppli_GeneralModule
-[INFO ]  Class: IGESAppli_LevelFunction
-[INFO ]  Class: IGESAppli_LevelToPWBLayerMap
-[INFO ]  Class: IGESAppli_LineWidening
-[INFO ]  Class: IGESAppli_NodalConstraint
-[INFO ]  Class: IGESAppli_NodalDisplAndRot
-[INFO ]  Class: IGESAppli_NodalResults
-[INFO ]  Class: IGESAppli_Node
-[INFO ]  Class: IGESAppli_PWBArtworkStackup
-[INFO ]  Class: IGESAppli_PWBDrilledHole
-[INFO ]  Class: IGESAppli_PartNumber
-[INFO ]  Class: IGESAppli_PinNumber
-[INFO ]  Class: IGESAppli_PipingFlow
-[INFO ]  Class: IGESAppli_Protocol
-[INFO ]  Class: IGESAppli_ReadWriteModule
-[INFO ]  Class: IGESAppli_ReferenceDesignator
-[INFO ]  Class: IGESAppli_RegionRestriction
-[INFO ]  Class: IGESAppli_SpecificModule
-[INFO ]  Class: IGESAppli_ToolDrilledHole
-[INFO ]  Class: IGESAppli_ToolElementResults
-[INFO ]  Class: IGESAppli_ToolFiniteElement
-[INFO ]  Class: IGESAppli_ToolFlow
-[INFO ]  Class: IGESAppli_ToolFlowLineSpec
-[INFO ]  Class: IGESAppli_ToolLevelFunction
-[INFO ]  Class: IGESAppli_ToolLevelToPWBLayerMap
-[INFO ]  Class: IGESAppli_ToolLineWidening
-[INFO ]  Class: IGESAppli_ToolNodalConstraint
-[INFO ]  Class: IGESAppli_ToolNodalDisplAndRot
-[INFO ]  Class: IGESAppli_ToolNodalResults
-[INFO ]  Class: IGESAppli_ToolNode
-[INFO ]  Class: IGESAppli_ToolPWBArtworkStackup
-[INFO ]  Class: IGESAppli_ToolPWBDrilledHole
-[INFO ]  Class: IGESAppli_ToolPartNumber
-[INFO ]  Class: IGESAppli_ToolPinNumber
-[INFO ]  Class: IGESAppli_ToolPipingFlow
-[INFO ]  Class: IGESAppli_ToolReferenceDesignator
-[INFO ]  Class: IGESAppli_ToolRegionRestriction
-[INFO ]  ## Processing module IGESBasic
-[INFO ]  Found HARRAY1 definitionIGESBasic_HArray1OfLineFontEntity: IGESBasic_Array1OfLineFontEntity
-[INFO ]  Found HARRAY2 definitionIGESBasic_HArray2OfHArray1OfReal: IGESBasic_Array2OfHArray1OfReal
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESBasic
-[INFO ]  Class: IGESBasic_AssocGroupType
-[INFO ]  Class: IGESBasic_ExternalRefFile
-[INFO ]  Class: IGESBasic_ExternalRefFileIndex
-[INFO ]  Class: IGESBasic_ExternalRefFileName
-[INFO ]  Class: IGESBasic_ExternalRefLibName
-[INFO ]  Class: IGESBasic_ExternalRefName
-[INFO ]  Class: IGESBasic_ExternalReferenceFile
-[INFO ]  Class: IGESBasic_GeneralModule
-[INFO ]  Class: IGESBasic_Group
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: IGESBasic_HArray1OfHArray1OfIGESEntity
-[INFO ]  Class: IGESBasic_HArray1OfHArray1OfInteger
-[INFO ]  Class: IGESBasic_HArray1OfHArray1OfReal
-[INFO ]  Class: IGESBasic_HArray1OfHArray1OfXY
-[INFO ]  Class: IGESBasic_HArray1OfHArray1OfXYZ
-[INFO ]  Class: IGESBasic_Hierarchy
-[INFO ]  Class: IGESBasic_Name
-[INFO ]  Class: IGESBasic_Protocol
-[INFO ]  Class: IGESBasic_ReadWriteModule
-[INFO ]  Class: IGESBasic_SingleParent
-[INFO ]  Class: IGESBasic_SingularSubfigure
-[INFO ]  Class: IGESBasic_SpecificModule
-[INFO ]  Class: IGESBasic_SubfigureDef
-[INFO ]  Class: IGESBasic_ToolAssocGroupType
-[INFO ]  Class: IGESBasic_ToolExternalRefFile
-[INFO ]  Class: IGESBasic_ToolExternalRefFileIndex
-[INFO ]  Class: IGESBasic_ToolExternalRefFileName
-[INFO ]  Class: IGESBasic_ToolExternalRefLibName
-[INFO ]  Class: IGESBasic_ToolExternalRefName
-[INFO ]  Class: IGESBasic_ToolExternalReferenceFile
-[INFO ]  Class: IGESBasic_ToolGroup
-[INFO ]  Class: IGESBasic_ToolGroupWithoutBackP
-[INFO ]  Class: IGESBasic_ToolHierarchy
-[INFO ]  Class: IGESBasic_ToolName
-[INFO ]  Class: IGESBasic_ToolOrderedGroup
-[INFO ]  Class: IGESBasic_ToolOrderedGroupWithoutBackP
-[INFO ]  Class: IGESBasic_ToolSingleParent
-[INFO ]  Class: IGESBasic_ToolSingularSubfigure
-[INFO ]  Class: IGESBasic_ToolSubfigureDef
-[INFO ]  Class: IGESBasic_GroupWithoutBackP
-[INFO ]  Class: IGESBasic_OrderedGroup
-[INFO ]  Class: IGESBasic_OrderedGroupWithoutBackP
 [INFO ]  ## Processing module IGESControl
 [INFO ]  Class: IGESControl_ActorWrite
 [INFO ]  Class: IGESControl_AlgoContainer
@@ -3109,9 +2980,6 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  Class: IGESControl_ToolContainer
 [INFO ]  Class: IGESControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  ## Processing module IGESConvGeom
-[INFO ]  Class: IGESConvGeom
-[INFO ]  Class: IGESConvGeom_GeomBuilder
 [INFO ]  ## Processing module IGESData
 [INFO ]  Found HARRAY1 definitionIGESData_HArray1OfIGESEntity: IGESData_Array1OfIGESEntity
 [INFO ]  Enum: IGESData_DefList
@@ -3189,336 +3057,6 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  Class: IGESData_ViewKindEntity
 [INFO ]      Class IGESData_ViewKindEntity is abstract, using %nodefaultctor.
 [INFO ]  Class: IGESData_FreeFormatEntity
-[INFO ]  ## Processing module IGESDefs
-[INFO ]  Found HARRAY1 definitionIGESDefs_HArray1OfTabularData: IGESDefs_Array1OfTabularData
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESDefs
-[INFO ]  Class: IGESDefs_AssociativityDef
-[INFO ]  Class: IGESDefs_AttributeDef
-[INFO ]  Class: IGESDefs_AttributeTable
-[INFO ]  Class: IGESDefs_GeneralModule
-[INFO ]  Class: IGESDefs_GenericData
-[INFO ]  Class: IGESDefs_HArray1OfHArray1OfTextDisplayTemplate
-[INFO ]  Class: IGESDefs_MacroDef
-[INFO ]  Class: IGESDefs_Protocol
-[INFO ]  Class: IGESDefs_ReadWriteModule
-[INFO ]  Class: IGESDefs_SpecificModule
-[INFO ]  Class: IGESDefs_TabularData
-[INFO ]  Class: IGESDefs_ToolAssociativityDef
-[INFO ]  Class: IGESDefs_ToolAttributeDef
-[INFO ]  Class: IGESDefs_ToolAttributeTable
-[INFO ]  Class: IGESDefs_ToolGenericData
-[INFO ]  Class: IGESDefs_ToolMacroDef
-[INFO ]  Class: IGESDefs_ToolTabularData
-[INFO ]  Class: IGESDefs_ToolUnitsData
-[INFO ]  Class: IGESDefs_UnitsData
-[INFO ]  ## Processing module IGESDimen
-[INFO ]  Found HARRAY1 definitionIGESDimen_HArray1OfGeneralNote: IGESDimen_Array1OfGeneralNote
-[INFO ]  Found HARRAY1 definitionIGESDimen_HArray1OfLeaderArrow: IGESDimen_Array1OfLeaderArrow
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESDimen
-[INFO ]  Class: IGESDimen_AngularDimension
-[INFO ]  Class: IGESDimen_BasicDimension
-[INFO ]  Class: IGESDimen_CenterLine
-[INFO ]  Class: IGESDimen_CurveDimension
-[INFO ]  Class: IGESDimen_DiameterDimension
-[INFO ]  Class: IGESDimen_DimensionDisplayData
-[INFO ]  Class: IGESDimen_DimensionTolerance
-[INFO ]  Class: IGESDimen_DimensionUnits
-[INFO ]  Class: IGESDimen_DimensionedGeometry
-[INFO ]  Class: IGESDimen_FlagNote
-[INFO ]  Class: IGESDimen_GeneralLabel
-[INFO ]  Class: IGESDimen_GeneralModule
-[INFO ]  Class: IGESDimen_GeneralNote
-[INFO ]  Class: IGESDimen_GeneralSymbol
-[INFO ]  Class: IGESDimen_LeaderArrow
-[INFO ]  Class: IGESDimen_LinearDimension
-[INFO ]  Class: IGESDimen_NewDimensionedGeometry
-[INFO ]  Class: IGESDimen_NewGeneralNote
-[INFO ]  Class: IGESDimen_OrdinateDimension
-[INFO ]  Class: IGESDimen_PointDimension
-[INFO ]  Class: IGESDimen_Protocol
-[INFO ]  Class: IGESDimen_RadiusDimension
-[INFO ]  Class: IGESDimen_ReadWriteModule
-[INFO ]  Class: IGESDimen_Section
-[INFO ]  Class: IGESDimen_SectionedArea
-[INFO ]  Class: IGESDimen_SpecificModule
-[INFO ]  Class: IGESDimen_ToolAngularDimension
-[INFO ]  Class: IGESDimen_ToolBasicDimension
-[INFO ]  Class: IGESDimen_ToolCenterLine
-[INFO ]  Class: IGESDimen_ToolCurveDimension
-[INFO ]  Class: IGESDimen_ToolDiameterDimension
-[INFO ]  Class: IGESDimen_ToolDimensionDisplayData
-[INFO ]  Class: IGESDimen_ToolDimensionTolerance
-[INFO ]  Class: IGESDimen_ToolDimensionUnits
-[INFO ]  Class: IGESDimen_ToolDimensionedGeometry
-[INFO ]  Class: IGESDimen_ToolFlagNote
-[INFO ]  Class: IGESDimen_ToolGeneralLabel
-[INFO ]  Class: IGESDimen_ToolGeneralNote
-[INFO ]  Class: IGESDimen_ToolGeneralSymbol
-[INFO ]  Class: IGESDimen_ToolLeaderArrow
-[INFO ]  Class: IGESDimen_ToolLinearDimension
-[INFO ]  Class: IGESDimen_ToolNewDimensionedGeometry
-[INFO ]  Class: IGESDimen_ToolNewGeneralNote
-[INFO ]  Class: IGESDimen_ToolOrdinateDimension
-[INFO ]  Class: IGESDimen_ToolPointDimension
-[INFO ]  Class: IGESDimen_ToolRadiusDimension
-[INFO ]  Class: IGESDimen_ToolSection
-[INFO ]  Class: IGESDimen_ToolSectionedArea
-[INFO ]  Class: IGESDimen_ToolWitnessLine
-[INFO ]  Class: IGESDimen_WitnessLine
-[INFO ]  ## Processing module IGESDraw
-[INFO ]  Found HARRAY1 definitionIGESDraw_HArray1OfConnectPoint: IGESDraw_Array1OfConnectPoint
-[INFO ]  Found HARRAY1 definitionIGESDraw_HArray1OfViewKindEntity: IGESDraw_Array1OfViewKindEntity
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESDraw
-[INFO ]  Class: IGESDraw_CircArraySubfigure
-[INFO ]  Class: IGESDraw_ConnectPoint
-[INFO ]  Class: IGESDraw_Drawing
-[INFO ]  Class: IGESDraw_DrawingWithRotation
-[INFO ]  Class: IGESDraw_GeneralModule
-[INFO ]  Class: IGESDraw_LabelDisplay
-[INFO ]  Class: IGESDraw_NetworkSubfigure
-[INFO ]  Class: IGESDraw_NetworkSubfigureDef
-[INFO ]  Class: IGESDraw_PerspectiveView
-[INFO ]  Class: IGESDraw_Planar
-[INFO ]  Class: IGESDraw_Protocol
-[INFO ]  Class: IGESDraw_ReadWriteModule
-[INFO ]  Class: IGESDraw_RectArraySubfigure
-[INFO ]  Class: IGESDraw_SegmentedViewsVisible
-[INFO ]  Class: IGESDraw_SpecificModule
-[INFO ]  Class: IGESDraw_ToolCircArraySubfigure
-[INFO ]  Class: IGESDraw_ToolConnectPoint
-[INFO ]  Class: IGESDraw_ToolDrawing
-[INFO ]  Class: IGESDraw_ToolDrawingWithRotation
-[INFO ]  Class: IGESDraw_ToolLabelDisplay
-[INFO ]  Class: IGESDraw_ToolNetworkSubfigure
-[INFO ]  Class: IGESDraw_ToolNetworkSubfigureDef
-[INFO ]  Class: IGESDraw_ToolPerspectiveView
-[INFO ]  Class: IGESDraw_ToolPlanar
-[INFO ]  Class: IGESDraw_ToolRectArraySubfigure
-[INFO ]  Class: IGESDraw_ToolSegmentedViewsVisible
-[INFO ]  Class: IGESDraw_ToolView
-[INFO ]  Class: IGESDraw_ToolViewsVisible
-[INFO ]  Class: IGESDraw_ToolViewsVisibleWithAttr
-[INFO ]  Class: IGESDraw_View
-[INFO ]  Class: IGESDraw_ViewsVisible
-[INFO ]  Class: IGESDraw_ViewsVisibleWithAttr
-[INFO ]  ## Processing module IGESFile
-[INFO ]  ## Processing module IGESGeom
-[INFO ]  Found HARRAY1 definitionIGESGeom_HArray1OfBoundary: IGESGeom_Array1OfBoundary
-[INFO ]  Found HARRAY1 definitionIGESGeom_HArray1OfCurveOnSurface: IGESGeom_Array1OfCurveOnSurface
-[INFO ]  Found HARRAY1 definitionIGESGeom_HArray1OfTransformationMatrix: IGESGeom_Array1OfTransformationMatrix
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESGeom
-[INFO ]  Class: IGESGeom_BSplineCurve
-[INFO ]  Class: IGESGeom_BSplineSurface
-[INFO ]  Class: IGESGeom_Boundary
-[INFO ]  Class: IGESGeom_BoundedSurface
-[INFO ]  Class: IGESGeom_CircularArc
-[INFO ]  Class: IGESGeom_CompositeCurve
-[INFO ]  Class: IGESGeom_ConicArc
-[INFO ]  Class: IGESGeom_CopiousData
-[INFO ]  Class: IGESGeom_CurveOnSurface
-[INFO ]  Class: IGESGeom_Direction
-[INFO ]  Class: IGESGeom_Flash
-[INFO ]  Class: IGESGeom_GeneralModule
-[INFO ]  Class: IGESGeom_Line
-[INFO ]  Class: IGESGeom_OffsetCurve
-[INFO ]  Class: IGESGeom_OffsetSurface
-[INFO ]  Class: IGESGeom_Plane
-[INFO ]  Class: IGESGeom_Point
-[INFO ]  Class: IGESGeom_Protocol
-[INFO ]  Class: IGESGeom_ReadWriteModule
-[INFO ]  Class: IGESGeom_RuledSurface
-[INFO ]  Class: IGESGeom_SpecificModule
-[INFO ]  Class: IGESGeom_SplineCurve
-[INFO ]  Class: IGESGeom_SplineSurface
-[INFO ]  Class: IGESGeom_SurfaceOfRevolution
-[INFO ]  Class: IGESGeom_TabulatedCylinder
-[INFO ]  Class: IGESGeom_ToolBSplineCurve
-[INFO ]  Class: IGESGeom_ToolBSplineSurface
-[INFO ]  Class: IGESGeom_ToolBoundary
-[INFO ]  Class: IGESGeom_ToolBoundedSurface
-[INFO ]  Class: IGESGeom_ToolCircularArc
-[INFO ]  Class: IGESGeom_ToolCompositeCurve
-[INFO ]  Class: IGESGeom_ToolConicArc
-[INFO ]  Class: IGESGeom_ToolCopiousData
-[INFO ]  Class: IGESGeom_ToolCurveOnSurface
-[INFO ]  Class: IGESGeom_ToolDirection
-[INFO ]  Class: IGESGeom_ToolFlash
-[INFO ]  Class: IGESGeom_ToolLine
-[INFO ]  Class: IGESGeom_ToolOffsetCurve
-[INFO ]  Class: IGESGeom_ToolOffsetSurface
-[INFO ]  Class: IGESGeom_ToolPlane
-[INFO ]  Class: IGESGeom_ToolPoint
-[INFO ]  Class: IGESGeom_ToolRuledSurface
-[INFO ]  Class: IGESGeom_ToolSplineCurve
-[INFO ]  Class: IGESGeom_ToolSplineSurface
-[INFO ]  Class: IGESGeom_ToolSurfaceOfRevolution
-[INFO ]  Class: IGESGeom_ToolTabulatedCylinder
-[INFO ]  Class: IGESGeom_ToolTransformationMatrix
-[INFO ]  Class: IGESGeom_ToolTrimmedSurface
-[INFO ]  Class: IGESGeom_TransformationMatrix
-[INFO ]  Class: IGESGeom_TrimmedSurface
-[INFO ]  ## Processing module IGESGraph
-[INFO ]  Found HARRAY1 definitionIGESGraph_HArray1OfColor: IGESGraph_Array1OfColor
-[INFO ]  Found HARRAY1 definitionIGESGraph_HArray1OfTextDisplayTemplate: IGESGraph_Array1OfTextDisplayTemplate
-[INFO ]  Found HARRAY1 definitionIGESGraph_HArray1OfTextFontDef: IGESGraph_Array1OfTextFontDef
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESGraph
-[INFO ]  Class: IGESGraph_Color
-[INFO ]  Class: IGESGraph_DefinitionLevel
-[INFO ]  Class: IGESGraph_DrawingSize
-[INFO ]  Class: IGESGraph_DrawingUnits
-[INFO ]  Class: IGESGraph_GeneralModule
-[INFO ]  Class: IGESGraph_HighLight
-[INFO ]  Class: IGESGraph_IntercharacterSpacing
-[INFO ]  Class: IGESGraph_LineFontDefPattern
-[INFO ]  Class: IGESGraph_LineFontDefTemplate
-[INFO ]  Class: IGESGraph_LineFontPredefined
-[INFO ]  Class: IGESGraph_NominalSize
-[INFO ]  Class: IGESGraph_Pick
-[INFO ]  Class: IGESGraph_Protocol
-[INFO ]  Class: IGESGraph_ReadWriteModule
-[INFO ]  Class: IGESGraph_SpecificModule
-[INFO ]  Class: IGESGraph_TextDisplayTemplate
-[INFO ]  Class: IGESGraph_TextFontDef
-[INFO ]  Class: IGESGraph_ToolColor
-[INFO ]  Class: IGESGraph_ToolDefinitionLevel
-[INFO ]  Class: IGESGraph_ToolDrawingSize
-[INFO ]  Class: IGESGraph_ToolDrawingUnits
-[INFO ]  Class: IGESGraph_ToolHighLight
-[INFO ]  Class: IGESGraph_ToolIntercharacterSpacing
-[INFO ]  Class: IGESGraph_ToolLineFontDefPattern
-[INFO ]  Class: IGESGraph_ToolLineFontDefTemplate
-[INFO ]  Class: IGESGraph_ToolLineFontPredefined
-[INFO ]  Class: IGESGraph_ToolNominalSize
-[INFO ]  Class: IGESGraph_ToolPick
-[INFO ]  Class: IGESGraph_ToolTextDisplayTemplate
-[INFO ]  Class: IGESGraph_ToolTextFontDef
-[INFO ]  Class: IGESGraph_ToolUniformRectGrid
-[INFO ]  Class: IGESGraph_UniformRectGrid
-[INFO ]  ## Processing module IGESSelect
-[INFO ]  Class: IGESSelect
-[INFO ]  Class: IGESSelect_Activator
-[INFO ]  Class: IGESSelect_CounterOfLevelNumber
-[INFO ]  Class: IGESSelect_DispPerDrawing
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
-[INFO ]  Class: IGESSelect_DispPerSingleView
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
-[INFO ]  Class: IGESSelect_Dumper
-[INFO ]  Class: IGESSelect_EditDirPart
-[INFO ]  Class: IGESSelect_EditHeader
-[INFO ]  Class: IGESSelect_FileModifier
-[INFO ]      Class IGESSelect_FileModifier is abstract, using %nodefaultctor.
-[INFO ]  Class: IGESSelect_IGESName
-[INFO ]  Class: IGESSelect_IGESTypeForm
-[INFO ]  Class: IGESSelect_ModelModifier
-[INFO ]      Class IGESSelect_ModelModifier is abstract, using %nodefaultctor.
-[INFO ]  Class: IGESSelect_SelectBypassGroup
-[INFO ]  Class: IGESSelect_SelectBypassSubfigure
-[INFO ]  Class: IGESSelect_SelectDrawingFrom
-[INFO ]  Class: IGESSelect_SelectFaces
-[INFO ]  Class: IGESSelect_SelectFromDrawing
-[INFO ]  Class: IGESSelect_SelectFromSingleView
-[INFO ]  Class: IGESSelect_SelectLevelNumber
-[INFO ]  Class: IGESSelect_SelectName
-[INFO ]  Class: IGESSelect_SelectPCurves
-[INFO ]  Class: IGESSelect_SelectSingleViewFrom
-[INFO ]  Class: IGESSelect_SelectSubordinate
-[INFO ]  Class: IGESSelect_SelectVisibleStatus
-[INFO ]  Class: IGESSelect_SignColor
-[INFO ]  Class: IGESSelect_SignLevelNumber
-[INFO ]  Class: IGESSelect_SignStatus
-[INFO ]  Class: IGESSelect_SplineToBSpline
-[INFO ]  Class: IGESSelect_ViewSorter
-[INFO ]  Class: IGESSelect_WorkLibrary
-[INFO ]  Class: IGESSelect_AddFileComment
-[INFO ]  Class: IGESSelect_AddGroup
-[INFO ]  Class: IGESSelect_AutoCorrect
-[INFO ]  Class: IGESSelect_ChangeLevelList
-[INFO ]  Class: IGESSelect_ChangeLevelNumber
-[INFO ]  Class: IGESSelect_ComputeStatus
-[INFO ]  Class: IGESSelect_FloatFormat
-[INFO ]  Class: IGESSelect_RebuildDrawings
-[INFO ]  Class: IGESSelect_RebuildGroups
-[INFO ]  Class: IGESSelect_RemoveCurves
-[INFO ]  Class: IGESSelect_SetGlobalParameter
-[INFO ]  Class: IGESSelect_SetLabel
-[INFO ]  Class: IGESSelect_SetVersion5
-[INFO ]  Class: IGESSelect_UpdateCreationDate
-[INFO ]  Class: IGESSelect_UpdateFileName
-[INFO ]  Class: IGESSelect_UpdateLastChange
-[INFO ]  ## Processing module IGESSolid
-[INFO ]  Found HARRAY1 definitionIGESSolid_HArray1OfFace: IGESSolid_Array1OfFace
-[INFO ]  Found HARRAY1 definitionIGESSolid_HArray1OfLoop: IGESSolid_Array1OfLoop
-[INFO ]  Found HARRAY1 definitionIGESSolid_HArray1OfShell: IGESSolid_Array1OfShell
-[INFO ]  Found HARRAY1 definitionIGESSolid_HArray1OfVertexList: IGESSolid_Array1OfVertexList
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: IGESSolid
-[INFO ]  Class: IGESSolid_Block
-[INFO ]  Class: IGESSolid_BooleanTree
-[INFO ]  Class: IGESSolid_ConeFrustum
-[INFO ]  Class: IGESSolid_ConicalSurface
-[INFO ]  Class: IGESSolid_Cylinder
-[INFO ]  Class: IGESSolid_CylindricalSurface
-[INFO ]  Class: IGESSolid_EdgeList
-[INFO ]  Class: IGESSolid_Ellipsoid
-[INFO ]  Class: IGESSolid_Face
-[INFO ]  Class: IGESSolid_GeneralModule
-[INFO ]  Class: IGESSolid_Loop
-[INFO ]  Class: IGESSolid_ManifoldSolid
-[INFO ]  Class: IGESSolid_PlaneSurface
-[INFO ]  Class: IGESSolid_Protocol
-[INFO ]  Class: IGESSolid_ReadWriteModule
-[INFO ]  Class: IGESSolid_RightAngularWedge
-[INFO ]  Class: IGESSolid_SelectedComponent
-[INFO ]  Class: IGESSolid_Shell
-[INFO ]  Class: IGESSolid_SolidAssembly
-[INFO ]  Class: IGESSolid_SolidInstance
-[INFO ]  Class: IGESSolid_SolidOfLinearExtrusion
-[INFO ]  Class: IGESSolid_SolidOfRevolution
-[INFO ]  Class: IGESSolid_SpecificModule
-[INFO ]  Class: IGESSolid_Sphere
-[INFO ]  Class: IGESSolid_SphericalSurface
-[INFO ]  Class: IGESSolid_ToolBlock
-[INFO ]  Class: IGESSolid_ToolBooleanTree
-[INFO ]  Class: IGESSolid_ToolConeFrustum
-[INFO ]  Class: IGESSolid_ToolConicalSurface
-[INFO ]  Class: IGESSolid_ToolCylinder
-[INFO ]  Class: IGESSolid_ToolCylindricalSurface
-[INFO ]  Class: IGESSolid_ToolEdgeList
-[INFO ]  Class: IGESSolid_ToolEllipsoid
-[INFO ]  Class: IGESSolid_ToolFace
-[INFO ]  Class: IGESSolid_ToolLoop
-[INFO ]  Class: IGESSolid_ToolManifoldSolid
-[INFO ]  Class: IGESSolid_ToolPlaneSurface
-[INFO ]  Class: IGESSolid_ToolRightAngularWedge
-[INFO ]  Class: IGESSolid_ToolSelectedComponent
-[INFO ]  Class: IGESSolid_ToolShell
-[INFO ]  Class: IGESSolid_ToolSolidAssembly
-[INFO ]  Class: IGESSolid_ToolSolidInstance
-[INFO ]  Class: IGESSolid_ToolSolidOfLinearExtrusion
-[INFO ]  Class: IGESSolid_ToolSolidOfRevolution
-[INFO ]  Class: IGESSolid_ToolSphere
-[INFO ]  Class: IGESSolid_ToolSphericalSurface
-[INFO ]  Class: IGESSolid_ToolToroidalSurface
-[INFO ]  Class: IGESSolid_ToolTorus
-[INFO ]  Class: IGESSolid_ToolVertexList
-[INFO ]  Class: IGESSolid_TopoBuilder
-[INFO ]  Class: IGESSolid_ToroidalSurface
-[INFO ]  Class: IGESSolid_Torus
-[INFO ]  Class: IGESSolid_VertexList
 [INFO ]  ## Processing module IGESToBRep
 [INFO ]  Class: IGESToBRep
 [INFO ]  Class: IGESToBRep_Actor
@@ -3531,15 +3069,59 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  Class: IGESToBRep_ToolContainer
 [INFO ]  Class: IGESToBRep_BRepEntity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
 [INFO ]  Class: IGESToBRep_BasicCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
 [INFO ]  Class: IGESToBRep_BasicSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
 [INFO ]  Class: IGESToBRep_TopoCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
 [INFO ]  Class: IGESToBRep_TopoSurface
 [INFO ]      skipped method IGESToBRep_TopoSurface::657812ceea990db15bb85a8826a3ccc8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESBasic not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
 [INFO ]  Processing toolkit TKIVtk ===
 [INFO ]  ## Processing module IVtk
 [INFO ]  Enum: IVtk_SelectionMode
@@ -4279,13 +3861,6 @@ date : 2023-03-28 09:45:09.493284
 [WARNI]      [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
-[INFO ]  Class: BRepMesh_DefaultRangeSplitter
-[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
-[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
-[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
-[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
-[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
-[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_Deflection
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IWireHandle &, should contain _
@@ -4310,19 +3885,18 @@ date : 2023-03-28 09:45:09.493284
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
-[INFO ]  Class: BRepMesh_EdgeTessellationExtractor
-[WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [INFO ]  Class: BRepMesh_FaceChecker
 [INFO ]      Wrap nested class BRepMesh_FaceChecker::Segment
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_FaceDiscret
 [INFO ]  Class: BRepMesh_GeomTool
 [INFO ]  Enum: IntFlag
+[INFO ]      skipped method BRepMesh_GeomTool::cb0bf8ba7f44d8ded12ec50ce5f5d107
+[INFO ]      skipped method BRepMesh_GeomTool::e2953d0dde189ac0d48e66845c4ae790
+[INFO ]      skipped method BRepMesh_GeomTool::9efbfbad869a7589f6d4b211dd1b27a2
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type std::pair<int,, because of trailing :
 [WARNI]      [TypeHint] Skipping unknown type, Handle(Adaptor3d not in module list
-[WARNI]      [TypeHint] Skipping type static IntFlag, should contain _
-[WARNI]      [TypeHint] Skipping type static IntFlag, should contain _
 [INFO ]  Class: BRepMesh_MeshAlgoFactory
 [INFO ]  Class: BRepMesh_MeshTool
 [INFO ]      Wrap nested class BRepMesh_MeshTool::NodeClassifier
@@ -4370,29 +3944,14 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  Class: BRepMesh_VertexTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
-[INFO ]  Class: BRepMesh_CylinderRangeSplitter
-[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
+[INFO ]  Class: BRepMesh_DelabellaBaseMeshAlgo
 [INFO ]  Class: BRepMesh_Edge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: BRepMesh_ExtrusionRangeSplitter
 [INFO ]  Class: BRepMesh_IncrementalMesh
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BRepMesh_SphereRangeSplitter
-[INFO ]  Class: BRepMesh_UVParamRangeSplitter
-[WARNI]      [TypeHint] Skipping type const IMeshData::IMapOfReal &, should contain _
-[WARNI]      [TypeHint] Skipping type IMeshData::IMapOfReal &, should contain _
-[WARNI]      [TypeHint] Skipping type const IMeshData::IMapOfReal &, should contain _
-[WARNI]      [TypeHint] Skipping type IMeshData::IMapOfReal &, should contain _
-[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
-[INFO ]  Class: BRepMesh_CustomBaseMeshAlgo
-[INFO ]      Class BRepMesh_CustomBaseMeshAlgo is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BRepMesh_CustomBaseMeshAlgo
-[INFO ]  Class: BRepMesh_DelaunayBaseMeshAlgo
-[INFO ]  Class: BRepMesh_NURBSRangeSplitter
-[INFO ]  Class: BRepMesh_TorusRangeSplitter
-[INFO ]  Class: BRepMesh_BoundaryParamsRangeSplitter
-[INFO ]  Class: BRepMesh_DelabellaBaseMeshAlgo
-[INFO ]  Class: BRepMesh_ExtrusionRangeSplitter
 [INFO ]  Class: BRepMesh_UndefinedRangeSplitter
+[INFO ]  Class: BRepMesh_DelaunayBaseMeshAlgo
 [INFO ]  ## Processing module BRepMeshData
 [INFO ]  Class: BRepMeshData_Curve
 [INFO ]      skipped method BRepMeshData_Curve::e93fed6728af60627a48bef10a547595
@@ -9689,8 +9248,8 @@ date : 2023-03-28 09:45:09.493284
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 155.42s
+SWIG interface file generation completed in 86.94s
 #################################################
 
-[INFO ]  Number of classes: 5163
-[INFO ]  Number of methods: 50620
+[INFO ]  Number of classes: 4765
+[INFO ]  Number of methods: 47540
