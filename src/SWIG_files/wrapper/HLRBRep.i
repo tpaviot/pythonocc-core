@@ -3645,7 +3645,7 @@ bool
 
 Parameters
 ----------
-tol: Standard_ShortReal
+tol: float
 
 Returns
 -------
@@ -3660,7 +3660,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Tolerance;
 		Standard_ShortReal Tolerance();
 
@@ -4250,9 +4250,9 @@ Out2: bool
 Cut1: bool
 Cut2: bool
 Start: float
-TolStart: Standard_ShortReal
+TolStart: float
 End: float
-TolEnd: Standard_ShortReal
+TolEnd: float
 
 Returns
 -------
@@ -4304,7 +4304,7 @@ HLRAlgo_EdgeStatus
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Tolerance;
 		Standard_ShortReal Tolerance();
 
@@ -5317,7 +5317,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Tolerance;
 		Standard_ShortReal Tolerance();
 

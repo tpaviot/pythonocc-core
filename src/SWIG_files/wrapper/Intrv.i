@@ -165,9 +165,9 @@ None
 Parameters
 ----------
 Start: float
-TolStart: Standard_ShortReal
+TolStart: float
 End: float
-TolEnd: Standard_ShortReal
+TolEnd: float
 
 Returns
 -------
@@ -182,15 +182,15 @@ None
 
 Parameters
 ----------
-TolStart: Standard_ShortReal
-TolEnd: Standard_ShortReal
 
 Returns
 -------
 Start: float
+TolStart: float
 End: float
+TolEnd: float
 ") Bounds;
-		void Bounds(Standard_Real &OutValue, Standard_ShortReal & TolStart, Standard_Real &OutValue, Standard_ShortReal & TolEnd);
+		void Bounds(Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** CutAtEnd ******************/
 		/**** md5 signature: 016f363129bd1797c683a8d0f6c91793 ****/
@@ -200,7 +200,7 @@ End: float
 Parameters
 ----------
 End: float
-TolEnd: Standard_ShortReal
+TolEnd: float
 
 Returns
 -------
@@ -216,7 +216,7 @@ None
 Parameters
 ----------
 Start: float
-TolStart: Standard_ShortReal
+TolStart: float
 
 Returns
 -------
@@ -243,7 +243,7 @@ float
 Parameters
 ----------
 End: float
-TolEnd: Standard_ShortReal
+TolEnd: float
 
 Returns
 -------
@@ -259,7 +259,7 @@ None
 Parameters
 ----------
 Start: float
-TolStart: Standard_ShortReal
+TolStart: float
 
 Returns
 -------
@@ -496,7 +496,7 @@ Intrv_Position
 Parameters
 ----------
 End: float
-TolEnd: Standard_ShortReal
+TolEnd: float
 
 Returns
 -------
@@ -512,7 +512,7 @@ None
 Parameters
 ----------
 Start: float
-TolStart: Standard_ShortReal
+TolStart: float
 
 Returns
 -------
@@ -538,7 +538,7 @@ float
 
 Returns
 -------
-Standard_ShortReal
+float
 ") TolEnd;
 		Standard_ShortReal TolEnd();
 
@@ -549,7 +549,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") TolStart;
 		Standard_ShortReal TolStart();
 

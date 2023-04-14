@@ -2164,9 +2164,9 @@ int
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
 
 Returns
 -------
@@ -2265,12 +2265,12 @@ int
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
-theNX: Standard_ShortReal
-theNY: Standard_ShortReal
-theNZ: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
+theNX: float
+theNY: float
+theNZ: float
 
 Returns
 -------
@@ -2354,11 +2354,11 @@ int
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
-theTX: Standard_ShortReal
-theTY: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
+theTX: float
+theTY: float
 
 Returns
 -------
@@ -2412,14 +2412,14 @@ int
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
-theNX: Standard_ShortReal
-theNY: Standard_ShortReal
-theNZ: Standard_ShortReal
-theTX: Standard_ShortReal
-theTY: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
+theNX: float
+theNY: float
+theNZ: float
+theTX: float
+theTY: float
 
 Returns
 -------
@@ -2860,9 +2860,9 @@ None
 Parameters
 ----------
 theIndex: int
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
 
 Returns
 -------
@@ -3117,7 +3117,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") AlphaCutoff;
 		Standard_ShortReal AlphaCutoff();
 
@@ -3331,7 +3331,7 @@ Aspect_TypeOfLine
 
 Returns
 -------
-Standard_ShortReal
+float
 ") EdgeWidth;
 		Standard_ShortReal EdgeWidth();
 
@@ -3478,7 +3478,7 @@ Aspect_TypeOfLine
 
 Returns
 -------
-Standard_ShortReal
+float
 ") LineWidth;
 		Standard_ShortReal LineWidth();
 
@@ -3500,7 +3500,7 @@ opencascade::handle<Graphic3d_MarkerImage>
 
 Returns
 -------
-Standard_ShortReal
+float
 ") MarkerScale;
 		Standard_ShortReal MarkerScale();
 
@@ -3533,14 +3533,14 @@ Graphic3d_PolygonOffset
 
 Parameters
 ----------
-theFactor: Standard_ShortReal
-theUnits: Standard_ShortReal
 
 Returns
 -------
 theMode: int
+theFactor: float
+theUnits: float
 ") PolygonOffsets;
-		void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal & theFactor, Standard_ShortReal & theUnits);
+		void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** SetAlphaMode ******************/
 		/**** md5 signature: b84cdd4cb6d53fa03454718b7ba18032 ****/
@@ -3550,7 +3550,7 @@ theMode: int
 Parameters
 ----------
 theMode: Graphic3d_AlphaMode
-theAlphaCutoff: Standard_ShortReal,optional
+theAlphaCutoff: float,optional
 	default value is 0.5f
 
 Returns
@@ -3955,7 +3955,7 @@ None
 
 Parameters
 ----------
-theWidth: Standard_ShortReal
+theWidth: float
 
 Returns
 -------
@@ -3985,7 +3985,7 @@ None
 
 Parameters
 ----------
-theScale: Standard_ShortReal
+theScale: float
 
 Returns
 -------
@@ -4031,9 +4031,9 @@ None
 Parameters
 ----------
 theMode: int
-theFactor: Standard_ShortReal,optional
+theFactor: float,optional
 	default value is 1.0f
-theUnits: Standard_ShortReal,optional
+theUnits: float,optional
 	default value is 0.0f
 
 Returns
@@ -4109,7 +4109,7 @@ None
 
 Parameters
 ----------
-theAngle: Standard_ShortReal
+theAngle: float
 
 Returns
 -------
@@ -4299,7 +4299,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") TextAngle;
 		Standard_ShortReal TextAngle();
 
@@ -4536,8 +4536,8 @@ Parameters
 ----------
 theWeight: Graphic3d_Vec3
 theAbsorptionColor: Graphic3d_Vec3
-theAbsorptionCoeff: Standard_ShortReal
-theRefractionIndex: Standard_ShortReal
+theAbsorptionCoeff: float
+theRefractionIndex: float
 
 Returns
 -------
@@ -4554,7 +4554,7 @@ Parameters
 ----------
 theWeight: Graphic3d_Vec3
 theFresnel: Graphic3d_Fresnel
-theRoughness: Standard_ShortReal
+theRoughness: float
 
 Returns
 -------
@@ -4586,7 +4586,7 @@ Parameters
 ----------
 theWeight: Graphic3d_Vec3
 theAbsorptionColor: Graphic3d_Vec3
-theAbsorptionCoeff: Standard_ShortReal
+theAbsorptionCoeff: float
 
 Returns
 -------
@@ -4923,7 +4923,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Angle;
 		Standard_ShortReal Angle();
 
@@ -4960,7 +4960,7 @@ Quantity_Color
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Concentration;
 		Standard_ShortReal Concentration();
 
@@ -4971,7 +4971,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") ConstAttenuation;
 		Standard_ShortReal ConstAttenuation();
 
@@ -5076,7 +5076,7 @@ bool
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Intensity;
 		Standard_ShortReal Intensity();
 
@@ -5109,7 +5109,7 @@ bool
 
 Returns
 -------
-Standard_ShortReal
+float
 ") LinearAttenuation;
 		Standard_ShortReal LinearAttenuation();
 
@@ -5202,7 +5202,7 @@ theZ: float
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Range;
 		Standard_ShortReal Range();
 
@@ -5224,7 +5224,7 @@ Standard_Size
 
 Parameters
 ----------
-theAngle: Standard_ShortReal
+theAngle: float
 
 Returns
 -------
@@ -5239,8 +5239,8 @@ None
 
 Parameters
 ----------
-theConstAttenuation: Standard_ShortReal
-theLinearAttenuation: Standard_ShortReal
+theConstAttenuation: float
+theLinearAttenuation: float
 
 Returns
 -------
@@ -5285,7 +5285,7 @@ None
 
 Parameters
 ----------
-theConcentration: Standard_ShortReal
+theConcentration: float
 
 Returns
 -------
@@ -5377,7 +5377,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -5439,7 +5439,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -5454,7 +5454,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -5469,7 +5469,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -5484,7 +5484,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Smoothness;
 		Standard_ShortReal Smoothness();
 
@@ -8849,8 +8849,8 @@ None
 
 Parameters
 ----------
-theRefractionIndex: Standard_ShortReal
-theAbsorptionIndex: Standard_ShortReal
+theRefractionIndex: float
+theAbsorptionIndex: float
 
 Returns
 -------
@@ -8881,7 +8881,7 @@ Graphic3d_Fresnel
 
 Parameters
 ----------
-theReflection: Standard_ShortReal
+theReflection: float
 
 Returns
 -------
@@ -8896,7 +8896,7 @@ Graphic3d_Fresnel
 
 Parameters
 ----------
-theRefractionIndex: Standard_ShortReal
+theRefractionIndex: float
 
 Returns
 -------
@@ -8997,7 +8997,7 @@ theValuesStyle: Font_FontAspect,optional
 	default value is Font_FA_Regular
 theValuesSize: int,optional
 	default value is 12
-theArrowsLength: Standard_ShortReal,optional
+theArrowsLength: float,optional
 	default value is 30.0f
 theGridColor: Quantity_Color,optional
 	default value is Quantity_NOC_WHITE
@@ -9019,7 +9019,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") ArrowsLength;
 		Standard_ShortReal ArrowsLength();
 
@@ -9152,7 +9152,7 @@ int
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -9439,7 +9439,7 @@ opencascade::handle<Graphic3d_CView>
 
 Returns
 -------
-Standard_ShortReal
+float
 ") DefaultTextHeight;
 		virtual Standard_ShortReal DefaultTextHeight();
 
@@ -9697,16 +9697,15 @@ Parameters
 ----------
 theView: Graphic3d_CView
 theText: str
-theHeight: Standard_ShortReal
-theWidth: Standard_ShortReal
-theAscent: Standard_ShortReal
-theDescent: Standard_ShortReal
+theHeight: float
 
 Returns
 -------
-None
+theWidth: float
+theAscent: float
+theDescent: float
 ") TextSize;
-		virtual void TextSize(const opencascade::handle<Graphic3d_CView> & theView, Standard_CString theText, const Standard_ShortReal theHeight, Standard_ShortReal & theWidth, Standard_ShortReal & theAscent, Standard_ShortReal & theDescent);
+		virtual void TextSize(const opencascade::handle<Graphic3d_CView> & theView, Standard_CString theText, const Standard_ShortReal theHeight, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** ViewExists ******************/
 		/**** md5 signature: af8cd22ce3ec7eb123e125bb1c41a940 ****/
@@ -11162,7 +11161,7 @@ bool
 Parameters
 ----------
 theMarkerType: Aspect_TypeOfMarker
-theScale: Standard_ShortReal
+theScale: float
 theColor: Graphic3d_Vec4
 
 Returns
@@ -11220,7 +11219,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Alpha;
 		Standard_ShortReal Alpha();
 
@@ -11294,7 +11293,7 @@ Quantity_Color
 
 Parameters
 ----------
-theDelta: Standard_ShortReal
+theDelta: float
 
 Returns
 -------
@@ -11484,7 +11483,7 @@ bool
 
 Returns
 -------
-Standard_ShortReal
+float
 ") RefractionIndex;
 		Standard_ShortReal RefractionIndex();
 
@@ -11517,7 +11516,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -11667,7 +11666,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -11682,7 +11681,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -11712,7 +11711,7 @@ None
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -11727,7 +11726,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Shininess;
 		Standard_ShortReal Shininess();
 
@@ -11760,7 +11759,7 @@ TCollection_AsciiString
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Transparency;
 		Standard_ShortReal Transparency();
 
@@ -11839,7 +11838,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Alpha;
 		Standard_ShortReal Alpha();
 
@@ -11897,7 +11896,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") IOR;
 		Standard_ShortReal IOR();
 
@@ -11908,7 +11907,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Metallic;
 		Standard_ShortReal Metallic();
 
@@ -11923,7 +11922,7 @@ theSpecular: Quantity_Color
 
 Returns
 -------
-Standard_ShortReal
+float
 ") MetallicFromSpecular;
 		static Standard_ShortReal MetallicFromSpecular(const Quantity_Color & theSpecular);
 
@@ -11934,7 +11933,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") MinRoughness;
 		static Standard_ShortReal MinRoughness();
 
@@ -11945,7 +11944,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") NormalizedRoughness;
 		Standard_ShortReal NormalizedRoughness();
 
@@ -11956,11 +11955,11 @@ Standard_ShortReal
 
 Parameters
 ----------
-theNormalizedRoughness: Standard_ShortReal
+theNormalizedRoughness: float
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Roughness;
 		static Standard_ShortReal Roughness(Standard_ShortReal theNormalizedRoughness);
 
@@ -11971,7 +11970,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Roughness;
 		Standard_ShortReal Roughness();
 
@@ -11987,7 +11986,7 @@ theShiness: float
 
 Returns
 -------
-Standard_ShortReal
+float
 ") RoughnessFromSpecular;
 		static Standard_ShortReal RoughnessFromSpecular(const Quantity_Color & theSpecular, const Standard_Real theShiness);
 
@@ -11998,7 +11997,7 @@ Standard_ShortReal
 
 Parameters
 ----------
-theAlpha: Standard_ShortReal
+theAlpha: float
 
 Returns
 -------
@@ -12073,7 +12072,7 @@ None
 
 Parameters
 ----------
-theIOR: Standard_ShortReal
+theIOR: float
 
 Returns
 -------
@@ -12088,7 +12087,7 @@ None
 
 Parameters
 ----------
-theMetallic: Standard_ShortReal
+theMetallic: float
 
 Returns
 -------
@@ -12103,7 +12102,7 @@ None
 
 Parameters
 ----------
-theRoughness: Standard_ShortReal
+theRoughness: float
 
 Returns
 -------
@@ -12118,12 +12117,12 @@ None
 
 Parameters
 ----------
-theProbability: Standard_ShortReal
-theRoughness: Standard_ShortReal
+theProbability: float
+theRoughness: float
 
 Returns
 -------
-Standard_ShortReal
+float
 ") SpecIBLMapSamplesFactor;
 		static Standard_ShortReal SpecIBLMapSamplesFactor(Standard_ShortReal theProbability, Standard_ShortReal theRoughness);
 
@@ -12156,8 +12155,8 @@ Standard_ShortReal
 class Graphic3d_PolygonOffset {
 	public:
 		Aspect_PolygonOffsetMode Mode;
-		Standard_ShortReal Factor;
-		Standard_ShortReal Units;
+		float Factor;
+		float Units;
 		/****************** Graphic3d_PolygonOffset ******************/
 		/**** md5 signature: d32d266ad893dbdf6f93b0afae8a9bb9 ****/
 		%feature("compactdefaultargs") Graphic3d_PolygonOffset;
@@ -12346,7 +12345,7 @@ None
 
 Parameters
 ----------
-theTranspCoef: Standard_ShortReal
+theTranspCoef: float
 
 Returns
 -------
@@ -12376,7 +12375,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Transparency;
 		Standard_ShortReal Transparency();
 
@@ -12513,18 +12512,18 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		Graphic3d_RenderTransparentMethod TransparencyMethod;
 		unsigned int Resolution;
 		Font_Hinting FontHinting;
-		Standard_ShortReal LineFeather;
+		float LineFeather;
 		int PbrEnvPow2Size;
 		int PbrEnvSpecMapNbLevels;
 		int PbrEnvBakingDiffNbSamples;
 		int PbrEnvBakingSpecNbSamples;
-		Standard_ShortReal PbrEnvBakingProbability;
-		Standard_ShortReal OitDepthFactor;
+		float PbrEnvBakingProbability;
+		float OitDepthFactor;
 		int NbOitDepthPeelingLayers;
 		int NbMsaaSamples;
-		Standard_ShortReal RenderResolutionScale;
+		float RenderResolutionScale;
 		int ShadowMapResolution;
-		Standard_ShortReal ShadowMapBias;
+		float ShadowMapBias;
 		bool ToEnableDepthPrepass;
 		bool ToEnableAlphaToCoverage;
 		bool IsGlobalIlluminationEnabled;
@@ -12541,18 +12540,18 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		bool AdaptiveScreenSamplingAtomic;
 		bool ShowSamplingTiles;
 		bool TwoSidedBsdfModels;
-		Standard_ShortReal RadianceClampingValue;
+		float RadianceClampingValue;
 		bool RebuildRayTracingShaders;
 		int RayTracingTileSize;
 		int NbRayTracingTiles;
-		Standard_ShortReal CameraApertureRadius;
-		Standard_ShortReal CameraFocalPlaneDist;
+		float CameraApertureRadius;
+		float CameraFocalPlaneDist;
 		FrustumCulling FrustumCullingState;
 		Graphic3d_ToneMappingMethod ToneMappingMethod;
-		Standard_ShortReal Exposure;
-		Standard_ShortReal WhitePoint;
+		float Exposure;
+		float WhitePoint;
 		Graphic3d_StereoMode StereoMode;
-		Standard_ShortReal HmdFov2d;
+		float HmdFov2d;
 		Anaglyph AnaglyphFilter;
 		Graphic3d_Mat4 AnaglyphLeft;
 		Graphic3d_Mat4 AnaglyphRight;
@@ -12563,10 +12562,10 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 		opencascade::handle<Graphic3d_TransformPers > ChartPosition;
 		Graphic3d_Vec2i ChartSize;
 		opencascade::handle<Graphic3d_AspectText3d > StatsTextAspect;
-		Standard_ShortReal StatsUpdateInterval;
+		float StatsUpdateInterval;
 		int StatsTextHeight;
 		int StatsNbFrames;
-		Standard_ShortReal StatsMaxChartTime;
+		float StatsMaxChartTime;
 		PerfCounters CollectedStats;
 		bool ToShowStats;
 		/****************** Graphic3d_RenderingParams ******************/
@@ -12595,7 +12594,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") ResolutionRatio;
 		Standard_ShortReal ResolutionRatio();
 
@@ -15205,7 +15204,7 @@ class Graphic3d_Text : public Standard_Transient {
 
 Parameters
 ----------
-theHeight: Standard_ShortReal
+theHeight: float
 
 Returns
 -------
@@ -15242,7 +15241,7 @@ bool
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Height;
 		Standard_ShortReal Height();
 
@@ -15297,7 +15296,7 @@ None
 
 Parameters
 ----------
-theHeight: Standard_ShortReal
+theHeight: float
 
 Returns
 -------
@@ -15606,7 +15605,7 @@ int
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Rotation;
 		Standard_ShortReal Rotation();
 
@@ -15733,7 +15732,7 @@ None
 
 Parameters
 ----------
-theAngleDegrees: Standard_ShortReal
+theAngleDegrees: float
 
 Returns
 -------
@@ -16495,9 +16494,9 @@ None
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
 
 Returns
 -------
@@ -16529,15 +16528,14 @@ None
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
 
 Returns
 -------
-None
+theX: float
+theY: float
+theZ: float
 ") Coord;
-		void Coord(Standard_ShortReal & theX, Standard_ShortReal & theY, Standard_ShortReal & theZ);
+		void Coord(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** Coord ******************/
 		/**** md5 signature: 5ef85c73f9c80cea4d8dc9bec59c3e4d ****/
@@ -16566,7 +16564,7 @@ theOther: Graphic3d_Vertex
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Distance;
 		Standard_ShortReal Distance(const Graphic3d_Vertex & theOther);
 
@@ -16585,9 +16583,9 @@ Standard_ShortReal
 
 Parameters
 ----------
-theX: Standard_ShortReal
-theY: Standard_ShortReal
-theZ: Standard_ShortReal
+theX: float
+theY: float
+theZ: float
 
 Returns
 -------
@@ -16619,7 +16617,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") X;
 		Standard_ShortReal X();
 
@@ -16630,7 +16628,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Y;
 		Standard_ShortReal Y();
 
@@ -16641,7 +16639,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Z;
 		Standard_ShortReal Z();
 
@@ -18028,7 +18026,7 @@ None
 
 Parameters
 ----------
-theWidth: Standard_ShortReal
+theWidth: float
 
 Returns
 -------
@@ -18054,7 +18052,7 @@ Aspect_TypeOfLine
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Width;
 		Standard_ShortReal Width();
 
@@ -18168,7 +18166,7 @@ theHeight: int
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Scale;
 		Standard_ShortReal Scale();
 
@@ -18196,7 +18194,7 @@ None
 
 Parameters
 ----------
-theScale: Standard_ShortReal
+theScale: float
 
 Returns
 -------
@@ -18353,7 +18351,7 @@ TCollection_AsciiString
 
 Returns
 -------
-Standard_ShortReal
+float
 ") GetTextAngle;
 		Standard_ShortReal GetTextAngle();
 
@@ -21743,18 +21741,17 @@ None
 
 Parameters
 ----------
-theX1: Standard_ShortReal
-theY1: Standard_ShortReal
-theZ1: Standard_ShortReal
-theX2: Standard_ShortReal
-theY2: Standard_ShortReal
-theZ2: Standard_ShortReal
 
 Returns
 -------
-None
+theX1: float
+theY1: float
+theZ1: float
+theX2: float
+theY2: float
+theZ2: float
 ") Segment;
-		void Segment(Standard_ShortReal & theX1, Standard_ShortReal & theY1, Standard_ShortReal & theZ1, Standard_ShortReal & theX2, Standard_ShortReal & theY2, Standard_ShortReal & theZ2);
+		void Segment(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** SetSegment ******************/
 		/**** md5 signature: 9bdaf54faa2c28520a6560abbbfcb0b5 ****/
@@ -21763,12 +21760,12 @@ None
 
 Parameters
 ----------
-theX1: Standard_ShortReal
-theY1: Standard_ShortReal
-theZ1: Standard_ShortReal
-theX2: Standard_ShortReal
-theY2: Standard_ShortReal
-theZ2: Standard_ShortReal
+theX1: float
+theY1: float
+theZ1: float
+theX2: float
+theY2: float
+theZ2: float
 
 Returns
 -------
@@ -21855,16 +21852,15 @@ Graphic3d_NameOfTexturePlane
 
 Parameters
 ----------
-A: Standard_ShortReal
-B: Standard_ShortReal
-C: Standard_ShortReal
-D: Standard_ShortReal
 
 Returns
 -------
-None
+A: float
+B: float
+C: float
+D: float
 ") PlaneS;
-		void PlaneS(Standard_ShortReal & A, Standard_ShortReal & B, Standard_ShortReal & C, Standard_ShortReal & D);
+		void PlaneS(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** PlaneT ******************/
 		/**** md5 signature: 0f64deb688509a59d7d495773093d9b1 ****/
@@ -21873,16 +21869,15 @@ None
 
 Parameters
 ----------
-A: Standard_ShortReal
-B: Standard_ShortReal
-C: Standard_ShortReal
-D: Standard_ShortReal
 
 Returns
 -------
-None
+A: float
+B: float
+C: float
+D: float
 ") PlaneT;
-		void PlaneT(Standard_ShortReal & A, Standard_ShortReal & B, Standard_ShortReal & C, Standard_ShortReal & D);
+		void PlaneT(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** Rotation ******************/
 		/**** md5 signature: 340e4ac958aa75f22cf9693956702cf3 ****/
@@ -21891,13 +21886,12 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
 
 Returns
 -------
-None
+theVal: float
 ") Rotation;
-		void Rotation(Standard_ShortReal & theVal);
+		void Rotation(Standard_ShortReal &OutValue);
 
 		/****************** ScaleS ******************/
 		/**** md5 signature: e3176db3295b91f7337ec77e06b297fe ****/
@@ -21906,13 +21900,12 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
 
 Returns
 -------
-None
+theVal: float
 ") ScaleS;
-		void ScaleS(Standard_ShortReal & theVal);
+		void ScaleS(Standard_ShortReal &OutValue);
 
 		/****************** ScaleT ******************/
 		/**** md5 signature: 2181a84eae66e0185f0f40f06a9e33aa ****/
@@ -21921,13 +21914,12 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
 
 Returns
 -------
-None
+theVal: float
 ") ScaleT;
-		void ScaleT(Standard_ShortReal & theVal);
+		void ScaleT(Standard_ShortReal &OutValue);
 
 		/****************** SetPlane ******************/
 		/**** md5 signature: 5813f7058833e3ba0aacb0bc8ba39472 ****/
@@ -21951,10 +21943,10 @@ None
 
 Parameters
 ----------
-A: Standard_ShortReal
-B: Standard_ShortReal
-C: Standard_ShortReal
-D: Standard_ShortReal
+A: float
+B: float
+C: float
+D: float
 
 Returns
 -------
@@ -21969,10 +21961,10 @@ None
 
 Parameters
 ----------
-A: Standard_ShortReal
-B: Standard_ShortReal
-C: Standard_ShortReal
-D: Standard_ShortReal
+A: float
+B: float
+C: float
+D: float
 
 Returns
 -------
@@ -21987,7 +21979,7 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
+theVal: float
 
 Returns
 -------
@@ -22002,7 +21994,7 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
+theVal: float
 
 Returns
 -------
@@ -22017,7 +22009,7 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
+theVal: float
 
 Returns
 -------
@@ -22032,7 +22024,7 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
+theVal: float
 
 Returns
 -------
@@ -22047,7 +22039,7 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
+theVal: float
 
 Returns
 -------
@@ -22062,13 +22054,12 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
 
 Returns
 -------
-None
+theVal: float
 ") TranslateS;
-		void TranslateS(Standard_ShortReal & theVal);
+		void TranslateS(Standard_ShortReal &OutValue);
 
 		/****************** TranslateT ******************/
 		/**** md5 signature: 9fc4f8423a49d11a60255baa317fbaf1 ****/
@@ -22077,13 +22068,12 @@ None
 
 Parameters
 ----------
-theVal: Standard_ShortReal
 
 Returns
 -------
-None
+theVal: float
 ") TranslateT;
-		void TranslateT(Standard_ShortReal & theVal);
+		void TranslateT(Standard_ShortReal &OutValue);
 
 };
 

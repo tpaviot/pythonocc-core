@@ -372,13 +372,12 @@ BinObjMgt_Persistent
 
 Parameters
 ----------
-theValue: Standard_ShortReal
 
 Returns
 -------
-BinObjMgt_Persistent
+theValue: float
 ") GetShortReal;
-		const BinObjMgt_Persistent & GetShortReal(Standard_ShortReal & theValue);
+		const BinObjMgt_Persistent & GetShortReal(Standard_ShortReal &OutValue);
 
 		/****************** GetShortRealArray ******************/
 		/**** md5 signature: 241f5c28d908b020dc86c79662d7f205 ****/
@@ -725,7 +724,7 @@ BinObjMgt_Persistent
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------

@@ -1920,7 +1920,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") GetAlpha;
 		Standard_ShortReal GetAlpha();
 
@@ -9308,7 +9308,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") AlphaCutOff;
 		Standard_ShortReal AlphaCutOff();
 
@@ -9569,7 +9569,7 @@ None
 Parameters
 ----------
 theMode: Graphic3d_AlphaMode
-theCutOff: Standard_ShortReal,optional
+theCutOff: float,optional
 	default value is 0.5f
 
 Returns
@@ -9696,8 +9696,8 @@ class XCAFDoc_VisMaterialCommon {
 		Quantity_Color DiffuseColor;
 		Quantity_Color SpecularColor;
 		Quantity_Color EmissiveColor;
-		Standard_ShortReal Shininess;
-		Standard_ShortReal Transparency;
+		float Shininess;
+		float Transparency;
 		bool IsDefined;
 		/****************** XCAFDoc_VisMaterialCommon ******************/
 		/**** md5 signature: 902673da58471421f95b5ccf0bdee6a3 ****/
@@ -9754,9 +9754,9 @@ class XCAFDoc_VisMaterialPBR {
 		opencascade::handle<Image_Texture > NormalTexture;
 		Quantity_ColorRGBA BaseColor;
 		Graphic3d_Vec3 EmissiveFactor;
-		Standard_ShortReal Metallic;
-		Standard_ShortReal Roughness;
-		Standard_ShortReal RefractionIndex;
+		float Metallic;
+		float Roughness;
+		float RefractionIndex;
 		bool IsDefined;
 		/****************** XCAFDoc_VisMaterialPBR ******************/
 		/**** md5 signature: 11ea295424c444b06892c19d880417c9 ****/
