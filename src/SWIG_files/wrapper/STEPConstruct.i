@@ -2598,6 +2598,17 @@ opencascade::handle<StepVisual_PresentationStyleAssignment>
 ") MakeColorPSA;
 		opencascade::handle<StepVisual_PresentationStyleAssignment> MakeColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & SurfCol, const opencascade::handle<StepVisual_Colour> & CurveCol, const opencascade::handle<StepVisual_Colour> & RenderCol, const Standard_Real RenderTransp, const Standard_Boolean isForNAUO = Standard_False);
 
+		/****************** NbRootStyles ******************/
+		/**** md5 signature: 4bb6a5a6f49e5abb7085f5ef57337a5a ****/
+		%feature("compactdefaultargs") NbRootStyles;
+		%feature("autodoc", "Returns number of override styles.
+
+Returns
+-------
+int
+") NbRootStyles;
+		Standard_Integer NbRootStyles();
+
 		/****************** NbStyles ******************/
 		/**** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ****/
 		%feature("compactdefaultargs") NbStyles;
@@ -2608,6 +2619,21 @@ Returns
 int
 ") NbStyles;
 		Standard_Integer NbStyles();
+
+		/****************** RootStyle ******************/
+		/**** md5 signature: 97e67ad6592e4e36a6444e18652921fc ****/
+		%feature("compactdefaultargs") RootStyle;
+		%feature("autodoc", "Returns override style with given index.
+
+Parameters
+----------
+i: int
+
+Returns
+-------
+opencascade::handle<StepVisual_StyledItem>
+") RootStyle;
+		opencascade::handle<StepVisual_StyledItem> RootStyle(const Standard_Integer i);
 
 		/****************** Style ******************/
 		/**** md5 signature: e152f39ac13e328dca6d350a6f881da8 ****/

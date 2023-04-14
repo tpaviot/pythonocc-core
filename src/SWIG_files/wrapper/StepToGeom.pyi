@@ -7,6 +7,7 @@ from OCC.Core.StepGeom import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
 from OCC.Core.gp import *
+from OCC.Core.StepKinematics import *
 from OCC.Core.StepRepr import *
 from OCC.Core.TColStd import *
 
@@ -108,6 +109,8 @@ class steptogeom:
     def MakeVectorWithMagnitude(SV: StepGeom_Vector) -> Geom_VectorWithMagnitude: ...
     @staticmethod
     def MakeVectorWithMagnitude2d(SV: StepGeom_Vector) -> Geom2d_VectorWithMagnitude: ...
+    @staticmethod
+    def MakeYprRotation(SR: StepKinematics_SpatialRotation, theCntxt: StepRepr_GlobalUnitAssignedContext) -> TColStd_HArray1OfReal: ...
 
 # harray1 classes
 # harray2 classes

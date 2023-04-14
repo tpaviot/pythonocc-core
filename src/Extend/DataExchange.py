@@ -41,6 +41,7 @@ from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (
     XCAFDoc_DocumentTool_ShapeTool,
     XCAFDoc_DocumentTool_ColorTool,
+    XCAFDoc_ColorTool,
 )
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
@@ -60,6 +61,7 @@ try:
     HAVE_SVGWRITE = True
 except ImportError:
     HAVE_SVGWRITE = False
+
 
 ##########################
 # Step import and export #
@@ -279,11 +281,10 @@ def read_step_file_with_names_colors(filename):
 
             if not color_set:
                 if (
-                    color_tool.GetColor(lab, 0, c)
-                    or color_tool.GetColor(lab, 1, c)
-                    or color_tool.GetColor(lab, 2, c)
+                    XCAFDoc_ColorTool.GetColor(lab, 0, c)
+                    or XCAFDoc_ColorTool.GetColor(lab, 1, c)
+                    or XCAFDoc_ColorTool.GetColor(lab, 2, c)
                 ):
-
                     color_tool.SetInstanceColor(shape, 0, c)
                     color_tool.SetInstanceColor(shape, 1, c)
                     color_tool.SetInstanceColor(shape, 2, c)
@@ -329,9 +330,9 @@ def read_step_file_with_names_colors(filename):
 
                 if not color_set:
                     if (
-                        color_tool.GetColor(lab_subs, 0, c)
-                        or color_tool.GetColor(lab_subs, 1, c)
-                        or color_tool.GetColor(lab_subs, 2, c)
+                        XCAFDoc_ColorTool.GetColor(lab_subs, 0, c)
+                        or XCAFDoc_ColorTool.GetColor(lab_subs, 1, c)
+                        or XCAFDoc_ColorTool.GetColor(lab_subs, 2, c)
                     ):
                         color_tool.SetInstanceColor(shape, 0, c)
                         color_tool.SetInstanceColor(shape, 1, c)

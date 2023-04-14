@@ -22,12 +22,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS.hxx>
 #include<AIS_AngleDimension.hxx>
 #include<AIS_Animation.hxx>
+#include<AIS_AnimationAxisRotation.hxx>
 #include<AIS_AnimationCamera.hxx>
 #include<AIS_AnimationObject.hxx>
 #include<AIS_AnimationTimer.hxx>
 #include<AIS_AttributeFilter.hxx>
 #include<AIS_Axis.hxx>
 #include<AIS_BadEdgeFilter.hxx>
+#include<AIS_BaseAnimationObject.hxx>
 #include<AIS_C0RegularityFilter.hxx>
 #include<AIS_CameraFrustum.hxx>
 #include<AIS_Chamf2dDimension.hxx>
