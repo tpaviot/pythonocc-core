@@ -404,7 +404,7 @@ class TestWrapperFeatures(unittest.TestCase):
         box_shape = BRepPrimAPI_MakeBox(100, 200, 300).Shape()
         shp_dump = pickle.dumps(box_shape)
         # file to dump to/from
-        filename = os.path.join("test", "test_io", "box_shape_generated.brep")
+        filename = os.path.join(".", "test_io", "box_shape_generated.brep")
         # write to file
         with open(filename, "wb") as output:
             output.write(shp_dump)

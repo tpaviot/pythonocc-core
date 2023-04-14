@@ -78,6 +78,9 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_MakeFace,
 )
+from OCC.Core.BRepGProp import brepgprop_LinearProperties, brepgprop_SurfaceProperties, brepgprop_VolumeProperties
+from OCC.Core.BRepLProp import BRepLProp_CLProps, BRepLProp_SLProps
+from OCC.Core.GProp import GProp_Line
 from OCC.Core.TColgp import (
     TColgp_Array1OfPnt,
     TColgp_Array1OfPnt2d,
@@ -724,6 +727,14 @@ class TestGeometry(unittest.TestCase):
         #     self.assertTrue(
         #         isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve)
         #     )
+    
+    def test_brep_gprop(self):
+        p1 = gp_Pnt(5, -5, 0)
+        p2 = gp_Pnt(5, 5, 0)
+        ed1 = BRepBuilderAPI_MakeEdge(p2, p1).Edge()
+        c1 = BRepAdaptor_Curve(ed1)
+        #brepgprop_LinearProperties(c1, GProp_Line, SkipShared=True)
+        BRepLProp_CLProps(c1, 3, 0.1E-6)
 
 
 def suite():

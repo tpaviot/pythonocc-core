@@ -35,7 +35,7 @@ from OCC.Extend.DataExchange import (
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
-SAMPLES_DIRECTORY = os.path.join("test", "test_io")
+SAMPLES_DIRECTORY = os.path.join(".", "test_io")
 
 
 def get_test_fullname(filename):
