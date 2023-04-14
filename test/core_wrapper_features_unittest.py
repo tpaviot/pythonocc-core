@@ -37,7 +37,11 @@ from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
 from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
+from OCC.Core.BRepPrimAPI import (
+    BRepPrimAPI_MakeBox,
+    BRepPrimAPI_MakeCylinder,
+    BRepPrimAPI_MakeSphere,
+)
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeVertex,
     BRepBuilderAPI_MakeEdge,
@@ -68,12 +72,11 @@ from OCC.Core.TopoDS import (
     TopoDS_Vertex,
     TopoDS_Shape,
 )
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
 from OCC.Core.TColgp import TColgp_Array1OfPnt
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
-from OCC.Core.TopAbs import TopAbs_FACE
+from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_Orientation
 from OCC.Core.GProp import GProp_GProps
 from OCC.Core.BRepGProp import brepgprop_LinearProperties
 from OCC.Core.BRepClass import BRepClass_FaceClassifier
@@ -90,7 +93,7 @@ from OCC.Core.BRepCheck import (
 from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
 from OCC.Core.BRep import BRep_Tool_Curve
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
-from OCC.Core.HLRAlgo import HLRAlgo_Projector
+from OCC.Core.HLRAlgo import HLRAlgo_EdgeIterator, HLRAlgo_EdgeStatus, HLRAlgo_Projector
 from OCC.Core.TopTools import (
     TopTools_HArray1OfShape,
     TopTools_HArray2OfShape,
@@ -105,8 +108,6 @@ from OCC.Core.Exception import (
     MethodNotWrappedError,
     ClassNotWrappedError,
 )
-from OCC.Core.TopAbs import TopAbs_Orientation
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
@@ -911,25 +912,32 @@ class TestWrapperFeatures(unittest.TestCase):
         edge_4 = BRepClass_Edge()
 
         facetopo.InitEdges()
-        topabs_ori_1 = facetopo.CurrentEdge(
-            edge_1
-        )
+        topabs_ori_1 = facetopo.CurrentEdge(edge_1)
         facetopo.NextEdge()
-        topabs_ori_2 = facetopo.CurrentEdge(
-            edge_2
-        )
+        topabs_ori_2 = facetopo.CurrentEdge(edge_2)
         facetopo.NextEdge()
-        topabs_ori_3 = facetopo.CurrentEdge(
-            edge_3
-        )
+        topabs_ori_3 = facetopo.CurrentEdge(edge_3)
         facetopo.NextEdge()
-        topabs_ori_4 = facetopo.CurrentEdge(
-            edge_4
-        )
+        topabs_ori_4 = facetopo.CurrentEdge(edge_4)
         self.assertEqual(topabs_ori_1, TopAbs_Orientation.TopAbs_REVERSED)
         self.assertEqual(topabs_ori_2, TopAbs_Orientation.TopAbs_REVERSED)
         self.assertEqual(topabs_ori_3, TopAbs_Orientation.TopAbs_FORWARD)
         self.assertEqual(topabs_ori_4, TopAbs_Orientation.TopAbs_FORWARD)
+
+    def test_Standard_ShortReal_and_Standard_Real_returned_by_reference(self):
+        """the HLRAlgo_EdgeIterator.Visible returns both Standar_Real and Standard_ShortReal
+        by references"""
+        start = 1.0  # Standard_Real
+        tol_start = 2  # Standard_ShortReal
+        end = 3.0  # Standard_Real
+        tol_end = 4.0  # Standard_ShortReal
+
+        hlralgo_edge_status = HLRAlgo_EdgeStatus(start, tol_start, end, tol_end)
+        hlr_edg_it = HLRAlgo_EdgeIterator()
+        hlr_edg_it.InitVisible(hlralgo_edge_status)
+
+        # visible should return both 4 floats and doubles
+        self.assertEqual(hlr_edg_it.Visible(), (start, tol_start, end, tol_end))
 
 
 def suite() -> unittest.TestSuite:

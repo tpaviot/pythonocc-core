@@ -505,8 +505,8 @@ class RWObj_Material {
 		Quantity_Color AmbientColor;
 		Quantity_Color DiffuseColor;
 		Quantity_Color SpecularColor;
-		Standard_ShortReal Shininess;
-		Standard_ShortReal Transparency;
+		float Shininess;
+		float Transparency;
 		/****************** RWObj_Material ******************/
 		/**** md5 signature: e824e5ca5d324e17a53317770dbbc543 ****/
 		%feature("compactdefaultargs") RWObj_Material;

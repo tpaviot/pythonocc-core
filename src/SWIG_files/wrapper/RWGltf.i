@@ -1776,8 +1776,8 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 		Quantity_Color DiffuseColor;
 		Quantity_Color SpecularColor;
 		Quantity_Color EmissiveColor;
-		Standard_ShortReal Shininess;
-		Standard_ShortReal Transparency;
+		float Shininess;
+		float Transparency;
 		/****************** RWGltf_MaterialCommon ******************/
 		/**** md5 signature: 5f7db091e0ba1d4aaa046ad813cbb86f ****/
 		%feature("compactdefaultargs") RWGltf_MaterialCommon;
@@ -1814,9 +1814,9 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 		TCollection_AsciiString Name;
 		Quantity_ColorRGBA BaseColor;
 		Graphic3d_Vec3 EmissiveFactor;
-		Standard_ShortReal Metallic;
-		Standard_ShortReal Roughness;
-		Standard_ShortReal AlphaCutOff;
+		float Metallic;
+		float Roughness;
+		float AlphaCutOff;
 		RWGltf_GltfAlphaMode AlphaMode;
 		bool IsDoubleSided;
 		/****************** RWGltf_MaterialMetallicRoughness ******************/

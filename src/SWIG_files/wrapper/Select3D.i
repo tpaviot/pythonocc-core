@@ -284,9 +284,9 @@ None
 *********************/
 class Select3D_Pnt {
 	public:
-		Standard_ShortReal x;
-		Standard_ShortReal y;
-		Standard_ShortReal z;
+		float x;
+		float y;
+		float z;
 };
 
 

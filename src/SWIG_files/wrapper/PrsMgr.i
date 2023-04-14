@@ -595,14 +595,14 @@ PrsMgr_PresentableObject *
 
 Parameters
 ----------
-aFactor: Standard_ShortReal
-aUnits: Standard_ShortReal
 
 Returns
 -------
 aMode: int
+aFactor: float
+aUnits: float
 ") PolygonOffsets;
-		virtual void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal & aFactor, Standard_ShortReal & aUnits);
+		virtual void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** Presentations ******************/
 		/**** md5 signature: 20fe67fbbae7e29f768f3449d76ed496 ****/
@@ -891,9 +891,9 @@ None
 Parameters
 ----------
 aMode: int
-aFactor: Standard_ShortReal,optional
+aFactor: float,optional
 	default value is 1.0
-aUnits: Standard_ShortReal,optional
+aUnits: float,optional
 	default value is 0.0
 
 Returns

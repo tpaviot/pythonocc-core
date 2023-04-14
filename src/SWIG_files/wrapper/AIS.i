@@ -3972,14 +3972,14 @@ YSize: float
 Parameters
 ----------
 anObj: AIS_InteractiveObject
-aFactor: Standard_ShortReal
-aUnits: Standard_ShortReal
 
 Returns
 -------
 aMode: int
+aFactor: float
+aUnits: float
 ") PolygonOffsets;
-		void PolygonOffsets(const opencascade::handle<AIS_InteractiveObject> & anObj, Standard_Integer &OutValue, Standard_ShortReal & aFactor, Standard_ShortReal & aUnits);
+		void PolygonOffsets(const opencascade::handle<AIS_InteractiveObject> & anObj, Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** RebuildSelectionStructs ******************/
 		/**** md5 signature: fc018c2ec4a8be467c479b724e4da811 ****/
@@ -4794,8 +4794,8 @@ Parameters
 ----------
 theIObj: AIS_InteractiveObject
 theMode: int
-theFactor: Standard_ShortReal
-theUnits: Standard_ShortReal
+theFactor: float
+theUnits: float
 theToUpdateViewer: bool
 
 Returns
@@ -11275,7 +11275,7 @@ bool
 
 Parameters
 ----------
-theValue: Standard_ShortReal
+theValue: float
 
 Returns
 -------
@@ -11353,7 +11353,7 @@ None
 
 Parameters
 ----------
-theSideLength: Standard_ShortReal
+theSideLength: float
 
 Returns
 -------
@@ -11398,7 +11398,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Size;
 		Standard_ShortReal Size();
 
@@ -16032,7 +16032,7 @@ Quantity_Color
 
 Returns
 -------
-Standard_ShortReal
+float
 ") LaserLength;
 		Standard_ShortReal LaserLength();
 
@@ -16069,7 +16069,7 @@ None
 
 Parameters
 ----------
-theLength: Standard_ShortReal
+theLength: float
 
 Returns
 -------
@@ -16099,7 +16099,7 @@ None
 
 Parameters
 ----------
-theFactor: Standard_ShortReal
+theFactor: float
 
 Returns
 -------
@@ -16114,7 +16114,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") UnitFactor;
 		Standard_ShortReal UnitFactor();
 

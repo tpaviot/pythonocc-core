@@ -1950,9 +1950,9 @@ None
 Parameters
 ----------
 theSunDirection: gp_Dir
-theCloudiness: Standard_ShortReal
-theTime: Standard_ShortReal
-theFogginess: Standard_ShortReal
+theCloudiness: float
+theTime: float
+theFogginess: float
 theSize: int
 
 Returns
@@ -1968,7 +1968,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Cloudiness;
 		Standard_ShortReal Cloudiness();
 
@@ -1987,7 +1987,7 @@ Standard_ShortReal
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Fogginess;
 		Standard_ShortReal Fogginess();
 
@@ -1998,7 +1998,7 @@ Standard_ShortReal
 
 Parameters
 ----------
-theCloudiness: Standard_ShortReal
+theCloudiness: float
 
 Returns
 -------
@@ -2013,7 +2013,7 @@ None
 
 Parameters
 ----------
-theFogginess: Standard_ShortReal
+theFogginess: float
 
 Returns
 -------
@@ -2058,7 +2058,7 @@ None
 
 Parameters
 ----------
-theTime: Standard_ShortReal
+theTime: float
 
 Returns
 -------
@@ -2095,7 +2095,7 @@ gp_Dir
 
 Returns
 -------
-Standard_ShortReal
+float
 ") TimeParameter;
 		Standard_ShortReal TimeParameter();
 
@@ -3523,7 +3523,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") DisplayFrequency;
 		Standard_ShortReal DisplayFrequency();
 

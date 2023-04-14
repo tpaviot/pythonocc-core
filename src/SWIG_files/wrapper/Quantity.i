@@ -2646,7 +2646,7 @@ None
 
 Returns
 -------
-Standard_ShortReal
+float
 ") Alpha;
 		Standard_ShortReal Alpha();
 
@@ -2813,7 +2813,7 @@ bool
 
 Parameters
 ----------
-theAlpha: Standard_ShortReal
+theAlpha: float
 
 Returns
 -------
