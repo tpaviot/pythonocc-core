@@ -28,10 +28,6 @@ from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (
     XCAFDoc_DocumentTool,
     XCAFDoc_ColorGen,
-    XCAFDoc_DocumentTool_ShapeTool,
-    XCAFDoc_DocumentTool_ColorTool,
-    XCAFDoc_DocumentTool_LayerTool,
-    XCAFDoc_DocumentTool_MaterialTool,
     XCAFDoc_Material,
 )
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
@@ -128,8 +124,8 @@ class TestOCAF(unittest.TestCase):
         doc = TDocStd_Document("pythonocc-doc")
 
         # Get root assembly
-        shape_tool = XCAFDoc_DocumentTool_ShapeTool(doc.Main())
-        mat_tool = XCAFDoc_DocumentTool_MaterialTool(doc.Main())
+        shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+        mat_tool = XCAFDoc_DocumentTool.MaterialTool(doc.Main())
         step_reader = STEPCAFControl_Reader()
 
         status = step_reader.ReadFile("./test_io/eight_cyl.stp")
