@@ -433,3 +433,46 @@ TopoDS_Shape
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def topexp_CommonVertex(*args):
+	return topexp.CommonVertex(*args)
+
+@deprecated
+def topexp_FirstVertex(*args):
+	return topexp.FirstVertex(*args)
+
+@deprecated
+def topexp_LastVertex(*args):
+	return topexp.LastVertex(*args)
+
+@deprecated
+def topexp_MapShapes(*args):
+	return topexp.MapShapes(*args)
+
+@deprecated
+def topexp_MapShapes(*args):
+	return topexp.MapShapes(*args)
+
+@deprecated
+def topexp_MapShapes(*args):
+	return topexp.MapShapes(*args)
+
+@deprecated
+def topexp_MapShapesAndAncestors(*args):
+	return topexp.MapShapesAndAncestors(*args)
+
+@deprecated
+def topexp_MapShapesAndUniqueAncestors(*args):
+	return topexp.MapShapesAndUniqueAncestors(*args)
+
+@deprecated
+def topexp_Vertices(*args):
+	return topexp.Vertices(*args)
+
+@deprecated
+def topexp_Vertices(*args):
+	return topexp.Vertices(*args)
+
+}

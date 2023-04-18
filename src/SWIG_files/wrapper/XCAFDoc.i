@@ -10783,3 +10783,738 @@ class XCAFDoc_GeomTolerance:
 %pythoncode {
 XCAFDoc_PartId=OCC.Core.TCollection.TCollection_AsciiString
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xcafdoc_AssemblyGUID(*args):
+	return xcafdoc.AssemblyGUID(*args)
+
+@deprecated
+def xcafdoc_AttributeInfo(*args):
+	return xcafdoc.AttributeInfo(*args)
+
+@deprecated
+def xcafdoc_ColorByLayerGUID(*args):
+	return xcafdoc.ColorByLayerGUID(*args)
+
+@deprecated
+def xcafdoc_ColorRefGUID(*args):
+	return xcafdoc.ColorRefGUID(*args)
+
+@deprecated
+def xcafdoc_DatumRefGUID(*args):
+	return xcafdoc.DatumRefGUID(*args)
+
+@deprecated
+def xcafdoc_DatumTolRefGUID(*args):
+	return xcafdoc.DatumTolRefGUID(*args)
+
+@deprecated
+def xcafdoc_DimTolRefGUID(*args):
+	return xcafdoc.DimTolRefGUID(*args)
+
+@deprecated
+def xcafdoc_DimensionRefFirstGUID(*args):
+	return xcafdoc.DimensionRefFirstGUID(*args)
+
+@deprecated
+def xcafdoc_DimensionRefSecondGUID(*args):
+	return xcafdoc.DimensionRefSecondGUID(*args)
+
+@deprecated
+def xcafdoc_ExternRefGUID(*args):
+	return xcafdoc.ExternRefGUID(*args)
+
+@deprecated
+def xcafdoc_GeomToleranceRefGUID(*args):
+	return xcafdoc.GeomToleranceRefGUID(*args)
+
+@deprecated
+def xcafdoc_InvisibleGUID(*args):
+	return xcafdoc.InvisibleGUID(*args)
+
+@deprecated
+def xcafdoc_LayerRefGUID(*args):
+	return xcafdoc.LayerRefGUID(*args)
+
+@deprecated
+def xcafdoc_LockGUID(*args):
+	return xcafdoc.LockGUID(*args)
+
+@deprecated
+def xcafdoc_MaterialRefGUID(*args):
+	return xcafdoc.MaterialRefGUID(*args)
+
+@deprecated
+def xcafdoc_NoteRefGUID(*args):
+	return xcafdoc.NoteRefGUID(*args)
+
+@deprecated
+def xcafdoc_SHUORefGUID(*args):
+	return xcafdoc.SHUORefGUID(*args)
+
+@deprecated
+def xcafdoc_ShapeRefGUID(*args):
+	return xcafdoc.ShapeRefGUID(*args)
+
+@deprecated
+def xcafdoc_ViewRefAnnotationGUID(*args):
+	return xcafdoc.ViewRefAnnotationGUID(*args)
+
+@deprecated
+def xcafdoc_ViewRefGDTGUID(*args):
+	return xcafdoc.ViewRefGDTGUID(*args)
+
+@deprecated
+def xcafdoc_ViewRefGUID(*args):
+	return xcafdoc.ViewRefGUID(*args)
+
+@deprecated
+def xcafdoc_ViewRefNoteGUID(*args):
+	return xcafdoc.ViewRefNoteGUID(*args)
+
+@deprecated
+def xcafdoc_ViewRefPlaneGUID(*args):
+	return xcafdoc.ViewRefPlaneGUID(*args)
+
+@deprecated
+def xcafdoc_ViewRefShapeGUID(*args):
+	return xcafdoc.ViewRefShapeGUID(*args)
+
+@deprecated
+def xcafdoc_VisMaterialRefGUID(*args):
+	return xcafdoc.VisMaterialRefGUID(*args)
+
+@deprecated
+def XCAFDoc_Area_Get(*args):
+	return XCAFDoc_Area.Get(*args)
+
+@deprecated
+def XCAFDoc_Area_GetID(*args):
+	return XCAFDoc_Area.GetID(*args)
+
+@deprecated
+def XCAFDoc_Area_Set(*args):
+	return XCAFDoc_Area.Set(*args)
+
+@deprecated
+def XCAFDoc_AssemblyItemRef_Get(*args):
+	return XCAFDoc_AssemblyItemRef.Get(*args)
+
+@deprecated
+def XCAFDoc_AssemblyItemRef_GetID(*args):
+	return XCAFDoc_AssemblyItemRef.GetID(*args)
+
+@deprecated
+def XCAFDoc_AssemblyItemRef_Set(*args):
+	return XCAFDoc_AssemblyItemRef.Set(*args)
+
+@deprecated
+def XCAFDoc_AssemblyItemRef_Set(*args):
+	return XCAFDoc_AssemblyItemRef.Set(*args)
+
+@deprecated
+def XCAFDoc_AssemblyItemRef_Set(*args):
+	return XCAFDoc_AssemblyItemRef.Set(*args)
+
+@deprecated
+def XCAFDoc_Centroid_Get(*args):
+	return XCAFDoc_Centroid.Get(*args)
+
+@deprecated
+def XCAFDoc_Centroid_GetID(*args):
+	return XCAFDoc_Centroid.GetID(*args)
+
+@deprecated
+def XCAFDoc_Centroid_Set(*args):
+	return XCAFDoc_Centroid.Set(*args)
+
+@deprecated
+def XCAFDoc_ClippingPlaneTool_GetID(*args):
+	return XCAFDoc_ClippingPlaneTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_ClippingPlaneTool_Set(*args):
+	return XCAFDoc_ClippingPlaneTool.Set(*args)
+
+@deprecated
+def XCAFDoc_Color_GetID(*args):
+	return XCAFDoc_Color.GetID(*args)
+
+@deprecated
+def XCAFDoc_Color_Set(*args):
+	return XCAFDoc_Color.Set(*args)
+
+@deprecated
+def XCAFDoc_Color_Set(*args):
+	return XCAFDoc_Color.Set(*args)
+
+@deprecated
+def XCAFDoc_Color_Set(*args):
+	return XCAFDoc_Color.Set(*args)
+
+@deprecated
+def XCAFDoc_Color_Set(*args):
+	return XCAFDoc_Color.Set(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_AutoNaming(*args):
+	return XCAFDoc_ColorTool.AutoNaming(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_GetColor(*args):
+	return XCAFDoc_ColorTool.GetColor(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_GetColor(*args):
+	return XCAFDoc_ColorTool.GetColor(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_GetColor(*args):
+	return XCAFDoc_ColorTool.GetColor(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_GetColor(*args):
+	return XCAFDoc_ColorTool.GetColor(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_GetColor(*args):
+	return XCAFDoc_ColorTool.GetColor(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_GetID(*args):
+	return XCAFDoc_ColorTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_IsVisible(*args):
+	return XCAFDoc_ColorTool.IsVisible(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_Set(*args):
+	return XCAFDoc_ColorTool.Set(*args)
+
+@deprecated
+def XCAFDoc_ColorTool_SetAutoNaming(*args):
+	return XCAFDoc_ColorTool.SetAutoNaming(*args)
+
+@deprecated
+def XCAFDoc_Datum_GetID(*args):
+	return XCAFDoc_Datum.GetID(*args)
+
+@deprecated
+def XCAFDoc_Datum_Set(*args):
+	return XCAFDoc_Datum.Set(*args)
+
+@deprecated
+def XCAFDoc_Datum_Set(*args):
+	return XCAFDoc_Datum.Set(*args)
+
+@deprecated
+def XCAFDoc_DimTol_GetID(*args):
+	return XCAFDoc_DimTol.GetID(*args)
+
+@deprecated
+def XCAFDoc_DimTol_Set(*args):
+	return XCAFDoc_DimTol.Set(*args)
+
+@deprecated
+def XCAFDoc_DimTolTool_GetDatumOfTolerLabels(*args):
+	return XCAFDoc_DimTolTool.GetDatumOfTolerLabels(*args)
+
+@deprecated
+def XCAFDoc_DimTolTool_GetDatumWithObjectOfTolerLabels(*args):
+	return XCAFDoc_DimTolTool.GetDatumWithObjectOfTolerLabels(*args)
+
+@deprecated
+def XCAFDoc_DimTolTool_GetID(*args):
+	return XCAFDoc_DimTolTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_DimTolTool_GetRefShapeLabel(*args):
+	return XCAFDoc_DimTolTool.GetRefShapeLabel(*args)
+
+@deprecated
+def XCAFDoc_DimTolTool_Set(*args):
+	return XCAFDoc_DimTolTool.Set(*args)
+
+@deprecated
+def XCAFDoc_Dimension_GetID(*args):
+	return XCAFDoc_Dimension.GetID(*args)
+
+@deprecated
+def XCAFDoc_Dimension_Set(*args):
+	return XCAFDoc_Dimension.Set(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckClippingPlaneTool(*args):
+	return XCAFDoc_DocumentTool.CheckClippingPlaneTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckColorTool(*args):
+	return XCAFDoc_DocumentTool.CheckColorTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckDimTolTool(*args):
+	return XCAFDoc_DocumentTool.CheckDimTolTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckLayerTool(*args):
+	return XCAFDoc_DocumentTool.CheckLayerTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckMaterialTool(*args):
+	return XCAFDoc_DocumentTool.CheckMaterialTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckNotesTool(*args):
+	return XCAFDoc_DocumentTool.CheckNotesTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckShapeTool(*args):
+	return XCAFDoc_DocumentTool.CheckShapeTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckViewTool(*args):
+	return XCAFDoc_DocumentTool.CheckViewTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_CheckVisMaterialTool(*args):
+	return XCAFDoc_DocumentTool.CheckVisMaterialTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ClippingPlaneTool(*args):
+	return XCAFDoc_DocumentTool.ClippingPlaneTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ClippingPlanesLabel(*args):
+	return XCAFDoc_DocumentTool.ClippingPlanesLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ColorTool(*args):
+	return XCAFDoc_DocumentTool.ColorTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ColorsLabel(*args):
+	return XCAFDoc_DocumentTool.ColorsLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_DGTsLabel(*args):
+	return XCAFDoc_DocumentTool.DGTsLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_DimTolTool(*args):
+	return XCAFDoc_DocumentTool.DimTolTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_DocLabel(*args):
+	return XCAFDoc_DocumentTool.DocLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_GetID(*args):
+	return XCAFDoc_DocumentTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_GetLengthUnit(*args):
+	return XCAFDoc_DocumentTool.GetLengthUnit(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_GetLengthUnit(*args):
+	return XCAFDoc_DocumentTool.GetLengthUnit(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_IsXCAFDocument(*args):
+	return XCAFDoc_DocumentTool.IsXCAFDocument(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_LayerTool(*args):
+	return XCAFDoc_DocumentTool.LayerTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_LayersLabel(*args):
+	return XCAFDoc_DocumentTool.LayersLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_MaterialTool(*args):
+	return XCAFDoc_DocumentTool.MaterialTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_MaterialsLabel(*args):
+	return XCAFDoc_DocumentTool.MaterialsLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_NotesLabel(*args):
+	return XCAFDoc_DocumentTool.NotesLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_NotesTool(*args):
+	return XCAFDoc_DocumentTool.NotesTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_Set(*args):
+	return XCAFDoc_DocumentTool.Set(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_SetLengthUnit(*args):
+	return XCAFDoc_DocumentTool.SetLengthUnit(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_SetLengthUnit(*args):
+	return XCAFDoc_DocumentTool.SetLengthUnit(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ShapeTool(*args):
+	return XCAFDoc_DocumentTool.ShapeTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ShapesLabel(*args):
+	return XCAFDoc_DocumentTool.ShapesLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ViewTool(*args):
+	return XCAFDoc_DocumentTool.ViewTool(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_ViewsLabel(*args):
+	return XCAFDoc_DocumentTool.ViewsLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_VisMaterialLabel(*args):
+	return XCAFDoc_DocumentTool.VisMaterialLabel(*args)
+
+@deprecated
+def XCAFDoc_DocumentTool_VisMaterialTool(*args):
+	return XCAFDoc_DocumentTool.VisMaterialTool(*args)
+
+@deprecated
+def XCAFDoc_Editor_CloneMetaData(*args):
+	return XCAFDoc_Editor.CloneMetaData(*args)
+
+@deprecated
+def XCAFDoc_Editor_CloneShapeLabel(*args):
+	return XCAFDoc_Editor.CloneShapeLabel(*args)
+
+@deprecated
+def XCAFDoc_Editor_Expand(*args):
+	return XCAFDoc_Editor.Expand(*args)
+
+@deprecated
+def XCAFDoc_Editor_Expand(*args):
+	return XCAFDoc_Editor.Expand(*args)
+
+@deprecated
+def XCAFDoc_Editor_Extract(*args):
+	return XCAFDoc_Editor.Extract(*args)
+
+@deprecated
+def XCAFDoc_Editor_Extract(*args):
+	return XCAFDoc_Editor.Extract(*args)
+
+@deprecated
+def XCAFDoc_Editor_RescaleGeometry(*args):
+	return XCAFDoc_Editor.RescaleGeometry(*args)
+
+@deprecated
+def XCAFDoc_GraphNode_Find(*args):
+	return XCAFDoc_GraphNode.Find(*args)
+
+@deprecated
+def XCAFDoc_GraphNode_GetDefaultGraphID(*args):
+	return XCAFDoc_GraphNode.GetDefaultGraphID(*args)
+
+@deprecated
+def XCAFDoc_GraphNode_Set(*args):
+	return XCAFDoc_GraphNode.Set(*args)
+
+@deprecated
+def XCAFDoc_GraphNode_Set(*args):
+	return XCAFDoc_GraphNode.Set(*args)
+
+@deprecated
+def XCAFDoc_LayerTool_GetID(*args):
+	return XCAFDoc_LayerTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_LayerTool_GetShapesOfLayer(*args):
+	return XCAFDoc_LayerTool.GetShapesOfLayer(*args)
+
+@deprecated
+def XCAFDoc_LayerTool_Set(*args):
+	return XCAFDoc_LayerTool.Set(*args)
+
+@deprecated
+def XCAFDoc_LengthUnit_GetID(*args):
+	return XCAFDoc_LengthUnit.GetID(*args)
+
+@deprecated
+def XCAFDoc_LengthUnit_Set(*args):
+	return XCAFDoc_LengthUnit.Set(*args)
+
+@deprecated
+def XCAFDoc_LengthUnit_Set(*args):
+	return XCAFDoc_LengthUnit.Set(*args)
+
+@deprecated
+def XCAFDoc_LengthUnit_Set(*args):
+	return XCAFDoc_LengthUnit.Set(*args)
+
+@deprecated
+def XCAFDoc_Location_GetID(*args):
+	return XCAFDoc_Location.GetID(*args)
+
+@deprecated
+def XCAFDoc_Location_Set(*args):
+	return XCAFDoc_Location.Set(*args)
+
+@deprecated
+def XCAFDoc_Material_GetID(*args):
+	return XCAFDoc_Material.GetID(*args)
+
+@deprecated
+def XCAFDoc_Material_Set(*args):
+	return XCAFDoc_Material.Set(*args)
+
+@deprecated
+def XCAFDoc_MaterialTool_GetDensityForShape(*args):
+	return XCAFDoc_MaterialTool.GetDensityForShape(*args)
+
+@deprecated
+def XCAFDoc_MaterialTool_GetID(*args):
+	return XCAFDoc_MaterialTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_MaterialTool_GetMaterial(*args):
+	return XCAFDoc_MaterialTool.GetMaterial(*args)
+
+@deprecated
+def XCAFDoc_MaterialTool_Set(*args):
+	return XCAFDoc_MaterialTool.Set(*args)
+
+@deprecated
+def XCAFDoc_Note_Get(*args):
+	return XCAFDoc_Note.Get(*args)
+
+@deprecated
+def XCAFDoc_Note_IsMine(*args):
+	return XCAFDoc_Note.IsMine(*args)
+
+@deprecated
+def XCAFDoc_NotesTool_GetID(*args):
+	return XCAFDoc_NotesTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_NotesTool_Set(*args):
+	return XCAFDoc_NotesTool.Set(*args)
+
+@deprecated
+def XCAFDoc_ShapeMapTool_GetID(*args):
+	return XCAFDoc_ShapeMapTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_ShapeMapTool_Set(*args):
+	return XCAFDoc_ShapeMapTool.Set(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_AutoNaming(*args):
+	return XCAFDoc_ShapeTool.AutoNaming(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_FindSHUO(*args):
+	return XCAFDoc_ShapeTool.FindSHUO(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetAllComponentSHUO(*args):
+	return XCAFDoc_ShapeTool.GetAllComponentSHUO(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetComponents(*args):
+	return XCAFDoc_ShapeTool.GetComponents(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetExternRefs(*args):
+	return XCAFDoc_ShapeTool.GetExternRefs(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetID(*args):
+	return XCAFDoc_ShapeTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetLocation(*args):
+	return XCAFDoc_ShapeTool.GetLocation(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetOneShape(*args):
+	return XCAFDoc_ShapeTool.GetOneShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetReferredShape(*args):
+	return XCAFDoc_ShapeTool.GetReferredShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetSHUO(*args):
+	return XCAFDoc_ShapeTool.GetSHUO(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetSHUONextUsage(*args):
+	return XCAFDoc_ShapeTool.GetSHUONextUsage(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetSHUOUpperUsage(*args):
+	return XCAFDoc_ShapeTool.GetSHUOUpperUsage(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetShape(*args):
+	return XCAFDoc_ShapeTool.GetShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetShape(*args):
+	return XCAFDoc_ShapeTool.GetShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetSubShapes(*args):
+	return XCAFDoc_ShapeTool.GetSubShapes(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_GetUsers(*args):
+	return XCAFDoc_ShapeTool.GetUsers(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsAssembly(*args):
+	return XCAFDoc_ShapeTool.IsAssembly(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsComponent(*args):
+	return XCAFDoc_ShapeTool.IsComponent(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsCompound(*args):
+	return XCAFDoc_ShapeTool.IsCompound(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsExternRef(*args):
+	return XCAFDoc_ShapeTool.IsExternRef(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsFree(*args):
+	return XCAFDoc_ShapeTool.IsFree(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsReference(*args):
+	return XCAFDoc_ShapeTool.IsReference(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsShape(*args):
+	return XCAFDoc_ShapeTool.IsShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsSimpleShape(*args):
+	return XCAFDoc_ShapeTool.IsSimpleShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_IsSubShape(*args):
+	return XCAFDoc_ShapeTool.IsSubShape(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_NbComponents(*args):
+	return XCAFDoc_ShapeTool.NbComponents(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_Set(*args):
+	return XCAFDoc_ShapeTool.Set(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_SetAutoNaming(*args):
+	return XCAFDoc_ShapeTool.SetAutoNaming(*args)
+
+@deprecated
+def XCAFDoc_View_GetID(*args):
+	return XCAFDoc_View.GetID(*args)
+
+@deprecated
+def XCAFDoc_View_Set(*args):
+	return XCAFDoc_View.Set(*args)
+
+@deprecated
+def XCAFDoc_ViewTool_GetID(*args):
+	return XCAFDoc_ViewTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_ViewTool_Set(*args):
+	return XCAFDoc_ViewTool.Set(*args)
+
+@deprecated
+def XCAFDoc_VisMaterial_GetID(*args):
+	return XCAFDoc_VisMaterial.GetID(*args)
+
+@deprecated
+def XCAFDoc_VisMaterialTool_GetID(*args):
+	return XCAFDoc_VisMaterialTool.GetID(*args)
+
+@deprecated
+def XCAFDoc_VisMaterialTool_GetMaterial(*args):
+	return XCAFDoc_VisMaterialTool.GetMaterial(*args)
+
+@deprecated
+def XCAFDoc_VisMaterialTool_GetShapeMaterial(*args):
+	return XCAFDoc_VisMaterialTool.GetShapeMaterial(*args)
+
+@deprecated
+def XCAFDoc_VisMaterialTool_GetShapeMaterial(*args):
+	return XCAFDoc_VisMaterialTool.GetShapeMaterial(*args)
+
+@deprecated
+def XCAFDoc_VisMaterialTool_Set(*args):
+	return XCAFDoc_VisMaterialTool.Set(*args)
+
+@deprecated
+def XCAFDoc_Volume_Get(*args):
+	return XCAFDoc_Volume.Get(*args)
+
+@deprecated
+def XCAFDoc_Volume_GetID(*args):
+	return XCAFDoc_Volume.GetID(*args)
+
+@deprecated
+def XCAFDoc_Volume_Set(*args):
+	return XCAFDoc_Volume.Set(*args)
+
+@deprecated
+def XCAFDoc_NoteBinData_Get(*args):
+	return XCAFDoc_NoteBinData.Get(*args)
+
+@deprecated
+def XCAFDoc_NoteBinData_GetID(*args):
+	return XCAFDoc_NoteBinData.GetID(*args)
+
+@deprecated
+def XCAFDoc_NoteBinData_Set(*args):
+	return XCAFDoc_NoteBinData.Set(*args)
+
+@deprecated
+def XCAFDoc_NoteBinData_Set(*args):
+	return XCAFDoc_NoteBinData.Set(*args)
+
+@deprecated
+def XCAFDoc_NoteComment_Get(*args):
+	return XCAFDoc_NoteComment.Get(*args)
+
+@deprecated
+def XCAFDoc_NoteComment_GetID(*args):
+	return XCAFDoc_NoteComment.GetID(*args)
+
+@deprecated
+def XCAFDoc_NoteComment_Set(*args):
+	return XCAFDoc_NoteComment.Set(*args)
+
+@deprecated
+def XCAFDoc_NoteBalloon_Get(*args):
+	return XCAFDoc_NoteBalloon.Get(*args)
+
+@deprecated
+def XCAFDoc_NoteBalloon_GetID(*args):
+	return XCAFDoc_NoteBalloon.GetID(*args)
+
+@deprecated
+def XCAFDoc_NoteBalloon_Set(*args):
+	return XCAFDoc_NoteBalloon.Set(*args)
+
+}

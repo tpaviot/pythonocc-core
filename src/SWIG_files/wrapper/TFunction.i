@@ -1948,3 +1948,58 @@ class TFunction_HArray1OfDataMapOfGUIDDriver : public TFunction_Array1OfDataMapO
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def TFunction_DriverTable_Get(*args):
+	return TFunction_DriverTable.Get(*args)
+
+@deprecated
+def TFunction_Function_GetID(*args):
+	return TFunction_Function.GetID(*args)
+
+@deprecated
+def TFunction_Function_Set(*args):
+	return TFunction_Function.Set(*args)
+
+@deprecated
+def TFunction_Function_Set(*args):
+	return TFunction_Function.Set(*args)
+
+@deprecated
+def TFunction_GraphNode_GetID(*args):
+	return TFunction_GraphNode.GetID(*args)
+
+@deprecated
+def TFunction_GraphNode_Set(*args):
+	return TFunction_GraphNode.Set(*args)
+
+@deprecated
+def TFunction_IFunction_DeleteFunction(*args):
+	return TFunction_IFunction.DeleteFunction(*args)
+
+@deprecated
+def TFunction_IFunction_NewFunction(*args):
+	return TFunction_IFunction.NewFunction(*args)
+
+@deprecated
+def TFunction_IFunction_UpdateDependencies(*args):
+	return TFunction_IFunction.UpdateDependencies(*args)
+
+@deprecated
+def TFunction_Logbook_GetID(*args):
+	return TFunction_Logbook.GetID(*args)
+
+@deprecated
+def TFunction_Logbook_Set(*args):
+	return TFunction_Logbook.Set(*args)
+
+@deprecated
+def TFunction_Scope_GetID(*args):
+	return TFunction_Scope.GetID(*args)
+
+@deprecated
+def TFunction_Scope_Set(*args):
+	return TFunction_Scope.Set(*args)
+
+}

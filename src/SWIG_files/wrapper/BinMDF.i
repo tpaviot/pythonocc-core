@@ -591,3 +591,10 @@ None
 %pythoncode {
 BinMDF_StringIdMap=OCC.Core.TColStd.TColStd_DataMapOfAsciiStringInteger
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmdf_AddDrivers(*args):
+	return binmdf.AddDrivers(*args)
+
+}

@@ -793,3 +793,10 @@ TopLoc_ItemLocation
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def TopLoc_Location_ScalePrec(*args):
+	return TopLoc_Location.ScalePrec(*args)
+
+}

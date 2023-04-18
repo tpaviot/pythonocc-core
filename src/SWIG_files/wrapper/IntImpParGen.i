@@ -185,3 +185,22 @@ class IntImpParGen_ImpTool:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def intimppargen_DeterminePosition(*args):
+	return intimppargen.DeterminePosition(*args)
+
+@deprecated
+def intimppargen_DetermineTransition(*args):
+	return intimppargen.DetermineTransition(*args)
+
+@deprecated
+def intimppargen_DetermineTransition(*args):
+	return intimppargen.DetermineTransition(*args)
+
+@deprecated
+def intimppargen_NormalizeOnDomain(*args):
+	return intimppargen.NormalizeOnDomain(*args)
+
+}

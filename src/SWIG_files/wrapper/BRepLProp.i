@@ -931,3 +931,66 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def breplprop_Continuity(*args):
+	return breplprop.Continuity(*args)
+
+@deprecated
+def breplprop_Continuity(*args):
+	return breplprop.Continuity(*args)
+
+@deprecated
+def BRepLProp_CurveTool_Continuity(*args):
+	return BRepLProp_CurveTool.Continuity(*args)
+
+@deprecated
+def BRepLProp_CurveTool_D1(*args):
+	return BRepLProp_CurveTool.D1(*args)
+
+@deprecated
+def BRepLProp_CurveTool_D2(*args):
+	return BRepLProp_CurveTool.D2(*args)
+
+@deprecated
+def BRepLProp_CurveTool_D3(*args):
+	return BRepLProp_CurveTool.D3(*args)
+
+@deprecated
+def BRepLProp_CurveTool_FirstParameter(*args):
+	return BRepLProp_CurveTool.FirstParameter(*args)
+
+@deprecated
+def BRepLProp_CurveTool_LastParameter(*args):
+	return BRepLProp_CurveTool.LastParameter(*args)
+
+@deprecated
+def BRepLProp_CurveTool_Value(*args):
+	return BRepLProp_CurveTool.Value(*args)
+
+@deprecated
+def BRepLProp_SurfaceTool_Bounds(*args):
+	return BRepLProp_SurfaceTool.Bounds(*args)
+
+@deprecated
+def BRepLProp_SurfaceTool_Continuity(*args):
+	return BRepLProp_SurfaceTool.Continuity(*args)
+
+@deprecated
+def BRepLProp_SurfaceTool_D1(*args):
+	return BRepLProp_SurfaceTool.D1(*args)
+
+@deprecated
+def BRepLProp_SurfaceTool_D2(*args):
+	return BRepLProp_SurfaceTool.D2(*args)
+
+@deprecated
+def BRepLProp_SurfaceTool_DN(*args):
+	return BRepLProp_SurfaceTool.DN(*args)
+
+@deprecated
+def BRepLProp_SurfaceTool_Value(*args):
+	return BRepLProp_SurfaceTool.Value(*args)
+
+}

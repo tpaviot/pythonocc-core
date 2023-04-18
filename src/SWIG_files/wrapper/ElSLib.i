@@ -1619,3 +1619,310 @@ gp_Pnt
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def elslib_ConeD0(*args):
+	return elslib.ConeD0(*args)
+
+@deprecated
+def elslib_ConeD1(*args):
+	return elslib.ConeD1(*args)
+
+@deprecated
+def elslib_ConeD2(*args):
+	return elslib.ConeD2(*args)
+
+@deprecated
+def elslib_ConeD3(*args):
+	return elslib.ConeD3(*args)
+
+@deprecated
+def elslib_ConeDN(*args):
+	return elslib.ConeDN(*args)
+
+@deprecated
+def elslib_ConeParameters(*args):
+	return elslib.ConeParameters(*args)
+
+@deprecated
+def elslib_ConeUIso(*args):
+	return elslib.ConeUIso(*args)
+
+@deprecated
+def elslib_ConeVIso(*args):
+	return elslib.ConeVIso(*args)
+
+@deprecated
+def elslib_ConeValue(*args):
+	return elslib.ConeValue(*args)
+
+@deprecated
+def elslib_CylinderD0(*args):
+	return elslib.CylinderD0(*args)
+
+@deprecated
+def elslib_CylinderD1(*args):
+	return elslib.CylinderD1(*args)
+
+@deprecated
+def elslib_CylinderD2(*args):
+	return elslib.CylinderD2(*args)
+
+@deprecated
+def elslib_CylinderD3(*args):
+	return elslib.CylinderD3(*args)
+
+@deprecated
+def elslib_CylinderDN(*args):
+	return elslib.CylinderDN(*args)
+
+@deprecated
+def elslib_CylinderParameters(*args):
+	return elslib.CylinderParameters(*args)
+
+@deprecated
+def elslib_CylinderUIso(*args):
+	return elslib.CylinderUIso(*args)
+
+@deprecated
+def elslib_CylinderVIso(*args):
+	return elslib.CylinderVIso(*args)
+
+@deprecated
+def elslib_CylinderValue(*args):
+	return elslib.CylinderValue(*args)
+
+@deprecated
+def elslib_D0(*args):
+	return elslib.D0(*args)
+
+@deprecated
+def elslib_D0(*args):
+	return elslib.D0(*args)
+
+@deprecated
+def elslib_D0(*args):
+	return elslib.D0(*args)
+
+@deprecated
+def elslib_D0(*args):
+	return elslib.D0(*args)
+
+@deprecated
+def elslib_D0(*args):
+	return elslib.D0(*args)
+
+@deprecated
+def elslib_D1(*args):
+	return elslib.D1(*args)
+
+@deprecated
+def elslib_D1(*args):
+	return elslib.D1(*args)
+
+@deprecated
+def elslib_D1(*args):
+	return elslib.D1(*args)
+
+@deprecated
+def elslib_D1(*args):
+	return elslib.D1(*args)
+
+@deprecated
+def elslib_D1(*args):
+	return elslib.D1(*args)
+
+@deprecated
+def elslib_D2(*args):
+	return elslib.D2(*args)
+
+@deprecated
+def elslib_D2(*args):
+	return elslib.D2(*args)
+
+@deprecated
+def elslib_D2(*args):
+	return elslib.D2(*args)
+
+@deprecated
+def elslib_D2(*args):
+	return elslib.D2(*args)
+
+@deprecated
+def elslib_D3(*args):
+	return elslib.D3(*args)
+
+@deprecated
+def elslib_D3(*args):
+	return elslib.D3(*args)
+
+@deprecated
+def elslib_D3(*args):
+	return elslib.D3(*args)
+
+@deprecated
+def elslib_D3(*args):
+	return elslib.D3(*args)
+
+@deprecated
+def elslib_DN(*args):
+	return elslib.DN(*args)
+
+@deprecated
+def elslib_DN(*args):
+	return elslib.DN(*args)
+
+@deprecated
+def elslib_DN(*args):
+	return elslib.DN(*args)
+
+@deprecated
+def elslib_DN(*args):
+	return elslib.DN(*args)
+
+@deprecated
+def elslib_DN(*args):
+	return elslib.DN(*args)
+
+@deprecated
+def elslib_Parameters(*args):
+	return elslib.Parameters(*args)
+
+@deprecated
+def elslib_Parameters(*args):
+	return elslib.Parameters(*args)
+
+@deprecated
+def elslib_Parameters(*args):
+	return elslib.Parameters(*args)
+
+@deprecated
+def elslib_Parameters(*args):
+	return elslib.Parameters(*args)
+
+@deprecated
+def elslib_Parameters(*args):
+	return elslib.Parameters(*args)
+
+@deprecated
+def elslib_PlaneD0(*args):
+	return elslib.PlaneD0(*args)
+
+@deprecated
+def elslib_PlaneD1(*args):
+	return elslib.PlaneD1(*args)
+
+@deprecated
+def elslib_PlaneDN(*args):
+	return elslib.PlaneDN(*args)
+
+@deprecated
+def elslib_PlaneParameters(*args):
+	return elslib.PlaneParameters(*args)
+
+@deprecated
+def elslib_PlaneUIso(*args):
+	return elslib.PlaneUIso(*args)
+
+@deprecated
+def elslib_PlaneVIso(*args):
+	return elslib.PlaneVIso(*args)
+
+@deprecated
+def elslib_PlaneValue(*args):
+	return elslib.PlaneValue(*args)
+
+@deprecated
+def elslib_SphereD0(*args):
+	return elslib.SphereD0(*args)
+
+@deprecated
+def elslib_SphereD1(*args):
+	return elslib.SphereD1(*args)
+
+@deprecated
+def elslib_SphereD2(*args):
+	return elslib.SphereD2(*args)
+
+@deprecated
+def elslib_SphereD3(*args):
+	return elslib.SphereD3(*args)
+
+@deprecated
+def elslib_SphereDN(*args):
+	return elslib.SphereDN(*args)
+
+@deprecated
+def elslib_SphereParameters(*args):
+	return elslib.SphereParameters(*args)
+
+@deprecated
+def elslib_SphereUIso(*args):
+	return elslib.SphereUIso(*args)
+
+@deprecated
+def elslib_SphereVIso(*args):
+	return elslib.SphereVIso(*args)
+
+@deprecated
+def elslib_SphereValue(*args):
+	return elslib.SphereValue(*args)
+
+@deprecated
+def elslib_TorusD0(*args):
+	return elslib.TorusD0(*args)
+
+@deprecated
+def elslib_TorusD1(*args):
+	return elslib.TorusD1(*args)
+
+@deprecated
+def elslib_TorusD2(*args):
+	return elslib.TorusD2(*args)
+
+@deprecated
+def elslib_TorusD3(*args):
+	return elslib.TorusD3(*args)
+
+@deprecated
+def elslib_TorusDN(*args):
+	return elslib.TorusDN(*args)
+
+@deprecated
+def elslib_TorusParameters(*args):
+	return elslib.TorusParameters(*args)
+
+@deprecated
+def elslib_TorusUIso(*args):
+	return elslib.TorusUIso(*args)
+
+@deprecated
+def elslib_TorusVIso(*args):
+	return elslib.TorusVIso(*args)
+
+@deprecated
+def elslib_TorusValue(*args):
+	return elslib.TorusValue(*args)
+
+@deprecated
+def elslib_Value(*args):
+	return elslib.Value(*args)
+
+@deprecated
+def elslib_Value(*args):
+	return elslib.Value(*args)
+
+@deprecated
+def elslib_Value(*args):
+	return elslib.Value(*args)
+
+@deprecated
+def elslib_Value(*args):
+	return elslib.Value(*args)
+
+@deprecated
+def elslib_Value(*args):
+	return elslib.Value(*args)
+
+}

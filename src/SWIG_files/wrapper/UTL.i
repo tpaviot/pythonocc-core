@@ -373,3 +373,78 @@ TCollection_ExtendedString
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def utl_AddToUserInfo(*args):
+	return utl.AddToUserInfo(*args)
+
+@deprecated
+def utl_CString(*args):
+	return utl.CString(*args)
+
+@deprecated
+def utl_Disk(*args):
+	return utl.Disk(*args)
+
+@deprecated
+def utl_ExtendedString(*args):
+	return utl.ExtendedString(*args)
+
+@deprecated
+def utl_Extension(*args):
+	return utl.Extension(*args)
+
+@deprecated
+def utl_Extension(*args):
+	return utl.Extension(*args)
+
+@deprecated
+def utl_FileIterator(*args):
+	return utl.FileIterator(*args)
+
+@deprecated
+def utl_Find(*args):
+	return utl.Find(*args)
+
+@deprecated
+def utl_GUID(*args):
+	return utl.GUID(*args)
+
+@deprecated
+def utl_IntegerValue(*args):
+	return utl.IntegerValue(*args)
+
+@deprecated
+def utl_IsReadOnly(*args):
+	return utl.IsReadOnly(*args)
+
+@deprecated
+def utl_LocalHost(*args):
+	return utl.LocalHost(*args)
+
+@deprecated
+def utl_Name(*args):
+	return utl.Name(*args)
+
+@deprecated
+def utl_OpenFile(*args):
+	return utl.OpenFile(*args)
+
+@deprecated
+def utl_Path(*args):
+	return utl.Path(*args)
+
+@deprecated
+def utl_Trek(*args):
+	return utl.Trek(*args)
+
+@deprecated
+def utl_Value(*args):
+	return utl.Value(*args)
+
+@deprecated
+def utl_xgetenv(*args):
+	return utl.xgetenv(*args)
+
+}

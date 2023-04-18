@@ -1092,3 +1092,54 @@ opencascade::handle<Image_Texture>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xcafprs_CollectStyleSettings(*args):
+	return xcafprs.CollectStyleSettings(*args)
+
+@deprecated
+def xcafprs_GetViewNameMode(*args):
+	return xcafprs.GetViewNameMode(*args)
+
+@deprecated
+def xcafprs_SetViewNameMode(*args):
+	return xcafprs.SetViewNameMode(*args)
+
+@deprecated
+def XCAFPrs_DocumentExplorer_DefineChildId(*args):
+	return XCAFPrs_DocumentExplorer.DefineChildId(*args)
+
+@deprecated
+def XCAFPrs_DocumentExplorer_FindLabelFromPathId(*args):
+	return XCAFPrs_DocumentExplorer.FindLabelFromPathId(*args)
+
+@deprecated
+def XCAFPrs_DocumentExplorer_FindLabelFromPathId(*args):
+	return XCAFPrs_DocumentExplorer.FindLabelFromPathId(*args)
+
+@deprecated
+def XCAFPrs_DocumentExplorer_FindShapeFromPathId(*args):
+	return XCAFPrs_DocumentExplorer.FindShapeFromPathId(*args)
+
+@deprecated
+def XCAFPrs_DocumentNode_HashCode(*args):
+	return XCAFPrs_DocumentNode.HashCode(*args)
+
+@deprecated
+def XCAFPrs_DocumentNode_IsEqual(*args):
+	return XCAFPrs_DocumentNode.IsEqual(*args)
+
+@deprecated
+def XCAFPrs_Driver_GetID(*args):
+	return XCAFPrs_Driver.GetID(*args)
+
+@deprecated
+def XCAFPrs_Style_HashCode(*args):
+	return XCAFPrs_Style.HashCode(*args)
+
+@deprecated
+def XCAFPrs_Style_IsEqual(*args):
+	return XCAFPrs_Style.IsEqual(*args)
+
+}

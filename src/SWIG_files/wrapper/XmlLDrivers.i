@@ -367,3 +367,22 @@ TCollection_AsciiString
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlldrivers_AttributeDrivers(*args):
+	return xmlldrivers.AttributeDrivers(*args)
+
+@deprecated
+def xmlldrivers_CreationDate(*args):
+	return xmlldrivers.CreationDate(*args)
+
+@deprecated
+def xmlldrivers_DefineFormat(*args):
+	return xmlldrivers.DefineFormat(*args)
+
+@deprecated
+def xmlldrivers_Factory(*args):
+	return xmlldrivers.Factory(*args)
+
+}

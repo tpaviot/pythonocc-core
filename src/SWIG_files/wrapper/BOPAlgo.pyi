@@ -487,18 +487,3 @@ class BOPAlgo_Splitter(BOPAlgo_ToolsProvider):
 # harray2 classes
 # hsequence classes
 
-BOPAlgo_Options_GetParallelMode = BOPAlgo_Options.GetParallelMode
-BOPAlgo_Options_SetParallelMode = BOPAlgo_Options.SetParallelMode
-BOPAlgo_Tools_ClassifyFaces = BOPAlgo_Tools.ClassifyFaces
-BOPAlgo_Tools_ComputeToleranceOfCB = BOPAlgo_Tools.ComputeToleranceOfCB
-BOPAlgo_Tools_EdgesToWires = BOPAlgo_Tools.EdgesToWires
-BOPAlgo_Tools_FillInternals = BOPAlgo_Tools.FillInternals
-BOPAlgo_Tools_IntersectVertices = BOPAlgo_Tools.IntersectVertices
-BOPAlgo_Tools_PerformCommonBlocks = BOPAlgo_Tools.PerformCommonBlocks
-BOPAlgo_Tools_PerformCommonBlocks = BOPAlgo_Tools.PerformCommonBlocks
-BOPAlgo_Tools_TrsfToPoint = BOPAlgo_Tools.TrsfToPoint
-BOPAlgo_Tools_WiresToFaces = BOPAlgo_Tools.WiresToFaces
-BOPAlgo_MakePeriodic_ToDirectionID = BOPAlgo_MakePeriodic.ToDirectionID
-BOPAlgo_ShellSplitter_SplitBlock = BOPAlgo_ShellSplitter.SplitBlock
-BOPAlgo_WireSplitter_MakeWire = BOPAlgo_WireSplitter.MakeWire
-BOPAlgo_WireSplitter_SplitBlock = BOPAlgo_WireSplitter.SplitBlock

@@ -6026,3 +6026,102 @@ class ShapeAnalysis_HSequenceOfFreeBounds : public ShapeAnalysis_SequenceOfFreeB
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapeanalysis_AdjustByPeriod(*args):
+	return shapeanalysis.AdjustByPeriod(*args)
+
+@deprecated
+def shapeanalysis_AdjustToPeriod(*args):
+	return shapeanalysis.AdjustToPeriod(*args)
+
+@deprecated
+def shapeanalysis_ContourArea(*args):
+	return shapeanalysis.ContourArea(*args)
+
+@deprecated
+def shapeanalysis_FindBounds(*args):
+	return shapeanalysis.FindBounds(*args)
+
+@deprecated
+def shapeanalysis_GetFaceUVBounds(*args):
+	return shapeanalysis.GetFaceUVBounds(*args)
+
+@deprecated
+def shapeanalysis_IsOuterBound(*args):
+	return shapeanalysis.IsOuterBound(*args)
+
+@deprecated
+def shapeanalysis_OuterWire(*args):
+	return shapeanalysis.OuterWire(*args)
+
+@deprecated
+def shapeanalysis_TotCross2D(*args):
+	return shapeanalysis.TotCross2D(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_GetSamplePoints(*args):
+	return ShapeAnalysis_Curve.GetSamplePoints(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_GetSamplePoints(*args):
+	return ShapeAnalysis_Curve.GetSamplePoints(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_IsClosed(*args):
+	return ShapeAnalysis_Curve.IsClosed(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_IsPeriodic(*args):
+	return ShapeAnalysis_Curve.IsPeriodic(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_IsPeriodic(*args):
+	return ShapeAnalysis_Curve.IsPeriodic(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_IsPlanar(*args):
+	return ShapeAnalysis_Curve.IsPlanar(*args)
+
+@deprecated
+def ShapeAnalysis_Curve_IsPlanar(*args):
+	return ShapeAnalysis_Curve.IsPlanar(*args)
+
+@deprecated
+def ShapeAnalysis_FreeBounds_ConnectEdgesToWires(*args):
+	return ShapeAnalysis_FreeBounds.ConnectEdgesToWires(*args)
+
+@deprecated
+def ShapeAnalysis_FreeBounds_ConnectWiresToWires(*args):
+	return ShapeAnalysis_FreeBounds.ConnectWiresToWires(*args)
+
+@deprecated
+def ShapeAnalysis_FreeBounds_ConnectWiresToWires(*args):
+	return ShapeAnalysis_FreeBounds.ConnectWiresToWires(*args)
+
+@deprecated
+def ShapeAnalysis_FreeBounds_DispatchWires(*args):
+	return ShapeAnalysis_FreeBounds.DispatchWires(*args)
+
+@deprecated
+def ShapeAnalysis_FreeBounds_SplitWires(*args):
+	return ShapeAnalysis_FreeBounds.SplitWires(*args)
+
+@deprecated
+def ShapeAnalysis_Geom_NearestPlane(*args):
+	return ShapeAnalysis_Geom.NearestPlane(*args)
+
+@deprecated
+def ShapeAnalysis_Geom_PositionTrsf(*args):
+	return ShapeAnalysis_Geom.PositionTrsf(*args)
+
+@deprecated
+def ShapeAnalysis_TransferParametersProj_CopyNMVertex(*args):
+	return ShapeAnalysis_TransferParametersProj.CopyNMVertex(*args)
+
+@deprecated
+def ShapeAnalysis_TransferParametersProj_CopyNMVertex(*args):
+	return ShapeAnalysis_TransferParametersProj.CopyNMVertex(*args)
+
+}

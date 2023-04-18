@@ -7592,3 +7592,62 @@ class IGESData_HArray1OfIGESEntity : public IGESData_Array1OfIGESEntity, public 
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def igesdata_Init(*args):
+	return igesdata.Init(*args)
+
+@deprecated
+def igesdata_Protocol(*args):
+	return igesdata.Protocol(*args)
+
+@deprecated
+def IGESData_BasicEditor_DraftingMax(*args):
+	return IGESData_BasicEditor.DraftingMax(*args)
+
+@deprecated
+def IGESData_BasicEditor_DraftingName(*args):
+	return IGESData_BasicEditor.DraftingName(*args)
+
+@deprecated
+def IGESData_BasicEditor_IGESVersionMax(*args):
+	return IGESData_BasicEditor.IGESVersionMax(*args)
+
+@deprecated
+def IGESData_BasicEditor_IGESVersionName(*args):
+	return IGESData_BasicEditor.IGESVersionName(*args)
+
+@deprecated
+def IGESData_BasicEditor_UnitFlagName(*args):
+	return IGESData_BasicEditor.UnitFlagName(*args)
+
+@deprecated
+def IGESData_BasicEditor_UnitFlagValue(*args):
+	return IGESData_BasicEditor.UnitFlagValue(*args)
+
+@deprecated
+def IGESData_BasicEditor_UnitNameFlag(*args):
+	return IGESData_BasicEditor.UnitNameFlag(*args)
+
+@deprecated
+def IGESData_GlobalSection_NewDateString(*args):
+	return IGESData_GlobalSection.NewDateString(*args)
+
+@deprecated
+def IGESData_GlobalSection_NewDateString(*args):
+	return IGESData_GlobalSection.NewDateString(*args)
+
+@deprecated
+def IGESData_SpecificLib_SetGlobal(*args):
+	return IGESData_SpecificLib.SetGlobal(*args)
+
+@deprecated
+def IGESData_ToolLocation_ConvertLocation(*args):
+	return IGESData_ToolLocation.ConvertLocation(*args)
+
+@deprecated
+def IGESData_WriterLib_SetGlobal(*args):
+	return IGESData_WriterLib.SetGlobal(*args)
+
+}

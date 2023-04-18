@@ -82,11 +82,3 @@ class ShapeConstruct_ProjectCurveOnSurface(Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-shapeconstruct_ConvertCurveToBSpline = shapeconstruct.ConvertCurveToBSpline
-shapeconstruct_ConvertCurveToBSpline = shapeconstruct.ConvertCurveToBSpline
-shapeconstruct_ConvertSurfaceToBSpline = shapeconstruct.ConvertSurfaceToBSpline
-shapeconstruct_JoinCurves = shapeconstruct.JoinCurves
-shapeconstruct_JoinCurves = shapeconstruct.JoinCurves
-shapeconstruct_JoinPCurves = shapeconstruct.JoinPCurves
-ShapeConstruct_Curve_FixKnots = ShapeConstruct_Curve.FixKnots
-ShapeConstruct_Curve_FixKnots = ShapeConstruct_Curve.FixKnots

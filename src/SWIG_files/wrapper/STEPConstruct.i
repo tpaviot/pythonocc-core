@@ -2949,3 +2949,50 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def stepconstruct_FindCDSR(*args):
+	return stepconstruct.FindCDSR(*args)
+
+@deprecated
+def stepconstruct_FindEntity(*args):
+	return stepconstruct.FindEntity(*args)
+
+@deprecated
+def stepconstruct_FindEntity(*args):
+	return stepconstruct.FindEntity(*args)
+
+@deprecated
+def stepconstruct_FindShape(*args):
+	return stepconstruct.FindShape(*args)
+
+@deprecated
+def STEPConstruct_Assembly_CheckSRRReversesNAUO(*args):
+	return STEPConstruct_Assembly.CheckSRRReversesNAUO(*args)
+
+@deprecated
+def STEPConstruct_PointHasher_HashCode(*args):
+	return STEPConstruct_PointHasher.HashCode(*args)
+
+@deprecated
+def STEPConstruct_PointHasher_IsEqual(*args):
+	return STEPConstruct_PointHasher.IsEqual(*args)
+
+@deprecated
+def STEPConstruct_UnitContext_ConvertSiPrefix(*args):
+	return STEPConstruct_UnitContext.ConvertSiPrefix(*args)
+
+@deprecated
+def STEPConstruct_Styles_DecodeColor(*args):
+	return STEPConstruct_Styles.DecodeColor(*args)
+
+@deprecated
+def STEPConstruct_Styles_EncodeColor(*args):
+	return STEPConstruct_Styles.EncodeColor(*args)
+
+@deprecated
+def STEPConstruct_Styles_EncodeColor(*args):
+	return STEPConstruct_Styles.EncodeColor(*args)
+
+}

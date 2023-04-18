@@ -443,21 +443,3 @@ class ProjLib_HSequenceOfHSequenceOfPnt(ProjLib_SequenceOfHSequenceOfPnt, Standa
     def Append(self, theSequence: ProjLib_SequenceOfHSequenceOfPnt) -> None: ...
 
 
-projlib_IsAnaSurf = projlib.IsAnaSurf
-projlib_MakePCurveOfType = projlib.MakePCurveOfType
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project
-projlib_Project = projlib.Project

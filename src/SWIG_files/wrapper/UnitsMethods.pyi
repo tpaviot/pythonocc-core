@@ -58,12 +58,3 @@ class unitsmethods:
 # harray2 classes
 # hsequence classes
 
-unitsmethods_DumpLengthUnit = unitsmethods.DumpLengthUnit
-unitsmethods_DumpLengthUnit = unitsmethods.DumpLengthUnit
-unitsmethods_GetCasCadeLengthUnit = unitsmethods.GetCasCadeLengthUnit
-unitsmethods_GetLengthFactorValue = unitsmethods.GetLengthFactorValue
-unitsmethods_GetLengthUnitByFactorValue = unitsmethods.GetLengthUnitByFactorValue
-unitsmethods_GetLengthUnitScale = unitsmethods.GetLengthUnitScale
-unitsmethods_LengthUnitFromString = unitsmethods.LengthUnitFromString
-unitsmethods_SetCasCadeLengthUnit = unitsmethods.SetCasCadeLengthUnit
-unitsmethods_SetCasCadeLengthUnit = unitsmethods.SetCasCadeLengthUnit

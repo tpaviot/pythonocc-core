@@ -89,10 +89,3 @@ class CSLib_NormalPolyDef(math_FunctionWithDerivative):
 # harray2 classes
 # hsequence classes
 
-cslib_DNNUV = cslib.DNNUV
-cslib_DNNUV = cslib.DNNUV
-cslib_DNNormal = cslib.DNNormal
-cslib_Normal = cslib.Normal
-cslib_Normal = cslib.Normal
-cslib_Normal = cslib.Normal
-cslib_Normal = cslib.Normal

@@ -840,3 +840,154 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def bndlib_Add(*args):
+	return bndlib.Add(*args)
+
+@deprecated
+def BndLib_Add2dCurve_Add(*args):
+	return BndLib_Add2dCurve.Add(*args)
+
+@deprecated
+def BndLib_Add2dCurve_Add(*args):
+	return BndLib_Add2dCurve.Add(*args)
+
+@deprecated
+def BndLib_Add2dCurve_Add(*args):
+	return BndLib_Add2dCurve.Add(*args)
+
+@deprecated
+def BndLib_Add2dCurve_Add(*args):
+	return BndLib_Add2dCurve.Add(*args)
+
+@deprecated
+def BndLib_Add2dCurve_AddOptimal(*args):
+	return BndLib_Add2dCurve.AddOptimal(*args)
+
+@deprecated
+def BndLib_Add3dCurve_Add(*args):
+	return BndLib_Add3dCurve.Add(*args)
+
+@deprecated
+def BndLib_Add3dCurve_Add(*args):
+	return BndLib_Add3dCurve.Add(*args)
+
+@deprecated
+def BndLib_Add3dCurve_AddGenCurv(*args):
+	return BndLib_Add3dCurve.AddGenCurv(*args)
+
+@deprecated
+def BndLib_Add3dCurve_AddOptimal(*args):
+	return BndLib_Add3dCurve.AddOptimal(*args)
+
+@deprecated
+def BndLib_Add3dCurve_AddOptimal(*args):
+	return BndLib_Add3dCurve.AddOptimal(*args)
+
+@deprecated
+def BndLib_AddSurface_Add(*args):
+	return BndLib_AddSurface.Add(*args)
+
+@deprecated
+def BndLib_AddSurface_Add(*args):
+	return BndLib_AddSurface.Add(*args)
+
+@deprecated
+def BndLib_AddSurface_AddGenSurf(*args):
+	return BndLib_AddSurface.AddGenSurf(*args)
+
+@deprecated
+def BndLib_AddSurface_AddOptimal(*args):
+	return BndLib_AddSurface.AddOptimal(*args)
+
+@deprecated
+def BndLib_AddSurface_AddOptimal(*args):
+	return BndLib_AddSurface.AddOptimal(*args)
+
+}

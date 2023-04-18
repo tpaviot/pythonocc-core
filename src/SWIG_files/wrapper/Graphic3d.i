@@ -22133,3 +22133,198 @@ class Graphic3d_BvhCStructureSetTrsfPers:
 %pythoncode {
 Graphic3d_Texture2Dmanual=Graphic3d_Texture2D
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Graphic3d_ArrayOfPrimitives_CreateArray(*args):
+	return Graphic3d_ArrayOfPrimitives.CreateArray(*args)
+
+@deprecated
+def Graphic3d_ArrayOfPrimitives_CreateArray(*args):
+	return Graphic3d_ArrayOfPrimitives.CreateArray(*args)
+
+@deprecated
+def Graphic3d_Aspects_DefaultLinePatternForType(*args):
+	return Graphic3d_Aspects.DefaultLinePatternForType(*args)
+
+@deprecated
+def Graphic3d_Aspects_DefaultLineTypeForPattern(*args):
+	return Graphic3d_Aspects.DefaultLineTypeForPattern(*args)
+
+@deprecated
+def Graphic3d_Attribute_Stride(*args):
+	return Graphic3d_Attribute.Stride(*args)
+
+@deprecated
+def Graphic3d_BSDF_CreateDiffuse(*args):
+	return Graphic3d_BSDF.CreateDiffuse(*args)
+
+@deprecated
+def Graphic3d_BSDF_CreateGlass(*args):
+	return Graphic3d_BSDF.CreateGlass(*args)
+
+@deprecated
+def Graphic3d_BSDF_CreateMetallic(*args):
+	return Graphic3d_BSDF.CreateMetallic(*args)
+
+@deprecated
+def Graphic3d_BSDF_CreateMetallicRoughness(*args):
+	return Graphic3d_BSDF.CreateMetallicRoughness(*args)
+
+@deprecated
+def Graphic3d_BSDF_CreateTransparent(*args):
+	return Graphic3d_BSDF.CreateTransparent(*args)
+
+@deprecated
+def Graphic3d_Camera_Interpolate(*args):
+	return Graphic3d_Camera.Interpolate(*args)
+
+@deprecated
+def Graphic3d_Fresnel_CreateConductor(*args):
+	return Graphic3d_Fresnel.CreateConductor(*args)
+
+@deprecated
+def Graphic3d_Fresnel_CreateConductor(*args):
+	return Graphic3d_Fresnel.CreateConductor(*args)
+
+@deprecated
+def Graphic3d_Fresnel_CreateConstant(*args):
+	return Graphic3d_Fresnel.CreateConstant(*args)
+
+@deprecated
+def Graphic3d_Fresnel_CreateDielectric(*args):
+	return Graphic3d_Fresnel.CreateDielectric(*args)
+
+@deprecated
+def Graphic3d_Fresnel_CreateSchlick(*args):
+	return Graphic3d_Fresnel.CreateSchlick(*args)
+
+@deprecated
+def Graphic3d_GraphicDriverFactory_DefaultDriverFactory(*args):
+	return Graphic3d_GraphicDriverFactory.DefaultDriverFactory(*args)
+
+@deprecated
+def Graphic3d_GraphicDriverFactory_DriverFactories(*args):
+	return Graphic3d_GraphicDriverFactory.DriverFactories(*args)
+
+@deprecated
+def Graphic3d_GraphicDriverFactory_RegisterFactory(*args):
+	return Graphic3d_GraphicDriverFactory.RegisterFactory(*args)
+
+@deprecated
+def Graphic3d_GraphicDriverFactory_UnregisterFactory(*args):
+	return Graphic3d_GraphicDriverFactory.UnregisterFactory(*args)
+
+@deprecated
+def Graphic3d_MarkerImage_StandardMarker(*args):
+	return Graphic3d_MarkerImage.StandardMarker(*args)
+
+@deprecated
+def Graphic3d_MaterialAspect_MaterialFromName(*args):
+	return Graphic3d_MaterialAspect.MaterialFromName(*args)
+
+@deprecated
+def Graphic3d_MaterialAspect_MaterialFromName(*args):
+	return Graphic3d_MaterialAspect.MaterialFromName(*args)
+
+@deprecated
+def Graphic3d_MaterialAspect_MaterialName(*args):
+	return Graphic3d_MaterialAspect.MaterialName(*args)
+
+@deprecated
+def Graphic3d_MaterialAspect_MaterialType(*args):
+	return Graphic3d_MaterialAspect.MaterialType(*args)
+
+@deprecated
+def Graphic3d_MaterialAspect_NumberOfMaterials(*args):
+	return Graphic3d_MaterialAspect.NumberOfMaterials(*args)
+
+@deprecated
+def Graphic3d_PBRMaterial_GenerateEnvLUT(*args):
+	return Graphic3d_PBRMaterial.GenerateEnvLUT(*args)
+
+@deprecated
+def Graphic3d_PBRMaterial_MetallicFromSpecular(*args):
+	return Graphic3d_PBRMaterial.MetallicFromSpecular(*args)
+
+@deprecated
+def Graphic3d_PBRMaterial_MinRoughness(*args):
+	return Graphic3d_PBRMaterial.MinRoughness(*args)
+
+@deprecated
+def Graphic3d_PBRMaterial_Roughness(*args):
+	return Graphic3d_PBRMaterial.Roughness(*args)
+
+@deprecated
+def Graphic3d_PBRMaterial_RoughnessFromSpecular(*args):
+	return Graphic3d_PBRMaterial.RoughnessFromSpecular(*args)
+
+@deprecated
+def Graphic3d_PBRMaterial_SpecIBLMapSamplesFactor(*args):
+	return Graphic3d_PBRMaterial.SpecIBLMapSamplesFactor(*args)
+
+@deprecated
+def Graphic3d_ShaderObject_CreateFromFile(*args):
+	return Graphic3d_ShaderObject.CreateFromFile(*args)
+
+@deprecated
+def Graphic3d_ShaderObject_CreateFromSource(*args):
+	return Graphic3d_ShaderObject.CreateFromSource(*args)
+
+@deprecated
+def Graphic3d_ShaderProgram_ShadersFolder(*args):
+	return Graphic3d_ShaderProgram.ShadersFolder(*args)
+
+@deprecated
+def Graphic3d_Structure_AcceptConnection(*args):
+	return Graphic3d_Structure.AcceptConnection(*args)
+
+@deprecated
+def Graphic3d_Structure_Network(*args):
+	return Graphic3d_Structure.Network(*args)
+
+@deprecated
+def Graphic3d_Structure_PrintNetwork(*args):
+	return Graphic3d_Structure.PrintNetwork(*args)
+
+@deprecated
+def Graphic3d_Structure_Transforms(*args):
+	return Graphic3d_Structure.Transforms(*args)
+
+@deprecated
+def Graphic3d_TextureRoot_TexturesFolder(*args):
+	return Graphic3d_TextureRoot.TexturesFolder(*args)
+
+@deprecated
+def Graphic3d_TransformPers_IsTrihedronOr2d(*args):
+	return Graphic3d_TransformPers.IsTrihedronOr2d(*args)
+
+@deprecated
+def Graphic3d_TransformPers_IsZoomOrRotate(*args):
+	return Graphic3d_TransformPers.IsZoomOrRotate(*args)
+
+@deprecated
+def Graphic3d_TextureEnv_NumberOfTextures(*args):
+	return Graphic3d_TextureEnv.NumberOfTextures(*args)
+
+@deprecated
+def Graphic3d_TextureEnv_TextureName(*args):
+	return Graphic3d_TextureEnv.TextureName(*args)
+
+@deprecated
+def Graphic3d_Texture1D_NumberOfTextures(*args):
+	return Graphic3d_Texture1D.NumberOfTextures(*args)
+
+@deprecated
+def Graphic3d_Texture1D_TextureName(*args):
+	return Graphic3d_Texture1D.TextureName(*args)
+
+@deprecated
+def Graphic3d_Texture2D_NumberOfTextures(*args):
+	return Graphic3d_Texture2D.NumberOfTextures(*args)
+
+@deprecated
+def Graphic3d_Texture2D_TextureName(*args):
+	return Graphic3d_Texture2D.TextureName(*args)
+
+}

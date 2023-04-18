@@ -7482,3 +7482,34 @@ D: float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def math_GaussPoints(*args):
+	return math.GaussPoints(*args)
+
+@deprecated
+def math_GaussPointsMax(*args):
+	return math.GaussPointsMax(*args)
+
+@deprecated
+def math_GaussWeights(*args):
+	return math.GaussWeights(*args)
+
+@deprecated
+def math_KronrodPointsAndWeights(*args):
+	return math.KronrodPointsAndWeights(*args)
+
+@deprecated
+def math_KronrodPointsMax(*args):
+	return math.KronrodPointsMax(*args)
+
+@deprecated
+def math_OrderedGaussPointsAndWeights(*args):
+	return math.OrderedGaussPointsAndWeights(*args)
+
+@deprecated
+def math_KronrodSingleIntegration_GKRule(*args):
+	return math_KronrodSingleIntegration.GKRule(*args)
+
+}

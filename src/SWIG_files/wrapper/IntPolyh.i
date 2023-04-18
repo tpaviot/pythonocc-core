@@ -2423,3 +2423,30 @@ class IntPolyh_MaillageAffinage:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def IntPolyh_CoupleMapHasher_HashCode(*args):
+	return IntPolyh_CoupleMapHasher.HashCode(*args)
+
+@deprecated
+def IntPolyh_CoupleMapHasher_IsEqual(*args):
+	return IntPolyh_CoupleMapHasher.IsEqual(*args)
+
+@deprecated
+def IntPolyh_Tools_ComputeDeflection(*args):
+	return IntPolyh_Tools.ComputeDeflection(*args)
+
+@deprecated
+def IntPolyh_Tools_FillArrayOfPointNormal(*args):
+	return IntPolyh_Tools.FillArrayOfPointNormal(*args)
+
+@deprecated
+def IntPolyh_Tools_IsEnlargePossible(*args):
+	return IntPolyh_Tools.IsEnlargePossible(*args)
+
+@deprecated
+def IntPolyh_Tools_MakeSampling(*args):
+	return IntPolyh_Tools.MakeSampling(*args)
+
+}

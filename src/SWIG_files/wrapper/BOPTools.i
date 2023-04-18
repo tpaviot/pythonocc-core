@@ -2253,3 +2253,382 @@ class BOPTools_PairSelector:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BOPTools_AlgoTools_AreFacesSameDomain(*args):
+	return BOPTools_AlgoTools.AreFacesSameDomain(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeState(*args):
+	return BOPTools_AlgoTools.ComputeState(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeState(*args):
+	return BOPTools_AlgoTools.ComputeState(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeState(*args):
+	return BOPTools_AlgoTools.ComputeState(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeState(*args):
+	return BOPTools_AlgoTools.ComputeState(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeStateByOnePoint(*args):
+	return BOPTools_AlgoTools.ComputeStateByOnePoint(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeTolerance(*args):
+	return BOPTools_AlgoTools.ComputeTolerance(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeVV(*args):
+	return BOPTools_AlgoTools.ComputeVV(*args)
+
+@deprecated
+def BOPTools_AlgoTools_ComputeVV(*args):
+	return BOPTools_AlgoTools.ComputeVV(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CopyEdge(*args):
+	return BOPTools_AlgoTools.CopyEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CorrectCurveOnSurface(*args):
+	return BOPTools_AlgoTools.CorrectCurveOnSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CorrectPointOnCurve(*args):
+	return BOPTools_AlgoTools.CorrectPointOnCurve(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CorrectRange(*args):
+	return BOPTools_AlgoTools.CorrectRange(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CorrectRange(*args):
+	return BOPTools_AlgoTools.CorrectRange(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CorrectShapeTolerances(*args):
+	return BOPTools_AlgoTools.CorrectShapeTolerances(*args)
+
+@deprecated
+def BOPTools_AlgoTools_CorrectTolerances(*args):
+	return BOPTools_AlgoTools.CorrectTolerances(*args)
+
+@deprecated
+def BOPTools_AlgoTools_DTolerance(*args):
+	return BOPTools_AlgoTools.DTolerance(*args)
+
+@deprecated
+def BOPTools_AlgoTools_Dimension(*args):
+	return BOPTools_AlgoTools.Dimension(*args)
+
+@deprecated
+def BOPTools_AlgoTools_Dimensions(*args):
+	return BOPTools_AlgoTools.Dimensions(*args)
+
+@deprecated
+def BOPTools_AlgoTools_GetEdgeOff(*args):
+	return BOPTools_AlgoTools.GetEdgeOff(*args)
+
+@deprecated
+def BOPTools_AlgoTools_GetEdgeOnFace(*args):
+	return BOPTools_AlgoTools.GetEdgeOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools_GetFaceOff(*args):
+	return BOPTools_AlgoTools.GetFaceOff(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsBlockInOnFace(*args):
+	return BOPTools_AlgoTools.IsBlockInOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsHole(*args):
+	return BOPTools_AlgoTools.IsHole(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsInternalFace(*args):
+	return BOPTools_AlgoTools.IsInternalFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsInternalFace(*args):
+	return BOPTools_AlgoTools.IsInternalFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsInternalFace(*args):
+	return BOPTools_AlgoTools.IsInternalFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsInvertedSolid(*args):
+	return BOPTools_AlgoTools.IsInvertedSolid(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsMicroEdge(*args):
+	return BOPTools_AlgoTools.IsMicroEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsOpenShell(*args):
+	return BOPTools_AlgoTools.IsOpenShell(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsSplitToReverse(*args):
+	return BOPTools_AlgoTools.IsSplitToReverse(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsSplitToReverse(*args):
+	return BOPTools_AlgoTools.IsSplitToReverse(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsSplitToReverse(*args):
+	return BOPTools_AlgoTools.IsSplitToReverse(*args)
+
+@deprecated
+def BOPTools_AlgoTools_IsSplitToReverseWithWarn(*args):
+	return BOPTools_AlgoTools.IsSplitToReverseWithWarn(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeConnexityBlock(*args):
+	return BOPTools_AlgoTools.MakeConnexityBlock(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeConnexityBlocks(*args):
+	return BOPTools_AlgoTools.MakeConnexityBlocks(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeConnexityBlocks(*args):
+	return BOPTools_AlgoTools.MakeConnexityBlocks(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeConnexityBlocks(*args):
+	return BOPTools_AlgoTools.MakeConnexityBlocks(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeContainer(*args):
+	return BOPTools_AlgoTools.MakeContainer(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeEdge(*args):
+	return BOPTools_AlgoTools.MakeEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeNewVertex(*args):
+	return BOPTools_AlgoTools.MakeNewVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeNewVertex(*args):
+	return BOPTools_AlgoTools.MakeNewVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeNewVertex(*args):
+	return BOPTools_AlgoTools.MakeNewVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeNewVertex(*args):
+	return BOPTools_AlgoTools.MakeNewVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakePCurve(*args):
+	return BOPTools_AlgoTools.MakePCurve(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeSectEdge(*args):
+	return BOPTools_AlgoTools.MakeSectEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeSplitEdge(*args):
+	return BOPTools_AlgoTools.MakeSplitEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools_MakeVertex(*args):
+	return BOPTools_AlgoTools.MakeVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_OrientEdgesOnWire(*args):
+	return BOPTools_AlgoTools.OrientEdgesOnWire(*args)
+
+@deprecated
+def BOPTools_AlgoTools_OrientFacesOnShell(*args):
+	return BOPTools_AlgoTools.OrientFacesOnShell(*args)
+
+@deprecated
+def BOPTools_AlgoTools_PointOnEdge(*args):
+	return BOPTools_AlgoTools.PointOnEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools_Sense(*args):
+	return BOPTools_AlgoTools.Sense(*args)
+
+@deprecated
+def BOPTools_AlgoTools_TreatCompound(*args):
+	return BOPTools_AlgoTools.TreatCompound(*args)
+
+@deprecated
+def BOPTools_AlgoTools_UpdateVertex(*args):
+	return BOPTools_AlgoTools.UpdateVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_UpdateVertex(*args):
+	return BOPTools_AlgoTools.UpdateVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools_UpdateVertex(*args):
+	return BOPTools_AlgoTools.UpdateVertex(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_AdjustPCurveOnFace(*args):
+	return BOPTools_AlgoTools2D.AdjustPCurveOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_AdjustPCurveOnFace(*args):
+	return BOPTools_AlgoTools2D.AdjustPCurveOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_AdjustPCurveOnSurf(*args):
+	return BOPTools_AlgoTools2D.AdjustPCurveOnSurf(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_AttachExistingPCurve(*args):
+	return BOPTools_AlgoTools2D.AttachExistingPCurve(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_BuildPCurveForEdgeOnFace(*args):
+	return BOPTools_AlgoTools2D.BuildPCurveForEdgeOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_CurveOnSurface(*args):
+	return BOPTools_AlgoTools2D.CurveOnSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_CurveOnSurface(*args):
+	return BOPTools_AlgoTools2D.CurveOnSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_EdgeTangent(*args):
+	return BOPTools_AlgoTools2D.EdgeTangent(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_HasCurveOnSurface(*args):
+	return BOPTools_AlgoTools2D.HasCurveOnSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_HasCurveOnSurface(*args):
+	return BOPTools_AlgoTools2D.HasCurveOnSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_IntermediatePoint(*args):
+	return BOPTools_AlgoTools2D.IntermediatePoint(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_IntermediatePoint(*args):
+	return BOPTools_AlgoTools2D.IntermediatePoint(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_IsEdgeIsoline(*args):
+	return BOPTools_AlgoTools2D.IsEdgeIsoline(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_Make2D(*args):
+	return BOPTools_AlgoTools2D.Make2D(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_MakePCurveOnFace(*args):
+	return BOPTools_AlgoTools2D.MakePCurveOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_MakePCurveOnFace(*args):
+	return BOPTools_AlgoTools2D.MakePCurveOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools2D_PointOnSurface(*args):
+	return BOPTools_AlgoTools2D.PointOnSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_DoSplitSEAMOnFace(*args):
+	return BOPTools_AlgoTools3D.DoSplitSEAMOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_DoSplitSEAMOnFace(*args):
+	return BOPTools_AlgoTools3D.DoSplitSEAMOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_GetApproxNormalToFaceOnEdge(*args):
+	return BOPTools_AlgoTools3D.GetApproxNormalToFaceOnEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_GetApproxNormalToFaceOnEdge(*args):
+	return BOPTools_AlgoTools3D.GetApproxNormalToFaceOnEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_GetApproxNormalToFaceOnEdge(*args):
+	return BOPTools_AlgoTools3D.GetApproxNormalToFaceOnEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_GetNormalToFaceOnEdge(*args):
+	return BOPTools_AlgoTools3D.GetNormalToFaceOnEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_GetNormalToFaceOnEdge(*args):
+	return BOPTools_AlgoTools3D.GetNormalToFaceOnEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_GetNormalToSurface(*args):
+	return BOPTools_AlgoTools3D.GetNormalToSurface(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_IsEmptyShape(*args):
+	return BOPTools_AlgoTools3D.IsEmptyShape(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_MinStepIn2d(*args):
+	return BOPTools_AlgoTools3D.MinStepIn2d(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_OrientEdgeOnFace(*args):
+	return BOPTools_AlgoTools3D.OrientEdgeOnFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointInFace(*args):
+	return BOPTools_AlgoTools3D.PointInFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointInFace(*args):
+	return BOPTools_AlgoTools3D.PointInFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointInFace(*args):
+	return BOPTools_AlgoTools3D.PointInFace(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointNearEdge(*args):
+	return BOPTools_AlgoTools3D.PointNearEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointNearEdge(*args):
+	return BOPTools_AlgoTools3D.PointNearEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointNearEdge(*args):
+	return BOPTools_AlgoTools3D.PointNearEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_PointNearEdge(*args):
+	return BOPTools_AlgoTools3D.PointNearEdge(*args)
+
+@deprecated
+def BOPTools_AlgoTools3D_SenseFlag(*args):
+	return BOPTools_AlgoTools3D.SenseFlag(*args)
+
+@deprecated
+def BOPTools_SetMapHasher_HashCode(*args):
+	return BOPTools_SetMapHasher.HashCode(*args)
+
+@deprecated
+def BOPTools_SetMapHasher_IsEqual(*args):
+	return BOPTools_SetMapHasher.IsEqual(*args)
+
+}

@@ -109,12 +109,3 @@ class Geom2dConvert_PPoint:
 # harray2 classes
 # hsequence classes
 
-geom2dconvert_C0BSplineToArrayOfC1BSplineCurve = geom2dconvert.C0BSplineToArrayOfC1BSplineCurve
-geom2dconvert_C0BSplineToArrayOfC1BSplineCurve = geom2dconvert.C0BSplineToArrayOfC1BSplineCurve
-geom2dconvert_C0BSplineToC1BSplineCurve = geom2dconvert.C0BSplineToC1BSplineCurve
-geom2dconvert_ConcatC1 = geom2dconvert.ConcatC1
-geom2dconvert_ConcatC1 = geom2dconvert.ConcatC1
-geom2dconvert_ConcatG1 = geom2dconvert.ConcatG1
-geom2dconvert_CurveToBSplineCurve = geom2dconvert.CurveToBSplineCurve
-geom2dconvert_SplitBSplineCurve = geom2dconvert.SplitBSplineCurve
-geom2dconvert_SplitBSplineCurve = geom2dconvert.SplitBSplineCurve

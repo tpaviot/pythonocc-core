@@ -3164,3 +3164,218 @@ class TDataXtd_HArray1OfTrsf : public TDataXtd_Array1OfTrsf, public Standard_Tra
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def tdataxtd_IDList(*args):
+	return tdataxtd.IDList(*args)
+
+@deprecated
+def TDataXtd_Axis_GetID(*args):
+	return TDataXtd_Axis.GetID(*args)
+
+@deprecated
+def TDataXtd_Axis_Set(*args):
+	return TDataXtd_Axis.Set(*args)
+
+@deprecated
+def TDataXtd_Axis_Set(*args):
+	return TDataXtd_Axis.Set(*args)
+
+@deprecated
+def TDataXtd_Constraint_CollectChildConstraints(*args):
+	return TDataXtd_Constraint.CollectChildConstraints(*args)
+
+@deprecated
+def TDataXtd_Constraint_GetID(*args):
+	return TDataXtd_Constraint.GetID(*args)
+
+@deprecated
+def TDataXtd_Constraint_Set(*args):
+	return TDataXtd_Constraint.Set(*args)
+
+@deprecated
+def TDataXtd_Geometry_Axis(*args):
+	return TDataXtd_Geometry.Axis(*args)
+
+@deprecated
+def TDataXtd_Geometry_Axis(*args):
+	return TDataXtd_Geometry.Axis(*args)
+
+@deprecated
+def TDataXtd_Geometry_Circle(*args):
+	return TDataXtd_Geometry.Circle(*args)
+
+@deprecated
+def TDataXtd_Geometry_Circle(*args):
+	return TDataXtd_Geometry.Circle(*args)
+
+@deprecated
+def TDataXtd_Geometry_Cylinder(*args):
+	return TDataXtd_Geometry.Cylinder(*args)
+
+@deprecated
+def TDataXtd_Geometry_Cylinder(*args):
+	return TDataXtd_Geometry.Cylinder(*args)
+
+@deprecated
+def TDataXtd_Geometry_Ellipse(*args):
+	return TDataXtd_Geometry.Ellipse(*args)
+
+@deprecated
+def TDataXtd_Geometry_Ellipse(*args):
+	return TDataXtd_Geometry.Ellipse(*args)
+
+@deprecated
+def TDataXtd_Geometry_GetID(*args):
+	return TDataXtd_Geometry.GetID(*args)
+
+@deprecated
+def TDataXtd_Geometry_Line(*args):
+	return TDataXtd_Geometry.Line(*args)
+
+@deprecated
+def TDataXtd_Geometry_Line(*args):
+	return TDataXtd_Geometry.Line(*args)
+
+@deprecated
+def TDataXtd_Geometry_Plane(*args):
+	return TDataXtd_Geometry.Plane(*args)
+
+@deprecated
+def TDataXtd_Geometry_Plane(*args):
+	return TDataXtd_Geometry.Plane(*args)
+
+@deprecated
+def TDataXtd_Geometry_Point(*args):
+	return TDataXtd_Geometry.Point(*args)
+
+@deprecated
+def TDataXtd_Geometry_Point(*args):
+	return TDataXtd_Geometry.Point(*args)
+
+@deprecated
+def TDataXtd_Geometry_Set(*args):
+	return TDataXtd_Geometry.Set(*args)
+
+@deprecated
+def TDataXtd_Geometry_Type(*args):
+	return TDataXtd_Geometry.Type(*args)
+
+@deprecated
+def TDataXtd_Geometry_Type(*args):
+	return TDataXtd_Geometry.Type(*args)
+
+@deprecated
+def TDataXtd_Pattern_GetID(*args):
+	return TDataXtd_Pattern.GetID(*args)
+
+@deprecated
+def TDataXtd_Placement_GetID(*args):
+	return TDataXtd_Placement.GetID(*args)
+
+@deprecated
+def TDataXtd_Placement_Set(*args):
+	return TDataXtd_Placement.Set(*args)
+
+@deprecated
+def TDataXtd_Plane_GetID(*args):
+	return TDataXtd_Plane.GetID(*args)
+
+@deprecated
+def TDataXtd_Plane_Set(*args):
+	return TDataXtd_Plane.Set(*args)
+
+@deprecated
+def TDataXtd_Plane_Set(*args):
+	return TDataXtd_Plane.Set(*args)
+
+@deprecated
+def TDataXtd_Point_GetID(*args):
+	return TDataXtd_Point.GetID(*args)
+
+@deprecated
+def TDataXtd_Point_Set(*args):
+	return TDataXtd_Point.Set(*args)
+
+@deprecated
+def TDataXtd_Point_Set(*args):
+	return TDataXtd_Point.Set(*args)
+
+@deprecated
+def TDataXtd_Position_Get(*args):
+	return TDataXtd_Position.Get(*args)
+
+@deprecated
+def TDataXtd_Position_GetID(*args):
+	return TDataXtd_Position.GetID(*args)
+
+@deprecated
+def TDataXtd_Position_Set(*args):
+	return TDataXtd_Position.Set(*args)
+
+@deprecated
+def TDataXtd_Position_Set(*args):
+	return TDataXtd_Position.Set(*args)
+
+@deprecated
+def TDataXtd_Presentation_GetID(*args):
+	return TDataXtd_Presentation.GetID(*args)
+
+@deprecated
+def TDataXtd_Presentation_Set(*args):
+	return TDataXtd_Presentation.Set(*args)
+
+@deprecated
+def TDataXtd_Presentation_Unset(*args):
+	return TDataXtd_Presentation.Unset(*args)
+
+@deprecated
+def TDataXtd_Presentation_getColorNameFromOldEnum(*args):
+	return TDataXtd_Presentation.getColorNameFromOldEnum(*args)
+
+@deprecated
+def TDataXtd_Presentation_getOldColorNameFromNewEnum(*args):
+	return TDataXtd_Presentation.getOldColorNameFromNewEnum(*args)
+
+@deprecated
+def TDataXtd_Shape_Find(*args):
+	return TDataXtd_Shape.Find(*args)
+
+@deprecated
+def TDataXtd_Shape_Get(*args):
+	return TDataXtd_Shape.Get(*args)
+
+@deprecated
+def TDataXtd_Shape_GetID(*args):
+	return TDataXtd_Shape.GetID(*args)
+
+@deprecated
+def TDataXtd_Shape_New(*args):
+	return TDataXtd_Shape.New(*args)
+
+@deprecated
+def TDataXtd_Shape_Set(*args):
+	return TDataXtd_Shape.Set(*args)
+
+@deprecated
+def TDataXtd_Triangulation_GetID(*args):
+	return TDataXtd_Triangulation.GetID(*args)
+
+@deprecated
+def TDataXtd_Triangulation_Set(*args):
+	return TDataXtd_Triangulation.Set(*args)
+
+@deprecated
+def TDataXtd_Triangulation_Set(*args):
+	return TDataXtd_Triangulation.Set(*args)
+
+@deprecated
+def TDataXtd_PatternStd_GetPatternID(*args):
+	return TDataXtd_PatternStd.GetPatternID(*args)
+
+@deprecated
+def TDataXtd_PatternStd_Set(*args):
+	return TDataXtd_PatternStd.Set(*args)
+
+}

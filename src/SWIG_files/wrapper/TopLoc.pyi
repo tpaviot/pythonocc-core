@@ -79,4 +79,3 @@ class TopLoc_SListOfItemLocation:
 # harray2 classes
 # hsequence classes
 
-TopLoc_Location_ScalePrec = TopLoc_Location.ScalePrec

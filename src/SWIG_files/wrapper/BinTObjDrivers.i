@@ -627,3 +627,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def bintobjdrivers_AddDrivers(*args):
+	return bintobjdrivers.AddDrivers(*args)
+
+@deprecated
+def bintobjdrivers_DefineFormat(*args):
+	return bintobjdrivers.DefineFormat(*args)
+
+@deprecated
+def bintobjdrivers_Factory(*args):
+	return bintobjdrivers.Factory(*args)
+
+}

@@ -2966,3 +2966,102 @@ class MoniTool_HSequenceOfElement : public MoniTool_SequenceOfElement, public St
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def MoniTool_CaseData_DefCheck(*args):
+	return MoniTool_CaseData.DefCheck(*args)
+
+@deprecated
+def MoniTool_CaseData_DefMsg(*args):
+	return MoniTool_CaseData.DefMsg(*args)
+
+@deprecated
+def MoniTool_CaseData_SetDefFail(*args):
+	return MoniTool_CaseData.SetDefFail(*args)
+
+@deprecated
+def MoniTool_CaseData_SetDefMsg(*args):
+	return MoniTool_CaseData.SetDefMsg(*args)
+
+@deprecated
+def MoniTool_CaseData_SetDefWarning(*args):
+	return MoniTool_CaseData.SetDefWarning(*args)
+
+@deprecated
+def MoniTool_DataInfo_Type(*args):
+	return MoniTool_DataInfo.Type(*args)
+
+@deprecated
+def MoniTool_DataInfo_TypeName(*args):
+	return MoniTool_DataInfo.TypeName(*args)
+
+@deprecated
+def MoniTool_ElemHasher_HashCode(*args):
+	return MoniTool_ElemHasher.HashCode(*args)
+
+@deprecated
+def MoniTool_ElemHasher_IsEqual(*args):
+	return MoniTool_ElemHasher.IsEqual(*args)
+
+@deprecated
+def MoniTool_MTHasher_HashCode(*args):
+	return MoniTool_MTHasher.HashCode(*args)
+
+@deprecated
+def MoniTool_MTHasher_IsEqual(*args):
+	return MoniTool_MTHasher.IsEqual(*args)
+
+@deprecated
+def MoniTool_Stat_Current(*args):
+	return MoniTool_Stat.Current(*args)
+
+@deprecated
+def MoniTool_Timer_ClearTimers(*args):
+	return MoniTool_Timer.ClearTimers(*args)
+
+@deprecated
+def MoniTool_Timer_ComputeAmendments(*args):
+	return MoniTool_Timer.ComputeAmendments(*args)
+
+@deprecated
+def MoniTool_Timer_Dictionary(*args):
+	return MoniTool_Timer.Dictionary(*args)
+
+@deprecated
+def MoniTool_Timer_GetAmendments(*args):
+	return MoniTool_Timer.GetAmendments(*args)
+
+@deprecated
+def MoniTool_Timer_Start(*args):
+	return MoniTool_Timer.Start(*args)
+
+@deprecated
+def MoniTool_Timer_Stop(*args):
+	return MoniTool_Timer.Stop(*args)
+
+@deprecated
+def MoniTool_Timer_Timer(*args):
+	return MoniTool_Timer.Timer(*args)
+
+@deprecated
+def MoniTool_TypedValue_AddLib(*args):
+	return MoniTool_TypedValue.AddLib(*args)
+
+@deprecated
+def MoniTool_TypedValue_FromLib(*args):
+	return MoniTool_TypedValue.FromLib(*args)
+
+@deprecated
+def MoniTool_TypedValue_Lib(*args):
+	return MoniTool_TypedValue.Lib(*args)
+
+@deprecated
+def MoniTool_TypedValue_LibList(*args):
+	return MoniTool_TypedValue.LibList(*args)
+
+@deprecated
+def MoniTool_TypedValue_StaticValue(*args):
+	return MoniTool_TypedValue.StaticValue(*args)
+
+}

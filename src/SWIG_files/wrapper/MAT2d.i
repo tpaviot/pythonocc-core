@@ -1456,3 +1456,14 @@ class MAT2d_CutCurve:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def MAT2d_MapBiIntHasher_HashCode(*args):
+	return MAT2d_MapBiIntHasher.HashCode(*args)
+
+@deprecated
+def MAT2d_MapBiIntHasher_IsEqual(*args):
+	return MAT2d_MapBiIntHasher.IsEqual(*args)
+
+}

@@ -80,10 +80,3 @@ class Geom2dLProp_NumericCurInf2d:
 # harray2 classes
 # hsequence classes
 
-Geom2dLProp_Curve2dTool_Continuity = Geom2dLProp_Curve2dTool.Continuity
-Geom2dLProp_Curve2dTool_D1 = Geom2dLProp_Curve2dTool.D1
-Geom2dLProp_Curve2dTool_D2 = Geom2dLProp_Curve2dTool.D2
-Geom2dLProp_Curve2dTool_D3 = Geom2dLProp_Curve2dTool.D3
-Geom2dLProp_Curve2dTool_FirstParameter = Geom2dLProp_Curve2dTool.FirstParameter
-Geom2dLProp_Curve2dTool_LastParameter = Geom2dLProp_Curve2dTool.LastParameter
-Geom2dLProp_Curve2dTool_Value = Geom2dLProp_Curve2dTool.Value

@@ -287,14 +287,3 @@ class STEPConstruct_ValidationProps(STEPConstruct_Tool):
 # harray2 classes
 # hsequence classes
 
-stepconstruct_FindCDSR = stepconstruct.FindCDSR
-stepconstruct_FindEntity = stepconstruct.FindEntity
-stepconstruct_FindEntity = stepconstruct.FindEntity
-stepconstruct_FindShape = stepconstruct.FindShape
-STEPConstruct_Assembly_CheckSRRReversesNAUO = STEPConstruct_Assembly.CheckSRRReversesNAUO
-STEPConstruct_PointHasher_HashCode = STEPConstruct_PointHasher.HashCode
-STEPConstruct_PointHasher_IsEqual = STEPConstruct_PointHasher.IsEqual
-STEPConstruct_UnitContext_ConvertSiPrefix = STEPConstruct_UnitContext.ConvertSiPrefix
-STEPConstruct_Styles_DecodeColor = STEPConstruct_Styles.DecodeColor
-STEPConstruct_Styles_EncodeColor = STEPConstruct_Styles.EncodeColor
-STEPConstruct_Styles_EncodeColor = STEPConstruct_Styles.EncodeColor

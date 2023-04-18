@@ -137,17 +137,3 @@ class Media_Timer(Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-Media_FormatContext_FormatAVErrorDescription = Media_FormatContext.FormatAVErrorDescription
-Media_FormatContext_FormatTime = Media_FormatContext.FormatTime
-Media_FormatContext_FormatTimeProgress = Media_FormatContext.FormatTimeProgress
-Media_FormatContext_FormatUnitsToSeconds = Media_FormatContext.FormatUnitsToSeconds
-Media_FormatContext_SecondsToUnits = Media_FormatContext.SecondsToUnits
-Media_FormatContext_SecondsToUnits = Media_FormatContext.SecondsToUnits
-Media_FormatContext_StreamSecondsToUnits = Media_FormatContext.StreamSecondsToUnits
-Media_FormatContext_StreamUnitsToSeconds = Media_FormatContext.StreamUnitsToSeconds
-Media_FormatContext_UnitsToSeconds = Media_FormatContext.UnitsToSeconds
-Media_Frame_FormatFFmpeg2Occt = Media_Frame.FormatFFmpeg2Occt
-Media_Frame_FormatOcct2FFmpeg = Media_Frame.FormatOcct2FFmpeg
-Media_Frame_Swap = Media_Frame.Swap
-Media_PlayerContext_DumpFirstFrame = Media_PlayerContext.DumpFirstFrame
-Media_PlayerContext_DumpFirstFrame = Media_PlayerContext.DumpFirstFrame

@@ -1718,21 +1718,3 @@ class AIS_TexturedShape(AIS_Shape):
 # harray2 classes
 # hsequence classes
 
-AIS_GraphicTool_GetInteriorColor = AIS_GraphicTool.GetInteriorColor
-AIS_GraphicTool_GetInteriorColor = AIS_GraphicTool.GetInteriorColor
-AIS_GraphicTool_GetLineAtt = AIS_GraphicTool.GetLineAtt
-AIS_GraphicTool_GetLineColor = AIS_GraphicTool.GetLineColor
-AIS_GraphicTool_GetLineColor = AIS_GraphicTool.GetLineColor
-AIS_GraphicTool_GetLineType = AIS_GraphicTool.GetLineType
-AIS_GraphicTool_GetLineWidth = AIS_GraphicTool.GetLineWidth
-AIS_GraphicTool_GetMaterial = AIS_GraphicTool.GetMaterial
-AIS_ColorScale_FindColor = AIS_ColorScale.FindColor
-AIS_ColorScale_FindColor = AIS_ColorScale.FindColor
-AIS_ColorScale_MakeUniformColors = AIS_ColorScale.MakeUniformColors
-AIS_ColorScale_hueToValidRange = AIS_ColorScale.hueToValidRange
-AIS_Shape_SelectionMode = AIS_Shape.SelectionMode
-AIS_Shape_SelectionType = AIS_Shape.SelectionType
-AIS_Shape_computeHlrPresentation = AIS_Shape.computeHlrPresentation
-AIS_ViewCube_IsBoxCorner = AIS_ViewCube.IsBoxCorner
-AIS_ViewCube_IsBoxEdge = AIS_ViewCube.IsBoxEdge
-AIS_ViewCube_IsBoxSide = AIS_ViewCube.IsBoxSide

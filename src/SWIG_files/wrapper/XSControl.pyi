@@ -303,13 +303,3 @@ class XSControl_Writer:
 # harray2 classes
 # hsequence classes
 
-xscontrol_Session = xscontrol.Session
-xscontrol_Vars = xscontrol.Vars
-XSControl_ConnectedShapes_AdjacentEntities = XSControl_ConnectedShapes.AdjacentEntities
-XSControl_Controller_Recorded = XSControl_Controller.Recorded
-XSControl_FuncShape_FileAndVar = XSControl_FuncShape.FileAndVar
-XSControl_FuncShape_Init = XSControl_FuncShape.Init
-XSControl_FuncShape_MoreShapes = XSControl_FuncShape.MoreShapes
-XSControl_Functions_Init = XSControl_Functions.Init
-XSControl_TransferReader_PrintStatsOnList = XSControl_TransferReader.PrintStatsOnList
-XSControl_TransferReader_PrintStatsProcess = XSControl_TransferReader.PrintStatsProcess

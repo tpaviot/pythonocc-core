@@ -2276,3 +2276,66 @@ class BRepGProp_MeshProps:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepgprop_LinearProperties(*args):
+	return brepgprop.LinearProperties(*args)
+
+@deprecated
+def brepgprop_SurfaceProperties(*args):
+	return brepgprop.SurfaceProperties(*args)
+
+@deprecated
+def brepgprop_SurfaceProperties(*args):
+	return brepgprop.SurfaceProperties(*args)
+
+@deprecated
+def brepgprop_VolumeProperties(*args):
+	return brepgprop.VolumeProperties(*args)
+
+@deprecated
+def brepgprop_VolumeProperties(*args):
+	return brepgprop.VolumeProperties(*args)
+
+@deprecated
+def brepgprop_VolumePropertiesGK(*args):
+	return brepgprop.VolumePropertiesGK(*args)
+
+@deprecated
+def brepgprop_VolumePropertiesGK(*args):
+	return brepgprop.VolumePropertiesGK(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_D1(*args):
+	return BRepGProp_EdgeTool.D1(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_FirstParameter(*args):
+	return BRepGProp_EdgeTool.FirstParameter(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_IntegrationOrder(*args):
+	return BRepGProp_EdgeTool.IntegrationOrder(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_Intervals(*args):
+	return BRepGProp_EdgeTool.Intervals(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_LastParameter(*args):
+	return BRepGProp_EdgeTool.LastParameter(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_NbIntervals(*args):
+	return BRepGProp_EdgeTool.NbIntervals(*args)
+
+@deprecated
+def BRepGProp_EdgeTool_Value(*args):
+	return BRepGProp_EdgeTool.Value(*args)
+
+@deprecated
+def BRepGProp_MeshCinert_PreparePolygon(*args):
+	return BRepGProp_MeshCinert.PreparePolygon(*args)
+
+}

@@ -1527,3 +1527,14 @@ gp_Pnt2d
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def intf_Contain(*args):
+	return intf.Contain(*args)
+
+@deprecated
+def intf_PlaneEquation(*args):
+	return intf.PlaneEquation(*args)
+
+}

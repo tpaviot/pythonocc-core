@@ -138,12 +138,3 @@ class ShapeCustom_ConvertToRevolution: ...
 # harray2 classes
 # hsequence classes
 
-shapecustom_BSplineRestriction = shapecustom.BSplineRestriction
-shapecustom_ConvertToBSpline = shapecustom.ConvertToBSpline
-shapecustom_ConvertToRevolution = shapecustom.ConvertToRevolution
-shapecustom_DirectFaces = shapecustom.DirectFaces
-shapecustom_ScaleShape = shapecustom.ScaleShape
-shapecustom_SweptToElementary = shapecustom.SweptToElementary
-ShapeCustom_Curve2d_ConvertToLine2d = ShapeCustom_Curve2d.ConvertToLine2d
-ShapeCustom_Curve2d_IsLinear = ShapeCustom_Curve2d.IsLinear
-ShapeCustom_Curve2d_SimplifyBSpline2d = ShapeCustom_Curve2d.SimplifyBSpline2d

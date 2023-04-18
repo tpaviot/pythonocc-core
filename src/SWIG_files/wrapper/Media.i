@@ -1577,3 +1577,62 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Media_FormatContext_FormatAVErrorDescription(*args):
+	return Media_FormatContext.FormatAVErrorDescription(*args)
+
+@deprecated
+def Media_FormatContext_FormatTime(*args):
+	return Media_FormatContext.FormatTime(*args)
+
+@deprecated
+def Media_FormatContext_FormatTimeProgress(*args):
+	return Media_FormatContext.FormatTimeProgress(*args)
+
+@deprecated
+def Media_FormatContext_FormatUnitsToSeconds(*args):
+	return Media_FormatContext.FormatUnitsToSeconds(*args)
+
+@deprecated
+def Media_FormatContext_SecondsToUnits(*args):
+	return Media_FormatContext.SecondsToUnits(*args)
+
+@deprecated
+def Media_FormatContext_SecondsToUnits(*args):
+	return Media_FormatContext.SecondsToUnits(*args)
+
+@deprecated
+def Media_FormatContext_StreamSecondsToUnits(*args):
+	return Media_FormatContext.StreamSecondsToUnits(*args)
+
+@deprecated
+def Media_FormatContext_StreamUnitsToSeconds(*args):
+	return Media_FormatContext.StreamUnitsToSeconds(*args)
+
+@deprecated
+def Media_FormatContext_UnitsToSeconds(*args):
+	return Media_FormatContext.UnitsToSeconds(*args)
+
+@deprecated
+def Media_Frame_FormatFFmpeg2Occt(*args):
+	return Media_Frame.FormatFFmpeg2Occt(*args)
+
+@deprecated
+def Media_Frame_FormatOcct2FFmpeg(*args):
+	return Media_Frame.FormatOcct2FFmpeg(*args)
+
+@deprecated
+def Media_Frame_Swap(*args):
+	return Media_Frame.Swap(*args)
+
+@deprecated
+def Media_PlayerContext_DumpFirstFrame(*args):
+	return Media_PlayerContext.DumpFirstFrame(*args)
+
+@deprecated
+def Media_PlayerContext_DumpFirstFrame(*args):
+	return Media_PlayerContext.DumpFirstFrame(*args)
+
+}

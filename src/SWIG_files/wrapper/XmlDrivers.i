@@ -295,3 +295,18 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmldrivers_AttributeDrivers(*args):
+	return xmldrivers.AttributeDrivers(*args)
+
+@deprecated
+def xmldrivers_DefineFormat(*args):
+	return xmldrivers.DefineFormat(*args)
+
+@deprecated
+def xmldrivers_Factory(*args):
+	return xmldrivers.Factory(*args)
+
+}

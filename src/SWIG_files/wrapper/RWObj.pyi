@@ -146,4 +146,3 @@ class RWObj_MtlReader: ...
 # harray2 classes
 # hsequence classes
 
-rwobj_ReadFile = rwobj.ReadFile

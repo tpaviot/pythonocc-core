@@ -13355,3 +13355,86 @@ class IFSelect_HSeqOfSelection : public IFSelect_TSeqOfSelection, public Standar
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def ifselect_RestoreSession(*args):
+	return ifselect.RestoreSession(*args)
+
+@deprecated
+def ifselect_SaveSession(*args):
+	return ifselect.SaveSession(*args)
+
+@deprecated
+def IFSelect_Activator_Adding(*args):
+	return IFSelect_Activator.Adding(*args)
+
+@deprecated
+def IFSelect_Activator_Commands(*args):
+	return IFSelect_Activator.Commands(*args)
+
+@deprecated
+def IFSelect_Activator_Mode(*args):
+	return IFSelect_Activator.Mode(*args)
+
+@deprecated
+def IFSelect_Activator_Remove(*args):
+	return IFSelect_Activator.Remove(*args)
+
+@deprecated
+def IFSelect_Activator_Select(*args):
+	return IFSelect_Activator.Select(*args)
+
+@deprecated
+def IFSelect_Functions_GiveDispatch(*args):
+	return IFSelect_Functions.GiveDispatch(*args)
+
+@deprecated
+def IFSelect_Functions_GiveEntity(*args):
+	return IFSelect_Functions.GiveEntity(*args)
+
+@deprecated
+def IFSelect_Functions_GiveEntityNumber(*args):
+	return IFSelect_Functions.GiveEntityNumber(*args)
+
+@deprecated
+def IFSelect_Functions_GiveList(*args):
+	return IFSelect_Functions.GiveList(*args)
+
+@deprecated
+def IFSelect_Functions_Init(*args):
+	return IFSelect_Functions.Init(*args)
+
+@deprecated
+def IFSelect_SessionDumper_First(*args):
+	return IFSelect_SessionDumper.First(*args)
+
+@deprecated
+def IFSelect_Signature_IntValue(*args):
+	return IFSelect_Signature.IntValue(*args)
+
+@deprecated
+def IFSelect_Signature_MatchValue(*args):
+	return IFSelect_Signature.MatchValue(*args)
+
+@deprecated
+def IFSelect_Act_AddFSet(*args):
+	return IFSelect_Act.AddFSet(*args)
+
+@deprecated
+def IFSelect_Act_AddFunc(*args):
+	return IFSelect_Act.AddFunc(*args)
+
+@deprecated
+def IFSelect_Act_SetGroup(*args):
+	return IFSelect_Act.SetGroup(*args)
+
+@deprecated
+def IFSelect_ParamEditor_StaticEditor(*args):
+	return IFSelect_ParamEditor.StaticEditor(*args)
+
+@deprecated
+def IFSelect_SignValidity_CVal(*args):
+	return IFSelect_SignValidity.CVal(*args)
+
+}

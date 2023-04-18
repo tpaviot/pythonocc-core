@@ -195,4 +195,3 @@ class XmlMDataStd_VariableDriver(XmlMDF_ADriver):
 # harray2 classes
 # hsequence classes
 
-xmlmdatastd_AddDrivers = xmlmdatastd.AddDrivers

@@ -30,6 +30,3 @@ class ApproxInt_SvSurfaces:
 # harray2 classes
 # hsequence classes
 
-ApproxInt_KnotTools_BuildCurvature = ApproxInt_KnotTools.BuildCurvature
-ApproxInt_KnotTools_BuildKnots = ApproxInt_KnotTools.BuildKnots
-ApproxInt_KnotTools_DefineParType = ApproxInt_KnotTools.DefineParType

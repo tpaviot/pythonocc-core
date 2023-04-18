@@ -12245,3 +12245,706 @@ class HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def hlrbrep_MakeEdge(*args):
+	return hlrbrep.MakeEdge(*args)
+
+@deprecated
+def hlrbrep_MakeEdge3d(*args):
+	return hlrbrep.MakeEdge3d(*args)
+
+@deprecated
+def hlrbrep_PolyHLRAngleAndDeflection(*args):
+	return hlrbrep.PolyHLRAngleAndDeflection(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_BSpline(*args):
+	return HLRBRep_BCurveTool.BSpline(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Bezier(*args):
+	return HLRBRep_BCurveTool.Bezier(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Circle(*args):
+	return HLRBRep_BCurveTool.Circle(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Continuity(*args):
+	return HLRBRep_BCurveTool.Continuity(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_D0(*args):
+	return HLRBRep_BCurveTool.D0(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_D1(*args):
+	return HLRBRep_BCurveTool.D1(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_D2(*args):
+	return HLRBRep_BCurveTool.D2(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_D3(*args):
+	return HLRBRep_BCurveTool.D3(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_DN(*args):
+	return HLRBRep_BCurveTool.DN(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Degree(*args):
+	return HLRBRep_BCurveTool.Degree(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Ellipse(*args):
+	return HLRBRep_BCurveTool.Ellipse(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_FirstParameter(*args):
+	return HLRBRep_BCurveTool.FirstParameter(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_GetType(*args):
+	return HLRBRep_BCurveTool.GetType(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Hyperbola(*args):
+	return HLRBRep_BCurveTool.Hyperbola(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Intervals(*args):
+	return HLRBRep_BCurveTool.Intervals(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_IsClosed(*args):
+	return HLRBRep_BCurveTool.IsClosed(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_IsPeriodic(*args):
+	return HLRBRep_BCurveTool.IsPeriodic(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_IsRational(*args):
+	return HLRBRep_BCurveTool.IsRational(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_LastParameter(*args):
+	return HLRBRep_BCurveTool.LastParameter(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Line(*args):
+	return HLRBRep_BCurveTool.Line(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_NbIntervals(*args):
+	return HLRBRep_BCurveTool.NbIntervals(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_NbKnots(*args):
+	return HLRBRep_BCurveTool.NbKnots(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_NbPoles(*args):
+	return HLRBRep_BCurveTool.NbPoles(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_NbSamples(*args):
+	return HLRBRep_BCurveTool.NbSamples(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Parabola(*args):
+	return HLRBRep_BCurveTool.Parabola(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Period(*args):
+	return HLRBRep_BCurveTool.Period(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Poles(*args):
+	return HLRBRep_BCurveTool.Poles(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_PolesAndWeights(*args):
+	return HLRBRep_BCurveTool.PolesAndWeights(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Resolution(*args):
+	return HLRBRep_BCurveTool.Resolution(*args)
+
+@deprecated
+def HLRBRep_BCurveTool_Value(*args):
+	return HLRBRep_BCurveTool.Value(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_Continuity(*args):
+	return HLRBRep_CLPropsATool.Continuity(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_D1(*args):
+	return HLRBRep_CLPropsATool.D1(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_D2(*args):
+	return HLRBRep_CLPropsATool.D2(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_D3(*args):
+	return HLRBRep_CLPropsATool.D3(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_FirstParameter(*args):
+	return HLRBRep_CLPropsATool.FirstParameter(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_LastParameter(*args):
+	return HLRBRep_CLPropsATool.LastParameter(*args)
+
+@deprecated
+def HLRBRep_CLPropsATool_Value(*args):
+	return HLRBRep_CLPropsATool.Value(*args)
+
+@deprecated
+def HLRBRep_CurveTool_BSpline(*args):
+	return HLRBRep_CurveTool.BSpline(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Bezier(*args):
+	return HLRBRep_CurveTool.Bezier(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Circle(*args):
+	return HLRBRep_CurveTool.Circle(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Continuity(*args):
+	return HLRBRep_CurveTool.Continuity(*args)
+
+@deprecated
+def HLRBRep_CurveTool_D0(*args):
+	return HLRBRep_CurveTool.D0(*args)
+
+@deprecated
+def HLRBRep_CurveTool_D1(*args):
+	return HLRBRep_CurveTool.D1(*args)
+
+@deprecated
+def HLRBRep_CurveTool_D2(*args):
+	return HLRBRep_CurveTool.D2(*args)
+
+@deprecated
+def HLRBRep_CurveTool_D3(*args):
+	return HLRBRep_CurveTool.D3(*args)
+
+@deprecated
+def HLRBRep_CurveTool_DN(*args):
+	return HLRBRep_CurveTool.DN(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Degree(*args):
+	return HLRBRep_CurveTool.Degree(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Ellipse(*args):
+	return HLRBRep_CurveTool.Ellipse(*args)
+
+@deprecated
+def HLRBRep_CurveTool_EpsX(*args):
+	return HLRBRep_CurveTool.EpsX(*args)
+
+@deprecated
+def HLRBRep_CurveTool_FirstParameter(*args):
+	return HLRBRep_CurveTool.FirstParameter(*args)
+
+@deprecated
+def HLRBRep_CurveTool_GetInterval(*args):
+	return HLRBRep_CurveTool.GetInterval(*args)
+
+@deprecated
+def HLRBRep_CurveTool_GetType(*args):
+	return HLRBRep_CurveTool.GetType(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Hyperbola(*args):
+	return HLRBRep_CurveTool.Hyperbola(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Intervals(*args):
+	return HLRBRep_CurveTool.Intervals(*args)
+
+@deprecated
+def HLRBRep_CurveTool_IsClosed(*args):
+	return HLRBRep_CurveTool.IsClosed(*args)
+
+@deprecated
+def HLRBRep_CurveTool_IsPeriodic(*args):
+	return HLRBRep_CurveTool.IsPeriodic(*args)
+
+@deprecated
+def HLRBRep_CurveTool_LastParameter(*args):
+	return HLRBRep_CurveTool.LastParameter(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Line(*args):
+	return HLRBRep_CurveTool.Line(*args)
+
+@deprecated
+def HLRBRep_CurveTool_NbIntervals(*args):
+	return HLRBRep_CurveTool.NbIntervals(*args)
+
+@deprecated
+def HLRBRep_CurveTool_NbSamples(*args):
+	return HLRBRep_CurveTool.NbSamples(*args)
+
+@deprecated
+def HLRBRep_CurveTool_NbSamples(*args):
+	return HLRBRep_CurveTool.NbSamples(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Parabola(*args):
+	return HLRBRep_CurveTool.Parabola(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Period(*args):
+	return HLRBRep_CurveTool.Period(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Resolution(*args):
+	return HLRBRep_CurveTool.Resolution(*args)
+
+@deprecated
+def HLRBRep_CurveTool_TheType(*args):
+	return HLRBRep_CurveTool.TheType(*args)
+
+@deprecated
+def HLRBRep_CurveTool_Value(*args):
+	return HLRBRep_CurveTool.Value(*args)
+
+@deprecated
+def HLRBRep_EdgeFaceTool_CurvatureValue(*args):
+	return HLRBRep_EdgeFaceTool.CurvatureValue(*args)
+
+@deprecated
+def HLRBRep_EdgeFaceTool_UVPoint(*args):
+	return HLRBRep_EdgeFaceTool.UVPoint(*args)
+
+@deprecated
+def HLRBRep_EdgeIList_AddInterference(*args):
+	return HLRBRep_EdgeIList.AddInterference(*args)
+
+@deprecated
+def HLRBRep_EdgeIList_ProcessComplex(*args):
+	return HLRBRep_EdgeIList.ProcessComplex(*args)
+
+@deprecated
+def HLRBRep_LineTool_BSpline(*args):
+	return HLRBRep_LineTool.BSpline(*args)
+
+@deprecated
+def HLRBRep_LineTool_Bezier(*args):
+	return HLRBRep_LineTool.Bezier(*args)
+
+@deprecated
+def HLRBRep_LineTool_Circle(*args):
+	return HLRBRep_LineTool.Circle(*args)
+
+@deprecated
+def HLRBRep_LineTool_Continuity(*args):
+	return HLRBRep_LineTool.Continuity(*args)
+
+@deprecated
+def HLRBRep_LineTool_D0(*args):
+	return HLRBRep_LineTool.D0(*args)
+
+@deprecated
+def HLRBRep_LineTool_D1(*args):
+	return HLRBRep_LineTool.D1(*args)
+
+@deprecated
+def HLRBRep_LineTool_D2(*args):
+	return HLRBRep_LineTool.D2(*args)
+
+@deprecated
+def HLRBRep_LineTool_D3(*args):
+	return HLRBRep_LineTool.D3(*args)
+
+@deprecated
+def HLRBRep_LineTool_DN(*args):
+	return HLRBRep_LineTool.DN(*args)
+
+@deprecated
+def HLRBRep_LineTool_Degree(*args):
+	return HLRBRep_LineTool.Degree(*args)
+
+@deprecated
+def HLRBRep_LineTool_Ellipse(*args):
+	return HLRBRep_LineTool.Ellipse(*args)
+
+@deprecated
+def HLRBRep_LineTool_FirstParameter(*args):
+	return HLRBRep_LineTool.FirstParameter(*args)
+
+@deprecated
+def HLRBRep_LineTool_GetType(*args):
+	return HLRBRep_LineTool.GetType(*args)
+
+@deprecated
+def HLRBRep_LineTool_Hyperbola(*args):
+	return HLRBRep_LineTool.Hyperbola(*args)
+
+@deprecated
+def HLRBRep_LineTool_IntervalContinuity(*args):
+	return HLRBRep_LineTool.IntervalContinuity(*args)
+
+@deprecated
+def HLRBRep_LineTool_IntervalFirst(*args):
+	return HLRBRep_LineTool.IntervalFirst(*args)
+
+@deprecated
+def HLRBRep_LineTool_IntervalLast(*args):
+	return HLRBRep_LineTool.IntervalLast(*args)
+
+@deprecated
+def HLRBRep_LineTool_Intervals(*args):
+	return HLRBRep_LineTool.Intervals(*args)
+
+@deprecated
+def HLRBRep_LineTool_IsClosed(*args):
+	return HLRBRep_LineTool.IsClosed(*args)
+
+@deprecated
+def HLRBRep_LineTool_IsPeriodic(*args):
+	return HLRBRep_LineTool.IsPeriodic(*args)
+
+@deprecated
+def HLRBRep_LineTool_IsRational(*args):
+	return HLRBRep_LineTool.IsRational(*args)
+
+@deprecated
+def HLRBRep_LineTool_KnotsAndMultiplicities(*args):
+	return HLRBRep_LineTool.KnotsAndMultiplicities(*args)
+
+@deprecated
+def HLRBRep_LineTool_LastParameter(*args):
+	return HLRBRep_LineTool.LastParameter(*args)
+
+@deprecated
+def HLRBRep_LineTool_Line(*args):
+	return HLRBRep_LineTool.Line(*args)
+
+@deprecated
+def HLRBRep_LineTool_NbIntervals(*args):
+	return HLRBRep_LineTool.NbIntervals(*args)
+
+@deprecated
+def HLRBRep_LineTool_NbKnots(*args):
+	return HLRBRep_LineTool.NbKnots(*args)
+
+@deprecated
+def HLRBRep_LineTool_NbPoles(*args):
+	return HLRBRep_LineTool.NbPoles(*args)
+
+@deprecated
+def HLRBRep_LineTool_NbSamples(*args):
+	return HLRBRep_LineTool.NbSamples(*args)
+
+@deprecated
+def HLRBRep_LineTool_Parabola(*args):
+	return HLRBRep_LineTool.Parabola(*args)
+
+@deprecated
+def HLRBRep_LineTool_Period(*args):
+	return HLRBRep_LineTool.Period(*args)
+
+@deprecated
+def HLRBRep_LineTool_Poles(*args):
+	return HLRBRep_LineTool.Poles(*args)
+
+@deprecated
+def HLRBRep_LineTool_PolesAndWeights(*args):
+	return HLRBRep_LineTool.PolesAndWeights(*args)
+
+@deprecated
+def HLRBRep_LineTool_Resolution(*args):
+	return HLRBRep_LineTool.Resolution(*args)
+
+@deprecated
+def HLRBRep_LineTool_SamplePars(*args):
+	return HLRBRep_LineTool.SamplePars(*args)
+
+@deprecated
+def HLRBRep_LineTool_Value(*args):
+	return HLRBRep_LineTool.Value(*args)
+
+@deprecated
+def HLRBRep_SLPropsATool_Bounds(*args):
+	return HLRBRep_SLPropsATool.Bounds(*args)
+
+@deprecated
+def HLRBRep_SLPropsATool_Continuity(*args):
+	return HLRBRep_SLPropsATool.Continuity(*args)
+
+@deprecated
+def HLRBRep_SLPropsATool_D1(*args):
+	return HLRBRep_SLPropsATool.D1(*args)
+
+@deprecated
+def HLRBRep_SLPropsATool_D2(*args):
+	return HLRBRep_SLPropsATool.D2(*args)
+
+@deprecated
+def HLRBRep_SLPropsATool_DN(*args):
+	return HLRBRep_SLPropsATool.DN(*args)
+
+@deprecated
+def HLRBRep_SLPropsATool_Value(*args):
+	return HLRBRep_SLPropsATool.Value(*args)
+
+@deprecated
+def HLRBRep_ShapeToHLR_Load(*args):
+	return HLRBRep_ShapeToHLR.Load(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_AxeOfRevolution(*args):
+	return HLRBRep_SurfaceTool.AxeOfRevolution(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_BSpline(*args):
+	return HLRBRep_SurfaceTool.BSpline(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_BasisCurve(*args):
+	return HLRBRep_SurfaceTool.BasisCurve(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_BasisSurface(*args):
+	return HLRBRep_SurfaceTool.BasisSurface(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Bezier(*args):
+	return HLRBRep_SurfaceTool.Bezier(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Cone(*args):
+	return HLRBRep_SurfaceTool.Cone(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Cylinder(*args):
+	return HLRBRep_SurfaceTool.Cylinder(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_D0(*args):
+	return HLRBRep_SurfaceTool.D0(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_D1(*args):
+	return HLRBRep_SurfaceTool.D1(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_D2(*args):
+	return HLRBRep_SurfaceTool.D2(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_D3(*args):
+	return HLRBRep_SurfaceTool.D3(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_DN(*args):
+	return HLRBRep_SurfaceTool.DN(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Direction(*args):
+	return HLRBRep_SurfaceTool.Direction(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_FirstUParameter(*args):
+	return HLRBRep_SurfaceTool.FirstUParameter(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_FirstVParameter(*args):
+	return HLRBRep_SurfaceTool.FirstVParameter(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_GetType(*args):
+	return HLRBRep_SurfaceTool.GetType(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_IsUClosed(*args):
+	return HLRBRep_SurfaceTool.IsUClosed(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_IsUPeriodic(*args):
+	return HLRBRep_SurfaceTool.IsUPeriodic(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_IsVClosed(*args):
+	return HLRBRep_SurfaceTool.IsVClosed(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_IsVPeriodic(*args):
+	return HLRBRep_SurfaceTool.IsVPeriodic(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_LastUParameter(*args):
+	return HLRBRep_SurfaceTool.LastUParameter(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_LastVParameter(*args):
+	return HLRBRep_SurfaceTool.LastVParameter(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_NbSamplesU(*args):
+	return HLRBRep_SurfaceTool.NbSamplesU(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_NbSamplesU(*args):
+	return HLRBRep_SurfaceTool.NbSamplesU(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_NbSamplesV(*args):
+	return HLRBRep_SurfaceTool.NbSamplesV(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_NbSamplesV(*args):
+	return HLRBRep_SurfaceTool.NbSamplesV(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_NbUIntervals(*args):
+	return HLRBRep_SurfaceTool.NbUIntervals(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_NbVIntervals(*args):
+	return HLRBRep_SurfaceTool.NbVIntervals(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_OffsetValue(*args):
+	return HLRBRep_SurfaceTool.OffsetValue(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Plane(*args):
+	return HLRBRep_SurfaceTool.Plane(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Sphere(*args):
+	return HLRBRep_SurfaceTool.Sphere(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Torus(*args):
+	return HLRBRep_SurfaceTool.Torus(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_UIntervals(*args):
+	return HLRBRep_SurfaceTool.UIntervals(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_UPeriod(*args):
+	return HLRBRep_SurfaceTool.UPeriod(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_UResolution(*args):
+	return HLRBRep_SurfaceTool.UResolution(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_UTrim(*args):
+	return HLRBRep_SurfaceTool.UTrim(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_VIntervals(*args):
+	return HLRBRep_SurfaceTool.VIntervals(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_VPeriod(*args):
+	return HLRBRep_SurfaceTool.VPeriod(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_VResolution(*args):
+	return HLRBRep_SurfaceTool.VResolution(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_VTrim(*args):
+	return HLRBRep_SurfaceTool.VTrim(*args)
+
+@deprecated
+def HLRBRep_SurfaceTool_Value(*args):
+	return HLRBRep_SurfaceTool.Value(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_BeginOfSeg(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.BeginOfSeg(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_Bounding(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.Bounding(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_Closed(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.Closed(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_DeflectionOverEstimation(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.DeflectionOverEstimation(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_Dump(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.Dump(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_EndOfSeg(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.EndOfSeg(*args)
+
+@deprecated
+def HLRBRep_ThePolygonToolOfInterCSurf_NbSegments(*args):
+	return HLRBRep_ThePolygonToolOfInterCSurf.NbSegments(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_Bounding(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.Bounding(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_ComponentsBounding(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.ComponentsBounding(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_DeflectionOverEstimation(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.DeflectionOverEstimation(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_Dump(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.Dump(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_GetBorderDeflection(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.GetBorderDeflection(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_IsOnBound(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.IsOnBound(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_NbTriangles(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.NbTriangles(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_Point(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.Point(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_TriConnex(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.TriConnex(*args)
+
+@deprecated
+def HLRBRep_ThePolyhedronToolOfInterCSurf_Triangle(*args):
+	return HLRBRep_ThePolyhedronToolOfInterCSurf.Triangle(*args)
+
+@deprecated
+def HLRBRep_TheProjPCurOfCInter_FindParameter(*args):
+	return HLRBRep_TheProjPCurOfCInter.FindParameter(*args)
+
+@deprecated
+def HLRBRep_TheProjPCurOfCInter_FindParameter(*args):
+	return HLRBRep_TheProjPCurOfCInter.FindParameter(*args)
+
+}

@@ -516,3 +516,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def rwheadersection_Init(*args):
+	return rwheadersection.Init(*args)
+
+}

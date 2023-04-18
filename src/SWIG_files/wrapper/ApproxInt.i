@@ -331,3 +331,18 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def ApproxInt_KnotTools_BuildCurvature(*args):
+	return ApproxInt_KnotTools.BuildCurvature(*args)
+
+@deprecated
+def ApproxInt_KnotTools_BuildKnots(*args):
+	return ApproxInt_KnotTools.BuildKnots(*args)
+
+@deprecated
+def ApproxInt_KnotTools_DefineParType(*args):
+	return ApproxInt_KnotTools.DefineParType(*args)
+
+}

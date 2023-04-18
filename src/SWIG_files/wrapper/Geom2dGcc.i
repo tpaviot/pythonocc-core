@@ -4342,3 +4342,54 @@ class Geom2dGcc_FunctionTanCuCuCu:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geom2dgcc_Enclosed(*args):
+	return geom2dgcc.Enclosed(*args)
+
+@deprecated
+def geom2dgcc_Enclosing(*args):
+	return geom2dgcc.Enclosing(*args)
+
+@deprecated
+def geom2dgcc_Outside(*args):
+	return geom2dgcc.Outside(*args)
+
+@deprecated
+def geom2dgcc_Unqualified(*args):
+	return geom2dgcc.Unqualified(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_D1(*args):
+	return Geom2dGcc_CurveTool.D1(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_D2(*args):
+	return Geom2dGcc_CurveTool.D2(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_D3(*args):
+	return Geom2dGcc_CurveTool.D3(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_EpsX(*args):
+	return Geom2dGcc_CurveTool.EpsX(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_FirstParameter(*args):
+	return Geom2dGcc_CurveTool.FirstParameter(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_LastParameter(*args):
+	return Geom2dGcc_CurveTool.LastParameter(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_NbSamples(*args):
+	return Geom2dGcc_CurveTool.NbSamples(*args)
+
+@deprecated
+def Geom2dGcc_CurveTool_Value(*args):
+	return Geom2dGcc_CurveTool.Value(*args)
+
+}

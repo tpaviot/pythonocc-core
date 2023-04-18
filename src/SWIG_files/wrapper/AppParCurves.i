@@ -1350,3 +1350,22 @@ class AppParCurves_HArray1OfMultiBSpCurve : public AppParCurves_Array1OfMultiBSp
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def appparcurves_Bernstein(*args):
+	return appparcurves.Bernstein(*args)
+
+@deprecated
+def appparcurves_BernsteinMatrix(*args):
+	return appparcurves.BernsteinMatrix(*args)
+
+@deprecated
+def appparcurves_SecondDerivativeBernstein(*args):
+	return appparcurves.SecondDerivativeBernstein(*args)
+
+@deprecated
+def appparcurves_SplineFunction(*args):
+	return appparcurves.SplineFunction(*args)
+
+}

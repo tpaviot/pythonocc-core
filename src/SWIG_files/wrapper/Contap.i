@@ -3640,3 +3640,186 @@ class Contap_TheHSequenceOfPoint : public Contap_TheSequenceOfPoint, public Stan
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Contap_HContTool_Bounds(*args):
+	return Contap_HContTool.Bounds(*args)
+
+@deprecated
+def Contap_HContTool_HasBeenSeen(*args):
+	return Contap_HContTool.HasBeenSeen(*args)
+
+@deprecated
+def Contap_HContTool_HasFirstPoint(*args):
+	return Contap_HContTool.HasFirstPoint(*args)
+
+@deprecated
+def Contap_HContTool_HasLastPoint(*args):
+	return Contap_HContTool.HasLastPoint(*args)
+
+@deprecated
+def Contap_HContTool_IsAllSolution(*args):
+	return Contap_HContTool.IsAllSolution(*args)
+
+@deprecated
+def Contap_HContTool_IsVertex(*args):
+	return Contap_HContTool.IsVertex(*args)
+
+@deprecated
+def Contap_HContTool_NbPoints(*args):
+	return Contap_HContTool.NbPoints(*args)
+
+@deprecated
+def Contap_HContTool_NbSamplePoints(*args):
+	return Contap_HContTool.NbSamplePoints(*args)
+
+@deprecated
+def Contap_HContTool_NbSamplesOnArc(*args):
+	return Contap_HContTool.NbSamplesOnArc(*args)
+
+@deprecated
+def Contap_HContTool_NbSamplesU(*args):
+	return Contap_HContTool.NbSamplesU(*args)
+
+@deprecated
+def Contap_HContTool_NbSamplesV(*args):
+	return Contap_HContTool.NbSamplesV(*args)
+
+@deprecated
+def Contap_HContTool_NbSegments(*args):
+	return Contap_HContTool.NbSegments(*args)
+
+@deprecated
+def Contap_HContTool_Parameter(*args):
+	return Contap_HContTool.Parameter(*args)
+
+@deprecated
+def Contap_HContTool_Project(*args):
+	return Contap_HContTool.Project(*args)
+
+@deprecated
+def Contap_HContTool_SamplePoint(*args):
+	return Contap_HContTool.SamplePoint(*args)
+
+@deprecated
+def Contap_HContTool_Tolerance(*args):
+	return Contap_HContTool.Tolerance(*args)
+
+@deprecated
+def Contap_HContTool_Value(*args):
+	return Contap_HContTool.Value(*args)
+
+@deprecated
+def Contap_HContTool_Vertex(*args):
+	return Contap_HContTool.Vertex(*args)
+
+@deprecated
+def Contap_HCurve2dTool_BSpline(*args):
+	return Contap_HCurve2dTool.BSpline(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Bezier(*args):
+	return Contap_HCurve2dTool.Bezier(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Circle(*args):
+	return Contap_HCurve2dTool.Circle(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Continuity(*args):
+	return Contap_HCurve2dTool.Continuity(*args)
+
+@deprecated
+def Contap_HCurve2dTool_D0(*args):
+	return Contap_HCurve2dTool.D0(*args)
+
+@deprecated
+def Contap_HCurve2dTool_D1(*args):
+	return Contap_HCurve2dTool.D1(*args)
+
+@deprecated
+def Contap_HCurve2dTool_D2(*args):
+	return Contap_HCurve2dTool.D2(*args)
+
+@deprecated
+def Contap_HCurve2dTool_D3(*args):
+	return Contap_HCurve2dTool.D3(*args)
+
+@deprecated
+def Contap_HCurve2dTool_DN(*args):
+	return Contap_HCurve2dTool.DN(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Ellipse(*args):
+	return Contap_HCurve2dTool.Ellipse(*args)
+
+@deprecated
+def Contap_HCurve2dTool_FirstParameter(*args):
+	return Contap_HCurve2dTool.FirstParameter(*args)
+
+@deprecated
+def Contap_HCurve2dTool_GetType(*args):
+	return Contap_HCurve2dTool.GetType(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Hyperbola(*args):
+	return Contap_HCurve2dTool.Hyperbola(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Intervals(*args):
+	return Contap_HCurve2dTool.Intervals(*args)
+
+@deprecated
+def Contap_HCurve2dTool_IsClosed(*args):
+	return Contap_HCurve2dTool.IsClosed(*args)
+
+@deprecated
+def Contap_HCurve2dTool_IsPeriodic(*args):
+	return Contap_HCurve2dTool.IsPeriodic(*args)
+
+@deprecated
+def Contap_HCurve2dTool_LastParameter(*args):
+	return Contap_HCurve2dTool.LastParameter(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Line(*args):
+	return Contap_HCurve2dTool.Line(*args)
+
+@deprecated
+def Contap_HCurve2dTool_NbIntervals(*args):
+	return Contap_HCurve2dTool.NbIntervals(*args)
+
+@deprecated
+def Contap_HCurve2dTool_NbSamples(*args):
+	return Contap_HCurve2dTool.NbSamples(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Parabola(*args):
+	return Contap_HCurve2dTool.Parabola(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Period(*args):
+	return Contap_HCurve2dTool.Period(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Resolution(*args):
+	return Contap_HCurve2dTool.Resolution(*args)
+
+@deprecated
+def Contap_HCurve2dTool_Value(*args):
+	return Contap_HCurve2dTool.Value(*args)
+
+@deprecated
+def Contap_SurfProps_DerivAndNorm(*args):
+	return Contap_SurfProps.DerivAndNorm(*args)
+
+@deprecated
+def Contap_SurfProps_NormAndDn(*args):
+	return Contap_SurfProps.NormAndDn(*args)
+
+@deprecated
+def Contap_SurfProps_Normale(*args):
+	return Contap_SurfProps.Normale(*args)
+
+}

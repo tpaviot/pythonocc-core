@@ -16834,3 +16834,78 @@ float
 AIS_AnimationTimer=OCC.Core.Media.Media_Timer
 AIS_DisplayStatus=OCC.Core.PrsMgr.PrsMgr_DisplayStatus
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def AIS_GraphicTool_GetInteriorColor(*args):
+	return AIS_GraphicTool.GetInteriorColor(*args)
+
+@deprecated
+def AIS_GraphicTool_GetInteriorColor(*args):
+	return AIS_GraphicTool.GetInteriorColor(*args)
+
+@deprecated
+def AIS_GraphicTool_GetLineAtt(*args):
+	return AIS_GraphicTool.GetLineAtt(*args)
+
+@deprecated
+def AIS_GraphicTool_GetLineColor(*args):
+	return AIS_GraphicTool.GetLineColor(*args)
+
+@deprecated
+def AIS_GraphicTool_GetLineColor(*args):
+	return AIS_GraphicTool.GetLineColor(*args)
+
+@deprecated
+def AIS_GraphicTool_GetLineType(*args):
+	return AIS_GraphicTool.GetLineType(*args)
+
+@deprecated
+def AIS_GraphicTool_GetLineWidth(*args):
+	return AIS_GraphicTool.GetLineWidth(*args)
+
+@deprecated
+def AIS_GraphicTool_GetMaterial(*args):
+	return AIS_GraphicTool.GetMaterial(*args)
+
+@deprecated
+def AIS_ColorScale_FindColor(*args):
+	return AIS_ColorScale.FindColor(*args)
+
+@deprecated
+def AIS_ColorScale_FindColor(*args):
+	return AIS_ColorScale.FindColor(*args)
+
+@deprecated
+def AIS_ColorScale_MakeUniformColors(*args):
+	return AIS_ColorScale.MakeUniformColors(*args)
+
+@deprecated
+def AIS_ColorScale_hueToValidRange(*args):
+	return AIS_ColorScale.hueToValidRange(*args)
+
+@deprecated
+def AIS_Shape_SelectionMode(*args):
+	return AIS_Shape.SelectionMode(*args)
+
+@deprecated
+def AIS_Shape_SelectionType(*args):
+	return AIS_Shape.SelectionType(*args)
+
+@deprecated
+def AIS_Shape_computeHlrPresentation(*args):
+	return AIS_Shape.computeHlrPresentation(*args)
+
+@deprecated
+def AIS_ViewCube_IsBoxCorner(*args):
+	return AIS_ViewCube.IsBoxCorner(*args)
+
+@deprecated
+def AIS_ViewCube_IsBoxEdge(*args):
+	return AIS_ViewCube.IsBoxEdge(*args)
+
+@deprecated
+def AIS_ViewCube_IsBoxSide(*args):
+	return AIS_ViewCube.IsBoxSide(*args)
+
+}

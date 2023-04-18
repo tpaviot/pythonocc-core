@@ -115,7 +115,3 @@ class HLRTopoBRep_VData:
 # harray2 classes
 # hsequence classes
 
-HLRTopoBRep_DSFiller_Insert = HLRTopoBRep_DSFiller.Insert
-HLRTopoBRep_FaceIsoLiner_MakeIsoLine = HLRTopoBRep_FaceIsoLiner.MakeIsoLine
-HLRTopoBRep_FaceIsoLiner_MakeVertex = HLRTopoBRep_FaceIsoLiner.MakeVertex
-HLRTopoBRep_FaceIsoLiner_Perform = HLRTopoBRep_FaceIsoLiner.Perform

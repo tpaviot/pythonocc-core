@@ -333,23 +333,3 @@ class TDocStd_XLinkTool:
 # harray2 classes
 # hsequence classes
 
-tdocstd_IDList = tdocstd.IDList
-TDocStd_Document_CurrentStorageFormatVersion = TDocStd_Document.CurrentStorageFormatVersion
-TDocStd_Document_Get = TDocStd_Document.Get
-TDocStd_Modified_Add = TDocStd_Modified.Add
-TDocStd_Modified_Clear = TDocStd_Modified.Clear
-TDocStd_Modified_Contains = TDocStd_Modified.Contains
-TDocStd_Modified_Get = TDocStd_Modified.Get
-TDocStd_Modified_GetID = TDocStd_Modified.GetID
-TDocStd_Modified_IsEmpty = TDocStd_Modified.IsEmpty
-TDocStd_Modified_Remove = TDocStd_Modified.Remove
-TDocStd_Owner_GetDocument = TDocStd_Owner.GetDocument
-TDocStd_Owner_GetID = TDocStd_Owner.GetID
-TDocStd_Owner_SetDocument = TDocStd_Owner.SetDocument
-TDocStd_Owner_SetDocument = TDocStd_Owner.SetDocument
-TDocStd_XLink_GetID = TDocStd_XLink.GetID
-TDocStd_XLink_Set = TDocStd_XLink.Set
-TDocStd_XLinkRoot_GetID = TDocStd_XLinkRoot.GetID
-TDocStd_XLinkRoot_Insert = TDocStd_XLinkRoot.Insert
-TDocStd_XLinkRoot_Remove = TDocStd_XLinkRoot.Remove
-TDocStd_XLinkRoot_Set = TDocStd_XLinkRoot.Set

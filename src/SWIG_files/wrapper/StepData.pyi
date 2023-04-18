@@ -633,9 +633,3 @@ class StepData_HArray1OfField(StepData_Array1OfField, Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-stepdata_AddHeaderProtocol = stepdata.AddHeaderProtocol
-stepdata_HeaderProtocol = stepdata.HeaderProtocol
-stepdata_Init = stepdata.Init
-stepdata_Protocol = stepdata.Protocol
-StepData_GlobalFactors_Intance = StepData_GlobalFactors.Intance
-StepData_WriterLib_SetGlobal = StepData_WriterLib.SetGlobal

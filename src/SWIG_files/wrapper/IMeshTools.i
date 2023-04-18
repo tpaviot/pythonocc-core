@@ -754,3 +754,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def IMeshTools_Parameters_RelMinSize(*args):
+	return IMeshTools_Parameters.RelMinSize(*args)
+
+}

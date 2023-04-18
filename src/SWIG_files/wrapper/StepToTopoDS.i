@@ -1947,3 +1947,70 @@ class StepToTopoDS_PointVertexMap:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def steptotopods_DecodeBuilderError(*args):
+	return steptotopods.DecodeBuilderError(*args)
+
+@deprecated
+def steptotopods_DecodeEdgeError(*args):
+	return steptotopods.DecodeEdgeError(*args)
+
+@deprecated
+def steptotopods_DecodeFaceError(*args):
+	return steptotopods.DecodeFaceError(*args)
+
+@deprecated
+def steptotopods_DecodeGeometricToolError(*args):
+	return steptotopods.DecodeGeometricToolError(*args)
+
+@deprecated
+def steptotopods_DecodePolyLoopError(*args):
+	return steptotopods.DecodePolyLoopError(*args)
+
+@deprecated
+def steptotopods_DecodeShellError(*args):
+	return steptotopods.DecodeShellError(*args)
+
+@deprecated
+def steptotopods_DecodeVertexError(*args):
+	return steptotopods.DecodeVertexError(*args)
+
+@deprecated
+def steptotopods_DecodeVertexLoopError(*args):
+	return steptotopods.DecodeVertexLoopError(*args)
+
+@deprecated
+def StepToTopoDS_CartesianPointHasher_HashCode(*args):
+	return StepToTopoDS_CartesianPointHasher.HashCode(*args)
+
+@deprecated
+def StepToTopoDS_CartesianPointHasher_IsEqual(*args):
+	return StepToTopoDS_CartesianPointHasher.IsEqual(*args)
+
+@deprecated
+def StepToTopoDS_GeometricTool_IsLikeSeam(*args):
+	return StepToTopoDS_GeometricTool.IsLikeSeam(*args)
+
+@deprecated
+def StepToTopoDS_GeometricTool_IsSeamCurve(*args):
+	return StepToTopoDS_GeometricTool.IsSeamCurve(*args)
+
+@deprecated
+def StepToTopoDS_GeometricTool_PCurve(*args):
+	return StepToTopoDS_GeometricTool.PCurve(*args)
+
+@deprecated
+def StepToTopoDS_GeometricTool_UpdateParam3d(*args):
+	return StepToTopoDS_GeometricTool.UpdateParam3d(*args)
+
+@deprecated
+def StepToTopoDS_PointPairHasher_HashCode(*args):
+	return StepToTopoDS_PointPairHasher.HashCode(*args)
+
+@deprecated
+def StepToTopoDS_PointPairHasher_IsEqual(*args):
+	return StepToTopoDS_PointPairHasher.IsEqual(*args)
+
+}

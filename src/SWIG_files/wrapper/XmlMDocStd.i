@@ -195,3 +195,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmdocstd_AddDrivers(*args):
+	return xmlmdocstd.AddDrivers(*args)
+
+}

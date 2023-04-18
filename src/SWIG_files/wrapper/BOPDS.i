@@ -4712,3 +4712,46 @@ class BOPDS_Interf:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BOPDS_DS_NbInterfTypes(*args):
+	return BOPDS_DS.NbInterfTypes(*args)
+
+@deprecated
+def BOPDS_Iterator_NbExtInterfs(*args):
+	return BOPDS_Iterator.NbExtInterfs(*args)
+
+@deprecated
+def BOPDS_PairMapHasher_HashCode(*args):
+	return BOPDS_PairMapHasher.HashCode(*args)
+
+@deprecated
+def BOPDS_PairMapHasher_IsEqual(*args):
+	return BOPDS_PairMapHasher.IsEqual(*args)
+
+@deprecated
+def BOPDS_PaveMapHasher_HashCode(*args):
+	return BOPDS_PaveMapHasher.HashCode(*args)
+
+@deprecated
+def BOPDS_PaveMapHasher_IsEqual(*args):
+	return BOPDS_PaveMapHasher.IsEqual(*args)
+
+@deprecated
+def BOPDS_Tools_HasBRep(*args):
+	return BOPDS_Tools.HasBRep(*args)
+
+@deprecated
+def BOPDS_Tools_IsInterfering(*args):
+	return BOPDS_Tools.IsInterfering(*args)
+
+@deprecated
+def BOPDS_Tools_TypeToInteger(*args):
+	return BOPDS_Tools.TypeToInteger(*args)
+
+@deprecated
+def BOPDS_Tools_TypeToInteger(*args):
+	return BOPDS_Tools.TypeToInteger(*args)
+
+}

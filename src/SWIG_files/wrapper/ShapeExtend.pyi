@@ -233,6 +233,3 @@ class ShapeExtend_MsgRegistrator(ShapeExtend_BasicMsgRegistrator):
 # harray2 classes
 # hsequence classes
 
-shapeextend_DecodeStatus = shapeextend.DecodeStatus
-shapeextend_EncodeStatus = shapeextend.EncodeStatus
-shapeextend_Init = shapeextend.Init

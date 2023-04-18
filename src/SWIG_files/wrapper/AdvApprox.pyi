@@ -80,4 +80,3 @@ class AdvApprox_EvaluatorFunction: ...
 # harray2 classes
 # hsequence classes
 
-AdvApprox_ApproxAFunction_Approximation = AdvApprox_ApproxAFunction.Approximation

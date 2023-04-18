@@ -676,3 +676,10 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def IGESControl_Controller_Init(*args):
+	return IGESControl_Controller.Init(*args)
+
+}

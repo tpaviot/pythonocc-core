@@ -26,6 +26,3 @@ class ShapeAlgo_AlgoContainer: ...
 # harray2 classes
 # hsequence classes
 
-shapealgo_AlgoContainer = shapealgo.AlgoContainer
-shapealgo_Init = shapealgo.Init
-shapealgo_SetAlgoContainer = shapealgo.SetAlgoContainer

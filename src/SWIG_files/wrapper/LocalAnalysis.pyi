@@ -76,5 +76,3 @@ class LocalAnalysis_SurfaceContinuity:
 # harray2 classes
 # hsequence classes
 
-localanalysis_Dump = localanalysis.Dump
-localanalysis_Dump = localanalysis.Dump

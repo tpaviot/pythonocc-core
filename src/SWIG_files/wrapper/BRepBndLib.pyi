@@ -21,7 +21,3 @@ class brepbndlib:
 # harray2 classes
 # hsequence classes
 
-brepbndlib_Add = brepbndlib.Add
-brepbndlib_AddClose = brepbndlib.AddClose
-brepbndlib_AddOBB = brepbndlib.AddOBB
-brepbndlib_AddOptimal = brepbndlib.AddOptimal

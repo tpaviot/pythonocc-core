@@ -157,3 +157,18 @@ Knotmax: float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def hermit_Solution(*args):
+	return hermit.Solution(*args)
+
+@deprecated
+def hermit_Solution(*args):
+	return hermit.Solution(*args)
+
+@deprecated
+def hermit_Solutionbis(*args):
+	return hermit.Solutionbis(*args)
+
+}

@@ -204,14 +204,3 @@ class IGESToBRep_TopoSurface(IGESToBRep_CurveAndSurface):
 # harray2 classes
 # hsequence classes
 
-igestobrep_AlgoContainer = igestobrep.AlgoContainer
-igestobrep_IGESCurveToSequenceOfIGESCurve = igestobrep.IGESCurveToSequenceOfIGESCurve
-igestobrep_Init = igestobrep.Init
-igestobrep_IsBRepEntity = igestobrep.IsBRepEntity
-igestobrep_IsBasicCurve = igestobrep.IsBasicCurve
-igestobrep_IsBasicSurface = igestobrep.IsBasicSurface
-igestobrep_IsCurveAndSurface = igestobrep.IsCurveAndSurface
-igestobrep_IsTopoCurve = igestobrep.IsTopoCurve
-igestobrep_IsTopoSurface = igestobrep.IsTopoSurface
-igestobrep_SetAlgoContainer = igestobrep.SetAlgoContainer
-igestobrep_TransferPCurve = igestobrep.TransferPCurve

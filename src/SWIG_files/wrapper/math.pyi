@@ -704,10 +704,3 @@ class math_TrigonometricEquationFunction(math_FunctionWithDerivative):
 # harray2 classes
 # hsequence classes
 
-math_GaussPoints = math.GaussPoints
-math_GaussPointsMax = math.GaussPointsMax
-math_GaussWeights = math.GaussWeights
-math_KronrodPointsAndWeights = math.KronrodPointsAndWeights
-math_KronrodPointsMax = math.KronrodPointsMax
-math_OrderedGaussPointsAndWeights = math.OrderedGaussPointsAndWeights
-math_KronrodSingleIntegration_GKRule = math_KronrodSingleIntegration.GKRule

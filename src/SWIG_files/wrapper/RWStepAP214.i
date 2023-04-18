@@ -2344,3 +2344,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def rwstepap214_Init(*args):
+	return rwstepap214.Init(*args)
+
+}

@@ -631,3 +631,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmltobjdrivers_AddDrivers(*args):
+	return xmltobjdrivers.AddDrivers(*args)
+
+@deprecated
+def xmltobjdrivers_DefineFormat(*args):
+	return xmltobjdrivers.DefineFormat(*args)
+
+@deprecated
+def xmltobjdrivers_Factory(*args):
+	return xmltobjdrivers.Factory(*args)
+
+}

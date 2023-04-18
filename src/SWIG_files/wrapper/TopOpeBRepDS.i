@@ -8146,3 +8146,106 @@ class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public TopOpeBR
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def topopebrepds_IsGeometry(*args):
+	return topopebrepds.IsGeometry(*args)
+
+@deprecated
+def topopebrepds_IsTopology(*args):
+	return topopebrepds.IsTopology(*args)
+
+@deprecated
+def topopebrepds_KindToShape(*args):
+	return topopebrepds.KindToShape(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_SPrint(*args):
+	return topopebrepds.SPrint(*args)
+
+@deprecated
+def topopebrepds_ShapeToKind(*args):
+	return topopebrepds.ShapeToKind(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_DuplicateCurvePointInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.DuplicateCurvePointInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_MakeCurveInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.MakeCurveInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_MakeEdgeInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.MakeEdgeInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_MakeEdgeVertexInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.MakeEdgeVertexInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_MakeFaceCurveInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.MakeFaceCurveInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_MakeFaceEdgeInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.MakeFaceEdgeInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_MakeSolidSurfaceInterference(*args):
+	return TopOpeBRepDS_InterferenceTool.MakeSolidSurfaceInterference(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_Parameter(*args):
+	return TopOpeBRepDS_InterferenceTool.Parameter(*args)
+
+@deprecated
+def TopOpeBRepDS_InterferenceTool_Parameter(*args):
+	return TopOpeBRepDS_InterferenceTool.Parameter(*args)
+
+@deprecated
+def TopOpeBRepDS_TOOL_EShareG(*args):
+	return TopOpeBRepDS_TOOL.EShareG(*args)
+
+@deprecated
+def TopOpeBRepDS_TOOL_GetConfig(*args):
+	return TopOpeBRepDS_TOOL.GetConfig(*args)
+
+@deprecated
+def TopOpeBRepDS_TOOL_GetEsd(*args):
+	return TopOpeBRepDS_TOOL.GetEsd(*args)
+
+@deprecated
+def TopOpeBRepDS_TOOL_ShareG(*args):
+	return TopOpeBRepDS_TOOL.ShareG(*args)
+
+@deprecated
+def TopOpeBRepDS_TOOL_ShareSplitON(*args):
+	return TopOpeBRepDS_TOOL.ShareSplitON(*args)
+
+}

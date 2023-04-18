@@ -618,3 +618,10 @@ TopoDS_Vertex
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapebuild_PlaneXOY(*args):
+	return shapebuild.PlaneXOY(*args)
+
+}

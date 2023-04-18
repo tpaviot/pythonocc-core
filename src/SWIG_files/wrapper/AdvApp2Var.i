@@ -3527,3 +3527,50 @@ class AdvApp2Var_Iso:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def AdvApp2Var_Data_Getmaovpar(*args):
+	return AdvApp2Var_Data.Getmaovpar(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmaovpch(*args):
+	return AdvApp2Var_Data.Getmaovpch(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmdnombr(*args):
+	return AdvApp2Var_Data.Getmdnombr(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getminombr(*args):
+	return AdvApp2Var_Data.Getminombr(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmlgdrtl(*args):
+	return AdvApp2Var_Data.Getmlgdrtl(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmmapgs0(*args):
+	return AdvApp2Var_Data.Getmmapgs0(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmmapgs1(*args):
+	return AdvApp2Var_Data.Getmmapgs1(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmmapgs2(*args):
+	return AdvApp2Var_Data.Getmmapgs2(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmmapgss(*args):
+	return AdvApp2Var_Data.Getmmapgss(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmmcmcnp(*args):
+	return AdvApp2Var_Data.Getmmcmcnp(*args)
+
+@deprecated
+def AdvApp2Var_Data_Getmmjcobi(*args):
+	return AdvApp2Var_Data.Getmmjcobi(*args)
+
+}

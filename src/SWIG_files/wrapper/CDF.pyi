@@ -164,4 +164,3 @@ class CDF_DirectoryIterator: ...
 # harray2 classes
 # hsequence classes
 
-CDF_Application_Load = CDF_Application.Load

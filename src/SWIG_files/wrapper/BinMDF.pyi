@@ -73,4 +73,3 @@ class BinMDF_TagSourceDriver(BinMDF_ADriver):
 # harray2 classes
 # hsequence classes
 
-binmdf_AddDrivers = binmdf.AddDrivers

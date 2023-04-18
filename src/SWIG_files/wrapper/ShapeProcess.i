@@ -926,3 +926,26 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapeprocess_FindOperator(*args):
+	return shapeprocess.FindOperator(*args)
+
+@deprecated
+def shapeprocess_Perform(*args):
+	return shapeprocess.Perform(*args)
+
+@deprecated
+def shapeprocess_RegisterOperator(*args):
+	return shapeprocess.RegisterOperator(*args)
+
+@deprecated
+def ShapeProcess_OperLibrary_ApplyModifier(*args):
+	return ShapeProcess_OperLibrary.ApplyModifier(*args)
+
+@deprecated
+def ShapeProcess_OperLibrary_Init(*args):
+	return ShapeProcess_OperLibrary.Init(*args)
+
+}

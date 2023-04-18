@@ -575,3 +575,138 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def unitsapi_AnyFromLS(*args):
+	return unitsapi.AnyFromLS(*args)
+
+@deprecated
+def unitsapi_AnyFromSI(*args):
+	return unitsapi.AnyFromSI(*args)
+
+@deprecated
+def unitsapi_AnyToAny(*args):
+	return unitsapi.AnyToAny(*args)
+
+@deprecated
+def unitsapi_AnyToLS(*args):
+	return unitsapi.AnyToLS(*args)
+
+@deprecated
+def unitsapi_AnyToLS(*args):
+	return unitsapi.AnyToLS(*args)
+
+@deprecated
+def unitsapi_AnyToSI(*args):
+	return unitsapi.AnyToSI(*args)
+
+@deprecated
+def unitsapi_AnyToSI(*args):
+	return unitsapi.AnyToSI(*args)
+
+@deprecated
+def unitsapi_Check(*args):
+	return unitsapi.Check(*args)
+
+@deprecated
+def unitsapi_CurrentFromAny(*args):
+	return unitsapi.CurrentFromAny(*args)
+
+@deprecated
+def unitsapi_CurrentFromLS(*args):
+	return unitsapi.CurrentFromLS(*args)
+
+@deprecated
+def unitsapi_CurrentFromSI(*args):
+	return unitsapi.CurrentFromSI(*args)
+
+@deprecated
+def unitsapi_CurrentToAny(*args):
+	return unitsapi.CurrentToAny(*args)
+
+@deprecated
+def unitsapi_CurrentToLS(*args):
+	return unitsapi.CurrentToLS(*args)
+
+@deprecated
+def unitsapi_CurrentToSI(*args):
+	return unitsapi.CurrentToSI(*args)
+
+@deprecated
+def unitsapi_CurrentUnit(*args):
+	return unitsapi.CurrentUnit(*args)
+
+@deprecated
+def unitsapi_DimensionAmountOfSubstance(*args):
+	return unitsapi.DimensionAmountOfSubstance(*args)
+
+@deprecated
+def unitsapi_DimensionElectricCurrent(*args):
+	return unitsapi.DimensionElectricCurrent(*args)
+
+@deprecated
+def unitsapi_DimensionLength(*args):
+	return unitsapi.DimensionLength(*args)
+
+@deprecated
+def unitsapi_DimensionLess(*args):
+	return unitsapi.DimensionLess(*args)
+
+@deprecated
+def unitsapi_DimensionLuminousIntensity(*args):
+	return unitsapi.DimensionLuminousIntensity(*args)
+
+@deprecated
+def unitsapi_DimensionMass(*args):
+	return unitsapi.DimensionMass(*args)
+
+@deprecated
+def unitsapi_DimensionPlaneAngle(*args):
+	return unitsapi.DimensionPlaneAngle(*args)
+
+@deprecated
+def unitsapi_DimensionSolidAngle(*args):
+	return unitsapi.DimensionSolidAngle(*args)
+
+@deprecated
+def unitsapi_DimensionThermodynamicTemperature(*args):
+	return unitsapi.DimensionThermodynamicTemperature(*args)
+
+@deprecated
+def unitsapi_DimensionTime(*args):
+	return unitsapi.DimensionTime(*args)
+
+@deprecated
+def unitsapi_Dimensions(*args):
+	return unitsapi.Dimensions(*args)
+
+@deprecated
+def unitsapi_LSToSI(*args):
+	return unitsapi.LSToSI(*args)
+
+@deprecated
+def unitsapi_LocalSystem(*args):
+	return unitsapi.LocalSystem(*args)
+
+@deprecated
+def unitsapi_Reload(*args):
+	return unitsapi.Reload(*args)
+
+@deprecated
+def unitsapi_SIToLS(*args):
+	return unitsapi.SIToLS(*args)
+
+@deprecated
+def unitsapi_Save(*args):
+	return unitsapi.Save(*args)
+
+@deprecated
+def unitsapi_SetCurrentUnit(*args):
+	return unitsapi.SetCurrentUnit(*args)
+
+@deprecated
+def unitsapi_SetLocalSystem(*args):
+	return unitsapi.SetLocalSystem(*args)
+
+}

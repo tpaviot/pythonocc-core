@@ -775,3 +775,78 @@ None
 XmlObjMgt_Document=OCC.Core.LDOM.LDOM_Document
 XmlObjMgt_Element=OCC.Core.LDOM.LDOM_Element
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlobjmgt_FindChildByName(*args):
+	return xmlobjmgt.FindChildByName(*args)
+
+@deprecated
+def xmlobjmgt_FindChildByRef(*args):
+	return xmlobjmgt.FindChildByRef(*args)
+
+@deprecated
+def xmlobjmgt_FindChildElement(*args):
+	return xmlobjmgt.FindChildElement(*args)
+
+@deprecated
+def xmlobjmgt_GetExtendedString(*args):
+	return xmlobjmgt.GetExtendedString(*args)
+
+@deprecated
+def xmlobjmgt_GetReal(*args):
+	return xmlobjmgt.GetReal(*args)
+
+@deprecated
+def xmlobjmgt_GetReal(*args):
+	return xmlobjmgt.GetReal(*args)
+
+@deprecated
+def xmlobjmgt_GetStringValue(*args):
+	return xmlobjmgt.GetStringValue(*args)
+
+@deprecated
+def xmlobjmgt_GetTagEntryString(*args):
+	return xmlobjmgt.GetTagEntryString(*args)
+
+@deprecated
+def xmlobjmgt_IdString(*args):
+	return xmlobjmgt.IdString(*args)
+
+@deprecated
+def xmlobjmgt_SetExtendedString(*args):
+	return xmlobjmgt.SetExtendedString(*args)
+
+@deprecated
+def xmlobjmgt_SetStringValue(*args):
+	return xmlobjmgt.SetStringValue(*args)
+
+@deprecated
+def xmlobjmgt_SetTagEntryString(*args):
+	return xmlobjmgt.SetTagEntryString(*args)
+
+@deprecated
+def XmlObjMgt_GP_Translate(*args):
+	return XmlObjMgt_GP.Translate(*args)
+
+@deprecated
+def XmlObjMgt_GP_Translate(*args):
+	return XmlObjMgt_GP.Translate(*args)
+
+@deprecated
+def XmlObjMgt_GP_Translate(*args):
+	return XmlObjMgt_GP.Translate(*args)
+
+@deprecated
+def XmlObjMgt_GP_Translate(*args):
+	return XmlObjMgt_GP.Translate(*args)
+
+@deprecated
+def XmlObjMgt_GP_Translate(*args):
+	return XmlObjMgt_GP.Translate(*args)
+
+@deprecated
+def XmlObjMgt_GP_Translate(*args):
+	return XmlObjMgt_GP.Translate(*args)
+
+}

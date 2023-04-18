@@ -264,26 +264,3 @@ class Standard_ReadBuffer: ...
 # harray2 classes
 # hsequence classes
 
-standard_Allocate = standard.Allocate
-standard_AllocateAligned = standard.AllocateAligned
-standard_Purge = standard.Purge
-standard_Reallocate = standard.Reallocate
-standard_StackTrace = standard.StackTrace
-Standard_ErrorHandler_IsInTryBlock = Standard_ErrorHandler.IsInTryBlock
-Standard_ErrorHandler_LastCaughtError = Standard_ErrorHandler.LastCaughtError
-Standard_GUID_CheckGUIDFormat = Standard_GUID.CheckGUIDFormat
-Standard_GUID_HashCode = Standard_GUID.HashCode
-Standard_GUID_IsEqual = Standard_GUID.IsEqual
-Standard_Transient_get_type_descriptor = Standard_Transient.get_type_descriptor
-Standard_Transient_get_type_name = Standard_Transient.get_type_name
-Standard_Failure_DefaultStackTraceLength = Standard_Failure.DefaultStackTraceLength
-Standard_Failure_NewInstance = Standard_Failure.NewInstance
-Standard_Failure_NewInstance = Standard_Failure.NewInstance
-Standard_Failure_Raise = Standard_Failure.Raise
-Standard_Failure_Raise = Standard_Failure.Raise
-Standard_Failure_SetDefaultStackTraceLength = Standard_Failure.SetDefaultStackTraceLength
-Standard_OutOfMemory_NewInstance = Standard_OutOfMemory.NewInstance
-Standard_OutOfMemory_NewInstance = Standard_OutOfMemory.NewInstance
-Standard_OutOfMemory_Raise = Standard_OutOfMemory.Raise
-Standard_OutOfMemory_Raise = Standard_OutOfMemory.Raise
-Standard_Type_Register = Standard_Type.Register

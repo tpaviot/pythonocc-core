@@ -207,22 +207,3 @@ class TransferBRep_HSequenceOfTransferResultInfo(TransferBRep_SequenceOfTransfer
     def Append(self, theSequence: TransferBRep_SequenceOfTransferResultInfo) -> None: ...
 
 
-transferbrep_CheckObject = transferbrep.CheckObject
-transferbrep_Checked = transferbrep.Checked
-transferbrep_CheckedShapes = transferbrep.CheckedShapes
-transferbrep_PrintResultInfo = transferbrep.PrintResultInfo
-transferbrep_ResultCheckList = transferbrep.ResultCheckList
-transferbrep_ResultFromShape = transferbrep.ResultFromShape
-transferbrep_SetShapeResult = transferbrep.SetShapeResult
-transferbrep_SetTransientFromShape = transferbrep.SetTransientFromShape
-transferbrep_ShapeMapper = transferbrep.ShapeMapper
-transferbrep_ShapeResult = transferbrep.ShapeResult
-transferbrep_ShapeResult = transferbrep.ShapeResult
-transferbrep_ShapeState = transferbrep.ShapeState
-transferbrep_Shapes = transferbrep.Shapes
-transferbrep_Shapes = transferbrep.Shapes
-transferbrep_TransferResultInfo = transferbrep.TransferResultInfo
-transferbrep_TransferResultInfo = transferbrep.TransferResultInfo
-transferbrep_TransientFromShape = transferbrep.TransientFromShape
-TransferBRep_ShapeInfo_Type = TransferBRep_ShapeInfo.Type
-TransferBRep_ShapeInfo_TypeName = TransferBRep_ShapeInfo.TypeName

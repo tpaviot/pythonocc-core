@@ -774,3 +774,10 @@ class AdvApprox_EvaluatorFunction:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def AdvApprox_ApproxAFunction_Approximation(*args):
+	return AdvApprox_ApproxAFunction.Approximation(*args)
+
+}

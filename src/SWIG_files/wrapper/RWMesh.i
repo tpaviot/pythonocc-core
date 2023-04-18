@@ -1709,3 +1709,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def rwmesh_FormatName(*args):
+	return rwmesh.FormatName(*args)
+
+@deprecated
+def rwmesh_ReadNameAttribute(*args):
+	return rwmesh.ReadNameAttribute(*args)
+
+@deprecated
+def RWMesh_CoordinateSystemConverter_StandardCoordinateSystem(*args):
+	return RWMesh_CoordinateSystemConverter.StandardCoordinateSystem(*args)
+
+}

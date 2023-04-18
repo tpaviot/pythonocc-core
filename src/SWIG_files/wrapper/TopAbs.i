@@ -295,3 +295,42 @@ str
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def topabs_Complement(*args):
+	return topabs.Complement(*args)
+
+@deprecated
+def topabs_Compose(*args):
+	return topabs.Compose(*args)
+
+@deprecated
+def topabs_Reverse(*args):
+	return topabs.Reverse(*args)
+
+@deprecated
+def topabs_ShapeOrientationFromString(*args):
+	return topabs.ShapeOrientationFromString(*args)
+
+@deprecated
+def topabs_ShapeOrientationFromString(*args):
+	return topabs.ShapeOrientationFromString(*args)
+
+@deprecated
+def topabs_ShapeOrientationToString(*args):
+	return topabs.ShapeOrientationToString(*args)
+
+@deprecated
+def topabs_ShapeTypeFromString(*args):
+	return topabs.ShapeTypeFromString(*args)
+
+@deprecated
+def topabs_ShapeTypeFromString(*args):
+	return topabs.ShapeTypeFromString(*args)
+
+@deprecated
+def topabs_ShapeTypeToString(*args):
+	return topabs.ShapeTypeToString(*args)
+
+}

@@ -1125,3 +1125,34 @@ class BRepClass3d_BndBoxTreeSelectorPoint:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepclass3d_OuterShell(*args):
+	return brepclass3d.OuterShell(*args)
+
+@deprecated
+def BRepClass3d_SolidExplorer_FindAPointInTheFace(*args):
+	return BRepClass3d_SolidExplorer.FindAPointInTheFace(*args)
+
+@deprecated
+def BRepClass3d_SolidExplorer_FindAPointInTheFace(*args):
+	return BRepClass3d_SolidExplorer.FindAPointInTheFace(*args)
+
+@deprecated
+def BRepClass3d_SolidExplorer_FindAPointInTheFace(*args):
+	return BRepClass3d_SolidExplorer.FindAPointInTheFace(*args)
+
+@deprecated
+def BRepClass3d_SolidExplorer_FindAPointInTheFace(*args):
+	return BRepClass3d_SolidExplorer.FindAPointInTheFace(*args)
+
+@deprecated
+def BRepClass3d_SolidExplorer_FindAPointInTheFace(*args):
+	return BRepClass3d_SolidExplorer.FindAPointInTheFace(*args)
+
+@deprecated
+def BRepClass3d_SolidExplorer_FindAPointInTheFace(*args):
+	return BRepClass3d_SolidExplorer.FindAPointInTheFace(*args)
+
+}

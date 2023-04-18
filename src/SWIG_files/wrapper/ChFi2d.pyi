@@ -137,5 +137,3 @@ class ChFi2d_FilletAlgo:
 # harray2 classes
 # hsequence classes
 
-chfi2d_CommonVertex = chfi2d.CommonVertex
-chfi2d_FindConnectedEdges = chfi2d.FindConnectedEdges

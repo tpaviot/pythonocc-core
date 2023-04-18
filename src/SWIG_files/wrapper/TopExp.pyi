@@ -55,13 +55,3 @@ class TopExp_Explorer:
 # harray2 classes
 # hsequence classes
 
-topexp_CommonVertex = topexp.CommonVertex
-topexp_FirstVertex = topexp.FirstVertex
-topexp_LastVertex = topexp.LastVertex
-topexp_MapShapes = topexp.MapShapes
-topexp_MapShapes = topexp.MapShapes
-topexp_MapShapes = topexp.MapShapes
-topexp_MapShapesAndAncestors = topexp.MapShapesAndAncestors
-topexp_MapShapesAndUniqueAncestors = topexp.MapShapesAndUniqueAncestors
-topexp_Vertices = topexp.Vertices
-topexp_Vertices = topexp.Vertices

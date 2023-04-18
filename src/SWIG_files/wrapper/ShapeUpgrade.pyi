@@ -389,5 +389,3 @@ class ShapeUpgrade_SplitCurve3dContinuity(ShapeUpgrade_SplitCurve3d):
 # harray2 classes
 # hsequence classes
 
-shapeupgrade_C0BSplineToSequenceOfC1BSplineCurve = shapeupgrade.C0BSplineToSequenceOfC1BSplineCurve
-shapeupgrade_C0BSplineToSequenceOfC1BSplineCurve = shapeupgrade.C0BSplineToSequenceOfC1BSplineCurve

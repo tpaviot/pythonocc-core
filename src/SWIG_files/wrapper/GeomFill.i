@@ -11730,3 +11730,42 @@ class GeomFill_HSequenceOfAx2 : public GeomFill_SequenceOfAx2, public Standard_T
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomfill_GetCircle(*args):
+	return geomfill.GetCircle(*args)
+
+@deprecated
+def geomfill_GetCircle(*args):
+	return geomfill.GetCircle(*args)
+
+@deprecated
+def geomfill_GetCircle(*args):
+	return geomfill.GetCircle(*args)
+
+@deprecated
+def geomfill_GetMinimalWeights(*args):
+	return geomfill.GetMinimalWeights(*args)
+
+@deprecated
+def geomfill_GetShape(*args):
+	return geomfill.GetShape(*args)
+
+@deprecated
+def geomfill_GetTolerance(*args):
+	return geomfill.GetTolerance(*args)
+
+@deprecated
+def geomfill_Knots(*args):
+	return geomfill.Knots(*args)
+
+@deprecated
+def geomfill_Mults(*args):
+	return geomfill.Mults(*args)
+
+@deprecated
+def geomfill_Surface(*args):
+	return geomfill.Surface(*args)
+
+}

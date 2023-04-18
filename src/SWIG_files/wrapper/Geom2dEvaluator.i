@@ -495,3 +495,22 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geom2devaluator_CalculateD0(*args):
+	return geom2devaluator.CalculateD0(*args)
+
+@deprecated
+def geom2devaluator_CalculateD1(*args):
+	return geom2devaluator.CalculateD1(*args)
+
+@deprecated
+def geom2devaluator_CalculateD2(*args):
+	return geom2devaluator.CalculateD2(*args)
+
+@deprecated
+def geom2devaluator_CalculateD3(*args):
+	return geom2devaluator.CalculateD3(*args)
+
+}

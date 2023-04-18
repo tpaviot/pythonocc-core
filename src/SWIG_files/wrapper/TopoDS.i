@@ -2273,3 +2273,74 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def topods_CompSolid(*args):
+	return topods.CompSolid(*args)
+
+@deprecated
+def topods_CompSolid(*args):
+	return topods.CompSolid(*args)
+
+@deprecated
+def topods_Compound(*args):
+	return topods.Compound(*args)
+
+@deprecated
+def topods_Compound(*args):
+	return topods.Compound(*args)
+
+@deprecated
+def topods_Edge(*args):
+	return topods.Edge(*args)
+
+@deprecated
+def topods_Edge(*args):
+	return topods.Edge(*args)
+
+@deprecated
+def topods_Face(*args):
+	return topods.Face(*args)
+
+@deprecated
+def topods_Face(*args):
+	return topods.Face(*args)
+
+@deprecated
+def topods_Shell(*args):
+	return topods.Shell(*args)
+
+@deprecated
+def topods_Shell(*args):
+	return topods.Shell(*args)
+
+@deprecated
+def topods_Solid(*args):
+	return topods.Solid(*args)
+
+@deprecated
+def topods_Solid(*args):
+	return topods.Solid(*args)
+
+@deprecated
+def topods_Vertex(*args):
+	return topods.Vertex(*args)
+
+@deprecated
+def topods_Vertex(*args):
+	return topods.Vertex(*args)
+
+@deprecated
+def topods_Wire(*args):
+	return topods.Wire(*args)
+
+@deprecated
+def topods_Wire(*args):
+	return topods.Wire(*args)
+
+@deprecated
+def TopoDS_AlertAttribute_Send(*args):
+	return TopoDS_AlertAttribute.Send(*args)
+
+}

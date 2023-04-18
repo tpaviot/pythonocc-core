@@ -190,5 +190,3 @@ class MAT2d_CutCurve: ...
 # harray2 classes
 # hsequence classes
 
-MAT2d_MapBiIntHasher_HashCode = MAT2d_MapBiIntHasher.HashCode
-MAT2d_MapBiIntHasher_IsEqual = MAT2d_MapBiIntHasher.IsEqual

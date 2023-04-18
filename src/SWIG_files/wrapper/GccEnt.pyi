@@ -94,14 +94,3 @@ class GccEnt_QualifiedLin:
 # harray2 classes
 # hsequence classes
 
-gccent_Enclosed = gccent.Enclosed
-gccent_Enclosed = gccent.Enclosed
-gccent_Enclosing = gccent.Enclosing
-gccent_Outside = gccent.Outside
-gccent_Outside = gccent.Outside
-gccent_PositionFromString = gccent.PositionFromString
-gccent_PositionFromString = gccent.PositionFromString
-gccent_PositionToString = gccent.PositionToString
-gccent_Print = gccent.Print
-gccent_Unqualified = gccent.Unqualified
-gccent_Unqualified = gccent.Unqualified

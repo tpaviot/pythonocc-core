@@ -3971,3 +3971,14 @@ class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Bnd_Tools_Bnd2BVH(*args):
+	return Bnd_Tools.Bnd2BVH(*args)
+
+@deprecated
+def Bnd_Tools_Bnd2BVH(*args):
+	return Bnd_Tools.Bnd2BVH(*args)
+
+}

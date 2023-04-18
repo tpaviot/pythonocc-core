@@ -129,3 +129,10 @@ int
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xbrepmesh_Discret(*args):
+	return xbrepmesh.Discret(*args)
+
+}

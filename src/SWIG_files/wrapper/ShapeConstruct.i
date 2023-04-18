@@ -676,3 +676,38 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapeconstruct_ConvertCurveToBSpline(*args):
+	return shapeconstruct.ConvertCurveToBSpline(*args)
+
+@deprecated
+def shapeconstruct_ConvertCurveToBSpline(*args):
+	return shapeconstruct.ConvertCurveToBSpline(*args)
+
+@deprecated
+def shapeconstruct_ConvertSurfaceToBSpline(*args):
+	return shapeconstruct.ConvertSurfaceToBSpline(*args)
+
+@deprecated
+def shapeconstruct_JoinCurves(*args):
+	return shapeconstruct.JoinCurves(*args)
+
+@deprecated
+def shapeconstruct_JoinCurves(*args):
+	return shapeconstruct.JoinCurves(*args)
+
+@deprecated
+def shapeconstruct_JoinPCurves(*args):
+	return shapeconstruct.JoinPCurves(*args)
+
+@deprecated
+def ShapeConstruct_Curve_FixKnots(*args):
+	return ShapeConstruct_Curve.FixKnots(*args)
+
+@deprecated
+def ShapeConstruct_Curve_FixKnots(*args):
+	return ShapeConstruct_Curve.FixKnots(*args)
+
+}

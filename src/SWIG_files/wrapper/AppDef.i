@@ -6377,3 +6377,70 @@ class AppDef_HArray1OfMultiPointConstraint : public AppDef_Array1OfMultiPointCon
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def AppDef_MyLineTool_Curvature(*args):
+	return AppDef_MyLineTool.Curvature(*args)
+
+@deprecated
+def AppDef_MyLineTool_Curvature(*args):
+	return AppDef_MyLineTool.Curvature(*args)
+
+@deprecated
+def AppDef_MyLineTool_Curvature(*args):
+	return AppDef_MyLineTool.Curvature(*args)
+
+@deprecated
+def AppDef_MyLineTool_FirstPoint(*args):
+	return AppDef_MyLineTool.FirstPoint(*args)
+
+@deprecated
+def AppDef_MyLineTool_LastPoint(*args):
+	return AppDef_MyLineTool.LastPoint(*args)
+
+@deprecated
+def AppDef_MyLineTool_MakeMLBetween(*args):
+	return AppDef_MyLineTool.MakeMLBetween(*args)
+
+@deprecated
+def AppDef_MyLineTool_MakeMLOneMorePoint(*args):
+	return AppDef_MyLineTool.MakeMLOneMorePoint(*args)
+
+@deprecated
+def AppDef_MyLineTool_NbP2d(*args):
+	return AppDef_MyLineTool.NbP2d(*args)
+
+@deprecated
+def AppDef_MyLineTool_NbP3d(*args):
+	return AppDef_MyLineTool.NbP3d(*args)
+
+@deprecated
+def AppDef_MyLineTool_Tangency(*args):
+	return AppDef_MyLineTool.Tangency(*args)
+
+@deprecated
+def AppDef_MyLineTool_Tangency(*args):
+	return AppDef_MyLineTool.Tangency(*args)
+
+@deprecated
+def AppDef_MyLineTool_Tangency(*args):
+	return AppDef_MyLineTool.Tangency(*args)
+
+@deprecated
+def AppDef_MyLineTool_Value(*args):
+	return AppDef_MyLineTool.Value(*args)
+
+@deprecated
+def AppDef_MyLineTool_Value(*args):
+	return AppDef_MyLineTool.Value(*args)
+
+@deprecated
+def AppDef_MyLineTool_Value(*args):
+	return AppDef_MyLineTool.Value(*args)
+
+@deprecated
+def AppDef_MyLineTool_WhatStatus(*args):
+	return AppDef_MyLineTool.WhatStatus(*args)
+
+}

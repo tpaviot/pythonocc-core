@@ -4101,3 +4101,14 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapeupgrade_C0BSplineToSequenceOfC1BSplineCurve(*args):
+	return shapeupgrade.C0BSplineToSequenceOfC1BSplineCurve(*args)
+
+@deprecated
+def shapeupgrade_C0BSplineToSequenceOfC1BSplineCurve(*args):
+	return shapeupgrade.C0BSplineToSequenceOfC1BSplineCurve(*args)
+
+}

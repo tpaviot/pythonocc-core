@@ -5727,3 +5727,10 @@ class StepAP214_HArray1OfDateAndTimeItem : public StepAP214_Array1OfDateAndTimeI
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def stepap214_Protocol(*args):
+	return stepap214.Protocol(*args)
+
+}

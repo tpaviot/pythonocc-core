@@ -668,3 +668,10 @@ int
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def headersection_Protocol(*args):
+	return headersection.Protocol(*args)
+
+}

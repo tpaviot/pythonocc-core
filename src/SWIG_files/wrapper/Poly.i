@@ -3408,3 +3408,30 @@ class Poly_HArray1OfTriangle : public Poly_Array1OfTriangle, public Standard_Tra
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def poly_Catenate(*args):
+	return poly.Catenate(*args)
+
+@deprecated
+def poly_ComputeNormals(*args):
+	return poly.ComputeNormals(*args)
+
+@deprecated
+def poly_Intersect(*args):
+	return poly.Intersect(*args)
+
+@deprecated
+def poly_IntersectTriLine(*args):
+	return poly.IntersectTriLine(*args)
+
+@deprecated
+def poly_PointOnTriangle(*args):
+	return poly.PointOnTriangle(*args)
+
+@deprecated
+def Poly_MergeNodesTool_MergeNodes(*args):
+	return Poly_MergeNodesTool.MergeNodes(*args)
+
+}

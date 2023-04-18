@@ -71,6 +71,3 @@ class BinTObjDrivers_XYZDriver(BinMDF_ADriver):
 # harray2 classes
 # hsequence classes
 
-bintobjdrivers_AddDrivers = bintobjdrivers.AddDrivers
-bintobjdrivers_DefineFormat = bintobjdrivers.DefineFormat
-bintobjdrivers_Factory = bintobjdrivers.Factory

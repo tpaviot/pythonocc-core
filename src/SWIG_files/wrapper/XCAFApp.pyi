@@ -17,4 +17,3 @@ class XCAFApp_Application(TDocStd_Application):
 # harray2 classes
 # hsequence classes
 
-XCAFApp_Application_GetApplication = XCAFApp_Application.GetApplication

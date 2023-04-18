@@ -98,18 +98,3 @@ class GeomLProp_SurfaceTool:
 # harray2 classes
 # hsequence classes
 
-geomlprop_Continuity = geomlprop.Continuity
-geomlprop_Continuity = geomlprop.Continuity
-GeomLProp_CurveTool_Continuity = GeomLProp_CurveTool.Continuity
-GeomLProp_CurveTool_D1 = GeomLProp_CurveTool.D1
-GeomLProp_CurveTool_D2 = GeomLProp_CurveTool.D2
-GeomLProp_CurveTool_D3 = GeomLProp_CurveTool.D3
-GeomLProp_CurveTool_FirstParameter = GeomLProp_CurveTool.FirstParameter
-GeomLProp_CurveTool_LastParameter = GeomLProp_CurveTool.LastParameter
-GeomLProp_CurveTool_Value = GeomLProp_CurveTool.Value
-GeomLProp_SurfaceTool_Bounds = GeomLProp_SurfaceTool.Bounds
-GeomLProp_SurfaceTool_Continuity = GeomLProp_SurfaceTool.Continuity
-GeomLProp_SurfaceTool_D1 = GeomLProp_SurfaceTool.D1
-GeomLProp_SurfaceTool_D2 = GeomLProp_SurfaceTool.D2
-GeomLProp_SurfaceTool_DN = GeomLProp_SurfaceTool.DN
-GeomLProp_SurfaceTool_Value = GeomLProp_SurfaceTool.Value

@@ -43,9 +43,3 @@ class STEPEdit_EditSDR(IFSelect_Editor):
 # harray2 classes
 # hsequence classes
 
-stepedit_NewModel = stepedit.NewModel
-stepedit_NewSelectPlacedItem = stepedit.NewSelectPlacedItem
-stepedit_NewSelectSDR = stepedit.NewSelectSDR
-stepedit_NewSelectShapeRepr = stepedit.NewSelectShapeRepr
-stepedit_Protocol = stepedit.Protocol
-stepedit_SignType = stepedit.SignType

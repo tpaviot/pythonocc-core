@@ -100,5 +100,3 @@ class IGESCAFControl_Writer(IGESControl_Writer):
 # harray2 classes
 # hsequence classes
 
-igescafcontrol_DecodeColor = igescafcontrol.DecodeColor
-igescafcontrol_EncodeColor = igescafcontrol.EncodeColor

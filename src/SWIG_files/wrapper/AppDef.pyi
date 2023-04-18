@@ -587,19 +587,3 @@ class AppDef_HArray1OfMultiPointConstraint(AppDef_Array1OfMultiPointConstraint, 
 # harray2 classes
 # hsequence classes
 
-AppDef_MyLineTool_Curvature = AppDef_MyLineTool.Curvature
-AppDef_MyLineTool_Curvature = AppDef_MyLineTool.Curvature
-AppDef_MyLineTool_Curvature = AppDef_MyLineTool.Curvature
-AppDef_MyLineTool_FirstPoint = AppDef_MyLineTool.FirstPoint
-AppDef_MyLineTool_LastPoint = AppDef_MyLineTool.LastPoint
-AppDef_MyLineTool_MakeMLBetween = AppDef_MyLineTool.MakeMLBetween
-AppDef_MyLineTool_MakeMLOneMorePoint = AppDef_MyLineTool.MakeMLOneMorePoint
-AppDef_MyLineTool_NbP2d = AppDef_MyLineTool.NbP2d
-AppDef_MyLineTool_NbP3d = AppDef_MyLineTool.NbP3d
-AppDef_MyLineTool_Tangency = AppDef_MyLineTool.Tangency
-AppDef_MyLineTool_Tangency = AppDef_MyLineTool.Tangency
-AppDef_MyLineTool_Tangency = AppDef_MyLineTool.Tangency
-AppDef_MyLineTool_Value = AppDef_MyLineTool.Value
-AppDef_MyLineTool_Value = AppDef_MyLineTool.Value
-AppDef_MyLineTool_Value = AppDef_MyLineTool.Value
-AppDef_MyLineTool_WhatStatus = AppDef_MyLineTool.WhatStatus

@@ -3986,3 +3986,78 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public ProjLib_SequenceOfHSequenceOfPn
 ProjLib_HCompProjectedCurve=ProjLib_CompProjectedCurve
 ProjLib_HProjectedCurve=ProjLib_ProjectedCurve
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def projlib_IsAnaSurf(*args):
+	return projlib.IsAnaSurf(*args)
+
+@deprecated
+def projlib_MakePCurveOfType(*args):
+	return projlib.MakePCurveOfType(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+@deprecated
+def projlib_Project(*args):
+	return projlib.Project(*args)
+
+}

@@ -1022,4 +1022,3 @@ class Aspect_FrustumLRBT: ...
 # harray2 classes
 # hsequence classes
 
-Aspect_OpenVRSession_IsHmdPresent = Aspect_OpenVRSession.IsHmdPresent

@@ -76,15 +76,3 @@ class topabs:
 # harray2 classes
 # hsequence classes
 
-topabs_Complement = topabs.Complement
-topabs_Compose = topabs.Compose
-topabs_Print = topabs.Print
-topabs_Print = topabs.Print
-topabs_Print = topabs.Print
-topabs_Reverse = topabs.Reverse
-topabs_ShapeOrientationFromString = topabs.ShapeOrientationFromString
-topabs_ShapeOrientationFromString = topabs.ShapeOrientationFromString
-topabs_ShapeOrientationToString = topabs.ShapeOrientationToString
-topabs_ShapeTypeFromString = topabs.ShapeTypeFromString
-topabs_ShapeTypeFromString = topabs.ShapeTypeFromString
-topabs_ShapeTypeToString = topabs.ShapeTypeToString

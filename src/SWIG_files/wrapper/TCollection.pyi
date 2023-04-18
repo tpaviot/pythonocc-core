@@ -375,10 +375,3 @@ class TCollection_HExtendedString(Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-tcollection_NextPrimeForMap = tcollection.NextPrimeForMap
-TCollection_AsciiString_HashCode = TCollection_AsciiString.HashCode
-TCollection_AsciiString_IsEqual = TCollection_AsciiString.IsEqual
-TCollection_AsciiString_IsEqual = TCollection_AsciiString.IsEqual
-TCollection_AsciiString_IsSameString = TCollection_AsciiString.IsSameString
-TCollection_ExtendedString_HashCode = TCollection_ExtendedString.HashCode
-TCollection_ExtendedString_IsEqual = TCollection_ExtendedString.IsEqual

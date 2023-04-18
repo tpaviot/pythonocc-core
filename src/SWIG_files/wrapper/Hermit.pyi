@@ -21,6 +21,3 @@ class hermit:
 # harray2 classes
 # hsequence classes
 
-hermit_Solution = hermit.Solution
-hermit_Solution = hermit.Solution
-hermit_Solutionbis = hermit.Solutionbis

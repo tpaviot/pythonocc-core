@@ -571,13 +571,3 @@ class BOPDS_Interf: ...
 # harray2 classes
 # hsequence classes
 
-BOPDS_DS_NbInterfTypes = BOPDS_DS.NbInterfTypes
-BOPDS_Iterator_NbExtInterfs = BOPDS_Iterator.NbExtInterfs
-BOPDS_PairMapHasher_HashCode = BOPDS_PairMapHasher.HashCode
-BOPDS_PairMapHasher_IsEqual = BOPDS_PairMapHasher.IsEqual
-BOPDS_PaveMapHasher_HashCode = BOPDS_PaveMapHasher.HashCode
-BOPDS_PaveMapHasher_IsEqual = BOPDS_PaveMapHasher.IsEqual
-BOPDS_Tools_HasBRep = BOPDS_Tools.HasBRep
-BOPDS_Tools_IsInterfering = BOPDS_Tools.IsInterfering
-BOPDS_Tools_TypeToInteger = BOPDS_Tools.TypeToInteger
-BOPDS_Tools_TypeToInteger = BOPDS_Tools.TypeToInteger

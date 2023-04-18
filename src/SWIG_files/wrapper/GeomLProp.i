@@ -926,3 +926,66 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomlprop_Continuity(*args):
+	return geomlprop.Continuity(*args)
+
+@deprecated
+def geomlprop_Continuity(*args):
+	return geomlprop.Continuity(*args)
+
+@deprecated
+def GeomLProp_CurveTool_Continuity(*args):
+	return GeomLProp_CurveTool.Continuity(*args)
+
+@deprecated
+def GeomLProp_CurveTool_D1(*args):
+	return GeomLProp_CurveTool.D1(*args)
+
+@deprecated
+def GeomLProp_CurveTool_D2(*args):
+	return GeomLProp_CurveTool.D2(*args)
+
+@deprecated
+def GeomLProp_CurveTool_D3(*args):
+	return GeomLProp_CurveTool.D3(*args)
+
+@deprecated
+def GeomLProp_CurveTool_FirstParameter(*args):
+	return GeomLProp_CurveTool.FirstParameter(*args)
+
+@deprecated
+def GeomLProp_CurveTool_LastParameter(*args):
+	return GeomLProp_CurveTool.LastParameter(*args)
+
+@deprecated
+def GeomLProp_CurveTool_Value(*args):
+	return GeomLProp_CurveTool.Value(*args)
+
+@deprecated
+def GeomLProp_SurfaceTool_Bounds(*args):
+	return GeomLProp_SurfaceTool.Bounds(*args)
+
+@deprecated
+def GeomLProp_SurfaceTool_Continuity(*args):
+	return GeomLProp_SurfaceTool.Continuity(*args)
+
+@deprecated
+def GeomLProp_SurfaceTool_D1(*args):
+	return GeomLProp_SurfaceTool.D1(*args)
+
+@deprecated
+def GeomLProp_SurfaceTool_D2(*args):
+	return GeomLProp_SurfaceTool.D2(*args)
+
+@deprecated
+def GeomLProp_SurfaceTool_DN(*args):
+	return GeomLProp_SurfaceTool.DN(*args)
+
+@deprecated
+def GeomLProp_SurfaceTool_Value(*args):
+	return GeomLProp_SurfaceTool.Value(*args)
+
+}

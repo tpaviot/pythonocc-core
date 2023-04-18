@@ -2997,3 +2997,22 @@ class LocOpe_RevolutionForm:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def locope_Closed(*args):
+	return locope.Closed(*args)
+
+@deprecated
+def locope_Closed(*args):
+	return locope.Closed(*args)
+
+@deprecated
+def locope_SampleEdges(*args):
+	return locope.SampleEdges(*args)
+
+@deprecated
+def locope_TgtFaces(*args):
+	return locope.TgtFaces(*args)
+
+}

@@ -499,3 +499,10 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def vrmlapi_Write(*args):
+	return vrmlapi.Write(*args)
+
+}

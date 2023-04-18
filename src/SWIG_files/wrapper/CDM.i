@@ -1597,3 +1597,14 @@ int
 %pythoncode {
 CDM_NamesDirectory=OCC.Core.TColStd.TColStd_DataMapOfStringInteger
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def CDM_MetaData_LookUp(*args):
+	return CDM_MetaData.LookUp(*args)
+
+@deprecated
+def CDM_MetaData_LookUp(*args):
+	return CDM_MetaData.LookUp(*args)
+
+}

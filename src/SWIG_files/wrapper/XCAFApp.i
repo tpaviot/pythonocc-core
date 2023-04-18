@@ -152,3 +152,10 @@ str
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def XCAFApp_Application_GetApplication(*args):
+	return XCAFApp_Application.GetApplication(*args)
+
+}

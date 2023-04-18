@@ -2273,3 +2273,94 @@ STEPControl_Writer
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def STEPCAFControl_Controller_Init(*args):
+	return STEPCAFControl_Controller.Init(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDatumRefModifiers(*args):
+	return STEPCAFControl_GDTProperty.GetDatumRefModifiers(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDatumTargetName(*args):
+	return STEPCAFControl_GDTProperty.GetDatumTargetName(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDatumTargetType(*args):
+	return STEPCAFControl_GDTProperty.GetDatumTargetType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimClassOfTolerance(*args):
+	return STEPCAFControl_GDTProperty.GetDimClassOfTolerance(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimModifierName(*args):
+	return STEPCAFControl_GDTProperty.GetDimModifierName(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimModifiers(*args):
+	return STEPCAFControl_GDTProperty.GetDimModifiers(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimQualifierName(*args):
+	return STEPCAFControl_GDTProperty.GetDimQualifierName(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimQualifierType(*args):
+	return STEPCAFControl_GDTProperty.GetDimQualifierType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimType(*args):
+	return STEPCAFControl_GDTProperty.GetDimType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetDimTypeName(*args):
+	return STEPCAFControl_GDTProperty.GetDimTypeName(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetGeomTolerance(*args):
+	return STEPCAFControl_GDTProperty.GetGeomTolerance(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetGeomToleranceModifier(*args):
+	return STEPCAFControl_GDTProperty.GetGeomToleranceModifier(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetGeomToleranceType(*args):
+	return STEPCAFControl_GDTProperty.GetGeomToleranceType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetGeomToleranceType(*args):
+	return STEPCAFControl_GDTProperty.GetGeomToleranceType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetLimitsAndFits(*args):
+	return STEPCAFControl_GDTProperty.GetLimitsAndFits(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetTessellation(*args):
+	return STEPCAFControl_GDTProperty.GetTessellation(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetTolValueType(*args):
+	return STEPCAFControl_GDTProperty.GetTolValueType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_GetTolValueType(*args):
+	return STEPCAFControl_GDTProperty.GetTolValueType(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_IsDimensionalLocation(*args):
+	return STEPCAFControl_GDTProperty.IsDimensionalLocation(*args)
+
+@deprecated
+def STEPCAFControl_GDTProperty_IsDimensionalSize(*args):
+	return STEPCAFControl_GDTProperty.IsDimensionalSize(*args)
+
+@deprecated
+def STEPCAFControl_Reader_FindInstance(*args):
+	return STEPCAFControl_Reader.FindInstance(*args)
+
+}

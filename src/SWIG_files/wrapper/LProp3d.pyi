@@ -89,16 +89,3 @@ class LProp3d_SurfaceTool:
 # harray2 classes
 # hsequence classes
 
-LProp3d_CurveTool_Continuity = LProp3d_CurveTool.Continuity
-LProp3d_CurveTool_D1 = LProp3d_CurveTool.D1
-LProp3d_CurveTool_D2 = LProp3d_CurveTool.D2
-LProp3d_CurveTool_D3 = LProp3d_CurveTool.D3
-LProp3d_CurveTool_FirstParameter = LProp3d_CurveTool.FirstParameter
-LProp3d_CurveTool_LastParameter = LProp3d_CurveTool.LastParameter
-LProp3d_CurveTool_Value = LProp3d_CurveTool.Value
-LProp3d_SurfaceTool_Bounds = LProp3d_SurfaceTool.Bounds
-LProp3d_SurfaceTool_Continuity = LProp3d_SurfaceTool.Continuity
-LProp3d_SurfaceTool_D1 = LProp3d_SurfaceTool.D1
-LProp3d_SurfaceTool_D2 = LProp3d_SurfaceTool.D2
-LProp3d_SurfaceTool_DN = LProp3d_SurfaceTool.DN
-LProp3d_SurfaceTool_Value = LProp3d_SurfaceTool.Value

@@ -1209,7 +1209,3 @@ class Geom_HSequenceOfBSplineSurface(Geom_SequenceOfBSplineSurface, Standard_Tra
     def Append(self, theSequence: Geom_SequenceOfBSplineSurface) -> None: ...
 
 
-Geom_BSplineCurve_MaxDegree = Geom_BSplineCurve.MaxDegree
-Geom_BSplineSurface_MaxDegree = Geom_BSplineSurface.MaxDegree
-Geom_BezierCurve_MaxDegree = Geom_BezierCurve.MaxDegree
-Geom_BezierSurface_MaxDegree = Geom_BezierSurface.MaxDegree

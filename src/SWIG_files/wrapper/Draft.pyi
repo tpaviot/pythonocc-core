@@ -115,4 +115,3 @@ class Draft_VertexInfo:
 # harray2 classes
 # hsequence classes
 
-draft_Angle = draft.Angle

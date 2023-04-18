@@ -3624,3 +3624,46 @@ IFSelect_ReturnStatus
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xscontrol_Session(*args):
+	return xscontrol.Session(*args)
+
+@deprecated
+def xscontrol_Vars(*args):
+	return xscontrol.Vars(*args)
+
+@deprecated
+def XSControl_ConnectedShapes_AdjacentEntities(*args):
+	return XSControl_ConnectedShapes.AdjacentEntities(*args)
+
+@deprecated
+def XSControl_Controller_Recorded(*args):
+	return XSControl_Controller.Recorded(*args)
+
+@deprecated
+def XSControl_FuncShape_FileAndVar(*args):
+	return XSControl_FuncShape.FileAndVar(*args)
+
+@deprecated
+def XSControl_FuncShape_Init(*args):
+	return XSControl_FuncShape.Init(*args)
+
+@deprecated
+def XSControl_FuncShape_MoreShapes(*args):
+	return XSControl_FuncShape.MoreShapes(*args)
+
+@deprecated
+def XSControl_Functions_Init(*args):
+	return XSControl_Functions.Init(*args)
+
+@deprecated
+def XSControl_TransferReader_PrintStatsOnList(*args):
+	return XSControl_TransferReader.PrintStatsOnList(*args)
+
+@deprecated
+def XSControl_TransferReader_PrintStatsProcess(*args):
+	return XSControl_TransferReader.PrintStatsProcess(*args)
+
+}

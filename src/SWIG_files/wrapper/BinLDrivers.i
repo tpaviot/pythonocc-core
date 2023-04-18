@@ -440,3 +440,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binldrivers_AttributeDrivers(*args):
+	return binldrivers.AttributeDrivers(*args)
+
+@deprecated
+def binldrivers_DefineFormat(*args):
+	return binldrivers.DefineFormat(*args)
+
+@deprecated
+def binldrivers_Factory(*args):
+	return binldrivers.Factory(*args)
+
+}

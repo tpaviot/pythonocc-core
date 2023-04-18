@@ -605,3 +605,10 @@ gp_Pnt2d
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geom2dadaptor_MakeCurve(*args):
+	return geom2dadaptor.MakeCurve(*args)
+
+}

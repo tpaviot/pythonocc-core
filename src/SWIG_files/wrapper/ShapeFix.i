@@ -4935,3 +4935,26 @@ class ShapeFix_WireSegment:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapefix_EncodeRegularity(*args):
+	return shapefix.EncodeRegularity(*args)
+
+@deprecated
+def shapefix_FixVertexPosition(*args):
+	return shapefix.FixVertexPosition(*args)
+
+@deprecated
+def shapefix_LeastEdgeSize(*args):
+	return shapefix.LeastEdgeSize(*args)
+
+@deprecated
+def shapefix_RemoveSmallEdges(*args):
+	return shapefix.RemoveSmallEdges(*args)
+
+@deprecated
+def shapefix_SameParameter(*args):
+	return shapefix.SameParameter(*args)
+
+}

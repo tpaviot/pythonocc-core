@@ -6875,3 +6875,22 @@ class Expr_Sign:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def expr_CopyShare(*args):
+	return expr.CopyShare(*args)
+
+@deprecated
+def expr_NbOfFreeVariables(*args):
+	return expr.NbOfFreeVariables(*args)
+
+@deprecated
+def expr_NbOfFreeVariables(*args):
+	return expr.NbOfFreeVariables(*args)
+
+@deprecated
+def expr_Sign(*args):
+	return expr.Sign(*args)
+
+}

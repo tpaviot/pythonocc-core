@@ -324,3 +324,78 @@ float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def precision_Angular(*args):
+	return precision.Angular(*args)
+
+@deprecated
+def precision_Approximation(*args):
+	return precision.Approximation(*args)
+
+@deprecated
+def precision_Confusion(*args):
+	return precision.Confusion(*args)
+
+@deprecated
+def precision_Infinite(*args):
+	return precision.Infinite(*args)
+
+@deprecated
+def precision_Intersection(*args):
+	return precision.Intersection(*args)
+
+@deprecated
+def precision_IsInfinite(*args):
+	return precision.IsInfinite(*args)
+
+@deprecated
+def precision_IsNegativeInfinite(*args):
+	return precision.IsNegativeInfinite(*args)
+
+@deprecated
+def precision_IsPositiveInfinite(*args):
+	return precision.IsPositiveInfinite(*args)
+
+@deprecated
+def precision_PApproximation(*args):
+	return precision.PApproximation(*args)
+
+@deprecated
+def precision_PApproximation(*args):
+	return precision.PApproximation(*args)
+
+@deprecated
+def precision_PConfusion(*args):
+	return precision.PConfusion(*args)
+
+@deprecated
+def precision_PConfusion(*args):
+	return precision.PConfusion(*args)
+
+@deprecated
+def precision_PIntersection(*args):
+	return precision.PIntersection(*args)
+
+@deprecated
+def precision_PIntersection(*args):
+	return precision.PIntersection(*args)
+
+@deprecated
+def precision_Parametric(*args):
+	return precision.Parametric(*args)
+
+@deprecated
+def precision_Parametric(*args):
+	return precision.Parametric(*args)
+
+@deprecated
+def precision_SquareConfusion(*args):
+	return precision.SquareConfusion(*args)
+
+@deprecated
+def precision_SquarePConfusion(*args):
+	return precision.SquarePConfusion(*args)
+
+}

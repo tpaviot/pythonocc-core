@@ -3985,3 +3985,178 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def tnaming_ChangeShapes(*args):
+	return tnaming.ChangeShapes(*args)
+
+@deprecated
+def tnaming_Displace(*args):
+	return tnaming.Displace(*args)
+
+@deprecated
+def tnaming_FindUniqueContext(*args):
+	return tnaming.FindUniqueContext(*args)
+
+@deprecated
+def tnaming_FindUniqueContextSet(*args):
+	return tnaming.FindUniqueContextSet(*args)
+
+@deprecated
+def tnaming_IDList(*args):
+	return tnaming.IDList(*args)
+
+@deprecated
+def tnaming_MakeShape(*args):
+	return tnaming.MakeShape(*args)
+
+@deprecated
+def tnaming_OuterShell(*args):
+	return tnaming.OuterShell(*args)
+
+@deprecated
+def tnaming_OuterWire(*args):
+	return tnaming.OuterWire(*args)
+
+@deprecated
+def tnaming_Replicate(*args):
+	return tnaming.Replicate(*args)
+
+@deprecated
+def tnaming_Replicate(*args):
+	return tnaming.Replicate(*args)
+
+@deprecated
+def tnaming_Substitute(*args):
+	return tnaming.Substitute(*args)
+
+@deprecated
+def tnaming_SubstituteSShape(*args):
+	return tnaming.SubstituteSShape(*args)
+
+@deprecated
+def tnaming_Transform(*args):
+	return tnaming.Transform(*args)
+
+@deprecated
+def tnaming_Update(*args):
+	return tnaming.Update(*args)
+
+@deprecated
+def TNaming_CopyShape_CopyTool(*args):
+	return TNaming_CopyShape.CopyTool(*args)
+
+@deprecated
+def TNaming_CopyShape_Translate(*args):
+	return TNaming_CopyShape.Translate(*args)
+
+@deprecated
+def TNaming_CopyShape_Translate(*args):
+	return TNaming_CopyShape.Translate(*args)
+
+@deprecated
+def TNaming_Localizer_FindGenerator(*args):
+	return TNaming_Localizer.FindGenerator(*args)
+
+@deprecated
+def TNaming_Localizer_FindShapeContext(*args):
+	return TNaming_Localizer.FindShapeContext(*args)
+
+@deprecated
+def TNaming_Localizer_IsNew(*args):
+	return TNaming_Localizer.IsNew(*args)
+
+@deprecated
+def TNaming_NamedShape_GetID(*args):
+	return TNaming_NamedShape.GetID(*args)
+
+@deprecated
+def TNaming_Naming_GetID(*args):
+	return TNaming_Naming.GetID(*args)
+
+@deprecated
+def TNaming_Naming_Insert(*args):
+	return TNaming_Naming.Insert(*args)
+
+@deprecated
+def TNaming_Naming_Name(*args):
+	return TNaming_Naming.Name(*args)
+
+@deprecated
+def TNaming_NamingTool_BuildDescendants(*args):
+	return TNaming_NamingTool.BuildDescendants(*args)
+
+@deprecated
+def TNaming_NamingTool_CurrentShape(*args):
+	return TNaming_NamingTool.CurrentShape(*args)
+
+@deprecated
+def TNaming_NamingTool_CurrentShapeFromShape(*args):
+	return TNaming_NamingTool.CurrentShapeFromShape(*args)
+
+@deprecated
+def TNaming_Selector_IsIdentified(*args):
+	return TNaming_Selector.IsIdentified(*args)
+
+@deprecated
+def TNaming_Tool_Collect(*args):
+	return TNaming_Tool.Collect(*args)
+
+@deprecated
+def TNaming_Tool_CurrentNamedShape(*args):
+	return TNaming_Tool.CurrentNamedShape(*args)
+
+@deprecated
+def TNaming_Tool_CurrentNamedShape(*args):
+	return TNaming_Tool.CurrentNamedShape(*args)
+
+@deprecated
+def TNaming_Tool_CurrentShape(*args):
+	return TNaming_Tool.CurrentShape(*args)
+
+@deprecated
+def TNaming_Tool_CurrentShape(*args):
+	return TNaming_Tool.CurrentShape(*args)
+
+@deprecated
+def TNaming_Tool_FindShape(*args):
+	return TNaming_Tool.FindShape(*args)
+
+@deprecated
+def TNaming_Tool_GeneratedShape(*args):
+	return TNaming_Tool.GeneratedShape(*args)
+
+@deprecated
+def TNaming_Tool_GetShape(*args):
+	return TNaming_Tool.GetShape(*args)
+
+@deprecated
+def TNaming_Tool_HasLabel(*args):
+	return TNaming_Tool.HasLabel(*args)
+
+@deprecated
+def TNaming_Tool_InitialShape(*args):
+	return TNaming_Tool.InitialShape(*args)
+
+@deprecated
+def TNaming_Tool_Label(*args):
+	return TNaming_Tool.Label(*args)
+
+@deprecated
+def TNaming_Tool_NamedShape(*args):
+	return TNaming_Tool.NamedShape(*args)
+
+@deprecated
+def TNaming_Tool_OriginalShape(*args):
+	return TNaming_Tool.OriginalShape(*args)
+
+@deprecated
+def TNaming_Tool_ValidUntil(*args):
+	return TNaming_Tool.ValidUntil(*args)
+
+@deprecated
+def TNaming_UsedShapes_GetID(*args):
+	return TNaming_UsedShapes.GetID(*args)
+
+}

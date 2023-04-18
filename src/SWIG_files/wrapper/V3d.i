@@ -5507,3 +5507,34 @@ V3d_TypeOfBackfacingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfBackfacingModel
 V3d_TypeOfLight=OCC.Core.Graphic3d.Graphic3d_TypeOfLightSource
 V3d_TypeOfShadingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfShadingModel
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def v3d_ArrowOfRadius(*args):
+	return v3d.ArrowOfRadius(*args)
+
+@deprecated
+def v3d_CircleInPlane(*args):
+	return v3d.CircleInPlane(*args)
+
+@deprecated
+def v3d_GetProjAxis(*args):
+	return v3d.GetProjAxis(*args)
+
+@deprecated
+def v3d_SwitchViewsinWindow(*args):
+	return v3d.SwitchViewsinWindow(*args)
+
+@deprecated
+def v3d_TypeOfOrientationFromString(*args):
+	return v3d.TypeOfOrientationFromString(*args)
+
+@deprecated
+def v3d_TypeOfOrientationFromString(*args):
+	return v3d.TypeOfOrientationFromString(*args)
+
+@deprecated
+def v3d_TypeOfOrientationToString(*args):
+	return v3d.TypeOfOrientationToString(*args)
+
+}

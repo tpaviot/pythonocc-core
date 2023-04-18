@@ -51,4 +51,3 @@ class RWHeaderSection_ReadWriteModule(StepData_ReadWriteModule):
 # harray2 classes
 # hsequence classes
 
-rwheadersection_Init = rwheadersection.Init

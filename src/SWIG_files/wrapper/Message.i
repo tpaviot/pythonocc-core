@@ -3736,3 +3736,118 @@ class Message_LazyProgressScope:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def message_DefaultMessenger(*args):
+	return message.DefaultMessenger(*args)
+
+@deprecated
+def message_DefaultReport(*args):
+	return message.DefaultReport(*args)
+
+@deprecated
+def message_FillTime(*args):
+	return message.FillTime(*args)
+
+@deprecated
+def message_MetricFromString(*args):
+	return message.MetricFromString(*args)
+
+@deprecated
+def message_MetricFromString(*args):
+	return message.MetricFromString(*args)
+
+@deprecated
+def message_MetricToString(*args):
+	return message.MetricToString(*args)
+
+@deprecated
+def message_ToMessageMetric(*args):
+	return message.ToMessageMetric(*args)
+
+@deprecated
+def message_ToOSDMetric(*args):
+	return message.ToOSDMetric(*args)
+
+@deprecated
+def Message_Algorithm_PrepareReport(*args):
+	return Message_Algorithm.PrepareReport(*args)
+
+@deprecated
+def Message_Algorithm_PrepareReport(*args):
+	return Message_Algorithm.PrepareReport(*args)
+
+@deprecated
+def Message_ExecStatus_LocalStatusIndex(*args):
+	return Message_ExecStatus.LocalStatusIndex(*args)
+
+@deprecated
+def Message_ExecStatus_StatusByIndex(*args):
+	return Message_ExecStatus.StatusByIndex(*args)
+
+@deprecated
+def Message_ExecStatus_StatusIndex(*args):
+	return Message_ExecStatus.StatusIndex(*args)
+
+@deprecated
+def Message_ExecStatus_TypeOfStatus(*args):
+	return Message_ExecStatus.TypeOfStatus(*args)
+
+@deprecated
+def Message_MsgFile_AddMsg(*args):
+	return Message_MsgFile.AddMsg(*args)
+
+@deprecated
+def Message_MsgFile_HasMsg(*args):
+	return Message_MsgFile.HasMsg(*args)
+
+@deprecated
+def Message_MsgFile_Load(*args):
+	return Message_MsgFile.Load(*args)
+
+@deprecated
+def Message_MsgFile_LoadFile(*args):
+	return Message_MsgFile.LoadFile(*args)
+
+@deprecated
+def Message_MsgFile_LoadFromEnv(*args):
+	return Message_MsgFile.LoadFromEnv(*args)
+
+@deprecated
+def Message_MsgFile_LoadFromString(*args):
+	return Message_MsgFile.LoadFromString(*args)
+
+@deprecated
+def Message_MsgFile_Msg(*args):
+	return Message_MsgFile.Msg(*args)
+
+@deprecated
+def Message_MsgFile_Msg(*args):
+	return Message_MsgFile.Msg(*args)
+
+@deprecated
+def Message_ProgressIndicator_Start(*args):
+	return Message_ProgressIndicator.Start(*args)
+
+@deprecated
+def Message_AlertExtended_AddAlert(*args):
+	return Message_AlertExtended.AddAlert(*args)
+
+@deprecated
+def Message_AttributeMeter_SetAlertMetrics(*args):
+	return Message_AttributeMeter.SetAlertMetrics(*args)
+
+@deprecated
+def Message_AttributeMeter_StartAlert(*args):
+	return Message_AttributeMeter.StartAlert(*args)
+
+@deprecated
+def Message_AttributeMeter_StopAlert(*args):
+	return Message_AttributeMeter.StopAlert(*args)
+
+@deprecated
+def Message_AttributeMeter_UndefinedMetricValue(*args):
+	return Message_AttributeMeter.UndefinedMetricValue(*args)
+
+}

@@ -2088,3 +2088,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapeextend_DecodeStatus(*args):
+	return shapeextend.DecodeStatus(*args)
+
+@deprecated
+def shapeextend_EncodeStatus(*args):
+	return shapeextend.EncodeStatus(*args)
+
+@deprecated
+def shapeextend_Init(*args):
+	return shapeextend.Init(*args)
+
+}

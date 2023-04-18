@@ -2145,3 +2145,110 @@ opencascade::handle<Geom2d_Curve>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomconvert_C0BSplineToArrayOfC1BSplineCurve(*args):
+	return geomconvert.C0BSplineToArrayOfC1BSplineCurve(*args)
+
+@deprecated
+def geomconvert_C0BSplineToArrayOfC1BSplineCurve(*args):
+	return geomconvert.C0BSplineToArrayOfC1BSplineCurve(*args)
+
+@deprecated
+def geomconvert_C0BSplineToC1BSplineCurve(*args):
+	return geomconvert.C0BSplineToC1BSplineCurve(*args)
+
+@deprecated
+def geomconvert_ConcatC1(*args):
+	return geomconvert.ConcatC1(*args)
+
+@deprecated
+def geomconvert_ConcatC1(*args):
+	return geomconvert.ConcatC1(*args)
+
+@deprecated
+def geomconvert_ConcatG1(*args):
+	return geomconvert.ConcatG1(*args)
+
+@deprecated
+def geomconvert_CurveToBSplineCurve(*args):
+	return geomconvert.CurveToBSplineCurve(*args)
+
+@deprecated
+def geomconvert_SplitBSplineCurve(*args):
+	return geomconvert.SplitBSplineCurve(*args)
+
+@deprecated
+def geomconvert_SplitBSplineCurve(*args):
+	return geomconvert.SplitBSplineCurve(*args)
+
+@deprecated
+def geomconvert_SplitBSplineSurface(*args):
+	return geomconvert.SplitBSplineSurface(*args)
+
+@deprecated
+def geomconvert_SplitBSplineSurface(*args):
+	return geomconvert.SplitBSplineSurface(*args)
+
+@deprecated
+def geomconvert_SplitBSplineSurface(*args):
+	return geomconvert.SplitBSplineSurface(*args)
+
+@deprecated
+def geomconvert_SplitBSplineSurface(*args):
+	return geomconvert.SplitBSplineSurface(*args)
+
+@deprecated
+def geomconvert_SurfaceToBSplineSurface(*args):
+	return geomconvert.SurfaceToBSplineSurface(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_ComputeCircle(*args):
+	return GeomConvert_CurveToAnaCurve.ComputeCircle(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_ComputeCurve(*args):
+	return GeomConvert_CurveToAnaCurve.ComputeCurve(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_ComputeEllipse(*args):
+	return GeomConvert_CurveToAnaCurve.ComputeEllipse(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_ComputeLine(*args):
+	return GeomConvert_CurveToAnaCurve.ComputeLine(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_GetCircle(*args):
+	return GeomConvert_CurveToAnaCurve.GetCircle(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_GetLine(*args):
+	return GeomConvert_CurveToAnaCurve.GetLine(*args)
+
+@deprecated
+def GeomConvert_CurveToAnaCurve_IsLinear(*args):
+	return GeomConvert_CurveToAnaCurve.IsLinear(*args)
+
+@deprecated
+def GeomConvert_SurfToAnaSurf_IsCanonical(*args):
+	return GeomConvert_SurfToAnaSurf.IsCanonical(*args)
+
+@deprecated
+def GeomConvert_SurfToAnaSurf_IsSame(*args):
+	return GeomConvert_SurfToAnaSurf.IsSame(*args)
+
+@deprecated
+def GeomConvert_Units_DegreeToRadian(*args):
+	return GeomConvert_Units.DegreeToRadian(*args)
+
+@deprecated
+def GeomConvert_Units_MirrorPCurve(*args):
+	return GeomConvert_Units.MirrorPCurve(*args)
+
+@deprecated
+def GeomConvert_Units_RadianToDegree(*args):
+	return GeomConvert_Units.RadianToDegree(*args)
+
+}

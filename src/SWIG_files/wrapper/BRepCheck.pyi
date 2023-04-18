@@ -220,8 +220,3 @@ class BRepCheck_Wire(BRepCheck_Result):
 # harray2 classes
 # hsequence classes
 
-brepcheck_Add = brepcheck.Add
-brepcheck_PrecCurve = brepcheck.PrecCurve
-brepcheck_PrecSurface = brepcheck.PrecSurface
-brepcheck_Print = brepcheck.Print
-brepcheck_SelfIntersection = brepcheck.SelfIntersection

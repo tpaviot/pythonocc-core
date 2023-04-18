@@ -1181,3 +1181,30 @@ class BinTools_OStream:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def bintools_Read(*args):
+	return bintools.Read(*args)
+
+@deprecated
+def bintools_Write(*args):
+	return bintools.Write(*args)
+
+@deprecated
+def bintools_Write(*args):
+	return bintools.Write(*args)
+
+@deprecated
+def BinTools_Curve2dSet_WriteCurve2d(*args):
+	return BinTools_Curve2dSet.WriteCurve2d(*args)
+
+@deprecated
+def BinTools_CurveSet_WriteCurve(*args):
+	return BinTools_CurveSet.WriteCurve(*args)
+
+@deprecated
+def BinTools_SurfaceSet_WriteSurface(*args):
+	return BinTools_SurfaceSet.WriteSurface(*args)
+
+}

@@ -382,3 +382,30 @@ opencascade::handle<TCollection_HAsciiString>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def stepedit_NewModel(*args):
+	return stepedit.NewModel(*args)
+
+@deprecated
+def stepedit_NewSelectPlacedItem(*args):
+	return stepedit.NewSelectPlacedItem(*args)
+
+@deprecated
+def stepedit_NewSelectSDR(*args):
+	return stepedit.NewSelectSDR(*args)
+
+@deprecated
+def stepedit_NewSelectShapeRepr(*args):
+	return stepedit.NewSelectShapeRepr(*args)
+
+@deprecated
+def stepedit_Protocol(*args):
+	return stepedit.Protocol(*args)
+
+@deprecated
+def stepedit_SignType(*args):
+	return stepedit.SignType(*args)
+
+}

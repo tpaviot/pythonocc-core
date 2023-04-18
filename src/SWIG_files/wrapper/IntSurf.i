@@ -1920,3 +1920,78 @@ IntSurf_TypeTrans
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def intsurf_MakeTransition(*args):
+	return intsurf.MakeTransition(*args)
+
+@deprecated
+def intsurf_SetPeriod(*args):
+	return intsurf.SetPeriod(*args)
+
+@deprecated
+def IntSurf_InteriorPointTool_Direction2d(*args):
+	return IntSurf_InteriorPointTool.Direction2d(*args)
+
+@deprecated
+def IntSurf_InteriorPointTool_Direction3d(*args):
+	return IntSurf_InteriorPointTool.Direction3d(*args)
+
+@deprecated
+def IntSurf_InteriorPointTool_Value2d(*args):
+	return IntSurf_InteriorPointTool.Value2d(*args)
+
+@deprecated
+def IntSurf_InteriorPointTool_Value3d(*args):
+	return IntSurf_InteriorPointTool.Value3d(*args)
+
+@deprecated
+def IntSurf_PathPointTool_Direction2d(*args):
+	return IntSurf_PathPointTool.Direction2d(*args)
+
+@deprecated
+def IntSurf_PathPointTool_Direction3d(*args):
+	return IntSurf_PathPointTool.Direction3d(*args)
+
+@deprecated
+def IntSurf_PathPointTool_IsPassingPnt(*args):
+	return IntSurf_PathPointTool.IsPassingPnt(*args)
+
+@deprecated
+def IntSurf_PathPointTool_IsTangent(*args):
+	return IntSurf_PathPointTool.IsTangent(*args)
+
+@deprecated
+def IntSurf_PathPointTool_Multiplicity(*args):
+	return IntSurf_PathPointTool.Multiplicity(*args)
+
+@deprecated
+def IntSurf_PathPointTool_Parameters(*args):
+	return IntSurf_PathPointTool.Parameters(*args)
+
+@deprecated
+def IntSurf_PathPointTool_Value2d(*args):
+	return IntSurf_PathPointTool.Value2d(*args)
+
+@deprecated
+def IntSurf_PathPointTool_Value3d(*args):
+	return IntSurf_PathPointTool.Value3d(*args)
+
+@deprecated
+def IntSurf_QuadricTool_Gradient(*args):
+	return IntSurf_QuadricTool.Gradient(*args)
+
+@deprecated
+def IntSurf_QuadricTool_Tolerance(*args):
+	return IntSurf_QuadricTool.Tolerance(*args)
+
+@deprecated
+def IntSurf_QuadricTool_Value(*args):
+	return IntSurf_QuadricTool.Value(*args)
+
+@deprecated
+def IntSurf_QuadricTool_ValueAndGradient(*args):
+	return IntSurf_QuadricTool.ValueAndGradient(*args)
+
+}

@@ -247,3 +247,38 @@ opencascade::handle<Geom_Curve>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomprojlib_Curve2d(*args):
+	return geomprojlib.Curve2d(*args)
+
+@deprecated
+def geomprojlib_Curve2d(*args):
+	return geomprojlib.Curve2d(*args)
+
+@deprecated
+def geomprojlib_Curve2d(*args):
+	return geomprojlib.Curve2d(*args)
+
+@deprecated
+def geomprojlib_Curve2d(*args):
+	return geomprojlib.Curve2d(*args)
+
+@deprecated
+def geomprojlib_Curve2d(*args):
+	return geomprojlib.Curve2d(*args)
+
+@deprecated
+def geomprojlib_Curve2d(*args):
+	return geomprojlib.Curve2d(*args)
+
+@deprecated
+def geomprojlib_Project(*args):
+	return geomprojlib.Project(*args)
+
+@deprecated
+def geomprojlib_ProjectOnPlane(*args):
+	return geomprojlib.ProjectOnPlane(*args)
+
+}

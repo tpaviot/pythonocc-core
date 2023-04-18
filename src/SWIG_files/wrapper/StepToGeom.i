@@ -841,3 +841,198 @@ opencascade::handle<TColStd_HArray1OfReal>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def steptogeom_MakeAxis1Placement(*args):
+	return steptogeom.MakeAxis1Placement(*args)
+
+@deprecated
+def steptogeom_MakeAxis2Placement(*args):
+	return steptogeom.MakeAxis2Placement(*args)
+
+@deprecated
+def steptogeom_MakeAxis2Placement(*args):
+	return steptogeom.MakeAxis2Placement(*args)
+
+@deprecated
+def steptogeom_MakeAxisPlacement(*args):
+	return steptogeom.MakeAxisPlacement(*args)
+
+@deprecated
+def steptogeom_MakeBSplineCurve(*args):
+	return steptogeom.MakeBSplineCurve(*args)
+
+@deprecated
+def steptogeom_MakeBSplineCurve2d(*args):
+	return steptogeom.MakeBSplineCurve2d(*args)
+
+@deprecated
+def steptogeom_MakeBSplineSurface(*args):
+	return steptogeom.MakeBSplineSurface(*args)
+
+@deprecated
+def steptogeom_MakeBoundedCurve(*args):
+	return steptogeom.MakeBoundedCurve(*args)
+
+@deprecated
+def steptogeom_MakeBoundedCurve2d(*args):
+	return steptogeom.MakeBoundedCurve2d(*args)
+
+@deprecated
+def steptogeom_MakeBoundedSurface(*args):
+	return steptogeom.MakeBoundedSurface(*args)
+
+@deprecated
+def steptogeom_MakeCartesianPoint(*args):
+	return steptogeom.MakeCartesianPoint(*args)
+
+@deprecated
+def steptogeom_MakeCartesianPoint2d(*args):
+	return steptogeom.MakeCartesianPoint2d(*args)
+
+@deprecated
+def steptogeom_MakeCircle(*args):
+	return steptogeom.MakeCircle(*args)
+
+@deprecated
+def steptogeom_MakeCircle2d(*args):
+	return steptogeom.MakeCircle2d(*args)
+
+@deprecated
+def steptogeom_MakeConic(*args):
+	return steptogeom.MakeConic(*args)
+
+@deprecated
+def steptogeom_MakeConic2d(*args):
+	return steptogeom.MakeConic2d(*args)
+
+@deprecated
+def steptogeom_MakeConicalSurface(*args):
+	return steptogeom.MakeConicalSurface(*args)
+
+@deprecated
+def steptogeom_MakeCurve(*args):
+	return steptogeom.MakeCurve(*args)
+
+@deprecated
+def steptogeom_MakeCurve2d(*args):
+	return steptogeom.MakeCurve2d(*args)
+
+@deprecated
+def steptogeom_MakeCylindricalSurface(*args):
+	return steptogeom.MakeCylindricalSurface(*args)
+
+@deprecated
+def steptogeom_MakeDirection(*args):
+	return steptogeom.MakeDirection(*args)
+
+@deprecated
+def steptogeom_MakeDirection2d(*args):
+	return steptogeom.MakeDirection2d(*args)
+
+@deprecated
+def steptogeom_MakeElementarySurface(*args):
+	return steptogeom.MakeElementarySurface(*args)
+
+@deprecated
+def steptogeom_MakeEllipse(*args):
+	return steptogeom.MakeEllipse(*args)
+
+@deprecated
+def steptogeom_MakeEllipse2d(*args):
+	return steptogeom.MakeEllipse2d(*args)
+
+@deprecated
+def steptogeom_MakeHyperbola(*args):
+	return steptogeom.MakeHyperbola(*args)
+
+@deprecated
+def steptogeom_MakeHyperbola2d(*args):
+	return steptogeom.MakeHyperbola2d(*args)
+
+@deprecated
+def steptogeom_MakeLine(*args):
+	return steptogeom.MakeLine(*args)
+
+@deprecated
+def steptogeom_MakeLine2d(*args):
+	return steptogeom.MakeLine2d(*args)
+
+@deprecated
+def steptogeom_MakeParabola(*args):
+	return steptogeom.MakeParabola(*args)
+
+@deprecated
+def steptogeom_MakeParabola2d(*args):
+	return steptogeom.MakeParabola2d(*args)
+
+@deprecated
+def steptogeom_MakePlane(*args):
+	return steptogeom.MakePlane(*args)
+
+@deprecated
+def steptogeom_MakePolyline(*args):
+	return steptogeom.MakePolyline(*args)
+
+@deprecated
+def steptogeom_MakePolyline2d(*args):
+	return steptogeom.MakePolyline2d(*args)
+
+@deprecated
+def steptogeom_MakeRectangularTrimmedSurface(*args):
+	return steptogeom.MakeRectangularTrimmedSurface(*args)
+
+@deprecated
+def steptogeom_MakeSphericalSurface(*args):
+	return steptogeom.MakeSphericalSurface(*args)
+
+@deprecated
+def steptogeom_MakeSurface(*args):
+	return steptogeom.MakeSurface(*args)
+
+@deprecated
+def steptogeom_MakeSurfaceOfLinearExtrusion(*args):
+	return steptogeom.MakeSurfaceOfLinearExtrusion(*args)
+
+@deprecated
+def steptogeom_MakeSurfaceOfRevolution(*args):
+	return steptogeom.MakeSurfaceOfRevolution(*args)
+
+@deprecated
+def steptogeom_MakeSweptSurface(*args):
+	return steptogeom.MakeSweptSurface(*args)
+
+@deprecated
+def steptogeom_MakeToroidalSurface(*args):
+	return steptogeom.MakeToroidalSurface(*args)
+
+@deprecated
+def steptogeom_MakeTransformation2d(*args):
+	return steptogeom.MakeTransformation2d(*args)
+
+@deprecated
+def steptogeom_MakeTransformation3d(*args):
+	return steptogeom.MakeTransformation3d(*args)
+
+@deprecated
+def steptogeom_MakeTrimmedCurve(*args):
+	return steptogeom.MakeTrimmedCurve(*args)
+
+@deprecated
+def steptogeom_MakeTrimmedCurve2d(*args):
+	return steptogeom.MakeTrimmedCurve2d(*args)
+
+@deprecated
+def steptogeom_MakeVectorWithMagnitude(*args):
+	return steptogeom.MakeVectorWithMagnitude(*args)
+
+@deprecated
+def steptogeom_MakeVectorWithMagnitude2d(*args):
+	return steptogeom.MakeVectorWithMagnitude2d(*args)
+
+@deprecated
+def steptogeom_MakeYprRotation(*args):
+	return steptogeom.MakeYprRotation(*args)
+
+}

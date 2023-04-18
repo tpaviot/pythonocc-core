@@ -98,18 +98,3 @@ class BRepLProp_SurfaceTool:
 # harray2 classes
 # hsequence classes
 
-breplprop_Continuity = breplprop.Continuity
-breplprop_Continuity = breplprop.Continuity
-BRepLProp_CurveTool_Continuity = BRepLProp_CurveTool.Continuity
-BRepLProp_CurveTool_D1 = BRepLProp_CurveTool.D1
-BRepLProp_CurveTool_D2 = BRepLProp_CurveTool.D2
-BRepLProp_CurveTool_D3 = BRepLProp_CurveTool.D3
-BRepLProp_CurveTool_FirstParameter = BRepLProp_CurveTool.FirstParameter
-BRepLProp_CurveTool_LastParameter = BRepLProp_CurveTool.LastParameter
-BRepLProp_CurveTool_Value = BRepLProp_CurveTool.Value
-BRepLProp_SurfaceTool_Bounds = BRepLProp_SurfaceTool.Bounds
-BRepLProp_SurfaceTool_Continuity = BRepLProp_SurfaceTool.Continuity
-BRepLProp_SurfaceTool_D1 = BRepLProp_SurfaceTool.D1
-BRepLProp_SurfaceTool_D2 = BRepLProp_SurfaceTool.D2
-BRepLProp_SurfaceTool_DN = BRepLProp_SurfaceTool.DN
-BRepLProp_SurfaceTool_Value = BRepLProp_SurfaceTool.Value

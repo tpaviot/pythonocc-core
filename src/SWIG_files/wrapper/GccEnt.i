@@ -482,3 +482,46 @@ GccEnt_Position
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def gccent_Enclosed(*args):
+	return gccent.Enclosed(*args)
+
+@deprecated
+def gccent_Enclosed(*args):
+	return gccent.Enclosed(*args)
+
+@deprecated
+def gccent_Enclosing(*args):
+	return gccent.Enclosing(*args)
+
+@deprecated
+def gccent_Outside(*args):
+	return gccent.Outside(*args)
+
+@deprecated
+def gccent_Outside(*args):
+	return gccent.Outside(*args)
+
+@deprecated
+def gccent_PositionFromString(*args):
+	return gccent.PositionFromString(*args)
+
+@deprecated
+def gccent_PositionFromString(*args):
+	return gccent.PositionFromString(*args)
+
+@deprecated
+def gccent_PositionToString(*args):
+	return gccent.PositionToString(*args)
+
+@deprecated
+def gccent_Unqualified(*args):
+	return gccent.Unqualified(*args)
+
+@deprecated
+def gccent_Unqualified(*args):
+	return gccent.Unqualified(*args)
+
+}

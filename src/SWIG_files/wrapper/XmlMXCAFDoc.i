@@ -1227,3 +1227,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmxcafdoc_AddDrivers(*args):
+	return xmlmxcafdoc.AddDrivers(*args)
+
+}

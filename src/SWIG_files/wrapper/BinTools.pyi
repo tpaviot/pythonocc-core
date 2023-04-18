@@ -163,25 +163,3 @@ class BinTools_OStream: ...
 # harray2 classes
 # hsequence classes
 
-bintools_GetBool = bintools.GetBool
-bintools_GetExtChar = bintools.GetExtChar
-bintools_GetInteger = bintools.GetInteger
-bintools_GetReal = bintools.GetReal
-bintools_GetShortReal = bintools.GetShortReal
-bintools_PutBool = bintools.PutBool
-bintools_PutExtChar = bintools.PutExtChar
-bintools_PutInteger = bintools.PutInteger
-bintools_PutReal = bintools.PutReal
-bintools_PutShortReal = bintools.PutShortReal
-bintools_Read = bintools.Read
-bintools_Read = bintools.Read
-bintools_Write = bintools.Write
-bintools_Write = bintools.Write
-bintools_Write = bintools.Write
-bintools_Write = bintools.Write
-BinTools_Curve2dSet_ReadCurve2d = BinTools_Curve2dSet.ReadCurve2d
-BinTools_Curve2dSet_WriteCurve2d = BinTools_Curve2dSet.WriteCurve2d
-BinTools_CurveSet_ReadCurve = BinTools_CurveSet.ReadCurve
-BinTools_CurveSet_WriteCurve = BinTools_CurveSet.WriteCurve
-BinTools_SurfaceSet_ReadSurface = BinTools_SurfaceSet.ReadSurface
-BinTools_SurfaceSet_WriteSurface = BinTools_SurfaceSet.WriteSurface

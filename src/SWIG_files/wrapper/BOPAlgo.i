@@ -4338,3 +4338,66 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BOPAlgo_Options_GetParallelMode(*args):
+	return BOPAlgo_Options.GetParallelMode(*args)
+
+@deprecated
+def BOPAlgo_Options_SetParallelMode(*args):
+	return BOPAlgo_Options.SetParallelMode(*args)
+
+@deprecated
+def BOPAlgo_Tools_ClassifyFaces(*args):
+	return BOPAlgo_Tools.ClassifyFaces(*args)
+
+@deprecated
+def BOPAlgo_Tools_ComputeToleranceOfCB(*args):
+	return BOPAlgo_Tools.ComputeToleranceOfCB(*args)
+
+@deprecated
+def BOPAlgo_Tools_EdgesToWires(*args):
+	return BOPAlgo_Tools.EdgesToWires(*args)
+
+@deprecated
+def BOPAlgo_Tools_FillInternals(*args):
+	return BOPAlgo_Tools.FillInternals(*args)
+
+@deprecated
+def BOPAlgo_Tools_IntersectVertices(*args):
+	return BOPAlgo_Tools.IntersectVertices(*args)
+
+@deprecated
+def BOPAlgo_Tools_PerformCommonBlocks(*args):
+	return BOPAlgo_Tools.PerformCommonBlocks(*args)
+
+@deprecated
+def BOPAlgo_Tools_PerformCommonBlocks(*args):
+	return BOPAlgo_Tools.PerformCommonBlocks(*args)
+
+@deprecated
+def BOPAlgo_Tools_TrsfToPoint(*args):
+	return BOPAlgo_Tools.TrsfToPoint(*args)
+
+@deprecated
+def BOPAlgo_Tools_WiresToFaces(*args):
+	return BOPAlgo_Tools.WiresToFaces(*args)
+
+@deprecated
+def BOPAlgo_MakePeriodic_ToDirectionID(*args):
+	return BOPAlgo_MakePeriodic.ToDirectionID(*args)
+
+@deprecated
+def BOPAlgo_ShellSplitter_SplitBlock(*args):
+	return BOPAlgo_ShellSplitter.SplitBlock(*args)
+
+@deprecated
+def BOPAlgo_WireSplitter_MakeWire(*args):
+	return BOPAlgo_WireSplitter.MakeWire(*args)
+
+@deprecated
+def BOPAlgo_WireSplitter_SplitBlock(*args):
+	return BOPAlgo_WireSplitter.SplitBlock(*args)
+
+}

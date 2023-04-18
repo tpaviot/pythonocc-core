@@ -2430,3 +2430,34 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def law_MixBnd(*args):
+	return law.MixBnd(*args)
+
+@deprecated
+def law_MixBnd(*args):
+	return law.MixBnd(*args)
+
+@deprecated
+def law_MixTgt(*args):
+	return law.MixTgt(*args)
+
+@deprecated
+def law_Reparametrize(*args):
+	return law.Reparametrize(*args)
+
+@deprecated
+def law_Scale(*args):
+	return law.Scale(*args)
+
+@deprecated
+def law_ScaleCub(*args):
+	return law.ScaleCub(*args)
+
+@deprecated
+def Law_BSpline_MaxDegree(*args):
+	return Law_BSpline.MaxDegree(*args)
+
+}

@@ -988,3 +988,42 @@ TopAbs_ShapeEnum
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def stdselect_SetDrawerForBRepOwner(*args):
+	return stdselect.SetDrawerForBRepOwner(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_ComputeSensitive(*args):
+	return StdSelect_BRepSelectionTool.ComputeSensitive(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_GetEdgeSensitive(*args):
+	return StdSelect_BRepSelectionTool.GetEdgeSensitive(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_GetSensitiveForCylinder(*args):
+	return StdSelect_BRepSelectionTool.GetSensitiveForCylinder(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_GetSensitiveForFace(*args):
+	return StdSelect_BRepSelectionTool.GetSensitiveForFace(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_GetStandardPriority(*args):
+	return StdSelect_BRepSelectionTool.GetStandardPriority(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_Load(*args):
+	return StdSelect_BRepSelectionTool.Load(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_Load(*args):
+	return StdSelect_BRepSelectionTool.Load(*args)
+
+@deprecated
+def StdSelect_BRepSelectionTool_PreBuildBVH(*args):
+	return StdSelect_BRepSelectionTool.PreBuildBVH(*args)
+
+}
