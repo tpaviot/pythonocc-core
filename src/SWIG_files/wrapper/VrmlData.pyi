@@ -393,12 +393,3 @@ class VrmlData_Faceted: ...
 # harray2 classes
 # hsequence classes
 
-VrmlData_Node_GlobalIndent = VrmlData_Node.GlobalIndent
-VrmlData_Node_OK = VrmlData_Node.OK
-VrmlData_Node_OK = VrmlData_Node.OK
-VrmlData_Node_ReadBoolean = VrmlData_Node.ReadBoolean
-VrmlData_Node_ReadInteger = VrmlData_Node.ReadInteger
-VrmlData_Node_ReadMultiString = VrmlData_Node.ReadMultiString
-VrmlData_Node_ReadString = VrmlData_Node.ReadString
-VrmlData_Scene_ReadLine = VrmlData_Scene.ReadLine
-VrmlData_Scene_ReadWord = VrmlData_Scene.ReadWord

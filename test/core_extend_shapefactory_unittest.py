@@ -57,7 +57,7 @@ class TestExtendShapeFactory(unittest.TestCase):
         r = 9.8775  # a random radius
         sph = BRepPrimAPI_MakeSphere(r).Shape()
         sph_volume = measure_shape_volume(sph)
-        self.assertAlmostEqual(sph_volume, 4.0 / 3.0 * math.pi * r ** 3, places=6)
+        self.assertAlmostEqual(sph_volume, 4.0 / 3.0 * math.pi * r**3, places=6)
 
     def test_scale_shape(self):
         box = BRepPrimAPI_MakeBox(10.0, 10.0, 10.0).Shape()
@@ -77,7 +77,7 @@ class TestExtendShapeFactory(unittest.TestCase):
         self.assertAlmostEqual(cog.X(), x, places=6)
         self.assertAlmostEqual(cog.Y(), y, places=6)
         self.assertAlmostEqual(cog.Z(), z, places=6)
-        self.assertAlmostEqual(mass, 4 / 3 * math.pi * radius ** 3, places=6)
+        self.assertAlmostEqual(mass, 4 / 3 * math.pi * radius**3, places=6)
         self.assertEqual(mass_property, "Volume")
 
     def test_edge_to_bezier(self):

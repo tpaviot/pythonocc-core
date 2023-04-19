@@ -1038,3 +1038,22 @@ TopoDS_Shape
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def HLRTopoBRep_DSFiller_Insert(*args):
+	return HLRTopoBRep_DSFiller.Insert(*args)
+
+@deprecated
+def HLRTopoBRep_FaceIsoLiner_MakeIsoLine(*args):
+	return HLRTopoBRep_FaceIsoLiner.MakeIsoLine(*args)
+
+@deprecated
+def HLRTopoBRep_FaceIsoLiner_MakeVertex(*args):
+	return HLRTopoBRep_FaceIsoLiner.MakeVertex(*args)
+
+@deprecated
+def HLRTopoBRep_FaceIsoLiner_Perform(*args):
+	return HLRTopoBRep_FaceIsoLiner.Perform(*args)
+
+}

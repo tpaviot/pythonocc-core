@@ -5521,3 +5521,122 @@ class GeomInt_WLApprox:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomint_AdjustPeriodic(*args):
+	return geomint.AdjustPeriodic(*args)
+
+@deprecated
+def GeomInt_IntSS_BuildPCurves(*args):
+	return GeomInt_IntSS.BuildPCurves(*args)
+
+@deprecated
+def GeomInt_IntSS_BuildPCurves(*args):
+	return GeomInt_IntSS.BuildPCurves(*args)
+
+@deprecated
+def GeomInt_IntSS_MakeBSpline(*args):
+	return GeomInt_IntSS.MakeBSpline(*args)
+
+@deprecated
+def GeomInt_IntSS_MakeBSpline2d(*args):
+	return GeomInt_IntSS.MakeBSpline2d(*args)
+
+@deprecated
+def GeomInt_IntSS_TreatRLine(*args):
+	return GeomInt_IntSS.TreatRLine(*args)
+
+@deprecated
+def GeomInt_IntSS_TrimILineOnSurfBoundaries(*args):
+	return GeomInt_IntSS.TrimILineOnSurfBoundaries(*args)
+
+@deprecated
+def GeomInt_LineTool_DecompositionOfWLine(*args):
+	return GeomInt_LineTool.DecompositionOfWLine(*args)
+
+@deprecated
+def GeomInt_LineTool_FirstParameter(*args):
+	return GeomInt_LineTool.FirstParameter(*args)
+
+@deprecated
+def GeomInt_LineTool_LastParameter(*args):
+	return GeomInt_LineTool.LastParameter(*args)
+
+@deprecated
+def GeomInt_LineTool_NbVertex(*args):
+	return GeomInt_LineTool.NbVertex(*args)
+
+@deprecated
+def GeomInt_LineTool_Vertex(*args):
+	return GeomInt_LineTool.Vertex(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Curvature(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Curvature(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Curvature(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Curvature(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Curvature(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Curvature(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Dump(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Dump(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_FirstPoint(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.FirstPoint(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_LastPoint(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.LastPoint(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_MakeMLBetween(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.MakeMLBetween(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_MakeMLOneMorePoint(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.MakeMLOneMorePoint(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_NbP2d(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.NbP2d(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_NbP3d(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.NbP3d(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Tangency(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Tangency(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Tangency(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Tangency(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Tangency(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Tangency(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Value(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Value(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Value(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Value(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_Value(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.Value(*args)
+
+@deprecated
+def GeomInt_TheMultiLineToolOfWLApprox_WhatStatus(*args):
+	return GeomInt_TheMultiLineToolOfWLApprox.WhatStatus(*args)
+
+}

@@ -301,4 +301,3 @@ class GeomPlate_HSequenceOfCurveConstraint(GeomPlate_SequenceOfCurveConstraint, 
     def Append(self, theSequence: GeomPlate_SequenceOfCurveConstraint) -> None: ...
 
 
-GeomPlate_BuildAveragePlane_HalfSpace = GeomPlate_BuildAveragePlane.HalfSpace

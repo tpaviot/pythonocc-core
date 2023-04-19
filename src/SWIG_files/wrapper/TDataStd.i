@@ -8397,3 +8397,318 @@ class TDataStd_HLabelArray1 : public TDataStd_LabelArray1, public Standard_Trans
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def tdatastd_IDList(*args):
+	return tdatastd.IDList(*args)
+
+@deprecated
+def TDataStd_AsciiString_GetID(*args):
+	return TDataStd_AsciiString.GetID(*args)
+
+@deprecated
+def TDataStd_AsciiString_Set(*args):
+	return TDataStd_AsciiString.Set(*args)
+
+@deprecated
+def TDataStd_AsciiString_Set(*args):
+	return TDataStd_AsciiString.Set(*args)
+
+@deprecated
+def TDataStd_BooleanArray_GetID(*args):
+	return TDataStd_BooleanArray.GetID(*args)
+
+@deprecated
+def TDataStd_BooleanArray_Set(*args):
+	return TDataStd_BooleanArray.Set(*args)
+
+@deprecated
+def TDataStd_BooleanArray_Set(*args):
+	return TDataStd_BooleanArray.Set(*args)
+
+@deprecated
+def TDataStd_BooleanList_GetID(*args):
+	return TDataStd_BooleanList.GetID(*args)
+
+@deprecated
+def TDataStd_BooleanList_Set(*args):
+	return TDataStd_BooleanList.Set(*args)
+
+@deprecated
+def TDataStd_BooleanList_Set(*args):
+	return TDataStd_BooleanList.Set(*args)
+
+@deprecated
+def TDataStd_ByteArray_GetID(*args):
+	return TDataStd_ByteArray.GetID(*args)
+
+@deprecated
+def TDataStd_ByteArray_Set(*args):
+	return TDataStd_ByteArray.Set(*args)
+
+@deprecated
+def TDataStd_ByteArray_Set(*args):
+	return TDataStd_ByteArray.Set(*args)
+
+@deprecated
+def TDataStd_Current_Get(*args):
+	return TDataStd_Current.Get(*args)
+
+@deprecated
+def TDataStd_Current_GetID(*args):
+	return TDataStd_Current.GetID(*args)
+
+@deprecated
+def TDataStd_Current_Has(*args):
+	return TDataStd_Current.Has(*args)
+
+@deprecated
+def TDataStd_Current_Set(*args):
+	return TDataStd_Current.Set(*args)
+
+@deprecated
+def TDataStd_Expression_GetID(*args):
+	return TDataStd_Expression.GetID(*args)
+
+@deprecated
+def TDataStd_Expression_Set(*args):
+	return TDataStd_Expression.Set(*args)
+
+@deprecated
+def TDataStd_ExtStringArray_GetID(*args):
+	return TDataStd_ExtStringArray.GetID(*args)
+
+@deprecated
+def TDataStd_ExtStringArray_Set(*args):
+	return TDataStd_ExtStringArray.Set(*args)
+
+@deprecated
+def TDataStd_ExtStringArray_Set(*args):
+	return TDataStd_ExtStringArray.Set(*args)
+
+@deprecated
+def TDataStd_ExtStringList_GetID(*args):
+	return TDataStd_ExtStringList.GetID(*args)
+
+@deprecated
+def TDataStd_ExtStringList_Set(*args):
+	return TDataStd_ExtStringList.Set(*args)
+
+@deprecated
+def TDataStd_ExtStringList_Set(*args):
+	return TDataStd_ExtStringList.Set(*args)
+
+@deprecated
+def TDataStd_IntPackedMap_GetID(*args):
+	return TDataStd_IntPackedMap.GetID(*args)
+
+@deprecated
+def TDataStd_IntPackedMap_Set(*args):
+	return TDataStd_IntPackedMap.Set(*args)
+
+@deprecated
+def TDataStd_Integer_GetID(*args):
+	return TDataStd_Integer.GetID(*args)
+
+@deprecated
+def TDataStd_Integer_Set(*args):
+	return TDataStd_Integer.Set(*args)
+
+@deprecated
+def TDataStd_Integer_Set(*args):
+	return TDataStd_Integer.Set(*args)
+
+@deprecated
+def TDataStd_IntegerArray_GetID(*args):
+	return TDataStd_IntegerArray.GetID(*args)
+
+@deprecated
+def TDataStd_IntegerArray_Set(*args):
+	return TDataStd_IntegerArray.Set(*args)
+
+@deprecated
+def TDataStd_IntegerArray_Set(*args):
+	return TDataStd_IntegerArray.Set(*args)
+
+@deprecated
+def TDataStd_IntegerList_GetID(*args):
+	return TDataStd_IntegerList.GetID(*args)
+
+@deprecated
+def TDataStd_IntegerList_Set(*args):
+	return TDataStd_IntegerList.Set(*args)
+
+@deprecated
+def TDataStd_IntegerList_Set(*args):
+	return TDataStd_IntegerList.Set(*args)
+
+@deprecated
+def TDataStd_NamedData_GetID(*args):
+	return TDataStd_NamedData.GetID(*args)
+
+@deprecated
+def TDataStd_NamedData_Set(*args):
+	return TDataStd_NamedData.Set(*args)
+
+@deprecated
+def TDataStd_Real_GetID(*args):
+	return TDataStd_Real.GetID(*args)
+
+@deprecated
+def TDataStd_Real_Set(*args):
+	return TDataStd_Real.Set(*args)
+
+@deprecated
+def TDataStd_Real_Set(*args):
+	return TDataStd_Real.Set(*args)
+
+@deprecated
+def TDataStd_RealArray_GetID(*args):
+	return TDataStd_RealArray.GetID(*args)
+
+@deprecated
+def TDataStd_RealArray_Set(*args):
+	return TDataStd_RealArray.Set(*args)
+
+@deprecated
+def TDataStd_RealArray_Set(*args):
+	return TDataStd_RealArray.Set(*args)
+
+@deprecated
+def TDataStd_RealList_GetID(*args):
+	return TDataStd_RealList.GetID(*args)
+
+@deprecated
+def TDataStd_RealList_Set(*args):
+	return TDataStd_RealList.Set(*args)
+
+@deprecated
+def TDataStd_RealList_Set(*args):
+	return TDataStd_RealList.Set(*args)
+
+@deprecated
+def TDataStd_ReferenceArray_GetID(*args):
+	return TDataStd_ReferenceArray.GetID(*args)
+
+@deprecated
+def TDataStd_ReferenceArray_Set(*args):
+	return TDataStd_ReferenceArray.Set(*args)
+
+@deprecated
+def TDataStd_ReferenceArray_Set(*args):
+	return TDataStd_ReferenceArray.Set(*args)
+
+@deprecated
+def TDataStd_ReferenceList_GetID(*args):
+	return TDataStd_ReferenceList.GetID(*args)
+
+@deprecated
+def TDataStd_ReferenceList_Set(*args):
+	return TDataStd_ReferenceList.Set(*args)
+
+@deprecated
+def TDataStd_ReferenceList_Set(*args):
+	return TDataStd_ReferenceList.Set(*args)
+
+@deprecated
+def TDataStd_TreeNode_Find(*args):
+	return TDataStd_TreeNode.Find(*args)
+
+@deprecated
+def TDataStd_TreeNode_GetDefaultTreeID(*args):
+	return TDataStd_TreeNode.GetDefaultTreeID(*args)
+
+@deprecated
+def TDataStd_TreeNode_Set(*args):
+	return TDataStd_TreeNode.Set(*args)
+
+@deprecated
+def TDataStd_TreeNode_Set(*args):
+	return TDataStd_TreeNode.Set(*args)
+
+@deprecated
+def TDataStd_UAttribute_Set(*args):
+	return TDataStd_UAttribute.Set(*args)
+
+@deprecated
+def TDataStd_Variable_GetID(*args):
+	return TDataStd_Variable.GetID(*args)
+
+@deprecated
+def TDataStd_Variable_Set(*args):
+	return TDataStd_Variable.Set(*args)
+
+@deprecated
+def TDataStd_Comment_GetID(*args):
+	return TDataStd_Comment.GetID(*args)
+
+@deprecated
+def TDataStd_Comment_Set(*args):
+	return TDataStd_Comment.Set(*args)
+
+@deprecated
+def TDataStd_Comment_Set(*args):
+	return TDataStd_Comment.Set(*args)
+
+@deprecated
+def TDataStd_Directory_AddDirectory(*args):
+	return TDataStd_Directory.AddDirectory(*args)
+
+@deprecated
+def TDataStd_Directory_Find(*args):
+	return TDataStd_Directory.Find(*args)
+
+@deprecated
+def TDataStd_Directory_GetID(*args):
+	return TDataStd_Directory.GetID(*args)
+
+@deprecated
+def TDataStd_Directory_MakeObjectLabel(*args):
+	return TDataStd_Directory.MakeObjectLabel(*args)
+
+@deprecated
+def TDataStd_Directory_New(*args):
+	return TDataStd_Directory.New(*args)
+
+@deprecated
+def TDataStd_Name_GetID(*args):
+	return TDataStd_Name.GetID(*args)
+
+@deprecated
+def TDataStd_Name_Set(*args):
+	return TDataStd_Name.Set(*args)
+
+@deprecated
+def TDataStd_Name_Set(*args):
+	return TDataStd_Name.Set(*args)
+
+@deprecated
+def TDataStd_NoteBook_Find(*args):
+	return TDataStd_NoteBook.Find(*args)
+
+@deprecated
+def TDataStd_NoteBook_GetID(*args):
+	return TDataStd_NoteBook.GetID(*args)
+
+@deprecated
+def TDataStd_NoteBook_New(*args):
+	return TDataStd_NoteBook.New(*args)
+
+@deprecated
+def TDataStd_Relation_GetID(*args):
+	return TDataStd_Relation.GetID(*args)
+
+@deprecated
+def TDataStd_Relation_Set(*args):
+	return TDataStd_Relation.Set(*args)
+
+@deprecated
+def TDataStd_Tick_GetID(*args):
+	return TDataStd_Tick.GetID(*args)
+
+@deprecated
+def TDataStd_Tick_Set(*args):
+	return TDataStd_Tick.Set(*args)
+
+}

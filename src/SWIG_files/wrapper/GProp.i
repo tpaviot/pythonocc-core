@@ -1289,3 +1289,26 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def gprop_HOperator(*args):
+	return gprop.HOperator(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+}

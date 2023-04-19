@@ -1393,3 +1393,10 @@ class RWObj_MtlReader:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def rwobj_ReadFile(*args):
+	return rwobj.ReadFile(*args)
+
+}

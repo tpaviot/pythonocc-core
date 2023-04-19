@@ -244,12 +244,3 @@ class GCPnts_TCurveTypes: ...
 # harray2 classes
 # hsequence classes
 
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_AbscissaPoint_Length = GCPnts_AbscissaPoint.Length
-GCPnts_TangentialDeflection_ArcAngularStep = GCPnts_TangentialDeflection.ArcAngularStep

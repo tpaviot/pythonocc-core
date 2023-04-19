@@ -1348,3 +1348,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def VrmlConverter_ShadedShape_ComputeNormal(*args):
+	return VrmlConverter_ShadedShape.ComputeNormal(*args)
+
+}

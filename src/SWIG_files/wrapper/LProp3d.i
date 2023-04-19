@@ -871,3 +871,58 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def LProp3d_CurveTool_Continuity(*args):
+	return LProp3d_CurveTool.Continuity(*args)
+
+@deprecated
+def LProp3d_CurveTool_D1(*args):
+	return LProp3d_CurveTool.D1(*args)
+
+@deprecated
+def LProp3d_CurveTool_D2(*args):
+	return LProp3d_CurveTool.D2(*args)
+
+@deprecated
+def LProp3d_CurveTool_D3(*args):
+	return LProp3d_CurveTool.D3(*args)
+
+@deprecated
+def LProp3d_CurveTool_FirstParameter(*args):
+	return LProp3d_CurveTool.FirstParameter(*args)
+
+@deprecated
+def LProp3d_CurveTool_LastParameter(*args):
+	return LProp3d_CurveTool.LastParameter(*args)
+
+@deprecated
+def LProp3d_CurveTool_Value(*args):
+	return LProp3d_CurveTool.Value(*args)
+
+@deprecated
+def LProp3d_SurfaceTool_Bounds(*args):
+	return LProp3d_SurfaceTool.Bounds(*args)
+
+@deprecated
+def LProp3d_SurfaceTool_Continuity(*args):
+	return LProp3d_SurfaceTool.Continuity(*args)
+
+@deprecated
+def LProp3d_SurfaceTool_D1(*args):
+	return LProp3d_SurfaceTool.D1(*args)
+
+@deprecated
+def LProp3d_SurfaceTool_D2(*args):
+	return LProp3d_SurfaceTool.D2(*args)
+
+@deprecated
+def LProp3d_SurfaceTool_DN(*args):
+	return LProp3d_SurfaceTool.DN(*args)
+
+@deprecated
+def LProp3d_SurfaceTool_Value(*args):
+	return LProp3d_SurfaceTool.Value(*args)
+
+}

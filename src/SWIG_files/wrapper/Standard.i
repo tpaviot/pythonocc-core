@@ -1996,3 +1996,90 @@ class Standard_ReadBuffer:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def standard_Allocate(*args):
+	return standard.Allocate(*args)
+
+@deprecated
+def standard_AllocateAligned(*args):
+	return standard.AllocateAligned(*args)
+
+@deprecated
+def standard_Purge(*args):
+	return standard.Purge(*args)
+
+@deprecated
+def standard_Reallocate(*args):
+	return standard.Reallocate(*args)
+
+@deprecated
+def standard_StackTrace(*args):
+	return standard.StackTrace(*args)
+
+@deprecated
+def Standard_ErrorHandler_IsInTryBlock(*args):
+	return Standard_ErrorHandler.IsInTryBlock(*args)
+
+@deprecated
+def Standard_ErrorHandler_LastCaughtError(*args):
+	return Standard_ErrorHandler.LastCaughtError(*args)
+
+@deprecated
+def Standard_GUID_CheckGUIDFormat(*args):
+	return Standard_GUID.CheckGUIDFormat(*args)
+
+@deprecated
+def Standard_GUID_HashCode(*args):
+	return Standard_GUID.HashCode(*args)
+
+@deprecated
+def Standard_GUID_IsEqual(*args):
+	return Standard_GUID.IsEqual(*args)
+
+@deprecated
+def Standard_Failure_DefaultStackTraceLength(*args):
+	return Standard_Failure.DefaultStackTraceLength(*args)
+
+@deprecated
+def Standard_Failure_NewInstance(*args):
+	return Standard_Failure.NewInstance(*args)
+
+@deprecated
+def Standard_Failure_NewInstance(*args):
+	return Standard_Failure.NewInstance(*args)
+
+@deprecated
+def Standard_Failure_Raise(*args):
+	return Standard_Failure.Raise(*args)
+
+@deprecated
+def Standard_Failure_Raise(*args):
+	return Standard_Failure.Raise(*args)
+
+@deprecated
+def Standard_Failure_SetDefaultStackTraceLength(*args):
+	return Standard_Failure.SetDefaultStackTraceLength(*args)
+
+@deprecated
+def Standard_OutOfMemory_NewInstance(*args):
+	return Standard_OutOfMemory.NewInstance(*args)
+
+@deprecated
+def Standard_OutOfMemory_NewInstance(*args):
+	return Standard_OutOfMemory.NewInstance(*args)
+
+@deprecated
+def Standard_OutOfMemory_Raise(*args):
+	return Standard_OutOfMemory.Raise(*args)
+
+@deprecated
+def Standard_OutOfMemory_Raise(*args):
+	return Standard_OutOfMemory.Raise(*args)
+
+@deprecated
+def Standard_Type_Register(*args):
+	return Standard_Type.Register(*args)
+
+}

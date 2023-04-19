@@ -336,3 +336,14 @@ TopAbs_State
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def TopTrans_SurfaceTransition_GetAfter(*args):
+	return TopTrans_SurfaceTransition.GetAfter(*args)
+
+@deprecated
+def TopTrans_SurfaceTransition_GetBefore(*args):
+	return TopTrans_SurfaceTransition.GetBefore(*args)
+
+}

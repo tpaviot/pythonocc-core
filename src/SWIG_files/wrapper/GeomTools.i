@@ -486,3 +486,14 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomtools_GetUndefinedTypeHandler(*args):
+	return geomtools.GetUndefinedTypeHandler(*args)
+
+@deprecated
+def geomtools_SetUndefinedTypeHandler(*args):
+	return geomtools.SetUndefinedTypeHandler(*args)
+
+}

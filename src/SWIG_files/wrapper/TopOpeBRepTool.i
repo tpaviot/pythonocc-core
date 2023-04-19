@@ -4893,3 +4893,386 @@ class TopOpeBRepTool_mkTondgE:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def topopebreptool_CorrectONUVISO(*args):
+	return topopebreptool.CorrectONUVISO(*args)
+
+@deprecated
+def topopebreptool_MakeFaces(*args):
+	return topopebreptool.MakeFaces(*args)
+
+@deprecated
+def topopebreptool_PurgeClosingEdges(*args):
+	return topopebreptool.PurgeClosingEdges(*args)
+
+@deprecated
+def topopebreptool_PurgeClosingEdges(*args):
+	return topopebreptool.PurgeClosingEdges(*args)
+
+@deprecated
+def topopebreptool_Regularize(*args):
+	return topopebreptool.Regularize(*args)
+
+@deprecated
+def topopebreptool_RegularizeFace(*args):
+	return topopebreptool.RegularizeFace(*args)
+
+@deprecated
+def topopebreptool_RegularizeShells(*args):
+	return topopebreptool.RegularizeShells(*args)
+
+@deprecated
+def topopebreptool_RegularizeWires(*args):
+	return topopebreptool.RegularizeWires(*args)
+
+@deprecated
+def TopOpeBRepTool_AncestorsTool_MakeAncestors(*args):
+	return TopOpeBRepTool_AncestorsTool.MakeAncestors(*args)
+
+@deprecated
+def TopOpeBRepTool_BoxSort_MakeHABCOB(*args):
+	return TopOpeBRepTool_BoxSort.MakeHABCOB(*args)
+
+@deprecated
+def TopOpeBRepTool_CurveTool_IsProjectable(*args):
+	return TopOpeBRepTool_CurveTool.IsProjectable(*args)
+
+@deprecated
+def TopOpeBRepTool_CurveTool_MakeBSpline1fromPnt(*args):
+	return TopOpeBRepTool_CurveTool.MakeBSpline1fromPnt(*args)
+
+@deprecated
+def TopOpeBRepTool_CurveTool_MakeBSpline1fromPnt2d(*args):
+	return TopOpeBRepTool_CurveTool.MakeBSpline1fromPnt2d(*args)
+
+@deprecated
+def TopOpeBRepTool_CurveTool_MakePCurveOnFace(*args):
+	return TopOpeBRepTool_CurveTool.MakePCurveOnFace(*args)
+
+@deprecated
+def TopOpeBRepTool_HBoxTool_ComputeBox(*args):
+	return TopOpeBRepTool_HBoxTool.ComputeBox(*args)
+
+@deprecated
+def TopOpeBRepTool_HBoxTool_ComputeBoxOnVertices(*args):
+	return TopOpeBRepTool_HBoxTool.ComputeBoxOnVertices(*args)
+
+@deprecated
+def TopOpeBRepTool_HBoxTool_DumpB(*args):
+	return TopOpeBRepTool_HBoxTool.DumpB(*args)
+
+@deprecated
+def TopOpeBRepTool_REGUS_SplitF(*args):
+	return TopOpeBRepTool_REGUS.SplitF(*args)
+
+@deprecated
+def TopOpeBRepTool_REGUS_WireToFace(*args):
+	return TopOpeBRepTool_REGUS.WireToFace(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_AdjustOnPeriodic(*args):
+	return TopOpeBRepTool_ShapeTool.AdjustOnPeriodic(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_BASISCURVE(*args):
+	return TopOpeBRepTool_ShapeTool.BASISCURVE(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_BASISCURVE(*args):
+	return TopOpeBRepTool_ShapeTool.BASISCURVE(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_BASISSURFACE(*args):
+	return TopOpeBRepTool_ShapeTool.BASISSURFACE(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_BASISSURFACE(*args):
+	return TopOpeBRepTool_ShapeTool.BASISSURFACE(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Closed(*args):
+	return TopOpeBRepTool_ShapeTool.Closed(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_CurvesSameOriented(*args):
+	return TopOpeBRepTool_ShapeTool.CurvesSameOriented(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_EdgeData(*args):
+	return TopOpeBRepTool_ShapeTool.EdgeData(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_EdgeData(*args):
+	return TopOpeBRepTool_ShapeTool.EdgeData(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_EdgesSameOriented(*args):
+	return TopOpeBRepTool_ShapeTool.EdgesSameOriented(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_FacesSameOriented(*args):
+	return TopOpeBRepTool_ShapeTool.FacesSameOriented(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_PeriodizeParameter(*args):
+	return TopOpeBRepTool_ShapeTool.PeriodizeParameter(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Pnt(*args):
+	return TopOpeBRepTool_ShapeTool.Pnt(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Resolution3d(*args):
+	return TopOpeBRepTool_ShapeTool.Resolution3d(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Resolution3d(*args):
+	return TopOpeBRepTool_ShapeTool.Resolution3d(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Resolution3dU(*args):
+	return TopOpeBRepTool_ShapeTool.Resolution3dU(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Resolution3dV(*args):
+	return TopOpeBRepTool_ShapeTool.Resolution3dV(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_ShapesSameOriented(*args):
+	return TopOpeBRepTool_ShapeTool.ShapesSameOriented(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_SurfacesSameOriented(*args):
+	return TopOpeBRepTool_ShapeTool.SurfacesSameOriented(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_Tolerance(*args):
+	return TopOpeBRepTool_ShapeTool.Tolerance(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_UVBOUNDS(*args):
+	return TopOpeBRepTool_ShapeTool.UVBOUNDS(*args)
+
+@deprecated
+def TopOpeBRepTool_ShapeTool_UVBOUNDS(*args):
+	return TopOpeBRepTool_ShapeTool.UVBOUNDS(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_ClosedE(*args):
+	return TopOpeBRepTool_TOOL.ClosedE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_ClosedS(*args):
+	return TopOpeBRepTool_TOOL.ClosedS(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_CurvE(*args):
+	return TopOpeBRepTool_TOOL.CurvE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_CurvF(*args):
+	return TopOpeBRepTool_TOOL.CurvF(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_EdgeONFace(*args):
+	return TopOpeBRepTool_TOOL.EdgeONFace(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Getduv(*args):
+	return TopOpeBRepTool_TOOL.Getduv(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Getstp3dF(*args):
+	return TopOpeBRepTool_TOOL.Getstp3dF(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_IsClosingE(*args):
+	return TopOpeBRepTool_TOOL.IsClosingE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_IsClosingE(*args):
+	return TopOpeBRepTool_TOOL.IsClosingE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_IsQuad(*args):
+	return TopOpeBRepTool_TOOL.IsQuad(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_IsQuad(*args):
+	return TopOpeBRepTool_TOOL.IsQuad(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_IsonCLO(*args):
+	return TopOpeBRepTool_TOOL.IsonCLO(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_IsonCLO(*args):
+	return TopOpeBRepTool_TOOL.IsonCLO(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Matter(*args):
+	return TopOpeBRepTool_TOOL.Matter(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Matter(*args):
+	return TopOpeBRepTool_TOOL.Matter(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Matter(*args):
+	return TopOpeBRepTool_TOOL.Matter(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Matter(*args):
+	return TopOpeBRepTool_TOOL.Matter(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_MatterKPtg(*args):
+	return TopOpeBRepTool_TOOL.MatterKPtg(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_MkShell(*args):
+	return TopOpeBRepTool_TOOL.MkShell(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_NgApp(*args):
+	return TopOpeBRepTool_TOOL.NgApp(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_NggeomF(*args):
+	return TopOpeBRepTool_TOOL.NggeomF(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Nt(*args):
+	return TopOpeBRepTool_TOOL.Nt(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_OnBoundary(*args):
+	return TopOpeBRepTool_TOOL.OnBoundary(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_OriinSor(*args):
+	return TopOpeBRepTool_TOOL.OriinSor(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_OriinSorclosed(*args):
+	return TopOpeBRepTool_TOOL.OriinSorclosed(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_ParE(*args):
+	return TopOpeBRepTool_TOOL.ParE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_ParE2d(*args):
+	return TopOpeBRepTool_TOOL.ParE2d(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_ParISO(*args):
+	return TopOpeBRepTool_TOOL.ParISO(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Remove(*args):
+	return TopOpeBRepTool_TOOL.Remove(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_SplitE(*args):
+	return TopOpeBRepTool_TOOL.SplitE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Tg2d(*args):
+	return TopOpeBRepTool_TOOL.Tg2d(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Tg2dApp(*args):
+	return TopOpeBRepTool_TOOL.Tg2dApp(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TgINSIDE(*args):
+	return TopOpeBRepTool_TOOL.TgINSIDE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TggeomE(*args):
+	return TopOpeBRepTool_TOOL.TggeomE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TggeomE(*args):
+	return TopOpeBRepTool_TOOL.TggeomE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TolP(*args):
+	return TopOpeBRepTool_TOOL.TolP(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TolUV(*args):
+	return TopOpeBRepTool_TOOL.TolUV(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TrslUV(*args):
+	return TopOpeBRepTool_TOOL.TrslUV(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_TrslUVModifE(*args):
+	return TopOpeBRepTool_TOOL.TrslUVModifE(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_UVF(*args):
+	return TopOpeBRepTool_TOOL.UVF(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_UVISO(*args):
+	return TopOpeBRepTool_TOOL.UVISO(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_UVISO(*args):
+	return TopOpeBRepTool_TOOL.UVISO(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_UVISO(*args):
+	return TopOpeBRepTool_TOOL.UVISO(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Vertex(*args):
+	return TopOpeBRepTool_TOOL.Vertex(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_Vertices(*args):
+	return TopOpeBRepTool_TOOL.Vertices(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_WireToFace(*args):
+	return TopOpeBRepTool_TOOL.WireToFace(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_XX(*args):
+	return TopOpeBRepTool_TOOL.XX(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_minDUV(*args):
+	return TopOpeBRepTool_TOOL.minDUV(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_outUVbounds(*args):
+	return TopOpeBRepTool_TOOL.outUVbounds(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_stuvF(*args):
+	return TopOpeBRepTool_TOOL.stuvF(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_tryNgApp(*args):
+	return TopOpeBRepTool_TOOL.tryNgApp(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_tryOriEinF(*args):
+	return TopOpeBRepTool_TOOL.tryOriEinF(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_tryTg2dApp(*args):
+	return TopOpeBRepTool_TOOL.tryTg2dApp(*args)
+
+@deprecated
+def TopOpeBRepTool_TOOL_uvApp(*args):
+	return TopOpeBRepTool_TOOL.uvApp(*args)
+
+}

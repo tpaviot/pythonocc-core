@@ -31,6 +31,9 @@ This module is part of the OCC.Core package:
 from OCC.Core.Exception import *
 """
 
+import warnings
+import functools
+
 
 class MethodNotWrappedError(BaseException):
     pass
@@ -53,3 +56,24 @@ def classnotwrapped(klass):
             raise ClassNotWrappedError(f"{klass.__name__} not wrapped")
 
     return NewCls
+
+
+def deprecated(func):
+    """This is a decorator which can be used to mark functions
+    as deprecated. It will result in a warning being emitted
+    when the function is used."""
+
+    @functools.wraps(func)
+    def new_func(*args, **kwargs):
+        warnings.simplefilter("always", DeprecationWarning)  # turn off filter
+        function_name = func.__name__
+        function_name_to_use = ".".join(function_name.rsplit("_", 1))
+        warnings.warn(
+            f"Call to deprecated function {function_name} since pythonocc-core 7.7.1. This function will be removed in a future release, please rather use the static method {function_name_to_use}",
+            category=DeprecationWarning,
+            stacklevel=2,
+        )
+        warnings.simplefilter("default", DeprecationWarning)  # reset filter
+        return func(*args, **kwargs)
+
+    return new_func

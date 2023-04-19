@@ -317,27 +317,3 @@ class MoniTool_HSequenceOfElement(MoniTool_SequenceOfElement, Standard_Transient
     def Append(self, theSequence: MoniTool_SequenceOfElement) -> None: ...
 
 
-MoniTool_CaseData_DefCheck = MoniTool_CaseData.DefCheck
-MoniTool_CaseData_DefMsg = MoniTool_CaseData.DefMsg
-MoniTool_CaseData_SetDefFail = MoniTool_CaseData.SetDefFail
-MoniTool_CaseData_SetDefMsg = MoniTool_CaseData.SetDefMsg
-MoniTool_CaseData_SetDefWarning = MoniTool_CaseData.SetDefWarning
-MoniTool_DataInfo_Type = MoniTool_DataInfo.Type
-MoniTool_DataInfo_TypeName = MoniTool_DataInfo.TypeName
-MoniTool_ElemHasher_HashCode = MoniTool_ElemHasher.HashCode
-MoniTool_ElemHasher_IsEqual = MoniTool_ElemHasher.IsEqual
-MoniTool_MTHasher_HashCode = MoniTool_MTHasher.HashCode
-MoniTool_MTHasher_IsEqual = MoniTool_MTHasher.IsEqual
-MoniTool_Stat_Current = MoniTool_Stat.Current
-MoniTool_Timer_ClearTimers = MoniTool_Timer.ClearTimers
-MoniTool_Timer_ComputeAmendments = MoniTool_Timer.ComputeAmendments
-MoniTool_Timer_Dictionary = MoniTool_Timer.Dictionary
-MoniTool_Timer_GetAmendments = MoniTool_Timer.GetAmendments
-MoniTool_Timer_Start = MoniTool_Timer.Start
-MoniTool_Timer_Stop = MoniTool_Timer.Stop
-MoniTool_Timer_Timer = MoniTool_Timer.Timer
-MoniTool_TypedValue_AddLib = MoniTool_TypedValue.AddLib
-MoniTool_TypedValue_FromLib = MoniTool_TypedValue.FromLib
-MoniTool_TypedValue_Lib = MoniTool_TypedValue.Lib
-MoniTool_TypedValue_LibList = MoniTool_TypedValue.LibList
-MoniTool_TypedValue_StaticValue = MoniTool_TypedValue.StaticValue

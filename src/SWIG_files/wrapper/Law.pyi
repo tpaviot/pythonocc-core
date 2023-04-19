@@ -222,10 +222,3 @@ class Law_S(Law_BSpFunc):
 # harray2 classes
 # hsequence classes
 
-law_MixBnd = law.MixBnd
-law_MixBnd = law.MixBnd
-law_MixTgt = law.MixTgt
-law_Reparametrize = law.Reparametrize
-law_Scale = law.Scale
-law_ScaleCub = law.ScaleCub
-Law_BSpline_MaxDegree = Law_BSpline.MaxDegree

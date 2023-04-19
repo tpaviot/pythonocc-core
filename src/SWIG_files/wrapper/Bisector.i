@@ -2404,3 +2404,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def bisector_IsConvex(*args):
+	return bisector.IsConvex(*args)
+
+}

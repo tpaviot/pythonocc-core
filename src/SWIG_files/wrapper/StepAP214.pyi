@@ -937,4 +937,3 @@ class StepAP214_HArray1OfDateAndTimeItem(StepAP214_Array1OfDateAndTimeItem, Stan
 # harray2 classes
 # hsequence classes
 
-stepap214_Protocol = stepap214.Protocol

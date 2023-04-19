@@ -14633,3 +14633,22 @@ class Geom_HSequenceOfBSplineSurface : public Geom_SequenceOfBSplineSurface, pub
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Geom_BSplineCurve_MaxDegree(*args):
+	return Geom_BSplineCurve.MaxDegree(*args)
+
+@deprecated
+def Geom_BSplineSurface_MaxDegree(*args):
+	return Geom_BSplineSurface.MaxDegree(*args)
+
+@deprecated
+def Geom_BezierCurve_MaxDegree(*args):
+	return Geom_BezierCurve.MaxDegree(*args)
+
+@deprecated
+def Geom_BezierSurface_MaxDegree(*args):
+	return Geom_BezierSurface.MaxDegree(*args)
+
+}

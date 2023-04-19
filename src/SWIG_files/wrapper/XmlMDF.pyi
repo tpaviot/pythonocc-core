@@ -70,6 +70,3 @@ class XmlMDF_TagSourceDriver(XmlMDF_ADriver):
 # harray2 classes
 # hsequence classes
 
-xmlmdf_AddDrivers = xmlmdf.AddDrivers
-xmlmdf_FromTo = xmlmdf.FromTo
-xmlmdf_FromTo = xmlmdf.FromTo

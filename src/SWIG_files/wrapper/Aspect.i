@@ -4343,3 +4343,10 @@ class Aspect_FrustumLRBT:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Aspect_OpenVRSession_IsHmdPresent(*args):
+	return Aspect_OpenVRSession.IsHmdPresent(*args)
+
+}

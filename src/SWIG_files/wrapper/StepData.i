@@ -7198,3 +7198,30 @@ class StepData_HArray1OfField : public StepData_Array1OfField, public Standard_T
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def stepdata_AddHeaderProtocol(*args):
+	return stepdata.AddHeaderProtocol(*args)
+
+@deprecated
+def stepdata_HeaderProtocol(*args):
+	return stepdata.HeaderProtocol(*args)
+
+@deprecated
+def stepdata_Init(*args):
+	return stepdata.Init(*args)
+
+@deprecated
+def stepdata_Protocol(*args):
+	return stepdata.Protocol(*args)
+
+@deprecated
+def StepData_GlobalFactors_Intance(*args):
+	return StepData_GlobalFactors.Intance(*args)
+
+@deprecated
+def StepData_WriterLib_SetGlobal(*args):
+	return StepData_WriterLib.SetGlobal(*args)
+
+}

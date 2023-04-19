@@ -1967,3 +1967,42 @@ class GCPnts_TCurveTypes:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_AbscissaPoint_Length(*args):
+	return GCPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def GCPnts_TangentialDeflection_ArcAngularStep(*args):
+	return GCPnts_TangentialDeflection.ArcAngularStep(*args)
+
+}

@@ -4891,3 +4891,214 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BRep_Tool_Continuity(*args):
+	return BRep_Tool.Continuity(*args)
+
+@deprecated
+def BRep_Tool_Continuity(*args):
+	return BRep_Tool.Continuity(*args)
+
+@deprecated
+def BRep_Tool_Curve(*args):
+	return BRep_Tool.Curve(*args)
+
+@deprecated
+def BRep_Tool_Curve(*args):
+	return BRep_Tool.Curve(*args)
+
+@deprecated
+def BRep_Tool_CurveOnPlane(*args):
+	return BRep_Tool.CurveOnPlane(*args)
+
+@deprecated
+def BRep_Tool_CurveOnSurface(*args):
+	return BRep_Tool.CurveOnSurface(*args)
+
+@deprecated
+def BRep_Tool_CurveOnSurface(*args):
+	return BRep_Tool.CurveOnSurface(*args)
+
+@deprecated
+def BRep_Tool_CurveOnSurface(*args):
+	return BRep_Tool.CurveOnSurface(*args)
+
+@deprecated
+def BRep_Tool_CurveOnSurface(*args):
+	return BRep_Tool.CurveOnSurface(*args)
+
+@deprecated
+def BRep_Tool_Degenerated(*args):
+	return BRep_Tool.Degenerated(*args)
+
+@deprecated
+def BRep_Tool_HasContinuity(*args):
+	return BRep_Tool.HasContinuity(*args)
+
+@deprecated
+def BRep_Tool_HasContinuity(*args):
+	return BRep_Tool.HasContinuity(*args)
+
+@deprecated
+def BRep_Tool_HasContinuity(*args):
+	return BRep_Tool.HasContinuity(*args)
+
+@deprecated
+def BRep_Tool_IsClosed(*args):
+	return BRep_Tool.IsClosed(*args)
+
+@deprecated
+def BRep_Tool_IsClosed(*args):
+	return BRep_Tool.IsClosed(*args)
+
+@deprecated
+def BRep_Tool_IsClosed(*args):
+	return BRep_Tool.IsClosed(*args)
+
+@deprecated
+def BRep_Tool_IsClosed(*args):
+	return BRep_Tool.IsClosed(*args)
+
+@deprecated
+def BRep_Tool_IsGeometric(*args):
+	return BRep_Tool.IsGeometric(*args)
+
+@deprecated
+def BRep_Tool_IsGeometric(*args):
+	return BRep_Tool.IsGeometric(*args)
+
+@deprecated
+def BRep_Tool_MaxContinuity(*args):
+	return BRep_Tool.MaxContinuity(*args)
+
+@deprecated
+def BRep_Tool_MaxTolerance(*args):
+	return BRep_Tool.MaxTolerance(*args)
+
+@deprecated
+def BRep_Tool_NaturalRestriction(*args):
+	return BRep_Tool.NaturalRestriction(*args)
+
+@deprecated
+def BRep_Tool_Parameter(*args):
+	return BRep_Tool.Parameter(*args)
+
+@deprecated
+def BRep_Tool_Parameter(*args):
+	return BRep_Tool.Parameter(*args)
+
+@deprecated
+def BRep_Tool_Parameter(*args):
+	return BRep_Tool.Parameter(*args)
+
+@deprecated
+def BRep_Tool_Parameter(*args):
+	return BRep_Tool.Parameter(*args)
+
+@deprecated
+def BRep_Tool_Parameters(*args):
+	return BRep_Tool.Parameters(*args)
+
+@deprecated
+def BRep_Tool_Pnt(*args):
+	return BRep_Tool.Pnt(*args)
+
+@deprecated
+def BRep_Tool_Polygon3D(*args):
+	return BRep_Tool.Polygon3D(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnSurface(*args):
+	return BRep_Tool.PolygonOnSurface(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnSurface(*args):
+	return BRep_Tool.PolygonOnSurface(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnSurface(*args):
+	return BRep_Tool.PolygonOnSurface(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnSurface(*args):
+	return BRep_Tool.PolygonOnSurface(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnTriangulation(*args):
+	return BRep_Tool.PolygonOnTriangulation(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnTriangulation(*args):
+	return BRep_Tool.PolygonOnTriangulation(*args)
+
+@deprecated
+def BRep_Tool_PolygonOnTriangulation(*args):
+	return BRep_Tool.PolygonOnTriangulation(*args)
+
+@deprecated
+def BRep_Tool_Range(*args):
+	return BRep_Tool.Range(*args)
+
+@deprecated
+def BRep_Tool_Range(*args):
+	return BRep_Tool.Range(*args)
+
+@deprecated
+def BRep_Tool_Range(*args):
+	return BRep_Tool.Range(*args)
+
+@deprecated
+def BRep_Tool_SameParameter(*args):
+	return BRep_Tool.SameParameter(*args)
+
+@deprecated
+def BRep_Tool_SameRange(*args):
+	return BRep_Tool.SameRange(*args)
+
+@deprecated
+def BRep_Tool_SetUVPoints(*args):
+	return BRep_Tool.SetUVPoints(*args)
+
+@deprecated
+def BRep_Tool_SetUVPoints(*args):
+	return BRep_Tool.SetUVPoints(*args)
+
+@deprecated
+def BRep_Tool_Surface(*args):
+	return BRep_Tool.Surface(*args)
+
+@deprecated
+def BRep_Tool_Surface(*args):
+	return BRep_Tool.Surface(*args)
+
+@deprecated
+def BRep_Tool_Tolerance(*args):
+	return BRep_Tool.Tolerance(*args)
+
+@deprecated
+def BRep_Tool_Tolerance(*args):
+	return BRep_Tool.Tolerance(*args)
+
+@deprecated
+def BRep_Tool_Tolerance(*args):
+	return BRep_Tool.Tolerance(*args)
+
+@deprecated
+def BRep_Tool_Triangulation(*args):
+	return BRep_Tool.Triangulation(*args)
+
+@deprecated
+def BRep_Tool_Triangulations(*args):
+	return BRep_Tool.Triangulations(*args)
+
+@deprecated
+def BRep_Tool_UVPoints(*args):
+	return BRep_Tool.UVPoints(*args)
+
+@deprecated
+def BRep_Tool_UVPoints(*args):
+	return BRep_Tool.UVPoints(*args)
+
+}

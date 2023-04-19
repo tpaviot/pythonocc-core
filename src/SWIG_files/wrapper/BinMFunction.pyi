@@ -41,4 +41,3 @@ class BinMFunction_ScopeDriver(BinMDF_ADriver):
 # harray2 classes
 # hsequence classes
 
-binmfunction_AddDrivers = binmfunction.AddDrivers

@@ -1734,3 +1734,38 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def topodstostep_AddResult(*args):
+	return topodstostep.AddResult(*args)
+
+@deprecated
+def topodstostep_AddResult(*args):
+	return topodstostep.AddResult(*args)
+
+@deprecated
+def topodstostep_DecodeBuilderError(*args):
+	return topodstostep.DecodeBuilderError(*args)
+
+@deprecated
+def topodstostep_DecodeEdgeError(*args):
+	return topodstostep.DecodeEdgeError(*args)
+
+@deprecated
+def topodstostep_DecodeFaceError(*args):
+	return topodstostep.DecodeFaceError(*args)
+
+@deprecated
+def topodstostep_DecodeVertexError(*args):
+	return topodstostep.DecodeVertexError(*args)
+
+@deprecated
+def topodstostep_DecodeWireError(*args):
+	return topodstostep.DecodeWireError(*args)
+
+@deprecated
+def TopoDSToStep_FacetedTool_CheckTopoDSShape(*args):
+	return TopoDSToStep_FacetedTool.CheckTopoDSShape(*args)
+
+}

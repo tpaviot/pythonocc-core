@@ -195,4 +195,3 @@ class BinMDataStd_VariableDriver(BinMDF_ADriver):
 # harray2 classes
 # hsequence classes
 
-binmdatastd_AddDrivers = binmdatastd.AddDrivers

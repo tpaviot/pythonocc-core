@@ -134,4 +134,3 @@ class XmlMXCAFDoc_NoteCommentDriver(XmlMXCAFDoc_NoteDriver):
 # harray2 classes
 # hsequence classes
 
-xmlmxcafdoc_AddDrivers = xmlmxcafdoc.AddDrivers

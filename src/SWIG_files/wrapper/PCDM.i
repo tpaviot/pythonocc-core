@@ -1464,3 +1464,38 @@ class PCDM_Document:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def pcdm_FileDriverType(*args):
+	return pcdm.FileDriverType(*args)
+
+@deprecated
+def PCDM_ReadWriter_FileFormat(*args):
+	return PCDM_ReadWriter.FileFormat(*args)
+
+@deprecated
+def PCDM_ReadWriter_Open(*args):
+	return PCDM_ReadWriter.Open(*args)
+
+@deprecated
+def PCDM_ReadWriter_Reader(*args):
+	return PCDM_ReadWriter.Reader(*args)
+
+@deprecated
+def PCDM_ReadWriter_WriteFileFormat(*args):
+	return PCDM_ReadWriter.WriteFileFormat(*args)
+
+@deprecated
+def PCDM_ReadWriter_Writer(*args):
+	return PCDM_ReadWriter.Writer(*args)
+
+@deprecated
+def PCDM_RetrievalDriver_DocumentVersion(*args):
+	return PCDM_RetrievalDriver.DocumentVersion(*args)
+
+@deprecated
+def PCDM_RetrievalDriver_ReferenceCounter(*args):
+	return PCDM_RetrievalDriver.ReferenceCounter(*args)
+
+}

@@ -41,7 +41,3 @@ class Geom2dEvaluator_OffsetCurve(Geom2dEvaluator_Curve):
 # harray2 classes
 # hsequence classes
 
-geom2devaluator_CalculateD0 = geom2devaluator.CalculateD0
-geom2devaluator_CalculateD1 = geom2devaluator.CalculateD1
-geom2devaluator_CalculateD2 = geom2devaluator.CalculateD2
-geom2devaluator_CalculateD3 = geom2devaluator.CalculateD3

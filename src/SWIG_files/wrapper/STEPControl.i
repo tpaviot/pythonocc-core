@@ -888,3 +888,10 @@ IFSelect_ReturnStatus
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def STEPControl_Controller_Init(*args):
+	return STEPControl_Controller.Init(*args)
+
+}

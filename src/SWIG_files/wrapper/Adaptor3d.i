@@ -3514,3 +3514,178 @@ gp_Pnt
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Adaptor3d_HSurfaceTool_AxeOfRevolution(*args):
+	return Adaptor3d_HSurfaceTool.AxeOfRevolution(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_BSpline(*args):
+	return Adaptor3d_HSurfaceTool.BSpline(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_BasisCurve(*args):
+	return Adaptor3d_HSurfaceTool.BasisCurve(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_BasisSurface(*args):
+	return Adaptor3d_HSurfaceTool.BasisSurface(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Bezier(*args):
+	return Adaptor3d_HSurfaceTool.Bezier(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Cone(*args):
+	return Adaptor3d_HSurfaceTool.Cone(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Cylinder(*args):
+	return Adaptor3d_HSurfaceTool.Cylinder(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_D0(*args):
+	return Adaptor3d_HSurfaceTool.D0(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_D1(*args):
+	return Adaptor3d_HSurfaceTool.D1(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_D2(*args):
+	return Adaptor3d_HSurfaceTool.D2(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_D3(*args):
+	return Adaptor3d_HSurfaceTool.D3(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_DN(*args):
+	return Adaptor3d_HSurfaceTool.DN(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Direction(*args):
+	return Adaptor3d_HSurfaceTool.Direction(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_FirstUParameter(*args):
+	return Adaptor3d_HSurfaceTool.FirstUParameter(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_FirstVParameter(*args):
+	return Adaptor3d_HSurfaceTool.FirstVParameter(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_GetType(*args):
+	return Adaptor3d_HSurfaceTool.GetType(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_IsSurfG1(*args):
+	return Adaptor3d_HSurfaceTool.IsSurfG1(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_IsUClosed(*args):
+	return Adaptor3d_HSurfaceTool.IsUClosed(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_IsUPeriodic(*args):
+	return Adaptor3d_HSurfaceTool.IsUPeriodic(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_IsVClosed(*args):
+	return Adaptor3d_HSurfaceTool.IsVClosed(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_IsVPeriodic(*args):
+	return Adaptor3d_HSurfaceTool.IsVPeriodic(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_LastUParameter(*args):
+	return Adaptor3d_HSurfaceTool.LastUParameter(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_LastVParameter(*args):
+	return Adaptor3d_HSurfaceTool.LastVParameter(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_NbSamplesU(*args):
+	return Adaptor3d_HSurfaceTool.NbSamplesU(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_NbSamplesU(*args):
+	return Adaptor3d_HSurfaceTool.NbSamplesU(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_NbSamplesV(*args):
+	return Adaptor3d_HSurfaceTool.NbSamplesV(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_NbSamplesV(*args):
+	return Adaptor3d_HSurfaceTool.NbSamplesV(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_NbUIntervals(*args):
+	return Adaptor3d_HSurfaceTool.NbUIntervals(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_NbVIntervals(*args):
+	return Adaptor3d_HSurfaceTool.NbVIntervals(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_OffsetValue(*args):
+	return Adaptor3d_HSurfaceTool.OffsetValue(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Plane(*args):
+	return Adaptor3d_HSurfaceTool.Plane(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Sphere(*args):
+	return Adaptor3d_HSurfaceTool.Sphere(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Torus(*args):
+	return Adaptor3d_HSurfaceTool.Torus(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_UIntervals(*args):
+	return Adaptor3d_HSurfaceTool.UIntervals(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_UPeriod(*args):
+	return Adaptor3d_HSurfaceTool.UPeriod(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_UResolution(*args):
+	return Adaptor3d_HSurfaceTool.UResolution(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_UTrim(*args):
+	return Adaptor3d_HSurfaceTool.UTrim(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_VIntervals(*args):
+	return Adaptor3d_HSurfaceTool.VIntervals(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_VPeriod(*args):
+	return Adaptor3d_HSurfaceTool.VPeriod(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_VResolution(*args):
+	return Adaptor3d_HSurfaceTool.VResolution(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_VTrim(*args):
+	return Adaptor3d_HSurfaceTool.VTrim(*args)
+
+@deprecated
+def Adaptor3d_HSurfaceTool_Value(*args):
+	return Adaptor3d_HSurfaceTool.Value(*args)
+
+@deprecated
+def Adaptor3d_TopolTool_GetConeApexParam(*args):
+	return Adaptor3d_TopolTool.GetConeApexParam(*args)
+
+}

@@ -1738,3 +1738,30 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def chfi3d_ConcaveSide(*args):
+	return chfi3d.ConcaveSide(*args)
+
+@deprecated
+def chfi3d_DefineConnectType(*args):
+	return chfi3d.DefineConnectType(*args)
+
+@deprecated
+def chfi3d_IsTangentFaces(*args):
+	return chfi3d.IsTangentFaces(*args)
+
+@deprecated
+def chfi3d_NextSide(*args):
+	return chfi3d.NextSide(*args)
+
+@deprecated
+def chfi3d_NextSide(*args):
+	return chfi3d.NextSide(*args)
+
+@deprecated
+def chfi3d_SameSide(*args):
+	return chfi3d.SameSide(*args)
+
+}

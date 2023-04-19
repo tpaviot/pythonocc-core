@@ -237,3 +237,18 @@ opencascade::handle<BinMDF_ADriverTable>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binxcafdrivers_AttributeDrivers(*args):
+	return binxcafdrivers.AttributeDrivers(*args)
+
+@deprecated
+def binxcafdrivers_DefineFormat(*args):
+	return binxcafdrivers.DefineFormat(*args)
+
+@deprecated
+def binxcafdrivers_Factory(*args):
+	return binxcafdrivers.Factory(*args)
+
+}

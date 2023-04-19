@@ -968,3 +968,10 @@ float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def draft_Angle(*args):
+	return draft.Angle(*args)
+
+}

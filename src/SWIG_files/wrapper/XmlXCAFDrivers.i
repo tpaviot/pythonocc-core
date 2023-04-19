@@ -227,3 +227,14 @@ opencascade::handle<XmlMDF_ADriverTable>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlxcafdrivers_DefineFormat(*args):
+	return xmlxcafdrivers.DefineFormat(*args)
+
+@deprecated
+def xmlxcafdrivers_Factory(*args):
+	return xmlxcafdrivers.Factory(*args)
+
+}

@@ -402,3 +402,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmnaming_AddDrivers(*args):
+	return binmnaming.AddDrivers(*args)
+
+}

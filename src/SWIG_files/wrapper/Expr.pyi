@@ -680,7 +680,3 @@ class Expr_Sign: ...
 # harray2 classes
 # hsequence classes
 
-expr_CopyShare = expr.CopyShare
-expr_NbOfFreeVariables = expr.NbOfFreeVariables
-expr_NbOfFreeVariables = expr.NbOfFreeVariables
-expr_Sign = expr.Sign

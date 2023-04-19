@@ -606,3 +606,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmdataxtd_AddDrivers(*args):
+	return xmlmdataxtd.AddDrivers(*args)
+
+@deprecated
+def xmlmdataxtd_DocumentVersion(*args):
+	return xmlmdataxtd.DocumentVersion(*args)
+
+@deprecated
+def xmlmdataxtd_SetDocumentVersion(*args):
+	return xmlmdataxtd.SetDocumentVersion(*args)
+
+}

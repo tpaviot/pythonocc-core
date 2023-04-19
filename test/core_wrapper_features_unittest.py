@@ -35,7 +35,7 @@ from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
 from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
 from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
-from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.BRepBndLib import brepbndlib
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,
@@ -53,16 +53,19 @@ from OCC.Core.gp import (
     gp_Pnt2d,
     gp_Lin,
     gp_Dir,
+    gp_Ax1,
     gp_Ax2,
     gp_Quaternion,
     gp_QuaternionSLerp,
     gp_XYZ,
     gp_Mat,
+    gp,
+    gp_OX,
 )
 from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import STEPControl_Writer
-from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
+from OCC.Core.Interface import Interface_Static
 from OCC.Core.GCE2d import GCE2d_MakeSegment
 from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
 from OCC.Core.TopoDS import (
@@ -78,7 +81,7 @@ from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_Orientation
 from OCC.Core.GProp import GProp_GProps
-from OCC.Core.BRepGProp import brepgprop_LinearProperties
+from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.BRepClass import BRepClass_FaceClassifier
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_Curve
 from OCC.Core.BRep import BRep_Builder
@@ -91,7 +94,7 @@ from OCC.Core.BRepCheck import (
     BRepCheck_EmptyWire,
 )
 from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
-from OCC.Core.BRep import BRep_Tool_Curve
+from OCC.Core.BRep import BRep_Tool
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_EdgeIterator, HLRAlgo_EdgeStatus, HLRAlgo_Projector
 from OCC.Core.TopTools import (
@@ -324,9 +327,9 @@ class TestWrapperFeatures(unittest.TestCase):
         STEPControl_Writer()
         # Note : static methods are wrapped with lowercase convention
         # so SetCVal can be accessed with setcval
-        r = Interface_Static_SetCVal("write.step.schema", "AP203")
+        r = Interface_Static.SetCVal("write.step.schema", "AP203")
         self.assertEqual(r, 1)
-        l = Interface_Static_CVal("write.step.schema")
+        l = Interface_Static.CVal("write.step.schema")
         self.assertEqual(l, "AP203")
 
     def test_ft1(self) -> None:
@@ -524,7 +527,7 @@ class TestWrapperFeatures(unittest.TestCase):
         ).Edge()
         inherited_edge = InheritEdge(base_edge)
         g1 = GProp_GProps()
-        brepgprop_LinearProperties(inherited_edge, g1)
+        brepgprop.LinearProperties(inherited_edge, g1)
         length = g1.Mass()
         self.assertEqual(length, 50.0)
 
@@ -597,7 +600,7 @@ class TestWrapperFeatures(unittest.TestCase):
     def test_downcast_curve(self) -> None:
         """Test if a GeomCurve can be DownCasted to a GeomLine"""
         edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0)).Edge()
-        curve, _, _ = BRep_Tool_Curve(edge)
+        curve, _, _ = BRep_Tool.Curve(edge)
         self.assertTrue(isinstance(curve, Geom_Curve))
         # The edge is internally a line, so we should be able to downcast it
         line = Geom_Line.DownCast(curve)
@@ -740,7 +743,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sph = BRepPrimAPI_MakeSphere(10.0).Shape()
         # compute the Bnd box for this sphere
         bnd_box = Bnd_Box()
-        brepbndlib_Add(sph, bnd_box)
+        brepbndlib.Add(sph, bnd_box)
         # check the result
         corner_min = bnd_box.CornerMin()
         self.assertEqual(
@@ -870,7 +873,7 @@ class TestWrapperFeatures(unittest.TestCase):
     def test_Standard_Type(self) -> None:
         """test that Standard_Type returns the correct type name"""
         edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0)).Edge()
-        curve, _, _ = BRep_Tool_Curve(edge)
+        curve, _, _ = BRep_Tool.Curve(edge)
         line = Geom_Line.DownCast(curve)
         self.assertEqual(line.DynamicType().Name(), "Geom_Line")
 
@@ -938,6 +941,13 @@ class TestWrapperFeatures(unittest.TestCase):
 
         # visible should return both 4 floats and doubles
         self.assertEqual(hlr_edg_it.Visible(), (start, tol_start, end, tol_end))
+
+    def test_deprecated_static_functions(self):
+        """since pythonocc-core 7.7.1, static functions are not wrapped anymore by a free function.
+        e.g., calling gp.OX() should be preferred to gp_OX()"""
+        with self.assertWarns(DeprecationWarning):
+            gp_OX()
+        self.assertTrue(isinstance(gp.OX(), gp_Ax1))
 
 
 def suite() -> unittest.TestSuite:

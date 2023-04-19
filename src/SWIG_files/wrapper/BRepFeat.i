@@ -2553,3 +2553,42 @@ falseside: bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepfeat_Barycenter(*args):
+	return brepfeat.Barycenter(*args)
+
+@deprecated
+def brepfeat_FaceUntil(*args):
+	return brepfeat.FaceUntil(*args)
+
+@deprecated
+def brepfeat_IsInside(*args):
+	return brepfeat.IsInside(*args)
+
+@deprecated
+def brepfeat_ParametricBarycenter(*args):
+	return brepfeat.ParametricBarycenter(*args)
+
+@deprecated
+def brepfeat_ParametricMinMax(*args):
+	return brepfeat.ParametricMinMax(*args)
+
+@deprecated
+def brepfeat_SampleEdges(*args):
+	return brepfeat.SampleEdges(*args)
+
+@deprecated
+def brepfeat_Tool(*args):
+	return brepfeat.Tool(*args)
+
+@deprecated
+def BRepFeat_RibSlot_ChoiceOfFaces(*args):
+	return BRepFeat_RibSlot.ChoiceOfFaces(*args)
+
+@deprecated
+def BRepFeat_RibSlot_IntPar(*args):
+	return BRepFeat_RibSlot.IntPar(*args)
+
+}

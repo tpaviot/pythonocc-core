@@ -1024,3 +1024,14 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def igescafcontrol_DecodeColor(*args):
+	return igescafcontrol.DecodeColor(*args)
+
+@deprecated
+def igescafcontrol_EncodeColor(*args):
+	return igescafcontrol.EncodeColor(*args)
+
+}

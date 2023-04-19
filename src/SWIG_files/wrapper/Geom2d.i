@@ -6852,3 +6852,14 @@ float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Geom2d_BSplineCurve_MaxDegree(*args):
+	return Geom2d_BSplineCurve.MaxDegree(*args)
+
+@deprecated
+def Geom2d_BezierCurve_MaxDegree(*args):
+	return Geom2d_BezierCurve.MaxDegree(*args)
+
+}

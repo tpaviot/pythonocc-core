@@ -3516,3 +3516,126 @@ class TObj_HSequenceOfObject : public TObj_SequenceOfObject, public Standard_Tra
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def TObj_Application_GetInstance(*args):
+	return TObj_Application.GetInstance(*args)
+
+@deprecated
+def TObj_Assistant_BindModel(*args):
+	return TObj_Assistant.BindModel(*args)
+
+@deprecated
+def TObj_Assistant_BindType(*args):
+	return TObj_Assistant.BindType(*args)
+
+@deprecated
+def TObj_Assistant_ClearModelMap(*args):
+	return TObj_Assistant.ClearModelMap(*args)
+
+@deprecated
+def TObj_Assistant_ClearTypeMap(*args):
+	return TObj_Assistant.ClearTypeMap(*args)
+
+@deprecated
+def TObj_Assistant_FindModel(*args):
+	return TObj_Assistant.FindModel(*args)
+
+@deprecated
+def TObj_Assistant_FindType(*args):
+	return TObj_Assistant.FindType(*args)
+
+@deprecated
+def TObj_Assistant_FindTypeIndex(*args):
+	return TObj_Assistant.FindTypeIndex(*args)
+
+@deprecated
+def TObj_Assistant_GetAppVersion(*args):
+	return TObj_Assistant.GetAppVersion(*args)
+
+@deprecated
+def TObj_Assistant_GetCurrentModel(*args):
+	return TObj_Assistant.GetCurrentModel(*args)
+
+@deprecated
+def TObj_Assistant_SetCurrentModel(*args):
+	return TObj_Assistant.SetCurrentModel(*args)
+
+@deprecated
+def TObj_Assistant_UnSetCurrentModel(*args):
+	return TObj_Assistant.UnSetCurrentModel(*args)
+
+@deprecated
+def TObj_Model_GetDocumentModel(*args):
+	return TObj_Model.GetDocumentModel(*args)
+
+@deprecated
+def TObj_Model_SetNewName(*args):
+	return TObj_Model.SetNewName(*args)
+
+@deprecated
+def TObj_Object_Detach(*args):
+	return TObj_Object.Detach(*args)
+
+@deprecated
+def TObj_Object_GetObj(*args):
+	return TObj_Object.GetObj(*args)
+
+@deprecated
+def TObj_Persistence_CreateNewObject(*args):
+	return TObj_Persistence.CreateNewObject(*args)
+
+@deprecated
+def TObj_TIntSparseArray_GetID(*args):
+	return TObj_TIntSparseArray.GetID(*args)
+
+@deprecated
+def TObj_TIntSparseArray_Set(*args):
+	return TObj_TIntSparseArray.Set(*args)
+
+@deprecated
+def TObj_TModel_GetID(*args):
+	return TObj_TModel.GetID(*args)
+
+@deprecated
+def TObj_TNameContainer_GetID(*args):
+	return TObj_TNameContainer.GetID(*args)
+
+@deprecated
+def TObj_TNameContainer_Set(*args):
+	return TObj_TNameContainer.Set(*args)
+
+@deprecated
+def TObj_TObject_GetID(*args):
+	return TObj_TObject.GetID(*args)
+
+@deprecated
+def TObj_TObject_Set(*args):
+	return TObj_TObject.Set(*args)
+
+@deprecated
+def TObj_TReference_GetID(*args):
+	return TObj_TReference.GetID(*args)
+
+@deprecated
+def TObj_TReference_Set(*args):
+	return TObj_TReference.Set(*args)
+
+@deprecated
+def TObj_TXYZ_GetID(*args):
+	return TObj_TXYZ.GetID(*args)
+
+@deprecated
+def TObj_TXYZ_Set(*args):
+	return TObj_TXYZ.Set(*args)
+
+@deprecated
+def TObj_Partition_Create(*args):
+	return TObj_Partition.Create(*args)
+
+@deprecated
+def TObj_Partition_GetPartition(*args):
+	return TObj_Partition.GetPartition(*args)
+
+}

@@ -379,33 +379,3 @@ class TObj_HSequenceOfObject(TObj_SequenceOfObject, Standard_Transient):
     def Append(self, theSequence: TObj_SequenceOfObject) -> None: ...
 
 
-TObj_Application_GetInstance = TObj_Application.GetInstance
-TObj_Assistant_BindModel = TObj_Assistant.BindModel
-TObj_Assistant_BindType = TObj_Assistant.BindType
-TObj_Assistant_ClearModelMap = TObj_Assistant.ClearModelMap
-TObj_Assistant_ClearTypeMap = TObj_Assistant.ClearTypeMap
-TObj_Assistant_FindModel = TObj_Assistant.FindModel
-TObj_Assistant_FindType = TObj_Assistant.FindType
-TObj_Assistant_FindTypeIndex = TObj_Assistant.FindTypeIndex
-TObj_Assistant_GetAppVersion = TObj_Assistant.GetAppVersion
-TObj_Assistant_GetCurrentModel = TObj_Assistant.GetCurrentModel
-TObj_Assistant_SetCurrentModel = TObj_Assistant.SetCurrentModel
-TObj_Assistant_UnSetCurrentModel = TObj_Assistant.UnSetCurrentModel
-TObj_Model_GetDocumentModel = TObj_Model.GetDocumentModel
-TObj_Model_SetNewName = TObj_Model.SetNewName
-TObj_Object_Detach = TObj_Object.Detach
-TObj_Object_GetObj = TObj_Object.GetObj
-TObj_Persistence_CreateNewObject = TObj_Persistence.CreateNewObject
-TObj_TIntSparseArray_GetID = TObj_TIntSparseArray.GetID
-TObj_TIntSparseArray_Set = TObj_TIntSparseArray.Set
-TObj_TModel_GetID = TObj_TModel.GetID
-TObj_TNameContainer_GetID = TObj_TNameContainer.GetID
-TObj_TNameContainer_Set = TObj_TNameContainer.Set
-TObj_TObject_GetID = TObj_TObject.GetID
-TObj_TObject_Set = TObj_TObject.Set
-TObj_TReference_GetID = TObj_TReference.GetID
-TObj_TReference_Set = TObj_TReference.Set
-TObj_TXYZ_GetID = TObj_TXYZ.GetID
-TObj_TXYZ_Set = TObj_TXYZ.Set
-TObj_Partition_Create = TObj_Partition.Create
-TObj_Partition_GetPartition = TObj_Partition.GetPartition

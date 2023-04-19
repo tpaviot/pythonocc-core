@@ -859,3 +859,42 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geom2dconvert_C0BSplineToArrayOfC1BSplineCurve(*args):
+	return geom2dconvert.C0BSplineToArrayOfC1BSplineCurve(*args)
+
+@deprecated
+def geom2dconvert_C0BSplineToArrayOfC1BSplineCurve(*args):
+	return geom2dconvert.C0BSplineToArrayOfC1BSplineCurve(*args)
+
+@deprecated
+def geom2dconvert_C0BSplineToC1BSplineCurve(*args):
+	return geom2dconvert.C0BSplineToC1BSplineCurve(*args)
+
+@deprecated
+def geom2dconvert_ConcatC1(*args):
+	return geom2dconvert.ConcatC1(*args)
+
+@deprecated
+def geom2dconvert_ConcatC1(*args):
+	return geom2dconvert.ConcatC1(*args)
+
+@deprecated
+def geom2dconvert_ConcatG1(*args):
+	return geom2dconvert.ConcatG1(*args)
+
+@deprecated
+def geom2dconvert_CurveToBSplineCurve(*args):
+	return geom2dconvert.CurveToBSplineCurve(*args)
+
+@deprecated
+def geom2dconvert_SplitBSplineCurve(*args):
+	return geom2dconvert.SplitBSplineCurve(*args)
+
+@deprecated
+def geom2dconvert_SplitBSplineCurve(*args):
+	return geom2dconvert.SplitBSplineCurve(*args)
+
+}

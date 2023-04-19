@@ -57,7 +57,3 @@ class BinLDrivers_DocumentStorageDriver(PCDM_StorageDriver):
 # harray2 classes
 # hsequence classes
 
-binldrivers_AttributeDrivers = binldrivers.AttributeDrivers
-binldrivers_DefineFormat = binldrivers.DefineFormat
-binldrivers_Factory = binldrivers.Factory
-BinLDrivers_DocumentSection_ReadTOC = BinLDrivers_DocumentSection.ReadTOC

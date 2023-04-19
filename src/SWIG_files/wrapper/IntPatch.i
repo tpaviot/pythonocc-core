@@ -7771,3 +7771,262 @@ class IntPatch_Polyhedron:
 %pythoncode {
 IntPatch_SearchPnt=OCC.Core.Intf.Intf_InterferencePolygon2d
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def IntPatch_HCurve2dTool_BSpline(*args):
+	return IntPatch_HCurve2dTool.BSpline(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Bezier(*args):
+	return IntPatch_HCurve2dTool.Bezier(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Circle(*args):
+	return IntPatch_HCurve2dTool.Circle(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Continuity(*args):
+	return IntPatch_HCurve2dTool.Continuity(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_D0(*args):
+	return IntPatch_HCurve2dTool.D0(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_D1(*args):
+	return IntPatch_HCurve2dTool.D1(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_D2(*args):
+	return IntPatch_HCurve2dTool.D2(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_D3(*args):
+	return IntPatch_HCurve2dTool.D3(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_DN(*args):
+	return IntPatch_HCurve2dTool.DN(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Ellipse(*args):
+	return IntPatch_HCurve2dTool.Ellipse(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_FirstParameter(*args):
+	return IntPatch_HCurve2dTool.FirstParameter(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_GetType(*args):
+	return IntPatch_HCurve2dTool.GetType(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Hyperbola(*args):
+	return IntPatch_HCurve2dTool.Hyperbola(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Intervals(*args):
+	return IntPatch_HCurve2dTool.Intervals(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_IsClosed(*args):
+	return IntPatch_HCurve2dTool.IsClosed(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_IsPeriodic(*args):
+	return IntPatch_HCurve2dTool.IsPeriodic(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_LastParameter(*args):
+	return IntPatch_HCurve2dTool.LastParameter(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Line(*args):
+	return IntPatch_HCurve2dTool.Line(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_NbIntervals(*args):
+	return IntPatch_HCurve2dTool.NbIntervals(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_NbSamples(*args):
+	return IntPatch_HCurve2dTool.NbSamples(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Parabola(*args):
+	return IntPatch_HCurve2dTool.Parabola(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Period(*args):
+	return IntPatch_HCurve2dTool.Period(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Resolution(*args):
+	return IntPatch_HCurve2dTool.Resolution(*args)
+
+@deprecated
+def IntPatch_HCurve2dTool_Value(*args):
+	return IntPatch_HCurve2dTool.Value(*args)
+
+@deprecated
+def IntPatch_HInterTool_Bounds(*args):
+	return IntPatch_HInterTool.Bounds(*args)
+
+@deprecated
+def IntPatch_HInterTool_HasBeenSeen(*args):
+	return IntPatch_HInterTool.HasBeenSeen(*args)
+
+@deprecated
+def IntPatch_HInterTool_HasFirstPoint(*args):
+	return IntPatch_HInterTool.HasFirstPoint(*args)
+
+@deprecated
+def IntPatch_HInterTool_HasLastPoint(*args):
+	return IntPatch_HInterTool.HasLastPoint(*args)
+
+@deprecated
+def IntPatch_HInterTool_IsAllSolution(*args):
+	return IntPatch_HInterTool.IsAllSolution(*args)
+
+@deprecated
+def IntPatch_HInterTool_IsVertex(*args):
+	return IntPatch_HInterTool.IsVertex(*args)
+
+@deprecated
+def IntPatch_HInterTool_NbPoints(*args):
+	return IntPatch_HInterTool.NbPoints(*args)
+
+@deprecated
+def IntPatch_HInterTool_NbSamplesOnArc(*args):
+	return IntPatch_HInterTool.NbSamplesOnArc(*args)
+
+@deprecated
+def IntPatch_HInterTool_NbSamplesU(*args):
+	return IntPatch_HInterTool.NbSamplesU(*args)
+
+@deprecated
+def IntPatch_HInterTool_NbSamplesV(*args):
+	return IntPatch_HInterTool.NbSamplesV(*args)
+
+@deprecated
+def IntPatch_HInterTool_NbSegments(*args):
+	return IntPatch_HInterTool.NbSegments(*args)
+
+@deprecated
+def IntPatch_HInterTool_Parameter(*args):
+	return IntPatch_HInterTool.Parameter(*args)
+
+@deprecated
+def IntPatch_HInterTool_Project(*args):
+	return IntPatch_HInterTool.Project(*args)
+
+@deprecated
+def IntPatch_HInterTool_SingularOnUMax(*args):
+	return IntPatch_HInterTool.SingularOnUMax(*args)
+
+@deprecated
+def IntPatch_HInterTool_SingularOnUMin(*args):
+	return IntPatch_HInterTool.SingularOnUMin(*args)
+
+@deprecated
+def IntPatch_HInterTool_SingularOnVMax(*args):
+	return IntPatch_HInterTool.SingularOnVMax(*args)
+
+@deprecated
+def IntPatch_HInterTool_SingularOnVMin(*args):
+	return IntPatch_HInterTool.SingularOnVMin(*args)
+
+@deprecated
+def IntPatch_HInterTool_Tolerance(*args):
+	return IntPatch_HInterTool.Tolerance(*args)
+
+@deprecated
+def IntPatch_HInterTool_Value(*args):
+	return IntPatch_HInterTool.Value(*args)
+
+@deprecated
+def IntPatch_HInterTool_Vertex(*args):
+	return IntPatch_HInterTool.Vertex(*args)
+
+@deprecated
+def IntPatch_Intersection_CheckSingularPoints(*args):
+	return IntPatch_Intersection.CheckSingularPoints(*args)
+
+@deprecated
+def IntPatch_Intersection_DefineUVMaxStep(*args):
+	return IntPatch_Intersection.DefineUVMaxStep(*args)
+
+@deprecated
+def IntPatch_Intersection_PrepareSurfaces(*args):
+	return IntPatch_Intersection.PrepareSurfaces(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_Bounding(*args):
+	return IntPatch_PolyhedronTool.Bounding(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_ComponentsBounding(*args):
+	return IntPatch_PolyhedronTool.ComponentsBounding(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_DeflectionOverEstimation(*args):
+	return IntPatch_PolyhedronTool.DeflectionOverEstimation(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_NbTriangles(*args):
+	return IntPatch_PolyhedronTool.NbTriangles(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_Point(*args):
+	return IntPatch_PolyhedronTool.Point(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_TriConnex(*args):
+	return IntPatch_PolyhedronTool.TriConnex(*args)
+
+@deprecated
+def IntPatch_PolyhedronTool_Triangle(*args):
+	return IntPatch_PolyhedronTool.Triangle(*args)
+
+@deprecated
+def IntPatch_RstInt_PutVertexOnLine(*args):
+	return IntPatch_RstInt.PutVertexOnLine(*args)
+
+@deprecated
+def IntPatch_SpecialPoints_AddCrossUVIsoPoint(*args):
+	return IntPatch_SpecialPoints.AddCrossUVIsoPoint(*args)
+
+@deprecated
+def IntPatch_SpecialPoints_AddPointOnUorVIso(*args):
+	return IntPatch_SpecialPoints.AddPointOnUorVIso(*args)
+
+@deprecated
+def IntPatch_SpecialPoints_AddSingularPole(*args):
+	return IntPatch_SpecialPoints.AddSingularPole(*args)
+
+@deprecated
+def IntPatch_SpecialPoints_AdjustPointAndVertex(*args):
+	return IntPatch_SpecialPoints.AdjustPointAndVertex(*args)
+
+@deprecated
+def IntPatch_SpecialPoints_ContinueAfterSpecialPoint(*args):
+	return IntPatch_SpecialPoints.ContinueAfterSpecialPoint(*args)
+
+@deprecated
+def IntPatch_WLineTool_ComputePurgedWLine(*args):
+	return IntPatch_WLineTool.ComputePurgedWLine(*args)
+
+@deprecated
+def IntPatch_WLineTool_ExtendTwoWLines(*args):
+	return IntPatch_WLineTool.ExtendTwoWLines(*args)
+
+@deprecated
+def IntPatch_WLineTool_JoinWLines(*args):
+	return IntPatch_WLineTool.JoinWLines(*args)
+
+@deprecated
+def IntPatch_PointLine_CurvatureRadiusOfIntersLine(*args):
+	return IntPatch_PointLine.CurvatureRadiusOfIntersLine(*args)
+
+}

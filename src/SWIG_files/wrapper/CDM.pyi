@@ -191,5 +191,3 @@ class CDM_ReferenceIterator:
 # harray2 classes
 # hsequence classes
 
-CDM_MetaData_LookUp = CDM_MetaData.LookUp
-CDM_MetaData_LookUp = CDM_MetaData.LookUp

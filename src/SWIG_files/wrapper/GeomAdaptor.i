@@ -2382,3 +2382,14 @@ opencascade::handle<Adaptor3d_Surface>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomadaptor_MakeCurve(*args):
+	return geomadaptor.MakeCurve(*args)
+
+@deprecated
+def geomadaptor_MakeSurface(*args):
+	return geomadaptor.MakeSurface(*args)
+
+}

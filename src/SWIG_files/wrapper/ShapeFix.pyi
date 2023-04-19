@@ -523,8 +523,3 @@ class ShapeFix_WireSegment: ...
 # harray2 classes
 # hsequence classes
 
-shapefix_EncodeRegularity = shapefix.EncodeRegularity
-shapefix_FixVertexPosition = shapefix.FixVertexPosition
-shapefix_LeastEdgeSize = shapefix.LeastEdgeSize
-shapefix_RemoveSmallEdges = shapefix.RemoveSmallEdges
-shapefix_SameParameter = shapefix.SameParameter

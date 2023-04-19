@@ -2964,3 +2964,102 @@ class Units_UnitsSequence : public Units_UtsSequence, public Standard_Transient 
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def units_Convert(*args):
+	return units.Convert(*args)
+
+@deprecated
+def units_DictionaryOfUnits(*args):
+	return units.DictionaryOfUnits(*args)
+
+@deprecated
+def units_Dimensions(*args):
+	return units.Dimensions(*args)
+
+@deprecated
+def units_FirstQuantity(*args):
+	return units.FirstQuantity(*args)
+
+@deprecated
+def units_FromSI(*args):
+	return units.FromSI(*args)
+
+@deprecated
+def units_FromSI(*args):
+	return units.FromSI(*args)
+
+@deprecated
+def units_LexiconFile(*args):
+	return units.LexiconFile(*args)
+
+@deprecated
+def units_LexiconFormula(*args):
+	return units.LexiconFormula(*args)
+
+@deprecated
+def units_LexiconUnits(*args):
+	return units.LexiconUnits(*args)
+
+@deprecated
+def units_NullDimensions(*args):
+	return units.NullDimensions(*args)
+
+@deprecated
+def units_Quantity(*args):
+	return units.Quantity(*args)
+
+@deprecated
+def units_ToSI(*args):
+	return units.ToSI(*args)
+
+@deprecated
+def units_ToSI(*args):
+	return units.ToSI(*args)
+
+@deprecated
+def units_UnitsFile(*args):
+	return units.UnitsFile(*args)
+
+@deprecated
+def Units_Dimensions_AAmountOfSubstance(*args):
+	return Units_Dimensions.AAmountOfSubstance(*args)
+
+@deprecated
+def Units_Dimensions_AElectricCurrent(*args):
+	return Units_Dimensions.AElectricCurrent(*args)
+
+@deprecated
+def Units_Dimensions_ALength(*args):
+	return Units_Dimensions.ALength(*args)
+
+@deprecated
+def Units_Dimensions_ALess(*args):
+	return Units_Dimensions.ALess(*args)
+
+@deprecated
+def Units_Dimensions_ALuminousIntensity(*args):
+	return Units_Dimensions.ALuminousIntensity(*args)
+
+@deprecated
+def Units_Dimensions_AMass(*args):
+	return Units_Dimensions.AMass(*args)
+
+@deprecated
+def Units_Dimensions_APlaneAngle(*args):
+	return Units_Dimensions.APlaneAngle(*args)
+
+@deprecated
+def Units_Dimensions_ASolidAngle(*args):
+	return Units_Dimensions.ASolidAngle(*args)
+
+@deprecated
+def Units_Dimensions_AThermodynamicTemperature(*args):
+	return Units_Dimensions.AThermodynamicTemperature(*args)
+
+@deprecated
+def Units_Dimensions_ATime(*args):
+	return Units_Dimensions.ATime(*args)
+
+}

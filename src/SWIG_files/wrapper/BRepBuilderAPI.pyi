@@ -591,7 +591,3 @@ class BRepBuilderAPI_Transform(BRepBuilderAPI_ModifyShape):
 # harray2 classes
 # hsequence classes
 
-brepbuilderapi_Plane = brepbuilderapi.Plane
-brepbuilderapi_Plane = brepbuilderapi.Plane
-brepbuilderapi_Precision = brepbuilderapi.Precision
-brepbuilderapi_Precision = brepbuilderapi.Precision

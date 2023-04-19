@@ -4378,3 +4378,10 @@ class SelectMgr_SensitiveEntitySet:
 %pythoncode {
 SelectBasics_EntityOwner=SelectMgr_EntityOwner
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def selectmgr_ComputeSensitivePrs(*args):
+	return selectmgr.ComputeSensitivePrs(*args)
+
+}

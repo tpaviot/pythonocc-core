@@ -11969,3 +11969,230 @@ class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Extrema_Curve2dTool_BSpline(*args):
+	return Extrema_Curve2dTool.BSpline(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Bezier(*args):
+	return Extrema_Curve2dTool.Bezier(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Circle(*args):
+	return Extrema_Curve2dTool.Circle(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Continuity(*args):
+	return Extrema_Curve2dTool.Continuity(*args)
+
+@deprecated
+def Extrema_Curve2dTool_D0(*args):
+	return Extrema_Curve2dTool.D0(*args)
+
+@deprecated
+def Extrema_Curve2dTool_D1(*args):
+	return Extrema_Curve2dTool.D1(*args)
+
+@deprecated
+def Extrema_Curve2dTool_D2(*args):
+	return Extrema_Curve2dTool.D2(*args)
+
+@deprecated
+def Extrema_Curve2dTool_D3(*args):
+	return Extrema_Curve2dTool.D3(*args)
+
+@deprecated
+def Extrema_Curve2dTool_DN(*args):
+	return Extrema_Curve2dTool.DN(*args)
+
+@deprecated
+def Extrema_Curve2dTool_DeflCurvIntervals(*args):
+	return Extrema_Curve2dTool.DeflCurvIntervals(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Degree(*args):
+	return Extrema_Curve2dTool.Degree(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Ellipse(*args):
+	return Extrema_Curve2dTool.Ellipse(*args)
+
+@deprecated
+def Extrema_Curve2dTool_FirstParameter(*args):
+	return Extrema_Curve2dTool.FirstParameter(*args)
+
+@deprecated
+def Extrema_Curve2dTool_GetType(*args):
+	return Extrema_Curve2dTool.GetType(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Hyperbola(*args):
+	return Extrema_Curve2dTool.Hyperbola(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Intervals(*args):
+	return Extrema_Curve2dTool.Intervals(*args)
+
+@deprecated
+def Extrema_Curve2dTool_IsClosed(*args):
+	return Extrema_Curve2dTool.IsClosed(*args)
+
+@deprecated
+def Extrema_Curve2dTool_IsPeriodic(*args):
+	return Extrema_Curve2dTool.IsPeriodic(*args)
+
+@deprecated
+def Extrema_Curve2dTool_IsRational(*args):
+	return Extrema_Curve2dTool.IsRational(*args)
+
+@deprecated
+def Extrema_Curve2dTool_LastParameter(*args):
+	return Extrema_Curve2dTool.LastParameter(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Line(*args):
+	return Extrema_Curve2dTool.Line(*args)
+
+@deprecated
+def Extrema_Curve2dTool_NbIntervals(*args):
+	return Extrema_Curve2dTool.NbIntervals(*args)
+
+@deprecated
+def Extrema_Curve2dTool_NbKnots(*args):
+	return Extrema_Curve2dTool.NbKnots(*args)
+
+@deprecated
+def Extrema_Curve2dTool_NbPoles(*args):
+	return Extrema_Curve2dTool.NbPoles(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Parabola(*args):
+	return Extrema_Curve2dTool.Parabola(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Period(*args):
+	return Extrema_Curve2dTool.Period(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Resolution(*args):
+	return Extrema_Curve2dTool.Resolution(*args)
+
+@deprecated
+def Extrema_Curve2dTool_Value(*args):
+	return Extrema_Curve2dTool.Value(*args)
+
+@deprecated
+def Extrema_CurveTool_BSpline(*args):
+	return Extrema_CurveTool.BSpline(*args)
+
+@deprecated
+def Extrema_CurveTool_Bezier(*args):
+	return Extrema_CurveTool.Bezier(*args)
+
+@deprecated
+def Extrema_CurveTool_Circle(*args):
+	return Extrema_CurveTool.Circle(*args)
+
+@deprecated
+def Extrema_CurveTool_Continuity(*args):
+	return Extrema_CurveTool.Continuity(*args)
+
+@deprecated
+def Extrema_CurveTool_D0(*args):
+	return Extrema_CurveTool.D0(*args)
+
+@deprecated
+def Extrema_CurveTool_D1(*args):
+	return Extrema_CurveTool.D1(*args)
+
+@deprecated
+def Extrema_CurveTool_D2(*args):
+	return Extrema_CurveTool.D2(*args)
+
+@deprecated
+def Extrema_CurveTool_D3(*args):
+	return Extrema_CurveTool.D3(*args)
+
+@deprecated
+def Extrema_CurveTool_DN(*args):
+	return Extrema_CurveTool.DN(*args)
+
+@deprecated
+def Extrema_CurveTool_DeflCurvIntervals(*args):
+	return Extrema_CurveTool.DeflCurvIntervals(*args)
+
+@deprecated
+def Extrema_CurveTool_Degree(*args):
+	return Extrema_CurveTool.Degree(*args)
+
+@deprecated
+def Extrema_CurveTool_Ellipse(*args):
+	return Extrema_CurveTool.Ellipse(*args)
+
+@deprecated
+def Extrema_CurveTool_FirstParameter(*args):
+	return Extrema_CurveTool.FirstParameter(*args)
+
+@deprecated
+def Extrema_CurveTool_GetType(*args):
+	return Extrema_CurveTool.GetType(*args)
+
+@deprecated
+def Extrema_CurveTool_Hyperbola(*args):
+	return Extrema_CurveTool.Hyperbola(*args)
+
+@deprecated
+def Extrema_CurveTool_Intervals(*args):
+	return Extrema_CurveTool.Intervals(*args)
+
+@deprecated
+def Extrema_CurveTool_IsPeriodic(*args):
+	return Extrema_CurveTool.IsPeriodic(*args)
+
+@deprecated
+def Extrema_CurveTool_IsRational(*args):
+	return Extrema_CurveTool.IsRational(*args)
+
+@deprecated
+def Extrema_CurveTool_LastParameter(*args):
+	return Extrema_CurveTool.LastParameter(*args)
+
+@deprecated
+def Extrema_CurveTool_Line(*args):
+	return Extrema_CurveTool.Line(*args)
+
+@deprecated
+def Extrema_CurveTool_NbIntervals(*args):
+	return Extrema_CurveTool.NbIntervals(*args)
+
+@deprecated
+def Extrema_CurveTool_NbKnots(*args):
+	return Extrema_CurveTool.NbKnots(*args)
+
+@deprecated
+def Extrema_CurveTool_NbPoles(*args):
+	return Extrema_CurveTool.NbPoles(*args)
+
+@deprecated
+def Extrema_CurveTool_Parabola(*args):
+	return Extrema_CurveTool.Parabola(*args)
+
+@deprecated
+def Extrema_CurveTool_Period(*args):
+	return Extrema_CurveTool.Period(*args)
+
+@deprecated
+def Extrema_CurveTool_Resolution(*args):
+	return Extrema_CurveTool.Resolution(*args)
+
+@deprecated
+def Extrema_CurveTool_Value(*args):
+	return Extrema_CurveTool.Value(*args)
+
+@deprecated
+def Extrema_GenLocateExtPS_IsMinDist(*args):
+	return Extrema_GenLocateExtPS.IsMinDist(*args)
+
+}

@@ -245,3 +245,22 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def ChFiKPart_ComputeData_Compute(*args):
+	return ChFiKPart_ComputeData.Compute(*args)
+
+@deprecated
+def ChFiKPart_ComputeData_ComputeCorner(*args):
+	return ChFiKPart_ComputeData.ComputeCorner(*args)
+
+@deprecated
+def ChFiKPart_ComputeData_ComputeCorner(*args):
+	return ChFiKPart_ComputeData.ComputeCorner(*args)
+
+@deprecated
+def ChFiKPart_ComputeData_ComputeCorner(*args):
+	return ChFiKPart_ComputeData.ComputeCorner(*args)
+
+}

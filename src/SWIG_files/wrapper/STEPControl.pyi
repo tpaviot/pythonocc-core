@@ -99,4 +99,3 @@ class STEPControl_Writer:
 # harray2 classes
 # hsequence classes
 
-STEPControl_Controller_Init = STEPControl_Controller.Init

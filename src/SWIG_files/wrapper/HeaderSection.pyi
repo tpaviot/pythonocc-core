@@ -61,4 +61,3 @@ class HeaderSection_Protocol(StepData_Protocol):
 # harray2 classes
 # hsequence classes
 
-headersection_Protocol = headersection.Protocol

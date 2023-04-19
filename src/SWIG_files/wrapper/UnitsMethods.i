@@ -275,3 +275,42 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def unitsmethods_DumpLengthUnit(*args):
+	return unitsmethods.DumpLengthUnit(*args)
+
+@deprecated
+def unitsmethods_DumpLengthUnit(*args):
+	return unitsmethods.DumpLengthUnit(*args)
+
+@deprecated
+def unitsmethods_GetCasCadeLengthUnit(*args):
+	return unitsmethods.GetCasCadeLengthUnit(*args)
+
+@deprecated
+def unitsmethods_GetLengthFactorValue(*args):
+	return unitsmethods.GetLengthFactorValue(*args)
+
+@deprecated
+def unitsmethods_GetLengthUnitByFactorValue(*args):
+	return unitsmethods.GetLengthUnitByFactorValue(*args)
+
+@deprecated
+def unitsmethods_GetLengthUnitScale(*args):
+	return unitsmethods.GetLengthUnitScale(*args)
+
+@deprecated
+def unitsmethods_LengthUnitFromString(*args):
+	return unitsmethods.LengthUnitFromString(*args)
+
+@deprecated
+def unitsmethods_SetCasCadeLengthUnit(*args):
+	return unitsmethods.SetCasCadeLengthUnit(*args)
+
+@deprecated
+def unitsmethods_SetCasCadeLengthUnit(*args):
+	return unitsmethods.SetCasCadeLengthUnit(*args)
+
+}

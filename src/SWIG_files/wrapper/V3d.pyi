@@ -626,10 +626,3 @@ class V3d_SpotLight(V3d_PositionLight):
 # harray2 classes
 # hsequence classes
 
-v3d_ArrowOfRadius = v3d.ArrowOfRadius
-v3d_CircleInPlane = v3d.CircleInPlane
-v3d_GetProjAxis = v3d.GetProjAxis
-v3d_SwitchViewsinWindow = v3d.SwitchViewsinWindow
-v3d_TypeOfOrientationFromString = v3d.TypeOfOrientationFromString
-v3d_TypeOfOrientationFromString = v3d.TypeOfOrientationFromString
-v3d_TypeOfOrientationToString = v3d.TypeOfOrientationToString

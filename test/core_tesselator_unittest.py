@@ -35,34 +35,34 @@ from OCC.Extend.DataExchange import read_step_file
 
 
 class TestTesselator(unittest.TestCase):
-    """A class for testing tesselation algorithm"""
+    """A class for testing tessellation algorithm"""
 
-    def test_tesselate_box(self):
-        """1st test : tesselation of a box"""
+    def test_tessellate_box(self):
+        """1st test : tessellation of a box"""
         a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         tess = ShapeTesselator(a_box)
         tess.Compute()
         self.assertEqual(tess.ObjGetTriangleCount(), 12)
         self.assertEqual(tess.ObjGetNormalCount(), 24)
 
-    def test_tesselate_torus(self):
-        """2st test : tesselation of a torus"""
+    def test_tessellate_torus(self):
+        """2nd test : tessellation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute()
         self.assertGreater(tess.ObjGetTriangleCount(), 100)
         self.assertGreater(tess.ObjGetNormalCount(), 100)
 
-    def test_tesselate_torus_with_edges(self):
-        """2st test : tesselation of a torus"""
+    def test_tessellate_torus_with_edges(self):
+        """2nd test : tessellation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute(compute_edges=True)
         self.assertGreater(tess.ObjGetTriangleCount(), 100)
         self.assertGreater(tess.ObjGetNormalCount(), 100)
 
-    def test_tesselate_torus_with_bad_quality(self):
-        """2st test : tesselation of a torus"""
+    def test_tessellate_torus_with_bad_quality(self):
+        """2nd test : tessellation of a torus"""
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         tess = ShapeTesselator(a_torus)
         tess.Compute(mesh_quality=40.0)
@@ -96,10 +96,10 @@ class TestTesselator(unittest.TestCase):
         tess = ShapeTesselator(a_box)
         tess.Compute()
         # get the JSON string
-        JSON_str = tess.ExportShapeToThreejsJSONString("myshapeid")
+        json_str = tess.ExportShapeToThreejsJSONString("myshapeid")
         # check the python JSON parser can decode the string
         # i.e. the JSON string is well formed
-        dico = json.loads(JSON_str)
+        dico = json.loads(json_str)
         # after that, check that the number of vertices is ok
         self.assertEqual(len(dico["data"]["attributes"]["position"]["array"]), 36 * 3)
 
@@ -115,8 +115,8 @@ class TestTesselator(unittest.TestCase):
             x3d_content = x3d_file.read()
             ET.fromstring(x3d_content)  # raise an exception if not valid xml
 
-    def test_tesselate_STEP_file(self):
-        """loads a step file, tesselate. The as1_pe_203 contains
+    def test_tessellate_STEP_file(self):
+        """loads a step file, tessellate. The as1_pe_203 contains
         free edges"""
         stp_file = os.path.join(os.path.join("test_io", "as1_pe_203.stp"))
         stp_file_shape = read_step_file(stp_file)
@@ -125,7 +125,7 @@ class TestTesselator(unittest.TestCase):
         # free edges have been excluded, then should work as expected
         stp_file_tesselator.Compute(compute_edges=True)
 
-    def test_tesselate_twice(self):
+    def test_tessellate_twice(self):
         """calling Compte() many times should no raise an exception"""
         another_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
         torus_tess = ShapeTesselator(another_torus)

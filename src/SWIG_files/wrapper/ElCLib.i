@@ -2240,3 +2240,486 @@ gp_Pnt2d
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def elclib_AdjustPeriodic(*args):
+	return elclib.AdjustPeriodic(*args)
+
+@deprecated
+def elclib_CircleD1(*args):
+	return elclib.CircleD1(*args)
+
+@deprecated
+def elclib_CircleD1(*args):
+	return elclib.CircleD1(*args)
+
+@deprecated
+def elclib_CircleD2(*args):
+	return elclib.CircleD2(*args)
+
+@deprecated
+def elclib_CircleD2(*args):
+	return elclib.CircleD2(*args)
+
+@deprecated
+def elclib_CircleD3(*args):
+	return elclib.CircleD3(*args)
+
+@deprecated
+def elclib_CircleD3(*args):
+	return elclib.CircleD3(*args)
+
+@deprecated
+def elclib_CircleDN(*args):
+	return elclib.CircleDN(*args)
+
+@deprecated
+def elclib_CircleDN(*args):
+	return elclib.CircleDN(*args)
+
+@deprecated
+def elclib_CircleParameter(*args):
+	return elclib.CircleParameter(*args)
+
+@deprecated
+def elclib_CircleParameter(*args):
+	return elclib.CircleParameter(*args)
+
+@deprecated
+def elclib_CircleValue(*args):
+	return elclib.CircleValue(*args)
+
+@deprecated
+def elclib_CircleValue(*args):
+	return elclib.CircleValue(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D1(*args):
+	return elclib.D1(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D2(*args):
+	return elclib.D2(*args)
+
+@deprecated
+def elclib_D3(*args):
+	return elclib.D3(*args)
+
+@deprecated
+def elclib_D3(*args):
+	return elclib.D3(*args)
+
+@deprecated
+def elclib_D3(*args):
+	return elclib.D3(*args)
+
+@deprecated
+def elclib_D3(*args):
+	return elclib.D3(*args)
+
+@deprecated
+def elclib_D3(*args):
+	return elclib.D3(*args)
+
+@deprecated
+def elclib_D3(*args):
+	return elclib.D3(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_DN(*args):
+	return elclib.DN(*args)
+
+@deprecated
+def elclib_EllipseD1(*args):
+	return elclib.EllipseD1(*args)
+
+@deprecated
+def elclib_EllipseD1(*args):
+	return elclib.EllipseD1(*args)
+
+@deprecated
+def elclib_EllipseD2(*args):
+	return elclib.EllipseD2(*args)
+
+@deprecated
+def elclib_EllipseD2(*args):
+	return elclib.EllipseD2(*args)
+
+@deprecated
+def elclib_EllipseD3(*args):
+	return elclib.EllipseD3(*args)
+
+@deprecated
+def elclib_EllipseD3(*args):
+	return elclib.EllipseD3(*args)
+
+@deprecated
+def elclib_EllipseDN(*args):
+	return elclib.EllipseDN(*args)
+
+@deprecated
+def elclib_EllipseDN(*args):
+	return elclib.EllipseDN(*args)
+
+@deprecated
+def elclib_EllipseParameter(*args):
+	return elclib.EllipseParameter(*args)
+
+@deprecated
+def elclib_EllipseParameter(*args):
+	return elclib.EllipseParameter(*args)
+
+@deprecated
+def elclib_EllipseValue(*args):
+	return elclib.EllipseValue(*args)
+
+@deprecated
+def elclib_EllipseValue(*args):
+	return elclib.EllipseValue(*args)
+
+@deprecated
+def elclib_HyperbolaD1(*args):
+	return elclib.HyperbolaD1(*args)
+
+@deprecated
+def elclib_HyperbolaD1(*args):
+	return elclib.HyperbolaD1(*args)
+
+@deprecated
+def elclib_HyperbolaD2(*args):
+	return elclib.HyperbolaD2(*args)
+
+@deprecated
+def elclib_HyperbolaD2(*args):
+	return elclib.HyperbolaD2(*args)
+
+@deprecated
+def elclib_HyperbolaD3(*args):
+	return elclib.HyperbolaD3(*args)
+
+@deprecated
+def elclib_HyperbolaD3(*args):
+	return elclib.HyperbolaD3(*args)
+
+@deprecated
+def elclib_HyperbolaDN(*args):
+	return elclib.HyperbolaDN(*args)
+
+@deprecated
+def elclib_HyperbolaDN(*args):
+	return elclib.HyperbolaDN(*args)
+
+@deprecated
+def elclib_HyperbolaParameter(*args):
+	return elclib.HyperbolaParameter(*args)
+
+@deprecated
+def elclib_HyperbolaParameter(*args):
+	return elclib.HyperbolaParameter(*args)
+
+@deprecated
+def elclib_HyperbolaValue(*args):
+	return elclib.HyperbolaValue(*args)
+
+@deprecated
+def elclib_HyperbolaValue(*args):
+	return elclib.HyperbolaValue(*args)
+
+@deprecated
+def elclib_InPeriod(*args):
+	return elclib.InPeriod(*args)
+
+@deprecated
+def elclib_LineD1(*args):
+	return elclib.LineD1(*args)
+
+@deprecated
+def elclib_LineD1(*args):
+	return elclib.LineD1(*args)
+
+@deprecated
+def elclib_LineDN(*args):
+	return elclib.LineDN(*args)
+
+@deprecated
+def elclib_LineDN(*args):
+	return elclib.LineDN(*args)
+
+@deprecated
+def elclib_LineParameter(*args):
+	return elclib.LineParameter(*args)
+
+@deprecated
+def elclib_LineParameter(*args):
+	return elclib.LineParameter(*args)
+
+@deprecated
+def elclib_LineValue(*args):
+	return elclib.LineValue(*args)
+
+@deprecated
+def elclib_LineValue(*args):
+	return elclib.LineValue(*args)
+
+@deprecated
+def elclib_ParabolaD1(*args):
+	return elclib.ParabolaD1(*args)
+
+@deprecated
+def elclib_ParabolaD1(*args):
+	return elclib.ParabolaD1(*args)
+
+@deprecated
+def elclib_ParabolaD2(*args):
+	return elclib.ParabolaD2(*args)
+
+@deprecated
+def elclib_ParabolaD2(*args):
+	return elclib.ParabolaD2(*args)
+
+@deprecated
+def elclib_ParabolaDN(*args):
+	return elclib.ParabolaDN(*args)
+
+@deprecated
+def elclib_ParabolaDN(*args):
+	return elclib.ParabolaDN(*args)
+
+@deprecated
+def elclib_ParabolaParameter(*args):
+	return elclib.ParabolaParameter(*args)
+
+@deprecated
+def elclib_ParabolaParameter(*args):
+	return elclib.ParabolaParameter(*args)
+
+@deprecated
+def elclib_ParabolaValue(*args):
+	return elclib.ParabolaValue(*args)
+
+@deprecated
+def elclib_ParabolaValue(*args):
+	return elclib.ParabolaValue(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_Parameter(*args):
+	return elclib.Parameter(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_To3d(*args):
+	return elclib.To3d(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+@deprecated
+def elclib_Value(*args):
+	return elclib.Value(*args)
+
+}

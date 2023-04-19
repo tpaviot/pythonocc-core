@@ -1094,12 +1094,3 @@ class GeomFill_HSequenceOfAx2(GeomFill_SequenceOfAx2, Standard_Transient):
     def Append(self, theSequence: GeomFill_SequenceOfAx2) -> None: ...
 
 
-geomfill_GetCircle = geomfill.GetCircle
-geomfill_GetCircle = geomfill.GetCircle
-geomfill_GetCircle = geomfill.GetCircle
-geomfill_GetMinimalWeights = geomfill.GetMinimalWeights
-geomfill_GetShape = geomfill.GetShape
-geomfill_GetTolerance = geomfill.GetTolerance
-geomfill_Knots = geomfill.Knots
-geomfill_Mults = geomfill.Mults
-geomfill_Surface = geomfill.Surface

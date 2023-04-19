@@ -643,3 +643,38 @@ class RWStl_Reader:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def rwstl_ReadAscii(*args):
+	return rwstl.ReadAscii(*args)
+
+@deprecated
+def rwstl_ReadBinary(*args):
+	return rwstl.ReadBinary(*args)
+
+@deprecated
+def rwstl_ReadFile(*args):
+	return rwstl.ReadFile(*args)
+
+@deprecated
+def rwstl_ReadFile(*args):
+	return rwstl.ReadFile(*args)
+
+@deprecated
+def rwstl_ReadFile(*args):
+	return rwstl.ReadFile(*args)
+
+@deprecated
+def rwstl_ReadFile(*args):
+	return rwstl.ReadFile(*args)
+
+@deprecated
+def rwstl_WriteAscii(*args):
+	return rwstl.WriteAscii(*args)
+
+@deprecated
+def rwstl_WriteBinary(*args):
+	return rwstl.WriteBinary(*args)
+
+}

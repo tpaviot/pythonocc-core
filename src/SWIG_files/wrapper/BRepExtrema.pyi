@@ -259,6 +259,3 @@ class BRepExtrema_OverlapTool: ...
 # harray2 classes
 # hsequence classes
 
-BRepExtrema_Poly_Distance = BRepExtrema_Poly.Distance
-BRepExtrema_ProximityDistTool_IsEdgeOnBorder = BRepExtrema_ProximityDistTool.IsEdgeOnBorder
-BRepExtrema_ProximityDistTool_IsNodeOnBorder = BRepExtrema_ProximityDistTool.IsNodeOnBorder

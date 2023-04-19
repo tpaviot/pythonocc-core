@@ -5898,3 +5898,26 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def blendfunc_ComputeDNormal(*args):
+	return blendfunc.ComputeDNormal(*args)
+
+@deprecated
+def blendfunc_ComputeNormal(*args):
+	return blendfunc.ComputeNormal(*args)
+
+@deprecated
+def blendfunc_GetMinimalWeights(*args):
+	return blendfunc.GetMinimalWeights(*args)
+
+@deprecated
+def blendfunc_GetShape(*args):
+	return blendfunc.GetShape(*args)
+
+@deprecated
+def blendfunc_NextShape(*args):
+	return blendfunc.NextShape(*args)
+
+}

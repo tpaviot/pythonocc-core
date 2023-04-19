@@ -36,11 +36,3 @@ class geomprojlib:
 # harray2 classes
 # hsequence classes
 
-geomprojlib_Curve2d = geomprojlib.Curve2d
-geomprojlib_Curve2d = geomprojlib.Curve2d
-geomprojlib_Curve2d = geomprojlib.Curve2d
-geomprojlib_Curve2d = geomprojlib.Curve2d
-geomprojlib_Curve2d = geomprojlib.Curve2d
-geomprojlib_Curve2d = geomprojlib.Curve2d
-geomprojlib_Project = geomprojlib.Project
-geomprojlib_ProjectOnPlane = geomprojlib.ProjectOnPlane

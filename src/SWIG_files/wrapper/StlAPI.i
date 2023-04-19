@@ -219,3 +219,14 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def stlapi_Read(*args):
+	return stlapi.Read(*args)
+
+@deprecated
+def stlapi_Write(*args):
+	return stlapi.Write(*args)
+
+}

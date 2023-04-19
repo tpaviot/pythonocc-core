@@ -2283,3 +2283,174 @@ class IntCurveSurface_ThePolyhedronOfHInter:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def IntCurveSurface_TheHCurveTool_BSpline(*args):
+	return IntCurveSurface_TheHCurveTool.BSpline(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Bezier(*args):
+	return IntCurveSurface_TheHCurveTool.Bezier(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Circle(*args):
+	return IntCurveSurface_TheHCurveTool.Circle(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Continuity(*args):
+	return IntCurveSurface_TheHCurveTool.Continuity(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_D0(*args):
+	return IntCurveSurface_TheHCurveTool.D0(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_D1(*args):
+	return IntCurveSurface_TheHCurveTool.D1(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_D2(*args):
+	return IntCurveSurface_TheHCurveTool.D2(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_D3(*args):
+	return IntCurveSurface_TheHCurveTool.D3(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_DN(*args):
+	return IntCurveSurface_TheHCurveTool.DN(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Ellipse(*args):
+	return IntCurveSurface_TheHCurveTool.Ellipse(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_FirstParameter(*args):
+	return IntCurveSurface_TheHCurveTool.FirstParameter(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_GetType(*args):
+	return IntCurveSurface_TheHCurveTool.GetType(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Hyperbola(*args):
+	return IntCurveSurface_TheHCurveTool.Hyperbola(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Intervals(*args):
+	return IntCurveSurface_TheHCurveTool.Intervals(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_IsClosed(*args):
+	return IntCurveSurface_TheHCurveTool.IsClosed(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_IsPeriodic(*args):
+	return IntCurveSurface_TheHCurveTool.IsPeriodic(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_LastParameter(*args):
+	return IntCurveSurface_TheHCurveTool.LastParameter(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Line(*args):
+	return IntCurveSurface_TheHCurveTool.Line(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_NbIntervals(*args):
+	return IntCurveSurface_TheHCurveTool.NbIntervals(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_NbSamples(*args):
+	return IntCurveSurface_TheHCurveTool.NbSamples(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Parabola(*args):
+	return IntCurveSurface_TheHCurveTool.Parabola(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Period(*args):
+	return IntCurveSurface_TheHCurveTool.Period(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Resolution(*args):
+	return IntCurveSurface_TheHCurveTool.Resolution(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_SamplePars(*args):
+	return IntCurveSurface_TheHCurveTool.SamplePars(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_Value(*args):
+	return IntCurveSurface_TheHCurveTool.Value(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_BeginOfSeg(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.BeginOfSeg(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_Bounding(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.Bounding(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_Closed(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.Closed(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_DeflectionOverEstimation(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.DeflectionOverEstimation(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_Dump(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.Dump(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_EndOfSeg(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.EndOfSeg(*args)
+
+@deprecated
+def IntCurveSurface_ThePolygonToolOfHInter_NbSegments(*args):
+	return IntCurveSurface_ThePolygonToolOfHInter.NbSegments(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_Bounding(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.Bounding(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_ComponentsBounding(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.ComponentsBounding(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_DeflectionOverEstimation(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.DeflectionOverEstimation(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_Dump(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.Dump(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_GetBorderDeflection(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.GetBorderDeflection(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_IsOnBound(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.IsOnBound(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_NbTriangles(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.NbTriangles(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_Point(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.Point(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_TriConnex(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.TriConnex(*args)
+
+@deprecated
+def IntCurveSurface_ThePolyhedronToolOfHInter_Triangle(*args):
+	return IntCurveSurface_ThePolyhedronToolOfHInter.Triangle(*args)
+
+}

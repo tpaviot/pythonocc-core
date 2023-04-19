@@ -514,8 +514,3 @@ class BlendFunc_ConstThroatWithPenetrationInv(BlendFunc_ConstThroatInv):
 # harray2 classes
 # hsequence classes
 
-blendfunc_ComputeDNormal = blendfunc.ComputeDNormal
-blendfunc_ComputeNormal = blendfunc.ComputeNormal
-blendfunc_GetMinimalWeights = blendfunc.GetMinimalWeights
-blendfunc_GetShape = blendfunc.GetShape
-blendfunc_NextShape = blendfunc.NextShape

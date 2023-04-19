@@ -1242,3 +1242,42 @@ class ShapeCustom_ConvertToRevolution:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapecustom_BSplineRestriction(*args):
+	return shapecustom.BSplineRestriction(*args)
+
+@deprecated
+def shapecustom_ConvertToBSpline(*args):
+	return shapecustom.ConvertToBSpline(*args)
+
+@deprecated
+def shapecustom_ConvertToRevolution(*args):
+	return shapecustom.ConvertToRevolution(*args)
+
+@deprecated
+def shapecustom_DirectFaces(*args):
+	return shapecustom.DirectFaces(*args)
+
+@deprecated
+def shapecustom_ScaleShape(*args):
+	return shapecustom.ScaleShape(*args)
+
+@deprecated
+def shapecustom_SweptToElementary(*args):
+	return shapecustom.SweptToElementary(*args)
+
+@deprecated
+def ShapeCustom_Curve2d_ConvertToLine2d(*args):
+	return ShapeCustom_Curve2d.ConvertToLine2d(*args)
+
+@deprecated
+def ShapeCustom_Curve2d_IsLinear(*args):
+	return ShapeCustom_Curve2d.IsLinear(*args)
+
+@deprecated
+def ShapeCustom_Curve2d_SimplifyBSpline2d(*args):
+	return ShapeCustom_Curve2d.SimplifyBSpline2d(*args)
+
+}

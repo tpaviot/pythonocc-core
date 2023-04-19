@@ -3130,3 +3130,38 @@ class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Tra
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def hlralgo_AddMinMax(*args):
+	return hlralgo.AddMinMax(*args)
+
+@deprecated
+def hlralgo_CopyMinMax(*args):
+	return hlralgo.CopyMinMax(*args)
+
+@deprecated
+def hlralgo_DecodeMinMax(*args):
+	return hlralgo.DecodeMinMax(*args)
+
+@deprecated
+def hlralgo_EncodeMinMax(*args):
+	return hlralgo.EncodeMinMax(*args)
+
+@deprecated
+def hlralgo_EnlargeMinMax(*args):
+	return hlralgo.EnlargeMinMax(*args)
+
+@deprecated
+def hlralgo_InitMinMax(*args):
+	return hlralgo.InitMinMax(*args)
+
+@deprecated
+def hlralgo_SizeBox(*args):
+	return hlralgo.SizeBox(*args)
+
+@deprecated
+def hlralgo_UpdateMinMax(*args):
+	return hlralgo.UpdateMinMax(*args)
+
+}

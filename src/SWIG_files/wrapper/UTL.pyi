@@ -53,21 +53,3 @@ class utl:
 # harray2 classes
 # hsequence classes
 
-utl_AddToUserInfo = utl.AddToUserInfo
-utl_CString = utl.CString
-utl_Disk = utl.Disk
-utl_ExtendedString = utl.ExtendedString
-utl_Extension = utl.Extension
-utl_Extension = utl.Extension
-utl_FileIterator = utl.FileIterator
-utl_Find = utl.Find
-utl_GUID = utl.GUID
-utl_IntegerValue = utl.IntegerValue
-utl_IsReadOnly = utl.IsReadOnly
-utl_LocalHost = utl.LocalHost
-utl_Name = utl.Name
-utl_OpenFile = utl.OpenFile
-utl_Path = utl.Path
-utl_Trek = utl.Trek
-utl_Value = utl.Value
-utl_xgetenv = utl.xgetenv

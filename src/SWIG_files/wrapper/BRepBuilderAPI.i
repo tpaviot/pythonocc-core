@@ -4824,3 +4824,22 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepbuilderapi_Plane(*args):
+	return brepbuilderapi.Plane(*args)
+
+@deprecated
+def brepbuilderapi_Plane(*args):
+	return brepbuilderapi.Plane(*args)
+
+@deprecated
+def brepbuilderapi_Precision(*args):
+	return brepbuilderapi.Precision(*args)
+
+@deprecated
+def brepbuilderapi_Precision(*args):
+	return brepbuilderapi.Precision(*args)
+
+}

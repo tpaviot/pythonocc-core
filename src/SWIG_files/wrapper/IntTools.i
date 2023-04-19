@@ -5599,3 +5599,158 @@ class IntTools_CArray1OfReal:
 %pythoncode {
 IntTools_CArray1OfReal=OCC.Core.TColStd.TColStd_Array1OfReal
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def inttools_FindRootStates(*args):
+	return inttools.FindRootStates(*args)
+
+@deprecated
+def inttools_GetRadius(*args):
+	return inttools.GetRadius(*args)
+
+@deprecated
+def inttools_Length(*args):
+	return inttools.Length(*args)
+
+@deprecated
+def inttools_Parameter(*args):
+	return inttools.Parameter(*args)
+
+@deprecated
+def inttools_PrepareArgs(*args):
+	return inttools.PrepareArgs(*args)
+
+@deprecated
+def inttools_RemoveIdenticalRoots(*args):
+	return inttools.RemoveIdenticalRoots(*args)
+
+@deprecated
+def inttools_SortRoots(*args):
+	return inttools.SortRoots(*args)
+
+@deprecated
+def IntTools_CurveRangeSampleMapHasher_HashCode(*args):
+	return IntTools_CurveRangeSampleMapHasher.HashCode(*args)
+
+@deprecated
+def IntTools_CurveRangeSampleMapHasher_IsEqual(*args):
+	return IntTools_CurveRangeSampleMapHasher.IsEqual(*args)
+
+@deprecated
+def IntTools_SurfaceRangeSampleMapHasher_HashCode(*args):
+	return IntTools_SurfaceRangeSampleMapHasher.HashCode(*args)
+
+@deprecated
+def IntTools_SurfaceRangeSampleMapHasher_IsEqual(*args):
+	return IntTools_SurfaceRangeSampleMapHasher.IsEqual(*args)
+
+@deprecated
+def IntTools_Tools_CheckCurve(*args):
+	return IntTools_Tools.CheckCurve(*args)
+
+@deprecated
+def IntTools_Tools_ClassifyPointByFace(*args):
+	return IntTools_Tools.ClassifyPointByFace(*args)
+
+@deprecated
+def IntTools_Tools_ComputeIntRange(*args):
+	return IntTools_Tools.ComputeIntRange(*args)
+
+@deprecated
+def IntTools_Tools_ComputeTolerance(*args):
+	return IntTools_Tools.ComputeTolerance(*args)
+
+@deprecated
+def IntTools_Tools_ComputeVV(*args):
+	return IntTools_Tools.ComputeVV(*args)
+
+@deprecated
+def IntTools_Tools_CurveTolerance(*args):
+	return IntTools_Tools.CurveTolerance(*args)
+
+@deprecated
+def IntTools_Tools_HasInternalEdge(*args):
+	return IntTools_Tools.HasInternalEdge(*args)
+
+@deprecated
+def IntTools_Tools_IntermediatePoint(*args):
+	return IntTools_Tools.IntermediatePoint(*args)
+
+@deprecated
+def IntTools_Tools_IsClosed(*args):
+	return IntTools_Tools.IsClosed(*args)
+
+@deprecated
+def IntTools_Tools_IsDirsCoinside(*args):
+	return IntTools_Tools.IsDirsCoinside(*args)
+
+@deprecated
+def IntTools_Tools_IsDirsCoinside(*args):
+	return IntTools_Tools.IsDirsCoinside(*args)
+
+@deprecated
+def IntTools_Tools_IsInRange(*args):
+	return IntTools_Tools.IsInRange(*args)
+
+@deprecated
+def IntTools_Tools_IsMiddlePointsEqual(*args):
+	return IntTools_Tools.IsMiddlePointsEqual(*args)
+
+@deprecated
+def IntTools_Tools_IsOnPave(*args):
+	return IntTools_Tools.IsOnPave(*args)
+
+@deprecated
+def IntTools_Tools_IsOnPave1(*args):
+	return IntTools_Tools.IsOnPave1(*args)
+
+@deprecated
+def IntTools_Tools_IsVertex(*args):
+	return IntTools_Tools.IsVertex(*args)
+
+@deprecated
+def IntTools_Tools_IsVertex(*args):
+	return IntTools_Tools.IsVertex(*args)
+
+@deprecated
+def IntTools_Tools_IsVertex(*args):
+	return IntTools_Tools.IsVertex(*args)
+
+@deprecated
+def IntTools_Tools_IsVertex(*args):
+	return IntTools_Tools.IsVertex(*args)
+
+@deprecated
+def IntTools_Tools_MakeFaceFromWireAndFace(*args):
+	return IntTools_Tools.MakeFaceFromWireAndFace(*args)
+
+@deprecated
+def IntTools_Tools_RejectLines(*args):
+	return IntTools_Tools.RejectLines(*args)
+
+@deprecated
+def IntTools_Tools_SegPln(*args):
+	return IntTools_Tools.SegPln(*args)
+
+@deprecated
+def IntTools_Tools_SplitCurve(*args):
+	return IntTools_Tools.SplitCurve(*args)
+
+@deprecated
+def IntTools_Tools_VertexParameter(*args):
+	return IntTools_Tools.VertexParameter(*args)
+
+@deprecated
+def IntTools_Tools_VertexParameters(*args):
+	return IntTools_Tools.VertexParameters(*args)
+
+@deprecated
+def IntTools_WLineTool_DecompositionOfWLine(*args):
+	return IntTools_WLineTool.DecompositionOfWLine(*args)
+
+@deprecated
+def IntTools_WLineTool_NotUseSurfacesForApprox(*args):
+	return IntTools_WLineTool.NotUseSurfacesForApprox(*args)
+
+}

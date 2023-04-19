@@ -2106,3 +2106,10 @@ class RWGltf_GltfSharedIStream:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def RWGltf_GltfMaterialMap_baseColorTexture(*args):
+	return RWGltf_GltfMaterialMap.baseColorTexture(*args)
+
+}

@@ -4446,3 +4446,150 @@ TopoDS_Wire
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def breplib_BoundingVertex(*args):
+	return breplib.BoundingVertex(*args)
+
+@deprecated
+def breplib_BuildCurve3d(*args):
+	return breplib.BuildCurve3d(*args)
+
+@deprecated
+def breplib_BuildCurves3d(*args):
+	return breplib.BuildCurves3d(*args)
+
+@deprecated
+def breplib_BuildCurves3d(*args):
+	return breplib.BuildCurves3d(*args)
+
+@deprecated
+def breplib_BuildPCurveForEdgeOnPlane(*args):
+	return breplib.BuildPCurveForEdgeOnPlane(*args)
+
+@deprecated
+def breplib_BuildPCurveForEdgeOnPlane(*args):
+	return breplib.BuildPCurveForEdgeOnPlane(*args)
+
+@deprecated
+def breplib_CheckSameRange(*args):
+	return breplib.CheckSameRange(*args)
+
+@deprecated
+def breplib_ContinuityOfFaces(*args):
+	return breplib.ContinuityOfFaces(*args)
+
+@deprecated
+def breplib_EncodeRegularity(*args):
+	return breplib.EncodeRegularity(*args)
+
+@deprecated
+def breplib_EncodeRegularity(*args):
+	return breplib.EncodeRegularity(*args)
+
+@deprecated
+def breplib_EncodeRegularity(*args):
+	return breplib.EncodeRegularity(*args)
+
+@deprecated
+def breplib_EnsureNormalConsistency(*args):
+	return breplib.EnsureNormalConsistency(*args)
+
+@deprecated
+def breplib_ExtendFace(*args):
+	return breplib.ExtendFace(*args)
+
+@deprecated
+def breplib_FindValidRange(*args):
+	return breplib.FindValidRange(*args)
+
+@deprecated
+def breplib_FindValidRange(*args):
+	return breplib.FindValidRange(*args)
+
+@deprecated
+def breplib_OrientClosedSolid(*args):
+	return breplib.OrientClosedSolid(*args)
+
+@deprecated
+def breplib_Plane(*args):
+	return breplib.Plane(*args)
+
+@deprecated
+def breplib_Plane(*args):
+	return breplib.Plane(*args)
+
+@deprecated
+def breplib_Precision(*args):
+	return breplib.Precision(*args)
+
+@deprecated
+def breplib_Precision(*args):
+	return breplib.Precision(*args)
+
+@deprecated
+def breplib_ReverseSortFaces(*args):
+	return breplib.ReverseSortFaces(*args)
+
+@deprecated
+def breplib_SameParameter(*args):
+	return breplib.SameParameter(*args)
+
+@deprecated
+def breplib_SameParameter(*args):
+	return breplib.SameParameter(*args)
+
+@deprecated
+def breplib_SameParameter(*args):
+	return breplib.SameParameter(*args)
+
+@deprecated
+def breplib_SameParameter(*args):
+	return breplib.SameParameter(*args)
+
+@deprecated
+def breplib_SameRange(*args):
+	return breplib.SameRange(*args)
+
+@deprecated
+def breplib_SortFaces(*args):
+	return breplib.SortFaces(*args)
+
+@deprecated
+def breplib_UpdateDeflection(*args):
+	return breplib.UpdateDeflection(*args)
+
+@deprecated
+def breplib_UpdateEdgeTol(*args):
+	return breplib.UpdateEdgeTol(*args)
+
+@deprecated
+def breplib_UpdateEdgeTolerance(*args):
+	return breplib.UpdateEdgeTolerance(*args)
+
+@deprecated
+def breplib_UpdateInnerTolerances(*args):
+	return breplib.UpdateInnerTolerances(*args)
+
+@deprecated
+def breplib_UpdateTolerances(*args):
+	return breplib.UpdateTolerances(*args)
+
+@deprecated
+def breplib_UpdateTolerances(*args):
+	return breplib.UpdateTolerances(*args)
+
+@deprecated
+def BRepLib_ToolTriangulatedShape_ComputeNormals(*args):
+	return BRepLib_ToolTriangulatedShape.ComputeNormals(*args)
+
+@deprecated
+def BRepLib_ToolTriangulatedShape_ComputeNormals(*args):
+	return BRepLib_ToolTriangulatedShape.ComputeNormals(*args)
+
+@deprecated
+def BRepLib_MakeFace_IsDegenerated(*args):
+	return BRepLib_MakeFace.IsDegenerated(*args)
+
+}

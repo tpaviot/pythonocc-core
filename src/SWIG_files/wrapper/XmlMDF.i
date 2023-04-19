@@ -629,3 +629,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmdf_AddDrivers(*args):
+	return xmlmdf.AddDrivers(*args)
+
+@deprecated
+def xmlmdf_FromTo(*args):
+	return xmlmdf.FromTo(*args)
+
+@deprecated
+def xmlmdf_FromTo(*args):
+	return xmlmdf.FromTo(*args)
+
+}

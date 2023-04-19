@@ -2343,3 +2343,102 @@ float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Circle(*args):
+	return Geom2dInt_Geom2dCurveTool.Circle(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_D0(*args):
+	return Geom2dInt_Geom2dCurveTool.D0(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_D1(*args):
+	return Geom2dInt_Geom2dCurveTool.D1(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_D2(*args):
+	return Geom2dInt_Geom2dCurveTool.D2(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_D3(*args):
+	return Geom2dInt_Geom2dCurveTool.D3(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_DN(*args):
+	return Geom2dInt_Geom2dCurveTool.DN(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Degree(*args):
+	return Geom2dInt_Geom2dCurveTool.Degree(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Ellipse(*args):
+	return Geom2dInt_Geom2dCurveTool.Ellipse(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_EpsX(*args):
+	return Geom2dInt_Geom2dCurveTool.EpsX(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_EpsX(*args):
+	return Geom2dInt_Geom2dCurveTool.EpsX(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_FirstParameter(*args):
+	return Geom2dInt_Geom2dCurveTool.FirstParameter(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_GetInterval(*args):
+	return Geom2dInt_Geom2dCurveTool.GetInterval(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_GetType(*args):
+	return Geom2dInt_Geom2dCurveTool.GetType(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Hyperbola(*args):
+	return Geom2dInt_Geom2dCurveTool.Hyperbola(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Intervals(*args):
+	return Geom2dInt_Geom2dCurveTool.Intervals(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_LastParameter(*args):
+	return Geom2dInt_Geom2dCurveTool.LastParameter(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Line(*args):
+	return Geom2dInt_Geom2dCurveTool.Line(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_NbIntervals(*args):
+	return Geom2dInt_Geom2dCurveTool.NbIntervals(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_NbSamples(*args):
+	return Geom2dInt_Geom2dCurveTool.NbSamples(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_NbSamples(*args):
+	return Geom2dInt_Geom2dCurveTool.NbSamples(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Parabola(*args):
+	return Geom2dInt_Geom2dCurveTool.Parabola(*args)
+
+@deprecated
+def Geom2dInt_Geom2dCurveTool_Value(*args):
+	return Geom2dInt_Geom2dCurveTool.Value(*args)
+
+@deprecated
+def Geom2dInt_TheProjPCurOfGInter_FindParameter(*args):
+	return Geom2dInt_TheProjPCurOfGInter.FindParameter(*args)
+
+@deprecated
+def Geom2dInt_TheProjPCurOfGInter_FindParameter(*args):
+	return Geom2dInt_TheProjPCurOfGInter.FindParameter(*args)
+
+}

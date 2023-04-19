@@ -4800,3 +4800,26 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepfill_Axe(*args):
+	return brepfill.Axe(*args)
+
+@deprecated
+def brepfill_ComputeACR(*args):
+	return brepfill.ComputeACR(*args)
+
+@deprecated
+def brepfill_Face(*args):
+	return brepfill.Face(*args)
+
+@deprecated
+def brepfill_InsertACR(*args):
+	return brepfill.InsertACR(*args)
+
+@deprecated
+def brepfill_Shell(*args):
+	return brepfill.Shell(*args)
+
+}

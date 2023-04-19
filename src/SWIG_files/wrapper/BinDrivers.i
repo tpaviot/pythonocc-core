@@ -358,3 +358,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def bindrivers_AttributeDrivers(*args):
+	return bindrivers.AttributeDrivers(*args)
+
+@deprecated
+def bindrivers_DefineFormat(*args):
+	return bindrivers.DefineFormat(*args)
+
+@deprecated
+def bindrivers_Factory(*args):
+	return bindrivers.Factory(*args)
+
+}

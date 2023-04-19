@@ -3593,3 +3593,98 @@ class Quantity_HArray1OfColor : public Quantity_Array1OfColor, public Standard_T
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Quantity_Color_Argb2color(*args):
+	return Quantity_Color.Argb2color(*args)
+
+@deprecated
+def Quantity_Color_Color2argb(*args):
+	return Quantity_Color.Color2argb(*args)
+
+@deprecated
+def Quantity_Color_ColorFromHex(*args):
+	return Quantity_Color.ColorFromHex(*args)
+
+@deprecated
+def Quantity_Color_ColorFromName(*args):
+	return Quantity_Color.ColorFromName(*args)
+
+@deprecated
+def Quantity_Color_ColorFromName(*args):
+	return Quantity_Color.ColorFromName(*args)
+
+@deprecated
+def Quantity_Color_ColorToHex(*args):
+	return Quantity_Color.ColorToHex(*args)
+
+@deprecated
+def Quantity_Color_Epsilon(*args):
+	return Quantity_Color.Epsilon(*args)
+
+@deprecated
+def Quantity_Color_HlsRgb(*args):
+	return Quantity_Color.HlsRgb(*args)
+
+@deprecated
+def Quantity_Color_Name(*args):
+	return Quantity_Color.Name(*args)
+
+@deprecated
+def Quantity_Color_RgbHls(*args):
+	return Quantity_Color.RgbHls(*args)
+
+@deprecated
+def Quantity_Color_SetEpsilon(*args):
+	return Quantity_Color.SetEpsilon(*args)
+
+@deprecated
+def Quantity_Color_StringName(*args):
+	return Quantity_Color.StringName(*args)
+
+@deprecated
+def Quantity_ColorHasher_HashCode(*args):
+	return Quantity_ColorHasher.HashCode(*args)
+
+@deprecated
+def Quantity_ColorHasher_IsEqual(*args):
+	return Quantity_ColorHasher.IsEqual(*args)
+
+@deprecated
+def Quantity_ColorRGBA_ColorFromHex(*args):
+	return Quantity_ColorRGBA.ColorFromHex(*args)
+
+@deprecated
+def Quantity_ColorRGBA_ColorFromName(*args):
+	return Quantity_ColorRGBA.ColorFromName(*args)
+
+@deprecated
+def Quantity_ColorRGBA_ColorToHex(*args):
+	return Quantity_ColorRGBA.ColorToHex(*args)
+
+@deprecated
+def Quantity_ColorRGBAHasher_HashCode(*args):
+	return Quantity_ColorRGBAHasher.HashCode(*args)
+
+@deprecated
+def Quantity_ColorRGBAHasher_IsEqual(*args):
+	return Quantity_ColorRGBAHasher.IsEqual(*args)
+
+@deprecated
+def Quantity_Date_IsLeap(*args):
+	return Quantity_Date.IsLeap(*args)
+
+@deprecated
+def Quantity_Date_IsValid(*args):
+	return Quantity_Date.IsValid(*args)
+
+@deprecated
+def Quantity_Period_IsValid(*args):
+	return Quantity_Period.IsValid(*args)
+
+@deprecated
+def Quantity_Period_IsValid(*args):
+	return Quantity_Period.IsValid(*args)
+
+}

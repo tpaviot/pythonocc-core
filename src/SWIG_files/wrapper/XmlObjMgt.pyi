@@ -103,21 +103,3 @@ class XmlObjMgt_SRelocationTable(TColStd_IndexedMapOfTransient):
 # harray2 classes
 # hsequence classes
 
-xmlobjmgt_FindChildByName = xmlobjmgt.FindChildByName
-xmlobjmgt_FindChildByRef = xmlobjmgt.FindChildByRef
-xmlobjmgt_FindChildElement = xmlobjmgt.FindChildElement
-xmlobjmgt_GetExtendedString = xmlobjmgt.GetExtendedString
-xmlobjmgt_GetReal = xmlobjmgt.GetReal
-xmlobjmgt_GetReal = xmlobjmgt.GetReal
-xmlobjmgt_GetStringValue = xmlobjmgt.GetStringValue
-xmlobjmgt_GetTagEntryString = xmlobjmgt.GetTagEntryString
-xmlobjmgt_IdString = xmlobjmgt.IdString
-xmlobjmgt_SetExtendedString = xmlobjmgt.SetExtendedString
-xmlobjmgt_SetStringValue = xmlobjmgt.SetStringValue
-xmlobjmgt_SetTagEntryString = xmlobjmgt.SetTagEntryString
-XmlObjMgt_GP_Translate = XmlObjMgt_GP.Translate
-XmlObjMgt_GP_Translate = XmlObjMgt_GP.Translate
-XmlObjMgt_GP_Translate = XmlObjMgt_GP.Translate
-XmlObjMgt_GP_Translate = XmlObjMgt_GP.Translate
-XmlObjMgt_GP_Translate = XmlObjMgt_GP.Translate
-XmlObjMgt_GP_Translate = XmlObjMgt_GP.Translate

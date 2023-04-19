@@ -2749,3 +2749,50 @@ TopoDS_Shape
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def igestobrep_AlgoContainer(*args):
+	return igestobrep.AlgoContainer(*args)
+
+@deprecated
+def igestobrep_IGESCurveToSequenceOfIGESCurve(*args):
+	return igestobrep.IGESCurveToSequenceOfIGESCurve(*args)
+
+@deprecated
+def igestobrep_Init(*args):
+	return igestobrep.Init(*args)
+
+@deprecated
+def igestobrep_IsBRepEntity(*args):
+	return igestobrep.IsBRepEntity(*args)
+
+@deprecated
+def igestobrep_IsBasicCurve(*args):
+	return igestobrep.IsBasicCurve(*args)
+
+@deprecated
+def igestobrep_IsBasicSurface(*args):
+	return igestobrep.IsBasicSurface(*args)
+
+@deprecated
+def igestobrep_IsCurveAndSurface(*args):
+	return igestobrep.IsCurveAndSurface(*args)
+
+@deprecated
+def igestobrep_IsTopoCurve(*args):
+	return igestobrep.IsTopoCurve(*args)
+
+@deprecated
+def igestobrep_IsTopoSurface(*args):
+	return igestobrep.IsTopoSurface(*args)
+
+@deprecated
+def igestobrep_SetAlgoContainer(*args):
+	return igestobrep.SetAlgoContainer(*args)
+
+@deprecated
+def igestobrep_TransferPCurve(*args):
+	return igestobrep.TransferPCurve(*args)
+
+}

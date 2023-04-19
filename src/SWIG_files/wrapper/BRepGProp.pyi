@@ -245,18 +245,3 @@ class BRepGProp_MeshProps: ...
 # harray2 classes
 # hsequence classes
 
-brepgprop_LinearProperties = brepgprop.LinearProperties
-brepgprop_SurfaceProperties = brepgprop.SurfaceProperties
-brepgprop_SurfaceProperties = brepgprop.SurfaceProperties
-brepgprop_VolumeProperties = brepgprop.VolumeProperties
-brepgprop_VolumeProperties = brepgprop.VolumeProperties
-brepgprop_VolumePropertiesGK = brepgprop.VolumePropertiesGK
-brepgprop_VolumePropertiesGK = brepgprop.VolumePropertiesGK
-BRepGProp_EdgeTool_D1 = BRepGProp_EdgeTool.D1
-BRepGProp_EdgeTool_FirstParameter = BRepGProp_EdgeTool.FirstParameter
-BRepGProp_EdgeTool_IntegrationOrder = BRepGProp_EdgeTool.IntegrationOrder
-BRepGProp_EdgeTool_Intervals = BRepGProp_EdgeTool.Intervals
-BRepGProp_EdgeTool_LastParameter = BRepGProp_EdgeTool.LastParameter
-BRepGProp_EdgeTool_NbIntervals = BRepGProp_EdgeTool.NbIntervals
-BRepGProp_EdgeTool_Value = BRepGProp_EdgeTool.Value
-BRepGProp_MeshCinert_PreparePolygon = BRepGProp_MeshCinert.PreparePolygon

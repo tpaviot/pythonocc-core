@@ -95,8 +95,3 @@ class ShapeProcess_UOperator(ShapeProcess_Operator):
 # harray2 classes
 # hsequence classes
 
-shapeprocess_FindOperator = shapeprocess.FindOperator
-shapeprocess_Perform = shapeprocess.Perform
-shapeprocess_RegisterOperator = shapeprocess.RegisterOperator
-ShapeProcess_OperLibrary_ApplyModifier = ShapeProcess_OperLibrary.ApplyModifier
-ShapeProcess_OperLibrary_Init = ShapeProcess_OperLibrary.Init

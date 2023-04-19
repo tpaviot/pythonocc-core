@@ -607,3 +607,18 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmdataxtd_AddDrivers(*args):
+	return binmdataxtd.AddDrivers(*args)
+
+@deprecated
+def binmdataxtd_DocumentVersion(*args):
+	return binmdataxtd.DocumentVersion(*args)
+
+@deprecated
+def binmdataxtd_SetDocumentVersion(*args):
+	return binmdataxtd.SetDocumentVersion(*args)
+
+}

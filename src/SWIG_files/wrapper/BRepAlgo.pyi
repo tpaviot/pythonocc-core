@@ -124,10 +124,3 @@ class BRepAlgo_NormalProjection:
 # harray2 classes
 # hsequence classes
 
-brepalgo_ConcatenateWire = brepalgo.ConcatenateWire
-brepalgo_ConcatenateWireC0 = brepalgo.ConcatenateWireC0
-brepalgo_ConvertFace = brepalgo.ConvertFace
-brepalgo_ConvertWire = brepalgo.ConvertWire
-brepalgo_IsTopologicallyValid = brepalgo.IsTopologicallyValid
-brepalgo_IsValid = brepalgo.IsValid
-brepalgo_IsValid = brepalgo.IsValid

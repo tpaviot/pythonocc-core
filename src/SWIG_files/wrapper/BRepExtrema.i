@@ -2691,3 +2691,18 @@ class BRepExtrema_OverlapTool:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BRepExtrema_Poly_Distance(*args):
+	return BRepExtrema_Poly.Distance(*args)
+
+@deprecated
+def BRepExtrema_ProximityDistTool_IsEdgeOnBorder(*args):
+	return BRepExtrema_ProximityDistTool.IsEdgeOnBorder(*args)
+
+@deprecated
+def BRepExtrema_ProximityDistTool_IsNodeOnBorder(*args):
+	return BRepExtrema_ProximityDistTool.IsNodeOnBorder(*args)
+
+}

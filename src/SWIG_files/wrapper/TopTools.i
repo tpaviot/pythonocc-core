@@ -904,3 +904,26 @@ class TopTools_HSequenceOfShape : public TopTools_SequenceOfShape, public Standa
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def toptools_Dummy(*args):
+	return toptools.Dummy(*args)
+
+@deprecated
+def TopTools_OrientedShapeMapHasher_HashCode(*args):
+	return TopTools_OrientedShapeMapHasher.HashCode(*args)
+
+@deprecated
+def TopTools_OrientedShapeMapHasher_IsEqual(*args):
+	return TopTools_OrientedShapeMapHasher.IsEqual(*args)
+
+@deprecated
+def TopTools_ShapeMapHasher_HashCode(*args):
+	return TopTools_ShapeMapHasher.HashCode(*args)
+
+@deprecated
+def TopTools_ShapeMapHasher_IsEqual(*args):
+	return TopTools_ShapeMapHasher.IsEqual(*args)
+
+}

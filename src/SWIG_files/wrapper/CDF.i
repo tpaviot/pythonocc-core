@@ -1411,3 +1411,10 @@ class CDF_DirectoryIterator:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def CDF_Application_Load(*args):
+	return CDF_Application.Load(*args)
+
+}

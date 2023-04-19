@@ -3963,3 +3963,42 @@ class VrmlData_Faceted:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def VrmlData_Node_GlobalIndent(*args):
+	return VrmlData_Node.GlobalIndent(*args)
+
+@deprecated
+def VrmlData_Node_OK(*args):
+	return VrmlData_Node.OK(*args)
+
+@deprecated
+def VrmlData_Node_OK(*args):
+	return VrmlData_Node.OK(*args)
+
+@deprecated
+def VrmlData_Node_ReadBoolean(*args):
+	return VrmlData_Node.ReadBoolean(*args)
+
+@deprecated
+def VrmlData_Node_ReadInteger(*args):
+	return VrmlData_Node.ReadInteger(*args)
+
+@deprecated
+def VrmlData_Node_ReadMultiString(*args):
+	return VrmlData_Node.ReadMultiString(*args)
+
+@deprecated
+def VrmlData_Node_ReadString(*args):
+	return VrmlData_Node.ReadString(*args)
+
+@deprecated
+def VrmlData_Scene_ReadLine(*args):
+	return VrmlData_Scene.ReadLine(*args)
+
+@deprecated
+def VrmlData_Scene_ReadWord(*args):
+	return VrmlData_Scene.ReadWord(*args)
+
+}

@@ -328,13 +328,3 @@ class BRepFeat_MakeRevolutionForm(BRepFeat_RibSlot):
 # harray2 classes
 # hsequence classes
 
-brepfeat_Barycenter = brepfeat.Barycenter
-brepfeat_FaceUntil = brepfeat.FaceUntil
-brepfeat_IsInside = brepfeat.IsInside
-brepfeat_ParametricBarycenter = brepfeat.ParametricBarycenter
-brepfeat_ParametricMinMax = brepfeat.ParametricMinMax
-brepfeat_Print = brepfeat.Print
-brepfeat_SampleEdges = brepfeat.SampleEdges
-brepfeat_Tool = brepfeat.Tool
-BRepFeat_RibSlot_ChoiceOfFaces = BRepFeat_RibSlot.ChoiceOfFaces
-BRepFeat_RibSlot_IntPar = BRepFeat_RibSlot.IntPar

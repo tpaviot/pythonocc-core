@@ -41,18 +41,3 @@ class GeomTools_UndefinedTypeHandler(Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-geomtools_Dump = geomtools.Dump
-geomtools_Dump = geomtools.Dump
-geomtools_Dump = geomtools.Dump
-geomtools_GetReal = geomtools.GetReal
-geomtools_GetUndefinedTypeHandler = geomtools.GetUndefinedTypeHandler
-geomtools_Read = geomtools.Read
-geomtools_Read = geomtools.Read
-geomtools_Read = geomtools.Read
-geomtools_SetUndefinedTypeHandler = geomtools.SetUndefinedTypeHandler
-geomtools_Write = geomtools.Write
-geomtools_Write = geomtools.Write
-geomtools_Write = geomtools.Write
-GeomTools_Curve2dSet_PrintCurve2d = GeomTools_Curve2dSet.PrintCurve2d
-GeomTools_CurveSet_PrintCurve = GeomTools_CurveSet.PrintCurve
-GeomTools_SurfaceSet_PrintSurface = GeomTools_SurfaceSet.PrintSurface

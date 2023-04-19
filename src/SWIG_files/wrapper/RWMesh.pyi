@@ -201,6 +201,3 @@ class RWMesh_TriangulationSource(Poly_Triangulation):
 # harray2 classes
 # hsequence classes
 
-rwmesh_FormatName = rwmesh.FormatName
-rwmesh_ReadNameAttribute = rwmesh.ReadNameAttribute
-RWMesh_CoordinateSystemConverter_StandardCoordinateSystem = RWMesh_CoordinateSystemConverter.StandardCoordinateSystem

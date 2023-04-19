@@ -175,3 +175,22 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepbndlib_Add(*args):
+	return brepbndlib.Add(*args)
+
+@deprecated
+def brepbndlib_AddClose(*args):
+	return brepbndlib.AddClose(*args)
+
+@deprecated
+def brepbndlib_AddOBB(*args):
+	return brepbndlib.AddOBB(*args)
+
+@deprecated
+def brepbndlib_AddOptimal(*args):
+	return brepbndlib.AddOptimal(*args)
+
+}

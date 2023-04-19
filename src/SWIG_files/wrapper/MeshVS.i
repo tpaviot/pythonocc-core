@@ -4590,3 +4590,62 @@ class MeshVS_HArray1OfSequenceOfInteger : public MeshVS_Array1OfSequenceOfIntege
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def MeshVS_SymmetricPairHasher_HashCode(*args):
+	return MeshVS_SymmetricPairHasher.HashCode(*args)
+
+@deprecated
+def MeshVS_SymmetricPairHasher_IsEqual(*args):
+	return MeshVS_SymmetricPairHasher.IsEqual(*args)
+
+@deprecated
+def MeshVS_Tool_CreateAspectFillArea3d(*args):
+	return MeshVS_Tool.CreateAspectFillArea3d(*args)
+
+@deprecated
+def MeshVS_Tool_CreateAspectFillArea3d(*args):
+	return MeshVS_Tool.CreateAspectFillArea3d(*args)
+
+@deprecated
+def MeshVS_Tool_CreateAspectLine3d(*args):
+	return MeshVS_Tool.CreateAspectLine3d(*args)
+
+@deprecated
+def MeshVS_Tool_CreateAspectMarker3d(*args):
+	return MeshVS_Tool.CreateAspectMarker3d(*args)
+
+@deprecated
+def MeshVS_Tool_CreateAspectText3d(*args):
+	return MeshVS_Tool.CreateAspectText3d(*args)
+
+@deprecated
+def MeshVS_Tool_GetAverageNormal(*args):
+	return MeshVS_Tool.GetAverageNormal(*args)
+
+@deprecated
+def MeshVS_Tool_GetNormal(*args):
+	return MeshVS_Tool.GetNormal(*args)
+
+@deprecated
+def MeshVS_DataSource3D_CreatePrismTopology(*args):
+	return MeshVS_DataSource3D.CreatePrismTopology(*args)
+
+@deprecated
+def MeshVS_DataSource3D_CreatePyramidTopology(*args):
+	return MeshVS_DataSource3D.CreatePyramidTopology(*args)
+
+@deprecated
+def MeshVS_MeshPrsBuilder_AddVolumePrs(*args):
+	return MeshVS_MeshPrsBuilder.AddVolumePrs(*args)
+
+@deprecated
+def MeshVS_MeshPrsBuilder_HowManyPrimitives(*args):
+	return MeshVS_MeshPrsBuilder.HowManyPrimitives(*args)
+
+@deprecated
+def MeshVS_VectorPrsBuilder_calculateArrow(*args):
+	return MeshVS_VectorPrsBuilder.calculateArrow(*args)
+
+}

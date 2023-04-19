@@ -10087,3 +10087,254 @@ class Interface_HSequenceOfCheck : public Interface_SequenceOfCheck, public Stan
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Interface_Category_AddCategory(*args):
+	return Interface_Category.AddCategory(*args)
+
+@deprecated
+def Interface_Category_Init(*args):
+	return Interface_Category.Init(*args)
+
+@deprecated
+def Interface_Category_Name(*args):
+	return Interface_Category.Name(*args)
+
+@deprecated
+def Interface_Category_NbCategories(*args):
+	return Interface_Category.NbCategories(*args)
+
+@deprecated
+def Interface_Category_Number(*args):
+	return Interface_Category.Number(*args)
+
+@deprecated
+def Interface_FileReaderData_Fastof(*args):
+	return Interface_FileReaderData.Fastof(*args)
+
+@deprecated
+def Interface_FloatWriter_Convert(*args):
+	return Interface_FloatWriter.Convert(*args)
+
+@deprecated
+def Interface_GeneralLib_SetGlobal(*args):
+	return Interface_GeneralLib.SetGlobal(*args)
+
+@deprecated
+def Interface_InterfaceModel_ClassName(*args):
+	return Interface_InterfaceModel.ClassName(*args)
+
+@deprecated
+def Interface_InterfaceModel_HasTemplate(*args):
+	return Interface_InterfaceModel.HasTemplate(*args)
+
+@deprecated
+def Interface_InterfaceModel_ListTemplates(*args):
+	return Interface_InterfaceModel.ListTemplates(*args)
+
+@deprecated
+def Interface_InterfaceModel_SetTemplate(*args):
+	return Interface_InterfaceModel.SetTemplate(*args)
+
+@deprecated
+def Interface_InterfaceModel_Template(*args):
+	return Interface_InterfaceModel.Template(*args)
+
+@deprecated
+def Interface_MSG_Blanks(*args):
+	return Interface_MSG.Blanks(*args)
+
+@deprecated
+def Interface_MSG_Blanks(*args):
+	return Interface_MSG.Blanks(*args)
+
+@deprecated
+def Interface_MSG_Blanks(*args):
+	return Interface_MSG.Blanks(*args)
+
+@deprecated
+def Interface_MSG_CDate(*args):
+	return Interface_MSG.CDate(*args)
+
+@deprecated
+def Interface_MSG_Intervalled(*args):
+	return Interface_MSG.Intervalled(*args)
+
+@deprecated
+def Interface_MSG_IsKey(*args):
+	return Interface_MSG.IsKey(*args)
+
+@deprecated
+def Interface_MSG_NDate(*args):
+	return Interface_MSG.NDate(*args)
+
+@deprecated
+def Interface_MSG_Read(*args):
+	return Interface_MSG.Read(*args)
+
+@deprecated
+def Interface_MSG_Record(*args):
+	return Interface_MSG.Record(*args)
+
+@deprecated
+def Interface_MSG_SetMode(*args):
+	return Interface_MSG.SetMode(*args)
+
+@deprecated
+def Interface_MSG_SetTrace(*args):
+	return Interface_MSG.SetTrace(*args)
+
+@deprecated
+def Interface_MSG_TDate(*args):
+	return Interface_MSG.TDate(*args)
+
+@deprecated
+def Interface_MSG_Translated(*args):
+	return Interface_MSG.Translated(*args)
+
+@deprecated
+def Interface_MapAsciiStringHasher_HashCode(*args):
+	return Interface_MapAsciiStringHasher.HashCode(*args)
+
+@deprecated
+def Interface_MapAsciiStringHasher_IsEqual(*args):
+	return Interface_MapAsciiStringHasher.IsEqual(*args)
+
+@deprecated
+def Interface_Protocol_Active(*args):
+	return Interface_Protocol.Active(*args)
+
+@deprecated
+def Interface_Protocol_ClearActive(*args):
+	return Interface_Protocol.ClearActive(*args)
+
+@deprecated
+def Interface_Protocol_SetActive(*args):
+	return Interface_Protocol.SetActive(*args)
+
+@deprecated
+def Interface_ReaderLib_SetGlobal(*args):
+	return Interface_ReaderLib.SetGlobal(*args)
+
+@deprecated
+def Interface_STAT_End(*args):
+	return Interface_STAT.End(*args)
+
+@deprecated
+def Interface_STAT_NextCycle(*args):
+	return Interface_STAT.NextCycle(*args)
+
+@deprecated
+def Interface_STAT_NextItem(*args):
+	return Interface_STAT.NextItem(*args)
+
+@deprecated
+def Interface_STAT_NextPhase(*args):
+	return Interface_STAT.NextPhase(*args)
+
+@deprecated
+def Interface_STAT_NextStep(*args):
+	return Interface_STAT.NextStep(*args)
+
+@deprecated
+def Interface_STAT_Percent(*args):
+	return Interface_STAT.Percent(*args)
+
+@deprecated
+def Interface_STAT_SetPhase(*args):
+	return Interface_STAT.SetPhase(*args)
+
+@deprecated
+def Interface_STAT_StartCount(*args):
+	return Interface_STAT.StartCount(*args)
+
+@deprecated
+def Interface_STAT_Where(*args):
+	return Interface_STAT.Where(*args)
+
+@deprecated
+def Interface_SignType_ClassName(*args):
+	return Interface_SignType.ClassName(*args)
+
+@deprecated
+def Interface_TypedValue_ParamTypeToValueType(*args):
+	return Interface_TypedValue.ParamTypeToValueType(*args)
+
+@deprecated
+def Interface_TypedValue_ValueTypeToParamType(*args):
+	return Interface_TypedValue.ValueTypeToParamType(*args)
+
+@deprecated
+def Interface_Static_CDef(*args):
+	return Interface_Static.CDef(*args)
+
+@deprecated
+def Interface_Static_CVal(*args):
+	return Interface_Static.CVal(*args)
+
+@deprecated
+def Interface_Static_FillMap(*args):
+	return Interface_Static.FillMap(*args)
+
+@deprecated
+def Interface_Static_IDef(*args):
+	return Interface_Static.IDef(*args)
+
+@deprecated
+def Interface_Static_IVal(*args):
+	return Interface_Static.IVal(*args)
+
+@deprecated
+def Interface_Static_Init(*args):
+	return Interface_Static.Init(*args)
+
+@deprecated
+def Interface_Static_Init(*args):
+	return Interface_Static.Init(*args)
+
+@deprecated
+def Interface_Static_IsPresent(*args):
+	return Interface_Static.IsPresent(*args)
+
+@deprecated
+def Interface_Static_IsSet(*args):
+	return Interface_Static.IsSet(*args)
+
+@deprecated
+def Interface_Static_IsUpdated(*args):
+	return Interface_Static.IsUpdated(*args)
+
+@deprecated
+def Interface_Static_Items(*args):
+	return Interface_Static.Items(*args)
+
+@deprecated
+def Interface_Static_RVal(*args):
+	return Interface_Static.RVal(*args)
+
+@deprecated
+def Interface_Static_SetCVal(*args):
+	return Interface_Static.SetCVal(*args)
+
+@deprecated
+def Interface_Static_SetIVal(*args):
+	return Interface_Static.SetIVal(*args)
+
+@deprecated
+def Interface_Static_SetRVal(*args):
+	return Interface_Static.SetRVal(*args)
+
+@deprecated
+def Interface_Static_Standards(*args):
+	return Interface_Static.Standards(*args)
+
+@deprecated
+def Interface_Static_Static(*args):
+	return Interface_Static.Static(*args)
+
+@deprecated
+def Interface_Static_Update(*args):
+	return Interface_Static.Update(*args)
+
+}

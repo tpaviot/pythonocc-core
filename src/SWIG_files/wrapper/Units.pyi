@@ -384,27 +384,3 @@ class Units_UnitsSequence(Units_UtsSequence, Standard_Transient):
     def Append(self, theSequence: Units_UtsSequence) -> None: ...
 
 
-units_Convert = units.Convert
-units_DictionaryOfUnits = units.DictionaryOfUnits
-units_Dimensions = units.Dimensions
-units_FirstQuantity = units.FirstQuantity
-units_FromSI = units.FromSI
-units_FromSI = units.FromSI
-units_LexiconFile = units.LexiconFile
-units_LexiconFormula = units.LexiconFormula
-units_LexiconUnits = units.LexiconUnits
-units_NullDimensions = units.NullDimensions
-units_Quantity = units.Quantity
-units_ToSI = units.ToSI
-units_ToSI = units.ToSI
-units_UnitsFile = units.UnitsFile
-Units_Dimensions_AAmountOfSubstance = Units_Dimensions.AAmountOfSubstance
-Units_Dimensions_AElectricCurrent = Units_Dimensions.AElectricCurrent
-Units_Dimensions_ALength = Units_Dimensions.ALength
-Units_Dimensions_ALess = Units_Dimensions.ALess
-Units_Dimensions_ALuminousIntensity = Units_Dimensions.ALuminousIntensity
-Units_Dimensions_AMass = Units_Dimensions.AMass
-Units_Dimensions_APlaneAngle = Units_Dimensions.APlaneAngle
-Units_Dimensions_ASolidAngle = Units_Dimensions.ASolidAngle
-Units_Dimensions_AThermodynamicTemperature = Units_Dimensions.AThermodynamicTemperature
-Units_Dimensions_ATime = Units_Dimensions.ATime

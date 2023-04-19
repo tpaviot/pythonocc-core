@@ -1486,3 +1486,118 @@ V: float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomlib_AdjustExtremity(*args):
+	return geomlib.AdjustExtremity(*args)
+
+@deprecated
+def geomlib_AxeOfInertia(*args):
+	return geomlib.AxeOfInertia(*args)
+
+@deprecated
+def geomlib_BuildCurve3d(*args):
+	return geomlib.BuildCurve3d(*args)
+
+@deprecated
+def geomlib_CancelDenominatorDerivative(*args):
+	return geomlib.CancelDenominatorDerivative(*args)
+
+@deprecated
+def geomlib_DensifyArray1OfReal(*args):
+	return geomlib.DensifyArray1OfReal(*args)
+
+@deprecated
+def geomlib_EvalMaxDistanceAlongParameter(*args):
+	return geomlib.EvalMaxDistanceAlongParameter(*args)
+
+@deprecated
+def geomlib_EvalMaxParametricDistance(*args):
+	return geomlib.EvalMaxParametricDistance(*args)
+
+@deprecated
+def geomlib_ExtendCurveToPoint(*args):
+	return geomlib.ExtendCurveToPoint(*args)
+
+@deprecated
+def geomlib_ExtendSurfByLength(*args):
+	return geomlib.ExtendSurfByLength(*args)
+
+@deprecated
+def geomlib_FuseIntervals(*args):
+	return geomlib.FuseIntervals(*args)
+
+@deprecated
+def geomlib_GTransform(*args):
+	return geomlib.GTransform(*args)
+
+@deprecated
+def geomlib_Inertia(*args):
+	return geomlib.Inertia(*args)
+
+@deprecated
+def geomlib_IsBSplUClosed(*args):
+	return geomlib.IsBSplUClosed(*args)
+
+@deprecated
+def geomlib_IsBSplVClosed(*args):
+	return geomlib.IsBSplVClosed(*args)
+
+@deprecated
+def geomlib_IsBzUClosed(*args):
+	return geomlib.IsBzUClosed(*args)
+
+@deprecated
+def geomlib_IsBzVClosed(*args):
+	return geomlib.IsBzVClosed(*args)
+
+@deprecated
+def geomlib_IsClosed(*args):
+	return geomlib.IsClosed(*args)
+
+@deprecated
+def geomlib_NormEstim(*args):
+	return geomlib.NormEstim(*args)
+
+@deprecated
+def geomlib_RemovePointsFromArray(*args):
+	return geomlib.RemovePointsFromArray(*args)
+
+@deprecated
+def geomlib_SameRange(*args):
+	return geomlib.SameRange(*args)
+
+@deprecated
+def geomlib_To3d(*args):
+	return geomlib.To3d(*args)
+
+@deprecated
+def geomlib_buildC3dOnIsoLine(*args):
+	return geomlib.buildC3dOnIsoLine(*args)
+
+@deprecated
+def geomlib_isIsoLine(*args):
+	return geomlib.isIsoLine(*args)
+
+@deprecated
+def GeomLib_Tool_ComputeDeviation(*args):
+	return GeomLib_Tool.ComputeDeviation(*args)
+
+@deprecated
+def GeomLib_Tool_ComputeDeviation(*args):
+	return GeomLib_Tool.ComputeDeviation(*args)
+
+@deprecated
+def GeomLib_Tool_Parameter(*args):
+	return GeomLib_Tool.Parameter(*args)
+
+@deprecated
+def GeomLib_Tool_Parameter(*args):
+	return GeomLib_Tool.Parameter(*args)
+
+@deprecated
+def GeomLib_Tool_Parameters(*args):
+	return GeomLib_Tool.Parameters(*args)
+
+}

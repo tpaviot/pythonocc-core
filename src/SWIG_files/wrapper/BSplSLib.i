@@ -1165,3 +1165,150 @@ theErrorCode: int
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def bsplslib_BuildCache(*args):
+	return bsplslib.BuildCache(*args)
+
+@deprecated
+def bsplslib_BuildCache(*args):
+	return bsplslib.BuildCache(*args)
+
+@deprecated
+def bsplslib_CacheD0(*args):
+	return bsplslib.CacheD0(*args)
+
+@deprecated
+def bsplslib_CacheD1(*args):
+	return bsplslib.CacheD1(*args)
+
+@deprecated
+def bsplslib_CacheD2(*args):
+	return bsplslib.CacheD2(*args)
+
+@deprecated
+def bsplslib_CoefsD0(*args):
+	return bsplslib.CoefsD0(*args)
+
+@deprecated
+def bsplslib_CoefsD1(*args):
+	return bsplslib.CoefsD1(*args)
+
+@deprecated
+def bsplslib_CoefsD2(*args):
+	return bsplslib.CoefsD2(*args)
+
+@deprecated
+def bsplslib_D0(*args):
+	return bsplslib.D0(*args)
+
+@deprecated
+def bsplslib_D1(*args):
+	return bsplslib.D1(*args)
+
+@deprecated
+def bsplslib_D2(*args):
+	return bsplslib.D2(*args)
+
+@deprecated
+def bsplslib_D3(*args):
+	return bsplslib.D3(*args)
+
+@deprecated
+def bsplslib_DN(*args):
+	return bsplslib.DN(*args)
+
+@deprecated
+def bsplslib_FunctionMultiply(*args):
+	return bsplslib.FunctionMultiply(*args)
+
+@deprecated
+def bsplslib_GetPoles(*args):
+	return bsplslib.GetPoles(*args)
+
+@deprecated
+def bsplslib_GetPoles(*args):
+	return bsplslib.GetPoles(*args)
+
+@deprecated
+def bsplslib_HomogeneousD0(*args):
+	return bsplslib.HomogeneousD0(*args)
+
+@deprecated
+def bsplslib_HomogeneousD1(*args):
+	return bsplslib.HomogeneousD1(*args)
+
+@deprecated
+def bsplslib_IncreaseDegree(*args):
+	return bsplslib.IncreaseDegree(*args)
+
+@deprecated
+def bsplslib_InsertKnots(*args):
+	return bsplslib.InsertKnots(*args)
+
+@deprecated
+def bsplslib_Interpolate(*args):
+	return bsplslib.Interpolate(*args)
+
+@deprecated
+def bsplslib_Interpolate(*args):
+	return bsplslib.Interpolate(*args)
+
+@deprecated
+def bsplslib_IsRational(*args):
+	return bsplslib.IsRational(*args)
+
+@deprecated
+def bsplslib_Iso(*args):
+	return bsplslib.Iso(*args)
+
+@deprecated
+def bsplslib_MovePoint(*args):
+	return bsplslib.MovePoint(*args)
+
+@deprecated
+def bsplslib_NoWeights(*args):
+	return bsplslib.NoWeights(*args)
+
+@deprecated
+def bsplslib_PolesCoefficients(*args):
+	return bsplslib.PolesCoefficients(*args)
+
+@deprecated
+def bsplslib_PolesCoefficients(*args):
+	return bsplslib.PolesCoefficients(*args)
+
+@deprecated
+def bsplslib_RationalDerivative(*args):
+	return bsplslib.RationalDerivative(*args)
+
+@deprecated
+def bsplslib_RemoveKnot(*args):
+	return bsplslib.RemoveKnot(*args)
+
+@deprecated
+def bsplslib_Resolution(*args):
+	return bsplslib.Resolution(*args)
+
+@deprecated
+def bsplslib_Reverse(*args):
+	return bsplslib.Reverse(*args)
+
+@deprecated
+def bsplslib_Reverse(*args):
+	return bsplslib.Reverse(*args)
+
+@deprecated
+def bsplslib_SetPoles(*args):
+	return bsplslib.SetPoles(*args)
+
+@deprecated
+def bsplslib_SetPoles(*args):
+	return bsplslib.SetPoles(*args)
+
+@deprecated
+def bsplslib_Unperiodize(*args):
+	return bsplslib.Unperiodize(*args)
+
+}

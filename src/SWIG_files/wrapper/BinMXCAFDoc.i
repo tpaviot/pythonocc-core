@@ -1230,3 +1230,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmxcafdoc_AddDrivers(*args):
+	return binmxcafdoc.AddDrivers(*args)
+
+}

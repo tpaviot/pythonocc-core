@@ -1839,3 +1839,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmdatastd_AddDrivers(*args):
+	return binmdatastd.AddDrivers(*args)
+
+}

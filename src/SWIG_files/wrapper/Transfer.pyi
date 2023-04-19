@@ -479,8 +479,3 @@ class Transfer_HSequenceOfFinder(Transfer_SequenceOfFinder, Standard_Transient):
     def Append(self, theSequence: Transfer_SequenceOfFinder) -> None: ...
 
 
-Transfer_DataInfo_Type = Transfer_DataInfo.Type
-Transfer_DataInfo_TypeName = Transfer_DataInfo.TypeName
-Transfer_FindHasher_HashCode = Transfer_FindHasher.HashCode
-Transfer_FindHasher_IsEqual = Transfer_FindHasher.IsEqual
-Transfer_SimpleBinderOfTransient_GetTypedResult = Transfer_SimpleBinderOfTransient.GetTypedResult

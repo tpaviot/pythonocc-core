@@ -350,3 +350,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmfunction_AddDrivers(*args):
+	return binmfunction.AddDrivers(*args)
+
+}

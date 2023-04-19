@@ -286,4 +286,3 @@ class BRepOffsetAPI_MakeThickSolid(BRepOffsetAPI_MakeOffsetShape):
 # harray2 classes
 # hsequence classes
 
-BRepOffsetAPI_MakeOffset_ConvertFace = BRepOffsetAPI_MakeOffset.ConvertFace

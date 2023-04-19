@@ -17,7 +17,7 @@
 
 from math import radians
 
-from OCC.Core.BRepBndLib import brepbndlib_Add, brepbndlib_AddOptimal, brepbndlib_AddOBB
+from OCC.Core.BRepBndLib import brepbndlib
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
@@ -47,21 +47,14 @@ from OCC.Core.GeomAbs import (
 from OCC.Core.BRepAdaptor import BRepAdaptor_Surface, BRepAdaptor_Curve
 from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.Core.GProp import GProp_GProps
-from OCC.Core.BRepGProp import (
-    brepgprop_LinearProperties,
-    brepgprop_SurfaceProperties,
-    brepgprop_VolumeProperties,
-)
+from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.TColgp import TColgp_Array1OfPnt
 from OCC.Core.TopoDS import TopoDS_Face
 from OCC.Core.gp import (
+    gp,
     gp_Vec,
     gp_Pnt,
     gp_Trsf,
-    gp_OX,
-    gp_OY,
-    gp_OZ,
-    gp_XYZ,
     gp_Ax2,
     gp_Dir,
     gp_GTrsf,
@@ -201,9 +194,9 @@ def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
     if optimal_BB:
         use_triangulation = True
         use_shapetolerance = True
-        brepbndlib_AddOptimal(shape, bbox, use_triangulation, use_shapetolerance)
+        brepbndlib.AddOptimal(shape, bbox, use_triangulation, use_shapetolerance)
     else:
-        brepbndlib_Add(shape, bbox)
+        brepbndlib.Add(shape, bbox)
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
     corner1 = gp_Pnt(xmin, ymin, zmin)
     corner2 = gp_Pnt(xmax, ymax, zmax)
@@ -237,11 +230,11 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
         is_triangulation_used = True
         is_optimal = True
         is_shape_tolerance_used = False
-        brepbndlib_AddOBB(
+        brepbndlib.AddOBB(
             shape, obb, is_triangulation_used, is_optimal, is_shape_tolerance_used
         )
     else:
-        brepbndlib_AddOBB(shape, obb)
+        brepbndlib.AddOBB(shape, obb)
 
     # converts the bounding box to a shape
     bary_center = obb.Center()
@@ -252,9 +245,9 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
     a_half_y = obb.YHSize()
     a_half_z = obb.ZHSize()
 
-    ax = gp_XYZ(x_direction.X(), x_direction.Y(), x_direction.Z())
-    ay = gp_XYZ(y_direction.X(), y_direction.Y(), y_direction.Z())
-    az = gp_XYZ(z_direction.X(), z_direction.Y(), z_direction.Z())
+    ax = gp.XYZ(x_direction.X(), x_direction.Y(), x_direction.Z())
+    ay = gp.XYZ(y_direction.X(), y_direction.Y(), y_direction.Z())
+    az = gp.XYZ(z_direction.X(), z_direction.Y(), z_direction.Z())
     p = gp_Pnt(bary_center.X(), bary_center.Y(), bary_center.Z())
     an_axe = gp_Ax2(p, gp_Dir(z_direction), gp_Dir(x_direction))
     an_axe.SetLocation(gp_Pnt(p.XYZ() - ax * a_half_x - ay * a_half_y - az * a_half_z))
@@ -323,7 +316,7 @@ def get_boundingbox(shape, tol=1e-6, use_mesh=True):
         mesh.Perform()
         if not mesh.IsDone():
             raise AssertionError("Mesh not done.")
-    brepbndlib_Add(shape, bbox, use_mesh)
+    brepbndlib.Add(shape, bbox, use_mesh)
 
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
     return xmin, ymin, zmin, xmax, ymax, zmax
@@ -475,7 +468,7 @@ def recognize_face(topods_face):
 def measure_shape_volume(shape):
     """Returns shape volume"""
     inertia_props = GProp_GProps()
-    brepgprop_VolumeProperties(shape, inertia_props)
+    brepgprop.VolumeProperties(shape, inertia_props)
     mass = inertia_props.Mass()
     return mass
 
@@ -486,13 +479,13 @@ def measure_shape_mass_center_of_gravity(shape):
     or a list of 3 coordinates, by default."""
     inertia_props = GProp_GProps()
     if is_edge(shape):
-        brepgprop_LinearProperties(shape, inertia_props)
+        brepgprop.LinearProperties(shape, inertia_props)
         mass_property = "Length"
     elif is_face(shape):
-        brepgprop_SurfaceProperties(shape, inertia_props)
+        brepgprop.SurfaceProperties(shape, inertia_props)
         mass_property = "Area"
     else:
-        brepgprop_VolumeProperties(shape, inertia_props)
+        brepgprop.VolumeProperties(shape, inertia_props)
         mass_property = "Volume"
     cog = inertia_props.CentreOfMass()
     mass = inertia_props.Mass()

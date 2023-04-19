@@ -2631,3 +2631,266 @@ class StdPrs_DeflectionCurve:
 %pythoncode {
 StdPrs_BndBox=OCC.Core.Prs3d.Prs3d_BndBox
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def StdPrs_BRepFont_FindAndCreate(*args):
+	return StdPrs_BRepFont.FindAndCreate(*args)
+
+@deprecated
+def StdPrs_Curve_Add(*args):
+	return StdPrs_Curve.Add(*args)
+
+@deprecated
+def StdPrs_Curve_Add(*args):
+	return StdPrs_Curve.Add(*args)
+
+@deprecated
+def StdPrs_Curve_Add(*args):
+	return StdPrs_Curve.Add(*args)
+
+@deprecated
+def StdPrs_Curve_Add(*args):
+	return StdPrs_Curve.Add(*args)
+
+@deprecated
+def StdPrs_Curve_Match(*args):
+	return StdPrs_Curve.Match(*args)
+
+@deprecated
+def StdPrs_Curve_Match(*args):
+	return StdPrs_Curve.Match(*args)
+
+@deprecated
+def StdPrs_Curve_Match(*args):
+	return StdPrs_Curve.Match(*args)
+
+@deprecated
+def StdPrs_Curve_Match(*args):
+	return StdPrs_Curve.Match(*args)
+
+@deprecated
+def StdPrs_Isolines_Add(*args):
+	return StdPrs_Isolines.Add(*args)
+
+@deprecated
+def StdPrs_Isolines_Add(*args):
+	return StdPrs_Isolines.Add(*args)
+
+@deprecated
+def StdPrs_Isolines_AddOnSurface(*args):
+	return StdPrs_Isolines.AddOnSurface(*args)
+
+@deprecated
+def StdPrs_Isolines_AddOnSurface(*args):
+	return StdPrs_Isolines.AddOnSurface(*args)
+
+@deprecated
+def StdPrs_Isolines_AddOnSurface(*args):
+	return StdPrs_Isolines.AddOnSurface(*args)
+
+@deprecated
+def StdPrs_Isolines_AddOnTriangulation(*args):
+	return StdPrs_Isolines.AddOnTriangulation(*args)
+
+@deprecated
+def StdPrs_Isolines_AddOnTriangulation(*args):
+	return StdPrs_Isolines.AddOnTriangulation(*args)
+
+@deprecated
+def StdPrs_Isolines_AddOnTriangulation(*args):
+	return StdPrs_Isolines.AddOnTriangulation(*args)
+
+@deprecated
+def StdPrs_Isolines_UVIsoParameters(*args):
+	return StdPrs_Isolines.UVIsoParameters(*args)
+
+@deprecated
+def StdPrs_Plane_Add(*args):
+	return StdPrs_Plane.Add(*args)
+
+@deprecated
+def StdPrs_Plane_Match(*args):
+	return StdPrs_Plane.Match(*args)
+
+@deprecated
+def StdPrs_PoleCurve_Add(*args):
+	return StdPrs_PoleCurve.Add(*args)
+
+@deprecated
+def StdPrs_PoleCurve_Match(*args):
+	return StdPrs_PoleCurve.Match(*args)
+
+@deprecated
+def StdPrs_PoleCurve_Pick(*args):
+	return StdPrs_PoleCurve.Pick(*args)
+
+@deprecated
+def StdPrs_ShadedShape_Add(*args):
+	return StdPrs_ShadedShape.Add(*args)
+
+@deprecated
+def StdPrs_ShadedShape_Add(*args):
+	return StdPrs_ShadedShape.Add(*args)
+
+@deprecated
+def StdPrs_ShadedShape_AddWireframeForFacesWithoutTriangles(*args):
+	return StdPrs_ShadedShape.AddWireframeForFacesWithoutTriangles(*args)
+
+@deprecated
+def StdPrs_ShadedShape_AddWireframeForFreeElements(*args):
+	return StdPrs_ShadedShape.AddWireframeForFreeElements(*args)
+
+@deprecated
+def StdPrs_ShadedShape_ExploreSolids(*args):
+	return StdPrs_ShadedShape.ExploreSolids(*args)
+
+@deprecated
+def StdPrs_ShadedShape_FillFaceBoundaries(*args):
+	return StdPrs_ShadedShape.FillFaceBoundaries(*args)
+
+@deprecated
+def StdPrs_ShadedShape_FillTriangles(*args):
+	return StdPrs_ShadedShape.FillTriangles(*args)
+
+@deprecated
+def StdPrs_ShadedShape_FillTriangles(*args):
+	return StdPrs_ShadedShape.FillTriangles(*args)
+
+@deprecated
+def StdPrs_ShadedSurface_Add(*args):
+	return StdPrs_ShadedSurface.Add(*args)
+
+@deprecated
+def StdPrs_ShapeTool_IsPlanarFace(*args):
+	return StdPrs_ShapeTool.IsPlanarFace(*args)
+
+@deprecated
+def StdPrs_ToolPoint_Coord(*args):
+	return StdPrs_ToolPoint.Coord(*args)
+
+@deprecated
+def StdPrs_ToolTriangulatedShape_ClearOnOwnDeflectionChange(*args):
+	return StdPrs_ToolTriangulatedShape.ClearOnOwnDeflectionChange(*args)
+
+@deprecated
+def StdPrs_ToolTriangulatedShape_GetDeflection(*args):
+	return StdPrs_ToolTriangulatedShape.GetDeflection(*args)
+
+@deprecated
+def StdPrs_ToolTriangulatedShape_IsClosed(*args):
+	return StdPrs_ToolTriangulatedShape.IsClosed(*args)
+
+@deprecated
+def StdPrs_ToolTriangulatedShape_IsTessellated(*args):
+	return StdPrs_ToolTriangulatedShape.IsTessellated(*args)
+
+@deprecated
+def StdPrs_ToolTriangulatedShape_IsTriangulated(*args):
+	return StdPrs_ToolTriangulatedShape.IsTriangulated(*args)
+
+@deprecated
+def StdPrs_ToolTriangulatedShape_Tessellate(*args):
+	return StdPrs_ToolTriangulatedShape.Tessellate(*args)
+
+@deprecated
+def StdPrs_ToolVertex_Coord(*args):
+	return StdPrs_ToolVertex.Coord(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_Add(*args):
+	return StdPrs_WFDeflectionRestrictedFace.Add(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_Add(*args):
+	return StdPrs_WFDeflectionRestrictedFace.Add(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_AddUIso(*args):
+	return StdPrs_WFDeflectionRestrictedFace.AddUIso(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_AddVIso(*args):
+	return StdPrs_WFDeflectionRestrictedFace.AddVIso(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_Match(*args):
+	return StdPrs_WFDeflectionRestrictedFace.Match(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_Match(*args):
+	return StdPrs_WFDeflectionRestrictedFace.Match(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_MatchUIso(*args):
+	return StdPrs_WFDeflectionRestrictedFace.MatchUIso(*args)
+
+@deprecated
+def StdPrs_WFDeflectionRestrictedFace_MatchVIso(*args):
+	return StdPrs_WFDeflectionRestrictedFace.MatchVIso(*args)
+
+@deprecated
+def StdPrs_WFDeflectionSurface_Add(*args):
+	return StdPrs_WFDeflectionSurface.Add(*args)
+
+@deprecated
+def StdPrs_WFPoleSurface_Add(*args):
+	return StdPrs_WFPoleSurface.Add(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_Add(*args):
+	return StdPrs_WFRestrictedFace.Add(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_Add(*args):
+	return StdPrs_WFRestrictedFace.Add(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_AddUIso(*args):
+	return StdPrs_WFRestrictedFace.AddUIso(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_AddVIso(*args):
+	return StdPrs_WFRestrictedFace.AddVIso(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_Match(*args):
+	return StdPrs_WFRestrictedFace.Match(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_Match(*args):
+	return StdPrs_WFRestrictedFace.Match(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_MatchUIso(*args):
+	return StdPrs_WFRestrictedFace.MatchUIso(*args)
+
+@deprecated
+def StdPrs_WFRestrictedFace_MatchVIso(*args):
+	return StdPrs_WFRestrictedFace.MatchVIso(*args)
+
+@deprecated
+def StdPrs_WFShape_Add(*args):
+	return StdPrs_WFShape.Add(*args)
+
+@deprecated
+def StdPrs_WFShape_AddAllEdges(*args):
+	return StdPrs_WFShape.AddAllEdges(*args)
+
+@deprecated
+def StdPrs_WFShape_AddEdgesOnTriangulation(*args):
+	return StdPrs_WFShape.AddEdgesOnTriangulation(*args)
+
+@deprecated
+def StdPrs_WFShape_AddEdgesOnTriangulation(*args):
+	return StdPrs_WFShape.AddEdgesOnTriangulation(*args)
+
+@deprecated
+def StdPrs_WFShape_AddVertexes(*args):
+	return StdPrs_WFShape.AddVertexes(*args)
+
+@deprecated
+def StdPrs_WFSurface_Add(*args):
+	return StdPrs_WFSurface.Add(*args)
+
+}

@@ -698,3 +698,18 @@ opencascade::handle<Expr_GeneralRelation>
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def ExprIntrp_GenExp_Create(*args):
+	return ExprIntrp_GenExp.Create(*args)
+
+@deprecated
+def ExprIntrp_GenFct_Create(*args):
+	return ExprIntrp_GenFct.Create(*args)
+
+@deprecated
+def ExprIntrp_GenRel_Create(*args):
+	return ExprIntrp_GenRel.Create(*args)
+
+}

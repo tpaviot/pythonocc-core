@@ -3849,3 +3849,34 @@ Standard_ExtCharacter
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def tcollection_NextPrimeForMap(*args):
+	return tcollection.NextPrimeForMap(*args)
+
+@deprecated
+def TCollection_AsciiString_HashCode(*args):
+	return TCollection_AsciiString.HashCode(*args)
+
+@deprecated
+def TCollection_AsciiString_IsEqual(*args):
+	return TCollection_AsciiString.IsEqual(*args)
+
+@deprecated
+def TCollection_AsciiString_IsEqual(*args):
+	return TCollection_AsciiString.IsEqual(*args)
+
+@deprecated
+def TCollection_AsciiString_IsSameString(*args):
+	return TCollection_AsciiString.IsSameString(*args)
+
+@deprecated
+def TCollection_ExtendedString_HashCode(*args):
+	return TCollection_ExtendedString.HashCode(*args)
+
+@deprecated
+def TCollection_ExtendedString_IsEqual(*args):
+	return TCollection_ExtendedString.IsEqual(*args)
+
+}

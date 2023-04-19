@@ -4700,3 +4700,26 @@ class Transfer_HSequenceOfFinder : public Transfer_SequenceOfFinder, public Stan
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Transfer_DataInfo_Type(*args):
+	return Transfer_DataInfo.Type(*args)
+
+@deprecated
+def Transfer_DataInfo_TypeName(*args):
+	return Transfer_DataInfo.TypeName(*args)
+
+@deprecated
+def Transfer_FindHasher_HashCode(*args):
+	return Transfer_FindHasher.HashCode(*args)
+
+@deprecated
+def Transfer_FindHasher_IsEqual(*args):
+	return Transfer_FindHasher.IsEqual(*args)
+
+@deprecated
+def Transfer_SimpleBinderOfTransient_GetTypedResult(*args):
+	return Transfer_SimpleBinderOfTransient.GetTypedResult(*args)
+
+}

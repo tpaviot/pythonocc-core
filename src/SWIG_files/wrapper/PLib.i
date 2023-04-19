@@ -1517,3 +1517,150 @@ int
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def plib_Bin(*args):
+	return plib.Bin(*args)
+
+@deprecated
+def plib_CoefficientsPoles(*args):
+	return plib.CoefficientsPoles(*args)
+
+@deprecated
+def plib_CoefficientsPoles(*args):
+	return plib.CoefficientsPoles(*args)
+
+@deprecated
+def plib_CoefficientsPoles(*args):
+	return plib.CoefficientsPoles(*args)
+
+@deprecated
+def plib_CoefficientsPoles(*args):
+	return plib.CoefficientsPoles(*args)
+
+@deprecated
+def plib_CoefficientsPoles(*args):
+	return plib.CoefficientsPoles(*args)
+
+@deprecated
+def plib_ConstraintOrder(*args):
+	return plib.ConstraintOrder(*args)
+
+@deprecated
+def plib_EvalCubicHermite(*args):
+	return plib.EvalCubicHermite(*args)
+
+@deprecated
+def plib_EvalLagrange(*args):
+	return plib.EvalLagrange(*args)
+
+@deprecated
+def plib_EvalLength(*args):
+	return plib.EvalLength(*args)
+
+@deprecated
+def plib_EvalLength(*args):
+	return plib.EvalLength(*args)
+
+@deprecated
+def plib_EvalPoly2Var(*args):
+	return plib.EvalPoly2Var(*args)
+
+@deprecated
+def plib_EvalPolynomial(*args):
+	return plib.EvalPolynomial(*args)
+
+@deprecated
+def plib_GetPoles(*args):
+	return plib.GetPoles(*args)
+
+@deprecated
+def plib_GetPoles(*args):
+	return plib.GetPoles(*args)
+
+@deprecated
+def plib_GetPoles(*args):
+	return plib.GetPoles(*args)
+
+@deprecated
+def plib_GetPoles(*args):
+	return plib.GetPoles(*args)
+
+@deprecated
+def plib_HermiteCoefficients(*args):
+	return plib.HermiteCoefficients(*args)
+
+@deprecated
+def plib_HermiteInterpolate(*args):
+	return plib.HermiteInterpolate(*args)
+
+@deprecated
+def plib_JacobiParameters(*args):
+	return plib.JacobiParameters(*args)
+
+@deprecated
+def plib_NivConstr(*args):
+	return plib.NivConstr(*args)
+
+@deprecated
+def plib_NoDerivativeEvalPolynomial(*args):
+	return plib.NoDerivativeEvalPolynomial(*args)
+
+@deprecated
+def plib_NoWeights(*args):
+	return plib.NoWeights(*args)
+
+@deprecated
+def plib_NoWeights2(*args):
+	return plib.NoWeights2(*args)
+
+@deprecated
+def plib_RationalDerivative(*args):
+	return plib.RationalDerivative(*args)
+
+@deprecated
+def plib_RationalDerivatives(*args):
+	return plib.RationalDerivatives(*args)
+
+@deprecated
+def plib_SetPoles(*args):
+	return plib.SetPoles(*args)
+
+@deprecated
+def plib_SetPoles(*args):
+	return plib.SetPoles(*args)
+
+@deprecated
+def plib_SetPoles(*args):
+	return plib.SetPoles(*args)
+
+@deprecated
+def plib_SetPoles(*args):
+	return plib.SetPoles(*args)
+
+@deprecated
+def plib_Trimming(*args):
+	return plib.Trimming(*args)
+
+@deprecated
+def plib_Trimming(*args):
+	return plib.Trimming(*args)
+
+@deprecated
+def plib_Trimming(*args):
+	return plib.Trimming(*args)
+
+@deprecated
+def plib_Trimming(*args):
+	return plib.Trimming(*args)
+
+@deprecated
+def plib_UTrimming(*args):
+	return plib.UTrimming(*args)
+
+@deprecated
+def plib_VTrimming(*args):
+	return plib.VTrimming(*args)
+
+}

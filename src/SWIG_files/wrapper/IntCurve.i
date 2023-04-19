@@ -1499,3 +1499,38 @@ float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def IntCurve_PConicTool_D1(*args):
+	return IntCurve_PConicTool.D1(*args)
+
+@deprecated
+def IntCurve_PConicTool_D2(*args):
+	return IntCurve_PConicTool.D2(*args)
+
+@deprecated
+def IntCurve_PConicTool_EpsX(*args):
+	return IntCurve_PConicTool.EpsX(*args)
+
+@deprecated
+def IntCurve_PConicTool_NbSamples(*args):
+	return IntCurve_PConicTool.NbSamples(*args)
+
+@deprecated
+def IntCurve_PConicTool_NbSamples(*args):
+	return IntCurve_PConicTool.NbSamples(*args)
+
+@deprecated
+def IntCurve_PConicTool_Value(*args):
+	return IntCurve_PConicTool.Value(*args)
+
+@deprecated
+def IntCurve_ProjectOnPConicTool_FindParameter(*args):
+	return IntCurve_ProjectOnPConicTool.FindParameter(*args)
+
+@deprecated
+def IntCurve_ProjectOnPConicTool_FindParameter(*args):
+	return IntCurve_ProjectOnPConicTool.FindParameter(*args)
+
+}

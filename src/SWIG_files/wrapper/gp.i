@@ -20596,3 +20596,78 @@ gp_XYZ
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def gp_DX(*args):
+	return gp.DX(*args)
+
+@deprecated
+def gp_DX2d(*args):
+	return gp.DX2d(*args)
+
+@deprecated
+def gp_DY(*args):
+	return gp.DY(*args)
+
+@deprecated
+def gp_DY2d(*args):
+	return gp.DY2d(*args)
+
+@deprecated
+def gp_DZ(*args):
+	return gp.DZ(*args)
+
+@deprecated
+def gp_OX(*args):
+	return gp.OX(*args)
+
+@deprecated
+def gp_OX2d(*args):
+	return gp.OX2d(*args)
+
+@deprecated
+def gp_OY(*args):
+	return gp.OY(*args)
+
+@deprecated
+def gp_OY2d(*args):
+	return gp.OY2d(*args)
+
+@deprecated
+def gp_OZ(*args):
+	return gp.OZ(*args)
+
+@deprecated
+def gp_Origin(*args):
+	return gp.Origin(*args)
+
+@deprecated
+def gp_Origin2d(*args):
+	return gp.Origin2d(*args)
+
+@deprecated
+def gp_Resolution(*args):
+	return gp.Resolution(*args)
+
+@deprecated
+def gp_XOY(*args):
+	return gp.XOY(*args)
+
+@deprecated
+def gp_YOZ(*args):
+	return gp.YOZ(*args)
+
+@deprecated
+def gp_ZOX(*args):
+	return gp.ZOX(*args)
+
+@deprecated
+def gp_QuaternionNLerp_Interpolate(*args):
+	return gp_QuaternionNLerp.Interpolate(*args)
+
+@deprecated
+def gp_QuaternionSLerp_Interpolate(*args):
+	return gp_QuaternionSLerp.Interpolate(*args)
+
+}

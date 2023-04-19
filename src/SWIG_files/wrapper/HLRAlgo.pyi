@@ -451,11 +451,3 @@ class HLRAlgo_HArray1OfPISeg(HLRAlgo_Array1OfPISeg, Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-hlralgo_AddMinMax = hlralgo.AddMinMax
-hlralgo_CopyMinMax = hlralgo.CopyMinMax
-hlralgo_DecodeMinMax = hlralgo.DecodeMinMax
-hlralgo_EncodeMinMax = hlralgo.EncodeMinMax
-hlralgo_EnlargeMinMax = hlralgo.EnlargeMinMax
-hlralgo_InitMinMax = hlralgo.InitMinMax
-hlralgo_SizeBox = hlralgo.SizeBox
-hlralgo_UpdateMinMax = hlralgo.UpdateMinMax

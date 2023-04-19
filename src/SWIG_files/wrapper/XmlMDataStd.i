@@ -1834,3 +1834,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmdatastd_AddDrivers(*args):
+	return xmlmdatastd.AddDrivers(*args)
+
+}

@@ -34,6 +34,3 @@ class XmlDrivers_DocumentStorageDriver(XmlLDrivers_DocumentStorageDriver):
 # harray2 classes
 # hsequence classes
 
-xmldrivers_AttributeDrivers = xmldrivers.AttributeDrivers
-xmldrivers_DefineFormat = xmldrivers.DefineFormat
-xmldrivers_Factory = xmldrivers.Factory

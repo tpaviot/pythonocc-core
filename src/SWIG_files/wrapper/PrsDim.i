@@ -4086,3 +4086,118 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def prsdim_ComputeGeomCurve(*args):
+	return prsdim.ComputeGeomCurve(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeGeometry(*args):
+	return prsdim.ComputeGeometry(*args)
+
+@deprecated
+def prsdim_ComputeProjEdgePresentation(*args):
+	return prsdim.ComputeProjEdgePresentation(*args)
+
+@deprecated
+def prsdim_ComputeProjVertexPresentation(*args):
+	return prsdim.ComputeProjVertexPresentation(*args)
+
+@deprecated
+def prsdim_DistanceFromApex(*args):
+	return prsdim.DistanceFromApex(*args)
+
+@deprecated
+def prsdim_Farest(*args):
+	return prsdim.Farest(*args)
+
+@deprecated
+def prsdim_GetPlaneFromFace(*args):
+	return prsdim.GetPlaneFromFace(*args)
+
+@deprecated
+def prsdim_InDomain(*args):
+	return prsdim.InDomain(*args)
+
+@deprecated
+def prsdim_InitAngleBetweenCurvilinearFaces(*args):
+	return prsdim.InitAngleBetweenCurvilinearFaces(*args)
+
+@deprecated
+def prsdim_InitAngleBetweenPlanarFaces(*args):
+	return prsdim.InitAngleBetweenPlanarFaces(*args)
+
+@deprecated
+def prsdim_InitFaceLength(*args):
+	return prsdim.InitFaceLength(*args)
+
+@deprecated
+def prsdim_InitLengthBetweenCurvilinearFaces(*args):
+	return prsdim.InitLengthBetweenCurvilinearFaces(*args)
+
+@deprecated
+def prsdim_Nearest(*args):
+	return prsdim.Nearest(*args)
+
+@deprecated
+def prsdim_Nearest(*args):
+	return prsdim.Nearest(*args)
+
+@deprecated
+def prsdim_Nearest(*args):
+	return prsdim.Nearest(*args)
+
+@deprecated
+def prsdim_NearestApex(*args):
+	return prsdim.NearestApex(*args)
+
+@deprecated
+def prsdim_ProjectPointOnLine(*args):
+	return prsdim.ProjectPointOnLine(*args)
+
+@deprecated
+def prsdim_ProjectPointOnPlane(*args):
+	return prsdim.ProjectPointOnPlane(*args)
+
+@deprecated
+def prsdim_TranslatePointToBound(*args):
+	return prsdim.TranslatePointToBound(*args)
+
+@deprecated
+def PrsDim_EqualDistanceRelation_ComputeOneEdgeOneVertexLength(*args):
+	return PrsDim_EqualDistanceRelation.ComputeOneEdgeOneVertexLength(*args)
+
+@deprecated
+def PrsDim_EqualDistanceRelation_ComputeTwoEdgesLength(*args):
+	return PrsDim_EqualDistanceRelation.ComputeTwoEdgesLength(*args)
+
+@deprecated
+def PrsDim_EqualDistanceRelation_ComputeTwoVerticesLength(*args):
+	return PrsDim_EqualDistanceRelation.ComputeTwoVerticesLength(*args)
+
+}

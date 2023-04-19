@@ -386,15 +386,3 @@ class Poly_HArray1OfTriangle(Poly_Array1OfTriangle, Standard_Transient):
 # harray2 classes
 # hsequence classes
 
-poly_Catenate = poly.Catenate
-poly_ComputeNormals = poly.ComputeNormals
-poly_Dump = poly.Dump
-poly_Dump = poly.Dump
-poly_Dump = poly.Dump
-poly_Intersect = poly.Intersect
-poly_IntersectTriLine = poly.IntersectTriLine
-poly_PointOnTriangle = poly.PointOnTriangle
-poly_Write = poly.Write
-poly_Write = poly.Write
-poly_Write = poly.Write
-Poly_MergeNodesTool_MergeNodes = Poly_MergeNodesTool.MergeNodes

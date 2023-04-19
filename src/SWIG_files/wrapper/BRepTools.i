@@ -3026,3 +3026,162 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def breptools_ActivateTriangulation(*args):
+	return breptools.ActivateTriangulation(*args)
+
+@deprecated
+def breptools_AddUVBounds(*args):
+	return breptools.AddUVBounds(*args)
+
+@deprecated
+def breptools_AddUVBounds(*args):
+	return breptools.AddUVBounds(*args)
+
+@deprecated
+def breptools_AddUVBounds(*args):
+	return breptools.AddUVBounds(*args)
+
+@deprecated
+def breptools_CheckLocations(*args):
+	return breptools.CheckLocations(*args)
+
+@deprecated
+def breptools_Clean(*args):
+	return breptools.Clean(*args)
+
+@deprecated
+def breptools_CleanGeometry(*args):
+	return breptools.CleanGeometry(*args)
+
+@deprecated
+def breptools_Compare(*args):
+	return breptools.Compare(*args)
+
+@deprecated
+def breptools_Compare(*args):
+	return breptools.Compare(*args)
+
+@deprecated
+def breptools_DetectClosedness(*args):
+	return breptools.DetectClosedness(*args)
+
+@deprecated
+def breptools_EvalAndUpdateTol(*args):
+	return breptools.EvalAndUpdateTol(*args)
+
+@deprecated
+def breptools_IsReallyClosed(*args):
+	return breptools.IsReallyClosed(*args)
+
+@deprecated
+def breptools_LoadAllTriangulations(*args):
+	return breptools.LoadAllTriangulations(*args)
+
+@deprecated
+def breptools_LoadTriangulation(*args):
+	return breptools.LoadTriangulation(*args)
+
+@deprecated
+def breptools_Map3DEdges(*args):
+	return breptools.Map3DEdges(*args)
+
+@deprecated
+def breptools_OriEdgeInFace(*args):
+	return breptools.OriEdgeInFace(*args)
+
+@deprecated
+def breptools_OuterWire(*args):
+	return breptools.OuterWire(*args)
+
+@deprecated
+def breptools_Read(*args):
+	return breptools.Read(*args)
+
+@deprecated
+def breptools_RemoveInternals(*args):
+	return breptools.RemoveInternals(*args)
+
+@deprecated
+def breptools_RemoveUnusedPCurves(*args):
+	return breptools.RemoveUnusedPCurves(*args)
+
+@deprecated
+def breptools_Triangulation(*args):
+	return breptools.Triangulation(*args)
+
+@deprecated
+def breptools_UVBounds(*args):
+	return breptools.UVBounds(*args)
+
+@deprecated
+def breptools_UVBounds(*args):
+	return breptools.UVBounds(*args)
+
+@deprecated
+def breptools_UVBounds(*args):
+	return breptools.UVBounds(*args)
+
+@deprecated
+def breptools_UnloadAllTriangulations(*args):
+	return breptools.UnloadAllTriangulations(*args)
+
+@deprecated
+def breptools_UnloadTriangulation(*args):
+	return breptools.UnloadTriangulation(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_Update(*args):
+	return breptools.Update(*args)
+
+@deprecated
+def breptools_UpdateFaceUVPoints(*args):
+	return breptools.UpdateFaceUVPoints(*args)
+
+@deprecated
+def breptools_Write(*args):
+	return breptools.Write(*args)
+
+@deprecated
+def breptools_Write(*args):
+	return breptools.Write(*args)
+
+@deprecated
+def BRepTools_History_IsSupportedType(*args):
+	return BRepTools_History.IsSupportedType(*args)
+
+}

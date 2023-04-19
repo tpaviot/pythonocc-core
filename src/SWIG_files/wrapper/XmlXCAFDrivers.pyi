@@ -28,5 +28,3 @@ class XmlXCAFDrivers_DocumentStorageDriver(XmlDrivers_DocumentStorageDriver):
 # harray2 classes
 # hsequence classes
 
-xmlxcafdrivers_DefineFormat = xmlxcafdrivers.DefineFormat
-xmlxcafdrivers_Factory = xmlxcafdrivers.Factory

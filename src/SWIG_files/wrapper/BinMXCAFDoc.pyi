@@ -134,4 +134,3 @@ class BinMXCAFDoc_NoteCommentDriver(BinMXCAFDoc_NoteDriver):
 # harray2 classes
 # hsequence classes
 
-binmxcafdoc_AddDrivers = binmxcafdoc.AddDrivers

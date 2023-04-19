@@ -162,11 +162,3 @@ class IntCurve_ProjectOnPConicTool:
 # harray2 classes
 # hsequence classes
 
-IntCurve_PConicTool_D1 = IntCurve_PConicTool.D1
-IntCurve_PConicTool_D2 = IntCurve_PConicTool.D2
-IntCurve_PConicTool_EpsX = IntCurve_PConicTool.EpsX
-IntCurve_PConicTool_NbSamples = IntCurve_PConicTool.NbSamples
-IntCurve_PConicTool_NbSamples = IntCurve_PConicTool.NbSamples
-IntCurve_PConicTool_Value = IntCurve_PConicTool.Value
-IntCurve_ProjectOnPConicTool_FindParameter = IntCurve_ProjectOnPConicTool.FindParameter
-IntCurve_ProjectOnPConicTool_FindParameter = IntCurve_ProjectOnPConicTool.FindParameter

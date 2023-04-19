@@ -196,3 +196,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def binmdocstd_AddDrivers(*args):
+	return binmdocstd.AddDrivers(*args)
+
+}

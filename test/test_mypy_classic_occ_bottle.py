@@ -19,18 +19,35 @@
 
 import math
 
-from OCC.Core.gp import (gp_Pnt, gp_OX, gp_Vec, gp_Trsf, gp_DZ, gp_Ax2, gp_Ax3,
-                         gp_Pnt2d, gp_Dir2d, gp_Ax2d, gp_Pln)
+from OCC.Core.gp import (
+    gp,
+    gp_Pnt,
+    gp_Vec,
+    gp_Trsf,
+    gp_Ax2,
+    gp_Ax3,
+    gp_Pnt2d,
+    gp_Dir2d,
+    gp_Ax2d,
+    gp_Pln,
+)
 from OCC.Core.GC import GC_MakeArcOfCircle, GC_MakeSegment
 from OCC.Core.GCE2d import GCE2d_MakeSegment
 from OCC.Core.Geom import Geom_CylindricalSurface
 from OCC.Core.Geom2d import Geom2d_Ellipse, Geom2d_TrimmedCurve
-from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire,
-                                     BRepBuilderAPI_MakeFace, BRepBuilderAPI_Transform)
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeWire,
+    BRepBuilderAPI_MakeFace,
+    BRepBuilderAPI_Transform,
+)
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakePrism, BRepPrimAPI_MakeCylinder
 from OCC.Core.BRepFilletAPI import BRepFilletAPI_MakeFillet
 from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse
-from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_MakeThickSolid, BRepOffsetAPI_ThruSections
+from OCC.Core.BRepOffsetAPI import (
+    BRepOffsetAPI_MakeThickSolid,
+    BRepOffsetAPI_ThruSections,
+)
 from OCC.Core.BRepLib import breplib
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.GeomAbs import GeomAbs_Plane
@@ -39,6 +56,7 @@ from OCC.Core.TopoDS import topods, TopoDS_Compound, TopoDS_Face
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE
 from OCC.Core.TopTools import TopTools_ListOfShape
+
 
 def face_is_plane(face: TopoDS_Face) -> bool:
     """
@@ -81,7 +99,7 @@ aEdge3 = BRepBuilderAPI_MakeEdge(aSegment2.Value())
 aWire = BRepBuilderAPI_MakeWire(aEdge1.Edge(), aEdge2.Edge(), aEdge3.Edge())
 
 # Quick way to specify the X axis
-xAxis = gp_OX()
+xAxis = gp.OX()
 
 # Set up the mirror
 aTrsf = gp_Trsf()
@@ -121,7 +139,7 @@ while anEdgeExplorer.More():
 
 # Create the neck of the bottle
 neckLocation = gp_Pnt(0, 0, height)
-neckAxis = gp_DZ()
+neckAxis = gp.DZ()
 neckAx2 = gp_Ax2(neckLocation, neckAxis)
 
 myNeckRadius = thickness / 4.0
@@ -132,7 +150,7 @@ mkCylinder = BRepPrimAPI_MakeCylinder(neckAx2, myNeckRadius, myNeckHeight)
 myBody_step2 = BRepAlgoAPI_Fuse(mkFillet.Shape(), mkCylinder.Shape())
 
 # Our goal is to find the highest Z face and remove it
-zMax = -1.
+zMax = -1.0
 
 # We have to work our way through all the faces to find the highest Z face so we can remove it for the shell
 aFaceExplorer = TopExp_Explorer(myBody_step2.Shape(), TopAbs_FACE)
@@ -152,12 +170,14 @@ facesToRemove = TopTools_ListOfShape()
 facesToRemove.Append(aFace)
 
 mk_thick_solid = BRepOffsetAPI_MakeThickSolid()
-mk_thick_solid.MakeThickSolidByJoin(myBody_step2.Shape(), facesToRemove, -thickness / 50.0, 0.001)
+mk_thick_solid.MakeThickSolidByJoin(
+    myBody_step2.Shape(), facesToRemove, -thickness / 50.0, 0.001
+)
 mk_thick_solid.Build()
 myBody_step3 = mk_thick_solid.Shape()
 
 # Set up our surfaces for the threading on the neck
-neckAx2_Ax3 = gp_Ax3(neckLocation, gp_DZ())
+neckAx2_Ax3 = gp_Ax3(neckLocation, gp.DZ())
 aCyl1 = Geom_CylindricalSurface(neckAx2_Ax3, myNeckRadius * 0.99)
 aCyl2 = Geom_CylindricalSurface(neckAx2_Ax3, myNeckRadius * 1.05)
 

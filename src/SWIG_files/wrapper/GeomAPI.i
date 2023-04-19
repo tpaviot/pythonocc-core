@@ -2408,3 +2408,14 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def geomapi_To2d(*args):
+	return geomapi.To2d(*args)
+
+@deprecated
+def geomapi_To3d(*args):
+	return geomapi.To3d(*args)
+
+}

@@ -214,3 +214,18 @@ class ShapeAlgo_AlgoContainer:
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def shapealgo_AlgoContainer(*args):
+	return shapealgo.AlgoContainer(*args)
+
+@deprecated
+def shapealgo_Init(*args):
+	return shapealgo.Init(*args)
+
+@deprecated
+def shapealgo_SetAlgoContainer(*args):
+	return shapealgo.SetAlgoContainer(*args)
+
+}

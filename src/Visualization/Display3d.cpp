@@ -77,6 +77,27 @@ Display3d::Display3d()
   {
   printf("V3d_View created\n");
   }
+  // create camera
+  myGraphic3dCamera = myV3dView -> Camera();
+  if (myGraphic3dCamera.IsNull())
+  {
+  Message::SendFail("No camera.");
+  }
+  else
+  {
+  printf("Graphic3d_Camera created\n");
+  }
+  // create structure manager
+  myGraphic3dStructureManager = myAISContext -> MainPrsMgr() -> StructureManager();
+  if (myGraphic3dStructureManager.IsNull())
+  {
+  Message::SendFail("No structure manager.");
+  }
+  else
+  {
+  printf("Graphic3d_StructureManager created\n");
+  }
+
 }
 
 Display3d::~Display3d()

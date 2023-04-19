@@ -2865,3 +2865,10 @@ TopTools_ListOfShape
 %pythoncode {
 BRepOffsetAPI_Sewing=OCC.Core.BRepBuilderAPI.BRepBuilderAPI_Sewing
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BRepOffsetAPI_MakeOffset_ConvertFace(*args):
+	return BRepOffsetAPI_MakeOffset.ConvertFace(*args)
+
+}

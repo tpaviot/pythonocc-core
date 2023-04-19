@@ -1033,3 +1033,14 @@ TopoDS_Edge
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def chfi2d_CommonVertex(*args):
+	return chfi2d.CommonVertex(*args)
+
+@deprecated
+def chfi2d_FindConnectedEdges(*args):
+	return chfi2d.FindConnectedEdges(*args)
+
+}

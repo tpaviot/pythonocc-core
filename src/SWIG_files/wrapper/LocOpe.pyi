@@ -378,7 +378,3 @@ class LocOpe_RevolutionForm: ...
 # harray2 classes
 # hsequence classes
 
-locope_Closed = locope.Closed
-locope_Closed = locope.Closed
-locope_SampleEdges = locope.SampleEdges
-locope_TgtFaces = locope.TgtFaces

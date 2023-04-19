@@ -1828,3 +1828,150 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def TPrsStd_AISPresentation_GetID(*args):
+	return TPrsStd_AISPresentation.GetID(*args)
+
+@deprecated
+def TPrsStd_AISPresentation_Set(*args):
+	return TPrsStd_AISPresentation.Set(*args)
+
+@deprecated
+def TPrsStd_AISPresentation_Set(*args):
+	return TPrsStd_AISPresentation.Set(*args)
+
+@deprecated
+def TPrsStd_AISPresentation_Unset(*args):
+	return TPrsStd_AISPresentation.Unset(*args)
+
+@deprecated
+def TPrsStd_AISViewer_Find(*args):
+	return TPrsStd_AISViewer.Find(*args)
+
+@deprecated
+def TPrsStd_AISViewer_Find(*args):
+	return TPrsStd_AISViewer.Find(*args)
+
+@deprecated
+def TPrsStd_AISViewer_Find(*args):
+	return TPrsStd_AISViewer.Find(*args)
+
+@deprecated
+def TPrsStd_AISViewer_GetID(*args):
+	return TPrsStd_AISViewer.GetID(*args)
+
+@deprecated
+def TPrsStd_AISViewer_Has(*args):
+	return TPrsStd_AISViewer.Has(*args)
+
+@deprecated
+def TPrsStd_AISViewer_New(*args):
+	return TPrsStd_AISViewer.New(*args)
+
+@deprecated
+def TPrsStd_AISViewer_New(*args):
+	return TPrsStd_AISViewer.New(*args)
+
+@deprecated
+def TPrsStd_AISViewer_Update(*args):
+	return TPrsStd_AISViewer.Update(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeAngle(*args):
+	return TPrsStd_ConstraintTools.ComputeAngle(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeAngleForOneFace(*args):
+	return TPrsStd_ConstraintTools.ComputeAngleForOneFace(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeCoincident(*args):
+	return TPrsStd_ConstraintTools.ComputeCoincident(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeConcentric(*args):
+	return TPrsStd_ConstraintTools.ComputeConcentric(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeDiameter(*args):
+	return TPrsStd_ConstraintTools.ComputeDiameter(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeDistance(*args):
+	return TPrsStd_ConstraintTools.ComputeDistance(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeEqualDistance(*args):
+	return TPrsStd_ConstraintTools.ComputeEqualDistance(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeEqualRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeEqualRadius(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeFix(*args):
+	return TPrsStd_ConstraintTools.ComputeFix(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeMaxRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeMaxRadius(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeMidPoint(*args):
+	return TPrsStd_ConstraintTools.ComputeMidPoint(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeMinRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeMinRadius(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeOffset(*args):
+	return TPrsStd_ConstraintTools.ComputeOffset(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeOthers(*args):
+	return TPrsStd_ConstraintTools.ComputeOthers(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeParallel(*args):
+	return TPrsStd_ConstraintTools.ComputeParallel(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputePerpendicular(*args):
+	return TPrsStd_ConstraintTools.ComputePerpendicular(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputePlacement(*args):
+	return TPrsStd_ConstraintTools.ComputePlacement(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeRadius(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeRound(*args):
+	return TPrsStd_ConstraintTools.ComputeRound(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeSymmetry(*args):
+	return TPrsStd_ConstraintTools.ComputeSymmetry(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeTangent(*args):
+	return TPrsStd_ConstraintTools.ComputeTangent(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeTextAndValue(*args):
+	return TPrsStd_ConstraintTools.ComputeTextAndValue(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_UpdateOnlyValue(*args):
+	return TPrsStd_ConstraintTools.UpdateOnlyValue(*args)
+
+@deprecated
+def TPrsStd_DriverTable_Get(*args):
+	return TPrsStd_DriverTable.Get(*args)
+
+}

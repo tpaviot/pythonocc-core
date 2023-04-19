@@ -503,4 +503,3 @@ class SelectMgr_SensitiveEntitySet: ...
 # harray2 classes
 # hsequence classes
 
-selectmgr_ComputeSensitivePrs = selectmgr.ComputeSensitivePrs

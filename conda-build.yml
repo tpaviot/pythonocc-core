@@ -22,11 +22,13 @@ jobs:
     - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
       displayName: 'Add conda to PATH'
 
-  # Ubuntu install opengl items
+  # Ubuntu install opengl items and remove swig packages that conflict with anaconda
   - ${{ if contains(parameters.vmImage, 'Ubuntu') }}:
     - bash: |
         sudo apt-get update && \
-        sudo apt-get -q -y install libglu1-mesa-dev libgl1-mesa-dev libxmu-dev libxi-dev
+        sudo apt-get -q -y install libglu1-mesa-dev libgl1-mesa-dev libxmu-dev libxi-dev && \
+        sudo apt list --installed && \
+        sudo apt remove swig swig4.0
       displayName: 'Install OpenGL headers'
 
   # macOS ownership workaround and fix osx sdk

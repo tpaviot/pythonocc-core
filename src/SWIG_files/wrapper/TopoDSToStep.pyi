@@ -237,11 +237,3 @@ class TopoDSToStep_WireframeBuilder(TopoDSToStep_Root):
 # harray2 classes
 # hsequence classes
 
-topodstostep_AddResult = topodstostep.AddResult
-topodstostep_AddResult = topodstostep.AddResult
-topodstostep_DecodeBuilderError = topodstostep.DecodeBuilderError
-topodstostep_DecodeEdgeError = topodstostep.DecodeEdgeError
-topodstostep_DecodeFaceError = topodstostep.DecodeFaceError
-topodstostep_DecodeVertexError = topodstostep.DecodeVertexError
-topodstostep_DecodeWireError = topodstostep.DecodeWireError
-TopoDSToStep_FacetedTool_CheckTopoDSShape = TopoDSToStep_FacetedTool.CheckTopoDSShape

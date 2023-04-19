@@ -2785,3 +2785,86 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def tdocstd_IDList(*args):
+	return tdocstd.IDList(*args)
+
+@deprecated
+def TDocStd_Document_CurrentStorageFormatVersion(*args):
+	return TDocStd_Document.CurrentStorageFormatVersion(*args)
+
+@deprecated
+def TDocStd_Document_Get(*args):
+	return TDocStd_Document.Get(*args)
+
+@deprecated
+def TDocStd_Modified_Add(*args):
+	return TDocStd_Modified.Add(*args)
+
+@deprecated
+def TDocStd_Modified_Clear(*args):
+	return TDocStd_Modified.Clear(*args)
+
+@deprecated
+def TDocStd_Modified_Contains(*args):
+	return TDocStd_Modified.Contains(*args)
+
+@deprecated
+def TDocStd_Modified_Get(*args):
+	return TDocStd_Modified.Get(*args)
+
+@deprecated
+def TDocStd_Modified_GetID(*args):
+	return TDocStd_Modified.GetID(*args)
+
+@deprecated
+def TDocStd_Modified_IsEmpty(*args):
+	return TDocStd_Modified.IsEmpty(*args)
+
+@deprecated
+def TDocStd_Modified_Remove(*args):
+	return TDocStd_Modified.Remove(*args)
+
+@deprecated
+def TDocStd_Owner_GetDocument(*args):
+	return TDocStd_Owner.GetDocument(*args)
+
+@deprecated
+def TDocStd_Owner_GetID(*args):
+	return TDocStd_Owner.GetID(*args)
+
+@deprecated
+def TDocStd_Owner_SetDocument(*args):
+	return TDocStd_Owner.SetDocument(*args)
+
+@deprecated
+def TDocStd_Owner_SetDocument(*args):
+	return TDocStd_Owner.SetDocument(*args)
+
+@deprecated
+def TDocStd_XLink_GetID(*args):
+	return TDocStd_XLink.GetID(*args)
+
+@deprecated
+def TDocStd_XLink_Set(*args):
+	return TDocStd_XLink.Set(*args)
+
+@deprecated
+def TDocStd_XLinkRoot_GetID(*args):
+	return TDocStd_XLinkRoot.GetID(*args)
+
+@deprecated
+def TDocStd_XLinkRoot_Insert(*args):
+	return TDocStd_XLinkRoot.Insert(*args)
+
+@deprecated
+def TDocStd_XLinkRoot_Remove(*args):
+	return TDocStd_XLinkRoot.Remove(*args)
+
+@deprecated
+def TDocStd_XLinkRoot_Set(*args):
+	return TDocStd_XLinkRoot.Set(*args)
+
+}

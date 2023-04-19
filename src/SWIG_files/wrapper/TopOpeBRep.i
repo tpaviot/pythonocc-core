@@ -5912,3 +5912,86 @@ class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, publi
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def TopOpeBRep_FFTransitionTool_ProcessEdgeONTransition(*args):
+	return TopOpeBRep_FFTransitionTool.ProcessEdgeONTransition(*args)
+
+@deprecated
+def TopOpeBRep_FFTransitionTool_ProcessEdgeTransition(*args):
+	return TopOpeBRep_FFTransitionTool.ProcessEdgeTransition(*args)
+
+@deprecated
+def TopOpeBRep_FFTransitionTool_ProcessFaceTransition(*args):
+	return TopOpeBRep_FFTransitionTool.ProcessFaceTransition(*args)
+
+@deprecated
+def TopOpeBRep_FFTransitionTool_ProcessLineTransition(*args):
+	return TopOpeBRep_FFTransitionTool.ProcessLineTransition(*args)
+
+@deprecated
+def TopOpeBRep_FFTransitionTool_ProcessLineTransition(*args):
+	return TopOpeBRep_FFTransitionTool.ProcessLineTransition(*args)
+
+@deprecated
+def TopOpeBRep_FacesFiller_EqualpPonR(*args):
+	return TopOpeBRep_FacesFiller.EqualpPonR(*args)
+
+@deprecated
+def TopOpeBRep_FacesFiller_IsVPtransLok(*args):
+	return TopOpeBRep_FacesFiller.IsVPtransLok(*args)
+
+@deprecated
+def TopOpeBRep_FacesFiller_LSameDomainERL(*args):
+	return TopOpeBRep_FacesFiller.LSameDomainERL(*args)
+
+@deprecated
+def TopOpeBRep_FacesFiller_Lminmax(*args):
+	return TopOpeBRep_FacesFiller.Lminmax(*args)
+
+@deprecated
+def TopOpeBRep_FacesFiller_TransvpOK(*args):
+	return TopOpeBRep_FacesFiller.TransvpOK(*args)
+
+@deprecated
+def TopOpeBRep_FacesFiller_VPParamOnER(*args):
+	return TopOpeBRep_FacesFiller.VPParamOnER(*args)
+
+@deprecated
+def TopOpeBRep_GeomTool_MakeBSpline1fromWALKING2d(*args):
+	return TopOpeBRep_GeomTool.MakeBSpline1fromWALKING2d(*args)
+
+@deprecated
+def TopOpeBRep_GeomTool_MakeBSpline1fromWALKING3d(*args):
+	return TopOpeBRep_GeomTool.MakeBSpline1fromWALKING3d(*args)
+
+@deprecated
+def TopOpeBRep_GeomTool_MakeCurve(*args):
+	return TopOpeBRep_GeomTool.MakeCurve(*args)
+
+@deprecated
+def TopOpeBRep_GeomTool_MakeCurves(*args):
+	return TopOpeBRep_GeomTool.MakeCurves(*args)
+
+@deprecated
+def TopOpeBRep_PointGeomTool_IsEqual(*args):
+	return TopOpeBRep_PointGeomTool.IsEqual(*args)
+
+@deprecated
+def TopOpeBRep_PointGeomTool_MakePoint(*args):
+	return TopOpeBRep_PointGeomTool.MakePoint(*args)
+
+@deprecated
+def TopOpeBRep_PointGeomTool_MakePoint(*args):
+	return TopOpeBRep_PointGeomTool.MakePoint(*args)
+
+@deprecated
+def TopOpeBRep_PointGeomTool_MakePoint(*args):
+	return TopOpeBRep_PointGeomTool.MakePoint(*args)
+
+@deprecated
+def TopOpeBRep_PointGeomTool_MakePoint(*args):
+	return TopOpeBRep_PointGeomTool.MakePoint(*args)
+
+}

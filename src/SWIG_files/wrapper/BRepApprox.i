@@ -4913,3 +4913,78 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def BRepApprox_Approx_Parameters(*args):
+	return BRepApprox_Approx.Parameters(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Curvature(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Curvature(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Curvature(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Curvature(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Curvature(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Curvature(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Dump(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Dump(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_FirstPoint(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.FirstPoint(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_LastPoint(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.LastPoint(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_MakeMLBetween(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.MakeMLBetween(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_MakeMLOneMorePoint(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.MakeMLOneMorePoint(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_NbP2d(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.NbP2d(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_NbP3d(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.NbP3d(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Tangency(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Tangency(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Tangency(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Tangency(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Tangency(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Tangency(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Value(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Value(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Value(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Value(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_Value(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.Value(*args)
+
+@deprecated
+def BRepApprox_TheMultiLineToolOfApprox_WhatStatus(*args):
+	return BRepApprox_TheMultiLineToolOfApprox.WhatStatus(*args)
+
+}

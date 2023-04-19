@@ -848,3 +848,18 @@ bool
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def selectbasics_MaxOwnerPriority(*args):
+	return selectbasics.MaxOwnerPriority(*args)
+
+@deprecated
+def selectbasics_MinOwnerPriority(*args):
+	return selectbasics.MinOwnerPriority(*args)
+
+@deprecated
+def SelectBasics_PickResult_Min(*args):
+	return SelectBasics_PickResult.Min(*args)
+
+}

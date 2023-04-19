@@ -4357,3 +4357,178 @@ class TDF_HAttributeArray1 : public TDF_AttributeArray1, public Standard_Transie
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def tdf_AddLinkGUIDToProgID(*args):
+	return tdf.AddLinkGUIDToProgID(*args)
+
+@deprecated
+def tdf_GUIDFromProgID(*args):
+	return tdf.GUIDFromProgID(*args)
+
+@deprecated
+def tdf_LowestID(*args):
+	return tdf.LowestID(*args)
+
+@deprecated
+def tdf_ProgIDFromGUID(*args):
+	return tdf.ProgIDFromGUID(*args)
+
+@deprecated
+def tdf_UppestID(*args):
+	return tdf.UppestID(*args)
+
+@deprecated
+def TDF_ClosureTool_Closure(*args):
+	return TDF_ClosureTool.Closure(*args)
+
+@deprecated
+def TDF_ClosureTool_Closure(*args):
+	return TDF_ClosureTool.Closure(*args)
+
+@deprecated
+def TDF_ClosureTool_Closure(*args):
+	return TDF_ClosureTool.Closure(*args)
+
+@deprecated
+def TDF_ComparisonTool_Compare(*args):
+	return TDF_ComparisonTool.Compare(*args)
+
+@deprecated
+def TDF_ComparisonTool_Cut(*args):
+	return TDF_ComparisonTool.Cut(*args)
+
+@deprecated
+def TDF_ComparisonTool_IsSelfContained(*args):
+	return TDF_ComparisonTool.IsSelfContained(*args)
+
+@deprecated
+def TDF_ComparisonTool_SourceUnbound(*args):
+	return TDF_ComparisonTool.SourceUnbound(*args)
+
+@deprecated
+def TDF_ComparisonTool_TargetUnbound(*args):
+	return TDF_ComparisonTool.TargetUnbound(*args)
+
+@deprecated
+def TDF_CopyLabel_ExternalReferences(*args):
+	return TDF_CopyLabel.ExternalReferences(*args)
+
+@deprecated
+def TDF_CopyLabel_ExternalReferences(*args):
+	return TDF_CopyLabel.ExternalReferences(*args)
+
+@deprecated
+def TDF_CopyTool_Copy(*args):
+	return TDF_CopyTool.Copy(*args)
+
+@deprecated
+def TDF_CopyTool_Copy(*args):
+	return TDF_CopyTool.Copy(*args)
+
+@deprecated
+def TDF_CopyTool_Copy(*args):
+	return TDF_CopyTool.Copy(*args)
+
+@deprecated
+def TDF_LabelMapHasher_HashCode(*args):
+	return TDF_LabelMapHasher.HashCode(*args)
+
+@deprecated
+def TDF_LabelMapHasher_IsEqual(*args):
+	return TDF_LabelMapHasher.IsEqual(*args)
+
+@deprecated
+def TDF_Tool_CountLabels(*args):
+	return TDF_Tool.CountLabels(*args)
+
+@deprecated
+def TDF_Tool_DeductLabels(*args):
+	return TDF_Tool.DeductLabels(*args)
+
+@deprecated
+def TDF_Tool_Entry(*args):
+	return TDF_Tool.Entry(*args)
+
+@deprecated
+def TDF_Tool_IsSelfContained(*args):
+	return TDF_Tool.IsSelfContained(*args)
+
+@deprecated
+def TDF_Tool_IsSelfContained(*args):
+	return TDF_Tool.IsSelfContained(*args)
+
+@deprecated
+def TDF_Tool_Label(*args):
+	return TDF_Tool.Label(*args)
+
+@deprecated
+def TDF_Tool_Label(*args):
+	return TDF_Tool.Label(*args)
+
+@deprecated
+def TDF_Tool_Label(*args):
+	return TDF_Tool.Label(*args)
+
+@deprecated
+def TDF_Tool_NbAttributes(*args):
+	return TDF_Tool.NbAttributes(*args)
+
+@deprecated
+def TDF_Tool_NbAttributes(*args):
+	return TDF_Tool.NbAttributes(*args)
+
+@deprecated
+def TDF_Tool_NbLabels(*args):
+	return TDF_Tool.NbLabels(*args)
+
+@deprecated
+def TDF_Tool_OutReferences(*args):
+	return TDF_Tool.OutReferences(*args)
+
+@deprecated
+def TDF_Tool_OutReferences(*args):
+	return TDF_Tool.OutReferences(*args)
+
+@deprecated
+def TDF_Tool_OutReferers(*args):
+	return TDF_Tool.OutReferers(*args)
+
+@deprecated
+def TDF_Tool_OutReferers(*args):
+	return TDF_Tool.OutReferers(*args)
+
+@deprecated
+def TDF_Tool_RelocateLabel(*args):
+	return TDF_Tool.RelocateLabel(*args)
+
+@deprecated
+def TDF_Tool_TagList(*args):
+	return TDF_Tool.TagList(*args)
+
+@deprecated
+def TDF_Tool_TagList(*args):
+	return TDF_Tool.TagList(*args)
+
+@deprecated
+def TDF_Reference_GetID(*args):
+	return TDF_Reference.GetID(*args)
+
+@deprecated
+def TDF_Reference_Set(*args):
+	return TDF_Reference.Set(*args)
+
+@deprecated
+def TDF_TagSource_GetID(*args):
+	return TDF_TagSource.GetID(*args)
+
+@deprecated
+def TDF_TagSource_NewChild(*args):
+	return TDF_TagSource.NewChild(*args)
+
+@deprecated
+def TDF_TagSource_Set(*args):
+	return TDF_TagSource.Set(*args)
+
+}

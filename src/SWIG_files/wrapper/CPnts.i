@@ -952,3 +952,38 @@ float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+@deprecated
+def CPnts_AbscissaPoint_Length(*args):
+	return CPnts_AbscissaPoint.Length(*args)
+
+}

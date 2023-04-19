@@ -349,3 +349,10 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmfunction_AddDrivers(*args):
+	return xmlmfunction.AddDrivers(*args)
+
+}

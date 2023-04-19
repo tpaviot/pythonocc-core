@@ -141,6 +141,3 @@ class ExprIntrp_GenRel(ExprIntrp_Generator):
 # harray2 classes
 # hsequence classes
 
-ExprIntrp_GenExp_Create = ExprIntrp_GenExp.Create
-ExprIntrp_GenFct_Create = ExprIntrp_GenFct.Create
-ExprIntrp_GenRel_Create = ExprIntrp_GenRel.Create

@@ -5676,3 +5676,138 @@ class Prs3d_ShapeTool:
 %pythoncode {
 Prs3d_Presentation=OCC.Core.Graphic3d.Graphic3d_Structure
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def prs3d_AddFreeEdges(*args):
+	return prs3d.AddFreeEdges(*args)
+
+@deprecated
+def prs3d_AddPrimitivesGroup(*args):
+	return prs3d.AddPrimitivesGroup(*args)
+
+@deprecated
+def prs3d_GetDeflection(*args):
+	return prs3d.GetDeflection(*args)
+
+@deprecated
+def prs3d_GetDeflection(*args):
+	return prs3d.GetDeflection(*args)
+
+@deprecated
+def prs3d_MatchSegment(*args):
+	return prs3d.MatchSegment(*args)
+
+@deprecated
+def prs3d_PrimitivesFromPolylines(*args):
+	return prs3d.PrimitivesFromPolylines(*args)
+
+@deprecated
+def Prs3d_Arrow_Draw(*args):
+	return Prs3d_Arrow.Draw(*args)
+
+@deprecated
+def Prs3d_Arrow_DrawSegments(*args):
+	return Prs3d_Arrow.DrawSegments(*args)
+
+@deprecated
+def Prs3d_Arrow_DrawShaded(*args):
+	return Prs3d_Arrow.DrawShaded(*args)
+
+@deprecated
+def Prs3d_Point_Add(*args):
+	return Prs3d_Point.Add(*args)
+
+@deprecated
+def Prs3d_Point_Match(*args):
+	return Prs3d_Point.Match(*args)
+
+@deprecated
+def Prs3d_Root_CurrentGroup(*args):
+	return Prs3d_Root.CurrentGroup(*args)
+
+@deprecated
+def Prs3d_Root_NewGroup(*args):
+	return Prs3d_Root.NewGroup(*args)
+
+@deprecated
+def Prs3d_Text_Draw(*args):
+	return Prs3d_Text.Draw(*args)
+
+@deprecated
+def Prs3d_Text_Draw(*args):
+	return Prs3d_Text.Draw(*args)
+
+@deprecated
+def Prs3d_ToolQuadric_TrianglesNb(*args):
+	return Prs3d_ToolQuadric.TrianglesNb(*args)
+
+@deprecated
+def Prs3d_ToolQuadric_VerticesNb(*args):
+	return Prs3d_ToolQuadric.VerticesNb(*args)
+
+@deprecated
+def Prs3d_BndBox_Add(*args):
+	return Prs3d_BndBox.Add(*args)
+
+@deprecated
+def Prs3d_BndBox_Add(*args):
+	return Prs3d_BndBox.Add(*args)
+
+@deprecated
+def Prs3d_BndBox_FillSegments(*args):
+	return Prs3d_BndBox.FillSegments(*args)
+
+@deprecated
+def Prs3d_BndBox_FillSegments(*args):
+	return Prs3d_BndBox.FillSegments(*args)
+
+@deprecated
+def Prs3d_BndBox_FillSegments(*args):
+	return Prs3d_BndBox.FillSegments(*args)
+
+@deprecated
+def Prs3d_BndBox_FillSegments(*args):
+	return Prs3d_BndBox.FillSegments(*args)
+
+@deprecated
+def Prs3d_BndBox_fillSegments(*args):
+	return Prs3d_BndBox.fillSegments(*args)
+
+@deprecated
+def Prs3d_DatumAspect_ArrowPartForAxis(*args):
+	return Prs3d_DatumAspect.ArrowPartForAxis(*args)
+
+@deprecated
+def Prs3d_ToolCylinder_Create(*args):
+	return Prs3d_ToolCylinder.Create(*args)
+
+@deprecated
+def Prs3d_ToolDisk_Create(*args):
+	return Prs3d_ToolDisk.Create(*args)
+
+@deprecated
+def Prs3d_ToolSector_Create(*args):
+	return Prs3d_ToolSector.Create(*args)
+
+@deprecated
+def Prs3d_ToolSphere_Create(*args):
+	return Prs3d_ToolSphere.Create(*args)
+
+@deprecated
+def Prs3d_ToolTorus_Create(*args):
+	return Prs3d_ToolTorus.Create(*args)
+
+@deprecated
+def Prs3d_ToolTorus_Create(*args):
+	return Prs3d_ToolTorus.Create(*args)
+
+@deprecated
+def Prs3d_ToolTorus_Create(*args):
+	return Prs3d_ToolTorus.Create(*args)
+
+@deprecated
+def Prs3d_ToolTorus_Create(*args):
+	return Prs3d_ToolTorus.Create(*args)
+
+}

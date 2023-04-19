@@ -472,3 +472,10 @@ int
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def xmlmnaming_AddDrivers(*args):
+	return xmlmnaming.AddDrivers(*args)
+
+}

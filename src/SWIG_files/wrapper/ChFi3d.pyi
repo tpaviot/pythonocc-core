@@ -168,9 +168,3 @@ class ChFi3d_FilBuilder(ChFi3d_Builder):
 # harray2 classes
 # hsequence classes
 
-chfi3d_ConcaveSide = chfi3d.ConcaveSide
-chfi3d_DefineConnectType = chfi3d.DefineConnectType
-chfi3d_IsTangentFaces = chfi3d.IsTangentFaces
-chfi3d_NextSide = chfi3d.NextSide
-chfi3d_NextSide = chfi3d.NextSide
-chfi3d_SameSide = chfi3d.SameSide

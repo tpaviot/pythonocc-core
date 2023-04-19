@@ -330,4 +330,3 @@ class RWGltf_GltfSharedIStream: ...
 # harray2 classes
 # hsequence classes
 
-RWGltf_GltfMaterialMap_baseColorTexture = RWGltf_GltfMaterialMap.baseColorTexture

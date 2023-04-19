@@ -758,3 +758,74 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Resource_Manager_GetResourcePath(*args):
+	return Resource_Manager.GetResourcePath(*args)
+
+@deprecated
+def Resource_Unicode_ConvertBig5ToUnicode(*args):
+	return Resource_Unicode.ConvertBig5ToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertEUCToUnicode(*args):
+	return Resource_Unicode.ConvertEUCToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertFormatToUnicode(*args):
+	return Resource_Unicode.ConvertFormatToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertFormatToUnicode(*args):
+	return Resource_Unicode.ConvertFormatToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertGBKToUnicode(*args):
+	return Resource_Unicode.ConvertGBKToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertGBToUnicode(*args):
+	return Resource_Unicode.ConvertGBToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertSJISToUnicode(*args):
+	return Resource_Unicode.ConvertSJISToUnicode(*args)
+
+@deprecated
+def Resource_Unicode_ConvertUnicodeToANSI(*args):
+	return Resource_Unicode.ConvertUnicodeToANSI(*args)
+
+@deprecated
+def Resource_Unicode_ConvertUnicodeToEUC(*args):
+	return Resource_Unicode.ConvertUnicodeToEUC(*args)
+
+@deprecated
+def Resource_Unicode_ConvertUnicodeToFormat(*args):
+	return Resource_Unicode.ConvertUnicodeToFormat(*args)
+
+@deprecated
+def Resource_Unicode_ConvertUnicodeToFormat(*args):
+	return Resource_Unicode.ConvertUnicodeToFormat(*args)
+
+@deprecated
+def Resource_Unicode_ConvertUnicodeToGB(*args):
+	return Resource_Unicode.ConvertUnicodeToGB(*args)
+
+@deprecated
+def Resource_Unicode_ConvertUnicodeToSJIS(*args):
+	return Resource_Unicode.ConvertUnicodeToSJIS(*args)
+
+@deprecated
+def Resource_Unicode_GetFormat(*args):
+	return Resource_Unicode.GetFormat(*args)
+
+@deprecated
+def Resource_Unicode_ReadFormat(*args):
+	return Resource_Unicode.ReadFormat(*args)
+
+@deprecated
+def Resource_Unicode_SetFormat(*args):
+	return Resource_Unicode.SetFormat(*args)
+
+}

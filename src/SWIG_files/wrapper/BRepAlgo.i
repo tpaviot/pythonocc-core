@@ -1351,3 +1351,34 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepalgo_ConcatenateWire(*args):
+	return brepalgo.ConcatenateWire(*args)
+
+@deprecated
+def brepalgo_ConcatenateWireC0(*args):
+	return brepalgo.ConcatenateWireC0(*args)
+
+@deprecated
+def brepalgo_ConvertFace(*args):
+	return brepalgo.ConvertFace(*args)
+
+@deprecated
+def brepalgo_ConvertWire(*args):
+	return brepalgo.ConvertWire(*args)
+
+@deprecated
+def brepalgo_IsTopologicallyValid(*args):
+	return brepalgo.IsTopologicallyValid(*args)
+
+@deprecated
+def brepalgo_IsValid(*args):
+	return brepalgo.IsValid(*args)
+
+@deprecated
+def brepalgo_IsValid(*args):
+	return brepalgo.IsValid(*args)
+
+}

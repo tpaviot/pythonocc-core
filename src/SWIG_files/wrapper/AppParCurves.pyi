@@ -274,7 +274,3 @@ class AppParCurves_HArray1OfMultiBSpCurve(AppParCurves_Array1OfMultiBSpCurve, St
 # harray2 classes
 # hsequence classes
 
-appparcurves_Bernstein = appparcurves.Bernstein
-appparcurves_BernsteinMatrix = appparcurves.BernsteinMatrix
-appparcurves_SecondDerivativeBernstein = appparcurves.SecondDerivativeBernstein
-appparcurves_SplineFunction = appparcurves.SplineFunction

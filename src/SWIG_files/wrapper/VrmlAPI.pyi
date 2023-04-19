@@ -55,4 +55,3 @@ class VrmlAPI_Writer:
 # harray2 classes
 # hsequence classes
 
-vrmlapi_Write = vrmlapi.Write

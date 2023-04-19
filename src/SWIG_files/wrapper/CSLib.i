@@ -495,3 +495,34 @@ D: float
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def cslib_DNNUV(*args):
+	return cslib.DNNUV(*args)
+
+@deprecated
+def cslib_DNNUV(*args):
+	return cslib.DNNUV(*args)
+
+@deprecated
+def cslib_DNNormal(*args):
+	return cslib.DNNormal(*args)
+
+@deprecated
+def cslib_Normal(*args):
+	return cslib.Normal(*args)
+
+@deprecated
+def cslib_Normal(*args):
+	return cslib.Normal(*args)
+
+@deprecated
+def cslib_Normal(*args):
+	return cslib.Normal(*args)
+
+@deprecated
+def cslib_Normal(*args):
+	return cslib.Normal(*args)
+
+}

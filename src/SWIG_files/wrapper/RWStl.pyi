@@ -76,11 +76,3 @@ class RWStl_Reader: ...
 # harray2 classes
 # hsequence classes
 
-rwstl_ReadAscii = rwstl.ReadAscii
-rwstl_ReadBinary = rwstl.ReadBinary
-rwstl_ReadFile = rwstl.ReadFile
-rwstl_ReadFile = rwstl.ReadFile
-rwstl_ReadFile = rwstl.ReadFile
-rwstl_ReadFile = rwstl.ReadFile
-rwstl_WriteAscii = rwstl.WriteAscii
-rwstl_WriteBinary = rwstl.WriteBinary

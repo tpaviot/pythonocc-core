@@ -2137,3 +2137,10 @@ class GeomPlate_HSequenceOfCurveConstraint : public GeomPlate_SequenceOfCurveCon
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def GeomPlate_BuildAveragePlane_HalfSpace(*args):
+	return GeomPlate_BuildAveragePlane.HalfSpace(*args)
+
+}

@@ -1472,3 +1472,22 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def brepcheck_Add(*args):
+	return brepcheck.Add(*args)
+
+@deprecated
+def brepcheck_PrecCurve(*args):
+	return brepcheck.PrecCurve(*args)
+
+@deprecated
+def brepcheck_PrecSurface(*args):
+	return brepcheck.PrecSurface(*args)
+
+@deprecated
+def brepcheck_SelfIntersection(*args):
+	return brepcheck.SelfIntersection(*args)
+
+}

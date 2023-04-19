@@ -777,3 +777,34 @@ None
 /* class aliases */
 %pythoncode {
 }
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def Geom2dLProp_Curve2dTool_Continuity(*args):
+	return Geom2dLProp_Curve2dTool.Continuity(*args)
+
+@deprecated
+def Geom2dLProp_Curve2dTool_D1(*args):
+	return Geom2dLProp_Curve2dTool.D1(*args)
+
+@deprecated
+def Geom2dLProp_Curve2dTool_D2(*args):
+	return Geom2dLProp_Curve2dTool.D2(*args)
+
+@deprecated
+def Geom2dLProp_Curve2dTool_D3(*args):
+	return Geom2dLProp_Curve2dTool.D3(*args)
+
+@deprecated
+def Geom2dLProp_Curve2dTool_FirstParameter(*args):
+	return Geom2dLProp_Curve2dTool.FirstParameter(*args)
+
+@deprecated
+def Geom2dLProp_Curve2dTool_LastParameter(*args):
+	return Geom2dLProp_Curve2dTool.LastParameter(*args)
+
+@deprecated
+def Geom2dLProp_Curve2dTool_Value(*args):
+	return Geom2dLProp_Curve2dTool.Value(*args)
+
+}

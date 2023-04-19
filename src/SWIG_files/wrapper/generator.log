@@ -8,7 +8,7 @@ operating system : Linux 64bit 5.4.0-146-generic
 
 occt version targeted : 7.7.1
 
-date : 2023-04-14 11:35:58.746193
+date : 2023-04-18 19:01:18.341989
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -9059,7 +9059,7 @@ date : 2023-04-14 11:35:58.746193
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 33.79s
+SWIG interface file generation completed in 30.58s
 #################################################
 
 [INFO ]  Number of classes: 4747
