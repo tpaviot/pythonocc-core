@@ -53,11 +53,14 @@ from OCC.Core.gp import (
     gp_Pnt2d,
     gp_Lin,
     gp_Dir,
+    gp_Ax1,
     gp_Ax2,
     gp_Quaternion,
     gp_QuaternionSLerp,
     gp_XYZ,
     gp_Mat,
+    gp,
+    gp_OX,
 )
 from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
@@ -938,6 +941,13 @@ class TestWrapperFeatures(unittest.TestCase):
 
         # visible should return both 4 floats and doubles
         self.assertEqual(hlr_edg_it.Visible(), (start, tol_start, end, tol_end))
+
+    def test_deprecated_static_functions(self):
+        """since pythonocc-core 7.7.1, static functions are not wrapped anymore by a free function.
+        e.g., calling gp.OX() should be preferred to gp_OX()"""
+        with self.assertWarns(DeprecationWarning):
+            gp_OX()
+        self.assertTrue(isinstance(gp.OX(), gp_Ax1))
 
 
 def suite() -> unittest.TestSuite:
