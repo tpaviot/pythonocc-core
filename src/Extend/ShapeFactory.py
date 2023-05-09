@@ -64,6 +64,7 @@ from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 
 from OCC.Extend.TopologyUtils import is_edge, is_face
 
+
 #
 # assert utils
 #
@@ -392,12 +393,16 @@ def scale_shape(shape, fx, fy, fz):
     return shp
 
 
-def make_extrusion(face, length, vector=gp_Vec(0.0, 0.0, 1.0)):
+def make_extrusion(face, length, vector=None):
     """creates a extrusion from a face, along the vector vector.
     with a distance length. Note that the normal vector does not
     necessary be normalized.
     By default, the extrusion is along the z axis.
     """
+    if vector is None:
+        vector = gp_Vec(0.0, 0.0, 1.0)
+    if not isinstance(vector, gp_Vec):
+        raise TypeError("vector must be a gp_Vec")
     vector.Normalize()
     vector.Scale(length)
     return BRepPrimAPI_MakePrism(face, vector).Shape()

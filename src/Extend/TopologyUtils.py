@@ -62,6 +62,7 @@ from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
 MAX_32_BIT_INT = 2**31 - 1
 
+
 def _number_of_topo(iterable: Iterable) -> int:
     nbr_topo = 0
     for _ in iterable:
@@ -673,11 +674,20 @@ def get_type_as_string(topods_shape: TopoDS_Shape) -> str:
 
 def get_sorted_hlr_edges(
     topods_shape: TopoDS_Shape,
-    position: Optional[gp_Pnt] = gp_Pnt(),
-    direction: Optional[gp_Dir] = gp_Dir(),
+    position: Optional[gp_Pnt] = None,
+    direction: Optional[gp_Dir] = None,
     export_hidden_edges: Optional[bool] = True,
 ) -> Tuple[List, List]:
     """Return hidden and visible edges as two lists of edges"""
+    if position is None:
+        position = gp_Pnt()
+    if not isinstance(position, gp_Pnt):
+        raise TypeError("position must be a gp_Pnt")
+    if direction is None:
+        direction = gp_Dir()
+    if not isinstance(direction, gp_Dir):
+        raise TypeError("position must be a gp_Dir")
+
     hlr = HLRBRep_Algo()
     hlr.Add(topods_shape)
 
