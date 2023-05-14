@@ -17,17 +17,27 @@
 
 import logging
 
-# backend constants
-WX = "wx"
-PYSIDE2 = "qt-pyside2"
-PYQT5 = "qt-pyqt5"
+# # backend constants
+# WX = "wx"
+# PYSIDE2 = "qt-pyside2"
+# PYQT5 = "qt-pyqt5"
 
-# backend module
-HAVE_PYQT5, HAVE_PYSIDE2, HAVE_WX = False, False, False
+# # backend module
+# HAVE_PYQT5, HAVE_PYSIDE2, HAVE_WX = False, False, False
 
-# is any backend imported?
-HAVE_BACKEND = False
-BACKEND_MODULE = "No backend loaded"
+# # is any backend imported?
+# HAVE_BACKEND = False
+# BACKEND_MODULE = "No backend loaded"
+
+BACKEND = None
+
+def loaded_backend():
+    if BACKEND != None:
+        return True
+    return False
+
+def get_loaded_backend():
+    return BACKEND
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
@@ -35,7 +45,7 @@ log.setLevel(logging.DEBUG)
 
 def load_pyqt5():
     """Return True is PyQt5 found, else False"""
-    global HAVE_PYQT5, QtCore, QtGui, QtWidgets, QtOpenGL
+    global BACKEND, QtCore, QtGui, QtWidgets, QtOpenGL
 
     # backend already loaded, dont load another one
     if loaded_backend():
@@ -43,15 +53,14 @@ def load_pyqt5():
     try:
         from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
 
-        HAVE_PYQT5 = True
+        BACKEND = 'PyQt5'
+        return True
     except ImportError:
-        HAVE_PYQT5 = False
-    return HAVE_PYQT5
-
+        return False
 
 def load_pyside2():
     """Return True is PySide2 found, else False"""
-    global HAVE_PYSIDE2, QtCore, QtGui, QtWidgets, QtOpenGL
+    global BACKEND, QtCore, QtGui, QtWidgets, QtOpenGL
 
     # backend already loaded, dont load another one
     if loaded_backend():
@@ -59,48 +68,38 @@ def load_pyside2():
     try:
         from PySide2 import QtCore, QtGui, QtOpenGL, QtWidgets
 
-        HAVE_PYSIDE2 = True
+        BACKEND = "PySide2"
+        return True
     except ImportError:
-        HAVE_PYSIDE2 = False
-    return HAVE_PYSIDE2
+        return False
 
 
 def load_wx():
     """Return True is wxPython found, else False"""
-
+    global BACKEND
     # backend already loaded, dont load another one
     if loaded_backend():
         return False
-    global HAVE_WX
     try:
         import wx
-
-        HAVE_WX = True
+        BACKEND = 'wx'
+        return True
     except ImportError:
-        HAVE_WX = False
-    return HAVE_WX
-
-
-def loaded_backend():
-    return HAVE_BACKEND
-
-
-def get_loaded_backend():
-    return BACKEND_MODULE
+        return False
 
 
 def load_any_qt_backend():
     """Load any qt based backend. First try to load
     PyQt5, then PySide2. Raise an exception if none of them are available
     """
-    pyqt5_loaded = False
-    # by default, load PyQt5
-    pyqt5_loaded = load_backend(PYQT5)
-    if not pyqt5_loaded:
-        pyside2_loaded = load_backend(PYSIDE2)
-    if not (pyqt5_loaded or pyside2_loaded):
-        raise AssertionError("None of the PyQt5 or PySide2 can be loaded")
-    return True
+    if BACKEND != None:
+        if not load_backend('PyQt5'):
+            load_backend('PySide2')
+        if BACKEND == None:
+            raise AssertionError("None of the PyQt5 or PySide2 can be loaded")
+        return True
+    else:
+        return True
 
 
 def load_backend(backend_str=None):
@@ -143,18 +142,16 @@ def load_backend(backend_str=None):
         when the backend specified in ``backend_str`` could not be imported
 
     """
-    global HAVE_BACKEND, BACKEND_MODULE
 
-    if HAVE_BACKEND:
+    if BACKEND != None:
         msg = (
             "The %s backend is already loaded..."
             "``load_backend`` can only be called once per session"
         )
-        log.info(msg, BACKEND_MODULE)
-        return BACKEND_MODULE
-
+        log.info(msg, BACKEND)
+        return BACKEND
     if backend_str is not None:
-        compatible_backends = (PYQT5, PYSIDE2, WX)
+        compatible_backends = ( "qt-pyqt5", "qt-pyside2", "wx" )
         if not backend_str in compatible_backends:
             msg = (
                 f"incompatible backend_str specified: {backend_str}\n"
@@ -163,40 +160,29 @@ def load_backend(backend_str=None):
             log.critical(msg)
             raise ValueError(msg)
 
-    if backend_str == PYQT5 or backend_str is None:
+    if backend_str == 'qt-pyqt5' or backend_str is None:
         if load_pyqt5():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "qt-pyqt5"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-        if backend_str == PYQT5 and not HAVE_BACKEND:
-            msg = f"{backend_str} backend could not be loaded"
-            log.exception(msg)
-            raise ValueError(msg)
+            log.info("backend loaded: %s", BACKEND)
+            return BACKEND
+        
 
-    if backend_str == PYSIDE2 or (backend_str is None and not HAVE_BACKEND):
+    if backend_str == 'qt-pyside2' or backend_str is None:
         if load_pyside2():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "qt-pyside2"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-        elif backend_str == PYSIDE2 and not HAVE_BACKEND:
-            msg = f"{backend_str} could not be loaded"
-            log.exception(msg)
-            raise ValueError(msg)
+            log.info("backend loaded: %s", BACKEND)
+            return BACKEND
+        
 
-    if backend_str == WX or (backend_str is None and not HAVE_BACKEND):
+    if backend_str == 'wx' or backend_str is None:
         if load_wx():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "wx"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-        elif backend_str == WX and not HAVE_BACKEND:
-            msg = f"{backend_str} backend could not be loaded"
-            log.exception("%s backend could not be loaded", backend_str)
-            raise ValueError(msg)
+            log.info("backend loaded: %s", BACKEND)
+            return BACKEND
+        
+    if BACKEND == None:
+        msg = f"{backend_str} backend could not be loaded"
+        log.exception(msg)
+        raise ValueError(msg)
 
-    if not HAVE_BACKEND:
+    if BACKEND == None:
         raise ImportError(
             "No compliant GUI library could be imported.\n"
             "Either PyQt5, PPySide2 or wxPython is required"
@@ -221,14 +207,14 @@ def get_qt_modules():
         ( PyQt5, PySide ) is found
 
     """
-    if not HAVE_BACKEND:
+    if BACKEND == None:
         raise ValueError(
             "no backend has been imported yet with " "``load_backend``... "
         )
 
-    if HAVE_PYQT5 or HAVE_PYSIDE2:
+    if BACKEND == 'PyQt5' or BACKEND == 'PySide2':
         return QtCore, QtGui, QtWidgets, QtOpenGL
-    if HAVE_WX:
+    if BACKEND == 'wx':
         raise ValueError("the Wx backend is already loaded")
     msg = (
         "no Qt backend is loaded, hence cannot return any modules\n"
