@@ -218,9 +218,7 @@ class qtViewer3d(qtBaseViewer):
                     # single select otherwise
                     self._display.Select(pt.x(), pt.y())
 
-                    if (
-                        self._display.selected_shapes is not None
-                        ) and self.HAVE_PYQT_SIGNAL:
+                    if (self._display.selected_shapes is not None) and self.HAVE_PYQT_SIGNAL:
 
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 
@@ -243,7 +241,7 @@ class qtViewer3d(qtBaseViewer):
 
     def mouseMoveEvent(self, evt):
         pt = evt.pos()
-        buttons = int(evt.buttons())
+        buttons = evt.buttons()
         modifiers = evt.modifiers()
         # ROTATE
         if buttons == QtCore.Qt.LeftButton and not modifiers == QtCore.Qt.ShiftModifier:
@@ -267,7 +265,7 @@ class qtViewer3d(qtBaseViewer):
             self.dragStartPosY = pt.y()
             self._drawbox = False
         # PAN
-        elif buttons == QtCore.Qt.MidButton:
+        elif buttons == QtCore.Qt.MiddleButton:
             dx = pt.x() - self.dragStartPosX
             dy = pt.y() - self.dragStartPosY
             self.dragStartPosX = pt.x()
