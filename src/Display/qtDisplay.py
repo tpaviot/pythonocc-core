@@ -91,6 +91,9 @@ class qtViewer3d(qtBaseViewer):
         self._current_cursor = "arrow"
         self._available_cursors = {}
 
+        self.mouse_pos = [0,0]
+        self.zoom_at_cursor = True
+
     @property
     def qApp(self):
         # reference to QApplication instance
@@ -171,12 +174,18 @@ class qtViewer3d(qtBaseViewer):
             painter.drawRect(rect)
 
     def wheelEvent(self, event):
-        delta = event.angleDelta().y()
-        if delta > 0:
-            zoom_factor = 2.0
+        if self.zoom_at_cursor:
+            self._display.View.StartZoomAtPoint(self.mouse_pos[0], self.mouse_pos[1])
+            self._display.View.ZoomAtPoint(0, 0, int(event.angleDelta().y()/10), 0)
         else:
-            zoom_factor = 0.5
-        self._display.ZoomFactor(zoom_factor)
+            delta = event.angleDelta().y()
+            if delta > 0:
+                zoom_factor = 1.5
+            else:
+                zoom_factor = 0.75
+            self._display.ZoomFactor(zoom_factor)
+            
+        
 
     @property
     def cursor(self):
@@ -243,6 +252,9 @@ class qtViewer3d(qtBaseViewer):
         pt = evt.pos()
         buttons = evt.buttons()
         modifiers = evt.modifiers()
+
+        self.mouse_pos = [pt.x(), pt.y()]
+
         # ROTATE
         if buttons == QtCore.Qt.LeftButton and not modifiers == QtCore.Qt.ShiftModifier:
             self.cursor = "rotate"
