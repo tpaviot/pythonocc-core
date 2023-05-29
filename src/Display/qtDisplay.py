@@ -93,6 +93,7 @@ class qtViewer3d(qtBaseViewer):
 
         self.mouse_pos = [0,0]
         self.zoom_at_cursor = True
+        self.zoom_speed = 0.1
 
     @property
     def qApp(self):
@@ -176,7 +177,7 @@ class qtViewer3d(qtBaseViewer):
     def wheelEvent(self, event):
         if self.zoom_at_cursor:
             self._display.View.StartZoomAtPoint(self.mouse_pos[0], self.mouse_pos[1])
-            self._display.View.ZoomAtPoint(0, 0, int(event.angleDelta().y()/10), 0)
+            self._display.View.ZoomAtPoint(0, 0, int(event.angleDelta().y() * self.zoom_speed), 0)
         else:
             delta = event.angleDelta().y()
             if delta > 0:
