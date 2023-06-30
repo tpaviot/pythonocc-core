@@ -32,9 +32,7 @@ import logging
 BACKEND = None
 
 def loaded_backend():
-    if BACKEND is not None:
-        return True
-    return False
+    return BACKEND is not None
 
 def get_loaded_backend():
     return BACKEND
@@ -111,9 +109,7 @@ def load_any_qt_backend():
                 load_backend('PySide6')
         if BACKEND is None:
             raise AssertionError("None of the PyQt5 PySide2 or PySide6 can be loaded")
-        return True
-    else:
-        return True
+    return True
 
 
 def load_backend(backend_str=None):
@@ -178,13 +174,13 @@ def load_backend(backend_str=None):
         if load_pyqt5():
             log.info("backend loaded: %s", BACKEND)
             return BACKEND
-        
+
 
     if backend_str == 'qt-pyside2' or backend_str is None:
         if load_pyside2():
             log.info("backend loaded: %s", BACKEND)
             return BACKEND
-        
+
     if backend_str == 'wx' or backend_str is None:
         if load_wx():
             log.info("backend loaded: %s", BACKEND)
@@ -194,17 +190,11 @@ def load_backend(backend_str=None):
         if load_pyside6():
             log.info("backend loaded: %s", BACKEND)
             return BACKEND
-        
+
     if BACKEND is None:
         msg = f"{backend_str} backend could not be loaded"
         log.exception(msg)
         raise ValueError(msg)
-
-    if BACKEND is None:
-        raise ImportError(
-            "No compliant GUI library could be imported.\n"
-            "Either PyQt5, PySide2, PySide6 or wxPython is required"
-        )
 
 
 def get_qt_modules():
@@ -230,7 +220,7 @@ def get_qt_modules():
             "no backend has been imported yet with " "``load_backend``... "
         )
 
-    if BACKEND == 'PyQt5' or BACKEND == 'PySide2' or BACKEND == 'PySide6':
+    if BACKEND in ['PyQt5', 'PySide2', 'PySide6']:
         return QtCore, QtGui, QtWidgets, QtOpenGL
     if BACKEND == 'wx':
         raise ValueError("the Wx backend is already loaded")
