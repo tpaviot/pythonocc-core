@@ -17,15 +17,15 @@ Requirements
 ------------
 
 pythonOCC needs the following libraries or programs to be installed before you
-can compile/use it:
+can compile/use it :
 
-*   the python programming language (<https://www.python.org>). Python 3.x is required.
+*   the python programming language (<http://www.python.org>). Python 3.x is required.
 
 *   OpenCascade 7.7.0 (<https://dev.opencascade.org>)
 
     IMPORTANT: OpenCASCADE has to be compiled using flag -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
 
-*   SWIG 4.0.2 (<https://www.swig.org>)
+*   SWIG 4.0.2 (<http://www.swig.org>)
 
 Optional
 --------
@@ -35,67 +35,48 @@ If you want to benefit from a 3D graphical rendering, you will need a GUI manage
 Create a local copy of the repository
 -------------------------------------
 
-```bash
-git clone https://github.com/tpaviot/pythonocc-core.git
-```
+    git clone git://github.com/tpaviot/pythonocc-core.git
 
 pythonocc-core compilation
 --------------------------
 
-```bash
-cd pythonocc-core
-mkdir cmake-build
-cd cmake-build
-```
+    cd pythonocc-core
+    mkdir cmake-build
+    cd cmake-build
 
 The configuration steps uses cmake:
 
-```bash
-cmake ..
-```
-
+    cmake ..
 By default, cmake looks for oce include headers in /usr/local/include/oce and
 libraries in /usr/local/include/lib. If these paths don't match your
 installation, you have to set OCE_INCLUDE_PATH and OCE_LIB_PATH:
 
-```bash
-cmake -DOCE_INCLUDE_PATH=/your_oce_headers -DOCE_LIB_PATH=/your_lib_dir ..
-```
+    cmake -DOCE_INCLUDE_PATH=/your_oce_headers -DOCE_LIB_PATH=/your_lib_dir ..
 
 And launch the build process
 
-```bash
-make
-```
+    make
 
 If you have many cpus, you can increase the compilation speed with:
 
-```bash
-make -j$ncpus
-```
+    make -j$ncpus
 
 According to your machine/os/ncpus, the total compilation time should be around 15 minutes.
 
 Then
 
-```bash
-make install
-```
+    make install
 
 You may require admin privileges to install
 
-```bash
-sudo make install
-```
+    sudo make install
 
 test
 ----
 In order to check that everything is ok, run the pythonocc unittest suite:
 
-```bash
-cd ../test
-python run_tests.py
-```
+    cd ../test
+    python run_tests.py
 
 demos
 -----
