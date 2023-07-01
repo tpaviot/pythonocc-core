@@ -79,6 +79,7 @@ def init_display(
         # returns empty classes and functions
         return offscreen_renderer, do_nothing, do_nothing, call_function
     used_backend = load_backend(backend_str)
+    # print(used_backend)
     # wxPython based simple GUI
     if used_backend == "wx":
         import wx
@@ -137,7 +138,7 @@ def init_display(
             app.MainLoop()
 
     # Qt based simple GUI
-    elif "qt" in used_backend:
+    elif "PySide" in used_backend or "PyQt" in used_backend:
         from OCC.Display.qtDisplay import qtViewer3d
 
         QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
