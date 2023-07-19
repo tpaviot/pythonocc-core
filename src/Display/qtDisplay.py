@@ -31,6 +31,11 @@ QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
+# Support wayland (github.com/tpaviot/pythonocc-core/issues/1230)
+if platform.system() == 'Linux':
+    if os.popen('echo $XDG_SESSION_TYPE').read() == 'wayland\n':
+        logging.info("Wayland. Set QT_QPA_PLATFORM=xcb")
+        os.system('export QT_QPA_PLATFORM=xcb ')
 
 class qtBaseViewer(QtWidgets.QWidget):
     """The base Qt Widget for an OCC viewer"""
