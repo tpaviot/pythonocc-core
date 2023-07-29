@@ -3,7 +3,6 @@ parameters:
   vmImage: 'Ubuntu-18.04'
   py_maj: '3'
   py_min: '6'
-  conda_bld: '3.16.3'
 
 jobs:
 - job: ${{ parameters.name }}
@@ -56,12 +55,12 @@ jobs:
         conda config --env --set subdir win-32
       displayName: 'Windows force 32 bit build'
 
-  - bash: conda create --yes --quiet --name build_env conda-build=${{ parameters.conda_bld }} conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
+  - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
     displayName: Create Anaconda environment
     
   - bash: |
       source activate build_env && \
-      conda build --no-remove-work-dir --dirty ci/conda
+      conda-build --no-remove-work-dir --dirty ci/conda
     displayName: 'Run conda build'
     failOnStderr: false
     env:
