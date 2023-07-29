@@ -709,7 +709,7 @@ TopoDS_Shape
 class TopoDS_Iterator {
 	public:
 		/****************** TopoDS_Iterator ******************/
-		/**** md5 signature: 1916010ea75419e2487f95a4e66d0acd ****/
+		/**** md5 signature: ef933d0adb0bdf4349f304bda22d288c ****/
 		%feature("compactdefaultargs") TopoDS_Iterator;
 		%feature("autodoc", "Creates an empty iterator.
 

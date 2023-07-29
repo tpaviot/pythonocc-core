@@ -894,7 +894,7 @@ None
 		 StepKinematics_MechanismStateRepresentation();
 
 		/****************** Init ******************/
-		/**** md5 signature: 1665ccd453dd3b65e3933e256349ae53 ****/
+		/**** md5 signature: 4d6f91977a44ba4ad09ee7f29e62af53 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -909,7 +909,7 @@ Returns
 -------
 None
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation > theMechanism);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation> & theMechanism);
 
 		/****************** Mechanism ******************/
 		/**** md5 signature: 08cdf7021078a7d81a012290f38d9d95 ****/

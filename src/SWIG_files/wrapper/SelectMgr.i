@@ -1401,6 +1401,10 @@ None
 %extend SelectMgr_EntityOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Select(self):
+		pass
 	}
 };
 
@@ -2637,7 +2641,7 @@ SelectMgr_SelectingVolumeManager
 		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****************** SetCamera ******************/
-		/**** md5 signature: 11f06b5f3493f65ebc339cf1e1252d99 ****/
+		/**** md5 signature: feb4846a043de91d4d1b29714dfe3b70 ****/
 		%feature("compactdefaultargs") SetCamera;
 		%feature("autodoc", "Updates camera projection and orientation matrices in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
 
@@ -2649,7 +2653,7 @@ Returns
 -------
 None
 ") SetCamera;
-		void SetCamera(const opencascade::handle<Graphic3d_Camera > theCamera);
+		void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****************** SetPixelTolerance ******************/
 		/**** md5 signature: fda084bdc0d0a8e945d1f4e82a500297 ****/

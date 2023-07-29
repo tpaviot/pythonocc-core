@@ -316,7 +316,7 @@ None
 class TObj_Assistant {
 	public:
 		/****************** BindModel ******************/
-		/**** md5 signature: 26417faf8f981645d6a39d5238ea09fb ****/
+		/**** md5 signature: 6f477e113371e5e806719c182ae06cbc ****/
 		%feature("compactdefaultargs") BindModel;
 		%feature("autodoc", "Binds model to the map.
 
@@ -328,7 +328,7 @@ Returns
 -------
 None
 ") BindModel;
-		static void BindModel(const opencascade::handle<TObj_Model > theModel);
+		static void BindModel(const opencascade::handle<TObj_Model> & theModel);
 
 		/****************** BindType ******************/
 		/**** md5 signature: 4c08d477bf36ab0aee13c610d61470b2 ****/

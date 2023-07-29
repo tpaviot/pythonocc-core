@@ -548,7 +548,7 @@ opencascade::handle<Geom_Curve>
 		static opencascade::handle<Geom_Curve> To3d(const gp_Ax2 & Position, const opencascade::handle<Geom2d_Curve> & Curve2d);
 
 		/****************** buildC3dOnIsoLine ******************/
-		/**** md5 signature: 7cf923021ff43067abdd03bd5d4c42a6 ****/
+		/**** md5 signature: 34e2ad2e5f3a1fe4703a9a1af3a8cfec ****/
 		%feature("compactdefaultargs") buildC3dOnIsoLine;
 		%feature("autodoc", "Builds 3d curve for a isoline. this method takes corresponding isoline from the input surface. @param thec2d trimmed curve to be approximated. @param theisu flag indicating that line is u const. @param theparam line parameter. @param theisforward flag indicating forward parameterization on a isoline. returns standard_true when 3d curve is built and standard_false otherwise.
 
@@ -567,10 +567,10 @@ Returns
 -------
 opencascade::handle<Geom_Curve>
 ") buildC3dOnIsoLine;
-		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_Curve2d > theC2D, const opencascade::handle<Adaptor3d_Surface > theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
+		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
 
 		/****************** isIsoLine ******************/
-		/**** md5 signature: bd8c9f34a6bd6dba755af86ef9fcbca3 ****/
+		/**** md5 signature: d9205192a6bfd2810fdf8805b39a01e7 ****/
 		%feature("compactdefaultargs") isIsoLine;
 		%feature("autodoc", "Checks whether the 2d curve is a isoline. it can be represented by b-spline, bezier, or geometric line. this line should have natural parameterization. @param thec2d trimmed curve to be checked. @param theisu flag indicating that line is u const. @param theparam line parameter. @param theisforward flag indicating forward parameterization on a isoline. returns standard_true when 2d curve is a line and standard_false otherwise.
 
@@ -584,7 +584,7 @@ theIsU: bool
 theParam: float
 theIsForward: bool
 ") isIsoLine;
-		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_Curve2d > theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
+		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
 };
 

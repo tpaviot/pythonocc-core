@@ -4,11 +4,11 @@ Running pythonocc-generator.
 ############################
 git revision : 2528466
 
-operating system : Linux 64bit 5.4.0-146-generic
+operating system : Linux 64bit 5.4.0-153-generic
 
-occt version targeted : 7.7.1
+occt version targeted : 7.7.2
 
-date : 2023-04-18 19:01:18.341989
+date : 2023-07-29 08:41:12.915202
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -83,7 +83,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: BOPAlgo_Splitter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BOPDS
-[WARNI]      [TypeHint] Skipping unknown type, int,BOPDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,BOPDS_ListOfPaveBlock,TColStd_MapIntegerHasher, int,BOPDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -301,7 +301,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: BinTools_ShapeReader
 [INFO ]  Class: BinTools_ShapeSet
 [INFO ]  Class: BinTools_ShapeWriter
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]  ## Processing module TopExp
 [INFO ]  Class: TopExp
 [INFO ]  Class: TopExp_Explorer
@@ -313,8 +313,8 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Found HARRAY1 definitionTopTools_HArray1OfListOfShape: TopTools_Array1OfListOfShape
 [INFO ]  Enum: TopTools_FormatVersion
 [INFO ]  Enum: 
-[WARNI]      [TypeHint] Skipping unknown type, int,TopTools not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,TopoDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopTools_ListOfShape,TColStd_MapIntegerHasher, int,TopTools not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape,TColStd_MapIntegerHasher, int,TopoDS not in module list
 [INFO ]  Class: TopTools
 [INFO ]  Class: TopTools_LocationSet
 [INFO ]  Class: TopTools_MutexForShapeProvider
@@ -383,10 +383,10 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: BinLDrivers_DocumentRetrievalDriver
 [INFO ]  Class: BinLDrivers_DocumentSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]  Class: BinLDrivers_DocumentStorageDriver
 [INFO ]  ## Processing module BinMDF
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher>
@@ -641,16 +641,16 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: TopOpeBRepDS_Config
 [INFO ]  Enum: TopOpeBRepDS_CheckStatus
 [INFO ]  Enum: TopOpeBRepDS_Kind
-[WARNI]      [TypeHint] Skipping unknown type, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CheckStatus,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ListOfInterference,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int,TopoDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape,TColStd_MapIntegerHasher,TopTools_ShapeMapHasher, int,TopoDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CurveData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ShapeData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_PointData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_SurfaceData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [INFO ]  Class: TopOpeBRepDS
 [INFO ]  Class: TopOpeBRepDS_Association
@@ -788,11 +788,11 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepTool_face
 [INFO ]  Class: TopOpeBRepTool_makeTransition
-[WARNI]      [TypeHint] Skipping unknown type, Draw not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Draw not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Draw not in module list
+[WARNI]      [TypeHint] Skipping unknown type Draw_ColorKind, Draw not in module list
+[WARNI]      [TypeHint] Skipping unknown type Draw_MarkerShape, Draw not in module list
+[WARNI]      [TypeHint] Skipping unknown type Draw_ColorKind, Draw not in module list
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type, Draw not in module list
+[WARNI]      [TypeHint] Skipping unknown type Draw_ColorKind, Draw not in module list
 [INFO ]  Processing toolkit TKCAF ===
 [INFO ]  ## Processing module AppStd
 [INFO ]  Class: AppStd_Application
@@ -1596,8 +1596,8 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: Geom2dGcc_QCurve
 [INFO ]  Class: Geom2dGcc_QualifiedCurve
 [INFO ]  ## Processing module Geom2dHatch
-[WARNI]      [TypeHint] Skipping unknown type, int,Geom2dHatch not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,Geom2dHatch not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Hatching,TColStd_MapIntegerHasher, int,Geom2dHatch not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Element,TColStd_MapIntegerHasher, int,Geom2dHatch not in module list
 [INFO ]  Class: Geom2dHatch_Classifier
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dHatch_Element
@@ -2166,17 +2166,17 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: AdvApp2Var_Criterion
 [INFO ]      Class AdvApp2Var_Criterion is abstract, using %nodefaultctor.
 [INFO ]  Class: AdvApp2Var_Data
-[WARNI]      [TypeHint] Skipping unknown type, maovpar not in module list
-[WARNI]      [TypeHint] Skipping unknown type, maovpch not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mdnombr not in module list
-[WARNI]      [TypeHint] Skipping unknown type, minombr not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mlgdrtl not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mmapgs0 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mmapgs1 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mmapgs2 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mmapgss not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mmcmcnp not in module list
-[WARNI]      [TypeHint] Skipping unknown type, mmjcobi not in module list
+[WARNI]      [TypeHint] Skipping unknown type maovpar_1_, maovpar not in module list
+[WARNI]      [TypeHint] Skipping unknown type maovpch_1_, maovpch not in module list
+[WARNI]      [TypeHint] Skipping unknown type mdnombr_1_, mdnombr not in module list
+[WARNI]      [TypeHint] Skipping unknown type minombr_1_, minombr not in module list
+[WARNI]      [TypeHint] Skipping unknown type mlgdrtl_1_, mlgdrtl not in module list
+[WARNI]      [TypeHint] Skipping unknown type mmapgs0_1_, mmapgs0 not in module list
+[WARNI]      [TypeHint] Skipping unknown type mmapgs1_1_, mmapgs1 not in module list
+[WARNI]      [TypeHint] Skipping unknown type mmapgs2_1_, mmapgs2 not in module list
+[WARNI]      [TypeHint] Skipping unknown type mmapgss_1_, mmapgss not in module list
+[WARNI]      [TypeHint] Skipping unknown type mmcmcnp_1_, mmcmcnp not in module list
+[WARNI]      [TypeHint] Skipping unknown type mmjcobi_1_, mmjcobi not in module list
 [INFO ]  Class: AdvApp2Var_Framework
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AdvApp2Var_MathBase
@@ -2225,13 +2225,13 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      Wrap nested class AdvApp2Var_SysBase::mitem
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type, intptr not in module list
-[WARNI]      [TypeHint] Skipping unknown type, intptr not in module list
-[WARNI]      [TypeHint] Skipping unknown type, intptr not in module list
-[WARNI]      [TypeHint] Skipping unknown type, intptr not in module list
+[WARNI]      [TypeHint] Skipping unknown type intptr_t, intptr not in module list
+[WARNI]      [TypeHint] Skipping unknown type intptr_t, intptr not in module list
+[WARNI]      [TypeHint] Skipping unknown type intptr_t, intptr not in module list
+[WARNI]      [TypeHint] Skipping unknown type intptr_t, intptr not in module list
 [WARNI]      [TypeHint] Skipping type ftnlen, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, intptr not in module list
-[WARNI]      [TypeHint] Skipping unknown type, intptr not in module list
+[WARNI]      [TypeHint] Skipping unknown type intptr_t, intptr not in module list
+[WARNI]      [TypeHint] Skipping unknown type intptr_t, intptr not in module list
 [WARNI]      [TypeHint] Skipping type ftnlen, should contain _
 [WARNI]      [TypeHint] Skipping type ftnlen, should contain _
 [WARNI]      [TypeHint] Skipping type ftnlen, should contain _
@@ -2355,8 +2355,8 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: Extrema_ExtAlgo
 [INFO ]  Enum: Extrema_ExtFlag
 [INFO ]  Enum: Extrema_ElementType
-[WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bnd_Sphere, int,Bnd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bnd_Sphere, int,Bnd not in module list
 [INFO ]  Class: Extrema_CCLocFOfLocECC
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Extrema_CCLocFOfLocECC2d
@@ -3045,59 +3045,59 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: IGESToBRep_ToolContainer
 [INFO ]  Class: IGESToBRep_BRepEntity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_EdgeList, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_Face, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_Loop, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_ManifoldSolid, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_Shell, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_VertexList, IGESSolid not in module list
 [INFO ]  Class: IGESToBRep_BasicCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_BSplineCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CircularArc, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_ConicArc, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CopiousData, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Line, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_SplineCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_BSplineCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CircularArc, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_ConicArc, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CopiousData, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Line, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_SplineCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_TransformationMatrix, IGESGeom not in module list
 [INFO ]  Class: IGESToBRep_BasicSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_BSplineSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_PlaneSurface, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_ConicalSurface, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_CylindricalSurface, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_SphericalSurface, IGESSolid not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_SplineSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESSolid_ToroidalSurface, IGESSolid not in module list
 [INFO ]  Class: IGESToBRep_TopoCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CompositeCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_OffsetCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Point, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Boundary, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Boundary, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CompositeCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CurveOnSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_CurveOnSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_OffsetCurve, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Point, IGESGeom not in module list
 [INFO ]  Class: IGESToBRep_TopoSurface
 [INFO ]      skipped method IGESToBRep_TopoSurface::657812ceea990db15bb85a8826a3ccc8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESBasic not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
-[WARNI]      [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_BoundedSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_OffsetSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESBasic_SingleParent, IGESBasic not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_Plane, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_RuledSurface, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_SurfaceOfRevolution, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_TabulatedCylinder, IGESGeom not in module list
+[WARNI]      [TypeHint] Skipping unknown type IGESGeom_TrimmedSurface, IGESGeom not in module list
 [INFO ]  Processing toolkit TKIVtk ===
 [INFO ]  ## Processing module IVtk
 [INFO ]  ## Processing module IVtkOCC
@@ -3235,7 +3235,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Found HARRAY1 definitionTFunction_HArray1OfDataMapOfGUIDDriver: TFunction_Array1OfDataMapOfGUIDDriver
 [INFO ]  Enum: TFunction_ExecutionStatus
 [WARNI]      [TypeHint] Skip type Standard_GUID,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type, int,TDF not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TDF_Label,TColStd_MapIntegerHasher,TDF_LabelMapHasher, int,TDF not in module list
 [INFO ]  Class: TFunction_Driver
 [INFO ]      Class TFunction_Driver is abstract, using %nodefaultctor.
 [INFO ]  Class: TFunction_DriverTable
@@ -3673,9 +3673,9 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      skipped method math_NewtonMinimum::d26308710f3aff3315cd90ff796c2182
 [INFO ]  Class: math_PSO
 [INFO ]  Class: math_PSOParticlesPool
-[WARNI]      [TypeHint] Skipping unknown type, PSO not in module list
-[WARNI]      [TypeHint] Skipping unknown type, PSO not in module list
-[WARNI]      [TypeHint] Skipping unknown type, PSO not in module list
+[WARNI]      [TypeHint] Skipping unknown type PSO_Particle, PSO not in module list
+[WARNI]      [TypeHint] Skipping unknown type PSO_Particle, PSO not in module list
+[WARNI]      [TypeHint] Skipping unknown type PSO_Particle, PSO not in module list
 [INFO ]  Class: math_Powell
 [INFO ]  Class: math_SVD
 [INFO ]  Class: math_TrigonometricFunctionRoots
@@ -3949,14 +3949,14 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: MeshVS_DrawerAttribute
 [INFO ]  Enum: 
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type, int,TCollection not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,bool,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,Quantity not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,Graphic3d not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TCollection_AsciiString,TColStd_MapIntegerHasher, int,TCollection not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,bool,TColStd_MapIntegerHasher, int,bool,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Quantity_Color,TColStd_MapIntegerHasher, int,Quantity not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Graphic3d_MaterialAspect,TColStd_MapIntegerHasher, int,Graphic3d not in module list
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type, int,MeshVS not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,gp not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,MeshVS_TwoColors,TColStd_MapIntegerHasher, int,MeshVS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,gp_Vec,TColStd_MapIntegerHasher, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: MeshVS_Buffer
@@ -4034,7 +4034,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: BRepOffset_MakeSimpleOffset
 [INFO ]      skipped method BRepOffset_MakeSimpleOffset::8ae77c4ba3718dbe6263278a0014553a
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, BRepOffsetSimple not in module list
+[WARNI]      [TypeHint] Skipping unknown type BRepOffsetSimple_Status, BRepOffsetSimple not in module list
 [INFO ]  Class: BRepOffset_Offset
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepOffset_SimpleOffset
@@ -4175,9 +4175,9 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: RWGltf_ConfigurationNode
 [INFO ]      Wrap nested class RWGltf_ConfigurationNode::RWGltf_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWGltf_DracoParameters
 [INFO ]  Class: RWGltf_GltfAccessor
 [INFO ]  Class: RWGltf_GltfBufferView
@@ -4195,11 +4195,11 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: RWGltf_MaterialMetallicRoughness
 [INFO ]  Class: RWGltf_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: RWGltf_TriangulationReader
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<TopoDS_Face>, seems to be a template
 [WARNI]      [TypeHint] Skipping type rapidjson::ParseErrorCode, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type int64_t, int64 not in module list
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<TCollection_AsciiString>, seems to be a template
 [WARNI]      [TypeHint] Skipping type ShapeMapGroup, should contain _
 [WARNI]      [TypeHint] Skipping type ShapeMapGroup, should contain _
@@ -4233,9 +4233,9 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: RWObj_ConfigurationNode
 [INFO ]      Wrap nested class RWObj_ConfigurationNode::RWObj_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWObj_IShapeReceiver
 [INFO ]      Class RWObj_IShapeReceiver is abstract, using %nodefaultctor.
 [INFO ]  Class: RWObj_Material
@@ -4243,7 +4243,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: RWObj_ObjWriterContext
 [INFO ]  Class: RWObj_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: RWObj_Reader
 [INFO ]      Class RWObj_Reader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWObj_Reader::ObjVec3iHasher
@@ -4259,14 +4259,14 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: RWPly_ConfigurationNode
 [INFO ]      Wrap nested class RWPly_ConfigurationNode::RWPly_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWPly_PlyWriterContext
 [WARNI]      [TypeHint] Skip type std::shared_ptr<std::ostream>, because of trailing :
 [INFO ]  Class: RWPly_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Processing toolkit TKSTEP ===
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Class: GeomToStep_Root
@@ -6252,12 +6252,12 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: RWStl_ConfigurationNode
 [INFO ]      Wrap nested class RWStl_ConfigurationNode::RWStl_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWStl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  ## Processing module StlAPI
 [INFO ]  Class: StlAPI
 [INFO ]  Class: StlAPI_Reader
@@ -6298,7 +6298,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: Aspect_WidthOfLine
 [INFO ]  Enum: Aspect_TypeOfDisplayText
 [INFO ]  Enum: Aspect_InteriorStyle
-[WARNI]      [TypeHint] Skipping unknown type, int,Aspect not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Aspect_Touch, int,Aspect not in module list
 [WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
 [INFO ]  Class: Aspect_Background
@@ -6342,16 +6342,16 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      skipped method Aspect_Window::4917c328b71fee6e570c6c8c46531c25
 [INFO ]  Class: Aspect_WindowInputListener
 [INFO ]      Class Aspect_WindowInputListener is abstract, using %nodefaultctor.
-[WARNI]      [TypeHint] Skipping unknown type, WNT not in module list
-[WARNI]      [TypeHint] Skipping unknown type, WNT not in module list
-[WARNI]      [TypeHint] Skipping unknown type, WNT not in module list
-[WARNI]      [TypeHint] Skipping unknown type, WNT not in module list
+[WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
+[WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
+[WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
+[WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
 [INFO ]  Class: Aspect_XRAction
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]  Class: Aspect_XRActionSet
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]  Class: Aspect_XRAnalogActionData
 [INFO ]  Class: Aspect_XRDigitalActionData
 [INFO ]  Class: Aspect_XRHapticActionData
@@ -6448,14 +6448,14 @@ date : 2023-04-18 19:01:18.341989
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: Graphic3d_ArrayOfPrimitives
 [INFO ]  Class: Graphic3d_Aspects
-[WARNI]      [TypeHint] Skipping unknown type, uint16 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint16 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint16 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint16 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint16 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, uint16 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [INFO ]  Class: Graphic3d_Attribute
 [INFO ]  Class: Graphic3d_BSDF
 [INFO ]  Class: Graphic3d_BoundBuffer
@@ -6514,16 +6514,16 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: Graphic3d_GraduatedTrihedron
 [INFO ]      Wrap nested class Graphic3d_GraduatedTrihedron::AxisAspect
 [INFO ]      skipped method Graphic3d_GraduatedTrihedron::a47aecdc1dcee52c062797d9fccb2aab
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
@@ -6581,8 +6581,8 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: Graphic3d_StructureManager
 [WARNI]      [TypeHint] Skipping type NCollection_Map<Graphic3d_Structure, seems to be a template
 [INFO ]  Class: Graphic3d_Text
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
 [INFO ]  Class: Graphic3d_TextureParams
 [INFO ]  Class: Graphic3d_TextureRoot
 [INFO ]  Class: Graphic3d_TransformPers
@@ -6634,7 +6634,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_AspectText3d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [INFO ]  Class: Graphic3d_AttribBuffer
 [INFO ]  Class: Graphic3d_CView
 [INFO ]      Class Graphic3d_CView is abstract, using %nodefaultctor.
@@ -6692,7 +6692,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: Media_FormatContext
 [WARNI]      [TypeHint] Skipping type AVFormatContext *, should contain _
 [WARNI]      [TypeHint] Skipping type static double, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type int64_t, int64 not in module list
 [WARNI]      [TypeHint] Skipping type const AVRational &, should contain _
 [WARNI]      [TypeHint] Skipping type const AVStream &, should contain _
 [WARNI]      [TypeHint] Skipping type AVCodecContext *, should contain _
@@ -6702,20 +6702,20 @@ date : 2023-04-18 19:01:18.341989
 [WARNI]      [TypeHint] Skipping type static double, should contain _
 [WARNI]      [TypeHint] Skipping type const AVRational &, should contain _
 [INFO ]  Class: Media_Frame
-[WARNI]      [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type int64_t, int64 not in module list
 [WARNI]      [TypeHint] Skipping type AVFrame *, should contain _
 [WARNI]      [TypeHint] Skipping type const AVFrame *, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, uint8 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
 [INFO ]  Class: Media_IFrameQueue
 [INFO ]      Class Media_IFrameQueue is abstract, using %nodefaultctor.
 [INFO ]  Class: Media_Packet
-[WARNI]      [TypeHint] Skipping unknown type, uint8 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
 [WARNI]      [TypeHint] Skipping type AVPacket *, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, uint8 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int64 not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
+[WARNI]      [TypeHint] Skipping unknown type int64_t, int64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type int64_t, int64 not in module list
 [WARNI]      [TypeHint] Skipping type const AVPacket *, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type int64_t, int64 not in module list
 [INFO ]  Class: Media_PlayerContext
 [INFO ]  Class: Media_Scaler
 [INFO ]  Class: Media_Timer
@@ -6726,7 +6726,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: ShapeAlgo_ToolContainer
 [INFO ]  ## Processing module ShapeAnalysis
 [INFO ]  Found HSEQUENCE definitionShapeAnalysis_HSequenceOfFreeBounds: ShapeAnalysis_SequenceOfFreeBounds
-[WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bnd_Box, int,Bnd not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: ShapeAnalysis
 [INFO ]  Class: ShapeAnalysis_CanonicalRecognition
@@ -7068,7 +7068,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: BRepBuilderAPI_TransitionMode
 [INFO ]  Enum: BRepBuilderAPI_FaceError
 [INFO ]  Enum: BRepBuilderAPI_ShellError
-[WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bnd_Box, int,Bnd not in module list
 [WARNI]  Template: VectorOfPointskipped because name doesn't contain _.
 [INFO ]  Class: BRepBuilderAPI
 [INFO ]  Class: BRepBuilderAPI_Collect
@@ -7140,7 +7140,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: BRepClass_FaceClassifier
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepClass3d
-[WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bnd_Box, int,Bnd not in module list
 [INFO ]  Class: BRepClass3d
 [INFO ]  Class: BRepClass3d_Intersector3d
 [INFO ]  Class: BRepClass3d_SClassifier
@@ -7152,7 +7152,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepExtrema
 [INFO ]  Enum: BRepExtrema_SupportType
-[WARNI]      [TypeHint] Skipping unknown type, int,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TColStd_PackedMapOfInteger, int,TColStd not in module list
 [INFO ]  Class: BRepExtrema_DistShapeShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_DistanceSS
@@ -7178,11 +7178,11 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<ProxPnt_Status>, seems to be a template
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
+[WARNI]      [TypeHint] Skipping unknown type ProxPnt_Status, ProxPnt not in module list
 [INFO ]  Class: BRepExtrema_ShapeProximity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
-[WARNI]      [TypeHint] Skipping unknown type, ProxPnt not in module list
+[WARNI]      [TypeHint] Skipping unknown type ProxPnt_Status, ProxPnt not in module list
+[WARNI]      [TypeHint] Skipping unknown type ProxPnt_Status, ProxPnt not in module list
 [INFO ]  Class: BRepExtrema_SolutionElem
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_TriangleSet
@@ -7320,11 +7320,11 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module MAT2d
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int,Bisector not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bisector_Bisec,TColStd_MapIntegerHasher, int,Bisector not in module list
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type, int,gp not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,MAT2d not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,gp not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,gp_Pnt2d,TColStd_MapIntegerHasher, int,gp not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,MAT2d_SequenceOfConnexion,TColStd_MapIntegerHasher, int,MAT2d not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,gp_Vec2d,TColStd_MapIntegerHasher, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: MAT2d_BiInt
 [INFO ]  Class: MAT2d_Circuit
@@ -7398,7 +7398,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: AIS_TypeFilter
 [INFO ]  Class: AIS_ViewController
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<Graphic3d_Vec2i>, seems to be a template
-[WARNI]      [TypeHint] Skipping unknown type, WNT not in module list
+[WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
 [INFO ]  Class: AIS_ViewCubeOwner
 [INFO ]  Class: AIS_ViewCubeSensitive
 [INFO ]  Class: AIS_ViewInputBuffer
@@ -7458,11 +7458,11 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: AIS_Shape
 [INFO ]  Class: AIS_SignatureFilter
 [INFO ]  Class: AIS_TextLabel
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
 [INFO ]  Class: AIS_Triangulation
 [INFO ]  Class: AIS_Trihedron
 [INFO ]  Class: AIS_ViewCube
@@ -7655,7 +7655,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: SelectMgr_PickingStrategy
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<SelectMgr_SelectableObject>, opencascade::handle<SelectMgr_SensitiveEntitySet>>::Iterator
 [WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>
-[WARNI]      [TypeHint] Skipping unknown type, int,SelectMgr not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,SelectMgr_SelectingVolumeManager, int,SelectMgr not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7672,6 +7672,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Constructor skipped for abstract class SelectMgr_BaseIntersector
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<SelectMgr_Vec4>, seems to be a template
 [INFO ]  Class: SelectMgr_EntityOwner
+[INFO ]      skipped method SelectMgr_EntityOwner::b6f3cfd280ab60790acb1ec9b227fdbc
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: SelectMgr_Filter
 [INFO ]      Class SelectMgr_Filter is abstract, using %nodefaultctor.
@@ -7708,13 +7709,13 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: StdPrs_Volume
 [INFO ]  Class: StdPrs_BRepFont
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FTFont, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [INFO ]  Class: StdPrs_BRepTextBuilder
-[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
 [INFO ]  Class: StdPrs_Curve
 [INFO ]  Class: StdPrs_HLRShapeI
 [INFO ]      Class StdPrs_HLRShapeI is abstract, using %nodefaultctor.
@@ -7819,9 +7820,9 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: WriteMode_WriterVersion
 [INFO ]  Enum: WriteMode_RepresentationType
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: Vrml_Coordinate3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_Cube
@@ -7857,7 +7858,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: Vrml_PointSet
 [INFO ]  Class: Vrml_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: Vrml_Rotation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_SFImage
@@ -7953,9 +7954,9 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_TextureCoordinate
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: VrmlData_UnknownNode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_WorldInfo
@@ -7964,13 +7965,13 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_Color
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: VrmlData_Cone
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_Coordinate
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: VrmlData_Cylinder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_ImageTexture
@@ -7978,20 +7979,20 @@ date : 2023-04-18 19:01:18.341989
 [WARNI]      [TypeHint] Skipping type NCollection_List<TCollection_AsciiString>, seems to be a template
 [INFO ]  Class: VrmlData_IndexedLineSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: VrmlData_Normal
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: VrmlData_Sphere
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_IndexedFaceSet
 [INFO ]      skipped method VrmlData_IndexedFaceSet::fc9e771a2b80764b027c98058d407406
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Processing toolkit TKXCAF ===
 [INFO ]  ## Processing module XCAFApp
 [INFO ]  Class: XCAFApp_Application
@@ -8120,12 +8121,12 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: WriteMode_PrecisionMode
 [INFO ]  Enum: WriteMode_PlaneMode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: IGESCAFControl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: IGESCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IGESCAFControl_Writer
@@ -8158,9 +8159,9 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum: WriteMode_StepSchema
 [INFO ]  Enum: WriteMode_VertexMode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: STEPCAFControl_Controller
 [INFO ]  Class: STEPCAFControl_ExternFile
 [INFO ]  Class: STEPCAFControl_GDTProperty
@@ -8184,7 +8185,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_GeomToleranceTypeValue & theType changed to XCAFDimTolObjects_GeomToleranceTypeValue &OutValue
 [INFO ]  Class: STEPCAFControl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type, DE not in module list
+[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: STEPCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
@@ -8231,7 +8232,7 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IFSelect_Dispatch
 [INFO ]      Class IFSelect_Dispatch is abstract, using %nodefaultctor.
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
+[WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_EditForm
 [INFO ]      skipped method IFSelect_EditForm::083e9709e17242d3748947f37b028e11
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -8274,15 +8275,15 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: IFSelect_BasicDumper
 [INFO ]  Class: IFSelect_CheckCounter
 [INFO ]  Class: IFSelect_DispGlobal
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
+[WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_DispPerCount
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
+[WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_DispPerFiles
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
+[WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_DispPerOne
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
+[WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_DispPerSignature
-[WARNI]      [TypeHint] Skipping unknown type, IFGraph not in module list
+[WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_Modifier
 [INFO ]      Class IFSelect_Modifier is abstract, using %nodefaultctor.
 [INFO ]  Class: IFSelect_ParamEditor
@@ -8866,8 +8867,8 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]      skipped method Standard::b29cd18b024c2dcaa2a51ddf56e6359c
 [INFO ]      skipped method Standard::382687142ca6751e11361bcd57352cf6
 [INFO ]  Class: Standard_ArrayStreamBuffer
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping type virtual std::streamsize, should contain _
 [WARNI]      [TypeHint] Skipping type std::streamsize, should contain _
 [INFO ]  Class: Standard_Condition
@@ -8907,18 +8908,18 @@ date : 2023-04-18 19:01:18.341989
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, va not in module list
+[WARNI]      [TypeHint] Skipping unknown type va_list, va not in module list
 [WARNI]      [TypeHint] Skipping type long, should contain _
 [WARNI]      [TypeHint] Skipping type long volatile *, should contain _
 [WARNI]      [TypeHint] Skipping type long, should contain _
 [WARNI]      [TypeHint] Skipping type volatile long *, should contain _
 [WARNI]      [TypeHint] Skipping type long, should contain _
 [WARNI]      [TypeHint] Skipping type volatile long *, should contain _
-[WARNI]      [TypeHint] Skipping unknown type,  not in module list
+[WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type,  not in module list
+[WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type,  not in module list
+[WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  ## Processing module StdFail
 [INFO ]  ## Processing module Storage
@@ -8961,18 +8962,18 @@ date : 2023-04-18 19:01:18.341989
 [WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int,int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type, int,float,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,int,TColStd_MapIntegerHasher, int,int,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger,TColStd_MapIntegerHasher, int,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,float,TColStd_MapIntegerHasher, int,float,TColStd not in module list
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type, float,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TColStd_MapIntegerHasher, int,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type float,TColStd_MapRealHasher, float,TColStd not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type, int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type, float,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TColStd_MapIntegerHasher, int,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type float,TColStd_MapRealHasher, float,TColStd not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -9059,8 +9060,8 @@ date : 2023-04-18 19:01:18.341989
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 30.58s
+SWIG interface file generation completed in 56.11s
 #################################################
 
 [INFO ]  Number of classes: 4747
-[INFO ]  Number of methods: 47356
+[INFO ]  Number of methods: 47358

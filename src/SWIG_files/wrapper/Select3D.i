@@ -74,6 +74,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_select3d.html"
 #include<BRepAdaptor_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<StdSelect_module.hxx>
+#include<AIS_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

@@ -269,7 +269,7 @@ class BRepAlgoAPI_Algo : public BRepBuilderAPI_MakeShape, protected BOPAlgo_Opti
 		/****************** Shape ******************/
 		/**** md5 signature: b8642bc5a50083ee24c608b46f5bf1c8 ****/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "No available documentation.
+		%feature("autodoc", "Returns a shape built by the shape construction algorithm. does not check if the shape is built.
 
 Returns
 -------

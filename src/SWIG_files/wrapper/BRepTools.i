@@ -281,7 +281,7 @@ theVclosed: bool
 		static void DetectClosedness(const TopoDS_Face & theFace, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****************** EvalAndUpdateTol ******************/
-		/**** md5 signature: d6d4ad99cb2d41e3fccbdfa94d99e988 ****/
+		/**** md5 signature: 16be652a9c224d56f94960b2cade0539 ****/
 		%feature("compactdefaultargs") EvalAndUpdateTol;
 		%feature("autodoc", "Evals real tolerance of edge <thee>. <thec3d>, <thec2d>, <thes>, <thef>, <thel> are correspondently 3d curve of edge, 2d curve on surface <thes> and rang of edge if calculated tolerance is more then current edge tolerance, edge is updated. method returns actual tolerance of edge.
 
@@ -298,7 +298,7 @@ Returns
 -------
 float
 ") EvalAndUpdateTol;
-		static Standard_Real EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve > theC2d, const opencascade::handle<Geom_Surface> & theS, const Standard_Real theF, const Standard_Real theL);
+		static Standard_Real EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve> & theC2d, const opencascade::handle<Geom_Surface> & theS, const Standard_Real theF, const Standard_Real theL);
 
 		/****************** IsReallyClosed ******************/
 		/**** md5 signature: d361112f12ce86c3a572783eb22c3dcb ****/
