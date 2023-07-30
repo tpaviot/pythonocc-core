@@ -1623,7 +1623,7 @@ None
 		 XCAFDoc_ClippingPlaneTool();
 
 		/****************** AddClippingPlane ******************/
-		/**** md5 signature: 96cd9764611efec9708f97a7964b7322 ****/
+		/**** md5 signature: 9572165ed6d232156b5ac4341e93264c ****/
 		%feature("compactdefaultargs") AddClippingPlane;
 		%feature("autodoc", "Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
 
@@ -1637,7 +1637,7 @@ Returns
 -------
 TDF_Label
 ") AddClippingPlane;
-		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const TCollection_ExtendedString theName, const Standard_Boolean theCapping);
+		TDF_Label AddClippingPlane(const gp_Pln & thePlane, TCollection_ExtendedString theName, const Standard_Boolean theCapping);
 
 		/****************** AddClippingPlane ******************/
 		/**** md5 signature: 9131937433204037f31f3ee02b1b6873 ****/
@@ -1657,7 +1657,7 @@ TDF_Label
 		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Boolean theCapping);
 
 		/****************** AddClippingPlane ******************/
-		/**** md5 signature: 1402b567b5c2f09a4022c0affc0b5adc ****/
+		/**** md5 signature: 99178b0fee8b169641a9e510091515c7 ****/
 		%feature("compactdefaultargs") AddClippingPlane;
 		%feature("autodoc", "Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
 
@@ -1670,7 +1670,7 @@ Returns
 -------
 TDF_Label
 ") AddClippingPlane;
-		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const TCollection_ExtendedString theName);
+		TDF_Label AddClippingPlane(const gp_Pln & thePlane, TCollection_ExtendedString theName);
 
 		/****************** AddClippingPlane ******************/
 		/**** md5 signature: 39b67f88acdbae8d7a347f43242b6396 ****/
@@ -1862,7 +1862,7 @@ None
 		void SetCapping(const TDF_Label & theClippingPlaneL, const Standard_Boolean theCapping);
 
 		/****************** UpdateClippingPlane ******************/
-		/**** md5 signature: bc776ceb1d6117cc8f2ecd1262d46521 ****/
+		/**** md5 signature: 357e65a08bcce2bae64fb69d5e937894 ****/
 		%feature("compactdefaultargs") UpdateClippingPlane;
 		%feature("autodoc", "Sets new value of plane and name to the given clipping plane label or do nothing, if the given label is not a clipping plane label.
 
@@ -1876,7 +1876,7 @@ Returns
 -------
 None
 ") UpdateClippingPlane;
-		void UpdateClippingPlane(const TDF_Label & theLabelL, const gp_Pln & thePlane, const TCollection_ExtendedString theName);
+		void UpdateClippingPlane(const TDF_Label & theLabelL, const gp_Pln & thePlane, TCollection_ExtendedString theName);
 
 };
 

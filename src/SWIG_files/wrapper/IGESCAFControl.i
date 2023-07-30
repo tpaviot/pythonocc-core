@@ -70,6 +70,12 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igescafcontrol.ht
 #include<TColGeom_module.hxx>
 #include<MoniTool_module.hxx>
 #include<IGESToBRep_module.hxx>
+#include<BRep_module.hxx>
+#include<TShort_module.hxx>
+#include<Poly_module.hxx>
+#include<Bnd_module.hxx>
+#include<BRep_module.hxx>
+#include<BRepTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

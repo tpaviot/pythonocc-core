@@ -5964,19 +5964,21 @@ None
 		virtual void Clear();
 
 		/****************** ClearAndSelect ******************/
-		/**** md5 signature: 8b52ba2d74fab9aa0e60b9e59590b3f1 ****/
+		/**** md5 signature: cd4e57dc19c491057fa2be5161ac140d ****/
 		%feature("compactdefaultargs") ClearAndSelect;
-		%feature("autodoc", "Clears the selection and adds the object in the selection.
+		%feature("autodoc", "Clears the selection and adds the object in the selection. @param[in] theobject element to change selection state @param[in] thefilter context filter @param[in] theisdetected flag of object detection.
 
 Parameters
 ----------
 theObject: SelectMgr_EntityOwner
+theFilter: SelectMgr_Filter
+theIsDetected: bool
 
 Returns
 -------
 None
 ") ClearAndSelect;
-		virtual void ClearAndSelect(const opencascade::handle<SelectMgr_EntityOwner> & theObject);
+		virtual void ClearAndSelect(const opencascade::handle<SelectMgr_EntityOwner> & theObject, const opencascade::handle<SelectMgr_Filter> & theFilter, const Standard_Boolean theIsDetected);
 
 		/****************** Extent ******************/
 		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
@@ -6060,19 +6062,22 @@ AIS_NListOfEntityOwner
 		const AIS_NListOfEntityOwner & Objects();
 
 		/****************** Select ******************/
-		/**** md5 signature: 87943d82b4002f5fb77cbc7b75a89c73 ****/
+		/**** md5 signature: 9f3d04aa1643cf0047c4e1b0ebeba8e9 ****/
 		%feature("compactdefaultargs") Select;
-		%feature("autodoc", "If the object is not yet in the selection, it will be added. if the object is already in the selection, it will be removed.
+		%feature("autodoc", "If the object is not yet in the selection, it will be added. if the object is already in the selection, it will be removed. @param[in] theowner element to change selection state @param[in] thefilter context filter @param[in] theselscheme selection scheme @param[in] theisdetected flag of object detection returns result of selection.
 
 Parameters
 ----------
-theObject: SelectMgr_EntityOwner
+theOwner: SelectMgr_EntityOwner
+theFilter: SelectMgr_Filter
+theSelScheme: AIS_SelectionScheme
+theIsDetected: bool
 
 Returns
 -------
 AIS_SelectStatus
 ") Select;
-		virtual AIS_SelectStatus Select(const opencascade::handle<SelectMgr_EntityOwner> & theObject);
+		virtual AIS_SelectStatus Select(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Filter> & theFilter, const AIS_SelectionScheme theSelScheme, const Standard_Boolean theIsDetected);
 
 		/****************** SelectOwners ******************/
 		/**** md5 signature: ac1b8c76b8f30a86ea808928babe4605 ****/

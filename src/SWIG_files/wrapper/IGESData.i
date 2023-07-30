@@ -45,10 +45,21 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igesdata.html"
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<gp_module.hxx>
+#include<ShapeBuild_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Poly_module.hxx>
+#include<BRep_module.hxx>
+#include<TopTools_module.hxx>
+#include<TShort_module.hxx>
+#include<TColGeom_module.hxx>
+#include<ShapeExtend_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<Bnd_module.hxx>
+#include<BRepTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -59,6 +70,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igesdata.html"
 %import Interface.i
 %import TCollection.i
 %import gp.i
+%import ShapeBuild.i
 %import TColStd.i
 %import Message.i
 
@@ -3544,6 +3556,17 @@ opencascade::handle<Interface_InterfaceModel>
 ") NewEmptyModel;
 		opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
+		/****************** ReShape ******************/
+		/**** md5 signature: acfc9c298bd502c36bf4f2873869a723 ****/
+		%feature("compactdefaultargs") ReShape;
+		%feature("autodoc", "Gets reshape used to store a model's shapes changes.
+
+Returns
+-------
+opencascade::handle<ShapeBuild_ReShape>
+") ReShape;
+		const opencascade::handle<ShapeBuild_ReShape> & ReShape();
+
 		/****************** SetGlobalSection ******************/
 		/**** md5 signature: 1af9179d630020de23e87e44cbffad84 ****/
 		%feature("compactdefaultargs") SetGlobalSection;
@@ -3573,6 +3596,21 @@ Returns
 None
 ") SetLineWeights;
 		void SetLineWeights(const Standard_Real defw);
+
+		/****************** SetReShape ******************/
+		/**** md5 signature: 6fed24c5337580b51b9e978b8e16cc46 ****/
+		%feature("compactdefaultargs") SetReShape;
+		%feature("autodoc", "Sets reshape used to store a history of changes of the model's shapes.
+
+Parameters
+----------
+theReShape: ShapeBuild_ReShape
+
+Returns
+-------
+None
+") SetReShape;
+		void SetReShape(const opencascade::handle<ShapeBuild_ReShape> & theReShape);
 
 		/****************** SetStartSection ******************/
 		/**** md5 signature: ebf891bd634c8accc53a220ba641c312 ****/
@@ -5464,20 +5502,20 @@ bool
 		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
 
 		/****************** ReadText ******************/
-		/**** md5 signature: 8807f276466f6d3d64b7837129489f8b ****/
+		/**** md5 signature: e6c8b0b8fb6d1cf4fafe20a1632d5ec8 ****/
 		%feature("compactdefaultargs") ReadText;
 		%feature("autodoc", "No available documentation.
 
 Parameters
 ----------
-PC: IGESData_ParamCursor
-amsg: Message_Msg
+thePC: IGESData_ParamCursor
+theMsg: Message_Msg
 
 Returns
 -------
-val: TCollection_HAsciiString
+theVal: TCollection_HAsciiString
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		Standard_Boolean ReadText(const IGESData_ParamCursor & thePC, const Message_Msg & theMsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****************** ReadText ******************/
 		/**** md5 signature: 583adf171adc696820aae6403d5703c0 ****/

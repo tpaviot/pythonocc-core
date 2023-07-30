@@ -848,7 +848,7 @@ None
 		 STEPCAFControl_GDTProperty();
 
 		/****************** GetDatumRefModifiers ******************/
-		/**** md5 signature: a9135dd15c61564a975d92fa2356d979 ****/
+		/**** md5 signature: 91654d4a61d0460385cafb3d0786834b ****/
 		%feature("compactdefaultargs") GetDatumRefModifiers;
 		%feature("autodoc", "No available documentation.
 
@@ -863,7 +863,7 @@ Returns
 -------
 opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>
 ") GetDatumRefModifiers;
-		static opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> GetDatumRefModifiers(const XCAFDimTolObjects_DatumModifiersSequence & theModifiers, const XCAFDimTolObjects_DatumModifWithValue & theModifWithVal, const Standard_Real theValue, const StepBasic_Unit theUnit);
+		static opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> GetDatumRefModifiers(const XCAFDimTolObjects_DatumModifiersSequence & theModifiers, const XCAFDimTolObjects_DatumModifWithValue & theModifWithVal, const Standard_Real theValue, const StepBasic_Unit & theUnit);
 
 		/****************** GetDatumTargetName ******************/
 		/**** md5 signature: b72f88dd48cee3c7fded9891ceb0cee6 ****/
@@ -1081,7 +1081,7 @@ opencascade::handle<StepShape_LimitsAndFits>
 		static opencascade::handle<StepShape_LimitsAndFits> GetLimitsAndFits(Standard_Boolean theHole, XCAFDimTolObjects_DimensionFormVariance theFormVariance, XCAFDimTolObjects_DimensionGrade theGrade);
 
 		/****************** GetTessellation ******************/
-		/**** md5 signature: 85ed91fa7a6e1973202f735dbc048395 ****/
+		/**** md5 signature: 6a6e0d8dbc29d6b9bac92cc227a1749d ****/
 		%feature("compactdefaultargs") GetTessellation;
 		%feature("autodoc", "No available documentation.
 
@@ -1093,7 +1093,7 @@ Returns
 -------
 opencascade::handle<StepVisual_TessellatedGeometricSet>
 ") GetTessellation;
-		static opencascade::handle<StepVisual_TessellatedGeometricSet> GetTessellation(const TopoDS_Shape theShape);
+		static opencascade::handle<StepVisual_TessellatedGeometricSet> GetTessellation(const TopoDS_Shape & theShape);
 
 		/****************** GetTolValueType ******************/
 		/**** md5 signature: c48b39a90222f2f7713bf5bd61c69b57 ****/

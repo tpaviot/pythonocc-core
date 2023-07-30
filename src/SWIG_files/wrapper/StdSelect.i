@@ -70,6 +70,7 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stdselect.html"
 #include<Graphic3d_module.hxx>
 #include<Geom_module.hxx>
 #include<Aspect_module.hxx>
+#include<AIS_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

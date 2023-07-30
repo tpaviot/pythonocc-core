@@ -60,6 +60,12 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_igescontrol.html"
 #include<MoniTool_module.hxx>
 #include<TColGeom_module.hxx>
 #include<ShapeExtend_module.hxx>
+#include<BRepTools_module.hxx>
+#include<BRep_module.hxx>
+#include<Bnd_module.hxx>
+#include<TShort_module.hxx>
+#include<BRepTools_module.hxx>
+#include<Poly_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
