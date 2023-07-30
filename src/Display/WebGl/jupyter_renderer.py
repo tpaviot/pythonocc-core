@@ -84,6 +84,7 @@ from OCC.Extend.ShapeFactory import (
 )
 from OCC.Extend.DataExchange import export_shape_to_svg
 
+
 #
 # Util mathematical functions
 #
