@@ -28,7 +28,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r148"
+THREEJS_RELEASE = "r155"
 
 
 def spinning_cursor():
