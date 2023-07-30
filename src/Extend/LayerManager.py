@@ -18,8 +18,16 @@
 from OCC.Core.Graphic3d import Graphic3d_NOM_DEFAULT
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 
+
 class Layer:
-    def __init__(self, from_display, shape=None, color=0, transparency=0.0, material=Graphic3d_NOM_DEFAULT):
+    def __init__(
+        self,
+        from_display,
+        shape=None,
+        color=0,
+        transparency=0.0,
+        material=Graphic3d_NOM_DEFAULT,
+    ):
         r"""
          Parameters
         ----------
@@ -27,9 +35,9 @@ class Layer:
         shape: TopoDS_Shape
         color: Quantity color
         transparency: from 0.0 to 1.0
-        
+
         Returns
-        ------- 
+        -------
         None
         """
         self.clear()
@@ -45,12 +53,14 @@ class Layer:
          Parameters
         ----------
         shape: TopoDS_Shape
-        
+
         Returns
-        ------- 
+        -------
         None
         """
-        to_display = self.display.DisplayShape(shape, color=self.color, material=self.material)[0]
+        to_display = self.display.DisplayShape(
+            shape, color=self.color, material=self.material
+        )[0]
         self.display.Context.SetTransparency(to_display, self.transparency, True)
         self.element_to_display[self.count] = (shape, to_display)
         self.count += 1
@@ -62,14 +72,16 @@ class Layer:
         ----------
         shape: TopoDS_Shape
         index: The index of the shape to replace
-        
+
         Returns
-        ------- 
+        -------
         None
         """
         self.display.Context.Erase(self.element_to_display[index][1], False)
         self.element_to_display.pop(index)
-        to_display = self.display.DisplayShape(shape, color=self.color, material=self.material)[0]
+        to_display = self.display.DisplayShape(
+            shape, color=self.color, material=self.material
+        )[0]
         self.display.Context.SetTransparency(to_display, self.transparency, True)
         self.element_to_display[index] = (shape, to_display)
         # self.display.Context.Erase(to_display, False)
@@ -81,9 +93,9 @@ class Layer:
         shape: TopoDS_Shape
         index: The index of the shape to update and replace
         transformations: gp_Trsf
-        
+
         Returns
-        ------- 
+        -------
         None
         """
         shape_moved = BRepBuilderAPI_Transform(shape, transformations, True).Shape()
@@ -97,7 +109,7 @@ class Layer:
         clear: bool to clear the layer
 
         Returns
-        ------- 
+        -------
         None
         """
         for shape in layer.get_shapes():
@@ -112,7 +124,7 @@ class Layer:
         index: index of the shape to delete from layer
 
         Returns
-        ------- 
+        -------
         None
         """
         self.element_to_display.pop(index)
@@ -124,7 +136,7 @@ class Layer:
         shape: the TopoDS_Shape to delete from layer
 
         Returns
-        ------- 
+        -------
         None
         """
         for index, element in self.element_to_display.items():
@@ -142,7 +154,7 @@ class Layer:
     def get_shapes(self):
         r"""
         Returns
-        ------- 
+        -------
         List of TopoDS_Shape
         """
         topods_shapes = []
@@ -150,7 +162,7 @@ class Layer:
             shape, ais_shape = element
             topods_shapes.append(shape)
         return topods_shapes
-    
+
     def get_aisshape_from_topodsshape(self, topshape):
         r"""
          Parameters
@@ -158,7 +170,7 @@ class Layer:
         topshape: the TopoDS_Shape linked to the AIS_Shape to retrieve
 
         Returns
-        ------- 
+        -------
         AIS_Shape, index of shape
         """
         for index, element in self.element_to_display.items():
