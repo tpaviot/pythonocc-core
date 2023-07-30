@@ -59,6 +59,7 @@ from OCC.Core.gp import (
     gp_Dir,
     gp_GTrsf,
     gp_Mat,
+    gp_XYZ,
 )
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 
@@ -246,12 +247,12 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
     a_half_y = obb.YHSize()
     a_half_z = obb.ZHSize()
 
-    ax = gp.XYZ(x_direction.X(), x_direction.Y(), x_direction.Z())
-    ay = gp.XYZ(y_direction.X(), y_direction.Y(), y_direction.Z())
-    az = gp.XYZ(z_direction.X(), z_direction.Y(), z_direction.Z())
+    ax = gp_XYZ(x_direction.X(), x_direction.Y(), x_direction.Z())
+    ay = gp_XYZ(y_direction.X(), y_direction.Y(), y_direction.Z())
+    az = gp_XYZ(z_direction.X(), z_direction.Y(), z_direction.Z())
     p = gp_Pnt(bary_center.X(), bary_center.Y(), bary_center.Z())
     an_axe = gp_Ax2(p, gp_Dir(z_direction), gp_Dir(x_direction))
-    an_axe.SetLocation(gp_Pnt(p.XYZ() - ax * a_half_x - ay * a_half_y - az * a_half_z))
+    an_axe.SetLocation(gp_Pnt(gp_XYZ() - ax * a_half_x - ay * a_half_y - az * a_half_z))
     a_box = BRepPrimAPI_MakeBox(
         an_axe, 2.0 * a_half_x, 2.0 * a_half_y, 2.0 * a_half_z
     ).Shape()
@@ -367,11 +368,11 @@ def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
         ry = radians(ry)
         rz = radians(rz)
     alpha = gp_Trsf()
-    alpha.SetRotation(gp_OX(), rx)
+    alpha.SetRotation(gp.OX(), rx)
     beta = gp_Trsf()
-    beta.SetRotation(gp_OY(), ry)
+    beta.SetRotation(gp.OY(), ry)
     gamma = gp_Trsf()
-    gamma.SetRotation(gp_OZ(), rz)
+    gamma.SetRotation(gp.OZ(), rz)
     brep_trns = BRepBuilderAPI_Transform(shape, alpha * beta * gamma, False)
     shp = brep_trns.Shape()
     return shp
