@@ -61,7 +61,6 @@ class qtBaseViewer(QtWidgets.QWidget):
 
 
 class qtViewer3d(qtBaseViewer):
-
     # emit signal when selection is changed
     # is a list of TopoDS_*
     HAVE_PYQT_SIGNAL = False
@@ -185,7 +184,6 @@ class qtViewer3d(qtBaseViewer):
     @cursor.setter
     def cursor(self, value):
         if not self._current_cursor == value:
-
             self._current_cursor = value
             cursor = self._available_cursors.get(value)
 
@@ -220,8 +218,7 @@ class qtViewer3d(qtBaseViewer):
 
                     if (
                         self._display.selected_shapes is not None
-                        ) and self.HAVE_PYQT_SIGNAL:
-
+                    ) and self.HAVE_PYQT_SIGNAL:
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 
         elif event.button() == QtCore.Qt.RightButton:
@@ -292,8 +289,8 @@ class qtViewer3d(qtBaseViewer):
             self._display.MoveTo(pt.x(), pt.y())
             self.cursor = "arrow"
 
-class qtViewer3dWithManipulator(qtViewer3d):
 
+class qtViewer3dWithManipulator(qtViewer3d):
     # emit signal when selection is changed
     # is a list of TopoDS_*
     HAVE_PYQT_SIGNAL = False
@@ -347,7 +344,8 @@ class qtViewer3dWithManipulator(qtViewer3d):
         self.dragStartPosY = ev.y()
         if self.manipulator.HasActiveMode():
             self.manipulator.StartTransform(
-                self.dragStartPosX, self.dragStartPosY, self._display.GetView())
+                self.dragStartPosX, self.dragStartPosY, self._display.GetView()
+            )
         else:
             self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
 
@@ -359,7 +357,8 @@ class qtViewer3dWithManipulator(qtViewer3d):
         if buttons == QtCore.Qt.LeftButton and not modifiers == QtCore.Qt.ShiftModifier:
             if self.manipulator.HasActiveMode():
                 self.trsf = self.manipulator.Transform(
-                    pt.x(), pt.y(), self._display.GetView())
+                    pt.x(), pt.y(), self._display.GetView()
+                )
                 self.manip_moved = True
                 self._display.View.Redraw()
             else:
@@ -420,7 +419,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
         for t in self.trsf_manip:
             trsf.Multiply(t)
         return trsf
-    
+
     def mouseReleaseEvent(self, event):
         pt = event.pos()
         modifiers = event.modifiers()
@@ -440,8 +439,9 @@ class qtViewer3dWithManipulator(qtViewer3d):
                     # single select otherwise
                     self._display.Select(pt.x(), pt.y())
 
-                    if (self._display.selected_shapes is not None) and self.HAVE_PYQT_SIGNAL:
-
+                    if (
+                        self._display.selected_shapes is not None
+                    ) and self.HAVE_PYQT_SIGNAL:
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 
         elif event.button() == QtCore.Qt.RightButton:
@@ -451,4 +451,3 @@ class qtViewer3dWithManipulator(qtViewer3d):
                 self._zoom_area = False
 
         self.cursor = "arrow"
-
