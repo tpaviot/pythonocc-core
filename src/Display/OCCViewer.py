@@ -30,7 +30,6 @@ from OCC.Core.AIS import (
     AIS_Shaded,
     AIS_TexturedShape,
     AIS_WireFrame,
-    AIS_Shape,
 )
 from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.Core.BRepBuilderAPI import (
