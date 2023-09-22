@@ -27,6 +27,11 @@ set(PYTHONOCC_VERSION_PATCH 1)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL )
 
+# set OCCT version
+set(OCCT_VERSION_MAJOR 7)
+set(OCCT_VERSION_MINOR 7)
+set(OCCT_VERSION_PATCH 2)
+
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 ## cmake policies
@@ -117,6 +122,10 @@ if(SWIG_HIDE_WARNINGS)
   set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
 endif()
 
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+  add_definitions(-DSWIG_PYTHON_SILENT_MEMLEAK)
+endif(CMAKE_BUILD_TYPE STREQUAL "Release")
+
 ################################
 # OCE include and lib location #
 ################################
@@ -136,7 +145,7 @@ if(DEFINED OCE_INCLUDE_PATH)
 # if OCE_INCLUDE_PATH is not passed at command line,
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
-  find_package(OpenCASCADE 7.7.2 REQUIRED)
+  find_package(OpenCASCADE ${OCCT_VERSION_MAJOR}.${OCCT_VERSION_MINOR}.${OCCT_VERSION_PATCH} REQUIRED)
   if(OpenCASCADE_FOUND)
     message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
     message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
