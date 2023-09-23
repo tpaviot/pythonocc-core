@@ -89,7 +89,7 @@ from OCC.Extend.DataExchange import export_shape_to_svg
 # Util mathematical functions
 #
 def _add(vec1, vec2):
-    return list(v1 + v2 for v1, v2 in zip(vec1, vec2))
+    return [v1 + v2 for v1, v2 in zip(vec1, vec2)]
 
 
 def _explode(edge_list):
@@ -141,15 +141,14 @@ def _nice_number(value, round_=False):
             nice_fraction = 5.0
         else:
             nice_fraction = 10.0
+    elif fraction <= 1:
+        nice_fraction = 1.0
+    elif fraction <= 2:
+        nice_fraction = 2.0
+    elif fraction <= 5:
+        nice_fraction = 5.0
     else:
-        if fraction <= 1:
-            nice_fraction = 1.0
-        elif fraction <= 2:
-            nice_fraction = 2.0
-        elif fraction <= 5:
-            nice_fraction = 5.0
-        else:
-            nice_fraction = 10.0
+        nice_fraction = 10.0
 
     return nice_fraction * 10**exponent
 
@@ -236,18 +235,18 @@ class Axes(Helpers):
         Helpers.__init__(self, bb_center)
 
         self.axes = []
-        for vector, color in zip(
-            ([length, 0, 0], [0, length, 0], [0, 0, length]), ("red", "green", "blue")
-        ):
-            self.axes.append(
-                LineSegments2(
-                    LineSegmentsGeometry(
-                        positions=[[self.center, _shift(self.center, vector)]]
-                    ),
-                    LineMaterial(linewidth=width, color=color),
-                )
+        self.axes.extend(
+            LineSegments2(
+                LineSegmentsGeometry(
+                    positions=[[self.center, _shift(self.center, vector)]]
+                ),
+                LineMaterial(linewidth=width, color=color),
             )
-
+            for vector, color in zip(
+                ([length, 0, 0], [0, length, 0], [0, 0, length]),
+                ("red", "green", "blue"),
+            )
+        )
         if display_labels:
             # add x, y and z labels
             x_text = make_text("X", [length, 0, 0])
@@ -353,26 +352,22 @@ class BoundingBox:
 
     def _max_dist_from_center(self):
         return max(
-            [
-                _distance(self.center, v)
-                for v in itertools.product(
-                    (self.xmin, self.xmax),
-                    (self.ymin, self.ymax),
-                    (self.zmin, self.zmax),
-                )
-            ]
+            _distance(self.center, v)
+            for v in itertools.product(
+                (self.xmin, self.xmax),
+                (self.ymin, self.ymax),
+                (self.zmin, self.zmax),
+            )
         )
 
     def _max_dist_from_origin(self):
         return max(
-            [
-                np.linalg.norm(v)
-                for v in itertools.product(
-                    (self.xmin, self.xmax),
-                    (self.ymin, self.ymax),
-                    (self.zmin, self.zmax),
-                )
-            ]
+            np.linalg.norm(v)
+            for v in itertools.product(
+                (self.xmin, self.xmax),
+                (self.ymin, self.ymax),
+                (self.zmin, self.zmax),
+            )
         )
 
     def _bounding_box(self, obj, tol=1e-5):
@@ -383,8 +378,7 @@ class BoundingBox:
         return (values[0], values[3], values[1], values[4], values[2], values[5])
 
     def _bbox(self, objects):
-        bb = reduce(_opt, [self._bounding_box(obj) for obj in objects])
-        return bb
+        return reduce(_opt, [self._bounding_box(obj) for obj in objects])
 
     def __repr__(self):
         return "[x(%f .. %f), y(%f .. %f), z(%f .. %f)]" % (
@@ -525,7 +519,7 @@ class JupyterRenderer:
     def create_checkbox(self, kind, description, value, handler):
         checkbox = Checkbox(value=value, description=description, layout=self.layout)
         checkbox.observe(handler, "value")
-        checkbox.add_class("view_%s" % kind)
+        checkbox.add_class(f"view_{kind}")
         return checkbox
 
     def remove_shape(self, *kargs):
@@ -536,91 +530,92 @@ class JupyterRenderer:
         self._remove_shp_button.disabled = True
 
     def on_compute_change(self, change):
-        if change["type"] == "change" and change["name"] == "value":
-            selection = change["new"]
-            output = ""
-            if "Inertia" in selection:
-                cog, mass, mass_property = measure_shape_mass_center_of_gravity(
-                    self._current_shape_selection
-                )
-                # display this point (type gp_Pnt)
-                self.DisplayShape([cog])
+        if change["type"] != "change" or change["name"] != "value":
+            return
+        selection = change["new"]
+        output = ""
+        if "Inertia" in selection:
+            cog, mass, mass_property = measure_shape_mass_center_of_gravity(
+                self._current_shape_selection
+            )
+            # display this point (type gp_Pnt)
+            self.DisplayShape([cog])
+            output += (
+                "<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>%.3f<br><b>Ycog=</b>%.3f<br><b>Zcog=</b>%.3f<br>"
+                % (cog.X(), cog.Y(), cog.Z())
+            )
+            output += "<u><b>%s=</b></u>:<b>%.3f</b><br>" % (mass_property, mass)
+        elif "Oriented" in selection:
+            center, dim, oobb_shp = get_oriented_boundingbox(
+                self._current_shape_selection
+            )
+            self.DisplayShape(
+                oobb_shp,
+                render_edges=True,
+                transparency=True,
+                opacity=0.2,
+                selectable=False,
+            )
+            output += (
+                "<u><b>OOBB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
+                % (center.X(), center.Y(), center.Z())
+            )
+            output += (
+                "<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>"
+                % (dim[0], dim[1], dim[2])
+            )
+            output += "<u><b>OOBB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
+                dim[0] * dim[1] * dim[2]
+            )
+        elif "Aligned" in selection:
+            center, dim, albb_shp = get_aligned_boundingbox(
+                self._current_shape_selection
+            )
+            self.DisplayShape(
+                albb_shp,
+                render_edges=True,
+                transparency=True,
+                opacity=0.2,
+                selectable=False,
+            )
+            output += (
+                "<u><b>ABB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
+                % (center.X(), center.Y(), center.Z())
+            )
+            output += (
+                "<u><b>ABB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>"
+                % (dim[0], dim[1], dim[2])
+            )
+            output += "<u><b>ABB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
+                dim[0] * dim[1] * dim[2]
+            )
+        elif "Recognize" in selection:
+            # try featrue recognition
+            kind, pnt, vec = recognize_face(self._current_shape_selection)
+            output += f"<u><b>Type</b></u>: {kind}<br>"
+            if kind == "Plane":
+                self.DisplayShape([pnt])
+                output += "<u><b>Properties</b></u>:<br>"
                 output += (
-                    "<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>%.3f<br><b>Ycog=</b>%.3f<br><b>Zcog=</b>%.3f<br>"
-                    % (cog.X(), cog.Y(), cog.Z())
-                )
-                output += "<u><b>%s=</b></u>:<b>%.3f</b><br>" % (mass_property, mass)
-            elif "Oriented" in selection:
-                center, dim, oobb_shp = get_oriented_boundingbox(
-                    self._current_shape_selection
-                )
-                self.DisplayShape(
-                    oobb_shp,
-                    render_edges=True,
-                    transparency=True,
-                    opacity=0.2,
-                    selectable=False,
+                    "<u><b>Point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
+                    % (pnt.X(), pnt.Y(), pnt.Z())
                 )
                 output += (
-                    "<u><b>OOBB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                    % (center.X(), center.Y(), center.Z())
+                    "<u><b>Normal</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>"
+                    % (vec.X(), vec.Y(), vec.Z())
+                )
+            elif kind == "Cylinder":
+                self.DisplayShape([pnt])
+                output += "<u><b>Properties</b></u>:<br>"
+                output += (
+                    "<u><b>Axis point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
+                    % (pnt.X(), pnt.Y(), pnt.Z())
                 )
                 output += (
-                    "<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>"
-                    % (dim[0], dim[1], dim[2])
+                    "<u><b>Axis direction</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>"
+                    % (vec.X(), vec.Y(), vec.Z())
                 )
-                output += "<u><b>OOBB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
-                    dim[0] * dim[1] * dim[2]
-                )
-            elif "Aligned" in selection:
-                center, dim, albb_shp = get_aligned_boundingbox(
-                    self._current_shape_selection
-                )
-                self.DisplayShape(
-                    albb_shp,
-                    render_edges=True,
-                    transparency=True,
-                    opacity=0.2,
-                    selectable=False,
-                )
-                output += (
-                    "<u><b>ABB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                    % (center.X(), center.Y(), center.Z())
-                )
-                output += (
-                    "<u><b>ABB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>"
-                    % (dim[0], dim[1], dim[2])
-                )
-                output += "<u><b>ABB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
-                    dim[0] * dim[1] * dim[2]
-                )
-            elif "Recognize" in selection:
-                # try featrue recognition
-                kind, pnt, vec = recognize_face(self._current_shape_selection)
-                output += "<u><b>Type</b></u>: %s<br>" % kind
-                if kind == "Plane":
-                    self.DisplayShape([pnt])
-                    output += "<u><b>Properties</b></u>:<br>"
-                    output += (
-                        "<u><b>Point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                        % (pnt.X(), pnt.Y(), pnt.Z())
-                    )
-                    output += (
-                        "<u><b>Normal</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>"
-                        % (vec.X(), vec.Y(), vec.Z())
-                    )
-                elif kind == "Cylinder":
-                    self.DisplayShape([pnt])
-                    output += "<u><b>Properties</b></u>:<br>"
-                    output += (
-                        "<u><b>Axis point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                        % (pnt.X(), pnt.Y(), pnt.Z())
-                    )
-                    output += (
-                        "<u><b>Axis direction</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>"
-                        % (vec.X(), vec.Y(), vec.Z())
-                    )
-            self.html.value = output
+        self.html.value = output
 
     def toggle_shape_visibility(self, *kargs):
         self.clicked_obj.visible = not self.clicked_obj.visible
@@ -665,7 +660,7 @@ class JupyterRenderer:
                 html_value = "<b>Shape type:</b> %s<br>" % get_type_as_string(
                     selected_shape
                 )
-                html_value += "<b>Shape id:</b> %s<br>" % id_clicked
+                html_value += f"<b>Shape id:</b> {id_clicked}<br>"
                 self.html.value = html_value
                 self._current_shape_selection = selected_shape
             else:
@@ -819,7 +814,7 @@ class JupyterRenderer:
 
         # map the Points and the AIS_PointCloud
         # and to the dict of shapes, to have a mapping between meshes and shapes
-        point_cloud_id = "%s" % uuid.uuid4().hex
+        point_cloud_id = f"{uuid.uuid4().hex}"
         self._shapes[point_cloud_id] = compound
 
         vertices_list = np.array(vertices_list, dtype=np.float32)
@@ -828,8 +823,7 @@ class JupyterRenderer:
             color=vertex_color, sizeAttenuation=True, size=vertex_width
         )
         geom = BufferGeometry(attributes=attributes)
-        points = Points(geometry=geom, material=mat, name=point_cloud_id)
-        return points
+        return Points(geometry=geom, material=mat, name=point_cloud_id)
 
     def AddCurveToScene(self, shp, edge_color, deflection):
         """shp is either a TopoDS_Wire or a TopodS_Edge."""
@@ -848,13 +842,13 @@ class JupyterRenderer:
         edge_material = LineBasicMaterial(color=edge_color, linewidth=1)
 
         # and to the dict of shapes, to have a mapping between meshes and shapes
-        edge_id = "%s" % uuid.uuid4().hex
+        edge_id = f"{uuid.uuid4().hex}"
         self._shapes[edge_id] = shp
 
         edge_line = Line(geometry=edge_geometry, material=edge_material, name=edge_id)
 
         # and to the dict of shapes, to have a mapping between meshes and shapes
-        edge_id = "%s" % uuid.uuid4().hex
+        edge_id = f"{uuid.uuid4().hex}"
         self._shapes[edge_id] = shp
 
         return edge_line
@@ -887,7 +881,7 @@ class JupyterRenderer:
 
         # then we build the vertex and faces collections as numpy ndarrays
         np_vertices = np.array(vertices_position, dtype="float32").reshape(
-            int(number_of_vertices / 3), 3
+            number_of_vertices // 3, 3
         )
         # Note: np_faces is just [0, 1, 2, 3, 4, 5, ...], thus arange is used
         np_faces = np.arange(np_vertices.shape[0], dtype="uint32")
@@ -922,7 +916,7 @@ class JupyterRenderer:
         )
 
         # and to the dict of shapes, to have a mapping between meshes and shapes
-        mesh_id = "%s" % uuid.uuid4().hex
+        mesh_id = f"{uuid.uuid4().hex}"
         self._shapes[mesh_id] = shp
 
         # finally create the mesh
@@ -950,8 +944,7 @@ class JupyterRenderer:
     def _scale(self, vec):
         r = self._bb._max_dist_from_center() * self._camera_distance_factor
         n = np.linalg.norm(vec)
-        new_vec = [v / n * r for v in vec]
-        return new_vec
+        return [v / n * r for v in vec]
 
     def _material(self, color, transparent=False, opacity=1.0):
         # material = MeshPhongMaterial()

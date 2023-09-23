@@ -32,7 +32,7 @@ def get_available_port(port):
     * if not, take another one
     * returns the port number
     """
-    if not port > 1024:
+    if port <= 1024:
         raise AssertionError("port number should be > 1024")
     # check this port is available
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -87,9 +87,8 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
 
         @app.route("/")
         def root():
-            fp = open(os.path.join(x3d_path, "index.html"))
-            html_content = fp.read()
-            fp.close()
+            with open(os.path.join(x3d_path, "index.html")) as fp:
+                html_content = fp.read()
             return html_content
 
         @app.route("/<path:path>")

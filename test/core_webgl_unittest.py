@@ -39,7 +39,7 @@ class TestWebGL(unittest.TestCase):
     def test_threejs_random_boxes(self):
         """Test: threejs 10 random boxes"""
         my_threejs_renderer = threejs_renderer.ThreejsRenderer()
-        for i in range(10):
+        for _ in range(10):
             box_shp = BRepPrimAPI_MakeBox(
                 random.random() * 20, random.random() * 20, random.random() * 20
             ).Shape()

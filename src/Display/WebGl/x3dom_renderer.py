@@ -32,8 +32,7 @@ X3DOM_RELEASE = "1.8.2"
 
 def spinning_cursor():
     while True:
-        for cursor in "|/-\\":
-            yield cursor
+        yield from "|/-\\"
 
 
 X3DFILE_HEADER = """<?xml version="1.0" encoding="UTF-8"?>
@@ -181,15 +180,11 @@ def export_edge_to_indexed_lineset(edge_point_set):
 def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id=0):
     """takes an str_lineset, coming for instance from export_curve_to_ils,
     and export to an X3D string"""
-    if header:
-        x3dfile_str = X3DFILE_HEADER
-    else:
-        x3dfile_str = ""
+    x3dfile_str = X3DFILE_HEADER if header else ""
     x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
     x3dfile_str += "\t<Group>\n"
 
-    ils_id = 0
-    for str_lineset in str_linesets:
+    for ils_id, str_lineset in enumerate(str_linesets):
         x3dfile_str += "\t\t<Transform scale='1 1 1'><Shape DEF='edg%s'>\n" % ils_id
         # empty appearance, but the x3d validator complains if nothing set
         x3dfile_str += (
@@ -197,8 +192,6 @@ def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id
         )
         x3dfile_str += str_lineset
         x3dfile_str += "\t\t</Shape></Transform>\n"
-        ils_id += 1
-
     x3dfile_str += "\t</Group>\n"
     x3dfile_str += "</Switch>\n"
     if footer:
@@ -214,10 +207,10 @@ class HTMLHeader:
 
     def get_str(self):
         header_str = HEADER.replace(
-            "@bg_gradient_color1@", "%s" % self._bg_gradient_color1
+            "@bg_gradient_color1@", f"{self._bg_gradient_color1}"
         )
         header_str = header_str.replace(
-            "@bg_gradient_color2@", "%s" % self._bg_gradient_color2
+            "@bg_gradient_color2@", f"{self._bg_gradient_color2}"
         )
         header_str = header_str.replace("@VERSION@", OCC_VERSION)
         return header_str
@@ -236,7 +229,6 @@ class HTMLBody:
         body_str = BODY.replace("@VERSION@", OCC_VERSION)
         x3dcontent = '\n\t<x3d id="pythonocc-x3d-scene" style="width:100%;border: none" >\n\t\t<Scene>\n'
         nb_shape = len(self._x3d_shapes)
-        cur_shp = 1
         if self._display_axes_plane:
             x3dcontent += """
             <transform scale="%g,%g,%g">
@@ -255,7 +247,7 @@ class HTMLBody:
         x3dcontent += (
             '<transform id="glbal_scene_rotation_Id" rotation="1 0 0 -1.57079632679">'
         )
-        for shp_uid in self._x3d_shapes:
+        for cur_shp, shp_uid in enumerate(self._x3d_shapes, start=1):
             sys.stdout.write(
                 "\r%s meshing shapes... %i%%"
                 % (next(self.spinning_cursor), round(cur_shp / nb_shape * 100))
@@ -266,7 +258,6 @@ class HTMLBody:
                 '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="%s.x3d"></Inline>\n'
                 % shp_uid
             )
-            cur_shp += 1
         x3dcontent += "</transform>"
         x3dcontent += "\t\t</Scene>\n\t</x3d>\n"
         body_str = body_str.replace("@X3DSCENE@", x3dcontent)
@@ -320,12 +311,11 @@ class X3DExporter:
             # get number of edges
             nbr_edges = shape_tesselator.ObjGetEdgeCount()
             for i_edge in range(nbr_edges):
-                edge_point_set = []
                 nbr_vertices = shape_tesselator.ObjEdgeGetVertexCount(i_edge)
-                for i_vert in range(nbr_vertices):
-                    edge_point_set.append(
-                        shape_tesselator.GetEdgeVertex(i_edge, i_vert)
-                    )
+                edge_point_set = [
+                    shape_tesselator.GetEdgeVertex(i_edge, i_vert)
+                    for i_vert in range(nbr_vertices)
+                ]
                 ils = export_edge_to_indexed_lineset(edge_point_set)
                 self._line_sets.append(ils)
 
@@ -386,9 +376,7 @@ class X3DExporter:
         # use ElementTree to ensure xml file quality
         #
         xml_et = ElementTree.fromstring(x3dfile_str)
-        clean_x3d_str = ElementTree.tostring(xml_et, encoding="utf8").decode("utf8")
-
-        return clean_x3d_str
+        return ElementTree.tostring(xml_et, encoding="utf8").decode("utf8")
 
     def write_to_file(self, filename, shape_id):
         with open(filename, "w") as f:
@@ -397,10 +385,7 @@ class X3DExporter:
 
 class X3DomRenderer:
     def __init__(self, path=None, display_axes_plane=True, axes_plane_zoom_factor=1.0):
-        if not path:  # by default, write to a temp directory
-            self._path = tempfile.mkdtemp()
-        else:
-            self._path = path
+        self._path = tempfile.mkdtemp() if not path else path
         self._html_filename = os.path.join(self._path, "index.html")
         self._x3d_shapes = {}
         self._x3d_edges = {}
@@ -433,12 +418,12 @@ class X3DomRenderer:
         if is_edge(shape):
             print("X3D exporter, discretize an edge")
             pnts = discretize_edge(shape)
-            edge_hash = "edg%s" % uuid.uuid4().hex
+            edge_hash = f"edg{uuid.uuid4().hex}"
             line_set = export_edge_to_indexed_lineset(pnts)
             x3dfile_content = indexed_lineset_to_x3d_string(
                 [line_set], ils_id=edge_hash
             )
-            edge_full_path = os.path.join(self._path, edge_hash + ".x3d")
+            edge_full_path = os.path.join(self._path, f"{edge_hash}.x3d")
             with open(edge_full_path, "w") as edge_file:
                 edge_file.write(x3dfile_content)
             # store this edge hash
@@ -448,12 +433,12 @@ class X3DomRenderer:
         if is_wire(shape):
             print("X3D exporter, discretize a wire")
             pnts = discretize_wire(shape)
-            wire_hash = "wir%s" % uuid.uuid4().hex
+            wire_hash = f"wir{uuid.uuid4().hex}"
             line_set = export_edge_to_indexed_lineset(pnts)
             x3dfile_content = indexed_lineset_to_x3d_string(
                 [line_set], ils_id=wire_hash
             )
-            wire_full_path = os.path.join(self._path, wire_hash + ".x3d")
+            wire_full_path = os.path.join(self._path, f"{wire_hash}.x3d")
             with open(wire_full_path, "w") as wire_file:
                 wire_file.write(x3dfile_content)
             # store this edge hash
@@ -461,7 +446,7 @@ class X3DomRenderer:
             return self._x3d_shapes, self._x3d_edges
 
         shape_uuid = uuid.uuid4().hex
-        shape_hash = "shp%s" % shape_uuid
+        shape_hash = f"shp{shape_uuid}"
         x3d_exporter = X3DExporter(
             shape,
             vertex_shader,
@@ -476,7 +461,7 @@ class X3DomRenderer:
             mesh_quality,
         )
         x3d_exporter.compute()
-        x3d_filename = os.path.join(self._path, "%s.x3d" % shape_hash)
+        x3d_filename = os.path.join(self._path, f"{shape_hash}.x3d")
         # the x3d filename is computed from the shape hash
         shape_id = len(self._x3d_shapes)
         x3d_exporter.write_to_file(x3d_filename, shape_id)

@@ -159,9 +159,9 @@ class TestGeometry(unittest.TestCase):
         GAC = Geom2dAdaptor_Curve(C)
         UA = GCPnts_UniformAbscissa(GAC, abscissa)
 
-        aSequence = []
         if UA.IsDone():
             N = UA.NbPoints()
+            aSequence = []
             for count in range(1, N + 1):
                 P = gp_Pnt2d()
                 C.D0(UA.Parameter(count), P)
@@ -193,7 +193,7 @@ class TestGeometry(unittest.TestCase):
                 # in any case, it should be > 1
                 self.assertGreater(distance, 1.0)
 
-        pstring = "N : at Distance : " + repr(PPC.LowerDistance())
+        pstring = f"N : at Distance : {repr(PPC.LowerDistance())}"
 
         for i in range(1, NbResults + 1):
             Q = PPC.Point(i)
@@ -201,7 +201,7 @@ class TestGeometry(unittest.TestCase):
             distance = PPC.Distance(i)
             # in any case, it should be > 1
             self.assertGreater(distance, 1.0)
-            pstring = "Q" + repr(i) + ": at Distance :" + repr(PPC.Distance(i))
+            pstring = f"Q{repr(i)}: at Distance :{repr(PPC.Distance(i))}"
             print(pstring)
 
     def test_point_from_projections(self):
@@ -226,7 +226,7 @@ class TestGeometry(unittest.TestCase):
             for i in range(1, NbResults + 1):
                 Q = PPS.Point(i)
                 distance = PPS.Distance(i)
-                pstring = "Q" + repr(i) + ": at Distance :" + repr(PPS.Distance(i))
+                pstring = f"Q{repr(i)}: at Distance :{repr(PPS.Distance(i))}"
                 print(pstring)
 
     def test_points_from_intersection(self):
@@ -297,8 +297,7 @@ class TestGeometry(unittest.TestCase):
 
     def test_bspline(self):
         """Test: bspline"""
-        array = []
-        array.append(gp_Pnt2d(0, 0))
+        array = [gp_Pnt2d(0, 0)]
         array.append(gp_Pnt2d(1, 2))
         array.append(gp_Pnt2d(2, 3))
         array.append(gp_Pnt2d(4, 3))
@@ -357,8 +356,7 @@ class TestGeometry(unittest.TestCase):
 
     def test_curves2d_from_offset(self):
         """Test: curves 2d from offset"""
-        array = []
-        array.append(gp_Pnt2d(-4, 0))
+        array = [gp_Pnt2d(-4, 0)]
         array.append(gp_Pnt2d(-7, 2))
         array.append(gp_Pnt2d(-6, 3))
         array.append(gp_Pnt2d(-4, 3))
@@ -431,8 +429,7 @@ class TestGeometry(unittest.TestCase):
 
     def test_surface_from_curves(self):
         """Test: surfaces from curves"""
-        array = []
-        array.append(gp_Pnt(-4, 0, 2))
+        array = [gp_Pnt(-4, 0, 2)]
         array.append(gp_Pnt(-7, 2, 2))
         array.append(gp_Pnt(-6, 3, 1))
         array.append(gp_Pnt(-4, 3, -1))
@@ -441,8 +438,7 @@ class TestGeometry(unittest.TestCase):
         aaa = point_list_to_TColgp_Array1OfPnt(array)
         SPL1 = GeomAPI_PointsToBSpline(aaa).Curve()
 
-        a2 = []
-        a2.append(gp_Pnt(-4, 0, 2))
+        a2 = [gp_Pnt(-4, 0, 2)]
         a2.append(gp_Pnt(-2, 2, 0))
         a2.append(gp_Pnt(2, 3, -1))
         a2.append(gp_Pnt(3, 7, -2))
@@ -469,8 +465,7 @@ class TestGeometry(unittest.TestCase):
 
     def test_pipes(self):
         """Test: pipes"""
-        a1 = []
-        a1.append(gp_Pnt(-4, 0, 2))
+        a1 = [gp_Pnt(-4, 0, 2)]
         a1.append(gp_Pnt(-5, 1, 0))
         a1.append(gp_Pnt(-6, 2, -2))
         a1.append(gp_Pnt(-5, 4, -7))
@@ -498,8 +493,7 @@ class TestGeometry(unittest.TestCase):
         # aSurface3 = aPipe3.Surface()
         # aSurface3.Translate(gp_Vec(10, 0, 0))
 
-        for _, mode in enumerate(
-            [
+        for mode in [
                 GeomFill_IsConstantNormal,
                 GeomFill_IsCorrectedFrenet,
                 GeomFill_IsDarboux,
@@ -508,8 +502,7 @@ class TestGeometry(unittest.TestCase):
                 GeomFill_IsGuideACWithContact,
                 GeomFill_IsGuidePlan,
                 GeomFill_IsGuidePlanWithContact,
-            ]
-        ):
+            ]:
             E = GC_MakeEllipse(gp.XOY(), 2, 1).Value()
             aPipe2 = GeomFill_Pipe(SPL1, TC1, TC2, mode)
             aPipe2.Perform(False, False)
@@ -587,16 +580,14 @@ class TestGeometry(unittest.TestCase):
 
     def test_surfaces_from_offsets(self):
         """Test: surfaces from offsets"""
-        array1 = []
-        array1.append(gp_Pnt(-4, 5, 5))
+        array1 = [gp_Pnt(-4, 5, 5)]
         array1.append(gp_Pnt(-3, 6, 6))
         array1.append(gp_Pnt(-1, 7, 7))
         array1.append(gp_Pnt(0, 8, 8))
         array1.append(gp_Pnt(2, 9, 9))
         SPL1 = GeomAPI_PointsToBSpline(point_list_to_TColgp_Array1OfPnt(array1)).Curve()
 
-        array2 = []
-        array2.append(gp_Pnt(-4, 5, 2))
+        array2 = [gp_Pnt(-4, 5, 2)]
         array2.append(gp_Pnt(-3, 6, 3))
         array2.append(gp_Pnt(-1, 7, 4))
         array2.append(gp_Pnt(0, 8, 5))
@@ -624,8 +615,7 @@ class TestGeometry(unittest.TestCase):
 
     def test_surfaces_from_revolution(self):
         """Test: surfaces from revolution"""
-        array = []
-        array.append(gp_Pnt(0, 0, 1))
+        array = [gp_Pnt(0, 0, 1)]
         array.append(gp_Pnt(1, 2, 2))
         array.append(gp_Pnt(2, 3, 3))
         array.append(gp_Pnt(4, 3, 4))
@@ -641,15 +631,13 @@ class TestGeometry(unittest.TestCase):
 
     def test_distances(self):
         """Test: distances"""
-        array1 = []
-        array1.append(gp_Pnt(-5, 1, 2))
+        array1 = [gp_Pnt(-5, 1, 2)]
         array1.append(gp_Pnt(-5, 2, 2))
         array1.append(gp_Pnt(-5.3, 3, 1))
         array1.append(gp_Pnt(-5, 4, 1))
         array1.append(gp_Pnt(-5, 5, 2))
         SPL1 = GeomAPI_PointsToBSpline(point_list_to_TColgp_Array1OfPnt(array1)).Curve()
-        array2 = []
-        array2.append(gp_Pnt(4, 1, 2))
+        array2 = [gp_Pnt(4, 1, 2)]
         array2.append(gp_Pnt(4, 2, 2))
         array2.append(gp_Pnt(3.7, 3, 1))
         array2.append(gp_Pnt(4, 4, 1))

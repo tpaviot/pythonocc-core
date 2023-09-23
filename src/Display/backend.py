@@ -155,7 +155,7 @@ def load_backend(backend_str=None):
 
     if backend_str is not None:
         compatible_backends = (PYQT5, PYSIDE2, WX)
-        if not backend_str in compatible_backends:
+        if backend_str not in compatible_backends:
             msg = (
                 f"incompatible backend_str specified: {backend_str}\n"
                 f"backend is one of : {compatible_backends}"
@@ -169,10 +169,10 @@ def load_backend(backend_str=None):
             BACKEND_MODULE = "qt-pyqt5"
             log.info("backend loaded: %s", BACKEND_MODULE)
             return BACKEND_MODULE
-        if backend_str == PYQT5 and not HAVE_BACKEND:
-            msg = f"{backend_str} backend could not be loaded"
-            log.exception(msg)
-            raise ValueError(msg)
+    if backend_str == PYQT5 and not HAVE_BACKEND:
+        msg = f"{backend_str} backend could not be loaded"
+        log.exception(msg)
+        raise ValueError(msg)
 
     if backend_str == PYSIDE2 or (backend_str is None and not HAVE_BACKEND):
         if load_pyside2():

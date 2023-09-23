@@ -59,7 +59,7 @@ class RenderWraper(ThreejsRenderer):
         if is_edge(shape):
             print("discretize an edge")
             pnts = discretize_edge(shape)
-            edge_hash = "edg%s" % uuid.uuid4().hex
+            edge_hash = f"edg{uuid.uuid4().hex}"
             shape_content = export_edgedata_to_json(edge_hash, pnts)
             # store this edge hash
             self._3js_edges[edge_hash] = [color, line_width, shape_content]
@@ -72,7 +72,6 @@ class RenderWraper(ThreejsRenderer):
             # store this edge hash
             self._3js_edges[wire_hash] = [color, line_width, shape_content]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
-        # if shape is array of gp_Pnt
         elif isinstance(shape, list) and isinstance(shape[0], gp_Pnt):
             print("storage points")
             vertices_list = []  # will be passed to javascript
@@ -91,7 +90,7 @@ class RenderWraper(ThreejsRenderer):
 
         # convert as TopoDS_Shape
         shape_uuid = uuid.uuid4().hex
-        shape_hash = "shp%s" % shape_uuid
+        shape_hash = f"shp{shape_uuid}"
         # tessellate
         tess = ShapeTesselator(shape)
         tess.Compute(
@@ -124,10 +123,11 @@ class RenderWraper(ThreejsRenderer):
             for i_edge in range(nbr_edges):
                 # after that, the file can be appended
                 edge_content = ""
-                edge_point_set = []
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
-                for i_vert in range(nbr_vertices):
-                    edge_point_set.append(tess.GetEdgeVertex(i_edge, i_vert))
+                edge_point_set = [
+                    tess.GetEdgeVertex(i_edge, i_vert)
+                    for i_vert in range(nbr_vertices)
+                ]
                 # write to file
                 edge_hash = f"edg{uuid.uuid4().hex}"
                 edge_content += export_edgedata_to_json(edge_hash, edge_point_set)

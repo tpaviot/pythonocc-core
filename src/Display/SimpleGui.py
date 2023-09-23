@@ -72,9 +72,11 @@ def init_display(
             Helpful to bypass add_function_to_menu. s should be a string
             """
             check_callable(func)
-            log.info("Execute %s :: %s menu function" % (s, func.__name__))
+            log.info(f"Execute {s} :: {func.__name__} menu function")
             func()
             log.info("done")
+
+                # returns empty classes and functions
 
         # returns empty classes and functions
         return offscreen_renderer, do_nothing, do_nothing, call_function
@@ -86,13 +88,15 @@ def init_display(
 
         print("wxPython backend - ", wx.version())
 
+
+
         class AppFrame(wx.Frame):
             def __init__(self, parent):
                 wx.Frame.__init__(
                     self,
                     parent,
                     -1,
-                    "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION,
+                    f"pythonOCC-{VERSION} 3d viewer ('wx' backend)",
                     style=wx.DEFAULT_FRAME_STYLE,
                     size=size,
                 )
@@ -103,7 +107,7 @@ def init_display(
 
             def add_menu(self, menu_name: str) -> None:
                 _menu = wx.Menu()
-                self.menuBar.Append(_menu, "&" + menu_name)
+                self.menuBar.Append(_menu, f"&{menu_name}")
                 self.SetMenuBar(self.menuBar)
                 self._menus[menu_name] = _menu
 
@@ -116,8 +120,9 @@ def init_display(
                         _id, _callable.__name__.replace("_", " ").lower()
                     )
                 except KeyError:
-                    raise ValueError("the menu item %s does not exist" % menu_name)
+                    raise ValueError(f"the menu item {menu_name} does not exist")
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
+
 
         app = wx.App(False)
         win = AppFrame(None)
@@ -136,7 +141,6 @@ def init_display(
         def start_display() -> None:
             app.MainLoop()
 
-    # Qt based simple GUI
     elif "qt" in used_backend:
         from OCC.Display.qtDisplay import qtViewer3d
 
@@ -147,14 +151,16 @@ def init_display(
             qt_version = QtCore.QT_VERSION_STR
         elif hasattr(QtCore, "__version__"):  # PySide2
             qt_version = QtCore.__version__
-        print("%s backend - Qt version %s" % (used_backend, qt_version))
+        print(f"{used_backend} backend - Qt version {qt_version}")
+
+
 
         class MainWindow(QtWidgets.QMainWindow):
             def __init__(self, *args: Any) -> None:
                 QtWidgets.QMainWindow.__init__(self, *args)
                 self.canva = qtViewer3d(self)
                 self.setWindowTitle(
-                    "pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, used_backend)
+                    f"pythonOCC-{VERSION} 3d viewer ('{used_backend}' backend)"
                 )
                 self.setCentralWidget(self.canva)
                 if sys.platform != "darwin":
@@ -182,7 +188,7 @@ def init_display(
                 self.move(x, y)
 
             def add_menu(self, menu_name: str) -> None:
-                _menu = self.menu_bar.addMenu("&" + menu_name)
+                _menu = self.menu_bar.addMenu(f"&{menu_name}")
                 self._menus[menu_name] = _menu
 
             def add_function_to_menu(self, menu_name: str, _callable: Callable) -> None:
@@ -197,7 +203,8 @@ def init_display(
 
                     self._menus[menu_name].addAction(_action)
                 except KeyError:
-                    raise ValueError("the menu item %s does not exist" % menu_name)
+                    raise ValueError(f"the menu item {menu_name} does not exist")
+
 
         # following couple of lines is a tweak to enable ipython --gui='qt'
         app = QtWidgets.QApplication.instance()  # checks if QApplication already exists

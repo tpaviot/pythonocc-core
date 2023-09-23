@@ -97,65 +97,60 @@ class TestExtendTopology(unittest.TestCase):
     def test_kept_reference(self):
         """did we keep a reference after looping several time through a list
         of topological entities?"""
-        _tmp = []
-        _faces = [i for i in topo.faces()]
-        for f in _faces:
-            _tmp.append(f.IsNull() == 0)
-        for f in _faces:
-            _tmp.append(f.IsNull() == 0)
+        _faces = list(topo.faces())
+        _tmp = [f.IsNull() == 0 for f in _faces]
+        _tmp.extend(f.IsNull() == 0 for f in _faces)
         self.assertTrue(all(_tmp))
 
     def test_edge_face(self):
         edg = next(topo.edges())
         face = next(topo.faces())
-        faces_from_edge = [i for i in topo.faces_from_edge(edg)]
+        faces_from_edge = list(topo.faces_from_edge(edg))
         self.assertEqual(len(faces_from_edge), topo.number_of_faces_from_edge(edg))
-        edges_from_face = [i for i in topo.edges_from_face(face)]
+        edges_from_face = list(topo.edges_from_face(face))
         self.assertEqual(len(edges_from_face), topo.number_of_edges_from_face(face))
 
     def test_edge_wire(self):
         edg = next(topo.edges())
         wire = next(topo.wires())
-        wires_from_edge = [i for i in topo.wires_from_edge(edg)]
+        wires_from_edge = list(topo.wires_from_edge(edg))
         self.assertEqual(len(wires_from_edge), topo.number_of_wires_from_edge(edg))
-        edges_from_wire = [i for i in topo.edges_from_wire(wire)]
+        edges_from_wire = list(topo.edges_from_wire(wire))
         self.assertEqual(len(edges_from_wire), topo.number_of_edges_from_wire(wire))
 
     def test_vertex_edge(self):
         edge = next(topo.edges())
-        verts_from_edge = [i for i in topo.vertices_from_edge(edge)]
+        verts_from_edge = list(topo.vertices_from_edge(edge))
         self.assertEqual(len(verts_from_edge), topo.number_of_vertices_from_edge(edge))
 
     def test_vertex_face(self):
         vert = next(topo.vertices())
         face = next(topo.faces())
-        faces_from_vertex = [i for i in topo.faces_from_vertex(vert)]
+        faces_from_vertex = list(topo.faces_from_vertex(vert))
         self.assertEqual(len(faces_from_vertex), topo.number_of_faces_from_vertex(vert))
-        verts_from_face = [i for i in topo.vertices_from_face(face)]
+        verts_from_face = list(topo.vertices_from_face(face))
         self.assertEqual(len(verts_from_face), topo.number_of_vertices_from_face(face))
 
     def test_face_solid(self):
         face = next(topo.faces())
         solid = next(topo.solids())
-        faces_from_solid = [i for i in topo.faces_from_solids(solid)]
+        faces_from_solid = list(topo.faces_from_solids(solid))
         self.assertEqual(len(faces_from_solid), topo.number_of_faces_from_solids(solid))
-        solids_from_face = [i for i in topo.solids_from_face(face)]
+        solids_from_face = list(topo.solids_from_face(face))
         self.assertEqual(len(solids_from_face), topo.number_of_solids_from_face(face))
 
     def test_wire_face(self):
         wire = next(topo.wires())
         face = next(topo.faces())
-        faces_from_wire = [i for i in topo.faces_from_wire(wire)]
+        faces_from_wire = list(topo.faces_from_wire(wire))
         self.assertEqual(len(faces_from_wire), topo.number_of_faces_from_wires(wire))
-        wires_from_face = [i for i in topo.wires_from_face(face)]
+        wires_from_face = list(topo.wires_from_face(face))
         self.assertEqual(len(wires_from_face), topo.number_of_wires_from_face(face))
 
     def test_edges_out_of_scope(self):
         # check pointers going out of scope
         face = next(topo.faces())
-        _edges = []
-        for edg in TopologyExplorer(face).edges():
-            _edges.append(edg)
+        _edges = list(TopologyExplorer(face).edges())
         for edg in _edges:
             self.assertFalse(edg.IsNull())
 
@@ -163,12 +158,10 @@ class TestExtendTopology(unittest.TestCase):
         # check pointers going out of scope
         wire = next(topo.wires())
         _edges, _vertices = [], []
-        for edg in WireExplorer(wire).ordered_edges():
-            _edges.append(edg)
+        _edges.extend(iter(WireExplorer(wire).ordered_edges()))
         for edg in _edges:
             self.assertFalse(edg.IsNull())
-        for vert in WireExplorer(wire).ordered_vertices():
-            _vertices.append(vert)
+        _vertices.extend(iter(WireExplorer(wire).ordered_vertices()))
         for v in _vertices:
             self.assertFalse(v.IsNull())
 

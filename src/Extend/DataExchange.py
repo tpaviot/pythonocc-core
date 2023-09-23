@@ -78,36 +78,35 @@ def read_step_file(filename, as_compound=True, verbosity=True):
     step_reader = STEPControl_Reader()
     status = step_reader.ReadFile(filename)
 
-    if status == IFSelect_RetDone:  # check status
-        if verbosity:
-            failsonly = False
-            step_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
-            step_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
-        transfer_result = step_reader.TransferRoots()
-        if not transfer_result:
-            raise AssertionError("Transfer failed.")
-        _nbs = step_reader.NbShapes()
-        if _nbs == 0:
-            raise AssertionError("No shape to transfer.")
-        if _nbs == 1:  # most cases
-            return step_reader.Shape(1)
-        if _nbs > 1:
-            print("Number of shapes:", _nbs)
-            shps = []
-            # loop over root shapes
-            for k in range(1, _nbs + 1):
-                new_shp = step_reader.Shape(k)
-                if not new_shp.IsNull():
-                    shps.append(new_shp)
-            if as_compound:
-                compound, result = list_of_shapes_to_compound(shps)
-                if not result:
-                    print("Warning: all shapes were not added to the compound")
-                return compound
-            print("Warning, returns a list of shapes.")
-            return shps
-    else:
+    if status != IFSelect_RetDone:
         raise AssertionError("Error: can't read file.")
+    if verbosity:
+        failsonly = False
+        step_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
+        step_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
+    transfer_result = step_reader.TransferRoots()
+    if not transfer_result:
+        raise AssertionError("Transfer failed.")
+    _nbs = step_reader.NbShapes()
+    if _nbs == 0:
+        raise AssertionError("No shape to transfer.")
+    if _nbs == 1:  # most cases
+        return step_reader.Shape(1)
+    if _nbs > 1:
+        print("Number of shapes:", _nbs)
+        shps = []
+        # loop over root shapes
+        for k in range(1, _nbs + 1):
+            new_shp = step_reader.Shape(k)
+            if not new_shp.IsNull():
+                shps.append(new_shp)
+        if as_compound:
+            compound, result = list_of_shapes_to_compound(shps)
+            if not result:
+                print("Warning: all shapes were not added to the compound")
+            return compound
+        print("Warning, returns a list of shapes.")
+        return shps
     return None
 
 
@@ -134,7 +133,7 @@ def write_step_file(a_shape, filename, application_protocol="AP203"):
     step_writer.Transfer(a_shape, STEPControl_AsIs)
     status = step_writer.Write(filename)
 
-    if not status == IFSelect_RetDone:
+    if status != IFSelect_RetDone:
         raise IOError("Error while writing shape to STEP file.")
     if not os.path.isfile(filename):
         raise IOError(f"{filename} not saved to filesystem.")
@@ -299,7 +298,7 @@ def read_step_file_with_names_colors(filename):
                     )
 
             shape_disp = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
-            if not shape_disp in output_shapes:
+            if shape_disp not in output_shapes:
                 output_shapes[shape_disp] = [lab.GetLabelName(), c]
             for i in range(l_subss.Length()):
                 lab_subs = l_subss.Value(i + 1)
@@ -350,7 +349,7 @@ def read_step_file_with_names_colors(filename):
                     shape_sub, loc.Transformation()
                 ).Shape()
                 # position the subshape to display
-                if not shape_to_disp in output_shapes:
+                if shape_to_disp not in output_shapes:
                     output_shapes[shape_to_disp] = [lab_subs.GetLabelName(), c]
 
     def _get_shapes():
