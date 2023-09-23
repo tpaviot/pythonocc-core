@@ -22,10 +22,15 @@ project(PYTHONOCC)
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 7)
 set(PYTHONOCC_VERSION_MINOR 7)
-set(PYTHONOCC_VERSION_PATCH 1)
+set(PYTHONOCC_VERSION_PATCH 2)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL )
+set(PYTHONOCC_VERSION_DEVEL -dev)
+
+# set OCCT version
+set(OCCT_VERSION_MAJOR 7)
+set(OCCT_VERSION_MINOR 7)
+set(OCCT_VERSION_PATCH 2)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
@@ -76,7 +81,7 @@ include_directories(OPENGL_INCLUDE_DIR)
 #################
 # Build options #
 #################
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCCT_Modules.cmake)
 # add an option to choose toolkits to compile
 if(OPENGL_FOUND)
   option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
@@ -85,14 +90,16 @@ else(OPENGL_FOUND)
   set(PYTHONOCC_WRAP_VISU "Compile Visualisation" OFF)
 endif(OPENGL_FOUND)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
-option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
+option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
 option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
-option_with_default(OCE_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
+option_with_default(OCCT_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
 option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays." OFF)
 
 ############
 # Python 3 #
 ############
+set(Python3_FIND_STRATEGY LOCATION)
+set(Python3_FIND_FRAMEWORK NEVER)
 if(PYTHONOCC_MESHDS_NUMPY)
     find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
     include_directories(${Python3_NumPy_INCLUDE_DIRS})
@@ -117,42 +124,46 @@ if(SWIG_HIDE_WARNINGS)
   set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
 endif()
 
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+  add_definitions(-DSWIG_PYTHON_SILENT_MEMLEAK)
+endif(CMAKE_BUILD_TYPE STREQUAL "Release")
+
 ################################
 # OCE include and lib location #
 ################################
-if(OCE_HIDE_DEPRECATED)
+if(OCCT_HIDE_DEPRECATED)
   message(STATUS "Disabled deprecation warnings for oce")
   add_definitions(-DOCCT_NO_DEPRECATED)
-endif(OCE_HIDE_DEPRECATED)
+endif(OCCT_HIDE_DEPRECATED)
 
-if(DEFINED OCE_INCLUDE_PATH)
-  if(NOT DEFINED OCE_LIB_PATH)
-    message(FATAL_ERROR "OCE_LIB_PATH must be defined")
-  endif(NOT DEFINED OCE_LIB_PATH)
-  set(OCE_INCLUDE_PATH ${OCE_INCLUDE_PATH} CACHE PATH "OCE include path")
-  set(OCE_LIB_PATH ${OCE_LIB_PATH} CACHE PATH "OCE lib path")
-  include_directories(${OCE_INCLUDE_PATH})
-  link_directories(${OCE_LIB_PATH})
-# if OCE_INCLUDE_PATH is not passed at command line,
+if(DEFINED OCCT_INCLUDE_DIR)
+  if(NOT DEFINED OCCT_LIBRARY_DIR)
+    message(FATAL_ERROR "OCCT_LIBRARY_DIR must be defined")
+  endif(NOT DEFINED OCCT_LIBRARY_DIR)
+  set(OCCT_INCLUDE_DIR ${OCCT_INCLUDE_DIR} CACHE PATH "OCCT include path")
+  set(OCCT_LIBRARY_DIR ${OCCT_LIBRARY_DIR} CACHE PATH "OCCT library path")
+  include_directories(${OCCT_INCLUDE_DIR})
+  link_directories(${OCCT_LIBRARY_DIR})
+# if OCCT_INCLUDE_DIR is not passed at command line,
 # find OCE automatically
-else(OCE_INCLUDE_PATH)
-  find_package(OpenCASCADE 7.7.2 REQUIRED)
+else(OCCT_INCLUDE_DIR)
+  find_package(OpenCASCADE ${OCCT_VERSION_MAJOR}.${OCCT_VERSION_MINOR}.${OCCT_VERSION_PATCH} REQUIRED)
   if(OpenCASCADE_FOUND)
     message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
     message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
     message(STATUS "OpenCASCADE binary directory: " ${OpenCASCADE_BINARY_DIR})
     include_directories(${OpenCASCADE_INCLUDE_DIR})
   else(OpenCASCADE_FOUND)  # set default paths
-    set(OCE_INCLUDE_PATH /usr/local/include/oce CACHE PATH "OCE include path")
-    set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path")
-    include_directories(${OCE_INCLUDE_PATH})
-    link_directories(${OCE_LIB_PATH})
+    set(OCCT_INCLUDE_DIR /usr/local/include/oce CACHE PATH "OCE include path")
+    set(OCCT_LIBRARY_DIR /usr/local/lib CACHE PATH "OCE lib path")
+    include_directories(${OCCT_INCLUDE_DIR})
+    link_directories(${OCCT_LIBRARY_DIR})
   endif(OpenCASCADE_FOUND)
-endif(DEFINED OCE_INCLUDE_PATH)
+endif(DEFINED OCCT_INCLUDE_DIR)
 
 # After the OCC paths are properly set up,
-find_file(GP_PNT_HEADER_LOCATION "gp_Pnt.hxx" PATHS ${OpenCASCADE_INCLUDE_DIR} ${OCE_INCLUDE_PATH})
-if(${GP_PNT_HEADER_LOCATION} STREQUAL "GP_PNT_HEADER_LOCATION-NOTFOUND")
+find_file(OCCT_GP_PNT_HEADER_LOCATION "gp_Pnt.hxx" PATHS ${OpenCASCADE_INCLUDE_DIR} ${OCCT_INCLUDE_DIR})
+if(${OCCT_GP_PNT_HEADER_LOCATION} STREQUAL "GP_PNT_HEADER_LOCATION-NOTFOUND")
     message(FATAL_ERROR "gp_Pnt.hxx can not be found.")
 endif()
 
@@ -178,14 +189,14 @@ message(STATUS "pythonocc modules will be installed to: ${PYTHONOCC_INSTALL_DIRE
 #############################################
 # List of OCE shared libraries to link with #
 #############################################
-set(OCE_MODEL_LIBRARIES TKernel TKMath TKBRep TKG2d TKG3d TKGeomBase TKBO
+set(OCCT_MODEL_LIBRARIES TKernel TKMath TKBRep TKG2d TKG3d TKGeomBase TKBO
                         TKBool TKFeat TKFillet TKGeomAlgo TKHLR TKMesh TKOffset
                         TKPrim TKShHealing TKTopAlgo TKXMesh)
-set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
-set(OCE_DATAEXCHANGE_LIBRARIES TKBinXCAF TKIGES TKRWMesh TKSTEP TKSTEP209 TKSTEPAttr
+set(OCCT_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
+set(OCCT_DATAEXCHANGE_LIBRARIES TKBinXCAF TKIGES TKRWMesh TKSTEP TKSTEP209 TKSTEPAttr
                                TKSTEPBase TKSTL TKVRML TKXCAF TKXDEIGES TKXDESTEP TKXSBase
                                TKXmlXCAF)
-set(OCE_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
+set(OCCT_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
                        TKStd TKTObj TKBinTObj TKXmlTObj TKVCAF)
 
 ################
@@ -262,12 +273,12 @@ set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
 # MODEL Toolkits #
 ##################
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
-foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+foreach(OCCT_MODULE ${OCCT_TOOLKIT_MODEL})
+    set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-    swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python3::Module)
-endforeach(OCE_MODULE)
+    swig_add_library (${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} Python3::Module)
+endforeach(OCCT_MODULE)
 
 ###############
 # Tessellator #
@@ -280,7 +291,7 @@ set(TESSELATOR_SOURCE_FILES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/ShapeTesselator.cpp)
 
 swig_add_library(Tesselator LANGUAGE python SOURCES ${TESSELATOR_SOURCE_FILES} TYPE MODULE)
-swig_link_libraries(Tesselator ${OCE_MODEL_LIBRARIES} Python3::Module)
+swig_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
 
 #################
 # Visualisation #
@@ -289,12 +300,12 @@ if(PYTHONOCC_WRAP_VISU)
     find_package(OpenGL REQUIRED)
     include_directories(OPENGL_INCLUDE_DIR)
 
-    foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-      set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+    foreach(OCCT_MODULE ${OCCT_TOOLKIT_VISUALIZATION})
+      set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
       set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-      swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-      swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
-    endforeach(OCE_MODULE)
+      swig_add_library (${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+      swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
+    endforeach(OCCT_MODULE)
 
   # Build third part modules
   # TODO : the following line is strange but necessary
@@ -306,7 +317,7 @@ if(PYTHONOCC_WRAP_VISU)
       ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp)
 
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-    swig_link_libraries(Visualization ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+    swig_link_libraries(Visualization ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
 
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
@@ -326,7 +337,7 @@ if(PYTHONOCC_WRAP_VISU)
   ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.cpp)
 
   swig_add_library(MeshDS LANGUAGE python SOURCES ${MESHDATASOURCE_SOURCE_FILES} TYPE MODULE)
-  swig_link_libraries(MeshDS ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+  swig_link_libraries(MeshDS ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
 
 endif(PYTHONOCC_WRAP_VISU)
 
@@ -334,24 +345,24 @@ endif(PYTHONOCC_WRAP_VISU)
 # DataExchange #
 ################
 if(PYTHONOCC_WRAP_DATAEXCHANGE)
-  foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+  foreach(OCCT_MODULE ${OCCT_TOOLKIT_DATAEXCHANGE})
+    set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES} Python3::Module)
-  endforeach(OCE_MODULE)
+    swig_add_library(${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_DATAEXCHANGE_LIBRARIES} Python3::Module)
+  endforeach(OCCT_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
 ########
 # OCAF #
 ########
 if(PYTHONOCC_WRAP_OCAF)
-  foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
-    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+  foreach(OCCT_MODULE ${OCCT_TOOLKIT_OCAF})
+    set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-    swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES} Python3::Module)
-  endforeach(OCE_MODULE)
+    swig_add_library(${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
+    swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_OCAF_LIBRARIES} Python3::Module)
+  endforeach(OCCT_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
 ##########
@@ -369,7 +380,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
 )
 
 swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
-swig_link_libraries(Addons ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+swig_link_libraries(Addons ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
 
 ################
 # Installation #
@@ -382,24 +393,24 @@ endif(WIN32)
 set(BUILD_DIR ${CMAKE_BINARY_DIR}/${LIBRARY_OUTPUT_PATH})
 
 # install pythonOCC modules
-foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(TARGETS ${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+foreach(OCCT_MODULE ${OCCT_TOOLKIT_MODEL})
+    install(FILES ${BUILD_DIR}/${OCCT_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(TARGETS ${OCCT_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCCT_MODULE}.pyi DESTINATION 
     ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-endforeach(OCE_MODULE)
+endforeach(OCCT_MODULE)
 
 # install tesselator
 install(FILES ${BUILD_DIR}/Tesselator.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 install(TARGETS Tesselator DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 
 if(PYTHONOCC_WRAP_VISU)
-    foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-        install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-        install(TARGETS ${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+    foreach(OCCT_MODULE ${OCCT_TOOLKIT_VISUALIZATION})
+        install(FILES ${BUILD_DIR}/${OCCT_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(TARGETS ${OCCT_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCCT_MODULE}.pyi DESTINATION 
         ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    endforeach(OCE_MODULE)
+    endforeach(OCCT_MODULE)
 
     # install MeshDataSource
     install(FILES ${BUILD_DIR}/MeshDS.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
@@ -407,22 +418,22 @@ if(PYTHONOCC_WRAP_VISU)
 endif(PYTHONOCC_WRAP_VISU)
 
 if(PYTHONOCC_WRAP_DATAEXCHANGE)
-    foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-        install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-        install(TARGETS ${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+    foreach(OCCT_MODULE ${OCCT_TOOLKIT_DATAEXCHANGE})
+        install(FILES ${BUILD_DIR}/${OCCT_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(TARGETS ${OCCT_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCCT_MODULE}.pyi DESTINATION 
         ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    endforeach(OCE_MODULE)
+    endforeach(OCCT_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
 if(PYTHONOCC_WRAP_OCAF)
-    foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
+    foreach(OCCT_MODULE ${OCCT_TOOLKIT_OCAF})
         # install the python interface file (python module)
-        install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-        install(TARGETS ${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION 
+        install(FILES ${BUILD_DIR}/${OCCT_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(TARGETS ${OCCT_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCCT_MODULE}.pyi DESTINATION 
         ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    endforeach(OCE_MODULE)
+    endforeach(OCCT_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
 # install third part modules
