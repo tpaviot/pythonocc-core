@@ -242,10 +242,7 @@ class wxViewer3d(wxBaseViewer):
 
     def OnWheelScroll(self, evt):
         # Zooming by wheel
-        if evt.GetWheelRotation() > 0:
-            zoom_factor = 2.0
-        else:
-            zoom_factor = 0.5
+        zoom_factor = 2.0 if evt.GetWheelRotation() > 0 else 0.5
         self._display.Repaint()
         self._display.ZoomFactor(zoom_factor)
 

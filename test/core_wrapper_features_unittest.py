@@ -467,7 +467,7 @@ class TestWrapperFeatures(unittest.TestCase):
         # for this unittest, don't use the issinstance() function,
         # since the OCC.Geom2d module
         # is *not* manually imported
-        returned_object_type = "%s" % type(returned_object)
+        returned_object_type = f"{type(returned_object)}"
         self.assertEqual(
             returned_object_type, "<class 'OCC.Core.Geom2d.Geom2d_TrimmedCurve'>"
         )
@@ -861,7 +861,7 @@ class TestWrapperFeatures(unittest.TestCase):
         # try to import the module
         for core_module in available_core_modules:
             module_name = os.path.basename(core_module).split(".")[0]
-            importlib.import_module("OCC.Core.%s" % module_name)
+            importlib.import_module(f"OCC.Core.{module_name}")
 
     def test_aliases(self) -> None:
         """some classes are defined in c++ as typedef, i.e. they are only

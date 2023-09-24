@@ -33,8 +33,7 @@ THREEJS_RELEASE = "r155"
 
 def spinning_cursor():
     while True:
-        for cursor in "|/-\\":
-            yield cursor
+        yield from "|/-\\"
 
 
 def color_to_hex(rgb_color):
@@ -57,8 +56,7 @@ def export_edgedata_to_json(edge_hash, point_set):
     # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
     points_coordinates = []
     for point in point_set:
-        for coord in point:
-            points_coordinates.append(coord)
+        points_coordinates.extend(iter(point))
     # then build the dictionary exported to json
     edges_data = {
         "metadata": {
@@ -360,10 +358,10 @@ class HTMLHeader:
 
     def get_str(self):
         header_str = HEADER.replace(
-            "@bg_gradient_color1@", "%s" % self._bg_gradient_color1
+            "@bg_gradient_color1@", f"{self._bg_gradient_color1}"
         )
         header_str = header_str.replace(
-            "@bg_gradient_color2@", "%s" % self._bg_gradient_color2
+            "@bg_gradient_color2@", f"{self._bg_gradient_color2}"
         )
         header_str = header_str.replace("@VERSION@", OCC_VERSION)
         return header_str
@@ -379,15 +377,9 @@ class HTMLBody_Part1:
         global BODY_PART2
         # get the location where pythonocc is running from
         body_str = BODY_PART1.replace("@VERSION@", OCC_VERSION)
-        if (self._fragment_shader is not None) and (self._fragment_shader is not None):
-            vertex_shader_string_definition = (
-                '<script type="x-shader/x-vertex" id="vertexShader">%s</script>'
-                % self._vertex_shader
-            )
-            fragment_shader_string_definition = (
-                '<script type="x-shader/x-fragment" id="fragmentShader">%s</script>'
-                % self._fragment_shader
-            )
+        if self._fragment_shader is not None:
+            vertex_shader_string_definition = f'<script type="x-shader/x-vertex" id="vertexShader">{self._vertex_shader}</script>'
+            fragment_shader_string_definition = f'<script type="x-shader/x-fragment" id="fragmentShader">{self._fragment_shader}</script>'
             shader_material_definition = """
             var vertexShader = document.getElementById('vertexShader').textContent;
             var fragmentShader = document.getElementById('fragmentShader').textContent;
@@ -428,15 +420,12 @@ class HTMLBody_Part1:
 
 class ThreejsRenderer:
     def __init__(self, path=None):
-        if not path:
-            self._path = tempfile.mkdtemp()
-        else:
-            self._path = path
+        self._path = tempfile.mkdtemp() if not path else path
         self._html_filename = os.path.join(self._path, "index.html")
         self._3js_shapes = {}
         self._3js_edges = {}
         self.spinning_cursor = spinning_cursor()
-        print("## threejs %s webgl renderer" % THREEJS_RELEASE)
+        print(f"## threejs {THREEJS_RELEASE} webgl renderer")
 
     def DisplayShape(
         self,
@@ -454,9 +443,9 @@ class ThreejsRenderer:
         if is_edge(shape):
             print("discretize an edge")
             pnts = discretize_edge(shape)
-            edge_hash = "edg%s" % uuid.uuid4().hex
+            edge_hash = f"edg{uuid.uuid4().hex}"
             str_to_write = export_edgedata_to_json(edge_hash, pnts)
-            edge_full_path = os.path.join(self._path, edge_hash + ".json")
+            edge_full_path = os.path.join(self._path, f"{edge_hash}.json")
             with open(edge_full_path, "w") as edge_file:
                 edge_file.write(str_to_write)
             # store this edge hash
@@ -465,16 +454,16 @@ class ThreejsRenderer:
         elif is_wire(shape):
             print("discretize a wire")
             pnts = discretize_wire(shape)
-            wire_hash = "wir%s" % uuid.uuid4().hex
+            wire_hash = f"wir{uuid.uuid4().hex}"
             str_to_write = export_edgedata_to_json(wire_hash, pnts)
-            wire_full_path = os.path.join(self._path, wire_hash + ".json")
+            wire_full_path = os.path.join(self._path, f"{wire_hash}.json")
             with open(wire_full_path, "w") as wire_file:
                 wire_file.write(str_to_write)
             # store this edge hash
             self._3js_edges[wire_hash] = [color, line_width]
             return self._3js_shapes, self._3js_edges
         shape_uuid = uuid.uuid4().hex
-        shape_hash = "shp%s" % shape_uuid
+        shape_hash = f"shp{shape_uuid}"
         # tesselatte
         tess = ShapeTesselator(shape)
         tess.Compute(
@@ -487,7 +476,7 @@ class ThreejsRenderer:
         )
         sys.stdout.flush()
         # export to 3JS
-        shape_full_path = os.path.join(self._path, shape_hash + ".json")
+        shape_full_path = os.path.join(self._path, f"{shape_hash}.json")
         # add this shape to the shape dict, sotres everything related to it
         self._3js_shapes[shape_hash] = [
             export_edges,
@@ -511,15 +500,16 @@ class ThreejsRenderer:
             for i_edge in range(nbr_edges):
                 # after that, the file can be appended
                 str_to_write = ""
-                edge_point_set = []
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
-                for i_vert in range(nbr_vertices):
-                    edge_point_set.append(tess.GetEdgeVertex(i_edge, i_vert))
+                edge_point_set = [
+                    tess.GetEdgeVertex(i_edge, i_vert)
+                    for i_vert in range(nbr_vertices)
+                ]
                 # write to file
-                edge_hash = "edg%s" % uuid.uuid4().hex
+                edge_hash = f"edg{uuid.uuid4().hex}"
                 str_to_write += export_edgedata_to_json(edge_hash, edge_point_set)
                 # create the file
-                edge_full_path = os.path.join(self._path, edge_hash + ".json")
+                edge_full_path = os.path.join(self._path, f"{edge_hash}.json")
                 with open(edge_full_path, "w") as edge_file:
                     edge_file.write(str_to_write)
                 # store this edge hash, with black color
@@ -532,10 +522,8 @@ class ThreejsRenderer:
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
         # using "".join()
-        shape_string_list = []
-        shape_string_list.append("loader = new THREE.BufferGeometryLoader();\n")
-        shape_idx = 0
-        for shape_hash in self._3js_shapes:
+        shape_string_list = ["loader = new THREE.BufferGeometryLoader();\n"]
+        for shape_idx, shape_hash in enumerate(self._3js_shapes):
             # get properties for this shape
             (
                 export_edges,
@@ -546,58 +534,52 @@ class ThreejsRenderer:
                 line_color,
                 line_width,
             ) = self._3js_shapes[shape_hash]
-            # creates a material for the shape
-            shape_string_list.append(
-                "\t\t\t%s_phong_material = new THREE.MeshPhongMaterial({" % shape_hash
+            shape_string_list.extend(
+                (
+                    "\t\t\t%s_phong_material = new THREE.MeshPhongMaterial({"
+                    % shape_hash,
+                    f"color:{color_to_hex(color)},",
+                    f"specular:{color_to_hex(specular_color)},",
+                    "shininess:%g," % shininess,
+                    "side: THREE.DoubleSide,",
+                )
             )
-            shape_string_list.append("color:%s," % color_to_hex(color))
-            shape_string_list.append("specular:%s," % color_to_hex(specular_color))
-            shape_string_list.append("shininess:%g," % shininess)
-            # force double side rendering, see issue #645
-            shape_string_list.append("side: THREE.DoubleSide,")
             if transparency > 0.0:
                 shape_string_list.append(
                     "transparent: true, premultipliedAlpha: true, opacity:%g,"
                     % transparency
                 )
-            # var line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});
-            shape_string_list.append("});\n")
-            # load json geometry files
-            shape_string_list.append(
-                "\t\t\tloader.load('%s.json', function(geometry) {\n" % shape_hash
+            shape_string_list.extend(
+                (
+                    "});\n",
+                    "\t\t\tloader.load('%s.json', function(geometry) {\n"
+                    % shape_hash,
+                    "\t\t\t\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n"
+                    % shape_hash,
+                    "\t\t\t\tmesh.castShadow = true;\n",
+                    "\t\t\t\tmesh.receiveShadow = true;\n",
+                    "\t\t\t\tscene.add(mesh);\n",
+                )
             )
-            shape_string_list.append(
-                "\t\t\t\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n"
-                % shape_hash
-            )
-            # enable shadows for object
-            shape_string_list.append("\t\t\t\tmesh.castShadow = true;\n")
-            shape_string_list.append("\t\t\t\tmesh.receiveShadow = true;\n")
-            # add mesh to scene
-            shape_string_list.append("\t\t\t\tscene.add(mesh);\n")
             # last shape, we request for a fit_to_scene
             if shape_idx == len(self._3js_shapes) - 1:
                 shape_string_list.append("\tfit_to_scene();});\n")
             else:
                 shape_string_list.append("\t\t\t});\n\n")
-            shape_idx += 1
         # Process edges
         edge_string_list = []
         for edge_hash in self._3js_edges:
             color, line_width = self._3js_edges[edge_hash]
-            edge_string_list.append(
-                "\tloader.load('%s.json', function(geometry) {\n" % edge_hash
+            edge_string_list.extend(
+                (
+                    "\tloader.load('%s.json', function(geometry) {\n" % edge_hash,
+                    "\tline_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n"
+                    % ((color_to_hex(color), line_width)),
+                    "\tline = new THREE.Line(geometry, line_material);\n",
+                    "\tscene.add(line);\n",
+                    "\t});\n",
+                )
             )
-            edge_string_list.append(
-                "\tline_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n"
-                % ((color_to_hex(color), line_width))
-            )
-            edge_string_list.append(
-                "\tline = new THREE.Line(geometry, line_material);\n"
-            )
-            # add mesh to scene
-            edge_string_list.append("\tscene.add(line);\n")
-            edge_string_list.append("\t});\n")
         # write the string for the shape
         with open(self._html_filename, "w") as fp:
             fp.write("<!DOCTYPE HTML>\n")

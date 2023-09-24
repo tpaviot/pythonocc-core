@@ -91,8 +91,7 @@ def point_list_to_TColgp_Array1OfPnt(li):
 def make_vertex(*args):
     vert = BRepBuilderAPI_MakeVertex(*args)
     assert_isdone(vert, "failed to produce edge")
-    result = vert.Vertex()
-    return result
+    return vert.Vertex()
 
 
 #
@@ -101,15 +100,13 @@ def make_vertex(*args):
 def make_edge(*args):
     edge = BRepBuilderAPI_MakeEdge(*args)
     assert_isdone(edge, "failed to produce edge")
-    result = edge.Edge()
-    return result
+    return edge.Edge()
 
 
 def make_edge2d(*args):
     edge = BRepBuilderAPI_MakeEdge2d(*args)
     assert_isdone(edge, "failed to produce edge")
-    result = edge.Edge()
-    return result
+    return edge.Edge()
 
 
 def make_wire(*args):
@@ -155,15 +152,13 @@ def make_n_sided(edges, continuity=GeomAbs_C0):
         n_sided.Add(edg, continuity)
     n_sided.Build()
     assert_isdone(n_sided, "failed to produce n_sided")
-    face = n_sided.Face()
-    return face
+    return n_sided.Face()
 
 
 def make_face(*args):
     face = BRepBuilderAPI_MakeFace(*args)
     assert_isdone(face, "failed to produce face")
-    result = face.Face()
-    return result
+    return face.Face()
 
 
 def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
@@ -349,8 +344,7 @@ def rotate_shape(shape, axis, angle, unite="deg"):
     trns.SetRotation(axis, angle)
     brep_trns = BRepBuilderAPI_Transform(shape, trns, False)
     brep_trns.Build()
-    shp = brep_trns.Shape()
-    return shp
+    return brep_trns.Shape()
 
 
 def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
@@ -374,8 +368,7 @@ def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
     gamma = gp_Trsf()
     gamma.SetRotation(gp.OZ(), rz)
     brep_trns = BRepBuilderAPI_Transform(shape, alpha * beta * gamma, False)
-    shp = brep_trns.Shape()
-    return shp
+    return brep_trns.Shape()
 
 
 def scale_shape(shape, fx, fy, fz):
@@ -390,8 +383,7 @@ def scale_shape(shape, fx, fy, fz):
     scale_trsf = gp_GTrsf()
     rot = gp_Mat(fx, 0.0, 0.0, 0.0, fy, 0.0, 0.0, 0.0, fz)
     scale_trsf.SetVectorialPart(rot)
-    shp = BRepBuilderAPI_GTransform(shape, scale_trsf).Shape()
-    return shp
+    return BRepBuilderAPI_GTransform(shape, scale_trsf).Shape()
 
 
 def make_extrusion(face, length, vector=None):
@@ -425,7 +417,7 @@ def recognize_face(topods_face):
         gp_pln = surf.Plane()
         location = gp_pln.Location()  # a point of the plane
         normal = gp_pln.Axis().Direction()  # the plane normal
-        tuple_to_return = (kind, location, normal)
+        return kind, location, normal
     elif surf_type == GeomAbs_Cylinder:
         kind = "Cylinder"
         # look for the properties of the cylinder
@@ -434,38 +426,36 @@ def recognize_face(topods_face):
         location = gp_cyl.Location()  # a point of the axis
         axis = gp_cyl.Axis().Direction()  # the cylinder axis
         # then export location and normal to the console output
-        tuple_to_return = (kind, location, axis)
+        return kind, location, axis
     elif surf_type == GeomAbs_Cone:
         kind = "Cone"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_Sphere:
         kind = "Sphere"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_Torus:
         kind = "Torus"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_BezierSurface:
         kind = "Bezier"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_BSplineSurface:
         kind = "BSpline"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_SurfaceOfRevolution:
         kind = "Revolution"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_SurfaceOfExtrusion:
         kind = "Extrusion"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_OffsetSurface:
         kind = "Offset"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     elif surf_type == GeomAbs_OtherSurface:
         kind = "Other"
-        tuple_to_return = (kind, None, None)
+        return kind, None, None
     else:
-        tuple_to_return = ("Unknown", None, None)
-
-    return tuple_to_return
+        return "Unknown", None, None
 
 
 ##############################################################################
@@ -475,8 +465,7 @@ def measure_shape_volume(shape):
     """Returns shape volume"""
     inertia_props = GProp_GProps()
     brepgprop.VolumeProperties(shape, inertia_props)
-    mass = inertia_props.Mass()
-    return mass
+    return inertia_props.Mass()
 
 
 def measure_shape_mass_center_of_gravity(shape):

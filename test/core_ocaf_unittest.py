@@ -47,7 +47,7 @@ def assert_warns_deprecated() -> Iterator[Any]:
         # Verify some things
         if not issubclass(w[-1].category, DeprecationWarning):
             raise AssertionError("Wrong exception type")
-        if not "deprecated" in str(w[-1].message):
+        if "deprecated" not in str(w[-1].message):
             raise AssertionError("deprecated string not in message")
 
 
