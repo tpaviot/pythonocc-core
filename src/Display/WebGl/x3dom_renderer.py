@@ -17,17 +17,18 @@
 
 import os
 import sys
+from string import Template
 import tempfile
 import uuid
 from xml.etree import ElementTree
 
 from OCC.Core.Tesselator import ShapeTesselator
-from OCC import VERSION as OCC_VERSION
+from OCC import VERSION
 
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-X3DOM_RELEASE = "1.8.2"
+X3DOM_RELEASE = "1.8.3"
 
 
 def spinning_cursor():
@@ -35,25 +36,24 @@ def spinning_cursor():
         yield from "|/-\\"
 
 
-X3DFILE_HEADER = """<?xml version="1.0" encoding="UTF-8"?>
+X3DFILE_HEADER = Template(
+    """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
 <X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
 <head>
-    <meta name="generator" content="pythonocc-%s X3D exporter (www.pythonocc.org)"/>
-    <meta name="creator" content="pythonocc-%s generator"/>
+    <meta name="generator" content="pythonocc-$VERSION X3D exporter (www.pythonocc.org)"/>
+    <meta name="creator" content="pythonocc-$VERSION generator"/>
     <meta name="identifier" content="http://www.pythonocc.org"/>
-    <meta name="description" content="pythonocc-%s x3dom based shape rendering"/>
+    <meta name="description" content="pythonocc-$VERSION x3dom based shape rendering"/>
 </head>
 <Scene>
-""" % (
-    OCC_VERSION,
-    OCC_VERSION,
-    OCC_VERSION,
+"""
 )
 
-HEADER = """
+HEADER = Template(
+    """
 <head>
-    <title>pythonOCC @VERSION@ x3dom renderer</title>
+    <title>pythonOCC $VERSION x3dom renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonOCC'>
     <meta charset="utf-8">
@@ -61,7 +61,7 @@ HEADER = """
     <script src="https://x3dom.org/release/x3dom.js"></script>
     <style>
         body {
-            background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
+            background: linear-gradient($bg_gradient_color1, $bg_gradient_color2);
             margin: 0px;
             overflow: hidden;
         }
@@ -107,12 +107,14 @@ HEADER = """
     </style>
 </head>
 """
+)
 
-BODY = """
+BODY = Template(
+    """
 <body>
-    @X3DSCENE@
+    $X3DSCENE
     <div id="pythonocc_rocks">
-        pythonocc-@VERSION@ <a href="https://www.x3dom.org" target="_blank">x3dom @X3DOMVERSION@</a> renderer
+        pythonocc-$VERSION <a href="https://www.x3dom.org" target="_blank">x3dom $X3DOMVERSION</a> renderer
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
@@ -166,13 +168,14 @@ BODY = """
     </script>
 </body>
 """
+)
 
 
 def export_edge_to_indexed_lineset(edge_point_set):
-    str_x3d_to_return = "\t<LineSet vertexCount='%i'>" % len(edge_point_set)
+    str_x3d_to_return = f"\t<LineSet vertexCount='{len(edge_point_set)}'>"
     str_x3d_to_return += "<Coordinate point='"
     for p in edge_point_set:
-        str_x3d_to_return += "%g %g %g " % (p[0], p[1], p[2])
+        str_x3d_to_return += f"{p[0]} {p[1]} {p[2]} "
     str_x3d_to_return += "'/></LineSet>\n"
     return str_x3d_to_return
 
@@ -180,12 +183,12 @@ def export_edge_to_indexed_lineset(edge_point_set):
 def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id=0):
     """takes an str_lineset, coming for instance from export_curve_to_ils,
     and export to an X3D string"""
-    x3dfile_str = X3DFILE_HEADER if header else ""
+    x3dfile_str = X3DFILE_HEADER.substitute({"VERSION": f"{VERSION}"}) if header else ""
     x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
     x3dfile_str += "\t<Group>\n"
 
     for ils_id, str_lineset in enumerate(str_linesets):
-        x3dfile_str += "\t\t<Transform scale='1 1 1'><Shape DEF='edg%s'>\n" % ils_id
+        x3dfile_str += f"\t\t<Transform scale='1 1 1'><Shape DEF='edg{ils_id}'>\n"
         # empty appearance, but the x3d validator complains if nothing set
         x3dfile_str += (
             "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"
@@ -206,14 +209,13 @@ class HTMLHeader:
         self._bg_gradient_color2 = bg_gradient_color2
 
     def get_str(self):
-        header_str = HEADER.replace(
-            "@bg_gradient_color1@", f"{self._bg_gradient_color1}"
+        return HEADER.substitute(
+            {
+                "bg_gradient_color1": f"{self._bg_gradient_color1}",
+                "bg_gradient_color2": f"{self._bg_gradient_color2}",
+                "VERSION": f"{VERSION}",
+            }
         )
-        header_str = header_str.replace(
-            "@bg_gradient_color2@", f"{self._bg_gradient_color2}"
-        )
-        header_str = header_str.replace("@VERSION@", OCC_VERSION)
-        return header_str
 
 
 class HTMLBody:
@@ -226,43 +228,40 @@ class HTMLBody:
 
     def get_str(self):
         # get the location where pythonocc is running from
-        body_str = BODY.replace("@VERSION@", OCC_VERSION)
-        x3dcontent = '\n\t<x3d id="pythonocc-x3d-scene" style="width:100%;border: none" >\n\t\t<Scene>\n'
+        x3dcontent = "\n\t<x3d id='pythonocc-x3d-scene' style='width:100%;height:100%;border:none' >\n\t\t<Scene>\n"
         nb_shape = len(self._x3d_shapes)
         if self._display_axes_plane:
-            x3dcontent += """
-            <transform scale="%g,%g,%g">
-            <transform id="plane_smallaxe_Id" rotation="1 0 0 -1.57079632679">
+            x3dcontent += f"""
+            <transform scale='{self._axis_plane_zoom_factor} {self._axis_plane_zoom_factor} {self._axis_plane_zoom_factor}'>
+            <transform id='plane_small_axe_Id' rotation='1 0 0 -1.57079632679'>
                 <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/plane.x3d" mapDEFToID="true" namespaceName="plane"></inline>
                 <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/axesSmall.x3d" mapDEFToID="true" namespaceName="axesSmall"></inline>
             </transform>
             <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/axes.x3d" mapDEFToID="true" namespaceName="axes"></inline>
             </transform>
-            """ % (
-                self._axis_plane_zoom_factor,
-                self._axis_plane_zoom_factor,
-                self._axis_plane_zoom_factor,
-            )
-            # global rotateso that z is align properly
-        x3dcontent += (
-            '<transform id="glbal_scene_rotation_Id" rotation="1 0 0 -1.57079632679">'
-        )
+            """
+            # global rotate so that z is properly aligned
+        x3dcontent += '<transform id="global_scene_rotation_Id" rotation="1 0 0 -1.57079632679">\n'
         for cur_shp, shp_uid in enumerate(self._x3d_shapes, start=1):
             sys.stdout.write(
                 "\r%s meshing shapes... %i%%"
                 % (next(self.spinning_cursor), round(cur_shp / nb_shape * 100))
             )
             sys.stdout.flush()
+            # only the last downloaded shape raises a fitCamera event
+            x3dcontent += "\t\t\t<Inline "
+            if cur_shp == nb_shape:
+                x3dcontent += 'onload="fitCamera() "'
+            x3dcontent += f'mapDEFToID="true" url="{shp_uid}.x3d"></Inline>\n'
+        x3dcontent += "\t\t\t</transform>\n\t\t</Scene>\n\t</x3d>\n"
 
-            x3dcontent += (
-                '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="%s.x3d"></Inline>\n'
-                % shp_uid
-            )
-        x3dcontent += "</transform>"
-        x3dcontent += "\t\t</Scene>\n\t</x3d>\n"
-        body_str = body_str.replace("@X3DSCENE@", x3dcontent)
-        body_str = body_str.replace("@X3DOMVERSION@", X3DOM_RELEASE)
-        return body_str
+        return BODY.substitute(
+            {
+                "VERSION": f"{VERSION}",
+                "X3DSCENE": f"{x3dcontent}",
+                "X3DOMVERSION": f"{X3DOM_RELEASE}",
+            }
+        )
 
 
 class X3DExporter:
@@ -320,34 +319,20 @@ class X3DExporter:
                 self._line_sets.append(ils)
 
     def to_x3dfile_string(self, shape_id):
-        x3dfile_str = X3DFILE_HEADER
+        x3dfile_str = X3DFILE_HEADER.substitute({"VERSION": f"{VERSION}"})
         for triangle_set in self._triangle_sets:
-            x3dfile_str += (
-                "<Switch whichChoice='0' id='swBRP'><Transform scale='1 1 1'><Shape DEF='shape%i' onclick='"
-                % shape_id
-            )
-            x3dfile_str += "select(this);"
-            x3dfile_str += "'><Appearance>\n"
+            x3dfile_str += "<Switch whichChoice='0' id='swBRP'>"
+            x3dfile_str += f"<Transform scale='1 1 1'>\n<Shape DEF='shape{shape_id}' onclick='select(this);'>\n"
+            x3dfile_str += "<Appearance>\n"
             #
             # set Material or shader
             #
             if self._vs is None and self._fs is None:
                 x3dfile_str += "<Material id='color' diffuseColor="
-                x3dfile_str += "'%g %g %g'" % (
-                    self._color[0],
-                    self._color[1],
-                    self._color[2],
-                )
-                x3dfile_str += " shininess="
-                x3dfile_str += "'%g'" % self._shininess
-                x3dfile_str += " specularColor="
-                x3dfile_str += "'%g %g %g'" % (
-                    self._specular_color[0],
-                    self._specular_color[1],
-                    self._specular_color[2],
-                )
-                x3dfile_str += " transparency='%g'>\n" % self._transparency
-                x3dfile_str += "</Material>\n"
+                x3dfile_str += f"'{self._color[0]} {self._color[1]} {self._color[2]}' "
+                x3dfile_str += f"shininess='{self._shininess}' "
+                x3dfile_str += f"specularColor='{self._specular_color[0]} {self._specular_color[1]} {self._specular_color[2]}' "
+                x3dfile_str += f"transparency='{self._transparency}'/>\n"
             else:  # set shaders
                 x3dfile_str += (
                     '<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n'
@@ -395,8 +380,7 @@ class X3DomRenderer:
         self._axes_plane_zoom_factor = axes_plane_zoom_factor
 
         print(
-            "## x3dom webgl renderer - render axes/planes : %r - axes/plane zoom factor : %g"
-            % (self._axes_plane, self._axes_plane_zoom_factor)
+            f"## x3dom webgl renderer - render axes/planes : {self._axes_plane} - axes/plane zoom factor : {self._axes_plane_zoom_factor}"
         )
 
     def DisplayShape(
