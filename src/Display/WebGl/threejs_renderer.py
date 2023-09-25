@@ -15,20 +15,21 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import json
 import os
+from string import Template
 import sys
 import tempfile
 import uuid
-import json
 
 from OCC.Core.gp import gp_Vec
 from OCC.Core.Tesselator import ShapeTesselator
-from OCC import VERSION as OCC_VERSION
+from OCC import VERSION
 
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r155"
+THREEJS_RELEASE_NUMBER = "156"
 
 
 def spinning_cursor():
@@ -76,18 +77,19 @@ def export_edgedata_to_json(edge_hash, point_set):
             }
         },
     }
-    return json.dumps(edges_data)
+    return json.dumps(edges_data, indent=4)
 
 
-HEADER = """
+HEADER_TEMPLATE = Template(
+    """
 <head>
-    <title>pythonocc @VERSION@ webgl renderer</title>
+    <title>pythonocc $VERSION webgl renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonocc'>
     <meta charset="utf-8">
     <style>
         body {
-            background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
+            background: linear-gradient($bg_gradient_color1, $bg_gradient_color2);
             margin: 0px;
             overflow: hidden;
         }
@@ -133,11 +135,14 @@ HEADER = """
     </style>
 </head>
 """
-BODY_PART0 = """
-<body>
+)
+
+BODY_TEMPLATE = Template(
+    """
+    <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
-        pythonocc-@VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js %s</a> renderer
+        pythonocc-$VERSION <a href="https://github.com/mrdoob/three.js" target="_blank">three.js r$THREEJS_RELEASE_NUMBER</a> renderer
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
@@ -145,210 +150,225 @@ BODY_PART0 = """
     <b>g</b> view/hide grid<br>
     <b>a</b> view/hide axis<br>
     </div>
-    <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/build/three.min.js"></script>
-    <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
-    <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
-
-""" % (
-    THREEJS_RELEASE,
-    THREEJS_RELEASE,
-    THREEJS_RELEASE,
-    THREEJS_RELEASE,
+    $VertexShaderDefinition
+    $FragmentShaderDefinition
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/$three_version/build/three.module.js",
+          "three/addons/": "https://unpkg.com/$three_version/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="/main.js"></script>
+    </body>
+"""
 )
 
-BODY_PART1 = """
+MAIN_JS_TEMPLATE = Template(
+    """
+import * as THREE from 'three';
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+import Stats from 'three/addons/libs/stats.module.js'
 
-    @VertexShaderDefinition@
-    @FragmentShaderDefinition@
-    <script type="text/javascript">
-        var camera, scene, renderer, object, stats, container, shape_material;
-        var mouseX = 0;
-        var mouseXOnMouseDown = 0;
-        var mouseY = 0;
-        var mouseYOnMouseDown = 0;
-        var moveForward = false;
-        var moveBackward = false;
-        var moveLeft = false;
-        var moveRight = false;
-        var moveUp = false;
-        var moveDown = false;
-        var windowHalfX = window.innerWidth / 2;
-        var windowHalfY = window.innerHeight / 2;
-        var selected_target_color_r = 0;
-        var selected_target_color_g = 0;
-        var selected_target_color_b = 0;
-        var selected_target = null;
-        init();
-        animate();
+var camera, scene, renderer, object, stats, container, shape_material;
+var controls;
+var directionalLight;
+var axisHelper, gridHelper;
+var light1;
+var mouse;
+var mouseX = 0;
+var mouseXOnMouseDown = 0;
+var mouseY = 0;
+var mouseYOnMouseDown = 0;
+var moveForward = false;
+var moveBackward = false;
+var moveLeft = false;
+var moveRight = false;
+var moveUp = false;
+var moveDown = false;
+var raycaster;
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+var selected_target_color_r = 0;
+var selected_target_color_g = 0;
+var selected_target_color_b = 0;
+var selected_target = null;
+init();
+animate();
 
-        function init() {
-            container = document.createElement( 'div' );
-            document.body.appendChild( container );
+function init() {
+    container = document.createElement( 'div' );
+    document.body.appendChild( container );
 
-            camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 200);
-            camera.position.z = 100;
-            //controls = new THREE.OrbitControls(camera);
-            //controls = new THREE.OrbitControls(camera);
-            // for selection
-            raycaster = new THREE.Raycaster();
-            mouse = new THREE.Vector2();
-            // create scene
-            scene = new THREE.Scene();
-            scene.add(new THREE.AmbientLight(0x101010));
-            directionalLight = new THREE.DirectionalLight(0xffffff);
-            directionalLight.position.x = 1;
-            directionalLight.position.y = -1;
-            directionalLight.position.z = 2;
-            directionalLight.position.normalize();
-            scene.add(directionalLight);
-            light1 = new THREE.PointLight(0xffffff);
-            scene.add(light1);
-            @Uniforms@
-            @ShaderMaterialDefinition@
-            """
-# here comes the shape definition
-BODY_PART2 = """
-            renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio( window.devicePixelRatio );
-            container.appendChild(renderer.domElement);
-            //renderer.gammaInput = true;
-            //renderer.gammaOutput = true;
-            // for shadow rendering
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFShadowMap;
-            controls = new THREE.TrackballControls(camera, renderer.domElement);
-            // show stats, is it really useful ?
-            stats = new Stats();
-            stats.domElement.style.position = 'absolute';
-            stats.domElement.style.top = '2%';
-            stats.domElement.style.left = '1%';
-            container.appendChild(stats.domElement);
-            // add events
-            document.addEventListener('keypress', onDocumentKeyPress, false);
-            document.addEventListener('click', onDocumentMouseClick, false);
-            window.addEventListener('resize', onWindowResize, false);
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 200);
+    camera.position.z = 100;
+    //controls = new THREE.OrbitControls(camera);
+    //controls = new THREE.OrbitControls(camera);
+    // for selection
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
+    // create scene
+    scene = new THREE.Scene();
+    scene.add(new THREE.AmbientLight(0x101010));
+    directionalLight = new THREE.DirectionalLight(0xffffff);
+    directionalLight.position.x = 1;
+    directionalLight.position.y = -1;
+    directionalLight.position.z = 2;
+    directionalLight.position.normalize();
+    scene.add(directionalLight);
+    light1 = new THREE.PointLight(0xffffff);
+    scene.add(light1);
+
+    $Uniforms
+    
+    $ShaderMaterialDefinition
+
+    $ShapeList
+
+    $EdgeList
+
+    renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio( window.devicePixelRatio );
+    container.appendChild(renderer.domElement);
+    //renderer.gammaInput = true;
+    //renderer.gammaOutput = true;
+    // for shadow rendering
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
+    controls = new TrackballControls(camera, renderer.domElement);
+    // show stats, is it really useful ?
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '2%';
+    stats.domElement.style.left = '1%';
+    container.appendChild(stats.domElement);
+    // add events
+    document.addEventListener('keypress', onDocumentKeyPress, false);
+    document.addEventListener('click', onDocumentMouseClick, false);
+    window.addEventListener('resize', onWindowResize, false);
+}
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    render();
+    stats.update();
+}
+function update_lights() {
+    if (directionalLight != undefined) {
+        directionalLight.position.copy(camera.position);
+    }
+}
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+function onDocumentKeyPress(event) {
+  event.preventDefault();
+  if (event.key=="t") {  // t key
+      if (selected_target) {
+            selected_target.material.visible = !selected_target.material.visible;
         }
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            render();
-            stats.update();
+  }
+  else if (event.key=="g") { // g key, toggle grid visibility
+       gridHelper.visible = !gridHelper.visible;
+  }
+  else if (event.key=="a") { // g key, toggle axisHelper visibility
+       axisHelper.visible = !axisHelper.visible;
+  }
+  else if (event.key=="w") { // g key, toggle axisHelper visibility
+       if (selected_target) {
+            selected_target.material.wireframe = !selected_target.material.wireframe;
         }
-        function update_lights() {
-            if (directionalLight != undefined) {
-                directionalLight.position.copy(camera.position);
-            }
+  }
+}
+function onDocumentMouseClick(event) {
+    event.preventDefault();
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    // restore previous selected target color
+    if (selected_target) {
+        selected_target.material.color.setRGB(selected_target_color_r,
+            selected_target_color_g,
+            selected_target_color_b);
+    }
+    // perform selection
+    raycaster.setFromCamera(mouse, camera);
+    var intersects = raycaster.intersectObjects(scene.children);
+    if (intersects.length > 0) {
+        var target = intersects[0].object;
+        selected_target_color_r = target.material.color.r;
+        selected_target_color_g = target.material.color.g;
+        selected_target_color_b = target.material.color.b;
+        target.material.color.setRGB(1., 0.65, 0.);
+        console.log(target);
+        selected_target = target;
+    }
+}
+function fit_to_scene() {
+    // compute bounding sphere of whole scene
+    var center = new THREE.Vector3(0,0,0);
+    var radiuses = new Array();
+    var positions = new Array();
+    // compute center of all objects
+    scene.traverse(function(child) {
+        if (child instanceof THREE.Mesh) {
+            child.geometry.computeBoundingBox();
+            var box = child.geometry.boundingBox;
+            var curCenter = new THREE.Vector3().copy(box.min).add(box.max).multiplyScalar(0.5);
+            var radius = new THREE.Vector3().copy(box.max).distanceTo(box.min)/2.;
+            center.add(curCenter);
+            positions.push(curCenter);
+            radiuses.push(radius);
         }
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    if (radiuses.length > 0) {
+        center.divideScalar(radiuses.length*0.7);
+    }
+    var maxRad = 1.;
+    // compute bounding radius
+    for (var ichild = 0; ichild < radiuses.length; ++ichild) {
+        var distToCenter = positions[ichild].distanceTo(center);
+        var totalDist = distToCenter + radiuses[ichild];
+        if (totalDist > maxRad) {
+            maxRad = totalDist;
         }
-        function onDocumentKeyPress(event) {
-          event.preventDefault();
-          if (event.key=="t") {  // t key
-              if (selected_target) {
-                    selected_target.material.visible = !selected_target.material.visible;
-                }
-          }
-          else if (event.key=="g") { // g key, toggle grid visibility
-               gridHelper.visible = !gridHelper.visible;
-          }
-          else if (event.key=="a") { // g key, toggle axisHelper visibility
-               axisHelper.visible = !axisHelper.visible;
-          }
-          else if (event.key=="w") { // g key, toggle axisHelper visibility
-               if (selected_target) {
-                    selected_target.material.wireframe = !selected_target.material.wireframe;
-                }
-          }
-        }
-        function onDocumentMouseClick(event) {
-            event.preventDefault();
-            mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-            mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-            // restore previous selected target color
-            if (selected_target) {
-                selected_target.material.color.setRGB(selected_target_color_r,
-                    selected_target_color_g,
-                    selected_target_color_b);
-            }
-            // perform selection
-            raycaster.setFromCamera(mouse, camera);
-            var intersects = raycaster.intersectObjects(scene.children);
-            if (intersects.length > 0) {
-                var target = intersects[0].object;
-                selected_target_color_r = target.material.color.r;
-                selected_target_color_g = target.material.color.g;
-                selected_target_color_b = target.material.color.b;
-                target.material.color.setRGB(1., 0.65, 0.);
-                console.log(target);
-                selected_target = target;
-            }
-        }
-        function fit_to_scene() {
-            // compute bounding sphere of whole scene
-            var center = new THREE.Vector3(0,0,0);
-            var radiuses = new Array();
-            var positions = new Array();
-            // compute center of all objects
-            scene.traverse(function(child) {
-                if (child instanceof THREE.Mesh) {
-                    child.geometry.computeBoundingBox();
-                    var box = child.geometry.boundingBox;
-                    var curCenter = new THREE.Vector3().copy(box.min).add(box.max).multiplyScalar(0.5);
-                    var radius = new THREE.Vector3().copy(box.max).distanceTo(box.min)/2.;
-                    center.add(curCenter);
-                    positions.push(curCenter);
-                    radiuses.push(radius);
-                }
-            });
-            if (radiuses.length > 0) {
-                center.divideScalar(radiuses.length*0.7);
-            }
-            var maxRad = 1.;
-            // compute bounding radius
-            for (var ichild = 0; ichild < radiuses.length; ++ichild) {
-                var distToCenter = positions[ichild].distanceTo(center);
-                var totalDist = distToCenter + radiuses[ichild];
-                if (totalDist > maxRad) {
-                    maxRad = totalDist;
-                }
-            }
-            maxRad = maxRad * 0.7; // otherwise the scene seems to be too far away
-            camera.lookAt(center);
-            var direction = new THREE.Vector3().copy(camera.position).sub(controls.target);
-            var len = direction.length();
-            direction.normalize();
-            
-            // compute new distance of camera to middle of scene to fit the object to screen
-            var lnew = maxRad / Math.sin(camera.fov/180. * Math.PI / 2.);
-            direction.multiplyScalar(lnew);
-            
-            var pnew = new THREE.Vector3().copy(center).add(direction);
-            // change near far values to avoid culling of objects 
-            camera.position.set(pnew.x, pnew.y, pnew.z);
-            camera.far = lnew*50;
-            camera.near = lnew*50*0.001;
-            camera.updateProjectionMatrix();
-            controls.target = center;
-            controls.update();
-            // adds and adjust a grid helper if needed
-            gridHelper = new THREE.GridHelper(maxRad*4, 10)
-            scene.add(gridHelper);
-            // axisHelper
-            axisHelper = new THREE.AxesHelper(maxRad);
-            scene.add(axisHelper);
-        }
-        function render() {
-            //@IncrementTime@  TODO UNCOMMENT
-            update_lights();
-            renderer.render(scene, camera);
-        }
-    </script>
-</body>
+    }
+    maxRad = maxRad * 0.7; // otherwise the scene seems to be too far away
+    camera.lookAt(center);
+    var direction = new THREE.Vector3().copy(camera.position).sub(controls.target);
+    var len = direction.length();
+    direction.normalize();
+    
+    // compute new distance of camera to middle of scene to fit the object to screen
+    var lnew = maxRad / Math.sin(camera.fov/180. * Math.PI / 2.);
+    direction.multiplyScalar(lnew);
+    
+    var pnew = new THREE.Vector3().copy(center).add(direction);
+    // change near far values to avoid culling of objects 
+    camera.position.set(pnew.x, pnew.y, pnew.z);
+    camera.far = lnew*50;
+    camera.near = lnew*50*0.001;
+    camera.updateProjectionMatrix();
+    controls.target = center;
+    controls.update();
+    // adds and adjust a grid helper if needed
+    gridHelper = new THREE.GridHelper(maxRad*4, 10)
+    scene.add(gridHelper);
+    // axisHelper
+    axisHelper = new THREE.AxesHelper(maxRad);
+    scene.add(axisHelper);
+}
+function render() {
+    //@IncrementTime@  TODO UNCOMMENT
+    update_lights();
+    renderer.render(scene, camera);
+}
 """
+)
 
 
 class HTMLHeader:
@@ -357,75 +377,75 @@ class HTMLHeader:
         self._bg_gradient_color2 = bg_gradient_color2
 
     def get_str(self):
-        header_str = HEADER.replace(
-            "@bg_gradient_color1@", f"{self._bg_gradient_color1}"
+        return HEADER_TEMPLATE.substitute(
+            {
+                "bg_gradient_color1": f"{self._bg_gradient_color1}",
+                "bg_gradient_color2": f"{self._bg_gradient_color2}",
+                "VERSION": VERSION,
+            }
         )
-        header_str = header_str.replace(
-            "@bg_gradient_color2@", f"{self._bg_gradient_color2}"
-        )
-        header_str = header_str.replace("@VERSION@", OCC_VERSION)
-        return header_str
 
 
-class HTMLBody_Part1:
-    def __init__(self, vertex_shader=None, fragment_shader=None, uniforms=None):
-        self._vertex_shader = vertex_shader
-        self._fragment_shader = fragment_shader
-        self._uniforms = uniforms
+# class HTMLBody_Part1:
+#     def __init__(self, vertex_shader=None, fragment_shader=None, uniforms=None):
+#         self._vertex_shader = vertex_shader
+#         self._fragment_shader = fragment_shader
+#         self._uniforms = uniforms
 
-    def get_str(self):
-        global BODY_PART2
-        # get the location where pythonocc is running from
-        body_str = BODY_PART1.replace("@VERSION@", OCC_VERSION)
-        if self._fragment_shader is not None:
-            vertex_shader_string_definition = f'<script type="x-shader/x-vertex" id="vertexShader">{self._vertex_shader}</script>'
-            fragment_shader_string_definition = f'<script type="x-shader/x-fragment" id="fragmentShader">{self._fragment_shader}</script>'
-            shader_material_definition = """
-            var vertexShader = document.getElementById('vertexShader').textContent;
-            var fragmentShader = document.getElementById('fragmentShader').textContent;
-            var shader_material = new THREE.ShaderMaterial({uniforms: uniforms,
-                                                            vertexShader: vertexShader,
-                                                            fragmentShader: fragmentShader});
-            """
-            if self._uniforms is None:
-                body_str = body_str.replace("@Uniforms@", "uniforms ={};\n")
-                BODY_PART2 = BODY_PART2.replace("@IncrementTime@", "")
-            else:
-                body_str = body_str.replace("@Uniforms@", self._uniforms)
-                if "time" in self._uniforms:
-                    BODY_PART2 = BODY_PART2.replace(
-                        "@IncrementTime@", "uniforms.time.value += 0.05;"
-                    )
-                else:
-                    BODY_PART2 = BODY_PART2.replace("@IncrementTime@", "")
-            body_str = body_str.replace(
-                "@VertexShaderDefinition@", vertex_shader_string_definition
-            )
-            body_str = body_str.replace(
-                "@FragmentShaderDefinition@", fragment_shader_string_definition
-            )
-            body_str = body_str.replace(
-                "@ShaderMaterialDefinition@", shader_material_definition
-            )
-            body_str = body_str.replace("@ShapeMaterial@", "shader_material")
-        else:
-            body_str = body_str.replace("@Uniforms@", "")
-            body_str = body_str.replace("@VertexShaderDefinition@", "")
-            body_str = body_str.replace("@FragmentShaderDefinition@", "")
-            body_str = body_str.replace("@ShaderMaterialDefinition@", "")
-            body_str = body_str.replace("@ShapeMaterial@", "phong_material")
-            body_str = body_str.replace("@IncrementTime@", "")
-        return body_str
+#     def get_str(self):
+#         global BODY_TEMPLATE_PART2
+#         # get the location where pythonocc is running from
+#         body_str = BODY_TEMPLATE_PART1.replace("@VERSION@", VERSION)
+#         if self._fragment_shader is not None:
+#             vertex_shader_string_definition = f'<script type="x-shader/x-vertex" id="vertexShader">{self._vertex_shader}</script>'
+#             fragment_shader_string_definition = f'<script type="x-shader/x-fragment" id="fragmentShader">{self._fragment_shader}</script>'
+#             shader_material_definition = """
+#             var vertexShader = document.getElementById('vertexShader').textContent;
+#             var fragmentShader = document.getElementById('fragmentShader').textContent;
+#             var shader_material = new THREE.ShaderMaterial({uniforms: uniforms,
+#                                                             vertexShader: vertexShader,
+#                                                             fragmentShader: fragmentShader});
+#             """
+#             if self._uniforms is None:
+#                 body_str = body_str.replace("@Uniforms@", "uniforms ={};\n")
+#                 BODY_TEMPLATE_PART2 = BODY_TEMPLATE_PART2.replace("@IncrementTime@", "")
+#             else:
+#                 body_str = body_str.replace("@Uniforms@", self._uniforms)
+#                 if "time" in self._uniforms:
+#                     BODY_TEMPLATE_PART2 = BODY_TEMPLATE_PART2.replace(
+#                         "@IncrementTime@", "uniforms.time.value += 0.05;"
+#                     )
+#                 else:
+#                     BODY_TEMPLATE_PART2 = BODY_TEMPLATE_PART2.replace("@IncrementTime@", "")
+#             body_str = body_str.replace(
+#                 "@VertexShaderDefinition@", vertex_shader_string_definition
+#             )
+#             body_str = body_str.replace(
+#                 "@FragmentShaderDefinition@", fragment_shader_string_definition
+#             )
+#             body_str = body_str.replace(
+#                 "@ShaderMaterialDefinition@", shader_material_definition
+#             )
+#             body_str = body_str.replace("@ShapeMaterial@", "shader_material")
+#         else:
+#             body_str = body_str.replace("@Uniforms@", "")
+#             body_str = body_str.replace("@VertexShaderDefinition@", "")
+#             body_str = body_str.replace("@FragmentShaderDefinition@", "")
+#             body_str = body_str.replace("@ShaderMaterialDefinition@", "")
+#             body_str = body_str.replace("@ShapeMaterial@", "phong_material")
+#             body_str = body_str.replace("@IncrementTime@", "")
+#         return body_str
 
 
 class ThreejsRenderer:
     def __init__(self, path=None):
         self._path = tempfile.mkdtemp() if not path else path
         self._html_filename = os.path.join(self._path, "index.html")
+        self._main_js_filename = os.path.join(self._path, "main.js")
         self._3js_shapes = {}
         self._3js_edges = {}
         self.spinning_cursor = spinning_cursor()
-        print(f"## threejs {THREEJS_RELEASE} webgl renderer")
+        print(f"## threejs r{THREEJS_RELEASE_NUMBER} webgl renderer")
 
     def DisplayShape(
         self,
@@ -502,8 +522,7 @@ class ThreejsRenderer:
                 str_to_write = ""
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
                 edge_point_set = [
-                    tess.GetEdgeVertex(i_edge, i_vert)
-                    for i_vert in range(nbr_vertices)
+                    tess.GetEdgeVertex(i_edge, i_vert) for i_vert in range(nbr_vertices)
                 ]
                 # write to file
                 edge_hash = f"edg{uuid.uuid4().hex}"
@@ -518,11 +537,11 @@ class ThreejsRenderer:
 
     def generate_html_file(self):
         """Generate the HTML file to be rendered by the web browser"""
-        global BODY_PART0
+        global BODY_TEMPLATE
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
         # using "".join()
-        shape_string_list = ["loader = new THREE.BufferGeometryLoader();\n"]
+        shape_string_list = ["var loader = new THREE.BufferGeometryLoader();\n"]
         for shape_idx, shape_hash in enumerate(self._3js_shapes):
             # get properties for this shape
             (
@@ -536,7 +555,7 @@ class ThreejsRenderer:
             ) = self._3js_shapes[shape_hash]
             shape_string_list.extend(
                 (
-                    "\t\t\t%s_phong_material = new THREE.MeshPhongMaterial({"
+                    "\t\t\tvar %s_phong_material = new THREE.MeshPhongMaterial({"
                     % shape_hash,
                     f"color:{color_to_hex(color)},",
                     f"specular:{color_to_hex(specular_color)},",
@@ -552,9 +571,8 @@ class ThreejsRenderer:
             shape_string_list.extend(
                 (
                     "});\n",
-                    "\t\t\tloader.load('%s.json', function(geometry) {\n"
-                    % shape_hash,
-                    "\t\t\t\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n"
+                    "\t\t\tloader.load('%s.json', function(geometry) {\n" % shape_hash,
+                    "\t\t\t\tvar mesh = new THREE.Mesh(geometry, %s_phong_material);\n"
                     % shape_hash,
                     "\t\t\t\tmesh.castShadow = true;\n",
                     "\t\t\t\tmesh.receiveShadow = true;\n",
@@ -573,27 +591,47 @@ class ThreejsRenderer:
             edge_string_list.extend(
                 (
                     "\tloader.load('%s.json', function(geometry) {\n" % edge_hash,
-                    "\tline_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n"
+                    "\tvar line_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n"
                     % ((color_to_hex(color), line_width)),
-                    "\tline = new THREE.Line(geometry, line_material);\n",
+                    "\tvar line = new THREE.Line(geometry, line_material);\n",
                     "\tscene.add(line);\n",
                     "\t});\n",
                 )
             )
-        # write the string for the shape
+        # write the main.js file
+        with open(self._main_js_filename, "w") as fp:
+            main_js = MAIN_JS_TEMPLATE.substitute(
+                {
+                    "ShapeList": "".join(shape_string_list),
+                    "EdgeList": "".join(edge_string_list),
+                    "Uniforms": "",
+                    "ShaderMaterialDefinition": "",
+                }
+            )
+            # fp.write(HTMLBody_Part1().get_str())
+            # fp.write("".join(shape_string_list))
+            # fp.write("".join(edge_string_list))
+            ## then write header part 2
+            # fp.write(BODY_TEMPLATE_PART2)
+            fp.write(main_js)
+
+        # write the index.html file
         with open(self._html_filename, "w") as fp:
             fp.write("<!DOCTYPE HTML>\n")
             fp.write("<html lang='en'>")
             # header
             fp.write(HTMLHeader().get_str())
             # body
-            BODY_PART0 = BODY_PART0.replace("@VERSION@", OCC_VERSION)
-            fp.write(BODY_PART0)
-            fp.write(HTMLBody_Part1().get_str())
-            fp.write("".join(shape_string_list))
-            fp.write("".join(edge_string_list))
-            # then write header part 2
-            fp.write(BODY_PART2)
+            body = BODY_TEMPLATE.substitute(
+                {
+                    "three_version": "three@0.156.0",
+                    "VERSION": VERSION,
+                    "THREEJS_RELEASE_NUMBER": THREEJS_RELEASE_NUMBER,
+                    "VertexShaderDefinition": "",
+                    "FragmentShaderDefinition": "",
+                }
+            )  # = BODY_TEMPLATE_PART0.replace("@VERSION@", VERSION)
+            fp.write(body)
             fp.write("</html>\n")
 
     def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
