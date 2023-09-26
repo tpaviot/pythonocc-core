@@ -28,15 +28,13 @@ from OCC import VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-X3DOM_RELEASE = "1.8.3"
-
 
 def spinning_cursor():
     while True:
         yield from "|/-\\"
 
 
-X3DFILE_HEADER = Template(
+X3DFILE_HEADER_TEMPLATE = Template(
     """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
 <X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
@@ -50,7 +48,7 @@ X3DFILE_HEADER = Template(
 """
 )
 
-HEADER = Template(
+HEADER_TEMPLATE = Template(
     """
 <head>
     <title>pythonOCC $VERSION x3dom renderer</title>
@@ -71,7 +69,7 @@ HEADER = Template(
             left: 1%;
             bottom: 2%;
             height: 19px;
-            width: 280px;
+            width: 236px;
             border-radius: 5px;
             border: 2px solid #f7941e;
             opacity: 0.7;
@@ -109,12 +107,12 @@ HEADER = Template(
 """
 )
 
-BODY = Template(
+BODY_TEMPLATE = Template(
     """
 <body>
     $X3DSCENE
     <div id="pythonocc_rocks">
-        pythonocc-$VERSION <a href="https://www.x3dom.org" target="_blank">x3dom $X3DOMVERSION</a> renderer
+        pythonocc-$VERSION <a href="https://www.x3dom.org" target="_blank">x3dom</a> renderer
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
@@ -183,7 +181,9 @@ def export_edge_to_indexed_lineset(edge_point_set):
 def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id=0):
     """takes an str_lineset, coming for instance from export_curve_to_ils,
     and export to an X3D string"""
-    x3dfile_str = X3DFILE_HEADER.substitute({"VERSION": f"{VERSION}"}) if header else ""
+    x3dfile_str = (
+        X3DFILE_HEADER_TEMPLATE.substitute({"VERSION": f"{VERSION}"}) if header else ""
+    )
     x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
     x3dfile_str += "\t<Group>\n"
 
@@ -209,7 +209,7 @@ class HTMLHeader:
         self._bg_gradient_color2 = bg_gradient_color2
 
     def get_str(self):
-        return HEADER.substitute(
+        return HEADER_TEMPLATE.substitute(
             {
                 "bg_gradient_color1": f"{self._bg_gradient_color1}",
                 "bg_gradient_color2": f"{self._bg_gradient_color2}",
@@ -255,12 +255,8 @@ class HTMLBody:
             x3dcontent += f'mapDEFToID="true" url="{shp_uid}.x3d"></Inline>\n'
         x3dcontent += "\t\t\t</transform>\n\t\t</Scene>\n\t</x3d>\n"
 
-        return BODY.substitute(
-            {
-                "VERSION": f"{VERSION}",
-                "X3DSCENE": f"{x3dcontent}",
-                "X3DOMVERSION": f"{X3DOM_RELEASE}",
-            }
+        return BODY_TEMPLATE.substitute(
+            {"VERSION": f"{VERSION}", "X3DSCENE": f"{x3dcontent}"}
         )
 
 
@@ -319,7 +315,7 @@ class X3DExporter:
                 self._line_sets.append(ils)
 
     def to_x3dfile_string(self, shape_id):
-        x3dfile_str = X3DFILE_HEADER.substitute({"VERSION": f"{VERSION}"})
+        x3dfile_str = X3DFILE_HEADER_TEMPLATE.substitute({"VERSION": f"{VERSION}"})
         for triangle_set in self._triangle_sets:
             x3dfile_str += "<Switch whichChoice='0' id='swBRP'>"
             x3dfile_str += f"<Transform scale='1 1 1'>\n<Shape DEF='shape{shape_id}' onclick='select(this);'>\n"
