@@ -62,6 +62,13 @@ except ImportError:
     HAVE_SVGWRITE = False
 
 
+def check_svgwrite_installed():
+    if not HAVE_SVGWRITE:
+        raise IOError(
+            "svg exporter not available because the svgwrite package is not installed. use $pip install svgwrite'"
+        )
+
+
 ##########################
 # Step import and export #
 ##########################
@@ -513,6 +520,8 @@ def write_iges_file(a_shape, filename):
 ##############
 def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
     """Returns a svgwrite.Path for the edge, and the 2d bounding box"""
+    check_svgwrite_installed()
+
     unit_factor = 1  # by default
 
     if unit == "mm":
@@ -559,15 +568,10 @@ def export_shape_to_svg(
     color (optional), "default to "black".
     line_width (optional, default to 1): an integer
     """
+    check_svgwrite_installed()
+
     if shape.IsNull():
         raise AssertionError("shape is Null")
-
-    if not HAVE_SVGWRITE:
-        print(
-            "svg exporter not available because the svgwrite package is not installed."
-        )
-        print("please use '$ conda install -c conda-forge svgwrite'")
-        return False
 
     # find all edges
     visible_edges, hidden_edges = get_sorted_hlr_edges(
