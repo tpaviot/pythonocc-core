@@ -29,8 +29,6 @@ from OCC import VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE_NUMBER = "156"
-
 
 def spinning_cursor():
     while True:
@@ -99,7 +97,7 @@ HEADER_TEMPLATE = Template(
             left: 1%;
             bottom: 2%;
             height: 19px;
-            width: 280px;
+            width: 236px;
             border-radius: 5px;
             border: 2px solid #f7941e;
             opacity: 0.7;
@@ -142,7 +140,7 @@ BODY_TEMPLATE = Template(
     <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
-        pythonocc-$VERSION <a href="https://github.com/mrdoob/three.js" target="_blank">three.js r$THREEJS_RELEASE_NUMBER</a> renderer
+        pythonocc-$VERSION <a href="https://threejs.org" target="_blank">three.js</a> renderer
     </div>
     <div id="commands">
     <b>t</b> view/hide shape<br>
@@ -156,8 +154,8 @@ BODY_TEMPLATE = Template(
     <script type="importmap">
       {
         "imports": {
-          "three": "https://unpkg.com/$three_version/build/three.module.js",
-          "three/addons/": "https://unpkg.com/$three_version/examples/jsm/"
+          "three": "https://unpkg.com/three/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three/examples/jsm/"
         }
       }
     </script>
@@ -445,7 +443,7 @@ class ThreejsRenderer:
         self._3js_shapes = {}
         self._3js_edges = {}
         self.spinning_cursor = spinning_cursor()
-        print(f"## threejs r{THREEJS_RELEASE_NUMBER} webgl renderer")
+        print(f"## threejs renderer")
 
     def DisplayShape(
         self,
@@ -624,9 +622,7 @@ class ThreejsRenderer:
             # body
             body = BODY_TEMPLATE.substitute(
                 {
-                    "three_version": "three@0.156.0",
                     "VERSION": VERSION,
-                    "THREEJS_RELEASE_NUMBER": THREEJS_RELEASE_NUMBER,
                     "VertexShaderDefinition": "",
                     "FragmentShaderDefinition": "",
                 }
