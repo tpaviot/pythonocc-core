@@ -443,7 +443,7 @@ class ThreejsRenderer:
         self._3js_shapes = {}
         self._3js_edges = {}
         self.spinning_cursor = spinning_cursor()
-        print(f"## threejs renderer")
+        print("## threejs renderer")
 
     def DisplayShape(
         self,
