@@ -73,9 +73,8 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
         os.chdir(x3d_path)
         port = get_available_port(port)
         httpd = HTTPServer((addr, port), SimpleHTTPRequestHandler)
-        print("\n## Serving %s \n## using SimpleHTTPServer" % x3d_path)
+        print(f"\n## Serving {x3d_path} using SimpleHTTPServer")
         print("## Open your webbrowser at the URL: http://localhost:%i" % port)
-        print("## CTRL-C to shutdown the server")
         # open webbrowser
         if open_webbrowser:
             webbrowser.open("http://localhost:%i" % port, new=2)
@@ -95,9 +94,8 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
         def send_x3d_content(path):
             return send_from_directory(x3d_path, path)
 
-        print("\n## Serving %s \n## using Flask" % x3d_path)
-        print("## Open your webbrowser at the URL: http://localhost:%i" % port)
-        print("## CTRL-C to shutdown the server")
+        print(f"\n## Serving {x3d_path} using Flask")
+
         port = get_available_port(port)
         app.run(host=addr, port=port)
 
