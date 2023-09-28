@@ -28,11 +28,13 @@ from OCC.Extend.DataExchange import (
     read_step_file_with_names_colors,
     read_stl_file,
     read_iges_file,
+    read_gltf_file,
     write_step_file,
     write_stl_file,
     write_iges_file,
-    read_ply_file,
     write_ply_file,
+    write_obj_file,
+    write_gltf_file,
     export_shape_to_svg,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
@@ -52,6 +54,7 @@ IGES_SAMPLE_FILE = get_test_fullname("sunglasses_lens.igs")
 IGES_45_FACES = get_test_fullname("example_45_faces.iges")
 STL_ASCII_SAMPLE_FILE = get_test_fullname("bottle_ascii.stl")
 STL_BINARY_SAMPLE_FILE = get_test_fullname("cube_binary.stl")
+GLTF_ASCII_SAMPLE_FILE = get_test_fullname("Duck.gltf")
 
 # the basic geometry to test exporters
 A_TOPODS_SHAPE = BRepPrimAPI_MakeTorus(200, 50).Shape()
@@ -96,6 +99,9 @@ class TestExtendDataExchange(unittest.TestCase):
         export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
         self.check_is_file(svg_filename)
 
+    def test_read_gltf_file(self):
+        shp = read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
+
     def test_write_step_ap203(self):
         ap203_filename = get_test_fullname("sample_ap_203.stp")
         write_step_file(A_TOPODS_SHAPE, ap203_filename, application_protocol="AP203")
@@ -130,6 +136,16 @@ class TestExtendDataExchange(unittest.TestCase):
         ply_filename = get_test_fullname("sample.ply")
         write_ply_file(A_TOPODS_SHAPE, ply_filename)
         self.check_is_file(ply_filename)
+
+    def test_write_obj(self):
+        obj_filename = get_test_fullname("sample.obj")
+        write_obj_file(A_TOPODS_SHAPE, obj_filename)
+        self.check_is_file(obj_filename)
+
+    def test_write_gltf(self):
+        gltf_filename = get_test_fullname("sample.gltf")
+        write_gltf_file(A_TOPODS_SHAPE, gltf_filename)
+        self.check_is_file(gltf_filename)
 
 
 def suite():

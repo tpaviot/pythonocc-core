@@ -53,6 +53,14 @@ from OCC.Core.TCollection import TCollection_AsciiString
 from OCC.Core.RWPly import RWPly_CafWriter
 from OCC.Core.Message import Message_ProgressRange
 
+from OCC.Core.RWGltf import RWGltf_CafReader, RWGltf_CafWriter
+from OCC.Core.RWObj import RWObj_CafWriter, RWObj_CafReader
+from OCC.Core.RWMesh import (
+    RWMesh_CoordinateSystem_posYfwd_posZup,
+    RWMesh_CoordinateSystem_negZfwd_posYup,
+)
+from OCC.Core.UnitsMethods import unitsmethods
+
 from OCC.Extend.TopologyUtils import (
     discretize_edge,
     get_sorted_hlr_edges,
@@ -161,7 +169,7 @@ def read_step_file_with_names_colors(filename):
     output_shapes = {}
 
     # create an handle to a document
-    doc = TDocStd_Document("pythonocc-doc")
+    doc = TDocStd_Document("pythonocc-doc-step-import")
 
     # Get root assembly
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
@@ -648,7 +656,7 @@ def export_shape_to_svg(
 def write_ply_file(a_shape, ply_filename):
     """ocaf based ply exporter"""
     # create a document
-    doc = TDocStd_Document("pythonocc-doc")
+    doc = TDocStd_Document("pythonocc-doc-ply-export")
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
 
     # mesh shape
@@ -672,5 +680,115 @@ def write_ply_file(a_shape, ply_filename):
     rwply_writer.SetPartId(True)
     rwply_writer.SetFaceId(True)
 
-    pr = Message_ProgressRange()
-    rwply_writer.Perform(doc, a_file_info, pr)
+    rwply_writer.Perform(doc, a_file_info, Message_ProgressRange())
+
+
+#################################################
+# Obj export (write not avaiable from upstream) #
+#################################################
+def write_obj_file(a_shape, obj_filename):
+    """ocaf based ply exporter"""
+    # create a document
+    doc = TDocStd_Document("pythonocc-doc-obj-export")
+    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+
+    # mesh shape
+    breptools.Clean(a_shape)
+    msh_algo = BRepMesh_IncrementalMesh(a_shape, True)
+    msh_algo.Perform()
+
+    shape_tool.AddShape(a_shape)
+
+    # metadata
+    a_file_info = TColStd_IndexedDataMapOfStringString()
+    a_file_info.Add(
+        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
+    )
+
+    rwobj_writer = RWObj_CafWriter(obj_filename)
+
+    # apply a scale factor of 0.001 to mimic conversion from m to mm
+    csc = rwobj_writer.ChangeCoordinateSystemConverter()
+
+    system_unit_factor = unitsmethods.GetCasCadeLengthUnit() * 0.001
+    csc.SetInputLengthUnit(system_unit_factor)
+    csc.SetOutputLengthUnit(system_unit_factor)
+    csc.SetInputCoordinateSystem(RWMesh_CoordinateSystem_posYfwd_posZup)
+    csc.SetOutputCoordinateSystem(RWMesh_CoordinateSystem_negZfwd_posYup)
+
+    rwobj_writer.SetCoordinateSystemConverter(csc)
+
+    rwobj_writer.Perform(doc, a_file_info, Message_ProgressRange())
+
+
+########
+# gltf #
+########
+def read_gltf_file(
+    filename,
+    is_parallel=False,
+    is_double_precision=False,
+    skip_late_data_loading=True,
+    keep_late_data=True,
+    verbose=False,
+    load_all_scenes=False,
+):
+    shapes_to_return = []
+
+    if not os.path.isfile(filename):
+        raise FileNotFoundError(f"{filename} not found.")
+    doc = TDocStd_Document("pythonocc-doc-gltf-import")
+
+    # Get root assembly
+    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+
+    gltf_reader = RWGltf_CafReader()
+    # gltf_reader.SetSystemLengthUnit (aScaleFactorM);
+    gltf_reader.SetSystemCoordinateSystem(RWMesh_CoordinateSystem_posYfwd_posZup)
+    gltf_reader.SetDocument(doc)
+    gltf_reader.SetParallel(is_parallel)
+    gltf_reader.SetDoublePrecision(is_double_precision)
+    gltf_reader.SetToSkipLateDataLoading(skip_late_data_loading)
+    gltf_reader.SetToKeepLateData(keep_late_data)
+    gltf_reader.SetToPrintDebugMessages(verbose)
+    gltf_reader.SetLoadAllScenes(load_all_scenes)
+
+    status = gltf_reader.Perform(filename, Message_ProgressRange())
+
+    if status != IFSelect_RetDone:
+        raise IOError("Error while writing shape to STEP file.")
+
+    labels = TDF_LabelSequence()
+    shape_tool.GetFreeShapes(labels)
+
+    for i in range(1, labels.Length()):
+        shapes_to_return.append(shape_tool.GetShape(labels.Value(i)))
+
+    return shapes_to_return
+
+
+def write_gltf_file(a_shape, gltf_filename):
+    """ocaf based ply exporter"""
+    # create a document
+    doc = TDocStd_Document("pythonocc-doc-gltf-export")
+    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+
+    # mesh shape
+    breptools.Clean(a_shape)
+    msh_algo = BRepMesh_IncrementalMesh(a_shape, True)
+    msh_algo.Perform()
+
+    shape_tool.AddShape(a_shape)
+
+    # metadata
+    a_file_info = TColStd_IndexedDataMapOfStringString()
+    a_file_info.Add(
+        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
+    )
+
+    rwgltf_writer = RWGltf_CafWriter(gltf_filename, True)
+
+    status = rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange())
+
+    if status != IFSelect_RetDone:
+        raise IOError("Error while writing shape to STEP file.")
