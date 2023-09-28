@@ -31,6 +31,8 @@ from OCC.Extend.DataExchange import (
     write_step_file,
     write_stl_file,
     write_iges_file,
+    read_ply_file,
+    write_ply_file,
     export_shape_to_svg,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
@@ -56,6 +58,9 @@ A_TOPODS_SHAPE = BRepPrimAPI_MakeTorus(200, 50).Shape()
 
 
 class TestExtendDataExchange(unittest.TestCase):
+    def check_is_file(self, filename):
+        self.assertTrue(os.path.isfile(filename))
+
     def test_read_step_file(self):
         read_step_file(STEP_AP203_SAMPLE_FILE)
         read_step_file(STEP_AP214_SAMPLE_FILE)
@@ -89,37 +94,42 @@ class TestExtendDataExchange(unittest.TestCase):
     def test_export_shape_to_svg(self):
         svg_filename = get_test_fullname("sample.svg")
         export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
-        self.assertTrue(os.path.isfile(svg_filename))
+        self.check_is_file(svg_filename)
 
     def test_write_step_ap203(self):
         ap203_filename = get_test_fullname("sample_ap_203.stp")
         write_step_file(A_TOPODS_SHAPE, ap203_filename, application_protocol="AP203")
-        self.assertTrue(os.path.isfile(ap203_filename))
+        self.check_is_file(ap203_filename)
 
     def test_write_step_ap214(self):
         as214_filename = get_test_fullname("sample_214.stp")
         write_step_file(A_TOPODS_SHAPE, as214_filename, application_protocol="AP214IS")
-        self.assertTrue(os.path.isfile(as214_filename))
+        self.check_is_file(as214_filename)
 
     def test_write_step_ap242(self):
         ap242_filename = get_test_fullname("sample_242.stp")
         write_step_file(A_TOPODS_SHAPE, ap242_filename, application_protocol="AP242DIS")
-        self.assertTrue(os.path.isfile(ap242_filename))
+        self.check_is_file(ap242_filename)
 
     def test_write_iges(self):
         iges_filename = get_test_fullname("sample.igs")
         write_iges_file(A_TOPODS_SHAPE, iges_filename)
-        self.assertTrue(os.path.isfile(iges_filename))
+        self.check_is_file(iges_filename)
 
     def test_stl_ascii(self):
         stl_ascii_filename = get_test_fullname("sample_ascii.stl")
         write_stl_file(A_TOPODS_SHAPE, stl_ascii_filename, mode="ascii")
-        self.assertTrue(os.path.isfile(stl_ascii_filename))
+        self.check_is_file(stl_ascii_filename)
 
     def test_stl_binary(self):
         stl_binary_filename = get_test_fullname("sample_binary.stl")
         write_stl_file(A_TOPODS_SHAPE, stl_binary_filename, mode="binary")
-        self.assertTrue(os.path.isfile(stl_binary_filename))
+        self.check_is_file(stl_binary_filename)
+
+    def test_write_ply(self):
+        ply_filename = get_test_fullname("sample.ply")
+        write_ply_file(A_TOPODS_SHAPE, ply_filename)
+        self.check_is_file(ply_filename)
 
 
 def suite():

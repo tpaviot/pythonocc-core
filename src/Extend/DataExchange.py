@@ -19,6 +19,7 @@ import os
 
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.TopAbs import TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND
+from OCC.Core.BRepTools import breptools
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.StlAPI import stlapi, StlAPI_Writer
 from OCC.Core.BRep import BRep_Builder
@@ -47,6 +48,10 @@ from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
 from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
+from OCC.Core.TColStd import TColStd_IndexedDataMapOfStringString
+from OCC.Core.TCollection import TCollection_AsciiString
+from OCC.Core.RWPly import RWPly_CafWriter
+from OCC.Core.Message import Message_ProgressRange
 
 from OCC.Extend.TopologyUtils import (
     discretize_edge,
@@ -635,3 +640,37 @@ def export_shape_to_svg(
         print(f"Shape successfully exported to {filename}")
         return True
     return dwg.tostring()
+
+
+#################################################
+# ply export (write not avaiable from upstream) #
+#################################################
+def write_ply_file(a_shape, ply_filename):
+    """ocaf based ply exporter"""
+    # create a document
+    doc = TDocStd_Document("pythonocc-doc")
+    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+
+    # mesh shape
+    breptools.Clean(a_shape)
+    msh_algo = BRepMesh_IncrementalMesh(a_shape, True)
+    msh_algo.Perform()
+
+    shape_tool.AddShape(a_shape)
+
+    # metadata
+    a_file_info = TColStd_IndexedDataMapOfStringString()
+    a_file_info.Add(
+        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
+    )
+
+    rwply_writer = RWPly_CafWriter(ply_filename)
+
+    rwply_writer.SetNormals(True)
+    rwply_writer.SetColors(True)
+    rwply_writer.SetTexCoords(True)
+    rwply_writer.SetPartId(True)
+    rwply_writer.SetFaceId(True)
+
+    pr = Message_ProgressRange()
+    rwply_writer.Perform(doc, a_file_info, pr)
