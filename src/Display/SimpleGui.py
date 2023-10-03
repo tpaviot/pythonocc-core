@@ -80,7 +80,42 @@ def init_display(
 
         # returns empty classes and functions
         return offscreen_renderer, do_nothing, do_nothing, call_function
-    used_backend = load_backend(backend_str)
+
+    if backend_str in ["wx", "pyside2", "pyside6", "pyqt5", "pyqt6"]:
+        used_backend = load_backend(backend_str)
+    else:  # default to tk in all other cases
+        used_backend = "tk"
+
+    # tkinter SimpleGui
+    if used_backend == "tk":
+        import tkinter as tk
+        from OCC.Display.tkDisplay import tkViewer3d
+
+        root = tk.Tk()
+        root_menu = tk.Menu(root)
+
+        canva = tkViewer3d(root)
+        canva.pack()
+        canva.wait_visibility()
+
+        all_menus = {}
+
+        display = canva._display
+
+        def start_display() -> None:
+            root.config(menu=root_menu)
+            root.mainloop()
+
+        def add_menu(menu_name: str) -> None:
+            new_menu = tk.Menu(root_menu)
+            root_menu.add_cascade(label=menu_name, menu=new_menu)
+            all_menus[menu_name] = new_menu
+
+        def add_function_to_menu(menu_name: str, _callable: Callable) -> None:
+            all_menus[menu_name].add_command(
+                label=_callable.__name__, command=_callable
+            )
+
     # wxPython based simple GUI
     if used_backend == "wx":
         import wx
