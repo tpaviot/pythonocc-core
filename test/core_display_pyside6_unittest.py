@@ -19,16 +19,16 @@
 
 import sys
 
-from OCC.Display.backend import load_wx
+from OCC.Display.backend import load_pyside6
 from OCC.Display.SimpleGui import init_display
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
-# check for wx
-if not load_wx():
-    raise IOError("wx required to run this test")
+# check for pyside6
+if not load_pyside6():
+    raise IOError("pyside6 required to run this test")
 
-print("wx test running ...")
-wx_display, start_display, add_menu, add_function_to_menu = init_display("wx")
+print("pyside6 test running ...")
+pyside6_display, start_display, add_menu, add_function_to_menu = init_display("pyside6")
 my_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
-wx_display.DisplayShape(my_box, update=True)
-print("wx test ok.")
+pyside6_display.DisplayShape(my_box, update=True)
+print("pyside6 test ok.")
