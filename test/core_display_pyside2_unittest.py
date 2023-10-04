@@ -25,13 +25,10 @@ from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for pyside
 if not load_pyside2():
-    print("pyside2 required to run this test")
-    sys.exit()
+    raise IOError("pyside2 required to run this test")
 
 print("pyside2 test running ...")
-pyside2_display, start_display, add_menu, add_function_to_menu = init_display(
-    "qt-pyside2"
-)
+pyside2_display, start_display, add_menu, add_function_to_menu = init_display("pyside2")
 my_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
 pyside2_display.DisplayShape(my_box, update=True)
 print("pyside2 test ok.")

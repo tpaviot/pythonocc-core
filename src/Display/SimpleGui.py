@@ -41,7 +41,7 @@ def init_display(
     background_gradient_color1: Optional[List[int]] = [206, 215, 222],
     background_gradient_color2: Optional[List[int]] = [128, 128, 128],
 ):
-    """This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
+    """This function loads and initialize a GUI using either wx, pyqt5, pyqt6, pyside2 or pyside6.
     If ever the environment variable PYTHONOCC_OFFSCREEN_RENDERER, then the GUI is simply
     ignored and an offscreen renderer is returned.
     init_display returns 4 objects :
@@ -76,19 +76,52 @@ def init_display(
             func()
             log.info("done")
 
-                # returns empty classes and functions
+            # returns empty classes and functions
 
         # returns empty classes and functions
         return offscreen_renderer, do_nothing, do_nothing, call_function
-    used_backend = load_backend(backend_str)
+
+    if backend_str in ["wx", "pyside2", "pyside6", "pyqt5", "pyqt6"]:
+        used_backend = load_backend(backend_str)
+    else:  # default to tk in all other cases
+        used_backend = "tk"
+
+    # tkinter SimpleGui
+    if used_backend == "tk":
+        import tkinter as tk
+        from OCC.Display.tkDisplay import tkViewer3d
+
+        root = tk.Tk()
+        root_menu = tk.Menu(root)
+
+        canva = tkViewer3d(root)
+        canva.pack()
+        canva.wait_visibility()
+
+        all_menus = {}
+
+        display = canva._display
+
+        def start_display() -> None:
+            root.config(menu=root_menu)
+            root.mainloop()
+
+        def add_menu(menu_name: str) -> None:
+            new_menu = tk.Menu(root_menu)
+            root_menu.add_cascade(label=menu_name, menu=new_menu)
+            all_menus[menu_name] = new_menu
+
+        def add_function_to_menu(menu_name: str, _callable: Callable) -> None:
+            all_menus[menu_name].add_command(
+                label=_callable.__name__, command=_callable
+            )
+
     # wxPython based simple GUI
     if used_backend == "wx":
         import wx
         from OCC.Display.wxDisplay import wxViewer3d
 
         print("wxPython backend - ", wx.version())
-
-
 
         class AppFrame(wx.Frame):
             def __init__(self, parent):
@@ -123,7 +156,6 @@ def init_display(
                     raise ValueError(f"the menu item {menu_name} does not exist")
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
 
-
         app = wx.App(False)
         win = AppFrame(None)
         win.Show(True)
@@ -141,19 +173,13 @@ def init_display(
         def start_display() -> None:
             app.MainLoop()
 
-    elif "qt" in used_backend:
+    elif used_backend in ["pyqt5", "pyqt6", "pyside2", "pyside6"]:
         from OCC.Display.qtDisplay import qtViewer3d
 
         QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
         # check Qt version
-        qt_version = None
-        if hasattr(QtCore, "QT_VERSION_STR"):  # PyQt5
-            qt_version = QtCore.QT_VERSION_STR
-        elif hasattr(QtCore, "__version__"):  # PySide2
-            qt_version = QtCore.__version__
+        qt_version = QtCore.qVersion()
         print(f"{used_backend} backend - Qt version {qt_version}")
-
-
 
         class MainWindow(QtWidgets.QMainWindow):
             def __init__(self, *args: Any) -> None:
@@ -178,14 +204,14 @@ def init_display(
                 self._menu_methods = {}
                 # place the window in the center of the screen, at half the
                 # screen size
-                self.centerOnScreen()
+                self.center_on_screen()
 
-            def centerOnScreen(self) -> None:
+            def center_on_screen(self) -> None:
                 """Centers the window on the screen."""
-                resolution = QtWidgets.QApplication.desktop().screenGeometry()
-                x = (resolution.width() - self.frameSize().width()) // 2
-                y = (resolution.height() - self.frameSize().height()) // 2
-                self.move(x, y)
+                qr = self.frameGeometry()
+                cp = QtGui.QGuiApplication.primaryScreen().availableGeometry().center()
+                qr.moveCenter(cp)
+                self.move(qr.topLeft())
 
             def add_menu(self, menu_name: str) -> None:
                 _menu = self.menu_bar.addMenu(f"&{menu_name}")
@@ -205,15 +231,13 @@ def init_display(
                 except KeyError:
                     raise ValueError(f"the menu item {menu_name} does not exist")
 
-
         # following couple of lines is a tweak to enable ipython --gui='qt'
-        app = QtWidgets.QApplication.instance()  # checks if QApplication already exists
-        if not app:  # create QApplication if it doesn't exist
-            app = QtWidgets.QApplication(sys.argv)
+        app = QtWidgets.QApplication(sys.argv)
         win = MainWindow()
         win.resize(size[0] - 1, size[1] - 1)
         win.show()
-        win.centerOnScreen()
+        win.center_on_screen()
+        win.raise_()
         win.canva.InitDriver()
         win.resize(size[0], size[1])
         win.canva.qApp = app

@@ -46,6 +46,7 @@ test:
     - svgwrite
     - wxpython >=4
     - pyside2 >=5
+    - pyside6
 
 about:
   home: https://github.com/tpaviot/pythonocc-core

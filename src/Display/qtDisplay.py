@@ -44,11 +44,11 @@ class qtBaseViewer(QtWidgets.QWidget):
         self.setMouseTracking(True)
 
         # Strong focus
-        self.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.setFocusPolicy(QtCore.Qt.FocusPolicy.WheelFocus)
 
-        self.setAttribute(QtCore.Qt.WA_NativeWindow)
-        self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
-        self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_NativeWindow)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_PaintOnScreen)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_NoSystemBackground)
 
         self.setAutoFillBackground(False)
 
@@ -63,13 +63,12 @@ class qtBaseViewer(QtWidgets.QWidget):
 class qtViewer3d(qtBaseViewer):
     # emit signal when selection is changed
     # is a list of TopoDS_*
-    HAVE_PYQT_SIGNAL = False
-    if hasattr(QtCore, "pyqtSignal"):  # PyQt
+    if hasattr(QtCore, "pyqtSignal"):  # PyQt5
         sig_topods_selected = QtCore.pyqtSignal(list)
-        HAVE_PYQT_SIGNAL = True
     elif hasattr(QtCore, "Signal"):  # PySide2
         sig_topods_selected = QtCore.Signal(list)
-        HAVE_PYQT_SIGNAL = True
+    else:
+        raise IOError("no signal")
 
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)
@@ -128,7 +127,7 @@ class qtViewer3d(qtBaseViewer):
         )
 
         self._available_cursors = {
-            "arrow": QtGui.QCursor(QtCore.Qt.ArrowCursor),  # default
+            "arrow": QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor),  # default
             "pan": QtGui.QCursor(_CURSOR_PIX_PAN),
             "rotate": QtGui.QCursor(_CURSOR_PIX_ROT),
             "zoom": QtGui.QCursor(_CURSOR_PIX_ZOOM),
@@ -209,9 +208,7 @@ class qtViewer3d(qtBaseViewer):
                 # single select otherwise
                 self._display.Select(pt.x(), pt.y())
 
-                if (
-                    self._display.selected_shapes is not None
-                ) and self.HAVE_PYQT_SIGNAL:
+                if self._display.selected_shapes is not None:
                     self.sig_topods_selected.emit(self._display.selected_shapes)
 
         elif event.button() == QtCore.Qt.RightButton:
@@ -233,20 +230,15 @@ class qtViewer3d(qtBaseViewer):
 
     def mouseMoveEvent(self, evt):
         pt = evt.pos()
-        buttons = int(evt.buttons())
+        # buttons = int(evt.buttons())
+        buttons = evt.buttons()
         modifiers = evt.modifiers()
         # ROTATE
-        if (
-            buttons == QtCore.Qt.LeftButton
-            and modifiers != QtCore.Qt.ShiftModifier
-        ):
+        if buttons == QtCore.Qt.LeftButton and modifiers != QtCore.Qt.ShiftModifier:
             self.cursor = "rotate"
             self._display.Rotation(pt.x(), pt.y())
             self._drawbox = False
-        elif (
-            buttons == QtCore.Qt.RightButton
-            and modifiers != QtCore.Qt.ShiftModifier
-        ):
+        elif buttons == QtCore.Qt.RightButton and modifiers != QtCore.Qt.ShiftModifier:
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(
@@ -258,7 +250,7 @@ class qtViewer3d(qtBaseViewer):
             self.dragStartPosX = pt.x()
             self.dragStartPosY = pt.y()
             self._drawbox = False
-        elif buttons == QtCore.Qt.MidButton:
+        elif buttons == QtCore.Qt.MiddleButton:
             dx = pt.x() - self.dragStartPosX
             dy = pt.y() - self.dragStartPosY
             self.dragStartPosX = pt.x()
@@ -284,13 +276,10 @@ class qtViewer3d(qtBaseViewer):
 class qtViewer3dWithManipulator(qtViewer3d):
     # emit signal when selection is changed
     # is a list of TopoDS_*
-    HAVE_PYQT_SIGNAL = False
-    if hasattr(QtCore, "pyqtSignal"):  # PyQt
+    if hasattr(QtCore, "pyqtSignal"):  # PyQt5
         sig_topods_selected = QtCore.pyqtSignal(list)
-        HAVE_PYQT_SIGNAL = True
-    elif hasattr(QtCore, "Signal"):  # PySide2
+    elif hasattr(QtCore, "Signal"):
         sig_topods_selected = QtCore.Signal(list)
-        HAVE_PYQT_SIGNAL = True
 
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)
@@ -345,10 +334,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
         buttons = int(evt.buttons())
         modifiers = evt.modifiers()
         # TRANSFORM via MANIPULATOR or ROTATE
-        if (
-            buttons == QtCore.Qt.LeftButton
-            and modifiers != QtCore.Qt.ShiftModifier
-        ):
+        if buttons == QtCore.Qt.LeftButton and modifiers != QtCore.Qt.ShiftModifier:
             if self.manipulator.HasActiveMode():
                 self.trsf = self.manipulator.Transform(
                     pt.x(), pt.y(), self._display.GetView()
@@ -359,10 +345,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
                 self.cursor = "rotate"
                 self._display.Rotation(pt.x(), pt.y())
                 self._drawbox = False
-        elif (
-            buttons == QtCore.Qt.RightButton
-            and modifiers != QtCore.Qt.ShiftModifier
-        ):
+        elif buttons == QtCore.Qt.RightButton and modifiers != QtCore.Qt.ShiftModifier:
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(
@@ -426,9 +409,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
                 # single select otherwise
                 self._display.Select(pt.x(), pt.y())
 
-                if (
-                    self._display.selected_shapes is not None
-                ) and self.HAVE_PYQT_SIGNAL:
+                if self._display.selected_shapes is not None:
                     self.sig_topods_selected.emit(self._display.selected_shapes)
 
         elif event.button() == QtCore.Qt.RightButton:
