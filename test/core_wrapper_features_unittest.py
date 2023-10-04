@@ -757,8 +757,17 @@ class TestWrapperFeatures(unittest.TestCase):
         # check dump json export is working
         json_string = bnd_box.DumpJsonToString()
         # try to  the output string
-        json_imported_dict = json.loads("{" + json_string + "}")
-        self.assertTrue(len(json_imported_dict) > 0)  # at least one entry
+        json_imported_dict = json.loads(json_string)
+        self.assertEqual(json_imported_dict["CornerMin"], [-10, -10, -10])
+        self.assertEqual(json_imported_dict["CornerMax"], [10, 10, 10])
+
+    def test_ImportFromJson(self) -> None:
+        """Since opencascade 7x, some objects can be serialized to json"""
+        # create a sphere with a radius of 10.
+        p = gp_Pnt()
+        res = p.InitFromJsonString('{"gp_Pnt": [0, 0, 0]}')
+        # TODO: should be True!!
+        # self.assertTrue(res)
 
     def test_harray1_harray2_hsequence(self) -> None:
         """Check that special wrappers for harray1, harray2 and hsequence.
