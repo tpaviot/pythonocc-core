@@ -127,6 +127,7 @@ class TopTools_SequenceOfShape:
     def Value(self, theIndex: int) -> TopoDS_Shape: ...
     def SetValue(self, theIndex: int, theValue: TopoDS_Shape) -> None: ...
 
+
 class TopTools_FormatVersion(IntEnum):
     TopTools_FormatVersion_VERSION_1: int = ...
     TopTools_FormatVersion_VERSION_2: int = ...
@@ -137,7 +138,6 @@ TopTools_FormatVersion_VERSION_1 = TopTools_FormatVersion.TopTools_FormatVersion
 TopTools_FormatVersion_VERSION_2 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_2
 TopTools_FormatVersion_VERSION_3 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_3
 TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_CURRENT
-
 
 class toptools:
     @staticmethod

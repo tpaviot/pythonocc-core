@@ -103,6 +103,26 @@ class GeomFill_ApproxStyle(IntEnum):
 GeomFill_Section = GeomFill_ApproxStyle.GeomFill_Section
 GeomFill_Location = GeomFill_ApproxStyle.GeomFill_Location
 
+class GeomFill_FillingStyle(IntEnum):
+    GeomFill_StretchStyle: int = ...
+    GeomFill_CoonsStyle: int = ...
+    GeomFill_CurvedStyle: int = ...
+
+GeomFill_StretchStyle = GeomFill_FillingStyle.GeomFill_StretchStyle
+GeomFill_CoonsStyle = GeomFill_FillingStyle.GeomFill_CoonsStyle
+GeomFill_CurvedStyle = GeomFill_FillingStyle.GeomFill_CurvedStyle
+
+class GeomFill_PipeError(IntEnum):
+    GeomFill_PipeOk: int = ...
+    GeomFill_PipeNotOk: int = ...
+    GeomFill_PlaneNotIntersectGuide: int = ...
+    GeomFill_ImpossibleContact: int = ...
+
+GeomFill_PipeOk = GeomFill_PipeError.GeomFill_PipeOk
+GeomFill_PipeNotOk = GeomFill_PipeError.GeomFill_PipeNotOk
+GeomFill_PlaneNotIntersectGuide = GeomFill_PipeError.GeomFill_PlaneNotIntersectGuide
+GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
+
 class GeomFill_Trihedron(IntEnum):
     GeomFill_IsCorrectedFrenet: int = ...
     GeomFill_IsFixed: int = ...
@@ -125,26 +145,6 @@ GeomFill_IsGuidePlan = GeomFill_Trihedron.GeomFill_IsGuidePlan
 GeomFill_IsGuideACWithContact = GeomFill_Trihedron.GeomFill_IsGuideACWithContact
 GeomFill_IsGuidePlanWithContact = GeomFill_Trihedron.GeomFill_IsGuidePlanWithContact
 GeomFill_IsDiscreteTrihedron = GeomFill_Trihedron.GeomFill_IsDiscreteTrihedron
-
-class GeomFill_FillingStyle(IntEnum):
-    GeomFill_StretchStyle: int = ...
-    GeomFill_CoonsStyle: int = ...
-    GeomFill_CurvedStyle: int = ...
-
-GeomFill_StretchStyle = GeomFill_FillingStyle.GeomFill_StretchStyle
-GeomFill_CoonsStyle = GeomFill_FillingStyle.GeomFill_CoonsStyle
-GeomFill_CurvedStyle = GeomFill_FillingStyle.GeomFill_CurvedStyle
-
-class GeomFill_PipeError(IntEnum):
-    GeomFill_PipeOk: int = ...
-    GeomFill_PipeNotOk: int = ...
-    GeomFill_PlaneNotIntersectGuide: int = ...
-    GeomFill_ImpossibleContact: int = ...
-
-GeomFill_PipeOk = GeomFill_PipeError.GeomFill_PipeOk
-GeomFill_PipeNotOk = GeomFill_PipeError.GeomFill_PipeNotOk
-GeomFill_PlaneNotIntersectGuide = GeomFill_PipeError.GeomFill_PlaneNotIntersectGuide
-GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
 
 class geomfill:
     @overload

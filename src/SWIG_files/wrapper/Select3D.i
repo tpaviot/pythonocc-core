@@ -467,13 +467,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -766,13 +767,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -892,13 +894,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -1015,13 +1018,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 215af104676c67d500840bc0352e57ff ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -1363,13 +1367,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -1522,13 +1527,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetPoints ******************/
 		/**** md5 signature: 2354af8c2d25c775f74f460a205fdea9 ****/
 		%feature("compactdefaultargs") GetPoints;
@@ -1728,13 +1734,14 @@ None
 		void Clear();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Entities ******************/
 		/**** md5 signature: 42d351b73d32e041dcc72923d4f98551 ****/
 		%feature("compactdefaultargs") Entities;
@@ -2104,13 +2111,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetPoint3d ******************/
 		/**** md5 signature: 8954ccbf381dbf8b2025244d12bd916a ****/
 		%feature("compactdefaultargs") GetPoint3d;
@@ -2291,13 +2299,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
@@ -2879,13 +2888,14 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;

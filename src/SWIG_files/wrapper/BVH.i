@@ -633,23 +633,79 @@ None
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
+class VectorType:
+	pass
+
+@classnotwrapped
+class MatrixType:
+	pass
+
+@classnotwrapped
+class ArrayType:
+	pass
+
+@classnotwrapped
+class VecComp:
+	pass
+
+@classnotwrapped
+class Array:
+	pass
+
+@classnotwrapped
+class BVH_BoxSet:
+	pass
+
+@classnotwrapped
 class BVH_Tools:
 	pass
 
 @classnotwrapped
-class BVH_BuildTool:
+class BVH_Distance:
 	pass
 
 @classnotwrapped
-class BVH_BuildThread:
+class BVH_Set:
 	pass
 
 @classnotwrapped
-class BVH_Sorter:
+class BVH_BuilderTransient:
+	pass
+
+@classnotwrapped
+class BVH_Builder:
+	pass
+
+@classnotwrapped
+class BVH_BuildQueue:
+	pass
+
+@classnotwrapped
+class BVH_SpatialMedianBuilder:
+	pass
+
+@classnotwrapped
+class BVH_Ray:
+	pass
+
+@classnotwrapped
+class BVH_QueueBuilder:
+	pass
+
+@classnotwrapped
+class BVH_DistanceField:
 	pass
 
 @classnotwrapped
 class BVH_ObjectSet:
+	pass
+
+@classnotwrapped
+class BVH_ObjectTransient:
+	pass
+
+@classnotwrapped
+class BVH_Object:
 	pass
 
 @classnotwrapped
@@ -673,27 +729,7 @@ class BoxMinMax:
 	pass
 
 @classnotwrapped
-class BVH_Distance:
-	pass
-
-@classnotwrapped
-class BVH_ObjectTransient:
-	pass
-
-@classnotwrapped
-class BVH_Object:
-	pass
-
-@classnotwrapped
-class BVH_QuickSorter:
-	pass
-
-@classnotwrapped
-class BVH_Set:
-	pass
-
-@classnotwrapped
-class BVH_SpatialMedianBuilder:
+class BVH_Geometry:
 	pass
 
 @classnotwrapped
@@ -701,35 +737,7 @@ class BVH_Tree:
 	pass
 
 @classnotwrapped
-class BVH_PrimitiveSet:
-	pass
-
-@classnotwrapped
-class BVH_BuildQueue:
-	pass
-
-@classnotwrapped
-class BVH_BuilderTransient:
-	pass
-
-@classnotwrapped
-class BVH_Builder:
-	pass
-
-@classnotwrapped
-class BVH_Properties:
-	pass
-
-@classnotwrapped
-class BVH_Transform:
-	pass
-
-@classnotwrapped
-class MatrixOp:
-	pass
-
-@classnotwrapped
-class UnitVector:
+class BVH_PairDistance:
 	pass
 
 @classnotwrapped
@@ -749,34 +757,6 @@ class RadixSorter:
 	pass
 
 @classnotwrapped
-class VectorType:
-	pass
-
-@classnotwrapped
-class MatrixType:
-	pass
-
-@classnotwrapped
-class ArrayType:
-	pass
-
-@classnotwrapped
-class VecComp:
-	pass
-
-@classnotwrapped
-class Array:
-	pass
-
-@classnotwrapped
-class BVH_Triangulation:
-	pass
-
-@classnotwrapped
-class BVH_PairDistance:
-	pass
-
-@classnotwrapped
 class BVH_TreeBaseTransient:
 	pass
 
@@ -793,39 +773,43 @@ class BVH_BinaryTree:
 	pass
 
 @classnotwrapped
+class BVH_Properties:
+	pass
+
+@classnotwrapped
+class BVH_Transform:
+	pass
+
+@classnotwrapped
+class MatrixOp:
+	pass
+
+@classnotwrapped
+class UnitVector:
+	pass
+
+@classnotwrapped
 class BVH_SweepPlaneBuilder:
 	pass
 
 @classnotwrapped
-class BVH_BaseTraverse:
+class BVH_Sorter:
 	pass
 
 @classnotwrapped
-class BVH_Traverse:
+class BVH_PrimitiveSet:
 	pass
 
 @classnotwrapped
-class BVH_PairTraverse:
+class BVH_Triangulation:
 	pass
 
 @classnotwrapped
-class BVH_BoxSet:
+class BVH_BuildTool:
 	pass
 
 @classnotwrapped
-class BVH_Ray:
-	pass
-
-@classnotwrapped
-class BVH_Geometry:
-	pass
-
-@classnotwrapped
-class BVH_QueueBuilder:
-	pass
-
-@classnotwrapped
-class BVH_DistanceField:
+class BVH_BuildThread:
 	pass
 
 @classnotwrapped
@@ -850,6 +834,22 @@ class BVH_BinnedBuilder:
 
 @classnotwrapped
 class BVH_AxisSelector:
+	pass
+
+@classnotwrapped
+class BVH_BaseTraverse:
+	pass
+
+@classnotwrapped
+class BVH_Traverse:
+	pass
+
+@classnotwrapped
+class BVH_PairTraverse:
+	pass
+
+@classnotwrapped
+class BVH_QuickSorter:
 	pass
 
 }

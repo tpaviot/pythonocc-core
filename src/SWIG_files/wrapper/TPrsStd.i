@@ -281,13 +281,14 @@ None
 		void Display(const Standard_Boolean update = Standard_False);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Erase ******************/
 		/**** md5 signature: 78dc6861a924b64ddfaf44a115f8387a ****/
 		%feature("compactdefaultargs") Erase;
@@ -812,13 +813,14 @@ None
 		 TPrsStd_AISViewer();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Find ******************/
 		/**** md5 signature: 2c8b00fbc5f1685461f851faec89f5be ****/
 		%feature("compactdefaultargs") Find;

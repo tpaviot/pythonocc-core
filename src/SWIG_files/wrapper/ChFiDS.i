@@ -85,16 +85,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum ChFiDS_State {
-	ChFiDS_OnSame = 0,
-	ChFiDS_OnDiff = 1,
-	ChFiDS_AllSame = 2,
-	ChFiDS_BreakPoint = 3,
-	ChFiDS_FreeBoundary = 4,
-	ChFiDS_Closed = 5,
-	ChFiDS_Tangent = 6,
-};
-
 enum ChFiDS_ChamfMethod {
 	ChFiDS_Sym = 0,
 	ChFiDS_TwoDist = 1,
@@ -115,6 +105,16 @@ enum ChFiDS_ErrorStatus {
 	ChFiDS_TwistedSurface = 4,
 };
 
+enum ChFiDS_State {
+	ChFiDS_OnSame = 0,
+	ChFiDS_OnDiff = 1,
+	ChFiDS_AllSame = 2,
+	ChFiDS_BreakPoint = 3,
+	ChFiDS_FreeBoundary = 4,
+	ChFiDS_Closed = 5,
+	ChFiDS_Tangent = 6,
+};
+
 enum ChFiDS_TypeOfConcavity {
 	ChFiDS_Concave = 0,
 	ChFiDS_Convex = 1,
@@ -128,22 +128,6 @@ enum ChFiDS_TypeOfConcavity {
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class ChFiDS_State(IntEnum):
-	ChFiDS_OnSame = 0
-	ChFiDS_OnDiff = 1
-	ChFiDS_AllSame = 2
-	ChFiDS_BreakPoint = 3
-	ChFiDS_FreeBoundary = 4
-	ChFiDS_Closed = 5
-	ChFiDS_Tangent = 6
-ChFiDS_OnSame = ChFiDS_State.ChFiDS_OnSame
-ChFiDS_OnDiff = ChFiDS_State.ChFiDS_OnDiff
-ChFiDS_AllSame = ChFiDS_State.ChFiDS_AllSame
-ChFiDS_BreakPoint = ChFiDS_State.ChFiDS_BreakPoint
-ChFiDS_FreeBoundary = ChFiDS_State.ChFiDS_FreeBoundary
-ChFiDS_Closed = ChFiDS_State.ChFiDS_Closed
-ChFiDS_Tangent = ChFiDS_State.ChFiDS_Tangent
 
 class ChFiDS_ChamfMethod(IntEnum):
 	ChFiDS_Sym = 0
@@ -172,6 +156,22 @@ ChFiDS_Error = ChFiDS_ErrorStatus.ChFiDS_Error
 ChFiDS_WalkingFailure = ChFiDS_ErrorStatus.ChFiDS_WalkingFailure
 ChFiDS_StartsolFailure = ChFiDS_ErrorStatus.ChFiDS_StartsolFailure
 ChFiDS_TwistedSurface = ChFiDS_ErrorStatus.ChFiDS_TwistedSurface
+
+class ChFiDS_State(IntEnum):
+	ChFiDS_OnSame = 0
+	ChFiDS_OnDiff = 1
+	ChFiDS_AllSame = 2
+	ChFiDS_BreakPoint = 3
+	ChFiDS_FreeBoundary = 4
+	ChFiDS_Closed = 5
+	ChFiDS_Tangent = 6
+ChFiDS_OnSame = ChFiDS_State.ChFiDS_OnSame
+ChFiDS_OnDiff = ChFiDS_State.ChFiDS_OnDiff
+ChFiDS_AllSame = ChFiDS_State.ChFiDS_AllSame
+ChFiDS_BreakPoint = ChFiDS_State.ChFiDS_BreakPoint
+ChFiDS_FreeBoundary = ChFiDS_State.ChFiDS_FreeBoundary
+ChFiDS_Closed = ChFiDS_State.ChFiDS_Closed
+ChFiDS_Tangent = ChFiDS_State.ChFiDS_Tangent
 
 class ChFiDS_TypeOfConcavity(IntEnum):
 	ChFiDS_Concave = 0

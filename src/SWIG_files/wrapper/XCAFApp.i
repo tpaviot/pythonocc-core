@@ -91,13 +91,14 @@ from OCC.Core.Exception import *
 class XCAFApp_Application : public TDocStd_Application {
 	public:
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetApplication ******************/
 		/**** md5 signature: 097aa584b7d888f94db50bb186c7ba88 ****/
 		%feature("compactdefaultargs") GetApplication;

@@ -81,15 +81,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum IntPatch_SpecPntType {
-	IntPatch_SPntNone = 0,
-	IntPatch_SPntSeamU = 1,
-	IntPatch_SPntSeamV = 2,
-	IntPatch_SPntSeamUV = 3,
-	IntPatch_SPntPoleSeamU = 4,
-	IntPatch_SPntPole = 5,
-};
-
 enum IntPatch_IType {
 	IntPatch_Lin = 0,
 	IntPatch_Circle = 1,
@@ -101,24 +92,19 @@ enum IntPatch_IType {
 	IntPatch_Restriction = 7,
 };
 
+enum IntPatch_SpecPntType {
+	IntPatch_SPntNone = 0,
+	IntPatch_SPntSeamU = 1,
+	IntPatch_SPntSeamV = 2,
+	IntPatch_SPntSeamUV = 3,
+	IntPatch_SPntPoleSeamU = 4,
+	IntPatch_SPntPole = 5,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class IntPatch_SpecPntType(IntEnum):
-	IntPatch_SPntNone = 0
-	IntPatch_SPntSeamU = 1
-	IntPatch_SPntSeamV = 2
-	IntPatch_SPntSeamUV = 3
-	IntPatch_SPntPoleSeamU = 4
-	IntPatch_SPntPole = 5
-IntPatch_SPntNone = IntPatch_SpecPntType.IntPatch_SPntNone
-IntPatch_SPntSeamU = IntPatch_SpecPntType.IntPatch_SPntSeamU
-IntPatch_SPntSeamV = IntPatch_SpecPntType.IntPatch_SPntSeamV
-IntPatch_SPntSeamUV = IntPatch_SpecPntType.IntPatch_SPntSeamUV
-IntPatch_SPntPoleSeamU = IntPatch_SpecPntType.IntPatch_SPntPoleSeamU
-IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 
 class IntPatch_IType(IntEnum):
 	IntPatch_Lin = 0
@@ -137,6 +123,20 @@ IntPatch_Hyperbola = IntPatch_IType.IntPatch_Hyperbola
 IntPatch_Analytic = IntPatch_IType.IntPatch_Analytic
 IntPatch_Walking = IntPatch_IType.IntPatch_Walking
 IntPatch_Restriction = IntPatch_IType.IntPatch_Restriction
+
+class IntPatch_SpecPntType(IntEnum):
+	IntPatch_SPntNone = 0
+	IntPatch_SPntSeamU = 1
+	IntPatch_SPntSeamV = 2
+	IntPatch_SPntSeamUV = 3
+	IntPatch_SPntPoleSeamU = 4
+	IntPatch_SPntPole = 5
+IntPatch_SPntNone = IntPatch_SpecPntType.IntPatch_SPntNone
+IntPatch_SPntSeamU = IntPatch_SpecPntType.IntPatch_SPntSeamU
+IntPatch_SPntSeamV = IntPatch_SpecPntType.IntPatch_SPntSeamV
+IntPatch_SPntSeamUV = IntPatch_SpecPntType.IntPatch_SPntSeamUV
+IntPatch_SPntPoleSeamU = IntPatch_SpecPntType.IntPatch_SPntPoleSeamU
+IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 };
 /* end python proxy for enums */
 

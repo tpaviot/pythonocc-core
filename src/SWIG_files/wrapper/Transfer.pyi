@@ -55,6 +55,15 @@ Transfer_StatusDone = Transfer_StatusExec.Transfer_StatusDone
 Transfer_StatusError = Transfer_StatusExec.Transfer_StatusError
 Transfer_StatusLoop = Transfer_StatusExec.Transfer_StatusLoop
 
+class Transfer_StatusResult(IntEnum):
+    Transfer_StatusVoid: int = ...
+    Transfer_StatusDefined: int = ...
+    Transfer_StatusUsed: int = ...
+
+Transfer_StatusVoid = Transfer_StatusResult.Transfer_StatusVoid
+Transfer_StatusDefined = Transfer_StatusResult.Transfer_StatusDefined
+Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
+
 class Transfer_UndefMode(IntEnum):
     Transfer_UndefIgnore: int = ...
     Transfer_UndefFailure: int = ...
@@ -65,15 +74,6 @@ Transfer_UndefIgnore = Transfer_UndefMode.Transfer_UndefIgnore
 Transfer_UndefFailure = Transfer_UndefMode.Transfer_UndefFailure
 Transfer_UndefContent = Transfer_UndefMode.Transfer_UndefContent
 Transfer_UndefUser = Transfer_UndefMode.Transfer_UndefUser
-
-class Transfer_StatusResult(IntEnum):
-    Transfer_StatusVoid: int = ...
-    Transfer_StatusDefined: int = ...
-    Transfer_StatusUsed: int = ...
-
-Transfer_StatusVoid = Transfer_StatusResult.Transfer_StatusVoid
-Transfer_StatusDefined = Transfer_StatusResult.Transfer_StatusDefined
-Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
 
 class Transfer_ActorOfProcessForFinder(Standard_Transient):
     def __init__(self) -> None: ...

@@ -22,17 +22,6 @@ from OCC.Core.IMeshData import *
 from OCC.Core.TColgp import *
 
 
-class BRepMesh_FactoryError(IntEnum):
-    BRepMesh_FE_NOERROR: int = ...
-    BRepMesh_FE_LIBRARYNOTFOUND: int = ...
-    BRepMesh_FE_FUNCTIONNOTFOUND: int = ...
-    BRepMesh_FE_CANNOTCREATEALGO: int = ...
-
-BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
-BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
-BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
-BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
-
 class BRepMesh_DegreeOfFreedom(IntEnum):
     BRepMesh_Free: int = ...
     BRepMesh_InVolume: int = ...
@@ -49,6 +38,17 @@ BRepMesh_OnCurve = BRepMesh_DegreeOfFreedom.BRepMesh_OnCurve
 BRepMesh_Fixed = BRepMesh_DegreeOfFreedom.BRepMesh_Fixed
 BRepMesh_Frontier = BRepMesh_DegreeOfFreedom.BRepMesh_Frontier
 BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
+
+class BRepMesh_FactoryError(IntEnum):
+    BRepMesh_FE_NOERROR: int = ...
+    BRepMesh_FE_LIBRARYNOTFOUND: int = ...
+    BRepMesh_FE_FUNCTIONNOTFOUND: int = ...
+    BRepMesh_FE_CANNOTCREATEALGO: int = ...
+
+BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
+BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
+BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
+BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
 
 class BRepMesh_BaseMeshAlgo(IMeshTools_MeshAlgo):
     pass

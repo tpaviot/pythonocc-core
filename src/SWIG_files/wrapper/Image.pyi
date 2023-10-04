@@ -5,6 +5,7 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
 
+
 class Image_CompressedFormat(IntEnum):
     Image_CompressedFormat_UNKNOWN: int = ...
     Image_CompressedFormat_RGB_S3TC_DXT1: int = ...
@@ -17,7 +18,6 @@ Image_CompressedFormat_RGB_S3TC_DXT1 = Image_CompressedFormat.Image_CompressedFo
 Image_CompressedFormat_RGBA_S3TC_DXT1 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT1
 Image_CompressedFormat_RGBA_S3TC_DXT3 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT3
 Image_CompressedFormat_RGBA_S3TC_DXT5 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT5
-
 
 class Image_Format(IntEnum):
     Image_Format_UNKNOWN: int = ...
@@ -62,6 +62,35 @@ Image_Format_RGF_half = Image_Format.Image_Format_RGF_half
 Image_Format_RGBAF_half = Image_Format.Image_Format_RGBAF_half
 Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 
+#classnotwrapped
+class Image_Texture: ...
+
+#classnotwrapped
+class Image_SupportedFormats: ...
+
+#classnotwrapped
+class Image_CompressedPixMap: ...
+
+#classnotwrapped
+class Image_PixMapData: ...
+
+#classnotwrapped
+class Image_Diff: ...
+
+#classnotwrapped
+class Image_PixMap: ...
+
+#classnotwrapped
+class Image_VideoParams: ...
+
+#classnotwrapped
+class Image_VideoRecorder: ...
+
+#classnotwrapped
+class Image_DDSParser: ...
+
+#classnotwrapped
+class Image_PixMapTypedData: ...
 
 #classnotwrapped
 class Image_ColorRGB: ...
@@ -97,37 +126,7 @@ class Image_ColorRGBAF: ...
 class Image_ColorBGRAF: ...
 
 #classnotwrapped
-class Image_VideoParams: ...
-
-#classnotwrapped
-class Image_VideoRecorder: ...
-
-#classnotwrapped
-class Image_CompressedPixMap: ...
-
-#classnotwrapped
-class Image_PixMapData: ...
-
-#classnotwrapped
-class Image_PixMapTypedData: ...
-
-#classnotwrapped
-class Image_DDSParser: ...
-
-#classnotwrapped
-class Image_PixMap: ...
-
-#classnotwrapped
-class Image_Texture: ...
-
-#classnotwrapped
 class Image_AlienPixMap: ...
-
-#classnotwrapped
-class Image_Diff: ...
-
-#classnotwrapped
-class Image_SupportedFormats: ...
 
 # harray1 classes
 # harray2 classes

@@ -14,6 +14,15 @@ from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 
 
+class ShapeExtend_Parametrisation(IntEnum):
+    ShapeExtend_Natural: int = ...
+    ShapeExtend_Uniform: int = ...
+    ShapeExtend_Unitary: int = ...
+
+ShapeExtend_Natural = ShapeExtend_Parametrisation.ShapeExtend_Natural
+ShapeExtend_Uniform = ShapeExtend_Parametrisation.ShapeExtend_Uniform
+ShapeExtend_Unitary = ShapeExtend_Parametrisation.ShapeExtend_Unitary
+
 class ShapeExtend_Status(IntEnum):
     ShapeExtend_OK: int = ...
     ShapeExtend_DONE1: int = ...
@@ -54,15 +63,6 @@ ShapeExtend_FAIL6 = ShapeExtend_Status.ShapeExtend_FAIL6
 ShapeExtend_FAIL7 = ShapeExtend_Status.ShapeExtend_FAIL7
 ShapeExtend_FAIL8 = ShapeExtend_Status.ShapeExtend_FAIL8
 ShapeExtend_FAIL = ShapeExtend_Status.ShapeExtend_FAIL
-
-class ShapeExtend_Parametrisation(IntEnum):
-    ShapeExtend_Natural: int = ...
-    ShapeExtend_Uniform: int = ...
-    ShapeExtend_Unitary: int = ...
-
-ShapeExtend_Natural = ShapeExtend_Parametrisation.ShapeExtend_Natural
-ShapeExtend_Uniform = ShapeExtend_Parametrisation.ShapeExtend_Uniform
-ShapeExtend_Unitary = ShapeExtend_Parametrisation.ShapeExtend_Unitary
 
 class shapeextend:
     @staticmethod

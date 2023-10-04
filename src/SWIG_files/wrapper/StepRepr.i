@@ -156,11 +156,11 @@ from OCC.Core.Exception import *
 %wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ShapeRepresentationRelationshipWithTransformation)
 %wrap_handle(StepRepr_HArray1OfMaterialPropertyRepresentation)
-%wrap_handle(StepRepr_HArray1OfRepresentationItem)
 %wrap_handle(StepRepr_HArray1OfPropertyDefinitionRepresentation)
+%wrap_handle(StepRepr_HArray1OfRepresentationItem)
 %wrap_handle(StepRepr_HArray1OfShapeAspect)
-%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
 %wrap_handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)
+%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
 /* end handles declaration */
 
 /* templates */
@@ -6030,17 +6030,6 @@ class StepRepr_HArray1OfMaterialPropertyRepresentation : public StepRepr_Array1O
 %make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
 
 
-class StepRepr_HArray1OfRepresentationItem : public StepRepr_Array1OfRepresentationItem, public Standard_Transient {
-  public:
-    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfRepresentationItem::value_type& theValue);
-    StepRepr_HArray1OfRepresentationItem(const StepRepr_Array1OfRepresentationItem& theOther);
-    const StepRepr_Array1OfRepresentationItem& Array1();
-    StepRepr_Array1OfRepresentationItem& ChangeArray1();
-};
-%make_alias(StepRepr_HArray1OfRepresentationItem)
-
-
 class StepRepr_HArray1OfPropertyDefinitionRepresentation : public StepRepr_Array1OfPropertyDefinitionRepresentation, public Standard_Transient {
   public:
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -6050,6 +6039,17 @@ class StepRepr_HArray1OfPropertyDefinitionRepresentation : public StepRepr_Array
     StepRepr_Array1OfPropertyDefinitionRepresentation& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
+
+
+class StepRepr_HArray1OfRepresentationItem : public StepRepr_Array1OfRepresentationItem, public Standard_Transient {
+  public:
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfRepresentationItem::value_type& theValue);
+    StepRepr_HArray1OfRepresentationItem(const StepRepr_Array1OfRepresentationItem& theOther);
+    const StepRepr_Array1OfRepresentationItem& Array1();
+    StepRepr_Array1OfRepresentationItem& ChangeArray1();
+};
+%make_alias(StepRepr_HArray1OfRepresentationItem)
 
 
 class StepRepr_HArray1OfShapeAspect : public StepRepr_Array1OfShapeAspect, public Standard_Transient {
@@ -6064,18 +6064,6 @@ class StepRepr_HArray1OfShapeAspect : public StepRepr_Array1OfShapeAspect, publi
 
 /* harray2 classes */
 /* hsequence classes */
-class StepRepr_HSequenceOfRepresentationItem : public StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
-  public:
-    StepRepr_HSequenceOfRepresentationItem();
-    StepRepr_HSequenceOfRepresentationItem(const StepRepr_SequenceOfRepresentationItem& theOther);
-    const StepRepr_SequenceOfRepresentationItem& Sequence();
-    void Append (const StepRepr_SequenceOfRepresentationItem::value_type& theItem);
-    void Append (StepRepr_SequenceOfRepresentationItem& theSequence);
-    StepRepr_SequenceOfRepresentationItem& ChangeSequence();
-};
-%make_alias(StepRepr_HSequenceOfRepresentationItem)
-
-
 class StepRepr_HSequenceOfMaterialPropertyRepresentation : public StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
   public:
     StepRepr_HSequenceOfMaterialPropertyRepresentation();
@@ -6086,6 +6074,18 @@ class StepRepr_HSequenceOfMaterialPropertyRepresentation : public StepRepr_Seque
     StepRepr_SequenceOfMaterialPropertyRepresentation& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
+
+
+class StepRepr_HSequenceOfRepresentationItem : public StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
+  public:
+    StepRepr_HSequenceOfRepresentationItem();
+    StepRepr_HSequenceOfRepresentationItem(const StepRepr_SequenceOfRepresentationItem& theOther);
+    const StepRepr_SequenceOfRepresentationItem& Sequence();
+    void Append (const StepRepr_SequenceOfRepresentationItem::value_type& theItem);
+    void Append (StepRepr_SequenceOfRepresentationItem& theSequence);
+    StepRepr_SequenceOfRepresentationItem& ChangeSequence();
+};
+%make_alias(StepRepr_HSequenceOfRepresentationItem)
 
 
 /* class aliases */

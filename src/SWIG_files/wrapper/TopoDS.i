@@ -379,13 +379,14 @@ None
 		 TopoDS_AlertAttribute(const TopoDS_Shape & theShape, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetShape ******************/
 		/**** md5 signature: 7c167c51f2939d15d5bfddc807114b00 ****/
 		%feature("compactdefaultargs") GetShape;
@@ -948,13 +949,14 @@ None
 		void Convex(Standard_Boolean theIsConvex);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EmptyCopied ******************/
 		/**** md5 signature: f9424d26c99f755bc5579214a9cd7453 ****/
 		%feature("compactdefaultargs") EmptyCopied;
@@ -1534,13 +1536,14 @@ None
 		void Convex(Standard_Boolean theIsConvex);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EmptyCopy ******************/
 		/**** md5 signature: de08b6aae09d9de59b334a4b6c880feb ****/
 		%feature("compactdefaultargs") EmptyCopy;

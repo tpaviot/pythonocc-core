@@ -56,16 +56,16 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum  {
+	Image_Format_NB = Image_Format_Gray16 + 1,
+};
+
 enum Image_CompressedFormat {
 	Image_CompressedFormat_UNKNOWN = Image_Format_UNKNOWN,
 	Image_CompressedFormat_RGB_S3TC_DXT1 = Image_Format_NB,
 	Image_CompressedFormat_RGBA_S3TC_DXT1 = 2,
 	Image_CompressedFormat_RGBA_S3TC_DXT3 = 3,
 	Image_CompressedFormat_RGBA_S3TC_DXT5 = 4,
-};
-
-enum  {
-	Image_CompressedFormat_NB = Image_CompressedFormat_RGBA_S3TC_DXT5 + 1,
 };
 
 enum Image_Format {
@@ -89,10 +89,6 @@ enum Image_Format {
 	Image_Format_RGF_half = 17,
 	Image_Format_RGBAF_half = 18,
 	Image_Format_Gray16 = 19,
-};
-
-enum  {
-	Image_Format_NB = Image_Format_Gray16 + 1,
 };
 
 /* end public enums declaration */
@@ -231,6 +227,46 @@ Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
+class Image_Texture:
+	pass
+
+@classnotwrapped
+class Image_SupportedFormats:
+	pass
+
+@classnotwrapped
+class Image_CompressedPixMap:
+	pass
+
+@classnotwrapped
+class Image_PixMapData:
+	pass
+
+@classnotwrapped
+class Image_Diff:
+	pass
+
+@classnotwrapped
+class Image_PixMap:
+	pass
+
+@classnotwrapped
+class Image_VideoParams:
+	pass
+
+@classnotwrapped
+class Image_VideoRecorder:
+	pass
+
+@classnotwrapped
+class Image_DDSParser:
+	pass
+
+@classnotwrapped
+class Image_PixMapTypedData:
+	pass
+
+@classnotwrapped
 class Image_ColorRGB:
 	pass
 
@@ -275,47 +311,7 @@ class Image_ColorBGRAF:
 	pass
 
 @classnotwrapped
-class Image_VideoParams:
-	pass
-
-@classnotwrapped
-class Image_VideoRecorder:
-	pass
-
-@classnotwrapped
-class Image_CompressedPixMap:
-	pass
-
-@classnotwrapped
-class Image_PixMapData:
-	pass
-
-@classnotwrapped
-class Image_PixMapTypedData:
-	pass
-
-@classnotwrapped
-class Image_DDSParser:
-	pass
-
-@classnotwrapped
-class Image_PixMap:
-	pass
-
-@classnotwrapped
-class Image_Texture:
-	pass
-
-@classnotwrapped
 class Image_AlienPixMap:
-	pass
-
-@classnotwrapped
-class Image_Diff:
-	pass
-
-@classnotwrapped
-class Image_SupportedFormats:
 	pass
 
 }

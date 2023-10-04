@@ -113,11 +113,45 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum AIS_TrihedronSelectionMode {
-	AIS_TrihedronSelectionMode_EntireObject = 0,
-	AIS_TrihedronSelectionMode_Origin = 1,
-	AIS_TrihedronSelectionMode_Axes = 2,
-	AIS_TrihedronSelectionMode_MainPlanes = 3,
+enum  {
+	AIS_RotationMode_LOWER = 0,
+	AIS_RotationMode_UPPER = AIS_RotationMode_BndBoxScene,
+};
+
+enum AIS_DisplayMode {
+	AIS_WireFrame = 0,
+	AIS_Shaded = 1,
+};
+
+enum AIS_DragAction {
+	AIS_DragAction_Start = 0,
+	AIS_DragAction_Update = 1,
+	AIS_DragAction_Stop = 2,
+	AIS_DragAction_Abort = 3,
+};
+
+enum AIS_KindOfInteractive {
+	AIS_KindOfInteractive_None = 0,
+	AIS_KindOfInteractive_Datum = 1,
+	AIS_KindOfInteractive_Shape = 2,
+	AIS_KindOfInteractive_Object = 3,
+	AIS_KindOfInteractive_Relation = 4,
+	AIS_KindOfInteractive_Dimension = 5,
+	AIS_KindOfInteractive_LightSource = 6,
+	AIS_KOI_None = AIS_KindOfInteractive_None,
+	AIS_KOI_Datum = AIS_KindOfInteractive_Datum,
+	AIS_KOI_Shape = AIS_KindOfInteractive_Shape,
+	AIS_KOI_Object = AIS_KindOfInteractive_Object,
+	AIS_KOI_Relation = AIS_KindOfInteractive_Relation,
+	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension,
+};
+
+enum AIS_ManipulatorMode {
+	AIS_MM_None = 0,
+	AIS_MM_Translation = 1,
+	AIS_MM_Rotation = 2,
+	AIS_MM_Scaling = 3,
+	AIS_MM_TranslationPlane = 4,
 };
 
 enum AIS_MouseGesture {
@@ -130,6 +164,67 @@ enum AIS_MouseGesture {
 	AIS_MouseGesture_RotateOrbit = 6,
 	AIS_MouseGesture_RotateView = 7,
 	AIS_MouseGesture_Drag = 8,
+};
+
+enum AIS_NavigationMode {
+	AIS_NavigationMode_Orbit = 0,
+	AIS_NavigationMode_FirstPersonFlight = 1,
+	AIS_NavigationMode_FirstPersonWalk = 2,
+};
+
+enum AIS_RotationMode {
+	AIS_RotationMode_BndBoxActive = 0,
+	AIS_RotationMode_PickLast = 1,
+	AIS_RotationMode_PickCenter = 2,
+	AIS_RotationMode_CameraAt = 3,
+	AIS_RotationMode_BndBoxScene = 4,
+};
+
+enum AIS_SelectStatus {
+	AIS_SS_Added = 0,
+	AIS_SS_Removed = 1,
+	AIS_SS_NotDone = 2,
+};
+
+enum AIS_SelectionModesConcurrency {
+	AIS_SelectionModesConcurrency_Single = 0,
+	AIS_SelectionModesConcurrency_GlobalOrLocal = 1,
+	AIS_SelectionModesConcurrency_Multiple = 2,
+};
+
+enum AIS_SelectionScheme {
+	AIS_SelectionScheme_UNKNOWN = - 1,
+	AIS_SelectionScheme_Replace = 0,
+	AIS_SelectionScheme_Add = 1,
+	AIS_SelectionScheme_Remove = 2,
+	AIS_SelectionScheme_XOR = 3,
+	AIS_SelectionScheme_Clear = 4,
+	AIS_SelectionScheme_ReplaceExtra = 5,
+};
+
+enum AIS_StatusOfDetection {
+	AIS_SOD_Error = 0,
+	AIS_SOD_Nothing = 1,
+	AIS_SOD_AllBad = 2,
+	AIS_SOD_Selected = 3,
+	AIS_SOD_OnlyOneDetected = 4,
+	AIS_SOD_OnlyOneGood = 5,
+	AIS_SOD_SeveralGood = 6,
+};
+
+enum AIS_StatusOfPick {
+	AIS_SOP_Error = 0,
+	AIS_SOP_NothingSelected = 1,
+	AIS_SOP_Removed = 2,
+	AIS_SOP_OneSelected = 3,
+	AIS_SOP_SeveralSelected = 4,
+};
+
+enum AIS_TrihedronSelectionMode {
+	AIS_TrihedronSelectionMode_EntireObject = 0,
+	AIS_TrihedronSelectionMode_Origin = 1,
+	AIS_TrihedronSelectionMode_Axes = 2,
+	AIS_TrihedronSelectionMode_MainPlanes = 3,
 };
 
 enum AIS_TypeOfAttribute {
@@ -151,28 +246,6 @@ enum AIS_TypeOfAttribute {
 	AIS_TOA_ThirdAxis = 15,
 };
 
-enum AIS_KindOfInteractive {
-	AIS_KindOfInteractive_None = 0,
-	AIS_KindOfInteractive_Datum = 1,
-	AIS_KindOfInteractive_Shape = 2,
-	AIS_KindOfInteractive_Object = 3,
-	AIS_KindOfInteractive_Relation = 4,
-	AIS_KindOfInteractive_Dimension = 5,
-	AIS_KindOfInteractive_LightSource = 6,
-	AIS_KOI_None = AIS_KindOfInteractive_None,
-	AIS_KOI_Datum = AIS_KindOfInteractive_Datum,
-	AIS_KOI_Shape = AIS_KindOfInteractive_Shape,
-	AIS_KOI_Object = AIS_KindOfInteractive_Object,
-	AIS_KOI_Relation = AIS_KindOfInteractive_Relation,
-	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension,
-};
-
-enum AIS_SelectStatus {
-	AIS_SS_Added = 0,
-	AIS_SS_Removed = 1,
-	AIS_SS_NotDone = 2,
-};
-
 enum AIS_TypeOfAxis {
 	AIS_TOAX_Unknown = 0,
 	AIS_TOAX_XAxis = 1,
@@ -180,112 +253,10 @@ enum AIS_TypeOfAxis {
 	AIS_TOAX_ZAxis = 3,
 };
 
-enum AIS_SelectionScheme {
-	AIS_SelectionScheme_UNKNOWN = - 1,
-	AIS_SelectionScheme_Replace = 0,
-	AIS_SelectionScheme_Add = 1,
-	AIS_SelectionScheme_Remove = 2,
-	AIS_SelectionScheme_XOR = 3,
-	AIS_SelectionScheme_Clear = 4,
-	AIS_SelectionScheme_ReplaceExtra = 5,
-};
-
-enum AIS_RotationMode {
-	AIS_RotationMode_BndBoxActive = 0,
-	AIS_RotationMode_PickLast = 1,
-	AIS_RotationMode_PickCenter = 2,
-	AIS_RotationMode_CameraAt = 3,
-	AIS_RotationMode_BndBoxScene = 4,
-};
-
-enum  {
-	AIS_RotationMode_LOWER = 0,
-	AIS_RotationMode_UPPER = AIS_RotationMode_BndBoxScene,
-};
-
-enum AIS_ViewSelectionTool {
-	AIS_ViewSelectionTool_Picking = 0,
-	AIS_ViewSelectionTool_RubberBand = 1,
-	AIS_ViewSelectionTool_Polygon = 2,
-	AIS_ViewSelectionTool_ZoomWindow = 3,
-};
-
-enum AIS_ViewInputBufferType {
-	AIS_ViewInputBufferType_UI = 0,
-	AIS_ViewInputBufferType_GL = 1,
-};
-
-enum AIS_NavigationMode {
-	AIS_NavigationMode_Orbit = 0,
-	AIS_NavigationMode_FirstPersonFlight = 1,
-	AIS_NavigationMode_FirstPersonWalk = 2,
-};
-
-enum  {
-	AIS_NavigationMode_LOWER = 0,
-	AIS_NavigationMode_UPPER = AIS_NavigationMode_FirstPersonWalk,
-};
-
 enum AIS_TypeOfIso {
 	AIS_TOI_IsoU = 0,
 	AIS_TOI_IsoV = 1,
 	AIS_TOI_Both = 2,
-};
-
-enum AIS_StatusOfDetection {
-	AIS_SOD_Error = 0,
-	AIS_SOD_Nothing = 1,
-	AIS_SOD_AllBad = 2,
-	AIS_SOD_Selected = 3,
-	AIS_SOD_OnlyOneDetected = 4,
-	AIS_SOD_OnlyOneGood = 5,
-	AIS_SOD_SeveralGood = 6,
-};
-
-enum AIS_WalkTranslation {
-	AIS_WalkTranslation_Forward = 0,
-	AIS_WalkTranslation_Side = 1,
-	AIS_WalkTranslation_Up = 2,
-};
-
-enum AIS_WalkRotation {
-	AIS_WalkRotation_Yaw = 0,
-	AIS_WalkRotation_Pitch = 1,
-	AIS_WalkRotation_Roll = 2,
-};
-
-enum AIS_ManipulatorMode {
-	AIS_MM_None = 0,
-	AIS_MM_Translation = 1,
-	AIS_MM_Rotation = 2,
-	AIS_MM_Scaling = 3,
-	AIS_MM_TranslationPlane = 4,
-};
-
-enum AIS_SelectionModesConcurrency {
-	AIS_SelectionModesConcurrency_Single = 0,
-	AIS_SelectionModesConcurrency_GlobalOrLocal = 1,
-	AIS_SelectionModesConcurrency_Multiple = 2,
-};
-
-enum AIS_DisplayMode {
-	AIS_WireFrame = 0,
-	AIS_Shaded = 1,
-};
-
-enum AIS_StatusOfPick {
-	AIS_SOP_Error = 0,
-	AIS_SOP_NothingSelected = 1,
-	AIS_SOP_Removed = 2,
-	AIS_SOP_OneSelected = 3,
-	AIS_SOP_SeveralSelected = 4,
-};
-
-enum AIS_DragAction {
-	AIS_DragAction_Start = 0,
-	AIS_DragAction_Update = 1,
-	AIS_DragAction_Stop = 2,
-	AIS_DragAction_Abort = 3,
 };
 
 enum AIS_TypeOfPlane {
@@ -295,20 +266,90 @@ enum AIS_TypeOfPlane {
 	AIS_TOPL_YZPlane = 3,
 };
 
+enum AIS_ViewInputBufferType {
+	AIS_ViewInputBufferType_UI = 0,
+	AIS_ViewInputBufferType_GL = 1,
+};
+
+enum AIS_ViewSelectionTool {
+	AIS_ViewSelectionTool_Picking = 0,
+	AIS_ViewSelectionTool_RubberBand = 1,
+	AIS_ViewSelectionTool_Polygon = 2,
+	AIS_ViewSelectionTool_ZoomWindow = 3,
+};
+
+enum AIS_WalkRotation {
+	AIS_WalkRotation_Yaw = 0,
+	AIS_WalkRotation_Pitch = 1,
+	AIS_WalkRotation_Roll = 2,
+};
+
+enum AIS_WalkTranslation {
+	AIS_WalkTranslation_Forward = 0,
+	AIS_WalkTranslation_Side = 1,
+	AIS_WalkTranslation_Up = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
 
-class AIS_TrihedronSelectionMode(IntEnum):
-	AIS_TrihedronSelectionMode_EntireObject = 0
-	AIS_TrihedronSelectionMode_Origin = 1
-	AIS_TrihedronSelectionMode_Axes = 2
-	AIS_TrihedronSelectionMode_MainPlanes = 3
-AIS_TrihedronSelectionMode_EntireObject = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_EntireObject
-AIS_TrihedronSelectionMode_Origin = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Origin
-AIS_TrihedronSelectionMode_Axes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Axes
-AIS_TrihedronSelectionMode_MainPlanes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_MainPlanes
+class AIS_DisplayMode(IntEnum):
+	AIS_WireFrame = 0
+	AIS_Shaded = 1
+AIS_WireFrame = AIS_DisplayMode.AIS_WireFrame
+AIS_Shaded = AIS_DisplayMode.AIS_Shaded
+
+class AIS_DragAction(IntEnum):
+	AIS_DragAction_Start = 0
+	AIS_DragAction_Update = 1
+	AIS_DragAction_Stop = 2
+	AIS_DragAction_Abort = 3
+AIS_DragAction_Start = AIS_DragAction.AIS_DragAction_Start
+AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
+AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
+AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
+
+class AIS_KindOfInteractive(IntEnum):
+	AIS_KindOfInteractive_None = 0
+	AIS_KindOfInteractive_Datum = 1
+	AIS_KindOfInteractive_Shape = 2
+	AIS_KindOfInteractive_Object = 3
+	AIS_KindOfInteractive_Relation = 4
+	AIS_KindOfInteractive_Dimension = 5
+	AIS_KindOfInteractive_LightSource = 6
+	AIS_KOI_None = AIS_KindOfInteractive_None
+	AIS_KOI_Datum = AIS_KindOfInteractive_Datum
+	AIS_KOI_Shape = AIS_KindOfInteractive_Shape
+	AIS_KOI_Object = AIS_KindOfInteractive_Object
+	AIS_KOI_Relation = AIS_KindOfInteractive_Relation
+	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension
+AIS_KindOfInteractive_None = AIS_KindOfInteractive.AIS_KindOfInteractive_None
+AIS_KindOfInteractive_Datum = AIS_KindOfInteractive.AIS_KindOfInteractive_Datum
+AIS_KindOfInteractive_Shape = AIS_KindOfInteractive.AIS_KindOfInteractive_Shape
+AIS_KindOfInteractive_Object = AIS_KindOfInteractive.AIS_KindOfInteractive_Object
+AIS_KindOfInteractive_Relation = AIS_KindOfInteractive.AIS_KindOfInteractive_Relation
+AIS_KindOfInteractive_Dimension = AIS_KindOfInteractive.AIS_KindOfInteractive_Dimension
+AIS_KindOfInteractive_LightSource = AIS_KindOfInteractive.AIS_KindOfInteractive_LightSource
+AIS_KOI_None = AIS_KindOfInteractive.AIS_KOI_None
+AIS_KOI_Datum = AIS_KindOfInteractive.AIS_KOI_Datum
+AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
+AIS_KOI_Object = AIS_KindOfInteractive.AIS_KOI_Object
+AIS_KOI_Relation = AIS_KindOfInteractive.AIS_KOI_Relation
+AIS_KOI_Dimension = AIS_KindOfInteractive.AIS_KOI_Dimension
+
+class AIS_ManipulatorMode(IntEnum):
+	AIS_MM_None = 0
+	AIS_MM_Translation = 1
+	AIS_MM_Rotation = 2
+	AIS_MM_Scaling = 3
+	AIS_MM_TranslationPlane = 4
+AIS_MM_None = AIS_ManipulatorMode.AIS_MM_None
+AIS_MM_Translation = AIS_ManipulatorMode.AIS_MM_Translation
+AIS_MM_Rotation = AIS_ManipulatorMode.AIS_MM_Rotation
+AIS_MM_Scaling = AIS_ManipulatorMode.AIS_MM_Scaling
+AIS_MM_TranslationPlane = AIS_ManipulatorMode.AIS_MM_TranslationPlane
 
 class AIS_MouseGesture(IntEnum):
 	AIS_MouseGesture_NONE = 0
@@ -329,6 +370,96 @@ AIS_MouseGesture_Pan = AIS_MouseGesture.AIS_MouseGesture_Pan
 AIS_MouseGesture_RotateOrbit = AIS_MouseGesture.AIS_MouseGesture_RotateOrbit
 AIS_MouseGesture_RotateView = AIS_MouseGesture.AIS_MouseGesture_RotateView
 AIS_MouseGesture_Drag = AIS_MouseGesture.AIS_MouseGesture_Drag
+
+class AIS_NavigationMode(IntEnum):
+	AIS_NavigationMode_Orbit = 0
+	AIS_NavigationMode_FirstPersonFlight = 1
+	AIS_NavigationMode_FirstPersonWalk = 2
+AIS_NavigationMode_Orbit = AIS_NavigationMode.AIS_NavigationMode_Orbit
+AIS_NavigationMode_FirstPersonFlight = AIS_NavigationMode.AIS_NavigationMode_FirstPersonFlight
+AIS_NavigationMode_FirstPersonWalk = AIS_NavigationMode.AIS_NavigationMode_FirstPersonWalk
+
+class AIS_RotationMode(IntEnum):
+	AIS_RotationMode_BndBoxActive = 0
+	AIS_RotationMode_PickLast = 1
+	AIS_RotationMode_PickCenter = 2
+	AIS_RotationMode_CameraAt = 3
+	AIS_RotationMode_BndBoxScene = 4
+AIS_RotationMode_BndBoxActive = AIS_RotationMode.AIS_RotationMode_BndBoxActive
+AIS_RotationMode_PickLast = AIS_RotationMode.AIS_RotationMode_PickLast
+AIS_RotationMode_PickCenter = AIS_RotationMode.AIS_RotationMode_PickCenter
+AIS_RotationMode_CameraAt = AIS_RotationMode.AIS_RotationMode_CameraAt
+AIS_RotationMode_BndBoxScene = AIS_RotationMode.AIS_RotationMode_BndBoxScene
+
+class AIS_SelectStatus(IntEnum):
+	AIS_SS_Added = 0
+	AIS_SS_Removed = 1
+	AIS_SS_NotDone = 2
+AIS_SS_Added = AIS_SelectStatus.AIS_SS_Added
+AIS_SS_Removed = AIS_SelectStatus.AIS_SS_Removed
+AIS_SS_NotDone = AIS_SelectStatus.AIS_SS_NotDone
+
+class AIS_SelectionModesConcurrency(IntEnum):
+	AIS_SelectionModesConcurrency_Single = 0
+	AIS_SelectionModesConcurrency_GlobalOrLocal = 1
+	AIS_SelectionModesConcurrency_Multiple = 2
+AIS_SelectionModesConcurrency_Single = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Single
+AIS_SelectionModesConcurrency_GlobalOrLocal = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_GlobalOrLocal
+AIS_SelectionModesConcurrency_Multiple = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Multiple
+
+class AIS_SelectionScheme(IntEnum):
+	AIS_SelectionScheme_UNKNOWN = - 1
+	AIS_SelectionScheme_Replace = 0
+	AIS_SelectionScheme_Add = 1
+	AIS_SelectionScheme_Remove = 2
+	AIS_SelectionScheme_XOR = 3
+	AIS_SelectionScheme_Clear = 4
+	AIS_SelectionScheme_ReplaceExtra = 5
+AIS_SelectionScheme_UNKNOWN = AIS_SelectionScheme.AIS_SelectionScheme_UNKNOWN
+AIS_SelectionScheme_Replace = AIS_SelectionScheme.AIS_SelectionScheme_Replace
+AIS_SelectionScheme_Add = AIS_SelectionScheme.AIS_SelectionScheme_Add
+AIS_SelectionScheme_Remove = AIS_SelectionScheme.AIS_SelectionScheme_Remove
+AIS_SelectionScheme_XOR = AIS_SelectionScheme.AIS_SelectionScheme_XOR
+AIS_SelectionScheme_Clear = AIS_SelectionScheme.AIS_SelectionScheme_Clear
+AIS_SelectionScheme_ReplaceExtra = AIS_SelectionScheme.AIS_SelectionScheme_ReplaceExtra
+
+class AIS_StatusOfDetection(IntEnum):
+	AIS_SOD_Error = 0
+	AIS_SOD_Nothing = 1
+	AIS_SOD_AllBad = 2
+	AIS_SOD_Selected = 3
+	AIS_SOD_OnlyOneDetected = 4
+	AIS_SOD_OnlyOneGood = 5
+	AIS_SOD_SeveralGood = 6
+AIS_SOD_Error = AIS_StatusOfDetection.AIS_SOD_Error
+AIS_SOD_Nothing = AIS_StatusOfDetection.AIS_SOD_Nothing
+AIS_SOD_AllBad = AIS_StatusOfDetection.AIS_SOD_AllBad
+AIS_SOD_Selected = AIS_StatusOfDetection.AIS_SOD_Selected
+AIS_SOD_OnlyOneDetected = AIS_StatusOfDetection.AIS_SOD_OnlyOneDetected
+AIS_SOD_OnlyOneGood = AIS_StatusOfDetection.AIS_SOD_OnlyOneGood
+AIS_SOD_SeveralGood = AIS_StatusOfDetection.AIS_SOD_SeveralGood
+
+class AIS_StatusOfPick(IntEnum):
+	AIS_SOP_Error = 0
+	AIS_SOP_NothingSelected = 1
+	AIS_SOP_Removed = 2
+	AIS_SOP_OneSelected = 3
+	AIS_SOP_SeveralSelected = 4
+AIS_SOP_Error = AIS_StatusOfPick.AIS_SOP_Error
+AIS_SOP_NothingSelected = AIS_StatusOfPick.AIS_SOP_NothingSelected
+AIS_SOP_Removed = AIS_StatusOfPick.AIS_SOP_Removed
+AIS_SOP_OneSelected = AIS_StatusOfPick.AIS_SOP_OneSelected
+AIS_SOP_SeveralSelected = AIS_StatusOfPick.AIS_SOP_SeveralSelected
+
+class AIS_TrihedronSelectionMode(IntEnum):
+	AIS_TrihedronSelectionMode_EntireObject = 0
+	AIS_TrihedronSelectionMode_Origin = 1
+	AIS_TrihedronSelectionMode_Axes = 2
+	AIS_TrihedronSelectionMode_MainPlanes = 3
+AIS_TrihedronSelectionMode_EntireObject = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_EntireObject
+AIS_TrihedronSelectionMode_Origin = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Origin
+AIS_TrihedronSelectionMode_Axes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Axes
+AIS_TrihedronSelectionMode_MainPlanes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_MainPlanes
 
 class AIS_TypeOfAttribute(IntEnum):
 	AIS_TOA_Line = 0
@@ -364,42 +495,6 @@ AIS_TOA_FirstAxis = AIS_TypeOfAttribute.AIS_TOA_FirstAxis
 AIS_TOA_SecondAxis = AIS_TypeOfAttribute.AIS_TOA_SecondAxis
 AIS_TOA_ThirdAxis = AIS_TypeOfAttribute.AIS_TOA_ThirdAxis
 
-class AIS_KindOfInteractive(IntEnum):
-	AIS_KindOfInteractive_None = 0
-	AIS_KindOfInteractive_Datum = 1
-	AIS_KindOfInteractive_Shape = 2
-	AIS_KindOfInteractive_Object = 3
-	AIS_KindOfInteractive_Relation = 4
-	AIS_KindOfInteractive_Dimension = 5
-	AIS_KindOfInteractive_LightSource = 6
-	AIS_KOI_None = AIS_KindOfInteractive_None
-	AIS_KOI_Datum = AIS_KindOfInteractive_Datum
-	AIS_KOI_Shape = AIS_KindOfInteractive_Shape
-	AIS_KOI_Object = AIS_KindOfInteractive_Object
-	AIS_KOI_Relation = AIS_KindOfInteractive_Relation
-	AIS_KOI_Dimension = AIS_KindOfInteractive_Dimension
-AIS_KindOfInteractive_None = AIS_KindOfInteractive.AIS_KindOfInteractive_None
-AIS_KindOfInteractive_Datum = AIS_KindOfInteractive.AIS_KindOfInteractive_Datum
-AIS_KindOfInteractive_Shape = AIS_KindOfInteractive.AIS_KindOfInteractive_Shape
-AIS_KindOfInteractive_Object = AIS_KindOfInteractive.AIS_KindOfInteractive_Object
-AIS_KindOfInteractive_Relation = AIS_KindOfInteractive.AIS_KindOfInteractive_Relation
-AIS_KindOfInteractive_Dimension = AIS_KindOfInteractive.AIS_KindOfInteractive_Dimension
-AIS_KindOfInteractive_LightSource = AIS_KindOfInteractive.AIS_KindOfInteractive_LightSource
-AIS_KOI_None = AIS_KindOfInteractive.AIS_KOI_None
-AIS_KOI_Datum = AIS_KindOfInteractive.AIS_KOI_Datum
-AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
-AIS_KOI_Object = AIS_KindOfInteractive.AIS_KOI_Object
-AIS_KOI_Relation = AIS_KindOfInteractive.AIS_KOI_Relation
-AIS_KOI_Dimension = AIS_KindOfInteractive.AIS_KOI_Dimension
-
-class AIS_SelectStatus(IntEnum):
-	AIS_SS_Added = 0
-	AIS_SS_Removed = 1
-	AIS_SS_NotDone = 2
-AIS_SS_Added = AIS_SelectStatus.AIS_SS_Added
-AIS_SS_Removed = AIS_SelectStatus.AIS_SS_Removed
-AIS_SS_NotDone = AIS_SelectStatus.AIS_SS_NotDone
-
 class AIS_TypeOfAxis(IntEnum):
 	AIS_TOAX_Unknown = 0
 	AIS_TOAX_XAxis = 1
@@ -410,33 +505,29 @@ AIS_TOAX_XAxis = AIS_TypeOfAxis.AIS_TOAX_XAxis
 AIS_TOAX_YAxis = AIS_TypeOfAxis.AIS_TOAX_YAxis
 AIS_TOAX_ZAxis = AIS_TypeOfAxis.AIS_TOAX_ZAxis
 
-class AIS_SelectionScheme(IntEnum):
-	AIS_SelectionScheme_UNKNOWN = - 1
-	AIS_SelectionScheme_Replace = 0
-	AIS_SelectionScheme_Add = 1
-	AIS_SelectionScheme_Remove = 2
-	AIS_SelectionScheme_XOR = 3
-	AIS_SelectionScheme_Clear = 4
-	AIS_SelectionScheme_ReplaceExtra = 5
-AIS_SelectionScheme_UNKNOWN = AIS_SelectionScheme.AIS_SelectionScheme_UNKNOWN
-AIS_SelectionScheme_Replace = AIS_SelectionScheme.AIS_SelectionScheme_Replace
-AIS_SelectionScheme_Add = AIS_SelectionScheme.AIS_SelectionScheme_Add
-AIS_SelectionScheme_Remove = AIS_SelectionScheme.AIS_SelectionScheme_Remove
-AIS_SelectionScheme_XOR = AIS_SelectionScheme.AIS_SelectionScheme_XOR
-AIS_SelectionScheme_Clear = AIS_SelectionScheme.AIS_SelectionScheme_Clear
-AIS_SelectionScheme_ReplaceExtra = AIS_SelectionScheme.AIS_SelectionScheme_ReplaceExtra
+class AIS_TypeOfIso(IntEnum):
+	AIS_TOI_IsoU = 0
+	AIS_TOI_IsoV = 1
+	AIS_TOI_Both = 2
+AIS_TOI_IsoU = AIS_TypeOfIso.AIS_TOI_IsoU
+AIS_TOI_IsoV = AIS_TypeOfIso.AIS_TOI_IsoV
+AIS_TOI_Both = AIS_TypeOfIso.AIS_TOI_Both
 
-class AIS_RotationMode(IntEnum):
-	AIS_RotationMode_BndBoxActive = 0
-	AIS_RotationMode_PickLast = 1
-	AIS_RotationMode_PickCenter = 2
-	AIS_RotationMode_CameraAt = 3
-	AIS_RotationMode_BndBoxScene = 4
-AIS_RotationMode_BndBoxActive = AIS_RotationMode.AIS_RotationMode_BndBoxActive
-AIS_RotationMode_PickLast = AIS_RotationMode.AIS_RotationMode_PickLast
-AIS_RotationMode_PickCenter = AIS_RotationMode.AIS_RotationMode_PickCenter
-AIS_RotationMode_CameraAt = AIS_RotationMode.AIS_RotationMode_CameraAt
-AIS_RotationMode_BndBoxScene = AIS_RotationMode.AIS_RotationMode_BndBoxScene
+class AIS_TypeOfPlane(IntEnum):
+	AIS_TOPL_Unknown = 0
+	AIS_TOPL_XYPlane = 1
+	AIS_TOPL_XZPlane = 2
+	AIS_TOPL_YZPlane = 3
+AIS_TOPL_Unknown = AIS_TypeOfPlane.AIS_TOPL_Unknown
+AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
+AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
+AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
+
+class AIS_ViewInputBufferType(IntEnum):
+	AIS_ViewInputBufferType_UI = 0
+	AIS_ViewInputBufferType_GL = 1
+AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
+AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
 
 class AIS_ViewSelectionTool(IntEnum):
 	AIS_ViewSelectionTool_Picking = 0
@@ -448,52 +539,6 @@ AIS_ViewSelectionTool_RubberBand = AIS_ViewSelectionTool.AIS_ViewSelectionTool_R
 AIS_ViewSelectionTool_Polygon = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Polygon
 AIS_ViewSelectionTool_ZoomWindow = AIS_ViewSelectionTool.AIS_ViewSelectionTool_ZoomWindow
 
-class AIS_ViewInputBufferType(IntEnum):
-	AIS_ViewInputBufferType_UI = 0
-	AIS_ViewInputBufferType_GL = 1
-AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
-AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
-
-class AIS_NavigationMode(IntEnum):
-	AIS_NavigationMode_Orbit = 0
-	AIS_NavigationMode_FirstPersonFlight = 1
-	AIS_NavigationMode_FirstPersonWalk = 2
-AIS_NavigationMode_Orbit = AIS_NavigationMode.AIS_NavigationMode_Orbit
-AIS_NavigationMode_FirstPersonFlight = AIS_NavigationMode.AIS_NavigationMode_FirstPersonFlight
-AIS_NavigationMode_FirstPersonWalk = AIS_NavigationMode.AIS_NavigationMode_FirstPersonWalk
-
-class AIS_TypeOfIso(IntEnum):
-	AIS_TOI_IsoU = 0
-	AIS_TOI_IsoV = 1
-	AIS_TOI_Both = 2
-AIS_TOI_IsoU = AIS_TypeOfIso.AIS_TOI_IsoU
-AIS_TOI_IsoV = AIS_TypeOfIso.AIS_TOI_IsoV
-AIS_TOI_Both = AIS_TypeOfIso.AIS_TOI_Both
-
-class AIS_StatusOfDetection(IntEnum):
-	AIS_SOD_Error = 0
-	AIS_SOD_Nothing = 1
-	AIS_SOD_AllBad = 2
-	AIS_SOD_Selected = 3
-	AIS_SOD_OnlyOneDetected = 4
-	AIS_SOD_OnlyOneGood = 5
-	AIS_SOD_SeveralGood = 6
-AIS_SOD_Error = AIS_StatusOfDetection.AIS_SOD_Error
-AIS_SOD_Nothing = AIS_StatusOfDetection.AIS_SOD_Nothing
-AIS_SOD_AllBad = AIS_StatusOfDetection.AIS_SOD_AllBad
-AIS_SOD_Selected = AIS_StatusOfDetection.AIS_SOD_Selected
-AIS_SOD_OnlyOneDetected = AIS_StatusOfDetection.AIS_SOD_OnlyOneDetected
-AIS_SOD_OnlyOneGood = AIS_StatusOfDetection.AIS_SOD_OnlyOneGood
-AIS_SOD_SeveralGood = AIS_StatusOfDetection.AIS_SOD_SeveralGood
-
-class AIS_WalkTranslation(IntEnum):
-	AIS_WalkTranslation_Forward = 0
-	AIS_WalkTranslation_Side = 1
-	AIS_WalkTranslation_Up = 2
-AIS_WalkTranslation_Forward = AIS_WalkTranslation.AIS_WalkTranslation_Forward
-AIS_WalkTranslation_Side = AIS_WalkTranslation.AIS_WalkTranslation_Side
-AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
-
 class AIS_WalkRotation(IntEnum):
 	AIS_WalkRotation_Yaw = 0
 	AIS_WalkRotation_Pitch = 1
@@ -502,63 +547,13 @@ AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
 AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
 AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 
-class AIS_ManipulatorMode(IntEnum):
-	AIS_MM_None = 0
-	AIS_MM_Translation = 1
-	AIS_MM_Rotation = 2
-	AIS_MM_Scaling = 3
-	AIS_MM_TranslationPlane = 4
-AIS_MM_None = AIS_ManipulatorMode.AIS_MM_None
-AIS_MM_Translation = AIS_ManipulatorMode.AIS_MM_Translation
-AIS_MM_Rotation = AIS_ManipulatorMode.AIS_MM_Rotation
-AIS_MM_Scaling = AIS_ManipulatorMode.AIS_MM_Scaling
-AIS_MM_TranslationPlane = AIS_ManipulatorMode.AIS_MM_TranslationPlane
-
-class AIS_SelectionModesConcurrency(IntEnum):
-	AIS_SelectionModesConcurrency_Single = 0
-	AIS_SelectionModesConcurrency_GlobalOrLocal = 1
-	AIS_SelectionModesConcurrency_Multiple = 2
-AIS_SelectionModesConcurrency_Single = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Single
-AIS_SelectionModesConcurrency_GlobalOrLocal = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_GlobalOrLocal
-AIS_SelectionModesConcurrency_Multiple = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Multiple
-
-class AIS_DisplayMode(IntEnum):
-	AIS_WireFrame = 0
-	AIS_Shaded = 1
-AIS_WireFrame = AIS_DisplayMode.AIS_WireFrame
-AIS_Shaded = AIS_DisplayMode.AIS_Shaded
-
-class AIS_StatusOfPick(IntEnum):
-	AIS_SOP_Error = 0
-	AIS_SOP_NothingSelected = 1
-	AIS_SOP_Removed = 2
-	AIS_SOP_OneSelected = 3
-	AIS_SOP_SeveralSelected = 4
-AIS_SOP_Error = AIS_StatusOfPick.AIS_SOP_Error
-AIS_SOP_NothingSelected = AIS_StatusOfPick.AIS_SOP_NothingSelected
-AIS_SOP_Removed = AIS_StatusOfPick.AIS_SOP_Removed
-AIS_SOP_OneSelected = AIS_StatusOfPick.AIS_SOP_OneSelected
-AIS_SOP_SeveralSelected = AIS_StatusOfPick.AIS_SOP_SeveralSelected
-
-class AIS_DragAction(IntEnum):
-	AIS_DragAction_Start = 0
-	AIS_DragAction_Update = 1
-	AIS_DragAction_Stop = 2
-	AIS_DragAction_Abort = 3
-AIS_DragAction_Start = AIS_DragAction.AIS_DragAction_Start
-AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
-AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
-AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
-
-class AIS_TypeOfPlane(IntEnum):
-	AIS_TOPL_Unknown = 0
-	AIS_TOPL_XYPlane = 1
-	AIS_TOPL_XZPlane = 2
-	AIS_TOPL_YZPlane = 3
-AIS_TOPL_Unknown = AIS_TypeOfPlane.AIS_TOPL_Unknown
-AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
-AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
-AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
+class AIS_WalkTranslation(IntEnum):
+	AIS_WalkTranslation_Forward = 0
+	AIS_WalkTranslation_Side = 1
+	AIS_WalkTranslation_Up = 2
+AIS_WalkTranslation_Forward = AIS_WalkTranslation.AIS_WalkTranslation_Forward
+AIS_WalkTranslation_Side = AIS_WalkTranslation.AIS_WalkTranslation_Side
+AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
 };
 /* end python proxy for enums */
 
@@ -2883,13 +2878,14 @@ bool
 		Standard_Boolean DrawHiddenLine();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EnableDrawHiddenLine ******************/
 		/**** md5 signature: ef1c63d78ea294d9e74f6b66ff4bc5ee ****/
 		%feature("compactdefaultargs") EnableDrawHiddenLine;
@@ -5429,13 +5425,14 @@ None
 		void ClearOwner();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetContext ******************/
 		/**** md5 signature: 9141453181bb741f4971f346e5b4d4cb ****/
 		%feature("compactdefaultargs") GetContext;
@@ -13266,13 +13263,14 @@ None
 		virtual void Color(Quantity_Color & aColor);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Material ******************/
 		/**** md5 signature: bd49ae260cc3f6209d9618dfc722ced2 ****/
 		%feature("compactdefaultargs") Material;

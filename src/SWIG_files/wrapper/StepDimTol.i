@@ -74,10 +74,35 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum StepDimTol_LimitCondition {
-	StepDimTol_MaximumMaterialCondition = 0,
-	StepDimTol_LeastMaterialCondition = 1,
-	StepDimTol_RegardlessOfFeatureSize = 2,
+enum StepDimTol_AreaUnitType {
+	StepDimTol_Circular = 0,
+	StepDimTol_Rectangular = 1,
+	StepDimTol_Square = 2,
+};
+
+enum StepDimTol_DatumReferenceModifierType {
+	StepDimTol_CircularOrCylindrical = 0,
+	StepDimTol_Distance = 1,
+	StepDimTol_Projected = 2,
+	StepDimTol_Spherical = 3,
+};
+
+enum StepDimTol_GeometricToleranceModifier {
+	StepDimTol_GTMAnyCrossSection = 0,
+	StepDimTol_GTMCommonZone = 1,
+	StepDimTol_GTMEachRadialElement = 2,
+	StepDimTol_GTMFreeState = 3,
+	StepDimTol_GTMLeastMaterialRequirement = 4,
+	StepDimTol_GTMLineElement = 5,
+	StepDimTol_GTMMajorDiameter = 6,
+	StepDimTol_GTMMaximumMaterialRequirement = 7,
+	StepDimTol_GTMMinorDiameter = 8,
+	StepDimTol_GTMNotConvex = 9,
+	StepDimTol_GTMPitchDiameter = 10,
+	StepDimTol_GTMReciprocityRequirement = 11,
+	StepDimTol_GTMSeparateRequirement = 12,
+	StepDimTol_GTMStatisticalTolerance = 13,
+	StepDimTol_GTMTangentPlane = 14,
 };
 
 enum StepDimTol_GeometricToleranceType {
@@ -98,11 +123,10 @@ enum StepDimTol_GeometricToleranceType {
 	StepDimTol_GTTTotalRunoutTolerance = 14,
 };
 
-enum StepDimTol_DatumReferenceModifierType {
-	StepDimTol_CircularOrCylindrical = 0,
-	StepDimTol_Distance = 1,
-	StepDimTol_Projected = 2,
-	StepDimTol_Spherical = 3,
+enum StepDimTol_LimitCondition {
+	StepDimTol_MaximumMaterialCondition = 0,
+	StepDimTol_LeastMaterialCondition = 1,
+	StepDimTol_RegardlessOfFeatureSize = 2,
 };
 
 enum StepDimTol_SimpleDatumReferenceModifier {
@@ -130,42 +154,60 @@ enum StepDimTol_SimpleDatumReferenceModifier {
 	StepDimTol_SDRMTranslation = 21,
 };
 
-enum StepDimTol_AreaUnitType {
-	StepDimTol_Circular = 0,
-	StepDimTol_Rectangular = 1,
-	StepDimTol_Square = 2,
-};
-
-enum StepDimTol_GeometricToleranceModifier {
-	StepDimTol_GTMAnyCrossSection = 0,
-	StepDimTol_GTMCommonZone = 1,
-	StepDimTol_GTMEachRadialElement = 2,
-	StepDimTol_GTMFreeState = 3,
-	StepDimTol_GTMLeastMaterialRequirement = 4,
-	StepDimTol_GTMLineElement = 5,
-	StepDimTol_GTMMajorDiameter = 6,
-	StepDimTol_GTMMaximumMaterialRequirement = 7,
-	StepDimTol_GTMMinorDiameter = 8,
-	StepDimTol_GTMNotConvex = 9,
-	StepDimTol_GTMPitchDiameter = 10,
-	StepDimTol_GTMReciprocityRequirement = 11,
-	StepDimTol_GTMSeparateRequirement = 12,
-	StepDimTol_GTMStatisticalTolerance = 13,
-	StepDimTol_GTMTangentPlane = 14,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
 
-class StepDimTol_LimitCondition(IntEnum):
-	StepDimTol_MaximumMaterialCondition = 0
-	StepDimTol_LeastMaterialCondition = 1
-	StepDimTol_RegardlessOfFeatureSize = 2
-StepDimTol_MaximumMaterialCondition = StepDimTol_LimitCondition.StepDimTol_MaximumMaterialCondition
-StepDimTol_LeastMaterialCondition = StepDimTol_LimitCondition.StepDimTol_LeastMaterialCondition
-StepDimTol_RegardlessOfFeatureSize = StepDimTol_LimitCondition.StepDimTol_RegardlessOfFeatureSize
+class StepDimTol_AreaUnitType(IntEnum):
+	StepDimTol_Circular = 0
+	StepDimTol_Rectangular = 1
+	StepDimTol_Square = 2
+StepDimTol_Circular = StepDimTol_AreaUnitType.StepDimTol_Circular
+StepDimTol_Rectangular = StepDimTol_AreaUnitType.StepDimTol_Rectangular
+StepDimTol_Square = StepDimTol_AreaUnitType.StepDimTol_Square
+
+class StepDimTol_DatumReferenceModifierType(IntEnum):
+	StepDimTol_CircularOrCylindrical = 0
+	StepDimTol_Distance = 1
+	StepDimTol_Projected = 2
+	StepDimTol_Spherical = 3
+StepDimTol_CircularOrCylindrical = StepDimTol_DatumReferenceModifierType.StepDimTol_CircularOrCylindrical
+StepDimTol_Distance = StepDimTol_DatumReferenceModifierType.StepDimTol_Distance
+StepDimTol_Projected = StepDimTol_DatumReferenceModifierType.StepDimTol_Projected
+StepDimTol_Spherical = StepDimTol_DatumReferenceModifierType.StepDimTol_Spherical
+
+class StepDimTol_GeometricToleranceModifier(IntEnum):
+	StepDimTol_GTMAnyCrossSection = 0
+	StepDimTol_GTMCommonZone = 1
+	StepDimTol_GTMEachRadialElement = 2
+	StepDimTol_GTMFreeState = 3
+	StepDimTol_GTMLeastMaterialRequirement = 4
+	StepDimTol_GTMLineElement = 5
+	StepDimTol_GTMMajorDiameter = 6
+	StepDimTol_GTMMaximumMaterialRequirement = 7
+	StepDimTol_GTMMinorDiameter = 8
+	StepDimTol_GTMNotConvex = 9
+	StepDimTol_GTMPitchDiameter = 10
+	StepDimTol_GTMReciprocityRequirement = 11
+	StepDimTol_GTMSeparateRequirement = 12
+	StepDimTol_GTMStatisticalTolerance = 13
+	StepDimTol_GTMTangentPlane = 14
+StepDimTol_GTMAnyCrossSection = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMAnyCrossSection
+StepDimTol_GTMCommonZone = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMCommonZone
+StepDimTol_GTMEachRadialElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMEachRadialElement
+StepDimTol_GTMFreeState = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMFreeState
+StepDimTol_GTMLeastMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLeastMaterialRequirement
+StepDimTol_GTMLineElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLineElement
+StepDimTol_GTMMajorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMajorDiameter
+StepDimTol_GTMMaximumMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMaximumMaterialRequirement
+StepDimTol_GTMMinorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMinorDiameter
+StepDimTol_GTMNotConvex = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMNotConvex
+StepDimTol_GTMPitchDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMPitchDiameter
+StepDimTol_GTMReciprocityRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMReciprocityRequirement
+StepDimTol_GTMSeparateRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMSeparateRequirement
+StepDimTol_GTMStatisticalTolerance = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMStatisticalTolerance
+StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMTangentPlane
 
 class StepDimTol_GeometricToleranceType(IntEnum):
 	StepDimTol_GTTAngularityTolerance = 0
@@ -199,15 +241,13 @@ StepDimTol_GTTSurfaceProfileTolerance = StepDimTol_GeometricToleranceType.StepDi
 StepDimTol_GTTSymmetryTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTSymmetryTolerance
 StepDimTol_GTTTotalRunoutTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTTotalRunoutTolerance
 
-class StepDimTol_DatumReferenceModifierType(IntEnum):
-	StepDimTol_CircularOrCylindrical = 0
-	StepDimTol_Distance = 1
-	StepDimTol_Projected = 2
-	StepDimTol_Spherical = 3
-StepDimTol_CircularOrCylindrical = StepDimTol_DatumReferenceModifierType.StepDimTol_CircularOrCylindrical
-StepDimTol_Distance = StepDimTol_DatumReferenceModifierType.StepDimTol_Distance
-StepDimTol_Projected = StepDimTol_DatumReferenceModifierType.StepDimTol_Projected
-StepDimTol_Spherical = StepDimTol_DatumReferenceModifierType.StepDimTol_Spherical
+class StepDimTol_LimitCondition(IntEnum):
+	StepDimTol_MaximumMaterialCondition = 0
+	StepDimTol_LeastMaterialCondition = 1
+	StepDimTol_RegardlessOfFeatureSize = 2
+StepDimTol_MaximumMaterialCondition = StepDimTol_LimitCondition.StepDimTol_MaximumMaterialCondition
+StepDimTol_LeastMaterialCondition = StepDimTol_LimitCondition.StepDimTol_LeastMaterialCondition
+StepDimTol_RegardlessOfFeatureSize = StepDimTol_LimitCondition.StepDimTol_RegardlessOfFeatureSize
 
 class StepDimTol_SimpleDatumReferenceModifier(IntEnum):
 	StepDimTol_SDRMAnyCrossSection = 0
@@ -254,46 +294,6 @@ StepDimTol_SDRMPitchDiameter = StepDimTol_SimpleDatumReferenceModifier.StepDimTo
 StepDimTol_SDRMPlane = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPlane
 StepDimTol_SDRMPoint = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPoint
 StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMTranslation
-
-class StepDimTol_AreaUnitType(IntEnum):
-	StepDimTol_Circular = 0
-	StepDimTol_Rectangular = 1
-	StepDimTol_Square = 2
-StepDimTol_Circular = StepDimTol_AreaUnitType.StepDimTol_Circular
-StepDimTol_Rectangular = StepDimTol_AreaUnitType.StepDimTol_Rectangular
-StepDimTol_Square = StepDimTol_AreaUnitType.StepDimTol_Square
-
-class StepDimTol_GeometricToleranceModifier(IntEnum):
-	StepDimTol_GTMAnyCrossSection = 0
-	StepDimTol_GTMCommonZone = 1
-	StepDimTol_GTMEachRadialElement = 2
-	StepDimTol_GTMFreeState = 3
-	StepDimTol_GTMLeastMaterialRequirement = 4
-	StepDimTol_GTMLineElement = 5
-	StepDimTol_GTMMajorDiameter = 6
-	StepDimTol_GTMMaximumMaterialRequirement = 7
-	StepDimTol_GTMMinorDiameter = 8
-	StepDimTol_GTMNotConvex = 9
-	StepDimTol_GTMPitchDiameter = 10
-	StepDimTol_GTMReciprocityRequirement = 11
-	StepDimTol_GTMSeparateRequirement = 12
-	StepDimTol_GTMStatisticalTolerance = 13
-	StepDimTol_GTMTangentPlane = 14
-StepDimTol_GTMAnyCrossSection = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMAnyCrossSection
-StepDimTol_GTMCommonZone = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMCommonZone
-StepDimTol_GTMEachRadialElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMEachRadialElement
-StepDimTol_GTMFreeState = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMFreeState
-StepDimTol_GTMLeastMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLeastMaterialRequirement
-StepDimTol_GTMLineElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLineElement
-StepDimTol_GTMMajorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMajorDiameter
-StepDimTol_GTMMaximumMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMaximumMaterialRequirement
-StepDimTol_GTMMinorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMinorDiameter
-StepDimTol_GTMNotConvex = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMNotConvex
-StepDimTol_GTMPitchDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMPitchDiameter
-StepDimTol_GTMReciprocityRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMReciprocityRequirement
-StepDimTol_GTMSeparateRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMSeparateRequirement
-StepDimTol_GTMStatisticalTolerance = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMStatisticalTolerance
-StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMTangentPlane
 };
 /* end python proxy for enums */
 
@@ -348,13 +348,13 @@ StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GT
 %wrap_handle(StepDimTol_PerpendicularityTolerance)
 %wrap_handle(StepDimTol_SymmetryTolerance)
 %wrap_handle(StepDimTol_TotalRunoutTolerance)
-%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
+%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
 %wrap_handle(StepDimTol_HArray1OfDatumReference)
+%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
 %wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
+%wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
 %wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
 %wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
-%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
 /* end handles declaration */
 
 /* templates */
@@ -4777,15 +4777,15 @@ None
 
 /* harray1 classes */
 
-class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
   public:
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
-    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
-    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
-    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
+    StepDimTol_HArray1OfGeometricToleranceModifier(const StepDimTol_Array1OfGeometricToleranceModifier& theOther);
+    const StepDimTol_Array1OfGeometricToleranceModifier& Array1();
+    StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
 };
-%make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
+%make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
 
 
 class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumReference, public Standard_Transient {
@@ -4799,6 +4799,17 @@ class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumRefere
 %make_alias(StepDimTol_HArray1OfDatumReference)
 
 
+class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+  public:
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
+    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
+    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
+    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+};
+%make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
+
+
 class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4808,6 +4819,17 @@ class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatu
     StepDimTol_Array1OfDatumReferenceElement& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceElement)
+
+
+class StepDimTol_HArray1OfDatumReferenceModifier : public StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
+  public:
+    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceModifier::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceModifier(const StepDimTol_Array1OfDatumReferenceModifier& theOther);
+    const StepDimTol_Array1OfDatumReferenceModifier& Array1();
+    StepDimTol_Array1OfDatumReferenceModifier& ChangeArray1();
+};
+%make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
 
 
 class StepDimTol_HArray1OfDatumSystemOrReference : public StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
@@ -4830,28 +4852,6 @@ class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1Of
     StepDimTol_Array1OfDatumReferenceCompartment& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
-
-
-class StepDimTol_HArray1OfDatumReferenceModifier : public StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
-  public:
-    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceModifier::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceModifier(const StepDimTol_Array1OfDatumReferenceModifier& theOther);
-    const StepDimTol_Array1OfDatumReferenceModifier& Array1();
-    StepDimTol_Array1OfDatumReferenceModifier& ChangeArray1();
-};
-%make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
-
-
-class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
-  public:
-    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const StepDimTol_Array1OfGeometricToleranceModifier& theOther);
-    const StepDimTol_Array1OfGeometricToleranceModifier& Array1();
-    StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
-};
-%make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
 
 /* harray2 classes */
 /* hsequence classes */

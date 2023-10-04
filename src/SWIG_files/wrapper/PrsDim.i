@@ -97,10 +97,10 @@ enum PrsDim_DimensionSelectionMode {
 	PrsDim_DimensionSelectionMode_Text = 2,
 };
 
-enum PrsDim_TypeOfDist {
-	PrsDim_TypeOfDist_Unknown = 0,
-	PrsDim_TypeOfDist_Horizontal = 1,
-	PrsDim_TypeOfDist_Vertical = 2,
+enum PrsDim_DisplaySpecialSymbol {
+	PrsDim_DisplaySpecialSymbol_No = 0,
+	PrsDim_DisplaySpecialSymbol_Before = 1,
+	PrsDim_DisplaySpecialSymbol_After = 2,
 };
 
 enum PrsDim_KindOfDimension {
@@ -120,24 +120,6 @@ enum PrsDim_KindOfDimension {
 	PrsDim_KOD_ELLIPSERADIUS = 13,
 };
 
-enum PrsDim_TypeOfAngleArrowVisibility {
-	PrsDim_TypeOfAngleArrowVisibility_Both = 0,
-	PrsDim_TypeOfAngleArrowVisibility_First = 1,
-	PrsDim_TypeOfAngleArrowVisibility_Second = 2,
-	PrsDim_TypeOfAngleArrowVisibility_None = 3,
-};
-
-enum PrsDim_KindOfSurface {
-	PrsDim_KOS_Plane = 0,
-	PrsDim_KOS_Cylinder = 1,
-	PrsDim_KOS_Cone = 2,
-	PrsDim_KOS_Sphere = 3,
-	PrsDim_KOS_Torus = 4,
-	PrsDim_KOS_Revolution = 5,
-	PrsDim_KOS_Extrusion = 6,
-	PrsDim_KOS_OtherSurface = 7,
-};
-
 enum PrsDim_KindOfRelation {
 	PrsDim_KOR_NONE = 0,
 	PrsDim_KOR_CONCENTRIC = 1,
@@ -152,15 +134,33 @@ enum PrsDim_KindOfRelation {
 	PrsDim_KOR_SYMMETRIC = 10,
 };
 
-enum PrsDim_DisplaySpecialSymbol {
-	PrsDim_DisplaySpecialSymbol_No = 0,
-	PrsDim_DisplaySpecialSymbol_Before = 1,
-	PrsDim_DisplaySpecialSymbol_After = 2,
+enum PrsDim_KindOfSurface {
+	PrsDim_KOS_Plane = 0,
+	PrsDim_KOS_Cylinder = 1,
+	PrsDim_KOS_Cone = 2,
+	PrsDim_KOS_Sphere = 3,
+	PrsDim_KOS_Torus = 4,
+	PrsDim_KOS_Revolution = 5,
+	PrsDim_KOS_Extrusion = 6,
+	PrsDim_KOS_OtherSurface = 7,
 };
 
 enum PrsDim_TypeOfAngle {
 	PrsDim_TypeOfAngle_Interior = 0,
 	PrsDim_TypeOfAngle_Exterior = 1,
+};
+
+enum PrsDim_TypeOfAngleArrowVisibility {
+	PrsDim_TypeOfAngleArrowVisibility_Both = 0,
+	PrsDim_TypeOfAngleArrowVisibility_First = 1,
+	PrsDim_TypeOfAngleArrowVisibility_Second = 2,
+	PrsDim_TypeOfAngleArrowVisibility_None = 3,
+};
+
+enum PrsDim_TypeOfDist {
+	PrsDim_TypeOfDist_Unknown = 0,
+	PrsDim_TypeOfDist_Horizontal = 1,
+	PrsDim_TypeOfDist_Vertical = 2,
 };
 
 /* end public enums declaration */
@@ -176,13 +176,13 @@ PrsDim_DimensionSelectionMode_All = PrsDim_DimensionSelectionMode.PrsDim_Dimensi
 PrsDim_DimensionSelectionMode_Line = PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_Line
 PrsDim_DimensionSelectionMode_Text = PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_Text
 
-class PrsDim_TypeOfDist(IntEnum):
-	PrsDim_TypeOfDist_Unknown = 0
-	PrsDim_TypeOfDist_Horizontal = 1
-	PrsDim_TypeOfDist_Vertical = 2
-PrsDim_TypeOfDist_Unknown = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Unknown
-PrsDim_TypeOfDist_Horizontal = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Horizontal
-PrsDim_TypeOfDist_Vertical = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Vertical
+class PrsDim_DisplaySpecialSymbol(IntEnum):
+	PrsDim_DisplaySpecialSymbol_No = 0
+	PrsDim_DisplaySpecialSymbol_Before = 1
+	PrsDim_DisplaySpecialSymbol_After = 2
+PrsDim_DisplaySpecialSymbol_No = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_No
+PrsDim_DisplaySpecialSymbol_Before = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_Before
+PrsDim_DisplaySpecialSymbol_After = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_After
 
 class PrsDim_KindOfDimension(IntEnum):
 	PrsDim_KOD_NONE = 0
@@ -214,34 +214,6 @@ PrsDim_KOD_CHAMF3D = PrsDim_KindOfDimension.PrsDim_KOD_CHAMF3D
 PrsDim_KOD_OFFSET = PrsDim_KindOfDimension.PrsDim_KOD_OFFSET
 PrsDim_KOD_ELLIPSERADIUS = PrsDim_KindOfDimension.PrsDim_KOD_ELLIPSERADIUS
 
-class PrsDim_TypeOfAngleArrowVisibility(IntEnum):
-	PrsDim_TypeOfAngleArrowVisibility_Both = 0
-	PrsDim_TypeOfAngleArrowVisibility_First = 1
-	PrsDim_TypeOfAngleArrowVisibility_Second = 2
-	PrsDim_TypeOfAngleArrowVisibility_None = 3
-PrsDim_TypeOfAngleArrowVisibility_Both = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Both
-PrsDim_TypeOfAngleArrowVisibility_First = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_First
-PrsDim_TypeOfAngleArrowVisibility_Second = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Second
-PrsDim_TypeOfAngleArrowVisibility_None = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_None
-
-class PrsDim_KindOfSurface(IntEnum):
-	PrsDim_KOS_Plane = 0
-	PrsDim_KOS_Cylinder = 1
-	PrsDim_KOS_Cone = 2
-	PrsDim_KOS_Sphere = 3
-	PrsDim_KOS_Torus = 4
-	PrsDim_KOS_Revolution = 5
-	PrsDim_KOS_Extrusion = 6
-	PrsDim_KOS_OtherSurface = 7
-PrsDim_KOS_Plane = PrsDim_KindOfSurface.PrsDim_KOS_Plane
-PrsDim_KOS_Cylinder = PrsDim_KindOfSurface.PrsDim_KOS_Cylinder
-PrsDim_KOS_Cone = PrsDim_KindOfSurface.PrsDim_KOS_Cone
-PrsDim_KOS_Sphere = PrsDim_KindOfSurface.PrsDim_KOS_Sphere
-PrsDim_KOS_Torus = PrsDim_KindOfSurface.PrsDim_KOS_Torus
-PrsDim_KOS_Revolution = PrsDim_KindOfSurface.PrsDim_KOS_Revolution
-PrsDim_KOS_Extrusion = PrsDim_KindOfSurface.PrsDim_KOS_Extrusion
-PrsDim_KOS_OtherSurface = PrsDim_KindOfSurface.PrsDim_KOS_OtherSurface
-
 class PrsDim_KindOfRelation(IntEnum):
 	PrsDim_KOR_NONE = 0
 	PrsDim_KOR_CONCENTRIC = 1
@@ -266,19 +238,47 @@ PrsDim_KOR_PERPENDICULAR = PrsDim_KindOfRelation.PrsDim_KOR_PERPENDICULAR
 PrsDim_KOR_TANGENT = PrsDim_KindOfRelation.PrsDim_KOR_TANGENT
 PrsDim_KOR_SYMMETRIC = PrsDim_KindOfRelation.PrsDim_KOR_SYMMETRIC
 
-class PrsDim_DisplaySpecialSymbol(IntEnum):
-	PrsDim_DisplaySpecialSymbol_No = 0
-	PrsDim_DisplaySpecialSymbol_Before = 1
-	PrsDim_DisplaySpecialSymbol_After = 2
-PrsDim_DisplaySpecialSymbol_No = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_No
-PrsDim_DisplaySpecialSymbol_Before = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_Before
-PrsDim_DisplaySpecialSymbol_After = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_After
+class PrsDim_KindOfSurface(IntEnum):
+	PrsDim_KOS_Plane = 0
+	PrsDim_KOS_Cylinder = 1
+	PrsDim_KOS_Cone = 2
+	PrsDim_KOS_Sphere = 3
+	PrsDim_KOS_Torus = 4
+	PrsDim_KOS_Revolution = 5
+	PrsDim_KOS_Extrusion = 6
+	PrsDim_KOS_OtherSurface = 7
+PrsDim_KOS_Plane = PrsDim_KindOfSurface.PrsDim_KOS_Plane
+PrsDim_KOS_Cylinder = PrsDim_KindOfSurface.PrsDim_KOS_Cylinder
+PrsDim_KOS_Cone = PrsDim_KindOfSurface.PrsDim_KOS_Cone
+PrsDim_KOS_Sphere = PrsDim_KindOfSurface.PrsDim_KOS_Sphere
+PrsDim_KOS_Torus = PrsDim_KindOfSurface.PrsDim_KOS_Torus
+PrsDim_KOS_Revolution = PrsDim_KindOfSurface.PrsDim_KOS_Revolution
+PrsDim_KOS_Extrusion = PrsDim_KindOfSurface.PrsDim_KOS_Extrusion
+PrsDim_KOS_OtherSurface = PrsDim_KindOfSurface.PrsDim_KOS_OtherSurface
 
 class PrsDim_TypeOfAngle(IntEnum):
 	PrsDim_TypeOfAngle_Interior = 0
 	PrsDim_TypeOfAngle_Exterior = 1
 PrsDim_TypeOfAngle_Interior = PrsDim_TypeOfAngle.PrsDim_TypeOfAngle_Interior
 PrsDim_TypeOfAngle_Exterior = PrsDim_TypeOfAngle.PrsDim_TypeOfAngle_Exterior
+
+class PrsDim_TypeOfAngleArrowVisibility(IntEnum):
+	PrsDim_TypeOfAngleArrowVisibility_Both = 0
+	PrsDim_TypeOfAngleArrowVisibility_First = 1
+	PrsDim_TypeOfAngleArrowVisibility_Second = 2
+	PrsDim_TypeOfAngleArrowVisibility_None = 3
+PrsDim_TypeOfAngleArrowVisibility_Both = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Both
+PrsDim_TypeOfAngleArrowVisibility_First = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_First
+PrsDim_TypeOfAngleArrowVisibility_Second = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Second
+PrsDim_TypeOfAngleArrowVisibility_None = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_None
+
+class PrsDim_TypeOfDist(IntEnum):
+	PrsDim_TypeOfDist_Unknown = 0
+	PrsDim_TypeOfDist_Horizontal = 1
+	PrsDim_TypeOfDist_Vertical = 2
+PrsDim_TypeOfDist_Unknown = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Unknown
+PrsDim_TypeOfDist_Horizontal = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Horizontal
+PrsDim_TypeOfDist_Vertical = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Vertical
 };
 /* end python proxy for enums */
 

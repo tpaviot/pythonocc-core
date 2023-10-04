@@ -96,10 +96,10 @@ from OCC.Core.Exception import *
 %wrap_handle(GeomPlate_CurveConstraint)
 %wrap_handle(GeomPlate_PointConstraint)
 %wrap_handle(GeomPlate_Surface)
-%wrap_handle(GeomPlate_HArray1OfSequenceOfReal)
 %wrap_handle(GeomPlate_HArray1OfHCurve)
-%wrap_handle(GeomPlate_HSequenceOfPointConstraint)
+%wrap_handle(GeomPlate_HArray1OfSequenceOfReal)
 %wrap_handle(GeomPlate_HSequenceOfCurveConstraint)
+%wrap_handle(GeomPlate_HSequenceOfPointConstraint)
 /* end handles declaration */
 
 /* templates */
@@ -2087,17 +2087,6 @@ float
 
 /* harray1 classes */
 
-class GeomPlate_HArray1OfSequenceOfReal : public GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
-  public:
-    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomPlate_Array1OfSequenceOfReal::value_type& theValue);
-    GeomPlate_HArray1OfSequenceOfReal(const GeomPlate_Array1OfSequenceOfReal& theOther);
-    const GeomPlate_Array1OfSequenceOfReal& Array1();
-    GeomPlate_Array1OfSequenceOfReal& ChangeArray1();
-};
-%make_alias(GeomPlate_HArray1OfSequenceOfReal)
-
-
 class GeomPlate_HArray1OfHCurve : public GeomPlate_Array1OfHCurve, public Standard_Transient {
   public:
     GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2108,20 +2097,19 @@ class GeomPlate_HArray1OfHCurve : public GeomPlate_Array1OfHCurve, public Standa
 };
 %make_alias(GeomPlate_HArray1OfHCurve)
 
+
+class GeomPlate_HArray1OfSequenceOfReal : public GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
+  public:
+    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
+    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomPlate_Array1OfSequenceOfReal::value_type& theValue);
+    GeomPlate_HArray1OfSequenceOfReal(const GeomPlate_Array1OfSequenceOfReal& theOther);
+    const GeomPlate_Array1OfSequenceOfReal& Array1();
+    GeomPlate_Array1OfSequenceOfReal& ChangeArray1();
+};
+%make_alias(GeomPlate_HArray1OfSequenceOfReal)
+
 /* harray2 classes */
 /* hsequence classes */
-class GeomPlate_HSequenceOfPointConstraint : public GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
-  public:
-    GeomPlate_HSequenceOfPointConstraint();
-    GeomPlate_HSequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& theOther);
-    const GeomPlate_SequenceOfPointConstraint& Sequence();
-    void Append (const GeomPlate_SequenceOfPointConstraint::value_type& theItem);
-    void Append (GeomPlate_SequenceOfPointConstraint& theSequence);
-    GeomPlate_SequenceOfPointConstraint& ChangeSequence();
-};
-%make_alias(GeomPlate_HSequenceOfPointConstraint)
-
-
 class GeomPlate_HSequenceOfCurveConstraint : public GeomPlate_SequenceOfCurveConstraint, public Standard_Transient {
   public:
     GeomPlate_HSequenceOfCurveConstraint();
@@ -2132,6 +2120,18 @@ class GeomPlate_HSequenceOfCurveConstraint : public GeomPlate_SequenceOfCurveCon
     GeomPlate_SequenceOfCurveConstraint& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfCurveConstraint)
+
+
+class GeomPlate_HSequenceOfPointConstraint : public GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
+  public:
+    GeomPlate_HSequenceOfPointConstraint();
+    GeomPlate_HSequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& theOther);
+    const GeomPlate_SequenceOfPointConstraint& Sequence();
+    void Append (const GeomPlate_SequenceOfPointConstraint::value_type& theItem);
+    void Append (GeomPlate_SequenceOfPointConstraint& theSequence);
+    GeomPlate_SequenceOfPointConstraint& ChangeSequence();
+};
+%make_alias(GeomPlate_HSequenceOfPointConstraint)
 
 
 /* class aliases */

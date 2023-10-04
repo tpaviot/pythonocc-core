@@ -559,13 +559,14 @@ opencascade::handle<TDF_DeltaOnResume>
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** FindAttribute ******************/
 		/**** md5 signature: 5f4fd12b74a27c4216127d1ce8d3b78a ****/
 		%feature("compactdefaultargs") FindAttribute;
@@ -862,13 +863,14 @@ opencascade::handle<TDF_Attribute>
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ID ******************/
 		/**** md5 signature: 7f73a4e9cd65afc41a55b9f071f2e10d ****/
 		%feature("compactdefaultargs") ID;
@@ -1738,13 +1740,14 @@ None
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetLabel ******************/
 		/**** md5 signature: 6acb21919b35dccd58a6c624736c7a64 ****/
 		%feature("compactdefaultargs") GetLabel;
@@ -2123,13 +2126,14 @@ int
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndTime ******************/
 		/**** md5 signature: ebfc0a5623f28f348163522aac1f9970 ****/
 		%feature("compactdefaultargs") EndTime;
@@ -3649,13 +3653,14 @@ opencascade::handle<TDF_Data>
 		opencascade::handle<TDF_Data> Data();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Initialize ******************/
 		/**** md5 signature: 6f0c86dc4ece77377bc8538f444250f5 ****/
 		%feature("compactdefaultargs") Initialize;
@@ -3885,13 +3890,14 @@ None
 		void Apply();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 };
 
 
@@ -3928,13 +3934,14 @@ None
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Get ******************/
 		/**** md5 signature: 66afada8fc328e55fd3c204c359e42b2 ****/
 		%feature("compactdefaultargs") Get;
@@ -4084,13 +4091,14 @@ None
 		 TDF_TagSource();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Get ******************/
 		/**** md5 signature: ace457d697a3a35733c5ac95429cad31 ****/
 		%feature("compactdefaultargs") Get;

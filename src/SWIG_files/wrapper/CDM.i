@@ -158,13 +158,14 @@ None
 		virtual void BeginOfUpdate(const opencascade::handle<CDM_Document> & aDocument);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndOfUpdate ******************/
 		/**** md5 signature: 1300f7eaea13e12939c9e78edc2d7e82 ****/
 		%feature("compactdefaultargs") EndOfUpdate;
@@ -486,13 +487,14 @@ opencascade::handle<CDM_Document>
 		opencascade::handle<CDM_Document> Document(const Standard_Integer aReferenceIdentifier);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Extensions ******************/
 		/**** md5 signature: 562af3bed83550e86f6e9f1cc27905e7 ****/
 		%feature("compactdefaultargs") Extensions;
@@ -1238,13 +1240,14 @@ opencascade::handle<CDM_Document>
 		opencascade::handle<CDM_Document> Document();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** FileName ******************/
 		/**** md5 signature: 55453540d5ecaade8ddcde5846f5b88f ****/
 		%feature("compactdefaultargs") FileName;
@@ -1444,13 +1447,14 @@ int
 		Standard_Integer DocumentVersion();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** FromDocument ******************/
 		/**** md5 signature: 074d50b6a0fbd464042f670a2a5d9430 ****/
 		%feature("compactdefaultargs") FromDocument;

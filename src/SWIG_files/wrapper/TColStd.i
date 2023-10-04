@@ -67,27 +67,27 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(TColStd_HPackedMapOfInteger)
-%wrap_handle(TColStd_HArray1OfExtendedString)
-%wrap_handle(TColStd_HArray1OfCharacter)
-%wrap_handle(TColStd_HArray1OfBoolean)
 %wrap_handle(TColStd_HArray1OfAsciiString)
-%wrap_handle(TColStd_HArray1OfReal)
+%wrap_handle(TColStd_HArray1OfByte)
 %wrap_handle(TColStd_HArray1OfInteger)
+%wrap_handle(TColStd_HArray1OfBoolean)
 %wrap_handle(TColStd_HArray1OfListOfInteger)
 %wrap_handle(TColStd_HArray1OfTransient)
-%wrap_handle(TColStd_HArray1OfByte)
-%wrap_handle(TColStd_HArray2OfBoolean)
-%wrap_handle(TColStd_HArray2OfTransient)
-%wrap_handle(TColStd_HArray2OfReal)
+%wrap_handle(TColStd_HArray1OfCharacter)
+%wrap_handle(TColStd_HArray1OfExtendedString)
+%wrap_handle(TColStd_HArray1OfReal)
 %wrap_handle(TColStd_HArray2OfInteger)
+%wrap_handle(TColStd_HArray2OfTransient)
+%wrap_handle(TColStd_HArray2OfBoolean)
+%wrap_handle(TColStd_HArray2OfReal)
 %wrap_handle(TColStd_HArray2OfCharacter)
-%wrap_handle(TColStd_HSequenceOfHAsciiString)
-%wrap_handle(TColStd_HSequenceOfTransient)
-%wrap_handle(TColStd_HSequenceOfAsciiString)
-%wrap_handle(TColStd_HSequenceOfHExtendedString)
 %wrap_handle(TColStd_HSequenceOfInteger)
 %wrap_handle(TColStd_HSequenceOfExtendedString)
+%wrap_handle(TColStd_HSequenceOfTransient)
+%wrap_handle(TColStd_HSequenceOfHAsciiString)
+%wrap_handle(TColStd_HSequenceOfHExtendedString)
 %wrap_handle(TColStd_HSequenceOfReal)
+%wrap_handle(TColStd_HSequenceOfAsciiString)
 /* end handles declaration */
 
 /* templates */
@@ -1114,39 +1114,6 @@ bool
 
 /* harray1 classes */
 
-class TColStd_HArray1OfExtendedString : public TColStd_Array1OfExtendedString, public Standard_Transient {
-  public:
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfExtendedString::value_type& theValue);
-    TColStd_HArray1OfExtendedString(const TColStd_Array1OfExtendedString& theOther);
-    const TColStd_Array1OfExtendedString& Array1();
-    TColStd_Array1OfExtendedString& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfExtendedString)
-
-
-class TColStd_HArray1OfCharacter : public TColStd_Array1OfCharacter, public Standard_Transient {
-  public:
-    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfCharacter::value_type& theValue);
-    TColStd_HArray1OfCharacter(const TColStd_Array1OfCharacter& theOther);
-    const TColStd_Array1OfCharacter& Array1();
-    TColStd_Array1OfCharacter& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfCharacter)
-
-
-class TColStd_HArray1OfBoolean : public TColStd_Array1OfBoolean, public Standard_Transient {
-  public:
-    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfBoolean::value_type& theValue);
-    TColStd_HArray1OfBoolean(const TColStd_Array1OfBoolean& theOther);
-    const TColStd_Array1OfBoolean& Array1();
-    TColStd_Array1OfBoolean& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfBoolean)
-
-
 class TColStd_HArray1OfAsciiString : public TColStd_Array1OfAsciiString, public Standard_Transient {
   public:
     TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1158,15 +1125,15 @@ class TColStd_HArray1OfAsciiString : public TColStd_Array1OfAsciiString, public 
 %make_alias(TColStd_HArray1OfAsciiString)
 
 
-class TColStd_HArray1OfReal : public TColStd_Array1OfReal, public Standard_Transient {
+class TColStd_HArray1OfByte : public TColStd_Array1OfByte, public Standard_Transient {
   public:
-    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfReal::value_type& theValue);
-    TColStd_HArray1OfReal(const TColStd_Array1OfReal& theOther);
-    const TColStd_Array1OfReal& Array1();
-    TColStd_Array1OfReal& ChangeArray1();
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfByte::value_type& theValue);
+    TColStd_HArray1OfByte(const TColStd_Array1OfByte& theOther);
+    const TColStd_Array1OfByte& Array1();
+    TColStd_Array1OfByte& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfReal)
+%make_alias(TColStd_HArray1OfByte)
 
 
 class TColStd_HArray1OfInteger : public TColStd_Array1OfInteger, public Standard_Transient {
@@ -1178,6 +1145,17 @@ class TColStd_HArray1OfInteger : public TColStd_Array1OfInteger, public Standard
     TColStd_Array1OfInteger& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfInteger)
+
+
+class TColStd_HArray1OfBoolean : public TColStd_Array1OfBoolean, public Standard_Transient {
+  public:
+    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfBoolean::value_type& theValue);
+    TColStd_HArray1OfBoolean(const TColStd_Array1OfBoolean& theOther);
+    const TColStd_Array1OfBoolean& Array1();
+    TColStd_Array1OfBoolean& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfBoolean)
 
 
 class TColStd_HArray1OfListOfInteger : public TColStd_Array1OfListOfInteger, public Standard_Transient {
@@ -1202,28 +1180,50 @@ class TColStd_HArray1OfTransient : public TColStd_Array1OfTransient, public Stan
 %make_alias(TColStd_HArray1OfTransient)
 
 
-class TColStd_HArray1OfByte : public TColStd_Array1OfByte, public Standard_Transient {
+class TColStd_HArray1OfCharacter : public TColStd_Array1OfCharacter, public Standard_Transient {
   public:
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfByte::value_type& theValue);
-    TColStd_HArray1OfByte(const TColStd_Array1OfByte& theOther);
-    const TColStd_Array1OfByte& Array1();
-    TColStd_Array1OfByte& ChangeArray1();
+    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfCharacter::value_type& theValue);
+    TColStd_HArray1OfCharacter(const TColStd_Array1OfCharacter& theOther);
+    const TColStd_Array1OfCharacter& Array1();
+    TColStd_Array1OfCharacter& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfByte)
+%make_alias(TColStd_HArray1OfCharacter)
+
+
+class TColStd_HArray1OfExtendedString : public TColStd_Array1OfExtendedString, public Standard_Transient {
+  public:
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfExtendedString::value_type& theValue);
+    TColStd_HArray1OfExtendedString(const TColStd_Array1OfExtendedString& theOther);
+    const TColStd_Array1OfExtendedString& Array1();
+    TColStd_Array1OfExtendedString& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfExtendedString)
+
+
+class TColStd_HArray1OfReal : public TColStd_Array1OfReal, public Standard_Transient {
+  public:
+    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const TColStd_Array1OfReal::value_type& theValue);
+    TColStd_HArray1OfReal(const TColStd_Array1OfReal& theOther);
+    const TColStd_Array1OfReal& Array1();
+    TColStd_Array1OfReal& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfReal)
 
 /* harray2 classes */
-class TColStd_HArray2OfBoolean : public TColStd_Array2OfBoolean, public Standard_Transient {
+class TColStd_HArray2OfInteger : public TColStd_Array2OfInteger, public Standard_Transient {
   public:
-    TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColStd_Array2OfBoolean::value_type& theValue);
-    TColStd_HArray2OfBoolean(const TColStd_Array2OfBoolean& theOther);
-    const TColStd_Array2OfBoolean& Array2 ();
-    TColStd_Array2OfBoolean& ChangeArray2 (); 
+    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColStd_Array2OfInteger::value_type& theValue);
+    TColStd_HArray2OfInteger(const TColStd_Array2OfInteger& theOther);
+    const TColStd_Array2OfInteger& Array2 ();
+    TColStd_Array2OfInteger& ChangeArray2 (); 
 };
-%make_alias(TColStd_HArray2OfBoolean)
+%make_alias(TColStd_HArray2OfInteger)
 
 
 class TColStd_HArray2OfTransient : public TColStd_Array2OfTransient, public Standard_Transient {
@@ -1239,6 +1239,19 @@ class TColStd_HArray2OfTransient : public TColStd_Array2OfTransient, public Stan
 %make_alias(TColStd_HArray2OfTransient)
 
 
+class TColStd_HArray2OfBoolean : public TColStd_Array2OfBoolean, public Standard_Transient {
+  public:
+    TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColStd_Array2OfBoolean::value_type& theValue);
+    TColStd_HArray2OfBoolean(const TColStd_Array2OfBoolean& theOther);
+    const TColStd_Array2OfBoolean& Array2 ();
+    TColStd_Array2OfBoolean& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfBoolean)
+
+
 class TColStd_HArray2OfReal : public TColStd_Array2OfReal, public Standard_Transient {
   public:
     TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -1250,19 +1263,6 @@ class TColStd_HArray2OfReal : public TColStd_Array2OfReal, public Standard_Trans
     TColStd_Array2OfReal& ChangeArray2 (); 
 };
 %make_alias(TColStd_HArray2OfReal)
-
-
-class TColStd_HArray2OfInteger : public TColStd_Array2OfInteger, public Standard_Transient {
-  public:
-    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColStd_Array2OfInteger::value_type& theValue);
-    TColStd_HArray2OfInteger(const TColStd_Array2OfInteger& theOther);
-    const TColStd_Array2OfInteger& Array2 ();
-    TColStd_Array2OfInteger& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfInteger)
 
 
 class TColStd_HArray2OfCharacter : public TColStd_Array2OfCharacter, public Standard_Transient {
@@ -1279,54 +1279,6 @@ class TColStd_HArray2OfCharacter : public TColStd_Array2OfCharacter, public Stan
 
 
 /* hsequence classes */
-class TColStd_HSequenceOfHAsciiString : public TColStd_SequenceOfHAsciiString, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfHAsciiString();
-    TColStd_HSequenceOfHAsciiString(const TColStd_SequenceOfHAsciiString& theOther);
-    const TColStd_SequenceOfHAsciiString& Sequence();
-    void Append (const TColStd_SequenceOfHAsciiString::value_type& theItem);
-    void Append (TColStd_SequenceOfHAsciiString& theSequence);
-    TColStd_SequenceOfHAsciiString& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfHAsciiString)
-
-
-class TColStd_HSequenceOfTransient : public TColStd_SequenceOfTransient, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfTransient();
-    TColStd_HSequenceOfTransient(const TColStd_SequenceOfTransient& theOther);
-    const TColStd_SequenceOfTransient& Sequence();
-    void Append (const TColStd_SequenceOfTransient::value_type& theItem);
-    void Append (TColStd_SequenceOfTransient& theSequence);
-    TColStd_SequenceOfTransient& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfTransient)
-
-
-class TColStd_HSequenceOfAsciiString : public TColStd_SequenceOfAsciiString, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfAsciiString();
-    TColStd_HSequenceOfAsciiString(const TColStd_SequenceOfAsciiString& theOther);
-    const TColStd_SequenceOfAsciiString& Sequence();
-    void Append (const TColStd_SequenceOfAsciiString::value_type& theItem);
-    void Append (TColStd_SequenceOfAsciiString& theSequence);
-    TColStd_SequenceOfAsciiString& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfAsciiString)
-
-
-class TColStd_HSequenceOfHExtendedString : public TColStd_SequenceOfHExtendedString, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfHExtendedString();
-    TColStd_HSequenceOfHExtendedString(const TColStd_SequenceOfHExtendedString& theOther);
-    const TColStd_SequenceOfHExtendedString& Sequence();
-    void Append (const TColStd_SequenceOfHExtendedString::value_type& theItem);
-    void Append (TColStd_SequenceOfHExtendedString& theSequence);
-    TColStd_SequenceOfHExtendedString& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfHExtendedString)
-
-
 class TColStd_HSequenceOfInteger : public TColStd_SequenceOfInteger, public Standard_Transient {
   public:
     TColStd_HSequenceOfInteger();
@@ -1351,6 +1303,42 @@ class TColStd_HSequenceOfExtendedString : public TColStd_SequenceOfExtendedStrin
 %make_alias(TColStd_HSequenceOfExtendedString)
 
 
+class TColStd_HSequenceOfTransient : public TColStd_SequenceOfTransient, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfTransient();
+    TColStd_HSequenceOfTransient(const TColStd_SequenceOfTransient& theOther);
+    const TColStd_SequenceOfTransient& Sequence();
+    void Append (const TColStd_SequenceOfTransient::value_type& theItem);
+    void Append (TColStd_SequenceOfTransient& theSequence);
+    TColStd_SequenceOfTransient& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfTransient)
+
+
+class TColStd_HSequenceOfHAsciiString : public TColStd_SequenceOfHAsciiString, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfHAsciiString();
+    TColStd_HSequenceOfHAsciiString(const TColStd_SequenceOfHAsciiString& theOther);
+    const TColStd_SequenceOfHAsciiString& Sequence();
+    void Append (const TColStd_SequenceOfHAsciiString::value_type& theItem);
+    void Append (TColStd_SequenceOfHAsciiString& theSequence);
+    TColStd_SequenceOfHAsciiString& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfHAsciiString)
+
+
+class TColStd_HSequenceOfHExtendedString : public TColStd_SequenceOfHExtendedString, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfHExtendedString();
+    TColStd_HSequenceOfHExtendedString(const TColStd_SequenceOfHExtendedString& theOther);
+    const TColStd_SequenceOfHExtendedString& Sequence();
+    void Append (const TColStd_SequenceOfHExtendedString::value_type& theItem);
+    void Append (TColStd_SequenceOfHExtendedString& theSequence);
+    TColStd_SequenceOfHExtendedString& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfHExtendedString)
+
+
 class TColStd_HSequenceOfReal : public TColStd_SequenceOfReal, public Standard_Transient {
   public:
     TColStd_HSequenceOfReal();
@@ -1361,6 +1349,18 @@ class TColStd_HSequenceOfReal : public TColStd_SequenceOfReal, public Standard_T
     TColStd_SequenceOfReal& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfReal)
+
+
+class TColStd_HSequenceOfAsciiString : public TColStd_SequenceOfAsciiString, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfAsciiString();
+    TColStd_HSequenceOfAsciiString(const TColStd_SequenceOfAsciiString& theOther);
+    const TColStd_SequenceOfAsciiString& Sequence();
+    void Append (const TColStd_SequenceOfAsciiString::value_type& theItem);
+    void Append (TColStd_SequenceOfAsciiString& theSequence);
+    TColStd_SequenceOfAsciiString& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfAsciiString)
 
 
 /* class aliases */

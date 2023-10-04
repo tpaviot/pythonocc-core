@@ -86,21 +86,17 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum V3d_TypeOfVisualization {
-	V3d_WIREFRAME = 0,
-	V3d_ZBUFFER = 1,
-};
-
-enum V3d_TypeOfView {
-	V3d_ORTHOGRAPHIC = 0,
-	V3d_PERSPECTIVE = 1,
-};
-
 enum V3d_StereoDumpOptions {
 	V3d_SDO_MONO = 0,
 	V3d_SDO_LEFT_EYE = 1,
 	V3d_SDO_RIGHT_EYE = 2,
 	V3d_SDO_BLENDED = 3,
+};
+
+enum V3d_TypeOfAxe {
+	V3d_X = 0,
+	V3d_Y = 1,
+	V3d_Z = 2,
 };
 
 enum V3d_TypeOfOrientation {
@@ -148,28 +144,20 @@ enum V3d_TypeOfOrientation {
 	V3d_TypeOfOrientation_Yup_Right = V3d_Xneg,
 };
 
-enum V3d_TypeOfAxe {
-	V3d_X = 0,
-	V3d_Y = 1,
-	V3d_Z = 2,
+enum V3d_TypeOfView {
+	V3d_ORTHOGRAPHIC = 0,
+	V3d_PERSPECTIVE = 1,
+};
+
+enum V3d_TypeOfVisualization {
+	V3d_WIREFRAME = 0,
+	V3d_ZBUFFER = 1,
 };
 
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class V3d_TypeOfVisualization(IntEnum):
-	V3d_WIREFRAME = 0
-	V3d_ZBUFFER = 1
-V3d_WIREFRAME = V3d_TypeOfVisualization.V3d_WIREFRAME
-V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
-
-class V3d_TypeOfView(IntEnum):
-	V3d_ORTHOGRAPHIC = 0
-	V3d_PERSPECTIVE = 1
-V3d_ORTHOGRAPHIC = V3d_TypeOfView.V3d_ORTHOGRAPHIC
-V3d_PERSPECTIVE = V3d_TypeOfView.V3d_PERSPECTIVE
 
 class V3d_StereoDumpOptions(IntEnum):
 	V3d_SDO_MONO = 0
@@ -180,6 +168,14 @@ V3d_SDO_MONO = V3d_StereoDumpOptions.V3d_SDO_MONO
 V3d_SDO_LEFT_EYE = V3d_StereoDumpOptions.V3d_SDO_LEFT_EYE
 V3d_SDO_RIGHT_EYE = V3d_StereoDumpOptions.V3d_SDO_RIGHT_EYE
 V3d_SDO_BLENDED = V3d_StereoDumpOptions.V3d_SDO_BLENDED
+
+class V3d_TypeOfAxe(IntEnum):
+	V3d_X = 0
+	V3d_Y = 1
+	V3d_Z = 2
+V3d_X = V3d_TypeOfAxe.V3d_X
+V3d_Y = V3d_TypeOfAxe.V3d_Y
+V3d_Z = V3d_TypeOfAxe.V3d_Z
 
 class V3d_TypeOfOrientation(IntEnum):
 	V3d_Xpos = 0
@@ -267,13 +263,17 @@ V3d_TypeOfOrientation_Yup_Bottom = V3d_TypeOfOrientation.V3d_TypeOfOrientation_Y
 V3d_TypeOfOrientation_Yup_Left = V3d_TypeOfOrientation.V3d_TypeOfOrientation_Yup_Left
 V3d_TypeOfOrientation_Yup_Right = V3d_TypeOfOrientation.V3d_TypeOfOrientation_Yup_Right
 
-class V3d_TypeOfAxe(IntEnum):
-	V3d_X = 0
-	V3d_Y = 1
-	V3d_Z = 2
-V3d_X = V3d_TypeOfAxe.V3d_X
-V3d_Y = V3d_TypeOfAxe.V3d_Y
-V3d_Z = V3d_TypeOfAxe.V3d_Z
+class V3d_TypeOfView(IntEnum):
+	V3d_ORTHOGRAPHIC = 0
+	V3d_PERSPECTIVE = 1
+V3d_ORTHOGRAPHIC = V3d_TypeOfView.V3d_ORTHOGRAPHIC
+V3d_PERSPECTIVE = V3d_TypeOfView.V3d_PERSPECTIVE
+
+class V3d_TypeOfVisualization(IntEnum):
+	V3d_WIREFRAME = 0
+	V3d_ZBUFFER = 1
+V3d_WIREFRAME = V3d_TypeOfVisualization.V3d_WIREFRAME
+V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
 };
 /* end python proxy for enums */
 
@@ -525,13 +525,14 @@ None
 		void Display();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Erase ******************/
 		/**** md5 signature: 683e92afcb4dd44bd3a5c6cd77cd44d8 ****/
 		%feature("compactdefaultargs") Erase;
@@ -817,13 +818,14 @@ None
 		virtual void Display();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Erase ******************/
 		/**** md5 signature: 44e4f7cb90f37153ccbcbc58390450d3 ****/
 		%feature("compactdefaultargs") Erase;
@@ -979,13 +981,14 @@ None
 		void Display(const V3d_View & theView);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Erase ******************/
 		/**** md5 signature: 8f2bc4e6df5b146535fbcd580dcae32c ****/
 		%feature("compactdefaultargs") Erase;
@@ -1796,13 +1799,14 @@ bool
 		Standard_Boolean Dump(Standard_CString theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Eye ******************/
 		/**** md5 signature: 214dc5004bc1554dbed9750aa9efa7b8 ****/
 		%feature("compactdefaultargs") Eye;
@@ -4381,13 +4385,14 @@ opencascade::handle<Graphic3d_GraphicDriver>
 		const opencascade::handle<Graphic3d_GraphicDriver> & Driver();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Erase ******************/
 		/**** md5 signature: 22f17cdf7e7984cb80d1d94de19c3493 ****/
 		%feature("compactdefaultargs") Erase;

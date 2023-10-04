@@ -104,43 +104,23 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum MeshVS_EntityType {
-	MeshVS_ET_NONE = 0,
-	MeshVS_ET_Node = 1,
-	MeshVS_ET_0D = 2,
-	MeshVS_ET_Link = 4,
-	MeshVS_ET_Face = 8,
-	MeshVS_ET_Volume = 16,
-	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume,
-	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node,
-};
-
-enum MeshVS_MeshSelectionMethod {
-	MeshVS_MSM_PRECISE = 0,
-	MeshVS_MSM_NODES = 1,
-	MeshVS_MSM_BOX = 2,
-};
-
-enum MeshVS_SelectionModeFlags {
-	MeshVS_SMF_Mesh = 0,
-	MeshVS_SMF_Node = 1,
-	MeshVS_SMF_0D = 2,
-	MeshVS_SMF_Link = 4,
-	MeshVS_SMF_Face = 8,
-	MeshVS_SMF_Volume = 16,
-	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume,
-	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node,
-	MeshVS_SMF_Group = 256,
-};
-
 enum  {
-	MeshVS_BP_Mesh = 5,
-	MeshVS_BP_NodalColor = 10,
-	MeshVS_BP_ElemColor = 15,
-	MeshVS_BP_Text = 20,
-	MeshVS_BP_Vector = 25,
-	MeshVS_BP_User = 30,
-	MeshVS_BP_Default = MeshVS_BP_User,
+	MeshVS_DMF_WireFrame = 1,
+	MeshVS_DMF_Shading = 2,
+	MeshVS_DMF_Shrink = 3,
+	MeshVS_DMF_OCCMask = ( MeshVS_DMF_WireFrame | MeshVS_DMF_Shading | MeshVS_DMF_Shrink ),
+	MeshVS_DMF_VectorDataPrs = 4,
+	MeshVS_DMF_NodalColorDataPrs = 8,
+	MeshVS_DMF_ElementalColorDataPrs = 16,
+	MeshVS_DMF_TextDataPrs = 32,
+	MeshVS_DMF_EntitiesWithData = 64,
+	MeshVS_DMF_DeformedPrsWireFrame = 128,
+	MeshVS_DMF_DeformedPrsShading = 256,
+	MeshVS_DMF_DeformedPrsShrink = 384,
+	MeshVS_DMF_DeformedMask = ( MeshVS_DMF_DeformedPrsWireFrame | MeshVS_DMF_DeformedPrsShading | MeshVS_DMF_DeformedPrsShrink ),
+	MeshVS_DMF_SelectionPrs = 512,
+	MeshVS_DMF_HilightPrs = 1024,
+	MeshVS_DMF_User = 2048,
 };
 
 enum MeshVS_DrawerAttribute {
@@ -186,75 +166,39 @@ enum MeshVS_DrawerAttribute {
 	MeshVS_DA_User = 39,
 };
 
-enum  {
-	MeshVS_DMF_WireFrame = 1,
-	MeshVS_DMF_Shading = 2,
-	MeshVS_DMF_Shrink = 3,
-	MeshVS_DMF_OCCMask = ( MeshVS_DMF_WireFrame | MeshVS_DMF_Shading | MeshVS_DMF_Shrink ),
-	MeshVS_DMF_VectorDataPrs = 4,
-	MeshVS_DMF_NodalColorDataPrs = 8,
-	MeshVS_DMF_ElementalColorDataPrs = 16,
-	MeshVS_DMF_TextDataPrs = 32,
-	MeshVS_DMF_EntitiesWithData = 64,
-	MeshVS_DMF_DeformedPrsWireFrame = 128,
-	MeshVS_DMF_DeformedPrsShading = 256,
-	MeshVS_DMF_DeformedPrsShrink = 384,
-	MeshVS_DMF_DeformedMask = ( MeshVS_DMF_DeformedPrsWireFrame | MeshVS_DMF_DeformedPrsShading | MeshVS_DMF_DeformedPrsShrink ),
-	MeshVS_DMF_SelectionPrs = 512,
-	MeshVS_DMF_HilightPrs = 1024,
-	MeshVS_DMF_User = 2048,
+enum MeshVS_EntityType {
+	MeshVS_ET_NONE = 0,
+	MeshVS_ET_Node = 1,
+	MeshVS_ET_0D = 2,
+	MeshVS_ET_Link = 4,
+	MeshVS_ET_Face = 8,
+	MeshVS_ET_Volume = 16,
+	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume,
+	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node,
+};
+
+enum MeshVS_MeshSelectionMethod {
+	MeshVS_MSM_PRECISE = 0,
+	MeshVS_MSM_NODES = 1,
+	MeshVS_MSM_BOX = 2,
+};
+
+enum MeshVS_SelectionModeFlags {
+	MeshVS_SMF_Mesh = 0,
+	MeshVS_SMF_Node = 1,
+	MeshVS_SMF_0D = 2,
+	MeshVS_SMF_Link = 4,
+	MeshVS_SMF_Face = 8,
+	MeshVS_SMF_Volume = 16,
+	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume,
+	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node,
+	MeshVS_SMF_Group = 256,
 };
 
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class MeshVS_EntityType(IntEnum):
-	MeshVS_ET_NONE = 0
-	MeshVS_ET_Node = 1
-	MeshVS_ET_0D = 2
-	MeshVS_ET_Link = 4
-	MeshVS_ET_Face = 8
-	MeshVS_ET_Volume = 16
-	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume
-	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node
-MeshVS_ET_NONE = MeshVS_EntityType.MeshVS_ET_NONE
-MeshVS_ET_Node = MeshVS_EntityType.MeshVS_ET_Node
-MeshVS_ET_0D = MeshVS_EntityType.MeshVS_ET_0D
-MeshVS_ET_Link = MeshVS_EntityType.MeshVS_ET_Link
-MeshVS_ET_Face = MeshVS_EntityType.MeshVS_ET_Face
-MeshVS_ET_Volume = MeshVS_EntityType.MeshVS_ET_Volume
-MeshVS_ET_Element = MeshVS_EntityType.MeshVS_ET_Element
-MeshVS_ET_All = MeshVS_EntityType.MeshVS_ET_All
-
-class MeshVS_MeshSelectionMethod(IntEnum):
-	MeshVS_MSM_PRECISE = 0
-	MeshVS_MSM_NODES = 1
-	MeshVS_MSM_BOX = 2
-MeshVS_MSM_PRECISE = MeshVS_MeshSelectionMethod.MeshVS_MSM_PRECISE
-MeshVS_MSM_NODES = MeshVS_MeshSelectionMethod.MeshVS_MSM_NODES
-MeshVS_MSM_BOX = MeshVS_MeshSelectionMethod.MeshVS_MSM_BOX
-
-class MeshVS_SelectionModeFlags(IntEnum):
-	MeshVS_SMF_Mesh = 0
-	MeshVS_SMF_Node = 1
-	MeshVS_SMF_0D = 2
-	MeshVS_SMF_Link = 4
-	MeshVS_SMF_Face = 8
-	MeshVS_SMF_Volume = 16
-	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume
-	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node
-	MeshVS_SMF_Group = 256
-MeshVS_SMF_Mesh = MeshVS_SelectionModeFlags.MeshVS_SMF_Mesh
-MeshVS_SMF_Node = MeshVS_SelectionModeFlags.MeshVS_SMF_Node
-MeshVS_SMF_0D = MeshVS_SelectionModeFlags.MeshVS_SMF_0D
-MeshVS_SMF_Link = MeshVS_SelectionModeFlags.MeshVS_SMF_Link
-MeshVS_SMF_Face = MeshVS_SelectionModeFlags.MeshVS_SMF_Face
-MeshVS_SMF_Volume = MeshVS_SelectionModeFlags.MeshVS_SMF_Volume
-MeshVS_SMF_Element = MeshVS_SelectionModeFlags.MeshVS_SMF_Element
-MeshVS_SMF_All = MeshVS_SelectionModeFlags.MeshVS_SMF_All
-MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
 
 class MeshVS_DrawerAttribute(IntEnum):
 	MeshVS_DA_InteriorStyle = 0
@@ -337,6 +281,52 @@ MeshVS_DA_ShowEdges = MeshVS_DrawerAttribute.MeshVS_DA_ShowEdges
 MeshVS_DA_SmoothShading = MeshVS_DrawerAttribute.MeshVS_DA_SmoothShading
 MeshVS_DA_SupressBackFaces = MeshVS_DrawerAttribute.MeshVS_DA_SupressBackFaces
 MeshVS_DA_User = MeshVS_DrawerAttribute.MeshVS_DA_User
+
+class MeshVS_EntityType(IntEnum):
+	MeshVS_ET_NONE = 0
+	MeshVS_ET_Node = 1
+	MeshVS_ET_0D = 2
+	MeshVS_ET_Link = 4
+	MeshVS_ET_Face = 8
+	MeshVS_ET_Volume = 16
+	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume
+	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node
+MeshVS_ET_NONE = MeshVS_EntityType.MeshVS_ET_NONE
+MeshVS_ET_Node = MeshVS_EntityType.MeshVS_ET_Node
+MeshVS_ET_0D = MeshVS_EntityType.MeshVS_ET_0D
+MeshVS_ET_Link = MeshVS_EntityType.MeshVS_ET_Link
+MeshVS_ET_Face = MeshVS_EntityType.MeshVS_ET_Face
+MeshVS_ET_Volume = MeshVS_EntityType.MeshVS_ET_Volume
+MeshVS_ET_Element = MeshVS_EntityType.MeshVS_ET_Element
+MeshVS_ET_All = MeshVS_EntityType.MeshVS_ET_All
+
+class MeshVS_MeshSelectionMethod(IntEnum):
+	MeshVS_MSM_PRECISE = 0
+	MeshVS_MSM_NODES = 1
+	MeshVS_MSM_BOX = 2
+MeshVS_MSM_PRECISE = MeshVS_MeshSelectionMethod.MeshVS_MSM_PRECISE
+MeshVS_MSM_NODES = MeshVS_MeshSelectionMethod.MeshVS_MSM_NODES
+MeshVS_MSM_BOX = MeshVS_MeshSelectionMethod.MeshVS_MSM_BOX
+
+class MeshVS_SelectionModeFlags(IntEnum):
+	MeshVS_SMF_Mesh = 0
+	MeshVS_SMF_Node = 1
+	MeshVS_SMF_0D = 2
+	MeshVS_SMF_Link = 4
+	MeshVS_SMF_Face = 8
+	MeshVS_SMF_Volume = 16
+	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume
+	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node
+	MeshVS_SMF_Group = 256
+MeshVS_SMF_Mesh = MeshVS_SelectionModeFlags.MeshVS_SMF_Mesh
+MeshVS_SMF_Node = MeshVS_SelectionModeFlags.MeshVS_SMF_Node
+MeshVS_SMF_0D = MeshVS_SelectionModeFlags.MeshVS_SMF_0D
+MeshVS_SMF_Link = MeshVS_SelectionModeFlags.MeshVS_SMF_Link
+MeshVS_SMF_Face = MeshVS_SelectionModeFlags.MeshVS_SMF_Face
+MeshVS_SMF_Volume = MeshVS_SelectionModeFlags.MeshVS_SMF_Volume
+MeshVS_SMF_Element = MeshVS_SelectionModeFlags.MeshVS_SMF_Element
+MeshVS_SMF_All = MeshVS_SelectionModeFlags.MeshVS_SMF_All
+MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
 };
 /* end python proxy for enums */
 

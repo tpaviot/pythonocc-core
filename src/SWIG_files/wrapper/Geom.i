@@ -146,13 +146,14 @@ opencascade::handle<Geom_Geometry>
 		virtual opencascade::handle<Geom_Geometry> Copy();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Mirror ******************/
 		/**** md5 signature: b133f2e6e1c74f672a216a0094bdfda6 ****/
 		%feature("compactdefaultargs") Mirror;
@@ -454,13 +455,14 @@ opencascade::handle<Geom_Surface>
 		opencascade::handle<Geom_Surface> BasisSurface();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Init ******************/
 		/**** md5 signature: 05c5bc64624158cab2c176b4ec75d4d9 ****/
 		%feature("compactdefaultargs") Init;
@@ -576,13 +578,14 @@ opencascade::handle<Geom_Transformation>
 		opencascade::handle<Geom_Transformation> Copy();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Form ******************/
 		/**** md5 signature: f29bb1eb1523b456c279366338ab9947 ****/
 		%feature("compactdefaultargs") Form;
@@ -1135,13 +1138,14 @@ gp_Vec
 		virtual gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** FirstParameter ******************/
 		/**** md5 signature: d1641ead93c23610f9b5155af230348d ****/
 		%feature("compactdefaultargs") FirstParameter;
@@ -1550,13 +1554,14 @@ gp_Vec
 		virtual gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsCNu ******************/
 		/**** md5 signature: 9a8d69e4cda56394291ac9a353acde96 ****/
 		%feature("compactdefaultargs") IsCNu;
@@ -2355,13 +2360,14 @@ gp_Dir
 class Geom_BoundedCurve : public Geom_Curve {
 	public:
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndPoint ******************/
 		/**** md5 signature: fe7ec4eb708b4d9d9316df55a55ae448 ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -2652,13 +2658,14 @@ GeomAbs_Shape
 		GeomAbs_Shape Continuity();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 41bb637fc6d20616b1d8cd81afbd8bee ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -3086,13 +3093,14 @@ GeomAbs_Shape
 		GeomAbs_Shape Continuity();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsCNu ******************/
 		/**** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ****/
 		%feature("compactdefaultargs") IsCNu;
@@ -3413,13 +3421,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** FirstParameter ******************/
 		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
 		%feature("compactdefaultargs") FirstParameter;
@@ -3799,13 +3808,14 @@ gp_Dir
 		const gp_Dir Direction();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** FirstParameter ******************/
 		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
 		%feature("compactdefaultargs") FirstParameter;
@@ -4204,13 +4214,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetBasisSurfContinuity ******************/
 		/**** md5 signature: 40b8f706c00d911b3fc43528ba8520d6 ****/
 		%feature("compactdefaultargs") GetBasisSurfContinuity;
@@ -4596,13 +4607,14 @@ gp_Dir
 		const gp_Dir Direction();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 };
 
 
@@ -5175,13 +5187,14 @@ int
 		Standard_Integer Degree();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 8dd4886e4c303cec8092c23bff0110c3 ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -6326,13 +6339,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ExchangeUV ******************/
 		/**** md5 signature: fcaf4a45cf2f84fab80e6127ee17ec77 ****/
 		%feature("compactdefaultargs") ExchangeUV;
@@ -7984,13 +7998,14 @@ int
 		Standard_Integer Degree();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 8dd4886e4c303cec8092c23bff0110c3 ****/
 		%feature("compactdefaultargs") EndPoint;
@@ -8593,13 +8608,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ExchangeUV ******************/
 		/**** md5 signature: fcaf4a45cf2f84fab80e6127ee17ec77 ****/
 		%feature("compactdefaultargs") ExchangeUV;
@@ -9461,13 +9477,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -9818,13 +9835,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsUClosed ******************/
 		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
 		%feature("compactdefaultargs") IsUClosed;
@@ -10265,13 +10283,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsUClosed ******************/
 		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
 		%feature("compactdefaultargs") IsUClosed;
@@ -10631,13 +10650,14 @@ gp_Ax1
 		gp_Ax1 Directrix2();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -11057,13 +11077,14 @@ gp_Ax1
 		gp_Ax1 Directrix2();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -11454,13 +11475,14 @@ gp_Ax1
 		gp_Ax1 Directrix();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Eccentricity ******************/
 		/**** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ****/
 		%feature("compactdefaultargs") Eccentricity;
@@ -11879,13 +11901,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsUClosed ******************/
 		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
 		%feature("compactdefaultargs") IsUClosed;
@@ -12296,13 +12319,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsCNu ******************/
 		/**** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ****/
 		%feature("compactdefaultargs") IsCNu;
@@ -12780,13 +12804,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsUClosed ******************/
 		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
 		%feature("compactdefaultargs") IsUClosed;
@@ -13132,13 +13157,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsCNu ******************/
 		/**** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ****/
 		%feature("compactdefaultargs") IsCNu;
@@ -13545,13 +13571,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsCNu ******************/
 		/**** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ****/
 		%feature("compactdefaultargs") IsCNu;
@@ -14041,13 +14068,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsUClosed ******************/
 		/**** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ****/
 		%feature("compactdefaultargs") IsUClosed;
@@ -14413,13 +14441,14 @@ gp_Vec
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EndPoint ******************/
 		/**** md5 signature: 8dd4886e4c303cec8092c23bff0110c3 ****/
 		%feature("compactdefaultargs") EndPoint;

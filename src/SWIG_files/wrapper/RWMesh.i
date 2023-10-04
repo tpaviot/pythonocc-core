@@ -103,6 +103,11 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum RWMesh_CafReaderStatusEx {
+	RWMesh_CafReaderStatusEx_NONE = 0,
+	RWMesh_CafReaderStatusEx_Partial = 1,
+};
+
 enum RWMesh_CoordinateSystem {
 	RWMesh_CoordinateSystem_Undefined = - 1,
 	RWMesh_CoordinateSystem_posYfwd_posZup = 0,
@@ -123,15 +128,16 @@ enum RWMesh_NameFormat {
 	RWMesh_NameFormat_ProductAndInstanceAndOcaf = 6,
 };
 
-enum RWMesh_CafReaderStatusEx {
-	RWMesh_CafReaderStatusEx_NONE = 0,
-	RWMesh_CafReaderStatusEx_Partial = 1,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class RWMesh_CafReaderStatusEx(IntEnum):
+	RWMesh_CafReaderStatusEx_NONE = 0
+	RWMesh_CafReaderStatusEx_Partial = 1
+RWMesh_CafReaderStatusEx_NONE = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_NONE
+RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_Partial
 
 class RWMesh_CoordinateSystem(IntEnum):
 	RWMesh_CoordinateSystem_Undefined = - 1
@@ -164,12 +170,6 @@ RWMesh_NameFormat_InstanceOrProduct = RWMesh_NameFormat.RWMesh_NameFormat_Instan
 RWMesh_NameFormat_ProductOrInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductOrInstance
 RWMesh_NameFormat_ProductAndInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstance
 RWMesh_NameFormat_ProductAndInstanceAndOcaf = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstanceAndOcaf
-
-class RWMesh_CafReaderStatusEx(IntEnum):
-	RWMesh_CafReaderStatusEx_NONE = 0
-	RWMesh_CafReaderStatusEx_Partial = 1
-RWMesh_CafReaderStatusEx_NONE = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_NONE
-RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_Partial
 };
 /* end python proxy for enums */
 

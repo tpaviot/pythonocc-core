@@ -1867,13 +1867,14 @@ None
 		void Deflection(const Standard_Real theDefl);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** NbNodes ******************/
 		/**** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ****/
 		%feature("compactdefaultargs") NbNodes;
@@ -2019,13 +2020,14 @@ None
 		void Deflection(const Standard_Real theDefl);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HasParameters ******************/
 		/**** md5 signature: 948932cf6475b2432a8160f0c25bcdc0 ****/
 		%feature("compactdefaultargs") HasParameters;
@@ -2193,13 +2195,14 @@ None
 		void Deflection(const Standard_Real theDefl);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HasParameters ******************/
 		/**** md5 signature: 948932cf6475b2432a8160f0c25bcdc0 ****/
 		%feature("compactdefaultargs") HasParameters;
@@ -2669,13 +2672,14 @@ opencascade::handle<Poly_Triangulation>
 		virtual opencascade::handle<Poly_Triangulation> DetachedLoadDeferredData(const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HasCachedMinMax ******************/
 		/**** md5 signature: f79a105a5bcf422403c5e9f9fd81b27f ****/
 		%feature("compactdefaultargs") HasCachedMinMax;

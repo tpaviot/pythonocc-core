@@ -2186,13 +2186,14 @@ float
 		Standard_Real Distance(const Quantity_Color & theColor);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Epsilon ******************/
 		/**** md5 signature: 67863b45c70903f3df8806ec9bb0512a ****/
 		%feature("compactdefaultargs") Epsilon;
@@ -2245,21 +2246,15 @@ float
 ") Hue;
 		Standard_Real Hue();
 
-		/****************** InitFromJson ******************/
-		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
-		%feature("compactdefaultargs") InitFromJson;
-		%feature("autodoc", "Inits the content of me from the stream.
 
-Parameters
-----------
-theSStream: Standard_SStream
-
-Returns
--------
-theStreamPos: int
-") InitFromJson;
-		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
-
+        /****************** InitFromJsonString ******************/
+        %feature("autodoc", "1");
+        %extend{
+            bool InitFromJsonString(std::string src) {
+            std::stringstream s(src);
+            Standard_Integer pos=1;
+            return self->InitFromJson(s, pos);}
+        };
 		/****************** IsDifferent ******************/
 		/**** md5 signature: 123ad10267aaf1936e39bb0bc28f84ef ****/
 		%feature("compactdefaultargs") IsDifferent;
@@ -2743,13 +2738,14 @@ NCollection_Vec4<float >
 		static NCollection_Vec4<float > Convert_sRGB_To_LinearRGB(const NCollection_Vec4<float> & theRGB);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetRGB ******************/
 		/**** md5 signature: a34b3caa70b44fb7fb19647f1c2d613b ****/
 		%feature("compactdefaultargs") GetRGB;
@@ -2761,21 +2757,15 @@ Quantity_Color
 ") GetRGB;
 		const Quantity_Color & GetRGB();
 
-		/****************** InitFromJson ******************/
-		/**** md5 signature: ef88f08223ee594f1b33ebd2021df0e1 ****/
-		%feature("compactdefaultargs") InitFromJson;
-		%feature("autodoc", "Inits the content of me from the stream.
 
-Parameters
-----------
-theSStream: Standard_SStream
-
-Returns
--------
-theStreamPos: int
-") InitFromJson;
-		Standard_Boolean InitFromJson(const Standard_SStream & theSStream, Standard_Integer &OutValue);
-
+        /****************** InitFromJsonString ******************/
+        %feature("autodoc", "1");
+        %extend{
+            bool InitFromJsonString(std::string src) {
+            std::stringstream s(src);
+            Standard_Integer pos=1;
+            return self->InitFromJson(s, pos);}
+        };
 		/****************** IsDifferent ******************/
 		/**** md5 signature: c920c33d4688df25d56cabe0d9340122 ****/
 		%feature("compactdefaultargs") IsDifferent;

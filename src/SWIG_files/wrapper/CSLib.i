@@ -65,6 +65,16 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum CSLib_DerivativeStatus {
+	CSLib_Done = 0,
+	CSLib_D1uIsNull = 1,
+	CSLib_D1vIsNull = 2,
+	CSLib_D1IsNull = 3,
+	CSLib_D1uD1vRatioIsNull = 4,
+	CSLib_D1vD1uRatioIsNull = 5,
+	CSLib_D1uIsParallelD1v = 6,
+};
+
 enum CSLib_NormalStatus {
 	CSLib_Singular = 0,
 	CSLib_Defined = 1,
@@ -77,20 +87,26 @@ enum CSLib_NormalStatus {
 	CSLib_D1NuIsParallelD1Nv = 8,
 };
 
-enum CSLib_DerivativeStatus {
-	CSLib_Done = 0,
-	CSLib_D1uIsNull = 1,
-	CSLib_D1vIsNull = 2,
-	CSLib_D1IsNull = 3,
-	CSLib_D1uD1vRatioIsNull = 4,
-	CSLib_D1vD1uRatioIsNull = 5,
-	CSLib_D1uIsParallelD1v = 6,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class CSLib_DerivativeStatus(IntEnum):
+	CSLib_Done = 0
+	CSLib_D1uIsNull = 1
+	CSLib_D1vIsNull = 2
+	CSLib_D1IsNull = 3
+	CSLib_D1uD1vRatioIsNull = 4
+	CSLib_D1vD1uRatioIsNull = 5
+	CSLib_D1uIsParallelD1v = 6
+CSLib_Done = CSLib_DerivativeStatus.CSLib_Done
+CSLib_D1uIsNull = CSLib_DerivativeStatus.CSLib_D1uIsNull
+CSLib_D1vIsNull = CSLib_DerivativeStatus.CSLib_D1vIsNull
+CSLib_D1IsNull = CSLib_DerivativeStatus.CSLib_D1IsNull
+CSLib_D1uD1vRatioIsNull = CSLib_DerivativeStatus.CSLib_D1uD1vRatioIsNull
+CSLib_D1vD1uRatioIsNull = CSLib_DerivativeStatus.CSLib_D1vD1uRatioIsNull
+CSLib_D1uIsParallelD1v = CSLib_DerivativeStatus.CSLib_D1uIsParallelD1v
 
 class CSLib_NormalStatus(IntEnum):
 	CSLib_Singular = 0
@@ -111,22 +127,6 @@ CSLib_D1NIsNull = CSLib_NormalStatus.CSLib_D1NIsNull
 CSLib_D1NuNvRatioIsNull = CSLib_NormalStatus.CSLib_D1NuNvRatioIsNull
 CSLib_D1NvNuRatioIsNull = CSLib_NormalStatus.CSLib_D1NvNuRatioIsNull
 CSLib_D1NuIsParallelD1Nv = CSLib_NormalStatus.CSLib_D1NuIsParallelD1Nv
-
-class CSLib_DerivativeStatus(IntEnum):
-	CSLib_Done = 0
-	CSLib_D1uIsNull = 1
-	CSLib_D1vIsNull = 2
-	CSLib_D1IsNull = 3
-	CSLib_D1uD1vRatioIsNull = 4
-	CSLib_D1vD1uRatioIsNull = 5
-	CSLib_D1uIsParallelD1v = 6
-CSLib_Done = CSLib_DerivativeStatus.CSLib_Done
-CSLib_D1uIsNull = CSLib_DerivativeStatus.CSLib_D1uIsNull
-CSLib_D1vIsNull = CSLib_DerivativeStatus.CSLib_D1vIsNull
-CSLib_D1IsNull = CSLib_DerivativeStatus.CSLib_D1IsNull
-CSLib_D1uD1vRatioIsNull = CSLib_DerivativeStatus.CSLib_D1uD1vRatioIsNull
-CSLib_D1vD1uRatioIsNull = CSLib_DerivativeStatus.CSLib_D1vD1uRatioIsNull
-CSLib_D1uIsParallelD1v = CSLib_DerivativeStatus.CSLib_D1uIsParallelD1v
 };
 /* end python proxy for enums */
 
