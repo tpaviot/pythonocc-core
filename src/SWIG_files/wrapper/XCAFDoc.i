@@ -586,10 +586,6 @@ opencascade::handle<XCAFDoc_Area>
 %make_alias(XCAFDoc_Area)
 
 %extend XCAFDoc_Area {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_Area {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -826,10 +822,6 @@ int
 %make_alias(XCAFDoc_AssemblyGraph)
 
 %extend XCAFDoc_AssemblyGraph {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_AssemblyGraph {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1013,10 +1005,6 @@ TCollection_AsciiString
 };
 
 
-%extend XCAFDoc_AssemblyItemId {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_AssemblyItemId {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1354,10 +1342,6 @@ None
 %make_alias(XCAFDoc_AssemblyItemRef)
 
 %extend XCAFDoc_AssemblyItemRef {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_AssemblyItemRef {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1441,10 +1425,6 @@ None
 
 
 %extend XCAFDoc_AssemblyIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_AssemblyIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1458,10 +1438,6 @@ class XCAFDoc_AssemblyTool {
 };
 
 
-%extend XCAFDoc_AssemblyTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_AssemblyTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1628,10 +1604,6 @@ None
 
 %make_alias(XCAFDoc_Centroid)
 
-%extend XCAFDoc_Centroid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Centroid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1915,10 +1887,6 @@ None
 
 %make_alias(XCAFDoc_ClippingPlaneTool)
 
-%extend XCAFDoc_ClippingPlaneTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_ClippingPlaneTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2211,10 +2179,6 @@ None
 
 %make_alias(XCAFDoc_Color)
 
-%extend XCAFDoc_Color {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Color {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2936,10 +2900,6 @@ bool
 %make_alias(XCAFDoc_ColorTool)
 
 %extend XCAFDoc_ColorTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_ColorTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3149,10 +3109,6 @@ None
 %make_alias(XCAFDoc_Datum)
 
 %extend XCAFDoc_Datum {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_Datum {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3333,10 +3289,6 @@ None
 
 %make_alias(XCAFDoc_DimTol)
 
-%extend XCAFDoc_DimTol {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_DimTol {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4067,10 +4019,6 @@ None
 %make_alias(XCAFDoc_DimTolTool)
 
 %extend XCAFDoc_DimTolTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_DimTolTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4169,10 +4117,6 @@ None
 
 %make_alias(XCAFDoc_Dimension)
 
-%extend XCAFDoc_Dimension {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Dimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4766,10 +4710,6 @@ opencascade::handle<XCAFDoc_VisMaterialTool>
 %make_alias(XCAFDoc_DocumentTool)
 
 %extend XCAFDoc_DocumentTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_DocumentTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4917,10 +4857,6 @@ bool
 };
 
 
-%extend XCAFDoc_Editor {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Editor {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5322,10 +5258,6 @@ None
 
 %make_alias(XCAFDoc_GraphNode)
 
-%extend XCAFDoc_GraphNode {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_GraphNode {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5921,10 +5853,6 @@ bool
 %make_alias(XCAFDoc_LayerTool)
 
 %extend XCAFDoc_LayerTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_LayerTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6122,10 +6050,6 @@ None
 %make_alias(XCAFDoc_LengthUnit)
 
 %extend XCAFDoc_LengthUnit {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_LengthUnit {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6267,10 +6191,6 @@ None
 
 %make_alias(XCAFDoc_Location)
 
-%extend XCAFDoc_Location {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Location {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6465,10 +6385,6 @@ None
 
 %make_alias(XCAFDoc_Material)
 
-%extend XCAFDoc_Material {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Material {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6684,10 +6600,6 @@ opencascade::handle<XCAFDoc_ShapeTool>
 %make_alias(XCAFDoc_MaterialTool)
 
 %extend XCAFDoc_MaterialTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_MaterialTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6857,10 +6769,6 @@ TCollection_ExtendedString
 
 %make_alias(XCAFDoc_Note)
 
-%extend XCAFDoc_Note {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Note {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7665,10 +7573,6 @@ opencascade::handle<XCAFDoc_NotesTool>
 %make_alias(XCAFDoc_NotesTool)
 
 %extend XCAFDoc_NotesTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_NotesTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7824,10 +7728,6 @@ None
 
 %make_alias(XCAFDoc_ShapeMapTool)
 
-%extend XCAFDoc_ShapeMapTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_ShapeMapTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8902,10 +8802,6 @@ None
 %make_alias(XCAFDoc_ShapeTool)
 
 %extend XCAFDoc_ShapeTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_ShapeTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8995,10 +8891,6 @@ None
 
 %make_alias(XCAFDoc_View)
 
-%extend XCAFDoc_View {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_View {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9407,10 +9299,6 @@ None
 %make_alias(XCAFDoc_ViewTool)
 
 %extend XCAFDoc_ViewTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_ViewTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -9813,10 +9701,6 @@ None
 %make_alias(XCAFDoc_VisMaterial)
 
 %extend XCAFDoc_VisMaterial {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_VisMaterial {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -9873,10 +9757,6 @@ bool
 };
 
 
-%extend XCAFDoc_VisMaterialCommon {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_VisMaterialCommon {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9937,10 +9817,6 @@ bool
 };
 
 
-%extend XCAFDoc_VisMaterialPBR {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_VisMaterialPBR {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10315,10 +10191,6 @@ bool
 %make_alias(XCAFDoc_VisMaterialTool)
 
 %extend XCAFDoc_VisMaterialTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_VisMaterialTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10441,10 +10313,6 @@ opencascade::handle<XCAFDoc_Volume>
 
 %make_alias(XCAFDoc_Volume)
 
-%extend XCAFDoc_Volume {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_Volume {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10678,10 +10546,6 @@ TCollection_ExtendedString
 %make_alias(XCAFDoc_NoteBinData)
 
 %extend XCAFDoc_NoteBinData {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_NoteBinData {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10840,10 +10704,6 @@ None
 %make_alias(XCAFDoc_NoteComment)
 
 %extend XCAFDoc_NoteComment {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDoc_NoteComment {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10925,10 +10785,6 @@ opencascade::handle<XCAFDoc_NoteBalloon>
 
 %make_alias(XCAFDoc_NoteBalloon)
 
-%extend XCAFDoc_NoteBalloon {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDoc_NoteBalloon {
 	%pythoncode {
 	__repr__ = _dumps_object

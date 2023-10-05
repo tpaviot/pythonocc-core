@@ -2400,15 +2400,23 @@ None
 };
 
 
+
 %extend Bnd_Box {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Bnd_Box()
-		the_bnd_box = inst.InitFromJsonString(state)
-		self.this = the_bnd_box.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Box {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Box()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Box')
+    }
 };
 %extend Bnd_Box {
 	%pythoncode {
@@ -2882,15 +2890,23 @@ None
 };
 
 
+
 %extend Bnd_Box2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Bnd_Box2d()
-		the_bnd_box2d = inst.InitFromJsonString(state)
-		self.this = the_bnd_box2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Box2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Box2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Box2d')
+    }
 };
 %extend Bnd_Box2d {
 	%pythoncode {
@@ -3296,15 +3312,23 @@ float
 };
 
 
+
 %extend Bnd_OBB {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Bnd_OBB()
-		the_bnd_obb = inst.InitFromJsonString(state)
-		self.this = the_bnd_obb.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_OBB {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_OBB()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_OBB')
+    }
 };
 %extend Bnd_OBB {
 	%pythoncode {
@@ -3661,15 +3685,23 @@ def __eq__(self, right):
 };
 
 
+
 %extend Bnd_Range {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Bnd_Range()
-		the_bnd_range = inst.InitFromJsonString(state)
-		self.this = the_bnd_range.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Range {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Range()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Range')
+    }
 };
 %extend Bnd_Range {
 	%pythoncode {
@@ -3919,15 +3951,23 @@ int
 };
 
 
+
 %extend Bnd_Sphere {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Bnd_Sphere()
-		the_bnd_sphere = inst.InitFromJsonString(state)
-		self.this = the_bnd_sphere.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Sphere {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Sphere()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Sphere')
+    }
 };
 %extend Bnd_Sphere {
 	%pythoncode {
@@ -3973,15 +4013,23 @@ BVH_Box<float, 3 >
 };
 
 
+
 %extend Bnd_Tools {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Bnd_Tools()
-		the_bnd_tools = inst.InitFromJsonString(state)
-		self.this = the_bnd_tools.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Tools {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Tools()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Tools')
+    }
 };
 %extend Bnd_Tools {
 	%pythoncode {

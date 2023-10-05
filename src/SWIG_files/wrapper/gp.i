@@ -840,15 +840,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Ax1 {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Ax1()
-		the_gp_ax1 = inst.InitFromJsonString(state)
-		self.this = the_gp_ax1.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Ax1 {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Ax1()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Ax1')
+    }
 };
 %extend gp_Ax1 {
 	%pythoncode {
@@ -1351,15 +1359,23 @@ gp_Dir
 };
 
 
+
 %extend gp_Ax2 {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Ax2()
-		the_gp_ax2 = inst.InitFromJsonString(state)
-		self.this = the_gp_ax2.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Ax2 {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Ax2()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Ax2')
+    }
 };
 %extend gp_Ax2 {
 	%pythoncode {
@@ -1808,15 +1824,23 @@ gp_Dir2d
 };
 
 
+
 %extend gp_Ax22d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Ax22d()
-		the_gp_ax22d = inst.InitFromJsonString(state)
-		self.this = the_gp_ax22d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Ax22d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Ax22d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Ax22d')
+    }
 };
 %extend gp_Ax22d {
 	%pythoncode {
@@ -2238,15 +2262,23 @@ gp_Ax2d
 };
 
 
+
 %extend gp_Ax2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Ax2d()
-		the_gp_ax2d = inst.InitFromJsonString(state)
-		self.this = the_gp_ax2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Ax2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Ax2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Ax2d')
+    }
 };
 %extend gp_Ax2d {
 	%pythoncode {
@@ -2819,15 +2851,23 @@ None
 };
 
 
+
 %extend gp_Ax3 {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Ax3()
-		the_gp_ax3 = inst.InitFromJsonString(state)
-		self.this = the_gp_ax3.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Ax3 {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Ax3()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Ax3')
+    }
 };
 %extend gp_Ax3 {
 	%pythoncode {
@@ -3310,15 +3350,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Circ {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Circ()
-		the_gp_circ = inst.InitFromJsonString(state)
-		self.this = the_gp_circ.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Circ {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Circ()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Circ')
+    }
 };
 %extend gp_Circ {
 	%pythoncode {
@@ -3856,15 +3904,23 @@ gp_Ax2d
 };
 
 
+
 %extend gp_Circ2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Circ2d()
-		the_gp_circ2d = inst.InitFromJsonString(state)
-		self.this = the_gp_circ2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Circ2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Circ2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Circ2d')
+    }
 };
 %extend gp_Circ2d {
 	%pythoncode {
@@ -4373,15 +4429,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Cone {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Cone()
-		the_gp_cone = inst.InitFromJsonString(state)
-		self.this = the_gp_cone.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Cone {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Cone()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Cone')
+    }
 };
 %extend gp_Cone {
 	%pythoncode {
@@ -4852,15 +4916,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Cylinder {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Cylinder()
-		the_gp_cylinder = inst.InitFromJsonString(state)
-		self.this = the_gp_cylinder.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Cylinder {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Cylinder()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Cylinder')
+    }
 };
 %extend gp_Cylinder {
 	%pythoncode {
@@ -5508,15 +5580,23 @@ gp_Dir
 };
 
 
+
 %extend gp_Dir {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Dir()
-		the_gp_dir = inst.InitFromJsonString(state)
-		self.this = the_gp_dir.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Dir {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Dir()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Dir')
+    }
 };
 %extend gp_Dir {
 	%pythoncode {
@@ -6015,15 +6095,23 @@ gp_Dir2d
 };
 
 
+
 %extend gp_Dir2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Dir2d()
-		the_gp_dir2d = inst.InitFromJsonString(state)
-		self.this = the_gp_dir2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Dir2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Dir2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Dir2d')
+    }
 };
 %extend gp_Dir2d {
 	%pythoncode {
@@ -6553,15 +6641,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Elips {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Elips()
-		the_gp_elips = inst.InitFromJsonString(state)
-		self.this = the_gp_elips.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Elips {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Elips()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Elips')
+    }
 };
 %extend gp_Elips {
 	%pythoncode {
@@ -7136,15 +7232,23 @@ gp_Ax2d
 };
 
 
+
 %extend gp_Elips2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Elips2d()
-		the_gp_elips2d = inst.InitFromJsonString(state)
-		self.this = the_gp_elips2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Elips2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Elips2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Elips2d')
+    }
 };
 %extend gp_Elips2d {
 	%pythoncode {
@@ -7552,15 +7656,23 @@ def __imul__(self, right):
 };
 
 
+
 %extend gp_GTrsf {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_GTrsf()
-		the_gp_gtrsf = inst.InitFromJsonString(state)
-		self.this = the_gp_gtrsf.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_GTrsf {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_GTrsf()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_GTrsf')
+    }
 };
 %extend gp_GTrsf {
 	%pythoncode {
@@ -7946,15 +8058,23 @@ def __imul__(self, right):
 };
 
 
+
 %extend gp_GTrsf2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_GTrsf2d()
-		the_gp_gtrsf2d = inst.InitFromJsonString(state)
-		self.this = the_gp_gtrsf2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_GTrsf2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_GTrsf2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_GTrsf2d')
+    }
 };
 %extend gp_GTrsf2d {
 	%pythoncode {
@@ -8528,15 +8648,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Hypr {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Hypr()
-		the_gp_hypr = inst.InitFromJsonString(state)
-		self.this = the_gp_hypr.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Hypr {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Hypr()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Hypr')
+    }
 };
 %extend gp_Hypr {
 	%pythoncode {
@@ -9155,15 +9283,23 @@ gp_Ax2d
 };
 
 
+
 %extend gp_Hypr2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Hypr2d()
-		the_gp_hypr2d = inst.InitFromJsonString(state)
-		self.this = the_gp_hypr2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Hypr2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Hypr2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Hypr2d')
+    }
 };
 %extend gp_Hypr2d {
 	%pythoncode {
@@ -9673,15 +9809,23 @@ gp_Lin
 };
 
 
+
 %extend gp_Lin {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Lin()
-		the_gp_lin = inst.InitFromJsonString(state)
-		self.this = the_gp_lin.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Lin {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Lin()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Lin')
+    }
 };
 %extend gp_Lin {
 	%pythoncode {
@@ -10194,15 +10338,23 @@ gp_Lin2d
 };
 
 
+
 %extend gp_Lin2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Lin2d()
-		the_gp_lin2d = inst.InitFromJsonString(state)
-		self.this = the_gp_lin2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Lin2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Lin2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Lin2d')
+    }
 };
 %extend gp_Lin2d {
 	%pythoncode {
@@ -10911,15 +11063,23 @@ def __itruediv__(self, right):
 };
 
 
+
 %extend gp_Mat {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Mat()
-		the_gp_mat = inst.InitFromJsonString(state)
-		self.this = the_gp_mat.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Mat {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Mat()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Mat')
+    }
 };
 %extend gp_Mat {
 	%pythoncode {
@@ -11550,15 +11710,23 @@ def __itruediv__(self, right):
 };
 
 
+
 %extend gp_Mat2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Mat2d()
-		the_gp_mat2d = inst.InitFromJsonString(state)
-		self.this = the_gp_mat2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Mat2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Mat2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Mat2d')
+    }
 };
 %extend gp_Mat2d {
 	%pythoncode {
@@ -12022,15 +12190,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Parab {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Parab()
-		the_gp_parab = inst.InitFromJsonString(state)
-		self.this = the_gp_parab.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Parab {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Parab()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Parab')
+    }
 };
 %extend gp_Parab {
 	%pythoncode {
@@ -12514,15 +12690,23 @@ gp_Parab2d
 };
 
 
+
 %extend gp_Parab2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Parab2d()
-		the_gp_parab2d = inst.InitFromJsonString(state)
-		self.this = the_gp_parab2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Parab2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Parab2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Parab2d')
+    }
 };
 %extend gp_Parab2d {
 	%pythoncode {
@@ -13126,15 +13310,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Pln {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Pln()
-		the_gp_pln = inst.InitFromJsonString(state)
-		self.this = the_gp_pln.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Pln {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Pln()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Pln')
+    }
 };
 %extend gp_Pln {
 	%pythoncode {
@@ -13710,15 +13902,23 @@ float
 };
 
 
+
 %extend gp_Pnt {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Pnt()
-		the_gp_pnt = inst.InitFromJsonString(state)
-		self.this = the_gp_pnt.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Pnt {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Pnt()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Pnt')
+    }
 };
 %extend gp_Pnt {
 	%pythoncode {
@@ -14209,15 +14409,23 @@ float
 };
 
 
+
 %extend gp_Pnt2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Pnt2d()
-		the_gp_pnt2d = inst.InitFromJsonString(state)
-		self.this = the_gp_pnt2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Pnt2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Pnt2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Pnt2d')
+    }
 };
 %extend gp_Pnt2d {
 	%pythoncode {
@@ -14955,15 +15163,23 @@ def __isub__(self, right):
 };
 
 
+
 %extend gp_Quaternion {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Quaternion()
-		the_gp_quaternion = inst.InitFromJsonString(state)
-		self.this = the_gp_quaternion.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Quaternion {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Quaternion()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Quaternion')
+    }
 };
 %extend gp_Quaternion {
 	%pythoncode {
@@ -15071,15 +15287,23 @@ None
 };
 
 
+
 %extend gp_QuaternionNLerp {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_QuaternionNLerp()
-		the_gp_quaternionnlerp = inst.InitFromJsonString(state)
-		self.this = the_gp_quaternionnlerp.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_QuaternionNLerp {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_QuaternionNLerp()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_QuaternionNLerp')
+    }
 };
 %extend gp_QuaternionNLerp {
 	%pythoncode {
@@ -15187,15 +15411,23 @@ None
 };
 
 
+
 %extend gp_QuaternionSLerp {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_QuaternionSLerp()
-		the_gp_quaternionslerp = inst.InitFromJsonString(state)
-		self.this = the_gp_quaternionslerp.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_QuaternionSLerp {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_QuaternionSLerp()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_QuaternionSLerp')
+    }
 };
 %extend gp_QuaternionSLerp {
 	%pythoncode {
@@ -15662,15 +15894,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Sphere {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Sphere()
-		the_gp_sphere = inst.InitFromJsonString(state)
-		self.this = the_gp_sphere.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Sphere {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Sphere()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Sphere')
+    }
 };
 %extend gp_Sphere {
 	%pythoncode {
@@ -16182,15 +16422,23 @@ gp_Ax1
 };
 
 
+
 %extend gp_Torus {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Torus()
-		the_gp_torus = inst.InitFromJsonString(state)
-		self.this = the_gp_torus.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Torus {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Torus()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Torus')
+    }
 };
 %extend gp_Torus {
 	%pythoncode {
@@ -16784,15 +17032,23 @@ def __imul__(self, right):
 };
 
 
+
 %extend gp_Trsf {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Trsf()
-		the_gp_trsf = inst.InitFromJsonString(state)
-		self.this = the_gp_trsf.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Trsf {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Trsf()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Trsf')
+    }
 };
 %extend gp_Trsf {
 	%pythoncode {
@@ -17254,15 +17510,23 @@ def __imul__(self, right):
 };
 
 
+
 %extend gp_Trsf2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Trsf2d()
-		the_gp_trsf2d = inst.InitFromJsonString(state)
-		self.this = the_gp_trsf2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Trsf2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Trsf2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Trsf2d')
+    }
 };
 %extend gp_Trsf2d {
 	%pythoncode {
@@ -18357,15 +18621,23 @@ def __itruediv__(self, right):
 };
 
 
+
 %extend gp_Vec {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Vec()
-		the_gp_vec = inst.InitFromJsonString(state)
-		self.this = the_gp_vec.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Vec {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Vec()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Vec')
+    }
 };
 %extend gp_Vec {
 	%pythoncode {
@@ -19281,15 +19553,23 @@ def __itruediv__(self, right):
 };
 
 
+
 %extend gp_Vec2d {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_Vec2d()
-		the_gp_vec2d = inst.InitFromJsonString(state)
-		self.this = the_gp_vec2d.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_Vec2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_Vec2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_Vec2d')
+    }
 };
 %extend gp_Vec2d {
 	%pythoncode {
@@ -20018,15 +20298,23 @@ def __itruediv__(self, right):
 };
 
 
+
 %extend gp_XY {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_XY()
-		the_gp_xy = inst.InitFromJsonString(state)
-		self.this = the_gp_xy.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_XY {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_XY()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_XY')
+    }
 };
 %extend gp_XY {
 	%pythoncode {
@@ -20917,15 +21205,23 @@ def __itruediv__(self, right):
 };
 
 
+
 %extend gp_XYZ {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = gp_XYZ()
-		the_gp_xyz = inst.InitFromJsonString(state)
-		self.this = the_gp_xyz.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend gp_XYZ {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = gp_XYZ()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of gp_XYZ')
+    }
 };
 %extend gp_XYZ {
 	%pythoncode {

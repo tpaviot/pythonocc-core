@@ -2762,10 +2762,6 @@ bool
 %make_alias(Prs3d_Drawer)
 
 %extend Prs3d_Drawer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_Drawer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2815,10 +2811,6 @@ bool
 };
 
 
-%extend Prs3d_Point {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_Point {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2894,10 +2886,6 @@ int
 %make_alias(Prs3d_PresentationShadow)
 
 %extend Prs3d_PresentationShadow {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_PresentationShadow {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2941,10 +2929,6 @@ opencascade::handle<Graphic3d_Group>
 };
 
 
-%extend Prs3d_Root {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_Root {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2997,10 +2981,6 @@ opencascade::handle<Graphic3d_Text>
 };
 
 
-%extend Prs3d_Text {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_Text {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3140,10 +3120,6 @@ int
 };
 
 
-%extend Prs3d_ToolQuadric {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_ToolQuadric {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3331,10 +3307,6 @@ None
 %make_alias(Prs3d_ArrowAspect)
 
 %extend Prs3d_ArrowAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_ArrowAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3460,10 +3432,6 @@ None
 };
 
 
-%extend Prs3d_BndBox {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_BndBox {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3824,10 +3792,6 @@ bool
 
 %make_alias(Prs3d_DatumAspect)
 
-%extend Prs3d_DatumAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_DatumAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4218,10 +4182,6 @@ TCollection_AsciiString
 %make_alias(Prs3d_DimensionAspect)
 
 %extend Prs3d_DimensionAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_DimensionAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4349,10 +4309,6 @@ None
 
 %make_alias(Prs3d_LineAspect)
 
-%extend Prs3d_LineAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_LineAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4669,10 +4625,6 @@ None
 %make_alias(Prs3d_PlaneAspect)
 
 %extend Prs3d_PlaneAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_PlaneAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4844,10 +4796,6 @@ None
 
 %make_alias(Prs3d_PointAspect)
 
-%extend Prs3d_PointAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_PointAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5024,10 +4972,6 @@ float
 
 %make_alias(Prs3d_ShadingAspect)
 
-%extend Prs3d_ShadingAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_ShadingAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5266,10 +5210,6 @@ Graphic3d_VerticalTextAlignment
 %make_alias(Prs3d_TextAspect)
 
 %extend Prs3d_TextAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_TextAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5322,10 +5262,6 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 };
 
 
-%extend Prs3d_ToolCylinder {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_ToolCylinder {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5394,10 +5330,6 @@ None
 
 
 %extend Prs3d_ToolDisk {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_ToolDisk {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5447,10 +5379,6 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 
 %extend Prs3d_ToolSector {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_ToolSector {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5499,10 +5427,6 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 };
 
 
-%extend Prs3d_ToolSphere {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_ToolSphere {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5678,10 +5602,6 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 
 %extend Prs3d_ToolTorus {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Prs3d_ToolTorus {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5741,10 +5661,6 @@ None
 
 %make_alias(Prs3d_IsoAspect)
 
-%extend Prs3d_IsoAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Prs3d_IsoAspect {
 	%pythoncode {
 	__repr__ = _dumps_object

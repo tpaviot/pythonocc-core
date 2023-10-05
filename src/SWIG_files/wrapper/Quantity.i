@@ -2502,15 +2502,23 @@ def __eq__(self, right):
 };
 
 
+
 %extend Quantity_Color {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Quantity_Color()
-		the_quantity_color = inst.InitFromJsonString(state)
-		self.this = the_quantity_color.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Quantity_Color {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Quantity_Color()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Quantity_Color')
+    }
 };
 %extend Quantity_Color {
 	%pythoncode {
@@ -2558,15 +2566,23 @@ bool
 };
 
 
+
 %extend Quantity_ColorHasher {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Quantity_ColorHasher()
-		the_quantity_colorhasher = inst.InitFromJsonString(state)
-		self.this = the_quantity_colorhasher.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Quantity_ColorHasher {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Quantity_ColorHasher()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Quantity_ColorHasher')
+    }
 };
 %extend Quantity_ColorHasher {
 	%pythoncode {
@@ -2895,15 +2911,23 @@ def __eq__(self, right):
 };
 
 
+
 %extend Quantity_ColorRGBA {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Quantity_ColorRGBA()
-		the_quantity_colorrgba = inst.InitFromJsonString(state)
-		self.this = the_quantity_colorrgba.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Quantity_ColorRGBA {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Quantity_ColorRGBA()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Quantity_ColorRGBA')
+    }
 };
 %extend Quantity_ColorRGBA {
 	%pythoncode {
@@ -2951,15 +2975,23 @@ bool
 };
 
 
+
 %extend Quantity_ColorRGBAHasher {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Quantity_ColorRGBAHasher()
-		the_quantity_colorrgbahasher = inst.InitFromJsonString(state)
-		self.this = the_quantity_colorrgbahasher.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Quantity_ColorRGBAHasher {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Quantity_ColorRGBAHasher()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Quantity_ColorRGBAHasher')
+    }
 };
 %extend Quantity_ColorRGBAHasher {
 	%pythoncode {
@@ -3316,15 +3348,23 @@ def __eq__(self, right):
 };
 
 
+
 %extend Quantity_Date {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Quantity_Date()
-		the_quantity_date = inst.InitFromJsonString(state)
-		self.this = the_quantity_date.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Quantity_Date {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Quantity_Date()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Quantity_Date')
+    }
 };
 %extend Quantity_Date {
 	%pythoncode {
@@ -3610,15 +3650,23 @@ def __eq__(self, right):
 };
 
 
+
 %extend Quantity_Period {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-	def __setstate__(self, state):
-		inst = Quantity_Period()
-		the_quantity_period = inst.InitFromJsonString(state)
-		self.this = the_quantity_period.this
-	}
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Quantity_Period {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Quantity_Period()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Quantity_Period')
+    }
 };
 %extend Quantity_Period {
 	%pythoncode {

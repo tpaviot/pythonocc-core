@@ -4386,10 +4386,6 @@ bool
 %make_alias(Graphic3d_Aspects)
 
 %extend Graphic3d_Aspects {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Aspects {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4431,10 +4427,6 @@ int
 };
 
 
-%extend Graphic3d_Attribute {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Attribute {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4585,10 +4577,6 @@ def __eq__(self, right):
 
 
 %extend Graphic3d_BSDF {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_BSDF {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4648,10 +4636,6 @@ bool
 
 %make_alias(Graphic3d_BoundBuffer)
 
-%extend Graphic3d_BoundBuffer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_BoundBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4747,10 +4731,6 @@ int
 
 
 %extend Graphic3d_BufferRange {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_BufferRange {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4834,10 +4814,6 @@ None
 };
 
 
-%extend Graphic3d_BvhCStructureSet {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_BvhCStructureSet {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5488,10 +5464,6 @@ Graphic3d_TypeOfLightSource
 %make_alias(Graphic3d_CLight)
 
 %extend Graphic3d_CLight {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_CLight {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6010,10 +5982,6 @@ None
 
 %make_alias(Graphic3d_CStructure)
 
-%extend Graphic3d_CStructure {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_CStructure {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7281,10 +7249,6 @@ float
 %make_alias(Graphic3d_Camera)
 
 %extend Graphic3d_Camera {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Camera {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7369,10 +7333,6 @@ def __eq__(self, right):
 };
 
 
-%extend Graphic3d_CameraTile {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_CameraTile {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8087,10 +8047,6 @@ bool
 %make_alias(Graphic3d_ClipPlane)
 
 %extend Graphic3d_ClipPlane {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ClipPlane {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8375,10 +8331,6 @@ Graphic3d_WorldViewProjState
 
 
 %extend Graphic3d_CullingTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_CullingTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8395,10 +8347,6 @@ class Graphic3d_DataStructureManager : public Standard_Transient {
 
 %make_alias(Graphic3d_DataStructureManager)
 
-%extend Graphic3d_DataStructureManager {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_DataStructureManager {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8700,10 +8648,6 @@ float
 %make_alias(Graphic3d_FrameStats)
 
 %extend Graphic3d_FrameStats {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_FrameStats {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8828,10 +8772,6 @@ float
 };
 
 
-%extend Graphic3d_FrameStatsData {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_FrameStatsData {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8979,10 +8919,6 @@ def __eq__(self, right):
 };
 
 
-%extend Graphic3d_Fresnel {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Fresnel {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9404,10 +9340,6 @@ Graphic3d_GraduatedTrihedron::AxisAspect
 
 
 %extend Graphic3d_GraduatedTrihedron {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_GraduatedTrihedron {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -9781,10 +9713,6 @@ None
 %make_alias(Graphic3d_GraphicDriver)
 
 %extend Graphic3d_GraphicDriver {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_GraphicDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -9885,10 +9813,6 @@ None
 
 %make_alias(Graphic3d_GraphicDriverFactory)
 
-%extend Graphic3d_GraphicDriverFactory {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_GraphicDriverFactory {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10377,10 +10301,6 @@ opencascade::handle<Graphic3d_TransformPers>
 %make_alias(Graphic3d_Group)
 
 %extend Graphic3d_Group {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Group {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -10461,10 +10381,6 @@ Standard_Byte *
 
 %make_alias(Graphic3d_HatchStyle)
 
-%extend Graphic3d_HatchStyle {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_HatchStyle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10780,10 +10696,6 @@ float
 %make_alias(Graphic3d_Layer)
 
 %extend Graphic3d_Layer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Layer {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -11066,10 +10978,6 @@ opencascade::handle<Graphic3d_CLight>
 %make_alias(Graphic3d_LightSet)
 
 %extend Graphic3d_LightSet {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_LightSet {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -11224,10 +11132,6 @@ opencascade::handle<Graphic3d_MarkerImage>
 
 %make_alias(Graphic3d_MarkerImage)
 
-%extend Graphic3d_MarkerImage {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_MarkerImage {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11849,10 +11753,6 @@ def __eq__(self, right):
 
 
 %extend Graphic3d_MaterialAspect {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_MaterialAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12203,10 +12103,6 @@ def __eq__(self, right):
 
 
 %extend Graphic3d_PBRMaterial {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_PBRMaterial {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12257,10 +12153,6 @@ def __eq__(self, right):
 };
 
 
-%extend Graphic3d_PolygonOffset {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_PolygonOffset {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12464,10 +12356,6 @@ Graphic3d_ZLayerId
 
 %make_alias(Graphic3d_PresentationAttributes)
 
-%extend Graphic3d_PresentationAttributes {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_PresentationAttributes {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12676,10 +12564,6 @@ float
 
 
 %extend Graphic3d_RenderingParams {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_RenderingParams {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12832,10 +12716,6 @@ bool
 %make_alias(Graphic3d_SequenceOfHClipPlane)
 
 %extend Graphic3d_SequenceOfHClipPlane {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_SequenceOfHClipPlane {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12889,10 +12769,6 @@ TCollection_AsciiString
 
 %make_alias(Graphic3d_ShaderAttribute)
 
-%extend Graphic3d_ShaderAttribute {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ShaderAttribute {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13101,10 +12977,6 @@ bool
 %make_alias(Graphic3d_ShaderManager)
 
 %extend Graphic3d_ShaderManager {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ShaderManager {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -13210,10 +13082,6 @@ Graphic3d_TypeOfShaderObject
 
 %make_alias(Graphic3d_ShaderObject)
 
-%extend Graphic3d_ShaderObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ShaderObject {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13782,10 +13650,6 @@ Graphic3d_ShaderAttributeList
 %make_alias(Graphic3d_ShaderProgram)
 
 %extend Graphic3d_ShaderProgram {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ShaderProgram {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -13839,10 +13703,6 @@ Graphic3d_ValueInterface *
 
 %make_alias(Graphic3d_ShaderVariable)
 
-%extend Graphic3d_ShaderVariable {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ShaderVariable {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14813,10 +14673,6 @@ None
 %make_alias(Graphic3d_Structure)
 
 %extend Graphic3d_Structure {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Structure {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -15296,10 +15152,6 @@ None
 %make_alias(Graphic3d_StructureManager)
 
 %extend Graphic3d_StructureManager {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_StructureManager {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -15590,10 +15442,6 @@ Graphic3d_VerticalTextAlignment
 
 %make_alias(Graphic3d_Text)
 
-%extend Graphic3d_Text {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Text {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -15930,10 +15778,6 @@ Graphic3d_Vec2
 %make_alias(Graphic3d_TextureParams)
 
 %extend Graphic3d_TextureParams {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_TextureParams {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16131,10 +15975,6 @@ None
 
 %make_alias(Graphic3d_TextureRoot)
 
-%extend Graphic3d_TextureRoot {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_TextureRoot {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16417,10 +16257,6 @@ float
 %make_alias(Graphic3d_TransformPers)
 
 %extend Graphic3d_TransformPers {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_TransformPers {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16438,10 +16274,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
 
 
 %extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16455,10 +16287,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
 };
 
 
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16474,10 +16302,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
 
 
 %extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16491,10 +16315,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
 };
 
 
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16510,10 +16330,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
 
 
 %extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16527,10 +16343,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
 };
 
 
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16546,10 +16358,6 @@ class Graphic3d_UniformValueTypeID<Standard_Integer> {
 
 
 %extend Graphic3d_UniformValueTypeID<Standard_Integer> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_UniformValueTypeID<Standard_Integer> {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16563,10 +16371,6 @@ class Graphic3d_UniformValueTypeID<Standard_ShortReal> {
 };
 
 
-%extend Graphic3d_UniformValueTypeID<Standard_ShortReal> {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_UniformValueTypeID<Standard_ShortReal> {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16597,10 +16401,6 @@ None
 
 
 %extend Graphic3d_ValidatedCubeMapOrder {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ValidatedCubeMapOrder {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16626,10 +16426,6 @@ Standard_Size
 };
 
 
-%extend Graphic3d_ValueInterface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ValueInterface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16818,10 +16614,6 @@ float
 
 
 %extend Graphic3d_Vertex {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Vertex {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16903,10 +16695,6 @@ None
 
 %make_alias(Graphic3d_ViewAffinity)
 
-%extend Graphic3d_ViewAffinity {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ViewAffinity {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -17110,10 +16898,6 @@ def __eq__(self, right):
 };
 
 
-%extend Graphic3d_WorldViewProjState {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_WorldViewProjState {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -17553,10 +17337,6 @@ bool
 
 
 %extend Graphic3d_ZLayerSettings {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ZLayerSettings {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -17626,10 +17406,6 @@ None
 %make_alias(Graphic3d_ArrayOfPoints)
 
 %extend Graphic3d_ArrayOfPoints {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ArrayOfPoints {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -17691,10 +17467,6 @@ None
 %make_alias(Graphic3d_ArrayOfPolygons)
 
 %extend Graphic3d_ArrayOfPolygons {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ArrayOfPolygons {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -17751,10 +17523,6 @@ None
 
 %make_alias(Graphic3d_ArrayOfPolylines)
 
-%extend Graphic3d_ArrayOfPolylines {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ArrayOfPolylines {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -17814,10 +17582,6 @@ None
 %make_alias(Graphic3d_ArrayOfQuadrangleStrips)
 
 %extend Graphic3d_ArrayOfQuadrangleStrips {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ArrayOfQuadrangleStrips {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -17874,10 +17638,6 @@ None
 %make_alias(Graphic3d_ArrayOfQuadrangles)
 
 %extend Graphic3d_ArrayOfQuadrangles {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ArrayOfQuadrangles {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -17929,10 +17689,6 @@ None
 
 %make_alias(Graphic3d_ArrayOfSegments)
 
-%extend Graphic3d_ArrayOfSegments {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ArrayOfSegments {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -17992,10 +17748,6 @@ None
 %make_alias(Graphic3d_ArrayOfTriangleFans)
 
 %extend Graphic3d_ArrayOfTriangleFans {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ArrayOfTriangleFans {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -18054,10 +17806,6 @@ None
 %make_alias(Graphic3d_ArrayOfTriangleStrips)
 
 %extend Graphic3d_ArrayOfTriangleStrips {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_ArrayOfTriangleStrips {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -18113,10 +17861,6 @@ None
 
 %make_alias(Graphic3d_ArrayOfTriangles)
 
-%extend Graphic3d_ArrayOfTriangles {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_ArrayOfTriangles {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -18176,10 +17920,6 @@ bool
 
 %make_alias(Graphic3d_AspectFillArea3d)
 
-%extend Graphic3d_AspectFillArea3d {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_AspectFillArea3d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -18291,10 +18031,6 @@ float
 
 %make_alias(Graphic3d_AspectLine3d)
 
-%extend Graphic3d_AspectLine3d {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_AspectLine3d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -18482,10 +18218,6 @@ Aspect_TypeOfMarker
 
 %make_alias(Graphic3d_AspectMarker3d)
 
-%extend Graphic3d_AspectMarker3d {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_AspectMarker3d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -18738,10 +18470,6 @@ Aspect_TypeOfStyleText
 %make_alias(Graphic3d_AspectText3d)
 
 %extend Graphic3d_AspectText3d {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_AspectText3d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -18951,10 +18679,6 @@ None
 };
 
 
-%extend Graphic3d_AttribBuffer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_AttribBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -20572,10 +20296,6 @@ int
 %make_alias(Graphic3d_CView)
 
 %extend Graphic3d_CView {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_CView {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -20722,10 +20442,6 @@ None
 };
 
 
-%extend Graphic3d_FrameStatsDataTmp {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_FrameStatsDataTmp {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -20883,10 +20599,6 @@ bool
 %make_alias(Graphic3d_MediaTextureSet)
 
 %extend Graphic3d_MediaTextureSet {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_MediaTextureSet {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -20988,10 +20700,6 @@ TCollection_AsciiString
 
 %make_alias(Graphic3d_TextureEnv)
 
-%extend Graphic3d_TextureEnv {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_TextureEnv {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -21135,10 +20843,6 @@ None
 %make_alias(Graphic3d_TextureMap)
 
 %extend Graphic3d_TextureMap {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_TextureMap {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21187,10 +20891,6 @@ float
 
 %make_alias(Graphic3d_TransformPersScaledAbove)
 
-%extend Graphic3d_TransformPersScaledAbove {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_TransformPersScaledAbove {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -21338,10 +21038,6 @@ bool
 %make_alias(Graphic3d_CubeMap)
 
 %extend Graphic3d_CubeMap {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_CubeMap {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21446,10 +21142,6 @@ None
 
 
 %extend Graphic3d_MutableIndexBuffer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_MutableIndexBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21503,10 +21195,6 @@ TCollection_AsciiString
 
 %make_alias(Graphic3d_Texture1D)
 
-%extend Graphic3d_Texture1D {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Texture1D {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -21621,10 +21309,6 @@ TCollection_AsciiString
 %make_alias(Graphic3d_Texture2D)
 
 %extend Graphic3d_Texture2D {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_Texture2D {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21715,10 +21399,6 @@ None
 
 %make_alias(Graphic3d_Texture3D)
 
-%extend Graphic3d_Texture3D {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Texture3D {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -21825,10 +21505,6 @@ opencascade::handle<Image_PixMap>
 %make_alias(Graphic3d_CubeMapSeparate)
 
 %extend Graphic3d_CubeMapSeparate {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_CubeMapSeparate {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21914,10 +21590,6 @@ None
 %make_alias(Graphic3d_MediaTexture)
 
 %extend Graphic3d_MediaTexture {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Graphic3d_MediaTexture {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -21978,10 +21650,6 @@ None
 
 %make_alias(Graphic3d_Texture1Dmanual)
 
-%extend Graphic3d_Texture1Dmanual {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Texture1Dmanual {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -22082,10 +21750,6 @@ None
 
 %make_alias(Graphic3d_Texture1Dsegment)
 
-%extend Graphic3d_Texture1Dsegment {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Texture1Dsegment {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -22388,10 +22052,6 @@ theVal: float
 
 %make_alias(Graphic3d_Texture2Dplane)
 
-%extend Graphic3d_Texture2Dplane {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Graphic3d_Texture2Dplane {
 	%pythoncode {
 	__repr__ = _dumps_object

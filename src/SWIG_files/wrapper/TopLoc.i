@@ -170,10 +170,6 @@ gp_Trsf
 %make_alias(TopLoc_Datum3D)
 
 %extend TopLoc_Datum3D {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopLoc_Datum3D {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -212,10 +208,6 @@ None
 };
 
 
-%extend TopLoc_ItemLocation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopLoc_ItemLocation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -557,10 +549,6 @@ def __eq__(self, right):
 
 
 %extend TopLoc_Location {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopLoc_Location {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -614,10 +602,6 @@ TopLoc_ItemLocation
 
 %make_alias(TopLoc_SListNodeOfItemLocation)
 
-%extend TopLoc_SListNodeOfItemLocation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopLoc_SListNodeOfItemLocation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -800,10 +784,6 @@ TopLoc_ItemLocation
 };
 
 
-%extend TopLoc_SListOfItemLocation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopLoc_SListOfItemLocation {
 	%pythoncode {
 	__repr__ = _dumps_object

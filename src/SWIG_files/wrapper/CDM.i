@@ -259,10 +259,6 @@ None
 %make_alias(CDM_Application)
 
 %extend CDM_Application {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend CDM_Application {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1221,10 +1217,6 @@ None
 %make_alias(CDM_Document)
 
 %extend CDM_Document {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend CDM_Document {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1432,10 +1424,6 @@ TCollection_ExtendedString
 %make_alias(CDM_MetaData)
 
 %extend CDM_MetaData {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend CDM_MetaData {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1516,10 +1504,6 @@ opencascade::handle<CDM_Document>
 
 %make_alias(CDM_Reference)
 
-%extend CDM_Reference {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend CDM_Reference {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1604,10 +1588,6 @@ int
 };
 
 
-%extend CDM_ReferenceIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend CDM_ReferenceIterator {
 	%pythoncode {
 	__repr__ = _dumps_object

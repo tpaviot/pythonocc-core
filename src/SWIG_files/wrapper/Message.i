@@ -845,10 +845,6 @@ bool
 %make_alias(Message_Alert)
 
 %extend Message_Alert {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_Alert {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1202,10 +1198,6 @@ None
 %make_alias(Message_Algorithm)
 
 %extend Message_Algorithm {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_Algorithm {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1283,10 +1275,6 @@ None
 
 %make_alias(Message_Attribute)
 
-%extend Message_Attribute {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_Attribute {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1442,10 +1430,6 @@ bool
 
 %make_alias(Message_CompositeAlerts)
 
-%extend Message_CompositeAlerts {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_CompositeAlerts {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1790,10 +1774,6 @@ Message_StatusType
 
 
 %extend Message_ExecStatus {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_ExecStatus {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1866,10 +1846,6 @@ None
 };
 
 
-%extend Message_Level {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_Level {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1989,10 +1965,6 @@ int
 
 %make_alias(Message_Messenger)
 
-%extend Message_Messenger {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_Messenger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2267,10 +2239,6 @@ TCollection_ExtendedString
 
 
 %extend Message_Msg {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_Msg {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2412,10 +2380,6 @@ TCollection_ExtendedString
 
 
 %extend Message_MsgFile {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_MsgFile {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2539,10 +2503,6 @@ None
 %make_alias(Message_Printer)
 
 %extend Message_Printer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_Printer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2596,10 +2556,6 @@ Message_ProgressRange
 
 %make_alias(Message_ProgressIndicator)
 
-%extend Message_ProgressIndicator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_ProgressIndicator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2684,10 +2640,6 @@ bool
 };
 
 
-%extend Message_ProgressRange {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_ProgressRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3045,10 +2997,6 @@ None
 %make_alias(Message_Report)
 
 %extend Message_Report {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_Report {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3180,10 +3128,6 @@ bool
 
 %make_alias(Message_AlertExtended)
 
-%extend Message_AlertExtended {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_AlertExtended {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3375,10 +3319,6 @@ float
 %make_alias(Message_AttributeMeter)
 
 %extend Message_AttributeMeter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_AttributeMeter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3447,10 +3387,6 @@ None
 %make_alias(Message_AttributeObject)
 
 %extend Message_AttributeObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_AttributeObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3518,10 +3454,6 @@ Standard_SStream
 
 %make_alias(Message_AttributeStream)
 
-%extend Message_AttributeStream {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_AttributeStream {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3624,10 +3556,6 @@ bool
 %make_alias(Message_PrinterOStream)
 
 %extend Message_PrinterOStream {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_PrinterOStream {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3660,10 +3588,6 @@ None
 
 %make_alias(Message_PrinterSystemLog)
 
-%extend Message_PrinterSystemLog {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_PrinterSystemLog {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3750,10 +3674,6 @@ None
 %make_alias(Message_PrinterToReport)
 
 %extend Message_PrinterToReport {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Message_PrinterToReport {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3801,10 +3721,6 @@ None
 };
 
 
-%extend Message_ProgressSentry {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Message_ProgressSentry {
 	%pythoncode {
 	__repr__ = _dumps_object

@@ -348,10 +348,6 @@ opencascade::handle<Geom2d_Geometry>
 %make_alias(Geom2d_Geometry)
 
 %extend Geom2d_Geometry {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Geometry {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -742,10 +738,6 @@ def __imul__(self, right):
 %make_alias(Geom2d_Transformation)
 
 %extend Geom2d_Transformation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Transformation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -933,10 +925,6 @@ None
 
 %make_alias(Geom2d_AxisPlacement)
 
-%extend Geom2d_AxisPlacement {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_AxisPlacement {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1214,10 +1202,6 @@ gp_Pnt2d
 %make_alias(Geom2d_Curve)
 
 %extend Geom2d_Curve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Curve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1321,10 +1305,6 @@ float
 
 %make_alias(Geom2d_Point)
 
-%extend Geom2d_Point {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_Point {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1480,10 +1460,6 @@ float
 %make_alias(Geom2d_Vector)
 
 %extend Geom2d_Vector {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Vector {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1531,10 +1507,6 @@ gp_Pnt2d
 
 %make_alias(Geom2d_BoundedCurve)
 
-%extend Geom2d_BoundedCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_BoundedCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1726,10 +1698,6 @@ float
 
 %make_alias(Geom2d_CartesianPoint)
 
-%extend Geom2d_CartesianPoint {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_CartesianPoint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1924,10 +1892,6 @@ gp_Ax2d
 %make_alias(Geom2d_Conic)
 
 %extend Geom2d_Conic {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Conic {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2109,10 +2073,6 @@ None
 
 %make_alias(Geom2d_Direction)
 
-%extend Geom2d_Direction {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_Direction {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2543,10 +2503,6 @@ float
 %make_alias(Geom2d_Line)
 
 %extend Geom2d_Line {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Line {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2904,10 +2860,6 @@ float
 
 %make_alias(Geom2d_OffsetCurve)
 
-%extend Geom2d_OffsetCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_OffsetCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3326,10 +3278,6 @@ def __itruediv__(self, right):
 
 %make_alias(Geom2d_VectorWithMagnitude)
 
-%extend Geom2d_VectorWithMagnitude {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_VectorWithMagnitude {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4446,10 +4394,6 @@ TColStd_Array1OfReal *
 %make_alias(Geom2d_BSplineCurve)
 
 %extend Geom2d_BSplineCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_BSplineCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5008,10 +4952,6 @@ TColStd_Array1OfReal *
 %make_alias(Geom2d_BezierCurve)
 
 %extend Geom2d_BezierCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_BezierCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5319,10 +5259,6 @@ None
 
 %make_alias(Geom2d_Circle)
 
-%extend Geom2d_Circle {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_Circle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5725,10 +5661,6 @@ None
 
 %make_alias(Geom2d_Ellipse)
 
-%extend Geom2d_Ellipse {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_Ellipse {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6187,10 +6119,6 @@ None
 %make_alias(Geom2d_Hyperbola)
 
 %extend Geom2d_Hyperbola {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Hyperbola {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6579,10 +6507,6 @@ float
 %make_alias(Geom2d_Parabola)
 
 %extend Geom2d_Parabola {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom2d_Parabola {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6931,10 +6855,6 @@ float
 
 %make_alias(Geom2d_TrimmedCurve)
 
-%extend Geom2d_TrimmedCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom2d_TrimmedCurve {
 	%pythoncode {
 	__repr__ = _dumps_object

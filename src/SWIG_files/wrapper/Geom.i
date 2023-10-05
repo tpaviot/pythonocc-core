@@ -406,10 +406,6 @@ opencascade::handle<Geom_Geometry>
 %make_alias(Geom_Geometry)
 
 %extend Geom_Geometry {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Geometry {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -533,10 +529,6 @@ t: bool
 
 %make_alias(Geom_OsculatingSurface)
 
-%extend Geom_OsculatingSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_OsculatingSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -927,10 +919,6 @@ float
 %make_alias(Geom_Transformation)
 
 %extend Geom_Transformation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Transformation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1040,10 +1028,6 @@ None
 
 %make_alias(Geom_AxisPlacement)
 
-%extend Geom_AxisPlacement {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_AxisPlacement {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1321,10 +1305,6 @@ gp_Pnt
 %make_alias(Geom_Curve)
 
 %extend Geom_Curve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Curve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1431,10 +1411,6 @@ float
 
 %make_alias(Geom_Point)
 
-%extend Geom_Point {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Point {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1839,10 +1815,6 @@ gp_Pnt
 %make_alias(Geom_Surface)
 
 %extend Geom_Surface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Surface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2088,10 +2060,6 @@ float
 %make_alias(Geom_Vector)
 
 %extend Geom_Vector {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Vector {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2212,10 +2180,6 @@ None
 
 %make_alias(Geom_Axis1Placement)
 
-%extend Geom_Axis1Placement {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Axis1Placement {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2384,10 +2348,6 @@ gp_Dir
 %make_alias(Geom_Axis2Placement)
 
 %extend Geom_Axis2Placement {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Axis2Placement {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2436,10 +2396,6 @@ gp_Pnt
 %make_alias(Geom_BoundedCurve)
 
 %extend Geom_BoundedCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_BoundedCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2456,10 +2412,6 @@ class Geom_BoundedSurface : public Geom_Surface {
 
 %make_alias(Geom_BoundedSurface)
 
-%extend Geom_BoundedSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_BoundedSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2672,10 +2624,6 @@ float
 %make_alias(Geom_CartesianPoint)
 
 %extend Geom_CartesianPoint {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_CartesianPoint {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2864,10 +2812,6 @@ gp_Ax1
 
 %make_alias(Geom_Conic)
 
-%extend Geom_Conic {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Conic {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3115,10 +3059,6 @@ None
 %make_alias(Geom_Direction)
 
 %extend Geom_Direction {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Direction {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3315,10 +3255,6 @@ float
 
 %make_alias(Geom_ElementarySurface)
 
-%extend Geom_ElementarySurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_ElementarySurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3712,10 +3648,6 @@ float
 %make_alias(Geom_Line)
 
 %extend Geom_Line {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Line {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4100,10 +4032,6 @@ float
 
 %make_alias(Geom_OffsetCurve)
 
-%extend Geom_OffsetCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_OffsetCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4634,10 +4562,6 @@ float
 %make_alias(Geom_OffsetSurface)
 
 %extend Geom_OffsetSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_OffsetSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4696,10 +4620,6 @@ gp_Dir
 
 %make_alias(Geom_SweptSurface)
 
-%extend Geom_SweptSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_SweptSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5093,10 +5013,6 @@ None
 
 %make_alias(Geom_VectorWithMagnitude)
 
-%extend Geom_VectorWithMagnitude {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_VectorWithMagnitude {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6197,10 +6113,6 @@ TColStd_Array1OfReal *
 
 %make_alias(Geom_BSplineCurve)
 
-%extend Geom_BSplineCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_BSplineCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7925,10 +7837,6 @@ TColStd_Array2OfReal *
 %make_alias(Geom_BSplineSurface)
 
 %extend Geom_BSplineSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_BSplineSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8516,10 +8424,6 @@ TColStd_Array1OfReal *
 
 %make_alias(Geom_BezierCurve)
 
-%extend Geom_BezierCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_BezierCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9423,10 +9327,6 @@ TColStd_Array2OfReal *
 %make_alias(Geom_BezierSurface)
 
 %extend Geom_BezierSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_BezierSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -9716,10 +9616,6 @@ None
 
 %make_alias(Geom_Circle)
 
-%extend Geom_Circle {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Circle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10181,10 +10077,6 @@ float
 %make_alias(Geom_ConicalSurface)
 
 %extend Geom_ConicalSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_ConicalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10596,10 +10488,6 @@ float
 %make_alias(Geom_CylindricalSurface)
 
 %extend Geom_CylindricalSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_CylindricalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10982,10 +10870,6 @@ None
 
 %make_alias(Geom_Ellipse)
 
-%extend Geom_Ellipse {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Ellipse {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11425,10 +11309,6 @@ None
 %make_alias(Geom_Hyperbola)
 
 %extend Geom_Hyperbola {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_Hyperbola {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -11798,10 +11678,6 @@ float
 
 %make_alias(Geom_Parabola)
 
-%extend Geom_Parabola {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Parabola {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12236,10 +12112,6 @@ float
 
 %make_alias(Geom_Plane)
 
-%extend Geom_Plane {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_Plane {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12726,10 +12598,6 @@ float
 %make_alias(Geom_RectangularTrimmedSurface)
 
 %extend Geom_RectangularTrimmedSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_RectangularTrimmedSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -13131,10 +12999,6 @@ float
 
 %make_alias(Geom_SphericalSurface)
 
-%extend Geom_SphericalSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_SphericalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13538,10 +13402,6 @@ float
 
 %make_alias(Geom_SurfaceOfLinearExtrusion)
 
-%extend Geom_SurfaceOfLinearExtrusion {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_SurfaceOfLinearExtrusion {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14009,10 +13869,6 @@ float
 %make_alias(Geom_SurfaceOfRevolution)
 
 %extend Geom_SurfaceOfRevolution {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_SurfaceOfRevolution {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -14434,10 +14290,6 @@ float
 %make_alias(Geom_ToroidalSurface)
 
 %extend Geom_ToroidalSurface {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Geom_ToroidalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -14786,10 +14638,6 @@ float
 
 %make_alias(Geom_TrimmedCurve)
 
-%extend Geom_TrimmedCurve {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Geom_TrimmedCurve {
 	%pythoncode {
 	__repr__ = _dumps_object

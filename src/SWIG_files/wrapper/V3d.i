@@ -608,10 +608,6 @@ None
 %make_alias(V3d_CircularGrid)
 
 %extend V3d_CircularGrid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend V3d_CircularGrid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -642,10 +638,6 @@ None
 };
 
 
-%extend V3d_ImageDumpOptions {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend V3d_ImageDumpOptions {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -770,10 +762,6 @@ None
 %make_alias(V3d_Plane)
 
 %extend V3d_Plane {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend V3d_Plane {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -790,10 +778,6 @@ class V3d_PositionLight : public Graphic3d_CLight {
 
 %make_alias(V3d_PositionLight)
 
-%extend V3d_PositionLight {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend V3d_PositionLight {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -918,10 +902,6 @@ None
 
 %make_alias(V3d_RectangularGrid)
 
-%extend V3d_RectangularGrid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend V3d_RectangularGrid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1277,10 +1257,6 @@ opencascade::handle<Graphic3d_TransformPers>
 
 %make_alias(V3d_Trihedron)
 
-%extend V3d_Trihedron {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend V3d_Trihedron {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3986,10 +3962,6 @@ None
 %make_alias(V3d_View)
 
 %extend V3d_View {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend V3d_View {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -5350,10 +5322,6 @@ Graphic3d_ZLayerSettings
 %make_alias(V3d_Viewer)
 
 %extend V3d_Viewer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend V3d_Viewer {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -5428,10 +5396,6 @@ None
 %make_alias(V3d_DirectionalLight)
 
 %extend V3d_DirectionalLight {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend V3d_DirectionalLight {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5464,10 +5428,6 @@ None
 
 %make_alias(V3d_PositionalLight)
 
-%extend V3d_PositionalLight {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend V3d_PositionalLight {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5536,10 +5496,6 @@ None
 
 %make_alias(V3d_SpotLight)
 
-%extend V3d_SpotLight {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend V3d_SpotLight {
 	%pythoncode {
 	__repr__ = _dumps_object

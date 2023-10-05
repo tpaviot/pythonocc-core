@@ -838,10 +838,6 @@ bool
 
 
 %extend SelectBasics_SelectingVolumeManager {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectBasics_SelectingVolumeManager {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

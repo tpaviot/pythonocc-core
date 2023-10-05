@@ -418,10 +418,6 @@ None
 
 
 %extend TopoDS_AlertAttribute {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_AlertAttribute {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -502,10 +498,6 @@ bool
 };
 
 
-%extend TopoDS_AlertWithShape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_AlertWithShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -628,10 +620,6 @@ None
 
 
 %extend TopoDS_Builder {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_Builder {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -710,10 +698,6 @@ TopoDS_Shape
 
 %make_alias(TopoDS_HShape)
 
-%extend TopoDS_HShape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_HShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -810,10 +794,6 @@ TopoDS_Shape
 };
 
 
-%extend TopoDS_Iterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_Iterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1453,21 +1433,18 @@ def __eq__(self, right):
 };
 
 
+
 %extend TopoDS_Shape {
 %pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_Shape {
-%pythoncode {
-	def __getstate__(self):
-		from .BRepTools import breptools
-		str_shape = breptools.WriteToString(self, True)
-		return str_shape
-	def __setstate__(self, state):
-		from .BRepTools import breptools
-		the_shape = breptools.ReadFromString(state)
-		self.this = the_shape.this
-	}
+    def __getstate__(self):
+        from .BRepTools import breptools
+        str_shape = breptools.WriteToString(self, True)
+        return str_shape
+    def __setstate__(self, state):
+        from .BRepTools import breptools
+        the_shape = breptools.ReadFromString(state)
+        self.this = the_shape.this
+    }
 };
 %extend TopoDS_Shape {
 	%pythoncode {
@@ -1737,10 +1714,6 @@ TopAbs_ShapeEnum
 %make_alias(TopoDS_TShape)
 
 %extend TopoDS_TShape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_TShape {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1765,10 +1738,6 @@ None
 };
 
 
-%extend TopoDS_CompSolid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_CompSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1795,10 +1764,6 @@ None
 
 
 %extend TopoDS_Compound {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_Compound {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1823,10 +1788,6 @@ None
 };
 
 
-%extend TopoDS_Edge {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_Edge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1853,10 +1814,6 @@ None
 
 
 %extend TopoDS_Face {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_Face {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1882,10 +1839,6 @@ None
 
 
 %extend TopoDS_Shell {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_Shell {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1910,10 +1863,6 @@ None
 };
 
 
-%extend TopoDS_Solid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_Solid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1964,10 +1913,6 @@ TopAbs_ShapeEnum
 %make_alias(TopoDS_TCompSolid)
 
 %extend TopoDS_TCompSolid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_TCompSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2017,10 +1962,6 @@ TopAbs_ShapeEnum
 %make_alias(TopoDS_TCompound)
 
 %extend TopoDS_TCompound {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_TCompound {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2048,10 +1989,6 @@ TopAbs_ShapeEnum
 
 %make_alias(TopoDS_TEdge)
 
-%extend TopoDS_TEdge {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_TEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2102,10 +2039,6 @@ TopAbs_ShapeEnum
 %make_alias(TopoDS_TFace)
 
 %extend TopoDS_TFace {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_TFace {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2154,10 +2087,6 @@ TopAbs_ShapeEnum
 
 %make_alias(TopoDS_TShell)
 
-%extend TopoDS_TShell {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_TShell {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2208,10 +2137,6 @@ TopAbs_ShapeEnum
 %make_alias(TopoDS_TSolid)
 
 %extend TopoDS_TSolid {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_TSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2239,10 +2164,6 @@ TopAbs_ShapeEnum
 
 %make_alias(TopoDS_TVertex)
 
-%extend TopoDS_TVertex {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_TVertex {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2293,10 +2214,6 @@ TopAbs_ShapeEnum
 %make_alias(TopoDS_TWire)
 
 %extend TopoDS_TWire {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_TWire {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2324,10 +2241,6 @@ None
 
 
 %extend TopoDS_Vertex {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TopoDS_Vertex {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2352,10 +2265,6 @@ None
 };
 
 
-%extend TopoDS_Wire {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TopoDS_Wire {
 	%pythoncode {
 	__repr__ = _dumps_object

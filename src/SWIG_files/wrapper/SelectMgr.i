@@ -962,10 +962,6 @@ theHeight: int
 %make_alias(SelectMgr_BaseIntersector)
 
 %extend SelectMgr_BaseIntersector {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_BaseIntersector {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1405,10 +1401,6 @@ None
 %make_alias(SelectMgr_EntityOwner)
 
 %extend SelectMgr_EntityOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_EntityOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -1459,10 +1451,6 @@ bool
 
 %make_alias(SelectMgr_Filter)
 
-%extend SelectMgr_Filter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_Filter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1867,10 +1855,6 @@ None
 %make_alias(SelectMgr_SelectableObject)
 
 %extend SelectMgr_SelectableObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_SelectableObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -2078,10 +2062,6 @@ None
 };
 
 
-%extend SelectMgr_SelectableObjectSet {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_SelectableObjectSet {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2817,10 +2797,6 @@ theHeight: int
 
 
 %extend SelectMgr_SelectingVolumeManager {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_SelectingVolumeManager {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -3051,10 +3027,6 @@ None
 %make_alias(SelectMgr_Selection)
 
 %extend SelectMgr_Selection {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_Selection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3099,10 +3071,6 @@ None
 
 %make_alias(SelectMgr_SelectionImageFiller)
 
-%extend SelectMgr_SelectionImageFiller {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_SelectionImageFiller {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3383,10 +3351,6 @@ None
 %make_alias(SelectMgr_SelectionManager)
 
 %extend SelectMgr_SelectionManager {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_SelectionManager {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3482,10 +3446,6 @@ None
 %make_alias(SelectMgr_SensitiveEntity)
 
 %extend SelectMgr_SensitiveEntity {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_SensitiveEntity {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3552,10 +3512,6 @@ bool
 };
 
 
-%extend SelectMgr_SortCriterion {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_SortCriterion {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3676,10 +3632,6 @@ None
 };
 
 
-%extend SelectMgr_ViewClipRange {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_ViewClipRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4091,10 +4043,6 @@ None
 %make_alias(SelectMgr_AxisIntersector)
 
 %extend SelectMgr_AxisIntersector {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_AxisIntersector {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4208,10 +4156,6 @@ SelectMgr_ListOfFilter
 %make_alias(SelectMgr_CompositionFilter)
 
 %extend SelectMgr_CompositionFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_CompositionFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4259,10 +4203,6 @@ bool
 
 %make_alias(SelectMgr_AndFilter)
 
-%extend SelectMgr_AndFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_AndFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4351,10 +4291,6 @@ None
 %make_alias(SelectMgr_AndOrFilter)
 
 %extend SelectMgr_AndOrFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend SelectMgr_AndOrFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4399,10 +4335,6 @@ bool
 
 %make_alias(SelectMgr_OrFilter)
 
-%extend SelectMgr_OrFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend SelectMgr_OrFilter {
 	%pythoncode {
 	__repr__ = _dumps_object

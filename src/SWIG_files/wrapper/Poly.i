@@ -1903,10 +1903,6 @@ TColgp_Array1OfPnt2d
 %make_alias(Poly_Polygon2D)
 
 %extend Poly_Polygon2D {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Poly_Polygon2D {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2081,10 +2077,6 @@ TColStd_Array1OfReal
 
 %make_alias(Poly_Polygon3D)
 
-%extend Poly_Polygon3D {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Poly_Polygon3D {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2338,10 +2330,6 @@ None
 %make_alias(Poly_PolygonOnTriangulation)
 
 %extend Poly_PolygonOnTriangulation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Poly_PolygonOnTriangulation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2460,10 +2448,6 @@ int
 };
 
 
-%extend Poly_Triangle {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Poly_Triangle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3274,10 +3258,6 @@ None
 %make_alias(Poly_Triangulation)
 
 %extend Poly_Triangulation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend Poly_Triangulation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3379,10 +3359,6 @@ float
 
 %make_alias(Poly_TriangulationParameters)
 
-%extend Poly_TriangulationParameters {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend Poly_TriangulationParameters {
 	%pythoncode {
 	__repr__ = _dumps_object

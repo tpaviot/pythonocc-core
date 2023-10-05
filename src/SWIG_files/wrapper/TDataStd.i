@@ -434,10 +434,6 @@ None
 %make_alias(TDataStd_AsciiString)
 
 %extend TDataStd_AsciiString {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_AsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -712,10 +708,6 @@ bool
 
 %make_alias(TDataStd_BooleanArray)
 
-%extend TDataStd_BooleanArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_BooleanArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1024,10 +1016,6 @@ None
 
 %make_alias(TDataStd_BooleanList)
 
-%extend TDataStd_BooleanList {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_BooleanList {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1351,10 +1339,6 @@ Standard_Byte
 %make_alias(TDataStd_ByteArray)
 
 %extend TDataStd_ByteArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_ByteArray {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1457,10 +1441,6 @@ opencascade::handle<TDataStd_TreeNode>
 };
 
 
-%extend TDataStd_ChildNodeIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_ChildNodeIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1641,10 +1621,6 @@ None
 %make_alias(TDataStd_Current)
 
 %extend TDataStd_Current {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_Current {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1686,10 +1662,6 @@ None
 
 %make_alias(TDataStd_DeltaOnModificationOfByteArray)
 
-%extend TDataStd_DeltaOnModificationOfByteArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_DeltaOnModificationOfByteArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1733,10 +1705,6 @@ None
 %make_alias(TDataStd_DeltaOnModificationOfExtStringArray)
 
 %extend TDataStd_DeltaOnModificationOfExtStringArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_DeltaOnModificationOfExtStringArray {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1778,10 +1746,6 @@ None
 
 %make_alias(TDataStd_DeltaOnModificationOfIntArray)
 
-%extend TDataStd_DeltaOnModificationOfIntArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_DeltaOnModificationOfIntArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1825,10 +1789,6 @@ None
 %make_alias(TDataStd_DeltaOnModificationOfIntPackedMap)
 
 %extend TDataStd_DeltaOnModificationOfIntPackedMap {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_DeltaOnModificationOfIntPackedMap {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1870,10 +1830,6 @@ None
 
 %make_alias(TDataStd_DeltaOnModificationOfRealArray)
 
-%extend TDataStd_DeltaOnModificationOfRealArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_DeltaOnModificationOfRealArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2045,10 +2001,6 @@ None
 
 %make_alias(TDataStd_Expression)
 
-%extend TDataStd_Expression {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_Expression {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2371,10 +2323,6 @@ TCollection_ExtendedString
 
 %make_alias(TDataStd_ExtStringArray)
 
-%extend TDataStd_ExtStringArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_ExtStringArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2731,10 +2679,6 @@ None
 %make_alias(TDataStd_ExtStringList)
 
 %extend TDataStd_ExtStringList {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_ExtStringList {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2810,10 +2754,6 @@ TDataStd_DataMapOfStringByte
 %make_alias(TDataStd_HDataMapOfStringByte)
 
 %extend TDataStd_HDataMapOfStringByte {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_HDataMapOfStringByte {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2882,10 +2822,6 @@ TDataStd_DataMapOfStringHArray1OfInteger
 
 %make_alias(TDataStd_HDataMapOfStringHArray1OfInteger)
 
-%extend TDataStd_HDataMapOfStringHArray1OfInteger {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_HDataMapOfStringHArray1OfInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2956,10 +2892,6 @@ TDataStd_DataMapOfStringHArray1OfReal
 %make_alias(TDataStd_HDataMapOfStringHArray1OfReal)
 
 %extend TDataStd_HDataMapOfStringHArray1OfReal {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_HDataMapOfStringHArray1OfReal {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3028,10 +2960,6 @@ TColStd_DataMapOfStringInteger
 
 %make_alias(TDataStd_HDataMapOfStringInteger)
 
-%extend TDataStd_HDataMapOfStringInteger {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_HDataMapOfStringInteger {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3102,10 +3030,6 @@ TDataStd_DataMapOfStringReal
 %make_alias(TDataStd_HDataMapOfStringReal)
 
 %extend TDataStd_HDataMapOfStringReal {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_HDataMapOfStringReal {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3174,10 +3098,6 @@ TDataStd_DataMapOfStringString
 
 %make_alias(TDataStd_HDataMapOfStringString)
 
-%extend TDataStd_HDataMapOfStringString {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_HDataMapOfStringString {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3475,10 +3395,6 @@ None
 %make_alias(TDataStd_IntPackedMap)
 
 %extend TDataStd_IntPackedMap {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_IntPackedMap {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3682,10 +3598,6 @@ None
 
 %make_alias(TDataStd_Integer)
 
-%extend TDataStd_Integer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_Integer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4008,10 +3920,6 @@ int
 
 %make_alias(TDataStd_IntegerArray)
 
-%extend TDataStd_IntegerArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_IntegerArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4367,10 +4275,6 @@ None
 
 %make_alias(TDataStd_IntegerList)
 
-%extend TDataStd_IntegerList {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_IntegerList {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5149,10 +5053,6 @@ None
 %make_alias(TDataStd_NamedData)
 
 %extend TDataStd_NamedData {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_NamedData {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5382,10 +5282,6 @@ None
 
 %make_alias(TDataStd_Real)
 
-%extend TDataStd_Real {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_Real {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5708,10 +5604,6 @@ float
 
 %make_alias(TDataStd_RealArray)
 
-%extend TDataStd_RealArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_RealArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6068,10 +5960,6 @@ None
 %make_alias(TDataStd_RealList)
 
 %extend TDataStd_RealList {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_RealList {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6363,10 +6251,6 @@ TDF_Label
 
 %make_alias(TDataStd_ReferenceArray)
 
-%extend TDataStd_ReferenceArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_ReferenceArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6737,10 +6621,6 @@ None
 
 %make_alias(TDataStd_ReferenceList)
 
-%extend TDataStd_ReferenceList {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_ReferenceList {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7370,10 +7250,6 @@ None
 %make_alias(TDataStd_TreeNode)
 
 %extend TDataStd_TreeNode {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_TreeNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7516,10 +7392,6 @@ None
 
 %make_alias(TDataStd_UAttribute)
 
-%extend TDataStd_UAttribute {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_UAttribute {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7856,10 +7728,6 @@ TCollection_AsciiString
 %make_alias(TDataStd_Variable)
 
 %extend TDataStd_Variable {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_Variable {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7978,10 +7846,6 @@ None
 %make_alias(TDataStd_Comment)
 
 %extend TDataStd_Comment {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_Comment {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8099,10 +7963,6 @@ opencascade::handle<TDataStd_Directory>
 
 %make_alias(TDataStd_Directory)
 
-%extend TDataStd_Directory {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_Directory {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8223,10 +8083,6 @@ None
 
 %make_alias(TDataStd_Name)
 
-%extend TDataStd_Name {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_Name {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8350,10 +8206,6 @@ opencascade::handle<TDataStd_NoteBook>
 %make_alias(TDataStd_NoteBook)
 
 %extend TDataStd_NoteBook {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_NoteBook {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8461,10 +8313,6 @@ None
 %make_alias(TDataStd_Relation)
 
 %extend TDataStd_Relation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TDataStd_Relation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8536,10 +8384,6 @@ opencascade::handle<TDataStd_Tick>
 
 %make_alias(TDataStd_Tick)
 
-%extend TDataStd_Tick {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TDataStd_Tick {
 	%pythoncode {
 	__repr__ = _dumps_object

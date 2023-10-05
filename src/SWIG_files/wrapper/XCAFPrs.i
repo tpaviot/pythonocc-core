@@ -1009,10 +1009,6 @@ def __eq__(self, right):
 
 
 %extend XCAFPrs_Style {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFPrs_Style {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1085,10 +1081,6 @@ opencascade::handle<Image_Texture>
 
 %make_alias(XCAFPrs_Texture)
 
-%extend XCAFPrs_Texture {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFPrs_Texture {
 	%pythoncode {
 	__repr__ = _dumps_object

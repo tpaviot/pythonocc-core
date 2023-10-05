@@ -306,10 +306,6 @@ None
 %make_alias(TObj_Application)
 
 %extend TObj_Application {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_Application {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -469,10 +465,6 @@ None
 
 
 %extend TObj_Assistant {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_Assistant {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -551,10 +543,6 @@ None
 
 %make_alias(TObj_CheckModel)
 
-%extend TObj_CheckModel {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_CheckModel {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1070,10 +1058,6 @@ bool
 
 %make_alias(TObj_Model)
 
-%extend TObj_Model {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_Model {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1819,10 +1803,6 @@ TDF_Label
 %make_alias(TObj_Object)
 
 %extend TObj_Object {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_Object {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1872,10 +1852,6 @@ opencascade::handle<TObj_Object>
 %make_alias(TObj_ObjectIterator)
 
 %extend TObj_ObjectIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_ObjectIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1915,10 +1891,6 @@ opencascade::handle<TObj_Object>
 };
 
 
-%extend TObj_Persistence {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_Persistence {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2200,10 +2172,6 @@ int
 %make_alias(TObj_TIntSparseArray)
 
 %extend TObj_TIntSparseArray {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_TIntSparseArray {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2320,10 +2288,6 @@ None
 
 %make_alias(TObj_TModel)
 
-%extend TObj_TModel {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_TModel {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2514,10 +2478,6 @@ None
 %make_alias(TObj_TNameContainer)
 
 %extend TObj_TNameContainer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_TNameContainer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2677,10 +2637,6 @@ None
 
 %make_alias(TObj_TObject)
 
-%extend TObj_TObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_TObject {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2927,10 +2883,6 @@ None
 %make_alias(TObj_TReference)
 
 %extend TObj_TReference {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_TReference {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3072,10 +3024,6 @@ None
 %make_alias(TObj_TXYZ)
 
 %extend TObj_TXYZ {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_TXYZ {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3136,10 +3084,6 @@ opencascade::handle<TObj_Object>
 
 %make_alias(TObj_LabelIterator)
 
-%extend TObj_LabelIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_LabelIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3204,10 +3148,6 @@ opencascade::handle<TObj_Object>
 
 %make_alias(TObj_ModelIterator)
 
-%extend TObj_ModelIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_ModelIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3374,10 +3314,6 @@ bool
 %make_alias(TObj_Partition)
 
 %extend TObj_Partition {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_Partition {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3444,10 +3380,6 @@ opencascade::handle<TObj_Object>
 %make_alias(TObj_SequenceIterator)
 
 %extend TObj_SequenceIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_SequenceIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3490,10 +3422,6 @@ int
 %make_alias(TObj_HiddenPartition)
 
 %extend TObj_HiddenPartition {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_HiddenPartition {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3531,10 +3459,6 @@ None
 %make_alias(TObj_OcafObjectIterator)
 
 %extend TObj_OcafObjectIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend TObj_OcafObjectIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3569,10 +3493,6 @@ None
 
 %make_alias(TObj_ReferenceIterator)
 
-%extend TObj_ReferenceIterator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend TObj_ReferenceIterator {
 	%pythoncode {
 	__repr__ = _dumps_object

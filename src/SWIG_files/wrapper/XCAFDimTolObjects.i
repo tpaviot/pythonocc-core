@@ -1335,10 +1335,6 @@ None
 %make_alias(XCAFDimTolObjects_DatumObject)
 
 %extend XCAFDimTolObjects_DatumObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDimTolObjects_DatumObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2135,10 +2131,6 @@ None
 %make_alias(XCAFDimTolObjects_DimensionObject)
 
 %extend XCAFDimTolObjects_DimensionObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDimTolObjects_DimensionObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2704,10 +2696,6 @@ None
 %make_alias(XCAFDimTolObjects_GeomToleranceObject)
 
 %extend XCAFDimTolObjects_GeomToleranceObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend XCAFDimTolObjects_GeomToleranceObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2818,10 +2806,6 @@ bool
 };
 
 
-%extend XCAFDimTolObjects_Tool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend XCAFDimTolObjects_Tool {
 	%pythoncode {
 	__repr__ = _dumps_object

@@ -462,10 +462,6 @@ None
 %make_alias(StdSelect_BRepOwner)
 
 %extend StdSelect_BRepOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend StdSelect_BRepOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -653,10 +649,6 @@ None
 
 
 %extend StdSelect_BRepSelectionTool {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend StdSelect_BRepSelectionTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -743,10 +735,6 @@ StdSelect_TypeOfEdge
 
 %make_alias(StdSelect_EdgeFilter)
 
-%extend StdSelect_EdgeFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend StdSelect_EdgeFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -835,10 +823,6 @@ StdSelect_TypeOfFace
 %make_alias(StdSelect_FaceFilter)
 
 %extend StdSelect_FaceFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend StdSelect_FaceFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -924,10 +908,6 @@ None
 %make_alias(StdSelect_Shape)
 
 %extend StdSelect_Shape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend StdSelect_Shape {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -999,10 +979,6 @@ TopAbs_ShapeEnum
 
 %make_alias(StdSelect_ShapeTypeFilter)
 
-%extend StdSelect_ShapeTypeFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend StdSelect_ShapeTypeFilter {
 	%pythoncode {
 	__repr__ = _dumps_object

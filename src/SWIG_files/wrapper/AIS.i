@@ -5394,10 +5394,6 @@ float
 %make_alias(AIS_InteractiveContext)
 
 %extend AIS_InteractiveContext {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_InteractiveContext {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -5623,10 +5619,6 @@ AIS_KindOfInteractive
 %make_alias(AIS_InteractiveObject)
 
 %extend AIS_InteractiveObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_InteractiveObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5703,10 +5695,6 @@ bool
 };
 
 
-%extend AIS_LightSourceOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_LightSourceOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5813,10 +5801,6 @@ None
 
 %make_alias(AIS_ManipulatorOwner)
 
-%extend AIS_ManipulatorOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_ManipulatorOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5928,10 +5912,6 @@ None
 };
 
 
-%extend AIS_PointCloudOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_PointCloudOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6131,10 +6111,6 @@ opencascade::handle<SelectMgr_EntityOwner>
 %make_alias(AIS_Selection)
 
 %extend AIS_Selection {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_Selection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6228,10 +6204,6 @@ None
 %make_alias(AIS_TrihedronOwner)
 
 %extend AIS_TrihedronOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_TrihedronOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6277,10 +6249,6 @@ bool
 
 %make_alias(AIS_TypeFilter)
 
-%extend AIS_TypeFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_TypeFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8080,10 +8048,6 @@ bool
 
 
 %extend AIS_ViewController {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_ViewController {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8156,10 +8120,6 @@ V3d_TypeOfOrientation
 
 
 %extend AIS_ViewCubeOwner {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_ViewCubeOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8205,10 +8165,6 @@ bool
 };
 
 
-%extend AIS_ViewCubeSensitive {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_ViewCubeSensitive {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8263,10 +8219,6 @@ None
 };
 
 
-%extend AIS_ViewInputBuffer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_ViewInputBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8430,10 +8382,6 @@ bool
 
 
 %extend AIS_WalkDelta {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_WalkDelta {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8472,10 +8420,6 @@ bool
 };
 
 
-%extend AIS_WalkPart {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_WalkPart {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8586,10 +8530,6 @@ opencascade::handle<V3d_View>
 
 %make_alias(AIS_AnimationCamera)
 
-%extend AIS_AnimationCamera {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_AnimationCamera {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8879,10 +8819,6 @@ None
 %make_alias(AIS_Axis)
 
 %extend AIS_Axis {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_Axis {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8899,10 +8835,6 @@ class AIS_BaseAnimationObject : public AIS_Animation {
 
 %make_alias(AIS_BaseAnimationObject)
 
-%extend AIS_BaseAnimationObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_BaseAnimationObject {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9014,10 +8946,6 @@ None
 };
 
 
-%extend AIS_CameraFrustum {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_CameraFrustum {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9239,10 +9167,6 @@ None
 
 %make_alias(AIS_Circle)
 
-%extend AIS_Circle {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_Circle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10274,10 +10198,6 @@ float
 %make_alias(AIS_ColorScale)
 
 %extend AIS_ColorScale {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_ColorScale {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10437,10 +10357,6 @@ AIS_KindOfInteractive
 
 %make_alias(AIS_ConnectedInteractive)
 
-%extend AIS_ConnectedInteractive {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_ConnectedInteractive {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10819,10 +10735,6 @@ AIS_KindOfInteractive
 
 
 %extend AIS_LightSource {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_LightSource {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -11001,10 +10913,6 @@ None
 
 %make_alias(AIS_Line)
 
-%extend AIS_Line {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_Line {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11604,10 +11512,6 @@ bool
 %make_alias(AIS_Manipulator)
 
 %extend AIS_Manipulator {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_Manipulator {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -11736,10 +11640,6 @@ None
 };
 
 
-%extend AIS_MediaPlayer {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_MediaPlayer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11939,10 +11839,6 @@ AIS_KindOfInteractive
 
 %make_alias(AIS_MultipleConnectedInteractive)
 
-%extend AIS_MultipleConnectedInteractive {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_MultipleConnectedInteractive {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12421,10 +12317,6 @@ None
 %make_alias(AIS_Plane)
 
 %extend AIS_Plane {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_Plane {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12623,10 +12515,6 @@ opencascade::handle<AIS_Line>
 %make_alias(AIS_PlaneTrihedron)
 
 %extend AIS_PlaneTrihedron {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_PlaneTrihedron {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12795,10 +12683,6 @@ TopoDS_Vertex
 %make_alias(AIS_Point)
 
 %extend AIS_Point {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_Point {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12966,10 +12850,6 @@ None
 
 %make_alias(AIS_PointCloud)
 
-%extend AIS_PointCloud {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_PointCloud {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13304,10 +13184,6 @@ None
 
 %make_alias(AIS_RubberBand)
 
-%extend AIS_RubberBand {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_RubberBand {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13851,10 +13727,6 @@ None
 %make_alias(AIS_Shape)
 
 %extend AIS_Shape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_Shape {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -13901,10 +13773,6 @@ bool
 
 %make_alias(AIS_SignatureFilter)
 
-%extend AIS_SignatureFilter {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_SignatureFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14339,10 +14207,6 @@ None
 %make_alias(AIS_TextLabel)
 
 %extend AIS_TextLabel {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_TextLabel {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -14463,10 +14327,6 @@ None
 
 %make_alias(AIS_Triangulation)
 
-%extend AIS_Triangulation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_Triangulation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14990,10 +14850,6 @@ None
 
 %make_alias(AIS_Trihedron)
 
-%extend AIS_Trihedron {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_Trihedron {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16124,10 +15980,6 @@ opencascade::handle<AIS_AnimationCamera>
 
 
 %extend AIS_ViewCube {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_ViewCube {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16273,10 +16125,6 @@ float
 
 
 %extend AIS_XRTrackedDevice {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_XRTrackedDevice {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16313,10 +16161,6 @@ None
 %make_alias(AIS_AnimationAxisRotation)
 
 %extend AIS_AnimationAxisRotation {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
-%extend AIS_AnimationAxisRotation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -16351,10 +16195,6 @@ None
 
 %make_alias(AIS_AnimationObject)
 
-%extend AIS_AnimationObject {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_AnimationObject {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16596,10 +16436,6 @@ None
 
 %make_alias(AIS_ColoredShape)
 
-%extend AIS_ColoredShape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_ColoredShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16983,10 +16819,6 @@ float
 
 %make_alias(AIS_TexturedShape)
 
-%extend AIS_TexturedShape {
-%pythoncode {
-	def __getstate__(self):
-		return self.DumpJsonToString()
 %extend AIS_TexturedShape {
 	%pythoncode {
 	__repr__ = _dumps_object
