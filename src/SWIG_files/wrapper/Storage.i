@@ -57,12 +57,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum Storage_SolveMode {
-	Storage_AddSolve = 0,
-	Storage_WriteSolve = 1,
-	Storage_ReadSolve = 2,
-};
-
 enum Storage_Error {
 	Storage_VSOk = 0,
 	Storage_VSOpenError = 1,
@@ -87,18 +81,16 @@ enum Storage_OpenMode {
 	Storage_VSReadWrite = 3,
 };
 
+enum Storage_SolveMode {
+	Storage_AddSolve = 0,
+	Storage_WriteSolve = 1,
+	Storage_ReadSolve = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class Storage_SolveMode(IntEnum):
-	Storage_AddSolve = 0
-	Storage_WriteSolve = 1
-	Storage_ReadSolve = 2
-Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
-Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
-Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 
 class Storage_Error(IntEnum):
 	Storage_VSOk = 0
@@ -139,6 +131,14 @@ Storage_VSNone = Storage_OpenMode.Storage_VSNone
 Storage_VSRead = Storage_OpenMode.Storage_VSRead
 Storage_VSWrite = Storage_OpenMode.Storage_VSWrite
 Storage_VSReadWrite = Storage_OpenMode.Storage_VSReadWrite
+
+class Storage_SolveMode(IntEnum):
+	Storage_AddSolve = 0
+	Storage_WriteSolve = 1
+	Storage_ReadSolve = 2
+Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
+Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
+Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 };
 /* end python proxy for enums */
 
@@ -286,6 +286,46 @@ typedef NCollection_Sequence<opencascade::handle<Storage_Root>> Storage_SeqOfRoo
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
+class Storage_HeaderData:
+	pass
+
+@classnotwrapped
+class Storage_Data:
+	pass
+
+@classnotwrapped
+class Storage_DefaultCallBack:
+	pass
+
+@classnotwrapped
+class Storage_RootData:
+	pass
+
+@classnotwrapped
+class Storage_TypedCallBack:
+	pass
+
+@classnotwrapped
+class Storage_InternalData:
+	pass
+
+@classnotwrapped
+class Storage_Root:
+	pass
+
+@classnotwrapped
+class Storage_BaseDriver:
+	pass
+
+@classnotwrapped
+class Storage_CallBack:
+	pass
+
+@classnotwrapped
+class Storage_TypeData:
+	pass
+
+@classnotwrapped
 class Storage_Bucket:
 	pass
 
@@ -298,47 +338,7 @@ class Storage_BucketIterator:
 	pass
 
 @classnotwrapped
-class Storage_RootData:
-	pass
-
-@classnotwrapped
-class Storage_TypeData:
-	pass
-
-@classnotwrapped
-class Storage_Root:
-	pass
-
-@classnotwrapped
 class Storage_Schema:
-	pass
-
-@classnotwrapped
-class Storage_DefaultCallBack:
-	pass
-
-@classnotwrapped
-class Storage_TypedCallBack:
-	pass
-
-@classnotwrapped
-class Storage_CallBack:
-	pass
-
-@classnotwrapped
-class Storage_HeaderData:
-	pass
-
-@classnotwrapped
-class Storage_BaseDriver:
-	pass
-
-@classnotwrapped
-class Storage_InternalData:
-	pass
-
-@classnotwrapped
-class Storage_Data:
 	pass
 
 @classnotwrapped

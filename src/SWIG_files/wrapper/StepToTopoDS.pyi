@@ -4,8 +4,8 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepRepr import *
-from OCC.Core.StepGeom import *
 from OCC.Core.StepShape import *
+from OCC.Core.StepGeom import *
 from OCC.Core.TCollection import *
 from OCC.Core.Geom import *
 from OCC.Core.TopoDS import *
@@ -15,6 +15,13 @@ from OCC.Core.Message import *
 from OCC.Core.Geom2d import *
 from OCC.Core.StepVisual import *
 
+
+class StepToTopoDS_BuilderError(IntEnum):
+    StepToTopoDS_BuilderDone: int = ...
+    StepToTopoDS_BuilderOther: int = ...
+
+StepToTopoDS_BuilderDone = StepToTopoDS_BuilderError.StepToTopoDS_BuilderDone
+StepToTopoDS_BuilderOther = StepToTopoDS_BuilderError.StepToTopoDS_BuilderOther
 
 class StepToTopoDS_GeometricToolError(IntEnum):
     StepToTopoDS_GeometricToolDone: int = ...
@@ -31,47 +38,12 @@ StepToTopoDS_GeometricToolWrong3dParameters = StepToTopoDS_GeometricToolError.St
 StepToTopoDS_GeometricToolNoProjectiOnCurve = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolNoProjectiOnCurve
 StepToTopoDS_GeometricToolOther = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolOther
 
-class StepToTopoDS_TranslateShellError(IntEnum):
-    StepToTopoDS_TranslateShellDone: int = ...
-    StepToTopoDS_TranslateShellOther: int = ...
-
-StepToTopoDS_TranslateShellDone = StepToTopoDS_TranslateShellError.StepToTopoDS_TranslateShellDone
-StepToTopoDS_TranslateShellOther = StepToTopoDS_TranslateShellError.StepToTopoDS_TranslateShellOther
-
-class StepToTopoDS_TranslatePolyLoopError(IntEnum):
-    StepToTopoDS_TranslatePolyLoopDone: int = ...
-    StepToTopoDS_TranslatePolyLoopOther: int = ...
-
-StepToTopoDS_TranslatePolyLoopDone = StepToTopoDS_TranslatePolyLoopError.StepToTopoDS_TranslatePolyLoopDone
-StepToTopoDS_TranslatePolyLoopOther = StepToTopoDS_TranslatePolyLoopError.StepToTopoDS_TranslatePolyLoopOther
-
 class StepToTopoDS_TranslateEdgeError(IntEnum):
     StepToTopoDS_TranslateEdgeDone: int = ...
     StepToTopoDS_TranslateEdgeOther: int = ...
 
 StepToTopoDS_TranslateEdgeDone = StepToTopoDS_TranslateEdgeError.StepToTopoDS_TranslateEdgeDone
 StepToTopoDS_TranslateEdgeOther = StepToTopoDS_TranslateEdgeError.StepToTopoDS_TranslateEdgeOther
-
-class StepToTopoDS_BuilderError(IntEnum):
-    StepToTopoDS_BuilderDone: int = ...
-    StepToTopoDS_BuilderOther: int = ...
-
-StepToTopoDS_BuilderDone = StepToTopoDS_BuilderError.StepToTopoDS_BuilderDone
-StepToTopoDS_BuilderOther = StepToTopoDS_BuilderError.StepToTopoDS_BuilderOther
-
-class StepToTopoDS_TranslateFaceError(IntEnum):
-    StepToTopoDS_TranslateFaceDone: int = ...
-    StepToTopoDS_TranslateFaceOther: int = ...
-
-StepToTopoDS_TranslateFaceDone = StepToTopoDS_TranslateFaceError.StepToTopoDS_TranslateFaceDone
-StepToTopoDS_TranslateFaceOther = StepToTopoDS_TranslateFaceError.StepToTopoDS_TranslateFaceOther
-
-class StepToTopoDS_TranslateVertexLoopError(IntEnum):
-    StepToTopoDS_TranslateVertexLoopDone: int = ...
-    StepToTopoDS_TranslateVertexLoopOther: int = ...
-
-StepToTopoDS_TranslateVertexLoopDone = StepToTopoDS_TranslateVertexLoopError.StepToTopoDS_TranslateVertexLoopDone
-StepToTopoDS_TranslateVertexLoopOther = StepToTopoDS_TranslateVertexLoopError.StepToTopoDS_TranslateVertexLoopOther
 
 class StepToTopoDS_TranslateEdgeLoopError(IntEnum):
     StepToTopoDS_TranslateEdgeLoopDone: int = ...
@@ -80,12 +52,26 @@ class StepToTopoDS_TranslateEdgeLoopError(IntEnum):
 StepToTopoDS_TranslateEdgeLoopDone = StepToTopoDS_TranslateEdgeLoopError.StepToTopoDS_TranslateEdgeLoopDone
 StepToTopoDS_TranslateEdgeLoopOther = StepToTopoDS_TranslateEdgeLoopError.StepToTopoDS_TranslateEdgeLoopOther
 
-class StepToTopoDS_TranslateVertexError(IntEnum):
-    StepToTopoDS_TranslateVertexDone: int = ...
-    StepToTopoDS_TranslateVertexOther: int = ...
+class StepToTopoDS_TranslateFaceError(IntEnum):
+    StepToTopoDS_TranslateFaceDone: int = ...
+    StepToTopoDS_TranslateFaceOther: int = ...
 
-StepToTopoDS_TranslateVertexDone = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexDone
-StepToTopoDS_TranslateVertexOther = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexOther
+StepToTopoDS_TranslateFaceDone = StepToTopoDS_TranslateFaceError.StepToTopoDS_TranslateFaceDone
+StepToTopoDS_TranslateFaceOther = StepToTopoDS_TranslateFaceError.StepToTopoDS_TranslateFaceOther
+
+class StepToTopoDS_TranslatePolyLoopError(IntEnum):
+    StepToTopoDS_TranslatePolyLoopDone: int = ...
+    StepToTopoDS_TranslatePolyLoopOther: int = ...
+
+StepToTopoDS_TranslatePolyLoopDone = StepToTopoDS_TranslatePolyLoopError.StepToTopoDS_TranslatePolyLoopDone
+StepToTopoDS_TranslatePolyLoopOther = StepToTopoDS_TranslatePolyLoopError.StepToTopoDS_TranslatePolyLoopOther
+
+class StepToTopoDS_TranslateShellError(IntEnum):
+    StepToTopoDS_TranslateShellDone: int = ...
+    StepToTopoDS_TranslateShellOther: int = ...
+
+StepToTopoDS_TranslateShellDone = StepToTopoDS_TranslateShellError.StepToTopoDS_TranslateShellDone
+StepToTopoDS_TranslateShellOther = StepToTopoDS_TranslateShellError.StepToTopoDS_TranslateShellOther
 
 class StepToTopoDS_TranslateSolidError(IntEnum):
     StepToTopoDS_TranslateSolidDone: int = ...
@@ -93,6 +79,20 @@ class StepToTopoDS_TranslateSolidError(IntEnum):
 
 StepToTopoDS_TranslateSolidDone = StepToTopoDS_TranslateSolidError.StepToTopoDS_TranslateSolidDone
 StepToTopoDS_TranslateSolidOther = StepToTopoDS_TranslateSolidError.StepToTopoDS_TranslateSolidOther
+
+class StepToTopoDS_TranslateVertexError(IntEnum):
+    StepToTopoDS_TranslateVertexDone: int = ...
+    StepToTopoDS_TranslateVertexOther: int = ...
+
+StepToTopoDS_TranslateVertexDone = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexDone
+StepToTopoDS_TranslateVertexOther = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexOther
+
+class StepToTopoDS_TranslateVertexLoopError(IntEnum):
+    StepToTopoDS_TranslateVertexLoopDone: int = ...
+    StepToTopoDS_TranslateVertexLoopOther: int = ...
+
+StepToTopoDS_TranslateVertexLoopDone = StepToTopoDS_TranslateVertexLoopError.StepToTopoDS_TranslateVertexLoopDone
+StepToTopoDS_TranslateVertexLoopOther = StepToTopoDS_TranslateVertexLoopError.StepToTopoDS_TranslateVertexLoopOther
 
 class steptotopods:
     @staticmethod

@@ -19,6 +19,13 @@ from OCC.Core.Image import *
 from OCC.Core.OSD import *
 
 
+class RWMesh_CafReaderStatusEx(IntEnum):
+    RWMesh_CafReaderStatusEx_NONE: int = ...
+    RWMesh_CafReaderStatusEx_Partial: int = ...
+
+RWMesh_CafReaderStatusEx_NONE = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_NONE
+RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_Partial
+
 class RWMesh_CoordinateSystem(IntEnum):
     RWMesh_CoordinateSystem_Undefined: int = ...
     RWMesh_CoordinateSystem_posYfwd_posZup: int = ...
@@ -52,13 +59,6 @@ RWMesh_NameFormat_InstanceOrProduct = RWMesh_NameFormat.RWMesh_NameFormat_Instan
 RWMesh_NameFormat_ProductOrInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductOrInstance
 RWMesh_NameFormat_ProductAndInstance = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstance
 RWMesh_NameFormat_ProductAndInstanceAndOcaf = RWMesh_NameFormat.RWMesh_NameFormat_ProductAndInstanceAndOcaf
-
-class RWMesh_CafReaderStatusEx(IntEnum):
-    RWMesh_CafReaderStatusEx_NONE: int = ...
-    RWMesh_CafReaderStatusEx_Partial: int = ...
-
-RWMesh_CafReaderStatusEx_NONE = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_NONE
-RWMesh_CafReaderStatusEx_Partial = RWMesh_CafReaderStatusEx.RWMesh_CafReaderStatusEx_Partial
 
 class rwmesh:
     @staticmethod

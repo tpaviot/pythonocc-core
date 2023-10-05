@@ -42,8 +42,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfill.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TopTools_module.hxx>
 #include<MAT_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
@@ -81,8 +81,8 @@ https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepfill.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TopTools.i
 %import MAT.i
+%import TopTools.i
 %import TopoDS.i
 %import gp.i
 %import TColStd.i
@@ -115,16 +115,16 @@ enum BRepFill_ThruSectionErrorStatus {
 	BRepFill_ThruSectionErrorStatus_Failed = 6,
 };
 
-enum BRepFill_TypeOfContact {
-	BRepFill_NoContact = 0,
-	BRepFill_Contact = 1,
-	BRepFill_ContactOnBorder = 2,
-};
-
 enum BRepFill_TransitionStyle {
 	BRepFill_Modified = 0,
 	BRepFill_Right = 1,
 	BRepFill_Round = 2,
+};
+
+enum BRepFill_TypeOfContact {
+	BRepFill_NoContact = 0,
+	BRepFill_Contact = 1,
+	BRepFill_ContactOnBorder = 2,
 };
 
 /* end public enums declaration */
@@ -148,14 +148,6 @@ BRepFill_ThruSectionErrorStatus_WrongUsage = BRepFill_ThruSectionErrorStatus.BRe
 BRepFill_ThruSectionErrorStatus_Null3DCurve = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_Null3DCurve
 BRepFill_ThruSectionErrorStatus_Failed = BRepFill_ThruSectionErrorStatus.BRepFill_ThruSectionErrorStatus_Failed
 
-class BRepFill_TypeOfContact(IntEnum):
-	BRepFill_NoContact = 0
-	BRepFill_Contact = 1
-	BRepFill_ContactOnBorder = 2
-BRepFill_NoContact = BRepFill_TypeOfContact.BRepFill_NoContact
-BRepFill_Contact = BRepFill_TypeOfContact.BRepFill_Contact
-BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
-
 class BRepFill_TransitionStyle(IntEnum):
 	BRepFill_Modified = 0
 	BRepFill_Right = 1
@@ -163,6 +155,14 @@ class BRepFill_TransitionStyle(IntEnum):
 BRepFill_Modified = BRepFill_TransitionStyle.BRepFill_Modified
 BRepFill_Right = BRepFill_TransitionStyle.BRepFill_Right
 BRepFill_Round = BRepFill_TransitionStyle.BRepFill_Round
+
+class BRepFill_TypeOfContact(IntEnum):
+	BRepFill_NoContact = 0
+	BRepFill_Contact = 1
+	BRepFill_ContactOnBorder = 2
+BRepFill_NoContact = BRepFill_TypeOfContact.BRepFill_NoContact
+BRepFill_Contact = BRepFill_TypeOfContact.BRepFill_Contact
+BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 };
 /* end python proxy for enums */
 

@@ -111,6 +111,12 @@ enum BOPAlgo_CheckStatus {
 	BOPAlgo_NotValid = 11,
 };
 
+enum BOPAlgo_GlueEnum {
+	BOPAlgo_GlueOff = 0,
+	BOPAlgo_GlueShift = 1,
+	BOPAlgo_GlueFull = 2,
+};
+
 enum BOPAlgo_Operation {
 	BOPAlgo_COMMON = 0,
 	BOPAlgo_FUSE = 1,
@@ -118,12 +124,6 @@ enum BOPAlgo_Operation {
 	BOPAlgo_CUT21 = 3,
 	BOPAlgo_SECTION = 4,
 	BOPAlgo_UNKNOWN = 5,
-};
-
-enum BOPAlgo_GlueEnum {
-	BOPAlgo_GlueOff = 0,
-	BOPAlgo_GlueShift = 1,
-	BOPAlgo_GlueFull = 2,
 };
 
 /* end public enums declaration */
@@ -157,6 +157,14 @@ BOPAlgo_GeomAbs_C0 = BOPAlgo_CheckStatus.BOPAlgo_GeomAbs_C0
 BOPAlgo_InvalidCurveOnSurface = BOPAlgo_CheckStatus.BOPAlgo_InvalidCurveOnSurface
 BOPAlgo_NotValid = BOPAlgo_CheckStatus.BOPAlgo_NotValid
 
+class BOPAlgo_GlueEnum(IntEnum):
+	BOPAlgo_GlueOff = 0
+	BOPAlgo_GlueShift = 1
+	BOPAlgo_GlueFull = 2
+BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
+BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
+BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
+
 class BOPAlgo_Operation(IntEnum):
 	BOPAlgo_COMMON = 0
 	BOPAlgo_FUSE = 1
@@ -170,14 +178,6 @@ BOPAlgo_CUT = BOPAlgo_Operation.BOPAlgo_CUT
 BOPAlgo_CUT21 = BOPAlgo_Operation.BOPAlgo_CUT21
 BOPAlgo_SECTION = BOPAlgo_Operation.BOPAlgo_SECTION
 BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
-
-class BOPAlgo_GlueEnum(IntEnum):
-	BOPAlgo_GlueOff = 0
-	BOPAlgo_GlueShift = 1
-	BOPAlgo_GlueFull = 2
-BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
-BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
-BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
 };
 /* end python proxy for enums */
 

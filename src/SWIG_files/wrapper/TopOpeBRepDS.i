@@ -89,15 +89,15 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum TopOpeBRepDS_CheckStatus {
+	TopOpeBRepDS_OK = 0,
+	TopOpeBRepDS_NOK = 1,
+};
+
 enum TopOpeBRepDS_Config {
 	TopOpeBRepDS_UNSHGEOMETRY = 0,
 	TopOpeBRepDS_SAMEORIENTED = 1,
 	TopOpeBRepDS_DIFFORIENTED = 2,
-};
-
-enum TopOpeBRepDS_CheckStatus {
-	TopOpeBRepDS_OK = 0,
-	TopOpeBRepDS_NOK = 1,
 };
 
 enum TopOpeBRepDS_Kind {
@@ -120,6 +120,12 @@ enum TopOpeBRepDS_Kind {
 /* python proxy classes for enums */
 %pythoncode {
 
+class TopOpeBRepDS_CheckStatus(IntEnum):
+	TopOpeBRepDS_OK = 0
+	TopOpeBRepDS_NOK = 1
+TopOpeBRepDS_OK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_OK
+TopOpeBRepDS_NOK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_NOK
+
 class TopOpeBRepDS_Config(IntEnum):
 	TopOpeBRepDS_UNSHGEOMETRY = 0
 	TopOpeBRepDS_SAMEORIENTED = 1
@@ -127,12 +133,6 @@ class TopOpeBRepDS_Config(IntEnum):
 TopOpeBRepDS_UNSHGEOMETRY = TopOpeBRepDS_Config.TopOpeBRepDS_UNSHGEOMETRY
 TopOpeBRepDS_SAMEORIENTED = TopOpeBRepDS_Config.TopOpeBRepDS_SAMEORIENTED
 TopOpeBRepDS_DIFFORIENTED = TopOpeBRepDS_Config.TopOpeBRepDS_DIFFORIENTED
-
-class TopOpeBRepDS_CheckStatus(IntEnum):
-	TopOpeBRepDS_OK = 0
-	TopOpeBRepDS_NOK = 1
-TopOpeBRepDS_OK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_OK
-TopOpeBRepDS_NOK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_NOK
 
 class TopOpeBRepDS_Kind(IntEnum):
 	TopOpeBRepDS_POINT = 0

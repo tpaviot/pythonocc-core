@@ -67,25 +67,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum PCDM_StoreStatus {
-	PCDM_SS_OK = 0,
-	PCDM_SS_DriverFailure = 1,
-	PCDM_SS_WriteFailure = 2,
-	PCDM_SS_Failure = 3,
-	PCDM_SS_Doc_IsNull = 4,
-	PCDM_SS_No_Obj = 5,
-	PCDM_SS_Info_Section_Error = 6,
-	PCDM_SS_UserBreak = 7,
-	PCDM_SS_UnrecognizedFormat = 8,
-};
-
-enum PCDM_TypeOfFileDriver {
-	PCDM_TOFD_File = 0,
-	PCDM_TOFD_CmpFile = 1,
-	PCDM_TOFD_XmlFile = 2,
-	PCDM_TOFD_Unknown = 3,
-};
-
 enum PCDM_ReaderStatus {
 	PCDM_RS_OK = 0,
 	PCDM_RS_NoDriver = 1,
@@ -112,40 +93,29 @@ enum PCDM_ReaderStatus {
 	PCDM_RS_UserBreak = 22,
 };
 
+enum PCDM_StoreStatus {
+	PCDM_SS_OK = 0,
+	PCDM_SS_DriverFailure = 1,
+	PCDM_SS_WriteFailure = 2,
+	PCDM_SS_Failure = 3,
+	PCDM_SS_Doc_IsNull = 4,
+	PCDM_SS_No_Obj = 5,
+	PCDM_SS_Info_Section_Error = 6,
+	PCDM_SS_UserBreak = 7,
+	PCDM_SS_UnrecognizedFormat = 8,
+};
+
+enum PCDM_TypeOfFileDriver {
+	PCDM_TOFD_File = 0,
+	PCDM_TOFD_CmpFile = 1,
+	PCDM_TOFD_XmlFile = 2,
+	PCDM_TOFD_Unknown = 3,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class PCDM_StoreStatus(IntEnum):
-	PCDM_SS_OK = 0
-	PCDM_SS_DriverFailure = 1
-	PCDM_SS_WriteFailure = 2
-	PCDM_SS_Failure = 3
-	PCDM_SS_Doc_IsNull = 4
-	PCDM_SS_No_Obj = 5
-	PCDM_SS_Info_Section_Error = 6
-	PCDM_SS_UserBreak = 7
-	PCDM_SS_UnrecognizedFormat = 8
-PCDM_SS_OK = PCDM_StoreStatus.PCDM_SS_OK
-PCDM_SS_DriverFailure = PCDM_StoreStatus.PCDM_SS_DriverFailure
-PCDM_SS_WriteFailure = PCDM_StoreStatus.PCDM_SS_WriteFailure
-PCDM_SS_Failure = PCDM_StoreStatus.PCDM_SS_Failure
-PCDM_SS_Doc_IsNull = PCDM_StoreStatus.PCDM_SS_Doc_IsNull
-PCDM_SS_No_Obj = PCDM_StoreStatus.PCDM_SS_No_Obj
-PCDM_SS_Info_Section_Error = PCDM_StoreStatus.PCDM_SS_Info_Section_Error
-PCDM_SS_UserBreak = PCDM_StoreStatus.PCDM_SS_UserBreak
-PCDM_SS_UnrecognizedFormat = PCDM_StoreStatus.PCDM_SS_UnrecognizedFormat
-
-class PCDM_TypeOfFileDriver(IntEnum):
-	PCDM_TOFD_File = 0
-	PCDM_TOFD_CmpFile = 1
-	PCDM_TOFD_XmlFile = 2
-	PCDM_TOFD_Unknown = 3
-PCDM_TOFD_File = PCDM_TypeOfFileDriver.PCDM_TOFD_File
-PCDM_TOFD_CmpFile = PCDM_TypeOfFileDriver.PCDM_TOFD_CmpFile
-PCDM_TOFD_XmlFile = PCDM_TypeOfFileDriver.PCDM_TOFD_XmlFile
-PCDM_TOFD_Unknown = PCDM_TypeOfFileDriver.PCDM_TOFD_Unknown
 
 class PCDM_ReaderStatus(IntEnum):
 	PCDM_RS_OK = 0
@@ -194,6 +164,36 @@ PCDM_RS_WrongResource = PCDM_ReaderStatus.PCDM_RS_WrongResource
 PCDM_RS_ReaderException = PCDM_ReaderStatus.PCDM_RS_ReaderException
 PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
 PCDM_RS_UserBreak = PCDM_ReaderStatus.PCDM_RS_UserBreak
+
+class PCDM_StoreStatus(IntEnum):
+	PCDM_SS_OK = 0
+	PCDM_SS_DriverFailure = 1
+	PCDM_SS_WriteFailure = 2
+	PCDM_SS_Failure = 3
+	PCDM_SS_Doc_IsNull = 4
+	PCDM_SS_No_Obj = 5
+	PCDM_SS_Info_Section_Error = 6
+	PCDM_SS_UserBreak = 7
+	PCDM_SS_UnrecognizedFormat = 8
+PCDM_SS_OK = PCDM_StoreStatus.PCDM_SS_OK
+PCDM_SS_DriverFailure = PCDM_StoreStatus.PCDM_SS_DriverFailure
+PCDM_SS_WriteFailure = PCDM_StoreStatus.PCDM_SS_WriteFailure
+PCDM_SS_Failure = PCDM_StoreStatus.PCDM_SS_Failure
+PCDM_SS_Doc_IsNull = PCDM_StoreStatus.PCDM_SS_Doc_IsNull
+PCDM_SS_No_Obj = PCDM_StoreStatus.PCDM_SS_No_Obj
+PCDM_SS_Info_Section_Error = PCDM_StoreStatus.PCDM_SS_Info_Section_Error
+PCDM_SS_UserBreak = PCDM_StoreStatus.PCDM_SS_UserBreak
+PCDM_SS_UnrecognizedFormat = PCDM_StoreStatus.PCDM_SS_UnrecognizedFormat
+
+class PCDM_TypeOfFileDriver(IntEnum):
+	PCDM_TOFD_File = 0
+	PCDM_TOFD_CmpFile = 1
+	PCDM_TOFD_XmlFile = 2
+	PCDM_TOFD_Unknown = 3
+PCDM_TOFD_File = PCDM_TypeOfFileDriver.PCDM_TOFD_File
+PCDM_TOFD_CmpFile = PCDM_TypeOfFileDriver.PCDM_TOFD_CmpFile
+PCDM_TOFD_XmlFile = PCDM_TypeOfFileDriver.PCDM_TOFD_XmlFile
+PCDM_TOFD_Unknown = PCDM_TypeOfFileDriver.PCDM_TOFD_Unknown
 };
 /* end python proxy for enums */
 

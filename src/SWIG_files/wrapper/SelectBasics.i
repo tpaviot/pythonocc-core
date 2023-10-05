@@ -366,13 +366,14 @@ float
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetActiveSelectionType ******************/
 		/**** md5 signature: 56d78b21d70ce91662f965e54361b877 ****/
 		%feature("compactdefaultargs") GetActiveSelectionType;

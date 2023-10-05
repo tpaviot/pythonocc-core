@@ -113,10 +113,9 @@ enum SelectMgr_FilterType {
 	SelectMgr_FilterType_OR = 1,
 };
 
-enum SelectMgr_TypeOfDepthTolerance {
-	SelectMgr_TypeOfDepthTolerance_Uniform = 0,
-	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1,
-	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2,
+enum SelectMgr_PickingStrategy {
+	SelectMgr_PickingStrategy_FirstAcceptable = 0,
+	SelectMgr_PickingStrategy_OnlyTopmost = 1,
 };
 
 enum SelectMgr_SelectionType {
@@ -126,10 +125,11 @@ enum SelectMgr_SelectionType {
 	SelectMgr_SelectionType_Polyline = 3,
 };
 
-enum SelectMgr_TypeOfUpdate {
-	SelectMgr_TOU_Full = 0,
-	SelectMgr_TOU_Partial = 1,
-	SelectMgr_TOU_None = 2,
+enum SelectMgr_StateOfSelection {
+	SelectMgr_SOS_Any = - 2,
+	SelectMgr_SOS_Unknown = - 1,
+	SelectMgr_SOS_Deactivated = 0,
+	SelectMgr_SOS_Activated = 1,
 };
 
 enum SelectMgr_TypeOfBVHUpdate {
@@ -140,16 +140,16 @@ enum SelectMgr_TypeOfBVHUpdate {
 	SelectMgr_TBU_None = 4,
 };
 
-enum SelectMgr_StateOfSelection {
-	SelectMgr_SOS_Any = - 2,
-	SelectMgr_SOS_Unknown = - 1,
-	SelectMgr_SOS_Deactivated = 0,
-	SelectMgr_SOS_Activated = 1,
+enum SelectMgr_TypeOfDepthTolerance {
+	SelectMgr_TypeOfDepthTolerance_Uniform = 0,
+	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1,
+	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2,
 };
 
-enum SelectMgr_PickingStrategy {
-	SelectMgr_PickingStrategy_FirstAcceptable = 0,
-	SelectMgr_PickingStrategy_OnlyTopmost = 1,
+enum SelectMgr_TypeOfUpdate {
+	SelectMgr_TOU_Full = 0,
+	SelectMgr_TOU_Partial = 1,
+	SelectMgr_TOU_None = 2,
 };
 
 /* end public enums declaration */
@@ -163,13 +163,11 @@ class SelectMgr_FilterType(IntEnum):
 SelectMgr_FilterType_AND = SelectMgr_FilterType.SelectMgr_FilterType_AND
 SelectMgr_FilterType_OR = SelectMgr_FilterType.SelectMgr_FilterType_OR
 
-class SelectMgr_TypeOfDepthTolerance(IntEnum):
-	SelectMgr_TypeOfDepthTolerance_Uniform = 0
-	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1
-	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2
-SelectMgr_TypeOfDepthTolerance_Uniform = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_Uniform
-SelectMgr_TypeOfDepthTolerance_UniformPixels = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_UniformPixels
-SelectMgr_TypeOfDepthTolerance_SensitivityFactor = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_SensitivityFactor
+class SelectMgr_PickingStrategy(IntEnum):
+	SelectMgr_PickingStrategy_FirstAcceptable = 0
+	SelectMgr_PickingStrategy_OnlyTopmost = 1
+SelectMgr_PickingStrategy_FirstAcceptable = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_FirstAcceptable
+SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_OnlyTopmost
 
 class SelectMgr_SelectionType(IntEnum):
 	SelectMgr_SelectionType_Unknown = - 1
@@ -181,13 +179,15 @@ SelectMgr_SelectionType_Point = SelectMgr_SelectionType.SelectMgr_SelectionType_
 SelectMgr_SelectionType_Box = SelectMgr_SelectionType.SelectMgr_SelectionType_Box
 SelectMgr_SelectionType_Polyline = SelectMgr_SelectionType.SelectMgr_SelectionType_Polyline
 
-class SelectMgr_TypeOfUpdate(IntEnum):
-	SelectMgr_TOU_Full = 0
-	SelectMgr_TOU_Partial = 1
-	SelectMgr_TOU_None = 2
-SelectMgr_TOU_Full = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Full
-SelectMgr_TOU_Partial = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Partial
-SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
+class SelectMgr_StateOfSelection(IntEnum):
+	SelectMgr_SOS_Any = - 2
+	SelectMgr_SOS_Unknown = - 1
+	SelectMgr_SOS_Deactivated = 0
+	SelectMgr_SOS_Activated = 1
+SelectMgr_SOS_Any = SelectMgr_StateOfSelection.SelectMgr_SOS_Any
+SelectMgr_SOS_Unknown = SelectMgr_StateOfSelection.SelectMgr_SOS_Unknown
+SelectMgr_SOS_Deactivated = SelectMgr_StateOfSelection.SelectMgr_SOS_Deactivated
+SelectMgr_SOS_Activated = SelectMgr_StateOfSelection.SelectMgr_SOS_Activated
 
 class SelectMgr_TypeOfBVHUpdate(IntEnum):
 	SelectMgr_TBU_Add = 0
@@ -201,21 +201,21 @@ SelectMgr_TBU_Renew = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Renew
 SelectMgr_TBU_Invalidate = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Invalidate
 SelectMgr_TBU_None = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_None
 
-class SelectMgr_StateOfSelection(IntEnum):
-	SelectMgr_SOS_Any = - 2
-	SelectMgr_SOS_Unknown = - 1
-	SelectMgr_SOS_Deactivated = 0
-	SelectMgr_SOS_Activated = 1
-SelectMgr_SOS_Any = SelectMgr_StateOfSelection.SelectMgr_SOS_Any
-SelectMgr_SOS_Unknown = SelectMgr_StateOfSelection.SelectMgr_SOS_Unknown
-SelectMgr_SOS_Deactivated = SelectMgr_StateOfSelection.SelectMgr_SOS_Deactivated
-SelectMgr_SOS_Activated = SelectMgr_StateOfSelection.SelectMgr_SOS_Activated
+class SelectMgr_TypeOfDepthTolerance(IntEnum):
+	SelectMgr_TypeOfDepthTolerance_Uniform = 0
+	SelectMgr_TypeOfDepthTolerance_UniformPixels = 1
+	SelectMgr_TypeOfDepthTolerance_SensitivityFactor = 2
+SelectMgr_TypeOfDepthTolerance_Uniform = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_Uniform
+SelectMgr_TypeOfDepthTolerance_UniformPixels = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_UniformPixels
+SelectMgr_TypeOfDepthTolerance_SensitivityFactor = SelectMgr_TypeOfDepthTolerance.SelectMgr_TypeOfDepthTolerance_SensitivityFactor
 
-class SelectMgr_PickingStrategy(IntEnum):
-	SelectMgr_PickingStrategy_FirstAcceptable = 0
-	SelectMgr_PickingStrategy_OnlyTopmost = 1
-SelectMgr_PickingStrategy_FirstAcceptable = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_FirstAcceptable
-SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_OnlyTopmost
+class SelectMgr_TypeOfUpdate(IntEnum):
+	SelectMgr_TOU_Full = 0
+	SelectMgr_TOU_Partial = 1
+	SelectMgr_TOU_None = 2
+SelectMgr_TOU_Full = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Full
+SelectMgr_TOU_Partial = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Partial
+SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
 };
 /* end python proxy for enums */
 
@@ -473,13 +473,14 @@ float
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetFarPnt ******************/
 		/**** md5 signature: 3e36f446d09a687c0f4c947199de3fba ****/
 		%feature("compactdefaultargs") GetFarPnt;
@@ -1050,13 +1051,14 @@ bool
 		Standard_Boolean ComesFromDecomposition();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HandleMouseClick ******************/
 		/**** md5 signature: add80052ddbdb459ce100ea351ce9701 ****/
 		%feature("compactdefaultargs") HandleMouseClick;
@@ -1550,13 +1552,14 @@ None
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ErasePresentations ******************/
 		/**** md5 signature: 1ca7dc31012600af9ffc1ee563cb7a3d ****/
 		%feature("compactdefaultargs") ErasePresentations;
@@ -1964,13 +1967,14 @@ bool
 		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetObjectById ******************/
 		/**** md5 signature: 319a1ac965d889d963a38ef514f73d63 ****/
 		%feature("compactdefaultargs") GetObjectById;
@@ -2194,13 +2198,14 @@ float
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetActiveSelectionType ******************/
 		/**** md5 signature: 6be7281ca743652d206dad6a0c6f5952 ****/
 		%feature("compactdefaultargs") GetActiveSelectionType;
@@ -2882,13 +2887,14 @@ None
 		void Destroy();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Entities ******************/
 		/**** md5 signature: 09e4230714e880893271b506a744f5d3 ****/
 		%feature("compactdefaultargs") Entities;
@@ -3393,13 +3399,14 @@ None
 		void Clear();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsActiveForSelection ******************/
 		/**** md5 signature: 3187ce5cffb320503d698db8ebb12ce6 ****/
 		%feature("compactdefaultargs") IsActiveForSelection;
@@ -3573,13 +3580,14 @@ Bnd_Range
 		Bnd_Range & ChangeUnclipRange();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetNearestDepth ******************/
 		/**** md5 signature: a7d31c5d6b83b64f1f6f7f0def838d0f ****/
 		%feature("compactdefaultargs") GetNearestDepth;
@@ -3691,13 +3699,14 @@ float
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetFarPnt ******************/
 		/**** md5 signature: 81facda4320b4fbe9ad4747e990428a7 ****/
 		%feature("compactdefaultargs") GetFarPnt;

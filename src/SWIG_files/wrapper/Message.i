@@ -62,6 +62,42 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Message_ConsoleColor {
+	Message_ConsoleColor_Default = 0,
+	Message_ConsoleColor_Black = 1,
+	Message_ConsoleColor_White = 2,
+	Message_ConsoleColor_Red = 3,
+	Message_ConsoleColor_Blue = 4,
+	Message_ConsoleColor_Green = 5,
+	Message_ConsoleColor_Yellow = 6,
+	Message_ConsoleColor_Cyan = 7,
+	Message_ConsoleColor_Magenta = 8,
+};
+
+enum Message_Gravity {
+	Message_Trace = 0,
+	Message_Info = 1,
+	Message_Warning = 2,
+	Message_Alarm = 3,
+	Message_Fail = 4,
+};
+
+enum Message_MetricType {
+	Message_MetricType_None = 0,
+	Message_MetricType_ThreadCPUUserTime = 1,
+	Message_MetricType_ThreadCPUSystemTime = 2,
+	Message_MetricType_ProcessCPUUserTime = 3,
+	Message_MetricType_ProcessCPUSystemTime = 4,
+	Message_MetricType_WallClock = 5,
+	Message_MetricType_MemPrivate = 6,
+	Message_MetricType_MemVirtual = 7,
+	Message_MetricType_MemWorkingSet = 8,
+	Message_MetricType_MemWorkingSetPeak = 9,
+	Message_MetricType_MemSwapUsage = 10,
+	Message_MetricType_MemSwapUsagePeak = 11,
+	Message_MetricType_MemHeapUsage = 12,
+};
+
 enum Message_Status {
 	Message_None = 0,
 	Message_Done1 = Message_DONE,
@@ -194,42 +230,6 @@ enum Message_Status {
 	Message_Fail32 = 128,
 };
 
-enum Message_ConsoleColor {
-	Message_ConsoleColor_Default = 0,
-	Message_ConsoleColor_Black = 1,
-	Message_ConsoleColor_White = 2,
-	Message_ConsoleColor_Red = 3,
-	Message_ConsoleColor_Blue = 4,
-	Message_ConsoleColor_Green = 5,
-	Message_ConsoleColor_Yellow = 6,
-	Message_ConsoleColor_Cyan = 7,
-	Message_ConsoleColor_Magenta = 8,
-};
-
-enum Message_Gravity {
-	Message_Trace = 0,
-	Message_Info = 1,
-	Message_Warning = 2,
-	Message_Alarm = 3,
-	Message_Fail = 4,
-};
-
-enum Message_MetricType {
-	Message_MetricType_None = 0,
-	Message_MetricType_ThreadCPUUserTime = 1,
-	Message_MetricType_ThreadCPUSystemTime = 2,
-	Message_MetricType_ProcessCPUUserTime = 3,
-	Message_MetricType_ProcessCPUSystemTime = 4,
-	Message_MetricType_WallClock = 5,
-	Message_MetricType_MemPrivate = 6,
-	Message_MetricType_MemVirtual = 7,
-	Message_MetricType_MemWorkingSet = 8,
-	Message_MetricType_MemWorkingSetPeak = 9,
-	Message_MetricType_MemSwapUsage = 10,
-	Message_MetricType_MemSwapUsagePeak = 11,
-	Message_MetricType_MemHeapUsage = 12,
-};
-
 enum Message_StatusType {
 	Message_DONE = 256,
 	Message_WARN = 512,
@@ -241,6 +241,66 @@ enum Message_StatusType {
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Message_ConsoleColor(IntEnum):
+	Message_ConsoleColor_Default = 0
+	Message_ConsoleColor_Black = 1
+	Message_ConsoleColor_White = 2
+	Message_ConsoleColor_Red = 3
+	Message_ConsoleColor_Blue = 4
+	Message_ConsoleColor_Green = 5
+	Message_ConsoleColor_Yellow = 6
+	Message_ConsoleColor_Cyan = 7
+	Message_ConsoleColor_Magenta = 8
+Message_ConsoleColor_Default = Message_ConsoleColor.Message_ConsoleColor_Default
+Message_ConsoleColor_Black = Message_ConsoleColor.Message_ConsoleColor_Black
+Message_ConsoleColor_White = Message_ConsoleColor.Message_ConsoleColor_White
+Message_ConsoleColor_Red = Message_ConsoleColor.Message_ConsoleColor_Red
+Message_ConsoleColor_Blue = Message_ConsoleColor.Message_ConsoleColor_Blue
+Message_ConsoleColor_Green = Message_ConsoleColor.Message_ConsoleColor_Green
+Message_ConsoleColor_Yellow = Message_ConsoleColor.Message_ConsoleColor_Yellow
+Message_ConsoleColor_Cyan = Message_ConsoleColor.Message_ConsoleColor_Cyan
+Message_ConsoleColor_Magenta = Message_ConsoleColor.Message_ConsoleColor_Magenta
+
+class Message_Gravity(IntEnum):
+	Message_Trace = 0
+	Message_Info = 1
+	Message_Warning = 2
+	Message_Alarm = 3
+	Message_Fail = 4
+Message_Trace = Message_Gravity.Message_Trace
+Message_Info = Message_Gravity.Message_Info
+Message_Warning = Message_Gravity.Message_Warning
+Message_Alarm = Message_Gravity.Message_Alarm
+Message_Fail = Message_Gravity.Message_Fail
+
+class Message_MetricType(IntEnum):
+	Message_MetricType_None = 0
+	Message_MetricType_ThreadCPUUserTime = 1
+	Message_MetricType_ThreadCPUSystemTime = 2
+	Message_MetricType_ProcessCPUUserTime = 3
+	Message_MetricType_ProcessCPUSystemTime = 4
+	Message_MetricType_WallClock = 5
+	Message_MetricType_MemPrivate = 6
+	Message_MetricType_MemVirtual = 7
+	Message_MetricType_MemWorkingSet = 8
+	Message_MetricType_MemWorkingSetPeak = 9
+	Message_MetricType_MemSwapUsage = 10
+	Message_MetricType_MemSwapUsagePeak = 11
+	Message_MetricType_MemHeapUsage = 12
+Message_MetricType_None = Message_MetricType.Message_MetricType_None
+Message_MetricType_ThreadCPUUserTime = Message_MetricType.Message_MetricType_ThreadCPUUserTime
+Message_MetricType_ThreadCPUSystemTime = Message_MetricType.Message_MetricType_ThreadCPUSystemTime
+Message_MetricType_ProcessCPUUserTime = Message_MetricType.Message_MetricType_ProcessCPUUserTime
+Message_MetricType_ProcessCPUSystemTime = Message_MetricType.Message_MetricType_ProcessCPUSystemTime
+Message_MetricType_WallClock = Message_MetricType.Message_MetricType_WallClock
+Message_MetricType_MemPrivate = Message_MetricType.Message_MetricType_MemPrivate
+Message_MetricType_MemVirtual = Message_MetricType.Message_MetricType_MemVirtual
+Message_MetricType_MemWorkingSet = Message_MetricType.Message_MetricType_MemWorkingSet
+Message_MetricType_MemWorkingSetPeak = Message_MetricType.Message_MetricType_MemWorkingSetPeak
+Message_MetricType_MemSwapUsage = Message_MetricType.Message_MetricType_MemSwapUsage
+Message_MetricType_MemSwapUsagePeak = Message_MetricType.Message_MetricType_MemSwapUsagePeak
+Message_MetricType_MemHeapUsage = Message_MetricType.Message_MetricType_MemHeapUsage
 
 class Message_Status(IntEnum):
 	Message_None = 0
@@ -502,66 +562,6 @@ Message_Fail30 = Message_Status.Message_Fail30
 Message_Fail31 = Message_Status.Message_Fail31
 Message_Fail32 = Message_Status.Message_Fail32
 
-class Message_ConsoleColor(IntEnum):
-	Message_ConsoleColor_Default = 0
-	Message_ConsoleColor_Black = 1
-	Message_ConsoleColor_White = 2
-	Message_ConsoleColor_Red = 3
-	Message_ConsoleColor_Blue = 4
-	Message_ConsoleColor_Green = 5
-	Message_ConsoleColor_Yellow = 6
-	Message_ConsoleColor_Cyan = 7
-	Message_ConsoleColor_Magenta = 8
-Message_ConsoleColor_Default = Message_ConsoleColor.Message_ConsoleColor_Default
-Message_ConsoleColor_Black = Message_ConsoleColor.Message_ConsoleColor_Black
-Message_ConsoleColor_White = Message_ConsoleColor.Message_ConsoleColor_White
-Message_ConsoleColor_Red = Message_ConsoleColor.Message_ConsoleColor_Red
-Message_ConsoleColor_Blue = Message_ConsoleColor.Message_ConsoleColor_Blue
-Message_ConsoleColor_Green = Message_ConsoleColor.Message_ConsoleColor_Green
-Message_ConsoleColor_Yellow = Message_ConsoleColor.Message_ConsoleColor_Yellow
-Message_ConsoleColor_Cyan = Message_ConsoleColor.Message_ConsoleColor_Cyan
-Message_ConsoleColor_Magenta = Message_ConsoleColor.Message_ConsoleColor_Magenta
-
-class Message_Gravity(IntEnum):
-	Message_Trace = 0
-	Message_Info = 1
-	Message_Warning = 2
-	Message_Alarm = 3
-	Message_Fail = 4
-Message_Trace = Message_Gravity.Message_Trace
-Message_Info = Message_Gravity.Message_Info
-Message_Warning = Message_Gravity.Message_Warning
-Message_Alarm = Message_Gravity.Message_Alarm
-Message_Fail = Message_Gravity.Message_Fail
-
-class Message_MetricType(IntEnum):
-	Message_MetricType_None = 0
-	Message_MetricType_ThreadCPUUserTime = 1
-	Message_MetricType_ThreadCPUSystemTime = 2
-	Message_MetricType_ProcessCPUUserTime = 3
-	Message_MetricType_ProcessCPUSystemTime = 4
-	Message_MetricType_WallClock = 5
-	Message_MetricType_MemPrivate = 6
-	Message_MetricType_MemVirtual = 7
-	Message_MetricType_MemWorkingSet = 8
-	Message_MetricType_MemWorkingSetPeak = 9
-	Message_MetricType_MemSwapUsage = 10
-	Message_MetricType_MemSwapUsagePeak = 11
-	Message_MetricType_MemHeapUsage = 12
-Message_MetricType_None = Message_MetricType.Message_MetricType_None
-Message_MetricType_ThreadCPUUserTime = Message_MetricType.Message_MetricType_ThreadCPUUserTime
-Message_MetricType_ThreadCPUSystemTime = Message_MetricType.Message_MetricType_ThreadCPUSystemTime
-Message_MetricType_ProcessCPUUserTime = Message_MetricType.Message_MetricType_ProcessCPUUserTime
-Message_MetricType_ProcessCPUSystemTime = Message_MetricType.Message_MetricType_ProcessCPUSystemTime
-Message_MetricType_WallClock = Message_MetricType.Message_MetricType_WallClock
-Message_MetricType_MemPrivate = Message_MetricType.Message_MetricType_MemPrivate
-Message_MetricType_MemVirtual = Message_MetricType.Message_MetricType_MemVirtual
-Message_MetricType_MemWorkingSet = Message_MetricType.Message_MetricType_MemWorkingSet
-Message_MetricType_MemWorkingSetPeak = Message_MetricType.Message_MetricType_MemWorkingSetPeak
-Message_MetricType_MemSwapUsage = Message_MetricType.Message_MetricType_MemSwapUsage
-Message_MetricType_MemSwapUsagePeak = Message_MetricType.Message_MetricType_MemSwapUsagePeak
-Message_MetricType_MemHeapUsage = Message_MetricType.Message_MetricType_MemHeapUsage
-
 class Message_StatusType(IntEnum):
 	Message_DONE = 256
 	Message_WARN = 512
@@ -794,13 +794,14 @@ bool
 class Message_Alert : public Standard_Transient {
 	public:
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetMessageKey ******************/
 		/**** md5 signature: 71c9c83f94a6139aa0d49ac59c2b9561 ****/
 		%feature("compactdefaultargs") GetMessageKey;
@@ -1224,13 +1225,14 @@ None
 		 Message_Attribute(TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetMessageKey ******************/
 		/**** md5 signature: 71c9c83f94a6139aa0d49ac59c2b9561 ****/
 		%feature("compactdefaultargs") GetMessageKey;
@@ -1368,13 +1370,14 @@ None
 		void Clear(const opencascade::handle<Standard_Type> & theType);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HasAlert ******************/
 		/**** md5 signature: c84dc45f7e7e49755037ef8eafb79d8b ****/
 		%feature("compactdefaultargs") HasAlert;
@@ -1908,13 +1911,14 @@ Message_SequenceOfPrinters
 		Message_SequenceOfPrinters & ChangePrinters();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Printers ******************/
 		/**** md5 signature: 6c5b0fba9e527d551e7123cf4b988068 ****/
 		%feature("compactdefaultargs") Printers;
@@ -2782,13 +2786,14 @@ None
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetAlerts ******************/
 		/**** md5 signature: e105d4af57088013fb229b16770b2450 ****/
 		%feature("compactdefaultargs") GetAlerts;
@@ -3058,13 +3063,14 @@ opencascade::handle<Message_CompositeAlerts>
 		opencascade::handle<Message_CompositeAlerts> CompositeAlerts(const Standard_Boolean theToCreate = Standard_False);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetMessageKey ******************/
 		/**** md5 signature: a89afc9b71fa70bfa5a05fd046a77fe7 ****/
 		%feature("compactdefaultargs") GetMessageKey;
@@ -3150,13 +3156,14 @@ None
 		 Message_AttributeMeter(TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HasMetric ******************/
 		/**** md5 signature: 3f12286f59675604f3124d35ffdcb72e ****/
 		%feature("compactdefaultargs") HasMetric;
@@ -3340,13 +3347,14 @@ None
 		 Message_AttributeObject(const opencascade::handle<Standard_Transient> & theObject, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Object ******************/
 		/**** md5 signature: 980fb130325587d03ae875c7b436387a ****/
 		%feature("compactdefaultargs") Object;
@@ -3407,13 +3415,14 @@ None
 		 Message_AttributeStream(const Standard_SStream & theStream, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** SetStream ******************/
 		/**** md5 signature: bd93662a7f73ff5e9a6217c3100cd562 ****/
 		%feature("compactdefaultargs") SetStream;

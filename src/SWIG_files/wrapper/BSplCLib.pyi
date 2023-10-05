@@ -10,6 +10,13 @@ from OCC.Core.gp import *
 from OCC.Core.GeomAbs import *
 
 
+class BSplCLib_KnotDistribution(IntEnum):
+    BSplCLib_NonUniform: int = ...
+    BSplCLib_Uniform: int = ...
+
+BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
+BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
+
 class BSplCLib_MultDistribution(IntEnum):
     BSplCLib_NonConstant: int = ...
     BSplCLib_Constant: int = ...
@@ -18,13 +25,6 @@ class BSplCLib_MultDistribution(IntEnum):
 BSplCLib_NonConstant = BSplCLib_MultDistribution.BSplCLib_NonConstant
 BSplCLib_Constant = BSplCLib_MultDistribution.BSplCLib_Constant
 BSplCLib_QuasiConstant = BSplCLib_MultDistribution.BSplCLib_QuasiConstant
-
-class BSplCLib_KnotDistribution(IntEnum):
-    BSplCLib_NonUniform: int = ...
-    BSplCLib_Uniform: int = ...
-
-BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
-BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
 
 class bsplclib:
     @staticmethod

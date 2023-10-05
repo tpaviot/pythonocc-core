@@ -94,6 +94,12 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum StdSelect_TypeOfEdge {
+	StdSelect_AnyEdge = 0,
+	StdSelect_Line = 1,
+	StdSelect_Circle = 2,
+};
+
 enum StdSelect_TypeOfFace {
 	StdSelect_AnyFace = 0,
 	StdSelect_Plane = 1,
@@ -102,12 +108,6 @@ enum StdSelect_TypeOfFace {
 	StdSelect_Torus = 4,
 	StdSelect_Revol = 5,
 	StdSelect_Cone = 6,
-};
-
-enum StdSelect_TypeOfEdge {
-	StdSelect_AnyEdge = 0,
-	StdSelect_Line = 1,
-	StdSelect_Circle = 2,
 };
 
 enum StdSelect_TypeOfSelectionImage {
@@ -127,6 +127,14 @@ enum StdSelect_TypeOfSelectionImage {
 /* python proxy classes for enums */
 %pythoncode {
 
+class StdSelect_TypeOfEdge(IntEnum):
+	StdSelect_AnyEdge = 0
+	StdSelect_Line = 1
+	StdSelect_Circle = 2
+StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
+StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
+StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
+
 class StdSelect_TypeOfFace(IntEnum):
 	StdSelect_AnyFace = 0
 	StdSelect_Plane = 1
@@ -142,14 +150,6 @@ StdSelect_Sphere = StdSelect_TypeOfFace.StdSelect_Sphere
 StdSelect_Torus = StdSelect_TypeOfFace.StdSelect_Torus
 StdSelect_Revol = StdSelect_TypeOfFace.StdSelect_Revol
 StdSelect_Cone = StdSelect_TypeOfFace.StdSelect_Cone
-
-class StdSelect_TypeOfEdge(IntEnum):
-	StdSelect_AnyEdge = 0
-	StdSelect_Line = 1
-	StdSelect_Circle = 2
-StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
-StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
-StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
 
 class StdSelect_TypeOfSelectionImage(IntEnum):
 	StdSelect_TypeOfSelectionImage_NormalizedDepth = 0
@@ -295,13 +295,14 @@ None
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** HasHilightMode ******************/
 		/**** md5 signature: 35c4cc36b9d1287cbb8be9209c167aef ****/
 		%feature("compactdefaultargs") HasHilightMode;
@@ -867,13 +868,14 @@ None
 		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Shape ******************/
 		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
 		%feature("compactdefaultargs") Shape;

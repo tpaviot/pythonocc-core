@@ -122,10 +122,10 @@ HLRAlgo_PolyMask_FMskFrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFrBack
 %wrap_handle(HLRAlgo_PolyInternalNode)
 %wrap_handle(HLRAlgo_PolyShellData)
 %wrap_handle(HLRAlgo_WiresBlock)
+%wrap_handle(HLRAlgo_HArray1OfPISeg)
 %wrap_handle(HLRAlgo_HArray1OfPINod)
 %wrap_handle(HLRAlgo_HArray1OfPHDat)
 %wrap_handle(HLRAlgo_HArray1OfTData)
-%wrap_handle(HLRAlgo_HArray1OfPISeg)
 /* end handles declaration */
 
 /* templates */
@@ -3082,6 +3082,17 @@ class HLRAlgo_PolyHidingData:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
+class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Transient {
+  public:
+    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper);
+    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPISeg::value_type& theValue);
+    HLRAlgo_HArray1OfPISeg(const HLRAlgo_Array1OfPISeg& theOther);
+    const HLRAlgo_Array1OfPISeg& Array1();
+    HLRAlgo_Array1OfPISeg& ChangeArray1();
+};
+%make_alias(HLRAlgo_HArray1OfPISeg)
+
+
 class HLRAlgo_HArray1OfPINod : public HLRAlgo_Array1OfPINod, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3113,17 +3124,6 @@ class HLRAlgo_HArray1OfTData : public HLRAlgo_Array1OfTData, public Standard_Tra
     HLRAlgo_Array1OfTData& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfTData)
-
-
-class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Transient {
-  public:
-    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPISeg::value_type& theValue);
-    HLRAlgo_HArray1OfPISeg(const HLRAlgo_Array1OfPISeg& theOther);
-    const HLRAlgo_Array1OfPISeg& Array1();
-    HLRAlgo_Array1OfPISeg& ChangeArray1();
-};
-%make_alias(HLRAlgo_HArray1OfPISeg)
 
 /* harray2 classes */
 /* hsequence classes */

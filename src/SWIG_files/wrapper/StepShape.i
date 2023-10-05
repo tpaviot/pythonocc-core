@@ -201,17 +201,17 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_OrientedClosedShell)
 %wrap_handle(StepShape_OrientedOpenShell)
 %wrap_handle(StepShape_SeamEdge)
-%wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
+%wrap_handle(StepShape_HArray1OfShell)
 %wrap_handle(StepShape_HArray1OfFaceBound)
-%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
-%wrap_handle(StepShape_HArray1OfConnectedFaceSet)
-%wrap_handle(StepShape_HArray1OfEdge)
 %wrap_handle(StepShape_HArray1OfFace)
 %wrap_handle(StepShape_HArray1OfShapeDimensionRepresentationItem)
-%wrap_handle(StepShape_HArray1OfValueQualifier)
-%wrap_handle(StepShape_HArray1OfShell)
+%wrap_handle(StepShape_HArray1OfConnectedFaceSet)
+%wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
+%wrap_handle(StepShape_HArray1OfEdge)
 %wrap_handle(StepShape_HArray1OfOrientedClosedShell)
+%wrap_handle(StepShape_HArray1OfValueQualifier)
 %wrap_handle(StepShape_HArray1OfOrientedEdge)
+%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
 /* end handles declaration */
 
 /* templates */
@@ -8848,15 +8848,15 @@ None
 
 /* harray1 classes */
 
-class StepShape_HArray1OfConnectedEdgeSet : public StepShape_Array1OfConnectedEdgeSet, public Standard_Transient {
+class StepShape_HArray1OfShell : public StepShape_Array1OfShell, public Standard_Transient {
   public:
-    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfConnectedEdgeSet::value_type& theValue);
-    StepShape_HArray1OfConnectedEdgeSet(const StepShape_Array1OfConnectedEdgeSet& theOther);
-    const StepShape_Array1OfConnectedEdgeSet& Array1();
-    StepShape_Array1OfConnectedEdgeSet& ChangeArray1();
+    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShell::value_type& theValue);
+    StepShape_HArray1OfShell(const StepShape_Array1OfShell& theOther);
+    const StepShape_Array1OfShell& Array1();
+    StepShape_Array1OfShell& ChangeArray1();
 };
-%make_alias(StepShape_HArray1OfConnectedEdgeSet)
+%make_alias(StepShape_HArray1OfShell)
 
 
 class StepShape_HArray1OfFaceBound : public StepShape_Array1OfFaceBound, public Standard_Transient {
@@ -8868,39 +8868,6 @@ class StepShape_HArray1OfFaceBound : public StepShape_Array1OfFaceBound, public 
     StepShape_Array1OfFaceBound& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfFaceBound)
-
-
-class StepShape_HArray1OfGeometricSetSelect : public StepShape_Array1OfGeometricSetSelect, public Standard_Transient {
-  public:
-    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfGeometricSetSelect::value_type& theValue);
-    StepShape_HArray1OfGeometricSetSelect(const StepShape_Array1OfGeometricSetSelect& theOther);
-    const StepShape_Array1OfGeometricSetSelect& Array1();
-    StepShape_Array1OfGeometricSetSelect& ChangeArray1();
-};
-%make_alias(StepShape_HArray1OfGeometricSetSelect)
-
-
-class StepShape_HArray1OfConnectedFaceSet : public StepShape_Array1OfConnectedFaceSet, public Standard_Transient {
-  public:
-    StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfConnectedFaceSet::value_type& theValue);
-    StepShape_HArray1OfConnectedFaceSet(const StepShape_Array1OfConnectedFaceSet& theOther);
-    const StepShape_Array1OfConnectedFaceSet& Array1();
-    StepShape_Array1OfConnectedFaceSet& ChangeArray1();
-};
-%make_alias(StepShape_HArray1OfConnectedFaceSet)
-
-
-class StepShape_HArray1OfEdge : public StepShape_Array1OfEdge, public Standard_Transient {
-  public:
-    StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfEdge::value_type& theValue);
-    StepShape_HArray1OfEdge(const StepShape_Array1OfEdge& theOther);
-    const StepShape_Array1OfEdge& Array1();
-    StepShape_Array1OfEdge& ChangeArray1();
-};
-%make_alias(StepShape_HArray1OfEdge)
 
 
 class StepShape_HArray1OfFace : public StepShape_Array1OfFace, public Standard_Transient {
@@ -8925,26 +8892,37 @@ class StepShape_HArray1OfShapeDimensionRepresentationItem : public StepShape_Arr
 %make_alias(StepShape_HArray1OfShapeDimensionRepresentationItem)
 
 
-class StepShape_HArray1OfValueQualifier : public StepShape_Array1OfValueQualifier, public Standard_Transient {
+class StepShape_HArray1OfConnectedFaceSet : public StepShape_Array1OfConnectedFaceSet, public Standard_Transient {
   public:
-    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfValueQualifier::value_type& theValue);
-    StepShape_HArray1OfValueQualifier(const StepShape_Array1OfValueQualifier& theOther);
-    const StepShape_Array1OfValueQualifier& Array1();
-    StepShape_Array1OfValueQualifier& ChangeArray1();
+    StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfConnectedFaceSet::value_type& theValue);
+    StepShape_HArray1OfConnectedFaceSet(const StepShape_Array1OfConnectedFaceSet& theOther);
+    const StepShape_Array1OfConnectedFaceSet& Array1();
+    StepShape_Array1OfConnectedFaceSet& ChangeArray1();
 };
-%make_alias(StepShape_HArray1OfValueQualifier)
+%make_alias(StepShape_HArray1OfConnectedFaceSet)
 
 
-class StepShape_HArray1OfShell : public StepShape_Array1OfShell, public Standard_Transient {
+class StepShape_HArray1OfConnectedEdgeSet : public StepShape_Array1OfConnectedEdgeSet, public Standard_Transient {
   public:
-    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShell::value_type& theValue);
-    StepShape_HArray1OfShell(const StepShape_Array1OfShell& theOther);
-    const StepShape_Array1OfShell& Array1();
-    StepShape_Array1OfShell& ChangeArray1();
+    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfConnectedEdgeSet::value_type& theValue);
+    StepShape_HArray1OfConnectedEdgeSet(const StepShape_Array1OfConnectedEdgeSet& theOther);
+    const StepShape_Array1OfConnectedEdgeSet& Array1();
+    StepShape_Array1OfConnectedEdgeSet& ChangeArray1();
 };
-%make_alias(StepShape_HArray1OfShell)
+%make_alias(StepShape_HArray1OfConnectedEdgeSet)
+
+
+class StepShape_HArray1OfEdge : public StepShape_Array1OfEdge, public Standard_Transient {
+  public:
+    StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfEdge::value_type& theValue);
+    StepShape_HArray1OfEdge(const StepShape_Array1OfEdge& theOther);
+    const StepShape_Array1OfEdge& Array1();
+    StepShape_Array1OfEdge& ChangeArray1();
+};
+%make_alias(StepShape_HArray1OfEdge)
 
 
 class StepShape_HArray1OfOrientedClosedShell : public StepShape_Array1OfOrientedClosedShell, public Standard_Transient {
@@ -8958,6 +8936,17 @@ class StepShape_HArray1OfOrientedClosedShell : public StepShape_Array1OfOriented
 %make_alias(StepShape_HArray1OfOrientedClosedShell)
 
 
+class StepShape_HArray1OfValueQualifier : public StepShape_Array1OfValueQualifier, public Standard_Transient {
+  public:
+    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfValueQualifier::value_type& theValue);
+    StepShape_HArray1OfValueQualifier(const StepShape_Array1OfValueQualifier& theOther);
+    const StepShape_Array1OfValueQualifier& Array1();
+    StepShape_Array1OfValueQualifier& ChangeArray1();
+};
+%make_alias(StepShape_HArray1OfValueQualifier)
+
+
 class StepShape_HArray1OfOrientedEdge : public StepShape_Array1OfOrientedEdge, public Standard_Transient {
   public:
     StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -8967,6 +8956,17 @@ class StepShape_HArray1OfOrientedEdge : public StepShape_Array1OfOrientedEdge, p
     StepShape_Array1OfOrientedEdge& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfOrientedEdge)
+
+
+class StepShape_HArray1OfGeometricSetSelect : public StepShape_Array1OfGeometricSetSelect, public Standard_Transient {
+  public:
+    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfGeometricSetSelect::value_type& theValue);
+    StepShape_HArray1OfGeometricSetSelect(const StepShape_Array1OfGeometricSetSelect& theOther);
+    const StepShape_Array1OfGeometricSetSelect& Array1();
+    StepShape_Array1OfGeometricSetSelect& ChangeArray1();
+};
+%make_alias(StepShape_HArray1OfGeometricSetSelect)
 
 /* harray2 classes */
 /* hsequence classes */

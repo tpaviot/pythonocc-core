@@ -99,11 +99,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum PrsMgr_TypeOfPresentation3d {
-	PrsMgr_TOP_AllView = 0,
-	PrsMgr_TOP_ProjectorDependent = 1,
-};
-
 enum PrsMgr_DisplayStatus {
 	PrsMgr_DisplayStatus_Displayed = 0,
 	PrsMgr_DisplayStatus_Erased = 1,
@@ -113,16 +108,15 @@ enum PrsMgr_DisplayStatus {
 	AIS_DS_None = PrsMgr_DisplayStatus_None,
 };
 
+enum PrsMgr_TypeOfPresentation3d {
+	PrsMgr_TOP_AllView = 0,
+	PrsMgr_TOP_ProjectorDependent = 1,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class PrsMgr_TypeOfPresentation3d(IntEnum):
-	PrsMgr_TOP_AllView = 0
-	PrsMgr_TOP_ProjectorDependent = 1
-PrsMgr_TOP_AllView = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_AllView
-PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependent
 
 class PrsMgr_DisplayStatus(IntEnum):
 	PrsMgr_DisplayStatus_Displayed = 0
@@ -137,6 +131,12 @@ PrsMgr_DisplayStatus_None = PrsMgr_DisplayStatus.PrsMgr_DisplayStatus_None
 AIS_DS_Displayed = PrsMgr_DisplayStatus.AIS_DS_Displayed
 AIS_DS_Erased = PrsMgr_DisplayStatus.AIS_DS_Erased
 AIS_DS_None = PrsMgr_DisplayStatus.AIS_DS_None
+
+class PrsMgr_TypeOfPresentation3d(IntEnum):
+	PrsMgr_TOP_AllView = 0
+	PrsMgr_TOP_ProjectorDependent = 1
+PrsMgr_TOP_AllView = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_AllView
+PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependent
 };
 /* end python proxy for enums */
 
@@ -372,13 +372,14 @@ PrsMgr_DisplayStatus
 		PrsMgr_DisplayStatus DisplayStatus();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** DynamicHilightAttributes ******************/
 		/**** md5 signature: 9c44b3555020951e689ea9d2e141bc3d ****/
 		%feature("compactdefaultargs") DynamicHilightAttributes;
@@ -1315,13 +1316,14 @@ None
 		virtual void Display();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Erase ******************/
 		/**** md5 signature: 1226ba71f21d492e9a9175cd12d59e28 ****/
 		%feature("compactdefaultargs") Erase;

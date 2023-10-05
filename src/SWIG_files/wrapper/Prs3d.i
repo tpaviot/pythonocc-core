@@ -98,31 +98,8 @@ from OCC.Core.Exception import *
 
 %include "Prs3d_Point.hxx";
 /* public enums */
-enum Prs3d_DimensionTextVerticalPosition {
-	Prs3d_DTVP_Above = 0,
-	Prs3d_DTVP_Below = 1,
-	Prs3d_DTVP_Center = 2,
-};
-
-enum Prs3d_TypeOfHighlight {
-	Prs3d_TypeOfHighlight_None = 0,
-	Prs3d_TypeOfHighlight_Selected = 1,
-	Prs3d_TypeOfHighlight_Dynamic = 2,
-	Prs3d_TypeOfHighlight_LocalSelected = 3,
-	Prs3d_TypeOfHighlight_LocalDynamic = 4,
-	Prs3d_TypeOfHighlight_SubIntensity = 5,
-	Prs3d_TypeOfHighlight_NB = 6,
-};
-
-enum Prs3d_VertexDrawMode {
-	Prs3d_VDM_Isolated = 0,
-	Prs3d_VDM_All = 1,
-	Prs3d_VDM_Inherited = 2,
-};
-
-enum Prs3d_DatumMode {
-	Prs3d_DM_WireFrame = 0,
-	Prs3d_DM_Shaded = 1,
+enum  {
+	Prs3d_DatumAttribute_NB = Prs3d_DatumAttribute_ShadingNumberOfFacettes + 1,
 };
 
 enum Prs3d_DatumAttribute {
@@ -144,28 +121,6 @@ enum Prs3d_DatumAttribute {
 	Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute_ShadingNumberOfFacettes,
 };
 
-enum  {
-	Prs3d_DatumAttribute_NB = Prs3d_DatumAttribute_ShadingNumberOfFacettes + 1,
-};
-
-enum Prs3d_DimensionTextHorizontalPosition {
-	Prs3d_DTHP_Left = 0,
-	Prs3d_DTHP_Right = 1,
-	Prs3d_DTHP_Center = 2,
-	Prs3d_DTHP_Fit = 3,
-};
-
-enum Prs3d_TypeOfLinePicking {
-	Prs3d_TOLP_Point = 0,
-	Prs3d_TOLP_Segment = 1,
-};
-
-enum Prs3d_TypeOfHLR {
-	Prs3d_TOH_NotSet = 0,
-	Prs3d_TOH_PolyAlgo = 1,
-	Prs3d_TOH_Algo = 2,
-};
-
 enum Prs3d_DatumAxes {
 	Prs3d_DatumAxes_XAxis = 1,
 	Prs3d_DatumAxes_YAxis = 2,
@@ -181,6 +136,11 @@ enum Prs3d_DatumAxes {
 	Prs3d_DA_YZAxis = Prs3d_DatumAxes_YZAxes,
 	Prs3d_DA_XZAxis = Prs3d_DatumAxes_XZAxes,
 	Prs3d_DA_XYZAxis = Prs3d_DatumAxes_XYZAxes,
+};
+
+enum Prs3d_DatumMode {
+	Prs3d_DM_WireFrame = 0,
+	Prs3d_DM_Shaded = 1,
 };
 
 enum Prs3d_DatumParts {
@@ -208,58 +168,56 @@ enum Prs3d_DatumParts {
 	Prs3d_DP_None = Prs3d_DatumParts_None,
 };
 
-enum  {
-	Prs3d_DatumParts_NB = Prs3d_DatumParts_None + 1,
-};
-
 enum Prs3d_DimensionArrowOrientation {
 	Prs3d_DAO_Internal = 0,
 	Prs3d_DAO_External = 1,
 	Prs3d_DAO_Fit = 2,
 };
 
+enum Prs3d_DimensionTextHorizontalPosition {
+	Prs3d_DTHP_Left = 0,
+	Prs3d_DTHP_Right = 1,
+	Prs3d_DTHP_Center = 2,
+	Prs3d_DTHP_Fit = 3,
+};
+
+enum Prs3d_DimensionTextVerticalPosition {
+	Prs3d_DTVP_Above = 0,
+	Prs3d_DTVP_Below = 1,
+	Prs3d_DTVP_Center = 2,
+};
+
+enum Prs3d_TypeOfHLR {
+	Prs3d_TOH_NotSet = 0,
+	Prs3d_TOH_PolyAlgo = 1,
+	Prs3d_TOH_Algo = 2,
+};
+
+enum Prs3d_TypeOfHighlight {
+	Prs3d_TypeOfHighlight_None = 0,
+	Prs3d_TypeOfHighlight_Selected = 1,
+	Prs3d_TypeOfHighlight_Dynamic = 2,
+	Prs3d_TypeOfHighlight_LocalSelected = 3,
+	Prs3d_TypeOfHighlight_LocalDynamic = 4,
+	Prs3d_TypeOfHighlight_SubIntensity = 5,
+	Prs3d_TypeOfHighlight_NB = 6,
+};
+
+enum Prs3d_TypeOfLinePicking {
+	Prs3d_TOLP_Point = 0,
+	Prs3d_TOLP_Segment = 1,
+};
+
+enum Prs3d_VertexDrawMode {
+	Prs3d_VDM_Isolated = 0,
+	Prs3d_VDM_All = 1,
+	Prs3d_VDM_Inherited = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class Prs3d_DimensionTextVerticalPosition(IntEnum):
-	Prs3d_DTVP_Above = 0
-	Prs3d_DTVP_Below = 1
-	Prs3d_DTVP_Center = 2
-Prs3d_DTVP_Above = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Above
-Prs3d_DTVP_Below = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Below
-Prs3d_DTVP_Center = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Center
-
-class Prs3d_TypeOfHighlight(IntEnum):
-	Prs3d_TypeOfHighlight_None = 0
-	Prs3d_TypeOfHighlight_Selected = 1
-	Prs3d_TypeOfHighlight_Dynamic = 2
-	Prs3d_TypeOfHighlight_LocalSelected = 3
-	Prs3d_TypeOfHighlight_LocalDynamic = 4
-	Prs3d_TypeOfHighlight_SubIntensity = 5
-	Prs3d_TypeOfHighlight_NB = 6
-Prs3d_TypeOfHighlight_None = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_None
-Prs3d_TypeOfHighlight_Selected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Selected
-Prs3d_TypeOfHighlight_Dynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Dynamic
-Prs3d_TypeOfHighlight_LocalSelected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalSelected
-Prs3d_TypeOfHighlight_LocalDynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalDynamic
-Prs3d_TypeOfHighlight_SubIntensity = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_SubIntensity
-Prs3d_TypeOfHighlight_NB = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_NB
-
-class Prs3d_VertexDrawMode(IntEnum):
-	Prs3d_VDM_Isolated = 0
-	Prs3d_VDM_All = 1
-	Prs3d_VDM_Inherited = 2
-Prs3d_VDM_Isolated = Prs3d_VertexDrawMode.Prs3d_VDM_Isolated
-Prs3d_VDM_All = Prs3d_VertexDrawMode.Prs3d_VDM_All
-Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
-
-class Prs3d_DatumMode(IntEnum):
-	Prs3d_DM_WireFrame = 0
-	Prs3d_DM_Shaded = 1
-Prs3d_DM_WireFrame = Prs3d_DatumMode.Prs3d_DM_WireFrame
-Prs3d_DM_Shaded = Prs3d_DatumMode.Prs3d_DM_Shaded
 
 class Prs3d_DatumAttribute(IntEnum):
 	Prs3d_DatumAttribute_XAxisLength = 0
@@ -295,30 +253,6 @@ Prs3d_DP_ShadingConeLengthPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingConeLen
 Prs3d_DP_ShadingOriginRadiusPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingOriginRadiusPercent
 Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute.Prs3d_DP_ShadingNumberOfFacettes
 
-class Prs3d_DimensionTextHorizontalPosition(IntEnum):
-	Prs3d_DTHP_Left = 0
-	Prs3d_DTHP_Right = 1
-	Prs3d_DTHP_Center = 2
-	Prs3d_DTHP_Fit = 3
-Prs3d_DTHP_Left = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Left
-Prs3d_DTHP_Right = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Right
-Prs3d_DTHP_Center = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Center
-Prs3d_DTHP_Fit = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Fit
-
-class Prs3d_TypeOfLinePicking(IntEnum):
-	Prs3d_TOLP_Point = 0
-	Prs3d_TOLP_Segment = 1
-Prs3d_TOLP_Point = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Point
-Prs3d_TOLP_Segment = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Segment
-
-class Prs3d_TypeOfHLR(IntEnum):
-	Prs3d_TOH_NotSet = 0
-	Prs3d_TOH_PolyAlgo = 1
-	Prs3d_TOH_Algo = 2
-Prs3d_TOH_NotSet = Prs3d_TypeOfHLR.Prs3d_TOH_NotSet
-Prs3d_TOH_PolyAlgo = Prs3d_TypeOfHLR.Prs3d_TOH_PolyAlgo
-Prs3d_TOH_Algo = Prs3d_TypeOfHLR.Prs3d_TOH_Algo
-
 class Prs3d_DatumAxes(IntEnum):
 	Prs3d_DatumAxes_XAxis = 1
 	Prs3d_DatumAxes_YAxis = 2
@@ -348,6 +282,12 @@ Prs3d_DA_XYAxis = Prs3d_DatumAxes.Prs3d_DA_XYAxis
 Prs3d_DA_YZAxis = Prs3d_DatumAxes.Prs3d_DA_YZAxis
 Prs3d_DA_XZAxis = Prs3d_DatumAxes.Prs3d_DA_XZAxis
 Prs3d_DA_XYZAxis = Prs3d_DatumAxes.Prs3d_DA_XYZAxis
+
+class Prs3d_DatumMode(IntEnum):
+	Prs3d_DM_WireFrame = 0
+	Prs3d_DM_Shaded = 1
+Prs3d_DM_WireFrame = Prs3d_DatumMode.Prs3d_DM_WireFrame
+Prs3d_DM_Shaded = Prs3d_DatumMode.Prs3d_DM_Shaded
 
 class Prs3d_DatumParts(IntEnum):
 	Prs3d_DatumParts_Origin = 0
@@ -402,6 +342,62 @@ class Prs3d_DimensionArrowOrientation(IntEnum):
 Prs3d_DAO_Internal = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Internal
 Prs3d_DAO_External = Prs3d_DimensionArrowOrientation.Prs3d_DAO_External
 Prs3d_DAO_Fit = Prs3d_DimensionArrowOrientation.Prs3d_DAO_Fit
+
+class Prs3d_DimensionTextHorizontalPosition(IntEnum):
+	Prs3d_DTHP_Left = 0
+	Prs3d_DTHP_Right = 1
+	Prs3d_DTHP_Center = 2
+	Prs3d_DTHP_Fit = 3
+Prs3d_DTHP_Left = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Left
+Prs3d_DTHP_Right = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Right
+Prs3d_DTHP_Center = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Center
+Prs3d_DTHP_Fit = Prs3d_DimensionTextHorizontalPosition.Prs3d_DTHP_Fit
+
+class Prs3d_DimensionTextVerticalPosition(IntEnum):
+	Prs3d_DTVP_Above = 0
+	Prs3d_DTVP_Below = 1
+	Prs3d_DTVP_Center = 2
+Prs3d_DTVP_Above = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Above
+Prs3d_DTVP_Below = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Below
+Prs3d_DTVP_Center = Prs3d_DimensionTextVerticalPosition.Prs3d_DTVP_Center
+
+class Prs3d_TypeOfHLR(IntEnum):
+	Prs3d_TOH_NotSet = 0
+	Prs3d_TOH_PolyAlgo = 1
+	Prs3d_TOH_Algo = 2
+Prs3d_TOH_NotSet = Prs3d_TypeOfHLR.Prs3d_TOH_NotSet
+Prs3d_TOH_PolyAlgo = Prs3d_TypeOfHLR.Prs3d_TOH_PolyAlgo
+Prs3d_TOH_Algo = Prs3d_TypeOfHLR.Prs3d_TOH_Algo
+
+class Prs3d_TypeOfHighlight(IntEnum):
+	Prs3d_TypeOfHighlight_None = 0
+	Prs3d_TypeOfHighlight_Selected = 1
+	Prs3d_TypeOfHighlight_Dynamic = 2
+	Prs3d_TypeOfHighlight_LocalSelected = 3
+	Prs3d_TypeOfHighlight_LocalDynamic = 4
+	Prs3d_TypeOfHighlight_SubIntensity = 5
+	Prs3d_TypeOfHighlight_NB = 6
+Prs3d_TypeOfHighlight_None = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_None
+Prs3d_TypeOfHighlight_Selected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Selected
+Prs3d_TypeOfHighlight_Dynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_Dynamic
+Prs3d_TypeOfHighlight_LocalSelected = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalSelected
+Prs3d_TypeOfHighlight_LocalDynamic = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_LocalDynamic
+Prs3d_TypeOfHighlight_SubIntensity = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_SubIntensity
+Prs3d_TypeOfHighlight_NB = Prs3d_TypeOfHighlight.Prs3d_TypeOfHighlight_NB
+
+class Prs3d_TypeOfLinePicking(IntEnum):
+	Prs3d_TOLP_Point = 0
+	Prs3d_TOLP_Segment = 1
+Prs3d_TOLP_Point = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Point
+Prs3d_TOLP_Segment = Prs3d_TypeOfLinePicking.Prs3d_TOLP_Segment
+
+class Prs3d_VertexDrawMode(IntEnum):
+	Prs3d_VDM_Isolated = 0
+	Prs3d_VDM_All = 1
+	Prs3d_VDM_Inherited = 2
+Prs3d_VDM_Isolated = Prs3d_VertexDrawMode.Prs3d_VDM_Isolated
+Prs3d_VDM_All = Prs3d_VertexDrawMode.Prs3d_VDM_All
+Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
 };
 /* end python proxy for enums */
 
@@ -896,13 +892,14 @@ bool
 		Standard_Boolean DrawHiddenLine();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EnableDrawHiddenLine ******************/
 		/**** md5 signature: 5cd9db795aefc1eee38a63bd3f8ef65f ****/
 		%feature("compactdefaultargs") EnableDrawHiddenLine;
@@ -2853,13 +2850,14 @@ None
 		virtual void CalculateBoundBox();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ParentAffinity ******************/
 		/**** md5 signature: 9b0bdbaca5cd51b4bff82600c75ff027 ****/
 		%feature("compactdefaultargs") ParentAffinity;
@@ -3198,13 +3196,14 @@ opencascade::handle<Graphic3d_AspectLine3d>
 		const opencascade::handle<Graphic3d_AspectLine3d> & Aspect();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** IsZoomable ******************/
 		/**** md5 signature: 0e11552facaac98faf2474f0071c0b9d ****/
 		%feature("compactdefaultargs") IsZoomable;
@@ -3553,13 +3552,14 @@ bool
 		Standard_Boolean DrawDatumPart(Prs3d_DatumParts thePart);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** LineAspect ******************/
 		/**** md5 signature: 9af72ca119f843e15222dd5546dc6dfb ****/
 		%feature("compactdefaultargs") LineAspect;
@@ -3848,13 +3848,14 @@ float
 		Standard_Real ArrowTailSize();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ExtensionSize ******************/
 		/**** md5 signature: 876d08434cb9c896916a7933c4b53809 ****/
 		%feature("compactdefaultargs") ExtensionSize;
@@ -4235,13 +4236,14 @@ opencascade::handle<Graphic3d_AspectLine3d>
 		const opencascade::handle<Graphic3d_AspectLine3d> & Aspect();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** SetAspect ******************/
 		/**** md5 signature: 56753271c32070a7f0d3996502dbd4eb ****/
 		%feature("compactdefaultargs") SetAspect;
@@ -4418,13 +4420,14 @@ bool
 		Standard_Boolean DisplayIso();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EdgesAspect ******************/
 		/**** md5 signature: 99d38bc9cc235945a249087a8e222d9d ****/
 		%feature("compactdefaultargs") EdgesAspect;
@@ -4694,13 +4697,14 @@ opencascade::handle<Graphic3d_AspectMarker3d>
 		const opencascade::handle<Graphic3d_AspectMarker3d> & Aspect();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetTexture ******************/
 		/**** md5 signature: 136a09247f5a3ec392ae0210becb9db4 ****/
 		%feature("compactdefaultargs") GetTexture;
@@ -4857,13 +4861,14 @@ Quantity_Color
 		const Quantity_Color & Color(const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Material ******************/
 		/**** md5 signature: 5931f39cda36847ef31b8a02dd06c896 ****/
 		%feature("compactdefaultargs") Material;
@@ -5027,13 +5032,14 @@ opencascade::handle<Graphic3d_AspectText3d>
 		const opencascade::handle<Graphic3d_AspectText3d> & Aspect();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** Height ******************/
 		/**** md5 signature: e5e3c5b90c971d7ac0e43c341f82b9e0 ****/
 		%feature("compactdefaultargs") Height;

@@ -72,6 +72,11 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum  {
+	TDocStd_FormatVersion_LOWER = TDocStd_FormatVersion_VERSION_2,
+	TDocStd_FormatVersion_UPPER = TDocStd_FormatVersion_VERSION_12,
+};
+
 enum TDocStd_FormatVersion {
 	TDocStd_FormatVersion_VERSION_2 = 2,
 	TDocStd_FormatVersion_VERSION_3 = 3,
@@ -85,11 +90,6 @@ enum TDocStd_FormatVersion {
 	TDocStd_FormatVersion_VERSION_11 = 11,
 	TDocStd_FormatVersion_VERSION_12 = 12,
 	TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion_VERSION_12,
-};
-
-enum  {
-	TDocStd_FormatVersion_LOWER = TDocStd_FormatVersion_VERSION_2,
-	TDocStd_FormatVersion_UPPER = TDocStd_FormatVersion_VERSION_12,
 };
 
 /* end public enums declaration */
@@ -246,13 +246,14 @@ None
 		void DefineFormat(TCollection_AsciiString theFormat, TCollection_AsciiString theDescription, TCollection_AsciiString theExtension, const opencascade::handle<PCDM_RetrievalDriver> & theReader, const opencascade::handle<PCDM_StorageDriver> & theWriter);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetDocument ******************/
 		/**** md5 signature: 15b7beb5a9532b9cd3868298ccdb9245 ****/
 		%feature("compactdefaultargs") GetDocument;
@@ -837,13 +838,14 @@ TDocStd_FormatVersion
 		static TDocStd_FormatVersion CurrentStorageFormatVersion();
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** EmptyLabelsSavingMode ******************/
 		/**** md5 signature: ebbf4e01e7bb5a968c5adb29c08e5c61 ****/
 		%feature("compactdefaultargs") EmptyLabelsSavingMode;
@@ -1917,13 +1919,14 @@ None
             return s.str();}
         };
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** GetDocument ******************/
 		/**** md5 signature: 79c1f99856b1ab066d94b2ba86b72e8b ****/
 		%feature("compactdefaultargs") GetDocument;

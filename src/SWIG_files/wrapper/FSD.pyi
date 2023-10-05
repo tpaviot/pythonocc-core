@@ -9,19 +9,19 @@ FSD_BStream = NewType('FSD_BStream', FILE)
 FSD_FStream = NewType('FSD_FStream', Any)
 
 #classnotwrapped
-class FSD_File: ...
-
-#classnotwrapped
-class FSD_BinaryFile: ...
-
-#classnotwrapped
 class FSD_Base64: ...
 
 #classnotwrapped
 class FSD_CmpFile: ...
 
 #classnotwrapped
+class FSD_File: ...
+
+#classnotwrapped
 class FSD_FileHeader: ...
+
+#classnotwrapped
+class FSD_BinaryFile: ...
 
 # harray1 classes
 # harray2 classes

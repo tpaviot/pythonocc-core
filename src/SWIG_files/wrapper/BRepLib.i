@@ -93,11 +93,12 @@ enum BRepLib_EdgeError {
 	BRepLib_LineThroughIdenticPoints = 6,
 };
 
-enum BRepLib_ShellError {
-	BRepLib_ShellDone = 0,
-	BRepLib_EmptyShell = 1,
-	BRepLib_DisconnectedShell = 2,
-	BRepLib_ShellParametersOutOfRange = 3,
+enum BRepLib_FaceError {
+	BRepLib_FaceDone = 0,
+	BRepLib_NoFace = 1,
+	BRepLib_NotPlanar = 2,
+	BRepLib_CurveProjectionFailed = 3,
+	BRepLib_ParametersOutOfRange = 4,
 };
 
 enum BRepLib_ShapeModification {
@@ -108,19 +109,18 @@ enum BRepLib_ShapeModification {
 	BRepLib_BoundaryModified = 4,
 };
 
+enum BRepLib_ShellError {
+	BRepLib_ShellDone = 0,
+	BRepLib_EmptyShell = 1,
+	BRepLib_DisconnectedShell = 2,
+	BRepLib_ShellParametersOutOfRange = 3,
+};
+
 enum BRepLib_WireError {
 	BRepLib_WireDone = 0,
 	BRepLib_EmptyWire = 1,
 	BRepLib_DisconnectedWire = 2,
 	BRepLib_NonManifoldWire = 3,
-};
-
-enum BRepLib_FaceError {
-	BRepLib_FaceDone = 0,
-	BRepLib_NoFace = 1,
-	BRepLib_NotPlanar = 2,
-	BRepLib_CurveProjectionFailed = 3,
-	BRepLib_ParametersOutOfRange = 4,
 };
 
 /* end public enums declaration */
@@ -144,15 +144,17 @@ BRepLib_PointWithInfiniteParameter = BRepLib_EdgeError.BRepLib_PointWithInfinite
 BRepLib_DifferentsPointAndParameter = BRepLib_EdgeError.BRepLib_DifferentsPointAndParameter
 BRepLib_LineThroughIdenticPoints = BRepLib_EdgeError.BRepLib_LineThroughIdenticPoints
 
-class BRepLib_ShellError(IntEnum):
-	BRepLib_ShellDone = 0
-	BRepLib_EmptyShell = 1
-	BRepLib_DisconnectedShell = 2
-	BRepLib_ShellParametersOutOfRange = 3
-BRepLib_ShellDone = BRepLib_ShellError.BRepLib_ShellDone
-BRepLib_EmptyShell = BRepLib_ShellError.BRepLib_EmptyShell
-BRepLib_DisconnectedShell = BRepLib_ShellError.BRepLib_DisconnectedShell
-BRepLib_ShellParametersOutOfRange = BRepLib_ShellError.BRepLib_ShellParametersOutOfRange
+class BRepLib_FaceError(IntEnum):
+	BRepLib_FaceDone = 0
+	BRepLib_NoFace = 1
+	BRepLib_NotPlanar = 2
+	BRepLib_CurveProjectionFailed = 3
+	BRepLib_ParametersOutOfRange = 4
+BRepLib_FaceDone = BRepLib_FaceError.BRepLib_FaceDone
+BRepLib_NoFace = BRepLib_FaceError.BRepLib_NoFace
+BRepLib_NotPlanar = BRepLib_FaceError.BRepLib_NotPlanar
+BRepLib_CurveProjectionFailed = BRepLib_FaceError.BRepLib_CurveProjectionFailed
+BRepLib_ParametersOutOfRange = BRepLib_FaceError.BRepLib_ParametersOutOfRange
 
 class BRepLib_ShapeModification(IntEnum):
 	BRepLib_Preserved = 0
@@ -166,6 +168,16 @@ BRepLib_Trimmed = BRepLib_ShapeModification.BRepLib_Trimmed
 BRepLib_Merged = BRepLib_ShapeModification.BRepLib_Merged
 BRepLib_BoundaryModified = BRepLib_ShapeModification.BRepLib_BoundaryModified
 
+class BRepLib_ShellError(IntEnum):
+	BRepLib_ShellDone = 0
+	BRepLib_EmptyShell = 1
+	BRepLib_DisconnectedShell = 2
+	BRepLib_ShellParametersOutOfRange = 3
+BRepLib_ShellDone = BRepLib_ShellError.BRepLib_ShellDone
+BRepLib_EmptyShell = BRepLib_ShellError.BRepLib_EmptyShell
+BRepLib_DisconnectedShell = BRepLib_ShellError.BRepLib_DisconnectedShell
+BRepLib_ShellParametersOutOfRange = BRepLib_ShellError.BRepLib_ShellParametersOutOfRange
+
 class BRepLib_WireError(IntEnum):
 	BRepLib_WireDone = 0
 	BRepLib_EmptyWire = 1
@@ -175,18 +187,6 @@ BRepLib_WireDone = BRepLib_WireError.BRepLib_WireDone
 BRepLib_EmptyWire = BRepLib_WireError.BRepLib_EmptyWire
 BRepLib_DisconnectedWire = BRepLib_WireError.BRepLib_DisconnectedWire
 BRepLib_NonManifoldWire = BRepLib_WireError.BRepLib_NonManifoldWire
-
-class BRepLib_FaceError(IntEnum):
-	BRepLib_FaceDone = 0
-	BRepLib_NoFace = 1
-	BRepLib_NotPlanar = 2
-	BRepLib_CurveProjectionFailed = 3
-	BRepLib_ParametersOutOfRange = 4
-BRepLib_FaceDone = BRepLib_FaceError.BRepLib_FaceDone
-BRepLib_NoFace = BRepLib_FaceError.BRepLib_NoFace
-BRepLib_NotPlanar = BRepLib_FaceError.BRepLib_NotPlanar
-BRepLib_CurveProjectionFailed = BRepLib_FaceError.BRepLib_CurveProjectionFailed
-BRepLib_ParametersOutOfRange = BRepLib_FaceError.BRepLib_ParametersOutOfRange
 };
 /* end python proxy for enums */
 

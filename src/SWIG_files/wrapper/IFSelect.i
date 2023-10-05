@@ -66,18 +66,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum IFSelect_PrintFail {
-	IFSelect_FailOnly = 0,
-	IFSelect_FailAndWarn = 1,
-};
-
-enum IFSelect_RemainMode {
-	IFSelect_RemainForget = 0,
-	IFSelect_RemainCompute = 1,
-	IFSelect_RemainDisplay = 2,
-	IFSelect_RemainUndo = 3,
-};
-
 enum IFSelect_EditValue {
 	IFSelect_Optional = 0,
 	IFSelect_Editable = 1,
@@ -85,14 +73,6 @@ enum IFSelect_EditValue {
 	IFSelect_EditComputed = 3,
 	IFSelect_EditRead = 4,
 	IFSelect_EditDynamic = 5,
-};
-
-enum IFSelect_ReturnStatus {
-	IFSelect_RetVoid = 0,
-	IFSelect_RetDone = 1,
-	IFSelect_RetError = 2,
-	IFSelect_RetFail = 3,
-	IFSelect_RetStop = 4,
 };
 
 enum IFSelect_PrintCount {
@@ -107,26 +87,30 @@ enum IFSelect_PrintCount {
 	IFSelect_ResultCount = 8,
 };
 
+enum IFSelect_PrintFail {
+	IFSelect_FailOnly = 0,
+	IFSelect_FailAndWarn = 1,
+};
+
+enum IFSelect_RemainMode {
+	IFSelect_RemainForget = 0,
+	IFSelect_RemainCompute = 1,
+	IFSelect_RemainDisplay = 2,
+	IFSelect_RemainUndo = 3,
+};
+
+enum IFSelect_ReturnStatus {
+	IFSelect_RetVoid = 0,
+	IFSelect_RetDone = 1,
+	IFSelect_RetError = 2,
+	IFSelect_RetFail = 3,
+	IFSelect_RetStop = 4,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class IFSelect_PrintFail(IntEnum):
-	IFSelect_FailOnly = 0
-	IFSelect_FailAndWarn = 1
-IFSelect_FailOnly = IFSelect_PrintFail.IFSelect_FailOnly
-IFSelect_FailAndWarn = IFSelect_PrintFail.IFSelect_FailAndWarn
-
-class IFSelect_RemainMode(IntEnum):
-	IFSelect_RemainForget = 0
-	IFSelect_RemainCompute = 1
-	IFSelect_RemainDisplay = 2
-	IFSelect_RemainUndo = 3
-IFSelect_RemainForget = IFSelect_RemainMode.IFSelect_RemainForget
-IFSelect_RemainCompute = IFSelect_RemainMode.IFSelect_RemainCompute
-IFSelect_RemainDisplay = IFSelect_RemainMode.IFSelect_RemainDisplay
-IFSelect_RemainUndo = IFSelect_RemainMode.IFSelect_RemainUndo
 
 class IFSelect_EditValue(IntEnum):
 	IFSelect_Optional = 0
@@ -141,18 +125,6 @@ IFSelect_EditProtected = IFSelect_EditValue.IFSelect_EditProtected
 IFSelect_EditComputed = IFSelect_EditValue.IFSelect_EditComputed
 IFSelect_EditRead = IFSelect_EditValue.IFSelect_EditRead
 IFSelect_EditDynamic = IFSelect_EditValue.IFSelect_EditDynamic
-
-class IFSelect_ReturnStatus(IntEnum):
-	IFSelect_RetVoid = 0
-	IFSelect_RetDone = 1
-	IFSelect_RetError = 2
-	IFSelect_RetFail = 3
-	IFSelect_RetStop = 4
-IFSelect_RetVoid = IFSelect_ReturnStatus.IFSelect_RetVoid
-IFSelect_RetDone = IFSelect_ReturnStatus.IFSelect_RetDone
-IFSelect_RetError = IFSelect_ReturnStatus.IFSelect_RetError
-IFSelect_RetFail = IFSelect_ReturnStatus.IFSelect_RetFail
-IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 
 class IFSelect_PrintCount(IntEnum):
 	IFSelect_ItemsByEntity = 0
@@ -173,6 +145,34 @@ IFSelect_CountSummary = IFSelect_PrintCount.IFSelect_CountSummary
 IFSelect_GeneralInfo = IFSelect_PrintCount.IFSelect_GeneralInfo
 IFSelect_Mapping = IFSelect_PrintCount.IFSelect_Mapping
 IFSelect_ResultCount = IFSelect_PrintCount.IFSelect_ResultCount
+
+class IFSelect_PrintFail(IntEnum):
+	IFSelect_FailOnly = 0
+	IFSelect_FailAndWarn = 1
+IFSelect_FailOnly = IFSelect_PrintFail.IFSelect_FailOnly
+IFSelect_FailAndWarn = IFSelect_PrintFail.IFSelect_FailAndWarn
+
+class IFSelect_RemainMode(IntEnum):
+	IFSelect_RemainForget = 0
+	IFSelect_RemainCompute = 1
+	IFSelect_RemainDisplay = 2
+	IFSelect_RemainUndo = 3
+IFSelect_RemainForget = IFSelect_RemainMode.IFSelect_RemainForget
+IFSelect_RemainCompute = IFSelect_RemainMode.IFSelect_RemainCompute
+IFSelect_RemainDisplay = IFSelect_RemainMode.IFSelect_RemainDisplay
+IFSelect_RemainUndo = IFSelect_RemainMode.IFSelect_RemainUndo
+
+class IFSelect_ReturnStatus(IntEnum):
+	IFSelect_RetVoid = 0
+	IFSelect_RetDone = 1
+	IFSelect_RetError = 2
+	IFSelect_RetFail = 3
+	IFSelect_RetStop = 4
+IFSelect_RetVoid = IFSelect_ReturnStatus.IFSelect_RetVoid
+IFSelect_RetDone = IFSelect_ReturnStatus.IFSelect_RetDone
+IFSelect_RetError = IFSelect_ReturnStatus.IFSelect_RetError
+IFSelect_RetFail = IFSelect_ReturnStatus.IFSelect_RetFail
+IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 };
 /* end python proxy for enums */
 

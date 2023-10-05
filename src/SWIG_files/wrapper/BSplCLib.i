@@ -67,21 +67,27 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum BSplCLib_KnotDistribution {
+	BSplCLib_NonUniform = 0,
+	BSplCLib_Uniform = 1,
+};
+
 enum BSplCLib_MultDistribution {
 	BSplCLib_NonConstant = 0,
 	BSplCLib_Constant = 1,
 	BSplCLib_QuasiConstant = 2,
 };
 
-enum BSplCLib_KnotDistribution {
-	BSplCLib_NonUniform = 0,
-	BSplCLib_Uniform = 1,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class BSplCLib_KnotDistribution(IntEnum):
+	BSplCLib_NonUniform = 0
+	BSplCLib_Uniform = 1
+BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
+BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
 
 class BSplCLib_MultDistribution(IntEnum):
 	BSplCLib_NonConstant = 0
@@ -90,12 +96,6 @@ class BSplCLib_MultDistribution(IntEnum):
 BSplCLib_NonConstant = BSplCLib_MultDistribution.BSplCLib_NonConstant
 BSplCLib_Constant = BSplCLib_MultDistribution.BSplCLib_Constant
 BSplCLib_QuasiConstant = BSplCLib_MultDistribution.BSplCLib_QuasiConstant
-
-class BSplCLib_KnotDistribution(IntEnum):
-	BSplCLib_NonUniform = 0
-	BSplCLib_Uniform = 1
-BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
-BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
 };
 /* end python proxy for enums */
 

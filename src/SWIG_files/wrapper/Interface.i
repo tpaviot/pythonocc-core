@@ -65,6 +65,25 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Interface_CheckStatus {
+	Interface_CheckOK = 0,
+	Interface_CheckWarning = 1,
+	Interface_CheckFail = 2,
+	Interface_CheckAny = 3,
+	Interface_CheckMessage = 4,
+	Interface_CheckNoFail = 5,
+};
+
+enum Interface_DataState {
+	Interface_StateOK = 0,
+	Interface_LoadWarning = 1,
+	Interface_LoadFail = 2,
+	Interface_DataWarning = 3,
+	Interface_DataFail = 4,
+	Interface_StateUnloaded = 5,
+	Interface_StateUnknown = 6,
+};
+
 enum Interface_ParamType {
 	Interface_ParamMisc = 0,
 	Interface_ParamInteger = 1,
@@ -79,29 +98,40 @@ enum Interface_ParamType {
 	Interface_ParamBinary = 10,
 };
 
-enum Interface_DataState {
-	Interface_StateOK = 0,
-	Interface_LoadWarning = 1,
-	Interface_LoadFail = 2,
-	Interface_DataWarning = 3,
-	Interface_DataFail = 4,
-	Interface_StateUnloaded = 5,
-	Interface_StateUnknown = 6,
-};
-
-enum Interface_CheckStatus {
-	Interface_CheckOK = 0,
-	Interface_CheckWarning = 1,
-	Interface_CheckFail = 2,
-	Interface_CheckAny = 3,
-	Interface_CheckMessage = 4,
-	Interface_CheckNoFail = 5,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Interface_CheckStatus(IntEnum):
+	Interface_CheckOK = 0
+	Interface_CheckWarning = 1
+	Interface_CheckFail = 2
+	Interface_CheckAny = 3
+	Interface_CheckMessage = 4
+	Interface_CheckNoFail = 5
+Interface_CheckOK = Interface_CheckStatus.Interface_CheckOK
+Interface_CheckWarning = Interface_CheckStatus.Interface_CheckWarning
+Interface_CheckFail = Interface_CheckStatus.Interface_CheckFail
+Interface_CheckAny = Interface_CheckStatus.Interface_CheckAny
+Interface_CheckMessage = Interface_CheckStatus.Interface_CheckMessage
+Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
+
+class Interface_DataState(IntEnum):
+	Interface_StateOK = 0
+	Interface_LoadWarning = 1
+	Interface_LoadFail = 2
+	Interface_DataWarning = 3
+	Interface_DataFail = 4
+	Interface_StateUnloaded = 5
+	Interface_StateUnknown = 6
+Interface_StateOK = Interface_DataState.Interface_StateOK
+Interface_LoadWarning = Interface_DataState.Interface_LoadWarning
+Interface_LoadFail = Interface_DataState.Interface_LoadFail
+Interface_DataWarning = Interface_DataState.Interface_DataWarning
+Interface_DataFail = Interface_DataState.Interface_DataFail
+Interface_StateUnloaded = Interface_DataState.Interface_StateUnloaded
+Interface_StateUnknown = Interface_DataState.Interface_StateUnknown
 
 class Interface_ParamType(IntEnum):
 	Interface_ParamMisc = 0
@@ -126,36 +156,6 @@ Interface_ParamLogical = Interface_ParamType.Interface_ParamLogical
 Interface_ParamSub = Interface_ParamType.Interface_ParamSub
 Interface_ParamHexa = Interface_ParamType.Interface_ParamHexa
 Interface_ParamBinary = Interface_ParamType.Interface_ParamBinary
-
-class Interface_DataState(IntEnum):
-	Interface_StateOK = 0
-	Interface_LoadWarning = 1
-	Interface_LoadFail = 2
-	Interface_DataWarning = 3
-	Interface_DataFail = 4
-	Interface_StateUnloaded = 5
-	Interface_StateUnknown = 6
-Interface_StateOK = Interface_DataState.Interface_StateOK
-Interface_LoadWarning = Interface_DataState.Interface_LoadWarning
-Interface_LoadFail = Interface_DataState.Interface_LoadFail
-Interface_DataWarning = Interface_DataState.Interface_DataWarning
-Interface_DataFail = Interface_DataState.Interface_DataFail
-Interface_StateUnloaded = Interface_DataState.Interface_StateUnloaded
-Interface_StateUnknown = Interface_DataState.Interface_StateUnknown
-
-class Interface_CheckStatus(IntEnum):
-	Interface_CheckOK = 0
-	Interface_CheckWarning = 1
-	Interface_CheckFail = 2
-	Interface_CheckAny = 3
-	Interface_CheckMessage = 4
-	Interface_CheckNoFail = 5
-Interface_CheckOK = Interface_CheckStatus.Interface_CheckOK
-Interface_CheckWarning = Interface_CheckStatus.Interface_CheckWarning
-Interface_CheckFail = Interface_CheckStatus.Interface_CheckFail
-Interface_CheckAny = Interface_CheckStatus.Interface_CheckAny
-Interface_CheckMessage = Interface_CheckStatus.Interface_CheckMessage
-Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
 };
 /* end python proxy for enums */
 
@@ -273,7 +273,7 @@ Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * Interface_StaticSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
+typedef Standard_Boolean ( * Interface_ValueSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
 typedef NCollection_Array1<Interface_FileParameter> Interface_Array1OfFileParameter;
 typedef NCollection_Array1<opencascade::handle<TCollection_HAsciiString>> Interface_Array1OfHAsciiString;
 typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;

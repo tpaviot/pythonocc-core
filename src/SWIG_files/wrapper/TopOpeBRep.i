@@ -166,8 +166,8 @@ TopOpeBRep_OTHERTYPE = TopOpeBRep_TypeLineCurve.TopOpeBRep_OTHERTYPE
 %wrap_handle(TopOpeBRep_FFDumper)
 %wrap_handle(TopOpeBRep_Hctxee2d)
 %wrap_handle(TopOpeBRep_Hctxff2d)
-%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
 %wrap_handle(TopOpeBRep_HArray1OfLineInter)
+%wrap_handle(TopOpeBRep_HArray1OfVPointInter)
 /* end handles declaration */
 
 /* templates */
@@ -5886,17 +5886,6 @@ class TopOpeBRep_traceSIFF:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class TopOpeBRep_HArray1OfVPointInter : public TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
-  public:
-    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRep_Array1OfVPointInter::value_type& theValue);
-    TopOpeBRep_HArray1OfVPointInter(const TopOpeBRep_Array1OfVPointInter& theOther);
-    const TopOpeBRep_Array1OfVPointInter& Array1();
-    TopOpeBRep_Array1OfVPointInter& ChangeArray1();
-};
-%make_alias(TopOpeBRep_HArray1OfVPointInter)
-
-
 class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5906,6 +5895,17 @@ class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, publi
     TopOpeBRep_Array1OfLineInter& ChangeArray1();
 };
 %make_alias(TopOpeBRep_HArray1OfLineInter)
+
+
+class TopOpeBRep_HArray1OfVPointInter : public TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
+  public:
+    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRep_Array1OfVPointInter::value_type& theValue);
+    TopOpeBRep_HArray1OfVPointInter(const TopOpeBRep_Array1OfVPointInter& theOther);
+    const TopOpeBRep_Array1OfVPointInter& Array1();
+    TopOpeBRep_Array1OfVPointInter& ChangeArray1();
+};
+%make_alias(TopOpeBRep_HArray1OfVPointInter)
 
 /* harray2 classes */
 /* hsequence classes */

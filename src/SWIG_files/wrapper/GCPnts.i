@@ -69,6 +69,12 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum GCPnts_AbscissaType {
+	GCPnts_LengthParametrized = 0,
+	GCPnts_Parametrized = 1,
+	GCPnts_AbsComposite = 2,
+};
+
 enum GCPnts_DeflectionType {
 	GCPnts_Linear = 0,
 	GCPnts_Circular = 1,
@@ -76,16 +82,18 @@ enum GCPnts_DeflectionType {
 	GCPnts_DefComposite = 3,
 };
 
-enum GCPnts_AbscissaType {
-	GCPnts_LengthParametrized = 0,
-	GCPnts_Parametrized = 1,
-	GCPnts_AbsComposite = 2,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class GCPnts_AbscissaType(IntEnum):
+	GCPnts_LengthParametrized = 0
+	GCPnts_Parametrized = 1
+	GCPnts_AbsComposite = 2
+GCPnts_LengthParametrized = GCPnts_AbscissaType.GCPnts_LengthParametrized
+GCPnts_Parametrized = GCPnts_AbscissaType.GCPnts_Parametrized
+GCPnts_AbsComposite = GCPnts_AbscissaType.GCPnts_AbsComposite
 
 class GCPnts_DeflectionType(IntEnum):
 	GCPnts_Linear = 0
@@ -96,14 +104,6 @@ GCPnts_Linear = GCPnts_DeflectionType.GCPnts_Linear
 GCPnts_Circular = GCPnts_DeflectionType.GCPnts_Circular
 GCPnts_Curved = GCPnts_DeflectionType.GCPnts_Curved
 GCPnts_DefComposite = GCPnts_DeflectionType.GCPnts_DefComposite
-
-class GCPnts_AbscissaType(IntEnum):
-	GCPnts_LengthParametrized = 0
-	GCPnts_Parametrized = 1
-	GCPnts_AbsComposite = 2
-GCPnts_LengthParametrized = GCPnts_AbscissaType.GCPnts_LengthParametrized
-GCPnts_Parametrized = GCPnts_AbscissaType.GCPnts_Parametrized
-GCPnts_AbsComposite = GCPnts_AbscissaType.GCPnts_AbsComposite
 };
 /* end python proxy for enums */
 

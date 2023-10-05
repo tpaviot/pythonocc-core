@@ -170,13 +170,14 @@ bool
 		virtual Standard_Boolean CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString theFormat);
 
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+        /****************** DumpJsonToString ******************/
+        %feature("autodoc", "Json string serializer.");
+        %extend{
+            std::string DumpJsonToString(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
 		/****************** ErrorMessage ******************/
 		/**** md5 signature: a03611f142b478c30985cd3a78a49d6c ****/
 		%feature("compactdefaultargs") ErrorMessage;
@@ -1070,10 +1071,6 @@ bool
 class TObj_Object : public Standard_Transient {
 	public:
 /* public enums */
-enum TypeFlags {
-	Visible = 1,
-};
-
 enum ObjectState {
 	ObjectState_Hidden = 1,
 	ObjectState_Saved = 2,
@@ -1082,14 +1079,14 @@ enum ObjectState {
 	ObjectState_Ordered = 16,
 };
 
+enum TypeFlags {
+	Visible = 1,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class TypeFlags(IntEnum):
-	Visible = 1
-Visible = TypeFlags.Visible
 
 class ObjectState(IntEnum):
 	ObjectState_Hidden = 1
@@ -1102,6 +1099,10 @@ ObjectState_Saved = ObjectState.ObjectState_Saved
 ObjectState_Imported = ObjectState.ObjectState_Imported
 ObjectState_ImportedByFile = ObjectState.ObjectState_ImportedByFile
 ObjectState_Ordered = ObjectState.ObjectState_Ordered
+
+class TypeFlags(IntEnum):
+	Visible = 1
+Visible = TypeFlags.Visible
 };
 /* end python proxy for enums */
 

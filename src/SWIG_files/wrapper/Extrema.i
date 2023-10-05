@@ -76,6 +76,13 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum Extrema_ElementType {
+	Extrema_Node = 0,
+	Extrema_UIsoEdge = 1,
+	Extrema_VIsoEdge = 2,
+	Extrema_Face = 3,
+};
+
 enum Extrema_ExtAlgo {
 	Extrema_ExtAlgo_Grad = 0,
 	Extrema_ExtAlgo_Tree = 1,
@@ -87,17 +94,20 @@ enum Extrema_ExtFlag {
 	Extrema_ExtFlag_MINMAX = 2,
 };
 
-enum Extrema_ElementType {
-	Extrema_Node = 0,
-	Extrema_UIsoEdge = 1,
-	Extrema_VIsoEdge = 2,
-	Extrema_Face = 3,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class Extrema_ElementType(IntEnum):
+	Extrema_Node = 0
+	Extrema_UIsoEdge = 1
+	Extrema_VIsoEdge = 2
+	Extrema_Face = 3
+Extrema_Node = Extrema_ElementType.Extrema_Node
+Extrema_UIsoEdge = Extrema_ElementType.Extrema_UIsoEdge
+Extrema_VIsoEdge = Extrema_ElementType.Extrema_VIsoEdge
+Extrema_Face = Extrema_ElementType.Extrema_Face
 
 class Extrema_ExtAlgo(IntEnum):
 	Extrema_ExtAlgo_Grad = 0
@@ -112,28 +122,18 @@ class Extrema_ExtFlag(IntEnum):
 Extrema_ExtFlag_MIN = Extrema_ExtFlag.Extrema_ExtFlag_MIN
 Extrema_ExtFlag_MAX = Extrema_ExtFlag.Extrema_ExtFlag_MAX
 Extrema_ExtFlag_MINMAX = Extrema_ExtFlag.Extrema_ExtFlag_MINMAX
-
-class Extrema_ElementType(IntEnum):
-	Extrema_Node = 0
-	Extrema_UIsoEdge = 1
-	Extrema_VIsoEdge = 2
-	Extrema_Face = 3
-Extrema_Node = Extrema_ElementType.Extrema_Node
-Extrema_UIsoEdge = Extrema_ElementType.Extrema_UIsoEdge
-Extrema_VIsoEdge = Extrema_ElementType.Extrema_VIsoEdge
-Extrema_Face = Extrema_ElementType.Extrema_Face
 };
 /* end python proxy for enums */
 
 /* handles */
 %wrap_handle(Extrema_ExtPExtS)
 %wrap_handle(Extrema_ExtPRevS)
-%wrap_handle(Extrema_HArray1OfPOnSurf)
 %wrap_handle(Extrema_HArray1OfPOnCurv)
+%wrap_handle(Extrema_HArray1OfPOnSurf)
 %wrap_handle(Extrema_HArray1OfPOnCurv2d)
-%wrap_handle(Extrema_HArray2OfPOnCurv2d)
-%wrap_handle(Extrema_HArray2OfPOnCurv)
 %wrap_handle(Extrema_HArray2OfPOnSurf)
+%wrap_handle(Extrema_HArray2OfPOnCurv)
+%wrap_handle(Extrema_HArray2OfPOnCurv2d)
 /* end handles declaration */
 
 /* templates */
@@ -11893,17 +11893,6 @@ None
 
 /* harray1 classes */
 
-class Extrema_HArray1OfPOnSurf : public Extrema_Array1OfPOnSurf, public Standard_Transient {
-  public:
-    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnSurf::value_type& theValue);
-    Extrema_HArray1OfPOnSurf(const Extrema_Array1OfPOnSurf& theOther);
-    const Extrema_Array1OfPOnSurf& Array1();
-    Extrema_Array1OfPOnSurf& ChangeArray1();
-};
-%make_alias(Extrema_HArray1OfPOnSurf)
-
-
 class Extrema_HArray1OfPOnCurv : public Extrema_Array1OfPOnCurv, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -11913,6 +11902,17 @@ class Extrema_HArray1OfPOnCurv : public Extrema_Array1OfPOnCurv, public Standard
     Extrema_Array1OfPOnCurv& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnCurv)
+
+
+class Extrema_HArray1OfPOnSurf : public Extrema_Array1OfPOnSurf, public Standard_Transient {
+  public:
+    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
+    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnSurf::value_type& theValue);
+    Extrema_HArray1OfPOnSurf(const Extrema_Array1OfPOnSurf& theOther);
+    const Extrema_Array1OfPOnSurf& Array1();
+    Extrema_Array1OfPOnSurf& ChangeArray1();
+};
+%make_alias(Extrema_HArray1OfPOnSurf)
 
 
 class Extrema_HArray1OfPOnCurv2d : public Extrema_Array1OfPOnCurv2d, public Standard_Transient {
@@ -11926,17 +11926,17 @@ class Extrema_HArray1OfPOnCurv2d : public Extrema_Array1OfPOnCurv2d, public Stan
 %make_alias(Extrema_HArray1OfPOnCurv2d)
 
 /* harray2 classes */
-class Extrema_HArray2OfPOnCurv2d : public Extrema_Array2OfPOnCurv2d, public Standard_Transient {
+class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard_Transient {
   public:
-    Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnCurv2d::value_type& theValue);
-    Extrema_HArray2OfPOnCurv2d(const Extrema_Array2OfPOnCurv2d& theOther);
-    const Extrema_Array2OfPOnCurv2d& Array2 ();
-    Extrema_Array2OfPOnCurv2d& ChangeArray2 (); 
+    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const Extrema_Array2OfPOnSurf::value_type& theValue);
+    Extrema_HArray2OfPOnSurf(const Extrema_Array2OfPOnSurf& theOther);
+    const Extrema_Array2OfPOnSurf& Array2 ();
+    Extrema_Array2OfPOnSurf& ChangeArray2 (); 
 };
-%make_alias(Extrema_HArray2OfPOnCurv2d)
+%make_alias(Extrema_HArray2OfPOnSurf)
 
 
 class Extrema_HArray2OfPOnCurv : public Extrema_Array2OfPOnCurv, public Standard_Transient {
@@ -11952,17 +11952,17 @@ class Extrema_HArray2OfPOnCurv : public Extrema_Array2OfPOnCurv, public Standard
 %make_alias(Extrema_HArray2OfPOnCurv)
 
 
-class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard_Transient {
+class Extrema_HArray2OfPOnCurv2d : public Extrema_Array2OfPOnCurv2d, public Standard_Transient {
   public:
-    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnSurf::value_type& theValue);
-    Extrema_HArray2OfPOnSurf(const Extrema_Array2OfPOnSurf& theOther);
-    const Extrema_Array2OfPOnSurf& Array2 ();
-    Extrema_Array2OfPOnSurf& ChangeArray2 (); 
+    Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const Extrema_Array2OfPOnCurv2d::value_type& theValue);
+    Extrema_HArray2OfPOnCurv2d(const Extrema_Array2OfPOnCurv2d& theOther);
+    const Extrema_Array2OfPOnCurv2d& Array2 ();
+    Extrema_Array2OfPOnCurv2d& ChangeArray2 (); 
 };
-%make_alias(Extrema_HArray2OfPOnSurf)
+%make_alias(Extrema_HArray2OfPOnCurv2d)
 
 
 /* hsequence classes */

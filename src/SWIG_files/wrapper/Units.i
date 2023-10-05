@@ -78,8 +78,8 @@ from OCC.Core.Exception import *
 %wrap_handle(Units_ShiftedToken)
 %wrap_handle(Units_ShiftedUnit)
 %wrap_handle(Units_UnitsLexicon)
-%wrap_handle(Units_TokensSequence)
 %wrap_handle(Units_QuantitiesSequence)
+%wrap_handle(Units_TokensSequence)
 %wrap_handle(Units_UnitsSequence)
 /* end handles declaration */
 
@@ -2925,18 +2925,6 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Units_TokensSequence : public Units_TksSequence, public Standard_Transient {
-  public:
-    Units_TokensSequence();
-    Units_TokensSequence(const Units_TksSequence& theOther);
-    const Units_TksSequence& Sequence();
-    void Append (const Units_TksSequence::value_type& theItem);
-    void Append (Units_TksSequence& theSequence);
-    Units_TksSequence& ChangeSequence();
-};
-%make_alias(Units_TokensSequence)
-
-
 class Units_QuantitiesSequence : public Units_QtsSequence, public Standard_Transient {
   public:
     Units_QuantitiesSequence();
@@ -2947,6 +2935,18 @@ class Units_QuantitiesSequence : public Units_QtsSequence, public Standard_Trans
     Units_QtsSequence& ChangeSequence();
 };
 %make_alias(Units_QuantitiesSequence)
+
+
+class Units_TokensSequence : public Units_TksSequence, public Standard_Transient {
+  public:
+    Units_TokensSequence();
+    Units_TokensSequence(const Units_TksSequence& theOther);
+    const Units_TksSequence& Sequence();
+    void Append (const Units_TksSequence::value_type& theItem);
+    void Append (Units_TksSequence& theSequence);
+    Units_TksSequence& ChangeSequence();
+};
+%make_alias(Units_TokensSequence)
 
 
 class Units_UnitsSequence : public Units_UtsSequence, public Standard_Transient {
