@@ -566,6 +566,10 @@ None
 %make_alias(TDocStd_Application)
 
 %extend TDocStd_Application {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_Application {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -638,6 +642,10 @@ None
 %make_alias(TDocStd_ApplicationDelta)
 
 %extend TDocStd_ApplicationDelta {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_ApplicationDelta {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -664,6 +672,10 @@ None
 
 %make_alias(TDocStd_CompoundDelta)
 
+%extend TDocStd_CompoundDelta {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDocStd_CompoundDelta {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -715,6 +727,10 @@ None
 };
 
 
+%extend TDocStd_Context {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDocStd_Context {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1346,6 +1362,10 @@ None
 %make_alias(TDocStd_Document)
 
 %extend TDocStd_Document {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_Document {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1597,6 +1617,10 @@ None
 
 %make_alias(TDocStd_Modified)
 
+%extend TDocStd_Modified {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDocStd_Modified {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1889,6 +1913,10 @@ None
 %make_alias(TDocStd_MultiTransactionManager)
 
 %extend TDocStd_MultiTransactionManager {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_MultiTransactionManager {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2085,6 +2113,10 @@ None
 %make_alias(TDocStd_Owner)
 
 %extend TDocStd_Owner {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_Owner {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2179,6 +2211,10 @@ TCollection_ExtendedString
 };
 
 
+%extend TDocStd_PathParser {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDocStd_PathParser {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2439,6 +2475,10 @@ opencascade::handle<TDF_Reference>
 %make_alias(TDocStd_XLink)
 
 %extend TDocStd_XLink {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_XLink {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2526,6 +2566,10 @@ TDocStd_XLinkPtr
 };
 
 
+%extend TDocStd_XLinkIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDocStd_XLinkIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2672,6 +2716,10 @@ opencascade::handle<TDocStd_XLinkRoot>
 %make_alias(TDocStd_XLinkRoot)
 
 %extend TDocStd_XLinkRoot {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDocStd_XLinkRoot {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2776,6 +2824,10 @@ None
 };
 
 
+%extend TDocStd_XLinkTool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDocStd_XLinkTool {
 	%pythoncode {
 	__repr__ = _dumps_object

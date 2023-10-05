@@ -3806,16 +3806,16 @@ int
 		Standard_Integer operator *(const math_IntegerVector & theRight);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Integer other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Integer other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 4be85aca9907ec496a654cd1ec103d55 ****/
 		%feature("compactdefaultargs") operator +;
@@ -3832,16 +3832,16 @@ math_IntegerVector
 		math_IntegerVector operator +(const math_IntegerVector & theRight);
 
 
-            %extend{
-                void __iadd_wrapper__(const math_IntegerVector other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const math_IntegerVector other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: f0ec488bae9aeec942f9fa0e31599c2e ****/
 		%feature("compactdefaultargs") operator -;
@@ -3869,16 +3869,16 @@ math_IntegerVector
 		math_IntegerVector operator -(const math_IntegerVector & theRight);
 
 
-            %extend{
-                void __isub_wrapper__(const math_IntegerVector other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const math_IntegerVector other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 };
 
 
@@ -4886,27 +4886,27 @@ math_Vector
 		math_Vector operator *(const math_Vector & Right);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const math_Matrix other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const math_Matrix other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: f10c070428896ea481b284cdeb5d91d2 ****/
 		%feature("compactdefaultargs") operator +;
@@ -4923,16 +4923,16 @@ math_Matrix
 		math_Matrix operator +(const math_Matrix & Right);
 
 
-            %extend{
-                void __iadd_wrapper__(const math_Matrix other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const math_Matrix other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 3ca481947ee5dec077f4109d6e290a68 ****/
 		%feature("compactdefaultargs") operator -;
@@ -4960,16 +4960,16 @@ math_Matrix
 		math_Matrix operator -();
 
 
-            %extend{
-                void __isub_wrapper__(const math_Matrix other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const math_Matrix other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: 46fa5987c594ac10ecb471fa453a05b7 ****/
 		%feature("compactdefaultargs") operator /;
@@ -4986,16 +4986,16 @@ math_Matrix
 		math_Matrix operator /(const Standard_Real Right);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
@@ -6979,16 +6979,16 @@ math_Vector
 		math_Vector operator *(const math_Matrix & theRight);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 61f1917d2835ee61d96a19d57b4aa9d1 ****/
 		%feature("compactdefaultargs") operator +;
@@ -7005,16 +7005,16 @@ math_Vector
 		math_Vector operator +(const math_Vector & theRight);
 
 
-            %extend{
-                void __iadd_wrapper__(const math_Vector other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const math_Vector other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 2121a0f80a0d235e2e6ade07c0b70312 ****/
 		%feature("compactdefaultargs") operator -;
@@ -7042,16 +7042,16 @@ math_Vector
 		math_Vector operator -(const math_Vector & theRight);
 
 
-            %extend{
-                void __isub_wrapper__(const math_Vector other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const math_Vector other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: 962acf898a7f3f4cabec802f523bba4a ****/
 		%feature("compactdefaultargs") operator /;
@@ -7068,16 +7068,16 @@ math_Vector
 		math_Vector operator /(const Standard_Real theRight);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 

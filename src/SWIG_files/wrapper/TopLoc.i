@@ -170,6 +170,10 @@ gp_Trsf
 %make_alias(TopLoc_Datum3D)
 
 %extend TopLoc_Datum3D {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TopLoc_Datum3D {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -208,6 +212,10 @@ None
 };
 
 
+%extend TopLoc_ItemLocation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TopLoc_ItemLocation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -488,19 +496,19 @@ gp_Trsf
 		const gp_Trsf Transformation();
 
 
-            %extend{
-                bool __ne_wrapper__(const TopLoc_Location other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TopLoc_Location other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 		/****************** operator * ******************/
 		/**** md5 signature: b914624702617b5c10e313c8e2b471b0 ****/
 		%feature("compactdefaultargs") operator *;
@@ -532,22 +540,26 @@ TopLoc_Location
 		TopLoc_Location operator /(const TopLoc_Location & Other);
 
 
-            %extend{
-                bool __eq_wrapper__(const TopLoc_Location other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TopLoc_Location other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
+%extend TopLoc_Location {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TopLoc_Location {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -602,6 +614,10 @@ TopLoc_ItemLocation
 
 %make_alias(TopLoc_SListNodeOfItemLocation)
 
+%extend TopLoc_SListNodeOfItemLocation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TopLoc_SListNodeOfItemLocation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -784,6 +800,10 @@ TopLoc_ItemLocation
 };
 
 
+%extend TopLoc_SListOfItemLocation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TopLoc_SListOfItemLocation {
 	%pythoncode {
 	__repr__ = _dumps_object

@@ -142,6 +142,10 @@ str
 %make_alias(XCAFApp_Application)
 
 %extend XCAFApp_Application {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend XCAFApp_Application {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

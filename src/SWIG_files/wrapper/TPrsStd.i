@@ -791,6 +791,10 @@ float
 %make_alias(TPrsStd_AISPresentation)
 
 %extend TPrsStd_AISPresentation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TPrsStd_AISPresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1037,6 +1041,10 @@ None
 
 %make_alias(TPrsStd_AISViewer)
 
+%extend TPrsStd_AISViewer {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TPrsStd_AISViewer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1421,6 +1429,10 @@ None
 
 
 %extend TPrsStd_ConstraintTools {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TPrsStd_ConstraintTools {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1453,6 +1465,10 @@ bool
 
 %make_alias(TPrsStd_Driver)
 
+%extend TPrsStd_Driver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TPrsStd_Driver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1561,6 +1577,10 @@ bool
 %make_alias(TPrsStd_DriverTable)
 
 %extend TPrsStd_DriverTable {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TPrsStd_DriverTable {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1603,6 +1623,10 @@ bool
 
 %make_alias(TPrsStd_AxisDriver)
 
+%extend TPrsStd_AxisDriver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TPrsStd_AxisDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1647,6 +1671,10 @@ bool
 %make_alias(TPrsStd_ConstraintDriver)
 
 %extend TPrsStd_ConstraintDriver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TPrsStd_ConstraintDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1689,6 +1717,10 @@ bool
 
 %make_alias(TPrsStd_GeometryDriver)
 
+%extend TPrsStd_GeometryDriver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TPrsStd_GeometryDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1733,6 +1765,10 @@ bool
 %make_alias(TPrsStd_NamedShapeDriver)
 
 %extend TPrsStd_NamedShapeDriver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TPrsStd_NamedShapeDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1776,6 +1812,10 @@ bool
 %make_alias(TPrsStd_PlaneDriver)
 
 %extend TPrsStd_PlaneDriver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TPrsStd_PlaneDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1818,6 +1858,10 @@ bool
 
 %make_alias(TPrsStd_PointDriver)
 
+%extend TPrsStd_PointDriver {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TPrsStd_PointDriver {
 	%pythoncode {
 	__repr__ = _dumps_object

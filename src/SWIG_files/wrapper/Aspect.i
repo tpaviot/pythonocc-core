@@ -1270,6 +1270,10 @@ None
 
 
 %extend Aspect_Background {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_Background {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1318,6 +1322,10 @@ Aspect_XDisplay *
 
 %make_alias(Aspect_DisplayConnection)
 
+%extend Aspect_DisplayConnection {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_DisplayConnection {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1502,6 +1510,10 @@ int
 };
 
 
+%extend Aspect_GenId {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_GenId {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1807,6 +1819,10 @@ float
 %make_alias(Aspect_Grid)
 
 %extend Aspect_Grid {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_Grid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1890,6 +1906,10 @@ None
 };
 
 
+%extend Aspect_ScrollDelta {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_ScrollDelta {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2074,6 +2094,10 @@ float
 
 
 %extend Aspect_SkydomeBackground {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_SkydomeBackground {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2144,6 +2168,10 @@ NCollection_Vec2<float >
 
 
 %extend Aspect_Touch {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_Touch {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2173,6 +2201,10 @@ None
 };
 
 
+%extend Aspect_TrackedDevicePose {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_TrackedDevicePose {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2533,6 +2565,10 @@ None
 
 %make_alias(Aspect_Window)
 
+%extend Aspect_Window {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_Window {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3080,6 +3116,10 @@ bool
 
 
 %extend Aspect_WindowInputListener {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_WindowInputListener {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3170,6 +3210,10 @@ Aspect_XRActionType
 
 %make_alias(Aspect_XRAction)
 
+%extend Aspect_XRAction {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_XRAction {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3265,6 +3309,10 @@ None
 %make_alias(Aspect_XRActionSet)
 
 %extend Aspect_XRActionSet {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_XRActionSet {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3306,6 +3354,10 @@ bool
 
 
 %extend Aspect_XRAnalogActionData {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_XRAnalogActionData {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3335,6 +3387,10 @@ None
 };
 
 
+%extend Aspect_XRDigitalActionData {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_XRDigitalActionData {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3376,6 +3432,10 @@ bool
 
 
 %extend Aspect_XRHapticActionData {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_XRHapticActionData {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3403,6 +3463,10 @@ None
 };
 
 
+%extend Aspect_XRPoseActionData {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_XRPoseActionData {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3924,6 +3988,10 @@ bool
 %make_alias(Aspect_XRSession)
 
 %extend Aspect_XRSession {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Aspect_XRSession {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4023,6 +4091,10 @@ None
 };
 
 
+%extend Aspect_GradientBackground {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_GradientBackground {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4281,6 +4353,10 @@ bool
 
 %make_alias(Aspect_OpenVRSession)
 
+%extend Aspect_OpenVRSession {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Aspect_OpenVRSession {
 	%pythoncode {
 	__repr__ = _dumps_object

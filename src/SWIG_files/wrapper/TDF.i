@@ -821,6 +821,10 @@ int
 %make_alias(TDF_Attribute)
 
 %extend TDF_Attribute {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_Attribute {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -898,6 +902,10 @@ TDF_Label
 
 %make_alias(TDF_AttributeDelta)
 
+%extend TDF_AttributeDelta {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_AttributeDelta {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1019,6 +1027,10 @@ opencascade::handle<TDF_Attribute>
 
 
 %extend TDF_AttributeIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_AttributeIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1124,6 +1136,10 @@ opencascade::handle<TDF_Attribute>
 
 
 %extend TDF_ChildIDIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_ChildIDIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1227,6 +1243,10 @@ TDF_Label
 
 
 %extend TDF_ChildIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_ChildIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1309,6 +1329,10 @@ bool
 
 
 %extend TDF_ClosureMode {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_ClosureMode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1373,6 +1397,10 @@ None
 };
 
 
+%extend TDF_ClosureTool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_ClosureTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1476,6 +1504,10 @@ bool
 };
 
 
+%extend TDF_ComparisonTool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_ComparisonTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1618,6 +1650,10 @@ None
 
 
 %extend TDF_CopyLabel {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_CopyLabel {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1683,6 +1719,10 @@ None
 };
 
 
+%extend TDF_CopyTool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_CopyTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1909,6 +1949,10 @@ opencascade::handle<TDF_Delta>
 %make_alias(TDF_Data)
 
 %extend TDF_Data {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_Data {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2074,6 +2118,10 @@ TDF_LabelList
 %make_alias(TDF_DataSet)
 
 %extend TDF_DataSet {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_DataSet {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2217,6 +2265,10 @@ None
 
 %make_alias(TDF_Delta)
 
+%extend TDF_Delta {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_Delta {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2449,6 +2501,10 @@ None
 };
 
 
+%extend TDF_IDFilter {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_IDFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2908,33 +2964,33 @@ int
 		Standard_Integer Transaction();
 
 
-            %extend{
-                bool __ne_wrapper__(const TDF_Label other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TDF_Label other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 
-            %extend{
-                bool __eq_wrapper__(const TDF_Label other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TDF_Label other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 %feature("autodoc", "Returns the label name") GetLabelName;
 		%extend{
 			std::string GetLabelName() {
@@ -2951,6 +3007,10 @@ int
 };
 
 
+%extend TDF_Label {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_Label {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2997,6 +3057,10 @@ bool
 };
 
 
+%extend TDF_LabelMapHasher {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_LabelMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3254,6 +3318,10 @@ TColStd_IndexedDataMapOfTransientTransient
 
 %make_alias(TDF_RelocationTable)
 
+%extend TDF_RelocationTable {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_RelocationTable {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3571,6 +3639,10 @@ None
 
 
 %extend TDF_Tool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_Tool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3724,6 +3796,10 @@ int
 
 
 %extend TDF_Transaction {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_Transaction {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3765,6 +3841,10 @@ None
 
 %make_alias(TDF_DeltaOnAddition)
 
+%extend TDF_DeltaOnAddition {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_DeltaOnAddition {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3808,6 +3888,10 @@ None
 %make_alias(TDF_DeltaOnForget)
 
 %extend TDF_DeltaOnForget {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_DeltaOnForget {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3836,6 +3920,10 @@ None
 %make_alias(TDF_DeltaOnModification)
 
 %extend TDF_DeltaOnModification {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_DeltaOnModification {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3852,6 +3940,10 @@ class TDF_DeltaOnRemoval : public TDF_AttributeDelta {
 
 %make_alias(TDF_DeltaOnRemoval)
 
+%extend TDF_DeltaOnRemoval {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_DeltaOnRemoval {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3903,6 +3995,10 @@ None
 
 %make_alias(TDF_DeltaOnResume)
 
+%extend TDF_DeltaOnResume {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_DeltaOnResume {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4068,6 +4164,10 @@ None
 
 %make_alias(TDF_Reference)
 
+%extend TDF_Reference {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_Reference {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4247,6 +4347,10 @@ None
 %make_alias(TDF_TagSource)
 
 %extend TDF_TagSource {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_TagSource {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4289,6 +4393,10 @@ None
 %make_alias(TDF_DefaultDeltaOnModification)
 
 %extend TDF_DefaultDeltaOnModification {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TDF_DefaultDeltaOnModification {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4330,6 +4438,10 @@ None
 
 %make_alias(TDF_DefaultDeltaOnRemoval)
 
+%extend TDF_DefaultDeltaOnRemoval {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TDF_DefaultDeltaOnRemoval {
 	%pythoncode {
 	__repr__ = _dumps_object

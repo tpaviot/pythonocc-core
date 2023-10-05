@@ -992,22 +992,26 @@ None
 		void UnSetColorSurf();
 
 
-            %extend{
-                bool __eq_wrapper__(const XCAFPrs_Style other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const XCAFPrs_Style other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
+%extend XCAFPrs_Style {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend XCAFPrs_Style {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1081,6 +1085,10 @@ opencascade::handle<Image_Texture>
 
 %make_alias(XCAFPrs_Texture)
 
+%extend XCAFPrs_Texture {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend XCAFPrs_Texture {
 	%pythoncode {
 	__repr__ = _dumps_object

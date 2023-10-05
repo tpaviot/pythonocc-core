@@ -606,6 +606,10 @@ None
 %make_alias(TFunction_Function)
 
 %extend TFunction_Function {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TFunction_Function {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -925,6 +929,10 @@ None
 %make_alias(TFunction_GraphNode)
 
 %extend TFunction_GraphNode {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TFunction_GraphNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1183,6 +1191,10 @@ bool
 
 
 %extend TFunction_IFunction {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TFunction_IFunction {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1346,6 +1358,10 @@ None
 };
 
 
+%extend TFunction_Iterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TFunction_Iterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1638,6 +1654,10 @@ None
 %make_alias(TFunction_Logbook)
 
 %extend TFunction_Logbook {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TFunction_Logbook {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1926,6 +1946,10 @@ None
 
 %make_alias(TFunction_Scope)
 
+%extend TFunction_Scope {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TFunction_Scope {
 	%pythoncode {
 	__repr__ = _dumps_object

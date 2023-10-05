@@ -1266,6 +1266,10 @@ Graphic3d_ZLayerId
 %make_alias(PrsMgr_PresentableObject)
 
 %extend PrsMgr_PresentableObject {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend PrsMgr_PresentableObject {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1436,6 +1440,10 @@ None
 
 %make_alias(PrsMgr_Presentation)
 
+%extend PrsMgr_Presentation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend PrsMgr_Presentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1872,6 +1880,10 @@ None
 
 %make_alias(PrsMgr_PresentationManager)
 
+%extend PrsMgr_PresentationManager {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend PrsMgr_PresentationManager {
 	%pythoncode {
 	__repr__ = _dumps_object

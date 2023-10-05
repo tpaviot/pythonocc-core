@@ -2705,19 +2705,19 @@ int
 		Standard_Integer LastNode();
 
 
-            %extend{
-                bool __eq_wrapper__(const BRepMesh_OrientedEdge other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const BRepMesh_OrientedEdge other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -3560,19 +3560,19 @@ None
 		void SetMovability(const BRepMesh_DegreeOfFreedom theMovability);
 
 
-            %extend{
-                bool __eq_wrapper__(const BRepMesh_Triangle other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const BRepMesh_Triangle other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -3822,19 +3822,19 @@ None
 		void SetMovability(const BRepMesh_DegreeOfFreedom theMovability);
 
 
-            %extend{
-                bool __eq_wrapper__(const BRepMesh_Vertex other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const BRepMesh_Vertex other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -4401,19 +4401,19 @@ None
 		void SetMovability(const BRepMesh_DegreeOfFreedom theMovability);
 
 
-            %extend{
-                bool __eq_wrapper__(const BRepMesh_Edge other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const BRepMesh_Edge other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 

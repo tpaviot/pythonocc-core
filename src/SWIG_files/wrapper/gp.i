@@ -458,9 +458,9 @@ gp_Dir
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsCoaxial ******************/
@@ -841,6 +841,16 @@ gp_Ax1
 
 
 %extend gp_Ax1 {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Ax1()
+		the_gp_ax1 = inst.InitFromJsonString(state)
+		self.this = the_gp_ax1.this
+	}
+};
+%extend gp_Ax1 {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -945,9 +955,9 @@ gp_Dir
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsCoplanar ******************/
@@ -1341,6 +1351,16 @@ gp_Dir
 };
 
 
+%extend gp_Ax2 {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Ax2()
+		the_gp_ax2 = inst.InitFromJsonString(state)
+		self.this = the_gp_ax2.this
+	}
+};
 %extend gp_Ax2 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1789,6 +1809,16 @@ gp_Dir2d
 
 
 %extend gp_Ax22d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Ax22d()
+		the_gp_ax22d = inst.InitFromJsonString(state)
+		self.this = the_gp_ax22d.this
+	}
+};
+%extend gp_Ax22d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2209,6 +2239,16 @@ gp_Ax2d
 
 
 %extend gp_Ax2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Ax2d()
+		the_gp_ax2d = inst.InitFromJsonString(state)
+		self.this = the_gp_ax2d.this
+	}
+};
+%extend gp_Ax2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2350,9 +2390,9 @@ gp_Dir
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsCoplanar ******************/
@@ -2779,6 +2819,16 @@ None
 };
 
 
+%extend gp_Ax3 {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Ax3()
+		the_gp_ax3 = inst.InitFromJsonString(state)
+		self.this = the_gp_ax3.this
+	}
+};
 %extend gp_Ax3 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3260,6 +3310,16 @@ gp_Ax1
 };
 
 
+%extend gp_Circ {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Circ()
+		the_gp_circ = inst.InitFromJsonString(state)
+		self.this = the_gp_circ.this
+	}
+};
 %extend gp_Circ {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3797,6 +3857,16 @@ gp_Ax2d
 
 
 %extend gp_Circ2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Circ2d()
+		the_gp_circ2d = inst.InitFromJsonString(state)
+		self.this = the_gp_circ2d.this
+	}
+};
+%extend gp_Circ2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4304,6 +4374,16 @@ gp_Ax1
 
 
 %extend gp_Cone {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Cone()
+		the_gp_cone = inst.InitFromJsonString(state)
+		self.this = the_gp_cone.this
+	}
+};
+%extend gp_Cone {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4773,6 +4853,16 @@ gp_Ax1
 
 
 %extend gp_Cylinder {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Cylinder()
+		the_gp_cylinder = inst.InitFromJsonString(state)
+		self.this = the_gp_cylinder.this
+	}
+};
+%extend gp_Cylinder {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5009,9 +5099,9 @@ float
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsEqual ******************/
@@ -5418,6 +5508,16 @@ gp_Dir
 };
 
 
+%extend gp_Dir {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Dir()
+		the_gp_dir = inst.InitFromJsonString(state)
+		self.this = the_gp_dir.this
+	}
+};
 %extend gp_Dir {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5915,6 +6015,16 @@ gp_Dir2d
 };
 
 
+%extend gp_Dir2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Dir2d()
+		the_gp_dir2d = inst.InitFromJsonString(state)
+		self.this = the_gp_dir2d.this
+	}
+};
 %extend gp_Dir2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6443,6 +6553,16 @@ gp_Ax1
 };
 
 
+%extend gp_Elips {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Elips()
+		the_gp_elips = inst.InitFromJsonString(state)
+		self.this = the_gp_elips.this
+	}
+};
 %extend gp_Elips {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7017,6 +7137,16 @@ gp_Ax2d
 
 
 %extend gp_Elips2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Elips2d()
+		the_gp_elips2d = inst.InitFromJsonString(state)
+		self.this = the_gp_elips2d.this
+	}
+};
+%extend gp_Elips2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -7409,19 +7539,29 @@ gp_GTrsf
 		gp_GTrsf operator *(const gp_GTrsf & theT);
 
 
-            %extend{
-                void __imul_wrapper__(const gp_GTrsf other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_GTrsf other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_GTrsf {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_GTrsf()
+		the_gp_gtrsf = inst.InitFromJsonString(state)
+		self.this = the_gp_gtrsf.this
+	}
+};
 %extend gp_GTrsf {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7793,19 +7933,29 @@ gp_GTrsf2d
 		gp_GTrsf2d operator *(const gp_GTrsf2d & theT);
 
 
-            %extend{
-                void __imul_wrapper__(const gp_GTrsf2d other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_GTrsf2d other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_GTrsf2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_GTrsf2d()
+		the_gp_gtrsf2d = inst.InitFromJsonString(state)
+		self.this = the_gp_gtrsf2d.this
+	}
+};
 %extend gp_GTrsf2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8378,6 +8528,16 @@ gp_Ax1
 };
 
 
+%extend gp_Hypr {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Hypr()
+		the_gp_hypr = inst.InitFromJsonString(state)
+		self.this = the_gp_hypr.this
+	}
+};
 %extend gp_Hypr {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8996,6 +9156,16 @@ gp_Ax2d
 
 
 %extend gp_Hypr2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Hypr2d()
+		the_gp_hypr2d = inst.InitFromJsonString(state)
+		self.this = the_gp_hypr2d.this
+	}
+};
+%extend gp_Hypr2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -9503,6 +9673,16 @@ gp_Lin
 };
 
 
+%extend gp_Lin {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Lin()
+		the_gp_lin = inst.InitFromJsonString(state)
+		self.this = the_gp_lin.this
+	}
+};
 %extend gp_Lin {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10014,6 +10194,16 @@ gp_Lin2d
 };
 
 
+%extend gp_Lin2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Lin2d()
+		the_gp_lin2d = inst.InitFromJsonString(state)
+		self.this = the_gp_lin2d.this
+	}
+};
 %extend gp_Lin2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10619,27 +10809,27 @@ gp_Mat
 		gp_Mat operator *(const Standard_Real theScalar);
 
 
-            %extend{
-                void __imul_wrapper__(const gp_Mat other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_Mat other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: c2a4fbf1f0a086324496c01898bbe173 ****/
 		%feature("compactdefaultargs") operator +;
@@ -10656,16 +10846,16 @@ gp_Mat
 		gp_Mat operator +(const gp_Mat & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_Mat other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_Mat other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 005d2557fc210ec6218060a310064329 ****/
 		%feature("compactdefaultargs") operator -;
@@ -10682,16 +10872,16 @@ gp_Mat
 		gp_Mat operator -(const gp_Mat & theOther);
 
 
-            %extend{
-                void __isub_wrapper__(const gp_Mat other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_Mat other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: 50cc92cc2a69d2e23a05248466cd8bca ****/
 		%feature("compactdefaultargs") operator /;
@@ -10708,19 +10898,29 @@ gp_Mat
 		gp_Mat operator /(const Standard_Real theScalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Mat {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Mat()
+		the_gp_mat = inst.InitFromJsonString(state)
+		self.this = the_gp_mat.this
+	}
+};
 %extend gp_Mat {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11259,16 +11459,16 @@ gp_Mat2d
 		gp_Mat2d operator *(const Standard_Real theScalar);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 54c36bc4369636c7afd7afc5c0751c62 ****/
 		%feature("compactdefaultargs") operator +;
@@ -11285,16 +11485,16 @@ gp_Mat2d
 		gp_Mat2d operator +(const gp_Mat2d & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_Mat2d other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_Mat2d other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: e647ff009fd603b513358596ee1840b5 ****/
 		%feature("compactdefaultargs") operator -;
@@ -11311,16 +11511,16 @@ gp_Mat2d
 		gp_Mat2d operator -(const gp_Mat2d & theOther);
 
 
-            %extend{
-                void __isub_wrapper__(const gp_Mat2d other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_Mat2d other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: 5c63861d0b75195db183dc66c54cc61c ****/
 		%feature("compactdefaultargs") operator /;
@@ -11337,19 +11537,29 @@ gp_Mat2d
 		gp_Mat2d operator /(const Standard_Real theScalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Mat2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Mat2d()
+		the_gp_mat2d = inst.InitFromJsonString(state)
+		self.this = the_gp_mat2d.this
+	}
+};
 %extend gp_Mat2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11812,6 +12022,16 @@ gp_Ax1
 };
 
 
+%extend gp_Parab {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Parab()
+		the_gp_parab = inst.InitFromJsonString(state)
+		self.this = the_gp_parab.this
+	}
+};
 %extend gp_Parab {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12294,6 +12514,16 @@ gp_Parab2d
 };
 
 
+%extend gp_Parab2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Parab2d()
+		the_gp_parab2d = inst.InitFromJsonString(state)
+		self.this = the_gp_parab2d.this
+	}
+};
 %extend gp_Parab2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12897,6 +13127,16 @@ gp_Ax1
 
 
 %extend gp_Pln {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Pln()
+		the_gp_pln = inst.InitFromJsonString(state)
+		self.this = the_gp_pln.this
+	}
+};
+%extend gp_Pln {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -13048,9 +13288,9 @@ float
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsEqual ******************/
@@ -13470,6 +13710,16 @@ float
 };
 
 
+%extend gp_Pnt {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Pnt()
+		the_gp_pnt = inst.InitFromJsonString(state)
+		self.this = the_gp_pnt.this
+	}
+};
 %extend gp_Pnt {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13959,6 +14209,16 @@ float
 };
 
 
+%extend gp_Pnt2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Pnt2d()
+		the_gp_pnt2d = inst.InitFromJsonString(state)
+		self.this = the_gp_pnt2d.this
+	}
+};
 %extend gp_Pnt2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14608,27 +14868,27 @@ gp_Vec
 		gp_Vec operator *(const gp_Vec & theVec);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const gp_Quaternion other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_Quaternion other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 8a4916c7f7f9f9981e41b258333dba26 ****/
 		%feature("compactdefaultargs") operator +;
@@ -14645,16 +14905,16 @@ gp_Quaternion
 		gp_Quaternion operator +(const gp_Quaternion & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_Quaternion other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_Quaternion other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 2400ff17b24d500dd5a6327221c22f34 ****/
 		%feature("compactdefaultargs") operator -;
@@ -14682,19 +14942,29 @@ gp_Quaternion
 		gp_Quaternion operator -(const gp_Quaternion & theOther);
 
 
-            %extend{
-                void __isub_wrapper__(const gp_Quaternion other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_Quaternion other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Quaternion {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Quaternion()
+		the_gp_quaternion = inst.InitFromJsonString(state)
+		self.this = the_gp_quaternion.this
+	}
+};
 %extend gp_Quaternion {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14802,6 +15072,16 @@ None
 
 
 %extend gp_QuaternionNLerp {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_QuaternionNLerp()
+		the_gp_quaternionnlerp = inst.InitFromJsonString(state)
+		self.this = the_gp_quaternionnlerp.this
+	}
+};
+%extend gp_QuaternionNLerp {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -14907,6 +15187,16 @@ None
 };
 
 
+%extend gp_QuaternionSLerp {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_QuaternionSLerp()
+		the_gp_quaternionslerp = inst.InitFromJsonString(state)
+		self.this = the_gp_quaternionslerp.this
+	}
+};
 %extend gp_QuaternionSLerp {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -15372,6 +15662,16 @@ gp_Ax1
 };
 
 
+%extend gp_Sphere {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Sphere()
+		the_gp_sphere = inst.InitFromJsonString(state)
+		self.this = the_gp_sphere.this
+	}
+};
 %extend gp_Sphere {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -15883,6 +16183,16 @@ gp_Ax1
 
 
 %extend gp_Torus {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Torus()
+		the_gp_torus = inst.InitFromJsonString(state)
+		self.this = the_gp_torus.this
+	}
+};
+%extend gp_Torus {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -15980,9 +16290,9 @@ gp_Mat
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** Invert ******************/
@@ -16461,19 +16771,29 @@ gp_Trsf
 		gp_Trsf operator *(const gp_Trsf & theT);
 
 
-            %extend{
-                void __imul_wrapper__(const gp_Trsf other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_Trsf other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Trsf {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Trsf()
+		the_gp_trsf = inst.InitFromJsonString(state)
+		self.this = the_gp_trsf.this
+	}
+};
 %extend gp_Trsf {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16921,19 +17241,29 @@ gp_Trsf2d
 		gp_Trsf2d operator *(const gp_Trsf2d & theT);
 
 
-            %extend{
-                void __imul_wrapper__(const gp_Trsf2d other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_Trsf2d other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Trsf2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Trsf2d()
+		the_gp_trsf2d = inst.InitFromJsonString(state)
+		self.this = the_gp_trsf2d.this
+	}
+};
 %extend gp_Trsf2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -17925,16 +18255,16 @@ float
 		Standard_Real operator *(const gp_Vec & theOther);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 93b1480972ce5d4dbcc4bd90a181cd59 ****/
 		%feature("compactdefaultargs") operator +;
@@ -17951,16 +18281,16 @@ gp_Vec
 		gp_Vec operator +(const gp_Vec & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_Vec other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_Vec other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 13506a405f58dab7716acf05b5ec6fc7 ****/
 		%feature("compactdefaultargs") operator -;
@@ -17988,16 +18318,16 @@ gp_Vec
 		gp_Vec operator -();
 
 
-            %extend{
-                void __isub_wrapper__(const gp_Vec other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_Vec other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: 34acbb84206bf14cbc792d7112b3911e ****/
 		%feature("compactdefaultargs") operator /;
@@ -18014,19 +18344,29 @@ gp_Vec
 		gp_Vec operator /(const Standard_Real theScalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Vec {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Vec()
+		the_gp_vec = inst.InitFromJsonString(state)
+		self.this = the_gp_vec.this
+	}
+};
 %extend gp_Vec {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -18839,16 +19179,16 @@ gp_Vec2d
 		gp_Vec2d operator *(const Standard_Real theScalar);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 34d7a6c112671277428feb10d3747300 ****/
 		%feature("compactdefaultargs") operator +;
@@ -18865,16 +19205,16 @@ gp_Vec2d
 		gp_Vec2d operator +(const gp_Vec2d & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_Vec2d other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_Vec2d other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: cbda9d88ce3397da41adc1df0723fc91 ****/
 		%feature("compactdefaultargs") operator -;
@@ -18902,16 +19242,16 @@ gp_Vec2d
 		gp_Vec2d operator -(const gp_Vec2d & theRight);
 
 
-            %extend{
-                void __isub_wrapper__(const gp_Vec2d other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_Vec2d other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: b0e5e71aaabf55191684b3975d9eb54e ****/
 		%feature("compactdefaultargs") operator /;
@@ -18928,19 +19268,29 @@ gp_Vec2d
 		gp_Vec2d operator /(const Standard_Real theScalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_Vec2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_Vec2d()
+		the_gp_vec2d = inst.InitFromJsonString(state)
+		self.this = the_gp_vec2d.this
+	}
+};
 %extend gp_Vec2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -19544,38 +19894,38 @@ gp_XY
 		gp_XY operator *(const gp_Mat2d & theMatrix);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const gp_XY other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_XY other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const gp_Mat2d other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_Mat2d other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: cbc6099231d3db5976720aa710b80ca4 ****/
 		%feature("compactdefaultargs") operator +;
@@ -19592,16 +19942,16 @@ gp_XY
 		gp_XY operator +(const gp_XY & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_XY other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_XY other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 67c07ba3c8d9e3c28626b927db1ec14a ****/
 		%feature("compactdefaultargs") operator -;
@@ -19629,16 +19979,16 @@ gp_XY
 		gp_XY operator -(const gp_XY & theOther);
 
 
-            %extend{
-                void __isub_wrapper__(const gp_XY other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_XY other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: aa3470df1c66fed23aa151e38121ca60 ****/
 		%feature("compactdefaultargs") operator /;
@@ -19655,19 +20005,29 @@ gp_XY
 		gp_XY operator /(const Standard_Real theScalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_XY {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_XY()
+		the_gp_xy = inst.InitFromJsonString(state)
+		self.this = the_gp_xy.this
+	}
+};
 %extend gp_XY {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -19969,9 +20329,9 @@ float *
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsEqual ******************/
@@ -20444,38 +20804,38 @@ gp_XYZ
 		gp_XYZ operator *(const gp_Mat & theMatrix);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const gp_XYZ other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_XYZ other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __imul_wrapper__(const gp_Mat other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const gp_Mat other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 8924adfbe261216bc106729e6a25edff ****/
 		%feature("compactdefaultargs") operator +;
@@ -20492,16 +20852,16 @@ gp_XYZ
 		gp_XYZ operator +(const gp_XYZ & theOther);
 
 
-            %extend{
-                void __iadd_wrapper__(const gp_XYZ other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const gp_XYZ other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 307e5e28b06e165c7bed9d6fa5019e70 ****/
 		%feature("compactdefaultargs") operator -;
@@ -20518,16 +20878,16 @@ gp_XYZ
 		gp_XYZ operator -(const gp_XYZ & theOther);
 
 
-            %extend{
-                void __isub_wrapper__(const gp_XYZ other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const gp_XYZ other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: aab1675bb3218dd6795d705ce7dac9af ****/
 		%feature("compactdefaultargs") operator /;
@@ -20544,19 +20904,29 @@ gp_XYZ
 		gp_XYZ operator /(const Standard_Real theScalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 
+%extend gp_XYZ {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = gp_XYZ()
+		the_gp_xyz = inst.InitFromJsonString(state)
+		self.this = the_gp_xyz.this
+	}
+};
 %extend gp_XYZ {
 	%pythoncode {
 	__repr__ = _dumps_object

@@ -1926,9 +1926,9 @@ bool
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsOpen ******************/
@@ -2400,6 +2400,16 @@ None
 };
 
 
+%extend Bnd_Box {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = Bnd_Box()
+		the_bnd_box = inst.InitFromJsonString(state)
+		self.this = the_bnd_box.this
+	}
+};
 %extend Bnd_Box {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2873,6 +2883,16 @@ None
 
 
 %extend Bnd_Box2d {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = Bnd_Box2d()
+		the_bnd_box2d = inst.InitFromJsonString(state)
+		self.this = the_bnd_box2d.this
+	}
+};
+%extend Bnd_Box2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3277,6 +3297,16 @@ float
 
 
 %extend Bnd_OBB {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = Bnd_OBB()
+		the_bnd_obb = inst.InitFromJsonString(state)
+		self.this = the_bnd_obb.this
+	}
+};
+%extend Bnd_OBB {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3615,22 +3645,32 @@ bool
 		Standard_Boolean Union(const Bnd_Range & theOther);
 
 
-            %extend{
-                bool __eq_wrapper__(const Bnd_Range other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const Bnd_Range other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
+%extend Bnd_Range {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = Bnd_Range()
+		the_bnd_range = inst.InitFromJsonString(state)
+		self.this = the_bnd_range.this
+	}
+};
 %extend Bnd_Range {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3880,6 +3920,16 @@ int
 
 
 %extend Bnd_Sphere {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = Bnd_Sphere()
+		the_bnd_sphere = inst.InitFromJsonString(state)
+		self.this = the_bnd_sphere.this
+	}
+};
+%extend Bnd_Sphere {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3923,6 +3973,16 @@ BVH_Box<float, 3 >
 };
 
 
+%extend Bnd_Tools {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+	def __setstate__(self, state):
+		inst = Bnd_Tools()
+		the_bnd_tools = inst.InitFromJsonString(state)
+		self.this = the_bnd_tools.this
+	}
+};
 %extend Bnd_Tools {
 	%pythoncode {
 	__repr__ = _dumps_object

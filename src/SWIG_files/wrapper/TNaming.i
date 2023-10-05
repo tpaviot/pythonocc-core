@@ -1645,6 +1645,10 @@ TNaming_NameType
 
 
 %extend TNaming_Name {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_Name {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1935,6 +1939,10 @@ int
 %make_alias(TNaming_NamedShape)
 
 %extend TNaming_NamedShape {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_NamedShape {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2159,6 +2167,10 @@ bool
 %make_alias(TNaming_Naming)
 
 %extend TNaming_Naming {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_Naming {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2225,6 +2237,10 @@ None
 };
 
 
+%extend TNaming_NamingTool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TNaming_NamingTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2369,6 +2385,10 @@ TopoDS_Shape
 
 
 %extend TNaming_NewShapeIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_NewShapeIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2512,6 +2532,10 @@ TopoDS_Shape
 
 
 %extend TNaming_OldShapeIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_OldShapeIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2635,6 +2659,10 @@ TopoDS_Shape
 
 
 %extend TNaming_RefShape {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_RefShape {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2697,6 +2725,10 @@ None
 };
 
 
+%extend TNaming_SameShapeIterator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TNaming_SameShapeIterator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2906,6 +2938,10 @@ None
 
 
 %extend TNaming_Scope {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_Scope {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3033,6 +3069,10 @@ bool
 };
 
 
+%extend TNaming_Selector {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TNaming_Selector {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3220,6 +3260,10 @@ None
 };
 
 
+%extend TNaming_ShapesSet {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TNaming_ShapesSet {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3460,6 +3504,10 @@ int
 
 
 %extend TNaming_Tool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_Tool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3679,6 +3727,10 @@ None
 %make_alias(TNaming_TranslateTool)
 
 %extend TNaming_TranslateTool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend TNaming_TranslateTool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3782,6 +3834,10 @@ None
 };
 
 
+%extend TNaming_Translator {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TNaming_Translator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3978,6 +4034,10 @@ None
 
 %make_alias(TNaming_UsedShapes)
 
+%extend TNaming_UsedShapes {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend TNaming_UsedShapes {
 	%pythoncode {
 	__repr__ = _dumps_object

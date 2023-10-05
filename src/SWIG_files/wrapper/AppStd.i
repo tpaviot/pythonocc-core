@@ -112,6 +112,10 @@ str
 %make_alias(AppStd_Application)
 
 %extend AppStd_Application {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend AppStd_Application {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

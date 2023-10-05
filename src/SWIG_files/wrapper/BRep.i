@@ -1564,6 +1564,10 @@ opencascade::handle<Poly_Triangulation>
 %make_alias(BRep_CurveRepresentation)
 
 %extend BRep_CurveRepresentation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_CurveRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1828,6 +1832,10 @@ None
 %make_alias(BRep_PointRepresentation)
 
 %extend BRep_PointRepresentation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_PointRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2015,6 +2023,10 @@ None
 
 %make_alias(BRep_TEdge)
 
+%extend BRep_TEdge {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_TEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2249,6 +2261,10 @@ None
 %make_alias(BRep_TFace)
 
 %extend BRep_TFace {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_TFace {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2384,6 +2400,10 @@ None
 
 %make_alias(BRep_TVertex)
 
+%extend BRep_TVertex {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_TVertex {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3274,6 +3294,10 @@ None
 
 
 %extend BRep_Tool {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_Tool {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3433,6 +3457,10 @@ opencascade::handle<Geom_Surface>
 %make_alias(BRep_CurveOn2Surfaces)
 
 %extend BRep_CurveOn2Surfaces {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_CurveOn2Surfaces {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3569,6 +3597,10 @@ None
 %make_alias(BRep_GCurve)
 
 %extend BRep_GCurve {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_GCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3664,6 +3696,10 @@ bool
 %make_alias(BRep_PointOnCurve)
 
 %extend BRep_PointOnCurve {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_PointOnCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3715,6 +3751,10 @@ None
 
 %make_alias(BRep_PointsOnSurface)
 
+%extend BRep_PointsOnSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_PointsOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3804,6 +3844,10 @@ None
 
 %make_alias(BRep_Polygon3D)
 
+%extend BRep_Polygon3D {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_Polygon3D {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3922,6 +3966,10 @@ opencascade::handle<Geom_Surface>
 %make_alias(BRep_PolygonOnSurface)
 
 %extend BRep_PolygonOnSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_PolygonOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4039,6 +4087,10 @@ opencascade::handle<Poly_Triangulation>
 %make_alias(BRep_PolygonOnTriangulation)
 
 %extend BRep_PolygonOnTriangulation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_PolygonOnTriangulation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4143,6 +4195,10 @@ bool
 
 %make_alias(BRep_Curve3D)
 
+%extend BRep_Curve3D {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_Curve3D {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4320,6 +4376,10 @@ None
 %make_alias(BRep_CurveOnSurface)
 
 %extend BRep_CurveOnSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_CurveOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4417,6 +4477,10 @@ None
 %make_alias(BRep_PointOnCurveOnSurface)
 
 %extend BRep_PointOnCurveOnSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_PointOnCurveOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4503,6 +4567,10 @@ None
 
 %make_alias(BRep_PointOnSurface)
 
+%extend BRep_PointOnSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_PointOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4595,6 +4663,10 @@ None
 %make_alias(BRep_PolygonOnClosedSurface)
 
 %extend BRep_PolygonOnClosedSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend BRep_PolygonOnClosedSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4685,6 +4757,10 @@ opencascade::handle<Poly_PolygonOnTriangulation>
 
 %make_alias(BRep_PolygonOnClosedTriangulation)
 
+%extend BRep_PolygonOnClosedTriangulation {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_PolygonOnClosedTriangulation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4897,6 +4973,10 @@ None
 
 %make_alias(BRep_CurveOnClosedSurface)
 
+%extend BRep_CurveOnClosedSurface {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend BRep_CurveOnClosedSurface {
 	%pythoncode {
 	__repr__ = _dumps_object

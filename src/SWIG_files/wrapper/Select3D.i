@@ -530,6 +530,10 @@ bool
 %make_alias(Select3D_SensitiveBox)
 
 %extend Select3D_SensitiveBox {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitiveBox {
 	%pythoncode {
 	__repr__ = _dumps_object
 
@@ -689,6 +693,10 @@ gp_Trsf
 %make_alias(Select3D_SensitiveCylinder)
 
 %extend Select3D_SensitiveCylinder {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitiveCylinder {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -845,6 +853,10 @@ bool
 %make_alias(Select3D_SensitiveFace)
 
 %extend Select3D_SensitiveFace {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitiveFace {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -967,6 +979,10 @@ bool
 
 %make_alias(Select3D_SensitivePoint)
 
+%extend Select3D_SensitivePoint {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Select3D_SensitivePoint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1163,6 +1179,10 @@ bool
 %make_alias(Select3D_SensitiveSegment)
 
 %extend Select3D_SensitiveSegment {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitiveSegment {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1302,6 +1322,10 @@ bool
 
 %make_alias(Select3D_SensitiveSphere)
 
+%extend Select3D_SensitiveSphere {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Select3D_SensitiveSphere {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1446,6 +1470,10 @@ bool
 
 %make_alias(Select3D_SensitiveTriangle)
 
+%extend Select3D_SensitiveTriangle {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Select3D_SensitiveTriangle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1593,6 +1621,10 @@ None
 
 %make_alias(Select3D_InteriorSensitivePointSet)
 
+%extend Select3D_InteriorSensitivePointSet {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Select3D_InteriorSensitivePointSet {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1958,6 +1990,10 @@ bool
 %make_alias(Select3D_SensitiveGroup)
 
 %extend Select3D_SensitiveGroup {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitiveGroup {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2208,6 +2244,10 @@ None
 
 %make_alias(Select3D_SensitivePoly)
 
+%extend Select3D_SensitivePoly {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Select3D_SensitivePoly {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2791,6 +2831,10 @@ bool
 %make_alias(Select3D_SensitivePrimitiveArray)
 
 %extend Select3D_SensitivePrimitiveArray {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitivePrimitiveArray {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2988,6 +3032,10 @@ None
 %make_alias(Select3D_SensitiveWire)
 
 %extend Select3D_SensitiveWire {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
+%extend Select3D_SensitiveWire {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3064,6 +3112,10 @@ opencascade::handle<Select3D_SensitiveEntity>
 
 %make_alias(Select3D_SensitiveCurve)
 
+%extend Select3D_SensitiveCurve {
+%pythoncode {
+	def __getstate__(self):
+		return self.DumpJsonToString()
 %extend Select3D_SensitiveCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
