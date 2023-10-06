@@ -722,16 +722,16 @@ opencascade::handle<Geom2d_Transformation>
 		opencascade::handle<Geom2d_Transformation> operator *(const opencascade::handle<Geom2d_Transformation> & Other);
 
 
-            %extend{
-                void __imul_wrapper__(const opencascade::handle<Geom2d_Transformation> other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const opencascade::handle<Geom2d_Transformation> other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 };
 
 
@@ -3185,16 +3185,16 @@ None
 		void Transform(const gp_Trsf2d & T);
 
 
-            %extend{
-                void __imul_wrapper__(const Standard_Real other) {
-                *self *= other;
-                }
-            }
-            %pythoncode {
-            def __imul__(self, right):
-                self.__imul_wrapper__(right)
-                return self
-            }
+%extend{
+    void __imul_wrapper__(const Standard_Real other) {
+    *self *= other;
+    }
+}
+%pythoncode {
+def __imul__(self, right):
+    self.__imul_wrapper__(right)
+    return self
+}
 		/****************** operator + ******************/
 		/**** md5 signature: 771c6f61e4c20d4eb184cb5b33f68d78 ****/
 		%feature("compactdefaultargs") operator +;
@@ -3211,16 +3211,16 @@ opencascade::handle<Geom2d_VectorWithMagnitude>
 		opencascade::handle<Geom2d_VectorWithMagnitude> operator +(const opencascade::handle<Geom2d_Vector> & Other);
 
 
-            %extend{
-                void __iadd_wrapper__(const opencascade::handle<Geom2d_Vector> other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const opencascade::handle<Geom2d_Vector> other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 		/****************** operator - ******************/
 		/**** md5 signature: 2530c89d8b5c4d19ce213e1343e40928 ****/
 		%feature("compactdefaultargs") operator -;
@@ -3237,16 +3237,16 @@ opencascade::handle<Geom2d_VectorWithMagnitude>
 		opencascade::handle<Geom2d_VectorWithMagnitude> operator -(const opencascade::handle<Geom2d_Vector> & Other);
 
 
-            %extend{
-                void __isub_wrapper__(const opencascade::handle<Geom2d_Vector> other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const opencascade::handle<Geom2d_Vector> other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 		/****************** operator / ******************/
 		/**** md5 signature: 0a56286c62dba74f36f30742050f131f ****/
 		%feature("compactdefaultargs") operator /;
@@ -3263,16 +3263,16 @@ opencascade::handle<Geom2d_VectorWithMagnitude>
 		opencascade::handle<Geom2d_VectorWithMagnitude> operator /(const Standard_Real Scalar);
 
 
-            %extend{
-                void __itruediv_wrapper__(const Standard_Real other) {
-                *self /= other;
-                }
-            }
-            %pythoncode {
-            def __itruediv__(self, right):
-                self.__itruediv_wrapper__(right)
-                return self
-            }
+%extend{
+    void __itruediv_wrapper__(const Standard_Real other) {
+    *self /= other;
+    }
+}
+%pythoncode {
+def __itruediv__(self, right):
+    self.__itruediv_wrapper__(right)
+    return self
+}
 };
 
 

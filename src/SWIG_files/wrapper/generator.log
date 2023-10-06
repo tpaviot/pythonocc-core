@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 5926dc2
+git revision : 690ab04
 
 operating system : Linux 64bit 6.2.0-33-generic
 
 occt version targeted : 7.7.2
 
-date : 2023-10-04 18:36:05.077081
+date : 2023-10-05 17:53:45.802610
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -3839,52 +3839,52 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  ## Processing module IMeshData
 [INFO ]  Enum: IMeshData_Status
 [WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>, WeakEqual<IMeshData_Face>>>
-[WARNI]  Template: IMeshData::Array1OfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::Array1OfVertexOfDelaunskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::BndBox2dTreeskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::BndBox2dTreeFillerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::CircleCellFilterskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::DMapOfIFacePtrsListOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::DMapOfIFacePtrsMapOfIEdgePtrsskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::DMapOfIntegerListOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::DMapOfShapeIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::ICurveArrayAdaptorHandleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::ICurveHandleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IDMapOfIFacePtrsListOfIPCurvesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IDMapOfLinkskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IEdgeHandleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IFaceHandleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IMapOfRealskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IPCurveHandleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::IWireHandleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::ListOfIPCurvesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::ListOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::ListOfPnt2dskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::MapOfIEdgePtrskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::MapOfIFacePtrskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::MapOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::MapOfIntegerIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::MapOfOrientedEdgesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::MapOfRealskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfPntskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfPnt2dskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfRealskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::SequenceOfBndB2dskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::SequenceOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::SequenceOfRealskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfBooleanskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfCircleskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfElementsskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfIEdgeHandlesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfIEdgePtrsskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfIFaceHandlesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfIPCurveHandlesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfIWireHandlesskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfIntegerskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfOrientationskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VectorOfVertexskipped because name doesn't contain _.
-[WARNI]  Template: IMeshData::VertexCellFilterskipped because name doesn't contain _.
+[WARNI]  Template IMeshData::Array1OfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::Array1OfVertexOfDelaun skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::BndBox2dTree skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::BndBox2dTreeFiller skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::CircleCellFilter skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::DMapOfIFacePtrsListOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::DMapOfIFacePtrsMapOfIEdgePtrs skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::DMapOfIntegerListOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::DMapOfShapeInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::ICurveArrayAdaptorHandle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::ICurveHandle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IDMapOfIFacePtrsListOfIPCurves skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IDMapOfLink skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IEdgeHandle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IFaceHandle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IMapOfReal skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IPCurveHandle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::IWireHandle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::ListOfIPCurves skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::ListOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::ListOfPnt2d skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::MapOfIEdgePtr skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::MapOfIFacePtr skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::MapOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::MapOfIntegerInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::MapOfOrientedEdges skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::MapOfReal skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::Model::SequenceOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::Model::SequenceOfPnt skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::Model::SequenceOfPnt2d skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::Model::SequenceOfReal skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::SequenceOfBndB2d skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::SequenceOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::SequenceOfReal skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfBoolean skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfCircle skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfElements skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfIEdgeHandles skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfIEdgePtrs skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfIFaceHandles skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfIPCurveHandles skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfIWireHandles skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfInteger skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfOrientation skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VectorOfVertex skipped because name doesn't contain '_'.
+[WARNI]  Template IMeshData::VertexCellFilter skipped because name doesn't contain '_'.
 [INFO ]  Class: IMeshData_ParametersList
 [INFO ]      Class IMeshData_ParametersList is abstract, using %nodefaultctor.
 [INFO ]  Class: IMeshData_Shape
@@ -6889,7 +6889,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ModeDropSmallEdges
 [INFO ]  ## Processing module ShapeProcess
-[WARNI]  Template: )skipped because name doesn't contain _.
+[WARNI]  Template ) skipped because name doesn't contain '_'.
 [INFO ]  Class: ShapeProcess
 [INFO ]  Class: ShapeProcess_Context
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7052,7 +7052,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  Enum: BRepBuilderAPI_TransitionMode
 [INFO ]  Enum: BRepBuilderAPI_WireError
 [WARNI]      [TypeHint] Skipping unknown type int,Bnd_Box, int,Bnd not in module list
-[WARNI]  Template: VectorOfPointskipped because name doesn't contain _.
+[WARNI]  Template VectorOfPoint skipped because name doesn't contain '_'.
 [INFO ]  Class: BRepBuilderAPI
 [INFO ]  Class: BRepBuilderAPI_Collect
 [INFO ]  Class: BRepBuilderAPI_Command
@@ -8196,7 +8196,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  Enum: IFSelect_PrintFail
 [INFO ]  Enum: IFSelect_RemainMode
 [INFO ]  Enum: IFSelect_ReturnStatus
-[WARNI]  Template: )skipped because name doesn't contain _.
+[WARNI]  Template ) skipped because name doesn't contain '_'.
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8324,7 +8324,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  Enum: Interface_CheckStatus
 [INFO ]  Enum: Interface_DataState
 [INFO ]  Enum: Interface_ParamType
-[WARNI]  Template: )skipped because name doesn't contain _.
+[WARNI]  Template ) skipped because name doesn't contain '_'.
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8412,7 +8412,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  Found HSEQUENCE definitionMoniTool_HSequenceOfElement: MoniTool_SequenceOfElement
 [INFO ]  Enum: MoniTool_ValueType
 [WARNI]  This template type cannot be handled: opencascade::handle<TCollection_HAsciiString>( * MoniTool_ValueInterpret ) ( const opencascade::handle<MoniTool_TypedValue>& typval, const opencascade::handle<TCollection_HAsciiString>& val, const Standard_Boolean native
-[WARNI]  Template: )skipped because name doesn't contain _.
+[WARNI]  Template ) skipped because name doesn't contain '_'.
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8798,7 +8798,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  Found HSEQUENCE definitionHClassName: _SequenceType_
 [INFO ]  Found HARRAY1 definitionHClassName: _Array1Type_
 [INFO ]  Found HARRAY2 definitionHClassName: _Array2Type_
-[WARNI]  Template: )skipped because name doesn't contain _.
+[WARNI]  Template ) skipped because name doesn't contain '_'.
 [INFO ]  Class: NCollection_StdAllocator<void>
 [INFO ]      Wrap nested class NCollection_StdAllocator<void>::rebind
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -9042,7 +9042,7 @@ date : 2023-10-04 18:36:05.077081
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 45.62s
+SWIG interface file generation completed in 17.10s
 #################################################
 
 [INFO ]  Number of classes: 4747

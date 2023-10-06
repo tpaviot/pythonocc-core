@@ -1383,33 +1383,33 @@ Standard_Character
 		Standard_Character Value(const Standard_Integer where);
 
 
-            %extend{
-                bool __ne_wrapper__(const Standard_CString other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const Standard_CString other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 
-            %extend{
-                bool __ne_wrapper__(const TCollection_AsciiString other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TCollection_AsciiString other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 		/****************** operator + ******************/
 		/**** md5 signature: d5bb55766727226dfadc22de4706ab2a ****/
 		%feature("compactdefaultargs") operator +;
@@ -1486,88 +1486,88 @@ TCollection_AsciiString
 		TCollection_AsciiString operator +(TCollection_AsciiString other);
 
 
-            %extend{
-                void __iadd_wrapper__(const Standard_Character other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const Standard_Character other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __iadd_wrapper__(const Standard_Integer other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const Standard_Integer other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __iadd_wrapper__(const Standard_Real other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const Standard_Real other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __iadd_wrapper__(const Standard_CString other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const Standard_CString other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 
-            %extend{
-                void __iadd_wrapper__(const TCollection_AsciiString other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const TCollection_AsciiString other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 
-            %extend{
-                bool __eq_wrapper__(const Standard_CString other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const Standard_CString other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 
-            %extend{
-                bool __eq_wrapper__(const TCollection_AsciiString other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TCollection_AsciiString other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -2314,33 +2314,33 @@ Standard_ExtCharacter
 		Standard_ExtCharacter Value(const Standard_Integer where);
 
 
-            %extend{
-                bool __ne_wrapper__(const Standard_ExtString other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const Standard_ExtString other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 
-            %extend{
-                bool __ne_wrapper__(const TCollection_ExtendedString other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TCollection_ExtendedString other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 		/****************** operator + ******************/
 		/**** md5 signature: bc40c1386a156b1db27b30eaa95a0f95 ****/
 		%feature("compactdefaultargs") operator +;
@@ -2357,44 +2357,44 @@ TCollection_ExtendedString
 		TCollection_ExtendedString operator +(TCollection_ExtendedString other);
 
 
-            %extend{
-                void __iadd_wrapper__(const TCollection_ExtendedString other) {
-                *self += other;
-                }
-            }
-            %pythoncode {
-            def __iadd__(self, right):
-                self.__iadd_wrapper__(right)
-                return self
-            }
+%extend{
+    void __iadd_wrapper__(const TCollection_ExtendedString other) {
+    *self += other;
+    }
+}
+%pythoncode {
+def __iadd__(self, right):
+    self.__iadd_wrapper__(right)
+    return self
+}
 
-            %extend{
-                bool __eq_wrapper__(const Standard_ExtString other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const Standard_ExtString other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 
-            %extend{
-                bool __eq_wrapper__(const TCollection_ExtendedString other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TCollection_ExtendedString other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 

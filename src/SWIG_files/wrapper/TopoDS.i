@@ -1403,47 +1403,48 @@ None
 		void TShape(const opencascade::handle<TopoDS_TShape> & theTShape);
 
 
-            %extend{
-                bool __ne_wrapper__(const TopoDS_Shape other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TopoDS_Shape other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 
-            %extend{
-                bool __eq_wrapper__(const TopoDS_Shape other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TopoDS_Shape other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
+
 
 
 %extend TopoDS_Shape {
 %pythoncode {
-	def __getstate__(self):
-		from .BRepTools import breptools
-		str_shape = breptools.WriteToString(self, True)
-		return str_shape
-	def __setstate__(self, state):
-		from .BRepTools import breptools
-		the_shape = breptools.ReadFromString(state)
-		self.this = the_shape.this
-	}
+    def __getstate__(self):
+        from .BRepTools import breptools
+        str_shape = breptools.WriteToString(self, True)
+        return str_shape
+    def __setstate__(self, state):
+        from .BRepTools import breptools
+        the_shape = breptools.ReadFromString(state)
+        self.this = the_shape.this
+    }
 };
 %extend TopoDS_Shape {
 	%pythoncode {

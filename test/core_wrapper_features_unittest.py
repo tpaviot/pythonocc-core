@@ -764,10 +764,20 @@ class TestWrapperFeatures(unittest.TestCase):
     def test_ImportFromJson(self) -> None:
         """Since opencascade 7x, some objects can be serialized to json"""
         # create a sphere with a radius of 10.
-        p = gp_Pnt()
-        res = p.InitFromJsonString('{"gp_Pnt": [0, 0, 0]}')
-        # TODO: should be True!!
-        # self.assertTrue(res)
+        p1 = gp_Pnt(1.0, 3.14, -5)
+        p2 = gp_Pnt()
+        p2.InitFromJsonString(p1.DumpJsonToString())
+        self.assertEqual(p2.X(), 1.0)
+        self.assertEqual(p2.Y(), 3.14)
+        self.assertEqual(p2.Z(), -5)
+
+    def test_json_pickle(self) -> None:
+        p1 = gp_Pnt(-1.0, 0.414, 7.88)
+        dmp = pickle.dumps(p1)
+        res = pickle.loads(dmp)
+        self.assertEqual(res.X(), -1.0)
+        self.assertEqual(res.Y(), 0.414)
+        self.assertEqual(res.Z(), 7.88)
 
     def test_harray1_harray2_hsequence(self) -> None:
         """Check that special wrappers for harray1, harray2 and hsequence.

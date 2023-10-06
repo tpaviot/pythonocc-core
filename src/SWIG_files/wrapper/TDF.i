@@ -2908,33 +2908,33 @@ int
 		Standard_Integer Transaction();
 
 
-            %extend{
-                bool __ne_wrapper__(const TDF_Label other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TDF_Label other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 
-            %extend{
-                bool __eq_wrapper__(const TDF_Label other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TDF_Label other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 %feature("autodoc", "Returns the label name") GetLabelName;
 		%extend{
 			std::string GetLabelName() {

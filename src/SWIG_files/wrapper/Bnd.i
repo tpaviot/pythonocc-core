@@ -1926,9 +1926,9 @@ bool
         /****************** InitFromJsonString ******************/
         %feature("autodoc", "1");
         %extend{
-            bool InitFromJsonString(std::string src) {
-            std::stringstream s(src);
-            Standard_Integer pos=1;
+            bool InitFromJsonString(std::string json_string) {
+            std::stringstream s(json_string);
+            Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
 		/****************** IsOpen ******************/
@@ -2400,6 +2400,24 @@ None
 };
 
 
+
+%extend Bnd_Box {
+%pythoncode {
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Box {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Box()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Box')
+    }
+};
 %extend Bnd_Box {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2872,6 +2890,24 @@ None
 };
 
 
+
+%extend Bnd_Box2d {
+%pythoncode {
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Box2d {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Box2d()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Box2d')
+    }
+};
 %extend Bnd_Box2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3276,6 +3312,24 @@ float
 };
 
 
+
+%extend Bnd_OBB {
+%pythoncode {
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_OBB {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_OBB()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_OBB')
+    }
+};
 %extend Bnd_OBB {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3615,22 +3669,40 @@ bool
 		Standard_Boolean Union(const Bnd_Range & theOther);
 
 
-            %extend{
-                bool __eq_wrapper__(const Bnd_Range other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const Bnd_Range other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
+
+%extend Bnd_Range {
+%pythoncode {
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Range {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Range()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Range')
+    }
+};
 %extend Bnd_Range {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3879,6 +3951,24 @@ int
 };
 
 
+
+%extend Bnd_Sphere {
+%pythoncode {
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Sphere {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Sphere()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Sphere')
+    }
+};
 %extend Bnd_Sphere {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3923,6 +4013,24 @@ BVH_Box<float, 3 >
 };
 
 
+
+%extend Bnd_Tools {
+%pythoncode {
+    def __getstate__(self):
+        return self.DumpJsonToString()
+    }
+};
+
+%extend Bnd_Tools {
+%pythoncode {
+    def __setstate__(self, state):
+        inst = Bnd_Tools()
+        if inst.InitFromJsonString(state):
+            self.this = inst.this
+        else:
+            raise IOError('Failed to set state of Bnd_Tools')
+    }
+};
 %extend Bnd_Tools {
 	%pythoncode {
 	__repr__ = _dumps_object

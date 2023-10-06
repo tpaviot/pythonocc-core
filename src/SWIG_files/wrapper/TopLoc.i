@@ -488,19 +488,19 @@ gp_Trsf
 		const gp_Trsf Transformation();
 
 
-            %extend{
-                bool __ne_wrapper__(const TopLoc_Location other) {
-                if (*self!=other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __ne__(self, right):
-                try:
-                    return self.__ne_wrapper__(right)
-                except:
-                    return True
-            }
+%extend{
+    bool __ne_wrapper__(const TopLoc_Location other) {
+    if (*self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
 		/****************** operator * ******************/
 		/**** md5 signature: b914624702617b5c10e313c8e2b471b0 ****/
 		%feature("compactdefaultargs") operator *;
@@ -532,19 +532,19 @@ TopLoc_Location
 		TopLoc_Location operator /(const TopLoc_Location & Other);
 
 
-            %extend{
-                bool __eq_wrapper__(const TopLoc_Location other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TopLoc_Location other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 

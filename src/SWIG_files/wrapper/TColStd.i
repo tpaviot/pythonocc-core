@@ -1079,30 +1079,30 @@ bool
 		Standard_Boolean Unite(const TColStd_PackedMapOfInteger &);
 
 
-            %extend{
-                void __isub_wrapper__(const TColStd_PackedMapOfInteger other) {
-                *self -= other;
-                }
-            }
-            %pythoncode {
-            def __isub__(self, right):
-                self.__isub_wrapper__(right)
-                return self
-            }
+%extend{
+    void __isub_wrapper__(const TColStd_PackedMapOfInteger other) {
+    *self -= other;
+    }
+}
+%pythoncode {
+def __isub__(self, right):
+    self.__isub_wrapper__(right)
+    return self
+}
 
-            %extend{
-                bool __eq_wrapper__(const TColStd_PackedMapOfInteger other) {
-                if (*self==other) return true;
-                else return false;
-                }
-            }
-            %pythoncode {
-            def __eq__(self, right):
-                try:
-                    return self.__eq_wrapper__(right)
-                except:
-                    return False
-            }
+%extend{
+    bool __eq_wrapper__(const TColStd_PackedMapOfInteger other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
