@@ -32,6 +32,8 @@
 %wrap_handle(AIS_InteractiveContext)
 %wrap_handle(V3d_View)
 %wrap_handle(V3d_Viewer)
+%wrap_handle(Graphic3d_Camera)
+%wrap_handle(Graphic3d_StructureManager)
 
 class Display3d {
  public:
