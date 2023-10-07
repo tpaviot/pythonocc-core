@@ -125,8 +125,7 @@ class RenderWraper(ThreejsRenderer):
                 edge_content = ""
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
                 edge_point_set = [
-                    tess.GetEdgeVertex(i_edge, i_vert)
-                    for i_vert in range(nbr_vertices)
+                    tess.GetEdgeVertex(i_edge, i_vert) for i_vert in range(nbr_vertices)
                 ]
                 # write to file
                 edge_hash = f"edg{uuid.uuid4().hex}"
