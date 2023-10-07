@@ -61,7 +61,7 @@ $ conda install -c conda-forge pythreejs"""
 
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
-from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.BRepBndLib import brepbndlib
 from OCC.Core.gp import gp_Pnt, gp_Dir
 from OCC.Core.TopoDS import TopoDS_Compound
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
@@ -373,7 +373,7 @@ class BoundingBox:
     def _bounding_box(self, obj, tol=1e-5):
         bbox = Bnd_Box()
         bbox.SetGap(self.tol)
-        brepbndlib_Add(obj, bbox, True)
+        brepbndlib.Add(obj, bbox, True)
         values = bbox.Get()
         return (values[0], values[3], values[1], values[4], values[2], values[5])
 
@@ -1039,9 +1039,7 @@ class JupyterRenderer:
         )
 
         # Set up Controllers
-        self._controller = OrbitControls(
-            controlling=self._camera, target=camera_target, target0=camera_target
-        )
+        self._controller = OrbitControls(controlling=self._camera, target=camera_target)
         # Update controller to instantiate camera position
         self._camera.zoom = camera_zoom
         self._update()
