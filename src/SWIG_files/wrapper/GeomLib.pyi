@@ -15,7 +15,7 @@ from OCC.Core.math import *
 from OCC.Core.AdvApprox import *
 from OCC.Core.Geom2dAdaptor import *
 
-Adaptor2d_Curve2d = NewType('Adaptor2d_Curve2d', class Adaptor2d_Curve2d)
+Adaptor2d_Curve2d = NewType('Adaptor2d_Curve2d',  Adaptor2d_Curve2d)
 GeomLib_DenominatorMultiplierPtr = NewType('GeomLib_DenominatorMultiplierPtr', GeomLib_DenominatorMultiplier)
 
 class GeomLib_Array1OfMat:
