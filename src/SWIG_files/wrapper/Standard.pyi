@@ -3,40 +3,40 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.NCollection import *
 
-Standard_Address = NewType('Standard_Address', None)
-Standard_Boolean = NewType('Standard_Boolean', bool)
-Standard_Byte = NewType('Standard_Byte', str)
-Standard_CString = NewType('Standard_CString', str)
-Standard_Character = NewType('Standard_Character', str)
-#the following typedef cannot be wrapped as is
-Standard_ErrorHandlerCallback = NewType('Standard_ErrorHandlerCallback', Any)
-Standard_ExtCharacter = NewType('Standard_ExtCharacter', str)
-Standard_ExtString = NewType('Standard_ExtString', str)
-#the following typedef cannot be wrapped as is
-Standard_HMutex = NewType('Standard_HMutex', Any)
-#the following typedef cannot be wrapped as is
-Standard_IStream = NewType('Standard_IStream', Any)
-Standard_Integer = NewType('Standard_Integer', int)
-#the following typedef cannot be wrapped as is
-Standard_OStream = NewType('Standard_OStream', Any)
-Standard_PByte = NewType('Standard_PByte', Standard_Byte)
-Standard_PCharacter = NewType('Standard_PCharacter', str)
-Standard_PErrorHandler = NewType('Standard_PErrorHandler', Standard_ErrorHandler)
-Standard_PExtCharacter = NewType('Standard_PExtCharacter', str)
-Standard_Real = NewType('Standard_Real', float)
-#the following typedef cannot be wrapped as is
-Standard_SStream = NewType('Standard_SStream', Any)
-Standard_ShortReal = NewType('Standard_ShortReal', float)
-Standard_Size = NewType('Standard_Size', int)
-Standard_ThreadId = NewType('Standard_ThreadId', Standard_Size)
-#the following typedef cannot be wrapped as is
-Standard_Time = NewType('Standard_Time', Any)
-Standard_UInteger = NewType('Standard_UInteger', int)
-Standard_Utf16Char = NewType('Standard_Utf16Char', str)
-Standard_Utf32Char = NewType('Standard_Utf32Char', str)
-Standard_Utf8Char = NewType('Standard_Utf8Char', str)
-Standard_Utf8UChar = NewType('Standard_Utf8UChar', str)
-Standard_WideChar = NewType('Standard_WideChar', str)
+Standard_Address = NewType("Standard_Address", None)
+Standard_Boolean = NewType("Standard_Boolean", bool)
+Standard_Byte = NewType("Standard_Byte", str)
+Standard_CString = NewType("Standard_CString", str)
+Standard_Character = NewType("Standard_Character", str)
+# the following typedef cannot be wrapped as is
+Standard_ErrorHandlerCallback = NewType("Standard_ErrorHandlerCallback", Any)
+Standard_ExtCharacter = NewType("Standard_ExtCharacter", str)
+Standard_ExtString = NewType("Standard_ExtString", str)
+# the following typedef cannot be wrapped as is
+Standard_HMutex = NewType("Standard_HMutex", Any)
+# the following typedef cannot be wrapped as is
+Standard_IStream = NewType("Standard_IStream", Any)
+Standard_Integer = NewType("Standard_Integer", int)
+# the following typedef cannot be wrapped as is
+Standard_OStream = NewType("Standard_OStream", Any)
+Standard_PByte = NewType("Standard_PByte", Standard_Byte)
+Standard_PCharacter = NewType("Standard_PCharacter", str)
+Standard_PErrorHandler = NewType("Standard_PErrorHandler", Standard_ErrorHandler)
+Standard_PExtCharacter = NewType("Standard_PExtCharacter", str)
+Standard_Real = NewType("Standard_Real", float)
+# the following typedef cannot be wrapped as is
+Standard_SStream = NewType("Standard_SStream", Any)
+Standard_ShortReal = NewType("Standard_ShortReal", float)
+Standard_Size = NewType("Standard_Size", int)
+Standard_ThreadId = NewType("Standard_ThreadId", Standard_Size)
+# the following typedef cannot be wrapped as is
+Standard_Time = NewType("Standard_Time", Any)
+Standard_UInteger = NewType("Standard_UInteger", int)
+Standard_Utf16Char = NewType("Standard_Utf16Char", str)
+Standard_Utf32Char = NewType("Standard_Utf32Char", str)
+Standard_Utf8Char = NewType("Standard_Utf8Char", str)
+Standard_Utf8UChar = NewType("Standard_Utf8UChar", str)
+Standard_WideChar = NewType("Standard_WideChar", str)
 
 class Standard_HandlerStatus(IntEnum):
     Standard_HandlerVoid: int = ...
@@ -57,9 +57,15 @@ class standard:
     @staticmethod
     def Reallocate(aStorage: None, aNewSize: int) -> None: ...
     @staticmethod
-    def StackTrace(theBuffer: str, theBufferSize: int, theNbTraces: int, theContext: Optional[None] = None, theNbTopSkip: Optional[int] = 0) -> bool: ...
+    def StackTrace(
+        theBuffer: str,
+        theBufferSize: int,
+        theNbTraces: int,
+        theContext: Optional[None] = None,
+        theNbTopSkip: Optional[int] = 0,
+    ) -> bool: ...
 
-class Standard_ArrayStreamBuffer():
+class Standard_ArrayStreamBuffer:
     pass
 
 class Standard_Condition:
@@ -92,7 +98,19 @@ class Standard_GUID:
     @overload
     def __init__(self, aGuid: Standard_ExtString) -> None: ...
     @overload
-    def __init__(self, a32b: int, a16b1: Standard_ExtCharacter, a16b2: Standard_ExtCharacter, a16b3: Standard_ExtCharacter, a8b1: str, a8b2: str, a8b3: str, a8b4: str, a8b5: str, a8b6: str) -> None: ...
+    def __init__(
+        self,
+        a32b: int,
+        a16b1: Standard_ExtCharacter,
+        a16b2: Standard_ExtCharacter,
+        a16b3: Standard_ExtCharacter,
+        a8b1: str,
+        a8b2: str,
+        a8b3: str,
+        a8b4: str,
+        a8b5: str,
+        a8b6: str,
+    ) -> None: ...
     @overload
     def __init__(self, aGuid: Standard_UUID) -> None: ...
     @overload
@@ -187,7 +205,14 @@ class Standard_Failure(Standard_Transient):
     def SetStackString(self, theStack: str) -> None: ...
 
 class Standard_MMgrOpt(Standard_MMgrRoot):
-    def __init__(self, aClear: Optional[bool] = True, aMMap: Optional[bool] = True, aCellSize: Optional[int] = 200, aNbPages: Optional[int] = 10000, aThreshold: Optional[int] = 40000) -> None: ...
+    def __init__(
+        self,
+        aClear: Optional[bool] = True,
+        aMMap: Optional[bool] = True,
+        aCellSize: Optional[int] = 200,
+        aNbPages: Optional[int] = 10000,
+        aThreshold: Optional[int] = 40000,
+    ) -> None: ...
     def Allocate(self, aSize: int) -> None: ...
     def Free(self, thePtr: None) -> None: ...
     def Purge(self, isDestroyed: bool) -> int: ...
@@ -231,7 +256,9 @@ class Standard_Type(Standard_Transient):
     def Name(self) -> str: ...
     def Parent(self) -> Standard_Type: ...
     @staticmethod
-    def Register(theSystemName: str, theName: str, theSize: int, theParent: Standard_Type) -> Standard_Type: ...
+    def Register(
+        theSystemName: str, theName: str, theSize: int, theParent: Standard_Type
+    ) -> Standard_Type: ...
     def Size(self) -> int: ...
     @overload
     def SubType(self, theOther: Standard_Type) -> bool: ...
@@ -239,28 +266,27 @@ class Standard_Type(Standard_Transient):
     def SubType(self, theOther: str) -> bool: ...
     def SystemName(self) -> str: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_AncestorIterator: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_Static_Assert: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_CLocaleSentry: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_Mutex: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_ReadLineBuffer: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_ProgramError: ...
 
-#classnotwrapped
+# classnotwrapped
 class Standard_ReadBuffer: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

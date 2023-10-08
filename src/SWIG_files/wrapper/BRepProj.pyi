@@ -6,7 +6,6 @@ from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.gp import *
 
-
 class BRepProj_Projection:
     @overload
     def __init__(self, Wire: TopoDS_Shape, Shape: TopoDS_Shape, D: gp_Dir) -> None: ...
@@ -22,4 +21,3 @@ class BRepProj_Projection:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

@@ -6,7 +6,6 @@ from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.gp import *
 
-
 class TopClass_SolidExplorer:
     def CurrentFace(self) -> TopoDS_Face: ...
     def InitFace(self) -> None: ...
@@ -24,4 +23,3 @@ class TopClass_SolidExplorer:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

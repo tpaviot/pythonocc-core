@@ -9,10 +9,11 @@ from OCC.Core.BinTools import *
 from OCC.Core.TDF import *
 from OCC.Core.BinObjMgt import *
 
-
 class binmnaming:
     @staticmethod
-    def AddDrivers(theDriverTable: BinMDF_ADriverTable, aMsgDrv: Message_Messenger) -> None: ...
+    def AddDrivers(
+        theDriverTable: BinMDF_ADriverTable, aMsgDrv: Message_Messenger
+    ) -> None: ...
 
 class BinMNaming_NamedShapeDriver(BinMDF_ADriver):
     def __init__(self, theMessageDriver: Message_Messenger) -> None: ...
@@ -24,9 +25,19 @@ class BinMNaming_NamedShapeDriver(BinMDF_ADriver):
     def IsWithTriangles(self) -> bool: ...
     def NewEmpty(self) -> TDF_Attribute: ...
     @overload
-    def Paste(self, Source: BinObjMgt_Persistent, Target: TDF_Attribute, RelocTable: BinObjMgt_RRelocationTable) -> bool: ...
+    def Paste(
+        self,
+        Source: BinObjMgt_Persistent,
+        Target: TDF_Attribute,
+        RelocTable: BinObjMgt_RRelocationTable,
+    ) -> bool: ...
     @overload
-    def Paste(self, Source: TDF_Attribute, Target: BinObjMgt_Persistent, RelocTable: BinObjMgt_SRelocationTable) -> None: ...
+    def Paste(
+        self,
+        Source: TDF_Attribute,
+        Target: BinObjMgt_Persistent,
+        RelocTable: BinObjMgt_SRelocationTable,
+    ) -> None: ...
     def SetWithNormals(self, isWithNormals: bool) -> None: ...
     def SetWithTriangles(self, isWithTriangles: bool) -> None: ...
     def ShapeSet(self, theReading: bool) -> BinTools_ShapeSetBase: ...
@@ -35,11 +46,20 @@ class BinMNaming_NamingDriver(BinMDF_ADriver):
     def __init__(self, theMessageDriver: Message_Messenger) -> None: ...
     def NewEmpty(self) -> TDF_Attribute: ...
     @overload
-    def Paste(self, Source: BinObjMgt_Persistent, Target: TDF_Attribute, RelocTable: BinObjMgt_RRelocationTable) -> bool: ...
+    def Paste(
+        self,
+        Source: BinObjMgt_Persistent,
+        Target: TDF_Attribute,
+        RelocTable: BinObjMgt_RRelocationTable,
+    ) -> bool: ...
     @overload
-    def Paste(self, Source: TDF_Attribute, Target: BinObjMgt_Persistent, RelocTable: BinObjMgt_SRelocationTable) -> None: ...
+    def Paste(
+        self,
+        Source: TDF_Attribute,
+        Target: BinObjMgt_Persistent,
+        RelocTable: BinObjMgt_SRelocationTable,
+    ) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

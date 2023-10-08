@@ -4,9 +4,9 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
-#the following typedef cannot be wrapped as is
-Storage_PType = NewType('Storage_PType', Any)
-Storage_Position = NewType('Storage_Position', long)
+# the following typedef cannot be wrapped as is
+Storage_PType = NewType("Storage_PType", Any)
+Storage_Position = NewType("Storage_Position", long)
 
 class Storage_ArrayOfCallBack:
     @overload
@@ -122,49 +122,49 @@ Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
 Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
 Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 
-#classnotwrapped
+# classnotwrapped
 class Storage_HeaderData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Data: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_DefaultCallBack: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_RootData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_TypedCallBack: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_InternalData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Root: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_BaseDriver: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_CallBack: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_TypeData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Bucket: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_BucketOfPersistent: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_BucketIterator: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Schema: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage: ...
 
 # harray1 classes
@@ -173,11 +173,9 @@ class Storage_HArrayOfSchema(Storage_ArrayOfSchema, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> Storage_ArrayOfSchema: ...
 
-
 class Storage_HPArray(Storage_PArray, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> Storage_PArray: ...
-
 
 class Storage_HArrayOfCallBack(Storage_ArrayOfCallBack, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
@@ -193,5 +191,3 @@ class Storage_HSeqOfRoot(Storage_SeqOfRoot, Standard_Transient):
     def __init__(self, other: Storage_SeqOfRoot) -> None: ...
     def Sequence(self) -> Storage_SeqOfRoot: ...
     def Append(self, theSequence: Storage_SeqOfRoot) -> None: ...
-
-

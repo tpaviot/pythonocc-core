@@ -11,7 +11,6 @@ from OCC.Core.Geom2d import *
 from OCC.Core.gp import *
 from OCC.Core.HLRAlgo import *
 
-
 class HLRTopoBRep_ListOfVData:
     def __init__(self) -> None: ...
     def __len__(self) -> int: ...
@@ -28,7 +27,13 @@ class HLRTopoBRep_ListOfVData:
 
 class HLRTopoBRep_DSFiller:
     @staticmethod
-    def Insert(S: TopoDS_Shape, FO: Contap_Contour, DS: HLRTopoBRep_Data, MST: BRepTopAdaptor_MapOfShapeTool, nbIso: int) -> None: ...
+    def Insert(
+        S: TopoDS_Shape,
+        FO: Contap_Contour,
+        DS: HLRTopoBRep_Data,
+        MST: BRepTopAdaptor_MapOfShapeTool,
+        nbIso: int,
+    ) -> None: ...
 
 class HLRTopoBRep_Data:
     def __init__(self) -> None: ...
@@ -79,9 +84,20 @@ class HLRTopoBRep_FaceData:
 
 class HLRTopoBRep_FaceIsoLiner:
     @staticmethod
-    def MakeIsoLine(F: TopoDS_Face, Iso: Geom2d_Line, V1: TopoDS_Vertex, V2: TopoDS_Vertex, U1: float, U2: float, Tol: float, DS: HLRTopoBRep_Data) -> None: ...
+    def MakeIsoLine(
+        F: TopoDS_Face,
+        Iso: Geom2d_Line,
+        V1: TopoDS_Vertex,
+        V2: TopoDS_Vertex,
+        U1: float,
+        U2: float,
+        Tol: float,
+        DS: HLRTopoBRep_Data,
+    ) -> None: ...
     @staticmethod
-    def MakeVertex(E: TopoDS_Edge, P: gp_Pnt, Par: float, Tol: float, DS: HLRTopoBRep_Data) -> TopoDS_Vertex: ...
+    def MakeVertex(
+        E: TopoDS_Edge, P: gp_Pnt, Par: float, Tol: float, DS: HLRTopoBRep_Data
+    ) -> TopoDS_Vertex: ...
     @staticmethod
     def Perform(FI: int, F: TopoDS_Face, DS: HLRTopoBRep_Data, nbIsos: int) -> None: ...
 
@@ -93,7 +109,9 @@ class HLRTopoBRep_OutLiner(Standard_Transient):
     @overload
     def __init__(self, OriS: TopoDS_Shape, OutS: TopoDS_Shape) -> None: ...
     def DataStructure(self) -> HLRTopoBRep_Data: ...
-    def Fill(self, P: HLRAlgo_Projector, MST: BRepTopAdaptor_MapOfShapeTool, nbIso: int) -> None: ...
+    def Fill(
+        self, P: HLRAlgo_Projector, MST: BRepTopAdaptor_MapOfShapeTool, nbIso: int
+    ) -> None: ...
     @overload
     def OriginalShape(self, OriS: TopoDS_Shape) -> None: ...
     @overload
@@ -114,4 +132,3 @@ class HLRTopoBRep_VData:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

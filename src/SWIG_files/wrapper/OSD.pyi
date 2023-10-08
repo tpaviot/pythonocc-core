@@ -5,13 +5,13 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TCollection import *
 
-#the following typedef cannot be wrapped as is
-OSD_IOStreamBuffer = NewType('OSD_IOStreamBuffer', Any)
-#the following typedef cannot be wrapped as is
-OSD_IStreamBuffer = NewType('OSD_IStreamBuffer', Any)
-#the following typedef cannot be wrapped as is
-OSD_OStreamBuffer = NewType('OSD_OStreamBuffer', Any)
-OSD_PThread = NewType('OSD_PThread', pthread_t)
+# the following typedef cannot be wrapped as is
+OSD_IOStreamBuffer = NewType("OSD_IOStreamBuffer", Any)
+# the following typedef cannot be wrapped as is
+OSD_IStreamBuffer = NewType("OSD_IStreamBuffer", Any)
+# the following typedef cannot be wrapped as is
+OSD_OStreamBuffer = NewType("OSD_OStreamBuffer", Any)
+OSD_PThread = NewType("OSD_PThread", pthread_t)
 
 class OSD_FromWhere(IntEnum):
     OSD_FromBeginning: int = ...
@@ -195,88 +195,87 @@ OSD_WTimer = OSD_WhoAmI.OSD_WTimer
 OSD_WPackage = OSD_WhoAmI.OSD_WPackage
 OSD_WEnvironmentIterator = OSD_WhoAmI.OSD_WEnvironmentIterator
 
-#classnotwrapped
+# classnotwrapped
 class OSD_SharedLibrary: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_FileIterator: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_FileSystem: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Host: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_File: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_StreamBuffer: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Thread: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Error: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Process: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Timer: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Disk: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Environment: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Parallel: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_PerfMeter: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Protection: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Path: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Directory: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_LocalFileSystem: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_ThreadPool: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_MemInfo: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_DirectoryIterator: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_MAllocHook: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_FileNode: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_CachedFileSystem: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_FileSystemSelector: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD_Chronometer: ...
 
-#classnotwrapped
+# classnotwrapped
 class OSD: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

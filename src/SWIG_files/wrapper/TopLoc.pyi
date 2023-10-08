@@ -5,14 +5,14 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 
-#the following typedef cannot be wrapped as is
-TopLoc_IndexedMapOfLocation = NewType('TopLoc_IndexedMapOfLocation', Any)
-#the following typedef cannot be wrapped as is
-TopLoc_MapIteratorOfMapOfLocation = NewType('TopLoc_MapIteratorOfMapOfLocation', Any)
-#the following typedef cannot be wrapped as is
-TopLoc_MapLocationHasher = NewType('TopLoc_MapLocationHasher', Any)
-#the following typedef cannot be wrapped as is
-TopLoc_MapOfLocation = NewType('TopLoc_MapOfLocation', Any)
+# the following typedef cannot be wrapped as is
+TopLoc_IndexedMapOfLocation = NewType("TopLoc_IndexedMapOfLocation", Any)
+# the following typedef cannot be wrapped as is
+TopLoc_MapIteratorOfMapOfLocation = NewType("TopLoc_MapIteratorOfMapOfLocation", Any)
+# the following typedef cannot be wrapped as is
+TopLoc_MapLocationHasher = NewType("TopLoc_MapLocationHasher", Any)
+# the following typedef cannot be wrapped as is
+TopLoc_MapOfLocation = NewType("TopLoc_MapOfLocation", Any)
 
 class TopLoc_Datum3D(Standard_Transient):
     @overload
@@ -52,7 +52,9 @@ class TopLoc_Location:
     def Transformation(self) -> gp_Trsf: ...
 
 class TopLoc_SListNodeOfItemLocation(Standard_Transient):
-    def __init__(self, I: TopLoc_ItemLocation, aTail: TopLoc_SListOfItemLocation) -> None: ...
+    def __init__(
+        self, I: TopLoc_ItemLocation, aTail: TopLoc_SListOfItemLocation
+    ) -> None: ...
     def Tail(self) -> TopLoc_SListOfItemLocation: ...
     def Value(self) -> TopLoc_ItemLocation: ...
 
@@ -60,12 +62,16 @@ class TopLoc_SListOfItemLocation:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, anItem: TopLoc_ItemLocation, aTail: TopLoc_SListOfItemLocation) -> None: ...
+    def __init__(
+        self, anItem: TopLoc_ItemLocation, aTail: TopLoc_SListOfItemLocation
+    ) -> None: ...
     @overload
     def __init__(self, Other: TopLoc_SListOfItemLocation) -> None: ...
     @overload
     def __init__(self, theOther: TopLoc_SListOfItemLocation) -> None: ...
-    def Assign(self, Other: TopLoc_SListOfItemLocation) -> TopLoc_SListOfItemLocation: ...
+    def Assign(
+        self, Other: TopLoc_SListOfItemLocation
+    ) -> TopLoc_SListOfItemLocation: ...
     def Clear(self) -> None: ...
     def Construct(self, anItem: TopLoc_ItemLocation) -> None: ...
     def IsEmpty(self) -> bool: ...
@@ -78,4 +84,3 @@ class TopLoc_SListOfItemLocation:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

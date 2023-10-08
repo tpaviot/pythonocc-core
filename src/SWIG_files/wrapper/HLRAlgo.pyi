@@ -7,7 +7,6 @@ from OCC.Core.TopAbs import *
 from OCC.Core.TColgp import *
 from OCC.Core.gp import *
 
-
 class HLRAlgo_Array1OfPINod:
     @overload
     def __init__(self) -> None: ...
@@ -54,7 +53,9 @@ class HLRAlgo_Array1OfPISeg:
     def First(self) -> HLRAlgo_PolyInternalSegment: ...
     def Last(self) -> HLRAlgo_PolyInternalSegment: ...
     def Value(self, theIndex: int) -> HLRAlgo_PolyInternalSegment: ...
-    def SetValue(self, theIndex: int, theValue: HLRAlgo_PolyInternalSegment) -> None: ...
+    def SetValue(
+        self, theIndex: int, theValue: HLRAlgo_PolyInternalSegment
+    ) -> None: ...
 
 class HLRAlgo_Array1OfTData:
     @overload
@@ -139,27 +140,156 @@ HLRAlgo_PolyMask_FMskFrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFrBack
 
 class hlralgo:
     @staticmethod
-    def EnlargeMinMax(tol: float, Min_list: List[float], Max_list: List[float]) -> None: ...
+    def EnlargeMinMax(
+        tol: float, Min_list: List[float], Max_list: List[float]
+    ) -> None: ...
     @staticmethod
-    def InitMinMax(Big: float, Min_list: List[float], Max_list: List[float]) -> None: ...
+    def InitMinMax(
+        Big: float, Min_list: List[float], Max_list: List[float]
+    ) -> None: ...
     @staticmethod
-    def UpdateMinMax(x: float, y: float, z: float, Min_list: List[float], Max_list: List[float]) -> None: ...
+    def UpdateMinMax(
+        x: float, y: float, z: float, Min_list: List[float], Max_list: List[float]
+    ) -> None: ...
 
 class HLRAlgo_BiPoint:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, X1: float, Y1: float, Z1: float, X2: float, Y2: float, Z2: float, XT1: float, YT1: float, ZT1: float, XT2: float, YT2: float, ZT2: float, Index: int, reg1: bool, regn: bool, outl: bool, intl: bool) -> None: ...
+    def __init__(
+        self,
+        X1: float,
+        Y1: float,
+        Z1: float,
+        X2: float,
+        Y2: float,
+        Z2: float,
+        XT1: float,
+        YT1: float,
+        ZT1: float,
+        XT2: float,
+        YT2: float,
+        ZT2: float,
+        Index: int,
+        reg1: bool,
+        regn: bool,
+        outl: bool,
+        intl: bool,
+    ) -> None: ...
     @overload
-    def __init__(self, X1: float, Y1: float, Z1: float, X2: float, Y2: float, Z2: float, XT1: float, YT1: float, ZT1: float, XT2: float, YT2: float, ZT2: float, Index: int, flag: int) -> None: ...
+    def __init__(
+        self,
+        X1: float,
+        Y1: float,
+        Z1: float,
+        X2: float,
+        Y2: float,
+        Z2: float,
+        XT1: float,
+        YT1: float,
+        ZT1: float,
+        XT2: float,
+        YT2: float,
+        ZT2: float,
+        Index: int,
+        flag: int,
+    ) -> None: ...
     @overload
-    def __init__(self, X1: float, Y1: float, Z1: float, X2: float, Y2: float, Z2: float, XT1: float, YT1: float, ZT1: float, XT2: float, YT2: float, ZT2: float, Index: int, i1: int, i1p1: int, i1p2: int, reg1: bool, regn: bool, outl: bool, intl: bool) -> None: ...
+    def __init__(
+        self,
+        X1: float,
+        Y1: float,
+        Z1: float,
+        X2: float,
+        Y2: float,
+        Z2: float,
+        XT1: float,
+        YT1: float,
+        ZT1: float,
+        XT2: float,
+        YT2: float,
+        ZT2: float,
+        Index: int,
+        i1: int,
+        i1p1: int,
+        i1p2: int,
+        reg1: bool,
+        regn: bool,
+        outl: bool,
+        intl: bool,
+    ) -> None: ...
     @overload
-    def __init__(self, X1: float, Y1: float, Z1: float, X2: float, Y2: float, Z2: float, XT1: float, YT1: float, ZT1: float, XT2: float, YT2: float, ZT2: float, Index: int, i1: int, i1p1: int, i1p2: int, flag: int) -> None: ...
+    def __init__(
+        self,
+        X1: float,
+        Y1: float,
+        Z1: float,
+        X2: float,
+        Y2: float,
+        Z2: float,
+        XT1: float,
+        YT1: float,
+        ZT1: float,
+        XT2: float,
+        YT2: float,
+        ZT2: float,
+        Index: int,
+        i1: int,
+        i1p1: int,
+        i1p2: int,
+        flag: int,
+    ) -> None: ...
     @overload
-    def __init__(self, X1: float, Y1: float, Z1: float, X2: float, Y2: float, Z2: float, XT1: float, YT1: float, ZT1: float, XT2: float, YT2: float, ZT2: float, Index: int, i1: int, i1p1: int, i1p2: int, i2: int, i2p1: int, i2p2: int, reg1: bool, regn: bool, outl: bool, intl: bool) -> None: ...
+    def __init__(
+        self,
+        X1: float,
+        Y1: float,
+        Z1: float,
+        X2: float,
+        Y2: float,
+        Z2: float,
+        XT1: float,
+        YT1: float,
+        ZT1: float,
+        XT2: float,
+        YT2: float,
+        ZT2: float,
+        Index: int,
+        i1: int,
+        i1p1: int,
+        i1p2: int,
+        i2: int,
+        i2p1: int,
+        i2p2: int,
+        reg1: bool,
+        regn: bool,
+        outl: bool,
+        intl: bool,
+    ) -> None: ...
     @overload
-    def __init__(self, X1: float, Y1: float, Z1: float, X2: float, Y2: float, Z2: float, XT1: float, YT1: float, ZT1: float, XT2: float, YT2: float, ZT2: float, Index: int, i1: int, i1p1: int, i1p2: int, i2: int, i2p1: int, i2p2: int, flag: int) -> None: ...
+    def __init__(
+        self,
+        X1: float,
+        Y1: float,
+        Z1: float,
+        X2: float,
+        Y2: float,
+        Z2: float,
+        XT1: float,
+        YT1: float,
+        ZT1: float,
+        XT2: float,
+        YT2: float,
+        ZT2: float,
+        Index: int,
+        i1: int,
+        i1p1: int,
+        i1p2: int,
+        i2: int,
+        i2p1: int,
+        i2p2: int,
+        flag: int,
+    ) -> None: ...
     @overload
     def Hidden(self) -> bool: ...
     @overload
@@ -203,7 +333,9 @@ class HLRAlgo_EdgeStatus:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, Start: float, TolStart: float, End: float, TolEnd: float) -> None: ...
+    def __init__(
+        self, Start: float, TolStart: float, End: float, TolEnd: float
+    ) -> None: ...
     @overload
     def AllHidden(self) -> bool: ...
     @overload
@@ -213,9 +345,19 @@ class HLRAlgo_EdgeStatus:
     @overload
     def AllVisible(self, B: bool) -> None: ...
     def Bounds(self) -> Tuple[float, float, float, float]: ...
-    def Hide(self, Start: float, TolStart: float, End: float, TolEnd: float, OnFace: bool, OnBoundary: bool) -> None: ...
+    def Hide(
+        self,
+        Start: float,
+        TolStart: float,
+        End: float,
+        TolEnd: float,
+        OnFace: bool,
+        OnBoundary: bool,
+    ) -> None: ...
     def HideAll(self) -> None: ...
-    def Initialize(self, Start: float, TolStart: float, End: float, TolEnd: float) -> None: ...
+    def Initialize(
+        self, Start: float, TolStart: float, End: float, TolEnd: float
+    ) -> None: ...
     def NbVisiblePart(self) -> int: ...
     def ShowAll(self) -> None: ...
     def VisiblePart(self, Index: int) -> Tuple[float, float, float, float]: ...
@@ -253,7 +395,14 @@ class HLRAlgo_Interference:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, Inters: HLRAlgo_Intersection, Bound: HLRAlgo_Coincidence, Orient: TopAbs_Orientation, Trans: TopAbs_Orientation, BTrans: TopAbs_Orientation) -> None: ...
+    def __init__(
+        self,
+        Inters: HLRAlgo_Intersection,
+        Bound: HLRAlgo_Coincidence,
+        Orient: TopAbs_Orientation,
+        Trans: TopAbs_Orientation,
+        BTrans: TopAbs_Orientation,
+    ) -> None: ...
     @overload
     def Boundary(self, B: HLRAlgo_Coincidence) -> None: ...
     @overload
@@ -281,7 +430,16 @@ class HLRAlgo_Intersection:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, Ori: TopAbs_Orientation, Lev: int, SegInd: int, Ind: int, P: float, Tol: float, S: TopAbs_State) -> None: ...
+    def __init__(
+        self,
+        Ori: TopAbs_Orientation,
+        Lev: int,
+        SegInd: int,
+        Ind: int,
+        P: float,
+        Tol: float,
+        S: TopAbs_State,
+    ) -> None: ...
     @overload
     def Index(self, Ind: int) -> None: ...
     @overload
@@ -315,7 +473,9 @@ class HLRAlgo_PolyAlgo(Standard_Transient):
     def __init__(self) -> None: ...
     def ChangePolyShell(self) -> False: ...
     def Clear(self) -> None: ...
-    def Hide(self, status: HLRAlgo_EdgeStatus) -> Tuple[False, int, bool, bool, bool, bool]: ...
+    def Hide(
+        self, status: HLRAlgo_EdgeStatus
+    ) -> Tuple[False, int, bool, bool, bool, bool]: ...
     def Init(self, theNbShells: int) -> None: ...
     def InitHide(self) -> None: ...
     def InitShow(self) -> None: ...
@@ -347,9 +507,15 @@ class HLRAlgo_PolyInternalData(Standard_Transient):
     def DecPISeg(self) -> None: ...
     def DecTData(self) -> None: ...
     def Dump(self) -> None: ...
-    def IncPINod(self, thePINod1: HLRAlgo_Array1OfPINod, thePINod2: HLRAlgo_Array1OfPINod) -> None: ...
-    def IncPISeg(self, PISeg1: HLRAlgo_Array1OfPISeg, PISeg2: HLRAlgo_Array1OfPISeg) -> None: ...
-    def IncTData(self, TData1: HLRAlgo_Array1OfTData, TData2: HLRAlgo_Array1OfTData) -> None: ...
+    def IncPINod(
+        self, thePINod1: HLRAlgo_Array1OfPINod, thePINod2: HLRAlgo_Array1OfPINod
+    ) -> None: ...
+    def IncPISeg(
+        self, PISeg1: HLRAlgo_Array1OfPISeg, PISeg2: HLRAlgo_Array1OfPISeg
+    ) -> None: ...
+    def IncTData(
+        self, TData1: HLRAlgo_Array1OfTData, TData2: HLRAlgo_Array1OfTData
+    ) -> None: ...
     @overload
     def IntOutL(self) -> bool: ...
     @overload
@@ -365,9 +531,25 @@ class HLRAlgo_PolyInternalData(Standard_Transient):
     def Planar(self, B: bool) -> None: ...
     def TData(self) -> HLRAlgo_Array1OfTData: ...
     @overload
-    def UpdateLinks(self, theTData: HLRAlgo_Array1OfTData, thePISeg: HLRAlgo_Array1OfPISeg, thePINod: HLRAlgo_Array1OfPINod) -> None: ...
+    def UpdateLinks(
+        self,
+        theTData: HLRAlgo_Array1OfTData,
+        thePISeg: HLRAlgo_Array1OfPISeg,
+        thePINod: HLRAlgo_Array1OfPINod,
+    ) -> None: ...
     @overload
-    def UpdateLinks(self, theIp1: int, theIp2: int, theIp3: int, theTData1: HLRAlgo_Array1OfTData, theTData2: HLRAlgo_Array1OfTData, thePISeg1: HLRAlgo_Array1OfPISeg, thePISeg2: HLRAlgo_Array1OfPISeg, thePINod1: HLRAlgo_Array1OfPINod, thePINod2: HLRAlgo_Array1OfPINod) -> None: ...
+    def UpdateLinks(
+        self,
+        theIp1: int,
+        theIp2: int,
+        theIp3: int,
+        theTData1: HLRAlgo_Array1OfTData,
+        theTData2: HLRAlgo_Array1OfTData,
+        thePISeg1: HLRAlgo_Array1OfPISeg,
+        thePISeg2: HLRAlgo_Array1OfPISeg,
+        thePINod1: HLRAlgo_Array1OfPINod,
+        thePINod2: HLRAlgo_Array1OfPINod,
+    ) -> None: ...
 
 class HLRAlgo_PolyInternalNode(Standard_Transient):
     def __init__(self) -> None: ...
@@ -390,7 +572,15 @@ class HLRAlgo_Projector:
     @overload
     def __init__(self, T: gp_Trsf, Persp: bool, Focus: float) -> None: ...
     @overload
-    def __init__(self, T: gp_Trsf, Persp: bool, Focus: float, v1: gp_Vec2d, v2: gp_Vec2d, v3: gp_Vec2d) -> None: ...
+    def __init__(
+        self,
+        T: gp_Trsf,
+        Persp: bool,
+        Focus: float,
+        v1: gp_Vec2d,
+        v2: gp_Vec2d,
+        v3: gp_Vec2d,
+    ) -> None: ...
     def Directions(self, D1: gp_Vec2d, D2: gp_Vec2d, D3: gp_Vec2d) -> None: ...
     def Focus(self) -> float: ...
     def FullTransformation(self) -> gp_Trsf: ...
@@ -401,7 +591,9 @@ class HLRAlgo_Projector:
     @overload
     def Project(self, P: gp_Pnt) -> Tuple[float, float, float]: ...
     @overload
-    def Project(self, P: gp_Pnt, D1: gp_Vec, Pout: gp_Pnt2d, D1out: gp_Vec2d) -> None: ...
+    def Project(
+        self, P: gp_Pnt, D1: gp_Vec, Pout: gp_Pnt2d, D1out: gp_Vec2d
+    ) -> None: ...
     def Scaled(self, On: Optional[bool] = False) -> None: ...
     def Set(self, T: gp_Trsf, Persp: bool, Focus: float) -> None: ...
     def Shoot(self, X: float, Y: float) -> gp_Lin: ...
@@ -418,13 +610,13 @@ class HLRAlgo_WiresBlock(Standard_Transient):
     def Set(self, I: int, W: HLRAlgo_EdgesBlock) -> None: ...
     def Wire(self, I: int) -> HLRAlgo_EdgesBlock: ...
 
-#classnotwrapped
+# classnotwrapped
 class HLRAlgo_TriangleData: ...
 
-#classnotwrapped
+# classnotwrapped
 class HLRAlgo_PolyInternalSegment: ...
 
-#classnotwrapped
+# classnotwrapped
 class HLRAlgo_PolyHidingData: ...
 
 # harray1 classes
@@ -433,16 +625,13 @@ class HLRAlgo_HArray1OfPISeg(HLRAlgo_Array1OfPISeg, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> HLRAlgo_Array1OfPISeg: ...
 
-
 class HLRAlgo_HArray1OfPINod(HLRAlgo_Array1OfPINod, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> HLRAlgo_Array1OfPINod: ...
 
-
 class HLRAlgo_HArray1OfPHDat(HLRAlgo_Array1OfPHDat, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> HLRAlgo_Array1OfPHDat: ...
-
 
 class HLRAlgo_HArray1OfTData(HLRAlgo_Array1OfTData, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
@@ -450,4 +639,3 @@ class HLRAlgo_HArray1OfTData(HLRAlgo_Array1OfTData, Standard_Transient):
 
 # harray2 classes
 # hsequence classes
-

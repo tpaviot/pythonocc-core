@@ -5,7 +5,6 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.GeomAbs import *
 
-
 class LProp_SequenceOfCIType:
     def __init__(self) -> None: ...
     def __len__(self) -> int: ...
@@ -43,7 +42,9 @@ LProp_Computed = LProp_Status.LProp_Computed
 
 class LProp_AnalyticCurInf:
     def __init__(self) -> None: ...
-    def Perform(self, T: GeomAbs_CurveType, UFirst: float, ULast: float, Result: LProp_CurAndInf) -> None: ...
+    def Perform(
+        self, T: GeomAbs_CurveType, UFirst: float, ULast: float, Result: LProp_CurAndInf
+    ) -> None: ...
 
 class LProp_CurAndInf:
     def __init__(self) -> None: ...
@@ -58,4 +59,3 @@ class LProp_CurAndInf:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-
