@@ -81,10 +81,7 @@ def init_display(
         # returns empty classes and functions
         return offscreen_renderer, do_nothing, do_nothing, call_function
 
-    if backend_str in ["wx", "pyside2", "pyside6", "pyqt5", "pyqt6"]:
-        used_backend = load_backend(backend_str)
-    else:  # default to tk in all other cases
-        used_backend = "tk"
+    used_backend = load_backend(backend_str)
 
     # tkinter SimpleGui
     if used_backend == "tk":

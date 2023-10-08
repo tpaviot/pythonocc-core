@@ -25,6 +25,7 @@ PYQT5 = "pyqt5"
 PYSIDE2 = "pyside2"
 PYQT6 = "pyqt6"
 PYSIDE6 = "pyside6"
+TK = "tk"
 
 # backend module
 HAVE_PYQT5, HAVE_PYSIDE2, HAVE_PYQT6, HAVE_PYSIDE6, HAVE_WX = (
@@ -206,7 +207,7 @@ def load_backend(backend_str=None):
         return BACKEND_MODULE
 
     if backend_str is not None:
-        compatible_backends = (PYQT5, PYQT6, PYSIDE2, PYSIDE6, WX)
+        compatible_backends = (PYQT5, PYQT6, PYSIDE2, PYSIDE6, WX, TK)
         if backend_str not in compatible_backends:
             msg = (
                 f"incompatible backend_str specified: {backend_str}\n"
@@ -270,11 +271,8 @@ def load_backend(backend_str=None):
             log.exception("%s backend could not be loaded", backend_str)
             raise ValueError(msg)
 
-    if not HAVE_BACKEND:
-        raise ImportError(
-            "No compliant GUI library could be imported.\n"
-            "Either PyQt5, PyQt6 or wxPython is required."
-        )
+    # finally, return a tk backend, available on all machines
+    return "tk"
 
 
 def get_qt_modules():
