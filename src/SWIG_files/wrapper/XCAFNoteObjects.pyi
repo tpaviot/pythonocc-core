@@ -6,7 +6,6 @@ from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 from OCC.Core.TopoDS import *
 
-
 class XCAFNoteObjects_NoteObject(Standard_Transient):
     @overload
     def __init__(self) -> None: ...
@@ -28,4 +27,3 @@ class XCAFNoteObjects_NoteObject(Standard_Transient):
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

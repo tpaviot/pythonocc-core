@@ -5,10 +5,10 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Geom import *
 
-#the following typedef cannot be wrapped as is
-TColGeom_Array2OfBezierSurface = NewType('TColGeom_Array2OfBezierSurface', Any)
-#the following typedef cannot be wrapped as is
-TColGeom_Array2OfSurface = NewType('TColGeom_Array2OfSurface', Any)
+# the following typedef cannot be wrapped as is
+TColGeom_Array2OfBezierSurface = NewType("TColGeom_Array2OfBezierSurface", Any)
+# the following typedef cannot be wrapped as is
+TColGeom_Array2OfSurface = NewType("TColGeom_Array2OfSurface", Any)
 
 class TColGeom_Array1OfBSplineCurve:
     @overload
@@ -157,16 +157,13 @@ class TColGeom_HArray1OfBSplineCurve(TColGeom_Array1OfBSplineCurve, Standard_Tra
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TColGeom_Array1OfBSplineCurve: ...
 
-
 class TColGeom_HArray1OfSurface(TColGeom_Array1OfSurface, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TColGeom_Array1OfSurface: ...
 
-
 class TColGeom_HArray1OfCurve(TColGeom_Array1OfCurve, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TColGeom_Array1OfCurve: ...
-
 
 class TColGeom_HArray1OfBezierCurve(TColGeom_Array1OfBezierCurve, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
@@ -176,21 +173,24 @@ class TColGeom_HArray1OfBezierCurve(TColGeom_Array1OfBezierCurve, Standard_Trans
 
 class TColGeom_HArray2OfSurface(TColGeom_Array2OfSurface, Standard_Transient):
     @overload
-    def __init__(self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int) -> None: ...
+    def __init__(
+        self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int
+    ) -> None: ...
     @overload
     def __init__(self, theOther: TColGeom_Array2OfSurface) -> None: ...
     def Array2(self) -> TColGeom_Array2OfSurface: ...
 
 # hsequence classes
 
-class TColGeom_HSequenceOfBoundedCurve(TColGeom_SequenceOfBoundedCurve, Standard_Transient):
+class TColGeom_HSequenceOfBoundedCurve(
+    TColGeom_SequenceOfBoundedCurve, Standard_Transient
+):
     @overload
     def __init__(self) -> None: ...
     @overload
     def __init__(self, other: TColGeom_SequenceOfBoundedCurve) -> None: ...
     def Sequence(self) -> TColGeom_SequenceOfBoundedCurve: ...
     def Append(self, theSequence: TColGeom_SequenceOfBoundedCurve) -> None: ...
-
 
 class TColGeom_HSequenceOfCurve(TColGeom_SequenceOfCurve, Standard_Transient):
     @overload
@@ -199,5 +199,3 @@ class TColGeom_HSequenceOfCurve(TColGeom_SequenceOfCurve, Standard_Transient):
     def __init__(self, other: TColGeom_SequenceOfCurve) -> None: ...
     def Sequence(self) -> TColGeom_SequenceOfCurve: ...
     def Append(self, theSequence: TColGeom_SequenceOfCurve) -> None: ...
-
-

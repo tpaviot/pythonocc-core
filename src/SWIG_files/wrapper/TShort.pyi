@@ -4,8 +4,8 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
-#the following typedef cannot be wrapped as is
-TShort_Array2OfShortReal = NewType('TShort_Array2OfShortReal', Any)
+# the following typedef cannot be wrapped as is
+TShort_Array2OfShortReal = NewType("TShort_Array2OfShortReal", Any)
 
 class TShort_Array1OfShortReal:
     @overload
@@ -56,7 +56,9 @@ class TShort_HArray1OfShortReal(TShort_Array1OfShortReal, Standard_Transient):
 
 class TShort_HArray2OfShortReal(TShort_Array2OfShortReal, Standard_Transient):
     @overload
-    def __init__(self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int) -> None: ...
+    def __init__(
+        self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int
+    ) -> None: ...
     @overload
     def __init__(self, theOther: TShort_Array2OfShortReal) -> None: ...
     def Array2(self) -> TShort_Array2OfShortReal: ...
@@ -70,5 +72,3 @@ class TShort_HSequenceOfShortReal(TShort_SequenceOfShortReal, Standard_Transient
     def __init__(self, other: TShort_SequenceOfShortReal) -> None: ...
     def Sequence(self) -> TShort_SequenceOfShortReal: ...
     def Append(self, theSequence: TShort_SequenceOfShortReal) -> None: ...
-
-

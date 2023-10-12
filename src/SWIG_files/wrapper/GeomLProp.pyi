@@ -7,14 +7,24 @@ from OCC.Core.Geom import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.gp import *
 
-
 class geomlprop:
     @overload
     @staticmethod
-    def Continuity(C1: Geom_Curve, C2: Geom_Curve, u1: float, u2: float, r1: bool, r2: bool, tl: float, ta: float) -> GeomAbs_Shape: ...
+    def Continuity(
+        C1: Geom_Curve,
+        C2: Geom_Curve,
+        u1: float,
+        u2: float,
+        r1: bool,
+        r2: bool,
+        tl: float,
+        ta: float,
+    ) -> GeomAbs_Shape: ...
     @overload
     @staticmethod
-    def Continuity(C1: Geom_Curve, C2: Geom_Curve, u1: float, u2: float, r1: bool, r2: bool) -> GeomAbs_Shape: ...
+    def Continuity(
+        C1: Geom_Curve, C2: Geom_Curve, u1: float, u2: float, r1: bool, r2: bool
+    ) -> GeomAbs_Shape: ...
 
 class GeomLProp_CLProps:
     @overload
@@ -43,7 +53,9 @@ class GeomLProp_CurveTool:
     @staticmethod
     def D2(C: Geom_Curve, U: float, P: gp_Pnt, V1: gp_Vec, V2: gp_Vec) -> None: ...
     @staticmethod
-    def D3(C: Geom_Curve, U: float, P: gp_Pnt, V1: gp_Vec, V2: gp_Vec, V3: gp_Vec) -> None: ...
+    def D3(
+        C: Geom_Curve, U: float, P: gp_Pnt, V1: gp_Vec, V2: gp_Vec, V3: gp_Vec
+    ) -> None: ...
     @staticmethod
     def FirstParameter(C: Geom_Curve) -> float: ...
     @staticmethod
@@ -53,7 +65,9 @@ class GeomLProp_CurveTool:
 
 class GeomLProp_SLProps:
     @overload
-    def __init__(self, S: Geom_Surface, U: float, V: float, N: int, Resolution: float) -> None: ...
+    def __init__(
+        self, S: Geom_Surface, U: float, V: float, N: int, Resolution: float
+    ) -> None: ...
     @overload
     def __init__(self, S: Geom_Surface, N: int, Resolution: float) -> None: ...
     @overload
@@ -86,9 +100,21 @@ class GeomLProp_SurfaceTool:
     @staticmethod
     def Continuity(S: Geom_Surface) -> int: ...
     @staticmethod
-    def D1(S: Geom_Surface, U: float, V: float, P: gp_Pnt, D1U: gp_Vec, D1V: gp_Vec) -> None: ...
+    def D1(
+        S: Geom_Surface, U: float, V: float, P: gp_Pnt, D1U: gp_Vec, D1V: gp_Vec
+    ) -> None: ...
     @staticmethod
-    def D2(S: Geom_Surface, U: float, V: float, P: gp_Pnt, D1U: gp_Vec, D1V: gp_Vec, D2U: gp_Vec, D2V: gp_Vec, DUV: gp_Vec) -> None: ...
+    def D2(
+        S: Geom_Surface,
+        U: float,
+        V: float,
+        P: gp_Pnt,
+        D1U: gp_Vec,
+        D1V: gp_Vec,
+        D2U: gp_Vec,
+        D2V: gp_Vec,
+        DUV: gp_Vec,
+    ) -> None: ...
     @staticmethod
     def DN(S: Geom_Surface, U: float, V: float, IU: int, IV: int) -> gp_Vec: ...
     @staticmethod
@@ -97,4 +123,3 @@ class GeomLProp_SurfaceTool:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

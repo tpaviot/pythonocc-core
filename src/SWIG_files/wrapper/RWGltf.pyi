@@ -20,9 +20,8 @@ from OCC.Core.TopTools import *
 from OCC.Core.TopLoc import *
 from OCC.Core.Graphic3d import *
 
-#the following typedef cannot be wrapped as is
-RWGltf_JsonValue = NewType('RWGltf_JsonValue', Any)
-
+# the following typedef cannot be wrapped as is
+RWGltf_JsonValue = NewType("RWGltf_JsonValue", Any)
 
 class RWGltf_GltfAccessorCompType(IntEnum):
     RWGltf_GltfAccessorCompType_UNKNOWN: int = ...
@@ -33,13 +32,27 @@ class RWGltf_GltfAccessorCompType(IntEnum):
     RWGltf_GltfAccessorCompType_UInt32: int = ...
     RWGltf_GltfAccessorCompType_Float32: int = ...
 
-RWGltf_GltfAccessorCompType_UNKNOWN = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UNKNOWN
-RWGltf_GltfAccessorCompType_Int8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int8
-RWGltf_GltfAccessorCompType_UInt8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt8
-RWGltf_GltfAccessorCompType_Int16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int16
-RWGltf_GltfAccessorCompType_UInt16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt16
-RWGltf_GltfAccessorCompType_UInt32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt32
-RWGltf_GltfAccessorCompType_Float32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Float32
+RWGltf_GltfAccessorCompType_UNKNOWN = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UNKNOWN
+)
+RWGltf_GltfAccessorCompType_Int8 = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int8
+)
+RWGltf_GltfAccessorCompType_UInt8 = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt8
+)
+RWGltf_GltfAccessorCompType_Int16 = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int16
+)
+RWGltf_GltfAccessorCompType_UInt16 = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt16
+)
+RWGltf_GltfAccessorCompType_UInt32 = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt32
+)
+RWGltf_GltfAccessorCompType_Float32 = (
+    RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Float32
+)
 
 class RWGltf_GltfAccessorLayout(IntEnum):
     RWGltf_GltfAccessorLayout_UNKNOWN: int = ...
@@ -51,14 +64,30 @@ class RWGltf_GltfAccessorLayout(IntEnum):
     RWGltf_GltfAccessorLayout_Mat3: int = ...
     RWGltf_GltfAccessorLayout_Mat4: int = ...
 
-RWGltf_GltfAccessorLayout_UNKNOWN = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_UNKNOWN
-RWGltf_GltfAccessorLayout_Scalar = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Scalar
-RWGltf_GltfAccessorLayout_Vec2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec2
-RWGltf_GltfAccessorLayout_Vec3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec3
-RWGltf_GltfAccessorLayout_Vec4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec4
-RWGltf_GltfAccessorLayout_Mat2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat2
-RWGltf_GltfAccessorLayout_Mat3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat3
-RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat4
+RWGltf_GltfAccessorLayout_UNKNOWN = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_UNKNOWN
+)
+RWGltf_GltfAccessorLayout_Scalar = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Scalar
+)
+RWGltf_GltfAccessorLayout_Vec2 = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec2
+)
+RWGltf_GltfAccessorLayout_Vec3 = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec3
+)
+RWGltf_GltfAccessorLayout_Vec4 = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec4
+)
+RWGltf_GltfAccessorLayout_Mat2 = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat2
+)
+RWGltf_GltfAccessorLayout_Mat3 = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat3
+)
+RWGltf_GltfAccessorLayout_Mat4 = (
+    RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat4
+)
 
 class RWGltf_GltfAlphaMode(IntEnum):
     RWGltf_GltfAlphaMode_Opaque: int = ...
@@ -95,9 +124,15 @@ class RWGltf_GltfBufferViewTarget(IntEnum):
     RWGltf_GltfBufferViewTarget_ARRAY_BUFFER: int = ...
     RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER: int = ...
 
-RWGltf_GltfBufferViewTarget_UNKNOWN = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_UNKNOWN
-RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ARRAY_BUFFER
-RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER
+RWGltf_GltfBufferViewTarget_UNKNOWN = (
+    RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_UNKNOWN
+)
+RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = (
+    RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ARRAY_BUFFER
+)
+RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = (
+    RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER
+)
 
 class RWGltf_GltfPrimitiveMode(IntEnum):
     RWGltf_GltfPrimitiveMode_UNKNOWN: int = ...
@@ -109,14 +144,28 @@ class RWGltf_GltfPrimitiveMode(IntEnum):
     RWGltf_GltfPrimitiveMode_TriangleStrip: int = ...
     RWGltf_GltfPrimitiveMode_TriangleFan: int = ...
 
-RWGltf_GltfPrimitiveMode_UNKNOWN = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_UNKNOWN
-RWGltf_GltfPrimitiveMode_Points = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Points
+RWGltf_GltfPrimitiveMode_UNKNOWN = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_UNKNOWN
+)
+RWGltf_GltfPrimitiveMode_Points = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Points
+)
 RWGltf_GltfPrimitiveMode_Lines = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Lines
-RWGltf_GltfPrimitiveMode_LineLoop = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineLoop
-RWGltf_GltfPrimitiveMode_LineStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineStrip
-RWGltf_GltfPrimitiveMode_Triangles = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Triangles
-RWGltf_GltfPrimitiveMode_TriangleStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleStrip
-RWGltf_GltfPrimitiveMode_TriangleFan = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleFan
+RWGltf_GltfPrimitiveMode_LineLoop = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineLoop
+)
+RWGltf_GltfPrimitiveMode_LineStrip = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineStrip
+)
+RWGltf_GltfPrimitiveMode_Triangles = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Triangles
+)
+RWGltf_GltfPrimitiveMode_TriangleStrip = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleStrip
+)
+RWGltf_GltfPrimitiveMode_TriangleFan = (
+    RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleFan
+)
 
 class RWGltf_GltfRootElement(IntEnum):
     RWGltf_GltfRootElement_Asset: int = ...
@@ -146,21 +195,37 @@ RWGltf_GltfRootElement_Scenes = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Sc
 RWGltf_GltfRootElement_Scene = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Scene
 RWGltf_GltfRootElement_Nodes = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Nodes
 RWGltf_GltfRootElement_Meshes = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Meshes
-RWGltf_GltfRootElement_Accessors = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Accessors
-RWGltf_GltfRootElement_BufferViews = RWGltf_GltfRootElement.RWGltf_GltfRootElement_BufferViews
+RWGltf_GltfRootElement_Accessors = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_Accessors
+)
+RWGltf_GltfRootElement_BufferViews = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_BufferViews
+)
 RWGltf_GltfRootElement_Buffers = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Buffers
-RWGltf_GltfRootElement_NB_MANDATORY = RWGltf_GltfRootElement.RWGltf_GltfRootElement_NB_MANDATORY
-RWGltf_GltfRootElement_Animations = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Animations
-RWGltf_GltfRootElement_Materials = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Materials
+RWGltf_GltfRootElement_NB_MANDATORY = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_NB_MANDATORY
+)
+RWGltf_GltfRootElement_Animations = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_Animations
+)
+RWGltf_GltfRootElement_Materials = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_Materials
+)
 RWGltf_GltfRootElement_Programs = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Programs
 RWGltf_GltfRootElement_Samplers = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Samplers
 RWGltf_GltfRootElement_Shaders = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Shaders
 RWGltf_GltfRootElement_Skins = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Skins
-RWGltf_GltfRootElement_Techniques = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Techniques
+RWGltf_GltfRootElement_Techniques = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_Techniques
+)
 RWGltf_GltfRootElement_Textures = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Textures
 RWGltf_GltfRootElement_Images = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Images
-RWGltf_GltfRootElement_ExtensionsUsed = RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsUsed
-RWGltf_GltfRootElement_ExtensionsRequired = RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsRequired
+RWGltf_GltfRootElement_ExtensionsUsed = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsUsed
+)
+RWGltf_GltfRootElement_ExtensionsRequired = (
+    RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsRequired
+)
 RWGltf_GltfRootElement_NB = RWGltf_GltfRootElement.RWGltf_GltfRootElement_NB
 
 class RWGltf_WriterTrsfFormat(IntEnum):
@@ -168,7 +233,9 @@ class RWGltf_WriterTrsfFormat(IntEnum):
     RWGltf_WriterTrsfFormat_Mat4: int = ...
     RWGltf_WriterTrsfFormat_TRS: int = ...
 
-RWGltf_WriterTrsfFormat_Compact = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Compact
+RWGltf_WriterTrsfFormat_Compact = (
+    RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Compact
+)
 RWGltf_WriterTrsfFormat_Mat4 = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Mat4
 RWGltf_WriterTrsfFormat_TRS = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_TRS
 
@@ -202,11 +269,27 @@ class RWGltf_CafWriter(Standard_Transient):
     def MeshNameFormat(self) -> RWMesh_NameFormat: ...
     def NodeNameFormat(self) -> RWMesh_NameFormat: ...
     @overload
-    def Perform(self, theDocument: TDocStd_Document, theRootLabels: TDF_LabelSequence, theLabelFilter: TColStd_MapOfAsciiString, theFileInfo: TColStd_IndexedDataMapOfStringString, theProgress: Message_ProgressRange) -> bool: ...
+    def Perform(
+        self,
+        theDocument: TDocStd_Document,
+        theRootLabels: TDF_LabelSequence,
+        theLabelFilter: TColStd_MapOfAsciiString,
+        theFileInfo: TColStd_IndexedDataMapOfStringString,
+        theProgress: Message_ProgressRange,
+    ) -> bool: ...
     @overload
-    def Perform(self, theDocument: TDocStd_Document, theFileInfo: TColStd_IndexedDataMapOfStringString, theProgress: Message_ProgressRange) -> bool: ...
-    def SetCompressionParameters(self, theDracoParameters: RWGltf_DracoParameters) -> None: ...
-    def SetCoordinateSystemConverter(self, theConverter: RWMesh_CoordinateSystemConverter) -> None: ...
+    def Perform(
+        self,
+        theDocument: TDocStd_Document,
+        theFileInfo: TColStd_IndexedDataMapOfStringString,
+        theProgress: Message_ProgressRange,
+    ) -> bool: ...
+    def SetCompressionParameters(
+        self, theDracoParameters: RWGltf_DracoParameters
+    ) -> None: ...
+    def SetCoordinateSystemConverter(
+        self, theConverter: RWMesh_CoordinateSystemConverter
+    ) -> None: ...
     def SetDefaultStyle(self, theStyle: XCAFPrs_Style) -> None: ...
     def SetForcedUVExport(self, theToForce: bool) -> None: ...
     def SetMergeFaces(self, theToMerge: bool) -> None: ...
@@ -250,7 +333,9 @@ class RWGltf_GltfFace(Standard_Transient):
 
 class RWGltf_GltfLatePrimitiveArray(RWMesh_TriangulationSource):
     def __init__(self, theId: str, theName: str) -> None: ...
-    def AddPrimArrayData(self, theType: RWGltf_GltfArrayType) -> RWGltf_GltfPrimArrayData: ...
+    def AddPrimArrayData(
+        self, theType: RWGltf_GltfArrayType
+    ) -> RWGltf_GltfPrimArrayData: ...
     def BaseColor(self) -> Quantity_ColorRGBA: ...
     def Data(self) -> False: ...
     def HasDeferredData(self) -> bool: ...
@@ -268,17 +353,25 @@ class RWGltf_GltfLatePrimitiveArray(RWMesh_TriangulationSource):
 
 class RWGltf_GltfMaterialMap(RWMesh_MaterialMap):
     def __init__(self, theFile: str, theDefSamplerId: int) -> None: ...
-    def AddImages(self, theWriter: RWGltf_GltfOStreamWriter, theStyle: XCAFPrs_Style) -> bool: ...
-    def AddMaterial(self, theWriter: RWGltf_GltfOStreamWriter, theStyle: XCAFPrs_Style) -> bool: ...
-    def AddTextures(self, theWriter: RWGltf_GltfOStreamWriter, theStyle: XCAFPrs_Style) -> bool: ...
-    def FlushGlbBufferViews(self, theWriter: RWGltf_GltfOStreamWriter, theBinDataBufferId: int) -> int: ...
+    def AddImages(
+        self, theWriter: RWGltf_GltfOStreamWriter, theStyle: XCAFPrs_Style
+    ) -> bool: ...
+    def AddMaterial(
+        self, theWriter: RWGltf_GltfOStreamWriter, theStyle: XCAFPrs_Style
+    ) -> bool: ...
+    def AddTextures(
+        self, theWriter: RWGltf_GltfOStreamWriter, theStyle: XCAFPrs_Style
+    ) -> bool: ...
+    def FlushGlbBufferViews(
+        self, theWriter: RWGltf_GltfOStreamWriter, theBinDataBufferId: int
+    ) -> int: ...
     def FlushGlbImages(self, theWriter: RWGltf_GltfOStreamWriter) -> None: ...
     def NbImages(self) -> int: ...
     def NbTextures(self) -> int: ...
     @staticmethod
     def baseColorTexture(theMat: XCAFDoc_VisMaterial) -> Image_Texture: ...
 
-class RWGltf_GltfOStreamWriter():
+class RWGltf_GltfOStreamWriter:
     pass
 
 class RWGltf_GltfPrimArrayData:
@@ -287,7 +380,7 @@ class RWGltf_GltfPrimArrayData:
     @overload
     def __init__(self, theType: RWGltf_GltfArrayType) -> None: ...
 
-class RWGltf_GltfSceneNodeMap():
+class RWGltf_GltfSceneNodeMap:
     def __init__(self) -> None: ...
     def FindIndex(self, theNodeId: str) -> int: ...
 
@@ -303,30 +396,75 @@ class RWGltf_Provider(DE_Provider):
     def GetFormat(self) -> str: ...
     def GetVendor(self) -> str: ...
     @overload
-    def Read(self, thePath: str, theDocument: TDocStd_Document, theWS: XSControl_WorkSession, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Read(
+        self,
+        thePath: str,
+        theDocument: TDocStd_Document,
+        theWS: XSControl_WorkSession,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Read(self, thePath: str, theDocument: TDocStd_Document, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Read(
+        self,
+        thePath: str,
+        theDocument: TDocStd_Document,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Read(self, thePath: str, theShape: TopoDS_Shape, theWS: XSControl_WorkSession, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Read(
+        self,
+        thePath: str,
+        theShape: TopoDS_Shape,
+        theWS: XSControl_WorkSession,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Read(self, thePath: str, theShape: TopoDS_Shape, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Read(
+        self,
+        thePath: str,
+        theShape: TopoDS_Shape,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Write(self, thePath: str, theDocument: TDocStd_Document, theWS: XSControl_WorkSession, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Write(
+        self,
+        thePath: str,
+        theDocument: TDocStd_Document,
+        theWS: XSControl_WorkSession,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Write(self, thePath: str, theDocument: TDocStd_Document, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Write(
+        self,
+        thePath: str,
+        theDocument: TDocStd_Document,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Write(self, thePath: str, theShape: TopoDS_Shape, theWS: XSControl_WorkSession, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Write(
+        self,
+        thePath: str,
+        theShape: TopoDS_Shape,
+        theWS: XSControl_WorkSession,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
-    def Write(self, thePath: str, theShape: TopoDS_Shape, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Write(
+        self,
+        thePath: str,
+        theShape: TopoDS_Shape,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
 
 class RWGltf_TriangulationReader(RWMesh_TriangulationReader):
     def __init__(self) -> None: ...
-    def LoadStreamData(self, theSourceMesh: RWMesh_TriangulationSource, theDestMesh: Poly_Triangulation) -> bool: ...
+    def LoadStreamData(
+        self, theSourceMesh: RWMesh_TriangulationSource, theDestMesh: Poly_Triangulation
+    ) -> bool: ...
 
-#classnotwrapped
+# classnotwrapped
 class RWGltf_GltfSharedIStream: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

@@ -22,7 +22,7 @@ from OCC.Display.SimpleGui import init_display
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 print("tkinter test running ...")
-tkinter_display, start_display, add_menu, add_function_to_menu = init_display()
+tkinter_display, start_display, add_menu, add_function_to_menu = init_display("tk")
 my_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
 tkinter_display.DisplayShape(my_box, update=True)
 print("tkinter test ok.")

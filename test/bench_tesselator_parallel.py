@@ -16,7 +16,7 @@ url = f"https://raw.githubusercontent.com/tpaviot/pythonocc-demos/master/assets/
 
 step_file = os.path.join("test_io", step_filename)
 if not os.path.isfile(step_file):
-    subprocess.run(['wget', '-O', step_file, url], check=True)
+    subprocess.run(["wget", "-O", step_file, url], check=True)
 
 if not os.path.isfile(step_file):
     raise IOError(f"file {step_file} not found")
@@ -85,24 +85,24 @@ aLS.Append(shp5)
 aLS.Append(shp5)
 aLT = TopTools_ListOfShape()
 aLT.Append(shp6)
-  # //
-  # bRunParallel=BOPTest_Objects::RunParallel();
-  # aFuzzyValue=BOPTest_Objects::FuzzyValue();
-  # bNonDestructive = BOPTest_Objects::NonDestructive();
-  # BOPAlgo_GlueEnum aGlue = BOPTest_Objects::Glue();
-  # //
-  # if (anOp!=BOPAlgo_CUT21) {
-  #   pBuilder->SetArguments(aLS);
-  #   pBuilder->SetTools(aLT);
-  # }
-  # else {
-  #   pBuilder->SetArguments(aLT);
-  #   pBuilder->SetTools(aLS);
-  # }
-  # //
-  # pBuilder->SetRunParallel(bRunParallel);
+# //
+# bRunParallel=BOPTest_Objects::RunParallel();
+# aFuzzyValue=BOPTest_Objects::FuzzyValue();
+# bNonDestructive = BOPTest_Objects::NonDestructive();
+# BOPAlgo_GlueEnum aGlue = BOPTest_Objects::Glue();
+# //
+# if (anOp!=BOPAlgo_CUT21) {
+#   pBuilder->SetArguments(aLS);
+#   pBuilder->SetTools(aLT);
+# }
+# else {
+#   pBuilder->SetArguments(aLT);
+#   pBuilder->SetTools(aLS);
+# }
+# //
+# pBuilder->SetRunParallel(bRunParallel);
 myCut1.SetArguments(aLS)
-myCut1.SetTools(aLT)#shp5, shp6)
+myCut1.SetTools(aLT)  # shp5, shp6)
 
 t8 = time.perf_counter()
 myCut1.SetRunParallel(False)

@@ -4,51 +4,50 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
-#the following typedef cannot be wrapped as is
-BVH_Array2d = NewType('BVH_Array2d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array2f = NewType('BVH_Array2f', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array2i = NewType('BVH_Array2i', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array3d = NewType('BVH_Array3d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array3f = NewType('BVH_Array3f', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array3i = NewType('BVH_Array3i', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array4d = NewType('BVH_Array4d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array4f = NewType('BVH_Array4f', Any)
-#the following typedef cannot be wrapped as is
-BVH_Array4i = NewType('BVH_Array4i', Any)
-#the following typedef cannot be wrapped as is
-BVH_EncodedLink = NewType('BVH_EncodedLink', Any)
-#the following typedef cannot be wrapped as is
-BVH_Mat4d = NewType('BVH_Mat4d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Mat4f = NewType('BVH_Mat4f', Any)
-#the following typedef cannot be wrapped as is
-BVH_PrimitiveSet3d = NewType('BVH_PrimitiveSet3d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec2d = NewType('BVH_Vec2d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec2f = NewType('BVH_Vec2f', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec2i = NewType('BVH_Vec2i', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec3d = NewType('BVH_Vec3d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec3f = NewType('BVH_Vec3f', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec3i = NewType('BVH_Vec3i', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec4d = NewType('BVH_Vec4d', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec4f = NewType('BVH_Vec4f', Any)
-#the following typedef cannot be wrapped as is
-BVH_Vec4i = NewType('BVH_Vec4i', Any)
-
+# the following typedef cannot be wrapped as is
+BVH_Array2d = NewType("BVH_Array2d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array2f = NewType("BVH_Array2f", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array2i = NewType("BVH_Array2i", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array3d = NewType("BVH_Array3d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array3f = NewType("BVH_Array3f", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array3i = NewType("BVH_Array3i", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array4d = NewType("BVH_Array4d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array4f = NewType("BVH_Array4f", Any)
+# the following typedef cannot be wrapped as is
+BVH_Array4i = NewType("BVH_Array4i", Any)
+# the following typedef cannot be wrapped as is
+BVH_EncodedLink = NewType("BVH_EncodedLink", Any)
+# the following typedef cannot be wrapped as is
+BVH_Mat4d = NewType("BVH_Mat4d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Mat4f = NewType("BVH_Mat4f", Any)
+# the following typedef cannot be wrapped as is
+BVH_PrimitiveSet3d = NewType("BVH_PrimitiveSet3d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec2d = NewType("BVH_Vec2d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec2f = NewType("BVH_Vec2f", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec2i = NewType("BVH_Vec2i", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec3d = NewType("BVH_Vec3d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec3f = NewType("BVH_Vec3f", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec3i = NewType("BVH_Vec3i", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec4d = NewType("BVH_Vec4d", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec4f = NewType("BVH_Vec4f", Any)
+# the following typedef cannot be wrapped as is
+BVH_Vec4i = NewType("BVH_Vec4i", Any)
 
 class BVH_AxisSelector:
     @staticmethod
@@ -57,14 +56,26 @@ class BVH_AxisSelector:
 class BVH_BaseBox:
     pass
 
-class BVH_Tree():
+class BVH_Tree:
     def __init__(self) -> None: ...
     @overload
-    def AddInnerNode(self, theMinPoint: BVH_VecNt, theMaxPoint: BVH_VecNt, theLftChild: int, theRghChild: int) -> int: ...
+    def AddInnerNode(
+        self,
+        theMinPoint: BVH_VecNt,
+        theMaxPoint: BVH_VecNt,
+        theLftChild: int,
+        theRghChild: int,
+    ) -> int: ...
     @overload
     def AddInnerNode(self, theLftChild: int, theRghChild: int) -> int: ...
     @overload
-    def AddLeafNode(self, theMinPoint: BVH_VecNt, theMaxPoint: BVH_VecNt, theBegElem: int, theEndElem: int) -> int: ...
+    def AddLeafNode(
+        self,
+        theMinPoint: BVH_VecNt,
+        theMaxPoint: BVH_VecNt,
+        theBegElem: int,
+        theEndElem: int,
+    ) -> int: ...
     @overload
     def AddLeafNode(self, theBegElem: int, theEndElem: int) -> int: ...
     def Clear(self) -> None: ...
@@ -74,175 +85,174 @@ class BVH_Tree():
     def SetInner(self, theNodeIndex: int) -> None: ...
     def SetOuter(self, theNodeIndex: int) -> None: ...
 
-class BVH_Tree():
+class BVH_Tree:
     def __init__(self) -> None: ...
 
-#classnotwrapped
+# classnotwrapped
 class VectorType: ...
 
-#classnotwrapped
+# classnotwrapped
 class MatrixType: ...
 
-#classnotwrapped
+# classnotwrapped
 class ArrayType: ...
 
-#classnotwrapped
+# classnotwrapped
 class VecComp: ...
 
-#classnotwrapped
+# classnotwrapped
 class Array: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BoxSet: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Tools: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Distance: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Set: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BuilderTransient: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Builder: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BuildQueue: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_SpatialMedianBuilder: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Ray: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_QueueBuilder: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_DistanceField: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_ObjectSet: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_ObjectTransient: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Object: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BaseBox: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Box: ...
 
-#classnotwrapped
+# classnotwrapped
 class CenterAxis: ...
 
-#classnotwrapped
+# classnotwrapped
 class SurfaceCalculator: ...
 
-#classnotwrapped
+# classnotwrapped
 class BoxMinMax: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Geometry: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Tree: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_PairDistance: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_RadixSorter: ...
 
-#classnotwrapped
+# classnotwrapped
 class BitPredicate: ...
 
-#classnotwrapped
+# classnotwrapped
 class BitComparator: ...
 
-#classnotwrapped
+# classnotwrapped
 class RadixSorter: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_TreeBaseTransient: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_TreeBase: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_QuadTree: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BinaryTree: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Properties: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Transform: ...
 
-#classnotwrapped
+# classnotwrapped
 class MatrixOp: ...
 
-#classnotwrapped
+# classnotwrapped
 class UnitVector: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_SweepPlaneBuilder: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Sorter: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_PrimitiveSet: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Triangulation: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BuildTool: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BuildThread: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_LinearBuilder: ...
 
-#classnotwrapped
+# classnotwrapped
 class BoundData: ...
 
-#classnotwrapped
+# classnotwrapped
 class UpdateBoundTask: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Bin: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BinnedBuilder: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_AxisSelector: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_BaseTraverse: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_Traverse: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_PairTraverse: ...
 
-#classnotwrapped
+# classnotwrapped
 class BVH_QuickSorter: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

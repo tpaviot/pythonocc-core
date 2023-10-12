@@ -10,8 +10,7 @@ from OCC.Core.Geom import *
 from OCC.Core.TopLoc import *
 from OCC.Core.TopAbs import *
 
-BinTools_LocationSetPtr = NewType('BinTools_LocationSetPtr', BinTools_LocationSet)
-
+BinTools_LocationSetPtr = NewType("BinTools_LocationSetPtr", BinTools_LocationSet)
 
 class BinTools_FormatVersion(IntEnum):
     BinTools_FormatVersion_VERSION_1: int = ...
@@ -20,10 +19,18 @@ class BinTools_FormatVersion(IntEnum):
     BinTools_FormatVersion_VERSION_4: int = ...
     BinTools_FormatVersion_CURRENT: int = ...
 
-BinTools_FormatVersion_VERSION_1 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_1
-BinTools_FormatVersion_VERSION_2 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_2
-BinTools_FormatVersion_VERSION_3 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_3
-BinTools_FormatVersion_VERSION_4 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_4
+BinTools_FormatVersion_VERSION_1 = (
+    BinTools_FormatVersion.BinTools_FormatVersion_VERSION_1
+)
+BinTools_FormatVersion_VERSION_2 = (
+    BinTools_FormatVersion.BinTools_FormatVersion_VERSION_2
+)
+BinTools_FormatVersion_VERSION_3 = (
+    BinTools_FormatVersion.BinTools_FormatVersion_VERSION_3
+)
+BinTools_FormatVersion_VERSION_4 = (
+    BinTools_FormatVersion.BinTools_FormatVersion_VERSION_4
+)
 BinTools_FormatVersion_CURRENT = BinTools_FormatVersion.BinTools_FormatVersion_CURRENT
 
 class BinTools_ObjectType(IntEnum):
@@ -57,8 +64,12 @@ BinTools_ObjectType_Reference16 = BinTools_ObjectType.BinTools_ObjectType_Refere
 BinTools_ObjectType_Reference32 = BinTools_ObjectType.BinTools_ObjectType_Reference32
 BinTools_ObjectType_Reference64 = BinTools_ObjectType.BinTools_ObjectType_Reference64
 BinTools_ObjectType_Location = BinTools_ObjectType.BinTools_ObjectType_Location
-BinTools_ObjectType_SimpleLocation = BinTools_ObjectType.BinTools_ObjectType_SimpleLocation
-BinTools_ObjectType_EmptyLocation = BinTools_ObjectType.BinTools_ObjectType_EmptyLocation
+BinTools_ObjectType_SimpleLocation = (
+    BinTools_ObjectType.BinTools_ObjectType_SimpleLocation
+)
+BinTools_ObjectType_EmptyLocation = (
+    BinTools_ObjectType.BinTools_ObjectType_EmptyLocation
+)
 BinTools_ObjectType_LocationEnd = BinTools_ObjectType.BinTools_ObjectType_LocationEnd
 BinTools_ObjectType_Curve = BinTools_ObjectType.BinTools_ObjectType_Curve
 BinTools_ObjectType_EmptyCurve = BinTools_ObjectType.BinTools_ObjectType_EmptyCurve
@@ -67,24 +78,49 @@ BinTools_ObjectType_EmptyCurve2d = BinTools_ObjectType.BinTools_ObjectType_Empty
 BinTools_ObjectType_Surface = BinTools_ObjectType.BinTools_ObjectType_Surface
 BinTools_ObjectType_EmptySurface = BinTools_ObjectType.BinTools_ObjectType_EmptySurface
 BinTools_ObjectType_Polygon3d = BinTools_ObjectType.BinTools_ObjectType_Polygon3d
-BinTools_ObjectType_EmptyPolygon3d = BinTools_ObjectType.BinTools_ObjectType_EmptyPolygon3d
-BinTools_ObjectType_PolygonOnTriangulation = BinTools_ObjectType.BinTools_ObjectType_PolygonOnTriangulation
-BinTools_ObjectType_EmptyPolygonOnTriangulation = BinTools_ObjectType.BinTools_ObjectType_EmptyPolygonOnTriangulation
-BinTools_ObjectType_Triangulation = BinTools_ObjectType.BinTools_ObjectType_Triangulation
-BinTools_ObjectType_EmptyTriangulation = BinTools_ObjectType.BinTools_ObjectType_EmptyTriangulation
+BinTools_ObjectType_EmptyPolygon3d = (
+    BinTools_ObjectType.BinTools_ObjectType_EmptyPolygon3d
+)
+BinTools_ObjectType_PolygonOnTriangulation = (
+    BinTools_ObjectType.BinTools_ObjectType_PolygonOnTriangulation
+)
+BinTools_ObjectType_EmptyPolygonOnTriangulation = (
+    BinTools_ObjectType.BinTools_ObjectType_EmptyPolygonOnTriangulation
+)
+BinTools_ObjectType_Triangulation = (
+    BinTools_ObjectType.BinTools_ObjectType_Triangulation
+)
+BinTools_ObjectType_EmptyTriangulation = (
+    BinTools_ObjectType.BinTools_ObjectType_EmptyTriangulation
+)
 BinTools_ObjectType_EmptyShape = BinTools_ObjectType.BinTools_ObjectType_EmptyShape
 BinTools_ObjectType_EndShape = BinTools_ObjectType.BinTools_ObjectType_EndShape
 
 class bintools:
     @overload
     @staticmethod
-    def Read(theShape: TopoDS_Shape, theFile: str, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Read(
+        theShape: TopoDS_Shape,
+        theFile: str,
+        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
     @staticmethod
-    def Write(theShape: TopoDS_Shape, theFile: str, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Write(
+        theShape: TopoDS_Shape,
+        theFile: str,
+        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
     @overload
     @staticmethod
-    def Write(theShape: TopoDS_Shape, theFile: str, theWithTriangles: bool, theWithNormals: bool, theVersion: BinTools_FormatVersion, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    def Write(
+        theShape: TopoDS_Shape,
+        theFile: str,
+        theWithTriangles: bool,
+        theWithNormals: bool,
+        theVersion: BinTools_FormatVersion,
+        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> bool: ...
 
 class BinTools_Curve2dSet:
     def __init__(self) -> None: ...
@@ -151,15 +187,16 @@ class BinTools_ShapeSet(BinTools_ShapeSetBase):
 class BinTools_ShapeWriter(BinTools_ShapeSetBase):
     def __init__(self) -> None: ...
     def Clear(self) -> None: ...
-    def WriteLocation(self, theStream: BinTools_OStream, theLocation: TopLoc_Location) -> None: ...
+    def WriteLocation(
+        self, theStream: BinTools_OStream, theLocation: TopLoc_Location
+    ) -> None: ...
 
-#classnotwrapped
+# classnotwrapped
 class BinTools_IStream: ...
 
-#classnotwrapped
+# classnotwrapped
 class BinTools_OStream: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

@@ -8,7 +8,6 @@ from OCC.Core.TCollection import *
 from OCC.Core.OSD import *
 from OCC.Core.Resource import *
 
-
 class utl:
     @staticmethod
     def AddToUserInfo(aData: Storage_Data, anInfo: str) -> None: ...
@@ -39,7 +38,9 @@ class utl:
     @staticmethod
     def Name(aPath: OSD_Path) -> str: ...
     @staticmethod
-    def OpenFile(aFile: Storage_BaseDriver, aName: str, aMode: Storage_OpenMode) -> Storage_Error: ...
+    def OpenFile(
+        aFile: Storage_BaseDriver, aName: str, aMode: Storage_OpenMode
+    ) -> Storage_Error: ...
     @staticmethod
     def Path(aFileName: str) -> OSD_Path: ...
     @staticmethod
@@ -52,4 +53,3 @@ class utl:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

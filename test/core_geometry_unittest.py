@@ -494,15 +494,15 @@ class TestGeometry(unittest.TestCase):
         # aSurface3.Translate(gp_Vec(10, 0, 0))
 
         for mode in [
-                GeomFill_IsConstantNormal,
-                GeomFill_IsCorrectedFrenet,
-                GeomFill_IsDarboux,
-                GeomFill_IsFrenet,
-                GeomFill_IsGuideAC,
-                GeomFill_IsGuideACWithContact,
-                GeomFill_IsGuidePlan,
-                GeomFill_IsGuidePlanWithContact,
-            ]:
+            GeomFill_IsConstantNormal,
+            GeomFill_IsCorrectedFrenet,
+            GeomFill_IsDarboux,
+            GeomFill_IsFrenet,
+            GeomFill_IsGuideAC,
+            GeomFill_IsGuideACWithContact,
+            GeomFill_IsGuidePlan,
+            GeomFill_IsGuidePlanWithContact,
+        ]:
             E = GC_MakeEllipse(gp.XOY(), 2, 1).Value()
             aPipe2 = GeomFill_Pipe(SPL1, TC1, TC2, mode)
             aPipe2.Perform(False, False)

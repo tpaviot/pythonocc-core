@@ -5,7 +5,6 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 
-
 class GccEnt_Array1OfPosition:
     @overload
     def __init__(self) -> None: ...
@@ -93,4 +92,3 @@ class GccEnt_QualifiedLin:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

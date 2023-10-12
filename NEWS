@@ -1,3 +1,29 @@
+Version 7.7.2 - October 2023
+=============================
+
+This release requires opencascade-7.7.2
+
+* wrapper: port to opencascade-7.7.2
+
+* wrapper: bump swig version to 4.1.1
+
+* wrapper: new wrappers for RWPly, Unitsmethod
+
+* wrapper: handle TCollection_AsciiString, Standard_CString, TCollection_ExtendedString as
+python strings
+
+* wrapper: pickle objects that provide json serializer
+
+* dataexchange: glt importer/exporter, ply exporter, obj exporter
+
+* display: support for PyQt6 and PySide6
+
+* webgl: refactored threejs and x3dom renderer to stay sync with latest releases
+
+* display: new tkinter renderer, making PyQt or wx GUI managers optional
+
+* cmake installer: respect CMake install prefix
+
 Version 7.7.0 - November 2022
 =============================
 

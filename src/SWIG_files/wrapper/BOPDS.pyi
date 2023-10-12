@@ -11,81 +11,99 @@ from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 from OCC.Core.gp import *
 
-#the following typedef cannot be wrapped as is
-BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock = NewType('BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger = NewType('BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock = NewType('BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks = NewType('BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_IndexedDataMapOfPaveBlockListOfInteger = NewType('BOPDS_IndexedDataMapOfPaveBlockListOfInteger', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock = NewType('BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks = NewType('BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_IndexedMapOfPaveBlock = NewType('BOPDS_IndexedMapOfPaveBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_ListIteratorOfListOfPave = NewType('BOPDS_ListIteratorOfListOfPave', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_ListIteratorOfListOfPaveBlock = NewType('BOPDS_ListIteratorOfListOfPaveBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapIteratorOfMapOfCommonBlock = NewType('BOPDS_MapIteratorOfMapOfCommonBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapIteratorOfMapOfPair = NewType('BOPDS_MapIteratorOfMapOfPair', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapIteratorOfMapOfPave = NewType('BOPDS_MapIteratorOfMapOfPave', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapIteratorOfMapOfPaveBlock = NewType('BOPDS_MapIteratorOfMapOfPaveBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapOfCommonBlock = NewType('BOPDS_MapOfCommonBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapOfPair = NewType('BOPDS_MapOfPair', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapOfPave = NewType('BOPDS_MapOfPave', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_MapOfPaveBlock = NewType('BOPDS_MapOfPaveBlock', Any)
-BOPDS_PDS = NewType('BOPDS_PDS', BOPDS_DS)
-BOPDS_PIterator = NewType('BOPDS_PIterator', BOPDS_Iterator)
-BOPDS_PIteratorSI = NewType('BOPDS_PIteratorSI', BOPDS_IteratorSI)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfCurve = NewType('BOPDS_VectorOfCurve', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfFaceInfo = NewType('BOPDS_VectorOfFaceInfo', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfIndexRange = NewType('BOPDS_VectorOfIndexRange', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfEE = NewType('BOPDS_VectorOfInterfEE', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfEF = NewType('BOPDS_VectorOfInterfEF', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfEZ = NewType('BOPDS_VectorOfInterfEZ', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfFF = NewType('BOPDS_VectorOfInterfFF', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfFZ = NewType('BOPDS_VectorOfInterfFZ', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfVE = NewType('BOPDS_VectorOfInterfVE', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfVF = NewType('BOPDS_VectorOfInterfVF', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfVV = NewType('BOPDS_VectorOfInterfVV', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfVZ = NewType('BOPDS_VectorOfInterfVZ', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfInterfZZ = NewType('BOPDS_VectorOfInterfZZ', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfListOfPaveBlock = NewType('BOPDS_VectorOfListOfPaveBlock', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfPair = NewType('BOPDS_VectorOfPair', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfPoint = NewType('BOPDS_VectorOfPoint', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfShapeInfo = NewType('BOPDS_VectorOfShapeInfo', Any)
-#the following typedef cannot be wrapped as is
-BOPDS_VectorOfVectorOfPair = NewType('BOPDS_VectorOfVectorOfPair', Any)
+# the following typedef cannot be wrapped as is
+BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock = NewType(
+    "BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger = NewType(
+    "BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock = NewType(
+    "BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks = NewType(
+    "BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_IndexedDataMapOfPaveBlockListOfInteger = NewType(
+    "BOPDS_IndexedDataMapOfPaveBlockListOfInteger", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock = NewType(
+    "BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks = NewType(
+    "BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_IndexedMapOfPaveBlock = NewType("BOPDS_IndexedMapOfPaveBlock", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_ListIteratorOfListOfPave = NewType("BOPDS_ListIteratorOfListOfPave", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_ListIteratorOfListOfPaveBlock = NewType(
+    "BOPDS_ListIteratorOfListOfPaveBlock", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_MapIteratorOfMapOfCommonBlock = NewType(
+    "BOPDS_MapIteratorOfMapOfCommonBlock", Any
+)
+# the following typedef cannot be wrapped as is
+BOPDS_MapIteratorOfMapOfPair = NewType("BOPDS_MapIteratorOfMapOfPair", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_MapIteratorOfMapOfPave = NewType("BOPDS_MapIteratorOfMapOfPave", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_MapIteratorOfMapOfPaveBlock = NewType("BOPDS_MapIteratorOfMapOfPaveBlock", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_MapOfCommonBlock = NewType("BOPDS_MapOfCommonBlock", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_MapOfPair = NewType("BOPDS_MapOfPair", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_MapOfPave = NewType("BOPDS_MapOfPave", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_MapOfPaveBlock = NewType("BOPDS_MapOfPaveBlock", Any)
+BOPDS_PDS = NewType("BOPDS_PDS", BOPDS_DS)
+BOPDS_PIterator = NewType("BOPDS_PIterator", BOPDS_Iterator)
+BOPDS_PIteratorSI = NewType("BOPDS_PIteratorSI", BOPDS_IteratorSI)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfCurve = NewType("BOPDS_VectorOfCurve", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfFaceInfo = NewType("BOPDS_VectorOfFaceInfo", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfIndexRange = NewType("BOPDS_VectorOfIndexRange", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfEE = NewType("BOPDS_VectorOfInterfEE", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfEF = NewType("BOPDS_VectorOfInterfEF", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfEZ = NewType("BOPDS_VectorOfInterfEZ", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfFF = NewType("BOPDS_VectorOfInterfFF", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfFZ = NewType("BOPDS_VectorOfInterfFZ", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfVE = NewType("BOPDS_VectorOfInterfVE", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfVF = NewType("BOPDS_VectorOfInterfVF", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfVV = NewType("BOPDS_VectorOfInterfVV", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfVZ = NewType("BOPDS_VectorOfInterfVZ", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfInterfZZ = NewType("BOPDS_VectorOfInterfZZ", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfListOfPaveBlock = NewType("BOPDS_VectorOfListOfPaveBlock", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfPair = NewType("BOPDS_VectorOfPair", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfPoint = NewType("BOPDS_VectorOfPoint", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfShapeInfo = NewType("BOPDS_VectorOfShapeInfo", Any)
+# the following typedef cannot be wrapped as is
+BOPDS_VectorOfVectorOfPair = NewType("BOPDS_VectorOfVectorOfPair", Any)
 
 class BOPDS_ListOfPave:
     def __init__(self) -> None: ...
@@ -180,7 +198,9 @@ class BOPDS_CoupleOfPaveBlocks:
     def SetIndexInterf(self, theIndex: int) -> None: ...
     def SetPaveBlock1(self, thePB: BOPDS_PaveBlock) -> None: ...
     def SetPaveBlock2(self, thePB: BOPDS_PaveBlock) -> None: ...
-    def SetPaveBlocks(self, thePB1: BOPDS_PaveBlock, thePB2: BOPDS_PaveBlock) -> None: ...
+    def SetPaveBlocks(
+        self, thePB1: BOPDS_PaveBlock, thePB2: BOPDS_PaveBlock
+    ) -> None: ...
     def SetTolerance(self, theTol: float) -> None: ...
     def Tolerance(self) -> float: ...
 
@@ -220,7 +240,9 @@ class BOPDS_DS:
     @overload
     def Append(self, theS: TopoDS_Shape) -> int: ...
     def Arguments(self) -> TopTools_ListOfShape: ...
-    def BuildBndBoxSolid(self, theIndex: int, theBox: Bnd_Box, theCheckInverted: Optional[bool] = True) -> None: ...
+    def BuildBndBoxSolid(
+        self, theIndex: int, theBox: Bnd_Box, theCheckInverted: Optional[bool] = True
+    ) -> None: ...
     def ChangeFaceInfo(self, theIndex: int) -> BOPDS_FaceInfo: ...
     def ChangePaveBlocks(self, theIndex: int) -> BOPDS_ListOfPaveBlock: ...
     def ChangePaveBlocksPool(self) -> BOPDS_VectorOfListOfPaveBlock: ...
@@ -229,15 +251,27 @@ class BOPDS_DS:
     def CommonBlock(self, thePB: BOPDS_PaveBlock) -> BOPDS_CommonBlock: ...
     def Dump(self) -> None: ...
     def FaceInfo(self, theIndex: int) -> BOPDS_FaceInfo: ...
-    def FaceInfoIn(self, theIndex: int, theMPB: BOPDS_IndexedMapOfPaveBlock, theMVP: TColStd_MapOfInteger) -> None: ...
-    def FaceInfoOn(self, theIndex: int, theMPB: BOPDS_IndexedMapOfPaveBlock, theMVP: TColStd_MapOfInteger) -> None: ...
+    def FaceInfoIn(
+        self,
+        theIndex: int,
+        theMPB: BOPDS_IndexedMapOfPaveBlock,
+        theMVP: TColStd_MapOfInteger,
+    ) -> None: ...
+    def FaceInfoOn(
+        self,
+        theIndex: int,
+        theMPB: BOPDS_IndexedMapOfPaveBlock,
+        theMVP: TColStd_MapOfInteger,
+    ) -> None: ...
     def FaceInfoPool(self) -> BOPDS_VectorOfFaceInfo: ...
     def HasFaceInfo(self, theIndex: int) -> bool: ...
     @overload
     def HasInterf(self, theI: int) -> bool: ...
     @overload
     def HasInterf(self, theI1: int, theI2: int) -> bool: ...
-    def HasInterfShapeSubShapes(self, theI1: int, theI2: int, theFlag: Optional[bool] = True) -> bool: ...
+    def HasInterfShapeSubShapes(
+        self, theI1: int, theI2: int, theFlag: Optional[bool] = True
+    ) -> bool: ...
     def HasInterfSubShapes(self, theI1: int, theI2: int) -> bool: ...
     def HasPaveBlocks(self, theIndex: int) -> bool: ...
     def HasShapeSD(self, theIndex: int) -> Tuple[bool, int]: ...
@@ -275,12 +309,28 @@ class BOPDS_DS:
     def RefineFaceInfoOn(self) -> None: ...
     def ReleasePaveBlocks(self) -> None: ...
     def SetArguments(self, theLS: TopTools_ListOfShape) -> None: ...
-    def SetCommonBlock(self, thePB: BOPDS_PaveBlock, theCB: BOPDS_CommonBlock) -> None: ...
+    def SetCommonBlock(
+        self, thePB: BOPDS_PaveBlock, theCB: BOPDS_CommonBlock
+    ) -> None: ...
     def Shape(self, theIndex: int) -> TopoDS_Shape: ...
     def ShapeInfo(self, theIndex: int) -> BOPDS_ShapeInfo: ...
     def ShapesSD(self) -> TColStd_DataMapOfIntegerInteger: ...
-    def SharedEdges(self, theF1: int, theF2: int, theLI: TColStd_ListOfInteger, theAllocator: NCollection_BaseAllocator) -> None: ...
-    def SubShapesOnIn(self, theNF1: int, theNF2: int, theMVOnIn: TColStd_MapOfInteger, theMVCommon: TColStd_MapOfInteger, thePBOnIn: BOPDS_IndexedMapOfPaveBlock, theCommonPB: BOPDS_MapOfPaveBlock) -> None: ...
+    def SharedEdges(
+        self,
+        theF1: int,
+        theF2: int,
+        theLI: TColStd_ListOfInteger,
+        theAllocator: NCollection_BaseAllocator,
+    ) -> None: ...
+    def SubShapesOnIn(
+        self,
+        theNF1: int,
+        theNF2: int,
+        theMVOnIn: TColStd_MapOfInteger,
+        theMVCommon: TColStd_MapOfInteger,
+        thePBOnIn: BOPDS_IndexedMapOfPaveBlock,
+        theCommonPB: BOPDS_MapOfPaveBlock,
+    ) -> None: ...
     def UpdateCommonBlock(self, theCB: BOPDS_CommonBlock, theFuzz: float) -> None: ...
     def UpdateCommonBlockWithSDVertices(self, theCB: BOPDS_CommonBlock) -> None: ...
     @overload
@@ -336,13 +386,20 @@ class BOPDS_Iterator:
     def BlockLength(self) -> int: ...
     def DS(self) -> BOPDS_DS: ...
     def ExpectedLength(self) -> int: ...
-    def Initialize(self, theType1: TopAbs_ShapeEnum, theType2: TopAbs_ShapeEnum) -> None: ...
+    def Initialize(
+        self, theType1: TopAbs_ShapeEnum, theType2: TopAbs_ShapeEnum
+    ) -> None: ...
     def IntersectExt(self, theIndicies: TColStd_MapOfInteger) -> None: ...
     def More(self) -> bool: ...
     @staticmethod
     def NbExtInterfs() -> int: ...
     def Next(self) -> None: ...
-    def Prepare(self, theCtx: Optional[IntTools_Context] = IntTools_Context(), theCheckOBB: Optional[bool] = False, theFuzzyValue: Optional[float] = Precision.Confusion()) -> None: ...
+    def Prepare(
+        self,
+        theCtx: Optional[IntTools_Context] = IntTools_Context(),
+        theCheckOBB: Optional[bool] = False,
+        theFuzzyValue: Optional[float] = Precision.Confusion(),
+    ) -> None: ...
     def RunParallel(self) -> bool: ...
     def SetDS(self, pDS: BOPDS_PDS) -> None: ...
     def SetRunParallel(self, theFlag: bool) -> None: ...
@@ -406,9 +463,13 @@ class BOPDS_PaveBlock(Standard_Transient):
     def SetOriginalEdge(self, theEdge: int) -> None: ...
     def SetPave1(self, thePave: BOPDS_Pave) -> None: ...
     def SetPave2(self, thePave: BOPDS_Pave) -> None: ...
-    def SetShrunkData(self, theTS1: float, theTS2: float, theBox: Bnd_Box, theIsSplittable: bool) -> None: ...
+    def SetShrunkData(
+        self, theTS1: float, theTS2: float, theBox: Bnd_Box, theIsSplittable: bool
+    ) -> None: ...
     def ShrunkData(self, theBox: Bnd_Box) -> Tuple[float, float, bool]: ...
-    def Update(self, theLPB: BOPDS_ListOfPaveBlock, theFlag: Optional[bool] = True) -> None: ...
+    def Update(
+        self, theLPB: BOPDS_ListOfPaveBlock, theFlag: Optional[bool] = True
+    ) -> None: ...
 
 class BOPDS_PaveMapHasher:
     @staticmethod
@@ -564,10 +625,9 @@ class BOPDS_IteratorSI(BOPDS_Iterator):
     def __init__(self, theAllocator: NCollection_BaseAllocator) -> None: ...
     def UpdateByLevelOfCheck(self, theLevel: int) -> None: ...
 
-#classnotwrapped
+# classnotwrapped
 class BOPDS_Interf: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

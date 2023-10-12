@@ -37,10 +37,11 @@
 #include <V3d_View.hxx>
 #include <AIS_Shape.hxx>
 #include <Graphic3d_Camera.hxx>
+#include <Graphic3d_Mat4.hxx>
 #include <Graphic3d_RenderingParams.hxx>
 #include <Graphic3d_RenderingMode.hxx>
 #include <Graphic3d_StereoMode.hxx>
-#include <Graphic3d_Mat4.hxx>
+#include <Graphic3d_StructureManager.hxx>
 #include <Graphic3d_Vec4.hxx>
 #include <OpenGl_GraphicDriver.hxx>
 #include <Aspect_DisplayConnection.hxx>

@@ -226,7 +226,9 @@ class TopologyExplorer:
                     ]
                 else:
                     index_list = filter_orientation_hash_codes[i_hash_code]
-                    unique = not any(i.IsSame(filter_orientation_seq[j]) for j in index_list)
+                    unique = not any(
+                        i.IsSame(filter_orientation_seq[j]) for j in index_list
+                    )
                     if unique:
                         filter_orientation_seq.append(i)
                         index_list.append(len(filter_orientation_seq) - 1)
