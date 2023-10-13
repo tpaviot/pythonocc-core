@@ -8,7 +8,7 @@ operating system : Linux 64bit 6.2.0-34-generic
 
 occt version targeted : 7.7.2
 
-date : 2023-10-13 09:21:36.932126
+date : 2023-10-13 12:08:35.756632
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -23,9 +23,9 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BOPAlgo_SectionAttribute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPAlgo_Tools
-[INFO ]      skipped method BOPAlgo_Tools::733d7ed0a9fca43f216a0bb3b6632d28
-[INFO ]      skipped method BOPAlgo_Tools::5772aaab1d085b3252bd793794406e8d
-[INFO ]      skipped method BOPAlgo_Tools::2289f9d00797235618dbe00d98b36117
+[INFO ]      explicitly excluded method BOPAlgo_Tools::733d7ed0a9fca43f216a0bb3b6632d28
+[INFO ]      explicitly excluded method BOPAlgo_Tools::5772aaab1d085b3252bd793794406e8d
+[INFO ]      explicitly excluded method BOPAlgo_Tools::2289f9d00797235618dbe00d98b36117
 [INFO ]  Class: BOPAlgo_WireEdgeSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPAlgo_Algo
@@ -52,10 +52,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BOPAlgo_BuilderShape
 [INFO ]  Class: BOPAlgo_ParallelAlgo
 [INFO ]      Class BOPAlgo_ParallelAlgo is abstract, using %nodefaultctor.
-[INFO ]      skipped method BOPAlgo_ParallelAlgo::e23b98e5ba6fc1b2692a5d6fc76fd990
+[INFO ]      explicitly excluded method BOPAlgo_ParallelAlgo::e23b98e5ba6fc1b2692a5d6fc76fd990
 [INFO ]  Class: BOPAlgo_PaveFiller
 [INFO ]      Wrap nested class BOPAlgo_PaveFiller::EdgeRangeDistance
-[INFO ]      skipped method BOPAlgo_PaveFiller::f93eb18a69c621ff67378c15a54bb075
+[INFO ]      explicitly excluded method BOPAlgo_PaveFiller::f93eb18a69c621ff67378c15a54bb075
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPAlgo_ShellSplitter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -106,9 +106,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BOPDS_Iterator
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_Pair
+[INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_PairMapHasher
 [INFO ]  Class: BOPDS_Pave
+[INFO ]      operator< skipped because invalid name
 [INFO ]  Class: BOPDS_PaveBlock
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_PaveMapHasher
@@ -193,7 +195,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: IntTools_PntOn2Faces
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_PntOnFace
-[INFO ]      skipped method IntTools_PntOnFace::2809e700423e4fe6ecd395953f3a2406
+[INFO ]      explicitly excluded method IntTools_PntOnFace::2809e700423e4fe6ecd395953f3a2406
 [INFO ]  Class: IntTools_Range
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_Root
@@ -260,11 +262,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepTools
 [INFO ]  Class: BRepTools_History
 [INFO ]  Enum: TRelationType
-[INFO ]      skipped method BRepTools_History::4a35f50a2b6bb1bb1303ad7d8374073c
-[INFO ]      skipped method BRepTools_History::7dfa827711ec2050a35ebaeda60fa3a6
-[INFO ]      skipped method BRepTools_History::fb045f600989a1f096e90b81d587d65a
-[INFO ]      skipped method BRepTools_History::bcea4b93e38784928b17c2d0cc2cf68c
-[INFO ]      skipped method BRepTools_History::1e361db725f2785773b933e1d47f0346
+[INFO ]      explicitly excluded method BRepTools_History::4a35f50a2b6bb1bb1303ad7d8374073c
+[INFO ]      explicitly excluded method BRepTools_History::7dfa827711ec2050a35ebaeda60fa3a6
+[INFO ]      explicitly excluded method BRepTools_History::fb045f600989a1f096e90b81d587d65a
+[INFO ]      explicitly excluded method BRepTools_History::bcea4b93e38784928b17c2d0cc2cf68c
+[INFO ]      explicitly excluded method BRepTools_History::1e361db725f2785773b933e1d47f0346
 [INFO ]  Class: BRepTools_Modification
 [INFO ]      Class BRepTools_Modification is abstract, using %nodefaultctor.
 [INFO ]  Class: BRepTools_Modifier
@@ -272,11 +274,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Wrap nested class BRepTools_Modifier::NewSurfaceInfo
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepTools_PurgeLocations
-[INFO ]      skipped method BRepTools_PurgeLocations::f801488c386de381875cd0fcc9cfc82f
+[INFO ]      explicitly excluded method BRepTools_PurgeLocations::f801488c386de381875cd0fcc9cfc82f
 [INFO ]  Class: BRepTools_Quilt
 [INFO ]  Class: BRepTools_ReShape
 [INFO ]      Wrap nested class BRepTools_ReShape::TReplacement
-[INFO ]      skipped method BRepTools_ReShape::4a1e1cf3a68bb84f97ab6c753f9ff817
+[INFO ]      explicitly excluded method BRepTools_ReShape::4a1e1cf3a68bb84f97ab6c753f9ff817
 [INFO ]  Class: BRepTools_ShapeSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepTools_Substitution
@@ -293,7 +295,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum: BinTools_ObjectType
 [INFO ]  Class: BinTools
 [INFO ]  Class: BinTools_Curve2dSet
-[INFO ]      skipped method BinTools_Curve2dSet::e60d722f65a7811be636699da7600e78
+[INFO ]      explicitly excluded method BinTools_Curve2dSet::e60d722f65a7811be636699da7600e78
 [INFO ]  Class: BinTools_CurveSet
 [INFO ]  Class: BinTools_LocationSet
 [INFO ]  Class: BinTools_ShapeSetBase
@@ -402,7 +404,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BinMDF_TagSourceDriver
 [INFO ]  ## Processing module BinMDataStd
 [INFO ]  Class: BinMDataStd
-[INFO ]      skipped method BinMDataStd::e1d00b79f6d84508c6ae2d29ceedcb99
+[INFO ]      explicitly excluded method BinMDataStd::e1d00b79f6d84508c6ae2d29ceedcb99
 [INFO ]  Class: BinMDataStd_AsciiStringDriver
 [INFO ]  Class: BinMDataStd_BooleanArrayDriver
 [INFO ]  Class: BinMDataStd_BooleanListDriver
@@ -435,6 +437,18 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BinMFunction_ScopeDriver
 [INFO ]  ## Processing module BinObjMgt
 [INFO ]  Class: BinObjMgt_Persistent
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BinObjMgt_RRelocationTable
 [INFO ]  Processing toolkit TKBinTObj ===
@@ -619,7 +633,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: TopOpeBRepBuild_Area3dBuilder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepBuild_Builder1
-[INFO ]      skipped method TopOpeBRepBuild_Builder1::050000c0978e4bfaf3824f038bed85b1
+[INFO ]      explicitly excluded method TopOpeBRepBuild_Builder1::050000c0978e4bfaf3824f038bed85b1
 [INFO ]  Class: TopOpeBRepBuild_CompositeClassifier
 [INFO ]      Class TopOpeBRepBuild_CompositeClassifier is abstract, using %nodefaultctor.
 [INFO ]  Class: TopOpeBRepBuild_Pave
@@ -878,7 +892,9 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class CDM_Application is abstract, using %nodefaultctor.
 [INFO ]  Class: CDM_Document
 [INFO ]      Class CDM_Document is abstract, using %nodefaultctor.
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: CDM_MetaData
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: CDM_Reference
 [INFO ]  Class: CDM_ReferenceIterator
 [INFO ]  ## Processing module LDOM
@@ -913,7 +929,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum: BRepFeat_Status
 [INFO ]  Enum: BRepFeat_StatusError
 [INFO ]  Class: BRepFeat
-[INFO ]      skipped method BRepFeat::c84c38f32817cb72fc8df159842b4537
+[INFO ]      explicitly excluded method BRepFeat::c84c38f32817cb72fc8df159842b4537
 [INFO ]  Class: BRepFeat_Builder
 [INFO ]  Class: BRepFeat_Form
 [INFO ]      Class BRepFeat_Form is abstract, using %nodefaultctor.
@@ -926,7 +942,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepFeat_MakeDPrism
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepFeat_MakeLinearForm
-[INFO ]      skipped method BRepFeat_MakeLinearForm::1186bc3601d9b2231ecd6e7ec0e8bc6f
+[INFO ]      explicitly excluded method BRepFeat_MakeLinearForm::1186bc3601d9b2231ecd6e7ec0e8bc6f
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepFeat_MakePipe
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -983,7 +999,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepBlend_AppSurf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBlend_AppSurface
-[INFO ]      skipped method BRepBlend_AppSurface::c8d3e7f26c4ee8a50f4eca5274d79e63
+[INFO ]      explicitly excluded method BRepBlend_AppSurface::c8d3e7f26c4ee8a50f4eca5274d79e63
 [INFO ]  Class: BRepBlend_CurvPointRadInv
 [INFO ]  Class: BRepBlend_Extremity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1037,8 +1053,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module BlendFunc
 [INFO ]  Enum: BlendFunc_SectionShape
 [INFO ]  Class: BlendFunc
-[INFO ]      skipped method BlendFunc::dd14950aec005f22b5fc08479b79df06
-[INFO ]      skipped method BlendFunc::c6e3224ed9db973a6b794cc9ac81a653
+[INFO ]      explicitly excluded method BlendFunc::dd14950aec005f22b5fc08479b79df06
+[INFO ]      explicitly excluded method BlendFunc::c6e3224ed9db973a6b794cc9ac81a653
 [INFO ]  Class: BlendFunc_CSCircular
 [INFO ]  Class: BlendFunc_CSConstRad
 [INFO ]  Class: BlendFunc_ChAsym
@@ -1050,10 +1066,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BlendFunc_EvolRadInv
 [INFO ]  Class: BlendFunc_GenChamfInv
 [INFO ]      Class BlendFunc_GenChamfInv is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BlendFunc_GenChamfInv
+[INFO ]      Constructor skipped for abstract class BlendFunc_GenChamfInv
 [INFO ]  Class: BlendFunc_GenChamfer
 [INFO ]      Class BlendFunc_GenChamfer is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BlendFunc_GenChamfer
+[INFO ]      Constructor skipped for abstract class BlendFunc_GenChamfer
 [INFO ]  Class: BlendFunc_Ruled
 [INFO ]  Class: BlendFunc_RuledInv
 [INFO ]  Class: BlendFunc_Tensor
@@ -1176,10 +1192,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Geom2dEvaluator
 [INFO ]  Class: Geom2dEvaluator
-[INFO ]      skipped method Geom2dEvaluator::066732e75e39b7360aa2d2bfa5c1c9db
+[INFO ]      explicitly excluded method Geom2dEvaluator::066732e75e39b7360aa2d2bfa5c1c9db
 [INFO ]  Class: Geom2dEvaluator_Curve
 [INFO ]      Class Geom2dEvaluator_Curve is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class Geom2dEvaluator_Curve
+[INFO ]      Constructor skipped for abstract class Geom2dEvaluator_Curve
 [INFO ]  Class: Geom2dEvaluator_OffsetCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Geom2dLProp
@@ -1332,10 +1348,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module GeomEvaluator
 [INFO ]  Class: GeomEvaluator_Curve
 [INFO ]      Class GeomEvaluator_Curve is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class GeomEvaluator_Curve
+[INFO ]      Constructor skipped for abstract class GeomEvaluator_Curve
 [INFO ]  Class: GeomEvaluator_Surface
 [INFO ]      Class GeomEvaluator_Surface is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class GeomEvaluator_Surface
+[INFO ]      Constructor skipped for abstract class GeomEvaluator_Surface
 [INFO ]  Class: GeomEvaluator_OffsetCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomEvaluator_OffsetSurface
@@ -1397,7 +1413,7 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<int>, seems to be a template
 [INFO ]  Class: ApproxInt_SvSurfaces
 [INFO ]      Class ApproxInt_SvSurfaces is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class ApproxInt_SvSurfaces
+[INFO ]      Constructor skipped for abstract class ApproxInt_SvSurfaces
 [INFO ]  ## Processing module FairCurve
 [INFO ]  Enum: FairCurve_AnalysisCode
 [INFO ]  Class: FairCurve_Batten
@@ -1468,9 +1484,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Geom2dAPI_InterCurveCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dAPI_Interpolate
-[INFO ]      skipped method Geom2dAPI_Interpolate::cc7e51f8da6d25de0686408bc4ec060f
+[INFO ]      explicitly excluded method Geom2dAPI_Interpolate::cc7e51f8da6d25de0686408bc4ec060f
+[INFO ]      handle<Geom2d_BSplineCurve> skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dAPI_PointsToBSpline
+[INFO ]      handle<Geom2d_BSplineCurve> skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dAPI_ProjectPointOnCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1584,7 +1602,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum passed by reference: GccEnt_Position & Qualif1 changed to GccEnt_Position &OutValue
 [INFO ]  Enum passed by reference: GccEnt_Position & Qualif2 changed to GccEnt_Position &OutValue
 [INFO ]  Class: Geom2dGcc_Lin2dTanObl
-[INFO ]      skipped method Geom2dGcc_Lin2dTanObl::a4de51061e0c3b07941dbd94b99e2944
+[INFO ]      explicitly excluded method Geom2dGcc_Lin2dTanObl::a4de51061e0c3b07941dbd94b99e2944
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: GccEnt_Position &Qualif1 changed to GccEnt_Position &OutValue
 [INFO ]  Enum passed by reference: GccEnt_Position & Qualif1 changed to GccEnt_Position &OutValue
@@ -1609,8 +1627,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum passed by reference: TopAbs_Orientation & Or changed to TopAbs_Orientation &OutValue
 [INFO ]  Class: Geom2dHatch_FClass2dOfClassifier
 [INFO ]  Class: Geom2dHatch_Hatcher
-[INFO ]      skipped method Geom2dHatch_Hatcher::ec0624071ec7da54b3d9dacc7bcb05f9
-[INFO ]      skipped method Geom2dHatch_Hatcher::ac32eb89cd1bb24e500241057a62dcef
+[INFO ]      explicitly excluded method Geom2dHatch_Hatcher::ec0624071ec7da54b3d9dacc7bcb05f9
+[INFO ]      explicitly excluded method Geom2dHatch_Hatcher::ac32eb89cd1bb24e500241057a62dcef
 [INFO ]  Class: Geom2dHatch_Hatching
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dHatch_Intersector
@@ -1620,16 +1638,16 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Geom2dInt_GInter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dInt_Geom2dCurveTool
-[INFO ]      skipped method Geom2dInt_Geom2dCurveTool::90db3e0f7087ee80ac227b78012eb982
+[INFO ]      explicitly excluded method Geom2dInt_Geom2dCurveTool::90db3e0f7087ee80ac227b78012eb982
 [INFO ]  Class: Geom2dInt_IntConicCurveOfGInter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter
 [INFO ]  Class: Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter
-[INFO ]      skipped method Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::8d106f31051311460cfd760036f7d81c
-[INFO ]      skipped method Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::39151c8c0c544896808a65aa9957bd01
-[INFO ]      skipped method Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::b9598736f92443bc0798c6f0b47ece11
+[INFO ]      explicitly excluded method Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::8d106f31051311460cfd760036f7d81c
+[INFO ]      explicitly excluded method Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::39151c8c0c544896808a65aa9957bd01
+[INFO ]      explicitly excluded method Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::b9598736f92443bc0798c6f0b47ece11
 [INFO ]  Class: Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter
 [INFO ]  Class: Geom2dInt_TheIntConicCurveOfGInter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1653,11 +1671,14 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: GeomAPI_IntSS
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAPI_Interpolate
-[INFO ]      skipped method GeomAPI_Interpolate::cc7e51f8da6d25de0686408bc4ec060f
+[INFO ]      explicitly excluded method GeomAPI_Interpolate::cc7e51f8da6d25de0686408bc4ec060f
+[INFO ]      handle<Geom_BSplineCurve> skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAPI_PointsToBSpline
+[INFO ]      handle<Geom_BSplineCurve> skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAPI_PointsToBSplineSurface
+[INFO ]      handle<Geom_BSplineSurface> skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAPI_ProjectPointOnCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1691,7 +1712,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: GeomFill_Filling
 [INFO ]  Class: GeomFill_FunctionDraft
 [INFO ]  Class: GeomFill_FunctionGuide
-[INFO ]      skipped method GeomFill_FunctionGuide::997b5adbebf60f0b487a20872cd9decb
+[INFO ]      explicitly excluded method GeomFill_FunctionGuide::997b5adbebf60f0b487a20872cd9decb
 [INFO ]  Class: GeomFill_Line
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomFill_LocFunction
@@ -1735,7 +1756,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: GeomFill_LocationDraft
 [INFO ]  Class: GeomFill_LocationGuide
 [INFO ]  Class: GeomFill_NSections
-[INFO ]      skipped method GeomFill_NSections::637af4a0f33ec19afb7aacd41d59fa97
+[INFO ]      explicitly excluded method GeomFill_NSections::637af4a0f33ec19afb7aacd41d59fa97
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomFill_SectionGenerator
 [INFO ]  Class: GeomFill_SimpleBound
@@ -1756,8 +1777,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox
 [INFO ]  Class: GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox
 [INFO ]  Class: GeomInt_IntSS
-[INFO ]      skipped method GeomInt_IntSS::95311f9e4da165d401fd5e6fa30c8287
-[INFO ]      skipped method GeomInt_IntSS::3738a5a63be6aef263f49fab4fcc7fe9
+[INFO ]      explicitly excluded method GeomInt_IntSS::95311f9e4da165d401fd5e6fa30c8287
+[INFO ]      explicitly excluded method GeomInt_IntSS::3738a5a63be6aef263f49fab4fcc7fe9
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomInt_LineConstructor
 [INFO ]  Class: GeomInt_LineTool
@@ -1774,16 +1795,16 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: GeomInt_ParameterAndOrientation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox
-[INFO ]      skipped method GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox
-[INFO ]      skipped method GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: GeomInt_TheComputeLineBezierOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomInt_TheComputeLineOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox
 [INFO ]  Class: GeomInt_TheImpPrmSvSurfacesOfWLApprox
-[INFO ]      skipped method GeomInt_TheImpPrmSvSurfacesOfWLApprox::b41c1a9755d3e00fb915462d51a8d0c5
+[INFO ]      explicitly excluded method GeomInt_TheImpPrmSvSurfacesOfWLApprox::b41c1a9755d3e00fb915462d51a8d0c5
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1893,7 +1914,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: IntPatch_HInterTool
 [INFO ]  Class: IntPatch_ImpImpIntersection
 [INFO ]  Enum: IntStatus
-[INFO ]      skipped method IntPatch_ImpImpIntersection::231c43be92c05c3ac685e2f6f1c47428
+[INFO ]      explicitly excluded method IntPatch_ImpImpIntersection::231c43be92c05c3ac685e2f6f1c47428
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPatch_ImpPrmIntersection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1934,8 +1955,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: IntPatch_PolyLine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPatch_RLine
-[INFO ]      skipped method IntPatch_RLine::016e109058a92eed7447a9cdea5669cf
-[INFO ]      skipped method IntPatch_RLine::0458020fb0dafbdbc4cff33ab8921ba2
+[INFO ]      explicitly excluded method IntPatch_RLine::016e109058a92eed7447a9cdea5669cf
+[INFO ]      explicitly excluded method IntPatch_RLine::0458020fb0dafbdbc4cff33ab8921ba2
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPatch_WLine
 [INFO ]  Enum: IntPatch_WLType
@@ -2039,7 +2060,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Law_Function
 [INFO ]      Class Law_Function is abstract, using %nodefaultctor.
 [INFO ]  Class: Law_Interpolate
-[INFO ]      skipped method Law_Interpolate::cc7e51f8da6d25de0686408bc4ec060f
+[INFO ]      explicitly excluded method Law_Interpolate::cc7e51f8da6d25de0686408bc4ec060f
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Law_BSpFunc
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2059,7 +2080,7 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: NLPlate_HGPPConstraint
 [INFO ]      Class NLPlate_HGPPConstraint is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class NLPlate_HGPPConstraint
+[INFO ]      Constructor skipped for abstract class NLPlate_HGPPConstraint
 [INFO ]  Class: NLPlate_NLPlate
 [INFO ]  Class: NLPlate_HPG0Constraint
 [INFO ]  Class: NLPlate_HPG1Constraint
@@ -2180,7 +2201,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: AdvApp2Var_Framework
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AdvApp2Var_MathBase
-[INFO ]      skipped method AdvApp2Var_MathBase::004b4d1f320ed3a3d5373d0e6c2dacb7
+[INFO ]      explicitly excluded method AdvApp2Var_MathBase::004b4d1f320ed3a3d5373d0e6c2dacb7
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
@@ -2238,7 +2259,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module AppCont
 [INFO ]  Class: AppCont_Function
 [INFO ]      Class AppCont_Function is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class AppCont_Function
+[INFO ]      Constructor skipped for abstract class AppCont_Function
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d>, seems to be a template
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d>, seems to be a template
@@ -2257,7 +2278,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute
 [INFO ]  Class: AppDef_Gradient_BFGSOfTheGradient
 [INFO ]  Class: AppDef_MultiLine
-[INFO ]      skipped method AppDef_MultiLine::986a9f0357719733cc51a4559940a99a
+[INFO ]      explicitly excluded method AppDef_MultiLine::986a9f0357719733cc51a4559940a99a
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppDef_MultiPointConstraint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2276,11 +2297,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: AppDef_ParLeastSquareOfTheGradient
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppDef_ResConstraintOfMyGradientOfCompute
-[INFO ]      skipped method AppDef_ResConstraintOfMyGradientOfCompute::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method AppDef_ResConstraintOfMyGradientOfCompute::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: AppDef_ResConstraintOfMyGradientbisOfBSplineCompute
-[INFO ]      skipped method AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: AppDef_ResConstraintOfTheGradient
-[INFO ]      skipped method AppDef_ResConstraintOfTheGradient::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method AppDef_ResConstraintOfTheGradient::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: AppDef_SmoothCriterion
 [INFO ]      Class AppDef_SmoothCriterion is abstract, using %nodefaultctor.
 [INFO ]  Class: AppDef_TheFunction
@@ -2288,7 +2309,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: AppDef_TheLeastSquares
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppDef_TheResol
-[INFO ]      skipped method AppDef_TheResol::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method AppDef_TheResol::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: AppDef_Variational
 [INFO ]  Class: AppDef_LinearCriteria
 [INFO ]      Creating Get and Set methods for method EstLength
@@ -2480,7 +2501,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: FEmTool_Curve
 [INFO ]  Class: FEmTool_ElementaryCriterion
 [INFO ]      Class FEmTool_ElementaryCriterion is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class FEmTool_ElementaryCriterion
+[INFO ]      Constructor skipped for abstract class FEmTool_ElementaryCriterion
 [INFO ]  Class: FEmTool_ElementsOfRefMatrix
 [INFO ]  Class: FEmTool_SparseMatrix
 [INFO ]      Class FEmTool_SparseMatrix is abstract, using %nodefaultctor.
@@ -2491,68 +2512,100 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Creating Get and Set methods for method ChangeValue
 [INFO ]  ## Processing module GC
 [INFO ]  Class: GC_MakeMirror
+[INFO ]      handle<Geom_Transformation>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeRotation
+[INFO ]      handle<Geom_Transformation>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeScale
+[INFO ]      handle<Geom_Transformation>& skipped because invalid name
 [INFO ]  Class: GC_MakeTranslation
+[INFO ]      handle<Geom_Transformation>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_Root
 [INFO ]  Class: GC_MakeArcOfCircle
+[INFO ]      handle<Geom_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeArcOfEllipse
+[INFO ]      handle<Geom_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeArcOfHyperbola
+[INFO ]      handle<Geom_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeArcOfParabola
+[INFO ]      handle<Geom_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeCircle
+[INFO ]      handle<Geom_Circle>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeConicalSurface
+[INFO ]      handle<Geom_ConicalSurface>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeCylindricalSurface
+[INFO ]      handle<Geom_CylindricalSurface>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeEllipse
+[INFO ]      handle<Geom_Ellipse>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeHyperbola
+[INFO ]      handle<Geom_Hyperbola>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeLine
+[INFO ]      handle<Geom_Line>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakePlane
+[INFO ]      handle<Geom_Plane>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeSegment
+[INFO ]      handle<Geom_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeTrimmedCone
+[INFO ]      handle<Geom_RectangularTrimmedSurface>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GC_MakeTrimmedCylinder
+[INFO ]      handle<Geom_RectangularTrimmedSurface>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module GCE2d
 [INFO ]  Class: GCE2d_MakeMirror
+[INFO ]      handle<Geom2d_Transformation>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeRotation
+[INFO ]      handle<Geom2d_Transformation>& skipped because invalid name
 [INFO ]  Class: GCE2d_MakeScale
+[INFO ]      handle<Geom2d_Transformation>& skipped because invalid name
 [INFO ]  Class: GCE2d_MakeTranslation
+[INFO ]      handle<Geom2d_Transformation>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_Root
 [INFO ]  Class: GCE2d_MakeArcOfCircle
+[INFO ]      handle<Geom2d_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeArcOfEllipse
+[INFO ]      handle<Geom2d_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeArcOfHyperbola
+[INFO ]      handle<Geom2d_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeArcOfParabola
+[INFO ]      handle<Geom2d_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeCircle
+[INFO ]      handle<Geom2d_Circle>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeEllipse
+[INFO ]      handle<Geom2d_Ellipse>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeHyperbola
+[INFO ]      handle<Geom2d_Hyperbola>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeLine
+[INFO ]      handle<Geom2d_Line>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeParabola
+[INFO ]      handle<Geom2d_Parabola>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GCE2d_MakeSegment
+[INFO ]      handle<Geom2d_TrimmedCurve>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module GCPnts
 [INFO ]  Enum: GCPnts_AbscissaType
@@ -2602,7 +2655,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: GeomConvert_CompBezierSurfacesToBSplineSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomConvert_CompCurveToBSplineCurve
-[INFO ]      skipped method GeomConvert_CompCurveToBSplineCurve::ae54be580b423a6eadbe062e0bdb44c2
+[INFO ]      explicitly excluded method GeomConvert_CompCurveToBSplineCurve::ae54be580b423a6eadbe062e0bdb44c2
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomConvert_CurveToAnaCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2677,12 +2730,12 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: ProjLib_ProjectOnPlane
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ProjLib_ProjectOnSurface
-[INFO ]      skipped method ProjLib_ProjectOnSurface::5fdedc45f7f3e3286603c8152dd5d5ba
-[INFO ]      skipped method ProjLib_ProjectOnSurface::01a7b4d72f20b05f31b69ad77ce99e00
+[INFO ]      explicitly excluded method ProjLib_ProjectOnSurface::5fdedc45f7f3e3286603c8152dd5d5ba
+[INFO ]      explicitly excluded method ProjLib_ProjectOnSurface::01a7b4d72f20b05f31b69ad77ce99e00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ProjLib_ProjectedCurve
-[INFO ]      skipped method ProjLib_ProjectedCurve::2cdd540d2ed3d1bf4db74ea62b904f67
-[INFO ]      skipped method ProjLib_ProjectedCurve::5fdedc45f7f3e3286603c8152dd5d5ba
+[INFO ]      explicitly excluded method ProjLib_ProjectedCurve::2cdd540d2ed3d1bf4db74ea62b904f67
+[INFO ]      explicitly excluded method ProjLib_ProjectedCurve::5fdedc45f7f3e3286603c8152dd5d5ba
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ProjLib_Projector
 [INFO ]  Class: ProjLib_Cone
@@ -2785,8 +2838,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: HLRAlgo_BiPoint
 [INFO ]      Wrap nested class HLRAlgo_BiPoint::IndicesT
 [INFO ]      Wrap nested class HLRAlgo_BiPoint::PointsT
-[INFO ]      skipped method HLRAlgo_BiPoint::bed175575f3fb6d9d3872c0ab2be6aec
-[INFO ]      skipped method HLRAlgo_BiPoint::fe71a23d0f79cd7921ec286a3aefc083
+[INFO ]      explicitly excluded method HLRAlgo_BiPoint::bed175575f3fb6d9d3872c0ab2be6aec
+[INFO ]      explicitly excluded method HLRAlgo_BiPoint::fe71a23d0f79cd7921ec286a3aefc083
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: HLRAlgo_Coincidence
 [INFO ]  Enum passed by reference: TopAbs_State &stbef changed to TopAbs_State &OutValue
@@ -2800,7 +2853,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: HLRAlgo_EdgesBlock
 [INFO ]      Wrap nested class HLRAlgo_EdgesBlock::MinMaxIndices
-[INFO ]      skipped method HLRAlgo_EdgesBlock::ebcbf967011738ff0c388241ea684feb
+[INFO ]      explicitly excluded method HLRAlgo_EdgesBlock::ebcbf967011738ff0c388241ea684feb
 [WARNI]      [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  Class: HLRAlgo_Interference
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2815,19 +2868,19 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Wrap nested class HLRAlgo_PolyData::FaceIndices
 [INFO ]      Wrap nested class HLRAlgo_PolyData::Triangle
 [INFO ]      Wrap nested class HLRAlgo_PolyData::Box
-[INFO ]      skipped method HLRAlgo_PolyData::4604270c38239149d99e9b14ba05efbd
-[INFO ]      skipped method HLRAlgo_PolyData::2f1ad3eeadf05ffa02c621e63477f601
-[INFO ]      skipped method HLRAlgo_PolyData::1ef4d0d7acdbc161edf6c492116eed8d
+[INFO ]      explicitly excluded method HLRAlgo_PolyData::4604270c38239149d99e9b14ba05efbd
+[INFO ]      explicitly excluded method HLRAlgo_PolyData::2f1ad3eeadf05ffa02c621e63477f601
+[INFO ]      explicitly excluded method HLRAlgo_PolyData::1ef4d0d7acdbc161edf6c492116eed8d
 [INFO ]  Class: HLRAlgo_PolyInternalData
 [WARNI]      [TypeHint] Skip type HLRAlgo_PolyInternalNode::NodeData, because of trailing :
 [INFO ]  Class: HLRAlgo_PolyInternalNode
 [INFO ]      Wrap nested class HLRAlgo_PolyInternalNode::NodeIndices
 [INFO ]      Wrap nested class HLRAlgo_PolyInternalNode::NodeData
-[INFO ]      skipped method HLRAlgo_PolyInternalNode::8e4b7e71f7ea538345aa82a6768514e2
-[INFO ]      skipped method HLRAlgo_PolyInternalNode::331d49fa3fd20db16275a222ad109167
+[INFO ]      explicitly excluded method HLRAlgo_PolyInternalNode::8e4b7e71f7ea538345aa82a6768514e2
+[INFO ]      explicitly excluded method HLRAlgo_PolyInternalNode::331d49fa3fd20db16275a222ad109167
 [INFO ]  Class: HLRAlgo_PolyShellData
 [INFO ]      Wrap nested class HLRAlgo_PolyShellData::ShellIndices
-[INFO ]      skipped method HLRAlgo_PolyShellData::4c64ab21b0af214c1defaf9f0dc12a7b
+[INFO ]      explicitly excluded method HLRAlgo_PolyShellData::4c64ab21b0af214c1defaf9f0dc12a7b
 [WARNI]      [TypeHint] Skip type NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>, because of trailing :
 [WARNI]      [TypeHint] Skip type HLRAlgo_PolyData::Box, because of trailing :
@@ -2985,13 +3038,13 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: IGESData_IGESType
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IGESData_IGESWriter
-[INFO ]      skipped method IGESData_IGESWriter::834a80f8fb88341c53a16609c1df2e80
-[INFO ]      skipped method IGESData_IGESWriter::f58679aa6a4d459eeebef2ee9689b9ec
-[INFO ]      skipped method IGESData_IGESWriter::50f4a4df3ed56bf404f3ec4db55009c7
-[INFO ]      skipped method IGESData_IGESWriter::0a0758de8eac3bd44932ff3339168f9e
-[INFO ]      skipped method IGESData_IGESWriter::434e17ca6770bd2f88043acf3c87a44b
-[INFO ]      skipped method IGESData_IGESWriter::54f24415f8fed6da601139a5a471b407
-[INFO ]      skipped method IGESData_IGESWriter::f448a83aaba93961554144bc00673627
+[INFO ]      explicitly excluded method IGESData_IGESWriter::834a80f8fb88341c53a16609c1df2e80
+[INFO ]      explicitly excluded method IGESData_IGESWriter::f58679aa6a4d459eeebef2ee9689b9ec
+[INFO ]      explicitly excluded method IGESData_IGESWriter::50f4a4df3ed56bf404f3ec4db55009c7
+[INFO ]      explicitly excluded method IGESData_IGESWriter::0a0758de8eac3bd44932ff3339168f9e
+[INFO ]      explicitly excluded method IGESData_IGESWriter::434e17ca6770bd2f88043acf3c87a44b
+[INFO ]      explicitly excluded method IGESData_IGESWriter::54f24415f8fed6da601139a5a471b407
+[INFO ]      explicitly excluded method IGESData_IGESWriter::f448a83aaba93961554144bc00673627
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method WriteMode
 [INFO ]  Class: IGESData_NodeOfSpecificLib
@@ -2999,12 +3052,12 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: IGESData_ParamCursor
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IGESData_ParamReader
-[INFO ]      skipped method IGESData_ParamReader::d019e5836cd1c4ca0b5de71676440a54
-[INFO ]      skipped method IGESData_ParamReader::effe0e6f9539120e6298f073131f1296
-[INFO ]      skipped method IGESData_ParamReader::be9eaf57780cab90306fcb51994c1a80
-[INFO ]      skipped method IGESData_ParamReader::4220c0680f4a6e691b266db462022612
-[INFO ]      skipped method IGESData_ParamReader::d0394ffe187747a892f2ed0329a7b096
-[INFO ]      skipped method IGESData_ParamReader::453158798d5886a46d5075df54351dba
+[INFO ]      explicitly excluded method IGESData_ParamReader::d019e5836cd1c4ca0b5de71676440a54
+[INFO ]      explicitly excluded method IGESData_ParamReader::effe0e6f9539120e6298f073131f1296
+[INFO ]      explicitly excluded method IGESData_ParamReader::be9eaf57780cab90306fcb51994c1a80
+[INFO ]      explicitly excluded method IGESData_ParamReader::4220c0680f4a6e691b266db462022612
+[INFO ]      explicitly excluded method IGESData_ParamReader::d0394ffe187747a892f2ed0329a7b096
+[INFO ]      explicitly excluded method IGESData_ParamReader::453158798d5886a46d5075df54351dba
 [INFO ]  Class: IGESData_Protocol
 [INFO ]  Class: IGESData_ReadWriteModule
 [INFO ]      Class IGESData_ReadWriteModule is abstract, using %nodefaultctor.
@@ -3088,7 +3141,7 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_OffsetCurve, IGESGeom not in module list
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_Point, IGESGeom not in module list
 [INFO ]  Class: IGESToBRep_TopoSurface
-[INFO ]      skipped method IGESToBRep_TopoSurface::657812ceea990db15bb85a8826a3ccc8
+[INFO ]      explicitly excluded method IGESToBRep_TopoSurface::657812ceea990db15bb85a8826a3ccc8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_BoundedSurface, IGESGeom not in module list
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_OffsetSurface, IGESGeom not in module list
@@ -3125,9 +3178,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: TDF
 [INFO ]  Class: TDF_Attribute
 [INFO ]      Class TDF_Attribute is abstract, using %nodefaultctor.
+[INFO ]      operator<< skipped because invalid name
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Class: TDF_AttributeDelta
 [INFO ]      Class TDF_AttributeDelta is abstract, using %nodefaultctor.
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: TDF_AttributeIterator
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TDF_ChildIDIterator
@@ -3141,10 +3196,13 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TDF_CopyTool
 [INFO ]  Class: TDF_Data
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: TDF_DataSet
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: TDF_Delta
 [INFO ]  Class: TDF_IDFilter
 [INFO ]  Class: TDF_Label
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: TDF_LabelMapHasher
 [INFO ]  Class: TDF_RelocationTable
 [INFO ]  Class: TDF_Tool
@@ -3239,6 +3297,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: TFunction_Driver
 [INFO ]      Class TFunction_Driver is abstract, using %nodefaultctor.
 [INFO ]  Class: TFunction_DriverTable
+[INFO ]      operator<< skipped because invalid name
 [INFO ]  Class: TFunction_Function
 [INFO ]  Class: TFunction_GraphNode
 [INFO ]  Class: TFunction_IFunction
@@ -3252,23 +3311,23 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum: BSplCLib_KnotDistribution
 [INFO ]  Enum: BSplCLib_MultDistribution
 [INFO ]  Class: BSplCLib
-[INFO ]      skipped method BSplCLib::e50f0e048d39e8b2989e867bd030b6db
-[INFO ]      skipped method BSplCLib::fe437b99d9dae8bf468ad85b60827f3a
-[INFO ]      skipped method BSplCLib::d01126bd8237e196365aafa7122cc9cf
-[INFO ]      skipped method BSplCLib::57fbf1518ff4172216038bcb17576bb9
-[INFO ]      skipped method BSplCLib::716244ab13f7a182a14c1fdf3b86d282
+[INFO ]      explicitly excluded method BSplCLib::e50f0e048d39e8b2989e867bd030b6db
+[INFO ]      explicitly excluded method BSplCLib::fe437b99d9dae8bf468ad85b60827f3a
+[INFO ]      explicitly excluded method BSplCLib::d01126bd8237e196365aafa7122cc9cf
+[INFO ]      explicitly excluded method BSplCLib::57fbf1518ff4172216038bcb17576bb9
+[INFO ]      explicitly excluded method BSplCLib::716244ab13f7a182a14c1fdf3b86d282
 [INFO ]  Class: BSplCLib_Cache
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BSplCLib_CacheParams
 [INFO ]  Class: BSplCLib_EvaluatorFunction
 [INFO ]      Class BSplCLib_EvaluatorFunction is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BSplCLib_EvaluatorFunction
+[INFO ]      Constructor skipped for abstract class BSplCLib_EvaluatorFunction
 [INFO ]  ## Processing module BSplSLib
 [INFO ]  Class: BSplSLib
 [INFO ]  Class: BSplSLib_Cache
 [INFO ]  Class: BSplSLib_EvaluatorFunction
 [INFO ]      Class BSplSLib_EvaluatorFunction is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BSplSLib_EvaluatorFunction
+[INFO ]      Constructor skipped for abstract class BSplSLib_EvaluatorFunction
 [INFO ]  ## Processing module BVH
 [INFO ]  Enum: 
 [INFO ]  Class: BVH_AxisSelector<T,2>
@@ -3661,6 +3720,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: math_Householder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_IntegerVector
+[INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method Value
 [INFO ]  Class: math_Jacobi
@@ -3674,10 +3734,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: math_NewtonFunctionRoot
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_NewtonFunctionSetRoot
-[INFO ]      skipped method math_NewtonFunctionSetRoot::c825243d16208354db2b16a295147184
+[INFO ]      explicitly excluded method math_NewtonFunctionSetRoot::c825243d16208354db2b16a295147184
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_NewtonMinimum
-[INFO ]      skipped method math_NewtonMinimum::d26308710f3aff3315cd90ff796c2182
+[INFO ]      explicitly excluded method math_NewtonMinimum::d26308710f3aff3315cd90ff796c2182
 [INFO ]  Class: math_PSO
 [INFO ]  Class: math_PSOParticlesPool
 [WARNI]      [TypeHint] Skipping unknown type PSO_Particle, PSO not in module list
@@ -3692,6 +3752,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: math_ValueAndWeight
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_Vector
+[INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method Value
 [INFO ]  Class: math_FunctionSetWithDerivatives
@@ -3709,7 +3770,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum: BRepMesh_FactoryError
 [INFO ]  Class: BRepMesh_BaseMeshAlgo
 [INFO ]      Class BRepMesh_BaseMeshAlgo is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BRepMesh_BaseMeshAlgo
+[INFO ]      Constructor skipped for abstract class BRepMesh_BaseMeshAlgo
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_Circle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -3737,7 +3798,7 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_DelabellaMeshAlgoFactory
 [INFO ]  Class: BRepMesh_Delaun
-[INFO ]      skipped method BRepMesh_Delaun::01ec5a505f97e13941bcd1761d0b7062
+[INFO ]      explicitly excluded method BRepMesh_Delaun::01ec5a505f97e13941bcd1761d0b7062
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type IMeshData::Array1OfVertexOfDelaun &, should contain _
 [WARNI]      [TypeHint] Skipping type IMeshData::Array1OfVertexOfDelaun &, should contain _
@@ -3761,16 +3822,16 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepMesh_FaceDiscret
 [INFO ]  Class: BRepMesh_GeomTool
 [INFO ]  Enum: IntFlag
-[INFO ]      skipped method BRepMesh_GeomTool::cb0bf8ba7f44d8ded12ec50ce5f5d107
-[INFO ]      skipped method BRepMesh_GeomTool::e2953d0dde189ac0d48e66845c4ae790
-[INFO ]      skipped method BRepMesh_GeomTool::9efbfbad869a7589f6d4b211dd1b27a2
+[INFO ]      explicitly excluded method BRepMesh_GeomTool::cb0bf8ba7f44d8ded12ec50ce5f5d107
+[INFO ]      explicitly excluded method BRepMesh_GeomTool::e2953d0dde189ac0d48e66845c4ae790
+[INFO ]      explicitly excluded method BRepMesh_GeomTool::9efbfbad869a7589f6d4b211dd1b27a2
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type std::pair<int,, because of trailing :
 [INFO ]  Class: BRepMesh_MeshAlgoFactory
 [INFO ]  Class: BRepMesh_MeshTool
 [INFO ]      Wrap nested class BRepMesh_MeshTool::NodeClassifier
-[INFO ]      skipped method BRepMesh_MeshTool::760134d40993d5cee9949baa047ac26e
-[INFO ]      skipped method BRepMesh_MeshTool::2bf1ba47b6b4651110ea2ee5ab7b8a17
+[INFO ]      explicitly excluded method BRepMesh_MeshTool::760134d40993d5cee9949baa047ac26e
+[INFO ]      explicitly excluded method BRepMesh_MeshTool::2bf1ba47b6b4651110ea2ee5ab7b8a17
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type const IMeshData::MapOfIntegerInteger &, should contain _
 [WARNI]      [TypeHint] Skipping type IMeshData::MapOfIntegerInteger &, should contain _
@@ -3815,19 +3876,19 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepMesh_DelaunayBaseMeshAlgo
 [INFO ]  ## Processing module BRepMeshData
 [INFO ]  Class: BRepMeshData_Curve
-[INFO ]      skipped method BRepMeshData_Curve::e93fed6728af60627a48bef10a547595
-[INFO ]      skipped method BRepMeshData_Curve::5549af2d9fe50dd1f13ee96a376416cc
+[INFO ]      explicitly excluded method BRepMeshData_Curve::e93fed6728af60627a48bef10a547595
+[INFO ]      explicitly excluded method BRepMeshData_Curve::5549af2d9fe50dd1f13ee96a376416cc
 [INFO ]  Class: BRepMeshData_Edge
-[INFO ]      skipped method BRepMeshData_Edge::e8d6738845f91c92210ce790a49e03f3
-[INFO ]      skipped method BRepMeshData_Edge::ff61b2da6dc7f21e13dbd3b2176f4bc2
+[INFO ]      explicitly excluded method BRepMeshData_Edge::e8d6738845f91c92210ce790a49e03f3
+[INFO ]      explicitly excluded method BRepMeshData_Edge::ff61b2da6dc7f21e13dbd3b2176f4bc2
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
 [INFO ]  Class: BRepMeshData_Face
-[INFO ]      skipped method BRepMeshData_Face::fcdc6ed44a3e8b0d569e6091846a0dcb
-[INFO ]      skipped method BRepMeshData_Face::1e5346ee7136cd72652bc15beb720ddd
+[INFO ]      explicitly excluded method BRepMeshData_Face::fcdc6ed44a3e8b0d569e6091846a0dcb
+[INFO ]      explicitly excluded method BRepMeshData_Face::1e5346ee7136cd72652bc15beb720ddd
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IWireHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IWireHandle &, should contain _
 [INFO ]  Class: BRepMeshData_Model
@@ -3836,11 +3897,11 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMeshData_PCurve
-[INFO ]      skipped method BRepMeshData_PCurve::6623a1be7296f459921979d20d7e4966
-[INFO ]      skipped method BRepMeshData_PCurve::dfcf2815ac8f8b9667a47e124ceff867
+[INFO ]      explicitly excluded method BRepMeshData_PCurve::6623a1be7296f459921979d20d7e4966
+[INFO ]      explicitly excluded method BRepMeshData_PCurve::dfcf2815ac8f8b9667a47e124ceff867
 [INFO ]  Class: BRepMeshData_Wire
-[INFO ]      skipped method BRepMeshData_Wire::4f571146ebde146752398a0505c5a621
-[INFO ]      skipped method BRepMeshData_Wire::08c1f1da494b2eb5e3fb1bba52952d49
+[INFO ]      explicitly excluded method BRepMeshData_Wire::4f571146ebde146752398a0505c5a621
+[INFO ]      explicitly excluded method BRepMeshData_Wire::08c1f1da494b2eb5e3fb1bba52952d49
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgePtr &, should contain _
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IEdgePtr &, should contain _
 [INFO ]  ## Processing module IMeshData
@@ -3941,7 +4002,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class IMeshTools_ModelAlgo is abstract, using %nodefaultctor.
 [INFO ]  Class: IMeshTools_ModelBuilder
 [INFO ]      Class IMeshTools_ModelBuilder is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class IMeshTools_ModelBuilder
+[INFO ]      Constructor skipped for abstract class IMeshTools_ModelBuilder
 [INFO ]  Class: IMeshTools_Parameters
 [INFO ]  Class: IMeshTools_ShapeExplorer
 [INFO ]  Class: IMeshTools_ShapeVisitor
@@ -4035,10 +4096,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepOffset_MakeLoops
 [INFO ]  Class: BRepOffset_MakeOffset
-[INFO ]      skipped method BRepOffset_MakeOffset::dcc4d4b1406dedeffd66c2f3bf64aced
+[INFO ]      explicitly excluded method BRepOffset_MakeOffset::dcc4d4b1406dedeffd66c2f3bf64aced
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepOffset_MakeSimpleOffset
-[INFO ]      skipped method BRepOffset_MakeSimpleOffset::8ae77c4ba3718dbe6263278a0014553a
+[INFO ]      explicitly excluded method BRepOffset_MakeSimpleOffset::8ae77c4ba3718dbe6263278a0014553a
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping unknown type BRepOffsetSimple_Status, BRepOffsetSimple not in module list
 [INFO ]  Class: BRepOffset_Offset
@@ -4058,7 +4119,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepOffsetAPI_DraftAngle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepOffsetAPI_FindContigousEdges
-[INFO ]      skipped method BRepOffsetAPI_FindContigousEdges::b4dae8fc9e9992109d200aaac9bd9ada
+[INFO ]      explicitly excluded method BRepOffsetAPI_FindContigousEdges::b4dae8fc9e9992109d200aaac9bd9ada
 [INFO ]  Class: BRepOffsetAPI_MakeDraft
 [INFO ]  Class: BRepOffsetAPI_MakeEvolved
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -4121,9 +4182,9 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepPrimAPI_MakeOneAxis
 [INFO ]      Class BRepPrimAPI_MakeOneAxis is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
-[INFO ]  Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
-[INFO ]  Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
+[INFO ]      Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
+[INFO ]      Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
+[INFO ]      Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
 [INFO ]  Class: BRepPrimAPI_MakeSweep
 [INFO ]      Class BRepPrimAPI_MakeSweep is abstract, using %nodefaultctor.
 [INFO ]  Class: BRepPrimAPI_MakeWedge
@@ -4213,19 +4274,19 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: RWMesh_CafReader
 [INFO ]      Class RWMesh_CafReader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWMesh_CafReader::CafDocumentTools
-[INFO ]  Constructor skipped for abstract class RWMesh_CafReader
+[INFO ]      Constructor skipped for abstract class RWMesh_CafReader
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<TCollection_AsciiString>, seems to be a template
 [INFO ]  Class: RWMesh_CoordinateSystemConverter
 [INFO ]  Class: RWMesh_FaceIterator
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: RWMesh_MaterialMap
 [INFO ]      Class RWMesh_MaterialMap is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class RWMesh_MaterialMap
+[INFO ]      Constructor skipped for abstract class RWMesh_MaterialMap
 [INFO ]  Class: RWMesh_NodeAttributes
 [INFO ]  Class: RWMesh_TriangulationReader
 [INFO ]      Class RWMesh_TriangulationReader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWMesh_TriangulationReader::LoadingStatistic
-[INFO ]  Constructor skipped for abstract class RWMesh_TriangulationReader
+[INFO ]      Constructor skipped for abstract class RWMesh_TriangulationReader
 [INFO ]  Class: RWMesh_TriangulationSource
 [INFO ]      Creating Get and Set methods for method ChangeDegeneratedTriNb
 [INFO ]  ## Processing module RWObj
@@ -4246,7 +4307,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class RWObj_Reader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWObj_Reader::ObjVec3iHasher
 [INFO ]      Wrap nested class RWObj_Reader::VectorOfVertices
-[INFO ]  Constructor skipped for abstract class RWObj_Reader
+[INFO ]      Constructor skipped for abstract class RWObj_Reader
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<TCollection_AsciiString>, seems to be a template
 [INFO ]  Class: RWObj_SubMesh
 [INFO ]  Class: RWObj_CafReader
@@ -4403,8 +4464,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: STEPSelections_AssemblyLink
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPSelections_Counter
-[INFO ]      skipped method STEPSelections_Counter::1c73c20e28ff8bd0725c154996b5dfb5
-[INFO ]      skipped method STEPSelections_Counter::b10f0b9bda70a351d7cb9a64d9120b5b
+[INFO ]      explicitly excluded method STEPSelections_Counter::1c73c20e28ff8bd0725c154996b5dfb5
+[INFO ]      explicitly excluded method STEPSelections_Counter::b10f0b9bda70a351d7cb9a64d9120b5b
 [INFO ]  Class: STEPSelections_SelectAssembly
 [INFO ]  Class: STEPSelections_SelectDerived
 [INFO ]  Class: STEPSelections_SelectFaces
@@ -4788,7 +4849,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: StepFEA_SymmetricTensor23dMember
 [INFO ]  Class: StepFEA_SymmetricTensor42d
 [INFO ]  Class: StepFEA_SymmetricTensor43d
-[INFO ]      skipped method StepFEA_SymmetricTensor43d::572126fcd51e8c5114c308a2f3c96b97
+[INFO ]      explicitly excluded method StepFEA_SymmetricTensor43d::572126fcd51e8c5114c308a2f3c96b97
 [INFO ]  Class: StepFEA_SymmetricTensor43dMember
 [INFO ]  Class: StepFEA_AlignedCurve3dElementCoordinateSystem
 [INFO ]  Class: StepFEA_AlignedSurface3dElementCoordinateSystem
@@ -6290,21 +6351,21 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Aspect_Background
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Aspect_DisplayConnection
-[INFO ]      skipped method Aspect_DisplayConnection::95ed7c9e2f5670c1280d2a20eebd79aa
-[INFO ]      skipped method Aspect_DisplayConnection::887eb2c6a4fb1fe2d833b19c9a4ee2a0
-[INFO ]      skipped method Aspect_DisplayConnection::7c4b332b0f8ff5986ac01fc781b266cf
-[INFO ]      skipped method Aspect_DisplayConnection::6f769b514611a7b7aa159c70a802732d
-[INFO ]      skipped method Aspect_DisplayConnection::b6e654f8fde50b609bb67bca21bf2670
-[INFO ]      skipped method Aspect_DisplayConnection::02e3f7c1bbced89f2b9103f276517cc7
-[INFO ]      skipped method Aspect_DisplayConnection::4b961c75538355a10b716c2c1c96511d
-[INFO ]      skipped method Aspect_DisplayConnection::e2fe6f8adf22e00b915cb1721edc512a
-[INFO ]      skipped method Aspect_DisplayConnection::556c283e32abf1be17f5aa24d1e49f17
-[INFO ]      skipped method Aspect_DisplayConnection::5be9f4e6f0c5b9eb113e330fb7b0ab42
-[INFO ]      skipped method Aspect_DisplayConnection::faf3767d377b1a42121d10b2c30627f8
-[INFO ]      skipped method Aspect_DisplayConnection::1f300d560bba874fc61df782e69c5a74
-[INFO ]      skipped method Aspect_DisplayConnection::cc04b00153967434d93a028a423fd6c9
-[INFO ]      skipped method Aspect_DisplayConnection::88701767771c6813652add2353d013b5
-[INFO ]      skipped method Aspect_DisplayConnection::12c38d0fb9397e192696655e5f3ff39b
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::95ed7c9e2f5670c1280d2a20eebd79aa
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::887eb2c6a4fb1fe2d833b19c9a4ee2a0
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::7c4b332b0f8ff5986ac01fc781b266cf
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::6f769b514611a7b7aa159c70a802732d
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::b6e654f8fde50b609bb67bca21bf2670
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::02e3f7c1bbced89f2b9103f276517cc7
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::4b961c75538355a10b716c2c1c96511d
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::e2fe6f8adf22e00b915cb1721edc512a
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::556c283e32abf1be17f5aa24d1e49f17
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::5be9f4e6f0c5b9eb113e330fb7b0ab42
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::faf3767d377b1a42121d10b2c30627f8
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::1f300d560bba874fc61df782e69c5a74
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::cc04b00153967434d93a028a423fd6c9
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::88701767771c6813652add2353d013b5
+[INFO ]      explicitly excluded method Aspect_DisplayConnection::12c38d0fb9397e192696655e5f3ff39b
 [INFO ]  Class: Aspect_GenId
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Aspect_Grid
@@ -6324,8 +6385,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Aspect_TrackedDevicePose
 [INFO ]  Class: Aspect_Window
 [INFO ]      Class Aspect_Window is abstract, using %nodefaultctor.
-[INFO ]      skipped method Aspect_Window::a936f0d076380de95a4ee9674fbc4aa3
-[INFO ]      skipped method Aspect_Window::4917c328b71fee6e570c6c8c46531c25
+[INFO ]      explicitly excluded method Aspect_Window::a936f0d076380de95a4ee9674fbc4aa3
+[INFO ]      explicitly excluded method Aspect_Window::4917c328b71fee6e570c6c8c46531c25
 [INFO ]  Class: Aspect_WindowInputListener
 [INFO ]      Class Aspect_WindowInputListener is abstract, using %nodefaultctor.
 [WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
@@ -6437,11 +6498,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Graphic3d_BufferRange
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_BvhCStructureSet
-[INFO ]      skipped method Graphic3d_BvhCStructureSet::bead85e176b5335e210332f7b5060f3f
-[INFO ]      skipped method Graphic3d_BvhCStructureSet::eff1c3f2f7c4ca7e9787a5cbdb7dea7f
-[INFO ]      skipped method Graphic3d_BvhCStructureSet::c94bf4fdc3864dca0eb040d227eabf3a
-[INFO ]      skipped method Graphic3d_BvhCStructureSet::ae54be580b423a6eadbe062e0bdb44c2
-[INFO ]      skipped method Graphic3d_BvhCStructureSet::d6a0fc44a1b757a5577cf5a80ee493d0
+[INFO ]      explicitly excluded method Graphic3d_BvhCStructureSet::bead85e176b5335e210332f7b5060f3f
+[INFO ]      explicitly excluded method Graphic3d_BvhCStructureSet::eff1c3f2f7c4ca7e9787a5cbdb7dea7f
+[INFO ]      explicitly excluded method Graphic3d_BvhCStructureSet::c94bf4fdc3864dca0eb040d227eabf3a
+[INFO ]      explicitly excluded method Graphic3d_BvhCStructureSet::ae54be580b423a6eadbe062e0bdb44c2
+[INFO ]      explicitly excluded method Graphic3d_BvhCStructureSet::d6a0fc44a1b757a5577cf5a80ee493d0
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<const, seems to be a template
 [INFO ]  Class: Graphic3d_CLight
 [INFO ]  Class: Graphic3d_CStructure
@@ -6478,7 +6539,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class Graphic3d_DataStructureManager is abstract, using %nodefaultctor.
 [INFO ]  Class: Graphic3d_FrameStats
 [INFO ]      Class Graphic3d_FrameStats is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class Graphic3d_FrameStats
+[INFO ]      Constructor skipped for abstract class Graphic3d_FrameStats
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<Graphic3d_FrameStatsData>, seems to be a template
 [INFO ]      Creating Get and Set methods for method ChangeTimer
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<Graphic3d_FrameStatsData>, seems to be a template
@@ -6488,7 +6549,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Graphic3d_Fresnel
 [INFO ]  Class: Graphic3d_GraduatedTrihedron
 [INFO ]      Wrap nested class Graphic3d_GraduatedTrihedron::AxisAspect
-[INFO ]      skipped method Graphic3d_GraduatedTrihedron::a47aecdc1dcee52c062797d9fccb2aab
+[INFO ]      explicitly excluded method Graphic3d_GraduatedTrihedron::a47aecdc1dcee52c062797d9fccb2aab
 [WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_GraduatedTrihedron::AxisAspect, because of trailing :
@@ -6508,14 +6569,14 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class Graphic3d_GraphicDriverFactory is abstract, using %nodefaultctor.
 [INFO ]  Class: Graphic3d_Group
 [INFO ]      Class Graphic3d_Group is abstract, using %nodefaultctor.
-[INFO ]      skipped method Graphic3d_Group::07f556f2523900a66da942bb10d31612
+[INFO ]      explicitly excluded method Graphic3d_Group::07f556f2523900a66da942bb10d31612
 [INFO ]  Class: Graphic3d_HatchStyle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_Layer
-[INFO ]      skipped method Graphic3d_Layer::76514379e1653dc9f6a778413fbb833f
-[INFO ]      skipped method Graphic3d_Layer::21e3842d70df347156e8904cbbae1655
-[INFO ]      skipped method Graphic3d_Layer::8552ea7b8e24eddd0b6a23b7f194e098
-[INFO ]      skipped method Graphic3d_Layer::0bcddaa70543c373f787e96d84b9791a
+[INFO ]      explicitly excluded method Graphic3d_Layer::76514379e1653dc9f6a778413fbb833f
+[INFO ]      explicitly excluded method Graphic3d_Layer::21e3842d70df347156e8904cbbae1655
+[INFO ]      explicitly excluded method Graphic3d_Layer::8552ea7b8e24eddd0b6a23b7f194e098
+[INFO ]      explicitly excluded method Graphic3d_Layer::0bcddaa70543c373f787e96d84b9791a
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<const, seems to be a template
 [INFO ]  Enum passed by reference: Graphic3d_DisplayPriority &thePriority changed to Graphic3d_DisplayPriority &OutValue
 [INFO ]  Enum passed by reference: Graphic3d_DisplayPriority & thePriority changed to Graphic3d_DisplayPriority &OutValue
@@ -6546,11 +6607,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Graphic3d_ShaderManager
 [INFO ]  Class: Graphic3d_ShaderObject
 [INFO ]      Wrap nested class Graphic3d_ShaderObject::ShaderVariable
-[INFO ]      skipped method Graphic3d_ShaderObject::e558d4a90914c3a4f724c61a93250117
+[INFO ]      explicitly excluded method Graphic3d_ShaderObject::e558d4a90914c3a4f724c61a93250117
 [INFO ]  Class: Graphic3d_ShaderProgram
-[INFO ]      skipped method Graphic3d_ShaderProgram::0fa27aa87c04772799366c0e30d21622
+[INFO ]      explicitly excluded method Graphic3d_ShaderProgram::0fa27aa87c04772799366c0e30d21622
 [INFO ]  Class: Graphic3d_ShaderVariable
-[INFO ]      skipped method Graphic3d_ShaderVariable::1c39ea34e9cd401639711b3354464d76
+[INFO ]      explicitly excluded method Graphic3d_ShaderVariable::1c39ea34e9cd401639711b3354464d76
 [INFO ]  Class: Graphic3d_Structure
 [WARNI]      [TypeHint] Skipping type NCollection_Map<Graphic3d_Structure, seems to be a template
 [INFO ]  Class: Graphic3d_StructureManager
@@ -6575,8 +6636,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Graphic3d_ValidatedCubeMapOrder
 [INFO ]  Class: Graphic3d_ValueInterface
 [INFO ]      Class Graphic3d_ValueInterface is abstract, using %nodefaultctor.
-[INFO ]      skipped method Graphic3d_ValueInterface::cfc5c1a97af7a3cc5892a65704ecfc1b
-[INFO ]      skipped method Graphic3d_ValueInterface::210148b3f7baa85c49d1e298952e5fa6
+[INFO ]      explicitly excluded method Graphic3d_ValueInterface::cfc5c1a97af7a3cc5892a65704ecfc1b
+[INFO ]      explicitly excluded method Graphic3d_ValueInterface::210148b3f7baa85c49d1e298952e5fa6
 [INFO ]  Class: Graphic3d_Vertex
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_ViewAffinity
@@ -6613,7 +6674,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Graphic3d_AttribBuffer
 [INFO ]  Class: Graphic3d_CView
 [INFO ]      Class Graphic3d_CView is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class Graphic3d_CView
+[INFO ]      Constructor skipped for abstract class Graphic3d_CView
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_Layer>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_CView>>, because of trailing :
 [INFO ]  Class: Graphic3d_FrameStatsDataTmp
@@ -6623,15 +6684,15 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Creating Get and Set methods for method ChangeImmediateFrameRateCpu
 [INFO ]      Creating Get and Set methods for method ChangeTimerValue
 [INFO ]  Class: Graphic3d_MediaTextureSet
-[INFO ]      skipped method Graphic3d_MediaTextureSet::6cd54bd353308339998409ead11d6658
+[INFO ]      explicitly excluded method Graphic3d_MediaTextureSet::6cd54bd353308339998409ead11d6658
 [INFO ]  Class: Graphic3d_TextureEnv
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_TextureMap
 [INFO ]  Class: Graphic3d_TransformPersScaledAbove
 [INFO ]  Class: Graphic3d_CubeMap
 [INFO ]      Class Graphic3d_CubeMap is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class Graphic3d_CubeMap
-[INFO ]  Constructor skipped for abstract class Graphic3d_CubeMap
+[INFO ]      Constructor skipped for abstract class Graphic3d_CubeMap
+[INFO ]      Constructor skipped for abstract class Graphic3d_CubeMap
 [INFO ]  Class: Graphic3d_MutableIndexBuffer
 [INFO ]  Class: Graphic3d_Texture1D
 [INFO ]  Class: Graphic3d_Texture2D
@@ -6752,7 +6813,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Creating Get and Set methods for method BuildCurveMode
 [INFO ]  ## Processing module ShapeCustom
 [INFO ]  Class: ShapeCustom
-[INFO ]      skipped method ShapeCustom::58f6fad3a7efa4a0ec2a29b3af2744be
+[INFO ]      explicitly excluded method ShapeCustom::58f6fad3a7efa4a0ec2a29b3af2744be
 [INFO ]  Class: ShapeCustom_Curve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeCustom_Curve2d
@@ -6797,7 +6858,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module ShapeFix
 [INFO ]  Class: ShapeFix
 [INFO ]  Class: ShapeFix_Edge
-[INFO ]      skipped method ShapeFix_Edge::89f59aaf74eb4221c2a98a0e91f389d7
+[INFO ]      explicitly excluded method ShapeFix_Edge::89f59aaf74eb4221c2a98a0e91f389d7
 [INFO ]  Class: ShapeFix_EdgeConnect
 [INFO ]  Class: ShapeFix_EdgeProjAux
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -6977,7 +7038,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: TObj_TXYZ
 [INFO ]  Class: TObj_LabelIterator
 [INFO ]      Class TObj_LabelIterator is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class TObj_LabelIterator
+[INFO ]      Constructor skipped for abstract class TObj_LabelIterator
 [INFO ]  Class: TObj_ModelIterator
 [INFO ]  Class: TObj_Partition
 [INFO ]  Class: TObj_SequenceIterator
@@ -6988,9 +7049,9 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module BRepApprox
 [INFO ]  Class: BRepApprox_Approx
 [INFO ]      Wrap nested class BRepApprox_Approx::Approx_Data
-[INFO ]      skipped method BRepApprox_Approx::feaea2fa9dfb02e45ec734de2587dd81
-[INFO ]      skipped method BRepApprox_Approx::6f6fdc0a69d4cc86951ba71e2faf2a3d
-[INFO ]      skipped method BRepApprox_Approx::c04b01412cba7220c024b5eb4532697f
+[INFO ]      explicitly excluded method BRepApprox_Approx::feaea2fa9dfb02e45ec734de2587dd81
+[INFO ]      explicitly excluded method BRepApprox_Approx::6f6fdc0a69d4cc86951ba71e2faf2a3d
+[INFO ]      explicitly excluded method BRepApprox_Approx::c04b01412cba7220c024b5eb4532697f
 [INFO ]  Class: BRepApprox_ApproxLine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox
@@ -7010,9 +7071,9 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox
-[INFO ]      skipped method BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox
-[INFO ]      skipped method BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::585075c65a8681dedf24240dbb90f7f4
+[INFO ]      explicitly excluded method BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: BRepApprox_TheComputeLineBezierOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepApprox_TheComputeLineOfApprox
@@ -7022,7 +7083,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum passed by reference: IntImp_ConstIsoparametric & BestChoix changed to IntImp_ConstIsoparametric &OutValue
 [INFO ]  Enum passed by reference: IntImp_ConstIsoparametric & BestChoix changed to IntImp_ConstIsoparametric &OutValue
 [INFO ]  Class: BRepApprox_TheImpPrmSvSurfacesOfApprox
-[INFO ]      skipped method BRepApprox_TheImpPrmSvSurfacesOfApprox::b41c1a9755d3e00fb915462d51a8d0c5
+[INFO ]      explicitly excluded method BRepApprox_TheImpPrmSvSurfacesOfApprox::b41c1a9755d3e00fb915462d51a8d0c5
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7053,7 +7114,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Wrap nested class BRepBuilderAPI_FastSewing::FS_Edge
 [INFO ]      Wrap nested class BRepBuilderAPI_FastSewing::NodeInspector
 [INFO ]  Enum: FS_Statuses
-[INFO ]      skipped method BRepBuilderAPI_FastSewing::e4974f7ddc8a36471379d0b8a3bae884
+[INFO ]      explicitly excluded method BRepBuilderAPI_FastSewing::e4974f7ddc8a36471379d0b8a3bae884
 [INFO ]  Class: BRepBuilderAPI_FindPlane
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBuilderAPI_Sewing
@@ -7148,7 +7209,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepExtrema_ProximityDistTool
 [INFO ]      Wrap nested class BRepExtrema_ProximityDistTool::PrjState
 [INFO ]  Enum: ProxPnt_Status
-[INFO ]      skipped method BRepExtrema_ProximityDistTool::8ffab36643583ec67fd4b25052ceca82
+[INFO ]      explicitly excluded method BRepExtrema_ProximityDistTool::8ffab36643583ec67fd4b25052ceca82
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<ProxPnt_Status>, seems to be a template
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
@@ -7164,7 +7225,7 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type BVH_Box<float,, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<int>, seems to be a template
 [INFO ]  Class: BRepExtrema_SelfIntersection
-[INFO ]      skipped method BRepExtrema_SelfIntersection::0c68ae9e4f2a1503208f51fabe6bb919
+[INFO ]      explicitly excluded method BRepExtrema_SelfIntersection::0c68ae9e4f2a1503208f51fabe6bb919
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepGProp
 [INFO ]  Class: BRepGProp
@@ -7178,12 +7239,12 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepGProp_Gauss
 [INFO ]      Wrap nested class BRepGProp_Gauss::Inertia
 [INFO ]  Enum: BRepGProp_GaussType
-[INFO ]      skipped method BRepGProp_Gauss::0b436a0cd5d1cecbfd925edf8effe699
-[INFO ]      skipped method BRepGProp_Gauss::ecd2782453245a649871120f17717e0f
-[INFO ]      skipped method BRepGProp_Gauss::7f331d8f07fa8ef950f758922258105a
-[INFO ]      skipped method BRepGProp_Gauss::145d333643c261deeed4f20e9647a62f
-[INFO ]      skipped method BRepGProp_Gauss::e4eaa65a6492f0da71bac4d9f2fbb05a
-[INFO ]      skipped method BRepGProp_Gauss::550b4ee032a4dcb9e7ad8a24ad8531a9
+[INFO ]      explicitly excluded method BRepGProp_Gauss::0b436a0cd5d1cecbfd925edf8effe699
+[INFO ]      explicitly excluded method BRepGProp_Gauss::ecd2782453245a649871120f17717e0f
+[INFO ]      explicitly excluded method BRepGProp_Gauss::7f331d8f07fa8ef950f758922258105a
+[INFO ]      explicitly excluded method BRepGProp_Gauss::145d333643c261deeed4f20e9647a62f
+[INFO ]      explicitly excluded method BRepGProp_Gauss::e4eaa65a6492f0da71bac4d9f2fbb05a
+[INFO ]      explicitly excluded method BRepGProp_Gauss::550b4ee032a4dcb9e7ad8a24ad8531a9
 [INFO ]  Class: BRepGProp_MeshCinert
 [INFO ]  Class: BRepGProp_Sinert
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7192,7 +7253,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepGProp_Vinert
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepGProp_VinertGK
-[INFO ]      skipped method BRepGProp_VinertGK::7306b1d82cab5a7171093369f23799e8
+[INFO ]      explicitly excluded method BRepGProp_VinertGK::7306b1d82cab5a7171093369f23799e8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepIntCurveSurface
 [INFO ]  Class: BRepIntCurveSurface_Inter
@@ -7203,7 +7264,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum: BRepLib_ShellError
 [INFO ]  Enum: BRepLib_WireError
 [INFO ]  Class: BRepLib
-[INFO ]      skipped method BRepLib::6fc0cf7455bb7e2e39a27fbaeb7b9793
+[INFO ]      explicitly excluded method BRepLib::6fc0cf7455bb7e2e39a27fbaeb7b9793
 [WARNI]      [TypeHint] Skipping type NCollection_List<TopoDS_Shape>, seems to be a template
 [INFO ]  Class: BRepLib_CheckCurveOnSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7213,10 +7274,10 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: BRepLib_FuseEdges
 [INFO ]  Class: BRepLib_PointCloudShape
 [INFO ]      Class BRepLib_PointCloudShape is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class BRepLib_PointCloudShape
+[INFO ]      Constructor skipped for abstract class BRepLib_PointCloudShape
 [INFO ]  Class: BRepLib_ToolTriangulatedShape
 [INFO ]  Class: BRepLib_ValidateEdge
-[INFO ]      skipped method BRepLib_ValidateEdge::e317acb89ec96fb57ad5d8a365a0c932
+[INFO ]      explicitly excluded method BRepLib_ValidateEdge::e317acb89ec96fb57ad5d8a365a0c932
 [INFO ]  Class: BRepLib_MakeShape
 [INFO ]  Class: BRepLib_MakeEdge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7359,8 +7420,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum passed by reference: Aspect_TypeOfLine & aTyp changed to Aspect_TypeOfLine &OutValue
 [INFO ]  Enum passed by reference: Aspect_TypeOfLine & aTyp changed to Aspect_TypeOfLine &OutValue
 [INFO ]  Class: AIS_InteractiveContext
-[INFO ]      skipped method AIS_InteractiveContext::1577ccb6ef0339194a1358b684b5f8f5
-[INFO ]      skipped method AIS_InteractiveContext::13a16fcaa16772fa242d641b664249e2
+[INFO ]      explicitly excluded method AIS_InteractiveContext::1577ccb6ef0339194a1358b684b5f8f5
+[INFO ]      explicitly excluded method AIS_InteractiveContext::13a16fcaa16772fa242d641b664249e2
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Class: AIS_InteractiveObject
 [INFO ]  Class: AIS_LightSourceOwner
@@ -7409,9 +7470,9 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Wrap nested class AIS_Manipulator::Cube
 [INFO ]      Wrap nested class AIS_Manipulator::Sector
 [INFO ]      Wrap nested class AIS_Manipulator::Axis
-[INFO ]      skipped method AIS_Manipulator::841cdb219aa06b5c11138fd5c8a858a8
-[INFO ]      skipped method AIS_Manipulator::4a35ac933128e2da31584f0f5503f474
-[INFO ]      skipped method AIS_Manipulator::ab6bcbd24f4e065826aed35bfe842b35
+[INFO ]      explicitly excluded method AIS_Manipulator::841cdb219aa06b5c11138fd5c8a858a8
+[INFO ]      explicitly excluded method AIS_Manipulator::4a35ac933128e2da31584f0f5503f474
+[INFO ]      explicitly excluded method AIS_Manipulator::ab6bcbd24f4e065826aed35bfe842b35
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type OptionsForAttach, should contain _
 [WARNI]      [TypeHint] Skipping type OptionsForAttach, should contain _
@@ -7447,8 +7508,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: AIS_ColoredShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AIS_TexturedShape
-[INFO ]      skipped method AIS_TexturedShape::da8b45f7210503d28713eb7f20d7b6fe
-[INFO ]      skipped method AIS_TexturedShape::c5a5e150d5029944063bcc114363202e
+[INFO ]      explicitly excluded method AIS_TexturedShape::da8b45f7210503d28713eb7f20d7b6fe
+[INFO ]      explicitly excluded method AIS_TexturedShape::c5a5e150d5029944063bcc114363202e
 [INFO ]  ## Processing module DsgPrs
 [INFO ]  Enum: DsgPrs_ArrowSide
 [INFO ]  ## Processing module Prs3d
@@ -7520,7 +7581,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: PrsDim_Dimension
 [INFO ]      Wrap nested class PrsDim_Dimension::SelectionGeometry
 [INFO ]  Enum: ComputeMode
-[INFO ]      skipped method PrsDim_Dimension::8ab9cd206b10624276640f7c3b737839
+[INFO ]      explicitly excluded method PrsDim_Dimension::8ab9cd206b10624276640f7c3b737839
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
@@ -7586,7 +7647,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Select3D_PointData
 [INFO ]  Class: Select3D_SensitiveBox
-[INFO ]      skipped method Select3D_SensitiveBox::d063d786782f9c4237f2859ea9adc264
+[INFO ]      explicitly excluded method Select3D_SensitiveBox::d063d786782f9c4237f2859ea9adc264
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Select3D_SensitiveCylinder
 [INFO ]  Class: Select3D_SensitiveFace
@@ -7611,7 +7672,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: SelectBasics_SelectingVolumeManager
 [INFO ]      Class SelectBasics_SelectingVolumeManager is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class SelectBasics_SelectingVolumeManager
+[INFO ]      Constructor skipped for abstract class SelectBasics_SelectingVolumeManager
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<NCollection_Vec4<float>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
@@ -7641,16 +7702,16 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<BVHThread>, seems to be a template
 [INFO ]  Class: SelectMgr_BaseIntersector
 [INFO ]      Class SelectMgr_BaseIntersector is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class SelectMgr_BaseIntersector
+[INFO ]      Constructor skipped for abstract class SelectMgr_BaseIntersector
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<SelectMgr_Vec4>, seems to be a template
 [INFO ]  Class: SelectMgr_EntityOwner
-[INFO ]      skipped method SelectMgr_EntityOwner::b6f3cfd280ab60790acb1ec9b227fdbc
+[INFO ]      explicitly excluded method SelectMgr_EntityOwner::b6f3cfd280ab60790acb1ec9b227fdbc
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: SelectMgr_Filter
 [INFO ]      Class SelectMgr_Filter is abstract, using %nodefaultctor.
 [INFO ]  Class: SelectMgr_SelectableObject
 [INFO ]      Class SelectMgr_SelectableObject is abstract, using %nodefaultctor.
-[INFO ]      skipped method SelectMgr_SelectableObject::443f93b07a9907ef337840cc8b4ae9ed
+[INFO ]      explicitly excluded method SelectMgr_SelectableObject::443f93b07a9907ef337840cc8b4ae9ed
 [INFO ]  Class: SelectMgr_SelectableObjectSet
 [INFO ]      Wrap nested class SelectMgr_SelectableObjectSet::Iterator
 [INFO ]  Enum: BVHSubset
@@ -7659,15 +7720,15 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
 [INFO ]  Class: SelectMgr_SelectingVolumeManager
-[INFO ]      skipped method SelectMgr_SelectingVolumeManager::8fea4d782109be39039e6429b87f144f
+[INFO ]      explicitly excluded method SelectMgr_SelectingVolumeManager::8fea4d782109be39039e6429b87f144f
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<SelectMgr_Vec4>, seems to be a template
 [INFO ]  Class: SelectMgr_Selection
 [WARNI]      [TypeHint] Skip type NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
 [INFO ]  Class: SelectMgr_SelectionImageFiller
 [INFO ]      Class SelectMgr_SelectionImageFiller is abstract, using %nodefaultctor.
-[INFO ]      skipped method SelectMgr_SelectionImageFiller::9a462c89538a7db8180731a96de00638
-[INFO ]  Constructor skipped for abstract class SelectMgr_SelectionImageFiller
+[INFO ]      explicitly excluded method SelectMgr_SelectionImageFiller::9a462c89538a7db8180731a96de00638
+[INFO ]      Constructor skipped for abstract class SelectMgr_SelectionImageFiller
 [INFO ]  Class: SelectMgr_SelectionManager
 [INFO ]  Class: SelectMgr_SensitiveEntity
 [INFO ]  Class: SelectMgr_SortCriterion
@@ -7889,7 +7950,7 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: VrmlData_Node
 [INFO ]      Class VrmlData_Node is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class VrmlData_Node
+[INFO ]      Constructor skipped for abstract class VrmlData_Node
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Enum passed by reference: VrmlData_ErrorStatus &outStat changed to VrmlData_ErrorStatus &OutValue
 [INFO ]  Enum passed by reference: VrmlData_ErrorStatus & outStat changed to VrmlData_ErrorStatus &OutValue
@@ -7897,6 +7958,8 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type long &, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_List<TCollection_AsciiString>, seems to be a template
 [INFO ]  Class: VrmlData_Scene
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] Skipping type Iterator, should contain _
@@ -7911,8 +7974,8 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Class: VrmlData_Geometry
 [INFO ]      Class VrmlData_Geometry is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class VrmlData_Geometry
-[INFO ]  Constructor skipped for abstract class VrmlData_Geometry
+[INFO ]      Constructor skipped for abstract class VrmlData_Geometry
+[INFO ]      Constructor skipped for abstract class VrmlData_Geometry
 [INFO ]  Class: VrmlData_Group
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type Iterator, should contain _
@@ -7955,7 +8018,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: VrmlData_Sphere
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: VrmlData_IndexedFaceSet
-[INFO ]      skipped method VrmlData_IndexedFaceSet::fc9e771a2b80764b027c98058d407406
+[INFO ]      explicitly excluded method VrmlData_IndexedFaceSet::fc9e771a2b80764b027c98058d407406
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
@@ -8082,12 +8145,12 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: DE_ConfigurationNode
 [INFO ]      Class DE_ConfigurationNode is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class DE_ConfigurationNode::DE_SectionGlobal
-[INFO ]  Constructor skipped for abstract class DE_ConfigurationNode
-[INFO ]  Constructor skipped for abstract class DE_ConfigurationNode
+[INFO ]      Constructor skipped for abstract class DE_ConfigurationNode
+[INFO ]      Constructor skipped for abstract class DE_ConfigurationNode
 [INFO ]  Class: DE_Provider
 [INFO ]      Class DE_Provider is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class DE_Provider
-[INFO ]  Constructor skipped for abstract class DE_Provider
+[INFO ]      Constructor skipped for abstract class DE_Provider
+[INFO ]      Constructor skipped for abstract class DE_Provider
 [INFO ]  Class: DE_Wrapper
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKXDECascade ===
@@ -8214,7 +8277,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class IFSelect_Activator is abstract, using %nodefaultctor.
 [INFO ]  Class: IFSelect_AppliedModifiers
 [INFO ]  Class: IFSelect_ContextModif
-[INFO ]      skipped method IFSelect_ContextModif::96f59d0b51cfcc113410b586ef3795ea
+[INFO ]      explicitly excluded method IFSelect_ContextModif::96f59d0b51cfcc113410b586ef3795ea
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IFSelect_ContextWrite
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -8222,7 +8285,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Class IFSelect_Dispatch is abstract, using %nodefaultctor.
 [WARNI]      [TypeHint] Skipping unknown type IFGraph_SubPartsIterator, IFGraph not in module list
 [INFO ]  Class: IFSelect_EditForm
-[INFO ]      skipped method IFSelect_EditForm::083e9709e17242d3748947f37b028e11
+[INFO ]      explicitly excluded method IFSelect_EditForm::083e9709e17242d3748947f37b028e11
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method EditKeepStatus
 [INFO ]  Class: IFSelect_Editor
@@ -8231,7 +8294,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: IFSelect_GeneralModifier
 [INFO ]      Class IFSelect_GeneralModifier is abstract, using %nodefaultctor.
 [INFO ]  Class: IFSelect_IntParam
-[INFO ]      skipped method IFSelect_IntParam::66743afd88205241163450e098ddff13
+[INFO ]      explicitly excluded method IFSelect_IntParam::66743afd88205241163450e098ddff13
 [INFO ]  Class: IFSelect_ListEditor
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IFSelect_ModelCopier
@@ -8431,7 +8494,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: MoniTool_ElemHasher
 [INFO ]  Class: MoniTool_Element
 [INFO ]      Class MoniTool_Element is abstract, using %nodefaultctor.
-[INFO ]  Constructor skipped for abstract class MoniTool_Element
+[INFO ]      Constructor skipped for abstract class MoniTool_Element
 [INFO ]  Class: MoniTool_IntVal
 [INFO ]      Creating Get and Set methods for method CValue
 [INFO ]  Class: MoniTool_MTHasher
@@ -8485,11 +8548,11 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: StepData_StepDumper
 [INFO ]  Class: StepData_StepModel
 [INFO ]  Class: StepData_StepReaderData
-[INFO ]      skipped method StepData_StepReaderData::41fd597fd62bc7c1b9e899370af441a4
-[INFO ]      skipped method StepData_StepReaderData::d8738907488f974418ada15c126d1326
-[INFO ]      skipped method StepData_StepReaderData::9ee478a6a8f699d46a16542ed3340358
-[INFO ]      skipped method StepData_StepReaderData::d5108ae37fc0a61378cfb5486ed96430
-[INFO ]      skipped method StepData_StepReaderData::a9267536a7d7cf3334ab9ff733d63ca0
+[INFO ]      explicitly excluded method StepData_StepReaderData::41fd597fd62bc7c1b9e899370af441a4
+[INFO ]      explicitly excluded method StepData_StepReaderData::d8738907488f974418ada15c126d1326
+[INFO ]      explicitly excluded method StepData_StepReaderData::9ee478a6a8f699d46a16542ed3340358
+[INFO ]      explicitly excluded method StepData_StepReaderData::d5108ae37fc0a61378cfb5486ed96430
+[INFO ]      explicitly excluded method StepData_StepReaderData::a9267536a7d7cf3334ab9ff733d63ca0
 [INFO ]  Enum passed by reference: StepData_Logical &flag changed to StepData_Logical &OutValue
 [INFO ]  Enum passed by reference: StepData_Logical & flag changed to StepData_Logical &OutValue
 [INFO ]  Enum passed by reference: StepData_Logical & flag changed to StepData_Logical &OutValue
@@ -8566,7 +8629,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Found HSEQUENCE definitionTransferBRep_HSequenceOfTransferResultInfo: TransferBRep_SequenceOfTransferResultInfo
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: TransferBRep
-[INFO ]      skipped method TransferBRep::ac74a29e16eb22df08dfa425a4da450d
+[INFO ]      explicitly excluded method TransferBRep::ac74a29e16eb22df08dfa425a4da450d
 [INFO ]  Class: TransferBRep_BinderOfShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TransferBRep_OrientedShapeMapper
@@ -8685,7 +8748,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: XmlMFunction_ScopeDriver
 [INFO ]  ## Processing module XmlObjMgt
 [INFO ]  Class: XmlObjMgt
-[INFO ]      skipped method XmlObjMgt::d90d1ac036196cdb858a419d79e08e97
+[INFO ]      explicitly excluded method XmlObjMgt::d90d1ac036196cdb858a419d79e08e97
 [INFO ]  Class: XmlObjMgt_Array1
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: XmlObjMgt_GP
@@ -8735,18 +8798,18 @@ date : 2023-10-13 09:21:36.932126
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: Message
-[INFO ]      skipped method Message::9ff413f64c870dee08bffe7de4b2c1a9
-[INFO ]      skipped method Message::a544d91e42b84397477d81040a97c9c2
-[INFO ]      skipped method Message::4384ff12aa3e4b53a42f7857b418015c
-[INFO ]      skipped method Message::bfbfc4e0ed4a60879a7cec995a4071cb
-[INFO ]      skipped method Message::6440d23948c40f1edce18dd1fb0ab853
-[INFO ]      skipped method Message::4cb8a25bf348e408baaf298cde85f2b3
-[INFO ]      skipped method Message::54064ce4424caa65c573f8301bf20d4b
-[INFO ]      skipped method Message::5b94d491f83fd3b8cd4b4aaf7e1633ed
-[INFO ]      skipped method Message::4907b6431f9b25e3334ce8916bf4bbc0
-[INFO ]      skipped method Message::f2f68aa914e73023c50f8d618b805622
-[INFO ]      skipped method Message::b4c5e31bbbd72de8df1b717c1bc18993
-[INFO ]      skipped method Message::44197bb01ba9bb24db35f44ba14a544e
+[INFO ]      explicitly excluded method Message::9ff413f64c870dee08bffe7de4b2c1a9
+[INFO ]      explicitly excluded method Message::a544d91e42b84397477d81040a97c9c2
+[INFO ]      explicitly excluded method Message::4384ff12aa3e4b53a42f7857b418015c
+[INFO ]      explicitly excluded method Message::bfbfc4e0ed4a60879a7cec995a4071cb
+[INFO ]      explicitly excluded method Message::6440d23948c40f1edce18dd1fb0ab853
+[INFO ]      explicitly excluded method Message::4cb8a25bf348e408baaf298cde85f2b3
+[INFO ]      explicitly excluded method Message::54064ce4424caa65c573f8301bf20d4b
+[INFO ]      explicitly excluded method Message::5b94d491f83fd3b8cd4b4aaf7e1633ed
+[INFO ]      explicitly excluded method Message::4907b6431f9b25e3334ce8916bf4bbc0
+[INFO ]      explicitly excluded method Message::f2f68aa914e73023c50f8d618b805622
+[INFO ]      explicitly excluded method Message::b4c5e31bbbd72de8df1b717c1bc18993
+[INFO ]      explicitly excluded method Message::44197bb01ba9bb24db35f44ba14a544e
 [INFO ]  Enum passed by reference: Message_MetricType &theType changed to Message_MetricType &OutValue
 [INFO ]  Enum passed by reference: Message_MetricType & theType changed to Message_MetricType &OutValue
 [INFO ]  Enum passed by reference: Message_MetricType & theType changed to Message_MetricType &OutValue
@@ -8764,24 +8827,31 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: Message_Level
 [INFO ]  Class: Message_Messenger
 [INFO ]      Wrap nested class Message_Messenger::StreamBuffer
-[INFO ]      skipped method Message_Messenger::5c8e39deb63e14b2d5b4847968a3b03a
-[INFO ]      skipped method Message_Messenger::65cb67cadfceeb80ce0d8ffb6331e063
-[INFO ]      skipped method Message_Messenger::9467ee2f2ea9a4497a57239f3f232d56
-[INFO ]      skipped method Message_Messenger::f333abb3573444e73fdb363d36c7cecd
-[INFO ]      skipped method Message_Messenger::82bd06e8b35317e056fa200019c401db
-[INFO ]      skipped method Message_Messenger::fd62a3b8aed5c2e8de9f416337610975
-[INFO ]      skipped method Message_Messenger::62496df1c9b95b524784e1d511cee522
-[INFO ]      skipped method Message_Messenger::6ba611e717f6bba37ccbd8e8c1cbbb5e
-[INFO ]      skipped method Message_Messenger::27c131da0fe8da31d40af80df8b49510
-[INFO ]      skipped method Message_Messenger::c4bf35d0860d1c1aeaa233da84ae84db
-[INFO ]      skipped method Message_Messenger::0bba17b8915d3f8cc42fb8347435b383
-[INFO ]      skipped method Message_Messenger::8ba17547d6bc4aeb0fdce0ebd125b80f
-[INFO ]      skipped method Message_Messenger::89a9ada97d0dad9ed440ea51f92090b5
-[INFO ]      skipped method Message_Messenger::7588da6819e24e2f0a53c05e1f2e4bad
-[INFO ]      skipped method Message_Messenger::8012e5824d4ac3ec93f78ee581c893be
-[INFO ]      skipped method Message_Messenger::064b08bf95b61cb6e5d4da1b6d62f7fd
+[INFO ]      explicitly excluded method Message_Messenger::5c8e39deb63e14b2d5b4847968a3b03a
+[INFO ]      explicitly excluded method Message_Messenger::65cb67cadfceeb80ce0d8ffb6331e063
+[INFO ]      explicitly excluded method Message_Messenger::9467ee2f2ea9a4497a57239f3f232d56
+[INFO ]      explicitly excluded method Message_Messenger::f333abb3573444e73fdb363d36c7cecd
+[INFO ]      explicitly excluded method Message_Messenger::82bd06e8b35317e056fa200019c401db
+[INFO ]      explicitly excluded method Message_Messenger::fd62a3b8aed5c2e8de9f416337610975
+[INFO ]      explicitly excluded method Message_Messenger::62496df1c9b95b524784e1d511cee522
+[INFO ]      explicitly excluded method Message_Messenger::6ba611e717f6bba37ccbd8e8c1cbbb5e
+[INFO ]      explicitly excluded method Message_Messenger::27c131da0fe8da31d40af80df8b49510
+[INFO ]      explicitly excluded method Message_Messenger::c4bf35d0860d1c1aeaa233da84ae84db
+[INFO ]      explicitly excluded method Message_Messenger::0bba17b8915d3f8cc42fb8347435b383
+[INFO ]      explicitly excluded method Message_Messenger::8ba17547d6bc4aeb0fdce0ebd125b80f
+[INFO ]      explicitly excluded method Message_Messenger::89a9ada97d0dad9ed440ea51f92090b5
+[INFO ]      explicitly excluded method Message_Messenger::7588da6819e24e2f0a53c05e1f2e4bad
+[INFO ]      explicitly excluded method Message_Messenger::8012e5824d4ac3ec93f78ee581c893be
+[INFO ]      explicitly excluded method Message_Messenger::064b08bf95b61cb6e5d4da1b6d62f7fd
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Message_Msg
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Message_MsgFile
 [INFO ]  Class: Message_Printer
@@ -8830,17 +8900,21 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Enum: Quantity_NameOfColor
 [INFO ]  Enum: Quantity_TypeOfColor
 [INFO ]  Class: Quantity_Color
+[INFO ]      operatorconstNCollection_Vec3<float>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: Quantity_NameOfColor &theColor changed to Quantity_NameOfColor &OutValue
 [INFO ]  Enum passed by reference: Quantity_NameOfColor & theColor changed to Quantity_NameOfColor &OutValue
 [INFO ]  Enum passed by reference: Quantity_NameOfColor & theColor changed to Quantity_NameOfColor &OutValue
 [INFO ]  Class: Quantity_ColorHasher
 [INFO ]  Class: Quantity_ColorRGBA
+[INFO ]      operatorconstNCollection_Vec4<float>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Quantity_ColorRGBAHasher
 [INFO ]  Class: Quantity_Date
+[INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Quantity_Period
+[INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Resource
 [INFO ]  Enum: Resource_FormatType
@@ -8851,20 +8925,20 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module Standard
 [INFO ]  Enum: Standard_HandlerStatus
 [INFO ]  Class: Standard
-[INFO ]      skipped method Standard::c08bde37db97ce4a32e3da69499d7b90
-[INFO ]      skipped method Standard::8b3c74dce6128034d5d885320f05ce8a
-[INFO ]      skipped method Standard::b29cd18b024c2dcaa2a51ddf56e6359c
-[INFO ]      skipped method Standard::382687142ca6751e11361bcd57352cf6
+[INFO ]      explicitly excluded method Standard::c08bde37db97ce4a32e3da69499d7b90
+[INFO ]      explicitly excluded method Standard::8b3c74dce6128034d5d885320f05ce8a
+[INFO ]      explicitly excluded method Standard::b29cd18b024c2dcaa2a51ddf56e6359c
+[INFO ]      explicitly excluded method Standard::382687142ca6751e11361bcd57352cf6
 [INFO ]  Class: Standard_ArrayStreamBuffer
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping type virtual std::streamsize, should contain _
 [WARNI]      [TypeHint] Skipping type std::streamsize, should contain _
 [INFO ]  Class: Standard_Condition
-[INFO ]      skipped method Standard_Condition::3d6aeea9cf734fccbb0537336d54c48e
+[INFO ]      explicitly excluded method Standard_Condition::3d6aeea9cf734fccbb0537336d54c48e
 [INFO ]  Class: Standard_ErrorHandler
 [INFO ]      Wrap nested class Standard_ErrorHandler::Callback
-[INFO ]      skipped method Standard_ErrorHandler::ef042789fa8460b413c73405dcff195e
+[INFO ]      explicitly excluded method Standard_ErrorHandler::ef042789fa8460b413c73405dcff195e
 [INFO ]  Class: Standard_GUID
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Standard_MMgrRoot
@@ -8878,7 +8952,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]      Wrap nested class Standard_Failure::StringRef
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Standard_MMgrOpt
-[INFO ]      skipped method Standard_MMgrOpt::32213e26879b7b9d5ec9e1af79f3f5b8
+[INFO ]      explicitly excluded method Standard_MMgrOpt::32213e26879b7b9d5ec9e1af79f3f5b8
 [INFO ]  Class: Standard_MMgrRaw
 [INFO ]  Class: Standard_MMgrTBBalloc
 [INFO ]  Class: Standard_OutOfMemory
@@ -8973,6 +9047,7 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: TColStd_PackedMapOfInteger
 [INFO ]      Wrap nested class TColStd_PackedMapOfInteger::TColStd_intMapNode
 [INFO ]      Wrap nested class TColStd_PackedMapOfInteger::Iterator
+[INFO ]      operator<= skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
@@ -8993,9 +9068,15 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  ## Processing module TCollection
 [INFO ]  Class: TCollection
 [INFO ]  Class: TCollection_AsciiString
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TCollection_ExtendedString
-[INFO ]      skipped method TCollection_ExtendedString::e5ff9f94dec233d371e2d6eeef7b39cf
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<< skipped because invalid name
+[INFO ]      explicitly excluded method TCollection_ExtendedString::e5ff9f94dec233d371e2d6eeef7b39cf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TCollection_HAsciiString
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -9049,8 +9130,8 @@ date : 2023-10-13 09:21:36.932126
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.21s
+SWIG interface file generation completed in 17.46s
 #################################################
 
 [INFO ]  Number of classes: 4756
-[INFO ]  Number of methods: 47502
+[INFO ]  Number of methods: 47532

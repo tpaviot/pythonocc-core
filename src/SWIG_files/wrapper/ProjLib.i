@@ -1218,6 +1218,19 @@ Set the parameter, which defines 3d tolerance of approximation.
 ") SetTol3d;
 		void SetTol3d(const Standard_Real theTol3d);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor2d_Curve2d>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
+
 		/****************** Trim ******************/
 		/**** md5 signature: 8e64093bc793cc6590b82d43c4a17978 ****/
 		%feature("compactdefaultargs") Trim;
@@ -2490,6 +2503,19 @@ Returns the parametric resolution corresponding to the real space resolution <r3
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
 		/****************** Trim ******************/
 		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
@@ -3208,6 +3234,19 @@ Description
 Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. if themaxsegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor2d_Curve2d>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 		/****************** Trim ******************/
 		/**** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ****/

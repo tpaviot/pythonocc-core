@@ -1053,6 +1053,19 @@ Returns the parametric resolution corresponding to the real space resolution <r3
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
 		/****************** Trim ******************/
 		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;

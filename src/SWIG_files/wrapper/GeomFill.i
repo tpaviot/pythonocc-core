@@ -6311,6 +6311,19 @@ No available documentation.
 ") SetRatio;
 		void SetRatio(const Standard_Real Ratio);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
 		/****************** Value ******************/
 		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
 		%feature("compactdefaultargs") Value;

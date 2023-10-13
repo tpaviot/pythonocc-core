@@ -491,6 +491,19 @@ Returns the parametric resolution corresponding to the real space resolution <r3
 ") Resolution;
 		virtual Standard_Real Resolution(const Standard_Real R3d);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: b866918647453effb47966d082097526 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor2d_Curve2d>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
+
 		/****************** Trim ******************/
 		/**** md5 signature: aa66325f9b552366d3dd9f832a9cb16d ****/
 		%feature("compactdefaultargs") Trim;
@@ -1006,6 +1019,19 @@ Description
 No available documentation.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor2d_Curve2d>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 		/****************** Trim ******************/
 		/**** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ****/
@@ -1616,6 +1642,19 @@ Description
 Returns the parametric resolution corresponding to the real space resolution <r3d>.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor2d_Curve2d>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 		/****************** Trim ******************/
 		/**** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ****/

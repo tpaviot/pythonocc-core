@@ -197,6 +197,19 @@ Calculates n-th derivatives of curve, where n = thederu. raises if n < 1.
 ") DN;
 		virtual gp_Vec DN(const Standard_Real theU, const Standard_Integer theDerU);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: fe124b26167bed39ff3eec7e218a1392 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEvaluator_Curve>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		virtual opencascade::handle<GeomEvaluator_Curve> ShallowCopy();
+
 };
 
 
@@ -330,6 +343,19 @@ Description
 Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises if n < 1 or thederu < 0 or thederv < 0.
 ") DN;
 		virtual gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: ac67d92775466f864dab9cc14e400cb7 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEvaluator_Surface>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		virtual opencascade::handle<GeomEvaluator_Surface> ShallowCopy();
 
 };
 
@@ -524,6 +550,19 @@ Change the offset value.
 ") SetOffsetValue;
 		void SetOffsetValue(Standard_Real theOffset);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 3f4f479803591b29cc1a58914798e6e1 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEvaluator_Curve>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		virtual opencascade::handle<GeomEvaluator_Curve> ShallowCopy();
+
 };
 
 
@@ -715,6 +754,19 @@ Change the offset value.
 ") SetOffsetValue;
 		void SetOffsetValue(Standard_Real theOffset);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: fbd80b36cea42259d24868636d99709b ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEvaluator_Surface>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		opencascade::handle<GeomEvaluator_Surface> ShallowCopy();
+
 };
 
 
@@ -903,6 +955,19 @@ Description
 /changes the direction of extrusion.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDirection);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: fbd80b36cea42259d24868636d99709b ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEvaluator_Surface>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		opencascade::handle<GeomEvaluator_Surface> ShallowCopy();
 
 };
 
@@ -1130,6 +1195,19 @@ Description
 Change location of the axis of revolution.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theLocation);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: fbd80b36cea42259d24868636d99709b ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEvaluator_Surface>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		opencascade::handle<GeomEvaluator_Surface> ShallowCopy();
 
 };
 
