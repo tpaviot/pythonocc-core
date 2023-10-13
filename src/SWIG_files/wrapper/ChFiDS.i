@@ -1355,6 +1355,19 @@ No available documentation.
 ") SetPeriodic;
 		void SetPeriodic(const Standard_Boolean I);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
 		/****************** Trim ******************/
 		/**** md5 signature: 974fe27e2868c6786b8c68ef515f97f8 ****/
 		%feature("compactdefaultargs") Trim;

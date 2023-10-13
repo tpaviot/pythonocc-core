@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepadaptor.html"
 #include<TColStd_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
+#include<Adaptor2d_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
@@ -71,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepadaptor.html"
 %import TColStd.i
 %import GeomAdaptor.i
 %import Geom2dAdaptor.i
+%import Adaptor2d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -643,6 +645,19 @@ Description
 Returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****************** Trim ******************/
 		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
@@ -1279,6 +1294,19 @@ Returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
 		/****************** Tolerance ******************/
 		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
 		%feature("compactdefaultargs") Tolerance;
@@ -1435,6 +1463,19 @@ Description
 Initialize with the pcurve of <e> on <f>.
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E, const TopoDS_Face & F);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor2d_Curve2d>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 };
 
@@ -2006,6 +2047,19 @@ Description
 No available documentation.
 ") Plane;
 		gp_Pln Plane();
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
 		/****************** Sphere ******************/
 		/**** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ****/

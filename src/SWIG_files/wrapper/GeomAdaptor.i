@@ -664,6 +664,19 @@ Returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
 		/****************** Trim ******************/
 		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
 		%feature("compactdefaultargs") Trim;
@@ -1292,6 +1305,19 @@ Description
 No available documentation.
 ") Plane;
 		gp_Pln Plane();
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
 		/****************** Sphere ******************/
 		/**** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ****/
@@ -1941,6 +1967,19 @@ No available documentation.
 ") Plane;
 		gp_Pln Plane();
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
+
 		/****************** Sphere ******************/
 		/**** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ****/
 		%feature("compactdefaultargs") Sphere;
@@ -2556,6 +2595,19 @@ Description
 No available documentation.
 ") Plane;
 		gp_Pln Plane();
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
 		/****************** Sphere ******************/
 		/**** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ****/

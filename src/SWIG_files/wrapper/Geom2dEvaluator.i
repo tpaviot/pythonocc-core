@@ -356,6 +356,19 @@ Calculates n-th derivatives of curve, where n = thederu. raises if n < 1.
 ") DN;
 		virtual gp_Vec2d DN(const Standard_Real theU, const Standard_Integer theDerU);
 
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 825da69d96edfccc6885dc4769e6c133 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom2dEvaluator_Curve>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		virtual opencascade::handle<Geom2dEvaluator_Curve> ShallowCopy();
+
 };
 
 
@@ -528,6 +541,19 @@ Description
 Change the offset value.
 ") SetOffsetValue;
 		void SetOffsetValue(Standard_Real theOffset);
+
+		/****************** ShallowCopy ******************/
+		/**** md5 signature: 47c85d6b9554037d49c1048fbd4345b2 ****/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom2dEvaluator_Curve>
+
+Description
+-----------
+No available documentation.
+") ShallowCopy;
+		opencascade::handle<Geom2dEvaluator_Curve> ShallowCopy();
 
 };
 
