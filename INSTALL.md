@@ -58,6 +58,7 @@ $ cmake -DINSTALL_DIR=/opt/build/occt772 -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF 
 then
 ```bash
 $ make -j4
+$ sudo make install
 ```
 and finally add the libraries to the system
 ```bash
