@@ -10,13 +10,13 @@ from OCC.Core.Bnd import *
 from OCC.Core.OSD import *
 from OCC.Core.TShort import *
 
-#the following typedef cannot be wrapped as is
-Poly_BaseIteratorOfCoherentLink = NewType('Poly_BaseIteratorOfCoherentLink', Any)
-#the following typedef cannot be wrapped as is
-Poly_BaseIteratorOfCoherentNode = NewType('Poly_BaseIteratorOfCoherentNode', Any)
-#the following typedef cannot be wrapped as is
-Poly_BaseIteratorOfCoherentTriangle = NewType('Poly_BaseIteratorOfCoherentTriangle', Any)
-Poly_MeshPurpose = NewType('Poly_MeshPurpose', int)
+# the following typedef cannot be wrapped as is
+Poly_BaseIteratorOfCoherentLink = NewType("Poly_BaseIteratorOfCoherentLink", Any)
+# the following typedef cannot be wrapped as is
+Poly_BaseIteratorOfCoherentNode = NewType("Poly_BaseIteratorOfCoherentNode", Any)
+# the following typedef cannot be wrapped as is
+Poly_BaseIteratorOfCoherentTriangle = NewType("Poly_BaseIteratorOfCoherentTriangle", Any)
+Poly_MeshPurpose = NewType("Poly_MeshPurpose", int)
 
 class Poly_Array1OfTriangle:
     @overload

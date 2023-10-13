@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLXCAFDRIVERSDOCSTRING
 "XmlXCAFDrivers module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xmlxcafdrivers.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_xmlxcafdrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLXCAFDRIVERSDOCSTRING) XmlXCAFDrivers
 
@@ -97,30 +97,36 @@ class XmlXCAFDrivers {
 		/****************** DefineFormat ******************/
 		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
-		%feature("autodoc", "Defines format 'xmlxcaf' and registers its read and write drivers in the specified application.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theApp: TDocStd_Application
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines format 'xmlxcaf' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
 		/**** md5 signature: 3da280e6bb218a5037c98dc98a4e3815 ****/
 		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "Depending from the id, returns a list of storage or retrieval attribute drivers. used for plugin. //! standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 transient-persistent 47b0b827-d931-11d1-b5da-00a0c9064368 persistent-transient //! xcaf data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b transient-persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b persistent-transient ed8793fa-3142-11d4-b9b5-0060b0ee281b xcafschema.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aGUID: Standard_GUID
 
-Returns
+Return
 -------
 opencascade::handle<Standard_Transient>
+
+Description
+-----------
+Depending from the id, returns a list of storage or retrieval attribute drivers. used for plugin. //! standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 transient-persistent 47b0b827-d931-11d1-b5da-00a0c9064368 persistent-transient //! xcaf data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b transient-persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b persistent-transient ed8793fa-3142-11d4-b9b5-0060b0ee281b xcafschema.
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & aGUID);
 
@@ -141,26 +147,31 @@ class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetriev
 		/****************** XmlXCAFDrivers_DocumentRetrievalDriver ******************/
 		/**** md5 signature: 9beb6699d1b2c6ff4d2c46e0f7ad385b ****/
 		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") XmlXCAFDrivers_DocumentRetrievalDriver;
 		 XmlXCAFDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMsgDriver: Message_Messenger
 
-Returns
+Return
 -------
 opencascade::handle<XmlMDF_ADriverTable>
+
+Description
+-----------
+No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
@@ -183,30 +194,36 @@ class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDr
 		/****************** XmlXCAFDrivers_DocumentStorageDriver ******************/
 		/**** md5 signature: 71d96a93a79deba990e4fea2cd40f4ed ****/
 		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentStorageDriver;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCopyright: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") XmlXCAFDrivers_DocumentStorageDriver;
 		 XmlXCAFDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMsgDriver: Message_Messenger
 
-Returns
+Return
 -------
 opencascade::handle<XmlMDF_ADriverTable>
+
+Description
+-----------
+No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 

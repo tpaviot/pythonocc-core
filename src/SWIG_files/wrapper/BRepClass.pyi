@@ -10,6 +10,7 @@ from OCC.Core.gp import *
 from OCC.Core.IntRes2d import *
 from OCC.Core.Geom2dInt import *
 
+
 class BRepClass_Edge:
     @overload
     def __init__(self) -> None: ...
@@ -26,9 +27,7 @@ class BRepClass_Edge:
     def MaxTolerance(self) -> float: ...
     def NextEdge(self) -> TopoDS_Edge: ...
     def SetMaxTolerance(self, theValue: float) -> None: ...
-    def SetNextEdge(
-        self, theMapVE: TopTools_IndexedDataMapOfShapeListOfShape
-    ) -> None: ...
+    def SetNextEdge(self, theMapVE: TopTools_IndexedDataMapOfShapeListOfShape) -> None: ...
     def SetUseBndBox(self, theValue: bool) -> None: ...
     def UseBndBox(self) -> bool: ...
 
@@ -87,9 +86,7 @@ class BRepClass_FacePassiveClassifier:
 
 class BRepClass_Intersector(Geom2dInt_IntConicCurveOfGInter):
     def __init__(self) -> None: ...
-    def LocalGeometry(
-        self, E: BRepClass_Edge, U: float, T: gp_Dir2d, N: gp_Dir2d
-    ) -> float: ...
+    def LocalGeometry(self, E: BRepClass_Edge, U: float, T: gp_Dir2d, N: gp_Dir2d) -> float: ...
     def Perform(self, L: gp_Lin2d, P: float, Tol: float, E: BRepClass_Edge) -> None: ...
 
 class BRepClass_FaceClassifier(BRepClass_FClassifier):
@@ -98,42 +95,15 @@ class BRepClass_FaceClassifier(BRepClass_FClassifier):
     @overload
     def __init__(self, F: BRepClass_FaceExplorer, P: gp_Pnt2d, Tol: float) -> None: ...
     @overload
-    def __init__(
-        self,
-        theF: TopoDS_Face,
-        theP: gp_Pnt2d,
-        theTol: float,
-        theUseBndBox: Optional[bool] = False,
-        theGapCheckTol: Optional[float] = 0.1,
-    ) -> None: ...
+    def __init__(self, theF: TopoDS_Face, theP: gp_Pnt2d, theTol: float, theUseBndBox: Optional[bool] = False, theGapCheckTol: Optional[float] = 0.1) -> None: ...
     @overload
-    def __init__(
-        self,
-        theF: TopoDS_Face,
-        theP: gp_Pnt,
-        theTol: float,
-        theUseBndBox: Optional[bool] = False,
-        theGapCheckTol: Optional[float] = 0.1,
-    ) -> None: ...
+    def __init__(self, theF: TopoDS_Face, theP: gp_Pnt, theTol: float, theUseBndBox: Optional[bool] = False, theGapCheckTol: Optional[float] = 0.1) -> None: ...
     @overload
-    def Perform(
-        self,
-        theF: TopoDS_Face,
-        theP: gp_Pnt2d,
-        theTol: float,
-        theUseBndBox: Optional[bool] = False,
-        theGapCheckTol: Optional[float] = 0.1,
-    ) -> None: ...
+    def Perform(self, theF: TopoDS_Face, theP: gp_Pnt2d, theTol: float, theUseBndBox: Optional[bool] = False, theGapCheckTol: Optional[float] = 0.1) -> None: ...
     @overload
-    def Perform(
-        self,
-        theF: TopoDS_Face,
-        theP: gp_Pnt,
-        theTol: float,
-        theUseBndBox: Optional[bool] = False,
-        theGapCheckTol: Optional[float] = 0.1,
-    ) -> None: ...
+    def Perform(self, theF: TopoDS_Face, theP: gp_Pnt, theTol: float, theUseBndBox: Optional[bool] = False, theGapCheckTol: Optional[float] = 0.1) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

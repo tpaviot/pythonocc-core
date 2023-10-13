@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPTOOLSDOCSTRING
 "TopTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_toptools.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_toptools.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPTOOLSDOCSTRING) TopTools
 
@@ -296,15 +296,18 @@ class TopTools {
 		/****************** Dummy ******************/
 		/**** md5 signature: 3d202e2bac865a0ccb3610a850392a11 ****/
 		%feature("compactdefaultargs") Dummy;
-		%feature("autodoc", "This is to bypass an extraction bug. it will force the inclusion of standard_integer.hxx itself including standard_ostream.hxx at the correct position.
-
+		%feature("autodoc", "
 Parameters
 ----------
 I: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+This is to bypass an extraction bug. it will force the inclusion of standard_integer.hxx itself including standard_ostream.hxx at the correct position.
 ") Dummy;
 		static void Dummy(const Standard_Integer I);
 
@@ -325,37 +328,44 @@ class TopTools_LocationSet {
 		/****************** TopTools_LocationSet ******************/
 		/**** md5 signature: 533a3b5dd3fb89d3615ab5684bea4bc6 ****/
 		%feature("compactdefaultargs") TopTools_LocationSet;
-		%feature("autodoc", "Returns an empty set of locations.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns an empty set of locations.
 ") TopTools_LocationSet;
 		 TopTools_LocationSet();
 
 		/****************** Add ******************/
 		/**** md5 signature: 6d3b7662960d74b2d6e66b85d46b59f7 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Incorporate a new location in the set and returns its index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 L: TopLoc_Location
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Incorporate a new location in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const TopLoc_Location & L);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the content of the set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the content of the set.
 ") Clear;
 		void Clear();
 
@@ -370,30 +380,36 @@ None
 		/****************** Index ******************/
 		/**** md5 signature: fbb01960bb9b443c36d99f6e7b11f6c5 ****/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "Returns the index of <l>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 L: TopLoc_Location
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the index of <l>.
 ") Index;
 		Standard_Integer Index(const TopLoc_Location & L);
 
 		/****************** Location ******************/
 		/**** md5 signature: dc46e30cfdcf3a3cf13e5f29298f5163 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns the location of index <i>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 I: int
 
-Returns
+Return
 -------
 TopLoc_Location
+
+Description
+-----------
+Returns the location of index <i>.
 ") Location;
 		const TopLoc_Location & Location(const Standard_Integer I);
 
@@ -429,68 +445,81 @@ class TopTools_MutexForShapeProvider {
 		/****************** TopTools_MutexForShapeProvider ******************/
 		/**** md5 signature: 186234db6cbd1a9407b42684a8f3081d ****/
 		%feature("compactdefaultargs") TopTools_MutexForShapeProvider;
-		%feature("autodoc", "Constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") TopTools_MutexForShapeProvider;
 		 TopTools_MutexForShapeProvider();
 
 		/****************** CreateMutexForShape ******************/
 		/**** md5 signature: b5392c05a309d51d95fab879c6f4617b ****/
 		%feature("compactdefaultargs") CreateMutexForShape;
-		%feature("autodoc", "Creates and associates mutex with theshape.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates and associates mutex with theshape.
 ") CreateMutexForShape;
 		void CreateMutexForShape(const TopoDS_Shape & theShape);
 
 		/****************** CreateMutexesForSubShapes ******************/
 		/**** md5 signature: 530747123c3841aaa5f39dcd5b102477 ****/
 		%feature("compactdefaultargs") CreateMutexesForSubShapes;
-		%feature("autodoc", "Creates and associates mutexes with each sub-shape of type thetype in theshape.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theType: TopAbs_ShapeEnum
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates and associates mutexes with each sub-shape of type thetype in theshape.
 ") CreateMutexesForSubShapes;
 		void CreateMutexesForSubShapes(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theType);
 
 		/****************** GetMutex ******************/
 		/**** md5 signature: 48d2b8ac7b66d60ead3fd28dc2f08e09 ****/
 		%feature("compactdefaultargs") GetMutex;
-		%feature("autodoc", "Returns pointer to mutex associated with theshape. in case when mutex not found returns null.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 
-Returns
+Return
 -------
 Standard_Mutex *
+
+Description
+-----------
+Returns pointer to mutex associated with theshape. in case when mutex not found returns null.
 ") GetMutex;
 		Standard_Mutex * GetMutex(const TopoDS_Shape & theShape);
 
 		/****************** RemoveAllMutexes ******************/
 		/**** md5 signature: d2ba49e58f7b852bc20e81e25b6b909d ****/
 		%feature("compactdefaultargs") RemoveAllMutexes;
-		%feature("autodoc", "Removes all mutexes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Removes all mutexes.
 ") RemoveAllMutexes;
 		void RemoveAllMutexes();
 
@@ -511,32 +540,38 @@ class TopTools_OrientedShapeMapHasher {
 		/****************** HashCode ******************/
 		/**** md5 signature: cf743343a1907f73e2da55e3b4f8638f ****/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "Computes a hash code for the given shape, in the range [1, theupperbound] @param theshape the shape which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theUpperBound: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Computes a hash code for the given shape, in the range [1, theupperbound] @param theshape the shape which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
 ") HashCode;
 		static Standard_Integer HashCode(const TopoDS_Shape & theShape, const Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 6cfded5b10e66f3ff935b8fedf5531b0 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Returns true when the two keys are equal. two same keys must have the same hashcode, the contrary is not necessary.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true when the two keys are equal. two same keys must have the same hashcode, the contrary is not necessary.
 ") IsEqual;
 		static Standard_Boolean IsEqual(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -557,32 +592,38 @@ class TopTools_ShapeMapHasher {
 		/****************** HashCode ******************/
 		/**** md5 signature: 2620d20054f9679679d76587e338d89d ****/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "Computes a hash code for the given shape, in the range [1, theupperbound] @param theshape the shape which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theUpperBound: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Computes a hash code for the given shape, in the range [1, theupperbound] @param theshape the shape which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
 ") HashCode;
 		static Standard_Integer HashCode(const TopoDS_Shape & theShape, Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 6cfded5b10e66f3ff935b8fedf5531b0 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
 ") IsEqual;
 		static Standard_Boolean IsEqual(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -603,95 +644,113 @@ class TopTools_ShapeSet {
 		/****************** TopTools_ShapeSet ******************/
 		/**** md5 signature: bd8be06687b281459575af973cd3b635 ****/
 		%feature("compactdefaultargs") TopTools_ShapeSet;
-		%feature("autodoc", "Builds an empty shapeset.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Builds an empty shapeset.
 ") TopTools_ShapeSet;
 		 TopTools_ShapeSet();
 
 		/****************** Add ******************/
 		/**** md5 signature: 53c72d7ee288afd721c7b0a7e7296012 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Stores <s> and its sub-shape. returns the index of <s>. the method addgeometry is called on each sub-shape.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Stores <s> and its sub-shape. returns the index of <s>. the method addgeometry is called on each sub-shape.
 ") Add;
 		Standard_Integer Add(const TopoDS_Shape & S);
 
 		/****************** AddGeometry ******************/
 		/**** md5 signature: 0fd943cd475c8e07eb80f1f4508f536a ****/
 		%feature("compactdefaultargs") AddGeometry;
-		%feature("autodoc", "Stores the geometry of <s>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Stores the geometry of <s>.
 ") AddGeometry;
 		virtual void AddGeometry(const TopoDS_Shape & S);
 
 		/****************** AddShapes ******************/
 		/**** md5 signature: e51de0c8f9d77467626b59e64779aeff ****/
 		%feature("compactdefaultargs") AddShapes;
-		%feature("autodoc", "Inserts the shape <s2> in the shape <s1>. this method must be redefined to use the correct builder.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Inserts the shape <s2> in the shape <s1>. this method must be redefined to use the correct builder.
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****************** ChangeLocations ******************/
 		/**** md5 signature: 30f61a461f3fc1bda3bafd1089a88635 ****/
 		%feature("compactdefaultargs") ChangeLocations;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopTools_LocationSet
+
+Description
+-----------
+No available documentation.
 ") ChangeLocations;
 		TopTools_LocationSet & ChangeLocations();
 
 		/****************** Check ******************/
 		/**** md5 signature: e332cba2d27e7a4823bf6a422228a39a ****/
 		%feature("compactdefaultargs") Check;
-		%feature("autodoc", "This method is called after each new completed shape. <t> is the type. <s> is the shape. in this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
-
+		%feature("autodoc", "
 Parameters
 ----------
 T: TopAbs_ShapeEnum
 S: TopoDS_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+This method is called after each new completed shape. <t> is the type. <s> is the shape. in this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
 ") Check;
 		virtual void Check(const TopAbs_ShapeEnum T, TopoDS_Shape & S);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the content of the set. this method can be redefined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the content of the set. this method can be redefined.
 ") Clear;
 		virtual void Clear();
 
@@ -714,15 +773,18 @@ None
 		/****************** DumpExtent ******************/
 		/**** md5 signature: 953cfb15db6760ae7a9bad9220b58b2c ****/
 		%feature("compactdefaultargs") DumpExtent;
-		%feature("autodoc", "Dumps the number of objects in me in the string s (number of shapes of each type).
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Dumps the number of objects in me in the string s (number of shapes of each type).
 ") DumpExtent;
 		void DumpExtent(TCollection_AsciiString & S);
 
@@ -737,48 +799,57 @@ None
 		/****************** FormatNb ******************/
 		/**** md5 signature: 4ba7a37f990f272738aa2003a22fc1da ****/
 		%feature("compactdefaultargs") FormatNb;
-		%feature("autodoc", "Returns the toptools_formatversion.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the toptools_formatversion.
 ") FormatNb;
 		Standard_Integer FormatNb();
 
 		/****************** Index ******************/
 		/**** md5 signature: 9e94bb6d7b4221be4165f8639cd27d92 ****/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "Returns the index of <s>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the index of <s>.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & S);
 
 		/****************** Locations ******************/
 		/**** md5 signature: 24a4ea3b7fee823f5a1c0a3fbabad43e ****/
 		%feature("compactdefaultargs") Locations;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopTools_LocationSet
+
+Description
+-----------
+No available documentation.
 ") Locations;
 		const TopTools_LocationSet & Locations();
 
 		/****************** NbShapes ******************/
 		/**** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ****/
 		%feature("compactdefaultargs") NbShapes;
-		%feature("autodoc", "Returns number of shapes read from file.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of shapes read from file.
 ") NbShapes;
 		Standard_Integer NbShapes();
 
@@ -799,30 +870,36 @@ int
 		/****************** SetFormatNb ******************/
 		/**** md5 signature: efa61c5f0aa586c699f53e1139cd95f9 ****/
 		%feature("compactdefaultargs") SetFormatNb;
-		%feature("autodoc", "Sets the toptools_formatversion.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFormatNb: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the toptools_formatversion.
 ") SetFormatNb;
 		void SetFormatNb(const Standard_Integer theFormatNb);
 
 		/****************** Shape ******************/
 		/**** md5 signature: 243b850f6d21a0fba84095c942dbd917 ****/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the sub-shape of index <i>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 I: int
 
-Returns
+Return
 -------
 TopoDS_Shape
+
+Description
+-----------
+Returns the sub-shape of index <i>.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer I);
 

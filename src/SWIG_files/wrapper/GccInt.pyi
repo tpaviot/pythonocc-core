@@ -5,6 +5,7 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 
+
 class GccInt_IType(IntEnum):
     GccInt_Lin: int = ...
     GccInt_Cir: int = ...
@@ -62,3 +63,4 @@ class GccInt_BPoint(GccInt_Bisec):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

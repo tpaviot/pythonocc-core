@@ -6,6 +6,7 @@ from OCC.Core.NCollection import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
 
+
 class geomtools:
     @staticmethod
     def GetUndefinedTypeHandler() -> GeomTools_UndefinedTypeHandler: ...
@@ -39,3 +40,4 @@ class GeomTools_UndefinedTypeHandler(Standard_Transient):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

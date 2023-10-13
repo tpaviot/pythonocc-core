@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEALGODOCSTRING
 "ShapeAlgo module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_shapealgo.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_shapealgo.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEALGODOCSTRING) ShapeAlgo
 
@@ -105,37 +105,44 @@ class ShapeAlgo {
 		/****************** AlgoContainer ******************/
 		/**** md5 signature: c1f523c465ca6cba85665bd0de49f1d1 ****/
 		%feature("compactdefaultargs") AlgoContainer;
-		%feature("autodoc", "Returns default algocontainer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<ShapeAlgo_AlgoContainer>
+
+Description
+-----------
+Returns default algocontainer.
 ") AlgoContainer;
 		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer();
 
 		/****************** Init ******************/
 		/**** md5 signature: 342fdccc4643f67c269591c4b6447108 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Provides initerface to the algorithms from shape healing. creates and initializes default algocontainer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Provides initerface to the algorithms from shape healing. creates and initializes default algocontainer.
 ") Init;
 		static void Init();
 
 		/****************** SetAlgoContainer ******************/
 		/**** md5 signature: 0f08b7ef735a36117834ac8cb4c7072a ****/
 		%feature("compactdefaultargs") SetAlgoContainer;
-		%feature("autodoc", "Sets default algocontainer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aContainer: ShapeAlgo_AlgoContainer
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets default algocontainer.
 ") SetAlgoContainer;
 		static void SetAlgoContainer(const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 
@@ -159,33 +166,39 @@ class ShapeAlgo_ToolContainer : public Standard_Transient {
 		/****************** ShapeAlgo_ToolContainer ******************/
 		/**** md5 signature: 80836b1fd7be7ee0f942f7a26d297738 ****/
 		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") ShapeAlgo_ToolContainer;
 		 ShapeAlgo_ToolContainer();
 
 		/****************** EdgeProjAux ******************/
 		/**** md5 signature: 526a36aa395ee919ad5f3bedac952d00 ****/
 		%feature("compactdefaultargs") EdgeProjAux;
-		%feature("autodoc", "Returns shapefix_edgeprojaux.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<ShapeFix_EdgeProjAux>
+
+Description
+-----------
+Returns shapefix_edgeprojaux.
 ") EdgeProjAux;
 		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux();
 
 		/****************** FixShape ******************/
 		/**** md5 signature: 178f51e71f6d84a5c9616b5fbf61610a ****/
 		%feature("compactdefaultargs") FixShape;
-		%feature("autodoc", "Returns shapefix_shape.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<ShapeFix_Shape>
+
+Description
+-----------
+Returns shapefix_shape.
 ") FixShape;
 		virtual opencascade::handle<ShapeFix_Shape> FixShape();
 

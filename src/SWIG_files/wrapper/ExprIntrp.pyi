@@ -6,6 +6,7 @@ from OCC.Core.NCollection import *
 from OCC.Core.Expr import *
 from OCC.Core.TCollection import *
 
+
 class ExprIntrp_SequenceOfNamedExpression:
     def __init__(self) -> None: ...
     def __len__(self) -> int: ...
@@ -139,3 +140,4 @@ class ExprIntrp_GenRel(ExprIntrp_Generator):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

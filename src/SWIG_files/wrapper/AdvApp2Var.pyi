@@ -10,6 +10,7 @@ from OCC.Core.Geom import *
 from OCC.Core.gp import *
 from OCC.Core.TColgp import *
 
+
 class AdvApp2Var_SequenceOfNode:
     def __init__(self) -> None: ...
     def __len__(self) -> int: ...
@@ -86,60 +87,9 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 
 class AdvApp2Var_ApproxAFunc2Var:
     @overload
-    def __init__(
-        self,
-        Num1DSS: int,
-        Num2DSS: int,
-        Num3DSS: int,
-        OneDTol: TColStd_HArray1OfReal,
-        TwoDTol: TColStd_HArray1OfReal,
-        ThreeDTol: TColStd_HArray1OfReal,
-        OneDTolFr: TColStd_HArray2OfReal,
-        TwoDTolFr: TColStd_HArray2OfReal,
-        ThreeDTolFr: TColStd_HArray2OfReal,
-        FirstInU: float,
-        LastInU: float,
-        FirstInV: float,
-        LastInV: float,
-        FavorIso: GeomAbs_IsoType,
-        ContInU: GeomAbs_Shape,
-        ContInV: GeomAbs_Shape,
-        PrecisCode: int,
-        MaxDegInU: int,
-        MaxDegInV: int,
-        MaxPatch: int,
-        Func: AdvApp2Var_EvaluatorFunc2Var,
-        UChoice: AdvApprox_Cutting,
-        VChoice: AdvApprox_Cutting,
-    ) -> None: ...
+    def __init__(self, Num1DSS: int, Num2DSS: int, Num3DSS: int, OneDTol: TColStd_HArray1OfReal, TwoDTol: TColStd_HArray1OfReal, ThreeDTol: TColStd_HArray1OfReal, OneDTolFr: TColStd_HArray2OfReal, TwoDTolFr: TColStd_HArray2OfReal, ThreeDTolFr: TColStd_HArray2OfReal, FirstInU: float, LastInU: float, FirstInV: float, LastInV: float, FavorIso: GeomAbs_IsoType, ContInU: GeomAbs_Shape, ContInV: GeomAbs_Shape, PrecisCode: int, MaxDegInU: int, MaxDegInV: int, MaxPatch: int, Func: AdvApp2Var_EvaluatorFunc2Var, UChoice: AdvApprox_Cutting, VChoice: AdvApprox_Cutting) -> None: ...
     @overload
-    def __init__(
-        self,
-        Num1DSS: int,
-        Num2DSS: int,
-        Num3DSS: int,
-        OneDTol: TColStd_HArray1OfReal,
-        TwoDTol: TColStd_HArray1OfReal,
-        ThreeDTol: TColStd_HArray1OfReal,
-        OneDTolFr: TColStd_HArray2OfReal,
-        TwoDTolFr: TColStd_HArray2OfReal,
-        ThreeDTolFr: TColStd_HArray2OfReal,
-        FirstInU: float,
-        LastInU: float,
-        FirstInV: float,
-        LastInV: float,
-        FavorIso: GeomAbs_IsoType,
-        ContInU: GeomAbs_Shape,
-        ContInV: GeomAbs_Shape,
-        PrecisCode: int,
-        MaxDegInU: int,
-        MaxDegInV: int,
-        MaxPatch: int,
-        Func: AdvApp2Var_EvaluatorFunc2Var,
-        Crit: AdvApp2Var_Criterion,
-        UChoice: AdvApprox_Cutting,
-        VChoice: AdvApprox_Cutting,
-    ) -> None: ...
+    def __init__(self, Num1DSS: int, Num2DSS: int, Num3DSS: int, OneDTol: TColStd_HArray1OfReal, TwoDTol: TColStd_HArray1OfReal, ThreeDTol: TColStd_HArray1OfReal, OneDTolFr: TColStd_HArray2OfReal, TwoDTolFr: TColStd_HArray2OfReal, ThreeDTolFr: TColStd_HArray2OfReal, FirstInU: float, LastInU: float, FirstInV: float, LastInV: float, FavorIso: GeomAbs_IsoType, ContInU: GeomAbs_Shape, ContInV: GeomAbs_Shape, PrecisCode: int, MaxDegInU: int, MaxDegInV: int, MaxPatch: int, Func: AdvApp2Var_EvaluatorFunc2Var, Crit: AdvApp2Var_Criterion, UChoice: AdvApprox_Cutting, VChoice: AdvApprox_Cutting) -> None: ...
     @overload
     def AverageError(self, Dimension: int) -> TColStd_HArray1OfReal: ...
     @overload
@@ -166,127 +116,15 @@ class AdvApp2Var_ApproxAFunc2Var:
 
 class AdvApp2Var_ApproxF2var:
     @staticmethod
-    def mma2cdi_(
-        ndimen: int,
-        nbpntu: int,
-        urootl: float,
-        nbpntv: int,
-        vrootl: float,
-        iordru: int,
-        iordrv: int,
-        contr1: float,
-        contr2: float,
-        contr3: float,
-        contr4: float,
-        sotbu1: float,
-        sotbu2: float,
-        ditbu1: float,
-        ditbu2: float,
-        sotbv1: float,
-        sotbv2: float,
-        ditbv1: float,
-        ditbv2: float,
-        sosotb: float,
-        soditb: float,
-        disotb: float,
-        diditb: float,
-        iercod: int,
-    ) -> int: ...
+    def mma2cdi_(ndimen: int, nbpntu: int, urootl: float, nbpntv: int, vrootl: float, iordru: int, iordrv: int, contr1: float, contr2: float, contr3: float, contr4: float, sotbu1: float, sotbu2: float, ditbu1: float, ditbu2: float, sotbv1: float, sotbv2: float, ditbv1: float, ditbv2: float, sosotb: float, soditb: float, disotb: float, diditb: float, iercod: int) -> int: ...
     @staticmethod
-    def mma2ce1_(
-        numdec: int,
-        ndimen: int,
-        nbsesp: int,
-        ndimse: int,
-        ndminu: int,
-        ndminv: int,
-        ndguli: int,
-        ndgvli: int,
-        ndjacu: int,
-        ndjacv: int,
-        iordru: int,
-        iordrv: int,
-        nbpntu: int,
-        nbpntv: int,
-        epsapr: float,
-        sosotb: float,
-        disotb: float,
-        soditb: float,
-        diditb: float,
-        patjac: float,
-        errmax: float,
-        errmoy: float,
-        ndegpu: int,
-        ndegpv: int,
-        itydec: int,
-        iercod: int,
-    ) -> int: ...
+    def mma2ce1_(numdec: int, ndimen: int, nbsesp: int, ndimse: int, ndminu: int, ndminv: int, ndguli: int, ndgvli: int, ndjacu: int, ndjacv: int, iordru: int, iordrv: int, nbpntu: int, nbpntv: int, epsapr: float, sosotb: float, disotb: float, soditb: float, diditb: float, patjac: float, errmax: float, errmoy: float, ndegpu: int, ndegpv: int, itydec: int, iercod: int) -> int: ...
     @staticmethod
-    def mma2ds1_(
-        ndimen: int,
-        uintfn: float,
-        vintfn: float,
-        foncnp: AdvApp2Var_EvaluatorFunc2Var,
-        nbpntu: int,
-        nbpntv: int,
-        urootb: float,
-        vrootb: float,
-        isofav: int,
-        sosotb: float,
-        disotb: float,
-        soditb: float,
-        diditb: float,
-        fpntab: float,
-        ttable: float,
-        iercod: int,
-    ) -> int: ...
+    def mma2ds1_(ndimen: int, uintfn: float, vintfn: float, foncnp: AdvApp2Var_EvaluatorFunc2Var, nbpntu: int, nbpntv: int, urootb: float, vrootb: float, isofav: int, sosotb: float, disotb: float, soditb: float, diditb: float, fpntab: float, ttable: float, iercod: int) -> int: ...
     @staticmethod
-    def mma2fnc_(
-        ndimen: int,
-        nbsesp: int,
-        ndimse: int,
-        uvfonc: float,
-        foncnp: AdvApp2Var_EvaluatorFunc2Var,
-        tconst: float,
-        isofav: int,
-        nbroot: int,
-        rootlg: float,
-        iordre: int,
-        ideriv: int,
-        ndgjac: int,
-        nbcrmx: int,
-        ncflim: int,
-        epsapr: float,
-        ncoeff: int,
-        courbe: float,
-        nbcrbe: int,
-        somtab: float,
-        diftab: float,
-        contr1: float,
-        contr2: float,
-        tabdec: float,
-        errmax: float,
-        errmoy: float,
-        iercod: int,
-    ) -> int: ...
+    def mma2fnc_(ndimen: int, nbsesp: int, ndimse: int, uvfonc: float, foncnp: AdvApp2Var_EvaluatorFunc2Var, tconst: float, isofav: int, nbroot: int, rootlg: float, iordre: int, ideriv: int, ndgjac: int, nbcrmx: int, ncflim: int, epsapr: float, ncoeff: int, courbe: float, nbcrbe: int, somtab: float, diftab: float, contr1: float, contr2: float, tabdec: float, errmax: float, errmoy: float, iercod: int) -> int: ...
     @staticmethod
-    def mma2fx6_(
-        ncfmxu: int,
-        ncfmxv: int,
-        ndimen: int,
-        nbsesp: int,
-        ndimse: int,
-        nbupat: int,
-        nbvpat: int,
-        iordru: int,
-        iordrv: int,
-        epsapr: float,
-        epsfro: float,
-        patcan: float,
-        errmax: float,
-        ncoefu: int,
-        ncoefv: int,
-    ) -> int: ...
+    def mma2fx6_(ncfmxu: int, ncfmxv: int, ndimen: int, nbsesp: int, ndimse: int, nbupat: int, nbvpat: int, iordru: int, iordrv: int, epsapr: float, epsfro: float, patcan: float, errmax: float, ncoefu: int, ncoefv: int) -> int: ...
     @staticmethod
     def mma2jmx_(ndgjac: int, iordre: int, xjacmx: float) -> int: ...
     @staticmethod
@@ -296,24 +134,7 @@ class AdvApp2Var_Context:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        ifav: int,
-        iu: int,
-        iv: int,
-        nlimu: int,
-        nlimv: int,
-        iprecis: int,
-        nb1Dss: int,
-        nb2Dss: int,
-        nb3Dss: int,
-        tol1D: TColStd_HArray1OfReal,
-        tol2D: TColStd_HArray1OfReal,
-        tol3D: TColStd_HArray1OfReal,
-        tof1D: TColStd_HArray2OfReal,
-        tof2D: TColStd_HArray2OfReal,
-        tof3D: TColStd_HArray2OfReal,
-    ) -> None: ...
+    def __init__(self, ifav: int, iu: int, iv: int, nlimu: int, nlimv: int, iprecis: int, nb1Dss: int, nb2Dss: int, nb3Dss: int, tol1D: TColStd_HArray1OfReal, tol2D: TColStd_HArray1OfReal, tol3D: TColStd_HArray1OfReal, tof1D: TColStd_HArray2OfReal, tof2D: TColStd_HArray2OfReal, tof3D: TColStd_HArray2OfReal) -> None: ...
     def CToler(self) -> TColStd_HArray2OfReal: ...
     def FToler(self) -> TColStd_HArray2OfReal: ...
     def FavorIso(self) -> int: ...
@@ -368,24 +189,13 @@ class AdvApp2Var_Framework:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        Frame: AdvApp2Var_SequenceOfNode,
-        UFrontier: AdvApp2Var_SequenceOfStrip,
-        VFrontier: AdvApp2Var_SequenceOfStrip,
-    ) -> None: ...
-    def ChangeIso(
-        self, IndexIso: int, IndexStrip: int, anIso: AdvApp2Var_Iso
-    ) -> None: ...
-    def FirstNode(
-        self, Type: GeomAbs_IsoType, IndexIso: int, IndexStrip: int
-    ) -> int: ...
+    def __init__(self, Frame: AdvApp2Var_SequenceOfNode, UFrontier: AdvApp2Var_SequenceOfStrip, VFrontier: AdvApp2Var_SequenceOfStrip) -> None: ...
+    def ChangeIso(self, IndexIso: int, IndexStrip: int, anIso: AdvApp2Var_Iso) -> None: ...
+    def FirstNode(self, Type: GeomAbs_IsoType, IndexIso: int, IndexStrip: int) -> int: ...
     def FirstNotApprox(self) -> Tuple[AdvApp2Var_Iso, int, int]: ...
     def IsoU(self, U: float, V0: float, V1: float) -> AdvApp2Var_Iso: ...
     def IsoV(self, U0: float, U1: float, V: float) -> AdvApp2Var_Iso: ...
-    def LastNode(
-        self, Type: GeomAbs_IsoType, IndexIso: int, IndexStrip: int
-    ) -> int: ...
+    def LastNode(self, Type: GeomAbs_IsoType, IndexIso: int, IndexStrip: int) -> int: ...
     @overload
     def Node(self, IndexNode: int) -> AdvApp2Var_Node: ...
     @overload
@@ -399,214 +209,57 @@ class AdvApp2Var_MathBase:
     @staticmethod
     def mdsptpt_(ndimen: int, point1: float, point2: float, distan: float) -> int: ...
     @staticmethod
-    def mmaperx_(
-        ncofmx: int,
-        ndimen: int,
-        ncoeff: int,
-        iordre: int,
-        crvjac: float,
-        ncfnew: int,
-        ycvmax: float,
-        errmax: float,
-        iercod: int,
-    ) -> int: ...
+    def mmaperx_(ncofmx: int, ndimen: int, ncoeff: int, iordre: int, crvjac: float, ncfnew: int, ycvmax: float, errmax: float, iercod: int) -> int: ...
     @staticmethod
-    def mmarcin_(
-        ndimax: int,
-        ndim: int,
-        ncoeff: int,
-        crvold: float,
-        u0: float,
-        u1: float,
-        crvnew: float,
-        iercod: int,
-    ) -> int: ...
+    def mmarcin_(ndimax: int, ndim: int, ncoeff: int, crvold: float, u0: float, u1: float, crvnew: float, iercod: int) -> int: ...
     @staticmethod
     def mmbulld_(nbcoln: int, nblign: int, dtabtr: float, numcle: int) -> int: ...
     @staticmethod
-    def mmcdriv_(
-        ndimen: int, ncoeff: int, courbe: float, ideriv: int, ncofdv: int, crvdrv: float
-    ) -> int: ...
+    def mmcdriv_(ndimen: int, ncoeff: int, courbe: float, ideriv: int, ncofdv: int, crvdrv: float) -> int: ...
     @staticmethod
-    def mmcglc1_(
-        ndimax: int,
-        ndimen: int,
-        ncoeff: int,
-        courbe: float,
-        tdebut: float,
-        tfinal: float,
-        epsiln: float,
-        xlongc: float,
-        erreur: float,
-        iercod: int,
-    ) -> int: ...
+    def mmcglc1_(ndimax: int, ndimen: int, ncoeff: int, courbe: float, tdebut: float, tfinal: float, epsiln: float, xlongc: float, erreur: float, iercod: int) -> int: ...
     @staticmethod
-    def mmcvctx_(
-        ndimen: int,
-        ncofmx: int,
-        nderiv: int,
-        ctrtes: float,
-        crvres: float,
-        tabaux: float,
-        xmatri: float,
-        iercod: int,
-    ) -> int: ...
+    def mmcvctx_(ndimen: int, ncofmx: int, nderiv: int, ctrtes: float, crvres: float, tabaux: float, xmatri: float, iercod: int) -> int: ...
     @staticmethod
-    def mmcvinv_(
-        ndimax: int, ncoef: int, ndim: int, curveo: float, curve: float
-    ) -> int: ...
+    def mmcvinv_(ndimax: int, ncoef: int, ndim: int, curveo: float, curve: float) -> int: ...
     @staticmethod
-    def mmdrvck_(
-        ncoeff: int,
-        ndimen: int,
-        courbe: float,
-        ideriv: int,
-        tparam: float,
-        pntcrb: float,
-    ) -> int: ...
+    def mmdrvck_(ncoeff: int, ndimen: int, courbe: float, ideriv: int, tparam: float, pntcrb: float) -> int: ...
     @staticmethod
     def mmeps1_(epsilo: float) -> int: ...
     @staticmethod
-    def mmfmca8_(
-        ndimen: int,
-        ncoefu: int,
-        ncoefv: int,
-        ndimax: int,
-        ncfumx: int,
-        ncfvmx: int,
-        tabini: float,
-        tabres: float,
-    ) -> int: ...
+    def mmfmca8_(ndimen: int, ncoefu: int, ncoefv: int, ndimax: int, ncfumx: int, ncfvmx: int, tabini: float, tabres: float) -> int: ...
     @staticmethod
-    def mmfmcar_(
-        ndimen: int,
-        ncofmx: int,
-        ncoefu: int,
-        ncoefv: int,
-        patold: float,
-        upara1: float,
-        upara2: float,
-        vpara1: float,
-        vpara2: float,
-        patnew: float,
-        iercod: int,
-    ) -> int: ...
+    def mmfmcar_(ndimen: int, ncofmx: int, ncoefu: int, ncoefv: int, patold: float, upara1: float, upara2: float, vpara1: float, vpara2: float, patnew: float, iercod: int) -> int: ...
     @staticmethod
-    def mmfmtb1_(
-        maxsz1: int,
-        table1: float,
-        isize1: int,
-        jsize1: int,
-        maxsz2: int,
-        table2: float,
-        isize2: int,
-        jsize2: int,
-        iercod: int,
-    ) -> int: ...
+    def mmfmtb1_(maxsz1: int, table1: float, isize1: int, jsize1: int, maxsz2: int, table2: float, isize2: int, jsize2: int, iercod: int) -> int: ...
     @staticmethod
-    def mmhjcan_(
-        ndimen: int,
-        ncourb: int,
-        ncftab: int,
-        orcont: int,
-        ncflim: int,
-        tcbold: float,
-        tdecop: float,
-        tcbnew: float,
-        iercod: int,
-    ) -> int: ...
+    def mmhjcan_(ndimen: int, ncourb: int, ncftab: int, orcont: int, ncflim: int, tcbold: float, tdecop: float, tcbnew: float, iercod: int) -> int: ...
     @staticmethod
-    def mminltt_(
-        ncolmx: int,
-        nlgnmx: int,
-        tabtri: float,
-        nbrcol: int,
-        nbrlgn: int,
-        ajoute: float,
-        epseg: float,
-        iercod: int,
-    ) -> int: ...
+    def mminltt_(ncolmx: int, nlgnmx: int, tabtri: float, nbrcol: int, nbrlgn: int, ajoute: float, epseg: float, iercod: int) -> int: ...
     @staticmethod
     def mmjacan_(ideriv: int, ndeg: int, poljac: float, polcan: float) -> int: ...
     @staticmethod
-    def mmjaccv_(
-        ncoef: int, ndim: int, ider: int, crvlgd: float, polaux: float, crvcan: float
-    ) -> int: ...
+    def mmjaccv_(ncoef: int, ndim: int, ider: int, crvlgd: float, polaux: float, crvcan: float) -> int: ...
     @staticmethod
-    def mmmpocur_(
-        ncofmx: int, ndim: int, ndeg: int, courbe: float, tparam: float, tabval: float
-    ) -> int: ...
+    def mmmpocur_(ncofmx: int, ndim: int, ndeg: int, courbe: float, tparam: float, tabval: float) -> int: ...
     @staticmethod
-    def mmmrslwd_(
-        normax: int,
-        nordre: int,
-        ndim: int,
-        amat: float,
-        bmat: float,
-        epspiv: float,
-        aaux: float,
-        xmat: float,
-        iercod: int,
-    ) -> int: ...
+    def mmmrslwd_(normax: int, nordre: int, ndim: int, amat: float, bmat: float, epspiv: float, aaux: float, xmat: float, iercod: int) -> int: ...
     @staticmethod
-    def mmpobas_(
-        tparam: float, iordre: int, ncoeff: int, nderiv: int, valbas: float, iercod: int
-    ) -> int: ...
+    def mmpobas_(tparam: float, iordre: int, ncoeff: int, nderiv: int, valbas: float, iercod: int) -> int: ...
     @staticmethod
-    def mmpocrb_(
-        ndimax: int, ncoeff: int, courbe: float, ndim: int, tparam: float, pntcrb: float
-    ) -> int: ...
+    def mmpocrb_(ndimax: int, ncoeff: int, courbe: float, ndim: int, tparam: float, pntcrb: float) -> int: ...
     @staticmethod
-    def mmposui_(
-        dimmat: int, nistoc: int, aposit: int, posuiv: int, iercod: int
-    ) -> int: ...
+    def mmposui_(dimmat: int, nistoc: int, aposit: int, posuiv: int, iercod: int) -> int: ...
     @staticmethod
-    def mmresol_(
-        hdimen: int,
-        gdimen: int,
-        hnstoc: int,
-        gnstoc: int,
-        mnstoc: int,
-        matsyh: float,
-        matsyg: float,
-        vecsyh: float,
-        vecsyg: float,
-        hposit: int,
-        hposui: int,
-        gposit: int,
-        mmposui: int,
-        mposit: int,
-        vecsol: float,
-        iercod: int,
-    ) -> int: ...
+    def mmresol_(hdimen: int, gdimen: int, hnstoc: int, gnstoc: int, mnstoc: int, matsyh: float, matsyg: float, vecsyh: float, vecsyg: float, hposit: int, hposui: int, gposit: int, mmposui: int, mposit: int, vecsol: float, iercod: int) -> int: ...
     @staticmethod
     def mmrtptt_(ndglgd: int, rtlegd: float) -> int: ...
     @staticmethod
-    def mmsrre2_(
-        tparam: float,
-        nbrval: int,
-        tablev: float,
-        epsil: float,
-        numint: int,
-        itypen: int,
-        iercod: int,
-    ) -> int: ...
+    def mmsrre2_(tparam: float, nbrval: int, tablev: float, epsil: float, numint: int, itypen: int, iercod: int) -> int: ...
     @staticmethod
-    def mmtrpjj_(
-        ncofmx: int,
-        ndimen: int,
-        ncoeff: int,
-        epsi3d: float,
-        iordre: int,
-        crvlgd: float,
-        ycvmax: float,
-        errmax: float,
-        ncfnew: int,
-    ) -> int: ...
+    def mmtrpjj_(ncofmx: int, ndimen: int, ncoeff: int, epsi3d: float, iordre: int, crvlgd: float, ycvmax: float, errmax: float, ncfnew: int) -> int: ...
     @staticmethod
-    def mmunivt_(
-        ndimen: int, vector: float, vecnrm: float, epsiln: float, iercod: int
-    ) -> int: ...
+    def mmunivt_(ndimen: int, vector: float, vecnrm: float, epsiln: float, iercod: int) -> int: ...
     @staticmethod
     def mmveps3_(eps03: float) -> int: ...
     @staticmethod
@@ -624,12 +277,7 @@ class AdvApp2Var_Network:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        Net: AdvApp2Var_SequenceOfPatch,
-        TheU: TColStd_SequenceOfReal,
-        TheV: TColStd_SequenceOfReal,
-    ) -> None: ...
+    def __init__(self, Net: AdvApp2Var_SequenceOfPatch, TheU: TColStd_SequenceOfReal, TheV: TColStd_SequenceOfReal) -> None: ...
     def ChangePatch(self, Index: int) -> AdvApp2Var_Patch: ...
     def FirstNotApprox(self) -> Tuple[bool, int]: ...
     def NbPatch(self) -> int: ...
@@ -662,47 +310,29 @@ class AdvApp2Var_Patch(Standard_Transient):
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self, U0: float, U1: float, V0: float, V1: float, iu: int, iv: int
-    ) -> None: ...
-    def AddConstraints(
-        self, Conditions: AdvApp2Var_Context, Constraints: AdvApp2Var_Framework
-    ) -> None: ...
+    def __init__(self, U0: float, U1: float, V0: float, V1: float, iu: int, iv: int) -> None: ...
+    def AddConstraints(self, Conditions: AdvApp2Var_Context, Constraints: AdvApp2Var_Framework) -> None: ...
     def AddErrors(self, Constraints: AdvApp2Var_Framework) -> None: ...
     def AverageErrors(self) -> TColStd_HArray1OfReal: ...
     def ChangeDomain(self, a: float, b: float, c: float, d: float) -> None: ...
     def ChangeNbCoeff(self, NbCoeffU: int, NbCoeffV: int) -> None: ...
-    def Coefficients(
-        self, SSPIndex: int, Conditions: AdvApp2Var_Context
-    ) -> TColStd_HArray1OfReal: ...
+    def Coefficients(self, SSPIndex: int, Conditions: AdvApp2Var_Context) -> TColStd_HArray1OfReal: ...
     def CritValue(self) -> float: ...
     @overload
     def CutSense(self) -> int: ...
     @overload
     def CutSense(self, Crit: AdvApp2Var_Criterion, NumDec: int) -> int: ...
-    def Discretise(
-        self,
-        Conditions: AdvApp2Var_Context,
-        Constraints: AdvApp2Var_Framework,
-        func: AdvApp2Var_EvaluatorFunc2Var,
-    ) -> None: ...
+    def Discretise(self, Conditions: AdvApp2Var_Context, Constraints: AdvApp2Var_Framework, func: AdvApp2Var_EvaluatorFunc2Var) -> None: ...
     def HasResult(self) -> bool: ...
     def IsApproximated(self) -> bool: ...
     def IsDiscretised(self) -> bool: ...
     def IsoErrors(self) -> TColStd_HArray2OfReal: ...
-    def MakeApprox(
-        self,
-        Conditions: AdvApp2Var_Context,
-        Constraints: AdvApp2Var_Framework,
-        NumDec: int,
-    ) -> None: ...
+    def MakeApprox(self, Conditions: AdvApp2Var_Context, Constraints: AdvApp2Var_Framework, NumDec: int) -> None: ...
     def MaxErrors(self) -> TColStd_HArray1OfReal: ...
     def NbCoeffInU(self) -> int: ...
     def NbCoeffInV(self) -> int: ...
     def OverwriteApprox(self) -> None: ...
-    def Poles(
-        self, SSPIndex: int, Conditions: AdvApp2Var_Context
-    ) -> TColgp_HArray2OfPnt: ...
+    def Poles(self, SSPIndex: int, Conditions: AdvApp2Var_Context) -> TColgp_HArray2OfPnt: ...
     def ResetApprox(self) -> None: ...
     def SetCritValue(self, dist: float) -> None: ...
     def U0(self) -> float: ...
@@ -736,12 +366,13 @@ class AdvApp2Var_SysBase:
     @staticmethod
     def mvriraz_(taille: int, adt: None) -> None: ...
 
-# classnotwrapped
+#classnotwrapped
 class AdvApp2Var_EvaluatorFunc2Var: ...
 
-# classnotwrapped
+#classnotwrapped
 class AdvApp2Var_Iso: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPSTDDOCSTRING
 "AppStd module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_appstd.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_appstd.html"
 %enddef
 %module (package="OCC.Core", docstring=APPSTDDOCSTRING) AppStd
 
@@ -98,11 +98,13 @@ class AppStd_Application : public TDocStd_Application {
 		/****************** ResourcesName ******************/
 		/**** md5 signature: 93814b3160304ee63e9655e18518a289 ****/
 		%feature("compactdefaultargs") ResourcesName;
-		%feature("autodoc", "Returns the file name which contains application resources.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+Returns the file name which contains application resources.
 ") ResourcesName;
 		Standard_CString ResourcesName();
 

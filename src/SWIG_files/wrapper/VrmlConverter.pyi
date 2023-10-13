@@ -14,18 +14,15 @@ from OCC.Core.Poly import *
 from OCC.Core.TColgp import *
 from OCC.Core.BRepAdaptor import *
 
+
 class VrmlConverter_TypeOfCamera(IntEnum):
     VrmlConverter_NoCamera: int = ...
     VrmlConverter_PerspectiveCamera: int = ...
     VrmlConverter_OrthographicCamera: int = ...
 
 VrmlConverter_NoCamera = VrmlConverter_TypeOfCamera.VrmlConverter_NoCamera
-VrmlConverter_PerspectiveCamera = (
-    VrmlConverter_TypeOfCamera.VrmlConverter_PerspectiveCamera
-)
-VrmlConverter_OrthographicCamera = (
-    VrmlConverter_TypeOfCamera.VrmlConverter_OrthographicCamera
-)
+VrmlConverter_PerspectiveCamera = VrmlConverter_TypeOfCamera.VrmlConverter_PerspectiveCamera
+VrmlConverter_OrthographicCamera = VrmlConverter_TypeOfCamera.VrmlConverter_OrthographicCamera
 
 class VrmlConverter_TypeOfLight(IntEnum):
     VrmlConverter_NoLight: int = ...
@@ -72,9 +69,7 @@ class VrmlConverter_Drawer(Standard_Transient):
     def SetPointAspect(self, anAspect: VrmlConverter_PointAspect) -> None: ...
     def SetSeenLineAspect(self, anAspect: VrmlConverter_LineAspect) -> None: ...
     def SetShadingAspect(self, anAspect: VrmlConverter_ShadingAspect) -> None: ...
-    def SetTypeOfDeflection(
-        self, aTypeOfDeflection: Aspect_TypeOfDeflection
-    ) -> None: ...
+    def SetTypeOfDeflection(self, aTypeOfDeflection: Aspect_TypeOfDeflection) -> None: ...
     def SetUIsoAspect(self, anAspect: VrmlConverter_IsoAspect) -> None: ...
     def SetUnFreeBoundaryAspect(self, anAspect: VrmlConverter_LineAspect) -> None: ...
     def SetUnFreeBoundaryDraw(self, OnOff: bool) -> None: ...
@@ -114,19 +109,7 @@ class VrmlConverter_PointAspect(Standard_Transient):
     def SetMaterial(self, aMaterial: Vrml_Material) -> None: ...
 
 class VrmlConverter_Projector(Standard_Transient):
-    def __init__(
-        self,
-        Shapes: TopTools_Array1OfShape,
-        Focus: float,
-        DX: float,
-        DY: float,
-        DZ: float,
-        XUp: float,
-        YUp: float,
-        ZUp: float,
-        Camera: Optional[VrmlConverter_TypeOfCamera] = VrmlConverter_NoCamera,
-        Light: Optional[VrmlConverter_TypeOfLight] = VrmlConverter_NoLight,
-    ) -> None: ...
+    def __init__(self, Shapes: TopTools_Array1OfShape, Focus: float, DX: float, DY: float, DZ: float, XUp: float, YUp: float, ZUp: float, Camera: Optional[VrmlConverter_TypeOfCamera] = VrmlConverter_NoCamera, Light: Optional[VrmlConverter_TypeOfLight] = VrmlConverter_NoLight) -> None: ...
     def Camera(self) -> VrmlConverter_TypeOfCamera: ...
     def Light(self) -> VrmlConverter_TypeOfLight: ...
     def Projector(self) -> HLRAlgo_Projector: ...
@@ -135,9 +118,7 @@ class VrmlConverter_Projector(Standard_Transient):
 
 class VrmlConverter_ShadedShape:
     @staticmethod
-    def ComputeNormal(
-        aFace: TopoDS_Face, pc: Poly_Connect, Nor: TColgp_Array1OfDir
-    ) -> None: ...
+    def ComputeNormal(aFace: TopoDS_Face, pc: Poly_Connect, Nor: TColgp_Array1OfDir) -> None: ...
 
 class VrmlConverter_ShadingAspect(Standard_Transient):
     def __init__(self) -> None: ...
@@ -173,3 +154,4 @@ class VrmlConverter_IsoAspect(VrmlConverter_LineAspect):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

@@ -6,29 +6,18 @@ from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.Bnd import *
 
+
 class brepbndlib:
     @staticmethod
-    def Add(
-        S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool] = True
-    ) -> None: ...
+    def Add(S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool] = True) -> None: ...
     @staticmethod
     def AddClose(S: TopoDS_Shape, B: Bnd_Box) -> None: ...
     @staticmethod
-    def AddOBB(
-        theS: TopoDS_Shape,
-        theOBB: Bnd_OBB,
-        theIsTriangulationUsed: Optional[bool] = True,
-        theIsOptimal: Optional[bool] = False,
-        theIsShapeToleranceUsed: Optional[bool] = True,
-    ) -> None: ...
+    def AddOBB(theS: TopoDS_Shape, theOBB: Bnd_OBB, theIsTriangulationUsed: Optional[bool] = True, theIsOptimal: Optional[bool] = False, theIsShapeToleranceUsed: Optional[bool] = True) -> None: ...
     @staticmethod
-    def AddOptimal(
-        S: TopoDS_Shape,
-        B: Bnd_Box,
-        useTriangulation: Optional[bool] = True,
-        useShapeTolerance: Optional[bool] = False,
-    ) -> None: ...
+    def AddOptimal(S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool] = True, useShapeTolerance: Optional[bool] = False) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

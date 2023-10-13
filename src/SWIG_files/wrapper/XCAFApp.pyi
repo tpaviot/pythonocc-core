@@ -6,6 +6,7 @@ from OCC.Core.NCollection import *
 from OCC.Core.TDocStd import *
 from OCC.Core.CDM import *
 
+
 class XCAFApp_Application(TDocStd_Application):
     @staticmethod
     def GetApplication() -> XCAFApp_Application: ...
@@ -15,3 +16,4 @@ class XCAFApp_Application(TDocStd_Application):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

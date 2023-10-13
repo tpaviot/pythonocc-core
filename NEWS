@@ -7,12 +7,14 @@ This release requires opencascade-7.7.2
 
 * wrapper: bump swig version to 4.1.1
 
-* wrapper: new wrappers for RWPly, Unitsmethod
+* wrapper: new wrappers for RWPly, Unitsmethod, XDE
 
 * wrapper: handle TCollection_AsciiString, Standard_CString, TCollection_ExtendedString as
 python strings
 
 * wrapper: pickle objects that provide json serializer
+
+* wrapper: improve docstrings
 
 * dataexchange: glt importer/exporter, ply exporter, obj exporter
 

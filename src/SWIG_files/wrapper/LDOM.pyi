@@ -4,69 +4,71 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
-# classnotwrapped
+
+#classnotwrapped
 class LDOM_CharacterData: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_BasicElement: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_Text: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_DocumentType: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_XmlReader: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_BasicAttribute: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_Node: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_CDATASection: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_LDOMImplementation: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_Element: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_BasicNode: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_CharReference: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_MemManager: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_Comment: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_Document: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_Attr: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_NodeList: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_SBuffer: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_OSStream: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_XmlWriter: ...
 
-# classnotwrapped
+#classnotwrapped
 class LDOM_BasicText: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

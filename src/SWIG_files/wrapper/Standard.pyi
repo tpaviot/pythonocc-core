@@ -57,15 +57,9 @@ class standard:
     @staticmethod
     def Reallocate(aStorage: None, aNewSize: int) -> None: ...
     @staticmethod
-    def StackTrace(
-        theBuffer: str,
-        theBufferSize: int,
-        theNbTraces: int,
-        theContext: Optional[None] = None,
-        theNbTopSkip: Optional[int] = 0,
-    ) -> bool: ...
+    def StackTrace(theBuffer: str, theBufferSize: int, theNbTraces: int, theContext: Optional[None] = None, theNbTopSkip: Optional[int] = 0) -> bool: ...
 
-class Standard_ArrayStreamBuffer:
+class Standard_ArrayStreamBuffer():
     pass
 
 class Standard_Condition:
@@ -98,19 +92,7 @@ class Standard_GUID:
     @overload
     def __init__(self, aGuid: Standard_ExtString) -> None: ...
     @overload
-    def __init__(
-        self,
-        a32b: int,
-        a16b1: Standard_ExtCharacter,
-        a16b2: Standard_ExtCharacter,
-        a16b3: Standard_ExtCharacter,
-        a8b1: str,
-        a8b2: str,
-        a8b3: str,
-        a8b4: str,
-        a8b5: str,
-        a8b6: str,
-    ) -> None: ...
+    def __init__(self, a32b: int, a16b1: Standard_ExtCharacter, a16b2: Standard_ExtCharacter, a16b3: Standard_ExtCharacter, a8b1: str, a8b2: str, a8b3: str, a8b4: str, a8b5: str, a8b6: str) -> None: ...
     @overload
     def __init__(self, aGuid: Standard_UUID) -> None: ...
     @overload
@@ -205,14 +187,7 @@ class Standard_Failure(Standard_Transient):
     def SetStackString(self, theStack: str) -> None: ...
 
 class Standard_MMgrOpt(Standard_MMgrRoot):
-    def __init__(
-        self,
-        aClear: Optional[bool] = True,
-        aMMap: Optional[bool] = True,
-        aCellSize: Optional[int] = 200,
-        aNbPages: Optional[int] = 10000,
-        aThreshold: Optional[int] = 40000,
-    ) -> None: ...
+    def __init__(self, aClear: Optional[bool] = True, aMMap: Optional[bool] = True, aCellSize: Optional[int] = 200, aNbPages: Optional[int] = 10000, aThreshold: Optional[int] = 40000) -> None: ...
     def Allocate(self, aSize: int) -> None: ...
     def Free(self, thePtr: None) -> None: ...
     def Purge(self, isDestroyed: bool) -> int: ...
@@ -256,9 +231,7 @@ class Standard_Type(Standard_Transient):
     def Name(self) -> str: ...
     def Parent(self) -> Standard_Type: ...
     @staticmethod
-    def Register(
-        theSystemName: str, theName: str, theSize: int, theParent: Standard_Type
-    ) -> Standard_Type: ...
+    def Register(theSystemName: str, theName: str, theSize: int, theParent: Standard_Type) -> Standard_Type: ...
     def Size(self) -> int: ...
     @overload
     def SubType(self, theOther: Standard_Type) -> bool: ...
@@ -266,27 +239,28 @@ class Standard_Type(Standard_Transient):
     def SubType(self, theOther: str) -> bool: ...
     def SystemName(self) -> str: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_AncestorIterator: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_Static_Assert: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_CLocaleSentry: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_Mutex: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_ReadLineBuffer: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_ProgramError: ...
 
-# classnotwrapped
+#classnotwrapped
 class Standard_ReadBuffer: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

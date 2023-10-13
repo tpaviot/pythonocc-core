@@ -6,6 +6,7 @@ from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 from OCC.Core.TColStd import *
 
+
 class IntAna_ListOfCurve:
     def __init__(self) -> None: ...
     def __len__(self) -> int: ...
@@ -52,44 +53,8 @@ class IntAna_Curve:
     def IsFirstOpen(self) -> bool: ...
     def IsLastOpen(self) -> bool: ...
     def IsOpen(self) -> bool: ...
-    def SetConeQuadValues(
-        self,
-        Cone: gp_Cone,
-        Qxx: float,
-        Qyy: float,
-        Qzz: float,
-        Qxy: float,
-        Qxz: float,
-        Qyz: float,
-        Qx: float,
-        Qy: float,
-        Qz: float,
-        Q1: float,
-        Tol: float,
-        DomInf: float,
-        DomSup: float,
-        TwoZForATheta: bool,
-        ZIsPositive: bool,
-    ) -> None: ...
-    def SetCylinderQuadValues(
-        self,
-        Cylinder: gp_Cylinder,
-        Qxx: float,
-        Qyy: float,
-        Qzz: float,
-        Qxy: float,
-        Qxz: float,
-        Qyz: float,
-        Qx: float,
-        Qy: float,
-        Qz: float,
-        Q1: float,
-        Tol: float,
-        DomInf: float,
-        DomSup: float,
-        TwoZForATheta: bool,
-        ZIsPositive: bool,
-    ) -> None: ...
+    def SetConeQuadValues(self, Cone: gp_Cone, Qxx: float, Qyy: float, Qzz: float, Qxy: float, Qxz: float, Qyz: float, Qx: float, Qy: float, Qz: float, Q1: float, Tol: float, DomInf: float, DomSup: float, TwoZForATheta: bool, ZIsPositive: bool) -> None: ...
+    def SetCylinderQuadValues(self, Cylinder: gp_Cylinder, Qxx: float, Qyy: float, Qzz: float, Qxy: float, Qxz: float, Qyz: float, Qx: float, Qy: float, Qz: float, Q1: float, Tol: float, DomInf: float, DomSup: float, TwoZForATheta: bool, ZIsPositive: bool) -> None: ...
     def SetDomain(self, theFirst: float, theLast: float) -> None: ...
     def SetIsFirstOpen(self, Flag: bool) -> None: ...
     def SetIsLastOpen(self, Flag: bool) -> None: ...
@@ -119,14 +84,7 @@ class IntAna_IntConicQuad:
     @overload
     def __init__(self, H: gp_Hypr, Q: IntAna_Quadric) -> None: ...
     @overload
-    def __init__(
-        self,
-        L: gp_Lin,
-        P: gp_Pln,
-        Tolang: float,
-        Tol: Optional[float] = 0,
-        Len: Optional[float] = 0,
-    ) -> None: ...
+    def __init__(self, L: gp_Lin, P: gp_Pln, Tolang: float, Tol: Optional[float] = 0, Len: Optional[float] = 0) -> None: ...
     @overload
     def __init__(self, C: gp_Circ, P: gp_Pln, Tolang: float, Tol: float) -> None: ...
     @overload
@@ -151,14 +109,7 @@ class IntAna_IntConicQuad:
     @overload
     def Perform(self, H: gp_Hypr, Q: IntAna_Quadric) -> None: ...
     @overload
-    def Perform(
-        self,
-        L: gp_Lin,
-        P: gp_Pln,
-        Tolang: float,
-        Tol: Optional[float] = 0,
-        Len: Optional[float] = 0,
-    ) -> None: ...
+    def Perform(self, L: gp_Lin, P: gp_Pln, Tolang: float, Tol: Optional[float] = 0, Len: Optional[float] = 0) -> None: ...
     @overload
     def Perform(self, C: gp_Circ, P: gp_Pln, Tolang: float, Tol: float) -> None: ...
     @overload
@@ -210,14 +161,7 @@ class IntAna_QuadQuadGeo:
     @overload
     def __init__(self, P1: gp_Pln, P2: gp_Pln, TolAng: float, Tol: float) -> None: ...
     @overload
-    def __init__(
-        self,
-        P: gp_Pln,
-        C: gp_Cylinder,
-        Tolang: float,
-        Tol: float,
-        H: Optional[float] = 0,
-    ) -> None: ...
+    def __init__(self, P: gp_Pln, C: gp_Cylinder, Tolang: float, Tol: float, H: Optional[float] = 0) -> None: ...
     @overload
     def __init__(self, P: gp_Pln, S: gp_Sphere) -> None: ...
     @overload
@@ -256,14 +200,7 @@ class IntAna_QuadQuadGeo:
     @overload
     def Perform(self, P1: gp_Pln, P2: gp_Pln, TolAng: float, Tol: float) -> None: ...
     @overload
-    def Perform(
-        self,
-        P: gp_Pln,
-        C: gp_Cylinder,
-        Tolang: float,
-        Tol: float,
-        H: Optional[float] = 0,
-    ) -> None: ...
+    def Perform(self, P: gp_Pln, C: gp_Cylinder, Tolang: float, Tol: float, H: Optional[float] = 0) -> None: ...
     @overload
     def Perform(self, P: gp_Pln, S: gp_Sphere) -> None: ...
     @overload
@@ -304,16 +241,8 @@ class IntAna_Quadric:
     def __init__(self, Cyl: gp_Cylinder) -> None: ...
     @overload
     def __init__(self, Cone: gp_Cone) -> None: ...
-    def Coefficients(
-        self,
-    ) -> Tuple[
-        float, float, float, float, float, float, float, float, float, float
-    ]: ...
-    def NewCoefficients(
-        self, Axis: gp_Ax3
-    ) -> Tuple[
-        float, float, float, float, float, float, float, float, float, float
-    ]: ...
+    def Coefficients(self) -> Tuple[float, float, float, float, float, float, float, float, float, float]: ...
+    def NewCoefficients(self, Axis: gp_Ax3) -> Tuple[float, float, float, float, float, float, float, float, float, float]: ...
     @overload
     def SetQuadric(self, P: gp_Pln) -> None: ...
     @overload
@@ -327,3 +256,4 @@ class IntAna_Quadric:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HERMITDOCSTRING
 "Hermit module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_hermit.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_hermit.html"
 %enddef
 %module (package="OCC.Core", docstring=HERMITDOCSTRING) Hermit
 
@@ -87,58 +87,61 @@ class Hermit {
 		/****************** Solution ******************/
 		/**** md5 signature: 09f17358299a55b10621c9b761fd7966 ****/
 		%feature("compactdefaultargs") Solution;
-		%feature("autodoc", "Returns the correct spline a(u) which will be multiplicated with bs later.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom_BSplineCurve
-TolPoles: float,optional
-	default value is 0.000001
-TolKnots: float,optional
-	default value is 0.000001
+TolPoles: float (optional, default to 0.000001)
+TolKnots: float (optional, default to 0.000001)
 
-Returns
+Return
 -------
 opencascade::handle<Geom2d_BSplineCurve>
+
+Description
+-----------
+Returns the correct spline a(u) which will be multiplicated with bs later.
 ") Solution;
 		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 
 		/****************** Solution ******************/
 		/**** md5 signature: 49129ffe8056f7bced41bcc0d1d841e1 ****/
 		%feature("compactdefaultargs") Solution;
-		%feature("autodoc", "Returns the correct spline a(u) which will be multiplicated with bs later.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-TolPoles: float,optional
-	default value is 0.000001
-TolKnots: float,optional
-	default value is 0.000001
+TolPoles: float (optional, default to 0.000001)
+TolKnots: float (optional, default to 0.000001)
 
-Returns
+Return
 -------
 opencascade::handle<Geom2d_BSplineCurve>
+
+Description
+-----------
+Returns the correct spline a(u) which will be multiplicated with bs later.
 ") Solution;
 		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 
 		/****************** Solutionbis ******************/
 		/**** md5 signature: 3bce282eb0b1307dc53349f35dd12afa ****/
 		%feature("compactdefaultargs") Solutionbis;
-		%feature("autodoc", "Returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom_BSplineCurve
-TolPoles: float,optional
-	default value is 0.000001
-TolKnots: float,optional
-	default value is 0.000001
+TolPoles: float (optional, default to 0.000001)
+TolKnots: float (optional, default to 0.000001)
 
-Returns
+Return
 -------
 Knotmin: float
 Knotmax: float
+
+Description
+-----------
+Returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 ") Solutionbis;
 		static void Solutionbis(const opencascade::handle<Geom_BSplineCurve> & BS, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BLENDDOCSTRING
 "Blend module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_blend.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_blend.html"
 %enddef
 %module (package="OCC.Core", docstring=BLENDDOCSTRING) Blend
 
@@ -152,110 +152,128 @@ class Blend_AppFunction : public math_FunctionSetWithDerivatives {
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each of the 4 variables. returns in the vector supbound the greatest values allowed for each of the 4 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each of the 4 variables. returns in the vector supbound the greatest values allowed for each of the 4 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: cf2ae1edac6b9f39bab29773592817f0 ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 12015ca7787e9fa6bcf5f820d6632375 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****************** GetSectionSize ******************/
 		/**** md5 signature: f308791ef8ed681d6654100e81e995bd ****/
 		%feature("compactdefaultargs") GetSectionSize;
-		%feature("autodoc", "Returns the length of the maximum section.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the length of the maximum section.
 ") GetSectionSize;
 		virtual Standard_Real GetSectionSize();
 
 		/****************** GetShape ******************/
 		/**** md5 signature: 4c9523caad94a60010e14bbca0ff20fc ****/
 		%feature("compactdefaultargs") GetShape;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 NbPoles: int
 NbKnots: int
 Degree: int
 NbPoles2d: int
+
+Description
+-----------
+No available documentation.
 ") GetShape;
 		virtual void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each of the 4 variables; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each of the 4 variables; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 715ff82186a1d1cd1f2816a9fc072567 ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BoundTol: float
@@ -264,181 +282,215 @@ AngleTol: float
 Tol3d: math_Vector
 Tol1D: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
-
+		%feature("autodoc", "
 Parameters
 ----------
 T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** IsRational ******************/
 		/**** md5 signature: e2d546fe827c13e22032dacc2ce90819 ****/
 		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "Returns if the section is rationnal.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns if the section is rationnal.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** Knots ******************/
 		/**** md5 signature: 12a741eefe4a6b12fefe540137e600a7 ****/
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TKnots: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		/**** md5 signature: eca3dd33252e6a889c9236a94758c0f8 ****/
 		%feature("compactdefaultargs") Mults;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TMults: TColStd_Array1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbIntervals ******************/
 		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
 		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: GeomAbs_Shape
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: 9592108ebf305562827d51d05d64eecc ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns the number of variables of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
 		/****************** Parameter ******************/
 		/**** md5 signature: e076698f3af75bcd0d5e9b5ebefa203d ****/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "Returns the parameter of the point p. used to impose the parameters in the approximation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the parameter of the point p. used to impose the parameters in the approximation.
 ") Parameter;
 		Standard_Real Parameter(const Blend_Point & P);
 
 		/****************** Pnt1 ******************/
 		/**** md5 signature: bb9bfa59c92a2029f6434d5fcd5fa96c ****/
 		%feature("compactdefaultargs") Pnt1;
-		%feature("autodoc", "Returns the point on the first support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first support.
 ") Pnt1;
 		virtual const gp_Pnt Pnt1();
 
 		/****************** Pnt2 ******************/
 		/**** md5 signature: dfef6173347bf841f782a073bb54623f ****/
 		%feature("compactdefaultargs") Pnt2;
-		%feature("autodoc", "Returns the point on the first support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first support.
 ") Pnt2;
 		virtual const gp_Pnt Pnt2();
 
 		/****************** Resolution ******************/
 		/**** md5 signature: 9817e96f28a752e33f073053bde0ba81 ****/
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 IC2d: int
 Tol: float
 
-Returns
+Return
 -------
 TolU: float
 TolV: float
+
+Description
+-----------
+No available documentation.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Section ******************/
 		/**** md5 signature: e37bbcbd1ce3013637ce65f73847d93d ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -449,17 +501,20 @@ DPoles2d: TColgp_Array1OfVec2d
 Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: a53c7695ddb71364b3f1a57ab3437f2c ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -467,17 +522,20 @@ Poles: TColgp_Array1OfPnt
 Poles2d: TColgp_Array1OfPnt2d
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Section;
 		virtual void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: 45cb2fd4a3176732a1653dca67ba6422 ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -491,73 +549,89 @@ Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 D2Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
 		/**** md5 signature: 6ea1b4b1c732128de882a7f7a3bdd939 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Param: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
 		/****************** Set ******************/
 		/**** md5 signature: 72dca3214392c1598e10f82965feedf7 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 First: float
 Last: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -579,134 +653,159 @@ class Blend_CurvPointFuncInv : public math_FunctionSetWithDerivatives {
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 3.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 3.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
 		/****************** Set ******************/
 		/**** md5 signature: 4a9881a4a80757c31b5543d94b3ea3d9 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Set the point on which a solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the point on which a solution has to be found.
 ") Set;
 		virtual void Set(const gp_Pnt & P);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -728,135 +827,160 @@ class Blend_FuncInv : public math_FunctionSetWithDerivatives {
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each of the 4 variables. returns in the vector supbound the greatest values allowed for each of the 4 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each of the 4 variables. returns in the vector supbound the greatest values allowed for each of the 4 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each of the 4 variables; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each of the 4 variables; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 4.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 4.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
 		/****************** Set ******************/
 		/**** md5 signature: 3e783af1d10cfe5251f5d68b2e1a28b8 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the curveonsurface on which a solution has to be found. if <onfirst> is set to standard_true, the curve will be on the first surface, otherwise the curve is on the second one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 OnFirst: bool
 COnSurf: Adaptor2d_Curve2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the curveonsurface on which a solution has to be found. if <onfirst> is set to standard_true, the curve will be on the first surface, otherwise the curve is on the second one.
 ") Set;
 		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -877,19 +1001,20 @@ class Blend_Point {
 		/****************** Blend_Point ******************/
 		/**** md5 signature: a7dc6a3a5883092f5a0ad44324b7501d ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Blend_Point;
 		 Blend_Point();
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: bfd92b440e1bbdd329053c69a4608140 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on 2 surfaces, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -904,17 +1029,20 @@ Tg2: gp_Vec
 Tg12d: gp_Vec2d
 Tg22d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on 2 surfaces, with tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const gp_Vec & Tg1, const gp_Vec & Tg2, const gp_Vec2d & Tg12d, const gp_Vec2d & Tg22d);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: 0fb76c701b6a53b225023640137583ef ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on 2 surfaces, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -925,17 +1053,20 @@ V1: float
 U2: float
 V2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on 2 surfaces, without tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: 7601a289d490e51aebd651c222437121 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on a surface and a curve, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pts: gp_Pnt
@@ -948,17 +1079,20 @@ Tgs: gp_Vec
 Tgc: gp_Vec
 Tg2d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on a surface and a curve, with tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pts, const gp_Pnt & Ptc, const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W, const gp_Vec & Tgs, const gp_Vec & Tgc, const gp_Vec2d & Tg2d);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: 03f8ef157b71345a764df7379c28b348 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on a surface and a curve, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pts: gp_Pnt
@@ -968,17 +1102,20 @@ U: float
 V: float
 W: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on a surface and a curve, without tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pts, const gp_Pnt & Ptc, const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: aeb9c99a45a2b2f0e7c0a322d8eb1ec8 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on a surface and a curve on surface, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -994,17 +1131,20 @@ Tg2: gp_Vec
 Tg12d: gp_Vec2d
 Tg22d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on a surface and a curve on surface, with tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC, const gp_Vec & Tg1, const gp_Vec & Tg2, const gp_Vec2d & Tg12d, const gp_Vec2d & Tg22d);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: 3ae3cb9415d4ffaa99cf099b121c1a74 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on a surface and a curve on surface, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1016,17 +1156,20 @@ U2: float
 V2: float
 PC: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on a surface and a curve on surface, without tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: 412dcf133da7d04dc340c64f4a96b385 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on two curves on surfaces, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1043,17 +1186,20 @@ Tg2: gp_Vec
 Tg12d: gp_Vec2d
 Tg22d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on two curves on surfaces, with tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC1, const Standard_Real PC2, const gp_Vec & Tg1, const gp_Vec & Tg2, const gp_Vec2d & Tg12d, const gp_Vec2d & Tg22d);
 
 		/****************** Blend_Point ******************/
 		/**** md5 signature: 681c03baf2a5e55e7f0e7ea3fad4a3a7 ****/
 		%feature("compactdefaultargs") Blend_Point;
-		%feature("autodoc", "Creates a point on two curves on surfaces, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1066,198 +1212,235 @@ V2: float
 PC1: float
 PC2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on two curves on surfaces, with tangents.
 ") Blend_Point;
 		 Blend_Point(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC1, const Standard_Real PC2);
 
 		/****************** IsTangencyPoint ******************/
 		/**** md5 signature: a9c9faea523a7d80ff8416e04b887e70 ****/
 		%feature("compactdefaultargs") IsTangencyPoint;
-		%feature("autodoc", "Returns standard_true if it was not possible to compute the tangent vectors at pointons1 and/or pointons2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if it was not possible to compute the tangent vectors at pointons1 and/or pointons2.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
 		/****************** Parameter ******************/
 		/**** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ****/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") Parameter;
 		Standard_Real Parameter();
 
 		/****************** ParameterOnC ******************/
 		/**** md5 signature: ec9af703468ce0fd8ed5aa736ef095ff ****/
 		%feature("compactdefaultargs") ParameterOnC;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") ParameterOnC;
 		Standard_Real ParameterOnC();
 
 		/****************** ParameterOnC1 ******************/
 		/**** md5 signature: 9841a291b54b176d5fffb2beae83c142 ****/
 		%feature("compactdefaultargs") ParameterOnC1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") ParameterOnC1;
 		Standard_Real ParameterOnC1();
 
 		/****************** ParameterOnC2 ******************/
 		/**** md5 signature: 3edd96ad6a6089fd8c0830a29f8b8dec ****/
 		%feature("compactdefaultargs") ParameterOnC2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") ParameterOnC2;
 		Standard_Real ParameterOnC2();
 
 		/****************** ParametersOnS ******************/
 		/**** md5 signature: b7e9d5b50df021c8af5af493baffd0b4 ****/
 		%feature("compactdefaultargs") ParametersOnS;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 U: float
 V: float
+
+Description
+-----------
+No available documentation.
 ") ParametersOnS;
 		void ParametersOnS(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** ParametersOnS1 ******************/
 		/**** md5 signature: 65a097ef44a5cf9a58ab746f2da6c181 ****/
 		%feature("compactdefaultargs") ParametersOnS1;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 U: float
 V: float
+
+Description
+-----------
+No available documentation.
 ") ParametersOnS1;
 		void ParametersOnS1(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** ParametersOnS2 ******************/
 		/**** md5 signature: 77976f8d675bab277c77e4c02c68ee8f ****/
 		%feature("compactdefaultargs") ParametersOnS2;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 U: float
 V: float
+
+Description
+-----------
+No available documentation.
 ") ParametersOnS2;
 		void ParametersOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** PointOnC ******************/
 		/**** md5 signature: 86876235494ef8da7ca49324811ac0e0 ****/
 		%feature("compactdefaultargs") PointOnC;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") PointOnC;
 		const gp_Pnt PointOnC();
 
 		/****************** PointOnC1 ******************/
 		/**** md5 signature: c2e08b2848fd3090c35b3eade37ef0ff ****/
 		%feature("compactdefaultargs") PointOnC1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") PointOnC1;
 		const gp_Pnt PointOnC1();
 
 		/****************** PointOnC2 ******************/
 		/**** md5 signature: 1a44b9d6f084b6ebd1d95746e937f2c5 ****/
 		%feature("compactdefaultargs") PointOnC2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") PointOnC2;
 		const gp_Pnt PointOnC2();
 
 		/****************** PointOnS ******************/
 		/**** md5 signature: 7701a4dd49c389b38b1770bec82a60cd ****/
 		%feature("compactdefaultargs") PointOnS;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") PointOnS;
 		const gp_Pnt PointOnS();
 
 		/****************** PointOnS1 ******************/
 		/**** md5 signature: d0887da6b7c195fe6f26541a1fe42cb2 ****/
 		%feature("compactdefaultargs") PointOnS1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
 		/****************** PointOnS2 ******************/
 		/**** md5 signature: 75828b1eec68cc5ffaaaa49216ae261a ****/
 		%feature("compactdefaultargs") PointOnS2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
 		/****************** SetParameter ******************/
 		/**** md5 signature: 26222f3f8c770197bec88d8e30e2baa3 ****/
 		%feature("compactdefaultargs") SetParameter;
-		%feature("autodoc", "Changes parameter on existing point.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Param: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes parameter on existing point.
 ") SetParameter;
 		void SetParameter(const Standard_Real Param);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 234a6a1e07e1c1d8d9bffffb81b4d76f ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Set the values for a point on 2 surfaces, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1272,17 +1455,20 @@ Tg2: gp_Vec
 Tg12d: gp_Vec2d
 Tg22d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the values for a point on 2 surfaces, with tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const gp_Vec & Tg1, const gp_Vec & Tg2, const gp_Vec2d & Tg12d, const gp_Vec2d & Tg22d);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 873da2d681b7c23b1554d86bc11bc682 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Set the values for a point on 2 surfaces, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1293,17 +1479,20 @@ V1: float
 U2: float
 V2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the values for a point on 2 surfaces, without tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 41c56f1035ba568b921511edcae6b145 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Set the values for a point on a surface and a curve, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pts: gp_Pnt
@@ -1316,17 +1505,20 @@ Tgs: gp_Vec
 Tgc: gp_Vec
 Tg2d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the values for a point on a surface and a curve, with tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pts, const gp_Pnt & Ptc, const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W, const gp_Vec & Tgs, const gp_Vec & Tgc, const gp_Vec2d & Tg2d);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 3df8f22482d57a6d0df3c49499af12d4 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Set the values for a point on a surface and a curve, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pts: gp_Pnt
@@ -1336,17 +1528,20 @@ U: float
 V: float
 W: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the values for a point on a surface and a curve, without tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pts, const gp_Pnt & Ptc, const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 79243c566947946429fbf9d45a4a270a ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Creates a point on a surface and a curve on surface, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1362,17 +1557,20 @@ Tg2: gp_Vec
 Tg12d: gp_Vec2d
 Tg22d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on a surface and a curve on surface, with tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC, const gp_Vec & Tg1, const gp_Vec & Tg2, const gp_Vec2d & Tg12d, const gp_Vec2d & Tg22d);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: fcfa5044db6ab2c8ff1ff3e7611086db ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Creates a point on a surface and a curve on surface, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1384,17 +1582,20 @@ U2: float
 V2: float
 PC: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on a surface and a curve on surface, without tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: ca436d03badc3f9852ac9491c1653d76 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Creates a point on two curves on surfaces, with tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1411,17 +1612,20 @@ Tg2: gp_Vec
 Tg12d: gp_Vec2d
 Tg22d: gp_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on two curves on surfaces, with tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC1, const Standard_Real PC2, const gp_Vec & Tg1, const gp_Vec & Tg2, const gp_Vec2d & Tg12d, const gp_Vec2d & Tg22d);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: b71555f540c1f3ef7c5e6745a1bfa800 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Creates a point on two curves on surfaces, without tangents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1434,17 +1638,20 @@ V2: float
 PC1: float
 PC2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on two curves on surfaces, without tangents.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real PC1, const Standard_Real PC2);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 49eafa49e2fecfee4281cb0ffd3f18b2 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Creates a point on two curves.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt1: gp_Pnt
@@ -1453,108 +1660,130 @@ Param: float
 PC1: float
 PC2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point on two curves.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt1, const gp_Pnt & Pt2, const Standard_Real Param, const Standard_Real PC1, const Standard_Real PC2);
 
 		/****************** Tangent2d ******************/
 		/**** md5 signature: 45c4e6751bb86fa909ea384a33007ff3 ****/
 		%feature("compactdefaultargs") Tangent2d;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+No available documentation.
 ") Tangent2d;
 		gp_Vec2d Tangent2d();
 
 		/****************** Tangent2dOnS1 ******************/
 		/**** md5 signature: 1272a269793969dd1430e2756ce7faa2 ****/
 		%feature("compactdefaultargs") Tangent2dOnS1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+No available documentation.
 ") Tangent2dOnS1;
 		gp_Vec2d Tangent2dOnS1();
 
 		/****************** Tangent2dOnS2 ******************/
 		/**** md5 signature: 4dfd24a1437d0c42574ef4b6ea11a58e ****/
 		%feature("compactdefaultargs") Tangent2dOnS2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+No available documentation.
 ") Tangent2dOnS2;
 		gp_Vec2d Tangent2dOnS2();
 
 		/****************** TangentOnC ******************/
 		/**** md5 signature: b61d65d6519e567760e4657923cd2fc7 ****/
 		%feature("compactdefaultargs") TangentOnC;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+No available documentation.
 ") TangentOnC;
 		const gp_Vec TangentOnC();
 
 		/****************** TangentOnC1 ******************/
 		/**** md5 signature: f6d4e0b928aa813efbc0e69a661fbd6b ****/
 		%feature("compactdefaultargs") TangentOnC1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+No available documentation.
 ") TangentOnC1;
 		const gp_Vec TangentOnC1();
 
 		/****************** TangentOnC2 ******************/
 		/**** md5 signature: 1a02192f5a7755535661f3b54d08dad0 ****/
 		%feature("compactdefaultargs") TangentOnC2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+No available documentation.
 ") TangentOnC2;
 		const gp_Vec TangentOnC2();
 
 		/****************** TangentOnS ******************/
 		/**** md5 signature: 6a76df7a0ec21039226ae1d5b4797449 ****/
 		%feature("compactdefaultargs") TangentOnS;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+No available documentation.
 ") TangentOnS;
 		const gp_Vec TangentOnS();
 
 		/****************** TangentOnS1 ******************/
 		/**** md5 signature: 5f25bebb313d4cf43ba40f8884ebd1d5 ****/
 		%feature("compactdefaultargs") TangentOnS1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
 		/****************** TangentOnS2 ******************/
 		/**** md5 signature: 669f5d85c695d94605c7169a969c3d0f ****/
 		%feature("compactdefaultargs") TangentOnS2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
@@ -1576,134 +1805,159 @@ class Blend_SurfCurvFuncInv : public math_FunctionSetWithDerivatives {
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 3.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 3.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
 		/****************** Set ******************/
 		/**** md5 signature: 0289f8e5f7cd6af48b5eae57db73f4e7 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Set the point on which a solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Rst: Adaptor2d_Curve2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the point on which a solution has to be found.
 ") Set;
 		virtual void Set(const opencascade::handle<Adaptor2d_Curve2d> & Rst);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1725,134 +1979,159 @@ class Blend_SurfPointFuncInv : public math_FunctionSetWithDerivatives {
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 3.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 3.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
 		/****************** Set ******************/
 		/**** md5 signature: 4a9881a4a80757c31b5543d94b3ea3d9 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Set the point on which a solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the point on which a solution has to be found.
 ") Set;
 		virtual void Set(const gp_Pnt & P);
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1874,84 +2153,97 @@ class Blend_CSFunction : public Blend_AppFunction {
 		/****************** Derivatives ******************/
 		/**** md5 signature: c60b01ffce645ba10de0d0dd29e52621 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: a9cc8ec57e6a0e9552f8363868e13158 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: b7112b2680da59932f7cc20412f85fda ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
 		/****************** GetShape ******************/
 		/**** md5 signature: d75b859b3c85b25da6eb170dbb54b253 ****/
 		%feature("compactdefaultargs") GetShape;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 NbPoles: int
 NbKnots: int
 Degree: int
 NbPoles2d: int
+
+Description
+-----------
+No available documentation.
 ") GetShape;
 		virtual void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: af65e9b58b7bf33236f13175c966b116 ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: b003f4e25a542d1d51f0aa55a3ba3736 ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BoundTol: float
@@ -1960,162 +2252,192 @@ AngleTol: float
 Tol3d: math_Vector
 Tol1D: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: c4d9b6173080bbe41930f57f761b358a ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** IsTangencyPoint ******************/
 		/**** md5 signature: bc14917d31fcf3cabe33ced86387ccb2 ****/
 		%feature("compactdefaultargs") IsTangencyPoint;
-		%feature("autodoc", "Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonc.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonc.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
 		/****************** Knots ******************/
 		/**** md5 signature: 7217dc04d97a88d879fb10243ef0ff84 ****/
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TKnots: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		/**** md5 signature: d5aaf85aa69579f8450d264b586aa0c5 ****/
 		%feature("compactdefaultargs") Mults;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TMults: TColStd_Array1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: 4d84b2deb010fe97e393013aa23555cb ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: 28ab91d0183585502101892aac2c5b98 ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 3 (default value). can be redefined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 3 (default value). can be redefined.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
 		/****************** ParameterOnC ******************/
 		/**** md5 signature: 3ee25b1771c48c373d531895fa2c2541 ****/
 		%feature("compactdefaultargs") ParameterOnC;
-		%feature("autodoc", "Returns parameter of the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns parameter of the point on the curve.
 ") ParameterOnC;
 		virtual Standard_Real ParameterOnC();
 
 		/****************** Pnt1 ******************/
 		/**** md5 signature: 4f470306a8227b896b7c05eb38438d0f ****/
 		%feature("compactdefaultargs") Pnt1;
-		%feature("autodoc", "Returns the point on the first support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first support.
 ") Pnt1;
 		const gp_Pnt Pnt1();
 
 		/****************** Pnt2 ******************/
 		/**** md5 signature: 529484ef7f205d7eb6acc8c69fc3a526 ****/
 		%feature("compactdefaultargs") Pnt2;
-		%feature("autodoc", "Returns the point on the seconde support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the seconde support.
 ") Pnt2;
 		const gp_Pnt Pnt2();
 
 		/****************** Pnt2d ******************/
 		/**** md5 signature: 98c5a7fd07fdcda4e5dba3da570105de ****/
 		%feature("compactdefaultargs") Pnt2d;
-		%feature("autodoc", "Returns u,v coordinates of the point on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt2d
+
+Description
+-----------
+Returns u,v coordinates of the point on the surface.
 ") Pnt2d;
 		virtual const gp_Pnt2d Pnt2d();
 
 		/****************** PointOnC ******************/
 		/**** md5 signature: 72d1e1aab7382a71b140bd978aafe6e6 ****/
 		%feature("compactdefaultargs") PointOnC;
-		%feature("autodoc", "Returns the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the curve.
 ") PointOnC;
 		virtual const gp_Pnt PointOnC();
 
 		/****************** PointOnS ******************/
 		/**** md5 signature: 013821b07617cbc53368c5db469ac944 ****/
 		%feature("compactdefaultargs") PointOnS;
-		%feature("autodoc", "Returns the point on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the surface.
 ") PointOnS;
 		virtual const gp_Pnt PointOnS();
 
 		/****************** Section ******************/
 		/**** md5 signature: d17c7b4e4429cd6da9985ae3038cac7b ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2126,17 +2448,20 @@ DPoles2d: TColgp_Array1OfVec2d
 Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: 9531086ca076494a0288f5c16aeced84 ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2144,17 +2469,20 @@ Poles: TColgp_Array1OfPnt
 Poles2d: TColgp_Array1OfPnt2d
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Section;
 		virtual void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2168,48 +2496,57 @@ Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 D2Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
 		/**** md5 signature: 286270fbc9c8fb757614552f83022989 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Param: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
 		/****************** Set ******************/
 		/**** md5 signature: b826ab2c56e152ee3d20beec43f6886a ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 First: float
 Last: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
 		/****************** Tangent ******************/
 		/**** md5 signature: 8100f17d5878c22baefba9bff6f0bbfc ****/
 		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.
-
+		%feature("autodoc", "
 Parameters
 ----------
 U: float
@@ -2217,75 +2554,91 @@ V: float
 TgS: gp_Vec
 NormS: gp_Vec
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.
 ") Tangent;
 		virtual void Tangent(const Standard_Real U, const Standard_Real V, gp_Vec & TgS, gp_Vec & NormS);
 
 		/****************** Tangent2d ******************/
 		/**** md5 signature: c48013a45ce6ec3d80c1c72ade10ff86 ****/
 		%feature("compactdefaultargs") Tangent2d;
-		%feature("autodoc", "Returns the tangent vector at pointons, in the parametric space of the first surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointons, in the parametric space of the first surface.
 ") Tangent2d;
 		virtual const gp_Vec2d Tangent2d();
 
 		/****************** TangentOnC ******************/
 		/**** md5 signature: 58e664a9ca5473e0441364716f57cf5c ****/
 		%feature("compactdefaultargs") TangentOnC;
-		%feature("autodoc", "Returns the tangent vector at pointonc, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointonc, in 3d space.
 ") TangentOnC;
 		virtual const gp_Vec TangentOnC();
 
 		/****************** TangentOnS ******************/
 		/**** md5 signature: bbacad8d903559279b1b81084b808831 ****/
 		%feature("compactdefaultargs") TangentOnS;
-		%feature("autodoc", "Returns the tangent vector at pointons, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointons, in 3d space.
 ") TangentOnS;
 		virtual const gp_Vec TangentOnS();
 
 		/****************** Value ******************/
 		/**** md5 signature: b0387de9cd1734a40485d48cedef6a76 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: d556c7ffdb173f46002b6da3b467da1a ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -2307,74 +2660,85 @@ class Blend_Function : public Blend_AppFunction {
 		/****************** IsTangencyPoint ******************/
 		/**** md5 signature: bc14917d31fcf3cabe33ced86387ccb2 ****/
 		%feature("compactdefaultargs") IsTangencyPoint;
-		%feature("autodoc", "Returns true when it is not possible to compute the tangent vectors at pointons1 and/or pointons2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when it is not possible to compute the tangent vectors at pointons1 and/or pointons2.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 4.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 4.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
 		/****************** Pnt1 ******************/
 		/**** md5 signature: 4f470306a8227b896b7c05eb38438d0f ****/
 		%feature("compactdefaultargs") Pnt1;
-		%feature("autodoc", "Returns the point on the first support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first support.
 ") Pnt1;
 		const gp_Pnt Pnt1();
 
 		/****************** Pnt2 ******************/
 		/**** md5 signature: 529484ef7f205d7eb6acc8c69fc3a526 ****/
 		%feature("compactdefaultargs") Pnt2;
-		%feature("autodoc", "Returns the point on the seconde support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the seconde support.
 ") Pnt2;
 		const gp_Pnt Pnt2();
 
 		/****************** PointOnS1 ******************/
 		/**** md5 signature: e58403c65e5edf32a9edbcf0e168fab8 ****/
 		%feature("compactdefaultargs") PointOnS1;
-		%feature("autodoc", "Returns the point on the first surface, at parameter sol(1),sol(2) (sol is the vector used in the call of issolution.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first surface, at parameter sol(1),sol(2) (sol is the vector used in the call of issolution.
 ") PointOnS1;
 		virtual const gp_Pnt PointOnS1();
 
 		/****************** PointOnS2 ******************/
 		/**** md5 signature: 90f3bce294e1c981e6cda4d330349d11 ****/
 		%feature("compactdefaultargs") PointOnS2;
-		%feature("autodoc", "Returns the point on the second surface, at parameter sol(3),sol(4) (sol is the vector used in the call of issolution.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the second surface, at parameter sol(3),sol(4) (sol is the vector used in the call of issolution.
 ") PointOnS2;
 		virtual const gp_Pnt PointOnS2();
 
 		/****************** Section ******************/
 		/**** md5 signature: 9531086ca076494a0288f5c16aeced84 ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2382,17 +2746,20 @@ Poles: TColgp_Array1OfPnt
 Poles2d: TColgp_Array1OfPnt2d
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Section;
 		virtual void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2406,17 +2773,20 @@ Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 D2Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Tangent ******************/
 		/**** md5 signature: 3252786305dce127fe04fa1e2579538c ****/
 		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.
-
+		%feature("autodoc", "
 Parameters
 ----------
 U1: float
@@ -2428,75 +2798,91 @@ TgLast: gp_Vec
 NormFirst: gp_Vec
 NormLast: gp_Vec
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.
 ") Tangent;
 		virtual void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
 		/****************** Tangent2dOnS1 ******************/
 		/**** md5 signature: 2a59119466b3a4cdf5aa70fac0d4673e ****/
 		%feature("compactdefaultargs") Tangent2dOnS1;
-		%feature("autodoc", "Returns the tangent vector at pointons1, in the parametric space of the first surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointons1, in the parametric space of the first surface.
 ") Tangent2dOnS1;
 		virtual const gp_Vec2d Tangent2dOnS1();
 
 		/****************** Tangent2dOnS2 ******************/
 		/**** md5 signature: 7cba5607584f29ebc7287a1682ba057b ****/
 		%feature("compactdefaultargs") Tangent2dOnS2;
-		%feature("autodoc", "Returns the tangent vector at pointons2, in the parametric space of the second surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointons2, in the parametric space of the second surface.
 ") Tangent2dOnS2;
 		virtual const gp_Vec2d Tangent2dOnS2();
 
 		/****************** TangentOnS1 ******************/
 		/**** md5 signature: ace4d9e311e56c4a9713d23ae479ef04 ****/
 		%feature("compactdefaultargs") TangentOnS1;
-		%feature("autodoc", "Returns the tangent vector at pointons1, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointons1, in 3d space.
 ") TangentOnS1;
 		virtual const gp_Vec TangentOnS1();
 
 		/****************** TangentOnS2 ******************/
 		/**** md5 signature: 42dd8da874c679c750083aa2087aaab2 ****/
 		%feature("compactdefaultargs") TangentOnS2;
-		%feature("autodoc", "Returns the tangent vector at pointons2, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointons2, in 3d space.
 ") TangentOnS2;
 		virtual const gp_Vec TangentOnS2();
 
 		/****************** TwistOnS1 ******************/
 		/**** md5 signature: dd9947ed547cb2cee949777b51c7c043 ****/
 		%feature("compactdefaultargs") TwistOnS1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") TwistOnS1;
 		virtual Standard_Boolean TwistOnS1();
 
 		/****************** TwistOnS2 ******************/
 		/**** md5 signature: c424e63584af9a9bd189a3ad5a9cbe61 ****/
 		%feature("compactdefaultargs") TwistOnS2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") TwistOnS2;
 		virtual Standard_Boolean TwistOnS2();
 
@@ -2518,8 +2904,7 @@ class Blend_RstRstFunction : public Blend_AppFunction {
 		/****************** Decroch ******************/
 		/**** md5 signature: da370598160a8d3edc9c9ec6cd6bbc5c ****/
 		%feature("compactdefaultargs") Decroch;
-		%feature("autodoc", "Enables to implement a criterion of decrochage specific to the function. warning: can be called without previous call of issolution but the values calculated can be senseless.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
@@ -2528,119 +2913,141 @@ TgRst1: gp_Vec
 NRst2: gp_Vec
 TgRst2: gp_Vec
 
-Returns
+Return
 -------
 Blend_DecrochStatus
+
+Description
+-----------
+Enables to implement a criterion of decrochage specific to the function. warning: can be called without previous call of issolution but the values calculated can be senseless.
 ") Decroch;
 		virtual Blend_DecrochStatus Decroch(const math_Vector & Sol, gp_Vec & NRst1, gp_Vec & TgRst1, gp_Vec & NRst2, gp_Vec & TgRst2);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: e8742e6ed5aa58b10280098f76f7ab1d ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 12015ca7787e9fa6bcf5f820d6632375 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****************** GetSectionSize ******************/
 		/**** md5 signature: f308791ef8ed681d6654100e81e995bd ****/
 		%feature("compactdefaultargs") GetSectionSize;
-		%feature("autodoc", "Returns the length of the maximum section.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the length of the maximum section.
 ") GetSectionSize;
 		virtual Standard_Real GetSectionSize();
 
 		/****************** GetShape ******************/
 		/**** md5 signature: 4c9523caad94a60010e14bbca0ff20fc ****/
 		%feature("compactdefaultargs") GetShape;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 NbPoles: int
 NbKnots: int
 Degree: int
 NbPoles2d: int
+
+Description
+-----------
+No available documentation.
 ") GetShape;
 		virtual void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each variable; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each variable; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 715ff82186a1d1cd1f2816a9fc072567 ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BoundTol: float
@@ -2649,226 +3056,268 @@ AngleTol: float
 Tol3d: math_Vector
 Tol1D: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
-
+		%feature("autodoc", "
 Parameters
 ----------
 T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** IsRational ******************/
 		/**** md5 signature: e2d546fe827c13e22032dacc2ce90819 ****/
 		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "Returns if the section is rationnal.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns if the section is rationnal.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** IsTangencyPoint ******************/
 		/**** md5 signature: bc14917d31fcf3cabe33ced86387ccb2 ****/
 		%feature("compactdefaultargs") IsTangencyPoint;
-		%feature("autodoc", "Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonrst.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonrst.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
 		/****************** Knots ******************/
 		/**** md5 signature: 12a741eefe4a6b12fefe540137e600a7 ****/
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TKnots: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		/**** md5 signature: eca3dd33252e6a889c9236a94758c0f8 ****/
 		%feature("compactdefaultargs") Mults;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TMults: TColStd_Array1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbIntervals ******************/
 		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
 		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: GeomAbs_Shape
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: 9592108ebf305562827d51d05d64eecc ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 2 (default value). can be redefined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 2 (default value). can be redefined.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
 		/****************** ParameterOnRst1 ******************/
 		/**** md5 signature: 2f829c76c7ed73562a7b20be5bc1f135 ****/
 		%feature("compactdefaultargs") ParameterOnRst1;
-		%feature("autodoc", "Returns parameter of the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns parameter of the point on the curve.
 ") ParameterOnRst1;
 		virtual Standard_Real ParameterOnRst1();
 
 		/****************** ParameterOnRst2 ******************/
 		/**** md5 signature: aa35bf5f29a385f78897174a6367f771 ****/
 		%feature("compactdefaultargs") ParameterOnRst2;
-		%feature("autodoc", "Returns parameter of the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns parameter of the point on the curve.
 ") ParameterOnRst2;
 		virtual Standard_Real ParameterOnRst2();
 
 		/****************** Pnt1 ******************/
 		/**** md5 signature: 0b50824c44f989dc0d6554d01a09841f ****/
 		%feature("compactdefaultargs") Pnt1;
-		%feature("autodoc", "Returns the point on the first support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first support.
 ") Pnt1;
 		const gp_Pnt Pnt1();
 
 		/****************** Pnt2 ******************/
 		/**** md5 signature: 7674a11484a480e596351a7b8fae52d6 ****/
 		%feature("compactdefaultargs") Pnt2;
-		%feature("autodoc", "Returns the point on the seconde support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the seconde support.
 ") Pnt2;
 		const gp_Pnt Pnt2();
 
 		/****************** Pnt2dOnRst1 ******************/
 		/**** md5 signature: e3f75dcfdb45ec34883bee818cbdd115 ****/
 		%feature("compactdefaultargs") Pnt2dOnRst1;
-		%feature("autodoc", "Returns u,v coordinates of the point on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt2d
+
+Description
+-----------
+Returns u,v coordinates of the point on the surface.
 ") Pnt2dOnRst1;
 		virtual const gp_Pnt2d Pnt2dOnRst1();
 
 		/****************** Pnt2dOnRst2 ******************/
 		/**** md5 signature: 26bff8e780bdddbf622a247cc3db85be ****/
 		%feature("compactdefaultargs") Pnt2dOnRst2;
-		%feature("autodoc", "Returns u,v coordinates of the point on the curve on surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt2d
+
+Description
+-----------
+Returns u,v coordinates of the point on the curve on surface.
 ") Pnt2dOnRst2;
 		virtual const gp_Pnt2d Pnt2dOnRst2();
 
 		/****************** PointOnRst1 ******************/
 		/**** md5 signature: d1ad11354f30bfbe23a20a972f215958 ****/
 		%feature("compactdefaultargs") PointOnRst1;
-		%feature("autodoc", "Returns the point on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the surface.
 ") PointOnRst1;
 		virtual const gp_Pnt PointOnRst1();
 
 		/****************** PointOnRst2 ******************/
 		/**** md5 signature: bfbfaf7046c1d39ce1f0f458886fcd59 ****/
 		%feature("compactdefaultargs") PointOnRst2;
-		%feature("autodoc", "Returns the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the curve.
 ") PointOnRst2;
 		virtual const gp_Pnt PointOnRst2();
 
 		/****************** Section ******************/
 		/**** md5 signature: a53c7695ddb71364b3f1a57ab3437f2c ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2876,17 +3325,20 @@ Poles: TColgp_Array1OfPnt
 Poles2d: TColgp_Array1OfPnt2d
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Section;
 		virtual void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: e37bbcbd1ce3013637ce65f73847d93d ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2897,17 +3349,20 @@ DPoles2d: TColgp_Array1OfVec2d
 Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: 45cb2fd4a3176732a1653dca67ba6422 ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -2921,117 +3376,141 @@ Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 D2Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
 		/**** md5 signature: 6ea1b4b1c732128de882a7f7a3bdd939 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Param: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
 		/****************** Set ******************/
 		/**** md5 signature: 72dca3214392c1598e10f82965feedf7 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 First: float
 Last: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
 		/****************** Tangent2dOnRst1 ******************/
 		/**** md5 signature: fcbf5456f50de851d444c4d79888de5d ****/
 		%feature("compactdefaultargs") Tangent2dOnRst1;
-		%feature("autodoc", "Returns the tangent vector at pointons, in the parametric space of the first surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointons, in the parametric space of the first surface.
 ") Tangent2dOnRst1;
 		virtual const gp_Vec2d Tangent2dOnRst1();
 
 		/****************** Tangent2dOnRst2 ******************/
 		/**** md5 signature: 48d9d4a9667de60f2ac5b84d62425cff ****/
 		%feature("compactdefaultargs") Tangent2dOnRst2;
-		%feature("autodoc", "Returns the tangent vector at pointonrst, in the parametric space of the second surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointonrst, in the parametric space of the second surface.
 ") Tangent2dOnRst2;
 		virtual const gp_Vec2d Tangent2dOnRst2();
 
 		/****************** TangentOnRst1 ******************/
 		/**** md5 signature: 674e1a1cb641654717601d87e8a6a7af ****/
 		%feature("compactdefaultargs") TangentOnRst1;
-		%feature("autodoc", "Returns the tangent vector at pointons, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointons, in 3d space.
 ") TangentOnRst1;
 		virtual const gp_Vec TangentOnRst1();
 
 		/****************** TangentOnRst2 ******************/
 		/**** md5 signature: 76af1c3787229190aa13d77740ee1d23 ****/
 		%feature("compactdefaultargs") TangentOnRst2;
-		%feature("autodoc", "Returns the tangent vector at pointonc, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointonc, in 3d space.
 ") TangentOnRst2;
 		virtual const gp_Vec TangentOnRst2();
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -3053,127 +3532,148 @@ class Blend_SurfRstFunction : public Blend_AppFunction {
 		/****************** Decroch ******************/
 		/**** md5 signature: 7284c9bdbe5588f3acf463f1becb02e1 ****/
 		%feature("compactdefaultargs") Decroch;
-		%feature("autodoc", "Enables implementation of a criterion of decrochage specific to the function.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 NS: gp_Vec
 TgS: gp_Vec
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Enables implementation of a criterion of decrochage specific to the function.
 ") Decroch;
 		virtual Standard_Boolean Decroch(const math_Vector & Sol, gp_Vec & NS, gp_Vec & TgS);
 
 		/****************** Derivatives ******************/
 		/**** md5 signature: 91510de453ada53b30c3a8ed85022935 ****/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		/**** md5 signature: ea9a426b36925ee5ee90867e063c6523 ****/
 		%feature("compactdefaultargs") GetBounds;
-		%feature("autodoc", "Returns in the vector infbound the lowest values allowed for each variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
-
+		%feature("autodoc", "
 Parameters
 ----------
 InfBound: math_Vector
 SupBound: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector infbound the lowest values allowed for each variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
 		/****************** GetMinimalDistance ******************/
 		/**** md5 signature: e8742e6ed5aa58b10280098f76f7ab1d ****/
 		%feature("compactdefaultargs") GetMinimalDistance;
-		%feature("autodoc", "Returns the minimal distance between two extremities of calculated sections.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
 		/****************** GetMinimalWeight ******************/
 		/**** md5 signature: 12015ca7787e9fa6bcf5f820d6632375 ****/
 		%feature("compactdefaultargs") GetMinimalWeight;
-		%feature("autodoc", "Compute the minimal value of weight for each poles of all sections.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****************** GetSectionSize ******************/
 		/**** md5 signature: f308791ef8ed681d6654100e81e995bd ****/
 		%feature("compactdefaultargs") GetSectionSize;
-		%feature("autodoc", "Returns the length of the maximum section.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the length of the maximum section.
 ") GetSectionSize;
 		virtual Standard_Real GetSectionSize();
 
 		/****************** GetShape ******************/
 		/**** md5 signature: 4c9523caad94a60010e14bbca0ff20fc ****/
 		%feature("compactdefaultargs") GetShape;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 NbPoles: int
 NbKnots: int
 Degree: int
 NbPoles2d: int
+
+Description
+-----------
+No available documentation.
 ") GetShape;
 		virtual void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 9c8b08d1f0aa3ef3a04b7834c06e849d ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns in the vector tolerance the parametric tolerance for each variable; tol is the tolerance used in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Tolerance: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns in the vector tolerance the parametric tolerance for each variable; tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
 		/****************** GetTolerance ******************/
 		/**** md5 signature: 715ff82186a1d1cd1f2816a9fc072567 ****/
 		%feature("compactdefaultargs") GetTolerance;
-		%feature("autodoc", "Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 BoundTol: float
@@ -3182,215 +3682,255 @@ AngleTol: float
 Tol3d: math_Vector
 Tol1D: math_Vector
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
 		/****************** Intervals ******************/
 		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
-
+		%feature("autodoc", "
 Parameters
 ----------
 T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** IsRational ******************/
 		/**** md5 signature: e2d546fe827c13e22032dacc2ce90819 ****/
 		%feature("compactdefaultargs") IsRational;
-		%feature("autodoc", "Returns if the section is rationnal.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns if the section is rationnal.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
 		/****************** IsSolution ******************/
 		/**** md5 signature: 65e978e7c1aeb4e253d805ec1412cadd ****/
 		%feature("compactdefaultargs") IsSolution;
-		%feature("autodoc", "Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Sol: math_Vector
 Tol: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
 		/****************** IsTangencyPoint ******************/
 		/**** md5 signature: bc14917d31fcf3cabe33ced86387ccb2 ****/
 		%feature("compactdefaultargs") IsTangencyPoint;
-		%feature("autodoc", "Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonrst.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonrst.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
 		/****************** Knots ******************/
 		/**** md5 signature: 12a741eefe4a6b12fefe540137e600a7 ****/
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TKnots: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		/**** md5 signature: eca3dd33252e6a889c9236a94758c0f8 ****/
 		%feature("compactdefaultargs") Mults;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 TMults: TColStd_Array1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****************** NbEquations ******************/
 		/**** md5 signature: ba4fd9483f383d968d2ec54d4ae3fbf1 ****/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Returns the number of equations of the function.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
 		/****************** NbIntervals ******************/
 		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
 		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: GeomAbs_Shape
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
 		/****************** NbVariables ******************/
 		/**** md5 signature: 9592108ebf305562827d51d05d64eecc ****/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Returns 3 (default value). can be redefined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns 3 (default value). can be redefined.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
 		/****************** ParameterOnRst ******************/
 		/**** md5 signature: 01de2ff204e04e0ac9b34e5cb34bbb87 ****/
 		%feature("compactdefaultargs") ParameterOnRst;
-		%feature("autodoc", "Returns parameter of the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns parameter of the point on the curve.
 ") ParameterOnRst;
 		virtual Standard_Real ParameterOnRst();
 
 		/****************** Pnt1 ******************/
 		/**** md5 signature: 0b50824c44f989dc0d6554d01a09841f ****/
 		%feature("compactdefaultargs") Pnt1;
-		%feature("autodoc", "Returns the point on the first support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the first support.
 ") Pnt1;
 		const gp_Pnt Pnt1();
 
 		/****************** Pnt2 ******************/
 		/**** md5 signature: 7674a11484a480e596351a7b8fae52d6 ****/
 		%feature("compactdefaultargs") Pnt2;
-		%feature("autodoc", "Returns the point on the seconde support.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the seconde support.
 ") Pnt2;
 		const gp_Pnt Pnt2();
 
 		/****************** Pnt2dOnRst ******************/
 		/**** md5 signature: ebf44037fb3bdbcaa4184774d2037618 ****/
 		%feature("compactdefaultargs") Pnt2dOnRst;
-		%feature("autodoc", "Returns u,v coordinates of the point on the curve on surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt2d
+
+Description
+-----------
+Returns u,v coordinates of the point on the curve on surface.
 ") Pnt2dOnRst;
 		virtual const gp_Pnt2d Pnt2dOnRst();
 
 		/****************** Pnt2dOnS ******************/
 		/**** md5 signature: d615c6281ea9f9161996abd4b9a9fb73 ****/
 		%feature("compactdefaultargs") Pnt2dOnS;
-		%feature("autodoc", "Returns u,v coordinates of the point on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt2d
+
+Description
+-----------
+Returns u,v coordinates of the point on the surface.
 ") Pnt2dOnS;
 		virtual const gp_Pnt2d Pnt2dOnS();
 
 		/****************** PointOnRst ******************/
 		/**** md5 signature: 9656ef3947b8f1b09af430ee1d1f4d1d ****/
 		%feature("compactdefaultargs") PointOnRst;
-		%feature("autodoc", "Returns the point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the curve.
 ") PointOnRst;
 		virtual const gp_Pnt PointOnRst();
 
 		/****************** PointOnS ******************/
 		/**** md5 signature: 013821b07617cbc53368c5db469ac944 ****/
 		%feature("compactdefaultargs") PointOnS;
-		%feature("autodoc", "Returns the point on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point on the surface.
 ") PointOnS;
 		virtual const gp_Pnt PointOnS();
 
 		/****************** Section ******************/
 		/**** md5 signature: e37bbcbd1ce3013637ce65f73847d93d ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -3401,17 +3941,20 @@ DPoles2d: TColgp_Array1OfVec2d
 Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: 45cb2fd4a3176732a1653dca67ba6422 ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -3425,17 +3968,20 @@ Weigths: TColStd_Array1OfReal
 DWeigths: TColStd_Array1OfReal
 D2Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Section ******************/
 		/**** md5 signature: a53c7695ddb71364b3f1a57ab3437f2c ****/
 		%feature("compactdefaultargs") Section;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: Blend_Point
@@ -3443,117 +3989,141 @@ Poles: TColgp_Array1OfPnt
 Poles2d: TColgp_Array1OfPnt2d
 Weigths: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Section;
 		virtual void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****************** Set ******************/
 		/**** md5 signature: 6ea1b4b1c732128de882a7f7a3bdd939 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Param: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
 		/****************** Set ******************/
 		/**** md5 signature: 72dca3214392c1598e10f82965feedf7 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 First: float
 Last: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
 		/****************** Tangent2dOnRst ******************/
 		/**** md5 signature: e1bcaec74b4767508501bf2f7c1cdb3d ****/
 		%feature("compactdefaultargs") Tangent2dOnRst;
-		%feature("autodoc", "Returns the tangent vector at pointonrst, in the parametric space of the second surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointonrst, in the parametric space of the second surface.
 ") Tangent2dOnRst;
 		virtual const gp_Vec2d Tangent2dOnRst();
 
 		/****************** Tangent2dOnS ******************/
 		/**** md5 signature: 7f46fc020c51a66db9c76684922235f0 ****/
 		%feature("compactdefaultargs") Tangent2dOnS;
-		%feature("autodoc", "Returns the tangent vector at pointons, in the parametric space of the first surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec2d
+
+Description
+-----------
+Returns the tangent vector at pointons, in the parametric space of the first surface.
 ") Tangent2dOnS;
 		virtual const gp_Vec2d Tangent2dOnS();
 
 		/****************** TangentOnRst ******************/
 		/**** md5 signature: 2df1ce073324d55483e131fc0c914949 ****/
 		%feature("compactdefaultargs") TangentOnRst;
-		%feature("autodoc", "Returns the tangent vector at pointonc, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointonc, in 3d space.
 ") TangentOnRst;
 		virtual const gp_Vec TangentOnRst();
 
 		/****************** TangentOnS ******************/
 		/**** md5 signature: bbacad8d903559279b1b81084b808831 ****/
 		%feature("compactdefaultargs") TangentOnS;
-		%feature("autodoc", "Returns the tangent vector at pointons, in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Vec
+
+Description
+-----------
+Returns the tangent vector at pointons, in 3d space.
 ") TangentOnS;
 		virtual const gp_Vec TangentOnS();
 
 		/****************** Value ******************/
 		/**** md5 signature: fbdd70146ff924dbae65883aeb76c6f7 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		/**** md5 signature: 4dca620a1b80d0862f0bc5ceb7679845 ****/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
 F: math_Vector
 D: math_Matrix
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 

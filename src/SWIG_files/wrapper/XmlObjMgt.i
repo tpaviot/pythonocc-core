@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLOBJMGTDOCSTRING
 "XmlObjMgt module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_xmlobjmgt.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_xmlobjmgt.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLOBJMGTDOCSTRING) XmlObjMgt
 
@@ -94,186 +94,220 @@ class XmlObjMgt {
 		/****************** FindChildByName ******************/
 		/**** md5 signature: a75d050d81bca4eb415eff378a7e3590 ****/
 		%feature("compactdefaultargs") FindChildByName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSource: XmlObjMgt_Element
 theName: XmlObjMgt_DOMString
 
-Returns
+Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+No available documentation.
 ") FindChildByName;
 		static XmlObjMgt_Element FindChildByName(const XmlObjMgt_Element & theSource, const XmlObjMgt_DOMString & theName);
 
 		/****************** FindChildByRef ******************/
 		/**** md5 signature: 1a0ceab4ebfe596c7c51007d742ab107 ****/
 		%feature("compactdefaultargs") FindChildByRef;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSource: XmlObjMgt_Element
 theRefName: XmlObjMgt_DOMString
 
-Returns
+Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+No available documentation.
 ") FindChildByRef;
 		static XmlObjMgt_Element FindChildByRef(const XmlObjMgt_Element & theSource, const XmlObjMgt_DOMString & theRefName);
 
 		/****************** FindChildElement ******************/
 		/**** md5 signature: a6b6ec12c3b888a80034e04c66699567 ****/
 		%feature("compactdefaultargs") FindChildElement;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSource: XmlObjMgt_Element
 theObjId: int
 
-Returns
+Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+No available documentation.
 ") FindChildElement;
 		static XmlObjMgt_Element FindChildElement(const XmlObjMgt_Element & theSource, const Standard_Integer theObjId);
 
 		/****************** GetExtendedString ******************/
 		/**** md5 signature: 136f136e14474041cd38ff8a7feae0c0 ****/
 		%feature("compactdefaultargs") GetExtendedString;
-		%feature("autodoc", "Get attribute <theelement extstring='thestring' ...>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElement: XmlObjMgt_Element
 theString: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Get attribute <theelement extstring='thestring' ...>.
 ") GetExtendedString;
 		static Standard_Boolean GetExtendedString(const XmlObjMgt_Element & theElement, TCollection_ExtendedString & theString);
 
 		/****************** GetReal ******************/
 		/**** md5 signature: c37d4b711d18ff859f0aa8adfb17c76c ****/
 		%feature("compactdefaultargs") GetReal;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theString: str
 
-Returns
+Return
 -------
 theValue: float
+
+Description
+-----------
+No available documentation.
 ") GetReal;
 		static Standard_Boolean GetReal(Standard_CString theString, Standard_Real &OutValue);
 
 		/****************** GetReal ******************/
 		/**** md5 signature: b83dcb37b66853c6106221ca771fbd92 ****/
 		%feature("compactdefaultargs") GetReal;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theString: XmlObjMgt_DOMString
 
-Returns
+Return
 -------
 theValue: float
+
+Description
+-----------
+No available documentation.
 ") GetReal;
 		static Standard_Boolean GetReal(const XmlObjMgt_DOMString & theString, Standard_Real &OutValue);
 
 		/****************** GetStringValue ******************/
 		/**** md5 signature: a5314a871737b97c2a3d6c8bf34c640a ****/
 		%feature("compactdefaultargs") GetStringValue;
-		%feature("autodoc", "Returns the first child text node.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElement: XmlObjMgt_Element
 
-Returns
+Return
 -------
 XmlObjMgt_DOMString
+
+Description
+-----------
+Returns the first child text node.
 ") GetStringValue;
 		static XmlObjMgt_DOMString GetStringValue(const XmlObjMgt_Element & theElement);
 
 		/****************** GetTagEntryString ******************/
 		/**** md5 signature: 4f9418066c51e679fd92757daba89516 ****/
 		%feature("compactdefaultargs") GetTagEntryString;
-		%feature("autodoc", "Convert xpath expression (domstring) into tagentry string returns false on error.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTarget: XmlObjMgt_DOMString
 theTagEntry: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Convert xpath expression (domstring) into tagentry string returns false on error.
 ") GetTagEntryString;
 		static Standard_Boolean GetTagEntryString(const XmlObjMgt_DOMString & theTarget, TCollection_AsciiString & theTagEntry);
 
 		/****************** IdString ******************/
 		/**** md5 signature: 8d8ab1717494a399f6f224b4840e10a1 ****/
 		%feature("compactdefaultargs") IdString;
-		%feature("autodoc", "Define the name of xmlattribute 'id' (to be used everywhere).
-
-Returns
+		%feature("autodoc", "Return
 -------
 XmlObjMgt_DOMString
+
+Description
+-----------
+Define the name of xmlattribute 'id' (to be used everywhere).
 ") IdString;
 		static const XmlObjMgt_DOMString & IdString();
 
 		/****************** SetExtendedString ******************/
 		/**** md5 signature: 4178cc6b405d431f892c6c72da9e4373 ****/
 		%feature("compactdefaultargs") SetExtendedString;
-		%feature("autodoc", "Add attribute <theelement extstring='thestring' ...>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElement: XmlObjMgt_Element
 theString: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Add attribute <theelement extstring='thestring' ...>.
 ") SetExtendedString;
 		static Standard_Boolean SetExtendedString(XmlObjMgt_Element & theElement, TCollection_ExtendedString theString);
 
 		/****************** SetStringValue ******************/
 		/**** md5 signature: 74078f466a38d1f08a9d785fc20e9665 ****/
 		%feature("compactdefaultargs") SetStringValue;
-		%feature("autodoc", "Add thedata as the last child text node to theelement iscleartext(true) avoids analysis of the string and replacement of characters like '<' and '&' during xml file storage. do never set iscleartext unless you have a hell of a reason.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElement: XmlObjMgt_Element
 theData: XmlObjMgt_DOMString
-isClearText: bool,optional
-	default value is Standard_False
+isClearText: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add thedata as the last child text node to theelement iscleartext(true) avoids analysis of the string and replacement of characters like '<' and '&' during xml file storage. do never set iscleartext unless you have a hell of a reason.
 ") SetStringValue;
 		static void SetStringValue(XmlObjMgt_Element & theElement, const XmlObjMgt_DOMString & theData, const Standard_Boolean isClearText = Standard_False);
 
 		/****************** SetTagEntryString ******************/
 		/**** md5 signature: 70776993b0396a9d284a0a2ba2e51015 ****/
 		%feature("compactdefaultargs") SetTagEntryString;
-		%feature("autodoc", "Convert xpath expression (domstring) into tagentry string returns false on error.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSource: XmlObjMgt_DOMString
 theTagEntry: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Convert xpath expression (domstring) into tagentry string returns false on error.
 ") SetTagEntryString;
 		static void SetTagEntryString(XmlObjMgt_DOMString & theSource, TCollection_AsciiString theTagEntry);
 
@@ -298,123 +332,146 @@ class XmlObjMgt_Array1 {
 		/****************** XmlObjMgt_Array1 ******************/
 		/**** md5 signature: b94d916b29278d329b3a83495b11792c ****/
 		%feature("compactdefaultargs") XmlObjMgt_Array1;
-		%feature("autodoc", "Create an array of lower bound <low> and upper bound <up>. range error is raised when <up> is less than <low>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Low: int
 Up: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Create an array of lower bound <low> and upper bound <up>. range error is raised when <up> is less than <low>.
 ") XmlObjMgt_Array1;
 		 XmlObjMgt_Array1(const Standard_Integer Low, const Standard_Integer Up);
 
 		/****************** XmlObjMgt_Array1 ******************/
 		/**** md5 signature: 520e456f21ce8aacc48a55565855c678 ****/
 		%feature("compactdefaultargs") XmlObjMgt_Array1;
-		%feature("autodoc", "For restoration from dom_element which is child of theparent: <theparent ...> <thename ...>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theParent: XmlObjMgt_Element
 theName: XmlObjMgt_DOMString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+For restoration from dom_element which is child of theparent: <theparent ...> <thename ...>.
 ") XmlObjMgt_Array1;
 		 XmlObjMgt_Array1(const XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theName);
 
 		/****************** CreateArrayElement ******************/
 		/**** md5 signature: 0c13e4be8117fe1898a3cdb3d2a98b58 ****/
 		%feature("compactdefaultargs") CreateArrayElement;
-		%feature("autodoc", "Create dom_element representing the array, under 'theparent'.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theParent: XmlObjMgt_Element
 theName: XmlObjMgt_DOMString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Create dom_element representing the array, under 'theparent'.
 ") CreateArrayElement;
 		void CreateArrayElement(XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theName);
 
 		/****************** Element ******************/
 		/**** md5 signature: b048e740461d546184db9889ca335c27 ****/
 		%feature("compactdefaultargs") Element;
-		%feature("autodoc", "Returns the dom element of <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+Returns the dom element of <self>.
 ") Element;
 		const XmlObjMgt_Element & Element();
 
 		/****************** Length ******************/
 		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Returns the number of elements of <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of elements of <self>.
 ") Length;
 		Standard_Integer Length();
 
 		/****************** Lower ******************/
 		/**** md5 signature: fe1655437e349162aeffc9b3814347af ****/
 		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "Returns the lower bound.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the lower bound.
 ") Lower;
 		Standard_Integer Lower();
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 3beae0769af4949b70174c49f2ea2785 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "Set the <index>th element of the array to <value>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 Value: XmlObjMgt_Element
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the <index>th element of the array to <value>.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, XmlObjMgt_Element & Value);
 
 		/****************** Upper ******************/
 		/**** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ****/
 		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "Returns the upper bound.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the upper bound.
 ") Upper;
 		Standard_Integer Upper();
 
 		/****************** Value ******************/
 		/**** md5 signature: 294c5c8d6b5bddb45570bc5d98ec864d ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns the value of <index>th element of the array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 
-Returns
+Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+Returns the value of <index>th element of the array.
 ") Value;
 		XmlObjMgt_Element Value(const Standard_Integer Index);
 
@@ -435,93 +492,111 @@ class XmlObjMgt_GP {
 		/****************** Translate ******************/
 		/**** md5 signature: 02dd6c165ac9328093cf6d6aaf9d0574 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aTrsf: gp_Trsf
 
-Returns
+Return
 -------
 XmlObjMgt_DOMString
+
+Description
+-----------
+No available documentation.
 ") Translate;
 		static XmlObjMgt_DOMString Translate(const gp_Trsf & aTrsf);
 
 		/****************** Translate ******************/
 		/**** md5 signature: a7d3f88b8aa60c810f5db65935aabba3 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aMat: gp_Mat
 
-Returns
+Return
 -------
 XmlObjMgt_DOMString
+
+Description
+-----------
+No available documentation.
 ") Translate;
 		static XmlObjMgt_DOMString Translate(const gp_Mat & aMat);
 
 		/****************** Translate ******************/
 		/**** md5 signature: 64aedd490b6ef234f557276f99485e21 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 anXYZ: gp_XYZ
 
-Returns
+Return
 -------
 XmlObjMgt_DOMString
+
+Description
+-----------
+No available documentation.
 ") Translate;
 		static XmlObjMgt_DOMString Translate(const gp_XYZ & anXYZ);
 
 		/****************** Translate ******************/
 		/**** md5 signature: 661191a6cd4017fb1a7ada23bbde152c ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStr: XmlObjMgt_DOMString
 T: gp_Trsf
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") Translate;
 		static Standard_Boolean Translate(const XmlObjMgt_DOMString & aStr, gp_Trsf & T);
 
 		/****************** Translate ******************/
 		/**** md5 signature: 6b0d1a755f295d6b94dd165af444fef5 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStr: XmlObjMgt_DOMString
 T: gp_Mat
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") Translate;
 		static Standard_Boolean Translate(const XmlObjMgt_DOMString & aStr, gp_Mat & T);
 
 		/****************** Translate ******************/
 		/**** md5 signature: 144d51ff939bd1bc0e2e4bd7a5b9dd65 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStr: XmlObjMgt_DOMString
 T: gp_XYZ
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") Translate;
 		static Standard_Boolean Translate(const XmlObjMgt_DOMString & aStr, gp_XYZ & T);
 
@@ -542,107 +617,127 @@ class XmlObjMgt_Persistent {
 		/****************** XmlObjMgt_Persistent ******************/
 		/**** md5 signature: 99c79c821358b917b8a8a6909ca0be51 ****/
 		%feature("compactdefaultargs") XmlObjMgt_Persistent;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent();
 
 		/****************** XmlObjMgt_Persistent ******************/
 		/**** md5 signature: fe13ad98157a2783593d58891b72f27b ****/
 		%feature("compactdefaultargs") XmlObjMgt_Persistent;
-		%feature("autodoc", "Constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElement: XmlObjMgt_Element
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent(const XmlObjMgt_Element & theElement);
 
 		/****************** XmlObjMgt_Persistent ******************/
 		/**** md5 signature: eb0c39d2ab04f41cd583d98cac58e04a ****/
 		%feature("compactdefaultargs") XmlObjMgt_Persistent;
-		%feature("autodoc", "Constructor from sub-element of element referenced by theref.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElement: XmlObjMgt_Element
 theRef: XmlObjMgt_DOMString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor from sub-element of element referenced by theref.
 ") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent(const XmlObjMgt_Element & theElement, const XmlObjMgt_DOMString & theRef);
 
 		/****************** CreateElement ******************/
 		/**** md5 signature: 1f9a0fe00d48679e0faa61143a5f31fe ****/
 		%feature("compactdefaultargs") CreateElement;
-		%feature("autodoc", "Myelement := <thetype id='theid'/>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theParent: XmlObjMgt_Element
 theType: XmlObjMgt_DOMString
 theID: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Myelement := <thetype id='theid'/>.
 ") CreateElement;
 		void CreateElement(XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theType, const Standard_Integer theID);
 
 		/****************** Element ******************/
 		/**** md5 signature: b048e740461d546184db9889ca335c27 ****/
 		%feature("compactdefaultargs") Element;
-		%feature("autodoc", "Return myelement.
-
-Returns
+		%feature("autodoc", "Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+Return myelement.
 ") Element;
 		const XmlObjMgt_Element & Element();
 
 		/****************** Element ******************/
 		/**** md5 signature: cda4b976f272db0cf7f309190b0cde07 ****/
 		%feature("compactdefaultargs") Element;
-		%feature("autodoc", "Return myelement.
-
-Returns
+		%feature("autodoc", "Return
 -------
 XmlObjMgt_Element
+
+Description
+-----------
+Return myelement.
 ") Element;
 		XmlObjMgt_Element & Element();
 
 		/****************** Id ******************/
 		/**** md5 signature: bad178b94960474569631e20c0ad1e69 ****/
 		%feature("compactdefaultargs") Id;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") Id;
 		Standard_Integer Id();
 
 		/****************** SetId ******************/
 		/**** md5 signature: 3131e8337f46d2a085b133db913d7e12 ****/
 		%feature("compactdefaultargs") SetId;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetId;
 		void SetId(const Standard_Integer theId);
 
@@ -663,42 +758,49 @@ class XmlObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
 		/****************** Clear ******************/
 		/**** md5 signature: 9769dd3f09530d7a423c9cced022263b ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
-doReleaseMemory: bool,optional
-	default value is Standard_True
+doReleaseMemory: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Clear;
 		void Clear(const Standard_Boolean doReleaseMemory = Standard_True);
 
 		/****************** GetHeaderData ******************/
 		/**** md5 signature: ce7373453eff48a8fcde9d5cb66f15d5 ****/
 		%feature("compactdefaultargs") GetHeaderData;
-		%feature("autodoc", "Returns a handle to the header data of the file that is begin read.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Storage_HeaderData>
+
+Description
+-----------
+Returns a handle to the header data of the file that is begin read.
 ") GetHeaderData;
 		const opencascade::handle<Storage_HeaderData> & GetHeaderData();
 
 		/****************** SetHeaderData ******************/
 		/**** md5 signature: 5eb1ccbc6d11f56956cabbed4c44e21c ****/
 		%feature("compactdefaultargs") SetHeaderData;
-		%feature("autodoc", "Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHeaderData: Storage_HeaderData
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
 ") SetHeaderData;
 		void SetHeaderData(const opencascade::handle<Storage_HeaderData> & theHeaderData);
 
@@ -719,42 +821,49 @@ class XmlObjMgt_SRelocationTable : public TColStd_IndexedMapOfTransient {
 		/****************** Clear ******************/
 		/**** md5 signature: 9769dd3f09530d7a423c9cced022263b ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
-doReleaseMemory: bool,optional
-	default value is Standard_True
+doReleaseMemory: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Clear;
 		void Clear(const Standard_Boolean doReleaseMemory = Standard_True);
 
 		/****************** GetHeaderData ******************/
 		/**** md5 signature: ce7373453eff48a8fcde9d5cb66f15d5 ****/
 		%feature("compactdefaultargs") GetHeaderData;
-		%feature("autodoc", "Returns a handle to the header data of the file that is begin read.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Storage_HeaderData>
+
+Description
+-----------
+Returns a handle to the header data of the file that is begin read.
 ") GetHeaderData;
 		const opencascade::handle<Storage_HeaderData> & GetHeaderData();
 
 		/****************** SetHeaderData ******************/
 		/**** md5 signature: 5eb1ccbc6d11f56956cabbed4c44e21c ****/
 		%feature("compactdefaultargs") SetHeaderData;
-		%feature("autodoc", "Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHeaderData: Storage_HeaderData
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
 ") SetHeaderData;
 		void SetHeaderData(const opencascade::handle<Storage_HeaderData> & theHeaderData);
 

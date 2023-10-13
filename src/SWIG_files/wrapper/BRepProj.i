@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPPROJDOCSTRING
 "BRepProj module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepproj.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepproj.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPPROJDOCSTRING) BRepProj
 
@@ -86,100 +86,118 @@ class BRepProj_Projection {
 		/****************** BRepProj_Projection ******************/
 		/**** md5 signature: 05a528b4fa808ed3e5606951be3f247c ****/
 		%feature("compactdefaultargs") BRepProj_Projection;
-		%feature("autodoc", "Makes a cylindrical projection of wire om shape.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Wire: TopoDS_Shape
 Shape: TopoDS_Shape
 D: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Makes a cylindrical projection of wire om shape.
 ") BRepProj_Projection;
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Dir & D);
 
 		/****************** BRepProj_Projection ******************/
 		/**** md5 signature: 66694c5d0609b9bd950faaceb10748b1 ****/
 		%feature("compactdefaultargs") BRepProj_Projection;
-		%feature("autodoc", "Makes a conical projection of wire om shape.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Wire: TopoDS_Shape
 Shape: TopoDS_Shape
 P: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Makes a conical projection of wire om shape.
 ") BRepProj_Projection;
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Pnt & P);
 
 		/****************** Current ******************/
 		/**** md5 signature: f1373d555d44b8af5f09b63aa71dbac4 ****/
 		%feature("compactdefaultargs") Current;
-		%feature("autodoc", "Returns the current result wire.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopoDS_Wire
+
+Description
+-----------
+Returns the current result wire.
 ") Current;
 		TopoDS_Wire Current();
 
 		/****************** Init ******************/
 		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Resets the iterator by resulting wires.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Resets the iterator by resulting wires.
 ") Init;
 		void Init();
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Returns false if the section failed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns false if the section failed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
 		/****************** More ******************/
 		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns true if there is a current result wire.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if there is a current result wire.
 ") More;
 		Standard_Boolean More();
 
 		/****************** Next ******************/
 		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Move to the next result wire.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Move to the next result wire.
 ") Next;
 		void Next();
 
 		/****************** Shape ******************/
 		/**** md5 signature: 1b3c03b494fbe92ca2dc8e2599c5e3a1 ****/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "Returns the complete result as compound of wires.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopoDS_Compound
+
+Description
+-----------
+Returns the complete result as compound of wires.
 ") Shape;
 		TopoDS_Compound Shape();
 

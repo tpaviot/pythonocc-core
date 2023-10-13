@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPVISUALDOCSTRING
 "StepVisual module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stepvisual.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepvisual.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPVISUALDOCSTRING) StepVisual
 
@@ -1006,11 +1006,13 @@ class StepVisual_AnnotationFillArea : public StepShape_GeometricCurveSet {
 		/****************** StepVisual_AnnotationFillArea ******************/
 		/**** md5 signature: 707299ee72fc5fde632708b68da0d36f ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationFillArea;
-		%feature("autodoc", "Returns a annotationfillarea.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationfillarea.
 ") StepVisual_AnnotationFillArea;
 		 StepVisual_AnnotationFillArea();
 
@@ -1033,48 +1035,57 @@ class StepVisual_AnnotationPlaneElement : public StepData_SelectType {
 		/****************** StepVisual_AnnotationPlaneElement ******************/
 		/**** md5 signature: ce048475b338d8fd2919d43a1446094e ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationPlaneElement;
-		%feature("autodoc", "Returns a annotationplaneelement select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationplaneelement select type.
 ") StepVisual_AnnotationPlaneElement;
 		 StepVisual_AnnotationPlaneElement();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a idattributeselect kind entity that is : 1 -> draughtingcallout 2 -> styleditem 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a idattributeselect kind entity that is: 1 -> draughtingcallout 2 -> styleditem 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** DraughtingCallout ******************/
 		/**** md5 signature: dcafc9e5148472aaa32c6a7f0e12127f ****/
 		%feature("compactdefaultargs") DraughtingCallout;
-		%feature("autodoc", "Returns value as a draughtingcallout (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_DraughtingCallout>
+
+Description
+-----------
+Returns value as a draughtingcallout (null if another type).
 ") DraughtingCallout;
 		opencascade::handle<StepVisual_DraughtingCallout> DraughtingCallout();
 
 		/****************** StyledItem ******************/
 		/**** md5 signature: 61c7563ce33340acb54e8fd4f4208e5f ****/
 		%feature("compactdefaultargs") StyledItem;
-		%feature("autodoc", "Returns value as a styleditem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_StyledItem>
+
+Description
+-----------
+Returns value as a styleditem (null if another type).
 ") StyledItem;
 		opencascade::handle<StepVisual_StyledItem> StyledItem();
 
@@ -1095,11 +1106,13 @@ class StepVisual_AnnotationText : public StepRepr_MappedItem {
 		/****************** StepVisual_AnnotationText ******************/
 		/**** md5 signature: e8f0a57ab81f51928e2d9d16dc632ee0 ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationText;
-		%feature("autodoc", "Returns a annotationtext.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationtext.
 ") StepVisual_AnnotationText;
 		 StepVisual_AnnotationText();
 
@@ -1122,79 +1135,94 @@ class StepVisual_AreaInSet : public Standard_Transient {
 		/****************** StepVisual_AreaInSet ******************/
 		/**** md5 signature: 6bd3ed0e3367795e4fc738a6ea2082cf ****/
 		%feature("compactdefaultargs") StepVisual_AreaInSet;
-		%feature("autodoc", "Returns a areainset.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a areainset.
 ") StepVisual_AreaInSet;
 		 StepVisual_AreaInSet();
 
 		/****************** Area ******************/
 		/**** md5 signature: 7c3b8c3fe5bec4dbc522e32daafaa5c8 ****/
 		%feature("compactdefaultargs") Area;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationArea>
+
+Description
+-----------
+No available documentation.
 ") Area;
 		opencascade::handle<StepVisual_PresentationArea> Area();
 
 		/****************** InSet ******************/
 		/**** md5 signature: 3fcd983ed074b0c1d012732053dbda10 ****/
 		%feature("compactdefaultargs") InSet;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationSet>
+
+Description
+-----------
+No available documentation.
 ") InSet;
 		opencascade::handle<StepVisual_PresentationSet> InSet();
 
 		/****************** Init ******************/
 		/**** md5 signature: 66f984979376799659b1ee12e421f5a4 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aArea: StepVisual_PresentationArea
 aInSet: StepVisual_PresentationSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_PresentationArea> & aArea, const opencascade::handle<StepVisual_PresentationSet> & aInSet);
 
 		/****************** SetArea ******************/
 		/**** md5 signature: 4c0673e54caab46f527e5d3f0c2ff57b ****/
 		%feature("compactdefaultargs") SetArea;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aArea: StepVisual_PresentationArea
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetArea;
 		void SetArea(const opencascade::handle<StepVisual_PresentationArea> & aArea);
 
 		/****************** SetInSet ******************/
 		/**** md5 signature: beb75360c3fe7bff0ee28192917939e5 ****/
 		%feature("compactdefaultargs") SetInSet;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aInSet: StepVisual_PresentationSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetInSet;
 		void SetInSet(const opencascade::handle<StepVisual_PresentationSet> & aInSet);
 
@@ -1217,48 +1245,57 @@ class StepVisual_AreaOrView : public StepData_SelectType {
 		/****************** StepVisual_AreaOrView ******************/
 		/**** md5 signature: 456c8edf42511e27616007d346726dc9 ****/
 		%feature("compactdefaultargs") StepVisual_AreaOrView;
-		%feature("autodoc", "Returns a areaorview selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a areaorview selecttype.
 ") StepVisual_AreaOrView;
 		 StepVisual_AreaOrView();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a areaorview kind entity that is : 1 -> presentationarea 2 -> presentationview 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a areaorview kind entity that is: 1 -> presentationarea 2 -> presentationview 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** PresentationArea ******************/
 		/**** md5 signature: 6adf2ef7fa0a7b503035224ca0f9247c ****/
 		%feature("compactdefaultargs") PresentationArea;
-		%feature("autodoc", "Returns value as a presentationarea (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationArea>
+
+Description
+-----------
+Returns value as a presentationarea (null if another type).
 ") PresentationArea;
 		opencascade::handle<StepVisual_PresentationArea> PresentationArea();
 
 		/****************** PresentationView ******************/
 		/**** md5 signature: f42d5482c64642bbea3f6f415c07a2aa ****/
 		%feature("compactdefaultargs") PresentationView;
-		%feature("autodoc", "Returns value as a presentationview (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationView>
+
+Description
+-----------
+Returns value as a presentationview (null if another type).
 ") PresentationView;
 		opencascade::handle<StepVisual_PresentationView> PresentationView();
 
@@ -1279,63 +1316,75 @@ class StepVisual_BoxCharacteristicSelect {
 		/****************** StepVisual_BoxCharacteristicSelect ******************/
 		/**** md5 signature: f127438ff3bfb738f33cb51f7c851012 ****/
 		%feature("compactdefaultargs") StepVisual_BoxCharacteristicSelect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_BoxCharacteristicSelect;
 		 StepVisual_BoxCharacteristicSelect();
 
 		/****************** RealValue ******************/
 		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
 		%feature("compactdefaultargs") RealValue;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") RealValue;
 		Standard_Real RealValue();
 
 		/****************** SetRealValue ******************/
 		/**** md5 signature: b1a34c70efe46ae8de6ad173e999d614 ****/
 		%feature("compactdefaultargs") SetRealValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetRealValue;
 		void SetRealValue(const Standard_Real aValue);
 
 		/****************** SetTypeOfContent ******************/
 		/**** md5 signature: d14a573f3748772e762e335529920c74 ****/
 		%feature("compactdefaultargs") SetTypeOfContent;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aType: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetTypeOfContent;
 		void SetTypeOfContent(const Standard_Integer aType);
 
 		/****************** TypeOfContent ******************/
 		/**** md5 signature: ca265bcca49d9306f069cd5137aa4464 ****/
 		%feature("compactdefaultargs") TypeOfContent;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") TypeOfContent;
 		Standard_Integer TypeOfContent();
 
@@ -1356,11 +1405,13 @@ class StepVisual_CameraImage : public StepRepr_MappedItem {
 		/****************** StepVisual_CameraImage ******************/
 		/**** md5 signature: 4ed5a7e4bab1f5cb2cebb22e4acc7268 ****/
 		%feature("compactdefaultargs") StepVisual_CameraImage;
-		%feature("autodoc", "Returns a cameraimage.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameraimage.
 ") StepVisual_CameraImage;
 		 StepVisual_CameraImage();
 
@@ -1383,11 +1434,13 @@ class StepVisual_CameraModel : public StepGeom_GeometricRepresentationItem {
 		/****************** StepVisual_CameraModel ******************/
 		/**** md5 signature: 6dd8b113710ac99d130946a8cb5bf88c ****/
 		%feature("compactdefaultargs") StepVisual_CameraModel;
-		%feature("autodoc", "Returns a cameramodel.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameramodel.
 ") StepVisual_CameraModel;
 		 StepVisual_CameraModel();
 
@@ -1410,48 +1463,57 @@ class StepVisual_CameraModelD3MultiClippingInterectionSelect : public StepData_S
 		/****************** StepVisual_CameraModelD3MultiClippingInterectionSelect ******************/
 		/**** md5 signature: a9c296993b7abae4366d9924a3df35b1 ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD3MultiClippingInterectionSelect;
-		%feature("autodoc", "Returns a cameramodeld3multiclippinginterectionselect select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameramodeld3multiclippinginterectionselect select type.
 ") StepVisual_CameraModelD3MultiClippingInterectionSelect;
 		 StepVisual_CameraModelD3MultiClippingInterectionSelect();
 
 		/****************** CameraModelD3MultiClippingUnion ******************/
 		/**** md5 signature: 88230e0431dc901bb05693437465807b ****/
 		%feature("compactdefaultargs") CameraModelD3MultiClippingUnion;
-		%feature("autodoc", "Returns value as a cameramodeld3multiclippingunion (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion>
+
+Description
+-----------
+Returns value as a cameramodeld3multiclippingunion (null if another type).
 ") CameraModelD3MultiClippingUnion;
 		opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> CameraModelD3MultiClippingUnion();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a idattributeselect kind entity that is : 1 -> plane 2 -> cameramodeld3multiclippingunion 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a idattributeselect kind entity that is: 1 -> plane 2 -> cameramodeld3multiclippingunion 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Plane ******************/
 		/**** md5 signature: ef9462bf5902509743365943aea2b64d ****/
 		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "Returns value as a plane (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Plane>
+
+Description
+-----------
+Returns value as a plane (null if another type).
 ") Plane;
 		opencascade::handle<StepGeom_Plane> Plane();
 
@@ -1472,53 +1534,63 @@ class StepVisual_CameraModelD3MultiClippingIntersection : public StepGeom_Geomet
 		/****************** StepVisual_CameraModelD3MultiClippingIntersection ******************/
 		/**** md5 signature: 47db55288bb3ff8c5ae4fa31d18ec489 ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD3MultiClippingIntersection;
-		%feature("autodoc", "Returns a stepvisual_cameramodeld3multiclippingintersection.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a stepvisual_cameramodeld3multiclippingintersection.
 ") StepVisual_CameraModelD3MultiClippingIntersection;
 		 StepVisual_CameraModelD3MultiClippingIntersection();
 
 		/****************** Init ******************/
 		/**** md5 signature: c7d69399b62c4f997e4ef95bf195487b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
 		/****************** SetShapeClipping ******************/
 		/**** md5 signature: d3f138def09366b1d4de0425b5fa7872 ****/
 		%feature("compactdefaultargs") SetShapeClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetShapeClipping;
 		void SetShapeClipping(const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
 		/****************** ShapeClipping ******************/
 		/**** md5 signature: 6eb5c9a377534fa0b6410bb68e41bb5b ****/
 		%feature("compactdefaultargs") ShapeClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect>
+
+Description
+-----------
+No available documentation.
 ") ShapeClipping;
 		const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> ShapeClipping();
 
@@ -1541,53 +1613,63 @@ class StepVisual_CameraModelD3MultiClippingUnion : public StepGeom_GeometricRepr
 		/****************** StepVisual_CameraModelD3MultiClippingUnion ******************/
 		/**** md5 signature: ca0cf3158bc30c32d6aa32bcd6a25f16 ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD3MultiClippingUnion;
-		%feature("autodoc", "Returns a stepvisual_cameramodeld3multiclippingunion.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a stepvisual_cameramodeld3multiclippingunion.
 ") StepVisual_CameraModelD3MultiClippingUnion;
 		 StepVisual_CameraModelD3MultiClippingUnion();
 
 		/****************** Init ******************/
 		/**** md5 signature: 11efd3fe0c5c4a223ffd91529793efcd ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> & theShapeClipping);
 
 		/****************** SetShapeClipping ******************/
 		/**** md5 signature: 038c1c8ce5cdfba4e8c3a99cb3c5a7e9 ****/
 		%feature("compactdefaultargs") SetShapeClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetShapeClipping;
 		void SetShapeClipping(const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> & theShapeClipping);
 
 		/****************** ShapeClipping ******************/
 		/**** md5 signature: 66c073b815f6e452df319d197d092d8b ****/
 		%feature("compactdefaultargs") ShapeClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect>
+
+Description
+-----------
+No available documentation.
 ") ShapeClipping;
 		const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> ShapeClipping();
 
@@ -1610,48 +1692,57 @@ class StepVisual_CameraModelD3MultiClippingUnionSelect : public StepData_SelectT
 		/****************** StepVisual_CameraModelD3MultiClippingUnionSelect ******************/
 		/**** md5 signature: b7695837782ea575f599a451b0238b8b ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD3MultiClippingUnionSelect;
-		%feature("autodoc", "Returns a cameramodeld3multiclippingunionselect select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameramodeld3multiclippingunionselect select type.
 ") StepVisual_CameraModelD3MultiClippingUnionSelect;
 		 StepVisual_CameraModelD3MultiClippingUnionSelect();
 
 		/****************** CameraModelD3MultiClippingIntersection ******************/
 		/**** md5 signature: f1eb4518d473d2f1bc0eb4cf37967ce3 ****/
 		%feature("compactdefaultargs") CameraModelD3MultiClippingIntersection;
-		%feature("autodoc", "Returns value as a cameramodeld3multiclippingintersection (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection>
+
+Description
+-----------
+Returns value as a cameramodeld3multiclippingintersection (null if another type).
 ") CameraModelD3MultiClippingIntersection;
 		opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> CameraModelD3MultiClippingIntersection();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a idattributeselect kind entity that is : 1 -> plane 2 -> cameramodeld3multiclippingintersection 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a idattributeselect kind entity that is: 1 -> plane 2 -> cameramodeld3multiclippingintersection 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Plane ******************/
 		/**** md5 signature: ef9462bf5902509743365943aea2b64d ****/
 		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "Returns value as a plane (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Plane>
+
+Description
+-----------
+Returns value as a plane (null if another type).
 ") Plane;
 		opencascade::handle<StepGeom_Plane> Plane();
 
@@ -1672,11 +1763,13 @@ class StepVisual_CameraUsage : public StepRepr_RepresentationMap {
 		/****************** StepVisual_CameraUsage ******************/
 		/**** md5 signature: 45415ac2e87a3f1d1a7026bfe70cf5c6 ****/
 		%feature("compactdefaultargs") StepVisual_CameraUsage;
-		%feature("autodoc", "Returns a camerausage.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a camerausage.
 ") StepVisual_CameraUsage;
 		 StepVisual_CameraUsage();
 
@@ -1699,11 +1792,13 @@ class StepVisual_Colour : public Standard_Transient {
 		/****************** StepVisual_Colour ******************/
 		/**** md5 signature: a93169512723959304c96e613003b67a ****/
 		%feature("compactdefaultargs") StepVisual_Colour;
-		%feature("autodoc", "Returns a colour.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a colour.
 ") StepVisual_Colour;
 		 StepVisual_Colour();
 
@@ -1726,79 +1821,94 @@ class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
 		/****************** StepVisual_CompositeText ******************/
 		/**** md5 signature: ae7d3182b6f8ff9b5cadcab92588a16b ****/
 		%feature("compactdefaultargs") StepVisual_CompositeText;
-		%feature("autodoc", "Returns a compositetext.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a compositetext.
 ") StepVisual_CompositeText;
 		 StepVisual_CompositeText();
 
 		/****************** CollectedText ******************/
 		/**** md5 signature: 2cd390c56cca036e0603361f0f50dab8 ****/
 		%feature("compactdefaultargs") CollectedText;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfTextOrCharacter>
+
+Description
+-----------
+No available documentation.
 ") CollectedText;
 		opencascade::handle<StepVisual_HArray1OfTextOrCharacter> CollectedText();
 
 		/****************** CollectedTextValue ******************/
 		/**** md5 signature: 570a73e4912d499935e33e1e84bddad8 ****/
 		%feature("compactdefaultargs") CollectedTextValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_TextOrCharacter
+
+Description
+-----------
+No available documentation.
 ") CollectedTextValue;
 		StepVisual_TextOrCharacter CollectedTextValue(const Standard_Integer num);
 
 		/****************** Init ******************/
 		/**** md5 signature: 0ac419a47d5af14d5ffe09a081812e1c ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aCollectedText: StepVisual_HArray1OfTextOrCharacter
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText);
 
 		/****************** NbCollectedText ******************/
 		/**** md5 signature: d17d775367ed59d4fe52e7d92becf9b2 ****/
 		%feature("compactdefaultargs") NbCollectedText;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbCollectedText;
 		Standard_Integer NbCollectedText();
 
 		/****************** SetCollectedText ******************/
 		/**** md5 signature: af98ee77e57354d975664705fcbdf314 ****/
 		%feature("compactdefaultargs") SetCollectedText;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aCollectedText: StepVisual_HArray1OfTextOrCharacter
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCollectedText;
 		void SetCollectedText(const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText);
 
@@ -1821,52 +1931,59 @@ class StepVisual_CurveStyle : public Standard_Transient {
 		/****************** StepVisual_CurveStyle ******************/
 		/**** md5 signature: 85aa6e5b1944fe6192adb3190916d4c4 ****/
 		%feature("compactdefaultargs") StepVisual_CurveStyle;
-		%feature("autodoc", "Returns a curvestyle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a curvestyle.
 ") StepVisual_CurveStyle;
 		 StepVisual_CurveStyle();
 
 		/****************** CurveColour ******************/
 		/**** md5 signature: 0434c432718ef09a6f61b00546985039 ****/
 		%feature("compactdefaultargs") CurveColour;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_Colour>
+
+Description
+-----------
+No available documentation.
 ") CurveColour;
 		opencascade::handle<StepVisual_Colour> CurveColour();
 
 		/****************** CurveFont ******************/
 		/**** md5 signature: 2107bd8b73a5abe6d11b55f6e429eed4 ****/
 		%feature("compactdefaultargs") CurveFont;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_CurveStyleFontSelect
+
+Description
+-----------
+No available documentation.
 ") CurveFont;
 		StepVisual_CurveStyleFontSelect CurveFont();
 
 		/****************** CurveWidth ******************/
 		/**** md5 signature: 97802a497f663f2bc68739bf2369f40a ****/
 		%feature("compactdefaultargs") CurveWidth;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepBasic_SizeSelect
+
+Description
+-----------
+No available documentation.
 ") CurveWidth;
 		StepBasic_SizeSelect CurveWidth();
 
 		/****************** Init ******************/
 		/**** md5 signature: e11498a4dc00d8ebafab32181cac5ad3 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -1874,80 +1991,98 @@ aCurveFont: StepVisual_CurveStyleFontSelect
 aCurveWidth: StepBasic_SizeSelect
 aCurveColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepVisual_CurveStyleFontSelect & aCurveFont, const StepBasic_SizeSelect & aCurveWidth, const opencascade::handle<StepVisual_Colour> & aCurveColour);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetCurveColour ******************/
 		/**** md5 signature: e12ea3eb92ae412fce7482b84084874b ****/
 		%feature("compactdefaultargs") SetCurveColour;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aCurveColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCurveColour;
 		void SetCurveColour(const opencascade::handle<StepVisual_Colour> & aCurveColour);
 
 		/****************** SetCurveFont ******************/
 		/**** md5 signature: b8ac1ca16c6ebec6dbf6c90f6e884791 ****/
 		%feature("compactdefaultargs") SetCurveFont;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aCurveFont: StepVisual_CurveStyleFontSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCurveFont;
 		void SetCurveFont(const StepVisual_CurveStyleFontSelect & aCurveFont);
 
 		/****************** SetCurveWidth ******************/
 		/**** md5 signature: 6bda267d11ee5c873f0daa9fd33e87eb ****/
 		%feature("compactdefaultargs") SetCurveWidth;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aCurveWidth: StepBasic_SizeSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCurveWidth;
 		void SetCurveWidth(const StepBasic_SizeSelect & aCurveWidth);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -1970,105 +2105,125 @@ class StepVisual_CurveStyleFont : public Standard_Transient {
 		/****************** StepVisual_CurveStyleFont ******************/
 		/**** md5 signature: 1b693b23440fc7e9a6ed5407e5b3420b ****/
 		%feature("compactdefaultargs") StepVisual_CurveStyleFont;
-		%feature("autodoc", "Returns a curvestylefont.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a curvestylefont.
 ") StepVisual_CurveStyleFont;
 		 StepVisual_CurveStyleFont();
 
 		/****************** Init ******************/
 		/**** md5 signature: 56be91c2265461529bfbe169d722039b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aPatternList: StepVisual_HArray1OfCurveStyleFontPattern
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> & aPatternList);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** NbPatternList ******************/
 		/**** md5 signature: b1b6eda1040dd7056f2e6585591bdf68 ****/
 		%feature("compactdefaultargs") NbPatternList;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbPatternList;
 		Standard_Integer NbPatternList();
 
 		/****************** PatternList ******************/
 		/**** md5 signature: 4c6d4f82ee2bff32944dea7e0d3c469e ****/
 		%feature("compactdefaultargs") PatternList;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern>
+
+Description
+-----------
+No available documentation.
 ") PatternList;
 		opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> PatternList();
 
 		/****************** PatternListValue ******************/
 		/**** md5 signature: 4ebb3c7b7a8aeb6b8448d1e548314593 ****/
 		%feature("compactdefaultargs") PatternListValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 opencascade::handle<StepVisual_CurveStyleFontPattern>
+
+Description
+-----------
+No available documentation.
 ") PatternListValue;
 		opencascade::handle<StepVisual_CurveStyleFontPattern> PatternListValue(const Standard_Integer num);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****************** SetPatternList ******************/
 		/**** md5 signature: 2bf4ac68cd54c522f51dcf81a67a6427 ****/
 		%feature("compactdefaultargs") SetPatternList;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPatternList: StepVisual_HArray1OfCurveStyleFontPattern
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPatternList;
 		void SetPatternList(const opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> & aPatternList);
 
@@ -2091,79 +2246,94 @@ class StepVisual_CurveStyleFontPattern : public Standard_Transient {
 		/****************** StepVisual_CurveStyleFontPattern ******************/
 		/**** md5 signature: fea22a6fc8f31f6187185d7f2004703c ****/
 		%feature("compactdefaultargs") StepVisual_CurveStyleFontPattern;
-		%feature("autodoc", "Returns a curvestylefontpattern.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a curvestylefontpattern.
 ") StepVisual_CurveStyleFontPattern;
 		 StepVisual_CurveStyleFontPattern();
 
 		/****************** Init ******************/
 		/**** md5 signature: da8b86f284cc6745833744e819a928be ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aVisibleSegmentLength: float
 aInvisibleSegmentLength: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const Standard_Real aVisibleSegmentLength, const Standard_Real aInvisibleSegmentLength);
 
 		/****************** InvisibleSegmentLength ******************/
 		/**** md5 signature: 8b295afdd729873b7a3167469c7d7c62 ****/
 		%feature("compactdefaultargs") InvisibleSegmentLength;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") InvisibleSegmentLength;
 		Standard_Real InvisibleSegmentLength();
 
 		/****************** SetInvisibleSegmentLength ******************/
 		/**** md5 signature: 63e7a7d60db9ca0863c82f4a0cc3cf5d ****/
 		%feature("compactdefaultargs") SetInvisibleSegmentLength;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aInvisibleSegmentLength: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetInvisibleSegmentLength;
 		void SetInvisibleSegmentLength(const Standard_Real aInvisibleSegmentLength);
 
 		/****************** SetVisibleSegmentLength ******************/
 		/**** md5 signature: 7630cd0d6d3230359bbffdfa368b56aa ****/
 		%feature("compactdefaultargs") SetVisibleSegmentLength;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aVisibleSegmentLength: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetVisibleSegmentLength;
 		void SetVisibleSegmentLength(const Standard_Real aVisibleSegmentLength);
 
 		/****************** VisibleSegmentLength ******************/
 		/**** md5 signature: bb7aea0f1cc06928a599d62aabfdf1bb ****/
 		%feature("compactdefaultargs") VisibleSegmentLength;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") VisibleSegmentLength;
 		Standard_Real VisibleSegmentLength();
 
@@ -2186,59 +2356,70 @@ class StepVisual_CurveStyleFontSelect : public StepData_SelectType {
 		/****************** StepVisual_CurveStyleFontSelect ******************/
 		/**** md5 signature: 256a5fa863ec7607bb084186b9d94ac3 ****/
 		%feature("compactdefaultargs") StepVisual_CurveStyleFontSelect;
-		%feature("autodoc", "Returns a curvestylefontselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a curvestylefontselect selecttype.
 ") StepVisual_CurveStyleFontSelect;
 		 StepVisual_CurveStyleFontSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a curvestylefontselect kind entity that is : 1 -> curvestylefont 2 -> predefinedcurvefont 3 -> externallydefinedcurvefont 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a curvestylefontselect kind entity that is: 1 -> curvestylefont 2 -> predefinedcurvefont 3 -> externallydefinedcurvefont 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** CurveStyleFont ******************/
 		/**** md5 signature: eeccc82a951dd63f3e36805c7a195791 ****/
 		%feature("compactdefaultargs") CurveStyleFont;
-		%feature("autodoc", "Returns value as a curvestylefont (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyleFont>
+
+Description
+-----------
+Returns value as a curvestylefont (null if another type).
 ") CurveStyleFont;
 		opencascade::handle<StepVisual_CurveStyleFont> CurveStyleFont();
 
 		/****************** ExternallyDefinedCurveFont ******************/
 		/**** md5 signature: ac31317e484b0372b70f9c7d87e01bb4 ****/
 		%feature("compactdefaultargs") ExternallyDefinedCurveFont;
-		%feature("autodoc", "Returns value as a externallydefinedcurvefont (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_ExternallyDefinedCurveFont>
+
+Description
+-----------
+Returns value as a externallydefinedcurvefont (null if another type).
 ") ExternallyDefinedCurveFont;
 		opencascade::handle<StepVisual_ExternallyDefinedCurveFont> ExternallyDefinedCurveFont();
 
 		/****************** PreDefinedCurveFont ******************/
 		/**** md5 signature: 7620a50516129f5a0e764c594c83d882 ****/
 		%feature("compactdefaultargs") PreDefinedCurveFont;
-		%feature("autodoc", "Returns value as a predefinedcurvefont (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PreDefinedCurveFont>
+
+Description
+-----------
+Returns value as a predefinedcurvefont (null if another type).
 ") PreDefinedCurveFont;
 		opencascade::handle<StepVisual_PreDefinedCurveFont> PreDefinedCurveFont();
 
@@ -2259,89 +2440,106 @@ class StepVisual_DirectionCountSelect {
 		/****************** StepVisual_DirectionCountSelect ******************/
 		/**** md5 signature: 10f56f2413fc42c436629b223beabb4b ****/
 		%feature("compactdefaultargs") StepVisual_DirectionCountSelect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_DirectionCountSelect;
 		 StepVisual_DirectionCountSelect();
 
 		/****************** SetTypeOfContent ******************/
 		/**** md5 signature: 64ebf9bba16f3a3a03b5db3858660432 ****/
 		%feature("compactdefaultargs") SetTypeOfContent;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aTypeOfContent: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetTypeOfContent;
 		void SetTypeOfContent(const Standard_Integer aTypeOfContent);
 
 		/****************** SetUDirectionCount ******************/
 		/**** md5 signature: d2b37605e30f9f3a164437046c90b643 ****/
 		%feature("compactdefaultargs") SetUDirectionCount;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aUDirectionCount: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetUDirectionCount;
 		void SetUDirectionCount(const Standard_Integer aUDirectionCount);
 
 		/****************** SetVDirectionCount ******************/
 		/**** md5 signature: 270f7ae76ba877c54b0a67a19a996e9d ****/
 		%feature("compactdefaultargs") SetVDirectionCount;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aUDirectionCount: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetVDirectionCount;
 		void SetVDirectionCount(const Standard_Integer aUDirectionCount);
 
 		/****************** TypeOfContent ******************/
 		/**** md5 signature: ca265bcca49d9306f069cd5137aa4464 ****/
 		%feature("compactdefaultargs") TypeOfContent;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") TypeOfContent;
 		Standard_Integer TypeOfContent();
 
 		/****************** UDirectionCount ******************/
 		/**** md5 signature: e971de5fe8c36b62a342c36a1aaabe76 ****/
 		%feature("compactdefaultargs") UDirectionCount;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") UDirectionCount;
 		Standard_Integer UDirectionCount();
 
 		/****************** VDirectionCount ******************/
 		/**** md5 signature: 1a2bb477a938673186e5eca69c3b0579 ****/
 		%feature("compactdefaultargs") VDirectionCount;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") VDirectionCount;
 		Standard_Integer VDirectionCount();
 
@@ -2362,95 +2560,113 @@ class StepVisual_DraughtingCallout : public StepGeom_GeometricRepresentationItem
 		/****************** StepVisual_DraughtingCallout ******************/
 		/**** md5 signature: 479128b3cf76d9fc67402329a058f44f ****/
 		%feature("compactdefaultargs") StepVisual_DraughtingCallout;
-		%feature("autodoc", "Returns a draughtingcallout.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingcallout.
 ") StepVisual_DraughtingCallout;
 		 StepVisual_DraughtingCallout();
 
 		/****************** Contents ******************/
 		/**** md5 signature: 095947082d889e7c32de10dc5bbd03d1 ****/
 		%feature("compactdefaultargs") Contents;
-		%feature("autodoc", "Returns field contents.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement>
+
+Description
+-----------
+Returns field contents.
 ") Contents;
 		opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> Contents();
 
 		/****************** ContentsValue ******************/
 		/**** md5 signature: e5e1f2450ca3a5a2db96d1c0d164d96f ****/
 		%feature("compactdefaultargs") ContentsValue;
-		%feature("autodoc", "Returns contents with the given number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 StepVisual_DraughtingCalloutElement
+
+Description
+-----------
+Returns contents with the given number.
 ") ContentsValue;
 		StepVisual_DraughtingCalloutElement ContentsValue(const Standard_Integer theNum);
 
 		/****************** Init ******************/
 		/**** md5 signature: 0f3491ec3799c4002589207be16d6de9 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Init.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theContents: StepVisual_HArray1OfDraughtingCalloutElement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Init.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
 
 		/****************** NbContents ******************/
 		/**** md5 signature: 648b0dcfd621b001a960425b98fd0875 ****/
 		%feature("compactdefaultargs") NbContents;
-		%feature("autodoc", "Returns number of contents.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of contents.
 ") NbContents;
 		Standard_Integer NbContents();
 
 		/****************** SetContents ******************/
 		/**** md5 signature: a627aa9980b13436d86c6b1751ff16c7 ****/
 		%feature("compactdefaultargs") SetContents;
-		%feature("autodoc", "Set field contents.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theContents: StepVisual_HArray1OfDraughtingCalloutElement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set field contents.
 ") SetContents;
 		void SetContents(const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
 
 		/****************** SetContentsValue ******************/
 		/**** md5 signature: 182606d6bc94b4b624f4ec4bba91a2ce ****/
 		%feature("compactdefaultargs") SetContentsValue;
-		%feature("autodoc", "Sets contents with given number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 theItem: StepVisual_DraughtingCalloutElement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets contents with given number.
 ") SetContentsValue;
 		void SetContentsValue(const Standard_Integer theNum, const StepVisual_DraughtingCalloutElement & theItem);
 
@@ -2473,70 +2689,83 @@ class StepVisual_DraughtingCalloutElement : public StepData_SelectType {
 		/****************** StepVisual_DraughtingCalloutElement ******************/
 		/**** md5 signature: a49239e44d9e53e7c66bc767f83d9bde ****/
 		%feature("compactdefaultargs") StepVisual_DraughtingCalloutElement;
-		%feature("autodoc", "Returns a draughtingcalloutelement select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingcalloutelement select type.
 ") StepVisual_DraughtingCalloutElement;
 		 StepVisual_DraughtingCalloutElement();
 
 		/****************** AnnotationCurveOccurrence ******************/
 		/**** md5 signature: d11af034ca7cac23dfd69b1f3d70df7c ****/
 		%feature("compactdefaultargs") AnnotationCurveOccurrence;
-		%feature("autodoc", "Returns value as a annotationcurveoccurrence (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_AnnotationCurveOccurrence>
+
+Description
+-----------
+Returns value as a annotationcurveoccurrence (null if another type).
 ") AnnotationCurveOccurrence;
 		opencascade::handle<StepVisual_AnnotationCurveOccurrence> AnnotationCurveOccurrence();
 
 		/****************** AnnotationFillAreaOccurrence ******************/
 		/**** md5 signature: 8fb32aae3b8e74c47bd9bcf5bb76409c ****/
 		%feature("compactdefaultargs") AnnotationFillAreaOccurrence;
-		%feature("autodoc", "Returns value as a annotationfillareaoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_AnnotationFillAreaOccurrence>
+
+Description
+-----------
+Returns value as a annotationfillareaoccurrence.
 ") AnnotationFillAreaOccurrence;
 		opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> AnnotationFillAreaOccurrence();
 
 		/****************** AnnotationTextOccurrence ******************/
 		/**** md5 signature: 4f777e80eb4a0b798f5d02115ebbed97 ****/
 		%feature("compactdefaultargs") AnnotationTextOccurrence;
-		%feature("autodoc", "Returns value as a annotationtextoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_AnnotationTextOccurrence>
+
+Description
+-----------
+Returns value as a annotationtextoccurrence.
 ") AnnotationTextOccurrence;
 		opencascade::handle<StepVisual_AnnotationTextOccurrence> AnnotationTextOccurrence();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a idattributeselect kind entity that is : 1 -> annotationcurveoccurrence 2 -> annotationtextoccurrence 3 -> tessellatedannotationoccurrence 4 -> annotationfillareaoccurrence 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a idattributeselect kind entity that is: 1 -> annotationcurveoccurrence 2 -> annotationtextoccurrence 3 -> tessellatedannotationoccurrence 4 -> annotationfillareaoccurrence 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** TessellatedAnnotationOccurrence ******************/
 		/**** md5 signature: 9a51ea8427317a0230ff1ad6f1ec5743 ****/
 		%feature("compactdefaultargs") TessellatedAnnotationOccurrence;
-		%feature("autodoc", "Returns value as a tessellatedannotationoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TessellatedAnnotationOccurrence>
+
+Description
+-----------
+Returns value as a tessellatedannotationoccurrence.
 ") TessellatedAnnotationOccurrence;
 		opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> TessellatedAnnotationOccurrence();
 
@@ -2557,11 +2786,13 @@ class StepVisual_DraughtingModel : public StepRepr_Representation {
 		/****************** StepVisual_DraughtingModel ******************/
 		/**** md5 signature: 90370651a280a0297ef880071fb1c7a8 ****/
 		%feature("compactdefaultargs") StepVisual_DraughtingModel;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_DraughtingModel;
 		 StepVisual_DraughtingModel();
 
@@ -2584,48 +2815,57 @@ class StepVisual_EdgeOrCurve : public StepData_SelectType {
 		/****************** StepVisual_EdgeOrCurve ******************/
 		/**** md5 signature: 7e13a0cec827f21ff30a08609cc6a72e ****/
 		%feature("compactdefaultargs") StepVisual_EdgeOrCurve;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_EdgeOrCurve;
 		 StepVisual_EdgeOrCurve();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a kind of edgeorcurve select type -- 1 -> curve -- 2 -> edge.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a kind of edgeorcurve select type -- 1 -> curve -- 2 -> edge.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Curve ******************/
 		/**** md5 signature: 29742eb86c60e95cfe724318fdd485f7 ****/
 		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns value as curve (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Curve>
+
+Description
+-----------
+Returns value as curve (or null if another type).
 ") Curve;
 		opencascade::handle<StepGeom_Curve> Curve();
 
 		/****************** Edge ******************/
 		/**** md5 signature: 6eccb4cb63dbfc116c3a6a3f77934b1d ****/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "Returns value as edge (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_Edge>
+
+Description
+-----------
+Returns value as edge (or null if another type).
 ") Edge;
 		opencascade::handle<StepShape_Edge> Edge();
 
@@ -2646,11 +2886,13 @@ class StepVisual_ExternallyDefinedCurveFont : public StepBasic_ExternallyDefined
 		/****************** StepVisual_ExternallyDefinedCurveFont ******************/
 		/**** md5 signature: a80bef727f282348eddcd999e1ebe393 ****/
 		%feature("compactdefaultargs") StepVisual_ExternallyDefinedCurveFont;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_ExternallyDefinedCurveFont;
 		 StepVisual_ExternallyDefinedCurveFont();
 
@@ -2673,11 +2915,13 @@ class StepVisual_ExternallyDefinedTextFont : public StepBasic_ExternallyDefinedI
 		/****************** StepVisual_ExternallyDefinedTextFont ******************/
 		/**** md5 signature: d5e49916c125350e8679005625fd3e4a ****/
 		%feature("compactdefaultargs") StepVisual_ExternallyDefinedTextFont;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_ExternallyDefinedTextFont;
 		 StepVisual_ExternallyDefinedTextFont();
 
@@ -2700,48 +2944,57 @@ class StepVisual_FaceOrSurface : public StepData_SelectType {
 		/****************** StepVisual_FaceOrSurface ******************/
 		/**** md5 signature: 63718d0b8a42fdc6a2e024f4a3ffe41a ****/
 		%feature("compactdefaultargs") StepVisual_FaceOrSurface;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_FaceOrSurface;
 		 StepVisual_FaceOrSurface();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a kind of faceorsurface select type -- 1 -> face -- 2 -> surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a kind of faceorsurface select type -- 1 -> face -- 2 -> surface.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Face ******************/
 		/**** md5 signature: cb3fb10fb42f13714d2b79863e6a19e2 ****/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "Returns value as face (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_Face>
+
+Description
+-----------
+Returns value as face (or null if another type).
 ") Face;
 		opencascade::handle<StepShape_Face> Face();
 
 		/****************** Surface ******************/
 		/**** md5 signature: c2398e6bbff81fe9609620c081466496 ****/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns value as surface (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Surface>
+
+Description
+-----------
+Returns value as surface (or null if another type).
 ") Surface;
 		opencascade::handle<StepGeom_Surface> Surface();
 
@@ -2762,105 +3015,125 @@ class StepVisual_FillAreaStyle : public Standard_Transient {
 		/****************** StepVisual_FillAreaStyle ******************/
 		/**** md5 signature: 4336473b355d1d0a6b363eaba2ff6e5a ****/
 		%feature("compactdefaultargs") StepVisual_FillAreaStyle;
-		%feature("autodoc", "Returns a fillareastyle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a fillareastyle.
 ") StepVisual_FillAreaStyle;
 		 StepVisual_FillAreaStyle();
 
 		/****************** FillStyles ******************/
 		/**** md5 signature: bfc36d830b15b08a7d0b1384ee4ccc34 ****/
 		%feature("compactdefaultargs") FillStyles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfFillStyleSelect>
+
+Description
+-----------
+No available documentation.
 ") FillStyles;
 		opencascade::handle<StepVisual_HArray1OfFillStyleSelect> FillStyles();
 
 		/****************** FillStylesValue ******************/
 		/**** md5 signature: 72fdc401b454ca337f6dbd61f7cc768e ****/
 		%feature("compactdefaultargs") FillStylesValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_FillStyleSelect
+
+Description
+-----------
+No available documentation.
 ") FillStylesValue;
 		StepVisual_FillStyleSelect FillStylesValue(const Standard_Integer num);
 
 		/****************** Init ******************/
 		/**** md5 signature: b122c0a70ff57a17efa8592a47047cc2 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aFillStyles: StepVisual_HArray1OfFillStyleSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfFillStyleSelect> & aFillStyles);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** NbFillStyles ******************/
 		/**** md5 signature: abf777e4c20d44bb00c07d1ac5743b9b ****/
 		%feature("compactdefaultargs") NbFillStyles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbFillStyles;
 		Standard_Integer NbFillStyles();
 
 		/****************** SetFillStyles ******************/
 		/**** md5 signature: 88bc4d07eadb53c25317d10fd2c1f7af ****/
 		%feature("compactdefaultargs") SetFillStyles;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFillStyles: StepVisual_HArray1OfFillStyleSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetFillStyles;
 		void SetFillStyles(const opencascade::handle<StepVisual_HArray1OfFillStyleSelect> & aFillStyles);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -2883,79 +3156,94 @@ class StepVisual_FillAreaStyleColour : public Standard_Transient {
 		/****************** StepVisual_FillAreaStyleColour ******************/
 		/**** md5 signature: 2c2c1dd51151c21997d01628744768cc ****/
 		%feature("compactdefaultargs") StepVisual_FillAreaStyleColour;
-		%feature("autodoc", "Returns a fillareastylecolour.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a fillareastylecolour.
 ") StepVisual_FillAreaStyleColour;
 		 StepVisual_FillAreaStyleColour();
 
 		/****************** FillColour ******************/
 		/**** md5 signature: bd2101d67ed5ee5b2e9f70fbfb843f2d ****/
 		%feature("compactdefaultargs") FillColour;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_Colour>
+
+Description
+-----------
+No available documentation.
 ") FillColour;
 		opencascade::handle<StepVisual_Colour> FillColour();
 
 		/****************** Init ******************/
 		/**** md5 signature: 6fd1c501a81e52ee11e034912ddc052c ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aFillColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_Colour> & aFillColour);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetFillColour ******************/
 		/**** md5 signature: 0c8af4b1f10f96936e6080e0be4e0afb ****/
 		%feature("compactdefaultargs") SetFillColour;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFillColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetFillColour;
 		void SetFillColour(const opencascade::handle<StepVisual_Colour> & aFillColour);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -2978,37 +3266,44 @@ class StepVisual_FillStyleSelect : public StepData_SelectType {
 		/****************** StepVisual_FillStyleSelect ******************/
 		/**** md5 signature: c3a89032a828ea6a76e5b5677134a66b ****/
 		%feature("compactdefaultargs") StepVisual_FillStyleSelect;
-		%feature("autodoc", "Returns a fillstyleselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a fillstyleselect selecttype.
 ") StepVisual_FillStyleSelect;
 		 StepVisual_FillStyleSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a fillstyleselect kind entity that is : 1 -> fillareastylecolour 2 -> externallydefinedtilestyle 3 -> fillareastyletiles 4 -> externallydefinedhatchstyle 5 -> fillareastylehatching 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a fillstyleselect kind entity that is: 1 -> fillareastylecolour 2 -> externallydefinedtilestyle 3 -> fillareastyletiles 4 -> externallydefinedhatchstyle 5 -> fillareastylehatching 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** FillAreaStyleColour ******************/
 		/**** md5 signature: e3faf68b401a2aaeb9697abe8bd0a44e ****/
 		%feature("compactdefaultargs") FillAreaStyleColour;
-		%feature("autodoc", "Returns value as a fillareastylecolour (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_FillAreaStyleColour>
+
+Description
+-----------
+Returns value as a fillareastylecolour (null if another type).
 ") FillAreaStyleColour;
 		opencascade::handle<StepVisual_FillAreaStyleColour> FillAreaStyleColour();
 
@@ -3029,48 +3324,57 @@ class StepVisual_FontSelect : public StepData_SelectType {
 		/****************** StepVisual_FontSelect ******************/
 		/**** md5 signature: dbf28f42ce8760b15bf259ebb7b72b72 ****/
 		%feature("compactdefaultargs") StepVisual_FontSelect;
-		%feature("autodoc", "Returns a fontselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a fontselect selecttype.
 ") StepVisual_FontSelect;
 		 StepVisual_FontSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a fontselect kind entity that is : 1 -> predefinedtextfont 2 -> externallydefinedtextfont 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a fontselect kind entity that is: 1 -> predefinedtextfont 2 -> externallydefinedtextfont 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ExternallyDefinedTextFont ******************/
 		/**** md5 signature: dc1f9c851d899996d490564ecb340dfd ****/
 		%feature("compactdefaultargs") ExternallyDefinedTextFont;
-		%feature("autodoc", "Returns value as a externallydefinedtextfont (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_ExternallyDefinedTextFont>
+
+Description
+-----------
+Returns value as a externallydefinedtextfont (null if another type).
 ") ExternallyDefinedTextFont;
 		opencascade::handle<StepVisual_ExternallyDefinedTextFont> ExternallyDefinedTextFont();
 
 		/****************** PreDefinedTextFont ******************/
 		/**** md5 signature: f701e1febadd6d827f8ad9082838f3f7 ****/
 		%feature("compactdefaultargs") PreDefinedTextFont;
-		%feature("autodoc", "Returns value as a predefinedtextfont (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PreDefinedTextFont>
+
+Description
+-----------
+Returns value as a predefinedtextfont (null if another type).
 ") PreDefinedTextFont;
 		opencascade::handle<StepVisual_PreDefinedTextFont> PreDefinedTextFont();
 
@@ -3091,78 +3395,93 @@ class StepVisual_Invisibility : public Standard_Transient {
 		/****************** StepVisual_Invisibility ******************/
 		/**** md5 signature: a3474cb24273a3875e45818c14f2a810 ****/
 		%feature("compactdefaultargs") StepVisual_Invisibility;
-		%feature("autodoc", "Returns a invisibility.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a invisibility.
 ") StepVisual_Invisibility;
 		 StepVisual_Invisibility();
 
 		/****************** Init ******************/
 		/**** md5 signature: 43418f7b6dedd792034c03b90ac07989 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aInvisibleItems: StepVisual_HArray1OfInvisibleItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems);
 
 		/****************** InvisibleItems ******************/
 		/**** md5 signature: be820ab6c1eeb1d37e5a217109d55712 ****/
 		%feature("compactdefaultargs") InvisibleItems;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfInvisibleItem>
+
+Description
+-----------
+No available documentation.
 ") InvisibleItems;
 		opencascade::handle<StepVisual_HArray1OfInvisibleItem> InvisibleItems();
 
 		/****************** InvisibleItemsValue ******************/
 		/**** md5 signature: a0f0f2c308f4bcad141aef8e2da622e0 ****/
 		%feature("compactdefaultargs") InvisibleItemsValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_InvisibleItem
+
+Description
+-----------
+No available documentation.
 ") InvisibleItemsValue;
 		StepVisual_InvisibleItem InvisibleItemsValue(const Standard_Integer num);
 
 		/****************** NbInvisibleItems ******************/
 		/**** md5 signature: 17dadfd787033a03c16e43aa43fb9e42 ****/
 		%feature("compactdefaultargs") NbInvisibleItems;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbInvisibleItems;
 		Standard_Integer NbInvisibleItems();
 
 		/****************** SetInvisibleItems ******************/
 		/**** md5 signature: 38b0c0c6a390652a9dbe483c166b24e3 ****/
 		%feature("compactdefaultargs") SetInvisibleItems;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aInvisibleItems: StepVisual_HArray1OfInvisibleItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetInvisibleItems;
 		void SetInvisibleItems(const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems);
 
@@ -3185,59 +3504,70 @@ class StepVisual_InvisibilityContext : public StepData_SelectType {
 		/****************** StepVisual_InvisibilityContext ******************/
 		/**** md5 signature: 242bb7cc06725c2919283fc5c868071a ****/
 		%feature("compactdefaultargs") StepVisual_InvisibilityContext;
-		%feature("autodoc", "Returns a invisibilitycontext selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a invisibilitycontext selecttype.
 ") StepVisual_InvisibilityContext;
 		 StepVisual_InvisibilityContext();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a invisibilitycontext kind entity that is : 1 -> presentationrepresentation 2 -> presentationset 2 -> draughtingmodel 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a invisibilitycontext kind entity that is: 1 -> presentationrepresentation 2 -> presentationset 2 -> draughtingmodel 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** DraughtingModel ******************/
 		/**** md5 signature: 375dc663ce6735b6fbc38731ef539d11 ****/
 		%feature("compactdefaultargs") DraughtingModel;
-		%feature("autodoc", "Returns value as a presentationset (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_DraughtingModel>
+
+Description
+-----------
+Returns value as a presentationset (null if another type).
 ") DraughtingModel;
 		opencascade::handle<StepVisual_DraughtingModel> DraughtingModel();
 
 		/****************** PresentationRepresentation ******************/
 		/**** md5 signature: cc6c70dd495b260c6d02169df44fd1e5 ****/
 		%feature("compactdefaultargs") PresentationRepresentation;
-		%feature("autodoc", "Returns value as a presentationrepresentation (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationRepresentation>
+
+Description
+-----------
+Returns value as a presentationrepresentation (null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
 		/****************** PresentationSet ******************/
 		/**** md5 signature: e22661d0b7db8ea09e8adbe07ae2d793 ****/
 		%feature("compactdefaultargs") PresentationSet;
-		%feature("autodoc", "Returns value as a presentationset (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationSet>
+
+Description
+-----------
+Returns value as a presentationset (null if another type).
 ") PresentationSet;
 		opencascade::handle<StepVisual_PresentationSet> PresentationSet();
 
@@ -3258,59 +3588,70 @@ class StepVisual_InvisibleItem : public StepData_SelectType {
 		/****************** StepVisual_InvisibleItem ******************/
 		/**** md5 signature: d2cbc0b529016c99ba2f24b0dcad3ed5 ****/
 		%feature("compactdefaultargs") StepVisual_InvisibleItem;
-		%feature("autodoc", "Returns a invisibleitem selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a invisibleitem selecttype.
 ") StepVisual_InvisibleItem;
 		 StepVisual_InvisibleItem();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a invisibleitem kind entity that is : 1 -> styleditem 2 -> presentationlayerassignment 3 -> presentationrepresentation 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a invisibleitem kind entity that is: 1 -> styleditem 2 -> presentationlayerassignment 3 -> presentationrepresentation 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** PresentationLayerAssignment ******************/
 		/**** md5 signature: 49c7f239f0489b439f796bd73a3c191b ****/
 		%feature("compactdefaultargs") PresentationLayerAssignment;
-		%feature("autodoc", "Returns value as a presentationlayerassignment (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationLayerAssignment>
+
+Description
+-----------
+Returns value as a presentationlayerassignment (null if another type).
 ") PresentationLayerAssignment;
 		opencascade::handle<StepVisual_PresentationLayerAssignment> PresentationLayerAssignment();
 
 		/****************** PresentationRepresentation ******************/
 		/**** md5 signature: cc6c70dd495b260c6d02169df44fd1e5 ****/
 		%feature("compactdefaultargs") PresentationRepresentation;
-		%feature("autodoc", "Returns value as a presentationrepresentation (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationRepresentation>
+
+Description
+-----------
+Returns value as a presentationrepresentation (null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
 		/****************** StyledItem ******************/
 		/**** md5 signature: 61c7563ce33340acb54e8fd4f4208e5f ****/
 		%feature("compactdefaultargs") StyledItem;
-		%feature("autodoc", "Returns value as a styleditem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_StyledItem>
+
+Description
+-----------
+Returns value as a styleditem (null if another type).
 ") StyledItem;
 		opencascade::handle<StepVisual_StyledItem> StyledItem();
 
@@ -3331,48 +3672,57 @@ class StepVisual_LayeredItem : public StepData_SelectType {
 		/****************** StepVisual_LayeredItem ******************/
 		/**** md5 signature: 93c036723eecdf8e1e30f8876a289d07 ****/
 		%feature("compactdefaultargs") StepVisual_LayeredItem;
-		%feature("autodoc", "Returns a layereditem selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a layereditem selecttype.
 ") StepVisual_LayeredItem;
 		 StepVisual_LayeredItem();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a layereditem kind entity that is : 1 -> presentationrepresentation 2 -> representationitem 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a layereditem kind entity that is: 1 -> presentationrepresentation 2 -> representationitem 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** PresentationRepresentation ******************/
 		/**** md5 signature: cc6c70dd495b260c6d02169df44fd1e5 ****/
 		%feature("compactdefaultargs") PresentationRepresentation;
-		%feature("autodoc", "Returns value as a presentationrepresentation (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationRepresentation>
+
+Description
+-----------
+Returns value as a presentationrepresentation (null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
 		/****************** RepresentationItem ******************/
 		/**** md5 signature: 542dc5a7f82620b971e50a23ff46cd55 ****/
 		%feature("compactdefaultargs") RepresentationItem;
-		%feature("autodoc", "Returns value as a representationitem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepRepr_RepresentationItem>
+
+Description
+-----------
+Returns value as a representationitem (null if another type).
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -3393,101 +3743,120 @@ class StepVisual_MarkerMember : public StepData_SelectInt {
 		/****************** StepVisual_MarkerMember ******************/
 		/**** md5 signature: daa9cc87ce05af4fe8d8a93b0202878b ****/
 		%feature("compactdefaultargs") StepVisual_MarkerMember;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_MarkerMember;
 		 StepVisual_MarkerMember();
 
 		/****************** EnumText ******************/
 		/**** md5 signature: a63e2e811ad86b44e1eb67e1ce00ea65 ****/
 		%feature("compactdefaultargs") EnumText;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+No available documentation.
 ") EnumText;
 		virtual Standard_CString EnumText();
 
 		/****************** HasName ******************/
 		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
 		/****************** Name ******************/
 		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+No available documentation.
 ") Name;
 		virtual Standard_CString Name();
 
 		/****************** SetEnumText ******************/
 		/**** md5 signature: 120d4c122fb5eaba7d84896e45beec24 ****/
 		%feature("compactdefaultargs") SetEnumText;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 val: int
 text: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetEnumText;
 		virtual void SetEnumText(const Standard_Integer val, Standard_CString text);
 
 		/****************** SetName ******************/
 		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 name: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		virtual Standard_Boolean SetName(Standard_CString name);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: e50f72140ef69e3beed4121f92905c6a ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 val: StepVisual_MarkerType
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetValue;
 		void SetValue(const StepVisual_MarkerType val);
 
 		/****************** Value ******************/
 		/**** md5 signature: 286dad6be4f4f67c96f083f6cc615782 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_MarkerType
+
+Description
+-----------
+No available documentation.
 ") Value;
 		StepVisual_MarkerType Value();
 
@@ -3510,63 +3879,75 @@ class StepVisual_MarkerSelect : public StepData_SelectType {
 		/****************** StepVisual_MarkerSelect ******************/
 		/**** md5 signature: b747f2349cdf0119e364732d8207582b ****/
 		%feature("compactdefaultargs") StepVisual_MarkerSelect;
-		%feature("autodoc", "Returns a markerselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a markerselect selecttype.
 ") StepVisual_MarkerSelect;
 		 StepVisual_MarkerSelect();
 
 		/****************** CaseMem ******************/
 		/**** md5 signature: 9b67f0d9aae1302e7b91faea7b14b6d6 ****/
 		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "Returns 1 for a selectmember enum, named marker_type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 sm: StepData_SelectMember
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns 1 for a selectmember enum, named marker_type.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & sm);
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a markerselect kind entity that is : 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a markerselect kind entity that is: 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** MarkerMember ******************/
 		/**** md5 signature: 904b592dc010a92e404a5231a11e3db0 ****/
 		%feature("compactdefaultargs") MarkerMember;
-		%feature("autodoc", "Gives access to the markermember in order to get/set its value.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_MarkerMember>
+
+Description
+-----------
+Gives access to the markermember in order to get/set its value.
 ") MarkerMember;
 		opencascade::handle<StepVisual_MarkerMember> MarkerMember();
 
 		/****************** NewMember ******************/
 		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
-		%feature("autodoc", "Returns a new markermember.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepData_SelectMember>
+
+Description
+-----------
+Returns a new markermember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -3587,112 +3968,133 @@ class StepVisual_NullStyleMember : public StepData_SelectInt {
 		/****************** StepVisual_NullStyleMember ******************/
 		/**** md5 signature: db8e9b9d9748c8d6d6acb09afd037958 ****/
 		%feature("compactdefaultargs") StepVisual_NullStyleMember;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_NullStyleMember;
 		 StepVisual_NullStyleMember();
 
 		/****************** EnumText ******************/
 		/**** md5 signature: a63e2e811ad86b44e1eb67e1ce00ea65 ****/
 		%feature("compactdefaultargs") EnumText;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+No available documentation.
 ") EnumText;
 		virtual Standard_CString EnumText();
 
 		/****************** HasName ******************/
 		/**** md5 signature: 454c871a85ff9e9d126353d7d8ebe205 ****/
 		%feature("compactdefaultargs") HasName;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
 		/****************** Kind ******************/
 		/**** md5 signature: 68423d7a619b16473db8e5cece0b7d32 ****/
 		%feature("compactdefaultargs") Kind;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") Kind;
 		Standard_Integer Kind();
 
 		/****************** Name ******************/
 		/**** md5 signature: 06f88ef4dbb86ad142e1fa4f6645d0a3 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+No available documentation.
 ") Name;
 		virtual Standard_CString Name();
 
 		/****************** SetEnumText ******************/
 		/**** md5 signature: b2fa2c708967006363f06f147171c7a7 ****/
 		%feature("compactdefaultargs") SetEnumText;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: int
 theText: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetEnumText;
 		virtual void SetEnumText(const Standard_Integer theValue, Standard_CString theText);
 
 		/****************** SetName ******************/
 		/**** md5 signature: c0fb4b116d47426ff8c83f0fba90c9d0 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Standard_CString: 
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		virtual Standard_Boolean SetName(const Standard_CString);
 
 		/****************** SetValue ******************/
 		/**** md5 signature: 60b2edcaeb2ecfca6564c87df8d43442 ****/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: StepVisual_NullStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetValue;
 		void SetValue(const StepVisual_NullStyle theValue);
 
 		/****************** Value ******************/
 		/**** md5 signature: 499e66d9d9d247b8575636e45cb31c31 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_NullStyle
+
+Description
+-----------
+No available documentation.
 ") Value;
 		StepVisual_NullStyle Value();
 
@@ -3715,48 +4117,57 @@ class StepVisual_PathOrCompositeCurve : public StepData_SelectType {
 		/****************** StepVisual_PathOrCompositeCurve ******************/
 		/**** md5 signature: eb73d76ee64d09e5435dcca493c8913e ****/
 		%feature("compactdefaultargs") StepVisual_PathOrCompositeCurve;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_PathOrCompositeCurve;
 		 StepVisual_PathOrCompositeCurve();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a kind of pathorcompositecurve select type -- 1 -> compositecurve -- 2 -> path.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a kind of pathorcompositecurve select type -- 1 -> compositecurve -- 2 -> path.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** CompositeCurve ******************/
 		/**** md5 signature: 42a10fec5b3fc66e2fe2af9d3d5512d3 ****/
 		%feature("compactdefaultargs") CompositeCurve;
-		%feature("autodoc", "Returns value as compositecurve (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_CompositeCurve>
+
+Description
+-----------
+Returns value as compositecurve (or null if another type).
 ") CompositeCurve;
 		opencascade::handle<StepGeom_CompositeCurve> CompositeCurve();
 
 		/****************** Path ******************/
 		/**** md5 signature: 70a013beb029bdf0f121d725b800b390 ****/
 		%feature("compactdefaultargs") Path;
-		%feature("autodoc", "Returns value as path (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_Path>
+
+Description
+-----------
+Returns value as path (or null if another type).
 ") Path;
 		opencascade::handle<StepShape_Path> Path();
 
@@ -3777,80 +4188,95 @@ class StepVisual_PlanarExtent : public StepGeom_GeometricRepresentationItem {
 		/****************** StepVisual_PlanarExtent ******************/
 		/**** md5 signature: f88e86cabfb096c37ea044d10729f3d7 ****/
 		%feature("compactdefaultargs") StepVisual_PlanarExtent;
-		%feature("autodoc", "Returns a planarextent.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a planarextent.
 ") StepVisual_PlanarExtent;
 		 StepVisual_PlanarExtent();
 
 		/****************** Init ******************/
 		/**** md5 signature: 11c89a3a54c891c12e325c7a8f02c313 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aSizeInX: float
 aSizeInY: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aSizeInX, const Standard_Real aSizeInY);
 
 		/****************** SetSizeInX ******************/
 		/**** md5 signature: db14fc0ae7767c757c95681db0fcaef5 ****/
 		%feature("compactdefaultargs") SetSizeInX;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aSizeInX: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetSizeInX;
 		void SetSizeInX(const Standard_Real aSizeInX);
 
 		/****************** SetSizeInY ******************/
 		/**** md5 signature: f18d2e4c5890dfb270b4fcdf4e4dc52a ****/
 		%feature("compactdefaultargs") SetSizeInY;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aSizeInY: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetSizeInY;
 		void SetSizeInY(const Standard_Real aSizeInY);
 
 		/****************** SizeInX ******************/
 		/**** md5 signature: 207e37afbd922509f9b5429d02a8630e ****/
 		%feature("compactdefaultargs") SizeInX;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") SizeInX;
 		Standard_Real SizeInX();
 
 		/****************** SizeInY ******************/
 		/**** md5 signature: aa84661dba951a2ac821696b99f24fcd ****/
 		%feature("compactdefaultargs") SizeInY;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") SizeInY;
 		Standard_Real SizeInY();
 
@@ -3873,19 +4299,20 @@ class StepVisual_PointStyle : public Standard_Transient {
 		/****************** StepVisual_PointStyle ******************/
 		/**** md5 signature: b77cff766667db83923134b16f1a080f ****/
 		%feature("compactdefaultargs") StepVisual_PointStyle;
-		%feature("autodoc", "Returns a pointstyle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a pointstyle.
 ") StepVisual_PointStyle;
 		 StepVisual_PointStyle();
 
 		/****************** Init ******************/
 		/**** md5 signature: 9222acf07fcf679d31b16ca30350c4af ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -3893,113 +4320,137 @@ aMarker: StepVisual_MarkerSelect
 aMarkerSize: StepBasic_SizeSelect
 aMarkerColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepVisual_MarkerSelect & aMarker, const StepBasic_SizeSelect & aMarkerSize, const opencascade::handle<StepVisual_Colour> & aMarkerColour);
 
 		/****************** Marker ******************/
 		/**** md5 signature: b0937302b25ee8ac1612524b8e226a27 ****/
 		%feature("compactdefaultargs") Marker;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_MarkerSelect
+
+Description
+-----------
+No available documentation.
 ") Marker;
 		StepVisual_MarkerSelect Marker();
 
 		/****************** MarkerColour ******************/
 		/**** md5 signature: d338cad7b0da61dca546ce9c4070f00c ****/
 		%feature("compactdefaultargs") MarkerColour;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_Colour>
+
+Description
+-----------
+No available documentation.
 ") MarkerColour;
 		opencascade::handle<StepVisual_Colour> MarkerColour();
 
 		/****************** MarkerSize ******************/
 		/**** md5 signature: a0a261d41a3644442491bc71de2deb49 ****/
 		%feature("compactdefaultargs") MarkerSize;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepBasic_SizeSelect
+
+Description
+-----------
+No available documentation.
 ") MarkerSize;
 		StepBasic_SizeSelect MarkerSize();
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetMarker ******************/
 		/**** md5 signature: 73af6a1dd7d9421a136310adef8d2b66 ****/
 		%feature("compactdefaultargs") SetMarker;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aMarker: StepVisual_MarkerSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetMarker;
 		void SetMarker(const StepVisual_MarkerSelect & aMarker);
 
 		/****************** SetMarkerColour ******************/
 		/**** md5 signature: a164ea9964492d37ca8c3b4139b0850b ****/
 		%feature("compactdefaultargs") SetMarkerColour;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aMarkerColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetMarkerColour;
 		void SetMarkerColour(const opencascade::handle<StepVisual_Colour> & aMarkerColour);
 
 		/****************** SetMarkerSize ******************/
 		/**** md5 signature: 195892a7b46b4af9a849c8231556fdd8 ****/
 		%feature("compactdefaultargs") SetMarkerSize;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aMarkerSize: StepBasic_SizeSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetMarkerSize;
 		void SetMarkerSize(const StepBasic_SizeSelect & aMarkerSize);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -4022,52 +4473,62 @@ class StepVisual_PreDefinedItem : public Standard_Transient {
 		/****************** StepVisual_PreDefinedItem ******************/
 		/**** md5 signature: bdd452eb322280b48fb60be1f07c5b77 ****/
 		%feature("compactdefaultargs") StepVisual_PreDefinedItem;
-		%feature("autodoc", "Returns a predefineditem.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a predefineditem.
 ") StepVisual_PreDefinedItem;
 		 StepVisual_PreDefinedItem();
 
 		/****************** Init ******************/
 		/**** md5 signature: e10f4ffe4365262d2d9a5484d96325b8 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -4090,132 +4551,157 @@ class StepVisual_PresentationLayerAssignment : public Standard_Transient {
 		/****************** StepVisual_PresentationLayerAssignment ******************/
 		/**** md5 signature: bc651d10b86d4455fe50d6f286ba6bad ****/
 		%feature("compactdefaultargs") StepVisual_PresentationLayerAssignment;
-		%feature("autodoc", "Returns a presentationlayerassignment.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationlayerassignment.
 ") StepVisual_PresentationLayerAssignment;
 		 StepVisual_PresentationLayerAssignment();
 
 		/****************** AssignedItems ******************/
 		/**** md5 signature: 5603a149ac3a31a63988a3b44a83cded ****/
 		%feature("compactdefaultargs") AssignedItems;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfLayeredItem>
+
+Description
+-----------
+No available documentation.
 ") AssignedItems;
 		opencascade::handle<StepVisual_HArray1OfLayeredItem> AssignedItems();
 
 		/****************** AssignedItemsValue ******************/
 		/**** md5 signature: 2e9dd445e1b3ba65039cd5d54a7c9316 ****/
 		%feature("compactdefaultargs") AssignedItemsValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_LayeredItem
+
+Description
+-----------
+No available documentation.
 ") AssignedItemsValue;
 		StepVisual_LayeredItem AssignedItemsValue(const Standard_Integer num);
 
 		/****************** Description ******************/
 		/**** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ****/
 		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** Init ******************/
 		/**** md5 signature: 6e8c8d74d5fe4b7f775d4682a1fa4ca0 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
 aAssignedItems: StepVisual_HArray1OfLayeredItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepVisual_HArray1OfLayeredItem> & aAssignedItems);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** NbAssignedItems ******************/
 		/**** md5 signature: b8ff0a501e3564d97f419c4084a2f772 ****/
 		%feature("compactdefaultargs") NbAssignedItems;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbAssignedItems;
 		Standard_Integer NbAssignedItems();
 
 		/****************** SetAssignedItems ******************/
 		/**** md5 signature: 577a8a14d39f41f4104333bccc4bb2e8 ****/
 		%feature("compactdefaultargs") SetAssignedItems;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aAssignedItems: StepVisual_HArray1OfLayeredItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetAssignedItems;
 		void SetAssignedItems(const opencascade::handle<StepVisual_HArray1OfLayeredItem> & aAssignedItems);
 
 		/****************** SetDescription ******************/
 		/**** md5 signature: adddd13a906718df58a2eee683a382cf ****/
 		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aDescription: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -4238,79 +4724,94 @@ class StepVisual_PresentationLayerUsage : public Standard_Transient {
 		/****************** StepVisual_PresentationLayerUsage ******************/
 		/**** md5 signature: df9b42b7b80c08b26a1d3807eac59846 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationLayerUsage;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_PresentationLayerUsage;
 		 StepVisual_PresentationLayerUsage();
 
 		/****************** Assignment ******************/
 		/**** md5 signature: 247e4ab376d50040ca43f5da78ec8dd3 ****/
 		%feature("compactdefaultargs") Assignment;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationLayerAssignment>
+
+Description
+-----------
+No available documentation.
 ") Assignment;
 		opencascade::handle<StepVisual_PresentationLayerAssignment> Assignment();
 
 		/****************** Init ******************/
 		/**** md5 signature: b5ae4ccbc7f6a2e56e2509e58cff32b6 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aAssignment: StepVisual_PresentationLayerAssignment
 aPresentation: StepVisual_PresentationRepresentation
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_PresentationLayerAssignment> & aAssignment, const opencascade::handle<StepVisual_PresentationRepresentation> & aPresentation);
 
 		/****************** Presentation ******************/
 		/**** md5 signature: 9cc4c5796d5f3f127af49d614b82062d ****/
 		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationRepresentation>
+
+Description
+-----------
+No available documentation.
 ") Presentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> Presentation();
 
 		/****************** SetAssignment ******************/
 		/**** md5 signature: bd4fba63c1435ca112fa113f1855ab37 ****/
 		%feature("compactdefaultargs") SetAssignment;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aAssignment: StepVisual_PresentationLayerAssignment
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetAssignment;
 		void SetAssignment(const opencascade::handle<StepVisual_PresentationLayerAssignment> & aAssignment);
 
 		/****************** SetPresentation ******************/
 		/**** md5 signature: 789e3b11b63d0bcb9cffb2a47d25a0d1 ****/
 		%feature("compactdefaultargs") SetPresentation;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: StepVisual_PresentationRepresentation
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPresentation;
 		void SetPresentation(const opencascade::handle<StepVisual_PresentationRepresentation> & aPresentation);
 
@@ -4333,11 +4834,13 @@ class StepVisual_PresentationRepresentation : public StepRepr_Representation {
 		/****************** StepVisual_PresentationRepresentation ******************/
 		/**** md5 signature: ec69a087912fd220c75e7497d5184397 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationRepresentation;
-		%feature("autodoc", "Returns a presentationrepresentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationrepresentation.
 ") StepVisual_PresentationRepresentation;
 		 StepVisual_PresentationRepresentation();
 
@@ -4360,48 +4863,57 @@ class StepVisual_PresentationRepresentationSelect : public StepData_SelectType {
 		/****************** StepVisual_PresentationRepresentationSelect ******************/
 		/**** md5 signature: e333b2922b258fe2030184dfb4c49927 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationRepresentationSelect;
-		%feature("autodoc", "Returns a presentationrepresentationselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationrepresentationselect selecttype.
 ") StepVisual_PresentationRepresentationSelect;
 		 StepVisual_PresentationRepresentationSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a presentationrepresentationselect kind entity that is : 1 -> presentationrepresentation 2 -> presentationset 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a presentationrepresentationselect kind entity that is: 1 -> presentationrepresentation 2 -> presentationset 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** PresentationRepresentation ******************/
 		/**** md5 signature: cc6c70dd495b260c6d02169df44fd1e5 ****/
 		%feature("compactdefaultargs") PresentationRepresentation;
-		%feature("autodoc", "Returns value as a presentationrepresentation (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationRepresentation>
+
+Description
+-----------
+Returns value as a presentationrepresentation (null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
 		/****************** PresentationSet ******************/
 		/**** md5 signature: e22661d0b7db8ea09e8adbe07ae2d793 ****/
 		%feature("compactdefaultargs") PresentationSet;
-		%feature("autodoc", "Returns value as a presentationset (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationSet>
+
+Description
+-----------
+Returns value as a presentationset (null if another type).
 ") PresentationSet;
 		opencascade::handle<StepVisual_PresentationSet> PresentationSet();
 
@@ -4422,11 +4934,13 @@ class StepVisual_PresentationSet : public Standard_Transient {
 		/****************** StepVisual_PresentationSet ******************/
 		/**** md5 signature: 076c6267b2a6fa3942cd60742ef1b09f ****/
 		%feature("compactdefaultargs") StepVisual_PresentationSet;
-		%feature("autodoc", "Returns a presentationset.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationset.
 ") StepVisual_PresentationSet;
 		 StepVisual_PresentationSet();
 
@@ -4449,79 +4963,94 @@ class StepVisual_PresentationSize : public Standard_Transient {
 		/****************** StepVisual_PresentationSize ******************/
 		/**** md5 signature: 1c30c48e681560b686896ed17114ef3c ****/
 		%feature("compactdefaultargs") StepVisual_PresentationSize;
-		%feature("autodoc", "Returns a presentationsize.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationsize.
 ") StepVisual_PresentationSize;
 		 StepVisual_PresentationSize();
 
 		/****************** Init ******************/
 		/**** md5 signature: 134cd61619112c2a6a55025dc64ad2b0 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aUnit: StepVisual_PresentationSizeAssignmentSelect
 aSize: StepVisual_PlanarBox
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const StepVisual_PresentationSizeAssignmentSelect & aUnit, const opencascade::handle<StepVisual_PlanarBox> & aSize);
 
 		/****************** SetSize ******************/
 		/**** md5 signature: ff65fa6988b242450efd1611eab2bd0c ****/
 		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aSize: StepVisual_PlanarBox
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetSize;
 		void SetSize(const opencascade::handle<StepVisual_PlanarBox> & aSize);
 
 		/****************** SetUnit ******************/
 		/**** md5 signature: 044d71873cff349bc0a68a2a68b5c6b3 ****/
 		%feature("compactdefaultargs") SetUnit;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aUnit: StepVisual_PresentationSizeAssignmentSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetUnit;
 		void SetUnit(const StepVisual_PresentationSizeAssignmentSelect & aUnit);
 
 		/****************** Size ******************/
 		/**** md5 signature: d8ca5ccfb2bbc200e10b187d7957d7f0 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PlanarBox>
+
+Description
+-----------
+No available documentation.
 ") Size;
 		opencascade::handle<StepVisual_PlanarBox> Size();
 
 		/****************** Unit ******************/
 		/**** md5 signature: cf870604cf9fa6934ded63a559de4718 ****/
 		%feature("compactdefaultargs") Unit;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_PresentationSizeAssignmentSelect
+
+Description
+-----------
+No available documentation.
 ") Unit;
 		StepVisual_PresentationSizeAssignmentSelect Unit();
 
@@ -4544,59 +5073,70 @@ class StepVisual_PresentationSizeAssignmentSelect : public StepData_SelectType {
 		/****************** StepVisual_PresentationSizeAssignmentSelect ******************/
 		/**** md5 signature: 453f954c0690e4b0f530a695065e7e92 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationSizeAssignmentSelect;
-		%feature("autodoc", "Returns a presentationsizeassignmentselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationsizeassignmentselect selecttype.
 ") StepVisual_PresentationSizeAssignmentSelect;
 		 StepVisual_PresentationSizeAssignmentSelect();
 
 		/****************** AreaInSet ******************/
 		/**** md5 signature: b745d9b0509ee4b8b0103921950734c4 ****/
 		%feature("compactdefaultargs") AreaInSet;
-		%feature("autodoc", "Returns value as a areainset (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_AreaInSet>
+
+Description
+-----------
+Returns value as a areainset (null if another type).
 ") AreaInSet;
 		opencascade::handle<StepVisual_AreaInSet> AreaInSet();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a presentationsizeassignmentselect kind entity that is : 1 -> presentationview 2 -> presentationarea 3 -> areainset 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a presentationsizeassignmentselect kind entity that is: 1 -> presentationview 2 -> presentationarea 3 -> areainset 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** PresentationArea ******************/
 		/**** md5 signature: 6adf2ef7fa0a7b503035224ca0f9247c ****/
 		%feature("compactdefaultargs") PresentationArea;
-		%feature("autodoc", "Returns value as a presentationarea (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationArea>
+
+Description
+-----------
+Returns value as a presentationarea (null if another type).
 ") PresentationArea;
 		opencascade::handle<StepVisual_PresentationArea> PresentationArea();
 
 		/****************** PresentationView ******************/
 		/**** md5 signature: f42d5482c64642bbea3f6f415c07a2aa ****/
 		%feature("compactdefaultargs") PresentationView;
-		%feature("autodoc", "Returns value as a presentationview (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationView>
+
+Description
+-----------
+Returns value as a presentationview (null if another type).
 ") PresentationView;
 		opencascade::handle<StepVisual_PresentationView> PresentationView();
 
@@ -4617,78 +5157,93 @@ class StepVisual_PresentationStyleAssignment : public Standard_Transient {
 		/****************** StepVisual_PresentationStyleAssignment ******************/
 		/**** md5 signature: 1cc58a43e5f19f8803a83422e4c077a0 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationStyleAssignment;
-		%feature("autodoc", "Returns a presentationstyleassignment.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationstyleassignment.
 ") StepVisual_PresentationStyleAssignment;
 		 StepVisual_PresentationStyleAssignment();
 
 		/****************** Init ******************/
 		/**** md5 signature: 19337abb8014667e7ee598bc01dd719e ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyles: StepVisual_HArray1OfPresentationStyleSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles);
 
 		/****************** NbStyles ******************/
 		/**** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ****/
 		%feature("compactdefaultargs") NbStyles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbStyles;
 		Standard_Integer NbStyles();
 
 		/****************** SetStyles ******************/
 		/**** md5 signature: ec9247e94c63a82ce89f12d338fddc67 ****/
 		%feature("compactdefaultargs") SetStyles;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyles: StepVisual_HArray1OfPresentationStyleSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyles;
 		void SetStyles(const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles);
 
 		/****************** Styles ******************/
 		/**** md5 signature: 3579cb1cc88465f94e6e54dc0c81881f ****/
 		%feature("compactdefaultargs") Styles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect>
+
+Description
+-----------
+No available documentation.
 ") Styles;
 		opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> Styles();
 
 		/****************** StylesValue ******************/
 		/**** md5 signature: dc0642b4c23e4b1290ec9bad05389a4c ****/
 		%feature("compactdefaultargs") StylesValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_PresentationStyleSelect
+
+Description
+-----------
+No available documentation.
 ") StylesValue;
 		StepVisual_PresentationStyleSelect StylesValue(const Standard_Integer num);
 
@@ -4711,70 +5266,83 @@ class StepVisual_PresentationStyleSelect : public StepData_SelectType {
 		/****************** StepVisual_PresentationStyleSelect ******************/
 		/**** md5 signature: d698038487ae645487e097c623b624a4 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationStyleSelect;
-		%feature("autodoc", "Returns a presentationstyleselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationstyleselect selecttype.
 ") StepVisual_PresentationStyleSelect;
 		 StepVisual_PresentationStyleSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a presentationstyleselect kind entity that is : 1 -> pointstyle 2 -> curvestyle 3 -> surfacestyleusage 4 -> symbolstyle 5 -> fillareastyle 6 -> textstyle 7 -> nullstyle 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a presentationstyleselect kind entity that is: 1 -> pointstyle 2 -> curvestyle 3 -> surfacestyleusage 4 -> symbolstyle 5 -> fillareastyle 6 -> textstyle 7 -> nullstyle 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** CurveStyle ******************/
 		/**** md5 signature: feb37ceb221ce52916abd36c51e4b45e ****/
 		%feature("compactdefaultargs") CurveStyle;
-		%feature("autodoc", "Returns value as a curvestyle (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyle>
+
+Description
+-----------
+Returns value as a curvestyle (null if another type).
 ") CurveStyle;
 		opencascade::handle<StepVisual_CurveStyle> CurveStyle();
 
 		/****************** NullStyle ******************/
 		/**** md5 signature: 51d7654dc736b87f87621fc47c7db999 ****/
 		%feature("compactdefaultargs") NullStyle;
-		%feature("autodoc", "Returns value as a nullstylemember (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_NullStyleMember>
+
+Description
+-----------
+Returns value as a nullstylemember (null if another type).
 ") NullStyle;
 		opencascade::handle<StepVisual_NullStyleMember> NullStyle();
 
 		/****************** PointStyle ******************/
 		/**** md5 signature: 17b86073a0f884b719f02aa88f468775 ****/
 		%feature("compactdefaultargs") PointStyle;
-		%feature("autodoc", "Returns value as a pointstyle (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PointStyle>
+
+Description
+-----------
+Returns value as a pointstyle (null if another type).
 ") PointStyle;
 		opencascade::handle<StepVisual_PointStyle> PointStyle();
 
 		/****************** SurfaceStyleUsage ******************/
 		/**** md5 signature: 07843196e3a5021749c6b631f17b4cd4 ****/
 		%feature("compactdefaultargs") SurfaceStyleUsage;
-		%feature("autodoc", "Returns value as a surfacestyleusage (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleUsage>
+
+Description
+-----------
+Returns value as a surfacestyleusage (null if another type).
 ") SurfaceStyleUsage;
 		opencascade::handle<StepVisual_SurfaceStyleUsage> SurfaceStyleUsage();
 
@@ -4811,79 +5379,94 @@ class StepVisual_PresentedItemRepresentation : public Standard_Transient {
 		/****************** StepVisual_PresentedItemRepresentation ******************/
 		/**** md5 signature: 6a2c03b6953bc6a0f183bc036b5d02b2 ****/
 		%feature("compactdefaultargs") StepVisual_PresentedItemRepresentation;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_PresentedItemRepresentation;
 		 StepVisual_PresentedItemRepresentation();
 
 		/****************** Init ******************/
 		/**** md5 signature: afaf9a1ad462784c057d79ea97d58bd3 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: StepVisual_PresentationRepresentationSelect
 aItem: StepVisual_PresentedItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const StepVisual_PresentationRepresentationSelect & aPresentation, const opencascade::handle<StepVisual_PresentedItem> & aItem);
 
 		/****************** Item ******************/
 		/**** md5 signature: bd45dbe9824d6ba1403f78d43b832cde ****/
 		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentedItem>
+
+Description
+-----------
+No available documentation.
 ") Item;
 		opencascade::handle<StepVisual_PresentedItem> Item();
 
 		/****************** Presentation ******************/
 		/**** md5 signature: 9ef48fb3f701841293be09e9ddf616a1 ****/
 		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_PresentationRepresentationSelect
+
+Description
+-----------
+No available documentation.
 ") Presentation;
 		StepVisual_PresentationRepresentationSelect Presentation();
 
 		/****************** SetItem ******************/
 		/**** md5 signature: 7287d7bdd5ae0d68f4c034717ef5e93f ****/
 		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aItem: StepVisual_PresentedItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetItem;
 		void SetItem(const opencascade::handle<StepVisual_PresentedItem> & aItem);
 
 		/****************** SetPresentation ******************/
 		/**** md5 signature: 55a61dae3a49551206aa8452312894cb ****/
 		%feature("compactdefaultargs") SetPresentation;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: StepVisual_PresentationRepresentationSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPresentation;
 		void SetPresentation(const StepVisual_PresentationRepresentationSelect & aPresentation);
 
@@ -4906,48 +5489,57 @@ class StepVisual_RenderingPropertiesSelect : public StepData_SelectType {
 		/****************** StepVisual_RenderingPropertiesSelect ******************/
 		/**** md5 signature: 686e9d5183294b53b632dd910cc670c6 ****/
 		%feature("compactdefaultargs") StepVisual_RenderingPropertiesSelect;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_RenderingPropertiesSelect;
 		 StepVisual_RenderingPropertiesSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a kind of renderingpropertiesselect select type -- 1 -> surfacestylereflectanceambient -- 2 -> surfacestyletransparent.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a kind of renderingpropertiesselect select type -- 1 -> surfacestylereflectanceambient -- 2 -> surfacestyletransparent.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** SurfaceStyleReflectanceAmbient ******************/
 		/**** md5 signature: 9bed639fef414c2878d022d2ab14c51d ****/
 		%feature("compactdefaultargs") SurfaceStyleReflectanceAmbient;
-		%feature("autodoc", "Returns value as surfacestylereflectanceambient (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient>
+
+Description
+-----------
+Returns value as surfacestylereflectanceambient (or null if another type).
 ") SurfaceStyleReflectanceAmbient;
 		opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient> SurfaceStyleReflectanceAmbient();
 
 		/****************** SurfaceStyleTransparent ******************/
 		/**** md5 signature: 68a06be6ae013949c2e639cdc3d6c875 ****/
 		%feature("compactdefaultargs") SurfaceStyleTransparent;
-		%feature("autodoc", "Returns value as surfacestyletransparent (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleTransparent>
+
+Description
+-----------
+Returns value as surfacestyletransparent (or null if another type).
 ") SurfaceStyleTransparent;
 		opencascade::handle<StepVisual_SurfaceStyleTransparent> SurfaceStyleTransparent();
 
@@ -4968,59 +5560,70 @@ class StepVisual_StyleContextSelect : public StepData_SelectType {
 		/****************** StepVisual_StyleContextSelect ******************/
 		/**** md5 signature: 245e3c379950dd3775102e67c26aa0b7 ****/
 		%feature("compactdefaultargs") StepVisual_StyleContextSelect;
-		%feature("autodoc", "Returns a stylecontextselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a stylecontextselect selecttype.
 ") StepVisual_StyleContextSelect;
 		 StepVisual_StyleContextSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a stylecontextselect kind entity that is : 1 -> representation 2 -> representationitem 3 -> presentationset 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a stylecontextselect kind entity that is: 1 -> representation 2 -> representationitem 3 -> presentationset 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** PresentationSet ******************/
 		/**** md5 signature: e22661d0b7db8ea09e8adbe07ae2d793 ****/
 		%feature("compactdefaultargs") PresentationSet;
-		%feature("autodoc", "Returns value as a presentationset (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PresentationSet>
+
+Description
+-----------
+Returns value as a presentationset (null if another type).
 ") PresentationSet;
 		opencascade::handle<StepVisual_PresentationSet> PresentationSet();
 
 		/****************** Representation ******************/
 		/**** md5 signature: b68b8aa0615de130a54bdd2ee7c69058 ****/
 		%feature("compactdefaultargs") Representation;
-		%feature("autodoc", "Returns value as a representation (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepRepr_Representation>
+
+Description
+-----------
+Returns value as a representation (null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
 		/****************** RepresentationItem ******************/
 		/**** md5 signature: 542dc5a7f82620b971e50a23ff46cd55 ****/
 		%feature("compactdefaultargs") RepresentationItem;
-		%feature("autodoc", "Returns value as a representationitem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepRepr_RepresentationItem>
+
+Description
+-----------
+Returns value as a representationitem (null if another type).
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -5041,132 +5644,157 @@ class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 		/****************** StepVisual_StyledItem ******************/
 		/**** md5 signature: eb9228bcc80d4151a6612f9ea37e8ab9 ****/
 		%feature("compactdefaultargs") StepVisual_StyledItem;
-		%feature("autodoc", "Returns a styleditem.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a styleditem.
 ") StepVisual_StyledItem;
 		 StepVisual_StyledItem();
 
 		/****************** Init ******************/
 		/**** md5 signature: 0c994c2dbfe076b8f4ec7e6dd9459789 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 aItem: Standard_Transient
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles, const opencascade::handle<Standard_Transient> & aItem);
 
 		/****************** Item ******************/
 		/**** md5 signature: b179c866de84187747718fbbc1a1a674 ****/
 		%feature("compactdefaultargs") Item;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepRepr_RepresentationItem>
+
+Description
+-----------
+No available documentation.
 ") Item;
 		const opencascade::handle<StepRepr_RepresentationItem> & Item();
 
 		/****************** ItemAP242 ******************/
 		/**** md5 signature: 1ce5c4413fc2f2d22b54b078fea7862d ****/
 		%feature("compactdefaultargs") ItemAP242;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_StyledItemTarget
+
+Description
+-----------
+No available documentation.
 ") ItemAP242;
 		StepVisual_StyledItemTarget ItemAP242();
 
 		/****************** NbStyles ******************/
 		/**** md5 signature: f4c9254e3c2f31482b51b67dc038e70c ****/
 		%feature("compactdefaultargs") NbStyles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbStyles;
 		Standard_Integer NbStyles();
 
 		/****************** SetItem ******************/
 		/**** md5 signature: f8751c7ecf676d7196a87836c9ffe6aa ****/
 		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aItem: StepRepr_RepresentationItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetItem;
 		void SetItem(const opencascade::handle<StepRepr_RepresentationItem> & aItem);
 
 		/****************** SetItem ******************/
 		/**** md5 signature: db406cab8953a05f7213afd42772e1e3 ****/
 		%feature("compactdefaultargs") SetItem;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aItem: StepVisual_StyledItemTarget
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetItem;
 		void SetItem(const StepVisual_StyledItemTarget & aItem);
 
 		/****************** SetStyles ******************/
 		/**** md5 signature: 4b4d81591c544820ce2b1108b7e4089d ****/
 		%feature("compactdefaultargs") SetStyles;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyles;
 		void SetStyles(const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles);
 
 		/****************** Styles ******************/
 		/**** md5 signature: 4fc5a17642e216edc2586083b1d1576c ****/
 		%feature("compactdefaultargs") Styles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment>
+
+Description
+-----------
+No available documentation.
 ") Styles;
 		const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & Styles();
 
 		/****************** StylesValue ******************/
 		/**** md5 signature: a674d5f4ef7c5fbc1388477679cc8fc5 ****/
 		%feature("compactdefaultargs") StylesValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 opencascade::handle<StepVisual_PresentationStyleAssignment>
+
+Description
+-----------
+No available documentation.
 ") StylesValue;
 		const opencascade::handle<StepVisual_PresentationStyleAssignment> & StylesValue(const Standard_Integer num);
 
@@ -5189,70 +5817,83 @@ class StepVisual_StyledItemTarget : public StepData_SelectType {
 		/****************** StepVisual_StyledItemTarget ******************/
 		/**** md5 signature: 2f64081b6dab9fa6e6bbdf0c1008fcc4 ****/
 		%feature("compactdefaultargs") StepVisual_StyledItemTarget;
-		%feature("autodoc", "Returns a styleditemtarget select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a styleditemtarget select type.
 ") StepVisual_StyledItemTarget;
 		 StepVisual_StyledItemTarget();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a styleditemtarget kind entity that is : 1 -> geometricrepresentationitem 2 -> mappeditem 3 -> representation 4 -> topologicalrepresentationitem 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a styleditemtarget kind entity that is: 1 -> geometricrepresentationitem 2 -> mappeditem 3 -> representation 4 -> topologicalrepresentationitem 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** GeometricRepresentationItem ******************/
 		/**** md5 signature: 5fe5040cbfbd8308bf2067e8e59f2a57 ****/
 		%feature("compactdefaultargs") GeometricRepresentationItem;
-		%feature("autodoc", "Returns value as a geometricrepresentationitem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_GeometricRepresentationItem>
+
+Description
+-----------
+Returns value as a geometricrepresentationitem (null if another type).
 ") GeometricRepresentationItem;
 		opencascade::handle<StepGeom_GeometricRepresentationItem> GeometricRepresentationItem();
 
 		/****************** MappedItem ******************/
 		/**** md5 signature: 7d3cb5566b070a8a554b734d0e71c9a2 ****/
 		%feature("compactdefaultargs") MappedItem;
-		%feature("autodoc", "Returns value as a mappeditem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepRepr_MappedItem>
+
+Description
+-----------
+Returns value as a mappeditem (null if another type).
 ") MappedItem;
 		opencascade::handle<StepRepr_MappedItem> MappedItem();
 
 		/****************** Representation ******************/
 		/**** md5 signature: b68b8aa0615de130a54bdd2ee7c69058 ****/
 		%feature("compactdefaultargs") Representation;
-		%feature("autodoc", "Returns value as a representation (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepRepr_Representation>
+
+Description
+-----------
+Returns value as a representation (null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
 		/****************** TopologicalRepresentationItem ******************/
 		/**** md5 signature: c284bfb9f5a9e1919a195be6f2b6b165 ****/
 		%feature("compactdefaultargs") TopologicalRepresentationItem;
-		%feature("autodoc", "Returns value as a topologicalrepresentationitem (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_TopologicalRepresentationItem>
+
+Description
+-----------
+Returns value as a topologicalrepresentationitem (null if another type).
 ") TopologicalRepresentationItem;
 		opencascade::handle<StepShape_TopologicalRepresentationItem> TopologicalRepresentationItem();
 
@@ -5273,105 +5914,125 @@ class StepVisual_SurfaceSideStyle : public Standard_Transient {
 		/****************** StepVisual_SurfaceSideStyle ******************/
 		/**** md5 signature: 4882b15692527097afbf4793122302de ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceSideStyle;
-		%feature("autodoc", "Returns a surfacesidestyle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacesidestyle.
 ") StepVisual_SurfaceSideStyle;
 		 StepVisual_SurfaceSideStyle();
 
 		/****************** Init ******************/
 		/**** md5 signature: af9881776eea5dc5e4c94f3b1bf501e4 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aStyles: StepVisual_HArray1OfSurfaceStyleElementSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> & aStyles);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** NbStyles ******************/
 		/**** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ****/
 		%feature("compactdefaultargs") NbStyles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbStyles;
 		Standard_Integer NbStyles();
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****************** SetStyles ******************/
 		/**** md5 signature: 837f1427282dbfa1651f570dd3067799 ****/
 		%feature("compactdefaultargs") SetStyles;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyles: StepVisual_HArray1OfSurfaceStyleElementSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyles;
 		void SetStyles(const opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> & aStyles);
 
 		/****************** Styles ******************/
 		/**** md5 signature: c067261784184af9c7aa81ebec0a6230 ****/
 		%feature("compactdefaultargs") Styles;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect>
+
+Description
+-----------
+No available documentation.
 ") Styles;
 		opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> Styles();
 
 		/****************** StylesValue ******************/
 		/**** md5 signature: e69ee134d7ec481cf940915040946e40 ****/
 		%feature("compactdefaultargs") StylesValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_SurfaceStyleElementSelect
+
+Description
+-----------
+No available documentation.
 ") StylesValue;
 		StepVisual_SurfaceStyleElementSelect StylesValue(const Standard_Integer num);
 
@@ -5394,52 +6055,62 @@ class StepVisual_SurfaceStyleBoundary : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleBoundary ******************/
 		/**** md5 signature: c343f688faa7b3ee856d2f453c3a6cba ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleBoundary;
-		%feature("autodoc", "Returns a surfacestyleboundary.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestyleboundary.
 ") StepVisual_SurfaceStyleBoundary;
 		 StepVisual_SurfaceStyleBoundary();
 
 		/****************** Init ******************/
 		/**** md5 signature: 1b9f8ef27c6d3a75a114218cd9590b05 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfBoundary: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfBoundary);
 
 		/****************** SetStyleOfBoundary ******************/
 		/**** md5 signature: c0a6ef03cb2b2676b749dc49eb978fa9 ****/
 		%feature("compactdefaultargs") SetStyleOfBoundary;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfBoundary: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleOfBoundary;
 		void SetStyleOfBoundary(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfBoundary);
 
 		/****************** StyleOfBoundary ******************/
 		/**** md5 signature: 0f849fffb900eb31d4c6a97554a49968 ****/
 		%feature("compactdefaultargs") StyleOfBoundary;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyle>
+
+Description
+-----------
+No available documentation.
 ") StyleOfBoundary;
 		opencascade::handle<StepVisual_CurveStyle> StyleOfBoundary();
 
@@ -5462,52 +6133,62 @@ class StepVisual_SurfaceStyleControlGrid : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleControlGrid ******************/
 		/**** md5 signature: 54f14aa7bd79ff4edbf012835da3fc84 ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleControlGrid;
-		%feature("autodoc", "Returns a surfacestylecontrolgrid.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestylecontrolgrid.
 ") StepVisual_SurfaceStyleControlGrid;
 		 StepVisual_SurfaceStyleControlGrid();
 
 		/****************** Init ******************/
 		/**** md5 signature: 5f342d6058c8060a4186e6ca6f45bdca ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfControlGrid: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfControlGrid);
 
 		/****************** SetStyleOfControlGrid ******************/
 		/**** md5 signature: 00c64e624d853c2785e0ea625922e2e1 ****/
 		%feature("compactdefaultargs") SetStyleOfControlGrid;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfControlGrid: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleOfControlGrid;
 		void SetStyleOfControlGrid(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfControlGrid);
 
 		/****************** StyleOfControlGrid ******************/
 		/**** md5 signature: df6b516f2ab3a519941e950f726a1a71 ****/
 		%feature("compactdefaultargs") StyleOfControlGrid;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyle>
+
+Description
+-----------
+No available documentation.
 ") StyleOfControlGrid;
 		opencascade::handle<StepVisual_CurveStyle> StyleOfControlGrid();
 
@@ -5530,70 +6211,83 @@ class StepVisual_SurfaceStyleElementSelect : public StepData_SelectType {
 		/****************** StepVisual_SurfaceStyleElementSelect ******************/
 		/**** md5 signature: b170b139d52b64aa4ee6b12b9432e3c8 ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleElementSelect;
-		%feature("autodoc", "Returns a surfacestyleelementselect selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestyleelementselect selecttype.
 ") StepVisual_SurfaceStyleElementSelect;
 		 StepVisual_SurfaceStyleElementSelect();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a surfacestyleelementselect kind entity that is : 1 -> surfacestylefillarea 2 -> surfacestyleboundary 3 -> surfacestyleparameterline 4 -> surfacestylesilhouette 5 -> surfacestylesegmentationcurve 6 -> surfacestylecontrolgrid 7 -> surfacestylerendering 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a surfacestyleelementselect kind entity that is: 1 -> surfacestylefillarea 2 -> surfacestyleboundary 3 -> surfacestyleparameterline 4 -> surfacestylesilhouette 5 -> surfacestylesegmentationcurve 6 -> surfacestylecontrolgrid 7 -> surfacestylerendering 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** SurfaceStyleBoundary ******************/
 		/**** md5 signature: 60e2375370484d5abf5ea7b996a7c3ba ****/
 		%feature("compactdefaultargs") SurfaceStyleBoundary;
-		%feature("autodoc", "Returns value as a surfacestyleboundary (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleBoundary>
+
+Description
+-----------
+Returns value as a surfacestyleboundary (null if another type).
 ") SurfaceStyleBoundary;
 		opencascade::handle<StepVisual_SurfaceStyleBoundary> SurfaceStyleBoundary();
 
 		/****************** SurfaceStyleFillArea ******************/
 		/**** md5 signature: 8d8549d10e2597b64c4aa01e379d2517 ****/
 		%feature("compactdefaultargs") SurfaceStyleFillArea;
-		%feature("autodoc", "Returns value as a surfacestylefillarea (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleFillArea>
+
+Description
+-----------
+Returns value as a surfacestylefillarea (null if another type).
 ") SurfaceStyleFillArea;
 		opencascade::handle<StepVisual_SurfaceStyleFillArea> SurfaceStyleFillArea();
 
 		/****************** SurfaceStyleParameterLine ******************/
 		/**** md5 signature: 239f8c574221b0e1ca2ff7de1fe9c988 ****/
 		%feature("compactdefaultargs") SurfaceStyleParameterLine;
-		%feature("autodoc", "Returns value as a surfacestyleparameterline (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleParameterLine>
+
+Description
+-----------
+Returns value as a surfacestyleparameterline (null if another type).
 ") SurfaceStyleParameterLine;
 		opencascade::handle<StepVisual_SurfaceStyleParameterLine> SurfaceStyleParameterLine();
 
 		/****************** SurfaceStyleRendering ******************/
 		/**** md5 signature: 5f325ec85c1ede8555ecba2f5cbf6f90 ****/
 		%feature("compactdefaultargs") SurfaceStyleRendering;
-		%feature("autodoc", "Returns value as a surfacestylerendering (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceStyleRendering>
+
+Description
+-----------
+Returns value as a surfacestylerendering (null if another type).
 ") SurfaceStyleRendering;
 		opencascade::handle<StepVisual_SurfaceStyleRendering> SurfaceStyleRendering();
 
@@ -5614,52 +6308,62 @@ class StepVisual_SurfaceStyleFillArea : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleFillArea ******************/
 		/**** md5 signature: 1f1109cf250681a0a6e78b68c611d8cf ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleFillArea;
-		%feature("autodoc", "Returns a surfacestylefillarea.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestylefillarea.
 ") StepVisual_SurfaceStyleFillArea;
 		 StepVisual_SurfaceStyleFillArea();
 
 		/****************** FillArea ******************/
 		/**** md5 signature: 7a207f539a4cb9c890bff0e53e6499b7 ****/
 		%feature("compactdefaultargs") FillArea;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_FillAreaStyle>
+
+Description
+-----------
+No available documentation.
 ") FillArea;
 		opencascade::handle<StepVisual_FillAreaStyle> FillArea();
 
 		/****************** Init ******************/
 		/**** md5 signature: 4984f0131e88fcdb66041d8cc23d0170 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFillArea: StepVisual_FillAreaStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_FillAreaStyle> & aFillArea);
 
 		/****************** SetFillArea ******************/
 		/**** md5 signature: f5c7e3e6095f2cac2d9e4db97e049f66 ****/
 		%feature("compactdefaultargs") SetFillArea;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFillArea: StepVisual_FillAreaStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetFillArea;
 		void SetFillArea(const opencascade::handle<StepVisual_FillAreaStyle> & aFillArea);
 
@@ -5682,105 +6386,125 @@ class StepVisual_SurfaceStyleParameterLine : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleParameterLine ******************/
 		/**** md5 signature: 44bf16f9c49a8f448fe8553474111acc ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleParameterLine;
-		%feature("autodoc", "Returns a surfacestyleparameterline.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestyleparameterline.
 ") StepVisual_SurfaceStyleParameterLine;
 		 StepVisual_SurfaceStyleParameterLine();
 
 		/****************** DirectionCounts ******************/
 		/**** md5 signature: cec970c2af8f43f00bfa3fce5d3ed6b2 ****/
 		%feature("compactdefaultargs") DirectionCounts;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfDirectionCountSelect>
+
+Description
+-----------
+No available documentation.
 ") DirectionCounts;
 		opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> DirectionCounts();
 
 		/****************** DirectionCountsValue ******************/
 		/**** md5 signature: 31f9040d4b8643736207e0a58197608b ****/
 		%feature("compactdefaultargs") DirectionCountsValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_DirectionCountSelect
+
+Description
+-----------
+No available documentation.
 ") DirectionCountsValue;
 		StepVisual_DirectionCountSelect DirectionCountsValue(const Standard_Integer num);
 
 		/****************** Init ******************/
 		/**** md5 signature: cbaa35e98130ae00d7c7e312198b037e ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfParameterLines: StepVisual_CurveStyle
 aDirectionCounts: StepVisual_HArray1OfDirectionCountSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfParameterLines, const opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> & aDirectionCounts);
 
 		/****************** NbDirectionCounts ******************/
 		/**** md5 signature: e620a789179fbed828f7fff88217dcab ****/
 		%feature("compactdefaultargs") NbDirectionCounts;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbDirectionCounts;
 		Standard_Integer NbDirectionCounts();
 
 		/****************** SetDirectionCounts ******************/
 		/**** md5 signature: 19b9a183d71574f73b0f7a31b324685e ****/
 		%feature("compactdefaultargs") SetDirectionCounts;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aDirectionCounts: StepVisual_HArray1OfDirectionCountSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetDirectionCounts;
 		void SetDirectionCounts(const opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> & aDirectionCounts);
 
 		/****************** SetStyleOfParameterLines ******************/
 		/**** md5 signature: 60991ea2b6f263eb992462d00c39f07a ****/
 		%feature("compactdefaultargs") SetStyleOfParameterLines;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfParameterLines: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleOfParameterLines;
 		void SetStyleOfParameterLines(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfParameterLines);
 
 		/****************** StyleOfParameterLines ******************/
 		/**** md5 signature: 38c96947560379a3b23831b4ab804eea ****/
 		%feature("compactdefaultargs") StyleOfParameterLines;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyle>
+
+Description
+-----------
+No available documentation.
 ") StyleOfParameterLines;
 		opencascade::handle<StepVisual_CurveStyle> StyleOfParameterLines();
 
@@ -5803,52 +6527,62 @@ class StepVisual_SurfaceStyleReflectanceAmbient : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleReflectanceAmbient ******************/
 		/**** md5 signature: 71934b99e15908b4c798322bbe56e8d7 ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleReflectanceAmbient;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_SurfaceStyleReflectanceAmbient;
 		 StepVisual_SurfaceStyleReflectanceAmbient();
 
 		/****************** AmbientReflectance ******************/
 		/**** md5 signature: 91c71cacd5aaa1e29a74a253278cf822 ****/
 		%feature("compactdefaultargs") AmbientReflectance;
-		%feature("autodoc", "Returns field ambientreflectance.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns field ambientreflectance.
 ") AmbientReflectance;
 		Standard_Real AmbientReflectance();
 
 		/****************** Init ******************/
 		/**** md5 signature: ebf8757f098298aaf1e593c46dac0b0b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAmbientReflectance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const Standard_Real theAmbientReflectance);
 
 		/****************** SetAmbientReflectance ******************/
 		/**** md5 signature: f19473c235a6e050fa102bf332502825 ****/
 		%feature("compactdefaultargs") SetAmbientReflectance;
-		%feature("autodoc", "Sets field ambientreflectance.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAmbientReflectance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field ambientreflectance.
 ") SetAmbientReflectance;
 		void SetAmbientReflectance(const Standard_Real theAmbientReflectance);
 
@@ -5871,79 +6605,94 @@ class StepVisual_SurfaceStyleRendering : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleRendering ******************/
 		/**** md5 signature: 1501071707aa881fd43933f71984dc1a ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleRendering;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_SurfaceStyleRendering;
 		 StepVisual_SurfaceStyleRendering();
 
 		/****************** Init ******************/
 		/**** md5 signature: e293b1ce0c8ea41af555cab8fbde959a ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRenderingMethod: StepVisual_ShadingSurfaceMethod
 theSurfaceColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const StepVisual_ShadingSurfaceMethod theRenderingMethod, const opencascade::handle<StepVisual_Colour> & theSurfaceColour);
 
 		/****************** RenderingMethod ******************/
 		/**** md5 signature: c7b331f67430a0085d411394103847aa ****/
 		%feature("compactdefaultargs") RenderingMethod;
-		%feature("autodoc", "Returns field renderingmethod.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_ShadingSurfaceMethod
+
+Description
+-----------
+Returns field renderingmethod.
 ") RenderingMethod;
 		StepVisual_ShadingSurfaceMethod RenderingMethod();
 
 		/****************** SetRenderingMethod ******************/
 		/**** md5 signature: eb3fec1e8fa2531906fc0ab938671f88 ****/
 		%feature("compactdefaultargs") SetRenderingMethod;
-		%feature("autodoc", "Sets field renderingmethod.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRenderingMethod: StepVisual_ShadingSurfaceMethod
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field renderingmethod.
 ") SetRenderingMethod;
 		void SetRenderingMethod(const StepVisual_ShadingSurfaceMethod theRenderingMethod);
 
 		/****************** SetSurfaceColour ******************/
 		/**** md5 signature: 6a65727e6f437c63c9a4db20080f7dc8 ****/
 		%feature("compactdefaultargs") SetSurfaceColour;
-		%feature("autodoc", "Sets field surfacecolour.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSurfaceColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field surfacecolour.
 ") SetSurfaceColour;
 		void SetSurfaceColour(const opencascade::handle<StepVisual_Colour> & theSurfaceColour);
 
 		/****************** SurfaceColour ******************/
 		/**** md5 signature: 48f1dd93065e855f4e371c669e45d364 ****/
 		%feature("compactdefaultargs") SurfaceColour;
-		%feature("autodoc", "Returns field surfacecolour.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_Colour>
+
+Description
+-----------
+Returns field surfacecolour.
 ") SurfaceColour;
 		opencascade::handle<StepVisual_Colour> SurfaceColour();
 
@@ -5966,52 +6715,62 @@ class StepVisual_SurfaceStyleSegmentationCurve : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleSegmentationCurve ******************/
 		/**** md5 signature: b2e636e4e4ecd4c64c1f5e5b81c7356c ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleSegmentationCurve;
-		%feature("autodoc", "Returns a surfacestylesegmentationcurve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestylesegmentationcurve.
 ") StepVisual_SurfaceStyleSegmentationCurve;
 		 StepVisual_SurfaceStyleSegmentationCurve();
 
 		/****************** Init ******************/
 		/**** md5 signature: b2ff7c529207d96358b5b664bc9f29f1 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfSegmentationCurve: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSegmentationCurve);
 
 		/****************** SetStyleOfSegmentationCurve ******************/
 		/**** md5 signature: b6d90dcef55f1078cdd65921b7f4fdf4 ****/
 		%feature("compactdefaultargs") SetStyleOfSegmentationCurve;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfSegmentationCurve: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleOfSegmentationCurve;
 		void SetStyleOfSegmentationCurve(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSegmentationCurve);
 
 		/****************** StyleOfSegmentationCurve ******************/
 		/**** md5 signature: f301e19409fc020518c4f371ae565aee ****/
 		%feature("compactdefaultargs") StyleOfSegmentationCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyle>
+
+Description
+-----------
+No available documentation.
 ") StyleOfSegmentationCurve;
 		opencascade::handle<StepVisual_CurveStyle> StyleOfSegmentationCurve();
 
@@ -6034,52 +6793,62 @@ class StepVisual_SurfaceStyleSilhouette : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleSilhouette ******************/
 		/**** md5 signature: 552028bfb9ce796746c72b2d436cf459 ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleSilhouette;
-		%feature("autodoc", "Returns a surfacestylesilhouette.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestylesilhouette.
 ") StepVisual_SurfaceStyleSilhouette;
 		 StepVisual_SurfaceStyleSilhouette();
 
 		/****************** Init ******************/
 		/**** md5 signature: 41c2e4d980f622a85e688c3a3cf95fbc ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfSilhouette: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSilhouette);
 
 		/****************** SetStyleOfSilhouette ******************/
 		/**** md5 signature: 4559334ce9fd74a3bf20bac0dc9dee07 ****/
 		%feature("compactdefaultargs") SetStyleOfSilhouette;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfSilhouette: StepVisual_CurveStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleOfSilhouette;
 		void SetStyleOfSilhouette(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSilhouette);
 
 		/****************** StyleOfSilhouette ******************/
 		/**** md5 signature: d8382ee77cafadce30346ea47d0117ff ****/
 		%feature("compactdefaultargs") StyleOfSilhouette;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CurveStyle>
+
+Description
+-----------
+No available documentation.
 ") StyleOfSilhouette;
 		opencascade::handle<StepVisual_CurveStyle> StyleOfSilhouette();
 
@@ -6102,52 +6871,62 @@ class StepVisual_SurfaceStyleTransparent : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleTransparent ******************/
 		/**** md5 signature: a25569b5c11593b7b12c7835b3529298 ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleTransparent;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_SurfaceStyleTransparent;
 		 StepVisual_SurfaceStyleTransparent();
 
 		/****************** Init ******************/
 		/**** md5 signature: d0471972d41a7e6008fada7eb54b59eb ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTransparency: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const Standard_Real theTransparency);
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: b63ccc026f1e33423da5a4fb3a4c87f6 ****/
 		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "Sets field transparency.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTransparency: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field transparency.
 ") SetTransparency;
 		void SetTransparency(const Standard_Real theTransparency);
 
 		/****************** Transparency ******************/
 		/**** md5 signature: 395111f5ce5a38f6b8d6009c7b6b1222 ****/
 		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "Returns field transparency.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns field transparency.
 ") Transparency;
 		Standard_Real Transparency();
 
@@ -6170,79 +6949,94 @@ class StepVisual_SurfaceStyleUsage : public Standard_Transient {
 		/****************** StepVisual_SurfaceStyleUsage ******************/
 		/**** md5 signature: cd6205afb042cafc42201bc397b0cf78 ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleUsage;
-		%feature("autodoc", "Returns a surfacestyleusage.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a surfacestyleusage.
 ") StepVisual_SurfaceStyleUsage;
 		 StepVisual_SurfaceStyleUsage();
 
 		/****************** Init ******************/
 		/**** md5 signature: df82a537b1243af5e3624ca058d0f7b0 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aSide: StepVisual_SurfaceSide
 aStyle: StepVisual_SurfaceSideStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const StepVisual_SurfaceSide aSide, const opencascade::handle<StepVisual_SurfaceSideStyle> & aStyle);
 
 		/****************** SetSide ******************/
 		/**** md5 signature: cd76bd9b534e2074389344c3fb6cdb9a ****/
 		%feature("compactdefaultargs") SetSide;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aSide: StepVisual_SurfaceSide
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetSide;
 		void SetSide(const StepVisual_SurfaceSide aSide);
 
 		/****************** SetStyle ******************/
 		/**** md5 signature: 7e98a9b0f7baaac64a9c676e5f748940 ****/
 		%feature("compactdefaultargs") SetStyle;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyle: StepVisual_SurfaceSideStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyle;
 		void SetStyle(const opencascade::handle<StepVisual_SurfaceSideStyle> & aStyle);
 
 		/****************** Side ******************/
 		/**** md5 signature: 0f2dd0ab0a9c85a0cced2c3c04eeb6b3 ****/
 		%feature("compactdefaultargs") Side;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_SurfaceSide
+
+Description
+-----------
+No available documentation.
 ") Side;
 		StepVisual_SurfaceSide Side();
 
 		/****************** Style ******************/
 		/**** md5 signature: 281ff11a57702f076d3ab4746db9c275 ****/
 		%feature("compactdefaultargs") Style;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_SurfaceSideStyle>
+
+Description
+-----------
+No available documentation.
 ") Style;
 		opencascade::handle<StepVisual_SurfaceSideStyle> Style();
 
@@ -6265,11 +7059,13 @@ class StepVisual_Template : public StepRepr_Representation {
 		/****************** StepVisual_Template ******************/
 		/**** md5 signature: 98a29e9485b572c6d182c550517575b4 ****/
 		%feature("compactdefaultargs") StepVisual_Template;
-		%feature("autodoc", "Returns a template.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a template.
 ") StepVisual_Template;
 		 StepVisual_Template();
 
@@ -6292,11 +7088,13 @@ class StepVisual_TemplateInstance : public StepRepr_MappedItem {
 		/****************** StepVisual_TemplateInstance ******************/
 		/**** md5 signature: 00d5ea8e4e94c157bd72672626e1fe9a ****/
 		%feature("compactdefaultargs") StepVisual_TemplateInstance;
-		%feature("autodoc", "Returns a templateinstance.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a templateinstance.
 ") StepVisual_TemplateInstance;
 		 StepVisual_TemplateInstance();
 
@@ -6319,48 +7117,57 @@ class StepVisual_TessellatedEdgeOrVertex : public StepData_SelectType {
 		/****************** StepVisual_TessellatedEdgeOrVertex ******************/
 		/**** md5 signature: 364777b104683ec182c5e36348ac6671 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedEdgeOrVertex;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") StepVisual_TessellatedEdgeOrVertex;
 		 StepVisual_TessellatedEdgeOrVertex();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a kind of tessellatededgeorvertex select type -- 1 -> tessellatededge -- 2 -> tessellatedvertex.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a kind of tessellatededgeorvertex select type -- 1 -> tessellatededge -- 2 -> tessellatedvertex.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** TessellatedEdge ******************/
 		/**** md5 signature: 0fd3afdf3d4017d4a02e01bd9318e50c ****/
 		%feature("compactdefaultargs") TessellatedEdge;
-		%feature("autodoc", "Returns value as tessellatededge (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TessellatedEdge>
+
+Description
+-----------
+Returns value as tessellatededge (or null if another type).
 ") TessellatedEdge;
 		opencascade::handle<StepVisual_TessellatedEdge> TessellatedEdge();
 
 		/****************** TessellatedVertex ******************/
 		/**** md5 signature: dd46ff2cd474cda5e6eb3b9a96bf936f ****/
 		%feature("compactdefaultargs") TessellatedVertex;
-		%feature("autodoc", "Returns value as tessellatedvertex (or null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TessellatedVertex>
+
+Description
+-----------
+Returns value as tessellatedvertex (or null if another type).
 ") TessellatedVertex;
 		opencascade::handle<StepVisual_TessellatedVertex> TessellatedVertex();
 
@@ -6381,11 +7188,13 @@ class StepVisual_TessellatedItem : public StepGeom_GeometricRepresentationItem {
 		/****************** StepVisual_TessellatedItem ******************/
 		/**** md5 signature: 1f0e50b979ba0e9467d4cc0b2addf872 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedItem;
-		%feature("autodoc", "Returns a draughtingcalloutelement select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingcalloutelement select type.
 ") StepVisual_TessellatedItem;
 		 StepVisual_TessellatedItem();
 
@@ -6408,11 +7217,13 @@ class StepVisual_TessellatedShapeRepresentation : public StepShape_ShapeRepresen
 		/****************** StepVisual_TessellatedShapeRepresentation ******************/
 		/**** md5 signature: 6554c259ff46f1389191d79bba4a0f4e ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedShapeRepresentation;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedShapeRepresentation;
 		 StepVisual_TessellatedShapeRepresentation();
 
@@ -6435,41 +7246,46 @@ class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 		/****************** StepVisual_TextLiteral ******************/
 		/**** md5 signature: 207c1764223c21381dba0520f18ef5cf ****/
 		%feature("compactdefaultargs") StepVisual_TextLiteral;
-		%feature("autodoc", "Returns a textliteral.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a textliteral.
 ") StepVisual_TextLiteral;
 		 StepVisual_TextLiteral();
 
 		/****************** Alignment ******************/
 		/**** md5 signature: d9f3be3aca1a7c9762448f0a275713f3 ****/
 		%feature("compactdefaultargs") Alignment;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Alignment;
 		opencascade::handle<TCollection_HAsciiString> Alignment();
 
 		/****************** Font ******************/
 		/**** md5 signature: 366cb2d993106a7fbf312f8309637cd0 ****/
 		%feature("compactdefaultargs") Font;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_FontSelect
+
+Description
+-----------
+No available documentation.
 ") Font;
 		StepVisual_FontSelect Font();
 
 		/****************** Init ******************/
 		/**** md5 signature: 50bc1c92f84c1ed1a0306b1acc2071f3 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -6479,117 +7295,142 @@ aAlignment: TCollection_HAsciiString
 aPath: StepVisual_TextPath
 aFont: StepVisual_FontSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aLiteral, const StepGeom_Axis2Placement & aPlacement, const opencascade::handle<TCollection_HAsciiString> & aAlignment, const StepVisual_TextPath aPath, const StepVisual_FontSelect & aFont);
 
 		/****************** Literal ******************/
 		/**** md5 signature: 688a7f87a89d399e30572bd17aed1a6c ****/
 		%feature("compactdefaultargs") Literal;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Literal;
 		opencascade::handle<TCollection_HAsciiString> Literal();
 
 		/****************** Path ******************/
 		/**** md5 signature: 7f02336e8e0f17c0b3604233e9a6ba76 ****/
 		%feature("compactdefaultargs") Path;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_TextPath
+
+Description
+-----------
+No available documentation.
 ") Path;
 		StepVisual_TextPath Path();
 
 		/****************** Placement ******************/
 		/**** md5 signature: b66e16bd2b866237c0d300c709f8aafe ****/
 		%feature("compactdefaultargs") Placement;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepGeom_Axis2Placement
+
+Description
+-----------
+No available documentation.
 ") Placement;
 		StepGeom_Axis2Placement Placement();
 
 		/****************** SetAlignment ******************/
 		/**** md5 signature: 9c1731a51a841e791f14a7431af46503 ****/
 		%feature("compactdefaultargs") SetAlignment;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aAlignment: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetAlignment;
 		void SetAlignment(const opencascade::handle<TCollection_HAsciiString> & aAlignment);
 
 		/****************** SetFont ******************/
 		/**** md5 signature: 0fe285aab50f8b1ec2a13e1e01b1bfac ****/
 		%feature("compactdefaultargs") SetFont;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFont: StepVisual_FontSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetFont;
 		void SetFont(const StepVisual_FontSelect & aFont);
 
 		/****************** SetLiteral ******************/
 		/**** md5 signature: cc3f88a6291d261365c7e8de00c8c970 ****/
 		%feature("compactdefaultargs") SetLiteral;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aLiteral: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetLiteral;
 		void SetLiteral(const opencascade::handle<TCollection_HAsciiString> & aLiteral);
 
 		/****************** SetPath ******************/
 		/**** md5 signature: 98ca1e3a731a056bbee1b4e31c4c7c90 ****/
 		%feature("compactdefaultargs") SetPath;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPath: StepVisual_TextPath
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPath;
 		void SetPath(const StepVisual_TextPath aPath);
 
 		/****************** SetPlacement ******************/
 		/**** md5 signature: ad02f5eccfb653be4766b095dfa772cf ****/
 		%feature("compactdefaultargs") SetPlacement;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPlacement: StepGeom_Axis2Placement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPlacement;
 		void SetPlacement(const StepGeom_Axis2Placement & aPlacement);
 
@@ -6612,59 +7453,70 @@ class StepVisual_TextOrCharacter : public StepData_SelectType {
 		/****************** StepVisual_TextOrCharacter ******************/
 		/**** md5 signature: 263f2a1181da76f8375c0a4586d07791 ****/
 		%feature("compactdefaultargs") StepVisual_TextOrCharacter;
-		%feature("autodoc", "Returns a textorcharacter selecttype.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a textorcharacter selecttype.
 ") StepVisual_TextOrCharacter;
 		 StepVisual_TextOrCharacter();
 
 		/****************** AnnotationText ******************/
 		/**** md5 signature: d828bde976b7e598ba10444740a40a04 ****/
 		%feature("compactdefaultargs") AnnotationText;
-		%feature("autodoc", "Returns value as a annotationtext (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_AnnotationText>
+
+Description
+-----------
+Returns value as a annotationtext (null if another type).
 ") AnnotationText;
 		opencascade::handle<StepVisual_AnnotationText> AnnotationText();
 
 		/****************** CaseNum ******************/
 		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "Recognizes a textorcharacter kind entity that is : 1 -> annotationtext 2 -> compositetext 3 -> textliteral 0 else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Recognizes a textorcharacter kind entity that is: 1 -> annotationtext 2 -> compositetext 3 -> textliteral 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** CompositeText ******************/
 		/**** md5 signature: 02d79e50e6e540a3c424977d9d1dc388 ****/
 		%feature("compactdefaultargs") CompositeText;
-		%feature("autodoc", "Returns value as a compositetext (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CompositeText>
+
+Description
+-----------
+Returns value as a compositetext (null if another type).
 ") CompositeText;
 		opencascade::handle<StepVisual_CompositeText> CompositeText();
 
 		/****************** TextLiteral ******************/
 		/**** md5 signature: b12e6b464c4c0a143633eaaca9bec8e7 ****/
 		%feature("compactdefaultargs") TextLiteral;
-		%feature("autodoc", "Returns value as a textliteral (null if another type).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TextLiteral>
+
+Description
+-----------
+Returns value as a textliteral (null if another type).
 ") TextLiteral;
 		opencascade::handle<StepVisual_TextLiteral> TextLiteral();
 
@@ -6685,79 +7537,94 @@ class StepVisual_TextStyle : public Standard_Transient {
 		/****************** StepVisual_TextStyle ******************/
 		/**** md5 signature: 45e828d51e0a5695a9ca7ada3679f9fd ****/
 		%feature("compactdefaultargs") StepVisual_TextStyle;
-		%feature("autodoc", "Returns a textstyle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a textstyle.
 ") StepVisual_TextStyle;
 		 StepVisual_TextStyle();
 
 		/****************** CharacterAppearance ******************/
 		/**** md5 signature: 37d0030d8a8d72f05968330f7e5ab175 ****/
 		%feature("compactdefaultargs") CharacterAppearance;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TextStyleForDefinedFont>
+
+Description
+-----------
+No available documentation.
 ") CharacterAppearance;
 		opencascade::handle<StepVisual_TextStyleForDefinedFont> CharacterAppearance();
 
 		/****************** Init ******************/
 		/**** md5 signature: 69f213b7c43e1df990719966e51fc47c ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aCharacterAppearance: StepVisual_TextStyleForDefinedFont
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetCharacterAppearance ******************/
 		/**** md5 signature: 9f723407d3433fae13854ccf88fca9da ****/
 		%feature("compactdefaultargs") SetCharacterAppearance;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aCharacterAppearance: StepVisual_TextStyleForDefinedFont
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCharacterAppearance;
 		void SetCharacterAppearance(const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -6780,52 +7647,62 @@ class StepVisual_TextStyleForDefinedFont : public Standard_Transient {
 		/****************** StepVisual_TextStyleForDefinedFont ******************/
 		/**** md5 signature: 79829fb49193213700846560ced1fe78 ****/
 		%feature("compactdefaultargs") StepVisual_TextStyleForDefinedFont;
-		%feature("autodoc", "Returns a textstylefordefinedfont.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a textstylefordefinedfont.
 ") StepVisual_TextStyleForDefinedFont;
 		 StepVisual_TextStyleForDefinedFont();
 
 		/****************** Init ******************/
 		/**** md5 signature: f4a79bece49f98e6e24eba3b506f4abc ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aTextColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_Colour> & aTextColour);
 
 		/****************** SetTextColour ******************/
 		/**** md5 signature: e3111f08f2715def0709beca5a7da748 ****/
 		%feature("compactdefaultargs") SetTextColour;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aTextColour: StepVisual_Colour
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetTextColour;
 		void SetTextColour(const opencascade::handle<StepVisual_Colour> & aTextColour);
 
 		/****************** TextColour ******************/
 		/**** md5 signature: 37e43acc90f39243ed2cf2ae03be99e0 ****/
 		%feature("compactdefaultargs") TextColour;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_Colour>
+
+Description
+-----------
+No available documentation.
 ") TextColour;
 		opencascade::handle<StepVisual_Colour> TextColour();
 
@@ -6848,63 +7725,72 @@ class StepVisual_ViewVolume : public Standard_Transient {
 		/****************** StepVisual_ViewVolume ******************/
 		/**** md5 signature: 0785a7fd1db8da789ac608f090a0b641 ****/
 		%feature("compactdefaultargs") StepVisual_ViewVolume;
-		%feature("autodoc", "Returns a viewvolume.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a viewvolume.
 ") StepVisual_ViewVolume;
 		 StepVisual_ViewVolume();
 
 		/****************** BackPlaneClipping ******************/
 		/**** md5 signature: f4942e08a89ca03b954ef65f79bc0317 ****/
 		%feature("compactdefaultargs") BackPlaneClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") BackPlaneClipping;
 		Standard_Boolean BackPlaneClipping();
 
 		/****************** BackPlaneDistance ******************/
 		/**** md5 signature: 461642553ea3f9afa8cccbf4dbb17426 ****/
 		%feature("compactdefaultargs") BackPlaneDistance;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") BackPlaneDistance;
 		Standard_Real BackPlaneDistance();
 
 		/****************** FrontPlaneClipping ******************/
 		/**** md5 signature: 5dc08f835aab66c4ebeee8ea44aac106 ****/
 		%feature("compactdefaultargs") FrontPlaneClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") FrontPlaneClipping;
 		Standard_Boolean FrontPlaneClipping();
 
 		/****************** FrontPlaneDistance ******************/
 		/**** md5 signature: 9b0f3629420a101cad94471e4b2f5dc8 ****/
 		%feature("compactdefaultargs") FrontPlaneDistance;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") FrontPlaneDistance;
 		Standard_Real FrontPlaneDistance();
 
 		/****************** Init ******************/
 		/**** md5 signature: 5334c63ff086d260ee00224d8efba9bb ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aProjectionType: StepVisual_CentralOrParallel
@@ -6917,199 +7803,240 @@ aBackPlaneClipping: bool
 aViewVolumeSidesClipping: bool
 aViewWindow: StepVisual_PlanarBox
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const StepVisual_CentralOrParallel aProjectionType, const opencascade::handle<StepGeom_CartesianPoint> & aProjectionPoint, const Standard_Real aViewPlaneDistance, const Standard_Real aFrontPlaneDistance, const Standard_Boolean aFrontPlaneClipping, const Standard_Real aBackPlaneDistance, const Standard_Boolean aBackPlaneClipping, const Standard_Boolean aViewVolumeSidesClipping, const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
 		/****************** ProjectionPoint ******************/
 		/**** md5 signature: 4314d1b4352760cb5ce3c88148f1e3ec ****/
 		%feature("compactdefaultargs") ProjectionPoint;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_CartesianPoint>
+
+Description
+-----------
+No available documentation.
 ") ProjectionPoint;
 		opencascade::handle<StepGeom_CartesianPoint> ProjectionPoint();
 
 		/****************** ProjectionType ******************/
 		/**** md5 signature: e0315a1e454ac2a2c3fa65f19c1a43eb ****/
 		%feature("compactdefaultargs") ProjectionType;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_CentralOrParallel
+
+Description
+-----------
+No available documentation.
 ") ProjectionType;
 		StepVisual_CentralOrParallel ProjectionType();
 
 		/****************** SetBackPlaneClipping ******************/
 		/**** md5 signature: 6674976d6d401c95326e70806fc1ae26 ****/
 		%feature("compactdefaultargs") SetBackPlaneClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aBackPlaneClipping: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetBackPlaneClipping;
 		void SetBackPlaneClipping(const Standard_Boolean aBackPlaneClipping);
 
 		/****************** SetBackPlaneDistance ******************/
 		/**** md5 signature: edfc21fcbb6d0e0206180b0f4a0e4f16 ****/
 		%feature("compactdefaultargs") SetBackPlaneDistance;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aBackPlaneDistance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetBackPlaneDistance;
 		void SetBackPlaneDistance(const Standard_Real aBackPlaneDistance);
 
 		/****************** SetFrontPlaneClipping ******************/
 		/**** md5 signature: 2ef3554ed4085b640a49951a13c68697 ****/
 		%feature("compactdefaultargs") SetFrontPlaneClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFrontPlaneClipping: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetFrontPlaneClipping;
 		void SetFrontPlaneClipping(const Standard_Boolean aFrontPlaneClipping);
 
 		/****************** SetFrontPlaneDistance ******************/
 		/**** md5 signature: 0abafb345d231817ec21629b7183d720 ****/
 		%feature("compactdefaultargs") SetFrontPlaneDistance;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aFrontPlaneDistance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetFrontPlaneDistance;
 		void SetFrontPlaneDistance(const Standard_Real aFrontPlaneDistance);
 
 		/****************** SetProjectionPoint ******************/
 		/**** md5 signature: 88da046078f60f581b65e026335ecd38 ****/
 		%feature("compactdefaultargs") SetProjectionPoint;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aProjectionPoint: StepGeom_CartesianPoint
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetProjectionPoint;
 		void SetProjectionPoint(const opencascade::handle<StepGeom_CartesianPoint> & aProjectionPoint);
 
 		/****************** SetProjectionType ******************/
 		/**** md5 signature: 3a707c0c3f03e6c5db11e789ae6e5506 ****/
 		%feature("compactdefaultargs") SetProjectionType;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aProjectionType: StepVisual_CentralOrParallel
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetProjectionType;
 		void SetProjectionType(const StepVisual_CentralOrParallel aProjectionType);
 
 		/****************** SetViewPlaneDistance ******************/
 		/**** md5 signature: da1f3356e5f41bcfc2bb04e77f58c10e ****/
 		%feature("compactdefaultargs") SetViewPlaneDistance;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aViewPlaneDistance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewPlaneDistance;
 		void SetViewPlaneDistance(const Standard_Real aViewPlaneDistance);
 
 		/****************** SetViewVolumeSidesClipping ******************/
 		/**** md5 signature: 938e917fe37c3b73ccc2088beb9e6574 ****/
 		%feature("compactdefaultargs") SetViewVolumeSidesClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aViewVolumeSidesClipping: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewVolumeSidesClipping;
 		void SetViewVolumeSidesClipping(const Standard_Boolean aViewVolumeSidesClipping);
 
 		/****************** SetViewWindow ******************/
 		/**** md5 signature: 136a748355c9fefae97d375748f65d19 ****/
 		%feature("compactdefaultargs") SetViewWindow;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aViewWindow: StepVisual_PlanarBox
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewWindow;
 		void SetViewWindow(const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
 		/****************** ViewPlaneDistance ******************/
 		/**** md5 signature: 7ab9aeb9cdc69dbf281d1fbcecc18b25 ****/
 		%feature("compactdefaultargs") ViewPlaneDistance;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") ViewPlaneDistance;
 		Standard_Real ViewPlaneDistance();
 
 		/****************** ViewVolumeSidesClipping ******************/
 		/**** md5 signature: a3f90f4afd2383c29f11c96039e9a2f1 ****/
 		%feature("compactdefaultargs") ViewVolumeSidesClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") ViewVolumeSidesClipping;
 		Standard_Boolean ViewVolumeSidesClipping();
 
 		/****************** ViewWindow ******************/
 		/**** md5 signature: 725cc0912678c398b3fece353204acfc ****/
 		%feature("compactdefaultargs") ViewWindow;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PlanarBox>
+
+Description
+-----------
+No available documentation.
 ") ViewWindow;
 		opencascade::handle<StepVisual_PlanarBox> ViewWindow();
 
@@ -7132,11 +8059,13 @@ class StepVisual_AnnotationOccurrence : public StepVisual_StyledItem {
 		/****************** StepVisual_AnnotationOccurrence ******************/
 		/**** md5 signature: 1170a3a1953a137ef5dea4fee59f9067 ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationOccurrence;
-		%feature("autodoc", "Returns a annotationoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationoccurrence.
 ") StepVisual_AnnotationOccurrence;
 		 StepVisual_AnnotationOccurrence();
 
@@ -7159,52 +8088,62 @@ class StepVisual_BackgroundColour : public StepVisual_Colour {
 		/****************** StepVisual_BackgroundColour ******************/
 		/**** md5 signature: 127c1c50d44bca9a3548d62ac975d8cb ****/
 		%feature("compactdefaultargs") StepVisual_BackgroundColour;
-		%feature("autodoc", "Returns a backgroundcolour.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a backgroundcolour.
 ") StepVisual_BackgroundColour;
 		 StepVisual_BackgroundColour();
 
 		/****************** Init ******************/
 		/**** md5 signature: 028fc5afe2ca9ac48a52f2c46f5726d2 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: StepVisual_AreaOrView
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const StepVisual_AreaOrView & aPresentation);
 
 		/****************** Presentation ******************/
 		/**** md5 signature: 876aa9ba539473d78fc21599f42ecd29 ****/
 		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_AreaOrView
+
+Description
+-----------
+No available documentation.
 ") Presentation;
 		StepVisual_AreaOrView Presentation();
 
 		/****************** SetPresentation ******************/
 		/**** md5 signature: fc429b3902dffd59d732a58ca794ca03 ****/
 		%feature("compactdefaultargs") SetPresentation;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: StepVisual_AreaOrView
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPresentation;
 		void SetPresentation(const StepVisual_AreaOrView & aPresentation);
 
@@ -7227,11 +8166,13 @@ class StepVisual_CameraImage2dWithScale : public StepVisual_CameraImage {
 		/****************** StepVisual_CameraImage2dWithScale ******************/
 		/**** md5 signature: 726c3e77e36a5065625ac3580cd81324 ****/
 		%feature("compactdefaultargs") StepVisual_CameraImage2dWithScale;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_CameraImage2dWithScale;
 		 StepVisual_CameraImage2dWithScale();
 
@@ -7254,11 +8195,13 @@ class StepVisual_CameraImage3dWithScale : public StepVisual_CameraImage {
 		/****************** StepVisual_CameraImage3dWithScale ******************/
 		/**** md5 signature: 004c8ecc1fe1a13431b5476203c6e7ca ****/
 		%feature("compactdefaultargs") StepVisual_CameraImage3dWithScale;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_CameraImage3dWithScale;
 		 StepVisual_CameraImage3dWithScale();
 
@@ -7281,80 +8224,95 @@ class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
 		/****************** StepVisual_CameraModelD2 ******************/
 		/**** md5 signature: 748a8eaaea8afa45672846794d81c253 ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD2;
-		%feature("autodoc", "Returns a cameramodeld2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameramodeld2.
 ") StepVisual_CameraModelD2;
 		 StepVisual_CameraModelD2();
 
 		/****************** Init ******************/
 		/**** md5 signature: dbffc25b3471018fbf5fe9cab1b7eb83 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aViewWindow: StepVisual_PlanarBox
 aViewWindowClipping: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_PlanarBox> & aViewWindow, const Standard_Boolean aViewWindowClipping);
 
 		/****************** SetViewWindow ******************/
 		/**** md5 signature: 136a748355c9fefae97d375748f65d19 ****/
 		%feature("compactdefaultargs") SetViewWindow;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aViewWindow: StepVisual_PlanarBox
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewWindow;
 		void SetViewWindow(const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
 		/****************** SetViewWindowClipping ******************/
 		/**** md5 signature: 2b3733762e8bdaf1ef52f2d1b7c8b674 ****/
 		%feature("compactdefaultargs") SetViewWindowClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aViewWindowClipping: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewWindowClipping;
 		void SetViewWindowClipping(const Standard_Boolean aViewWindowClipping);
 
 		/****************** ViewWindow ******************/
 		/**** md5 signature: 725cc0912678c398b3fece353204acfc ****/
 		%feature("compactdefaultargs") ViewWindow;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PlanarBox>
+
+Description
+-----------
+No available documentation.
 ") ViewWindow;
 		opencascade::handle<StepVisual_PlanarBox> ViewWindow();
 
 		/****************** ViewWindowClipping ******************/
 		/**** md5 signature: 60a35ab5c04f44b804a3cc10158ea739 ****/
 		%feature("compactdefaultargs") ViewWindowClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") ViewWindowClipping;
 		Standard_Boolean ViewWindowClipping();
 
@@ -7377,80 +8335,95 @@ class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
 		/****************** StepVisual_CameraModelD3 ******************/
 		/**** md5 signature: 841a26e60795284278f7070e4fb49a07 ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD3;
-		%feature("autodoc", "Returns a cameramodeld3.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameramodeld3.
 ") StepVisual_CameraModelD3;
 		 StepVisual_CameraModelD3();
 
 		/****************** Init ******************/
 		/**** md5 signature: 2798b9bfb91180a5b3eeffa7cc122059 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aViewReferenceSystem: StepGeom_Axis2Placement3d
 aPerspectiveOfVolume: StepVisual_ViewVolume
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aViewReferenceSystem, const opencascade::handle<StepVisual_ViewVolume> & aPerspectiveOfVolume);
 
 		/****************** PerspectiveOfVolume ******************/
 		/**** md5 signature: b9367179fea54fd5444ea2ba436b49b3 ****/
 		%feature("compactdefaultargs") PerspectiveOfVolume;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_ViewVolume>
+
+Description
+-----------
+No available documentation.
 ") PerspectiveOfVolume;
 		opencascade::handle<StepVisual_ViewVolume> PerspectiveOfVolume();
 
 		/****************** SetPerspectiveOfVolume ******************/
 		/**** md5 signature: ac3a2531e6d2a743285ffcc4f0285f55 ****/
 		%feature("compactdefaultargs") SetPerspectiveOfVolume;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPerspectiveOfVolume: StepVisual_ViewVolume
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPerspectiveOfVolume;
 		void SetPerspectiveOfVolume(const opencascade::handle<StepVisual_ViewVolume> & aPerspectiveOfVolume);
 
 		/****************** SetViewReferenceSystem ******************/
 		/**** md5 signature: d6fd6fa5b899d15394116f9e86b70115 ****/
 		%feature("compactdefaultargs") SetViewReferenceSystem;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aViewReferenceSystem: StepGeom_Axis2Placement3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewReferenceSystem;
 		void SetViewReferenceSystem(const opencascade::handle<StepGeom_Axis2Placement3d> & aViewReferenceSystem);
 
 		/****************** ViewReferenceSystem ******************/
 		/**** md5 signature: 84d34fde6fa2bd63ba5c975b6201f63c ****/
 		%feature("compactdefaultargs") ViewReferenceSystem;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Axis2Placement3d>
+
+Description
+-----------
+No available documentation.
 ") ViewReferenceSystem;
 		opencascade::handle<StepGeom_Axis2Placement3d> ViewReferenceSystem();
 
@@ -7473,11 +8446,13 @@ class StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel : public St
 		/****************** StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel ******************/
 		/**** md5 signature: 34cb562d413a95c3a37b9fcbd2461f78 ****/
 		%feature("compactdefaultargs") StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel;
 		 StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel();
 
@@ -7500,52 +8475,62 @@ class StepVisual_ColourSpecification : public StepVisual_Colour {
 		/****************** StepVisual_ColourSpecification ******************/
 		/**** md5 signature: cfd4e535b8138ca08665d921957c0090 ****/
 		%feature("compactdefaultargs") StepVisual_ColourSpecification;
-		%feature("autodoc", "Returns a colourspecification.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a colourspecification.
 ") StepVisual_ColourSpecification;
 		 StepVisual_ColourSpecification();
 
 		/****************** Init ******************/
 		/**** md5 signature: e10f4ffe4365262d2d9a5484d96325b8 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****************** Name ******************/
 		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** SetName ******************/
 		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -7568,54 +8553,64 @@ class StepVisual_CompositeTextWithExtent : public StepVisual_CompositeText {
 		/****************** StepVisual_CompositeTextWithExtent ******************/
 		/**** md5 signature: db03fa0030cb7ff09731453861cbf670 ****/
 		%feature("compactdefaultargs") StepVisual_CompositeTextWithExtent;
-		%feature("autodoc", "Returns a compositetextwithextent.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a compositetextwithextent.
 ") StepVisual_CompositeTextWithExtent;
 		 StepVisual_CompositeTextWithExtent();
 
 		/****************** Extent ******************/
 		/**** md5 signature: 5734b609e25d7e110c6c219f167f280a ****/
 		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PlanarExtent>
+
+Description
+-----------
+No available documentation.
 ") Extent;
 		opencascade::handle<StepVisual_PlanarExtent> Extent();
 
 		/****************** Init ******************/
 		/**** md5 signature: 110b91406c02697e42c454f3b015db2d ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aCollectedText: StepVisual_HArray1OfTextOrCharacter
 aExtent: StepVisual_PlanarExtent
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText, const opencascade::handle<StepVisual_PlanarExtent> & aExtent);
 
 		/****************** SetExtent ******************/
 		/**** md5 signature: 32a808f68d4795ac572a482545c43c81 ****/
 		%feature("compactdefaultargs") SetExtent;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aExtent: StepVisual_PlanarExtent
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetExtent;
 		void SetExtent(const opencascade::handle<StepVisual_PlanarExtent> & aExtent);
 
@@ -7638,53 +8633,63 @@ class StepVisual_ContextDependentInvisibility : public StepVisual_Invisibility {
 		/****************** StepVisual_ContextDependentInvisibility ******************/
 		/**** md5 signature: 45f5662915ecc05f35fc8f5c289ace90 ****/
 		%feature("compactdefaultargs") StepVisual_ContextDependentInvisibility;
-		%feature("autodoc", "Returns a contextdependentinvisibility.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a contextdependentinvisibility.
 ") StepVisual_ContextDependentInvisibility;
 		 StepVisual_ContextDependentInvisibility();
 
 		/****************** Init ******************/
 		/**** md5 signature: 994ad424222e64e933e9c610e0b1c703 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aInvisibleItems: StepVisual_HArray1OfInvisibleItem
 aPresentationContext: StepVisual_InvisibilityContext
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems, const StepVisual_InvisibilityContext & aPresentationContext);
 
 		/****************** PresentationContext ******************/
 		/**** md5 signature: 65ec5e64ff0da9a7fc1f18ae60091180 ****/
 		%feature("compactdefaultargs") PresentationContext;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_InvisibilityContext
+
+Description
+-----------
+No available documentation.
 ") PresentationContext;
 		StepVisual_InvisibilityContext PresentationContext();
 
 		/****************** SetPresentationContext ******************/
 		/**** md5 signature: 7a127d727fe8b71a0200708dd5afc50e ****/
 		%feature("compactdefaultargs") SetPresentationContext;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPresentationContext: StepVisual_InvisibilityContext
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPresentationContext;
 		void SetPresentationContext(const StepVisual_InvisibilityContext & aPresentationContext);
 
@@ -7707,38 +8712,45 @@ class StepVisual_CoordinatesList : public StepVisual_TessellatedItem {
 		/****************** StepVisual_CoordinatesList ******************/
 		/**** md5 signature: 9dc6281a340d089c274d050bc3736846 ****/
 		%feature("compactdefaultargs") StepVisual_CoordinatesList;
-		%feature("autodoc", "Returns a coordinate list.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a coordinate list.
 ") StepVisual_CoordinatesList;
 		 StepVisual_CoordinatesList();
 
 		/****************** Init ******************/
 		/**** md5 signature: 6b8cf97a27cc571f37e1cba05bc22c29 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 thePoints: TColgp_HArray1OfXYZ
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
 		/****************** Points ******************/
 		/**** md5 signature: ae57370bd0bdd13575b3a053117bf726 ****/
 		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColgp_HArray1OfXYZ>
+
+Description
+-----------
+No available documentation.
 ") Points;
 		opencascade::handle<TColgp_HArray1OfXYZ> Points();
 
@@ -7761,11 +8773,13 @@ class StepVisual_MechanicalDesignGeometricPresentationRepresentation : public St
 		/****************** StepVisual_MechanicalDesignGeometricPresentationRepresentation ******************/
 		/**** md5 signature: 0b5887ccf6d8da9641b7e6cf35e54902 ****/
 		%feature("compactdefaultargs") StepVisual_MechanicalDesignGeometricPresentationRepresentation;
-		%feature("autodoc", "Returns a mechanicaldesigngeometricpresentationrepresentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a mechanicaldesigngeometricpresentationrepresentation.
 ") StepVisual_MechanicalDesignGeometricPresentationRepresentation;
 		 StepVisual_MechanicalDesignGeometricPresentationRepresentation();
 
@@ -7788,19 +8802,20 @@ class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
 		/****************** StepVisual_OverRidingStyledItem ******************/
 		/**** md5 signature: 7dd9409c2a297555a1e543763e6677bd ****/
 		%feature("compactdefaultargs") StepVisual_OverRidingStyledItem;
-		%feature("autodoc", "Returns a overridingstyleditem.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a overridingstyleditem.
 ") StepVisual_OverRidingStyledItem;
 		 StepVisual_OverRidingStyledItem();
 
 		/****************** Init ******************/
 		/**** md5 signature: b6eaf947f5bce980117254b1de3cdbd8 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -7808,35 +8823,44 @@ aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 aItem: Standard_Transient
 aOverRiddenStyle: StepVisual_StyledItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles, const opencascade::handle<Standard_Transient> & aItem, const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle);
 
 		/****************** OverRiddenStyle ******************/
 		/**** md5 signature: 9e4e31e172072f2fc6a76eb75d8d429e ****/
 		%feature("compactdefaultargs") OverRiddenStyle;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_StyledItem>
+
+Description
+-----------
+No available documentation.
 ") OverRiddenStyle;
 		opencascade::handle<StepVisual_StyledItem> OverRiddenStyle();
 
 		/****************** SetOverRiddenStyle ******************/
 		/**** md5 signature: 87a251079ac6fcd30a33ec63df3ccc14 ****/
 		%feature("compactdefaultargs") SetOverRiddenStyle;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aOverRiddenStyle: StepVisual_StyledItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetOverRiddenStyle;
 		void SetOverRiddenStyle(const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle);
 
@@ -7859,19 +8883,20 @@ class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
 		/****************** StepVisual_PlanarBox ******************/
 		/**** md5 signature: 68e92f54bada54fb960bae2e9c369040 ****/
 		%feature("compactdefaultargs") StepVisual_PlanarBox;
-		%feature("autodoc", "Returns a planarbox.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a planarbox.
 ") StepVisual_PlanarBox;
 		 StepVisual_PlanarBox();
 
 		/****************** Init ******************/
 		/**** md5 signature: 8bf864327a59155b489a5980c7481f2f ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -7879,35 +8904,44 @@ aSizeInX: float
 aSizeInY: float
 aPlacement: StepGeom_Axis2Placement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aSizeInX, const Standard_Real aSizeInY, const StepGeom_Axis2Placement & aPlacement);
 
 		/****************** Placement ******************/
 		/**** md5 signature: b66e16bd2b866237c0d300c709f8aafe ****/
 		%feature("compactdefaultargs") Placement;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepGeom_Axis2Placement
+
+Description
+-----------
+No available documentation.
 ") Placement;
 		StepGeom_Axis2Placement Placement();
 
 		/****************** SetPlacement ******************/
 		/**** md5 signature: ad02f5eccfb653be4766b095dfa772cf ****/
 		%feature("compactdefaultargs") SetPlacement;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aPlacement: StepGeom_Axis2Placement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPlacement;
 		void SetPlacement(const StepGeom_Axis2Placement & aPlacement);
 
@@ -7930,37 +8964,44 @@ class StepVisual_PreDefinedColour : public StepVisual_Colour {
 		/****************** StepVisual_PreDefinedColour ******************/
 		/**** md5 signature: 3eaf6ff7acb4014fa3bef2422b112da9 ****/
 		%feature("compactdefaultargs") StepVisual_PreDefinedColour;
-		%feature("autodoc", "Returns a predefinedcolour.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a predefinedcolour.
 ") StepVisual_PreDefinedColour;
 		 StepVisual_PreDefinedColour();
 
 		/****************** GetPreDefinedItem ******************/
 		/**** md5 signature: 8168ba69b08169e3fcf91829c533909b ****/
 		%feature("compactdefaultargs") GetPreDefinedItem;
-		%feature("autodoc", "Return a pre_defined_item part.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_PreDefinedItem>
+
+Description
+-----------
+Return a pre_defined_item part.
 ") GetPreDefinedItem;
 		const opencascade::handle<StepVisual_PreDefinedItem> & GetPreDefinedItem();
 
 		/****************** SetPreDefinedItem ******************/
 		/**** md5 signature: e07d67f04ab79f1c391f23a8492f0e43 ****/
 		%feature("compactdefaultargs") SetPreDefinedItem;
-		%feature("autodoc", "Set a pre_defined_item part.
-
+		%feature("autodoc", "
 Parameters
 ----------
 item: StepVisual_PreDefinedItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set a pre_defined_item part.
 ") SetPreDefinedItem;
 		void SetPreDefinedItem(const opencascade::handle<StepVisual_PreDefinedItem> & item);
 
@@ -7983,11 +9024,13 @@ class StepVisual_PreDefinedCurveFont : public StepVisual_PreDefinedItem {
 		/****************** StepVisual_PreDefinedCurveFont ******************/
 		/**** md5 signature: b71ff5a52d42a060eb5ac7f7e17b497a ****/
 		%feature("compactdefaultargs") StepVisual_PreDefinedCurveFont;
-		%feature("autodoc", "Returns a predefinedcurvefont.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a predefinedcurvefont.
 ") StepVisual_PreDefinedCurveFont;
 		 StepVisual_PreDefinedCurveFont();
 
@@ -8010,11 +9053,13 @@ class StepVisual_PreDefinedTextFont : public StepVisual_PreDefinedItem {
 		/****************** StepVisual_PreDefinedTextFont ******************/
 		/**** md5 signature: a56b777441f816f59ef852bfda0df1f2 ****/
 		%feature("compactdefaultargs") StepVisual_PreDefinedTextFont;
-		%feature("autodoc", "Returns a predefinedtextfont.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a predefinedtextfont.
 ") StepVisual_PreDefinedTextFont;
 		 StepVisual_PreDefinedTextFont();
 
@@ -8037,11 +9082,13 @@ class StepVisual_PresentationArea : public StepVisual_PresentationRepresentation
 		/****************** StepVisual_PresentationArea ******************/
 		/**** md5 signature: f25b7b06e7dcd02c22874e12e667096a ****/
 		%feature("compactdefaultargs") StepVisual_PresentationArea;
-		%feature("autodoc", "Returns a presentationarea.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationarea.
 ") StepVisual_PresentationArea;
 		 StepVisual_PresentationArea();
 
@@ -8064,53 +9111,63 @@ class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyl
 		/****************** StepVisual_PresentationStyleByContext ******************/
 		/**** md5 signature: 8723347e6438d18d40948248ea8eeaf5 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationStyleByContext;
-		%feature("autodoc", "Returns a presentationstylebycontext.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationstylebycontext.
 ") StepVisual_PresentationStyleByContext;
 		 StepVisual_PresentationStyleByContext();
 
 		/****************** Init ******************/
 		/**** md5 signature: 9d9086df5e83732bdf0436ac9ab29d79 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyles: StepVisual_HArray1OfPresentationStyleSelect
 aStyleContext: StepVisual_StyleContextSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles, const StepVisual_StyleContextSelect & aStyleContext);
 
 		/****************** SetStyleContext ******************/
 		/**** md5 signature: 8d8197c8c77f7080eddfc3b83e7ca162 ****/
 		%feature("compactdefaultargs") SetStyleContext;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleContext: StepVisual_StyleContextSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleContext;
 		void SetStyleContext(const StepVisual_StyleContextSelect & aStyleContext);
 
 		/****************** StyleContext ******************/
 		/**** md5 signature: 25291206e3f2bf69a0fcbe1bb1c73a1a ****/
 		%feature("compactdefaultargs") StyleContext;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_StyleContextSelect
+
+Description
+-----------
+No available documentation.
 ") StyleContext;
 		StepVisual_StyleContextSelect StyleContext();
 
@@ -8133,11 +9190,13 @@ class StepVisual_PresentationView : public StepVisual_PresentationRepresentation
 		/****************** StepVisual_PresentationView ******************/
 		/**** md5 signature: 6f4c49378d10171f5b788e0040623706 ****/
 		%feature("compactdefaultargs") StepVisual_PresentationView;
-		%feature("autodoc", "Returns a presentationview.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a presentationview.
 ") StepVisual_PresentationView;
 		 StepVisual_PresentationView();
 
@@ -8160,53 +9219,63 @@ class StepVisual_RepositionedTessellatedItem : public StepVisual_TessellatedItem
 		/****************** StepVisual_RepositionedTessellatedItem ******************/
 		/**** md5 signature: 676ee0afc6ba0ef5b172214d520839b2 ****/
 		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedItem;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_RepositionedTessellatedItem;
 		 StepVisual_RepositionedTessellatedItem();
 
 		/****************** Init ******************/
 		/**** md5 signature: fec1dcd27f9472f38ca79eda9f6136f6 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theLocation: StepGeom_Axis2Placement3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
 
 		/****************** Location ******************/
 		/**** md5 signature: 39fc6625e849c305cb623a87ef9754a6 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns location.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Axis2Placement3d>
+
+Description
+-----------
+Returns location.
 ") Location;
 		opencascade::handle<StepGeom_Axis2Placement3d> Location();
 
 		/****************** SetLocation ******************/
 		/**** md5 signature: 447f5a9e9fa630b823c1544b8c75af39 ****/
 		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "Sets location.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLocation: StepGeom_Axis2Placement3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets location.
 ") SetLocation;
 		void SetLocation(const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
 
@@ -8229,54 +9298,64 @@ class StepVisual_SurfaceStyleRenderingWithProperties : public StepVisual_Surface
 		/****************** StepVisual_SurfaceStyleRenderingWithProperties ******************/
 		/**** md5 signature: 516dd2417e51a15b895ff90ed669ab7f ****/
 		%feature("compactdefaultargs") StepVisual_SurfaceStyleRenderingWithProperties;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_SurfaceStyleRenderingWithProperties;
 		 StepVisual_SurfaceStyleRenderingWithProperties();
 
 		/****************** Init ******************/
 		/**** md5 signature: 6ccee1bad33817e66b5f255ad860827b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSurfaceStyleRendering_RenderingMethod: StepVisual_ShadingSurfaceMethod
 theSurfaceStyleRendering_SurfaceColour: StepVisual_Colour
 theProperties: StepVisual_HArray1OfRenderingPropertiesSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const StepVisual_ShadingSurfaceMethod theSurfaceStyleRendering_RenderingMethod, const opencascade::handle<StepVisual_Colour> & theSurfaceStyleRendering_SurfaceColour, const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
 
 		/****************** Properties ******************/
 		/**** md5 signature: dcd41794385dc173a5798e6ef5ebdf66 ****/
 		%feature("compactdefaultargs") Properties;
-		%feature("autodoc", "Returns field properties.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect>
+
+Description
+-----------
+Returns field properties.
 ") Properties;
 		opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> Properties();
 
 		/****************** SetProperties ******************/
 		/**** md5 signature: 94b0b2d7f95c87b9c8fd1441d384ffa5 ****/
 		%feature("compactdefaultargs") SetProperties;
-		%feature("autodoc", "Sets field properties.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProperties: StepVisual_HArray1OfRenderingPropertiesSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field properties.
 ") SetProperties;
 		void SetProperties(const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
 
@@ -8299,11 +9378,13 @@ class StepVisual_TessellatedAnnotationOccurrence : public StepVisual_StyledItem 
 		/****************** StepVisual_TessellatedAnnotationOccurrence ******************/
 		/**** md5 signature: 566bb72dc881d4785a93b3b20af2e2b8 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedAnnotationOccurrence;
-		%feature("autodoc", "Returns a tesselatedannotationoccurence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a tesselatedannotationoccurence.
 ") StepVisual_TessellatedAnnotationOccurrence;
 		 StepVisual_TessellatedAnnotationOccurrence();
 
@@ -8326,50 +9407,59 @@ class StepVisual_TessellatedCurveSet : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedCurveSet ******************/
 		/**** md5 signature: 50d6fc18928a7807cc81a9e796fd4b2d ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedCurveSet;
-		%feature("autodoc", "Returns a draughtingcalloutelement select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingcalloutelement select type.
 ") StepVisual_TessellatedCurveSet;
 		 StepVisual_TessellatedCurveSet();
 
 		/****************** CoordList ******************/
 		/**** md5 signature: 19cacac91e98338b8bafd6e3f39c5847 ****/
 		%feature("compactdefaultargs") CoordList;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CoordinatesList>
+
+Description
+-----------
+No available documentation.
 ") CoordList;
 		opencascade::handle<StepVisual_CoordinatesList> CoordList();
 
 		/****************** Curves ******************/
 		/**** md5 signature: 2fcc167b61b3b4e02a3fe5f1ad44dc28 ****/
 		%feature("compactdefaultargs") Curves;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger >
+
+Description
+-----------
+No available documentation.
 ") Curves;
 		NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger > Curves();
 
 		/****************** Init ******************/
 		/**** md5 signature: 3e1b0139b2d5cd0ae25418ff544765a7 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theCoordList: StepVisual_CoordinatesList
 theCurves: NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_CoordinatesList> & theCoordList, const NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger> & theCurves);
 
@@ -8392,38 +9482,45 @@ class StepVisual_TessellatedGeometricSet : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedGeometricSet ******************/
 		/**** md5 signature: 7af095cc700150751133b93351473db4 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedGeometricSet;
-		%feature("autodoc", "Returns a draughtingcalloutelement select type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingcalloutelement select type.
 ") StepVisual_TessellatedGeometricSet;
 		 StepVisual_TessellatedGeometricSet();
 
 		/****************** Init ******************/
 		/**** md5 signature: 5a1e4132221dbd9bd990e3b979865450 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<StepVisual_Array1OfTessellatedItem> & theItems);
 
 		/****************** Items ******************/
 		/**** md5 signature: f2c8bdf941344c8dc9a1b9e0f0dbd6f2 ****/
 		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Handle<StepVisual_Array1OfTessellatedItem >
+
+Description
+-----------
+No available documentation.
 ") Items;
 		NCollection_Handle<StepVisual_Array1OfTessellatedItem > Items();
 
@@ -8446,106 +9543,126 @@ class StepVisual_TessellatedPointSet : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedPointSet ******************/
 		/**** md5 signature: 29668321e19925d6464b922eeb814f6b ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedPointSet;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedPointSet;
 		 StepVisual_TessellatedPointSet();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "Returns field coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CoordinatesList>
+
+Description
+-----------
+Returns field coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****************** Init ******************/
 		/**** md5 signature: ec4773c2104213411962b46a2e3b3447 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 theCoordinates: StepVisual_CoordinatesList
 thePointList: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
 
 		/****************** NbPointList ******************/
 		/**** md5 signature: b90b8a3ea8a0827b868e6afd5f3bf74b ****/
 		%feature("compactdefaultargs") NbPointList;
-		%feature("autodoc", "Returns number of pointlist.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of pointlist.
 ") NbPointList;
 		Standard_Integer NbPointList();
 
 		/****************** PointList ******************/
 		/**** md5 signature: 2581e8b82450570684893bd02acfd0bd ****/
 		%feature("compactdefaultargs") PointList;
-		%feature("autodoc", "Returns field pointlist.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field pointlist.
 ") PointList;
 		opencascade::handle<TColStd_HArray1OfInteger> PointList();
 
 		/****************** PointListValue ******************/
 		/**** md5 signature: 9f5033dc63673f11f4cb1e36bb1f4e93 ****/
 		%feature("compactdefaultargs") PointListValue;
-		%feature("autodoc", "Returns value of pointlist by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of pointlist by its num.
 ") PointListValue;
 		Standard_Integer PointListValue(const Standard_Integer theNum);
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "Sets field coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCoordinates: StepVisual_CoordinatesList
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****************** SetPointList ******************/
 		/**** md5 signature: 790f3d2e1872305718f8dd98a09ffda7 ****/
 		%feature("compactdefaultargs") SetPointList;
-		%feature("autodoc", "Sets field pointlist.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePointList: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pointlist.
 ") SetPointList;
 		void SetPointList(const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
 
@@ -8568,19 +9685,20 @@ class StepVisual_TessellatedShapeRepresentationWithAccuracyParameters : public S
 		/****************** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters ******************/
 		/**** md5 signature: 8d31d2795e9efe46808a5ff4f979903e ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedShapeRepresentationWithAccuracyParameters;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedShapeRepresentationWithAccuracyParameters;
 		 StepVisual_TessellatedShapeRepresentationWithAccuracyParameters();
 
 		/****************** Init ******************/
 		/**** md5 signature: f85408479b34c1cade618da7b4de70e9 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentation_Name: TCollection_HAsciiString
@@ -8588,61 +9706,75 @@ theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
 theRepresentation_ContextOfItems: StepRepr_RepresentationContext
 theTessellationAccuracyParameters: TColStd_HArray1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
 
 		/****************** NbTessellationAccuracyParameters ******************/
 		/**** md5 signature: 13b9a7e33d8f6c2c3b0aae5277001286 ****/
 		%feature("compactdefaultargs") NbTessellationAccuracyParameters;
-		%feature("autodoc", "Returns number of tessellationaccuracyparameters.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of tessellationaccuracyparameters.
 ") NbTessellationAccuracyParameters;
 		Standard_Integer NbTessellationAccuracyParameters();
 
 		/****************** SetTessellationAccuracyParameters ******************/
 		/**** md5 signature: 546fb6b6bbb12e01f420401102f6cfb1 ****/
 		%feature("compactdefaultargs") SetTessellationAccuracyParameters;
-		%feature("autodoc", "Sets field tessellationaccuracyparameters.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTessellationAccuracyParameters: TColStd_HArray1OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field tessellationaccuracyparameters.
 ") SetTessellationAccuracyParameters;
 		void SetTessellationAccuracyParameters(const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
 
 		/****************** TessellationAccuracyParameters ******************/
 		/**** md5 signature: 15082317812f6de6cca655069baeb736 ****/
 		%feature("compactdefaultargs") TessellationAccuracyParameters;
-		%feature("autodoc", "Returns field tessellationaccuracyparameters.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+Returns field tessellationaccuracyparameters.
 ") TessellationAccuracyParameters;
 		opencascade::handle<TColStd_HArray1OfReal> TessellationAccuracyParameters();
 
 		/****************** TessellationAccuracyParametersValue ******************/
 		/**** md5 signature: a2b0a93749d491897c6eb85998771d00 ****/
 		%feature("compactdefaultargs") TessellationAccuracyParametersValue;
-		%feature("autodoc", "Returns value of tessellationaccuracyparameters by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns value of tessellationaccuracyparameters by its num.
 ") TessellationAccuracyParametersValue;
 		const Standard_Real & TessellationAccuracyParametersValue(const Standard_Integer theNum);
 
@@ -8665,30 +9797,33 @@ class StepVisual_TessellatedShell : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedShell ******************/
 		/**** md5 signature: e90fe8078037e06c5ed69faea6f97b05 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedShell;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedShell;
 		 StepVisual_TessellatedShell();
 
 		/****************** HasTopologicalLink ******************/
 		/**** md5 signature: b2a8f6180f026b329187f8297fbc4881 ****/
 		%feature("compactdefaultargs") HasTopologicalLink;
-		%feature("autodoc", "Returns true if optional field topologicallink is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if optional field topologicallink is defined.
 ") HasTopologicalLink;
 		Standard_Boolean HasTopologicalLink();
 
 		/****************** Init ******************/
 		/**** md5 signature: 94210c7f690ac44251daba880caa734d ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -8696,87 +9831,106 @@ theItems: StepVisual_HArray1OfTessellatedStructuredItem
 theHasTopologicalLink: bool
 theTopologicalLink: StepShape_ConnectedFaceSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems, const Standard_Boolean theHasTopologicalLink, const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
 
 		/****************** Items ******************/
 		/**** md5 signature: 203b14c6f195b69b3e0aacbe9f49e3fa ****/
 		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "Returns field items.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
+
+Description
+-----------
+Returns field items.
 ") Items;
 		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
 
 		/****************** ItemsValue ******************/
 		/**** md5 signature: 282108d369d7aea12634aa7e081aaa30 ****/
 		%feature("compactdefaultargs") ItemsValue;
-		%feature("autodoc", "Returns value of items by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 opencascade::handle<StepVisual_TessellatedStructuredItem>
+
+Description
+-----------
+Returns value of items by its num.
 ") ItemsValue;
 		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
 
 		/****************** NbItems ******************/
 		/**** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ****/
 		%feature("compactdefaultargs") NbItems;
-		%feature("autodoc", "Returns number of items.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of items.
 ") NbItems;
 		Standard_Integer NbItems();
 
 		/****************** SetItems ******************/
 		/**** md5 signature: b21476192d46c8f6e58044ebf10ef43c ****/
 		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "Sets field items.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theItems: StepVisual_HArray1OfTessellatedStructuredItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
 
 		/****************** SetTopologicalLink ******************/
 		/**** md5 signature: fb3583e7f62ff4dd76a0e4a084a80aa3 ****/
 		%feature("compactdefaultargs") SetTopologicalLink;
-		%feature("autodoc", "Sets field topologicallink.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTopologicalLink: StepShape_ConnectedFaceSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field topologicallink.
 ") SetTopologicalLink;
 		void SetTopologicalLink(const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
 
 		/****************** TopologicalLink ******************/
 		/**** md5 signature: 801b30fc0a5c8414172d7068a656fda1 ****/
 		%feature("compactdefaultargs") TopologicalLink;
-		%feature("autodoc", "Returns field topologicallink.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_ConnectedFaceSet>
+
+Description
+-----------
+Returns field topologicallink.
 ") TopologicalLink;
 		opencascade::handle<StepShape_ConnectedFaceSet> TopologicalLink();
 
@@ -8799,41 +9953,46 @@ class StepVisual_TessellatedSolid : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedSolid ******************/
 		/**** md5 signature: 5de11e474867db0f613d06a9bc0d6d32 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedSolid;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedSolid;
 		 StepVisual_TessellatedSolid();
 
 		/****************** GeometricLink ******************/
 		/**** md5 signature: 60267230a72235c885cdd2f465aecc79 ****/
 		%feature("compactdefaultargs") GeometricLink;
-		%feature("autodoc", "Returns field geometriclink.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_ManifoldSolidBrep>
+
+Description
+-----------
+Returns field geometriclink.
 ") GeometricLink;
 		opencascade::handle<StepShape_ManifoldSolidBrep> GeometricLink();
 
 		/****************** HasGeometricLink ******************/
 		/**** md5 signature: 432ca769d0ec23ad86df023b91c35498 ****/
 		%feature("compactdefaultargs") HasGeometricLink;
-		%feature("autodoc", "Returns true if optional field geometriclink is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if optional field geometriclink is defined.
 ") HasGeometricLink;
 		Standard_Boolean HasGeometricLink();
 
 		/****************** Init ******************/
 		/**** md5 signature: 85dcd9e89962e4c2fe1ef90c4cccbb73 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -8841,76 +10000,93 @@ theItems: StepVisual_HArray1OfTessellatedStructuredItem
 theHasGeometricLink: bool
 theGeometricLink: StepShape_ManifoldSolidBrep
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems, const Standard_Boolean theHasGeometricLink, const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
 
 		/****************** Items ******************/
 		/**** md5 signature: 203b14c6f195b69b3e0aacbe9f49e3fa ****/
 		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "Returns field items.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
+
+Description
+-----------
+Returns field items.
 ") Items;
 		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
 
 		/****************** ItemsValue ******************/
 		/**** md5 signature: 282108d369d7aea12634aa7e081aaa30 ****/
 		%feature("compactdefaultargs") ItemsValue;
-		%feature("autodoc", "Returns value of items by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 opencascade::handle<StepVisual_TessellatedStructuredItem>
+
+Description
+-----------
+Returns value of items by its num.
 ") ItemsValue;
 		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
 
 		/****************** NbItems ******************/
 		/**** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ****/
 		%feature("compactdefaultargs") NbItems;
-		%feature("autodoc", "Returns number of items.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of items.
 ") NbItems;
 		Standard_Integer NbItems();
 
 		/****************** SetGeometricLink ******************/
 		/**** md5 signature: a18372a243c7cd29aec2b1d7e7c35312 ****/
 		%feature("compactdefaultargs") SetGeometricLink;
-		%feature("autodoc", "Sets field geometriclink.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGeometricLink: StepShape_ManifoldSolidBrep
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field geometriclink.
 ") SetGeometricLink;
 		void SetGeometricLink(const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
 
 		/****************** SetItems ******************/
 		/**** md5 signature: b21476192d46c8f6e58044ebf10ef43c ****/
 		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "Sets field items.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theItems: StepVisual_HArray1OfTessellatedStructuredItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
 
@@ -8933,11 +10109,13 @@ class StepVisual_TessellatedStructuredItem : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedStructuredItem ******************/
 		/**** md5 signature: bfc821ae9d0aa6e7e2b07422c03f372a ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedStructuredItem;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedStructuredItem;
 		 StepVisual_TessellatedStructuredItem();
 
@@ -8960,30 +10138,33 @@ class StepVisual_TessellatedSurfaceSet : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedSurfaceSet ******************/
 		/**** md5 signature: 208193128639d4a8d7ee20a09fe98e9e ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedSurfaceSet;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedSurfaceSet;
 		 StepVisual_TessellatedSurfaceSet();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "Returns field coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CoordinatesList>
+
+Description
+-----------
+Returns field coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****************** Init ******************/
 		/**** md5 signature: 01962d23e27f7d3450592abfc9bcc70c ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -8991,87 +10172,106 @@ theCoordinates: StepVisual_CoordinatesList
 thePnmax: int
 theNormals: TColStd_HArray2OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Integer thePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
 
 		/****************** NbNormals ******************/
 		/**** md5 signature: e8ae9c17a546ef8db4eb8b45e7edd0e8 ****/
 		%feature("compactdefaultargs") NbNormals;
-		%feature("autodoc", "Returns number of normals.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of normals.
 ") NbNormals;
 		Standard_Integer NbNormals();
 
 		/****************** Normals ******************/
 		/**** md5 signature: 369b381d12bed5d4109e95bc2ede0ab6 ****/
 		%feature("compactdefaultargs") Normals;
-		%feature("autodoc", "Returns field normals.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfReal>
+
+Description
+-----------
+Returns field normals.
 ") Normals;
 		opencascade::handle<TColStd_HArray2OfReal> Normals();
 
 		/****************** Pnmax ******************/
 		/**** md5 signature: 0b280e192c56c44fffab9481c68ac038 ****/
 		%feature("compactdefaultargs") Pnmax;
-		%feature("autodoc", "Returns field pnmax.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns field pnmax.
 ") Pnmax;
 		Standard_Integer Pnmax();
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "Sets field coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCoordinates: StepVisual_CoordinatesList
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****************** SetNormals ******************/
 		/**** md5 signature: 6dd69aae81e446ea2f47e92611adf4ec ****/
 		%feature("compactdefaultargs") SetNormals;
-		%feature("autodoc", "Sets field normals.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNormals: TColStd_HArray2OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field normals.
 ") SetNormals;
 		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
 
 		/****************** SetPnmax ******************/
 		/**** md5 signature: 684034e32240f760527db1f7f7c9f728 ****/
 		%feature("compactdefaultargs") SetPnmax;
-		%feature("autodoc", "Sets field pnmax.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnmax: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pnmax.
 ") SetPnmax;
 		void SetPnmax(const Standard_Integer thePnmax);
 
@@ -9094,41 +10294,46 @@ class StepVisual_TessellatedWire : public StepVisual_TessellatedItem {
 		/****************** StepVisual_TessellatedWire ******************/
 		/**** md5 signature: 4e707fc69176a95bc70592bc29a6a978 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedWire;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedWire;
 		 StepVisual_TessellatedWire();
 
 		/****************** GeometricModelLink ******************/
 		/**** md5 signature: e25a467067930f085f0ce317fa372caa ****/
 		%feature("compactdefaultargs") GeometricModelLink;
-		%feature("autodoc", "Returns field geometricmodellink.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_PathOrCompositeCurve
+
+Description
+-----------
+Returns field geometricmodellink.
 ") GeometricModelLink;
 		StepVisual_PathOrCompositeCurve GeometricModelLink();
 
 		/****************** HasGeometricModelLink ******************/
 		/**** md5 signature: 7807a19596f6c3f1b22f6e665f78b0d0 ****/
 		%feature("compactdefaultargs") HasGeometricModelLink;
-		%feature("autodoc", "Returns true if optional field geometricmodellink is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if optional field geometricmodellink is defined.
 ") HasGeometricModelLink;
 		Standard_Boolean HasGeometricModelLink();
 
 		/****************** Init ******************/
 		/**** md5 signature: 3e058d127115bf40cd9b0af41383277f ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -9136,76 +10341,93 @@ theItems: StepVisual_HArray1OfTessellatedEdgeOrVertex
 theHasGeometricModelLink: bool
 theGeometricModelLink: StepVisual_PathOrCompositeCurve
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems, const Standard_Boolean theHasGeometricModelLink, const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
 
 		/****************** Items ******************/
 		/**** md5 signature: 7173f9b87705b3ad84710a5560ff269f ****/
 		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "Returns field items.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex>
+
+Description
+-----------
+Returns field items.
 ") Items;
 		opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> Items();
 
 		/****************** ItemsValue ******************/
 		/**** md5 signature: 5d3a2bcb1e6aad294ea96aa96fa9b5b4 ****/
 		%feature("compactdefaultargs") ItemsValue;
-		%feature("autodoc", "Returns value of items by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 StepVisual_TessellatedEdgeOrVertex
+
+Description
+-----------
+Returns value of items by its num.
 ") ItemsValue;
 		const StepVisual_TessellatedEdgeOrVertex & ItemsValue(const Standard_Integer theNum);
 
 		/****************** NbItems ******************/
 		/**** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ****/
 		%feature("compactdefaultargs") NbItems;
-		%feature("autodoc", "Returns number of items.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of items.
 ") NbItems;
 		Standard_Integer NbItems();
 
 		/****************** SetGeometricModelLink ******************/
 		/**** md5 signature: 3c1b193092fd68648e9fa59ae725fa94 ****/
 		%feature("compactdefaultargs") SetGeometricModelLink;
-		%feature("autodoc", "Sets field geometricmodellink.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGeometricModelLink: StepVisual_PathOrCompositeCurve
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field geometricmodellink.
 ") SetGeometricModelLink;
 		void SetGeometricModelLink(const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
 
 		/****************** SetItems ******************/
 		/**** md5 signature: 259d17bf79770a16966154928a674ffa ****/
 		%feature("compactdefaultargs") SetItems;
-		%feature("autodoc", "Sets field items.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theItems: StepVisual_HArray1OfTessellatedEdgeOrVertex
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems);
 
@@ -9228,80 +10450,95 @@ class StepVisual_TextStyleWithBoxCharacteristics : public StepVisual_TextStyle {
 		/****************** StepVisual_TextStyleWithBoxCharacteristics ******************/
 		/**** md5 signature: 38bf57fdf072dd4df45f8fd1b8b1bd18 ****/
 		%feature("compactdefaultargs") StepVisual_TextStyleWithBoxCharacteristics;
-		%feature("autodoc", "Returns a textstylewithboxcharacteristics.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a textstylewithboxcharacteristics.
 ") StepVisual_TextStyleWithBoxCharacteristics;
 		 StepVisual_TextStyleWithBoxCharacteristics();
 
 		/****************** Characteristics ******************/
 		/**** md5 signature: f404ef9ffc1e7202571832cfe61d6f1a ****/
 		%feature("compactdefaultargs") Characteristics;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect>
+
+Description
+-----------
+No available documentation.
 ") Characteristics;
 		opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> Characteristics();
 
 		/****************** CharacteristicsValue ******************/
 		/**** md5 signature: d504f1937c0bfbbf3548ed45b0cf5d75 ****/
 		%feature("compactdefaultargs") CharacteristicsValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_BoxCharacteristicSelect
+
+Description
+-----------
+No available documentation.
 ") CharacteristicsValue;
 		StepVisual_BoxCharacteristicSelect CharacteristicsValue(const Standard_Integer num);
 
 		/****************** Init ******************/
 		/**** md5 signature: f2cdd3ec9856430e059eee611e1e6811 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aCharacterAppearance: StepVisual_TextStyleForDefinedFont
 aCharacteristics: StepVisual_HArray1OfBoxCharacteristicSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance, const opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> & aCharacteristics);
 
 		/****************** NbCharacteristics ******************/
 		/**** md5 signature: 4c7f646d04322e6acab962ed47134e10 ****/
 		%feature("compactdefaultargs") NbCharacteristics;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbCharacteristics;
 		Standard_Integer NbCharacteristics();
 
 		/****************** SetCharacteristics ******************/
 		/**** md5 signature: 8fdd6de6baaffbe99586f96ed70c9a26 ****/
 		%feature("compactdefaultargs") SetCharacteristics;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aCharacteristics: StepVisual_HArray1OfBoxCharacteristicSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCharacteristics;
 		void SetCharacteristics(const opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> & aCharacteristics);
 
@@ -9324,11 +10561,13 @@ class StepVisual_AnnotationCurveOccurrence : public StepVisual_AnnotationOccurre
 		/****************** StepVisual_AnnotationCurveOccurrence ******************/
 		/**** md5 signature: dfff6d2e393001f9ee1cacdc8ecdc20d ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationCurveOccurrence;
-		%feature("autodoc", "Returns a annotationcurveoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationcurveoccurrence.
 ") StepVisual_AnnotationCurveOccurrence;
 		 StepVisual_AnnotationCurveOccurrence();
 
@@ -9351,30 +10590,33 @@ class StepVisual_AnnotationFillAreaOccurrence : public StepVisual_AnnotationOccu
 		/****************** StepVisual_AnnotationFillAreaOccurrence ******************/
 		/**** md5 signature: 35a8ee440a123dd131d2cf9afa8fe985 ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationFillAreaOccurrence;
-		%feature("autodoc", "Returns a annotationfillareaoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationfillareaoccurrence.
 ") StepVisual_AnnotationFillAreaOccurrence;
 		 StepVisual_AnnotationFillAreaOccurrence();
 
 		/****************** FillStyleTarget ******************/
 		/**** md5 signature: 885e8abd7455dd7c56d61bda8ca9a7e3 ****/
 		%feature("compactdefaultargs") FillStyleTarget;
-		%feature("autodoc", "Returns field fill_style_target.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_GeometricRepresentationItem>
+
+Description
+-----------
+Returns field fill_style_target.
 ") FillStyleTarget;
 		opencascade::handle<StepGeom_GeometricRepresentationItem> FillStyleTarget();
 
 		/****************** Init ******************/
 		/**** md5 signature: da37e729d86f3d06f5f8f71fb1dab436 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
@@ -9382,24 +10624,31 @@ theStyles: StepVisual_HArray1OfPresentationStyleAssignment
 theItem: Standard_Transient
 theFillStyleTarget: StepGeom_GeometricRepresentationItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & theStyles, const opencascade::handle<Standard_Transient> & theItem, const opencascade::handle<StepGeom_GeometricRepresentationItem> & theFillStyleTarget);
 
 		/****************** SetFillStyleTarget ******************/
 		/**** md5 signature: 4bae9db8bbdfc96357201013c6b4fd01 ****/
 		%feature("compactdefaultargs") SetFillStyleTarget;
-		%feature("autodoc", "Set field fill_style_target.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTarget: StepGeom_GeometricRepresentationItem
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set field fill_style_target.
 ") SetFillStyleTarget;
 		void SetFillStyleTarget(const opencascade::handle<StepGeom_GeometricRepresentationItem> & theTarget);
 
@@ -9422,45 +10671,51 @@ class StepVisual_AnnotationPlane : public StepVisual_AnnotationOccurrence {
 		/****************** StepVisual_AnnotationPlane ******************/
 		/**** md5 signature: b6f8046ea6a4bec95918baa4cb4d14f1 ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationPlane;
-		%feature("autodoc", "Returns a annotationplane.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationplane.
 ") StepVisual_AnnotationPlane;
 		 StepVisual_AnnotationPlane();
 
 		/****************** Elements ******************/
 		/**** md5 signature: 30df17a80e0c98e5b234b9ff1cd427a0 ****/
 		%feature("compactdefaultargs") Elements;
-		%feature("autodoc", "Returns field elements.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement>
+
+Description
+-----------
+Returns field elements.
 ") Elements;
 		opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> Elements();
 
 		/****************** ElementsValue ******************/
 		/**** md5 signature: 379b6c8e1b13a66de92ec2d7c43d8776 ****/
 		%feature("compactdefaultargs") ElementsValue;
-		%feature("autodoc", "Returns elements with the given number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 StepVisual_AnnotationPlaneElement
+
+Description
+-----------
+Returns elements with the given number.
 ") ElementsValue;
 		StepVisual_AnnotationPlaneElement ElementsValue(const Standard_Integer theNum);
 
 		/****************** Init ******************/
 		/**** md5 signature: 860354e1ff63df2679046b0a92f60e36 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
@@ -9468,51 +10723,63 @@ theStyles: StepVisual_HArray1OfPresentationStyleAssignment
 theItem: Standard_Transient
 theElements: StepVisual_HArray1OfAnnotationPlaneElement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & theStyles, const opencascade::handle<Standard_Transient> & theItem, const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
 
 		/****************** NbElements ******************/
 		/**** md5 signature: a2c5844890f023732a846fde2e05ced3 ****/
 		%feature("compactdefaultargs") NbElements;
-		%feature("autodoc", "Returns number of elements.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of elements.
 ") NbElements;
 		Standard_Integer NbElements();
 
 		/****************** SetElements ******************/
 		/**** md5 signature: 536b19fc09faf4695df49add05c14afe ****/
 		%feature("compactdefaultargs") SetElements;
-		%feature("autodoc", "Set field elements.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theElements: StepVisual_HArray1OfAnnotationPlaneElement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set field elements.
 ") SetElements;
 		void SetElements(const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
 
 		/****************** SetElementsValue ******************/
 		/**** md5 signature: 3e944a5dc67dafe486647a4b36fef1cc ****/
 		%feature("compactdefaultargs") SetElementsValue;
-		%feature("autodoc", "Sets elements with given number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 theItem: StepVisual_AnnotationPlaneElement
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets elements with given number.
 ") SetElementsValue;
 		void SetElementsValue(const Standard_Integer theNum, const StepVisual_AnnotationPlaneElement & theItem);
 
@@ -9535,11 +10802,13 @@ class StepVisual_AnnotationTextOccurrence : public StepVisual_AnnotationOccurren
 		/****************** StepVisual_AnnotationTextOccurrence ******************/
 		/**** md5 signature: da7ad91bd90214d3de2a03100b11c676 ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationTextOccurrence;
-		%feature("autodoc", "Returns a annotationtextoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a annotationtextoccurrence.
 ") StepVisual_AnnotationTextOccurrence;
 		 StepVisual_AnnotationTextOccurrence();
 
@@ -9562,19 +10831,20 @@ class StepVisual_CameraModelD3MultiClipping : public StepVisual_CameraModelD3 {
 		/****************** StepVisual_CameraModelD3MultiClipping ******************/
 		/**** md5 signature: edfd42c6cf58b7cc2aa341faa7e158f2 ****/
 		%feature("compactdefaultargs") StepVisual_CameraModelD3MultiClipping;
-		%feature("autodoc", "Returns a cameramodeld3multiclipping.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a cameramodeld3multiclipping.
 ") StepVisual_CameraModelD3MultiClipping;
 		 StepVisual_CameraModelD3MultiClipping();
 
 		/****************** Init ******************/
 		/**** md5 signature: 87e84293664db9dea1350dfc9b17aaca ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
@@ -9582,35 +10852,44 @@ theViewReferenceSystem: StepGeom_Axis2Placement3d
 thePerspectiveOfVolume: StepVisual_ViewVolume
 theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepGeom_Axis2Placement3d> & theViewReferenceSystem, const opencascade::handle<StepVisual_ViewVolume> & thePerspectiveOfVolume, const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
 		/****************** SetShapeClipping ******************/
 		/**** md5 signature: d3f138def09366b1d4de0425b5fa7872 ****/
 		%feature("compactdefaultargs") SetShapeClipping;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetShapeClipping;
 		void SetShapeClipping(const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
 		/****************** ShapeClipping ******************/
 		/**** md5 signature: 6eb5c9a377534fa0b6410bb68e41bb5b ****/
 		%feature("compactdefaultargs") ShapeClipping;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect>
+
+Description
+-----------
+No available documentation.
 ") ShapeClipping;
 		const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> ShapeClipping();
 
@@ -9633,41 +10912,46 @@ class StepVisual_ColourRgb : public StepVisual_ColourSpecification {
 		/****************** StepVisual_ColourRgb ******************/
 		/**** md5 signature: fc0e00166ed992e466a0001dbf841008 ****/
 		%feature("compactdefaultargs") StepVisual_ColourRgb;
-		%feature("autodoc", "Returns a colourrgb.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a colourrgb.
 ") StepVisual_ColourRgb;
 		 StepVisual_ColourRgb();
 
 		/****************** Blue ******************/
 		/**** md5 signature: 4771e446272835844a2885353fcdb8a9 ****/
 		%feature("compactdefaultargs") Blue;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") Blue;
 		Standard_Real Blue();
 
 		/****************** Green ******************/
 		/**** md5 signature: 3857670a16bf31e5b3300ec575b3b216 ****/
 		%feature("compactdefaultargs") Green;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") Green;
 		Standard_Real Green();
 
 		/****************** Init ******************/
 		/**** md5 signature: b7e1356da609efcfd53471dedf143b49 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -9675,65 +10959,80 @@ aRed: float
 aGreen: float
 aBlue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aRed, const Standard_Real aGreen, const Standard_Real aBlue);
 
 		/****************** Red ******************/
 		/**** md5 signature: 0afa693a7d24010fd8ce065be2035322 ****/
 		%feature("compactdefaultargs") Red;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") Red;
 		Standard_Real Red();
 
 		/****************** SetBlue ******************/
 		/**** md5 signature: 153b68d0a9744c5c4a5834c535b2fe82 ****/
 		%feature("compactdefaultargs") SetBlue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aBlue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetBlue;
 		void SetBlue(const Standard_Real aBlue);
 
 		/****************** SetGreen ******************/
 		/**** md5 signature: 4ffb261016c5334ce3b48e8f3df004e0 ****/
 		%feature("compactdefaultargs") SetGreen;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aGreen: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetGreen;
 		void SetGreen(const Standard_Real aGreen);
 
 		/****************** SetRed ******************/
 		/**** md5 signature: 4fed618355890a659dc4d036fb5614c4 ****/
 		%feature("compactdefaultargs") SetRed;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aRed: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetRed;
 		void SetRed(const Standard_Real aRed);
 
@@ -9756,19 +11055,20 @@ class StepVisual_ComplexTriangulatedSurfaceSet : public StepVisual_TessellatedSu
 		/****************** StepVisual_ComplexTriangulatedSurfaceSet ******************/
 		/**** md5 signature: f5a25facbd5e6f9b3584f609970d6c0e ****/
 		%feature("compactdefaultargs") StepVisual_ComplexTriangulatedSurfaceSet;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_ComplexTriangulatedSurfaceSet;
 		 StepVisual_ComplexTriangulatedSurfaceSet();
 
 		/****************** Init ******************/
 		/**** md5 signature: 3b113fbc7ec06fe4a160b5ba8e9cbaee ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -9779,135 +11079,163 @@ thePnindex: TColStd_HArray1OfInteger
 theTriangleStrips: TColStd_HArray2OfInteger
 theTriangleFans: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedSurfaceSet_Coordinates, const Standard_Integer theTessellatedSurfaceSet_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedSurfaceSet_Normals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
 
 		/****************** NbPnindex ******************/
 		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
 		%feature("compactdefaultargs") NbPnindex;
-		%feature("autodoc", "Returns number of pnindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
 		/****************** NbTriangleFans ******************/
 		/**** md5 signature: e32a7cc03e1bf132b8ca51d998c1ef91 ****/
 		%feature("compactdefaultargs") NbTriangleFans;
-		%feature("autodoc", "Returns number of trianglefans.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of trianglefans.
 ") NbTriangleFans;
 		Standard_Integer NbTriangleFans();
 
 		/****************** NbTriangleStrips ******************/
 		/**** md5 signature: 41f96c6e8734a500c69e77eb743995d5 ****/
 		%feature("compactdefaultargs") NbTriangleStrips;
-		%feature("autodoc", "Returns number of trianglestrips.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of trianglestrips.
 ") NbTriangleStrips;
 		Standard_Integer NbTriangleStrips();
 
 		/****************** Pnindex ******************/
 		/**** md5 signature: 4b1e18390247fb42f42f10361e8626ac ****/
 		%feature("compactdefaultargs") Pnindex;
-		%feature("autodoc", "Returns field pnindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field pnindex.
 ") Pnindex;
 		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
 		/****************** PnindexValue ******************/
 		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
 		%feature("compactdefaultargs") PnindexValue;
-		%feature("autodoc", "Returns value of pnindex by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
 		/****************** SetPnindex ******************/
 		/**** md5 signature: 43575e7d7486f7f39672441e3410d824 ****/
 		%feature("compactdefaultargs") SetPnindex;
-		%feature("autodoc", "Sets field pnindex.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnindex: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
 		/****************** SetTriangleFans ******************/
 		/**** md5 signature: db9f04781f28ff74c0a910d332b01a50 ****/
 		%feature("compactdefaultargs") SetTriangleFans;
-		%feature("autodoc", "Sets field trianglefans.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTriangleFans: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field trianglefans.
 ") SetTriangleFans;
 		void SetTriangleFans(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
 
 		/****************** SetTriangleStrips ******************/
 		/**** md5 signature: 305b524e4a12d6718cd4b65ad6a59730 ****/
 		%feature("compactdefaultargs") SetTriangleStrips;
-		%feature("autodoc", "Sets field trianglestrips.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTriangleStrips: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field trianglestrips.
 ") SetTriangleStrips;
 		void SetTriangleStrips(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips);
 
 		/****************** TriangleFans ******************/
 		/**** md5 signature: 66cea853512deea6cf6d0195d2138e10 ****/
 		%feature("compactdefaultargs") TriangleFans;
-		%feature("autodoc", "Returns field trianglefans.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field trianglefans.
 ") TriangleFans;
 		opencascade::handle<TColStd_HArray2OfInteger> TriangleFans();
 
 		/****************** TriangleStrips ******************/
 		/**** md5 signature: c2afe2543561429d8c5267016bec1fb9 ****/
 		%feature("compactdefaultargs") TriangleStrips;
-		%feature("autodoc", "Returns field trianglestrips.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field trianglestrips.
 ") TriangleStrips;
 		opencascade::handle<TColStd_HArray2OfInteger> TriangleStrips();
 
@@ -9930,19 +11258,20 @@ class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRi
 		/****************** StepVisual_ContextDependentOverRidingStyledItem ******************/
 		/**** md5 signature: 751ad648a1d021296e877fb353c36504 ****/
 		%feature("compactdefaultargs") StepVisual_ContextDependentOverRidingStyledItem;
-		%feature("autodoc", "Returns a contextdependentoverridingstyleditem.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a contextdependentoverridingstyleditem.
 ") StepVisual_ContextDependentOverRidingStyledItem;
 		 StepVisual_ContextDependentOverRidingStyledItem();
 
 		/****************** Init ******************/
 		/**** md5 signature: c24b8b9ad7b5d9a438ed02d1ab423525 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
@@ -9951,61 +11280,75 @@ aItem: Standard_Transient
 aOverRiddenStyle: StepVisual_StyledItem
 aStyleContext: StepVisual_HArray1OfStyleContextSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles, const opencascade::handle<Standard_Transient> & aItem, const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle, const opencascade::handle<StepVisual_HArray1OfStyleContextSelect> & aStyleContext);
 
 		/****************** NbStyleContext ******************/
 		/**** md5 signature: e206fcfa49f6276b6afdc06f261c7d44 ****/
 		%feature("compactdefaultargs") NbStyleContext;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbStyleContext;
 		Standard_Integer NbStyleContext();
 
 		/****************** SetStyleContext ******************/
 		/**** md5 signature: 7d00700c8ebba1fb8dc98de6e0ff48bd ****/
 		%feature("compactdefaultargs") SetStyleContext;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aStyleContext: StepVisual_HArray1OfStyleContextSelect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetStyleContext;
 		void SetStyleContext(const opencascade::handle<StepVisual_HArray1OfStyleContextSelect> & aStyleContext);
 
 		/****************** StyleContext ******************/
 		/**** md5 signature: 1062c06ab4b28ef6d87d81774a639831 ****/
 		%feature("compactdefaultargs") StyleContext;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_HArray1OfStyleContextSelect>
+
+Description
+-----------
+No available documentation.
 ") StyleContext;
 		opencascade::handle<StepVisual_HArray1OfStyleContextSelect> StyleContext();
 
 		/****************** StyleContextValue ******************/
 		/**** md5 signature: 84bf7add41c48b8b6ef0e966cfaea101 ****/
 		%feature("compactdefaultargs") StyleContextValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 num: int
 
-Returns
+Return
 -------
 StepVisual_StyleContextSelect
+
+Description
+-----------
+No available documentation.
 ") StyleContextValue;
 		StepVisual_StyleContextSelect StyleContextValue(const Standard_Integer num);
 
@@ -10028,11 +11371,13 @@ class StepVisual_DraughtingAnnotationOccurrence : public StepVisual_AnnotationOc
 		/****************** StepVisual_DraughtingAnnotationOccurrence ******************/
 		/**** md5 signature: 2b9ce23c362fbb9bfde7c9391d3cddbd ****/
 		%feature("compactdefaultargs") StepVisual_DraughtingAnnotationOccurrence;
-		%feature("autodoc", "Returns a draughtingannotationoccurrence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingannotationoccurrence.
 ") StepVisual_DraughtingAnnotationOccurrence;
 		 StepVisual_DraughtingAnnotationOccurrence();
 
@@ -10055,11 +11400,13 @@ class StepVisual_DraughtingPreDefinedColour : public StepVisual_PreDefinedColour
 		/****************** StepVisual_DraughtingPreDefinedColour ******************/
 		/**** md5 signature: 00e69d8ddf639a4c18137430bd132b5c ****/
 		%feature("compactdefaultargs") StepVisual_DraughtingPreDefinedColour;
-		%feature("autodoc", "Returns a draughtingpredefinedcolour.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingpredefinedcolour.
 ") StepVisual_DraughtingPreDefinedColour;
 		 StepVisual_DraughtingPreDefinedColour();
 
@@ -10082,11 +11429,13 @@ class StepVisual_DraughtingPreDefinedCurveFont : public StepVisual_PreDefinedCur
 		/****************** StepVisual_DraughtingPreDefinedCurveFont ******************/
 		/**** md5 signature: 60ea7de40e169960204d618db9b7c17d ****/
 		%feature("compactdefaultargs") StepVisual_DraughtingPreDefinedCurveFont;
-		%feature("autodoc", "Returns a draughtingpredefinedcurvefont.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a draughtingpredefinedcurvefont.
 ") StepVisual_DraughtingPreDefinedCurveFont;
 		 StepVisual_DraughtingPreDefinedCurveFont();
 
@@ -10109,11 +11458,13 @@ class StepVisual_MechanicalDesignGeometricPresentationArea : public StepVisual_P
 		/****************** StepVisual_MechanicalDesignGeometricPresentationArea ******************/
 		/**** md5 signature: 0ce86d69783d015e1babc7156290b5d1 ****/
 		%feature("compactdefaultargs") StepVisual_MechanicalDesignGeometricPresentationArea;
-		%feature("autodoc", "Returns a mechanicaldesigngeometricpresentationarea.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns a mechanicaldesigngeometricpresentationarea.
 ") StepVisual_MechanicalDesignGeometricPresentationArea;
 		 StepVisual_MechanicalDesignGeometricPresentationArea();
 
@@ -10136,54 +11487,64 @@ class StepVisual_RepositionedTessellatedGeometricSet : public StepVisual_Tessell
 		/****************** StepVisual_RepositionedTessellatedGeometricSet ******************/
 		/**** md5 signature: 5e75598f572ae9847c8040be8e46f489 ****/
 		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedGeometricSet;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_RepositionedTessellatedGeometricSet;
 		 StepVisual_RepositionedTessellatedGeometricSet();
 
 		/****************** Init ******************/
 		/**** md5 signature: 2bf436aa69aeba3149fe483555dd0d5b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem>
 theLocation: StepGeom_Axis2Placement3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<StepVisual_Array1OfTessellatedItem> & theItems, const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
 
 		/****************** Location ******************/
 		/**** md5 signature: 39fc6625e849c305cb623a87ef9754a6 ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns location.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepGeom_Axis2Placement3d>
+
+Description
+-----------
+Returns location.
 ") Location;
 		opencascade::handle<StepGeom_Axis2Placement3d> Location();
 
 		/****************** SetLocation ******************/
 		/**** md5 signature: 447f5a9e9fa630b823c1544b8c75af39 ****/
 		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "Sets location.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLocation: StepGeom_Axis2Placement3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets location.
 ") SetLocation;
 		void SetLocation(const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
 
@@ -10206,52 +11567,59 @@ class StepVisual_TessellatedEdge : public StepVisual_TessellatedStructuredItem {
 		/****************** StepVisual_TessellatedEdge ******************/
 		/**** md5 signature: c013b92f5aa5aac524506ea5d3e53d39 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedEdge;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedEdge;
 		 StepVisual_TessellatedEdge();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "Returns field coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CoordinatesList>
+
+Description
+-----------
+Returns field coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****************** GeometricLink ******************/
 		/**** md5 signature: 925f3ac0b87083092684dd5f4ded6a57 ****/
 		%feature("compactdefaultargs") GeometricLink;
-		%feature("autodoc", "Returns field geometriclink.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_EdgeOrCurve
+
+Description
+-----------
+Returns field geometriclink.
 ") GeometricLink;
 		StepVisual_EdgeOrCurve GeometricLink();
 
 		/****************** HasGeometricLink ******************/
 		/**** md5 signature: 432ca769d0ec23ad86df023b91c35498 ****/
 		%feature("compactdefaultargs") HasGeometricLink;
-		%feature("autodoc", "Returns true if optional field geometriclink is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if optional field geometriclink is defined.
 ") HasGeometricLink;
 		Standard_Boolean HasGeometricLink();
 
 		/****************** Init ******************/
 		/**** md5 signature: 11a5c3cdbb8a817154f67381d04958f4 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -10260,91 +11628,111 @@ theHasGeometricLink: bool
 theGeometricLink: StepVisual_EdgeOrCurve
 theLineStrip: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Boolean theHasGeometricLink, const StepVisual_EdgeOrCurve & theGeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
 
 		/****************** LineStrip ******************/
 		/**** md5 signature: 3ef443bbf72e31cb5369b198c3ad9fc5 ****/
 		%feature("compactdefaultargs") LineStrip;
-		%feature("autodoc", "Returns field linestrip.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field linestrip.
 ") LineStrip;
 		opencascade::handle<TColStd_HArray1OfInteger> LineStrip();
 
 		/****************** LineStripValue ******************/
 		/**** md5 signature: a1e48466fbe771da213017820e55d46b ****/
 		%feature("compactdefaultargs") LineStripValue;
-		%feature("autodoc", "Returns value of linestrip by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of linestrip by its num.
 ") LineStripValue;
 		Standard_Integer LineStripValue(const Standard_Integer theNum);
 
 		/****************** NbLineStrip ******************/
 		/**** md5 signature: e3a6a387f711fc1b2573309d507eb3f8 ****/
 		%feature("compactdefaultargs") NbLineStrip;
-		%feature("autodoc", "Returns number of linestrip.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of linestrip.
 ") NbLineStrip;
 		Standard_Integer NbLineStrip();
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "Sets field coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCoordinates: StepVisual_CoordinatesList
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****************** SetGeometricLink ******************/
 		/**** md5 signature: 27d1504e34949f42efa5236d7d974433 ****/
 		%feature("compactdefaultargs") SetGeometricLink;
-		%feature("autodoc", "Sets field geometriclink.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGeometricLink: StepVisual_EdgeOrCurve
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field geometriclink.
 ") SetGeometricLink;
 		void SetGeometricLink(const StepVisual_EdgeOrCurve & theGeometricLink);
 
 		/****************** SetLineStrip ******************/
 		/**** md5 signature: ede707a2de223a4694210c12bfadb98a ****/
 		%feature("compactdefaultargs") SetLineStrip;
-		%feature("autodoc", "Sets field linestrip.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLineStrip: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field linestrip.
 ") SetLineStrip;
 		void SetLineStrip(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
 
@@ -10367,52 +11755,59 @@ class StepVisual_TessellatedFace : public StepVisual_TessellatedStructuredItem {
 		/****************** StepVisual_TessellatedFace ******************/
 		/**** md5 signature: ef7c9c35d3c2fabc32313d4960183e0b ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedFace;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedFace;
 		 StepVisual_TessellatedFace();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "Returns field coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CoordinatesList>
+
+Description
+-----------
+Returns field coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****************** GeometricLink ******************/
 		/**** md5 signature: 2b68caeb7c36a74f35800182674c6c08 ****/
 		%feature("compactdefaultargs") GeometricLink;
-		%feature("autodoc", "Returns field geometriclink.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepVisual_FaceOrSurface
+
+Description
+-----------
+Returns field geometriclink.
 ") GeometricLink;
 		StepVisual_FaceOrSurface GeometricLink();
 
 		/****************** HasGeometricLink ******************/
 		/**** md5 signature: 432ca769d0ec23ad86df023b91c35498 ****/
 		%feature("compactdefaultargs") HasGeometricLink;
-		%feature("autodoc", "Returns true if optional field geometriclink is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if optional field geometriclink is defined.
 ") HasGeometricLink;
 		Standard_Boolean HasGeometricLink();
 
 		/****************** Init ******************/
 		/**** md5 signature: 835bebcd43fab8c7eb2394c030081db6 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -10422,102 +11817,124 @@ theNormals: TColStd_HArray2OfReal
 theHasGeometricLink: bool
 theGeometricLink: StepVisual_FaceOrSurface
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Integer thePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theNormals, const Standard_Boolean theHasGeometricLink, const StepVisual_FaceOrSurface & theGeometricLink);
 
 		/****************** NbNormals ******************/
 		/**** md5 signature: e8ae9c17a546ef8db4eb8b45e7edd0e8 ****/
 		%feature("compactdefaultargs") NbNormals;
-		%feature("autodoc", "Returns number of normals.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of normals.
 ") NbNormals;
 		Standard_Integer NbNormals();
 
 		/****************** Normals ******************/
 		/**** md5 signature: 369b381d12bed5d4109e95bc2ede0ab6 ****/
 		%feature("compactdefaultargs") Normals;
-		%feature("autodoc", "Returns field normals.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfReal>
+
+Description
+-----------
+Returns field normals.
 ") Normals;
 		opencascade::handle<TColStd_HArray2OfReal> Normals();
 
 		/****************** Pnmax ******************/
 		/**** md5 signature: 0b280e192c56c44fffab9481c68ac038 ****/
 		%feature("compactdefaultargs") Pnmax;
-		%feature("autodoc", "Returns field pnmax.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns field pnmax.
 ") Pnmax;
 		Standard_Integer Pnmax();
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "Sets field coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCoordinates: StepVisual_CoordinatesList
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****************** SetGeometricLink ******************/
 		/**** md5 signature: 7e838ce726efeca1c27b9d4f1e6d745b ****/
 		%feature("compactdefaultargs") SetGeometricLink;
-		%feature("autodoc", "Sets field geometriclink.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGeometricLink: StepVisual_FaceOrSurface
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field geometriclink.
 ") SetGeometricLink;
 		void SetGeometricLink(const StepVisual_FaceOrSurface & theGeometricLink);
 
 		/****************** SetNormals ******************/
 		/**** md5 signature: 6dd69aae81e446ea2f47e92611adf4ec ****/
 		%feature("compactdefaultargs") SetNormals;
-		%feature("autodoc", "Sets field normals.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNormals: TColStd_HArray2OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field normals.
 ") SetNormals;
 		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
 
 		/****************** SetPnmax ******************/
 		/**** md5 signature: 684034e32240f760527db1f7f7c9f728 ****/
 		%feature("compactdefaultargs") SetPnmax;
-		%feature("autodoc", "Sets field pnmax.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnmax: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pnmax.
 ") SetPnmax;
 		void SetPnmax(const Standard_Integer thePnmax);
 
@@ -10540,41 +11957,46 @@ class StepVisual_TessellatedVertex : public StepVisual_TessellatedStructuredItem
 		/****************** StepVisual_TessellatedVertex ******************/
 		/**** md5 signature: 1d479f8d322cf89bb62554a06ec2c5d6 ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedVertex;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedVertex;
 		 StepVisual_TessellatedVertex();
 
 		/****************** Coordinates ******************/
 		/**** md5 signature: ec74f7c30bc760bfadd8f8d2135f55c5 ****/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "Returns field coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_CoordinatesList>
+
+Description
+-----------
+Returns field coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****************** HasTopologicalLink ******************/
 		/**** md5 signature: b2a8f6180f026b329187f8297fbc4881 ****/
 		%feature("compactdefaultargs") HasTopologicalLink;
-		%feature("autodoc", "Returns true if optional field topologicallink is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if optional field topologicallink is defined.
 ") HasTopologicalLink;
 		Standard_Boolean HasTopologicalLink();
 
 		/****************** Init ******************/
 		/**** md5 signature: 7a588a64770cae4be3ab835050b28a7b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -10583,76 +12005,93 @@ theHasTopologicalLink: bool
 theTopologicalLink: StepShape_VertexPoint
 thePointIndex: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Boolean theHasTopologicalLink, const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink, const Standard_Integer thePointIndex);
 
 		/****************** PointIndex ******************/
 		/**** md5 signature: a7100f38206242b5067e31337a15de37 ****/
 		%feature("compactdefaultargs") PointIndex;
-		%feature("autodoc", "Returns field pointindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns field pointindex.
 ") PointIndex;
 		Standard_Integer PointIndex();
 
 		/****************** SetCoordinates ******************/
 		/**** md5 signature: 67496989a6887e140d96a4901bab43cb ****/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "Sets field coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCoordinates: StepVisual_CoordinatesList
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****************** SetPointIndex ******************/
 		/**** md5 signature: d00ee3c6c96d00bf1679920e38c21622 ****/
 		%feature("compactdefaultargs") SetPointIndex;
-		%feature("autodoc", "Sets field pointindex.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePointIndex: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pointindex.
 ") SetPointIndex;
 		void SetPointIndex(const Standard_Integer thePointIndex);
 
 		/****************** SetTopologicalLink ******************/
 		/**** md5 signature: 7eb4225ce032f77d5e9072cb2c704a14 ****/
 		%feature("compactdefaultargs") SetTopologicalLink;
-		%feature("autodoc", "Sets field topologicallink.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTopologicalLink: StepShape_VertexPoint
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field topologicallink.
 ") SetTopologicalLink;
 		void SetTopologicalLink(const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink);
 
 		/****************** TopologicalLink ******************/
 		/**** md5 signature: 0e6978ef7ce1b6573c8c8c73bbfcc600 ****/
 		%feature("compactdefaultargs") TopologicalLink;
-		%feature("autodoc", "Returns field topologicallink.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepShape_VertexPoint>
+
+Description
+-----------
+Returns field topologicallink.
 ") TopologicalLink;
 		opencascade::handle<StepShape_VertexPoint> TopologicalLink();
 
@@ -10675,11 +12114,13 @@ class StepVisual_AnnotationCurveOccurrenceAndGeomReprItem : public StepVisual_An
 		/****************** StepVisual_AnnotationCurveOccurrenceAndGeomReprItem ******************/
 		/**** md5 signature: 61da7f9ce3b786d730625e38c0f52ef7 ****/
 		%feature("compactdefaultargs") StepVisual_AnnotationCurveOccurrenceAndGeomReprItem;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") StepVisual_AnnotationCurveOccurrenceAndGeomReprItem;
 		 StepVisual_AnnotationCurveOccurrenceAndGeomReprItem();
 
@@ -10702,19 +12143,20 @@ class StepVisual_ComplexTriangulatedFace : public StepVisual_TessellatedFace {
 		/****************** StepVisual_ComplexTriangulatedFace ******************/
 		/**** md5 signature: 1626ac3c9d7cefb979edad870659935d ****/
 		%feature("compactdefaultargs") StepVisual_ComplexTriangulatedFace;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_ComplexTriangulatedFace;
 		 StepVisual_ComplexTriangulatedFace();
 
 		/****************** Init ******************/
 		/**** md5 signature: e1774105fd821d5c7b890a1a4073cc6f ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -10727,135 +12169,163 @@ thePnindex: TColStd_HArray1OfInteger
 theTriangleStrips: TColStd_HArray2OfInteger
 theTriangleFans: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
 
 		/****************** NbPnindex ******************/
 		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
 		%feature("compactdefaultargs") NbPnindex;
-		%feature("autodoc", "Returns number of pnindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
 		/****************** NbTriangleFans ******************/
 		/**** md5 signature: e32a7cc03e1bf132b8ca51d998c1ef91 ****/
 		%feature("compactdefaultargs") NbTriangleFans;
-		%feature("autodoc", "Returns number of trianglefans.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of trianglefans.
 ") NbTriangleFans;
 		Standard_Integer NbTriangleFans();
 
 		/****************** NbTriangleStrips ******************/
 		/**** md5 signature: 41f96c6e8734a500c69e77eb743995d5 ****/
 		%feature("compactdefaultargs") NbTriangleStrips;
-		%feature("autodoc", "Returns number of trianglestrips.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of trianglestrips.
 ") NbTriangleStrips;
 		Standard_Integer NbTriangleStrips();
 
 		/****************** Pnindex ******************/
 		/**** md5 signature: 4b1e18390247fb42f42f10361e8626ac ****/
 		%feature("compactdefaultargs") Pnindex;
-		%feature("autodoc", "Returns field pnindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field pnindex.
 ") Pnindex;
 		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
 		/****************** PnindexValue ******************/
 		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
 		%feature("compactdefaultargs") PnindexValue;
-		%feature("autodoc", "Returns value of pnindex by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
 		/****************** SetPnindex ******************/
 		/**** md5 signature: 43575e7d7486f7f39672441e3410d824 ****/
 		%feature("compactdefaultargs") SetPnindex;
-		%feature("autodoc", "Sets field pnindex.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnindex: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
 		/****************** SetTriangleFans ******************/
 		/**** md5 signature: db9f04781f28ff74c0a910d332b01a50 ****/
 		%feature("compactdefaultargs") SetTriangleFans;
-		%feature("autodoc", "Sets field trianglefans.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTriangleFans: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field trianglefans.
 ") SetTriangleFans;
 		void SetTriangleFans(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
 
 		/****************** SetTriangleStrips ******************/
 		/**** md5 signature: 305b524e4a12d6718cd4b65ad6a59730 ****/
 		%feature("compactdefaultargs") SetTriangleStrips;
-		%feature("autodoc", "Sets field trianglestrips.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTriangleStrips: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field trianglestrips.
 ") SetTriangleStrips;
 		void SetTriangleStrips(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips);
 
 		/****************** TriangleFans ******************/
 		/**** md5 signature: 66cea853512deea6cf6d0195d2138e10 ****/
 		%feature("compactdefaultargs") TriangleFans;
-		%feature("autodoc", "Returns field trianglefans.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field trianglefans.
 ") TriangleFans;
 		opencascade::handle<TColStd_HArray2OfInteger> TriangleFans();
 
 		/****************** TriangleStrips ******************/
 		/**** md5 signature: c2afe2543561429d8c5267016bec1fb9 ****/
 		%feature("compactdefaultargs") TriangleStrips;
-		%feature("autodoc", "Returns field trianglestrips.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field trianglestrips.
 ") TriangleStrips;
 		opencascade::handle<TColStd_HArray2OfInteger> TriangleStrips();
 
@@ -10878,11 +12348,13 @@ class StepVisual_CubicBezierTessellatedEdge : public StepVisual_TessellatedEdge 
 		/****************** StepVisual_CubicBezierTessellatedEdge ******************/
 		/**** md5 signature: 6a2d50c9d1d51ecb59aae29dbe2ea1d5 ****/
 		%feature("compactdefaultargs") StepVisual_CubicBezierTessellatedEdge;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_CubicBezierTessellatedEdge;
 		 StepVisual_CubicBezierTessellatedEdge();
 
@@ -10905,30 +12377,33 @@ class StepVisual_CubicBezierTriangulatedFace : public StepVisual_TessellatedFace
 		/****************** StepVisual_CubicBezierTriangulatedFace ******************/
 		/**** md5 signature: f1c7ee7f1d108a679ab8eabfd2ccba42 ****/
 		%feature("compactdefaultargs") StepVisual_CubicBezierTriangulatedFace;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_CubicBezierTriangulatedFace;
 		 StepVisual_CubicBezierTriangulatedFace();
 
 		/****************** Ctriangles ******************/
 		/**** md5 signature: 102b295b6af84fe7d8a1b398774f2b91 ****/
 		%feature("compactdefaultargs") Ctriangles;
-		%feature("autodoc", "Returns field ctriangles.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field ctriangles.
 ") Ctriangles;
 		opencascade::handle<TColStd_HArray2OfInteger> Ctriangles();
 
 		/****************** Init ******************/
 		/**** md5 signature: 33020c5fbd6b62e12d7b9c676274ab5d ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -10939,35 +12414,44 @@ theHasTessellatedFace_GeometricLink: bool
 theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
 theCtriangles: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
 
 		/****************** NbCtriangles ******************/
 		/**** md5 signature: 13825b33bcce4596e533525b461804fe ****/
 		%feature("compactdefaultargs") NbCtriangles;
-		%feature("autodoc", "Returns number of ctriangles.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of ctriangles.
 ") NbCtriangles;
 		Standard_Integer NbCtriangles();
 
 		/****************** SetCtriangles ******************/
 		/**** md5 signature: c78b3847a8d411dcb9aa0b29064c662e ****/
 		%feature("compactdefaultargs") SetCtriangles;
-		%feature("autodoc", "Sets field ctriangles.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCtriangles: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field ctriangles.
 ") SetCtriangles;
 		void SetCtriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
 
@@ -10990,41 +12474,46 @@ class StepVisual_TessellatedConnectingEdge : public StepVisual_TessellatedEdge {
 		/****************** StepVisual_TessellatedConnectingEdge ******************/
 		/**** md5 signature: e1448ecb17e19e47f146c708cf99a3ca ****/
 		%feature("compactdefaultargs") StepVisual_TessellatedConnectingEdge;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TessellatedConnectingEdge;
 		 StepVisual_TessellatedConnectingEdge();
 
 		/****************** Face1 ******************/
 		/**** md5 signature: c59628c5eef69eeffa774f97edd8c9d6 ****/
 		%feature("compactdefaultargs") Face1;
-		%feature("autodoc", "Returns field face1.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TessellatedFace>
+
+Description
+-----------
+Returns field face1.
 ") Face1;
 		opencascade::handle<StepVisual_TessellatedFace> Face1();
 
 		/****************** Face2 ******************/
 		/**** md5 signature: 8b18a8f8498482930f6cca4385e2359e ****/
 		%feature("compactdefaultargs") Face2;
-		%feature("autodoc", "Returns field face2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<StepVisual_TessellatedFace>
+
+Description
+-----------
+Returns field face2.
 ") Face2;
 		opencascade::handle<StepVisual_TessellatedFace> Face2();
 
 		/****************** Init ******************/
 		/**** md5 signature: 6f7011c37a483db00e2012c0e0b5fed6 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -11038,169 +12527,204 @@ theFace2: StepVisual_TessellatedFace
 theLineStripFace1: TColStd_HArray1OfInteger
 theLineStripFace2: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedEdge_Coordinates, const Standard_Boolean theHasTessellatedEdge_GeometricLink, const StepVisual_EdgeOrCurve & theTessellatedEdge_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & theTessellatedEdge_LineStrip, const StepData_Logical theSmooth, const opencascade::handle<StepVisual_TessellatedFace> & theFace1, const opencascade::handle<StepVisual_TessellatedFace> & theFace2, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
 
 		/****************** LineStripFace1 ******************/
 		/**** md5 signature: 0b7971e6a92c9c058b28d7fbec9a3bb1 ****/
 		%feature("compactdefaultargs") LineStripFace1;
-		%feature("autodoc", "Returns field linestripface1.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field linestripface1.
 ") LineStripFace1;
 		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace1();
 
 		/****************** LineStripFace1Value ******************/
 		/**** md5 signature: b66bd9daa4369c7dbc9c9933e5752bb9 ****/
 		%feature("compactdefaultargs") LineStripFace1Value;
-		%feature("autodoc", "Returns value of linestripface1 by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of linestripface1 by its num.
 ") LineStripFace1Value;
 		Standard_Integer LineStripFace1Value(const Standard_Integer theNum);
 
 		/****************** LineStripFace2 ******************/
 		/**** md5 signature: df497d760e695587a621010b5edcb83e ****/
 		%feature("compactdefaultargs") LineStripFace2;
-		%feature("autodoc", "Returns field linestripface2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field linestripface2.
 ") LineStripFace2;
 		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace2();
 
 		/****************** LineStripFace2Value ******************/
 		/**** md5 signature: 1a065201dc96fe780a0ca0f3bba9b65c ****/
 		%feature("compactdefaultargs") LineStripFace2Value;
-		%feature("autodoc", "Returns value of linestripface2 by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of linestripface2 by its num.
 ") LineStripFace2Value;
 		Standard_Integer LineStripFace2Value(const Standard_Integer theNum);
 
 		/****************** NbLineStripFace1 ******************/
 		/**** md5 signature: 6635634092840488cc7bb70f66269c04 ****/
 		%feature("compactdefaultargs") NbLineStripFace1;
-		%feature("autodoc", "Returns number of linestripface1.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of linestripface1.
 ") NbLineStripFace1;
 		Standard_Integer NbLineStripFace1();
 
 		/****************** NbLineStripFace2 ******************/
 		/**** md5 signature: f48092b6b68ea97a6dd7859a19f37f10 ****/
 		%feature("compactdefaultargs") NbLineStripFace2;
-		%feature("autodoc", "Returns number of linestripface2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of linestripface2.
 ") NbLineStripFace2;
 		Standard_Integer NbLineStripFace2();
 
 		/****************** SetFace1 ******************/
 		/**** md5 signature: cbae07fafdf9bee2009c474118199284 ****/
 		%feature("compactdefaultargs") SetFace1;
-		%feature("autodoc", "Sets field face1.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFace1: StepVisual_TessellatedFace
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field face1.
 ") SetFace1;
 		void SetFace1(const opencascade::handle<StepVisual_TessellatedFace> & theFace1);
 
 		/****************** SetFace2 ******************/
 		/**** md5 signature: bcf0ccbb96a6fd4d59c7320522ee5788 ****/
 		%feature("compactdefaultargs") SetFace2;
-		%feature("autodoc", "Sets field face2.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFace2: StepVisual_TessellatedFace
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field face2.
 ") SetFace2;
 		void SetFace2(const opencascade::handle<StepVisual_TessellatedFace> & theFace2);
 
 		/****************** SetLineStripFace1 ******************/
 		/**** md5 signature: 13b5d9f5b2ea77a515da533e3f220c3d ****/
 		%feature("compactdefaultargs") SetLineStripFace1;
-		%feature("autodoc", "Sets field linestripface1.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLineStripFace1: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field linestripface1.
 ") SetLineStripFace1;
 		void SetLineStripFace1(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1);
 
 		/****************** SetLineStripFace2 ******************/
 		/**** md5 signature: d540d27bf6489bfed701c6605eae7f77 ****/
 		%feature("compactdefaultargs") SetLineStripFace2;
-		%feature("autodoc", "Sets field linestripface2.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLineStripFace2: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field linestripface2.
 ") SetLineStripFace2;
 		void SetLineStripFace2(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
 
 		/****************** SetSmooth ******************/
 		/**** md5 signature: 87175ba25d9b6c8a69467c8ddf380c38 ****/
 		%feature("compactdefaultargs") SetSmooth;
-		%feature("autodoc", "Sets field smooth.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSmooth: StepData_Logical
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field smooth.
 ") SetSmooth;
 		void SetSmooth(const StepData_Logical theSmooth);
 
 		/****************** Smooth ******************/
 		/**** md5 signature: 25e54a525a1ab2adc3ec5f5328ebdf72 ****/
 		%feature("compactdefaultargs") Smooth;
-		%feature("autodoc", "Returns field smooth.
-
-Returns
+		%feature("autodoc", "Return
 -------
 StepData_Logical
+
+Description
+-----------
+Returns field smooth.
 ") Smooth;
 		StepData_Logical Smooth();
 
@@ -11223,19 +12747,20 @@ class StepVisual_TriangulatedFace : public StepVisual_TessellatedFace {
 		/****************** StepVisual_TriangulatedFace ******************/
 		/**** md5 signature: 5403f9acccbdc71b03956b04a3a0adc4 ****/
 		%feature("compactdefaultargs") StepVisual_TriangulatedFace;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") StepVisual_TriangulatedFace;
 		 StepVisual_TriangulatedFace();
 
 		/****************** Init ******************/
 		/**** md5 signature: 51fae17da7ab38215a33b883083c62fc ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Initialize all fields (own and inherited).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
@@ -11247,98 +12772,119 @@ theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
 thePnindex: TColStd_HArray1OfInteger
 theTriangles: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
 
 		/****************** NbPnindex ******************/
 		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
 		%feature("compactdefaultargs") NbPnindex;
-		%feature("autodoc", "Returns number of pnindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
 		/****************** NbTriangles ******************/
 		/**** md5 signature: c1e2294db77a16b75e32923c5461b457 ****/
 		%feature("compactdefaultargs") NbTriangles;
-		%feature("autodoc", "Returns number of triangles.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of triangles.
 ") NbTriangles;
 		Standard_Integer NbTriangles();
 
 		/****************** Pnindex ******************/
 		/**** md5 signature: 4b1e18390247fb42f42f10361e8626ac ****/
 		%feature("compactdefaultargs") Pnindex;
-		%feature("autodoc", "Returns field pnindex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field pnindex.
 ") Pnindex;
 		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
 		/****************** PnindexValue ******************/
 		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
 		%feature("compactdefaultargs") PnindexValue;
-		%feature("autodoc", "Returns value of pnindex by its num.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNum: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns value of pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
 		/****************** SetPnindex ******************/
 		/**** md5 signature: 43575e7d7486f7f39672441e3410d824 ****/
 		%feature("compactdefaultargs") SetPnindex;
-		%feature("autodoc", "Sets field pnindex.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnindex: TColStd_HArray1OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
 		/****************** SetTriangles ******************/
 		/**** md5 signature: 7becaa4c9c5db60f179ba306d43829c7 ****/
 		%feature("compactdefaultargs") SetTriangles;
-		%feature("autodoc", "Sets field triangles.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTriangles: TColStd_HArray2OfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets field triangles.
 ") SetTriangles;
 		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
 
 		/****************** Triangles ******************/
 		/**** md5 signature: f0a213a304d57e07a9ee9efaa8d64eff ****/
 		%feature("compactdefaultargs") Triangles;
-		%feature("autodoc", "Returns field triangles.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field triangles.
 ") Triangles;
 		opencascade::handle<TColStd_HArray2OfInteger> Triangles();
 
